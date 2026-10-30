@@ -1,0 +1,1 @@
+developer_instructions = "Trabalhe em Angular standalone, Router e TypeScript strict. Reutilize componentes e padrões existentes, use Signals para estado local, preserve acessibilidade e considere as referências visuais do repositório como inspiração, não ativos republicáveis."

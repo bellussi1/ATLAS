@@ -1,0 +1,1 @@
+developer_instructions = "Inspecione os scripts e testes já existentes antes de propor verificações. Execute as verificações relevantes e reporte somente resultados observados. Considere rotas, estados, acessibilidade e regressões sem alegar conformidade WCAG integral sem auditoria."

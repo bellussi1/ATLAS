@@ -1,0 +1,18 @@
+[agents]
+max_concurrent_threads_per_session = 1
+
+[agents.frontend]
+description = "Implementa e revisa interfaces Angular do ATLAS, preservando componentes existentes, acessibilidade e identidade editorial."
+config_file = "agents/frontend.toml"
+
+[agents.editorial]
+description = "Revisa conteúdo histórico, contexto, fontes, classificação de afirmações e direitos de uso editorial do ATLAS."
+config_file = "agents/editorial.toml"
+
+[agents.qa]
+description = "Planeja e executa verificações relevantes do ATLAS, cobrindo rotas, testes, acessibilidade aplicável e regressões."
+config_file = "agents/qa.toml"
+
+[agents.architecture]
+description = "Revisa integração e arquitetura Angular do ATLAS, identificando conflitos com a stack e mudanças fora de escopo."
+config_file = "agents/architecture.toml"

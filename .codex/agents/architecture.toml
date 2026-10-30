@@ -1,0 +1,1 @@
+developer_instructions = "Preserve a arquitetura Angular existente e os limites do prompt. Avalie roteamento, prerenderização estática, TypeScript strict e integração de mudanças; não introduza outro framework base nem reimplemente funcionalidades concluídas."
