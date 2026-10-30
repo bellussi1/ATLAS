@@ -1,0 +1,58 @@
+<section class="home" aria-labelledby="home-title">
+  <div class="home__intro">
+    <p class="eyebrow"><span aria-hidden="true">●</span> Um espaço para aprender em contexto</p>
+    <h1 id="home-title">Compreender <br />o mundo <em>em movimento.</em></h1>
+    <p class="home__mission">
+      O ATLAS conecta história, política, economia e sociedade para ajudar você a enxergar como as
+      ideias e os acontecimentos se relacionam.
+    </p>
+
+    <div class="search-preview" role="search" aria-label="Busca no ATLAS">
+      <label for="atlas-search">O que você quer entender?</label>
+      <div class="search-preview__control">
+        <input
+          id="atlas-search"
+          type="search"
+          readonly
+          aria-disabled="true"
+          aria-describedby="search-note"
+          placeholder="A busca ainda não está disponível"
+        />
+        <span aria-hidden="true">⌕</span>
+      </div>
+      <p id="search-note">A busca ainda não está disponível. Nenhum resultado será simulado.</p>
+    </div>
+  </div>
+
+  <nav class="starting-points" aria-label="Comece por aqui">
+    <a class="starting-point starting-point--question" data-entry routerLink="/explorar">
+      <span class="starting-point__index" aria-hidden="true">01</span>
+      <span class="starting-point__body">
+        <span class="starting-point__kicker">Uma pergunta</span>
+        <span class="starting-point__title">Entender uma dúvida</span>
+        <span class="starting-point__description">Investigue temas e suas conexões.</span>
+      </span>
+      <span class="starting-point__arrow" aria-hidden="true">↗</span>
+    </a>
+
+    <a class="starting-point starting-point--story" data-entry routerLink="/explorar">
+      <span class="starting-point__index" aria-hidden="true">02</span>
+      <span class="starting-point__body">
+        <span class="starting-point__kicker">Um acontecimento</span>
+        <span class="starting-point__title">Explorar a história</span>
+        <span class="starting-point__description">Veja processos históricos em relação.</span>
+      </span>
+      <span class="starting-point__arrow" aria-hidden="true">↗</span>
+    </a>
+
+    <a class="starting-point starting-point--trail" data-entry routerLink="/estudar">
+      <span class="starting-point__index" aria-hidden="true">03</span>
+      <span class="starting-point__body">
+        <span class="starting-point__kicker">Um caminho</span>
+        <span class="starting-point__title">Seguir uma trilha</span>
+        <span class="starting-point__description">Aprenda por etapas, no seu ritmo.</span>
+      </span>
+      <span class="starting-point__arrow" aria-hidden="true">↗</span>
+    </a>
+  </nav>
+</section>

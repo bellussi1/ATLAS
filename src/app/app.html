@@ -1,0 +1,23 @@
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <a class="wordmark" routerLink="/" aria-label="ATLAS — página inicial">
+    <span class="wordmark__symbol" aria-hidden="true">A</span>
+    <span>ATLAS</span>
+  </a>
+
+  <nav aria-label="Navegação principal">
+    <a routerLink="/explorar" routerLinkActive="is-active">Explorar</a>
+    <a routerLink="/estudar" routerLinkActive="is-active">Estudar</a>
+    <a routerLink="/sobre" routerLinkActive="is-active">Sobre</a>
+  </nav>
+</header>
+
+<main id="conteudo" tabindex="-1">
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <span>ATLAS</span>
+  <p>Conhecimento público, com contexto e fontes.</p>
+</footer>
