@@ -15,8 +15,7 @@
   max-width: 43rem;
 }
 
-.eyebrow,
-.starting-point__kicker {
+.eyebrow {
   color: var(--signal);
   font-size: 0.72rem;
   font-weight: 750;
@@ -111,16 +110,16 @@ h1 em {
   display: flex;
   align-self: center;
   flex-direction: column;
-  border-top: 1px solid var(--rule-strong);
+  gap: 0.75rem;
 }
 
 .starting-point {
   display: grid;
-  grid-template-columns: 2.5rem 1fr 1.25rem;
+  grid-template-columns: 1fr 1.25rem;
   gap: 1rem;
   align-items: start;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--rule-strong);
+  padding: 1.25rem 1rem;
+  background: rgba(255, 255, 255, 0.42);
   color: var(--ink);
   text-decoration: none;
   transition: padding 160ms ease, background-color 160ms ease;
@@ -132,24 +131,10 @@ h1 em {
   background: rgba(255, 255, 255, 0.6);
 }
 
-.starting-point__index {
-  padding-top: 0.15rem;
-  color: var(--ink-muted);
-  font-family: var(--serif);
-  font-size: 1.15rem;
-}
-
 .starting-point__body,
 .starting-point__title,
 .starting-point__description {
   display: block;
-}
-
-.starting-point__kicker {
-  display: block;
-  margin-bottom: 0.45rem;
-  color: var(--ink-muted);
-  font-size: 0.65rem;
 }
 
 .starting-point__title {
@@ -162,10 +147,6 @@ h1 em {
   font-family: var(--serif);
   font-size: clamp(1.3rem, 1.8vw, 1.7rem);
   font-weight: 500;
-}
-
-.starting-point--trail .starting-point__index {
-  color: var(--signal);
 }
 
 .starting-point__description {

@@ -57,6 +57,9 @@ nav {
 }
 
 nav a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   color: var(--ink-muted);
   font-size: 0.9rem;
   font-weight: 650;

@@ -7,11 +7,13 @@
   </a>
 
   <nav aria-label="Navegação principal">
-    <a routerLink="/explorar" routerLinkActive="is-active">Explorar</a>
-    <a routerLink="/estudar" routerLinkActive="is-active">Estudar</a>
-    <a routerLink="/sobre" routerLinkActive="is-active">Sobre</a>
+    <a routerLink="/explorar" routerLinkActive="is-active" ariaCurrentWhenActive="page">Explorar</a>
+    <a routerLink="/estudar" routerLinkActive="is-active" ariaCurrentWhenActive="page">Estudar</a>
+    <a routerLink="/sobre" routerLinkActive="is-active" ariaCurrentWhenActive="page">Sobre</a>
   </nav>
 </header>
+
+<app-breadcrumbs />
 
 <main id="conteudo" tabindex="-1">
   <router-outlet />

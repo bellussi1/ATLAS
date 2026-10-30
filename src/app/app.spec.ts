@@ -28,29 +28,129 @@ describe('ATLAS application', () => {
     expect(root.textContent).toContain('A busca ainda não está disponível');
   });
 
-  it('offers the three distinct starting points', async () => {
+  it('offers the three product intents with working destinations', async () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     await TestBed.inject(Router).navigateByUrl('/');
     fixture.detectChanges();
     await fixture.whenStable();
 
-    const labels = Array.from(
-      (fixture.nativeElement as HTMLElement).querySelectorAll('[data-entry]'),
-      (entry) => entry.textContent?.replace(/\s+/g, ' ').trim(),
+    const entries = Array.from(
+      (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLAnchorElement>('[data-entry]'),
     );
-    expect(labels).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Entender uma dúvida'),
-        expect.stringContaining('Explorar a história'),
-        expect.stringContaining('Seguir uma trilha'),
-      ]),
+    expect(entries.map((entry) => entry.textContent?.replace(/\s+/g, ' ').trim())).toEqual([
+      expect.stringContaining('Tenho uma dúvida'),
+      expect.stringContaining('Quero explorar'),
+      expect.stringContaining('Quero estudar'),
+    ]);
+    expect(entries.map((entry) => entry.getAttribute('href'))).toEqual([
+      '/explorar/verbete/como-ler-um-verbete',
+      '/explorar',
+      '/estudar',
+    ]);
+  });
+
+  it('marks the active primary navigation link for assistive technology', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    await TestBed.inject(Router).navigateByUrl('/explorar');
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    const activeLink = (fixture.nativeElement as HTMLElement).querySelector(
+      'nav[aria-label="Navegação principal"] a[aria-current="page"]',
     );
+    expect(activeLink?.textContent?.trim()).toBe('Explorar');
+  });
+
+  it('renders a working index for every editorial category', async () => {
+    const harness = await RouterTestingHarness.create('/explorar');
+    const root = harness.routeNativeElement as HTMLElement;
+    const links = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-content-type]'));
+
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe('Explorar conteúdos');
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([
+      '/explorar/verbete',
+      '/explorar/artigo',
+      '/explorar/dossie',
+      '/explorar/pessoa',
+      '/explorar/evento',
+      '/explorar/atlas',
+      '/explorar/visualizacao',
+      '/explorar/trilha',
+    ]);
   });
 
   it.each([
-    ['/explorar', 'Explorar a história'],
-    ['/estudar', 'Seguir uma trilha'],
+    ['/explorar/verbete', 'Verbetes'],
+    ['/explorar/artigo', 'Artigos'],
+    ['/explorar/dossie', 'Dossiês'],
+    ['/explorar/pessoa', 'Pessoas'],
+    ['/explorar/evento', 'Eventos'],
+    ['/explorar/atlas', 'Atlas'],
+    ['/explorar/visualizacao', 'Visualizações'],
+    ['/explorar/trilha', 'Trilhas'],
+  ])('opens the category index at %s', async (url, heading) => {
+    const harness = await RouterTestingHarness.create(url);
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent?.trim()).toBe(heading);
+    expect(harness.routeNativeElement?.querySelector('[data-detail-link]')).not.toBeNull();
+  });
+
+  it.each([
+    [
+      '/explorar/verbete/como-ler-um-verbete',
+      'Como funciona um verbete',
+      'Verbete de metodologia',
+    ],
+    [
+      '/explorar/artigo/conhecimento-com-contexto',
+      'Conhecimento com contexto',
+      'Artigo de metodologia',
+    ],
+    ['/explorar/atlas/atlas-de-metodo', 'Como navegar pelo atlas', 'Atlas de metodologia'],
+  ])('renders a real methodology exemplar at %s', async (url, heading, label) => {
+    const harness = await RouterTestingHarness.create(url);
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe(heading);
+    expect(root.textContent).toContain(label);
+  });
+
+  it('exposes the planned study trail as a real platform-method page', async () => {
+    const harness = await RouterTestingHarness.create('/estudar');
+    const link = harness.routeNativeElement?.querySelector<HTMLAnchorElement>('[data-trail-link]');
+    expect(link?.getAttribute('href')).toBe('/estudar/como-usar-trilhas');
+
+    await harness.navigateByUrl('/estudar/como-usar-trilhas');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent?.trim()).toBe(
+      'Organização das trilhas',
+    );
+  });
+
+  it('provides breadcrumbs and a return path on unknown routes', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const router = TestBed.inject(Router);
+    fixture.detectChanges();
+    await router.navigateByUrl('/explorar/verbete/como-ler-um-verbete');
+    fixture.detectChanges();
+
+    let root = fixture.nativeElement as HTMLElement;
+    const breadcrumbs = root.querySelector('nav[aria-label="Breadcrumb"]')?.textContent ?? '';
+    expect(breadcrumbs).toContain('Verbetes');
+    expect(breadcrumbs.match(/Explorar/g)).toHaveLength(1);
+    expect(root.querySelector('nav[aria-label="Breadcrumb"] [aria-current="page"]')?.textContent)
+      .toContain('Como funciona um verbete');
+
+    await router.navigateByUrl('/caminho-inexistente');
+    fixture.detectChanges();
+    root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelector('h1')?.textContent).toContain('Esta página não existe');
+    expect(root.querySelector('nav[aria-label="Breadcrumb"]')).not.toBeNull();
+    expect(root.querySelector('a.home-link')?.getAttribute('href')).toBe('/');
+  });
+
+  it.each([
+    ['/explorar', 'Explorar conteúdos'],
+    ['/estudar', 'Trilhas de estudo'],
     ['/sobre', 'Sobre o ATLAS'],
     ['/rota-inexistente', 'Esta página não existe'],
   ])('renders the right page at %s', async (url, heading) => {

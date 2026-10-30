@@ -23,12 +23,17 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 ## Rotas iniciais
 
 - `/` — apresentação e pontos de entrada
-- `/explorar` — área de exploração histórica
-- `/estudar` — área de trilhas de estudo
+- `/explorar` — índice navegável das oito categorias editoriais
+- `/explorar/:tipo` — índice de uma categoria
+- `/explorar/:tipo/:slug` — página de detalhe editorial ou de metodologia
+- `/estudar` — apresentação do formato de trilhas
+- `/estudar/como-usar-trilhas` — exemplo de metodologia de estudo
 - `/sobre` — missão do projeto
 - Qualquer caminho desconhecido — página 404 da aplicação
 
-O campo de busca da página inicial é apenas uma prévia visual e não recebe consultas nem apresenta resultados.
+Na página inicial, “Tenho uma dúvida” abre um verbete de metodologia; “Quero explorar” abre o índice editorial e “Quero estudar” abre a apresentação de trilhas. O campo de busca continua sendo apenas uma prévia visual: não recebe consultas nem apresenta resultados.
+
+As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLAS e não apresentam afirmações históricas. Os outros formatos têm páginas provisórias identificadas como previstos. Veja o [sitemap e os tipos editoriais](docs/INFORMATION-ARCHITECTURE.md).
 
 ## Comandos
 
@@ -40,4 +45,4 @@ O campo de busca da página inicial é apenas uma prévia visual e não recebe c
 | `npm run lint` | ESLint para TypeScript e templates Angular |
 | `npm run typecheck` | Checagem TypeScript da aplicação e dos testes |
 
-O build produz saída estática para hospedagem. Não há servidor Express ou API neste bootstrap. O conteúdo editorial e a identidade visual final serão preparados em etapas posteriores; as áreas ainda vazias informam esse estado sem simular artigos ou resultados.
+O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca ainda não está disponível; páginas históricas temáticas serão preparadas após curadoria e revisão de fontes.
