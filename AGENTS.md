@@ -15,7 +15,7 @@ Construir uma plataforma educacional pública, gratuita, interativa e rigorosa s
 
 ## Desenvolvimento e verificações
 
-Use Node.js 24 e npm 11, como documentado no `README.md`. Instale dependências com `npm install` quando necessário. Os scripts existentes em `package.json` são:
+Use Node.js 24 e npm 11, como documentado no `README.md`. Instale dependências com `npm install` quando necessário. Os comandos abaixo foram executados no Prompt 01; repita as verificações pertinentes após cada mudança:
 
 | Comando | Finalidade |
 | --- | --- |
@@ -24,6 +24,8 @@ Use Node.js 24 e npm 11, como documentado no `README.md`. Instale dependências 
 | `npm test` | Testes unitários Vitest em execução única |
 | `npm run lint` | ESLint em TypeScript e templates Angular |
 | `npm run typecheck` | Checagem TypeScript do app e dos testes |
+
+O Prompt 01 também executou `npm run watch`, `npm run ng -- version` e uma inicialização local de `npm start` (na porta 4300 porque a 4200 estava ocupada). O watch compilou e foi encerrado após a compilação inicial.
 
 Execute as verificações relevantes ao escopo alterado e reporte o resultado observado; não afirme que um comando passou sem executá-lo. Para mudanças em rotas ou conteúdo, verifique também navegação, estados vazios e acessibilidade aplicável. Ao corrigir uma falha, repita a verificação que falhou.
 

@@ -63,7 +63,15 @@ Execute na raiz do repositório:
 | `npm test` | Testes Vitest em execução única |
 | `npm run lint` | ESLint para TypeScript e templates |
 | `npm run typecheck` | Checagem TypeScript do app e dos testes |
-| `codex --strict-config --cd . debug models` | Carregar a configuração de projeto em modo estrito e consultar o catálogo, no Codex CLI compatível |
+| `codex --strict-config --cd . exec --ephemeral "Responda apenas: configuração carregada."` | Solicita ao Codex CLI uma execução efêmera e habilita validação estrita da configuração carregada. Requer uma conexão funcional ao serviço, então HTTP/autorização também afetam o resultado. |
+
+Para conferir sintaxe TOML e existência dos arquivos de papel sem chamar o serviço Codex, use Python 3.11 ou posterior:
+
+```powershell
+python -c "import pathlib,tomllib; root=pathlib.Path('.codex'); cfg=tomllib.loads((root/'config.toml').read_text(encoding='utf-8')); roles={k:v for k,v in cfg['agents'].items() if isinstance(v,dict)}; assert cfg['agents']['max_concurrent_threads_per_session']==1; assert set(roles)=={'frontend','editorial','qa','architecture'}; [tomllib.loads((root/role['config_file']).read_text(encoding='utf-8')) for role in roles.values()]; print('TOML válido')"
+```
+
+Essa conferência verifica a sintaxe e os caminhos, não a aceitação de cada campo pelo Codex; a validação de esquema usa o comando estrito acima quando o serviço está acessível.
 
 Rode os comandos pertinentes ao escopo. Para mudanças em telas/rotas, verifique navegação e estados relevantes além de build, lint, testes e tipos. Não registre resultados no workflow; eles pertencem ao relatório da execução que os observou.
 
