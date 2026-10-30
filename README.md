@@ -7,6 +7,10 @@ Plataforma educacional pública e gratuita para compreender relações entre his
 - Node.js 24.0 ou superior (ou uma versão suportada pelo Angular 21)
 - npm 11 ou superior
 
+## Versão do Angular
+
+O ambiente do bootstrap tinha Node.js `24.13.0`. O Angular CLI `22.2.5` disponível no registro exige Node.js `24.15.0` ou superior na linha 24; por isso foi usada a versão estável compatível `21.2.29` do CLI, com Angular `21.2.25`.
+
 ## Desenvolvimento
 
 ```bash

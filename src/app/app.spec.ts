@@ -1,19 +1,19 @@
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { AppComponent } from './app';
 import { routes as appRoutes } from './app.routes';
 
 describe('ATLAS application', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [AppComponent],
       providers: [provideRouter(appRoutes)],
     }).compileComponents();
   });
 
   it('introduces the project and keeps search visibly inactive', async () => {
-    const fixture = TestBed.createComponent(App);
+    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     await TestBed.inject(Router).navigateByUrl('/');
     fixture.detectChanges();
@@ -29,7 +29,7 @@ describe('ATLAS application', () => {
   });
 
   it('offers the three distinct starting points', async () => {
-    const fixture = TestBed.createComponent(App);
+    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     await TestBed.inject(Router).navigateByUrl('/');
     fixture.detectChanges();
