@@ -23,9 +23,9 @@ Buscar ativamente momentos interessantes de seleção, aproximação, hover, ân
 
 ## Marca
 
-A identidade possui um A geométrico aberto com peças em tinta, vermelho e ocre e um ponto verde. Os arquivos oficiais ficam em public/brand: atlas-logo.svg, atlas-logo-inverse.svg e atlas-symbol.svg. A assinatura tem letras em paths, sem depender de fontes externas. Preservar proporção e espaço de respiro; não deformar ou recriar a marca em CSS ou texto aproximado. A versão inverse acompanha fundos escuros.
+A marca aprovada é a assinatura tipográfica ATLAS, com letras pesadas e próximas para sugerir conexão, e ponto vermelho final. Não adicionar um símbolo separado à esquerda. Os arquivos oficiais ficam em public/brand: atlas-logo.svg (principal), atlas-logo-inverse.svg (branca com ponto vermelho), atlas-logo-mono.svg (tinta) e atlas-logo-white.svg (inteiramente branca). Os contornos derivam da IBM Plex Sans Bold local, com espaçamento ajustado, sem depender de fontes externas. Preservar proporção, proximidade entre letras e espaço de respiro; não deformar ou recriar a marca em CSS ou texto aproximado. atlas-symbol.svg reduz a assinatura a A e ponto vermelho.
 
-O favicon é uma redução em duas cores da mesma silhueta, em favicon.svg e /favicon.ico. Ícones de aba são estáveis e precisam ser legíveis em escala pequena. A expressividade da marca não depende de manter a logo em movimento.
+O favicon usa o A tipográfico e o ponto vermelho sobre papel, em public/brand/favicon.svg e public/favicon.ico. Ícones de aba são estáveis e precisam ser legíveis em escala pequena. A expressividade da marca não depende de manter a logo em movimento.
 
 ## Linguagem visual
 

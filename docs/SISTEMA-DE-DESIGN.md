@@ -126,6 +126,6 @@ Verificação no Chrome: em 320 px, documento e viewport mediram 320 px; os term
 
 ## Logo e favicon
 
-Usar as assinaturas SVG oficiais em public/brand no header e footer. As imagens são dimensionadas com proporção preservada e tamanhos intrínsecos; dentro de links com aria-label, alt vazio evita repetir o nome. Em fundos escuros, usar atlas-logo-inverse.svg. O símbolo isolado não substitui o nome acessível.
+Usar as assinaturas SVG oficiais em public/brand no header e footer. As imagens são dimensionadas com proporção preservada e tamanhos intrínsecos; dentro de links com aria-label, alt vazio evita repetir o nome. A marca é tipográfica, com letras próximas e ponto vermelho, sem emblema separado à esquerda. Em fundos escuros, usar atlas-logo-inverse.svg; aplicações de uma só cor usam atlas-logo-mono.svg ou atlas-logo-white.svg. O símbolo isolado usa A e ponto vermelho e não substitui o nome acessível. Os SVGs têm viewBox e contornos de letras, preservando a qualidade em qualquer escala.
 
 O favicon tem redução própria em SVG/PNG, fallback ICO (16/32/48) e touch icon (180). As versões não são animações. O teste brand-assets.spec.ts verifica XML dos vetores, independência de fontes/imagens externas, resolução dos arquivos apontados no index e estrutura dos ícones ICO.

@@ -111,14 +111,18 @@ Capturas desta extensão: [desktop](direcao-artistica/screenshots/graphic-shell-
 
 ## Marca e ícone da aba
 
-Foi desenhada uma marca própria em vetor: um A aberto de peças geométricas em tinta, vermelho e ocre, acompanhado por um ponto verde. A assinatura ATLAS possui lettering em paths, sem carregar fontes ou imagens externas. Header e footer usam respectivamente a assinatura para fundo claro e a versão inverse. Os links mantêm seus nomes acessíveis.
+A escolha final do usuário é a assinatura tipográfica ATLAS com ponto vermelho, conforme as referências enviadas. As letras foram aproximadas para transmitir conexão, com ajustes de espaço entre os pares e preservação dos vazios internos. O símbolo separado à esquerda foi retirado. Header e footer usam respectivamente a assinatura principal e a versão inverse, mantendo os nomes acessíveis dos links.
+
+Os SVGs contêm contornos vetoriais derivados de public/fonts/IBMPlexSans.ttf, peso 700, com espaçamento ajustado; não carregam fontes nem imagens externas. A fonte local está sob SIL Open Font License 1.1, com aviso e licença em [OFL-IBM-Plex.txt](../public/fonts/OFL-IBM-Plex.txt). Os PNGs são exportações auxiliares; os originais SVG são a fonte para novas escalas.
 
 Arquivos em public/brand:
 
 - atlas-logo.svg e atlas-logo.png: assinatura principal com fundo transparente.
-- atlas-logo-inverse.svg: assinatura para fundo escuro.
-- atlas-symbol.svg e atlas-symbol.png: símbolo isolado.
-- favicon.svg e favicon-32.png: redução em duas cores para a aba.
+- atlas-logo-inverse.svg: letras brancas e ponto vermelho para fundo escuro.
+- atlas-logo-mono.svg: assinatura inteiramente em tinta.
+- atlas-logo-white.svg: assinatura inteiramente branca.
+- atlas-symbol.svg e atlas-symbol.png: A tipográfico e ponto vermelho.
+- favicon.svg e favicon-32.png: A e ponto vermelho sobre papel para a aba.
 - apple-touch-icon.png: redução em 180×180 px.
 
 O arquivo public/favicon.ico contém PNGs de 16, 32 e 48 px. A [prancha da marca](brand/atlas-identity.png) reúne assinatura, símbolo, redução e versão para fundo escuro; o [original vetorial](brand/atlas-identity.svg) também está disponível.

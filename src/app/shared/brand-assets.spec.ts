@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 describe('brand assets', () => {
@@ -11,7 +11,7 @@ describe('brand assets', () => {
       expect(href.startsWith('/')).toBe(true);
       expect(existsSync(resolve('public', href.slice(1)))).toBe(true);
     }
-    for (const filename of ['atlas-logo.svg', 'atlas-logo-inverse.svg', 'atlas-symbol.svg', 'favicon.svg']) {
+    for (const filename of readdirSync(resolve('public/brand')).filter((name) => name.endsWith('.svg'))) {
       const source = readFileSync(resolve('public/brand', filename), 'utf8');
       const svg = new DOMParser().parseFromString(source, 'image/svg+xml');
       expect(svg.querySelector('parsererror')).toBeNull();
