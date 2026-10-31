@@ -1,13 +1,20 @@
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { ContentRepository } from '../../core/content-repository';
 
 @Component({
   selector: 'app-entry-page',
   imports: [RouterLink],
   template: `
-    @if (entity(); as entry) {
+    @if (atlas() === null) {
+      <section class="page" aria-labelledby="page-title" role="alert">
+        <h1 id="page-title">Este verbete está temporariamente indisponível</h1>
+        <p class="page__lead">Não foi possível carregar o registro estático do ATLAS.</p>
+        <a class="back-link" routerLink="/explorar/verbete">Voltar ao índice de verbetes</a>
+      </section>
+    } @else if (entity(); as entry) {
       <article class="page" aria-labelledby="page-title">
         <p class="eyebrow">Verbete de metodologia</p>
         <h1 id="page-title">{{ entry.title }}</h1>
@@ -61,13 +68,17 @@ export class EntryPage {
   private readonly route = inject(ActivatedRoute);
   private readonly repository = inject(ContentRepository);
   private readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
-  readonly entity = computed(() => this.repository.findBySlug(this.params().get('slug')));
+  readonly atlas = toSignal(
+    this.repository.loadAtlas().pipe(catchError(() => of(null))),
+    { initialValue: this.repository.atlas },
+  );
+  readonly entity = computed(() => this.repository.findBySlug(this.params().get('slug'), this.atlas() ?? this.repository.atlas));
   readonly claims = computed(() => {
     const entity = this.entity();
-    return this.repository.atlas.claims.filter((claim) => claim.entityId === entity?.id);
+    return (this.atlas()?.claims ?? []).filter((claim) => claim.entityId === entity?.id);
   });
 
   sourcesFor(sourceIds: readonly string[]) {
-    return this.repository.atlas.sources.filter((source) => sourceIds.includes(source.id));
+    return (this.atlas()?.sources ?? []).filter((source) => sourceIds.includes(source.id));
   }
 }

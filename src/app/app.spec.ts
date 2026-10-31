@@ -1,6 +1,7 @@
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
+import { PLATFORM_ID } from '@angular/core';
 import { AppComponent } from './app';
 import { routes as appRoutes } from './app.routes';
 import { editorialEntries } from './content/editorial-entries';
@@ -9,7 +10,7 @@ describe('ATLAS application', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [provideRouter(appRoutes)],
+      providers: [provideRouter(appRoutes), { provide: PLATFORM_ID, useValue: 'server' }],
     }).compileComponents();
   });
 

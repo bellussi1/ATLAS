@@ -48,4 +48,4 @@ As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLA
 
 O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca ainda não está disponível; páginas históricas temáticas serão preparadas após curadoria e revisão de fontes.
 
-O registro inicial de metodologia fica em `src/content/atlas.json`, é validado por `ContentRepository` com Zod e copiado para a saída do build em `content/`. Apenas os slugs conceituais presentes nesse registro são prerenderizados. Veja [as decisões e limites da arquitetura](docs/ARCHITECTURE.md).
+O registro inicial de metodologia fica em `src/content/atlas.json`, é validado por `ContentRepository` com Zod e copiado para a saída do build em `content/`. No navegador, o serviço lê esse asset estático; durante o prerender usa o JSON empacotado para evitar chamadas dependentes de browser. Apenas os slugs conceituais presentes nesse registro são prerenderizados. Veja [as decisões e limites da arquitetura](docs/ARCHITECTURE.md).

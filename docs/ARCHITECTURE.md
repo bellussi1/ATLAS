@@ -6,7 +6,7 @@ O projeto usa Angular 21.2.25, compatível com o ambiente Node documentado no RE
 
 ## Conteúdo e contratos
 
-`src/content/atlas.json` é o registro estático de metodologia. O Angular o importa no bundle da aplicação e também copia o diretório para `content/` na saída de build. `ContentRepository` valida o registro durante a inicialização com os esquemas Zod em `src/app/core/content-schema.ts` e expõe consultas por slug; não existe backend ou serviço HTTP nesta etapa.
+`src/content/atlas.json` é o registro estático de metodologia. O Angular o importa como fallback local para SSR e também copia o diretório para `content/` na saída de build. No navegador, `ContentRepository` carrega `/content/atlas.json` com `HttpClient` e valida a resposta com os esquemas Zod em `src/app/core/content-schema.ts`; no prerender, usa o JSON empacotado, sem fazer requisições ou acessar APIs do navegador. O serviço expõe consultas por slug e não depende de backend.
 
 Os contratos cobrem `Atlas`, `Entity` e suas variantes `Person`, `Concept`, `Event` e `Article`, além de `Source`, `Claim`, `Relationship` e `LearningPath`. A validação verifica formato e unicidade de IDs/slugs, referências a entidades e fontes, e IDs listados pelo atlas e pelas trilhas.
 
