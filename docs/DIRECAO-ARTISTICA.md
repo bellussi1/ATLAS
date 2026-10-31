@@ -76,3 +76,16 @@ A rede é um componente compartilhado por home e Relações; seleção, filtro d
 
 
 A exportação local code.html, DESIGN.md e screen.png, fornecida durante a implementação, corresponde ao laboratório de experiências e foi consultada como referência complementar de grade, nós, painéis e metadados. A escolha principal da homepage permanece a tela Exploração do Conhecimento Histórico. O HTML exportado não foi executado nem incorporado à aplicação.
+
+
+## Reconstrução pela mesa de pesquisa
+
+O usuário rejeitou a composição anterior por aparência genérica e solicitou instalação e aplicação de seis skills. A nova home abandona o terminal e a sequência de módulos: uma mesa reúne os três textos reais em fichas selecionáveis; o trecho, o destino de leitura e a prévia acompanham a seleção. O contexto editorial aparece em uma ficha vermelha. No celular, um seletor nativo substitui o índice lateral sem retirar as opções.
+
+Paleta deliberadamente vinculada ao briefing: papel #FBFAF7, tinta #1C1C1A, vermelho #B4231D e suporte #ECEBE6. IBM Plex Sans estrutura a ficha; Source Serif 4 apresenta o trecho; IBM Plex Mono fica restrita aos metadados. A assimetria e a sobreposição vêm das referências de cartaz e acervo, sem publicar imagens ou fac-símiles não licenciados.
+
+Na autocrítica, os desenhos dos modos foram removidos por não acrescentarem informação. Os acessos Relações, Tempo e espaço e Conhecimento continuam disponíveis. O leitor, o grafo completo, o showroom e o laboratório foram preservados. A proposta é reconstrução da home e do tratamento de suas interações, não substituição da arquitetura Angular.
+
+Skills instaladas em C:/Users/Bellussi/.codex/skills, com prefixo atlas- para preservar as instalações anteriores: frontend-design (anthropics/skills), interaction-design (wshobson/agents), animate, find-animation-opportunities e improve-animations (emilkowalski/skills), 12-principles-of-animation (raphaelsalaja/skills). Esta última foi recuperada da revisão 376dbc168120520309c15d6dc6abfc4d8be5a12b, anterior ao arquivamento. Os arquivos foram lidos e aplicados nesta execução; o catálogo de skills instalado também estará disponível nos próximos turnos.
+
+Capturas atuais: [desktop](direcao-artistica/screenshots/research-table-desktop.png), [mobile](direcao-artistica/screenshots/research-table-mobile.png). A auditoria de movimento está em ../animation-plans/001-research-table-review.md.

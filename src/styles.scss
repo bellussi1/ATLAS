@@ -79,6 +79,8 @@
   --radius-panel: 0.25rem;
   --grid-max: 90rem;
   --grid-gutter: clamp(1rem, 5vw, 5rem);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-selection: 180ms;
   --motion-fast: 140ms;
   --motion-standard: 200ms;
 
@@ -139,8 +141,8 @@ select {
   }
 }
 
-.atlas-preview-panel { animation: preview-arrive var(--motion-standard) ease-out; }
-@keyframes preview-arrive { from { opacity: 0; transform: translateY(.75rem); } to { opacity: 1; transform: translateY(0); } }
+.atlas-preview-panel { transition: opacity var(--motion-standard) var(--ease-out); }
+@starting-style { .atlas-preview-panel { opacity: 0; } }
 button.reading-preview-trigger { min-height: 2.75rem; padding: .5rem .75rem; background: transparent; border: 1px solid var(--color-border-strong); color: var(--color-accent); cursor: pointer; font: .75rem/1.5 var(--font-mono); }
 button.reading-preview-trigger:hover { background: var(--color-surface-subtle); }
 .article-section, .article-section h2 { scroll-margin-top: 10rem; }

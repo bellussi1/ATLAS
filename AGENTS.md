@@ -51,3 +51,10 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 - Preserve prompts, imagens e alterações locais. Não execute o próximo prompt automaticamente.
 - Evite agentes concorrentes editando o mesmo arquivo. A configuração do repositório limita a um subagente simultâneo por padrão.
 - Ao terminar, informe objetivamente os arquivos alterados, comandos executados, resultados e limitações reais.
+
+
+## Direção visual específica do ATLAS
+
+Para criação e revisão de UI, usar as skills instaladas com prefixo atlas-: frontend-design, interaction-design, find-animation-opportunities, animate, improve-animations e 12-principles-of-animation. As duas skills de auditoria orientam a revisão; a execução segue pela skill de implementação, sem encerrar uma tarefa autorizada apenas com planos.
+
+Partir do briefing deste projeto e de suas referências visuais. Não transportar composições, paletas ou padrões de outros projetos do usuário. Preservar funcionalidades, arquitetura, acessibilidade e integridade editorial ao reconstruir a apresentação. Não alegar remoção de memória do modelo ou de histórico de chats.

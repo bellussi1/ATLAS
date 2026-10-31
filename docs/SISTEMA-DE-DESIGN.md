@@ -101,3 +101,10 @@ Verificação da adaptação Stitch: home conferida em 1440, 390 e 320 CSS px; e
 ## Continuidade de leitura
 
 As prévias da home, o índice de seções, a indicação de posição e os percursos para continuar são compartilhados pelas telas de leitura. O Angular CDK oferece a infraestrutura acessível da prévia modal, mantendo a aparência editorial do ATLAS. Contratos, comportamento de foco, custo e limitações estão em EXPERIENCE-SYSTEM.md.
+
+
+## Mesa de pesquisa e revisão com skills
+
+A home atual substitui a composição anterior de painéis pela seleção de fichas. A busca e os três modos permanecem; o grafo continua na rota Relações, sem repetir uma miniatura na mesa. Os registros e o leitor foram reutilizados. Desktop usa botões de seleção; mobile usa select nativo sincronizado. A prévia aponta para o registro selecionado. A reconstrução visual, as skills aplicadas e as capturas estão em DIRECAO-ARTISTICA.md; a revisão está em animation-plans/001-research-table-review.md na raiz do repositório.
+
+O catálogo instalado usa prefixo atlas- para preservar skills existentes. As instruções de frontend e interação orientaram a composição; find-animation-opportunities selecionou apenas troca de ficha, painel e feedback de pressão; animate implementou esses casos; improve-animations e 12-principles-of-animation revisaram a entrega.

@@ -23,7 +23,7 @@ describe('ATLAS application', () => {
 
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector('h1')?.textContent?.replace(/\s+/g, ' ')).toContain(
-      'Exploração do conhecimento histórico',
+      'Uma mesa de pesquisa.',
     );
     expect(root.textContent).toContain('História, política, economia e sociedade');
     expect(root.querySelector('[role="search"] input')?.hasAttribute('readonly')).toBe(false);
@@ -53,19 +53,25 @@ describe('ATLAS application', () => {
   });
 
 
-  it('lets the homepage inspect real evidence and switch to an accessible list', async () => {
+  it('lets the reader select a real record and continue from its sheet', async () => {
     const harness = await RouterTestingHarness.create('/');
     const root = harness.routeNativeElement!;
-    expect(root.querySelectorAll('app-evidence-network .network button')).toHaveLength(3);
-    root.querySelectorAll<HTMLButtonElement>('.network button')[2].click();
+    const choices = root.querySelectorAll<HTMLButtonElement>('.sheet-choice');
+    expect(choices).toHaveLength(3);
+    choices[1].click();
     harness.detectChanges();
-    expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
-    root.querySelector<HTMLButtonElement>('.view-toggle')!.click();
+    expect(root.querySelector('#sheet-title')?.textContent).toBe('Conhecimento com contexto');
+    expect(choices[1].getAttribute('aria-pressed')).toBe('true');
+    expect(root.querySelector('.sheet-actions a')?.getAttribute('href')).toBe('/explorar/artigo/conhecimento-com-contexto');
+    expect(root.querySelector('[role="status"]')?.textContent).toContain('Conhecimento com contexto');
+    expect(root.querySelector('.excerpt')?.textContent).toContain('Compreender relações');
+    const select = root.querySelector<HTMLSelectElement>('#sheet-select')!;
+    select.value = 'atlas-de-metodo';
+    select.dispatchEvent(new Event('change'));
     harness.detectChanges();
-    expect(root.querySelector('.view-toggle')?.getAttribute('aria-pressed')).toBe('true');
-    expect(root.querySelectorAll('.network button')).toHaveLength(3);
-    expect(root.querySelector('.network button[aria-pressed=true]')?.textContent).toContain('Regras editoriais');
-    expect(root.querySelectorAll('.reading-index a')).toHaveLength(3);
+    expect(root.querySelector('#sheet-title')?.textContent).toBe('Como navegar pelo atlas');
+    expect(choices[2].getAttribute('aria-pressed')).toBe('true');
+
   });
 
   it('opens an accessible reading preview and restores focus on Escape', async () => {

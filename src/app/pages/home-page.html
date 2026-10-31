@@ -1,55 +1,49 @@
-<section class="home" aria-labelledby="home-title">
-  <header class="register">
-    <div><p class="kicker">ATLAS / Índice de consulta</p><h1 appHeading="page" id="home-title">Exploração do conhecimento histórico</h1></div>
-    <p class="edition">Edição de metodologia<br />{{ atlas.entities.length }} conceito · {{ atlas.claims.length }} afirmação · {{ atlas.sources.length }} fonte</p>
-  </header>
-
-  <section class="research" aria-labelledby="research-title">
-    <h2 class="kicker" id="research-title">01 / Terminal de pesquisa no acervo</h2>
-    <form class="home__search" role="search" aria-label="Busca no ATLAS" (submit)="search($event)">
-      <app-text-field controlId="atlas-search" label="O que você quer entender?" type="search"
-        placeholder="Pesquise um conceito, título ou trecho" hint="Nesta edição: conteúdos sobre a metodologia do ATLAS."
-        [value]="query()" (valueChange)="query.set($event)" />
-      <button class="search-submit" type="submit">Pesquisar <span aria-hidden="true">→</span></button>
+<section class="research-room" aria-labelledby="home-title">
+  <header class="room-header">
+    <h1 appHeading="page" id="home-title">Uma mesa<br /> de pesquisa.</h1>
+    <div class="room-intro"><p>História, política, economia e sociedade</p><p>Abra uma ficha. Leia um trecho. Siga o que conecta uma ideia à sua evidência.</p></div>
+    <form role="search" aria-label="Busca no ATLAS" (submit)="search($event)">
+      <app-text-field controlId="atlas-search" label="Procurar no acervo" type="search" placeholder="Um assunto, uma pergunta…" [value]="query()" (valueChange)="query.set($event)" />
+      <button class="search-button" type="submit">Pesquisar</button>
     </form>
-    <div class="search-paths"><span>Consultas de entrada:</span><a appEditorialLink routerLink="/conhecimento" [queryParams]="{q:'contexto'}">Contexto</a><a appEditorialLink routerLink="/conhecimento" [queryParams]="{q:'fontes'}">Fontes</a><a appEditorialLink routerLink="/conhecimento" [queryParams]="{q:'metodologia'}">Metodologia</a></div>
-  </section>
-
-  <nav class="modes" aria-label="Modos de exploração">
-    <a data-entry="relations" routerLink="/relacoes"><span>01</span> Relações <span aria-hidden="true">↗</span></a>
-    <a data-entry="time" routerLink="/tempo-e-espaco"><span>02</span> Tempo e espaço <span aria-hidden="true">↗</span></a>
-    <a data-entry="knowledge" routerLink="/conhecimento"><span>03</span> Conhecimento <span aria-hidden="true">↗</span></a>
-  </nav>
-
-  <div class="investigation">
-    <section class="relations" aria-labelledby="relations-title">
-      <div class="section-head"><p class="kicker">02.A / Rede conceitual</p><a appEditorialLink routerLink="/relacoes">Abrir relações ↗</a></div>
-      <h2 id="relations-title">O que sustenta uma ideia?</h2>
-      <p class="section-intro">Selecione um registro para seguir as conexões entre conceito, afirmação e fonte.</p>
-      <app-evidence-network />
-    </section>
-
-    <aside class="reading-desk" aria-labelledby="reading-title">
-      <p class="kicker">02.B / Leituras de entrada</p>
-      <h2 id="reading-title">Contexto antes<br />da conclusão.</h2>
-      <p class="reading-deck">Um registro abre uma pergunta. Uma fonte permite conferir a resposta.</p>
-      <ol class="reading-index">
-        @for (entry of readings; track entry.slug; let index = $index) {
-          <li><span class="catalog">0{{ index + 1 }} / {{ entry.statusLabel }}</span><h3><a appEditorialLink [routerLink]="entryPath(entry.type, entry.slug)">{{ entry.title }} ↗</a></h3><p>{{ entry.summary }}</p><button class="reading-preview-trigger" type="button" [appReadingPreview]="entry" [attr.aria-label]="'Prévia de ' + entry.title">Ler uma prévia ↗</button></li>
+  </header>
+  <div class="research-table">
+    <aside class="table-index">
+      <div class="collection-stamp"><span>ATLAS</span><p>Acervo em formação</p><p>Esta mesa reúne os três textos de metodologia disponíveis.</p></div>
+      <div class="mobile-sheet-control"><label for="sheet-select">Escolha uma ficha</label><select id="sheet-select" [value]="selected().slug" (change)="selectSlug($any($event.target).value)">@for (entry of readings; track entry.slug) { <option [value]="entry.slug">{{ entry.title }}</option> }</select></div>
+      <fieldset class="sheet-selector"><legend>Escolha uma ficha</legend>
+        @for (entry of readings; track entry.slug) {
+          <button class="sheet-choice" type="button" [attr.aria-pressed]="selected().slug === entry.slug" (click)="select(entry, $event)">
+            <span class="choice-kind">{{ entry.type }}</span><strong>{{ entry.title }}</strong><span class="choice-indicator" aria-hidden="true">{{ selected().slug === entry.slug ? '●' : '○' }}</span>
+          </button>
         }
-      </ol>
-      <div class="temporal-note"><p class="kicker">Tempo e espaço / Estado da coleção</p><h3>A cronologia começa pela evidência.</h3><p>Não há acontecimentos com datas e locais verificados nesta edição.</p><a appEditorialLink routerLink="/tempo-e-espaco">Conheça os critérios para situar acontecimentos →</a></div>
+      </fieldset>
+      <p class="table-instruction">As fichas são entradas para leitura, não reproduções de documentos históricos.</p>
     </aside>
-  </div>
-
-  <section class="questions" aria-labelledby="questions-title">
-    <header class="questions-heading"><div><p class="kicker">03 / Investigações guiadas</p><h2 id="questions-title">Perguntas que<br />abrem caminhos</h2></div><p>Comece pelo método: as leituras disponíveis explicam como o ATLAS conecta contexto, afirmações e referências.</p></header>
-    <div class="question-grid">
-      <a class="question question--lead" routerLink="/verbete/metodologia-do-atlas"><span class="catalog">Percurso 01 / Evidência</span><h3>Como conferir o que uma afirmação diz?</h3><p>Parta de um conceito, examine a afirmação e consulte a referência que a sustenta.</p><span class="question__destination">Ler o verbete e suas evidências <span aria-hidden="true">→</span></span></a>
-      <a class="question" routerLink="/explorar/artigo/conhecimento-com-contexto"><span class="catalog">Percurso 02 / Contexto</span><h3>Por que uma definição não basta?</h3><p>Conheça os princípios de uma leitura em contexto.</p><span class="question__destination">Abrir artigo <span aria-hidden="true">→</span></span></a>
-      <a class="question" routerLink="/explorar/atlas/atlas-de-metodo"><span class="catalog">Percurso 03 / Acervo</span><h3>Que caminhos um atlas pode abrir?</h3><p>Entenda os formatos e a organização do conhecimento no projeto.</p><span class="question__destination">Percorrer o atlas <span aria-hidden="true">→</span></span></a>
+    <div class="document-space">
+      <div class="binding" aria-hidden="true"><span></span><span></span><span></span></div>
+      <article class="reading-sheet" #sheet aria-labelledby="sheet-title">
+        <header class="sheet-header"><span>{{ selected().statusLabel }}</span><span>ATLAS / leitura</span></header>
+        <div class="sheet-content">
+          <p class="sheet-type">{{ selected().type }}</p>
+          <h2 id="sheet-title">{{ selected().title }}</h2>
+          <p class="sheet-summary">{{ selected().summary }}</p>
+          <div class="excerpt"><h3>{{ selected().sections[0].heading }}</h3><p>{{ selected().sections[0].paragraphs[0] }}</p></div>
+          <div class="sheet-actions"><button class="reading-preview-trigger" type="button" [appReadingPreview]="selected()" [attr.aria-label]="'Prévia de ' + selected().title">Aproximar a leitura</button><a appEditorialLink [routerLink]="entryPath(selected().type, selected().slug)">Ler o texto completo</a></div>
+        </div>
+        <footer class="sheet-footer"><span>{{ selected().sections.length }} seções</span><span>Conteúdo sobre o método do projeto</span></footer>
+      </article>
+      <aside class="source-slip" aria-labelledby="source-slip-title"><span class="source-label">Por trás da leitura</span><h3 id="source-slip-title">Uma afirmação precisa de contexto.</h3><p>{{ atlas.claims[0].text }}</p><a routerLink="/relacoes">Investigar a relação com a fonte</a></aside>
     </div>
+  </div>
+  <p class="selection-status" role="status">Na mesa: {{ selected().title }}.</p>
+  <section class="pathways" aria-labelledby="pathways-title">
+    <header><h2 id="pathways-title">Mude o ponto<br />de vista.</h2><p>Você pode partir de uma conexão, de um lugar no tempo ou de uma leitura.</p></header>
+    <nav aria-label="Modos de exploração">
+      <a class="pathway pathway--relations" data-entry="relations" routerLink="/relacoes"><strong>Relações</strong><p>Examine o vínculo entre conceito, afirmação e fonte.</p><span>Investigar conexões</span></a>
+      <a class="pathway pathway--time" data-entry="time" routerLink="/tempo-e-espaco"><strong>Tempo e espaço</strong><p>Conheça os critérios da coleção. Ainda não há eventos datados publicados.</p><span>Situar acontecimentos</span></a>
+      <a class="pathway pathway--knowledge" data-entry="knowledge" routerLink="/conhecimento"><strong>Conhecimento</strong><p>Pesquise o acervo e encontre outras entradas de leitura.</p><span>Percorrer os registros</span></a>
+    </nav>
   </section>
-
-  <footer class="home__colophon"><span>História, política, economia e sociedade · Conhecimento público</span><div><a appEditorialLink routerLink="/explorar">Índice completo →</a><a appEditorialLink routerLink="/laboratorio">Laboratório visual ↗</a></div></footer>
+  <footer class="room-footer"><p>Conhecimento público, com contexto e fontes.</p><a appEditorialLink routerLink="/explorar">Todos os formatos do acervo</a></footer>
 </section>
