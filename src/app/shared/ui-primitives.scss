@@ -33,7 +33,6 @@ a.atlas-link--feature { text-decoration: none; }
   gap: var(--space-1);
 }
 
-.site-header .atlas-menu { justify-content: space-between; }
 
 .atlas-menu a {
   display: inline-flex;
@@ -137,6 +136,6 @@ app-page-template { display: block; }
   .atlas-page-template { padding-block: clamp(var(--space-12), 8vw, 7rem); }
 }
 
-@media (min-width: 36rem) {
-  .site-header .atlas-menu { justify-content: flex-end; }
-}
+
+.site-header .atlas-menu { gap:.25rem 1rem;justify-content:flex-start; }
+@media(min-width:60rem) { .site-header .atlas-menu { flex-direction:column;align-items:flex-end;gap:0; } }

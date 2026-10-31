@@ -96,3 +96,14 @@ Capturas atuais: [desktop](direcao-artistica/screenshots/research-table-desktop.
 Após aprovar a mesa, o usuário solicitou uma skill própria, mais cores, termos vermelhos navegáveis e elementos geométricos. A base da mesa foi preservada. Os novos motivos identificam os formatos reais de leitura; verde, ocre, rosa e índigo ampliam a paleta sem transformar toda a página em uma colagem. As cinco novas referências de cartazes e composições geométricas foram usadas como inspiração, sem cópia de imagens na aplicação.
 
 A skill atlas-editorial-geometrico está versionada em .agents/skills e instalada no catálogo local. Capturas desta evolução: [desktop](direcao-artistica/screenshots/geometric-editorial-desktop.png) e [mobile](direcao-artistica/screenshots/geometric-editorial-mobile.png).
+
+
+## Assinatura e pôster navegável
+
+O usuário pediu mais liberdade gráfica, cor e tipografia, incluindo header e footer. O header agora combina a assinatura ATLAS em peso forte, três portas geométricas para os modos e a navegação principal em uma coluna lateral no desktop. No celular, os elementos fluem sem menu oculto.
+
+O footer usa índigo, letras em grande escala e um mosaico navegável que reaproveita os motivos de verbete, artigo e atlas. O botão Outra composição alterna três arranjos de transformações dos desenhos. Os rótulos e destinos não mudam, e a ordem do teclado é estável. É uma brincadeira gráfica identificada como composição, não uma visualização histórica.
+
+Nenhuma dependência ou orçamento de bundle foi adicionado. A assinatura e os desenhos são SVG/CSS locais. A mesa aprovada permanece no centro da home. A skill própria foi atualizada e sincronizada com a instalação local.
+
+Capturas desta extensão: [desktop](direcao-artistica/screenshots/graphic-shell-desktop.png) e [mobile](direcao-artistica/screenshots/graphic-shell-mobile.png).

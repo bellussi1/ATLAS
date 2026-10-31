@@ -26,6 +26,7 @@ describe('semantic design token contrast', () => {
     ['color-ink', 'color-ochre-paper', 4.5],
     ['color-ink', 'color-rose-paper', 4.5],
     ['color-on-strong-surface', 'color-indigo', 4.5],
+    ['color-ochre-paper', 'color-indigo', 3],
     ['color-ink', 'color-surface', 4.5],
     ['color-ink', 'color-surface-raised', 4.5],
     ['color-ink', 'color-surface-subtle', 4.5],

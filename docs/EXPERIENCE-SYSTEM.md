@@ -37,3 +37,12 @@ Ainda não houve auditoria integral WCAG nem avaliação com leitores de tela. A
 
 
 Na revisão móvel final de uma âncora, o índice terminou em 92 px e o heading de destino começou em 116 px, com foco no heading e seção ativa correta. Assim o título permaneceu visível abaixo da faixa. Capturas: [prévia móvel](direcao-artistica/screenshots/reading-preview-mobile.png) e [leitura móvel](direcao-artistica/screenshots/reading-mobile.png).
+
+
+## Composição gráfica interativa do footer
+
+Outra composição alterna um Signal local em AppComponent entre três estados. O movimento atua só nos motivos gráficos (transform, 200ms, --ease-out); nenhum texto ou link muda de posição. Transições CSS retargetam quando a pessoa alterna novamente. Eventos de teclado (detail=0) usam a classe instant. prefers-reduced-motion desativa a interpolação. O estado fica visível em uma região status e o foco permanece no botão.
+
+Verificações no Chrome: ponteiro resultou em transição computada de 0,2s; Enter trocou para o próximo estado com 0s e foco no botão. Em 320px o documento mediu 320px. A versão reduzida manteve foco de 3px e anunciou Composição 2 de 3. O contraste ocre sobre índigo foi incluído na suíte, além dos pares já verificados.
+
+Não houve medição em hardware móvel físico ou auditoria com leitor de tela nesta extensão.

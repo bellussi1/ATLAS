@@ -4,10 +4,14 @@
 
 <header class="site-header">
   <a class="wordmark" routerLink="/" aria-label="ATLAS — página inicial">
-    <span class="wordmark__symbol" aria-hidden="true">A</span>
-    <span>ATLAS</span>
+    <span class="wordmark__name">ATLAS<span aria-hidden="true">.</span></span>
+    <span class="wordmark__caption">História em relação</span>
   </a>
-
+  <nav class="graphic-doors" aria-label="Entradas para explorar">
+    <a class="graphic-door" routerLink="/relacoes" routerLinkActive="is-active" ariaCurrentWhenActive="page"><app-editorial-mark kind="verbete" /><span>Relações <span aria-hidden="true">↗</span></span></a>
+    <a class="graphic-door" routerLink="/tempo-e-espaco" routerLinkActive="is-active" ariaCurrentWhenActive="page"><app-editorial-mark kind="artigo" /><span>Tempo e espaço <span aria-hidden="true">↗</span></span></a>
+    <a class="graphic-door" routerLink="/conhecimento" routerLinkActive="is-active" ariaCurrentWhenActive="page"><app-editorial-mark kind="atlas" /><span>Conhecimento <span aria-hidden="true">↗</span></span></a>
+  </nav>
   <app-menu label="Navegação principal">
     <a routerLink="/explorar" routerLinkActive="is-active" ariaCurrentWhenActive="page">Explorar</a>
     <a routerLink="/estudar" routerLinkActive="is-active" ariaCurrentWhenActive="page">Estudar</a>
@@ -22,7 +26,17 @@
 </main>
 
 <footer class="site-footer">
-  <span>ATLAS</span>
-  <p>Conhecimento público, com contexto e fontes.</p>
-  <a routerLink="/sistema">Sistema visual</a>
+  <div class="footer-poster">
+    <div class="footer-invitation"><p>Um acervo, muitos caminhos.</p><h2>A próxima<br />descoberta<br /><em>é sua.</em></h2><a routerLink="/conhecimento">Procurar outra leitura <span aria-hidden="true">↗</span></a></div>
+    <div class="footer-playground">
+      <nav class="footer-collage" aria-label="Continue explorando" [attr.data-composition]="composition()" [class.instant]="instantComposition()">
+        <a class="collage-piece collage-piece--relations" routerLink="/relacoes"><app-editorial-mark kind="verbete" /><span>Seguir uma relação</span></a>
+        <a class="collage-piece collage-piece--read" routerLink="/explorar"><app-editorial-mark kind="artigo" /><span>Folhear o acervo</span></a>
+        <a class="collage-piece collage-piece--study" routerLink="/estudar"><app-editorial-mark kind="atlas" /><span>Conhecer as trilhas</span></a>
+        <a class="collage-piece collage-piece--about" routerLink="/sobre"><span class="collage-letter" aria-hidden="true">a.</span><span>Sobre o ATLAS</span></a>
+      </nav>
+      <div class="composition-control"><button type="button" (click)="changeComposition($event)">Outra composição <span aria-hidden="true">↻</span></button><span role="status" aria-live="polite">Composição {{ composition() + 1 }} de 3</span></div>
+    </div>
+  </div>
+  <div class="footer-imprint"><a class="footer-signature" routerLink="/" aria-label="ATLAS — voltar à página inicial">ATLAS</a><div><p>Conhecimento público,<br />com contexto e fontes.</p><a routerLink="/sistema">Sistema visual</a><a routerLink="/laboratorio">Laboratório visual</a></div></div>
 </footer>

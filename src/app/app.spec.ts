@@ -182,6 +182,38 @@ describe('ATLAS application', () => {
       .toBe('/explorar/evento/como-o-atlas-contextualiza-eventos');
   });
 
+  it('offers graphic exploration doors and keeps footer destinations stable while recomposing', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    await TestBed.inject(Router).navigateByUrl('/');
+    fixture.detectChanges();
+    await fixture.whenStable();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(Array.from(root.querySelectorAll('.graphic-doors a')).map(a => a.getAttribute('href')))
+      .toEqual(['/relacoes', '/tempo-e-espaco', '/conhecimento']);
+    const destinations = () => Array.from(root.querySelectorAll('.footer-collage a')).map(a => a.getAttribute('href'));
+    const original = destinations();
+    const button = root.querySelector<HTMLButtonElement>('.composition-control button')!;
+    button.focus();
+    button.click();
+    fixture.detectChanges();
+    expect(root.querySelector('.footer-collage')?.getAttribute('data-composition')).toBe('1');
+    expect(root.querySelector('.footer-collage')?.classList.contains('instant')).toBe(true);
+    expect(root.querySelector('.composition-control [role="status"]')?.textContent).toContain('Composição 2 de 3');
+    expect(document.activeElement).toBe(button);
+    button.click();
+    button.click();
+    fixture.detectChanges();
+    expect(root.querySelector('.footer-collage')?.getAttribute('data-composition')).toBe('0');
+    expect(destinations()).toEqual(original);
+    expect(root.querySelector('.site-footer a[href="/sistema"]')).not.toBeNull();
+    await TestBed.inject(Router).navigateByUrl('/relacoes');
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(root.querySelector('.graphic-doors a[aria-current="page"]')?.getAttribute('href')).toBe('/relacoes');
+
+  });
+
   it('marks the active primary navigation link for assistive technology', async () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();

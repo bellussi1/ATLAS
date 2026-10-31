@@ -25,6 +25,12 @@ O usuário rejeitou a home como sequência de painéis minúsculos, rótulos num
 - Tipografia local aprovada: IBM Plex Sans para estrutura, Source Serif 4 para trechos e leitura, IBM Plex Mono para metadados pontuais. Usar caixa normal nos textos de interface; não transformar cada título em um rótulo de catálogo.
 - Assimetrias e pequenas sobreposições são permitidas no desktop; conteúdo e foco nunca podem ser cobertos. Mobile usa fluxo simples e seletor compacto. O título, o trecho e a ação precisam aparecer cedo.
 
+## Cabeçalho e rodapé como composição
+
+O usuário autorizou explorar header e footer fora das convenções de uma barra de links e uma linha de copyright. Eles podem funcionar como assinatura tipográfica, portas geométricas e pôster navegável, mantendo nomes de destinos, navegação principal e link de pular conteúdo. Não impor essa estrutura a cada nova tela.
+
+É permitido brincar com composição gráfica controlada pela pessoa: alternar arranjos de motivos, por exemplo. A variação deve ser reconhecível como composição, sem alegar dados históricos. Manter os destinos e a ordem de foco estáveis; não rotacionar palavras, nem iniciar um loop automático. Uma troca ocasional por ponteiro pode animar transform em até 200ms; teclado e reduced motion são imediatos.
+
 ## Interação que abre caminhos
 
 Partir de verbos concretos: selecionar ficha, aproximar leitura, investigar fonte, seguir relação, continuar no texto. Reutilizar as funções existentes em vez de criar outro mecanismo equivalente.
