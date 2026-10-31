@@ -79,6 +79,23 @@ describe('ATLAS application', () => {
     ).toBe('/laboratorio/a/artigo#conteudo');
   });
 
+  it('moves keyboard focus to the main content when the skip link is activated', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const router = TestBed.inject(Router);
+    fixture.detectChanges();
+    await router.navigateByUrl('/sistema');
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    (fixture.nativeElement as HTMLElement).querySelector<HTMLAnchorElement>('.skip-link')?.click();
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    expect(document.activeElement).toBe(
+      (fixture.nativeElement as HTMLElement).querySelector('main'),
+    );
+  });
+
   it.each([
     ['/laboratorio/a/inicio', 'O mundo', 'poster-home__cartography'],
     ['/laboratorio/b/inicio', 'Percorra as relações.', 'map-home__archive'],
@@ -297,5 +314,33 @@ describe('ATLAS application', () => {
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Este verbete não existe');
     expect(root.querySelector('a[href="/explorar/verbete"]')).not.toBeNull();
+  });
+
+  it('opens the accessible design-system showroom with component examples and states', async () => {
+    const harness = await RouterTestingHarness.create('/sistema');
+    const root = harness.routeNativeElement as HTMLElement;
+
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe('Sistema visual do ATLAS');
+    expect(root.querySelector('nav[aria-label="Nesta página"]')).not.toBeNull();
+    expect(root.querySelector('nav[aria-label="Nesta página"] a')?.getAttribute('href'))
+      .toBe('/sistema#tokens');
+    expect(root.querySelector('details summary')?.textContent?.trim()).toContain('Como usar');
+    expect(Array.from(root.querySelectorAll('[role="status"]')).some((notice) =>
+      notice.textContent?.includes('Nenhum resultado'),
+    )).toBe(true);
+    expect(root.querySelector('[role="alert"]')?.textContent).toContain('Revise o endereço');
+    expect(root.querySelectorAll('[role="alert"]')).toHaveLength(1);
+    const busyButton = root.querySelector<HTMLButtonElement>('app-button button[aria-busy="true"]');
+    expect(busyButton?.textContent).toContain('Preparando conteúdo');
+    expect(busyButton?.disabled).toBe(true);
+    expect(root.querySelector('input[aria-invalid="true"]')).not.toBeNull();
+  });
+
+  it('links to the design-system showroom from the global footer', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+
+    expect((fixture.nativeElement as HTMLElement).querySelector('a[href="/sistema"]')?.textContent)
+      .toContain('Sistema visual');
   });
 });

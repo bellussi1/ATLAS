@@ -1,31 +1,26 @@
 <section class="home" aria-labelledby="home-title">
   <div class="home__intro">
     <p class="eyebrow"><span aria-hidden="true">●</span> Um espaço para aprender em contexto</p>
-    <h1 id="home-title">Compreender <br />o mundo <em>em movimento.</em></h1>
+    <h1 appHeading="display" id="home-title">Compreender <br />o mundo <em>em movimento.</em></h1>
     <p class="home__mission">
       O ATLAS conecta história, política, economia e sociedade para ajudar você a enxergar como as
       ideias e os acontecimentos se relacionam.
     </p>
 
     <div class="search-preview" role="search" aria-label="Busca no ATLAS">
-      <label for="atlas-search">O que você quer entender?</label>
-      <div class="search-preview__control">
-        <input
-          id="atlas-search"
-          type="search"
-          readonly
-          aria-disabled="true"
-          aria-describedby="search-note"
-          placeholder="A busca ainda não está disponível"
-        />
-        <span aria-hidden="true">⌕</span>
-      </div>
-      <p id="search-note">A busca ainda não está disponível. Nenhum resultado será simulado.</p>
+      <app-text-field
+        controlId="atlas-search"
+        label="O que você quer entender?"
+        type="search"
+        placeholder="A busca ainda não está disponível"
+        hint="A busca ainda não está disponível. Nenhum resultado será simulado."
+        [readonly]="true"
+      />
     </div>
   </div>
 
   <nav class="starting-points" aria-label="Comece por aqui">
-    <a class="starting-point starting-point--question" data-entry="question" routerLink="/explorar/verbete/como-ler-um-verbete">
+    <a class="starting-point starting-point--question" appEditorialLink="feature" data-entry="question" routerLink="/explorar/verbete/como-ler-um-verbete">
       <span class="starting-point__body">
         <span class="starting-point__title">Tenho uma dúvida</span>
         <span class="starting-point__description">Veja como o ATLAS contextualiza uma ideia e suas fontes.</span>
@@ -33,7 +28,7 @@
       <span class="starting-point__arrow" aria-hidden="true">↗</span>
     </a>
 
-    <a class="starting-point starting-point--story" data-entry="explore" routerLink="/explorar">
+    <a class="starting-point starting-point--story" appEditorialLink="feature" data-entry="explore" routerLink="/explorar">
       <span class="starting-point__body">
         <span class="starting-point__title">Quero explorar</span>
         <span class="starting-point__description">Percorra os formatos de conteúdo do projeto.</span>
@@ -41,7 +36,7 @@
       <span class="starting-point__arrow" aria-hidden="true">↗</span>
     </a>
 
-    <a class="starting-point starting-point--trail" data-entry="study" routerLink="/estudar">
+    <a class="starting-point starting-point--trail" appEditorialLink="feature" data-entry="study" routerLink="/estudar">
       <span class="starting-point__body">
         <span class="starting-point__title">Quero estudar</span>
         <span class="starting-point__description">Conheça como as trilhas serão organizadas.</span>

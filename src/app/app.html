@@ -1,4 +1,6 @@
-<a class="skip-link" [routerLink]="[]" [fragment]="'conteudo'">Pular para o conteúdo</a>
+<a class="skip-link" [routerLink]="[]" [fragment]="'conteudo'" (click)="focusMainContent()">
+  Pular para o conteúdo
+</a>
 
 <header class="site-header">
   <a class="wordmark" routerLink="/" aria-label="ATLAS — página inicial">
@@ -6,11 +8,11 @@
     <span>ATLAS</span>
   </a>
 
-  <nav aria-label="Navegação principal">
+  <app-menu label="Navegação principal">
     <a routerLink="/explorar" routerLinkActive="is-active" ariaCurrentWhenActive="page">Explorar</a>
     <a routerLink="/estudar" routerLinkActive="is-active" ariaCurrentWhenActive="page">Estudar</a>
     <a routerLink="/sobre" routerLinkActive="is-active" ariaCurrentWhenActive="page">Sobre</a>
-  </nav>
+  </app-menu>
 </header>
 
 <app-breadcrumbs />
@@ -22,4 +24,5 @@
 <footer class="site-footer">
   <span>ATLAS</span>
   <p>Conhecimento público, com contexto e fontes.</p>
+  <a routerLink="/sistema">Sistema visual</a>
 </footer>

@@ -64,48 +64,6 @@ h1 em {
   max-width: 35rem;
 }
 
-.search-preview label {
-  display: block;
-  margin-bottom: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.search-preview__control {
-  display: flex;
-  align-items: center;
-  min-height: 3.5rem;
-  border: 1px solid var(--rule-strong);
-  background: rgba(255, 255, 255, 0.55);
-}
-
-.search-preview__control input {
-  width: 100%;
-  min-width: 0;
-  padding: 1rem;
-  border: 0;
-  background: transparent;
-  color: var(--ink-muted);
-  font: inherit;
-}
-
-.search-preview__control input::placeholder {
-  color: var(--ink-muted);
-  opacity: 0.85;
-}
-
-.search-preview__control span {
-  padding: 0 1rem;
-  color: var(--ink-muted);
-  font-size: 1.6rem;
-}
-
-.search-preview > p {
-  margin: 0.55rem 0 0;
-  color: var(--ink-muted);
-  font-size: 0.77rem;
-}
-
 .starting-points {
   display: flex;
   align-self: center;

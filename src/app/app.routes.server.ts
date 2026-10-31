@@ -5,6 +5,10 @@ import { methodologyAtlas } from './core/content-repository';
 
 export const serverRoutes: ServerRoute[] = [
   {
+    path: 'sistema',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'laboratorio',
     renderMode: RenderMode.Prerender,
   },

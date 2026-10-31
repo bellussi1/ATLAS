@@ -10,6 +10,12 @@ import {
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./pages/home-page').then((module) => module.HomePage), title: 'ATLAS — compreender o mundo' },
   {
+    path: 'sistema',
+    loadComponent: () => import('./pages/design-system-page').then((module) => module.DesignSystemPage),
+    data: { breadcrumb: 'Sistema visual' },
+    title: 'Sistema visual acessível — ATLAS',
+  },
+  {
     path: 'laboratorio',
     data: { breadcrumb: 'Laboratório visual' },
     children: [
