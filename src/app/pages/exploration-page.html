@@ -33,31 +33,7 @@
       <h1 id="mode-title">Relações</h1>
       <p class="lead">Uma ideia, a afirmação que a descreve e a fonte que a sustenta.</p>
       <p>Esta rede mostra a metodologia do ATLAS. Ainda não há relações entre pessoas ou movimentos históricos publicadas.</p>
-      <label for="node-kind">Mostrar categoria</label>
-      <select id="node-kind" [value]="kind()" (change)="filter($any($event.target).value)">
-        <option>Todos</option><option>Conceito</option><option>Afirmação</option><option>Fonte</option>
-      </select>
-      <p class="kicker" role="status">{{ visibleNodes().length }} registros · {{ visibleEdges().length }} conexões visíveis</p>
-      <div class="network" aria-label="Rede de evidências da metodologia">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          @for (edge of visibleEdges(); track edge.from + edge.to) { <line [attr.x1]="position(edge.from)" y1="50" [attr.x2]="position(edge.to)" y2="50" /> }
-        </svg>
-        <ul>
-          @for (node of visibleNodes(); track node.id) {
-            <li [style.left.%]="position(node.id)"><button type="button" [attr.aria-pressed]="selectedId() === node.id" (click)="selectedId.set(node.id)"><span>{{ node.kind }}</span>{{ node.title }}</button></li>
-          }
-        </ul>
-      </div>
-      @if (selected(); as node) {
-        <section class="context" aria-labelledby="selected-title" aria-live="polite">
-          <p class="kicker">Seleção · {{ node.kind }}</p><h2 id="selected-title">{{ node.title }}</h2><p>{{ node.description }}</p>
-          <ul>@for (edge of connections(); track edge.from + edge.to) {
-            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}.</li>
-          }</ul>
-          <a appEditorialLink [routerLink]="node.path">Ler o verbete e suas evidências →</a>
-        </section>
-      }
-      <p class="caption">Cada ligação deriva dos campos de entidade e fontes da afirmação no registro validado da metodologia. As categorias e a lista contextual oferecem uma alternativa textual à rede.</p>
+      <app-evidence-network />
     }
     @case ('time') {
       <p class="kicker">02 / Situar acontecimentos</p>

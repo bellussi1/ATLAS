@@ -78,7 +78,7 @@ Esta revisão e os testes automatizados não constituem auditoria WCAG 2.2 AA in
 
 ## Homepage e modos de exploração
 
-A homepage é um índice de entrada, com busca funcional e três destinos: Relações, Tempo e espaço e Conhecimento. Ela não reúne miniaturas das experiências. A tipografia modernista, a assimetria, os filetes e a geometria usam os tokens compartilhados; as referências visuais não são ativos de publicação.
+A homepage é uma superfície de consulta com busca funcional, rede de evidências, índice de leituras e percursos guiados, adaptada da referência Stitch escolhida. A navegação mantém os três destinos Relações, Tempo e espaço e Conhecimento; não apresenta cronologia ou mapa simulados. A tipografia modernista, a assimetria, os filetes e a geometria usam os tokens compartilhados; as referências visuais não são ativos de publicação.
 
 - Em /conhecimento, a busca local indexa títulos, resumos e texto dos registros editoriais existentes e entidades validadas. A consulta persiste em ?q=, aceita acentos equivalentes e oferece recuperação quando não há resultados. Formatos previstos conservam seu status, sem serem apresentados como coleções históricas publicadas.
 - Em /relacoes, a rede inicial deriva exclusivamente de entityId e sourceIds das afirmações do ContentRepository. Seleção, filtro e contexto funcionam em botões e select nativos. A lista de conexões oferece equivalente textual. A rede representa metodologia, sem simular relações históricas.
@@ -89,3 +89,11 @@ A direção A está consolidada sem remover os índices existentes, o laboratór
 
 
 Validação da consolidação A: busca enviada por Enter no Chrome em 390 px abriu /conhecimento?q=evidencia e retornou cinco registros reais. A home e as três telas foram medidas em 320 px sem overflow horizontal. O nó Fonte foi ativado por Enter, atualizou a seleção e o contexto, mantendo contorno de foco de 3 px. Movimento reduzido foi emulado e reconhecido. A home foi capturada em 1440×1000 e 390×844; não foram reproduzidas as imagens de referência. A revisão não incluiu leitor de tela nem auditoria WCAG integral.
+
+
+### Rede de evidências compartilhada
+
+AtlasEvidenceNetworkComponent, em src/app/shared/evidence-network.ts, é usado na home e em Relações. A disposição espacial evidencia as ligações derivadas de entityId/sourceIds; o destaque vermelho acompanha a seleção, também comunicada por aria-pressed. O botão Ver lista oferece os mesmos registros sem distribuição espacial. Filtros recalculam as conexões visíveis e selecionam um registro da categoria. O foco permanece no controle acionado; o painel anuncia seu contexto sem capturar foco. As transições de cor reutilizam --motion-fast e a regra global de movimento reduzido. Nenhuma biblioteca foi adicionada.
+
+
+Verificação da adaptação Stitch: home conferida em 1440, 390 e 320 CSS px; em 320 px a largura do documento permaneceu em 320 px. O modo de lista foi acionado por Enter e manteve foco de 3 px, três registros e ausência de overflow. Movimento reduzido foi emulado e reconhecido. Testes cobrem a seleção na home, mudança para lista, filtro com acento (Afirmação), destinos e regressões de navegação. Sem avaliação com leitor de tela nesta entrega.

@@ -1,36 +1,55 @@
 <section class="home" aria-labelledby="home-title">
-  <div class="home__opening">
-    <div>
-      <p class="eyebrow">Acervo público · História, política, economia e sociedade</p>
-      <h1 appHeading="page" id="home-title">Encontre um assunto.<br /><em>Descubra as conexões.</em></h1>
-    </div>
+  <header class="register">
+    <div><p class="kicker">ATLAS / Índice de consulta</p><h1 appHeading="page" id="home-title">Exploração do conhecimento histórico</h1></div>
+    <p class="edition">Edição de metodologia<br />{{ atlas.entities.length }} conceito · {{ atlas.claims.length }} afirmação · {{ atlas.sources.length }} fonte</p>
+  </header>
+
+  <section class="research" aria-labelledby="research-title">
+    <h2 class="kicker" id="research-title">01 / Terminal de pesquisa no acervo</h2>
     <form class="home__search" role="search" aria-label="Busca no ATLAS" (submit)="search($event)">
       <app-text-field controlId="atlas-search" label="O que você quer entender?" type="search"
-        placeholder="Pesquise no acervo" hint="Nesta edição: conteúdos sobre a metodologia do ATLAS."
+        placeholder="Pesquise um conceito, título ou trecho" hint="Nesta edição: conteúdos sobre a metodologia do ATLAS."
         [value]="query()" (valueChange)="query.set($event)" />
-      <button class="search-submit" type="submit">Pesquisar <span aria-hidden="true">↗</span></button>
+      <button class="search-submit" type="submit">Pesquisar <span aria-hidden="true">→</span></button>
     </form>
-  </div>
-  <div class="index-heading"><span>Três modos de explorar</span><span>Escolha um ponto de partida ↓</span></div>
+    <div class="search-paths"><span>Consultas de entrada:</span><a appEditorialLink routerLink="/conhecimento" [queryParams]="{q:'contexto'}">Contexto</a><a appEditorialLink routerLink="/conhecimento" [queryParams]="{q:'fontes'}">Fontes</a><a appEditorialLink routerLink="/conhecimento" [queryParams]="{q:'metodologia'}">Metodologia</a></div>
+  </section>
+
   <nav class="modes" aria-label="Modos de exploração">
-    <a class="mode" appEditorialLink="feature" data-entry="relations" routerLink="/relacoes">
-      <span class="mode__number">01</span>
-      <span class="mode__body"><span class="mode__title">Relações</span><span class="mode__description">Siga uma ideia. Examine suas evidências. Descubra o que conecta os registros.</span></span>
-      <span class="mode__mark mode__mark--relations" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="mode__arrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="mode" appEditorialLink="feature" data-entry="time" routerLink="/tempo-e-espaco">
-      <span class="mode__number">02</span>
-      <span class="mode__body"><span class="mode__title">Tempo e espaço</span><span class="mode__description">Situe acontecimentos em cronologias e mapas. Conheça o estado desta coleção.</span></span>
-      <span class="mode__mark mode__mark--time" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="mode__arrow" aria-hidden="true">↗</span>
-    </a>
-    <a class="mode" appEditorialLink="feature" data-entry="knowledge" routerLink="/conhecimento">
-      <span class="mode__number">03</span>
-      <span class="mode__body"><span class="mode__title">Conhecimento</span><span class="mode__description">Busque no acervo, leia com contexto e consulte as fontes de cada afirmação.</span></span>
-      <span class="mode__mark mode__mark--knowledge" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="mode__arrow" aria-hidden="true">↗</span>
-    </a>
+    <a data-entry="relations" routerLink="/relacoes"><span>01</span> Relações <span aria-hidden="true">↗</span></a>
+    <a data-entry="time" routerLink="/tempo-e-espaco"><span>02</span> Tempo e espaço <span aria-hidden="true">↗</span></a>
+    <a data-entry="knowledge" routerLink="/conhecimento"><span>03</span> Conhecimento <span aria-hidden="true">↗</span></a>
   </nav>
-  <footer class="home__colophon"><p>Um assunto pode abrir muitos caminhos.</p><a appEditorialLink routerLink="/explorar">Índice de formatos e conteúdos →</a></footer>
+
+  <div class="investigation">
+    <section class="relations" aria-labelledby="relations-title">
+      <div class="section-head"><p class="kicker">02.A / Rede conceitual</p><a appEditorialLink routerLink="/relacoes">Abrir relações ↗</a></div>
+      <h2 id="relations-title">O que sustenta uma ideia?</h2>
+      <p class="section-intro">Selecione um registro para seguir as conexões entre conceito, afirmação e fonte.</p>
+      <app-evidence-network />
+    </section>
+
+    <aside class="reading-desk" aria-labelledby="reading-title">
+      <p class="kicker">02.B / Leituras de entrada</p>
+      <h2 id="reading-title">Contexto antes<br />da conclusão.</h2>
+      <p class="reading-deck">Um registro abre uma pergunta. Uma fonte permite conferir a resposta.</p>
+      <ol class="reading-index">
+        @for (entry of readings; track entry.slug; let index = $index) {
+          <li><span class="catalog">0{{ index + 1 }} / {{ entry.statusLabel }}</span><h3><a appEditorialLink [routerLink]="entryPath(entry.type, entry.slug)">{{ entry.title }} ↗</a></h3><p>{{ entry.summary }}</p></li>
+        }
+      </ol>
+      <div class="temporal-note"><p class="kicker">Tempo e espaço / Estado da coleção</p><h3>A cronologia começa pela evidência.</h3><p>Não há acontecimentos com datas e locais verificados nesta edição.</p><a appEditorialLink routerLink="/tempo-e-espaco">Conheça os critérios para situar acontecimentos →</a></div>
+    </aside>
+  </div>
+
+  <section class="questions" aria-labelledby="questions-title">
+    <header class="questions-heading"><div><p class="kicker">03 / Investigações guiadas</p><h2 id="questions-title">Perguntas que<br />abrem caminhos</h2></div><p>Comece pelo método: as leituras disponíveis explicam como o ATLAS conecta contexto, afirmações e referências.</p></header>
+    <div class="question-grid">
+      <a class="question question--lead" routerLink="/verbete/metodologia-do-atlas"><span class="catalog">Percurso 01 / Evidência</span><h3>Como conferir o que uma afirmação diz?</h3><p>Parta de um conceito, examine a afirmação e consulte a referência que a sustenta.</p><span class="question__destination">Ler o verbete e suas evidências <span aria-hidden="true">→</span></span></a>
+      <a class="question" routerLink="/explorar/artigo/conhecimento-com-contexto"><span class="catalog">Percurso 02 / Contexto</span><h3>Por que uma definição não basta?</h3><p>Conheça os princípios de uma leitura em contexto.</p><span class="question__destination">Abrir artigo <span aria-hidden="true">→</span></span></a>
+      <a class="question" routerLink="/explorar/atlas/atlas-de-metodo"><span class="catalog">Percurso 03 / Acervo</span><h3>Que caminhos um atlas pode abrir?</h3><p>Entenda os formatos e a organização do conhecimento no projeto.</p><span class="question__destination">Percorrer o atlas <span aria-hidden="true">→</span></span></a>
+    </div>
+  </section>
+
+  <footer class="home__colophon"><span>História, política, economia e sociedade · Conhecimento público</span><div><a appEditorialLink routerLink="/explorar">Índice completo →</a><a appEditorialLink routerLink="/laboratorio">Laboratório visual ↗</a></div></footer>
 </section>

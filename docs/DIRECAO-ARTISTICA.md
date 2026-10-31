@@ -64,3 +64,15 @@ A interface principal adota modernismo editorial com fundo claro quente, vermelh
 A homepage passa a oferecer busca e três modos: **Relações**, **Tempo e espaço** e **Conhecimento**. Cada modo possui uma rota própria com navegação entre modos. A home deixa de concentrar recursos em miniatura e prioriza iniciar uma investigação na primeira tela. Os limites de dados e as interações disponíveis estão documentados em SISTEMA-DE-DESIGN.md.
 
 Capturas reais da versão consolidada: [desktop](direcao-artistica/screenshots/home-desktop.png) e [mobile](direcao-artistica/screenshots/home-mobile.png).
+
+
+## Referência Stitch escolhida: Exploração do Conhecimento Histórico
+
+O usuário escolheu a tela af5d2dc3ee024405ba33e0408ae71d2e do projeto Stitch 15545419207416735639 como referência principal da homepage. A adaptação adota terminal de busca, metadados, grade aparente, rede selecionável com ficha contextual, índice de leituras e percursos por perguntas. Os três modos continuam acessíveis por navegação própria. As fontes locais licenciadas do ATLAS permanecem; não foram importados recursos remotos de tipografia ou imagens do protótipo.
+
+A composição foi adaptada ao acervo validado: conceito, afirmação e fonte de metodologia. Datas, coordenadas, citações, volumes, métricas de acervo, licenças documentais e selos de conformidade do protótipo Stitch não foram transferidos. Sem eventos verificados, a cronologia não é representada como disponível. O Prompt 05.5 anexado não foi executado como tarefa independente.
+
+A rede é um componente compartilhado por home e Relações; seleção, filtro de categoria, conexões destacadas, ficha e modo de lista usam os mesmos dados e comportamentos. Capturas desta adaptação: [desktop](direcao-artistica/screenshots/home-stitch-desktop.png) e [mobile](direcao-artistica/screenshots/home-stitch-mobile.png).
+
+
+A exportação local code.html, DESIGN.md e screen.png, fornecida durante a implementação, corresponde ao laboratório de experiências e foi consultada como referência complementar de grade, nós, painéis e metadados. A escolha principal da homepage permanece a tela Exploração do Conhecimento Histórico. O HTML exportado não foi executado nem incorporado à aplicação.

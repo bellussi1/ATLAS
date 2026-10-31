@@ -23,7 +23,7 @@ describe('ATLAS application', () => {
 
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector('h1')?.textContent?.replace(/\s+/g, ' ')).toContain(
-      'Encontre um assunto.',
+      'Exploração do conhecimento histórico',
     );
     expect(root.textContent).toContain('História, política, economia e sociedade');
     expect(root.querySelector('[role="search"] input')?.hasAttribute('readonly')).toBe(false);
@@ -52,6 +52,21 @@ describe('ATLAS application', () => {
     ]);
   });
 
+
+  it('lets the homepage inspect real evidence and switch to an accessible list', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    const root = harness.routeNativeElement!;
+    expect(root.querySelectorAll('app-evidence-network .network button')).toHaveLength(3);
+    root.querySelectorAll<HTMLButtonElement>('.network button')[2].click();
+    harness.detectChanges();
+    expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
+    root.querySelector<HTMLButtonElement>('.view-toggle')!.click();
+    harness.detectChanges();
+    expect(root.querySelector('.view-toggle')?.getAttribute('aria-pressed')).toBe('true');
+    expect(root.querySelectorAll('.network button')).toHaveLength(3);
+    expect(root.querySelector('.network button[aria-pressed=true]')?.textContent).toContain('Regras editoriais');
+    expect(root.querySelectorAll('.reading-index a')).toHaveLength(3);
+  });
 
   it('submits homepage search to the knowledge collection', async () => {
     const harness = await RouterTestingHarness.create('/');
@@ -87,10 +102,11 @@ describe('ATLAS application', () => {
     expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
     expect(buttons[2].getAttribute('aria-pressed')).toBe('true');
     const filter = root.querySelector<HTMLSelectElement>('#node-kind')!;
-    filter.value = 'Fonte';
+    filter.value = 'Afirmação';
     filter.dispatchEvent(new Event('change'));
     harness.detectChanges();
     expect(root.querySelectorAll('.network button')).toHaveLength(1);
+    expect(root.querySelector('.network button')?.textContent).toContain('Evidência contextual');
     expect(root.querySelectorAll('.network svg line')).toHaveLength(0);
   });
 
