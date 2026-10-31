@@ -13,11 +13,22 @@ describe('design-system showroom', () => {
   it('uses a native disclosure element with an operable summary', () => {
     const fixture = TestBed.createComponent(DesignSystemPage);
     fixture.detectChanges();
-    const details = (fixture.nativeElement as HTMLElement).querySelector('details')!;
+    const details = (fixture.nativeElement as HTMLElement)
+      .querySelector<HTMLDetailsElement>('app-disclosure details')!;
 
     expect(details.open).toBe(false);
     details.querySelector('summary')?.click();
     expect(details.open).toBe(true);
+  });
+
+  it('renders a separate heading-based content summary', () => {
+    const fixture = TestBed.createComponent(DesignSystemPage);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const summary = root.querySelector('app-content-summary');
+
+    expect(summary?.querySelector('h2')?.textContent?.trim()).toBe('Resumo');
+    expect(summary?.textContent).toContain('condensa a ideia principal');
   });
 
   it('associates field error text and marks the invalid control', () => {

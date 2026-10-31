@@ -3,16 +3,18 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { findEditorialEntry } from '../content/editorial-entries';
 import { EditorialType, getEditorialType } from '../content/content-types';
-import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent } from '../shared/ui-primitives';
+import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent } from '../shared/ui-primitives';
 
 @Component({
   selector: 'app-editorial-detail-page',
-  imports: [AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent, RouterLink],
+  imports: [AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent, RouterLink],
   template: `
     @if (entry(); as page) {
       <app-page-template labelledBy="page-title">
         <h1 appHeading="page" id="page-title">{{ page.title }}</h1>
-        <p class="page__lead">{{ page.summary }}</p>
+        <app-content-summary headingId="page-summary-title">
+          <p class="page__lead">{{ page.summary }}</p>
+        </app-content-summary>
         <p class="page__type">{{ page.statusLabel }}</p>
         <p class="page__scope">
           Esta página apresenta a metodologia e os formatos do próprio ATLAS. Ela não contém uma
@@ -48,7 +50,7 @@ import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateCo
     :host { display: block; }
     .page__type { margin: .75rem 0 0; color: var(--ink-muted); font-size: .9rem; }
     h1 { max-width: 17ch; margin: 0; letter-spacing: -.065em; line-height: 1; }
-    .page__lead { max-width: 43rem; margin: 1.5rem 0 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
+    .page__lead { max-width: 43rem; margin: 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
     .page__scope { max-width: 43rem; margin: 1.5rem 0 0; padding-left: 1rem; border-left: .25rem solid var(--signal); color: var(--ink-muted); line-height: 1.6; }
     .related-entry { display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: 1rem; color: var(--signal); font-weight: 700; text-underline-offset: .2em; }
     .article-section { max-width: 43rem; margin-top: clamp(2.5rem, 6vw, 4rem); }

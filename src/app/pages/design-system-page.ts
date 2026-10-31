@@ -2,12 +2,13 @@ import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   AtlasButtonComponent,
+  AtlasContentSummaryComponent,
+  AtlasDisclosureComponent,
   AtlasEditorialLinkDirective,
   AtlasHeadingDirective,
   AtlasMenuComponent,
   AtlasNoticeComponent,
   AtlasPageTemplateComponent,
-  AtlasSummaryComponent,
   AtlasTextFieldComponent,
 } from '../shared/ui-primitives';
 
@@ -15,12 +16,13 @@ import {
   selector: 'app-design-system-page',
   imports: [
     AtlasButtonComponent,
+    AtlasContentSummaryComponent,
+    AtlasDisclosureComponent,
     AtlasEditorialLinkDirective,
     AtlasHeadingDirective,
     AtlasMenuComponent,
     AtlasNoticeComponent,
     AtlasPageTemplateComponent,
-    AtlasSummaryComponent,
     AtlasTextFieldComponent,
     RouterLink,
   ],
@@ -76,6 +78,9 @@ import {
             <p class="type-sample__display">Título de exposição em Plex Sans</p>
             <p class="type-sample__reading">A Source Serif 4 distingue a leitura longa e o texto de apoio editorial.</p>
             <p class="type-sample__metadata">ATLAS · METADADO · 2026</p>
+            <app-content-summary headingId="showroom-summary-title">
+              <p>Um sumário condensa a ideia principal e mantém sua relação com o conteúdo desenvolvido.</p>
+            </app-content-summary>
 
             <div class="template-examples" aria-label="Variantes do template editorial">
               <app-page-template kind="editorial" labelledBy="template-editorial-title">
@@ -135,9 +140,9 @@ import {
           <section id="estados" class="showroom__section" aria-labelledby="states-title">
             <p class="showroom__kicker">04 / Navegação e estados</p>
             <h2 appHeading="section" id="states-title">Menus, sumários e respostas</h2>
-            <app-summary label="Como usar os componentes">
+            <app-disclosure label="Como usar os componentes">
               <p>Use rótulos curtos, associe instruções aos campos e mantenha links identificáveis fora do contexto.</p>
-            </app-summary>
+            </app-disclosure>
             <div class="state-examples">
               <app-notice accessibleRole="status">Nenhum resultado para esta seleção. Tente outro ponto de partida.</app-notice>
               <app-notice tone="warning">Este aviso demonstra uma mensagem de atenção.</app-notice>
@@ -161,8 +166,9 @@ import {
     .showroom__eyebrow, .showroom__kicker { margin: 0 0 var(--space-3); color: var(--color-accent); font: 700 var(--text-caption)/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
     h1 { max-width: 14ch; margin: 0; line-height: .98; letter-spacing: -.06em; }
     .showroom__lead { max-width: 60ch; margin: var(--space-6) 0 var(--space-8); color: var(--color-ink-muted); font: var(--text-lead)/1.55 var(--font-serif); }
-    .showroom__layout { display: grid; grid-template-columns: minmax(10rem, .28fr) minmax(0, 1fr); gap: clamp(var(--space-8), 7vw, 6rem); align-items: start; margin-top: clamp(var(--space-12), 7vw, 6rem); }
-    .showroom__toc { position: sticky; top: var(--space-4); padding-block: var(--space-3); border-block: 1px solid var(--color-border); }
+    .showroom__layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); align-items: start; margin-top: clamp(var(--space-12), 7vw, 6rem); }
+    .showroom__toc { position: static; padding-block: var(--space-3); border-block: 1px solid var(--color-border); }
+    .showroom__toc .atlas-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: 0 var(--space-3); }
     .showroom__content { min-width: 0; }
     .showroom__section { min-width: 0; margin-bottom: clamp(var(--space-12), 8vw, 7rem); scroll-margin-top: var(--space-8); }
     h2 { margin: 0 0 var(--space-4); }
@@ -184,12 +190,14 @@ import {
     .template-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--space-3); margin-top: var(--space-8); }
     app-page-template { min-width: 0; border-block: 1px solid var(--color-border-strong); background: var(--color-surface); }
     app-page-template p:last-child { margin-bottom: 0; color: var(--color-ink-muted); }
-    .button-examples, .state-examples { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-block: var(--space-6); }
+    .button-examples, .state-examples { display: flex; flex-wrap: wrap; align-items: stretch; flex-direction: column; gap: var(--space-3); margin-block: var(--space-6); }
+    .button-examples app-button { width: 100%; }
     .field-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: var(--space-6); margin-top: var(--space-8); }
     .state-examples app-notice { flex: 1 1 17rem; }
     .showroom__return { margin-top: var(--space-12); }
-    @media (max-width: 48rem) { .showroom__layout { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); } .showroom__toc { position: static; } .showroom__toc .atlas-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0 var(--space-3); } }
-    @media (max-width: 24rem) { .showroom { padding-inline: var(--space-4); } .button-examples { align-items: stretch; flex-direction: column; } .button-examples app-button { width: 100%; } }
+    @media (min-width: 24rem) { .button-examples { align-items: flex-start; flex-direction: row; } .button-examples app-button { width: auto; } }
+    @media (min-width: 40rem) { .showroom { padding-block: clamp(var(--space-12), 6vw, 5rem) var(--space-16); } }
+    @media (min-width: 48rem) { .showroom__layout { grid-template-columns: minmax(10rem, .28fr) minmax(0, 1fr); gap: clamp(var(--space-8), 7vw, 6rem); } .showroom__toc { position: sticky; top: var(--space-4); } .showroom__toc .atlas-menu { display: flex; } .button-examples, .state-examples { align-items: center; } }
   `,
 })
 export class DesignSystemPage {

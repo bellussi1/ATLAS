@@ -42,7 +42,8 @@ Os componentes standalone e a diretiva de heading estão em `src/app/shared/ui-p
 | `app-button` | Botão nativo com variantes `primary`, `secondary` e `quiet`, além de `disabled` e `busy`. O rótulo permanece estável durante `busy`; `aria-busy` é definido e o botão é desativado para evitar repetição da ação. |
 | `app-text-field` | Campo com `controlId`, `label`, `type`, `required`, `disabled`, `readonly`, `hint` e `error`. Rótulo e instruções são associados ao controle; erro define `aria-invalid` e integra `aria-describedby`. |
 | `app-menu` | Navegação nativa com nome obrigatório e orientação horizontal ou vertical; os links são projetados pela página. |
-| `app-summary` | Disclosure nativo `<details>/<summary>`, operável por teclado sem JavaScript específico. |
+| `app-content-summary` | Sumário de conteúdo com heading e conteúdo projetado; usado nos resumos das páginas reais de categoria e artigo. |
+| `app-disclosure` | Disclosure nativo `<details>/<summary>`, operável por teclado sem JavaScript específico. |
 | `app-notice` | Mensagem `info`, `success`, `warning` ou `critical`; `accessibleRole="status"` anuncia em modo polido e `accessibleRole="alert"` em modo assertivo. O papel fica em um único elemento. |
 | `app-page-template` | Template editorial com variantes `editorial`, `index` e `profile`, largura de leitura própria e `aria-labelledby`. |
 
@@ -54,7 +55,7 @@ Já usados em páginas reais: o menu global e o template de páginas editoriais;
 - Os campos usam rótulo explícito, indicação de obrigatório, texto de ajuda e mensagem de erro associada. Estados desativados não dependem apenas da cor.
 - Menus e disclosures usam elementos nativos. As mensagens têm nome, papel e modo de anúncio explícitos.
 - `prefers-reduced-motion: reduce` desativa rolagem suave, animações e transições globais. O layout não impõe largura mínima acima de 0; as colunas mudam para uma coluna em telas estreitas.
-- Contraste sRGB é checado automaticamente em `src/app/shared/ui-contrast.spec.ts`, lendo os valores diretamente de `src/styles.scss`.
+- Contraste sRGB é checado automaticamente em `src/app/shared/ui-contrast.spec.ts`, lendo os valores diretamente de `src/styles.scss`. A suíte verifica texto principal, texto de apoio e ação nas superfícies canvas, superfície, elevada e sutil; foco nas superfícies clara e elevada; borda forte de campo; estados de mensagem e texto branco sobre as superfícies de ação/cartografia/arquivo. Os mínimos são 4,5:1 para texto e 3:1 para foco e borda não textual.
 
 | Combinação medida | Razão |
 | --- | ---: |
@@ -70,6 +71,6 @@ Já usados em páginas reais: o menu global e o template de páginas editoriais;
 | Branco / cartografia | 7,25:1 |
 | Branco / arquivo | 6,98:1 |
 
-No navegador, foram conferidos a rota showroom em 1280 px, 640 px (viewport CSS equivalente ao reflow de 200% em 1280 px) e 320 px, sem largura de documento maior que a viewport. O link de pular conteúdo e o disclosure foram operados com teclado; o movimento reduzido estava ativo. A árvore de acessibilidade do Chrome foi revisada para navegação, campos, mensagens, headings e disclosures.
+O showroom e as primitivas começam em uma coluna e ampliam para layouts maiores em breakpoints `min-width`. No navegador, foram conferidos a rota showroom em 1280 px, 640 px (viewport CSS equivalente ao reflow de 200% em 1280 px) e 320 px, sem largura de documento maior que a viewport. O link de pular conteúdo e o disclosure foram operados com teclado; o movimento reduzido estava ativo. A árvore de acessibilidade do Chrome foi revisada para navegação, campos, mensagens, headings e disclosures. O zoom nativo do navegador em 200% não foi medido separadamente.
 
 Esta revisão e os testes automatizados não constituem auditoria WCAG 2.2 AA integral. Ainda falta avaliação com leitores de tela e pessoas usuárias de tecnologia assistiva, incluindo combinações de navegador/sistema operacional e anúncio das mensagens dinâmicas.

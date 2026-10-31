@@ -3,16 +3,18 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { findEditorialEntry, getEntryPath } from '../content/editorial-entries';
 import { getEditorialType } from '../content/content-types';
-import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent } from '../shared/ui-primitives';
+import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent } from '../shared/ui-primitives';
 
 @Component({
   selector: 'app-content-type-page',
-  imports: [AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent, RouterLink],
+  imports: [AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent, RouterLink],
   template: `
     @if (category(); as item) {
       <app-page-template kind="index" labelledBy="page-title">
         <h1 appHeading="page" id="page-title">{{ item.plural }}</h1>
-        <p class="page__lead">{{ item.summary }}</p>
+        <app-content-summary headingId="category-summary-title" label="Sobre esta categoria">
+          <p class="page__lead">{{ item.summary }}</p>
+        </app-content-summary>
 
         @if (entry(); as example) {
           <section class="entry" aria-labelledby="entry-title">
@@ -37,7 +39,7 @@ import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateCo
   styles: `
     :host { display: block; }
     h1 { max-width: 14ch; margin: 0; letter-spacing: -.065em; line-height: .98; }
-    .page__lead { max-width: 42rem; margin: 1.5rem 0 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
+    .page__lead { max-width: 42rem; margin: 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
     .entry { max-width: 50rem; margin-top: clamp(3rem, 8vw, 6rem); padding: 1.5rem 0 0 1.5rem; border-left: .25rem solid var(--signal); }
     .entry__status { margin: 0 0 .75rem; color: var(--ink-muted); font-size: .9rem; }
     h2 { margin: 0; font: 500 clamp(1.8rem, 4vw, 2.6rem)/1.1 var(--serif); }

@@ -20,11 +20,11 @@
 
 .site-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 2rem;
-  min-height: 5.25rem;
-  padding: 0.75rem clamp(1.25rem, 5vw, 5rem);
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem clamp(1.25rem, 5vw, 5rem);
   border-bottom: 1px solid var(--rule);
 }
 
@@ -50,7 +50,7 @@
   letter-spacing: 0;
 }
 
-app-menu { display: block; }
+app-menu { display: block; width: 100%; }
 
 main {
   min-height: calc(100vh - 10rem);
@@ -62,8 +62,8 @@ main:focus {
 
 .site-footer {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
   gap: 1rem;
   padding: 1.5rem clamp(1.25rem, 5vw, 5rem);
   border-top: 1px solid var(--rule);
@@ -83,20 +83,22 @@ main:focus {
 
 .site-footer a { color: var(--color-accent); text-underline-offset: 0.2em; }
 
-@media (max-width: 36rem) {
+@media (min-width: 36rem) {
   .site-header {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 1rem;
-    padding-block: 1rem;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    min-height: 5.25rem;
+    padding-block: 0.75rem;
   }
 
   app-menu {
-    width: 100%;
+    width: auto;
   }
 
   .site-footer {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: baseline;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }

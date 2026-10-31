@@ -97,7 +97,23 @@ export class AtlasTextFieldComponent {
 }
 
 @Component({
-  selector: 'app-summary',
+  selector: 'app-content-summary',
+  standalone: true,
+  imports: [AtlasHeadingDirective],
+  template: `
+    <section class="atlas-content-summary" [attr.aria-labelledby]="headingId()">
+      <h2 appHeading="section" [id]="headingId()">{{ label() }}</h2>
+      <div class="atlas-content-summary__body"><ng-content /></div>
+    </section>
+  `,
+})
+export class AtlasContentSummaryComponent {
+  readonly headingId = input.required<string>();
+  readonly label = input('Resumo');
+}
+
+@Component({
+  selector: 'app-disclosure',
   standalone: true,
   template: `
     <details class="atlas-disclosure" [open]="open()">
@@ -106,7 +122,7 @@ export class AtlasTextFieldComponent {
     </details>
   `,
 })
-export class AtlasSummaryComponent {
+export class AtlasDisclosureComponent {
   readonly label = input.required<string>();
   readonly open = input(false);
 }

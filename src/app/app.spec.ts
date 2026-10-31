@@ -202,8 +202,11 @@ describe('ATLAS application', () => {
     ['/explorar/trilha', 'Trilhas'],
   ])('opens the category index at %s', async (url, heading) => {
     const harness = await RouterTestingHarness.create(url);
-    expect(harness.routeNativeElement?.querySelector('h1')?.textContent?.trim()).toBe(heading);
-    expect(harness.routeNativeElement?.querySelector('[data-detail-link]')).not.toBeNull();
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe(heading);
+    expect(root.querySelector('[data-detail-link]')).not.toBeNull();
+    expect(root.querySelector('app-content-summary section[aria-labelledby="category-summary-title"] h2')
+      ?.textContent?.trim()).toBe('Sobre esta categoria');
   });
 
   it.each([
@@ -245,6 +248,8 @@ describe('ATLAS application', () => {
     expect(root.querySelector('h1')?.textContent?.trim()).toBe(heading);
     expect(root.textContent).toContain(status);
     expect(root.querySelectorAll('article section').length).toBeGreaterThan(0);
+    expect(root.querySelector('app-content-summary section[aria-labelledby="page-summary-title"] h2')
+      ?.textContent?.trim()).toBe('Resumo');
   });
 
   it.each([
@@ -324,7 +329,10 @@ describe('ATLAS application', () => {
     expect(root.querySelector('nav[aria-label="Nesta página"]')).not.toBeNull();
     expect(root.querySelector('nav[aria-label="Nesta página"] a')?.getAttribute('href'))
       .toBe('/sistema#tokens');
-    expect(root.querySelector('details summary')?.textContent?.trim()).toContain('Como usar');
+    expect(root.querySelector('app-content-summary section[aria-labelledby="showroom-summary-title"] h2')
+      ?.textContent?.trim()).toBe('Resumo');
+    expect(root.querySelector('app-disclosure details summary')?.textContent?.trim())
+      .toContain('Como usar');
     expect(Array.from(root.querySelectorAll('[role="status"]')).some((notice) =>
       notice.textContent?.includes('Nenhum resultado'),
     )).toBe(true);
