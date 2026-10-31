@@ -10,6 +10,11 @@ import { RouterLink } from '@angular/router';
       <h1 id="page-title">Esta página não existe</h1>
       <p class="page__lead">O endereço pode ter mudado ou não fazer parte do ATLAS.</p>
       <a class="home-link" routerLink="/">Voltar à página inicial <span aria-hidden="true">↗</span></a>
+      <nav aria-label="Outros caminhos do ATLAS">
+        <a routerLink="/conhecimento">Pesquisar nos registros disponíveis</a>
+        <a routerLink="/explorar">Percorrer os formatos editoriais</a>
+        <a routerLink="/sobre">Conhecer o projeto</a>
+      </nav>
     </section>
   `,
   styles: `
@@ -19,6 +24,9 @@ import { RouterLink } from '@angular/router';
     h1 { max-width: 12ch; margin: 1.5rem 0; font-size: clamp(3rem, 8vw, 6rem); letter-spacing: -.07em; line-height: .98; }
     .page__lead { max-width: 38rem; color: var(--ink-muted); font: 1.35rem/1.55 var(--serif); }
     .home-link { display: inline-flex; gap: .7rem; margin-top: 1.5rem; color: var(--signal); font-weight: 700; text-decoration-thickness: .08em; text-underline-offset: .2em; }
+    nav { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 2.5rem; }
+    nav a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--ink); text-underline-offset: .2em; }
+    a:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
   `,
 })
 export class NotFoundPage {}

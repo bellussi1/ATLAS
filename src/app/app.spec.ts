@@ -30,6 +30,21 @@ describe('ATLAS application', () => {
     expect(root.querySelector('[role="search"] button[type="submit"]')).not.toBeNull();
   });
 
+  it('updates the page description and canonical path without query or fragment', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const router = TestBed.inject(Router);
+    await router.navigateByUrl('/conhecimento?q=metodologia#resultados');
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.ownerDocument.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.getAttribute('href'))
+      .toBe('/conhecimento');
+    expect(root.ownerDocument.querySelector<HTMLMetaElement>('meta[name="description"]')?.content)
+      .toContain('Pesquise verbetes');
+  });
+
   it('shows the source edition, locator, access date, and actual pending review status', async () => {
     const harness = await RouterTestingHarness.create('/verbete/constituicao-de-1988');
     const root = harness.routeNativeElement!;
@@ -41,6 +56,16 @@ describe('ATLAS application', () => {
     expect(root.textContent).toContain('Sustenta: Constituição Federal de 1988');
     expect(root.querySelector('a[href="https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html"]')).not.toBeNull();
     expect(root.textContent).not.toContain('Revisado por');
+  });
+
+  it('renders a source library from registered sources and links to their related records', async () => {
+    const harness = await RouterTestingHarness.create('/fontes');
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe('Biblioteca de fontes');
+    expect(root.textContent).toContain('Constituição Federal de 1988 — Portal da Câmara dos Deputados');
+    expect(root.textContent).toContain('Art. 5º, caput');
+    expect(root.querySelector('a[href="/verbete/constituicao-de-1988"]')).not.toBeNull();
+    expect(root.textContent).toContain('O estado registrado aparece junto a cada afirmação.');
   });
 
   it('offers the three product intents with working destinations', async () => {
@@ -200,12 +225,19 @@ describe('ATLAS application', () => {
     expect(root.querySelectorAll('.network svg line')).toHaveLength(0);
   });
 
-  it('explains missing temporal data and offers a real reading path', async () => {
+  it('explains that timeline and map interfaces are pending while real temporal records exist', async () => {
     const harness = await RouterTestingHarness.create('/tempo-e-espaco');
     expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toBe('Tempo e espaço');
-    expect(harness.routeNativeElement?.textContent).toContain('não contém acontecimentos com datas');
+    expect(harness.routeNativeElement?.textContent).toContain('registra pessoas, instituições, acontecimentos e lugares');
+    expect(harness.routeNativeElement?.textContent).toContain('ainda não foram implementadas');
     expect(harness.routeNativeElement?.querySelector('.empty-collection a')?.getAttribute('href'))
       .toBe('/explorar/evento/como-o-atlas-contextualiza-eventos');
+  });
+
+  it('describes the relations network as populated by registered records', async () => {
+    const harness = await RouterTestingHarness.create('/relacoes');
+    expect(harness.routeNativeElement?.textContent).toContain('relações e referências registradas no acervo');
+    expect(harness.routeNativeElement?.textContent).toContain('Ulysses Guimarães');
   });
 
   it('offers graphic exploration doors and keeps footer destinations stable while recomposing', async () => {

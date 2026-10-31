@@ -30,12 +30,13 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 - `/estudar` — apresentação do formato de trilhas
 - `/estudar/como-usar-trilhas` — exemplo de metodologia de estudo
 - `/sobre` — missão do projeto
+- `/fontes` — biblioteca das fontes cadastradas, com localizadores e verbetes relacionados
 - `/laboratorio` — índice das três propostas experimentais de direção visual (início, artigo e perfil), sem alterar a identidade de produção
 - Qualquer caminho desconhecido — página 404 da aplicação
 
-Na página inicial, “Tenho uma dúvida” abre um verbete de metodologia; “Quero explorar” abre o índice editorial e “Quero estudar” abre a apresentação de trilhas. O campo de busca continua sendo apenas uma prévia visual: não recebe consultas nem apresenta resultados.
+Na página inicial, a mesa destaca três textos de metodologia, enquanto a busca percorre verbetes, relações e entradas editoriais carregados. Relações apresenta os vínculos registrados; a exploração temporal e espacial explica que sua interface de cronologia e mapas ainda não está disponível. As trilhas temáticas continuam identificadas como previstas.
 
-As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLAS e não apresentam afirmações históricas. Os outros formatos têm páginas provisórias identificadas como previstos. Veja o [sitemap e os tipos editoriais](docs/INFORMATION-ARCHITECTURE.md).
+As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLAS e não apresentam afirmações históricas. Os outros formatos têm páginas identificadas como previstos. As páginas de leitura oferecem sumário navegável, contexto editorial, links para outros registros reais e estados explícitos. Metadados de descrição e URL canônica são atualizados por rota; os canônicos usam caminhos relativos à raiz porque o projeto ainda não define um domínio público. Veja o [sitemap e os tipos editoriais](docs/INFORMATION-ARCHITECTURE.md).
 
 ## Comandos
 
@@ -49,6 +50,6 @@ As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLA
 
 O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca ainda não está disponível; páginas históricas temáticas serão preparadas após curadoria e revisão de fontes.
 
-O registro inicial de metodologia fica em `src/content/atlas.json`, é validado por `ContentRepository` com Zod e copiado para a saída do build em `content/`. No navegador, o serviço lê esse asset estático; durante o prerender usa o JSON empacotado para evitar chamadas dependentes de browser. Apenas os slugs conceituais presentes nesse registro são prerenderizados. Veja [as decisões e limites da arquitetura](docs/ARCHITECTURE.md).
+O grafo editorial e suas fontes ficam em `src/content/atlas.json`, são validados por `ContentRepository` com Zod e copiados para a saída do build em `content/`. Incluem registros sobre o processo constituinte de 1987–1988 e a Constituição de 1988; afirmações exibem o estado de revisão realmente cadastrado. No navegador, o serviço lê esse asset estático; durante o prerender usa o JSON empacotado. Veja [as decisões e limites da arquitetura](docs/ARCHITECTURE.md).
 
 As três composições experimentais do prompt 04, suas decisões visuais e capturas estão em [Direção artística](docs/DIRECAO-ARTISTICA.md).

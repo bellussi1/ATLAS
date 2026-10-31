@@ -90,6 +90,12 @@ export const routes: Routes = [
     title: 'Sobre o ATLAS',
   },
   {
+    path: 'fontes',
+    loadComponent: () => import('./pages/source-library-page').then((module) => module.SourceLibraryPage),
+    data: { breadcrumb: 'Fontes' },
+    title: 'Biblioteca de fontes — ATLAS',
+  },
+  {
     path: 'verbete/:slug',
     data: { breadcrumb: 'Verbete' },
     loadComponent: () => import('./features/entry/entry-page').then((module) => module.EntryPage),

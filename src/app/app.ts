@@ -2,6 +2,7 @@ import { AtlasEditorialMarkComponent } from './shared/editorial-mark';
 import { DOCUMENT } from '@angular/common';
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BreadcrumbsComponent } from './shared/breadcrumbs';
 import { AtlasMenuComponent } from './shared/ui-primitives';
@@ -18,6 +19,8 @@ import { AtlasMenuComponent } from './shared/ui-primitives';
 })
 export class AppComponent {
   private readonly document = inject(DOCUMENT);
+  private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
   instantNavigation = true;
   private firstPage = true;
   private pageAnimation?: Animation;
@@ -27,6 +30,7 @@ export class AppComponent {
     inject(Router).events.pipe(takeUntilDestroyed()).subscribe(event => {
       if (!(event instanceof NavigationEnd)) return;
       const path = event.urlAfterRedirects.split(/[?#]/)[0];
+      this.updatePageMetadata(path);
       if (path === previousPath) return;
       previousPath = path;
       this.transitionPage();
@@ -35,6 +39,39 @@ export class AppComponent {
       this.pageAnimation?.cancel();
       this.document.defaultView?.cancelAnimationFrame?.(this.pageFrame);
     });
+  }
+
+  private updatePageMetadata(path: string): void {
+    const pageTitle = this.title.getTitle() || 'ATLAS — compreender o mundo';
+    const description = path === '/fontes'
+      ? 'Consulte as fontes cadastradas no ATLAS, seus localizadores e as leituras relacionadas.'
+      : path === '/conhecimento'
+      ? 'Pesquise verbetes e textos de metodologia realmente disponíveis no acervo do ATLAS.'
+      : path === '/relacoes'
+        ? 'Investigue como o ATLAS relaciona conceitos, afirmações e evidências.'
+        : path === '/tempo-e-espaco'
+          ? 'Consulte o estado atual da exploração temporal e espacial do acervo do ATLAS.'
+          : path.startsWith('/explorar/')
+      ? 'Leia conteúdos editoriais do ATLAS com contexto, relações e estados editoriais identificados.'
+      : path.startsWith('/verbete/')
+        ? 'Consulte um verbete do ATLAS com afirmações, evidências e referências identificáveis.'
+        : path.startsWith('/estudar')
+          ? 'Conheça a proposta de trilhas de estudo do ATLAS e seus materiais disponíveis.'
+          : path === '/'
+            ? 'Explore relações, tempo e espaço, e os conteúdos disponíveis no acervo do ATLAS.'
+          : path === '/sobre'
+            ? 'Conheça a missão e os princípios editoriais da plataforma educacional pública do ATLAS.'
+            : 'Conheça a plataforma educacional pública do ATLAS e seus caminhos de leitura.';
+    this.meta.updateTag({ name: 'description', content: description });
+    let canonical = this.document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = this.document.createElement('link');
+      canonical.rel = 'canonical';
+      this.document.head.appendChild(canonical);
+    }
+    // Root-relative canonicals stay correct for static builds without inventing a production host.
+    canonical.href = path || '/';
+    this.title.setTitle(pageTitle);
   }
 
   transitionPage(): void {

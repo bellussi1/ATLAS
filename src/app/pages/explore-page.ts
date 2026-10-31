@@ -10,8 +10,8 @@ import { editorialTypes } from '../content/content-types';
       <div class="intro">
         <h1 id="page-title">Explorar conteúdos</h1>
         <p class="page__lead">
-          Percorra os formatos previstos pelo ATLAS. Os exemplos atuais explicam a metodologia do
-          projeto; conteúdos históricos serão publicados após curadoria e revisão de fontes.
+          Percorra os formatos editoriais e consulte os registros já disponíveis. Os exemplos de
+          metodologia e os verbetes históricos identificam seu contexto, fontes e estado editorial.
         </p>
       </div>
 

@@ -18,10 +18,13 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
         <app-content-summary headingId="page-summary-title">
           <p class="page__lead">{{ page.summary }}</p>
         </app-content-summary>
-        <p class="page__type">{{ page.statusLabel }}</p>
+        <p class="page__type" [attr.data-editorial-status]="page.status">{{ page.statusLabel }}</p>
         <p class="page__scope">
-          Esta página apresenta a metodologia e os formatos do próprio ATLAS. Ela não contém uma
-          publicação histórica nem substitui revisão editorial.
+          @if (page.status === 'previsto') {
+            Este formato está previsto. A página descreve sua função editorial; ainda não há publicação temática neste registro.
+          } @else {
+            Este é um exemplo de metodologia do ATLAS, não uma publicação histórica. O estado editorial acima identifica a natureza desta página.
+          }
         </p>
 
         @if (type() === 'verbete') {

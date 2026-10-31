@@ -70,7 +70,7 @@ Capturas reais da versão consolidada: [desktop](direcao-artistica/screenshots/h
 
 O usuário escolheu a tela af5d2dc3ee024405ba33e0408ae71d2e do projeto Stitch 15545419207416735639 como referência principal da homepage. A adaptação adota terminal de busca, metadados, grade aparente, rede selecionável com ficha contextual, índice de leituras e percursos por perguntas. Os três modos continuam acessíveis por navegação própria. As fontes locais licenciadas do ATLAS permanecem; não foram importados recursos remotos de tipografia ou imagens do protótipo.
 
-A composição foi adaptada ao acervo validado: conceito, afirmação e fonte de metodologia. Datas, coordenadas, citações, volumes, métricas de acervo, licenças documentais e selos de conformidade do protótipo Stitch não foram transferidos. Sem eventos verificados, a cronologia não é representada como disponível. O Prompt 05.5 anexado não foi executado como tarefa independente.
+A composição foi adaptada ao acervo validado, que agora inclui entidades e relações documentadas do processo constituinte de 1987–1988, além de registros de metodologia. Datas, coordenadas, citações, volumes, métricas de acervo, licenças documentais e selos de conformidade do protótipo Stitch não foram transferidos. A interface de cronologia e mapas não é representada como disponível; os registros mostram suas fontes e estado editorial. O Prompt 05.5 anexado não foi executado como tarefa independente.
 
 A rede é um componente compartilhado por home e Relações; seleção, filtro de categoria, conexões destacadas, ficha e modo de lista usam os mesmos dados e comportamentos. Capturas desta adaptação: [desktop](direcao-artistica/screenshots/home-stitch-desktop.png) e [mobile](direcao-artistica/screenshots/home-stitch-mobile.png).
 

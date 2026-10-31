@@ -9,6 +9,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
+    path: 'fontes',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: 'laboratorio',
     renderMode: RenderMode.Prerender,
   },

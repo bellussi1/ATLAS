@@ -12,6 +12,7 @@ Este sitemap registra a navegação implementada no Prompt 02. Na leitura do rep
 ├── /estudar                          Apresentação do formato de trilhas
 │   └── /estudar/:slug                Detalhe de uma trilha
 ├── /verbete/:slug                    Registro conceitual validado do ATLAS
+├── /fontes                           Biblioteca das fontes e seus usos cadastrados
 ├── /sobre                            Missão e propósito do ATLAS
 └── qualquer caminho desconhecido     Página 404
 ```
@@ -20,13 +21,13 @@ Valores válidos de `:tipo`: `verbete`, `artigo`, `dossie`, `pessoa`, `evento`, 
 
 ## Entradas da página inicial
 
-| Intenção | Destino | Resultado |
+| Caminho | Destino | Resultado |
 | --- | --- | --- |
-| Tenho uma dúvida | `/explorar/verbete/como-ler-um-verbete` | Exemplo acessível que explica o tratamento editorial de um verbete |
-| Quero explorar | `/explorar` | Índice navegável das oito categorias |
-| Quero estudar | `/estudar` | Apresentação do formato de trilhas, com link para seu exemplo de metodologia |
+| Investigar conexões | `/relacoes` | Rede metodológica entre afirmação e evidência |
+| Situar acontecimentos | `/tempo-e-espaco` | Estado vazio explícito até existirem eventos datados e localizados |
+| Pesquisar e ler | `/conhecimento` | Busca nos registros carregados e caminhos para leituras reais |
 
-A primeira entrada não simula uma resposta de busca: leva a uma página real que explica como o ATLAS pretende contextualizar conceitos. A busca da home continua explicitamente indisponível.
+A home destaca três textos de metodologia e oferece busca real nos registros do grafo e nas entradas editoriais. O grafo inclui entidades e relações documentadas sobre o processo constituinte de 1987–1988 e a Constituição de 1988. A interface de cronologia e mapas ainda não está disponível; nenhum mapa ou fronteira é simulado.
 
 O verbete de metodologia em `/explorar/verbete/como-ler-um-verbete` também aponta para `/verbete/metodologia-do-atlas`, a rota canônica que consome o registro estruturado validado por Zod.
 
@@ -43,7 +44,11 @@ O verbete de metodologia em `/explorar/verbete/como-ler-um-verbete` também apon
 | Visualização | `/explorar/visualizacao` | `/explorar/visualizacao/como-ler-uma-visualizacao` — formato previsto |
 | Trilha | `/explorar/trilha` | `/explorar/trilha/como-usar-trilhas` — formato previsto; também acessível em `/estudar/como-usar-trilhas` |
 
-Os três exemplares descrevem a metodologia e as intenções declaradas do próprio projeto. As páginas dos outros formatos estão marcadas como previstas e descrevem somente sua função editorial futura. Não há dados ou afirmações históricas fictícias nestas páginas.
+Os três exemplares descrevem a metodologia e as intenções declaradas do próprio projeto. As páginas de detalhe marcadas como previstas descrevem somente a função editorial futura daquele formato. A rota canônica de verbete apresenta afirmações estruturadas, classificação, estado de revisão e referências do registro JSON. A biblioteca `/fontes` reúne fontes, edições, localizadores e verbetes que as citam, sem tratar o cadastro como validação humana. Páginas de leitura incluem sumário com âncoras, contexto de estado e caminhos relacionados existentes. As afirmações históricas cadastradas permanecem com o estado de revisão indicado no registro; não há dados ou afirmações históricas fictícias nestas páginas.
+
+## Metadados
+
+O título de cada rota vem do Angular Router. A aplicação atualiza a descrição e o link `rel="canonical"` na navegação, removendo query strings e fragmentos do endereço canônico. Como o projeto ainda não define o domínio público, o `href` canônico é root-relative (`/caminho`); a hospedagem poderá publicá-lo como URL absoluta quando o domínio estiver configurado.
 
 ## Navegação, breadcrumbs e acessibilidade
 
@@ -54,3 +59,4 @@ Os três exemplares descrevem a metodologia e as intenções declaradas do próp
 - A home e uma página de detalhe foram verificadas em viewport de 320 px; a escala do título principal se ajusta nesse breakpoint para evitar rolagem horizontal.
 - Categorias e slugs inexistentes mostram estados específicos com link de retorno ao índice de conteúdos.
 - Rotas de categoria e detalhe conhecidas são prerenderizadas a partir dos mesmos dados editoriais; o build permanece static-first.
+- Capturas reais desta etapa: `output/playwright/prompt-08-home-desktop.png`, `output/playwright/prompt-08-home-mobile.png`, `output/playwright/prompt-08-artigo-mobile.png`, `output/playwright/prompt-08-fontes-desktop.png` e `output/playwright/prompt-08-fontes-mobile.png`.

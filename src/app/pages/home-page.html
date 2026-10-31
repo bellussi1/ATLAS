@@ -9,7 +9,7 @@
   </header>
   <div class="research-table">
     <aside class="table-index">
-      <div class="collection-stamp"><span>ATLAS</span><p>Acervo em formação</p><p>Esta mesa reúne os três textos de metodologia disponíveis.</p></div>
+      <div class="collection-stamp"><span>ATLAS</span><p>Acervo em formação</p><p>Esta mesa destaca três textos de metodologia. Pesquise também os verbetes e relações já registrados.</p></div>
       <div class="mobile-sheet-control"><label for="sheet-select">Escolha uma ficha</label><select id="sheet-select" [value]="selected().slug" (change)="selectSlug($any($event.target).value)">@for (entry of readings; track entry.slug) { <option [value]="entry.slug">{{ entry.title }}</option> }</select></div>
       <fieldset class="sheet-selector"><legend>Escolha uma ficha</legend>
         @for (entry of readings; track entry.slug) {
