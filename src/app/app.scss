@@ -2,9 +2,8 @@
 .skip-link { position:fixed;z-index:10;top:.75rem;left:.75rem;padding:.75rem 1rem;transform:translateY(-160%);background:var(--ink);color:var(--paper); }
 .skip-link:focus { transform:translateY(0); }
 .site-header { display:grid;gap:1.25rem;padding:1.25rem var(--grid-gutter);border-bottom:1px solid var(--color-border-strong); }
-.wordmark { color:var(--color-ink);text-decoration:none;justify-self:start; }
-.wordmark__name { display:block;font-size:clamp(3.5rem,7vw,6.5rem);line-height:.8;font-weight:750;letter-spacing:-.09em; }
-.wordmark__name > span { color:var(--color-accent); }
+.wordmark { display:block;width:100%;max-width:24rem;color:var(--color-ink);text-decoration:none;justify-self:start; }
+.wordmark__logo { display:block;width:100%;height:auto; }
 .wordmark__caption { display:block;margin-top:.65rem;font: .8rem/1.4 var(--font-serif); }
 .graphic-doors { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem;min-width:0; }
 .graphic-door { display:block;color:var(--color-ink);text-decoration:none;min-width:0; }
@@ -45,7 +44,8 @@ main:focus { outline:none; }
 .composition-control button { display:inline-flex;gap:1rem;align-items:center;min-height:2.75rem;background:none;border:1px solid var(--color-on-strong-surface);color:white;padding:.5rem .75rem;cursor:pointer; }
 .composition-control button:hover { background:var(--color-on-strong-surface);color:var(--color-indigo); }
 .footer-imprint { display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1.5rem;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--color-on-strong-surface); }
-.footer-signature { font-size:clamp(5.5rem,19vw,19rem);font-weight:750;letter-spacing:-.1em;line-height:.8;color:var(--color-on-strong-surface);text-decoration:none; }
+.footer-signature { display:block;width:min(100%,56rem);text-decoration:none; }
+.footer-signature img { display:block;width:100%;height:auto; }
 .footer-imprint > div { display:flex;flex-wrap:wrap;gap:.75rem 1rem;align-items:baseline;font-size:.75rem; }
 .footer-imprint p { line-height:1.4;margin:0; }
 .footer-imprint > div a { color:white;min-height:2.75rem;display:inline-flex;align-items:center;text-underline-offset:.2em; }

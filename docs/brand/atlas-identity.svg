@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+<rect width="1200" height="520" fill="#fbfaf7"/>
+<g fill="#1c1c1a" font-family="Arial, sans-serif" font-size="18"><text x="50" y="38">Assinatura ATLAS</text><text x="1010" y="38">Símbolo</text><text x="50" y="300">Favicon</text></g>
+<g transform="translate(40 70) scale(1.8)"><g transform="translate(0 6)"><path d="M10 82L40 14H54L26 82Z" fill="#1c1c1a"/>
+<path d="M54 14L88 82H68L43 31Z" fill="#b4231d"/>
+<path d="M32 56H67L73 70H26Z" fill="#edc45b"/>
+<circle cx="82" cy="20" r="10" fill="#85bdb5"/></g><g transform="translate(118 18)" fill="#1c1c1a"><path d="M0 72L24 0H42L66 72H47L43 58H22L18 72ZM27 43H38L32.5 24Z" fill-rule="evenodd"/><path d="M72 0H132V16H111V72H93V16H72Z"/>
+<path d="M142 0H160V56H196V72H142Z"/>
+<g transform="translate(202 0)"><path d="M0 72L24 0H42L66 72H47L43 58H22L18 72ZM27 43H38L32.5 24Z" fill-rule="evenodd"/></g>
+<path d="M338 6L332 21C325 17 318 15 310 15C301 15 297 18 297 22C297 26 301 28 313 31C332 36 341 42 341 53C341 67 329 75 311 75C298 75 285 71 276 65L283 50C293 56 303 59 312 59C320 59 324 57 324 53C324 49 320 47 309 44C289 39 280 34 280 22C280 8 292 0 311 0C321 0 331 2 338 6Z"/></g></g><g transform="translate(1010 88) scale(1.3)"><path d="M10 82L40 14H54L26 82Z" fill="#1c1c1a"/>
+<path d="M54 14L88 82H68L43 31Z" fill="#b4231d"/>
+<path d="M32 56H67L73 70H26Z" fill="#edc45b"/>
+<circle cx="82" cy="20" r="10" fill="#85bdb5"/></g>
+<g transform="translate(65 355) scale(0.16666667)"><rect width="96" height="96" fill="#fbfaf7"/><path d="M10 82L40 14H54L26 82Z" fill="#1c1c1a"/><path d="M54 14L88 82H68L43 31Z" fill="#b4231d"/><path d="M32 56H67L73 70H26Z" fill="#1c1c1a"/></g><g transform="translate(185 347) scale(0.33333333)"><rect width="96" height="96" fill="#fbfaf7"/><path d="M10 82L40 14H54L26 82Z" fill="#1c1c1a"/><path d="M54 14L88 82H68L43 31Z" fill="#b4231d"/><path d="M32 56H67L73 70H26Z" fill="#1c1c1a"/></g><g transform="translate(320 339) scale(0.5)"><rect width="96" height="96" fill="#fbfaf7"/><path d="M10 82L40 14H54L26 82Z" fill="#1c1c1a"/><path d="M54 14L88 82H68L43 31Z" fill="#b4231d"/><path d="M32 56H67L73 70H26Z" fill="#1c1c1a"/></g>
+<g fill="#57544d" font-family="Arial, sans-serif" font-size="15"><text x="65" y="430">16 px</text><text x="185" y="430">32 px</text><text x="320" y="430">48 px</text></g>
+<rect x="560" y="280" width="590" height="200" fill="#37395e"/><text x="590" y="318" font-family="Arial, sans-serif" font-size="18" fill="#fff">Assinatura em fundo escuro</text><g transform="translate(590 350) scale(1.1)"><g transform="translate(0 6)"><path d="M10 82L40 14H54L26 82Z" fill="#ffffff"/>
+<path d="M54 14L88 82H68L43 31Z" fill="#b4231d"/>
+<path d="M32 56H67L73 70H26Z" fill="#edc45b"/>
+<circle cx="82" cy="20" r="10" fill="#85bdb5"/></g><g transform="translate(118 18)" fill="#ffffff"><path d="M0 72L24 0H42L66 72H47L43 58H22L18 72ZM27 43H38L32.5 24Z" fill-rule="evenodd"/><path d="M72 0H132V16H111V72H93V16H72Z"/>
+<path d="M142 0H160V56H196V72H142Z"/>
+<g transform="translate(202 0)"><path d="M0 72L24 0H42L66 72H47L43 58H22L18 72ZM27 43H38L32.5 24Z" fill-rule="evenodd"/></g>
+<path d="M338 6L332 21C325 17 318 15 310 15C301 15 297 18 297 22C297 26 301 28 313 31C332 36 341 42 341 53C341 67 329 75 311 75C298 75 285 71 276 65L283 50C293 56 303 59 312 59C320 59 324 57 324 53C324 49 320 47 309 44C289 39 280 34 280 22C280 8 292 0 311 0C321 0 331 2 338 6Z"/></g></g></svg>

@@ -107,3 +107,26 @@ O footer usa índigo, letras em grande escala e um mosaico navegável que reapro
 Nenhuma dependência ou orçamento de bundle foi adicionado. A assinatura e os desenhos são SVG/CSS locais. A mesa aprovada permanece no centro da home. A skill própria foi atualizada e sincronizada com a instalação local.
 
 Capturas desta extensão: [desktop](direcao-artistica/screenshots/graphic-shell-desktop.png) e [mobile](direcao-artistica/screenshots/graphic-shell-mobile.png).
+
+
+## Marca e ícone da aba
+
+Foi desenhada uma marca própria em vetor: um A aberto de peças geométricas em tinta, vermelho e ocre, acompanhado por um ponto verde. A assinatura ATLAS possui lettering em paths, sem carregar fontes ou imagens externas. Header e footer usam respectivamente a assinatura para fundo claro e a versão inverse. Os links mantêm seus nomes acessíveis.
+
+Arquivos em public/brand:
+
+- atlas-logo.svg e atlas-logo.png: assinatura principal com fundo transparente.
+- atlas-logo-inverse.svg: assinatura para fundo escuro.
+- atlas-symbol.svg e atlas-symbol.png: símbolo isolado.
+- favicon.svg e favicon-32.png: redução em duas cores para a aba.
+- apple-touch-icon.png: redução em 180×180 px.
+
+O arquivo public/favicon.ico contém PNGs de 16, 32 e 48 px. A [prancha da marca](brand/atlas-identity.png) reúne assinatura, símbolo, redução e versão para fundo escuro; o [original vetorial](brand/atlas-identity.svg) também está disponível.
+
+O caminho antigo public/atlas-mark.svg passa a servir a redução atual, preservando a URL anterior. Os links no index usam caminhos absolutos à raiz para funcionar nas rotas internas. Não foi adicionado manifest, service worker ou fluxo de instalação.
+
+A rasterização usou resvg em uma pasta temporária de ferramentas, sem dependências novas na aplicação. O favicon e a marca são estáticos para reconhecimento em escala pequena; as interações do acervo continuam sendo o espaço principal de experimentação.
+
+A skill própria foi ampliada para incorporar novas referências como uma biblioteca viva e manter experimentação com tipografia, peso, cor, hover, transições, âncoras e scroll. As skills de animação orientam oportunidade, execução e revisão; o controle de rolagem, o foco e reduced motion continuam preservados.
+
+Verificação desta entrega: 104 testes passaram; build com 36 rotas estáticas, lint e typecheck passaram. No Chrome, a página ficou sem overflow horizontal em 320 e 1440 px; os quatro arquivos de ícone responderam HTTP 200. Esses checks não representam uma auditoria completa de acessibilidade ou de compatibilidade entre navegadores.

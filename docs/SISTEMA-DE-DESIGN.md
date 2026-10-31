@@ -122,3 +122,10 @@ A skill própria está em .agents/skills/atlas-editorial-geometrico/SKILL.md e f
 
 
 Verificação no Chrome: em 320 px, documento e viewport mediram 320 px; os termos tinham sublinhado computado. Trocar para o artigo atualizou título, motivo rosa e destino de leitura. Acionar contexto por Enter abriu o artigo real Conhecimento com contexto. A tela de leitura também permaneceu sem overflow horizontal. Movimento reduzido estava ativo. A validação automatizada passou com 100 testes em seis arquivos.
+
+
+## Logo e favicon
+
+Usar as assinaturas SVG oficiais em public/brand no header e footer. As imagens são dimensionadas com proporção preservada e tamanhos intrínsecos; dentro de links com aria-label, alt vazio evita repetir o nome. Em fundos escuros, usar atlas-logo-inverse.svg. O símbolo isolado não substitui o nome acessível.
+
+O favicon tem redução própria em SVG/PNG, fallback ICO (16/32/48) e touch icon (180). As versões não são animações. O teste brand-assets.spec.ts verifica XML dos vetores, independência de fontes/imagens externas, resolução dos arquivos apontados no index e estrutura dos ícones ICO.

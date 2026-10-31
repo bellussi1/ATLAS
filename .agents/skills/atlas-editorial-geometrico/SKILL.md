@@ -15,6 +15,18 @@ Preservar a ideia de mesa de pesquisa: índice, ficha selecionada, trecho legív
 
 O usuário rejeitou a home como sequência de painéis minúsculos, rótulos numerados, símbolos genéricos e cards iguais. Também rejeitou repetir a UI de outros projetos. Gastar a expressividade no próprio conteúdo e em uma composição intencional; manter o restante quieto.
 
+## Referências como uma biblioteca viva
+
+O usuário quer que novas referências alimentem continuamente esta skill e que a identidade seja expressiva, extravagante e fora dos padrões convencionais de UI. Ao receber novas imagens, comparar o que elas acrescentam à base aprovada: geometria, ritmo, cores, materiais, peso tipográfico, composição e comportamento. Incorporar decisões duradouras e exemplos observáveis; não acumular prescrições contraditórias nem copiar literalmente peças de terceiros. Registrar a evolução no documento de direção artística e sincronizar a skill instalada com a versão do repositório.
+
+Buscar ativamente momentos interessantes de seleção, aproximação, hover, âncora, scroll, transição e continuidade. Variar escala, peso, cor e organização espacial com intenção. Uma nova referência deve provocar uma investigação visual, não apenas mais uma cor ou card. A ousadia pertence ao projeto e não deve ser importada automaticamente de outros trabalhos.
+
+## Marca
+
+A identidade possui um A geométrico aberto com peças em tinta, vermelho e ocre e um ponto verde. Os arquivos oficiais ficam em public/brand: atlas-logo.svg, atlas-logo-inverse.svg e atlas-symbol.svg. A assinatura tem letras em paths, sem depender de fontes externas. Preservar proporção e espaço de respiro; não deformar ou recriar a marca em CSS ou texto aproximado. A versão inverse acompanha fundos escuros.
+
+O favicon é uma redução em duas cores da mesma silhueta, em favicon.svg e /favicon.ico. Ícones de aba são estáveis e precisam ser legíveis em escala pequena. A expressividade da marca não depende de manter a logo em movimento.
+
 ## Linguagem visual
 
 - Base: papel claro, tinta quase preta, vermelho de ação. A geometria vem do modernismo suíço, de livros/atlas e de arquivos exploráveis; as imagens de referência não são ativos autorizados para publicação.
@@ -40,6 +52,11 @@ AtlasEditorialTextComponent associa um pequeno vocabulário a destinos editoriai
 Selecionar uma ficha deve atualizar título, resumo, trecho, prévia e destino em conjunto. Manter a seleção comunicável e o foco no controle. Cada interação visual precisa de operação por teclado/toque e caminho claro para voltar ou continuar.
 
 ## Movimento
+
+As skills de animação e motion fazem parte da prática do ATLAS: find-animation-opportunities para escolher os momentos, animate e interaction-design para construir, improve-animations e 12-principles-of-animation para revisar e corrigir. Usar as fases pertinentes ao trabalho; não trocar uma implementação autorizada por uma entrega só de recomendações.
+
+Explorar scroll e âncoras como orientação e narrativa quando houver conteúdo que os sustente. Preservar o controle da pessoa sobre a rolagem, o foco no destino e o caminho de volta. Gestos complexos precisam de alternativa por botão/teclado. Não mover parágrafos enquanto são lidos. Ser expressivo na composição e nas respostas às ações, sem impor um espetáculo permanente.
+
 
 Os tokens e componentes existentes são a fonte de verdade. Seleção ocasional por ponteiro pode usar opacidade curta (atualmente 180ms); pressione e confirme sem bloquear entrada. Cancelar animação anterior ao inverter ou selecionar novamente. Teclado e movimento reduzido são imediatos. Não animar páginas repetidamente, nem mover texto durante a leitura.
 
