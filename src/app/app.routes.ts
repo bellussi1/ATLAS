@@ -1,11 +1,4 @@
 import { Routes } from '@angular/router';
-import { AboutPage } from './pages/about-page';
-import { ContentTypePage } from './pages/content-type-page';
-import { EditorialDetailPage } from './pages/editorial-detail-page';
-import { ExplorePage } from './pages/explore-page';
-import { HomePage } from './pages/home-page';
-import { NotFoundPage } from './pages/not-found-page';
-import { StudyPage } from './pages/study-page';
 import {
   contentTypeBreadcrumbResolver,
   contentTypeTitleResolver,
@@ -15,12 +8,12 @@ import {
 } from './content/route-resolvers';
 
 export const routes: Routes = [
-  { path: '', component: HomePage, title: 'ATLAS — compreender o mundo' },
+  { path: '', loadComponent: () => import('./pages/home-page').then((module) => module.HomePage), title: 'ATLAS — compreender o mundo' },
   {
     path: 'explorar',
     data: { breadcrumb: 'Explorar' },
     children: [
-      { path: '', component: ExplorePage, title: 'Explorar conteúdos — ATLAS' },
+      { path: '', loadComponent: () => import('./pages/explore-page').then((module) => module.ExplorePage), title: 'Explorar conteúdos — ATLAS' },
       {
         path: ':tipo',
         resolve: {
@@ -30,12 +23,12 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            component: ContentTypePage,
+            loadComponent: () => import('./pages/content-type-page').then((module) => module.ContentTypePage),
             title: contentTypeTitleResolver,
           },
           {
             path: ':slug',
-            component: EditorialDetailPage,
+            loadComponent: () => import('./pages/editorial-detail-page').then((module) => module.EditorialDetailPage),
             resolve: { breadcrumb: editorialEntryTitleResolver },
             title: editorialEntryTitleResolver,
           },
@@ -47,10 +40,10 @@ export const routes: Routes = [
     path: 'estudar',
     data: { breadcrumb: 'Estudar' },
     children: [
-      { path: '', component: StudyPage, title: 'Estudar — ATLAS' },
+      { path: '', loadComponent: () => import('./pages/study-page').then((module) => module.StudyPage), title: 'Estudar — ATLAS' },
       {
         path: ':slug',
-        component: EditorialDetailPage,
+        loadComponent: () => import('./pages/editorial-detail-page').then((module) => module.EditorialDetailPage),
         data: { editorialType: 'trilha' },
         resolve: { breadcrumb: trailTitleResolver },
         title: trailTitleResolver,
@@ -59,13 +52,19 @@ export const routes: Routes = [
   },
   {
     path: 'sobre',
-    component: AboutPage,
+    loadComponent: () => import('./pages/about-page').then((module) => module.AboutPage),
     data: { breadcrumb: 'Sobre o ATLAS' },
     title: 'Sobre o ATLAS',
   },
   {
+    path: 'verbete/:slug',
+    data: { breadcrumb: 'Verbete' },
+    loadComponent: () => import('./features/entry/entry-page').then((module) => module.EntryPage),
+    title: 'Verbete — ATLAS',
+  },
+  {
     path: '**',
-    component: NotFoundPage,
+    loadComponent: () => import('./pages/not-found-page').then((module) => module.NotFoundPage),
     data: { breadcrumb: 'Página não encontrada' },
     title: 'Página não encontrada — ATLAS',
   },

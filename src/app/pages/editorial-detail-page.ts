@@ -18,6 +18,12 @@ import { EditorialType, getEditorialType } from '../content/content-types';
           publicação histórica nem substitui revisão editorial.
         </p>
 
+        @if (type() === 'verbete') {
+          <a class="related-entry" routerLink="/verbete/metodologia-do-atlas">
+            Abrir o verbete estruturado e validado da metodologia
+          </a>
+        }
+
         @for (section of page.sections; track section.heading) {
           <section class="article-section" [attr.aria-labelledby]="'section-' + $index">
             <h2 [id]="'section-' + $index">{{ section.heading }}</h2>
@@ -44,6 +50,7 @@ import { EditorialType, getEditorialType } from '../content/content-types';
     h1 { max-width: 17ch; margin: 0; font-size: clamp(2.7rem, 6.8vw, 5.5rem); letter-spacing: -.065em; line-height: 1; }
     .page__lead { max-width: 43rem; margin: 1.5rem 0 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
     .page__scope { max-width: 43rem; margin: 1.5rem 0 0; padding-left: 1rem; border-left: .25rem solid var(--signal); color: var(--ink-muted); line-height: 1.6; }
+    .related-entry { display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: 1rem; color: var(--signal); font-weight: 700; text-underline-offset: .2em; }
     .article-section { max-width: 43rem; margin-top: clamp(2.5rem, 6vw, 4rem); }
     h2 { margin: 0 0 .8rem; font: 500 clamp(1.6rem, 3.4vw, 2.1rem)/1.15 var(--serif); }
     .article-section p { margin: .75rem 0 0; line-height: 1.75; }

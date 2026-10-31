@@ -116,6 +116,16 @@ describe('ATLAS application', () => {
     expect(root.textContent).toContain(label);
   });
 
+  it('links the editorial verbete to the validated canonical record', async () => {
+    const harness = await RouterTestingHarness.create(
+      '/explorar/verbete/como-ler-um-verbete',
+    );
+
+    expect(
+      harness.routeNativeElement?.querySelector<HTMLAnchorElement>('.related-entry')?.getAttribute('href'),
+    ).toBe('/verbete/metodologia-do-atlas');
+  });
+
   it.each(editorialEntries.map((entry) => [
     `/explorar/${entry.type}/${entry.slug}`,
     entry.title,
@@ -179,5 +189,21 @@ describe('ATLAS application', () => {
   ])('renders the right page at %s', async (url, heading) => {
     const harness = await RouterTestingHarness.create(url);
     expect(harness.routeNativeElement?.textContent).toContain(heading);
+  });
+
+  it('opens the validated methodology record at its canonical verbete route', async () => {
+    const harness = await RouterTestingHarness.create('/verbete/metodologia-do-atlas');
+    const root = harness.routeNativeElement as HTMLElement;
+
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe('Metodologia do ATLAS');
+    expect(root.textContent).toContain('Afirmações históricas exigem evidência contextual');
+  });
+
+  it('shows a recoverable not-found state for an unknown canonical verbete', async () => {
+    const harness = await RouterTestingHarness.create('/verbete/slug-inexistente');
+    const root = harness.routeNativeElement as HTMLElement;
+
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe('Este verbete não existe');
+    expect(root.querySelector('a[href="/explorar/verbete"]')).not.toBeNull();
   });
 });

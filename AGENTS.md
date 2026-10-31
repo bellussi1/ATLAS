@@ -11,7 +11,8 @@ Construir uma plataforma educacional pública, gratuita, interativa e rigorosa s
 - SCSS é o estilo padrão dos componentes; Tailwind está configurado. Angular CDK pode ser adicionado quando resolver uma necessidade concreta de interação ou acessibilidade.
 - Preservar a arquitetura e os componentes existentes. Não introduzir React, Next.js ou Fastify como framework base.
 - Manter a aplicação static-first. O build Angular atual gera saída estática e faz prerender das rotas públicas; manter SSR/prerender apenas onde compatível com a natureza pública do conteúdo.
-- Rotas atuais: `/`, `/explorar` (índice), `/explorar/:tipo`, `/explorar/:tipo/:slug`, `/estudar`, `/estudar/:slug`, `/sobre` e fallback 404 em `src/app/app.routes.ts`. Os oito tipos editoriais válidos estão em `src/app/content/content-types.ts`. Toda nova rota deve ter título, estado de carregamento/vazio/erro pertinente e cobertura de navegação/teste.
+- Rotas atuais: `/`, `/explorar` (índice), `/explorar/:tipo`, `/explorar/:tipo/:slug`, `/estudar`, `/estudar/:slug`, `/sobre`, `/verbete/:slug` e fallback 404 em `src/app/app.routes.ts`. Os oito tipos editoriais válidos estão em `src/app/content/content-types.ts`; o registro validado da metodologia fica em `src/content/atlas.json`. Toda nova rota deve ter título, estado de carregamento/vazio/erro pertinente e cobertura de navegação/teste.
+- `ContentRepository` mantém o acesso ao conteúdo estático desacoplado das telas; schemas Zod em `src/app/core/content-schema.ts` validam IDs, slugs e referências.
 
 ## Desenvolvimento e verificações
 

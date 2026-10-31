@@ -11,6 +11,7 @@ Este sitemap registra a navegação implementada no Prompt 02. Na leitura do rep
 │       └── /explorar/:tipo/:slug     Detalhe editorial ou de metodologia
 ├── /estudar                          Apresentação do formato de trilhas
 │   └── /estudar/:slug                Detalhe de uma trilha
+├── /verbete/:slug                    Registro conceitual validado do ATLAS
 ├── /sobre                            Missão e propósito do ATLAS
 └── qualquer caminho desconhecido     Página 404
 ```
@@ -26,6 +27,8 @@ Valores válidos de `:tipo`: `verbete`, `artigo`, `dossie`, `pessoa`, `evento`, 
 | Quero estudar | `/estudar` | Apresentação do formato de trilhas, com link para seu exemplo de metodologia |
 
 A primeira entrada não simula uma resposta de busca: leva a uma página real que explica como o ATLAS pretende contextualizar conceitos. A busca da home continua explicitamente indisponível.
+
+O verbete de metodologia em `/explorar/verbete/como-ler-um-verbete` também aponta para `/verbete/metodologia-do-atlas`, a rota canônica que consome o registro estruturado validado por Zod.
 
 ## Tipos e estado editorial
 

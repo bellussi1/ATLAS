@@ -1,6 +1,7 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 import { editorialEntries } from './content/editorial-entries';
 import { editorialTypes } from './content/content-types';
+import { methodologyAtlas } from './core/content-repository';
 
 export const serverRoutes: ServerRoute[] = [
   {
@@ -22,6 +23,15 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       return [{ slug: 'como-usar-trilhas' }];
+    },
+  },
+  {
+    path: 'verbete/:slug',
+    renderMode: RenderMode.Prerender,
+    async getPrerenderParams() {
+      return methodologyAtlas.entities
+        .filter((entity) => entity.kind === 'concept')
+        .map((entity) => ({ slug: entity.slug }));
     },
   },
   {

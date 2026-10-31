@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { BreadcrumbsComponent } from './components/breadcrumbs';
+import { BreadcrumbsComponent } from './shared/breadcrumbs';
 
 @Component({
   selector: 'app-root',

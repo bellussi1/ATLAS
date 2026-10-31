@@ -1,0 +1,49 @@
+{
+  "id": "atlas-methodology",
+  "slug": "metodologia-atlas",
+  "title": "Metodologia do ATLAS",
+  "description": "Critérios editoriais e relações que orientam a produção de conteúdo no ATLAS.",
+  "entityIds": ["concept-methodology"],
+  "entities": [
+    {
+      "id": "concept-methodology",
+      "slug": "metodologia-do-atlas",
+      "kind": "concept",
+      "title": "Metodologia do ATLAS",
+      "summary": "Como o projeto contextualiza afirmações, distingue categorias de conhecimento e organiza suas referências.",
+      "sections": [
+        {
+          "heading": "Contexto e evidência",
+          "paragraphs": [
+            "As regras editoriais do repositório exigem evidência contextual para afirmações históricas. O texto deve permitir que a pessoa leitora compreenda o alcance e os limites de cada afirmação.",
+            "Fato documentado, interpretação, hipótese e alegação controversa são categorias distintas e não devem ser apresentadas como equivalentes."
+          ]
+        },
+        {
+          "heading": "Relações entre conteúdos",
+          "paragraphs": [
+            "O modelo do ATLAS relaciona entidades, afirmações e fontes para tornar explícito o que sustenta cada trecho e como os conteúdos se conectam.",
+            "Este verbete descreve a metodologia do projeto. Não apresenta fatos históricos nem declara revisão humana de conteúdo."
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "source-editorial-rules",
+      "title": "Regras editoriais do repositório",
+      "reference": "AGENTS.md — seção Conteúdo"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-contextual-evidence",
+      "entityId": "concept-methodology",
+      "text": "Afirmações históricas exigem evidência contextual e distinção entre fato documentado, interpretação, hipótese e alegação controversa.",
+      "sourceIds": ["source-editorial-rules"]
+    }
+  ],
+  "relationships": [],
+  "learningPaths": []
+}

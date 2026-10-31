@@ -26,6 +26,7 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 - `/explorar` — índice navegável das oito categorias editoriais
 - `/explorar/:tipo` — índice de uma categoria
 - `/explorar/:tipo/:slug` — página de detalhe editorial ou de metodologia
+- `/verbete/:slug` — verbete carregado do registro JSON estático e validado
 - `/estudar` — apresentação do formato de trilhas
 - `/estudar/como-usar-trilhas` — exemplo de metodologia de estudo
 - `/sobre` — missão do projeto
@@ -46,3 +47,5 @@ As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLA
 | `npm run typecheck` | Checagem TypeScript da aplicação e dos testes |
 
 O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca ainda não está disponível; páginas históricas temáticas serão preparadas após curadoria e revisão de fontes.
+
+O registro inicial de metodologia fica em `src/content/atlas.json`, é validado por `ContentRepository` com Zod e copiado para a saída do build em `content/`. Apenas os slugs conceituais presentes nesse registro são prerenderizados. Veja [as decisões e limites da arquitetura](docs/ARCHITECTURE.md).
