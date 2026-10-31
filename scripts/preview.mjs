@@ -1,0 +1,16 @@
+import { createServer } from 'node:http';
+import { readFile, stat } from 'node:fs/promises';
+import { extname, resolve, sep } from 'node:path';
+
+const root = resolve('dist/atlas/browser');
+const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain' };
+createServer(async (request, response) => {
+  try {
+    const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
+    let file = resolve(root, '.' + pathname);
+    if (file !== root && !file.startsWith(root + sep)) throw new Error('invalid path');
+    if ((await stat(file)).isDirectory()) file = resolve(file, 'index.html');
+    response.writeHead(200, { 'Content-Type': types[extname(file)] ?? 'application/octet-stream' });
+    response.end(await readFile(file));
+  } catch { response.writeHead(404); response.end('Not found'); }
+}).listen(4305, '127.0.0.1', () => console.log('Preview local: http://127.0.0.1:4305'));

@@ -66,6 +66,8 @@ export class AppComponent {
             ? 'Conheça a missão e os princípios editoriais da plataforma educacional pública do ATLAS.'
             : 'Conheça a plataforma educacional pública do ATLAS e seus caminhos de leitura.';
     this.meta.updateTag({ name: 'description', content: description });
+    this.meta.updateTag({ property: 'og:title', content: pageTitle });
+    this.meta.updateTag({ property: 'og:description', content: description });
     let canonical = this.document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonical) {
       canonical = this.document.createElement('link');
