@@ -1,4 +1,22 @@
-import { assetLicenseSchema, atlasSchema, articleSchema, entitySchema, eventSchema, historicalPolitySchema, ideologySchema, institutionSchema, learningPathSchema, personSchema, placeSchema, policySchema, partySchema, governmentSchema, workSchema, relationSchema, knowledgeGraphSchema } from './content-schema';
+import {
+  articleSchema,
+  assetLicenseSchema,
+  atlasSchema,
+  entitySchema,
+  eventSchema,
+  governmentSchema,
+  historicalPolitySchema,
+  ideologySchema,
+  institutionSchema,
+  knowledgeGraphSchema,
+  learningPathSchema,
+  partySchema,
+  personSchema,
+  placeSchema,
+  policySchema,
+  relationSchema,
+  workSchema,
+} from './content-schema';
 
 const validAtlas = {
   id: 'atlas-methodology',
@@ -23,9 +41,27 @@ const validAtlas = {
       sections: [{ heading: 'Contexto', paragraphs: ['Conteúdo de método.'] }],
     },
   ],
-  sources: [{ id: 'source-guidelines', title: 'Regras editoriais', url: null, edition: 'AGENTS.md — seção Design e conteúdo', publicationDate: null }],
-  evidences: [{ id: 'evidence-guidelines', sourceId: 'source-guidelines', locator: 'seção Conteúdo', accessedAt: '2026-10-31', note: null }],
-  citations: [{ id: 'citation-guidelines', evidenceId: 'evidence-guidelines', relation: 'supports' }],
+  sources: [
+    {
+      id: 'source-guidelines',
+      title: 'Regras editoriais',
+      url: null,
+      edition: 'AGENTS.md — seção Design e conteúdo',
+      publicationDate: null,
+    },
+  ],
+  evidences: [
+    {
+      id: 'evidence-guidelines',
+      sourceId: 'source-guidelines',
+      locator: 'seção Conteúdo',
+      accessedAt: '2026-10-31',
+      note: null,
+    },
+  ],
+  citations: [
+    { id: 'citation-guidelines', evidenceId: 'evidence-guidelines', relation: 'supports' },
+  ],
   claims: [
     {
       id: 'claim-context',
@@ -36,8 +72,27 @@ const validAtlas = {
       citationIds: ['citation-guidelines'],
     },
   ],
-  reviews: [{ id: 'review-context', claimId: 'claim-context', status: 'pending', reviewer: null, reviewedAt: null, note: null }],
-  assetLicenses: [{ id: 'license-logo', assetPath: '/brand/atlas-logo.svg', creator: 'ATLAS', license: null, licenseUrl: null, status: 'unknown', reproduction: 'blocked' }],
+  reviews: [
+    {
+      id: 'review-context',
+      claimId: 'claim-context',
+      status: 'pending',
+      reviewer: null,
+      reviewedAt: null,
+      note: null,
+    },
+  ],
+  assetLicenses: [
+    {
+      id: 'license-logo',
+      assetPath: '/brand/atlas-logo.svg',
+      creator: 'ATLAS',
+      license: null,
+      licenseUrl: null,
+      status: 'unknown',
+      reproduction: 'blocked',
+    },
+  ],
   relations: [],
   learningPaths: [],
 };
@@ -67,11 +122,44 @@ describe('atlasSchema', () => {
     });
     const danglingRelationship = atlasSchema.safeParse({
       ...validAtlas,
-      relations: [{ id: 'relation-1', fromEntityId: 'concept-methodology', toEntityId: 'entity-missing', type: 'editorial-link', label: 'relaciona', reverseLabel: 'é relacionado por', context: 'Contexto editorial.', temporalExtent: null, uncertainty: 'unknown', evidenceIds: [] }],
+      relations: [
+        {
+          id: 'relation-1',
+          fromEntityId: 'concept-methodology',
+          toEntityId: 'entity-missing',
+          type: 'editorial-link',
+          label: 'relaciona',
+          reverseLabel: 'é relacionado por',
+          context: 'Contexto editorial.',
+          temporalExtent: null,
+          uncertainty: 'unknown',
+          evidenceIds: [],
+        },
+      ],
     });
     const danglingGraphRelationship = knowledgeGraphSchema.safeParse({
-      id: 'knowledge-graph-atlas', version: '1.0.0', updatedAt: '2026-10-31',
-      atlases: [{ ...validAtlas, relations: [{ id: 'relation-2', fromEntityId: 'concept-methodology', toEntityId: 'entity-missing', type: 'editorial-link', label: 'relaciona', reverseLabel: 'é relacionado por', context: 'Contexto editorial.', temporalExtent: null, uncertainty: 'unknown', evidenceIds: [] }] }],
+      id: 'knowledge-graph-atlas',
+      version: '1.0.0',
+      updatedAt: '2026-10-31',
+      atlases: [
+        {
+          ...validAtlas,
+          relations: [
+            {
+              id: 'relation-2',
+              fromEntityId: 'concept-methodology',
+              toEntityId: 'entity-missing',
+              type: 'editorial-link',
+              label: 'relaciona',
+              reverseLabel: 'é relacionado por',
+              context: 'Contexto editorial.',
+              temporalExtent: null,
+              uncertainty: 'unknown',
+              evidenceIds: [],
+            },
+          ],
+        },
+      ],
     });
     const missingSourceReference = atlasSchema.safeParse({
       ...validAtlas,
@@ -104,7 +192,12 @@ describe('atlasSchema', () => {
       ...validAtlas,
       entities: [
         ...validAtlas.entities,
-        { ...validAtlas.entities[0], id: 'concept-extra', slug: 'conceito-extra', title: 'Conceito extra' },
+        {
+          ...validAtlas.entities[0],
+          id: 'concept-extra',
+          slug: 'conceito-extra',
+          title: 'Conceito extra',
+        },
       ],
     });
 
@@ -112,18 +205,38 @@ describe('atlasSchema', () => {
   });
 
   it('rejects reversed and contradictory temporal ranges', () => {
-    expect(atlasSchema.safeParse({
-      ...validAtlas,
-      entities: [{ ...validAtlas.entities[0], temporalExtent: {
-        startYear: 1988, endYear: 1987, precision: 'range', label: null,
-      } }],
-    }).success).toBe(false);
-    expect(atlasSchema.safeParse({
-      ...validAtlas,
-      entities: [{ ...validAtlas.entities[0], temporalExtent: {
-        startYear: 1988, endYear: null, precision: 'unknown', label: null,
-      } }],
-    }).success).toBe(false);
+    expect(
+      atlasSchema.safeParse({
+        ...validAtlas,
+        entities: [
+          {
+            ...validAtlas.entities[0],
+            temporalExtent: {
+              startYear: 1988,
+              endYear: 1987,
+              precision: 'range',
+              label: null,
+            },
+          },
+        ],
+      }).success,
+    ).toBe(false);
+    expect(
+      atlasSchema.safeParse({
+        ...validAtlas,
+        entities: [
+          {
+            ...validAtlas.entities[0],
+            temporalExtent: {
+              startYear: 1988,
+              endYear: null,
+              precision: 'unknown',
+              label: null,
+            },
+          },
+        ],
+      }).success,
+    ).toBe(false);
   });
 
   it('models all requested entity types and learning paths with linked entities', () => {
@@ -150,12 +263,24 @@ describe('atlasSchema', () => {
     expect(personSchema.safeParse({ ...base, kind: 'person' }).success).toBe(true);
     expect(eventSchema.safeParse({ ...base, kind: 'event' }).success).toBe(true);
     expect(articleSchema.safeParse({ ...base, kind: 'article' }).success).toBe(true);
-    for (const kind of ['ideology', 'concept', 'work', 'historical-polity', 'place', 'party', 'institution', 'government', 'policy']) {
+    for (const kind of [
+      'ideology',
+      'concept',
+      'work',
+      'historical-polity',
+      'place',
+      'party',
+      'institution',
+      'government',
+      'policy',
+    ]) {
       expect(entitySchema.safeParse({ ...base, kind }).success).toBe(true);
     }
     expect(ideologySchema.safeParse({ ...base, kind: 'ideology' }).success).toBe(true);
     expect(workSchema.safeParse({ ...base, kind: 'work' }).success).toBe(true);
-    expect(historicalPolitySchema.safeParse({ ...base, kind: 'historical-polity' }).success).toBe(true);
+    expect(historicalPolitySchema.safeParse({ ...base, kind: 'historical-polity' }).success).toBe(
+      true,
+    );
     expect(placeSchema.safeParse({ ...base, kind: 'place' }).success).toBe(true);
     expect(partySchema.safeParse({ ...base, kind: 'party' }).success).toBe(true);
     expect(institutionSchema.safeParse({ ...base, kind: 'institution' }).success).toBe(true);
@@ -163,28 +288,59 @@ describe('atlasSchema', () => {
     expect(policySchema.safeParse({ ...base, kind: 'policy' }).success).toBe(true);
     expect(learningPathSchema.safeParse(path).success).toBe(true);
     expect(atlasSchema.safeParse({ ...validAtlas, learningPaths: [path] }).success).toBe(true);
-    expect(atlasSchema.safeParse({
-      ...validAtlas,
-      learningPaths: [{ ...path, entityIds: ['entity-missing'] }],
-    }).success).toBe(false);
+    expect(
+      atlasSchema.safeParse({
+        ...validAtlas,
+        learningPaths: [{ ...path, entityIds: ['entity-missing'] }],
+      }).success,
+    ).toBe(false);
   });
 
   it('requires directional relations to describe their reverse and evidence-backed historical claims', () => {
     const result = relationSchema.safeParse({
-      id: 'relation-influence', fromEntityId: 'person-a', toEntityId: 'concept-b', type: 'influence',
-      label: 'influenciou', reverseLabel: 'recebeu influência de', context: 'Atribuição documentada.',
+      id: 'relation-influence',
+      fromEntityId: 'person-a',
+      toEntityId: 'concept-b',
+      type: 'influence',
+      label: 'influenciou',
+      reverseLabel: 'recebeu influência de',
+      context: 'Atribuição documentada.',
       temporalExtent: { startYear: 1987, endYear: 1988, precision: 'year', label: null },
-      uncertainty: 'moderate', evidenceIds: [],
+      uncertainty: 'moderate',
+      evidenceIds: [],
     });
     expect(result.success).toBe(false);
   });
 
   it('accepts a versioned knowledge graph containing multiple atlases', () => {
-    const otherAtlas = { ...validAtlas, id: 'atlas-politics', slug: 'politics', title: 'Política', entityIds: ['person-example'], entities: [{
-      ...validAtlas.entities[0], id: 'person-example', slug: 'pessoa-exemplo', kind: 'person' as const,
-    }], sources: [], evidences: [], citations: [], claims: [], reviews: [], assetLicenses: [], relations: [], learningPaths: [] };
+    const otherAtlas = {
+      ...validAtlas,
+      id: 'atlas-politics',
+      slug: 'politics',
+      title: 'Política',
+      entityIds: ['person-example'],
+      entities: [
+        {
+          ...validAtlas.entities[0],
+          id: 'person-example',
+          slug: 'pessoa-exemplo',
+          kind: 'person' as const,
+        },
+      ],
+      sources: [],
+      evidences: [],
+      citations: [],
+      claims: [],
+      reviews: [],
+      assetLicenses: [],
+      relations: [],
+      learningPaths: [],
+    };
     const result = knowledgeGraphSchema.safeParse({
-      id: 'knowledge-graph-atlas', version: '1.0.0', updatedAt: '2026-10-31', atlases: [validAtlas, otherAtlas],
+      id: 'knowledge-graph-atlas',
+      version: '1.0.0',
+      updatedAt: '2026-10-31',
+      atlases: [validAtlas, otherAtlas],
     });
     expect(result.success).toBe(true);
   });
@@ -193,15 +349,24 @@ describe('atlasSchema', () => {
     expect(atlasSchema.safeParse({ ...validAtlas, evidences: [] }).success).toBe(false);
     expect(atlasSchema.safeParse({ ...validAtlas, citations: [] }).success).toBe(false);
     expect(atlasSchema.safeParse({ ...validAtlas, reviews: [] }).success).toBe(false);
-    expect(atlasSchema.safeParse({ ...validAtlas, claims: [{ ...validAtlas.claims[0], citationIds: [] }] }).success).toBe(false);
-    expect(atlasSchema.safeParse({
-      ...validAtlas,
-      evidences: [{ ...validAtlas.evidences[0], sourceId: 'source-missing' }],
-    }).success).toBe(false);
-    expect(atlasSchema.safeParse({
-      ...validAtlas,
-      evidences: [{ ...validAtlas.evidences[0], locator: '  ' }],
-    }).success).toBe(false);
+    expect(
+      atlasSchema.safeParse({
+        ...validAtlas,
+        claims: [{ ...validAtlas.claims[0], citationIds: [] }],
+      }).success,
+    ).toBe(false);
+    expect(
+      atlasSchema.safeParse({
+        ...validAtlas,
+        evidences: [{ ...validAtlas.evidences[0], sourceId: 'source-missing' }],
+      }).success,
+    ).toBe(false);
+    expect(
+      atlasSchema.safeParse({
+        ...validAtlas,
+        evidences: [{ ...validAtlas.evidences[0], locator: '  ' }],
+      }).success,
+    ).toBe(false);
   });
 
   it('requires verified reviews to identify a human and a review date', () => {
@@ -214,20 +379,39 @@ describe('atlasSchema', () => {
   });
 
   it('blocks reproduction when an asset license is unknown', () => {
-    expect(assetLicenseSchema.safeParse({
-      id: 'license-unknown', assetPath: '/image.png', creator: null, license: null,
-      licenseUrl: null, status: 'unknown', reproduction: 'allowed',
-    }).success).toBe(false);
+    expect(
+      assetLicenseSchema.safeParse({
+        id: 'license-unknown',
+        assetPath: '/image.png',
+        creator: null,
+        license: null,
+        licenseUrl: null,
+        status: 'unknown',
+        reproduction: 'allowed',
+      }).success,
+    ).toBe(false);
   });
 
   it('rejects known licenses without terms and duplicate asset paths', () => {
-    expect(assetLicenseSchema.safeParse({
-      id: 'license-incomplete', assetPath: '/image.png', creator: null, license: null,
-      licenseUrl: null, status: 'known', reproduction: 'allowed',
-    }).success).toBe(false);
-    expect(atlasSchema.safeParse({
-      ...validAtlas,
-      assetLicenses: [...validAtlas.assetLicenses, { ...validAtlas.assetLicenses[0], id: 'license-second' }],
-    }).success).toBe(false);
+    expect(
+      assetLicenseSchema.safeParse({
+        id: 'license-incomplete',
+        assetPath: '/image.png',
+        creator: null,
+        license: null,
+        licenseUrl: null,
+        status: 'known',
+        reproduction: 'allowed',
+      }).success,
+    ).toBe(false);
+    expect(
+      atlasSchema.safeParse({
+        ...validAtlas,
+        assetLicenses: [
+          ...validAtlas.assetLicenses,
+          { ...validAtlas.assetLicenses[0], id: 'license-second' },
+        ],
+      }).success,
+    ).toBe(false);
   });
 });

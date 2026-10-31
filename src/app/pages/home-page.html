@@ -1,49 +1,148 @@
 <section class="research-room" aria-labelledby="home-title">
   <header class="room-header">
-    <h1 appHeading="page" id="home-title">Tudo<br /> se <em>liga.</em></h1>
-    <div class="room-intro"><p>História, política, economia e sociedade</p><p>Escolha um ponto. Descubra uma conexão. Abra uma leitura e continue investigando.</p></div>
+    <h1 appHeading="page" id="home-title">
+      Tudo<br />
+      se <em>liga.</em>
+    </h1>
+    <div class="room-intro">
+      <p>História, política, economia e sociedade</p>
+      <p>Escolha um ponto. Descubra uma conexão. Abra uma leitura e continue investigando.</p>
+    </div>
     <form role="search" aria-label="Busca no ATLAS" (submit)="search($event)">
-      <app-text-field controlId="atlas-search" label="Procurar no acervo" type="search" placeholder="Um assunto, uma pergunta…" [value]="query()" (valueChange)="query.set($event)" />
+      <app-text-field
+        controlId="atlas-search"
+        label="Procurar no acervo"
+        type="search"
+        placeholder="Um assunto, uma pergunta…"
+        [value]="query()"
+        (valueChange)="query.set($event)"
+      />
       <button class="search-button" type="submit">Pesquisar</button>
     </form>
   </header>
-  <section class="connections" aria-labelledby="connections-title"><header class="section-heading"><h2 id="connections-title">Um atlas para explorar.</h2><a appEditorialLink routerLink="/atlas/marxismo">Explorar Marxismo e economia política ↗</a></header><p>Pessoas, obras e debates sobre valor e trabalho. Entre no atlas para conhecer os autores e seguir relações com contexto e fontes.</p></section>
-  <header class="section-heading archive-heading"><h2>Uma mesa de pesquisa.</h2><span>Selecione uma ficha para aproximar a leitura</span></header>
+  <section class="connections" aria-labelledby="connections-title">
+    <header class="section-heading">
+      <h2 id="connections-title">Um atlas para explorar.</h2>
+      <a appEditorialLink routerLink="/atlas/marxismo">Explorar Marxismo e economia política ↗</a>
+    </header>
+    <p>
+      Pessoas, obras e debates sobre valor e trabalho. Entre no atlas para conhecer os autores e
+      seguir relações com contexto e fontes.
+    </p>
+  </section>
+  <header class="section-heading archive-heading">
+    <h2>Uma mesa de pesquisa.</h2>
+    <span>Selecione uma ficha para aproximar a leitura</span>
+  </header>
   <div class="research-table">
     <aside class="table-index">
-      <div class="collection-stamp"><span>ATLAS</span><p>Acervo em formação</p><p>Esta mesa destaca três textos de metodologia. Pesquise também os verbetes e relações já registrados.</p></div>
-      <div class="mobile-sheet-control"><label for="sheet-select">Escolha uma ficha</label><select id="sheet-select" [value]="selected().slug" (change)="selectSlug($any($event.target).value)">@for (entry of readings; track entry.slug) { <option [value]="entry.slug">{{ entry.title }}</option> }</select></div>
-      <fieldset class="sheet-selector"><legend>Escolha uma ficha</legend>
+      <div class="collection-stamp">
+        <span>ATLAS</span>
+        <p>Acervo em formação</p>
+        <p>
+          Esta mesa destaca três textos de metodologia. Pesquise também os verbetes e relações já
+          registrados.
+        </p>
+      </div>
+      <div class="mobile-sheet-control">
+        <label for="sheet-select">Escolha uma ficha</label
+        ><select
+          id="sheet-select"
+          [value]="selected().slug"
+          (change)="selectSlug($any($event.target).value)"
+        >
+          @for (entry of readings; track entry.slug) {
+            <option [value]="entry.slug">{{ entry.title }}</option>
+          }
+        </select>
+      </div>
+      <fieldset class="sheet-selector">
+        <legend>Escolha uma ficha</legend>
         @for (entry of readings; track entry.slug) {
-          <button class="sheet-choice" type="button" [attr.aria-pressed]="selected().slug === entry.slug" (click)="select(entry, $event)">
-            <app-editorial-mark [kind]="entry.type" /><span class="choice-kind">{{ entry.type }}</span><strong>{{ entry.title }}</strong><span class="choice-indicator" aria-hidden="true">{{ selected().slug === entry.slug ? '●' : '○' }}</span>
+          <button
+            class="sheet-choice"
+            type="button"
+            [attr.aria-pressed]="selected().slug === entry.slug"
+            (click)="select(entry, $event)"
+          >
+            <app-editorial-mark [kind]="entry.type" /><span class="choice-kind">{{
+              entry.type
+            }}</span
+            ><strong>{{ entry.title }}</strong
+            ><span class="choice-indicator" aria-hidden="true">{{
+              selected().slug === entry.slug ? '●' : '○'
+            }}</span>
           </button>
         }
       </fieldset>
-      <p class="table-instruction">As fichas são entradas para leitura, não reproduções de documentos históricos.</p>
+      <p class="table-instruction">
+        As fichas são entradas para leitura, não reproduções de documentos históricos.
+      </p>
     </aside>
     <div class="document-space">
       <article class="reading-sheet" #sheet aria-labelledby="sheet-title">
-        <header class="sheet-header"><span>{{ selected().statusLabel }}</span><span>ATLAS / leitura</span></header>
+        <header class="sheet-header">
+          <span>{{ selected().statusLabel }}</span
+          ><span>ATLAS / leitura</span>
+        </header>
         <div class="sheet-content">
-          <div class="sheet-identity"><a class="sheet-type" appEditorialLink [routerLink]="'/explorar/' + selected().type">{{ selected().type }}</a><app-editorial-mark [kind]="selected().type" /></div>
+          <div class="sheet-identity">
+            <a class="sheet-type" appEditorialLink [routerLink]="'/explorar/' + selected().type">{{
+              selected().type
+            }}</a
+            ><app-editorial-mark [kind]="selected().type" />
+          </div>
           <h2 id="sheet-title">{{ selected().title }}</h2>
           <p class="sheet-summary"><app-editorial-text [text]="selected().summary" /></p>
-          <div class="excerpt"><h3>{{ selected().sections[0].heading }}</h3><p><app-editorial-text [text]="selected().sections[0].paragraphs[0]" /></p></div>
-          <div class="sheet-actions"><button class="reading-preview-trigger" type="button" [appReadingPreview]="selected()" [attr.aria-label]="'Prévia de ' + selected().title">Aproximar a leitura</button><a appEditorialLink [routerLink]="entryPath(selected().type, selected().slug)">Ler o texto completo</a></div>
+          <div class="excerpt">
+            <h3>{{ selected().sections[0].heading }}</h3>
+            <p><app-editorial-text [text]="selected().sections[0].paragraphs[0]" /></p>
+          </div>
+          <div class="sheet-actions">
+            <button
+              class="reading-preview-trigger"
+              type="button"
+              [appReadingPreview]="selected()"
+              [attr.aria-label]="'Prévia de ' + selected().title"
+            >
+              Aproximar a leitura</button
+            ><a appEditorialLink [routerLink]="entryPath(selected().type, selected().slug)"
+              >Ler o texto completo</a
+            >
+          </div>
         </div>
-        <footer class="sheet-footer"><span>{{ selected().sections.length }} seções</span><span>Conteúdo sobre o método do projeto</span></footer>
+        <footer class="sheet-footer">
+          <span>{{ selected().sections.length }} seções</span
+          ><span>Conteúdo sobre o método do projeto</span>
+        </footer>
       </article>
-
     </div>
   </div>
   <p class="selection-status" role="status">Na mesa: {{ selected().title }}.</p>
   <section class="pathways" aria-labelledby="pathways-title">
-    <header><h2 id="pathways-title">Mude o ponto<br />de vista.</h2><p>Você pode partir de uma conexão, de um lugar no tempo ou de uma leitura.</p></header>
+    <header>
+      <h2 id="pathways-title">Mude o ponto<br />de vista.</h2>
+      <p>Você pode partir de uma conexão, de um lugar no tempo ou de uma leitura.</p>
+    </header>
     <nav aria-label="Modos de exploração">
-      <a class="pathway pathway--relations" data-entry="relations" routerLink="/relacoes"><strong>Relações</strong><p>Examine o vínculo entre conceito, afirmação e fonte.</p><span>Investigar conexões</span></a>
-      <a class="pathway pathway--time" data-entry="time" routerLink="/tempo-e-espaco"><strong>Tempo e espaço</strong><p>Há acontecimentos datados no acervo e uma linha do tempo para explorá-los; mapas ainda não estão disponíveis.</p><span>Situar acontecimentos</span></a>
-      <a class="pathway pathway--knowledge" data-entry="knowledge" routerLink="/conhecimento"><strong>Conhecimento</strong><p>Pesquise o acervo e encontre outras entradas de leitura.</p><span>Percorrer os registros</span></a>
+      <a class="pathway pathway--relations" data-entry="relations" routerLink="/relacoes"
+        ><strong>Relações</strong>
+        <p>Examine o vínculo entre conceito, afirmação e fonte.</p>
+        <span>Investigar conexões</span></a
+      >
+      <a class="pathway pathway--time" data-entry="time" routerLink="/tempo-e-espaco"
+        ><strong>Tempo e espaço</strong>
+        <p>
+          Há acontecimentos datados no acervo e uma linha do tempo para explorá-los; mapas ainda não
+          estão disponíveis.
+        </p>
+        <span>Situar acontecimentos</span></a
+      >
+      <a class="pathway pathway--knowledge" data-entry="knowledge" routerLink="/conhecimento"
+        ><strong>Conhecimento</strong>
+        <p>Pesquise o acervo e encontre outras entradas de leitura.</p>
+        <span>Percorrer os registros</span></a
+      >
     </nav>
   </section>
 </section>

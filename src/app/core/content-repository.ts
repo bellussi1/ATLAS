@@ -1,13 +1,14 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { map, type Observable, of, shareReplay } from 'rxjs';
+
 import methodologyAtlasData from '../../content/atlas.json';
-import { Observable, map, of, shareReplay } from 'rxjs';
-import { knowledgeGraphSchema } from './content-schema';
-import { queryKnowledgeEntities, queryKnowledgeRelations } from './knowledge-graph';
-import { buildDiscoveryIndex } from './discovery-index';
 import type { Atlas, Entity, KnowledgeGraph } from './content-schema';
+import { knowledgeGraphSchema } from './content-schema';
+import { buildDiscoveryIndex } from './discovery-index';
 import type { KnowledgeEntityQuery, KnowledgeRelationQuery } from './knowledge-graph';
+import { queryKnowledgeEntities, queryKnowledgeRelations } from './knowledge-graph';
 
 export const methodologyKnowledgeGraph = knowledgeGraphSchema.parse(methodologyAtlasData);
 export const methodologyAtlas = methodologyKnowledgeGraph.atlases[0];
@@ -39,7 +40,10 @@ export class ContentRepository {
     return atlas.entities.find((entity) => entity.slug === slug);
   }
 
-  findEntityBySlug(slug: string | null, graph: KnowledgeGraph = this.knowledgeGraph): Entity | undefined {
+  findEntityBySlug(
+    slug: string | null,
+    graph: KnowledgeGraph = this.knowledgeGraph,
+  ): Entity | undefined {
     if (!slug) return undefined;
     return graph.atlases.flatMap((atlas) => atlas.entities).find((entity) => entity.slug === slug);
   }
@@ -48,6 +52,10 @@ export class ContentRepository {
     return graph.atlases.find((atlas) => atlas.entities.some((entity) => entity.id === entityId));
   }
 
-  queryEntities(query: KnowledgeEntityQuery) { return queryKnowledgeEntities(this.knowledgeGraph, query); }
-  queryRelations(entityId: string, query: KnowledgeRelationQuery = {}) { return queryKnowledgeRelations(this.knowledgeGraph, entityId, query); }
+  queryEntities(query: KnowledgeEntityQuery) {
+    return queryKnowledgeEntities(this.knowledgeGraph, query);
+  }
+  queryRelations(entityId: string, query: KnowledgeRelationQuery = {}) {
+    return queryKnowledgeRelations(this.knowledgeGraph, entityId, query);
+  }
 }

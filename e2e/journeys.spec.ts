@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test('search, read and follow a documented relationship', async ({ page }) => {
   await page.goto('/');
@@ -12,7 +12,9 @@ test('search, read and follow a documented relationship', async ({ page }) => {
 
 test('timeline opens an event', async ({ page }) => {
   await page.goto('/tempo-e-espaco/');
-  const event = page.locator('.timeline-list li').filter({ has: page.locator('a[href="/verbete/promulgacao-constituicao-1988"]') });
+  const event = page
+    .locator('.timeline-list li')
+    .filter({ has: page.locator('a[href="/verbete/promulgacao-constituicao-1988"]') });
   await event.getByRole('button', { name: 'Ver contexto' }).click();
   await expect(event.locator('.detail')).toContainText('Evento delimitado');
   await event.locator('.timeline-list__row a').click();
@@ -44,15 +46,24 @@ test('mobile timeline and study remain usable with reduced motion', async ({ pag
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/tempo-e-espaco/');
-  await expect(page.locator('.timeline-list a[href="/verbete/promulgacao-constituicao-1988"]')).toBeVisible();
+  await expect(
+    page.locator('.timeline-list a[href="/verbete/promulgacao-constituicao-1988"]'),
+  ).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await expect(page.getByText('Role a tabela para o lado para ver todos os registros.')).toBeVisible();
-  await expect(page.getByRole('region', { name: /Tabela comparativa/ })).toHaveAttribute('tabindex', '0');
+  await expect(
+    page.getByText('Role a tabela para o lado para ver todos os registros.'),
+  ).toBeVisible();
+  await expect(page.getByRole('region', { name: /Tabela comparativa/ })).toHaveAttribute(
+    'tabindex',
+    '0',
+  );
   await page.goto('/estudar/');
   await page.getByLabel('Examinar sua evidência e seu contexto').check();
   await page.getByRole('button', { name: 'Conferir resposta' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Correto' })).toBeVisible();
-  expect(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches)).toBe(true);
+  expect(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches)).toBe(
+    true,
+  );
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 
@@ -85,10 +96,14 @@ test('mobile home directs exploration to dedicated atlas and relation pages', as
   await page.getByRole('button', { name: 'Pessoa Karl Marx', exact: true }).focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('.context h2')).toContainText('Karl Marx');
-  await expect(page.locator('.relation-statement').filter({ hasText: 'analisa criticamente' })).toContainText('Adam Smith');
+  await expect(
+    page.locator('.relation-statement').filter({ hasText: 'analisa criticamente' }),
+  ).toContainText('Adam Smith');
   await page.getByRole('button', { name: 'Explorar Adam Smith →', exact: true }).click();
   await expect(page.locator('.context h2')).toContainText('Adam Smith');
   await expect(page.locator('.context h2')).toBeFocused();
-  await expect(page.locator('.relation-statement').filter({ hasText: 'é analisado criticamente por' })).toContainText('Karl Marx');
+  await expect(
+    page.locator('.relation-statement').filter({ hasText: 'é analisado criticamente por' }),
+  ).toContainText('Karl Marx');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

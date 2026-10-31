@@ -3,6 +3,7 @@ const eslint = require('@eslint/js');
 const { defineConfig } = require('eslint/config');
 const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
+const simpleImportSort = require('eslint-plugin-simple-import-sort');
 
 module.exports = defineConfig([
   {
@@ -14,7 +15,32 @@ module.exports = defineConfig([
       angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
+    plugins: { 'simple-import-sort': simpleImportSort },
     rules: {
+      '@typescript-eslint/member-ordering': [
+        'error',
+        {
+          classes: {
+            memberTypes: [
+              'field',
+              'constructor',
+              'get',
+              'set',
+              'public-method',
+              'protected-method',
+              'private-method',
+              '#private-method',
+            ],
+            order: 'as-written',
+          },
+        },
+      ],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
+      ],
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
       '@angular-eslint/directive-selector': [
         'error',
         {

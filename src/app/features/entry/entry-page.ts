@@ -1,19 +1,27 @@
-import { AtlasEditorialTextComponent } from '../../shared/editorial-text';
-import { AtlasClaimReferencesComponent } from '../../shared/claim-references';
-import { AtlasReadingOutlineComponent } from '../../shared/reading-outline';
-import { AtlasContinueReadingComponent } from '../../shared/continue-reading';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { catchError, of } from 'rxjs';
+
 import { ContentRepository } from '../../core/content-repository';
-import { queryKnowledgeRelations } from '../../core/knowledge-graph';
 import { safeDiscoveryOrigin } from '../../core/discovery-index';
+import { queryKnowledgeRelations } from '../../core/knowledge-graph';
+import { AtlasClaimReferencesComponent } from '../../shared/claim-references';
+import { AtlasContinueReadingComponent } from '../../shared/continue-reading';
+import { AtlasEditorialTextComponent } from '../../shared/editorial-text';
+import { AtlasReadingOutlineComponent } from '../../shared/reading-outline';
 import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
 
 @Component({
   selector: 'app-entry-page',
-  imports: [RouterLink, AtlasReadingOutlineComponent, AtlasContinueReadingComponent, AtlasEditorialTextComponent, AtlasClaimReferencesComponent, AtlasEditorialLinkDirective],
+  imports: [
+    RouterLink,
+    AtlasReadingOutlineComponent,
+    AtlasContinueReadingComponent,
+    AtlasEditorialTextComponent,
+    AtlasClaimReferencesComponent,
+    AtlasEditorialLinkDirective,
+  ],
   template: `
     @if (graph() === null) {
       <section class="page" aria-labelledby="page-title" role="alert">
@@ -29,12 +37,25 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
         <section class="entry-context" aria-labelledby="context-title">
           <h2 id="context-title">Contexto</h2>
           <p>{{ entry.context }}</p>
-          @if (entry.temporalExtent?.label) { <p class="entry-detail"><strong>Período:</strong> {{ entry.temporalExtent?.label }}</p> }
-          @if (entry.aliases.length) { <p class="entry-detail"><strong>Outros nomes registrados:</strong> {{ entry.aliases.join(', ') }}</p> }
+          @if (entry.temporalExtent?.label) {
+            <p class="entry-detail"><strong>Período:</strong> {{ entry.temporalExtent?.label }}</p>
+          }
+          @if (entry.aliases.length) {
+            <p class="entry-detail">
+              <strong>Outros nomes registrados:</strong> {{ entry.aliases.join(', ') }}
+            </p>
+          }
         </section>
 
         @if (atlas()?.id === 'atlas-marx-valor') {
-          <p class="atlas-continuation"><a appEditorialLink routerLink="/atlas/marxismo/valor-e-trabalho" [queryParams]="{ argumento: marxArgument() }">Explorar esta discussão no mapa de argumentos</a></p>
+          <p class="atlas-continuation">
+            <a
+              appEditorialLink
+              routerLink="/atlas/marxismo/valor-e-trabalho"
+              [queryParams]="{ argumento: marxArgument() }"
+              >Explorar esta discussão no mapa de argumentos</a
+            >
+          </p>
         }
 
         <app-reading-outline [sections]="entry.sections" />
@@ -43,23 +64,41 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
           <section class="article-section" [attr.aria-labelledby]="'section-' + $index">
             <h2 tabindex="-1" [id]="'section-' + $index">{{ section.heading }}</h2>
             @for (paragraph of section.paragraphs; track paragraph) {
-              <p><app-editorial-text [text]="paragraph" [currentPath]="'/verbete/' + entry.slug" /></p>
+              <p>
+                <app-editorial-text [text]="paragraph" [currentPath]="'/verbete/' + entry.slug" />
+              </p>
             }
           </section>
         }
 
-        @for (claim of claims(); track claim.id) { <app-claim-references [claim]="claim" [atlas]="atlas()!" /> }
+        @for (claim of claims(); track claim.id) {
+          <app-claim-references [claim]="claim" [atlas]="atlas()!" />
+        }
 
         @if (relatedEntries().length) {
           <section class="related-records" aria-labelledby="related-title">
             <h2 id="related-title">Relações registradas</h2>
             @for (item of relatedEntries(); track item.relationId) {
               <article>
-                <a appEditorialLink [routerLink]="'/verbete/' + item.entity.slug" [queryParams]="origin() ? { origem: origin() } : {}">{{ item.entity.title }}</a>
+                <a
+                  appEditorialLink
+                  [routerLink]="'/verbete/' + item.entity.slug"
+                  [queryParams]="origin() ? { origem: origin() } : {}"
+                  >{{ item.entity.title }}</a
+                >
                 <p class="relation-label">{{ item.label }}</p>
                 <p>{{ item.context }}</p>
                 @if (item.evidence.length) {
-                  <p class="relation-evidence">Evidência: @for (evidence of item.evidence; track evidence.id) { {{ evidence.locator }}@if (!$last) {; } } · <a appEditorialLink routerLink="/fontes">Consultar biblioteca de fontes</a></p>
+                  <p class="relation-evidence">
+                    Evidência:
+                    @for (evidence of item.evidence; track evidence.id) {
+                      {{ evidence.locator }}
+                      @if (!$last) {
+                        ;
+                      }
+                    }
+                    · <a appEditorialLink routerLink="/fontes">Consultar biblioteca de fontes</a>
+                  </p>
                 }
               </article>
             }
@@ -69,15 +108,30 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
         @if (backlinks().length) {
           <section class="backlinks" aria-labelledby="backlinks-title">
             <h2 id="backlinks-title">Links que apontam para este registro</h2>
-            <p>Referências reversas para navegação. Elas mostram como outros registros apontam para esta página; não afirmam influência ou causalidade.</p>
+            <p>
+              Referências reversas para navegação. Elas mostram como outros registros apontam para
+              esta página; não afirmam influência ou causalidade.
+            </p>
             @for (item of backlinks(); track item.id) {
-              <article><a appEditorialLink [routerLink]="item.path">{{ item.title }}</a><p class="relation-label">{{ item.label }}</p><p>{{ item.context }}</p></article>
+              <article>
+                <a appEditorialLink [routerLink]="item.path">{{ item.title }}</a>
+                <p class="relation-label">{{ item.label }}</p>
+                <p>{{ item.context }}</p>
+              </article>
             }
           </section>
         }
 
         <app-continue-reading [currentPath]="'/verbete/' + entry.slug" />
-        <a class="back-link discovery-return" [routerLink]="returnTo()">{{ origin() === '/atlas/marxismo' ? 'Voltar ao atlas' : origin()?.startsWith('/atlas/marxismo') ? 'Voltar ao mapa de argumentos' : hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar ao índice de verbetes' }}</a>
+        <a class="back-link discovery-return" [routerLink]="returnTo()">{{
+          origin() === '/atlas/marxismo'
+            ? 'Voltar ao atlas'
+            : origin()?.startsWith('/atlas/marxismo')
+              ? 'Voltar ao mapa de argumentos'
+              : hasOrigin()
+                ? 'Voltar à busca e aos filtros'
+                : 'Voltar ao índice de verbetes'
+        }}</a>
       </article>
     } @else {
       <section class="page" aria-labelledby="page-title">
@@ -88,81 +142,209 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
     }
   `,
   styles: `
-    :host { display: block; }
-    .page { max-width: var(--grid-max); margin: 0 auto; padding: clamp(3.5rem, 8vw, 7rem) var(--grid-gutter); }
-    .eyebrow { margin: 0 0 .8rem; color: var(--signal); font-size: .75rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
-    h1 { max-width: 17ch; margin: 0; font-size: clamp(2.7rem, 6.8vw, 5.5rem); letter-spacing: -.065em; line-height: 1; }
-    .page__lead { max-width: 43rem; margin: 1.5rem 0 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
-    .entry-context, .related-records, .backlinks { max-width: 43rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--color-border-strong); }
-    .entry-context h2, .related-records h2, .backlinks h2 { margin: 0 0 .6rem; font: 500 1.35rem/1.25 var(--serif); }
-    .entry-context p, .related-records p, .backlinks p { line-height: 1.65; }
-    .atlas-continuation { max-width: 43rem; margin-top: 1.25rem; }
-    .entry-detail { color: var(--color-ink-muted); font-size: .9rem; }
-    .related-records article, .backlinks article { padding-block: .75rem; border-top: 1px solid var(--color-border); }
-    .related-records article > a, .backlinks article > a { color: var(--color-accent); font-weight: 650; text-underline-offset: .2em; }
-    .relation-label { margin-bottom: .25rem; font-weight: 650; }
-    .relation-evidence { color: var(--color-ink-muted); font-size: .88rem; }
-    .relation-evidence a { color: var(--color-accent); text-underline-offset: .2em; }
-    .article-section, app-claim-references { max-width: 43rem; margin-top: clamp(2.5rem, 6vw, 4rem); }
-    h2 { margin: 0 0 .8rem; font: 500 clamp(1.6rem, 3.4vw, 2.1rem)/1.15 var(--serif); }
-    .article-section p { margin: .75rem 0 0; line-height: 1.75; }
-    .back-link { display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: 3rem; color: var(--signal); font-weight: 700; text-underline-offset: .2em; }
-    a:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
-    @media (max-width: 40rem) { h1 { max-width: none; font-size: clamp(1.9rem, 8.5vw, 2.5rem); line-height: 1.05; } }
+    :host {
+      display: block;
+    }
+    .page {
+      max-width: var(--grid-max);
+      margin: 0 auto;
+      padding: clamp(3.5rem, 8vw, 7rem) var(--grid-gutter);
+    }
+    .eyebrow {
+      margin: 0 0 0.8rem;
+      color: var(--signal);
+      font-size: 0.75rem;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 17ch;
+      margin: 0;
+      font-size: clamp(2.7rem, 6.8vw, 5.5rem);
+      letter-spacing: -0.065em;
+      line-height: 1;
+    }
+    .page__lead {
+      max-width: 43rem;
+      margin: 1.5rem 0 0;
+      color: var(--ink-muted);
+      font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif);
+    }
+    .entry-context,
+    .related-records,
+    .backlinks {
+      max-width: 43rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border-strong);
+    }
+    .entry-context h2,
+    .related-records h2,
+    .backlinks h2 {
+      margin: 0 0 0.6rem;
+      font: 500 1.35rem/1.25 var(--serif);
+    }
+    .entry-context p,
+    .related-records p,
+    .backlinks p {
+      line-height: 1.65;
+    }
+    .atlas-continuation {
+      max-width: 43rem;
+      margin-top: 1.25rem;
+    }
+    .entry-detail {
+      color: var(--color-ink-muted);
+      font-size: 0.9rem;
+    }
+    .related-records article,
+    .backlinks article {
+      padding-block: 0.75rem;
+      border-top: 1px solid var(--color-border);
+    }
+    .related-records article > a,
+    .backlinks article > a {
+      color: var(--color-accent);
+      font-weight: 650;
+      text-underline-offset: 0.2em;
+    }
+    .relation-label {
+      margin-bottom: 0.25rem;
+      font-weight: 650;
+    }
+    .relation-evidence {
+      color: var(--color-ink-muted);
+      font-size: 0.88rem;
+    }
+    .relation-evidence a {
+      color: var(--color-accent);
+      text-underline-offset: 0.2em;
+    }
+    .article-section,
+    app-claim-references {
+      max-width: 43rem;
+      margin-top: clamp(2.5rem, 6vw, 4rem);
+    }
+    h2 {
+      margin: 0 0 0.8rem;
+      font: 500 clamp(1.6rem, 3.4vw, 2.1rem)/1.15 var(--serif);
+    }
+    .article-section p {
+      margin: 0.75rem 0 0;
+      line-height: 1.75;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+      margin-top: 3rem;
+      color: var(--signal);
+      font-weight: 700;
+      text-underline-offset: 0.2em;
+    }
+    a:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 3px;
+    }
+    @media (max-width: 40rem) {
+      h1 {
+        max-width: none;
+        font-size: clamp(1.9rem, 8.5vw, 2.5rem);
+        line-height: 1.05;
+      }
+    }
   `,
 })
 export class EntryPage {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly repository = inject(ContentRepository);
-  private readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
-  private readonly queryParams = toSignal(this.route.queryParamMap, { initialValue: this.route.snapshot.queryParamMap });
-  readonly graph = toSignal(
-    this.repository.loadKnowledgeGraph().pipe(catchError(() => of(null))),
-    { initialValue: this.repository.knowledgeGraph },
+  private readonly params = toSignal(this.route.paramMap, {
+    initialValue: this.route.snapshot.paramMap,
+  });
+  private readonly queryParams = toSignal(this.route.queryParamMap, {
+    initialValue: this.route.snapshot.queryParamMap,
+  });
+  readonly graph = toSignal(this.repository.loadKnowledgeGraph().pipe(catchError(() => of(null))), {
+    initialValue: this.repository.knowledgeGraph,
+  });
+  readonly entity = computed(() =>
+    this.graph()
+      ? this.repository.findEntityBySlug(this.params().get('slug'), this.graph()!)
+      : undefined,
   );
-  readonly entity = computed(() => this.graph() ? this.repository.findEntityBySlug(this.params().get('slug'), this.graph()!) : undefined);
   readonly atlas = computed(() => {
     const entity = this.entity();
-    return entity && this.graph() ? this.repository.atlasForEntity(entity.id, this.graph()!) : undefined;
+    return entity && this.graph()
+      ? this.repository.atlasForEntity(entity.id, this.graph()!)
+      : undefined;
   });
   readonly claims = computed(() => {
     const entity = this.entity();
     return (this.atlas()?.claims ?? []).filter((claim) => claim.entityId === entity?.id);
   });
-  readonly marxArgument = computed(() => ['person-adam-smith', 'work-wealth-of-nations'].includes(this.entity()?.id ?? '') ? 'smith' : 'marx');
+  readonly marxArgument = computed(() =>
+    ['person-adam-smith', 'work-wealth-of-nations'].includes(this.entity()?.id ?? '')
+      ? 'smith'
+      : 'marx',
+  );
   readonly backlinks = computed(() => {
     const id = this.entity()?.id;
     const shown = new Set(this.relatedEntries().map((relation) => relation.relationId));
-    return id ? (this.repository.discoveryIndex.find((item) => item.id === id)?.backlinks ?? []).filter((item) => !shown.has(item.id)) : [];
+    return id
+      ? (this.repository.discoveryIndex.find((item) => item.id === id)?.backlinks ?? []).filter(
+          (item) => !shown.has(item.id),
+        )
+      : [];
   });
   readonly origin = computed(() => safeDiscoveryOrigin(this.queryParams().get('origem')));
   readonly hasOrigin = computed(() => this.origin() !== null);
-  readonly returnTo = computed(() => this.origin() ? this.router.parseUrl(this.origin()!) : '/explorar/verbete');
+  readonly returnTo = computed(() =>
+    this.origin() ? this.router.parseUrl(this.origin()!) : '/explorar/verbete',
+  );
   readonly relatedEntries = computed(() => {
     const entry = this.entity();
     const graph = this.graph();
     if (!entry || !graph) return [];
     return queryKnowledgeRelations(graph, entry.id).flatMap((relation) => {
-      const related = graph.atlases.flatMap((item) => item.entities).find((item) => item.id === relation.relatedEntityId);
+      const related = graph.atlases
+        .flatMap((item) => item.entities)
+        .find((item) => item.id === relation.relatedEntityId);
       if (!related) return [];
-      return [{
-        ...relation,
-        entity: related,
-        evidence: relation.evidenceIds.flatMap((id) => {
-          const evidence = graph.atlases.flatMap((item) => item.evidences).find((item) => item.id === id);
-          return evidence ? [evidence] : [];
-        }),
-      }];
+      return [
+        {
+          ...relation,
+          entity: related,
+          evidence: relation.evidenceIds.flatMap((id) => {
+            const evidence = graph.atlases
+              .flatMap((item) => item.evidences)
+              .find((item) => item.id === id);
+            return evidence ? [evidence] : [];
+          }),
+        },
+      ];
     });
   });
 
   kindLabel(kind: string): string {
-    return ({
-      person: 'Pessoa', ideology: 'Ideologia', concept: 'Conceito', work: 'Obra', event: 'Evento',
-      'historical-polity': 'Formação política histórica', place: 'Lugar', party: 'Partido',
-      institution: 'Instituição', government: 'Governo', policy: 'Política pública', article: 'Artigo',
-    } as Record<string, string>)[kind] ?? 'Conteúdo';
+    return (
+      (
+        {
+          person: 'Pessoa',
+          ideology: 'Ideologia',
+          concept: 'Conceito',
+          work: 'Obra',
+          event: 'Evento',
+          'historical-polity': 'Formação política histórica',
+          place: 'Lugar',
+          party: 'Partido',
+          institution: 'Instituição',
+          government: 'Governo',
+          policy: 'Política pública',
+          article: 'Artigo',
+        } as Record<string, string>
+      )[kind] ?? 'Conteúdo'
+    );
   }
-
 }

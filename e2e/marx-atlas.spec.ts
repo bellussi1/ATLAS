@@ -1,12 +1,16 @@
-import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { expect, test } from '@playwright/test';
 
-test('atlas index opens people, returns to the index and leads to a dedicated debate', async ({ page }) => {
+test('atlas index opens people, returns to the index and leads to a dedicated debate', async ({
+  page,
+}) => {
   await page.goto('/atlas/marxismo/');
   await expect(page.getByRole('heading', { name: 'Pessoas e suas obras' })).toBeVisible();
   await expect(page.getByRole('group', { name: 'Selecionar tese' })).toHaveCount(0);
   for (const portrait of await page.locator('.portrait img').all()) {
-    expect(await portrait.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
+    expect(
+      await portrait.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
+    ).toBe(true);
   }
   const preview = page.getByRole('button', { name: 'Prévia de Karl Marx' });
   await preview.focus();
@@ -22,13 +26,17 @@ test('atlas index opens people, returns to the index and leads to a dedicated de
   await expect(page.getByRole('group', { name: 'Selecionar tese' })).toBeVisible();
 });
 
-test('atlas mobile keeps portraits, keyboard navigation and accessible layout', async ({ page }) => {
+test('atlas mobile keeps portraits, keyboard navigation and accessible layout', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/atlas/marxismo/');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const violations = (await new AxeBuilder({ page }).analyze()).violations;
-  expect(violations.filter(item => item.impact === 'critical' || item.impact === 'serious')).toEqual([]);
+  expect(
+    violations.filter((item) => item.impact === 'critical' || item.impact === 'serious'),
+  ).toEqual([]);
   await page.getByRole('link', { name: 'Conhecer Adam Smith', exact: true }).focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('h1')).toContainText('Adam Smith');
@@ -39,7 +47,9 @@ test('atlas mobile keeps portraits, keyboard navigation and accessible layout', 
 
 test('previously shared argument URLs keep their selection', async ({ page }) => {
   await page.goto('/atlas/marxismo/?argumento=marx&vinculo=critica');
-  await expect(page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' }),
+  ).toBeVisible();
   await expect(page.getByLabel('Crítica documentada')).toBeChecked();
 });
 
@@ -47,10 +57,14 @@ test('explores a thesis, two records and returns to the same map context', async
   await page.goto('/atlas/marxismo/valor-e-trabalho/');
   await page.getByLabel('Crítica documentada').check();
   await page.getByRole('button', { name: /Tempo de trabalho socialmente necessário/ }).click();
-  await expect(page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' }),
+  ).toBeVisible();
   await expect(page.getByLabel('Crítica documentada')).toBeChecked();
   await expect(page.getByRole('button', { name: 'Prévia de Karl Marx' })).toBeVisible();
-  const preview = page.getByRole('button', { name: 'Prévia de Tempo de trabalho socialmente necessário' });
+  const preview = page.getByRole('button', {
+    name: 'Prévia de Tempo de trabalho socialmente necessário',
+  });
   await preview.click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.keyboard.press('Escape');
@@ -60,7 +74,9 @@ test('explores a thesis, two records and returns to the same map context', async
   await page.locator('.related-records a').filter({ hasText: 'O capital: volume I' }).click();
   await expect(page.locator('h1')).toContainText('O capital');
   await page.getByRole('link', { name: 'Voltar ao mapa de argumentos' }).click();
-  await expect(page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' }),
+  ).toBeVisible();
   await expect(page.getByLabel('Crítica documentada')).toBeChecked();
 });
 
@@ -92,8 +108,10 @@ test('a record reached from search leads into its corresponding argument', async
   await expect(page.getByRole('heading', { name: 'Smith: medida na troca' })).toBeVisible();
 });
 
-test('argument map has no automatically detected critical accessibility violations', async ({ page }) => {
+test('argument map has no automatically detected critical accessibility violations', async ({
+  page,
+}) => {
   await page.goto('/atlas/marxismo/valor-e-trabalho/');
   const results = await new AxeBuilder({ page }).analyze();
-  expect(results.violations.filter(item => item.impact === 'critical')).toEqual([]);
+  expect(results.violations.filter((item) => item.impact === 'critical')).toEqual([]);
 });

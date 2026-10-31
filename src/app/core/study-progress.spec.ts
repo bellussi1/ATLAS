@@ -1,13 +1,19 @@
-import { emptyProgress, parseProgress, recordAttempt } from './study-progress';
 import { demonstrationPath } from '../content/demonstration-path';
 import { methodologyKnowledgeGraph } from './content-repository';
+import { emptyProgress, parseProgress, recordAttempt } from './study-progress';
 
 describe('study progress', () => {
   it('uses a demonstrative path whose lesson and feedback point to existing records', () => {
     const graph = methodologyKnowledgeGraph.atlases;
     const lesson = demonstrationPath.lessons[0];
-    expect(graph.some(atlas => atlas.entities.some(entity => entity.id === lesson.entityId))).toBe(true);
-    expect(graph.some(atlas => atlas.sources.some(source => source.id === lesson.exercises[0].feedback.sourceId))).toBe(true);
+    expect(
+      graph.some((atlas) => atlas.entities.some((entity) => entity.id === lesson.entityId)),
+    ).toBe(true);
+    expect(
+      graph.some((atlas) =>
+        atlas.sources.some((source) => source.id === lesson.exercises[0].feedback.sourceId),
+      ),
+    ).toBe(true);
   });
   it('round-trips exported progress and schedules retries', () => {
     const wrong = recordAttempt(emptyProgress(), false, '2026-10-31');
@@ -19,6 +25,8 @@ describe('study progress', () => {
 
   it('rejects unknown versions and paths', () => {
     expect(() => parseProgress(JSON.stringify({ ...emptyProgress(), version: 2 }))).toThrow();
-    expect(() => parseProgress(JSON.stringify({ ...emptyProgress(), pathId: 'outra-trilha' }))).toThrow();
+    expect(() =>
+      parseProgress(JSON.stringify({ ...emptyProgress(), pathId: 'outra-trilha' })),
+    ).toThrow();
   });
 });

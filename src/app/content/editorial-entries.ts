@@ -1,4 +1,4 @@
-import { EditorialEntry, EditorialType, getEditorialType } from './content-types';
+import { type EditorialEntry, type EditorialType, getEditorialType } from './content-types';
 
 export const editorialEntries: readonly EditorialEntry[] = [
   {

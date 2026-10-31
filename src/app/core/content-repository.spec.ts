@@ -1,8 +1,9 @@
-import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { PLATFORM_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { firstValueFrom } from 'rxjs';
+
 import methodologyAtlasData from '../../content/atlas.json';
 import { ContentRepository } from './content-repository';
 
@@ -30,7 +31,7 @@ describe('ContentRepository', () => {
 
     const [atlas, graph] = await Promise.all([atlasPromise, graphPromise]);
     expect(atlas.title).toBe('Metodologia do ATLAS');
-    expect(graph.atlases.map(item => item.id)).toContain('atlas-marx-valor');
+    expect(graph.atlases.map((item) => item.id)).toContain('atlas-marx-valor');
     expect(repository.findBySlug('metodologia-do-atlas')?.title).toBe('Metodologia do ATLAS');
   });
 
@@ -56,10 +57,19 @@ describe('ContentRepository', () => {
 
   it('queries entities by atlas and period, then exposes incoming and outgoing graph links', () => {
     const repository = TestBed.inject(ContentRepository);
-    const historicalPeople = repository.queryEntities({ atlasId: 'atlas-processo-constituinte', type: 'person', fromYear: 1987 });
+    const historicalPeople = repository.queryEntities({
+      atlasId: 'atlas-processo-constituinte',
+      type: 'person',
+      fromYear: 1987,
+    });
     expect(historicalPeople.map(({ entity }) => entity.title)).toEqual(['Ulysses Guimarães']);
-    expect(repository.queryEntities({ atlasId: 'atlas-processo-constituinte', toYear: 1915 })).toEqual([]);
-    expect(repository.queryRelations('person-ulysses-guimaraes', { direction: 'outgoing' }).map(({ label }) => label))
-      .toContain('presidiu');
+    expect(
+      repository.queryEntities({ atlasId: 'atlas-processo-constituinte', toYear: 1915 }),
+    ).toEqual([]);
+    expect(
+      repository
+        .queryRelations('person-ulysses-guimaraes', { direction: 'outgoing' })
+        .map(({ label }) => label),
+    ).toContain('presidiu');
   });
 });

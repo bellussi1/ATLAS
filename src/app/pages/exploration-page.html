@@ -5,47 +5,123 @@
       <h1 id="mode-title">Conhecimento</h1>
       <p class="lead">Toda leitura pode ser um ponto de partida.</p>
       <div role="search" aria-label="Pesquisar no acervo" class="search">
-        <app-text-field controlId="collection-search" type="search" label="Pesquisar no acervo" placeholder="Título, conceito ou trecho"
-          [value]="query()" (valueChange)="search($event)" hint="Busca nos registros editoriais e históricos disponíveis, sem distinção de acentos." />
+        <app-text-field
+          controlId="collection-search"
+          type="search"
+          label="Pesquisar no acervo"
+          placeholder="Título, conceito ou trecho"
+          [value]="query()"
+          (valueChange)="search($event)"
+          hint="Busca nos registros editoriais e históricos disponíveis, sem distinção de acentos."
+        />
       </div>
       <div class="discovery-filters" aria-label="Filtrar resultados">
-        <div><label for="discovery-kind">Tipo de registro</label><select id="discovery-kind" [value]="kind()" (change)="filterByKind($any($event.target).value)">
-          <option value="">Todos os tipos</option>
-          @for (option of kinds(); track option.value) { <option [value]="option.value" [selected]="option.value === kind()">{{ option.label }}</option> }
-        </select></div>
-        <div><label for="discovery-state">Estado editorial</label><select id="discovery-state" [value]="state()" (change)="filterByState($any($event.target).value)">
-          <option value="">Todos os estados</option>
-          @for (option of states(); track option.value) { <option [value]="option.value" [selected]="option.value === state()">{{ option.label }}</option> }
-        </select></div>
+        <div>
+          <label for="discovery-kind">Tipo de registro</label
+          ><select
+            id="discovery-kind"
+            [value]="kind()"
+            (change)="filterByKind($any($event.target).value)"
+          >
+            <option value="">Todos os tipos</option>
+            @for (option of kinds(); track option.value) {
+              <option [value]="option.value" [selected]="option.value === kind()">
+                {{ option.label }}
+              </option>
+            }
+          </select>
+        </div>
+        <div>
+          <label for="discovery-state">Estado editorial</label
+          ><select
+            id="discovery-state"
+            [value]="state()"
+            (change)="filterByState($any($event.target).value)"
+          >
+            <option value="">Todos os estados</option>
+            @for (option of states(); track option.value) {
+              <option [value]="option.value" [selected]="option.value === state()">
+                {{ option.label }}
+              </option>
+            }
+          </select>
+        </div>
       </div>
-      <p role="status">{{ results().length }} registros encontrados{{ query() ? ' para “' + query() + '”' : '' }}.</p>
+      <p role="status">
+        {{ results().length }} registros encontrados{{ query() ? ' para “' + query() + '”' : '' }}.
+      </p>
       <ol class="results">
         @for (result of results(); track result.id) {
-          <li><div class="result-meta"><span class="kicker">{{ result.kindLabel }}</span><span class="result-state">{{ result.stateLabel }}</span></div>
-            <div class="result-title"><a appEditorialLink [routerLink]="result.path" [fragment]="result.fragment" [queryParams]="{ origem: returnContext() }">{{ result.title }} <span aria-hidden="true">↗</span></a>
-              <button type="button" [appDiscoveryPreview]="{ entry: result, origin: returnContext() }" [attr.aria-label]="'Prévia de ' + result.title">Prévia</button></div>
-            <p>{{ result.summary }}</p></li>
+          <li>
+            <div class="result-meta">
+              <span class="kicker">{{ result.kindLabel }}</span
+              ><span class="result-state">{{ result.stateLabel }}</span>
+            </div>
+            <div class="result-title">
+              <a
+                appEditorialLink
+                [routerLink]="result.path"
+                [fragment]="result.fragment"
+                [queryParams]="{ origem: returnContext() }"
+                >{{ result.title }} <span aria-hidden="true">↗</span></a
+              >
+              <button
+                type="button"
+                [appDiscoveryPreview]="{ entry: result, origin: returnContext() }"
+                [attr.aria-label]="'Prévia de ' + result.title"
+              >
+                Prévia
+              </button>
+            </div>
+            <p>{{ result.summary }}</p>
+          </li>
         } @empty {
-          <li><app-notice>Nenhum registro corresponde a esta busca e aos filtros. Ajuste os critérios ou limpe a busca.</app-notice><button type="button" (click)="clearFilters()">Limpar busca e filtros</button></li>
+          <li>
+            <app-notice
+              >Nenhum registro corresponde a esta busca e aos filtros. Ajuste os critérios ou limpe
+              a busca.</app-notice
+            ><button type="button" (click)="clearFilters()">Limpar busca e filtros</button>
+          </li>
         }
       </ol>
-      <div class="reading-path"><h2>Perguntas para começar</h2>
-        <a appEditorialLink routerLink="/verbete/metodologia-do-atlas">O que sustenta uma afirmação? →</a>
-        <a appEditorialLink routerLink="/explorar/artigo/conhecimento-com-contexto">Por que o contexto importa? →</a>
-        <a appEditorialLink routerLink="/explorar/atlas/atlas-de-metodo">Como percorrer os formatos do acervo? →</a>
+      <div class="reading-path">
+        <h2>Perguntas para começar</h2>
+        <a appEditorialLink routerLink="/verbete/metodologia-do-atlas"
+          >O que sustenta uma afirmação? →</a
+        >
+        <a appEditorialLink routerLink="/explorar/artigo/conhecimento-com-contexto"
+          >Por que o contexto importa? →</a
+        >
+        <a appEditorialLink routerLink="/explorar/atlas/atlas-de-metodo"
+          >Como percorrer os formatos do acervo? →</a
+        >
       </div>
-      <p><a appEditorialLink routerLink="/estudar">Conheça a organização prevista para as trilhas →</a></p>
+      <p>
+        <a appEditorialLink routerLink="/estudar"
+          >Conheça a organização prevista para as trilhas →</a
+        >
+      </p>
     }
     @case ('relations') {
       <p class="kicker">01 / Investigar conexões</p>
       <h1 id="mode-title">Relações</h1>
       <p class="lead">Quem se conecta a quem — e o que sustenta essa relação?</p>
-      <p>Investigue um registro por vez. Cada ligação nomeia a relação e apresenta as fontes disponíveis. Para comparar Smith e Marx, <a routerLink="/atlas/marxismo/valor-e-trabalho">abra o debate sobre valor e trabalho</a>.</p>
+      <p>
+        Investigue um registro por vez. Cada ligação nomeia a relação e apresenta as fontes
+        disponíveis. Para comparar Smith e Marx,
+        <a routerLink="/atlas/marxismo/valor-e-trabalho">abra o debate sobre valor e trabalho</a>.
+      </p>
       <app-evidence-network />
       <details class="visualization-notes">
         <summary>Método, fontes e limites das relações</summary>
-        <p>Os vínculos representam relações, afirmações e citações cadastradas no acervo. Rótulos e direções vêm dos registros. A ordem da lista não representa importância ou influência.</p>
-        <p>O período apresentado é o cadastrado em cada relação. Fontes e evidências aparecem no contexto selecionado. Vínculos editoriais não equivalem a influência histórica.</p>
+        <p>
+          Os vínculos representam relações, afirmações e citações cadastradas no acervo. Rótulos e
+          direções vêm dos registros. A ordem da lista não representa importância ou influência.
+        </p>
+        <p>
+          O período apresentado é o cadastrado em cada relação. Fontes e evidências aparecem no
+          contexto selecionado. Vínculos editoriais não equivalem a influência histórica.
+        </p>
       </details>
     }
     @case ('time') {
@@ -53,8 +129,12 @@
       <h1 id="mode-title">Tempo e espaço</h1>
       <p class="lead">Compare períodos registrados e situe cada verbete em seu próprio contexto.</p>
       <app-historical-visualizations />
-      <p class="spatial-limit">A exploração geográfica continua indisponível. O acervo não fornece polígonos históricos para desenhar fronteiras; esta página não sobrepõe limites atuais a entidades do passado.</p>
-      <div class="reading-path"><h2>Continue por outro caminho</h2>
+      <p class="spatial-limit">
+        A exploração geográfica continua indisponível. O acervo não fornece polígonos históricos
+        para desenhar fronteiras; esta página não sobrepõe limites atuais a entidades do passado.
+      </p>
+      <div class="reading-path">
+        <h2>Continue por outro caminho</h2>
         <a appEditorialLink routerLink="/relacoes">Examine as relações entre afirmação e fonte →</a>
         <a appEditorialLink routerLink="/conhecimento">Pesquise nos registros disponíveis →</a>
       </div>

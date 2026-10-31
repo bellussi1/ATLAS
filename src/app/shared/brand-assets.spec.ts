@@ -1,17 +1,24 @@
-import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 describe('brand assets', () => {
   it('provides self-contained vector signatures and root-relative page icons', () => {
-    const index = new DOMParser().parseFromString(readFileSync(resolve('src/index.html'), 'utf8'), 'text/html');
-    const icons = index.querySelectorAll<HTMLLinkElement>('link[rel="icon"], link[rel="apple-touch-icon"]');
+    const index = new DOMParser().parseFromString(
+      readFileSync(resolve('src/index.html'), 'utf8'),
+      'text/html',
+    );
+    const icons = index.querySelectorAll<HTMLLinkElement>(
+      'link[rel="icon"], link[rel="apple-touch-icon"]',
+    );
     expect(icons.length).toBeGreaterThan(1);
     for (const icon of icons) {
       const href = icon.getAttribute('href')!;
       expect(href.startsWith('/')).toBe(true);
       expect(existsSync(resolve('public', href.slice(1)))).toBe(true);
     }
-    for (const filename of readdirSync(resolve('public/brand')).filter((name) => name.endsWith('.svg'))) {
+    for (const filename of readdirSync(resolve('public/brand')).filter((name) =>
+      name.endsWith('.svg'),
+    )) {
       const source = readFileSync(resolve('public/brand', filename), 'utf8');
       const svg = new DOMParser().parseFromString(source, 'image/svg+xml');
       expect(svg.querySelector('parsererror')).toBeNull();

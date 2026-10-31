@@ -8,10 +8,7 @@
       "slug": "metodologia-atlas",
       "title": "Metodologia do ATLAS",
       "description": "Critérios editoriais e relações que orientam a produção de conteúdo no ATLAS.",
-      "entityIds": [
-        "concept-methodology",
-        "article-constituicao-1988"
-      ],
+      "entityIds": ["concept-methodology", "article-constituicao-1988"],
       "entities": [
         {
           "id": "concept-methodology",
@@ -118,9 +115,7 @@
           "text": "Afirmações históricas exigem evidência contextual e distinção entre fato documentado, interpretação, hipótese e alegação controversa.",
           "classification": "documented-fact",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-editorial-rules"
-          ]
+          "citationIds": ["citation-editorial-rules"]
         },
         {
           "id": "claim-constitution-equality",
@@ -128,9 +123,7 @@
           "text": "O caput do artigo 5º da Constituição Federal de 1988 declara igualdade perante a lei e enumera direitos e garantias.",
           "classification": "documented-fact",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-constitution-caput-5"
-          ]
+          "citationIds": ["citation-constitution-caput-5"]
         }
       ],
       "reviews": [
@@ -188,9 +181,7 @@
           "kind": "person",
           "title": "Ulysses Guimarães",
           "summary": "Deputado que presidiu a Assembleia Nacional Constituinte de 1987–1988 e declarou promulgada a Constituição em 5 de outubro de 1988.",
-          "aliases": [
-            "Ulysses Silveira Guimarães"
-          ],
+          "aliases": ["Ulysses Silveira Guimarães"],
           "context": "Atuação documentada em registros oficiais da Câmara dos Deputados; as relações registradas aqui descrevem funções e atos documentados, sem inferir influência por proximidade temporal.",
           "temporalExtent": {
             "startYear": 1916,
@@ -215,10 +206,7 @@
           "kind": "institution",
           "title": "Assembleia Nacional Constituinte de 1987–1988",
           "summary": "Assembleia responsável pelos trabalhos que resultaram na Constituição promulgada em 5 de outubro de 1988.",
-          "aliases": [
-            "ANC de 1987–1988",
-            "Assembleia Nacional Constituinte"
-          ],
+          "aliases": ["ANC de 1987–1988", "Assembleia Nacional Constituinte"],
           "context": "Instituição legislativa constituinte situada no processo de elaboração da Constituição Federal de 1988.",
           "temporalExtent": {
             "startYear": 1987,
@@ -243,9 +231,7 @@
           "kind": "event",
           "title": "Promulgação da Constituição Federal de 1988",
           "summary": "Sessão de promulgação realizada em 5 de outubro de 1988.",
-          "aliases": [
-            "Promulgação da Constituição de 1988"
-          ],
+          "aliases": ["Promulgação da Constituição de 1988"],
           "context": "Evento delimitado pelo registro oficial da sessão da Assembleia Nacional Constituinte.",
           "temporalExtent": {
             "startYear": 1988,
@@ -270,9 +256,7 @@
           "kind": "place",
           "title": "Plenário da Câmara dos Deputados",
           "summary": "Local da sessão solene de promulgação da Constituição em 5 de outubro de 1988, conforme o registro histórico da Câmara.",
-          "aliases": [
-            "Plenário da Câmara"
-          ],
+          "aliases": ["Plenário da Câmara"],
           "context": "Lugar histórico associado à sessão de promulgação; o registro não presume que a denominação atual do plenário fosse usada em 1988.",
           "temporalExtent": null,
           "uncertainty": "low",
@@ -292,10 +276,7 @@
           "kind": "work",
           "title": "Constituição da República Federativa do Brasil de 1988",
           "summary": "Texto constitucional promulgado em 5 de outubro de 1988.",
-          "aliases": [
-            "Constituição Federal de 1988",
-            "CF/88"
-          ],
+          "aliases": ["Constituição Federal de 1988", "CF/88"],
           "context": "Obra normativa primária; o texto consolidado deve ser distinguido da publicação original e de suas emendas.",
           "temporalExtent": {
             "startYear": 1988,
@@ -388,9 +369,7 @@
             "label": "1987–1988"
           },
           "uncertainty": "low",
-          "evidenceIds": [
-            "evidence-ulysses-presidency"
-          ]
+          "evidenceIds": ["evidence-ulysses-presidency"]
         },
         {
           "id": "relation-event-promulgated-work",
@@ -407,9 +386,7 @@
             "label": "5 de outubro de 1988"
           },
           "uncertainty": "low",
-          "evidenceIds": [
-            "evidence-promulgation-diary"
-          ]
+          "evidenceIds": ["evidence-promulgation-diary"]
         },
         {
           "id": "relation-event-took-place-at-plenary",
@@ -426,9 +403,7 @@
             "label": "5 de outubro de 1988"
           },
           "uncertainty": "low",
-          "evidenceIds": [
-            "evidence-plenary-location"
-          ]
+          "evidenceIds": ["evidence-plenary-location"]
         }
       ],
       "learningPaths": []
@@ -440,9 +415,7 @@
       "description": "Conceitos e fontes relacionados ao texto constitucional e às garantias nele enunciadas.",
       "version": "1.0.0",
       "updatedAt": "2026-10-31",
-      "entityIds": [
-        "concept-igualdade-perante-lei"
-      ],
+      "entityIds": ["concept-igualdade-perante-lei"],
       "entities": [
         {
           "id": "concept-igualdade-perante-lei",
@@ -450,9 +423,7 @@
           "kind": "concept",
           "title": "Igualdade perante a lei",
           "summary": "Princípio enunciado no caput do artigo 5º da Constituição Federal.",
-          "aliases": [
-            "Igualdade jurídica"
-          ],
+          "aliases": ["Igualdade jurídica"],
           "context": "A afirmação abaixo descreve o texto constitucional; não apresenta uma interpretação de seus efeitos jurídicos.",
           "temporalExtent": {
             "startYear": 1988,
@@ -504,9 +475,7 @@
           "text": "O caput do artigo 5º da Constituição Federal declara igualdade de todas as pessoas perante a lei.",
           "classification": "documented-fact",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-equality-art5"
-          ]
+          "citationIds": ["citation-equality-art5"]
         }
       ],
       "reviews": [
@@ -536,9 +505,7 @@
             "label": "Constituição promulgada em 1988"
           },
           "uncertainty": "low",
-          "evidenceIds": [
-            "evidence-equality-art5"
-          ]
+          "evidenceIds": ["evidence-equality-art5"]
         },
         {
           "id": "relation-rights-to-example-article",
@@ -660,10 +627,7 @@
           "kind": "work",
           "title": "O capital: volume I",
           "summary": "Obra de Marx publicada em 1867, dedicada à crítica da economia política.",
-          "aliases": [
-            "O capital",
-            "Capital Volume I"
-          ],
+          "aliases": ["O capital", "Capital Volume I"],
           "context": "O primeiro capítulo analisa mercadoria, valor e trabalho socialmente necessário.",
           "temporalExtent": {
             "startYear": 1867,
@@ -696,9 +660,7 @@
           "kind": "work",
           "title": "A riqueza das nações",
           "summary": "Obra de Adam Smith publicada em 1776 sobre a riqueza e a economia política.",
-          "aliases": [
-            "The Wealth of Nations"
-          ],
+          "aliases": ["The Wealth of Nations"],
           "context": "O livro I distingue o preço real em trabalho do preço nominal em dinheiro.",
           "temporalExtent": {
             "startYear": 1776,
@@ -890,9 +852,7 @@
           "text": "Filósofo e crítico da economia política; publicou o primeiro volume de O capital em 1867.",
           "classification": "documented-fact",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-person-karl-marx"
-          ]
+          "citationIds": ["citation-person-karl-marx"]
         },
         {
           "id": "claim-person-adam-smith",
@@ -900,9 +860,7 @@
           "text": "Filósofo escocês e autor de A riqueza das nações, publicada em 1776.",
           "classification": "documented-fact",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-person-adam-smith"
-          ]
+          "citationIds": ["citation-person-adam-smith"]
         },
         {
           "id": "claim-work-capital-volume-i",
@@ -910,9 +868,7 @@
           "text": "Obra de Marx publicada em 1867, dedicada à crítica da economia política.",
           "classification": "documented-fact",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-work-capital-volume-i"
-          ]
+          "citationIds": ["citation-work-capital-volume-i"]
         },
         {
           "id": "claim-work-wealth-of-nations",
@@ -920,9 +876,7 @@
           "text": "Smith propõe o trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui.",
           "classification": "attributed-thesis",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-work-wealth-of-nations"
-          ]
+          "citationIds": ["citation-work-wealth-of-nations"]
         },
         {
           "id": "claim-concept-trabalho-socialmente-necessario",
@@ -930,9 +884,7 @@
           "text": "Na análise de Marx, o tempo socialmente necessário é referência para a grandeza do valor de uma mercadoria.",
           "classification": "attributed-thesis",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-concept-trabalho-socialmente-necessario"
-          ]
+          "citationIds": ["citation-concept-trabalho-socialmente-necessario"]
         },
         {
           "id": "claim-marx-critica-smith",
@@ -940,9 +892,7 @@
           "text": "Em Teorias da mais-valia, Marx examina definições de valor atribuídas a Smith, distinguindo trabalho contido e trabalho comandado.",
           "classification": "attributed-thesis",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-marx-critica-smith"
-          ]
+          "citationIds": ["citation-marx-critica-smith"]
         },
         {
           "id": "claim-marx-debate-valor",
@@ -950,9 +900,7 @@
           "text": "A relação entre a teoria do valor-trabalho e a análise da exploração é objeto de debates e objeções.",
           "classification": "interpretation",
           "editorialStatus": "pending",
-          "citationIds": [
-            "citation-marx-debate-valor"
-          ]
+          "citationIds": ["citation-marx-debate-valor"]
         }
       ],
       "reviews": [
@@ -1050,9 +998,7 @@
             "label": "1776"
           },
           "uncertainty": "low",
-          "evidenceIds": [
-            "evidence-marx-smith-bio"
-          ]
+          "evidenceIds": ["evidence-marx-smith-bio"]
         },
         {
           "id": "relation-marx-capital",
@@ -1069,9 +1015,7 @@
             "label": "1867"
           },
           "uncertainty": "low",
-          "evidenceIds": [
-            "evidence-marx-marx-bio"
-          ]
+          "evidenceIds": ["evidence-marx-marx-bio"]
         },
         {
           "id": "relation-capital-labour",
@@ -1088,9 +1032,7 @@
             "label": "1867"
           },
           "uncertainty": "low",
-          "evidenceIds": [
-            "evidence-marx-capital"
-          ]
+          "evidenceIds": ["evidence-marx-capital"]
         },
         {
           "id": "relation-marx-criticizes-smith",
@@ -1107,9 +1049,7 @@
             "label": "1861–1863"
           },
           "uncertainty": "low",
-          "evidenceIds": [
-            "evidence-marx-critique"
-          ]
+          "evidenceIds": ["evidence-marx-critique"]
         },
         {
           "id": "relation-marx-method",
@@ -1177,10 +1117,7 @@
             "wikipediaTitle": "Liberalismo",
             "wikipediaUrl": "https://pt.wikipedia.org/wiki/Liberalismo",
             "wikipediaLanguage": "pt",
-            "categories": [
-              "Liberalismo",
-              "Sistemas econômicos"
-            ],
+            "categories": ["Liberalismo", "Sistemas econômicos"],
             "fetchedAt": "2026-10-31",
             "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
             "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -1248,9 +1185,7 @@
           "kind": "person",
           "title": "John Stuart Mill",
           "summary": "influente pensador britânico do século XIX (1806-1873) primo do Pedro Singer",
-          "aliases": [
-            "J. S. Mill"
-          ],
+          "aliases": ["J. S. Mill"],
           "context": "A página “John Stuart Mill” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
           "editorialStatus": "pending",
           "temporalExtent": {
@@ -1503,10 +1438,7 @@
           "kind": "person",
           "title": "Isaiah Berlin",
           "summary": "Russo-British-Latvian Jewish social and political theorist, philosopher and historian of ideas (1909–1997)",
-          "aliases": [
-            "Sir Isaiah Berlin",
-            "Isaiah Mendelevich Berlin"
-          ],
+          "aliases": ["Sir Isaiah Berlin", "Isaiah Mendelevich Berlin"],
           "context": "A página “Isaiah Berlin” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
           "editorialStatus": "pending",
           "temporalExtent": {
@@ -1567,9 +1499,7 @@
           "kind": "ideology",
           "title": "Liberalismo clássico",
           "summary": "filosofia política",
-          "aliases": [
-            "classic liberalism"
-          ],
+          "aliases": ["classic liberalism"],
           "context": "A página “Liberalismo clássico” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
           "editorialStatus": "pending",
           "temporalExtent": null,
@@ -1614,11 +1544,7 @@
           "kind": "ideology",
           "title": "Liberalismo social",
           "summary": "ideologia política",
-          "aliases": [
-            "Social liberalismo",
-            "Esquerda-liberal",
-            "left-liberalism"
-          ],
+          "aliases": ["Social liberalismo", "Esquerda-liberal", "left-liberalism"],
           "context": "A página “Liberalismo social” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
           "editorialStatus": "pending",
           "temporalExtent": null,
@@ -1692,11 +1618,7 @@
             "wikipediaTitle": "Neoliberalismo",
             "wikipediaUrl": "https://pt.wikipedia.org/wiki/Neoliberalismo",
             "wikipediaLanguage": "pt",
-            "categories": [
-              "História do pensamento econômico",
-              "Macroeconomia",
-              "Neoliberalismo"
-            ],
+            "categories": ["História do pensamento econômico", "Macroeconomia", "Neoliberalismo"],
             "fetchedAt": "2026-10-31",
             "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
             "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -1709,10 +1631,7 @@
           "kind": "event",
           "title": "Revolução Gloriosa",
           "summary": "golpe de estado ocorrido na Inglaterra entre 1688 e 1689",
-          "aliases": [
-            "Gloriosa revolução",
-            "Revolução Inglesa"
-          ],
+          "aliases": ["Gloriosa revolução", "Revolução Inglesa"],
           "context": "A página “Revolução Gloriosa” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
           "editorialStatus": "pending",
           "temporalExtent": {

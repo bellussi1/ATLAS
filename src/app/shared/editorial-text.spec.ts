@@ -1,11 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+
 import { AtlasEditorialTextComponent } from './editorial-text';
 
 describe('editorial keyword navigation', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [AtlasEditorialTextComponent], providers: [provideRouter([])],
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [AtlasEditorialTextComponent],
+      providers: [provideRouter([])],
+    }),
+  );
   it('preserves the text and links at most two distinct, whole-word destinations', () => {
     const fixture = TestBed.createComponent(AtlasEditorialTextComponent);
     const text = 'O contexto e as fontes sustentam a metodologia. Contexto contextualizado.';
@@ -25,13 +29,17 @@ describe('editorial keyword navigation', () => {
     fixture.componentRef.setInput('currentPath', '/explorar/artigo/conhecimento-com-contexto');
     fixture.detectChanges();
     expect((fixture.nativeElement as HTMLElement).querySelectorAll('a')).toHaveLength(1);
-    expect((fixture.nativeElement as HTMLElement).querySelector('a')?.textContent).toBe('evidência');
+    expect((fixture.nativeElement as HTMLElement).querySelector('a')?.textContent).toBe(
+      'evidência',
+    );
   });
   it('uses the inverse treatment on a strong surface', () => {
     const fixture = TestBed.createComponent(AtlasEditorialTextComponent);
     fixture.componentRef.setInput('text', 'Consulte as fontes.');
     fixture.componentRef.setInput('inverse', true);
     fixture.detectChanges();
-    expect((fixture.nativeElement as HTMLElement).querySelector('a')?.classList.contains('inverse')).toBe(true);
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelector('a')?.classList.contains('inverse'),
+    ).toBe(true);
   });
 });

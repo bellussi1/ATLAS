@@ -1,8 +1,9 @@
-import { provideRouter } from '@angular/router';
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { DesignSystemPage } from './design-system-page';
+import { provideRouter } from '@angular/router';
+
 import { AtlasHeadingDirective } from '../shared/ui-primitives';
+import { DesignSystemPage } from './design-system-page';
 
 @Component({
   imports: [AtlasHeadingDirective],
@@ -21,14 +22,17 @@ describe('design-system showroom', () => {
   it('applies the page heading scale to explicit and default variants', () => {
     const fixture = TestBed.createComponent(PageHeadingExample);
     fixture.detectChanges();
-    expect((fixture.nativeElement as HTMLElement).querySelectorAll('.atlas-heading--page')).toHaveLength(2);
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelectorAll('.atlas-heading--page'),
+    ).toHaveLength(2);
   });
 
   it('uses a native disclosure element with an operable summary', () => {
     const fixture = TestBed.createComponent(DesignSystemPage);
     fixture.detectChanges();
-    const details = (fixture.nativeElement as HTMLElement)
-      .querySelector<HTMLDetailsElement>('app-disclosure details')!;
+    const details = (fixture.nativeElement as HTMLElement).querySelector<HTMLDetailsElement>(
+      'app-disclosure details',
+    )!;
 
     expect(details.open).toBe(false);
     details.querySelector('summary')?.click();
@@ -49,8 +53,9 @@ describe('design-system showroom', () => {
     const fixture = TestBed.createComponent(DesignSystemPage);
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
-    const field = Array.from(root.querySelectorAll<HTMLInputElement>('input'))
-      .find((candidate) => candidate.id === 'demo-email')!;
+    const field = Array.from(root.querySelectorAll<HTMLInputElement>('input')).find(
+      (candidate) => candidate.id === 'demo-email',
+    )!;
 
     expect(field.getAttribute('aria-invalid')).toBe('true');
     expect(field.getAttribute('aria-describedby')).toContain('demo-email-error');
@@ -64,19 +69,22 @@ describe('design-system showroom', () => {
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
     Array.from(root.querySelectorAll<HTMLButtonElement>('app-button button'))
-      .find((button) => button.textContent?.includes('Mostrar feedback'))?.click();
+      .find((button) => button.textContent?.includes('Mostrar feedback'))
+      ?.click();
     fixture.detectChanges();
 
-    expect(root.querySelector('.atlas-notice--success[role="status"]')?.textContent)
-      .toContain('Ação demonstrativa concluída');
+    expect(root.querySelector('.atlas-notice--success[role="status"]')?.textContent).toContain(
+      'Ação demonstrativa concluída',
+    );
   });
 
   it('moves focus to the section selected in the showroom index', () => {
     const fixture = TestBed.createComponent(DesignSystemPage);
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
-    const link = Array.from(root.querySelectorAll<HTMLAnchorElement>('.showroom__toc a'))
-      .find((candidate) => candidate.textContent?.trim() === 'Tokens')!;
+    const link = Array.from(root.querySelectorAll<HTMLAnchorElement>('.showroom__toc a')).find(
+      (candidate) => candidate.textContent?.trim() === 'Tokens',
+    )!;
     link.click();
     expect(document.activeElement).toBe(root.querySelector('#tokens'));
   });
@@ -84,7 +92,9 @@ describe('design-system showroom', () => {
   it('keeps the readonly example focusable and available for copying', () => {
     const fixture = TestBed.createComponent(DesignSystemPage);
     fixture.detectChanges();
-    const input = (fixture.nativeElement as HTMLElement).querySelector<HTMLInputElement>('#demo-readonly')!;
+    const input = (fixture.nativeElement as HTMLElement).querySelector<HTMLInputElement>(
+      '#demo-readonly',
+    )!;
     input.focus();
     expect(input.readOnly).toBe(true);
     expect(input.disabled).toBe(false);

@@ -2,32 +2,57 @@
   <header class="visualization__heading">
     <p class="kicker">Períodos registrados</p>
     <h2 id="timeline-visual-title">Linha do tempo</h2>
-    <p>Posicione os registros pelo intervalo documentado no acervo. Se o término não foi cadastrado, a marca indica apenas o ano informado.</p>
+    <p>
+      Posicione os registros pelo intervalo documentado no acervo. Se o término não foi cadastrado,
+      a marca indica apenas o ano informado.
+    </p>
   </header>
 
   <div class="controls">
     <label for="timeline-kind">Filtrar por tipo</label>
     <select id="timeline-kind" [value]="kind()" (change)="selectKind($any($event.target).value)">
       <option value="">Todos os tipos</option>
-      @for (option of kinds; track option.value) { <option [value]="option.value">{{ option.label }}</option> }
+      @for (option of kinds; track option.value) {
+        <option [value]="option.value">{{ option.label }}</option>
+      }
     </select>
   </div>
 
   <ul class="timeline-legend" aria-label="Legenda da linha do tempo">
-    <li><span class="timeline-legend__range" aria-hidden="true"></span>Intervalo com início e fim registrados</li>
-    <li><span class="timeline-legend__point" aria-hidden="true"></span>Ano conhecido; outro limite não informado</li>
+    <li>
+      <span class="timeline-legend__range" aria-hidden="true"></span>Intervalo com início e fim
+      registrados
+    </li>
+    <li>
+      <span class="timeline-legend__point" aria-hidden="true"></span>Ano conhecido; outro limite não
+      informado
+    </li>
   </ul>
 
   <div class="timeline-chart" aria-hidden="true">
-    <div class="axis"><span>Registro</span><div>@for (year of yearTicks; track year) { <span [style.left.%]="position(year)">{{ year }}</span> }</div></div>
+    <div class="axis">
+      <span>Registro</span>
+      <div>
+        @for (year of yearTicks; track year) {
+          <span [style.left.%]="position(year)">{{ year }}</span>
+        }
+      </div>
+    </div>
     @for (record of timelineRecords(); track record.id) {
       <div class="timeline-row" [class.is-selected]="selectedTimeline()?.id === record.id">
         <span class="timeline-label">{{ record.title }}</span>
         <div class="timeline-track">
           @if (record.endYear !== null && record.startYear !== null) {
-            <span class="timeline-range" [style.left.%]="position(record.startYear)" [style.width.%]="periodWidth(record)"></span>
+            <span
+              class="timeline-range"
+              [style.left.%]="position(record.startYear)"
+              [style.width.%]="periodWidth(record)"
+            ></span>
           } @else {
-            <span class="timeline-point" [style.left.%]="position(record.startYear ?? record.endYear)"></span>
+            <span
+              class="timeline-point"
+              [style.left.%]="position(record.startYear ?? record.endYear)"
+            ></span>
           }
         </div>
       </div>
@@ -41,17 +66,51 @@
           <span class="period">{{ record.periodLabel }}</span>
           <a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a>
           <span class="kind">{{ record.kindLabel }}</span>
-          <button type="button" [attr.aria-pressed]="selectedTimeline()?.id === record.id" aria-controls="timeline-record-context" (click)="selectedTimelineId.set(record.id)">{{ selectedTimeline()?.id === record.id ? 'Selecionado' : 'Ver contexto' }}</button>
+          <button
+            type="button"
+            [attr.aria-pressed]="selectedTimeline()?.id === record.id"
+            aria-controls="timeline-record-context"
+            (click)="selectedTimelineId.set(record.id)"
+          >
+            {{ selectedTimeline()?.id === record.id ? 'Selecionado' : 'Ver contexto' }}
+          </button>
         </div>
         @if (selectedTimeline()?.id === record.id) {
-          <section class="detail" id="timeline-record-context" aria-labelledby="timeline-record-title" aria-live="polite">
+          <section
+            class="detail"
+            id="timeline-record-context"
+            aria-labelledby="timeline-record-title"
+            aria-live="polite"
+          >
             <p class="kicker">{{ record.kindLabel }} · {{ record.periodLabel }}</p>
-            <h3 id="timeline-record-title"><a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a></h3>
+            <h3 id="timeline-record-title">
+              <a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a>
+            </h3>
             <p>{{ record.context }}</p>
-            <p><strong>Precisão registrada:</strong> {{ precisionLabel(record.precision) }}. <strong>Incerteza cadastrada:</strong> {{ uncertaintyLabel(record.uncertainty) }}.</p>
+            <p>
+              <strong>Precisão registrada:</strong> {{ precisionLabel(record.precision) }}.
+              <strong>Incerteza cadastrada:</strong> {{ uncertaintyLabel(record.uncertainty) }}.
+            </p>
             @if (record.sources.length) {
-              <p><strong>Fontes:</strong> @for (source of record.sources; track source.id) { <a appEditorialLink [routerLink]="sourcePath()" [fragment]="sourceFragment(source.id)">{{ source.title }}</a>@if (!$last) {; } }</p>
-            } @else { <p><strong>Fontes:</strong> nenhuma vinculada diretamente a este registro no grafo.</p> }
+              <p>
+                <strong>Fontes:</strong>
+                @for (source of record.sources; track source.id) {
+                  <a
+                    appEditorialLink
+                    [routerLink]="sourcePath()"
+                    [fragment]="sourceFragment(source.id)"
+                    >{{ source.title }}</a
+                  >
+                  @if (!$last) {
+                    ;
+                  }
+                }
+              </p>
+            } @else {
+              <p>
+                <strong>Fontes:</strong> nenhuma vinculada diretamente a este registro no grafo.
+              </p>
+            }
           </section>
         }
       </li>
@@ -62,8 +121,16 @@
 
   <details class="method">
     <summary>Período, fontes e limites</summary>
-    <p>O eixo usa somente início e fim estruturados nas entidades. Intervalos são desenhados quando ambos os anos existem; quando falta um limite, a lista preserva o rótulo cadastrado e o gráfico marca apenas o ano disponível. Registros sem ano não são posicionados. A posição não demonstra simultaneidade, influência ou causalidade.</p>
-    <p>Esta visualização não desenha geografia nem fronteiras. Lugares aparecem apenas como verbetes e relações documentadas.</p>
+    <p>
+      O eixo usa somente início e fim estruturados nas entidades. Intervalos são desenhados quando
+      ambos os anos existem; quando falta um limite, a lista preserva o rótulo cadastrado e o
+      gráfico marca apenas o ano disponível. Registros sem ano não são posicionados. A posição não
+      demonstra simultaneidade, influência ou causalidade.
+    </p>
+    <p>
+      Esta visualização não desenha geografia nem fronteiras. Lugares aparecem apenas como verbetes
+      e relações documentadas.
+    </p>
   </details>
 </section>
 
@@ -71,34 +138,114 @@
   <header class="visualization__heading">
     <p class="kicker">Comparação descritiva</p>
     <h2 id="historical-comparison-title">Compare registros</h2>
-    <p>Escolha até três registros para consultar seus dados lado a lado. Não há nota, ranking ou pontuação ideológica.</p>
+    <p>
+      Escolha até três registros para consultar seus dados lado a lado. Não há nota, ranking ou
+      pontuação ideológica.
+    </p>
   </header>
   <div class="comparison-choices" role="group" aria-label="Selecionar registros para comparação">
     @for (record of records; track record.id) {
-      <button type="button" [attr.aria-pressed]="comparisonSelected(record.id)" [disabled]="!comparisonSelected(record.id) && comparisonLimitReached()" (click)="toggleComparison(record.id)">
-        <span aria-hidden="true">{{ comparisonSelected(record.id) ? '−' : '+' }}</span> {{ comparisonSelected(record.id) ? 'Remover' : 'Comparar' }} {{ record.title }}
+      <button
+        type="button"
+        [attr.aria-pressed]="comparisonSelected(record.id)"
+        [disabled]="!comparisonSelected(record.id) && comparisonLimitReached()"
+        (click)="toggleComparison(record.id)"
+      >
+        <span aria-hidden="true">{{ comparisonSelected(record.id) ? '−' : '+' }}</span>
+        {{ comparisonSelected(record.id) ? 'Remover' : 'Comparar' }} {{ record.title }}
       </button>
     }
   </div>
-  <p class="comparison-legend"><strong>Legenda:</strong> os campos abaixo reproduzem os metadados de cada verbete; “não informado” e “nenhuma fonte vinculada” indicam ausência no registro.</p>
+  <p class="comparison-legend">
+    <strong>Legenda:</strong> os campos abaixo reproduzem os metadados de cada verbete; “não
+    informado” e “nenhuma fonte vinculada” indicam ausência no registro.
+  </p>
   @if (comparedRecords().length) {
     <p class="table-hint">Role a tabela para o lado para ver todos os registros.</p>
-    <div class="table-scroll" role="region" tabindex="0" aria-label="Tabela comparativa; em telas estreitas, role horizontalmente">
+    <div
+      class="table-scroll"
+      role="region"
+      tabindex="0"
+      aria-label="Tabela comparativa; em telas estreitas, role horizontalmente"
+    >
       <table>
-        <caption>Dados cadastrados para os registros selecionados</caption>
-        <thead><tr><th scope="col">Dimensão</th>@for (record of comparedRecords(); track record.id) { <th scope="col"><a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a></th> }</tr></thead>
+        <caption>
+          Dados cadastrados para os registros selecionados
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Dimensão</th>
+            @for (record of comparedRecords(); track record.id) {
+              <th scope="col">
+                <a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a>
+              </th>
+            }
+          </tr>
+        </thead>
         <tbody>
-          <tr><th scope="row">Tipo</th>@for (record of comparedRecords(); track record.id) { <td>{{ record.kindLabel }}</td> }</tr>
-          <tr><th scope="row">Período</th>@for (record of comparedRecords(); track record.id) { <td>{{ record.periodLabel }}</td> }</tr>
-          <tr><th scope="row">Precisão</th>@for (record of comparedRecords(); track record.id) { <td>{{ precisionLabel(record.precision) }}</td> }</tr>
-          <tr><th scope="row">Incerteza cadastrada</th>@for (record of comparedRecords(); track record.id) { <td>{{ uncertaintyLabel(record.uncertainty) }}</td> }</tr>
-          <tr><th scope="row">Contexto</th>@for (record of comparedRecords(); track record.id) { <td>{{ record.context }}</td> }</tr>
-          <tr><th scope="row">Fontes vinculadas</th>@for (record of comparedRecords(); track record.id) { <td>@if (record.sources.length) { <ul>@for (source of record.sources; track source.id) { <li><a appEditorialLink [routerLink]="sourcePath()" [fragment]="sourceFragment(source.id)">{{ source.title }}</a></li> }</ul> } @else { Nenhuma fonte vinculada diretamente. }</td> }</tr>
+          <tr>
+            <th scope="row">Tipo</th>
+            @for (record of comparedRecords(); track record.id) {
+              <td>{{ record.kindLabel }}</td>
+            }
+          </tr>
+          <tr>
+            <th scope="row">Período</th>
+            @for (record of comparedRecords(); track record.id) {
+              <td>{{ record.periodLabel }}</td>
+            }
+          </tr>
+          <tr>
+            <th scope="row">Precisão</th>
+            @for (record of comparedRecords(); track record.id) {
+              <td>{{ precisionLabel(record.precision) }}</td>
+            }
+          </tr>
+          <tr>
+            <th scope="row">Incerteza cadastrada</th>
+            @for (record of comparedRecords(); track record.id) {
+              <td>{{ uncertaintyLabel(record.uncertainty) }}</td>
+            }
+          </tr>
+          <tr>
+            <th scope="row">Contexto</th>
+            @for (record of comparedRecords(); track record.id) {
+              <td>{{ record.context }}</td>
+            }
+          </tr>
+          <tr>
+            <th scope="row">Fontes vinculadas</th>
+            @for (record of comparedRecords(); track record.id) {
+              <td>
+                @if (record.sources.length) {
+                  <ul>
+                    @for (source of record.sources; track source.id) {
+                      <li>
+                        <a
+                          appEditorialLink
+                          [routerLink]="sourcePath()"
+                          [fragment]="sourceFragment(source.id)"
+                          >{{ source.title }}</a
+                        >
+                      </li>
+                    }
+                  </ul>
+                } @else {
+                  Nenhuma fonte vinculada diretamente.
+                }
+              </td>
+            }
+          </tr>
         </tbody>
       </table>
     </div>
   } @else {
-    <p role="status" class="comparison-empty">Selecione registros para montar a comparação. A tabela apresenta até três itens por vez.</p>
+    <p role="status" class="comparison-empty">
+      Selecione registros para montar a comparação. A tabela apresenta até três itens por vez.
+    </p>
   }
-  <p class="method-note">Método: transcrição descritiva de tipo, período, precisão, incerteza, contexto e fontes estruturadas. Campos ausentes permanecem explícitos; nenhuma escala de valor é calculada.</p>
+  <p class="method-note">
+    Método: transcrição descritiva de tipo, período, precisão, incerteza, contexto e fontes
+    estruturadas. Campos ausentes permanecem explícitos; nenhuma escala de valor é calculada.
+  </p>
 </section>

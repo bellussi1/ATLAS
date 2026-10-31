@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router, RouterLink, ActivatedRouteSnapshot } from '@angular/router';
+import { type ActivatedRouteSnapshot, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter, map, startWith } from 'rxjs';
 
 interface Breadcrumb {
@@ -30,14 +30,43 @@ interface Breadcrumb {
     }
   `,
   styles: `
-    :host { display: block; }
-    .breadcrumbs { max-width: var(--grid-max); margin: 0 auto; padding: .9rem var(--grid-gutter) 0; }
-    ol { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
-    li { color: var(--ink-muted); font-size: .82rem; }
-    li + li::before { content: '/'; margin-right: .5rem; color: var(--ink-muted); }
-    a { color: inherit; text-underline-offset: .2em; }
-    [aria-current="page"] { color: var(--ink); font-weight: 650; }
-    a:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+    :host {
+      display: block;
+    }
+    .breadcrumbs {
+      max-width: var(--grid-max);
+      margin: 0 auto;
+      padding: 0.9rem var(--grid-gutter) 0;
+    }
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      color: var(--ink-muted);
+      font-size: 0.82rem;
+    }
+    li + li::before {
+      content: '/';
+      margin-right: 0.5rem;
+      color: var(--ink-muted);
+    }
+    a {
+      color: inherit;
+      text-underline-offset: 0.2em;
+    }
+    [aria-current='page'] {
+      color: var(--ink);
+      font-weight: 650;
+    }
+    a:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 3px;
+    }
   `,
 })
 export class BreadcrumbsComponent {
@@ -52,9 +81,7 @@ export class BreadcrumbsComponent {
   );
 
   private collectBreadcrumbs(root: ActivatedRouteSnapshot): Breadcrumb[] {
-    const result: Breadcrumb[] = [
-      { label: 'Início', url: '/', current: this.router.url === '/' },
-    ];
+    const result: Breadcrumb[] = [{ label: 'Início', url: '/', current: this.router.url === '/' }];
     let route: ActivatedRouteSnapshot | undefined = root;
     let path = '';
 
@@ -63,7 +90,11 @@ export class BreadcrumbsComponent {
       if (segments.length) path += `/${segments.join('/')}`;
       const label = route.data['breadcrumb'];
       const previous = result[result.length - 1];
-      if (typeof label === 'string' && label && (previous.label !== label || previous.url !== path)) {
+      if (
+        typeof label === 'string' &&
+        label &&
+        (previous.label !== label || previous.url !== path)
+      ) {
         result.push({ label, url: path || '/', current: false });
       }
       route = route.firstChild ?? undefined;

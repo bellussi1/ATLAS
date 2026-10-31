@@ -55,9 +55,20 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 
 ## Direção visual específica do ATLAS
 
-Para criação e revisão de UI, usar as skills instaladas com prefixo atlas-: frontend-design, interaction-design, find-animation-opportunities, animate, improve-animations e 12-principles-of-animation. As duas skills de auditoria orientam a revisão; a execução segue pela skill de implementação, sem encerrar uma tarefa autorizada apenas com planos.
+### Seleção de skills por tarefa
+
+As skills são ferramentas especializadas, não um pacote obrigatório. Antes de começar, confira o catálogo disponível nesta sessão e carregue apenas as skills pertinentes ao escopo. A presença de um `SKILL.md` no computador não garante que a skill possa ser invocada nesta sessão; se não estiver no catálogo, trate-a como referência local, não como skill ativa. Não copie instruções globais para este arquivo nem crie versões duplicadas.
+
+- **Identidade e decisões visuais do ATLAS:** `atlas-editorial-geometrico` é a referência artística primária. Consulte-a ao criar ou revisar UI do projeto; preserve a combinação de enciclopédia hipertextual, modernismo suíço, atlas histórico editorial e museografia digital experimental.
+- **Composição ou direção visual de telas/componentes:** use `frontend-design` quando a tarefa exigir decisões de composição, hierarquia e apresentação. Combine com a identidade ATLAS; não substitua nem redesenhe o design system existente sem necessidade concreta.
+- **Exploração interativa ou prototipagem:** use `interaction-design` para definir e implementar interações; use `prototype` apenas quando estiver disponível no catálogo da sessão e a tarefa pedir exploração/prova de conceito. Para componentes de produto, preserve caminhos reais de conteúdo e navegação.
+- **Oportunidades e implementação de motion:** use `find-animation-opportunities` para escolher momentos que ajudam orientação, seleção ou continuidade; use `animate` ao projetar/implementar movimento funcional. Selecione uma ou ambas conforme o trabalho, sem carregá-las por padrão em tarefas estáticas.
+- **Implementação Angular:** use `angular-developer` quando criar ou alterar componentes, serviços, rotas ou padrões Angular. Siga a arquitetura standalone, Signals, templates e estilos já adotados no projeto.
+- **Auditoria e refinamento:** use `improve-animations` para revisar motion existente e `impeccable` para auditoria/refinamento visual quando o escopo justificar. A auditoria complementa a implementação; não encerre uma tarefa de implementação autorizada apenas com recomendações.
+
+Ao desenvolver componentes, priorize interatividade real, continuidade entre conteúdos, motion contextual, navegação por teclado, suporte mobile e respeito a `prefers-reduced-motion`. Escolha a combinação mínima de skills que cubra a tarefa; não é necessário carregá-las simultaneamente.
 
 Partir do briefing deste projeto e de suas referências visuais. Não transportar composições, paletas ou padrões de outros projetos do usuário. Preservar funcionalidades, arquitetura, acessibilidade e integridade editorial ao reconstruir a apresentação. Não alegar remoção de memória do modelo ou de histórico de chats.
 
 
-A skill própria atlas-editorial-geometrico, versionada em .agents/skills/atlas-editorial-geometrico e instalada no catálogo local, orienta a identidade aprovada do ATLAS. Ela complementa as skills gerais, preserva a mesa de pesquisa e organiza cores secundárias, palavras navegáveis e motivos geométricos.
+A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atlas-editorial-geometrico`, orienta a identidade aprovada do ATLAS. Ela complementa as skills gerais, preserva a mesa de pesquisa e organiza cores secundárias, palavras navegáveis e motivos geométricos.

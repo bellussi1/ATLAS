@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+
 import { methodologyAtlas } from '../core/content-repository';
 import { AtlasLicensedAssetComponent } from './licensed-asset';
 
 @Component({
   imports: [AtlasLicensedAssetComponent],
-  template: '<app-licensed-asset [atlas]="atlas" [assetPath]="assetPath" [kind]="kind" alt="Fonte licenciada" />',
+  template:
+    '<app-licensed-asset [atlas]="atlas" [assetPath]="assetPath" [kind]="kind" alt="Fonte licenciada" />',
 })
 class LicensedAssetHost {
   atlas = methodologyAtlas;
@@ -20,7 +22,9 @@ describe('licensed editorial assets', () => {
     const root = fixture.nativeElement as HTMLElement;
 
     expect(root.querySelector('img')).toBeNull();
-    expect(root.textContent).toContain('Ativo omitido: licença desconhecida ou reprodução não autorizada.');
+    expect(root.textContent).toContain(
+      'Ativo omitido: licença desconhecida ou reprodução não autorizada.',
+    );
   });
 
   it('does not render an asset absent from the license registry', () => {
@@ -51,7 +55,9 @@ describe('licensed editorial assets', () => {
     const root = fixture.nativeElement as HTMLElement;
 
     expect(root.querySelector('a[href="/fonts/IBMPlexSans.ttf"]')).not.toBeNull();
-    expect(root.querySelector('a[href="https://github.com/IBM/plex/blob/master/LICENSE.txt"]')?.textContent)
-      .toContain('SIL Open Font License 1.1');
+    expect(
+      root.querySelector('a[href="https://github.com/IBM/plex/blob/master/LICENSE.txt"]')
+        ?.textContent,
+    ).toContain('SIL Open Font License 1.1');
   });
 });

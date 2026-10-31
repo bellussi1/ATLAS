@@ -1,9 +1,18 @@
 import { Component, computed, input } from '@angular/core';
-import type { Atlas, AssetLicense } from '../core/content-schema';
 
-export function reproducibleAsset(atlas: Atlas | undefined, assetPath: string): AssetLicense | undefined {
-  const asset = atlas?.assetLicenses.find(item => item.assetPath === assetPath);
-  return asset?.status === 'known' && asset.reproduction === 'allowed' && asset.license && asset.licenseUrl ? asset : undefined;
+import type { AssetLicense, Atlas } from '../core/content-schema';
+
+export function reproducibleAsset(
+  atlas: Atlas | undefined,
+  assetPath: string,
+): AssetLicense | undefined {
+  const asset = atlas?.assetLicenses.find((item) => item.assetPath === assetPath);
+  return asset?.status === 'known' &&
+    asset.reproduction === 'allowed' &&
+    asset.license &&
+    asset.licenseUrl
+    ? asset
+    : undefined;
 }
 
 @Component({
@@ -13,23 +22,57 @@ export function reproducibleAsset(atlas: Atlas | undefined, assetPath: string): 
       @if (kind() === 'image') {
         <figure>
           <img [src]="record.assetPath" [alt]="alt()" loading="lazy" />
-          <figcaption>{{ creator(record) }} <a [href]="record.licenseUrl" target="_blank" rel="noopener noreferrer">{{ record.license }}</a></figcaption>
+          <figcaption>
+            {{ creator(record) }}
+            <a [href]="record.licenseUrl" target="_blank" rel="noopener noreferrer">{{
+              record.license
+            }}</a>
+          </figcaption>
         </figure>
       } @else {
-        <p><a [href]="record.assetPath">{{ alt() }}</a> · {{ creator(record) }} <a [href]="record.licenseUrl" target="_blank" rel="noopener noreferrer">{{ record.license }}</a></p>
+        <p>
+          <a [href]="record.assetPath">{{ alt() }}</a> · {{ creator(record) }}
+          <a [href]="record.licenseUrl" target="_blank" rel="noopener noreferrer">{{
+            record.license
+          }}</a>
+        </p>
       }
     } @else {
-      <p class="license-block" role="note">Ativo omitido: licença desconhecida ou reprodução não autorizada.</p>
+      <p class="license-block" role="note">
+        Ativo omitido: licença desconhecida ou reprodução não autorizada.
+      </p>
     }
   `,
   styles: `
-    :host { display: block; }
-    figure { margin: 0; }
-    img { display: block; max-width: 100%; height: auto; }
-    figcaption, p { margin-block: .5rem; font-size: .85rem; line-height: 1.5; }
-    a { color: var(--color-accent, var(--signal)); text-underline-offset: .2em; }
-    a:focus-visible { outline: 3px solid var(--color-accent, var(--signal)); outline-offset: 3px; }
-    .license-block { padding: .75rem 1rem; border-left: .2rem solid var(--color-border-strong, #57544d); }
+    :host {
+      display: block;
+    }
+    figure {
+      margin: 0;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    figcaption,
+    p {
+      margin-block: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    a {
+      color: var(--color-accent, var(--signal));
+      text-underline-offset: 0.2em;
+    }
+    a:focus-visible {
+      outline: 3px solid var(--color-accent, var(--signal));
+      outline-offset: 3px;
+    }
+    .license-block {
+      padding: 0.75rem 1rem;
+      border-left: 0.2rem solid var(--color-border-strong, #57544d);
+    }
   `,
 })
 export class AtlasLicensedAssetComponent {
@@ -39,5 +82,7 @@ export class AtlasLicensedAssetComponent {
   readonly kind = input<'image' | 'document'>('image');
   readonly license = computed(() => reproducibleAsset(this.atlas(), this.assetPath()));
 
-  creator(asset: AssetLicense): string { return asset.creator ? `${asset.creator} ·` : ''; }
+  creator(asset: AssetLicense): string {
+    return asset.creator ? `${asset.creator} ·` : '';
+  }
 }

@@ -12,7 +12,8 @@ import { Component, Directive, input, output } from '@angular/core';
 })
 export class AtlasHeadingDirective {
   readonly variant = input<'display' | 'page' | 'section', 'display' | 'page' | 'section' | ''>(
-    'page', { alias: 'appHeading', transform: (value) => value || 'page' },
+    'page',
+    { alias: 'appHeading', transform: (value) => value || 'page' },
   );
 }
 
@@ -58,7 +59,9 @@ export class AtlasButtonComponent {
     <div class="atlas-field">
       <label [for]="controlId()">
         {{ label() }}
-        @if (required()) { <span aria-hidden="true">*</span> }
+        @if (required()) {
+          <span aria-hidden="true">*</span>
+        }
       </label>
       <input
         [id]="controlId()"
@@ -72,8 +75,12 @@ export class AtlasButtonComponent {
         [attr.aria-describedby]="describedBy() || null"
         (input)="onInput($event)"
       />
-      @if (hint()) { <span class="atlas-field__hint" [id]="controlId() + '-hint'">{{ hint() }}</span> }
-      @if (error()) { <span class="atlas-field__error" [id]="controlId() + '-error'">{{ error() }}</span> }
+      @if (hint()) {
+        <span class="atlas-field__hint" [id]="controlId() + '-hint'">{{ hint() }}</span>
+      }
+      @if (error()) {
+        <span class="atlas-field__error" [id]="controlId() + '-error'">{{ error() }}</span>
+      }
     </div>
   `,
 })
@@ -89,10 +96,10 @@ export class AtlasTextFieldComponent {
   readonly disabled = input(false);
   readonly readonly = input(false);
   readonly valueChange = output<string>();
-  readonly describedBy = () => [
-    this.hint() ? `${this.controlId()}-hint` : '',
-    this.error() ? `${this.controlId()}-error` : '',
-  ].filter(Boolean).join(' ');
+  readonly describedBy = () =>
+    [this.hint() ? `${this.controlId()}-hint` : '', this.error() ? `${this.controlId()}-error` : '']
+      .filter(Boolean)
+      .join(' ');
 
   onInput(event: Event): void {
     this.valueChange.emit((event.target as HTMLInputElement).value);

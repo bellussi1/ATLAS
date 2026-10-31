@@ -1,19 +1,29 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+
 import { AppComponent } from './app';
 
 describe('page entrance motion', () => {
-  afterEach(() => { vi.restoreAllMocks(); vi.unstubAllGlobals(); });
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+  });
 
   function setup(reduced = false) {
     TestBed.configureTestingModule({ imports: [AppComponent], providers: [provideRouter([])] });
     vi.stubGlobal('matchMedia', () => ({ matches: reduced }));
-    vi.spyOn(window, 'requestAnimationFrame').mockImplementation(callback => { callback(0); return 1; });
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback) => {
+      callback(0);
+      return 1;
+    });
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const cancel = vi.fn();
     const animate = vi.fn(() => ({ cancel }));
-    Object.defineProperty(fixture.nativeElement.querySelector('main'), 'animate', { value: animate, configurable: true });
+    Object.defineProperty(fixture.nativeElement.querySelector('main'), 'animate', {
+      value: animate,
+      configurable: true,
+    });
     return { fixture, animate, cancel, app: fixture.componentInstance };
   }
 
