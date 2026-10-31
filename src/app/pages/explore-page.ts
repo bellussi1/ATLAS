@@ -42,7 +42,7 @@ import { editorialTypes } from '../content/content-types';
     ol { margin: 0; padding: 0; list-style: none; }
     li + li { margin-top: .4rem; }
     a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .25rem 1rem; align-items: baseline; min-height: 4.5rem; padding: .85rem 0; color: var(--ink); text-decoration: none; }
-    a:hover .content-index__title { color: var(--signal); text-decoration: underline; text-underline-offset: .2em; }
+    @media (hover: hover) and (pointer: fine) { a:hover .content-index__title { color: var(--signal); text-decoration: underline; text-underline-offset: .2em; } }
     a:focus-visible { outline: 3px solid var(--signal); outline-offset: 4px; }
     .content-index__title { font: 500 clamp(1.35rem, 2.2vw, 1.8rem)/1.15 var(--serif); }
     .content-index__summary { grid-column: 1; color: var(--ink-muted); font-size: .92rem; line-height: 1.45; }

@@ -22,8 +22,11 @@ describe('historical visualizations', () => {
   it('filters the timeline by type and selects a record without dragging', () => {
     const view = component();
     view.selectKind('event');
-    expect(view.timelineRecords().map((record) => record.kind)).toEqual(['event']);
-    expect(view.selectedTimeline()?.slug).toBe('promulgacao-constituicao-1988');
+    expect(view.timelineRecords().every((record) => record.kind === 'event')).toBe(true);
+    expect(view.timelineRecords().map((record) => record.slug)).toEqual(expect.arrayContaining([
+      'promulgacao-constituicao-1988', 'glorious-revolution', 'american-revolution', 'french-revolution',
+    ]));
+    expect(view.selectedTimeline()?.kind).toBe('event');
   });
 
   it('limits the comparison to three records and exposes no numerical score', () => {

@@ -17,7 +17,7 @@ const destinations: Record<string, { path: string; fragment?: string }> = {
   selector: 'app-editorial-text',
   imports: [RouterLink, AtlasEditorialLinkDirective],
   template: `@for (part of parts(); track $index) {@if (part.path) {<a appEditorialLink [routerLink]="part.path" [fragment]="part.fragment" [class.inverse]="inverse()">{{ part.text }}</a>} @else {{{ part.text }}}}`,
-  styles: `:host { display: contents; } a { text-decoration: underline; text-underline-offset: .18em; } a.inverse { color: var(--color-on-strong-surface); } a.inverse:focus-visible { outline-color: var(--color-on-strong-surface); } a:focus-visible { outline-offset: 2px; } a:hover { text-decoration-thickness: .15em; }`,
+  styles: `:host { display: contents; } a { text-decoration: underline; text-underline-offset: .18em; } a.inverse { color: var(--color-on-strong-surface); } a.inverse:focus-visible { outline-color: var(--color-on-strong-surface); } a:focus-visible { outline-offset: 2px; } @media (hover: hover) and (pointer: fine) { a:hover { text-decoration-thickness: .15em; } }`,
 })
 export class AtlasEditorialTextComponent {
   readonly text = input.required<string>();

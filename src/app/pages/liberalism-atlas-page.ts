@@ -1,60 +1,119 @@
 import { Component, computed, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { methodologyKnowledgeGraph } from '../core/content-repository';
+import { queryKnowledgeRelations } from '../core/knowledge-graph';
+import type { KnowledgeRelationResult } from '../core/knowledge-graph';
+import type { Entity, Relation } from '../core/content-schema';
 
-type School = 'Smith' | 'Hayek' | 'Keynes' | 'Friedman';
-type Facet = 'contexto' | 'Estado' | 'propriedade' | 'moeda' | 'liberdade' | 'método';
-interface Position { school: School; facet: Facet; claim: string; work: string; url: string; }
+const atlasId = 'atlas-liberalism';
+const rootEntityId = 'ideology-liberalism';
+const graph = methodologyKnowledgeGraph;
+const atlas = graph.atlases.find(item => item.id === atlasId)!;
 
-const positions: Position[] = [
-  { school: 'Smith', facet: 'contexto', claim: 'Investiga produção, troca e riqueza no quadro da economia política do século XVIII.', work: 'A riqueza das nações (1776), Introdução e Plano', url: 'https://www.gutenberg.org/files/3300/3300-h/3300-h.htm' },
-  { school: 'Smith', facet: 'Estado', claim: 'A obra dedica o Livro V às despesas e receitas do soberano; não propõe ausência de governo.', work: 'A riqueza das nações (1776), Livro V', url: 'https://www.gutenberg.org/files/3300/3300-h/3300-h.htm' },
-  { school: 'Smith', facet: 'propriedade', claim: 'Examina divisão do trabalho, troca e acumulação como partes de sua análise da riqueza.', work: 'A riqueza das nações (1776), Livros I–II', url: 'https://www.gutenberg.org/files/3300/3300-h/3300-h.htm' },
-  { school: 'Smith', facet: 'moeda', claim: 'Analisa dinheiro como meio de circulação e distingue preço real de preço nominal.', work: 'A riqueza das nações (1776), Livro I, cap. V', url: 'https://www.gutenberg.org/files/3300/3300-h/3300-h.htm' },
-  { school: 'Smith', facet: 'liberdade', claim: 'A crítica a restrições mercantis aparece em contexto argumentativo específico, não como regra universal sem exceções.', work: 'A riqueza das nações (1776), Livro IV', url: 'https://www.gutenberg.org/files/3300/3300-h/3300-h.htm' },
-  { school: 'Smith', facet: 'método', claim: 'Combina análise histórica e institucional com investigação dos mecanismos econômicos.', work: 'A riqueza das nações (1776)', url: 'https://www.gutenberg.org/files/3300/3300-h/3300-h.htm' },
-  { school: 'Hayek', facet: 'contexto', claim: 'Discute como conhecimento disperso e circunstâncias locais desafiam a coordenação central da economia.', work: 'The Use of Knowledge in Society (1945), seção I', url: 'https://oll.libertyfund.org/titles/hayek-the-use-of-knowledge-in-society-1945' },
-  { school: 'Hayek', facet: 'Estado', claim: 'O argumento sobre limites do planejamento trata de conhecimento e coordenação; por si só não especifica todo o escopo legítimo do Estado.', work: 'The Use of Knowledge in Society (1945)', url: 'https://oll.libertyfund.org/titles/hayek-the-use-of-knowledge-in-society-1945' },
-  { school: 'Hayek', facet: 'propriedade', claim: 'Este ensaio focaliza informação e preços, não oferece uma teoria abrangente de direitos de propriedade.', work: 'The Use of Knowledge in Society (1945)', url: 'https://oll.libertyfund.org/titles/hayek-the-use-of-knowledge-in-society-1945' },
-  { school: 'Hayek', facet: 'moeda', claim: 'Preços funcionam como sinais que condensam informação relevante para decisões econômicas.', work: 'The Use of Knowledge in Society (1945), seção VI', url: 'https://oll.libertyfund.org/titles/hayek-the-use-of-knowledge-in-society-1945' },
-  { school: 'Hayek', facet: 'liberdade', claim: 'A coordenação por preços permite ajustes sem que uma autoridade conheça todas as circunstâncias particulares.', work: 'The Use of Knowledge in Society (1945)', url: 'https://oll.libertyfund.org/titles/hayek-the-use-of-knowledge-in-society-1945' },
-  { school: 'Hayek', facet: 'método', claim: 'Formula um problema epistemológico de coordenação a partir da dispersão do conhecimento.', work: 'The Use of Knowledge in Society (1945)', url: 'https://oll.libertyfund.org/titles/hayek-the-use-of-knowledge-in-society-1945' },
-  { school: 'Keynes', facet: 'contexto', claim: 'Analisa emprego, juros e moeda em resposta a problemas macroeconômicos de sua época.', work: 'The General Theory (1936), caps. 1–3', url: 'https://brian.weatherson.org/general-theory/index.html' },
-  { school: 'Keynes', facet: 'Estado', claim: 'Defende políticas que influenciem investimento e demanda agregada em certas circunstâncias; o recorte não equivale a defesa de controle total.', work: 'The General Theory (1936), cap. 24', url: 'https://brian.weatherson.org/general-theory/index.html' },
-  { school: 'Keynes', facet: 'propriedade', claim: 'Seu capítulo final discute mudanças institucionais e incentivos, sem propor a abolição geral da propriedade privada.', work: 'The General Theory (1936), cap. 24', url: 'https://brian.weatherson.org/general-theory/index.html' },
-  { school: 'Keynes', facet: 'moeda', claim: 'A preferência pela liquidez integra sua explicação da taxa de juros e da demanda por moeda.', work: 'The General Theory (1936), cap. 13', url: 'https://brian.weatherson.org/general-theory/index.html' },
-  { school: 'Keynes', facet: 'liberdade', claim: 'Neste livro, liberdade não é apresentada como uma única variável econômica comparável por escala simples.', work: 'The General Theory (1936)', url: 'https://brian.weatherson.org/general-theory/index.html' },
-  { school: 'Keynes', facet: 'método', claim: 'Desenvolve uma teoria agregada do emprego e da renda, incluindo expectativas e incerteza.', work: 'The General Theory (1936), caps. 3, 12', url: 'https://brian.weatherson.org/general-theory/index.html' },
-  { school: 'Friedman', facet: 'contexto', claim: 'Em sua aula presidencial, examina o que a política monetária pode e não pode alcançar.', work: 'The Role of Monetary Policy (1968)', url: 'https://fraser.stlouisfed.org/files/docs/publications/aer/aer_1968_friedman_role_monetary_policy.pdf' },
-  { school: 'Friedman', facet: 'Estado', claim: 'Argumenta por limites e regras previsíveis para a política monetária; esta fonte não resume sua posição sobre todo o Estado.', work: 'The Role of Monetary Policy (1968)', url: 'https://fraser.stlouisfed.org/files/docs/publications/aer/aer_1968_friedman_role_monetary_policy.pdf' },
-  { school: 'Friedman', facet: 'propriedade', claim: 'O ensaio não trata sistematicamente de propriedade; comparação neste eixo permanece fora do escopo da fonte.', work: 'The Role of Monetary Policy (1968)', url: 'https://fraser.stlouisfed.org/files/docs/publications/aer/aer_1968_friedman_role_monetary_policy.pdf' },
-  { school: 'Friedman', facet: 'moeda', claim: 'Defende que a política monetária evite contribuir para instabilidade e discute crescimento monetário previsível.', work: 'The Role of Monetary Policy (1968)', url: 'https://fraser.stlouisfed.org/files/docs/publications/aer/aer_1968_friedman_role_monetary_policy.pdf' },
-  { school: 'Friedman', facet: 'liberdade', claim: 'O ensaio delimita objetivos da política monetária; não oferece uma medida geral de liberdade política ou econômica.', work: 'The Role of Monetary Policy (1968)', url: 'https://fraser.stlouisfed.org/files/docs/publications/aer/aer_1968_friedman_role_monetary_policy.pdf' },
-  { school: 'Friedman', facet: 'método', claim: 'Constrói o argumento a partir das funções, limites e defasagens da política monetária.', work: 'The Role of Monetary Policy (1968)', url: 'https://fraser.stlouisfed.org/files/docs/publications/aer/aer_1968_friedman_role_monetary_policy.pdf' },
-];
+type ViewMode = 'rede' | 'tempo' | 'imagens';
+interface GraphNode { entity: Entity; x: number; y: number; }
+interface GraphEdge { relation: Relation; x1: number; y1: number; x2: number; y2: number; }
 
 @Component({
-  selector: 'app-liberalism-atlas-page', imports: [RouterLink], template: `
-    <main class="liberal-atlas" id="conteudo">
-      <header class="opening"><div><p class="eyebrow">Atlas de ideias políticas · núcleo em revisão</p><h1>Liberalismos,<br>economia e <em>Estado.</em></h1><p class="dek">Quatro autores, problemas diferentes. Compare argumentos situados sobre coordenação econômica e moeda, sem reduzir tradições a uma escala ideológica única.</p></div><aside><span aria-hidden="true">↗</span><p>Recorte documental</p><strong>1776—1968</strong><p>Smith · Hayek · Keynes · Friedman</p></aside></header>
-      <section aria-labelledby="compare-heading"><div class="section-title"><h2 id="compare-heading">Comparar argumentos</h2><label>Filtrar eixo <select [value]="filter()" (change)="setFilter($any($event.target).value)"><option value="todos">Todos os eixos</option>@for (facet of facets; track facet) {<option [value]="facet">{{ facet }}</option>}</select></label></div>
-        <p class="note" role="status">{{ shown().length }} afirmações · cada célula está atribuída a uma obra primária. Sínteses editoriais aguardam revisão humana.</p>
-        @if (shown().length) { <div class="table-scroll" tabindex="0" aria-label="Tabela comparativa; em telas estreitas, role horizontalmente"><table><thead><tr><th scope="col">Eixo</th>@for (school of schools; track school) {<th scope="col">{{ school }}</th>}</tr></thead><tbody>@for (facet of visibleFacets(); track facet) {<tr><th scope="row">{{ facet }}</th>@for (school of schools; track school) {<td>@if (cell(school, facet); as item) {<p>{{ item.claim }}</p><a [href]="item.url" target="_blank" rel="noopener">{{ item.work }} <span aria-hidden="true">↗</span></a>} @else {<span>Fonte não localizada</span>}</td>}</tr>}</tbody></table></div> } @else {<p class="empty">Nenhuma afirmação neste eixo. Escolha outro filtro para continuar.</p>}
-      </section>
-      <section class="relations" aria-labelledby="relations-heading"><div><p class="eyebrow">Índice de argumentos</p><h2 id="relations-heading">Compare autores.<br>Confira as fontes.</h2><p>Os controles selecionam uma ficha do comparador. Não representam influência, causalidade ou convergência histórica: essas relações ainda exigem pesquisa e registro de evidências no grafo comum.</p></div><ol class="network">@for (school of schools; track school) {<li><button type="button" [attr.aria-pressed]="selected() === school" (click)="select(school)">{{ school }}</button><span>abrir argumento sobre moeda · {{ sourceYear(school) }}</span></li>}</ol><div class="selected" aria-live="polite"><h3>{{ selected() }} · contexto selecionado</h3><p>{{ selectedPosition().claim }}</p><a [href]="selectedPosition().url" target="_blank" rel="noopener">Consultar {{ selectedPosition().work }} ↗</a><p><a routerLink="/atlas/marxismo" [queryParams]="{ origem: '/atlas/liberalismos' }">Continuar para Smith e Marx no atlas relacionado ↗</a></p></div></section>
-      <section class="route-note"><h2>Leitura em revisão</h2><p>Esta comparação é uma demonstração editorial baseada nas obras listadas. Não constitui verbete aprovado nem classificação exaustiva de liberalismo, conservadorismo, fascismo ou libertarianismo. A trilha de aprendizagem ainda não possui revisão humana e, por isso, não é apresentada como exercício aprovado.</p><a routerLink="/explorar">Explorar o acervo geral</a></section>
-    </main>`,
-  styles: [`:host{display:block}.liberal-atlas{max-width:var(--grid-max);margin:auto;padding:3rem var(--grid-gutter) 6rem;color:var(--color-ink)}.opening{display:grid;grid-template-columns:minmax(0,1fr) 17rem;gap:4rem;align-items:end;margin-bottom:5rem}.eyebrow{color:var(--color-accent);font-family:var(--font-mono);font-size:.85rem}.opening h1{font-size:clamp(3.4rem,8vw,8rem);line-height:.92;letter-spacing:-.075em;margin:1.5rem 0}.opening h1 em{color:var(--color-accent);font-style:normal}.dek{max-width:48rem;font:clamp(1.2rem,2vw,1.6rem)/1.5 var(--font-serif)}.opening aside{border-left:1px solid var(--color-ink);padding:1rem 1.5rem}.opening aside span{font-size:3rem;color:var(--color-teal)}.opening aside strong{font-size:2rem}.section-title{display:flex;justify-content:space-between;gap:1rem;align-items:center;border-top:4px solid;padding:1.2rem 0}.section-title h2,.relations h2,.route-note h2{font:500 clamp(2rem,4vw,3.4rem)/1.05 var(--font-serif);margin:0}.section-title select{min-height:44px;padding:.5rem;font:inherit;background:var(--color-canvas);color:inherit}.note{color:var(--color-ink-muted)}.table-scroll{overflow:auto;max-width:100%;outline-offset:3px}table{width:100%;min-width:68rem;border-collapse:collapse;text-align:left}th,td{border-bottom:1px solid var(--color-border-strong);padding:1rem;vertical-align:top}thead th{font-size:1.3rem;background:var(--color-teal-paper)}tbody th{width:9rem;font:600 1.1rem var(--font-sans)}td{width:25%}td p{line-height:1.5;margin:0 0 .8rem}td a,.selected a,.route-note a{color:var(--color-accent);text-underline-offset:.2em}.empty{padding:2rem;background:var(--color-surface-subtle)}.relations{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:6rem;padding-top:1.5rem;border-top:4px solid}.relations>div:first-child p:last-child,.route-note p{max-width:58ch;line-height:1.6}.network{margin:0;padding:0;list-style:none}.network li{display:grid;grid-template-columns:8rem 1fr;align-items:center;border-bottom:1px solid var(--color-border-strong);padding:.6rem 0;gap:1rem}.network button{min-height:48px;border:1px solid var(--color-ink);background:transparent;color:inherit;font:600 1rem var(--font-sans);cursor:pointer}.network button[aria-pressed=true]{background:var(--color-ink);color:var(--color-canvas)}.network span{font-size:.88rem}.selected{grid-column:2;background:var(--color-ochre-paper);padding:1.5rem}.selected h3{margin-top:0}.route-note{margin-top:5rem;padding:1.5rem 0;border-top:1px solid var(--color-border-strong)}a:focus-visible,button:focus-visible,select:focus-visible,.table-scroll:focus-visible{outline:3px solid var(--color-focus);outline-offset:3px}@media(max-width:45rem){.liberal-atlas{padding-top:2rem}.opening{grid-template-columns:1fr;gap:1rem;margin-bottom:3rem}.opening aside{display:grid;grid-template-columns:auto 1fr;column-gap:1rem;align-items:center}.opening aside span{grid-row:span 2}.opening aside p{margin:.2rem}.section-title{align-items:flex-start;flex-direction:column}.relations{grid-template-columns:1fr;margin-top:4rem}.selected{grid-column:1}.network li{grid-template-columns:7rem 1fr}}`],
+  selector: 'app-liberalism-atlas-page',
+  templateUrl: './liberalism-atlas-page.html',
+  styleUrls: ['./liberalism-atlas-page.scss', './liberalism-atlas-page-visual.scss'],
 })
 export class LiberalismAtlasPage {
-  readonly schools: School[] = ['Smith', 'Hayek', 'Keynes', 'Friedman'];
-  readonly facets: Facet[] = ['contexto', 'Estado', 'propriedade', 'moeda', 'liberdade', 'método'];
-  readonly filter = signal('todos');
-  readonly selected = signal<School>('Hayek');
-  readonly shown = computed(() => positions.filter(item => this.filter() === 'todos' || item.facet === this.filter()));
-  readonly visibleFacets = computed(() => this.facets.filter(facet => this.filter() === 'todos' || facet === this.filter()));
-  readonly selectedPosition = computed(() => positions.find(item => item.school === this.selected() && item.facet === 'moeda')!);
-  cell(school: School, facet: Facet): Position | undefined { return positions.find(item => item.school === school && item.facet === facet); }
-  sourceYear(school: School): string { return positions.find(item => item.school === school && item.facet === 'moeda')?.work.match(/\(\d{4}\)/)?.[0] ?? ''; }
-  setFilter(value: string): void { this.filter.set(value); }
-  select(school: School): void { this.selected.set(school); }
+  readonly atlas = atlas;
+  readonly discoveryLinkCount = atlas.relations.filter(relation => relation.type === 'encyclopedic-link').length;
+  readonly structuredRelationCount = atlas.relations.length - this.discoveryLinkCount;
+  readonly unconnectedEntityCount = computed(() => this.entities().filter(entity => !atlas.relations.some(relation => relation.fromEntityId === entity.id || relation.toEntityId === entity.id)).length);
+  readonly mode = signal<ViewMode>('rede');
+  readonly selectedId = signal(rootEntityId);
+  readonly search = signal('');
+  readonly history = signal<string[]>([]);
+  readonly expandedMediaId = signal<string | null>(null);
+  readonly entities = computed(() => {
+    const referencedIds = new Set([...atlas.entityIds, ...atlas.relations.flatMap(relation => [relation.fromEntityId, relation.toEntityId])]);
+    return graph.atlases.flatMap(item => item.entities).filter(entity => referencedIds.has(entity.id));
+  });
+  readonly selected = computed(() => this.entities().find(entity => entity.id === this.selectedId()) ?? this.entities()[0]);
+  readonly filteredEntities = computed(() => {
+    const query = this.search().trim().toLocaleLowerCase('pt-BR');
+    return this.entities().filter(entity => !query || [entity.title, entity.summary, ...entity.aliases].some(value => value.toLocaleLowerCase('pt-BR').includes(query)));
+  });
+  readonly relations = computed(() => queryKnowledgeRelations(graph, this.selectedId(), { atlasId }));
+  readonly graphNodes = computed<GraphNode[]>(() => {
+    const items = this.entities();
+    return items.map(entity => {
+      if (entity.id === rootEntityId) return { entity, x: 460, y: 286 };
+      const others = items.filter(item => item.id !== rootEntityId);
+      const position = others.findIndex(item => item.id === entity.id);
+      const angle = (-Math.PI / 2) + ((Math.PI * 2 * position) / Math.max(others.length, 1));
+      return { entity, x: 460 + Math.cos(angle) * 350, y: 286 + Math.sin(angle) * 205 };
+    });
+  });
+  readonly graphEdges = computed<GraphEdge[]>(() => {
+    const positions = new Map(this.graphNodes().map(node => [node.entity.id, node]));
+    return atlas.relations.flatMap(relation => {
+      if (relation.fromEntityId !== this.selectedId() && relation.toEntityId !== this.selectedId()) return [];
+      const from = positions.get(relation.fromEntityId);
+      const to = positions.get(relation.toEntityId);
+      return from && to ? [{ relation, x1: from.x, y1: from.y, x2: to.x, y2: to.y }] : [];
+    });
+  });
+  readonly timelineEntities = computed(() => this.entities()
+    .filter(entity => (entity.kind === 'person' || entity.kind === 'event') && entity.temporalExtent && (entity.temporalExtent.startYear !== null || entity.temporalExtent.endYear !== null))
+    .sort((a, b) => (a.temporalExtent?.startYear ?? a.temporalExtent?.endYear ?? 0) - (b.temporalExtent?.startYear ?? b.temporalExtent?.endYear ?? 0)));
+  readonly media = computed(() => atlas.assetLicenses.flatMap(asset => {
+    const entity = this.entities().find(item => item.id === asset.entityId);
+    return entity && asset.status === 'known' && asset.reproduction === 'allowed' && asset.license && asset.licenseUrl && asset.attribution && asset.filePageUrl
+      ? [{ asset, entity }]
+      : [];
+  }));
+
+  setMode(mode: ViewMode): void { this.mode.set(mode); }
+  setSearch(value: string): void { this.search.set(value); }
+  openEntity(entityId: string): void {
+    if (entityId === this.selectedId()) return;
+    this.history.update(items => [...items, this.selectedId()]);
+    this.selectedId.set(entityId);
+  }
+  returnContext(): void {
+    const previous = this.history().at(-1);
+    if (!previous) { this.selectedId.set(rootEntityId); return; }
+    this.history.update(items => items.slice(0, -1));
+    this.selectedId.set(previous);
+  }
+  yearLabel(entity: Entity): string {
+    const extent = entity.temporalExtent;
+    if (!extent) return 'Data não informada';
+    if (extent.startYear !== null && extent.endYear !== null) return `${extent.startYear}–${extent.endYear}`;
+    if (extent.startYear !== null) return `a partir de ${extent.startYear}`;
+    if (extent.endYear !== null) return `até ${extent.endYear}`;
+    return extent.label ?? 'Data não informada';
+  }
+  relationName(relation: KnowledgeRelationResult): string {
+    const labels: Record<string, string> = {
+      'encyclopedic-link': 'link enciclopédico', related_to: 'classificação relacionada',
+      influenced: 'influenciou', influenced_by: 'influenciado por', associated_with: 'associado a',
+      reacted_against: 'reagiu contra', developed_into: 'desenvolveu-se em', participated_in: 'participou de',
+      wrote: 'escreveu', authored: 'autoria', event_influenced_ideology: 'evento ligado a uma ideologia',
+    };
+    return labels[relation.relationType] ?? relation.relationType;
+  }
+  relationSourceLabel(relation: KnowledgeRelationResult): string {
+    const provenance = atlas.relations.find(item => item.id === relation.relationId)?.provenance?.source;
+    return provenance === 'wikipedia' ? 'Descoberta na Wikipedia'
+      : provenance === 'wikidata' ? 'Afirmação estruturada no Wikidata'
+        : 'Relação editorial';
+  }
+  relationStatusLabel(relation: KnowledgeRelationResult): string {
+    const status = atlas.relations.find(item => item.id === relation.relationId)?.editorialStatus;
+    return status === 'pending' ? 'revisão pendente'
+      : status === 'verified' ? 'verificada editorialmente'
+        : status === 'contested' ? 'controversa'
+          : status === 'needs-update' ? 'precisa de atualização'
+            : status === 'draft' ? 'rascunho'
+              : 'estado editorial não informado';
+  }
+  relationTarget(relation: KnowledgeRelationResult): Entity | undefined { return this.entities().find(entity => entity.id === relation.relatedEntityId); }
+  mediaFor(entity: Entity) { return this.media().find(item => item.entity.id === entity.id); }
+  nodePosition(entityId: string): GraphNode | undefined { return this.graphNodes().find(node => node.entity.id === entityId); }
+  toggleMedia(mediaId: string): void { this.expandedMediaId.update(current => current === mediaId ? null : mediaId); }
 }

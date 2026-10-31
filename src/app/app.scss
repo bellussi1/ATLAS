@@ -1,10 +1,10 @@
-:host { display:block;min-height:100vh; }
+:host { display:block;min-height:100dvh; }
 .skip-link { position:fixed;z-index:10;top:.75rem;left:.75rem;padding:.75rem 1rem;transform:translateY(-160%);background:var(--ink);color:var(--paper); }
 .skip-link:focus { transform:translateY(0); }
 .site-header { border-bottom:1px solid var(--color-border-strong); }
-.site-header__inner { display:grid;gap:1.25rem;padding:1.25rem var(--grid-gutter); }
+.site-header__inner { display:grid;gap:1.25rem;padding:calc(1.25rem + env(safe-area-inset-top)) var(--grid-gutter) 1.25rem; padding-inline-start:calc(var(--grid-gutter) + env(safe-area-inset-left));padding-inline-end:calc(var(--grid-gutter) + env(safe-area-inset-right)); }
 .site-header__inner,.site-footer__inner { width:min(100%,var(--grid-max));margin-inline:auto;min-width:0; }
-.site-footer__inner { padding:2rem var(--grid-gutter) 1rem; }
+.site-footer__inner { padding:2rem var(--grid-gutter) calc(1rem + env(safe-area-inset-bottom));padding-inline-start:calc(var(--grid-gutter) + env(safe-area-inset-left));padding-inline-end:calc(var(--grid-gutter) + env(safe-area-inset-right)); }
 .wordmark { display:block;width:100%;max-width:24rem;color:var(--color-ink);text-decoration:none;justify-self:start; }
 .wordmark__logo { display:block;width:100%;height:auto; }
 .wordmark__caption { display:block;margin-top:.65rem;font: .8rem/1.4 var(--font-serif); }
@@ -12,7 +12,7 @@
 .graphic-door { display:block;color:var(--color-ink);text-decoration:none;min-width:0; }
 .graphic-door app-editorial-mark { overflow:hidden; }
 .graphic-door > span { display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem;align-items:center;min-height:2.75rem;font-size:.72rem;line-height:1.2;padding:.4rem 0; }
-.graphic-door:hover > span { color:var(--color-accent);text-decoration:underline;text-underline-offset:.2em; }
+@media (hover: hover) and (pointer: fine) { .graphic-door:hover > span { color:var(--color-accent);text-decoration:underline;text-underline-offset:.2em; } }
 app-menu { display:block;min-width:0; }
 main { min-height:50vh; }
 main:focus { outline:none; }
@@ -33,7 +33,7 @@ main:focus { outline:none; }
 .collage-piece--study { background:var(--color-ochre-paper); }
 .collage-piece--about { background:var(--color-accent);color:white; }
 .collage-letter { font-family:var(--font-serif);font-weight:650;font-size:clamp(4rem,12vw,10rem);letter-spacing:-.09em;line-height:.65;display:block;text-align:center;padding:.7rem;transition:transform var(--motion-standard) var(--ease-out); }
-.collage-piece:hover > span:last-child { text-decoration:underline;text-underline-offset:.2em; }
+@media (hover: hover) and (pointer: fine) { .collage-piece:hover > span:last-child { text-decoration:underline;text-underline-offset:.2em; } }
 .footer-collage[data-composition="1"] .collage-piece--relations app-editorial-mark { transform:rotate(180deg); }
 .footer-collage[data-composition="1"] .collage-piece--read app-editorial-mark { transform:rotate(-180deg); }
 .footer-collage[data-composition="1"] .collage-piece--study app-editorial-mark { transform:scaleX(-1); }
@@ -45,7 +45,7 @@ main:focus { outline:none; }
 .footer-collage.instant app-editorial-mark,.footer-collage.instant .collage-letter { transition:none; }
 .composition-control { display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.75rem;font-size:.75rem; }
 .composition-control button { display:inline-flex;gap:1rem;align-items:center;min-height:2.75rem;background:none;border:1px solid var(--color-on-strong-surface);color:white;padding:.5rem .75rem;cursor:pointer; }
-.composition-control button:hover { background:var(--color-on-strong-surface);color:var(--color-indigo); }
+@media (hover: hover) and (pointer: fine) { .composition-control button:hover { background:var(--color-on-strong-surface);color:var(--color-indigo); } }
 .footer-imprint { display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1.5rem;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--color-on-strong-surface); }
 .footer-signature { display:block;width:min(100%,56rem);text-decoration:none; }
 .footer-signature img { display:block;width:100%;height:auto; }

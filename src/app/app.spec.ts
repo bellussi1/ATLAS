@@ -394,8 +394,9 @@ describe('ATLAS application', () => {
     filter.value = 'event';
     filter.dispatchEvent(new Event('change', { bubbles: true }));
     harness.detectChanges();
-    expect(root.querySelectorAll('.timeline-list li')).toHaveLength(1);
-    expect(root.querySelector('.timeline-list a')?.textContent).toContain('Promulgação');
+    expect(root.querySelectorAll('.timeline-list li').length).toBeGreaterThan(1);
+    expect(root.querySelector('.timeline-list')?.textContent).toContain('Promulgação');
+    expect(root.querySelector('.timeline-list')?.textContent).toContain('Revolução Gloriosa');
 
     const addEvent = Array.from(root.querySelectorAll<HTMLButtonElement>('.comparison-choices button'))
       .find((button) => button.textContent?.includes('Comparar Promulgação'))!;

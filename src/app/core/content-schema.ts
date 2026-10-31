@@ -4,6 +4,7 @@ const identifier = z.string().regex(/^[a-z][a-z0-9-]*$/, 'Use um identificador m
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use um slug minúsculo com hífens.');
 const date = z.iso.date();
 const uncertaintySchema = z.enum(['low', 'moderate', 'high', 'unknown']);
+export const editorialStatusSchema = z.enum(['draft', 'pending', 'verified', 'contested', 'needs-update']);
 
 export const temporalExtentSchema = z.object({
   startYear: z.number().int().nullable(),
@@ -35,6 +36,19 @@ const entityBaseSchema = z.object({
   uncertainty: uncertaintySchema,
   revision: z.number().int().positive(),
   sections: z.array(editorialSectionSchema).min(1),
+  editorialStatus: editorialStatusSchema.optional(),
+  externalIds: z.object({ wikidata: z.string().regex(/^Q\d+$/), wikipedia: z.string().trim().min(1) }).optional(),
+  discoveryMetadata: z.object({
+    description: z.string().trim().nullable(),
+    wikipediaTitle: z.string().trim().min(1),
+    wikipediaUrl: z.url({ protocol: /^https?$/ }),
+    wikipediaLanguage: z.string().regex(/^[a-z-]+$/),
+    categories: z.array(z.string().trim().min(1)),
+    fetchedAt: date,
+    contentLicense: z.string().trim().min(1),
+    contentLicenseUrl: z.url({ protocol: /^https?$/ }),
+    attribution: z.string().trim().min(1),
+  }).optional(),
 });
 
 export const personSchema = entityBaseSchema.extend({ kind: z.literal('person') });
@@ -80,7 +94,6 @@ export const citationSchema = z.object({
 export const claimClassificationSchema = z.enum([
   'documented-fact', 'attributed-thesis', 'interpretation', 'hypothesis', 'inference', 'contested-claim', 'unverified',
 ]);
-export const editorialStatusSchema = z.enum(['draft', 'pending', 'verified', 'contested', 'needs-update']);
 
 export const claimSchema = z.object({
   id: identifier,
@@ -109,12 +122,18 @@ export const reviewSchema = z.object({
 
 export const assetLicenseSchema = z.object({
   id: identifier,
+  entityId: identifier.optional(),
   assetPath: z.string().trim().min(1),
+  sourceUrl: z.url({ protocol: /^https?$/ }).optional(),
   creator: z.string().trim().min(1).nullable(),
   license: z.string().trim().min(1).nullable(),
   licenseUrl: z.url({ protocol: /^https?$/ }).nullable(),
   status: z.enum(['known', 'unknown']),
   reproduction: z.enum(['allowed', 'blocked']),
+  fileTitle: z.string().trim().min(1).optional(),
+  filePageUrl: z.url({ protocol: /^https?$/ }).optional(),
+  attribution: z.string().trim().min(1).optional(),
+  retrievedAt: date.optional(),
 }).superRefine((asset, context) => {
   if (asset.status === 'unknown' && asset.reproduction !== 'blocked') {
     context.addIssue({ code: 'custom', message: 'Ativo com licença desconhecida deve bloquear reprodução.', path: ['reproduction'] });
@@ -122,25 +141,38 @@ export const assetLicenseSchema = z.object({
   if (asset.status === 'known' && (!asset.license || !asset.licenseUrl)) {
     context.addIssue({ code: 'custom', message: 'Licença conhecida exige nome e URL da licença.', path: ['license'] });
   }
+  if (asset.entityId && asset.status === 'known' && asset.reproduction === 'allowed'
+    && (!asset.filePageUrl || !asset.sourceUrl || !asset.attribution)) {
+    context.addIssue({ code: 'custom', message: 'Mídia do atlas deve registrar URL de origem, página do arquivo e atribuição.', path: ['attribution'] });
+  }
 });
 
 export const relationSchema = z.object({
   id: identifier,
   fromEntityId: identifier,
   toEntityId: identifier,
-  type: z.enum(['editorial-link', 'documented-association', 'influence', 'causal-claim']),
+  type: z.enum([
+    'editorial-link', 'encyclopedic-link', 'documented-association', 'influence', 'causal-claim',
+    'influenced', 'influenced_by', 'associated_with', 'related_to', 'reacted_against', 'developed_into',
+    'participated_in', 'wrote', 'authored', 'event_influenced_ideology',
+  ]),
   label: z.string().trim().min(1),
   reverseLabel: z.string().trim().min(1),
   context: z.string().trim().min(1),
   temporalExtent: temporalExtentSchema.nullable(),
   uncertainty: uncertaintySchema,
   evidenceIds: z.array(identifier),
+  editorialStatus: editorialStatusSchema.optional(),
+  provenance: z.object({ source: z.enum(['wikipedia', 'wikidata']), url: z.url({ protocol: /^https?$/ }), retrievedAt: date }).optional(),
 }).superRefine((relation, context) => {
   if (relation.fromEntityId === relation.toEntityId) {
     context.addIssue({ code: 'custom', message: 'Uma relação não pode ligar a entidade a si mesma.', path: ['toEntityId'] });
   }
-  if (relation.type !== 'editorial-link' && relation.evidenceIds.length === 0) {
+  if (!['editorial-link', 'encyclopedic-link'].includes(relation.type) && relation.evidenceIds.length === 0) {
     context.addIssue({ code: 'custom', message: 'Relações históricas exigem evidência identificada.', path: ['evidenceIds'] });
+  }
+  if (relation.type === 'encyclopedic-link' && (!relation.provenance || relation.editorialStatus !== 'pending')) {
+    context.addIssue({ code: 'custom', message: 'Links enciclopédicos exigem procedência e revisão pendente explícitas.', path: ['provenance'] });
   }
   if (new Set(relation.evidenceIds).size !== relation.evidenceIds.length) {
     context.addIssue({ code: 'custom', message: 'Evidências da relação não podem se repetir.', path: ['evidenceIds'] });
