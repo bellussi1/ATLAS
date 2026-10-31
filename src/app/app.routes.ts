@@ -11,6 +11,7 @@ import {
 } from './content/route-resolvers';
 
 export const routes: Routes = [
+  { path: 'atlas/marxismo', loadComponent: () => import('./pages/marx-atlas-page').then(module => module.MarxAtlasPage), data: { breadcrumb: 'Marxismo e economia política' }, title: 'Marxismo e economia política — ATLAS' },
   ...[
     { path: 'relacoes', mode: 'relations', label: 'Relações' },
     { path: 'tempo-e-espaco', mode: 'time', label: 'Tempo e espaço' },

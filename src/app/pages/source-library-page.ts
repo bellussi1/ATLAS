@@ -45,7 +45,7 @@ import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateCo
       } @empty {
         <p role="status" class="empty">Ainda não há fontes cadastradas no acervo.</p>
       }
-      <a class="back-link discovery-return" appEditorialLink [routerLink]="returnTo()">{{ hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar aos formatos editoriais' }}</a>
+      <a class="back-link discovery-return" appEditorialLink [routerLink]="returnTo()">{{ origin()?.startsWith('/atlas/marxismo') ? 'Voltar ao mapa de argumentos' : hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar aos formatos editoriais' }}</a>
     </app-page-template>
   `,
   styles: `

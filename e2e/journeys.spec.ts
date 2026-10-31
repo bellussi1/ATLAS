@@ -6,7 +6,7 @@ test('search, read and follow a documented relationship', async ({ page }) => {
   await page.getByRole('button', { name: 'Pesquisar' }).click();
   await page.locator('.results a').filter({ hasText: 'O caput do artigo 5º' }).click();
   await expect(page.locator('h1')).toContainText('artigo 5º');
-  await page.locator('.related-records a[href="/verbete/igualdade-perante-a-lei"]').click();
+  await page.locator('.related-records a').filter({ hasText: 'Igualdade perante a lei' }).click();
   await expect(page.locator('h1')).toContainText('Igualdade perante a lei');
 });
 

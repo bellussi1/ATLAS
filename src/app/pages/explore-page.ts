@@ -15,6 +15,8 @@ import { editorialTypes } from '../content/content-types';
         </p>
       </div>
 
+      <p><a routerLink="/atlas/marxismo">Atlas em revisão: Marxismo e economia política →</a></p>
+
       <nav class="content-index" aria-label="Categorias de conteúdo">
         <ol>
           @for (type of editorialTypes; track type.slug) {

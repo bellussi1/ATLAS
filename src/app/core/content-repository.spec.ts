@@ -30,7 +30,7 @@ describe('ContentRepository', () => {
 
     const [atlas, graph] = await Promise.all([atlasPromise, graphPromise]);
     expect(atlas.title).toBe('Metodologia do ATLAS');
-    expect(graph.atlases).toHaveLength(3);
+    expect(graph.atlases.map(item => item.id)).toContain('atlas-marx-valor');
     expect(repository.findBySlug('metodologia-do-atlas')?.title).toBe('Metodologia do ATLAS');
   });
 

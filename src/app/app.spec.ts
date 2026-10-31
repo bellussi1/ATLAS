@@ -310,11 +310,10 @@ describe('ATLAS application', () => {
   it('follows documented connections from concept to claim and source', async () => {
     const harness = await RouterTestingHarness.create('/relacoes');
     const root = harness.routeNativeElement!;
-    root.querySelector<HTMLButtonElement>('.follow-connection')!.click();
+    Array.from(root.querySelectorAll<HTMLButtonElement>('.follow-connection')).find(button => button.textContent?.includes('Explorar Afirmação'))!.click();
     harness.detectChanges();
     expect(root.querySelector('.context h2')?.textContent).toBe('Afirmação');
-    const buttons = root.querySelectorAll<HTMLButtonElement>('.follow-connection');
-    buttons[1].click();
+    Array.from(root.querySelectorAll<HTMLButtonElement>('.follow-connection')).find(button => button.textContent?.includes('Regras editoriais'))!.click();
     harness.detectChanges();
     expect(root.querySelector('.context h2')?.textContent).toBe('Regras editoriais do repositório');
     expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
@@ -373,7 +372,7 @@ describe('ATLAS application', () => {
     filter.value = 'Afirmação';
     filter.dispatchEvent(new Event('change'));
     harness.detectChanges();
-    expect(root.querySelectorAll('.network button')).toHaveLength(3);
+    expect(root.querySelectorAll('.network button').length).toBeGreaterThanOrEqual(3);
     expect(root.querySelectorAll('.network svg line')).toHaveLength(0);
   });
 

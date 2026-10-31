@@ -45,7 +45,9 @@ export class AppComponent {
   private updatePageMetadata(path: string): void {
     const pageTitle = this.title.getTitle() || 'ATLAS — compreender o mundo';
     const routeDescription = this.activeRouteDescription();
-    const description = path === '/fontes'
+    const description = path === '/atlas/marxismo'
+      ? 'Explore, em conteúdo em revisão, um mapa de argumentos sobre Smith, Marx, valor e trabalho.'
+      : path === '/fontes'
       ? 'Consulte as fontes cadastradas no ATLAS, seus localizadores e as leituras relacionadas.'
       : path === '/conhecimento'
       ? 'Pesquise verbetes e textos de metodologia realmente disponíveis no acervo do ATLAS.'

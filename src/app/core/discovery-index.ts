@@ -191,7 +191,12 @@ export function safeDiscoveryOrigin(value: string | null): string | null {
   if (!value) return null;
   try {
     const url = new URL(value, 'https://atlas.invalid');
-    if (url.origin !== 'https://atlas.invalid' || url.pathname !== '/conhecimento' || url.hash) return null;
+    if (url.origin !== 'https://atlas.invalid' || url.hash) return null;
+    if (url.pathname === '/atlas/marxismo') {
+      if ([...url.searchParams.keys()].some((key) => !['argumento', 'vinculo'].includes(key)) || url.searchParams.getAll('argumento').length !== 1 || !['smith', 'marx'].includes(url.searchParams.get('argumento') ?? '') || url.searchParams.getAll('vinculo').length > 1 || (url.searchParams.has('vinculo') && !['todas', 'comparacao', 'critica'].includes(url.searchParams.get('vinculo') ?? ''))) return null;
+      return `${url.pathname}${url.search}`;
+    }
+    if (url.pathname !== '/conhecimento') return null;
     if ([...url.searchParams.keys()].some((key) => !['q', 'tipo', 'estado'].includes(key))) return null;
     return `${url.pathname}${url.search}`;
   } catch {

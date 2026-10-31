@@ -33,6 +33,10 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
           @if (entry.aliases.length) { <p class="entry-detail"><strong>Outros nomes registrados:</strong> {{ entry.aliases.join(', ') }}</p> }
         </section>
 
+        @if (atlas()?.id === 'atlas-marx-valor') {
+          <p class="atlas-continuation"><a appEditorialLink routerLink="/atlas/marxismo" [queryParams]="{ argumento: marxArgument() }">Explorar esta discussão no mapa de argumentos</a></p>
+        }
+
         <app-reading-outline [sections]="entry.sections" />
 
         @for (section of entry.sections; track section.heading) {
@@ -51,7 +55,7 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
             <h2 id="related-title">Relações registradas</h2>
             @for (item of relatedEntries(); track item.relationId) {
               <article>
-                <a appEditorialLink [routerLink]="'/verbete/' + item.entity.slug">{{ item.entity.title }}</a>
+                <a appEditorialLink [routerLink]="'/verbete/' + item.entity.slug" [queryParams]="origin() ? { origem: origin() } : {}">{{ item.entity.title }}</a>
                 <p class="relation-label">{{ item.label }}</p>
                 <p>{{ item.context }}</p>
                 @if (item.evidence.length) {
@@ -73,7 +77,7 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
         }
 
         <app-continue-reading [currentPath]="'/verbete/' + entry.slug" />
-        <a class="back-link discovery-return" [routerLink]="returnTo()">{{ hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar ao índice de verbetes' }}</a>
+        <a class="back-link discovery-return" [routerLink]="returnTo()">{{ origin()?.startsWith('/atlas/marxismo') ? 'Voltar ao mapa de argumentos' : hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar ao índice de verbetes' }}</a>
       </article>
     } @else {
       <section class="page" aria-labelledby="page-title">
@@ -92,6 +96,7 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
     .entry-context, .related-records, .backlinks { max-width: 43rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--color-border-strong); }
     .entry-context h2, .related-records h2, .backlinks h2 { margin: 0 0 .6rem; font: 500 1.35rem/1.25 var(--serif); }
     .entry-context p, .related-records p, .backlinks p { line-height: 1.65; }
+    .atlas-continuation { max-width: 43rem; margin-top: 1.25rem; }
     .entry-detail { color: var(--color-ink-muted); font-size: .9rem; }
     .related-records article, .backlinks article { padding-block: .75rem; border-top: 1px solid var(--color-border); }
     .related-records article > a, .backlinks article > a { color: var(--color-accent); font-weight: 650; text-underline-offset: .2em; }
@@ -125,6 +130,7 @@ export class EntryPage {
     const entity = this.entity();
     return (this.atlas()?.claims ?? []).filter((claim) => claim.entityId === entity?.id);
   });
+  readonly marxArgument = computed(() => ['person-adam-smith', 'work-wealth-of-nations'].includes(this.entity()?.id ?? '') ? 'smith' : 'marx');
   readonly backlinks = computed(() => {
     const id = this.entity()?.id;
     const shown = new Set(this.relatedEntries().map((relation) => relation.relationId));

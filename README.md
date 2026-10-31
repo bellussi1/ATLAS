@@ -25,6 +25,7 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 - `/` — apresentação e pontos de entrada
 - `/relacoes`, `/tempo-e-espaco`, `/conhecimento` — exploração de relações, tempo/espaço e busca
 - `/explorar` — índice navegável das oito categorias editoriais
+- `/atlas/marxismo` — mapa de argumentos sobre Smith, Marx e valor, com conteúdo em revisão
 - `/explorar/:tipo` — índice de uma categoria
 - `/explorar/:tipo/:slug` — página de detalhe editorial ou de metodologia
 - `/verbete/:slug` — verbete carregado do registro JSON estático e validado

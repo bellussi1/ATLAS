@@ -3,10 +3,11 @@ import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { emptyProgress, parseProgress, recordAttempt, STORAGE_KEY } from '../core/study-progress';
 import { demonstrationPath } from '../content/demonstration-path';
+import { AtlasStudyExerciseComponent } from '../shared/study-exercise';
 
 @Component({
   selector: 'app-study-page',
-  imports: [RouterLink],
+  imports: [RouterLink, AtlasStudyExerciseComponent],
   template: `
     <section class="page" aria-labelledby="page-title">
       <h1 id="page-title">Trilhas de estudo</h1>
@@ -22,13 +23,7 @@ import { demonstrationPath } from '../content/demonstration-path';
         <h2 id="practice-title">{{ path.title }}</h2>
         <p>Trilha demonstrativa de metodologia. Objetivo: {{ path.objectives[0] }} Pré-requisito: {{ path.prerequisites[0] }} O conteúdo histórico do acervo ainda aguarda revisão humana.</p>
         <p>Uma afirmação histórica deve ser acompanhada de evidência contextual e distinguir fato, interpretação, hipótese e alegação controversa. <a routerLink="/fontes" fragment="source-source-editorial-rules">Consultar as regras editoriais</a>.</p>
-        <form (submit)="answer($event)">
-          <fieldset><legend>{{ exercise.prompt }}</legend>
-            @for (option of exercise.options; track option.id) { <label><input type="radio" name="answer" [value]="option.id" (change)="choice.set(option.id)"> {{ option.text }}</label> }
-          </fieldset>
-          <button type="submit">Conferir resposta</button>
-        </form>
-        @if (feedback()) { <p class="practice-feedback" role="status">{{ feedback() }} <a routerLink="/fontes" [fragment]="'source-' + exercise.feedback.sourceId">Ver fonte</a></p> }
+        <app-study-exercise [exercise]="exercise" (attempted)="answer($event)" />
         <p>{{ progress().completedLessonIds.length ? 'Atividade concluída; você pode tentar novamente.' : 'Atividade ainda não concluída.' }}</p>
         @if (progress().reviewItems[0]; as review) { <p>Próxima revisão sugerida: {{ review.dueAt }}.</p> }
         <h3>Guardar ou recuperar progresso</h3>
@@ -49,7 +44,6 @@ import { demonstrationPath } from '../content/demonstration-path';
     .study-path { max-width: 42rem; margin-top: clamp(3rem, 7vw, 5rem); padding-left: 1.25rem; border-left: .25rem solid var(--signal); }
     h2 { margin: 0; font: 500 clamp(1.65rem, 3vw, 2.2rem)/1.15 var(--serif); }
     .practice h3 { margin: 2rem 0 .5rem; font: 600 1.2rem/1.3 var(--font-sans); }
-    .practice .practice-feedback { padding: .75rem 1rem; border-left: .25rem solid var(--color-accent); background: var(--color-surface-subtle); color: var(--color-ink); }
     .study-path p { color: var(--ink-muted); line-height: 1.65; }
     a { display: inline-flex; gap: .65rem; align-items: center; min-height: 2.75rem; color: var(--signal); font-weight: 700; text-underline-offset: .2em; }
     a:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
@@ -64,8 +58,6 @@ export class StudyPage {
   readonly exercise = this.path.lessons[0].exercises[0];
   private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
   readonly progress = signal(emptyProgress());
-  readonly choice = signal('');
-  readonly feedback = signal('');
   readonly transfer = signal('');
   readonly message = signal('');
 
@@ -80,11 +72,7 @@ export class StudyPage {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(this.progress())); return true; }
     catch { this.message.set('Não foi possível salvar neste navegador; exporte o progresso para guardá-lo.'); return false; }
   }
-  answer(event: Event): void {
-    event.preventDefault();
-    if (!this.choice()) { this.feedback.set('Escolha uma resposta para continuar.'); return; }
-    const correct = this.choice() === this.exercise.correctOptionId;
-    this.feedback.set(`${correct ? 'Correto.' : 'Tente novamente.'} ${this.exercise.feedback.explanation}`);
+  answer(correct: boolean): void {
     const now = new Date();
     const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     this.progress.set(recordAttempt(this.progress(), correct, today));
