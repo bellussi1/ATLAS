@@ -137,12 +137,25 @@ describe('ATLAS application', () => {
     const root = harness.routeNativeElement!;
     root.querySelector<HTMLButtonElement>('.follow-connection')!.click();
     harness.detectChanges();
-    expect(root.querySelector('.context h2')?.textContent).toBe('Evidência contextual');
+    expect(root.querySelector('.context h2')?.textContent).toBe('Afirmação');
     const buttons = root.querySelectorAll<HTMLButtonElement>('.follow-connection');
     buttons[1].click();
     harness.detectChanges();
     expect(root.querySelector('.context h2')?.textContent).toBe('Regras editoriais do repositório');
     expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
+  });
+
+  it('exposes documented knowledge relations in the shared cross-atlas graph', async () => {
+    const harness = await RouterTestingHarness.create('/relacoes');
+    const root = harness.routeNativeElement!;
+    const person = Array.from(root.querySelectorAll<HTMLButtonElement>('.network button'))
+      .find((button) => button.textContent?.includes('Ulysses Guimarães'))!;
+    expect(person).toBeDefined();
+    person.click();
+    harness.detectChanges();
+    expect(root.querySelector('.context')?.textContent).toContain('presidiu');
+    expect(root.querySelector('.context')?.textContent).toContain('Assembleia Nacional Constituinte');
+    expect(root.querySelector('.context')?.textContent).toContain('Associação documentada');
   });
 
   it('submits homepage search to the knowledge collection', async () => {
@@ -173,16 +186,17 @@ describe('ATLAS application', () => {
     const harness = await RouterTestingHarness.create('/relacoes');
     const root = harness.routeNativeElement!;
     const buttons = root.querySelectorAll<HTMLButtonElement>('.network button');
-    expect(buttons).toHaveLength(6);
-    buttons[4].click();
+    expect(buttons.length).toBeGreaterThanOrEqual(17);
+    const editorialRules = Array.from(buttons).find((button) => button.textContent?.includes('Regras editoriais'))!;
+    editorialRules.click();
     harness.detectChanges();
     expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
-    expect(buttons[4].getAttribute('aria-pressed')).toBe('true');
+    expect(editorialRules.getAttribute('aria-pressed')).toBe('true');
     const filter = root.querySelector<HTMLSelectElement>('#node-kind')!;
     filter.value = 'Afirmação';
     filter.dispatchEvent(new Event('change'));
     harness.detectChanges();
-    expect(root.querySelectorAll('.network button')).toHaveLength(2);
+    expect(root.querySelectorAll('.network button')).toHaveLength(3);
     expect(root.querySelectorAll('.network svg line')).toHaveLength(0);
   });
 

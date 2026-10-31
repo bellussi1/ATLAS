@@ -1,10 +1,12 @@
-import { assetLicenseSchema, atlasSchema, articleSchema, eventSchema, learningPathSchema, personSchema } from './content-schema';
+import { assetLicenseSchema, atlasSchema, articleSchema, entitySchema, eventSchema, historicalPolitySchema, ideologySchema, institutionSchema, learningPathSchema, personSchema, placeSchema, policySchema, partySchema, governmentSchema, workSchema, relationSchema, knowledgeGraphSchema } from './content-schema';
 
 const validAtlas = {
   id: 'atlas-methodology',
   slug: 'methodology-atlas',
   title: 'Metodologia do ATLAS',
   description: 'Como o projeto estrutura seu conteúdo.',
+  version: '1.0.0',
+  updatedAt: '2026-10-31',
   entityIds: ['concept-methodology'],
   entities: [
     {
@@ -13,6 +15,11 @@ const validAtlas = {
       kind: 'concept',
       title: 'Metodologia do ATLAS',
       summary: 'Critérios editoriais do projeto.',
+      aliases: [],
+      context: 'Registro metodológico de teste.',
+      temporalExtent: null,
+      uncertainty: 'low',
+      revision: 1,
       sections: [{ heading: 'Contexto', paragraphs: ['Conteúdo de método.'] }],
     },
   ],
@@ -31,7 +38,7 @@ const validAtlas = {
   ],
   reviews: [{ id: 'review-context', claimId: 'claim-context', status: 'pending', reviewer: null, reviewedAt: null, note: null }],
   assetLicenses: [{ id: 'license-logo', assetPath: '/brand/atlas-logo.svg', creator: 'ATLAS', license: null, licenseUrl: null, status: 'unknown', reproduction: 'blocked' }],
-  relationships: [],
+  relations: [],
   learningPaths: [],
 };
 
@@ -60,7 +67,11 @@ describe('atlasSchema', () => {
     });
     const danglingRelationship = atlasSchema.safeParse({
       ...validAtlas,
-      relationships: [{ id: 'relation-1', fromEntityId: 'concept-methodology', toEntityId: 'entity-missing', label: 'relaciona' }],
+      relations: [{ id: 'relation-1', fromEntityId: 'concept-methodology', toEntityId: 'entity-missing', type: 'editorial-link', label: 'relaciona', reverseLabel: 'é relacionado por', context: 'Contexto editorial.', temporalExtent: null, uncertainty: 'unknown', evidenceIds: [] }],
+    });
+    const danglingGraphRelationship = knowledgeGraphSchema.safeParse({
+      id: 'knowledge-graph-atlas', version: '1.0.0', updatedAt: '2026-10-31',
+      atlases: [{ ...validAtlas, relations: [{ id: 'relation-2', fromEntityId: 'concept-methodology', toEntityId: 'entity-missing', type: 'editorial-link', label: 'relaciona', reverseLabel: 'é relacionado por', context: 'Contexto editorial.', temporalExtent: null, uncertainty: 'unknown', evidenceIds: [] }] }],
     });
     const missingSourceReference = atlasSchema.safeParse({
       ...validAtlas,
@@ -69,7 +80,8 @@ describe('atlasSchema', () => {
 
     expect(duplicateId.success).toBe(false);
     expect(missingSource.success).toBe(false);
-    expect(danglingRelationship.success).toBe(false);
+    expect(danglingRelationship.success).toBe(true);
+    expect(danglingGraphRelationship.success).toBe(false);
     expect(missingSourceReference.success).toBe(false);
   });
 
@@ -87,12 +99,17 @@ describe('atlasSchema', () => {
     expect(duplicateEntityReference.success).toBe(false);
   });
 
-  it('models people, events, articles, and learning paths with linked entities', () => {
+  it('models all requested entity types and learning paths with linked entities', () => {
     const base = {
       id: 'record-example',
       slug: 'registro-exemplo',
       title: 'Registro de exemplo',
       summary: 'Descrição usada no modelo.',
+      aliases: [],
+      context: 'Contexto documental do registro.',
+      temporalExtent: null,
+      uncertainty: 'unknown',
+      revision: 1,
       sections: [{ heading: 'Contexto', paragraphs: ['Texto de contexto.'] }],
     };
     const path = {
@@ -106,12 +123,43 @@ describe('atlasSchema', () => {
     expect(personSchema.safeParse({ ...base, kind: 'person' }).success).toBe(true);
     expect(eventSchema.safeParse({ ...base, kind: 'event' }).success).toBe(true);
     expect(articleSchema.safeParse({ ...base, kind: 'article' }).success).toBe(true);
+    for (const kind of ['ideology', 'concept', 'work', 'historical-polity', 'place', 'party', 'institution', 'government', 'policy']) {
+      expect(entitySchema.safeParse({ ...base, kind }).success).toBe(true);
+    }
+    expect(ideologySchema.safeParse({ ...base, kind: 'ideology' }).success).toBe(true);
+    expect(workSchema.safeParse({ ...base, kind: 'work' }).success).toBe(true);
+    expect(historicalPolitySchema.safeParse({ ...base, kind: 'historical-polity' }).success).toBe(true);
+    expect(placeSchema.safeParse({ ...base, kind: 'place' }).success).toBe(true);
+    expect(partySchema.safeParse({ ...base, kind: 'party' }).success).toBe(true);
+    expect(institutionSchema.safeParse({ ...base, kind: 'institution' }).success).toBe(true);
+    expect(governmentSchema.safeParse({ ...base, kind: 'government' }).success).toBe(true);
+    expect(policySchema.safeParse({ ...base, kind: 'policy' }).success).toBe(true);
     expect(learningPathSchema.safeParse(path).success).toBe(true);
     expect(atlasSchema.safeParse({ ...validAtlas, learningPaths: [path] }).success).toBe(true);
     expect(atlasSchema.safeParse({
       ...validAtlas,
       learningPaths: [{ ...path, entityIds: ['entity-missing'] }],
     }).success).toBe(false);
+  });
+
+  it('requires directional relations to describe their reverse and evidence-backed historical claims', () => {
+    const result = relationSchema.safeParse({
+      id: 'relation-influence', fromEntityId: 'person-a', toEntityId: 'concept-b', type: 'influence',
+      label: 'influenciou', reverseLabel: 'recebeu influência de', context: 'Atribuição documentada.',
+      temporalExtent: { startYear: 1987, endYear: 1988, precision: 'year', label: null },
+      uncertainty: 'moderate', evidenceIds: [],
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('accepts a versioned knowledge graph containing multiple atlases', () => {
+    const otherAtlas = { ...validAtlas, id: 'atlas-politics', slug: 'politics', title: 'Política', entityIds: ['person-example'], entities: [{
+      ...validAtlas.entities[0], id: 'person-example', slug: 'pessoa-exemplo', kind: 'person' as const,
+    }], sources: [], evidences: [], citations: [], claims: [], reviews: [], assetLicenses: [], relations: [], learningPaths: [] };
+    const result = knowledgeGraphSchema.safeParse({
+      id: 'knowledge-graph-atlas', version: '1.0.0', updatedAt: '2026-10-31', atlases: [validAtlas, otherAtlas],
+    });
+    expect(result.success).toBe(true);
   });
 
   it('requires every claim to have a source locator and a matching review record', () => {

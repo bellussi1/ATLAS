@@ -1,9 +1,9 @@
       <div class="controls"><label for="node-kind">Mostrar categoria</label>
       <select id="node-kind" [value]="kind()" (change)="filter($any($event.target).value)">
-        <option>Todos</option><option>Conceito</option><option>Afirmação</option><option>Fonte</option>
+        @for (category of kinds(); track category) { <option [value]="category">{{ category }}</option> }
       </select><button class="view-toggle" type="button" [attr.aria-pressed]="listView()" (click)="listView.set(!listView())">{{ listView() ? "Ver rede" : "Ver lista" }}</button></div>
       <p class="kicker" role="status">{{ visibleNodes().length }} registros · {{ visibleEdges().length }} conexões visíveis</p>
-      <div class="network" [class.network--list]="listView()" aria-label="Rede de evidências da metodologia">
+      <div class="network" [class.network--list]="listView()" aria-label="Grafo de conhecimento e relações documentadas">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
           @for (edge of visibleEdges(); track edge.from + edge.to) { <line [class.active]="edge.from === selectedId() || edge.to === selectedId()" [attr.x1]="position(edge.from)" [attr.y1]="vertical(edge.from)" [attr.x2]="position(edge.to)" [attr.y2]="vertical(edge.to)" /> }
         </svg>
@@ -16,11 +16,11 @@
       @if (selected(); as node) {
         <section class="context" aria-labelledby="selected-title" aria-live="polite">
           <p class="kicker">Seleção · {{ node.kind }}</p><h2 id="selected-title">{{ node.title }}</h2><p>{{ node.description }}</p>
-          <ul>@for (edge of connections(); track edge.from + edge.to) {
-            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}.
-              <button type="button" class="follow-connection" (click)="follow(edge.from === selectedId() ? edge.to : edge.from)">Explorar {{ title(edge.from === selectedId() ? edge.to : edge.from) }} →</button></li>
+          <ul>@for (edge of connections(); track edge.from + edge.to + edge.label) {
+            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}. <span class="relation-type">{{ edge.typeLabel }}</span>
+              <button type="button" class="follow-connection" (click)="follow(edge.followId)">Explorar {{ title(edge.followId) }} →</button></li>
           }</ul>
           <a appEditorialLink [routerLink]="node.path">Ler o verbete e suas evidências →</a>
         </section>
       }
-      <p class="caption">Cada ligação deriva dos campos de entidade e fontes da afirmação no registro validado da metodologia. As categorias e a lista contextual oferecem uma alternativa textual à rede.</p>
+      <p class="caption">O grafo reúne entidades e atlas; relações históricas mostram direção, inversa e evidências registradas. Filtros e lista contextual oferecem alternativas à leitura visual das conexões.</p>

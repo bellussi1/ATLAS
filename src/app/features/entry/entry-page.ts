@@ -12,7 +12,7 @@ import { ContentRepository } from '../../core/content-repository';
   selector: 'app-entry-page',
   imports: [RouterLink, AtlasReadingOutlineComponent, AtlasContinueReadingComponent, AtlasEditorialTextComponent, AtlasClaimReferencesComponent],
   template: `
-    @if (atlas() === null) {
+    @if (graph() === null) {
       <section class="page" aria-labelledby="page-title" role="alert">
         <h1 id="page-title">Este verbete está temporariamente indisponível</h1>
         <p class="page__lead">Não foi possível carregar o registro estático do ATLAS.</p>
@@ -66,18 +66,26 @@ export class EntryPage {
   private readonly route = inject(ActivatedRoute);
   private readonly repository = inject(ContentRepository);
   private readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
-  readonly atlas = toSignal(
-    this.repository.loadAtlas().pipe(catchError(() => of(null))),
-    { initialValue: this.repository.atlas },
+  readonly graph = toSignal(
+    this.repository.loadKnowledgeGraph().pipe(catchError(() => of(null))),
+    { initialValue: this.repository.knowledgeGraph },
   );
-  readonly entity = computed(() => this.repository.findBySlug(this.params().get('slug'), this.atlas() ?? this.repository.atlas));
+  readonly entity = computed(() => this.graph() ? this.repository.findEntityBySlug(this.params().get('slug'), this.graph()!) : undefined);
+  readonly atlas = computed(() => {
+    const entity = this.entity();
+    return entity && this.graph() ? this.repository.atlasForEntity(entity.id, this.graph()!) : undefined;
+  });
   readonly claims = computed(() => {
     const entity = this.entity();
     return (this.atlas()?.claims ?? []).filter((claim) => claim.entityId === entity?.id);
   });
 
   kindLabel(kind: string): string {
-    return ({ concept: 'Verbete', article: 'Artigo', person: 'Pessoa', event: 'Evento' } as Record<string, string>)[kind] ?? 'Conteúdo';
+    return ({
+      person: 'Pessoa', ideology: 'Ideologia', concept: 'Conceito', work: 'Obra', event: 'Evento',
+      'historical-polity': 'Formação política histórica', place: 'Lugar', party: 'Partido',
+      institution: 'Instituição', government: 'Governo', policy: 'Política pública', article: 'Artigo',
+    } as Record<string, string>)[kind] ?? 'Conteúdo';
   }
 
 }

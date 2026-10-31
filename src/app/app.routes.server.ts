@@ -1,7 +1,7 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 import { editorialEntries } from './content/editorial-entries';
 import { editorialTypes } from './content/content-types';
-import { methodologyAtlas } from './core/content-repository';
+import { methodologyKnowledgeGraph } from './core/content-repository';
 
 export const serverRoutes: ServerRoute[] = [
   {
@@ -46,7 +46,7 @@ export const serverRoutes: ServerRoute[] = [
     path: 'verbete/:slug',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
-      return methodologyAtlas.entities.map((entity) => ({ slug: entity.slug }));
+      return methodologyKnowledgeGraph.atlases.flatMap((atlas) => atlas.entities.map((entity) => ({ slug: entity.slug })));
     },
   },
   {

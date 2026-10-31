@@ -20,6 +20,7 @@ select { padding: .5rem; }
 .context > p:not(.kicker) { font: 1.05rem/1.5 var(--font-serif); }
 .context ul { padding-left: 1rem; font-size: .8rem; color: var(--color-ink-muted); }
 .context li { margin-bottom: .5rem; }
+.relation-type { display: inline-block; margin-inline-start: .35rem; font: .68rem/1.4 var(--font-mono); color: var(--color-ink-muted); }
 .context a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .85rem; }
 .caption { margin-block: 1rem 0; }
 .network--list { height: auto; background-image: none; }

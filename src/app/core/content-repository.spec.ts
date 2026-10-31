@@ -23,12 +23,14 @@ describe('ContentRepository', () => {
   it('loads and validates the structured content asset without a backend', async () => {
     const repository = TestBed.inject(ContentRepository);
     const atlasPromise = firstValueFrom(repository.loadAtlas());
+    const graphPromise = firstValueFrom(repository.loadKnowledgeGraph());
     const request = TestBed.inject(HttpTestingController).expectOne('/content/atlas.json');
     expect(request.request.method).toBe('GET');
     request.flush(methodologyAtlasData);
 
-    const atlas = await atlasPromise;
+    const [atlas, graph] = await Promise.all([atlasPromise, graphPromise]);
     expect(atlas.title).toBe('Metodologia do ATLAS');
+    expect(graph.atlases).toHaveLength(3);
     expect(repository.findBySlug('metodologia-do-atlas')?.title).toBe('Metodologia do ATLAS');
   });
 
@@ -50,5 +52,14 @@ describe('ContentRepository', () => {
 
   it('returns no record for an unknown slug', () => {
     expect(TestBed.inject(ContentRepository).findBySlug('slug-inexistente')).toBeUndefined();
+  });
+
+  it('queries entities by atlas and period, then exposes incoming and outgoing graph links', () => {
+    const repository = TestBed.inject(ContentRepository);
+    const historicalPeople = repository.queryEntities({ atlasId: 'atlas-processo-constituinte', type: 'person', fromYear: 1987 });
+    expect(historicalPeople.map(({ entity }) => entity.title)).toEqual(['Ulysses Guimarães']);
+    expect(repository.queryEntities({ atlasId: 'atlas-processo-constituinte', toYear: 1915 })).toEqual([]);
+    expect(repository.queryRelations('person-ulysses-guimaraes', { direction: 'outgoing' }).map(({ label }) => label))
+      .toContain('presidiu');
   });
 });
