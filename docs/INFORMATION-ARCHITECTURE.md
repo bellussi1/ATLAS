@@ -48,4 +48,6 @@ Os três exemplares descrevem a metodologia e as intenções declaradas do próp
 - Breadcrumbs globais mostram Início, os níveis de navegação e a página corrente. O início não exibe breadcrumb redundante.
 - A rota curinga e os slugs/categorias desconhecidos mostram estado de não encontrado com um caminho de retorno.
 - Os pontos de entrada, índices e links de retorno são âncoras nativas, alcançáveis por teclado e com foco visível. A navegação quebra linha em telas estreitas e os índices mudam para coluna única em viewport móvel.
+- A home e uma página de detalhe foram verificadas em viewport de 320 px; a escala do título principal se ajusta nesse breakpoint para evitar rolagem horizontal.
+- Categorias e slugs inexistentes mostram estados específicos com link de retorno ao índice de conteúdos.
 - Rotas de categoria e detalhe conhecidas são prerenderizadas a partir dos mesmos dados editoriais; o build permanece static-first.

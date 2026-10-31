@@ -3,6 +3,7 @@ import { RouterTestingHarness } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app';
 import { routes as appRoutes } from './app.routes';
+import { editorialEntries } from './content/editorial-entries';
 
 describe('ATLAS application', () => {
   beforeEach(async () => {
@@ -113,6 +114,28 @@ describe('ATLAS application', () => {
     const root = harness.routeNativeElement as HTMLElement;
     expect(root.querySelector('h1')?.textContent?.trim()).toBe(heading);
     expect(root.textContent).toContain(label);
+  });
+
+  it.each(editorialEntries.map((entry) => [
+    `/explorar/${entry.type}/${entry.slug}`,
+    entry.title,
+    entry.statusLabel,
+  ]))('renders the editorial detail %s', async (url, heading, status) => {
+    const harness = await RouterTestingHarness.create(url);
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe(heading);
+    expect(root.textContent).toContain(status);
+    expect(root.querySelectorAll('article section').length).toBeGreaterThan(0);
+  });
+
+  it.each([
+    ['/explorar/formato-inexistente', 'Categoria não encontrada'],
+    ['/explorar/verbete/slug-inexistente', 'Este conteúdo não existe'],
+  ])('shows a recoverable not-found state at %s', async (url, heading) => {
+    const harness = await RouterTestingHarness.create(url);
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe(heading);
+    expect(root.querySelector('a[href="/explorar"]')).not.toBeNull();
   });
 
   it('exposes the planned study trail as a real platform-method page', async () => {
