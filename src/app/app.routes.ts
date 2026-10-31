@@ -10,6 +10,23 @@ import {
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./pages/home-page').then((module) => module.HomePage), title: 'ATLAS — compreender o mundo' },
   {
+    path: 'laboratorio',
+    data: { breadcrumb: 'Laboratório visual' },
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        loadComponent: () => import('./pages/visual-lab-page').then((module) => module.VisualLabPage),
+        title: 'Laboratório visual — ATLAS',
+      },
+      {
+        path: ':proposta/:pagina',
+        loadComponent: () => import('./pages/visual-lab-page').then((module) => module.VisualLabPage),
+        title: 'Laboratório de direção visual — ATLAS',
+      },
+    ],
+  },
+  {
     path: 'explorar',
     data: { breadcrumb: 'Explorar' },
     children: [

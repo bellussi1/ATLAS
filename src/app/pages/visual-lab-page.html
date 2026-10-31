@@ -1,0 +1,112 @@
+@if (proposal(); as proposal) {
+  <div [class]="'lab ' + proposal.surface">
+    <header class="lab__masthead">
+      <a class="lab__brand" routerLink="/laboratorio" aria-label="Índice do laboratório visual">
+        <span aria-hidden="true">A/</span> ATLAS <small>LABORATÓRIO 04</small>
+      </a>
+      <nav class="lab__proposals" aria-label="Alternativas de direção visual">
+        @for (alternative of alternatives; track alternative.id) {
+          <a
+            [routerLink]="['/laboratorio', alternative.id, 'inicio']"
+            [attr.aria-label]="'Proposta ' + alternative.id.toUpperCase() + ' — ' + alternative.name"
+            [attr.aria-current]="alternative.id === proposal.id ? 'page' : null"
+          >{{ alternative.id | uppercase }} <span class="lab__proposal-name">{{ alternative.name }}</span><span class="lab__proposal-short">{{ alternative.shortName }}</span></a>
+        }
+      </nav>
+    </header>
+
+    <div class="lab__subhead">
+      <p><span class="lab__index">{{ proposal.id | uppercase }}</span> {{ proposal.direction }}</p>
+      <nav aria-label="Páginas demonstrativas">
+        <a [routerLink]="['/laboratorio', proposal.id, 'inicio']" [attr.aria-current]="page() === 'inicio' ? 'page' : null">Início</a>
+        <a [routerLink]="['/laboratorio', proposal.id, 'artigo']" [attr.aria-current]="page() === 'artigo' ? 'page' : null">Artigo</a>
+        <a [routerLink]="['/laboratorio', proposal.id, 'perfil']" [attr.aria-current]="page() === 'perfil' ? 'page' : null">Perfil</a>
+      </nav>
+    </div>
+
+    @if (!page()) {
+      <div class="lab__error">
+        <p class="lab__eyebrow">Endereço não reconhecido</p>
+        <h1>Esta página de demonstração não existe.</h1>
+        <a [routerLink]="['/laboratorio', proposal.id, 'inicio']">Voltar ao início da proposta</a>
+      </div>
+    } @else {
+      <div class="lab__content">
+        @switch (page()) {
+          @case ('inicio') {
+            <section class="lab-home" aria-labelledby="lab-title">
+              @if (proposal.id === 'a') {
+                <div class="poster-home">
+                  <div class="poster-home__copy">
+                    <p class="lab__eyebrow">Conhecimento em relações · direção A</p>
+                    <h1 id="lab-title">O mundo<br />não cabe<br /><em>numa linha.</em></h1>
+                    <p class="lab__dek">História, política, economia e sociedade, lidas com contexto.</p>
+                    <a class="lab__action" routerLink="/explorar/artigo/conhecimento-com-contexto">Abrir leitura de demonstração <span aria-hidden="true">↗</span></a>
+                  </div>
+                  <div class="poster-home__geometry" aria-hidden="true">
+                    <span></span>
+                    <svg class="poster-home__cartography" viewBox="0 0 240 100"><path d="M6 78c25-48 45-39 70-15s43 30 65 3 43-43 93-23M8 50c30-35 57-18 76 6s39 34 63 7 48-42 83-29M18 91l43-50 42 34 49-45 60 28"/><path class="poster-home__route" d="m61 41 42 34 49-45 43 28"/><circle cx="61" cy="41" r="4"/><circle cx="103" cy="75" r="4"/><circle cx="152" cy="30" r="4"/><circle cx="195" cy="58" r="4"/></svg>
+                    <small class="poster-home__map-label">ROTAS DE LEITURA · ESQUEMA</small>
+                    <i></i><b></b>
+                  </div>
+                  <aside class="poster-home__index"><span>01 / 03</span><span>Um acervo para percorrer</span><span>ATLAS · BRASIL / MUNDO</span></aside>
+                  <nav class="poster-home__shelf" aria-label="Acervo em destaque">
+                    <span>NO ACERVO</span><a routerLink="/explorar/atlas/atlas-de-metodo">Atlas de método <b>01</b></a><a routerLink="/explorar/verbete/como-ler-um-verbete">Como ler um verbete <b>02</b></a><a routerLink="/explorar/artigo/conhecimento-com-contexto">Conhecimento com contexto <b>03</b></a>
+                  </nav>
+                </div>
+              } @else if (proposal.id === 'b') {
+                <div class="map-home">
+                  <div class="map-home__intro"><p class="lab__eyebrow">Território de ideias · direção B</p><h1 id="lab-title">Percorra as relações.</h1><p class="lab__dek">Um atlas de conceitos conecta escalas, tempos e lugares. Escolha um ponto de partida.</p><a class="lab__action" routerLink="/explorar/atlas/atlas-de-metodo">Entrar no atlas <span aria-hidden="true">↗</span></a></div>
+                  <figure class="map-home__figure">
+                    <svg viewBox="0 0 900 500" role="img" aria-labelledby="map-title map-description"><title id="map-title">Diagrama cartográfico de relações</title><desc id="map-description">Mapa esquemático original com linhas de conexão e três pontos de leitura.</desc><path class="map-contour" d="M59 311C112 216 192 122 291 127c80 4 100 88 172 65 57-18 64-101 146-105 83-5 115 75 203 50M37 363c88-58 132-44 196-11 90 47 149 14 212-47 81-78 111-55 178-16 81 48 145 41 245-26M112 92c68 59 104 93 133 166s83 119 141 139m209-306c-33 60-52 119-29 185 19 54 54 93 113 124m-422-72 75-129 127 80 152-135 138 108"/><path class="map-route" d="m245 258 127 80 152-135 138 108"/><circle cx="245" cy="258" r="10"/><circle cx="372" cy="338" r="10"/><circle cx="524" cy="203" r="10"/><circle cx="662" cy="311" r="10"/><text x="202" y="239">ideias</text><text x="346" y="371">lugares</text><text x="504" y="181">tempos</text><text x="649" y="346">conflitos</text></svg>
+                    <a class="map-home__archive" routerLink="/explorar/artigo/conhecimento-com-contexto"><span>FICHA DE LEITURA · 02</span><strong>Conhecimento com contexto</strong><small>Abrir registro ↗</small></a>
+                    <figcaption><span>DIAGRAMA DE RELAÇÕES</span><span>Esquema original · sem escala geográfica</span></figcaption>
+                  </figure>
+                  <nav class="map-home__index" aria-label="Pontos de partida do atlas"><a routerLink="/explorar/verbete/como-ler-um-verbete"><b>01</b><span>Conceitos</span><span>↗</span></a><a routerLink="/explorar/artigo/conhecimento-com-contexto"><b>02</b><span>Leituras</span><span>↗</span></a><a routerLink="/explorar/atlas/atlas-de-metodo"><b>03</b><span>Territórios</span><span>↗</span></a></nav>
+                </div>
+              } @else {
+                <div class="archive-home">
+                  <div class="archive-home__heading"><p class="lab__eyebrow">Sala de leitura · direção C</p><h1 id="lab-title">Vestígios, ideias<br />e outras camadas.</h1><p class="lab__dek">Entre no acervo por documentos, relações e perguntas ainda abertas.</p></div>
+                  <div class="archive-home__stage" role="group" aria-label="Composição gráfica com documentos simulados, sem reproduzir itens históricos">
+                    <div class="archive-sheet archive-sheet--note"><span>NOTA DE PESQUISA · MOCK</span><strong>Contexto<br />antes da<br />conclusão.</strong><small>FICHA 04—A</small></div>
+                    <div class="archive-sheet archive-sheet--chart"><span>MAPA CONCEITUAL · MOCK</span><svg class="archive-map" viewBox="0 0 250 180" aria-hidden="true"><path class="archive-map__contour" d="M7 106c21-40 38-43 63-14s44 33 66-5 42-46 105-20M9 137c26-26 51-35 76-10s41 25 62-7 43-37 96-11"/><path class="archive-map__route" d="m30 115 43-38 45 27 42-56 48 31"/><circle cx="30" cy="115" r="5"/><circle cx="73" cy="77" r="5"/><circle cx="118" cy="104" r="5"/><circle cx="160" cy="48" r="5"/><circle cx="208" cy="79" r="5"/><text x="15" y="155">fonte</text><text x="88" y="91">contexto</text><text x="165" y="111">leitura</text></svg><small>ESQUEMA ORIGINAL · SEM ESCALA GEOGRÁFICA</small></div>
+                    <p class="archive-home__tag">Acervo de ideias<br />01—03</p>
+                  </div>
+                  <nav class="archive-home__links" aria-label="Entradas do acervo"><a routerLink="/explorar/artigo/conhecimento-com-contexto">Uma leitura <span>01 ↗</span></a><a routerLink="/explorar/atlas/atlas-de-metodo">Um mapa <span>02 ↗</span></a><a routerLink="/explorar/verbete/como-ler-um-verbete">Uma pergunta <span>03 ↗</span></a></nav>
+                </div>
+              }
+            </section>
+          }
+          @case ('artigo') {
+            <article class="lab-article" aria-labelledby="lab-title">
+              <header class="lab-article__header"><p class="lab__eyebrow">Artigo de metodologia · conteúdo existente</p><p class="lab-article__meta">Leitura demonstrativa <span>ATLAS · MÉTODO</span></p><h1 id="lab-title">Conhecimento com contexto</h1><p class="lab__dek">Como relacionar informações, evidências e interpretações sem confundir uma coisa com a outra.</p></header>
+              @if (proposal.id === 'a') { <div class="article-layout article-layout--poster"><aside class="article-rail"><span>LEITURA 01</span><span>IDEIAS EM RELAÇÃO</span><span>02 MIN</span></aside><div class="article-copy"><p class="article-copy__lead">Um acontecimento não existe isolado. Para compreendê-lo, precisamos reconhecer as condições, os agentes e os debates que lhe dão sentido.</p><p>O ATLAS organiza conteúdos para mostrar relações entre história, política, economia e sociedade. Cada página identifica o que está documentado e onde começa a interpretação.</p><h2>Uma afirmação, sua evidência</h2><p>Fontes e contexto ajudam o leitor a acompanhar como uma conclusão foi construída. Quando há controvérsia, a divergência deve aparecer com seus argumentos e limites.</p><a class="lab__action" routerLink="/explorar/artigo/conhecimento-com-contexto">Ver registro de metodologia <span aria-hidden="true">↗</span></a></div></div> }
+              @else if (proposal.id === 'b') { <div class="article-layout article-layout--map"><aside class="article-mapnote"><span>MAPA DA LEITURA</span><a href="#evidencia">01 · Evidência</a><a href="#contexto">02 · Contexto</a><a href="#interpretacao">03 · Interpretação</a><svg viewBox="0 0 180 240" role="img" aria-label="Rota esquemática entre evidência, contexto e interpretação"><path d="M30 25v190M30 45h100M30 125h75M30 205h120"/><circle cx="30" cy="45" r="8"/><circle cx="30" cy="125" r="8"/><circle cx="30" cy="205" r="8"/></svg></aside><div class="article-copy"><p class="article-copy__lead">Um acontecimento não existe isolado. Para compreendê-lo, precisamos reconhecer as condições, os agentes e os debates que lhe dão sentido.</p><h2 id="evidencia">01 · Evidência</h2><p>O ATLAS organiza conteúdos para mostrar relações entre história, política, economia e sociedade. Cada página identifica o que está documentado e onde começa a interpretação.</p><h2 id="contexto">02 · Contexto</h2><p>Fontes e contexto ajudam o leitor a acompanhar como uma conclusão foi construída. A rota de leitura mantém visíveis as conexões entre as partes.</p><h2 id="interpretacao">03 · Interpretação</h2><p>Quando há controvérsia, a divergência deve aparecer com seus argumentos e limites.</p><a class="lab__action" routerLink="/explorar/artigo/conhecimento-com-contexto">Ver registro de metodologia <span aria-hidden="true">↗</span></a></div></div> }
+              @else { <div class="article-layout article-layout--archive"><aside class="archive-margin"><span>FONTE</span><strong>ATLAS</strong><span>MÉTODO / 01</span><span>STATUS<br />EXEMPLO PUBLICADO</span></aside><div class="article-copy"><p class="article-copy__lead">Um acontecimento não existe isolado. Para compreendê-lo, precisamos reconhecer as condições, os agentes e os debates que lhe dão sentido.</p><div class="archive-insert"><span>INSERTO 01 · CONTEXTO</span><p class="archive-insert__statement">A evidência precisa estar visível para quem lê.</p><small>Síntese editorial demonstrativa do método do ATLAS; não é citação de fonte externa.</small></div><p>O ATLAS organiza conteúdos para mostrar relações entre história, política, economia e sociedade. Cada página identifica o que está documentado e onde começa a interpretação.</p><h2>Uma afirmação, sua evidência</h2><p>Fontes e contexto ajudam o leitor a acompanhar como uma conclusão foi construída. Quando há controvérsia, a divergência deve aparecer com seus argumentos e limites.</p><a class="lab__action" routerLink="/explorar/artigo/conhecimento-com-contexto">Ver registro de metodologia <span aria-hidden="true">↗</span></a></div></div> }
+            </article>
+          }
+          @case ('perfil') {
+            <article class="lab-profile" aria-labelledby="lab-title">
+              <p class="lab__eyebrow">Perfil editorial · conteúdo de demonstração</p>
+              <div class="profile-layout" [class]="'profile-layout profile-layout--' + proposal.id">
+                <div class="profile-mark" aria-hidden="true"><span>PE</span><i></i><b></b></div>
+                <div class="profile-copy"><p class="profile-copy__mock">PERFIL FICTÍCIO · MOCK</p><h1 id="lab-title">Pesquisadora de Exemplo</h1><p class="lab__dek">Personagem fictícia para demonstrar a hierarquia de um perfil. Os campos abaixo não descrevem uma pessoa real.</p><dl><div><dt>Área</dt><dd>História social · exemplo</dd></div><div><dt>Recorte</dt><dd>Fontes, conceitos e interpretação</dd></div><div><dt>Vínculos editoriais</dt><dd>Entradas demonstrativas do ATLAS</dd></div></dl><h2>Leituras relacionadas</h2><ul><li><a routerLink="/explorar/verbete/como-ler-um-verbete">Como funciona um verbete <span>↗</span></a></li><li><a routerLink="/explorar/artigo/conhecimento-com-contexto">Conhecimento com contexto <span>↗</span></a></li><li><a routerLink="/explorar/atlas/atlas-de-metodo">Como navegar pelo atlas <span>↗</span></a></li></ul></div>
+              </div>
+            </article>
+          }
+        }
+      </div>
+    }
+  </div>
+} @else {
+  <div class="lab-index">
+    <p class="lab__eyebrow">Laboratório de direção visual · prompt 04</p>
+    <h1>Três maneiras de percorrer o ATLAS.</h1>
+    <p>Alternativas experimentais para comparar composições. Nenhuma altera a identidade de produção.</p>
+    <nav aria-label="Alternativas visuais">
+      @for (alternative of alternatives; track alternative.id) {
+        <a [routerLink]="['/laboratorio', alternative.id, 'inicio']"><span>{{ alternative.id | uppercase }}</span><strong>{{ alternative.name }}</strong><small>{{ alternative.direction }}</small><b aria-hidden="true">↗</b></a>
+      }
+    </nav>
+  </div>
+}

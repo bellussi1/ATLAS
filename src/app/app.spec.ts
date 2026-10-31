@@ -65,6 +65,97 @@ describe('ATLAS application', () => {
     expect(activeLink?.textContent?.trim()).toBe('Explorar');
   });
 
+  it('keeps the skip link on the current route when a base URL is present', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const router = TestBed.inject(Router);
+    fixture.detectChanges();
+    await router.navigateByUrl('/laboratorio/a/artigo');
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelector<HTMLAnchorElement>('.skip-link')
+        ?.getAttribute('href'),
+    ).toBe('/laboratorio/a/artigo#conteudo');
+  });
+
+  it.each([
+    ['/laboratorio/a/inicio', 'O mundo', 'poster-home__cartography'],
+    ['/laboratorio/b/inicio', 'Percorra as relações.', 'map-home__archive'],
+    ['/laboratorio/c/inicio', 'Vestígios, ideias', 'archive-map'],
+  ])('renders proposal home %s with its distinct composition', async (url, heading, marker) => {
+    const harness = await RouterTestingHarness.create(url);
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('h1')?.textContent).toContain(heading);
+    expect(root.querySelector(`.${marker}`)).not.toBeNull();
+    expect(root.querySelector('[aria-label="Páginas demonstrativas"]')).not.toBeNull();
+  });
+
+  it('updates the composition when navigating between proposal parameters', async () => {
+    const harness = await RouterTestingHarness.create('/laboratorio/a/inicio');
+    await harness.navigateByUrl('/laboratorio/b/inicio');
+    expect(harness.routeNativeElement?.querySelector('.map-home__archive')?.getAttribute('href'))
+      .toBe('/explorar/artigo/conhecimento-com-contexto');
+
+    await harness.navigateByUrl('/laboratorio/c/inicio');
+    expect(harness.routeNativeElement?.querySelector('.archive-map')).not.toBeNull();
+  });
+
+  it('keeps compact proposal names in the navigation for narrow screens', async () => {
+    const harness = await RouterTestingHarness.create('/laboratorio/a/inicio');
+    const links = Array.from(
+      (harness.routeNativeElement as HTMLElement).querySelectorAll<HTMLAnchorElement>(
+        '.lab__proposals a',
+      ),
+    );
+    expect(links.map((link) => link.querySelector('.lab__proposal-short')?.textContent?.trim()))
+      .toEqual(['Editorial', 'Atlas', 'Museu']);
+    expect(links.map((link) => link.getAttribute('aria-label'))).toEqual([
+      'Proposta A — Editorial modernista',
+      'Proposta B — Atlas cartográfico',
+      'Proposta C — Museu digital',
+    ]);
+  });
+
+  it('names the archive navigation and the mocked museum composition', async () => {
+    const harness = await RouterTestingHarness.create('/laboratorio/a/inicio');
+    expect(harness.routeNativeElement?.querySelector('nav[aria-label="Acervo em destaque"]'))
+      .not.toBeNull();
+
+    await harness.navigateByUrl('/laboratorio/c/inicio');
+    expect(
+      harness.routeNativeElement?.querySelector('[role="group"][aria-label*="documentos simulados"]'),
+    ).not.toBeNull();
+  });
+
+  it.each(['a', 'b', 'c'])('provides article and mock profile pages for proposal %s', async (proposal) => {
+    const harness = await RouterTestingHarness.create(`/laboratorio/${proposal}/artigo`);
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent?.trim()).toBe(
+      'Conhecimento com contexto',
+    );
+    expect(harness.routeNativeElement?.textContent).toContain('conteúdo existente');
+
+    await harness.navigateByUrl(`/laboratorio/${proposal}/perfil`);
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent?.trim()).toBe(
+      'Pesquisadora de Exemplo',
+    );
+    expect(harness.routeNativeElement?.textContent).toContain('PERFIL FICTÍCIO · MOCK');
+  });
+
+  it('keeps the three visual alternatives discoverable from the laboratory index', async () => {
+    const harness = await RouterTestingHarness.create('/laboratorio');
+    const links = Array.from(
+      (harness.routeNativeElement as HTMLElement).querySelectorAll<HTMLAnchorElement>(
+        '.lab-index nav a[href^="/laboratorio/"]',
+      ),
+    );
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([
+      '/laboratorio/a/inicio',
+      '/laboratorio/b/inicio',
+      '/laboratorio/c/inicio',
+    ]);
+  });
+
   it('renders a working index for every editorial category', async () => {
     const harness = await RouterTestingHarness.create('/explorar');
     const root = harness.routeNativeElement as HTMLElement;

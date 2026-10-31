@@ -30,6 +30,7 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 - `/estudar` — apresentação do formato de trilhas
 - `/estudar/como-usar-trilhas` — exemplo de metodologia de estudo
 - `/sobre` — missão do projeto
+- `/laboratorio` — índice das três propostas experimentais de direção visual (início, artigo e perfil), sem alterar a identidade de produção
 - Qualquer caminho desconhecido — página 404 da aplicação
 
 Na página inicial, “Tenho uma dúvida” abre um verbete de metodologia; “Quero explorar” abre o índice editorial e “Quero estudar” abre a apresentação de trilhas. O campo de busca continua sendo apenas uma prévia visual: não recebe consultas nem apresenta resultados.
@@ -49,3 +50,5 @@ As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLA
 O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca ainda não está disponível; páginas históricas temáticas serão preparadas após curadoria e revisão de fontes.
 
 O registro inicial de metodologia fica em `src/content/atlas.json`, é validado por `ContentRepository` com Zod e copiado para a saída do build em `content/`. No navegador, o serviço lê esse asset estático; durante o prerender usa o JSON empacotado para evitar chamadas dependentes de browser. Apenas os slugs conceituais presentes nesse registro são prerenderizados. Veja [as decisões e limites da arquitetura](docs/ARCHITECTURE.md).
+
+As três composições experimentais do prompt 04, suas decisões visuais e capturas estão em [Direção artística](docs/DIRECAO-ARTISTICA.md).
