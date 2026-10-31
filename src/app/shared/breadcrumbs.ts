@@ -31,7 +31,7 @@ interface Breadcrumb {
   `,
   styles: `
     :host { display: block; }
-    .breadcrumbs { max-width: 90rem; margin: 0 auto; padding: .9rem clamp(1.25rem, 5vw, 5rem) 0; }
+    .breadcrumbs { max-width: var(--grid-max); margin: 0 auto; padding: .9rem var(--grid-gutter) 0; }
     ol { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
     li { color: var(--ink-muted); font-size: .82rem; }
     li + li::before { content: '/'; margin-right: .5rem; color: var(--ink-muted); }

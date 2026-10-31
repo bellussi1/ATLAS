@@ -58,7 +58,7 @@ As skills de animação e motion fazem parte da prática do ATLAS: find-animatio
 Explorar scroll e âncoras como orientação e narrativa quando houver conteúdo que os sustente. Preservar o controle da pessoa sobre a rolagem, o foco no destino e o caminho de volta. Gestos complexos precisam de alternativa por botão/teclado. Não mover parágrafos enquanto são lidos. Ser expressivo na composição e nas respostas às ações, sem impor um espetáculo permanente.
 
 
-Os tokens e componentes existentes são a fonte de verdade. Seleção ocasional por ponteiro pode usar opacidade curta (atualmente 180ms); pressione e confirme sem bloquear entrada. Cancelar animação anterior ao inverter ou selecionar novamente. Teclado e movimento reduzido são imediatos. Não animar páginas repetidamente, nem mover texto durante a leitura.
+Os tokens e componentes existentes são a fonte de verdade. Seleção ocasional por ponteiro pode usar opacidade curta (atualmente 180ms); pressione e confirme sem bloquear entrada. Cancelar animação anterior ao inverter ou selecionar novamente. Teclado e movimento reduzido são imediatos. Não reiniciar a entrada da página em mudanças de busca ou âncoras, nem mover texto durante a leitura.
 
 A prévia usa Angular CDK Dialog para foco, Escape e backdrop; aparência é editorial, não um tema Material. Não adicionar biblioteca para um fade. Se uma alteração exigir auditoria maior, consultar as skills de movimento instaladas; não transformar uma tarefa de implementação autorizada em entrega apenas de recomendações.
 
@@ -70,3 +70,8 @@ A prévia usa Angular CDK Dialog para foco, Escape e backdrop; aparência é edi
 4. Conferir seleção, links reais, retorno de foco, contraste, reflow e reduced motion conforme o escopo. Executar as verificações exigidas pelo repositório e capturar a interface quando o visual mudar.
 
 Não inventar documentos, fontes, citações, datas, coordenadas, licenças, métricas ou revisão humana. Os registros disponíveis podem ser apenas metodologia: apresentá-los como tal. Nunca declarar conformidade WCAG integral sem auditoria.
+
+
+## Container comum e continuidade
+
+Usar --grid-max (90rem incluindo padding) e --grid-gutter para alinhar os limites de header, breadcrumbs, páginas e footer. Manter medidas menores para o texto dentro desse container. Não recriar navegação textual dos três modos: as portas coloridas do header já cumprem essa função. A entrada de página usa os tokens de movimento existentes, preservando troca imediata por teclado/reduced motion e sem reiniciar em busca ou âncoras.

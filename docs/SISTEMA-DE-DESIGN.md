@@ -147,3 +147,12 @@ Referência: `prompts/05-design-system-acessivel.md`, último prompt numerado so
 Os quatro critérios de aceite foram confrontados: showroom navegável, reutilização em páginas reais, testes de teclado/contraste e ausência de declaração integral WCAG. As capturas desktop/mobile desta revisão foram inspecionadas durante a execução; a ferramenta recusou gravá-las nos caminhos locais solicitados, portanto não há novos arquivos de screenshot entregues.
 
 Limitações de verificação: o atalho enviado pela ferramenta de navegador não alterou o zoom nativo. A tentativa seguinte por Computer Use foi interrompida pela própria ferramenta por não conseguir confirmar a URL da janela com confiança; nenhuma ação de zoom foi executada por ela. A emulação de viewport/DPR não substitui essa medição. Um ensaio com zoom CSS 200% apresentou overflow e não foi considerado evidência de aprovação: zoom CSS não altera os breakpoints como o zoom nativo. Continua necessária a conferência do zoom nativo em 200%, além da avaliação com leitores de tela/pessoas usuárias de tecnologia assistiva já registrada acima. Não se declara conformidade WCAG integral.
+
+
+## Container e troca de páginas
+
+O limite externo é `--grid-max` (90rem, incluindo padding) e a margem lateral é `--grid-gutter`. Header e footer têm wrappers internos com esses mesmos limites; suas faixas de fundo continuam ocupando a viewport. Home, exploração, índices, showroom, páginas institucionais, breadcrumbs e templates editoriais seguem esse contrato. A largura dos parágrafos continua limitada pelas medidas de leitura, sem estreitar o container externo. Laboratórios visuais preservam suas composições experimentais isoladas.
+
+Os três acessos coloridos no header são a navegação dos modos; a nav textual duplicada foi removida. A troca de pathname usa entrada por opacidade e deslocamento de 8px em 200ms (`--motion-standard` e `--ease-out`), sem animar header/footer. Primeira renderização, teclado e reduced motion são imediatos. Query strings e fragmentos não reiniciam a animação; novas navegações cancelam o movimento anterior. Não há bloqueio de entrada nem dependência adicional.
+
+Conferência desta mudança no Chrome: em viewport de 1920 px, as bordas internas de header, exploração e footer foram 312,5/1592,5 px; em 320 px, 16/304 px, sem overflow horizontal. Um clique em Conhecimento registrou a entrada com duração 200ms e os tokens previstos. Suíte completa: 117 testes em nove arquivos; build com 37 rotas estáticas, lint e typecheck passaram.

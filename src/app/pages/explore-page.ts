@@ -32,7 +32,7 @@ import { editorialTypes } from '../content/content-types';
   `,
   styles: `
     :host { display: block; }
-    .page { display: grid; grid-template-columns: minmax(15rem, .8fr) minmax(22rem, 1.2fr); gap: clamp(3rem, 8vw, 8rem); max-width: 90rem; margin: 0 auto; padding: clamp(3.5rem, 8vw, 7rem) clamp(1.25rem, 8vw, 8rem); }
+    .page { display: grid; grid-template-columns: minmax(15rem, .8fr) minmax(22rem, 1.2fr); gap: clamp(3rem, 8vw, 8rem); max-width: var(--grid-max); margin: 0 auto; padding: clamp(3.5rem, 8vw, 7rem) var(--grid-gutter); }
     .intro { max-width: 36rem; }
     h1 { max-width: 9ch; margin: 0; font-size: clamp(3rem, 6.5vw, 5.5rem); letter-spacing: -.065em; line-height: .98; }
     .page__lead { max-width: 34rem; margin-top: 1.5rem; color: var(--ink-muted); font: clamp(1.1rem, 1.8vw, 1.35rem)/1.6 var(--serif); }

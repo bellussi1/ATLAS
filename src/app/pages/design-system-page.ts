@@ -166,7 +166,7 @@ import {
   `,
   styles: `
     :host { display: block; min-width: 0; }
-    .showroom { width: min(100%, 96rem); min-width: 0; margin-inline: auto; padding: clamp(2rem, 6vw, 5rem) var(--grid-gutter) var(--space-16); }
+    .showroom { width: min(100%, var(--grid-max)); min-width: 0; margin-inline: auto; padding: clamp(2rem, 6vw, 5rem) var(--grid-gutter) var(--space-16); }
     .showroom__intro { max-width: 66rem; }
     .showroom__eyebrow, .showroom__kicker { margin: 0 0 var(--space-3); color: var(--color-accent); font: 700 var(--text-caption)/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
     h1 { max-width: 14ch; margin: 0; line-height: .98; letter-spacing: -.06em; }

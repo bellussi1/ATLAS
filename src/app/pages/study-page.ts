@@ -19,7 +19,7 @@ import { RouterLink } from '@angular/router';
   `,
   styles: `
     :host { display: block; }
-    .page { max-width: 68rem; margin: 0 auto; padding: clamp(4rem, 12vw, 9rem) clamp(1.25rem, 8vw, 8rem); }
+    .page { max-width: var(--grid-max); margin: 0 auto; padding: clamp(4rem, 12vw, 9rem) var(--grid-gutter); }
     h1 { max-width: 12ch; margin: 0; font-size: clamp(3rem, 8vw, 6rem); letter-spacing: -.07em; line-height: .98; }
     .page__lead { max-width: 38rem; color: var(--ink-muted); font: 1.35rem/1.55 var(--serif); }
     .study-path { max-width: 42rem; margin-top: clamp(3rem, 7vw, 5rem); padding-left: 1.25rem; border-left: .25rem solid var(--signal); }

@@ -1,8 +1,5 @@
 :host { display: block; }
 .exploration { max-width: var(--grid-max); margin: auto; padding: var(--space-6) var(--grid-gutter) var(--space-16); }
-.mode-nav { display: flex; flex-wrap: wrap; gap: var(--space-4); border-bottom: 1px solid var(--color-border-strong); margin-bottom: var(--space-8); }
-.mode-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-ink-muted); font-size: var(--text-small); }
-.mode-nav a[aria-current] { color: var(--color-accent); font-weight: 700; text-decoration-thickness: 2px; }
 .kicker, .caption { color: var(--color-ink-muted); font: var(--text-small)/1.5 var(--font-mono); }
 h1 { font-size: clamp(2.4rem, 6vw, 5.5rem); font-weight: 650; letter-spacing: -.065em; line-height: 1; margin: 0; }
 .lead { max-width: 50ch; font: var(--text-lead)/1.5 var(--font-serif); }
@@ -19,6 +16,5 @@ label { display: block; margin-bottom: var(--space-2); }
 .empty-collection p { max-width: 60ch; }
 .collection-number { color: var(--color-accent); font-size: 5rem; line-height: 1; }
 @media (min-width: 48rem) {
- .mode-nav { gap: var(--space-8); }
  .empty-collection { grid-template-columns: 8rem minmax(0, 1fr); }
 }

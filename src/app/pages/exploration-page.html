@@ -1,9 +1,4 @@
 <section class="exploration" aria-labelledby="mode-title">
-  <nav class="mode-nav" aria-label="Modos de exploração">
-    <a routerLink="/relacoes" [attr.aria-current]="mode() === 'relations' ? 'page' : null">01 Relações</a>
-    <a routerLink="/tempo-e-espaco" [attr.aria-current]="mode() === 'time' ? 'page' : null">02 Tempo e espaço</a>
-    <a routerLink="/conhecimento" [attr.aria-current]="mode() === 'knowledge' ? 'page' : null">03 Conhecimento</a>
-  </nav>
   @switch (mode()) {
     @case ('knowledge') {
       <p class="kicker">03 / Pesquisar e ler</p>

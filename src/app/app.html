@@ -3,6 +3,7 @@
 </a>
 
 <header class="site-header">
+<div class="site-header__inner">
   <a class="wordmark" routerLink="/" aria-label="ATLAS — página inicial">
     <img class="wordmark__logo" src="/brand/atlas-logo.svg" alt="" width="280" height="80" />
     <span class="wordmark__caption">História em relação</span>
@@ -17,6 +18,7 @@
     <a routerLink="/estudar" routerLinkActive="is-active" ariaCurrentWhenActive="page">Estudar</a>
     <a routerLink="/sobre" routerLinkActive="is-active" ariaCurrentWhenActive="page">Sobre</a>
   </app-menu>
+</div>
 </header>
 
 <app-breadcrumbs />
@@ -26,6 +28,7 @@
 </main>
 
 <footer class="site-footer">
+<div class="site-footer__inner">
   <div class="footer-poster">
     <div class="footer-invitation"><p>Um acervo, muitos caminhos.</p><h2>A próxima<br />descoberta<br /><em>é sua.</em></h2><a routerLink="/conhecimento">Procurar outra leitura <span aria-hidden="true">↗</span></a></div>
     <div class="footer-playground">
@@ -39,4 +42,5 @@
     </div>
   </div>
   <div class="footer-imprint"><a class="footer-signature" routerLink="/" aria-label="ATLAS — voltar à página inicial"><img src="/brand/atlas-logo-inverse.svg" alt="" width="280" height="80" loading="lazy" /></a><div><p>Conhecimento público,<br />com contexto e fontes.</p><a routerLink="/sistema">Sistema visual</a><a routerLink="/laboratorio">Laboratório visual</a></div></div>
+</div>
 </footer>
