@@ -99,6 +99,33 @@ describe('atlasSchema', () => {
     expect(duplicateEntityReference.success).toBe(false);
   });
 
+  it('requires the atlas entity index to include every entity exactly once', () => {
+    const omittedEntity = atlasSchema.safeParse({
+      ...validAtlas,
+      entities: [
+        ...validAtlas.entities,
+        { ...validAtlas.entities[0], id: 'concept-extra', slug: 'conceito-extra', title: 'Conceito extra' },
+      ],
+    });
+
+    expect(omittedEntity.success).toBe(false);
+  });
+
+  it('rejects reversed and contradictory temporal ranges', () => {
+    expect(atlasSchema.safeParse({
+      ...validAtlas,
+      entities: [{ ...validAtlas.entities[0], temporalExtent: {
+        startYear: 1988, endYear: 1987, precision: 'range', label: null,
+      } }],
+    }).success).toBe(false);
+    expect(atlasSchema.safeParse({
+      ...validAtlas,
+      entities: [{ ...validAtlas.entities[0], temporalExtent: {
+        startYear: 1988, endYear: null, precision: 'unknown', label: null,
+      } }],
+    }).success).toBe(false);
+  });
+
   it('models all requested entity types and learning paths with linked entities', () => {
     const base = {
       id: 'record-example',

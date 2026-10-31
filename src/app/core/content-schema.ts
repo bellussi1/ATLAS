@@ -200,6 +200,9 @@ export const atlasSchema = z.object({
   };
   unique(atlas.entityIds, ['entityIds']);
   validateRefs(atlas.entityIds, entityIds, ['entityIds']);
+  if (atlas.entityIds.length !== atlas.entities.length) {
+    context.addIssue({ code: 'custom', message: 'O índice do atlas deve listar todas as entidades exatamente uma vez.', path: ['entityIds'] });
+  }
   atlas.evidences.forEach((item, index) => validateRefs([item.sourceId], sourceIds, ['evidences', index, 'sourceId']));
   atlas.citations.forEach((item, index) => validateRefs([item.evidenceId], evidenceIds, ['citations', index, 'evidenceId']));
   atlas.claims.forEach((claim, index) => {

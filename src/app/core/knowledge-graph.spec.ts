@@ -23,6 +23,7 @@ function atlas(id: string, slug: string, entities: Atlas['entities'], relations:
 const concept = { ...sharedEntity, id: 'concept-rights', slug: 'direitos-fundamentais', kind: 'concept' as const };
 const person = {
   ...sharedEntity, id: 'person-ulysses', slug: 'ulysses-guimaraes', kind: 'person' as const,
+  aliases: ['Presidente da Constituinte'],
   temporalExtent: { startYear: 1916, endYear: 1992, precision: 'year' as const, label: null },
 };
 const graph = knowledgeGraphSchema.parse({
@@ -51,6 +52,7 @@ describe('knowledge graph queries', () => {
     expect(queryKnowledgeEntities(graph, { atlasId: 'atlas-constituinte', fromYear: 2000 })).toEqual([]);
     expect(queryKnowledgeEntities(graph, { entityId: 'concept-rights' })).toHaveLength(1);
     expect(queryKnowledgeEntities(graph, { term: 'direitos' })).toHaveLength(1);
+    expect(queryKnowledgeEntities(graph, { term: 'presidente da constituinte' })).toHaveLength(1);
   });
 
   it('returns directional relations using the reverse label for incoming queries', () => {
