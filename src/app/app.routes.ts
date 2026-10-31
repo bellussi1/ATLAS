@@ -11,7 +11,8 @@ import {
 } from './content/route-resolvers';
 
 export const routes: Routes = [
-  { path: 'atlas/marxismo', loadComponent: () => import('./pages/marx-atlas-page').then(module => module.MarxAtlasPage), data: { breadcrumb: 'Marxismo e economia política' }, title: 'Marxismo e economia política — ATLAS' },
+  { path: 'atlas/marxismo/valor-e-trabalho', loadComponent: () => import('./pages/marx-atlas-page').then(module => module.MarxAtlasPage), data: { breadcrumb: 'Valor e trabalho' }, title: 'Valor e trabalho: Smith e Marx — ATLAS' },
+  { path: 'atlas/marxismo', loadComponent: () => import('./pages/marx-atlas-index').then(module => module.MarxAtlasIndex), data: { breadcrumb: 'Marxismo e economia política' }, title: 'Marxismo e economia política — ATLAS' },
   ...[
     { path: 'relacoes', mode: 'relations', label: 'Relações' },
     { path: 'tempo-e-espaco', mode: 'time', label: 'Tempo e espaço' },

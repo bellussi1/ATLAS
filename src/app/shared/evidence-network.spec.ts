@@ -9,23 +9,23 @@ describe('evidence network layout', () => {
     return TestBed.createComponent(AtlasEvidenceNetworkComponent).componentInstance;
   }
 
-  it('allocates a distinct position to every visible record', () => {
+  it('starts with entities instead of mixing assertions and sources into one diagram', () => {
     const component = network();
-    const coordinates = component.visibleNodes().map(node => `${component.position(node.id)},${component.vertical(node.id)}`);
     expect(component.visibleNodes().length).toBeGreaterThan(3);
-    expect(new Set(coordinates).size).toBe(coordinates.length);
+    expect(component.visibleNodes().some(node => ['Fonte', 'Afirmação'].includes(node.kind))).toBe(false);
   });
 
-  it('recalculates positions after filtering and keeps every node within the canvas', () => {
+  it('keeps selection when filtering and follows documented inverse relations', () => {
     const component = network();
-    component.filter('Conceito');
-    for (const node of component.visibleNodes()) {
-      expect(component.position(node.id)).toBeGreaterThan(0);
-      expect(component.position(node.id)).toBeLessThan(100);
-      expect(component.vertical(node.id)).toBeGreaterThan(0);
-      expect(component.vertical(node.id)).toBeLessThan(100);
-    }
-    expect(component.selected()).toBeDefined();
+    component.follow('person-karl-marx');
+    component.filter('Pessoa');
+    expect(component.selected()?.id).toBe('person-karl-marx');
+    expect(component.connections().some(edge => edge.label === 'analisa criticamente' && edge.to === 'person-adam-smith')).toBe(true);
+    component.follow('person-adam-smith');
+    expect(component.connections().some(edge => edge.label === 'é analisado criticamente por' && edge.to === 'person-karl-marx')).toBe(true);
+    component.follow('source-marx-capital');
+    expect(component.kind()).toBe('Fonte');
+    expect(component.selected()?.id).toBe('source-marx-capital');
   });
 
   it('links source nodes to their own stable source anchors', () => {

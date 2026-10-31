@@ -34,7 +34,7 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
         </section>
 
         @if (atlas()?.id === 'atlas-marx-valor') {
-          <p class="atlas-continuation"><a appEditorialLink routerLink="/atlas/marxismo" [queryParams]="{ argumento: marxArgument() }">Explorar esta discussão no mapa de argumentos</a></p>
+          <p class="atlas-continuation"><a appEditorialLink routerLink="/atlas/marxismo/valor-e-trabalho" [queryParams]="{ argumento: marxArgument() }">Explorar esta discussão no mapa de argumentos</a></p>
         }
 
         <app-reading-outline [sections]="entry.sections" />
@@ -77,7 +77,7 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
         }
 
         <app-continue-reading [currentPath]="'/verbete/' + entry.slug" />
-        <a class="back-link discovery-return" [routerLink]="returnTo()">{{ origin()?.startsWith('/atlas/marxismo') ? 'Voltar ao mapa de argumentos' : hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar ao índice de verbetes' }}</a>
+        <a class="back-link discovery-return" [routerLink]="returnTo()">{{ origin() === '/atlas/marxismo' ? 'Voltar ao atlas' : origin()?.startsWith('/atlas/marxismo') ? 'Voltar ao mapa de argumentos' : hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar ao índice de verbetes' }}</a>
       </article>
     } @else {
       <section class="page" aria-labelledby="page-title">

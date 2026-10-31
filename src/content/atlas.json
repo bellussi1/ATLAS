@@ -984,7 +984,26 @@
           "note": null
         }
       ],
-      "assetLicenses": [],
+      "assetLicenses": [
+        {
+          "id": "asset-marx-portrait",
+          "assetPath": "/images/atlas/karl-marx.jpg",
+          "creator": "John Jabez Edwin Mayall e ateliê / Wien Museum",
+          "license": "Domínio público — PD-old e PD-US-expired",
+          "licenseUrl": "https://commons.wikimedia.org/wiki/File:Karl_Marx_by_John_Jabez_Edwin_Mayall_-_Wien_Museum_(cropped).jpg",
+          "status": "known",
+          "reproduction": "allowed"
+        },
+        {
+          "id": "asset-smith-portrait",
+          "assetPath": "/images/atlas/adam-smith.jpg",
+          "creator": "Autoria desconhecida, retrato Muir, c. 1800; versão com cores editadas",
+          "license": "Domínio público — PD-old e PD-US-expired",
+          "licenseUrl": "https://commons.wikimedia.org/wiki/File:Adam_Smith_(Muir_portrait).jpg",
+          "status": "known",
+          "reproduction": "allowed"
+        }
+      ],
       "learningPaths": [],
       "relations": [
         {

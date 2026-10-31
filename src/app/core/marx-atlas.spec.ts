@@ -12,6 +12,10 @@ describe('Marxism atlas content', () => {
     expect(queryKnowledgeRelations(methodologyKnowledgeGraph, 'person-adam-smith').map(item => item.label)).toContain('é analisado criticamente por');
   });
   it('only accepts a valid local map context', () => {
+    expect(safeDiscoveryOrigin('/atlas/marxismo')).toBe('/atlas/marxismo');
+    expect(safeDiscoveryOrigin('/atlas/marxismo/valor-e-trabalho?argumento=marx&vinculo=critica')).toBe('/atlas/marxismo/valor-e-trabalho?argumento=marx&vinculo=critica');
+    expect(safeDiscoveryOrigin('/atlas/marxismo/valor-e-trabalho?argumento=outro')).toBeNull();
+    expect(safeDiscoveryOrigin('/atlas/marxismo?destino=https://example.org')).toBeNull();
     expect(safeDiscoveryOrigin('/atlas/marxismo?argumento=marx')).toBe('/atlas/marxismo?argumento=marx');
     expect(safeDiscoveryOrigin('/atlas/marxismo?argumento=marx&vinculo=critica')).toBe('/atlas/marxismo?argumento=marx&vinculo=critica');
     expect(safeDiscoveryOrigin('/atlas/marxismo?argumento=marx&vinculo=invalido')).toBeNull();

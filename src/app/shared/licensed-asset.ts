@@ -1,6 +1,11 @@
 import { Component, computed, input } from '@angular/core';
 import type { Atlas, AssetLicense } from '../core/content-schema';
 
+export function reproducibleAsset(atlas: Atlas | undefined, assetPath: string): AssetLicense | undefined {
+  const asset = atlas?.assetLicenses.find(item => item.assetPath === assetPath);
+  return asset?.status === 'known' && asset.reproduction === 'allowed' && asset.license && asset.licenseUrl ? asset : undefined;
+}
+
 @Component({
   selector: 'app-licensed-asset',
   template: `
@@ -32,13 +37,7 @@ export class AtlasLicensedAssetComponent {
   readonly assetPath = input.required<string>();
   readonly alt = input.required<string>();
   readonly kind = input<'image' | 'document'>('image');
-  private readonly registered = computed(() => this.atlas().assetLicenses.find((asset) => asset.assetPath === this.assetPath()));
-  readonly license = computed(() => {
-    const asset = this.registered();
-    return asset?.status === 'known' && asset.reproduction === 'allowed' && asset.license && asset.licenseUrl
-      ? asset
-      : undefined;
-  });
+  readonly license = computed(() => reproducibleAsset(this.atlas(), this.assetPath()));
 
   creator(asset: AssetLicense): string { return asset.creator ? `${asset.creator} ·` : ''; }
 }

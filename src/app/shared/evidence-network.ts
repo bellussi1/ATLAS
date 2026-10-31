@@ -1,11 +1,11 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContentRepository } from '../core/content-repository';
 import { queryKnowledgeRelations } from '../core/knowledge-graph';
 import type { KnowledgeGraph } from '../core/content-schema';
 import { AtlasEditorialLinkDirective } from './ui-primitives';
 interface NodeRecord { id: string; title: string; kind: string; description: string; path: string; fragment?: string; }
-interface GraphEdge { from: string; to: string; label: string; periodLabel: string; evidenceIds: string[]; }
+interface GraphEdge { from: string; to: string; label: string; periodLabel: string; evidenceIds: string[]; context?: string; }
 @Component({
   selector: 'app-evidence-network',
   imports: [RouterLink, AtlasEditorialLinkDirective],
@@ -13,14 +13,12 @@ interface GraphEdge { from: string; to: string; label: string; periodLabel: stri
   styleUrl: './evidence-network.scss',
 })
 export class AtlasEvidenceNetworkComponent {
-  readonly compact = input(false);
   readonly repository = inject(ContentRepository);
   readonly graph: KnowledgeGraph = this.repository.knowledgeGraph;
   readonly kind = signal('Todos');
-  readonly listView = signal(false);
   readonly nodes: NodeRecord[] = this.graph.atlases.flatMap(atlas => [
     ...atlas.entities.map(entity => ({ id: entity.id, title: entity.title, kind: this.kindLabel(entity.kind), description: entity.summary, path: '/verbete/' + entity.slug })),
-    ...atlas.claims.map(claim => ({ id: claim.id, title: 'Afirmação', kind: 'Afirmação', description: claim.text, path: '/verbete/' + atlas.entities.find(entity => entity.id === claim.entityId)!.slug })),
+    ...atlas.claims.map(claim => ({ id: claim.id, title: 'Afirmação sobre ' + atlas.entities.find(entity => entity.id === claim.entityId)!.title, kind: 'Afirmação', description: claim.text, path: '/verbete/' + atlas.entities.find(entity => entity.id === claim.entityId)!.slug })),
     ...atlas.sources.map(source => ({ id: source.id, title: source.title, kind: 'Fonte', description: source.edition, path: '/fontes', fragment: 'source-' + source.id })),
   ]);
   readonly selectedId = signal(this.nodes[0]?.id ?? '');
@@ -40,14 +38,14 @@ export class AtlasEvidenceNetworkComponent {
       ...atlas.relations.map(relation => ({ from: relation.fromEntityId, to: relation.toEntityId, label: relation.label, periodLabel: relation.temporalExtent?.label ?? 'Período não informado', evidenceIds: relation.evidenceIds })),
     ]),
   ];
-  readonly visibleNodes = computed(() => this.nodes.filter(node => this.kind() === 'Todos' || node.kind === this.kind()));
-  readonly visibleEdges = computed(() => this.edges.filter(edge => this.visibleNodes().some(node => node.id === edge.from) && this.visibleNodes().some(node => node.id === edge.to)));
+  readonly visibleNodes = computed(() => this.nodes.filter(node => this.kind() === 'Todos' ? !['Afirmação', 'Fonte'].includes(node.kind) : node.kind === this.kind()));
   readonly selected = computed(() => this.visibleNodes().find(node => node.id === this.selectedId()));
   readonly connections = computed(() => {
     const selectedId = this.selectedId();
     const relations = queryKnowledgeRelations(this.graph, selectedId).map(relation => ({
       from: selectedId,
       label: relation.label,
+      context: relation.context,
       to: relation.relatedEntityId,
       typeLabel: this.relationTypeLabel(relation.relationType),
       followId: relation.relatedEntityId,
@@ -60,13 +58,15 @@ export class AtlasEvidenceNetworkComponent {
     return [...relations, ...otherEdges];
   });
   title(id: string): string { return this.nodes.find(node => node.id === id)?.title ?? id; }
-  readonly rowCount = computed(() => Math.max(1, Math.ceil(this.visibleNodes().length / 3)));
-  position(id: string): number { return this.visibleNodes().length === 1 ? 50 : [17, 50, 83][this.visibleNodes().findIndex(node => node.id === id) % 3]; }
-  follow(id: string): void { this.kind.set('Todos'); this.selectedId.set(id); }
-  filter(value: string): void { this.kind.set(value); this.selectedId.set(this.visibleNodes()[0]?.id ?? ''); }
-
-  vertical(id: string): number {
-    return (Math.floor(this.visibleNodes().findIndex(node => node.id === id) / 3) + .5) / this.rowCount() * 100;
+  follow(id: string): void {
+    const node = this.nodes.find(node => node.id === id);
+    if (!node) return;
+    this.kind.set(['Afirmação', 'Fonte'].includes(node.kind) ? node.kind : 'Todos');
+    this.selectedId.set(id);
+  }
+  filter(value: string): void {
+    this.kind.set(value);
+    if (!this.visibleNodes().some(node => node.id === this.selectedId())) this.selectedId.set(this.visibleNodes()[0]?.id ?? '');
   }
 
 

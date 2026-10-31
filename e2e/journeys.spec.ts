@@ -75,13 +75,20 @@ test('page transition respects normal and reduced motion', async ({ page }) => {
   await expect(page.locator('html')).not.toHaveAttribute('data-atlas-transition', 'played');
 });
 
-test('mobile home keeps the complete graph available in a compact scroll area', async ({ page }) => {
+test('mobile home directs exploration to dedicated atlas and relation pages', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  const network = page.locator('.network--compact');
-  await expect(page.getByText('Role a lista para encontrar outros registros.')).toBeVisible();
-  expect(await network.evaluate(element => element.scrollHeight > element.clientHeight)).toBe(true);
-  await network.getByRole('button', { name: /Igualdade perante a lei/ }).focus();
+  await expect(page.locator('app-evidence-network')).toHaveCount(0);
+  await page.getByRole('link', { name: /Explorar Marxismo e economia política/ }).click();
+  await expect(page.locator('h1')).toContainText('Marxismo');
+  await page.goto('/relacoes/');
+  await page.getByRole('button', { name: 'Pessoa Karl Marx', exact: true }).focus();
   await page.keyboard.press('Enter');
-  await expect(page.locator('.context h2')).toContainText('Igualdade perante a lei');
+  await expect(page.locator('.context h2')).toContainText('Karl Marx');
+  await expect(page.locator('.relation-statement').filter({ hasText: 'analisa criticamente' })).toContainText('Adam Smith');
+  await page.getByRole('button', { name: 'Explorar Adam Smith →', exact: true }).click();
+  await expect(page.locator('.context h2')).toContainText('Adam Smith');
+  await expect(page.locator('.context h2')).toBeFocused();
+  await expect(page.locator('.relation-statement').filter({ hasText: 'é analisado criticamente por' })).toContainText('Karl Marx');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

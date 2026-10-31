@@ -13,3 +13,20 @@ nav { display:grid; gap:.5rem; margin-top:1.5rem; } a { color:var(--color-accent
 .method,.study { max-width:55rem; margin-top:4rem; padding-top:1rem; border-top:1px solid var(--color-border-strong); } .study [role="status"] { padding:1rem; background:var(--color-surface-subtle); }
 @media(min-width:64rem) { .argument-map { grid-template-columns:minmax(0,1fr) minmax(20rem,.8fr); } }
 @media(prefers-reduced-motion:no-preference) { .theses button:not(:focus-visible) { transition:color 180ms var(--ease-out), background-color 180ms var(--ease-out); } }
+.atlas-return { display:inline-block; margin-bottom:2rem; }
+.argument-map { margin-top:2rem; }
+fieldset { display:flex; flex-wrap:wrap; gap:.3rem 1.2rem; border:0; border-bottom:1px solid var(--color-border-strong); padding:0 0 1rem; } legend { margin-bottom:.5rem; font-weight:600; }
+.theses { border:0; padding:0; }
+.theses .thesis { display:flex; padding:0; align-items:stretch; background:var(--color-teal-paper); border:2px solid transparent; color:var(--color-ink); }
+.theses .thesis.marx { background:var(--color-rose-paper); }
+.thesis img { width:6rem; height:9rem; object-fit:cover; object-position:center 20%; flex-shrink:0; }
+.theses .thesis .thesis-copy { font:600 1.25rem/1.25 var(--font-sans); padding:1rem; margin:0; }
+.theses .thesis .thesis-copy > span { font:.75rem/1.5 var(--font-mono); }
+.thesis small { display:block; font:400 .8rem/1.5 var(--font-sans); margin-top:.8rem; text-decoration:underline; }
+.theses .thesis[aria-pressed="true"] { border-color:var(--color-ink); box-shadow:inset -6px 0 var(--color-ink); }
+.edge { border:0; margin:0; padding:.5rem 0; }
+.edge p { padding:1rem; margin:.5rem 0; }
+.comparison { background:var(--color-ochre-paper); } .comparison svg { width:3rem; height:1rem; fill:none; stroke:currentColor; stroke-width:2; margin-right:.5rem; display:inline-block; }
+.criticism { border-left:3px solid var(--color-accent); }
+.context { border-top-color:var(--color-ink); }
+@media(max-width:40rem) { .atlas-page { padding-top:2rem; } .thesis img { width:4.5rem; height:10rem; } .theses .thesis .thesis-copy { font-size:1.1rem; padding:.8rem; } }

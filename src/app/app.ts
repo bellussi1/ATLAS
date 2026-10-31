@@ -46,7 +46,9 @@ export class AppComponent {
     const pageTitle = this.title.getTitle() || 'ATLAS — compreender o mundo';
     const routeDescription = this.activeRouteDescription();
     const description = path === '/atlas/marxismo'
-      ? 'Explore, em conteúdo em revisão, um mapa de argumentos sobre Smith, Marx, valor e trabalho.'
+      ? 'Explore pessoas, obras e debates sobre Marxismo e economia política. Núcleo em revisão editorial.'
+      : path === '/atlas/marxismo/valor-e-trabalho'
+        ? 'Compare as formulações de valor de Smith e Marx, suas fontes e a crítica documentada. Conteúdo em revisão.'
       : path === '/fontes'
       ? 'Consulte as fontes cadastradas no ATLAS, seus localizadores e as leituras relacionadas.'
       : path === '/conhecimento'

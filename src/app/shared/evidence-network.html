@@ -1,35 +1,31 @@
-      <div class="controls"><label for="node-kind">Mostrar categoria</label>
-      <select id="node-kind" [value]="kind()" (change)="filter($any($event.target).value)">
-        @for (category of kinds(); track category) { <option [value]="category">{{ category }}</option> }
-      </select><button class="view-toggle" type="button" [attr.aria-pressed]="listView()" (click)="listView.set(!listView())">{{ listView() ? "Ver rede" : "Ver lista" }}</button></div>
-      <p class="kicker" role="status">{{ visibleNodes().length }} registros · {{ visibleEdges().length }} conexões visíveis</p>
-      <ul class="network-legend" aria-label="Legenda: categorias dos registros">
-        @for (category of kinds().slice(1); track category) { <li><span aria-hidden="true"></span>{{ category }}</li> }
-      </ul>
-      @if (compact()) { <p class="compact-hint">Role a lista para encontrar outros registros.</p> }
-      <div class="network-stage">
-      <div class="network" [class.network--list]="listView()" [class.network--compact]="compact()" [style.--network-rows]="rowCount()" aria-label="Grafo de conhecimento e relações documentadas">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          @for (edge of visibleEdges(); track edge.from + edge.to) { <line [class.active]="edge.from === selectedId() || edge.to === selectedId()" [attr.x1]="position(edge.from)" [attr.y1]="vertical(edge.from)" [attr.x2]="position(edge.to)" [attr.y2]="vertical(edge.to)" /> }
-        </svg>
-        <ul>
-          @for (node of visibleNodes(); track node.id) {
-            <li [style.left.%]="position(node.id)" [style.top.%]="vertical(node.id)"><button type="button" [attr.aria-pressed]="selectedId() === node.id" (click)="selectedId.set(node.id)"><span>{{ node.kind }}</span>{{ node.title }}</button></li>
-          }
-        </ul>
-      </div>
-      @if (selected(); as node) {
-        <section class="context" aria-labelledby="selected-title" aria-live="polite">
-          <p class="kicker">Seleção · {{ node.kind }}</p><h2 id="selected-title">{{ node.title }}</h2><p>{{ node.description }}</p>
-          <ul>@for (edge of connections(); track edge.from + edge.to + edge.label) {
-            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}. <span class="relation-type">{{ edge.typeLabel }} · {{ edge.periodLabel }}</span>
-              @if (sourcesForEvidence(edge.evidenceIds).length) {
-                <span class="connection-sources">Fontes: @for (source of sourcesForEvidence(edge.evidenceIds); track source.id) { <a [routerLink]="'/fontes'" [fragment]="'source-' + source.id">{{ source.title }}</a>@if (!$last) {; } }</span>
-              } @else { <span class="connection-sources">Sem fonte diretamente vinculada.</span> }
-              <button type="button" class="follow-connection" (click)="follow(edge.followId)">Explorar {{ title(edge.followId) }} →</button></li>
-          }</ul>
-          <a appEditorialLink [routerLink]="node.path" [fragment]="node.fragment">{{ selectedAction() }} →</a>
-        </section>
-      }
-      </div>
-      <p class="caption">O grafo reúne entidades e atlas; relações históricas mostram direção, inversa e evidências registradas. Filtros e lista contextual oferecem alternativas à leitura visual das conexões.</p>
+<div class="controls"><label for="node-kind">Explorar registros</label>
+  <select id="node-kind" [value]="kind()" (change)="filter($any($event.target).value)">
+    @for (category of kinds(); track category) { <option [value]="category">{{ category === 'Todos' ? 'Todos os verbetes' : category }}</option> }
+  </select>
+</div>
+<p class="caption">Selecione um registro. Siga um vínculo para mudar o ponto de partida. Afirmações e fontes têm categorias próprias no seletor.</p>
+<div class="network-stage">
+  <nav class="record-index" aria-label="Registros para investigar">
+    <p role="status">{{ visibleNodes().length }} registros · seleção: {{ selected()?.title || 'nenhuma' }}</p>
+    <ul>@for (node of visibleNodes(); track node.id) {
+      <li><button type="button" aria-controls="relation-context" [attr.aria-pressed]="selectedId() === node.id" (click)="selectedId.set(node.id)"><span>{{ node.kind }}</span>{{ node.title }}</button></li>
+    } @empty { <li>Nenhum registro nesta categoria. Escolha outra categoria.</li> }</ul>
+  </nav>
+  @if (selected(); as node) {
+    <section id="relation-context" class="context" aria-labelledby="selected-title" aria-live="polite">
+      <p class="kicker">Ponto de partida · {{ node.kind }}</p><h2 id="selected-title" #contextTitle tabindex="-1">{{ node.title }}</h2><p>{{ node.description }}</p>
+      <a appEditorialLink [routerLink]="node.path" [fragment]="node.fragment">{{ selectedAction() }} →</a>
+      <h3>O que conecta este registro?</h3>
+      <ul class="connections">@for (edge of connections(); track edge.from + edge.to + edge.label) {
+        <li><p class="relation-statement">{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}.</p>
+          <p class="relation-type">{{ edge.typeLabel }} · {{ edge.periodLabel }}</p>
+          @if (edge.context) { <p class="connection-sources">{{ edge.context }}</p> }
+          @if (sourcesForEvidence(edge.evidenceIds).length) {
+            <p class="connection-sources">Evidência: @for (source of sourcesForEvidence(edge.evidenceIds); track source.id) { <a [routerLink]="'/fontes'" [fragment]="'source-' + source.id">{{ source.title }}</a>@if (!$last) {; } }</p>
+          } @else { <p class="connection-sources">Sem fonte diretamente vinculada.</p> }
+          <button type="button" class="follow-connection" (click)="follow(edge.followId); contextTitle.focus()">Explorar {{ title(edge.followId) }} →</button>
+        </li>
+      } @empty { <li>Nenhuma relação registrada. Abra o verbete para ler o contexto disponível.</li> }</ul>
+    </section>
+  }
+</div>

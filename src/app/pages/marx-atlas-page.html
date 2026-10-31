@@ -1,27 +1,28 @@
 <article class="atlas-page" aria-labelledby="atlas-title">
-  <header><p class="eyebrow">Atlas temático · demonstrador em revisão</p><h1 id="atlas-title">Marxismo e economia política</h1>
+  <a class="atlas-return" routerLink="/atlas/marxismo">← Atlas de Marxismo e economia política</a>
+  <header><p class="eyebrow">Debate intelectual · em revisão</p><h1 id="atlas-title">Valor e trabalho.</h1>
     <p class="lead">Duas maneiras de perguntar pelo valor: Smith e Marx, entre leitura, comparação e crítica.</p>
     <p>Este recorte não representa todas as tradições marxistas. As afirmações e interpretações aguardam revisão humana; fontes primárias e leitura crítica são identificadas abaixo.</p></header>
   @if (atlas) {
     <section class="argument-map" aria-labelledby="map-title">
       <div><h2 id="map-title">Um mapa de argumentos</h2>
-        <p>Selecione uma tese para examinar sua fonte, outra leitura e os caminhos para os verbetes. O desenho organiza a comparação; não mede influência.</p>
+        <p>O que uma mercadoria pode comprar? Quanto trabalho é necessário para produzi-la? Selecione uma formulação para ler o argumento e sua fonte.</p>
         <fieldset><legend>Mostrar vínculos</legend>
           <label><input type="radio" name="edge" value="todas" [checked]="filter() === 'todas'" (change)="setFilter('todas')"> Todos</label>
           <label><input type="radio" name="edge" value="comparacao" [checked]="filter() === 'comparacao'" (change)="setFilter('comparacao')"> Comparação</label>
           <label><input type="radio" name="edge" value="critica" [checked]="filter() === 'critica'" (change)="setFilter('critica')"> Crítica documentada</label>
         </fieldset>
         <div class="theses" role="group" aria-label="Selecionar tese">
-          <button type="button" [attr.aria-pressed]="selected() === 'smith'" (click)="select('smith')"><span>1776 · Smith</span>Trabalho que uma mercadoria pode comandar</button>
+          <button class="thesis smith" type="button" aria-controls="argument-context" [attr.aria-pressed]="selected() === 'smith'" (click)="select('smith')">@if (smithPortrait; as asset) { <img [src]="asset.assetPath" alt="" width="500" height="609"> }<span class="thesis-copy"><span>1776 · Adam Smith · A riqueza das nações</span>Trabalho que uma mercadoria pode comandar<small>{{ selected() === 'smith' ? 'Tese selecionada' : 'Examinar esta tese' }}</small></span></button>
           <div class="edge" aria-label="Vínculos entre as teses">
-            @if (filter() !== 'critica') { <p>Comparação editorial: duas perguntas sobre valor e trabalho.</p> }
-            @if (filter() !== 'comparacao') { <p>Crítica: Marx examina definições de valor em Smith, em <a href="https://www.marxists.org/archive/marx/works/1863/theories-surplus-value/ch03.htm">Teorias da mais-valia, cap. 3</a>.</p> }
+            @if (filter() !== 'critica') { <p class="comparison"><svg viewBox="0 0 100 24" aria-hidden="true"><path d="M5 12h90M15 3L5 12l10 9m70-18 10 9-10 9" /></svg><strong>Comparação editorial:</strong> duas perguntas sobre valor e trabalho. Aproximação feita pelo ATLAS; não é uma conversa entre os autores.</p> }
+            @if (filter() !== 'comparacao') { <p class="criticism"><strong>Marx → analisa criticamente → Smith</strong><br>Crítica: Marx examina definições de valor em Smith, em <a href="https://www.marxists.org/archive/marx/works/1863/theories-surplus-value/ch03.htm">Teorias da mais-valia, cap. 3</a> (manuscritos de 1861–1863). Esta relação entre autores é documentada nesse texto, não uma resposta direta entre os dois trechos exibidos.</p> }
           </div>
-          <button type="button" [attr.aria-pressed]="selected() === 'marx'" (click)="select('marx')"><span>1867 · Marx</span>Tempo de trabalho socialmente necessário</button>
+          <button class="thesis marx" type="button" aria-controls="argument-context" [attr.aria-pressed]="selected() === 'marx'" (click)="select('marx')">@if (marxPortrait; as asset) { <img [src]="asset.assetPath" alt="" width="500" height="781"> }<span class="thesis-copy"><span>1867 · Karl Marx · O capital, volume I</span>Tempo de trabalho socialmente necessário<small>{{ selected() === 'marx' ? 'Tese selecionada' : 'Examinar esta tese' }}</small></span></button>
         </div>
         <p class="legend">Legenda: comparação aproxima formulações; crítica identifica uma análise expressa. Continuidade e influência comprovada não estão registradas neste recorte. Nenhuma aresta afirma influência por proximidade temporal.</p>
       </div>
-      <section class="context" aria-labelledby="context-title" aria-live="polite">
+      <section id="argument-context" class="context" aria-labelledby="context-title" aria-live="polite">
         @if (claims(); as claim) {
           <p class="eyebrow">Tese atribuída · revisão pendente</p><h3 id="context-title">{{ selected() === 'smith' ? 'Smith: medida na troca' : 'Marx: tempo socialmente necessário' }}</h3><p>{{ claim.text }}</p>
           @if (selected() === 'smith') {
@@ -39,7 +40,7 @@
         } @else { <h3 id="context-title">Tese indisponível</h3><p>O registro não foi encontrado. Consulte a busca ou a biblioteca de fontes.</p><a routerLink="/conhecimento">Pesquisar o acervo</a> }
       </section>
     </section>
-    <section class="method"><h2>Período, método e limites</h2><p>O recorte compara textos de 1776 e 1867, e uma crítica escrita no período de 1861–1863. As posições são apresentadas como teses atribuídas; a comparação não resolve os debates historiográficos ou econômicos.</p><p>Os trechos são curtos, com título, idioma e localizador para conferência. Nenhuma imagem documental é reproduzida. <a routerLink="/fontes" [queryParams]="{ origem: origin() }">Abrir a biblioteca de fontes</a>.</p></section>
+    <section class="method"><h2>Período, método e limites</h2><p>O recorte compara textos de 1776 e 1867, e uma crítica escrita no período de 1861–1863. As posições são apresentadas como teses atribuídas; a comparação não resolve os debates historiográficos ou econômicos.</p><p>Os trechos são curtos, com título, idioma e localizador para conferência. <a routerLink="/atlas/marxismo">Créditos dos retratos no índice do atlas</a>. <a routerLink="/fontes" [queryParams]="{ origem: origin() }">Abrir a biblioteca de fontes</a>.</p></section>
     <section class="study"><h2>{{ study.title }}</h2><p>Mini-trilha demonstrativa em revisão · Objetivo: {{ study.objectives[0] }} Pré-requisito: {{ study.prerequisites[0] }}</p>
       <app-study-exercise [exercise]="exercise" [origin]="origin()" />
     </section>

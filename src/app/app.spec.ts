@@ -312,7 +312,7 @@ describe('ATLAS application', () => {
     const root = harness.routeNativeElement!;
     Array.from(root.querySelectorAll<HTMLButtonElement>('.follow-connection')).find(button => button.textContent?.includes('Explorar Afirmação'))!.click();
     harness.detectChanges();
-    expect(root.querySelector('.context h2')?.textContent).toBe('Afirmação');
+    expect(root.querySelector('.context h2')?.textContent).toBe('Afirmação sobre Metodologia do ATLAS');
     Array.from(root.querySelectorAll<HTMLButtonElement>('.follow-connection')).find(button => button.textContent?.includes('Regras editoriais'))!.click();
     harness.detectChanges();
     expect(root.querySelector('.context h2')?.textContent).toBe('Regras editoriais do repositório');
@@ -322,7 +322,7 @@ describe('ATLAS application', () => {
   it('exposes documented knowledge relations in the shared cross-atlas graph', async () => {
     const harness = await RouterTestingHarness.create('/relacoes');
     const root = harness.routeNativeElement!;
-    const person = Array.from(root.querySelectorAll<HTMLButtonElement>('.network button'))
+    const person = Array.from(root.querySelectorAll<HTMLButtonElement>('.record-index button'))
       .find((button) => button.textContent?.includes('Ulysses Guimarães'))!;
     expect(person).toBeDefined();
     person.click();
@@ -359,8 +359,12 @@ describe('ATLAS application', () => {
   it('selects graph records and filters their category with contextual evidence', async () => {
     const harness = await RouterTestingHarness.create('/relacoes');
     const root = harness.routeNativeElement!;
-    const buttons = root.querySelectorAll<HTMLButtonElement>('.network button');
-    expect(buttons.length).toBeGreaterThanOrEqual(17);
+    const filter = root.querySelector<HTMLSelectElement>('#node-kind')!;
+    filter.value = 'Fonte';
+    filter.dispatchEvent(new Event('change'));
+    harness.detectChanges();
+    const buttons = root.querySelectorAll<HTMLButtonElement>('.record-index button');
+    expect(buttons.length).toBeGreaterThan(0);
     const editorialRules = Array.from(buttons).find((button) => button.textContent?.includes('Regras editoriais'))!;
     editorialRules.click();
     harness.detectChanges();
@@ -368,12 +372,11 @@ describe('ATLAS application', () => {
     expect(root.querySelector('.context > a')?.getAttribute('href')).toBe('/fontes#source-source-editorial-rules');
     expect(root.querySelector('.connection-sources')?.textContent).toContain('Regras editoriais do repositório');
     expect(editorialRules.getAttribute('aria-pressed')).toBe('true');
-    const filter = root.querySelector<HTMLSelectElement>('#node-kind')!;
     filter.value = 'Afirmação';
     filter.dispatchEvent(new Event('change'));
     harness.detectChanges();
-    expect(root.querySelectorAll('.network button').length).toBeGreaterThanOrEqual(3);
-    expect(root.querySelectorAll('.network svg line')).toHaveLength(0);
+    expect(root.querySelectorAll('.record-index button').length).toBeGreaterThanOrEqual(3);
+    expect(root.querySelector('.context h2')?.textContent).toContain('Afirmação sobre');
   });
 
   it('shows the implemented timeline and states the remaining geographic limit', async () => {
@@ -414,7 +417,7 @@ describe('ATLAS application', () => {
 
   it('describes the relations network as populated by registered records', async () => {
     const harness = await RouterTestingHarness.create('/relacoes');
-    expect(harness.routeNativeElement?.textContent).toContain('relações e referências registradas no acervo');
+    expect(harness.routeNativeElement?.textContent).toContain('Cada ligação nomeia a relação e apresenta as fontes disponíveis');
     expect(harness.routeNativeElement?.textContent).toContain('Ulysses Guimarães');
   });
 
