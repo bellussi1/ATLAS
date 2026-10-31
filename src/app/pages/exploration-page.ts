@@ -6,10 +6,11 @@ import { ContentRepository } from '../core/content-repository';
 import { filterDiscoveryIndex } from '../core/discovery-index';
 import { AtlasDiscoveryPreviewDirective } from '../shared/discovery-preview';
 import { AtlasEditorialLinkDirective, AtlasNoticeComponent, AtlasTextFieldComponent } from '../shared/ui-primitives';
+import { AtlasHistoricalVisualizationsComponent } from '../shared/historical-visualizations';
 
 @Component({
   selector: 'app-exploration-page',
-  imports: [RouterLink, AtlasEditorialLinkDirective, AtlasNoticeComponent, AtlasTextFieldComponent, AtlasEvidenceNetworkComponent, AtlasDiscoveryPreviewDirective],
+  imports: [RouterLink, AtlasEditorialLinkDirective, AtlasNoticeComponent, AtlasTextFieldComponent, AtlasEvidenceNetworkComponent, AtlasDiscoveryPreviewDirective, AtlasHistoricalVisualizationsComponent],
   templateUrl: './exploration-page.html',
   styleUrl: './exploration-page.scss',
 })

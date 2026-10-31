@@ -27,4 +27,10 @@ describe('evidence network layout', () => {
     }
     expect(component.selected()).toBeDefined();
   });
+
+  it('links source nodes to their own stable source anchors', () => {
+    const component = network();
+    const source = component.nodes.find(node => node.kind === 'Fonte');
+    expect(source).toMatchObject({ path: '/fontes', fragment: 'source-source-editorial-rules' });
+  });
 });

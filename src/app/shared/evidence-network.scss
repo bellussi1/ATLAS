@@ -30,6 +30,11 @@ select { padding: .5rem; }
 @media (min-width: 48rem) { .network { height: 24rem; } .network--list { height: auto; } }
 
 .follow-connection { display: block; text-align: left; padding: .5rem; margin-top: .5rem; color: var(--color-accent); background: var(--color-surface); font-size: .8rem; }
+.network-legend { display: flex; flex-wrap: wrap; gap: .45rem 1rem; list-style: none; margin: .5rem 0 1rem; padding: 0; }
+.network-legend li { display: inline-flex; align-items: center; gap: .4rem; color: var(--color-ink-muted); font: .72rem/1.4 var(--font-mono); }
+.network-legend li span { width: .55rem; height: .55rem; border: 1px solid var(--color-accent); background: var(--color-surface); }
+.connection-sources { display: block; margin-top: .4rem; line-height: 1.6; }
+.connection-sources a { color: var(--color-accent); text-underline-offset: .2em; }
 
 .network-stage { border:1px solid var(--color-ink);background:var(--color-canvas); }
 .network { border:0;height:calc(var(--network-rows, 1) * 8.5rem);min-height:24rem; }

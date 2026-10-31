@@ -42,18 +42,18 @@
       <p class="lead">Uma ideia, a afirmação que a descreve e a fonte que a sustenta.</p>
       <p>Esta rede reúne relações e referências registradas no acervo. Abra cada entrada para conferir seu contexto, suas fontes e o estado editorial associado.</p>
       <app-evidence-network />
+      <details class="visualization-notes">
+        <summary>Método, fontes e limites do grafo</summary>
+        <p>As linhas representam relações, afirmações e citações cadastradas nos atlas validados. Rótulos e direções vêm dos registros; a posição dos nós serve à navegação, não representa distância, importância ou influência.</p>
+        <p>O período visualizado é o cadastrado em cada relação. Fontes e evidências aparecem no contexto selecionado. A lista e as relações textuais oferecem alternativa navegável ao diagrama.</p>
+      </details>
     }
     @case ('time') {
       <p class="kicker">02 / Situar acontecimentos</p>
       <h1 id="mode-title">Tempo e espaço</h1>
-      <p class="lead">O que aconteceu, quando e onde?</p>
-      <section class="empty-collection" aria-labelledby="timeline-title">
-        <span class="collection-number" aria-hidden="true">—</span>
-        <div><h2 id="timeline-title">A exploração temporal e espacial ainda não está disponível</h2>
-        <p>O acervo registra acontecimentos com períodos documentados e lugares associados ao processo constituinte de 1987–1988. A linha do tempo e a exploração por mapas ainda não foram implementadas.</p>
-        <p>Consulte os verbetes e suas referências; esta página não apresenta cronologia, mapa ou fronteiras.</p>
-        <a appEditorialLink routerLink="/explorar/evento/como-o-atlas-contextualiza-eventos">Como o ATLAS contextualiza acontecimentos →</a></div>
-      </section>
+      <p class="lead">Compare períodos registrados e situe cada verbete em seu próprio contexto.</p>
+      <app-historical-visualizations />
+      <p class="spatial-limit">A exploração geográfica continua indisponível. O acervo não fornece polígonos históricos para desenhar fronteiras; esta página não sobrepõe limites atuais a entidades do passado.</p>
       <div class="reading-path"><h2>Continue por outro caminho</h2>
         <a appEditorialLink routerLink="/relacoes">Examine as relações entre afirmação e fonte →</a>
         <a appEditorialLink routerLink="/conhecimento">Pesquise nos registros disponíveis →</a>

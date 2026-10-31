@@ -28,10 +28,10 @@ Valores válidos de `:tipo`: `verbete`, `artigo`, `dossie`, `pessoa`, `evento`, 
 | Caminho | Destino | Resultado |
 | --- | --- | --- |
 | Investigar conexões | `/relacoes` | Rede de relações e evidências cadastradas |
-| Situar acontecimentos | `/tempo-e-espaco` | Interface de cronologia/mapas ainda indisponível; registros existentes podem ser consultados nos verbetes |
+| Situar acontecimentos | `/tempo-e-espaco` | Linha do tempo filtrável e comparador tabular; exploração geográfica indisponível |
 | Pesquisar e ler | `/conhecimento` | Busca nos registros carregados e caminhos para leituras reais |
 
-A home destaca três textos de metodologia e oferece busca real nos registros do grafo e nas entradas editoriais. O grafo inclui entidades e relações documentadas sobre o processo constituinte de 1987–1988 e a Constituição de 1988. A interface de cronologia e mapas ainda não está disponível; nenhum mapa ou fronteira é simulado.
+A home destaca três textos de metodologia e oferece busca real nos registros do grafo e nas entradas editoriais. O grafo inclui entidades e relações documentadas sobre o processo constituinte de 1987–1988 e a Constituição de 1988. Em `/tempo-e-espaco`, a linha do tempo e o comparador mostram somente períodos, relações e fontes do conteúdo validado; não há mapa nem fronteira simulada. Os métodos e limites estão em `VISUALIZACOES-HISTORICAS.md`.
 
 Em `/conhecimento`, a busca inclui entidades, aliases, fontes e formatos editoriais disponíveis, normaliza acentos e aceita filtros de tipo e estado. Fontes abrem em âncoras estáveis da biblioteca. Verbete e fonte mantêm um retorno contextual à busca; prévias usam botões que funcionam por toque e teclado. Backlinks são gerados das relações e citações registradas e informam seus rótulos e contextos sem sugerir influência.
 

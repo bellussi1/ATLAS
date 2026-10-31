@@ -203,6 +203,16 @@ describe('ATLAS application', () => {
     expect(harness.routeNativeElement?.querySelector('a[href="/verbete/constituicao-de-1988"]')).not.toBeNull();
   });
 
+  it('integrates a sourced historical timeline and a selectable comparison table', async () => {
+    const harness = await RouterTestingHarness.create('/tempo-e-espaco');
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('[aria-labelledby="timeline-visual-title"]')).not.toBeNull();
+    expect(root.querySelector('ol[aria-label="Alternativa textual navegável da linha do tempo"]')).not.toBeNull();
+    expect(root.querySelector('[aria-labelledby="historical-comparison-title"] table')).not.toBeNull();
+    expect(root.querySelector('a[href="/fontes#source-source-constitution-1988"]')).not.toBeNull();
+    expect(root.textContent).toContain('Período, fontes e limites');
+  });
+
   it('submits the homepage search and opens its matching record', async () => {
     const harness = await RouterTestingHarness.create('/');
     const root = harness.routeNativeElement as HTMLElement;
@@ -348,6 +358,8 @@ describe('ATLAS application', () => {
     editorialRules.click();
     harness.detectChanges();
     expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
+    expect(root.querySelector('.context > a')?.getAttribute('href')).toBe('/fontes#source-source-editorial-rules');
+    expect(root.querySelector('.connection-sources')?.textContent).toContain('Regras editoriais do repositório');
     expect(editorialRules.getAttribute('aria-pressed')).toBe('true');
     const filter = root.querySelector<HTMLSelectElement>('#node-kind')!;
     filter.value = 'Afirmação';
@@ -357,13 +369,40 @@ describe('ATLAS application', () => {
     expect(root.querySelectorAll('.network svg line')).toHaveLength(0);
   });
 
-  it('explains that timeline and map interfaces are pending while real temporal records exist', async () => {
+  it('shows the implemented timeline and states the remaining geographic limit', async () => {
     const harness = await RouterTestingHarness.create('/tempo-e-espaco');
     expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toBe('Tempo e espaço');
-    expect(harness.routeNativeElement?.textContent).toContain('O acervo registra acontecimentos com períodos documentados');
-    expect(harness.routeNativeElement?.textContent).toContain('ainda não foram implementadas');
-    expect(harness.routeNativeElement?.querySelector('.empty-collection a')?.getAttribute('href'))
-      .toBe('/explorar/evento/como-o-atlas-contextualiza-eventos');
+    expect(harness.routeNativeElement?.textContent).toContain('Linha do tempo');
+    expect(harness.routeNativeElement?.textContent).toContain('O acervo não fornece polígonos históricos');
+    expect(harness.routeNativeElement?.querySelector('.timeline-list a[href="/verbete/promulgacao-constituicao-1988"]')).not.toBeNull();
+  });
+
+  it('filters timeline records and updates the comparison table with keyboard-operable controls', async () => {
+    const harness = await RouterTestingHarness.create('/tempo-e-espaco');
+    const root = harness.routeNativeElement as HTMLElement;
+    const filter = root.querySelector<HTMLSelectElement>('#timeline-kind')!;
+    filter.value = 'event';
+    filter.dispatchEvent(new Event('change', { bubbles: true }));
+    harness.detectChanges();
+    expect(root.querySelectorAll('.timeline-list li')).toHaveLength(1);
+    expect(root.querySelector('.timeline-list a')?.textContent).toContain('Promulgação');
+
+    const addEvent = Array.from(root.querySelectorAll<HTMLButtonElement>('.comparison-choices button'))
+      .find((button) => button.textContent?.includes('Comparar Promulgação'))!;
+    addEvent.click();
+    harness.detectChanges();
+    expect(addEvent.getAttribute('aria-pressed')).toBe('true');
+    expect(root.querySelector('table thead')?.textContent).toContain('Promulgação da Constituição Federal de 1988');
+  });
+
+  it('explains how to start again when the comparison has no selected records', async () => {
+    const harness = await RouterTestingHarness.create('/tempo-e-espaco');
+    const root = harness.routeNativeElement as HTMLElement;
+    for (const button of Array.from(root.querySelectorAll<HTMLButtonElement>('.comparison-choices button[aria-pressed="true"]'))) {
+      button.click();
+      harness.detectChanges();
+    }
+    expect(root.querySelector('[role="status"]')?.textContent).toContain('Selecione registros para montar a comparação');
   });
 
   it('describes the relations network as populated by registered records', async () => {

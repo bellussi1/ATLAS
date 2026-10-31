@@ -3,6 +3,9 @@
         @for (category of kinds(); track category) { <option [value]="category">{{ category }}</option> }
       </select><button class="view-toggle" type="button" [attr.aria-pressed]="listView()" (click)="listView.set(!listView())">{{ listView() ? "Ver rede" : "Ver lista" }}</button></div>
       <p class="kicker" role="status">{{ visibleNodes().length }} registros · {{ visibleEdges().length }} conexões visíveis</p>
+      <ul class="network-legend" aria-label="Legenda: categorias dos registros">
+        @for (category of kinds().slice(1); track category) { <li><span aria-hidden="true"></span>{{ category }}</li> }
+      </ul>
       <div class="network-stage">
       <div class="network" [class.network--list]="listView()" [style.--network-rows]="rowCount()" aria-label="Grafo de conhecimento e relações documentadas">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -18,10 +21,13 @@
         <section class="context" aria-labelledby="selected-title" aria-live="polite">
           <p class="kicker">Seleção · {{ node.kind }}</p><h2 id="selected-title">{{ node.title }}</h2><p>{{ node.description }}</p>
           <ul>@for (edge of connections(); track edge.from + edge.to + edge.label) {
-            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}. <span class="relation-type">{{ edge.typeLabel }}</span>
+            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}. <span class="relation-type">{{ edge.typeLabel }} · {{ edge.periodLabel }}</span>
+              @if (sourcesForEvidence(edge.evidenceIds).length) {
+                <span class="connection-sources">Fontes: @for (source of sourcesForEvidence(edge.evidenceIds); track source.id) { <a [routerLink]="'/fontes'" [fragment]="'source-' + source.id">{{ source.title }}</a>@if (!$last) {; } }</span>
+              } @else { <span class="connection-sources">Sem fonte diretamente vinculada.</span> }
               <button type="button" class="follow-connection" (click)="follow(edge.followId)">Explorar {{ title(edge.followId) }} →</button></li>
           }</ul>
-          <a appEditorialLink [routerLink]="node.path">Ler o verbete e suas evidências →</a>
+          <a appEditorialLink [routerLink]="node.path" [fragment]="node.fragment">{{ selectedAction() }} →</a>
         </section>
       }
       </div>

@@ -82,7 +82,7 @@ A homepage é uma superfície de consulta com busca funcional, rede de evidênci
 
 - Em /conhecimento, a busca local indexa títulos, resumos e texto dos registros editoriais existentes e entidades validadas. A consulta persiste em ?q=, aceita acentos equivalentes e oferece recuperação quando não há resultados. A interface informa que inclui registros editoriais e históricos disponíveis. Formatos previstos conservam seu status, sem serem apresentados como coleções históricas publicadas.
 - Em /relacoes, a rede inicial deriva exclusivamente de entityId e sourceIds das afirmações do ContentRepository. Seleção, filtro e contexto funcionam em botões e select nativos. A lista de conexões oferece equivalente textual. A rede representa metodologia, sem simular relações históricas.
-- Em /tempo-e-espaco, há um estado explícito sobre as interfaces indisponíveis e caminhos para leitura pertinente. O acervo contém acontecimentos com períodos documentados e lugares associados ao processo constituinte. Cronologia interativa e mapas ainda não estão disponíveis; nenhuma fronteira é simulada.
+- Em /tempo-e-espaco, a linha do tempo e o comparador usam somente períodos e metadados estruturados. A exploração geográfica continua indisponível: o acervo não fornece polígonos históricos, e limites atuais não são sobrepostos a entidades do passado.
 - As perguntas de entrada levam a textos reais sobre evidência, contexto e organização editorial. Trilhas temáticas históricas ainda não estão publicadas.
 
 A direção A está consolidada. Os índices editoriais e o showroom permanecem; as antigas páginas de laboratório não fazem parte da navegação atual.

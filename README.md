@@ -34,7 +34,7 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 - `/fontes` — biblioteca das fontes cadastradas, com localizadores e verbetes relacionados
 - Qualquer caminho desconhecido — página 404 da aplicação
 
-Na página inicial, a mesa destaca três textos de metodologia, enquanto a busca percorre verbetes, relações e entradas editoriais carregados. Relações apresenta os vínculos registrados; a exploração temporal e espacial explica que sua interface de cronologia e mapas ainda não está disponível. As trilhas temáticas continuam identificadas como previstas.
+Na página inicial, a mesa destaca três textos de metodologia, enquanto a busca percorre verbetes, relações e entradas editoriais carregados. Relações apresenta os vínculos registrados; Tempo e espaço oferece uma linha do tempo e um comparador com os metadados disponíveis, sem desenhar fronteiras. A exploração geográfica permanece indisponível e as trilhas temáticas continuam identificadas como previstas.
 
 As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLAS. Os registros existentes de artigo, pessoa e evento também aparecem em suas categorias e abrem páginas estruturadas em `/verbete/:slug`. Dossiês e trilhas temáticas continuam identificados como previstos. A biblioteca `/fontes` reúne referências e seus usos. Páginas de leitura oferecem sumário navegável, contexto e links relacionados. Metadados de descrição e URL canônica são atualizados por rota; os canônicos usam caminhos relativos à raiz porque o projeto ainda não define um domínio público. Veja o [sitemap e os tipos editoriais](docs/INFORMATION-ARCHITECTURE.md).
 
