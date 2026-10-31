@@ -27,22 +27,83 @@
           ]
         }
       ]
+    },
+    {
+      "id": "article-constituicao-1988",
+      "slug": "constituicao-de-1988",
+      "kind": "article",
+      "title": "O caput do artigo 5º da Constituição de 1988",
+      "summary": "Um exemplo curto de afirmação ligada a uma fonte primária identificável, ainda aguardando revisão editorial humana.",
+      "sections": [
+        {
+          "heading": "Igualdade perante a lei",
+          "paragraphs": [
+            "O caput do artigo 5º da Constituição Federal de 1988 declara que todas as pessoas são iguais perante a lei e enumera direitos e garantias. Esta paráfrase está vinculada ao texto constitucional atualizado da Câmara dos Deputados e permanece pendente de revisão editorial humana."
+          ]
+        }
+      ]
     }
   ],
   "sources": [
     {
       "id": "source-editorial-rules",
       "title": "Regras editoriais do repositório",
-      "reference": "AGENTS.md — seção Conteúdo"
+      "url": null,
+      "edition": "AGENTS.md — seção Design e conteúdo",
+      "publicationDate": null
+    },
+    {
+      "id": "source-constitution-1988",
+      "title": "Constituição Federal de 1988 — Portal da Câmara dos Deputados",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "edition": "Texto atualizado até a Emenda Constitucional nº 141, de 2026",
+      "publicationDate": "1988-10-05"
     }
+  ],
+  "evidences": [
+    {
+      "id": "evidence-editorial-rules",
+      "sourceId": "source-editorial-rules",
+      "locator": "AGENTS.md, seção Design e conteúdo",
+      "accessedAt": "2026-10-31",
+      "note": "Documento de instruções vigente no repositório."
+    },
+    {
+      "id": "evidence-constitution-caput-5",
+      "sourceId": "source-constitution-1988",
+      "locator": "Art. 5º, caput",
+      "accessedAt": "2026-10-31",
+      "note": "O caput começa por declarar igualdade de todas as pessoas perante a lei."
+    }
+  ],
+  "citations": [
+    { "id": "citation-editorial-rules", "evidenceId": "evidence-editorial-rules", "relation": "supports" },
+    { "id": "citation-constitution-caput-5", "evidenceId": "evidence-constitution-caput-5", "relation": "supports" }
   ],
   "claims": [
     {
       "id": "claim-contextual-evidence",
       "entityId": "concept-methodology",
       "text": "Afirmações históricas exigem evidência contextual e distinção entre fato documentado, interpretação, hipótese e alegação controversa.",
-      "sourceIds": ["source-editorial-rules"]
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["citation-editorial-rules"]
+    },
+    {
+      "id": "claim-constitution-equality",
+      "entityId": "article-constituicao-1988",
+      "text": "O caput do artigo 5º da Constituição Federal de 1988 declara igualdade perante a lei e enumera direitos e garantias.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["citation-constitution-caput-5"]
     }
+  ],
+  "reviews": [
+    { "id": "review-contextual-evidence", "claimId": "claim-contextual-evidence", "status": "pending", "reviewer": null, "reviewedAt": null, "note": null },
+    { "id": "review-constitution-equality", "claimId": "claim-constitution-equality", "status": "pending", "reviewer": null, "reviewedAt": null, "note": null }
+  ],
+  "assetLicenses": [
+    { "id": "license-atlas-mark", "assetPath": "/brand/atlas-logo.svg", "creator": "ATLAS", "license": null, "licenseUrl": null, "status": "unknown", "reproduction": "blocked" }
   ],
   "relationships": [],
   "learningPaths": []

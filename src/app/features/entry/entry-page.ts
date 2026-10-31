@@ -1,4 +1,5 @@
 import { AtlasEditorialTextComponent } from '../../shared/editorial-text';
+import { AtlasClaimReferencesComponent } from '../../shared/claim-references';
 import { AtlasReadingOutlineComponent } from '../../shared/reading-outline';
 import { AtlasContinueReadingComponent } from '../../shared/continue-reading';
 import { Component, computed, inject } from '@angular/core';
@@ -9,7 +10,7 @@ import { ContentRepository } from '../../core/content-repository';
 
 @Component({
   selector: 'app-entry-page',
-  imports: [RouterLink, AtlasReadingOutlineComponent, AtlasContinueReadingComponent, AtlasEditorialTextComponent],
+  imports: [RouterLink, AtlasReadingOutlineComponent, AtlasContinueReadingComponent, AtlasEditorialTextComponent, AtlasClaimReferencesComponent],
   template: `
     @if (atlas() === null) {
       <section class="page" aria-labelledby="page-title" role="alert">
@@ -19,7 +20,7 @@ import { ContentRepository } from '../../core/content-repository';
       </section>
     } @else if (entity(); as entry) {
       <article class="page" aria-labelledby="page-title">
-        <p class="eyebrow">Verbete de metodologia</p>
+        <p class="eyebrow">{{ kindLabel(entry.kind) }}</p>
         <h1 id="page-title">{{ entry.title }}</h1>
         <p class="page__lead">{{ entry.summary }}</p>
 
@@ -34,14 +35,7 @@ import { ContentRepository } from '../../core/content-repository';
           </section>
         }
 
-        @for (claim of claims(); track claim.id) {
-          <aside class="source-note" aria-label="Afirmação e fonte">
-            <p>{{ claim.text }}</p>
-            @for (source of sourcesFor(claim.sourceIds); track source.id) {
-              <p class="source-note__reference">Fonte: {{ source.title }} ({{ source.reference }})</p>
-            }
-          </aside>
-        }
+        @for (claim of claims(); track claim.id) { <app-claim-references [claim]="claim" [atlas]="atlas()!" /> }
 
         <app-continue-reading [currentPath]="'/verbete/' + entry.slug" />
         <a class="back-link" routerLink="/explorar/verbete">Voltar ao índice de verbetes</a>
@@ -60,11 +54,9 @@ import { ContentRepository } from '../../core/content-repository';
     .eyebrow { margin: 0 0 .8rem; color: var(--signal); font-size: .75rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
     h1 { max-width: 17ch; margin: 0; font-size: clamp(2.7rem, 6.8vw, 5.5rem); letter-spacing: -.065em; line-height: 1; }
     .page__lead { max-width: 43rem; margin: 1.5rem 0 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
-    .article-section, .source-note { max-width: 43rem; margin-top: clamp(2.5rem, 6vw, 4rem); }
+    .article-section, app-claim-references { max-width: 43rem; margin-top: clamp(2.5rem, 6vw, 4rem); }
     h2 { margin: 0 0 .8rem; font: 500 clamp(1.6rem, 3.4vw, 2.1rem)/1.15 var(--serif); }
-    .article-section p, .source-note p { margin: .75rem 0 0; line-height: 1.75; }
-    .source-note { padding: 1rem 1.25rem; border-left: .25rem solid var(--signal); background: color-mix(in srgb, var(--paper) 90%, var(--signal)); }
-    .source-note__reference { color: var(--ink-muted); font-size: .9rem; }
+    .article-section p { margin: .75rem 0 0; line-height: 1.75; }
     .back-link { display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: 3rem; color: var(--signal); font-weight: 700; text-underline-offset: .2em; }
     a:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
     @media (max-width: 40rem) { h1 { max-width: none; font-size: clamp(1.9rem, 8.5vw, 2.5rem); line-height: 1.05; } }
@@ -84,7 +76,8 @@ export class EntryPage {
     return (this.atlas()?.claims ?? []).filter((claim) => claim.entityId === entity?.id);
   });
 
-  sourcesFor(sourceIds: readonly string[]) {
-    return (this.atlas()?.sources ?? []).filter((source) => sourceIds.includes(source.id));
+  kindLabel(kind: string): string {
+    return ({ concept: 'Verbete', article: 'Artigo', person: 'Pessoa', event: 'Evento' } as Record<string, string>)[kind] ?? 'Conteúdo';
   }
+
 }

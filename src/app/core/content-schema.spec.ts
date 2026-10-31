@@ -1,4 +1,4 @@
-import { atlasSchema, articleSchema, eventSchema, learningPathSchema, personSchema } from './content-schema';
+import { assetLicenseSchema, atlasSchema, articleSchema, eventSchema, learningPathSchema, personSchema } from './content-schema';
 
 const validAtlas = {
   id: 'atlas-methodology',
@@ -16,15 +16,21 @@ const validAtlas = {
       sections: [{ heading: 'Contexto', paragraphs: ['Conteúdo de método.'] }],
     },
   ],
-  sources: [{ id: 'source-guidelines', title: 'Regras editoriais', reference: 'AGENTS.md#conteudo' }],
+  sources: [{ id: 'source-guidelines', title: 'Regras editoriais', url: 'https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html', edition: '2026', publicationDate: null }],
+  evidences: [{ id: 'evidence-guidelines', sourceId: 'source-guidelines', locator: 'seção Conteúdo', accessedAt: '2026-10-31', note: null }],
+  citations: [{ id: 'citation-guidelines', evidenceId: 'evidence-guidelines', relation: 'supports' }],
   claims: [
     {
       id: 'claim-context',
       entityId: 'concept-methodology',
       text: 'Afirmações históricas recebem contexto.',
-      sourceIds: ['source-guidelines'],
+      classification: 'documented-fact',
+      editorialStatus: 'pending',
+      citationIds: ['citation-guidelines'],
     },
   ],
+  reviews: [{ id: 'review-context', claimId: 'claim-context', status: 'pending', reviewer: null, reviewedAt: null, note: null }],
+  assetLicenses: [{ id: 'license-logo', assetPath: '/brand/atlas-logo.svg', creator: 'ATLAS', license: null, licenseUrl: null, status: 'unknown', reproduction: 'blocked' }],
   relationships: [],
   learningPaths: [],
 };
@@ -46,11 +52,11 @@ describe('atlasSchema', () => {
   it('rejects duplicate IDs and dangling relationship or source references', () => {
     const duplicateId = atlasSchema.safeParse({
       ...validAtlas,
-      sources: [...validAtlas.sources, { id: 'claim-context', title: 'Duplicada', reference: 'x' }],
+      sources: [...validAtlas.sources, { ...validAtlas.sources[0], id: 'claim-context' }],
     });
     const missingSource = atlasSchema.safeParse({
       ...validAtlas,
-      claims: [{ ...validAtlas.claims[0], sourceIds: ['source-missing'] }],
+      claims: [{ ...validAtlas.claims[0], citationIds: ['citation-missing'] }],
     });
     const danglingRelationship = atlasSchema.safeParse({
       ...validAtlas,
@@ -105,6 +111,29 @@ describe('atlasSchema', () => {
     expect(atlasSchema.safeParse({
       ...validAtlas,
       learningPaths: [{ ...path, entityIds: ['entity-missing'] }],
+    }).success).toBe(false);
+  });
+
+  it('requires every claim to have a source locator and a matching review record', () => {
+    expect(atlasSchema.safeParse({ ...validAtlas, evidences: [] }).success).toBe(false);
+    expect(atlasSchema.safeParse({ ...validAtlas, citations: [] }).success).toBe(false);
+    expect(atlasSchema.safeParse({ ...validAtlas, reviews: [] }).success).toBe(false);
+    expect(atlasSchema.safeParse({ ...validAtlas, claims: [{ ...validAtlas.claims[0], citationIds: [] }] }).success).toBe(false);
+  });
+
+  it('requires verified reviews to identify a human and a review date', () => {
+    const result = atlasSchema.safeParse({
+      ...validAtlas,
+      claims: [{ ...validAtlas.claims[0], editorialStatus: 'verified' }],
+      reviews: [{ ...validAtlas.reviews[0], status: 'verified', reviewer: null, reviewedAt: null }],
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('blocks reproduction when an asset license is unknown', () => {
+    expect(assetLicenseSchema.safeParse({
+      id: 'license-unknown', assetPath: '/image.png', creator: null, license: null,
+      licenseUrl: null, status: 'unknown', reproduction: 'allowed',
     }).success).toBe(false);
   });
 });

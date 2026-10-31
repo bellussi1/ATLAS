@@ -30,6 +30,18 @@ describe('ATLAS application', () => {
     expect(root.querySelector('[role="search"] button[type="submit"]')).not.toBeNull();
   });
 
+  it('shows the source edition, locator, access date, and actual pending review status', async () => {
+    const harness = await RouterTestingHarness.create('/verbete/constituicao-de-1988');
+    const root = harness.routeNativeElement!;
+    expect(root.querySelector('.eyebrow')?.textContent).toContain('Artigo');
+    expect(root.textContent).toContain('Constituição Federal de 1988');
+    expect(root.textContent).toContain('Art. 5º, caput');
+    expect(root.textContent).toContain('31/10/2026');
+    expect(root.textContent).toContain('Revisão editorial pendente');
+    expect(root.querySelector('a[href="https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html"]')).not.toBeNull();
+    expect(root.textContent).not.toContain('Revisado por');
+  });
+
   it('offers the three product intents with working destinations', async () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
@@ -160,17 +172,16 @@ describe('ATLAS application', () => {
     const harness = await RouterTestingHarness.create('/relacoes');
     const root = harness.routeNativeElement!;
     const buttons = root.querySelectorAll<HTMLButtonElement>('.network button');
-    expect(buttons).toHaveLength(3);
-    buttons[2].click();
+    expect(buttons).toHaveLength(6);
+    buttons[4].click();
     harness.detectChanges();
     expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
-    expect(buttons[2].getAttribute('aria-pressed')).toBe('true');
+    expect(buttons[4].getAttribute('aria-pressed')).toBe('true');
     const filter = root.querySelector<HTMLSelectElement>('#node-kind')!;
     filter.value = 'Afirmação';
     filter.dispatchEvent(new Event('change'));
     harness.detectChanges();
-    expect(root.querySelectorAll('.network button')).toHaveLength(1);
-    expect(root.querySelector('.network button')?.textContent).toContain('Evidência contextual');
+    expect(root.querySelectorAll('.network button')).toHaveLength(2);
     expect(root.querySelectorAll('.network svg line')).toHaveLength(0);
   });
 

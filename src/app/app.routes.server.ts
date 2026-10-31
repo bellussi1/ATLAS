@@ -46,9 +46,7 @@ export const serverRoutes: ServerRoute[] = [
     path: 'verbete/:slug',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
-      return methodologyAtlas.entities
-        .filter((entity) => entity.kind === 'concept')
-        .map((entity) => ({ slug: entity.slug }));
+      return methodologyAtlas.entities.map((entity) => ({ slug: entity.slug }));
     },
   },
   {

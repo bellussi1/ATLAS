@@ -16,12 +16,16 @@ export class AtlasEvidenceNetworkComponent {
   readonly selectedId = signal(this.atlas.entities[0].id);
   readonly nodes: NodeRecord[] = [
     ...this.atlas.entities.map(entity => ({ id: entity.id, title: entity.title, kind: 'Conceito', description: entity.summary, path: '/verbete/' + entity.slug })),
-    ...this.atlas.claims.map(claim => ({ id: claim.id, title: 'Evidência contextual', kind: 'Afirmação', description: claim.text, path: '/verbete/' + this.atlas.entities.find(entity => entity.id === claim.entityId)!.slug })),
-    ...this.atlas.sources.map(source => ({ id: source.id, title: source.title, kind: 'Fonte', description: source.reference, path: '/verbete/' + this.atlas.entities[0].slug })),
+    ...this.atlas.claims.map(claim => ({ id: claim.id, title: claim.id === 'claim-contextual-evidence' ? 'Evidência contextual' : 'Afirmação', kind: 'Afirmação', description: claim.text, path: '/verbete/' + this.atlas.entities.find(entity => entity.id === claim.entityId)!.slug })),
+    ...this.atlas.sources.map(source => ({ id: source.id, title: source.title, kind: 'Fonte', description: source.edition, path: '/verbete/' + this.atlas.entities[0].slug })),
   ];
   readonly edges = this.atlas.claims.flatMap(claim => [
     { from: claim.entityId, to: claim.id, label: 'é descrito pela afirmação' },
-    ...claim.sourceIds.map(id => ({ from: claim.id, to: id, label: 'tem como referência' })),
+    ...claim.citationIds.flatMap(citationId => {
+      const evidenceId = this.atlas.citations.find(citation => citation.id === citationId)?.evidenceId;
+      const sourceId = this.atlas.evidences.find(evidence => evidence.id === evidenceId)?.sourceId;
+      return sourceId ? [{ from: claim.id, to: sourceId, label: 'tem como referência' }] : [];
+    }),
   ]);
   readonly visibleNodes = computed(() => this.nodes.filter(node => this.kind() === 'Todos' || node.kind === this.kind()));
   readonly visibleEdges = computed(() => this.edges.filter(edge => this.visibleNodes().some(node => node.id === edge.from) && this.visibleNodes().some(node => node.id === edge.to)));
