@@ -178,7 +178,6 @@ for (const record of records) {
 const existingIdSet = new Set(existingEntities.map(entity => entity.id));
 for (const record of records) {
   const fromEntityId = record.entity.id;
-  const sourceId = `liberalism-source-wikipedia-${fromEntityId}`;
   const targets = new Set(record.links.map(link => targetTitles.get(titleKey(link.title))).filter(Boolean));
   for (const toEntityId of targets) {
     if (fromEntityId === toEntityId || (!existingIdSet.has(toEntityId) && !records.some(target => target.entity.id === toEntityId))) continue;
@@ -220,7 +219,6 @@ for (const record of records) {
   }
 }
 
-const entities = records.map(record => record.entity);
 const entityIds = addedEntities.map(entity => entity.id);
 const uniqueRelations = [...new Map(relations.map(relation => [relation.id, relation])).values()];
 const atlas = {

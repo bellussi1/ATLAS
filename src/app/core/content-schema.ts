@@ -211,10 +211,12 @@ export const atlasSchema = z.object({
     ['relations', atlas.relations], ['learningPaths', atlas.learningPaths],
   ] as const;
   const ids = new Set<string>([atlas.id]);
-  collections.forEach(([key, records]) => records.forEach((record, index) => {
-    if (ids.has(record.id)) context.addIssue({ code: 'custom', message: `ID duplicado: ${record.id}`, path: [key, index, 'id'] });
-    ids.add(record.id);
-  }));
+  collections.forEach(([key, records]) => {
+    records.forEach((record, index) => {
+      if (ids.has(record.id)) context.addIssue({ code: 'custom', message: `ID duplicado: ${record.id}`, path: [key, index, 'id'] });
+      ids.add(record.id);
+    });
+  });
   const slugs = [atlas.slug, ...atlas.entities.map((entity) => entity.slug), ...atlas.learningPaths.map((path) => path.slug)];
   if (new Set(slugs).size !== slugs.length) context.addIssue({ code: 'custom', message: 'Slugs devem ser únicos no atlas.', path: ['entities'] });
   const assetPaths = atlas.assetLicenses.map((asset) => asset.assetPath);
@@ -235,8 +237,12 @@ export const atlasSchema = z.object({
   if (atlas.entityIds.length !== atlas.entities.length) {
     context.addIssue({ code: 'custom', message: 'O índice do atlas deve listar todas as entidades exatamente uma vez.', path: ['entityIds'] });
   }
-  atlas.evidences.forEach((item, index) => validateRefs([item.sourceId], sourceIds, ['evidences', index, 'sourceId']));
-  atlas.citations.forEach((item, index) => validateRefs([item.evidenceId], evidenceIds, ['citations', index, 'evidenceId']));
+  atlas.evidences.forEach((item, index) => {
+    validateRefs([item.sourceId], sourceIds, ['evidences', index, 'sourceId']);
+  });
+  atlas.citations.forEach((item, index) => {
+    validateRefs([item.evidenceId], evidenceIds, ['citations', index, 'evidenceId']);
+  });
   atlas.claims.forEach((claim, index) => {
     unique(claim.citationIds, ['claims', index, 'citationIds']);
     validateRefs([claim.entityId], entityIds, ['claims', index, 'entityId']);
@@ -245,7 +251,9 @@ export const atlasSchema = z.object({
     if (matchingReviews.length !== 1) context.addIssue({ code: 'custom', message: 'Cada afirmação deve ter exatamente um registro de revisão.', path: ['claims', index] });
     else if (matchingReviews[0].status !== claim.editorialStatus) context.addIssue({ code: 'custom', message: 'Estado da afirmação deve corresponder ao estado da revisão.', path: ['claims', index, 'editorialStatus'] });
   });
-  atlas.reviews.forEach((review, index) => validateRefs([review.claimId], claimIds, ['reviews', index, 'claimId']));
+  atlas.reviews.forEach((review, index) => {
+    validateRefs([review.claimId], claimIds, ['reviews', index, 'claimId']);
+  });
   atlas.learningPaths.forEach((path, index) => {
     unique(path.entityIds, ['learningPaths', index, 'entityIds']);
     validateRefs(path.entityIds, entityIds, ['learningPaths', index, 'entityIds']);
