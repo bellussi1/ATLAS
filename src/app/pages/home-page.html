@@ -35,7 +35,7 @@
       <p class="reading-deck">Um registro abre uma pergunta. Uma fonte permite conferir a resposta.</p>
       <ol class="reading-index">
         @for (entry of readings; track entry.slug; let index = $index) {
-          <li><span class="catalog">0{{ index + 1 }} / {{ entry.statusLabel }}</span><h3><a appEditorialLink [routerLink]="entryPath(entry.type, entry.slug)">{{ entry.title }} ↗</a></h3><p>{{ entry.summary }}</p></li>
+          <li><span class="catalog">0{{ index + 1 }} / {{ entry.statusLabel }}</span><h3><a appEditorialLink [routerLink]="entryPath(entry.type, entry.slug)">{{ entry.title }} ↗</a></h3><p>{{ entry.summary }}</p><button class="reading-preview-trigger" type="button" [appReadingPreview]="entry" [attr.aria-label]="'Prévia de ' + entry.title">Ler uma prévia ↗</button></li>
         }
       </ol>
       <div class="temporal-note"><p class="kicker">Tempo e espaço / Estado da coleção</p><h3>A cronologia começa pela evidência.</h3><p>Não há acontecimentos com datas e locais verificados nesta edição.</p><a appEditorialLink routerLink="/tempo-e-espaco">Conheça os critérios para situar acontecimentos →</a></div>

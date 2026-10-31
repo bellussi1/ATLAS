@@ -1,3 +1,4 @@
+@use '@angular/cdk/overlay-prebuilt.css';
 @use './app/shared/ui-primitives';
 
 @tailwind base;
@@ -137,3 +138,9 @@ select {
     transition-duration: 0.01ms !important;
   }
 }
+
+.atlas-preview-panel { animation: preview-arrive var(--motion-standard) ease-out; }
+@keyframes preview-arrive { from { opacity: 0; transform: translateY(.75rem); } to { opacity: 1; transform: translateY(0); } }
+button.reading-preview-trigger { min-height: 2.75rem; padding: .5rem .75rem; background: transparent; border: 1px solid var(--color-border-strong); color: var(--color-accent); cursor: pointer; font: .75rem/1.5 var(--font-mono); }
+button.reading-preview-trigger:hover { background: var(--color-surface-subtle); }
+.article-section, .article-section h2 { scroll-margin-top: 10rem; }

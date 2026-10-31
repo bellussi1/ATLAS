@@ -27,3 +27,5 @@ select { padding: .5rem; }
 .network--list ul { display: grid; gap: .75rem; padding: .75rem; }
 .network--list li { position: static; transform: none; max-width: none; width: 100%; }
 @media (min-width: 48rem) { .network { height: 24rem; } .network--list { height: auto; } }
+
+.follow-connection { display: block; text-align: left; padding: .5rem; margin-top: .5rem; color: var(--color-accent); background: var(--color-surface); font-size: .8rem; }

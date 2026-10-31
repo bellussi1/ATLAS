@@ -1,13 +1,15 @@
+import { AtlasReadingOutlineComponent } from '../shared/reading-outline';
+import { AtlasContinueReadingComponent } from '../shared/continue-reading';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { findEditorialEntry } from '../content/editorial-entries';
+import { findEditorialEntry, getEntryPath } from '../content/editorial-entries';
 import { EditorialType, getEditorialType } from '../content/content-types';
 import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent } from '../shared/ui-primitives';
 
 @Component({
   selector: 'app-editorial-detail-page',
-  imports: [AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent, RouterLink],
+  imports: [AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent, AtlasReadingOutlineComponent, AtlasContinueReadingComponent, RouterLink],
   template: `
     @if (entry(); as page) {
       <app-page-template labelledBy="page-title">
@@ -27,15 +29,18 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
           </a>
         }
 
+        <app-reading-outline [sections]="page.sections" />
+
         @for (section of page.sections; track section.heading) {
           <section class="article-section" [attr.aria-labelledby]="'section-' + $index">
-            <h2 [id]="'section-' + $index">{{ section.heading }}</h2>
+            <h2 tabindex="-1" [id]="'section-' + $index">{{ section.heading }}</h2>
             @for (paragraph of section.paragraphs; track paragraph) {
               <p>{{ paragraph }}</p>
             }
           </section>
         }
 
+        <app-continue-reading [currentPath]="entryPath(page.type, page.slug)" />
         <a class="back-link" appEditorialLink [routerLink]="backLink()">Voltar para {{ categoryLabel() }}</a>
       </app-page-template>
     } @else {
@@ -61,6 +66,7 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
   `,
 })
 export class EditorialDetailPage {
+  readonly entryPath = getEntryPath;
   private readonly route = inject(ActivatedRoute);
   private readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
   private readonly routeData = toSignal(this.route.data, { initialValue: this.route.snapshot.data });

@@ -1,3 +1,5 @@
+import { DialogModule } from '@angular/cdk/dialog';
+import { AtlasReadingPreviewDirective } from '../shared/reading-preview';
 import { Component, inject, signal } from '@angular/core';
 import { AtlasEvidenceNetworkComponent } from '../shared/evidence-network';
 import { ContentRepository } from '../core/content-repository';
@@ -11,7 +13,7 @@ import {
 
 @Component({
   selector: 'app-home-page',
-  imports: [AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasTextFieldComponent, AtlasEvidenceNetworkComponent, RouterLink],
+  imports: [AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasTextFieldComponent, AtlasEvidenceNetworkComponent, AtlasReadingPreviewDirective, DialogModule, RouterLink],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

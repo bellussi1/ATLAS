@@ -17,7 +17,8 @@
         <section class="context" aria-labelledby="selected-title" aria-live="polite">
           <p class="kicker">Seleção · {{ node.kind }}</p><h2 id="selected-title">{{ node.title }}</h2><p>{{ node.description }}</p>
           <ul>@for (edge of connections(); track edge.from + edge.to) {
-            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}.</li>
+            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}.
+              <button type="button" class="follow-connection" (click)="follow(edge.from === selectedId() ? edge.to : edge.from)">Explorar {{ title(edge.from === selectedId() ? edge.to : edge.from) }} →</button></li>
           }</ul>
           <a appEditorialLink [routerLink]="node.path">Ler o verbete e suas evidências →</a>
         </section>

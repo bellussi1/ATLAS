@@ -68,6 +68,64 @@ describe('ATLAS application', () => {
     expect(root.querySelectorAll('.reading-index a')).toHaveLength(3);
   });
 
+  it('opens an accessible reading preview and restores focus on Escape', async () => {
+    TestBed.overrideProvider(PLATFORM_ID, { useValue: 'browser' });
+    const harness = await RouterTestingHarness.create('/');
+    const trigger = harness.routeNativeElement!.querySelector<HTMLButtonElement>('button[aria-haspopup="dialog"]')!;
+    trigger.focus();
+    trigger.click();
+    await harness.fixture.whenStable();
+    const dialog = document.querySelector<HTMLElement>('[role="dialog"]')!;
+    expect(dialog).not.toBeNull();
+    expect(dialog.getAttribute('aria-labelledby')).toBe('preview-title');
+    expect(dialog.textContent).toContain('Como funciona um verbete');
+    expect(dialog.contains(document.activeElement)).toBe(true);
+    dialog.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', keyCode: 27, bubbles: true }));
+    await harness.fixture.whenStable();
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(document.activeElement).toBe(trigger);
+  });
+
+  it('continues from the preview into the full reading and offers another path', async () => {
+    TestBed.overrideProvider(PLATFORM_ID, { useValue: 'browser' });
+    const harness = await RouterTestingHarness.create('/');
+    harness.routeNativeElement!.querySelector<HTMLButtonElement>('button[aria-haspopup="dialog"]')!.click();
+    await harness.fixture.whenStable();
+    document.querySelector<HTMLAnchorElement>('[role="dialog"] .read-link')!.click();
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(TestBed.inject(Router).url).toBe('/explorar/verbete/como-ler-um-verbete');
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(harness.routeNativeElement!.querySelector('nav[aria-label="Seções desta leitura"]')).not.toBeNull();
+    const next = harness.routeNativeElement!.querySelector<HTMLAnchorElement>('app-continue-reading a')!;
+    expect(next.getAttribute('href')).toBe('/verbete/metodologia-do-atlas');
+  });
+
+  it('navigates reading sections with an anchor and focuses their heading', async () => {
+    const harness = await RouterTestingHarness.create('/explorar/artigo/conhecimento-com-contexto');
+    const links = harness.routeNativeElement!.querySelectorAll<HTMLAnchorElement>('app-reading-outline nav a');
+    expect(links).toHaveLength(3);
+    expect(links[1].getAttribute('href')).toBe('/explorar/artigo/conhecimento-com-contexto#section-1');
+    links[1].click();
+    await harness.fixture.whenStable();
+    expect(document.activeElement?.id).toBe('section-1');
+    expect(harness.routeNativeElement!.querySelector<HTMLDetailsElement>('app-reading-outline details')?.open).toBe(false);
+    expect(harness.routeNativeElement!.querySelector('app-continue-reading a[href="/explorar/artigo/conhecimento-com-contexto"]')).toBeNull();
+  });
+
+  it('follows documented connections from concept to claim and source', async () => {
+    const harness = await RouterTestingHarness.create('/relacoes');
+    const root = harness.routeNativeElement!;
+    root.querySelector<HTMLButtonElement>('.follow-connection')!.click();
+    harness.detectChanges();
+    expect(root.querySelector('.context h2')?.textContent).toBe('Evidência contextual');
+    const buttons = root.querySelectorAll<HTMLButtonElement>('.follow-connection');
+    buttons[1].click();
+    harness.detectChanges();
+    expect(root.querySelector('.context h2')?.textContent).toBe('Regras editoriais do repositório');
+    expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
+  });
+
   it('submits homepage search to the knowledge collection', async () => {
     const harness = await RouterTestingHarness.create('/');
     const input = harness.routeNativeElement!.querySelector<HTMLInputElement>('#atlas-search')!;

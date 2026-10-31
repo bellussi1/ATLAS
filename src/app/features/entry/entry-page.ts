@@ -1,3 +1,5 @@
+import { AtlasReadingOutlineComponent } from '../../shared/reading-outline';
+import { AtlasContinueReadingComponent } from '../../shared/continue-reading';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -6,7 +8,7 @@ import { ContentRepository } from '../../core/content-repository';
 
 @Component({
   selector: 'app-entry-page',
-  imports: [RouterLink],
+  imports: [RouterLink, AtlasReadingOutlineComponent, AtlasContinueReadingComponent],
   template: `
     @if (atlas() === null) {
       <section class="page" aria-labelledby="page-title" role="alert">
@@ -20,9 +22,11 @@ import { ContentRepository } from '../../core/content-repository';
         <h1 id="page-title">{{ entry.title }}</h1>
         <p class="page__lead">{{ entry.summary }}</p>
 
+        <app-reading-outline [sections]="entry.sections" />
+
         @for (section of entry.sections; track section.heading) {
           <section class="article-section" [attr.aria-labelledby]="'section-' + $index">
-            <h2 [id]="'section-' + $index">{{ section.heading }}</h2>
+            <h2 tabindex="-1" [id]="'section-' + $index">{{ section.heading }}</h2>
             @for (paragraph of section.paragraphs; track paragraph) {
               <p>{{ paragraph }}</p>
             }
@@ -38,6 +42,7 @@ import { ContentRepository } from '../../core/content-repository';
           </aside>
         }
 
+        <app-continue-reading [currentPath]="'/verbete/' + entry.slug" />
         <a class="back-link" routerLink="/explorar/verbete">Voltar ao índice de verbetes</a>
       </article>
     } @else {

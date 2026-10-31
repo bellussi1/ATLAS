@@ -97,3 +97,7 @@ AtlasEvidenceNetworkComponent, em src/app/shared/evidence-network.ts, é usado n
 
 
 Verificação da adaptação Stitch: home conferida em 1440, 390 e 320 CSS px; em 320 px a largura do documento permaneceu em 320 px. O modo de lista foi acionado por Enter e manteve foco de 3 px, três registros e ausência de overflow. Movimento reduzido foi emulado e reconhecido. Testes cobrem a seleção na home, mudança para lista, filtro com acento (Afirmação), destinos e regressões de navegação. Sem avaliação com leitor de tela nesta entrega.
+
+## Continuidade de leitura
+
+As prévias da home, o índice de seções, a indicação de posição e os percursos para continuar são compartilhados pelas telas de leitura. O Angular CDK oferece a infraestrutura acessível da prévia modal, mantendo a aparência editorial do ATLAS. Contratos, comportamento de foco, custo e limitações estão em EXPERIENCE-SYSTEM.md.
