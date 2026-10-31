@@ -6,8 +6,9 @@
       <ul class="network-legend" aria-label="Legenda: categorias dos registros">
         @for (category of kinds().slice(1); track category) { <li><span aria-hidden="true"></span>{{ category }}</li> }
       </ul>
+      @if (compact()) { <p class="compact-hint">Role a lista para encontrar outros registros.</p> }
       <div class="network-stage">
-      <div class="network" [class.network--list]="listView()" [style.--network-rows]="rowCount()" aria-label="Grafo de conhecimento e relações documentadas">
+      <div class="network" [class.network--list]="listView()" [class.network--compact]="compact()" [style.--network-rows]="rowCount()" aria-label="Grafo de conhecimento e relações documentadas">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
           @for (edge of visibleEdges(); track edge.from + edge.to) { <line [class.active]="edge.from === selectedId() || edge.to === selectedId()" [attr.x1]="position(edge.from)" [attr.y1]="vertical(edge.from)" [attr.x2]="position(edge.to)" [attr.y2]="vertical(edge.to)" /> }
         </svg>

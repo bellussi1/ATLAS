@@ -203,12 +203,20 @@ describe('ATLAS application', () => {
     expect(harness.routeNativeElement?.querySelector('a[href="/verbete/constituicao-de-1988"]')).not.toBeNull();
   });
 
+  it('does not repeat the same relation as a backlink in a record', async () => {
+    const harness = await RouterTestingHarness.create('/verbete/igualdade-perante-a-lei');
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelectorAll('a[href="/verbete/constituicao-federal-1988"]')).toHaveLength(1);
+    expect(root.querySelector('.related-records')?.textContent).toContain('é enunciada por');
+  });
+
   it('integrates a sourced historical timeline and a selectable comparison table', async () => {
     const harness = await RouterTestingHarness.create('/tempo-e-espaco');
     const root = harness.routeNativeElement as HTMLElement;
     expect(root.querySelector('[aria-labelledby="timeline-visual-title"]')).not.toBeNull();
     expect(root.querySelector('ol[aria-label="Alternativa textual navegável da linha do tempo"]')).not.toBeNull();
     expect(root.querySelector('[aria-labelledby="historical-comparison-title"] table')).not.toBeNull();
+    expect(root.querySelector('.table-scroll')?.getAttribute('tabindex')).toBe('0');
     expect(root.querySelector('a[href="/fontes#source-source-constitution-1988"]')).not.toBeNull();
     expect(root.textContent).toContain('Período, fontes e limites');
   });

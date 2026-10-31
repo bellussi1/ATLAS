@@ -12,7 +12,10 @@ test('search, read and follow a documented relationship', async ({ page }) => {
 
 test('timeline opens an event', async ({ page }) => {
   await page.goto('/tempo-e-espaco/');
-  await page.locator('.timeline-list a[href="/verbete/promulgacao-constituicao-1988"]').click();
+  const event = page.locator('.timeline-list li').filter({ has: page.locator('a[href="/verbete/promulgacao-constituicao-1988"]') });
+  await event.getByRole('button', { name: 'Ver contexto' }).click();
+  await expect(event.locator('.detail')).toContainText('Evento delimitado');
+  await event.locator('.timeline-list__row a').click();
   await expect(page.locator('h1')).toContainText('Promulgação');
 });
 
@@ -43,10 +46,42 @@ test('mobile timeline and study remain usable with reduced motion', async ({ pag
   await page.goto('/tempo-e-espaco/');
   await expect(page.locator('.timeline-list a[href="/verbete/promulgacao-constituicao-1988"]')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expect(page.getByText('Role a tabela para o lado para ver todos os registros.')).toBeVisible();
+  await expect(page.getByRole('region', { name: /Tabela comparativa/ })).toHaveAttribute('tabindex', '0');
   await page.goto('/estudar/');
   await page.getByLabel('Examinar sua evidência e seu contexto').check();
   await page.getByRole('button', { name: 'Conferir resposta' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Correto' })).toBeVisible();
   expect(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches)).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('page transition respects normal and reduced motion', async ({ page }) => {
+  await page.addInitScript(() => {
+    const original = Element.prototype.animate;
+    Element.prototype.animate = function (...args: Parameters<typeof Element.prototype.animate>) {
+      if (this.id === 'conteudo') document.documentElement.dataset['atlasTransition'] = 'played';
+      return original.apply(this, args);
+    };
+  });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Explorar', exact: true }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-atlas-transition', 'played');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await page.getByRole('link', { name: 'Explorar', exact: true }).click();
+  await expect(page.locator('main h1')).toBeVisible();
+  await expect(page.locator('html')).not.toHaveAttribute('data-atlas-transition', 'played');
+});
+
+test('mobile home keeps the complete graph available in a compact scroll area', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  const network = page.locator('.network--compact');
+  await expect(page.getByText('Role a lista para encontrar outros registros.')).toBeVisible();
+  expect(await network.evaluate(element => element.scrollHeight > element.clientHeight)).toBe(true);
+  await network.getByRole('button', { name: /Igualdade perante a lei/ }).focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.context h2')).toContainText('Igualdade perante a lei');
 });

@@ -41,25 +41,24 @@
           <span class="period">{{ record.periodLabel }}</span>
           <a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a>
           <span class="kind">{{ record.kindLabel }}</span>
-          <button type="button" [attr.aria-pressed]="selectedTimeline()?.id === record.id" (click)="selectedTimelineId.set(record.id)">{{ selectedTimeline()?.id === record.id ? 'Selecionado' : 'Ver contexto' }}</button>
+          <button type="button" [attr.aria-pressed]="selectedTimeline()?.id === record.id" aria-controls="timeline-record-context" (click)="selectedTimelineId.set(record.id)">{{ selectedTimeline()?.id === record.id ? 'Selecionado' : 'Ver contexto' }}</button>
         </div>
+        @if (selectedTimeline()?.id === record.id) {
+          <section class="detail" id="timeline-record-context" aria-labelledby="timeline-record-title" aria-live="polite">
+            <p class="kicker">{{ record.kindLabel }} · {{ record.periodLabel }}</p>
+            <h3 id="timeline-record-title"><a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a></h3>
+            <p>{{ record.context }}</p>
+            <p><strong>Precisão registrada:</strong> {{ precisionLabel(record.precision) }}. <strong>Incerteza cadastrada:</strong> {{ uncertaintyLabel(record.uncertainty) }}.</p>
+            @if (record.sources.length) {
+              <p><strong>Fontes:</strong> @for (source of record.sources; track source.id) { <a appEditorialLink [routerLink]="sourcePath()" [fragment]="sourceFragment(source.id)">{{ source.title }}</a>@if (!$last) {; } }</p>
+            } @else { <p><strong>Fontes:</strong> nenhuma vinculada diretamente a este registro no grafo.</p> }
+          </section>
+        }
       </li>
     } @empty {
       <li class="empty" role="status">Não há períodos estruturados para este filtro.</li>
     }
   </ol>
-
-  @if (selectedTimeline(); as selected) {
-    <section class="detail" aria-labelledby="timeline-record-title" aria-live="polite">
-      <p class="kicker">{{ selected.kindLabel }} · {{ selected.periodLabel }}</p>
-      <h3 id="timeline-record-title"><a appEditorialLink [routerLink]="entityPath(selected)">{{ selected.title }}</a></h3>
-      <p>{{ selected.context }}</p>
-      <p><strong>Precisão registrada:</strong> {{ precisionLabel(selected.precision) }}. <strong>Incerteza cadastrada:</strong> {{ uncertaintyLabel(selected.uncertainty) }}.</p>
-      @if (selected.sources.length) {
-        <p><strong>Fontes:</strong> @for (source of selected.sources; track source.id) { <a appEditorialLink [routerLink]="sourcePath()" [fragment]="sourceFragment(source.id)">{{ source.title }}</a>@if (!$last) {; } }</p>
-      } @else { <p><strong>Fontes:</strong> nenhuma vinculada diretamente a este registro no grafo.</p> }
-    </section>
-  }
 
   <details class="method">
     <summary>Período, fontes e limites</summary>
@@ -83,7 +82,8 @@
   </div>
   <p class="comparison-legend"><strong>Legenda:</strong> os campos abaixo reproduzem os metadados de cada verbete; “não informado” e “nenhuma fonte vinculada” indicam ausência no registro.</p>
   @if (comparedRecords().length) {
-    <div class="table-scroll" role="region" aria-label="Tabela comparativa; em telas estreitas, role horizontalmente">
+    <p class="table-hint">Role a tabela para o lado para ver todos os registros.</p>
+    <div class="table-scroll" role="region" tabindex="0" aria-label="Tabela comparativa; em telas estreitas, role horizontalmente">
       <table>
         <caption>Dados cadastrados para os registros selecionados</caption>
         <thead><tr><th scope="col">Dimensão</th>@for (record of comparedRecords(); track record.id) { <th scope="col"><a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a></th> }</tr></thead>

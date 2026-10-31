@@ -48,4 +48,6 @@ select { padding: .5rem; }
 @media(max-width:47.99rem) { .network { height:auto;min-height:0; } .network svg { display:none; } .network ul { display:grid;gap:.75rem;padding:.75rem; } .network li { position:static;transform:none;width:100%; } }
 .network--list { height:auto;min-height:0; }
 .network--list li { width:100%; }
+.compact-hint { display: none; color: var(--color-ink-muted); font-size: .85rem; }
+@media(max-width:47.99rem) { .compact-hint { display:block; } .network--compact { max-height:28rem; overflow-y:auto; overscroll-behavior-y:contain; } }
 @media(hover:hover) and (pointer:fine) { .network button:hover { border-color:var(--color-accent); } }

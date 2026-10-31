@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContentRepository } from '../core/content-repository';
 import { queryKnowledgeRelations } from '../core/knowledge-graph';
@@ -13,6 +13,7 @@ interface GraphEdge { from: string; to: string; label: string; periodLabel: stri
   styleUrl: './evidence-network.scss',
 })
 export class AtlasEvidenceNetworkComponent {
+  readonly compact = input(false);
   readonly repository = inject(ContentRepository);
   readonly graph: KnowledgeGraph = this.repository.knowledgeGraph;
   readonly kind = signal('Todos');

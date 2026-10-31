@@ -18,7 +18,7 @@ import { demonstrationPath } from '../content/demonstration-path';
         <p>Este exemplo explica o formato de estudo proposto pelo projeto; ainda não é uma trilha temática publicada.</p>
         <a data-trail-link routerLink="/estudar/como-usar-trilhas">Conhecer o formato das trilhas <span aria-hidden="true">↗</span></a>
       </section>
-      <section class="study-path" aria-labelledby="practice-title">
+      <section class="study-path practice" aria-labelledby="practice-title">
         <h2 id="practice-title">{{ path.title }}</h2>
         <p>Trilha demonstrativa de metodologia. Objetivo: {{ path.objectives[0] }} Pré-requisito: {{ path.prerequisites[0] }} O conteúdo histórico do acervo ainda aguarda revisão humana.</p>
         <p>Uma afirmação histórica deve ser acompanhada de evidência contextual e distinguir fato, interpretação, hipótese e alegação controversa. <a routerLink="/fontes" fragment="source-source-editorial-rules">Consultar as regras editoriais</a>.</p>
@@ -28,7 +28,7 @@ import { demonstrationPath } from '../content/demonstration-path';
           </fieldset>
           <button type="submit">Conferir resposta</button>
         </form>
-        @if (feedback()) { <p role="status">{{ feedback() }} <a routerLink="/fontes" [fragment]="'source-' + exercise.feedback.sourceId">Ver fonte</a></p> }
+        @if (feedback()) { <p class="practice-feedback" role="status">{{ feedback() }} <a routerLink="/fontes" [fragment]="'source-' + exercise.feedback.sourceId">Ver fonte</a></p> }
         <p>{{ progress().completedLessonIds.length ? 'Atividade concluída; você pode tentar novamente.' : 'Atividade ainda não concluída.' }}</p>
         @if (progress().reviewItems[0]; as review) { <p>Próxima revisão sugerida: {{ review.dueAt }}.</p> }
         <h3>Guardar ou recuperar progresso</h3>
@@ -48,6 +48,8 @@ import { demonstrationPath } from '../content/demonstration-path';
     .page__lead { max-width: 38rem; color: var(--ink-muted); font: 1.35rem/1.55 var(--serif); }
     .study-path { max-width: 42rem; margin-top: clamp(3rem, 7vw, 5rem); padding-left: 1.25rem; border-left: .25rem solid var(--signal); }
     h2 { margin: 0; font: 500 clamp(1.65rem, 3vw, 2.2rem)/1.15 var(--serif); }
+    .practice h3 { margin: 2rem 0 .5rem; font: 600 1.2rem/1.3 var(--font-sans); }
+    .practice .practice-feedback { padding: .75rem 1rem; border-left: .25rem solid var(--color-accent); background: var(--color-surface-subtle); color: var(--color-ink); }
     .study-path p { color: var(--ink-muted); line-height: 1.65; }
     a { display: inline-flex; gap: .65rem; align-items: center; min-height: 2.75rem; color: var(--signal); font-weight: 700; text-underline-offset: .2em; }
     a:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }

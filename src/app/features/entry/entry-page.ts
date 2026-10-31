@@ -127,7 +127,8 @@ export class EntryPage {
   });
   readonly backlinks = computed(() => {
     const id = this.entity()?.id;
-    return id ? this.repository.discoveryIndex.find((item) => item.id === id)?.backlinks ?? [] : [];
+    const shown = new Set(this.relatedEntries().map((relation) => relation.relationId));
+    return id ? (this.repository.discoveryIndex.find((item) => item.id === id)?.backlinks ?? []).filter((item) => !shown.has(item.id)) : [];
   });
   readonly origin = computed(() => safeDiscoveryOrigin(this.queryParams().get('origem')));
   readonly hasOrigin = computed(() => this.origin() !== null);
