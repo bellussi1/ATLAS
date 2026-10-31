@@ -57,18 +57,17 @@ import {
             <h2 appHeading="section" id="tokens-title">Cor por função, não por decoração</h2>
             <p>Os nomes semânticos separam superfície, leitura, ação, foco e estados de mensagem.</p>
             <ul class="palette" aria-label="Paleta semântica do sistema">
-              <li class="swatch swatch--canvas"><span>Fundo · canvas</span><code>#F3F0E9</code></li>
+              <li class="swatch swatch--canvas"><span>Fundo · canvas</span><code>#FBFAF7</code></li>
               <li class="swatch swatch--surface"><span>Superfície</span><code>#FBFAF7</code></li>
               <li class="swatch swatch--ink"><span>Texto principal</span><code>#1C1C1A</code></li>
               <li class="swatch swatch--muted"><span>Texto de apoio</span><code>#57544D</code></li>
-              <li class="swatch swatch--accent"><span>Ação / foco</span><code>#A22720</code></li>
+              <li class="swatch swatch--accent"><span>Ação / foco</span><code>#B4231D</code></li>
               <li class="swatch swatch--map"><span>Cartografia</span><code>#315F54</code></li>
               <li class="swatch swatch--archive"><span>Arquivo</span><code>#176176</code></li>
             </ul>
             <p class="showroom__contrast">
-              Contraste sRGB medido: texto principal/canvas 15,00:1; apoio/canvas 6,64:1;
-              ação/canvas 6,48:1; foco/superfície 7,07:1; texto branco em cartografia 7,25:1 e
-              arquivo 6,98:1. A documentação registra o método e os limites desta revisão.
+              As combinações de texto, foco, controles e superfícies são verificadas por contraste sRGB.
+              A documentação registra as razões medidas, o método e os limites desta revisão.
             </p>
           </section>
 

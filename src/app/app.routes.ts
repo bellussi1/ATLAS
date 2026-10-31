@@ -8,6 +8,16 @@ import {
 } from './content/route-resolvers';
 
 export const routes: Routes = [
+  ...[
+    { path: 'relacoes', mode: 'relations', label: 'Relações' },
+    { path: 'tempo-e-espaco', mode: 'time', label: 'Tempo e espaço' },
+    { path: 'conhecimento', mode: 'knowledge', label: 'Conhecimento' },
+  ].map(({ path, mode, label }) => ({
+    path,
+    loadComponent: () => import('./pages/exploration-page').then(module => module.ExplorationPage),
+    data: { mode, breadcrumb: label },
+    title: `${label} — ATLAS`,
+  })),
   { path: '', loadComponent: () => import('./pages/home-page').then((module) => module.HomePage), title: 'ATLAS — compreender o mundo' },
   {
     path: 'sistema',

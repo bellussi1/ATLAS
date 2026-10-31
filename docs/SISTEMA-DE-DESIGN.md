@@ -1,6 +1,6 @@
 # Sistema de design acessível
 
-O sistema estabelece uma base comum a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo. As alternativas A, B e C do laboratório visual continuam experimentais; nenhuma é escolhida como layout de produção por este documento.
+O sistema estabelece uma base comum a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo. A direção A foi aprovada pelo usuário e é a base da interface principal. B orienta cartografia e documentos; C orienta a exploração do acervo. O laboratório A/B/C permanece como ferramenta de desenvolvimento.
 
 O showroom navegável está em `/sistema`. A rota é pré-renderizada e também pode ser aberta pelo link “Sistema visual” no rodapé global.
 
@@ -10,7 +10,7 @@ Os tokens estão em `src/styles.scss`. Os aliases antigos (`--paper`, `--ink`, `
 
 | Função | Token | Valor |
 | --- | --- | --- |
-| Fundo | `--color-canvas` | `#F3F0E9` |
+| Fundo | `--color-canvas` | `#FBFAF7` |
 | Superfície | `--color-surface` | `#FBFAF7` |
 | Superfície elevada | `--color-surface-raised` | `#FFFDFA` |
 | Superfície sutil | `--color-surface-subtle` | `#E9E4DA` |
@@ -18,10 +18,10 @@ Os tokens estão em `src/styles.scss`. Os aliases antigos (`--paper`, `--ink`, `
 | Texto de apoio | `--color-ink-muted` | `#57544D` |
 | Borda | `--color-border` | `#D9D4CA` |
 | Borda forte | `--color-border-strong` | `#777268` |
-| Ação | `--color-accent` | `#A22720` |
+| Ação | `--color-accent` | `#B4231D` |
 | Ação em hover | `--color-accent-hover` | `#811F1A` |
 | Texto em superfícies escuras | `--color-on-strong-surface` | `#FFFFFF` |
-| Foco | `--color-focus` | `#A22720` |
+| Foco | `--color-focus` | `#B4231D` |
 | Informação | `--color-info` / `--color-info-surface` | `#164F60` / `#E1EDF0` |
 | Sucesso | `--color-success` / `--color-success-surface` | `#24563B` / `#E4EEE5` |
 | Atenção | `--color-warning` / `--color-warning-surface` | `#614500` / `#F2E8C8` |
@@ -59,18 +59,33 @@ Já usados em páginas reais: o menu global e o template de páginas editoriais;
 
 | Combinação medida | Razão |
 | --- | ---: |
-| Texto principal / canvas | 15,00:1 |
-| Texto de apoio / canvas | 6,64:1 |
-| Ação e foco / canvas | 6,48:1 |
-| Foco / superfície | 7,07:1 |
+| Texto principal / canvas | 16,35:1 |
+| Texto de apoio / canvas | 7,24:1 |
+| Ação e foco / canvas | 6,29:1 |
+| Foco / superfície | 6,29:1 |
 | Texto de informação / superfície de informação | 7,57:1 |
 | Texto de sucesso / superfície de sucesso | 7,15:1 |
 | Texto de atenção / superfície de atenção | 7,27:1 |
 | Texto de erro / superfície de erro | 7,64:1 |
-| Branco / ação | 7,07:1 |
+| Branco / ação | 6,56:1 |
 | Branco / cartografia | 7,25:1 |
 | Branco / arquivo | 6,98:1 |
 
 O showroom e as primitivas começam em uma coluna e ampliam para layouts maiores em breakpoints `min-width`. No navegador, foram conferidos a rota showroom em 1280 px, 640 px (viewport CSS equivalente ao reflow de 200% em 1280 px) e 320 px, sem largura de documento maior que a viewport. O link de pular conteúdo e o disclosure foram operados com teclado; o movimento reduzido estava ativo. A árvore de acessibilidade do Chrome foi revisada para navegação, campos, mensagens, headings e disclosures. O zoom nativo do navegador em 200% não foi medido separadamente.
 
 Esta revisão e os testes automatizados não constituem auditoria WCAG 2.2 AA integral. Ainda falta avaliação com leitores de tela e pessoas usuárias de tecnologia assistiva, incluindo combinações de navegador/sistema operacional e anúncio das mensagens dinâmicas.
+
+
+## Homepage e modos de exploração
+
+A homepage é um índice de entrada, com busca funcional e três destinos: Relações, Tempo e espaço e Conhecimento. Ela não reúne miniaturas das experiências. A tipografia modernista, a assimetria, os filetes e a geometria usam os tokens compartilhados; as referências visuais não são ativos de publicação.
+
+- Em /conhecimento, a busca local indexa títulos, resumos e texto dos registros editoriais existentes e entidades validadas. A consulta persiste em ?q=, aceita acentos equivalentes e oferece recuperação quando não há resultados. Formatos previstos conservam seu status, sem serem apresentados como coleções históricas publicadas.
+- Em /relacoes, a rede inicial deriva exclusivamente de entityId e sourceIds das afirmações do ContentRepository. Seleção, filtro e contexto funcionam em botões e select nativos. A lista de conexões oferece equivalente textual. A rede representa metodologia, sem simular relações históricas.
+- Em /tempo-e-espaco, há um estado vazio explícito e caminhos para leitura pertinente. Não há datas, locais ou fronteiras verificados no acervo atual. Cronologia interativa e mapa histórico permanecem dependentes desses dados; não foram apresentados como disponíveis.
+- As perguntas de entrada levam a textos reais sobre evidência, contexto e organização editorial. Trilhas temáticas históricas ainda não estão publicadas.
+
+A direção A está consolidada sem remover os índices existentes, o laboratório ou o showroom.
+
+
+Validação da consolidação A: busca enviada por Enter no Chrome em 390 px abriu /conhecimento?q=evidencia e retornou cinco registros reais. A home e as três telas foram medidas em 320 px sem overflow horizontal. O nó Fonte foi ativado por Enter, atualizou a seleção e o contexto, mantendo contorno de foco de 3 px. Movimento reduzido foi emulado e reconhecido. A home foi capturada em 1440×1000 e 390×844; não foram reproduzidas as imagens de referência. A revisão não incluiu leitor de tela nem auditoria WCAG integral.

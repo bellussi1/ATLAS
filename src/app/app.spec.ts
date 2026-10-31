@@ -14,7 +14,7 @@ describe('ATLAS application', () => {
     }).compileComponents();
   });
 
-  it('introduces the project and keeps search visibly inactive', async () => {
+  it('offers a working search from the homepage', async () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     await TestBed.inject(Router).navigateByUrl('/');
@@ -23,11 +23,11 @@ describe('ATLAS application', () => {
 
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector('h1')?.textContent?.replace(/\s+/g, ' ')).toContain(
-      'Compreender o mundo',
+      'Encontre um assunto.',
     );
-    expect(root.textContent).toContain('história, política, economia e sociedade');
-    expect(root.querySelector('[role="search"] input')?.hasAttribute('readonly')).toBe(true);
-    expect(root.textContent).toContain('A busca ainda não está disponível');
+    expect(root.textContent).toContain('História, política, economia e sociedade');
+    expect(root.querySelector('[role="search"] input')?.hasAttribute('readonly')).toBe(false);
+    expect(root.querySelector('[role="search"] button[type="submit"]')).not.toBeNull();
   });
 
   it('offers the three product intents with working destinations', async () => {
@@ -41,15 +41,65 @@ describe('ATLAS application', () => {
       (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLAnchorElement>('[data-entry]'),
     );
     expect(entries.map((entry) => entry.textContent?.replace(/\s+/g, ' ').trim())).toEqual([
-      expect.stringContaining('Tenho uma dúvida'),
-      expect.stringContaining('Quero explorar'),
-      expect.stringContaining('Quero estudar'),
+      expect.stringContaining('Relações'),
+      expect.stringContaining('Tempo e espaço'),
+      expect.stringContaining('Conhecimento'),
     ]);
     expect(entries.map((entry) => entry.getAttribute('href'))).toEqual([
-      '/explorar/verbete/como-ler-um-verbete',
-      '/explorar',
-      '/estudar',
+      '/relacoes',
+      '/tempo-e-espaco',
+      '/conhecimento',
     ]);
+  });
+
+
+  it('submits homepage search to the knowledge collection', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    const input = harness.routeNativeElement!.querySelector<HTMLInputElement>('#atlas-search')!;
+    input.value = 'contexto';
+    input.dispatchEvent(new Event('input'));
+    harness.routeNativeElement!.querySelector('form')!.dispatchEvent(new Event('submit', { cancelable: true }));
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.textContent).toContain('Conhecimento');
+    expect(TestBed.inject(Router).url).toBe('/conhecimento?q=contexto');
+  });
+
+  it('searches real records without accents and recovers from no results', async () => {
+    const harness = await RouterTestingHarness.create('/conhecimento?q=evidencia');
+    expect(harness.routeNativeElement?.querySelector('.results a')?.getAttribute('href'))
+      .toBe('/verbete/metodologia-do-atlas');
+    await harness.navigateByUrl('/conhecimento?q=registro-inexistente');
+    expect(harness.routeNativeElement?.textContent).toContain('Nenhum registro corresponde');
+    harness.routeNativeElement?.querySelector<HTMLButtonElement>('.results button')?.click();
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(harness.routeNativeElement?.querySelectorAll('.results a').length).toBeGreaterThan(0);
+  });
+
+  it('selects graph records and filters their category with contextual evidence', async () => {
+    const harness = await RouterTestingHarness.create('/relacoes');
+    const root = harness.routeNativeElement!;
+    const buttons = root.querySelectorAll<HTMLButtonElement>('.network button');
+    expect(buttons).toHaveLength(3);
+    buttons[2].click();
+    harness.detectChanges();
+    expect(root.querySelector('.context')?.textContent).toContain('AGENTS.md');
+    expect(buttons[2].getAttribute('aria-pressed')).toBe('true');
+    const filter = root.querySelector<HTMLSelectElement>('#node-kind')!;
+    filter.value = 'Fonte';
+    filter.dispatchEvent(new Event('change'));
+    harness.detectChanges();
+    expect(root.querySelectorAll('.network button')).toHaveLength(1);
+    expect(root.querySelectorAll('.network svg line')).toHaveLength(0);
+  });
+
+  it('explains missing temporal data and offers a real reading path', async () => {
+    const harness = await RouterTestingHarness.create('/tempo-e-espaco');
+    expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toBe('Tempo e espaço');
+    expect(harness.routeNativeElement?.textContent).toContain('não contém acontecimentos com datas');
+    expect(harness.routeNativeElement?.querySelector('.empty-collection a')?.getAttribute('href'))
+      .toBe('/explorar/evento/como-o-atlas-contextualiza-eventos');
   });
 
   it('marks the active primary navigation link for assistive technology', async () => {
@@ -69,14 +119,14 @@ describe('ATLAS application', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const router = TestBed.inject(Router);
     fixture.detectChanges();
-    await router.navigateByUrl('/laboratorio/a/artigo');
+    await router.navigateByUrl('/laboratorio/a/artigo?q=contexto');
     await fixture.whenStable();
     fixture.detectChanges();
 
     expect(
       (fixture.nativeElement as HTMLElement).querySelector<HTMLAnchorElement>('.skip-link')
         ?.getAttribute('href'),
-    ).toBe('/laboratorio/a/artigo#conteudo');
+    ).toBe('/laboratorio/a/artigo?q=contexto#conteudo');
   });
 
   it('moves keyboard focus to the main content when the skip link is activated', async () => {

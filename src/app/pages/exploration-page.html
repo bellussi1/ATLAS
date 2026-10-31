@@ -1,0 +1,79 @@
+<section class="exploration" aria-labelledby="mode-title">
+  <nav class="mode-nav" aria-label="Modos de exploração">
+    <a routerLink="/relacoes" [attr.aria-current]="mode() === 'relations' ? 'page' : null">01 Relações</a>
+    <a routerLink="/tempo-e-espaco" [attr.aria-current]="mode() === 'time' ? 'page' : null">02 Tempo e espaço</a>
+    <a routerLink="/conhecimento" [attr.aria-current]="mode() === 'knowledge' ? 'page' : null">03 Conhecimento</a>
+  </nav>
+  @switch (mode()) {
+    @case ('knowledge') {
+      <p class="kicker">03 / Pesquisar e ler</p>
+      <h1 id="mode-title">Conhecimento</h1>
+      <p class="lead">Toda leitura pode ser um ponto de partida.</p>
+      <div role="search" aria-label="Pesquisar no acervo" class="search">
+        <app-text-field controlId="collection-search" type="search" label="Pesquisar no acervo" placeholder="Título, conceito ou trecho"
+          [value]="query()" (valueChange)="search($event)" hint="Busca sem distinção de acentos. O acervo atual apresenta a metodologia do projeto." />
+      </div>
+      <p role="status">{{ results().length }} registros encontrados{{ query() ? ' para “' + query() + '”' : '' }}.</p>
+      <ol class="results">
+        @for (result of results(); track result.path) {
+          <li><span class="kicker">{{ result.label }}</span><a appEditorialLink [routerLink]="result.path">{{ result.title }} <span aria-hidden="true">↗</span></a><p>{{ result.summary }}</p></li>
+        } @empty {
+          <li><app-notice>Nenhum registro corresponde a esta busca. Tente “contexto”, “fontes” ou “metodologia”.</app-notice><button type="button" (click)="search('')">Limpar busca</button></li>
+        }
+      </ol>
+      <div class="reading-path"><h2>Perguntas para começar</h2>
+        <a appEditorialLink routerLink="/verbete/metodologia-do-atlas">O que sustenta uma afirmação? →</a>
+        <a appEditorialLink routerLink="/explorar/artigo/conhecimento-com-contexto">Por que o contexto importa? →</a>
+        <a appEditorialLink routerLink="/explorar/atlas/atlas-de-metodo">Como percorrer os formatos do acervo? →</a>
+      </div>
+      <p><a appEditorialLink routerLink="/estudar">Conheça a organização prevista para as trilhas →</a></p>
+    }
+    @case ('relations') {
+      <p class="kicker">01 / Investigar conexões</p>
+      <h1 id="mode-title">Relações</h1>
+      <p class="lead">Uma ideia, a afirmação que a descreve e a fonte que a sustenta.</p>
+      <p>Esta rede mostra a metodologia do ATLAS. Ainda não há relações entre pessoas ou movimentos históricos publicadas.</p>
+      <label for="node-kind">Mostrar categoria</label>
+      <select id="node-kind" [value]="kind()" (change)="filter($any($event.target).value)">
+        <option>Todos</option><option>Conceito</option><option>Afirmação</option><option>Fonte</option>
+      </select>
+      <p class="kicker" role="status">{{ visibleNodes().length }} registros · {{ visibleEdges().length }} conexões visíveis</p>
+      <div class="network" aria-label="Rede de evidências da metodologia">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          @for (edge of visibleEdges(); track edge.from + edge.to) { <line [attr.x1]="position(edge.from)" y1="50" [attr.x2]="position(edge.to)" y2="50" /> }
+        </svg>
+        <ul>
+          @for (node of visibleNodes(); track node.id) {
+            <li [style.left.%]="position(node.id)"><button type="button" [attr.aria-pressed]="selectedId() === node.id" (click)="selectedId.set(node.id)"><span>{{ node.kind }}</span>{{ node.title }}</button></li>
+          }
+        </ul>
+      </div>
+      @if (selected(); as node) {
+        <section class="context" aria-labelledby="selected-title" aria-live="polite">
+          <p class="kicker">Seleção · {{ node.kind }}</p><h2 id="selected-title">{{ node.title }}</h2><p>{{ node.description }}</p>
+          <ul>@for (edge of connections(); track edge.from + edge.to) {
+            <li>{{ title(edge.from) }} <strong>{{ edge.label }}</strong> {{ title(edge.to) }}.</li>
+          }</ul>
+          <a appEditorialLink [routerLink]="node.path">Ler o verbete e suas evidências →</a>
+        </section>
+      }
+      <p class="caption">Cada ligação deriva dos campos de entidade e fontes da afirmação no registro validado da metodologia. As categorias e a lista contextual oferecem uma alternativa textual à rede.</p>
+    }
+    @case ('time') {
+      <p class="kicker">02 / Situar acontecimentos</p>
+      <h1 id="mode-title">Tempo e espaço</h1>
+      <p class="lead">O que aconteceu, quando e onde?</p>
+      <section class="empty-collection" aria-labelledby="timeline-title">
+        <span class="collection-number" aria-hidden="true">—</span>
+        <div><h2 id="timeline-title">A cronologia ainda não tem registros</h2>
+        <p>O acervo atual não contém acontecimentos com datas e locais documentados. A linha do tempo e a exploração por mapas estarão disponíveis quando esses dados forem publicados.</p>
+        <p>Nenhum mapa ou fronteira é apresentado nesta edição.</p>
+        <a appEditorialLink routerLink="/explorar/evento/como-o-atlas-contextualiza-eventos">Como o ATLAS contextualiza acontecimentos →</a></div>
+      </section>
+      <div class="reading-path"><h2>Continue por outro caminho</h2>
+        <a appEditorialLink routerLink="/relacoes">Examine as relações entre afirmação e fonte →</a>
+        <a appEditorialLink routerLink="/conhecimento">Pesquise nos registros disponíveis →</a>
+      </div>
+    }
+  }
+</section>

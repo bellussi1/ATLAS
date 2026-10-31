@@ -1,6 +1,6 @@
 # Direção artística — laboratório do prompt 04
 
-Este registro documenta três composições experimentais. Elas vivem em `/laboratorio/:proposta/:pagina` e não mudam a identidade da home nem os estilos de produção. A decisão sobre uma direção final continua em aberto para avaliação humana.
+Este registro preserva as três composições experimentais em `/laboratorio/:proposta/:pagina`. A direção A foi escolhida pelo usuário e consolidada na interface principal; B e C continuam como referências de cartografia e exploração. A seção final registra essa consolidação.
 
 ## Observação das referências
 
@@ -52,6 +52,15 @@ As capturas mostram apenas a home de cada proposta, como registro comparativo de
 
 ## Limites e avaliação
 
-As fichas, mapa esquemático, marca de perfil e informações sobre a pessoa são elementos de protótipo, não fontes históricas. As dez rotas (índice e nove páginas demonstrativas) são pré-renderizadas como saída estática. A folha de estilos desta tela tem 18,41 kB; o orçamento geral de estilos por componente em produção passou de 8 kB para 20 kB para comportá-la, com aviso em 19 kB. Esse limite agora também se aplica a folhas de componentes futuras. O CSS continua lazy-loaded na rota e não aumenta o CSS crítico da home. Nenhuma das três propostas está escolhida para produção.
+As fichas, mapa esquemático, marca de perfil e informações sobre a pessoa são elementos de protótipo, não fontes históricas. As dez rotas (índice e nove páginas demonstrativas) são pré-renderizadas como saída estática. A folha de estilos desta tela tem 18,41 kB; o orçamento geral de estilos por componente em produção passou de 8 kB para 20 kB para comportá-la, com aviso em 19 kB. Esse limite agora também se aplica a folhas de componentes futuras. O CSS continua lazy-loaded na rota e não aumenta o CSS crítico da home. A direção A foi escolhida pelo usuário para produção. B passa a orientar cartografia e documentos; C, a exploração e o tratamento arquivístico. A comparação abaixo permanece como registro das propostas.
 
 Licença: [IBM Plex — licença oficial](https://github.com/IBM/plex/blob/master/LICENSE.txt), [IBM Plex no catálogo Google Fonts](https://github.com/google/fonts/tree/main/ofl/ibmplexsans), [Source Serif 4 — OFL](https://github.com/google/fonts/blob/main/ofl/sourceserif4/OFL.txt).
+
+
+## Consolidação da direção A
+
+A interface principal adota modernismo editorial com fundo claro quente, vermelho, preto, tipografia expressiva e serifas de leitura. As novas referências fornecidas pelo usuário reforçam ritmo tipográfico, geometria e composição museográfica, sem autorização implícita para publicar essas imagens.
+
+A homepage passa a oferecer busca e três modos: **Relações**, **Tempo e espaço** e **Conhecimento**. Cada modo possui uma rota própria com navegação entre modos. A home deixa de concentrar recursos em miniatura e prioriza iniciar uma investigação na primeira tela. Os limites de dados e as interações disponíveis estão documentados em SISTEMA-DE-DESIGN.md.
+
+Capturas reais da versão consolidada: [desktop](direcao-artistica/screenshots/home-desktop.png) e [mobile](direcao-artistica/screenshots/home-mobile.png).
