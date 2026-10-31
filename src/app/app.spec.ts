@@ -1,6 +1,7 @@
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
 import { PLATFORM_ID } from '@angular/core';
 import { AppComponent } from './app';
 import { routes as appRoutes } from './app.routes';
@@ -45,6 +46,21 @@ describe('ATLAS application', () => {
       .toContain('Pesquise verbetes');
   });
 
+  it('uses the actual record title, description, and breadcrumb for verbete SEO', async () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    await TestBed.inject(Router).navigateByUrl('/verbete/ulysses-guimaraes');
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(TestBed.inject(Title).getTitle()).toBe('Ulysses Guimarães — ATLAS');
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.ownerDocument.querySelector<HTMLMetaElement>('meta[name="description"]')?.content)
+      .toContain('Deputado que presidiu a Assembleia Nacional Constituinte');
+    expect(root.querySelector('nav[aria-label="Breadcrumb"] [aria-current="page"]')?.textContent)
+      .toBe('Ulysses Guimarães');
+  });
+
   it('shows the source edition, locator, access date, and actual pending review status', async () => {
     const harness = await RouterTestingHarness.create('/verbete/constituicao-de-1988');
     const root = harness.routeNativeElement!;
@@ -56,6 +72,16 @@ describe('ATLAS application', () => {
     expect(root.textContent).toContain('Sustenta: Constituição Federal de 1988');
     expect(root.querySelector('a[href="https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html"]')).not.toBeNull();
     expect(root.textContent).not.toContain('Revisado por');
+    expect(root.querySelector('a[href="/fontes"]')?.textContent).toContain('Abrir biblioteca de fontes');
+  });
+
+  it('renders contextual profile details and sourced relations for a person record', async () => {
+    const harness = await RouterTestingHarness.create('/verbete/ulysses-guimaraes');
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('.entry-context')?.textContent).toContain('Atuação documentada em registros oficiais da Câmara dos Deputados');
+    expect(root.querySelector('.entry-context')?.textContent).toContain('1916–1992');
+    expect(root.querySelector('.related-records')?.textContent).toContain('Assembleia Nacional Constituinte de 1987–1988');
+    expect(root.querySelector('.related-records a[href="/fontes"]')?.textContent).toContain('Consultar biblioteca de fontes');
   });
 
   it('renders a source library from registered sources and links to their related records', async () => {
@@ -88,6 +114,33 @@ describe('ATLAS application', () => {
       '/tempo-e-espaco',
       '/conhecimento',
     ]);
+  });
+
+  it('searches historical entries across every registered atlas', async () => {
+    const harness = await RouterTestingHarness.create('/conhecimento?q=ulysses');
+    const root = harness.routeNativeElement as HTMLElement;
+    const result = root.querySelector<HTMLAnchorElement>('.results a[href="/verbete/ulysses-guimaraes"]');
+    expect(result?.textContent).toContain('Ulysses Guimarães');
+    expect(root.querySelector('[role="status"]')?.textContent).toContain('1 registros encontrados');
+  });
+
+  it('submits the homepage search and opens its matching record', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    const root = harness.routeNativeElement as HTMLElement;
+    const input = root.querySelector<HTMLInputElement>('[role="search"] input')!;
+    input.value = 'Ulysses Guimarães';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    harness.detectChanges();
+    root.querySelector<HTMLFormElement>('[role="search"]')!.dispatchEvent(
+      new Event('submit', { bubbles: true, cancelable: true }),
+    );
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+
+    expect(TestBed.inject(Router).url.startsWith('/conhecimento?q=')).toBe(true);
+    expect(decodeURIComponent(TestBed.inject(Router).url)).toContain('Ulysses Guimarães');
+    expect(harness.routeNativeElement?.querySelector('.results a[href="/verbete/ulysses-guimaraes"]')?.textContent)
+      .toContain('Ulysses Guimarães');
   });
 
 
@@ -424,9 +477,20 @@ describe('ATLAS application', () => {
     const harness = await RouterTestingHarness.create(url);
     const root = harness.routeNativeElement as HTMLElement;
     expect(root.querySelector('h1')?.textContent?.trim()).toBe(heading);
-    expect(root.querySelector('[data-detail-link]')).not.toBeNull();
+    expect(root.querySelector('[data-detail-link], .registered-entries a')).not.toBeNull();
     expect(root.querySelector('app-content-summary section[aria-labelledby="category-summary-title"] h2')
       ?.textContent?.trim()).toBe('Sobre esta categoria');
+  });
+
+  it.each([
+    ['/explorar/artigo', '/verbete/constituicao-de-1988', 'O caput do artigo 5º da Constituição de 1988'],
+    ['/explorar/pessoa', '/verbete/ulysses-guimaraes', 'Ulysses Guimarães'],
+    ['/explorar/evento', '/verbete/promulgacao-constituicao-1988', 'Promulgação da Constituição Federal de 1988'],
+  ])('links a real %s record from its editorial category', async (url, target, title) => {
+    const harness = await RouterTestingHarness.create(url);
+    const link = harness.routeNativeElement?.querySelector<HTMLAnchorElement>(`.registered-entries a[href="${target}"]`);
+    expect(link).not.toBeNull();
+    expect(link?.closest('article')?.textContent).toContain(title);
   });
 
   it.each([
@@ -470,6 +534,24 @@ describe('ATLAS application', () => {
     expect(root.querySelectorAll('article section').length).toBeGreaterThan(0);
     expect(root.querySelector('app-content-summary section[aria-labelledby="page-summary-title"] h2')
       ?.textContent?.trim()).toBe('Resumo');
+    expect(root.querySelector('[data-editorial-status]')?.getAttribute('data-editorial-status'))
+      .toBe(status === 'Formato previsto' ? 'previsto' : 'exemplar');
+    if (status === 'Formato previsto') {
+      expect(root.textContent).toContain('ainda não há publicação temática neste registro');
+    }
+  });
+
+  it('switches the reading template between short and long entries', async () => {
+    const harness = await RouterTestingHarness.create('/explorar/dossie/como-o-atlas-organiza-dossies');
+    expect(harness.routeNativeElement?.querySelectorAll('.article-section')).toHaveLength(1);
+    expect(harness.routeNativeElement?.querySelectorAll('app-reading-outline nav a')).toHaveLength(1);
+
+    await harness.navigateByUrl('/explorar/artigo/conhecimento-com-contexto');
+    expect(harness.routeNativeElement?.querySelectorAll('.article-section')).toHaveLength(3);
+    expect(harness.routeNativeElement?.querySelectorAll('app-reading-outline nav a')).toHaveLength(3);
+
+    await harness.navigateByUrl('/explorar/dossie/como-o-atlas-organiza-dossies');
+    expect(harness.routeNativeElement?.querySelectorAll('.article-section')).toHaveLength(1);
   });
 
   it.each([
@@ -513,12 +595,15 @@ describe('ATLAS application', () => {
     expect(root.querySelector('h1')?.textContent).toContain('Esta página não existe');
     expect(root.querySelector('nav[aria-label="Breadcrumb"]')).not.toBeNull();
     expect(root.querySelector('a.home-link')?.getAttribute('href')).toBe('/');
+    expect(root.querySelector('nav[aria-label="Outros caminhos do ATLAS"] a[href="/conhecimento"]')).not.toBeNull();
+    expect(root.querySelector('nav[aria-label="Outros caminhos do ATLAS"] a[href="/explorar"]')).not.toBeNull();
   });
 
   it.each([
     ['/explorar', 'Explorar conteúdos'],
     ['/estudar', 'Trilhas de estudo'],
     ['/sobre', 'Sobre o ATLAS'],
+    ['/fontes', 'Biblioteca de fontes'],
     ['/rota-inexistente', 'Esta página não existe'],
   ])('renders the right page at %s', async (url, heading) => {
     const harness = await RouterTestingHarness.create(url);

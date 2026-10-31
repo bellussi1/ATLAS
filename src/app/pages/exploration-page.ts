@@ -22,11 +22,11 @@ export class ExplorationPage {
   private readonly params = toSignal(this.route.queryParamMap, { initialValue: this.route.snapshot.queryParamMap });
   readonly mode = computed(() => this.data()['mode'] as string);
   readonly query = computed(() => this.params().get('q') ?? '');
-  readonly atlas = inject(ContentRepository).atlas;
+  readonly graph = inject(ContentRepository).knowledgeGraph;
   readonly results = computed(() => {
     const query = normalize(this.query().trim());
     return [
-      ...this.atlas.entities.map(entity => ({ title: entity.title, summary: entity.summary, label: 'Verbete com evidências', path: '/verbete/' + entity.slug, text: JSON.stringify(entity) })),
+      ...this.graph.atlases.flatMap(atlas => atlas.entities.map(entity => ({ title: entity.title, summary: entity.summary, label: 'Verbete com evidências', path: '/verbete/' + entity.slug, text: JSON.stringify(entity) }))),
       ...editorialEntries.map(entry => ({ title: entry.title, summary: entry.summary, label: entry.statusLabel, path: getEntryPath(entry.type, entry.slug), text: JSON.stringify(entry) })),
     ].filter(entry => normalize(entry.text).includes(query));
   });

@@ -26,7 +26,8 @@ O registro de licenças exige nome e URL da licença para ativos liberados; `Atl
 
 - `/verbete/:slug` apresenta entidades de todos os atlas e mostra estado de não encontrado para slugs desconhecidos.
 - O build prerenderiza todos os slugs de entidades de todos os atlas por `getPrerenderParams` em `src/app/app.routes.server.ts`.
-- As rotas `/explorar`, `/estudar`, `/sobre` e seus detalhes existentes permanecem disponíveis; as páginas de navegação são carregadas sob demanda.
+- As rotas `/explorar`, `/estudar`, `/sobre` e `/fontes` e seus detalhes existentes permanecem disponíveis; páginas de navegação são carregadas sob demanda.
+- `/fontes` lê o grafo estático validado e é prerenderizada junto às demais rotas públicas; não depende de serviço remoto.
 - `src/content` é copiado para `dist/atlas/browser/content`. A rota do verbete e o asset JSON devem ser conferidos na saída real do build.
 
 Não afirmamos que slugs futuros ou todas as combinações dinâmicas são prerenderizados. Um conteúdo novo precisa entrar no JSON válido e passar pelo build para ser publicado estaticamente.

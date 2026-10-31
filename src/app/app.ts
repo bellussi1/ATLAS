@@ -21,13 +21,14 @@ export class AppComponent {
   private readonly document = inject(DOCUMENT);
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);
+  private readonly router = inject(Router);
   instantNavigation = true;
   private firstPage = true;
   private pageAnimation?: Animation;
   private pageFrame = 0;
   constructor() {
     let previousPath: string | undefined;
-    inject(Router).events.pipe(takeUntilDestroyed()).subscribe(event => {
+    this.router.events.pipe(takeUntilDestroyed()).subscribe(event => {
       if (!(event instanceof NavigationEnd)) return;
       const path = event.urlAfterRedirects.split(/[?#]/)[0];
       this.updatePageMetadata(path);
@@ -43,6 +44,7 @@ export class AppComponent {
 
   private updatePageMetadata(path: string): void {
     const pageTitle = this.title.getTitle() || 'ATLAS — compreender o mundo';
+    const routeDescription = this.activeRouteDescription();
     const description = path === '/fontes'
       ? 'Consulte as fontes cadastradas no ATLAS, seus localizadores e as leituras relacionadas.'
       : path === '/conhecimento'
@@ -54,7 +56,8 @@ export class AppComponent {
           : path.startsWith('/explorar/')
       ? 'Leia conteúdos editoriais do ATLAS com contexto, relações e estados editoriais identificados.'
       : path.startsWith('/verbete/')
-        ? 'Consulte um verbete do ATLAS com afirmações, evidências e referências identificáveis.'
+        ? routeDescription
+          || 'Consulte um verbete do ATLAS com contexto, afirmações, evidências e referências identificáveis.'
         : path.startsWith('/estudar')
           ? 'Conheça a proposta de trilhas de estudo do ATLAS e seus materiais disponíveis.'
           : path === '/'
@@ -72,6 +75,16 @@ export class AppComponent {
     // Root-relative canonicals stay correct for static builds without inventing a production host.
     canonical.href = path || '/';
     this.title.setTitle(pageTitle);
+  }
+
+  private activeRouteDescription(): string | undefined {
+    let route = this.router.routerState.snapshot.root;
+    while (route) {
+      const description = route.data['metaDescription'];
+      if (typeof description === 'string') return description;
+      route = route.firstChild!;
+    }
+    return undefined;
   }
 
   transitionPage(): void {

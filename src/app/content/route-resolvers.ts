@@ -20,3 +20,24 @@ export const editorialEntryTitleResolver: ResolveFn<string> = (route) => {
 
 export const trailTitleResolver: ResolveFn<string> = (route) =>
   findEditorialEntry('trilha', route.paramMap.get('slug'))?.title ?? 'Conteúdo não encontrado';
+
+export const knowledgeEntryTitleResolver: ResolveFn<string> = async (route) => {
+  const { methodologyKnowledgeGraph } = await import('../core/content-repository');
+  const slug = route.paramMap.get('slug');
+  const entity = methodologyKnowledgeGraph.atlases.flatMap((atlas) => atlas.entities).find((item) => item.slug === slug);
+  return entity ? `${entity.title} — ATLAS` : 'Verbete não encontrado — ATLAS';
+};
+
+export const knowledgeEntryBreadcrumbResolver: ResolveFn<string> = async (route) => {
+  const { methodologyKnowledgeGraph } = await import('../core/content-repository');
+  const slug = route.paramMap.get('slug');
+  return methodologyKnowledgeGraph.atlases.flatMap((atlas) => atlas.entities).find((item) => item.slug === slug)?.title
+    ?? 'Verbete não encontrado';
+};
+
+export const knowledgeEntryDescriptionResolver: ResolveFn<string> = async (route) => {
+  const { methodologyKnowledgeGraph } = await import('../core/content-repository');
+  const slug = route.paramMap.get('slug');
+  return methodologyKnowledgeGraph.atlases.flatMap((atlas) => atlas.entities).find((item) => item.slug === slug)?.summary
+    ?? 'Este endereço não corresponde a um verbete cadastrado no ATLAS.';
+};

@@ -4,6 +4,9 @@ import {
   contentTypeTitleResolver,
   editorialTypeResolver,
   editorialEntryTitleResolver,
+  knowledgeEntryBreadcrumbResolver,
+  knowledgeEntryDescriptionResolver,
+  knowledgeEntryTitleResolver,
   trailTitleResolver,
 } from './content/route-resolvers';
 
@@ -97,9 +100,12 @@ export const routes: Routes = [
   },
   {
     path: 'verbete/:slug',
-    data: { breadcrumb: 'Verbete' },
+    resolve: {
+      breadcrumb: knowledgeEntryBreadcrumbResolver,
+      metaDescription: knowledgeEntryDescriptionResolver,
+    },
     loadComponent: () => import('./features/entry/entry-page').then((module) => module.EntryPage),
-    title: 'Verbete — ATLAS',
+    title: knowledgeEntryTitleResolver,
   },
   {
     path: '**',

@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { findEditorialEntry, getEntryPath } from '../content/editorial-entries';
 import { getEditorialType } from '../content/content-types';
+import { ContentRepository } from '../core/content-repository';
 import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent } from '../shared/ui-primitives';
 
 @Component({
@@ -16,7 +17,22 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
           <p class="page__lead">{{ item.summary }}</p>
         </app-content-summary>
 
+        @if (registeredEntries().length) {
+          <section class="registered-entries" aria-labelledby="registered-title">
+            <h2 appHeading="section" id="registered-title">Registros disponíveis</h2>
+            @for (record of registeredEntries(); track record.entity.id) {
+              <article>
+                <p class="record-collection">{{ record.atlasTitle }}</p>
+                <h3>{{ record.entity.title }}</h3>
+                <p>{{ record.entity.summary }}</p>
+                <a appEditorialLink [routerLink]="'/verbete/' + record.entity.slug">Abrir registro de {{ record.label.toLocaleLowerCase('pt-BR') }}</a>
+              </article>
+            }
+          </section>
+        }
+
         @if (entry(); as example) {
+          @if (!registeredEntries().length || example.status === 'exemplar') {
           <section class="entry" aria-labelledby="entry-title">
             <p class="entry__status">{{ example.statusLabel }}</p>
             <h2 appHeading="section" id="entry-title">{{ example.title }}</h2>
@@ -26,6 +42,7 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
               <span aria-hidden="true">↗</span>
             </a>
           </section>
+          }
         }
       </app-page-template>
     } @else {
@@ -41,6 +58,13 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
     h1 { max-width: 14ch; margin: 0; letter-spacing: -.065em; line-height: .98; }
     .page__lead { max-width: 42rem; margin: 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
     .entry { max-width: 50rem; margin-top: clamp(3rem, 8vw, 6rem); padding: 1.5rem 0 0 1.5rem; border-left: .25rem solid var(--signal); }
+    .registered-entries { max-width: 50rem; margin-top: clamp(3rem, 8vw, 6rem); border-top: 2px solid var(--color-ink); }
+    .registered-entries > h2 { margin-top: 1rem; font: 500 1.6rem/1.2 var(--font-serif); }
+    .registered-entries article { padding-block: 1.25rem; border-bottom: 1px solid var(--color-border); }
+    .registered-entries h3 { margin: .25rem 0; font: 500 1.35rem/1.2 var(--font-serif); }
+    .registered-entries article > p:not(.record-collection) { max-width: 40rem; line-height: 1.6; }
+    .record-collection { margin: 0; color: var(--color-ink-muted); font: .72rem/1.5 var(--font-mono); }
+    .registered-entries a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--signal); text-underline-offset: .2em; }
     .entry__status { margin: 0 0 .75rem; color: var(--ink-muted); font-size: .9rem; }
     h2 { margin: 0; font: 500 clamp(1.8rem, 4vw, 2.6rem)/1.1 var(--serif); }
     .entry > p:not(.entry__status) { max-width: 38rem; color: var(--ink-muted); line-height: 1.65; }
@@ -50,8 +74,23 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
 })
 export class ContentTypePage {
   private readonly route = inject(ActivatedRoute);
+  private readonly graph = inject(ContentRepository).knowledgeGraph;
   private readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
   readonly category = computed(() => getEditorialType(this.params().get('tipo')));
+  readonly registeredEntries = computed(() => {
+    const category = this.category();
+    if (!category) return [];
+    const kinds: Record<string, readonly string[]> = {
+      verbete: ['concept'],
+      artigo: ['article'],
+      pessoa: ['person'],
+      evento: ['event'],
+    };
+    const acceptedKinds = kinds[category.slug] ?? [];
+    return this.graph.atlases.flatMap((atlas) => atlas.entities
+      .filter((entity) => acceptedKinds.includes(entity.kind))
+      .map((entity) => ({ atlasTitle: atlas.title, entity, label: category.label })));
+  });
   readonly entry = computed(() => {
     const category = this.category();
     return category

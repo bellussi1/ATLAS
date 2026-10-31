@@ -1,8 +1,10 @@
 import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import type { Atlas, Claim, Citation, Evidence, Source, Review } from '../core/content-schema';
 
 @Component({
   selector: 'app-claim-references',
+  imports: [RouterLink],
   template: `
     <section class="claim-reference" [attr.aria-labelledby]="'claim-' + claim().id">
       <h3 [id]="'claim-' + claim().id">Afirmação e evidência</h3>
@@ -28,6 +30,7 @@ import type { Atlas, Claim, Citation, Evidence, Source, Review } from '../core/c
           }
         }
       }
+      <a class="source-library-link" routerLink="/fontes">Abrir biblioteca de fontes</a>
     </section>
   `,
   styles: `
@@ -39,6 +42,7 @@ import type { Atlas, Claim, Citation, Evidence, Source, Review } from '../core/c
     .claim-reference__status, .claim-reference__review { font-size: .88rem; }
     .claim-reference__source { margin-top: .8rem; font-size: .88rem; }
     a { color: var(--color-accent, var(--signal)); font-weight: 650; text-underline-offset: .2em; }
+    .source-library-link { display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: .6rem; }
     a:focus-visible { outline: 3px solid var(--color-accent, var(--signal)); outline-offset: 3px; }
   `,
 })
