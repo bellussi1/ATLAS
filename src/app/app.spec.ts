@@ -38,6 +38,7 @@ describe('ATLAS application', () => {
     expect(root.textContent).toContain('Art. 5º, caput');
     expect(root.textContent).toContain('31/10/2026');
     expect(root.textContent).toContain('Revisão editorial pendente');
+    expect(root.textContent).toContain('Sustenta: Constituição Federal de 1988');
     expect(root.querySelector('a[href="https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html"]')).not.toBeNull();
     expect(root.textContent).not.toContain('Revisado por');
   });

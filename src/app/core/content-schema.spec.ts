@@ -16,7 +16,7 @@ const validAtlas = {
       sections: [{ heading: 'Contexto', paragraphs: ['Conteúdo de método.'] }],
     },
   ],
-  sources: [{ id: 'source-guidelines', title: 'Regras editoriais', url: 'https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html', edition: '2026', publicationDate: null }],
+  sources: [{ id: 'source-guidelines', title: 'Regras editoriais', url: null, edition: 'AGENTS.md — seção Design e conteúdo', publicationDate: null }],
   evidences: [{ id: 'evidence-guidelines', sourceId: 'source-guidelines', locator: 'seção Conteúdo', accessedAt: '2026-10-31', note: null }],
   citations: [{ id: 'citation-guidelines', evidenceId: 'evidence-guidelines', relation: 'supports' }],
   claims: [
@@ -119,6 +119,14 @@ describe('atlasSchema', () => {
     expect(atlasSchema.safeParse({ ...validAtlas, citations: [] }).success).toBe(false);
     expect(atlasSchema.safeParse({ ...validAtlas, reviews: [] }).success).toBe(false);
     expect(atlasSchema.safeParse({ ...validAtlas, claims: [{ ...validAtlas.claims[0], citationIds: [] }] }).success).toBe(false);
+    expect(atlasSchema.safeParse({
+      ...validAtlas,
+      evidences: [{ ...validAtlas.evidences[0], sourceId: 'source-missing' }],
+    }).success).toBe(false);
+    expect(atlasSchema.safeParse({
+      ...validAtlas,
+      evidences: [{ ...validAtlas.evidences[0], locator: '  ' }],
+    }).success).toBe(false);
   });
 
   it('requires verified reviews to identify a human and a review date', () => {
@@ -134,6 +142,17 @@ describe('atlasSchema', () => {
     expect(assetLicenseSchema.safeParse({
       id: 'license-unknown', assetPath: '/image.png', creator: null, license: null,
       licenseUrl: null, status: 'unknown', reproduction: 'allowed',
+    }).success).toBe(false);
+  });
+
+  it('rejects known licenses without terms and duplicate asset paths', () => {
+    expect(assetLicenseSchema.safeParse({
+      id: 'license-incomplete', assetPath: '/image.png', creator: null, license: null,
+      licenseUrl: null, status: 'known', reproduction: 'allowed',
+    }).success).toBe(false);
+    expect(atlasSchema.safeParse({
+      ...validAtlas,
+      assetLicenses: [...validAtlas.assetLicenses, { ...validAtlas.assetLicenses[0], id: 'license-second' }],
     }).success).toBe(false);
   });
 });

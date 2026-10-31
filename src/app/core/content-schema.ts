@@ -137,6 +137,8 @@ export const atlasSchema = z.object({
 
   const slugRecords = [atlas.slug, ...atlas.entities.map((entity) => entity.slug), ...atlas.learningPaths.map((path) => path.slug)];
   if (new Set(slugRecords).size !== slugRecords.length) context.addIssue({ code: 'custom', message: 'Slugs devem ser únicos no atlas.', path: ['entities'] });
+  const assetPaths = atlas.assetLicenses.map((asset) => asset.assetPath);
+  if (new Set(assetPaths).size !== assetPaths.length) context.addIssue({ code: 'custom', message: 'Cada caminho de ativo deve ter um único registro de licença.', path: ['assetLicenses'] });
 
   const entityIds = new Set(atlas.entities.map((record) => record.id));
   const sourceIds = new Set(atlas.sources.map((record) => record.id));
