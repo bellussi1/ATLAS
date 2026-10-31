@@ -9,13 +9,17 @@ async function htmlFiles(directory) {
 }
 const errors = [];
 const files = await htmlFiles(root);
+if (!files.length) throw new Error('Nenhum HTML encontrado; execute npm run build antes da verificação.');
 const quiet = new VirtualConsole();
 for (const file of files) {
   const dom = new JSDOM(await readFile(file, 'utf8'), { virtualConsole: quiet });
   for (const link of dom.window.document.querySelectorAll('a[href]')) {
     const href = link.getAttribute('href');
-    if (!href || (!href.startsWith('/') && !href.startsWith('#')) || href.startsWith('//')) continue;
-    const url = new URL(href, `https://atlas.invalid/${file.slice(root.length + 1).replaceAll('\\', '/').replace(/index\.html$/, '')}`);
+    if (!href) continue;
+    let url;
+    try { url = new URL(href, `https://atlas.invalid/${file.slice(root.length + 1).replaceAll('\\', '/').replace(/index\.html$/, '')}`); }
+    catch { errors.push(`${file}: URL inválida ${href}`); continue; }
+    if (url.origin !== 'https://atlas.invalid') continue;
     let target = resolve(root, '.' + decodeURIComponent(url.pathname));
     if (target !== root && !target.startsWith(root + sep)) { errors.push(`${file}: ${href}`); continue; }
     try {
