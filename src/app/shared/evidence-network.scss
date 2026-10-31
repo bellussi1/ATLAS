@@ -30,3 +30,17 @@ select { padding: .5rem; }
 @media (min-width: 48rem) { .network { height: 24rem; } .network--list { height: auto; } }
 
 .follow-connection { display: block; text-align: left; padding: .5rem; margin-top: .5rem; color: var(--color-accent); background: var(--color-surface); font-size: .8rem; }
+
+.network-stage { border:1px solid var(--color-ink);background:var(--color-canvas); }
+.network { border:0;height:calc(var(--network-rows, 1) * 8.5rem);min-height:24rem; }
+.network li { width:29%;max-width:none; }
+.network button { min-height:5rem;border:1px solid var(--color-ink);box-shadow:3px 3px 0 var(--color-surface-subtle);padding:.75rem; }
+.network button span { color:var(--color-accent); }
+.network button[aria-pressed=true] span { color:white; }
+.context { border:0;border-top:1px solid var(--color-ink);padding:1.5rem;min-height:0; }
+.context h2 { font-size:clamp(1.6rem,2.5vw,2.2rem);line-height:1.05; }
+@media(min-width:64rem) { .network-stage { display:grid;grid-template-columns:minmax(0,1fr) minmax(17rem,.42fr);align-items:start; } .context { border-top:0;border-left:1px solid var(--color-ink);position:sticky;top:1rem;max-height:85vh;overflow:auto; } }
+@media(max-width:47.99rem) { .network { height:auto;min-height:0; } .network svg { display:none; } .network ul { display:grid;gap:.75rem;padding:.75rem; } .network li { position:static;transform:none;width:100%; } }
+.network--list { height:auto;min-height:0; }
+.network--list li { width:100%; }
+@media(hover:hover) and (pointer:fine) { .network button:hover { border-color:var(--color-accent); } }

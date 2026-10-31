@@ -1,3 +1,4 @@
+import { AtlasEvidenceNetworkComponent } from '../shared/evidence-network';
 import { AtlasEditorialTextComponent } from '../shared/editorial-text';
 import { AtlasEditorialMarkComponent } from '../shared/editorial-mark';
 import { DialogModule } from '@angular/cdk/dialog';
@@ -14,7 +15,7 @@ import {
 
 @Component({
   selector: 'app-home-page',
-  imports: [AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasTextFieldComponent, AtlasReadingPreviewDirective, AtlasEditorialTextComponent, AtlasEditorialMarkComponent, DialogModule, RouterLink],
+  imports: [AtlasEvidenceNetworkComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasTextFieldComponent, AtlasReadingPreviewDirective, AtlasEditorialTextComponent, AtlasEditorialMarkComponent, DialogModule, RouterLink],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

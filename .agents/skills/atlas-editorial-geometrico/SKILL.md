@@ -75,3 +75,8 @@ Não inventar documentos, fontes, citações, datas, coordenadas, licenças, mé
 ## Container comum e continuidade
 
 Usar --grid-max (90rem incluindo padding) e --grid-gutter para alinhar os limites de header, breadcrumbs, páginas e footer. Manter medidas menores para o texto dentro desse container. Não recriar navegação textual dos três modos: as portas coloridas do header já cumprem essa função. A entrada de página usa os tokens de movimento existentes, preservando troca imediata por teclado/reduced motion e sem reiniciar em busca ou âncoras.
+
+
+## Referência Claude — Tudo se liga
+
+O HTML enviado pelo usuário em 31/10/2026 acrescenta abertura tipográfica de grande escala, palavra de ação vermelha, suporte verde com recorte geométrico, divisórias fortes, rede e painel contextual lado a lado e fichas editoriais. Aplicar essa linguagem ao miolo; header, footer, logo e favicon foram explicitamente preservados. Reutilizar a rede e as prévias existentes. Não importar afirmações, relações, datas ou licenças ilustrativas do protótipo como registros validados. A rede precisa alocar uma posição por registro; no mobile, priorizar lista operável. Detalhes da adaptação em docs/REFERENCIA-CLAUDE.md.

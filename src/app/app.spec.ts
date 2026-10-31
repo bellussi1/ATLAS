@@ -24,7 +24,7 @@ describe('ATLAS application', () => {
 
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector('h1')?.textContent?.replace(/\s+/g, ' ')).toContain(
-      'Uma mesa de pesquisa.',
+      'Tudo se liga.',
     );
     expect(root.textContent).toContain('História, política, economia e sociedade');
     expect(root.querySelector('[role="search"] input')?.hasAttribute('readonly')).toBe(false);
@@ -232,7 +232,7 @@ describe('ATLAS application', () => {
     expect(root.querySelector('#sheet-title')?.textContent).toBe('Conhecimento com contexto');
     expect(choices[1].getAttribute('aria-pressed')).toBe('true');
     expect(root.querySelector('.sheet-actions a')?.getAttribute('href')).toBe('/explorar/artigo/conhecimento-com-contexto');
-    expect(root.querySelector('[role="status"]')?.textContent).toContain('Conhecimento com contexto');
+    expect(root.querySelector('.selection-status')?.textContent).toContain('Conhecimento com contexto');
     expect(root.querySelector('.excerpt')?.textContent).toContain('Compreender relações');
     const select = root.querySelector<HTMLSelectElement>('#sheet-select')!;
     select.value = 'atlas-de-metodo';

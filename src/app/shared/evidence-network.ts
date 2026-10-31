@@ -54,11 +54,15 @@ export class AtlasEvidenceNetworkComponent {
     return [...relations, ...otherEdges];
   });
   title(id: string): string { return this.nodes.find(node => node.id === id)?.title ?? id; }
-  position(id: string): number { return this.visibleNodes().length === 1 ? 50 : [50, 24, 76][this.visibleNodes().findIndex(node => node.id === id) % 3]; }
+  readonly rowCount = computed(() => Math.max(1, Math.ceil(this.visibleNodes().length / 3)));
+  position(id: string): number { return this.visibleNodes().length === 1 ? 50 : [17, 50, 83][this.visibleNodes().findIndex(node => node.id === id) % 3]; }
   follow(id: string): void { this.kind.set('Todos'); this.selectedId.set(id); }
   filter(value: string): void { this.kind.set(value); this.selectedId.set(this.visibleNodes()[0]?.id ?? ''); }
 
-  vertical(id: string): number { return this.visibleNodes().length === 1 ? 50 : [68, 22, 22][this.visibleNodes().findIndex(node => node.id === id) % 3]; }
+  vertical(id: string): number {
+    return (Math.floor(this.visibleNodes().findIndex(node => node.id === id) / 3) + .5) / this.rowCount() * 100;
+  }
+
 
   readonly kinds = computed(() => ['Todos', ...new Set(this.nodes.map(node => node.kind))]);
   kindLabel(kind: string): string {

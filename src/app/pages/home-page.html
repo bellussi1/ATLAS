@@ -1,12 +1,14 @@
 <section class="research-room" aria-labelledby="home-title">
   <header class="room-header">
-    <h1 appHeading="page" id="home-title">Uma mesa<br /> de pesquisa.</h1>
-    <div class="room-intro"><p>História, política, economia e sociedade</p><p>Abra uma ficha. Leia um trecho. Siga o que conecta uma ideia à sua evidência.</p></div>
+    <h1 appHeading="page" id="home-title">Tudo<br /> se <em>liga.</em></h1>
+    <div class="room-intro"><p>História, política, economia e sociedade</p><p>Escolha um ponto. Descubra uma conexão. Abra uma leitura e continue investigando.</p></div>
     <form role="search" aria-label="Busca no ATLAS" (submit)="search($event)">
       <app-text-field controlId="atlas-search" label="Procurar no acervo" type="search" placeholder="Um assunto, uma pergunta…" [value]="query()" (valueChange)="query.set($event)" />
       <button class="search-button" type="submit">Pesquisar</button>
     </form>
   </header>
+  <section class="connections" aria-labelledby="connections-title"><header class="section-heading"><h2 id="connections-title">Investigue uma conexão.</h2><a appEditorialLink routerLink="/relacoes">Abrir Relações ↗</a></header><p>Explore os registros disponíveis. Cada vínculo leva a um contexto e às evidências que você pode conferir.</p><app-evidence-network /></section>
+  <header class="section-heading archive-heading"><h2>Uma mesa de pesquisa.</h2><span>Selecione uma ficha para aproximar a leitura</span></header>
   <div class="research-table">
     <aside class="table-index">
       <div class="collection-stamp"><span>ATLAS</span><p>Acervo em formação</p><p>Esta mesa destaca três textos de metodologia. Pesquise também os verbetes e relações já registrados.</p></div>
@@ -21,7 +23,6 @@
       <p class="table-instruction">As fichas são entradas para leitura, não reproduções de documentos históricos.</p>
     </aside>
     <div class="document-space">
-      <div class="binding" aria-hidden="true"><span></span><span></span><span></span></div>
       <article class="reading-sheet" #sheet aria-labelledby="sheet-title">
         <header class="sheet-header"><span>{{ selected().statusLabel }}</span><span>ATLAS / leitura</span></header>
         <div class="sheet-content">
@@ -33,7 +34,7 @@
         </div>
         <footer class="sheet-footer"><span>{{ selected().sections.length }} seções</span><span>Conteúdo sobre o método do projeto</span></footer>
       </article>
-      <aside class="source-slip" aria-labelledby="source-slip-title"><span class="source-label">Por trás da leitura</span><h3 id="source-slip-title">Uma afirmação precisa de contexto.</h3><p><app-editorial-text [text]="atlas.claims[0].text" [inverse]="true" /></p><a routerLink="/relacoes">Investigar a relação com a fonte</a></aside>
+
     </div>
   </div>
   <p class="selection-status" role="status">Na mesa: {{ selected().title }}.</p>

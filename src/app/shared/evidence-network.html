@@ -3,7 +3,8 @@
         @for (category of kinds(); track category) { <option [value]="category">{{ category }}</option> }
       </select><button class="view-toggle" type="button" [attr.aria-pressed]="listView()" (click)="listView.set(!listView())">{{ listView() ? "Ver rede" : "Ver lista" }}</button></div>
       <p class="kicker" role="status">{{ visibleNodes().length }} registros · {{ visibleEdges().length }} conexões visíveis</p>
-      <div class="network" [class.network--list]="listView()" aria-label="Grafo de conhecimento e relações documentadas">
+      <div class="network-stage">
+      <div class="network" [class.network--list]="listView()" [style.--network-rows]="rowCount()" aria-label="Grafo de conhecimento e relações documentadas">
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
           @for (edge of visibleEdges(); track edge.from + edge.to) { <line [class.active]="edge.from === selectedId() || edge.to === selectedId()" [attr.x1]="position(edge.from)" [attr.y1]="vertical(edge.from)" [attr.x2]="position(edge.to)" [attr.y2]="vertical(edge.to)" /> }
         </svg>
@@ -23,4 +24,5 @@
           <a appEditorialLink [routerLink]="node.path">Ler o verbete e suas evidências →</a>
         </section>
       }
+      </div>
       <p class="caption">O grafo reúne entidades e atlas; relações históricas mostram direção, inversa e evidências registradas. Filtros e lista contextual oferecem alternativas à leitura visual das conexões.</p>
