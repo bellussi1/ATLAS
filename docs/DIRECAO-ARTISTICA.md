@@ -89,3 +89,10 @@ Na autocrítica, os desenhos dos modos foram removidos por não acrescentarem in
 Skills instaladas em C:/Users/Bellussi/.codex/skills, com prefixo atlas- para preservar as instalações anteriores: frontend-design (anthropics/skills), interaction-design (wshobson/agents), animate, find-animation-opportunities e improve-animations (emilkowalski/skills), 12-principles-of-animation (raphaelsalaja/skills). Esta última foi recuperada da revisão 376dbc168120520309c15d6dc6abfc4d8be5a12b, anterior ao arquivamento. Os arquivos foram lidos e aplicados nesta execução; o catálogo de skills instalado também estará disponível nos próximos turnos.
 
 Capturas atuais: [desktop](direcao-artistica/screenshots/research-table-desktop.png), [mobile](direcao-artistica/screenshots/research-table-mobile.png). A auditoria de movimento está em ../animation-plans/001-research-table-review.md.
+
+
+## Evolução aprovada: editorial geométrico
+
+Após aprovar a mesa, o usuário solicitou uma skill própria, mais cores, termos vermelhos navegáveis e elementos geométricos. A base da mesa foi preservada. Os novos motivos identificam os formatos reais de leitura; verde, ocre, rosa e índigo ampliam a paleta sem transformar toda a página em uma colagem. As cinco novas referências de cartazes e composições geométricas foram usadas como inspiração, sem cópia de imagens na aplicação.
+
+A skill atlas-editorial-geometrico está versionada em .agents/skills e instalada no catálogo local. Capturas desta evolução: [desktop](direcao-artistica/screenshots/geometric-editorial-desktop.png) e [mobile](direcao-artistica/screenshots/geometric-editorial-mobile.png).

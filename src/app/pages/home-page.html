@@ -14,7 +14,7 @@
       <fieldset class="sheet-selector"><legend>Escolha uma ficha</legend>
         @for (entry of readings; track entry.slug) {
           <button class="sheet-choice" type="button" [attr.aria-pressed]="selected().slug === entry.slug" (click)="select(entry, $event)">
-            <span class="choice-kind">{{ entry.type }}</span><strong>{{ entry.title }}</strong><span class="choice-indicator" aria-hidden="true">{{ selected().slug === entry.slug ? '●' : '○' }}</span>
+            <app-editorial-mark [kind]="entry.type" /><span class="choice-kind">{{ entry.type }}</span><strong>{{ entry.title }}</strong><span class="choice-indicator" aria-hidden="true">{{ selected().slug === entry.slug ? '●' : '○' }}</span>
           </button>
         }
       </fieldset>
@@ -25,15 +25,15 @@
       <article class="reading-sheet" #sheet aria-labelledby="sheet-title">
         <header class="sheet-header"><span>{{ selected().statusLabel }}</span><span>ATLAS / leitura</span></header>
         <div class="sheet-content">
-          <p class="sheet-type">{{ selected().type }}</p>
+          <div class="sheet-identity"><a class="sheet-type" appEditorialLink [routerLink]="'/explorar/' + selected().type">{{ selected().type }}</a><app-editorial-mark [kind]="selected().type" /></div>
           <h2 id="sheet-title">{{ selected().title }}</h2>
-          <p class="sheet-summary">{{ selected().summary }}</p>
-          <div class="excerpt"><h3>{{ selected().sections[0].heading }}</h3><p>{{ selected().sections[0].paragraphs[0] }}</p></div>
+          <p class="sheet-summary"><app-editorial-text [text]="selected().summary" /></p>
+          <div class="excerpt"><h3>{{ selected().sections[0].heading }}</h3><p><app-editorial-text [text]="selected().sections[0].paragraphs[0]" /></p></div>
           <div class="sheet-actions"><button class="reading-preview-trigger" type="button" [appReadingPreview]="selected()" [attr.aria-label]="'Prévia de ' + selected().title">Aproximar a leitura</button><a appEditorialLink [routerLink]="entryPath(selected().type, selected().slug)">Ler o texto completo</a></div>
         </div>
         <footer class="sheet-footer"><span>{{ selected().sections.length }} seções</span><span>Conteúdo sobre o método do projeto</span></footer>
       </article>
-      <aside class="source-slip" aria-labelledby="source-slip-title"><span class="source-label">Por trás da leitura</span><h3 id="source-slip-title">Uma afirmação precisa de contexto.</h3><p>{{ atlas.claims[0].text }}</p><a routerLink="/relacoes">Investigar a relação com a fonte</a></aside>
+      <aside class="source-slip" aria-labelledby="source-slip-title"><span class="source-label">Por trás da leitura</span><h3 id="source-slip-title">Uma afirmação precisa de contexto.</h3><p><app-editorial-text [text]="atlas.claims[0].text" [inverse]="true" /></p><a routerLink="/relacoes">Investigar a relação com a fonte</a></aside>
     </div>
   </div>
   <p class="selection-status" role="status">Na mesa: {{ selected().title }}.</p>

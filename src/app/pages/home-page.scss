@@ -86,3 +86,15 @@ form { display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;align-ite
 .mobile-sheet-control label { display:block;font-size:.85rem;margin-bottom:.5rem; }
 .mobile-sheet-control select { width:100%;min-height:2.75rem;color:var(--color-ink);background:var(--color-canvas);border:1px solid var(--color-ink);padding:.5rem;font:inherit;font-size:.85rem; }
 @media(min-width:48rem) { .mobile-sheet-control { display:none; } }
+
+/* Motifs identify editorial formats; labels remain the accessible source of meaning. */
+.sheet-choice app-editorial-mark { grid-column:1/-1; width:4.5rem; margin-bottom:.25rem; }
+.sheet-identity { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
+.sheet-identity app-editorial-mark { width:clamp(7rem,18vw,12rem); flex-shrink:0; }
+.sheet-identity .sheet-type { margin:0; min-height:2.75rem; display:inline-flex; align-items:center; }
+.collection-stamp { border-left:.35rem solid var(--color-teal-paper); padding-left:.75rem; }
+.pathway--relations { border-top-color:var(--color-teal-paper); }
+.pathway--time { border-top-color:var(--color-ochre-paper); }
+.pathway--knowledge { border-top-color:var(--color-rose-paper); }
+
+.source-slip a:focus-visible { outline-color:var(--color-on-strong-surface); }

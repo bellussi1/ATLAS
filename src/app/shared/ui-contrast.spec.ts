@@ -22,6 +22,10 @@ function contrast(foreground: string, background: string): number {
 describe('semantic design token contrast', () => {
   it.each([
     ['color-ink', 'color-canvas', 4.5],
+    ['color-ink', 'color-teal-paper', 4.5],
+    ['color-ink', 'color-ochre-paper', 4.5],
+    ['color-ink', 'color-rose-paper', 4.5],
+    ['color-on-strong-surface', 'color-indigo', 4.5],
     ['color-ink', 'color-surface', 4.5],
     ['color-ink', 'color-surface-raised', 4.5],
     ['color-ink', 'color-surface-subtle', 4.5],

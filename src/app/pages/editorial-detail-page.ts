@@ -1,3 +1,4 @@
+import { AtlasEditorialTextComponent } from '../shared/editorial-text';
 import { AtlasReadingOutlineComponent } from '../shared/reading-outline';
 import { AtlasContinueReadingComponent } from '../shared/continue-reading';
 import { Component, computed, inject } from '@angular/core';
@@ -9,7 +10,7 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
 
 @Component({
   selector: 'app-editorial-detail-page',
-  imports: [AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent, AtlasReadingOutlineComponent, AtlasContinueReadingComponent, RouterLink],
+  imports: [AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent, AtlasReadingOutlineComponent, AtlasContinueReadingComponent, AtlasEditorialTextComponent, RouterLink],
   template: `
     @if (entry(); as page) {
       <app-page-template labelledBy="page-title">
@@ -35,7 +36,7 @@ import { AtlasContentSummaryComponent, AtlasEditorialLinkDirective, AtlasHeading
           <section class="article-section" [attr.aria-labelledby]="'section-' + $index">
             <h2 tabindex="-1" [id]="'section-' + $index">{{ section.heading }}</h2>
             @for (paragraph of section.paragraphs; track paragraph) {
-              <p>{{ paragraph }}</p>
+              <p><app-editorial-text [text]="paragraph" [currentPath]="entryPath(page.type, page.slug)" /></p>
             }
           </section>
         }

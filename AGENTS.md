@@ -58,3 +58,6 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 Para criação e revisão de UI, usar as skills instaladas com prefixo atlas-: frontend-design, interaction-design, find-animation-opportunities, animate, improve-animations e 12-principles-of-animation. As duas skills de auditoria orientam a revisão; a execução segue pela skill de implementação, sem encerrar uma tarefa autorizada apenas com planos.
 
 Partir do briefing deste projeto e de suas referências visuais. Não transportar composições, paletas ou padrões de outros projetos do usuário. Preservar funcionalidades, arquitetura, acessibilidade e integridade editorial ao reconstruir a apresentação. Não alegar remoção de memória do modelo ou de histórico de chats.
+
+
+A skill própria atlas-editorial-geometrico, versionada em .agents/skills/atlas-editorial-geometrico e instalada no catálogo local, orienta a identidade aprovada do ATLAS. Ela complementa as skills gerais, preserva a mesa de pesquisa e organiza cores secundárias, palavras navegáveis e motivos geométricos.

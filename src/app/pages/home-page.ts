@@ -1,3 +1,5 @@
+import { AtlasEditorialTextComponent } from '../shared/editorial-text';
+import { AtlasEditorialMarkComponent } from '../shared/editorial-mark';
 import { DialogModule } from '@angular/cdk/dialog';
 import { AtlasReadingPreviewDirective } from '../shared/reading-preview';
 import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
@@ -12,7 +14,7 @@ import {
 
 @Component({
   selector: 'app-home-page',
-  imports: [AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasTextFieldComponent, AtlasReadingPreviewDirective, DialogModule, RouterLink],
+  imports: [AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasTextFieldComponent, AtlasReadingPreviewDirective, AtlasEditorialTextComponent, AtlasEditorialMarkComponent, DialogModule, RouterLink],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

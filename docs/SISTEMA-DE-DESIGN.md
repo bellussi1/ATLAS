@@ -108,3 +108,17 @@ As prévias da home, o índice de seções, a indicação de posição e os perc
 A home atual substitui a composição anterior de painéis pela seleção de fichas. A busca e os três modos permanecem; o grafo continua na rota Relações, sem repetir uma miniatura na mesa. Os registros e o leitor foram reutilizados. Desktop usa botões de seleção; mobile usa select nativo sincronizado. A prévia aponta para o registro selecionado. A reconstrução visual, as skills aplicadas e as capturas estão em DIRECAO-ARTISTICA.md; a revisão está em animation-plans/001-research-table-review.md na raiz do repositório.
 
 O catálogo instalado usa prefixo atlas- para preservar skills existentes. As instruções de frontend e interação orientaram a composição; find-animation-opportunities selecionou apenas troca de ficha, painel e feedback de pressão; animate implementou esses casos; improve-animations e 12-principles-of-animation revisaram a entrega.
+
+
+## Editorial geométrico: cores e termos navegáveis
+
+A mesa de pesquisa foi aprovada pelo usuário. A evolução solicitada acrescenta os tokens color-teal-paper (#85BDB5), color-ochre-paper (#EDC45B), color-rose-paper (#E9B4BF) e color-indigo (#37395E), mantendo papel, tinta e vermelho como base. Texto principal nas três superfícies claras e branco sobre índigo têm cobertura de contraste automatizada.
+
+AtlasEditorialMarkComponent produz motivos SVG originais para verbete, artigo e atlas; as miniaturas acompanham os controles de seleção e o motivo maior acompanha a ficha atual. Eles não são dados cartográficos nem fac-símiles. Os rótulos textuais continuam disponíveis, e os desenhos são ocultos da árvore acessível.
+
+AtlasEditorialTextComponent preserva o texto e destaca termos de um vocabulário editorial limitado. Contexto abre o artigo Conhecimento com contexto; fonte/evidência abrem a seção de contexto e evidência da metodologia; metodologia abre o verbete estruturado; verbete abre seu índice. São até dois destinos distintos por trecho. currentPath evita links para o próprio texto. Sublinhado complementa o vermelho; inverse mantém texto e foco claros em fundos fortes.
+
+A skill própria está em .agents/skills/atlas-editorial-geometrico/SKILL.md e foi instalada em ~/.codex/skills/atlas-editorial-geometrico. A cópia versionada é a fonte mantida no repositório; ao alterá-la, atualizar a instalação local. references/mesa-aprovada.png preserva a composição aprovada antes da ampliação de cores. O validador estrutural passou; o uso nesta tarefa e os testes de componentes verificam uma aplicação concreta, sem constituir validação universal da skill.
+
+
+Verificação no Chrome: em 320 px, documento e viewport mediram 320 px; os termos tinham sublinhado computado. Trocar para o artigo atualizou título, motivo rosa e destino de leitura. Acionar contexto por Enter abriu o artigo real Conhecimento com contexto. A tela de leitura também permaneceu sem overflow horizontal. Movimento reduzido estava ativo. A validação automatizada passou com 100 testes em seis arquivos.
