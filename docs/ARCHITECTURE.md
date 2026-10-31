@@ -28,6 +28,9 @@ O registro de licenças exige nome e URL da licença para ativos liberados; `Atl
 - O build prerenderiza todos os slugs de entidades de todos os atlas por `getPrerenderParams` em `src/app/app.routes.server.ts`.
 - As rotas `/explorar`, `/estudar`, `/sobre` e `/fontes` e seus detalhes existentes permanecem disponíveis; páginas de navegação são carregadas sob demanda.
 - `/fontes` lê o grafo estático validado e é prerenderizada junto às demais rotas públicas; não depende de serviço remoto.
+- `ContentRepository.discoveryIndex` deriva um índice estático durante a prerenderização a partir do grafo Zod validado e dos exemplares editoriais. Ele inclui entidades, aliases, estados e fontes; cada caminho e âncora de fonte é verificado contra os registros e rotas existentes.
+- Relações de entrada e citações geram backlinks durante a mesma derivação. As telas os identificam como ligações reversas de navegação, exibem o rótulo e o contexto cadastrados e não os apresentam como influência ou causalidade.
+- A busca `/conhecimento` filtra por texto normalizado, tipo e estado com parâmetros de URL. Seus links usam slugs de entidade e âncoras estáveis de fonte; registros abertos a partir da busca preservam consulta e filtros validados no link de retorno.
 - `src/content` é copiado para `dist/atlas/browser/content`. A rota do verbete e o asset JSON devem ser conferidos na saída real do build.
 
 Não afirmamos que slugs futuros ou todas as combinações dinâmicas são prerenderizados. Um conteúdo novo precisa entrar no JSON válido e passar pelo build para ser publicado estaticamente.

@@ -49,7 +49,7 @@ As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLA
 | `npm run lint` | ESLint para TypeScript e templates Angular |
 | `npm run typecheck` | Checagem TypeScript da aplicação e dos testes |
 
-O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca consulta os registros estáticos; não há uma API remota de pesquisa.
+O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca local indexa registros editoriais, entidades e fontes validados, com aliases, filtros por tipo e estado; não há API remota de pesquisa.
 
 O grafo editorial e suas fontes ficam em `src/content/atlas.json`, são validados por `ContentRepository` com Zod e copiados para a saída do build em `content/`. Incluem registros sobre o processo constituinte de 1987–1988 e a Constituição de 1988; afirmações exibem o estado de revisão realmente cadastrado. No navegador, o serviço lê esse asset estático; durante o prerender usa o JSON empacotado. Veja [as decisões e limites da arquitetura](docs/ARCHITECTURE.md).
 

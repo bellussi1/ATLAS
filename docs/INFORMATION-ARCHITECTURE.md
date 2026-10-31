@@ -34,6 +34,10 @@ Valores válidos de `:tipo`: `verbete`, `artigo`, `dossie`, `pessoa`, `evento`, 
 
 A home destaca três textos de metodologia e oferece busca real nos registros do grafo e nas entradas editoriais. O grafo inclui entidades e relações documentadas sobre o processo constituinte de 1987–1988 e a Constituição de 1988. A interface de cronologia e mapas ainda não está disponível; nenhum mapa ou fronteira é simulado.
 
+Em `/conhecimento`, a busca inclui entidades, aliases, fontes e formatos editoriais disponíveis, normaliza acentos e aceita filtros de tipo e estado. Fontes abrem em âncoras estáveis da biblioteca. Verbete e fonte mantêm um retorno contextual à busca; prévias usam botões que funcionam por toque e teclado. Backlinks são gerados das relações e citações registradas e informam seus rótulos e contextos sem sugerir influência.
+
+A jornada de cinco registros coberta pelo teste de navegação segue: evento de promulgação → obra constitucional → conceito de igualdade → artigo 5º → fonte constitucional, com cada vínculo e destino conferidos.
+
 O verbete de metodologia em `/explorar/verbete/como-ler-um-verbete` também aponta para `/verbete/metodologia-do-atlas`, a rota canônica que consome o registro estruturado validado por Zod.
 
 ## Tipos e estado editorial

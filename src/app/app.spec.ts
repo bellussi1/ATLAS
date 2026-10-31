@@ -120,10 +120,86 @@ describe('ATLAS application', () => {
   it('searches historical entries across every registered atlas', async () => {
     const harness = await RouterTestingHarness.create('/conhecimento?q=ulysses');
     const root = harness.routeNativeElement as HTMLElement;
-    const result = root.querySelector<HTMLAnchorElement>('.results a[href="/verbete/ulysses-guimaraes"]');
+    const result = root.querySelector<HTMLAnchorElement>('.results a[href^="/verbete/ulysses-guimaraes"]');
     expect(result?.textContent).toContain('Ulysses Guimarães');
-    expect(root.querySelector('[role="status"]')?.textContent).toContain('1 registros encontrados');
+    expect(root.querySelector('[role="status"]')?.textContent).toContain('registros encontrados');
     expect(root.textContent).toContain('registros editoriais e históricos disponíveis');
+  });
+
+  it('searches aliases and narrows results by type and editorial state', async () => {
+    const harness = await RouterTestingHarness.create('/conhecimento?q=Silveira%20Guimaraes&tipo=pessoa&estado=registered');
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('#discovery-kind')).not.toBeNull();
+    expect(root.querySelector('#discovery-state')).not.toBeNull();
+    expect(root.querySelector('.results a[href^="/verbete/ulysses-guimaraes"]')?.textContent).toContain('Ulysses Guimarães');
+
+    const kind = root.querySelector<HTMLSelectElement>('#discovery-kind')!;
+    kind.value = 'evento';
+    kind.dispatchEvent(new Event('change', { bubbles: true }));
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+    expect(root.querySelector('.results a')).toBeNull();
+    expect(TestBed.inject(Router).url).toContain('tipo=evento');
+  });
+
+  it('indexes sources with stable anchors and gives every result an accessible preview action', async () => {
+    const harness = await RouterTestingHarness.create('/conhecimento?q=Diário%20da%20Assembleia&tipo=fonte');
+    const root = harness.routeNativeElement as HTMLElement;
+    expect(root.querySelector('.results a[href^="/fontes"]')?.getAttribute('href')).toContain('#source-source-diario-promulgacao');
+    expect(root.querySelector('.results a[href^="/fontes"]')?.textContent)
+      .toContain('Diário da Assembleia Nacional Constituinte');
+    expect(root.querySelector('.results button[aria-haspopup="dialog"][aria-label*="Prévia"]')).not.toBeNull();
+  });
+
+  it('previews a discovery record in a dialog that restores focus when closed', async () => {
+    TestBed.overrideProvider(PLATFORM_ID, { useValue: 'browser' });
+    const harness = await RouterTestingHarness.create('/conhecimento?q=Ulyss&tipo=pessoa');
+    const trigger = harness.routeNativeElement!.querySelector<HTMLButtonElement>('button[aria-haspopup="dialog"]')!;
+    expect(document.activeElement).not.toBe(trigger);
+    trigger.click();
+    await harness.fixture.whenStable();
+    const dialog = document.querySelector<HTMLElement>('[role="dialog"]')!;
+    expect(dialog.textContent).toContain('Ulysses Guimarães');
+    expect(dialog.getAttribute('aria-labelledby')).toBe('discovery-preview-title');
+    expect(dialog.contains(document.activeElement)).toBe(true);
+    dialog.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', keyCode: 27, bubbles: true }));
+    await harness.fixture.whenStable();
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(document.activeElement).toBe(trigger);
+  });
+
+  it('returns from a discovered record to its originating search and filters', async () => {
+    const origin = '/conhecimento?q=Silveira%20Guimaraes&tipo=pessoa&estado=registered';
+    const harness = await RouterTestingHarness.create(origin);
+    const destination = harness.routeNativeElement!.querySelector<HTMLAnchorElement>('.results a[href^="/verbete/ulysses-guimaraes"]');
+    expect(destination).not.toBeNull();
+    await harness.navigateByUrl(destination!.getAttribute('href')!);
+    expect(harness.routeNativeElement?.querySelector('.discovery-return')?.getAttribute('href')).toBe(origin);
+  });
+
+  it('restores the source type facet when returning to the originating search', async () => {
+    const origin = '/conhecimento?q=Di%C3%A1rio%20da%20Assembleia&tipo=fonte';
+    const harness = await RouterTestingHarness.create(`/fontes?origem=${encodeURIComponent(origin)}`);
+    const returnLink = harness.routeNativeElement!.querySelector<HTMLAnchorElement>('.discovery-return')!;
+    await harness.navigateByUrl(returnLink.getAttribute('href')!);
+    expect(harness.routeNativeElement?.querySelector<HTMLSelectElement>('#discovery-kind')?.value).toBe('fonte');
+  });
+
+  it('shows reverse links as backlinks and completes a five-node path without broken destinations', async () => {
+    const harness = await RouterTestingHarness.create('/verbete/promulgacao-constituicao-1988');
+    const follow = async (selector: string, destination: string): Promise<void> => {
+      const link = harness.routeNativeElement?.querySelector<HTMLAnchorElement>(selector);
+      expect(link?.getAttribute('href')).toBe(destination);
+      await harness.navigateByUrl(destination);
+    };
+
+    await follow('.related-records a[href="/verbete/constituicao-federal-1988"]', '/verbete/constituicao-federal-1988');
+    await follow('.related-records a[href="/verbete/igualdade-perante-a-lei"]', '/verbete/igualdade-perante-a-lei');
+    await follow('.related-records a[href="/verbete/constituicao-de-1988"]', '/verbete/constituicao-de-1988');
+    await follow('.claim-reference a[href="/fontes#source-source-constitution-1988"]', '/fontes#source-source-constitution-1988');
+    expect(harness.routeNativeElement?.querySelector('#source-source-constitution-1988')).not.toBeNull();
+    expect(harness.routeNativeElement?.textContent).toContain('Links que apontam para esta fonte');
+    expect(harness.routeNativeElement?.querySelector('a[href="/verbete/constituicao-de-1988"]')).not.toBeNull();
   });
 
   it('submits the homepage search and opens its matching record', async () => {
@@ -141,7 +217,7 @@ describe('ATLAS application', () => {
 
     expect(TestBed.inject(Router).url.startsWith('/conhecimento?q=')).toBe(true);
     expect(decodeURIComponent(TestBed.inject(Router).url)).toContain('Ulysses Guimarães');
-    expect(harness.routeNativeElement?.querySelector('.results a[href="/verbete/ulysses-guimaraes"]')?.textContent)
+    expect(harness.routeNativeElement?.querySelector('.results a[href^="/verbete/ulysses-guimaraes"]')?.textContent)
       .toContain('Ulysses Guimarães');
   });
 
@@ -253,7 +329,7 @@ describe('ATLAS application', () => {
   it('searches real records without accents and recovers from no results', async () => {
     const harness = await RouterTestingHarness.create('/conhecimento?q=evidencia');
     expect(harness.routeNativeElement?.querySelector('.results a')?.getAttribute('href'))
-      .toBe('/verbete/metodologia-do-atlas');
+      .toContain('/verbete/metodologia-do-atlas');
     await harness.navigateByUrl('/conhecimento?q=registro-inexistente');
     expect(harness.routeNativeElement?.textContent).toContain('Nenhum registro corresponde');
     harness.routeNativeElement?.querySelector<HTMLButtonElement>('.results button')?.click();

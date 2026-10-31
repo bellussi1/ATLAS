@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, computed, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { ContentRepository } from '../core/content-repository';
+import { safeDiscoveryOrigin } from '../core/discovery-index';
 import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateComponent } from '../shared/ui-primitives';
 
 @Component({
@@ -30,11 +32,12 @@ import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateCo
               }
             </ul>
           }
-          @if (item.entities.length) {
-            <h3>Leituras relacionadas</h3>
+          @if (item.backlinks.length) {
+            <h3>Links que apontam para esta fonte</h3>
+            <p class="backlink-note">Links de navegação derivados de citações cadastradas; não indicam influência ou causalidade.</p>
             <ul class="related">
-              @for (entity of item.entities; track entity.id) {
-                <li><a appEditorialLink [routerLink]="'/verbete/' + entity.slug">{{ entity.title }}</a></li>
+              @for (backlink of item.backlinks; track backlink.id) {
+                <li><a appEditorialLink [routerLink]="backlink.path">{{ backlink.title }}</a><span>{{ backlink.label }}</span><p>{{ backlink.context }}</p></li>
               }
             </ul>
           }
@@ -42,7 +45,7 @@ import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateCo
       } @empty {
         <p role="status" class="empty">Ainda não há fontes cadastradas no acervo.</p>
       }
-      <a class="back-link" appEditorialLink routerLink="/explorar">Voltar aos formatos editoriais</a>
+      <a class="back-link discovery-return" appEditorialLink [routerLink]="returnTo()">{{ hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar aos formatos editoriais' }}</a>
     </app-page-template>
   `,
   styles: `
@@ -56,6 +59,7 @@ import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateCo
     h3 { margin: 1.5rem 0 .5rem; font-size: 1rem; }
     p, li { line-height: 1.65; }
     .edition, .local-source { color: var(--color-ink-muted); }
+    .backlink-note, .related p { color: var(--color-ink-muted); font-size: .9rem; }
     .source-link, .related a, .back-link { color: var(--color-accent); text-underline-offset: .2em; }
     .source-link, .back-link { display: inline-flex; align-items: center; min-height: 2.75rem; }
     ul { padding-left: 1.25rem; }
@@ -68,17 +72,20 @@ import { AtlasEditorialLinkDirective, AtlasHeadingDirective, AtlasPageTemplateCo
 })
 export class SourceLibraryPage {
   private readonly repository = inject(ContentRepository);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly queryParams = toSignal(this.route.queryParamMap, { initialValue: this.route.snapshot.queryParamMap });
+  readonly origin = computed(() => safeDiscoveryOrigin(this.queryParams().get('origem')));
+  readonly hasOrigin = computed(() => this.origin() !== null);
+  readonly returnTo = computed(() => this.origin() ? this.router.parseUrl(this.origin()!) : '/explorar');
   readonly sources = this.repository.knowledgeGraph.atlases.flatMap((atlas) => atlas.sources.map((source) => {
     const evidence = atlas.evidences.filter((item) => item.sourceId === source.id);
-    const evidenceIds = new Set(evidence.map((item) => item.id));
-    const citationIds = new Set(atlas.citations.filter((citation) => evidenceIds.has(citation.evidenceId)).map((citation) => citation.id));
-    const entityIds = new Set(atlas.claims.filter((claim) => claim.citationIds.some((id) => citationIds.has(id))).map((claim) => claim.entityId));
     return {
       atlasId: atlas.id,
       atlasTitle: atlas.title,
       source,
       evidence,
-      entities: atlas.entities.filter((entity) => entityIds.has(entity.id)),
+      backlinks: this.repository.discoveryIndex.find((item) => item.id === source.id)?.backlinks ?? [],
     };
   }));
 }

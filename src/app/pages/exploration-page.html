@@ -8,12 +8,25 @@
         <app-text-field controlId="collection-search" type="search" label="Pesquisar no acervo" placeholder="Título, conceito ou trecho"
           [value]="query()" (valueChange)="search($event)" hint="Busca nos registros editoriais e históricos disponíveis, sem distinção de acentos." />
       </div>
+      <div class="discovery-filters" aria-label="Filtrar resultados">
+        <div><label for="discovery-kind">Tipo de registro</label><select id="discovery-kind" [value]="kind()" (change)="filterByKind($any($event.target).value)">
+          <option value="">Todos os tipos</option>
+          @for (option of kinds(); track option.value) { <option [value]="option.value" [selected]="option.value === kind()">{{ option.label }}</option> }
+        </select></div>
+        <div><label for="discovery-state">Estado editorial</label><select id="discovery-state" [value]="state()" (change)="filterByState($any($event.target).value)">
+          <option value="">Todos os estados</option>
+          @for (option of states(); track option.value) { <option [value]="option.value" [selected]="option.value === state()">{{ option.label }}</option> }
+        </select></div>
+      </div>
       <p role="status">{{ results().length }} registros encontrados{{ query() ? ' para “' + query() + '”' : '' }}.</p>
       <ol class="results">
-        @for (result of results(); track result.path) {
-          <li><span class="kicker">{{ result.label }}</span><a appEditorialLink [routerLink]="result.path">{{ result.title }} <span aria-hidden="true">↗</span></a><p>{{ result.summary }}</p></li>
+        @for (result of results(); track result.id) {
+          <li><div class="result-meta"><span class="kicker">{{ result.kindLabel }}</span><span class="result-state">{{ result.stateLabel }}</span></div>
+            <div class="result-title"><a appEditorialLink [routerLink]="result.path" [fragment]="result.fragment" [queryParams]="{ origem: returnContext() }">{{ result.title }} <span aria-hidden="true">↗</span></a>
+              <button type="button" [appDiscoveryPreview]="{ entry: result, origin: returnContext() }" [attr.aria-label]="'Prévia de ' + result.title">Prévia</button></div>
+            <p>{{ result.summary }}</p></li>
         } @empty {
-          <li><app-notice>Nenhum registro corresponde a esta busca. Tente “contexto”, “fontes” ou “metodologia”.</app-notice><button type="button" (click)="search('')">Limpar busca</button></li>
+          <li><app-notice>Nenhum registro corresponde a esta busca e aos filtros. Ajuste os critérios ou limpe a busca.</app-notice><button type="button" (click)="clearFilters()">Limpar busca e filtros</button></li>
         }
       </ol>
       <div class="reading-path"><h2>Perguntas para começar</h2>

@@ -20,6 +20,7 @@ import type { Atlas, Claim, Citation, Evidence, Source, Review } from '../core/c
           @if (source(item); as reference) {
             <div class="claim-reference__source">
               <p><strong>{{ relationLabel(citation) }}:</strong> {{ reference.title }}</p>
+              <p><a [routerLink]="'/fontes'" [fragment]="'source-' + reference.id">Abrir esta fonte no índice</a></p>
               @if (reference.url) { <p><a [href]="reference.url" target="_blank" rel="noopener noreferrer">Consultar fonte original</a></p> }
               <p>Edição: {{ reference.edition }}</p>
               @if (reference.publicationDate) { <p>Publicação: {{ formatDate(reference.publicationDate) }}</p> }

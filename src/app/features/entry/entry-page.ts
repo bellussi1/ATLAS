@@ -4,10 +4,11 @@ import { AtlasReadingOutlineComponent } from '../../shared/reading-outline';
 import { AtlasContinueReadingComponent } from '../../shared/continue-reading';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { ContentRepository } from '../../core/content-repository';
 import { queryKnowledgeRelations } from '../../core/knowledge-graph';
+import { safeDiscoveryOrigin } from '../../core/discovery-index';
 import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
 
 @Component({
@@ -61,8 +62,18 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
           </section>
         }
 
+        @if (backlinks().length) {
+          <section class="backlinks" aria-labelledby="backlinks-title">
+            <h2 id="backlinks-title">Links que apontam para este registro</h2>
+            <p>Referências reversas para navegação. Elas mostram como outros registros apontam para esta página; não afirmam influência ou causalidade.</p>
+            @for (item of backlinks(); track item.id) {
+              <article><a appEditorialLink [routerLink]="item.path">{{ item.title }}</a><p class="relation-label">{{ item.label }}</p><p>{{ item.context }}</p></article>
+            }
+          </section>
+        }
+
         <app-continue-reading [currentPath]="'/verbete/' + entry.slug" />
-        <a class="back-link" routerLink="/explorar/verbete">Voltar ao índice de verbetes</a>
+        <a class="back-link discovery-return" [routerLink]="returnTo()">{{ hasOrigin() ? 'Voltar à busca e aos filtros' : 'Voltar ao índice de verbetes' }}</a>
       </article>
     } @else {
       <section class="page" aria-labelledby="page-title">
@@ -78,12 +89,12 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
     .eyebrow { margin: 0 0 .8rem; color: var(--signal); font-size: .75rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
     h1 { max-width: 17ch; margin: 0; font-size: clamp(2.7rem, 6.8vw, 5.5rem); letter-spacing: -.065em; line-height: 1; }
     .page__lead { max-width: 43rem; margin: 1.5rem 0 0; color: var(--ink-muted); font: clamp(1.15rem, 2vw, 1.4rem)/1.55 var(--serif); }
-    .entry-context, .related-records { max-width: 43rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--color-border-strong); }
-    .entry-context h2, .related-records h2 { margin: 0 0 .6rem; font: 500 1.35rem/1.25 var(--serif); }
-    .entry-context p, .related-records p { line-height: 1.65; }
+    .entry-context, .related-records, .backlinks { max-width: 43rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--color-border-strong); }
+    .entry-context h2, .related-records h2, .backlinks h2 { margin: 0 0 .6rem; font: 500 1.35rem/1.25 var(--serif); }
+    .entry-context p, .related-records p, .backlinks p { line-height: 1.65; }
     .entry-detail { color: var(--color-ink-muted); font-size: .9rem; }
-    .related-records article { padding-block: .75rem; border-top: 1px solid var(--color-border); }
-    .related-records article > a { color: var(--color-accent); font-weight: 650; text-underline-offset: .2em; }
+    .related-records article, .backlinks article { padding-block: .75rem; border-top: 1px solid var(--color-border); }
+    .related-records article > a, .backlinks article > a { color: var(--color-accent); font-weight: 650; text-underline-offset: .2em; }
     .relation-label { margin-bottom: .25rem; font-weight: 650; }
     .relation-evidence { color: var(--color-ink-muted); font-size: .88rem; }
     .relation-evidence a { color: var(--color-accent); text-underline-offset: .2em; }
@@ -97,8 +108,10 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
 })
 export class EntryPage {
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly repository = inject(ContentRepository);
   private readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
+  private readonly queryParams = toSignal(this.route.queryParamMap, { initialValue: this.route.snapshot.queryParamMap });
   readonly graph = toSignal(
     this.repository.loadKnowledgeGraph().pipe(catchError(() => of(null))),
     { initialValue: this.repository.knowledgeGraph },
@@ -112,19 +125,25 @@ export class EntryPage {
     const entity = this.entity();
     return (this.atlas()?.claims ?? []).filter((claim) => claim.entityId === entity?.id);
   });
+  readonly backlinks = computed(() => {
+    const id = this.entity()?.id;
+    return id ? this.repository.discoveryIndex.find((item) => item.id === id)?.backlinks ?? [] : [];
+  });
+  readonly origin = computed(() => safeDiscoveryOrigin(this.queryParams().get('origem')));
+  readonly hasOrigin = computed(() => this.origin() !== null);
+  readonly returnTo = computed(() => this.origin() ? this.router.parseUrl(this.origin()!) : '/explorar/verbete');
   readonly relatedEntries = computed(() => {
     const entry = this.entity();
     const graph = this.graph();
     if (!entry || !graph) return [];
     return queryKnowledgeRelations(graph, entry.id).flatMap((relation) => {
-      const atlas = graph.atlases.find((item) => item.id === relation.atlasId);
-      const related = atlas?.entities.find((item) => item.id === relation.relatedEntityId);
-      if (!atlas || !related) return [];
+      const related = graph.atlases.flatMap((item) => item.entities).find((item) => item.id === relation.relatedEntityId);
+      if (!related) return [];
       return [{
         ...relation,
         entity: related,
         evidence: relation.evidenceIds.flatMap((id) => {
-          const evidence = atlas.evidences.find((item) => item.id === id);
+          const evidence = graph.atlases.flatMap((item) => item.evidences).find((item) => item.id === id);
           return evidence ? [evidence] : [];
         }),
       }];

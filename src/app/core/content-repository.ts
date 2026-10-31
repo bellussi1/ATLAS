@@ -5,6 +5,7 @@ import methodologyAtlasData from '../../content/atlas.json';
 import { Observable, map, of, shareReplay } from 'rxjs';
 import { knowledgeGraphSchema } from './content-schema';
 import { queryKnowledgeEntities, queryKnowledgeRelations } from './knowledge-graph';
+import { buildDiscoveryIndex } from './discovery-index';
 import type { Atlas, Entity, KnowledgeGraph } from './content-schema';
 import type { KnowledgeEntityQuery, KnowledgeRelationQuery } from './knowledge-graph';
 
@@ -18,6 +19,7 @@ export class ContentRepository {
   private graphRequest?: Observable<KnowledgeGraph>;
   readonly knowledgeGraph = methodologyKnowledgeGraph;
   readonly atlas = methodologyAtlas;
+  readonly discoveryIndex = buildDiscoveryIndex(this.knowledgeGraph);
 
   loadKnowledgeGraph(): Observable<KnowledgeGraph> {
     if (!isPlatformBrowser(this.platformId)) return of(this.knowledgeGraph);
