@@ -80,9 +80,9 @@ Esta revisão e os testes automatizados não constituem auditoria WCAG 2.2 AA in
 
 A homepage é uma superfície de consulta com busca funcional, rede de evidências, índice de leituras e percursos guiados, adaptada da referência Stitch escolhida. A navegação mantém os três destinos Relações, Tempo e espaço e Conhecimento; não apresenta cronologia ou mapa simulados. A tipografia modernista, a assimetria, os filetes e a geometria usam os tokens compartilhados; as referências visuais não são ativos de publicação.
 
-- Em /conhecimento, a busca local indexa títulos, resumos e texto dos registros editoriais existentes e entidades validadas. A consulta persiste em ?q=, aceita acentos equivalentes e oferece recuperação quando não há resultados. Formatos previstos conservam seu status, sem serem apresentados como coleções históricas publicadas.
+- Em /conhecimento, a busca local indexa títulos, resumos e texto dos registros editoriais existentes e entidades validadas. A consulta persiste em ?q=, aceita acentos equivalentes e oferece recuperação quando não há resultados. A interface informa que inclui registros editoriais e históricos disponíveis. Formatos previstos conservam seu status, sem serem apresentados como coleções históricas publicadas.
 - Em /relacoes, a rede inicial deriva exclusivamente de entityId e sourceIds das afirmações do ContentRepository. Seleção, filtro e contexto funcionam em botões e select nativos. A lista de conexões oferece equivalente textual. A rede representa metodologia, sem simular relações históricas.
-- Em /tempo-e-espaco, há um estado vazio explícito e caminhos para leitura pertinente. Não há datas, locais ou fronteiras verificados no acervo atual. Cronologia interativa e mapa histórico permanecem dependentes desses dados; não foram apresentados como disponíveis.
+- Em /tempo-e-espaco, há um estado explícito sobre as interfaces indisponíveis e caminhos para leitura pertinente. O acervo contém acontecimentos com períodos documentados e lugares associados ao processo constituinte. Cronologia interativa e mapas ainda não estão disponíveis; nenhuma fronteira é simulada.
 - As perguntas de entrada levam a textos reais sobre evidência, contexto e organização editorial. Trilhas temáticas históricas ainda não estão publicadas.
 
 A direção A está consolidada sem remover os índices existentes, o laboratório ou o showroom.

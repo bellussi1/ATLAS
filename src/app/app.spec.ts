@@ -114,6 +114,7 @@ describe('ATLAS application', () => {
       '/tempo-e-espaco',
       '/conhecimento',
     ]);
+    expect(entries[1].textContent).toContain('Há acontecimentos datados no acervo');
   });
 
   it('searches historical entries across every registered atlas', async () => {
@@ -122,6 +123,7 @@ describe('ATLAS application', () => {
     const result = root.querySelector<HTMLAnchorElement>('.results a[href="/verbete/ulysses-guimaraes"]');
     expect(result?.textContent).toContain('Ulysses Guimarães');
     expect(root.querySelector('[role="status"]')?.textContent).toContain('1 registros encontrados');
+    expect(root.textContent).toContain('registros editoriais e históricos disponíveis');
   });
 
   it('submits the homepage search and opens its matching record', async () => {
@@ -281,7 +283,7 @@ describe('ATLAS application', () => {
   it('explains that timeline and map interfaces are pending while real temporal records exist', async () => {
     const harness = await RouterTestingHarness.create('/tempo-e-espaco');
     expect(harness.routeNativeElement?.querySelector('h1')?.textContent).toBe('Tempo e espaço');
-    expect(harness.routeNativeElement?.textContent).toContain('registra pessoas, instituições, acontecimentos e lugares');
+    expect(harness.routeNativeElement?.textContent).toContain('O acervo registra acontecimentos com períodos documentados');
     expect(harness.routeNativeElement?.textContent).toContain('ainda não foram implementadas');
     expect(harness.routeNativeElement?.querySelector('.empty-collection a')?.getAttribute('href'))
       .toBe('/explorar/evento/como-o-atlas-contextualiza-eventos');

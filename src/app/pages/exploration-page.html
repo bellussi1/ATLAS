@@ -6,7 +6,7 @@
       <p class="lead">Toda leitura pode ser um ponto de partida.</p>
       <div role="search" aria-label="Pesquisar no acervo" class="search">
         <app-text-field controlId="collection-search" type="search" label="Pesquisar no acervo" placeholder="Título, conceito ou trecho"
-          [value]="query()" (valueChange)="search($event)" hint="Busca sem distinção de acentos. O acervo atual apresenta a metodologia do projeto." />
+          [value]="query()" (valueChange)="search($event)" hint="Busca nos registros editoriais e históricos disponíveis, sem distinção de acentos." />
       </div>
       <p role="status">{{ results().length }} registros encontrados{{ query() ? ' para “' + query() + '”' : '' }}.</p>
       <ol class="results">
@@ -37,8 +37,8 @@
       <section class="empty-collection" aria-labelledby="timeline-title">
         <span class="collection-number" aria-hidden="true">—</span>
         <div><h2 id="timeline-title">A exploração temporal e espacial ainda não está disponível</h2>
-        <p>O acervo já registra pessoas, instituições, acontecimentos e lugares relacionados ao processo constituinte de 1987–1988. A linha do tempo e a exploração por mapas ainda não foram implementadas.</p>
-        <p>Consulte os verbetes e suas referências; esta página não apresenta mapa ou fronteiras.</p>
+        <p>O acervo registra acontecimentos com períodos documentados e lugares associados ao processo constituinte de 1987–1988. A linha do tempo e a exploração por mapas ainda não foram implementadas.</p>
+        <p>Consulte os verbetes e suas referências; esta página não apresenta cronologia, mapa ou fronteiras.</p>
         <a appEditorialLink routerLink="/explorar/evento/como-o-atlas-contextualiza-eventos">Como o ATLAS contextualiza acontecimentos →</a></div>
       </section>
       <div class="reading-path"><h2>Continue por outro caminho</h2>
