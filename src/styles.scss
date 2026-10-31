@@ -9,7 +9,7 @@
   font-family: 'IBM Plex Sans';
   src: url('/fonts/IBMPlexSans.ttf') format('truetype');
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 100 700;
   font-display: swap;
 }
 
@@ -83,6 +83,12 @@
   --radius-panel: 0.25rem;
   --grid-max: 90rem;
   --grid-gutter: clamp(1rem, 5vw, 5rem);
+  --focus-width: 3px;
+  --focus-offset: 3px;
+  --control-min-size: 2.75rem;
+  --measure-reading: 72ch;
+  --measure-index: 90ch;
+  --measure-profile: 60ch;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --motion-selection: 180ms;
   --motion-fast: 140ms;

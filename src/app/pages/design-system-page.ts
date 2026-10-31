@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   AtlasButtonComponent,
@@ -44,15 +45,15 @@ import {
       <div class="showroom__layout">
         <aside class="showroom__toc" aria-label="Índice do showroom">
           <app-menu label="Nesta página" orientation="vertical">
-            <a [routerLink]="[]" [fragment]="'tokens'">Tokens</a>
-            <a [routerLink]="[]" [fragment]="'tipografia'">Tipografia e templates</a>
-            <a [routerLink]="[]" [fragment]="'controles'">Links, botões e campos</a>
-            <a [routerLink]="[]" [fragment]="'estados'">Menus, sumários e estados</a>
+            <a [routerLink]="[]" [fragment]="'tokens'" (click)="focusSection('tokens', $event)">Tokens</a>
+            <a [routerLink]="[]" [fragment]="'tipografia'" (click)="focusSection('tipografia', $event)">Tipografia e templates</a>
+            <a [routerLink]="[]" [fragment]="'controles'" (click)="focusSection('controles', $event)">Links, botões e campos</a>
+            <a [routerLink]="[]" [fragment]="'estados'" (click)="focusSection('estados', $event)">Menus, sumários e estados</a>
           </app-menu>
         </aside>
 
         <div class="showroom__content">
-          <section id="tokens" class="showroom__section" aria-labelledby="tokens-title">
+          <section tabindex="-1" id="tokens" class="showroom__section" aria-labelledby="tokens-title">
             <p class="showroom__kicker">01 / Fundações</p>
             <h2 appHeading="section" id="tokens-title">Cor por função, não por decoração</h2>
             <p>Os nomes semânticos separam superfície, leitura, ação, foco e estados de mensagem.</p>
@@ -62,6 +63,10 @@ import {
               <li class="swatch swatch--ink"><span>Texto principal</span><code>#1C1C1A</code></li>
               <li class="swatch swatch--muted"><span>Texto de apoio</span><code>#57544D</code></li>
               <li class="swatch swatch--accent"><span>Ação / foco</span><code>#B4231D</code></li>
+              <li class="swatch swatch--teal"><span>Verde de suporte</span><code>#85BDB5</code></li>
+              <li class="swatch swatch--ochre"><span>Ocre de suporte</span><code>#EDC45B</code></li>
+              <li class="swatch swatch--rose"><span>Rosa de suporte</span><code>#E9B4BF</code></li>
+              <li class="swatch swatch--indigo"><span>Índigo de exposição</span><code>#37395E</code></li>
               <li class="swatch swatch--map"><span>Cartografia</span><code>#315F54</code></li>
               <li class="swatch swatch--archive"><span>Arquivo</span><code>#176176</code></li>
             </ul>
@@ -71,7 +76,7 @@ import {
             </p>
           </section>
 
-          <section id="tipografia" class="showroom__section" aria-labelledby="type-title">
+          <section tabindex="-1" id="tipografia" class="showroom__section" aria-labelledby="type-title">
             <p class="showroom__kicker">02 / Leitura</p>
             <h2 appHeading="section" id="type-title">Uma escala para cada camada</h2>
             <p class="type-sample__display">Título de exposição em Plex Sans</p>
@@ -100,7 +105,7 @@ import {
             </div>
           </section>
 
-          <section id="controles" class="showroom__section" aria-labelledby="controls-title">
+          <section tabindex="-1" id="controles" class="showroom__section" aria-labelledby="controls-title">
             <p class="showroom__kicker">03 / Ações</p>
             <h2 appHeading="section" id="controls-title">Links, botões e campos</h2>
             <p><a appEditorialLink routerLink="/explorar">Link editorial para explorar o acervo</a></p>
@@ -133,10 +138,11 @@ import {
                 hint="O estado também é indicado pelo atributo disabled."
                 [disabled]="true"
               />
+              <app-text-field controlId="demo-readonly" label="Campo somente leitura" value="Texto consultável" hint="Permite foco e cópia; não permite edição." [readonly]="true" />
             </div>
           </section>
 
-          <section id="estados" class="showroom__section" aria-labelledby="states-title">
+          <section tabindex="-1" id="estados" class="showroom__section" aria-labelledby="states-title">
             <p class="showroom__kicker">04 / Navegação e estados</p>
             <h2 appHeading="section" id="states-title">Menus, sumários e respostas</h2>
             <app-disclosure label="Como usar os componentes">
@@ -180,6 +186,10 @@ import {
     .swatch--ink { background: var(--color-ink); color: var(--color-on-strong-surface); }
     .swatch--muted { background: var(--color-ink-muted); color: var(--color-on-strong-surface); }
     .swatch--accent { background: var(--color-accent); color: var(--color-on-strong-surface); }
+    .swatch--teal { background: var(--color-teal-paper); color: var(--color-ink); }
+    .swatch--ochre { background: var(--color-ochre-paper); color: var(--color-ink); }
+    .swatch--rose { background: var(--color-rose-paper); color: var(--color-ink); }
+    .swatch--indigo { background: var(--color-indigo); color: var(--color-on-strong-surface); }
     .swatch--map { background: var(--color-cartographic); color: var(--color-on-strong-surface); }
     .swatch--archive { background: var(--color-archive); color: var(--color-on-strong-surface); }
     .showroom__contrast { padding-top: var(--space-3); border-top: 1px solid var(--color-border); font-size: var(--text-small); }
@@ -192,7 +202,6 @@ import {
     .button-examples, .state-examples { display: flex; flex-wrap: wrap; align-items: stretch; flex-direction: column; gap: var(--space-3); margin-block: var(--space-6); }
     .button-examples app-button { width: 100%; }
     .field-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: var(--space-6); margin-top: var(--space-8); }
-    .state-examples app-notice { flex: 1 1 17rem; }
     .showroom__return { margin-top: var(--space-12); }
     @media (min-width: 24rem) { .button-examples { align-items: flex-start; flex-direction: row; } .button-examples app-button { width: auto; } }
     @media (min-width: 40rem) { .showroom { padding-block: clamp(var(--space-12), 6vw, 5rem) var(--space-16); } }
@@ -200,7 +209,13 @@ import {
   `,
 })
 export class DesignSystemPage {
+  private readonly document = inject(DOCUMENT);
   readonly successVisible = signal(false);
+
+  focusSection(id: string, event: MouseEvent): void {
+    if (event.button || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+    this.document.getElementById(id)?.focus({ preventScroll: true });
+  }
 
   showSuccess(): void {
     this.successVisible.set(true);

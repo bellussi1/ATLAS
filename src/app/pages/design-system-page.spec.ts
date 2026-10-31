@@ -1,6 +1,14 @@
 import { provideRouter } from '@angular/router';
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { DesignSystemPage } from './design-system-page';
+import { AtlasHeadingDirective } from '../shared/ui-primitives';
+
+@Component({
+  imports: [AtlasHeadingDirective],
+  template: '<h1 appHeading="page">Título de página</h1><h2 appHeading>Título padrão</h2>',
+})
+class PageHeadingExample {}
 
 describe('design-system showroom', () => {
   beforeEach(async () => {
@@ -8,6 +16,12 @@ describe('design-system showroom', () => {
       imports: [DesignSystemPage],
       providers: [provideRouter([])],
     }).compileComponents();
+  });
+
+  it('applies the page heading scale to explicit and default variants', () => {
+    const fixture = TestBed.createComponent(PageHeadingExample);
+    fixture.detectChanges();
+    expect((fixture.nativeElement as HTMLElement).querySelectorAll('.atlas-heading--page')).toHaveLength(2);
   });
 
   it('uses a native disclosure element with an operable summary', () => {
@@ -55,5 +69,26 @@ describe('design-system showroom', () => {
 
     expect(root.querySelector('.atlas-notice--success[role="status"]')?.textContent)
       .toContain('Ação demonstrativa concluída');
+  });
+
+  it('moves focus to the section selected in the showroom index', () => {
+    const fixture = TestBed.createComponent(DesignSystemPage);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const link = Array.from(root.querySelectorAll<HTMLAnchorElement>('.showroom__toc a'))
+      .find((candidate) => candidate.textContent?.trim() === 'Tokens')!;
+    link.click();
+    expect(document.activeElement).toBe(root.querySelector('#tokens'));
+  });
+
+  it('keeps the readonly example focusable and available for copying', () => {
+    const fixture = TestBed.createComponent(DesignSystemPage);
+    fixture.detectChanges();
+    const input = (fixture.nativeElement as HTMLElement).querySelector<HTMLInputElement>('#demo-readonly')!;
+    input.focus();
+    expect(input.readOnly).toBe(true);
+    expect(input.disabled).toBe(false);
+    expect(document.activeElement).toBe(input);
+    expect(input.value).toBe('Texto consultável');
   });
 });

@@ -47,7 +47,7 @@ Os componentes standalone e a diretiva de heading estão em `src/app/shared/ui-p
 | `app-notice` | Mensagem `info`, `success`, `warning` ou `critical`; `accessibleRole="status"` anuncia em modo polido e `accessibleRole="alert"` em modo assertivo. O papel fica em um único elemento. |
 | `app-page-template` | Template editorial com variantes `editorial`, `index` e `profile`, largura de leitura própria e `aria-labelledby`. |
 
-Já usados em páginas reais: o menu global e o template de páginas editoriais; a home usa heading, link e campo de busca somente leitura. O showroom exercita as demais variantes e estados sem enviar dados.
+Já usados em páginas reais: menu global; templates e sumários das páginas editoriais e de categorias; headings e links editoriais; campos de busca funcionais na home e em Conhecimento; avisos de busca vazia. O showroom exercita as demais variantes e estados sem enviar dados.
 
 ## Acessibilidade e validação
 
@@ -129,3 +129,21 @@ Verificação no Chrome: em 320 px, documento e viewport mediram 320 px; os term
 Usar as assinaturas SVG oficiais em public/brand no header e footer. As imagens são dimensionadas com proporção preservada e tamanhos intrínsecos; dentro de links com aria-label, alt vazio evita repetir o nome. A marca é tipográfica, com letras próximas e ponto vermelho, sem emblema separado à esquerda. Em fundos escuros, usar atlas-logo-inverse.svg; aplicações de uma só cor usam atlas-logo-mono.svg ou atlas-logo-white.svg. O símbolo isolado usa A e ponto vermelho e não substitui o nome acessível. Os SVGs têm viewBox e contornos de letras, preservando a qualidade em qualquer escala.
 
 O favicon tem redução própria em SVG/PNG, fallback ICO (16/32/48) e touch icon (180). As versões não são animações. O teste brand-assets.spec.ts verifica XML dos vetores, independência de fontes/imagens externas, resolução dos arquivos apontados no index e estrutura dos ícones ICO.
+
+
+## Revisão requisito a requisito do Prompt 05 — 31/10/2026
+
+Referência: `prompts/05-design-system-acessivel.md`, último prompt numerado solicitado neste chat. A revisão preserva a identidade e a marca aprovadas posteriormente. Alterações paralelas de conteúdo foram preservadas; a suíte completa abaixo reflete o estado conjunto do workspace, e o commit desta revisão se limita ao design system.
+
+| Requisito | Evidência no código e resultado da revisão |
+| --- | --- |
+| 1. Tokens semânticos, foco, tipo, espaço, grid, superfícies e estados | `src/styles.scss` concentra esses grupos. Foram extraídos `--focus-width`, `--focus-offset`, `--control-min-size` e as medidas `--measure-reading/index/profile`, consumidos nas primitivas. A faixa declarada da IBM Plex Sans foi corrigida para 100–700, conforme o arquivo local. |
+| 2. Links, headings, botões, campos, sumários, menus, disclosures, avisos e templates | Implementados em `ui-primitives.ts/scss` e usados nas páginas indicadas acima. A variante `page` agora recebe sua classe (correção integrada também pela alteração paralela); o teste cobre a variante explícita e a padrão. O hover do botão quiet foi corrigido: a regra primária deixava texto escuro sobre vermelho escuro. |
+| 3. Mobile-first, zoom 200%, reflow 320 px e teclado | Showroom, home e artigo Conhecimento com contexto medidos em 320 CSS px sem overflow. Showroom também medido em 1280 px e em 640 CSS px/DPR 2, equivalente ao reflow de uma área de 1280 px em 200%. O índice agora transfere foco à seção sem acrescentá-la à sequência Tab; cliques com modificadores preservam a operação do navegador. Zoom nativo permanece uma limitação de verificação, detalhada abaixo. |
+| 4. Reduced motion e contraste AA como meta | Regra global reduz transições para 0,01 ms e torna a rolagem imediata. No Chrome, a preferência foi reconhecida e `scroll-behavior` medido como auto. Contraste do quiet em hover passou de 1,74:1 para 13,47:1, medido com as cores computadas; a suíte sRGB continua cobrindo os tokens e as superfícies. |
+| 5. Showroom com variantes, vazio/erro e documentação | `/sistema` permanece navegável e pré-renderizado, com exemplos de avisos, campos, botões e templates. Foram incluídas as quatro cores secundárias aprovadas e o campo readonly. A altura artificial dos avisos em coluna foi removida. Documentação de uso atualizada. |
+| 6. Automação, revisão manual possível e pendências de leitor de tela | `npm test`: 111 testes em sete arquivos; `npm run build`: 37 rotas estáticas; `npm run lint` e `npm run typecheck`: sucesso. Novos testes verificam heading, foco do índice e campo readonly. No Chrome, disclosure abriu/fechou com Enter, Tab/Enter acionou feedback de sucesso, e o índice transferiu foco com Enter; Tab exibiu contorno de 3 px. |
+
+Os quatro critérios de aceite foram confrontados: showroom navegável, reutilização em páginas reais, testes de teclado/contraste e ausência de declaração integral WCAG. As capturas desktop/mobile desta revisão foram inspecionadas durante a execução; a ferramenta recusou gravá-las nos caminhos locais solicitados, portanto não há novos arquivos de screenshot entregues.
+
+Limitações de verificação: o atalho enviado pela ferramenta de navegador não alterou o zoom nativo. A tentativa seguinte por Computer Use foi interrompida pela própria ferramenta por não conseguir confirmar a URL da janela com confiança; nenhuma ação de zoom foi executada por ela. A emulação de viewport/DPR não substitui essa medição. Um ensaio com zoom CSS 200% apresentou overflow e não foi considerado evidência de aprovação: zoom CSS não altera os breakpoints como o zoom nativo. Continua necessária a conferência do zoom nativo em 200%, além da avaliação com leitores de tela/pessoas usuárias de tecnologia assistiva já registrada acima. Não se declara conformidade WCAG integral.
