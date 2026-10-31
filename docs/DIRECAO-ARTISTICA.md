@@ -1,12 +1,12 @@
-# Direção artística — laboratório do prompt 04
+# Direção artística — arquivo histórico do Prompt 04
 
-Este registro preserva as três composições experimentais em `/laboratorio/:proposta/:pagina`. A direção A foi escolhida pelo usuário e consolidada na interface principal; B e C continuam como referências de cartografia e exploração. A seção final registra essa consolidação.
+Este arquivo preserva o histórico das três composições experimentais criadas no Prompt 04. As rotas `/laboratorio/:proposta/:pagina` foram retiradas da aplicação e já não são publicadas; os desenhos e capturas abaixo servem apenas como registro da evolução visual. A direção A foi escolhida pelo usuário e consolidada na interface principal.
 
 ## Observação das referências
 
 As observações abaixo descrevem somente o que aparece nos arquivos fornecidos em `referencias/`. As propostas de adaptação vêm em seguida e não reproduzem essas peças.
 
-| Arquivo | Atributos visíveis na referência | Adaptação no laboratório |
+| Arquivo | Atributos visíveis na referência | Decisões registradas nas propostas |
 | --- | --- | --- |
 | `01-modernismo-suico-cartaz.png` | Cartaz vertical em papel branco; hierarquia sans em blocos alinhados à esquerda; título monumental em linhas curtas; pequenos filetes separam título e informações; retângulo vermelho alto, círculo preto e bloco preto ocupam uma coluna assimétrica. | As três propostas adotam escala tipográfica e alinhamento por grid, cada uma em uma composição própria. Nenhum texto, marca ou arranjo literal foi reproduzido. |
 | `02-atlas-historico-editorial.png` | Livro aberto fotografado de cima; mapa antigo ocupa a página direita; página esquerda combina mapa menor, fotografias, legendas, títulos e texto em colunas estreitas; margens amplas, fólio e papel envelhecido dão ritmo de livro. | Cada proposta tem um diagrama cartográfico esquemático acompanhado de legenda ou metadados; as páginas de artigo também usam margem editorial. Os desenhos são originais e não alegam representar geografia histórica. |
@@ -18,7 +18,7 @@ As observações abaixo descrevem somente o que aparece nos arquivos fornecidos 
 - **B — atlas cartográfico com exploração museográfica:** o diagrama relacional e sua legenda organizam a home como uma página de atlas; uma ficha editorial clicável, inclinada e em primeiro plano leva a um artigo existente. O artigo segue uma rota entre evidência, contexto e interpretação; tipografia monoespaçada e um documento sobreposto trazem a camada museográfica.
 - **C — museu digital experimental com rigor tipográfico suíço e páginas de leitura:** grid assimétrico e escala tipográfica disciplinam a composição; mapa conceitual legendado aparece dentro de uma ficha; folhas simuladas se sobrepõem em profundidade com entradas clicáveis para o acervo. Artigo usa margem, serifas de leitura e inserto de arquivo. O papel claro continua nas propostas A e B, sem impor o fundo escuro ao produto.
 
-Cada alternativa contém início, artigo e perfil em `/laboratorio/a|b|c/inicio|artigo|perfil`. As páginas de artigo e atlas levam a registros de metodologia já presentes no repositório. A personagem “Pesquisadora de Exemplo” e seus campos são fictícios e estão marcados como mock em todas as propostas.
+Na implementação original, cada alternativa continha início, artigo e perfil em `/laboratorio/a|b|c/inicio|artigo|perfil`. Essas rotas foram removidas. As páginas demonstrativas de artigo e atlas levavam a registros de metodologia; a personagem “Pesquisadora de Exemplo” e seus campos eram fictícios e estavam marcados como mock.
 
 ## Sistema visual e acessibilidade
 
@@ -36,7 +36,7 @@ As razões foram calculadas pela luminância sRGB. A escala mínima de texto nor
 - **Source Serif 4:** textos de leitura e títulos editoriais; arquivo variável, com fallback Georgia/serif.
 - **IBM Plex Mono:** metadados e legendas, com fallback Consolas/monospace.
 
-Os três arquivos estão licenciados sob SIL Open Font License 1.1. As cópias dos avisos completos estão junto aos arquivos em `public/fonts/`. Fontes são servidas localmente e carregadas com `font-display: swap`, evitando requisição remota. Fontes do laboratório não alteram a pilha tipográfica definida para o restante do produto.
+Os três arquivos estão licenciados sob SIL Open Font License 1.1. As cópias dos avisos completos estão junto aos arquivos em `public/fonts/`. Fontes são servidas localmente e carregadas com `font-display: swap`, evitando requisição remota. A pilha tipográfica aprovada permanece a mesma no produto.
 
 ## Capturas
 
@@ -48,11 +48,11 @@ As seis capturas abaixo são imagens reais do navegador em 1440×1000 e 390×844
 | B — atlas cartográfico | ![B — desktop](direcao-artistica/screenshots/b-desktop.png) | ![B — mobile](direcao-artistica/screenshots/b-mobile.png) |
 | C — museu digital | ![C — desktop](direcao-artistica/screenshots/c-desktop.png) | ![C — mobile](direcao-artistica/screenshots/c-mobile.png) |
 
-As capturas mostram apenas a home de cada proposta, como registro comparativo de direção de arte; artigo e perfil são rotas funcionais e estão cobertos pelos testes de navegação.
+As capturas mostram apenas a home de cada proposta, como registro comparativo de direção de arte. Artigo e perfil foram páginas funcionais na implementação original e não estão mais disponíveis como rotas.
 
 ## Limites e avaliação
 
-As fichas, mapa esquemático, marca de perfil e informações sobre a pessoa são elementos de protótipo, não fontes históricas. As dez rotas (índice e nove páginas demonstrativas) são pré-renderizadas como saída estática. A folha de estilos desta tela tem 18,41 kB; o orçamento geral de estilos por componente em produção passou de 8 kB para 20 kB para comportá-la, com aviso em 19 kB. Esse limite agora também se aplica a folhas de componentes futuras. O CSS continua lazy-loaded na rota e não aumenta o CSS crítico da home. A direção A foi escolhida pelo usuário para produção. B passa a orientar cartografia e documentos; C, a exploração e o tratamento arquivístico. A comparação abaixo permanece como registro das propostas.
+As fichas, o mapa esquemático, a marca de perfil e as informações sobre a pessoa eram elementos de protótipo, não fontes históricas. A implementação original pré-renderizava dez rotas (índice e nove páginas demonstrativas). As rotas e o componente foram retirados; o orçamento de CSS caiu de 19/20 kB para 7/8 kB em `angular.json`, suficiente para as folhas atuais sem alertas. A direção A permanece na produção; B e C ficam registradas abaixo como alternativas históricas, sem função de produto.
 
 Licença: [IBM Plex — licença oficial](https://github.com/IBM/plex/blob/master/LICENSE.txt), [IBM Plex no catálogo Google Fonts](https://github.com/google/fonts/tree/main/ofl/ibmplexsans), [Source Serif 4 — OFL](https://github.com/google/fonts/blob/main/ofl/sourceserif4/OFL.txt).
 
@@ -84,7 +84,7 @@ O usuário rejeitou a composição anterior por aparência genérica e solicitou
 
 Paleta deliberadamente vinculada ao briefing: papel #FBFAF7, tinta #1C1C1A, vermelho #B4231D e suporte #ECEBE6. IBM Plex Sans estrutura a ficha; Source Serif 4 apresenta o trecho; IBM Plex Mono fica restrita aos metadados. A assimetria e a sobreposição vêm das referências de cartaz e acervo, sem publicar imagens ou fac-símiles não licenciados.
 
-Na autocrítica, os desenhos dos modos foram removidos por não acrescentarem informação. Os acessos Relações, Tempo e espaço e Conhecimento continuam disponíveis. O leitor, o grafo completo, o showroom e o laboratório foram preservados. A proposta é reconstrução da home e do tratamento de suas interações, não substituição da arquitetura Angular.
+Na autocrítica, os desenhos dos modos foram removidos por não acrescentarem informação. Os acessos Relações, Tempo e espaço e Conhecimento continuam disponíveis. O leitor, o grafo completo e o showroom foram preservados; as páginas de laboratório foram despublicadas posteriormente. Este arquivo mantém o histórico de direção, sem manter aquelas telas no produto.
 
 Skills instaladas em C:/Users/Bellussi/.codex/skills, com prefixo atlas- para preservar as instalações anteriores: frontend-design (anthropics/skills), interaction-design (wshobson/agents), animate, find-animation-opportunities e improve-animations (emilkowalski/skills), 12-principles-of-animation (raphaelsalaja/skills). Esta última foi recuperada da revisão 376dbc168120520309c15d6dc6abfc4d8be5a12b, anterior ao arquivamento. Os arquivos foram lidos e aplicados nesta execução; o catálogo de skills instalado também estará disponível nos próximos turnos.
 

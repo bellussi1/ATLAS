@@ -13,19 +13,6 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
   },
   {
-    path: 'laboratorio',
-    renderMode: RenderMode.Prerender,
-  },
-  {
-    path: 'laboratorio/:proposta/:pagina',
-    renderMode: RenderMode.Prerender,
-    async getPrerenderParams() {
-      return ['a', 'b', 'c'].flatMap((proposta) =>
-        ['inicio', 'artigo', 'perfil'].map((pagina) => ({ proposta, pagina })),
-      );
-    },
-  },
-  {
     path: 'explorar/:tipo',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {

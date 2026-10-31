@@ -1,6 +1,6 @@
 # Sistema de design acessível
 
-O sistema estabelece uma base comum a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo. A direção A foi aprovada pelo usuário e é a base da interface principal. B orienta cartografia e documentos; C orienta a exploração do acervo. O laboratório A/B/C permanece como ferramenta de desenvolvimento.
+O sistema estabelece uma base comum a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo. A direção A foi aprovada pelo usuário e é a base da interface principal. As alternativas B e C do Prompt 04 permanecem apenas como arquivo histórico em `DIRECAO-ARTISTICA.md`; as páginas de laboratório foram retiradas da aplicação.
 
 O showroom navegável está em `/sistema`. A rota é pré-renderizada e também pode ser aberta pelo link “Sistema visual” no rodapé global.
 
@@ -85,7 +85,7 @@ A homepage é uma superfície de consulta com busca funcional, rede de evidênci
 - Em /tempo-e-espaco, há um estado explícito sobre as interfaces indisponíveis e caminhos para leitura pertinente. O acervo contém acontecimentos com períodos documentados e lugares associados ao processo constituinte. Cronologia interativa e mapas ainda não estão disponíveis; nenhuma fronteira é simulada.
 - As perguntas de entrada levam a textos reais sobre evidência, contexto e organização editorial. Trilhas temáticas históricas ainda não estão publicadas.
 
-A direção A está consolidada sem remover os índices existentes, o laboratório ou o showroom.
+A direção A está consolidada. Os índices editoriais e o showroom permanecem; as antigas páginas de laboratório não fazem parte da navegação atual.
 
 
 Validação da consolidação A: busca enviada por Enter no Chrome em 390 px abriu /conhecimento?q=evidencia e retornou cinco registros reais. A home e as três telas foram medidas em 320 px sem overflow horizontal. O nó Fonte foi ativado por Enter, atualizou a seleção e o contexto, mantendo contorno de foco de 3 px. Movimento reduzido foi emulado e reconhecido. A home foi capturada em 1440×1000 e 390×844; não foram reproduzidas as imagens de referência. A revisão não incluiu leitor de tela nem auditoria WCAG integral.
@@ -151,7 +151,7 @@ Limitações de verificação: o atalho enviado pela ferramenta de navegador nã
 
 ## Container e troca de páginas
 
-O limite externo é `--grid-max` (90rem, incluindo padding) e a margem lateral é `--grid-gutter`. Header e footer têm wrappers internos com esses mesmos limites; suas faixas de fundo continuam ocupando a viewport. Home, exploração, índices, showroom, páginas institucionais, breadcrumbs e templates editoriais seguem esse contrato. A largura dos parágrafos continua limitada pelas medidas de leitura, sem estreitar o container externo. Laboratórios visuais preservam suas composições experimentais isoladas.
+O limite externo é `--grid-max` (90rem, incluindo padding) e a margem lateral é `--grid-gutter`. Header e footer têm wrappers internos com esses mesmos limites; suas faixas de fundo continuam ocupando a viewport. Home, exploração, índices, showroom, páginas institucionais, breadcrumbs e templates editoriais seguem esse contrato. A largura dos parágrafos continua limitada pelas medidas de leitura, sem estreitar o container externo.
 
 Os três acessos coloridos no header são a navegação dos modos; a nav textual duplicada foi removida. A troca de pathname usa entrada por opacidade e deslocamento de 8px em 200ms (`--motion-standard` e `--ease-out`), sem animar header/footer. Primeira renderização, teclado e reduced motion são imediatos. Query strings e fragmentos não reiniciam a animação; novas navegações cancelam o movimento anterior. Não há bloqueio de entrada nem dependência adicional.
 

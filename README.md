@@ -32,7 +32,6 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 - `/estudar/como-usar-trilhas` — exemplo de metodologia de estudo
 - `/sobre` — missão do projeto
 - `/fontes` — biblioteca das fontes cadastradas, com localizadores e verbetes relacionados
-- `/laboratorio` — índice das três propostas experimentais de direção visual (início, artigo e perfil), sem alterar a identidade de produção
 - Qualquer caminho desconhecido — página 404 da aplicação
 
 Na página inicial, a mesa destaca três textos de metodologia, enquanto a busca percorre verbetes, relações e entradas editoriais carregados. Relações apresenta os vínculos registrados; a exploração temporal e espacial explica que sua interface de cronologia e mapas ainda não está disponível. As trilhas temáticas continuam identificadas como previstas.

@@ -17,7 +17,6 @@ Este sitemap registra a navegação implementada no Prompt 02. Na leitura do rep
 ├── /verbete/:slug                    Registro conceitual validado do ATLAS
 ├── /fontes                           Biblioteca das fontes e seus usos cadastrados
 ├── /sistema                          Sistema visual e componentes acessíveis
-├── /laboratorio                      Propostas experimentais de direção visual
 ├── /sobre                            Missão e propósito do ATLAS
 └── qualquer caminho desconhecido     Página 404
 ```
