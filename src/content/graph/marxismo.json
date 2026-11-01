@@ -20,6 +20,20 @@
       "url": "https://www.marxists.org/archive/lenin/works/1917/staterev/ch06.htm",
       "edition": "Capítulo VI, seções 2–3; Collected Works, vol. 25. Escrito em 1917, publicado em 1918. Consulta em 01/11/2026.",
       "publicationDate": null
+    },
+    {
+      "id": "source-bernstein-preface",
+      "title": "Eduard Bernstein — Evolutionary Socialism",
+      "url": "https://www.marxists.org/reference/archive/bernstein/works/1899/evsoc/preface.htm",
+      "edition": "Prefácio da obra de 1899, edição inglesa; consulta em 01/11/2026. Posição do próprio autor, sem reprodução extensa.",
+      "publicationDate": null
+    },
+    {
+      "id": "source-marx-preface-1859",
+      "title": "Karl Marx — Prefácio de 1859",
+      "url": "https://www.marxists.org/archive/marx/works/1859/critique-pol-economy/preface.htm",
+      "edition": "A Contribution to the Critique of Political Economy, prefácio; Progress Publishers, 1977. Consulta em 01/11/2026.",
+      "publicationDate": null
     }
   ],
   "edges": [

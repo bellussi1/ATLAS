@@ -47,7 +47,7 @@ O usuário autorizou explorar header e footer fora das convenções de uma barra
 
 Partir de verbos concretos: selecionar ficha, aproximar leitura, investigar fonte, seguir relação, continuar no texto. Reutilizar as funções existentes em vez de criar outro mecanismo equivalente.
 
-AtlasEditorialTextComponent associa um pequeno vocabulário a destinos editoriais reais. Ele preserva o texto, limita links a dois destinos diferentes por trecho e evita links para a própria página quando currentPath é informado. Não expandir esse vocabulário com associações históricas sem evidência. Não gerar links por HTML não validado, nem pintar palavras vermelhas só por decoração.
+KnowledgeTextComponent associa termos selecionados a registros existentes e abre KnowledgeContextComponent via CDK Dialog. Preserva o texto com interpolação Angular, limita ocorrências interativas e distingue conceito, pessoa e obra por rótulos. O contexto permite seguir conexões com retorno interno e fontes. AtlasEditorialTextComponent permanece legado e seus destinos não orientam as três páginas atuais.
 
 Selecionar uma ficha deve atualizar título, resumo, trecho, prévia e destino em conjunto. Manter a seleção comunicável e o foco no controle. Cada interação visual precisa de operação por teclado/toque e caminho claro para voltar ou continuar.
 
@@ -84,6 +84,18 @@ O HTML enviado pelo usuário em 31/10/2026 acrescenta abertura tipográfica de g
 
 ## Páginas V4 de ideologias e tradições
 
-O padrão em `docs/PAGE_STANDARD.md` orienta esta família de páginas: uma leitura contínua, capítulos por âncoras, índice com estimativas, progresso e retorno. Variar a composição por assunto e capítulo; fontes e lacunas editoriais permanecem próximas da afirmação. O hub aproxima tradições com ligações de descoberta explicitamente rotuladas. Não converter polêmicas em descendência genealógica.
+O padrão em `docs/PAGE_STANDARD.md` orienta esta família de páginas: uma leitura contínua, capítulos por âncoras, índice com estimativas, progresso e retorno. Variar a composição por assunto e capítulo; fontes e lacunas editoriais permanecem próximas da afirmação. A home encaminha às leituras realmente disponíveis; não reintroduzir o hub removido sem pedido. Não converter polêmicas em descendência genealógica.
 
 O HTML Design System V4 é referência de composição e de tokens, não de dados históricos. Preservar a marca e as fontes locais aprovadas; não importar dependências de fontes remotas só para reproduzir a demonstração. Motion V4: 120/240/480 ms e cubic-bezier(.2,.7,.2,1), controle manual de movimento reduzido e preferência do sistema. Seleções alteram o contexto sem deslocar a leitura; somente a navegação de capítulo deve rolar até a âncora.
+
+## Enciclopédia exploratória: contrato de interação
+
+Esta revisão exige aplicação concreta, inicialmente no Marxismo, com reutilização pelo Liberalismo. Manter o escopo público autorizado; o padrão não cria páginas novas sozinho. A referência operacional é [Contrato de exploração](references/ideology-interaction.md): estabilidade, semântica de ação, cards, hipertexto, timeline, grafo, princípios, vertentes e argumentação. Conferir também `docs/PAGE_STANDARD.md` no repositório.
+
+A direção é maximizar a riqueza de respostas significativas. Todo ponto de exploração comunica a ação antes do hover, responde a foco/clique/toque e abre contexto útil. Cards densos podem usar CDK Dialog com dimensão previsível e restauração de foco/scroll; expansão inline intencional continua permitida quando ajuda a compreensão. Termos interativos são botões/links com pista persistente; ênfase estática usa `strong`/`em` e não finge ação.
+
+Estabilidade é critério de aceite: reservar mídia e estados, manter geometria de painel e coordenadas de grafo, não substituir narrativa hidratada por loader. Medir CLS e também posição do gatilho, scroll e tamanho do painel antes/depois. Não confundir CLS baixo com ausência de deslocamento após input. Não prometer zero universal.
+
+Princípios explicam problema, pressuposto, mecanismo e divergência. Vertentes têm recorte, diferenças e fontes; genealogia não se deduz de uma grade ou polêmica. Debate tem defesa atribuída, crítica atribuída, resposta documentada ou ausência explícita, e limites/controvérsias. Classificar a natureza da posição e a vertente a que se aplica. Ensinar reconstrução e avaliação, sem propaganda, espantalho ou simetria inventada.
+
+Usar motion contextual em termos, fichas, filtros, documentos e conexões; sem loops ou deslocamento de parágrafos em leitura. Hover não muda o fluxo. Teclado/reduced motion preservam o conteúdo e o feedback imediato. Validar desktop/mobile, ponteiro/teclado/toque, cliques rápidos, retorno ao contexto, imagens lentas e normal/reduzido; registrar o comportamento realmente observado.

@@ -1,24 +1,39 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ContentRepository } from '../core/content-repository';
 import type { Entity, Source } from '../core/content-schema';
-import type { IdeologyDossier, IdeologyEdge, PageBlock } from '../core/ideology-page-schema';
+import type {
+  ExplorationItem,
+  IdeologyDossier,
+  IdeologyEdge,
+  PageBlock,
+} from '../core/ideology-page-schema';
 import { MarxAtlasPage } from '../pages/marx-atlas-page';
+import { type KnowledgeContext, KnowledgeContextDirective } from './knowledge-context';
+import { KnowledgeTextComponent } from './knowledge-text';
 import { reproducibleAsset } from './licensed-asset';
 
 @Component({
   selector: 'app-ideology-block',
-  imports: [MarxAtlasPage],
+  imports: [MarxAtlasPage, KnowledgeContextDirective, KnowledgeTextComponent],
   templateUrl: './ideology-block.html',
-  styleUrl: './ideology-block.scss',
+  styleUrls: ['./ideology-block.scss', './ideology-exploration.scss'],
 })
 export class IdeologyBlockComponent {
   readonly block = input.required<PageBlock>();
   readonly dossier = input.required<IdeologyDossier>();
   readonly blockId = input.required<string>();
   readonly repository = inject(ContentRepository);
+  readonly hoveredNode = signal<string | null>(null);
+  readonly edgeFilter = signal('all');
+  readonly phases = [
+    { key: 'defence', label: 'Defesa' },
+    { key: 'criticism', label: 'Crítica' },
+    { key: 'response', label: 'Resposta' },
+    { key: 'limits', label: 'Limites' },
+  ] as const;
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   readonly params = toSignal(this.route.queryParamMap, {
@@ -37,6 +52,29 @@ export class IdeologyBlockComponent {
   });
   readonly selectedEdge = computed<IdeologyEdge | undefined>(
     () => this.edges().find((e) => e.id === this.params().get('relacao')) ?? this.edges()[0],
+  );
+  readonly visibleEdges = computed(() =>
+    this.edges().filter((e) => this.edgeFilter() === 'all' || e.type === this.edgeFilter()),
+  );
+  readonly edgeTypes = computed(() => [...new Set(this.edges().map((e) => e.type))]);
+  readonly explorationItems = computed(() => {
+    const block = this.block();
+    return block.type === 'explorations' ? block.items : [];
+  });
+  readonly explorationMode = computed(() => {
+    const block = this.block();
+    return block.type === 'explorations' ? block.mode : 'principles';
+  });
+  readonly debateTopics = computed(() => {
+    const block = this.block();
+    return block.type === 'debate' ? block.topics : [];
+  });
+  readonly selectedTopic = computed<
+    Extract<PageBlock, { type: 'debate' }>['topics'][number] | undefined
+  >(
+    () =>
+      this.debateTopics().find((t) => t.id === this.params().get('debate')) ??
+      this.debateTopics()[0],
   );
   readonly graphNodes = computed(() => {
     const ids = [...new Set(this.edges().flatMap((edge) => [edge.from, edge.to]))];
@@ -60,6 +98,12 @@ export class IdeologyBlockComponent {
       })
       .sort((a, b) => (a.temporalExtent?.startYear ?? 0) - (b.temporalExtent?.startYear ?? 0));
   });
+  readonly selectedTimeline = computed<Entity | undefined>(
+    () => this.timeline().find((e) => e.id === this.params().get('evento')) ?? this.timeline()[0],
+  );
+  readonly selectedTimelineIndex = computed(() =>
+    this.timeline().findIndex((e) => e.id === this.selectedTimeline()?.id),
+  );
   readonly sourceList = computed(() => {
     const block = this.block();
     const ids = block.type === 'sources' ? block.sourceIds : [];
@@ -90,6 +134,28 @@ export class IdeologyBlockComponent {
         asset.filePageUrl &&
         reproducibleAsset(this.atlas(), asset.assetPath),
     );
+  }
+  explorationContext(item: ExplorationItem): KnowledgeContext {
+    return {
+      title: item.title,
+      kind: `${item.kicker} · ${item.classification}`,
+      summary: item.summary,
+      paragraphs: item.paragraphs,
+      sources: item.sourceIds.flatMap((id) => this.source(id) ?? []),
+      connections: item.entityIds.map((id) => ({
+        entityId: id,
+        label: `${this.entity(id)?.title ?? id} · abrir contexto relacionado`,
+      })),
+    };
+  }
+  highlightEdge(edge: IdeologyEdge): boolean {
+    return this.hoveredNode()
+      ? edge.from === this.hoveredNode() || edge.to === this.hoveredNode()
+      : this.selectedEdge()?.id === edge.id;
+  }
+  selectNode(id: string): void {
+    const edge = this.visibleEdges().find((e) => e.from === id || e.to === id);
+    if (edge) this.update('relacao', edge.id);
   }
   period(entity: Entity): string {
     const t = entity.temporalExtent;

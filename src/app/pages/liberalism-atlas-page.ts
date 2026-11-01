@@ -1,9 +1,14 @@
-import { Component, computed, input, linkedSignal, signal } from '@angular/core';
+import { Dialog } from '@angular/cdk/dialog';
+import { DOCUMENT } from '@angular/common';
+import { Component, computed, inject, input, linkedSignal, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
+import { ContentRepository } from '../core/content-repository';
 import { methodologyKnowledgeGraph } from '../core/content-repository';
 import type { Entity, Relation } from '../core/content-schema';
 import type { KnowledgeRelationResult } from '../core/knowledge-graph';
 import { queryKnowledgeRelations } from '../core/knowledge-graph';
+import { entityContext, KnowledgeContextComponent } from '../shared/knowledge-context';
 
 const graph = methodologyKnowledgeGraph;
 
@@ -24,11 +29,18 @@ interface GraphEdge {
 
 @Component({
   selector: 'app-liberalism-atlas-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './liberalism-atlas-page.html',
-  styleUrls: ['./liberalism-atlas-page.scss', './liberalism-atlas-page-visual.scss'],
+  styleUrls: [
+    './liberalism-atlas-page.scss',
+    './liberalism-atlas-page-visual.scss',
+    './liberalism-interaction.scss',
+  ],
 })
 export class LiberalismAtlasPage {
+  private readonly document = inject(DOCUMENT);
+  private readonly dialog = inject(Dialog);
+  private readonly repository = inject(ContentRepository);
   readonly atlasId = input('atlas-liberalism');
   readonly rootEntityId = input('ideology-liberalism');
   readonly origin = input('/liberalismo');
@@ -52,6 +64,7 @@ export class LiberalismAtlasPage {
           ),
       ).length,
   );
+  readonly hoveredId = signal<string | null>(null);
   readonly mode = signal<ViewMode>('rede');
   readonly relationFilter = signal<RelationFilter>('all');
   readonly selectedId = linkedSignal(() => this.rootEntityId());
@@ -101,8 +114,8 @@ export class LiberalismAtlasPage {
     ]);
     const items = this.entities().filter((entity) => visibleIds.has(entity.id));
     return items.map((entity) => {
-      if (entity.id === focusId) return { entity, x: 460, y: 286 };
-      const others = items.filter((item) => item.id !== focusId);
+      if (entity.id === this.rootEntityId()) return { entity, x: 460, y: 286 };
+      const others = this.entities().filter((item) => item.id !== this.rootEntityId());
       const position = others.findIndex((item) => item.id === entity.id);
       const angle = -Math.PI / 2 + (Math.PI * 2 * position) / Math.max(others.length, 1);
       return { entity, x: 460 + Math.cos(angle) * 350, y: 286 + Math.sin(angle) * 205 };
@@ -162,9 +175,21 @@ export class LiberalismAtlasPage {
     this.search.set(value);
   }
   openEntity(entityId: string): void {
-    if (entityId === this.selectedId()) return;
-    this.history.update((items) => [...items, this.selectedId()]);
-    this.selectedId.set(entityId);
+    if (entityId !== this.selectedId()) {
+      this.history.update((items) => [...items, this.selectedId()]);
+      this.selectedId.set(entityId);
+    }
+    if (this.document.defaultView?.matchMedia?.('(max-width: 1100px)').matches) {
+      this.dialog.open(KnowledgeContextComponent, {
+        data: entityContext(this.repository, entityId),
+        ariaLabelledBy: 'knowledge-context-title',
+        autoFocus: 'first-tabbable',
+        restoreFocus: true,
+        width: 'min(56rem, calc(100vw - 2rem))',
+        height: 'min(44rem, calc(100dvh - 2rem))',
+        panelClass: 'atlas-context-panel',
+      });
+    }
   }
   returnContext(): void {
     const previous = this.history().at(-1);

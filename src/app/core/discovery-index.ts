@@ -318,6 +318,8 @@ export function safeDiscoveryOrigin(value: string | null): string | null {
         'periodo',
         'relacao',
         'bibliografia',
+        'evento',
+        'debate',
         'pensadores-0',
         'origens-0',
         'conceitos-0',

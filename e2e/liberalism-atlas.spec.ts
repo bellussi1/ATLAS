@@ -19,12 +19,13 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
   await expect(page.getByRole('heading', { name: 'Adam Smith', exact: true })).toBeVisible();
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
   await expect(page.getByRole('heading', { name: 'Liberalismo', exact: true })).toBeVisible();
-  await page.getByRole('button', { name: 'Tempo', exact: true }).click();
-  await page.locator('.entity-card').filter({ hasText: 'Revolução Gloriosa' }).click();
+  await page.getByRole('link', { name: 'Tempo', exact: true }).click();
+  await expect(page).toHaveURL(/#timeline-title$/);
+  await page.locator('.timeline-list button').filter({ hasText: 'Revolução Gloriosa' }).click();
   await expect(
     page.getByRole('heading', { name: 'Revolução Gloriosa', exact: true }),
   ).toBeVisible();
-  await page.getByRole('button', { name: 'Imagens e documentos' }).click();
+  await page.getByRole('link', { name: 'Imagens e documentos' }).click();
   await expect(page.getByRole('heading', { name: 'Imagens com licença registrada' })).toBeVisible();
   const figure = page.locator('.gallery figure').first();
   await figure.scrollIntoViewIfNeeded();
@@ -47,7 +48,7 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
     'href',
     /commons\.wikimedia\.org/,
   );
-  await page.getByRole('button', { name: 'Rede', exact: true }).click();
+  await page.getByRole('link', { name: 'Rede', exact: true }).click();
   await expect(page.locator('.text-network summary')).toBeVisible();
   const violations = (await new AxeBuilder({ page }).analyze()).violations;
   expect(
@@ -66,10 +67,25 @@ test('mobile keeps entity navigation available without horizontal overflow', asy
   await expect(locke.locator('.card-preview')).toBeHidden();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'John Locke', exact: true })).toBeVisible();
+  await page.keyboard.press('Escape');
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
   await expect(page.getByRole('heading', { name: 'Liberalismo', exact: true })).toBeVisible();
   const violations = (await new AxeBuilder({ page }).analyze()).violations;
   expect(
     violations.filter((item) => item.impact === 'critical' || item.impact === 'serious'),
   ).toEqual([]);
+});
+
+test('mobile opens and reopens the selected entity without duplicating history', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/liberalismo/');
+  const root = page.locator('.entity-card').filter({ hasText: 'Liberalismo' }).first();
+  for (let attempt = 0; attempt < 2; attempt++) {
+    await root.click();
+    await expect(page.getByRole('dialog')).toContainText('Liberalismo');
+    await page.keyboard.press('Escape');
+    await expect(root).toBeFocused();
+  }
 });

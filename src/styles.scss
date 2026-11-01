@@ -10,7 +10,7 @@
   src: url('/fonts/IBMPlexSans.ttf') format('truetype');
   font-style: normal;
   font-weight: 100 700;
-  font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
@@ -18,7 +18,7 @@
   src: url('/fonts/IBMPlexMono-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
@@ -26,7 +26,7 @@
   src: url('/fonts/SourceSerif4.ttf') format('truetype');
   font-style: normal;
   font-weight: 200 900;
-  font-display: swap;
+  font-display: optional;
 }
 
 :root {
@@ -208,4 +208,39 @@ html.atlas-reduced-motion * {
   scroll-behavior: auto !important;
   animation-duration: 0.01ms !important;
   transition-duration: 0.01ms !important;
+}
+
+/* Interaction primitives: visual feedback never changes the document geometry. */
+html {
+  scrollbar-gutter: stable;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .atlas-context-panel {
+    animation: atlas-context-reveal var(--motion-standard) var(--ease-out) both;
+  }
+}
+@keyframes atlas-context-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+html[data-input='keyboard'] *,
+html[data-input='keyboard'] *::before,
+html[data-input='keyboard'] *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+}
+:where(button, a, summary):focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  :where(a[href]):hover {
+    text-decoration-thickness: 2px;
+  }
 }

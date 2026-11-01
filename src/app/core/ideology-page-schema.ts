@@ -26,7 +26,45 @@ export const ideologyEdgeSchema = z
     'Relação histórica exige fonte.',
   );
 
+export const explorationItemSchema = z.object({
+  id,
+  title: z.string().min(1),
+  kicker: z.string().min(1),
+  summary: z.string().min(1),
+  paragraphs: z.array(z.string().min(1)).min(1),
+  sourceIds: z.array(id).min(1),
+  entityIds: z.array(id),
+  classification: z.enum([
+    'tese atribuída',
+    'interpretação',
+    'hipótese',
+    'normativa',
+    'alegação empírica',
+    'limitação editorial',
+  ]),
+});
 export const pageBlockSchema = z.discriminatedUnion('type', [
+  z.object({
+    type: z.literal('explorations'),
+    mode: z.enum(['principles', 'schools']),
+    items: z.array(explorationItemSchema).min(1),
+  }),
+  z.object({
+    type: z.literal('debate'),
+    topics: z
+      .array(
+        z.object({
+          id,
+          title: z.string().min(1),
+          scope: z.string().min(1),
+          defence: explorationItemSchema,
+          criticism: explorationItemSchema,
+          response: explorationItemSchema,
+          limits: explorationItemSchema,
+        }),
+      )
+      .min(1),
+  }),
   z.object({
     type: z.literal('entities'),
     entityIds: z.array(id),
@@ -105,6 +143,7 @@ export const ideologyGraphSchema = z.object({
 });
 export type IdeologyPage = z.infer<typeof ideologyPageSchema>;
 export type PageBlock = z.infer<typeof pageBlockSchema>;
+export type ExplorationItem = z.infer<typeof explorationItemSchema>;
 export type IdeologyEdge = z.infer<typeof ideologyEdgeSchema>;
 export type IdeologyGraph = z.infer<typeof ideologyGraphSchema>;
 export interface IdeologyDossier {
@@ -148,6 +187,16 @@ export function validateIdeologyDossier(
       if ('entityIds' in block) requireIds(block.entityIds, entities);
       if ('edgeIds' in block) requireIds(block.edgeIds, edges);
       if ('sourceIds' in block) requireIds(block.sourceIds, sources);
+      const items =
+        block.type === 'explorations'
+          ? block.items
+          : block.type === 'debate'
+            ? block.topics.flatMap((t) => [t.defence, t.criticism, t.response, t.limits])
+            : [];
+      for (const item of items) {
+        requireIds(item.sourceIds, sources);
+        requireIds(item.entityIds, entities);
+      }
     }
   }
   return { page, supplement };

@@ -1,0 +1,84 @@
+:host {
+  display: contents;
+}
+.term-wrap {
+  position: relative;
+}
+.knowledge-term {
+  display: inline;
+  font: inherit;
+  line-height: inherit;
+  color: var(--color-accent);
+  background: none;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px dotted currentColor;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.17em;
+}
+.term-cue {
+  display: inline-block;
+  font: 0.7em var(--font-mono);
+  margin-left: 0.15em;
+  transition: transform var(--motion-fast) var(--ease-out);
+}
+.term-preview {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  inset: auto 0 calc(100% + 0.65rem) auto;
+  width: min(17rem, 75vw);
+  padding: 0.8rem;
+  font: 0.85rem/1.5 var(--font-sans);
+  color: var(--ink);
+  background: var(--color-ochre-paper);
+  border: 1px solid var(--ink);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition:
+    opacity var(--motion-fast),
+    transform var(--motion-fast);
+}
+.term-preview strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.knowledge-term:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+.term-wrap:focus-within .term-preview {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .term-wrap:hover .term-preview {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .knowledge-term:hover {
+    background: var(--color-ochre-paper);
+    color: var(--color-accent-hover);
+  }
+  .knowledge-term:hover .term-cue {
+    transform: rotate(90deg);
+  }
+}
+.knowledge-term:active,
+.knowledge-term.is-expanded {
+  background: var(--color-ochre-paper);
+  color: var(--color-accent-hover);
+}
+@media (max-width: 650px) {
+  .term-preview {
+    display: none !important;
+  }
+}

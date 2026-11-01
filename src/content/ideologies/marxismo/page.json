@@ -70,6 +70,51 @@
       "sourceIds": ["source-v4-marx-sep", "source-marx-capital", "source-marx-smith"],
       "blocks": [
         {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "principle-history",
+              "title": "Como explicar a mudança histórica?",
+              "kicker": "História e sociedade",
+              "summary": "Marx relaciona formas políticas e jurídicas às condições materiais de vida.",
+              "paragraphs": [
+                "No prefácio de 1859, Marx situa sua investigação na produção social e nas relações que ela estabelece. É uma formulação atribuída ao autor, não uma lei histórica validada pelo ATLAS.",
+                "Problema: compreender mudanças sociais. Pressuposto: as condições materiais importam. Mecanismo investigado: relações de produção e seus conflitos. A extensão explicativa dessa abordagem é objeto de debate."
+              ],
+              "sourceIds": ["source-marx-preface-1859"],
+              "entityIds": ["concept-historical-materialism"],
+              "classification": "interpretação"
+            },
+            {
+              "id": "principle-value",
+              "title": "O trabalho de quem conta?",
+              "kicker": "Economia política",
+              "summary": "Em O capital, o valor remete ao tempo de trabalho socialmente necessário.",
+              "paragraphs": [
+                "O capítulo 1 distingue o tempo socialmente necessário do dispêndio individual de um produtor. A questão é a forma social do trabalho na análise da mercadoria.",
+                "Esse conceito não deve ser tratado como descrição automática do preço de mercado. Abra a comparação Smith–Marx para investigar o recorte textual e seus limites."
+              ],
+              "sourceIds": ["source-marx-capital"],
+              "entityIds": ["concept-trabalho-socialmente-necessario", "work-capital-volume-i"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "principle-change",
+              "title": "Reforma para quê?",
+              "kicker": "Estratégia política",
+              "summary": "Luxemburg articula reformas cotidianas e transformação socialista.",
+              "paragraphs": [
+                "Na introdução de Reforma ou revolução, a autora apresenta reformas como meios e transformação socialista como finalidade. A posição é de Luxemburg e não resume todas as tradições marxistas.",
+                "O contraste com Bernstein permite investigar mecanismos políticos e divergências sobre objetivos, sem inventar uma doutrina unânime."
+              ],
+              "sourceIds": ["source-v4-luxemburg"],
+              "entityIds": ["person-rosa-luxemburg", "person-eduard-bernstein"],
+              "classification": "normativa"
+            }
+          ]
+        },
+        {
           "type": "entities",
           "entityIds": [
             "concept-historical-materialism",
@@ -161,6 +206,51 @@
       "sourceIds": ["source-v4-luxemburg", "source-v4-lenin", "source-marx-critique"],
       "blocks": [
         {
+          "type": "explorations",
+          "mode": "schools",
+          "items": [
+            {
+              "id": "school-reform",
+              "title": "Socialismo reformista",
+              "kicker": "Recorte: Bernstein",
+              "summary": "Ampliação de direitos políticos e econômicos como tarefa da social-democracia.",
+              "paragraphs": [
+                "No prefácio de Evolutionary Socialism, Bernstein defende a extensão dos direitos da classe trabalhadora e esclarece sua prioridade ao movimento. Ele registra diferenças em relação a Marx e Engels.",
+                "Este recorte situa uma posição no debate revisionista; não define toda a social-democracia posterior como uma única corrente nem a faz descendente automática de outra."
+              ],
+              "sourceIds": ["source-bernstein-preface"],
+              "entityIds": ["person-eduard-bernstein"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "school-revolution",
+              "title": "Marxismo revolucionário",
+              "kicker": "Recorte: Luxemburg",
+              "summary": "Reformas e objetivo socialista são articulados, não tratados como sinônimos.",
+              "paragraphs": [
+                "Luxemburg contesta a transformação das reformas em finalidade suficiente. A introdução de Reforma ou revolução identifica a polêmica e sua interlocução com Bernstein.",
+                "A posição da autora não é equivalente a rejeitar toda reforma. “Marxismo revolucionário” aqui nomeia esse recorte argumentativo, sem pretender esgotar suas vertentes."
+              ],
+              "sourceIds": ["source-v4-luxemburg"],
+              "entityIds": ["person-rosa-luxemburg", "person-eduard-bernstein"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "school-lenin",
+              "title": "Leitura leniniana do Estado",
+              "kicker": "Recorte: Lenin",
+              "summary": "A questão da ruptura com a máquina estatal organiza a crítica a Kautsky.",
+              "paragraphs": [
+                "O capítulo VI de O Estado e a revolução discute o tratamento do Estado e da revolução por Kautsky. A fonte registra a crítica de Lenin, não uma avaliação neutra de seu adversário.",
+                "Este é um recorte textual; não caracteriza sozinho todos os leninismos ou regimes que os reivindicaram."
+              ],
+              "sourceIds": ["source-v4-lenin"],
+              "entityIds": ["person-vladimir-lenin", "person-karl-kautsky"],
+              "classification": "tese atribuída"
+            }
+          ]
+        },
+        {
           "type": "graph",
           "edgeIds": ["edge-luxemburg-bernstein", "edge-lenin-kautsky", "edge-marx-smith"]
         }
@@ -178,11 +268,127 @@
         "Crítica política interna: Luxemburg contesta Bernstein sobre reformas e transformação socialista; Lenin critica Kautsky sobre Estado e revolução. Cada relação atribui o argumento ao autor que o formulou, sem tornar sua acusação um veredito do ATLAS.",
         "Debate acadêmico: a interpretação da história, a teoria do valor e a exploração em Marx têm leituras concorrentes. Consulte as seções 2 e 3 da Stanford Encyclopedia of Philosophy para distinguir reconstrução filosófica, objeções e alternativas. A existência de debate não significa que todas as posições tenham o mesmo apoio."
       ],
-      "sourceIds": ["source-v4-marx-sep", "source-v4-luxemburg", "source-v4-lenin"],
+      "sourceIds": [
+        "source-v4-marx-sep",
+        "source-v4-luxemburg",
+        "source-v4-lenin",
+        "source-bernstein-preface"
+      ],
       "blocks": [
         {
-          "type": "sources",
-          "sourceIds": ["source-v4-marx-sep", "source-v4-luxemburg", "source-v4-lenin"]
+          "type": "debate",
+          "topics": [
+            {
+              "id": "debate-reform",
+              "title": "Reforma e transformação",
+              "scope": "Polêmica interna ao socialismo: Bernstein e Luxemburg. As posições são atribuídas, e não um roteiro de convencimento político.",
+              "defence": {
+                "id": "defence-reform",
+                "title": "Bernstein: ampliar direitos",
+                "kicker": "Defesa atribuída",
+                "summary": "A ação política deve ampliar direitos e organização da classe trabalhadora.",
+                "paragraphs": [
+                  "Reconstrução da defesa: Bernstein considera a extensão de direitos políticos e econômicos uma tarefa central da social-democracia. O leitor pode examinar o que essa estratégia promete realizar.",
+                  "Como avaliar: conferir o argumento do próprio autor, identificar sua finalidade e separar o compromisso normativo das expectativas sobre resultados."
+                ],
+                "sourceIds": ["source-bernstein-preface"],
+                "entityIds": ["person-eduard-bernstein"],
+                "classification": "normativa"
+              },
+              "criticism": {
+                "id": "criticism-reform",
+                "title": "Luxemburg: meios não são fins",
+                "kicker": "Crítica atribuída",
+                "summary": "Fazer das reformas a finalidade pode abandonar a transformação socialista.",
+                "paragraphs": [
+                  "A introdução de Reforma ou revolução contesta a posição atribuída a Bernstein. A autora sustenta que reformas e transformação social têm funções diferentes.",
+                  "Como criticar com rigor: localizar qual premissa é contestada e representar a posição adversária sem reduzi-la a uma caricatura."
+                ],
+                "sourceIds": ["source-v4-luxemburg"],
+                "entityIds": ["person-rosa-luxemburg", "person-eduard-bernstein"],
+                "classification": "interpretação"
+              },
+              "response": {
+                "id": "response-reform",
+                "title": "Reformas também são instrumentos",
+                "kicker": "Esclarecimento documentado",
+                "summary": "Luxemburg não rejeita a luta cotidiana por reformas.",
+                "paragraphs": [
+                  "A autora esclarece que a luta por reformas é um meio de ação em direção ao objetivo socialista. Essa nuance responde à falsa escolha entre aceitar toda reforma e rejeitar qualquer reforma.",
+                  "Não se apresenta aqui uma réplica posterior de Bernstein a esse trecho: ela não foi incorporada ao recorte."
+                ],
+                "sourceIds": ["source-v4-luxemburg"],
+                "entityIds": ["person-rosa-luxemburg"],
+                "classification": "tese atribuída"
+              },
+              "limits": {
+                "id": "limits-reform",
+                "title": "A polêmica não decide os resultados",
+                "kicker": "Limites e controvérsias",
+                "summary": "Textos argumentativos não bastam para comprovar os efeitos históricos de uma estratégia.",
+                "paragraphs": [
+                  "Esta comparação permite analisar posições e pressupostos. Uma avaliação empírica de reformas, partidos e processos revolucionários exige fontes específicas para cada experiência.",
+                  "Não deduzir sucesso, fracasso ou equivalência de regimes a partir dessas duas formulações."
+                ],
+                "sourceIds": ["source-bernstein-preface", "source-v4-luxemburg"],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
+            },
+            {
+              "id": "debate-state",
+              "title": "Estado e revolução",
+              "scope": "Leitura de Lenin sobre Kautsky: uma crítica política documentada. O recorte não transforma a acusação de um autor em veredito historiográfico.",
+              "defence": {
+                "id": "defence-state",
+                "title": "Lenin: enfrentar a questão do Estado",
+                "kicker": "Defesa atribuída",
+                "summary": "A transformação social exige discutir o aparelho estatal.",
+                "paragraphs": [
+                  "No capítulo VI, Lenin considera insuficiente falar em conquistar poder sem enfrentar o problema da máquina estatal. A formulação pertence à sua interpretação do marxismo."
+                ],
+                "sourceIds": ["source-v4-lenin"],
+                "entityIds": ["person-vladimir-lenin"],
+                "classification": "tese atribuída"
+              },
+              "criticism": {
+                "id": "criticism-state",
+                "title": "A leitura de Kautsky é contestada",
+                "kicker": "Objeção no texto",
+                "summary": "Lenin acusa Kautsky de contornar o problema da ruptura estatal.",
+                "paragraphs": [
+                  "A fonte permite conferir a crítica e os trechos de Kautsky que Lenin seleciona. Uma avaliação da justiça dessa interpretação exige também leitura independente da obra criticada."
+                ],
+                "sourceIds": ["source-v4-lenin"],
+                "entityIds": ["person-karl-kautsky", "person-vladimir-lenin"],
+                "classification": "interpretação"
+              },
+              "response": {
+                "id": "response-state",
+                "title": "Réplica ainda não incorporada",
+                "kicker": "Ausência explícita",
+                "summary": "Não há resposta direta de Kautsky registrada neste recorte.",
+                "paragraphs": [
+                  "Não preencher essa posição com uma defesa inventada. O leitor dispõe da crítica de Lenin, mas a reconstrução da resposta de Kautsky depende de ampliar as fontes."
+                ],
+                "sourceIds": ["source-v4-lenin"],
+                "entityIds": ["person-karl-kautsky"],
+                "classification": "limitação editorial"
+              },
+              "limits": {
+                "id": "limits-state",
+                "title": "Polêmica e história são perguntas distintas",
+                "kicker": "Limites",
+                "summary": "Uma controvérsia textual não explica sozinha as experiências políticas posteriores.",
+                "paragraphs": [
+                  "Separar o que o autor defende, o que o crítico lhe atribui e o que fontes históricas demonstram sobre ações e instituições. A tabela de relações registra a existência da crítica, não sua correção."
+                ],
+                "sourceIds": ["source-v4-lenin"],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
+            }
+          ]
         }
       ],
       "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria."
@@ -208,7 +414,9 @@
             "source-marx-smith",
             "source-marx-critique",
             "source-v4-luxemburg",
-            "source-v4-lenin"
+            "source-v4-lenin",
+            "source-bernstein-preface",
+            "source-marx-preface-1859"
           ]
         }
       ],

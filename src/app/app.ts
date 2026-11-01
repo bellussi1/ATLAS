@@ -19,8 +19,8 @@ import { AtlasEditorialMarkComponent } from './shared/editorial-mark';
   templateUrl: './app.html',
   styleUrl: './app.scss',
   host: {
-    '(document:keydown)': 'instantNavigation = true',
-    '(document:pointerdown)': 'instantNavigation = false',
+    '(document:keydown)': 'setInputMode(true)',
+    '(document:pointerdown)': 'setInputMode(false)',
   },
 })
 export class AppComponent {
@@ -49,6 +49,11 @@ export class AppComponent {
       this.pageAnimation?.cancel();
       this.document.defaultView?.cancelAnimationFrame?.(this.pageFrame);
     });
+  }
+
+  setInputMode(keyboard: boolean): void {
+    this.instantNavigation = keyboard;
+    this.document.documentElement.dataset['input'] = keyboard ? 'keyboard' : 'pointer';
   }
 
   transitionPage(): void {

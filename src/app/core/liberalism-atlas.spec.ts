@@ -93,6 +93,8 @@ describe('Liberalism atlas snapshot', () => {
     page.openEntity('person-john-locke');
     expect(page.selected()?.title).toBe('John Locke');
     expect(page.history()).toEqual(['ideology-liberalism']);
+    page.openEntity('person-john-locke');
+    expect(page.history()).toEqual(['ideology-liberalism']);
     page.returnContext();
     expect(page.selected()?.title).toBe('Liberalismo');
     expect(page.history()).toEqual([]);

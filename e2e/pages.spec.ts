@@ -41,7 +41,9 @@ test('Marxism chapters, comparison and sources remain on the same page', async (
   await expect(page).toHaveURL(/#pensadores$/);
   const author = page.locator('#pensadores').getByRole('button', { name: /Friedrich Engels/ });
   await author.click();
-  await expect(author).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.getByRole('dialog')).toContainText('Friedrich Engels');
+  await page.keyboard.press('Escape');
+  await expect(author).toBeFocused();
   await page
     .getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ })
     .click();

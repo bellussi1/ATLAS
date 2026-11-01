@@ -1,0 +1,100 @@
+/* Shared action language and predictable context geometry. */
+.view-switch a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.7rem 1rem;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.context-panel {
+  height: 34rem;
+  overflow: auto;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+  animation: none;
+}
+.entity-card .action-cue {
+  font: 0.7rem/1.4 var(--font-sans);
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+.entity-card,
+.graph-node,
+.timeline-list button {
+  transition:
+    background-color var(--motion-fast),
+    box-shadow var(--motion-fast);
+}
+.entity-card.selected {
+  border-left-width: 2px;
+  box-shadow: inset 2px 0 var(--color-accent);
+}
+.entity-card:active,
+.graph-node:active {
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+.graph-canvas .edges line {
+  transition:
+    opacity var(--motion-fast),
+    stroke var(--motion-fast);
+}
+.graph-canvas .edges line.highlighted {
+  stroke: var(--color-indigo);
+  stroke-width: 4;
+}
+.image-context img {
+  aspect-ratio: 4/3;
+  object-fit: contain;
+}
+.gallery img {
+  height: 20rem;
+  aspect-ratio: 4/3;
+}
+@media (hover: hover) and (pointer: fine) {
+  .graph-node:hover {
+    box-shadow: inset 0 0 0 2px var(--ink);
+  }
+}
+
+.gallery figure.expanded img {
+  height: min(38rem, 70dvh);
+}
+.entity-card.selected .action-cue {
+  color: var(--ink);
+}
+@media (min-width: 1101px) {
+  .explorer {
+    grid-template-columns: minmax(12rem, 0.55fr) minmax(0, 2fr);
+  }
+  .explore-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.7fr);
+    gap: 0 1.5rem;
+    align-items: start;
+  }
+  .explore-stage > .graph-section,
+  .explore-stage > .timeline-section,
+  .explore-stage > .gallery-section {
+    grid-column: 1;
+  }
+  .explore-stage > .context-panel {
+    grid-column: 2;
+    grid-row: 1/5;
+    position: sticky;
+    top: 1rem;
+    margin-top: 0;
+    height: calc(100dvh - 2rem);
+    max-height: 44rem;
+  }
+  .graph-canvas {
+    min-height: 25rem;
+  }
+  .section-heading {
+    display: block;
+  }
+  .graph-node {
+    width: 6rem;
+  }
+}

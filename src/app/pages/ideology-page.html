@@ -102,33 +102,18 @@
             </header>
             <div class="chapter-narrative">
               @for (paragraph of chapter.narrative; track $index) {
-                <p>{{ paragraph }}</p>
+                <p><app-knowledge-text [text]="paragraph" /></p>
               }
             </div>
             @if (chapter.gap) {
               <p class="editorial-gap"><strong>Limite deste recorte.</strong> {{ chapter.gap }}</p>
             }
             @for (block of chapter.blocks; track $index; let blockIndex = $index) {
-              @if (block.type === 'graph') {
-                @defer (on viewport; on interaction) {
-                  <app-ideology-block
-                    [block]="block"
-                    [dossier]="state().dossier!"
-                    [blockId]="chapter.id + '-' + blockIndex"
-                  />
-                } @placeholder {
-                  <div class="graph-placeholder">
-                    <p>Polêmicas documentadas · rede e tabela de relações</p>
-                    <button type="button">Carregar relações</button>
-                  </div>
-                }
-              } @else {
-                <app-ideology-block
-                  [block]="block"
-                  [dossier]="state().dossier!"
-                  [blockId]="chapter.id + '-' + blockIndex"
-                />
-              }
+              <app-ideology-block
+                [block]="block"
+                [dossier]="state().dossier!"
+                [blockId]="chapter.id + '-' + blockIndex"
+              />
             }
             @if (chapter.sourceIds.length) {
               <details class="chapter-sources">

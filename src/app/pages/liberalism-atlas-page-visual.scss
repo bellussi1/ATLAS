@@ -139,7 +139,6 @@
   padding: 1.2rem clamp(1rem, 2vw, 1.8rem);
   border-left: 5px solid var(--color-accent);
   background: var(--color-ochre-paper);
-  animation: context-in 220ms ease both;
 }
 .context-panel .eyebrow,
 .context-panel .back-button,
@@ -171,14 +170,7 @@
   margin: 0;
   font: 1.12rem/1.5 var(--font-serif);
 }
-.full-entry-link {
-  display: inline-flex;
-  min-height: 2.75rem;
-  align-items: center;
-  margin-block: 0.25rem 1rem;
-  color: var(--color-accent-hover);
-  text-underline-offset: 0.2em;
-}
+
 .entity-meta {
   display: flex;
   flex-wrap: wrap;
@@ -318,16 +310,6 @@ input:focus-visible,
 summary:focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
-}
-@keyframes context-in {
-  from {
-    opacity: 0.65;
-    transform: translateY(0.35rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   *,

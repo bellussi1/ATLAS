@@ -164,6 +164,8 @@ progress::-moz-progress-bar {
 .chapter-number {
   font-family: var(--font-mono);
   font-weight: 400;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .motion-control,
 .return-control {

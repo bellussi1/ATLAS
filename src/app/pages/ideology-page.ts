@@ -18,6 +18,7 @@ import { ContentRepository } from '../core/content-repository';
 import type { Source } from '../core/content-schema';
 import type { IdeologyDossier } from '../core/ideology-page-schema';
 import { IdeologyBlockComponent } from '../shared/ideology-block';
+import { KnowledgeTextComponent } from '../shared/knowledge-text';
 import { reproducibleAsset } from '../shared/licensed-asset';
 
 interface PageState {
@@ -26,7 +27,7 @@ interface PageState {
 }
 @Component({
   selector: 'app-ideology-page',
-  imports: [RouterLink, IdeologyBlockComponent],
+  imports: [RouterLink, IdeologyBlockComponent, KnowledgeTextComponent],
   templateUrl: './ideology-page.html',
   styleUrl: './ideology-page.scss',
 })

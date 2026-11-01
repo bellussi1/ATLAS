@@ -2,6 +2,12 @@
 
 Este arquivo preserva o histórico das três composições experimentais criadas no Prompt 04. As rotas `/laboratorio/:proposta/:pagina` foram retiradas da aplicação e já não são publicadas; os desenhos e capturas abaixo servem apenas como registro da evolução visual. A direção A foi escolhida pelo usuário e consolidada na interface principal.
 
+## Evolução atual — enciclopédia exploratória
+
+Em novembro de 2026, a direção editorial ganha exploração contextual no Marxismo e infraestrutura compartilhada com Liberalismo. Papel, tinta, filetes, tipografia local e campos cromáticos continuam organizando leitura e evidência. A geometria comunica seleção e relação: trilho temporal, rede de nós, quadro de posições e fichas sobrepostas. Evitar que o detalhe empurre o parágrafo ou transforme uma polêmica em árvore de descendência. Hover, foco e toque revelam contexto; a pista de ação já existe antes da interação. O contrato atualizado está em [PAGE_STANDARD.md](PAGE_STANDARD.md), e capturas e medições em [auditoria-enciclopedia/RELATORIO.md](auditoria-enciclopedia/RELATORIO.md).
+
+As especificações abaixo registram decisões históricas. O carregamento atual das fontes usa `optional`, e as únicas páginas publicadas são home, Marxismo e Liberalismo.
+
 ## Observação das referências
 
 As observações abaixo descrevem somente o que aparece nos arquivos fornecidos em `referencias/`. As propostas de adaptação vêm em seguida e não reproduzem essas peças.

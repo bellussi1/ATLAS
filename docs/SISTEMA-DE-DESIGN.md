@@ -2,7 +2,15 @@
 
 O sistema estabelece uma base comum a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo. A direção A foi aprovada pelo usuário e é a base da interface principal. As alternativas B e C do Prompt 04 permanecem apenas como arquivo histórico em `DIRECAO-ARTISTICA.md`; as páginas de laboratório foram retiradas da aplicação.
 
-O showroom navegável está em `/sistema`. A rota é pré-renderizada e também pode ser aberta pelo link “Sistema visual” no rodapé global.
+O escopo público atual contém somente `/`, `/marxismo` e `/liberalismo`. O showroom `/sistema` e as demais páginas antigas foram retirados; as descrições históricas abaixo não representam rotas disponíveis.
+
+## Exploração enciclopédica — novembro de 2026
+
+O contrato vigente das ideologias está em [PAGE_STANDARD.md](PAGE_STANDARD.md). `KnowledgeText` oferece termos contextuais, com sublinhado e pista persistente; `KnowledgeContextComponent` e a diretiva `appKnowledgeContext` abrem fichas de fontes, mídia licenciada e conexões em CDK Dialog. O diálogo preserva a leitura ao fundo, contém sua própria rolagem, admite Escape e devolve o foco ao gatilho. Seguir uma conexão inicia o novo contexto no topo; voltar restaura a posição interna anterior.
+
+Timeline, grafo e quadro argumentativo usam painéis com geometria reservada. Os nós mantêm coordenadas na seleção; filtros e alternativa textual continuam operáveis por teclado. Cards de princípios, vertentes e argumentos abrem contexto em vez de aumentar a linha da grade. No Liberalismo, o contexto permanece lateral no desktop e abre diálogo em telas estreitas. As fontes locais usam `font-display: optional` e preload das duas famílias principais para evitar troca tardia de métricas.
+
+Motion responde a ações: hover/press de fichas, prévias de termos, abertura contextual e realce de conexões. Os tokens de 120/240/480 ms permanecem; teclado e movimento reduzido têm resposta imediata. Ênfase estática não recebe aparência de botão. Evidências e limites das verificações estão em [auditoria-enciclopedia/RELATORIO.md](auditoria-enciclopedia/RELATORIO.md).
 
 ## Tokens
 

@@ -32,19 +32,13 @@
     </aside>
   </header>
 
-  @if (!continuous()) {
-    <nav class="view-switch" aria-label="Modos de exploração">
-      <button type="button" [attr.aria-pressed]="mode() === 'rede'" (click)="setMode('rede')">
-        Rede
-      </button>
-      <button type="button" [attr.aria-pressed]="mode() === 'tempo'" (click)="setMode('tempo')">
-        Tempo
-      </button>
-      <button type="button" [attr.aria-pressed]="mode() === 'imagens'" (click)="setMode('imagens')">
-        Imagens e documentos
-      </button>
-    </nav>
-  }
+  <nav class="view-switch" aria-label="Capítulos de exploração">
+    <a [routerLink]="[]" fragment="graph-title" queryParamsHandling="preserve">Rede</a
+    ><a [routerLink]="[]" fragment="timeline-title" queryParamsHandling="preserve">Tempo</a
+    ><a [routerLink]="[]" fragment="gallery-title" queryParamsHandling="preserve"
+      >Imagens e documentos</a
+    >
+  </nav>
 
   <div class="explorer">
     <section class="index" aria-labelledby="index-title">
@@ -82,7 +76,8 @@
             >
               <span class="entity-type">{{ kindLabel(entity) }}</span>
               <strong>{{ entity.title }}</strong>
-              <span class="entity-year">{{ yearLabel(entity) }}</span>
+              <span class="entity-year">{{ yearLabel(entity) }}</span
+              ><span class="action-cue">Selecionar contexto +</span>
               <span class="card-preview">{{ entity.summary }}</span>
             </button>
           </li>
@@ -93,203 +88,206 @@
     </section>
 
     <section class="explore-stage" aria-label="Conexões entre registros">
-      @if (continuous() || mode() === 'rede') {
-        <section class="graph-section" aria-labelledby="graph-title">
-          <div class="section-heading">
-            <div>
-              @if (continuous()) {
-                <p class="eyebrow">Relações entre registros</p>
-                <h2 id="graph-title">Quem se liga a quem</h2>
-                <p class="edge-legend">
-                  Cada linha nomeia os dois registros e o vínculo importado. Selecione um nome para
-                  abrir a ficha no próprio percurso.
-                </p>
-              } @else {
-                <p class="eyebrow">Conexões de navegação</p>
-                <h2 id="graph-title">Uma rede para seguir</h2>
-                <p class="edge-legend">
-                  Tracejado: link de descoberta da Wikipedia. Linha contínua: relação estruturada do
-                  Wikidata; confira o rótulo, a procedência e o estado no painel.
-                </p>
-              }
-            </div>
-            @if (!continuous()) {
-              <p>
-                Linhas indicam links entre páginas da Wikipedia ou declarações estruturadas.
-                Selecione um nome para abrir o painel.
+      <section class="graph-section" aria-labelledby="graph-title">
+        <div class="section-heading">
+          <div>
+            @if (continuous()) {
+              <p class="eyebrow">Relações entre registros</p>
+              <h2 id="graph-title">Quem se liga a quem</h2>
+              <p class="edge-legend">
+                Cada linha nomeia os dois registros e o vínculo importado. Selecione um nome para
+                abrir a ficha no próprio percurso.
+              </p>
+            } @else {
+              <p class="eyebrow">Conexões de navegação</p>
+              <h2 id="graph-title">Uma rede para seguir</h2>
+              <p class="edge-legend">
+                Tracejado: link de descoberta da Wikipedia. Linha contínua: relação estruturada do
+                Wikidata; confira o rótulo, a procedência e o estado no painel.
               </p>
             }
           </div>
-          <label class="relation-filter" for="relation-filter">Filtrar conexões</label>
-          <select
-            id="relation-filter"
-            [value]="relationFilter()"
-            (change)="setRelationFilter($any($event.target).value)"
-          >
-            <option value="all">Todos os tipos</option>
-            <option value="discovery">Links de descoberta</option>
-            <option value="structured">Relações estruturadas</option>
-          </select>
           @if (!continuous()) {
-            <div
-              class="graph-canvas"
-              role="group"
-              aria-label="Grafo interativo deste atlas; uma lista textual equivalente aparece abaixo"
+            <p>
+              Linhas indicam links entre páginas da Wikipedia ou declarações estruturadas. Selecione
+              um nome para abrir o painel.
+            </p>
+          }
+        </div>
+        <label class="relation-filter" for="relation-filter">Filtrar conexões</label>
+        <select
+          id="relation-filter"
+          [value]="relationFilter()"
+          (change)="setRelationFilter($any($event.target).value)"
+        >
+          <option value="all">Todos os tipos</option>
+          <option value="discovery">Links de descoberta</option>
+          <option value="structured">Relações estruturadas</option>
+        </select>
+
+        <div
+          class="graph-canvas"
+          role="group"
+          aria-label="Grafo interativo deste atlas; uma lista textual equivalente aparece abaixo"
+        >
+          <svg class="edges" viewBox="0 0 920 572" aria-hidden="true" focusable="false">
+            @for (edge of graphEdges(); track edge.relation.id) {
+              <line
+                [class.highlighted]="
+                  hoveredId() === edge.relation.fromEntityId ||
+                  hoveredId() === edge.relation.toEntityId
+                "
+                [class.discovery-edge]="edge.relation.type === 'encyclopedic-link'"
+                [class.structured-edge]="edge.relation.type !== 'encyclopedic-link'"
+                [attr.x1]="edge.x1"
+                [attr.y1]="edge.y1"
+                [attr.x2]="edge.x2"
+                [attr.y2]="edge.y2"
+              />
+            }
+          </svg>
+          @for (node of graphNodes(); track node.entity.id) {
+            <button
+              type="button"
+              class="graph-node"
+              [class.root-node]="node.entity.id === rootEntityId()"
+              [class.active]="selectedId() === node.entity.id"
+              [style.left.%]="node.x / 9.2"
+              [style.top.%]="node.y / 5.72"
+              [attr.aria-pressed]="selectedId() === node.entity.id"
+              [attr.aria-label]="'Abrir contexto: ' + node.entity.title"
+              (mouseenter)="hoveredId.set(node.entity.id)"
+              (mouseleave)="hoveredId.set(null)"
+              (focus)="hoveredId.set(node.entity.id)"
+              (blur)="hoveredId.set(null)"
+              (click)="openEntity(node.entity.id)"
             >
-              <svg class="edges" viewBox="0 0 920 572" aria-hidden="true" focusable="false">
-                @for (edge of graphEdges(); track edge.relation.id) {
-                  <line
-                    [class.discovery-edge]="edge.relation.type === 'encyclopedic-link'"
-                    [class.structured-edge]="edge.relation.type !== 'encyclopedic-link'"
-                    [attr.x1]="edge.x1"
-                    [attr.y1]="edge.y1"
-                    [attr.x2]="edge.x2"
-                    [attr.y2]="edge.y2"
-                  />
-                }
-              </svg>
-              @for (node of graphNodes(); track node.entity.id) {
-                <button
-                  type="button"
-                  class="graph-node"
-                  [class.root-node]="node.entity.id === rootEntityId()"
-                  [class.active]="selectedId() === node.entity.id"
-                  [style.left.%]="node.x / 9.2"
-                  [style.top.%]="node.y / 5.72"
-                  [attr.aria-pressed]="selectedId() === node.entity.id"
-                  [attr.aria-label]="'Abrir contexto: ' + node.entity.title"
-                  (click)="openEntity(node.entity.id)"
-                >
-                  <span>{{ node.entity.title }}</span
-                  ><span class="node-preview">{{ node.entity.summary }}</span>
-                </button>
-              }
-            </div>
+              <span>{{ node.entity.title }}</span
+              ><span class="node-preview">{{ node.entity.summary }}</span>
+            </button>
           }
-          <details class="text-network" [open]="continuous()">
-            <summary>
-              {{
-                continuous()
-                  ? 'Ligações entre pessoas, ideias e acontecimentos'
-                  : 'Alternativa textual para a rede'
-              }}
-            </summary>
-            <ul>
-              @for (relation of atlas().relations; track relation.id) {
-                <li>
-                  <button type="button" (click)="openEntity(relation.fromEntityId)">
-                    {{ entityTitle(relation.fromEntityId) }}
-                  </button>
-                  <span>{{ relation.label }}</span>
-                  <button type="button" (click)="openEntity(relation.toEntityId)">
-                    {{ entityTitle(relation.toEntityId) }}
-                  </button>
-                </li>
-              }
-            </ul>
-          </details>
-          @if (unconnectedEntityCount()) {
-            <p class="graph-note">
-              {{ unconnectedEntityCount() }} fichas deste recorte ainda não têm conexões
-              registradas. Elas permanecem acessíveis pelo índice; não presumimos vínculos sem
-              evidência.
-            </p>
-          }
-        </section>
-      }
+        </div>
 
-      @if (continuous() || mode() === 'tempo') {
-        <section class="timeline-section" aria-labelledby="timeline-title">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Datas importadas</p>
-              <h2 id="timeline-title">Pessoas e acontecimentos no tempo</h2>
-            </div>
-            <p>
-              Datas estruturadas do Wikidata; anos e períodos são aproximações e permanecem sujeitos
-              a conferência.
-            </p>
-          </div>
-          <ol class="timeline-list">
-            @for (entity of timelineEntities(); track entity.id) {
-              <li [class.current]="selectedId() === entity.id">
-                <button
-                  type="button"
-                  (click)="openEntity(entity.id)"
-                  [attr.aria-current]="selectedId() === entity.id ? 'true' : null"
-                >
-                  <span class="timeline-date">{{ yearLabel(entity) }}</span
-                  ><strong>{{ entity.title }}</strong
-                  ><span>{{ kindLabel(entity) }}</span>
+        <details class="text-network" [open]="continuous()">
+          <summary>
+            {{
+              continuous()
+                ? 'Ligações entre pessoas, ideias e acontecimentos'
+                : 'Alternativa textual para a rede'
+            }}
+          </summary>
+          <ul>
+            @for (relation of atlas().relations; track relation.id) {
+              <li>
+                <button type="button" (click)="openEntity(relation.fromEntityId)">
+                  {{ entityTitle(relation.fromEntityId) }}
                 </button>
-              </li>
-            } @empty {
-              <li class="empty">
-                Ainda não há datas estruturadas suficientes para esta visualização.
+                <span>{{ relation.label }}</span>
+                <button type="button" (click)="openEntity(relation.toEntityId)">
+                  {{ entityTitle(relation.toEntityId) }}
+                </button>
               </li>
             }
-          </ol>
-          <p class="timeline-note">
-            A posição das fichas segue os anos registrados; intervalos imprecisos não foram
-            convertidos em datas exatas.
+          </ul>
+        </details>
+        @if (unconnectedEntityCount()) {
+          <p class="graph-note">
+            {{ unconnectedEntityCount() }} fichas deste recorte ainda não têm conexões registradas.
+            Elas permanecem acessíveis pelo índice; não presumimos vínculos sem evidência.
           </p>
-        </section>
-      }
+        }
+      </section>
 
-      @if (continuous() || mode() === 'imagens') {
-        <section class="gallery-section" aria-labelledby="gallery-title">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Wikimedia Commons</p>
-              <h2 id="gallery-title">Imagens com licença registrada</h2>
-            </div>
-            <p>
-              Os dados de autoria, licença e atribuição acompanham cada arquivo. A imagem abre a
-              página de origem.
-            </p>
+      <section class="timeline-section" aria-labelledby="timeline-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Datas importadas</p>
+            <h2 id="timeline-title">Pessoas e acontecimentos no tempo</h2>
           </div>
-          <div class="gallery">
-            @for (item of media(); track item.asset.id) {
-              <figure [class.expanded]="expandedMediaId() === item.asset.id">
-                <button
-                  type="button"
-                  class="image-expand"
-                  [attr.aria-expanded]="expandedMediaId() === item.asset.id"
-                  [attr.aria-label]="
-                    (expandedMediaId() === item.asset.id ? 'Reduzir' : 'Ampliar') +
-                    ' imagem: ' +
-                    item.entity.title
-                  "
-                  (click)="toggleMedia(item.asset.id)"
-                >
-                  <img
-                    [src]="item.asset.assetPath"
-                    [alt]="'Imagem associada a ' + item.entity.title"
-                    loading="lazy"
-                  />
+          <p>
+            Datas estruturadas do Wikidata; anos e períodos são aproximações e permanecem sujeitos a
+            conferência.
+          </p>
+        </div>
+        <ol class="timeline-list">
+          @for (entity of timelineEntities(); track entity.id) {
+            <li [class.current]="selectedId() === entity.id">
+              <button
+                type="button"
+                (click)="openEntity(entity.id)"
+                [attr.aria-current]="selectedId() === entity.id ? 'true' : null"
+              >
+                <span class="timeline-date">{{ yearLabel(entity) }}</span
+                ><strong>{{ entity.title }}</strong
+                ><span>{{ kindLabel(entity) }}</span>
+              </button>
+            </li>
+          } @empty {
+            <li class="empty">
+              Ainda não há datas estruturadas suficientes para esta visualização.
+            </li>
+          }
+        </ol>
+        <p class="timeline-note">
+          A posição das fichas segue os anos registrados; intervalos imprecisos não foram
+          convertidos em datas exatas.
+        </p>
+      </section>
+
+      <section class="gallery-section" aria-labelledby="gallery-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Wikimedia Commons</p>
+            <h2 id="gallery-title">Imagens com licença registrada</h2>
+          </div>
+          <p>
+            Os dados de autoria, licença e atribuição acompanham cada arquivo. A imagem abre a
+            página de origem.
+          </p>
+        </div>
+        <div class="gallery">
+          @for (item of media(); track item.asset.id) {
+            <figure [class.expanded]="expandedMediaId() === item.asset.id">
+              <button
+                type="button"
+                class="image-expand"
+                [attr.aria-expanded]="expandedMediaId() === item.asset.id"
+                [attr.aria-label]="
+                  (expandedMediaId() === item.asset.id ? 'Reduzir' : 'Ampliar') +
+                  ' imagem: ' +
+                  item.entity.title
+                "
+                (click)="toggleMedia(item.asset.id)"
+              >
+                <img
+                  [src]="item.asset.assetPath"
+                  [alt]="'Imagem associada a ' + item.entity.title"
+                  width="480"
+                  height="360"
+                  loading="lazy"
+                />
+              </button>
+              <figcaption>
+                <button type="button" (click)="openEntity(item.entity.id)">
+                  {{ item.entity.title }}
                 </button>
-                <figcaption>
-                  <button type="button" (click)="openEntity(item.entity.id)">
-                    {{ item.entity.title }}
-                  </button>
-                  <span>{{ item.asset.attribution }}</span
-                  ><a [href]="item.asset.licenseUrl" target="_blank" rel="noopener noreferrer">{{
-                    item.asset.license
-                  }}</a>
-                  <a [href]="item.asset.filePageUrl" target="_blank" rel="noopener noreferrer"
-                    >Página do arquivo no Commons</a
-                  >
-                </figcaption>
-              </figure>
-            } @empty {
-              <p class="empty">
-                Não há imagens com metadados de licença suficientes. Os arquivos sem licença
-                confirmada foram omitidos.
-              </p>
-            }
-          </div>
-        </section>
-      }
+                <span>{{ item.asset.attribution }}</span
+                ><a [href]="item.asset.licenseUrl" target="_blank" rel="noopener noreferrer">{{
+                  item.asset.license
+                }}</a>
+                <a [href]="item.asset.filePageUrl" target="_blank" rel="noopener noreferrer"
+                  >Página do arquivo no Commons</a
+                >
+              </figcaption>
+            </figure>
+          } @empty {
+            <p class="empty">
+              Não há imagens com metadados de licença suficientes. Os arquivos sem licença
+              confirmada foram omitidos.
+            </p>
+          }
+        </div>
+      </section>
 
       <p class="selection-announcement" role="status">{{ selected().title }} selecionado.</p>
       <aside class="context-panel" aria-labelledby="context-title">
@@ -304,7 +302,7 @@
         @if (selected(); as entity) {
           <h2 id="context-title">{{ entity.title }}</h2>
           <p class="summary">{{ entity.summary }}</p>
-          @if (!continuous()) {}
+
           <div class="entity-meta">
             <span>{{ kindLabel(entity) }}</span
             ><span>{{ yearLabel(entity) }}</span
