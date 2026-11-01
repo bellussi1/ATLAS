@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+.reading-layout {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+:host(.atlas-layout) .reading-layout {
+  grid-template-columns: 14rem minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+}
+.chapter-sequence {
+  min-width: 0;
+}
+@media (max-width: 1000px) {
+  .reading-layout,
+  :host(.atlas-layout) .reading-layout {
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+@media (max-width: 760px) {
+  :host(.atlas-layout) .reading-layout {
+    display: block;
+  }
+}
+@media (max-width: 750px) {
+  .reading-layout {
+    display: block;
+  }
+}

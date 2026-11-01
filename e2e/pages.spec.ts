@@ -108,6 +108,7 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
     expect(await chapterLinks.count()).toBeGreaterThan(1);
     await chapterLinks.nth(1).click();
     await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
+    await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
     await page.getByRole('button', { name: '← Ponto anterior' }).click();
     await expect(page).toHaveURL(new RegExp(`#${firstAnchor}$`));
 
@@ -129,7 +130,33 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
     const chapterPicker = page.getByLabel('Ir para capítulo');
     await chapterPicker.selectOption(secondAnchor);
     await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
+    await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
     await page.getByRole('button', { name: '← Ponto anterior' }).click();
     await expect(page).toHaveURL(new RegExp(`#${firstAnchor}$`));
+  }
+});
+
+test('shared reading preserves filters and clears motion preference when leaving', async ({
+  page,
+}) => {
+  for (const [path, secondAnchor] of [
+    ['/marxismo/', 'origens'],
+    ['/liberalismo/', 'atlas-section-tempo'],
+  ]) {
+    await page.goto(`${path}?bibliografia=Locke`);
+    const reader = page.locator('app-ideology-reading');
+    await expect(reader).toHaveCount(1);
+    await reader.locator('.desktop-nav a').nth(1).click();
+    await expect(page).toHaveURL(new RegExp(`bibliografia=Locke#${secondAnchor}$`));
+    await expect(reader.locator('a[aria-current="location"]')).toHaveAttribute(
+      'href',
+      `#${secondAnchor}`,
+    );
+    await reader.getByRole('button', { name: 'Reduzir movimento' }).click();
+    await expect(page.locator('html')).toHaveClass(/atlas-reduced-motion/);
+    // Client-side navigation must destroy the old reader and its document-wide preference.
+    await reader.getByRole('link', { name: '← Página inicial', exact: true }).click();
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.locator('html')).not.toHaveClass(/atlas-reduced-motion/);
   }
 });

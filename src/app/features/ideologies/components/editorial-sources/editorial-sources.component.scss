@@ -1,0 +1,41 @@
+:host {
+  display: block;
+}
+li {
+  overflow-wrap: anywhere;
+}
+.chapter li {
+  margin-bottom: 1rem;
+}
+.chapter p {
+  margin-block: 0.4rem;
+}
+.bibliography {
+  list-style: none;
+  padding: 0;
+}
+.bibliography li {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule-strong);
+}
+.bibliography a {
+  font-weight: 600;
+}
+.bibliography p {
+  font: 0.9rem/1.6 var(--font-serif);
+  margin-bottom: 0;
+}
+.inline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.inline li {
+  display: grid;
+  gap: 0.15rem;
+}
+.inline a {
+  width: fit-content;
+  color: var(--color-accent);
+  text-underline-offset: 0.16em;
+}

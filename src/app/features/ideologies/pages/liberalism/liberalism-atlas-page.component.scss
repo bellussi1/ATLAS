@@ -97,24 +97,6 @@
   font: 0.95rem/1.55 var(--font-serif);
 }
 
-.reading-layout {
-  display: grid;
-  grid-template-columns: 14rem minmax(0, 1fr);
-  gap: clamp(2rem, 4vw, 4rem);
-  align-items: start;
-}
-
-.chapter-sequence {
-  min-width: 0;
-}
-
-@media (max-width: 1000px) {
-  .reading-layout {
-    grid-template-columns: 12rem minmax(0, 1fr);
-    gap: 2rem;
-  }
-}
-
 @media (max-width: 760px) {
   .reading-opening {
     grid-template-columns: minmax(0, 1fr);
@@ -153,11 +135,6 @@
 
   .collection-scope {
     margin-top: 0.35rem;
-  }
-
-  .reading-layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
   }
 }
 

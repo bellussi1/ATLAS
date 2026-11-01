@@ -5,6 +5,7 @@ import { reproducibleAsset } from '@core/content/media/asset-license';
 import type { Entity, Source } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
@@ -17,7 +18,12 @@ import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/
 
 @Component({
   selector: 'app-ideology-block',
-  imports: [ValueDebateComponent, KnowledgeContextDirective, KnowledgeTextComponent],
+  imports: [
+    EditorialSourcesComponent,
+    ValueDebateComponent,
+    KnowledgeContextDirective,
+    KnowledgeTextComponent,
+  ],
   templateUrl: './ideology-block.component.html',
   styleUrls: ['./ideology-block.component.scss', './ideology-exploration.scss'],
 })

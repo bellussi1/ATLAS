@@ -327,21 +327,6 @@ input {
   width: 100%;
   min-width: 0;
 }
-.bibliography {
-  list-style: none;
-  padding: 0;
-}
-.bibliography li {
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--rule-strong);
-}
-.bibliography a {
-  font-weight: 600;
-}
-.bibliography p {
-  font: 0.9rem/1.6 var(--font-serif);
-  margin-bottom: 0;
-}
 @media (max-width: 650px) {
   .timeline-axis text {
     font-size: 44px;

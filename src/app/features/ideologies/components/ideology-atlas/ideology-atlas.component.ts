@@ -6,6 +6,8 @@ import type { Entity, Relation } from '@core/content/models/content-schema';
 import { entityContext } from '@core/content/queries/entity-context';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
+import type { EditorialReference } from '@ideologies/models/editorial-reference';
 import { KnowledgeContextComponent } from '@shared/ui/knowledge-context/knowledge-context.component';
 
 import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
@@ -24,16 +26,10 @@ interface GraphEdge {
   x2: number;
   y2: number;
 }
-interface RelationReference {
-  id: string;
-  title: string;
-  url: string | null;
-  locator?: string;
-}
 
 @Component({
   selector: 'app-ideology-atlas',
-  imports: [RouterLink, KnowledgeTextComponent],
+  imports: [EditorialSourcesComponent, RouterLink, KnowledgeTextComponent],
   templateUrl: './ideology-atlas.component.html',
   styleUrls: [
     './ideology-atlas.component.scss',
@@ -287,12 +283,12 @@ export class IdeologyAtlasComponent {
     };
     return labels[relation.uncertainty];
   }
-  relationSources(relation: KnowledgeRelationResult): RelationReference[] {
+  relationSources(relation: KnowledgeRelationResult): EditorialReference[] {
     const record = this.atlas().relations.find((item) => item.id === relation.relationId);
     if (!record) return [];
 
-    const references = new Map<string, RelationReference>();
-    const addReference = (reference: RelationReference) => {
+    const references = new Map<string, EditorialReference>();
+    const addReference = (reference: EditorialReference) => {
       const key = reference.url ?? reference.id;
       const existing = references.get(key);
       references.set(

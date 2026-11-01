@@ -4,119 +4,106 @@
     [attr.data-accent]="page.identity.accent"
     aria-labelledby="ideology-title"
   >
-    <header class="ideology-opening">
-      <div class="opening-copy">
-        <a routerLink="/" class="back-link">← Página inicial</a>
-        <p class="folio">{{ page.kicker }}</p>
-        <h1 id="ideology-title">{{ page.title }}<span aria-hidden="true">.</span></h1>
-        <p class="opening-summary">{{ page.summary }}</p>
-        <p class="reading-meta">
-          {{ page.chapters.length }} capítulos · cerca de {{ minutes() }} min de leitura, além das
-          explorações
-        </p>
-        <a class="start-reading" href="#introducao" (click)="navigateChapter($event, 'introducao')"
-          >Começar a leitura ↓</a
-        >
-      </div>
-      <figure class="opening-portrait">
-        @if (portrait(); as portrait) {
-          <img
-            [src]="portrait.assetPath"
-            [alt]="'Retrato de ' + portraitTitle()"
-            width="500"
-            height="781"
-            fetchpriority="high"
-          />
-          <figcaption>
-            {{ portraitTitle() }} · {{ portrait.creator }}
-            <a [href]="portrait.sourceUrl ?? portrait.filePageUrl ?? portrait.licenseUrl">Origem</a>
-            · <a [href]="portrait.licenseUrl">{{ portrait.license }}</a>
-          </figcaption>
-        }
-      </figure>
-      <div class="editorial-strip">
-        <span>Conteúdo com fontes · revisão humana pendente</span>
-        <details>
-          <summary>Recorte e classificação</summary>
-          <p>{{ page.classificationNote }}</p>
-          <p>Atualizado em {{ page.review.updatedAt }}. {{ page.identity.signature }}.</p>
-        </details>
-      </div>
-    </header>
-    <div class="reading-layout">
-      <app-ideology-reading-index
-        [sections]="page.chapters"
-        [active]="active()"
-        [progress]="percent()"
-        [reducedMotion]="reduced()"
-        [hasPrevious]="!!previous()"
-        (chapterSelected)="go($event)"
-        (previousRequested)="returnToPrevious()"
-        (motionToggleRequested)="toggleMotion()"
-      />
-      <div class="chapter-sequence">
-        @for (chapter of page.chapters; track chapter.id; let index = $index) {
-          <section
-            class="ideology-chapter"
-            [id]="chapter.anchor"
-            [attr.data-layout]="chapter.layout"
-            tabindex="-1"
-            [attr.aria-labelledby]="'title-' + chapter.id"
+    <app-ideology-reading #reading [sections]="page.chapters">
+      <header readingOpening class="ideology-opening">
+        <div class="opening-copy">
+          <a routerLink="/" class="back-link">← Página inicial</a>
+          <p class="folio">{{ page.kicker }}</p>
+          <h1 id="ideology-title">{{ page.title }}<span aria-hidden="true">.</span></h1>
+          <p class="opening-summary">{{ page.summary }}</p>
+          <p class="reading-meta">
+            {{ page.chapters.length }} capítulos · cerca de {{ minutes() }} min de leitura, além das
+            explorações
+          </p>
+          <a
+            class="start-reading"
+            href="#introducao"
+            (click)="reading.navigateChapter($event, 'introducao')"
+            >Começar a leitura ↓</a
           >
-            <header class="chapter-heading">
-              <p class="folio">
-                {{ chapter.kicker }} <span>~{{ chapter.minutes }} min</span>
-              </p>
-              <h2 [id]="'title-' + chapter.id">
-                <span class="chapter-number">{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
-                >{{ chapter.title }}
-              </h2>
-            </header>
-            <div class="chapter-narrative">
-              @for (paragraph of chapter.narrative; track $index) {
-                <p><app-knowledge-text [text]="paragraph" /></p>
-              }
-            </div>
-            @if (chapter.gap) {
-              <p class="editorial-gap"><strong>Limite deste recorte.</strong> {{ chapter.gap }}</p>
-            }
-            @for (block of chapter.blocks; track $index; let blockIndex = $index) {
-              <app-ideology-block
-                [block]="block"
-                [dossier]="state().dossier!"
-                [blockId]="chapter.id + '-' + blockIndex"
-              />
-            }
-            @if (chapter.sourceIds.length) {
-              <details class="chapter-sources">
-                <summary>Conferir fontes deste capítulo ({{ chapter.sourceIds.length }})</summary>
-                <ul>
-                  @for (source of sources(chapter.sourceIds); track source.id) {
-                    <li>
-                      <a [href]="source.url">{{ source.title }}</a>
-                      <p>{{ source.edition }}</p>
-                    </li>
-                  }
-                </ul>
-              </details>
-            }
-            @if (page.chapters[index + 1]; as next) {
-              <a
-                class="next-chapter"
-                [href]="'#' + next.anchor"
-                (click)="navigateChapter($event, next.anchor)"
-                >A seguir: {{ next.title }} ↓</a
+        </div>
+        <figure class="opening-portrait">
+          @if (portrait(); as portrait) {
+            <img
+              [src]="portrait.assetPath"
+              [alt]="'Retrato de ' + portraitTitle()"
+              width="500"
+              height="781"
+              fetchpriority="high"
+            />
+            <figcaption>
+              {{ portraitTitle() }} · {{ portrait.creator }}
+              <a [href]="portrait.sourceUrl ?? portrait.filePageUrl ?? portrait.licenseUrl"
+                >Origem</a
               >
+              · <a [href]="portrait.licenseUrl">{{ portrait.license }}</a>
+            </figcaption>
+          }
+        </figure>
+        <div class="editorial-strip">
+          <span>Conteúdo com fontes · revisão humana pendente</span>
+          <details>
+            <summary>Recorte e classificação</summary>
+            <p>{{ page.classificationNote }}</p>
+            <p>Atualizado em {{ page.review.updatedAt }}. {{ page.identity.signature }}.</p>
+          </details>
+        </div>
+      </header>
+
+      @for (chapter of page.chapters; track chapter.id; let index = $index) {
+        <section
+          class="ideology-chapter"
+          [id]="chapter.anchor"
+          [attr.data-layout]="chapter.layout"
+          tabindex="-1"
+          [attr.aria-labelledby]="'title-' + chapter.id"
+        >
+          <header class="chapter-heading">
+            <p class="folio">
+              {{ chapter.kicker }} <span>~{{ chapter.minutes }} min</span>
+            </p>
+            <h2 [id]="'title-' + chapter.id">
+              <span class="chapter-number">{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
+              >{{ chapter.title }}
+            </h2>
+          </header>
+          <div class="chapter-narrative">
+            @for (paragraph of chapter.narrative; track $index) {
+              <p><app-knowledge-text [text]="paragraph" /></p>
             }
-          </section>
-        }
-        <footer class="reading-end">
-          <p>Uma leitura termina. As perguntas continuam.</p>
-          <a routerLink="/">Voltar à página inicial</a
-          ><a routerLink="/liberalismo">Explorar o Atlas do Liberalismo</a>
-        </footer>
-      </div>
-    </div>
+          </div>
+          @if (chapter.gap) {
+            <p class="editorial-gap"><strong>Limite deste recorte.</strong> {{ chapter.gap }}</p>
+          }
+          @for (block of chapter.blocks; track $index; let blockIndex = $index) {
+            <app-ideology-block
+              [block]="block"
+              [dossier]="state().dossier!"
+              [blockId]="chapter.id + '-' + blockIndex"
+            />
+          }
+          @if (chapter.sourceIds.length) {
+            <details class="chapter-sources">
+              <summary>Conferir fontes deste capítulo ({{ chapter.sourceIds.length }})</summary>
+              <app-editorial-sources [references]="sources(chapter.sourceIds)" />
+            </details>
+          }
+          @if (page.chapters[index + 1]; as next) {
+            <a
+              class="next-chapter"
+              [href]="'#' + next.anchor"
+              (click)="reading.navigateChapter($event, next.anchor)"
+              >A seguir: {{ next.title }} ↓</a
+            >
+          }
+        </section>
+      }
+      <footer class="reading-end">
+        <p>Uma leitura termina. As perguntas continuam.</p>
+        <a routerLink="/">Voltar à página inicial</a
+        ><a routerLink="/liberalismo">Explorar o Atlas do Liberalismo</a>
+      </footer>
+    </app-ideology-reading>
   </article>
 } @else {
   <section class="page-state" aria-live="polite">

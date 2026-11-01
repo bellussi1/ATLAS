@@ -1,10 +1,5 @@
 import { Component, input, output } from '@angular/core';
-
-export interface IdeologyReadingSection {
-  anchor: string;
-  title: string;
-  minutes?: number;
-}
+import type { IdeologyReadingSection } from '@ideologies/models/ideology-reading-section';
 
 @Component({
   selector: 'app-ideology-reading-index',

@@ -1,0 +1,14 @@
+<ng-content select="[readingOpening]" />
+<div class="reading-layout">
+  <app-ideology-reading-index
+    [sections]="sections()"
+    [active]="active()"
+    [progress]="progress()"
+    [reducedMotion]="reduced()"
+    [hasPrevious]="!!previous()"
+    (chapterSelected)="go($event)"
+    (previousRequested)="returnToPrevious()"
+    (motionToggleRequested)="toggleMotion()"
+  />
+  <div class="chapter-sequence"><ng-content /></div>
+</div>

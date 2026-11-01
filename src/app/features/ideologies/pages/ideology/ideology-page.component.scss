@@ -94,12 +94,6 @@ summary {
   min-height: 44px;
   cursor: pointer;
 }
-.reading-layout {
-  display: grid;
-  grid-template-columns: 15rem minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
-}
 .chapter-number {
   font-family: var(--font-mono);
   font-weight: 400;
@@ -170,13 +164,6 @@ h2 .chapter-number {
   color: var(--color-accent);
   font-weight: 600;
 }
-.chapter-sources li {
-  margin-bottom: 1rem;
-  overflow-wrap: anywhere;
-}
-.chapter-sources p {
-  margin-block: 0.4rem;
-}
 .next-chapter {
   display: inline-flex;
   min-height: 44px;
@@ -208,12 +195,6 @@ h2 .chapter-number {
 .page-state a {
   display: block;
   padding-block: 1rem;
-}
-@media (max-width: 1000px) {
-  .reading-layout {
-    grid-template-columns: 12rem minmax(0, 1fr);
-    gap: 2rem;
-  }
 }
 @media (max-width: 750px) {
   .ideology-chapter {
@@ -256,9 +237,6 @@ h2 .chapter-number {
   .editorial-strip {
     flex-direction: column;
     gap: 0.2rem;
-  }
-  .reading-layout {
-    display: block;
   }
   h2 {
     font-size: 2rem;

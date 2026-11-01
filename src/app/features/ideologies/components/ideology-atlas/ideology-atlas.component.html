@@ -192,20 +192,12 @@
                     {{ relationStatusLabel(relation) }}
                   </small>
                   <p>{{ relation.context }}</p>
-                  @for (source of relationSources(relation); track source.id) {
-                    @if (source.url) {
-                      <a [href]="source.url" target="_blank" rel="noopener noreferrer">
-                        {{ source.title }} ↗
-                      </a>
-                    } @else {
-                      <span>{{ source.title }}</span>
-                    }
-                    @if (source.locator) {
-                      <small>{{ source.locator }}</small>
-                    }
-                  } @empty {
-                    <small>Fonte específica não registrada para esta conexão.</small>
-                  }
+                  <app-editorial-sources
+                    [references]="relationSources(relation)"
+                    variant="inline"
+                    [newWindow]="true"
+                    emptyText="Fonte específica não registrada para esta conexão."
+                  />
                 </div>
               </li>
             } @empty {

@@ -308,17 +308,10 @@
         [value]="params().get('bibliografia') ?? ''"
         (input)="update('bibliografia', $any($event.target).value || null)"
     /></label>
-    <ul class="bibliography">
-      @for (source of sourceList(); track source.id) {
-        <li>
-          <a [href]="source.url">{{ source.title }}</a>
-          <p>{{ source.edition }}</p>
-        </li>
-      } @empty {
-        <li role="status">
-          Nenhuma referência encontrada. Apague o filtro para ver a bibliografia.
-        </li>
-      }
-    </ul>
+    <app-editorial-sources
+      [references]="sourceList()"
+      variant="bibliography"
+      emptyText="Nenhuma referência encontrada. Apague o filtro para ver a bibliografia."
+    />
   }
 }
