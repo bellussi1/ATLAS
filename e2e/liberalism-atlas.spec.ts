@@ -11,7 +11,7 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
     path: 'output/playwright/atlas-liberalismo-desktop.png',
     fullPage: true,
   });
-  await page.getByRole('button', { name: 'Abrir contexto: John Locke' }).click();
+  await page.getByRole('button', { name: /^Pessoa John Locke/ }).click();
   await expect(page.getByRole('heading', { name: 'John Locke', exact: true })).toBeVisible();
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
   await expect(page.getByRole('heading', { name: 'Liberalismo', exact: true })).toBeVisible();
@@ -63,7 +63,7 @@ test('mobile keeps entity navigation available without horizontal overflow', asy
   await page.screenshot({ path: 'output/playwright/atlas-liberalismo-mobile.png', fullPage: true });
   const locke = page.locator('.entity-card').filter({ hasText: 'John Locke' });
   await locke.focus();
-  await expect(locke.locator('.card-preview')).toBeVisible();
+  await expect(locke.locator('.card-preview')).toBeHidden();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'John Locke', exact: true })).toBeVisible();
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();

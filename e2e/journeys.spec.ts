@@ -99,7 +99,11 @@ test('mobile home directs exploration to dedicated atlas and relation pages', as
   await expect(
     page.locator('.relation-statement').filter({ hasText: 'analisa criticamente' }),
   ).toContainText('Adam Smith');
-  await page.getByRole('button', { name: 'Explorar Adam Smith →', exact: true }).click();
+  await page
+    .locator('.context li')
+    .filter({ hasText: 'analisa criticamente' })
+    .getByRole('button', { name: 'Explorar Adam Smith →', exact: true })
+    .click();
   await expect(page.locator('.context h2')).toContainText('Adam Smith');
   await expect(page.locator('.context h2')).toBeFocused();
   await expect(

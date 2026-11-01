@@ -184,6 +184,48 @@ button {
 .debate-door a span {
   padding-left: 1rem;
 }
+.network-door {
+  margin: 4rem calc(var(--grid-gutter) * -1) 0;
+  padding: 3rem var(--grid-gutter) 0;
+  border-top: 3px solid var(--color-ink);
+}
+.network-door header {
+  max-width: 52rem;
+  margin-bottom: 2rem;
+}
+.network-door header > p:last-child {
+  max-width: 46rem;
+  font: 1.15rem/1.55 var(--font-serif);
+}
+.network-bridge {
+  max-width: 54rem;
+  padding: 1rem 1.25rem;
+  border-left: 0.3rem solid var(--color-cartographic);
+  background: var(--color-teal-paper);
+}
+.network-bridge a {
+  display: inline-block;
+  margin-left: 0.35rem;
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.network-door app-liberalism-atlas-page {
+  display: block;
+  margin: 0 calc(var(--grid-gutter) * -1);
+}
+.argument-scroll {
+  margin: 4rem calc(var(--grid-gutter) * -1) 0;
+  padding: 2.5rem var(--grid-gutter) 0;
+  border-top: 4px solid var(--color-ink);
+}
+.argument-scroll > header {
+  max-width: 56rem;
+  margin-bottom: 1.5rem;
+}
+.argument-scroll app-marx-atlas-page {
+  display: block;
+  margin-inline: calc(var(--grid-gutter) * -1);
+}
 .editorial-note {
   margin-top: 2rem;
   max-width: 65rem;
@@ -264,5 +306,8 @@ summary:focus-visible {
   }
   .debate-door svg {
     width: 6rem;
+  }
+  .network-door {
+    margin-top: 2.5rem;
   }
 }

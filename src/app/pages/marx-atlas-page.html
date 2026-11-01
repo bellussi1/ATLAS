@@ -1,8 +1,18 @@
-<article class="atlas-page" aria-labelledby="atlas-title">
-  <a class="atlas-return" routerLink="/atlas/marxismo">← Atlas de Marxismo e economia política</a>
+<article
+  class="atlas-page"
+  [class.inline]="inline()"
+  [attr.aria-labelledby]="inline() ? 'debate-title' : 'atlas-title'"
+>
+  @if (!inline()) {
+    <a class="atlas-return" routerLink="/atlas/marxismo">← Atlas de Marxismo e economia política</a>
+  }
   <header>
     <p class="eyebrow">Debate intelectual · em revisão</p>
-    <h1 id="atlas-title">Valor e trabalho.</h1>
+    @if (inline()) {
+      <h2 id="debate-title">Valor e trabalho.</h2>
+    } @else {
+      <h1 id="atlas-title">Valor e trabalho.</h1>
+    }
     <p class="lead">
       Duas maneiras de perguntar pelo valor: Smith e Marx, entre leitura, comparação e crítica.
     </p>
@@ -143,13 +153,17 @@
               trabalho que uma mercadoria pode comandar; esta é uma crítica atribuída a Marx, não um
               consenso sobre Smith.
             </p>
-            <nav aria-label="Trilha de leitura de Smith">
-              <a [routerLink]="'/verbete/a-riqueza-das-nacoes'" [queryParams]="{ origem: origin() }"
-                >Ler A riqueza das nações</a
-              ><a [routerLink]="'/verbete/adam-smith'" [queryParams]="{ origem: origin() }"
-                >Conhecer Adam Smith</a
-              >
-            </nav>
+            @if (!inline()) {
+              <nav aria-label="Trilha de leitura de Smith">
+                <a
+                  [routerLink]="'/verbete/a-riqueza-das-nacoes'"
+                  [queryParams]="{ origem: origin() }"
+                  >Ler A riqueza das nações</a
+                ><a [routerLink]="'/verbete/adam-smith'" [queryParams]="{ origem: origin() }"
+                  >Conhecer Adam Smith</a
+                >
+              </nav>
+            }
           } @else {
             <blockquote lang="en">
               “the labour time socially necessary for its production”
@@ -169,25 +183,25 @@
               apresenta objeções à teoria do valor-trabalho e debates sobre sua relação com a
               exploração.
             </p>
-            <nav aria-label="Trilha de leitura de Marx">
-              <a
-                [routerLink]="'/verbete/trabalho-socialmente-necessario'"
-                [queryParams]="{ origem: origin() }"
-                >Ler o conceito</a
-              ><a [routerLink]="'/verbete/o-capital-volume-i'" [queryParams]="{ origem: origin() }"
-                >Ler sobre O capital</a
-              ><a [routerLink]="'/verbete/karl-marx'" [queryParams]="{ origem: origin() }"
-                >Conhecer Karl Marx</a
-              >
-            </nav>
+            @if (!inline()) {
+              <nav aria-label="Trilha de leitura de Marx">
+                <a
+                  [routerLink]="'/verbete/trabalho-socialmente-necessario'"
+                  [queryParams]="{ origem: origin() }"
+                  >Ler o conceito</a
+                ><a
+                  [routerLink]="'/verbete/o-capital-volume-i'"
+                  [queryParams]="{ origem: origin() }"
+                  >Ler sobre O capital</a
+                ><a [routerLink]="'/verbete/karl-marx'" [queryParams]="{ origem: origin() }"
+                  >Conhecer Karl Marx</a
+                >
+              </nav>
+            }
           }
           <div class="preview-actions" aria-label="Prévias dos registros desta leitura">
             @for (preview of previewRecords(); track preview.id) {
-              <button
-                type="button"
-                [appDiscoveryPreview]="{ entry: preview, origin: origin() }"
-                [attr.aria-label]="'Prévia de ' + preview.title"
-              >
+              <button type="button" [appDiscoveryPreview]="{ entry: preview, origin: origin() }">
                 Prévia: {{ preview.title }}
               </button>
             }
@@ -208,9 +222,12 @@
       </p>
       <p>
         Os trechos são curtos, com título, idioma e localizador para conferência.
-        <a routerLink="/atlas/marxismo">Créditos dos retratos no índice do atlas</a>.
-        <a routerLink="/fontes" [queryParams]="{ origem: origin() }">Abrir a biblioteca de fontes</a
-        >.
+        @if (!inline()) {
+          <a routerLink="/atlas/marxismo">Créditos dos retratos no índice do atlas</a>.
+          <a routerLink="/fontes" [queryParams]="{ origem: origin() }"
+            >Abrir a biblioteca de fontes</a
+          >.
+        }
       </p>
     </section>
     <section class="study">

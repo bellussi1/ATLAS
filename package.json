@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build && node scripts/security-headers.mjs",
     "ingest:liberalism": "node scripts/ingest-liberalism.mjs",
+    "ingest:marxism": "node scripts/ingest-wikimedia-atlas.mjs marxism",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false",
     "typecheck": "ngc -p tsconfig.app.json --noEmit && tsc --noEmit -p tsconfig.spec.json",

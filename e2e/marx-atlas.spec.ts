@@ -1,32 +1,27 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-test('atlas index opens people, returns to the index and leads to a dedicated debate', async ({
-  page,
-}) => {
+test('Marxism is one continuous page with an inline argument map', async ({ page }) => {
   await page.goto('/atlas/marxismo/');
-  await expect(page.getByRole('heading', { name: 'Pessoas e suas obras' })).toBeVisible();
-  await expect(page.getByRole('group', { name: 'Selecionar tese' })).toHaveCount(0);
-  for (const portrait of await page.locator('.portrait img').all()) {
-    expect(
-      await portrait.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0),
-    ).toBe(true);
-  }
-  const preview = page.getByRole('button', { name: 'Prévia de Karl Marx' });
-  await preview.focus();
-  await page.keyboard.press('Enter');
-  await expect(page.getByRole('dialog')).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(preview).toBeFocused();
-  await page.getByRole('link', { name: 'Conhecer Karl Marx', exact: true }).click();
-  await expect(page.locator('h1')).toContainText('Karl Marx');
-  await page.getByRole('link', { name: 'Voltar ao atlas', exact: true }).click();
-  await page.getByRole('link', { name: /Abrir o debate sobre valor e trabalho/ }).click();
-  await expect(page).toHaveURL(/\/atlas\/marxismo\/valor-e-trabalho/);
+  await expect(page.getByRole('heading', { name: 'Marxismo e economia política.' })).toBeVisible();
+  await expect(page.locator('.view-switch')).toHaveCount(0);
+  await expect(page.locator('.graph-canvas')).toHaveCount(0);
+  await expect(page.locator('.text-network')).toHaveAttribute('open', '');
+  await expect(
+    page.getByRole('heading', { name: 'Pessoas e acontecimentos no tempo' }),
+  ).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Imagens com licença registrada' })).toBeVisible();
   await expect(page.getByRole('group', { name: 'Selecionar tese' })).toBeVisible();
+  await expect(page.locator('a[href^="/verbete/"]')).toHaveCount(0);
+  const currentUrl = page.url();
+  await page
+    .getByRole('button', { name: /Adam Smith.*Trabalho que uma mercadoria pode comandar/ })
+    .click();
+  await expect(page.locator('#argument-context')).toContainText('Smith: medida na troca');
+  await expect(page).toHaveURL(currentUrl);
 });
 
-test('atlas mobile keeps portraits, keyboard navigation and accessible layout', async ({
+test('continuous Marxism page supports keyboard interaction and an accessible layout on mobile', async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -37,20 +32,75 @@ test('atlas mobile keeps portraits, keyboard navigation and accessible layout', 
   expect(
     violations.filter((item) => item.impact === 'critical' || item.impact === 'serious'),
   ).toEqual([]);
-  await page.getByRole('link', { name: 'Conhecer Adam Smith', exact: true }).focus();
+  const smithThesis = page.getByRole('button', {
+    name: /Adam Smith.*Trabalho que uma mercadoria pode comandar/,
+  });
+  await smithThesis.focus();
   await page.keyboard.press('Enter');
-  await expect(page.locator('h1')).toContainText('Adam Smith');
-  await page.getByRole('link', { name: 'Voltar ao atlas', exact: true }).click();
-  await page.getByRole('link', { name: 'Examinar sua formulação de valor' }).last().click();
-  await expect(page.getByRole('heading', { name: 'Smith: medida na troca' })).toBeVisible();
+  await expect(page.locator('#argument-context')).toContainText('Smith: medida na troca');
+  await expect(page).toHaveURL(/\/atlas\/marxismo\/?$/);
+});
+
+test('expanded atlas selects an author, returns to its root and opens a historical event', async ({
+  page,
+}) => {
+  await page.goto('/atlas/marxismo/');
+  await expect(
+    page.getByRole('heading', { name: 'Autores, correntes e ideias em relação.' }),
+  ).toBeVisible();
+  await expect(page.locator('.view-switch')).toHaveCount(0);
+  await expect(
+    page.getByRole('heading', { name: 'Pessoas e acontecimentos no tempo' }),
+  ).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Imagens com licença registrada' })).toBeVisible();
+  await expect(page.getByRole('group', { name: 'Selecionar tese' })).toBeVisible();
+  await expect(page.locator('a[href^="/verbete/"]')).toHaveCount(0);
+  await expect(page.locator('.scope')).toContainText('27 entidades');
+  await page.getByRole('button', { name: /^Pessoa Friedrich Engels/ }).click();
+  await expect(page.getByRole('heading', { name: 'Friedrich Engels' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Consultar Wikidata Q34787/ })).toBeVisible();
+  await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
+  await expect(page.locator('.context-panel h2')).toHaveText('Marxismo');
+
+  await page.locator('.timeline-list button').filter({ hasText: 'Comuna de Paris' }).click();
+  await expect(page.getByRole('heading', { name: 'Comuna de Paris' })).toBeVisible();
+  await expect(page.getByText('Dados importados', { exact: false })).toBeVisible();
+  const currentUrl = page.url();
+  await page
+    .getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ })
+    .click();
+  await expect(page.locator('#argument-context')).toContainText(
+    'Marx: tempo socialmente necessário',
+  );
+  await expect(page).toHaveURL(currentUrl);
+  await page.screenshot({ path: 'output/playwright/atlas-marxismo-desktop.png', fullPage: true });
+});
+
+test('touch users select a Latin American record from the compact mobile index', async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+  });
+  const page = await context.newPage();
+  await page.goto('/atlas/marxismo/');
+  await page.getByRole('button', { name: /^Pessoa Florestan Fernandes/ }).tap();
+  await expect(page.getByRole('heading', { name: 'Florestan Fernandes' })).toBeVisible();
+  await expect(page.locator('.entity-list .card-preview').filter({ visible: true })).toHaveCount(0);
+  await page.screenshot({ path: 'output/playwright/atlas-marxismo-mobile.png', fullPage: true });
+  await context.close();
 });
 
 test('previously shared argument URLs keep their selection', async ({ page }) => {
   await page.goto('/atlas/marxismo/?argumento=marx&vinculo=critica');
+  await expect(page.getByRole('heading', { name: 'Marxismo e economia política.' })).toBeVisible();
   await expect(
-    page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' }),
-  ).toBeVisible();
+    page.getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ }),
+  ).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByLabel('Crítica documentada')).toBeChecked();
+  await expect(page.locator('.view-switch')).toHaveCount(0);
 });
 
 test('explores a thesis, two records and returns to the same map context', async ({ page }) => {
@@ -61,9 +111,9 @@ test('explores a thesis, two records and returns to the same map context', async
     page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' }),
   ).toBeVisible();
   await expect(page.getByLabel('Crítica documentada')).toBeChecked();
-  await expect(page.getByRole('button', { name: 'Prévia de Karl Marx' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Prévia: Karl Marx' })).toBeVisible();
   const preview = page.getByRole('button', {
-    name: 'Prévia de Tempo de trabalho socialmente necessário',
+    name: 'Prévia: Tempo de trabalho socialmente necessário',
   });
   await preview.click();
   await expect(page.getByRole('dialog')).toBeVisible();

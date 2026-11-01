@@ -1,135 +1,77 @@
-@if (legacyDebate()) {
-  <app-marx-atlas-page />
-} @else {
-  <article class="atlas-index" aria-labelledby="atlas-title">
-    <header class="atlas-opening">
-      <div>
-        <p class="folio">Atlas de ideologias · núcleo em revisão</p>
-        <h1 id="atlas-title">Marxismo e<br />economia política.</h1>
-        <p class="intro">
-          Ideias têm autores, textos e divergências. Comece por uma pessoa. Siga uma obra.
-          Investigue o que está em disputa.
-        </p>
-      </div>
-      <aside class="scope">
-        <app-editorial-mark kind="atlas" />
-        <p>Primeiro recorte</p>
-        <strong>Valor & trabalho</strong>
-        <p>
-          Smith, Marx e a crítica da economia política. Este núcleo não representa todas as
-          tradições marxistas.
-        </p>
-      </aside>
-    </header>
-    @if (atlas) {
-      <section class="people" aria-labelledby="people-title">
-        <div class="section-heading">
-          <h2 id="people-title">Pessoas e suas obras</h2>
-          <p>Os retratos abrem os verbetes. As obras levam à leitura.</p>
-        </div>
-        <div class="people-spread">
-          @for (person of people; track person.id) {
-            <article class="person" [class.smith]="person.argument === 'smith'">
-              <a
-                class="portrait"
-                [routerLink]="'/verbete/' + person.slug"
-                [queryParams]="{ origem: '/atlas/marxismo' }"
-                [attr.aria-label]="'Conhecer ' + person.name"
-              >
-                @if (person.asset; as asset) {
-                  <img
-                    [src]="asset.assetPath"
-                    [alt]="'Retrato de ' + person.name"
-                    width="500"
-                    [height]="person.argument === 'marx' ? 781 : 609"
-                  />
-                } @else {
-                  <span>Retrato indisponível</span>
-                }
-                <span aria-hidden="true">↗</span></a
-              >
-              <div class="person-text">
-                <p>{{ person.role }}</p>
-                <h3>
-                  <a
-                    [routerLink]="'/verbete/' + person.slug"
-                    [queryParams]="{ origem: '/atlas/marxismo' }"
-                    >{{ person.name }}</a
-                  >
-                </h3>
-                @if (person.entry; as entry) {
-                  <button
-                    type="button"
-                    [appDiscoveryPreview]="{ entry, origin: '/atlas/marxismo' }"
-                  >
-                    Prévia de {{ person.name }}
-                  </button>
-                }
-                <div class="work">
-                  <svg viewBox="0 0 32 32" aria-hidden="true">
-                    <path d="M4 5h10l2 3 2-3h10v22H18l-2 2-2-2H4zM16 8v21" />
-                  </svg>
-                  <div>
-                    <span>Autor de · {{ person.year }}</span
-                    ><a
-                      [routerLink]="'/verbete/' + person.workSlug"
-                      [queryParams]="{ origem: '/atlas/marxismo' }"
-                      >{{ person.work }}</a
-                    >
-                  </div>
-                </div>
-                <a
-                  class="debate-link"
-                  routerLink="/atlas/marxismo/valor-e-trabalho"
-                  [queryParams]="{ argumento: person.argument }"
-                  >Examinar sua formulação de valor</a
-                >
-              </div>
-            </article>
-          }
-        </div>
-      </section>
-      <section class="debate-door" aria-labelledby="debate-title">
-        <svg viewBox="0 0 200 180" aria-hidden="true">
-          <path d="M10 20h115v80H65l-30 25v-25H10z" fill="currentColor" />
-          <path d="M80 75h110v75h-25v22l-30-22H80z" fill="var(--color-canvas)" />
-          <path d="M97 96h70m-70 17h50m-50 17h60" stroke="var(--color-ink)" stroke-width="3" />
-        </svg>
-        <div>
-          <p>Debate intelectual · 1776–1867</p>
-          <h2 id="debate-title">De que valor<br />estamos falando?</h2>
-          <p>
-            Compare as duas teses e examine a crítica de Marx a Smith. Cada vínculo explica quem se
-            relaciona com quem, em qual texto e por quê.
-          </p>
-          <a routerLink="/atlas/marxismo/valor-e-trabalho"
-            >Abrir o debate sobre valor e trabalho <span aria-hidden="true">↗</span></a
-          >
-        </div>
-      </section>
-      <footer class="editorial-note">
-        <p>
-          <strong>Conteúdo em revisão.</strong> Afirmações e interpretações aguardam revisão humana.
-          As cores organizam a leitura; não indicam aprovação ou afinidade política.
-        </p>
-        <details>
-          <summary>Créditos dos retratos</summary>
-          <p>
-            Marx: John Jabez Edwin Mayall e ateliê, acervo Wien Museum.
-            <a
-              href="https://commons.wikimedia.org/wiki/File:Karl_Marx_by_John_Jabez_Edwin_Mayall_-_Wien_Museum_(cropped).jpg"
-              >Origem e domínio público</a
-            >. Smith: retrato Muir, c. 1800, autoria desconhecida, versão com cores editadas.
-            <a href="https://commons.wikimedia.org/wiki/File:Adam_Smith_(Muir_portrait).jpg"
-              >Origem e domínio público</a
-            >. As imagens são enquadradas na interface; não são ilustrações geradas.
-          </p>
-        </details>
-      </footer>
-    } @else {
-      <p role="alert">
-        O atlas está indisponível. <a routerLink="/conhecimento">Pesquisar o acervo</a>.
+<article class="atlas-index" aria-labelledby="atlas-title">
+  <header class="atlas-opening">
+    <div>
+      <p class="folio">Núcleo em expansão · revisão editorial pendente</p>
+      <h1 id="atlas-title">Marxismo e<br />economia política.</h1>
+      <p class="intro">
+        Marxismo, comunismo e socialismos são tradições relacionadas, mas distintas. Explore
+        autores, ideias, correntes, obras e acontecimentos; siga fontes e divergências.
       </p>
-    }
-  </article>
-}
+    </div>
+    <aside class="scope">
+      <app-editorial-mark kind="atlas" />
+      <p>Rede inicial · 27 entidades</p>
+      <strong>Histórias conectadas</strong>
+      <p>
+        A seleção reúne pensadores, conceitos, correntes, uma obra, acontecimentos e pontes
+        brasileiras e latino-americanas. Os registros importados aguardam revisão editorial.
+      </p>
+    </aside>
+  </header>
+  @if (atlas) {
+    <section class="network-door" aria-labelledby="network-title">
+      <header>
+        <p class="folio">Atlas ampliado · dados enciclopédicos em revisão</p>
+        <h2 id="network-title">Autores, correntes<br />e ideias em relação.</h2>
+        <p>
+          A rede separa links de descoberta de relações estruturadas. Selecione uma ficha para
+          consultar datas, fontes, conexões e proveniência; os vínculos Wikimedia ainda não são
+          interpretações historiográficas aprovadas.
+        </p>
+        <p class="network-bridge">
+          <strong>Ponte de navegação:</strong> Adam Smith também aparece no Atlas do Liberalismo. A
+          presença compartilhada oferece um contraste para explorar nesta página; não afirma
+          influência entre tradições.
+        </p>
+      </header>
+      <app-liberalism-atlas-page
+        [atlasId]="'atlas-marx-valor'"
+        [rootEntityId]="'ideology-marxism'"
+        [origin]="'/atlas/marxismo'"
+        [embedded]="true"
+        [continuous]="true"
+      />
+    </section>
+    <section class="argument-scroll" aria-labelledby="argument-scroll-title">
+      <header>
+        <p class="folio">Duas formulações · fontes e limites visíveis</p>
+        <h2 id="argument-scroll-title">Um debate dentro do percurso.</h2>
+        <p>Compare as leituras de Adam Smith e Karl Marx aqui, sem sair do atlas.</p>
+      </header>
+      <app-marx-atlas-page [inline]="true" />
+    </section>
+    <footer class="editorial-note">
+      <p>
+        <strong>Conteúdo em revisão.</strong> Afirmações e interpretações aguardam revisão humana.
+        As cores organizam a leitura; não indicam aprovação ou afinidade política.
+      </p>
+      <details>
+        <summary>Créditos dos retratos</summary>
+        <p>
+          Marx: John Jabez Edwin Mayall e ateliê, acervo Wien Museum.
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Karl_Marx_by_John_Jabez_Edwin_Mayall_-_Wien_Museum_(cropped).jpg"
+            >Origem e domínio público</a
+          >. Smith: retrato Muir, c. 1800, autoria desconhecida, versão com cores editadas.
+          <a href="https://commons.wikimedia.org/wiki/File:Adam_Smith_(Muir_portrait).jpg"
+            >Origem e domínio público</a
+          >. As imagens são enquadradas na interface; não são ilustrações geradas.
+        </p>
+      </details>
+    </footer>
+  } @else {
+    <p role="alert">
+      O atlas está indisponível. <a routerLink="/conhecimento">Pesquisar o acervo</a>.
+    </p>
+  }
+</article>

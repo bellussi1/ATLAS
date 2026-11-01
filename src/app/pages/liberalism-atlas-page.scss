@@ -25,13 +25,15 @@
   color: var(--color-ink-muted);
   font-weight: 400;
 }
-h1 {
+.opening h1,
+.opening h2 {
   max-width: 11ch;
   margin: 0;
   font: 600 clamp(3.6rem, 8.7vw, 8.2rem)/0.89 var(--font-sans);
   letter-spacing: -0.075em;
 }
-h1 em {
+.opening h1 em,
+.opening h2 em {
   color: var(--color-accent);
   font-style: normal;
 }
@@ -87,6 +89,44 @@ h1 em {
   grid-template-columns: minmax(15rem, 19rem) minmax(0, 1fr);
   gap: clamp(1.4rem, 3vw, 3rem);
   align-items: start;
+}
+.continuous .explorer {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+.continuous .index {
+  position: static;
+  max-height: none;
+  overflow: visible;
+  padding: 0;
+}
+.continuous .entity-list {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem 1rem;
+  max-height: none;
+  overflow: visible;
+}
+.continuous .entity-card {
+  min-height: 6rem;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+.continuous .text-network ul {
+  max-height: none;
+  padding-left: 0;
+  list-style: none;
+}
+.continuous .text-network li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.5rem;
+  padding: 0.55rem 0.65rem;
+  border-left: 2px solid var(--color-cartographic);
+  background: var(--color-surface-subtle);
+}
+.continuous .text-network li > span {
+  color: var(--color-ink-muted);
+  font-size: 0.85rem;
 }
 .index {
   position: sticky;
@@ -181,6 +221,11 @@ h1 em {
 .entity-card:focus-visible .card-preview {
   display: block;
 }
+@media (hover: none), (pointer: coarse) {
+  .entity-card:focus-visible .card-preview {
+    display: none;
+  }
+}
 @media (hover: hover) and (pointer: fine) {
   .entity-card:hover {
     border-left-color: var(--color-accent);
@@ -218,6 +263,12 @@ h1 em {
   font-size: 0.9rem;
   line-height: 1.5;
 }
+.edge-legend {
+  max-width: 44rem;
+  margin: 0.75rem 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
 .graph-canvas {
   position: relative;
   width: 100%;
@@ -227,6 +278,20 @@ h1 em {
   border-block: 1px solid var(--color-border-strong);
   background: var(--color-teal-paper);
 }
+.relation-filter {
+  display: inline-block;
+  margin: 0.25rem 0.5rem 1rem 0;
+  font-size: 0.9rem;
+}
+.relation-filter + select {
+  min-height: 2.75rem;
+  padding: 0.4rem 2rem 0.4rem 0.7rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: inherit;
+}
 .edges {
   position: absolute;
   inset: 0;
@@ -234,9 +299,15 @@ h1 em {
   height: 100%;
 }
 .edges line {
-  stroke: var(--color-accent);
+  stroke: var(--color-ink);
   stroke-width: 2;
+}
+.edges line.discovery-edge {
+  stroke: var(--color-accent);
   stroke-dasharray: 5 4;
+}
+.edges line.structured-edge {
+  stroke: var(--color-ink);
 }
 .graph-node {
   position: absolute;

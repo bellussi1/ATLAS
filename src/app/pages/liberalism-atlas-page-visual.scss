@@ -171,6 +171,14 @@
   margin: 0;
   font: 1.12rem/1.5 var(--font-serif);
 }
+.full-entry-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  margin-block: 0.25rem 1rem;
+  color: var(--color-accent-hover);
+  text-underline-offset: 0.2em;
+}
 .entity-meta {
   display: flex;
   flex-wrap: wrap;
@@ -331,6 +339,9 @@ summary:focus-visible {
   }
 }
 @media (max-width: 58rem) {
+  .continuous .entity-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   .explorer {
     grid-template-columns: minmax(13rem, 16rem) minmax(0, 1fr);
     gap: 1.2rem;
@@ -373,9 +384,21 @@ summary:focus-visible {
   }
   .entity-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-height: 25rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 0.35rem 0.5rem 0;
+    scroll-padding-block: 0.5rem;
+  }
+  .continuous .entity-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .entity-card {
     min-height: 5rem;
+  }
+  .entity-card:focus-visible .card-preview,
+  .entity-card:hover .card-preview {
+    display: none;
   }
   .graph-canvas {
     display: none;

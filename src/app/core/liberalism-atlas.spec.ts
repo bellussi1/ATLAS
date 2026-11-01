@@ -1,3 +1,5 @@
+import { TestBed } from '@angular/core/testing';
+
 import { LiberalismAtlasPage } from '../pages/liberalism-atlas-page';
 import { methodologyKnowledgeGraph } from './content-repository';
 import { queryKnowledgeRelations } from './knowledge-graph';
@@ -86,7 +88,8 @@ describe('Liberalism atlas snapshot', () => {
   });
 
   it('opens an entity context and returns to the exact previous selection', () => {
-    const page = new LiberalismAtlasPage();
+    const page = TestBed.runInInjectionContext(() => new LiberalismAtlasPage());
+    expect(page.entities()).toHaveLength(page.atlas().entities.length);
     page.openEntity('person-john-locke');
     expect(page.selected()?.title).toBe('John Locke');
     expect(page.history()).toEqual(['ideology-liberalism']);
@@ -96,7 +99,7 @@ describe('Liberalism atlas snapshot', () => {
   });
 
   it('provides dated people and events and only fully licensed media to the views', () => {
-    const page = new LiberalismAtlasPage();
+    const page = TestBed.runInInjectionContext(() => new LiberalismAtlasPage());
     expect(page.timelineEntities().some((entity) => entity.kind === 'event')).toBe(true);
     expect(page.timelineEntities().some((entity) => entity.kind === 'person')).toBe(true);
     expect(

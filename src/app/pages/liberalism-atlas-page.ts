@@ -1,16 +1,15 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, input, linkedSignal, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { methodologyKnowledgeGraph } from '../core/content-repository';
 import type { Entity, Relation } from '../core/content-schema';
 import type { KnowledgeRelationResult } from '../core/knowledge-graph';
 import { queryKnowledgeRelations } from '../core/knowledge-graph';
 
-const atlasId = 'atlas-liberalism';
-const rootEntityId = 'ideology-liberalism';
 const graph = methodologyKnowledgeGraph;
-const atlas = graph.atlases.find((item) => item.id === atlasId)!;
 
 type ViewMode = 'rede' | 'tempo' | 'imagens';
+type RelationFilter = 'all' | 'discovery' | 'structured';
 interface GraphNode {
   entity: Entity;
   x: number;
@@ -26,40 +25,47 @@ interface GraphEdge {
 
 @Component({
   selector: 'app-liberalism-atlas-page',
+  imports: [RouterLink],
   templateUrl: './liberalism-atlas-page.html',
   styleUrls: ['./liberalism-atlas-page.scss', './liberalism-atlas-page-visual.scss'],
 })
 export class LiberalismAtlasPage {
-  readonly atlas = atlas;
-  readonly discoveryLinkCount = atlas.relations.filter(
-    (relation) => relation.type === 'encyclopedic-link',
-  ).length;
-  readonly structuredRelationCount = atlas.relations.length - this.discoveryLinkCount;
+  readonly atlasId = input('atlas-liberalism');
+  readonly rootEntityId = input('ideology-liberalism');
+  readonly origin = input('/atlas/liberalismos');
+  readonly embedded = input(false);
+  readonly continuous = input(false);
+  readonly atlas = computed(
+    () => graph.atlases.find((item) => item.id === this.atlasId()) ?? graph.atlases[0]!,
+  );
+  readonly discoveryLinkCount = computed(
+    () => this.atlas().relations.filter((relation) => relation.type === 'encyclopedic-link').length,
+  );
+  readonly structuredRelationCount = computed(
+    () => this.atlas().relations.length - this.discoveryLinkCount(),
+  );
   readonly unconnectedEntityCount = computed(
     () =>
       this.entities().filter(
         (entity) =>
-          !atlas.relations.some(
+          !this.atlas().relations.some(
             (relation) => relation.fromEntityId === entity.id || relation.toEntityId === entity.id,
           ),
       ).length,
   );
   readonly mode = signal<ViewMode>('rede');
-  readonly selectedId = signal(rootEntityId);
+  readonly relationFilter = signal<RelationFilter>('all');
+  readonly selectedId = linkedSignal(() => this.rootEntityId());
   readonly search = signal('');
   readonly history = signal<string[]>([]);
   readonly expandedMediaId = signal<string | null>(null);
   readonly entities = computed(() => {
-    const referencedIds = new Set([
-      ...atlas.entityIds,
-      ...atlas.relations.flatMap((relation) => [relation.fromEntityId, relation.toEntityId]),
-    ]);
-    return graph.atlases
-      .flatMap((item) => item.entities)
-      .filter((entity) => referencedIds.has(entity.id));
+    return this.atlas().entities;
   });
+  readonly allEntities = computed(() => graph.atlases.flatMap((item) => item.entities));
   readonly selected = computed(
-    () => this.entities().find((entity) => entity.id === this.selectedId()) ?? this.entities()[0],
+    () =>
+      this.allEntities().find((entity) => entity.id === this.selectedId()) ?? this.entities()[0],
   );
   readonly filteredEntities = computed(() => {
     const query = this.search().trim().toLocaleLowerCase('pt-BR');
@@ -72,13 +78,32 @@ export class LiberalismAtlasPage {
     );
   });
   readonly relations = computed(() =>
-    queryKnowledgeRelations(graph, this.selectedId(), { atlasId }),
+    queryKnowledgeRelations(graph, this.selectedId(), { atlasId: this.atlasId() }),
+  );
+  readonly visibleRelations = computed(() =>
+    this.relations().filter((relation) => {
+      if (this.relationFilter() === 'discovery')
+        return relation.relationType === 'encyclopedic-link';
+      if (this.relationFilter() === 'structured')
+        return relation.relationType !== 'encyclopedic-link';
+      return true;
+    }),
   );
   readonly graphNodes = computed<GraphNode[]>(() => {
-    const items = this.entities();
+    const focusId = this.selectedId();
+    const visibleIds = new Set([
+      focusId,
+      this.rootEntityId(),
+      ...this.atlas()
+        .relations.filter(
+          (relation) => relation.fromEntityId === focusId || relation.toEntityId === focusId,
+        )
+        .flatMap((relation) => [relation.fromEntityId, relation.toEntityId]),
+    ]);
+    const items = this.entities().filter((entity) => visibleIds.has(entity.id));
     return items.map((entity) => {
-      if (entity.id === rootEntityId) return { entity, x: 460, y: 286 };
-      const others = items.filter((item) => item.id !== rootEntityId);
+      if (entity.id === focusId) return { entity, x: 460, y: 286 };
+      const others = items.filter((item) => item.id !== focusId);
       const position = others.findIndex((item) => item.id === entity.id);
       const angle = -Math.PI / 2 + (Math.PI * 2 * position) / Math.max(others.length, 1);
       return { entity, x: 460 + Math.cos(angle) * 350, y: 286 + Math.sin(angle) * 205 };
@@ -86,7 +111,9 @@ export class LiberalismAtlasPage {
   });
   readonly graphEdges = computed<GraphEdge[]>(() => {
     const positions = new Map(this.graphNodes().map((node) => [node.entity.id, node]));
-    return atlas.relations.flatMap((relation) => {
+    return this.visibleRelations().flatMap((result) => {
+      const relation = this.atlas().relations.find((item) => item.id === result.relationId);
+      if (!relation) return [];
       if (relation.fromEntityId !== this.selectedId() && relation.toEntityId !== this.selectedId())
         return [];
       const from = positions.get(relation.fromEntityId);
@@ -98,7 +125,8 @@ export class LiberalismAtlasPage {
     this.entities()
       .filter(
         (entity) =>
-          (entity.kind === 'person' || entity.kind === 'event') &&
+          entity.kind !== 'ideology' &&
+          entity.kind !== 'concept' &&
           entity.temporalExtent &&
           (entity.temporalExtent.startYear !== null || entity.temporalExtent.endYear !== null),
       )
@@ -109,7 +137,7 @@ export class LiberalismAtlasPage {
       ),
   );
   readonly media = computed(() =>
-    atlas.assetLicenses.flatMap((asset) => {
+    this.atlas().assetLicenses.flatMap((asset) => {
       const entity = this.entities().find((item) => item.id === asset.entityId);
       return entity &&
         asset.status === 'known' &&
@@ -126,6 +154,11 @@ export class LiberalismAtlasPage {
   setMode(mode: ViewMode): void {
     this.mode.set(mode);
   }
+  setRelationFilter(value: string): void {
+    if (value === 'all' || value === 'discovery' || value === 'structured') {
+      this.relationFilter.set(value);
+    }
+  }
   setSearch(value: string): void {
     this.search.set(value);
   }
@@ -137,7 +170,7 @@ export class LiberalismAtlasPage {
   returnContext(): void {
     const previous = this.history().at(-1);
     if (!previous) {
-      this.selectedId.set(rootEntityId);
+      this.selectedId.set(this.rootEntityId());
       return;
     }
     this.history.update((items) => items.slice(0, -1));
@@ -146,11 +179,29 @@ export class LiberalismAtlasPage {
   yearLabel(entity: Entity): string {
     const extent = entity.temporalExtent;
     if (!extent) return 'Data não informada';
+    const qualifier = extent.precision === 'approximate' ? 'c. ' : '';
     if (extent.startYear !== null && extent.endYear !== null)
-      return `${extent.startYear}–${extent.endYear}`;
-    if (extent.startYear !== null) return `a partir de ${extent.startYear}`;
-    if (extent.endYear !== null) return `até ${extent.endYear}`;
+      return `${qualifier}${extent.startYear}–${extent.endYear}`;
+    if (extent.startYear !== null) return `${qualifier}a partir de ${extent.startYear}`;
+    if (extent.endYear !== null) return `${qualifier}até ${extent.endYear}`;
     return extent.label ?? 'Data não informada';
+  }
+  kindLabel(entity: Entity): string {
+    const labels: Record<Entity['kind'], string> = {
+      person: 'Pessoa',
+      ideology: 'Corrente ideológica',
+      concept: 'Conceito',
+      work: 'Obra',
+      event: 'Acontecimento',
+      'historical-polity': 'Regime ou experiência histórica',
+      place: 'Território',
+      party: 'Partido',
+      institution: 'Organização',
+      government: 'Governo',
+      policy: 'Política pública',
+      article: 'Artigo',
+    };
+    return labels[entity.kind];
   }
   relationName(relation: KnowledgeRelationResult): string {
     const labels: Record<string, string> = {
@@ -169,8 +220,8 @@ export class LiberalismAtlasPage {
     return labels[relation.relationType] ?? relation.relationType;
   }
   relationSourceLabel(relation: KnowledgeRelationResult): string {
-    const provenance = atlas.relations.find((item) => item.id === relation.relationId)?.provenance
-      ?.source;
+    const provenance = this.atlas().relations.find((item) => item.id === relation.relationId)
+      ?.provenance?.source;
     return provenance === 'wikipedia'
       ? 'Descoberta na Wikipedia'
       : provenance === 'wikidata'
@@ -178,7 +229,9 @@ export class LiberalismAtlasPage {
         : 'Relação editorial';
   }
   relationStatusLabel(relation: KnowledgeRelationResult): string {
-    const status = atlas.relations.find((item) => item.id === relation.relationId)?.editorialStatus;
+    const status = this.atlas().relations.find(
+      (item) => item.id === relation.relationId,
+    )?.editorialStatus;
     return status === 'pending'
       ? 'revisão pendente'
       : status === 'verified'
@@ -192,7 +245,10 @@ export class LiberalismAtlasPage {
               : 'estado editorial não informado';
   }
   relationTarget(relation: KnowledgeRelationResult): Entity | undefined {
-    return this.entities().find((entity) => entity.id === relation.relatedEntityId);
+    return this.allEntities().find((entity) => entity.id === relation.relatedEntityId);
+  }
+  entityTitle(entityId: string): string {
+    return this.allEntities().find((entity) => entity.id === entityId)?.title ?? entityId;
   }
   mediaFor(entity: Entity) {
     return this.media().find((item) => item.entity.id === entity.id);

@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
@@ -46,6 +46,7 @@ const study = studyPathSchema.parse({
   styleUrl: './marx-atlas-page.scss',
 })
 export class MarxAtlasPage {
+  readonly inline = input(false);
   private readonly repository = inject(ContentRepository);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
@@ -57,13 +58,27 @@ export class MarxAtlasPage {
   );
   readonly smithPortrait = reproducibleAsset(this.atlas, '/images/atlas/adam-smith.jpg');
   readonly marxPortrait = reproducibleAsset(this.atlas, '/images/atlas/karl-marx.jpg');
-  readonly filter = computed(() =>
+  private readonly inlineFilter = signal(
     ['comparacao', 'critica'].includes(this.params().get('vinculo') ?? '')
       ? this.params().get('vinculo')!
       : 'todas',
   );
-  readonly selected = computed(() =>
+  private readonly inlineSelection = signal(
     this.params().get('argumento') === 'marx' ? 'marx' : 'smith',
+  );
+  readonly filter = computed(() =>
+    this.inline()
+      ? this.inlineFilter()
+      : ['comparacao', 'critica'].includes(this.params().get('vinculo') ?? '')
+        ? this.params().get('vinculo')!
+        : 'todas',
+  );
+  readonly selected = computed(() =>
+    this.inline()
+      ? this.inlineSelection()
+      : this.params().get('argumento') === 'marx'
+        ? 'marx'
+        : 'smith',
   );
   readonly claims = computed(() => {
     const id =
@@ -72,8 +87,10 @@ export class MarxAtlasPage {
         : 'claim-concept-trabalho-socialmente-necessario';
     return this.atlas?.claims.find((item) => item.id === id);
   });
-  readonly origin = computed(
-    () => `/atlas/marxismo/valor-e-trabalho?argumento=${this.selected()}&vinculo=${this.filter()}`,
+  readonly origin = computed(() =>
+    this.inline()
+      ? '/atlas/marxismo'
+      : `/atlas/marxismo/valor-e-trabalho?argumento=${this.selected()}&vinculo=${this.filter()}`,
   );
   readonly previewRecords = computed(() =>
     (this.selected() === 'smith'
@@ -87,6 +104,10 @@ export class MarxAtlasPage {
   readonly study = study;
   readonly exercise = study.lessons[0].exercises[0];
   select(value: string): void {
+    if (this.inline()) {
+      this.inlineSelection.set(value);
+      return;
+    }
     void this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { argumento: value },
@@ -95,6 +116,10 @@ export class MarxAtlasPage {
     });
   }
   setFilter(value: string): void {
+    if (this.inline()) {
+      this.inlineFilter.set(value);
+      return;
+    }
     void this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { vinculo: value },
