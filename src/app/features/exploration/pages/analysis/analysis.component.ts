@@ -23,6 +23,7 @@ import { AnalysisFiltersComponent } from '@exploration/components/analysis-filte
 import { KnowledgeNetworkComponent } from '@exploration/components/knowledge-network/knowledge-network.component';
 import { RelationEvidenceComponent } from '@exploration/components/relation-evidence/relation-evidence.component';
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
+import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { KnowledgeTimelineComponent } from '@shared/ui/knowledge-timeline/knowledge-timeline.component';
 
 @Component({
@@ -34,6 +35,7 @@ import { KnowledgeTimelineComponent } from '@shared/ui/knowledge-timeline/knowle
     RelationEvidenceComponent,
     AtlasClaimReferencesComponent,
     KnowledgeTimelineComponent,
+    AtlasGeometricMosaicComponent,
   ],
   templateUrl: './analysis.component.html',
   styleUrl: './analysis.component.scss',

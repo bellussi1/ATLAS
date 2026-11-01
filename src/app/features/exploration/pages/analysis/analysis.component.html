@@ -1,8 +1,20 @@
 <section class="analysis" [class.is-network]="network" aria-labelledby="analysis-title">
   <header class="analysis-heading">
+    <p class="analysis-kicker">{{ network ? 'Rede de conhecimento' : 'Comparador' }}</p>
     <h1 id="analysis-title">
-      {{ network ? 'Siga uma conexão.' : 'Compare registros.' }}
+      @if (network) {
+        Siga uma <em>conexão.</em>
+      } @else {
+        Compare <em>registros.</em>
+      }
     </h1>
+    <app-geometric-mosaic
+      class="analysis-mosaic"
+      [columns]="5"
+      [rows]="1"
+      [palette]="network ? 'tissi' : 'atlas'"
+      [seed]="network ? 5 : 19"
+    />
     <p>
       {{
         network

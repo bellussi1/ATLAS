@@ -1,0 +1,78 @@
+<svg
+  [attr.viewBox]="viewBox()"
+  aria-hidden="true"
+  focusable="false"
+  preserveAspectRatio="xMidYMid slice"
+>
+  @for (tile of tiles(); track $index) {
+    <g class="tile" [attr.transform]="'translate(' + tile.x * 100 + ' ' + tile.y * 100 + ')'">
+      <rect width="100" height="100" [attr.fill]="tile.ground" />
+      <g class="figure" [style.--turn]="tile.rotation + 'deg'">
+        @switch (tile.motif) {
+          @case ('quarter') {
+            <path d="M0 0h100A100 100 0 0 1 0 100z" [attr.fill]="tile.figure" />
+          }
+          @case ('half') {
+            <path d="M0 100a50 50 0 0 1 100 0z" [attr.fill]="tile.figure" />
+            <path d="M0 0h100v12H0z" [attr.fill]="tile.detail" />
+          }
+          @case ('disc') {
+            <circle cx="50" cy="50" r="34" [attr.fill]="tile.figure" />
+          }
+          @case ('ring') {
+            <circle
+              cx="50"
+              cy="50"
+              r="30"
+              fill="none"
+              [attr.stroke]="tile.figure"
+              stroke-width="16"
+            />
+            <circle cx="50" cy="50" r="8" [attr.fill]="tile.detail" />
+          }
+          @case ('triangle') {
+            <path d="M0 100L100 0v100z" [attr.fill]="tile.figure" />
+          }
+          @case ('stripes') {
+            <path
+              d="M14 0v100M38 0v100M62 0v100M86 0v100"
+              [attr.stroke]="tile.figure"
+              stroke-width="9"
+            />
+          }
+          @case ('dots') {
+            @for (dot of [20, 50, 80]; track dot) {
+              <circle [attr.cx]="dot" cy="20" r="6" [attr.fill]="tile.figure" />
+              <circle [attr.cx]="dot" cy="50" r="6" [attr.fill]="tile.figure" />
+              <circle [attr.cx]="dot" cy="80" r="6" [attr.fill]="tile.figure" />
+            }
+          }
+          @case ('arcs') {
+            <path
+              d="M0 88a12 12 0 0 1 12 12M0 64a36 36 0 0 1 36 36M0 40a60 60 0 0 1 60 60M0 16a84 84 0 0 1 84 84"
+              fill="none"
+              [attr.stroke]="tile.figure"
+              stroke-width="6"
+            />
+          }
+          @case ('leaf') {
+            <path d="M0 100A100 100 0 0 1 100 0 100 100 0 0 1 0 100z" [attr.fill]="tile.figure" />
+          }
+          @case ('checker') {
+            <path d="M0 0h50v50H0zM50 50h50v50H50z" [attr.fill]="tile.figure" />
+          }
+          @case ('burst') {
+            <path
+              d="M50 6l6 34 30-18-18 30 34 6-34 6 18 30-30-18-6 34-6-34-30 18 18-30-34-6 34-6-18-30 30 18z"
+              [attr.fill]="tile.figure"
+            />
+          }
+          @default {
+            <path d="M6 50Q50 4 94 50 50 96 6 50z" [attr.fill]="tile.figure" />
+            <circle cx="50" cy="50" r="14" [attr.fill]="tile.detail" />
+          }
+        }
+      </g>
+    </g>
+  }
+</svg>

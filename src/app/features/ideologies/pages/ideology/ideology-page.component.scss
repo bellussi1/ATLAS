@@ -36,8 +36,8 @@ a {
   margin: 1.5rem 0 0.8rem;
 }
 h1 {
-  font: 700 clamp(3.5rem, 9.5vw, 9rem)/0.95 var(--font-sans);
-  letter-spacing: -0.065em;
+  font: 700 clamp(3.5rem, 11vw, 11rem)/0.86 var(--font-sans);
+  letter-spacing: -0.075em;
   margin: 0.5rem 0 1.5rem;
   overflow-wrap: anywhere;
 }
@@ -46,6 +46,8 @@ h1 > span {
 }
 .opening-summary {
   max-width: 38ch;
+  padding-left: 1rem;
+  border-left: 0.5rem solid var(--color-accent);
   font: 400 clamp(1.25rem, 2.2vw, 1.8rem)/1.45 var(--font-serif);
 }
 .reading-meta {
@@ -62,9 +64,13 @@ h1 > span {
 .opening-portrait {
   align-self: start;
   margin: 0;
-  padding: 1rem 1rem 0 0;
-  border-top: 1.2rem solid var(--color-accent);
-  border-right: 1.2rem solid var(--color-accent);
+  border: 3px solid var(--ink);
+  background: var(--color-surface-raised);
+  box-shadow: 0.75rem 0.75rem 0 var(--color-accent);
+}
+.opening-mosaic {
+  aspect-ratio: 2 / 1;
+  border-bottom: 3px solid var(--ink);
 }
 .opening-portrait img {
   display: block;
@@ -77,7 +83,8 @@ h1 > span {
 }
 .opening-portrait figcaption {
   font: 0.65rem/1.6 var(--font-mono);
-  padding-block: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border-top: 3px solid var(--ink);
 }
 .editorial-strip {
   grid-column: 1/-1;
@@ -121,11 +128,34 @@ h2 {
   font: 700 clamp(1.8rem, 3.7vw, 3.5rem)/1.08 var(--font-sans);
   letter-spacing: -0.035em;
 }
+h2 {
+  align-items: center;
+}
 h2 .chapter-number {
-  font-size: 1rem;
-  color: var(--color-accent);
+  display: grid;
+  place-items: center;
+  width: clamp(3.25rem, 5vw, 4.5rem);
+  aspect-ratio: 1;
+  background: var(--color-accent);
+  color: var(--color-on-strong-surface);
+  font: 700 clamp(1.1rem, 1.6vw, 1.4rem) / 1 var(--font-sans);
   letter-spacing: 0;
   flex-shrink: 0;
+}
+h2 .chapter-number[data-shape='0'] {
+  border-radius: 50% 50% 0 50%;
+}
+h2 .chapter-number[data-shape='1'] {
+  background: var(--ink);
+}
+h2 .chapter-number[data-shape='2'] {
+  border-radius: 50%;
+  background: var(--color-ochre-paper);
+  color: var(--ink);
+}
+h2 .chapter-number[data-shape='3'] {
+  border-radius: 0 50% 50% 0;
+  background: var(--color-indigo);
 }
 .chapter-narrative {
   max-width: 67ch;
@@ -219,8 +249,7 @@ h2 .chapter-number {
   .opening-portrait {
     grid-column: 2;
     grid-row: 3/6;
-    padding: 0.5rem 0.5rem 0 0;
-    border-width: 0.5rem;
+    box-shadow: 0.35rem 0.35rem 0 var(--color-accent);
   }
   .opening-portrait figcaption {
     font-size: 0.6rem;
@@ -240,6 +269,10 @@ h2 .chapter-number {
   }
   h2 {
     font-size: 2rem;
+  }
+  h2 .chapter-number {
+    width: 2.75rem;
+    font-size: 1rem;
   }
   .chapter-narrative {
     font-size: 1.1rem;

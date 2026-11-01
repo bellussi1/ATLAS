@@ -23,6 +23,13 @@
           >
         </div>
         <figure class="opening-portrait">
+          <app-geometric-mosaic
+            class="opening-mosaic"
+            [columns]="4"
+            [rows]="2"
+            palette="marx"
+            [seed]="11"
+          />
           @if (portrait(); as portrait) {
             <img
               [src]="portrait.assetPath"
@@ -63,8 +70,9 @@
               {{ chapter.kicker }} <span>~{{ chapter.minutes }} min</span>
             </p>
             <h2 [id]="'title-' + chapter.id">
-              <span class="chapter-number">{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
-              >{{ chapter.title }}
+              <span class="chapter-number" [attr.data-shape]="index % 4"
+                >{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
+              ><span class="chapter-title">{{ chapter.title }}</span>
             </h2>
           </header>
           <div class="chapter-narrative">

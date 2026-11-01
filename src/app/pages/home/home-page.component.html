@@ -1,56 +1,58 @@
-<section class="research-room" aria-labelledby="home-title">
-  <header class="room-header">
+<section class="poster" aria-labelledby="home-title">
+  <div class="poster-copy">
+    <p class="poster-kicker">Enciclopédia visual · história, política, economia e sociedade</p>
     <h1 appHeading="page" id="home-title">
-      Tudo<br />
-      se <em>liga.</em>
+      <span class="line">Tudo</span>
+      <span class="line">se <em>liga.</em></span>
     </h1>
-    <div class="room-intro">
-      <p>História, política, economia e sociedade</p>
-      <p>Escolha um ponto. Descubra uma conexão. Abra uma leitura e continue investigando.</p>
-    </div>
-    <form role="search" aria-label="Busca no ATLAS" (submit)="search($event)">
-      <app-text-field
-        controlId="atlas-search"
-        label="Procurar no acervo"
-        type="search"
-        placeholder="Um assunto, uma pergunta…"
-        [value]="query()"
-        (valueChange)="query.set($event)"
-      />
-      <button class="search-button" type="submit">Pesquisar</button>
-    </form>
-    <nav class="exploration-actions" aria-label="Ferramentas de exploração">
-      <a routerLink="/rede">Explorar a rede <span aria-hidden="true">↗</span></a>
-      <a routerLink="/comparar">Comparar registros <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
-  <section class="connections" aria-labelledby="connections-title">
-    <header class="section-heading">
-      <h2 id="connections-title">Um atlas para explorar.</h2>
-      <a appEditorialLink routerLink="/marxismo">Explorar o Marxismo ↗</a>
-    </header>
-    <p>
-      Pessoas, obras e debates sobre valor e trabalho. Entre no atlas para conhecer os autores e
-      seguir relações com contexto e fontes.
+    <p class="poster-lead">
+      Ideias, pessoas, obras e acontecimentos formam uma rede. Escolha um ponto, abra o contexto e
+      siga a próxima conexão — sempre com a fonte por perto.
     </p>
-  </section>
-  <header class="section-heading archive-heading">
-    <h2>Uma mesa de pesquisa.</h2>
-    <span>Selecione uma ficha para aproximar a leitura</span>
+  </div>
+  <div class="poster-art">
+    <app-geometric-mosaic
+      [columns]="4"
+      [rows]="5"
+      palette="atlas"
+      [seed]="seed()"
+      [interactive]="true"
+    />
+    <button class="recompose" type="button" (click)="recompose()">
+      <span class="recompose-dot" aria-hidden="true"></span>Recompor o cartaz
+    </button>
+  </div>
+</section>
+
+<section class="console" aria-label="Busca e ferramentas">
+  <form role="search" aria-label="Busca no ATLAS" (submit)="search($event)">
+    <app-text-field
+      controlId="atlas-search"
+      label="Procurar no acervo"
+      type="search"
+      placeholder="Um assunto, uma pessoa, uma pergunta…"
+      [value]="query()"
+      (valueChange)="query.set($event)"
+    />
+    <button class="search-button" type="submit">Pesquisar</button>
+  </form>
+  <nav class="exploration-actions" aria-label="Ferramentas de exploração">
+    <a routerLink="/rede"><span>Explorar a rede</span> <span aria-hidden="true">↗</span></a>
+    <a routerLink="/comparar"><span>Comparar registros</span> <span aria-hidden="true">↗</span></a>
+  </nav>
+</section>
+
+<section class="readings" aria-labelledby="readings-title">
+  <header class="atlas-band-heading">
+    <p class="atlas-band-number" aria-hidden="true">A</p>
+    <h2 id="readings-title">Duas leituras, <em>uma enciclopédia.</em></h2>
+    <p>Cada tradição tem seu ritmo. Escolha uma capa para aproximar a leitura.</p>
   </header>
-  <div class="research-table">
-    <aside class="table-index">
-      <div class="collection-stamp">
-        <span>ATLAS</span>
-        <p>Acervo em formação</p>
-        <p>
-          Esta mesa reúne as duas leituras disponíveis: Marxismo e Liberalismo. Abra uma ficha para
-          começar.
-        </p>
-      </div>
+  <div class="reading-table" [attr.data-reading]="selected().slug">
+    <div class="cover-index">
       <div class="mobile-sheet-control">
-        <label for="sheet-select">Escolha uma ficha</label
-        ><select
+        <label for="sheet-select">Escolha uma leitura</label>
+        <select
           id="sheet-select"
           [value]="selected().slug"
           (change)="selectSlug($any($event.target).value)"
@@ -61,59 +63,71 @@
         </select>
       </div>
       <fieldset class="sheet-selector">
-        <legend>Escolha uma ficha</legend>
+        <legend class="sr-only">Escolha uma leitura</legend>
         @for (entry of readings; track entry.slug) {
           <button
-            class="sheet-choice"
+            class="cover-choice"
             type="button"
+            [attr.data-reading]="entry.slug"
             [attr.aria-pressed]="selected().slug === entry.slug"
             (click)="select(entry, $event)"
           >
-            <app-editorial-mark [kind]="entry.type" /><span class="choice-kind">{{
-              entry.type
-            }}</span
-            ><strong>{{ entry.title }}</strong
-            ><span class="choice-indicator" aria-hidden="true">{{
-              selected().slug === entry.slug ? '●' : '○'
-            }}</span>
+            <span class="choice-kind">{{ entry.type }}</span>
+            <strong>{{ entry.title }}<span aria-hidden="true">.</span></strong>
+            <span class="choice-note">{{ entry.tagline }}</span>
           </button>
         }
       </fieldset>
-      <p class="table-instruction">
-        As fichas são entradas para leitura, não reproduções de documentos históricos.
-      </p>
-    </aside>
-    <div class="document-space">
-      <article class="reading-sheet" #sheet aria-labelledby="sheet-title">
-        <header class="sheet-header">
-          <span>{{ selected().statusLabel }}</span
-          ><span>ATLAS / leitura</span>
-        </header>
-        <div class="sheet-content">
-          <div class="sheet-identity">
-            <a class="sheet-type" appEditorialLink [routerLink]="'/' + selected().slug">{{
-              selected().type
-            }}</a
-            ><app-editorial-mark [kind]="selected().type" />
-          </div>
-          <h2 id="sheet-title">{{ selected().title }}</h2>
-          <p class="sheet-summary">{{ selected().summary }}</p>
-          <div class="excerpt">
-            <h3>{{ selected().sections[0].heading }}</h3>
-            <p>{{ selected().sections[0].paragraphs[0] }}</p>
-          </div>
-          <div class="sheet-actions">
-            <a appEditorialLink [routerLink]="entryPath(selected().type, selected().slug)"
-              >Ler o texto completo</a
-            >
-          </div>
-        </div>
-        <footer class="sheet-footer">
-          <span>{{ selected().sections.length }} seções</span
-          ><span>Leitura com contexto e fontes</span>
-        </footer>
-      </article>
     </div>
+    <article class="reading-sheet" #sheet aria-labelledby="sheet-title">
+      <app-geometric-mosaic
+        class="sheet-art"
+        [columns]="6"
+        [rows]="2"
+        [palette]="selected().palette"
+        [seed]="selected().seed"
+      />
+      <div class="sheet-content">
+        <p class="sheet-status">{{ selected().statusLabel }}</p>
+        <h2 id="sheet-title">{{ selected().title }}</h2>
+        <p class="sheet-summary">{{ selected().summary }}</p>
+        <div class="excerpt">
+          <h3>{{ selected().sections[0].heading }}</h3>
+          <p>{{ selected().sections[0].paragraphs[0] }}</p>
+        </div>
+        <a class="sheet-action" [routerLink]="entryPath(selected().type, selected().slug)"
+          >Ler o texto completo <span aria-hidden="true">→</span></a
+        >
+      </div>
+    </article>
   </div>
-  <p class="selection-status" role="status">Na mesa: {{ selected().title }}.</p>
+  <p class="sr-only" role="status">Na mesa: {{ selected().title }}.</p>
+</section>
+
+<app-exploration-tools />
+
+<section class="method" aria-labelledby="method-title">
+  <h2 id="method-title">Como ler o ATLAS</h2>
+  <ol>
+    <li>
+      <span class="method-shape method-shape--fact" aria-hidden="true"></span>
+      <strong>Fato documentado</strong>
+      <p>Afirmações acompanhadas de fonte identificável, perto do texto.</p>
+    </li>
+    <li>
+      <span class="method-shape method-shape--reading" aria-hidden="true"></span>
+      <strong>Interpretação</strong>
+      <p>Leituras atribuídas a autores e correntes, nunca apresentadas como fato.</p>
+    </li>
+    <li>
+      <span class="method-shape method-shape--debate" aria-hidden="true"></span>
+      <strong>Controvérsia</strong>
+      <p>Debates com defesa, crítica e limites explícitos, sem simetria inventada.</p>
+    </li>
+    <li>
+      <span class="method-shape method-shape--gap" aria-hidden="true"></span>
+      <strong>Lacuna</strong>
+      <p>O que ainda não foi revisado aparece marcado como pendente.</p>
+    </li>
+  </ol>
 </section>

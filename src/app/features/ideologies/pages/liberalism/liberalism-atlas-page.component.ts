@@ -5,10 +5,17 @@ import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/id
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { liberalismAtlas } from '@ideologies/data/liberalism-atlas';
+import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 
 @Component({
   selector: 'app-liberalism-atlas-page',
-  imports: [IdeologyAtlasComponent, KnowledgeTextComponent, IdeologyReadingComponent, RouterLink],
+  imports: [
+    IdeologyAtlasComponent,
+    KnowledgeTextComponent,
+    IdeologyReadingComponent,
+    RouterLink,
+    AtlasGeometricMosaicComponent,
+  ],
   templateUrl: './liberalism-atlas-page.component.html',
   styleUrl: './liberalism-atlas-page.component.scss',
 })

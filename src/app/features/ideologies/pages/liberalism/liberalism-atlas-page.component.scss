@@ -43,8 +43,8 @@
 
 .opening-copy h1 {
   margin: 0.25rem 0 1rem;
-  font: 700 clamp(3rem, 9.5vw, 9rem) / 0.91 var(--font-sans);
-  letter-spacing: -0.065em;
+  font: 700 clamp(3rem, 10.5vw, 10.5rem) / 0.86 var(--font-sans);
+  letter-spacing: -0.075em;
 }
 
 .opening-copy h1 span {
@@ -65,19 +65,23 @@
 .opening-note {
   position: relative;
   align-self: end;
-  min-height: 15rem;
-  padding: 1rem 1.25rem 1.25rem;
-  border-top: 0.65rem solid var(--color-accent);
-  background:
-    linear-gradient(135deg, transparent 49.7%, var(--color-border) 50%, transparent 50.3%) top
-      right / 4.5rem 4.5rem no-repeat,
-    var(--color-surface-subtle);
+  padding: 0 1.25rem 1.25rem;
+  border: 3px solid var(--color-ink);
+  background: var(--color-indigo);
+  color: var(--color-canvas);
+  box-shadow: 0.75rem 0.75rem 0 var(--color-teal-paper);
+}
+
+.note-mosaic {
+  aspect-ratio: 3 / 1;
+  margin: 0 -1.25rem 1rem;
+  border-bottom: 3px solid var(--color-ink);
 }
 
 .editorial-status {
   max-width: 28ch;
   margin: 0;
-  color: var(--color-accent-hover);
+  color: var(--color-ochre-paper);
 }
 
 .record-count {
@@ -88,7 +92,7 @@
 
 .reading-meta {
   margin: 0.8rem 0 0;
-  color: var(--color-ink-muted);
+  color: inherit;
 }
 
 .collection-scope {
@@ -111,9 +115,15 @@
     align-items: end;
     min-height: 0;
     margin-top: 1rem;
-    padding: 0.85rem 1rem 1rem;
+    padding: 0 1rem 1rem;
+    box-shadow: 0.4rem 0.4rem 0 var(--color-teal-paper);
   }
 
+  .note-mosaic {
+    margin-inline: -1rem;
+  }
+
+  .note-mosaic,
   .editorial-status,
   .collection-scope {
     grid-column: 1 / -1;

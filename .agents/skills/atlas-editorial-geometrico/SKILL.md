@@ -117,3 +117,9 @@ Estabilidade é critério de aceite: reservar mídia e estados, manter geometria
 Princípios explicam problema, pressuposto, mecanismo e divergência. Vertentes têm recorte, diferenças e fontes; genealogia não se deduz de uma grade ou polêmica. Debate tem defesa atribuída, crítica atribuída, resposta documentada ou ausência explícita, e limites/controvérsias. Classificar a natureza da posição e a vertente a que se aplica. Ensinar reconstrução e avaliação, sem propaganda, espantalho ou simetria inventada.
 
 Usar motion contextual em termos, fichas, filtros, documentos e conexões; sem loops ou deslocamento de parágrafos em leitura. Hover não muda o fluxo. Teclado/reduced motion preservam o conteúdo e o feedback imediato. Validar desktop/mobile, ponteiro/teclado/toque, cliques rápidos, retorno ao contexto, imagens lentas e normal/reduzido; registrar o comportamento realmente observado.
+
+## Cartaz geométrico · 01/11/2026
+
+As referências de cartazes Bauhaus/suíços (mosaicos de quartos de círculo, meias-luas, listras, pontos, explosões e olhos; Farol Brasil; capas em grade) consolidam uma linguagem de cartaz para o miolo. `AtlasGeometricMosaicComponent` (`shared/ui/geometric-mosaic`) gera mosaicos SVG originais, determinísticos por `seed` (SSR e hidratação iguais), com paletas `atlas`, `marx`, `liberal` e `tissi` (preto, papel e vermelho para rede). A proporção é reservada no CSS; recompor nunca desloca o layout. O mosaico é decorativo (`aria-hidden`) e não codifica dados. Hover gira motivos apenas com ponteiro fino e sem movimento reduzido; a recomposição é sempre acionada pela pessoa.
+
+Padrões comuns: `atlas-band-heading` (marcador geométrico com letra, título display com palavra vermelha e lead curto), números de capítulo em formas geométricas alternadas, fichas com borda de 3px e sombra deslocada sólida, faixa de tinta para busca. O laranja `--color-orange-paper` entra apenas como superfície decorativa. Header e footer seguem preservados.

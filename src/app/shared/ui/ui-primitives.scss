@@ -247,3 +247,48 @@ app-page-template {
     gap: 0;
   }
 }
+
+/* Poster section heading: lettered geometric marker, display title, short lead. */
+.atlas-band-heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, 22rem);
+  gap: 0 clamp(1rem, 3vw, 2.5rem);
+  align-items: end;
+  padding-bottom: 1.25rem;
+  border-bottom: 3px solid var(--color-ink);
+}
+.atlas-band-number {
+  margin: 0;
+  display: grid;
+  place-items: center;
+  width: clamp(3rem, 6vw, 4.5rem);
+  aspect-ratio: 1;
+  border-radius: 50% 50% 0 50%;
+  background: var(--color-accent);
+  color: var(--color-on-strong-surface);
+  font: 700 clamp(1.5rem, 3vw, 2.25rem) / 1 var(--font-sans);
+}
+.atlas-band-heading h2 {
+  margin: 0;
+  font: 700 clamp(2rem, 5vw, 4.25rem) / 0.95 var(--font-sans);
+  letter-spacing: -0.05em;
+}
+.atlas-band-heading > p:last-child {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 1rem/1.5 var(--font-serif);
+}
+
+.atlas-band-heading em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+@media (max-width: 60rem) {
+  .atlas-band-heading {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .atlas-band-heading > p:last-child {
+    grid-column: 1 / -1;
+    margin-top: 0.75rem;
+  }
+}

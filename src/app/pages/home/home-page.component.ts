@@ -1,17 +1,18 @@
 import { Component, type ElementRef, inject, signal, viewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AtlasEditorialLinkDirective } from '@shared/directives/editorial-link/editorial-link.directive';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
-import { AtlasEditorialMarkComponent } from '@shared/ui/editorial-mark/editorial-mark.component';
+import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
+
+import { ExplorationToolsComponent } from './exploration-tools/exploration-tools.component';
 
 @Component({
   selector: 'app-home-page',
   imports: [
-    AtlasEditorialLinkDirective,
     AtlasHeadingDirective,
     AtlasTextFieldComponent,
-    AtlasEditorialMarkComponent,
+    AtlasGeometricMosaicComponent,
+    ExplorationToolsComponent,
     RouterLink,
   ],
   templateUrl: './home-page.component.html',
@@ -20,11 +21,15 @@ import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.compon
 export class HomePage {
   private readonly router = inject(Router);
   readonly query = signal('');
+  readonly seed = signal(7);
   readonly readings = [
     {
       slug: 'marxismo',
       type: 'atlas' as const,
       title: 'Marxismo',
+      tagline: 'Trabalho, valor e divergências',
+      palette: 'marx' as const,
+      seed: 11,
       summary: 'Uma tradição, muitas leituras: conceitos, pensadores e divergências.',
       statusLabel: 'Conteúdo com fontes · revisão pendente',
       sections: [
@@ -40,6 +45,9 @@ export class HomePage {
       slug: 'liberalismo',
       type: 'atlas' as const,
       title: 'Liberalismo',
+      tagline: 'Liberdade, propriedade e mercado',
+      palette: 'liberal' as const,
+      seed: 23,
       summary: 'Explore pessoas, ideias, obras e acontecimentos no Atlas do Liberalismo.',
       statusLabel: 'Acervo em revisão',
       sections: [
@@ -81,6 +89,9 @@ export class HomePage {
       duration: parseFloat(tokens.getPropertyValue('--motion-selection')) || 180,
       easing: tokens.getPropertyValue('--ease-out').trim() || 'cubic-bezier(0.23, 1, 0.32, 1)',
     });
+  }
+  recompose(): void {
+    this.seed.update((seed) => (seed * 31 + 17) % 9973);
   }
   search(event: Event): void {
     event.preventDefault();
