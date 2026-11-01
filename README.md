@@ -35,6 +35,8 @@ Escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas 
 | `npm start` | Servidor local com recarga automática |
 | `npm run build` | Compilação de produção e prerender de rotas públicas |
 | `npm test` | Testes unitários Vitest em execução única |
+| `npm run test:ingestion` | Testes Node de identidade, integridade, mídia e publicação da ingestão |
+| `npm run ingest:verify` | Replay duplo de todas as capturas versionadas, sem rede |
 | `npm run lint` | ESLint Angular, limites arquiteturais, Biome e formatação |
 | `npm run typecheck` | Checagem TypeScript da aplicação e dos testes |
 
@@ -45,6 +47,8 @@ Para conferir a saída estática localmente, execute `npm run build` e `npm run 
 O grafo editorial e suas fontes ficam em `src/content/atlas.json`, são validados por `ContentRepository` com Zod e copiados para a saída do build em `content/`. Incluem registros sobre o processo constituinte de 1987–1988 e a Constituição de 1988; afirmações exibem o estado de revisão realmente cadastrado. No navegador, o serviço lê esse asset estático; durante o prerender usa o JSON empacotado. Veja [as decisões e limites da arquitetura](docs/architecture/ARCHITECTURE.md).
 
 Consulte o [índice da documentação](docs/README.md) para escopo, padrões de design, qualidade e referências.
+
+A ingestão exige `--capture <diretório novo>` ou `--offline <captura>`, com `--output <arquivo>` para uma saída isolada. Configuração, grafo de entrada e respostas brutas ficam versionados fora do site; Zod valida o resultado antes de substituir snapshots. Veja [Ingestão reproduzível](docs/architecture/INGESTAO-REPRODUZIVEL.md).
 
 ## Organização do código
 

@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "pipelineVersion": 1,
+  "collectionKey": "marxism",
+  "capturedAt": "2026-11-01",
+  "mediaMode": "preserve",
+  "config": {
+    "id": "atlas-marx-valor",
+    "slug": "marxismo-e-economia-politica",
+    "title": "Atlas de Marxismo e Comunismo",
+    "description": "Rede exploratória de autores e tradições; dados Wikimedia são camadas de descoberta e estrutura, com revisão editorial humana pendente.",
+    "mediaDirectory": "marxism",
+    "entities": [
+      [
+        "ideology-marxism",
+        "Marxism",
+        "Marxism",
+        "ideology",
+        "Q7264"
+      ],
+      [
+        "person-karl-marx",
+        "Karl Marx",
+        "Karl Marx",
+        "person",
+        "Q9061"
+      ],
+      [
+        "person-friedrich-engels",
+        "Friedrich Engels",
+        "Friedrich Engels",
+        "person",
+        "Q34787"
+      ],
+      [
+        "person-vladimir-lenin",
+        "Vladimir Lenin",
+        "Vladimir Lenin",
+        "person",
+        "Q1394"
+      ],
+      [
+        "person-rosa-luxemburg",
+        "Rosa Luxemburg",
+        "Rosa Luxemburg",
+        "person",
+        "Q7231"
+      ],
+      [
+        "person-eduard-bernstein",
+        "Eduard Bernstein",
+        "Eduard Bernstein",
+        "person",
+        "Q75786"
+      ],
+      [
+        "person-karl-kautsky",
+        "Karl Kautsky",
+        "Karl Kautsky",
+        "person",
+        "Q76586"
+      ],
+      [
+        "person-antonio-gramsci",
+        "Antonio Gramsci",
+        "Antonio Gramsci",
+        "person",
+        "Q83003"
+      ],
+      [
+        "person-leon-trotsky",
+        "Leon Trotsky",
+        "Leon Trotsky",
+        "person",
+        "Q33391"
+      ],
+      [
+        "person-joseph-stalin",
+        "Joseph Stalin",
+        "Joseph Stalin",
+        "person",
+        "Q855"
+      ],
+      [
+        "person-mao-zedong",
+        "Mao Zedong",
+        "Mao Zedong",
+        "person",
+        "Q5816"
+      ],
+      [
+        "person-caio-prado-junior",
+        "Caio Prado Júnior",
+        "Caio Prado Júnior",
+        "person",
+        "Q1789931"
+      ],
+      [
+        "person-luiz-carlos-prestes",
+        "Luís Carlos Prestes",
+        "Luís Carlos Prestes",
+        "person",
+        "Q742047"
+      ],
+      [
+        "person-florestan-fernandes",
+        "Florestan Fernandes",
+        "Florestan Fernandes",
+        "person",
+        "Q2387448"
+      ],
+      [
+        "person-jose-carlos-mariategui",
+        "José Carlos Mariátegui",
+        "José Carlos Mariátegui",
+        "person",
+        "Q335544"
+      ],
+      [
+        "ideology-communism",
+        "Communism",
+        "Communism",
+        "ideology",
+        "Q6186"
+      ],
+      [
+        "ideology-socialism",
+        "Socialism",
+        "Socialism",
+        "ideology",
+        "Q7272"
+      ],
+      [
+        "concept-scientific-socialism",
+        "Scientific socialism",
+        "Scientific socialism",
+        "concept",
+        "Q865354"
+      ],
+      [
+        "concept-historical-materialism",
+        "Historical materialism",
+        "Historical materialism",
+        "concept",
+        "Q190004"
+      ],
+      [
+        "work-communist-manifesto",
+        "The Communist Manifesto",
+        "The Communist Manifesto",
+        "work",
+        "Q40591"
+      ],
+      [
+        "event-paris-commune",
+        "Paris Commune",
+        "Paris Commune",
+        "event",
+        "Q133132"
+      ],
+      [
+        "event-russian-revolution",
+        "Russian Revolution",
+        "Russian Revolution",
+        "event",
+        "Q8729"
+      ],
+      [
+        "institution-second-international",
+        "Second International",
+        "Second International",
+        "institution",
+        "Q188592"
+      ]
+    ]
+  },
+  "configHash": "654014325ec2c880de7a4e58a1a57ff95bc29b8645b7b9682a1d8f251695cd78",
+  "baselineHash": "03eefef44c4eaef8216a92eb58e02ac119f6126c0e528aac02e483524e9db1bb",
+  "snapshotHash": "7c62a367add2ba09f508caebcd2baab685c8622ae2e83c8647551dc7350085bb",
+  "requests": [
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Antonio+Gramsci",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "489284946ddfbeb8076953f4f0c82dcfda40e89c46414a25ff8a72f5dfe42939",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Caio+Prado+J%C3%BAnior",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "422e30e178f3379a40c1b54ce17fca7a18c87c4ea93a53d9ed33873aa35067ed",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Comuna+de+Paris",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "994635150a0586ebe7fd5875391a5418ed5196beb2b145271dce7ee3661110d8",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Comunismo",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "bb389e4d157e249ca5feb1291d157a44329b964c7d146214e4853845ff1da53d",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Eduard+Bernstein",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "05f56e5961417510697962507391beff051201061c6b737ec9d449ffa8345cd4",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Florestan+Fernandes",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "57181251014a113abd20e5830b95cb048c587b1b3f52f05e8f0e6a607086c8ae",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Friedrich+Engels",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "51ee49b11b270a839fa9e957ba809c4590149622f67866efd918a9e20dc87810",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Jos%C3%A9+Carlos+Mari%C3%A1tegui",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "dcc79b2c8d7172269199e2d872b2591728463567bfe91bedae0a2837db9d3ba5",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Josef+Stalin",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "0c35551b57db42b71d58ce7b46b3b5e6c7710651018aedad2ab1db475c87479a",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Karl+Kautsky",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "df619e12e6fc0c7866e5647b9d4d7a4e3705f8880ccd55a00f2c09186fe90b2e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Karl+Marx",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "056eb529706daf4d8ef660175901d2f7b51d394de99764eac07699552c2a5e0e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Lenin",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "6da2a1500ad95038b6e19b4b8d234f6f0bbcb50d120d3e6a533c5805f3ff9cb3",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Leon+Tr%C3%B3tski",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "960c0b71c35d9c2ccb50723826a12096c98342c4492334d3512b61ab600916f0",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Lu%C3%ADs+Carlos+Prestes",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "d0b674e66d6eda8296cfd7983ac5727a117a3380198c0b6819bc01efaee61e11",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Manifesto+Comunista",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "b989d7f8e970b836877b8590ff13e7cb8e91e87534a0d885a698783dae39bcbc",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Mao+Ts%C3%A9-Tung",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "c09e84be67322ddceabcbf0164d6196bfefe3398cf66f3e7a46b7fbd9ab185a4",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Marxismo",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "fa05bc8b13affdf0aa6c801d2670f4ee4d6d17b638e12893770727ca823c2e36",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Materialismo+hist%C3%B3rico",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "712149bf81bc125dc87842d2325a52bdb16a0c24f3f6047a2fd4da60a25cceaf",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Revolu%C3%A7%C3%A3o+Russa+de+1917",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "a447bb81e65e52fa88da90dbfaa3fb915617009c4b0fb82398a6e50a55da9a7e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Rosa+Luxemburgo",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "4a6c8903f2f6730d86eb996a89c7ca899337dc8d6f5eb4e36c22a960bd356ba0",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Segunda+Internacional",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "4d11153c3ccd81e577e6205a285fed60d4d41a4a43e81557f16f0aff0f7a2af7",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Socialismo",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "890bc778f01ee75f845f41e8a6179d94eb15104ecf8d12686325c2ce2a8dbc7e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Socialismo+cient%C3%ADfico",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "ef3332b2fa6395bcf47b48e5e353b3b9e5cebffe54f5b71fbe8e867525ee4aca",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q190004%7CQ865354%7CQ133132%7CQ8729%7CQ6186%7CQ7264%7CQ7272%7CQ188592%7CQ83003%7CQ1789931%7CQ75786%7CQ2387448%7CQ34787%7CQ335544%7CQ855%7CQ76586%7CQ9061%7CQ33391%7CQ742047%7CQ5816%7CQ7231%7CQ1394%7CQ40591&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=en%7Cpt&sitefilter=enwiki%7Cptwiki&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "847c2df104e73100c6c34bb02d41c7cd253cf98e410fe4938475a40f2f41d9e1",
+      "license": "CC0 1.0"
+    }
+  ]
+}

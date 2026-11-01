@@ -81,6 +81,8 @@ Conexão deve apresentar destino + verbo orientado + natureza + estado; evidênc
 
 ## Migração, dependências, riscos e rollback
 
+Atualização da fase 1: a implementação de captura/replay, reconciliação e publicação validada está em [Ingestão reproduzível](INGESTAO-REPRODUZIVEL.md). A tabela abaixo mantém a sequência de dependências; fases 2–5 continuam pendentes. Os riscos de ingestão ao vivo descritos no diagnóstico original são tratados pelo replay arquivado, sem transformar uma nova coleta online em operação determinística.
+
 | Fase | Entrega e dependência | Verificação | Rollback |
 | --- | --- | --- | --- |
 | 0: auditoria + fatia atual | projeção fiel e hipertexto nas duas páginas; depende apenas de dados existentes | unitários, integração CDK, E2E, axe, lint/typecheck/build/links, desktop/mobile | reverter diff da fatia; IDs/estrutura/URLs preservados, correção dos rótulos P737 pode ser mantida separadamente |

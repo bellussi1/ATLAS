@@ -1,5 +1,10 @@
 export function titleKey(value) {
-  return value.replaceAll('_', ' ').toLocaleLowerCase('en');
+  return value
+    .normalize('NFKC')
+    .replaceAll('_', ' ')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLocaleLowerCase('en');
 }
 export function claimItem(claim) {
   return claim?.mainsnak?.datavalue?.value?.id;

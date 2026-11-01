@@ -1,2 +1,6 @@
-process.argv[2] = 'liberalism';
-await import('./ingest-wikimedia-atlas.mjs');
+import { main } from './ingest-wikimedia-atlas.mjs';
+
+main(['liberalism', ...process.argv.slice(2)]).catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

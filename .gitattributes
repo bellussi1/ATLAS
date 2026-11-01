@@ -1,0 +1,2 @@
+# Raw capture checksums must survive checkout on Windows and Unix byte for byte.
+scripts/ingestion/wikimedia/raw/** -text

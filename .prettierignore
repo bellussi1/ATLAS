@@ -4,3 +4,4 @@ dist/
 coverage/
 output/
 package-lock.json
+scripts/ingestion/wikimedia/raw/
