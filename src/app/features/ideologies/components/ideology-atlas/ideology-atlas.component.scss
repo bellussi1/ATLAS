@@ -8,6 +8,13 @@
   padding: 2.8rem var(--grid-gutter) 5rem;
   color: var(--color-ink);
 }
+.continuous.atlas {
+  max-width: none;
+  padding: 0;
+}
+.atlas-reading-chapter {
+  scroll-margin-top: 1rem;
+}
 .opening {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 18rem;

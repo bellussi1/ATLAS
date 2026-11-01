@@ -1,7 +1,51 @@
-<app-ideology-atlas
-  [atlasId]="config.atlasId"
-  [rootEntityId]="config.rootEntityId"
-  [origin]="config.origin"
-  [openingTitle]="config.openingTitle"
-  [openingSubtitle]="config.openingSubtitle"
-/>
+<article class="liberalism-reading" aria-labelledby="liberalism-title">
+  <header class="reading-opening">
+    <a routerLink="/" class="back-link">← Página inicial</a>
+    <p class="folio">Leitura contínua · {{ atlas.title }}</p>
+    <h1 id="liberalism-title">Liberalismo<span aria-hidden="true">.</span></h1>
+    <p class="opening-summary">
+      {{ atlas.description }}
+    </p>
+    <p class="reading-meta">
+      {{ atlas.entities.length }} registros · redes, cronologia e imagens com licença registrada
+    </p>
+    <a
+      class="start-reading"
+      [routerLink]="[]"
+      fragment="atlas-section-rede"
+      queryParamsHandling="preserve"
+      (click)="go('atlas-section-rede')"
+      >Começar a leitura ↓</a
+    >
+  </header>
+
+  <div class="reading-layout">
+    <aside class="chapter-index" aria-label="Orientação da leitura">
+      <p class="index-heading">Nesta leitura</p>
+      <label class="progress-label" for="liberalism-progress">Percurso {{ progress() }}%</label>
+      <progress id="liberalism-progress" max="100" [value]="progress()"></progress>
+      <nav aria-label="Capítulos">
+        @for (chapter of chapters; track chapter.id) {
+          <a
+            [routerLink]="[]"
+            [fragment]="chapter.id"
+            queryParamsHandling="preserve"
+            [attr.aria-current]="active() === chapter.id ? 'location' : null"
+            (click)="go(chapter.id)"
+            >{{ chapter.title }}</a
+          >
+        }
+      </nav>
+    </aside>
+
+    <div class="chapter-sequence">
+      <app-ideology-atlas
+        [atlasId]="config.atlasId"
+        [rootEntityId]="config.rootEntityId"
+        [origin]="config.origin"
+        [embedded]="true"
+        [continuous]="true"
+      />
+    </div>
+  </div>
+</article>

@@ -1,42 +1,47 @@
 <section
   class="atlas"
   [class.continuous]="continuous()"
-  [attr.aria-labelledby]="embedded() ? 'marx-explorer-title' : 'atlas-title'"
+  [attr.aria-labelledby]="embedded() ? 'liberalism-title' : 'atlas-title'"
 >
-  <header class="opening">
-    <div>
-      <p class="eyebrow">{{ atlas().title }} <span>· dados em revisão editorial</span></p>
-      @if (embedded()) {
-        <h2 id="marx-explorer-title">Uma rede.<br /><em>Muitas entradas.</em></h2>
-      } @else {
+  @if (!embedded()) {
+    <header class="opening">
+      <div>
+        <p class="eyebrow">{{ atlas().title }} <span>· dados em revisão editorial</span></p>
         <h1 id="atlas-title">
           {{ openingTitle() }}<br /><em>{{ openingSubtitle() }}</em>
         </h1>
-      }
-      <p class="dek">
-        Explore pessoas, correntes, conceitos e acontecimentos deste atlas. A rede combina
-        descoberta enciclopédica e dados estruturados; essas conexões não equivalem, por si, a
-        relações historiográficas validadas.
-      </p>
-    </div>
-    <aside class="source-stamp" aria-label="Camadas de dados">
-      <span>Wikipedia</span><span>Wikidata</span><span>Commons</span>
-      <p>
-        {{ entities().length }} entidades · {{ discoveryLinkCount() }} links enciclopédicos ·
-        {{ structuredRelationCount() }} relações estruturadas
-      </p>
-    </aside>
-  </header>
+        <p class="dek">
+          Explore pessoas, correntes, conceitos e acontecimentos deste atlas. A rede combina
+          descoberta enciclopédica e dados estruturados; essas conexões não equivalem, por si, a
+          relações historiográficas validadas.
+        </p>
+      </div>
+      <aside class="source-stamp" aria-label="Camadas de dados">
+        <span>Wikipedia</span><span>Wikidata</span><span>Commons</span>
+        <p>
+          {{ entities().length }} entidades · {{ discoveryLinkCount() }} links enciclopédicos ·
+          {{ structuredRelationCount() }} relações estruturadas
+        </p>
+      </aside>
+    </header>
+  }
 
-  <nav class="view-switch" aria-label="Capítulos de exploração">
-    <a [routerLink]="[]" fragment="graph-title" queryParamsHandling="preserve">Rede</a
-    ><a [routerLink]="[]" fragment="timeline-title" queryParamsHandling="preserve">Tempo</a
-    ><a [routerLink]="[]" fragment="gallery-title" queryParamsHandling="preserve"
-      >Imagens e documentos</a
-    >
-  </nav>
+  @if (!embedded()) {
+    <nav class="view-switch" aria-label="Capítulos de exploração">
+      <a [routerLink]="[]" fragment="graph-title" queryParamsHandling="preserve">Rede</a
+      ><a [routerLink]="[]" fragment="timeline-title" queryParamsHandling="preserve">Tempo</a
+      ><a [routerLink]="[]" fragment="gallery-title" queryParamsHandling="preserve"
+        >Imagens e documentos</a
+      >
+    </nav>
+  }
 
-  <div class="explorer">
+  <section
+    id="atlas-section-rede"
+    class="explorer atlas-reading-chapter"
+    aria-label="Rede e registros"
+    [tabindex]="embedded() ? -1 : null"
+  >
     <section class="index" aria-labelledby="index-title">
       <div class="index-heading">
         <h2 id="index-title">Índice de entidades</h2>
@@ -89,7 +94,7 @@
           <div>
             @if (continuous()) {
               <p class="eyebrow">Relações entre registros</p>
-              <h2 id="graph-title">Quem se liga a quem</h2>
+              <h2 id="graph-title">Uma ideia. Muitas conexões.</h2>
               <p class="edge-legend">
                 Cada linha nomeia os dois registros e o vínculo importado. Selecione um nome para
                 abrir a ficha no próprio percurso.
@@ -194,7 +199,12 @@
         }
       </section>
 
-      <section class="timeline-section" aria-labelledby="timeline-title">
+      <section
+        id="atlas-section-tempo"
+        class="timeline-section atlas-reading-chapter"
+        aria-labelledby="timeline-title"
+        [tabindex]="embedded() ? -1 : null"
+      >
         <div class="section-heading">
           <div>
             <p class="eyebrow">Datas importadas</p>
@@ -230,7 +240,12 @@
         </p>
       </section>
 
-      <section class="gallery-section" aria-labelledby="gallery-title">
+      <section
+        id="atlas-section-imagens"
+        class="gallery-section atlas-reading-chapter"
+        aria-labelledby="gallery-title"
+        [tabindex]="embedded() ? -1 : null"
+      >
         <div class="section-heading">
           <div>
             <p class="eyebrow">Wikimedia Commons</p>
@@ -391,7 +406,7 @@
         }
       </aside>
     </section>
-  </div>
+  </section>
   <footer class="editorial-note">
     <p>
       Wikipedia e Wikidata são camadas de descoberta e estruturação. Links entre páginas não são,
