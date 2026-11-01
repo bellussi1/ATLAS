@@ -94,3 +94,44 @@ test('three pages work on mobile with reduced motion and accessible links', asyn
     ).toEqual([]);
   }
 });
+
+test('ideology reading controls stay in sync on desktop and mobile', async ({ page }) => {
+  for (const [path, firstAnchor, secondAnchor] of [
+    ['/marxismo/', 'introducao', 'origens'],
+    ['/liberalismo/', 'atlas-section-rede', 'atlas-section-tempo'],
+  ]) {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(path);
+    if (path === '/marxismo/') {
+      await page.screenshot({
+        path: 'output/playwright/atlas-marxismo-editorial-desktop.png',
+        fullPage: true,
+      });
+    }
+    const chapterLinks = page.locator('app-ideology-reading-index .desktop-nav a');
+    expect(await chapterLinks.count()).toBeGreaterThan(1);
+    await chapterLinks.nth(1).click();
+    await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
+    await page.getByRole('button', { name: '← Ponto anterior' }).click();
+    await expect(page).toHaveURL(new RegExp(`#${firstAnchor}$`));
+
+    const motionControl = page.locator('app-ideology-reading-index .motion-control');
+    await motionControl.click();
+    await expect(motionControl).toHaveAttribute('aria-pressed', 'true');
+    expect(
+      await page.evaluate(() => document.documentElement.classList.contains('atlas-reduced-motion')),
+    ).toBe(true);
+    await page.getByRole('button', { name: 'Restaurar movimento' }).click();
+
+    await page.setViewportSize({ width: 320, height: 844 });
+    await page.goto(path);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    const chapterPicker = page.getByLabel('Ir para capítulo');
+    await chapterPicker.selectOption(secondAnchor);
+    await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
+    await page.getByRole('button', { name: '← Ponto anterior' }).click();
+    await expect(page).toHaveURL(new RegExp(`#${firstAnchor}$`));
+  }
+});

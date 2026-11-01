@@ -108,6 +108,61 @@ describe('Liberalism atlas snapshot', () => {
     expect(page.history()).toEqual([]);
   });
 
+  it('keeps the textual relation list synchronized with the graph filter', () => {
+    const fixture = TestBed.createComponent(IdeologyAtlasComponent);
+    fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
+    fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
+    fixture.componentRef.setInput('origin', '/liberalismo');
+    fixture.componentRef.setInput('continuous', true);
+    fixture.detectChanges();
+
+    const page = fixture.componentInstance;
+    const candidate = page.entities().find((entity) => {
+      const types = new Set(
+        queryKnowledgeRelations(methodologyKnowledgeGraph, entity.id, {
+          atlasId: 'atlas-liberalism',
+        }).map((relation) => relation.relationType),
+      );
+      return types.has('encyclopedic-link') && types.size > 1;
+    });
+    expect(candidate).toBeDefined();
+    page.selectedId.set(candidate!.id);
+    fixture.detectChanges();
+
+    for (const filter of ['discovery', 'structured'] as const) {
+      page.setRelationFilter(filter);
+      fixture.detectChanges();
+      const visibleIds = Array.from(
+        (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLElement>(
+          '.text-network li[data-relation-id]',
+        ),
+      ).map((item) => item.dataset['relationId']);
+      expect(visibleIds).toEqual(page.visibleRelations().map((relation) => relation.relationId));
+      expect(visibleIds.length).toBeGreaterThan(0);
+      const expectedNodeIds = [
+        page.selectedId(),
+        page.rootEntityId(),
+        ...page.visibleRelations().map((relation) => relation.relatedEntityId),
+      ];
+      expect(page.graphNodes().map((node) => node.entity.id).sort()).toEqual(
+        [...new Set(expectedNodeIds)].sort(),
+      );
+
+      const firstRelation = page.visibleRelations()[0];
+      const firstItem = (fixture.nativeElement as HTMLElement).querySelector<HTMLElement>(
+        `.text-network li[data-relation-id="${firstRelation.relationId}"]`,
+      );
+      expect(firstItem?.textContent).toContain(page.relationName(firstRelation));
+      expect(firstItem?.textContent).toContain(
+        `Incerteza ${page.relationUncertaintyLabel(firstRelation)}`,
+      );
+      expect(firstItem?.querySelector('a[href]')).not.toBeNull();
+    }
+    expect(
+      (fixture.nativeElement as HTMLElement).querySelector<HTMLDetailsElement>('.text-network')?.open,
+    ).toBe(true);
+  });
+
   it('provides dated people and events and only fully licensed media to the views', () => {
     const page = createAtlas();
     expect(page.timelineEntities().some((entity) => entity.kind === 'event')).toBe(true);

@@ -228,14 +228,6 @@
 .exploration-summary {
   font: 1rem/1.65 var(--font-serif);
 }
-.principles {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 5px solid var(--color-indigo);
-  padding-top: 1rem;
-}
-.principles .exploration-card:nth-child(2) {
-  background: var(--color-teal-paper);
-}
 .schools {
   border-block: 1px solid var(--ink);
   gap: 0;
@@ -362,6 +354,10 @@
   .principles,
   .argument-board {
     grid-template-columns: 1fr;
+  }
+  .principles .exploration-card {
+    grid-column: 1 / -1;
+    margin-top: 0;
   }
   .schools .exploration-card {
     grid-template-columns: 1fr;

@@ -16,10 +16,8 @@
         </p>
         <a
           class="start-reading"
-          [routerLink]="[]"
-          fragment="introducao"
-          queryParamsHandling="preserve"
-          (click)="go('introducao')"
+          href="#introducao"
+          (click)="navigateChapter($event, 'introducao')"
           >Começar a leitura ↓</a
         >
       </div>
@@ -49,39 +47,16 @@
       </div>
     </header>
     <div class="reading-layout">
-      <aside class="chapter-index" aria-label="Orientação da leitura">
-        <p class="index-heading">Nesta leitura</p>
-        <label class="progress-label" for="reading-progress">Percurso {{ percent() }}%</label
-        ><progress id="reading-progress" max="100" [value]="percent()"></progress>
-        <nav aria-label="Capítulos">
-          @for (chapter of page.chapters; track chapter.id; let index = $index) {
-            <a
-              [routerLink]="[]"
-              [fragment]="chapter.anchor"
-              queryParamsHandling="preserve"
-              [attr.aria-current]="active() === chapter.anchor ? 'location' : null"
-              (click)="go(chapter.anchor)"
-              ><span class="chapter-number">{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
-              ><span
-                >{{ chapter.title }}<small>~{{ chapter.minutes }} min</small></span
-              ></a
-            >
-          }
-        </nav>
-        <button
-          type="button"
-          class="motion-control"
-          [attr.aria-pressed]="reduced()"
-          (click)="toggleMotion()"
-        >
-          Reduzir movimento
-        </button>
-        @if (previous()) {
-          <button type="button" class="return-control" (click)="returnToPrevious()">
-            ← Ponto anterior
-          </button>
-        }
-      </aside>
+      <app-ideology-reading-index
+        [sections]="page.chapters"
+        [active]="active()"
+        [progress]="percent()"
+        [reducedMotion]="reduced()"
+        [hasPrevious]="!!previous()"
+        (chapterSelected)="go($event)"
+        (previousRequested)="returnToPrevious()"
+        (motionToggleRequested)="toggleMotion()"
+      />
       <div class="chapter-sequence">
         @for (chapter of page.chapters; track chapter.id; let index = $index) {
           <section
@@ -131,10 +106,8 @@
             @if (page.chapters[index + 1]; as next) {
               <a
                 class="next-chapter"
-                [routerLink]="[]"
-                [fragment]="next.anchor"
-                queryParamsHandling="preserve"
-                (click)="go(next.anchor)"
+                [href]="'#' + next.anchor"
+                (click)="navigateChapter($event, next.anchor)"
                 >A seguir: {{ next.title }} ↓</a
               >
             }

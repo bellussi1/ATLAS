@@ -2,6 +2,17 @@
 
 Revisão de 01/11/2026: enciclopédia visual, interativa e exploratória. Este contrato substitui a organização V4 que previa um hub e múltiplas rotas secundárias. O escopo público atual continua **home, `/marxismo` e `/liberalismo`**. O padrão pode receber outras tradições no futuro, sem publicá-las antecipadamente.
 
+## 0. Direção artística: Atlas Editorial
+
+O Atlas Editorial é a direção artística principal do produto. A experiência combina o rigor do grid suíço com jornalismo visual, história ilustrada e museografia digital: cada ideologia deve parecer uma publicação histórica que se percorre, não um dashboard nem uma coleção repetida de widgets.
+
+- **Base comum:** papel quente, tinta escura, vermelho de ação; IBM Plex Sans para estrutura, Source Serif 4 para leitura e IBM Plex Mono para metadados pontuais. Cores secundárias existentes sustentam camadas específicas, sem pintar toda a interface.
+- **Ritmo:** usar grid assimétrico, títulos expressivos, respiros editoriais e mudanças de escala. Documentos, retratos, linhas do tempo e diagramas entram na narrativa quando os dados e as licenças permitem. Não repetir a mesma grade de fichas em todos os capítulos ou ideologias.
+- **Interação:** seleção, expansão e contexto permanecem ligados à narrativa. O índice e o progresso compartilham comportamento e linguagem; no celular, o índice vira um seletor de capítulo compacto. A composição interna pode variar conforme o assunto.
+- **Conteúdo:** não preencher espaço visual com fatos, imagens, causalidades ou conexões sem suporte editorial. Uma coleção de registros importados precisa se apresentar como exploração e dizer quando a revisão humana está pendente; não deve sugerir uma narrativa abrangente que ainda não existe.
+
+As referências enviadas pelo usuário orientam decisões, sem serem ativos publicáveis: a composição tipográfica e geométrica de Rosmarie Tissi inspira uso disciplinado do grid e do vermelho; o Yemen Peace Project inspira integrar texto, imagem e visualização interativa no mesmo percurso, incluindo sua adaptação móvel; a publicação sobre a Revolução Cultural inspira entrelaçar datas, imagens e narrativa histórica. A direção resultante pertence ao ATLAS e precisa preservar suas fontes, licenças, tokens e conteúdo verificado.
+
 ## 1. Unidade de experiência e orientação
 
 Uma tradição = uma página longa no scroll vertical nativo. A narrativa principal permanece visível e compreensível sem navegar por abas, subpáginas ou redirects. Controles locais podem selecionar um tema, evento, relação ou argumento; não escondem capítulos inteiros. Cada capítulo oferece uma interação que ensina: comparar, contextualizar, revelar fonte ou seguir conexão.

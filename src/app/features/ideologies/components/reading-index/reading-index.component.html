@@ -1,0 +1,52 @@
+<aside class="reading-index" aria-label="Orientação da leitura">
+  <div class="index-topline">
+    <p class="index-heading">Nesta leitura</p>
+    <label class="progress-label" for="reading-progress">Percurso {{ progress() }}%</label>
+  </div>
+  <progress id="reading-progress" max="100" [value]="progress()"></progress>
+
+  <nav class="desktop-nav" aria-label="Capítulos">
+    @for (section of sections(); track section.anchor; let index = $index) {
+      <a
+        [href]="'#' + section.anchor"
+        [attr.aria-current]="active() === section.anchor ? 'location' : null"
+        (click)="followChapter($event, section.anchor)"
+      >
+        <span class="chapter-number">{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span>
+        <span class="chapter-title">
+          {{ section.title }}
+          @if (section.minutes !== undefined) {
+            <small>~{{ section.minutes }} min</small>
+          }
+        </span>
+      </a>
+    }
+  </nav>
+
+  <div class="mobile-picker">
+    <label for="reading-chapter-picker">Ir para capítulo</label>
+    <select id="reading-chapter-picker" (change)="selectChapter($event)">
+      @for (section of sections(); track section.anchor; let index = $index) {
+        <option [value]="section.anchor" [selected]="active() === section.anchor">
+          {{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }} · {{ section.title }}
+        </option>
+      }
+    </select>
+  </div>
+
+  <div class="index-controls">
+    @if (hasPrevious()) {
+      <button type="button" class="return-control" (click)="previousRequested.emit()">
+        ← Ponto anterior
+      </button>
+    }
+    <button
+      type="button"
+      class="motion-control"
+      [attr.aria-pressed]="reducedMotion()"
+      (click)="motionToggleRequested.emit()"
+    >
+      {{ reducedMotion() ? 'Restaurar movimento' : 'Reduzir movimento' }}
+    </button>
+  </div>
+</aside>

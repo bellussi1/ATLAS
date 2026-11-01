@@ -62,7 +62,7 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
     'href',
     /commons\.wikimedia\.org/,
   );
-  await page.getByRole('link', { name: 'Rede', exact: true }).click();
+  await page.getByRole('link', { name: /Rede/ }).click();
   await expect(page.locator('.text-network summary')).toBeVisible();
   const violations = (await new AxeBuilder({ page }).analyze()).violations;
   expect(
@@ -74,6 +74,8 @@ test('mobile keeps entity navigation available without horizontal overflow', asy
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/liberalismo/');
+  await expect(page.locator('.text-network')).toHaveJSProperty('open', true);
+  await expect(page.locator('.text-network li[data-relation-id]').first()).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({
     path: 'output/playwright/atlas-liberalismo-continuous-mobile.png',

@@ -6,6 +6,7 @@
     <div
       class="entity-gallery"
       [class.portraits]="block().type === 'entities' && $any(block()).mode === 'thinkers'"
+      [class.documents]="block().type === 'entities' && $any(block()).mode === 'documents'"
     >
       @for (entity of entities(); track entity.id) {
         <div class="entity-entry">

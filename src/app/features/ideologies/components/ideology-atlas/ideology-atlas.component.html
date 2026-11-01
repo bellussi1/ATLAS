@@ -156,7 +156,7 @@
               [style.left.%]="node.x / 9.2"
               [style.top.%]="node.y / 5.72"
               [attr.aria-pressed]="selectedId() === node.entity.id"
-              [attr.aria-label]="'Abrir contexto: ' + node.entity.title"
+              [attr.aria-label]="'Selecionar contexto: ' + node.entity.title"
               (mouseenter)="hoveredId.set(node.entity.id)"
               (mouseleave)="hoveredId.set(null)"
               (focus)="hoveredId.set(node.entity.id)"
@@ -171,22 +171,46 @@
 
         <details class="text-network" [open]="continuous()">
           <summary>
-            {{
-              continuous()
-                ? 'Ligações entre pessoas, ideias e acontecimentos'
-                : 'Alternativa textual para a rede'
-            }}
+            Lista textual das conexões visíveis nesta seleção ({{ visibleRelations().length }})
           </summary>
           <ul>
-            @for (relation of atlas().relations; track relation.id) {
-              <li>
-                <button type="button" (click)="openEntity(relation.fromEntityId)">
-                  {{ entityTitle(relation.fromEntityId) }}
-                </button>
-                <span>{{ relation.label }}</span>
-                <button type="button" (click)="openEntity(relation.toEntityId)">
-                  {{ entityTitle(relation.toEntityId) }}
-                </button>
+            @for (relation of visibleRelations(); track relation.relationId) {
+              <li [attr.data-relation-id]="relation.relationId">
+                @if (relationSource(relation); as source) {
+                  <button type="button" (click)="openEntity(source.id)">{{ source.title }}</button>
+                }
+                <span class="relation-direction">{{ relation.label }}</span>
+                @if (relationDestination(relation); as destination) {
+                  <button type="button" (click)="openEntity(destination.id)">
+                    {{ destination.title }}
+                  </button>
+                }
+                <div class="relation-evidence">
+                  <small>
+                    {{ relationName(relation) }} · Incerteza
+                    {{ relationUncertaintyLabel(relation) }} · {{ relationSourceLabel(relation) }} ·
+                    {{ relationStatusLabel(relation) }}
+                  </small>
+                  <p>{{ relation.context }}</p>
+                  @for (source of relationSources(relation); track source.id) {
+                    @if (source.url) {
+                      <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                        {{ source.title }} ↗
+                      </a>
+                    } @else {
+                      <span>{{ source.title }}</span>
+                    }
+                    @if (source.locator) {
+                      <small>{{ source.locator }}</small>
+                    }
+                  } @empty {
+                    <small>Fonte específica não registrada para esta conexão.</small>
+                  }
+                </div>
+              </li>
+            } @empty {
+              <li class="empty">
+                <span role="status">Nenhuma conexão deste tipo aparece para a ficha selecionada.</span>
               </li>
             }
           </ul>

@@ -61,6 +61,26 @@
 .gallery figure.expanded img {
   height: min(38rem, 70dvh);
 }
+.text-network li {
+  display: grid;
+  gap: 0.2rem;
+}
+.text-network li a {
+  width: fit-content;
+  color: var(--color-accent);
+  overflow-wrap: anywhere;
+  text-underline-offset: 0.16em;
+}
+.relation-evidence {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 0.15rem;
+  color: var(--color-ink-muted);
+  font-size: 0.78rem;
+}
+.relation-evidence p {
+  margin: 0;
+}
 .entity-card.selected .action-cue {
   color: var(--ink);
 }
@@ -96,5 +116,61 @@
   }
   .graph-node {
     width: 6rem;
+  }
+}
+
+.continuous .text-network ul {
+  max-height: 24rem;
+  overflow: auto;
+  padding-left: 0;
+  list-style: none;
+}
+.continuous .text-network li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.2rem 0.65rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--color-border);
+}
+.continuous .text-network li > span {
+  color: var(--color-ink-muted);
+  font-size: 0.85rem;
+}
+.continuous .text-network li button {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-ink);
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+.continuous .text-network li small {
+  grid-column: 1 / -1;
+  color: var(--color-ink-muted);
+  font: 0.68rem/1.4 var(--font-mono);
+}
+.continuous .entity-card.selected {
+  border-left: 0;
+  background: transparent;
+  box-shadow: inset 0 3px var(--color-accent);
+}
+
+@media (max-width: 760px) {
+  .atlas-reading-chapter {
+    scroll-margin-top: 9rem;
+  }
+
+  .continuous .text-network ul {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .continuous .text-network li {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 }

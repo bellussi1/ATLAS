@@ -1,42 +1,39 @@
 <article class="liberalism-reading" aria-labelledby="liberalism-title">
   <header class="reading-opening">
     <a routerLink="/" class="back-link">← Página inicial</a>
-    <p class="folio">Leitura contínua · {{ atlas.title }}</p>
-    <h1 id="liberalism-title">Liberalismo<span aria-hidden="true">.</span></h1>
-    <p class="opening-summary">
-      {{ atlas.description }}
-    </p>
-    <p class="reading-meta">
-      {{ atlas.entities.length }} registros · redes, cronologia e imagens com licença registrada
-    </p>
-    <a
-      class="start-reading"
-      [routerLink]="[]"
-      fragment="atlas-section-rede"
-      queryParamsHandling="preserve"
-      (click)="go('atlas-section-rede')"
-      >Começar a leitura ↓</a
-    >
+    <div class="opening-copy">
+      <p class="folio">Atlas exploratório · {{ atlas.title }}</p>
+      <h1 id="liberalism-title">Liberalismo<span aria-hidden="true">.</span></h1>
+      <p class="opening-summary">{{ atlas.description }}</p>
+      <a
+        class="start-reading"
+        href="#atlas-section-rede"
+        (click)="navigateChapter($event, 'atlas-section-rede')"
+        >Começar a leitura ↓</a
+      >
+    </div>
+    <aside class="opening-note" aria-label="Estado desta coleção">
+      <p class="editorial-status">Registros enciclopédicos · revisão editorial humana pendente</p>
+      <p class="record-count">{{ atlas.entities.length }}</p>
+      <p class="reading-meta">registros nesta coleção</p>
+      <p class="collection-scope">
+        Rede, cronologia e imagens com licença registrada. A coleção ainda não constitui uma
+        narrativa histórica abrangente.
+      </p>
+    </aside>
   </header>
 
   <div class="reading-layout">
-    <aside class="chapter-index" aria-label="Orientação da leitura">
-      <p class="index-heading">Nesta leitura</p>
-      <label class="progress-label" for="liberalism-progress">Percurso {{ progress() }}%</label>
-      <progress id="liberalism-progress" max="100" [value]="progress()"></progress>
-      <nav aria-label="Capítulos">
-        @for (chapter of chapters; track chapter.id) {
-          <a
-            [routerLink]="[]"
-            [fragment]="chapter.id"
-            queryParamsHandling="preserve"
-            [attr.aria-current]="active() === chapter.id ? 'location' : null"
-            (click)="go(chapter.id)"
-            >{{ chapter.title }}</a
-          >
-        }
-      </nav>
-    </aside>
+    <app-ideology-reading-index
+      [sections]="chapters"
+      [active]="active()"
+      [progress]="progress()"
+      [reducedMotion]="reduced()"
+      [hasPrevious]="!!previous()"
+      (chapterSelected)="go($event)"
+      (previousRequested)="returnToPrevious()"
+      (motionToggleRequested)="toggleMotion()"
+    />
 
     <div class="chapter-sequence">
       <app-ideology-atlas

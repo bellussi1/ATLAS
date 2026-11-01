@@ -17,7 +17,7 @@ a {
 }
 .ideology-opening {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.65fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(14rem, 0.65fr);
   border-top: 3px solid var(--ink);
   padding-top: 1.5rem;
   gap: 1.5rem 3rem;
@@ -29,9 +29,7 @@ a {
 }
 .folio,
 .reading-meta,
-.editorial-strip,
-.index-heading,
-.progress-label {
+.editorial-strip {
   font: 0.75rem/1.7 var(--font-mono);
 }
 .folio {
@@ -65,8 +63,8 @@ h1 > span {
   align-self: start;
   margin: 0;
   padding: 1rem 1rem 0 0;
-  border-top: 1.2rem solid var(--color-indigo);
-  border-right: 1.2rem solid var(--color-indigo);
+  border-top: 1.2rem solid var(--color-accent);
+  border-right: 1.2rem solid var(--color-accent);
 }
 .opening-portrait img {
   display: block;
@@ -102,86 +100,11 @@ summary {
   gap: clamp(2rem, 5vw, 5rem);
   align-items: start;
 }
-.chapter-index {
-  position: sticky;
-  top: 0;
-  padding-top: 1.5rem;
-  max-height: 100dvh;
-  overflow-y: auto;
-}
-.index-heading {
-  font-weight: 600;
-  font-size: 0.85rem;
-}
-.progress-label {
-  display: block;
-}
-progress {
-  width: 100%;
-  height: 4px;
-  accent-color: var(--color-accent);
-  display: block;
-  margin-block: 0.5rem 1rem;
-  appearance: none;
-  border: 0;
-  background: var(--rule);
-}
-progress::-webkit-progress-bar {
-  background: var(--rule);
-}
-progress::-webkit-progress-value {
-  background: var(--color-accent);
-}
-progress::-moz-progress-bar {
-  background: var(--color-accent);
-}
-.chapter-index nav {
-  display: grid;
-}
-.chapter-index nav a {
-  display: flex;
-  gap: 0.8rem;
-  padding: 0.7rem 0.4rem;
-  border-top: 1px solid var(--rule);
-  color: var(--ink-muted);
-  text-decoration: none;
-  line-height: 1.3;
-  font-size: 0.9rem;
-}
-.chapter-index nav a > span:last-child {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-.chapter-index nav a[aria-current] {
-  color: var(--color-accent);
-  border-left: 3px solid var(--color-accent);
-}
-.chapter-index small {
-  display: block;
-  font-size: 0.7rem;
-  margin-top: 0.25rem;
-}
 .chapter-number {
   font-family: var(--font-mono);
   font-weight: 400;
   white-space: nowrap;
   flex-shrink: 0;
-}
-.motion-control,
-.return-control {
-  display: block;
-  min-height: 44px;
-  padding: 0.6rem;
-  margin-top: 0.5rem;
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--rule-strong);
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-.motion-control[aria-pressed='true'] {
-  background: var(--ink);
-  color: var(--paper);
 }
 .ideology-chapter {
   padding: clamp(2.5rem, 5vw, 5rem) 0;
@@ -193,6 +116,8 @@ progress::-moz-progress-bar {
   justify-content: space-between;
   gap: 1rem;
   margin: 0 0 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--rule-strong);
 }
 h2 {
   display: flex;
@@ -291,6 +216,9 @@ h2 .chapter-number {
   }
 }
 @media (max-width: 750px) {
+  .ideology-chapter {
+    scroll-margin-top: 9rem;
+  }
   .ideology-opening {
     grid-template-columns: minmax(0, 1fr) 105px;
     gap: 1rem;
@@ -332,23 +260,6 @@ h2 .chapter-number {
   .reading-layout {
     display: block;
   }
-  .chapter-index {
-    position: relative;
-    overflow: visible;
-    max-height: none;
-    padding-bottom: 1.5rem;
-    border-bottom: 3px solid var(--ink);
-  }
-  .chapter-index nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 1rem;
-  }
-  .chapter-index nav a {
-    font-size: 0.8rem;
-  }
-  .chapter-index nav .chapter-number {
-    font-size: 0.7rem;
-  }
   h2 {
     font-size: 2rem;
   }
@@ -370,8 +281,5 @@ h2 .chapter-number {
   }
   .opening-summary {
     grid-column: 1;
-  }
-  .chapter-index nav {
-    grid-template-columns: 1fr;
   }
 }

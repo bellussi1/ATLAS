@@ -21,6 +21,24 @@ O usuário quer que novas referências alimentem continuamente esta skill e que 
 
 Buscar ativamente momentos interessantes de seleção, aproximação, hover, âncora, scroll, transição e continuidade. Variar escala, peso, cor e organização espacial com intenção. Uma nova referência deve provocar uma investigação visual, não apenas mais uma cor ou card. A ousadia pertence ao projeto e não deve ser importada automaticamente de outros trabalhos.
 
+## Atlas Editorial consolidado · 01/11/2026
+
+Atlas Editorial é a direção artística principal do ATLAS: modernismo suíço com jornalismo visual, história ilustrada e museografia digital. A página de tradição funciona como uma publicação histórica navegável. Sua grade organiza o conteúdo; não transforma capítulos em um dashboard.
+
+As três referências novas acrescentam comportamentos diferentes à identidade:
+
+- A publicação de Rosmarie Tissi mostra como uma grade tipográfica rigorosa pode sustentar pontos, linhas e vermelho sem perder espaço em branco. Usar essa lógica para hierarquia e relações; não copiar o desenho de outra pessoa.
+- O Yemen Peace Project integra texto, fotografia e visualizações na mesma história e muda a composição em telas menores. Usar para pensar continuidade entre narrativa e dado, não como modelo de paleta ou como fonte de conteúdo do ATLAS.
+- A publicação sobre a Revolução Cultural coloca datas, documentos, retratos e texto em uma cronologia editorial. Usar para dar escala e evidência visual ao tempo histórico, sem sugerir causalidade pela proximidade.
+
+Na prática, variar a composição dos capítulos conforme a tarefa: constelações assimétricas para pensadores, spreads de tamanho variável para documentos, timeline legível com seleção e conexões contextuais para eventos, diagrama apenas quando as relações têm fonte. Não repetir a mesma grade em Marxismo e Liberalismo. Compartilhar tipografia, paleta, navegação e motion; dar a cada assunto o seu ritmo.
+
+O índice comum de leitura alinha capítulos, progresso, capítulo atual, retorno ao ponto anterior e controle manual de movimento. No desktop ele mantém as âncoras à vista; no celular usa um seletor de capítulo, sem esconder o texto. Mudança de capítulo navega para uma âncora; filtros e seleção não devem deslocar a página.
+
+Aplicação observável nesta rodada: substituir índices duplicados por `IdeologyReadingIndexComponent`; tratar pensadores e documentos do Marxismo como composições assimétricas; apresentar Liberalismo como atlas exploratório com revisão editorial pendente; manter o índice textual de relações sincronizado com o filtro do grafo. Esses exemplos orientam decisões futuras e não autorizam acrescentar conteúdo histórico não verificado.
+
+As imagens enviadas são referência visual, não licença de publicação. Consultar `docs/PAGE_STANDARD.md` para o contrato completo; preservar os ativos Commons já licenciados e seus metadados.
+
 ## Marca
 
 A marca aprovada é a assinatura tipográfica ATLAS, com letras pesadas e próximas para sugerir conexão, e ponto vermelho final. Não adicionar um símbolo separado à esquerda. Os arquivos oficiais ficam em public/brand: atlas-logo.svg (principal), atlas-logo-inverse.svg (branca com ponto vermelho), atlas-logo-mono.svg (tinta) e atlas-logo-white.svg (inteiramente branca). Os contornos derivam da IBM Plex Sans Bold local, com espaçamento ajustado, sem depender de fontes externas. Preservar proporção, proximidade entre letras e espaço de respiro; não deformar ou recriar a marca em CSS ou texto aproximado. atlas-symbol.svg reduz a assinatura a A e ponto vermelho.

@@ -17,6 +17,7 @@ import type { Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/ideology-block.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
+import { IdeologyReadingIndexComponent } from '@ideologies/components/reading-index/reading-index.component';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
@@ -27,7 +28,12 @@ interface PageState {
 }
 @Component({
   selector: 'app-ideology-page',
-  imports: [RouterLink, IdeologyBlockComponent, KnowledgeTextComponent],
+  imports: [
+    RouterLink,
+    IdeologyBlockComponent,
+    KnowledgeTextComponent,
+    IdeologyReadingIndexComponent,
+  ],
   templateUrl: './ideology-page.component.html',
   styleUrl: './ideology-page.component.scss',
 })
@@ -137,8 +143,22 @@ export class IdeologyPageComponent {
       });
     });
   }
+  navigateChapter(event: MouseEvent, anchor: string): void {
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+    event.preventDefault();
+    this.go(anchor);
+  }
   go(anchor: string): void {
-    this.previous.set(this.active());
+    if (anchor !== this.active()) this.previous.set(this.active());
+    this.active.set(anchor);
     void this.router.navigate([], {
       relativeTo: this.route,
       fragment: anchor,

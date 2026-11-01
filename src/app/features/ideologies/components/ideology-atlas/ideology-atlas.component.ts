@@ -28,6 +28,12 @@ interface GraphEdge {
   x2: number;
   y2: number;
 }
+interface RelationReference {
+  id: string;
+  title: string;
+  url: string | null;
+  locator?: string;
+}
 
 @Component({
   selector: 'app-ideology-atlas',
@@ -110,18 +116,16 @@ export class IdeologyAtlasComponent {
     const visibleIds = new Set([
       focusId,
       this.rootEntityId(),
-      ...this.atlas()
-        .relations.filter(
-          (relation) => relation.fromEntityId === focusId || relation.toEntityId === focusId,
-        )
-        .flatMap((relation) => [relation.fromEntityId, relation.toEntityId]),
+      ...this.visibleRelations().map((relation) => relation.relatedEntityId),
     ]);
-    const items = this.entities().filter((entity) => visibleIds.has(entity.id));
+    const entities = this.allEntities();
+    const items = entities.filter((entity) => visibleIds.has(entity.id));
+    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
     return items.map((entity) => {
       if (entity.id === this.rootEntityId()) return { entity, x: 460, y: 286 };
-      const others = this.entities().filter((item) => item.id !== this.rootEntityId());
+      const others = entities.filter((item) => item.id !== this.rootEntityId());
       const position = others.findIndex((item) => item.id === entity.id);
-      const angle = -Math.PI / 2 + (Math.PI * 2 * position) / Math.max(others.length, 1);
+      const angle = -Math.PI / 2 + position * goldenAngle;
       return { entity, x: 460 + Math.cos(angle) * 350, y: 286 + Math.sin(angle) * 205 };
     });
   });
@@ -272,11 +276,64 @@ export class IdeologyAtlasComponent {
               ? 'rascunho'
               : 'estado editorial não informado';
   }
+  relationUncertaintyLabel(relation: KnowledgeRelationResult): string {
+    const labels: Record<Relation['uncertainty'], string> = {
+      low: 'baixa',
+      moderate: 'moderada',
+      high: 'alta',
+      unknown: 'não avaliada',
+    };
+    return labels[relation.uncertainty];
+  }
+  relationSources(relation: KnowledgeRelationResult): RelationReference[] {
+    const record = this.atlas().relations.find((item) => item.id === relation.relationId);
+    if (!record) return [];
+
+    const references = new Map<string, RelationReference>();
+    const addReference = (reference: RelationReference) => {
+      const key = reference.url ?? reference.id;
+      const existing = references.get(key);
+      references.set(
+        key,
+        existing
+          ? {
+              ...existing,
+              locator: [existing.locator, reference.locator].filter(Boolean).join(' · ') || undefined,
+            }
+          : reference,
+      );
+    };
+
+    if (record.provenance) {
+      addReference({
+        id: `provenance-${record.id}`,
+        title: record.provenance.source === 'wikipedia' ? 'Wikipedia' : 'Wikidata',
+        url: record.provenance.url,
+        locator: `Consultada em ${record.provenance.retrievedAt}`,
+      });
+    }
+    for (const evidenceId of record.evidenceIds) {
+      const evidence = this.atlas().evidences.find((item) => item.id === evidenceId);
+      const source = evidence && this.atlas().sources.find((item) => item.id === evidence.sourceId);
+      if (evidence && source) {
+        addReference({
+          id: evidence.id,
+          title: source.title,
+          url: source.url,
+          locator: evidence.locator,
+        });
+      }
+    }
+    return [...references.values()];
+  }
   relationTarget(relation: KnowledgeRelationResult): Entity | undefined {
     return this.allEntities().find((entity) => entity.id === relation.relatedEntityId);
   }
-  entityTitle(entityId: string): string {
-    return this.allEntities().find((entity) => entity.id === entityId)?.title ?? entityId;
+  relationSource(relation: KnowledgeRelationResult): Entity | undefined {
+    return relation.direction === 'outgoing' ? this.selected() : this.relationTarget(relation);
+  }
+  relationDestination(relation: KnowledgeRelationResult): Entity | undefined {
+    return relation.direction === 'outgoing' ? this.relationTarget(relation) : this.selected();
   }
   mediaFor(entity: Entity) {
     return this.media().find((item) => item.entity.id === entity.id);
