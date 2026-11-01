@@ -22,11 +22,17 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 
 ## Páginas disponíveis
 
-- `/` — home, busca nas duas leituras e mesa de pesquisa.
+- `/` — home, entrada para a busca universal e mesa de pesquisa.
 - `/marxismo` — leitura contínua com conceitos, pensadores, cronologia, debates e fontes.
 - `/liberalismo` — atlas com rede, cronologia e imagens licenciadas.
 
-Escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas do código e do prerender. Caminhos desconhecidos voltam à home. A navegação, as prévias e os exercícios permanecem dentro dessas três páginas; referências externas continuam disponíveis. Os dados históricos, fontes e licenças foram preservados. Documentos antigos descrevem etapas anteriores do produto.
+- `/conhecimento` — busca universal com filtros e consulta compartilhável por URL.
+- `/entidades`, `/ideologias`, `/pessoas`, `/obras` — catálogos do grafo.
+- `/verbete/:slug` — página permanente de cada entidade, com contexto, fontes e conexões.
+- `/fontes` — referências cadastradas, com âncoras permanentes e usos no acervo.
+- `/explorar/:tipo/:slug` — exemplos de metodologia, identificados como tais.
+
+O Knowledge Explorer amplia o escopo temporário anterior de três páginas, a pedido do usuário. Os 48 registros existentes e oito exemplos de metodologia têm páginas prerenderizadas; não houve nova coleta histórica. Caminhos desconhecidos no Angular voltam à home; o preview estático retorna 404 para arquivos inexistentes. Veja [contratos e validação](docs/quality/KNOWLEDGE-EXPLORER.md).
 
 ## Comandos
 
@@ -42,7 +48,7 @@ Escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas 
 | `npm run content:build` | Geração offline de manifesto, shards, busca, adjacência e layouts |
 | `npm run test:content` | Equivalência, determinismo e integridade dos artefatos |
 
-O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca da Home filtra as duas leituras publicadas; o índice global de entidades/fontes é gerado no build para consultas internas e evolução da exploração, sem API remota de pesquisa.
+O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca da Home abre `/conhecimento`: consulta local ao índice global de entidades, fontes, exemplos metodológicos e leituras, gerado no build, sem API remota de pesquisa.
 
 Para conferir a saída estática localmente, execute `npm run build` e `npm run preview`; o servidor escuta somente em `127.0.0.1:4305`. Se a porta estiver ocupada, defina `ATLAS_PREVIEW_PORT` para preview e E2E; o padrão continua 4305. A configuração de CI, os testes de navegador e os bloqueios de indexação do piloto estão documentados em [Piloto e verificações](docs/quality/PILOTO-E-VERIFICACAO.md).
 

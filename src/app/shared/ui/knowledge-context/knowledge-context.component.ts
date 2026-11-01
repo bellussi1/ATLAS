@@ -27,6 +27,11 @@ export class KnowledgeContextComponent {
       expanded: string[];
     }[]
   >([]);
+  permanentPath(): string | undefined {
+    return this.record().entityId
+      ? this.repository.discoveryIndex.find((entry) => entry.id === this.record().entityId)?.path
+      : undefined;
+  }
   follow(connection: ContextConnection): void {
     const scroll = this.host.nativeElement.querySelector('.context-body')?.scrollTop ?? 0;
     this.history.update((items) => [

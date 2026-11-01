@@ -1,17 +1,8 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-test('retired entry, sources, search and institutional routes still return home', async ({
-  page,
-}) => {
-  for (const path of [
-    '/verbete/karl-marx',
-    '/fontes',
-    '/conhecimento',
-    '/sobre',
-    '/estudar',
-    '/rota-inexistente',
-  ]) {
+test('unknown and unpublished institutional routes still return home', async ({ page }) => {
+  for (const path of ['/sobre', '/estudar', '/rota-inexistente']) {
     await page.goto('/');
     await page.evaluate((destination) => {
       history.pushState(null, '', destination);
@@ -22,22 +13,25 @@ test('retired entry, sources, search and institutional routes still return home'
   }
 });
 
-test('home search and sheet open only retained pages', async ({ page }) => {
+test('home search opens the universal catalogue and the reading sheet stays available', async ({
+  page,
+}) => {
   await page.goto('/');
   await page.getByLabel('Procurar no acervo', { exact: true }).fill('liberalismo');
   await page.getByRole('button', { name: 'Pesquisar', exact: true }).click();
-  await page
-    .getByRole('region', { name: 'Resultados da busca' })
-    .getByRole('link', { name: 'Liberalismo', exact: true })
-    .click();
-  await expect(page).toHaveURL(/\/liberalismo$/);
+  await expect(page).toHaveURL(/\/conhecimento\?q=liberalismo$/);
+  await expect(
+    page
+      .getByRole('region', { name: 'Resultados da busca' })
+      .getByRole('link', { name: 'Liberalismo', exact: true }),
+  ).toHaveCount(2);
   await page.goto('/');
   await page.getByRole('button', { name: /atlas\s*Liberalismo/ }).click();
   await page.getByRole('link', { name: 'Ler o texto completo' }).click();
   await expect(page).toHaveURL(/\/liberalismo$/);
 });
 
-test('all visible internal links lead to home, Marxism or Liberalism', async ({ page }) => {
+test('reading navigation includes the knowledge explorer', async ({ page }) => {
   for (const path of ['/', '/marxismo/', '/liberalismo/']) {
     await page.goto(path);
     await expect(page.locator('h1')).toBeVisible();
@@ -47,7 +41,9 @@ test('all visible internal links lead to home, Marxism or Liberalism', async ({ 
         .filter((u) => u.origin === location.origin)
         .map((u) => u.pathname.replace(/\/$/, '') || '/'),
     );
-    expect(hrefs.filter((p) => !['/', '/marxismo', '/liberalismo'].includes(p))).toEqual([]);
+    expect(
+      hrefs.filter((p) => !['/', '/marxismo', '/liberalismo', '/conhecimento'].includes(p)),
+    ).toEqual([]);
   }
 });
 

@@ -1,5 +1,5 @@
-import { Component, computed, type ElementRef, signal, viewChild } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, type ElementRef, inject, signal, viewChild } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { AtlasEditorialLinkDirective } from '@shared/directives/editorial-link/editorial-link.directive';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasEditorialMarkComponent } from '@shared/ui/editorial-mark/editorial-mark.component';
@@ -18,6 +18,7 @@ import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.compon
   styleUrl: './home-page.component.scss',
 })
 export class HomePage {
+  private readonly router = inject(Router);
   readonly query = signal('');
   readonly readings = [
     {
@@ -51,21 +52,6 @@ export class HomePage {
       ],
     },
   ];
-  readonly searched = signal(false);
-  readonly matches = computed(() => {
-    const query = this.query()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase()
-      .trim();
-    return this.readings.filter((e) =>
-      (e.title + ' ' + e.summary)
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-        .includes(query),
-    );
-  });
   readonly selected = signal(this.readings[0]);
   readonly sheet = viewChild<ElementRef<HTMLElement>>('sheet');
   private selectionMotion?: Animation;
@@ -98,6 +84,8 @@ export class HomePage {
   }
   search(event: Event): void {
     event.preventDefault();
-    this.searched.set(true);
+    void this.router.navigate(['/conhecimento'], {
+      queryParams: { q: this.query().trim() || null },
+    });
   }
 }

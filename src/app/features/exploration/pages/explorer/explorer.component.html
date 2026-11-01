@@ -1,0 +1,116 @@
+<section class="explorer" aria-labelledby="explorer-title">
+  <header class="explorer-heading">
+    <h1 id="explorer-title">{{ catalogue.title }}</h1>
+    <p>{{ catalogue.description }}</p>
+  </header>
+  <nav aria-label="Catálogos do acervo" class="catalogues">
+    @for (item of catalogues; track item.path) {
+      <a [routerLink]="'/' + item.path" routerLinkActive="selected" ariaCurrentWhenActive="page">{{
+        item.title
+      }}</a>
+    }
+  </nav>
+  @if (catalogue.path === 'ideologias') {
+    <aside class="readings" aria-label="Leituras de ideologias">
+      <span>Leituras contínuas</span><a routerLink="/marxismo">Marxismo</a
+      ><a routerLink="/liberalismo">Liberalismo</a>
+    </aside>
+  }
+  <div class="archive">
+    <form
+      #filters
+      role="search"
+      aria-label="Busca no acervo"
+      (submit)="$event.preventDefault(); apply(filters)"
+    >
+      <label for="explorer-query">Procurar no acervo</label>
+      <input
+        id="explorer-query"
+        type="search"
+        name="q"
+        [value]="params().get('q') ?? ''"
+        placeholder="Nome, conceito ou expressão"
+      />
+      <button type="submit">Pesquisar</button>
+      <label for="explorer-kind">Tipo de registro</label>
+      <select
+        id="explorer-kind"
+        name="tipo"
+        [value]="params().get('tipo') ?? ''"
+        (change)="apply(filters)"
+      >
+        <option value="">Todos os tipos</option>
+        @if (unknownKind()) {
+          <option [value]="params().get('tipo')">Tipo indisponível</option>
+        }
+        @for (facet of facets.kinds; track facet.value) {
+          <option [value]="facet.value">{{ facet.label }}</option>
+        }
+      </select>
+      <label for="explorer-state">Situação editorial</label>
+      <select
+        id="explorer-state"
+        name="estado"
+        [value]="params().get('estado') ?? ''"
+        (change)="apply(filters)"
+      >
+        <option value="">Todas as situações</option>
+        @if (unknownState()) {
+          <option [value]="params().get('estado')">Situação indisponível</option>
+        }
+        @for (facet of facets.states; track facet.value) {
+          <option [value]="facet.value">{{ facet.label }}</option>
+        }
+      </select>
+      <a [routerLink]="'/' + catalogue.path">Limpar busca e filtros</a>
+      <p>
+        Um registro cadastrado não equivale a conteúdo verificado. Confira as fontes e a situação
+        editorial.
+      </p>
+    </form>
+    <div>
+      <p class="result-count" role="status" aria-live="polite">
+        {{ results().length }} {{ results().length === 1 ? 'resultado' : 'resultados' }}
+      </p>
+      <section aria-label="Resultados da busca" class="results">
+        @for (entry of results(); track entry.id) {
+          <article [id]="entry.fragment ?? entry.id" class="result">
+            <p class="result-meta">{{ entry.kindLabel }} · {{ entry.stateLabel }}</p>
+            <h2>
+              @if (catalogue.path === 'fontes') {
+                {{ entry.title }}
+              } @else {
+                <a
+                  [routerLink]="entry.path"
+                  [fragment]="entry.fragment"
+                  [queryParams]="entry.kind === 'fonte' ? {} : { origem: origin() }"
+                  >{{ entry.title }}</a
+                >
+              }
+            </h2>
+            <p>{{ entry.summary }}</p>
+            @if (catalogue.path === 'fontes') {
+              @if (sourceUrl(entry.id); as url) {
+                <p><a [href]="url">Consultar fonte original</a></p>
+              }
+              @for (backlink of entry.backlinks; track backlink.id) {
+                <p class="source-use">
+                  <a [routerLink]="backlink.path">{{ backlink.title }}</a
+                  >: {{ backlink.label }}. {{ backlink.context }}
+                </p>
+              } @empty {
+                <p>Sem citação em afirmação registrada neste recorte.</p>
+              }
+            }
+          </article>
+        } @empty {
+          <div class="empty">
+            <h2>Nenhum registro encontrado</h2>
+            <p>Tente outro nome, use menos palavras ou remova os filtros.</p>
+            <a [routerLink]="'/' + catalogue.path">Ver o catálogo completo</a>
+          </div>
+        }
+      </section>
+    </div>
+  </div>
+</section>

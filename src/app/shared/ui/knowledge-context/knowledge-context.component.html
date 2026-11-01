@@ -24,6 +24,11 @@
     </figure>
   }
   <p class="context-summary">{{ record().summary }}</p>
+  @if (permanentPath(); as path) {
+    <p>
+      <a [href]="path">Abrir página permanente de {{ record().title }}</a>
+    </p>
+  }
   @for (paragraph of record().paragraphs; track $index) {
     <p>{{ paragraph }}</p>
   }

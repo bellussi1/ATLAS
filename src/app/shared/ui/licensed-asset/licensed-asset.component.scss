@@ -17,6 +17,7 @@ p {
 }
 a {
   color: var(--color-accent, var(--signal));
+  text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 a:focus-visible {

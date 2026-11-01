@@ -18,8 +18,8 @@ export const contentTypeBreadcrumbResolver: ResolveFn<string> = (route) =>
 export const editorialEntryTitleResolver: ResolveFn<string> = (route) => {
   const category = getEditorialType(route.paramMap.get('tipo'));
   return (
-    findEditorialEntry(category?.slug, route.paramMap.get('slug'))?.title ??
-    'Conteúdo não encontrado'
+    (findEditorialEntry(category?.slug, route.paramMap.get('slug'))?.title ??
+      'Conteúdo não encontrado') + ' — ATLAS'
   );
 };
 

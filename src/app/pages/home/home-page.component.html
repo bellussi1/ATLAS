@@ -20,19 +20,6 @@
       <button class="search-button" type="submit">Pesquisar</button>
     </form>
   </header>
-  @if (searched()) {
-    <section class="connections" aria-label="Resultados da busca" aria-live="polite">
-      <h2>Leituras encontradas</h2>
-      @for (entry of matches(); track entry.slug) {
-        <p>
-          <a appEditorialLink [routerLink]="'/' + entry.slug">{{ entry.title }}</a> ·
-          {{ entry.summary }}
-        </p>
-      } @empty {
-        <p>Nenhuma leitura encontrada. Procure por Marxismo ou Liberalismo.</p>
-      }
-    </section>
-  }
   <section class="connections" aria-labelledby="connections-title">
     <header class="section-heading">
       <h2 id="connections-title">Um atlas para explorar.</h2>

@@ -1,5 +1,7 @@
 # Enciclopédia explorável: diagnóstico e contrato inicial
 
+Atualização: as fases 1 e 2 foram entregues e o pedido de Knowledge Explorer autorizou a fase 3, ampliando as três rotas originais para catálogos e páginas permanentes. Contratos e validação em [Knowledge Explorer](../quality/KNOWLEDGE-EXPLORER.md). O diagnóstico e as restrições iniciais abaixo documentam a base histórica da migração.
+
 Data: 01/11/2026. Base ATLAS local e `origin/HEAD`: `5c5bfc707f0c425eab70a712260eb2f3b5ca95d9` (confirmado por `git ls-remote`). Este documento propõe a evolução; não autoriza publicar rotas além de Home, Marxismo e Liberalismo. A auditoria independente do outro repositório está em [12axes](../research/12axes-audit.md). Nenhuma memória externa foi usada.
 
 ## Diagnóstico verificável do ATLAS

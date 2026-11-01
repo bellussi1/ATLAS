@@ -1,0 +1,140 @@
+:host {
+  display: block;
+}
+.explorer {
+  max-width: var(--grid-max);
+  padding: 2rem var(--grid-gutter) 5rem;
+  margin: auto;
+}
+.explorer-heading {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: end;
+  gap: 2rem;
+  padding-block: 1rem 2rem;
+}
+h1 {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.explorer-heading p {
+  font: 1.25rem/1.5 var(--font-serif);
+  max-width: 38ch;
+  margin: 0;
+}
+.catalogues {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.5rem;
+  border-block: 2px solid var(--ink);
+  padding-block: 0.5rem;
+}
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.catalogues a {
+  padding: 0.65rem 0;
+  color: var(--ink);
+}
+.catalogues .selected {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration-thickness: 3px;
+}
+.archive {
+  display: grid;
+  grid-template-columns: minmax(13rem, 1fr) minmax(0, 3fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  margin-top: 2rem;
+}
+form {
+  align-self: start;
+  display: grid;
+  gap: 0.65rem;
+}
+input,
+select,
+button {
+  width: 100%;
+  min-height: 2.75rem;
+  font: inherit;
+  padding: 0.65rem;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 0;
+}
+button {
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+  margin-bottom: 0.75rem;
+}
+label {
+  font-weight: 600;
+}
+form p,
+.result-meta,
+.result-count {
+  color: var(--ink-muted);
+  font-size: 0.875rem;
+}
+form p {
+  line-height: 1.6;
+}
+.result-count {
+  margin: 0;
+  padding-bottom: 1rem;
+}
+.result {
+  border-top: 1px solid var(--rule-strong);
+  padding: 1.25rem 0 1.75rem;
+  scroll-margin-top: 2rem;
+  overflow-wrap: anywhere;
+}
+.result-meta {
+  margin: 0 0 0.5rem;
+}
+h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  margin: 0 0 0.65rem;
+  line-height: 1.2;
+}
+.result > p:not(.result-meta) {
+  font: 1.1rem/1.6 var(--font-serif);
+  max-width: 70ch;
+  margin-block: 0.65rem 0;
+}
+.readings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  background: var(--color-teal-paper);
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+.readings a {
+  color: var(--ink);
+}
+.empty {
+  border-top: 1px solid var(--rule-strong);
+  padding-block: 2rem;
+}
+@media (max-width: 700px) {
+  .explorer-heading,
+  .archive {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .explorer-heading {
+    gap: 1.25rem;
+  }
+  .archive {
+    gap: 1.5rem;
+  }
+}

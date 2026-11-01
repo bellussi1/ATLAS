@@ -1,6 +1,6 @@
 # Arquitetura do ATLAS
 
-Estado vigente em 01/11/2026. Angular 21, componentes standalone, Signals, Router, TypeScript strict, SCSS e Zod. Frontend estático com prerender; sem backend permanente ou banco de dados. A refatoração não altera URLs, conteúdo histórico ou direção visual.
+Estado vigente em 01/11/2026. Angular 21, componentes standalone, Signals, Router, TypeScript strict, SCSS e Zod. Frontend estático com prerender; sem backend permanente ou banco de dados. Knowledge Explorer amplia as URLs públicas sem alterar o conteúdo histórico.
 
 ## Mapa de responsabilidades
 
@@ -29,10 +29,12 @@ src/app/
       utils/                 segmentação pura do hipertexto
       routes/                rotas públicas com loadComponent
     exploration/components/  rede de evidências e visualizações históricas
+    exploration/pages/       catálogos, busca universal e registros permanentes
+    exploration/routes/      composição lazy das rotas de descoberta
     study/data/              trilha demonstrativa preservada
     study/utils/             progresso e tentativas de estudo
   layouts/app-shell/         navegação, metadados, breadcrumbs, transição e rodapé
-  pages/home/                busca local e mesa de pesquisa
+  pages/home/                entrada da busca universal e mesa de pesquisa
 src/content/                 snapshots versionados, sem dependências Angular
 public/                      mídia, fontes, marca, headers e redirects
 scripts/ingestion/wikimedia/ configuração, cliente remoto e normalização
@@ -61,7 +63,7 @@ Seletores e classes CSS existentes foram preservados para evitar regressões. Po
 
 ## Conteúdo e renderização
 
-A evolução proposta da enciclopédia, a matriz de responsabilidades e as fases estão em [Exploração contextual](EXPLORACAO-CONTEXTUAL.md). A primeira fatia preserva o armazenamento e as três rotas: a ficha mantém cada relação por ID, direção, evidências/localizadores e procedência, com retorno de foco, scroll e detalhes abertos. Ela reutiliza o hipertexto da feature nas duas tradições; catálogos públicos e índices antecipados continuam fases posteriores.
+A evolução proposta da enciclopédia, a matriz de responsabilidades e as fases estão em [Exploração contextual](EXPLORACAO-CONTEXTUAL.md). As fases 1–3 implementaram ingestão reproduzível, índices antecipados e catálogos públicos. A ficha mantém cada relação por ID, direção, evidências/localizadores e procedência, com retorno de foco, scroll e detalhes abertos. Páginas de registros e catálogos pertencem a exploration; contratos, rótulos editoriais e consultas puras ficam em core. `public-readings.ts` declara apenas metadados de destinos públicos, sem importar a implementação das features.
 
 O grafo canônico é composto por `src/content/knowledge/manifest.json` e coleções com hash. `scripts/content/build-content.mjs` valida referências globais e gera snapshots compactos, busca, adjacência reversa e layouts em `generated/content`, sem rede. `ContentRepository` carrega esses assets com HttpClient, cache de promessas, hashes e Zod; o resolver das leituras prepara o conjunto antes dos componentes. O SSR usa um provider de arquivos exclusivo do servidor e transfere os assets pela hidratação. Home não carrega o acervo, e não há import do grafo no bundle cliente. Detalhes e limites em [Dados e carregamento](DADOS-E-CARREGAMENTO.md).
 
@@ -73,9 +75,9 @@ O grafo canônico é composto por `src/content/knowledge/manifest.json` e coleç
 
 ## Rotas, SEO e compatibilidade
 
-Somente `/`, `/marxismo` e `/liberalismo` estão publicadas. `app.routes.ts` compõe Home, `ideologyRoutes` e fallback; componentes continuam lazy. O spread das definições de feature preserva a tabela plana, títulos, breadcrumbs e dados de rota, sem introduzir um segmento novo na URL. `app.routes.server.ts` mantém o prerender das rotas públicas conhecidas.
+As rotas públicas incluem `/`, `/marxismo`, `/liberalismo`, `/conhecimento`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug` e exemplos de metodologia em `/explorar/:tipo/:slug`. `app.routes.ts` compõe Home, `ideologyRoutes`, `explorationRoutes` e fallback; componentes continuam lazy. `app.routes.server.ts` enumera entidades e exemplos para o prerender. Os catálogos de pessoas, obras e ideologias apontam para a mesma página permanente de entidade, sem duplicar conteúdo ou canonical.
 
-As páginas antigas de verbetes, fontes, busca geral, estudo e institucionais não foram recriadas. Caminhos desconhecidos retornam à Home pelo Router; hospedagem deve usar o fallback estático/redirects existentes. Busca local da Home, fontes em contexto, query params, âncoras, restauração de foco e canonical relativo permanecem. Documentos de etapas anteriores que descrevam outras rotas são históricos; prevalecem este documento e [ESCOPO-ATUAL.md](../product/ESCOPO-ATUAL.md).
+Busca universal e páginas de registros/fontes pertencem à feature exploration. Estudo e páginas institucionais continuam fora do escopo. Caminhos desconhecidos retornam à Home pelo Router; o preview estático responde 404 para arquivos inexistentes. A busca compartilha filtros via `q`, `tipo` e `estado`; `origem` permite retornar ao catálogo anterior e é validado contra destinos locais permitidos. O canonical relativo exclui filtros. Fontes em contexto, âncoras e restauração de foco nas prévias permanecem. Documentos de etapas anteriores são históricos; prevalecem este documento e [ESCOPO-ATUAL.md](../product/ESCOPO-ATUAL.md).
 
 ## Como criar uma feature
 
@@ -106,4 +108,4 @@ Grafo: `src/content/knowledge/manifest.json` e `collections`. Dossiês: `src/con
 
 ## Validação da migração
 
-Comandos: typecheck, lint (inclui governança), npm test, build, test:e2e e check:links. A integridade dos arquivos de conteúdo e public é comparada por hash com o estado inicial; E2E cobre as três páginas, busca local, fontes, contexto, teclado/toque e responsividade. Isso não equivale a uma auditoria WCAG integral.
+Comandos: typecheck, lint (inclui governança), npm test, build, test:content, test:e2e e check:links. E2E cobre as leituras, catálogos, busca universal, fontes, páginas permanentes, contexto, teclado/toque e responsividade. Isso não equivale a uma auditoria WCAG integral. Detalhes em [Knowledge Explorer](../quality/KNOWLEDGE-EXPLORER.md).

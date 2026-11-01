@@ -10,11 +10,19 @@ import marxismo from '../../../../content/ideologies/marxismo/page.json';
 import { ideologyPageSchema, validateIdeologyDossier } from './ideology-page.schema';
 
 describe('Public pages', () => {
-  it('exposes only home, Marxism and Liberalism', () => {
+  it('keeps readings and exposes the knowledge explorer with permanent records', () => {
     expect(routes.filter((r) => r.loadComponent).map((r) => r.path)).toEqual([
       '',
       'marxismo',
       'liberalismo',
+      'conhecimento',
+      'entidades',
+      'ideologias',
+      'pessoas',
+      'obras',
+      'fontes',
+      'verbete/:slug',
+      'explorar/:tipo/:slug',
     ]);
     expect(routes.find((r) => r.path === '**')?.redirectTo).toBe('');
   });

@@ -124,7 +124,10 @@ export class AppComponent {
   }
 
   private updatePageMetadata(path: string): void {
-    const pageTitle = this.title.getTitle() || 'ATLAS — compreender o mundo';
+    let route = this.router.routerState.snapshot.root;
+    while (route.firstChild) route = route.firstChild;
+    // NavigationEnd precedes the Router's title update; use the resolved snapshot.
+    const pageTitle = route.title || this.title.getTitle() || 'ATLAS — compreender o mundo';
     const routeDescription = this.activeRouteDescription();
     const description =
       path === '/marxismo'
@@ -132,7 +135,7 @@ export class AppComponent {
           'Conceitos, pensadores, cronologia, divergências e fontes do marxismo.'
         : path === '/liberalismo'
           ? 'Explore o Atlas do Liberalismo: pessoas, ideias, acontecimentos e documentos com fontes.'
-          : 'Explore Marxismo e Liberalismo no ATLAS, com contexto e fontes identificadas.';
+          : routeDescription || 'Explore o acervo do ATLAS, com contexto e fontes identificadas.';
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });

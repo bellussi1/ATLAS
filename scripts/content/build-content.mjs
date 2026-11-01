@@ -39,7 +39,7 @@ export async function buildContent({
 } = {}) {
   const graph = validateSourceGraph(input ?? (await readSourceGraph()));
   const entities = graph.atlases.flatMap((atlas) => atlas.entities);
-  const search = searchIndexSchema.parse(buildDiscoveryIndex(graph));
+  const readingTexts = {};
   const adjacency = adjacencySchema.parse(
     Object.fromEntries(
       entities.map((entity) => [entity.id, queryKnowledgeRelations(graph, entity.id)]),
@@ -65,6 +65,13 @@ export async function buildContent({
       await load(recipe.supplementUrl),
       graph,
     );
+    const text = (value) =>
+      typeof value === 'string'
+        ? value
+        : value && typeof value === 'object'
+          ? Object.values(value).map(text).join(' ')
+          : '';
+    readingTexts[slug] = text(dossier.page);
     const geometry = { graphs: {}, timelines: {} };
     for (const chapter of dossier.page.chapters) {
       chapter.blocks.forEach((block, index) => {
@@ -92,6 +99,7 @@ export async function buildContent({
     layouts.editorial[slug] = geometry;
   }
   layoutsSchema.parse(layouts);
+  const search = searchIndexSchema.parse(buildDiscoveryIndex(graph, readingTexts));
   const assets = [];
   const asset = async (name, value) => {
     const bytes = `${JSON.stringify(value)}\n`;

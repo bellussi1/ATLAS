@@ -1,6 +1,6 @@
 # Documentação do ATLAS
 
-O escopo público atual contém `/`, `/marxismo` e `/liberalismo`. Os documentos abaixo reúnem as referências mantidas do projeto; registros de verificações anteriores não substituem a execução dos comandos no estado atual.
+O escopo público inclui Home, Marxismo, Liberalismo e Knowledge Explorer: busca universal, catálogos, fontes e páginas permanentes. Os documentos abaixo reúnem as referências mantidas do projeto; registros de verificações anteriores não substituem a execução dos comandos no estado atual.
 
 ## Produto
 
@@ -24,6 +24,7 @@ O escopo público atual contém `/`, `/marxismo` e `/liberalismo`. Os documentos
 - [Validação da primeira fatia de exploração](quality/EXPLORACAO-CONTEXTUAL.md)
 - [Validação da ingestão reproduzível](quality/INGESTAO-REPRODUZIVEL.md)
 - [Validação de dados e carregamento](quality/DADOS-E-CARREGAMENTO.md)
+- [Knowledge Explorer: contratos e validação](quality/KNOWLEDGE-EXPLORER.md)
 
 ## Referências
 

@@ -1,4 +1,14 @@
-# Escopo atual: três páginas
+# Escopo atual: Knowledge Explorer
+
+O pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos e páginas permanentes. As leituras `/marxismo` e `/liberalismo` e a mesa da Home continuam disponíveis.
+
+Rotas novas: `/conhecimento`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug` e exemplos metodológicos em `/explorar/:tipo/:slug`. São 65 rotas prerenderizadas, incluindo 48 entidades e oito exemplos identificados como metodologia. `/fontes#source-<id>` mantém o destino das referências. Não há coleta adicional nem alegação de nova revisão humana.
+
+Busca e filtros usam `q`, `tipo` e `estado`; a página de detalhe permite voltar ao recorte anterior. O permalink e o canonical não dependem desses parâmetros. IDs e slugs existentes são preservados. Links desconhecidos tratados pelo Router mantêm o retorno à home; verbetes desconhecidos mostram estado de recuperação na SPA e não são inventados no prerender.
+
+Verificações desta entrega e limites: [Knowledge Explorer](../quality/KNOWLEDGE-EXPLORER.md).
+
+## Histórico: redução temporária a três páginas
 
 Em 01/11/2026, a pedido do usuário, a aplicação foi limitada temporariamente a:
 

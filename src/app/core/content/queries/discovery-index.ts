@@ -1,5 +1,7 @@
 import { getEditorialType } from '@core/content/editorial/content-types';
 import { editorialEntries, getEntryPath } from '@core/content/editorial/editorial-entries';
+import { editorialStatusLabels as statusLabels } from '@core/content/editorial/editorial-status';
+import { publicReadings } from '@core/content/editorial/public-readings';
 import type { Atlas, Claim, KnowledgeGraph, Source } from '@core/content/models/content-schema';
 
 export interface DiscoveryBacklink {
@@ -36,7 +38,7 @@ export interface DiscoveryIndexFilter {
 const kindLabels: Record<string, string> = {
   pessoa: 'Pessoa',
   person: 'Pessoa',
-  ideology: 'Ideia',
+  ideology: 'Ideologia',
   evento: 'Evento',
   event: 'Evento',
   work: 'Obra',
@@ -53,18 +55,6 @@ const kindLabels: Record<string, string> = {
   article: 'Artigo',
 };
 
-const statusLabels: Record<string, string> = {
-  draft: 'Rascunho',
-  pending: 'Revisão editorial pendente',
-  verified: 'Verificada após revisão humana',
-  contested: 'Contestada',
-  'needs-update': 'Precisa de atualização',
-  registered: 'Registro cadastrado',
-  exemplar: 'Exemplar de metodologia',
-  previsto: 'Formato previsto',
-  mixed: 'Estados editoriais variados',
-};
-
 const normalize = (value: string): string =>
   value
     .normalize('NFD')
@@ -78,13 +68,13 @@ function kindFacet(kind: string): string {
   );
 }
 
-function entityState(atlas: Atlas, entityId: string): string {
+function entityState(atlas: Atlas, entityId: string, fallback = 'registered'): string {
   const states = new Set(
     atlas.claims
       .filter((claim) => claim.entityId === entityId)
       .map((claim) => claim.editorialStatus),
   );
-  if (!states.size) return 'registered';
+  if (!states.size) return fallback;
   return states.size === 1 ? [...states][0] : 'mixed';
 }
 
@@ -97,7 +87,10 @@ function searchContent(values: unknown[]): string {
   );
 }
 
-export function buildDiscoveryIndex(graph: KnowledgeGraph): DiscoveryIndexEntry[] {
+export function buildDiscoveryIndex(
+  graph: KnowledgeGraph,
+  readingTexts: Record<string, string> = {},
+): DiscoveryIndexEntry[] {
   const entries: DiscoveryIndexEntry[] = [];
   const entityEntries = new Map<string, DiscoveryIndexEntry>();
   const sourceEntries = new Map<string, DiscoveryIndexEntry>();
@@ -120,7 +113,7 @@ export function buildDiscoveryIndex(graph: KnowledgeGraph): DiscoveryIndexEntry[
   const evidenceById = new Map(evidences.map((evidence) => [evidence.id, evidence]));
 
   for (const { atlas, entity } of allEntities) {
-    const state = entityState(atlas, entity.id);
+    const state = entityState(atlas, entity.id, entity.editorialStatus);
     const entry: DiscoveryIndexEntry = {
       id: entity.id,
       title: entity.title,
@@ -227,6 +220,21 @@ export function buildDiscoveryIndex(graph: KnowledgeGraph): DiscoveryIndexEntry[
     });
   }
 
+  for (const reading of publicReadings)
+    entries.push({
+      id: 'reading-' + reading.slug,
+      title: reading.title,
+      summary: reading.summary,
+      aliases: [],
+      kind: 'leitura',
+      kindLabel: 'Leitura contínua',
+      state: 'pending',
+      stateLabel: statusLabels['pending'],
+      path: reading.path,
+      context: reading.summary,
+      backlinks: [],
+      searchText: searchContent([reading.title, reading.summary, readingTexts[reading.slug] ?? '']),
+    });
   const errors = validateDiscoveryDestinations(entries, graph);
   if (errors.length)
     throw new Error(`Índice de descoberta contém destinos inválidos: ${errors.join('; ')}`);
@@ -292,7 +300,10 @@ export function validateDiscoveryDestinations(
     if (path.startsWith('/verbete/')) return entityPaths.has(path) && !fragment;
     if (path === '/fontes')
       return !fragment || (fragment.startsWith('source-') && sourceIds.has(fragment.slice(7)));
-    return editorialPaths.has(path) && !fragment;
+    return (
+      (editorialPaths.has(path) || publicReadings.some((reading) => reading.path === path)) &&
+      !fragment
+    );
   };
   for (const entry of index) {
     if (!hasDestination(entry.path, entry.fragment))
