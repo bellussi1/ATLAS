@@ -11,11 +11,28 @@
     }
   </nav>
   @if (entity(); as entity) {
+    <app-content-language [requested]="query().get('idioma')" (changed)="setLanguage($event)" />
+    @if (presentation()?.fallback) {
+      <p class="language-notice" role="status">
+        Tradução revisada indisponível para o idioma solicitado. Exibindo o texto original ({{
+          languages[presentation()?.locale ?? 'und']
+        }}).
+      </p>
+    }
+    @if (presentation()?.translation?.review; as review) {
+      @if (review.status === 'approved') {
+        <p>
+          Revisão da tradução ({{ review.method === 'assistant' ? 'assistida por IA' : 'humana' }}):
+          {{ review.reviewer }} · {{ review.reviewedAt }} · {{ review.reference }}.
+          {{ review.note }}
+        </p>
+      }
+    }
     <header>
       <p class="record-meta">{{ entry()?.kindLabel }} · {{ entry()?.stateLabel }}</p>
-      <h1>{{ entity.title }}</h1>
-      <p class="lead">{{ entity.summary }}</p>
-      <p class="context">{{ entity.context }}</p>
+      <h1 [attr.lang]="presentation()?.locale">{{ entity.title }}</h1>
+      <p class="lead" [attr.lang]="presentation()?.locale">{{ entity.summary }}</p>
+      <p class="context" [attr.lang]="presentation()?.locale">{{ entity.context }}</p>
       <a [routerLink]="entry()?.path">Link permanente</a>
       @if (dossier(); as path) {
         <a class="dossier-link" [routerLink]="path">Abrir leitura contínua de {{ entity.title }}</a>
@@ -23,15 +40,18 @@
     </header>
     <div class="record-body">
       <div class="reading">
+        @if (entity.kind === 'country' || entity.kind === 'regime') {
+          <app-entity-profile [entity]="originalEntity()!" [graph]="repository.knowledgeGraph" />
+        }
         @for (section of entity.sections; track $index) {
-          <section>
+          <section [attr.lang]="presentation()?.locale">
             <h2>{{ section.heading }}</h2>
             @for (paragraph of section.paragraphs; track $index) {
               <p>{{ paragraph }}</p>
             }
           </section>
         }
-        <section aria-labelledby="claims-title">
+        <section aria-labelledby="claims-title" [attr.lang]="originalEntity()?.textLocale ?? 'und'">
           <h2 id="claims-title">Afirmações e evidências</h2>
           @for (item of claims(); track item.claim.id) {
             <app-claim-references [claim]="item.claim" [atlas]="item.atlas" />
@@ -51,7 +71,11 @@
           @for (connection of context()?.connections; track connection.id) {
             <article class="connection">
               <h3>
-                <a [routerLink]="pathFor(connection.entityId)">{{ connection.label }}</a>
+                <a
+                  [routerLink]="pathFor(connection.entityId)"
+                  [queryParams]="{ idioma: query().get('idioma') }"
+                  >{{ connection.label }}</a
+                >
               </h3>
               @if (connection.relation; as relation) {
                 <p>

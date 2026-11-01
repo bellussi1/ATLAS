@@ -4,6 +4,8 @@ Atualização: as fases 1 e 2 foram entregues e o pedido de Knowledge Explorer a
 
 Atualização posterior: a fase 4 acrescenta `/rede` e `/comparar`, layouts compilados por coleção e globais, filtros comuns e timeline compartilhada. Comparações históricas/conceituais preservam fontes, estados e limites; não são sínteses ou escores automáticos. Contratos e evidências em [Rede e comparadores](../quality/REDE-E-COMPARADORES.md). A fase 5 continua pendente.
 
+Atualização da fase 5: contratos específicos de país/regime, sete catálogos adicionais, oito registros constitucionais e internacionalização inicial do conteúdo pt-BR/en estão implementados. Quatro traduções têm revisão assistida por IA, explicitamente distinta de revisão humana. A cobertura editorial mundial e a tradução integral da interface/dossiês permanecem trabalho contínuo. [Entrega e limites](../quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
+
 Data: 01/11/2026. Base ATLAS local e `origin/HEAD`: `5c5bfc707f0c425eab70a712260eb2f3b5ca95d9` (confirmado por `git ls-remote`). Este documento propõe a evolução; não autoriza publicar rotas além de Home, Marxismo e Liberalismo. A auditoria independente do outro repositório está em [12axes](../research/12axes-audit.md). Nenhuma memória externa foi usada.
 
 ## Diagnóstico verificável do ATLAS

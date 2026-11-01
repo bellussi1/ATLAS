@@ -28,15 +28,18 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 
 - `/conhecimento` — busca universal com filtros e consulta compartilhável por URL.
 - `/entidades`, `/ideologias`, `/pessoas`, `/obras` — catálogos do grafo.
+- `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` — recortes editoriais adicionais do mesmo grafo.
 - `/verbete/:slug` — página permanente de cada entidade, com contexto, fontes e conexões.
 - `/fontes` — referências cadastradas, com âncoras permanentes e usos no acervo.
 - `/explorar/:tipo/:slug` — exemplos de metodologia, identificados como tais.
 - `/rede` — rede com geometria de build, filtros e timeline compartilhada.
 - `/comparar` — comparação histórica ou conceitual de dois registros, com fontes e limites.
 
-O Knowledge Explorer amplia o escopo temporário anterior de três páginas, a pedido do usuário. Os 48 registros existentes e oito exemplos de metodologia têm páginas prerenderizadas; não houve nova coleta histórica. Caminhos desconhecidos no Angular voltam à home; o preview estático retorna 404 para arquivos inexistentes. Veja [contratos e validação](docs/quality/KNOWLEDGE-EXPLORER.md).
+O Knowledge Explorer ampliou o escopo temporário anterior de três páginas. Há 56 entidades e oito exemplos metodológicos, com 82 rotas prerenderizadas. A etapa editorial acrescentou oito registros de contexto constitucional de Brasil e Portugal, com fontes institucionais e revisão historiográfica pendente. Caminhos desconhecidos no Angular voltam à home; o preview estático retorna 404 para arquivos inexistentes. Veja [catálogos](docs/quality/KNOWLEDGE-EXPLORER.md) e [ampliação editorial](docs/quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
 
 A rede e os comparadores usam o mesmo recorte por coleção, tipo, vínculo e período, compartilhável por URL. Posições/curvas e a escala temporal são compiladas antes da renderização; filtros não recalculam a geometria. A comparação justapõe o conteúdo registrado, sem gerar equivalência ou influência automaticamente. Veja [método e verificações](docs/quality/REDE-E-COMPARADORES.md).
+
+O seletor `idioma=pt-BR|en` nos catálogos e registros usa quatro traduções de narrativas com revisão assistida por IA explicitamente identificada; não houve revisão humana. Textos sem tradução preservam o original, com aviso de fallback. A interface, as afirmações e os perfis permanecem em português ou na redação de origem. O build verifica revisão/digest e exclui traduções pendentes. [Registro da revisão](docs/editorial/TRANSLATION-REVIEW-2026-11-01.md).
 
 ## Comandos
 
@@ -50,6 +53,7 @@ A rede e os comparadores usam o mesmo recorte por coleção, tipo, vínculo e pe
 | `npm run lint` | ESLint Angular, limites arquiteturais, Biome e formatação |
 | `npm run typecheck` | Checagem TypeScript da aplicação e dos testes |
 | `npm run content:build` | Geração offline de manifesto, shards, busca, adjacência e layouts |
+| `npm run editorial:apply -- <edição.json>` | Validação e aplicação offline de uma coleção editorial nova, preservando snapshots anteriores |
 | `npm run test:content` | Equivalência, determinismo e integridade dos artefatos |
 
 O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca da Home abre `/conhecimento`: consulta local ao índice global de entidades, fontes, exemplos metodológicos e leituras, gerado no build, sem API remota de pesquisa.

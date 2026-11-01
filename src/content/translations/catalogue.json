@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "defaultLocale": "pt-BR",
+  "locales": ["pt-BR", "en"],
+  "entries": [
+    {
+      "entityId": "country-brazil",
+      "locale": "en",
+      "sourceLocale": "pt-BR",
+      "sourceRevision": 1,
+      "sourceDigest": "5aeede76900b5daa2be0cfee52fa8f6a571c2fe5eded2864b91bc9990bf2b79d",
+      "preparedBy": "Codex (IA)",
+      "preparedAt": "2026-11-01",
+      "text": {
+        "title": "Brazil",
+        "summary": "Brazil's 1988 Constitution identifies the Brazilian state as the Federative Republic of Brazil.",
+        "context": "This entry uses a constitutional frame of reference. It does not assign a birth date to the country or represent all its historical territorial configurations.",
+        "sections": [
+          {
+            "heading": "Scope and limitations",
+            "paragraphs": [
+              "This entry uses a constitutional frame of reference. It does not assign a birth date to the country or represent all its historical territorial configurations."
+            ]
+          }
+        ]
+      },
+      "review": {
+        "status": "approved",
+        "method": "assistant",
+        "reviewer": "Codex (IA)",
+        "reviewedAt": "2026-11-01",
+        "reference": "ATLAS-TR-2026-11-01-EN-01",
+        "note": "Revisão linguística assistida por IA: fidelidade ao texto de origem, nomes, datas e ressalvas conferidos. Sem revisão humana registrada. Não valida as afirmações históricas nem constitui tradução jurídica oficial."
+      }
+    },
+    {
+      "entityId": "country-portugal",
+      "locale": "en",
+      "sourceLocale": "pt-BR",
+      "sourceRevision": 1,
+      "sourceDigest": "38c0036d7806ec170900211d0d01fcbddb34cb040da13c40532d6865b366033b",
+      "preparedBy": "Codex (IA)",
+      "preparedAt": "2026-11-01",
+      "text": {
+        "title": "Portugal",
+        "summary": "Article 1 of the Portuguese Constitution presents Portugal as a sovereign republic.",
+        "context": "Identity is presented according to the constitutional source consulted. This entry does not describe borders in every period or attribute a single political configuration to Portugal throughout its history.",
+        "sections": [
+          {
+            "heading": "Scope and limitations",
+            "paragraphs": [
+              "Identity is presented according to the constitutional source consulted. This entry does not describe borders in every period or attribute a single political configuration to Portugal throughout its history."
+            ]
+          }
+        ]
+      },
+      "review": {
+        "status": "approved",
+        "method": "assistant",
+        "reviewer": "Codex (IA)",
+        "reviewedAt": "2026-11-01",
+        "reference": "ATLAS-TR-2026-11-01-EN-01",
+        "note": "Revisão linguística assistida por IA: fidelidade ao texto de origem, nomes, datas e ressalvas conferidos. Sem revisão humana registrada. Não valida as afirmações históricas nem constitui tradução jurídica oficial."
+      }
+    },
+    {
+      "entityId": "regime-brazil-constitution-1988",
+      "locale": "en",
+      "sourceLocale": "pt-BR",
+      "sourceRevision": 1,
+      "sourceDigest": "676351d807f17c9aac52d6026c3a9d6b522f7561220736002f0ce0c37ff36c6e",
+      "preparedBy": "Codex (IA)",
+      "preparedAt": "2026-11-01",
+      "text": {
+        "title": "Brazil: the 1988 constitutional framework",
+        "summary": "Article 1 of Brazil's 1988 Constitution adopts the self-description of a democratic state under the rule of law.",
+        "context": "The label is attributed to the original constitutional text. It is not an assessment of political functioning, a comparative typology, or evidence of the uniform continuity of democratic practices.",
+        "sections": [
+          {
+            "heading": "Scope and limitations",
+            "paragraphs": [
+              "The label is attributed to the original constitutional text. It is not an assessment of political functioning, a comparative typology, or evidence of the uniform continuity of democratic practices."
+            ]
+          }
+        ]
+      },
+      "review": {
+        "status": "approved",
+        "method": "assistant",
+        "reviewer": "Codex (IA)",
+        "reviewedAt": "2026-11-01",
+        "reference": "ATLAS-TR-2026-11-01-EN-01",
+        "note": "Revisão linguística assistida por IA: fidelidade ao texto de origem, nomes, datas e ressalvas conferidos. Sem revisão humana registrada. Não valida as afirmações históricas nem constitui tradução jurídica oficial."
+      }
+    },
+    {
+      "entityId": "regime-portugal-constitution-1976",
+      "locale": "en",
+      "sourceLocale": "pt-BR",
+      "sourceRevision": 1,
+      "sourceDigest": "da8dba4e9f4e339827ffacbd87b7a03b9879386e218e6e49f36034704f5f9298",
+      "preparedBy": "Codex (IA)",
+      "preparedAt": "2026-11-01",
+      "text": {
+        "title": "Portugal: the 1976 constitutional framework",
+        "summary": "Article 2 of the consolidated Portuguese constitutional text adopts the self-description of a democratic state under the rule of law.",
+        "context": "The reference constitution is that of 1976; the formulation cited belongs to the consolidated text consulted. The same wording or political practices are not assumed to have applied throughout the entire period.",
+        "sections": [
+          {
+            "heading": "Scope and limitations",
+            "paragraphs": [
+              "The reference constitution is that of 1976; the formulation cited belongs to the consolidated text consulted. The same wording or political practices are not assumed to have applied throughout the entire period."
+            ]
+          }
+        ]
+      },
+      "review": {
+        "status": "approved",
+        "method": "assistant",
+        "reviewer": "Codex (IA)",
+        "reviewedAt": "2026-11-01",
+        "reference": "ATLAS-TR-2026-11-01-EN-01",
+        "note": "Revisão linguística assistida por IA: fidelidade ao texto de origem, nomes, datas e ressalvas conferidos. Sem revisão humana registrada. Não valida as afirmações históricas nem constitui tradução jurídica oficial."
+      }
+    }
+  ]
+}

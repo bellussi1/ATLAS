@@ -65,7 +65,10 @@ test('build is deterministic offline and emits search, directed adjacency and st
     y: 286,
   });
   assert.ok(layouts.editorial.marxismo.graphs['correntes-1'].nodes.length > 0);
-  assert.equal(Object.keys(layouts.exploration.networks.all.nodes).length, 48);
+  assert.equal(
+    Object.keys(layouts.exploration.networks.all.nodes).length,
+    (await readSourceGraph()).atlases.flatMap((a) => a.entities).length,
+  );
   assert.ok(layouts.exploration.networks.all.edges['relation-marx-capital']);
   assert.ok(Object.keys(layouts.exploration.networks).length > 1);
   const manifesto = layouts.exploration.timeline.markers['work-communist-manifesto'];

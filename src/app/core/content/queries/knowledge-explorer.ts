@@ -31,6 +31,41 @@ export const explorerCatalogues = [
     title: 'Fontes',
     description: 'Referências cadastradas e os registros que as citam.',
   },
+  {
+    path: 'paises',
+    title: 'Países',
+    description: 'Identidades estatais e recortes territoriais com fontes e limites explícitos.',
+  },
+  {
+    path: 'regimes',
+    title: 'Regimes',
+    description: 'Recortes temporais e classificações atribuídas, sem confundir país e governo.',
+  },
+  {
+    path: 'partidos',
+    title: 'Partidos',
+    description: 'Registros de partidos, com contexto institucional e fontes identificadas.',
+  },
+  {
+    path: 'instituicoes',
+    title: 'Instituições',
+    description: 'Instituições em seus contextos históricos e documentais.',
+  },
+  {
+    path: 'acontecimentos',
+    title: 'Acontecimentos',
+    description: 'Acontecimentos datados e suas fontes, sem causalidade automática.',
+  },
+  {
+    path: 'conceitos',
+    title: 'Conceitos',
+    description: 'Formulações e questões conceituais registradas no acervo.',
+  },
+  {
+    path: 'lugares',
+    title: 'Lugares',
+    description: 'Lugares e espaços documentados, distintos dos registros de países.',
+  },
 ] as const;
 export type ExplorerCatalogue = (typeof explorerCatalogues)[number]['path'];
 export const normalizeExplorerQuery = (value: string) =>
@@ -45,10 +80,19 @@ export function explorerEntries(
 ): DiscoveryIndexEntry[] {
   const catalogue = filter.catalogue ?? 'conhecimento';
   const kind = (
-    { pessoas: 'pessoa', obras: 'work', ideologias: 'ideology', fontes: 'fonte' } as Record<
-      string,
-      string
-    >
+    {
+      pessoas: 'pessoa',
+      obras: 'work',
+      ideologias: 'ideology',
+      fontes: 'fonte',
+      paises: 'country',
+      regimes: 'regime',
+      partidos: 'party',
+      instituicoes: 'institution',
+      acontecimentos: 'evento',
+      conceitos: 'concept',
+      lugares: 'place',
+    } as Record<string, string>
   )[catalogue];
   const terms = normalizeExplorerQuery(filter.query ?? '')
     .trim()
@@ -85,7 +129,7 @@ export function safeExplorerReturn(value: string | null): string | null {
       url.origin !== 'https://atlas.invalid' ||
       url.hash ||
       !explorerCatalogues.some((c) => '/' + c.path === url.pathname) ||
-      [...url.searchParams.keys()].some((k) => !['q', 'tipo', 'estado'].includes(k))
+      [...url.searchParams.keys()].some((k) => !['q', 'tipo', 'estado', 'idioma'].includes(k))
     )
       return null;
     return url.pathname + url.search;

@@ -48,7 +48,7 @@ describe('ContentRepository generated assets', () => {
     ]);
     expect(first).toEqual(methodologyKnowledgeGraph);
     expect(first).toBe(second);
-    expect(reads).toHaveLength(9);
+    expect(reads).toHaveLength(contentManifestFixture.collections.length + 4);
     expect(new Set(reads).size).toBe(reads.length);
     expect(repository.discoveryIndex.some((entry) => entry.id === 'person-karl-marx')).toBe(true);
   });

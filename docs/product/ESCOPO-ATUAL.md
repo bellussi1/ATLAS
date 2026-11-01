@@ -1,14 +1,16 @@
-# Escopo atual: Knowledge Explorer, rede e comparadores
+# Escopo atual: exploração, ampliação editorial e idiomas
 
 O pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos e páginas permanentes. As leituras `/marxismo` e `/liberalismo` e a mesa da Home continuam disponíveis.
 
-Rotas novas: `/conhecimento`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/rede`, `/comparar` e exemplos metodológicos em `/explorar/:tipo/:slug`. São 67 rotas prerenderizadas, incluindo 48 entidades e oito exemplos identificados como metodologia. `/fontes#source-<id>` mantém o destino das referências. Não há coleta adicional nem alegação de nova revisão humana.
+Rotas incluem `/conhecimento`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/rede`, `/comparar`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` e exemplos metodológicos em `/explorar/:tipo/:slug`. São 82 rotas prerenderizadas, incluindo 56 entidades e oito exemplos identificados como metodologia. `/fontes#source-<id>` mantém o destino das referências.
 
 Busca e filtros usam `q`, `tipo` e `estado`; a página de detalhe permite voltar ao recorte anterior. O permalink e o canonical não dependem desses parâmetros. IDs e slugs existentes são preservados. Links desconhecidos tratados pelo Router mantêm o retorno à home; verbetes desconhecidos mostram estado de recuperação na SPA e não são inventados no prerender.
 
 Verificações desta entrega e limites: [Knowledge Explorer](../quality/KNOWLEDGE-EXPLORER.md).
 
 A etapa de rede/comparadores acrescenta geometria antecipada por coleção, filtros comuns (`colecao`, `tipo`, `relacao`, `de`, `ate`, `semData`) e timeline reutilizada na rede e na comparação histórica. `/comparar` preserva dois IDs (`esquerda`, `direita`) e `modo=historica|conceitual`; `/rede` preserva a seleção em `no`. Fontes, direção, incerteza e lacunas continuam explícitas; a interface não calcula similaridade nem inventa causalidade. [Método e validação](../quality/REDE-E-COMPARADORES.md).
+
+A ampliação editorial adiciona dois países, dois recortes de regime, um partido, uma instituição, um acontecimento e uma obra com fontes institucionais. Tipos `country` e `regime` têm contratos próprios, sem reclassificar automaticamente lugares, governos ou formações políticas antigas. Quatro narrativas têm tradução para inglês revisada pelo assistente, identificada como IA e sem revisão humana; o estado historiográfico permanece pendente. Seletor de idioma e fallback aplicam-se aos catálogos/registros, não à interface inteira ou aos dossiês. [Contratos e validação](../quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
 
 ## Histórico: redução temporária a três páginas
 

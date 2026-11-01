@@ -55,6 +55,7 @@ const entityBaseSchema = z.object({
   revision: z.number().int().positive(),
   sections: z.array(editorialSectionSchema).min(1),
   editorialStatus: editorialStatusSchema.optional(),
+  textLocale: z.enum(['pt-BR', 'pt-PT', 'en', 'und', 'mul']).optional(),
   externalIds: z
     .object({ wikidata: z.string().regex(/^Q\d+$/), wikipedia: z.string().trim().min(1) })
     .optional(),
@@ -87,6 +88,37 @@ export const institutionSchema = entityBaseSchema.extend({ kind: z.literal('inst
 export const governmentSchema = entityBaseSchema.extend({ kind: z.literal('government') });
 export const policySchema = entityBaseSchema.extend({ kind: z.literal('policy') });
 export const articleSchema = entityBaseSchema.extend({ kind: z.literal('article') });
+export const countrySchema = entityBaseSchema.extend({
+  kind: z.literal('country'),
+  countryProfile: z.object({
+    officialName: z.string().trim().min(1),
+    territorialScope: z.string().trim().min(1),
+    identityNote: z.string().trim().min(1),
+    evidenceIds: z.array(identifier).min(1),
+  }),
+});
+export const regimeSchema = entityBaseSchema.extend({
+  kind: z.literal('regime'),
+  temporalExtent: temporalExtentSchema.refine(
+    (e) => e.startYear !== null,
+    'Regime exige um início temporal registrado.',
+  ),
+  regimeProfile: z.object({
+    countryIds: z.array(identifier).min(1),
+    periodNote: z.string().trim().min(1),
+    classifications: z
+      .array(
+        z.object({
+          label: z.string().trim().min(1),
+          attribution: z.string().trim().min(1),
+          edition: z.string().trim().min(1),
+          limits: z.string().trim().min(1),
+          evidenceIds: z.array(identifier).min(1),
+        }),
+      )
+      .min(1),
+  }),
+});
 
 export const entitySchema = z.discriminatedUnion('kind', [
   personSchema,
@@ -101,6 +133,8 @@ export const entitySchema = z.discriminatedUnion('kind', [
   governmentSchema,
   policySchema,
   articleSchema,
+  countrySchema,
+  regimeSchema,
 ]);
 
 export const sourceSchema = z.object({
@@ -500,6 +534,47 @@ export const knowledgeGraphSchema = z
         path: ['atlases'],
       });
     graph.atlases.forEach((atlas, atlasIndex) => {
+      atlas.entities.forEach((entity, index) => {
+        const path = ['atlases', atlasIndex, 'entities', index];
+        const validateProfileEvidence = (references: string[]) => {
+          if (
+            new Set(references).size !== references.length ||
+            references.some((id) => !evidenceIds.has(id))
+          )
+            context.addIssue({
+              code: 'custom',
+              message: 'Evidências do perfil devem existir e não se repetir.',
+              path,
+            });
+        };
+        if (entity.kind === 'country') validateProfileEvidence(entity.countryProfile.evidenceIds);
+        if (entity.kind === 'regime') {
+          if (!entity.temporalExtent || entity.temporalExtent.startYear === null)
+            context.addIssue({
+              code: 'custom',
+              message: 'Regime exige início temporal registrado e nota de recorte.',
+              path,
+            });
+          const countryIds = entity.regimeProfile.countryIds;
+          const countries = new Set(
+            all((a) => a.entities)
+              .filter((e) => e.kind === 'country')
+              .map((e) => e.id),
+          );
+          if (
+            new Set(countryIds).size !== countryIds.length ||
+            countryIds.some((id) => !countries.has(id))
+          )
+            context.addIssue({
+              code: 'custom',
+              message: 'Regime deve referenciar países existentes, sem duplicatas.',
+              path,
+            });
+          entity.regimeProfile.classifications.forEach((c) => {
+            validateProfileEvidence(c.evidenceIds);
+          });
+        }
+      });
       atlas.evidences.forEach((item, index) => {
         if (!sourceIds.has(item.sourceId))
           context.addIssue({
@@ -575,6 +650,8 @@ export type Institution = z.infer<typeof institutionSchema>;
 export type Government = z.infer<typeof governmentSchema>;
 export type Policy = z.infer<typeof policySchema>;
 export type Article = z.infer<typeof articleSchema>;
+export type Country = z.infer<typeof countrySchema>;
+export type Regime = z.infer<typeof regimeSchema>;
 export type Source = z.infer<typeof sourceSchema>;
 export type Evidence = z.infer<typeof evidenceSchema>;
 export type Citation = z.infer<typeof citationSchema>;

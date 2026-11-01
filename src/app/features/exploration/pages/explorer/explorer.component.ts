@@ -6,11 +6,13 @@ import {
   explorerEntries,
   explorerFacets,
 } from '@core/content/queries/knowledge-explorer';
+import { contentLanguageLabels } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { ContentLanguageComponent } from '@shared/ui/content-language/content-language.component';
 
 @Component({
   selector: 'app-explorer',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, ContentLanguageComponent],
   templateUrl: './explorer.component.html',
   styleUrl: './explorer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,9 +35,23 @@ export class ExplorerComponent {
       query: this.params().get('q') ?? '',
       kind: this.params().get('tipo') ?? '',
       state: this.params().get('estado') ?? '',
+    }).map((entry) => {
+      const requested = this.params().get('idioma');
+      const translation = entry.translations?.find(
+        (t) => t.locale === requested && t.review.status === 'approved',
+      );
+      return {
+        ...entry,
+        title: translation?.text.title ?? entry.title,
+        summary: translation?.text.summary ?? entry.summary,
+        displayLocale: translation?.locale ?? entry.sourceLocale ?? 'und',
+        translationReview: translation?.review,
+        fallback: !!requested && !translation && requested !== entry.sourceLocale,
+      };
     }),
   );
   readonly origin = computed(() => '/' + this.catalogue.path + this.queryString());
+  readonly languages = contentLanguageLabels;
   readonly unknownKind = computed(
     () =>
       !!this.params().get('tipo') &&
@@ -52,6 +68,13 @@ export class ExplorerComponent {
         ?.url ?? null
     );
   }
+  setLanguage(locale: string | null): void {
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { idioma: locale },
+      queryParamsHandling: 'merge',
+    });
+  }
   apply(form: HTMLFormElement): void {
     const data = new FormData(form);
     void this.router.navigate([], {
@@ -60,12 +83,13 @@ export class ExplorerComponent {
         q: String(data.get('q') ?? '').trim() || null,
         tipo: data.get('tipo') || null,
         estado: data.get('estado') || null,
+        idioma: this.params().get('idioma'),
       },
     });
   }
   private queryString(): string {
     const params = new URLSearchParams();
-    for (const key of ['q', 'tipo', 'estado']) {
+    for (const key of ['q', 'tipo', 'estado', 'idioma']) {
       const value = this.params().get(key);
       if (value) params.set(key, value);
     }

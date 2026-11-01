@@ -1,0 +1,593 @@
+{
+  "updatedAt": "2026-11-01",
+  "rightsNote": "Paráfrases editoriais novas com fontes institucionais. Sem reprodução de imagens ou trechos extensos. Revisão humana não registrada.",
+  "atlas": {
+    "id": "atlas-constitutional-contexts",
+    "slug": "contextos-constitucionais",
+    "title": "Países e recortes constitucionais",
+    "description": "Registros de Brasil e Portugal com classificações normativas atribuídas e limites de comparação.",
+    "version": "1.0.0",
+    "updatedAt": "2026-11-01",
+    "entityIds": [
+      "country-brazil",
+      "country-portugal",
+      "regime-brazil-constitution-1988",
+      "regime-portugal-constitution-1976",
+      "party-ps-portugal",
+      "institution-assembly-portugal",
+      "event-portugal-constitution-approval-1976",
+      "work-constitution-portugal-1976"
+    ],
+    "entities": [
+      {
+        "id": "country-brazil",
+        "slug": "brasil",
+        "kind": "country",
+        "title": "Brasil",
+        "summary": "A Constituição de 1988 identifica o Estado brasileiro como República Federativa do Brasil.",
+        "aliases": [],
+        "context": "Este cadastro usa um recorte constitucional. Não fixa uma data de nascimento do país nem representa todas as suas configurações territoriais históricas.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "revision": 1,
+        "editorialStatus": "pending",
+        "textLocale": "pt-BR",
+        "sections": [
+          {
+            "heading": "Recorte e limites",
+            "paragraphs": [
+              "Este cadastro usa um recorte constitucional. Não fixa uma data de nascimento do país nem representa todas as suas configurações territoriais históricas."
+            ]
+          }
+        ],
+        "countryProfile": {
+          "officialName": "República Federativa do Brasil",
+          "territorialScope": "Recorte da organização federativa no texto de 1988, sem mapa de fronteiras.",
+          "identityNote": "O país não se confunde com um governo ou com uma classificação de regime.",
+          "evidenceIds": ["evidence-foundation-br1", "evidence-foundation-br18"]
+        }
+      },
+      {
+        "id": "country-portugal",
+        "slug": "portugal",
+        "kind": "country",
+        "title": "Portugal",
+        "summary": "O artigo 1.º da Constituição portuguesa apresenta Portugal como uma república soberana.",
+        "aliases": [],
+        "context": "A identidade é apresentada segundo a fonte constitucional consultada. O registro não descreve fronteiras em cada período nem atribui a Portugal uma única configuração política ao longo da história.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "revision": 1,
+        "editorialStatus": "pending",
+        "textLocale": "pt-BR",
+        "sections": [
+          {
+            "heading": "Recorte e limites",
+            "paragraphs": [
+              "A identidade é apresentada segundo a fonte constitucional consultada. O registro não descreve fronteiras em cada período nem atribui a Portugal uma única configuração política ao longo da história."
+            ]
+          }
+        ],
+        "countryProfile": {
+          "officialName": "República Portuguesa",
+          "territorialScope": "Recorte estatal da Constituição consultada; não é um mapa histórico ou catálogo de disputas territoriais.",
+          "identityNote": "Distinguir a identidade do país, o governo em exercício e as classificações políticas atribuídas.",
+          "evidenceIds": ["evidence-foundation-pt1"]
+        }
+      },
+      {
+        "id": "regime-brazil-constitution-1988",
+        "slug": "brasil-recorte-constitucional-1988",
+        "kind": "regime",
+        "title": "Brasil: recorte constitucional de 1988",
+        "summary": "O artigo 1º da Constituição brasileira de 1988 adota a autodescrição Estado democrático de direito.",
+        "aliases": [],
+        "context": "O rótulo é atribuído ao texto constitucional original. Não constitui uma avaliação do funcionamento político, uma tipologia comparativa ou prova de continuidade uniforme de práticas democráticas.",
+        "temporalExtent": {
+          "startYear": 1988,
+          "endYear": null,
+          "precision": "year",
+          "label": "Constituição de referência: 1988; término do recorte não cadastrado"
+        },
+        "uncertainty": "moderate",
+        "revision": 1,
+        "editorialStatus": "pending",
+        "textLocale": "pt-BR",
+        "sections": [
+          {
+            "heading": "Recorte e limites",
+            "paragraphs": [
+              "O rótulo é atribuído ao texto constitucional original. Não constitui uma avaliação do funcionamento político, uma tipologia comparativa ou prova de continuidade uniforme de práticas democráticas."
+            ]
+          }
+        ],
+        "regimeProfile": {
+          "countryIds": ["country-brazil"],
+          "periodNote": "1988 identifica a Constituição de referência, não uma data de origem do país. Um término não informado não comprova continuidade até hoje.",
+          "classifications": [
+            {
+              "label": "Estado democrático de direito",
+              "attribution": "Constituição brasileira de 1988, artigo 1º",
+              "edition": "Publicação original disponibilizada pela Câmara dos Deputados",
+              "limits": "Autodescrição jurídica atribuída; não equivale a classificação historiográfica independente.",
+              "evidenceIds": ["evidence-foundation-br1"]
+            }
+          ]
+        }
+      },
+      {
+        "id": "regime-portugal-constitution-1976",
+        "slug": "portugal-recorte-constitucional-1976",
+        "kind": "regime",
+        "title": "Portugal: recorte constitucional de 1976",
+        "summary": "O artigo 2.º do texto constitucional português consolidado adota a autodescrição Estado de direito democrático.",
+        "aliases": [],
+        "context": "A Constituição de referência é a de 1976; a formulação citada corresponde ao texto consolidado consultado. Não se presume que a mesma redação ou as mesmas práticas políticas tenham vigorado em todo o período.",
+        "temporalExtent": {
+          "startYear": 1976,
+          "endYear": null,
+          "precision": "year",
+          "label": "Constituição de referência: 1976; classificação da edição consolidada consultada"
+        },
+        "uncertainty": "moderate",
+        "revision": 1,
+        "editorialStatus": "pending",
+        "textLocale": "pt-BR",
+        "sections": [
+          {
+            "heading": "Recorte e limites",
+            "paragraphs": [
+              "A Constituição de referência é a de 1976; a formulação citada corresponde ao texto consolidado consultado. Não se presume que a mesma redação ou as mesmas práticas políticas tenham vigorado em todo o período."
+            ]
+          }
+        ],
+        "regimeProfile": {
+          "countryIds": ["country-portugal"],
+          "periodNote": "1976 identifica a Constituição de referência. A classificação é da edição consolidada consultada, não uma série histórica uniforme desde 1976.",
+          "classifications": [
+            {
+              "label": "Estado de direito democrático",
+              "attribution": "Constituição da República Portuguesa, artigo 2.º",
+              "edition": "Texto consolidado da Assembleia da República consultado em 01/11/2026",
+              "limits": "Não retroprojetar a redação consolidada para o texto originário de 1976; classificação normativa, não avaliação de desempenho.",
+              "evidenceIds": ["evidence-foundation-pt2"]
+            }
+          ]
+        }
+      },
+      {
+        "id": "party-ps-portugal",
+        "slug": "partido-socialista-portugal",
+        "kind": "party",
+        "title": "Partido Socialista (Portugal)",
+        "summary": "A Comissão Nacional de Eleições de Portugal identifica o Partido Socialista pela sigla PS e registra sua inscrição em 1 de fevereiro de 1975.",
+        "aliases": ["PS — Portugal"],
+        "context": "O ano representado é o da inscrição mencionada pela fonte, não o da fundação. Este cadastro institucional não descreve toda a evolução programática do partido nem avalia suas posições políticas.",
+        "temporalExtent": {
+          "startYear": 1975,
+          "endYear": 1975,
+          "precision": "range",
+          "label": "Inscrição registrada pela fonte: 1 de fevereiro de 1975"
+        },
+        "uncertainty": "moderate",
+        "revision": 1,
+        "editorialStatus": "pending",
+        "textLocale": "pt-BR",
+        "sections": [
+          {
+            "heading": "Recorte e limites",
+            "paragraphs": [
+              "O ano representado é o da inscrição mencionada pela fonte, não o da fundação. Este cadastro institucional não descreve toda a evolução programática do partido nem avalia suas posições políticas."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "institution-assembly-portugal",
+        "slug": "assembleia-da-republica-portuguesa",
+        "kind": "institution",
+        "title": "Assembleia da República (Portugal)",
+        "summary": "O artigo 147.º da Constituição portuguesa define a Assembleia da República pela representação dos cidadãos portugueses.",
+        "aliases": [],
+        "context": "O registro apresenta a definição institucional na fonte constitucional consultada. Não é uma avaliação da representação efetiva nem um histórico completo de legislaturas.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "revision": 1,
+        "editorialStatus": "pending",
+        "textLocale": "pt-BR",
+        "sections": [
+          {
+            "heading": "Recorte e limites",
+            "paragraphs": [
+              "O registro apresenta a definição institucional na fonte constitucional consultada. Não é uma avaliação da representação efetiva nem um histórico completo de legislaturas."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "event-portugal-constitution-approval-1976",
+        "slug": "aprovacao-constituicao-portuguesa-1976",
+        "kind": "event",
+        "title": "Aprovação da Constituição portuguesa de 1976",
+        "summary": "A Constituição portuguesa registra sua aprovação pela Assembleia Constituinte em 2 de abril de 1976.",
+        "aliases": [],
+        "context": "A aprovação não deve ser confundida com a entrada em vigor: o artigo 296.º registra esta última em 25 de abril de 1976. O cadastro não reconstrói todo o processo constituinte.",
+        "temporalExtent": {
+          "startYear": 1976,
+          "endYear": 1976,
+          "precision": "range",
+          "label": "Aprovação: 2 de abril de 1976; entrada em vigor: 25 de abril de 1976"
+        },
+        "uncertainty": "moderate",
+        "revision": 1,
+        "editorialStatus": "pending",
+        "textLocale": "pt-BR",
+        "sections": [
+          {
+            "heading": "Recorte e limites",
+            "paragraphs": [
+              "A aprovação não deve ser confundida com a entrada em vigor: o artigo 296.º registra esta última em 25 de abril de 1976. O cadastro não reconstrói todo o processo constituinte."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "work-constitution-portugal-1976",
+        "slug": "constituicao-portuguesa-1976",
+        "kind": "work",
+        "title": "Constituição da República Portuguesa de 1976",
+        "summary": "A Constituição da República Portuguesa tem a data de aprovação de 2 de abril de 1976.",
+        "aliases": [],
+        "context": "O texto consolidado inclui revisões posteriores. Para interpretar uma afirmação histórica, confira a redação aplicável ao período; a data do documento não torna originárias todas as disposições da edição consultada.",
+        "temporalExtent": {
+          "startYear": 1976,
+          "endYear": 1976,
+          "precision": "range",
+          "label": "Documento aprovado em 2 de abril de 1976"
+        },
+        "uncertainty": "moderate",
+        "revision": 1,
+        "editorialStatus": "pending",
+        "textLocale": "pt-BR",
+        "sections": [
+          {
+            "heading": "Recorte e limites",
+            "paragraphs": [
+              "O texto consolidado inclui revisões posteriores. Para interpretar uma afirmação histórica, confira a redação aplicável ao período; a data do documento não torna originárias todas as disposições da edição consultada."
+            ]
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "source-foundation-brazil-1988",
+        "title": "Constituição brasileira de 1988 — publicação original",
+        "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-publicacaooriginal-1-pl.html",
+        "edition": "Câmara dos Deputados; publicação original de 5 de outubro de 1988; artigos 1º e 18",
+        "publicationDate": "1988-10-05"
+      },
+      {
+        "id": "source-foundation-portugal",
+        "title": "Constituição da República Portuguesa — texto consolidado",
+        "url": "https://www.parlamento.pt/Legislacao/Paginas/ConstituicaoRepublicaPortuguesa.aspx",
+        "edition": "Assembleia da República; texto consolidado consultado em 01/11/2026; distinguir redações posteriores do texto originário de 1976",
+        "publicationDate": null
+      },
+      {
+        "id": "source-foundation-ps",
+        "title": "Partido Socialista — ficha da Comissão Nacional de Eleições",
+        "url": "https://www.cne.pt/partido/partido-socialista",
+        "edition": "Comissão Nacional de Eleições de Portugal; ficha institucional consultada em 01/11/2026",
+        "publicationDate": null
+      }
+    ],
+    "evidences": [
+      {
+        "id": "evidence-foundation-br1",
+        "sourceId": "source-foundation-brazil-1988",
+        "locator": "Artigo 1º, caput",
+        "accessedAt": "2026-11-01",
+        "note": null
+      },
+      {
+        "id": "evidence-foundation-br18",
+        "sourceId": "source-foundation-brazil-1988",
+        "locator": "Artigo 18, caput",
+        "accessedAt": "2026-11-01",
+        "note": null
+      },
+      {
+        "id": "evidence-foundation-pt1",
+        "sourceId": "source-foundation-portugal",
+        "locator": "Artigo 1.º",
+        "accessedAt": "2026-11-01",
+        "note": null
+      },
+      {
+        "id": "evidence-foundation-pt2",
+        "sourceId": "source-foundation-portugal",
+        "locator": "Artigo 2.º",
+        "accessedAt": "2026-11-01",
+        "note": "Autodescrição no texto consolidado; não retroprojetar esta redação para todo o período desde 1976."
+      },
+      {
+        "id": "evidence-foundation-pt147",
+        "sourceId": "source-foundation-portugal",
+        "locator": "Artigo 147.º",
+        "accessedAt": "2026-11-01",
+        "note": null
+      },
+      {
+        "id": "evidence-foundation-pt-date",
+        "sourceId": "source-foundation-portugal",
+        "locator": "Fórmula de aprovação após o preâmbulo e artigo 296.º",
+        "accessedAt": "2026-11-01",
+        "note": "Aprovação em 2 de abril; entrada em vigor em 25 de abril de 1976. Não confundir as duas datas."
+      },
+      {
+        "id": "evidence-foundation-ps",
+        "sourceId": "source-foundation-ps",
+        "locator": "Campos Denominação e Sigla; parágrafo sobre inscrição em 1 de fevereiro de 1975",
+        "accessedAt": "2026-11-01",
+        "note": "Data de inscrição, distinta da fundação em 1973 mencionada pela mesma fonte."
+      }
+    ],
+    "citations": [
+      {
+        "id": "citation-country-brazil",
+        "evidenceId": "evidence-foundation-br1",
+        "relation": "supports"
+      },
+      {
+        "id": "citation-country-portugal",
+        "evidenceId": "evidence-foundation-pt1",
+        "relation": "supports"
+      },
+      {
+        "id": "citation-regime-brazil-constitution-1988",
+        "evidenceId": "evidence-foundation-br1",
+        "relation": "supports"
+      },
+      {
+        "id": "citation-regime-portugal-constitution-1976",
+        "evidenceId": "evidence-foundation-pt2",
+        "relation": "supports"
+      },
+      {
+        "id": "citation-party-ps-portugal",
+        "evidenceId": "evidence-foundation-ps",
+        "relation": "supports"
+      },
+      {
+        "id": "citation-institution-assembly-portugal",
+        "evidenceId": "evidence-foundation-pt147",
+        "relation": "supports"
+      },
+      {
+        "id": "citation-event-portugal-constitution-approval-1976",
+        "evidenceId": "evidence-foundation-pt-date",
+        "relation": "supports"
+      },
+      {
+        "id": "citation-work-constitution-portugal-1976",
+        "evidenceId": "evidence-foundation-pt-date",
+        "relation": "supports"
+      }
+    ],
+    "claims": [
+      {
+        "id": "claim-country-brazil",
+        "entityId": "country-brazil",
+        "text": "A Constituição de 1988 identifica o Estado brasileiro como República Federativa do Brasil.",
+        "classification": "documented-fact",
+        "editorialStatus": "pending",
+        "citationIds": ["citation-country-brazil"]
+      },
+      {
+        "id": "claim-country-portugal",
+        "entityId": "country-portugal",
+        "text": "O artigo 1.º da Constituição portuguesa apresenta Portugal como uma república soberana.",
+        "classification": "documented-fact",
+        "editorialStatus": "pending",
+        "citationIds": ["citation-country-portugal"]
+      },
+      {
+        "id": "claim-regime-brazil-constitution-1988",
+        "entityId": "regime-brazil-constitution-1988",
+        "text": "O artigo 1º da Constituição brasileira de 1988 adota a autodescrição Estado democrático de direito.",
+        "classification": "attributed-thesis",
+        "editorialStatus": "pending",
+        "citationIds": ["citation-regime-brazil-constitution-1988"]
+      },
+      {
+        "id": "claim-regime-portugal-constitution-1976",
+        "entityId": "regime-portugal-constitution-1976",
+        "text": "O artigo 2.º do texto constitucional português consolidado adota a autodescrição Estado de direito democrático.",
+        "classification": "attributed-thesis",
+        "editorialStatus": "pending",
+        "citationIds": ["citation-regime-portugal-constitution-1976"]
+      },
+      {
+        "id": "claim-party-ps-portugal",
+        "entityId": "party-ps-portugal",
+        "text": "A Comissão Nacional de Eleições de Portugal identifica o Partido Socialista pela sigla PS e registra sua inscrição em 1 de fevereiro de 1975.",
+        "classification": "documented-fact",
+        "editorialStatus": "pending",
+        "citationIds": ["citation-party-ps-portugal"]
+      },
+      {
+        "id": "claim-institution-assembly-portugal",
+        "entityId": "institution-assembly-portugal",
+        "text": "O artigo 147.º da Constituição portuguesa define a Assembleia da República pela representação dos cidadãos portugueses.",
+        "classification": "documented-fact",
+        "editorialStatus": "pending",
+        "citationIds": ["citation-institution-assembly-portugal"]
+      },
+      {
+        "id": "claim-event-portugal-constitution-approval-1976",
+        "entityId": "event-portugal-constitution-approval-1976",
+        "text": "A Constituição portuguesa registra sua aprovação pela Assembleia Constituinte em 2 de abril de 1976.",
+        "classification": "documented-fact",
+        "editorialStatus": "pending",
+        "citationIds": ["citation-event-portugal-constitution-approval-1976"]
+      },
+      {
+        "id": "claim-work-constitution-portugal-1976",
+        "entityId": "work-constitution-portugal-1976",
+        "text": "A Constituição da República Portuguesa tem a data de aprovação de 2 de abril de 1976.",
+        "classification": "documented-fact",
+        "editorialStatus": "pending",
+        "citationIds": ["citation-work-constitution-portugal-1976"]
+      }
+    ],
+    "reviews": [
+      {
+        "id": "review-country-brazil",
+        "claimId": "claim-country-brazil",
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": "Paráfrase editorial com fonte institucional identificada. Revisão humana não registrada."
+      },
+      {
+        "id": "review-country-portugal",
+        "claimId": "claim-country-portugal",
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": "Paráfrase editorial com fonte institucional identificada. Revisão humana não registrada."
+      },
+      {
+        "id": "review-regime-brazil-constitution-1988",
+        "claimId": "claim-regime-brazil-constitution-1988",
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": "Paráfrase editorial com fonte institucional identificada. Revisão humana não registrada."
+      },
+      {
+        "id": "review-regime-portugal-constitution-1976",
+        "claimId": "claim-regime-portugal-constitution-1976",
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": "Paráfrase editorial com fonte institucional identificada. Revisão humana não registrada."
+      },
+      {
+        "id": "review-party-ps-portugal",
+        "claimId": "claim-party-ps-portugal",
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": "Paráfrase editorial com fonte institucional identificada. Revisão humana não registrada."
+      },
+      {
+        "id": "review-institution-assembly-portugal",
+        "claimId": "claim-institution-assembly-portugal",
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": "Paráfrase editorial com fonte institucional identificada. Revisão humana não registrada."
+      },
+      {
+        "id": "review-event-portugal-constitution-approval-1976",
+        "claimId": "claim-event-portugal-constitution-approval-1976",
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": "Paráfrase editorial com fonte institucional identificada. Revisão humana não registrada."
+      },
+      {
+        "id": "review-work-constitution-portugal-1976",
+        "claimId": "claim-work-constitution-portugal-1976",
+        "status": "pending",
+        "reviewer": null,
+        "reviewedAt": null,
+        "note": "Paráfrase editorial com fonte institucional identificada. Revisão humana não registrada."
+      }
+    ],
+    "assetLicenses": [],
+    "relations": [
+      {
+        "id": "relation-regime-br-country",
+        "fromEntityId": "regime-brazil-constitution-1988",
+        "toEntityId": "country-brazil",
+        "type": "documented-association",
+        "label": "tem recorte estatal em",
+        "reverseLabel": "é o país do recorte",
+        "context": "Associação do recorte constitucional ao país, sem equiparar país e regime.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "evidenceIds": ["evidence-foundation-br1"],
+        "editorialStatus": "pending"
+      },
+      {
+        "id": "relation-regime-pt-country",
+        "fromEntityId": "regime-portugal-constitution-1976",
+        "toEntityId": "country-portugal",
+        "type": "documented-association",
+        "label": "tem recorte estatal em",
+        "reverseLabel": "é o país do recorte",
+        "context": "Associação normativa do recorte ao país; não afirma uniformidade histórica.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "evidenceIds": ["evidence-foundation-pt2"],
+        "editorialStatus": "pending"
+      },
+      {
+        "id": "relation-ps-country",
+        "fromEntityId": "party-ps-portugal",
+        "toEntityId": "country-portugal",
+        "type": "documented-association",
+        "label": "é cadastrado na fonte eleitoral de",
+        "reverseLabel": "tem registro partidário associado a",
+        "context": "A fonte é a Comissão Nacional de Eleições de Portugal; não se infere posição ideológica da associação.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "evidenceIds": ["evidence-foundation-ps"],
+        "editorialStatus": "pending"
+      },
+      {
+        "id": "relation-assembly-country",
+        "fromEntityId": "institution-assembly-portugal",
+        "toEntityId": "country-portugal",
+        "type": "documented-association",
+        "label": "é definido constitucionalmente em",
+        "reverseLabel": "tem como instituição registrada",
+        "context": "Definição constitucional de representação; não é uma medida de desempenho.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "evidenceIds": ["evidence-foundation-pt147"],
+        "editorialStatus": "pending"
+      },
+      {
+        "id": "relation-approval-document",
+        "fromEntityId": "event-portugal-constitution-approval-1976",
+        "toEntityId": "work-constitution-portugal-1976",
+        "type": "documented-association",
+        "label": "registra a aprovação de",
+        "reverseLabel": "tem aprovação registrada em",
+        "context": "Aprovação e entrada em vigor são acontecimentos distintos.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "evidenceIds": ["evidence-foundation-pt-date"],
+        "editorialStatus": "pending"
+      },
+      {
+        "id": "relation-pt-document-regime",
+        "fromEntityId": "work-constitution-portugal-1976",
+        "toEntityId": "regime-portugal-constitution-1976",
+        "type": "documented-association",
+        "label": "é documento de referência do",
+        "reverseLabel": "tem como documento de referência",
+        "context": "O documento de referência não torna a redação consolidada idêntica à originária.",
+        "temporalExtent": null,
+        "uncertainty": "moderate",
+        "evidenceIds": ["evidence-foundation-pt-date"],
+        "editorialStatus": "pending"
+      }
+    ],
+    "learningPaths": []
+  }
+}

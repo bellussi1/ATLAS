@@ -33,6 +33,8 @@ export class AnalysisFiltersComponent {
     institution: 'Instituição',
     place: 'Lugar',
     article: 'Artigo',
+    country: 'País',
+    regime: 'Regime',
     party: 'Partido',
     government: 'Governo',
     policy: 'Política pública',

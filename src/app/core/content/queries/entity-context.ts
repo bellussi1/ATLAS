@@ -32,6 +32,8 @@ export function entityContext(
     'historical-polity': 'Formação política histórica',
     policy: 'Política pública',
     article: 'Artigo',
+    country: 'País',
+    regime: 'Regime',
   };
   const sources = graph.atlases.flatMap((a) => a.sources);
   const evidenceIds = graph.atlases

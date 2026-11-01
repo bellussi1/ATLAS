@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "knowledge-graph-atlas",
   "version": "1.0.0",
-  "updatedAt": "2026-10-31",
+  "updatedAt": "2026-11-01",
   "collections": [
     {
       "id": "atlas-methodology",
@@ -28,6 +28,11 @@
       "id": "atlas-marx-valor",
       "file": "collections/atlas-marx-valor.ebdcbab37c547dca3be7ee2f170694f16bcf04e9f37ba7bf8e2de9acb4cfe53e.json",
       "sha256": "ebdcbab37c547dca3be7ee2f170694f16bcf04e9f37ba7bf8e2de9acb4cfe53e"
+    },
+    {
+      "id": "atlas-constitutional-contexts",
+      "file": "collections/atlas-constitutional-contexts.8522ae25ce4f7428c2a87d220e6878ea68313b810a3a1dc51d3fb2589ab452b1.json",
+      "sha256": "8522ae25ce4f7428c2a87d220e6878ea68313b810a3a1dc51d3fb2589ab452b1"
     }
   ]
 }

@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+section {
+  border-top: 2px solid var(--ink);
+  padding-block: 1.5rem;
+  overflow-wrap: anywhere;
+}
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+dt {
+  font-weight: 600;
+}
+dd {
+  margin: 0.25rem 0 1rem;
+  line-height: 1.6;
+}
+p {
+  max-width: 80ch;
+  line-height: 1.6;
+}
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

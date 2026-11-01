@@ -5,11 +5,16 @@
   </header>
   <nav aria-label="Catálogos do acervo" class="catalogues">
     @for (item of catalogues; track item.path) {
-      <a [routerLink]="'/' + item.path" routerLinkActive="selected" ariaCurrentWhenActive="page">{{
-        item.title
-      }}</a>
+      <a
+        [routerLink]="'/' + item.path"
+        [queryParams]="{ idioma: params().get('idioma') }"
+        routerLinkActive="selected"
+        ariaCurrentWhenActive="page"
+        >{{ item.title }}</a
+      >
     }
   </nav>
+  <app-content-language [requested]="params().get('idioma')" (changed)="setLanguage($event)" />
   <p class="readings">
     <a routerLink="/rede">Explorar a rede</a><a routerLink="/comparar">Comparar registros</a>
   </p>
@@ -79,19 +84,37 @@
         @for (entry of results(); track entry.id) {
           <article [id]="entry.fragment ?? entry.id" class="result">
             <p class="result-meta">{{ entry.kindLabel }} · {{ entry.stateLabel }}</p>
-            <h2>
+            <h2 [attr.lang]="entry.displayLocale">
               @if (catalogue.path === 'fontes') {
                 {{ entry.title }}
               } @else {
                 <a
                   [routerLink]="entry.path"
                   [fragment]="entry.fragment"
-                  [queryParams]="entry.kind === 'fonte' ? {} : { origem: origin() }"
+                  [queryParams]="
+                    entry.kind === 'fonte'
+                      ? {}
+                      : { origem: origin(), idioma: params().get('idioma') }
+                  "
                   >{{ entry.title }}</a
                 >
               }
             </h2>
-            <p>{{ entry.summary }}</p>
+            <p [attr.lang]="entry.displayLocale">{{ entry.summary }}</p>
+            @if (entry.translationReview; as review) {
+              @if (review.status === 'approved') {
+                <p class="result-meta">
+                  Revisão da tradução:
+                  {{ review.method === 'assistant' ? 'assistida por IA' : 'humana' }}.
+                </p>
+              }
+            }
+            @if (entry.fallback) {
+              <p class="result-meta">
+                Sem tradução revisada neste idioma. Original:
+                {{ languages[entry.displayLocale] ?? entry.displayLocale }}.
+              </p>
+            }
             @if (catalogue.path === 'fontes') {
               @if (sourceUrl(entry.id); as url) {
                 <p><a [href]="url">Consultar fonte original</a></p>

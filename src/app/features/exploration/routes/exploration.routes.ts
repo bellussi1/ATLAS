@@ -39,6 +39,7 @@ export const explorationRoutes: Routes = [
   })),
   {
     path: 'verbete/:slug',
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
     title: knowledgeEntryTitleResolver,
     resolve: {
       knowledge: knowledgeContentResolver,

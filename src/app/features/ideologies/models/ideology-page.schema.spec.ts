@@ -23,6 +23,13 @@ describe('Public pages', () => {
       'pessoas',
       'obras',
       'fontes',
+      'paises',
+      'regimes',
+      'partidos',
+      'instituicoes',
+      'acontecimentos',
+      'conceitos',
+      'lugares',
       'verbete/:slug',
       'explorar/:tipo/:slug',
     ]);
