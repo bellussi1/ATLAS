@@ -36,6 +36,23 @@
         <option value="desde-1850">A partir de 1850</option>
       </select>
       <span>Data não implica causalidade</span>
+      @if (timelineAxis(); as axis) {
+        <svg class="timeline-axis" viewBox="0 0 900 100" aria-hidden="true" focusable="false">
+          <line x1="40" y1="35" x2="860" y2="35" />
+          @for (tick of axis.ticks; track tick.year) {
+            <line [attr.x1]="tick.x" y1="30" [attr.x2]="tick.x" y2="45" />
+            <text [attr.x]="tick.x" y="80" text-anchor="middle">{{ tick.year }}</text>
+          }
+          @for (marker of axis.markers; track marker.id) {
+            <circle
+              [attr.cx]="marker.x"
+              cy="35"
+              r="7"
+              [class.current]="selectedTimeline()?.id === marker.id"
+            />
+          }
+        </svg>
+      }
     </div>
     <div class="timeline-explorer">
       <ol class="timeline-list" aria-label="Acontecimentos e publicações">
@@ -45,7 +62,7 @@
               type="button"
               class="timeline-event"
               [attr.aria-pressed]="selectedTimeline()?.id === entity.id"
-              aria-controls="timeline-reading"
+              [attr.aria-controls]="blockId() + '-timeline-reading'"
               (click)="update('evento', entity.id)"
             >
               <span class="year">{{ entity.temporalExtent?.startYear }}</span
@@ -58,7 +75,7 @@
         }
       </ol>
       <section
-        id="timeline-reading"
+        [id]="blockId() + '-timeline-reading'"
         class="timeline-reading"
         aria-label="Acontecimento selecionado"
         aria-live="polite"
@@ -106,35 +123,25 @@
   @case ('graph') {
     @if (edges().length) {
       <div class="genealogy">
-        <div class="genealogy-canvas">
+        <div class="genealogy-canvas" [style.aspect-ratio]="'900 / ' + graph().height">
           <svg
-            viewBox="0 0 900 380"
+            [attr.viewBox]="'0 0 900 ' + graph().height"
             preserveAspectRatio="none"
             role="img"
-            aria-labelledby="genealogy-title genealogy-desc"
+            [attr.aria-labelledby]="blockId() + '-graph-title ' + blockId() + '-graph-desc'"
           >
-            <title id="genealogy-title">Polêmicas documentadas</title>
-            <desc id="genealogy-desc">
-              Três pares de autores ligados por crítica, sem hierarquia de descendência. Os
-              controles e a tabela a seguir apresentam as mesmas relações.
+            <title [id]="blockId() + '-graph-title'">Polêmicas documentadas</title>
+            <desc [id]="blockId() + '-graph-desc'">
+              Relações documentadas entre autores, sem hierarquia de descendência. Os controles e a
+              tabela a seguir apresentam as mesmas relações.
             </desc>
             @for (edge of visibleEdges(); track edge.id) {
               <path
+                animate.enter="connection-enter"
+                animate.leave="connection-leave"
                 [class.selected]="highlightEdge(edge)"
-                [attr.d]="
-                  'M' +
-                  point(edge.from).x +
-                  ',' +
-                  point(edge.from).y +
-                  ' C420,' +
-                  point(edge.from).y +
-                  ' 480,' +
-                  point(edge.to).y +
-                  ' ' +
-                  point(edge.to).x +
-                  ',' +
-                  point(edge.to).y
-                "
+                [attr.d]="graphPaths().get(edge.id)"
+                vector-effect="non-scaling-stroke"
               />
             }
           </svg>
@@ -143,14 +150,14 @@
               type="button"
               class="genealogy-node"
               [style.left.%]="node.x / 9"
-              [style.top.%]="node.y / 3.8"
+              [style.top.%]="(node.y / graph().height) * 100"
               [class.related]="selectedEdge()?.from === node.id || selectedEdge()?.to === node.id"
               (mouseenter)="hoveredNode.set(node.id)"
               (mouseleave)="hoveredNode.set(null)"
               (focus)="hoveredNode.set(node.id)"
               (blur)="hoveredNode.set(null)"
               (click)="selectNode(node.id)"
-              aria-controls="relation-reading"
+              [attr.aria-controls]="blockId() + '-relation-reading'"
             >
               {{ node.title }}<span>Investigar conexões +</span>
             </button>
@@ -170,7 +177,7 @@
             <button
               type="button"
               [attr.aria-pressed]="selectedEdge()?.id === edge.id"
-              aria-controls="relation-reading"
+              [attr.aria-controls]="blockId() + '-relation-reading'"
               (click)="update('relacao', edge.id)"
             >
               {{ entity(edge.from)?.title }} → {{ entity(edge.to)?.title }}
@@ -179,7 +186,7 @@
         </div>
         @if (selectedEdge(); as edge) {
           <section
-            id="relation-reading"
+            [id]="blockId() + '-relation-reading'"
             class="relation-reading"
             aria-live="polite"
             aria-label="Relação selecionada"

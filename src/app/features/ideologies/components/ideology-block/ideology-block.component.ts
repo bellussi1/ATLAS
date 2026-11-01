@@ -13,6 +13,7 @@ import type {
   IdeologyEdge,
   PageBlock,
 } from '@ideologies/models/ideology-page.schema';
+import { graphGeometry, temporalAxis } from '@ideologies/utils/visualization-geometry';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 
 @Component({
@@ -50,11 +51,13 @@ export class IdeologyBlockComponent {
       ? this.dossier().supplement.edges.filter((e) => block.edgeIds.includes(e.id))
       : [];
   });
-  readonly selectedEdge = computed<IdeologyEdge | undefined>(
-    () => this.edges().find((e) => e.id === this.params().get('relacao')) ?? this.edges()[0],
-  );
   readonly visibleEdges = computed(() =>
     this.edges().filter((e) => this.edgeFilter() === 'all' || e.type === this.edgeFilter()),
+  );
+  readonly selectedEdge = computed<IdeologyEdge | undefined>(
+    () =>
+      this.visibleEdges().find((e) => e.id === this.params().get('relacao')) ??
+      this.visibleEdges()[0],
   );
   readonly edgeTypes = computed(() => [...new Set(this.edges().map((e) => e.type))]);
   readonly explorationItems = computed(() => {
@@ -76,14 +79,28 @@ export class IdeologyBlockComponent {
       this.debateTopics().find((t) => t.id === this.params().get('debate')) ??
       this.debateTopics()[0],
   );
-  readonly graphNodes = computed(() => {
-    const ids = [...new Set(this.edges().flatMap((edge) => [edge.from, edge.to]))];
-    return ids.map((id, index) => ({
-      id,
-      x: index % 2 ? 700 : 190,
-      y: 60 + Math.floor(index / 2) * 130,
-      title: this.entity(id)?.title ?? id,
-    }));
+  readonly graph = computed(() => graphGeometry(this.edges()));
+  readonly graphNodes = computed(() =>
+    this.graph().nodes.map((node) => ({
+      ...node,
+      title: this.entity(node.id)?.title ?? node.id,
+    })),
+  );
+  readonly graphPaths = computed(
+    () => new Map(this.edges().map((edge, i) => [edge.id, this.graph().paths[i]])),
+  );
+  readonly timelineAxis = computed(() => {
+    const dated = this.entities().flatMap((entity) => {
+      const year = entity.temporalExtent?.startYear;
+      return year === null || year === undefined ? [] : [{ id: entity.id, year }];
+    });
+    const axis = temporalAxis(dated.map((entry) => entry.year));
+    return axis
+      ? {
+          ticks: axis.ticks,
+          markers: dated.map((entry, i) => ({ ...entry, x: axis.positions[i] })),
+        }
+      : null;
   });
   readonly timeline = computed(() => {
     const period = this.params().get('periodo');
@@ -175,9 +192,6 @@ export class IdeologyBlockComponent {
       replaceUrl: true,
       scroll: 'manual',
     });
-  }
-  point(id: string) {
-    return this.graphNodes().find((n) => n.id === id)!;
   }
   entitySources(entity: Entity): Source[] {
     const graph = this.repository.knowledgeGraph;

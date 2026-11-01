@@ -65,3 +65,47 @@ test('timeline selection and graph exploration preserve geometry', async ({ page
   await page.locator('.genealogy-node').filter({ hasText: 'Rosa Luxemburgo' }).click();
   await expect(page.locator('.relation-reading')).toContainText('Bernstein');
 });
+
+test('temporal axis stays fixed across filters and SVG is prerendered', async ({
+  page,
+  request,
+}) => {
+  const response = await request.get('/marxismo/');
+  const html = await response.text();
+  expect(html).toContain('class="timeline-axis"');
+  expect(html).toContain('Polêmicas documentadas');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.setViewportSize({ width: 320, height: 740 });
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.goto('/marxismo/');
+  const axis = page.locator('.timeline-axis');
+  const initial = await axis.innerHTML();
+  await page.getByLabel('Recorte temporal', { exact: true }).selectOption('antes-1850');
+  await expect(page).toHaveURL(/periodo=antes-1850/);
+  // Selection may change, but the time scale and all dated markers keep their coordinates.
+  const positions = () =>
+    axis.locator('circle').evaluateAll((nodes) => nodes.map((n) => n.getAttribute('cx')));
+  const before = await positions();
+  expect(initial).toContain('<line');
+  await page.getByLabel('Recorte temporal', { exact: true }).selectOption('desde-1850');
+  await expect(page).toHaveURL(/periodo=desde-1850/);
+  expect(await positions()).toEqual(before);
+  const event = page.locator('.timeline-event').first();
+  await event.focus();
+  await page.keyboard.press('Enter');
+  await expect(event).toBeFocused();
+  await expect(event).toHaveAttribute('aria-pressed', 'true');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(errors).toEqual([]);
+  await page
+    .locator('#historia')
+    .screenshot({ path: 'output/playwright/marxismo-timeline-320.png' });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page
+    .locator('#historia')
+    .screenshot({ path: 'output/playwright/marxismo-timeline-desktop.png' });
+  await page
+    .locator('.genealogy')
+    .screenshot({ path: 'output/playwright/marxismo-grafo-desktop.png' });
+});

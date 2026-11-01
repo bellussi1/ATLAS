@@ -94,6 +94,8 @@ As páginas antigas de verbetes, fontes, busca geral, estudo e institucionais n�
 
 Comece pelo contrato discriminado em models/ideology-page.schema.ts, com IDs/referências e validação editorial. Adicione apresentação em components e integre ao renderer de blocos. Separe uma interação complexa em componente próprio quando possuir estado/responsabilidade independente; não crie componentes idênticos por ideologia. Mantenha dados específicos em data/snapshots e consultas puras fora do template. Preserve âncoras/query params, teclado, foco, reduced motion e estados vazios. Teste o comportamento observável e a integridade das referências.
 
+Geometria do grafo e do eixo temporal do dossiê fica em `features/ideologies/utils/visualization-geometry.ts`. Os módulos `d3-shape` e `d3-scale` calculam strings/coordenadas sem manipular o DOM; o renderer Angular mantém SVG e controles no prerender e na hidratação. A matriz de escolhas, alternativas condicionais e o checklist de adoção estão em [DEPENDENCIES.md](DEPENDENCIES.md).
+
 ## Wikimedia e armazenamento
 
 Os comandos `ingest:liberalism` e `ingest:marxism` usam o mesmo pipeline em `scripts/ingest-wikimedia-atlas.mjs`; o wrapper Liberalismo preserva compatibilidade. `configurations.mjs` contém coleções e QIDs; `client.mjs`, acesso remoto com User-Agent, ritmo/retry JSON e download de imagem; `normalize.mjs`, transformação pura de datas/claims/referências. A entrada coordena reconciliação, montagem e escrita de snapshot/mídia. A validação Zod do produto fica em core/models e nos modelos da feature, separada da ingestão. Esta refatoração não executa uma nova coleta nem altera política editorial de ingestão.

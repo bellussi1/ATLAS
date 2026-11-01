@@ -108,6 +108,31 @@ button {
 .timeline-filters span {
   font-size: 0.8rem;
 }
+.timeline-axis {
+  display: block;
+  flex-basis: 100%;
+  width: 100%;
+  height: auto;
+  min-height: 3rem;
+  max-height: 6rem;
+}
+.timeline-axis line {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.timeline-axis text {
+  font: 24px var(--font-mono);
+}
+.timeline-axis circle {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.timeline-axis circle.current {
+  fill: var(--color-accent);
+  stroke: var(--color-accent);
+  r: 10;
+}
 .timeline-list {
   list-style: none;
   padding: 0;
@@ -248,6 +273,9 @@ input {
   margin-bottom: 0;
 }
 @media (max-width: 650px) {
+  .timeline-axis text {
+    font-size: 44px;
+  }
   .portraits {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

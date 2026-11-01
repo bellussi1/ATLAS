@@ -371,18 +371,19 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .genealogy path.selected {
-    stroke-dasharray: 1200;
-    stroke-dashoffset: 0;
-    animation: atlas-connection-trace var(--motion-slow) var(--ease-out) both;
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  :host:not(:has(:focus-visible)) .connection-enter {
+    animation: atlas-connection-enter var(--motion-fast) var(--ease-out);
+  }
+  :host:not(:has(:focus-visible)) .connection-leave {
+    animation: atlas-connection-enter var(--motion-fast) var(--ease-out) reverse;
   }
 }
-@keyframes atlas-connection-trace {
+@keyframes atlas-connection-enter {
   from {
-    stroke-dashoffset: 1200;
+    opacity: 0;
   }
   to {
-    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
