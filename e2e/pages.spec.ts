@@ -42,7 +42,10 @@ test('reading navigation includes the knowledge explorer', async ({ page }) => {
         .map((u) => u.pathname.replace(/\/$/, '') || '/'),
     );
     expect(
-      hrefs.filter((p) => !['/', '/marxismo', '/liberalismo', '/conhecimento'].includes(p)),
+      hrefs.filter(
+        (p) =>
+          !['/', '/marxismo', '/liberalismo', '/conhecimento', '/rede', '/comparar'].includes(p),
+      ),
     ).toEqual([]);
   }
 });

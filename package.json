@@ -1,6 +1,7 @@
 {
   "name": "atlas",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "content:build": "node scripts/content/build-content.mjs",
     "editorial:apply": "node scripts/content/apply-editorial-edition.mjs",

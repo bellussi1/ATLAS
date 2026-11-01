@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import {
+  afterRenderEffect,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  type ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { entityContext } from '@core/content/queries/entity-context';
@@ -29,6 +38,10 @@ import { KnowledgeTimelineComponent } from '@shared/ui/knowledge-timeline/knowle
   templateUrl: './analysis.component.html',
   styleUrl: './analysis.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(pointerdown)': 'pointerSelection.set(true)',
+    '(keydown)': 'pointerSelection.set(false)',
+  },
 })
 export class AnalysisComponent {
   private readonly route = inject(ActivatedRoute);
@@ -36,6 +49,8 @@ export class AnalysisComponent {
   readonly repository = inject(ContentRepository);
   readonly graph = this.repository.knowledgeGraph;
   readonly network = this.route.snapshot.data['analysis'] === 'network';
+  readonly pointerSelection = signal(false);
+  private readonly selectionPanel = viewChild<ElementRef<HTMLElement>>('selectionPanel');
   readonly params = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,
   });
@@ -130,6 +145,14 @@ export class AnalysisComponent {
       (s) => s.id !== 'context-origin' && b.context?.sources.some((other) => other.id === s.id),
     );
   });
+  constructor() {
+    afterRenderEffect(() => {
+      const selected = this.selected();
+      const panel = this.selectionPanel()?.nativeElement;
+      if (panel && selected) panel.scrollTop = 0;
+    });
+  }
+
   update(values: Record<string, string | null>): void {
     void this.router.navigate([], {
       relativeTo: this.route,

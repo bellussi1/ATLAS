@@ -20,6 +20,35 @@ form {
   border: 1px solid var(--color-ink);
   cursor: pointer;
 }
+.exploration-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 1.25rem;
+}
+.exploration-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-weight: 500;
+}
+.exploration-actions a + a {
+  background: transparent;
+  color: var(--ink);
+}
+.exploration-actions a:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--paper);
+}
 .research-table {
   display: grid;
 }
@@ -159,25 +188,6 @@ form {
   font-size: 0.8rem;
   color: var(--color-ink-muted);
 }
-.pathways {
-  margin-block: 4rem;
-}
-.pathways > header {
-  display: grid;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.pathways h2 {
-  font-size: clamp(2.2rem, 4vw, 3.6rem);
-  line-height: 1;
-  letter-spacing: -0.055em;
-  margin: 0;
-}
-.pathways > header p {
-  max-width: 35ch;
-  font: 1.2rem/1.5 var(--font-serif);
-  margin: 0;
-}
 .sheet-choice,
 .search-button {
   transition: transform 140ms var(--ease-out);
@@ -190,9 +200,6 @@ form {
   .sheet-choice:hover {
     border-color: var(--color-ink-muted);
   }
-  .pathway:hover strong {
-    color: var(--color-accent);
-  }
 }
 @media (min-width: 48rem) {
   .research-table {
@@ -203,11 +210,6 @@ form {
   }
   .sheet-content {
     padding: 2rem;
-  }
-
-  .pathways > header {
-    grid-template-columns: 1fr 1fr;
-    align-items: end;
   }
 }
 
@@ -375,10 +377,6 @@ form {
 .reading-sheet {
   box-shadow: 4px 4px 0 var(--color-ink);
 }
-.pathways {
-  border-top: 2px solid var(--color-ink);
-  padding-top: 2rem;
-}
 @media (min-width: 48rem) {
   .room-header {
     grid-template-columns: 1.2fr 1fr;
@@ -395,35 +393,4 @@ form {
   .sheet-choice:hover {
     transform: translateY(-3px);
   }
-}
-
-.pathways nav {
-  display: grid;
-}
-.pathway {
-  display: block;
-  color: var(--color-ink);
-  text-decoration: none;
-  padding: 1.5rem 1rem;
-  border-top: 1px solid var(--color-ink);
-  border-left: 6px solid var(--color-teal-paper);
-}
-.pathway--time {
-  border-left-color: var(--color-ochre-paper);
-}
-.pathway--knowledge {
-  border-left-color: var(--color-rose-paper);
-}
-.pathway strong {
-  font-size: 1.8rem;
-  letter-spacing: -0.04em;
-}
-.pathway p {
-  font: 1.1rem/1.5 var(--font-serif);
-  max-width: 58ch;
-}
-.pathway > span {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  font-size: 0.85rem;
 }

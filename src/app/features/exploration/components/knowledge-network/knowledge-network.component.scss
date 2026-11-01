@@ -66,6 +66,32 @@ circle {
 g {
   cursor: pointer;
 }
+.motion-enabled g {
+  transition:
+    transform var(--motion-selection) var(--ease-out),
+    opacity var(--motion-selection) var(--ease-out);
+}
+.motion-enabled path {
+  transition:
+    d var(--motion-selection) var(--ease-out),
+    opacity var(--motion-selection) var(--ease-out);
+}
+@starting-style {
+  .motion-enabled g,
+  .motion-enabled path {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-enabled g,
+  .motion-enabled path {
+    transition: none;
+  }
+}
+:host-context(.atlas-reduced-motion) .motion-enabled g,
+:host-context(.atlas-reduced-motion) .motion-enabled path {
+  transition: none;
+}
 g:hover rect {
   stroke: var(--rule-strong);
 }

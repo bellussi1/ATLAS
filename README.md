@@ -20,9 +20,11 @@ npm start
 
 O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa Angular standalone, TypeScript strict, Angular Router e SCSS. Tailwind CSS está configurado junto aos estilos dos componentes.
 
+O pacote declara ES modules (`"type": "module"`) para os scripts e contratos TypeScript executados pelo Node. A configuração ESLint também usa ESM; configurações CommonJS explícitas mantêm a extensão `.cjs`.
+
 ## Páginas disponíveis
 
-- `/` — home, entrada para a busca universal e mesa de pesquisa.
+- `/` — home, entrada para busca universal, rede, comparadores e mesa de pesquisa.
 - `/marxismo` — leitura contínua com conceitos, pensadores, cronologia, debates e fontes.
 - `/liberalismo` — atlas com rede, cronologia e imagens licenciadas.
 

@@ -39,7 +39,7 @@ export function buildExplorationLayout(graph) {
       edges,
     };
     // Each local view is compiled once. Filtering hides nodes without moving those retained.
-    for (const root of ordered) {
+    const neighborhoods = ordered.map((root) => {
       const links = relations.filter(
         (r) =>
           nodes[r.fromEntityId] &&
@@ -48,13 +48,20 @@ export function buildExplorationLayout(graph) {
       );
       const neighborIds = new Set(links.flatMap((r) => [r.fromEntityId, r.toEntityId]));
       const neighbors = ordered.filter((e) => e.id !== root.id && neighborIds.has(e.id));
-      const height = Math.max(360, Math.ceil(neighbors.length / 2) * 90 + 60);
+      return { root, links, neighbors };
+    });
+    // Stable viewBox per collection prevents zoom/height jumps when the focus changes.
+    const height = Math.max(
+      420,
+      ...neighborhoods.map(({ neighbors }) => Math.ceil(neighbors.length / 2) * 90 + 60),
+    );
+    for (const { root, links, neighbors } of neighborhoods) {
       const localNodes = Object.fromEntries(
         neighbors.map((e, i) => [
           e.id,
           {
             x: i % 2 === 0 ? 145 : 775,
-            y: 60 + Math.floor(i / 2) * 90,
+            y: height / 2 + (Math.floor(i / 2) - (Math.ceil(neighbors.length / 2) - 1) / 2) * 90,
           },
         ]),
       );

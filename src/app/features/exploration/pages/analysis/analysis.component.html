@@ -99,13 +99,14 @@
             [relations]="connections()"
             [layout]="geometry"
             [selectedId]="selected()?.id"
+            [animateSelection]="pointerSelection()"
             (selected)="update({ no: $event })"
           />
         } @else {
           <p>Nenhuma coleção corresponde a este filtro. Remova os filtros para recomeçar.</p>
         }
       </div>
-      <section class="selection" aria-label="Registro selecionado">
+      <section #selectionPanel class="selection" aria-label="Registro selecionado">
         @if (selected(); as entity) {
           <header class="selection-heading">
             <p class="record-meta">

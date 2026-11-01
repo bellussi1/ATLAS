@@ -1,6 +1,74 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
+test('home exposes direct network and comparison entry points on desktop and mobile', async ({
+  page,
+}) => {
+  for (const width of [1440, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    const tools = page.getByRole('navigation', { name: 'Ferramentas de exploração' });
+    await tools.getByRole('link', { name: 'Explorar a rede', exact: true }).click();
+    await expect(page).toHaveURL(/\/rede\/?$/);
+    await expect(page.getByRole('searchbox', { name: 'Encontrar registro' })).toBeVisible();
+    await page.goBack();
+    await tools.getByRole('link', { name: 'Comparar registros', exact: true }).click();
+    await expect(page).toHaveURL(/\/comparar\/?$/);
+    await expect(
+      page.getByRole('combobox', { name: 'Primeiro registro', exact: true }),
+    ).toBeVisible();
+  }
+});
+
+test('network focus changes keep the canvas and page stable, with immediate keyboard and reduced-motion selection', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/rede?colecao=atlas-marx-valor');
+  const smith = page.locator('g[data-node="person-adam-smith"]');
+  const marx = page.locator('g[data-node="person-karl-marx"]');
+  const canvas = page.getByRole('group', { name: 'Rede de entidades' });
+  await smith.scrollIntoViewIfNeeded();
+  const before = await canvas.boundingBox();
+  const scroll = await page.evaluate(() => scrollY);
+  await page.locator('.selection').evaluate((panel) => {
+    panel.scrollTop = 180;
+  });
+  await smith.click();
+  await expect(smith).toHaveAttribute('aria-pressed', 'true');
+  expect((await canvas.boundingBox())!.height).toBeCloseTo(before!.height, 0);
+  expect(Math.abs((await page.evaluate(() => scrollY)) - scroll)).toBeLessThanOrEqual(2);
+  expect(await smith.evaluate((node) => getComputedStyle(node).transitionProperty)).toContain(
+    'transform',
+  );
+  await expect.poll(() => page.locator('.selection').evaluate((panel) => panel.scrollTop)).toBe(0);
+  await marx.focus();
+  await marx.press('Enter');
+  await expect(marx).toHaveAttribute('aria-pressed', 'true');
+  await expect(marx).toBeFocused();
+  expect(
+    await marx.evaluate((node) =>
+      Math.max(
+        ...getComputedStyle(node)
+          .transitionDuration.split(',')
+          .map((value) => parseFloat(value)),
+      ),
+    ),
+  ).toBeLessThanOrEqual(0.001);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await smith.click();
+  await expect(smith).toHaveAttribute('aria-pressed', 'true');
+  expect(
+    await smith.evaluate((node) =>
+      Math.max(
+        ...getComputedStyle(node)
+          .transitionDuration.split(',')
+          .map((value) => parseFloat(value)),
+      ),
+    ),
+  ).toBeLessThanOrEqual(0.001);
+});
+
 test('network search and connections provide a usable mobile path without the diagram', async ({
   page,
 }) => {

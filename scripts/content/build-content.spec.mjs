@@ -96,6 +96,11 @@ test('exploration geometry is keyed by stable IDs and handles missing or single 
   const graph = await readSourceGraph();
   const first = buildExplorationLayout(graph);
   const focused = first.networks['focus:all:person-karl-marx'];
+  assert.equal(focused.height, first.networks['focus:all:person-adam-smith'].height);
+  assert.deepEqual(
+    focused.nodes['person-karl-marx'],
+    first.networks['focus:all:person-adam-smith'].nodes['person-adam-smith'],
+  );
   const direct = graph.atlases
     .flatMap((a) => a.relations)
     .filter((r) => r.fromEntityId === 'person-karl-marx' || r.toEntityId === 'person-karl-marx');

@@ -13,6 +13,7 @@ export class KnowledgeNetworkComponent {
   readonly relations = input.required<readonly Relation[]>();
   readonly layout = input.required<ContentLayouts['exploration']['networks'][string]>();
   readonly selectedId = input<string>();
+  readonly animateSelection = input(false);
   readonly selected = output<string>();
   readonly query = signal('');
   readonly matches = computed(() => {

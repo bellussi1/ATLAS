@@ -34,12 +34,13 @@
   </div>
 }
 @if (selectedId()) {
-  <div class="network-visual">
+  <div class="network-visual" [class.motion-enabled]="animateSelection()">
     <svg [attr.viewBox]="'0 0 920 ' + layout().height" role="group" aria-label="Rede de entidades">
       @for (relation of relations(); track relation.id) {
         <path
           [attr.data-relation]="relation.id"
           [attr.d]="layout().edges[relation.id]"
+          [style.d]="'path(&quot;' + layout().edges[relation.id] + '&quot;)'"
           class="active"
         />
       }
@@ -52,6 +53,7 @@
             [attr.aria-pressed]="selectedId() === entity.id"
             [attr.data-node]="entity.id"
             [attr.transform]="'translate(' + point.x + ',' + point.y + ')'"
+            [style.transform]="'translate(' + point.x + 'px,' + point.y + 'px)'"
             (click)="choose($event, entity.id)"
             (keydown.enter)="choose($event, entity.id)"
             (keydown.space)="choose($event, entity.id)"

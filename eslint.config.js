@@ -1,12 +1,12 @@
 // @ts-check
-const eslint = require('@eslint/js');
-const { defineConfig } = require('eslint/config');
-const tseslint = require('typescript-eslint');
-const angular = require('angular-eslint');
-const simpleImportSort = require('eslint-plugin-simple-import-sort');
-const architecture = require('./scripts/architecture/eslint-boundaries.cjs');
+import eslint from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import tseslint from 'typescript-eslint';
+import angular from 'angular-eslint';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import architecture from './scripts/architecture/eslint-boundaries.cjs';
 
-module.exports = defineConfig([
+export default defineConfig([
   {
     files: ['**/*.ts'],
     extends: [
