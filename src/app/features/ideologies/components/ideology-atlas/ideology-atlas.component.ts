@@ -5,16 +5,10 @@ import { RouterLink } from '@angular/router';
 import type { Entity, Relation } from '@core/content/models/content-schema';
 import { entityContext } from '@core/content/queries/entity-context';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
-import { queryKnowledgeRelations } from '@core/content/queries/knowledge-graph';
-import {
-  ContentRepository,
-  methodologyKnowledgeGraph,
-} from '@core/content/repositories/content-repository.service';
+import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { KnowledgeContextComponent } from '@shared/ui/knowledge-context/knowledge-context.component';
 
 import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
-
-const graph = methodologyKnowledgeGraph;
 
 type ViewMode = 'rede' | 'tempo' | 'imagens';
 type RelationFilter = 'all' | 'discovery' | 'structured';
@@ -51,6 +45,7 @@ export class IdeologyAtlasComponent {
   private readonly document = inject(DOCUMENT);
   private readonly dialog = inject(Dialog);
   private readonly repository = inject(ContentRepository);
+  private readonly graph = this.repository.knowledgeGraph;
   readonly atlasId = input.required<string>();
   readonly rootEntityId = input.required<string>();
   readonly origin = input.required<string>();
@@ -59,7 +54,7 @@ export class IdeologyAtlasComponent {
   readonly embedded = input(false);
   readonly continuous = input(false);
   readonly atlas = computed(
-    () => graph.atlases.find((item) => item.id === this.atlasId()) ?? graph.atlases[0]!,
+    () => this.graph.atlases.find((item) => item.id === this.atlasId()) ?? this.graph.atlases[0]!,
   );
   readonly discoveryLinkCount = computed(
     () => this.atlas().relations.filter((relation) => relation.type === 'encyclopedic-link').length,
@@ -86,7 +81,7 @@ export class IdeologyAtlasComponent {
   readonly entities = computed(() => {
     return this.atlas().entities;
   });
-  readonly allEntities = computed(() => graph.atlases.flatMap((item) => item.entities));
+  readonly allEntities = computed(() => this.graph.atlases.flatMap((item) => item.entities));
   readonly selected = computed(
     () =>
       this.allEntities().find((entity) => entity.id === this.selectedId()) ?? this.entities()[0],
@@ -102,7 +97,7 @@ export class IdeologyAtlasComponent {
     );
   });
   readonly relations = computed(() =>
-    queryKnowledgeRelations(graph, this.selectedId(), { atlasId: this.atlasId() }),
+    this.repository.queryRelations(this.selectedId(), { atlasId: this.atlasId() }),
   );
   readonly visibleRelations = computed(() =>
     this.relations().filter((relation) => {
@@ -122,13 +117,16 @@ export class IdeologyAtlasComponent {
     ]);
     const entities = this.allEntities();
     const items = entities.filter((entity) => visibleIds.has(entity.id));
-    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+    const layout = this.repository.layouts.atlases;
+    const root = layout.order[this.rootEntityId()];
+    if (root === undefined) throw new Error('Raiz do atlas ausente do layout compilado.');
     return items.map((entity) => {
-      if (entity.id === this.rootEntityId()) return { entity, x: 460, y: 286 };
-      const others = entities.filter((item) => item.id !== this.rootEntityId());
-      const position = others.findIndex((item) => item.id === entity.id);
-      const angle = -Math.PI / 2 + position * goldenAngle;
-      return { entity, x: 460 + Math.cos(angle) * 350, y: 286 + Math.sin(angle) * 205 };
+      const position = layout.order[entity.id];
+      const point =
+        entity.id === this.rootEntityId()
+          ? layout.center
+          : layout.slots[position - (position > root ? 1 : 0)];
+      return { entity, ...point };
     });
   });
   readonly graphEdges = computed<GraphEdge[]>(() => {

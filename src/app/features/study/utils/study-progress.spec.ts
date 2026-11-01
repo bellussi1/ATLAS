@@ -1,5 +1,5 @@
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
 import { demonstrationPath } from '@study/data/demonstration-path';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import { emptyProgress, parseProgress, recordAttempt } from './study-progress';
 

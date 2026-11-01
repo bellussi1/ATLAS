@@ -1,0 +1,248 @@
+{
+  "id": "atlas-processo-constituinte",
+  "slug": "processo-constituinte",
+  "title": "Processo Constituinte de 1987–1988",
+  "description": "Pessoas, instituições, evento, obra e lugar documentados na promulgação da Constituição Federal.",
+  "version": "1.0.0",
+  "updatedAt": "2026-10-31",
+  "entityIds": [
+    "person-ulysses-guimaraes",
+    "institution-constituinte-1987",
+    "event-promulgacao-constituicao-1988",
+    "place-plenario-camara",
+    "work-constituicao-federal-1988"
+  ],
+  "entities": [
+    {
+      "id": "person-ulysses-guimaraes",
+      "slug": "ulysses-guimaraes",
+      "title": "Ulysses Guimarães",
+      "summary": "Deputado que presidiu a Assembleia Nacional Constituinte de 1987–1988 e declarou promulgada a Constituição em 5 de outubro de 1988.",
+      "aliases": ["Ulysses Silveira Guimarães"],
+      "context": "Atuação documentada em registros oficiais da Câmara dos Deputados; as relações registradas aqui descrevem funções e atos documentados, sem inferir influência por proximidade temporal.",
+      "temporalExtent": {
+        "startYear": 1916,
+        "endYear": 1992,
+        "precision": "year",
+        "label": "1916–1992"
+      },
+      "uncertainty": "low",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Na Constituinte",
+          "paragraphs": [
+            "A Câmara dos Deputados registra que Ulysses Guimarães presidiu a Assembleia Nacional Constituinte de 1987–1988 e promulgou a Constituição Federal."
+          ]
+        }
+      ],
+      "kind": "person"
+    },
+    {
+      "id": "institution-constituinte-1987",
+      "slug": "assembleia-nacional-constituinte-1987",
+      "title": "Assembleia Nacional Constituinte de 1987–1988",
+      "summary": "Assembleia responsável pelos trabalhos que resultaram na Constituição promulgada em 5 de outubro de 1988.",
+      "aliases": ["ANC de 1987–1988", "Assembleia Nacional Constituinte"],
+      "context": "Instituição legislativa constituinte situada no processo de elaboração da Constituição Federal de 1988.",
+      "temporalExtent": {
+        "startYear": 1987,
+        "endYear": 1988,
+        "precision": "range",
+        "label": "1987–1988"
+      },
+      "uncertainty": "low",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Trabalhos constituintes",
+          "paragraphs": [
+            "Os registros da Câmara situam os trabalhos da Assembleia Nacional Constituinte entre 1987 e 1988."
+          ]
+        }
+      ],
+      "kind": "institution"
+    },
+    {
+      "id": "event-promulgacao-constituicao-1988",
+      "slug": "promulgacao-constituicao-1988",
+      "title": "Promulgação da Constituição Federal de 1988",
+      "summary": "Sessão de promulgação realizada em 5 de outubro de 1988.",
+      "aliases": ["Promulgação da Constituição de 1988"],
+      "context": "Evento delimitado pelo registro oficial da sessão da Assembleia Nacional Constituinte.",
+      "temporalExtent": {
+        "startYear": 1988,
+        "endYear": 1988,
+        "precision": "year",
+        "label": "5 de outubro de 1988"
+      },
+      "uncertainty": "low",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Sessão de promulgação",
+          "paragraphs": [
+            "O Diário da Assembleia Nacional Constituinte registra a sessão destinada à promulgação da Constituição em 5 de outubro de 1988."
+          ]
+        }
+      ],
+      "kind": "event"
+    },
+    {
+      "id": "place-plenario-camara",
+      "slug": "plenario-camara-dos-deputados",
+      "title": "Plenário da Câmara dos Deputados",
+      "summary": "Local da sessão solene de promulgação da Constituição em 5 de outubro de 1988, conforme o registro histórico da Câmara.",
+      "aliases": ["Plenário da Câmara"],
+      "context": "Lugar histórico associado à sessão de promulgação; o registro não presume que a denominação atual do plenário fosse usada em 1988.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Sessão histórica",
+          "paragraphs": [
+            "A Câmara dos Deputados situa a sessão de promulgação no Plenário da Casa."
+          ]
+        }
+      ],
+      "kind": "place"
+    },
+    {
+      "id": "work-constituicao-federal-1988",
+      "slug": "constituicao-federal-1988",
+      "title": "Constituição da República Federativa do Brasil de 1988",
+      "summary": "Texto constitucional promulgado em 5 de outubro de 1988.",
+      "aliases": ["Constituição Federal de 1988", "CF/88"],
+      "context": "Obra normativa primária; o texto consolidado deve ser distinguido da publicação original e de suas emendas.",
+      "temporalExtent": {
+        "startYear": 1988,
+        "endYear": null,
+        "precision": "year",
+        "label": "Promulgada em 1988; texto consolidado atualizado"
+      },
+      "uncertainty": "low",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Texto constitucional",
+          "paragraphs": [
+            "A Câmara dos Deputados disponibiliza o texto atualizado da Constituição Federal promulgada em 1988."
+          ]
+        }
+      ],
+      "kind": "work"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source-camara-ulysses",
+      "title": "Ulysses Guimarães — Portal da Câmara dos Deputados",
+      "url": "https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/25-anos-da-constituicao-de-1988/ULYSSES-GUIMARAES-vinte-anos-do-seu-desaparecimento",
+      "edition": "Perfil institucional",
+      "publicationDate": null
+    },
+    {
+      "id": "source-camara-constituinte",
+      "title": "30 anos da Constituinte — Portal da Câmara dos Deputados",
+      "url": "https://www.camara.leg.br/internet/agencia/infograficos-html5/constituinte/index.html",
+      "edition": "Infográfico institucional sobre a Constituinte",
+      "publicationDate": null
+    },
+    {
+      "id": "source-diario-promulgacao",
+      "title": "Diário da Assembleia Nacional Constituinte — 5 de outubro de 1988",
+      "url": "https://www2.camara.leg.br/atividade-legislativa/plenario/discursos/escrevendohistoria/destaque-de-materias/o-discurso-parlamentar-e-a-constituicao-cidada/308anc05out1988.pdf",
+      "edition": "Diário da ANC, p. 14377",
+      "publicationDate": "1988-10-05"
+    }
+  ],
+  "evidences": [
+    {
+      "id": "evidence-ulysses-presidency",
+      "sourceId": "source-camara-ulysses",
+      "locator": "Parágrafo que registra a presidência da Câmara e, cumulativamente, da Assembleia Nacional Constituinte em 1987–1988",
+      "accessedAt": "2026-10-31",
+      "note": "A mesma passagem registra que, nessa condição, promulgou a Constituição Federal."
+    },
+    {
+      "id": "evidence-anc-period",
+      "sourceId": "source-camara-constituinte",
+      "locator": "Cronologia e seção sobre os trabalhos da Assembleia Nacional Constituinte",
+      "accessedAt": "2026-10-31",
+      "note": "Registra o processo constituinte e a sessão de promulgação."
+    },
+    {
+      "id": "evidence-promulgation-diary",
+      "sourceId": "source-diario-promulgacao",
+      "locator": "Diário da ANC, 5 out. 1988, p. 14377, sessão solene de promulgação",
+      "accessedAt": "2026-10-31",
+      "note": "O registro identifica Ulysses Guimarães como presidente da sessão e contém a declaração de promulgação."
+    },
+    {
+      "id": "evidence-plenary-location",
+      "sourceId": "source-camara-constituinte",
+      "locator": "Seção sobre a sessão solene de 5 de outubro de 1988",
+      "accessedAt": "2026-10-31",
+      "note": "A página situa a sessão de promulgação no Plenário da Câmara dos Deputados."
+    }
+  ],
+  "citations": [],
+  "claims": [],
+  "reviews": [],
+  "assetLicenses": [],
+  "relations": [
+    {
+      "id": "relation-ulysses-presided-anc",
+      "fromEntityId": "person-ulysses-guimaraes",
+      "toEntityId": "institution-constituinte-1987",
+      "type": "documented-association",
+      "label": "presidiu",
+      "reverseLabel": "foi presidida por",
+      "context": "A Câmara registra a presidência de Ulysses Guimarães na Assembleia Nacional Constituinte de 1987–1988.",
+      "temporalExtent": {
+        "startYear": 1987,
+        "endYear": 1988,
+        "precision": "range",
+        "label": "1987–1988"
+      },
+      "uncertainty": "low",
+      "evidenceIds": ["evidence-ulysses-presidency"]
+    },
+    {
+      "id": "relation-event-promulgated-work",
+      "fromEntityId": "event-promulgacao-constituicao-1988",
+      "toEntityId": "work-constituicao-federal-1988",
+      "type": "documented-association",
+      "label": "promulgou",
+      "reverseLabel": "foi promulgada no evento",
+      "context": "O Diário da ANC registra a sessão de promulgação e identifica o texto constitucional promulgado.",
+      "temporalExtent": {
+        "startYear": 1988,
+        "endYear": 1988,
+        "precision": "year",
+        "label": "5 de outubro de 1988"
+      },
+      "uncertainty": "low",
+      "evidenceIds": ["evidence-promulgation-diary"]
+    },
+    {
+      "id": "relation-event-took-place-at-plenary",
+      "fromEntityId": "event-promulgacao-constituicao-1988",
+      "toEntityId": "place-plenario-camara",
+      "type": "documented-association",
+      "label": "ocorreu em",
+      "reverseLabel": "sediou",
+      "context": "A Câmara dos Deputados situa a sessão solene no plenário da Casa.",
+      "temporalExtent": {
+        "startYear": 1988,
+        "endYear": 1988,
+        "precision": "year",
+        "label": "5 de outubro de 1988"
+      },
+      "uncertainty": "low",
+      "evidenceIds": ["evidence-plenary-location"]
+    }
+  ],
+  "learningPaths": []
+}

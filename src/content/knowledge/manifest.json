@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "knowledge-graph-atlas",
+  "version": "1.0.0",
+  "updatedAt": "2026-10-31",
+  "collections": [
+    {
+      "id": "atlas-methodology",
+      "file": "collections/atlas-methodology.39c50b68cce538706d9473c9de2b648a8591869cdd3c504069b9a98fe699f5e1.json",
+      "sha256": "39c50b68cce538706d9473c9de2b648a8591869cdd3c504069b9a98fe699f5e1"
+    },
+    {
+      "id": "atlas-processo-constituinte",
+      "file": "collections/atlas-processo-constituinte.e25d7e7d40fa023dae6e3d7092308eda786ec2e32039f6980b3156ef51fb5801.json",
+      "sha256": "e25d7e7d40fa023dae6e3d7092308eda786ec2e32039f6980b3156ef51fb5801"
+    },
+    {
+      "id": "atlas-direitos-constitucionais",
+      "file": "collections/atlas-direitos-constitucionais.77ef150c89f14bb67716a1eaf0595bb8cace5209de87b4059d73b741fa071b8a.json",
+      "sha256": "77ef150c89f14bb67716a1eaf0595bb8cace5209de87b4059d73b741fa071b8a"
+    },
+    {
+      "id": "atlas-liberalism",
+      "file": "collections/atlas-liberalism.9f5d18c2788b5b3839e0b7b6224620e5f20ee73fb6ce4eb54eda5564d4149c71.json",
+      "sha256": "9f5d18c2788b5b3839e0b7b6224620e5f20ee73fb6ce4eb54eda5564d4149c71"
+    },
+    {
+      "id": "atlas-marx-valor",
+      "file": "collections/atlas-marx-valor.ebdcbab37c547dca3be7ee2f170694f16bcf04e9f37ba7bf8e2de9acb4cfe53e.json",
+      "sha256": "ebdcbab37c547dca3be7ee2f170694f16bcf04e9f37ba7bf8e2de9acb4cfe53e"
+    }
+  ]
+}

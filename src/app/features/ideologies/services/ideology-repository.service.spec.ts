@@ -2,11 +2,12 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
 import {
   type IdeologyDossier,
   validateIdeologyDossier,
 } from '@ideologies/models/ideology-page.schema';
+import { provideContentFixture } from '@testing/content-fixture';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 import { firstValueFrom } from 'rxjs';
 
 import marxismoGraph from '../../../../content/graph/marxismo.json';
@@ -17,6 +18,7 @@ describe('IdeologyRepository', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [
+        ...provideContentFixture(),
         provideHttpClient(),
         provideHttpClientTesting(),
         { provide: PLATFORM_ID, useValue: 'browser' },

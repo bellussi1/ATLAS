@@ -32,6 +32,12 @@
               {
                 "glob": "**/*",
                 "input": "src/content",
+                "output": "content",
+                "ignore": ["knowledge/**", "atlas.json"]
+              },
+              {
+                "glob": "**/*.json",
+                "input": "generated/content",
                 "output": "content"
               }
             ],

@@ -1,7 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import type { KnowledgeGraph } from '@core/content/models/content-schema';
-import { queryKnowledgeRelations } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasEditorialLinkDirective } from '@shared/directives/editorial-link/editorial-link.directive';
 interface NodeRecord {
@@ -118,7 +117,7 @@ export class AtlasEvidenceNetworkComponent {
   );
   readonly connections = computed(() => {
     const selectedId = this.selectedId();
-    const relations = queryKnowledgeRelations(this.graph, selectedId).map((relation) => ({
+    const relations = this.repository.queryRelations(selectedId).map((relation) => ({
       from: selectedId,
       label: relation.label,
       context: relation.context,

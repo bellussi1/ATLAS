@@ -1,5 +1,5 @@
 import type { ContentRepository } from '@core/content/repositories/content-repository.service';
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import { entityContext } from './entity-context';
 

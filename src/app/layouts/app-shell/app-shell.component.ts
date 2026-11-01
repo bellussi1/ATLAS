@@ -2,14 +2,23 @@ import { DOCUMENT } from '@angular/common';
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  NavigationEnd,
+  NavigationError,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { BreadcrumbsComponent } from '@shared/ui/breadcrumbs/breadcrumbs.component';
 import { AtlasEditorialMarkComponent } from '@shared/ui/editorial-mark/editorial-mark.component';
+import { AtlasNoticeComponent } from '@shared/ui/notice/notice.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     AtlasEditorialMarkComponent,
+    AtlasNoticeComponent,
     BreadcrumbsComponent,
     RouterLink,
     RouterLinkActive,
@@ -33,11 +42,17 @@ export class AppComponent {
   private pageFrame = 0;
   readonly composition = signal(0);
   readonly instantComposition = signal(false);
+  readonly failedNavigation = signal<string | null>(null);
 
   constructor() {
     let previousPath: string | undefined;
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
+      if (event instanceof NavigationError) {
+        this.failedNavigation.set(event.url);
+        return;
+      }
       if (!(event instanceof NavigationEnd)) return;
+      this.failedNavigation.set(null);
       const path = event.urlAfterRedirects.split(/[?#]/)[0];
       this.updatePageMetadata(path);
       if (path === previousPath) return;
@@ -48,6 +63,17 @@ export class AppComponent {
       this.pageAnimation?.cancel();
       this.document.defaultView?.cancelAnimationFrame?.(this.pageFrame);
     });
+  }
+
+  retryNavigation(): void {
+    const path = this.failedNavigation();
+    if (path)
+      void this.router
+        .navigateByUrl(path)
+        .then((success) => {
+          if (success) this.focusMainContent();
+        })
+        .catch(() => undefined);
   }
 
   setInputMode(keyboard: boolean): void {

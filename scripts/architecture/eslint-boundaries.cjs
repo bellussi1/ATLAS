@@ -4,6 +4,7 @@ const ts = require('typescript');
 
 const appRoot = path.resolve(__dirname, '../../src/app');
 const aliases = {
+  '@testing/': '../testing/',
   '@core/': 'core/',
   '@shared/': 'shared/',
   '@ideologies/': 'features/ideologies/',
@@ -34,6 +35,8 @@ function layer(filename) {
 function violation(from, to) {
   const source = layer(from);
   const target = layer(to);
+  if (target.startsWith('../testing/') && !source.endsWith('.spec.ts'))
+    return 'Fixtures de teste não podem entrar no código de produção.';
   const feature = source.match(/^features\/([^/]+)\//)?.[1];
   const targetFeature = target.match(/^features\/([^/]+)\//)?.[1];
   if (/^(core|shared)\//.test(source) && /^(features|pages|layouts)\//.test(target))

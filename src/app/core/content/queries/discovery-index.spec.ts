@@ -1,4 +1,4 @@
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import {
   buildDiscoveryIndex,

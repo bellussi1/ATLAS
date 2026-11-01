@@ -2,10 +2,9 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { entityContext } from '@core/content/queries/entity-context';
-import {
-  type ContentRepository,
-  methodologyKnowledgeGraph,
-} from '@core/content/repositories/content-repository.service';
+import { type ContentRepository } from '@core/content/repositories/content-repository.service';
+import { provideContentFixture } from '@testing/content-fixture';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import { KnowledgeContextComponent } from './knowledge-context.component';
 
@@ -17,6 +16,7 @@ describe('KnowledgeContextComponent', () => {
     );
     TestBed.configureTestingModule({
       providers: [
+        ...provideContentFixture(),
         provideHttpClient(),
         { provide: DIALOG_DATA, useValue: record },
         { provide: DialogRef, useValue: { close: vi.fn() } },
@@ -44,6 +44,7 @@ describe('KnowledgeContextComponent', () => {
   it('renders editorial records with missing URLs and no connections without false links', () => {
     TestBed.configureTestingModule({
       providers: [
+        ...provideContentFixture(),
         provideHttpClient(),
         { provide: DialogRef, useValue: { close: vi.fn() } },
         {

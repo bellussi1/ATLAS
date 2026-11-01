@@ -1,0 +1,150 @@
+import './register-source-modules.mjs';
+import { randomUUID } from 'node:crypto';
+import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
+import { join, resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+
+import { formatJson, readSourceGraph, sha256, validateSourceGraph } from './source-graph.mjs';
+
+const { buildDiscoveryIndex } =
+  await import('../../src/app/core/content/queries/discovery-index.ts');
+const { queryKnowledgeRelations } =
+  await import('../../src/app/core/content/queries/knowledge-graph.ts');
+const { graphGeometry, temporalAxis } =
+  await import('../../src/app/features/ideologies/utils/visualization-geometry.ts');
+const { publishedIdeologies } =
+  await import('../../src/app/features/ideologies/data/published-ideologies.ts');
+const { validateIdeologyDossier } =
+  await import('../../src/app/features/ideologies/models/ideology-page.schema.ts');
+const { contentManifestSchema, searchIndexSchema, adjacencySchema, layoutsSchema } =
+  await import('../../src/app/core/content/models/content-artifacts.ts');
+const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
+
+async function atomicFile(path, body) {
+  const pending = `${path}.pending-${randomUUID()}`;
+  try {
+    await writeFile(pending, body, { flag: 'wx' });
+    await rename(pending, path);
+  } finally {
+    await unlink(pending).catch((error) => {
+      if (error.code !== 'ENOENT') throw error;
+    });
+  }
+}
+
+export async function buildContent({
+  graph: input,
+  outputDirectory = join(projectRoot, 'generated/content'),
+  fixture = false,
+} = {}) {
+  const graph = validateSourceGraph(input ?? (await readSourceGraph()));
+  const entities = graph.atlases.flatMap((atlas) => atlas.entities);
+  const search = searchIndexSchema.parse(buildDiscoveryIndex(graph));
+  const adjacency = adjacencySchema.parse(
+    Object.fromEntries(
+      entities.map((entity) => [entity.id, queryKnowledgeRelations(graph, entity.id)]),
+    ),
+  );
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  const layouts = {
+    atlases: {
+      center: { x: 460, y: 286 },
+      order: Object.fromEntries(entities.map((entity, index) => [entity.id, index])),
+      slots: entities.slice(1).map((_, position) => {
+        const angle = -Math.PI / 2 + position * goldenAngle;
+        return { x: 460 + Math.cos(angle) * 350, y: 286 + Math.sin(angle) * 205 };
+      }),
+    },
+    editorial: {},
+  };
+  for (const [slug, recipe] of Object.entries(publishedIdeologies)) {
+    const load = async (url) =>
+      JSON.parse(await readFile(join(projectRoot, 'src', url.slice(1)), 'utf8'));
+    const dossier = validateIdeologyDossier(
+      await load(recipe.pageUrl),
+      await load(recipe.supplementUrl),
+      graph,
+    );
+    const geometry = { graphs: {}, timelines: {} };
+    for (const chapter of dossier.page.chapters) {
+      chapter.blocks.forEach((block, index) => {
+        const key = `${chapter.id}-${index}`;
+        if (block.type === 'graph')
+          geometry.graphs[key] = graphGeometry(
+            dossier.supplement.edges.filter((edge) => block.edgeIds.includes(edge.id)),
+          );
+        if (block.type === 'timeline') {
+          const dated = block.entityIds.flatMap((id) => {
+            const entity = entities.find((entity) => entity.id === id);
+            const year = entity?.temporalExtent?.startYear;
+            return year == null ? [] : [{ id, year }];
+          });
+          const axis = temporalAxis(dated.map((entry) => entry.year));
+          geometry.timelines[key] = axis
+            ? {
+                ticks: axis.ticks,
+                markers: dated.map((entry, i) => ({ ...entry, x: axis.positions[i] })),
+              }
+            : null;
+        }
+      });
+    }
+    layouts.editorial[slug] = geometry;
+  }
+  layoutsSchema.parse(layouts);
+  const assets = [];
+  const asset = async (name, value) => {
+    const bytes = `${JSON.stringify(value)}\n`;
+    const hash = sha256(bytes);
+    const resource = {
+      file: `${name}.${hash}.json`,
+      sha256: hash,
+      bytes: Buffer.byteLength(bytes),
+    };
+    assets.push({ ...resource, body: bytes });
+    return resource;
+  };
+  const collections = [];
+  for (const atlas of graph.atlases)
+    collections.push({ id: atlas.id, ...(await asset(atlas.id, atlas)) });
+  const resources = {
+    schemaVersion: 1,
+    graph: { id: graph.id, version: graph.version, updatedAt: graph.updatedAt },
+    collections,
+    search: await asset('search', search),
+    adjacency: await asset('adjacency', adjacency),
+    layouts: await asset('layouts', layouts),
+  };
+  const manifest = contentManifestSchema.parse({
+    ...resources,
+    release: sha256(JSON.stringify(resources)),
+  });
+  await mkdir(outputDirectory, { recursive: true });
+  for (const resource of assets)
+    await atomicFile(join(outputDirectory, resource.file), resource.body);
+  await atomicFile(join(outputDirectory, 'manifest.json'), await formatJson(manifest));
+  if (fixture) {
+    await mkdir(join(projectRoot, 'generated/testing'), { recursive: true });
+    await atomicFile(
+      join(projectRoot, 'generated/testing/content-fixture.json'),
+      await formatJson({
+        graph,
+        search,
+        adjacency,
+        layouts,
+        manifest,
+        assets: Object.fromEntries(
+          assets.map((resource) => [`/content/${resource.file}`, resource.body]),
+        ),
+      }),
+    );
+  }
+  return manifest;
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  const manifest = await buildContent({ fixture: true });
+  console.log(
+    `Conteúdo compilado: ${manifest.collections.length} coleções; release ${manifest.release}`,
+  );
+}

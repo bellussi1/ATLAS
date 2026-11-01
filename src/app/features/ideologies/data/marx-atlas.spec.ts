@@ -1,6 +1,6 @@
 import { safeDiscoveryOrigin } from '@core/content/queries/discovery-index';
 import { queryKnowledgeRelations } from '@core/content/queries/knowledge-graph';
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 describe('Marxism atlas content', () => {
   it('integrates a diverse reconciled Wikimedia snapshot without duplicating legacy records', () => {

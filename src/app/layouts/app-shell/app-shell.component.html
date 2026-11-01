@@ -50,6 +50,14 @@
 <app-breadcrumbs />
 
 <main id="conteudo" tabindex="-1">
+  @if (failedNavigation()) {
+    <app-notice tone="critical" accessibleRole="alert">
+      <p>Não foi possível carregar a leitura. Seu contexto anterior foi preservado.</p>
+      <button type="button" class="atlas-button" (click)="retryNavigation()">
+        Tentar novamente
+      </button>
+    </app-notice>
+  }
   <router-outlet />
 </main>
 

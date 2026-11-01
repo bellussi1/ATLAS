@@ -47,6 +47,19 @@ function overlapsPeriod(
   return (toYear === undefined || start <= toYear) && (fromYear === undefined || end >= fromYear);
 }
 
+export function filterKnowledgeRelations(
+  results: readonly KnowledgeRelationResult[],
+  query: KnowledgeRelationQuery = {},
+): KnowledgeRelationResult[] {
+  return results.filter(
+    (result) =>
+      (query.atlasId === undefined || result.atlasId === query.atlasId) &&
+      (!query.direction || query.direction === 'both' || result.direction === query.direction) &&
+      (!query.type || result.relationType === query.type) &&
+      overlapsPeriod(result.temporalExtent, query.fromYear, query.toYear),
+  );
+}
+
 export function queryKnowledgeEntities(
   graph: KnowledgeGraph,
   query: KnowledgeEntityQuery = {},

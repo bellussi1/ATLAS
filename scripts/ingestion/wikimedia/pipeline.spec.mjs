@@ -5,8 +5,9 @@ import { join } from 'node:path';
 import test from 'node:test';
 
 import { runIngestion } from './pipeline.mjs';
+import { readSourceGraph, readSourceGraphBytes } from '../../content/source-graph.mjs';
 
-const baselinePath = new URL('../../../src/content/atlas.json', import.meta.url);
+const baselinePath = new URL('./raw/liberalism/2026-11-01/baseline.json', import.meta.url);
 const config = {
   id: 'atlas-liberalism',
   slug: 'atlas-liberalismo',
@@ -156,6 +157,22 @@ test('a Windows checkout with CRLF preserves the same baseline identity', async 
   await runIngestion({ ...options, mode: 'offline' });
   const manifest = JSON.parse(await readFile(join(options.archiveDir, 'manifest.json')));
   assert.equal(JSON.parse(await readFile(options.outputPath)).updatedAt, manifest.capturedAt);
+});
+
+test('default publication atomically replaces the source manifest and preserves offline replay', async () => {
+  const options = await scenario();
+  const sourceRoot = join(options.directory, 'knowledge');
+  await runIngestion({ ...options, mode: 'capture', sourceRoot, outputPath: undefined });
+  const first = await readSourceGraphBytes(sourceRoot);
+  await runIngestion({ ...options, mode: 'offline', sourceRoot, outputPath: undefined });
+  assert.deepEqual(await readSourceGraphBytes(sourceRoot), first);
+  assert.equal((await readSourceGraph(sourceRoot)).atlases.length, 5);
+  const manifest = JSON.parse(await readFile(join(sourceRoot, 'manifest.json')));
+  assert.equal(manifest.collections.length, 5);
+  assert.equal(
+    (await readdir(sourceRoot)).some((name) => name.includes('.pending-')),
+    false,
+  );
 });
 
 test('missing response, changed configuration or API error fails closed without network fallback', async () => {

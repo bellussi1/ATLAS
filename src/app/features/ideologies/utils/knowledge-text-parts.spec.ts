@@ -1,6 +1,6 @@
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
 import { terms } from '@ideologies/data/knowledge-vocabulary';
 import { knowledgeTextParts } from '@ideologies/utils/knowledge-text-parts';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 describe('Contextual editorial terms', () => {
   it('reuses the same contract for Liberalism and every vocabulary ID exists', () => {

@@ -1,6 +1,6 @@
 import { routes } from '@app/app.routes';
 import { safeDiscoveryOrigin } from '@core/content/queries/discovery-index';
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import supplement from '../../../../content/graph/marxismo.json';
 import anarquismo from '../../../../content/ideologies/examples/anarquismo.json';

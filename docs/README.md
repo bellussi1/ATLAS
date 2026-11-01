@@ -11,6 +11,7 @@ O escopo público atual contém `/`, `/marxismo` e `/liberalismo`. Os documentos
 - [Arquitetura](architecture/ARCHITECTURE.md)
 - [Diagnóstico, contratos e migração da exploração contextual](architecture/EXPLORACAO-CONTEXTUAL.md)
 - [Ingestão Wikimedia reproduzível](architecture/INGESTAO-REPRODUZIVEL.md)
+- [Dados particionados e carregamento](architecture/DADOS-E-CARREGAMENTO.md)
 
 ## Design
 
@@ -22,6 +23,7 @@ O escopo público atual contém `/`, `/marxismo` e `/liberalismo`. Os documentos
 - [Piloto e verificação](quality/PILOTO-E-VERIFICACAO.md)
 - [Validação da primeira fatia de exploração](quality/EXPLORACAO-CONTEXTUAL.md)
 - [Validação da ingestão reproduzível](quality/INGESTAO-REPRODUZIVEL.md)
+- [Validação de dados e carregamento](quality/DADOS-E-CARREGAMENTO.md)
 
 ## Referências
 

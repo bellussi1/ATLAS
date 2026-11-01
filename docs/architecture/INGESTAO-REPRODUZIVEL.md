@@ -19,7 +19,7 @@ npm run test:ingestion
 npm run ingest:liberalism -- --capture scripts/ingestion/wikimedia/raw/liberalism/nova-versao --output output/ingestion/liberalism-novo.json
 ```
 
-Sem `--output`, o destino é `src/content/atlas.json`. Um replay só pode substituir um destino que ainda corresponda ao grafo de entrada da captura ou ao resultado daquela captura. JSON equivalente com CRLF ou outra indentação é aceito; alterações de conteúdo exigem nova captura sobre a base atual. Para atualizar a base após revisão, executar uma nova captura ou reproduzir a captura correspondente; não copiar por cima de curadoria posterior nem contornar a proteção de destino.
+Após a fase 2, sem `--output`, o destino é `src/content/knowledge/manifest.json`: o escritor valida e grava coleções imutáveis antes de trocar o manifesto. A base padrão também vem dessa composição; o antigo JSON global foi removido. Um replay só pode substituir um destino que ainda corresponda ao grafo de entrada da captura ou ao resultado daquela captura. JSON equivalente com CRLF ou outra indentação é aceito; alterações de conteúdo exigem nova captura sobre a base atual. Saídas isoladas explicitamente escolhidas continuam sendo um JSON completo. Veja [Dados e carregamento](DADOS-E-CARREGAMENTO.md).
 
 `--input <arquivo>` escolhe a base de uma **nova captura**. O modo offline ignora o relógio e usa exclusivamente a configuração, a data e a política de mídia guardadas no manifest; rejeita `--input` e `--media`. A configuração atual pode evoluir sem modificar a receita arquivada. A API interna permite fornecer uma configuração esperada e rejeita divergências.
 

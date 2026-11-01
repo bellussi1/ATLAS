@@ -17,6 +17,7 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run test:ingestion
+      - run: npm run test:content
       - run: npm run ingest:verify
       - run: npm run build
       - run: npm run check:links

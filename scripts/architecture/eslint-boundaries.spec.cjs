@@ -48,6 +48,13 @@ test('allows feature to core and central route composition', () => {
   assert.deepEqual(lint('app.routes.ts', "import '@ideologies/routes/ideologies.routes';"), []);
 });
 
+test('keeps assembled test snapshots out of production imports', () => {
+  const messages = lint('core/content/example.ts', "import '@testing/content-fixture';");
+  assert.equal(messages.length, 1);
+  assert.equal(messages[0].messageId, 'boundary');
+  assert.deepEqual(lint('core/content/example.spec.ts', "import '@testing/content-fixture';"), []);
+});
+
 test('keeps models and services independent of presentation', () => {
   for (const file of [
     'features/ideologies/models/example.ts',

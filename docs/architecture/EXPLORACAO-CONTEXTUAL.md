@@ -81,7 +81,9 @@ Conexão deve apresentar destino + verbo orientado + natureza + estado; evidênc
 
 ## Migração, dependências, riscos e rollback
 
-Atualização da fase 1: a implementação de captura/replay, reconciliação e publicação validada está em [Ingestão reproduzível](INGESTAO-REPRODUZIVEL.md). A tabela abaixo mantém a sequência de dependências; fases 2–5 continuam pendentes. Os riscos de ingestão ao vivo descritos no diagnóstico original são tratados pelo replay arquivado, sem transformar uma nova coleta online em operação determinística.
+Atualização da fase 1: a implementação de captura/replay, reconciliação e publicação validada está em [Ingestão reproduzível](INGESTAO-REPRODUZIVEL.md). Naquela entrega, fases 2–5 permaneciam pendentes. Os riscos de ingestão ao vivo descritos no diagnóstico original são tratados pelo replay arquivado, sem transformar uma nova coleta online em operação determinística.
+
+Atualização posterior da fase 2: [Dados e carregamento](DADOS-E-CARREGAMENTO.md) implementa as coleções com manifesto, índices/layouts de build e carregamento/cache/TransferState. Fases 3–5 continuam pendentes; as descrições de `atlas.json` e processamento em runtime no diagnóstico inicial são históricas.
 
 | Fase | Entrega e dependência | Verificação | Rollback |
 | --- | --- | --- | --- |

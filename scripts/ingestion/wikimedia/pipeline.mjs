@@ -3,6 +3,11 @@ import { access, mkdir, readFile, rename, unlink, writeFile } from 'node:fs/prom
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import prettier from 'prettier';
+import {
+  readSourceGraphBytes,
+  sourceDirectory,
+  writeSourceGraph,
+} from '../../content/source-graph.mjs';
 
 import { knowledgeGraphSchema } from '../../../src/app/core/content/models/content-schema.ts';
 import {
@@ -45,8 +50,26 @@ function contentHash(bytes) {
   }
 }
 
-async function publish(outputPath, bytes, allowedHashes, allowedContentHashes, media, mediaRoot) {
-  const current = await readOptional(outputPath);
+async function publish(
+  outputPath,
+  bytes,
+  allowedHashes,
+  allowedContentHashes,
+  media,
+  mediaRoot,
+  canonical,
+) {
+  const readCurrent = canonical
+    ? async () => {
+        try {
+          return await readSourceGraphBytes(canonical);
+        } catch (error) {
+          if (error.code === 'ENOENT') return null;
+          throw error;
+        }
+      }
+    : () => readOptional(outputPath);
+  const current = await readCurrent();
   if (
     current &&
     !allowedHashes.includes(digest(current)) &&
@@ -72,10 +95,12 @@ async function publish(outputPath, bytes, allowedHashes, allowedContentHashes, m
       await writeFile(path, item.bytes, { flag: 'wx' });
       createdMedia.push(path);
     }
-    const latest = await readOptional(outputPath);
+    const latest = await readCurrent();
     if ((latest && digest(latest)) !== outputHash)
       throw Error('O destino mudou durante a ingestão; publicação cancelada.');
-    await rename(pending, outputPath);
+    if (canonical)
+      await writeSourceGraph(JSON.parse(bytes.toString('utf8')), { directory: canonical });
+    else await rename(pending, outputPath);
   } catch (error) {
     for (const path of createdMedia) await unlink(path);
     throw error;
@@ -91,8 +116,9 @@ export async function runIngestion({
   config: suppliedConfig,
   mode,
   archiveDir,
-  baselinePath = join(projectRoot, 'src/content/atlas.json'),
-  outputPath = join(projectRoot, 'src/content/atlas.json'),
+  baselinePath,
+  sourceRoot = sourceDirectory,
+  outputPath = join(sourceRoot, 'manifest.json'),
   mediaMode = 'preserve',
   mediaRoot = join(projectRoot, 'public'),
   fetchResource = getResource,
@@ -135,7 +161,7 @@ export async function runIngestion({
     } catch (error) {
       if (error.code !== 'ENOENT') throw error;
     }
-    baseline = await readFile(baselinePath);
+    baseline = baselinePath ? await readFile(baselinePath) : await readSourceGraphBytes(sourceRoot);
     capturedAt = new Date().toISOString().slice(0, 10);
     client = captureClient(fetchResource);
   }
@@ -158,7 +184,7 @@ export async function runIngestion({
   });
   knowledgeGraphSchema.parse(result.graph);
   reconcileRequests(result.graph, []);
-  const formatting = await prettier.resolveConfig(join(projectRoot, 'src/content/atlas.json'));
+  const formatting = await prettier.resolveConfig(join(sourceRoot, 'manifest.json'));
   const bytes = Buffer.from(
     await prettier.format(JSON.stringify(result.graph), {
       ...formatting,
@@ -197,6 +223,7 @@ export async function runIngestion({
     [contentHash(baseline), contentHash(bytes)],
     result.mediaWrites,
     mediaRoot,
+    resolve(outputPath) === resolve(sourceRoot, 'manifest.json') ? sourceRoot : null,
   );
   return {
     snapshotHash,

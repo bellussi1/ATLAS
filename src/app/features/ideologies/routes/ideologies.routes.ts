@@ -1,8 +1,10 @@
 import { type Routes } from '@angular/router';
+import { knowledgeContentResolver } from '@core/routing/knowledge-content.resolver';
 
 export const ideologyRoutes: Routes = [
   {
     path: 'marxismo',
+    resolve: { knowledge: knowledgeContentResolver },
     loadComponent: () =>
       import('@ideologies/pages/ideology/ideology-page.component').then(
         (m) => m.IdeologyPageComponent,
@@ -15,6 +17,7 @@ export const ideologyRoutes: Routes = [
   },
   {
     path: 'liberalismo',
+    resolve: { knowledge: knowledgeContentResolver },
     loadComponent: () =>
       import('@ideologies/pages/liberalism/liberalism-atlas-page.component').then(
         (m) => m.LiberalismAtlasPage,

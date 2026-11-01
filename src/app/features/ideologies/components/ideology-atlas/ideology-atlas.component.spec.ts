@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { queryKnowledgeRelations } from '@core/content/queries/knowledge-graph';
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
 import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
+import { provideContentFixture } from '@testing/content-fixture';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 describe('Liberalism atlas snapshot', () => {
-  beforeEach(() => TestBed.configureTestingModule({ providers: [provideRouter([])] }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({ providers: [...provideContentFixture(), provideRouter([])] }),
+  );
   function createAtlas() {
     const fixture = TestBed.createComponent(IdeologyAtlasComponent);
     fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
@@ -13,6 +16,16 @@ describe('Liberalism atlas snapshot', () => {
     fixture.componentRef.setInput('origin', '/liberalismo');
     return fixture.componentInstance;
   }
+
+  it('preserves arbitrary entity roots using compiled geometry', () => {
+    const fixture = TestBed.createComponent(IdeologyAtlasComponent);
+    fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
+    fixture.componentRef.setInput('rootEntityId', 'person-john-locke');
+    fixture.componentRef.setInput('origin', '/liberalismo');
+    expect(
+      fixture.componentInstance.graphNodes().find((node) => node.entity.id === 'person-john-locke'),
+    ).toMatchObject({ x: 460, y: 286 });
+  });
   const atlas = methodologyKnowledgeGraph.atlases.find((item) => item.id === 'atlas-liberalism');
 
   it('loads the required real entities with Wikipedia and Wikidata identifiers', () => {

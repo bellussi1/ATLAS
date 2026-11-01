@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { methodologyAtlas } from '@core/content/repositories/content-repository.service';
+import { methodologyAtlas } from '@testing/content-fixture';
 
 import { AtlasLicensedAssetComponent } from './licensed-asset.component';
 

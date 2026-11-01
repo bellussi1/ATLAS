@@ -2,9 +2,10 @@ import { PLATFORM_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { routes } from '@app/app.routes';
-import { methodologyKnowledgeGraph } from '@core/content/repositories/content-repository.service';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
+import { provideContentFixture } from '@testing/content-fixture';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 import { of, Subject } from 'rxjs';
 
 import { IdeologyPageComponent } from './ideology-page.component';
@@ -15,6 +16,7 @@ describe('Ideology reading states', () => {
     let requests = 0;
     TestBed.configureTestingModule({
       providers: [
+        ...provideContentFixture(),
         provideRouter(routes),
         { provide: PLATFORM_ID, useValue: 'server' },
         {

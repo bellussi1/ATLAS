@@ -13,7 +13,6 @@ import type {
   IdeologyEdge,
   PageBlock,
 } from '@ideologies/models/ideology-page.schema';
-import { graphGeometry, temporalAxis } from '@ideologies/utils/visualization-geometry';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 
 @Component({
@@ -79,7 +78,14 @@ export class IdeologyBlockComponent {
       this.debateTopics().find((t) => t.id === this.params().get('debate')) ??
       this.debateTopics()[0],
   );
-  readonly graph = computed(() => graphGeometry(this.edges()));
+  readonly graph = computed(
+    () =>
+      this.repository.layouts.editorial[this.dossier().page.slug]?.graphs[this.blockId()] ?? {
+        nodes: [],
+        height: 380,
+        paths: [],
+      },
+  );
   readonly graphNodes = computed(() =>
     this.graph().nodes.map((node) => ({
       ...node,
@@ -89,19 +95,11 @@ export class IdeologyBlockComponent {
   readonly graphPaths = computed(
     () => new Map(this.edges().map((edge, i) => [edge.id, this.graph().paths[i]])),
   );
-  readonly timelineAxis = computed(() => {
-    const dated = this.entities().flatMap((entity) => {
-      const year = entity.temporalExtent?.startYear;
-      return year === null || year === undefined ? [] : [{ id: entity.id, year }];
-    });
-    const axis = temporalAxis(dated.map((entry) => entry.year));
-    return axis
-      ? {
-          ticks: axis.ticks,
-          markers: dated.map((entry, i) => ({ ...entry, x: axis.positions[i] })),
-        }
-      : null;
-  });
+  readonly timelineAxis = computed(
+    () =>
+      this.repository.layouts.editorial[this.dossier().page.slug]?.timelines[this.blockId()] ??
+      null,
+  );
   readonly timeline = computed(() => {
     const period = this.params().get('periodo');
     return [...this.entities()]

@@ -5,7 +5,7 @@ import test from 'node:test';
 import { reconcileRequests, titleIndex } from './reconcile.mjs';
 
 const baseline = JSON.parse(
-  await readFile(new URL('../../../src/content/atlas.json', import.meta.url)),
+  await readFile(new URL('./raw/liberalism/2026-11-01/baseline.json', import.meta.url)),
 );
 
 test('global QID reconciliation preserves canonical ID across collections and deduplicates requests', () => {

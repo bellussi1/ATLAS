@@ -2,7 +2,11 @@ import { reproducibleAsset } from '@core/content/media/asset-license';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { type ContentRepository } from '@core/content/repositories/content-repository.service';
 
-export function entityContext(repository: ContentRepository, id: string): KnowledgeContext {
+export function entityContext(
+  repository: Pick<ContentRepository, 'knowledgeGraph'> &
+    Partial<Pick<ContentRepository, 'queryRelations'>>,
+  id: string,
+): KnowledgeContext {
   const graph = repository.knowledgeGraph;
   const atlas = graph.atlases.find((a) => a.entities.some((e) => e.id === id));
   const entity = atlas?.entities.find((e) => e.id === id);
@@ -52,9 +56,16 @@ export function entityContext(repository: ContentRepository, id: string): Knowle
   const entities = new Map(graph.atlases.flatMap((a) => a.entities).map((e) => [e.id, e]));
   const evidences = new Map(graph.atlases.flatMap((a) => a.evidences).map((e) => [e.id, e]));
   const sourceById = new Map(sources.map((s) => [s.id, s]));
+  const indexedRelationIds = repository.queryRelations
+    ? new Set(repository.queryRelations(id).map((result) => result.relationId))
+    : null;
   const connections: KnowledgeContext['connections'] = graph.atlases
     .flatMap((a) => a.relations)
-    .filter((r) => r.fromEntityId === id || r.toEntityId === id)
+    .filter((r) =>
+      indexedRelationIds
+        ? indexedRelationIds.has(r.id)
+        : r.fromEntityId === id || r.toEntityId === id,
+    )
     .map((r) => {
       const outgoing = r.fromEntityId === id;
       const target = outgoing ? r.toEntityId : r.fromEntityId;

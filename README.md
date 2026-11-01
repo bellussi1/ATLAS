@@ -39,12 +39,14 @@ Escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas 
 | `npm run ingest:verify` | Replay duplo de todas as capturas versionadas, sem rede |
 | `npm run lint` | ESLint Angular, limites arquiteturais, Biome e formatação |
 | `npm run typecheck` | Checagem TypeScript da aplicação e dos testes |
+| `npm run content:build` | Geração offline de manifesto, shards, busca, adjacência e layouts |
+| `npm run test:content` | Equivalência, determinismo e integridade dos artefatos |
 
-O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca local indexa registros editoriais, entidades e fontes validados, com aliases, filtros por tipo e estado; não há API remota de pesquisa.
+O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca da Home filtra as duas leituras publicadas; o índice global de entidades/fontes é gerado no build para consultas internas e evolução da exploração, sem API remota de pesquisa.
 
 Para conferir a saída estática localmente, execute `npm run build` e `npm run preview`; o servidor escuta somente em `127.0.0.1:4305`. Se a porta estiver ocupada, defina `ATLAS_PREVIEW_PORT` para preview e E2E; o padrão continua 4305. A configuração de CI, os testes de navegador e os bloqueios de indexação do piloto estão documentados em [Piloto e verificações](docs/quality/PILOTO-E-VERIFICACAO.md).
 
-O grafo editorial e suas fontes ficam em `src/content/atlas.json`, são validados por `ContentRepository` com Zod e copiados para a saída do build em `content/`. Incluem registros sobre o processo constituinte de 1987–1988 e a Constituição de 1988; afirmações exibem o estado de revisão realmente cadastrado. No navegador, o serviço lê esse asset estático; durante o prerender usa o JSON empacotado. Veja [as decisões e limites da arquitetura](docs/architecture/ARCHITECTURE.md).
+O grafo editorial e suas fontes ficam em coleções com hash, referenciadas por `src/content/knowledge/manifest.json`. O build valida o conjunto com Zod e gera assets compactos, busca, relações reversas e layouts em `generated/content`; a aplicação lê os arquivos locais com cache e TransferState. O grafo não é importado pelo bundle cliente. Os hooks dos comandos npm geram os derivados antes de iniciar, testar, verificar ou compilar. Veja [dados e carregamento](docs/architecture/DADOS-E-CARREGAMENTO.md) e [as decisões da arquitetura](docs/architecture/ARCHITECTURE.md).
 
 Consulte o [índice da documentação](docs/README.md) para escopo, padrões de design, qualidade e referências.
 
