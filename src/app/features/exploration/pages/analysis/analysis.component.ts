@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -34,7 +33,6 @@ import { KnowledgeTimelineComponent } from '@shared/ui/knowledge-timeline/knowle
 export class AnalysisComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
-  private readonly document = inject(DOCUMENT);
   readonly repository = inject(ContentRepository);
   readonly graph = this.repository.knowledgeGraph;
   readonly network = this.route.snapshot.data['analysis'] === 'network';
@@ -50,8 +48,18 @@ export class AnalysisComponent {
       ),
     ),
   );
-  readonly geometry = computed(
-    () => this.repository.layouts.exploration.networks[this.filters().collection || 'all'],
+  readonly geometry = computed(() => {
+    const key = this.filters().collection || 'all';
+    const selected = this.selected();
+    return this.repository.layouts.exploration.networks[
+      selected ? `focus:${key}:${selected.id}` : key
+    ];
+  });
+  readonly activeFilterCount = computed(
+    () => analysisFilterKeys.filter((key) => this.params().has(key)).length,
+  );
+  readonly selectedEntry = computed(() =>
+    this.repository.discoveryIndex.find((entry) => entry.id === this.selected()?.id),
   );
   readonly timeline = this.repository.layouts.exploration.timeline;
   readonly mode = computed(() => this.params().get('modo') ?? 'conceitual');
@@ -123,17 +131,26 @@ export class AnalysisComponent {
     );
   });
   update(values: Record<string, string | null>): void {
-    const win = this.document.defaultView;
-    const position = win ? [win.scrollX, win.scrollY] : null;
-    void this.router
-      .navigate([], { relativeTo: this.route, queryParams: values, queryParamsHandling: 'merge' })
-      .then((success) => {
-        if (success && win && position)
-          win.setTimeout(() => win.scrollTo(position[0], position[1]), 0);
-      });
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: values,
+      queryParamsHandling: 'merge',
+      scroll: 'manual',
+    });
   }
+  swap(): void {
+    const [left, right] = this.slots();
+    this.update({ esquerda: right.id, direita: left.id });
+  }
+
   clear(): void {
     void this.router.navigate([], { relativeTo: this.route, queryParams: {} });
+  }
+  relatedEntity(id: string) {
+    return this.filtered().entities.find((entity) => entity.id === id);
+  }
+  comparisonQuery(id: string) {
+    return { ...this.sharedQuery(), esquerda: id };
   }
   setSlot(key: string, value: string): void {
     this.update({ [key]: value });

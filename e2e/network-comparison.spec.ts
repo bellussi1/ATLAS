@@ -1,6 +1,64 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
+test('network search and connections provide a usable mobile path without the diagram', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/rede');
+  const search = page.getByRole('searchbox', { name: 'Encontrar registro' });
+  await search.fill('locke');
+  await page
+    .getByRole('list', { name: 'Resultados na rede' })
+    .getByRole('button', { name: 'John Locke', exact: true })
+    .click();
+  await expect(
+    page
+      .getByRole('region', { name: 'Registro selecionado' })
+      .getByRole('heading', { name: 'John Locke', exact: true }),
+  ).toBeVisible();
+  await expect(page).toHaveURL(/no=person-john-locke/);
+  await expect(search).toHaveValue('locke');
+  await search.fill('registro inexistente');
+  await expect(page.getByRole('status').filter({ hasText: 'registros encontrados' })).toHaveText(
+    '0 registros encontrados neste recorte.',
+  );
+  await search.fill('');
+  const connection = page.locator('.connection > button').first();
+  const title = await connection.textContent();
+  await connection.click();
+  await expect(page.locator('.selection h2')).toHaveText(title!.trim());
+  await expect(page.locator('.network-visual')).not.toBeVisible();
+});
+
+test('comparison prioritizes the pair, swaps sides and keeps the chosen scope and evidence reachable', async ({
+  page,
+}) => {
+  await page.goto(
+    '/comparar?colecao=atlas-marx-valor&esquerda=person-karl-marx&direita=person-adam-smith',
+  );
+  await page.getByRole('button', { name: 'Inverter registros' }).click();
+  await expect(page.getByRole('combobox', { name: 'Primeiro registro', exact: true })).toHaveValue(
+    'person-adam-smith',
+  );
+  await expect(page.getByRole('combobox', { name: 'Segundo registro', exact: true })).toHaveValue(
+    'person-karl-marx',
+  );
+  await expect(page).toHaveURL(/colecao=atlas-marx-valor/);
+  await page.goBack();
+  await expect(page.getByRole('combobox', { name: 'Primeiro registro', exact: true })).toHaveValue(
+    'person-karl-marx',
+  );
+  const references = page
+    .locator('.comparison > article')
+    .first()
+    .getByText('Conferir afirmações e referências', { exact: true });
+  await references.click();
+  await expect(
+    page.locator('.comparison > article').first().getByText('Stanford', { exact: false }).first(),
+  ).toBeVisible();
+});
+
 test('network uses compiled coordinates, keeps its axis and shares filters with comparison', async ({
   page,
 }) => {

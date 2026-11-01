@@ -3,53 +3,94 @@
 }
 form {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto;
   gap: 1rem;
-  padding: 1.5rem;
-  background: var(--paper-shade);
+  align-items: end;
+  padding: 1rem 0;
 }
 label {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  font-size: 0.8rem;
   font-weight: 600;
 }
 input,
 select,
 button {
   min-width: 0;
-  max-width: 100%;
+  width: 100%;
   min-height: 2.75rem;
   border: 1px solid var(--rule-strong);
   padding: 0.65rem;
   border-radius: 0;
   color: var(--ink);
   background: var(--paper);
-  font: inherit;
+  font: 1rem var(--font-sans);
 }
 button {
   cursor: pointer;
   background: var(--ink);
   color: var(--paper);
 }
+button:hover {
+  background: var(--color-accent);
+}
+button[type='button'] {
+  background: transparent;
+  color: var(--color-accent);
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.advanced {
+  grid-column: 1/-1;
+  grid-row: 2;
+  border-top: 1px solid var(--rule);
+}
+summary {
+  width: fit-content;
+  min-height: 2.75rem;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.advanced-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
 .check {
   display: flex;
   align-items: center;
   font-weight: 400;
+  grid-column: 1/-1;
 }
 .check input {
   min-height: auto;
   width: 1.2rem;
   height: 1.2rem;
   flex: none;
+  accent-color: var(--color-accent);
 }
 .filter-note {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   line-height: 1.6;
-  max-width: 100ch;
+  max-width: 80ch;
 }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .advanced {
+    grid-row: 3;
+  }
+}
+@media (max-width: 600px) {
+  form,
+  .advanced-fields {
     grid-template-columns: minmax(0, 1fr);
-    padding: 1rem;
+  }
+  .advanced {
+    grid-row: auto;
   }
 }

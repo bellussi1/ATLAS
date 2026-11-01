@@ -38,6 +38,41 @@ export function buildExplorationLayout(graph) {
       nodes,
       edges,
     };
+    // Each local view is compiled once. Filtering hides nodes without moving those retained.
+    for (const root of ordered) {
+      const links = relations.filter(
+        (r) =>
+          nodes[r.fromEntityId] &&
+          nodes[r.toEntityId] &&
+          (r.fromEntityId === root.id || r.toEntityId === root.id),
+      );
+      const neighborIds = new Set(links.flatMap((r) => [r.fromEntityId, r.toEntityId]));
+      const neighbors = ordered.filter((e) => e.id !== root.id && neighborIds.has(e.id));
+      const height = Math.max(360, Math.ceil(neighbors.length / 2) * 90 + 60);
+      const localNodes = Object.fromEntries(
+        neighbors.map((e, i) => [
+          e.id,
+          {
+            x: i % 2 === 0 ? 145 : 775,
+            y: 60 + Math.floor(i / 2) * 90,
+          },
+        ]),
+      );
+      localNodes[root.id] = { x: 460, y: height / 2 };
+      const localEdges = Object.fromEntries(
+        links.map((r) => {
+          const a = localNodes[r.fromEntityId];
+          const b = localNodes[r.toEntityId];
+          const group = parallel.get(`${r.fromEntityId}:${r.toEntityId}`);
+          const offset = (group.indexOf(r.id) - (group.length - 1) / 2) * 24;
+          return [
+            r.id,
+            `M ${a.x} ${a.y} Q ${(a.x + b.x) / 2} ${(a.y + b.y) / 2 - 35 + offset}, ${b.x} ${b.y}`,
+          ];
+        }),
+      );
+      networks[`focus:${key}:${root.id}`] = { height, nodes: localNodes, edges: localEdges };
+    }
   }
   const years = all
     .flatMap((e) => [e.temporalExtent?.startYear, e.temporalExtent?.endYear])

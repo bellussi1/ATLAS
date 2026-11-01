@@ -95,6 +95,18 @@ test('invalid references fail the build instead of emitting an inconsistent mani
 test('exploration geometry is keyed by stable IDs and handles missing or single dates', async () => {
   const graph = await readSourceGraph();
   const first = buildExplorationLayout(graph);
+  const focused = first.networks['focus:all:person-karl-marx'];
+  const direct = graph.atlases
+    .flatMap((a) => a.relations)
+    .filter((r) => r.fromEntityId === 'person-karl-marx' || r.toEntityId === 'person-karl-marx');
+  assert.deepEqual(Object.keys(focused.edges).sort(), direct.map((r) => r.id).sort());
+  assert.deepEqual(
+    Object.keys(focused.nodes).sort(),
+    [
+      ...new Set(['person-karl-marx', ...direct.flatMap((r) => [r.fromEntityId, r.toEntityId])]),
+    ].sort(),
+  );
+  assert.deepEqual(focused.nodes['person-karl-marx'], { x: 460, y: focused.height / 2 });
   for (const atlas of graph.atlases) {
     atlas.entities.reverse();
     atlas.relations.reverse();

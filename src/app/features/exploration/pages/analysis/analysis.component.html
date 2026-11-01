@@ -1,16 +1,17 @@
-<section class="analysis" aria-labelledby="analysis-title">
-  <header>
-    <h1 id="analysis-title">{{ network ? 'Rede de conhecimento' : 'Comparar registros' }}</h1>
+<section class="analysis" [class.is-network]="network" aria-labelledby="analysis-title">
+  <header class="analysis-heading">
+    <h1 id="analysis-title">
+      {{ network ? 'Siga uma conexão.' : 'Compare registros.' }}
+    </h1>
     <p>
       {{
         network
-          ? 'Siga vínculos, situe períodos e confira o que sustenta cada relação.'
-          : 'Duas leituras lado a lado: investigue diferenças de contexto, formulações e evidências.'
+          ? 'Parta de um registro. Descubra quem, o quê e quais fontes estão ligados a ele.'
+          : 'Escolha dois registros e leia seus contextos, formulações e evidências lado a lado.'
       }}
     </p>
   </header>
-  <nav aria-label="Modos de exploração">
-    <a routerLink="/conhecimento">Busca universal</a>
+  <nav class="exploration-nav" aria-label="Modos de exploração">
     <a
       routerLink="/rede"
       [queryParams]="sharedQuery()"
@@ -23,62 +24,9 @@
       [attr.aria-current]="!network ? 'page' : null"
       >Comparadores</a
     >
+    <a routerLink="/conhecimento">Buscar no acervo</a>
   </nav>
-  <app-analysis-filters
-    [graph]="graph"
-    [value]="filters()"
-    (changed)="update($event)"
-    (cleared)="clear()"
-  />
-  <p role="status">
-    {{ filtered().entities.length }} entidades e {{ filtered().relations.length }} vínculos no
-    recorte.
-  </p>
-  @if (network) {
-    @if (geometry(); as geometry) {
-      <app-knowledge-network
-        [entities]="filtered().entities"
-        [relations]="filtered().relations"
-        [layout]="geometry"
-        [selectedId]="selected()?.id"
-        (selected)="update({ no: $event })"
-      />
-    } @else {
-      <p>Nenhuma coleção corresponde a este filtro.</p>
-    }
-    <section class="selection" aria-label="Registro selecionado">
-      @if (selected(); as entity) {
-        <h2>{{ entity.title }}</h2>
-        <p>{{ entity.summary }}</p>
-        <p>
-          <a [routerLink]="'/verbete/' + entity.slug">Abrir registro e fontes</a> ·
-          <a routerLink="/comparar" [queryParams]="{ esquerda: entity.id }"
-            >Comparar este registro</a
-          >
-        </p>
-        <h2>Vínculos no recorte</h2>
-        @for (relation of connections(); track relation.id) {
-          <app-relation-evidence [graph]="graph" [relation]="relation" />
-        } @empty {
-          <p>
-            Não há vínculos visíveis para esta entidade. Isso não comprova ausência de relações
-            históricas.
-          </p>
-        }
-      } @else {
-        <h2>Seleção indisponível</h2>
-        <p>O registro solicitado não está neste recorte. Selecione outro ou remova os filtros.</p>
-      }
-    </section>
-    <h2>Tempo dos registros</h2>
-    <app-knowledge-timeline
-      [entities]="filtered().entities"
-      [layout]="timeline"
-      [selectable]="true"
-      [selectedId]="selected()?.id"
-      (selected)="update({ no: $event })"
-    />
-  } @else {
+  @if (!network) {
     <section class="comparison-controls" aria-label="Configurar comparação">
       <label
         >Modo de comparação
@@ -105,11 +53,118 @@
           </select>
         </label>
       }
-      <button type="button" (click)="preset('conceitual')">Explorar dois conceitos</button>
-      <button type="button" (click)="preset('historica')">Explorar duas revoluções</button>
+      <button class="swap" type="button" (click)="swap()" [disabled]="!validPair()">
+        Inverter registros
+      </button>
+      <div class="presets">
+        <span>Comece com um exemplo</span
+        ><button type="button" (click)="preset('conceitual')">Explorar dois conceitos</button>
+        <button type="button" (click)="preset('historica')">Explorar duas revoluções</button>
+      </div>
     </section>
-    <section class="method" aria-labelledby="method-title">
-      <h2 id="method-title">Método e limites</h2>
+  }
+  <details
+    class="filter-disclosure"
+    [open]="activeFilterCount() > 0 || !!filters().error || (!network && !validPair())"
+  >
+    <summary>
+      Filtrar acervo
+      <span>{{
+        activeFilterCount()
+          ? activeFilterCount() + ' filtros ativos'
+          : 'Coleção, tipo, período e vínculos'
+      }}</span>
+    </summary>
+    <app-analysis-filters
+      [graph]="graph"
+      [value]="filters()"
+      (changed)="update($event)"
+      (cleared)="clear()"
+    />
+  </details>
+  <p class="result-count" role="status">
+    {{ filtered().entities.length }} entidades e {{ filtered().relations.length }} vínculos no
+    recorte.
+  </p>
+  @if (network) {
+    <div class="network-workspace">
+      <div class="network-map">
+        @if (!filtered().entities.length) {
+          <h2>Nenhum registro neste recorte</h2>
+          <p>Amplie o período, escolha outra coleção ou remova os filtros para recomeçar.</p>
+          <button type="button" class="reset-view" (click)="clear()">Remover filtros</button>
+        } @else if (geometry(); as geometry) {
+          <app-knowledge-network
+            [entities]="filtered().entities"
+            [relations]="connections()"
+            [layout]="geometry"
+            [selectedId]="selected()?.id"
+            (selected)="update({ no: $event })"
+          />
+        } @else {
+          <p>Nenhuma coleção corresponde a este filtro. Remova os filtros para recomeçar.</p>
+        }
+      </div>
+      <section class="selection" aria-label="Registro selecionado">
+        @if (selected(); as entity) {
+          <header class="selection-heading">
+            <p class="record-meta">
+              {{ selectedEntry()?.kindLabel }} · {{ selectedEntry()?.stateLabel }}
+            </p>
+            <h2 aria-live="polite" aria-atomic="true">{{ entity.title }}</h2>
+            <p>{{ entity.summary }}</p>
+            <div class="record-actions">
+              <a [routerLink]="'/verbete/' + entity.slug">Ler registro e fontes</a>
+              <a routerLink="/comparar" [queryParams]="comparisonQuery(entity.id)"
+                >Comparar este registro</a
+              >
+            </div>
+          </header>
+          <div class="connection-list">
+            <h3>
+              Vínculos no recorte <span>{{ connections().length }}</span>
+            </h3>
+            @for (relation of connections(); track relation.id) {
+              @let outgoing = relation.fromEntityId === entity.id;
+              @let peer = relatedEntity(outgoing ? relation.toEntityId : relation.fromEntityId);
+              <article class="connection">
+                <p class="connection-direction">
+                  {{ outgoing ? 'Saída' : 'Entrada' }} · {{ relation.label }}
+                </p>
+                @if (peer) {
+                  <button type="button" (click)="update({ no: peer.id })">{{ peer.title }}</button>
+                }
+                <details>
+                  <summary>Conferir vínculo e fontes</summary>
+                  <app-relation-evidence [graph]="graph" [relation]="relation" />
+                </details>
+              </article>
+            } @empty {
+              <p>
+                Não há vínculos visíveis para esta entidade. Isso não comprova ausência de relações
+                históricas.
+              </p>
+            }
+          </div>
+        } @else {
+          <h2>Seleção indisponível</h2>
+          <p>O registro solicitado não está neste recorte. Selecione outro ou remova os filtros.</p>
+        }
+      </section>
+    </div>
+    <details class="temporal-view">
+      <summary>Situar os registros no tempo</summary>
+      <app-knowledge-timeline
+        [entities]="filtered().entities"
+        [layout]="timeline"
+        [selectable]="true"
+        [selectedId]="selected()?.id"
+        (selected)="update({ no: $event })"
+      />
+    </details>
+  } @else {
+    <details class="method">
+      <summary>Método e limites desta comparação</summary>
       @if (mode() === 'historica') {
         <p>
           Compare os períodos registrados e os contextos documentados. O eixo usa a mesma escala
@@ -128,7 +183,7 @@
         Um vínculo cadastrado não prova influência; a falta de vínculo ou de fonte não prova
         ausência histórica.
       </p>
-    </section>
+    </details>
     @if (!validMode()) {
       <p role="alert">Selecione um modo disponível.</p>
     } @else if (!validPair()) {
@@ -149,60 +204,76 @@
         @for (slot of slots(); track slot.key) {
           @if (slot.entity; as entity) {
             <article>
-              <p>{{ slot.entry?.kindLabel }} · {{ slot.entry?.stateLabel }}</p>
-              <h2>
-                <a [routerLink]="'/verbete/' + entity.slug">{{ entity.title }}</a>
-              </h2>
-              <h3>Questão e contexto</h3>
-              <p>{{ entity.summary }}</p>
-              <p>{{ entity.context }}</p>
-              <h3>Formulações registradas</h3>
-              @for (section of entity.sections; track $index) {
-                <h4>{{ section.heading }}</h4>
-                @for (paragraph of section.paragraphs; track $index) {
-                  <p>{{ paragraph }}</p>
-                }
-              }
-              <h3>Afirmações, fontes e classificação</h3>
-              @for (item of slot.claims; track item.claim.id) {
-                <app-claim-references [claim]="item.claim" [atlas]="item.atlas" />
-              } @empty {
-                <p>
-                  Não há afirmação com evidência historiográfica específica cadastrada neste
-                  recorte. O conteúdo disponível não constitui revisão humana.
-                </p>
-              }
-              @for (source of slot.context?.sources; track source.id) {
-                <p>
-                  @if (source.url) {
-                    <a [href]="source.url">{{ source.title }}</a>
-                  } @else {
-                    {{ source.title }}
+              <header class="record-heading">
+                <p>{{ slot.entry?.kindLabel }} · {{ slot.entry?.stateLabel }}</p>
+                <h2>
+                  <a [routerLink]="'/verbete/' + entity.slug">{{ entity.title }}</a>
+                </h2>
+              </header>
+              <section class="comparison-cell">
+                <h3>Questão e contexto</h3>
+                <p>{{ entity.summary }}</p>
+                <p>{{ entity.context }}</p>
+              </section>
+              <section class="comparison-cell">
+                <h3>Formulações registradas</h3>
+                <details>
+                  <summary>Ler formulações completas ({{ entity.sections.length }})</summary>
+                  @for (section of entity.sections; track $index) {
+                    <h4>{{ section.heading }}</h4>
+                    @for (paragraph of section.paragraphs; track $index) {
+                      <p>{{ paragraph }}</p>
+                    }
                   }
-                  · {{ source.edition }}
-                </p>
-              }
+                </details>
+              </section>
+              <section class="comparison-cell">
+                <h3>Fontes e evidências</h3>
+                <details>
+                  <summary>Conferir afirmações e referências</summary>
+                  @for (item of slot.claims; track item.claim.id) {
+                    <app-claim-references [claim]="item.claim" [atlas]="item.atlas" />
+                  } @empty {
+                    <p>
+                      Não há afirmação com evidência historiográfica específica cadastrada neste
+                      recorte. O conteúdo disponível não constitui revisão humana.
+                    </p>
+                  }
+                  @for (source of slot.context?.sources; track source.id) {
+                    <p>
+                      @if (source.url) {
+                        <a [href]="source.url">{{ source.title }}</a>
+                      } @else {
+                        {{ source.title }}
+                      }
+                      · {{ source.edition }}
+                    </p>
+                  }
+                </details>
+              </section>
             </article>
           }
         }
       </div>
-      <h2>Referências compartilhadas</h2>
-      @for (source of commonSources(); track source.id) {
-        <p>
-          <a routerLink="/fontes" [fragment]="'source-' + source.id">{{ source.title }}</a>
-        </p>
-      } @empty {
-        <p>Nenhuma referência com o mesmo ID está associada às afirmações dos dois registros.</p>
-      }
-      <h2>Vínculos diretos cadastrados</h2>
-      @for (relation of directRelations(); track relation.id) {
-        <app-relation-evidence [graph]="graph" [relation]="relation" />
-      } @empty {
-        <p>
-          Não há vínculo direto entre os dois registros neste recorte. A comparação não cria uma
-          relação no grafo.
-        </p>
-      }
+      <section class="comparison-footnotes">
+        <h2>Referências compartilhadas</h2>
+        @for (source of commonSources(); track source.id) {
+          <p>
+            <a routerLink="/fontes" [fragment]="'source-' + source.id">{{ source.title }}</a>
+          </p>
+        } @empty {
+          <p>Nenhuma referência com o mesmo ID está associada às afirmações dos dois registros.</p>
+        }
+        <h2>Vínculos diretos cadastrados</h2>
+        @for (relation of directRelations(); track relation.id) {
+          <app-relation-evidence [graph]="graph" [relation]="relation" />
+        } @empty {
+          <p>
+            Não há vínculo direto entre os dois registros neste recorte. A comparação não cria uma
+            relação no grafo.
+          </p>
+        }
+      </section>
     }
   }
 </section>
