@@ -1,0 +1,31 @@
+# Documentação do ATLAS
+
+O escopo público atual contém `/`, `/marxismo` e `/liberalismo`. Os documentos abaixo reúnem as referências mantidas do projeto; registros de verificações anteriores não substituem a execução dos comandos no estado atual.
+
+## Produto
+
+- [Escopo atual](product/ESCOPO-ATUAL.md)
+
+## Arquitetura
+
+- [Arquitetura](architecture/ARCHITECTURE.md)
+
+## Design
+
+- [Padrão de páginas](design/PAGE_STANDARD.md)
+- [Sistema de design](design/SISTEMA-DE-DESIGN.md)
+
+## Qualidade
+
+- [Piloto e verificação](quality/PILOTO-E-VERIFICACAO.md)
+
+## Referências
+
+- [Dependências](reference/DEPENDENCIES.md)
+- [Auditoria de dependências](reference/AUDITORIA-DEPENDENCIAS.md)
+- [Fluxo de trabalho Codex](reference/CODEX-WORKFLOW.md)
+- [Conferência editorial](reference/CONFERENCIA-EDITORIAL.md)
+
+## Arquivo
+
+As pastas `archive/architecture/`, `archive/design/`, `archive/marxismo/` e `archive/previous-implementations/` estão reservadas e vazias, com `.gitkeep` apenas para preservá-las no Git. Os documentos fora da lista solicitada foram excluídos, sem transferência para o arquivo.

@@ -75,11 +75,11 @@ A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atl
 
 ## Padrão V4 de páginas
 
-Consultar `docs/PAGE_STANDARD.md` para páginas de ideologias e tradições. A implementação contínua está em `/marxismo`; o hub foi removido no escopo temporário de três páginas. O contrato Zod fica em `src/app/features/ideologies/models/ideology-page.schema.ts` e os snapshots em `src/content/ideologies` e `src/content/graph`. Exemplos não publicados não devem entrar no prerender.
+Consultar `docs/design/PAGE_STANDARD.md` para páginas de ideologias e tradições. A implementação contínua está em `/marxismo`; o hub foi removido no escopo temporário de três páginas. O contrato Zod fica em `src/app/features/ideologies/models/ideology-page.schema.ts` e os snapshots em `src/content/ideologies` e `src/content/graph`. Exemplos não publicados não devem entrar no prerender.
 
 ## Governança arquitetural obrigatória
 
-Consultar `docs/ARCHITECTURE.md` antes de criar ou mover código. O inventário da migração está em `docs/ARCHITECTURE-MIGRATION.md`.
+Consultar `docs/architecture/ARCHITECTURE.md` antes de criar ou mover código.
 
 - Organização feature-first: `features/ideologies`, `features/exploration` e `features/study` possuem seus componentes, contratos, dados e utilitários. Só criar outros domínios/pastas quando houver responsabilidade real.
 - `core/content` concentra infraestrutura global: modelos Zod, repositório do grafo, consultas puras, contratos editoriais e licenças. `IdeologyRepository`, o contrato de dossiês e o registro de snapshots publicados pertencem à feature de ideologias.

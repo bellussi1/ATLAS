@@ -37,7 +37,7 @@ O índice comum de leitura alinha capítulos, progresso, capítulo atual, retorn
 
 Aplicação observável nesta rodada: substituir índices duplicados por `IdeologyReadingIndexComponent`; tratar pensadores e documentos do Marxismo como composições assimétricas; apresentar Liberalismo como atlas exploratório com revisão editorial pendente; manter o índice textual de relações sincronizado com o filtro do grafo. Esses exemplos orientam decisões futuras e não autorizam acrescentar conteúdo histórico não verificado.
 
-As imagens enviadas são referência visual, não licença de publicação. Consultar `docs/PAGE_STANDARD.md` para o contrato completo; preservar os ativos Commons já licenciados e seus metadados.
+As imagens enviadas são referência visual, não licença de publicação. Consultar `docs/design/PAGE_STANDARD.md` para o contrato completo; preservar os ativos Commons já licenciados e seus metadados.
 
 ## Marca
 
@@ -97,18 +97,18 @@ Usar --grid-max (90rem incluindo padding) e --grid-gutter para alinhar os limite
 
 ## Referência Claude — Tudo se liga
 
-O HTML enviado pelo usuário em 31/10/2026 acrescenta abertura tipográfica de grande escala, palavra de ação vermelha, suporte verde com recorte geométrico, divisórias fortes, rede e painel contextual lado a lado e fichas editoriais. Aplicar essa linguagem ao miolo; header, footer, logo e favicon foram explicitamente preservados. Reutilizar a rede e as prévias existentes. Não importar afirmações, relações, datas ou licenças ilustrativas do protótipo como registros validados. A rede precisa alocar uma posição por registro; no mobile, priorizar lista operável. Detalhes da adaptação em docs/REFERENCIA-CLAUDE.md.
+O HTML enviado pelo usuário em 31/10/2026 acrescenta abertura tipográfica de grande escala, palavra de ação vermelha, suporte verde com recorte geométrico, divisórias fortes, rede e painel contextual lado a lado e fichas editoriais. Aplicar essa linguagem ao miolo; header, footer, logo e favicon foram explicitamente preservados. Reutilizar a rede e as prévias existentes. Não importar afirmações, relações, datas ou licenças ilustrativas do protótipo como registros validados. A rede precisa alocar uma posição por registro; no mobile, priorizar lista operável.
 
 
 ## Páginas V4 de ideologias e tradições
 
-O padrão em `docs/PAGE_STANDARD.md` orienta esta família de páginas: uma leitura contínua, capítulos por âncoras, índice com estimativas, progresso e retorno. Variar a composição por assunto e capítulo; fontes e lacunas editoriais permanecem próximas da afirmação. A home encaminha às leituras realmente disponíveis; não reintroduzir o hub removido sem pedido. Não converter polêmicas em descendência genealógica.
+O padrão em `docs/design/PAGE_STANDARD.md` orienta esta família de páginas: uma leitura contínua, capítulos por âncoras, índice com estimativas, progresso e retorno. Variar a composição por assunto e capítulo; fontes e lacunas editoriais permanecem próximas da afirmação. A home encaminha às leituras realmente disponíveis; não reintroduzir o hub removido sem pedido. Não converter polêmicas em descendência genealógica.
 
 O HTML Design System V4 é referência de composição e de tokens, não de dados históricos. Preservar a marca e as fontes locais aprovadas; não importar dependências de fontes remotas só para reproduzir a demonstração. Motion V4: 120/240/480 ms e cubic-bezier(.2,.7,.2,1), controle manual de movimento reduzido e preferência do sistema. Seleções alteram o contexto sem deslocar a leitura; somente a navegação de capítulo deve rolar até a âncora.
 
 ## Enciclopédia exploratória: contrato de interação
 
-Esta revisão exige aplicação concreta, inicialmente no Marxismo, com reutilização pelo Liberalismo. Manter o escopo público autorizado; o padrão não cria páginas novas sozinho. A referência operacional é [Contrato de exploração](references/ideology-interaction.md): estabilidade, semântica de ação, cards, hipertexto, timeline, grafo, princípios, vertentes e argumentação. Conferir também `docs/PAGE_STANDARD.md` no repositório.
+Esta revisão exige aplicação concreta, inicialmente no Marxismo, com reutilização pelo Liberalismo. Manter o escopo público autorizado; o padrão não cria páginas novas sozinho. A referência operacional é [Contrato de exploração](references/ideology-interaction.md): estabilidade, semântica de ação, cards, hipertexto, timeline, grafo, princípios, vertentes e argumentação. Conferir também `docs/design/PAGE_STANDARD.md` no repositório.
 
 A direção é maximizar a riqueza de respostas significativas. Todo ponto de exploração comunica a ação antes do hover, responde a foco/clique/toque e abre contexto útil. Cards densos podem usar CDK Dialog com dimensão previsível e restauração de foco/scroll; expansão inline intencional continua permitida quando ajuda a compreensão. Termos interativos são botões/links com pista persistente; ênfase estática usa `strong`/`em` e não finge ação.
 
