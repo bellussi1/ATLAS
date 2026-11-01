@@ -118,7 +118,9 @@ summary {
 }
 .selection {
   min-width: 0;
-  background: color-mix(in srgb, var(--color-teal-paper) 14%, var(--paper));
+  background: var(--color-surface-raised);
+  border: 3px solid var(--ink);
+  box-shadow: 0.5rem 0.5rem 0 var(--color-accent);
   padding: 1.5rem;
   position: sticky;
   top: 1rem;
@@ -136,9 +138,9 @@ summary {
   color: var(--ink-muted);
 }
 .selection h2 {
-  font: 600 1.8rem/1.15 var(--font-sans);
+  font: 700 2.2rem/1 var(--font-sans);
   margin: 0 0 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.045em;
 }
 p {
   line-height: 1.65;
@@ -286,20 +288,20 @@ button:disabled {
   grid-row: span 4;
 }
 .record-heading {
-  border-top: 3px solid var(--ink);
-  padding: 1.25rem 0 1.5rem;
+  border: 3px solid var(--ink);
+  padding: 1.25rem;
+  background: var(--color-rose-paper);
 }
 .comparison > article:nth-child(2) .record-heading {
-  border-top-color: var(--color-cartographic);
+  background: var(--color-teal-paper);
 }
 .record-heading > p {
-  font-size: 0.75rem;
-  color: var(--ink-muted);
+  font: 0.75rem var(--font-mono);
   margin: 0 0 0.75rem;
 }
 .record-heading h2 {
-  font: 600 1.8rem/1.2 var(--font-sans);
-  letter-spacing: -0.02em;
+  font: 700 clamp(1.8rem, 3vw, 2.6rem)/1.05 var(--font-sans);
+  letter-spacing: -0.04em;
   margin: 0;
 }
 .record-heading a {

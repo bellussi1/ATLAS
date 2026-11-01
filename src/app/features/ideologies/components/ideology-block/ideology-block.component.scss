@@ -32,7 +32,7 @@ button {
   margin-block: 2rem;
 }
 .entity-entry {
-  border-top: 3px solid var(--ink);
+  border: 3px solid var(--ink);
   min-width: 0;
 }
 .entity-entry button {
@@ -65,7 +65,7 @@ button {
   background: var(--paper-shade);
 }
 .entity-entry button[aria-expanded='true'] {
-  border-bottom: 4px solid var(--color-accent);
+  border-bottom: 6px solid var(--color-accent);
 }
 .entity-reading {
   padding: 0.5rem 1rem 1rem;
@@ -134,10 +134,30 @@ button {
 }
 .principles .exploration-card {
   min-height: 0;
-  padding: 1rem 0.25rem;
-  border: 0;
-  border-top: 1px solid var(--rule-strong);
-  background: transparent;
+  padding: 1.25rem 1.25rem 1.25rem 4.5rem;
+  background: var(--paper);
+}
+.principles .exploration-card::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 1.25rem;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border-radius: 0 0 100% 0;
+  background: var(--color-accent);
+}
+.principles .exploration-card:nth-child(4n + 2)::before {
+  border-radius: 50%;
+  background: var(--ink);
+}
+.principles .exploration-card:nth-child(4n + 3)::before {
+  border-radius: 100% 100% 0 0;
+  background: var(--color-ochre-paper);
+}
+.principles .exploration-card:nth-child(4n + 4)::before {
+  border-radius: 0;
+  background: var(--color-indigo);
 }
 .principles .exploration-card:nth-child(4n + 1) {
   grid-column: span 7;
