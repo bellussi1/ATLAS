@@ -275,7 +275,7 @@ const propertyMappings = [
   [
     'P737',
     'influenced_by',
-    'é listado no Wikidata como influência de',
+    'é listado no Wikidata como influenciado por',
     'é listado no Wikidata como influência para',
   ],
   [

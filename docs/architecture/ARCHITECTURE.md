@@ -61,6 +61,8 @@ Seletores e classes CSS existentes foram preservados para evitar regressões. Po
 
 ## Conteúdo e renderização
 
+A evolução proposta da enciclopédia, a matriz de responsabilidades e as fases estão em [Exploração contextual](EXPLORACAO-CONTEXTUAL.md). A primeira fatia preserva o armazenamento e as três rotas: a ficha mantém cada relação por ID, direção, evidências/localizadores e procedência, com retorno de foco, scroll e detalhes abertos. Ela reutiliza o hipertexto da feature nas duas tradições; catálogos públicos e índices antecipados continuam fases posteriores.
+
 `ContentRepository` valida `src/content/atlas.json` com `knowledgeGraphSchema`, disponibiliza consultas puras e o índice de descoberta. No browser, o carregamento assíncrono usa HttpClient e shareReplay; no prerender, o JSON empacotado. O índice é derivado dos registros e contratos editoriais preservados, sem criar páginas públicas adicionais. Datas, fontes, revisões e licenças não são derivadas da aparência dos componentes.
 
 `IdeologyRepository` pertence à feature e usa `published-ideologies.ts` como registro explícito dos snapshots de dossiês. No servidor carrega os módulos JSON e valida o dossiê; TransferState evita uma segunda requisição na hidratação. No browser, sem estado transferido, consulta os assets locais. Slug ausente do registro retorna null. Arquivos em `ideologies/examples` são exemplos não publicados.

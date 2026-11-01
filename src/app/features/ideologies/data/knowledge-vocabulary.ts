@@ -2,6 +2,18 @@ import { type KnowledgeTerm } from '@ideologies/models/knowledge-term';
 
 export const terms: KnowledgeTerm[] = [
   {
+    label: 'John Locke',
+    entityId: 'person-john-locke',
+    kind: 'Pensador',
+    definition: 'Consultar o registro, suas fontes e conexões em revisão.',
+  },
+  {
+    label: 'Adam Smith',
+    entityId: 'person-adam-smith',
+    kind: 'Pensador',
+    definition: 'Explorar o registro e distinguir vínculos de descoberta e relações documentadas.',
+  },
+  {
     label: 'Materialismo histórico',
     entityId: 'concept-historical-materialism',
     kind: 'Conceito',

@@ -5,6 +5,11 @@
       <p class="folio">Atlas exploratório · {{ atlas.title }}</p>
       <h1 id="liberalism-title">Liberalismo<span aria-hidden="true">.</span></h1>
       <p class="opening-summary">{{ atlas.description }}</p>
+      <p class="opening-summary">
+        <app-knowledge-text
+          [text]="'John Locke e Adam Smith: abra os registros para investigar fontes e conexões desta coleção.'"
+        />
+      </p>
       <a
         class="start-reading"
         href="#atlas-section-rede"

@@ -119,7 +119,9 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
     await motionControl.click();
     await expect(motionControl).toHaveAttribute('aria-pressed', 'true');
     expect(
-      await page.evaluate(() => document.documentElement.classList.contains('atlas-reduced-motion')),
+      await page.evaluate(() =>
+        document.documentElement.classList.contains('atlas-reduced-motion'),
+      ),
     ).toBe(true);
     await page.getByRole('button', { name: 'Restaurar movimento' }).click();
 

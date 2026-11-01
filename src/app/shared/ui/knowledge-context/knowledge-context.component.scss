@@ -84,12 +84,28 @@ a {
   text-underline-offset: 0.2em;
 }
 .context-connections {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 0.5rem;
 }
 .context-connections button {
   font-size: 0.85rem;
+}
+.context-connection {
+  padding: 1rem 0;
+  border-top: 1px solid var(--rule-strong);
+}
+.context-connection p {
+  line-height: 1.6;
+}
+.relation-label {
+  margin: 0.5rem 0;
+}
+summary {
+  cursor: pointer;
+  padding: 0.75rem 0;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 :focus-visible {
   outline: 3px solid var(--color-focus);

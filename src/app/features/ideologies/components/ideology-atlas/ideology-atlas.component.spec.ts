@@ -144,9 +144,12 @@ describe('Liberalism atlas snapshot', () => {
         page.rootEntityId(),
         ...page.visibleRelations().map((relation) => relation.relatedEntityId),
       ];
-      expect(page.graphNodes().map((node) => node.entity.id).sort()).toEqual(
-        [...new Set(expectedNodeIds)].sort(),
-      );
+      expect(
+        page
+          .graphNodes()
+          .map((node) => node.entity.id)
+          .sort(),
+      ).toEqual([...new Set(expectedNodeIds)].sort());
 
       const firstRelation = page.visibleRelations()[0];
       const firstItem = (fixture.nativeElement as HTMLElement).querySelector<HTMLElement>(
@@ -159,7 +162,8 @@ describe('Liberalism atlas snapshot', () => {
       expect(firstItem?.querySelector('a[href]')).not.toBeNull();
     }
     expect(
-      (fixture.nativeElement as HTMLElement).querySelector<HTMLDetailsElement>('.text-network')?.open,
+      (fixture.nativeElement as HTMLElement).querySelector<HTMLDetailsElement>('.text-network')
+        ?.open,
     ).toBe(true);
   });
 

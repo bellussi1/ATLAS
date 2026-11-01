@@ -22,6 +22,12 @@ export function entityContext(repository: ContentRepository, id: string): Knowle
     work: 'Obra',
     event: 'Acontecimento',
     institution: 'Instituição',
+    party: 'Partido',
+    place: 'Lugar',
+    government: 'Governo',
+    'historical-polity': 'Formação política histórica',
+    policy: 'Política pública',
+    article: 'Artigo',
   };
   const sources = graph.atlases.flatMap((a) => a.sources);
   const evidenceIds = graph.atlases
@@ -43,26 +49,37 @@ export function entityContext(repository: ContentRepository, id: string): Knowle
       edition: entity.discoveryMetadata.contentLicense,
       publicationDate: null,
     });
-  const connections = [
-    ...new Map(
-      graph.atlases
-        .flatMap((a) => a.relations)
-        .filter((r) => r.fromEntityId === id || r.toEntityId === id)
-        .map((r) => {
-          const target = r.fromEntityId === id ? r.toEntityId : r.fromEntityId;
-          const title = graph.atlases
-            .flatMap((a) => a.entities)
-            .find((e) => e.id === target)?.title;
-          return [
-            target,
-            {
-              entityId: target,
-              label: `${title ?? target} · ${r.type === 'encyclopedic-link' ? 'descoberta enciclopédica' : 'relação registrada, em revisão'}`,
-            },
-          ];
-        }),
-    ).values(),
-  ].slice(0, 8);
+  const entities = new Map(graph.atlases.flatMap((a) => a.entities).map((e) => [e.id, e]));
+  const evidences = new Map(graph.atlases.flatMap((a) => a.evidences).map((e) => [e.id, e]));
+  const sourceById = new Map(sources.map((s) => [s.id, s]));
+  const connections: KnowledgeContext['connections'] = graph.atlases
+    .flatMap((a) => a.relations)
+    .filter((r) => r.fromEntityId === id || r.toEntityId === id)
+    .map((r) => {
+      const outgoing = r.fromEntityId === id;
+      const target = outgoing ? r.toEntityId : r.fromEntityId;
+      return {
+        id: r.id,
+        entityId: target,
+        label: entities.get(target)?.title ?? target,
+        relation: {
+          type: r.type,
+          label: outgoing ? r.label : r.reverseLabel,
+          direction: outgoing ? 'outgoing' : 'incoming',
+          context: r.context,
+          uncertainty: r.uncertainty,
+          editorialStatus: r.editorialStatus,
+          provenance: r.provenance,
+          references: r.evidenceIds.flatMap((evidenceId) => {
+            const evidence = evidences.get(evidenceId);
+            const source = evidence && sourceById.get(evidence.sourceId);
+            return evidence && source
+              ? [{ id: evidence.id, locator: evidence.locator, source }]
+              : [];
+          }),
+        },
+      };
+    });
   const asset =
     atlas.assetLicenses.find((a) => a.entityId === id) ??
     atlas.assetLicenses.find(
@@ -71,10 +88,14 @@ export function entityContext(repository: ContentRepository, id: string): Knowle
         (id === 'person-adam-smith' && a.id === 'asset-smith-portrait'),
     );
   return {
+    entityId: entity.id,
+    editorialStatus: entity.editorialStatus,
     title: entity.title,
     kind: labels[entity.kind] ?? 'Registro',
     summary: entity.summary,
-    paragraphs: [entity.context, ...entity.sections.flatMap((s) => s.paragraphs)],
+    paragraphs: [
+      ...new Set([entity.context, ...entity.sections.flatMap((s) => s.paragraphs)]),
+    ].filter((paragraph) => paragraph !== entity.summary),
     sources: references,
     connections,
     media: asset && reproducibleAsset(atlas, asset.assetPath),

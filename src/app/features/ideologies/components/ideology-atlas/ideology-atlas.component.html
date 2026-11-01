@@ -210,7 +210,9 @@
               </li>
             } @empty {
               <li class="empty">
-                <span role="status">Nenhuma conexão deste tipo aparece para a ficha selecionada.</span>
+                <span role="status"
+                  >Nenhuma conexão deste tipo aparece para a ficha selecionada.</span
+                >
               </li>
             }
           </ul>
@@ -336,7 +338,7 @@
         </div>
         @if (selected(); as entity) {
           <h2 id="context-title">{{ entity.title }}</h2>
-          <p class="summary">{{ entity.summary }}</p>
+          <p class="summary"><app-knowledge-text [text]="entity.summary" /></p>
 
           <div class="entity-meta">
             <span>{{ kindLabel(entity) }}</span

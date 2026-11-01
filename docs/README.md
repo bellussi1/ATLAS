@@ -9,6 +9,7 @@ O escopo público atual contém `/`, `/marxismo` e `/liberalismo`. Os documentos
 ## Arquitetura
 
 - [Arquitetura](architecture/ARCHITECTURE.md)
+- [Diagnóstico, contratos e migração da exploração contextual](architecture/EXPLORACAO-CONTEXTUAL.md)
 
 ## Design
 
@@ -18,6 +19,7 @@ O escopo público atual contém `/`, `/marxismo` e `/liberalismo`. Os documentos
 ## Qualidade
 
 - [Piloto e verificação](quality/PILOTO-E-VERIFICACAO.md)
+- [Validação da primeira fatia de exploração](quality/EXPLORACAO-CONTEXTUAL.md)
 
 ## Referências
 
@@ -25,6 +27,7 @@ O escopo público atual contém `/`, `/marxismo` e `/liberalismo`. Os documentos
 - [Auditoria de dependências](reference/AUDITORIA-DEPENDENCIAS.md)
 - [Fluxo de trabalho Codex](reference/CODEX-WORKFLOW.md)
 - [Conferência editorial](reference/CONFERENCIA-EDITORIAL.md)
+- [Auditoria comparativa do 12axes](research/12axes-audit.md)
 
 ## Arquivo
 

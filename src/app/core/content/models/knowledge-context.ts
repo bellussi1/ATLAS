@@ -1,12 +1,30 @@
-import type { AssetLicense, Source } from './content-schema';
+import type { AssetLicense, Entity, Relation, Source } from './content-schema';
+
+export interface ContextConnection {
+  id?: string;
+  entityId: string;
+  label: string;
+  relation?: {
+    type: Relation['type'];
+    label: string;
+    direction: 'incoming' | 'outgoing';
+    context: string;
+    uncertainty: Relation['uncertainty'];
+    editorialStatus: Relation['editorialStatus'];
+    provenance: Relation['provenance'];
+    references: { id: string; locator: string; source: Source }[];
+  };
+}
 
 export interface KnowledgeContext {
+  entityId?: string;
+  editorialStatus?: Entity['editorialStatus'];
   title: string;
   kind: string;
   summary: string;
   paragraphs: string[];
   sources: Source[];
-  connections: { entityId: string; label: string }[];
+  connections: ContextConnection[];
   media?: AssetLicense;
 }
 

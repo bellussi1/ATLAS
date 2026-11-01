@@ -12,6 +12,8 @@ import {
 } from '@core/content/repositories/content-repository.service';
 import { KnowledgeContextComponent } from '@shared/ui/knowledge-context/knowledge-context.component';
 
+import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
+
 const graph = methodologyKnowledgeGraph;
 
 type ViewMode = 'rede' | 'tempo' | 'imagens';
@@ -37,7 +39,7 @@ interface RelationReference {
 
 @Component({
   selector: 'app-ideology-atlas',
-  imports: [RouterLink],
+  imports: [RouterLink, KnowledgeTextComponent],
   templateUrl: './ideology-atlas.component.html',
   styleUrls: [
     './ideology-atlas.component.scss',
@@ -298,7 +300,8 @@ export class IdeologyAtlasComponent {
         existing
           ? {
               ...existing,
-              locator: [existing.locator, reference.locator].filter(Boolean).join(' · ') || undefined,
+              locator:
+                [existing.locator, reference.locator].filter(Boolean).join(' · ') || undefined,
             }
           : reference,
       );

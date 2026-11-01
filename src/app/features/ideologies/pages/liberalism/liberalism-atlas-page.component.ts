@@ -3,12 +3,18 @@ import { afterNextRender, Component, DestroyRef, ElementRef, inject, signal } fr
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
+import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { IdeologyReadingIndexComponent } from '@ideologies/components/reading-index/reading-index.component';
 import { liberalismAtlas } from '@ideologies/data/liberalism-atlas';
 
 @Component({
   selector: 'app-liberalism-atlas-page',
-  imports: [IdeologyAtlasComponent, IdeologyReadingIndexComponent, RouterLink],
+  imports: [
+    IdeologyAtlasComponent,
+    KnowledgeTextComponent,
+    IdeologyReadingIndexComponent,
+    RouterLink,
+  ],
   templateUrl: './liberalism-atlas-page.component.html',
   styleUrl: './liberalism-atlas-page.component.scss',
 })
@@ -86,13 +92,7 @@ export class LiberalismAtlasPage {
   }
 
   navigateChapter(event: MouseEvent, anchor: string): void {
-    if (
-      event.button !== 0 ||
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey
-    ) {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
       return;
     }
     event.preventDefault();

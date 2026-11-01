@@ -1,6 +1,6 @@
 <header>
   <div>
-    <p>{{ record().kind }} · contexto em revisão</p>
+    <p>{{ record().kind }} · {{ statusLabel(record().editorialStatus) }}</p>
     <h2 id="knowledge-context-title" tabindex="-1">{{ record().title }}</h2>
   </div>
   <button type="button" (click)="close()" aria-label="Fechar contexto">Fechar ×</button>
@@ -27,31 +27,68 @@
   @for (paragraph of record().paragraphs; track $index) {
     <p>{{ paragraph }}</p>
   }
-  @if (record().connections.length) {
-    <section aria-label="Conexões deste contexto">
-      <h3>Continue por uma conexão</h3>
-      <p>
-        Os vínculos importados são caminhos de investigação; não comprovam influência por si sós.
-      </p>
-      <div class="context-connections">
-        @for (connection of record().connections; track connection.entityId) {
+  <section aria-label="Conexões deste contexto">
+    <h3>Continue por uma conexão</h3>
+    <p>Os vínculos importados são caminhos de investigação; não comprovam influência por si sós.</p>
+    <div class="context-connections">
+      @for (connection of record().connections; track connection.id ?? connection.entityId) {
+        <article class="context-connection">
           <button
             type="button"
-            [attr.data-connection]="connection.entityId"
-            (click)="follow(connection.entityId)"
+            [attr.data-connection]="connection.id ?? connection.entityId"
+            (click)="follow(connection)"
           >
             {{ connection.label }} <span aria-hidden="true">↗</span>
           </button>
-        }
-      </div>
-    </section>
-  }
+          @if (connection.relation; as relation) {
+            <p class="relation-label">{{ relation.label }}</p>
+            <small
+              >{{ relationKind(connection) }} · {{ statusLabel(relation.editorialStatus) }}</small
+            >
+            <details [attr.data-relation]="connection.id ?? connection.entityId">
+              <summary>Contexto e evidências do vínculo</summary>
+              <p>{{ relation.context }}</p>
+              <p>Incerteza: {{ uncertaintyLabel(relation.uncertainty) }}.</p>
+              @for (reference of relation.references; track reference.id) {
+                <p>
+                  @if (reference.source.url; as url) {
+                    <a [href]="url" target="_blank" rel="noopener noreferrer">{{
+                      reference.source.title
+                    }}</a>
+                  } @else {
+                    {{ reference.source.title }}
+                  }
+                  <small>{{ reference.source.edition }} · {{ reference.locator }}</small>
+                </p>
+              } @empty {
+                <p>Sem evidência historiográfica específica registrada para este vínculo.</p>
+              }
+              @if (relation.provenance; as provenance) {
+                <p>
+                  <a [href]="provenance.url" target="_blank" rel="noopener noreferrer"
+                    >Procedência: {{ provenance.source }}</a
+                  >
+                  <small>Coleta: {{ provenance.retrievedAt }}</small>
+                </p>
+              }
+            </details>
+          }
+        </article>
+      } @empty {
+        <p>Não há conexões registradas neste contexto.</p>
+      }
+    </div>
+  </section>
   <section aria-label="Fontes do contexto">
     <h3>Fontes e proveniência</h3>
     @for (source of record().sources; track source.id) {
       <p>
-        <a [href]="source.url" target="_blank" rel="noopener noreferrer">{{ source.title }}</a
-        ><small>{{ source.edition }}</small>
+        @if (source.url; as url) {
+          <a [href]="url" target="_blank" rel="noopener noreferrer">{{ source.title }}</a>
+        } @else {
+          {{ source.title }}
+        }
+        <small>{{ source.edition }}</small>
       </p>
     } @empty {
       <p>

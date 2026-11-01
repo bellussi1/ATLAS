@@ -1,6 +1,9 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { afterNextRender, Component, ElementRef, inject, Injector, signal } from '@angular/core';
-import { type KnowledgeContext } from '@core/content/models/knowledge-context';
+import {
+  type ContextConnection,
+  type KnowledgeContext,
+} from '@core/content/models/knowledge-context';
 import { entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 
@@ -16,11 +19,30 @@ export class KnowledgeContextComponent {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly injector = inject(Injector);
   readonly record = signal(this.initial);
-  readonly history = signal<{ record: KnowledgeContext; scroll: number; focusId: string }[]>([]);
-  follow(id: string): void {
+  readonly history = signal<
+    {
+      record: KnowledgeContext;
+      scroll: number;
+      focusId: string;
+      expanded: string[];
+    }[]
+  >([]);
+  follow(connection: ContextConnection): void {
     const scroll = this.host.nativeElement.querySelector('.context-body')?.scrollTop ?? 0;
-    this.history.update((items) => [...items, { record: this.record(), scroll, focusId: id }]);
-    this.record.set(entityContext(this.repository, id));
+    this.history.update((items) => [
+      ...items,
+      {
+        record: this.record(),
+        scroll,
+        focusId: connection.id ?? connection.entityId,
+        expanded: Array.from(
+          this.host.nativeElement.querySelectorAll<HTMLDetailsElement>(
+            'details[open][data-relation]',
+          ),
+        ).map((details) => details.dataset['relation']!),
+      },
+    ]);
+    this.record.set(entityContext(this.repository, connection.entityId));
     this.present(0);
   }
   back(): void {
@@ -28,16 +50,61 @@ export class KnowledgeContextComponent {
     if (previous) {
       this.record.set(previous.record);
       this.history.update((items) => items.slice(0, -1));
-      this.present(previous.scroll, previous.focusId);
+      this.present(previous.scroll, previous.focusId, previous.expanded);
     }
   }
   close(): void {
     this.ref.close();
   }
 
-  private present(scroll: number, focusId?: string): void {
+  statusLabel(status: KnowledgeContext['editorialStatus']): string {
+    switch (status) {
+      case 'pending':
+        return 'Revisão editorial pendente';
+      case 'draft':
+        return 'Rascunho';
+      case 'verified':
+        return 'Marcado como verificado';
+      case 'contested':
+        return 'Contestado';
+      case 'needs-update':
+        return 'Precisa de atualização';
+      default:
+        return 'Estado editorial não informado';
+    }
+  }
+
+  relationKind(connection: ContextConnection): string {
+    switch (connection.relation?.type) {
+      case 'encyclopedic-link':
+        return 'Descoberta enciclopédica';
+      case 'editorial-link':
+        return 'Vínculo editorial';
+      case 'documented-association':
+        return 'Associação documentada';
+      case 'influence':
+      case 'influenced':
+      case 'influenced_by':
+        return 'Influência registrada';
+      case 'reacted_against':
+        return 'Divergência registrada';
+      default:
+        return 'Relação registrada';
+    }
+  }
+
+  uncertaintyLabel(value: NonNullable<ContextConnection['relation']>['uncertainty']): string {
+    return { low: 'baixa', moderate: 'moderada', high: 'alta', unknown: 'não determinada' }[value];
+  }
+
+  private present(scroll: number, focusId?: string, expanded: string[] = []): void {
     afterNextRender(
       () => {
+        this.host.nativeElement
+          .querySelectorAll<HTMLDetailsElement>('details[data-relation]')
+          .forEach((details) => {
+            details.open = expanded.includes(details.dataset['relation']!);
+          });
         const body = this.host.nativeElement.querySelector<HTMLElement>('.context-body');
         if (body) body.scrollTop = scroll;
         const target = focusId
