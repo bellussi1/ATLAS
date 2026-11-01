@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
@@ -58,27 +58,13 @@ export class MarxAtlasPage {
   );
   readonly smithPortrait = reproducibleAsset(this.atlas, '/images/atlas/adam-smith.jpg');
   readonly marxPortrait = reproducibleAsset(this.atlas, '/images/atlas/karl-marx.jpg');
-  private readonly inlineFilter = signal(
+  readonly filter = computed(() =>
     ['comparacao', 'critica'].includes(this.params().get('vinculo') ?? '')
       ? this.params().get('vinculo')!
       : 'todas',
   );
-  private readonly inlineSelection = signal(
-    this.params().get('argumento') === 'marx' ? 'marx' : 'smith',
-  );
-  readonly filter = computed(() =>
-    this.inline()
-      ? this.inlineFilter()
-      : ['comparacao', 'critica'].includes(this.params().get('vinculo') ?? '')
-        ? this.params().get('vinculo')!
-        : 'todas',
-  );
   readonly selected = computed(() =>
-    this.inline()
-      ? this.inlineSelection()
-      : this.params().get('argumento') === 'marx'
-        ? 'marx'
-        : 'smith',
+    this.params().get('argumento') === 'marx' ? 'marx' : 'smith',
   );
   readonly claims = computed(() => {
     const id =
@@ -89,7 +75,7 @@ export class MarxAtlasPage {
   });
   readonly origin = computed(() =>
     this.inline()
-      ? '/atlas/marxismo'
+      ? `/ideologias/marxismo?argumento=${this.selected()}&vinculo=${this.filter()}#conceitos`
       : `/atlas/marxismo/valor-e-trabalho?argumento=${this.selected()}&vinculo=${this.filter()}`,
   );
   readonly previewRecords = computed(() =>
@@ -104,27 +90,23 @@ export class MarxAtlasPage {
   readonly study = study;
   readonly exercise = study.lessons[0].exercises[0];
   select(value: string): void {
-    if (this.inline()) {
-      this.inlineSelection.set(value);
-      return;
-    }
     void this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { argumento: value },
       queryParamsHandling: 'merge',
+      preserveFragment: true,
       replaceUrl: true,
+      scroll: 'manual',
     });
   }
   setFilter(value: string): void {
-    if (this.inline()) {
-      this.inlineFilter.set(value);
-      return;
-    }
     void this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { vinculo: value },
       queryParamsHandling: 'merge',
+      preserveFragment: true,
       replaceUrl: true,
+      scroll: 'manual',
     });
   }
 }

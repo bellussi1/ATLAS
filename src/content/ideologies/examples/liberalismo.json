@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "page-liberalismo",
+  "slug": "liberalismo",
+  "kind": "tradicao",
+  "classificationNote": "Esqueleto técnico de tradição heterogênea; classificação a fundamentar antes de publicar.",
+  "title": "Liberalismo",
+  "kicker": "Tradição político-intelectual · século XIX em diante",
+  "summary": "Esqueleto de configuração não publicado; não contém narrativa histórica.",
+  "published": false,
+  "atlasId": "atlas-liberalism",
+  "review": {
+    "status": "rascunho",
+    "reviewer": null,
+    "updatedAt": "2026-11-01"
+  },
+  "identity": {
+    "accent": "teal",
+    "signature": "Composição a definir com fontes específicas",
+    "keyVisualization": "graph"
+  },
+  "chapters": [
+    {
+      "id": "estrutura",
+      "anchor": "estrutura",
+      "title": "Estrutura de exemplo",
+      "kicker": "Configuração não publicada",
+      "minutes": 1,
+      "narrative": ["Esqueleto técnico sem narrativa histórica."],
+      "sourceIds": [],
+      "gap": "Bibliografia, composição e conteúdo a desenvolver antes da publicação.",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["ideology-liberalism"],
+          "mode": "concepts"
+        }
+      ]
+    }
+  ]
+}

@@ -34,19 +34,19 @@
   font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --color-canvas: #fbfaf7;
-  --color-surface: #fbfaf7;
+  --color-canvas: #fbf8f1;
+  --color-surface: #fbf8f1;
   --color-surface-raised: #fffdfa;
   --color-surface-subtle: #e9e4da;
-  --color-ink: #1c1c1a;
+  --color-ink: #141211;
   --color-ink-muted: #57544d;
   --color-border: #d9d4ca;
   --color-border-strong: #777268;
-  --color-accent: #b4231d;
+  --color-accent: #b81d16;
   --color-accent-hover: #811f1a;
   --color-on-strong-surface: #ffffff;
   --color-accent-contrast: var(--color-on-strong-surface);
-  --color-focus: #b4231d;
+  --color-focus: #b81d16;
   --color-info: #164f60;
   --color-info-surface: #e1edf0;
   --color-success: #24563b;
@@ -55,10 +55,10 @@
   --color-warning-surface: #f2e8c8;
   --color-danger: #82251f;
   --color-danger-surface: #f5e4e1;
-  --color-teal-paper: #85bdb5;
-  --color-ochre-paper: #edc45b;
-  --color-rose-paper: #e9b4bf;
-  --color-indigo: #37395e;
+  --color-teal-paper: #7fbdb5;
+  --color-ochre-paper: #eec35a;
+  --color-rose-paper: #eab0c2;
+  --color-indigo: #363a5f;
   --color-cartographic: #315f54;
   --color-archive: #176176;
   --font-sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
@@ -89,10 +89,11 @@
   --measure-reading: 72ch;
   --measure-index: 90ch;
   --measure-profile: 60ch;
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
   --motion-selection: 180ms;
-  --motion-fast: 140ms;
-  --motion-standard: 200ms;
+  --motion-fast: 120ms;
+  --motion-standard: 240ms;
+  --motion-slow: 480ms;
 
   // Compatibility aliases retained while existing routes adopt semantic roles.
   --paper: var(--color-canvas);
@@ -200,4 +201,11 @@ button.reading-preview-trigger {
 .article-section,
 .article-section h2 {
   scroll-margin-top: 10rem;
+}
+
+html.atlas-reduced-motion,
+html.atlas-reduced-motion * {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
 }

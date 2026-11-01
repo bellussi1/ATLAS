@@ -30,7 +30,7 @@ O favicon usa o A tipográfico e o ponto vermelho sobre papel, em public/brand/f
 ## Linguagem visual
 
 - Base: papel claro, tinta quase preta, vermelho de ação. A geometria vem do modernismo suíço, de livros/atlas e de arquivos exploráveis; as imagens de referência não são ativos autorizados para publicação.
-- Ler os tokens reais de src/styles.scss antes de escolher cores. Base atual: #FBFAF7, #1C1C1A, vermelho #B4231D. Secundárias: verde #85BDB5, ocre #EDC45B, rosa #E9B4BF e índigo #37395E.
+- Ler os tokens reais de src/styles.scss antes de escolher cores. Base V4: #FBF8F1, #141211, vermelho de texto/ação #B81D16. Secundárias: verde #7FBDB5, ocre #EEC35A, rosa #EAB0C2 e índigo #363A5F.
 - Vermelho em termos e ações que levam a um conteúdo real, foco e seleção. Links dentro do texto precisam também de sublinhado. Em fundo vermelho, usar texto claro sublinhado com contraste.
 - Secundárias distinguem suportes e formatos; não comunicar categoria apenas pela cor. Motivos geométricos e rótulos textuais devem permanecer coerentes. Espaço em branco continua importante: não pintar todas as superfícies.
 - Reutilizar AtlasEditorialMarkComponent para os motivos de verbete, artigo e atlas. SVG original, oculto da árvore acessível quando o rótulo adjacente já dá o significado. A geometria acompanha seleção/navegação; não fingir mapa, gráfico, proporção ou evidência quantitativa.
@@ -80,3 +80,10 @@ Usar --grid-max (90rem incluindo padding) e --grid-gutter para alinhar os limite
 ## Referência Claude — Tudo se liga
 
 O HTML enviado pelo usuário em 31/10/2026 acrescenta abertura tipográfica de grande escala, palavra de ação vermelha, suporte verde com recorte geométrico, divisórias fortes, rede e painel contextual lado a lado e fichas editoriais. Aplicar essa linguagem ao miolo; header, footer, logo e favicon foram explicitamente preservados. Reutilizar a rede e as prévias existentes. Não importar afirmações, relações, datas ou licenças ilustrativas do protótipo como registros validados. A rede precisa alocar uma posição por registro; no mobile, priorizar lista operável. Detalhes da adaptação em docs/REFERENCIA-CLAUDE.md.
+
+
+## Páginas V4 de ideologias e tradições
+
+O padrão em `docs/PAGE_STANDARD.md` orienta esta família de páginas: uma leitura contínua, capítulos por âncoras, índice com estimativas, progresso e retorno. Variar a composição por assunto e capítulo; fontes e lacunas editoriais permanecem próximas da afirmação. O hub aproxima tradições com ligações de descoberta explicitamente rotuladas. Não converter polêmicas em descendência genealógica.
+
+O HTML Design System V4 é referência de composição e de tokens, não de dados históricos. Preservar a marca e as fontes locais aprovadas; não importar dependências de fontes remotas só para reproduzir a demonstração. Motion V4: 120/240/480 ms e cubic-bezier(.2,.7,.2,1), controle manual de movimento reduzido e preferência do sistema. Seleções alteram o contexto sem deslocar a leitura; somente a navegação de capítulo deve rolar até a âncora.

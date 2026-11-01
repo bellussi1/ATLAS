@@ -5,6 +5,8 @@ import { TestBed } from '@angular/core/testing';
 import { firstValueFrom } from 'rxjs';
 
 import methodologyAtlasData from '../../content/atlas.json';
+import marxismoGraph from '../../content/graph/marxismo.json';
+import marxismoPage from '../../content/ideologies/marxismo/page.json';
 import { ContentRepository } from './content-repository';
 
 describe('ContentRepository', () => {
@@ -53,6 +55,35 @@ describe('ContentRepository', () => {
 
   it('returns no record for an unknown slug', () => {
     expect(TestBed.inject(ContentRepository).findBySlug('slug-inexistente')).toBeUndefined();
+  });
+
+  it('loads a partitioned page and its sourced relations from local assets', async () => {
+    const result = firstValueFrom(TestBed.inject(ContentRepository).loadIdeology('marxismo'));
+    const http = TestBed.inject(HttpTestingController);
+    http.expectOne('/content/ideologies/marxismo/page.json').flush(marxismoPage);
+    http.expectOne('/content/graph/marxismo.json').flush(marxismoGraph);
+    expect((await result)?.page.chapters).toHaveLength(8);
+  });
+
+  it('does not request unpublished example pages or unknown slugs', async () => {
+    await expect(
+      firstValueFrom(TestBed.inject(ContentRepository).loadIdeology('anarquismo')),
+    ).resolves.toBeNull();
+  });
+
+  it('propagates unavailable page files and rejects invalid page references', async () => {
+    const repository = TestBed.inject(ContentRepository);
+    const failed = expect(firstValueFrom(repository.loadIdeology('marxismo'))).rejects.toThrow();
+    const http = TestBed.inject(HttpTestingController);
+    http.expectOne('/content/graph/marxismo.json').flush(marxismoGraph);
+    http
+      .expectOne('/content/ideologies/marxismo/page.json')
+      .flush('Unavailable', { status: 503, statusText: 'Unavailable' });
+    await failed;
+    const invalid = expect(firstValueFrom(repository.loadIdeology('marxismo'))).rejects.toThrow();
+    http.expectOne('/content/ideologies/marxismo/page.json').flush({ schemaVersion: 9000 });
+    http.expectOne('/content/graph/marxismo.json').flush(marxismoGraph);
+    await invalid;
   });
 
   it('queries entities by atlas and period, then exposes incoming and outgoing graph links', () => {

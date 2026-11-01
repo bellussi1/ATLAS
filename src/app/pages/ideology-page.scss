@@ -1,0 +1,375 @@
+:host {
+  display: block;
+}
+.ideology-page,
+.page-state {
+  max-width: var(--grid-max);
+  margin-inline: auto;
+  padding: 0 var(--grid-gutter) 4rem;
+}
+.ideology-page {
+  overflow-wrap: anywhere;
+}
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.ideology-opening {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.65fr);
+  border-top: 3px solid var(--ink);
+  padding-top: 1.5rem;
+  gap: 1.5rem 3rem;
+}
+.back-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+}
+.folio,
+.reading-meta,
+.editorial-strip,
+.index-heading,
+.progress-label {
+  font: 0.75rem/1.7 var(--font-mono);
+}
+.folio {
+  margin: 1.5rem 0 0.8rem;
+}
+h1 {
+  font: 700 clamp(3.5rem, 9.5vw, 9rem)/0.95 var(--font-sans);
+  letter-spacing: -0.065em;
+  margin: 0.5rem 0 1.5rem;
+  overflow-wrap: anywhere;
+}
+h1 > span {
+  color: var(--color-accent);
+}
+.opening-summary {
+  max-width: 38ch;
+  font: 400 clamp(1.25rem, 2.2vw, 1.8rem)/1.45 var(--font-serif);
+}
+.reading-meta {
+  margin-top: 1.5rem;
+  color: var(--ink-muted);
+}
+.start-reading {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-block: 0.5rem;
+  font-weight: 600;
+}
+.opening-portrait {
+  align-self: start;
+  margin: 0;
+  padding: 1rem 1rem 0 0;
+  border-top: 1.2rem solid var(--color-indigo);
+  border-right: 1.2rem solid var(--color-indigo);
+}
+.opening-portrait img {
+  display: block;
+  width: 100%;
+  max-height: 390px;
+  height: auto;
+  object-fit: cover;
+  object-position: 50% 25%;
+  filter: grayscale(1);
+}
+.opening-portrait figcaption {
+  font: 0.65rem/1.6 var(--font-mono);
+  padding-block: 0.6rem;
+}
+.editorial-strip {
+  grid-column: 1/-1;
+  border-block: 1px solid var(--rule-strong);
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.editorial-strip details {
+  max-width: 33rem;
+}
+summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+.reading-layout {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.chapter-index {
+  position: sticky;
+  top: 0;
+  padding-top: 1.5rem;
+  max-height: 100dvh;
+  overflow-y: auto;
+}
+.index-heading {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.progress-label {
+  display: block;
+}
+progress {
+  width: 100%;
+  height: 4px;
+  accent-color: var(--color-accent);
+  display: block;
+  margin-block: 0.5rem 1rem;
+  appearance: none;
+  border: 0;
+  background: var(--rule);
+}
+progress::-webkit-progress-bar {
+  background: var(--rule);
+}
+progress::-webkit-progress-value {
+  background: var(--color-accent);
+}
+progress::-moz-progress-bar {
+  background: var(--color-accent);
+}
+.chapter-index nav {
+  display: grid;
+}
+.chapter-index nav a {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.7rem 0.4rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-muted);
+  text-decoration: none;
+  line-height: 1.3;
+  font-size: 0.9rem;
+}
+.chapter-index nav a > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.chapter-index nav a[aria-current] {
+  color: var(--color-accent);
+  border-left: 3px solid var(--color-accent);
+}
+.chapter-index small {
+  display: block;
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+}
+.chapter-number {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+.motion-control,
+.return-control {
+  display: block;
+  min-height: 44px;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule-strong);
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.motion-control[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.ideology-chapter {
+  padding: clamp(2.5rem, 5vw, 5rem) 0;
+  border-bottom: 2px solid var(--ink);
+  scroll-margin-top: 1rem;
+}
+.chapter-heading .folio {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+  font: 700 clamp(1.8rem, 3.7vw, 3.5rem)/1.08 var(--font-sans);
+  letter-spacing: -0.035em;
+}
+h2 .chapter-number {
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+.chapter-narrative {
+  max-width: 67ch;
+  font: 1.18rem/1.75 var(--font-serif);
+}
+.chapter-narrative p {
+  margin: 0 0 1.25rem;
+}
+[data-layout='introduction'] .chapter-narrative p:first-child {
+  font-size: 1.5rem;
+  line-height: 1.55;
+}
+[data-layout='documents'] {
+  border-top: 0.7rem solid var(--color-ochre-paper);
+}
+[data-layout='graph'] {
+  border-top: 0.7rem solid var(--color-indigo);
+}
+[data-layout='debate'] {
+  border-top: 0.7rem solid var(--color-rose-paper);
+}
+.editorial-gap {
+  border-left: 3px solid var(--color-indigo);
+  background: var(--paper-shade);
+  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.chapter-sources {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule-strong);
+  font-size: 0.85rem;
+}
+.chapter-sources summary {
+  padding-block: 0.75rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.chapter-sources li {
+  margin-bottom: 1rem;
+  overflow-wrap: anywhere;
+}
+.chapter-sources p {
+  margin-block: 0.4rem;
+}
+.next-chapter {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  margin-top: 1rem;
+}
+.graph-placeholder {
+  min-height: 380px;
+  padding: 2rem;
+  background: var(--paper-shade);
+}
+.reading-end {
+  padding-block: 3rem;
+}
+.reading-end p {
+  font: 1.6rem var(--font-serif);
+}
+.reading-end a {
+  display: block;
+  padding-block: 0.65rem;
+}
+.page-state {
+  padding-block: 4rem;
+}
+.page-state h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+}
+.page-state a {
+  display: block;
+  padding-block: 1rem;
+}
+@media (max-width: 1000px) {
+  .reading-layout {
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+@media (max-width: 750px) {
+  .ideology-opening {
+    grid-template-columns: minmax(0, 1fr) 105px;
+    gap: 1rem;
+  }
+  .opening-copy {
+    display: contents;
+  }
+  .opening-copy .back-link,
+  .opening-copy .folio {
+    grid-column: 1/-1;
+  }
+  h1 {
+    grid-column: 1;
+    font-size: clamp(2.8rem, 10vw, 5rem);
+    margin-block: 0;
+  }
+  .opening-portrait {
+    grid-column: 2;
+    grid-row: 3/6;
+    padding: 0.5rem 0.5rem 0 0;
+    border-width: 0.5rem;
+  }
+  .opening-portrait figcaption {
+    font-size: 0.6rem;
+  }
+  .opening-summary {
+    grid-column: 1;
+    font-size: 1.1rem;
+    margin-block: 0;
+  }
+  .reading-meta,
+  .start-reading {
+    grid-column: 1/-1;
+  }
+  .editorial-strip {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .reading-layout {
+    display: block;
+  }
+  .chapter-index {
+    position: relative;
+    overflow: visible;
+    max-height: none;
+    padding-bottom: 1.5rem;
+    border-bottom: 3px solid var(--ink);
+  }
+  .chapter-index nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 1rem;
+  }
+  .chapter-index nav a {
+    font-size: 0.8rem;
+  }
+  .chapter-index nav .chapter-number {
+    font-size: 0.7rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  .chapter-narrative {
+    font-size: 1.1rem;
+  }
+  .chapter-heading .folio {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 360px) {
+  .ideology-opening {
+    grid-template-columns: 1fr;
+  }
+  .opening-portrait {
+    grid-column: 1;
+    grid-row: auto;
+    max-width: 160px;
+  }
+  .opening-summary {
+    grid-column: 1;
+  }
+  .chapter-index nav {
+    grid-template-columns: 1fr;
+  }
+}

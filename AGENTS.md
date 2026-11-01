@@ -72,3 +72,7 @@ Partir do briefing deste projeto e de suas referências visuais. Não transporta
 
 
 A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atlas-editorial-geometrico`, orienta a identidade aprovada do ATLAS. Ela complementa as skills gerais, preserva a mesa de pesquisa e organiza cores secundárias, palavras navegáveis e motivos geométricos.
+
+## Padrão V4 de páginas
+
+Consultar `docs/PAGE_STANDARD.md` para páginas de ideologias e tradições. A primeira implementação contínua está em `/ideologias/marxismo`; o hub está em `/ideologias`. O contrato Zod fica em `src/app/core/ideology-page-schema.ts` e os snapshots em `src/content/ideologies` e `src/content/graph`. Exemplos não publicados não devem entrar no prerender.

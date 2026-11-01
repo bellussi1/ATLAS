@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "id": "page-marxismo",
+  "slug": "marxismo",
+  "kind": "tradicao",
+  "classificationNote": "Tradição político-intelectual heterogênea, tomada aqui como família de interpretações de Marx, e não como doutrina única. A categoria técnica Ideology do grafo não substitui esta classificação editorial.",
+  "title": "Marxismo",
+  "kicker": "Tradição político-intelectual · século XIX em diante",
+  "summary": "Uma tradição, muitas leituras. Investigue como a crítica da sociedade capitalista se tornou um campo de ideias, disputas e projetos políticos.",
+  "published": true,
+  "atlasId": "atlas-marx-valor",
+  "review": {
+    "status": "com-fontes",
+    "reviewer": null,
+    "updatedAt": "2026-11-01"
+  },
+  "identity": {
+    "accent": "indigo",
+    "signature": "Linhas de argumento, bifurcações e contrapontos",
+    "keyVisualization": "graph"
+  },
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "Uma tradição em disputa",
+      "kicker": "Ponto de partida",
+      "layout": "introduction",
+      "minutes": 2,
+      "narrative": [
+        "O marxismo reúne tradições de interpretação e ação política inspiradas em Karl Marx e em sua colaboração com Friedrich Engels. Sua unidade não apaga divergências sobre história, economia, Estado e transformação social.",
+        "Esta leitura parte da formação europeia no século XIX e acompanha documentos, autores e debates posteriores. Não é uma história completa dos movimentos e governos que reivindicaram Marx. O recorte brasileiro e latino-americano aparece nos registros de pensadores, ainda em revisão."
+      ],
+      "sourceIds": ["source-v4-marx-sep"],
+      "blocks": [],
+      "gap": null
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Ler o mundo industrial",
+      "kicker": "Origens e formação",
+      "layout": "documents",
+      "minutes": 3,
+      "narrative": [
+        "A crítica de Marx se desenvolve em confronto com a filosofia alemã, a economia política e os projetos socialistas de seu tempo. Esses encontros não formam uma sequência automática de causas: são debates intelectuais em uma sociedade em transformação.",
+        "Dois documentos oferecem entradas distintas: o Manifesto Comunista, associado a Marx e Engels, e O capital, dedicado à crítica da economia política. Abra cada registro para distinguir o propósito do texto e a evidência disponível."
+      ],
+      "sourceIds": ["source-v4-marx-sep", "source-marx-capital"],
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["work-communist-manifesto", "work-capital-volume-i"],
+          "mode": "documents"
+        }
+      ],
+      "gap": null
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Trabalho, valor e sociedade",
+      "kicker": "Princípios e conceitos",
+      "layout": "concepts",
+      "minutes": 5,
+      "narrative": [
+        "Como explicar as formas de produção e as relações sociais? Materialismo histórico e tempo de trabalho socialmente necessário abrem perguntas diferentes. O primeiro orienta interpretações da mudança histórica; o segundo participa da análise do valor em O capital.",
+        "Na teoria de Marx, o trabalho socialmente necessário não equivale ao tempo individual de qualquer produtor. A comparação abaixo permite ler essa formulação ao lado de Smith, sem tratar valor e preço como sinônimos."
+      ],
+      "sourceIds": ["source-v4-marx-sep", "source-marx-capital", "source-marx-smith"],
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "concept-historical-materialism",
+            "concept-trabalho-socialmente-necessario"
+          ],
+          "mode": "concepts"
+        },
+        {
+          "type": "argument",
+          "topic": "smith-marx"
+        }
+      ],
+      "gap": null
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Vozes que não se confundem",
+      "kicker": "Pensadores e leituras",
+      "layout": "thinkers",
+      "minutes": 4,
+      "narrative": [
+        "Uma tradição não pensa com uma só voz. Selecione um autor para consultar seu registro, período e fontes sem abandonar o percurso. A presença na seleção é um caminho de estudo; não implica concordância entre todas as pessoas.",
+        "Os retratos só aparecem quando o acervo registra licença e atribuição. Os dados biográficos importados são apresentados com sua proveniência e revisão pendente."
+      ],
+      "sourceIds": ["source-v4-marx-sep"],
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "person-karl-marx",
+            "person-friedrich-engels",
+            "person-vladimir-lenin",
+            "person-rosa-luxemburg",
+            "person-eduard-bernstein",
+            "person-karl-kautsky",
+            "person-antonio-gramsci",
+            "person-leon-trotsky",
+            "person-joseph-stalin",
+            "person-mao-zedong",
+            "person-caio-prado-junior",
+            "person-luiz-carlos-prestes",
+            "person-florestan-fernandes",
+            "person-jose-carlos-mariategui"
+          ],
+          "mode": "thinkers"
+        }
+      ],
+      "gap": null
+    },
+    {
+      "id": "historia",
+      "anchor": "historia",
+      "title": "Textos e acontecimentos no tempo",
+      "kicker": "Desenvolvimento histórico",
+      "layout": "timeline",
+      "minutes": 3,
+      "narrative": [
+        "A sequência aproxima publicações, acontecimentos e organizações já registrados no acervo. A posição no eixo expressa data, não influência ou causalidade. Selecione um período e abra os itens para ler o contexto.",
+        "As datas de início de acontecimentos e instituições não indicam duração. Esta amostra ainda não substitui uma história das experiências políticas, de seus conflitos ou de seus resultados."
+      ],
+      "sourceIds": ["source-v4-marx-sep"],
+      "blocks": [
+        {
+          "type": "timeline",
+          "entityIds": [
+            "work-wealth-of-nations",
+            "work-communist-manifesto",
+            "work-capital-volume-i",
+            "event-paris-commune",
+            "institution-second-international",
+            "event-russian-revolution"
+          ]
+        }
+      ],
+      "gap": "A história dos governos, partidos e experiências nacionais exige bibliografia específica. Não há base editorial suficiente neste snapshot para uma avaliação comparativa."
+    },
+    {
+      "id": "correntes",
+      "anchor": "correntes",
+      "title": "Concordar com Marx não encerra o debate",
+      "kicker": "Correntes e divergências",
+      "layout": "graph",
+      "minutes": 4,
+      "narrative": [
+        "O que distingue reforma e revolução? Como interpretar o Estado? A rede reúne três polêmicas documentadas entre autores. Selecione uma relação para investigar seu argumento e sua fonte; a tabela oferece o mesmo conteúdo em texto.",
+        "Linhas de crítica não são linhas de descendência. A autoria de uma crítica é documentável, mesmo quando a interpretação criticada e sua avaliação continuam em disputa."
+      ],
+      "sourceIds": ["source-v4-luxemburg", "source-v4-lenin", "source-marx-critique"],
+      "blocks": [
+        {
+          "type": "graph",
+          "edgeIds": ["edge-luxemburg-bernstein", "edge-lenin-kautsky", "edge-marx-smith"]
+        }
+      ],
+      "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte."
+    },
+    {
+      "id": "criticas",
+      "anchor": "criticas",
+      "title": "Uma teoria também é uma pergunta",
+      "kicker": "Críticas e debates",
+      "layout": "debate",
+      "minutes": 3,
+      "narrative": [
+        "Crítica política interna: Luxemburg contesta Bernstein sobre reformas e transformação socialista; Lenin critica Kautsky sobre Estado e revolução. Cada relação atribui o argumento ao autor que o formulou, sem tornar sua acusação um veredito do ATLAS.",
+        "Debate acadêmico: a interpretação da história, a teoria do valor e a exploração em Marx têm leituras concorrentes. Consulte as seções 2 e 3 da Stanford Encyclopedia of Philosophy para distinguir reconstrução filosófica, objeções e alternativas. A existência de debate não significa que todas as posições tenham o mesmo apoio."
+      ],
+      "sourceIds": ["source-v4-marx-sep", "source-v4-luxemburg", "source-v4-lenin"],
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": ["source-v4-marx-sep", "source-v4-luxemburg", "source-v4-lenin"]
+        }
+      ],
+      "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria."
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Voltar à evidência",
+      "kicker": "Fontes e aprofundamento",
+      "layout": "sources",
+      "minutes": 2,
+      "narrative": [
+        "Comece pelos textos primários para conferir o argumento atribuído a cada autor; use estudos acadêmicos para situar conceitos e divergências. Fontes enciclopédicas e metadados ajudam a descobrir o acervo, sem validar influência ou causalidade.",
+        "Esta página usa redação editorial própria e os registros existentes. Os trechos do comparador preservam a atribuição e o localizador. Não há revisão humana registrada. Filtre a bibliografia para reencontrar uma referência."
+      ],
+      "sourceIds": [],
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "source-v4-marx-sep",
+            "source-marx-capital",
+            "source-marx-smith",
+            "source-marx-critique",
+            "source-v4-luxemburg",
+            "source-v4-lenin"
+          ]
+        }
+      ],
+      "gap": null
+    }
+  ],
+  "portrait": {
+    "entityId": "person-karl-marx",
+    "assetId": "asset-marx-portrait"
+  }
+}

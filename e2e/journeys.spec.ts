@@ -90,7 +90,8 @@ test('mobile home directs exploration to dedicated atlas and relation pages', as
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await expect(page.locator('app-evidence-network')).toHaveCount(0);
-  await page.getByRole('link', { name: /Explorar Marxismo e economia política/ }).click();
+  await page.getByRole('link', { name: /Explorar ideologias e tradições/ }).click();
+  await page.getByRole('link', { name: 'Ler o Marxismo' }).click();
   await expect(page.locator('h1')).toContainText('Marxismo');
   await page.goto('/relacoes/');
   await page.getByRole('button', { name: 'Pessoa Karl Marx', exact: true }).focus();

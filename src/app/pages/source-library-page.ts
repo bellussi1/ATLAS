@@ -80,13 +80,15 @@ import {
         <p role="status" class="empty">Ainda não há fontes cadastradas no acervo.</p>
       }
       <a class="back-link discovery-return" appEditorialLink [routerLink]="returnTo()">{{
-        origin() === '/atlas/marxismo'
-          ? 'Voltar ao atlas'
-          : origin()?.startsWith('/atlas/marxismo')
-            ? 'Voltar ao mapa de argumentos'
-            : hasOrigin()
-              ? 'Voltar à busca e aos filtros'
-              : 'Voltar aos formatos editoriais'
+        origin()?.startsWith('/ideologias/marxismo')
+          ? 'Voltar ao mapa de argumentos'
+          : origin() === '/atlas/marxismo'
+            ? 'Voltar ao atlas'
+            : origin()?.startsWith('/atlas/marxismo')
+              ? 'Voltar ao mapa de argumentos'
+              : hasOrigin()
+                ? 'Voltar à busca e aos filtros'
+                : 'Voltar aos formatos editoriais'
       }}</a>
     </app-page-template>
   `,

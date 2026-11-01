@@ -1,4 +1,5 @@
-import { type Routes } from '@angular/router';
+import { inject } from '@angular/core';
+import { type RedirectFunction, Router, type Routes } from '@angular/router';
 
 import {
   contentTypeBreadcrumbResolver,
@@ -11,18 +12,45 @@ import {
   trailTitleResolver,
 } from './content/route-resolvers';
 
+const marxRedirect: RedirectFunction = ({ queryParams, fragment }) =>
+  inject(Router).createUrlTree(['/ideologias/marxismo'], {
+    queryParams,
+    fragment: fragment ?? 'conceitos',
+  });
+
 export const routes: Routes = [
   {
+    path: 'ideologias',
+    loadComponent: () => import('./pages/ideologies-hub').then((m) => m.IdeologiesHubComponent),
+    title: 'Ideologias e tradições — ATLAS',
+    data: { breadcrumb: 'Ideologias e tradições' },
+  },
+  {
+    path: 'ideologias/:slug',
+    loadComponent: () => import('./pages/ideology-page').then((m) => m.IdeologyPageComponent),
+    title: (route) =>
+      route.paramMap.get('slug') === 'marxismo'
+        ? 'Marxismo: ideias e divergências — ATLAS'
+        : 'Página não encontrada — ATLAS',
+    data: {
+      breadcrumb: 'Leitura de tradição',
+      metaDescription:
+        'Uma leitura contínua com conceitos, pensadores, cronologia, divergências e fontes identificadas.',
+    },
+  },
+  {
     path: 'atlas/marxismo/valor-e-trabalho',
-    loadComponent: () => import('./pages/marx-atlas-page').then((module) => module.MarxAtlasPage),
-    data: { breadcrumb: 'Valor e trabalho' },
-    title: 'Valor e trabalho: Smith e Marx — ATLAS',
+    pathMatch: 'full',
+    redirectTo: marxRedirect,
   },
   {
     path: 'atlas/marxismo',
-    loadComponent: () => import('./pages/marx-atlas-index').then((module) => module.MarxAtlasIndex),
-    data: { breadcrumb: 'Marxismo e economia política' },
-    title: 'Marxismo e economia política — ATLAS',
+    pathMatch: 'full',
+    redirectTo: ({ queryParams, fragment }) =>
+      inject(Router).createUrlTree(['/ideologias/marxismo'], {
+        queryParams,
+        fragment: fragment ?? undefined,
+      }),
   },
   {
     path: 'atlas/liberalismos',

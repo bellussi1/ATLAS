@@ -6,6 +6,13 @@ import { methodologyKnowledgeGraph } from './core/content-repository';
 
 export const serverRoutes: ServerRoute[] = [
   {
+    path: 'ideologias/:slug',
+    renderMode: RenderMode.Prerender,
+    async getPrerenderParams() {
+      return [{ slug: 'marxismo' }];
+    },
+  },
+  {
     path: 'sistema',
     renderMode: RenderMode.Prerender,
   },

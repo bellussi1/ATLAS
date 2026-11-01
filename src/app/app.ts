@@ -65,7 +65,8 @@ export class AppComponent {
       !win ||
       typeof win.requestAnimationFrame !== 'function' ||
       this.instantNavigation ||
-      win.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+      win.matchMedia?.('(prefers-reduced-motion: reduce)').matches ||
+      this.document.documentElement.classList.contains('atlas-reduced-motion')
     )
       return;
     this.pageFrame = win.requestAnimationFrame(() => {
@@ -97,8 +98,10 @@ export class AppComponent {
   private updatePageMetadata(path: string): void {
     const pageTitle = this.title.getTitle() || 'ATLAS — compreender o mundo';
     const routeDescription = this.activeRouteDescription();
-    const description =
-      path === '/atlas/marxismo'
+    const description = path.startsWith('/ideologias')
+      ? routeDescription ||
+        'Explore ideologias e tradições com fontes, conceitos e divergências documentadas.'
+      : path === '/atlas/marxismo'
         ? 'Explore pessoas, obras e debates sobre Marxismo e economia política. Núcleo em revisão editorial.'
         : path === '/atlas/marxismo/valor-e-trabalho'
           ? 'Compare as formulações de valor de Smith e Marx, suas fontes e a crítica documentada. Conteúdo em revisão.'

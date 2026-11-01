@@ -1,0 +1,57 @@
+{
+  "sources": [
+    {
+      "id": "source-v4-marx-sep",
+      "title": "Jonathan Wolff e David Leopold — Karl Marx",
+      "url": "https://plato.stanford.edu/entries/marx/",
+      "edition": "Stanford Encyclopedia of Philosophy, revisão de 27/03/2025; seções 2, 3 e 8",
+      "publicationDate": "2025-03-27"
+    },
+    {
+      "id": "source-v4-luxemburg",
+      "title": "Rosa Luxemburg — Reform or Revolution",
+      "url": "https://www.marxists.org/archive/luxemburg/1900/reform-revolution/intro.htm",
+      "edition": "Introdução; tradução de Integer, Militant Publications, 1986; obra de 1899. Consulta em 01/11/2026.",
+      "publicationDate": null
+    },
+    {
+      "id": "source-v4-lenin",
+      "title": "V. I. Lenin — The State and Revolution",
+      "url": "https://www.marxists.org/archive/lenin/works/1917/staterev/ch06.htm",
+      "edition": "Capítulo VI, seções 2–3; Collected Works, vol. 25. Escrito em 1917, publicado em 1918. Consulta em 01/11/2026.",
+      "publicationDate": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-luxemburg-bernstein",
+      "from": "person-rosa-luxemburg",
+      "to": "person-eduard-bernstein",
+      "type": "divergencia-ou-critica",
+      "label": "critica o programa de reformas de",
+      "context": "Na introdução de Reforma ou revolução, Luxemburg contesta a substituição da transformação socialista por reformas. A relação registra a crítica da autora; não estabelece que sua leitura de Bernstein seja consensual.",
+      "sources": ["source-v4-luxemburg"],
+      "certainty": "estabelecida"
+    },
+    {
+      "id": "edge-lenin-kautsky",
+      "from": "person-vladimir-lenin",
+      "to": "person-karl-kautsky",
+      "type": "divergencia-ou-critica",
+      "label": "critica a leitura do Estado de",
+      "context": "No capítulo VI de O Estado e a revolução, Lenin acusa Kautsky de contornar a questão da ruptura com a máquina estatal. Trata-se da posição de Lenin na polêmica, não de um juízo neutro sobre Kautsky.",
+      "sources": ["source-v4-lenin"],
+      "certainty": "estabelecida"
+    },
+    {
+      "id": "edge-marx-smith",
+      "from": "person-karl-marx",
+      "to": "person-adam-smith",
+      "type": "divergencia-ou-critica",
+      "label": "analisa criticamente as definições de valor de",
+      "context": "Teorias da mais-valia, capítulo 3: Marx distingue trabalho contido e trabalho comandado nas formulações de Smith. Não é uma resposta direta entre os dois trechos do comparador.",
+      "sources": ["source-marx-critique"],
+      "certainty": "estabelecida"
+    }
+  ]
+}

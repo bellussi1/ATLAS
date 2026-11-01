@@ -310,7 +310,46 @@ export function safeDiscoveryOrigin(value: string | null): string | null {
   if (!value) return null;
   try {
     const url = new URL(value, 'https://atlas.invalid');
-    if (url.origin !== 'https://atlas.invalid' || url.hash) return null;
+    if (url.origin !== 'https://atlas.invalid') return null;
+    if (url.pathname === '/ideologias/marxismo') {
+      const allowed = [
+        'argumento',
+        'vinculo',
+        'periodo',
+        'relacao',
+        'bibliografia',
+        'pensadores-0',
+        'origens-0',
+        'conceitos-0',
+      ];
+      const anchors = [
+        'introducao',
+        'origens',
+        'conceitos',
+        'pensadores',
+        'historia',
+        'correntes',
+        'criticas',
+        'fontes',
+      ];
+      if (
+        (url.hash && !anchors.includes(url.hash.slice(1))) ||
+        [...url.searchParams.keys()].some((key) => !allowed.includes(key))
+      )
+        return null;
+      if (
+        url.searchParams.has('argumento') &&
+        !['smith', 'marx'].includes(url.searchParams.get('argumento')!)
+      )
+        return null;
+      if (
+        url.searchParams.has('vinculo') &&
+        !['todas', 'comparacao', 'critica'].includes(url.searchParams.get('vinculo')!)
+      )
+        return null;
+      return `${url.pathname}${url.search}${url.hash}`;
+    }
+    if (url.hash) return null;
     if (url.pathname === '/atlas/marxismo' && !url.search) return url.pathname;
     if (url.pathname === '/atlas/marxismo' || url.pathname === '/atlas/marxismo/valor-e-trabalho') {
       if (

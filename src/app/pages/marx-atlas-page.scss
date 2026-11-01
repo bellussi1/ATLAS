@@ -1,5 +1,6 @@
 :host {
   display: block;
+  min-width: 0;
 }
 .atlas-page {
   max-width: var(--grid-max);
@@ -40,6 +41,18 @@ p {
   margin-top: 4rem;
   border-top: 3px solid var(--color-ink);
   padding-top: 1.5rem;
+}
+.argument-map > *,
+.thesis-copy,
+.preview-actions {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+fieldset {
+  min-inline-size: 0;
+}
+.thesis {
+  min-width: 0;
 }
 h2 {
   font: 500 clamp(1.8rem, 3vw, 2.7rem)/1.1 var(--font-serif);

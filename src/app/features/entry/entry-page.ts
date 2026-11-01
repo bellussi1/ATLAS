@@ -124,13 +124,15 @@ import { AtlasEditorialLinkDirective } from '../../shared/ui-primitives';
 
         <app-continue-reading [currentPath]="'/verbete/' + entry.slug" />
         <a class="back-link discovery-return" [routerLink]="returnTo()">{{
-          origin() === '/atlas/marxismo'
-            ? 'Voltar ao atlas'
-            : origin()?.startsWith('/atlas/marxismo')
-              ? 'Voltar ao mapa de argumentos'
-              : hasOrigin()
-                ? 'Voltar à busca e aos filtros'
-                : 'Voltar ao índice de verbetes'
+          origin()?.startsWith('/ideologias/marxismo')
+            ? 'Voltar ao mapa de argumentos'
+            : origin() === '/atlas/marxismo'
+              ? 'Voltar ao atlas'
+              : origin()?.startsWith('/atlas/marxismo')
+                ? 'Voltar ao mapa de argumentos'
+                : hasOrigin()
+                  ? 'Voltar à busca e aos filtros'
+                  : 'Voltar ao índice de verbetes'
         }}</a>
       </article>
     } @else {

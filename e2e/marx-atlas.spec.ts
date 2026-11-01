@@ -1,112 +1,127 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-test('Marxism is one continuous page with an inline argument map', async ({ page }) => {
-  await page.goto('/atlas/marxismo/');
-  await expect(page.getByRole('heading', { name: 'Marxismo e economia política.' })).toBeVisible();
-  await expect(page.locator('.view-switch')).toHaveCount(0);
-  await expect(page.locator('.graph-canvas')).toHaveCount(0);
-  await expect(page.locator('.text-network')).toHaveAttribute('open', '');
-  await expect(
-    page.getByRole('heading', { name: 'Pessoas e acontecimentos no tempo' }),
-  ).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Imagens com licença registrada' })).toBeVisible();
-  await expect(page.getByRole('group', { name: 'Selecionar tese' })).toBeVisible();
-  await expect(page.locator('a[href^="/verbete/"]')).toHaveCount(0);
-  const currentUrl = page.url();
-  await page
-    .getByRole('button', { name: /Adam Smith.*Trabalho que uma mercadoria pode comandar/ })
-    .click();
-  await expect(page.locator('#argument-context')).toContainText('Smith: medida na troca');
-  await expect(page).toHaveURL(currentUrl);
-});
-
-test('continuous Marxism page supports keyboard interaction and an accessible layout on mobile', async ({
+test('legacy routes lead to a continuous eight-chapter page and preserve thesis selection', async ({
   page,
 }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/atlas/marxismo/');
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  const violations = (await new AxeBuilder({ page }).analyze()).violations;
-  expect(
-    violations.filter((item) => item.impact === 'critical' || item.impact === 'serious'),
-  ).toEqual([]);
-  const smithThesis = page.getByRole('button', {
-    name: /Adam Smith.*Trabalho que uma mercadoria pode comandar/,
-  });
-  await smithThesis.focus();
-  await page.keyboard.press('Enter');
-  await expect(page.locator('#argument-context')).toContainText('Smith: medida na troca');
-  await expect(page).toHaveURL(/\/atlas\/marxismo\/?$/);
-});
-
-test('expanded atlas selects an author, returns to its root and opens a historical event', async ({
-  page,
-}) => {
-  await page.goto('/atlas/marxismo/');
-  await expect(
-    page.getByRole('heading', { name: 'Autores, correntes e ideias em relação.' }),
-  ).toBeVisible();
-  await expect(page.locator('.view-switch')).toHaveCount(0);
-  await expect(
-    page.getByRole('heading', { name: 'Pessoas e acontecimentos no tempo' }),
-  ).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Imagens com licença registrada' })).toBeVisible();
-  await expect(page.getByRole('group', { name: 'Selecionar tese' })).toBeVisible();
-  await expect(page.locator('a[href^="/verbete/"]')).toHaveCount(0);
-  await expect(page.locator('.scope')).toContainText('27 entidades');
-  await page.getByRole('button', { name: /^Pessoa Friedrich Engels/ }).click();
-  await expect(page.getByRole('heading', { name: 'Friedrich Engels' })).toBeVisible();
-  await expect(page.getByRole('link', { name: /Consultar Wikidata Q34787/ })).toBeVisible();
-  await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
-  await expect(page.locator('.context-panel h2')).toHaveText('Marxismo');
-
-  await page.locator('.timeline-list button').filter({ hasText: 'Comuna de Paris' }).click();
-  await expect(page.getByRole('heading', { name: 'Comuna de Paris' })).toBeVisible();
-  await expect(page.getByText('Dados importados', { exact: false })).toBeVisible();
-  const currentUrl = page.url();
-  await page
-    .getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ })
-    .click();
-  await expect(page.locator('#argument-context')).toContainText(
-    'Marx: tempo socialmente necessário',
-  );
-  await expect(page).toHaveURL(currentUrl);
-  await page.screenshot({ path: 'output/playwright/atlas-marxismo-desktop.png', fullPage: true });
-});
-
-test('touch users select a Latin American record from the compact mobile index', async ({
-  browser,
-}) => {
-  const context = await browser.newContext({
-    viewport: { width: 390, height: 844 },
-    isMobile: true,
-    hasTouch: true,
-  });
-  const page = await context.newPage();
-  await page.goto('/atlas/marxismo/');
-  await page.getByRole('button', { name: /^Pessoa Florestan Fernandes/ }).tap();
-  await expect(page.getByRole('heading', { name: 'Florestan Fernandes' })).toBeVisible();
-  await expect(page.locator('.entity-list .card-preview').filter({ visible: true })).toHaveCount(0);
-  await page.screenshot({ path: 'output/playwright/atlas-marxismo-mobile.png', fullPage: true });
-  await context.close();
-});
-
-test('previously shared argument URLs keep their selection', async ({ page }) => {
   await page.goto('/atlas/marxismo/?argumento=marx&vinculo=critica');
-  await expect(page.getByRole('heading', { name: 'Marxismo e economia política.' })).toBeVisible();
+  await expect(page).toHaveURL(/ideologias\/marxismo.*argumento=marx/);
+  await expect(page.getByRole('heading', { name: 'Marxismo', exact: true })).toBeVisible();
+  await expect(page.locator('.ideology-chapter')).toHaveCount(8);
+  await expect(page.locator('.view-switch')).toHaveCount(0);
   await expect(
     page.getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ }),
   ).toHaveAttribute('aria-pressed', 'true');
   await expect(page.getByLabel('Crítica documentada')).toBeChecked();
-  await expect(page.locator('.view-switch')).toHaveCount(0);
+  await page.goto('/atlas/marxismo/valor-e-trabalho/?argumento=marx');
+  await expect(page).toHaveURL(/ideologias\/marxismo.*#conceitos$/);
+});
+
+test('chapter anchors update orientation and offer a return', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/ideologias/marxismo/');
+  await page
+    .getByRole('navigation', { name: 'Capítulos', exact: true })
+    .getByRole('link', { name: /Vozes que/ })
+    .click();
+  await expect(page).toHaveURL(/#pensadores$/);
+  await expect(page.locator('#pensadores')).toBeFocused();
+  await expect(page.locator('.chapter-index [aria-current=location]')).toContainText('Vozes');
+  await page.getByRole('button', { name: 'Ponto anterior', exact: false }).click();
+  await expect(page).toHaveURL(/#introducao$/);
+});
+
+test('opening an author preserves the viewport and can be restored from a shared URL', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/ideologias/marxismo/#pensadores');
+  const author = page.locator('#pensadores').getByRole('button', { name: /Friedrich Engels/ });
+  await author.scrollIntoViewIfNeeded();
+  const before = await page.evaluate(() => scrollY);
+  await author.click();
+  await expect(author).toHaveAttribute('aria-expanded', 'true');
+  await page.waitForTimeout(200);
+  expect(Math.abs((await page.evaluate(() => scrollY)) - before)).toBeLessThan(150);
+  const url = page.url();
+  await page.reload();
+  await expect(author).toHaveAttribute('aria-expanded', 'true');
+  await expect(page).toHaveURL(url);
+});
+
+test('timeline filters and sourced critique graph remain in context', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/ideologias/marxismo/');
+  await page.getByLabel('Recorte temporal').selectOption('antes-1850');
+  await expect(page.locator('.timeline-list')).toContainText('1848');
+  await expect(page.locator('.timeline-list')).not.toContainText('1917');
+  await page.locator('#correntes').scrollIntoViewIfNeeded();
+  await page.getByRole('button', { name: 'Lenin → Karl Kautsky' }).click();
+  await expect(page.getByRole('region', { name: 'Relação selecionada' })).toContainText(
+    'capítulo VI',
+  );
+  await page.getByText('Consultar tabela de relações e fontes', { exact: true }).click();
+  await expect(page.getByRole('table')).toContainText('estabelecida');
+});
+
+test('mobile touch, keyboard, manual reduced motion and source search work', async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+    hasTouch: true,
+    isMobile: true,
+    reducedMotion: 'reduce',
+  });
+  const page = await context.newPage();
+  await page.goto('/ideologias/marxismo/');
+  await page
+    .locator('#pensadores')
+    .getByRole('button', { name: /Florestan Fernandes/ })
+    .tap();
+  await expect(page.locator('#pensadores')).toContainText('Sociólogo');
+  await page.getByRole('button', { name: 'Reduzir movimento' }).focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('html')).toHaveClass(/atlas-reduced-motion/);
+  await page.locator('#fontes').getByLabel('Filtrar referências').fill('inexistente');
+  await expect(page.locator('#fontes')).toContainText('Nenhuma referência encontrada');
+  await page.locator('#fontes').getByLabel('Filtrar referências').clear();
+  await expect(page.locator('#fontes .bibliography li')).toHaveCount(6);
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+  await context.close();
+});
+
+test('hub opens both real traditions without publishing draft configurations', async ({ page }) => {
+  await page.goto('/ideologias/');
+  await page.getByRole('button', { name: /Família de tradições Liberalismo/ }).click();
+  await page.getByRole('link', { name: 'Abrir o Atlas do Liberalismo' }).click();
+  await expect(page).toHaveURL(/atlas\/liberalismos/);
+  await page.goto('/ideologias/');
+  await page.getByRole('link', { name: 'Ler o Marxismo' }).click();
+  await expect(page.locator('.ideology-chapter')).toHaveCount(8);
+});
+
+test('V4 reading has no serious or critical automatic accessibility violations', async ({
+  page,
+}) => {
+  await page.goto('/ideologias/marxismo/');
+  const result = await new AxeBuilder({ page }).analyze();
+  expect(
+    result.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical'),
+  ).toEqual([]);
 });
 
 test('explores a thesis, two records and returns to the same map context', async ({ page }) => {
   await page.goto('/atlas/marxismo/valor-e-trabalho/');
   await page.getByLabel('Crítica documentada').check();
-  await page.getByRole('button', { name: /Tempo de trabalho socialmente necessário/ }).click();
+  await page
+    .getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ })
+    .click();
   await expect(
     page.getByRole('heading', { name: 'Marx: tempo socialmente necessário' }),
   ).toBeVisible();
@@ -119,7 +134,8 @@ test('explores a thesis, two records and returns to the same map context', async
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(preview).toBeFocused();
-  await page.getByRole('link', { name: 'Ler o conceito' }).click();
+  await preview.click();
+  await page.getByRole('link', { name: /Abrir registro completo/ }).click();
   await expect(page.locator('h1')).toContainText('Tempo de trabalho');
   await page.locator('.related-records a').filter({ hasText: 'O capital: volume I' }).click();
   await expect(page.locator('h1')).toContainText('O capital');
@@ -162,6 +178,8 @@ test('argument map has no automatically detected critical accessibility violatio
   page,
 }) => {
   await page.goto('/atlas/marxismo/valor-e-trabalho/');
+  await expect(page).toHaveURL(/ideologias\/marxismo/);
+  await expect(page.locator('.ideology-chapter')).toHaveCount(8);
   const results = await new AxeBuilder({ page }).analyze();
   expect(results.violations.filter((item) => item.impact === 'critical')).toEqual([]);
 });
