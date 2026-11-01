@@ -1,0 +1,28 @@
+<article [attr.data-relation]="relation().id">
+  <h3>
+    <a [routerLink]="'/verbete/' + from().slug">{{ from().title }}</a> → {{ relation().label }} →
+    <a [routerLink]="'/verbete/' + to().slug">{{ to().title }}</a>
+  </h3>
+  <p>{{ relation().context }}</p>
+  <p>
+    {{ status(relation().editorialStatus) }}. Incerteza: {{ uncertainty[relation().uncertainty] }}.
+  </p>
+  <p>Vínculo: {{ relation().id }}. Tipo registrado: {{ relation().type }}.</p>
+  @for (item of references(); track item.evidence.id) {
+    <p>
+      <a routerLink="/fontes" [fragment]="'source-' + item.source.id">{{ item.source.title }}</a> ·
+      {{ item.evidence.locator }} · Consulta: {{ item.evidence.accessedAt }}.
+    </p>
+    @if (item.evidence.note) {
+      <p>{{ item.evidence.note }}</p>
+    }
+  } @empty {
+    <p>Sem evidência historiográfica específica associada a este vínculo.</p>
+  }
+  @if (relation().provenance; as provenance) {
+    <p>
+      <a [href]="provenance.url">Procedência: {{ provenance.source }}</a> ·
+      {{ provenance.retrievedAt }}. A importação não substitui revisão historiográfica.
+    </p>
+  }
+</article>

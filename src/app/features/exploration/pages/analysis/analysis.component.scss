@@ -1,0 +1,131 @@
+:host {
+  display: block;
+}
+.analysis {
+  max-width: var(--grid-max);
+  margin: auto;
+  padding: 2rem var(--grid-gutter) 5rem;
+  overflow-wrap: anywhere;
+}
+header {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  padding-bottom: 2rem;
+}
+h1 {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+header p {
+  font: 1.25rem/1.5 var(--font-serif);
+  margin: 0;
+  max-width: 40ch;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  border-block: 2px solid var(--ink);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+a[aria-current='page'] {
+  font-weight: 600;
+  color: var(--ink);
+}
+h2 {
+  font-size: 1.75rem;
+  margin-block: 2rem 1rem;
+}
+h3 {
+  font-size: 1.25rem;
+  margin-block: 2rem 0.75rem;
+}
+h4 {
+  font-size: 1.1rem;
+}
+p {
+  line-height: 1.7;
+  max-width: 90ch;
+}
+.selection {
+  padding: 1.5rem;
+  border-left: 4px solid var(--color-accent);
+  margin-top: 2rem;
+  background: var(--paper-shade);
+  min-height: 18rem;
+}
+.comparison-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-block: 2rem;
+}
+label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+select,
+button {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  font: inherit;
+  background: var(--paper);
+  color: var(--ink);
+}
+button {
+  cursor: pointer;
+}
+.method {
+  border-block: 2px solid var(--ink);
+  padding-block: 0 1rem;
+}
+.comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+.comparison > article {
+  min-width: 0;
+  padding-top: 1rem;
+}
+.comparison > article + article {
+  border-left: 1px solid var(--rule-strong);
+  padding-left: 2rem;
+}
+.comparison > article > p {
+  font-family: var(--font-serif);
+}
+.caution {
+  padding: 1rem;
+  background: var(--color-teal-paper);
+}
+@media (max-width: 700px) {
+  header,
+  .comparison,
+  .comparison-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .comparison > article + article {
+    border-left: 0;
+    border-top: 2px solid var(--ink);
+    padding-left: 0;
+  }
+  .selection {
+    padding: 1rem;
+  }
+}

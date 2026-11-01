@@ -25,6 +25,7 @@ O escopo público inclui Home, Marxismo, Liberalismo e Knowledge Explorer: busca
 - [Validação da ingestão reproduzível](quality/INGESTAO-REPRODUZIVEL.md)
 - [Validação de dados e carregamento](quality/DADOS-E-CARREGAMENTO.md)
 - [Knowledge Explorer: contratos e validação](quality/KNOWLEDGE-EXPLORER.md)
+- [Rede e comparadores: método e validação](quality/REDE-E-COMPARADORES.md)
 
 ## Referências
 

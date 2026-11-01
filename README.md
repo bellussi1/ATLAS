@@ -31,8 +31,12 @@ O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa
 - `/verbete/:slug` — página permanente de cada entidade, com contexto, fontes e conexões.
 - `/fontes` — referências cadastradas, com âncoras permanentes e usos no acervo.
 - `/explorar/:tipo/:slug` — exemplos de metodologia, identificados como tais.
+- `/rede` — rede com geometria de build, filtros e timeline compartilhada.
+- `/comparar` — comparação histórica ou conceitual de dois registros, com fontes e limites.
 
 O Knowledge Explorer amplia o escopo temporário anterior de três páginas, a pedido do usuário. Os 48 registros existentes e oito exemplos de metodologia têm páginas prerenderizadas; não houve nova coleta histórica. Caminhos desconhecidos no Angular voltam à home; o preview estático retorna 404 para arquivos inexistentes. Veja [contratos e validação](docs/quality/KNOWLEDGE-EXPLORER.md).
+
+A rede e os comparadores usam o mesmo recorte por coleção, tipo, vínculo e período, compartilhável por URL. Posições/curvas e a escala temporal são compiladas antes da renderização; filtros não recalculam a geometria. A comparação justapõe o conteúdo registrado, sem gerar equivalência ou influência automaticamente. Veja [método e verificações](docs/quality/REDE-E-COMPARADORES.md).
 
 ## Comandos
 

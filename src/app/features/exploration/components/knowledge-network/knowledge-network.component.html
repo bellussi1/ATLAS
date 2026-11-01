@@ -1,0 +1,61 @@
+<p>
+  Posições organizam a leitura por tipo e ID. Distância, tamanho e proximidade não medem influência,
+  importância ou semelhança. Os vínculos preservam os registros e suas fontes.
+</p>
+<div class="network-visual">
+  <svg
+    viewBox="0 0 920 650"
+    [attr.viewBox]="'0 0 920 ' + layout().height"
+    role="group"
+    aria-label="Rede de entidades"
+  >
+    @for (relation of relations(); track relation.id) {
+      <path
+        [attr.data-relation]="relation.id"
+        [attr.d]="layout().edges[relation.id]"
+        [class.active]="
+          relation.fromEntityId === selectedId() || relation.toEntityId === selectedId()
+        "
+      />
+    }
+    @for (entity of entities(); track entity.id) {
+      @if (layout().nodes[entity.id]; as point) {
+        <g
+          tabindex="0"
+          role="button"
+          [attr.aria-label]="'Selecionar ' + entity.title"
+          [attr.aria-pressed]="selectedId() === entity.id"
+          [attr.data-node]="entity.id"
+          [attr.transform]="'translate(' + point.x + ',' + point.y + ')'"
+          (click)="choose($event, entity.id)"
+          (keydown.enter)="choose($event, entity.id)"
+          (keydown.space)="choose($event, entity.id)"
+        >
+          <title>{{ entity.title }}</title>
+          <rect x="-110" y="-22" width="220" height="44" />
+          <text text-anchor="middle" dominant-baseline="middle">
+            {{ entity.title.length > 25 ? entity.title.slice(0, 24) + '…' : entity.title }}
+          </text>
+        </g>
+      }
+    }
+  </svg>
+</div>
+<details class="textual" open>
+  <summary>Lista de entidades da rede</summary>
+  <ul>
+    @for (entity of entities(); track entity.id) {
+      <li>
+        <button
+          type="button"
+          [attr.aria-pressed]="selectedId() === entity.id"
+          (click)="selected.emit(entity.id)"
+        >
+          {{ entity.title }}
+        </button>
+      </li>
+    } @empty {
+      <li>Nenhuma entidade neste recorte. Remova filtros para ampliar a rede.</li>
+    }
+  </ul>
+</details>

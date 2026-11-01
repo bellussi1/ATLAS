@@ -9,6 +9,22 @@ import {
 } from '@core/routing/route-resolvers';
 
 export const explorationRoutes: Routes = [
+  ...[
+    { path: 'rede', title: 'Rede de conhecimento', analysis: 'network' },
+    { path: 'comparar', title: 'Comparar registros', analysis: 'comparison' },
+  ].map((page) => ({
+    path: page.path,
+    title: page.title + ' — ATLAS',
+    data: {
+      analysis: page.analysis,
+      breadcrumb: page.title,
+      metaDescription:
+        'Investigue vínculos e compare registros com fontes, método e limites explícitos.',
+    },
+    resolve: { knowledge: knowledgeContentResolver },
+    loadComponent: () =>
+      import('@exploration/pages/analysis/analysis.component').then((m) => m.AnalysisComponent),
+  })),
   ...explorerCatalogues.map((catalogue) => ({
     path: catalogue.path,
     title: catalogue.title + ' — ATLAS',

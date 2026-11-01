@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { type KnowledgeGraph, relationSchema, temporalExtentSchema } from './content-schema';
+import { explorationLayoutSchema } from './exploration-layout';
 
 const resourceSchema = z.object({
   file: z.string().regex(/^[a-z0-9-]+\.[a-f0-9]{64}\.json$/),
@@ -72,6 +73,7 @@ const timelineLayout = z
   })
   .nullable();
 export const layoutsSchema = z.object({
+  exploration: explorationLayoutSchema,
   atlases: z.object({
     center: point,
     order: z.record(z.string(), z.number().int().nonnegative()),

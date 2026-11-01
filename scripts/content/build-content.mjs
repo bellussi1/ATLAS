@@ -5,6 +5,7 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { formatJson, readSourceGraph, sha256, validateSourceGraph } from './source-graph.mjs';
+import { buildExplorationLayout } from './exploration-layout.mjs';
 
 const { buildDiscoveryIndex } =
   await import('../../src/app/core/content/queries/discovery-index.ts');
@@ -47,6 +48,7 @@ export async function buildContent({
   );
   const goldenAngle = Math.PI * (3 - Math.sqrt(5));
   const layouts = {
+    exploration: buildExplorationLayout(graph),
     atlases: {
       center: { x: 460, y: 286 },
       order: Object.fromEntries(entities.map((entity, index) => [entity.id, index])),

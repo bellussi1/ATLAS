@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import test from 'node:test';
 
 import { buildContent } from './build-content.mjs';
+import { buildExplorationLayout } from './exploration-layout.mjs';
 import {
   readSourceGraph,
   readSourceGraphBytes,
@@ -64,6 +65,13 @@ test('build is deterministic offline and emits search, directed adjacency and st
     y: 286,
   });
   assert.ok(layouts.editorial.marxismo.graphs['correntes-1'].nodes.length > 0);
+  assert.equal(Object.keys(layouts.exploration.networks.all.nodes).length, 48);
+  assert.ok(layouts.exploration.networks.all.edges['relation-marx-capital']);
+  assert.ok(Object.keys(layouts.exploration.networks).length > 1);
+  const manifesto = layouts.exploration.timeline.markers['work-communist-manifesto'];
+  assert.equal(manifesto.width, 0);
+  assert.equal(manifesto.partial, true);
+  assert.ok(layouts.exploration.timeline.markers['person-john-locke'].width > 0);
 });
 
 test('invalid references fail the build instead of emitting an inconsistent manifest', async () => {
@@ -79,6 +87,29 @@ test('invalid references fail the build instead of emitting an inconsistent mani
   duplicate.atlases[0].entities[0].externalIds = locke.externalIds;
   await assert.rejects(buildContent({ graph: duplicate, outputDirectory }), /Q9353/);
   assert.deepEqual(await readdir(outputDirectory), []);
+});
+
+test('exploration geometry is keyed by stable IDs and handles missing or single dates', async () => {
+  const graph = await readSourceGraph();
+  const first = buildExplorationLayout(graph);
+  for (const atlas of graph.atlases) {
+    atlas.entities.reverse();
+    atlas.relations.reverse();
+  }
+  assert.deepEqual(buildExplorationLayout(graph), first);
+  for (const atlas of graph.atlases)
+    for (const entity of atlas.entities) entity.temporalExtent = null;
+  const noDates = buildExplorationLayout(graph);
+  assert.deepEqual(noDates.timeline, { ticks: [], markers: {} });
+  graph.atlases[0].entities[0].temporalExtent = {
+    startYear: 1800,
+    endYear: null,
+    precision: 'year',
+    label: null,
+  };
+  const oneDate = buildExplorationLayout(graph).timeline;
+  assert.deepEqual(oneDate.ticks, [{ year: 1800, x: 50 }]);
+  assert.deepEqual(Object.values(oneDate.markers), [{ x: 50, width: 0, partial: true }]);
 });
 
 test('a new edition changes only affected hashes and a failed rebuild preserves the last manifest', async () => {
