@@ -11,7 +11,7 @@ Construir uma plataforma educacional pública, gratuita, interativa e rigorosa s
 - SCSS é o estilo padrão dos componentes; Tailwind está configurado. Angular CDK pode ser adicionado quando resolver uma necessidade concreta de interação ou acessibilidade.
 - Preservar a arquitetura e os componentes existentes. Não introduzir React, Next.js ou Fastify como framework base.
 - Manter a aplicação static-first. O build Angular atual gera saída estática e faz prerender das rotas públicas; manter SSR/prerender apenas onde compatível com a natureza pública do conteúdo.
-- Rotas atuais: `/`, `/relacoes`, `/tempo-e-espaco`, `/conhecimento`, `/explorar` (índice), `/explorar/:tipo`, `/explorar/:tipo/:slug`, `/atlas/marxismo`, `/atlas/marxismo/valor-e-trabalho`, `/estudar`, `/estudar/:slug`, `/sobre`, `/fontes`, `/verbete/:slug`, `/sistema` e fallback 404 em `src/app/app.routes.ts`. Os oito tipos editoriais válidos estão em `src/app/content/content-types.ts`; o grafo validado e suas fontes ficam em `src/content/atlas.json`. Toda nova rota deve ter título, estado de carregamento/vazio/erro pertinente e cobertura de navegação/teste.
+- Rotas atuais: `/`, `/marxismo` e `/liberalismo`. Este é o escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas; caminhos desconhecidos voltam à home. O grafo e os contratos de conteúdo permanecem preservados em `src/content` e `src/app/core`.
 - `ContentRepository` mantém o acesso ao conteúdo estático desacoplado das telas; no browser, carrega o asset local com `HttpClient` e, no SSR, usa o JSON empacotado. Schemas Zod em `src/app/core/content-schema.ts` validam IDs, slugs e referências.
 
 ## Desenvolvimento e verificações
@@ -75,4 +75,4 @@ A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atl
 
 ## Padrão V4 de páginas
 
-Consultar `docs/PAGE_STANDARD.md` para páginas de ideologias e tradições. A primeira implementação contínua está em `/ideologias/marxismo`; o hub está em `/ideologias`. O contrato Zod fica em `src/app/core/ideology-page-schema.ts` e os snapshots em `src/content/ideologies` e `src/content/graph`. Exemplos não publicados não devem entrar no prerender.
+Consultar `docs/PAGE_STANDARD.md` para páginas de ideologias e tradições. A implementação contínua está em `/marxismo`; o hub foi removido no escopo temporário de três páginas. O contrato Zod fica em `src/app/core/ideology-page-schema.ts` e os snapshots em `src/content/ideologies` e `src/content/graph`. Exemplos não publicados não devem entrar no prerender.

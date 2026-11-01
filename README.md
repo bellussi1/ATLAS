@@ -20,24 +20,13 @@ npm start
 
 O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa Angular standalone, TypeScript strict, Angular Router e SCSS. Tailwind CSS está configurado junto aos estilos dos componentes.
 
-## Rotas iniciais
+## Páginas disponíveis
 
-- `/` — apresentação e pontos de entrada
-- `/relacoes`, `/tempo-e-espaco`, `/conhecimento` — exploração de relações, tempo/espaço e busca
-- `/explorar` — índice navegável das oito categorias editoriais
-- `/atlas/marxismo` — mapa de argumentos sobre Smith, Marx e valor, com conteúdo em revisão
-- `/explorar/:tipo` — índice de uma categoria
-- `/explorar/:tipo/:slug` — página de detalhe editorial ou de metodologia
-- `/verbete/:slug` — verbete carregado do registro JSON estático e validado
-- `/estudar` — apresentação do formato de trilhas
-- `/estudar/como-usar-trilhas` — exemplo de metodologia de estudo
-- `/sobre` — missão do projeto
-- `/fontes` — biblioteca das fontes cadastradas, com localizadores e verbetes relacionados
-- Qualquer caminho desconhecido — página 404 da aplicação
+- `/` — home, busca nas duas leituras e mesa de pesquisa.
+- `/marxismo` — leitura contínua com conceitos, pensadores, cronologia, debates e fontes.
+- `/liberalismo` — atlas com rede, cronologia e imagens licenciadas.
 
-Na página inicial, a mesa destaca três textos de metodologia, enquanto a busca percorre verbetes, relações e entradas editoriais carregados. Relações apresenta os vínculos registrados; Tempo e espaço oferece uma linha do tempo e um comparador com os metadados disponíveis, sem desenhar fronteiras. A exploração geográfica permanece indisponível e as trilhas temáticas continuam identificadas como previstas.
-
-As páginas exemplares de verbete, artigo e atlas explicam a metodologia do ATLAS. Os registros existentes de artigo, pessoa e evento também aparecem em suas categorias e abrem páginas estruturadas em `/verbete/:slug`. Dossiês e trilhas temáticas continuam identificados como previstos. A biblioteca `/fontes` reúne referências e seus usos. Páginas de leitura oferecem sumário navegável, contexto e links relacionados. Metadados de descrição e URL canônica são atualizados por rota; os canônicos usam caminhos relativos à raiz porque o projeto ainda não define um domínio público. Veja o [sitemap e os tipos editoriais](docs/INFORMATION-ARCHITECTURE.md).
+Escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas do código e do prerender. Caminhos desconhecidos voltam à home. A navegação, as prévias e os exercícios permanecem dentro dessas três páginas; referências externas continuam disponíveis. Os dados históricos, fontes e licenças foram preservados. Documentos antigos descrevem etapas anteriores do produto.
 
 ## Comandos
 

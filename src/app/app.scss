@@ -309,7 +309,7 @@ main:focus {
 }
 @media (min-width: 60rem) {
   .site-header__inner {
-    grid-template-columns: minmax(13rem, 1fr) minmax(18rem, 1.5fr) minmax(7rem, 0.5fr);
+    grid-template-columns: minmax(13rem, 1fr) minmax(18rem, 1.5fr);
     gap: 3rem;
   }
   .graphic-doors {

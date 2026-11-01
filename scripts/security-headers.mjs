@@ -3,12 +3,6 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 
 const root = resolve('dist/atlas/browser');
-// Prerender's meta refresh cannot preserve a visitor's query string. Keep the
-// router shell at old URLs so Angular can migrate selection and chapter state.
-const routerShell = await readFile(join(root, 'index.csr.html'), 'utf8');
-for (const route of ['atlas/marxismo', 'atlas/marxismo/valor-e-trabalho']) {
-  await writeFile(join(root, route, 'index.html'), routerShell);
-}
 async function collect(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   return (

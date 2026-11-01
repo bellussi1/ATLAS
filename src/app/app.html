@@ -17,43 +17,33 @@
     <nav class="graphic-doors" aria-label="Entradas para explorar">
       <a
         class="graphic-door"
-        routerLink="/relacoes"
+        routerLink="/"
         routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
         ><app-editorial-mark kind="verbete" /><span
-          >Relações <span aria-hidden="true">↗</span></span
+          >Início <span aria-hidden="true">↗</span></span
         ></a
       >
       <a
         class="graphic-door"
-        routerLink="/tempo-e-espaco"
+        routerLink="/marxismo"
         routerLinkActive="is-active"
         ariaCurrentWhenActive="page"
         ><app-editorial-mark kind="artigo" /><span
-          >Tempo e espaço <span aria-hidden="true">↗</span></span
+          >Marxismo <span aria-hidden="true">↗</span></span
         ></a
       >
       <a
         class="graphic-door"
-        routerLink="/conhecimento"
+        routerLink="/liberalismo"
         routerLinkActive="is-active"
         ariaCurrentWhenActive="page"
         ><app-editorial-mark kind="atlas" /><span
-          >Conhecimento <span aria-hidden="true">↗</span></span
+          >Liberalismo <span aria-hidden="true">↗</span></span
         ></a
       >
     </nav>
-    <app-menu label="Navegação principal">
-      <a routerLink="/ideologias" routerLinkActive="is-active" ariaCurrentWhenActive="page"
-        >Ideologias</a
-      >
-      <a routerLink="/explorar" routerLinkActive="is-active" ariaCurrentWhenActive="page"
-        >Explorar</a
-      >
-      <a routerLink="/estudar" routerLinkActive="is-active" ariaCurrentWhenActive="page">Estudar</a>
-      <a routerLink="/sobre" routerLinkActive="is-active" ariaCurrentWhenActive="page">Sobre</a>
-      <a routerLink="/fontes" routerLinkActive="is-active" ariaCurrentWhenActive="page">Fontes</a>
-    </app-menu>
   </div>
 </header>
 
@@ -69,7 +59,7 @@
       <div class="footer-invitation">
         <p>Um acervo, muitos caminhos.</p>
         <h2>A próxima<br />descoberta<br /><em>é sua.</em></h2>
-        <a routerLink="/conhecimento">Procurar outra leitura <span aria-hidden="true">↗</span></a>
+        <a routerLink="/liberalismo">Explorar o Liberalismo <span aria-hidden="true">↗</span></a>
       </div>
       <div class="footer-playground">
         <nav
@@ -78,17 +68,18 @@
           [attr.data-composition]="composition()"
           [class.instant]="instantComposition()"
         >
-          <a class="collage-piece collage-piece--relations" routerLink="/relacoes"
-            ><app-editorial-mark kind="verbete" /><span>Seguir uma relação</span></a
+          <a class="collage-piece collage-piece--relations" routerLink="/"
+            ><app-editorial-mark kind="verbete" /><span>Página inicial</span></a
           >
-          <a class="collage-piece collage-piece--read" routerLink="/explorar"
-            ><app-editorial-mark kind="artigo" /><span>Folhear o acervo</span></a
+          <a class="collage-piece collage-piece--read" routerLink="/marxismo"
+            ><app-editorial-mark kind="artigo" /><span>Explorar o Marxismo</span></a
           >
-          <a class="collage-piece collage-piece--study" routerLink="/estudar"
-            ><app-editorial-mark kind="atlas" /><span>Conhecer as trilhas</span></a
+          <a class="collage-piece collage-piece--study" routerLink="/liberalismo"
+            ><app-editorial-mark kind="atlas" /><span>Explorar o Liberalismo</span></a
           >
-          <a class="collage-piece collage-piece--about" routerLink="/sobre"
-            ><span class="collage-letter" aria-hidden="true">a.</span><span>Sobre o ATLAS</span></a
+          <a class="collage-piece collage-piece--about" routerLink="/"
+            ><span class="collage-letter" aria-hidden="true">a.</span
+            ><span>Voltar ao início</span></a
           >
         </nav>
         <div class="composition-control">
@@ -104,7 +95,7 @@
       /></a>
       <div>
         <p>Conhecimento público,<br />com contexto e fontes.</p>
-        <a routerLink="/sistema">Sistema visual</a>
+        <a routerLink="/">Página inicial</a>
       </div>
     </div>
   </div>

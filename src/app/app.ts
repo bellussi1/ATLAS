@@ -6,13 +6,11 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } fro
 
 import { BreadcrumbsComponent } from './shared/breadcrumbs';
 import { AtlasEditorialMarkComponent } from './shared/editorial-mark';
-import { AtlasMenuComponent } from './shared/ui-primitives';
 
 @Component({
   selector: 'app-root',
   imports: [
     AtlasEditorialMarkComponent,
-    AtlasMenuComponent,
     BreadcrumbsComponent,
     RouterLink,
     RouterLinkActive,
@@ -98,33 +96,13 @@ export class AppComponent {
   private updatePageMetadata(path: string): void {
     const pageTitle = this.title.getTitle() || 'ATLAS — compreender o mundo';
     const routeDescription = this.activeRouteDescription();
-    const description = path.startsWith('/ideologias')
-      ? routeDescription ||
-        'Explore ideologias e tradições com fontes, conceitos e divergências documentadas.'
-      : path === '/atlas/marxismo'
-        ? 'Explore pessoas, obras e debates sobre Marxismo e economia política. Núcleo em revisão editorial.'
-        : path === '/atlas/marxismo/valor-e-trabalho'
-          ? 'Compare as formulações de valor de Smith e Marx, suas fontes e a crítica documentada. Conteúdo em revisão.'
-          : path === '/fontes'
-            ? 'Consulte as fontes cadastradas no ATLAS, seus localizadores e as leituras relacionadas.'
-            : path === '/conhecimento'
-              ? 'Pesquise verbetes e textos de metodologia realmente disponíveis no acervo do ATLAS.'
-              : path === '/relacoes'
-                ? 'Investigue como o ATLAS relaciona conceitos, afirmações e evidências.'
-                : path === '/tempo-e-espaco'
-                  ? 'Consulte o estado atual da exploração temporal e espacial do acervo do ATLAS.'
-                  : path.startsWith('/explorar/')
-                    ? 'Leia conteúdos editoriais do ATLAS com contexto, relações e estados editoriais identificados.'
-                    : path.startsWith('/verbete/')
-                      ? routeDescription ||
-                        'Consulte um verbete do ATLAS com contexto, afirmações, evidências e referências identificáveis.'
-                      : path.startsWith('/estudar')
-                        ? 'Conheça a proposta de trilhas de estudo do ATLAS e seus materiais disponíveis.'
-                        : path === '/'
-                          ? 'Explore relações, tempo e espaço, e os conteúdos disponíveis no acervo do ATLAS.'
-                          : path === '/sobre'
-                            ? 'Conheça a missão e os princípios editoriais da plataforma educacional pública do ATLAS.'
-                            : 'Conheça a plataforma educacional pública do ATLAS e seus caminhos de leitura.';
+    const description =
+      path === '/marxismo'
+        ? routeDescription ||
+          'Conceitos, pensadores, cronologia, divergências e fontes do marxismo.'
+        : path === '/liberalismo'
+          ? 'Explore o Atlas do Liberalismo: pessoas, ideias, acontecimentos e documentos com fontes.'
+          : 'Explore Marxismo e Liberalismo no ATLAS, com contexto e fontes identificadas.';
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });

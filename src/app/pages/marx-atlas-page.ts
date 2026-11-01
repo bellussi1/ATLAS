@@ -75,8 +75,8 @@ export class MarxAtlasPage {
   });
   readonly origin = computed(() =>
     this.inline()
-      ? `/ideologias/marxismo?argumento=${this.selected()}&vinculo=${this.filter()}#conceitos`
-      : `/atlas/marxismo/valor-e-trabalho?argumento=${this.selected()}&vinculo=${this.filter()}`,
+      ? `/marxismo?argumento=${this.selected()}&vinculo=${this.filter()}#conceitos`
+      : `/marxismo?argumento=${this.selected()}&vinculo=${this.filter()}`,
   );
   readonly previewRecords = computed(() =>
     (this.selected() === 'smith'

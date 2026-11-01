@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test';
 test('explores entities, graph, timeline, licensed media and returns to prior context', async ({
   page,
 }) => {
-  await page.goto('/atlas/liberalismos/');
+  await page.goto('/liberalismo/');
   await expect(page.getByRole('heading', { name: 'Uma ideia. Muitas conexões.' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Liberalismo', exact: true })).toBeVisible();
   await page.screenshot({
@@ -58,7 +58,7 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
 test('mobile keeps entity navigation available without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/atlas/liberalismos/');
+  await page.goto('/liberalismo/');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'output/playwright/atlas-liberalismo-mobile.png', fullPage: true });
   const locke = page.locator('.entity-card').filter({ hasText: 'John Locke' });

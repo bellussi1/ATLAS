@@ -1,6 +1,5 @@
 import { Dialog, DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { Component, Directive, HostListener, inject, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 import type { DiscoveryIndexEntry } from '../core/discovery-index';
 
@@ -11,7 +10,7 @@ export interface DiscoveryPreviewTarget {
 
 @Component({
   selector: 'app-discovery-preview',
-  imports: [RouterLink],
+  imports: [],
   template: `
     <header>
       <p>Prévia de descoberta · {{ target.entry.kindLabel }}</p>
@@ -32,14 +31,6 @@ export interface DiscoveryPreviewTarget {
           <p>{{ target.entry.context }}</p>
         </section>
       }
-      <a
-        class="open-link"
-        [routerLink]="target.entry.path"
-        [fragment]="target.entry.fragment"
-        [queryParams]="{ origem: target.origin }"
-        (click)="close()"
-        >Abrir registro completo <span aria-hidden="true">↗</span></a
-      >
     </div>
   `,
   styles: `

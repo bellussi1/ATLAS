@@ -4,7 +4,7 @@
   [attr.aria-labelledby]="inline() ? 'debate-title' : 'atlas-title'"
 >
   @if (!inline()) {
-    <a class="atlas-return" routerLink="/atlas/marxismo">← Atlas de Marxismo e economia política</a>
+    <a class="atlas-return" routerLink="/marxismo">← Atlas de Marxismo e economia política</a>
   }
   <header>
     <p class="eyebrow">Debate intelectual · em revisão</p>
@@ -153,17 +153,6 @@
               trabalho que uma mercadoria pode comandar; esta é uma crítica atribuída a Marx, não um
               consenso sobre Smith.
             </p>
-            @if (!inline()) {
-              <nav aria-label="Trilha de leitura de Smith">
-                <a
-                  [routerLink]="'/verbete/a-riqueza-das-nacoes'"
-                  [queryParams]="{ origem: origin() }"
-                  >Ler A riqueza das nações</a
-                ><a [routerLink]="'/verbete/adam-smith'" [queryParams]="{ origem: origin() }"
-                  >Conhecer Adam Smith</a
-                >
-              </nav>
-            }
           } @else {
             <blockquote lang="en">
               “the labour time socially necessary for its production”
@@ -183,21 +172,6 @@
               apresenta objeções à teoria do valor-trabalho e debates sobre sua relação com a
               exploração.
             </p>
-            @if (!inline()) {
-              <nav aria-label="Trilha de leitura de Marx">
-                <a
-                  [routerLink]="'/verbete/trabalho-socialmente-necessario'"
-                  [queryParams]="{ origem: origin() }"
-                  >Ler o conceito</a
-                ><a
-                  [routerLink]="'/verbete/o-capital-volume-i'"
-                  [queryParams]="{ origem: origin() }"
-                  >Ler sobre O capital</a
-                ><a [routerLink]="'/verbete/karl-marx'" [queryParams]="{ origem: origin() }"
-                  >Conhecer Karl Marx</a
-                >
-              </nav>
-            }
           }
           <div class="preview-actions" aria-label="Prévias dos registros desta leitura">
             @for (preview of previewRecords(); track preview.id) {
@@ -209,7 +183,7 @@
         } @else {
           <h3 id="context-title">Tese indisponível</h3>
           <p>O registro não foi encontrado. Consulte a busca ou a biblioteca de fontes.</p>
-          <a routerLink="/conhecimento">Pesquisar o acervo</a>
+          <a routerLink="/">Pesquisar o acervo</a>
         }
       </section>
     </section>
@@ -223,8 +197,8 @@
       <p>
         Os trechos são curtos, com título, idioma e localizador para conferência.
         @if (!inline()) {
-          <a routerLink="/atlas/marxismo">Créditos dos retratos no índice do atlas</a>.
-          <a routerLink="/fontes" [queryParams]="{ origem: origin() }"
+          <a routerLink="/marxismo">Créditos dos retratos no índice do atlas</a>.
+          <a routerLink="/marxismo" fragment="fontes" [queryParams]="{ origem: origin() }"
             >Abrir a biblioteca de fontes</a
           >.
         }
@@ -239,8 +213,6 @@
       <app-study-exercise [exercise]="exercise" [origin]="origin()" />
     </section>
   } @else {
-    <p role="alert">
-      O atlas está indisponível. <a routerLink="/conhecimento">Pesquise outros registros</a>.
-    </p>
+    <p role="alert">O atlas está indisponível. <a routerLink="/">Pesquise outros registros</a>.</p>
   }
 </article>

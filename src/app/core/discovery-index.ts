@@ -311,7 +311,7 @@ export function safeDiscoveryOrigin(value: string | null): string | null {
   try {
     const url = new URL(value, 'https://atlas.invalid');
     if (url.origin !== 'https://atlas.invalid') return null;
-    if (url.pathname === '/ideologias/marxismo') {
+    if (url.pathname === '/marxismo' || url.pathname === '/ideologias/marxismo') {
       const allowed = [
         'argumento',
         'vinculo',

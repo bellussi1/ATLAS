@@ -69,7 +69,7 @@ export class IdeologyPageComponent {
     combineLatest([this.route.paramMap, this.retry])
       .pipe(
         switchMap(([params]) =>
-          this.repository.loadIdeology(params.get('slug') ?? '').pipe(
+          this.repository.loadIdeology(params.get('slug') ?? 'marxismo').pipe(
             pendingUntilEvent(this.injector),
             map((dossier): PageState => ({ status: dossier ? 'ready' : 'missing', dossier })),
             catchError(() => of<PageState>({ status: 'error', dossier: null })),

@@ -8,19 +8,14 @@ import { methodologyKnowledgeGraph } from './content-repository';
 import { safeDiscoveryOrigin } from './discovery-index';
 import { ideologyPageSchema, validateIdeologyDossier } from './ideology-page-schema';
 
-describe('V4 public reading routes', () => {
-  it('provides an ideology hub and a continuous reading route', () => {
-    expect(routes.some((route) => route.path === 'ideologias')).toBe(true);
-    expect(routes.some((route) => route.path === 'ideologias/:slug')).toBe(true);
-  });
-  it('redirects both legacy Marxism URLs without removing the Liberalism atlas', () => {
-    expect(routes.find((route) => route.path === 'atlas/marxismo')?.redirectTo).toBeDefined();
-    expect(
-      routes.find((route) => route.path === 'atlas/marxismo/valor-e-trabalho')?.redirectTo,
-    ).toBeDefined();
-    expect(
-      routes.find((route) => route.path === 'atlas/liberalismos')?.loadComponent,
-    ).toBeDefined();
+describe('Public pages', () => {
+  it('exposes only home, Marxism and Liberalism', () => {
+    expect(routes.filter((r) => r.loadComponent).map((r) => r.path)).toEqual([
+      '',
+      'marxismo',
+      'liberalismo',
+    ]);
+    expect(routes.find((r) => r.path === '**')?.redirectTo).toBe('');
   });
 });
 

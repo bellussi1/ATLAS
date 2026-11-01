@@ -1,5 +1,4 @@
 import { Component, computed, input, linkedSignal, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 import { methodologyKnowledgeGraph } from '../core/content-repository';
 import type { Entity, Relation } from '../core/content-schema';
@@ -25,14 +24,14 @@ interface GraphEdge {
 
 @Component({
   selector: 'app-liberalism-atlas-page',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './liberalism-atlas-page.html',
   styleUrls: ['./liberalism-atlas-page.scss', './liberalism-atlas-page-visual.scss'],
 })
 export class LiberalismAtlasPage {
   readonly atlasId = input('atlas-liberalism');
   readonly rootEntityId = input('ideology-liberalism');
-  readonly origin = input('/atlas/liberalismos');
+  readonly origin = input('/liberalismo');
   readonly embedded = input(false);
   readonly continuous = input(false);
   readonly atlas = computed(

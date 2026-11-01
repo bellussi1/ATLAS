@@ -1,165 +1,26 @@
-import { inject } from '@angular/core';
-import { type RedirectFunction, Router, type Routes } from '@angular/router';
-
-import {
-  contentTypeBreadcrumbResolver,
-  contentTypeTitleResolver,
-  editorialEntryTitleResolver,
-  editorialTypeResolver,
-  knowledgeEntryBreadcrumbResolver,
-  knowledgeEntryDescriptionResolver,
-  knowledgeEntryTitleResolver,
-  trailTitleResolver,
-} from './content/route-resolvers';
-
-const marxRedirect: RedirectFunction = ({ queryParams, fragment }) =>
-  inject(Router).createUrlTree(['/ideologias/marxismo'], {
-    queryParams,
-    fragment: fragment ?? 'conceitos',
-  });
+import { type Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'ideologias',
-    loadComponent: () => import('./pages/ideologies-hub').then((m) => m.IdeologiesHubComponent),
-    title: 'Ideologias e tradições — ATLAS',
-    data: { breadcrumb: 'Ideologias e tradições' },
-  },
-  {
-    path: 'ideologias/:slug',
-    loadComponent: () => import('./pages/ideology-page').then((m) => m.IdeologyPageComponent),
-    title: (route) =>
-      route.paramMap.get('slug') === 'marxismo'
-        ? 'Marxismo: ideias e divergências — ATLAS'
-        : 'Página não encontrada — ATLAS',
-    data: {
-      breadcrumb: 'Leitura de tradição',
-      metaDescription:
-        'Uma leitura contínua com conceitos, pensadores, cronologia, divergências e fontes identificadas.',
-    },
-  },
-  {
-    path: 'atlas/marxismo/valor-e-trabalho',
-    pathMatch: 'full',
-    redirectTo: marxRedirect,
-  },
-  {
-    path: 'atlas/marxismo',
-    pathMatch: 'full',
-    redirectTo: ({ queryParams, fragment }) =>
-      inject(Router).createUrlTree(['/ideologias/marxismo'], {
-        queryParams,
-        fragment: fragment ?? undefined,
-      }),
-  },
-  {
-    path: 'atlas/liberalismos',
-    loadComponent: () =>
-      import('./pages/liberalism-atlas-page').then((module) => module.LiberalismAtlasPage),
-    data: { breadcrumb: 'Atlas do liberalismo' },
-    title: 'Atlas do liberalismo — ATLAS',
-  },
-  ...[
-    { path: 'relacoes', mode: 'relations', label: 'Relações' },
-    { path: 'tempo-e-espaco', mode: 'time', label: 'Tempo e espaço' },
-    { path: 'conhecimento', mode: 'knowledge', label: 'Conhecimento' },
-  ].map(({ path, mode, label }) => ({
-    path,
-    loadComponent: () =>
-      import('./pages/exploration-page').then((module) => module.ExplorationPage),
-    data: { mode, breadcrumb: label },
-    title: `${label} — ATLAS`,
-  })),
-  {
     path: '',
-    loadComponent: () => import('./pages/home-page').then((module) => module.HomePage),
+    pathMatch: 'full',
+    loadComponent: () => import('./pages/home-page').then((m) => m.HomePage),
     title: 'ATLAS — compreender o mundo',
   },
   {
-    path: 'sistema',
-    loadComponent: () =>
-      import('./pages/design-system-page').then((module) => module.DesignSystemPage),
-    data: { breadcrumb: 'Sistema visual' },
-    title: 'Sistema visual acessível — ATLAS',
-  },
-  {
-    path: 'explorar',
-    data: { breadcrumb: 'Explorar' },
-    children: [
-      {
-        path: '',
-        loadComponent: () => import('./pages/explore-page').then((module) => module.ExplorePage),
-        title: 'Explorar conteúdos — ATLAS',
-      },
-      {
-        path: ':tipo',
-        resolve: {
-          editorialType: editorialTypeResolver,
-          breadcrumb: contentTypeBreadcrumbResolver,
-        },
-        children: [
-          {
-            path: '',
-            loadComponent: () =>
-              import('./pages/content-type-page').then((module) => module.ContentTypePage),
-            title: contentTypeTitleResolver,
-          },
-          {
-            path: ':slug',
-            loadComponent: () =>
-              import('./pages/editorial-detail-page').then((module) => module.EditorialDetailPage),
-            resolve: { breadcrumb: editorialEntryTitleResolver },
-            title: editorialEntryTitleResolver,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    path: 'estudar',
-    data: { breadcrumb: 'Estudar' },
-    children: [
-      {
-        path: '',
-        loadComponent: () => import('./pages/study-page').then((module) => module.StudyPage),
-        title: 'Estudar — ATLAS',
-      },
-      {
-        path: ':slug',
-        loadComponent: () =>
-          import('./pages/editorial-detail-page').then((module) => module.EditorialDetailPage),
-        data: { editorialType: 'trilha' },
-        resolve: { breadcrumb: trailTitleResolver },
-        title: trailTitleResolver,
-      },
-    ],
-  },
-  {
-    path: 'sobre',
-    loadComponent: () => import('./pages/about-page').then((module) => module.AboutPage),
-    data: { breadcrumb: 'Sobre o ATLAS' },
-    title: 'Sobre o ATLAS',
-  },
-  {
-    path: 'fontes',
-    loadComponent: () =>
-      import('./pages/source-library-page').then((module) => module.SourceLibraryPage),
-    data: { breadcrumb: 'Fontes' },
-    title: 'Biblioteca de fontes — ATLAS',
-  },
-  {
-    path: 'verbete/:slug',
-    resolve: {
-      breadcrumb: knowledgeEntryBreadcrumbResolver,
-      metaDescription: knowledgeEntryDescriptionResolver,
+    path: 'marxismo',
+    loadComponent: () => import('./pages/ideology-page').then((m) => m.IdeologyPageComponent),
+    title: 'Marxismo: ideias e divergências — ATLAS',
+    data: {
+      breadcrumb: 'Marxismo',
+      metaDescription: 'Conceitos, pensadores, cronologia, divergências e fontes do marxismo.',
     },
-    loadComponent: () => import('./features/entry/entry-page').then((module) => module.EntryPage),
-    title: knowledgeEntryTitleResolver,
   },
   {
-    path: '**',
-    loadComponent: () => import('./pages/not-found-page').then((module) => module.NotFoundPage),
-    data: { breadcrumb: 'Página não encontrada' },
-    title: 'Página não encontrada — ATLAS',
+    path: 'liberalismo',
+    loadComponent: () => import('./pages/liberalism-atlas-page').then((m) => m.LiberalismAtlasPage),
+    title: 'Atlas do Liberalismo — ATLAS',
+    data: { breadcrumb: 'Liberalismo' },
   },
+  { path: '**', redirectTo: '' },
 ];

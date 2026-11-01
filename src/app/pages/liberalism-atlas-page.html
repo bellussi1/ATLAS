@@ -304,14 +304,7 @@
         @if (selected(); as entity) {
           <h2 id="context-title">{{ entity.title }}</h2>
           <p class="summary">{{ entity.summary }}</p>
-          @if (!continuous()) {
-            <a
-              class="full-entry-link"
-              [routerLink]="'/verbete/' + entity.slug"
-              [queryParams]="{ origem: origin() }"
-              >Abrir verbete completo ↗</a
-            >
-          }
+          @if (!continuous()) {}
           <div class="entity-meta">
             <span>{{ kindLabel(entity) }}</span
             ><span>{{ yearLabel(entity) }}</span

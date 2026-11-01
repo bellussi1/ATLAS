@@ -39,6 +39,6 @@ describe('Ideology reading states', () => {
     fixture.detectChanges();
     expect(requests).toBe(2);
     expect(root.textContent).toContain('Esta leitura ainda não está disponível');
-    expect(root.querySelector('a[href="/ideologias"]')).not.toBeNull();
+    expect(root.querySelector('a[href="/"]')).not.toBeNull();
   });
 });

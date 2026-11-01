@@ -20,10 +20,23 @@
       <button class="search-button" type="submit">Pesquisar</button>
     </form>
   </header>
+  @if (searched()) {
+    <section class="connections" aria-label="Resultados da busca" aria-live="polite">
+      <h2>Leituras encontradas</h2>
+      @for (entry of matches(); track entry.slug) {
+        <p>
+          <a appEditorialLink [routerLink]="'/' + entry.slug">{{ entry.title }}</a> ·
+          {{ entry.summary }}
+        </p>
+      } @empty {
+        <p>Nenhuma leitura encontrada. Procure por Marxismo ou Liberalismo.</p>
+      }
+    </section>
+  }
   <section class="connections" aria-labelledby="connections-title">
     <header class="section-heading">
       <h2 id="connections-title">Um atlas para explorar.</h2>
-      <a appEditorialLink routerLink="/ideologias">Explorar ideologias e tradições ↗</a>
+      <a appEditorialLink routerLink="/marxismo">Explorar o Marxismo ↗</a>
     </header>
     <p>
       Pessoas, obras e debates sobre valor e trabalho. Entre no atlas para conhecer os autores e
@@ -40,8 +53,8 @@
         <span>ATLAS</span>
         <p>Acervo em formação</p>
         <p>
-          Esta mesa destaca três textos de metodologia. Pesquise também os verbetes e relações já
-          registrados.
+          Esta mesa reúne as duas leituras disponíveis: Marxismo e Liberalismo. Abra uma ficha para
+          começar.
         </p>
       </div>
       <div class="mobile-sheet-control">
@@ -87,62 +100,29 @@
         </header>
         <div class="sheet-content">
           <div class="sheet-identity">
-            <a class="sheet-type" appEditorialLink [routerLink]="'/explorar/' + selected().type">{{
+            <a class="sheet-type" appEditorialLink [routerLink]="'/' + selected().slug">{{
               selected().type
             }}</a
             ><app-editorial-mark [kind]="selected().type" />
           </div>
           <h2 id="sheet-title">{{ selected().title }}</h2>
-          <p class="sheet-summary"><app-editorial-text [text]="selected().summary" /></p>
+          <p class="sheet-summary">{{ selected().summary }}</p>
           <div class="excerpt">
             <h3>{{ selected().sections[0].heading }}</h3>
-            <p><app-editorial-text [text]="selected().sections[0].paragraphs[0]" /></p>
+            <p>{{ selected().sections[0].paragraphs[0] }}</p>
           </div>
           <div class="sheet-actions">
-            <button
-              class="reading-preview-trigger"
-              type="button"
-              [appReadingPreview]="selected()"
-              [attr.aria-label]="'Prévia de ' + selected().title"
-            >
-              Aproximar a leitura</button
-            ><a appEditorialLink [routerLink]="entryPath(selected().type, selected().slug)"
+            <a appEditorialLink [routerLink]="entryPath(selected().type, selected().slug)"
               >Ler o texto completo</a
             >
           </div>
         </div>
         <footer class="sheet-footer">
           <span>{{ selected().sections.length }} seções</span
-          ><span>Conteúdo sobre o método do projeto</span>
+          ><span>Leitura com contexto e fontes</span>
         </footer>
       </article>
     </div>
   </div>
   <p class="selection-status" role="status">Na mesa: {{ selected().title }}.</p>
-  <section class="pathways" aria-labelledby="pathways-title">
-    <header>
-      <h2 id="pathways-title">Mude o ponto<br />de vista.</h2>
-      <p>Você pode partir de uma conexão, de um lugar no tempo ou de uma leitura.</p>
-    </header>
-    <nav aria-label="Modos de exploração">
-      <a class="pathway pathway--relations" data-entry="relations" routerLink="/relacoes"
-        ><strong>Relações</strong>
-        <p>Examine o vínculo entre conceito, afirmação e fonte.</p>
-        <span>Investigar conexões</span></a
-      >
-      <a class="pathway pathway--time" data-entry="time" routerLink="/tempo-e-espaco"
-        ><strong>Tempo e espaço</strong>
-        <p>
-          Há acontecimentos datados no acervo e uma linha do tempo para explorá-los; mapas ainda não
-          estão disponíveis.
-        </p>
-        <span>Situar acontecimentos</span></a
-      >
-      <a class="pathway pathway--knowledge" data-entry="knowledge" routerLink="/conhecimento"
-        ><strong>Conhecimento</strong>
-        <p>Pesquise o acervo e encontre outras entradas de leitura.</p>
-        <span>Percorrer os registros</span></a
-      >
-    </nav>
-  </section>
 </section>

@@ -27,10 +27,7 @@ import type { Exercise } from '../core/study-schema';
     @if (feedback()) {
       <p class="feedback" role="status">
         {{ feedback() }}
-        <a
-          routerLink="/fontes"
-          [fragment]="'source-' + exercise().feedback.sourceId"
-          [queryParams]="origin() ? { origem: origin() } : {}"
+        <a routerLink="/marxismo" fragment="fontes" queryParamsHandling="preserve"
           >Conferir fonte</a
         >
       </p>

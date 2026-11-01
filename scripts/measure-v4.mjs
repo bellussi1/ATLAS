@@ -46,7 +46,7 @@ for (const [label, width, height] of [
           });
     }).observe({ type: 'event', buffered: true, durationThreshold: 16 });
   });
-  await page.goto('http://127.0.0.1:4305/ideologias/marxismo/', { waitUntil: 'networkidle' });
+  await page.goto('http://127.0.0.1:4305/marxismo/', { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
   const scripts = await page.evaluate(() =>
     performance
@@ -92,7 +92,7 @@ for (const [label, width, height] of [
     initialScriptCount: new Set(scripts).size,
     errors,
   });
-  await page.goto('http://127.0.0.1:4305/ideologias/', { waitUntil: 'networkidle' });
+  await page.goto('http://127.0.0.1:4305/', { waitUntil: 'networkidle' });
   await page.screenshot({ path: 'docs/auditoria-v4/hub-' + label + '.png', fullPage: true });
   await page.setViewportSize({ width: 568, height: 320 });
   await page.waitForTimeout(200);
@@ -104,7 +104,7 @@ for (const [label, width, height] of [
   await page.close();
 }
 const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
-await page.goto('http://127.0.0.1:4305/ideologias/marxismo/', { waitUntil: 'networkidle' });
+await page.goto('http://127.0.0.1:4305/marxismo/', { waitUntil: 'networkidle' });
 await page.addStyleTag({ content: 'html { font-size:200% !important; }' });
 await page.waitForTimeout(200);
 console.log(
