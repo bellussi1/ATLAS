@@ -33,6 +33,7 @@ yarn-error.log
 /.angular/cache
 .playwright-mcp/
 .playwright-cli/
+output
 .sass-cache/
 /connect.lock
 /coverage
