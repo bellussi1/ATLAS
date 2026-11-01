@@ -1,0 +1,10 @@
+<button
+  class="atlas-button"
+  [class.atlas-button--secondary]="variant() === 'secondary'"
+  [class.atlas-button--quiet]="variant() === 'quiet'"
+  [type]="type()"
+  [disabled]="disabled() || busy()"
+  [attr.aria-busy]="busy() ? 'true' : null"
+>
+  <ng-content />
+</button>

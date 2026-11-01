@@ -35,13 +35,17 @@ Escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas 
 | `npm start` | Servidor local com recarga automática |
 | `npm run build` | Compilação de produção e prerender de rotas públicas |
 | `npm test` | Testes unitários Vitest em execução única |
-| `npm run lint` | ESLint para TypeScript e templates Angular |
+| `npm run lint` | ESLint Angular, limites arquiteturais, Biome e formatação |
 | `npm run typecheck` | Checagem TypeScript da aplicação e dos testes |
 
 O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca local indexa registros editoriais, entidades e fontes validados, com aliases, filtros por tipo e estado; não há API remota de pesquisa.
 
-Para conferir a saída estática localmente, execute `npm run build` e `npm run preview`; o servidor escuta somente em `127.0.0.1:4305`. A configuração de CI, os testes de navegador e os bloqueios de indexação do piloto estão documentados em [Piloto e verificações](docs/PILOTO-E-VERIFICACAO.md).
+Para conferir a saída estática localmente, execute `npm run build` e `npm run preview`; o servidor escuta somente em `127.0.0.1:4305`. Se a porta estiver ocupada, defina `ATLAS_PREVIEW_PORT` para preview e E2E; o padrão continua 4305. A configuração de CI, os testes de navegador e os bloqueios de indexação do piloto estão documentados em [Piloto e verificações](docs/PILOTO-E-VERIFICACAO.md).
 
 O grafo editorial e suas fontes ficam em `src/content/atlas.json`, são validados por `ContentRepository` com Zod e copiados para a saída do build em `content/`. Incluem registros sobre o processo constituinte de 1987–1988 e a Constituição de 1988; afirmações exibem o estado de revisão realmente cadastrado. No navegador, o serviço lê esse asset estático; durante o prerender usa o JSON empacotado. Veja [as decisões e limites da arquitetura](docs/ARCHITECTURE.md).
 
 As três composições experimentais do prompt 04, suas decisões visuais e capturas estão em [Direção artística](docs/DIRECAO-ARTISTICA.md).
+
+## Organização do código
+
+A aplicação usa features para ideologias, exploração e estudo; core para conteúdo/infraestrutura; shared para UI/diretivas; layouts para o shell e pages para Home. Consulte [Arquitetura](docs/ARCHITECTURE.md) para limites de imports, convenções e como adicionar uma tradição ou interação. O [inventário da migração](docs/ARCHITECTURE-MIGRATION.md) registra origens, destinos e validações.

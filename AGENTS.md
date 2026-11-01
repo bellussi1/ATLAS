@@ -11,8 +11,8 @@ Construir uma plataforma educacional pública, gratuita, interativa e rigorosa s
 - SCSS é o estilo padrão dos componentes; Tailwind está configurado. Angular CDK pode ser adicionado quando resolver uma necessidade concreta de interação ou acessibilidade.
 - Preservar a arquitetura e os componentes existentes. Não introduzir React, Next.js ou Fastify como framework base.
 - Manter a aplicação static-first. O build Angular atual gera saída estática e faz prerender das rotas públicas; manter SSR/prerender apenas onde compatível com a natureza pública do conteúdo.
-- Rotas atuais: `/`, `/marxismo` e `/liberalismo`. Este é o escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas; caminhos desconhecidos voltam à home. O grafo e os contratos de conteúdo permanecem preservados em `src/content` e `src/app/core`.
-- `ContentRepository` mantém o acesso ao conteúdo estático desacoplado das telas; no browser, carrega o asset local com `HttpClient` e, no SSR, usa o JSON empacotado. Schemas Zod em `src/app/core/content-schema.ts` validam IDs, slugs e referências.
+- Rotas atuais: `/`, `/marxismo` e `/liberalismo`. Este é o escopo temporário solicitado em 01/11/2026. As demais páginas foram removidas; caminhos desconhecidos voltam à home. O grafo e os contratos globais permanecem em `src/content` e `src/app/core/content`; os contratos de dossiês pertencem a `features/ideologies/models`.
+- `ContentRepository` mantém o acesso ao conteúdo estático desacoplado das telas; no browser, carrega o asset local com `HttpClient` e, no SSR, usa o JSON empacotado. Schemas Zod em `src/app/core/content/models/content-schema.ts` validam IDs, slugs e referências.
 
 ## Desenvolvimento e verificações
 
@@ -75,4 +75,19 @@ A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atl
 
 ## Padrão V4 de páginas
 
-Consultar `docs/PAGE_STANDARD.md` para páginas de ideologias e tradições. A implementação contínua está em `/marxismo`; o hub foi removido no escopo temporário de três páginas. O contrato Zod fica em `src/app/core/ideology-page-schema.ts` e os snapshots em `src/content/ideologies` e `src/content/graph`. Exemplos não publicados não devem entrar no prerender.
+Consultar `docs/PAGE_STANDARD.md` para páginas de ideologias e tradições. A implementação contínua está em `/marxismo`; o hub foi removido no escopo temporário de três páginas. O contrato Zod fica em `src/app/features/ideologies/models/ideology-page.schema.ts` e os snapshots em `src/content/ideologies` e `src/content/graph`. Exemplos não publicados não devem entrar no prerender.
+
+## Governança arquitetural obrigatória
+
+Consultar `docs/ARCHITECTURE.md` antes de criar ou mover código. O inventário da migração está em `docs/ARCHITECTURE-MIGRATION.md`.
+
+- Organização feature-first: `features/ideologies`, `features/exploration` e `features/study` possuem seus componentes, contratos, dados e utilitários. Só criar outros domínios/pastas quando houver responsabilidade real.
+- `core/content` concentra infraestrutura global: modelos Zod, repositório do grafo, consultas puras, contratos editoriais e licenças. `IdeologyRepository`, o contrato de dossiês e o registro de snapshots publicados pertencem à feature de ideologias.
+- `core` não depende de `shared`, features, páginas ou layouts. `shared` não depende de features, páginas ou layouts. Features não importam implementações de outras features; promover uma API compartilhada requer justificar a reutilização.
+- Usar aliases de `tsconfig.json` para imports entre responsabilidades; imports locais podem continuar relativos. Não criar barrels indiscriminadamente. Não introduzir ciclos, inclusive por imports lazy.
+- Cada componente tem diretório próprio e arquivos `nome.component.ts`, `nome.component.html` e, quando houver estilos locais, `nome.component.scss`. Não criar SCSS ou testes vazios. Diretivas usam `nome.directive.ts`; serviços usam `nome.service.ts`. Testes reais ficam ao lado do código (`*.spec.ts`).
+- Separar diretivas de abertura de diálogos dos componentes visuais; modelos e serviços de conteúdo não importam componentes. Funções de consulta/licença não ficam em arquivos de componentes.
+- `layouts/app-shell` contém o shell; `pages/home` contém a página global. Rotas públicas são compostas em `app.routes.ts`; as rotas de ideologias ficam na feature e mantêm `loadComponent`.
+- Novas tradições reutilizam `IdeologyPageComponent`, `IdeologyBlockComponent` e/ou `IdeologyAtlasComponent`, com configurações e snapshots próprios. Não copiar árvores de componentes por ideologia. Um componente específico de um debate documentado pode permanecer específico, sem virar outro mecanismo de página.
+- Scripts Wikimedia compartilham configuração, cliente e normalização em `scripts/ingestion/wikimedia`. A UI lê snapshots locais; não consulta Wikimedia diretamente.
+- `npm run lint` inclui a regra ESLint local `architecture/boundaries` e seus testes. Mudanças de arquitetura precisam manter limites e ausência de ciclos, além de typecheck, testes, build, E2E e links pertinentes.

@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  margin-top: 3rem;
+}
+.continue-reading {
+  border-top: 2px solid var(--color-ink);
+  padding-top: 1.5rem;
+}
+.eyebrow {
+  color: var(--color-accent);
+  font: 0.75rem/1.5 var(--font-mono);
+}
+h2 {
+  font: 500 2rem/1.15 var(--font-serif);
+  margin: 0.75rem 0;
+}
+a {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-ink);
+  text-decoration: none;
+  min-height: 2.75rem;
+}
+@media (hover: hover) and (pointer: fine) {
+  a:hover strong {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+}
+strong {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+a > span {
+  color: var(--color-ink-muted);
+  font: 1rem/1.5 var(--font-serif);
+}
+.network-link {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+}

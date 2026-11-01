@@ -1,0 +1,48 @@
+<section class="claim-reference" [attr.aria-labelledby]="'claim-' + claim().id">
+  <h3 [id]="'claim-' + claim().id">Afirmação e evidência</h3>
+  <p class="claim-reference__text">{{ claim().text }}</p>
+  <p class="claim-reference__status">
+    Classificação: {{ classificationLabel(claim()) }} ·
+    {{ statusLabel(review()?.status ?? claim().editorialStatus) }}
+  </p>
+  @if (review()?.reviewer && review()?.reviewedAt) {
+    <p class="claim-reference__review">
+      Revisado por {{ review()?.reviewer }} em {{ formatDate(review()?.reviewedAt) }}
+    </p>
+  } @else {
+    <p class="claim-reference__review">Sem revisão humana registrada.</p>
+  }
+  @for (citation of citations(); track citation.id) {
+    @if (evidence(citation); as item) {
+      @if (source(item); as reference) {
+        <div class="claim-reference__source">
+          <p>
+            <strong>{{ relationLabel(citation) }}:</strong> {{ reference.title }}
+          </p>
+          <p>
+            <a [routerLink]="'/fontes'" [fragment]="'source-' + reference.id"
+              >Abrir esta fonte no índice</a
+            >
+          </p>
+          @if (reference.url) {
+            <p>
+              <a [href]="reference.url" target="_blank" rel="noopener noreferrer"
+                >Consultar fonte original</a
+              >
+            </p>
+          }
+          <p>Edição: {{ reference.edition }}</p>
+          @if (reference.publicationDate) {
+            <p>Publicação: {{ formatDate(reference.publicationDate) }}</p>
+          }
+          <p>Localizador: {{ item.locator }}</p>
+          <p>Consulta: {{ formatDate(item.accessedAt) }}</p>
+          @if (item.note) {
+            <p>{{ item.note }}</p>
+          }
+        </div>
+      }
+    }
+  }
+  <a class="source-library-link" routerLink="/fontes">Abrir biblioteca de fontes</a>
+</section>

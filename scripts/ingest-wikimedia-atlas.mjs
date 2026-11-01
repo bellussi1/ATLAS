@@ -1,203 +1,23 @@
+import { configurations } from './ingestion/wikimedia/configurations.mjs';
+import { getJson, getImage } from './ingestion/wikimedia/client.mjs';
+import {
+  titleKey,
+  claimItem,
+  statementReferences,
+  datesFor,
+  entityType,
+} from './ingestion/wikimedia/normalize.mjs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import prettier from 'prettier';
 
 const graphPath = new URL('../src/content/atlas.json', import.meta.url);
 const graphFilename = fileURLToPath(graphPath);
-const requestHeaders = { 'User-Agent': 'ATLAS educational project/1.0 (static content ingestion)' };
-const liberalismEntities = [
-  ['ideology-liberalism', 'liberalism', 'Liberalism', 'ideology', 'Q6216'],
-  ['person-john-locke', 'John Locke', 'John Locke', 'person', 'Q9353'],
-  ['person-adam-smith', 'Adam Smith', 'Adam Smith', 'person', 'Q9381'],
-  ['person-john-stuart-mill', 'John Stuart Mill', 'John Stuart Mill', 'person', 'Q50020'],
-  ['person-montesquieu', 'Charles-Louis de Secondat', 'Montesquieu', 'person', 'Q15975'],
-  [
-    'person-alexis-de-tocqueville',
-    'Alexis de Tocqueville',
-    'Alexis de Tocqueville',
-    'person',
-    'Q140694',
-  ],
-  ['person-friedrich-hayek', 'Friedrich Hayek', 'Friedrich Hayek', 'person', 'Q1325'],
-  ['person-isaiah-berlin', 'Isaiah Berlin', 'Isaiah Berlin', 'person', 'Q205162'],
-  [
-    'ideology-classical-liberalism',
-    'classical liberalism',
-    'Classical liberalism',
-    'ideology',
-    'Q794394',
-  ],
-  ['ideology-social-liberalism', 'social liberalism', 'Social liberalism', 'ideology', 'Q201712'],
-  ['ideology-neoliberalism', 'neoliberalism', 'Neoliberalism', 'ideology', 'Q162719'],
-  ['event-glorious-revolution', 'Glorious Revolution', 'Glorious Revolution', 'event', 'Q189508'],
-  ['event-american-revolution', 'American Revolution', 'American Revolution', 'event', 'Q192769'],
-  ['event-french-revolution', 'French Revolution', 'French Revolution', 'event', 'Q6534'],
-];
-const configurations = {
-  liberalism: {
-    id: 'atlas-liberalism',
-    slug: 'atlas-liberalismo',
-    title: 'Atlas do Liberalismo',
-    description:
-      'Rede exploratória de pessoas, correntes e acontecimentos ligados ao liberalismo; dados enciclopédicos importados aguardam revisão editorial humana.',
-    mediaDirectory: 'liberalism',
-    entities: liberalismEntities,
-  },
-  marxism: {
-    id: 'atlas-marx-valor',
-    slug: 'marxismo-e-economia-politica',
-    title: 'Atlas de Marxismo e Comunismo',
-    description:
-      'Rede exploratória de autores e tradições; dados Wikimedia são camadas de descoberta e estrutura, com revisão editorial humana pendente.',
-    mediaDirectory: 'marxism',
-    entities: [
-      ['ideology-marxism', 'Marxism', 'Marxism', 'ideology', 'Q7264'],
-      ['person-karl-marx', 'Karl Marx', 'Karl Marx', 'person', 'Q9061'],
-      ['person-friedrich-engels', 'Friedrich Engels', 'Friedrich Engels', 'person', 'Q34787'],
-      ['person-vladimir-lenin', 'Vladimir Lenin', 'Vladimir Lenin', 'person', 'Q1394'],
-      ['person-rosa-luxemburg', 'Rosa Luxemburg', 'Rosa Luxemburg', 'person', 'Q7231'],
-      ['person-eduard-bernstein', 'Eduard Bernstein', 'Eduard Bernstein', 'person', 'Q75786'],
-      ['person-karl-kautsky', 'Karl Kautsky', 'Karl Kautsky', 'person', 'Q76586'],
-      ['person-antonio-gramsci', 'Antonio Gramsci', 'Antonio Gramsci', 'person', 'Q83003'],
-      ['person-leon-trotsky', 'Leon Trotsky', 'Leon Trotsky', 'person', 'Q33391'],
-      ['person-joseph-stalin', 'Joseph Stalin', 'Joseph Stalin', 'person', 'Q855'],
-      ['person-mao-zedong', 'Mao Zedong', 'Mao Zedong', 'person', 'Q5816'],
-      ['person-caio-prado-junior', 'Caio Prado Júnior', 'Caio Prado Júnior', 'person', 'Q1789931'],
-      [
-        'person-luiz-carlos-prestes',
-        'Luís Carlos Prestes',
-        'Luís Carlos Prestes',
-        'person',
-        'Q742047',
-      ],
-      [
-        'person-florestan-fernandes',
-        'Florestan Fernandes',
-        'Florestan Fernandes',
-        'person',
-        'Q2387448',
-      ],
-      [
-        'person-jose-carlos-mariategui',
-        'José Carlos Mariátegui',
-        'José Carlos Mariátegui',
-        'person',
-        'Q335544',
-      ],
-      ['ideology-communism', 'Communism', 'Communism', 'ideology', 'Q6186'],
-      ['ideology-socialism', 'Socialism', 'Socialism', 'ideology', 'Q7272'],
-      [
-        'concept-scientific-socialism',
-        'Scientific socialism',
-        'Scientific socialism',
-        'concept',
-        'Q865354',
-      ],
-      [
-        'concept-historical-materialism',
-        'Historical materialism',
-        'Historical materialism',
-        'concept',
-        'Q190004',
-      ],
-      [
-        'work-communist-manifesto',
-        'The Communist Manifesto',
-        'The Communist Manifesto',
-        'work',
-        'Q40591',
-      ],
-      ['event-paris-commune', 'Paris Commune', 'Paris Commune', 'event', 'Q133132'],
-      ['event-russian-revolution', 'Russian Revolution', 'Russian Revolution', 'event', 'Q8729'],
-      [
-        'institution-second-international',
-        'Second International',
-        'Second International',
-        'institution',
-        'Q188592',
-      ],
-    ],
-  },
-};
 const atlasKey = process.argv[2] ?? 'liberalism';
 const config = configurations[atlasKey];
 if (!config) throw new Error(`Unknown atlas: ${atlasKey}`);
 const entitiesToFind = config.entities;
 const retrievedAt = new Date().toISOString().slice(0, 10);
-let lastRequestAt = 0;
-
-async function getJson(url) {
-  for (let attempt = 0; attempt < 6; attempt += 1) {
-    const wait = Math.max(0, 500 - (Date.now() - lastRequestAt));
-    if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
-    lastRequestAt = Date.now();
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 20000);
-    let response;
-    try {
-      response = await fetch(url, { headers: requestHeaders, signal: controller.signal });
-    } finally {
-      clearTimeout(timeout);
-    }
-    if (response.ok) return response.json();
-    if (![429, 502, 503, 504].includes(response.status) || attempt === 5)
-      throw new Error(`Wikimedia request failed (${response.status}): ${url}`);
-    const retryAfter = Number(response.headers.get('retry-after'));
-    await new Promise((resolve) =>
-      setTimeout(resolve, Math.max(retryAfter * 1000 || 0, 1200 * (attempt + 1))),
-    );
-  }
-  throw new Error(`Wikimedia request retries exhausted: ${url}`);
-}
-
-function titleKey(value) {
-  return value.replaceAll('_', ' ').toLocaleLowerCase('en');
-}
-function claimItem(claim) {
-  return claim?.mainsnak?.datavalue?.value?.id;
-}
-function claimYear(claim) {
-  const time = claim?.mainsnak?.datavalue?.value?.time;
-  const match = time?.match(/[+-](\d{4,})-/);
-  return match ? Number(match[1]) : null;
-}
-
-function statementReferences(statement) {
-  return (statement.references ?? [])
-    .flatMap((reference) =>
-      Object.entries(reference.snaks ?? {}).flatMap(([property, snaks]) =>
-        snaks.flatMap((snak) => {
-          const value = snak.datavalue?.value;
-          if (typeof value === 'string') return [`${property}: ${value}`];
-          if (value?.id) return [`${property}: ${value.id}`];
-          if (value?.time) return [`${property}: ${value.time}`];
-          if (value?.text) return [`${property}: ${value.text}`];
-          return [];
-        }),
-      ),
-    )
-    .join('; ');
-}
-
-function datesFor(item, kind) {
-  const claims = item.claims ?? {};
-  const starts =
-    kind === 'person' ? claims.P569 : (claims.P580 ?? claims.P571 ?? claims.P577 ?? claims.P585);
-  const ends = kind === 'person' ? claims.P570 : claims.P582;
-  const startYear = starts?.map(claimYear).find((value) => value !== null) ?? null;
-  const endYear = ends?.map(claimYear).find((value) => value !== null) ?? null;
-  if (startYear === null && endYear === null) return null;
-  return {
-    startYear,
-    endYear,
-    precision: startYear !== null && endYear !== null ? 'range' : 'year',
-    label: null,
-  };
-}
-
-function entityType(kind) {
-  return kind;
-}
 const graph = JSON.parse(await readFile(graphPath, 'utf8'));
 const oldAtlas = graph.atlases.find((atlas) => atlas.id === config.id);
 const searchResults = entitiesToFind.map(([id, search, , , wikidataId]) => {
@@ -389,19 +209,13 @@ for (const record of records) {
         const attribution =
           clean(meta.Attribution) ||
           `${imageName}, ${creator ?? 'autor não identificado'}, ${license}`;
-        const imageResponse = await fetch(info.thumburl, { headers: requestHeaders });
-        if (!imageResponse.ok || !imageResponse.headers.get('content-type')?.startsWith('image/')) {
-          throw new Error(
-            `Commons image download failed (${imageResponse.status}) for ${imageName}`,
-          );
-        }
         const extension =
           new URL(info.thumburl).pathname.match(/\.(jpe?g|png|webp|gif)$/i)?.[1]?.toLowerCase() ??
           'jpg';
         const filename = `${record.entity.id}.${extension}`;
         await writeFile(
           new URL(filename, mediaDirectory),
-          Buffer.from(await imageResponse.arrayBuffer()),
+          await getImage(info.thumburl, imageName),
         );
         assetLicenses.push({
           id: `${atlasKey}-asset-${shortId}`,

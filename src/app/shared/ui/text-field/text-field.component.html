@@ -1,0 +1,26 @@
+<div class="atlas-field">
+  <label [for]="controlId()">
+    {{ label() }}
+    @if (required()) {
+      <span aria-hidden="true">*</span>
+    }
+  </label>
+  <input
+    [id]="controlId()"
+    [type]="type()"
+    [value]="value()"
+    [placeholder]="placeholder()"
+    [required]="required()"
+    [disabled]="disabled()"
+    [readonly]="readonly()"
+    [attr.aria-invalid]="error() ? 'true' : null"
+    [attr.aria-describedby]="describedBy() || null"
+    (input)="onInput($event)"
+  />
+  @if (hint()) {
+    <span class="atlas-field__hint" [id]="controlId() + '-hint'">{{ hint() }}</span>
+  }
+  @if (error()) {
+    <span class="atlas-field__error" [id]="controlId() + '-error'">{{ error() }}</span>
+  }
+</div>

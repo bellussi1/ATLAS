@@ -3,6 +3,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { extname, resolve, sep } from 'node:path';
 
 const root = resolve('dist/atlas/browser');
+const port = Number(process.env.ATLAS_PREVIEW_PORT ?? 4305);
 const headerFile = await readFile(resolve(root, '_headers'), 'utf8');
 const headers = Object.fromEntries(
   headerFile
@@ -41,4 +42,4 @@ createServer(async (request, response) => {
     response.writeHead(404);
     response.end('Not found');
   }
-}).listen(4305, '127.0.0.1', () => console.log('Preview local: http://127.0.0.1:4305'));
+}).listen(port, '127.0.0.1', () => console.log(`Preview local: http://127.0.0.1:${port}`));

@@ -113,7 +113,7 @@ Cada efeito orienta, relaciona, revela ou registra. Não usar loops infinitos, p
 
 ## 11. Dados, arquitetura e direitos
 
-Angular 21, standalone, Signals, TypeScript strict, SCSS, Zod, static-first. Reaproveitar CDK Dialog, acesso por ContentRepository e componentes existentes. Novos blocos recebem dados tipados; apresentação referencia IDs de entidade/fonte em vez de duplicar fatos. Schemas verificam IDs, âncoras, referências e fontes nas posições argumentativas. Novas tradições devem reutilizar contratos, com composição/configuração próprias.
+Angular 21, standalone, Signals, TypeScript strict, SCSS, Zod, static-first. Reaproveitar CDK Dialog, ContentRepository para o grafo, IdeologyRepository para dossiês e componentes existentes. A organização de arquivos, os limites e o passo a passo para novas tradições estão em [ARCHITECTURE.md](ARCHITECTURE.md). Novos blocos recebem dados tipados; apresentação referencia IDs de entidade/fonte em vez de duplicar fatos. Schemas verificam IDs, âncoras, referências e fontes nas posições argumentativas. Novas tradições devem reutilizar contratos, com composição/configuração próprias.
 
 Wikipedia fornece descoberta/contexto; Wikidata, identidade por QID/datas/relações registradas; Commons, mídia com metadados de licença, autor e atribuição. Coletar no desenvolvimento/build, com User-Agent descritivo, limites de API e cache local de bruto; snapshots normalizados versionados. Não consultar Wikimedia a cada visita. Registrar URL de origem, revisão/oldid quando disponível e data de coleta. Texto editorial próprio é o padrão; material reutilizado mantém atribuição e obrigações da licença. Não reproduzir imagens de referência como ativos autorizados.
 

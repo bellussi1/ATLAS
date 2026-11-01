@@ -1,6 +1,27 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
+test('retired entry, sources, search and institutional routes still return home', async ({
+  page,
+}) => {
+  for (const path of [
+    '/verbete/karl-marx',
+    '/fontes',
+    '/conhecimento',
+    '/sobre',
+    '/estudar',
+    '/rota-inexistente',
+  ]) {
+    await page.goto('/');
+    await page.evaluate((destination) => {
+      history.pushState(null, '', destination);
+      dispatchEvent(new PopStateEvent('popstate'));
+    }, path);
+    await expect(page).toHaveURL(/127\.0\.0\.1:\d+\/$/);
+    await expect(page.getByLabel('Procurar no acervo', { exact: true })).toBeVisible();
+  }
+});
+
 test('home search and sheet open only retained pages', async ({ page }) => {
   await page.goto('/');
   await page.getByLabel('Procurar no acervo', { exact: true }).fill('liberalismo');

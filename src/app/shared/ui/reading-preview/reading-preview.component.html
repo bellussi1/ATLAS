@@ -1,0 +1,15 @@
+<header>
+  <span>Prévia de leitura · {{ entry.statusLabel }}</span
+  ><button type="button" (click)="close()" aria-label="Fechar prévia">Fechar ×</button>
+</header>
+<div class="preview-body">
+  <p class="eyebrow">Um ponto de partida</p>
+  <h2 id="preview-title">{{ entry.title }}</h2>
+  <p class="summary">{{ entry.summary }}</p>
+  <section aria-labelledby="preview-section-title">
+    <h3 id="preview-section-title">{{ entry.sections[0].heading }}</h3>
+    <p>{{ entry.sections[0].paragraphs[0] }}</p>
+  </section>
+  <p class="scope">Este é um texto sobre a metodologia do ATLAS.</p>
+  <a class="read-link" [routerLink]="path" (click)="close()">Continuar no texto completo →</a>
+</div>

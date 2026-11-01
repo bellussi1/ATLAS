@@ -1,0 +1,20 @@
+@for (part of parts(); track $index) {
+  @if (part.term; as term) {
+    <span class="term-wrap"
+      ><button
+        type="button"
+        class="knowledge-term"
+        [attr.data-kind]="term.kind"
+        [attr.aria-label]="part.text + ': abrir contexto de ' + term.kind"
+        [appKnowledgeContext]="{ entityId: term.entityId }"
+      >
+        {{ part.text }}<span aria-hidden="true" class="term-cue">+</span></button
+      ><span class="term-preview" aria-hidden="true"
+        ><strong>{{ term.kind }}</strong
+        >{{ term.definition }}</span
+      ></span
+    >
+  } @else {
+    {{ part.text }}
+  }
+}

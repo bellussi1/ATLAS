@@ -1,0 +1,20 @@
+<header>
+  <p>Prévia de descoberta · {{ target.entry.kindLabel }}</p>
+  <button type="button" (click)="close()" aria-label="Fechar prévia">Fechar ×</button>
+</header>
+<div class="preview-body">
+  <p class="state">{{ target.entry.stateLabel }}</p>
+  <h2 id="discovery-preview-title">{{ target.entry.title }}</h2>
+  <p class="summary">{{ target.entry.summary }}</p>
+  @if (target.entry.aliases.length) {
+    <p class="aliases">
+      <strong>Também registrado como:</strong> {{ target.entry.aliases.join(', ') }}
+    </p>
+  }
+  @if (target.entry.context) {
+    <section>
+      <h3>Contexto</h3>
+      <p>{{ target.entry.context }}</p>
+    </section>
+  }
+</div>

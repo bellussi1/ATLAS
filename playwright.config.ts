@@ -1,4 +1,10 @@
 import { defineConfig } from '@playwright/test';
 
-export default defineConfig({ testDir: './e2e', use: { baseURL: 'http://127.0.0.1:4305', browserName: 'chromium' },
-  webServer: { command: 'npm run preview', url: 'http://127.0.0.1:4305', reuseExistingServer: false, timeout: 30000 } });
+const port = process.env['ATLAS_PREVIEW_PORT'] ?? '4305';
+const baseURL = `http://127.0.0.1:${port}`;
+
+export default defineConfig({
+  testDir: './e2e',
+  use: { baseURL, browserName: 'chromium' },
+  webServer: { command: 'npm run preview', url: baseURL, reuseExistingServer: false, timeout: 30000 },
+});

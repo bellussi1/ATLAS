@@ -4,6 +4,7 @@ const { defineConfig } = require('eslint/config');
 const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
 const simpleImportSort = require('eslint-plugin-simple-import-sort');
+const architecture = require('./scripts/architecture/eslint-boundaries.cjs');
 
 module.exports = defineConfig([
   {
@@ -15,8 +16,9 @@ module.exports = defineConfig([
       angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
-    plugins: { 'simple-import-sort': simpleImportSort },
+    plugins: { 'simple-import-sort': simpleImportSort, architecture },
     rules: {
+      'architecture/boundaries': 'error',
       '@typescript-eslint/member-ordering': [
         'error',
         {

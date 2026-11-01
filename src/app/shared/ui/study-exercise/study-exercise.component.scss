@@ -1,0 +1,41 @@
+:host {
+  display: block;
+}
+fieldset {
+  display: grid;
+  gap: 0.7rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--color-border-strong);
+}
+label {
+  display: block;
+  padding: 0.35rem 0;
+}
+button {
+  min-height: 2.75rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-ink);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: inherit;
+  cursor: pointer;
+}
+.feedback {
+  padding: 0.75rem 1rem;
+  border-left: 0.25rem solid var(--color-accent);
+  background: var(--color-surface-subtle);
+  color: var(--color-ink);
+  line-height: 1.6;
+}
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}

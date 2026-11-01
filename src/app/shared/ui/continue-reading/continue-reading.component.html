@@ -1,0 +1,13 @@
+<nav class="continue-reading" aria-label="Continuar a investigação">
+  <p class="eyebrow">Uma leitura abre outra</p>
+  <h2>Por onde seguir?</h2>
+  @for (item of suggestions(); track item.path) {
+    <a [routerLink]="item.path"
+      ><strong>{{ item.title }} <span aria-hidden="true">→</span></strong
+      ><span>{{ item.reason }}</span></a
+    >
+  }
+  <a class="network-link" routerLink="/relacoes"
+    >Investigar as relações entre conceito, afirmação e fonte ↗</a
+  >
+</nav>

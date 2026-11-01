@@ -1,0 +1,63 @@
+<header>
+  <div>
+    <p>{{ record().kind }} · contexto em revisão</p>
+    <h2 id="knowledge-context-title" tabindex="-1">{{ record().title }}</h2>
+  </div>
+  <button type="button" (click)="close()" aria-label="Fechar contexto">Fechar ×</button>
+</header>
+<div class="context-body">
+  @if (history().length) {
+    <button type="button" class="context-back" (click)="back()">← Contexto anterior</button>
+  }
+  @if (record().media; as media) {
+    <figure>
+      <img
+        [src]="media.assetPath"
+        [alt]="'Imagem associada a ' + record().title"
+        width="480"
+        height="480"
+      />
+      <figcaption>
+        {{ media.attribution ?? media.creator }} ·
+        <a [href]="media.filePageUrl ?? media.licenseUrl">{{ media.license }}</a>
+      </figcaption>
+    </figure>
+  }
+  <p class="context-summary">{{ record().summary }}</p>
+  @for (paragraph of record().paragraphs; track $index) {
+    <p>{{ paragraph }}</p>
+  }
+  @if (record().connections.length) {
+    <section aria-label="Conexões deste contexto">
+      <h3>Continue por uma conexão</h3>
+      <p>
+        Os vínculos importados são caminhos de investigação; não comprovam influência por si sós.
+      </p>
+      <div class="context-connections">
+        @for (connection of record().connections; track connection.entityId) {
+          <button
+            type="button"
+            [attr.data-connection]="connection.entityId"
+            (click)="follow(connection.entityId)"
+          >
+            {{ connection.label }} <span aria-hidden="true">↗</span>
+          </button>
+        }
+      </div>
+    </section>
+  }
+  <section aria-label="Fontes do contexto">
+    <h3>Fontes e proveniência</h3>
+    @for (source of record().sources; track source.id) {
+      <p>
+        <a [href]="source.url" target="_blank" rel="noopener noreferrer">{{ source.title }}</a
+        ><small>{{ source.edition }}</small>
+      </p>
+    } @empty {
+      <p>
+        Não há referência específica registrada neste recorte. Não tratar o resumo como afirmação
+        validada.
+      </p>
+    }
+  </section>
+</div>
