@@ -1,11 +1,11 @@
 <section class="tools" aria-labelledby="tools-title">
-  <header class="atlas-band-heading">
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
     <p class="atlas-band-number" aria-hidden="true">B</p>
     <h2 id="tools-title">Investigar <em>relações.</em></h2>
     <p>Duas ferramentas para sair da leitura linear sem perder as fontes.</p>
   </header>
-  <div class="tool-grid">
-    <a class="tool tool--network" routerLink="/rede">
+  <div class="tool-grid" appReveal>
+    <a class="tool tool--network atlas-press" data-stagger style="--stagger: 0" routerLink="/rede">
       <svg class="tool-art" viewBox="0 0 320 200" aria-hidden="true" focusable="false">
         <path
           d="M160 100L62 48M160 100L250 40M160 100L276 128M160 100L96 164M160 100L196 176M62 48L28 120M250 40L276 128"
@@ -33,9 +33,16 @@
       <span class="tool-copy"
         >Parta de um registro e veja quem, o quê e quais fontes estão ligados a ele.</span
       >
-      <span class="tool-cta">Abrir a rede <span aria-hidden="true">↗</span></span>
+      <span class="tool-cta"
+        >Abrir a rede <span class="atlas-arrow" aria-hidden="true">↗</span></span
+      >
     </a>
-    <a class="tool tool--compare" routerLink="/comparar">
+    <a
+      class="tool tool--compare atlas-press"
+      data-stagger
+      style="--stagger: 1"
+      routerLink="/comparar"
+    >
       <svg class="tool-art" viewBox="0 0 320 200" aria-hidden="true" focusable="false">
         <path d="M0 0h160v200H0z" class="left" />
         <path d="M160 0h160v200H160z" class="right" />
@@ -52,7 +59,9 @@
       <span class="tool-copy"
         >Dois conceitos ou dois acontecimentos, com contexto, formulações e evidências.</span
       >
-      <span class="tool-cta">Abrir o comparador <span aria-hidden="true">↗</span></span>
+      <span class="tool-cta"
+        >Abrir o comparador <span class="atlas-arrow" aria-hidden="true">↗</span></span
+      >
     </a>
   </div>
 </section>

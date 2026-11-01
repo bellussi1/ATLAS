@@ -15,6 +15,7 @@ import type {
   PageBlock,
 } from '@ideologies/models/ideology-page.schema';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
+import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 
 @Component({
   selector: 'app-ideology-block',
@@ -23,6 +24,7 @@ import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/
     ValueDebateComponent,
     KnowledgeContextDirective,
     KnowledgeTextComponent,
+    AtlasRevealDirective,
   ],
   templateUrl: './ideology-block.component.html',
   styleUrls: ['./ideology-block.component.scss', './ideology-exploration.scss'],

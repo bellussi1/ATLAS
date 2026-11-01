@@ -34,6 +34,83 @@
       "url": "https://www.marxists.org/archive/marx/works/1859/critique-pol-economy/preface.htm",
       "edition": "A Contribution to the Critique of Political Economy, prefácio; Progress Publishers, 1977. Consulta em 01/11/2026.",
       "publicationDate": null
+    },
+    {
+      "id": "source-marx-manifesto-1848",
+      "title": "Karl Marx e Friedrich Engels — Manifesto do Partido Comunista",
+      "url": "https://www.marxists.org/archive/marx/works/1848/communist-manifesto/",
+      "edition": "Marxists Internet Archive, tradução inglesa de Samuel Moore (1888)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-marx-civil-war-france",
+      "title": "Karl Marx — A guerra civil na França",
+      "url": "https://www.marxists.org/archive/marx/works/1871/civil-war-france/",
+      "edition": "Marxists Internet Archive; texto de 1871 para a Associação Internacional dos Trabalhadores",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-critical-theory",
+      "title": "James Bohman et al. — Critical Theory",
+      "url": "https://plato.stanford.edu/entries/critical-theory/",
+      "edition": "Stanford Encyclopedia of Philosophy, verbete sobre a Escola de Frankfurt",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-lukacs",
+      "title": "Titus Stahl — Georg [György] Lukács",
+      "url": "https://plato.stanford.edu/entries/lukacs/",
+      "edition": "Stanford Encyclopedia of Philosophy",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-popper",
+      "title": "Stephen Thornton — Karl Popper",
+      "url": "https://plato.stanford.edu/entries/popper/",
+      "edition": "Stanford Encyclopedia of Philosophy; seções sobre historicismo e sociedade aberta",
+      "publicationDate": null
+    },
+    {
+      "id": "source-kolakowski-main-currents",
+      "title": "Leszek Kołakowski — Main Currents of Marxism",
+      "url": null,
+      "edition": "Oxford: Clarendon Press, 1978, 3 volumes (original polonês publicado em Paris, 1976)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-hobsbawm-change-world",
+      "title": "Eric Hobsbawm — How to Change the World: Tales of Marx and Marxism",
+      "url": null,
+      "edition": "Londres: Little, Brown, 2011",
+      "publicationDate": null
+    },
+    {
+      "id": "source-bohm-bawerk-close",
+      "title": "Eugen von Böhm-Bawerk — Karl Marx and the Close of His System",
+      "url": null,
+      "edition": "Tradução inglesa de 1898 do original alemão de 1896",
+      "publicationDate": null
+    },
+    {
+      "id": "source-mises-calculation",
+      "title": "Ludwig von Mises — Economic Calculation in the Socialist Commonwealth",
+      "url": null,
+      "edition": "Artigo de 1920 no Archiv für Sozialwissenschaft; tradução inglesa em Hayek (org.), Collectivist Economic Planning, 1935",
+      "publicationDate": null
+    },
+    {
+      "id": "source-mariategui-siete-ensayos",
+      "title": "José Carlos Mariátegui — Siete ensayos de interpretación de la realidad peruana",
+      "url": null,
+      "edition": "Lima: Biblioteca Amauta, 1928",
+      "publicationDate": null
+    },
+    {
+      "id": "source-gramsci-quaderni",
+      "title": "Antonio Gramsci — Quaderni del carcere",
+      "url": null,
+      "edition": "Edição crítica de Valentino Gerratana, Turim: Einaudi, 1975",
+      "publicationDate": null
     }
   ],
   "edges": [

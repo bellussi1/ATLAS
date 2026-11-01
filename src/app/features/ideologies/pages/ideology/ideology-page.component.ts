@@ -11,6 +11,7 @@ import { IdeologyReadingComponent } from '@ideologies/components/ideology-readin
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
+import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
@@ -27,6 +28,7 @@ interface PageState {
     IdeologyReadingComponent,
     EditorialSourcesComponent,
     AtlasGeometricMosaicComponent,
+    AtlasRevealDirective,
   ],
   templateUrl: './ideology-page.component.html',
   styleUrl: './ideology-page.component.scss',

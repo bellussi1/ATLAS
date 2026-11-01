@@ -53,7 +53,7 @@ test('reading navigation includes the knowledge explorer', async ({ page }) => {
 test('Marxism chapters, comparison and sources remain on the same page', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/marxismo/');
-  await expect(page.locator('.ideology-chapter')).toHaveCount(8);
+  await expect(page.locator('.ideology-chapter')).toHaveCount(10);
   await page
     .getByRole('navigation', { name: 'Capítulos', exact: true })
     .getByRole('link', { name: /Vozes que/ })

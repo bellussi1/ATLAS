@@ -5,12 +5,13 @@
   @case ('entities') {
     <div
       class="entity-gallery"
+      appReveal
       [class.portraits]="block().type === 'entities' && $any(block()).mode === 'thinkers'"
       [class.documents]="block().type === 'entities' && $any(block()).mode === 'documents'"
     >
-      @for (entity of entities(); track entity.id) {
-        <div class="entity-entry">
-          <button type="button" [appKnowledgeContext]="{ entityId: entity.id }">
+      @for (entity of entities(); track entity.id; let e = $index) {
+        <div class="entity-entry" data-stagger [style.--stagger]="e % 6">
+          <button type="button" class="atlas-press" [appKnowledgeContext]="{ entityId: entity.id }">
             @if (media(entity); as asset) {
               <img [src]="asset.assetPath" alt="" width="180" height="210" loading="lazy" />
             }
@@ -251,13 +252,16 @@
   @case ('explorations') {
     <div
       class="exploration-set"
+      appReveal
       [class.schools]="explorationMode() === 'schools'"
       [class.principles]="explorationMode() === 'principles'"
     >
       @for (item of explorationItems(); track item.id; let i = $index) {
         <button
           type="button"
-          class="exploration-card"
+          class="exploration-card atlas-press"
+          data-stagger
+          [style.--stagger]="i"
           [appKnowledgeContext]="{ record: explorationContext(item) }"
         >
           <span class="metadata">{{ item.kicker }} · {{ item.classification }}</span
@@ -282,22 +286,25 @@
     </div>
     @if (selectedTopic(); as topic) {
       <p class="debate-scope">{{ topic.scope }}</p>
-      <div class="argument-board" aria-label="Defesa, crítica, resposta e limites">
-        @for (phase of phases; track phase.key) {
-          <button
-            type="button"
-            class="argument-card"
-            [attr.data-position]="phase.key"
-            [appKnowledgeContext]="{ record: explorationContext(topic[phase.key]) }"
-          >
-            <span class="argument-position">{{ phase.label }}</span
-            ><strong>{{ topic[phase.key].title }}</strong
-            ><span class="metadata">{{ topic[phase.key].classification }}</span
-            ><span class="argument-summary">{{ topic[phase.key].summary }}</span
-            ><span class="action-cue">Abrir argumento, autoria e fonte +</span>
-          </button>
-        }
-      </div>
+      @for (shown of [topic]; track shown.id) {
+        <div class="argument-board" aria-label="Defesa, crítica, resposta e limites">
+          @for (phase of phases; track phase.key; let p = $index) {
+            <button
+              type="button"
+              class="argument-card atlas-press"
+              [attr.data-position]="phase.key"
+              [style.--stagger]="p"
+              [appKnowledgeContext]="{ record: explorationContext(topic[phase.key]) }"
+            >
+              <span class="argument-position">{{ phase.label }}</span
+              ><strong>{{ topic[phase.key].title }}</strong
+              ><span class="metadata">{{ topic[phase.key].classification }}</span
+              ><span class="argument-summary">{{ topic[phase.key].summary }}</span
+              ><span class="action-cue">Abrir argumento, autoria e fonte +</span>
+            </button>
+          }
+        </div>
+      }
     }
   }
   @case ('sources') {

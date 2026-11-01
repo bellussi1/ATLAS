@@ -245,3 +245,90 @@ html[data-input='keyboard'] *::after {
     text-decoration-thickness: 2px;
   }
 }
+
+/* Scroll reveal: hidden state exists only while JS observes the element. */
+@media (prefers-reduced-motion: no-preference) {
+  html.atlas-reveal .atlas-reveal-item {
+    transition:
+      opacity var(--motion-slow) var(--ease-out),
+      transform var(--motion-slow) var(--ease-out),
+      clip-path var(--motion-slow) var(--ease-out);
+  }
+  html.atlas-reveal .atlas-reveal-item.is-pending {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  html.atlas-reveal .atlas-reveal-item[data-reveal='wipe'].is-pending {
+    clip-path: inset(0 100% 0 0);
+    transform: none;
+  }
+  html.atlas-reveal .atlas-reveal-item[data-reveal='shape'].is-pending {
+    transform: scale(0.4) rotate(-90deg);
+  }
+  html.atlas-reveal .atlas-reveal-item > [data-stagger] {
+    transition:
+      opacity var(--motion-slow) var(--ease-out),
+      transform var(--motion-slow) var(--ease-out);
+    transition-delay: calc(var(--stagger, 0) * 70ms);
+  }
+  html.atlas-reveal .atlas-reveal-item.is-pending > [data-stagger] {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
+
+/* Page change: header and footer stay put while the page body crosses over. */
+.site-header {
+  view-transition-name: atlas-header;
+}
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: atlas-page-out var(--motion-standard) var(--ease-out) both;
+  }
+  ::view-transition-new(root) {
+    animation: atlas-page-in var(--motion-slow) var(--ease-out) both;
+  }
+}
+@keyframes atlas-page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+}
+@keyframes atlas-page-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+/* Pressable controls and directional arrows share one tactile response. */
+@media (prefers-reduced-motion: no-preference) {
+  :where(.atlas-press) {
+    transition:
+      transform var(--motion-fast) var(--ease-out),
+      background-color var(--motion-fast),
+      color var(--motion-fast),
+      box-shadow var(--motion-fast);
+  }
+  :where(.atlas-press):active {
+    transform: scale(0.97);
+  }
+  :where(.atlas-press) .atlas-arrow {
+    display: inline-block;
+    transition: transform var(--motion-standard) var(--ease-out);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :where(.atlas-press):hover .atlas-arrow {
+    transform: translate(0.2rem, -0.2rem);
+  }
+  :where(.atlas-press):hover .atlas-arrow--down {
+    transform: translateY(0.25rem);
+  }
+  :where(.atlas-press):hover .atlas-arrow--right {
+    transform: translateX(0.3rem);
+  }
+}

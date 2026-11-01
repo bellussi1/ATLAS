@@ -193,6 +193,209 @@
       "gap": "A história dos governos, partidos e experiências nacionais exige bibliografia específica. Não há base editorial suficiente neste snapshot para uma avaliação comparativa."
     },
     {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "Épocas de uma tradição",
+      "kicker": "Períodos e organizações",
+      "layout": "concepts",
+      "minutes": 5,
+      "narrative": [
+        "O marxismo mudou de forma conforme mudaram as organizações, os países e as perguntas que o mobilizavam. A divisão em épocas abaixo é um recurso didático usado por historiadores da tradição; as fronteiras entre elas são aproximadas e discutíveis.",
+        "Abra cada época para ver o que estava em jogo, quem participou e onde conferir a fonte."
+      ],
+      "sourceIds": ["source-hobsbawm-change-world", "source-kolakowski-main-currents"],
+      "gap": "A periodização segue sínteses europeias. A história do marxismo na Ásia, na África e na América Latina exige bibliografia própria, ainda não incorporada a este recorte.",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "epoch-formation",
+              "title": "Formação, 1840–1848",
+              "kicker": "1840–1848 · Paris, Bruxelas, Londres",
+              "summary": "Marx e Engels formulam a concepção materialista da história em diálogo com a filosofia alemã, a economia política britânica e o socialismo francês.",
+              "paragraphs": [
+                "Na década de 1840, Marx e Engels se conheceram, colaboraram em textos críticos à filosofia de Hegel e dos jovens hegelianos e aderiram à Liga dos Comunistas.",
+                "O Manifesto do Partido Comunista, encomendado pela Liga e publicado em fevereiro de 1848, apresentou em linguagem de panfleto a tese de que a história das sociedades é atravessada por lutas de classes."
+              ],
+              "sourceIds": ["source-marx-manifesto-1848", "source-v4-marx-sep"],
+              "entityIds": [
+                "person-karl-marx",
+                "person-friedrich-engels",
+                "work-communist-manifesto"
+              ],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "epoch-first-international",
+              "title": "Primeira Internacional e Comuna, 1864–1876",
+              "kicker": "1864–1876 · Londres, Paris",
+              "summary": "A Associação Internacional dos Trabalhadores reúne correntes distintas; a Comuna de Paris de 1871 vira referência e objeto de disputa.",
+              "paragraphs": [
+                "Fundada em Londres em 1864, a Associação Internacional dos Trabalhadores reunia sindicalistas, mutualistas, anarquistas e seguidores de Marx, que redigiu seu discurso inaugural.",
+                "Em A guerra civil na França, escrito para a Internacional, Marx interpretou a Comuna de Paris como uma forma de governo da classe trabalhadora. O conflito com Bakunin e os anarquistas contribuiu para a dissolução da organização em 1876."
+              ],
+              "sourceIds": ["source-marx-civil-war-france", "source-kolakowski-main-currents"],
+              "entityIds": ["person-karl-marx", "event-paris-commune"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "epoch-second-international",
+              "title": "Partidos de massa e Segunda Internacional, 1889–1914",
+              "kicker": "1889–1914 · Berlim, Viena, Paris",
+              "summary": "O marxismo se torna doutrina oficial de grandes partidos social-democratas e abre a polêmica entre reforma e revolução.",
+              "paragraphs": [
+                "A Segunda Internacional, fundada em 1889, teve no Partido Social-Democrata alemão sua maior organização. Kautsky foi considerado o principal sistematizador do marxismo do período.",
+                "A proposta revisionista de Bernstein e a resposta de Luxemburg, em Reforma ou revolução (1899), definiram um debate que atravessou a tradição. O apoio da maioria dos partidos aos esforços de guerra em 1914 rompeu a Internacional."
+              ],
+              "sourceIds": [
+                "source-bernstein-preface",
+                "source-v4-luxemburg",
+                "source-kolakowski-main-currents"
+              ],
+              "entityIds": [
+                "institution-second-international",
+                "person-karl-kautsky",
+                "person-eduard-bernstein",
+                "person-rosa-luxemburg"
+              ],
+              "classification": "interpretação"
+            },
+            {
+              "id": "epoch-1917",
+              "title": "Revolução de 1917 e Internacional Comunista",
+              "kicker": "1917–1943 · Petrogrado, Moscou",
+              "summary": "A Revolução Russa transforma uma corrente marxista em poder de Estado e divide o movimento operário entre comunistas e social-democratas.",
+              "paragraphs": [
+                "Em O Estado e a revolução, escrito em 1917, Lenin defendeu a destruição do aparelho estatal existente e a ditadura do proletariado como transição. A Internacional Comunista, criada em 1919, organizou partidos alinhados a Moscou.",
+                "A disputa entre Stalin e Trotsky após a morte de Lenin, em 1924, opôs o socialismo em um só país à revolução permanente, e marcou a divisão posterior entre stalinismo e trotskismo."
+              ],
+              "sourceIds": ["source-v4-lenin", "source-kolakowski-main-currents"],
+              "entityIds": [
+                "event-russian-revolution",
+                "person-vladimir-lenin",
+                "person-leon-trotsky",
+                "person-joseph-stalin"
+              ],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "epoch-western",
+              "title": "Marxismo ocidental, 1920–1970",
+              "kicker": "1920–1970 · Budapeste, Turim, Frankfurt",
+              "summary": "Lukács, Gramsci e a Escola de Frankfurt deslocam a atenção para cultura, consciência e hegemonia.",
+              "paragraphs": [
+                "Lukács, em História e consciência de classe (1923), e Gramsci, nos Cadernos do cárcere, voltaram-se para a consciência, a cultura e o consentimento como dimensões da dominação.",
+                "O Instituto de Pesquisa Social de Frankfurt desenvolveu a teoria crítica, combinando Marx, Weber e Freud. Essas leituras se afastaram tanto da ortodoxia soviética quanto do reformismo social-democrata."
+              ],
+              "sourceIds": [
+                "source-sep-lukacs",
+                "source-gramsci-quaderni",
+                "source-sep-critical-theory"
+              ],
+              "entityIds": ["person-antonio-gramsci"],
+              "classification": "interpretação"
+            },
+            {
+              "id": "epoch-global",
+              "title": "Descolonização, Guerra Fria e 1989–1991",
+              "kicker": "1945–1991 · Pequim, Havana, Berlim",
+              "summary": "Revoluções na Ásia e na América Latina, rupturas entre Estados socialistas e o fim da União Soviética redefinem o lugar do marxismo.",
+              "paragraphs": [
+                "A Revolução Chinesa de 1949 e a ruptura sino-soviética mostraram que Estados que se declaravam marxistas podiam divergir abertamente. Movimentos de libertação nacional adaptaram o vocabulário marxista a sociedades agrárias e coloniais.",
+                "A queda do Muro de Berlim em 1989 e a dissolução da União Soviética em 1991 encerraram o principal modelo estatal associado ao marxismo. Hobsbawm argumenta que o interesse acadêmico por Marx persistiu depois disso, sob outras formas."
+              ],
+              "sourceIds": ["source-hobsbawm-change-world", "source-kolakowski-main-currents"],
+              "entityIds": ["person-mao-zedong"],
+              "classification": "interpretação"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lugares",
+      "anchor": "lugares",
+      "title": "Onde a tradição aconteceu",
+      "kicker": "Cidades e territórios",
+      "layout": "documents",
+      "minutes": 4,
+      "narrative": [
+        "Ideias circulam por cidades, exílios, bibliotecas, fábricas e prisões. Estes lugares ajudam a situar a tradição no espaço; não formam um mapa completo nem sugerem que tudo começou ou terminou neles."
+      ],
+      "sourceIds": ["source-v4-marx-sep", "source-hobsbawm-change-world"],
+      "gap": "O recorte de lugares não inclui coordenadas nem mapa: o acervo ainda não registra dados geográficos verificados para estes pontos.",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "place-london",
+              "title": "Londres",
+              "kicker": "Exílio · de 1849 a 1883",
+              "summary": "Onde Marx viveu exilado e pesquisou para O capital.",
+              "paragraphs": [
+                "Marx se mudou para Londres em 1849 e viveu ali até a morte, em 1883. A pesquisa para O capital apoiou-se na economia política britânica e em relatórios oficiais sobre as condições de trabalho."
+              ],
+              "sourceIds": ["source-v4-marx-sep"],
+              "entityIds": ["person-karl-marx", "work-capital-volume-i"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "place-paris",
+              "title": "Paris",
+              "kicker": "Comuna · 1871",
+              "summary": "Cidade da Comuna, que Marx interpretou como forma de governo operário.",
+              "paragraphs": [
+                "Entre março e maio de 1871, a Comuna governou Paris até ser reprimida pelo governo de Versalhes. Marx a analisou em A guerra civil na França; anarquistas e marxistas disputaram seu legado."
+              ],
+              "sourceIds": ["source-marx-civil-war-france"],
+              "entityIds": ["event-paris-commune"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "place-petrograd",
+              "title": "Petrogrado",
+              "kicker": "Revolução · 1917",
+              "summary": "Cenário das revoluções de fevereiro e outubro de 1917.",
+              "paragraphs": [
+                "Na capital do Império Russo, a revolução de fevereiro derrubou o czarismo e a de outubro levou os bolcheviques ao poder. Lenin escreveu O Estado e a revolução nesse ano."
+              ],
+              "sourceIds": ["source-v4-lenin"],
+              "entityIds": ["event-russian-revolution", "person-vladimir-lenin"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "place-turin",
+              "title": "Turim e a prisão",
+              "kicker": "Conselhos de fábrica · 1919–1920; cárcere · 1926–1937",
+              "summary": "Das ocupações de fábrica aos Cadernos escritos na prisão.",
+              "paragraphs": [
+                "Gramsci acompanhou o movimento dos conselhos de fábrica em Turim. Preso pelo regime fascista em 1926, redigiu na prisão os cadernos publicados postumamente."
+              ],
+              "sourceIds": ["source-gramsci-quaderni"],
+              "entityIds": ["person-antonio-gramsci"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "place-lima",
+              "title": "Lima",
+              "kicker": "Amauta · 1926–1930",
+              "summary": "Onde Mariátegui editou a revista Amauta e escreveu os Sete ensaios.",
+              "paragraphs": [
+                "Mariátegui fundou a revista Amauta em 1926 e publicou os Sete ensaios em 1928, em diálogo com o indigenismo peruano e com o marxismo europeu."
+              ],
+              "sourceIds": ["source-mariategui-siete-ensayos"],
+              "entityIds": ["person-jose-carlos-mariategui"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "correntes",
       "anchor": "correntes",
       "title": "Concordar com Marx não encerra o debate",
@@ -203,7 +406,13 @@
         "O que distingue reforma e revolução? Como interpretar o Estado? A rede reúne três polêmicas documentadas entre autores. Selecione uma relação para investigar seu argumento e sua fonte; a tabela oferece o mesmo conteúdo em texto.",
         "Linhas de crítica não são linhas de descendência. A autoria de uma crítica é documentável, mesmo quando a interpretação criticada e sua avaliação continuam em disputa."
       ],
-      "sourceIds": ["source-v4-luxemburg", "source-v4-lenin", "source-marx-critique"],
+      "sourceIds": [
+        "source-v4-luxemburg",
+        "source-v4-lenin",
+        "source-marx-critique",
+        "source-kolakowski-main-currents",
+        "source-gramsci-quaderni"
+      ],
       "blocks": [
         {
           "type": "explorations",
@@ -253,6 +462,72 @@
         {
           "type": "graph",
           "edgeIds": ["edge-luxemburg-bernstein", "edge-lenin-kautsky", "edge-marx-smith"]
+        },
+        {
+          "type": "explorations",
+          "mode": "schools",
+          "items": [
+            {
+              "id": "school-trotskyism",
+              "title": "Trotskismo",
+              "kicker": "Recorte: Trotsky",
+              "summary": "Defende a revolução permanente e critica a burocracia soviética a partir do próprio marxismo.",
+              "paragraphs": [
+                "Contra a tese do socialismo em um só país, Trotsky sustentou que a revolução em países atrasados só se completaria se fosse estendida internacionalmente.",
+                "Exilado, criticou o regime de Stalin como uma degeneração burocrática e fundou a Quarta Internacional em 1938."
+              ],
+              "sourceIds": ["source-kolakowski-main-currents"],
+              "entityIds": ["person-leon-trotsky", "person-joseph-stalin"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "school-gramsci",
+              "title": "Hegemonia e marxismo ocidental",
+              "kicker": "Recorte: Gramsci, Lukács, Frankfurt",
+              "summary": "Desloca a análise para cultura, consentimento e consciência, além da economia e do Estado.",
+              "paragraphs": [
+                "Nos Cadernos do cárcere, Gramsci usa hegemonia para explicar como a dominação combina coerção e consentimento organizado pela sociedade civil.",
+                "A teoria crítica de Frankfurt e a obra de Lukács compartilham a atenção à cultura e à reificação, com diferenças importantes entre si."
+              ],
+              "sourceIds": [
+                "source-gramsci-quaderni",
+                "source-sep-critical-theory",
+                "source-sep-lukacs"
+              ],
+              "entityIds": ["person-antonio-gramsci"],
+              "classification": "interpretação"
+            },
+            {
+              "id": "school-maoism",
+              "title": "Maoísmo",
+              "kicker": "Recorte: Mao Zedong",
+              "summary": "Atribui ao campesinato papel revolucionário central e formula a guerra popular prolongada.",
+              "paragraphs": [
+                "A experiência do Partido Comunista Chinês levou Mao a dar ao campesinato um papel que a tradição europeia atribuía ao proletariado urbano.",
+                "Após a ruptura com a União Soviética, o maoísmo se apresentou como alternativa internacional ao modelo soviético."
+              ],
+              "sourceIds": ["source-kolakowski-main-currents"],
+              "entityIds": ["person-mao-zedong"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "school-latin-america",
+              "title": "Marxismo latino-americano",
+              "kicker": "Recorte: Mariátegui, Caio Prado Júnior",
+              "summary": "Lê a formação colonial, a questão agrária e indígena e a dependência com categorias marxistas.",
+              "paragraphs": [
+                "Em Sete ensaios de interpretação da realidade peruana (1928), Mariátegui relacionou a questão indígena ao problema da terra e recusou aplicar mecanicamente esquemas europeus.",
+                "No Brasil, Caio Prado Júnior e Florestan Fernandes interpretaram a formação colonial e a revolução burguesa no país; suas teses divergiam de leituras oficiais do PCB."
+              ],
+              "sourceIds": ["source-mariategui-siete-ensayos", "source-hobsbawm-change-world"],
+              "entityIds": [
+                "person-jose-carlos-mariategui",
+                "person-caio-prado-junior",
+                "person-florestan-fernandes"
+              ],
+              "classification": "interpretação"
+            }
+          ]
         }
       ],
       "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte."
@@ -272,7 +547,11 @@
         "source-v4-marx-sep",
         "source-v4-luxemburg",
         "source-v4-lenin",
-        "source-bernstein-preface"
+        "source-bernstein-preface",
+        "source-bohm-bawerk-close",
+        "source-mises-calculation",
+        "source-sep-popper",
+        "source-kolakowski-main-currents"
       ],
       "blocks": [
         {
@@ -389,6 +668,72 @@
               }
             }
           ]
+        },
+        {
+          "type": "explorations",
+          "mode": "schools",
+          "items": [
+            {
+              "id": "critic-bakunin",
+              "title": "Anarquismo: o Estado como problema",
+              "kicker": "Crítica de Bakunin · década de 1870",
+              "summary": "Para Bakunin, uma ditadura do proletariado reproduziria a dominação estatal.",
+              "paragraphs": [
+                "Na Primeira Internacional, Bakunin acusou a proposta de conquista do poder político de conduzir a uma nova elite dirigente. A disputa levou à expulsão dos bakuninistas em 1872."
+              ],
+              "sourceIds": ["source-kolakowski-main-currents"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "critic-bohm-bawerk",
+              "title": "Economia marginalista: o problema do valor",
+              "kicker": "Crítica de Böhm-Bawerk · 1896",
+              "summary": "Argumenta que o terceiro volume de O capital contradiz a teoria do valor-trabalho do primeiro.",
+              "paragraphs": [
+                "Böhm-Bawerk sustentou que a conversão de valores em preços de produção não se concilia com a explicação dos preços pelo tempo de trabalho. O chamado problema da transformação continua debatido entre economistas."
+              ],
+              "sourceIds": ["source-bohm-bawerk-close"],
+              "entityIds": ["work-capital-volume-i", "concept-trabalho-socialmente-necessario"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "critic-mises",
+              "title": "Cálculo econômico sem mercado",
+              "kicker": "Crítica de Mises · 1920",
+              "summary": "Sem preços de mercado para meios de produção, o planejamento não teria como calcular custos.",
+              "paragraphs": [
+                "Mises argumentou que a propriedade coletiva dos meios de produção eliminaria os preços necessários ao cálculo racional. A tese abriu o debate do cálculo socialista, com respostas de Oskar Lange e outros."
+              ],
+              "sourceIds": ["source-mises-calculation"],
+              "entityIds": [],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "critic-popper",
+              "title": "Historicismo e falseabilidade",
+              "kicker": "Crítica de Popper · 1945",
+              "summary": "Questiona a pretensão de prever o curso da história e o estatuto científico do marxismo.",
+              "paragraphs": [
+                "Em A sociedade aberta e seus inimigos e A miséria do historicismo, Popper criticou a ideia de leis de desenvolvimento histórico e afirmou que o marxismo teria se tornado irrefutável ao reinterpretar previsões não confirmadas."
+              ],
+              "sourceIds": ["source-sep-popper"],
+              "entityIds": ["concept-historical-materialism"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "critic-kolakowski",
+              "title": "Balanço de um ex-marxista",
+              "kicker": "Crítica de Kołakowski · 1976–1978",
+              "summary": "Uma história em três volumes que termina em avaliação crítica dos regimes e da filosofia marxista.",
+              "paragraphs": [
+                "Kołakowski, filósofo polonês expulso do partido em 1966, reconstruiu as principais correntes do marxismo e concluiu que elementos da doutrina favoreceram usos autoritários, tese contestada por outros historiadores."
+              ],
+              "sourceIds": ["source-kolakowski-main-currents"],
+              "entityIds": [],
+              "classification": "interpretação"
+            }
+          ]
         }
       ],
       "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria."
@@ -416,7 +761,18 @@
             "source-v4-luxemburg",
             "source-v4-lenin",
             "source-bernstein-preface",
-            "source-marx-preface-1859"
+            "source-marx-preface-1859",
+            "source-marx-manifesto-1848",
+            "source-marx-civil-war-france",
+            "source-sep-critical-theory",
+            "source-sep-lukacs",
+            "source-sep-popper",
+            "source-kolakowski-main-currents",
+            "source-hobsbawm-change-world",
+            "source-bohm-bawerk-close",
+            "source-mises-calculation",
+            "source-mariategui-siete-ensayos",
+            "source-gramsci-quaderni"
           ]
         }
       ],

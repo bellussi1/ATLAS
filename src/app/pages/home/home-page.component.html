@@ -18,7 +18,7 @@
       [seed]="seed()"
       [interactive]="true"
     />
-    <button class="recompose" type="button" (click)="recompose()">
+    <button class="recompose atlas-press" type="button" (click)="recompose()">
       <span class="recompose-dot" aria-hidden="true"></span>Recompor o cartaz
     </button>
   </div>
@@ -34,21 +34,25 @@
       [value]="query()"
       (valueChange)="query.set($event)"
     />
-    <button class="search-button" type="submit">Pesquisar</button>
+    <button class="search-button atlas-press" type="submit">Pesquisar</button>
   </form>
   <nav class="exploration-actions" aria-label="Ferramentas de exploração">
-    <a routerLink="/rede"><span>Explorar a rede</span> <span aria-hidden="true">↗</span></a>
-    <a routerLink="/comparar"><span>Comparar registros</span> <span aria-hidden="true">↗</span></a>
+    <a class="atlas-press" routerLink="/rede"
+      ><span>Explorar a rede</span> <span class="atlas-arrow" aria-hidden="true">↗</span></a
+    >
+    <a class="atlas-press" routerLink="/comparar"
+      ><span>Comparar registros</span> <span class="atlas-arrow" aria-hidden="true">↗</span></a
+    >
   </nav>
 </section>
 
 <section class="readings" aria-labelledby="readings-title">
-  <header class="atlas-band-heading">
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
     <p class="atlas-band-number" aria-hidden="true">A</p>
     <h2 id="readings-title">Duas leituras, <em>uma enciclopédia.</em></h2>
     <p>Cada tradição tem seu ritmo. Escolha uma capa para aproximar a leitura.</p>
   </header>
-  <div class="reading-table" [attr.data-reading]="selected().slug">
+  <div appReveal class="reading-table" [attr.data-reading]="selected().slug">
     <div class="cover-index">
       <div class="mobile-sheet-control">
         <label for="sheet-select">Escolha uma leitura</label>
@@ -66,7 +70,7 @@
         <legend class="sr-only">Escolha uma leitura</legend>
         @for (entry of readings; track entry.slug) {
           <button
-            class="cover-choice"
+            class="cover-choice atlas-press"
             type="button"
             [attr.data-reading]="entry.slug"
             [attr.aria-pressed]="selected().slug === entry.slug"
@@ -95,8 +99,11 @@
           <h3>{{ selected().sections[0].heading }}</h3>
           <p>{{ selected().sections[0].paragraphs[0] }}</p>
         </div>
-        <a class="sheet-action" [routerLink]="entryPath(selected().type, selected().slug)"
-          >Ler o texto completo <span aria-hidden="true">→</span></a
+        <a
+          class="sheet-action atlas-press"
+          [routerLink]="entryPath(selected().type, selected().slug)"
+          >Ler o texto completo
+          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
         >
       </div>
     </article>
@@ -108,23 +115,23 @@
 
 <section class="method" aria-labelledby="method-title">
   <h2 id="method-title">Como ler o ATLAS</h2>
-  <ol>
-    <li>
+  <ol appReveal>
+    <li data-stagger style="--stagger: 0">
       <span class="method-shape method-shape--fact" aria-hidden="true"></span>
       <strong>Fato documentado</strong>
       <p>Afirmações acompanhadas de fonte identificável, perto do texto.</p>
     </li>
-    <li>
+    <li data-stagger style="--stagger: 1">
       <span class="method-shape method-shape--reading" aria-hidden="true"></span>
       <strong>Interpretação</strong>
       <p>Leituras atribuídas a autores e correntes, nunca apresentadas como fato.</p>
     </li>
-    <li>
+    <li data-stagger style="--stagger: 2">
       <span class="method-shape method-shape--debate" aria-hidden="true"></span>
       <strong>Controvérsia</strong>
       <p>Debates com defesa, crítica e limites explícitos, sem simetria inventada.</p>
     </li>
-    <li>
+    <li data-stagger style="--stagger: 3">
       <span class="method-shape method-shape--gap" aria-hidden="true"></span>
       <strong>Lacuna</strong>
       <p>O que ainda não foi revisado aparece marcado como pendente.</p>

@@ -1,6 +1,7 @@
 import { Component, type ElementRef, inject, signal, viewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
+import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
 
@@ -13,6 +14,7 @@ import { ExplorationToolsComponent } from './exploration-tools/exploration-tools
     AtlasTextFieldComponent,
     AtlasGeometricMosaicComponent,
     ExplorationToolsComponent,
+    AtlasRevealDirective,
     RouterLink,
   ],
   templateUrl: './home-page.component.html',

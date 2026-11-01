@@ -16,10 +16,11 @@
             explorações
           </p>
           <a
-            class="start-reading"
+            class="start-reading atlas-press"
             href="#introducao"
             (click)="reading.navigateChapter($event, 'introducao')"
-            >Começar a leitura ↓</a
+            >Começar a leitura
+            <span class="atlas-arrow atlas-arrow--down" aria-hidden="true">↓</span></a
           >
         </div>
         <figure class="opening-portrait">
@@ -65,12 +66,16 @@
           tabindex="-1"
           [attr.aria-labelledby]="'title-' + chapter.id"
         >
-          <header class="chapter-heading">
+          <header class="chapter-heading" appReveal data-reveal="wipe">
             <p class="folio">
               {{ chapter.kicker }} <span>~{{ chapter.minutes }} min</span>
             </p>
             <h2 [id]="'title-' + chapter.id">
-              <span class="chapter-number" [attr.data-shape]="index % 4"
+              <span
+                class="chapter-number"
+                appReveal
+                data-reveal="shape"
+                [attr.data-shape]="index % 4"
                 >{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
               ><span class="chapter-title">{{ chapter.title }}</span>
             </h2>
@@ -98,10 +103,11 @@
           }
           @if (page.chapters[index + 1]; as next) {
             <a
-              class="next-chapter"
+              class="next-chapter atlas-press"
               [href]="'#' + next.anchor"
               (click)="reading.navigateChapter($event, next.anchor)"
-              >A seguir: {{ next.title }} ↓</a
+              >A seguir: {{ next.title }}
+              <span class="atlas-arrow atlas-arrow--down" aria-hidden="true">↓</span></a
             >
           }
         </section>
