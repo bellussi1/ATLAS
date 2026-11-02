@@ -23,6 +23,7 @@ const sectionOf = (url: string): Section => {
   host: {
     '(document:keydown.escape)': 'close(true)',
     '(document:pointerdown)': 'closeOnOutsidePointer($event)',
+    '(focusout)': 'closeWhenFocusLeaves($event)',
   },
 })
 export class SiteHeaderComponent {
@@ -59,5 +60,13 @@ export class SiteHeaderComponent {
 
   closeOnOutsidePointer(event: PointerEvent): void {
     if (!this.element.nativeElement.contains(event.target as Node)) this.close();
+  }
+
+  // Tabbing out of the open panel closes it, so focus never moves behind a hidden menu.
+  closeWhenFocusLeaves(event: FocusEvent): void {
+    const next = event.relatedTarget as Node | null;
+    if (!next || !this.menuOpen()) return;
+    const panel = this.element.nativeElement.querySelector('#navegacao-principal');
+    if (!panel?.contains(next) && next !== this.menuToggle().nativeElement) this.close();
   }
 }

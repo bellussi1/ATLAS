@@ -26,7 +26,11 @@ test('following a connection starts the new context and restores the previous fo
   await connection.click();
   await expect(dialog.locator('h2')).toBeFocused();
   expect(await dialog.locator('.context-body').evaluate((e) => e.scrollTop)).toBe(0);
-  await dialog.getByRole('button', { name: 'Contexto anterior', exact: false }).click();
+  await dialog
+    .getByRole('navigation', { name: 'Percurso neste contexto' })
+    .getByRole('button')
+    .last()
+    .click();
   await expect(connection).toBeFocused();
   await page.keyboard.press('Escape');
 });

@@ -7,6 +7,7 @@ import {
   withInMemoryScrolling,
   withViewTransitions,
 } from '@angular/router';
+import { prefersReducedMotion } from '@shared/motion/prefers-reduced-motion';
 
 import { routes } from './app.routes';
 
@@ -27,8 +28,7 @@ export const appConfig: ApplicationConfig = {
           // Keyboard, reduced motion and in-page query/fragment changes are immediate.
           if (
             root.dataset['input'] === 'keyboard' ||
-            root.classList.contains('atlas-reduced-motion') ||
-            matchMedia('(prefers-reduced-motion: reduce)').matches ||
+            prefersReducedMotion(document) ||
             leaf(from).routeConfig === leaf(to).routeConfig
           )
             transition.skipTransition();

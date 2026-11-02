@@ -1,4 +1,5 @@
-import { Component, computed, input, output } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, computed, DestroyRef, ElementRef, inject, input, output } from '@angular/core';
 import type { IdeologyReadingSection } from '@ideologies/models/ideology-reading-section';
 
 @Component({
@@ -30,6 +31,29 @@ export class IdeologyReadingIndexComponent {
   readonly chapterSelected = output<string>();
   readonly previousRequested = output<void>();
   readonly motionToggleRequested = output<void>();
+
+  constructor() {
+    const element = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+    const doc = inject(DOCUMENT);
+    const view = doc.defaultView;
+    // On phones the index is a sticky bar: chapters scroll below its measured height.
+    if (!view?.ResizeObserver) return;
+    const compact = view.matchMedia('(max-width: 760px)');
+    const sync = () => {
+      if (compact.matches)
+        doc.documentElement.style.setProperty('--reading-bar-h', `${element.offsetHeight}px`);
+      else doc.documentElement.style.removeProperty('--reading-bar-h');
+    };
+    const observer = new view.ResizeObserver(sync);
+    observer.observe(element);
+    compact.addEventListener('change', sync);
+    sync();
+    inject(DestroyRef).onDestroy(() => {
+      observer.disconnect();
+      compact.removeEventListener('change', sync);
+      doc.documentElement.style.removeProperty('--reading-bar-h');
+    });
+  }
 
   selectChapter(event: Event): void {
     const target = event.target as HTMLSelectElement | null;

@@ -242,10 +242,12 @@ h2 .chapter-number[data-shape='3'] {
   display: block;
   padding-block: 1rem;
 }
-@media (max-width: 750px) {
+@media (max-width: 760px) {
   .ideology-chapter {
-    scroll-margin-top: 9rem;
+    scroll-margin-top: calc(var(--reading-bar-h, 9rem) + 0.5rem);
   }
+}
+@media (max-width: 750px) {
   .ideology-opening {
     grid-template-columns: minmax(0, 1fr) 105px;
     gap: 1rem;

@@ -49,7 +49,7 @@
     [class.can-next]="!atEnd()"
     [id]="trackId"
     role="region"
-    tabindex="0"
+    [attr.tabindex]="scrollable() ? 0 : null"
     aria-roledescription="carrossel"
     [attr.aria-label]="label()"
     (scroll)="update()"

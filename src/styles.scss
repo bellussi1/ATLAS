@@ -141,7 +141,6 @@
 html {
   min-width: 0;
   background: var(--paper);
-  scroll-behavior: smooth;
 }
 
 body {
@@ -281,7 +280,7 @@ html[data-input='keyboard'] *::after {
   }
   html.atlas-reveal .atlas-reveal-item.is-pending {
     opacity: 0;
-    transform: translateY(1.5rem);
+    transform: translateY(0.75rem);
   }
   html.atlas-reveal .atlas-reveal-item[data-reveal='wipe'].is-pending {
     clip-path: inset(0 100% 0 0);
@@ -302,30 +301,42 @@ html[data-input='keyboard'] *::after {
   }
 }
 
-/* Page change: header and footer stay put while the page body crosses over. */
+/* Revealed content stays readable in print, while it is found with Tab or Ctrl+F. */
+@media print {
+  html.atlas-reveal .atlas-reveal-item,
+  html.atlas-reveal .atlas-reveal-item > [data-stagger] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+html.atlas-reveal .atlas-reveal-item:focus-within,
+html.atlas-reveal .atlas-reveal-item:focus-within > [data-stagger] {
+  opacity: 1;
+  transform: none;
+  clip-path: none;
+}
+
+/* Page change: the header stays put and the page body fades between routes, with no sliding curtain. */
 .site-header {
   view-transition-name: atlas-header;
 }
 @media (prefers-reduced-motion: no-preference) {
   ::view-transition-old(root) {
-    animation: atlas-page-out var(--motion-standard) var(--ease-out) both;
+    animation: atlas-page-out var(--motion-fast) var(--ease-out) both;
   }
   ::view-transition-new(root) {
-    animation: atlas-page-in var(--motion-slow) var(--ease-out) both;
+    animation: atlas-page-in var(--motion-standard) var(--ease-out) both;
   }
 }
 @keyframes atlas-page-out {
   to {
     opacity: 0;
-    transform: translateY(-1rem);
   }
 }
 @keyframes atlas-page-in {
   from {
-    clip-path: inset(0 0 100% 0);
-  }
-  to {
-    clip-path: inset(0);
+    opacity: 0;
   }
 }
 

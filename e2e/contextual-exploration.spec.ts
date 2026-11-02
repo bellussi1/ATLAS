@@ -68,7 +68,10 @@ for (const width of [1440, 390, 320]) {
       expect(
         a11y.violations.filter((v) => ['critical', 'serious'].includes(v.impact ?? '')),
       ).toEqual([]);
-      const back = dialog.getByRole('button', { name: 'Contexto anterior', exact: false });
+      const back = dialog
+        .getByRole('navigation', { name: 'Percurso neste contexto' })
+        .getByRole('button')
+        .last();
       if (mobile) await back.tap();
       else {
         await back.focus();

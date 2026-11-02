@@ -12,7 +12,7 @@
 
 <app-breadcrumbs />
 
-<main id="conteudo" tabindex="-1">
+<main id="conteudo" tabindex="-1" [attr.aria-label]="pageTitle()">
   @if (failedNavigation()) {
     <app-notice tone="critical" accessibleRole="alert">
       <p>Não foi possível carregar a leitura. Seu contexto anterior foi preservado.</p>

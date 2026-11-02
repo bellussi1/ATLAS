@@ -71,6 +71,7 @@
                 <a
                   [routerLink]="pathFor(connection.entityId)"
                   [queryParams]="{ idioma: query().get('idioma') }"
+                  queryParamsHandling="merge"
                   >{{ connection.label }}</a
                 >
               </h3>
@@ -175,8 +176,9 @@
       }
     </div>
   } @else {
-    <h1>Registro não encontrado</h1>
-    <p>Este endereço não corresponde a um registro do acervo.</p>
-    <a routerLink="/conhecimento">Procurar no acervo</a>
+    <app-not-found-message
+      heading="Registro não encontrado"
+      message="Este endereço não corresponde a um registro do acervo."
+    />
   }
 </article>

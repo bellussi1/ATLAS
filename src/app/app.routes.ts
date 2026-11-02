@@ -12,5 +12,12 @@ export const routes: Routes = [
   },
   ...ideologyRoutes,
   ...explorationRoutes,
-  { path: '**', redirectTo: '' },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('@shared/ui/not-found-message/not-found-message.component').then(
+        (m) => m.NotFoundMessageComponent,
+      ),
+    title: 'Página não encontrada — ATLAS',
+  },
 ];

@@ -1,6 +1,7 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { entityContext } from '@core/content/queries/entity-context';
 import { type ContentRepository } from '@core/content/repositories/content-repository.service';
 import { provideContentFixture } from '@testing/content-fixture';
@@ -16,6 +17,7 @@ describe('KnowledgeContextComponent', () => {
     );
     TestBed.configureTestingModule({
       providers: [
+        provideRouter([]),
         ...provideContentFixture(),
         provideHttpClient(),
         { provide: DIALOG_DATA, useValue: record },
@@ -33,7 +35,7 @@ describe('KnowledgeContextComponent', () => {
     await fixture.whenStable();
     expect(host.querySelector('h2')?.textContent).toBe('O capital: volume I');
     expect(host.textContent).toContain('foi escrito por');
-    host.querySelector<HTMLButtonElement>('.context-back')!.click();
+    host.querySelector<HTMLButtonElement>('.context-trail button')!.click();
     fixture.detectChanges();
     await fixture.whenStable();
     expect(fixture.componentInstance.record()).toBe(record);
@@ -44,6 +46,7 @@ describe('KnowledgeContextComponent', () => {
   it('renders editorial records with missing URLs and no connections without false links', () => {
     TestBed.configureTestingModule({
       providers: [
+        provideRouter([]),
         ...provideContentFixture(),
         provideHttpClient(),
         { provide: DialogRef, useValue: { close: vi.fn() } },

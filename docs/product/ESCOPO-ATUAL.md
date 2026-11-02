@@ -2,9 +2,9 @@
 
 O pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos e páginas permanentes. As leituras `/marxismo` e `/liberalismo` e a mesa da Home continuam disponíveis.
 
-Rotas incluem `/conhecimento`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/rede`, `/comparar`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` e exemplos metodológicos em `/explorar/:tipo/:slug`. São 82 rotas prerenderizadas, incluindo 56 entidades e oito exemplos identificados como metodologia. `/fontes#source-<id>` mantém o destino das referências.
+Rotas incluem `/conhecimento`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` e exemplos metodológicos em `/explorar/:tipo/:slug`. São 82 rotas prerenderizadas, incluindo 56 entidades e oito exemplos identificados como metodologia. `/fontes#source-<id>` mantém o destino das referências.
 
-Busca e filtros usam `q`, `tipo` e `estado`; a página de detalhe permite voltar ao recorte anterior. O permalink e o canonical não dependem desses parâmetros. IDs e slugs existentes são preservados. Links desconhecidos tratados pelo Router mantêm o retorno à home; verbetes desconhecidos mostram estado de recuperação na SPA e não são inventados no prerender.
+Busca e filtros usam `q`, `tipo` e `estado`; a página de detalhe permite voltar ao recorte anterior. O permalink e o canonical não dependem desses parâmetros. IDs e slugs existentes são preservados. `/rede` e `/comparar` redirecionam para `/conhecimento`. Endereços desconhecidos mostram a página "Página não encontrada" no próprio endereço, sem redirecionar para a home; verbetes desconhecidos usam a mesma mensagem na SPA e não são inventados no prerender.
 
 Verificações desta entrega e limites: [Knowledge Explorer](../quality/KNOWLEDGE-EXPLORER.md).
 

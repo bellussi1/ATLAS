@@ -8,6 +8,7 @@ import {
   Injector,
   signal,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   type ContextConnection,
   type KnowledgeContext,
@@ -17,6 +18,7 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 
 @Component({
   selector: 'app-knowledge-context',
+  imports: [RouterLink],
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
   host: { '[attr.data-tone]': 'tone()' },

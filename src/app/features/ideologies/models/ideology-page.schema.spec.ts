@@ -18,7 +18,7 @@ import {
 
 describe('Public pages', () => {
   it('keeps readings and exposes the knowledge explorer with permanent records', () => {
-    expect(routes.filter((r) => r.loadComponent).map((r) => r.path)).toEqual([
+    expect(routes.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
       '',
       'marxismo',
       'liberalismo',
@@ -38,7 +38,7 @@ describe('Public pages', () => {
       'verbete/:slug',
       'explorar/:tipo/:slug',
     ]);
-    expect(routes.find((r) => r.path === '**')?.redirectTo).toBe('');
+    expect(routes.find((r) => r.path === '**')?.title).toBe('Página não encontrada — ATLAS');
   });
 });
 

@@ -31,7 +31,7 @@
         routerLink="/marxismo"
         [class.is-active]="section() === 'marxismo'"
         [attr.aria-current]="section() === 'marxismo' ? 'page' : null"
-        (click)="close(true)"
+        (click)="close()"
       >
         <app-geometric-mosaic [columns]="3" [rows]="1" palette="marx" [seed]="11" />
         <span class="door-verb">Ler </span>
@@ -44,7 +44,7 @@
         routerLink="/liberalismo"
         [class.is-active]="section() === 'liberalismo'"
         [attr.aria-current]="section() === 'liberalismo' ? 'page' : null"
-        (click)="close(true)"
+        (click)="close()"
       >
         <app-geometric-mosaic [columns]="3" [rows]="1" palette="liberal" [seed]="23" />
         <span class="door-verb">Percorrer </span>
@@ -57,7 +57,7 @@
         routerLink="/conhecimento"
         [class.is-active]="section() === 'acervo'"
         [attr.aria-current]="section() === 'acervo' ? 'page' : null"
-        (click)="close(true)"
+        (click)="close()"
       >
         <span class="door-glyph" aria-hidden="true"></span>
         <span class="door-verb">Buscar </span>

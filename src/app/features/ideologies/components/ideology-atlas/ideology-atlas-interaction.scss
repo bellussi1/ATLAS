@@ -132,7 +132,7 @@
 
 @media (max-width: 760px) {
   .atlas-reading-chapter {
-    scroll-margin-top: 9rem;
+    scroll-margin-top: calc(var(--reading-bar-h, 9rem) + 0.5rem);
   }
 
   .continuous .text-network ul {

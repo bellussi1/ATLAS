@@ -30,7 +30,9 @@ export class AppComponent {
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);
   private readonly router = inject(Router);
+  private currentPath: string | null = null;
   readonly failedNavigation = signal<string | null>(null);
+  readonly pageTitle = signal('ATLAS — compreender o mundo');
 
   constructor() {
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
@@ -41,7 +43,10 @@ export class AppComponent {
       if (!(event instanceof NavigationEnd)) return;
       this.failedNavigation.set(null);
       const path = event.urlAfterRedirects.split(/[?#]/)[0];
-      this.updatePageMetadata(path);
+      // Moving to another page hands focus to its content; query and fragment changes keep it.
+      if (this.currentPath !== null && path !== this.currentPath) this.focusMainContent();
+      this.currentPath = path;
+      this.updatePageMetadata();
     });
   }
 
@@ -61,22 +66,18 @@ export class AppComponent {
   }
 
   focusMainContent(): void {
-    this.document.getElementById('conteudo')?.focus();
+    this.document.getElementById('conteudo')?.focus({ preventScroll: true });
   }
 
-  private updatePageMetadata(path: string): void {
+  private updatePageMetadata(): void {
     let route = this.router.routerState.snapshot.root;
     while (route.firstChild) route = route.firstChild;
     // NavigationEnd precedes the Router's title update; use the resolved snapshot.
     const pageTitle = route.title || this.title.getTitle() || 'ATLAS — compreender o mundo';
-    const routeDescription = this.activeRouteDescription();
     const description =
-      path === '/marxismo'
-        ? routeDescription ||
-          'Conceitos, pensadores, cronologia, divergências e fontes do marxismo.'
-        : path === '/liberalismo'
-          ? 'Explore o Atlas do Liberalismo: pessoas, ideias, acontecimentos e documentos com fontes.'
-          : routeDescription || 'Explore o acervo do ATLAS, com contexto e fontes identificadas.';
+      this.activeRouteDescription() ||
+      'Explore o acervo do ATLAS, com contexto e fontes identificadas.';
+    this.pageTitle.set(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });
@@ -87,7 +88,7 @@ export class AppComponent {
       this.document.head.appendChild(canonical);
     }
     // Root-relative canonicals stay correct for static builds without inventing a production host.
-    canonical.href = path || '/';
+    canonical.href = this.currentPath || '/';
     this.title.setTitle(pageTitle);
   }
 

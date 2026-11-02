@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { DestroyRef, Directive, ElementRef, inject, PLATFORM_ID } from '@angular/core';
+import { prefersReducedMotion } from '@shared/motion/prefers-reduced-motion';
 
 let observer: IntersectionObserver | undefined;
 
@@ -14,12 +15,7 @@ export class AtlasRevealDirective {
     if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
     const element = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     const view = element.ownerDocument.defaultView;
-    if (
-      !view?.IntersectionObserver ||
-      view.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-      element.ownerDocument.documentElement.classList.contains('atlas-reduced-motion')
-    )
-      return;
+    if (!view?.IntersectionObserver || prefersReducedMotion(element.ownerDocument)) return;
     const top = element.getBoundingClientRect().top;
     if (top < view.innerHeight) return;
     element.ownerDocument.documentElement.classList.add('atlas-reveal');

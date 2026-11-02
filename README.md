@@ -38,8 +38,7 @@ O ATLAS não organiza o conhecimento em artigos isolados. Cada grande tema é um
 | `/` | Cartaz de entrada, busca universal, capas das leituras e ferramentas de investigação |
 | `/marxismo` | 10 capítulos: origens, conceitos, pensadores, escala do tempo, épocas, lugares, vertentes, críticas e fontes |
 | `/liberalismo` | Atlas exploratório com índice de entidades, rede, cronologia e imagens licenciadas |
-| `/rede` | Rede de conhecimento com geometria compilada no build, filtros e evidências por vínculo |
-| `/comparar` | Dois registros lado a lado, em modo conceitual ou histórico, com método e limites explícitos |
+| `/rede`, `/comparar` | Redirecionam para `/conhecimento` (ferramentas aposentadas; a busca universal as substitui) |
 | `/conhecimento` | Busca universal com filtros compartilháveis por URL |
 | `/verbete/:slug` | Página permanente de cada entidade, com contexto, fontes e conexões |
 

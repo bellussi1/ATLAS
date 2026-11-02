@@ -36,10 +36,10 @@ describe('ATLAS navigation', () => {
     expect(root.querySelector('header a[href="/conhecimento"]')).not.toBeNull();
     expect(root.querySelector('footer a[href="/pessoas"]')).not.toBeNull();
   });
-  it('redirects a removed page to the home', async () => {
+  it('keeps an unknown address and says it was not found', async () => {
     const h = await RouterTestingHarness.create('/sobre');
-    expect(TestBed.inject(Router).url).toBe('/');
-    expect(h.routeNativeElement?.textContent).toContain('Tudo');
+    expect(TestBed.inject(Router).url).toBe('/sobre');
+    expect(h.routeNativeElement?.querySelector('h1')?.textContent).toBe('Página não encontrada');
   });
   it('opens universal search with the query from home', async () => {
     const h = await RouterTestingHarness.create('/');

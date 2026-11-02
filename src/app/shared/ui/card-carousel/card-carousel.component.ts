@@ -10,6 +10,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { prefersReducedMotion } from '@shared/motion/prefers-reduced-motion';
 
 let nextCarouselId = 0;
 /** These keep their own behaviour; a drag starts only on the card surface. */
@@ -232,9 +233,7 @@ export class CardCarouselComponent {
   }
 
   private glide(track: HTMLElement, left: number, smooth: boolean): void {
-    const reduced = this.document.defaultView?.matchMedia?.(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
-    track.scrollTo({ left, behavior: smooth && !reduced ? 'smooth' : 'auto' });
+    const animate = smooth && !prefersReducedMotion(this.document);
+    track.scrollTo({ left, behavior: animate ? 'smooth' : 'auto' });
   }
 }

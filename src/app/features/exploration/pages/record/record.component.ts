@@ -12,6 +12,7 @@ import { EntityProfileComponent } from '@exploration/components/entity-profile/e
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
 import { ContentLanguageComponent } from '@shared/ui/content-language/content-language.component';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
+import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found-message.component';
 
 @Component({
   selector: 'app-record',
@@ -21,6 +22,7 @@ import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-
     AtlasClaimReferencesComponent,
     ContentLanguageComponent,
     EntityProfileComponent,
+    NotFoundMessageComponent,
   ],
   templateUrl: './record.component.html',
   styleUrl: './record.component.scss',

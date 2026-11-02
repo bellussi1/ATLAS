@@ -5,13 +5,8 @@
     </p>
     <h2 id="knowledge-context-title" tabindex="-1">{{ record().title }}</h2>
   </div>
-  <button
-    type="button"
-    class="context-close"
-    (click)="close()"
-    aria-label="Voltar à leitura (fechar contexto)"
-  >
-    Voltar à leitura <span aria-hidden="true">×</span>
+  <button type="button" class="context-close" aria-label="Fechar contexto" (click)="close()">
+    Fechar <span aria-hidden="true">×</span>
   </button>
 </header>
 @if (trail().length) {
@@ -24,9 +19,6 @@
   </nav>
 }
 <div class="context-body">
-  @if (history().length) {
-    <button type="button" class="context-back" (click)="back()">← Contexto anterior</button>
-  }
   @if (record().media; as media) {
     <figure>
       <img
@@ -44,7 +36,7 @@
   <p class="context-summary">{{ record().summary }}</p>
   @if (permanentPath(); as path) {
     <p class="context-permanent">
-      <a [href]="path">Abrir página permanente de {{ record().title }}</a>
+      <a [routerLink]="path" (click)="close()">Abrir página permanente de {{ record().title }}</a>
       <small>Sai desta leitura e abre o verbete completo.</small>
     </p>
   }

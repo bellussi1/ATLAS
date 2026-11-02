@@ -171,6 +171,6 @@ test('missing and unavailable entries provide recovery without external return l
     dispatchEvent(new PopStateEvent('popstate'));
   });
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Registro não encontrado');
-  await page.getByRole('link', { name: 'Procurar no acervo', exact: true }).click();
+  await page.getByRole('link', { name: 'Acervo', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Conhecimento');
 });

@@ -10,15 +10,18 @@ const declaredDestinations = [
   ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
 ];
 
-test('unknown and unpublished institutional routes still return home', async ({ page }) => {
+test('unknown and unpublished institutional routes say so and keep the address', async ({
+  page,
+}) => {
   for (const path of ['/sobre', '/estudar', '/rota-inexistente']) {
     await page.goto('/');
     await page.evaluate((destination) => {
       history.pushState(null, '', destination);
       dispatchEvent(new PopStateEvent('popstate'));
     }, path);
-    await expect(page).toHaveURL(/127\.0\.0\.1:\d+\/$/);
-    await expect(page.getByLabel('Procurar no acervo', { exact: true })).toBeVisible();
+    await expect(page).toHaveURL(new RegExp(`${path}$`));
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Página não encontrada');
+    await expect(page.getByRole('link', { name: 'Início', exact: true })).toBeVisible();
   }
 });
 
