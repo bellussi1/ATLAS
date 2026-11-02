@@ -1,73 +1,117 @@
-# ATLAS
+<p align="center">
+  <img src="public/brand/atlas-logo.svg" alt="ATLAS" width="360" />
+</p>
 
-Plataforma educacional pública e gratuita para compreender relações entre história, política, economia e sociedade.
+<h3 align="center">Uma enciclopédia visual para explorar ideias e compreender suas conexões.</h3>
 
-## Requisitos
+<p align="center">
+  História, política, economia e sociedade como uma rede navegável de pessoas, obras, conceitos e acontecimentos, sempre com a fonte por perto.
+</p>
 
-- Node.js 24.0 ou superior (ou uma versão suportada pelo Angular 21)
-- npm 11 ou superior
+<p align="center">
+  <img alt="Angular 21" src="https://img.shields.io/badge/Angular-21-b81d16?style=flat-square&logo=angular&logoColor=white" />
+  <img alt="TypeScript strict" src="https://img.shields.io/badge/TypeScript-strict-141211?style=flat-square&logo=typescript&logoColor=white" />
+  <img alt="Static first" src="https://img.shields.io/badge/static--first-82%20rotas%20prerenderizadas-eec35a?style=flat-square" />
+  <img alt="Zod" src="https://img.shields.io/badge/conte%C3%BAdo-validado%20com%20Zod-363a5f?style=flat-square" />
+  <img alt="Wikimedia" src="https://img.shields.io/badge/dados-Wikipedia%20%C2%B7%20Wikidata%20%C2%B7%20Commons-7fbdb5?style=flat-square" />
+  <img alt="Playwright + axe" src="https://img.shields.io/badge/testes-Vitest%20%C2%B7%20Playwright%20%C2%B7%20axe-eab0c2?style=flat-square" />
+</p>
 
-## Versão do Angular
+---
 
-O ambiente do bootstrap tinha Node.js `24.13.0`. O Angular CLI `22.2.5` disponível no registro exige Node.js `24.15.0` ou superior na linha 24; por isso foi usada a versão estável compatível `21.2.29` do CLI, com Angular `21.2.25`.
+## Ler é explorar
 
-## Desenvolvimento
+O ATLAS não organiza o conhecimento em artigos isolados. Cada grande tema é uma publicação histórica contínua, em que palavras, retratos, linhas do tempo e grafos abrem novos caminhos sem tirar você do contexto.
+
+| | |
+| --- | --- |
+| **Enciclopédia editorial** | Leituras longas por tradição, com capítulos, índice, progresso e retorno ao ponto anterior. |
+| **Rede de conhecimento** | Pessoas, obras, conceitos, eventos e instituições com IDs estáveis e relações tipadas, reaproveitados em todas as telas. |
+| **Exploração contextual** | Termos, fichas e nós abrem contexto com fontes por hover, foco, toque ou clique. |
+| **Narrativa visual** | Escala do tempo interativa, rede compilada, comparadores e motion que comunica seleção e continuidade. |
+| **Conhecimento verificável** | Cada afirmação distingue fato documentado, interpretação, controvérsia e lacuna, e indica onde conferir. |
+
+## O que já dá para explorar
+
+| Rota | Experiência |
+| --- | --- |
+| `/` | Cartaz de entrada, busca universal, capas das leituras e ferramentas de investigação |
+| `/marxismo` | 10 capítulos: origens, conceitos, pensadores, escala do tempo, épocas, lugares, vertentes, críticas e fontes |
+| `/liberalismo` | Atlas exploratório com índice de entidades, rede, cronologia e imagens licenciadas |
+| `/rede` | Rede de conhecimento com geometria compilada no build, filtros e evidências por vínculo |
+| `/comparar` | Dois registros lado a lado, em modo conceitual ou histórico, com método e limites explícitos |
+| `/conhecimento` | Busca universal com filtros compartilháveis por URL |
+| `/verbete/:slug` | Página permanente de cada entidade, com contexto, fontes e conexões |
+
+## Identidade
+
+Modernismo suíço, jornalismo visual, cartografia histórica e museografia digital. Papel quente, tinta quase preta e vermelho de ação, com ocre, verde, rosa e índigo usados com propósito. Mosaicos geométricos originais (SVG determinístico) assinam cada rota sem fingir dados. Tipografia local: IBM Plex Sans, IBM Plex Mono e Source Serif 4.
+
+As interações são projetadas para mouse, teclado e toque, respeitam `prefers-reduced-motion` e evitam deslocar o layout; os testes E2E medem isso nas rotas principais.
+
+## Como funciona
+
+```mermaid
+flowchart LR
+  W[Wikipedia · Wikidata · Commons] -->|ingestão reproduzível| S[Snapshots versionados]
+  E[Curadoria editorial<br/>JSON + fontes] --> V
+  S --> V{Zod: IDs, slugs,<br/>referências, licenças}
+  V -->|content:build| G[Manifesto, busca,<br/>adjacência e layouts]
+  G --> A[Angular 21<br/>Signals · standalone]
+  A -->|prerender| H[Site estático]
+```
+
+Sem backend nem API em tempo de leitura: o conteúdo é compilado antes do build, validado e carregado de arquivos locais com hash e TransferState. A mesma entidade alimenta leituras, rede, comparador e verbete sem duplicar informação histórica.
+
+## Começar
+
+Requer Node.js 24 e npm 11.
 
 ```bash
 npm install
 npm start
 ```
 
-O servidor de desenvolvimento abre em `http://localhost:4200`. A aplicação usa Angular standalone, TypeScript strict, Angular Router e SCSS. Tailwind CSS está configurado junto aos estilos dos componentes.
-
-O pacote declara ES modules (`"type": "module"`) para os scripts e contratos TypeScript executados pelo Node. A configuração ESLint também usa ESM; configurações CommonJS explícitas mantêm a extensão `.cjs`.
-
-## Páginas disponíveis
-
-- `/` — home, entrada para busca universal, rede, comparadores e mesa de pesquisa.
-- `/marxismo` — leitura contínua com conceitos, pensadores, cronologia, debates e fontes.
-- `/liberalismo` — atlas com rede, cronologia e imagens licenciadas.
-
-- `/conhecimento` — busca universal com filtros e consulta compartilhável por URL.
-- `/entidades`, `/ideologias`, `/pessoas`, `/obras` — catálogos do grafo.
-- `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` — recortes editoriais adicionais do mesmo grafo.
-- `/verbete/:slug` — página permanente de cada entidade, com contexto, fontes e conexões.
-- `/fontes` — referências cadastradas, com âncoras permanentes e usos no acervo.
-- `/explorar/:tipo/:slug` — exemplos de metodologia, identificados como tais.
-- `/rede` — rede com geometria de build, filtros e timeline compartilhada.
-- `/comparar` — comparação histórica ou conceitual de dois registros, com fontes e limites.
-
-O Knowledge Explorer ampliou o escopo temporário anterior de três páginas. Há 56 entidades e oito exemplos metodológicos, com 82 rotas prerenderizadas. A etapa editorial acrescentou oito registros de contexto constitucional de Brasil e Portugal, com fontes institucionais e revisão historiográfica pendente. Caminhos desconhecidos no Angular voltam à home; o preview estático retorna 404 para arquivos inexistentes. Veja [catálogos](docs/quality/KNOWLEDGE-EXPLORER.md) e [ampliação editorial](docs/quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
-
-A rede e os comparadores usam o mesmo recorte por coleção, tipo, vínculo e período, compartilhável por URL. Posições/curvas e a escala temporal são compiladas antes da renderização; filtros não recalculam a geometria. A comparação justapõe o conteúdo registrado, sem gerar equivalência ou influência automaticamente. Veja [método e verificações](docs/quality/REDE-E-COMPARADORES.md).
-
-O seletor `idioma=pt-BR|en` nos catálogos e registros usa quatro traduções de narrativas com revisão assistida por IA explicitamente identificada; não houve revisão humana. Textos sem tradução preservam o original, com aviso de fallback. A interface, as afirmações e os perfis permanecem em português ou na redação de origem. O build verifica revisão/digest e exclui traduções pendentes. [Registro da revisão](docs/editorial/TRANSLATION-REVIEW-2026-11-01.md).
-
-## Comandos
-
 | Comando | Uso |
 | --- | --- |
-| `npm start` | Servidor local com recarga automática |
-| `npm run build` | Compilação de produção e prerender de rotas públicas |
-| `npm test` | Testes unitários Vitest em execução única |
-| `npm run test:ingestion` | Testes Node de identidade, integridade, mídia e publicação da ingestão |
-| `npm run ingest:verify` | Replay duplo de todas as capturas versionadas, sem rede |
-| `npm run lint` | ESLint Angular, limites arquiteturais, Biome e formatação |
-| `npm run typecheck` | Checagem TypeScript da aplicação e dos testes |
-| `npm run content:build` | Geração offline de manifesto, shards, busca, adjacência e layouts |
-| `npm run editorial:apply -- <edição.json>` | Validação e aplicação offline de uma coleção editorial nova, preservando snapshots anteriores |
-| `npm run test:content` | Equivalência, determinismo e integridade dos artefatos |
+| `npm start` | Servidor local com recarga |
+| `npm run build` | Build de produção, prerender e cabeçalhos de segurança |
+| `npm test` | Testes unitários (Vitest) |
+| `npm run test:e2e` | Navegador, acessibilidade (axe) e estabilidade de layout (Playwright) |
+| `npm run lint` | ESLint, limites arquiteturais, Biome e Prettier |
+| `npm run typecheck` | TypeScript da aplicação e dos testes |
+| `npm run content:build` | Compila `src/content` nos artefatos que o app carrega |
+| `npm run preview` | Serve a saída estática em `127.0.0.1:4305` |
 
-O build produz saída estática para hospedagem, incluindo as rotas de conteúdo conhecidas no momento. Não há servidor Express ou API neste bootstrap. A busca da Home abre `/conhecimento`: consulta local ao índice global de entidades, fontes, exemplos metodológicos e leituras, gerado no build, sem API remota de pesquisa.
+Os comandos `start`, `build`, `test`, `lint` e `typecheck` executam `content:build` antes. Depois de editar `src/content` com o servidor aberto, reinicie `npm start`.
 
-Para conferir a saída estática localmente, execute `npm run build` e `npm run preview`; o servidor escuta somente em `127.0.0.1:4305`. Se a porta estiver ocupada, defina `ATLAS_PREVIEW_PORT` para preview e E2E; o padrão continua 4305. A configuração de CI, os testes de navegador e os bloqueios de indexação do piloto estão documentados em [Piloto e verificações](docs/quality/PILOTO-E-VERIFICACAO.md).
+## Estrutura
 
-O grafo editorial e suas fontes ficam em coleções com hash, referenciadas por `src/content/knowledge/manifest.json`. O build valida o conjunto com Zod e gera assets compactos, busca, relações reversas e layouts em `generated/content`; a aplicação lê os arquivos locais com cache e TransferState. O grafo não é importado pelo bundle cliente. Os hooks dos comandos npm geram os derivados antes de iniciar, testar, verificar ou compilar. Veja [dados e carregamento](docs/architecture/DADOS-E-CARREGAMENTO.md) e [as decisões da arquitetura](docs/architecture/ARCHITECTURE.md).
+```
+src/
+  content/            grafo, dossiês, traduções (fonte da verdade editorial)
+  app/core/           contratos Zod, repositório de conteúdo, consultas puras
+  app/features/       ideologies · exploration · study
+  app/shared/         UI e diretivas reutilizáveis (mosaico, reveal, contexto)
+  app/layouts/        shell e rodapé
+  app/pages/home/     página inicial
+scripts/              build de conteúdo, ingestão Wikimedia, verificações
+docs/                 arquitetura, design, editorial e qualidade
+```
 
-Consulte o [índice da documentação](docs/README.md) para escopo, padrões de design, qualidade e referências.
+Leia [Arquitetura](docs/architecture/ARCHITECTURE.md), [Padrão de páginas](docs/design/PAGE_STANDARD.md) e o [índice da documentação](docs/README.md) antes de contribuir.
 
-A ingestão exige `--capture <diretório novo>` ou `--offline <captura>`, com `--output <arquivo>` para uma saída isolada. Configuração, grafo de entrada e respostas brutas ficam versionados fora do site; Zod valida o resultado antes de substituir snapshots. Veja [Ingestão reproduzível](docs/architecture/INGESTAO-REPRODUZIVEL.md).
+## Princípios editoriais
 
-## Organização do código
+- Fato, interpretação, hipótese e controvérsia são marcados como tais.
+- Nenhuma fonte, data, citação ou revisão humana é inventada; lacunas aparecem como lacunas.
+- Linhas de crítica não são linhas de descendência; proximidade em uma visualização não sugere causalidade.
+- Imagens só são publicadas com autoria e licença registradas junto a elas.
 
-A aplicação usa features para ideologias, exploração e estudo; core para conteúdo/infraestrutura; shared para UI/diretivas; layouts para o shell e pages para Home. Consulte [Arquitetura](docs/architecture/ARCHITECTURE.md) para limites de imports, convenções e como adicionar uma tradição ou interação.
+## Contribuir
+
+Encontrou um erro, uma fonte melhor ou uma conexão que falta? [Abra uma issue](https://github.com/bellussi1/ATLAS/issues) com a referência. Pull requests devem passar `lint`, `typecheck`, `test`, `test:e2e` e `build`.
+
+## Créditos
+
+Imagens do [Wikimedia Commons](https://commons.wikimedia.org), com autoria e licença registradas em cada uma. Dados de descoberta da Wikipedia e do Wikidata, lidos de cópias locais versionadas. Tipografia IBM Plex e Source Serif 4 sob a SIL Open Font License.
