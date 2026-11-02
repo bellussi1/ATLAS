@@ -9,22 +9,9 @@ import {
 } from '@core/routing/route-resolvers';
 
 export const explorationRoutes: Routes = [
-  ...[
-    { path: 'rede', title: 'Rede de conhecimento', analysis: 'network' },
-    { path: 'comparar', title: 'Comparar registros', analysis: 'comparison' },
-  ].map((page) => ({
-    path: page.path,
-    title: page.title + ' — ATLAS',
-    data: {
-      analysis: page.analysis,
-      breadcrumb: page.title,
-      metaDescription:
-        'Investigue vínculos e compare registros com fontes, método e limites explícitos.',
-    },
-    resolve: { knowledge: knowledgeContentResolver },
-    loadComponent: () =>
-      import('@exploration/pages/analysis/analysis.component').then((m) => m.AnalysisComponent),
-  })),
+  // Retired tools: the archive search at /conhecimento replaces them.
+  { path: 'rede', redirectTo: 'conhecimento', pathMatch: 'full' },
+  { path: 'comparar', redirectTo: 'conhecimento', pathMatch: 'full' },
   ...explorerCatalogues.map((catalogue) => ({
     path: catalogue.path,
     title: catalogue.title + ' — ATLAS',

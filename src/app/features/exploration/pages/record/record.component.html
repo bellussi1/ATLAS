@@ -5,10 +5,7 @@
     }
     <a routerLink="/entidades">Catálogo de entidades</a
     ><a routerLink="/conhecimento">Busca universal</a>
-    @if (entity(); as entity) {
-      <a routerLink="/rede" [queryParams]="{ no: entity.id }">Ver na rede</a>
-      <a routerLink="/comparar" [queryParams]="{ esquerda: entity.id }">Comparar este registro</a>
-    }
+    @if (entity(); as entity) {}
   </nav>
   @if (entity(); as entity) {
     <app-content-language [requested]="query().get('idioma')" (changed)="setLanguage($event)" />

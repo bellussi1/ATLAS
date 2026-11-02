@@ -15,15 +15,12 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
 
-import { ExplorationToolsComponent } from './exploration-tools/exploration-tools.component';
-
 @Component({
   selector: 'app-home-page',
   imports: [
     AtlasHeadingDirective,
     AtlasTextFieldComponent,
     AtlasGeometricMosaicComponent,
-    ExplorationToolsComponent,
     AtlasRevealDirective,
     RouterLink,
   ],

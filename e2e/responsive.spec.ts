@@ -9,8 +9,6 @@ const routes = [
   '/',
   '/marxismo',
   '/liberalismo',
-  '/rede',
-  '/comparar',
   '/conhecimento',
   '/pessoas',
   '/fontes',

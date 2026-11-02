@@ -104,26 +104,6 @@ form {
   font-weight: 650;
   cursor: pointer;
 }
-.exploration-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
-.exploration-actions a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  min-height: 3.5rem;
-  padding: 0.75rem 1rem;
-  background: var(--color-ochre-paper);
-  color: var(--color-ink);
-  font-weight: 650;
-  text-decoration: none;
-}
-.exploration-actions a + a {
-  background: var(--color-teal-paper);
-}
 .console :focus-visible {
   outline-color: var(--color-ochre-paper);
 }
@@ -312,12 +292,6 @@ form {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .recompose:hover,
-  .search-button:hover,
-  .exploration-actions a:hover {
-    background: var(--color-canvas);
-    color: var(--color-accent);
-  }
   .cover-choice[aria-pressed='false']:hover strong {
     color: var(--color-surface-subtle);
   }
@@ -366,11 +340,6 @@ form {
   }
 }
 @media (max-width: 30rem) {
-  form,
-  .exploration-actions,
-  .method ol {
-    grid-template-columns: 1fr;
-  }
   .search-button {
     min-height: var(--control-min-size);
   }

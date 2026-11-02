@@ -42,10 +42,7 @@ test('reading navigation includes the knowledge explorer', async ({ page }) => {
         .map((u) => u.pathname.replace(/\/$/, '') || '/'),
     );
     expect(
-      hrefs.filter(
-        (p) =>
-          !['/', '/marxismo', '/liberalismo', '/conhecimento', '/rede', '/comparar'].includes(p),
-      ),
+      hrefs.filter((p) => !['/', '/marxismo', '/liberalismo', '/conhecimento'].includes(p)),
     ).toEqual([]);
   }
 });
@@ -286,5 +283,12 @@ test('reading prose fills the full width of its chapter on desktop', async ({ pa
     );
     expect(widths.length).toBeGreaterThan(10);
     for (const { id, ratio } of widths) expect(ratio, id).toBeGreaterThan(0.95);
+  }
+});
+
+test('retired /rede and /comparar redirect to the archive search', async ({ page }) => {
+  for (const path of ['/rede', '/comparar?esquerda=person-karl-marx']) {
+    await page.goto(path);
+    await expect(page).toHaveURL(/\/conhecimento/);
   }
 });

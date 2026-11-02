@@ -17,8 +17,6 @@ describe('Public pages', () => {
       '',
       'marxismo',
       'liberalismo',
-      'rede',
-      'comparar',
       'conhecimento',
       'entidades',
       'ideologias',

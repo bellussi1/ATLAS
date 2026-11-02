@@ -15,9 +15,6 @@
     }
   </nav>
   <app-content-language [requested]="params().get('idioma')" (changed)="setLanguage($event)" />
-  <p class="readings">
-    <a routerLink="/rede">Explorar a rede</a><a routerLink="/comparar">Comparar registros</a>
-  </p>
   @if (catalogue.path === 'ideologias') {
     <aside class="readings" aria-label="Leituras de ideologias">
       <span>Leituras contínuas</span><a routerLink="/marxismo">Marxismo</a

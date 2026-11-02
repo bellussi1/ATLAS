@@ -38,14 +38,6 @@
     />
     <button class="search-button atlas-press" type="submit">Pesquisar</button>
   </form>
-  <nav class="exploration-actions" aria-label="Ferramentas de exploração">
-    <a class="atlas-press" routerLink="/rede"
-      ><span>Explorar a rede</span> <span class="atlas-arrow" aria-hidden="true">↗</span></a
-    >
-    <a class="atlas-press" routerLink="/comparar"
-      ><span>Comparar registros</span> <span class="atlas-arrow" aria-hidden="true">↗</span></a
-    >
-  </nav>
 </section>
 
 <section class="readings" aria-labelledby="readings-title" data-tone-section>
@@ -112,8 +104,6 @@
   </div>
   <p class="sr-only" role="status">Na mesa: {{ selected().title }}.</p>
 </section>
-
-<app-exploration-tools data-tone-section />
 
 <section class="method" aria-labelledby="method-title" data-tone-section>
   <h2 id="method-title">Como ler o ATLAS</h2>
