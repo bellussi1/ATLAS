@@ -58,7 +58,7 @@ describe('Shared ideology reading', () => {
     expect(document.activeElement?.id).toBe('second');
     expect(root.querySelector('a[aria-current="location"]')?.getAttribute('href')).toBe('#second');
     const previous = Array.from(root.querySelectorAll('button')).find((b) =>
-      b.textContent?.includes('Ponto anterior'),
+      b.textContent?.includes('Voltar de onde veio'),
     )!;
     previous.click();
     fixture.detectChanges();

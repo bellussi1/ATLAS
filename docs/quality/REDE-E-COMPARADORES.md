@@ -1,5 +1,7 @@
 # Rede e comparadores
 
+> Estado atual (02/11/2026): `/rede` e `/comparar` redirecionam para `/conhecimento` no escopo temporário de 01/11/2026, e o diretório `features/exploration/pages/analysis` não existe nesta árvore. O texto abaixo é o registro histórico da entrega, não uma descrição de rotas ativas.
+
 Entrega de 01/11/2026, baseada no commit `43d911e`, em Windows, Node 24 e npm 11. Implementa a fase 4 da exploração com o acervo existente, preservando as 48 entidades, 66 relações, fontes, IDs e estados editoriais. Não altera snapshots históricos nem faz novas coletas.
 
 ## Código e responsabilidades

@@ -19,7 +19,7 @@ describe('IdeologyReadingIndexComponent', () => {
     expect(root.querySelector<HTMLProgressElement>('progress')?.value).toBe(42);
     expect(root.querySelector('[aria-current="location"]')?.textContent).toContain('Correntes');
     expect(root.querySelector<HTMLSelectElement>('select')?.value).toBe('vertentes');
-    expect(root.textContent).toContain('~4 min');
+    expect(root.textContent).toContain('4 min');
     expect(root.textContent).not.toContain('minundefined');
   });
 

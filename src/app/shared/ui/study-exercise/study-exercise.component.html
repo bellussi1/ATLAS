@@ -13,6 +13,6 @@
 @if (feedback()) {
   <p class="feedback" role="status">
     {{ feedback() }}
-    <a routerLink="/marxismo" fragment="fontes" queryParamsHandling="preserve">Conferir fonte</a>
+    <a [routerLink]="sourceLink()">Conferir fonte</a>
   </p>
 }

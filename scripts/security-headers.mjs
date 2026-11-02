@@ -2,6 +2,9 @@ import { createHash } from 'node:crypto';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 
+// CSP exceptions kept on purpose: style-src keeps 'unsafe-inline' because the build inlines the
+// critical CSS, and script-src lists the sha256 hashes of the inline scripts the prerender emits
+// (plus the onload of the async stylesheet). Removing either needs a build change, not a header change.
 const root = resolve('dist/atlas/browser');
 async function collect(directory) {
   const entries = await readdir(directory, { withFileTypes: true });

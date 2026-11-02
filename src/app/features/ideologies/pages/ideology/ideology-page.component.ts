@@ -44,6 +44,18 @@ export class IdeologyPageComponent {
   private readonly injector = inject(Injector);
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
   readonly page = computed(() => this.state().dossier?.page);
+  /** Text for the always-present status region: screen readers announce changes to a live region that already exists. */
+  readonly stateAnnouncement = computed(() => {
+    if (this.page()) return '';
+    switch (this.state().status) {
+      case 'loading':
+        return 'Carregando a leitura.';
+      case 'error':
+        return 'Não foi possível carregar esta leitura.';
+      default:
+        return 'Esta leitura ainda não está disponível.';
+    }
+  });
   readonly sections = computed(() =>
     (this.page()?.chapters ?? []).map((c) => ({
       anchor: c.anchor,

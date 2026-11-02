@@ -1,7 +1,7 @@
 <aside class="reading-index" aria-label="Orientação da leitura" [attr.data-tone]="tone()">
   <div class="index-topline">
     <p class="index-heading">Nesta leitura</p>
-    <label class="progress-label" for="reading-progress">Percurso {{ progress() }}%</label>
+    <label class="progress-label" for="reading-progress">Você leu {{ progress() }}%</label>
   </div>
   <progress id="reading-progress" max="100" [value]="progress()"></progress>
 
@@ -21,7 +21,7 @@
         <span class="chapter-title">
           {{ section.title }}
           @if (section.minutes !== undefined) {
-            <small>~{{ section.minutes }} min</small>
+            <small>{{ section.minutes }} min</small>
           }
         </span>
       </a>
@@ -46,7 +46,7 @@
   <div class="index-controls">
     @if (hasPrevious()) {
       <button type="button" class="return-control" (click)="previousRequested.emit()">
-        ← Ponto anterior
+        Voltar de onde veio
       </button>
     }
     <button

@@ -119,7 +119,7 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
     await chapterLinks.nth(1).click();
     await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
     await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
-    await page.getByRole('button', { name: '← Ponto anterior' }).click();
+    await page.getByRole('button', { name: 'Voltar de onde veio' }).click();
     await expect(page).toHaveURL(new RegExp(`#${firstAnchor}$`));
 
     const motionControl = page.locator('app-ideology-reading-index .motion-control');
@@ -144,7 +144,7 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
     await chapterPicker.selectOption(secondAnchor);
     await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
     await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
-    await page.getByRole('button', { name: '← Ponto anterior' }).click();
+    await page.getByRole('button', { name: 'Voltar de onde veio' }).click();
     await expect(page).toHaveURL(new RegExp(`#${firstAnchor}$`));
   }
 });

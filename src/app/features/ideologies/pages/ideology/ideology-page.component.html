@@ -1,3 +1,4 @@
+<p class="sr-only" role="status">{{ stateAnnouncement() }}</p>
 @if (page(); as page) {
   <article
     class="ideology-page"
@@ -137,7 +138,7 @@
     </app-ideology-reading>
   </article>
 } @else {
-  <section class="page-state" aria-live="polite">
+  <section class="page-state">
     @switch (state().status) {
       @case ('loading') {
         <h1>Carregando a leitura…</h1>

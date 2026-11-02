@@ -1,20 +1,9 @@
 import { inject, Injector } from '@angular/core';
 import { type ResolveFn } from '@angular/router';
-import { type EditorialType, getEditorialType } from '@core/content/editorial/content-types';
+import { getEditorialType } from '@core/content/editorial/content-types';
 import { findEditorialEntry } from '@core/content/editorial/editorial-entries';
 import { localizedEntity } from '@core/content/queries/localized-content';
 import { firstValueFrom } from 'rxjs';
-
-export const editorialTypeResolver: ResolveFn<EditorialType | undefined> = (route) =>
-  getEditorialType(route.paramMap.get('tipo'))?.slug;
-
-export const contentTypeTitleResolver: ResolveFn<string> = (route) => {
-  const category = getEditorialType(route.paramMap.get('tipo'));
-  return category ? `${category.plural} — ATLAS` : 'Categoria não encontrada — ATLAS';
-};
-
-export const contentTypeBreadcrumbResolver: ResolveFn<string> = (route) =>
-  getEditorialType(route.paramMap.get('tipo'))?.plural ?? 'Categoria não encontrada';
 
 export const editorialEntryTitleResolver: ResolveFn<string> = (route) => {
   const category = getEditorialType(route.paramMap.get('tipo'));
@@ -23,9 +12,6 @@ export const editorialEntryTitleResolver: ResolveFn<string> = (route) => {
       'Conteúdo não encontrado') + ' — ATLAS'
   );
 };
-
-export const trailTitleResolver: ResolveFn<string> = (route) =>
-  findEditorialEntry('trilha', route.paramMap.get('slug'))?.title ?? 'Conteúdo não encontrado';
 
 async function knowledgeEntity(slug: string | null, locale: string | null) {
   const injector = inject(Injector);

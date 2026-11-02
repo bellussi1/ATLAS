@@ -7,7 +7,7 @@ test('explores entities, graph, timeline and returns to prior context', async ({
     page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 1 }),
   ).toBeVisible();
   await expect(page.getByRole('navigation', { name: 'Capítulos' })).toBeVisible();
-  await expect(page.getByLabel(/Percurso/)).toBeVisible();
+  await expect(page.getByLabel(/Você leu/)).toBeVisible();
   await page.screenshot({
     path: 'output/playwright/atlas-liberalismo-continuous-desktop.png',
     fullPage: true,
