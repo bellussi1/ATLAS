@@ -260,3 +260,14 @@ test('reading roadmap shows a first step and expands works in place', async ({ p
     await expect(roadmap.locator('.filter-count')).not.toContainText(`${total} de ${total}`);
   }
 });
+
+test('home keeps the poster colour and tints each later section as it scrolls', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const home = page.locator('app-home-page');
+  await expect(home).toHaveAttribute('data-tone', '0');
+  await page.locator('.readings').scrollIntoViewIfNeeded();
+  await expect(home).toHaveAttribute('data-tone', '2');
+  await expect(home).not.toHaveAttribute('data-tone', '0');
+});
