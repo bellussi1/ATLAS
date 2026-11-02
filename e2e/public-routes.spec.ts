@@ -43,3 +43,12 @@ for (const width of [390, 1440])
           .map((item) => `${item.id}: ${item.nodes.length} node(s)`),
       ).toEqual([]);
     });
+
+test('footer has one navigation and no destination repeated inside it', async ({ page }) => {
+  await page.goto('/marxismo');
+  const footer = page.locator('footer.site-footer');
+  await expect(footer.getByRole('navigation')).toHaveCount(1);
+  const links = await footer.getByRole('navigation').getByRole('link').allTextContents();
+  expect(new Set(links).size).toBe(links.length);
+  await expect(footer.locator('[role=status]')).toHaveCount(0);
+});
