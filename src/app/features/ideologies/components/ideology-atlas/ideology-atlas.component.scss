@@ -46,7 +46,6 @@
   font-style: normal;
 }
 .dek {
-  max-width: 61ch;
   margin: 1.6rem 0 0;
   font: clamp(1.1rem, 1.8vw, 1.45rem)/1.5 var(--font-serif);
 }
@@ -375,7 +374,6 @@
   cursor: pointer;
 }
 .graph-note {
-  max-width: 62ch;
   color: var(--color-ink-muted);
   font: 0.8rem/1.45 var(--font-serif);
 }

@@ -271,3 +271,20 @@ test('home keeps the poster colour and tints each later section as it scrolls', 
   await expect(home).toHaveAttribute('data-tone', '2');
   await expect(home).not.toHaveAttribute('data-tone', '0');
 });
+
+test('reading prose fills the full width of its chapter on desktop', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  for (const path of ['/marxismo/', '/liberalismo/']) {
+    await page.goto(path);
+    const widths = await page.evaluate(() =>
+      [...document.querySelectorAll('.ideology-chapter')].flatMap((chapter) => {
+        const box = chapter.getBoundingClientRect().width;
+        return [...chapter.querySelectorAll('.chapter-question, .chapter-narrative > p')].map(
+          (el) => ({ id: chapter.id, ratio: el.getBoundingClientRect().width / box }),
+        );
+      }),
+    );
+    expect(widths.length).toBeGreaterThan(10);
+    for (const { id, ratio } of widths) expect(ratio, id).toBeGreaterThan(0.95);
+  }
+});
