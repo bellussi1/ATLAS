@@ -72,6 +72,23 @@ export const pageBlockSchema = z.discriminatedUnion('type', [
     notes: z.record(z.string(), z.string().min(1)).default({}),
   }),
   z.object({ type: z.literal('atlas'), rootEntityId: id }),
+  z.object({
+    type: z.literal('reading-path'),
+    works: z
+      .array(
+        z.object({
+          title: z.string().min(1),
+          author: z.string().min(1),
+          year: z.string().regex(/^\d{4}(?:[–-]\d{4})?$/),
+          edition: z.string().min(1),
+          level: z.enum(['introdutório', 'intermediário', 'avançado']),
+          theme: z.string().min(1),
+          why: z.string().min(1),
+          entityId: id.nullable().default(null),
+        }),
+      )
+      .min(3),
+  }),
   z.object({ type: z.literal('timeline'), entityIds: z.array(id) }),
   z.object({
     type: z.literal('chronology'),
@@ -207,6 +224,11 @@ export function validateIdeologyDossier(
       if ('edgeIds' in block) requireIds(block.edgeIds, edges);
       if ('sourceIds' in block) requireIds(block.sourceIds, sources);
       if (block.type === 'atlas') requireIds([block.rootEntityId], entities);
+      if (block.type === 'reading-path')
+        requireIds(
+          block.works.flatMap((w) => (w.entityId ? [w.entityId] : [])),
+          entities,
+        );
       if (
         block.type === 'entities' &&
         Object.keys(block.notes).some((k) => !block.entityIds.includes(k))

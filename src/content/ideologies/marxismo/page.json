@@ -830,7 +830,159 @@
       ],
       "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria.",
       "question": "O que os críticos de dentro e de fora apontam como falha?",
-      "bridge": "Para conferir cada argumento, volte às fontes."
+      "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria."
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leituras",
+      "kicker": "Livros por nível e tema",
+      "layout": "documents",
+      "minutes": 3,
+      "question": "Por onde começar a ler Marx e seus herdeiros?",
+      "bridge": "Para conferir cada argumento, volte às fontes desta leitura.",
+      "gap": null,
+      "sourceIds": [],
+      "narrative": [
+        "Um caminho em três degraus, do texto curto à obra longa. Filtre por tema para seguir um interesse; livros ligados a registros do acervo abrem a ficha sem sair da página."
+      ],
+      "blocks": [
+        {
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "Manifesto do Partido Comunista",
+              "author": "Karl Marx e Friedrich Engels",
+              "year": "1848",
+              "edition": "Londres, 1848",
+              "level": "introdutório",
+              "theme": "História e política",
+              "why": "Curto e direto: apresenta a luta de classes e o programa político de 1848.",
+              "entityId": "work-communist-manifesto"
+            },
+            {
+              "title": "Trabalho assalariado e capital",
+              "author": "Karl Marx",
+              "year": "1849",
+              "edition": "Neue Rheinische Zeitung, 1849",
+              "level": "introdutório",
+              "theme": "Economia",
+              "why": "Introdução acessível às ideias de salário, capital e exploração.",
+              "entityId": null
+            },
+            {
+              "title": "Do socialismo utópico ao socialismo científico",
+              "author": "Friedrich Engels",
+              "year": "1880",
+              "edition": "Paris, 1880 (edição francesa)",
+              "level": "introdutório",
+              "theme": "Teoria",
+              "why": "Síntese de divulgação sobre materialismo histórico e crítica aos socialistas anteriores.",
+              "entityId": null
+            },
+            {
+              "title": "Marx: A Very Short Introduction",
+              "author": "Peter Singer",
+              "year": "1980",
+              "edition": "Oxford University Press, 1980; reeditado em 2000",
+              "level": "introdutório",
+              "theme": "Panorama",
+              "why": "Panorama breve e crítico da obra de Marx, escrito por um filósofo não marxista.",
+              "entityId": null
+            },
+            {
+              "title": "Salário, preço e lucro",
+              "author": "Karl Marx",
+              "year": "1865",
+              "edition": "Conferência de 1865, publicada em 1898",
+              "level": "intermediário",
+              "theme": "Economia",
+              "why": "Ponte entre os textos curtos e O capital: valor, salário e lucro em linguagem falada.",
+              "entityId": null
+            },
+            {
+              "title": "O 18 de Brumário de Luís Bonaparte",
+              "author": "Karl Marx",
+              "year": "1852",
+              "edition": "Nova York: Die Revolution, 1852",
+              "level": "intermediário",
+              "theme": "História e política",
+              "why": "Análise de conjuntura sobre classes, Estado e o golpe de 1851 na França.",
+              "entityId": null
+            },
+            {
+              "title": "Reforma ou revolução?",
+              "author": "Rosa Luxemburg",
+              "year": "1899",
+              "edition": "Leipzig, 1899",
+              "level": "intermediário",
+              "theme": "Debates",
+              "why": "A resposta clássica a Bernstein sobre o caminho para o socialismo.",
+              "entityId": "person-rosa-luxemburg"
+            },
+            {
+              "title": "O Estado e a revolução",
+              "author": "V. I. Lenin",
+              "year": "1917",
+              "edition": "Petrogrado, 1917",
+              "level": "intermediário",
+              "theme": "Estado",
+              "why": "A leitura leninista do Estado, central para entender 1917 e suas críticas.",
+              "entityId": "person-vladimir-lenin"
+            },
+            {
+              "title": "Como mudar o mundo",
+              "author": "Eric Hobsbawm",
+              "year": "2011",
+              "edition": "Londres: Little, Brown, 2011",
+              "level": "intermediário",
+              "theme": "História da tradição",
+              "why": "Ensaios de um historiador sobre como as ideias de Marx circularam e mudaram.",
+              "entityId": null
+            },
+            {
+              "title": "O capital, livro I",
+              "author": "Karl Marx",
+              "year": "1867",
+              "edition": "Hamburgo: Otto Meissner, 1867",
+              "level": "avançado",
+              "theme": "Economia",
+              "why": "A obra central: mercadoria, valor, mais-valia e acumulação.",
+              "entityId": "work-capital-volume-i"
+            },
+            {
+              "title": "História e consciência de classe",
+              "author": "György Lukács",
+              "year": "1923",
+              "edition": "Berlim: Malik, 1923",
+              "level": "avançado",
+              "theme": "Filosofia",
+              "why": "Base do marxismo ocidental: reificação e consciência de classe.",
+              "entityId": null
+            },
+            {
+              "title": "Cadernos do cárcere",
+              "author": "Antonio Gramsci",
+              "year": "1929–1935",
+              "edition": "Edição crítica de Valentino Gerratana, Turim: Einaudi, 1975",
+              "level": "avançado",
+              "theme": "Cultura e hegemonia",
+              "why": "Hegemonia, intelectuais e sociedade civil, em notas escritas na prisão.",
+              "entityId": "person-antonio-gramsci"
+            },
+            {
+              "title": "Main Currents of Marxism",
+              "author": "Leszek Kołakowski",
+              "year": "1976–1978",
+              "edition": "Oxford: Clarendon Press, 1978, 3 volumes",
+              "level": "avançado",
+              "theme": "Crítica e história",
+              "why": "História monumental das correntes marxistas, com balanço crítico.",
+              "entityId": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "fontes",

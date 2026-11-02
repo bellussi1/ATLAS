@@ -1,0 +1,49 @@
+<div class="theme-filter" role="group" aria-label="Filtrar por tema">
+  <span class="atlas-label">Tema</span>
+  @for (theme of themes(); track theme) {
+    <button
+      type="button"
+      class="atlas-press"
+      [attr.aria-pressed]="theme === this.theme()"
+      (click)="toggle(theme)"
+    >
+      {{ theme }}
+    </button>
+  }
+</div>
+
+<ol class="path" appReveal>
+  @for (level of levels; track level.key; let i = $index) {
+    <li class="stage" data-stagger [style.--stagger]="i" [attr.data-stage]="i">
+      <header>
+        <span class="stage-marker" aria-hidden="true">{{ i + 1 }}</span>
+        <h3>{{ level.label }}</h3>
+        <p>{{ level.hint }}</p>
+      </header>
+      <ul>
+        @for (work of stage(level.key); track work.title) {
+          <li class="work" [class.is-dimmed]="dimmed(work)">
+            <p class="work-meta">{{ work.year }} · {{ work.theme }}</p>
+            <h4>{{ work.title }}</h4>
+            <p class="work-author">{{ work.author }}</p>
+            <p class="work-why">{{ work.why }}</p>
+            <p class="work-edition">{{ work.edition }}</p>
+            @if (work.entityId) {
+              <button
+                type="button"
+                class="work-open atlas-press"
+                [appKnowledgeContext]="{ entityId: work.entityId }"
+              >
+                Abrir ficha <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+              </button>
+            }
+          </li>
+        }
+      </ul>
+    </li>
+  }
+</ol>
+<p class="path-note">
+  Sugestões editoriais de ordem de leitura, não um cânone. Edições indicadas são as originais;
+  procure traduções e edições críticas na biblioteca.
+</p>

@@ -40,7 +40,7 @@ describe('Public pages', () => {
 describe('V4 page contract and editorial integrity', () => {
   it('resolves all published chapter, entity, edge and source references', () => {
     const dossier = validateIdeologyDossier(marxismo, supplement, methodologyKnowledgeGraph);
-    expect(dossier.page.chapters).toHaveLength(10);
+    expect(dossier.page.chapters).toHaveLength(11);
     expect(dossier.page.chapters.map((c) => c.anchor)).toEqual([
       'introducao',
       'origens',
@@ -51,6 +51,7 @@ describe('V4 page contract and editorial integrity', () => {
       'lugares',
       'correntes',
       'criticas',
+      'leituras',
       'fontes',
     ]);
     expect(dossier.supplement.edges.every((e) => e.sources.length > 0)).toBe(true);

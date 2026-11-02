@@ -12,6 +12,7 @@ import {
 } from '@ideologies/components/era-chart/era-chart.component';
 import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
+import { ReadingPathComponent } from '@ideologies/components/reading-path/reading-path.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
   ExplorationItem,
@@ -32,9 +33,14 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
     AtlasRevealDirective,
     EraChartComponent,
     IdeologyAtlasComponent,
+    ReadingPathComponent,
   ],
   templateUrl: './ideology-block.component.html',
-  styleUrls: ['./ideology-block.component.scss', './ideology-exploration.scss'],
+  styleUrls: [
+    './ideology-block.component.scss',
+    './ideology-exploration.scss',
+    './ideology-media.scss',
+  ],
 })
 export class IdeologyBlockComponent {
   readonly block = input.required<PageBlock>();
@@ -174,6 +180,29 @@ export class IdeologyBlockComponent {
   readonly atlas = computed(() =>
     this.repository.knowledgeGraph.atlases.find((a) => a.id === this.dossier().page.atlasId)!,
   );
+  /**
+   * One illustration per card: events and works first, people last, and never the same
+   * image twice in a block, so a row of epochs does not repeat one portrait.
+   */
+  readonly itemPictures = computed(() => {
+    const priority = ['event', 'work', 'institution', 'ideology', 'concept', 'person'];
+    const used = new Set<string>();
+    const pictures = new Map<string, { asset: { assetPath: string }; title: string }>();
+    for (const item of this.explorationItems()) {
+      const candidates = item.entityIds
+        .flatMap((id) => this.entity(id) ?? [])
+        .sort((a, b) => priority.indexOf(a.kind) - priority.indexOf(b.kind));
+      for (const entity of candidates) {
+        const asset = this.media(entity);
+        if (asset && !used.has(asset.assetPath)) {
+          used.add(asset.assetPath);
+          pictures.set(item.id, { asset, title: entity.title });
+          break;
+        }
+      }
+    }
+    return pictures;
+  });
   note(id: string): string | undefined {
     const block = this.block();
     return block.type === 'entities' ? block.notes[id] : undefined;
@@ -189,14 +218,22 @@ export class IdeologyBlockComponent {
       ...this.repository.knowledgeGraph.atlases.flatMap((a) => a.sources),
     ].find((s) => s.id === id);
   }
+  /** Licensed image for a record, from any atlas (Adam Smith appears in both readings). */
   media(entity: Entity) {
-    return this.atlas().assetLicenses.find(
-      (asset) =>
-        asset.entityId === entity.id &&
-        asset.attribution &&
-        asset.filePageUrl &&
-        reproducibleAsset(this.atlas(), asset.assetPath),
-    );
+    for (const atlas of this.repository.knowledgeGraph.atlases) {
+      const asset = atlas.assetLicenses.find(
+        (item) =>
+          item.entityId === entity.id &&
+          item.attribution &&
+          item.filePageUrl &&
+          reproducibleAsset(atlas, item.assetPath),
+      );
+      if (asset) return asset;
+    }
+    return undefined;
+  }
+  itemMedia(item: ExplorationItem) {
+    return this.itemPictures().get(item.id);
   }
   explorationContext(item: ExplorationItem): KnowledgeContext {
     return {

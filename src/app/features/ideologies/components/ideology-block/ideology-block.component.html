@@ -1,4 +1,7 @@
 @switch (block().type) {
+  @case ('reading-path') {
+    <app-reading-path [works]="$any(block()).works" />
+  }
   @case ('atlas') {
     <app-ideology-atlas
       [atlasId]="dossier().page.atlasId"
@@ -279,6 +282,16 @@
           [style.--stagger]="i"
           [appKnowledgeContext]="{ record: explorationContext(item) }"
         >
+          @if (itemMedia(item); as pic) {
+            <img
+              class="card-image"
+              [src]="pic.asset.assetPath"
+              [alt]="'Imagem de ' + pic.title"
+              width="320"
+              height="180"
+              loading="lazy"
+            />
+          }
           <span class="metadata">{{ item.kicker }} · {{ item.classification }}</span
           ><strong>{{ item.title }}</strong
           ><span class="exploration-summary">{{ item.summary }}</span

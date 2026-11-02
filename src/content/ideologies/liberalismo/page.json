@@ -588,7 +588,7 @@
     },
     {
       "question": "Quer seguir as conexões por conta própria?",
-      "bridge": "Termine conferindo as fontes desta leitura.",
+      "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria.",
       "gap": null,
       "sourceIds": ["liberalism-source-wikipedia-ideology-liberalism"],
       "id": "acervo",
@@ -604,6 +604,138 @@
         {
           "type": "atlas",
           "rootEntityId": "ideology-liberalism"
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leituras",
+      "kicker": "Livros por nível e tema",
+      "layout": "documents",
+      "minutes": 3,
+      "question": "Por onde começar a ler os liberais e seus críticos?",
+      "bridge": "Para conferir cada argumento, volte às fontes desta leitura.",
+      "gap": null,
+      "sourceIds": [],
+      "narrative": [
+        "Um caminho em três degraus, do texto curto à obra longa. Filtre por tema para seguir um interesse; livros ligados a registros do acervo abrem a ficha sem sair da página."
+      ],
+      "blocks": [
+        {
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "Segundo tratado sobre o governo",
+              "author": "John Locke",
+              "year": "1689",
+              "edition": "Londres: Awnsham Churchill, 1689",
+              "level": "introdutório",
+              "theme": "Estado e direitos",
+              "why": "Consentimento, propriedade e direito de resistência em linguagem direta.",
+              "entityId": "person-john-locke"
+            },
+            {
+              "title": "Sobre a liberdade",
+              "author": "John Stuart Mill",
+              "year": "1859",
+              "edition": "Londres: John W. Parker and Son, 1859",
+              "level": "introdutório",
+              "theme": "Liberdade individual",
+              "why": "O princípio do dano e a defesa da liberdade de expressão.",
+              "entityId": "person-john-stuart-mill"
+            },
+            {
+              "title": "Liberalism: A Very Short Introduction",
+              "author": "Michael Freeden",
+              "year": "2015",
+              "edition": "Oxford University Press, 2015",
+              "level": "introdutório",
+              "theme": "Panorama",
+              "why": "Mapa curto das camadas e vertentes do liberalismo.",
+              "entityId": null
+            },
+            {
+              "title": "O espírito das leis",
+              "author": "Montesquieu",
+              "year": "1748",
+              "edition": "Genebra: Barrillot & fils, 1748",
+              "level": "intermediário",
+              "theme": "Instituições",
+              "why": "Separação dos poderes e relação entre leis, clima e costumes.",
+              "entityId": "person-montesquieu"
+            },
+            {
+              "title": "A riqueza das nações (livros I e IV)",
+              "author": "Adam Smith",
+              "year": "1776",
+              "edition": "Londres: W. Strahan e T. Cadell, 1776",
+              "level": "intermediário",
+              "theme": "Economia",
+              "why": "Divisão do trabalho, mercado e crítica ao mercantilismo.",
+              "entityId": "work-wealth-of-nations"
+            },
+            {
+              "title": "A democracia na América",
+              "author": "Alexis de Tocqueville",
+              "year": "1835–1840",
+              "edition": "Paris: Gosselin, 1835 e 1840",
+              "level": "intermediário",
+              "theme": "Democracia",
+              "why": "Igualdade, associações e tirania da maioria vistas nos Estados Unidos.",
+              "entityId": "person-alexis-de-tocqueville"
+            },
+            {
+              "title": "Dois conceitos de liberdade",
+              "author": "Isaiah Berlin",
+              "year": "1958",
+              "edition": "Oxford: Clarendon Press, 1958",
+              "level": "intermediário",
+              "theme": "Filosofia política",
+              "why": "A distinção entre liberdade negativa e positiva em uma aula curta.",
+              "entityId": "person-isaiah-berlin"
+            },
+            {
+              "title": "O caminho da servidão",
+              "author": "Friedrich Hayek",
+              "year": "1944",
+              "edition": "Londres: Routledge, 1944",
+              "level": "avançado",
+              "theme": "Economia e Estado",
+              "why": "A crítica liberal ao planejamento econômico no pós-guerra.",
+              "entityId": "person-friedrich-hayek"
+            },
+            {
+              "title": "Uma teoria da justiça",
+              "author": "John Rawls",
+              "year": "1971",
+              "edition": "Cambridge, MA: Harvard University Press, 1971",
+              "level": "avançado",
+              "theme": "Justiça",
+              "why": "O liberalismo igualitário: justiça como equidade.",
+              "entityId": null
+            },
+            {
+              "title": "A grande transformação",
+              "author": "Karl Polanyi",
+              "year": "1944",
+              "edition": "Nova York: Farrar & Rinehart, 1944",
+              "level": "avançado",
+              "theme": "Crítica",
+              "why": "A crítica mais influente ao mercado autorregulado.",
+              "entityId": null
+            },
+            {
+              "title": "Liberalism: The Life of an Idea",
+              "author": "Edmund Fawcett",
+              "year": "2014",
+              "edition": "Princeton University Press, 2014",
+              "level": "avançado",
+              "theme": "História",
+              "why": "História do liberalismo como prática política desde o século XIX.",
+              "entityId": null
+            }
+          ]
         }
       ]
     },
