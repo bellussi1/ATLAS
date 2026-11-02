@@ -356,11 +356,15 @@ export function safeDiscoveryOrigin(value: string | null): string | null {
       const anchors = [
         'introducao',
         'origens',
+        'principios',
         'conceitos',
+        'epocas',
         'pensadores',
-        'historia',
-        'correntes',
-        'criticas',
+        'vertentes',
+        'experiencias',
+        'debates',
+        'conexoes',
+        'leituras',
         'fontes',
       ];
       if (

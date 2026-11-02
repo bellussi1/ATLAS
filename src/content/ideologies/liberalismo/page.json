@@ -29,7 +29,7 @@
       "id": "introducao",
       "anchor": "introducao",
       "title": "Liberdade contra o poder",
-      "kicker": "Ponto de partida",
+      "kicker": "O que é?",
       "layout": "introduction",
       "minutes": 3,
       "narrative": [
@@ -46,7 +46,7 @@
       "id": "origens",
       "anchor": "origens",
       "title": "Contratos, poderes e comércio",
-      "kicker": "Origens",
+      "kicker": "Origens e formação",
       "layout": "documents",
       "minutes": 4,
       "narrative": [
@@ -67,18 +67,18 @@
       ]
     },
     {
-      "question": "Liberdade de quê, e para quê?",
-      "bridge": "Esses conceitos ganham rosto nas pessoas que os defenderam e revisaram.",
+      "question": "O que torna um governo legítimo?",
+      "bridge": "Esses compromissos dependem de conceitos que descrevem como a sociedade funciona.",
       "gap": null,
       "sourceIds": ["source-sep-liberalism", "source-sep-liberty"],
-      "id": "conceitos",
-      "anchor": "conceitos",
-      "title": "Seis ideias para ler o liberalismo",
-      "kicker": "Conceitos",
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Limites ao poder",
+      "kicker": "Pilares e princípios",
       "layout": "concepts",
-      "minutes": 5,
+      "minutes": 3,
       "narrative": [
-        "Cada conceito abaixo responde a um problema concreto e foi formulado por um autor identificável. Abra os cards para ver a tese, o mecanismo e onde conferir."
+        "Três compromissos normativos atravessam a tradição: governo apoiado em consentimento e direitos, poder dividido e limites à interferência sobre o indivíduo. Cada um foi formulado por um autor identificável; abra os cards para ver a tese e onde conferir."
       ],
       "blocks": [
         {
@@ -110,6 +110,41 @@
               "classification": "tese atribuída"
             },
             {
+              "id": "lib-concept-harm",
+              "title": "Princípio do dano",
+              "kicker": "Mill · 1859",
+              "summary": "A única razão legítima para limitar a liberdade de alguém é impedir dano a outros.",
+              "paragraphs": [
+                "Em Sobre a liberdade, Mill defende ampla liberdade de pensamento, expressão e modos de vida, e restringe a interferência social aos casos de dano a terceiros."
+              ],
+              "sourceIds": ["source-mill-on-liberty", "source-sep-mill"],
+              "entityIds": ["person-john-stuart-mill"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question": "Liberdade de quê, e para quê?",
+      "bridge": "Esses conceitos ganham rosto nas pessoas que os defenderam e revisaram.",
+      "gap": null,
+      "sourceIds": ["source-sep-liberalism", "source-sep-liberty"],
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Mercado, maioria e liberdade",
+      "kicker": "Conceitos e palavras-chave",
+      "layout": "concepts",
+      "minutes": 3,
+      "narrative": [
+        "Outros conceitos descrevem mecanismos e riscos: a divisão do trabalho, a pressão da maioria e as duas acepções de liberdade. Abra os cards para ver o problema que cada um responde."
+      ],
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
               "id": "lib-concept-market",
               "title": "Divisão do trabalho e mercado",
               "kicker": "Smith · 1776",
@@ -134,18 +169,6 @@
               "classification": "tese atribuída"
             },
             {
-              "id": "lib-concept-harm",
-              "title": "Princípio do dano",
-              "kicker": "Mill · 1859",
-              "summary": "A única razão legítima para limitar a liberdade de alguém é impedir dano a outros.",
-              "paragraphs": [
-                "Em Sobre a liberdade, Mill defende ampla liberdade de pensamento, expressão e modos de vida, e restringe a interferência social aos casos de dano a terceiros."
-              ],
-              "sourceIds": ["source-mill-on-liberty", "source-sep-mill"],
-              "entityIds": ["person-john-stuart-mill"],
-              "classification": "tese atribuída"
-            },
-            {
               "id": "lib-concept-two-liberties",
               "title": "Liberdade negativa e positiva",
               "kicker": "Berlin · 1958",
@@ -162,45 +185,6 @@
       ]
     },
     {
-      "question": "Quem formulou, revisou e contestou essas ideias?",
-      "bridge": "Coloque essas vidas na mesma escala para ver quem conviveu com quais transformações.",
-      "gap": null,
-      "sourceIds": ["source-sep-liberalism"],
-      "id": "pensadores",
-      "anchor": "pensadores",
-      "title": "Vozes da liberdade",
-      "kicker": "Pensadores e leituras",
-      "layout": "thinkers",
-      "minutes": 4,
-      "narrative": [
-        "Selecione um autor para consultar seu registro, período e fontes. Estar nesta seleção não significa concordância: Mill, Hayek e Berlin divergem em pontos centrais."
-      ],
-      "blocks": [
-        {
-          "type": "entities",
-          "mode": "thinkers",
-          "entityIds": [
-            "person-john-locke",
-            "person-montesquieu",
-            "person-adam-smith",
-            "person-alexis-de-tocqueville",
-            "person-john-stuart-mill",
-            "person-friedrich-hayek",
-            "person-isaiah-berlin"
-          ],
-          "notes": {
-            "person-john-locke": "Consentimento, propriedade e direito de resistência.",
-            "person-montesquieu": "Separação dos poderes e espírito das leis.",
-            "person-adam-smith": "Comércio, divisão do trabalho e crítica aos monopólios.",
-            "person-alexis-de-tocqueville": "Democracia, associações e tirania da maioria.",
-            "person-john-stuart-mill": "Princípio do dano, liberdade de expressão e reformas sociais.",
-            "person-friedrich-hayek": "Crítica ao planejamento e ordem espontânea do mercado.",
-            "person-isaiah-berlin": "Distinção entre liberdade negativa e positiva."
-          }
-        }
-      ]
-    },
-    {
       "question": "Como a mesma palavra mudou de sentido em três séculos?",
       "bridge": "Essas épocas aconteceram em lugares concretos.",
       "gap": "A periodização segue sínteses anglo-francesas. O liberalismo na América Latina, incluindo o Brasil imperial e republicano, exige bibliografia própria ainda não incorporada.",
@@ -208,7 +192,7 @@
       "id": "epocas",
       "anchor": "epocas",
       "title": "Épocas do liberalismo",
-      "kicker": "Períodos e transformações",
+      "kicker": "História e épocas",
       "layout": "concepts",
       "minutes": 5,
       "narrative": [
@@ -354,14 +338,129 @@
       ]
     },
     {
+      "question": "Quem formulou, revisou e contestou essas ideias?",
+      "bridge": "Coloque essas vidas na mesma escala para ver quem conviveu com quais transformações.",
+      "gap": null,
+      "sourceIds": ["source-sep-liberalism"],
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Vozes da liberdade",
+      "kicker": "Pensadores e obras",
+      "layout": "thinkers",
+      "minutes": 4,
+      "narrative": [
+        "Selecione um autor para consultar seu registro, período e fontes. Estar nesta seleção não significa concordância: Mill, Hayek e Berlin divergem em pontos centrais."
+      ],
+      "blocks": [
+        {
+          "type": "entities",
+          "mode": "thinkers",
+          "entityIds": [
+            "person-john-locke",
+            "person-montesquieu",
+            "person-adam-smith",
+            "person-alexis-de-tocqueville",
+            "person-john-stuart-mill",
+            "person-friedrich-hayek",
+            "person-isaiah-berlin"
+          ],
+          "notes": {
+            "person-john-locke": "Consentimento, propriedade e direito de resistência.",
+            "person-montesquieu": "Separação dos poderes e espírito das leis.",
+            "person-adam-smith": "Comércio, divisão do trabalho e crítica aos monopólios.",
+            "person-alexis-de-tocqueville": "Democracia, associações e tirania da maioria.",
+            "person-john-stuart-mill": "Princípio do dano, liberdade de expressão e reformas sociais.",
+            "person-friedrich-hayek": "Crítica ao planejamento e ordem espontânea do mercado.",
+            "person-isaiah-berlin": "Distinção entre liberdade negativa e positiva."
+          }
+        }
+      ]
+    },
+    {
+      "question": "O Estado protege ou ameaça a liberdade?",
+      "bridge": "Essas disputas internas convivem com críticas vindas de fora da tradição.",
+      "gap": null,
+      "sourceIds": ["source-sep-liberalism"],
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Três liberalismos em conflito",
+      "kicker": "Correntes e vertentes",
+      "layout": "graph",
+      "minutes": 5,
+      "narrative": [
+        "As vertentes respondem de modo diferente ao papel do Estado. Selecione uma relação na rede para ver o argumento e a fonte; a tabela oferece o mesmo conteúdo em texto.",
+        "Linhas indicam influência documentada ou crítica, não descendência. A ligação de Marx mostra uma das críticas externas mais influentes."
+      ],
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "schools",
+          "items": [
+            {
+              "id": "lib-school-classical",
+              "title": "Liberalismo clássico",
+              "kicker": "Recorte: Locke, Smith, Montesquieu",
+              "summary": "Governo limitado, propriedade e mercado livre como garantias da liberdade.",
+              "paragraphs": [
+                "Enfatiza direitos individuais, Estado de direito e comércio livre. Diverge internamente sobre quanto o Estado deve fazer além de proteger direitos."
+              ],
+              "sourceIds": ["source-sep-liberalism"],
+              "entityIds": ["ideology-classical-liberalism"],
+              "classification": "interpretação"
+            },
+            {
+              "id": "lib-school-social",
+              "title": "Liberalismo social",
+              "kicker": "Recorte: Mill, Green, Hobhouse",
+              "summary": "Liberdade efetiva exige condições materiais garantidas pelo Estado.",
+              "paragraphs": [
+                "Defende educação, saúde e proteção social como meios de ampliar a liberdade real, sem abandonar direitos civis e políticos."
+              ],
+              "sourceIds": ["source-sep-liberalism"],
+              "entityIds": ["ideology-social-liberalism", "person-john-stuart-mill"],
+              "classification": "interpretação"
+            },
+            {
+              "id": "lib-school-neoliberal",
+              "title": "Neoliberalismo",
+              "kicker": "Recorte: Hayek e a Mont Pelerin Society",
+              "summary": "Rótulo disputado para a defesa renovada do mercado contra o planejamento e o Estado social.",
+              "paragraphs": [
+                "O termo é usado sobretudo por críticos para designar políticas de liberalização desde os anos 1970; autores associados a ele costumam preferir liberalismo clássico."
+              ],
+              "sourceIds": [
+                "liberalism-source-wikipedia-ideology-neoliberalism",
+                "source-hayek-road"
+              ],
+              "entityIds": ["ideology-neoliberalism", "person-friedrich-hayek"],
+              "classification": "interpretação"
+            }
+          ]
+        },
+        {
+          "type": "graph",
+          "edgeIds": [
+            "lib-edge-locke-classical",
+            "lib-edge-smith-classical",
+            "lib-edge-montesquieu-classical",
+            "lib-edge-mill-social",
+            "lib-edge-social-classical",
+            "lib-edge-hayek-neoliberal",
+            "lib-edge-neoliberal-social",
+            "lib-edge-marx-liberalism"
+          ]
+        }
+      ]
+    },
+    {
       "question": "Em que cidades essas ideias viraram instituições?",
       "bridge": "Dos lugares e épocas surgem vertentes que discordam entre si.",
       "gap": "O acervo ainda não registra coordenadas verificadas; por isso não há mapa.",
       "sourceIds": ["source-sep-liberalism"],
-      "id": "lugares",
-      "anchor": "lugares",
+      "id": "experiencias",
+      "anchor": "experiencias",
       "title": "Onde a liberdade foi disputada",
-      "kicker": "Cidades e territórios",
+      "kicker": "Experiências históricas",
       "layout": "documents",
       "minutes": 3,
       "narrative": [
@@ -437,93 +536,18 @@
             }
           ]
         }
-      ]
-    },
-    {
-      "question": "O Estado protege ou ameaça a liberdade?",
-      "bridge": "Essas disputas internas convivem com críticas vindas de fora da tradição.",
-      "gap": null,
-      "sourceIds": ["source-sep-liberalism"],
-      "id": "correntes",
-      "anchor": "correntes",
-      "title": "Três liberalismos em conflito",
-      "kicker": "Vertentes",
-      "layout": "graph",
-      "minutes": 5,
-      "narrative": [
-        "As vertentes respondem de modo diferente ao papel do Estado. Selecione uma relação na rede para ver o argumento e a fonte; a tabela oferece o mesmo conteúdo em texto.",
-        "Linhas indicam influência documentada ou crítica, não descendência. A ligação de Marx mostra uma das críticas externas mais influentes."
       ],
-      "blocks": [
-        {
-          "type": "explorations",
-          "mode": "schools",
-          "items": [
-            {
-              "id": "lib-school-classical",
-              "title": "Liberalismo clássico",
-              "kicker": "Recorte: Locke, Smith, Montesquieu",
-              "summary": "Governo limitado, propriedade e mercado livre como garantias da liberdade.",
-              "paragraphs": [
-                "Enfatiza direitos individuais, Estado de direito e comércio livre. Diverge internamente sobre quanto o Estado deve fazer além de proteger direitos."
-              ],
-              "sourceIds": ["source-sep-liberalism"],
-              "entityIds": ["ideology-classical-liberalism"],
-              "classification": "interpretação"
-            },
-            {
-              "id": "lib-school-social",
-              "title": "Liberalismo social",
-              "kicker": "Recorte: Mill, Green, Hobhouse",
-              "summary": "Liberdade efetiva exige condições materiais garantidas pelo Estado.",
-              "paragraphs": [
-                "Defende educação, saúde e proteção social como meios de ampliar a liberdade real, sem abandonar direitos civis e políticos."
-              ],
-              "sourceIds": ["source-sep-liberalism"],
-              "entityIds": ["ideology-social-liberalism", "person-john-stuart-mill"],
-              "classification": "interpretação"
-            },
-            {
-              "id": "lib-school-neoliberal",
-              "title": "Neoliberalismo",
-              "kicker": "Recorte: Hayek e a Mont Pelerin Society",
-              "summary": "Rótulo disputado para a defesa renovada do mercado contra o planejamento e o Estado social.",
-              "paragraphs": [
-                "O termo é usado sobretudo por críticos para designar políticas de liberalização desde os anos 1970; autores associados a ele costumam preferir liberalismo clássico."
-              ],
-              "sourceIds": [
-                "liberalism-source-wikipedia-ideology-neoliberalism",
-                "source-hayek-road"
-              ],
-              "entityIds": ["ideology-neoliberalism", "person-friedrich-hayek"],
-              "classification": "interpretação"
-            }
-          ]
-        },
-        {
-          "type": "graph",
-          "edgeIds": [
-            "lib-edge-locke-classical",
-            "lib-edge-smith-classical",
-            "lib-edge-montesquieu-classical",
-            "lib-edge-mill-social",
-            "lib-edge-social-classical",
-            "lib-edge-hayek-neoliberal",
-            "lib-edge-neoliberal-social",
-            "lib-edge-marx-liberalism"
-          ]
-        }
-      ]
+      "coverage": "partial"
     },
     {
       "question": "O que o liberalismo deixa de ver, segundo seus críticos?",
-      "bridge": "Para investigar por conta própria, entre no acervo de registros e imagens.",
-      "gap": null,
+      "bridge": "Para além das críticas, o liberalismo dialoga com outras tradições.",
+      "gap": "As críticas estão atribuídas, mas ainda falta o quadro estruturado defesa → crítica → resposta → limites, com fontes por posição.",
       "sourceIds": ["source-sep-liberalism", "source-sep-communitarianism"],
-      "id": "criticas",
-      "anchor": "criticas",
+      "id": "debates",
+      "anchor": "debates",
       "title": "Críticas à liberdade liberal",
-      "kicker": "Críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
       "layout": "debate",
       "minutes": 4,
       "narrative": [
@@ -584,17 +608,18 @@
             }
           ]
         }
-      ]
+      ],
+      "coverage": "partial"
     },
     {
-      "question": "Quer seguir as conexões por conta própria?",
+      "question": "Com quais pessoas, obras e tradições o liberalismo se relaciona?",
       "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria.",
-      "gap": null,
+      "gap": "Relações tipadas com outras tradições (conservadorismo, socialismo, republicanismo) ainda não foram documentadas com fontes; o acervo abaixo serve à descoberta.",
       "sourceIds": ["liberalism-source-wikipedia-ideology-liberalism"],
-      "id": "acervo",
-      "anchor": "acervo",
+      "id": "conexoes",
+      "anchor": "conexoes",
       "title": "Acervo: registros, rede e imagens",
-      "kicker": "Exploração livre",
+      "kicker": "Conexões com outras tradições",
       "layout": "graph",
       "minutes": 4,
       "narrative": [
@@ -605,13 +630,14 @@
           "type": "atlas",
           "rootEntityId": "ideology-liberalism"
         }
-      ]
+      ],
+      "coverage": "partial"
     },
     {
       "id": "leituras",
       "anchor": "leituras",
       "title": "Roteiro de leituras",
-      "kicker": "Livros por nível e tema",
+      "kicker": "Roteiro de leitura",
       "layout": "documents",
       "minutes": 3,
       "question": "Por onde começar a ler os liberais e seus críticos?",
@@ -747,7 +773,7 @@
       "id": "fontes",
       "anchor": "fontes",
       "title": "Voltar à evidência",
-      "kicker": "Fontes e aprofundamento",
+      "kicker": "Fontes e metodologia",
       "layout": "sources",
       "minutes": 2,
       "narrative": [

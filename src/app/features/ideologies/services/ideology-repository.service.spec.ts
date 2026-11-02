@@ -59,7 +59,7 @@ describe('IdeologyRepository', () => {
     const http = TestBed.inject(HttpTestingController);
     http.expectOne('/content/ideologies/marxismo/page.json').flush(marxismoPage);
     http.expectOne('/content/graph/marxismo.json').flush(marxismoGraph);
-    expect((await result)?.page.chapters).toHaveLength(11);
+    expect((await result)?.page.chapters).toHaveLength(12);
   });
 
   it.each(['anarquismo', 'slug-ausente', '__proto__', 'constructor'])(

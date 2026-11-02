@@ -10,6 +10,7 @@ import {
   signal,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { legacyChapterAnchors } from '@ideologies/models/ideology-chapters';
 import type { IdeologyReadingSection } from '@ideologies/models/ideology-reading-section';
 
 import { IdeologyReadingIndexComponent } from '../reading-index/reading-index.component';
@@ -55,6 +56,11 @@ export class IdeologyReadingComponent {
     afterNextRender(() => {
       const win = this.document.defaultView;
       if (!win || typeof win.requestAnimationFrame !== 'function') return;
+      const legacy = legacyChapterAnchors[win.location.hash.slice(1)];
+      if (legacy && this.section(legacy)) {
+        this.go(legacy);
+        this.section(legacy)?.scrollIntoView();
+      }
       let frame = 0;
       const measure = () => {
         const sections = this.sections().flatMap(({ anchor }) => this.section(anchor) ?? []);

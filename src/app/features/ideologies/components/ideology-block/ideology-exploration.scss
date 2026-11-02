@@ -26,11 +26,8 @@
   min-width: 0;
 }
 .timeline-list {
-  max-height: 30rem;
-  overflow: auto;
   margin: 0;
-  padding: 0 0.5rem 0 0;
-  scrollbar-gutter: stable;
+  padding: 0;
 }
 .timeline-list li {
   display: block;
@@ -82,11 +79,9 @@
   font-size: 1rem;
   line-height: 1.35;
 }
+/* Reserved height, no inner scroll: the page is the only scroller. */
 .timeline-reading {
-  height: 30rem;
-  overflow: auto;
-  overscroll-behavior: contain;
-  scrollbar-gutter: stable;
+  min-height: 30rem;
   background: var(--paper-shade);
   padding: 1.25rem;
   border-top: 4px solid var(--color-indigo);
@@ -189,10 +184,7 @@
   padding: 0.5rem;
 }
 .relation-reading {
-  height: 19rem;
-  overflow: auto;
-  scrollbar-gutter: stable;
-  overscroll-behavior: contain;
+  min-height: 19rem;
 }
 .relation-controls {
   min-height: 5.5rem;
@@ -266,8 +258,7 @@
   gap: 1rem;
 }
 .argument-card {
-  height: 20rem;
-  overflow: auto;
+  min-height: 20rem;
 }
 .argument-position {
   font: 700 1.1rem var(--font-sans);

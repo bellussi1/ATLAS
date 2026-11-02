@@ -80,6 +80,14 @@ progress::-moz-progress-bar {
   display: grid;
 }
 
+.index-group {
+  margin: 0.9rem 0 0.2rem;
+  font: 600 0.68rem/1.2 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  opacity: 0.72;
+}
 .desktop-nav a {
   position: relative;
   display: flex;

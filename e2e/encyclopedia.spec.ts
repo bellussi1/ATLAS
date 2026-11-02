@@ -40,16 +40,16 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
   });
   const page = await context.newPage();
   await page.goto('/marxismo/');
-  await page.locator('#correntes .exploration-card').first().tap();
+  await page.locator('#vertentes .exploration-card').first().tap();
   await expect(page.getByRole('dialog')).toContainText('Bernstein');
   await page.getByRole('button', { name: 'Fechar contexto' }).tap();
-  await page.locator('#criticas .argument-card').first().tap();
+  await page.locator('#debates .argument-card').first().tap();
   await expect(
     page.getByRole('dialog').getByRole('region', { name: 'Fontes do contexto' }),
   ).toContainText('Bernstein');
   await page.getByRole('button', { name: 'Fechar contexto' }).tap();
   await page.getByRole('button', { name: 'Estado e revolução', exact: true }).tap();
-  await expect(page.locator('#criticas')).toContainText('Réplica ainda não incorporada');
+  await expect(page.locator('#debates')).toContainText('Réplica ainda não incorporada');
   await context.close();
 });
 
@@ -98,12 +98,10 @@ test('temporal axis stays fixed across filters and SVG is prerendered', async ({
   await expect(event).toHaveAttribute('aria-pressed', 'true');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
-  await page
-    .locator('#historia')
-    .screenshot({ path: 'output/playwright/marxismo-timeline-320.png' });
+  await page.locator('#epocas').screenshot({ path: 'output/playwright/marxismo-timeline-320.png' });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page
-    .locator('#historia')
+    .locator('#epocas')
     .screenshot({ path: 'output/playwright/marxismo-timeline-desktop.png' });
   await page
     .locator('.genealogy')

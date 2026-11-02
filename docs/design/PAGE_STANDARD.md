@@ -1,6 +1,6 @@
 # ATLAS — Padrão de páginas de ideologia
 
-Revisão de 01/11/2026: enciclopédia visual, interativa e exploratória. Este contrato substitui a organização V4 que previa um hub e múltiplas rotas secundárias. O escopo público atual continua **home, `/marxismo` e `/liberalismo`**. O padrão pode receber outras tradições no futuro, sem publicá-las antecipadamente.
+Revisão de 01/11/2026: enciclopédia visual, interativa e exploratória. Este contrato substitui a organização V4 que previa um hub e múltiplas rotas secundárias. As tradições publicadas são **`/marxismo` e `/liberalismo`**; catálogos, verbetes e exploração (ver `AGENTS.md`) também são públicos. O padrão pode receber outras tradições no futuro, sem publicá-las antecipadamente.
 
 ## 0. Direção artística: Atlas Editorial
 
@@ -18,6 +18,10 @@ As referências enviadas pelo usuário orientam decisões, sem serem ativos publ
 Uma tradição = uma página longa no scroll vertical nativo. A narrativa principal permanece visível e compreensível sem navegar por abas, subpáginas ou redirects. Controles locais podem selecionar um tema, evento, relação ou argumento; não escondem capítulos inteiros. Cada capítulo oferece uma interação que ensina: comparar, contextualizar, revelar fonte ou seguir conexão.
 
 O visitante identifica onde está, o capítulo seguinte, progresso e caminho de volta. Índice com âncoras estáveis, estimativas identificadas como aproximadas, capítulo atual e retorno ao ponto anterior. Seleções podem usar query params com `replaceUrl` e scroll manual; somente a ação de navegar ao capítulo provoca rolagem. Nenhuma espera artificial, scroll hijacking ou parallax que prejudique leitura.
+
+## 1.1 Contrato canônico de 12 capítulos
+
+Toda página publicada tem os mesmos 12 capítulos, na mesma ordem, com `id` = âncora e o rótulo canônico como *kicker*: `introducao`, `origens`, `principios`, `conceitos`, `epocas`, `pensadores`, `vertentes`, `experiencias`, `debates`, `conexoes`, `leituras`, `fontes`. A fonte única é `src/app/features/ideologies/models/ideology-chapters.ts`, e o schema rejeita desvios. O índice agrupa os capítulos em Entender (01–04), Situar (05–08) e Avaliar e continuar (09–12), sem esconder nenhum do scroll. Capítulo sem conteúdo verificado usa `coverage: "pending"` e um motivo em `gap`. Conteúdo incompleto usa `"partial"`. Nunca há preenchimento. Âncoras antigas (`#historia`, `#correntes`, `#lugares`, `#criticas`, `#acervo`) são redirecionadas. A leitura principal não tem contêiner com scroll próprio; painéis reservam altura mínima. Proposta e mapeamento estão em `docs/research/ideologies-section-contract-proposal.md`.
 
 ## 2. Contrato de cobertura editorial
 

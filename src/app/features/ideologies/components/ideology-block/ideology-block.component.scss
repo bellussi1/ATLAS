@@ -178,9 +178,6 @@ button {
   font-size: clamp(1.5rem, 2.7vw, 2.2rem);
 }
 .timeline-filters {
-  position: sticky;
-  top: 0;
-  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

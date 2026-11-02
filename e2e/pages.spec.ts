@@ -53,7 +53,7 @@ test('reading navigation includes the knowledge explorer', async ({ page }) => {
 test('Marxism chapters, comparison and sources remain on the same page', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/marxismo/');
-  await expect(page.locator('.ideology-chapter')).toHaveCount(11);
+  await expect(page.locator('.ideology-chapter')).toHaveCount(12);
   await page
     .getByRole('navigation', { name: 'Capítulos', exact: true })
     .getByRole('link', { name: /Vozes que/ })
@@ -161,5 +161,48 @@ test('shared reading preserves filters and clears motion preference when leaving
     await reader.getByRole('link', { name: '← Página inicial', exact: true }).click();
     await expect(page).toHaveURL(/\/$/);
     await expect(page.locator('html')).not.toHaveClass(/atlas-reduced-motion/);
+  }
+});
+
+test('both readings share the twelve canonical chapters, one index and no nested scroll', async ({
+  page,
+}) => {
+  const canonical = [
+    'introducao',
+    'origens',
+    'principios',
+    'conceitos',
+    'epocas',
+    'pensadores',
+    'vertentes',
+    'experiencias',
+    'debates',
+    'conexoes',
+    'leituras',
+    'fontes',
+  ];
+  for (const path of ['/marxismo/', '/liberalismo/']) {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(`${path}#correntes`);
+    await expect(page).toHaveURL(/#vertentes$/);
+    expect(
+      await page.locator('article .ideology-chapter').evaluateAll((s) => s.map((e) => e.id)),
+    ).toEqual(canonical);
+    await expect(page.locator('.desktop-nav a')).toHaveCount(12);
+    await expect(page.locator('.index-group')).toHaveText([
+      'Entender',
+      'Situar',
+      'Avaliar e continuar',
+    ]);
+    const nested = await page.evaluate(() =>
+      [...document.querySelectorAll('.chapter-sequence *')]
+        .filter(
+          (e) =>
+            /(auto|scroll)/.test(getComputedStyle(e).overflowY) &&
+            e.scrollHeight > e.clientHeight + 5,
+        )
+        .map((e) => e.className),
+    );
+    expect(nested).toEqual([]);
   }
 });

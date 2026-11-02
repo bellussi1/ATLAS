@@ -9,10 +9,7 @@
   text-underline-offset: 0.2em;
 }
 .context-panel {
-  height: 34rem;
-  overflow: auto;
-  scrollbar-gutter: stable;
-  overscroll-behavior: contain;
+  min-height: 34rem;
   animation: none;
 }
 .entity-card .action-cue {
@@ -101,11 +98,8 @@
   .explore-stage > .context-panel {
     grid-column: 2;
     grid-row: 1/5;
-    position: sticky;
-    top: 1rem;
+    align-self: start;
     margin-top: 0;
-    height: calc(100dvh - 2rem);
-    max-height: 44rem;
   }
   .graph-canvas {
     min-height: 25rem;
@@ -119,8 +113,6 @@
 }
 
 .continuous .text-network ul {
-  max-height: 24rem;
-  overflow: auto;
   padding-left: 0;
   list-style: none;
 }

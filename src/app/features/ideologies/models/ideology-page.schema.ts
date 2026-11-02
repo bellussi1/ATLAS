@@ -1,6 +1,8 @@
 import { type KnowledgeGraph, sourceSchema } from '@core/content/models/content-schema';
 import { z } from 'zod';
 
+import { canonicalChapters } from './ideology-chapters';
+
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/);
 export const ideologyEdgeSchema = z
   .object({
@@ -144,6 +146,8 @@ export const ideologyPageSchema = z
         bridge: z.string().min(1).nullable().default(null),
         sourceIds: z.array(id),
         gap: z.string().min(1).nullable(),
+        /** `pending`: the chapter is kept in place but has no verified content yet. */
+        coverage: z.enum(['complete', 'partial', 'pending']).default('complete'),
         layout: z.enum([
           'introduction',
           'documents',
@@ -167,6 +171,33 @@ export const ideologyPageSchema = z
         message: 'Página publicada precisa de capítulos.',
         path: ['chapters'],
       });
+    const expected = canonicalChapters.map((c) => c.id).join(',');
+    if (page.published && page.chapters.map((c) => c.id).join(',') !== expected)
+      ctx.addIssue({
+        code: 'custom',
+        message: `Capítulos devem seguir o contrato canônico: ${expected}.`,
+        path: ['chapters'],
+      });
+    page.chapters.forEach((chapter, index) => {
+      if (page.published && chapter.anchor !== chapter.id)
+        ctx.addIssue({
+          code: 'custom',
+          message: 'Âncora deve coincidir com o id do capítulo.',
+          path: ['chapters', index, 'anchor'],
+        });
+      if (chapter.coverage !== 'complete' && !chapter.gap)
+        ctx.addIssue({
+          code: 'custom',
+          message: 'Cobertura parcial ou pendente exige motivo editorial em `gap`.',
+          path: ['chapters', index, 'gap'],
+        });
+      if (chapter.coverage === 'pending' && chapter.blocks.length)
+        ctx.addIssue({
+          code: 'custom',
+          message: 'Capítulo pendente não pode ter blocos.',
+          path: ['chapters', index, 'blocks'],
+        });
+    });
   });
 export const ideologyGraphSchema = z.object({
   sources: z.array(sourceSchema),

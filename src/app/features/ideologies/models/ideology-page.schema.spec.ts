@@ -6,7 +6,9 @@ import supplement from '../../../../content/graph/marxismo.json';
 import anarquismo from '../../../../content/ideologies/examples/anarquismo.json';
 import liberalismo from '../../../../content/ideologies/examples/liberalismo.json';
 import socialDemocracia from '../../../../content/ideologies/examples/social-democracia.json';
+import publishedLiberalismo from '../../../../content/ideologies/liberalismo/page.json';
 import marxismo from '../../../../content/ideologies/marxismo/page.json';
+import { canonicalChapters, legacyChapterAnchors } from './ideology-chapters';
 import { ideologyPageSchema, validateIdeologyDossier } from './ideology-page.schema';
 
 describe('Public pages', () => {
@@ -40,20 +42,7 @@ describe('Public pages', () => {
 describe('V4 page contract and editorial integrity', () => {
   it('resolves all published chapter, entity, edge and source references', () => {
     const dossier = validateIdeologyDossier(marxismo, supplement, methodologyKnowledgeGraph);
-    expect(dossier.page.chapters).toHaveLength(11);
-    expect(dossier.page.chapters.map((c) => c.anchor)).toEqual([
-      'introducao',
-      'origens',
-      'conceitos',
-      'pensadores',
-      'historia',
-      'epocas',
-      'lugares',
-      'correntes',
-      'criticas',
-      'leituras',
-      'fontes',
-    ]);
+    expect(dossier.page.chapters.map((c) => c.anchor)).toEqual(canonicalChapters.map((c) => c.id));
     expect(dossier.supplement.edges.every((e) => e.sources.length > 0)).toBe(true);
     expect(dossier.page.review.reviewer).toBeNull();
   });
@@ -72,6 +61,29 @@ describe('V4 page contract and editorial integrity', () => {
     bad.review.status = 'com-fontes';
     bad.chapters[1].anchor = bad.chapters[0].anchor;
     expect(ideologyPageSchema.safeParse(bad).success).toBe(false);
+  });
+  it('holds both published readings to the same twelve canonical chapters', () => {
+    for (const page of [marxismo, publishedLiberalismo]) {
+      const parsed = ideologyPageSchema.parse(page);
+      expect(parsed.chapters.map((c) => c.id)).toEqual(canonicalChapters.map((c) => c.id));
+      expect(parsed.chapters.map((c) => c.kicker)).toEqual(canonicalChapters.map((c) => c.label));
+    }
+    expect(
+      Object.values(legacyChapterAnchors).every((id) => canonicalChapters.some((c) => c.id === id)),
+    ).toBe(true);
+  });
+  it('rejects out-of-order chapters and pending coverage without a reason', () => {
+    const swapped = structuredClone(marxismo);
+    [swapped.chapters[2], swapped.chapters[3]] = [swapped.chapters[3], swapped.chapters[2]];
+    expect(ideologyPageSchema.safeParse(swapped).success).toBe(false);
+    const pending = structuredClone(marxismo) as typeof marxismo & {
+      chapters: { coverage?: string; gap: string | null; blocks: unknown[] }[];
+    };
+    pending.chapters[9].coverage = 'pending';
+    expect(ideologyPageSchema.safeParse(pending).success).toBe(false);
+    pending.chapters[9].blocks = [];
+    pending.chapters[9].gap = null;
+    expect(ideologyPageSchema.safeParse(pending).success).toBe(false);
   });
   it.each([anarquismo, socialDemocracia, liberalismo])(
     'accepts unpublished configuration for $title without a new renderer',

@@ -7,6 +7,9 @@
 
   <nav class="desktop-nav" aria-label="Capítulos">
     @for (section of sections(); track section.anchor; let index = $index) {
+      @if (section.group && section.group !== sections()[index - 1]?.group) {
+        <p class="index-group">{{ section.group }}</p>
+      }
       <a
         [href]="'#' + section.anchor"
         [attr.aria-current]="active() === section.anchor ? 'location' : null"
@@ -28,10 +31,14 @@
   <div class="mobile-picker">
     <label for="reading-chapter-picker">Ir para capítulo</label>
     <select id="reading-chapter-picker" (change)="selectChapter($event)">
-      @for (section of sections(); track section.anchor; let index = $index) {
-        <option [value]="section.anchor" [selected]="active() === section.anchor">
-          {{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }} · {{ section.title }}
-        </option>
+      @for (group of groups(); track $index) {
+        <optgroup [label]="group.label || 'Capítulos'">
+          @for (item of group.items; track item.section.anchor) {
+            <option [value]="item.section.anchor" [selected]="active() === item.section.anchor">
+              {{ item.index + 1 < 10 ? '0' : '' }}{{ item.index + 1 }} · {{ item.section.title }}
+            </option>
+          }
+        </optgroup>
       }
     </select>
   </div>

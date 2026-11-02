@@ -9,6 +9,7 @@ import { EditorialSourcesComponent } from '@ideologies/components/editorial-sour
 import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/ideology-block.component';
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
+import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
@@ -42,6 +43,14 @@ export class IdeologyPageComponent {
   private readonly injector = inject(Injector);
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
   readonly page = computed(() => this.state().dossier?.page);
+  readonly sections = computed(() =>
+    (this.page()?.chapters ?? []).map((c) => ({
+      anchor: c.anchor,
+      title: c.title,
+      minutes: c.minutes,
+      group: chapterGroup(c.id),
+    })),
+  );
   readonly minutes = computed(
     () => this.page()?.chapters.reduce((sum, c) => sum + c.minutes, 0) ?? 0,
   );

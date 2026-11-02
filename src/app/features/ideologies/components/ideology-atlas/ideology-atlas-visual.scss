@@ -141,6 +141,10 @@
   background: var(--color-ochre-paper);
   box-shadow: 0.6rem 0.6rem 0 var(--color-accent);
 }
+/* Red on ochre fails AA; links inside the panel read in ink. */
+.context-panel > * {
+  --color-accent: var(--color-ink);
+}
 .context-panel .eyebrow,
 .context-panel .back-button,
 .context-panel .source-link {
@@ -368,9 +372,6 @@ summary:focus-visible {
   }
   .entity-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-height: 25rem;
-    overflow-y: auto;
-    overscroll-behavior: contain;
     padding: 0.15rem 0.75rem 0.75rem 0.15rem;
     scroll-padding-block: 0.5rem;
   }

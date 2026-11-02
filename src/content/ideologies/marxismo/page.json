@@ -24,7 +24,7 @@
       "id": "introducao",
       "anchor": "introducao",
       "title": "Uma tradição em disputa",
-      "kicker": "Ponto de partida",
+      "kicker": "O que é?",
       "layout": "introduction",
       "minutes": 2,
       "narrative": [
@@ -62,15 +62,14 @@
       "bridge": "Da leitura desse mundo saem os conceitos centrais: trabalho, valor e história."
     },
     {
-      "id": "conceitos",
-      "anchor": "conceitos",
-      "title": "Trabalho, valor e sociedade",
-      "kicker": "Princípios e conceitos",
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Perguntas que organizam a tradição",
+      "kicker": "Pilares e princípios",
       "layout": "concepts",
-      "minutes": 5,
+      "minutes": 3,
       "narrative": [
-        "Como explicar as formas de produção e as relações sociais? Materialismo histórico e tempo de trabalho socialmente necessário abrem perguntas diferentes. O primeiro orienta interpretações da mudança histórica; o segundo participa da análise do valor em O capital.",
-        "Na teoria de Marx, o trabalho socialmente necessário não equivale ao tempo individual de qualquer produtor. A comparação abaixo permite ler essa formulação ao lado de Smith, sem tratar valor e preço como sinônimos."
+        "Como explicar as formas de produção e as relações sociais? Materialismo histórico e tempo de trabalho socialmente necessário abrem perguntas diferentes. O primeiro orienta interpretações da mudança histórica; o segundo participa da análise do valor em O capital."
       ],
       "sourceIds": ["source-v4-marx-sep", "source-marx-capital", "source-marx-smith"],
       "blocks": [
@@ -118,7 +117,24 @@
               "classification": "normativa"
             }
           ]
-        },
+        }
+      ],
+      "gap": null,
+      "question": "Que problemas Marx tenta explicar?",
+      "bridge": "Essas perguntas dependem de um vocabulário próprio: trabalho socialmente necessário, valor e materialismo histórico."
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Trabalho, valor e sociedade",
+      "kicker": "Conceitos e palavras-chave",
+      "layout": "concepts",
+      "minutes": 3,
+      "narrative": [
+        "Na teoria de Marx, o trabalho socialmente necessário não equivale ao tempo individual de qualquer produtor. A comparação abaixo permite ler essa formulação ao lado de Smith, sem tratar valor e preço como sinônimos."
+      ],
+      "sourceIds": ["source-v4-marx-sep", "source-marx-capital", "source-marx-smith"],
+      "blocks": [
         {
           "type": "entities",
           "entityIds": [
@@ -134,75 +150,27 @@
         }
       ],
       "gap": null,
-      "question": "O que explica o valor das coisas e a mudança histórica?",
-      "bridge": "Esses conceitos foram lidos, ampliados e contestados por muitas vozes diferentes."
+      "question": "O que explica o valor das coisas?",
+      "bridge": "Antes de ver quem desenvolveu esses conceitos, situe-os no tempo."
     },
     {
-      "id": "pensadores",
-      "anchor": "pensadores",
-      "title": "Vozes que não se confundem",
-      "kicker": "Pensadores e leituras",
-      "layout": "thinkers",
-      "minutes": 4,
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "Épocas de uma tradição",
+      "kicker": "História e épocas",
+      "layout": "concepts",
+      "minutes": 8,
       "narrative": [
-        "Uma tradição não pensa com uma só voz. Selecione um autor para consultar seu registro, período e fontes sem abandonar o percurso. A presença na seleção é um caminho de estudo; não implica concordância entre todas as pessoas.",
-        "Os retratos só aparecem quando o acervo registra licença e atribuição. Os dados biográficos importados são apresentados com sua proveniência e revisão pendente."
+        "O marxismo mudou de forma conforme mudaram as organizações, os países e as perguntas que o mobilizavam. A divisão em épocas abaixo é um recurso didático usado por historiadores da tradição; as fronteiras entre elas são aproximadas e discutíveis.",
+        "Abra cada época para ver o que estava em jogo, quem participou e onde conferir a fonte.",
+        "A sequência aproxima publicações, acontecimentos e organizações já registrados no acervo. A posição no eixo expressa data, não influência ou causalidade. Selecione um período e abra os itens para ler o contexto."
       ],
-      "sourceIds": ["source-v4-marx-sep"],
-      "blocks": [
-        {
-          "type": "entities",
-          "entityIds": [
-            "person-karl-marx",
-            "person-friedrich-engels",
-            "person-vladimir-lenin",
-            "person-rosa-luxemburg",
-            "person-eduard-bernstein",
-            "person-karl-kautsky",
-            "person-antonio-gramsci",
-            "person-leon-trotsky",
-            "person-joseph-stalin",
-            "person-mao-zedong",
-            "person-caio-prado-junior",
-            "person-luiz-carlos-prestes",
-            "person-florestan-fernandes",
-            "person-jose-carlos-mariategui"
-          ],
-          "mode": "thinkers",
-          "notes": {
-            "person-karl-marx": "Formula a crítica da economia política e a concepção materialista da história.",
-            "person-friedrich-engels": "Coautor do Manifesto e editor dos volumes póstumos de O capital.",
-            "person-vladimir-lenin": "Transforma a teoria em estratégia de partido e de tomada do Estado em 1917.",
-            "person-rosa-luxemburg": "Defende a revolução contra o reformismo e critica o autoritarismo bolchevique.",
-            "person-eduard-bernstein": "Propõe revisar Marx e chegar ao socialismo por reformas graduais.",
-            "person-karl-kautsky": "Principal sistematizador do marxismo da Segunda Internacional.",
-            "person-antonio-gramsci": "Explica a dominação pela hegemonia: coerção somada a consentimento.",
-            "person-leon-trotsky": "Teoriza a revolução permanente e critica a burocracia soviética.",
-            "person-joseph-stalin": "Impõe o socialismo em um só país e uma ortodoxia de Estado.",
-            "person-mao-zedong": "Desloca o protagonismo revolucionário para o campesinato.",
-            "person-caio-prado-junior": "Reinterpreta a formação colonial do Brasil com categorias marxistas.",
-            "person-luiz-carlos-prestes": "Dirigente comunista central na história política brasileira do século XX.",
-            "person-florestan-fernandes": "Analisa a revolução burguesa no Brasil e a dependência.",
-            "person-jose-carlos-mariategui": "Relaciona a questão indígena ao problema da terra no Peru."
-          }
-        }
+      "sourceIds": [
+        "source-hobsbawm-change-world",
+        "source-kolakowski-main-currents",
+        "source-v4-marx-sep"
       ],
-      "gap": null,
-      "question": "Quem herdou, revisou ou rompeu com Marx?",
-      "bridge": "Coloque essas vozes no tempo: obras e acontecimentos marcaram cada geração."
-    },
-    {
-      "id": "historia",
-      "anchor": "historia",
-      "title": "Textos e acontecimentos no tempo",
-      "kicker": "Desenvolvimento histórico",
-      "layout": "timeline",
-      "minutes": 3,
-      "narrative": [
-        "A sequência aproxima publicações, acontecimentos e organizações já registrados no acervo. A posição no eixo expressa data, não influência ou causalidade. Selecione um período e abra os itens para ler o contexto.",
-        "As datas de início de acontecimentos e instituições não indicam duração. Esta amostra ainda não substitui uma história das experiências políticas, de seus conflitos ou de seus resultados."
-      ],
-      "sourceIds": ["source-v4-marx-sep"],
+      "gap": "A periodização segue sínteses europeias. A história do marxismo na Ásia, na África e na América Latina exige bibliografia própria, ainda não incorporada a este recorte. A história dos governos, partidos e experiências nacionais exige bibliografia específica. Não há base editorial suficiente neste snapshot para uma avaliação comparativa.",
       "blocks": [
         {
           "type": "timeline",
@@ -214,26 +182,7 @@
             "institution-second-international",
             "event-russian-revolution"
           ]
-        }
-      ],
-      "gap": "A história dos governos, partidos e experiências nacionais exige bibliografia específica. Não há base editorial suficiente neste snapshot para uma avaliação comparativa.",
-      "question": "Quais textos e acontecimentos marcaram a tradição?",
-      "bridge": "Agrupados, esses marcos formam épocas com perguntas próprias."
-    },
-    {
-      "id": "epocas",
-      "anchor": "epocas",
-      "title": "Épocas de uma tradição",
-      "kicker": "Períodos e organizações",
-      "layout": "concepts",
-      "minutes": 5,
-      "narrative": [
-        "O marxismo mudou de forma conforme mudaram as organizações, os países e as perguntas que o mobilizavam. A divisão em épocas abaixo é um recurso didático usado por historiadores da tradição; as fronteiras entre elas são aproximadas e discutíveis.",
-        "Abra cada época para ver o que estava em jogo, quem participou e onde conferir a fonte."
-      ],
-      "sourceIds": ["source-hobsbawm-change-world", "source-kolakowski-main-currents"],
-      "gap": "A periodização segue sínteses europeias. A história do marxismo na Ásia, na África e na América Latina exige bibliografia própria, ainda não incorporada a este recorte.",
-      "blocks": [
+        },
         {
           "type": "chronology",
           "epochs": [
@@ -400,96 +349,68 @@
         }
       ],
       "question": "Como uma teoria virou partidos, Estados e escolas de pensamento?",
-      "bridge": "Essas épocas aconteceram em cidades concretas."
+      "bridge": "Essas épocas têm autores; muitos deles discordaram entre si.",
+      "coverage": "partial"
     },
     {
-      "id": "lugares",
-      "anchor": "lugares",
-      "title": "Onde a tradição aconteceu",
-      "kicker": "Cidades e territórios",
-      "layout": "documents",
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Vozes que não se confundem",
+      "kicker": "Pensadores e obras",
+      "layout": "thinkers",
       "minutes": 4,
       "narrative": [
-        "Ideias circulam por cidades, exílios, bibliotecas, fábricas e prisões. Estes lugares ajudam a situar a tradição no espaço; não formam um mapa completo nem sugerem que tudo começou ou terminou neles."
+        "Uma tradição não pensa com uma só voz. Selecione um autor para consultar seu registro, período e fontes sem abandonar o percurso. A presença na seleção é um caminho de estudo; não implica concordância entre todas as pessoas.",
+        "Os retratos só aparecem quando o acervo registra licença e atribuição. Os dados biográficos importados são apresentados com sua proveniência e revisão pendente."
       ],
-      "sourceIds": ["source-v4-marx-sep", "source-hobsbawm-change-world"],
-      "gap": "O recorte de lugares não inclui coordenadas nem mapa: o acervo ainda não registra dados geográficos verificados para estes pontos.",
+      "sourceIds": ["source-v4-marx-sep"],
       "blocks": [
         {
-          "type": "explorations",
-          "mode": "principles",
-          "items": [
-            {
-              "id": "place-london",
-              "title": "Londres",
-              "kicker": "Exílio · de 1849 a 1883",
-              "summary": "Onde Marx viveu exilado e pesquisou para O capital.",
-              "paragraphs": [
-                "Marx se mudou para Londres em 1849 e viveu ali até a morte, em 1883. A pesquisa para O capital apoiou-se na economia política britânica e em relatórios oficiais sobre as condições de trabalho."
-              ],
-              "sourceIds": ["source-v4-marx-sep"],
-              "entityIds": ["person-karl-marx", "work-capital-volume-i"],
-              "classification": "alegação empírica"
-            },
-            {
-              "id": "place-paris",
-              "title": "Paris",
-              "kicker": "Comuna · 1871",
-              "summary": "Cidade da Comuna, que Marx interpretou como forma de governo operário.",
-              "paragraphs": [
-                "Entre março e maio de 1871, a Comuna governou Paris até ser reprimida pelo governo de Versalhes. Marx a analisou em A guerra civil na França; anarquistas e marxistas disputaram seu legado."
-              ],
-              "sourceIds": ["source-marx-civil-war-france"],
-              "entityIds": ["event-paris-commune"],
-              "classification": "tese atribuída"
-            },
-            {
-              "id": "place-petrograd",
-              "title": "Petrogrado",
-              "kicker": "Revolução · 1917",
-              "summary": "Cenário das revoluções de fevereiro e outubro de 1917.",
-              "paragraphs": [
-                "Na capital do Império Russo, a revolução de fevereiro derrubou o czarismo e a de outubro levou os bolcheviques ao poder. Lenin escreveu O Estado e a revolução nesse ano."
-              ],
-              "sourceIds": ["source-v4-lenin"],
-              "entityIds": ["event-russian-revolution", "person-vladimir-lenin"],
-              "classification": "alegação empírica"
-            },
-            {
-              "id": "place-turin",
-              "title": "Turim e a prisão",
-              "kicker": "Conselhos de fábrica · 1919–1920; cárcere · 1926–1937",
-              "summary": "Das ocupações de fábrica aos Cadernos escritos na prisão.",
-              "paragraphs": [
-                "Gramsci acompanhou o movimento dos conselhos de fábrica em Turim. Preso pelo regime fascista em 1926, redigiu na prisão os cadernos publicados postumamente."
-              ],
-              "sourceIds": ["source-gramsci-quaderni"],
-              "entityIds": ["person-antonio-gramsci"],
-              "classification": "alegação empírica"
-            },
-            {
-              "id": "place-lima",
-              "title": "Lima",
-              "kicker": "Amauta · 1926–1930",
-              "summary": "Onde Mariátegui editou a revista Amauta e escreveu os Sete ensaios.",
-              "paragraphs": [
-                "Mariátegui fundou a revista Amauta em 1926 e publicou os Sete ensaios em 1928, em diálogo com o indigenismo peruano e com o marxismo europeu."
-              ],
-              "sourceIds": ["source-mariategui-siete-ensayos"],
-              "entityIds": ["person-jose-carlos-mariategui"],
-              "classification": "alegação empírica"
-            }
-          ]
+          "type": "entities",
+          "entityIds": [
+            "person-karl-marx",
+            "person-friedrich-engels",
+            "person-vladimir-lenin",
+            "person-rosa-luxemburg",
+            "person-eduard-bernstein",
+            "person-karl-kautsky",
+            "person-antonio-gramsci",
+            "person-leon-trotsky",
+            "person-joseph-stalin",
+            "person-mao-zedong",
+            "person-caio-prado-junior",
+            "person-luiz-carlos-prestes",
+            "person-florestan-fernandes",
+            "person-jose-carlos-mariategui"
+          ],
+          "mode": "thinkers",
+          "notes": {
+            "person-karl-marx": "Formula a crítica da economia política e a concepção materialista da história.",
+            "person-friedrich-engels": "Coautor do Manifesto e editor dos volumes póstumos de O capital.",
+            "person-vladimir-lenin": "Transforma a teoria em estratégia de partido e de tomada do Estado em 1917.",
+            "person-rosa-luxemburg": "Defende a revolução contra o reformismo e critica o autoritarismo bolchevique.",
+            "person-eduard-bernstein": "Propõe revisar Marx e chegar ao socialismo por reformas graduais.",
+            "person-karl-kautsky": "Principal sistematizador do marxismo da Segunda Internacional.",
+            "person-antonio-gramsci": "Explica a dominação pela hegemonia: coerção somada a consentimento.",
+            "person-leon-trotsky": "Teoriza a revolução permanente e critica a burocracia soviética.",
+            "person-joseph-stalin": "Impõe o socialismo em um só país e uma ortodoxia de Estado.",
+            "person-mao-zedong": "Desloca o protagonismo revolucionário para o campesinato.",
+            "person-caio-prado-junior": "Reinterpreta a formação colonial do Brasil com categorias marxistas.",
+            "person-luiz-carlos-prestes": "Dirigente comunista central na história política brasileira do século XX.",
+            "person-florestan-fernandes": "Analisa a revolução burguesa no Brasil e a dependência.",
+            "person-jose-carlos-mariategui": "Relaciona a questão indígena ao problema da terra no Peru."
+          }
         }
       ],
-      "question": "Em que lugares a tradição se formou e se dividiu?",
-      "bridge": "Das cidades e épocas surgem vertentes que discordam entre si."
+      "gap": null,
+      "question": "Quem herdou, revisou ou rompeu com Marx?",
+      "bridge": "Das divergências entre essas vozes surgem vertentes distintas."
     },
     {
-      "id": "correntes",
-      "anchor": "correntes",
+      "id": "vertentes",
+      "anchor": "vertentes",
       "title": "Concordar com Marx não encerra o debate",
-      "kicker": "Correntes e divergências",
+      "kicker": "Correntes e vertentes",
       "layout": "graph",
       "minutes": 4,
       "narrative": [
@@ -622,13 +543,97 @@
       ],
       "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte.",
       "question": "Reforma ou revolução? Partido, Estado ou cultura?",
-      "bridge": "Às divergências internas somam-se críticas vindas de fora da tradição."
+      "bridge": "As vertentes se formaram em experiências concretas, em cidades e países."
     },
     {
-      "id": "criticas",
-      "anchor": "criticas",
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Onde a tradição aconteceu",
+      "kicker": "Experiências históricas",
+      "layout": "documents",
+      "minutes": 4,
+      "narrative": [
+        "Ideias circulam por cidades, exílios, bibliotecas, fábricas e prisões. Estes lugares ajudam a situar a tradição no espaço; não formam um mapa completo nem sugerem que tudo começou ou terminou neles."
+      ],
+      "sourceIds": ["source-v4-marx-sep", "source-hobsbawm-change-world"],
+      "gap": "O recorte de lugares não inclui coordenadas nem mapa: o acervo ainda não registra dados geográficos verificados para estes pontos.",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "place-london",
+              "title": "Londres",
+              "kicker": "Exílio · de 1849 a 1883",
+              "summary": "Onde Marx viveu exilado e pesquisou para O capital.",
+              "paragraphs": [
+                "Marx se mudou para Londres em 1849 e viveu ali até a morte, em 1883. A pesquisa para O capital apoiou-se na economia política britânica e em relatórios oficiais sobre as condições de trabalho."
+              ],
+              "sourceIds": ["source-v4-marx-sep"],
+              "entityIds": ["person-karl-marx", "work-capital-volume-i"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "place-paris",
+              "title": "Paris",
+              "kicker": "Comuna · 1871",
+              "summary": "Cidade da Comuna, que Marx interpretou como forma de governo operário.",
+              "paragraphs": [
+                "Entre março e maio de 1871, a Comuna governou Paris até ser reprimida pelo governo de Versalhes. Marx a analisou em A guerra civil na França; anarquistas e marxistas disputaram seu legado."
+              ],
+              "sourceIds": ["source-marx-civil-war-france"],
+              "entityIds": ["event-paris-commune"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "place-petrograd",
+              "title": "Petrogrado",
+              "kicker": "Revolução · 1917",
+              "summary": "Cenário das revoluções de fevereiro e outubro de 1917.",
+              "paragraphs": [
+                "Na capital do Império Russo, a revolução de fevereiro derrubou o czarismo e a de outubro levou os bolcheviques ao poder. Lenin escreveu O Estado e a revolução nesse ano."
+              ],
+              "sourceIds": ["source-v4-lenin"],
+              "entityIds": ["event-russian-revolution", "person-vladimir-lenin"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "place-turin",
+              "title": "Turim e a prisão",
+              "kicker": "Conselhos de fábrica · 1919–1920; cárcere · 1926–1937",
+              "summary": "Das ocupações de fábrica aos Cadernos escritos na prisão.",
+              "paragraphs": [
+                "Gramsci acompanhou o movimento dos conselhos de fábrica em Turim. Preso pelo regime fascista em 1926, redigiu na prisão os cadernos publicados postumamente."
+              ],
+              "sourceIds": ["source-gramsci-quaderni"],
+              "entityIds": ["person-antonio-gramsci"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "place-lima",
+              "title": "Lima",
+              "kicker": "Amauta · 1926–1930",
+              "summary": "Onde Mariátegui editou a revista Amauta e escreveu os Sete ensaios.",
+              "paragraphs": [
+                "Mariátegui fundou a revista Amauta em 1926 e publicou os Sete ensaios em 1928, em diálogo com o indigenismo peruano e com o marxismo europeu."
+              ],
+              "sourceIds": ["source-mariategui-siete-ensayos"],
+              "entityIds": ["person-jose-carlos-mariategui"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ],
+      "question": "Em que lugares a tradição se formou e se dividiu?",
+      "bridge": "Às divergências internas somam-se críticas vindas de fora da tradição.",
+      "coverage": "partial"
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
       "title": "Uma teoria também é uma pergunta",
-      "kicker": "Críticas e debates",
+      "kicker": "Argumentos, críticas e respostas",
       "layout": "debate",
       "minutes": 3,
       "narrative": [
@@ -830,13 +835,35 @@
       ],
       "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria.",
       "question": "O que os críticos de dentro e de fora apontam como falha?",
-      "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria."
+      "bridge": "Para além das críticas, o marxismo dialoga com outras tradições."
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Acervo: registros, rede e imagens",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 3,
+      "question": "Com quais pessoas, obras e tradições o marxismo se relaciona?",
+      "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria.",
+      "narrative": [
+        "Este acervo reúne registros importados da Wikipedia, do Wikidata e do Commons. As ligações enciclopédicas ajudam a descobrir, mas não equivalem a relações historiográficas validadas."
+      ],
+      "sourceIds": [],
+      "gap": "Relações tipadas com outras tradições (liberalismo, anarquismo, social-democracia) ainda não foram documentadas com fontes; o acervo abaixo serve à descoberta.",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "atlas",
+          "rootEntityId": "ideology-marxism"
+        }
+      ],
+      "coverage": "partial"
     },
     {
       "id": "leituras",
       "anchor": "leituras",
       "title": "Roteiro de leituras",
-      "kicker": "Livros por nível e tema",
+      "kicker": "Roteiro de leitura",
       "layout": "documents",
       "minutes": 3,
       "question": "Por onde começar a ler Marx e seus herdeiros?",
@@ -988,7 +1015,7 @@
       "id": "fontes",
       "anchor": "fontes",
       "title": "Voltar à evidência",
-      "kicker": "Fontes e aprofundamento",
+      "kicker": "Fontes e metodologia",
       "layout": "sources",
       "minutes": 2,
       "narrative": [

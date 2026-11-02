@@ -64,7 +64,7 @@ test('build is deterministic offline and emits search, directed adjacency and st
     x: 460,
     y: 286,
   });
-  assert.ok(layouts.editorial.marxismo.graphs['correntes-1'].nodes.length > 0);
+  assert.ok(layouts.editorial.marxismo.graphs['vertentes-1'].nodes.length > 0);
   assert.equal(
     Object.keys(layouts.exploration.networks.all.nodes).length,
     (await readSourceGraph()).atlases.flatMap((a) => a.entities).length,

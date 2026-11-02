@@ -9,18 +9,37 @@ describe('IdeologyReadingIndexComponent', () => {
     const fixture = TestBed.createComponent(IdeologyReadingIndexComponent);
     fixture.componentRef.setInput('sections', [
       { anchor: 'origens', title: 'Origens', minutes: 4 },
-      { anchor: 'correntes', title: 'Correntes' },
+      { anchor: 'vertentes', title: 'Correntes' },
     ]);
-    fixture.componentRef.setInput('active', 'correntes');
+    fixture.componentRef.setInput('active', 'vertentes');
     fixture.componentRef.setInput('progress', 42);
     fixture.detectChanges();
 
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector<HTMLProgressElement>('progress')?.value).toBe(42);
     expect(root.querySelector('[aria-current="location"]')?.textContent).toContain('Correntes');
-    expect(root.querySelector<HTMLSelectElement>('select')?.value).toBe('correntes');
+    expect(root.querySelector<HTMLSelectElement>('select')?.value).toBe('vertentes');
     expect(root.textContent).toContain('~4 min');
     expect(root.textContent).not.toContain('minundefined');
+  });
+
+  it('labels canonical groups once in the sidebar and as optgroups in the mobile picker', () => {
+    const fixture = TestBed.createComponent(IdeologyReadingIndexComponent);
+    fixture.componentRef.setInput('sections', [
+      { anchor: 'introducao', title: 'O que é?', group: 'Entender' },
+      { anchor: 'origens', title: 'Origens', group: 'Entender' },
+      { anchor: 'epocas', title: 'Épocas', group: 'Situar' },
+    ]);
+    fixture.detectChanges();
+
+    const root = fixture.nativeElement as HTMLElement;
+    expect([...root.querySelectorAll('.index-group')].map((g) => g.textContent?.trim())).toEqual([
+      'Entender',
+      'Situar',
+    ]);
+    const groups = [...root.querySelectorAll('optgroup')];
+    expect(groups.map((g) => g.label)).toEqual(['Entender', 'Situar']);
+    expect(groups[0].querySelectorAll('option')).toHaveLength(2);
   });
 
   it('emits chapter selection, previous-point, and reduced-motion actions', () => {

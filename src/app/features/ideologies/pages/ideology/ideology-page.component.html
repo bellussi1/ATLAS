@@ -4,7 +4,7 @@
     [attr.data-accent]="page.identity.accent"
     aria-labelledby="ideology-title"
   >
-    <app-ideology-reading #reading [sections]="page.chapters">
+    <app-ideology-reading #reading [sections]="sections()">
       <header readingOpening class="ideology-opening">
         <div class="opening-copy">
           <a routerLink="/" class="back-link">← Página inicial</a>
@@ -64,6 +64,7 @@
           class="ideology-chapter"
           [id]="chapter.anchor"
           [attr.data-layout]="chapter.layout"
+          [attr.data-coverage]="chapter.coverage"
           tabindex="-1"
           [attr.aria-labelledby]="'title-' + chapter.id"
         >
@@ -90,7 +91,16 @@
             }
           </div>
           @if (chapter.gap) {
-            <p class="editorial-gap"><strong>Limite deste recorte.</strong> {{ chapter.gap }}</p>
+            <p class="editorial-gap" [attr.data-coverage]="chapter.coverage">
+              <strong>{{
+                chapter.coverage === 'pending'
+                  ? 'Cobertura pendente.'
+                  : chapter.coverage === 'partial'
+                    ? 'Cobertura parcial.'
+                    : 'Limite deste recorte.'
+              }}</strong>
+              {{ chapter.gap }}
+            </p>
           }
           @for (block of chapter.blocks; track $index; let blockIndex = $index) {
             <app-ideology-block
