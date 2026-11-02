@@ -1,7 +1,9 @@
 :host {
   display: block;
   --home-inline: max(var(--grid-gutter), calc((100% - var(--grid-max)) / 2 + var(--grid-gutter)));
+  background-color: var(--tint, var(--color-canvas));
   overflow-x: clip;
+  transition: background-color var(--motion-slow) var(--ease-out);
 }
 
 .poster {
@@ -122,21 +124,13 @@ form {
 .exploration-actions a + a {
   background: var(--color-teal-paper);
 }
-@media (hover: hover) and (pointer: fine) {
-  .recompose:hover,
-  .search-button:hover,
-  .exploration-actions a:hover {
-    background: var(--color-canvas);
-    color: var(--color-accent);
-  }
-}
 .console :focus-visible {
   outline-color: var(--color-ochre-paper);
 }
 
 .readings,
 .method {
-  padding: clamp(3rem, 7vw, 6rem) var(--home-inline) 0;
+  padding: clamp(3rem, 7vw, 6rem) var(--home-inline);
 }
 .reading-table {
   display: grid;
@@ -202,11 +196,6 @@ form {
 }
 .cover-choice[aria-pressed='false'] strong span {
   -webkit-text-stroke: 0;
-}
-@media (hover: hover) and (pointer: fine) {
-  .cover-choice[aria-pressed='false']:hover strong {
-    color: var(--color-surface-subtle);
-  }
 }
 .reading-sheet {
   display: grid;
@@ -277,15 +266,7 @@ form {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
-@media (hover: hover) and (pointer: fine) {
-  .sheet-action:hover {
-    background: var(--color-ink);
-  }
-}
 
-.method {
-  padding-bottom: clamp(3rem, 7vw, 6rem);
-}
 .method h2 {
   margin: 0 0 1.5rem;
   font: 0.8rem/1.5 var(--font-mono);
@@ -330,6 +311,20 @@ form {
   border-radius: 50% 0;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .recompose:hover,
+  .search-button:hover,
+  .exploration-actions a:hover {
+    background: var(--color-canvas);
+    color: var(--color-accent);
+  }
+  .cover-choice[aria-pressed='false']:hover strong {
+    color: var(--color-surface-subtle);
+  }
+  .sheet-action:hover {
+    background: var(--color-ink);
+  }
+}
 @media (max-width: 60rem) {
   .console,
   .reading-table {

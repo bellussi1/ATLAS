@@ -72,6 +72,12 @@
   --color-danger-surface: #f5e4e1;
   --color-teal-paper: #7fbdb5;
   --color-ochre-paper: #eec35a;
+  /* Section tints for scroll-driven pages (home and readings share the same steps). */
+  --tint-1: color-mix(in srgb, var(--color-ochre-paper) 22%, var(--color-canvas));
+  --tint-2: color-mix(in srgb, var(--color-teal-paper) 22%, var(--color-canvas));
+  --tint-3: color-mix(in srgb, var(--color-rose-paper) 26%, var(--color-canvas));
+  --tint-4: color-mix(in srgb, var(--color-indigo) 9%, var(--color-canvas));
+  --tint-5: color-mix(in srgb, var(--color-orange-paper) 16%, var(--color-canvas));
   --color-rose-paper: #eab0c2;
   --color-indigo: #363a5f;
   --color-orange-paper: #ef8a3a;

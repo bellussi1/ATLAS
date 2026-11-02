@@ -1,4 +1,14 @@
-import { Component, type ElementRef, inject, signal, viewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  afterNextRender,
+  Component,
+  computed,
+  DestroyRef,
+  ElementRef,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
@@ -19,9 +29,22 @@ import { ExplorationToolsComponent } from './exploration-tools/exploration-tools
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
+  host: {
+    '[attr.data-tone]': 'tone()',
+    '[style.--tint]': 'tint()',
+  },
 })
 export class HomePage {
   private readonly router = inject(Router);
+  private readonly document = inject(DOCUMENT);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly destroyRef = inject(DestroyRef);
+  /** The poster keeps the base colour; each later section tints the page, as in the readings. */
+  readonly tone = signal(0);
+  /** Base colour for the poster, then one tint per section step (`--tint-n` in styles.scss). */
+  readonly tint = computed(() =>
+    this.tone() ? `var(--tint-${this.tone()})` : 'var(--color-canvas)',
+  );
   readonly query = signal('');
   readonly seed = signal(7);
   readonly readings = [
@@ -65,6 +88,38 @@ export class HomePage {
   readonly selected = signal(this.readings[0]);
   readonly sheet = viewChild<ElementRef<HTMLElement>>('sheet');
   private selectionMotion?: Animation;
+
+  constructor() {
+    afterNextRender(() => {
+      const win = this.document.defaultView;
+      if (!win || typeof win.requestAnimationFrame !== 'function') return;
+      let frame = 0;
+      const measure = () => {
+        const sections =
+          this.host.nativeElement.querySelectorAll<HTMLElement>('[data-tone-section]');
+        let active = 0;
+        sections.forEach((section, index) => {
+          if (section.getBoundingClientRect().top < 150) active = index;
+        });
+        this.tone.set(active % 6);
+      };
+      const schedule = () => {
+        if (!frame)
+          frame = win.requestAnimationFrame(() => {
+            frame = 0;
+            measure();
+          });
+      };
+      win.addEventListener('scroll', schedule, { passive: true });
+      win.addEventListener('resize', schedule);
+      schedule();
+      this.destroyRef.onDestroy(() => {
+        win.removeEventListener('scroll', schedule);
+        win.removeEventListener('resize', schedule);
+        win.cancelAnimationFrame(frame);
+      });
+    });
+  }
 
   readonly entryPath = (_type: string, slug: string) => '/' + slug;
 

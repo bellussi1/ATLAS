@@ -1,4 +1,4 @@
-<section class="poster" aria-labelledby="home-title">
+<section class="poster" aria-labelledby="home-title" data-tone-section>
   <div class="poster-copy">
     <p class="poster-kicker atlas-label">
       Enciclopédia visual · história, política, economia e sociedade
@@ -26,7 +26,7 @@
   </div>
 </section>
 
-<section class="console" aria-label="Busca e ferramentas">
+<section class="console" aria-label="Busca e ferramentas" data-tone-section>
   <form role="search" aria-label="Busca no ATLAS" (submit)="search($event)">
     <app-text-field
       controlId="atlas-search"
@@ -48,7 +48,7 @@
   </nav>
 </section>
 
-<section class="readings" aria-labelledby="readings-title">
+<section class="readings" aria-labelledby="readings-title" data-tone-section>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
     <p class="atlas-band-number" aria-hidden="true">A</p>
     <h2 id="readings-title">Duas leituras, <em>uma enciclopédia.</em></h2>
@@ -113,9 +113,9 @@
   <p class="sr-only" role="status">Na mesa: {{ selected().title }}.</p>
 </section>
 
-<app-exploration-tools />
+<app-exploration-tools data-tone-section />
 
-<section class="method" aria-labelledby="method-title">
+<section class="method" aria-labelledby="method-title" data-tone-section>
   <h2 id="method-title">Como ler o ATLAS</h2>
   <ol appReveal>
     <li data-stagger style="--stagger: 0">
