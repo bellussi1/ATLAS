@@ -111,3 +111,50 @@ describe('V4 page contract and editorial integrity', () => {
     expect(safeDiscoveryOrigin('/ideologias/marxismo?redirect=https://evil.example')).toBeNull();
   });
 });
+
+describe('positions layer', () => {
+  const claim = {
+    id: 'claim-test',
+    entityId: 'person-karl-marx',
+    axisId: 'propriedade',
+    value: -0.5,
+    confidence: 'média',
+    classification: 'tese atribuída',
+    statement: 'afirmação de teste',
+    sourceIds: ['source-marx-manifesto-1848'],
+    editorialStatus: 'pending',
+  };
+  it('accepts sourced, pending claims on known axes and entities', () => {
+    const graph = structuredClone(supplement);
+    graph.positions = [claim];
+    expect(() => validateIdeologyDossier(marxismo, graph, methodologyKnowledgeGraph)).not.toThrow();
+  });
+  it('refuses claims without a source, outside the scale, on unknown axes or already reviewed', () => {
+    for (const bad of [
+      { ...claim, sourceIds: [] },
+      { ...claim, value: -1.5 },
+      { ...claim, axisId: 'fé' },
+      { ...claim, editorialStatus: 'revisado' },
+    ]) {
+      const graph = structuredClone(supplement);
+      graph.positions = [bad as never];
+      expect(() => validateIdeologyDossier(marxismo, graph, methodologyKnowledgeGraph)).toThrow();
+    }
+  });
+  it('refuses a claim whose source does not exist', () => {
+    const graph = structuredClone(supplement);
+    graph.positions = [{ ...claim, sourceIds: ['source-inexistente'] }];
+    expect(() => validateIdeologyDossier(marxismo, graph, methodologyKnowledgeGraph)).toThrow(
+      'Referência editorial inexistente.',
+    );
+  });
+  it('publishes the seeded Marxism claims with resolvable sources and pending review', () => {
+    const page = validateIdeologyDossier(marxismo, supplement, methodologyKnowledgeGraph);
+    expect(page.supplement.positions.length).toBeGreaterThan(0);
+    expect(page.supplement.positions.every((c) => c.editorialStatus === 'pending')).toBe(true);
+    const block = page.page.chapters
+      .find((c) => c.id === 'debates')!
+      .blocks.find((b) => b.type === 'positions');
+    expect(block).toBeDefined();
+  });
+});

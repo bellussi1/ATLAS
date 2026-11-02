@@ -2,6 +2,7 @@ import { type KnowledgeGraph, sourceSchema } from '@core/content/models/content-
 import { z } from 'zod';
 
 import { canonicalChapters } from './ideology-chapters';
+import { positionAxisIds } from './position-axes';
 
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/);
 export const ideologyEdgeSchema = z
@@ -105,7 +106,21 @@ export const pageBlockSchema = z.discriminatedUnion('type', [
   z.object({ type: z.literal('graph'), edgeIds: z.array(id) }),
   z.object({ type: z.literal('argument'), topic: z.literal('smith-marx') }),
   z.object({ type: z.literal('sources'), sourceIds: z.array(id) }),
+  z.object({ type: z.literal('positions'), entityIds: z.array(id).min(1) }),
 ]);
+/** One attributed statement that places an entity on one analytic axis. */
+export const positionClaimSchema = z.object({
+  id,
+  entityId: id,
+  axisId: z.enum(positionAxisIds),
+  value: z.number().min(-1).max(1),
+  confidence: z.enum(['alta', 'média', 'baixa']),
+  classification: z.enum(['tese atribuída', 'interpretação', 'hipótese']),
+  statement: z.string().min(1),
+  sourceIds: z.array(id).min(1),
+  editorialStatus: z.literal('pending'),
+});
+export type PositionClaim = z.infer<typeof positionClaimSchema>;
 export const ideologyPageSchema = z
   .object({
     schemaVersion: z.literal(1),
@@ -204,6 +219,7 @@ export const ideologyPageSchema = z
 export const ideologyGraphSchema = z.object({
   sources: z.array(sourceSchema),
   edges: z.array(ideologyEdgeSchema),
+  positions: z.array(positionClaimSchema).default([]),
 });
 export type IdeologyPage = z.infer<typeof ideologyPageSchema>;
 export type PageBlock = z.infer<typeof pageBlockSchema>;
@@ -244,6 +260,10 @@ export function validateIdeologyDossier(
   for (const edge of supplement.edges) {
     requireIds([edge.from, edge.to], entities);
     requireIds(edge.sources, sources);
+  }
+  for (const claim of supplement.positions) {
+    requireIds([claim.entityId], entities);
+    requireIds(claim.sourceIds, sources);
   }
   const itemIds = new Set(
     page.chapters.flatMap((c) =>

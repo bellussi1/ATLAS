@@ -144,5 +144,51 @@
       "sources": ["source-marx-critique"],
       "certainty": "estabelecida"
     }
+  ],
+  "positions": [
+    {
+      "id": "claim-bernstein-revolucao-preface",
+      "entityId": "person-eduard-bernstein",
+      "axisId": "revolucao",
+      "value": 0.8,
+      "confidence": "alta",
+      "classification": "tese atribuída",
+      "statement": "No prefácio de 1899, afirma que, para ele, o movimento significa tudo e o chamado fim último do socialismo, nada; prioriza os deveres do presente.",
+      "sourceIds": ["source-bernstein-preface"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-bernstein-revolucao-luxemburg",
+      "entityId": "person-eduard-bernstein",
+      "axisId": "revolucao",
+      "value": 0.7,
+      "confidence": "média",
+      "classification": "interpretação",
+      "statement": "Segundo a crítica de Luxemburg, a posição de Bernstein faz das reformas sociais o próprio objetivo, e não o meio da luta de classes. É uma leitura atribuída à autora, não a fala de Bernstein.",
+      "sourceIds": ["source-v4-luxemburg"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-luxemburg-revolucao-intro",
+      "entityId": "person-rosa-luxemburg",
+      "axisId": "revolucao",
+      "value": -0.8,
+      "confidence": "alta",
+      "classification": "tese atribuída",
+      "statement": "Na introdução de 1900, afirma que a luta por reformas é o meio e a revolução social, o objetivo.",
+      "sourceIds": ["source-v4-luxemburg"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-marx-propriedade-manifesto",
+      "entityId": "person-karl-marx",
+      "axisId": "propriedade",
+      "value": -0.8,
+      "confidence": "média",
+      "classification": "tese atribuída",
+      "statement": "No Manifesto de 1848, resume a teoria comunista como a abolição da propriedade privada, com foco na propriedade do capital e dos meios de produção.",
+      "sourceIds": ["source-marx-manifesto-1848"],
+      "editorialStatus": "pending"
+    }
   ]
 }

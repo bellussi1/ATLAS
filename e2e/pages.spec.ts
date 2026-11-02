@@ -292,3 +292,20 @@ test('retired /rede and /comparar redirect to the archive search', async ({ page
     await expect(page).toHaveURL(/\/conhecimento/);
   }
 });
+
+test('debates show estimated positions with their evidence, in words and not only colour', async ({
+  page,
+}) => {
+  await page.goto('/marxismo/');
+  const positions = page.locator('#debates section.positions');
+  await expect(positions).toBeVisible();
+  await expect(positions.getByRole('heading', { name: 'Posições estimadas' })).toBeVisible();
+  await expect(positions.locator('[data-status="estimada"]').first()).toContainText(
+    'estimada em 0,76',
+  );
+  await expect(positions).toContainText('Não são fatos históricos');
+  await expect(positions.locator('[role="img"]').first()).toHaveAttribute(
+    'aria-label',
+    /Eduard Bernstein, Método de mudança social/,
+  );
+});

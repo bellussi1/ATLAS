@@ -1,0 +1,70 @@
+.positions {
+  margin-block: 1.5rem;
+  padding-top: 1rem;
+  border-top: 3px solid var(--color-ink);
+}
+.positions-note,
+.positions-summary {
+  max-width: none;
+  font: 0.9rem/1.5 var(--font-sans);
+}
+.entities {
+  display: grid;
+  gap: 1rem;
+}
+.entity h4 {
+  margin: 0.5rem 0;
+  font: 700 1.05rem/1.2 var(--font-serif);
+}
+.entity ul {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.entity li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 0.2rem 1rem;
+  font-size: 0.85rem;
+}
+.axis-name {
+  font-weight: 600;
+}
+.poles,
+.status {
+  grid-column: 1 / -1;
+  color: var(--color-ink-muted);
+  font: 0.75rem/1.4 var(--font-mono);
+}
+.track {
+  position: relative;
+  height: 0.75rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-surface-subtle);
+}
+.range {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--color-teal-paper);
+}
+.marker {
+  position: absolute;
+  top: -0.3rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: -0.375rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+}
+li[data-status='estimada'] .marker {
+  background: var(--color-ink);
+}
+li[data-status='divergente'] .marker {
+  background: var(--color-accent);
+}
+li[data-status='indicativa'] .marker {
+  border-style: dashed;
+}

@@ -348,6 +348,12 @@
       }
     }
   }
+  @case ('positions') {
+    <app-positions-estimate
+      [entities]="positionEntities()"
+      [claims]="dossier().supplement.positions"
+    />
+  }
   @case ('sources') {
     <label class="source-search" [for]="blockId() + '-search'"
       >Filtrar referências<input

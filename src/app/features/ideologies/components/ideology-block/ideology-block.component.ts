@@ -11,6 +11,7 @@ import {
 } from '@ideologies/components/era-chart/era-chart.component';
 import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
+import { PositionsEstimateComponent } from '@ideologies/components/positions-estimate/positions-estimate.component';
 import { ReadingPathComponent } from '@ideologies/components/reading-path/reading-path.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
@@ -35,6 +36,7 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
     EraChartComponent,
     IdeologyAtlasComponent,
     ReadingPathComponent,
+    PositionsEstimateComponent,
   ],
   templateUrl: './ideology-block.component.html',
   styleUrls: [
@@ -61,6 +63,13 @@ export class IdeologyBlockComponent {
   private readonly router = inject(Router);
   readonly params = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,
+  });
+  /** Entities named by a positions block, with the titles shown to the reader. */
+  readonly positionEntities = computed(() => {
+    const block = this.block();
+    return block.type === 'positions'
+      ? block.entityIds.map((id) => ({ id, title: this.entity(id)?.title ?? id }))
+      : [];
   });
   readonly entities = computed(() => {
     const block = this.block();

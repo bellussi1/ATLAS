@@ -785,6 +785,10 @@
           ]
         },
         {
+          "type": "positions",
+          "entityIds": ["person-eduard-bernstein", "person-rosa-luxemburg", "person-karl-marx"]
+        },
+        {
           "type": "entities",
           "mode": "documents",
           "entityIds": [

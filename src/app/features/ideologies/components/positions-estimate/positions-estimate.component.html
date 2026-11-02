@@ -1,0 +1,41 @@
+<section class="positions" aria-labelledby="positions-title">
+  <h3 id="positions-title">Posições estimadas</h3>
+  <p class="positions-note">
+    Estimativas analíticas feitas a partir de afirmações atribuídas e com fonte, para comparar
+    leituras. Não são fatos históricos nem classificações pessoais. Cada eixo mostra quantas
+    afirmações e fontes sustentam a estimativa; sem duas fontes, a posição é só indicativa.
+  </p>
+  @if (summary(); as s) {
+    <p class="positions-summary">
+      Com os dados disponíveis, a maior diferença aparece em <strong>{{ s.axis }}</strong
+      >, entre {{ s.first }} e {{ s.second }} (diferença de {{ s.difference }} numa escala de 0 a
+      2).
+    </p>
+  }
+  <div class="entities">
+    @for (row of rows(); track row.id) {
+      <article class="entity">
+        <h4>{{ row.title }}</h4>
+        <ul>
+          @for (axis of row.axes; track axis.axisId) {
+            <li [attr.data-status]="axis.status">
+              <span class="axis-name">{{ axisLabel(axis.axisId) }}</span>
+              <span class="poles">{{ poles(axis.axisId) }}</span>
+              @if (axis.value !== null) {
+                <span class="track" role="img" [attr.aria-label]="describe(row.title, axis)">
+                  <span
+                    class="range"
+                    [style.left.%]="pct(axis.low)"
+                    [style.width.%]="pct(axis.high) - pct(axis.low)"
+                  ></span>
+                  <span class="marker" [style.left.%]="pct(axis.value)"></span>
+                </span>
+              }
+              <span class="status">{{ statusText(axis) }}</span>
+            </li>
+          }
+        </ul>
+      </article>
+    }
+  </div>
+</section>
