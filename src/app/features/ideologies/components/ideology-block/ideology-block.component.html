@@ -27,7 +27,7 @@
       @for (entity of entities(); track entity.id; let e = $index) {
         <div class="entity-entry" data-stagger [style.--stagger]="e % 6">
           <button type="button" class="atlas-press" [appKnowledgeContext]="{ entityId: entity.id }">
-            @if (media(entity); as asset) {
+            @if (entityPicture(entity); as asset) {
               <img [src]="asset.assetPath" alt="" width="180" height="210" loading="lazy" />
             }
             <span class="entity-date">{{ period(entity) }}</span>
@@ -285,7 +285,7 @@
           @if (itemMedia(item); as pic) {
             <img
               class="card-image"
-              [src]="pic.asset.assetPath"
+              [src]="pic.assetPath"
               [alt]="'Imagem de ' + pic.title"
               width="320"
               height="180"

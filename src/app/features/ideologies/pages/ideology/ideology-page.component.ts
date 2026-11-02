@@ -12,6 +12,7 @@ import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/kn
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
+import { planPageMedia } from '@ideologies/utils/page-media-plan';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
@@ -51,6 +52,10 @@ export class IdeologyPageComponent {
       group: chapterGroup(c.id),
     })),
   );
+  readonly mediaPlan = computed(() => {
+    const page = this.page();
+    return page ? planPageMedia(page, this.repository.knowledgeGraph) : new Map();
+  });
   readonly minutes = computed(
     () => this.page()?.chapters.reduce((sum, c) => sum + c.minutes, 0) ?? 0,
   );

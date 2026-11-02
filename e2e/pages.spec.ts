@@ -206,3 +206,16 @@ test('both readings share the twelve canonical chapters, one index and no nested
     expect(nested).toEqual([]);
   }
 });
+
+test('each image appears once in the narrative; only the archive catalogue repeats', async ({
+  page,
+}) => {
+  for (const path of ['/marxismo/', '/liberalismo/']) {
+    await page.goto(path);
+    const sources = await page
+      .locator('.chapter-sequence .ideology-chapter:not(#conexoes) img')
+      .evaluateAll((imgs) => imgs.map((i) => (i as HTMLImageElement).src));
+    expect(sources.length).toBeGreaterThan(5);
+    expect(new Set(sources).size).toBe(sources.length);
+  }
+});
