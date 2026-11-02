@@ -39,4 +39,30 @@ describe('EraChartComponent', () => {
     expect(root.querySelector('.epoch-detail h4')!.textContent).toBe('b');
     expect(names()).toEqual([expect.stringContaining('gramsci')]);
   });
+
+  it('lists dated records of the selected epoch, marks approximate years and counts undated ones', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    fixture.componentRef.setInput('epochs', [epoch('a', 1840, 1850)]);
+    fixture.componentRef.setInput('people', [person('marx', 1818, 1883)]);
+    fixture.componentRef.setInput('markers', [
+      {
+        id: 'manifesto',
+        title: 'manifesto',
+        temporalExtent: { startYear: 1848, endYear: null, precision: 'approximate', label: null },
+      } as Entity,
+      {
+        id: 'late',
+        title: 'late',
+        temporalExtent: { startYear: 1900, endYear: null, precision: 'year', label: null },
+      } as Entity,
+      { id: 'nodate', title: 'nodate' } as Entity,
+    ]);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const items = [...root.querySelectorAll('.dated-list button')].map((b) =>
+      b.textContent!.trim(),
+    );
+    expect(items).toEqual([expect.stringContaining('c. 1848')]);
+    expect(root.querySelector('.era-note')!.textContent).toContain('1 registro(s) sem ano');
+  });
 });

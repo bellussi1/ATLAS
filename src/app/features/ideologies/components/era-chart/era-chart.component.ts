@@ -53,18 +53,30 @@ export class EraChartComponent {
     this.people()
       .flatMap((entity) => {
         const t = entity.temporalExtent;
-        return t?.startYear && t.endYear ? [{ entity, start: t.startYear, end: t.endYear }] : [];
+        return t?.startYear && t.endYear
+          ? [{ entity, start: t.startYear, end: t.endYear, approx: t.precision !== 'year' }]
+          : [];
       })
       .sort((a, b) => a.start - b.start),
   );
   readonly dated = computed(() =>
     this.markers()
       .flatMap((entity) => {
-        const year = entity.temporalExtent?.startYear;
-        return year ? [{ entity, year }] : [];
+        const t = entity.temporalExtent;
+        return t?.startYear ? [{ entity, year: t.startYear, approx: t.precision !== 'year' }] : [];
       })
       .sort((a, b) => a.year - b.year),
   );
+  /** Records the chart cannot place because no year was registered: shown as a gap, never guessed. */
+  readonly undated = computed(
+    () =>
+      this.people().filter((e) => !e.temporalExtent?.startYear || !e.temporalExtent.endYear)
+        .length + this.markers().filter((e) => !e.temporalExtent?.startYear).length,
+  );
+  readonly inEpoch = computed(() => {
+    const epoch = this.selected();
+    return this.dated().filter((mark) => mark.year >= epoch.start && mark.year <= epoch.end);
+  });
   readonly alive = computed(() => {
     const epoch = this.selected();
     return this.lives().filter((life) => life.start <= epoch.end && life.end >= epoch.start);

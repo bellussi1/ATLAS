@@ -52,9 +52,12 @@
         <span
           class="marker"
           [class.is-on]="overlaps(mark.year, mark.year)"
+          [class.is-approx]="mark.approx"
           [style.left]="x(mark.year)"
           [style.--row]="m % 3"
-          ><span>{{ mark.year }} · {{ mark.entity.title }}</span></span
+          ><span
+            >{{ mark.approx ? 'c. ' : '' }}{{ mark.year }} · {{ mark.entity.title }}</span
+          ></span
         >
       }
       <ol class="lives">
@@ -64,6 +67,7 @@
             <span class="life-track">
               <span
                 class="life-bar"
+                [class.is-approx]="life.approx"
                 [style.left]="x(life.start)"
                 [style.width]="span(life.start, life.end)"
                 ><span>{{ life.start }}–{{ life.end }}</span></span
@@ -109,10 +113,33 @@
         <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>
       }
     </ul>
+    <h5>
+      Registros datados na época <span>{{ inEpoch().length }}</span>
+    </h5>
+    <ul class="alive-list dated-list">
+      @for (mark of inEpoch(); track mark.entity.id) {
+        <li>
+          <button
+            type="button"
+            class="atlas-press"
+            [appKnowledgeContext]="{ entityId: mark.entity.id }"
+          >
+            {{ mark.entity.title }}
+            <span>{{ mark.approx ? 'c. ' : '' }}{{ mark.year }}</span>
+          </button>
+        </li>
+      } @empty {
+        <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
+      }
+    </ul>
   </section>
 
   <p class="era-note">
     Barras mostram nascimento e morte registrados, não o período de atividade nem influência. As
-    datas das épocas são aproximações didáticas.
+    datas das épocas são aproximações didáticas. Proximidade no tempo não indica causa nem
+    influência. Datas marcadas com "c." e bordas tracejadas são aproximadas.
+    @if (undated()) {
+      {{ undated() }} registro(s) sem ano registrado ficam fora da escala, como lacuna.
+    }
   </p>
 </figure>
