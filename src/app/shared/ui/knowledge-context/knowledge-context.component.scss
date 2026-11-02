@@ -111,15 +111,14 @@ button {
 }
 .context-body > p {
   font: 1.1rem/1.75 var(--font-serif);
-  max-width: 65ch;
 }
 .context-body .context-summary {
   font-size: 1.35rem;
 }
+/* Media sits above the text so the reading column keeps the full container width. */
 figure {
-  float: right;
-  width: min(42%, 14rem);
-  margin: 0 0 1rem 1.5rem;
+  width: min(100%, 16rem);
+  margin: 0 0 1.5rem;
 }
 img {
   display: block;
