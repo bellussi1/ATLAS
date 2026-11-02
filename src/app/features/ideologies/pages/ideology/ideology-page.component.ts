@@ -51,6 +51,12 @@ export class IdeologyPageComponent {
     const asset = atlas?.assetLicenses.find((a) => a.id === page?.portrait?.assetId);
     return asset ? reproducibleAsset(atlas, asset.assetPath) : undefined;
   });
+  readonly palette = computed(() => (this.page()?.slug === 'liberalismo' ? 'liberal' : 'marx'));
+  readonly companion = computed(() =>
+    this.page()?.slug === 'liberalismo'
+      ? { path: '/marxismo', label: 'Ler o Marxismo' }
+      : { path: '/liberalismo', label: 'Ler o Liberalismo' },
+  );
   readonly portraitTitle = computed(
     () =>
       this.repository.knowledgeGraph.atlases
@@ -62,12 +68,14 @@ export class IdeologyPageComponent {
     combineLatest([this.route.paramMap, this.retry])
       .pipe(
         switchMap(([params]) =>
-          this.ideologies.loadIdeology(params.get('slug') ?? 'marxismo').pipe(
-            pendingUntilEvent(this.injector),
-            map((dossier): PageState => ({ status: dossier ? 'ready' : 'missing', dossier })),
-            catchError(() => of<PageState>({ status: 'error', dossier: null })),
-            startWith<PageState>({ status: 'loading', dossier: null }),
-          ),
+          this.ideologies
+            .loadIdeology(params.get('slug') ?? this.route.snapshot.data['slug'] ?? 'marxismo')
+            .pipe(
+              pendingUntilEvent(this.injector),
+              map((dossier): PageState => ({ status: dossier ? 'ready' : 'missing', dossier })),
+              catchError(() => of<PageState>({ status: 'error', dossier: null })),
+              startWith<PageState>({ status: 'loading', dossier: null }),
+            ),
         ),
         takeUntilDestroyed(),
       )

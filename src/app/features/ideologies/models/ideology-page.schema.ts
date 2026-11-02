@@ -68,7 +68,10 @@ export const pageBlockSchema = z.discriminatedUnion('type', [
     type: z.literal('entities'),
     entityIds: z.array(id),
     mode: z.enum(['documents', 'thinkers', 'concepts']),
+    /** Why each record appears at this point of the reading. */
+    notes: z.record(z.string(), z.string().min(1)).default({}),
   }),
+  z.object({ type: z.literal('atlas'), rootEntityId: id }),
   z.object({ type: z.literal('timeline'), entityIds: z.array(id) }),
   z.object({
     type: z.literal('chronology'),
@@ -118,6 +121,10 @@ export const ideologyPageSchema = z
         kicker: z.string().min(1),
         minutes: z.number().int().positive(),
         narrative: z.array(z.string().min(1)).min(1),
+        /** Guiding question shown under the chapter title. */
+        question: z.string().min(1).nullable().default(null),
+        /** One-sentence link from this chapter to the next. */
+        bridge: z.string().min(1).nullable().default(null),
         sourceIds: z.array(id),
         gap: z.string().min(1).nullable(),
         layout: z.enum([
@@ -199,6 +206,12 @@ export function validateIdeologyDossier(
       if ('entityIds' in block) requireIds(block.entityIds, entities);
       if ('edgeIds' in block) requireIds(block.edgeIds, edges);
       if ('sourceIds' in block) requireIds(block.sourceIds, sources);
+      if (block.type === 'atlas') requireIds([block.rootEntityId], entities);
+      if (
+        block.type === 'entities' &&
+        Object.keys(block.notes).some((k) => !block.entityIds.includes(k))
+      )
+        throw new Error('Nota editorial para registro ausente do bloco.');
       if (block.type === 'chronology') {
         requireIds(block.markerIds, entities);
         requireIds(

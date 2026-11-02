@@ -11,4 +11,10 @@ export const publishedIdeologies: Readonly<Record<string, PublishedIdeology | un
     loadPage: () => import('../../../../content/ideologies/marxismo/page.json'),
     loadSupplement: () => import('../../../../content/graph/marxismo.json'),
   },
+  liberalismo: {
+    pageUrl: '/content/ideologies/liberalismo/page.json',
+    supplementUrl: '/content/graph/liberalismo.json',
+    loadPage: () => import('../../../../content/ideologies/liberalismo/page.json'),
+    loadSupplement: () => import('../../../../content/graph/liberalismo.json'),
+  },
 };

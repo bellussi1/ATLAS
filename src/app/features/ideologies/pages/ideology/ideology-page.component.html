@@ -27,9 +27,10 @@
           <app-geometric-mosaic
             class="opening-mosaic"
             [columns]="4"
-            [rows]="2"
-            palette="marx"
-            [seed]="11"
+            [rows]="portrait() ? 2 : 5"
+            [style.aspect-ratio]="portrait() ? '2 / 1' : '4 / 5'"
+            [palette]="palette()"
+            [seed]="palette() === 'liberal' ? 23 : 11"
           />
           @if (portrait(); as portrait) {
             <img
@@ -80,6 +81,9 @@
               ><span class="chapter-title">{{ chapter.title }}</span>
             </h2>
           </header>
+          @if (chapter.question) {
+            <p class="chapter-question">{{ chapter.question }}</p>
+          }
           <div class="chapter-narrative">
             @for (paragraph of chapter.narrative; track $index) {
               <p><app-knowledge-text [text]="paragraph" /></p>
@@ -101,6 +105,9 @@
               <app-editorial-sources [references]="sources(chapter.sourceIds)" />
             </details>
           }
+          @if (chapter.bridge) {
+            <p class="chapter-bridge">{{ chapter.bridge }}</p>
+          }
           @if (page.chapters[index + 1]; as next) {
             <a
               class="next-chapter atlas-press"
@@ -115,7 +122,7 @@
       <footer class="reading-end">
         <p>Uma leitura termina. As perguntas continuam.</p>
         <a routerLink="/">Voltar à página inicial</a
-        ><a routerLink="/liberalismo">Explorar o Atlas do Liberalismo</a>
+        ><a [routerLink]="companion().path">{{ companion().label }}</a>
       </footer>
     </app-ideology-reading>
   </article>

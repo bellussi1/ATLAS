@@ -1,4 +1,13 @@
 @switch (block().type) {
+  @case ('atlas') {
+    <app-ideology-atlas
+      [atlasId]="dossier().page.atlasId"
+      [rootEntityId]="$any(block()).rootEntityId"
+      [origin]="'/' + dossier().page.slug"
+      [embedded]="true"
+      [continuous]="true"
+    />
+  }
   @case ('chronology') {
     <app-era-chart [epochs]="eraEpochs()" [people]="entities()" [markers]="eraMarkers()" />
   }
@@ -20,6 +29,9 @@
             }
             <span class="entity-date">{{ period(entity) }}</span>
             <strong>{{ entity.title }}</strong>
+            @if (note(entity.id); as why) {
+              <span class="entity-why">{{ why }}</span>
+            }
             <span class="action-cue">Abrir contexto +</span>
           </button>
         </div>

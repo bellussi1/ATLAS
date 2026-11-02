@@ -10,6 +10,7 @@ import {
   EraChartComponent,
   type EraChartEpoch,
 } from '@ideologies/components/era-chart/era-chart.component';
+import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
@@ -30,6 +31,7 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
     KnowledgeTextComponent,
     AtlasRevealDirective,
     EraChartComponent,
+    IdeologyAtlasComponent,
   ],
   templateUrl: './ideology-block.component.html',
   styleUrls: ['./ideology-block.component.scss', './ideology-exploration.scss'],
@@ -172,6 +174,10 @@ export class IdeologyBlockComponent {
   readonly atlas = computed(() =>
     this.repository.knowledgeGraph.atlases.find((a) => a.id === this.dossier().page.atlasId)!,
   );
+  note(id: string): string | undefined {
+    const block = this.block();
+    return block.type === 'entities' ? block.notes[id] : undefined;
+  }
   entity(id: string): Entity | undefined {
     return this.repository.knowledgeGraph.atlases
       .flatMap((a) => a.entities)

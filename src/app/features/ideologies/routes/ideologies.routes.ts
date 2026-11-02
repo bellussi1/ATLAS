@@ -11,6 +11,7 @@ export const ideologyRoutes: Routes = [
       ),
     title: 'Marxismo: ideias e divergências — ATLAS',
     data: {
+      slug: 'marxismo',
       breadcrumb: 'Marxismo',
       metaDescription: 'Conceitos, pensadores, cronologia, divergências e fontes do marxismo.',
     },
@@ -19,10 +20,15 @@ export const ideologyRoutes: Routes = [
     path: 'liberalismo',
     resolve: { knowledge: knowledgeContentResolver },
     loadComponent: () =>
-      import('@ideologies/pages/liberalism/liberalism-atlas-page.component').then(
-        (m) => m.LiberalismAtlasPage,
+      import('@ideologies/pages/ideology/ideology-page.component').then(
+        (m) => m.IdeologyPageComponent,
       ),
-    title: 'Atlas do Liberalismo — ATLAS',
-    data: { breadcrumb: 'Liberalismo' },
+    title: 'Liberalismo: ideias e divergências — ATLAS',
+    data: {
+      slug: 'liberalismo',
+      breadcrumb: 'Liberalismo',
+      metaDescription:
+        'Conceitos, pensadores, épocas, lugares, vertentes, críticas e fontes do liberalismo.',
+    },
   },
 ];

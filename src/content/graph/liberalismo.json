@@ -1,0 +1,223 @@
+{
+  "sources": [
+    {
+      "id": "source-sep-liberalism",
+      "title": "Gerald Gaus, Shane D. Courtland e David Schmidtz — Liberalism",
+      "url": "https://plato.stanford.edu/entries/liberalism/",
+      "edition": "Stanford Encyclopedia of Philosophy; seções sobre liberalismo clássico, novo liberalismo e críticas",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-locke-political",
+      "title": "Alex Tuckness — Locke’s Political Philosophy",
+      "url": "https://plato.stanford.edu/entries/locke-political/",
+      "edition": "Stanford Encyclopedia of Philosophy",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-montesquieu",
+      "title": "Stanford Encyclopedia of Philosophy — Montesquieu",
+      "url": "https://plato.stanford.edu/entries/montesquieu/",
+      "edition": "Stanford Encyclopedia of Philosophy",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-smith",
+      "title": "Samuel Fleischacker — Adam Smith’s Moral and Political Philosophy",
+      "url": "https://plato.stanford.edu/entries/smith-moral-political/",
+      "edition": "Stanford Encyclopedia of Philosophy",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-mill",
+      "title": "David O. Brink — Mill’s Moral and Political Philosophy",
+      "url": "https://plato.stanford.edu/entries/mill-moral-political/",
+      "edition": "Stanford Encyclopedia of Philosophy",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-tocqueville",
+      "title": "Stanford Encyclopedia of Philosophy — Alexis de Tocqueville",
+      "url": "https://plato.stanford.edu/entries/tocqueville/",
+      "edition": "Stanford Encyclopedia of Philosophy",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-liberty",
+      "title": "Ian Carter — Positive and Negative Liberty",
+      "url": "https://plato.stanford.edu/entries/liberty-positive-negative/",
+      "edition": "Stanford Encyclopedia of Philosophy",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sep-communitarianism",
+      "title": "Daniel Bell — Communitarianism",
+      "url": "https://plato.stanford.edu/entries/communitarianism/",
+      "edition": "Stanford Encyclopedia of Philosophy",
+      "publicationDate": null
+    },
+    {
+      "id": "source-locke-two-treatises",
+      "title": "John Locke — Two Treatises of Government",
+      "url": null,
+      "edition": "Londres: Awnsham Churchill, 1689 (folha de rosto datada de 1690)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-montesquieu-esprit",
+      "title": "Montesquieu — De l’esprit des lois",
+      "url": null,
+      "edition": "Genebra: Barrillot & fils, 1748",
+      "publicationDate": null
+    },
+    {
+      "id": "source-smith-wealth",
+      "title": "Adam Smith — An Inquiry into the Nature and Causes of the Wealth of Nations",
+      "url": null,
+      "edition": "Londres: W. Strahan e T. Cadell, 1776",
+      "publicationDate": null
+    },
+    {
+      "id": "source-tocqueville-democracy",
+      "title": "Alexis de Tocqueville — De la démocratie en Amérique",
+      "url": null,
+      "edition": "Paris: Gosselin, 1835 (vol. 1) e 1840 (vol. 2)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-mill-on-liberty",
+      "title": "John Stuart Mill — On Liberty",
+      "url": null,
+      "edition": "Londres: John W. Parker and Son, 1859",
+      "publicationDate": null
+    },
+    {
+      "id": "source-hayek-road",
+      "title": "Friedrich Hayek — The Road to Serfdom",
+      "url": null,
+      "edition": "Londres: Routledge, 1944",
+      "publicationDate": null
+    },
+    {
+      "id": "source-berlin-two-concepts",
+      "title": "Isaiah Berlin — Two Concepts of Liberty",
+      "url": null,
+      "edition": "Aula inaugural em Oxford, publicada por Clarendon Press, 1958",
+      "publicationDate": null
+    },
+    {
+      "id": "source-burke-reflections",
+      "title": "Edmund Burke — Reflections on the Revolution in France",
+      "url": null,
+      "edition": "Londres: J. Dodsley, 1790",
+      "publicationDate": null
+    },
+    {
+      "id": "source-polanyi-transformation",
+      "title": "Karl Polanyi — The Great Transformation",
+      "url": null,
+      "edition": "Nova York: Farrar & Rinehart, 1944",
+      "publicationDate": null
+    },
+    {
+      "id": "source-marx-jewish-question",
+      "title": "Karl Marx — Sobre a questão judaica",
+      "url": "https://www.marxists.org/archive/marx/works/1844/jewish-question/",
+      "edition": "Deutsch-Französische Jahrbücher, 1844; Marxists Internet Archive",
+      "publicationDate": null
+    },
+    {
+      "id": "source-mont-pelerin-1947",
+      "title": "Mont Pelerin Society — Statement of Aims",
+      "url": null,
+      "edition": "Declaração aprovada em Mont-Pèlerin, Suíça, em 8 de abril de 1947",
+      "publicationDate": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "lib-edge-locke-classical",
+      "from": "person-john-locke",
+      "to": "ideology-classical-liberalism",
+      "type": "influencia-documentada",
+      "label": "Consentimento e direitos naturais",
+      "context": "O Segundo tratado é tratado pela literatura como texto de referência do liberalismo clássico; chamá-lo de liberal é uma classificação retrospectiva.",
+      "sources": ["source-sep-locke-political", "source-sep-liberalism"],
+      "certainty": "estabelecida"
+    },
+    {
+      "id": "lib-edge-smith-classical",
+      "from": "person-adam-smith",
+      "to": "ideology-classical-liberalism",
+      "type": "influencia-documentada",
+      "label": "Mercado e divisão do trabalho",
+      "context": "A riqueza das nações tornou-se referência para a defesa liberal do comércio livre, embora Smith admitisse funções importantes ao Estado.",
+      "sources": ["source-sep-smith", "source-smith-wealth"],
+      "certainty": "estabelecida"
+    },
+    {
+      "id": "lib-edge-montesquieu-classical",
+      "from": "person-montesquieu",
+      "to": "ideology-classical-liberalism",
+      "type": "influencia-documentada",
+      "label": "Separação dos poderes",
+      "context": "A defesa da distribuição de poderes como garantia da liberdade política foi incorporada ao constitucionalismo liberal.",
+      "sources": ["source-sep-montesquieu", "source-montesquieu-esprit"],
+      "certainty": "estabelecida"
+    },
+    {
+      "id": "lib-edge-mill-social",
+      "from": "person-john-stuart-mill",
+      "to": "ideology-social-liberalism",
+      "type": "desenvolvimento",
+      "label": "Ponte para o liberalismo social",
+      "context": "Mill defendeu a liberdade individual e, em escritos posteriores, reformas sociais; sua posição como precursor do liberalismo social é uma interpretação difundida, não consensual.",
+      "sources": ["source-sep-mill", "source-sep-liberalism"],
+      "certainty": "debatida"
+    },
+    {
+      "id": "lib-edge-social-classical",
+      "from": "ideology-social-liberalism",
+      "to": "ideology-classical-liberalism",
+      "type": "divergencia-ou-critica",
+      "label": "Liberdade efetiva exige condições",
+      "context": "O novo liberalismo do fim do século XIX criticou o laissez-faire e defendeu ação estatal para tornar a liberdade efetiva.",
+      "sources": ["source-sep-liberalism"],
+      "certainty": "estabelecida"
+    },
+    {
+      "id": "lib-edge-hayek-neoliberal",
+      "from": "person-friedrich-hayek",
+      "to": "ideology-neoliberalism",
+      "type": "influencia-documentada",
+      "label": "Ordem de mercado contra o planejamento",
+      "context": "Hayek é associado ao neoliberalismo pela crítica ao planejamento e pela fundação da Mont Pelerin Society; o rótulo é usado sobretudo por críticos.",
+      "sources": [
+        "source-hayek-road",
+        "source-mont-pelerin-1947",
+        "liberalism-source-wikipedia-ideology-neoliberalism"
+      ],
+      "certainty": "debatida"
+    },
+    {
+      "id": "lib-edge-neoliberal-social",
+      "from": "ideology-neoliberalism",
+      "to": "ideology-social-liberalism",
+      "type": "divergencia-ou-critica",
+      "label": "Crítica ao Estado de bem-estar",
+      "context": "Autores associados ao neoliberalismo contestaram a expansão do Estado social e do planejamento econômico do pós-guerra.",
+      "sources": ["source-hayek-road", "source-sep-liberalism"],
+      "certainty": "debatida"
+    },
+    {
+      "id": "lib-edge-marx-liberalism",
+      "from": "person-karl-marx",
+      "to": "ideology-liberalism",
+      "type": "divergencia-ou-critica",
+      "label": "Direitos do homem como direitos do burguês",
+      "context": "Em Sobre a questão judaica, Marx distingue emancipação política e emancipação humana e critica os direitos liberais como direitos do indivíduo separado da comunidade.",
+      "sources": ["source-marx-jewish-question"],
+      "certainty": "estabelecida"
+    }
+  ]
+}

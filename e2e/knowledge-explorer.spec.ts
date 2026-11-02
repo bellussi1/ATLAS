@@ -99,7 +99,7 @@ test('all search destinations have prerendered HTML with matching title, canonic
       entry.path === '/marxismo'
         ? 'Marxismo: ideias e divergências'
         : entry.path === '/liberalismo'
-          ? 'Atlas do Liberalismo'
+          ? 'Liberalismo: ideias e divergências'
           : entry.path === '/fontes'
             ? 'Fontes'
             : entry.title;

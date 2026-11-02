@@ -26,20 +26,12 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
   await expect(
     page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
   ).toBeVisible();
-  await page
-    .getByRole('navigation', { name: 'Capítulos' })
-    .getByRole('link', { name: 'Tempo' })
-    .click();
-  await expect(page).toHaveURL(/#atlas-section-tempo$/);
+  await page.locator('#atlas-section-tempo').scrollIntoViewIfNeeded();
   await page.locator('.timeline-list button').filter({ hasText: 'Revolução Gloriosa' }).click();
   await expect(
     page.getByRole('heading', { name: 'Revolução Gloriosa', exact: true }),
   ).toBeVisible();
-  await page
-    .getByRole('navigation', { name: 'Capítulos' })
-    .getByRole('link', { name: 'Imagens e documentos' })
-    .click();
-  await expect(page).toHaveURL(/#atlas-section-imagens$/);
+  await page.locator('#atlas-section-imagens').scrollIntoViewIfNeeded();
   await expect(page.getByRole('heading', { name: 'Imagens com licença registrada' })).toBeVisible();
   const figure = page.locator('.gallery figure').first();
   await figure.scrollIntoViewIfNeeded();
@@ -62,7 +54,7 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
     'href',
     /commons\.wikimedia\.org/,
   );
-  await page.locator('main').getByRole('link', { name: /Rede/ }).first().click();
+  await page.locator('#atlas-section-rede').scrollIntoViewIfNeeded();
   await expect(page.locator('.text-network summary')).toBeVisible();
   const violations = (await new AxeBuilder({ page }).analyze()).violations;
   expect(

@@ -33,7 +33,9 @@
       ],
       "sourceIds": ["source-v4-marx-sep"],
       "blocks": [],
-      "gap": null
+      "gap": null,
+      "question": "Por que um pensamento do século XIX ainda organiza debates hoje?",
+      "bridge": "Para entender a tradição, volte ao mundo industrial em que Marx e Engels escreveram."
     },
     {
       "id": "origens",
@@ -51,10 +53,13 @@
         {
           "type": "entities",
           "entityIds": ["work-communist-manifesto", "work-capital-volume-i"],
-          "mode": "documents"
+          "mode": "documents",
+          "notes": {}
         }
       ],
-      "gap": null
+      "gap": null,
+      "question": "Que sociedade Marx e Engels estavam tentando explicar?",
+      "bridge": "Da leitura desse mundo saem os conceitos centrais: trabalho, valor e história."
     },
     {
       "id": "conceitos",
@@ -120,14 +125,17 @@
             "concept-historical-materialism",
             "concept-trabalho-socialmente-necessario"
           ],
-          "mode": "concepts"
+          "mode": "concepts",
+          "notes": {}
         },
         {
           "type": "argument",
           "topic": "smith-marx"
         }
       ],
-      "gap": null
+      "gap": null,
+      "question": "O que explica o valor das coisas e a mudança histórica?",
+      "bridge": "Esses conceitos foram lidos, ampliados e contestados por muitas vozes diferentes."
     },
     {
       "id": "pensadores",
@@ -160,10 +168,28 @@
             "person-florestan-fernandes",
             "person-jose-carlos-mariategui"
           ],
-          "mode": "thinkers"
+          "mode": "thinkers",
+          "notes": {
+            "person-karl-marx": "Formula a crítica da economia política e a concepção materialista da história.",
+            "person-friedrich-engels": "Coautor do Manifesto e editor dos volumes póstumos de O capital.",
+            "person-vladimir-lenin": "Transforma a teoria em estratégia de partido e de tomada do Estado em 1917.",
+            "person-rosa-luxemburg": "Defende a revolução contra o reformismo e critica o autoritarismo bolchevique.",
+            "person-eduard-bernstein": "Propõe revisar Marx e chegar ao socialismo por reformas graduais.",
+            "person-karl-kautsky": "Principal sistematizador do marxismo da Segunda Internacional.",
+            "person-antonio-gramsci": "Explica a dominação pela hegemonia: coerção somada a consentimento.",
+            "person-leon-trotsky": "Teoriza a revolução permanente e critica a burocracia soviética.",
+            "person-joseph-stalin": "Impõe o socialismo em um só país e uma ortodoxia de Estado.",
+            "person-mao-zedong": "Desloca o protagonismo revolucionário para o campesinato.",
+            "person-caio-prado-junior": "Reinterpreta a formação colonial do Brasil com categorias marxistas.",
+            "person-luiz-carlos-prestes": "Dirigente comunista central na história política brasileira do século XX.",
+            "person-florestan-fernandes": "Analisa a revolução burguesa no Brasil e a dependência.",
+            "person-jose-carlos-mariategui": "Relaciona a questão indígena ao problema da terra no Peru."
+          }
         }
       ],
-      "gap": null
+      "gap": null,
+      "question": "Quem herdou, revisou ou rompeu com Marx?",
+      "bridge": "Coloque essas vozes no tempo: obras e acontecimentos marcaram cada geração."
     },
     {
       "id": "historia",
@@ -190,7 +216,9 @@
           ]
         }
       ],
-      "gap": "A história dos governos, partidos e experiências nacionais exige bibliografia específica. Não há base editorial suficiente neste snapshot para uma avaliação comparativa."
+      "gap": "A história dos governos, partidos e experiências nacionais exige bibliografia específica. Não há base editorial suficiente neste snapshot para uma avaliação comparativa.",
+      "question": "Quais textos e acontecimentos marcaram a tradição?",
+      "bridge": "Agrupados, esses marcos formam épocas com perguntas próprias."
     },
     {
       "id": "epocas",
@@ -370,7 +398,9 @@
             }
           ]
         }
-      ]
+      ],
+      "question": "Como uma teoria virou partidos, Estados e escolas de pensamento?",
+      "bridge": "Essas épocas aconteceram em cidades concretas."
     },
     {
       "id": "lugares",
@@ -451,7 +481,9 @@
             }
           ]
         }
-      ]
+      ],
+      "question": "Em que lugares a tradição se formou e se dividiu?",
+      "bridge": "Das cidades e épocas surgem vertentes que discordam entre si."
     },
     {
       "id": "correntes",
@@ -588,7 +620,9 @@
           ]
         }
       ],
-      "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte."
+      "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte.",
+      "question": "Reforma ou revolução? Partido, Estado ou cultura?",
+      "bridge": "Às divergências internas somam-se críticas vindas de fora da tradição."
     },
     {
       "id": "criticas",
@@ -794,7 +828,9 @@
           ]
         }
       ],
-      "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria."
+      "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria.",
+      "question": "O que os críticos de dentro e de fora apontam como falha?",
+      "bridge": "Para conferir cada argumento, volte às fontes."
     },
     {
       "id": "fontes",
@@ -834,7 +870,9 @@
           ]
         }
       ],
-      "gap": null
+      "gap": null,
+      "question": null,
+      "bridge": null
     }
   ],
   "portrait": {

@@ -97,7 +97,7 @@ test('three pages work on mobile with reduced motion and accessible links', asyn
 test('ideology reading controls stay in sync on desktop and mobile', async ({ page }) => {
   for (const [path, firstAnchor, secondAnchor] of [
     ['/marxismo/', 'introducao', 'origens'],
-    ['/liberalismo/', 'atlas-section-rede', 'atlas-section-tempo'],
+    ['/liberalismo/', 'introducao', 'origens'],
   ]) {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(path);
@@ -144,7 +144,7 @@ test('shared reading preserves filters and clears motion preference when leaving
 }) => {
   for (const [path, secondAnchor] of [
     ['/marxismo/', 'origens'],
-    ['/liberalismo/', 'atlas-section-tempo'],
+    ['/liberalismo/', 'origens'],
   ]) {
     await page.goto(`${path}?bibliografia=Locke`);
     const reader = page.locator('app-ideology-reading');
