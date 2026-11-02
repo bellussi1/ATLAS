@@ -786,7 +786,14 @@
         },
         {
           "type": "positions",
-          "entityIds": ["person-eduard-bernstein", "person-rosa-luxemburg", "person-karl-marx"]
+          "entityIds": [
+            "person-eduard-bernstein",
+            "person-rosa-luxemburg",
+            "person-friedrich-engels",
+            "person-vladimir-lenin",
+            "person-karl-marx",
+            "person-mao-zedong"
+          ]
         },
         {
           "type": "entities",

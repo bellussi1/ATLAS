@@ -35,7 +35,9 @@ test('explores entities, graph, timeline and returns to prior context', async ({
   await page.locator('#atlas-section-tempo').scrollIntoViewIfNeeded();
   await page.locator('.timeline-node').filter({ hasText: 'Revolução Gloriosa' }).click();
   await expect(
-    page.getByRole('heading', { name: 'Revolução Gloriosa', exact: true }),
+    page
+      .locator('#atlas-section-tempo')
+      .getByRole('heading', { name: 'Revolução Gloriosa', exact: true }),
   ).toBeVisible();
   await page.getByRole('button', { name: 'Próximo →' }).click();
   await expect(page.getByRole('button', { name: '← Anterior' })).toHaveAttribute(
