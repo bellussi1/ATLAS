@@ -143,9 +143,8 @@
           </h3>
           <p>{{ claim.text }}</p>
           @if (selected() === 'smith') {
-            <blockquote lang="en">“the real measure of the exchangeable value”</blockquote>
             <p>
-              Smith, <em>The Wealth of Nations</em>, livro I, cap. V; trecho em inglês.
+              Smith, <em>The Wealth of Nations</em>, livro I, cap. V.
               <a href="https://www.gutenberg.org/files/3300/3300-h/3300-h.htm">Conferir o texto</a>.
             </p>
             <p>
@@ -154,12 +153,8 @@
               consenso sobre Smith.
             </p>
           } @else {
-            <blockquote lang="en">
-              “the labour time socially necessary for its production”
-            </blockquote>
             <p>
-              Marx, <em>Capital</em>, volume I, cap. 1, seção 1; tradução inglesa de Samuel Moore e
-              Edward Aveling, editada por Friedrich Engels.
+              Marx, <em>Capital</em>, volume I, cap. 1, seção 1.
               <a href="https://www.marxists.org/archive/marx/works/1867-c1/ch01.htm"
                 >Conferir o texto</a
               >.
@@ -195,7 +190,7 @@
         historiográficos ou econômicos.
       </p>
       <p>
-        Os trechos são curtos, com título, idioma e localizador para conferência.
+        Os trechos são curtos, com título e localizador para conferência.
         @if (!inline()) {
           <a routerLink="/marxismo">Créditos dos retratos no índice do atlas</a>.
           <a routerLink="/marxismo" fragment="fontes" [queryParams]="{ origem: origin() }"

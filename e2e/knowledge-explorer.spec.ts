@@ -19,14 +19,18 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
     'guimaraes silveira',
   );
-  await page.getByLabel('Tipo de registro').selectOption('pessoa');
+  const pessoa = page
+    .getByRole('navigation', { name: 'Categorias de registro' })
+    .getByRole('link', { name: /^Pessoa\b/ });
+  await pessoa.click();
   await expect(page).toHaveURL(/tipo=pessoa/);
+  await expect(pessoa).toHaveAttribute('aria-current', 'true');
   await page.goBack();
-  await expect(page.getByLabel('Tipo de registro')).toHaveValue('');
+  await expect(pessoa).not.toHaveAttribute('aria-current');
   await page.goForward();
-  await expect(page.getByLabel('Tipo de registro')).toHaveValue('pessoa');
+  await expect(pessoa).toHaveAttribute('aria-current', 'true');
   await page.reload();
-  await expect(page.getByLabel('Tipo de registro')).toHaveValue('pessoa');
+  await expect(pessoa).toHaveAttribute('aria-current', 'true');
   await page
     .getByLabel('Procurar no acervo', { exact: true })
     .fill('nenhum-registro-com-este-nome');
@@ -34,6 +38,50 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByRole('heading', { name: 'Nenhum registro encontrado' })).toBeVisible();
   await page.getByRole('link', { name: 'Limpar busca e filtros' }).click();
   await expect(results.getByRole('article').first()).toBeVisible();
+});
+
+test('large catalogues page their results and keep the page in the return link', async ({
+  page,
+}) => {
+  await page.goto('/conhecimento');
+  const results = page.getByRole('region', { name: 'Resultados da busca' });
+  await expect(results.getByRole('article')).toHaveCount(10);
+  const pager = page.getByRole('navigation', { name: 'Paginação do acervo' });
+  await expect(pager.getByText(/Página 1 de \d+/)).toBeVisible();
+  const firstPageTitle = await results.getByRole('article').first().locator('h2').textContent();
+  await pager.getByRole('link', { name: 'Próxima →' }).click();
+  await expect(page).toHaveURL(/pagina=2/);
+  await expect(page).toHaveURL(/#resultados$/);
+  await expect(pager.getByText('Página 2 de')).toBeVisible();
+  await expect(results.getByRole('article').first().locator('h2')).not.toHaveText(
+    firstPageTitle ?? '',
+  );
+  await results.locator('h2 a[href^="/verbete/"]').first().click();
+  await page.getByRole('link', { name: 'Voltar aos resultados' }).click();
+  await expect(page).toHaveURL(/pagina=2/);
+});
+
+test('results can show 10, 20 or 50 per page and the choice survives the return link', async ({
+  page,
+}) => {
+  await page.goto('/conhecimento');
+  const results = page.getByRole('region', { name: 'Resultados da busca' });
+  const sizes = page.getByRole('navigation', { name: 'Resultados por página' });
+  await expect(sizes.getByRole('link', { name: '10', exact: true })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
+  await sizes.getByRole('link', { name: '50', exact: true }).click();
+  await expect(page).toHaveURL(/porPagina=50/);
+  await expect(results.getByRole('article')).toHaveCount(50);
+  await expect(sizes.getByRole('link', { name: '50', exact: true })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
+  await results.locator('h2 a[href^="/verbete/"]').first().click();
+  await page.getByRole('link', { name: 'Voltar aos resultados' }).click();
+  await expect(page).toHaveURL(/porPagina=50/);
+  await expect(results.getByRole('article')).toHaveCount(50);
 });
 
 test('catalogues expose actual records and permanent pages update when following a relation', async ({

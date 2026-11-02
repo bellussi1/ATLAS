@@ -1,6 +1,14 @@
 import { contentFixture } from '@testing/content-fixture';
 
-import { explorerEntries, explorerFacets, safeExplorerReturn } from './knowledge-explorer';
+import {
+  explorerContentGroup,
+  explorerEntries,
+  explorerFacets,
+  explorerPage,
+  parseExplorerPage,
+  parseExplorerPageSize,
+  safeExplorerReturn,
+} from './knowledge-explorer';
 
 const discoveryIndex = contentFixture.search;
 
@@ -38,9 +46,42 @@ describe('Knowledge Explorer', () => {
     expect(explorerFacets(discoveryIndex, 'pessoas').kinds.map((k) => k.value)).toEqual(['pessoa']);
     expect(explorerEntries(discoveryIndex, { kind: 'desconhecido' })).toEqual([]);
   });
+  it('counts each category so the filters can show how many records they hold', () => {
+    const facets = explorerFacets(discoveryIndex, 'conhecimento');
+    expect(facets.total).toBe(
+      explorerEntries(discoveryIndex, { catalogue: 'conhecimento' }).length,
+    );
+    expect(facets.kinds.reduce((sum, kind) => sum + kind.count, 0)).toBe(facets.total);
+  });
+  it('separates records, sources and editorial pages into their own content groups', () => {
+    expect(explorerContentGroup('pessoa')).toBe('registros');
+    expect(explorerContentGroup('fonte')).toBe('fontes');
+    expect(explorerContentGroup('verbete')).toBe('editorial');
+    expect(explorerContentGroup('leitura')).toBe('editorial');
+  });
+  it('paginates results, clamps out-of-range pages and parses only positive integers', () => {
+    const items = Array.from({ length: 45 }, (_, index) => index);
+    expect(explorerPage(items, 1, 20)).toMatchObject({ page: 1, pageCount: 3, start: 1, end: 20 });
+    expect(explorerPage(items, 3, 20)).toMatchObject({ page: 3, start: 41, end: 45 });
+    expect(explorerPage(items, 9, 20)).toMatchObject({ page: 3, start: 41, end: 45 });
+    expect(explorerPage([], 4, 20)).toMatchObject({ page: 1, pageCount: 1, total: 0, start: 0 });
+    expect(parseExplorerPage('2')).toBe(2);
+    for (const value of [null, '', '0', '-1', '2x', '1.5'])
+      expect(parseExplorerPage(value)).toBe(1);
+  });
+  it('offers 10, 20 or 50 records per page and falls back to 10', () => {
+    expect(parseExplorerPageSize(null)).toBe(10);
+    expect(parseExplorerPageSize('20')).toBe(20);
+    expect(parseExplorerPageSize('50')).toBe(50);
+    expect(parseExplorerPageSize('30')).toBe(10);
+    expect(parseExplorerPageSize('abc')).toBe(10);
+  });
   it('accepts shareable catalog returns and rejects external or arbitrary destinations', () => {
     expect(safeExplorerReturn('/pessoas?q=marx&estado=pending')).toBe(
       '/pessoas?q=marx&estado=pending',
+    );
+    expect(safeExplorerReturn('/conhecimento?q=marx&pagina=2')).toBe(
+      '/conhecimento?q=marx&pagina=2',
     );
     for (const value of [
       'https://evil.test/pessoas',
