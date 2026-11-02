@@ -1,17 +1,34 @@
 <section class="explorer" aria-labelledby="explorer-title">
   <header class="explorer-heading">
-    <h1 id="explorer-title">{{ catalogue.title }}</h1>
-    <p>{{ catalogue.description }}</p>
+    <div>
+      <h1 id="explorer-title">{{ catalogue.title }}</h1>
+      <p>{{ catalogue.description }}</p>
+    </div>
+    <app-geometric-mosaic
+      class="explorer-heading__mosaic"
+      [columns]="6"
+      [rows]="1"
+      [seed]="mosaicSeed"
+    />
   </header>
   <nav aria-label="Catálogos do acervo" class="catalogues">
-    @for (item of catalogues; track item.path) {
-      <a
-        [routerLink]="'/' + item.path"
-        [queryParams]="{ idioma: params().get('idioma') }"
-        routerLinkActive="selected"
-        ariaCurrentWhenActive="page"
-        >{{ item.title }}</a
-      >
+    @for (group of groups; track group.id) {
+      <section class="catalogue-group" [attr.data-group]="group.id">
+        <h2 class="catalogue-group__title">{{ group.title }}</h2>
+        <ul>
+          @for (item of group.catalogues; track item.path) {
+            <li>
+              <a
+                [routerLink]="'/' + item.path"
+                [queryParams]="{ idioma: params().get('idioma') }"
+                routerLinkActive="selected"
+                ariaCurrentWhenActive="page"
+                >{{ item.title }}</a
+              >
+            </li>
+          }
+        </ul>
+      </section>
     }
   </nav>
   <app-content-language [requested]="params().get('idioma')" (changed)="setLanguage($event)" />
@@ -37,21 +54,6 @@
         placeholder="Nome, conceito ou expressão"
       />
       <button type="submit">Pesquisar</button>
-      <label for="explorer-kind">Tipo de registro</label>
-      <select
-        id="explorer-kind"
-        name="tipo"
-        [value]="params().get('tipo') ?? ''"
-        (change)="apply(filters)"
-      >
-        <option value="">Todos os tipos</option>
-        @if (unknownKind()) {
-          <option [value]="params().get('tipo')">Tipo indisponível</option>
-        }
-        @for (facet of facets.kinds; track facet.value) {
-          <option [value]="facet.value">{{ facet.label }}</option>
-        }
-      </select>
       <label for="explorer-state">Situação editorial</label>
       <select
         id="explorer-state"
@@ -64,24 +66,90 @@
           <option [value]="params().get('estado')">Situação indisponível</option>
         }
         @for (facet of facets.states; track facet.value) {
-          <option [value]="facet.value">{{ facet.label }}</option>
+          <option [value]="facet.value">{{ facet.label }} ({{ facet.count }})</option>
         }
       </select>
-      <a [routerLink]="'/' + catalogue.path">Limpar busca e filtros</a>
+      <a class="clear" [routerLink]="'/' + catalogue.path">Limpar busca e filtros</a>
       <p>
         Um registro cadastrado não equivale a conteúdo verificado. Confira as fontes e a situação
         editorial.
       </p>
     </form>
-    <div>
-      <p class="result-count" role="status" aria-live="polite">
-        {{ results().length }} {{ results().length === 1 ? 'resultado' : 'resultados' }}
-      </p>
-      <section aria-label="Resultados da busca" class="results">
-        @for (entry of results(); track entry.id) {
+    <div class="archive-results">
+      @if (facets.kinds.length > 1) {
+        <nav class="kind-filter" aria-label="Categorias de registro">
+          <div class="kind-filter__row">
+            <a
+              class="kind-filter__item"
+              [routerLink]="[]"
+              [queryParams]="{ tipo: null, pagina: null }"
+              queryParamsHandling="merge"
+              [attr.aria-current]="params().get('tipo') ? null : 'true'"
+              >Todos <span class="kind-filter__count">{{ facets.total }}</span></a
+            >
+          </div>
+          @for (group of kindGroups; track group.id) {
+            <div class="kind-filter__row">
+              <span class="kind-filter__title" [id]="'kind-group-' + group.id">{{
+                group.title
+              }}</span>
+              <ul class="kind-filter__items" [attr.aria-labelledby]="'kind-group-' + group.id">
+                @for (facet of group.kinds; track facet.value) {
+                  <li>
+                    <a
+                      class="kind-filter__item"
+                      [routerLink]="[]"
+                      [queryParams]="{ tipo: facet.value, pagina: null }"
+                      queryParamsHandling="merge"
+                      [attr.aria-current]="params().get('tipo') === facet.value ? 'true' : null"
+                      >{{ facet.label }}
+                      <span class="kind-filter__count">{{ facet.count }}</span></a
+                    >
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </nav>
+      }
+      @if (unknownKind()) {
+        <p class="notice">
+          Categoria indisponível neste catálogo. Escolha outra categoria ou “Todos”.
+        </p>
+      }
+      <div class="results-bar">
+        <p class="result-count" role="status" aria-live="polite">
+          @if (page().total) {
+            {{ page().start }}–{{ page().end }} de {{ page().total }}
+            {{ page().total === 1 ? 'resultado' : 'resultados' }}
+          } @else {
+            Nenhum resultado
+          }
+        </p>
+        @if (paginated) {
+          <nav class="page-size" aria-label="Resultados por página">
+            <span class="page-size__label">Mostrar</span>
+            @for (size of pageSizes; track size) {
+              <a
+                class="page-size__item"
+                [routerLink]="[]"
+                [queryParams]="{ porPagina: size === 10 ? null : size, pagina: null }"
+                queryParamsHandling="merge"
+                [attr.aria-current]="pageSize() === size ? 'true' : null"
+                >{{ size }}</a
+              >
+            }
+          </nav>
+        }
+      </div>
+      <section id="resultados" aria-label="Resultados da busca" class="results">
+        @for (entry of page().items; track entry.id) {
           <article [id]="entry.fragment ?? entry.id" class="result">
-            <p class="result-meta">{{ entry.kindLabel }} · {{ entry.stateLabel }}</p>
-            <h2 [attr.lang]="entry.displayLocale">
+            <p class="result-meta">
+              <span class="kind-tag" [attr.data-kind]="entry.kind">{{ entry.kindLabel }}</span>
+              · {{ entry.stateLabel }}
+            </p>
+            <h2 [attr.lang]="entry.sourceLocale">
               @if (catalogue.path === 'fontes') {
                 {{ entry.title }}
               } @else {
@@ -97,21 +165,7 @@
                 >
               }
             </h2>
-            <p [attr.lang]="entry.displayLocale">{{ entry.summary }}</p>
-            @if (entry.translationReview; as review) {
-              @if (review.status === 'approved') {
-                <p class="result-meta">
-                  Revisão da tradução:
-                  {{ review.method === 'assistant' ? 'assistida por IA' : 'humana' }}.
-                </p>
-              }
-            }
-            @if (entry.fallback) {
-              <p class="result-meta">
-                Sem tradução revisada neste idioma. Original:
-                {{ languages[entry.displayLocale] ?? entry.displayLocale }}.
-              </p>
-            }
+            <p [attr.lang]="entry.sourceLocale">{{ entry.summary }}</p>
             @if (catalogue.path === 'fontes') {
               @if (sourceUrl(entry.id); as url) {
                 <p><a [href]="url">Consultar fonte original</a></p>
@@ -134,6 +188,37 @@
           </div>
         }
       </section>
+      @if (page().pageCount > 1) {
+        <nav class="pager" aria-label="Paginação do acervo">
+          @if (page().page > 1) {
+            <a
+              class="pager__link"
+              rel="prev"
+              [routerLink]="[]"
+              [queryParams]="{ pagina: page().page - 1 === 1 ? null : page().page - 1 }"
+              queryParamsHandling="merge"
+              fragment="resultados"
+              >← Anterior</a
+            >
+          } @else {
+            <span class="pager__link is-disabled" aria-disabled="true">← Anterior</span>
+          }
+          <p class="pager__status">Página {{ page().page }} de {{ page().pageCount }}</p>
+          @if (page().page < page().pageCount) {
+            <a
+              class="pager__link"
+              rel="next"
+              [routerLink]="[]"
+              [queryParams]="{ pagina: page().page + 1 }"
+              queryParamsHandling="merge"
+              fragment="resultados"
+              >Próxima →</a
+            >
+          } @else {
+            <span class="pager__link is-disabled" aria-disabled="true">Próxima →</span>
+          }
+        </nav>
+      }
     </div>
   </div>
 </section>

@@ -19,14 +19,24 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
     'guimaraes silveira',
   );
-  await page.getByLabel('Tipo de registro').selectOption('pessoa');
+  const categories = page.getByRole('navigation', { name: 'Categorias de registro' });
+  await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
   await expect(page).toHaveURL(/tipo=pessoa/);
   await page.goBack();
-  await expect(page.getByLabel('Tipo de registro')).toHaveValue('');
+  await expect(categories.getByRole('link', { name: /^Todos\b/ })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
   await page.goForward();
-  await expect(page.getByLabel('Tipo de registro')).toHaveValue('pessoa');
+  await expect(categories.getByRole('link', { name: /^Pessoa\b/ })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
   await page.reload();
-  await expect(page.getByLabel('Tipo de registro')).toHaveValue('pessoa');
+  await expect(categories.getByRole('link', { name: /^Pessoa\b/ })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
   await page
     .getByLabel('Procurar no acervo', { exact: true })
     .fill('nenhum-registro-com-este-nome');
