@@ -270,8 +270,9 @@ app-page-template {
 }
 .atlas-band-heading h2 {
   margin: 0;
-  font: 700 clamp(2rem, 5vw, 4.25rem) / 0.95 var(--font-sans);
-  letter-spacing: -0.05em;
+  font: 800 clamp(2rem, 5vw, 4.25rem) / 0.95 var(--font-sans);
+  letter-spacing: var(--tracking-display);
+  font-stretch: var(--stretch-display);
 }
 .atlas-band-heading > p:last-child {
   margin: 0;
@@ -291,4 +292,13 @@ app-page-template {
     grid-column: 1 / -1;
     margin-top: 0.75rem;
   }
+}
+
+/* Expanded Archivo label: kickers and small headings that used to be monospace. */
+.atlas-label {
+  font: 500 0.8rem/1.5 var(--font-sans);
+  font-stretch: var(--stretch-label);
+  letter-spacing: 0.02em;
+  margin: 0 0 1.25rem;
+  color: var(--color-ink-muted);
 }

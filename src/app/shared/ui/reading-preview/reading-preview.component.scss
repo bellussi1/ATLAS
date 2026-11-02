@@ -33,7 +33,8 @@ button {
 }
 h2 {
   font-size: clamp(1.8rem, 5vw, 3rem);
-  letter-spacing: -0.05em;
+  letter-spacing: var(--tracking-display);
+  font-stretch: var(--stretch-display);
   line-height: 1.05;
   margin-block: 1rem;
 }

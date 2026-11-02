@@ -27,17 +27,22 @@ a {
   min-height: 44px;
   align-items: center;
 }
-.folio,
 .reading-meta,
 .editorial-strip {
   font: 0.75rem/1.7 var(--font-mono);
 }
 .folio {
+  font: 500 0.8rem/1.5 var(--font-sans);
+  font-stretch: var(--stretch-label);
+  letter-spacing: 0.02em;
+}
+.folio {
   margin: 1.5rem 0 0.8rem;
 }
 h1 {
-  font: 700 clamp(3.5rem, 11vw, 11rem)/0.86 var(--font-sans);
-  letter-spacing: -0.075em;
+  font: 800 clamp(3.5rem, 11vw, 11rem)/0.86 var(--font-sans);
+  letter-spacing: var(--tracking-display);
+  font-stretch: var(--stretch-display);
   margin: 0.5rem 0 1.5rem;
   overflow-wrap: anywhere;
 }
@@ -82,7 +87,7 @@ h1 > span {
   filter: grayscale(1);
 }
 .opening-portrait figcaption {
-  font: 0.65rem/1.6 var(--font-mono);
+  font: 0.75rem/1.6 var(--font-mono);
   padding: 0.6rem 0.75rem;
   border-top: 3px solid var(--ink);
 }

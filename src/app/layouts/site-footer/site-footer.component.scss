@@ -30,8 +30,9 @@
   margin: 1rem 0;
   font-size: clamp(3.1rem, 7vw, 7rem);
   line-height: 0.93;
-  letter-spacing: -0.065em;
-  font-weight: 600;
+  letter-spacing: var(--tracking-display);
+  font-stretch: var(--stretch-display);
+  font-weight: 800;
 }
 .footer-invitation h2 em {
   color: var(--color-ochre-paper);

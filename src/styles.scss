@@ -13,6 +13,21 @@
   font-display: optional;
 }
 
+@property --tint {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fbf8f1;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/Archivo-latin-wdth-wght.woff2') format('woff2-variations');
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'IBM Plex Mono';
   src: url('/fonts/IBMPlexMono-Regular.ttf') format('truetype');
@@ -31,7 +46,7 @@
 
 :root {
   color-scheme: light;
-  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  font-family: 'Archivo', 'IBM Plex Sans', 'Segoe UI', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --color-canvas: #fbf8f1;
@@ -62,7 +77,11 @@
   --color-orange-paper: #ef8a3a;
   --color-cartographic: #315f54;
   --color-archive: #176176;
-  --font-sans: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-sans: 'Archivo', 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  /* Archivo width axis: condensed display, expanded labels. */
+  --stretch-display: 82%;
+  --stretch-label: 112%;
+  --tracking-display: -0.03em;
   --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   --font-mono: 'IBM Plex Mono', Consolas, monospace;
   --text-caption: 0.75rem;

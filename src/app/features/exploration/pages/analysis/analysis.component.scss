@@ -17,12 +17,12 @@
 .analysis-kicker {
   grid-column: 1 / -1;
   margin: 0;
-  font: 0.78rem/1.5 var(--font-mono);
   color: var(--ink-muted);
 }
 h1 {
-  font: 700 clamp(2.75rem, 7vw, 6.5rem) / 0.9 var(--font-sans);
-  letter-spacing: -0.065em;
+  font: 800 clamp(2.75rem, 7vw, 6.5rem) / 0.9 var(--font-sans);
+  letter-spacing: var(--tracking-display);
+  font-stretch: var(--stretch-display);
   margin: 0;
   grid-row: 2 / span 2;
   text-wrap: balance;
