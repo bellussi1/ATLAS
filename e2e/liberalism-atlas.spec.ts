@@ -62,7 +62,7 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
     'href',
     /commons\.wikimedia\.org/,
   );
-  await page.getByRole('link', { name: /Rede/ }).click();
+  await page.locator('main').getByRole('link', { name: /Rede/ }).first().click();
   await expect(page.locator('.text-network summary')).toBeVisible();
   const violations = (await new AxeBuilder({ page }).analyze()).violations;
   expect(

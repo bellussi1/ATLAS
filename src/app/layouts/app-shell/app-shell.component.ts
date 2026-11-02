@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import {
@@ -10,14 +10,16 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
+import { SiteFooterComponent } from '@layouts/site-footer/site-footer.component';
 import { BreadcrumbsComponent } from '@shared/ui/breadcrumbs/breadcrumbs.component';
-import { AtlasEditorialMarkComponent } from '@shared/ui/editorial-mark/editorial-mark.component';
+import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasNoticeComponent } from '@shared/ui/notice/notice.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    AtlasEditorialMarkComponent,
+    AtlasGeometricMosaicComponent,
+    SiteFooterComponent,
     AtlasNoticeComponent,
     BreadcrumbsComponent,
     RouterLink,
@@ -36,16 +38,9 @@ export class AppComponent {
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);
   private readonly router = inject(Router);
-  instantNavigation = true;
-  private firstPage = true;
-  private pageAnimation?: Animation;
-  private pageFrame = 0;
-  readonly composition = signal(0);
-  readonly instantComposition = signal(false);
   readonly failedNavigation = signal<string | null>(null);
 
   constructor() {
-    let previousPath: string | undefined;
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
       if (event instanceof NavigationError) {
         this.failedNavigation.set(event.url);
@@ -55,13 +50,6 @@ export class AppComponent {
       this.failedNavigation.set(null);
       const path = event.urlAfterRedirects.split(/[?#]/)[0];
       this.updatePageMetadata(path);
-      if (path === previousPath) return;
-      previousPath = path;
-      this.transitionPage();
-    });
-    inject(DestroyRef).onDestroy(() => {
-      this.pageAnimation?.cancel();
-      this.document.defaultView?.cancelAnimationFrame?.(this.pageFrame);
     });
   }
 
@@ -77,46 +65,7 @@ export class AppComponent {
   }
 
   setInputMode(keyboard: boolean): void {
-    this.instantNavigation = keyboard;
     this.document.documentElement.dataset['input'] = keyboard ? 'keyboard' : 'pointer';
-  }
-
-  transitionPage(): void {
-    const win = this.document.defaultView;
-    this.pageAnimation?.cancel();
-    win?.cancelAnimationFrame?.(this.pageFrame);
-    if (this.firstPage) {
-      this.firstPage = false;
-      return;
-    }
-    if (
-      !win ||
-      typeof win.requestAnimationFrame !== 'function' ||
-      this.instantNavigation ||
-      win.matchMedia?.('(prefers-reduced-motion: reduce)').matches ||
-      this.document.documentElement.classList.contains('atlas-reduced-motion')
-    )
-      return;
-    this.pageFrame = win.requestAnimationFrame(() => {
-      const main = this.document.getElementById('conteudo');
-      if (!main || typeof main.animate !== 'function') return;
-      const tokens = win.getComputedStyle(main);
-      this.pageAnimation = main.animate(
-        [
-          { opacity: 0.65, transform: 'translateY(8px)' },
-          { opacity: 1, transform: 'translateY(0)' },
-        ],
-        {
-          duration: parseFloat(tokens.getPropertyValue('--motion-standard')) || 200,
-          easing: tokens.getPropertyValue('--ease-out').trim() || 'ease-out',
-        },
-      );
-    });
-  }
-
-  changeComposition(event: MouseEvent): void {
-    this.instantComposition.set(!event.detail);
-    this.composition.update((value) => (value + 1) % 3);
   }
 
   focusMainContent(): void {

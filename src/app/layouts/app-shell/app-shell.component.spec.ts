@@ -25,7 +25,10 @@ describe('ATLAS navigation', () => {
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))
-      expect(['/', '/marxismo', '/liberalismo', '/conhecimento']).toContain(a.pathname);
+      if (a.origin === location.origin)
+        expect(['/', '/marxismo', '/liberalismo', '/conhecimento', '/rede', '/comparar']).toContain(
+          a.pathname,
+        );
     expect(root.querySelector('header a[href="/conhecimento"]')).not.toBeNull();
   });
   it('redirects a removed page to the home', async () => {
