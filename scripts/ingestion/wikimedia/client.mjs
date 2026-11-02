@@ -5,7 +5,7 @@ export async function getResource(url, kind = 'json') {
   const target = new URL(url);
   if (
     target.protocol !== 'https:' ||
-    !/^(?:www\.wikidata\.org|[a-z-]+\.wikipedia\.org|commons\.wikimedia\.org|upload\.wikimedia\.org)$/.test(
+    !/^(?:www\.wikidata\.org|[a-z-]+\.wikipedia\.org|commons\.wikimedia\.org|upload\.wikimedia\.org|thumb\.wikimedia\.org)$/.test(
       target.hostname,
     )
   )

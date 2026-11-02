@@ -184,7 +184,10 @@ export async function transformGraph({
           .replace(/\s+/g, ' ')
           .trim() || null;
       const license = clean(meta.LicenseShortName);
-      const licenseUrl = meta.LicenseUrl?.value || null;
+      const filePageUrl = `https://commons.wikimedia.org/wiki/${encodeURIComponent(`File:${imageName}`).replaceAll('%3A', ':').replaceAll('%20', '_')}`;
+      // Public-domain files carry their rationale on the file page instead of a licence URL.
+      const licenseUrl =
+        meta.LicenseUrl?.value || (/^public domain$/i.test(license ?? '') ? filePageUrl : null);
       const creator = clean(meta.Artist);
       const licensePage = licenseUrl?.toLocaleLowerCase('en') ?? '';
       const reusableLicense =
@@ -213,7 +216,7 @@ export async function transformGraph({
           status: 'known',
           reproduction: 'allowed',
           fileTitle: imageName,
-          filePageUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(`File:${imageName}`).replaceAll('%3A', ':').replaceAll('%20', '_')}`,
+          filePageUrl,
           attribution,
           retrievedAt,
         });
