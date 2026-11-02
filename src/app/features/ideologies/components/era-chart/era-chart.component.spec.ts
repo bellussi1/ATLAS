@@ -68,4 +68,25 @@ describe('EraChartComponent', () => {
       '1 registro fica fora da escala',
     );
   });
+
+  it('marks approximate dates with "c." and a dashed border', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    const record = (id: string, precision: 'year' | 'approximate') =>
+      ({
+        id,
+        title: id,
+        temporalExtent: { startYear: 1845, endYear: null, precision, label: null },
+      }) as unknown as Entity;
+    fixture.componentRef.setInput('epochs', [epoch('a', 1840, 1850)]);
+    fixture.componentRef.setInput('people', []);
+    fixture.componentRef.setInput('markers', [
+      record('exact', 'year'),
+      record('circa', 'approximate'),
+    ]);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelectorAll('.marker.is-approx')).toHaveLength(1);
+    expect(root.querySelector('.marker.is-approx > span')!.textContent).toContain('c. 1845');
+    expect(root.querySelector('.era-note')!.textContent).toContain('bordas tracejadas');
+  });
 });

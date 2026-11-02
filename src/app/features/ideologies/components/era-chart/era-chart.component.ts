@@ -53,15 +53,17 @@ export class EraChartComponent {
     this.people()
       .flatMap((entity) => {
         const t = entity.temporalExtent;
-        return t?.startYear && t.endYear ? [{ entity, start: t.startYear, end: t.endYear }] : [];
+        return t?.startYear && t.endYear
+          ? [{ entity, start: t.startYear, end: t.endYear, approx: t.precision !== 'year' }]
+          : [];
       })
       .sort((a, b) => a.start - b.start),
   );
   readonly dated = computed(() =>
     this.markers()
       .flatMap((entity) => {
-        const year = entity.temporalExtent?.startYear;
-        return year ? [{ entity, year }] : [];
+        const t = entity.temporalExtent;
+        return t?.startYear ? [{ entity, year: t.startYear, approx: t.precision !== 'year' }] : [];
       })
       .sort((a, b) => a.year - b.year),
   );

@@ -318,3 +318,9 @@
     display: none;
   }
 }
+
+.marker.is-approx > span,
+.life-bar.is-approx {
+  outline: 1px dashed currentColor;
+  outline-offset: -1px;
+}
