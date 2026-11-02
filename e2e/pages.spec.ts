@@ -304,8 +304,8 @@ test('debates show estimated positions with their evidence, in words and not onl
     'estimada em 0,76',
   );
   await expect(positions).toContainText('Não são fatos históricos');
-  await expect(positions.locator('[role="img"]').first()).toHaveAttribute(
+  await expect(positions.locator('[data-status="estimada"] [role="img"]').first()).toHaveAttribute(
     'aria-label',
-    /Eduard Bernstein, Método de mudança social/,
+    /Eduard Bernstein, Método de mudança social: estimada em 0,76/,
   );
 });

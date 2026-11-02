@@ -1,5 +1,6 @@
 import { routes } from '@app/app.routes';
 import { safeDiscoveryOrigin } from '@core/content/queries/discovery-index';
+import { estimateAxis, estimateEntity } from '@ideologies/utils/positions';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import supplement from '../../../../content/graph/marxismo.json';
@@ -9,7 +10,11 @@ import socialDemocracia from '../../../../content/ideologies/examples/social-dem
 import publishedLiberalismo from '../../../../content/ideologies/liberalismo/page.json';
 import marxismo from '../../../../content/ideologies/marxismo/page.json';
 import { canonicalChapters, legacyChapterAnchors } from './ideology-chapters';
-import { ideologyPageSchema, validateIdeologyDossier } from './ideology-page.schema';
+import {
+  ideologyGraphSchema,
+  ideologyPageSchema,
+  validateIdeologyDossier,
+} from './ideology-page.schema';
 
 describe('Public pages', () => {
   it('keeps readings and exposes the knowledge explorer with permanent records', () => {
@@ -156,5 +161,31 @@ describe('positions layer', () => {
       .find((c) => c.id === 'debates')!
       .blocks.find((b) => b.type === 'positions');
     expect(block).toBeDefined();
+  });
+});
+
+describe('seeded positions estimates', () => {
+  const claims = ideologyGraphSchema.parse(supplement).positions;
+  const axis = (entityId: string, axisId: Parameters<typeof estimateAxis>[2]) =>
+    estimateAxis(claims, entityId, axisId);
+  it('keeps each status tied to its distinct sources and to the spread of its claims', () => {
+    expect(axis('person-karl-marx', 'propriedade')).toMatchObject({
+      status: 'estimada',
+      sources: 2,
+    });
+    expect(axis('person-karl-marx', 'igualdade')).toMatchObject({ status: 'estimada', sources: 2 });
+    expect(axis('person-karl-marx', 'poder')).toMatchObject({ status: 'divergente', sources: 2 });
+    expect(axis('person-friedrich-engels', 'mercado')).toMatchObject({
+      status: 'estimada',
+      sources: 2,
+    });
+    expect(axis('person-friedrich-engels', 'revolucao')).toMatchObject({ status: 'divergente' });
+    expect(axis('person-eduard-bernstein', 'revolucao')).toMatchObject({
+      status: 'estimada',
+      value: 0.76,
+    });
+    expect(axis('person-rosa-luxemburg', 'revolucao')).toMatchObject({ status: 'indicativa' });
+    expect(axis('person-vladimir-lenin', 'revolucao')).toMatchObject({ status: 'indicativa' });
+    expect(estimateEntity(claims, 'person-karl-marx')).toHaveLength(6);
   });
 });
