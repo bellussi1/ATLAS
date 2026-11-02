@@ -17,7 +17,7 @@ Also read `docs/architecture/ARCHITECTURE.md` before creating or moving code, an
 
 ## Commands (Node 24 / npm 11)
 
-`start`, `build`, `test`, `lint`, `typecheck` and `watch` all run `npm run content:build` first through `pre*` hooks. That step compiles `src/content` (graph, manifest and hashes) into the generated assets the app loads. Run it yourself after editing content if you are not going through one of those scripts.
+`start`, `build`, `test`, `lint`, `typecheck` and `watch` all run `npm run content:build` first through `pre*` hooks. That step compiles `src/content` (graph, translations, manifest and hashes) into the generated assets the app loads. Run it yourself after editing content if you are not going through one of those scripts.
 
 | Command | Purpose |
 | --- | --- |

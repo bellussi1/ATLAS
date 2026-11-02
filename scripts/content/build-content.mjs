@@ -6,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { formatJson, readSourceGraph, sha256, validateSourceGraph } from './source-graph.mjs';
 import { buildExplorationLayout } from './exploration-layout.mjs';
+import { compileTranslations } from './translations.mjs';
 
 const { buildDiscoveryIndex } =
   await import('../../src/app/core/content/queries/discovery-index.ts');
@@ -37,8 +38,16 @@ export async function buildContent({
   graph: input,
   outputDirectory = join(projectRoot, 'generated/content'),
   fixture = false,
+  translationCatalogue,
 } = {}) {
   const graph = validateSourceGraph(input ?? (await readSourceGraph()));
+  const translations = compileTranslations(
+    translationCatalogue ??
+      JSON.parse(
+        await readFile(join(projectRoot, 'src/content/translations/catalogue.json'), 'utf8'),
+      ),
+    graph,
+  );
   const entities = graph.atlases.flatMap((atlas) => atlas.entities);
   const readingTexts = {};
   const adjacency = adjacencySchema.parse(
@@ -101,7 +110,7 @@ export async function buildContent({
     layouts.editorial[slug] = geometry;
   }
   layoutsSchema.parse(layouts);
-  const search = searchIndexSchema.parse(buildDiscoveryIndex(graph, readingTexts));
+  const search = searchIndexSchema.parse(buildDiscoveryIndex(graph, readingTexts, translations));
   const assets = [];
   const asset = async (name, value) => {
     const bytes = `${JSON.stringify(value)}\n`;

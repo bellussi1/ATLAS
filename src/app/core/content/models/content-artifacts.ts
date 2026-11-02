@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import { type KnowledgeGraph, relationSchema, temporalExtentSchema } from './content-schema';
+import { contentTranslationSchema } from './content-translation';
 import { explorationLayoutSchema } from './exploration-layout';
 
 const resourceSchema = z.object({
@@ -20,6 +21,7 @@ export const contentManifestSchema = z.object({
 export const searchIndexSchema = z.array(
   z.object({
     sourceLocale: z.string().optional(),
+    translations: z.array(contentTranslationSchema).optional(),
     id: z.string(),
     title: z.string(),
     summary: z.string(),

@@ -3,6 +3,7 @@ import { editorialEntries, getEntryPath } from '@core/content/editorial/editoria
 import { editorialStatusLabels as statusLabels } from '@core/content/editorial/editorial-status';
 import { publicReadings } from '@core/content/editorial/public-readings';
 import type { Atlas, Claim, KnowledgeGraph, Source } from '@core/content/models/content-schema';
+import type { ContentTranslation } from '@core/content/models/content-translation';
 
 export interface DiscoveryBacklink {
   id: string;
@@ -15,6 +16,7 @@ export interface DiscoveryBacklink {
 
 export interface DiscoveryIndexEntry {
   sourceLocale?: string;
+  translations?: ContentTranslation[];
   id: string;
   title: string;
   summary: string;
@@ -93,6 +95,7 @@ function searchContent(values: unknown[]): string {
 export function buildDiscoveryIndex(
   graph: KnowledgeGraph,
   readingTexts: Record<string, string> = {},
+  translations: ContentTranslation[] = [],
 ): DiscoveryIndexEntry[] {
   const entries: DiscoveryIndexEntry[] = [];
   const entityEntries = new Map<string, DiscoveryIndexEntry>();
@@ -119,6 +122,9 @@ export function buildDiscoveryIndex(
     const state = entityState(atlas, entity.id, entity.editorialStatus);
     const entry: DiscoveryIndexEntry = {
       sourceLocale: entity.textLocale ?? 'und',
+      translations: translations.filter(
+        (t) => t.entityId === entity.id && t.review.status === 'approved',
+      ),
       id: entity.id,
       title: entity.title,
       summary: entity.summary,
@@ -131,6 +137,14 @@ export function buildDiscoveryIndex(
       context: entity.context,
       backlinks: [],
       searchText: searchContent([
+        translations
+          .filter((t) => t.entityId === entity.id && t.review.status === 'approved')
+          .map((t) => [
+            t.text.title,
+            t.text.summary,
+            t.text.context,
+            t.text.sections.map((s) => [s.heading, s.paragraphs]),
+          ]),
         entity.title,
         entity.summary,
         entity.aliases,

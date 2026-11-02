@@ -33,7 +33,7 @@
                 "glob": "**/*",
                 "input": "src/content",
                 "output": "content",
-                "ignore": ["knowledge/**", "atlas.json"]
+                "ignore": ["knowledge/**", "translations/**", "atlas.json"]
               },
               {
                 "glob": "**/*.json",

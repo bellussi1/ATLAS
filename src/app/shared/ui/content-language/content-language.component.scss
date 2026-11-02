@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  margin-block: 1.5rem;
+}
+label {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 24rem;
+  font-weight: 600;
+}
+select {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 2.75rem;
+  padding: 0.65rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  border-radius: 0;
+  font: inherit;
+}
+p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  max-width: 80ch;
+}

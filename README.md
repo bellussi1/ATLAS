@@ -89,7 +89,7 @@ Os comandos `start`, `build`, `test`, `lint` e `typecheck` executam `content:bui
 
 ```
 src/
-  content/            grafo e dossiês (fonte da verdade editorial)
+  content/            grafo, dossiês, traduções (fonte da verdade editorial)
   app/core/           contratos Zod, repositório de conteúdo, consultas puras
   app/features/       ideologies · exploration · study
   app/shared/         UI e diretivas reutilizáveis (mosaico, reveal, contexto)

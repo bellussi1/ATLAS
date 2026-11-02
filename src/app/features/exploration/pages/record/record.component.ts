@@ -6,9 +6,11 @@ import { findEditorialEntry } from '@core/content/editorial/editorial-entries';
 import { editorialStatusLabel } from '@core/content/editorial/editorial-status';
 import { entityContext } from '@core/content/queries/entity-context';
 import { safeExplorerReturn } from '@core/content/queries/knowledge-explorer';
+import { contentLanguageLabels, localizedEntity } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EntityProfileComponent } from '@exploration/components/entity-profile/entity-profile.component';
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
+import { ContentLanguageComponent } from '@shared/ui/content-language/content-language.component';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
 
 @Component({
@@ -17,6 +19,7 @@ import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-
     RouterLink,
     AtlasLicensedAssetComponent,
     AtlasClaimReferencesComponent,
+    ContentLanguageComponent,
     EntityProfileComponent,
   ],
   templateUrl: './record.component.html',
@@ -53,7 +56,18 @@ export class RecordComponent {
       ? undefined
       : this.repository.findEntityBySlug(this.params().get('slug')),
   );
-  readonly entity = computed(() => this.originalEntity());
+  readonly presentation = computed(() => {
+    const entity = this.originalEntity();
+    return entity
+      ? localizedEntity(
+          entity,
+          this.query().get('idioma'),
+          this.repository.discoveryIndex.find((e) => e.id === entity.id)?.translations,
+        )
+      : undefined;
+  });
+  readonly entity = computed(() => this.presentation()?.entity);
+  readonly languages = contentLanguageLabels;
   readonly editorial = computed(() =>
     findEditorialEntry(
       getEditorialType(this.params().get('tipo'))?.slug,
@@ -87,5 +101,12 @@ export class RecordComponent {
   );
   pathFor(id: string): string {
     return this.repository.discoveryIndex.find((e) => e.id === id)?.path ?? '/entidades';
+  }
+  setLanguage(locale: string | null): void {
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { idioma: locale },
+      queryParamsHandling: 'merge',
+    });
   }
 }

@@ -1,0 +1,16 @@
+<label
+  >Idioma do conteúdo
+  <select #language (change)="changed.emit(language.value || null)">
+    <option value="" [selected]="!requested()">Original</option>
+    <option value="pt-BR" [selected]="requested() === 'pt-BR'">Português (Brasil)</option>
+    <option value="en" [selected]="requested() === 'en'">English</option>
+    @if (unavailable()) {
+      <option [value]="requested()" [selected]="true">Idioma indisponível</option>
+    }
+  </select>
+</label>
+<p>
+  A interface permanece em português. O seletor usa traduções editoriais revisadas quando
+  disponíveis; textos sem tradução preservam o original e seu idioma. Afirmações, perfis e fontes
+  permanecem na redação de origem.
+</p>
