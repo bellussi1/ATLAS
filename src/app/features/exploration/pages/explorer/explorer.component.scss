@@ -38,8 +38,8 @@ h1 {
 }
 .catalogue-group {
   --group-tone: var(--color-canvas);
-  --group-rule: rgb(28 28 26 / 22%);
-  --group-hover: rgb(251 248 241 / 60%);
+  --group-rule: color-mix(in srgb, var(--color-ink) 22%, transparent);
+  --group-hover: color-mix(in srgb, var(--color-canvas) 60%, transparent);
   background: var(--group-tone);
   color: var(--color-ink);
 }
@@ -54,8 +54,8 @@ h1 {
 }
 .catalogue-group[data-group='fontes'] {
   --group-tone: var(--color-indigo);
-  --group-rule: rgb(255 255 255 / 30%);
-  --group-hover: rgb(255 255 255 / 14%);
+  --group-rule: color-mix(in srgb, var(--color-on-strong-surface) 30%, transparent);
+  --group-hover: color-mix(in srgb, var(--color-on-strong-surface) 14%, transparent);
   color: var(--color-on-strong-surface);
 }
 .catalogue-group + .catalogue-group {

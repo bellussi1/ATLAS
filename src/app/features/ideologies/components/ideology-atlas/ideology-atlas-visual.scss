@@ -87,7 +87,7 @@
   font: 0.75rem/1.4 var(--font-mono);
 }
 .status {
-  color: #7d261e;
+  color: var(--color-accent-hover);
 }
 .description {
   line-height: 1.55;
@@ -105,7 +105,7 @@
 }
 .categories span {
   padding: 0.2rem 0.35rem;
-  background: rgba(255, 255, 255, 0.55);
+  background: color-mix(in srgb, var(--color-on-strong-surface) 55%, transparent);
   font-size: 0.75rem;
 }
 .attribution {
@@ -138,7 +138,7 @@
   height: 100%;
   padding: 0.5rem 0.6rem;
   border: 1px solid var(--color-border-strong);
-  background: rgba(255, 255, 255, 0.5);
+  background: color-mix(in srgb, var(--color-on-strong-surface) 50%, transparent);
   color: inherit;
   text-align: left;
   cursor: pointer;

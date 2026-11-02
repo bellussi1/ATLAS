@@ -150,7 +150,7 @@ progress::-moz-progress-bar {
 
 a[aria-current='location'] .chapter-number {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-on-strong-surface);
 }
 
 a[aria-current='location'] .chapter-number[data-shape='0'] {

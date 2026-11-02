@@ -29,8 +29,6 @@ a.atlas-link {
 a.atlas-link--feature {
   text-decoration: none;
 }
-@media (hover: hover) and (pointer: fine) {
-}
 
 .atlas-button {
   display: inline-flex;
@@ -48,8 +46,8 @@ a.atlas-link--feature {
   text-align: center;
   cursor: pointer;
   transition:
-    background-color var(--motion-fast) ease,
-    color var(--motion-fast) ease;
+    background-color var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out);
 }
 
 .atlas-button--secondary {
@@ -166,10 +164,6 @@ a.atlas-link--feature {
   border-color: var(--color-danger);
   background: var(--color-danger-surface);
   color: var(--color-danger);
-}
-@media (min-width: 40rem) {
-}
-@media (min-width: 60rem) {
 }
 
 /* Poster section heading: lettered geometric marker, display title, short lead. */

@@ -5,14 +5,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'IBM Plex Sans';
-  src: url('/fonts/IBMPlexSans.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 100 700;
-  font-display: optional;
-}
-
+/* Font policy: WOFF2 only, latin subsets, one display mode (swap) so text is never hidden. */
 @property --tint {
   syntax: '<color>';
   inherits: true;
@@ -30,23 +23,23 @@
 
 @font-face {
   font-family: 'IBM Plex Mono';
-  src: url('/fonts/IBMPlexMono-Regular.ttf') format('truetype');
+  src: url('/fonts/IBMPlexMono-Regular.woff2') format('woff2');
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Source Serif 4';
-  src: url('/fonts/SourceSerif4.ttf') format('truetype');
+  src: url('/fonts/SourceSerif4.woff2') format('woff2');
   font-style: normal;
   font-weight: 200 900;
-  font-display: optional;
+  font-display: swap;
 }
 
 :root {
   color-scheme: light;
-  font-family: 'Archivo', 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  font-family: 'Archivo', 'Segoe UI', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --color-canvas: #fbf8f1;
@@ -83,7 +76,7 @@
   --color-orange-paper: #ef8a3a;
   --color-cartographic: #315f54;
   --color-archive: #176176;
-  --font-sans: 'Archivo', 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-sans: 'Archivo', 'Segoe UI', sans-serif;
   /* Archivo width axis: condensed display, expanded labels. */
   --stretch-display: 82%;
   --stretch-label: 112%;
@@ -120,6 +113,7 @@
   --motion-fast: 120ms;
   --motion-standard: 240ms;
   --motion-slow: 480ms;
+  --stagger-step: 60ms;
 
   // Compatibility aliases retained while existing routes adopt semantic roles.
   --paper: var(--color-canvas);
@@ -293,7 +287,7 @@ html[data-input='keyboard'] *::after {
     transition:
       opacity var(--motion-slow) var(--ease-out),
       transform var(--motion-slow) var(--ease-out);
-    transition-delay: calc(var(--stagger, 0) * 70ms);
+    transition-delay: calc(var(--stagger, 0) * var(--stagger-step));
   }
   html.atlas-reveal .atlas-reveal-item.is-pending > [data-stagger] {
     opacity: 0;

@@ -25,11 +25,11 @@
 }
 :host([data-tone='idea']) {
   --tone: var(--color-indigo);
-  --on-tone: #fff;
+  --on-tone: var(--color-on-strong-surface);
 }
 :host([data-tone='reading']) {
   --tone: var(--color-accent);
-  --on-tone: #fff;
+  --on-tone: var(--color-on-strong-surface);
 }
 header {
   display: flex;

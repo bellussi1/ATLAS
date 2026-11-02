@@ -371,7 +371,8 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .argument-card {
-    animation: arg-in var(--motion-standard) var(--ease-out) calc(var(--stagger, 0) * 60ms) both;
+    animation: arg-in var(--motion-standard) var(--ease-out)
+      calc(var(--stagger, 0) * var(--stagger-step)) both;
   }
 }
 @keyframes arg-in {

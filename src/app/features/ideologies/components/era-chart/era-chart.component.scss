@@ -28,11 +28,11 @@
 }
 [data-tone='0'] {
   --tone: var(--color-accent);
-  --on-tone: #fff;
+  --on-tone: var(--color-on-strong-surface);
 }
 [data-tone='1'] {
   --tone: var(--color-ink);
-  --on-tone: #fff;
+  --on-tone: var(--color-on-strong-surface);
 }
 [data-tone='2'] {
   --tone: var(--color-ochre-paper);
@@ -40,7 +40,7 @@
 }
 [data-tone='3'] {
   --tone: var(--color-indigo);
-  --on-tone: #fff;
+  --on-tone: var(--color-on-strong-surface);
 }
 [data-tone='4'] {
   --tone: var(--color-teal-paper);
@@ -246,7 +246,7 @@
   padding: 0.6rem 1rem;
   border: 0;
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-on-strong-surface);
   font-weight: 650;
   text-decoration: underline;
   text-underline-offset: 0.2em;

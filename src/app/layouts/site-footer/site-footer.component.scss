@@ -212,7 +212,7 @@
   gap: 1.5rem 2rem;
   margin-top: 3rem;
   padding-block: 2rem;
-  border-block: 2px solid rgb(255 255 255 / 35%);
+  border-block: 2px solid color-mix(in srgb, var(--color-on-strong-surface) 35%, transparent);
 }
 .footer-directory h2 {
   margin: 0 0 0.5rem;

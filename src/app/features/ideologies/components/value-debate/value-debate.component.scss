@@ -159,8 +159,8 @@ input:focus-visible {
 @media (prefers-reduced-motion: no-preference) {
   .theses button:not(:focus-visible) {
     transition:
-      color 180ms var(--ease-out),
-      background-color 180ms var(--ease-out);
+      color var(--motion-selection) var(--ease-out),
+      background-color var(--motion-selection) var(--ease-out);
   }
 }
 .atlas-return {

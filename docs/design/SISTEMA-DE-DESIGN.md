@@ -18,18 +18,18 @@ Os tokens estão em `src/styles.scss`. Os aliases antigos (`--paper`, `--ink`, `
 
 | Função | Token | Valor |
 | --- | --- | --- |
-| Fundo | `--color-canvas` | `#FBFAF7` |
-| Superfície | `--color-surface` | `#FBFAF7` |
+| Fundo | `--color-canvas` | `#FBF8F1` |
+| Superfície | `--color-surface` | `#FBF8F1` |
 | Superfície elevada | `--color-surface-raised` | `#FFFDFA` |
 | Superfície sutil | `--color-surface-subtle` | `#E9E4DA` |
-| Texto principal | `--color-ink` | `#1C1C1A` |
+| Texto principal | `--color-ink` | `#141211` |
 | Texto de apoio | `--color-ink-muted` | `#57544D` |
 | Borda | `--color-border` | `#D9D4CA` |
 | Borda forte | `--color-border-strong` | `#777268` |
-| Ação | `--color-accent` | `#B4231D` |
+| Ação | `--color-accent` | `#B81D16` |
 | Ação em hover | `--color-accent-hover` | `#811F1A` |
 | Texto em superfícies escuras | `--color-on-strong-surface` | `#FFFFFF` |
-| Foco | `--color-focus` | `#B4231D` |
+| Foco | `--color-focus` | `#B81D16` |
 | Informação | `--color-info` / `--color-info-surface` | `#164F60` / `#E1EDF0` |
 | Sucesso | `--color-success` / `--color-success-surface` | `#24563B` / `#E4EEE5` |
 | Atenção | `--color-warning` / `--color-warning-surface` | `#614500` / `#F2E8C8` |
@@ -37,11 +37,11 @@ Os tokens estão em `src/styles.scss`. Os aliases antigos (`--paper`, `--ink`, `
 | Cartografia | `--color-cartographic` | `#315F54` |
 | Arquivo | `--color-archive` | `#176176` |
 
-Tipografia: IBM Plex Sans para interface e títulos, Source Serif 4 para leitura e IBM Plex Mono para metadados. Os arquivos locais e avisos OFL estão em `public/fonts/`. A escala de texto, espaçamento, raio, largura de leitura e movimento também está definida como tokens CSS em `:root`. Os raios permanecem discretos; não há modo escuro global.
+Tipografia: Archivo (variável, WOFF2) para interface e títulos, Source Serif 4 (WOFF2, subconjunto latin) para leitura e IBM Plex Mono (WOFF2) para metadados. Os arquivos locais e avisos OFL estão em `public/fonts/`. A política é uma só: `font-display: swap`, sem `optional` nem TTF. A escala de texto, espaçamento, raio, largura de leitura e movimento também está definida como tokens CSS em `:root`. Os raios permanecem discretos; não há modo escuro global.
 
 ## Componentes e uso
 
-Os componentes standalone e a diretiva de heading estão em `src/app/shared/ui-primitives.ts`; regras de apresentação compartilhadas estão em `src/app/shared/ui-primitives.scss`.
+Os componentes standalone e a diretiva de heading estão em `src/app/shared/ui/ui-primitives.scss`; regras de apresentação compartilhadas estão no mesmo arquivo SCSS.
 
 | Primitiva | Uso |
 | --- | --- |
