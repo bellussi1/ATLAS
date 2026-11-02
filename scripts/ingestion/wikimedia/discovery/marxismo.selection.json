@@ -1,0 +1,180 @@
+{
+  "tradition": "marxismo",
+  "basedOn": "marxismo.json",
+  "retrievedAt": "2026-11-02",
+  "entities": [
+    ["ideology-leninism", "leninismo", "Leninism", "ideology", "Q155059"],
+    ["ideology-trotskyism", "trotskismo", "Trotskyism", "ideology", "Q181133"],
+    ["ideology-marxism-leninism", "marxismo-leninismo", "Marxism–Leninism", "ideology", "Q211930"],
+    ["person-anton-pannekoek", "Anton Pannekoek", "Anton Pannekoek", "person", "Q347930"],
+    [
+      "ideology-analytical-marxism",
+      "marxismo analítico",
+      "analytical Marxism",
+      "ideology",
+      "Q485393"
+    ],
+    ["work-anti-duhring", "Anti-Dühring", "Anti-Dühring", "work", "Q574630"],
+    [
+      "work-materialism-and-empirio-criticism",
+      "Materialismo e Empiriocriticismo",
+      "Materialism and Empirio-criticism",
+      "work",
+      "Q706081"
+    ],
+    ["ideology-western-marxism", "marxismo ocidental", "Western Marxism", "ideology", "Q917453"],
+    ["ideology-neo-marxism", "neomarxismo", "Neo-Marxism", "ideology", "Q1058263"],
+    [
+      "work-the-work-of-art-in-the-age-of-mechanical-reproduction",
+      "A Obra de Arte na Era de Sua Reprodutibilidade Técnica",
+      "The Work of Art in the Age of Mechanical Reproduction",
+      "work",
+      "Q1169425"
+    ],
+    [
+      "ideology-marxist-leninist-atheism",
+      "Ateísmo Marxista-leninista",
+      "Marxist‒Leninist atheism",
+      "ideology",
+      "Q1186975"
+    ],
+    [
+      "work-imperialism-the-highest-stage-of-capitalism",
+      "Imperialismo, fase superior do capitalismo",
+      "Imperialism, the Highest Stage of Capitalism",
+      "work",
+      "Q1194558"
+    ],
+    [
+      "work-critique-of-the-gotha-program",
+      "Crítica ao Programa de Gotha",
+      "Critique of the Gotha Program",
+      "work",
+      "Q1273940"
+    ],
+    ["ideology-post-marxism", "pós-marxismo", "post-Marxism", "ideology", "Q1376649"],
+    ["ideology-revisionism", "revisionismo", "revisionism", "ideology", "Q2083688"]
+  ],
+  "included": [
+    {
+      "qid": "Q9061",
+      "kind": "person",
+      "label": "Karl Marx",
+      "sitelinks": 313,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q83003",
+      "kind": "person",
+      "label": "Antonio Gramsci",
+      "sitelinks": 127,
+      "roles": ["influenced-by-marx", "political-ideology"]
+    },
+    {
+      "qid": "Q155059",
+      "kind": "ideology",
+      "label": "leninismo",
+      "sitelinks": 83,
+      "roles": ["subclass-of-marxism"]
+    },
+    {
+      "qid": "Q181133",
+      "kind": "ideology",
+      "label": "trotskismo",
+      "sitelinks": 65,
+      "roles": ["subclass-of-marxism"]
+    },
+    {
+      "qid": "Q211930",
+      "kind": "ideology",
+      "label": "marxismo-leninismo",
+      "sitelinks": 80,
+      "roles": ["subclass-of-marxism"]
+    },
+    {
+      "qid": "Q347930",
+      "kind": "person",
+      "label": "Anton Pannekoek",
+      "sitelinks": 33,
+      "roles": ["influenced-by-marx", "political-ideology"]
+    },
+    {
+      "qid": "Q485393",
+      "kind": "ideology",
+      "label": "marxismo analítico",
+      "sitelinks": 22,
+      "roles": ["subclass-of-marxism"]
+    },
+    {
+      "qid": "Q574630",
+      "kind": "work",
+      "label": "Anti-Dühring",
+      "sitelinks": 31,
+      "roles": ["main-subject"]
+    },
+    {
+      "qid": "Q706081",
+      "kind": "work",
+      "label": "Materialismo e Empiriocriticismo",
+      "sitelinks": 30,
+      "roles": ["main-subject"]
+    },
+    {
+      "qid": "Q917453",
+      "kind": "ideology",
+      "label": "marxismo ocidental",
+      "sitelinks": 25,
+      "roles": ["subclass-of-marxism"]
+    },
+    {
+      "qid": "Q1058263",
+      "kind": "ideology",
+      "label": "neomarxismo",
+      "sitelinks": 36,
+      "roles": ["subclass-of-marxism"]
+    },
+    {
+      "qid": "Q1169425",
+      "kind": "work",
+      "label": "A Obra de Arte na Era de Sua Reprodutibilidade Técnica",
+      "sitelinks": 23,
+      "roles": ["main-subject"]
+    },
+    {
+      "qid": "Q1186975",
+      "kind": "ideology",
+      "label": "Ateísmo Marxista-leninista",
+      "sitelinks": 24,
+      "roles": ["subclass-of-marxism"]
+    },
+    {
+      "qid": "Q1194558",
+      "kind": "work",
+      "label": "Imperialismo, fase superior do capitalismo",
+      "sitelinks": 29,
+      "roles": ["main-subject"]
+    },
+    {
+      "qid": "Q1273940",
+      "kind": "work",
+      "label": "Crítica ao Programa de Gotha",
+      "sitelinks": 25,
+      "roles": ["main-subject"]
+    },
+    {
+      "qid": "Q1376649",
+      "kind": "ideology",
+      "label": "pós-marxismo",
+      "sitelinks": 27,
+      "roles": ["subclass-of-marxism"]
+    },
+    {
+      "qid": "Q2083688",
+      "kind": "ideology",
+      "label": "revisionismo",
+      "sitelinks": 34,
+      "roles": ["subclass-of-marxism"]
+    }
+  ],
+  "excluded": []
+}

@@ -1,0 +1,6 @@
+{
+  "tradition": "marxismo",
+  "note": "Decisões editoriais sobre a seleção automática. Entradas aqui prevalecem sobre as regras de selection.mjs. Vazio = aceitar as regras. Revisão humana pendente.",
+  "include": [],
+  "exclude": {}
+}

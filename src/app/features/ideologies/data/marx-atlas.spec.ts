@@ -7,7 +7,8 @@ describe('Marxism atlas content', () => {
     const atlas = methodologyKnowledgeGraph.atlases.find((item) => item.id === 'atlas-marx-valor')!;
     const entities = methodologyKnowledgeGraph.atlases.flatMap((item) => item.entities);
     const records = atlas.entityIds.map((id) => entities.find((entity) => entity.id === id)!);
-    expect(records).toHaveLength(27);
+    // 27 curated and imported records plus 15 from the Wikidata discovery selection.
+    expect(records).toHaveLength(42);
     expect(new Set(records.map((entity) => entity.id)).size).toBe(records.length);
     expect(records.filter((entity) => entity.kind === 'person').length).toBeGreaterThanOrEqual(13);
     expect(records.some((entity) => entity.kind === 'work')).toBe(true);
@@ -15,7 +16,7 @@ describe('Marxism atlas content', () => {
     expect(records.some((entity) => entity.kind === 'institution')).toBe(true);
     expect(records.some((entity) => entity.kind === 'concept')).toBe(true);
     const imported = records.filter((entity) => Boolean(entity.externalIds?.wikidata));
-    expect(imported).toHaveLength(24);
+    expect(imported).toHaveLength(39);
     expect(imported.every((entity) => entity.editorialStatus === 'pending')).toBe(true);
     expect(imported.every((entity) => Boolean(entity.discoveryMetadata?.wikipediaUrl))).toBe(true);
     const reconciledQids = imported.map((entity) => entity.externalIds?.wikidata).filter(Boolean);
@@ -35,12 +36,13 @@ describe('Marxism atlas content', () => {
     expect(structured.length).toBeGreaterThan(0);
     expect(structured.every((relation) => relation.evidenceIds.length > 0)).toBe(true);
     const authorship = structured.filter((relation) => relation.type === 'authored');
-    expect(authorship).toHaveLength(2);
+    // Authorship from Wikidata P50 for the Marxist works now included in the reading.
+    expect(authorship).toHaveLength(6);
+    expect(authorship.some((r) => r.toEntityId === 'work-communist-manifesto')).toBe(true);
     expect(
       authorship.every(
         (relation) =>
-          relation.fromEntityId.startsWith('person-') &&
-          relation.toEntityId === 'work-communist-manifesto',
+          relation.fromEntityId.startsWith('person-') && relation.toEntityId.startsWith('work-'),
       ),
     ).toBe(true);
     expect(new Set(atlas.sources.map((source) => source.id)).size).toBe(atlas.sources.length);
@@ -67,7 +69,7 @@ describe('Marxism atlas content', () => {
 
   it('registers sourced records with pending reviews and documented directed relations', () => {
     const atlas = methodologyKnowledgeGraph.atlases.find((item) => item.id === 'atlas-marx-valor')!;
-    expect(atlas.entities).toHaveLength(27);
+    expect(atlas.entities).toHaveLength(42);
     expect(
       atlas.claims.every(
         (claim) => claim.editorialStatus === 'pending' && claim.citationIds.length > 0,

@@ -381,7 +381,8 @@
             "person-caio-prado-junior",
             "person-luiz-carlos-prestes",
             "person-florestan-fernandes",
-            "person-jose-carlos-mariategui"
+            "person-jose-carlos-mariategui",
+            "person-anton-pannekoek"
           ],
           "mode": "thinkers",
           "notes": {
@@ -473,6 +474,22 @@
         {
           "type": "graph",
           "edgeIds": ["edge-luxemburg-bernstein", "edge-lenin-kautsky", "edge-marx-smith"]
+        },
+        {
+          "type": "entities",
+          "mode": "concepts",
+          "entityIds": [
+            "ideology-leninism",
+            "ideology-trotskyism",
+            "ideology-marxism-leninism",
+            "ideology-analytical-marxism",
+            "ideology-western-marxism",
+            "ideology-neo-marxism",
+            "ideology-marxist-leninist-atheism",
+            "ideology-post-marxism",
+            "ideology-revisionism"
+          ],
+          "notes": {}
         },
         {
           "type": "explorations",
@@ -766,6 +783,18 @@
               }
             }
           ]
+        },
+        {
+          "type": "entities",
+          "mode": "documents",
+          "entityIds": [
+            "work-anti-duhring",
+            "work-materialism-and-empirio-criticism",
+            "work-imperialism-the-highest-stage-of-capitalism",
+            "work-critique-of-the-gotha-program",
+            "work-the-work-of-art-in-the-age-of-mechanical-reproduction"
+          ],
+          "notes": {}
         },
         {
           "type": "explorations",

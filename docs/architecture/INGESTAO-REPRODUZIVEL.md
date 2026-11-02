@@ -31,18 +31,18 @@ Após a fase 2, sem `--output`, o destino é `src/content/knowledge/manifest.jso
 
 ## Responsabilidades
 
-| Arquivo | Responsabilidade |
-| --- | --- |
-| `scripts/ingest-wikimedia-atlas.mjs` | CLI, validação de flags e escolha da coleção; não monta entidades |
-| `scripts/ingest-liberalism.mjs` | Wrapper que preserva argumentos, sem editar `process.argv` |
-| `scripts/ingestion/wikimedia/configurations.mjs` | IDs internos solicitados e QIDs explícitos por coleção |
-| `client.mjs` | Acesso remoto limitado a origens Wikimedia HTTPS, User-Agent, ritmo/retry e timeout que inclui o corpo da resposta |
-| `archive.mjs` | Corpos brutos, hashes, manifest validado e leitor offline sem fallback de rede |
-| `reconcile.mjs` | Identidade global por QID, aliases sem colisão silenciosa e deduplicação por ID |
-| `normalize.mjs` | Normalização de títulos, datas e referências das declarações |
-| `transform.mjs` | Montagem determinística através do adaptador de entrada; sem escrita em disco nem acesso direto a fetch |
-| `pipeline.mjs` | Validação Zod do grafo de entrada/saída e publicação por arquivo temporário + rename |
-| `scripts/verify-ingestion.mjs` | Replay de todas as capturas versionadas em diretório temporário e comparação byte a byte |
+| Arquivo                                          | Responsabilidade                                                                                                   |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `scripts/ingest-wikimedia-atlas.mjs`             | CLI, validação de flags e escolha da coleção; não monta entidades                                                  |
+| `scripts/ingest-liberalism.mjs`                  | Wrapper que preserva argumentos, sem editar `process.argv`                                                         |
+| `scripts/ingestion/wikimedia/configurations.mjs` | IDs internos solicitados e QIDs explícitos por coleção                                                             |
+| `client.mjs`                                     | Acesso remoto limitado a origens Wikimedia HTTPS, User-Agent, ritmo/retry e timeout que inclui o corpo da resposta |
+| `archive.mjs`                                    | Corpos brutos, hashes, manifest validado e leitor offline sem fallback de rede                                     |
+| `reconcile.mjs`                                  | Identidade global por QID, aliases sem colisão silenciosa e deduplicação por ID                                    |
+| `normalize.mjs`                                  | Normalização de títulos, datas e referências das declarações                                                       |
+| `transform.mjs`                                  | Montagem determinística através do adaptador de entrada; sem escrita em disco nem acesso direto a fetch            |
+| `pipeline.mjs`                                   | Validação Zod do grafo de entrada/saída e publicação por arquivo temporário + rename                               |
+| `scripts/verify-ingestion.mjs`                   | Replay de todas as capturas versionadas em diretório temporário e comparação byte a byte                           |
 
 O schema é importado diretamente de `src/app/core/content/models/content-schema.ts` com a execução TypeScript nativa do Node 24. Não há uma segunda cópia do contrato. Node 24.13 pode emitir `MODULE_TYPELESS_PACKAGE_JSON` ao detectar ESM nesse arquivo TypeScript; os comandos continuam normalmente, sem mudar o tipo de módulo de toda a aplicação para silenciar o aviso.
 
@@ -82,3 +82,7 @@ Deduplicação não apaga perspectivas documentais: fontes com edições diferen
 - As fases de shards, índices durante build, novas rotas e comparadores permanecem separadas desta implementação.
 
 Resultados executados, hashes e limites de validação ficam em [Validação da ingestão](../quality/INGESTAO-REPRODUZIVEL.md).
+
+## Descoberta e seleção da tradição marxista
+
+Antes da captura, `npm run discover:marxism` consulta a Wikidata (buscas por `P1142`, `P737`, `P921` e `P279` com `Q7264` e `Q9061`), as entidades encontradas, a árvore de categorias do Commons (profundidade 2) e o resumo de pt.wikipedia. O resultado vai para `scripts/ingestion/wikimedia/discovery/marxismo.json`, com data e fontes. `npm run select:marxism` aplica regras explícitas e as decisões de `marxismo.decisions.json` e grava `marxismo.selection.json`, que `configurations.mjs` lê. Só então `npm run ingest:marxism -- --capture <diretório novo> --media remote` cria a captura reproduzível. Rótulos do Wikidata (`P1142`, `P737`) são classificações importadas, não influência documentada. A skill `atlas-wiki-discovery` descreve o fluxo e os limites.
