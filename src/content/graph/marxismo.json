@@ -111,6 +111,48 @@
       "url": null,
       "edition": "Edição crítica de Valentino Gerratana, Turim: Einaudi, 1975",
       "publicationDate": null
+    },
+    {
+      "id": "source-marx-gotha-1875",
+      "title": "Karl Marx — Crítica do Programa de Gotha (1875)",
+      "url": "https://www.marxists.org/archive/marx/works/1875/gotha/ch01.htm",
+      "edition": "Marxists Internet Archive (texto em inglês, tradução de referência)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-engels-socialism-1880",
+      "title": "Friedrich Engels — Socialism: Utopian and Scientific (1880)",
+      "url": "https://www.marxists.org/archive/marx/works/1880/soc-utop/ch03.htm",
+      "edition": "Marxists Internet Archive (texto em inglês, tradução de referência)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-engels-introduction-1895",
+      "title": "Friedrich Engels — Introdução a As lutas de classes na França (1895)",
+      "url": "https://www.marxists.org/archive/marx/works/1895/03/06.htm",
+      "edition": "Marxists Internet Archive (texto em inglês, tradução de referência)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-lenin-state-revolution-ch03",
+      "title": "V. I. Lenin — O Estado e a revolução, capítulo 3 (1917)",
+      "url": "https://www.marxists.org/archive/lenin/works/1917/staterev/ch03.htm",
+      "edition": "Marxists Internet Archive (texto em inglês, tradução de referência)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-luxemburg-russian-revolution-1918",
+      "title": "Rosa Luxemburg — A revolução russa (1918), capítulo 3",
+      "url": "https://www.marxists.org/archive/luxemburg/1918/russian-revolution/ch03.htm",
+      "edition": "Marxists Internet Archive (texto em inglês, tradução de referência)",
+      "publicationDate": null
+    },
+    {
+      "id": "source-mao-problems-war-strategy",
+      "title": "Mao Zedong — Problemas da guerra e da estratégia (1938)",
+      "url": "https://www.marxists.org/reference/archive/mao/selected-works/volume-2/mswv2_12.htm",
+      "edition": "Marxists Internet Archive (texto em inglês, tradução de referência)",
+      "publicationDate": null
     }
   ],
   "edges": [
@@ -188,6 +230,171 @@
       "classification": "tese atribuída",
       "statement": "No Manifesto de 1848, resume a teoria comunista como a abolição da propriedade privada, com foco na propriedade do capital e dos meios de produção.",
       "sourceIds": ["source-marx-manifesto-1848"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-marx-propriedade-gotha",
+      "entityId": "person-karl-marx",
+      "axisId": "propriedade",
+      "value": -0.9,
+      "confidence": "alta",
+      "classification": "tese atribuída",
+      "statement": "Na Crítica do Programa de Gotha, descreve a sociedade cooperativa fundada na propriedade comum dos meios de produção.",
+      "sourceIds": ["source-marx-gotha-1875"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-marx-igualdade-gotha",
+      "entityId": "person-karl-marx",
+      "axisId": "igualdade",
+      "value": -0.9,
+      "confidence": "alta",
+      "classification": "tese atribuída",
+      "statement": "Na mesma crítica, cita a fórmula “de cada um segundo sua capacidade, a cada um segundo suas necessidades” como princípio da sociedade comunista.",
+      "sourceIds": ["source-marx-gotha-1875"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-marx-igualdade-gotha-direito",
+      "entityId": "person-karl-marx",
+      "axisId": "igualdade",
+      "value": -0.6,
+      "confidence": "média",
+      "classification": "interpretação",
+      "statement": "Na mesma crítica, afirma que o “direito igual” continua desigual quando o trabalho é desigual; a crítica sustenta a prioridade da igualdade material.",
+      "sourceIds": ["source-marx-gotha-1875"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-marx-igualdade-manifesto",
+      "entityId": "person-karl-marx",
+      "axisId": "igualdade",
+      "value": -0.6,
+      "confidence": "média",
+      "classification": "interpretação",
+      "statement": "No Manifesto, diz que a abolição da individualidade, independência e liberdade burguesas é o alvo do programa comunista; a crítica recai sobre a liberdade burguesa, não sobre toda liberdade.",
+      "sourceIds": ["source-marx-manifesto-1848"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-marx-poder-manifesto",
+      "entityId": "person-karl-marx",
+      "axisId": "poder",
+      "value": -0.7,
+      "confidence": "média",
+      "classification": "tese atribuída",
+      "statement": "No Manifesto, prevê centralizar todos os instrumentos de produção nas mãos do Estado, isto é, do proletariado organizado como classe dominante.",
+      "sourceIds": ["source-marx-manifesto-1848"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-marx-poder-comuna",
+      "entityId": "person-karl-marx",
+      "axisId": "poder",
+      "value": 0.6,
+      "confidence": "média",
+      "classification": "interpretação",
+      "statement": "Em A guerra civil na França, descreve a Comuna como corpo de trabalho, não parlamentar, e propõe destruir o poder estatal centralizado, o exército permanente e a burocracia estatal.",
+      "sourceIds": ["source-marx-civil-war-france"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-engels-mercado-socialismo",
+      "entityId": "person-friedrich-engels",
+      "axisId": "mercado",
+      "value": -0.8,
+      "confidence": "alta",
+      "classification": "tese atribuída",
+      "statement": "Em Socialismo: utópico e científico, afirma que a produção sob o capitalismo é anárquica e que a sociedade deve regulá-la segundo um plano definido.",
+      "sourceIds": ["source-engels-socialism-1880"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-engels-mercado-manifesto",
+      "entityId": "person-friedrich-engels",
+      "axisId": "mercado",
+      "value": -0.6,
+      "confidence": "média",
+      "classification": "interpretação",
+      "statement": "Como coautor do Manifesto, prevê a centralização dos instrumentos de produção nas mãos do Estado, o que aproxima a coordenação econômica do planejamento central.",
+      "sourceIds": ["source-marx-manifesto-1848"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-engels-revolucao-manifesto",
+      "entityId": "person-friedrich-engels",
+      "axisId": "revolucao",
+      "value": -0.9,
+      "confidence": "média",
+      "classification": "tese atribuída",
+      "statement": "Como coautor do Manifesto, declara que os fins comunistas só se alcançam pela derrubada violenta de todas as condições sociais existentes.",
+      "sourceIds": ["source-marx-manifesto-1848"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-engels-revolucao-1895",
+      "entityId": "person-friedrich-engels",
+      "axisId": "revolucao",
+      "value": 0.6,
+      "confidence": "média",
+      "classification": "interpretação",
+      "statement": "Na introdução de 1895, afirma que a época das ações de surpresa e das revoluções feitas por minorias conscientes está superada e elogia o uso do sufrágio universal pelos trabalhadores alemães.",
+      "sourceIds": ["source-engels-introduction-1895"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-luxemburg-poder-russa",
+      "entityId": "person-rosa-luxemburg",
+      "axisId": "poder",
+      "value": 0.7,
+      "confidence": "alta",
+      "classification": "tese atribuída",
+      "statement": "Em A revolução russa, afirma que formas democráticas de vida política são fundamento indispensável da política socialista.",
+      "sourceIds": ["source-luxemburg-russian-revolution-1918"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-bernstein-poder-democracia",
+      "entityId": "person-eduard-bernstein",
+      "axisId": "poder",
+      "value": 0.5,
+      "confidence": "média",
+      "classification": "interpretação",
+      "statement": "No prefácio de 1899, afirma que a democracia é, em cada momento, governo dos trabalhadores tanto quanto eles são capazes de exercê-lo; a via democrática aparece como limite e meio da ação.",
+      "sourceIds": ["source-bernstein-preface"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-lenin-revolucao-estado",
+      "entityId": "person-vladimir-lenin",
+      "axisId": "revolucao",
+      "value": -0.9,
+      "confidence": "alta",
+      "classification": "tese atribuída",
+      "statement": "No capítulo 3 de O Estado e a revolução, afirma que a tarefa imediata do proletariado revolucionário é destruir a velha máquina burocrática do Estado.",
+      "sourceIds": ["source-lenin-state-revolution-ch03"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-lenin-poder-ditadura",
+      "entityId": "person-vladimir-lenin",
+      "axisId": "poder",
+      "value": -0.7,
+      "confidence": "média",
+      "classification": "tese atribuída",
+      "statement": "No mesmo capítulo, descreve o proletariado organizado como classe dominante como etapa transitória antes do desaparecimento do Estado.",
+      "sourceIds": ["source-lenin-state-revolution-ch03"],
+      "editorialStatus": "pending"
+    },
+    {
+      "id": "claim-mao-revolucao-poder",
+      "entityId": "person-mao-zedong",
+      "axisId": "revolucao",
+      "value": -0.9,
+      "confidence": "alta",
+      "classification": "tese atribuída",
+      "statement": "Em Problemas da guerra e da estratégia, afirma que o poder político nasce do cano de um fuzil.",
+      "sourceIds": ["source-mao-problems-war-strategy"],
       "editorialStatus": "pending"
     }
   ]

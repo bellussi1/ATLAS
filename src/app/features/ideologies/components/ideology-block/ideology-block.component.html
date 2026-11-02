@@ -413,6 +413,7 @@
     <app-positions-estimate
       [entities]="positionEntities()"
       [claims]="dossier().supplement.positions"
+      [sources]="dossier().supplement.sources"
     />
   }
   @case ('sources') {
