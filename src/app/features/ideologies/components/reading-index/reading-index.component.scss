@@ -115,8 +115,10 @@ progress::-moz-progress-bar {
   border-top: 0;
 }
 
-.desktop-nav a:hover {
-  background: var(--color-surface-subtle);
+@media (hover: hover) {
+  .desktop-nav a:hover {
+    background: var(--color-surface-subtle);
+  }
 }
 
 .desktop-nav a[aria-current='location'] {
@@ -222,11 +224,17 @@ a[aria-current='location'] .chapter-number[data-shape='2'] {
     border-color var(--motion-fast) var(--ease-out);
 }
 
-.index-controls button:hover,
 .index-controls button[aria-pressed='true'] {
   border-color: var(--color-ink);
   background: var(--color-ink);
   color: var(--color-canvas);
+}
+@media (hover: hover) {
+  .index-controls button:hover {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-canvas);
+  }
 }
 
 .mobile-picker select:focus-visible,

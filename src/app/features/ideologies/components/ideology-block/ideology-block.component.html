@@ -41,7 +41,7 @@
             @if (note(entity.id); as why) {
               <span class="entity-why">{{ why }}</span>
             }
-            <span class="action-cue">Abrir contexto +</span>
+            <span class="action-cue">Abrir ficha +</span>
           </button>
         </div>
       } @empty {
@@ -153,7 +153,7 @@
             type="button"
             [appKnowledgeContext]="{ entityId: entity.id }"
           >
-            Abrir fontes e conexões +
+            Abrir ficha +
           </button>
         } @else {
           <p>Selecione outro período para continuar.</p>
@@ -239,7 +239,7 @@
               (click)="selectNode(node.id)"
               [attr.aria-controls]="blockId() + '-relation-reading'"
             >
-              {{ node.title }}<span>Investigar conexões +</span>
+              {{ node.title }}<span>Ver conexões</span>
             </button>
           }
         </div>
@@ -305,7 +305,7 @@
                 <span class="relation-card-label">{{ edge.label }}</span>
                 <span class="action-cue">
                   {{
-                    selectedEdge()?.id === edge.id ? 'Em destaque no grafo' : 'Destacar no grafo +'
+                    selectedEdge()?.id === edge.id ? 'Em destaque no grafo' : 'Destacar no grafo'
                   }}
                 </span>
               </button>
@@ -353,7 +353,7 @@
           <span class="metadata">{{ item.kicker }} · {{ item.classification }}</span
           ><strong>{{ item.title }}</strong
           ><span class="exploration-summary">{{ item.summary }}</span
-          ><span class="action-cue">Explorar fundamento e fontes +</span>
+          ><span class="action-cue">Abrir ficha +</span>
         </button>
       }
     </div>
@@ -386,7 +386,7 @@
               ><strong>{{ topic[phase.key].title }}</strong
               ><span class="metadata">{{ topic[phase.key].classification }}</span
               ><span class="argument-summary">{{ topic[phase.key].summary }}</span
-              ><span class="action-cue">Abrir argumento, autoria e fonte +</span>
+              ><span class="action-cue">Abrir ficha +</span>
             </button>
           }
         </div>

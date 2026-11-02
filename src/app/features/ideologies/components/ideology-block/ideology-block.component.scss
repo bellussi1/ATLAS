@@ -40,9 +40,11 @@ button {
   font: 600 0.95rem/1.3 var(--font-sans);
   cursor: pointer;
 }
-.gallery-toggle:hover {
-  background: var(--ink);
-  color: var(--paper);
+@media (hover: hover) {
+  .gallery-toggle:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
 }
 .entity-entry {
   border: 3px solid var(--ink);

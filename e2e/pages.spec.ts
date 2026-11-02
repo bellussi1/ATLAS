@@ -283,20 +283,30 @@ test('home keeps the poster colour and tints each later section as it scrolls', 
   await expect(home).not.toHaveAttribute('data-tone', '0');
 });
 
-test('reading prose fills the full width of its chapter on desktop', async ({ page }) => {
+test('reading prose keeps a measure of about 72 characters on desktop', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   for (const path of ['/marxismo/', '/liberalismo/']) {
     await page.goto(path);
-    const widths = await page.evaluate(() =>
-      [...document.querySelectorAll('.ideology-chapter')].flatMap((chapter) => {
-        const box = chapter.getBoundingClientRect().width;
-        return [...chapter.querySelectorAll('.chapter-question, .chapter-narrative > p')].map(
-          (el) => ({ id: chapter.id, ratio: el.getBoundingClientRect().width / box }),
-        );
+    // Characters per line, measured as the box width over the width of "0" in the paragraph's font.
+    const measures = await page.evaluate(() =>
+      [...document.querySelectorAll('.chapter-narrative > p')].map((el) => {
+        const probe = document.createElement('span');
+        probe.style.font = getComputedStyle(el).font;
+        probe.style.position = 'absolute';
+        probe.style.visibility = 'hidden';
+        probe.style.whiteSpace = 'nowrap';
+        probe.textContent = '0'.repeat(100);
+        el.append(probe);
+        const zero = probe.getBoundingClientRect().width / 100;
+        probe.remove();
+        return {
+          id: el.closest('.ideology-chapter')?.id ?? '',
+          chars: el.getBoundingClientRect().width / zero,
+        };
       }),
     );
-    expect(widths.length).toBeGreaterThan(10);
-    for (const { id, ratio } of widths) expect(ratio, id).toBeGreaterThan(0.95);
+    expect(measures.length).toBeGreaterThan(10);
+    for (const { id, chars } of measures) expect(chars, id).toBeLessThanOrEqual(78);
   }
 });
 

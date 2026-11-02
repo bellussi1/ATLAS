@@ -46,8 +46,8 @@
   <section aria-label="Conexões deste contexto">
     <h3>Continue por uma conexão</h3>
     <p>
-      Cada conexão abre aqui mesmo; use o percurso acima para voltar. Vínculos importados são
-      caminhos de investigação e não comprovam influência por si sós.
+      Cada conexão abre a ficha aqui mesmo; use o percurso acima para voltar. Vínculos importados
+      são caminhos de investigação e não comprovam influência por si sós.
     </p>
     <div class="context-connections">
       @for (connection of record().connections; track connection.id ?? connection.entityId) {
@@ -57,7 +57,7 @@
             [attr.data-connection]="connection.id ?? connection.entityId"
             (click)="follow(connection)"
           >
-            {{ connection.label }} <span class="opens-here" aria-hidden="true">abre aqui →</span>
+            {{ connection.label }} <span class="opens-here" aria-hidden="true">abre a ficha →</span>
           </button>
           @if (connection.relation; as relation) {
             <p class="relation-label">{{ relation.label }}</p>

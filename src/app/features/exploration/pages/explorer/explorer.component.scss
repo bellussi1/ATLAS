@@ -94,10 +94,12 @@ h1 {
   font: 650 1rem/1.2 var(--font-sans);
   text-decoration: none;
 }
-.catalogues a:hover {
-  background: var(--group-hover);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+@media (hover: hover) {
+  .catalogues a:hover {
+    background: var(--group-hover);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
 }
 .catalogues .selected,
 .catalogues .selected:hover {
@@ -157,8 +159,10 @@ button {
   font: 650 0.95rem/1 var(--font-sans);
   cursor: pointer;
 }
-button:hover {
-  background: var(--color-accent);
+@media (hover: hover) {
+  button:hover {
+    background: var(--color-accent);
+  }
 }
 label {
   font: 650 0.85rem/1.3 var(--font-sans);

@@ -11,9 +11,13 @@
   filter: grayscale(1) contrast(1.05);
   transition: filter var(--motion-standard) var(--ease-out);
 }
-.exploration-card:hover .card-image,
 .exploration-card:focus-visible .card-image {
   filter: none;
+}
+@media (hover: hover) {
+  .exploration-card:hover .card-image {
+    filter: none;
+  }
 }
 .schools .card-image {
   grid-column: 1 / -1;
@@ -24,7 +28,11 @@
 .entity-entry img {
   transition: filter var(--motion-standard) var(--ease-out);
 }
-.entity-entry button:hover img,
 .entity-entry button:focus-visible img {
   filter: none;
+}
+@media (hover: hover) {
+  .entity-entry button:hover img {
+    filter: none;
+  }
 }

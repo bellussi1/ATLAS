@@ -170,12 +170,10 @@ form {
 .cover-choice strong span {
   color: var(--color-accent);
 }
+/* Unselected readings keep solid ink; the selected one is heavier, so state does not rely on hover. */
 .cover-choice[aria-pressed='false'] strong {
-  -webkit-text-stroke: 1.5px var(--color-ink);
-  color: transparent;
-}
-.cover-choice[aria-pressed='false'] strong span {
-  -webkit-text-stroke: 0;
+  color: var(--ink);
+  font-weight: 500;
 }
 .reading-sheet {
   display: grid;
