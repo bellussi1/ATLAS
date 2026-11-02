@@ -108,3 +108,72 @@
     transition: none;
   }
 }
+
+/* Relations as carousel cards: the card selects the line in the graph; evidence opens inside it. */
+.relation-card {
+  --carousel-item-width: min(19rem, 84%);
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  padding: 0.9rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+.relation-card.is-selected {
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0.35rem 0 var(--color-accent);
+}
+.relation-card-select {
+  display: grid;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.relation-card-select:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+.relation-card-type {
+  justify-self: start;
+  padding: 0.12rem 0.35rem;
+  background: var(--color-teal-paper);
+  font: 0.72rem/1.4 var(--font-mono);
+}
+.relation-card strong {
+  font: 700 1.05rem/1.3 var(--font-sans);
+  overflow-wrap: anywhere;
+}
+.relation-card-label {
+  color: var(--color-ink-muted);
+  font: 0.88rem/1.45 var(--font-serif);
+}
+.relation-card-evidence summary {
+  padding-block: 0.25rem;
+  color: var(--color-accent);
+  font: 600 0.85rem var(--font-sans);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.relation-card-evidence[open] {
+  display: grid;
+  gap: 0.5rem;
+}
+.relation-card-evidence p {
+  margin: 0;
+  font: 0.9rem/1.5 var(--font-serif);
+}
+/* Source links keep a 24px target (WCAG 2.5.8) even inside the compact card. */
+.relation-card-evidence a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  text-underline-offset: 0.2em;
+}

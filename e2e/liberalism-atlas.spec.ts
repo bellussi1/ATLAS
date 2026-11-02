@@ -13,16 +13,24 @@ test('explores entities, graph, timeline and returns to prior context', async ({
     fullPage: true,
   });
   await page.getByRole('button', { name: /^Pessoa John Locke/ }).click();
-  await expect(page.getByRole('heading', { name: 'John Locke', exact: true })).toBeVisible();
+  await expect(
+    page.locator('.entity-reading').getByRole('heading', { name: 'John Locke', exact: true }),
+  ).toBeVisible();
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
   await expect(
-    page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
+    page
+      .locator('.entity-reading')
+      .getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
   ).toBeVisible();
   await page.locator('.relation-list button').filter({ hasText: 'Adam Smith' }).click();
-  await expect(page.getByRole('heading', { name: 'Adam Smith', exact: true })).toBeVisible();
+  await expect(
+    page.locator('.entity-reading').getByRole('heading', { name: 'Adam Smith', exact: true }),
+  ).toBeVisible();
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
   await expect(
-    page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
+    page
+      .locator('.entity-reading')
+      .getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
   ).toBeVisible();
   await page.locator('#atlas-section-tempo').scrollIntoViewIfNeeded();
   await page.locator('.timeline-node').filter({ hasText: 'Revolução Gloriosa' }).click();
@@ -57,10 +65,14 @@ test('mobile keeps entity navigation available without horizontal overflow', asy
   await locke.focus();
   await expect(locke.locator('.card-preview')).toBeVisible();
   await page.keyboard.press('Enter');
-  await expect(page.getByRole('heading', { name: 'John Locke', exact: true })).toBeVisible();
+  await expect(
+    page.locator('.entity-reading').getByRole('heading', { name: 'John Locke', exact: true }),
+  ).toBeVisible();
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
   await expect(
-    page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
+    page
+      .locator('.entity-reading')
+      .getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
   ).toBeVisible();
   const violations = (await new AxeBuilder({ page }).analyze()).violations;
   expect(
@@ -74,11 +86,15 @@ test('mobile reopens the selected entity without duplicating history', async ({ 
   const locke = page.locator('.entity-card').filter({ hasText: 'John Locke' });
   for (let attempt = 0; attempt < 2; attempt++) {
     await locke.click();
-    await expect(page.getByRole('heading', { name: 'John Locke', exact: true })).toBeVisible();
+    await expect(
+      page.locator('.entity-reading').getByRole('heading', { name: 'John Locke', exact: true }),
+    ).toBeVisible();
   }
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
   await expect(
-    page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
+    page
+      .locator('.entity-reading')
+      .getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
   ).toBeVisible();
   await expect(page.getByRole('button', { name: '← Voltar ao contexto anterior' })).toHaveCount(0);
 });

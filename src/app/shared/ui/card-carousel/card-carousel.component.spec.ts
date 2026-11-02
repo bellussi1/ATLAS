@@ -37,4 +37,23 @@ describe('CardCarouselComponent', () => {
     );
     expect(buttons[0]?.getAttribute('aria-disabled')).toBe('true');
   });
+
+  it('pages with the arrow keys only while the track itself has focus', () => {
+    const original = Element.prototype.scrollTo;
+    const scrollTo = vi.fn();
+    Element.prototype.scrollTo = scrollTo;
+    try {
+      const fixture = TestBed.createComponent(CarouselHostComponent);
+      fixture.detectChanges();
+      const element = fixture.nativeElement as HTMLElement;
+      const track = element.querySelector<HTMLElement>('[role="region"]');
+      const card = element.querySelector<HTMLElement>('.carousel-item');
+      card?.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+      expect(scrollTo).not.toHaveBeenCalled();
+      track?.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+      expect(scrollTo).toHaveBeenCalledTimes(1);
+    } finally {
+      Element.prototype.scrollTo = original;
+    }
+  });
 });

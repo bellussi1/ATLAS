@@ -237,11 +237,7 @@
                       <button type="button" (click)="openEntity(target.id)">
                         <span class="relation-chip">{{ relationName(relation) }}</span
                         ><strong>{{ target.title }}</strong
-                        ><span>{{ relation.label }}</span
-                        ><small
-                          >{{ relationSourceLabel(relation) }} ·
-                          {{ relationStatusLabel(relation) }}</small
-                        >
+                        ><span>{{ relation.label }}</span>
                       </button>
                     </li>
                   }
@@ -327,39 +323,42 @@
             </li>
           }
         </ul>
-        <div
-          class="timeline-strip"
-          #timelineStrip
-          role="region"
-          tabindex="0"
-          aria-label="Registros em ordem cronológica"
-        >
+        <div class="timeline-periods" role="group" aria-label="Ir para um período">
           @for (period of timelinePeriods(); track period.label) {
-            <section class="timeline-period">
-              <h3>{{ period.label }}</h3>
-              <ol>
-                @for (entity of period.entities; track entity.id) {
-                  <li>
-                    <button
-                      type="button"
-                      class="timeline-node"
-                      [attr.data-kind]="entity.kind"
-                      [attr.data-entity-id]="entity.id"
-                      [attr.aria-pressed]="current.id === entity.id"
-                      (click)="selectTimeline(entity.id)"
-                    >
-                      <span class="timeline-year">{{ yearLabel(entity) }}</span>
-                      <span class="timeline-dot" aria-hidden="true"></span>
-                      <span class="timeline-name">{{ entity.title }}</span>
-                    </button>
-                  </li>
-                }
-              </ol>
-            </section>
+            <button
+              type="button"
+              class="timeline-period-button"
+              [attr.aria-pressed]="periodLabelOf(current) === period.label"
+              (click)="jumpToPeriod(period)"
+            >
+              {{ period.label }} <span>{{ period.entities.length }}</span>
+            </button>
           }
         </div>
+        <app-card-carousel
+          #timelineCarousel
+          class="timeline-carousel"
+          label="Registros em ordem cronológica"
+          hint="Arraste, use as setas ou escolha um período acima"
+          [style.--carousel-gap]="'0px'"
+        >
+          @for (entity of timelineEntities(); track entity.id) {
+            <button
+              type="button"
+              class="carousel-item timeline-node"
+              [attr.data-kind]="entity.kind"
+              [attr.data-entity-id]="entity.id"
+              [attr.aria-pressed]="current.id === entity.id"
+              (click)="selectTimeline(entity.id)"
+            >
+              <span class="timeline-year">{{ yearLabel(entity) }}</span>
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <span class="timeline-name">{{ entity.title }}</span>
+            </button>
+          }
+        </app-card-carousel>
 
-        <article class="timeline-reading" aria-live="polite">
+        <article class="strip-reading" aria-live="polite">
           <div class="timeline-stepper">
             <button
               type="button"

@@ -161,84 +161,59 @@
     informado” e “nenhuma fonte vinculada” indicam ausência no registro.
   </p>
   @if (comparedRecords().length) {
-    <p class="table-hint">Role a tabela para o lado para ver todos os registros.</p>
-    <div
-      class="table-scroll"
-      role="region"
-      tabindex="0"
-      aria-label="Tabela comparativa; em telas estreitas, role horizontalmente"
+    <app-card-carousel
+      label="Registros comparados"
+      hint="Arraste ou use as setas; em telas largas, os cartões ficam lado a lado"
     >
-      <table>
-        <caption>
-          Dados cadastrados para os registros selecionados
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Dimensão</th>
-            @for (record of comparedRecords(); track record.id) {
-              <th scope="col">
-                <a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a>
-              </th>
-            }
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Tipo</th>
-            @for (record of comparedRecords(); track record.id) {
-              <td>{{ record.kindLabel }}</td>
-            }
-          </tr>
-          <tr>
-            <th scope="row">Período</th>
-            @for (record of comparedRecords(); track record.id) {
-              <td>{{ record.periodLabel }}</td>
-            }
-          </tr>
-          <tr>
-            <th scope="row">Precisão</th>
-            @for (record of comparedRecords(); track record.id) {
-              <td>{{ precisionLabel(record.precision) }}</td>
-            }
-          </tr>
-          <tr>
-            <th scope="row">Incerteza cadastrada</th>
-            @for (record of comparedRecords(); track record.id) {
-              <td>{{ uncertaintyLabel(record.uncertainty) }}</td>
-            }
-          </tr>
-          <tr>
-            <th scope="row">Contexto</th>
-            @for (record of comparedRecords(); track record.id) {
-              <td>{{ record.context }}</td>
-            }
-          </tr>
-          <tr>
-            <th scope="row">Fontes vinculadas</th>
-            @for (record of comparedRecords(); track record.id) {
-              <td>
-                @if (record.sources.length) {
-                  <ul>
-                    @for (source of record.sources; track source.id) {
-                      <li>
-                        <a
-                          appEditorialLink
-                          [routerLink]="sourcePath()"
-                          [fragment]="sourceFragment(source.id)"
-                          >{{ source.title }}</a
-                        >
-                      </li>
-                    }
-                  </ul>
-                } @else {
-                  Nenhuma fonte vinculada diretamente.
+      @for (record of comparedRecords(); track record.id) {
+        <article class="carousel-item compare-card">
+          <h3>
+            <a appEditorialLink [routerLink]="entityPath(record)">{{ record.title }}</a>
+          </h3>
+          <dl>
+            <div>
+              <dt>Tipo</dt>
+              <dd>{{ record.kindLabel }}</dd>
+            </div>
+            <div>
+              <dt>Período</dt>
+              <dd>{{ record.periodLabel }}</dd>
+            </div>
+            <div>
+              <dt>Precisão</dt>
+              <dd>{{ precisionLabel(record.precision) }}</dd>
+            </div>
+            <div>
+              <dt>Incerteza cadastrada</dt>
+              <dd>{{ uncertaintyLabel(record.uncertainty) }}</dd>
+            </div>
+            <div>
+              <dt>Contexto</dt>
+              <dd>{{ record.context }}</dd>
+            </div>
+          </dl>
+          <details class="compare-card-sources">
+            <summary>Fontes vinculadas ({{ record.sources.length }})</summary>
+            @if (record.sources.length) {
+              <ul>
+                @for (source of record.sources; track source.id) {
+                  <li>
+                    <a
+                      appEditorialLink
+                      [routerLink]="sourcePath()"
+                      [fragment]="sourceFragment(source.id)"
+                      >{{ source.title }}</a
+                    >
+                  </li>
                 }
-              </td>
+              </ul>
+            } @else {
+              <p>Nenhuma fonte vinculada diretamente.</p>
             }
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          </details>
+        </article>
+      }
+    </app-card-carousel>
   } @else {
     <p role="status" class="comparison-empty">
       Selecione registros para montar a comparação. A tabela apresenta até três itens por vez.

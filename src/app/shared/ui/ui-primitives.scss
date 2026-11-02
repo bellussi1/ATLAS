@@ -202,10 +202,32 @@ a.atlas-link--feature {
 }
 
 /* Items of app-card-carousel: fixed card width, snapped to the track edge. */
+/* Cards of app-card-carousel: width comes from --carousel-item-width, snapped to the track edge. */
 .carousel-item {
-  flex: 0 0 min(17rem, 82%);
+  flex: 0 0 var(--carousel-item-width, min(17rem, 82%));
   min-width: 0;
   scroll-snap-align: start;
+  transition:
+    transform var(--motion-fast),
+    box-shadow var(--motion-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .carousel-item:is(button, a):hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 4px 4px 0 var(--color-ink);
+  }
+}
+
+.carousel-item:is(button, a):focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item {
+    transition: none;
+  }
 }
 
 .atlas-band-heading > p:last-child {

@@ -24,6 +24,7 @@ import { type RelationType, relationTypes } from '@ideologies/models/relation-ty
 import { entityMedia, type PageMedia } from '@ideologies/utils/page-media-plan';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
+import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 
 @Component({
   selector: 'app-ideology-block',
@@ -37,6 +38,7 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
     IdeologyAtlasComponent,
     ReadingPathComponent,
     PositionsEstimateComponent,
+    CardCarouselComponent,
   ],
   templateUrl: './ideology-block.component.html',
   styleUrls: [

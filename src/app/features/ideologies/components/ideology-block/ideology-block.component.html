@@ -297,45 +297,43 @@
         }
       </div>
       <details class="relation-table">
-        <summary>Consultar tabela de relações e fontes</summary>
-        <div
-          class="table-scroll"
-          tabindex="0"
-          role="region"
-          aria-label="Tabela de relações com rolagem horizontal"
+        <summary>Consultar relações e fontes ({{ edges().length }})</summary>
+        <app-card-carousel
+          label="Relações documentadas, com direção e certeza"
+          hint="Arraste ou use as setas; cada cartão mostra sua evidência"
         >
-          <table>
-            <caption>
-              Relações documentadas, com direção e certeza
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Relação</th>
-                <th scope="col">Tipo e certeza</th>
-                <th scope="col">Evidência</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for (edge of edges(); track edge.id) {
-                <tr>
-                  <td>
-                    {{ entity(edge.from)?.title }} → {{ entity(edge.to)?.title }}
-                    <p>{{ edge.label }}</p>
-                  </td>
-                  <td>{{ relation(edge).label }} · {{ edge.certainty }}</td>
-                  <td>
-                    {{ edge.context }}
-                    @for (id of edge.sources; track id) {
-                      <p>
-                        <a [href]="source(id)?.url">{{ source(id)?.title }}</a>
-                      </p>
-                    }
-                  </td>
-                </tr>
-              }
-            </tbody>
-          </table>
-        </div>
+          @for (edge of edges(); track edge.id) {
+            <article
+              class="carousel-item relation-card"
+              [class.is-selected]="selectedEdge()?.id === edge.id"
+            >
+              <button
+                type="button"
+                class="relation-card-select"
+                [attr.aria-pressed]="selectedEdge()?.id === edge.id"
+                [attr.aria-controls]="blockId() + '-relation-reading'"
+                (click)="update('relacao', edge.id)"
+              >
+                <span class="relation-card-type">{{ relation(edge).label }}</span>
+                <strong>{{ entity(edge.from)?.title }} → {{ entity(edge.to)?.title }}</strong>
+                <span class="relation-card-label">{{ edge.label }}</span>
+                <span class="action-cue">
+                  {{
+                    selectedEdge()?.id === edge.id ? 'Em destaque no grafo' : 'Destacar no grafo +'
+                  }}
+                </span>
+              </button>
+              <details class="relation-card-evidence">
+                <summary>Evidência, certeza e fontes</summary>
+                <p class="metadata">Certeza: {{ edge.certainty }}</p>
+                <p>{{ edge.context }}</p>
+                @for (id of edge.sources; track id) {
+                  <a [href]="source(id)?.url">{{ source(id)?.title }}</a>
+                }
+              </details>
+            </article>
+          }
+        </app-card-carousel>
       </details>
     } @else {
       <p role="status">Não há relações documentadas neste recorte.</p>

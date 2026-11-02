@@ -1,14 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import {
-  Component,
-  computed,
-  type ElementRef,
-  inject,
-  input,
-  linkedSignal,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, signal, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import type { Entity, Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
@@ -52,14 +42,14 @@ interface TimelinePeriod {
   styleUrls: [
     './ideology-atlas.component.scss',
     './ideology-atlas-visual.scss',
+    './ideology-atlas-timeline.scss',
     './ideology-atlas-interaction.scss',
   ],
 })
 export class IdeologyAtlasComponent {
-  private readonly document = inject(DOCUMENT);
   private readonly repository = inject(ContentRepository);
   private readonly graph = this.repository.knowledgeGraph;
-  private readonly timelineStrip = viewChild<ElementRef<HTMLElement>>('timelineStrip');
+  private readonly timelineCarousel = viewChild<CardCarouselComponent>('timelineCarousel');
   readonly atlasId = input.required<string>();
   readonly rootEntityId = input.required<string>();
   readonly origin = input.required<string>();
@@ -212,14 +202,24 @@ export class IdeologyAtlasComponent {
   selectTimeline(entityId: string): void {
     this.timelineId.set(entityId);
   }
-  /** Moves the selection one record at a time and keeps it visible in the strip. */
+  /** Moves the selection one record at a time and keeps it visible in the carousel. */
   stepTimeline(step: 1 | -1): void {
     const entities = this.timelineEntities();
     const index = Math.min(Math.max(this.timelineIndex() + step, 0), entities.length - 1);
     const next = entities[index];
     if (!next) return;
     this.selectTimeline(next.id);
-    this.scrollTimelineTo(next.id);
+    this.revealTimeline();
+  }
+  /** Selects the first record of a period and brings it into view. */
+  jumpToPeriod(period: { entities: readonly Entity[] }): void {
+    const first = period.entities[0];
+    if (!first) return;
+    this.selectTimeline(first.id);
+    this.revealTimeline();
+  }
+  periodLabelOf(entity: Entity): string {
+    return centuryLabel(this.timelineYear(entity));
   }
   timelineYear(entity: Entity): number {
     return entity.temporalExtent?.startYear ?? entity.temporalExtent?.endYear ?? 0;
@@ -360,20 +360,8 @@ export class IdeologyAtlasComponent {
   nodePosition(entityId: string): GraphNode | undefined {
     return this.graphNodes().find((node) => node.entity.id === entityId);
   }
-  /** Scrolls only the strip horizontally, so the page does not jump. */
-  private scrollTimelineTo(entityId: string): void {
-    const strip = this.timelineStrip()?.nativeElement;
-    const node = Array.from(strip?.querySelectorAll<HTMLElement>('[data-entity-id]') ?? []).find(
-      (item) => item.dataset['entityId'] === entityId,
-    );
-    if (!strip || !node) return;
-    const reduced = this.document.defaultView?.matchMedia?.(
-      '(prefers-reduced-motion: reduce)',
-    ).matches;
-    const offset = node.getBoundingClientRect().left - strip.getBoundingClientRect().left;
-    strip.scrollTo({
-      left: strip.scrollLeft + offset - (strip.clientWidth - node.offsetWidth) / 2,
-      behavior: reduced ? 'auto' : 'smooth',
-    });
+  /** Scrolls only the timeline carousel, so the page does not jump. */
+  private revealTimeline(): void {
+    this.timelineCarousel()?.revealIndex(this.timelineIndex());
   }
 }

@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import type { Atlas, KnowledgeGraph, Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasEditorialLinkDirective } from '@shared/directives/editorial-link/editorial-link.directive';
+import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 
 interface HistoricalSource {
   id: string;
@@ -89,7 +90,7 @@ export function buildHistoricalRecords(graph: KnowledgeGraph): HistoricalRecord[
 
 @Component({
   selector: 'app-historical-visualizations',
-  imports: [RouterLink, AtlasEditorialLinkDirective],
+  imports: [RouterLink, AtlasEditorialLinkDirective, CardCarouselComponent],
   templateUrl: './historical-visualizations.component.html',
   styleUrl: './historical-visualizations.component.scss',
 })

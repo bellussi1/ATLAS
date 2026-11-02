@@ -1,47 +1,89 @@
-<div class="carousel">
-  <div class="carousel-controls">
-    <p class="carousel-count">
+<div class="carousel" [class.is-idle]="!scrollable()">
+  <header class="carousel-head">
+    <p class="carousel-label">{{ label() }}</p>
+    <div class="carousel-nav">
       @if (total()) {
-        @if (firstVisible() === lastVisible()) {
-          {{ firstVisible() + 1 }} de {{ total() }}
-        } @else {
-          {{ firstVisible() + 1 }}–{{ lastVisible() + 1 }} de {{ total() }}
-        }
+        <p class="carousel-count">
+          @if (firstVisible() === lastVisible()) {
+            {{ firstVisible() + 1 }} de {{ total() }}
+          } @else {
+            {{ firstVisible() + 1 }}–{{ lastVisible() + 1 }} de {{ total() }}
+          }
+        </p>
       }
-    </p>
-    <div class="carousel-buttons">
-      <button
-        type="button"
-        class="carousel-button"
-        [attr.aria-controls]="trackId"
-        [attr.aria-disabled]="atStart()"
-        [attr.aria-label]="'Mostrar anteriores: ' + label()"
-        (click)="page(-1)"
-      >
-        <span aria-hidden="true">←</span>
-      </button>
-      <button
-        type="button"
-        class="carousel-button"
-        [attr.aria-controls]="trackId"
-        [attr.aria-disabled]="atEnd()"
-        [attr.aria-label]="'Mostrar próximos: ' + label()"
-        (click)="page(1)"
-      >
-        <span aria-hidden="true">→</span>
-      </button>
+      <div class="carousel-buttons">
+        <button
+          type="button"
+          class="carousel-button"
+          [attr.aria-controls]="trackId"
+          [attr.aria-disabled]="atStart()"
+          [attr.aria-label]="'Anterior: ' + label()"
+          (click)="page(-1)"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M15 5l-7 7 7 7" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="carousel-button"
+          [attr.aria-controls]="trackId"
+          [attr.aria-disabled]="atEnd()"
+          [attr.aria-label]="'Próximo: ' + label()"
+          (click)="page(1)"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
     </div>
-  </div>
+  </header>
+
   <div
     #track
     class="carousel-track"
+    [class.is-scrollable]="scrollable()"
+    [class.is-dragging]="dragging()"
+    [class.can-prev]="!atStart()"
+    [class.can-next]="!atEnd()"
     [id]="trackId"
     role="region"
     tabindex="0"
     aria-roledescription="carrossel"
     [attr.aria-label]="label()"
     (scroll)="update()"
+    (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerUp($event)"
+    (pointercancel)="onPointerUp($event)"
+    (dragstart)="$event.preventDefault()"
+    (keydown)="onKeydown($event)"
   >
     <ng-content />
+  </div>
+
+  <div class="carousel-foot">
+    <div
+      #bar
+      class="carousel-bar"
+      aria-hidden="true"
+      (pointerdown)="onBarDown($event)"
+      (pointermove)="onBarMove($event)"
+      (pointerup)="onBarUp($event)"
+      (pointercancel)="onBarUp($event)"
+    >
+      <span
+        class="carousel-thumb"
+        [style.width.%]="thumbSize()"
+        [style.left.%]="thumbOffset()"
+      ></span>
+    </div>
+    <p class="carousel-hint">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4" />
+      </svg>
+      {{ hint() }}
+    </p>
   </div>
 </div>
