@@ -67,6 +67,7 @@ describe('V4 page contract and editorial integrity', () => {
       const parsed = ideologyPageSchema.parse(page);
       expect(parsed.chapters.map((c) => c.id)).toEqual(canonicalChapters.map((c) => c.id));
       expect(parsed.chapters.map((c) => c.kicker)).toEqual(canonicalChapters.map((c) => c.label));
+      expect(parsed.chapters.filter((c) => !c.question).map((c) => c.id)).toEqual([]);
     }
     expect(
       Object.values(legacyChapterAnchors).every((id) => canonicalChapters.some((c) => c.id === id)),
