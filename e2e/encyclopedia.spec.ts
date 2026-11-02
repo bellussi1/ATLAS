@@ -56,7 +56,7 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
 test('timeline selection and graph exploration preserve geometry', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/marxismo/');
-  const panel = page.locator('.timeline-reading');
+  const panel = page.locator('#epocas .timeline-reading');
   await panel.scrollIntoViewIfNeeded();
   const before = await panel.boundingBox();
   await page.locator('.timeline-event').filter({ hasText: 'Comuna de Paris' }).click();
