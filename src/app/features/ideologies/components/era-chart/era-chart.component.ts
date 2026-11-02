@@ -87,6 +87,11 @@ export class EraChartComponent {
     const { start, end } = this.range();
     return `${((year - start) / (end - start)) * 100}%`;
   }
+  /** Labels near the right edge open to the left so they stay inside the chart. */
+  flipsLeft(year: number): boolean {
+    const { start, end } = this.range();
+    return (year - start) / (end - start) > 0.6;
+  }
   span(from: number, to: number): string {
     const { start, end } = this.range();
     return `${((Math.max(to, from + 1) - from) / (end - start)) * 100}%`;

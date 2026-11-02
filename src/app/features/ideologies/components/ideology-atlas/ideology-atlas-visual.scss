@@ -32,7 +32,6 @@
   padding: 1.2rem clamp(1rem, 2vw, 1.8rem) 1.4rem;
   border: 3px solid var(--color-ink);
   background: var(--color-ochre-paper);
-  box-shadow: 0.6rem 0.6rem 0 var(--color-accent);
 }
 /* Red on ochre fails AA; links inside the panel read in ink. */
 .entity-reading > * {

@@ -6,7 +6,6 @@
   margin: 0;
   border: 3px solid var(--color-ink);
   background: var(--color-surface-raised);
-  box-shadow: 0.6rem 0.6rem 0 var(--color-ink);
 }
 .era-header {
   display: grid;
@@ -146,6 +145,11 @@
   white-space: nowrap;
   font: 0.75rem var(--font-mono);
   color: var(--color-ink-muted);
+}
+.marker.is-flipped > span {
+  left: auto;
+  right: 0.2rem;
+  text-align: right;
 }
 .marker.is-on {
   border-left: 2px solid var(--color-ink);

@@ -94,13 +94,6 @@ h1 {
   font: 650 1rem/1.2 var(--font-sans);
   text-decoration: none;
 }
-@media (hover: hover) {
-  .catalogues a:hover {
-    background: var(--group-hover);
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-  }
-}
 .catalogues .selected,
 .catalogues .selected:hover {
   background: var(--color-ink);
@@ -158,11 +151,6 @@ button {
   color: var(--color-canvas);
   font: 650 0.95rem/1 var(--font-sans);
   cursor: pointer;
-}
-@media (hover: hover) {
-  button:hover {
-    background: var(--color-accent);
-  }
 }
 label {
   font: 650 0.85rem/1.3 var(--font-sans);
@@ -229,6 +217,13 @@ form p {
   color: var(--color-ochre-paper);
 }
 @media (hover: hover) and (pointer: fine) {
+  .catalogues a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  button:hover {
+    background: var(--color-accent);
+  }
   .kind-filter__item:not([aria-current='true']):hover,
   .catalogues a:not(.selected):hover {
     background: var(--color-surface-subtle);

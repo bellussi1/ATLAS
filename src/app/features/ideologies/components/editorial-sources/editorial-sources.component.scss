@@ -39,3 +39,10 @@ li {
   color: var(--color-accent);
   text-underline-offset: 0.16em;
 }
+.inline a,
+.bibliography a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+  padding-block: 0.2rem;
+}

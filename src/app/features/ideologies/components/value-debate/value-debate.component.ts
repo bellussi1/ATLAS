@@ -26,11 +26,6 @@ export class ValueDebateComponent {
   );
   readonly smithPortrait = reproducibleAsset(this.atlas, '/images/atlas/adam-smith.jpg');
   readonly marxPortrait = reproducibleAsset(this.atlas, '/images/atlas/karl-marx.jpg');
-  readonly filter = computed(() =>
-    ['comparacao', 'critica'].includes(this.params().get('vinculo') ?? '')
-      ? this.params().get('vinculo')!
-      : 'todas',
-  );
   readonly selected = computed(() =>
     this.params().get('argumento') === 'marx' ? 'marx' : 'smith',
   );
@@ -41,10 +36,11 @@ export class ValueDebateComponent {
         : 'claim-concept-trabalho-socialmente-necessario';
     return this.atlas?.claims.find((item) => item.id === id);
   });
+  /** Both relations are always shown, so the origin only needs the selected thesis. */
   readonly origin = computed(() =>
     this.inline()
-      ? `/marxismo?argumento=${this.selected()}&vinculo=${this.filter()}#conceitos`
-      : `/marxismo?argumento=${this.selected()}&vinculo=${this.filter()}`,
+      ? `/marxismo?argumento=${this.selected()}#conceitos`
+      : `/marxismo?argumento=${this.selected()}`,
   );
   readonly previewRecords = computed(() =>
     (this.selected() === 'smith'
@@ -61,16 +57,6 @@ export class ValueDebateComponent {
     void this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { argumento: value },
-      queryParamsHandling: 'merge',
-      preserveFragment: true,
-      replaceUrl: true,
-      scroll: 'manual',
-    });
-  }
-  setFilter(value: string): void {
-    void this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { vinculo: value },
       queryParamsHandling: 'merge',
       preserveFragment: true,
       replaceUrl: true,

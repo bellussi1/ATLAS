@@ -52,7 +52,6 @@ describe('Shared ideology reading', () => {
       expect.objectContaining({
         fragment: 'second',
         queryParamsHandling: 'preserve',
-        replaceUrl: true,
       }),
     );
     expect(document.activeElement?.id).toBe('second');

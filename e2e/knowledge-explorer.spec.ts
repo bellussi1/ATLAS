@@ -1,6 +1,20 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
+test('a connection keeps the search origin so the results stay one step away', async ({ page }) => {
+  await page.goto('/entidades?q=Marx');
+  const results = page.getByRole('region', { name: 'Resultados da busca' });
+  await results.getByRole('link').first().click();
+  await expect(page).toHaveURL(/origem=/);
+  const connection = page.locator('.connection h3 a').first();
+  await connection.click();
+  await expect(page).toHaveURL(/origem=/);
+  await expect(page.getByRole('link', { name: 'Voltar aos resultados' })).toHaveAttribute(
+    'href',
+    /\/entidades\?q=Marx/,
+  );
+});
+
 test('universal search starts at home, handles aliases and keeps filters through a permanent page', async ({
   page,
 }) => {
@@ -88,7 +102,7 @@ test('contextual exploration opens the matching permanent entity page', async ({
   await page.locator('#conceitos .knowledge-term').first().click();
   const dialog = page.getByRole('dialog');
   const title = (await dialog.locator('h2').textContent())!.trim();
-  await dialog.getByRole('link', { name: /Abrir página permanente/ }).click();
+  await dialog.getByRole('link', { name: /Abrir ficha de/ }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
   await expect(page).toHaveURL(/\/verbete\//);
 });

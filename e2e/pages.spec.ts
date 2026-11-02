@@ -351,3 +351,22 @@ test('estimated positions show their claims and open the entity record in place'
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
 });
+
+test('chapter jumps enter the history and Back returns to the previous chapter', async ({
+  page,
+}) => {
+  await page.goto('/marxismo');
+  const index = page.locator('app-ideology-reading .desktop-nav a');
+  await index.nth(1).click();
+  await expect(page).toHaveURL(/#.+/);
+  const second = new URL(page.url()).hash;
+  await index.nth(2).click();
+  await expect(
+    page.locator(`app-ideology-reading .desktop-nav a[href="${second}"]`),
+  ).not.toHaveAttribute('aria-current');
+  await page.goBack();
+  await expect(page).toHaveURL(new RegExp(`${second.replace('#', '#')}$`));
+  await expect(
+    page.locator(`app-ideology-reading .desktop-nav a[href="${second}"]`),
+  ).toHaveAttribute('aria-current', 'location');
+});

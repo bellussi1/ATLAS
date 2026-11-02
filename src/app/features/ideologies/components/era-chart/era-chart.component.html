@@ -53,6 +53,7 @@
           class="marker"
           [class.is-on]="overlaps(mark.year, mark.year)"
           [class.is-approx]="mark.approx"
+          [class.is-flipped]="flipsLeft(mark.year)"
           [style.left]="x(mark.year)"
           [style.--row]="m % 3"
           ><span

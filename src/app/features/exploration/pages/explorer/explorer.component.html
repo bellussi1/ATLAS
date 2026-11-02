@@ -171,14 +171,17 @@
               @if (sourceUrl(entry.id); as url) {
                 <p><a [href]="url">Consultar fonte original</a></p>
               }
-              @for (backlink of entry.backlinks; track backlink.id) {
-                <p class="source-use">
-                  <a [routerLink]="backlink.path">{{ backlink.title }}</a
-                  >: {{ backlink.label }}. {{ backlink.context }}
-                </p>
-              } @empty {
-                <p>Sem citação em afirmação registrada neste recorte.</p>
-              }
+              <details class="source-uses">
+                <summary>Citações no acervo ({{ entry.backlinks.length }})</summary>
+                @for (backlink of entry.backlinks; track backlink.id) {
+                  <p class="source-use">
+                    <a [routerLink]="backlink.path">{{ backlink.title }}</a
+                    >: {{ backlink.label }}. {{ backlink.context }}
+                  </p>
+                } @empty {
+                  <p>Sem citação em afirmação registrada neste recorte.</p>
+                }
+              </details>
             }
           </article>
         } @empty {

@@ -9,6 +9,7 @@ import {
   input,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { legacyChapterAnchors } from '@ideologies/models/ideology-chapters';
 import type { IdeologyReadingSection } from '@ideologies/models/ideology-reading-section';
@@ -52,6 +53,11 @@ export class IdeologyReadingComponent {
   constructor() {
     this.destroyRef.onDestroy(() => {
       this.document.documentElement.classList.remove('atlas-reduced-motion');
+    });
+    // Back and forward between chapter jumps change the fragment; the index follows it.
+    this.route.fragment.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((fragment) => {
+      if (fragment && this.sections().some((s) => s.anchor === fragment))
+        this.selected.set(fragment);
     });
     afterNextRender(() => {
       const win = this.document.defaultView;
@@ -122,7 +128,6 @@ export class IdeologyReadingComponent {
       relativeTo: this.route,
       fragment: anchor,
       queryParamsHandling: 'preserve',
-      replaceUrl: true,
     });
     section.focus({ preventScroll: true });
   }

@@ -36,7 +36,7 @@
   <p class="context-summary">{{ record().summary }}</p>
   @if (permanentPath(); as path) {
     <p class="context-permanent">
-      <a [routerLink]="path" (click)="close()">Abrir página permanente de {{ record().title }}</a>
+      <a [routerLink]="path" (click)="close()">Abrir ficha de {{ record().title }} →</a>
       <small>Sai desta leitura e abre o verbete completo.</small>
     </p>
   }

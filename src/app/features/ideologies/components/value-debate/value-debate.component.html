@@ -29,39 +29,6 @@
           O que uma mercadoria pode comprar? Quanto trabalho é necessário para produzi-la? Selecione
           uma formulação para ler o argumento e sua fonte.
         </p>
-        <fieldset>
-          <legend>Mostrar vínculos</legend>
-          <label
-            ><input
-              type="radio"
-              name="edge"
-              value="todas"
-              [checked]="filter() === 'todas'"
-              (change)="setFilter('todas')"
-            />
-            Todos</label
-          >
-          <label
-            ><input
-              type="radio"
-              name="edge"
-              value="comparacao"
-              [checked]="filter() === 'comparacao'"
-              (change)="setFilter('comparacao')"
-            />
-            Comparação</label
-          >
-          <label
-            ><input
-              type="radio"
-              name="edge"
-              value="critica"
-              [checked]="filter() === 'critica'"
-              (change)="setFilter('critica')"
-            />
-            Crítica documentada</label
-          >
-        </fieldset>
         <div class="theses" role="group" aria-label="Selecionar tese">
           <button
             class="thesis smith"
@@ -81,26 +48,22 @@
             >
           </button>
           <div class="edge" aria-label="Vínculos entre as teses">
-            @if (filter() !== 'critica') {
-              <p class="comparison">
-                <svg viewBox="0 0 100 24" aria-hidden="true">
-                  <path d="M5 12h90M15 3L5 12l10 9m70-18 10 9-10 9" /></svg
-                ><strong>Comparação editorial:</strong> duas perguntas sobre valor e trabalho.
-                Aproximação feita pelo ATLAS; não é uma conversa entre os autores.
-              </p>
-            }
-            @if (filter() !== 'comparacao') {
-              <p class="criticism">
-                <strong>Marx → analisa criticamente → Smith</strong><br />Crítica: Marx examina
-                definições de valor em Smith, em
-                <a
-                  href="https://www.marxists.org/archive/marx/works/1863/theories-surplus-value/ch03.htm"
-                  >Teorias da mais-valia, cap. 3</a
-                >
-                (manuscritos de 1861–1863). Esta relação entre autores é documentada nesse texto,
-                não uma resposta direta entre os dois trechos exibidos.
-              </p>
-            }
+            <p class="comparison">
+              <svg viewBox="0 0 100 24" aria-hidden="true">
+                <path d="M5 12h90M15 3L5 12l10 9m70-18 10 9-10 9" /></svg
+              ><strong>Comparação editorial:</strong> duas perguntas sobre valor e trabalho.
+              Aproximação feita pelo ATLAS; não é uma conversa entre os autores.
+            </p>
+            <p class="criticism">
+              <strong>Marx → analisa criticamente → Smith</strong><br />Crítica: Marx examina
+              definições de valor em Smith, em
+              <a
+                href="https://www.marxists.org/archive/marx/works/1863/theories-surplus-value/ch03.htm"
+                >Teorias da mais-valia, cap. 3</a
+              >
+              (manuscritos de 1861–1863). Esta relação entre autores é documentada nesse texto, não
+              uma resposta direta entre os dois trechos exibidos.
+            </p>
           </div>
           <button
             class="thesis marx"

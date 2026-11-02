@@ -69,8 +69,8 @@ a.atlas-link--feature {
   }
 
   .atlas-button--secondary:hover:not(:disabled) {
-    background: var(--color-danger-surface);
-    color: var(--color-danger);
+    background: var(--color-surface-subtle);
+    color: var(--ink);
   }
 
   .atlas-button--quiet:hover:not(:disabled) {

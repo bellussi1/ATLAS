@@ -71,7 +71,7 @@
               <h3>
                 <a
                   [routerLink]="pathFor(connection.entityId)"
-                  [queryParams]="{ idioma: query().get('idioma') }"
+                  [queryParams]="{ idioma: query().get('idioma'), origem: query().get('origem') }"
                   queryParamsHandling="merge"
                   >{{ connection.label }}</a
                 >
