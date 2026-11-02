@@ -186,9 +186,6 @@
 .relation-reading {
   min-height: 19rem;
 }
-.relation-controls {
-  min-height: 5.5rem;
-}
 .exploration-set {
   margin-block: 2rem;
   display: grid;
@@ -323,20 +320,13 @@
     height: 30rem;
   }
   .genealogy-canvas {
-    min-height: 280px;
+    display: none;
   }
-  .genealogy-canvas svg {
-    display: block;
+  .relation-reading {
+    min-height: 0;
   }
-  .genealogy-node {
-    font-size: 0.75rem;
-    padding: 0.4rem;
-    min-height: 3.8rem;
-    width: 36%;
-  }
-  .genealogy-node span {
-    font-size: 0.6rem;
-  }
+}
+@container (max-width: 48rem) {
   .principles,
   .argument-board {
     grid-template-columns: 1fr;
@@ -347,9 +337,6 @@
   }
   .schools .exploration-card {
     grid-template-columns: 1fr;
-  }
-  .relation-reading {
-    height: 23rem;
   }
 }
 

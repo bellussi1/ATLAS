@@ -66,14 +66,8 @@
   color: var(--ink);
 }
 @media (min-width: 1101px) {
-  .graph-canvas {
-    min-height: 25rem;
-  }
   .section-heading {
     display: block;
-  }
-  .graph-node {
-    width: 8rem;
   }
 }
 

@@ -262,18 +262,6 @@
             }
           </select></label
         >
-        <div class="relation-controls" role="group" aria-label="Investigar uma divergência">
-          @for (edge of visibleEdges(); track edge.id) {
-            <button
-              type="button"
-              [attr.aria-pressed]="selectedEdge()?.id === edge.id"
-              [attr.aria-controls]="blockId() + '-relation-reading'"
-              (click)="update('relacao', edge.id)"
-            >
-              {{ entity(edge.from)?.title }} → {{ entity(edge.to)?.title }}
-            </button>
-          }
-        </div>
         @if (selectedEdge(); as edge) {
           <section
             [id]="blockId() + '-relation-reading'"
@@ -281,9 +269,7 @@
             aria-live="polite"
             aria-label="Relação selecionada"
           >
-            <p class="metadata">
-              {{ relation(edge).label }} · certeza {{ edge.certainty }} · revisão pendente
-            </p>
+            <p class="metadata">{{ relation(edge).label }} · certeza {{ edge.certainty }}</p>
             <p class="relation-meaning">
               {{ relation(edge).meaning }}
               {{ relation(edge).historical ? '' : 'Não é uma relação histórica documentada.' }}
@@ -296,13 +282,13 @@
           </section>
         }
       </div>
-      <details class="relation-table">
-        <summary>Consultar relações e fontes ({{ edges().length }})</summary>
+      <details class="relation-table" [open]="compactGraph()">
+        <summary>Consultar relações e fontes ({{ visibleEdges().length }})</summary>
         <app-card-carousel
           label="Relações documentadas, com direção e certeza"
           hint="Arraste ou use as setas; cada cartão mostra sua evidência"
         >
-          @for (edge of edges(); track edge.id) {
+          @for (edge of visibleEdges(); track edge.id) {
             <article
               class="carousel-item relation-card"
               [class.is-selected]="selectedEdge()?.id === edge.id"

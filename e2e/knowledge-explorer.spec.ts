@@ -11,7 +11,8 @@ test('universal search starts at home, handles aliases and keeps filters through
   const results = page.getByRole('region', { name: 'Resultados da busca' });
   await results.getByRole('link', { name: 'Ulysses Guimarães', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Ulysses Guimarães');
-  await expect(page.getByRole('link', { name: 'Link permanente', exact: true })).toHaveAttribute(
+  await expect(page.getByRole('button', { name: 'Copiar link', exact: true })).toBeVisible();
+  await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
     'href',
     '/verbete/ulysses-guimaraes',
   );
@@ -19,7 +20,7 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
     'guimaraes silveira',
   );
-  const categories = page.getByRole('navigation', { name: 'Categorias de registro' });
+  const categories = page.getByRole('group', { name: 'Categorias de registro' });
   await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
   await expect(page).toHaveURL(/tipo=pessoa/);
   await page.goBack();

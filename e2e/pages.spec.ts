@@ -168,7 +168,10 @@ test('shared reading preserves filters and clears motion preference when leaving
     await reader.getByRole('button', { name: 'Reduzir movimento' }).click();
     await expect(page.locator('html')).toHaveClass(/atlas-reduced-motion/);
     // Client-side navigation must destroy the old reader and its document-wide preference.
-    await reader.getByRole('link', { name: '← Página inicial', exact: true }).click();
+    await page
+      .getByRole('navigation', { name: 'Breadcrumb' })
+      .getByRole('link', { name: 'Início', exact: true })
+      .click();
     await expect(page).toHaveURL(/\/$/);
     await expect(page.locator('html')).not.toHaveClass(/atlas-reduced-motion/);
   }
@@ -243,7 +246,8 @@ test('épocas list dated records and the graph explains each kind of line', asyn
     await expect(graph.locator('.relation-meaning')).not.toBeEmpty();
     const nodes = graph.locator('.genealogy-node');
     const before = await nodes.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left));
-    await graph.locator('.relation-controls button').last().click();
+    await page.locator('#vertentes .relation-table > summary').click();
+    await page.locator('#vertentes .relation-card-select').last().click();
     expect(await nodes.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left))).toEqual(
       before,
     );

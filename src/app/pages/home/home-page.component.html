@@ -21,7 +21,7 @@
       [interactive]="true"
     />
     <button class="recompose atlas-press" type="button" (click)="recompose()">
-      <span class="recompose-dot" aria-hidden="true"></span>Recompor o cartaz
+      <span class="recompose-dot" aria-hidden="true"></span>Outra composição
     </button>
   </div>
 </section>
@@ -44,7 +44,7 @@
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
     <p class="atlas-band-number" aria-hidden="true">A</p>
     <h2 id="readings-title">Duas leituras, <em>uma enciclopédia.</em></h2>
-    <p>Cada tradição tem seu ritmo. Escolha uma capa para aproximar a leitura.</p>
+    <p>Cada tradição tem seu ritmo. Escolha uma leitura para ver o resumo e o texto completo.</p>
   </header>
   <div appReveal class="reading-table" [attr.data-reading]="selected().slug">
     <div class="cover-index">
@@ -102,7 +102,18 @@
       </div>
     </article>
   </div>
-  <p class="sr-only" role="status">Na mesa: {{ selected().title }}.</p>
+  <p class="sr-only" role="status">Leitura selecionada: {{ selected().title }}.</p>
+</section>
+
+<section class="catalogue-band" aria-labelledby="catalogues-title" data-tone-section>
+  <h2 id="catalogues-title">Explorar por tipo</h2>
+  <ul>
+    @for (catalogue of catalogues; track catalogue.path) {
+      <li>
+        <a [routerLink]="'/' + catalogue.path">{{ catalogue.title }}</a>
+      </li>
+    }
+  </ul>
 </section>
 
 <section class="method" aria-labelledby="method-title" data-tone-section>

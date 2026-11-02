@@ -27,9 +27,9 @@ describe('SiteHeaderComponent', () => {
       ),
     ];
     expect(doors.map((door) => door.textContent?.replace(/\s+/g, ' ').trim())).toEqual([
-      'Ler Marxismo ↗',
-      'Percorrer Liberalismo ↗',
-      'Buscar Acervo ↗',
+      'Ler Marxismo →',
+      'Percorrer Liberalismo →',
+      'Buscar Acervo →',
     ]);
     expect(doors[0].getAttribute('aria-current')).toBe('page');
     expect(doors[1].hasAttribute('aria-current')).toBe(false);

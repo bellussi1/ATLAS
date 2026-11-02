@@ -64,6 +64,7 @@
         @for (life of lives(); track life.entity.id) {
           <li [class.is-on]="overlaps(life.start, life.end)">
             <span class="life-name">{{ life.entity.title }}</span>
+            <span class="life-years">{{ life.start }}–{{ life.end }}</span>
             <span class="life-track">
               <span
                 class="life-bar"

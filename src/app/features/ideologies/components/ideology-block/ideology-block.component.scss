@@ -284,22 +284,6 @@ text {
   fill: var(--ink);
   font: 20px var(--font-sans);
 }
-.relation-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 1rem;
-}
-.relation-controls button {
-  border: 1px solid var(--ink);
-  background: var(--paper);
-  padding: 0.7rem;
-  text-align: left;
-}
-.relation-controls button[aria-pressed='true'] {
-  background: var(--color-indigo);
-  color: white;
-}
 .relation-reading {
   padding: 1.5rem;
   border-top: 1px solid var(--rule-strong);
@@ -333,10 +317,9 @@ input {
   width: 100%;
   min-width: 0;
 }
-@media (max-width: 650px) {
-  .timeline-axis text {
-    font-size: 44px;
-  }
+/* Card grids collapse by the width of the reading column, not the viewport: the 12-column
+   grid leaves a three-column card under 11rem once the index column takes its share. */
+@container (max-width: 48rem) {
   .portraits {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -361,14 +344,16 @@ input {
   .entity-entry img {
     height: 160px;
   }
+}
+@media (max-width: 650px) {
+  .timeline-axis text {
+    font-size: 44px;
+  }
   .timeline-list li {
     grid-template-columns: 4.5rem minmax(0, 1fr);
   }
   .year {
     font-size: 1.1rem;
-  }
-  .genealogy svg {
-    display: none;
   }
 }
 @media (max-width: 360px) {

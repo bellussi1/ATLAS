@@ -317,6 +317,38 @@
   .tick:nth-child(even) {
     display: none;
   }
+  /* Each person keeps a full name and years on phones; the bar is a secondary cue below them. */
+  .lives li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.6rem;
+    height: auto;
+    padding-block: 0.4rem;
+  }
+  .life-name {
+    position: static;
+    translate: none;
+    width: auto;
+    overflow: visible;
+    text-align: left;
+    white-space: normal;
+    font-size: 0.9rem;
+  }
+  .life-years {
+    display: inline;
+    font: 0.8rem var(--font-sans);
+    color: var(--color-ink-muted);
+  }
+  .life-track {
+    position: relative;
+    inset: auto;
+    flex-basis: 100%;
+    height: 0.5rem;
+  }
+}
+.life-years {
+  display: none;
 }
 
 .marker.is-approx > span,

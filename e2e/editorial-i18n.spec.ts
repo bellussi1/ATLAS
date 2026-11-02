@@ -41,10 +41,7 @@ test('reviewed English text preserves identity, original evidence, review method
   await expect(page.locator('.record')).toContainText('assistida por IA');
   await expect(page.locator('.record')).toContainText('Sem revisão humana registrada');
   await expect(page.locator('app-claim-references')).toContainText('Revisão editorial pendente');
-  await expect(page.getByRole('link', { name: 'Link permanente', exact: true })).toHaveAttribute(
-    'href',
-    '/verbete/brasil',
-  );
+  await expect(page.getByRole('button', { name: 'Copiar link', exact: true })).toBeVisible();
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href', '/verbete/brasil');
   await expect(page.getByRole('region', { name: 'Perfil específico do registro' })).toHaveAttribute(
     'lang',

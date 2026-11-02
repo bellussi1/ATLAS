@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { getEditorialType } from '@core/content/editorial/content-types';
@@ -31,7 +32,9 @@ import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found
 export class RecordComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly doc = inject(DOCUMENT);
   readonly repository = inject(ContentRepository);
+  readonly copyStatus = signal('');
   readonly statusLabel = editorialStatusLabel;
   readonly precisionLabel: Record<string, string> = {
     year: 'ano',
@@ -103,6 +106,21 @@ export class RecordComponent {
   );
   pathFor(id: string): string {
     return this.repository.discoveryIndex.find((e) => e.id === id)?.path ?? '/entidades';
+  }
+  /** Copies the record's permanent address; the button replaces the link to the page itself. */
+  async copyLink(): Promise<void> {
+    const url = new URL(this.entry()?.path ?? this.doc.location.pathname, this.doc.location.origin);
+    const clipboard = this.doc.defaultView?.navigator.clipboard;
+    if (!clipboard) {
+      this.copyStatus.set('Copie o endereço da barra do navegador.');
+      return;
+    }
+    try {
+      await clipboard.writeText(url.href);
+      this.copyStatus.set('Link copiado.');
+    } catch {
+      this.copyStatus.set('Copie o endereço da barra do navegador.');
+    }
   }
   setLanguage(locale: string | null): void {
     void this.router.navigate([], {

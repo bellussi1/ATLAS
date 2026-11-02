@@ -10,6 +10,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
@@ -44,6 +45,12 @@ export class HomePage {
   );
   readonly query = signal('');
   readonly seed = signal(7);
+  /** Catalogues offered on the home page; the search page lists the rest. */
+  readonly catalogues = explorerCatalogues.filter((catalogue) =>
+    ['pessoas', 'obras', 'paises', 'acontecimentos', 'conceitos', 'fontes'].includes(
+      catalogue.path,
+    ),
+  );
   readonly readings = [
     {
       slug: 'marxismo',

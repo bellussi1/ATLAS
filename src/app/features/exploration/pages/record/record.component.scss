@@ -46,6 +46,30 @@ h1 {
   display: inline-block;
   margin: 1rem 2rem;
 }
+.record-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  margin: 1rem 2rem;
+}
+.copy-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.copy-status {
+  font: 0.85rem var(--font-sans);
+}
+.record-data summary {
+  padding-block: 0.5rem;
+  font-weight: 600;
+}
 .record-body {
   display: grid;
   grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);

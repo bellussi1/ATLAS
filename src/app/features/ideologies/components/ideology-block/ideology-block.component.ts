@@ -1,4 +1,5 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, computed, DestroyRef, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import type { Entity, Source } from '@core/content/models/content-schema';
@@ -55,6 +56,8 @@ export class IdeologyBlockComponent {
   readonly repository = inject(ContentRepository);
   readonly hoveredNode = signal<string | null>(null);
   readonly edgeFilter = signal('all');
+  /** At phone width the canvas is hidden and the relation list opens by default (same breakpoint as the CSS). */
+  readonly compactGraph = signal(false);
   readonly showAllEntities = signal(false);
   readonly entityPreviewCount = 6;
   readonly entityNoun = computed(() => {
@@ -72,6 +75,7 @@ export class IdeologyBlockComponent {
   readonly params = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,
   });
+
   /** Entities named by a positions block, with the titles shown to the reader. */
   readonly positionEntities = computed(() => {
     const block = this.block();
@@ -90,6 +94,7 @@ export class IdeologyBlockComponent {
       ? this.dossier().supplement.edges.filter((e) => block.edgeIds.includes(e.id))
       : [];
   });
+  /** The list shows the same relations as the canvas, so the type filter applies to both. */
   readonly visibleEdges = computed(() =>
     this.edges().filter((e) => this.edgeFilter() === 'all' || e.type === this.edgeFilter()),
   );
@@ -202,6 +207,17 @@ export class IdeologyBlockComponent {
   );
   /** Card pictures planned for the whole page; see `planPageMedia`. */
   readonly mediaPlan = input<ReadonlyMap<string, PageMedia>>(new Map());
+
+  constructor() {
+    const view = inject(DOCUMENT).defaultView;
+    if (!view?.matchMedia) return;
+    const compact = view.matchMedia('(max-width: 650px)');
+    const sync = () => this.compactGraph.set(compact.matches);
+    sync();
+    compact.addEventListener('change', sync);
+    inject(DestroyRef).onDestroy(() => compact.removeEventListener('change', sync));
+  }
+
   note(id: string): string | undefined {
     const block = this.block();
     return block.type === 'entities' ? block.notes[id] : undefined;

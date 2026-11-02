@@ -3,9 +3,7 @@
     @if (returnTree(); as back) {
       <a [routerLink]="back">Voltar aos resultados</a>
     }
-    <a routerLink="/entidades">Catálogo de entidades</a
-    ><a routerLink="/conhecimento">Busca universal</a>
-    @if (entity(); as entity) {}
+    <a routerLink="/conhecimento">Buscar no acervo</a>
   </nav>
   @if (entity(); as entity) {
     <app-content-language [requested]="query().get('idioma')" (changed)="setLanguage($event)" />
@@ -30,7 +28,10 @@
       <h1 [attr.lang]="presentation()?.locale">{{ entity.title }}</h1>
       <p class="lead" [attr.lang]="presentation()?.locale">{{ entity.summary }}</p>
       <p class="context" [attr.lang]="presentation()?.locale">{{ entity.context }}</p>
-      <a [routerLink]="entry()?.path">Link permanente</a>
+      <p class="record-actions">
+        <button type="button" class="copy-link" (click)="copyLink()">Copiar link</button>
+        <span role="status" class="copy-status">{{ copyStatus() }}</span>
+      </p>
       @if (dossier(); as path) {
         <a class="dossier-link" [routerLink]="path">Abrir leitura contínua de {{ entity.title }}</a>
       }
@@ -123,10 +124,6 @@
         }
         <h2>Ficha do registro</h2>
         <dl>
-          <dt>Identificador</dt>
-          <dd>{{ entity.id }}</dd>
-          <dt>Revisão do registro</dt>
-          <dd>{{ entity.revision }}</dd>
           @if (entity.aliases.length) {
             <dt>Outros nomes</dt>
             <dd>{{ entity.aliases.join('; ') }}</dd>
@@ -138,6 +135,15 @@
             </dd>
           }
         </dl>
+        <details class="record-data">
+          <summary>Dados do registro</summary>
+          <dl>
+            <dt>Identificador</dt>
+            <dd>{{ entity.id }}</dd>
+            <dt>Revisão do registro</dt>
+            <dd>{{ entity.revision }}</dd>
+          </dl>
+        </details>
         <h2>Fontes e proveniência</h2>
         @for (source of context()?.sources; track source.id) {
           <p>

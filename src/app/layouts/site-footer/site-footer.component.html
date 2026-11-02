@@ -4,29 +4,30 @@
       <div class="footer-invitation">
         <p>Um acervo, muitos caminhos.</p>
         <h2>A próxima<br />descoberta<br /><em>é sua.</em></h2>
-        <a routerLink="/conhecimento">Explorar o acervo <span aria-hidden="true">↗</span></a>
+        <a routerLink="/conhecimento">Explorar o acervo</a>
       </div>
       <div class="footer-playground">
-        <nav
+        <!-- Decorative: the directory below already lists these destinations. -->
+        <div
           class="footer-collage"
-          aria-label="Continue explorando"
+          aria-hidden="true"
           [attr.data-composition]="composition()"
           [class.instant]="instantComposition()"
         >
-          <a class="collage-piece collage-piece--relations" routerLink="/"
+          <a class="collage-piece collage-piece--relations" routerLink="/" tabindex="-1"
             ><app-editorial-mark kind="verbete" /><span>Página inicial</span></a
           >
-          <a class="collage-piece collage-piece--read" routerLink="/marxismo"
+          <a class="collage-piece collage-piece--read" routerLink="/marxismo" tabindex="-1"
             ><app-editorial-mark kind="artigo" /><span>Explorar o Marxismo</span></a
           >
-          <a class="collage-piece collage-piece--study" routerLink="/liberalismo"
+          <a class="collage-piece collage-piece--study" routerLink="/liberalismo" tabindex="-1"
             ><app-editorial-mark kind="atlas" /><span>Explorar o Liberalismo</span></a
           >
-          <a class="collage-piece collage-piece--search" routerLink="/conhecimento"
+          <a class="collage-piece collage-piece--search" routerLink="/conhecimento" tabindex="-1"
             ><span class="collage-letter" aria-hidden="true">a.</span
             ><span>Buscar no acervo</span></a
           >
-        </nav>
+        </div>
         <div class="composition-control">
           <button type="button" (click)="changeComposition($event)">
             Outra composição <span aria-hidden="true">↻</span></button

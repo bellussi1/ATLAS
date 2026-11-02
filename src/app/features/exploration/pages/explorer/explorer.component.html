@@ -54,7 +54,7 @@
         placeholder="Nome, conceito ou expressão"
       />
       <button type="submit">Pesquisar</button>
-      <label for="explorer-state">Situação editorial</label>
+      <label for="explorer-state">Estado da revisão</label>
       <select
         id="explorer-state"
         name="estado"
@@ -77,7 +77,7 @@
     </form>
     <div class="archive-results">
       @if (facets.kinds.length > 1) {
-        <nav class="kind-filter" aria-label="Categorias de registro">
+        <div class="kind-filter" role="group" aria-label="Categorias de registro">
           <div class="kind-filter__row">
             <a
               class="kind-filter__item"
@@ -110,7 +110,7 @@
               </ul>
             </div>
           }
-        </nav>
+        </div>
       }
       @if (unknownKind()) {
         <p class="notice">
@@ -135,6 +135,7 @@
                 [routerLink]="[]"
                 [queryParams]="{ porPagina: size === 10 ? null : size, pagina: null }"
                 queryParamsHandling="merge"
+                fragment="resultados"
                 [attr.aria-current]="pageSize() === size ? 'true' : null"
                 >{{ size }}</a
               >
