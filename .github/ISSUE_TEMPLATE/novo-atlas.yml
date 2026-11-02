@@ -1,0 +1,22 @@
+name: Novo atlas
+description: Propor uma nova tradição ou tema no formato de dossiê
+labels: ["novo atlas"]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Tema
+      placeholder: Anarquismo, Conservadorismo, Revolução Haitiana…
+    validations:
+      required: true
+  - type: textarea
+    id: outline
+    attributes:
+      label: Capítulos propostos
+      description: Origens, conceitos, pensadores, épocas, lugares, vertentes, críticas…
+  - type: textarea
+    id: sources
+    attributes:
+      label: Bibliografia inicial
+    validations:
+      required: true

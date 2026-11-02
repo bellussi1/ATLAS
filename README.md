@@ -110,7 +110,7 @@ Leia [Arquitetura](docs/architecture/ARCHITECTURE.md), [Padrão de páginas](doc
 
 ## Contribuir
 
-Encontrou um erro, uma fonte melhor ou uma conexão que falta? [Abra uma issue](https://github.com/bellussi1/ATLAS/issues) com a referência. Pull requests devem passar `lint`, `typecheck`, `test`, `test:e2e` e `build`.
+Encontrou um erro, uma fonte melhor ou uma conexão que falta? [Veja as issues abertas](https://github.com/bellussi1/ATLAS/issues) ou leia o [guia de contribuição](CONTRIBUTING.md). Pull requests devem passar `lint`, `typecheck`, `test`, `test:e2e` e `build`.
 
 ## Créditos
 

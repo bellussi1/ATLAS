@@ -1,0 +1,24 @@
+name: Conteúdo ou fonte
+description: Corrigir um texto, sugerir uma fonte ou propor um capítulo
+labels: ["conteúdo"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Página ou registro
+      placeholder: /marxismo#epocas, /verbete/karl-marx…
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: O que precisa mudar
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Fontes
+      description: Referência completa (autor, título, edição, ano, link) que sustenta a mudança.
+    validations:
+      required: true
