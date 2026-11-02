@@ -31,7 +31,9 @@
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\" \"scripts/**/*.{mjs,js,cjs,json}\" \"e2e/**/*.{ts,js,mjs}\" \"*.{json,js,cjs,mjs}\"",
     "preview": "node scripts/preview.mjs",
     "check:links": "node scripts/check-links.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "prepare": "husky",
+    "verify": "npm audit --omit=dev --audit-level=moderate && npm run lint && npm run typecheck && npm test && npm run test:ingestion && npm run test:content && npm run ingest:verify && npm run build && npm run check:links && npm run test:e2e"
   },
   "private": true,
   "packageManager": "npm@11.6.2",
@@ -48,7 +50,6 @@
     "d3-shape": "^3.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "vercel": "^65.9.0",
     "zod": "^4.6.7"
   },
   "devDependencies": {
@@ -66,12 +67,14 @@
     "autoprefixer": "^10.6.2",
     "eslint": "^10.3.0",
     "eslint-plugin-simple-import-sort": "^14.0.0",
+    "husky": "^9.1.7",
     "jsdom": "^28.0.0",
     "postcss": "^8.5.32",
     "prettier": "^3.9.10",
     "tailwindcss": "^3.4.19",
     "typescript": "~5.9.2",
     "typescript-eslint": "8.59.2",
+    "vercel": "^65.9.0",
     "vitest": "^4.0.8"
   }
 }
