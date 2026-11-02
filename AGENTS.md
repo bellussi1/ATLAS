@@ -19,13 +19,13 @@ Construir uma plataforma educacional pública, gratuita, interativa e rigorosa s
 
 Use Node.js 24 e npm 11, como documentado no `README.md`. Instale dependências com `npm install` quando necessário. Os comandos abaixo foram executados no Prompt 01; repita as verificações pertinentes após cada mudança:
 
-| Comando | Finalidade |
-| --- | --- |
-| `npm start` | Servidor local Angular |
-| `npm run build` | Build de produção e saída estática/prerender |
-| `npm test` | Testes unitários Vitest em execução única |
-| `npm run lint` | ESLint em TypeScript e templates Angular |
-| `npm run typecheck` | Checagem TypeScript do app e dos testes |
+| Comando             | Finalidade                                   |
+| ------------------- | -------------------------------------------- |
+| `npm start`         | Servidor local Angular                       |
+| `npm run build`     | Build de produção e saída estática/prerender |
+| `npm test`          | Testes unitários Vitest em execução única    |
+| `npm run lint`      | ESLint em TypeScript e templates Angular     |
+| `npm run typecheck` | Checagem TypeScript do app e dos testes      |
 
 O Prompt 01 também executou `npm run watch`, `npm run ng -- version` e uma inicialização local de `npm start` (na porta 4300 porque a 4200 estava ocupada). O watch compilou e foi encerrado após a compilação inicial.
 
@@ -53,7 +53,6 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 - Evite agentes concorrentes editando o mesmo arquivo. A configuração do repositório limita a um subagente simultâneo por padrão.
 - Ao terminar, informe objetivamente os arquivos alterados, comandos executados, resultados e limitações reais.
 
-
 ## Direção visual específica do ATLAS
 
 ### Seleção de skills por tarefa
@@ -71,12 +70,13 @@ Ao desenvolver componentes, priorize interatividade real, continuidade entre con
 
 Partir do briefing deste projeto e de suas referências visuais. Não transportar composições, paletas ou padrões de outros projetos do usuário. Preservar funcionalidades, arquitetura, acessibilidade e integridade editorial ao reconstruir a apresentação. Não alegar remoção de memória do modelo ou de histórico de chats.
 
-
 A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atlas-editorial-geometrico`, orienta a identidade aprovada do ATLAS. Ela complementa as skills gerais, preserva a mesa de pesquisa e organiza cores secundárias, palavras navegáveis e motivos geométricos.
 
 ## Padrão V4 de páginas
 
 Consultar `docs/design/PAGE_STANDARD.md` para páginas de ideologias e tradições. A implementação contínua está em `/marxismo`; o hub foi removido no escopo temporário de três páginas. O contrato Zod fica em `src/app/features/ideologies/models/ideology-page.schema.ts` e os snapshots em `src/content/ideologies` e `src/content/graph`. Exemplos não publicados não devem entrar no prerender.
+
+Novas ideologias seguem a skill `atlas-create-ideology` (`.claude/skills/atlas-create-ideology/SKILL.md`): pesquisa e dados tipados sobre o contrato de 12 capítulos, rascunho via `ideologyDraft()`, sem nova página Angular, sem copiar componentes por ideologia e sem publicar antes de aprovação.
 
 ## Governança arquitetural obrigatória
 

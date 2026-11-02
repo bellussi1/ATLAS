@@ -21,22 +21,22 @@ O visitante identifica onde está, o capítulo seguinte, progresso e caminho de 
 
 ## 1.1 Contrato canônico de 12 capítulos
 
-Toda página publicada tem os mesmos 12 capítulos, na mesma ordem, com `id` = âncora e o rótulo canônico como *kicker*: `introducao`, `origens`, `principios`, `conceitos`, `epocas`, `pensadores`, `vertentes`, `experiencias`, `debates`, `conexoes`, `leituras`, `fontes`. A fonte única é `src/app/features/ideologies/models/ideology-chapters.ts`, e o schema rejeita desvios. O índice agrupa os capítulos em Entender (01–04), Situar (05–08) e Avaliar e continuar (09–12), sem esconder nenhum do scroll. Capítulo sem conteúdo verificado usa `coverage: "pending"` e um motivo em `gap`. Conteúdo incompleto usa `"partial"`. Nunca há preenchimento. Âncoras antigas (`#historia`, `#correntes`, `#lugares`, `#criticas`, `#acervo`) são redirecionadas. A leitura principal não tem contêiner com scroll próprio; painéis reservam altura mínima. Proposta e mapeamento estão em `docs/research/ideologies-section-contract-proposal.md`.
+Toda página publicada tem os mesmos 12 capítulos, na mesma ordem, com `id` = âncora e o rótulo canônico como _kicker_: `introducao`, `origens`, `principios`, `conceitos`, `epocas`, `pensadores`, `vertentes`, `experiencias`, `debates`, `conexoes`, `leituras`, `fontes`. A fonte única é `src/app/features/ideologies/models/ideology-chapters.ts`, e o schema rejeita desvios. O índice agrupa os capítulos em Entender (01–04), Situar (05–08) e Avaliar e continuar (09–12), sem esconder nenhum do scroll. Capítulo sem conteúdo verificado usa `coverage: "pending"` e um motivo em `gap`. Conteúdo incompleto usa `"partial"`. Nunca há preenchimento. Âncoras antigas (`#historia`, `#correntes`, `#lugares`, `#criticas`, `#acervo`) são redirecionadas. A leitura principal não tem contêiner com scroll próprio; painéis reservam altura mínima. Proposta e mapeamento estão em `docs/research/ideologies-section-contract-proposal.md`. Para iniciar uma nova tradição, use a skill `atlas-create-ideology`.
 
 ## 2. Contrato de cobertura editorial
 
 A estrutura define cobertura, não um layout repetível:
 
-| Área | Conteúdo | Exploração esperada |
-| --- | --- | --- |
-| Introdução | definição, recorte, classificação, revisão | abrir recorte, conceito inicial ou fonte |
-| Origens | circunstâncias históricas, antecedentes e documentos | investigar documento e conexão, com imagem licenciada quando disponível |
+| Área       | Conteúdo                                                                                      | Exploração esperada                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Introdução | definição, recorte, classificação, revisão                                                    | abrir recorte, conceito inicial ou fonte                                             |
+| Origens    | circunstâncias históricas, antecedentes e documentos                                          | investigar documento e conexão, com imagem licenciada quando disponível              |
 | Princípios | problemas, valores/pressupostos, sociedade, economia, Estado/poder, mecanismos e divergências | diagrama conceitual e fichas que explicam fundamentos, sem doutrina unânime fictícia |
-| Pensadores | contexto, obras, conceitos, críticas e relações | retratos editoriais, constelação ou galeria assimétrica; contexto no lugar |
-| História | eventos, publicações, instituições e períodos | timeline com seleção, filtro, mídia e conexões; sequência não é causalidade |
-| Vertentes | recorte, diferenças, figuras, períodos e relações | comparação ou genealogia sustentada; não presumir descendência linear |
-| Debate | defesa, crítica, resposta e limitações | quadro argumentativo atribuído, fontes por posição e distinção de natureza |
-| Fontes | primárias, estudos, metadados e licenças | fonte junto à afirmação, bibliografia pesquisável e localizadores |
+| Pensadores | contexto, obras, conceitos, críticas e relações                                               | retratos editoriais, constelação ou galeria assimétrica; contexto no lugar           |
+| História   | eventos, publicações, instituições e períodos                                                 | timeline com seleção, filtro, mídia e conexões; sequência não é causalidade          |
+| Vertentes  | recorte, diferenças, figuras, períodos e relações                                             | comparação ou genealogia sustentada; não presumir descendência linear                |
+| Debate     | defesa, crítica, resposta e limitações                                                        | quadro argumentativo atribuído, fontes por posição e distinção de natureza           |
+| Fontes     | primárias, estudos, metadados e licenças                                                      | fonte junto à afirmação, bibliografia pesquisável e localizadores                    |
 
 Experiências históricas, mapas e conexões com outras ideologias entram quando sustentados por dados e fontes. Não fabricar um mapa, uma estatística ou uma árvore para preencher o layout. Ausências de cobertura ficam explicitamente justificadas; não preencher com alegações não verificadas.
 
@@ -59,15 +59,15 @@ Meta: CLS ≤ 0,1 e buscar < 0,02 em amostras locais representativas. Não prome
 
 ## 4. Linguagem universal de ação
 
-| Ação | Semântica/pista | Feedback persistente |
-| --- | --- | --- |
-| Abrir ficha/termo | `button` + “Abrir contexto”/indicador + `aria-haspopup` quando diálogo | foco, estado expandido e painel com título |
-| Expandir inline | `button aria-expanded`/`details` com verbo e indicação | região nomeada e recolhimento reconhecível |
-| Selecionar nó/evento/tema | `button aria-pressed` ou estado equivalente | seleção, painel, linhas e legenda sincronizados |
-| Navegar ao capítulo | `a` com âncora e nome do destino | foco no capítulo e caminho anterior |
-| Abrir documento/imagem | botão de ampliação ou link para origem | legenda, dimensão e licença; fechar restaura contexto |
-| Outra ideologia | link com nome e natureza da conexão | apenas rota pública existente |
-| Ênfase textual | `strong`/`em` sem pista de ação | não parece link nem recebe cursor de botão |
+| Ação                      | Semântica/pista                                                        | Feedback persistente                                  |
+| ------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------- |
+| Abrir ficha/termo         | `button` + “Abrir contexto”/indicador + `aria-haspopup` quando diálogo | foco, estado expandido e painel com título            |
+| Expandir inline           | `button aria-expanded`/`details` com verbo e indicação                 | região nomeada e recolhimento reconhecível            |
+| Selecionar nó/evento/tema | `button aria-pressed` ou estado equivalente                            | seleção, painel, linhas e legenda sincronizados       |
+| Navegar ao capítulo       | `a` com âncora e nome do destino                                       | foco no capítulo e caminho anterior                   |
+| Abrir documento/imagem    | botão de ampliação ou link para origem                                 | legenda, dimensão e licença; fechar restaura contexto |
+| Outra ideologia           | link com nome e natureza da conexão                                    | apenas rota pública existente                         |
+| Ênfase textual            | `strong`/`em` sem pista de ação                                        | não parece link nem recebe cursor de botão            |
 
 Toda ação tem cursor apropriado, pista persistente além de cor, hover, foco visível, clique/toque e estado selecionado/expandido quando aplicável. Os alvos não mudam de lugar com hover. Controle que parece clicável e não funciona, ou funciona mas parece decoração, é defeito. Usar HTML semântico; nenhum `span` clicável para substituir botão.
 
