@@ -2,39 +2,102 @@
   <h3 id="positions-title">Posições estimadas</h3>
   <p class="positions-note">
     Estimativas analíticas feitas a partir de afirmações atribuídas e com fonte, para comparar
-    leituras. Não são fatos históricos nem classificações pessoais. Cada eixo mostra quantas
-    afirmações e fontes sustentam a estimativa; sem duas fontes, a posição é só indicativa.
+    leituras. Não são fatos históricos nem classificações pessoais.
   </p>
+
+  <details class="how-to-read">
+    <summary>Como ler estas estimativas</summary>
+    <dl>
+      <div data-legend="estimada">
+        <dt>Estimada</dt>
+        <dd>
+          Duas fontes distintas sustentam a posição. A marca mostra o valor; a faixa, o intervalo
+          entre as afirmações.
+        </dd>
+      </div>
+      <div data-legend="divergente">
+        <dt>Divergente</dt>
+        <dd>
+          Fontes distintas afirmam posições afastadas. A faixa mostra o intervalo inteiro; nenhuma
+          média esconde a diferença.
+        </dd>
+      </div>
+      <div data-legend="indicativa">
+        <dt>Indicativa</dt>
+        <dd>
+          Uma só fonte sustenta a posição. Trate-a como pista de leitura, não como estimativa.
+        </dd>
+      </div>
+      <div data-legend="insuficiente">
+        <dt>Sem evidência suficiente</dt>
+        <dd>Nenhuma afirmação com fonte sobre o eixo. Nada é preenchido com um valor neutro.</dd>
+      </div>
+    </dl>
+  </details>
+
   @if (summary(); as s) {
     <p class="positions-summary">
-      Com os dados disponíveis, a maior diferença aparece em <strong>{{ s.axis }}</strong
-      >, entre {{ s.first }} e {{ s.second }} (diferença de {{ s.difference }} numa escala de 0 a
-      2).
+      Com os dados disponíveis, o maior contraste aparece em <strong>{{ s.axis }}</strong
+      >, entre {{ s.first }} e {{ s.second }}: diferença de {{ s.difference }} numa escala de 0 a 2.
     </p>
   }
+
   <div class="entities">
     @for (row of rows(); track row.id) {
       <article class="entity">
-        <h4>{{ row.title }}</h4>
-        <ul>
-          @for (axis of row.axes; track axis.axisId) {
-            <li [attr.data-status]="axis.status">
-              <span class="axis-name">{{ axisLabel(axis.axisId) }}</span>
-              <span class="poles">{{ poles(axis.axisId) }}</span>
-              @if (axis.value !== null) {
-                <span class="track" role="img" [attr.aria-label]="describe(row.title, axis)">
+        <h4>
+          <button
+            type="button"
+            class="entity-open atlas-press"
+            [appKnowledgeContext]="{ entityId: row.id }"
+          >
+            {{ row.title }}
+            <span class="atlas-arrow" aria-hidden="true">→</span>
+          </button>
+        </h4>
+
+        @if (row.evidence.length) {
+          <ul class="axes">
+            @for (item of row.evidence; track item.axis.axisId) {
+              <li [attr.data-status]="item.axis.status">
+                <span class="axis-name">{{ item.label }}</span>
+                <span class="poles">{{ item.poles }}</span>
+                <span class="track" role="img" [attr.aria-label]="item.description">
                   <span
                     class="range"
-                    [style.left.%]="pct(axis.low)"
-                    [style.width.%]="pct(axis.high) - pct(axis.low)"
+                    [style.left.%]="pct(item.axis.low)"
+                    [style.width.%]="pct(item.axis.high) - pct(item.axis.low)"
                   ></span>
-                  <span class="marker" [style.left.%]="pct(axis.value)"></span>
+                  <span class="marker" [style.left.%]="pct(item.axis.value)"></span>
                 </span>
-              }
-              <span class="status">{{ statusText(axis) }}</span>
-            </li>
-          }
-        </ul>
+                <span class="status">{{ item.statusText }}</span>
+                <details class="claims">
+                  <summary>Afirmações ({{ item.claims.length }})</summary>
+                  <ul>
+                    @for (claim of item.claims; track claim.id) {
+                      <li>
+                        <p>{{ claim.statement }}</p>
+                        <p class="claim-meta">{{ claim.meta }}</p>
+                      </li>
+                    }
+                  </ul>
+                </details>
+              </li>
+            }
+          </ul>
+        } @else {
+          <p class="no-evidence">Ainda não há afirmação com fonte para esta entidade.</p>
+        }
+
+        @if (row.hidden.length) {
+          <details class="hidden-axes">
+            <summary>
+              Sem evidência em {{ row.hidden.length }}
+              {{ row.hidden.length === 1 ? 'eixo' : 'eixos' }}
+            </summary>
+            <p>{{ row.hidden.join(', ') }}.</p>
+          </details>
+        }
       </article>
     }
   </div>

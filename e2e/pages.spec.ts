@@ -309,3 +309,21 @@ test('debates show estimated positions with their evidence, in words and not onl
     /Eduard Bernstein, Método de mudança social: estimada em 0,76/,
   );
 });
+
+test('estimated positions show their claims and open the entity record in place', async ({
+  page,
+}) => {
+  await page.goto('/marxismo/');
+  const bernstein = page.locator('#debates section.positions article.entity').filter({
+    hasText: 'Eduard Bernstein',
+  });
+  const revolution = bernstein.locator('li').filter({ hasText: 'Método de mudança social' });
+  await revolution.locator('.claims summary').click();
+  await expect(revolution).toContainText('movimento significa tudo');
+  await expect(revolution).toContainText('Evolutionary Socialism');
+  await expect(bernstein.locator('.hidden-axes summary')).toContainText('Sem evidência em 4 eixos');
+  await bernstein.getByRole('button', { name: /Eduard Bernstein/ }).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+});

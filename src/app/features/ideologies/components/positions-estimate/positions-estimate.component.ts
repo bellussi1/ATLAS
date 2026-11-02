@@ -6,40 +6,92 @@ import {
   estimateEntity,
   largestPairDifference,
 } from '@ideologies/utils/positions';
+import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 
-/** Estimated positions on analytic axes, drawn from attributed and sourced claims. */
+interface ClaimView {
+  id: string;
+  statement: string;
+  meta: string;
+}
+
+interface AxisView {
+  axis: AxisEstimate;
+  label: string;
+  poles: string;
+  statusText: string;
+  description: string;
+  claims: ClaimView[];
+}
+
+interface EntityView {
+  id: string;
+  title: string;
+  evidence: AxisView[];
+  hidden: string[];
+}
+
+/**
+ * Estimated positions on analytic axes. Each axis with evidence shows its value, its range
+ * and the claims behind it; axes without evidence are listed once, never drawn as a point.
+ */
 @Component({
   selector: 'app-positions-estimate',
+  imports: [KnowledgeContextDirective],
   templateUrl: './positions-estimate.component.html',
   styleUrl: './positions-estimate.component.scss',
 })
 export class PositionsEstimateComponent {
   readonly entities = input.required<readonly { id: string; title: string }[]>();
   readonly claims = input.required<readonly PositionClaim[]>();
+  /** Source records used by the claims, to show their titles next to each statement. */
+  readonly sources = input<readonly { id: string; title: string }[]>([]);
 
-  readonly rows = computed(() =>
-    this.entities().map((entity) => ({
-      id: entity.id,
-      title: entity.title,
-      axes: estimateEntity(this.claims(), entity.id),
-    })),
-  );
+  readonly rows = computed<EntityView[]>(() => {
+    const titles = new Map(this.sources().map((source) => [source.id, source.title]));
+    return this.entities().map((entity) => {
+      const axes = estimateEntity(this.claims(), entity.id);
+      const evidence = axes
+        .filter((axis) => axis.status !== 'insuficiente')
+        .map((axis) => ({
+          axis,
+          label: positionAxis(axis.axisId).label,
+          poles: this.poles(axis.axisId),
+          statusText: this.statusText(axis),
+          description: `${entity.title}, ${positionAxis(axis.axisId).label}: ${this.statusText(axis)}`,
+          claims: this.claims()
+            .filter((claim) => claim.entityId === entity.id && claim.axisId === axis.axisId)
+            .map((claim) => ({
+              id: claim.id,
+              statement: claim.statement,
+              meta: [
+                claim.classification,
+                `confiança ${claim.confidence}`,
+                `valor ${format(claim.value)}`,
+                claim.sourceIds.map((id) => titles.get(id) ?? id).join('; '),
+              ].join(' · '),
+            })),
+        }));
+      const hidden = axes
+        .filter((axis) => axis.status === 'insuficiente')
+        .map((axis) => positionAxis(axis.axisId).label);
+      return { id: entity.id, title: entity.title, evidence, hidden };
+    });
+  });
 
   readonly summary = computed(() => {
-    const pair = largestPairDifference(this.rows());
+    const entityRows = this.rows();
+    const pair = largestPairDifference(
+      entityRows.map((row) => ({ id: row.id, axes: estimateEntity(this.claims(), row.id) })),
+    );
     if (!pair) return null;
-    const titles = Object.fromEntries(this.entities().map((e) => [e.id, e.title]));
+    const titles = new Map(this.entities().map((entity) => [entity.id, entity.title]));
     return {
       axis: positionAxis(pair.axisId).label,
-      first: titles[pair.first],
-      second: titles[pair.second],
+      first: titles.get(pair.first),
+      second: titles.get(pair.second),
       difference: format(pair.difference),
     };
   });
-
-  axisLabel(id: PositionAxisId): string {
-    return positionAxis(id).label;
-  }
 
   poles(id: PositionAxisId): string {
     const axis = positionAxis(id);
@@ -62,10 +114,6 @@ export class PositionsEstimateComponent {
       case 'estimada':
         return `estimada em ${format(axis.value)}, intervalo de ${format(axis.low)} a ${format(axis.high)}, ${axis.claims} afirmações, ${axis.sources} fontes`;
     }
-  }
-
-  describe(title: string, axis: AxisEstimate): string {
-    return `${title}, ${this.axisLabel(axis.axisId)}: ${this.statusText(axis)}`;
   }
 }
 

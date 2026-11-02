@@ -103,3 +103,12 @@ O maior contraste estimado do bloco fica em revolução, entre Bernstein (0,76) 
 2. Escrever cada afirmação com citação conferida e classificação correta.
 3. Revisão humana antes de qualquer status diferente de `pending`.
 4. Decidir se o bloco deve ocultar eixos sem evidência por padrão, para não poluir a leitura.
+
+## Decisões de interface
+
+- **Eixos sem evidência não viram ponto.** Cada entidade mostra apenas os eixos com afirmações; os demais aparecem numa linha recolhida ("Sem evidência em N eixos"). Isso evita dezenas de linhas vazias num capítulo que já é denso.
+- **Evidência ao alcance do leitor.** Cada eixo abre suas afirmações, com a classificação, a confiança, o valor e o título da fonte. Quem quer conferir não precisa sair da página.
+- **Legenda colocada antes dos dados.** "Como ler estas estimativas" explica os quatro estados em texto, sem depender de cor.
+- **Entidade leva à ficha.** O nome da entidade abre a ficha contextual já usada no resto do ATLAS, com fontes e percurso, sem mudar de rota.
+- **Contraste resumido em uma frase.** O maior contraste aparece em linguagem simples, com a diferença numa escala de 0 a 2, e o aviso de que vale apenas para os dados disponíveis.
+- **Conferido em 375 e 1440 px.** Sem overflow horizontal, com alvos de toque de pelo menos 44 px nos controles de abertura.
