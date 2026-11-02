@@ -13,7 +13,7 @@
   margin: 0 0.5rem 0 0;
 }
 .theme-filter button {
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   padding: 0.4rem 0.8rem;
   border: 2px solid var(--color-ink);
   background: var(--color-canvas);
@@ -108,7 +108,7 @@
   padding: 0.25rem 0.75rem;
   background: var(--color-ink);
   color: var(--color-canvas);
-  font: 600 0.7rem/1.4 var(--font-mono);
+  font: 600 0.75rem/1.4 var(--font-mono);
   text-transform: uppercase;
 }
 .work-toggle {
@@ -174,7 +174,7 @@
   font: 0.75rem var(--font-mono);
 }
 .work-open {
-  min-height: 2.5rem;
+  min-height: 2.75rem;
   margin-top: 0.5rem;
   padding: 0.35rem 0.75rem;
   border: 2px solid var(--color-ink);

@@ -81,7 +81,7 @@
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
-.term-wrap:focus-within .term-preview {
+.term-wrap:has(.knowledge-term:focus-visible) .term-preview {
   display: block;
   opacity: 1;
   visibility: visible;
