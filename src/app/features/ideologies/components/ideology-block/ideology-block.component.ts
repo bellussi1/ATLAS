@@ -6,6 +6,10 @@ import type { Entity, Source } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
+import {
+  EraChartComponent,
+  type EraChartEpoch,
+} from '@ideologies/components/era-chart/era-chart.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
@@ -25,6 +29,7 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
     KnowledgeContextDirective,
     KnowledgeTextComponent,
     AtlasRevealDirective,
+    EraChartComponent,
   ],
   templateUrl: './ideology-block.component.html',
   styleUrls: ['./ideology-block.component.scss', './ideology-exploration.scss'],
@@ -67,6 +72,35 @@ export class IdeologyBlockComponent {
       this.visibleEdges()[0],
   );
   readonly edgeTypes = computed(() => [...new Set(this.edges().map((e) => e.type))]);
+  readonly eraEpochs = computed<EraChartEpoch[]>(() => {
+    const block = this.block();
+    if (block.type !== 'chronology') return [];
+    const items = this.dossier().page.chapters.flatMap((c) =>
+      c.blocks.flatMap((b) => (b.type === 'explorations' ? b.items : [])),
+    );
+    return block.epochs.flatMap((epoch) => {
+      const item = items.find((i) => i.id === epoch.itemId);
+      return item
+        ? [
+            {
+              id: item.id,
+              title: item.title,
+              kicker: item.kicker,
+              summary: item.summary,
+              start: epoch.start,
+              end: epoch.end,
+              context: this.explorationContext(item),
+            },
+          ]
+        : [];
+    });
+  });
+  readonly eraMarkers = computed(() => {
+    const block = this.block();
+    return block.type === 'chronology'
+      ? block.markerIds.flatMap((id) => this.entity(id) ?? [])
+      : [];
+  });
   readonly explorationItems = computed(() => {
     const block = this.block();
     return block.type === 'explorations' ? block.items : [];

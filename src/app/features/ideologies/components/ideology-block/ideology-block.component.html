@@ -1,4 +1,7 @@
 @switch (block().type) {
+  @case ('chronology') {
+    <app-era-chart [epochs]="eraEpochs()" [people]="entities()" [markers]="eraMarkers()" />
+  }
   @case ('argument') {
     <app-marx-atlas-page [inline]="true" />
   }

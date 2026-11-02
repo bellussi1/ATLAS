@@ -207,6 +207,64 @@
       "gap": "A periodização segue sínteses europeias. A história do marxismo na Ásia, na África e na América Latina exige bibliografia própria, ainda não incorporada a este recorte.",
       "blocks": [
         {
+          "type": "chronology",
+          "epochs": [
+            {
+              "itemId": "epoch-formation",
+              "start": 1840,
+              "end": 1848
+            },
+            {
+              "itemId": "epoch-first-international",
+              "start": 1864,
+              "end": 1876
+            },
+            {
+              "itemId": "epoch-second-international",
+              "start": 1889,
+              "end": 1914
+            },
+            {
+              "itemId": "epoch-1917",
+              "start": 1917,
+              "end": 1943
+            },
+            {
+              "itemId": "epoch-western",
+              "start": 1920,
+              "end": 1970
+            },
+            {
+              "itemId": "epoch-global",
+              "start": 1945,
+              "end": 1991
+            }
+          ],
+          "entityIds": [
+            "person-karl-marx",
+            "person-friedrich-engels",
+            "person-eduard-bernstein",
+            "person-karl-kautsky",
+            "person-vladimir-lenin",
+            "person-rosa-luxemburg",
+            "person-joseph-stalin",
+            "person-leon-trotsky",
+            "person-antonio-gramsci",
+            "person-mao-zedong",
+            "person-jose-carlos-mariategui",
+            "person-luiz-carlos-prestes",
+            "person-caio-prado-junior",
+            "person-florestan-fernandes"
+          ],
+          "markerIds": [
+            "work-communist-manifesto",
+            "work-capital-volume-i",
+            "event-paris-commune",
+            "institution-second-international",
+            "event-russian-revolution"
+          ]
+        },
+        {
           "type": "explorations",
           "mode": "principles",
           "items": [

@@ -70,6 +70,14 @@ export const pageBlockSchema = z.discriminatedUnion('type', [
     mode: z.enum(['documents', 'thinkers', 'concepts']),
   }),
   z.object({ type: z.literal('timeline'), entityIds: z.array(id) }),
+  z.object({
+    type: z.literal('chronology'),
+    epochs: z
+      .array(z.object({ itemId: id, start: z.number().int(), end: z.number().int() }))
+      .min(1),
+    entityIds: z.array(id),
+    markerIds: z.array(id),
+  }),
   z.object({ type: z.literal('graph'), edgeIds: z.array(id) }),
   z.object({ type: z.literal('argument'), topic: z.literal('smith-marx') }),
   z.object({ type: z.literal('sources'), sourceIds: z.array(id) }),
@@ -180,12 +188,26 @@ export function validateIdeologyDossier(
     requireIds([edge.from, edge.to], entities);
     requireIds(edge.sources, sources);
   }
+  const itemIds = new Set(
+    page.chapters.flatMap((c) =>
+      c.blocks.flatMap((b) => (b.type === 'explorations' ? b.items.map((i) => i.id) : [])),
+    ),
+  );
   for (const chapter of page.chapters) {
     requireIds(chapter.sourceIds, sources);
     for (const block of chapter.blocks) {
       if ('entityIds' in block) requireIds(block.entityIds, entities);
       if ('edgeIds' in block) requireIds(block.edgeIds, edges);
       if ('sourceIds' in block) requireIds(block.sourceIds, sources);
+      if (block.type === 'chronology') {
+        requireIds(block.markerIds, entities);
+        requireIds(
+          block.epochs.map((e) => e.itemId),
+          itemIds,
+        );
+        if (block.epochs.some((e) => e.end < e.start))
+          throw new Error('Época com datas invertidas.');
+      }
       const items =
         block.type === 'explorations'
           ? block.items

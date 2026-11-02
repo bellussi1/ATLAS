@@ -1,0 +1,118 @@
+<figure class="era-chart" appReveal aria-labelledby="era-chart-title">
+  <figcaption class="era-header">
+    <h3 id="era-chart-title">Escala do tempo</h3>
+    <p>
+      Escolha uma época para ver quem estava vivo e quais registros datados caem nela. Use as setas
+      do teclado para percorrer as épocas.
+    </p>
+  </figcaption>
+
+  <div class="epoch-picker" role="group" aria-label="Épocas">
+    @for (epoch of epochs(); track epoch.id; let i = $index) {
+      <button
+        type="button"
+        class="atlas-press"
+        [attr.data-tone]="i % 6"
+        [attr.aria-pressed]="selected().id === epoch.id"
+        [attr.tabindex]="selected().id === epoch.id ? 0 : -1"
+        (click)="select(epoch.id)"
+        (keydown)="step($event, i)"
+      >
+        <span class="picker-years">{{ epoch.start }}–{{ epoch.end }}</span>
+        <span class="picker-title">{{ epoch.title }}</span>
+      </button>
+    }
+  </div>
+
+  <div class="chart" aria-hidden="true">
+    <div class="plot">
+      <div class="axis">
+        @for (tick of ticks(); track tick) {
+          <span class="tick" [style.left]="x(tick)">{{ tick }}</span>
+        }
+      </div>
+      <div class="bands">
+        @for (epoch of epochs(); track epoch.id; let i = $index) {
+          <span
+            class="band"
+            [attr.data-tone]="i % 6"
+            [class.is-selected]="selected().id === epoch.id"
+            [style.left]="x(epoch.start)"
+            [style.width]="span(epoch.start, epoch.end)"
+            (click)="select(epoch.id)"
+          ></span>
+        }
+      </div>
+      <div
+        class="focus"
+        [style.left]="x(selected().start)"
+        [style.width]="span(selected().start, selected().end)"
+      ></div>
+      @for (mark of dated(); track mark.entity.id; let m = $index) {
+        <span
+          class="marker"
+          [class.is-on]="overlaps(mark.year, mark.year)"
+          [style.left]="x(mark.year)"
+          [style.--row]="m % 3"
+          ><span>{{ mark.year }} · {{ mark.entity.title }}</span></span
+        >
+      }
+      <ol class="lives">
+        @for (life of lives(); track life.entity.id) {
+          <li [class.is-on]="overlaps(life.start, life.end)">
+            <span class="life-name">{{ life.entity.title }}</span>
+            <span class="life-track">
+              <span
+                class="life-bar"
+                [style.left]="x(life.start)"
+                [style.width]="span(life.start, life.end)"
+                ><span>{{ life.start }}–{{ life.end }}</span></span
+              >
+            </span>
+          </li>
+        }
+      </ol>
+    </div>
+  </div>
+
+  <section
+    class="epoch-detail"
+    aria-live="polite"
+    [attr.aria-label]="'Época selecionada: ' + selected().title"
+  >
+    <p class="detail-kicker">{{ selected().kicker }}</p>
+    <h4>{{ selected().title }}</h4>
+    <p class="detail-summary">{{ selected().summary }}</p>
+    <button
+      type="button"
+      class="detail-open atlas-press"
+      [appKnowledgeContext]="{ record: selected().context }"
+    >
+      Abrir fundamento e fontes
+      <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+    </button>
+    <h5>
+      Vivos durante a época <span>{{ alive().length }}</span>
+    </h5>
+    <ul class="alive-list">
+      @for (life of alive(); track life.entity.id) {
+        <li>
+          <button
+            type="button"
+            class="atlas-press"
+            [appKnowledgeContext]="{ entityId: life.entity.id }"
+          >
+            {{ life.entity.title }} <span>{{ life.start }}–{{ life.end }}</span>
+          </button>
+        </li>
+      } @empty {
+        <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>
+      }
+    </ul>
+  </section>
+
+  <p class="era-note">
+    Barras mostram nascimento e morte registrados, não o período de atividade nem influência. As
+    datas das épocas são aproximações didáticas.
+  </p>
+</figure>
