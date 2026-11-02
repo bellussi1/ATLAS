@@ -8,31 +8,10 @@
   border-bottom: 3px solid var(--ink);
   object-fit: cover;
   object-position: 50% 22%;
-  filter: grayscale(1) contrast(1.05);
-  transition: filter var(--motion-standard) var(--ease-out);
-}
-.exploration-card:focus-visible .card-image {
-  filter: none;
-}
-@media (hover: hover) {
-  .exploration-card:hover .card-image {
-    filter: none;
-  }
 }
 .schools .card-image {
   grid-column: 1 / -1;
   width: 100%;
   height: 8rem;
   margin: 0 0 0.5rem;
-}
-.entity-entry img {
-  transition: filter var(--motion-standard) var(--ease-out);
-}
-.entity-entry button:focus-visible img {
-  filter: none;
-}
-@media (hover: hover) {
-  .entity-entry button:hover img {
-    filter: none;
-  }
 }

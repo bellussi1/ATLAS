@@ -174,10 +174,11 @@ describe('Liberalism atlas snapshot', () => {
       );
       expect(firstItem?.querySelector('a[href]')).not.toBeNull();
     }
+    // The text list is a disclosure: closed on wide screens, open only where the canvas gives way to it.
     expect(
       (fixture.nativeElement as HTMLElement).querySelector<HTMLDetailsElement>('.text-network')
         ?.open,
-    ).toBe(true);
+    ).toBe(false);
   });
 
   it('provides dated people and events in chronological periods that step one record at a time', () => {

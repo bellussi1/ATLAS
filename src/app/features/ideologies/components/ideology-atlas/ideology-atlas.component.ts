@@ -1,4 +1,14 @@
-import { Component, computed, inject, input, linkedSignal, signal, viewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  input,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import type { Entity, Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
@@ -57,6 +67,8 @@ export class IdeologyAtlasComponent {
   readonly openingSubtitle = input('Muitas entradas.');
   readonly embedded = input(false);
   readonly continuous = input(false);
+  /** Below 672px the canvas gives way to the text list, which then opens by default. */
+  readonly textAlternative = signal(false);
   readonly atlas = computed(
     () => this.graph.atlases.find((item) => item.id === this.atlasId()) ?? this.graph.atlases[0]!,
   );
@@ -176,6 +188,16 @@ export class IdeologyAtlasComponent {
   readonly timelineIndex = computed(() =>
     this.timelineEntities().findIndex((entity) => entity.id === this.timelineSelected()?.id),
   );
+
+  constructor() {
+    const view = inject(DOCUMENT).defaultView;
+    if (!view?.matchMedia) return;
+    const narrow = view.matchMedia('(max-width: 42rem)');
+    const sync = () => this.textAlternative.set(narrow.matches);
+    sync();
+    narrow.addEventListener('change', sync);
+    inject(DestroyRef).onDestroy(() => narrow.removeEventListener('change', sync));
+  }
 
   openEntity(entityId: string): void {
     if (entityId === this.selectedId()) return;

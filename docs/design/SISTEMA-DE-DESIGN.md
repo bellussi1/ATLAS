@@ -99,9 +99,9 @@ A direção A está consolidada. Os índices editoriais e o showroom permanecem;
 Validação da consolidação A: busca enviada por Enter no Chrome em 390 px abriu /conhecimento?q=evidencia e retornou cinco registros reais. A home e as três telas foram medidas em 320 px sem overflow horizontal. O nó Fonte foi ativado por Enter, atualizou a seleção e o contexto, mantendo contorno de foco de 3 px. Movimento reduzido foi emulado e reconhecido. A home foi capturada em 1440×1000 e 390×844; não foram reproduzidas as imagens de referência. A revisão não incluiu leitor de tela nem auditoria WCAG integral.
 
 
-### Rede de evidências compartilhada
+### Rede de evidências (retirada)
 
-AtlasEvidenceNetworkComponent, em src/app/shared/evidence-network.ts, é usado na home e em Relações. A disposição espacial evidencia as ligações derivadas de entityId/sourceIds; o destaque vermelho acompanha a seleção, também comunicada por aria-pressed. O botão Ver lista oferece os mesmos registros sem distribuição espacial. Filtros recalculam as conexões visíveis e selecionam um registro da categoria. O foco permanece no controle acionado; o painel anuncia seu contexto sem capturar foco. As transições de cor reutilizam --motion-fast e a regra global de movimento reduzido. Nenhuma biblioteca foi adicionada.
+O componente de rede de evidências deixou de ser publicado com a rota `/rede`, que hoje redireciona para `/conhecimento`. Ele foi removido do código. Uma nova rede, se houver, deve ser desenhada como mapa relacional com lista equivalente operável por teclado (AUD-36).
 
 
 Verificação da adaptação Stitch: home conferida em 1440, 390 e 320 CSS px; em 320 px a largura do documento permaneceu em 320 px. O modo de lista foi acionado por Enter e manteve foco de 3 px, três registros e ausência de overflow. Movimento reduzido foi emulado e reconhecido. Testes cobrem a seleção na home, mudança para lista, filtro com acento (Afirmação), destinos e regressões de navegação. Sem avaliação com leitor de tela nesta entrega.

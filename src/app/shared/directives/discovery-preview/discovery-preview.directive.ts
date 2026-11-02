@@ -15,6 +15,7 @@ export class AtlasDiscoveryPreviewDirective {
   open(event: MouseEvent): void {
     this.dialog.open(AtlasDiscoveryPreviewComponent, {
       data: this.target(),
+      ariaModal: true,
       ariaLabelledBy: 'discovery-preview-title',
       autoFocus: 'first-tabbable',
       restoreFocus: event.currentTarget as HTMLElement,

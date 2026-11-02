@@ -2,6 +2,7 @@ import { inject, Injector } from '@angular/core';
 import { type ResolveFn } from '@angular/router';
 import { getEditorialType } from '@core/content/editorial/content-types';
 import { findEditorialEntry } from '@core/content/editorial/editorial-entries';
+import { catalogueForKind, explorerCatalogues } from '@core/content/queries/knowledge-explorer';
 import { localizedEntity } from '@core/content/queries/localized-content';
 import { firstValueFrom } from 'rxjs';
 
@@ -13,12 +14,17 @@ export const editorialEntryTitleResolver: ResolveFn<string> = (route) => {
   );
 };
 
-async function knowledgeEntity(slug: string | null, locale: string | null) {
+async function loadedRepository() {
   const injector = inject(Injector);
   const { ContentRepository } =
     await import('@core/content/repositories/content-repository.service');
   const repository = injector.get(ContentRepository);
   await firstValueFrom(repository.loadKnowledgeGraph());
+  return repository;
+}
+
+async function knowledgeEntity(slug: string | null, locale: string | null) {
+  const repository = await loadedRepository();
   const entity = repository.findEntityBySlug(slug);
   return entity
     ? localizedEntity(
@@ -42,3 +48,17 @@ export const knowledgeEntryBreadcrumbResolver: ResolveFn<string> = async (route)
 export const knowledgeEntryDescriptionResolver: ResolveFn<string> = async (route) =>
   (await knowledgeEntity(route.paramMap.get('slug'), route.queryParamMap.get('idioma')))?.summary ??
   'Este endereço não corresponde a um verbete cadastrado no ATLAS.';
+
+/** The catalogue that lists the record, as a breadcrumb crumb; `undefined` when the record is unknown. */
+export const knowledgeEntryCatalogueResolver: ResolveFn<
+  { label: string; url: string } | undefined
+> = async (route) => {
+  const repository = await loadedRepository();
+  const entity = repository.findEntityBySlug(route.paramMap.get('slug'));
+  const kind = entity
+    ? repository.discoveryIndex.find((item) => item.id === entity.id)?.kind
+    : undefined;
+  if (!kind) return undefined;
+  const catalogue = explorerCatalogues.find((item) => item.path === catalogueForKind(kind));
+  return catalogue ? { label: catalogue.title, url: `/${catalogue.path}` } : undefined;
+};

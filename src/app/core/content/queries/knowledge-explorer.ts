@@ -115,26 +115,32 @@ export function explorerContentGroup(kind: string): ExplorerContentGroup {
 export const normalizeExplorerQuery = (value: string) =>
   value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLocaleLowerCase('pt-BR');
 
+/** Catalogue path to the record kind it lists. */
+const catalogueKinds: Record<string, string> = {
+  pessoas: 'pessoa',
+  obras: 'work',
+  ideologias: 'ideology',
+  fontes: 'fonte',
+  paises: 'country',
+  regimes: 'regime',
+  partidos: 'party',
+  instituicoes: 'institution',
+  acontecimentos: 'evento',
+  conceitos: 'concept',
+  lugares: 'place',
+};
+
+/** The catalogue that lists a record of this kind; records without one stay in the general index. */
+export function catalogueForKind(kind: string): string {
+  return Object.keys(catalogueKinds).find((path) => catalogueKinds[path] === kind) ?? 'entidades';
+}
+
 export function explorerEntries(
   index: readonly DiscoveryIndexEntry[],
   filter: { catalogue?: string; query?: string; kind?: string; state?: string },
 ): DiscoveryIndexEntry[] {
   const catalogue = filter.catalogue ?? 'conhecimento';
-  const kind = (
-    {
-      pessoas: 'pessoa',
-      obras: 'work',
-      ideologias: 'ideology',
-      fontes: 'fonte',
-      paises: 'country',
-      regimes: 'regime',
-      partidos: 'party',
-      instituicoes: 'institution',
-      acontecimentos: 'evento',
-      conceitos: 'concept',
-      lugares: 'place',
-    } as Record<string, string>
-  )[catalogue];
+  const kind = catalogueKinds[catalogue];
   const terms = normalizeExplorerQuery(filter.query ?? '')
     .trim()
     .split(/\s+/)

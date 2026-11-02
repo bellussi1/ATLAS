@@ -34,6 +34,9 @@ export class BreadcrumbsComponent {
     while (route) {
       const segments = route.url.map((segment) => segment.path).filter(Boolean);
       if (segments.length) path += `/${segments.join('/')}`;
+      // A route may name the crumb above its own, such as the catalogue that lists a record.
+      const parent = route.data['breadcrumbParent'] as Omit<Breadcrumb, 'current'> | undefined;
+      if (parent) result.push({ ...parent, current: false });
       const label = route.data['breadcrumb'];
       const previous = result[result.length - 1];
       if (

@@ -10,12 +10,15 @@ import { KnowledgeContextComponent } from '@shared/ui/knowledge-context/knowledg
   host: {
     '[attr.aria-haspopup]': '"dialog"',
     '[attr.aria-expanded]': 'expanded()',
+    '[attr.aria-controls]': 'controls()',
     '[class.is-expanded]': 'expanded()',
   },
 })
 export class KnowledgeContextDirective {
   readonly request = input.required<ContextRequest>({ alias: 'appKnowledgeContext' });
   readonly expanded = signal(false);
+  /** The open dialog, named by the trigger while it is open. */
+  readonly controls = signal<string | null>(null);
   private readonly dialog = inject(Dialog);
   private readonly repository = inject(ContentRepository);
   @HostListener('click', ['$event'])
@@ -26,6 +29,7 @@ export class KnowledgeContextDirective {
     this.expanded.set(true);
     const ref = this.dialog.open(KnowledgeContextComponent, {
       data: record,
+      ariaModal: true,
       ariaLabelledBy: 'knowledge-context-title',
       autoFocus: 'first-tabbable',
       restoreFocus: event.currentTarget as HTMLElement,
@@ -33,6 +37,10 @@ export class KnowledgeContextDirective {
       height: 'min(44rem, calc(100dvh - 2rem))',
       panelClass: event.detail ? 'atlas-context-panel' : 'atlas-context-panel--instant',
     });
-    ref.closed.subscribe(() => this.expanded.set(false));
+    this.controls.set(ref.id);
+    ref.closed.subscribe(() => {
+      this.expanded.set(false);
+      this.controls.set(null);
+    });
   }
 }

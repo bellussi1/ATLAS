@@ -4,6 +4,7 @@ import { knowledgeContentResolver } from '@core/routing/knowledge-content.resolv
 import {
   editorialEntryTitleResolver,
   knowledgeEntryBreadcrumbResolver,
+  knowledgeEntryCatalogueResolver,
   knowledgeEntryDescriptionResolver,
   knowledgeEntryTitleResolver,
 } from '@core/routing/route-resolvers';
@@ -31,6 +32,7 @@ export const explorationRoutes: Routes = [
     resolve: {
       knowledge: knowledgeContentResolver,
       breadcrumb: knowledgeEntryBreadcrumbResolver,
+      breadcrumbParent: knowledgeEntryCatalogueResolver,
       metaDescription: knowledgeEntryDescriptionResolver,
     },
     loadComponent: () =>
