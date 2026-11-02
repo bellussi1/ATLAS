@@ -126,7 +126,8 @@ export async function runIngestion({
 }) {
   if (!['capture', 'offline'].includes(mode))
     throw Error('Escolha captura explícita ou modo offline.');
-  if (!['preserve', 'refresh'].includes(mediaMode)) throw Error('Política de mídia inválida.');
+  if (!['preserve', 'refresh', 'remote'].includes(mediaMode))
+    throw Error('Política de mídia inválida.');
   const archiveRoot = resolve(archiveDir);
   const outputRelative = relative(archiveRoot, resolve(outputPath));
   if (

@@ -25,7 +25,7 @@ Also read `docs/architecture/ARCHITECTURE.md` before creating or moving code, an
 | `npm run format` | Prettier write |
 | `npm run typecheck` | `ngc` app check plus `tsc` for specs |
 | `npm run check:links` / `npm run preview` | Link check / serve the built output |
-| `npm run ingest:marxism`, `ingest:liberalism`, `ingest:verify` | Regenerate and verify the Wikimedia snapshots. The UI reads only local snapshots. |
+| `npm run ingest:marxism`, `ingest:liberalism`, `ingest:verify` | Regenerate and verify the Wikimedia snapshots. The UI reads metadata from local snapshots; images may load from Wikimedia (`--media remote`). |
 | `npm run editorial:apply` | Apply an editorial edition to content |
 
 A failing `format:check` causes `lint` to fail. Run `npm run format` before linting.

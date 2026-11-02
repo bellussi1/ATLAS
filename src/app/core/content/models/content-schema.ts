@@ -212,7 +212,11 @@ export const assetLicenseSchema = z
   .object({
     id: identifier,
     entityId: identifier.optional(),
-    assetPath: z.string().trim().min(1),
+    /** Local path or a Commons thumbnail served by Wikimedia (hybrid media). */
+    assetPath: z
+      .string()
+      .trim()
+      .regex(/^(?:\/|https:\/\/(?:upload|thumb)\.wikimedia\.org\/)/),
     sourceUrl: z.url({ protocol: /^https?$/ }).optional(),
     creator: z.string().trim().min(1).nullable(),
     license: z.string().trim().min(1).nullable(),

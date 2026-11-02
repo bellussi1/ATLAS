@@ -24,8 +24,8 @@ export async function main(args = process.argv.slice(2)) {
     throw Error(
       'Use --capture <diretório novo> OU --offline <diretório capturado>. Rede nunca é implícita.',
     );
-  if (values.media && !['preserve', 'refresh'].includes(values.media))
-    throw Error('Use --media preserve ou --media refresh.');
+  if (values.media && !['preserve', 'refresh', 'remote'].includes(values.media))
+    throw Error('Use --media preserve, refresh ou remote.');
   if (values.offline && (values.input || values.media))
     throw Error('No modo offline, entrada e política de mídia vêm exclusivamente do manifest.');
   const result = await runIngestion({

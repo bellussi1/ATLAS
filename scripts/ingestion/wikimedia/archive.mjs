@@ -20,7 +20,7 @@ const manifestSchema = z.object({
   pipelineVersion: z.literal(1),
   collectionKey: z.string().regex(/^[a-z][a-z0-9-]*$/),
   capturedAt: z.iso.date(),
-  mediaMode: z.enum(['preserve', 'refresh']),
+  mediaMode: z.enum(['preserve', 'refresh', 'remote']),
   config: configSchema,
   configHash: hash,
   baselineHash: hash,

@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "pipelineVersion": 1,
+  "collectionKey": "liberalism",
+  "capturedAt": "2026-11-02",
+  "mediaMode": "remote",
+  "config": {
+    "id": "atlas-liberalism",
+    "slug": "atlas-liberalismo",
+    "title": "Atlas do Liberalismo",
+    "description": "Rede exploratória de pessoas, correntes e acontecimentos ligados ao liberalismo; dados enciclopédicos importados aguardam revisão editorial humana.",
+    "mediaDirectory": "liberalism",
+    "entities": [
+      [
+        "ideology-liberalism",
+        "liberalism",
+        "Liberalism",
+        "ideology",
+        "Q6216"
+      ],
+      [
+        "person-john-locke",
+        "John Locke",
+        "John Locke",
+        "person",
+        "Q9353"
+      ],
+      [
+        "person-adam-smith",
+        "Adam Smith",
+        "Adam Smith",
+        "person",
+        "Q9381"
+      ],
+      [
+        "person-john-stuart-mill",
+        "John Stuart Mill",
+        "John Stuart Mill",
+        "person",
+        "Q50020"
+      ],
+      [
+        "person-montesquieu",
+        "Charles-Louis de Secondat",
+        "Montesquieu",
+        "person",
+        "Q15975"
+      ],
+      [
+        "person-alexis-de-tocqueville",
+        "Alexis de Tocqueville",
+        "Alexis de Tocqueville",
+        "person",
+        "Q140694"
+      ],
+      [
+        "person-friedrich-hayek",
+        "Friedrich Hayek",
+        "Friedrich Hayek",
+        "person",
+        "Q1325"
+      ],
+      [
+        "person-isaiah-berlin",
+        "Isaiah Berlin",
+        "Isaiah Berlin",
+        "person",
+        "Q205162"
+      ],
+      [
+        "ideology-classical-liberalism",
+        "classical liberalism",
+        "Classical liberalism",
+        "ideology",
+        "Q794394"
+      ],
+      [
+        "ideology-social-liberalism",
+        "social liberalism",
+        "Social liberalism",
+        "ideology",
+        "Q201712"
+      ],
+      [
+        "ideology-neoliberalism",
+        "neoliberalism",
+        "Neoliberalism",
+        "ideology",
+        "Q162719"
+      ],
+      [
+        "event-glorious-revolution",
+        "Glorious Revolution",
+        "Glorious Revolution",
+        "event",
+        "Q189508"
+      ],
+      [
+        "event-american-revolution",
+        "American Revolution",
+        "American Revolution",
+        "event",
+        "Q192769"
+      ],
+      [
+        "event-french-revolution",
+        "French Revolution",
+        "French Revolution",
+        "event",
+        "Q6534"
+      ]
+    ]
+  },
+  "configHash": "25c34825ade0f142deebe98f60023c1fd86bf96d4be8660d50e55a90e556c1e3",
+  "baselineHash": "4bbe369fd697a378ed985cde5b74039c6217508896e8add974cbef6a12c13ac0",
+  "snapshotHash": "fe94f3489211db78876c4bc1ad6250d5135d78ac886027f5264125c612c736a5",
+  "requests": [
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3A1846+-+Anti-Corn+Law+League+Meeting.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "703f070926413f96ff39b55ca1fc9cb1ec9b3d227d132c37cc2985e261e1f8ea",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AAdamSmith.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "89ac3ca66cc5b532a824d15b904a54318efea6b1758eb77a631875c7d94dab35",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AAlexis+de+tocqueville+cropped.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "67049cf040463aeaca2532944cd42a9c55693435325b9d10b83866bf708c0459",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ADeclaration+of+Independence+%281819%29%2C+by+John+Trumbull.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "825c41b6f9a017aad1627d7cdcc050953d8a57b0fa7000a750c590237bea8e31",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ADeclaration+of+the+Rights+of+Man+and+of+the+Citizen+in+1789.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "d6c33c6f11a4e66731de1d04e8411d85bbaecefc9dd5674e8f5cb3397f197cfd",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AEffectOfTariff.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "aebcc47c3a5411dfe813f16bbf42d65e34d7c4e6f618a579583d50d8cd08f76e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFriedrich+Hayek+portrait.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "25e174927d789e35e0f7d4cedde0c1fed727197f88b31e5c1151c19a6ae59a0d",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AIsaiahBerlin1983.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "303ccd6f91d2c960bda630fcdea5ad6c2962ded369fdd76a25d40a7f06c2a1a6",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AJohn+Stuart+Mill+by+London+Stereoscopic+Company%2C+c1870.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "9300ee527e423371d2efe996b9ff2784b1c0adf3b61d767aa254d27380fabdac",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AJohnLocke.png&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "29d561bcc8175a28942d23a2b5b0fabf178127f2b34ba1c750d204f8ab1cc2b4",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ALouisXVIExecutionBig.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "65b4fadf209326292ee174dec333bab21c3a838aa39fe50fc35d8407e63297cd",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AMontesquieu+1.png&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=1000",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "e547d8d00b822d736b1d1e46da8f52208dd553a21189262da994001b82984512",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Adam+Smith",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "1929043dbddd5e10de1e43140880afc654f47ed01a23d89d5ae37c5e030926b7",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Alexis+de+Tocqueville",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "cd33f44ccf6d7b677b41798ce5e12beee028c09085b73647bafc5675700f09a6",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Friedrich+Hayek",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "b0a085fa4411dac1423fa5d8c46420ce1811bd6859501597a4c200ef1c85eb8c",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Isaiah+Berlin",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "6780e3632688226b8326133c4b8bc3e77348798c8d82b4ca17e9de3eaf506ded",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=John+Locke",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "e829cac0d33c51a1cbbcc5c773ee3fcdcc99dbb97246f49af3e09dd81ab5d49a",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=John+Stuart+Mill",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "c97a58a10c29209e6cb20a862c02237698f656b6a600a0e3d0468b22c95bba27",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Liberalismo",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "3100406ede85f899799a9ed2ca78b6506073a31bddd8a01e57d091aed5f7ba93",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Liberalismo+cl%C3%A1ssico",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "e18915f571f2cca04b10958c5d645002c9a5b0410bf07d58fe70feabe2774e06",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Liberalismo+social",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "d2fa50c5962a06537b5fd873b6164270ba070a57920bd54082598c89cbc8b7d8",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Montesquieu",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "68c4ed1e652fa4af081725ad4e1b5df7b05401c15aab44e6cb846cad432cf16d",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Neoliberalismo",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "e995f2d20ca808256dd5989e3fb7dcb71da06d910e6105e63c0ba0ac8b0d88aa",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Revolu%C3%A7%C3%A3o+Americana",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "3ffae30d000be58b0d6291ace017b1fca7a30481253074a654012c37ff50a1af",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Revolu%C3%A7%C3%A3o+Francesa",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "9a1af752ec814d0a2ef9d814cb5231540fda6a10fc3448f8f4e3c20adb5e09b9",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=categories%7Clinks&cllimit=20&clshow=%21hidden&pllimit=60&titles=Revolu%C3%A7%C3%A3o+Gloriosa",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "90396e5ddb3ed50fc559258d56b406cce490fa15b1c5d41119c6e0e1892f5004",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q192769%7CQ6534%7CQ189508%7CQ794394%7CQ6216%7CQ162719%7CQ201712%7CQ9381%7CQ140694%7CQ1325%7CQ205162%7CQ9353%7CQ50020%7CQ15975&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=en%7Cpt&sitefilter=enwiki%7Cptwiki&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "sha256": "41eb80cbbe946b9efe7a6a28e567726567ee100b3437dad587ffa364f604ef04",
+      "license": "CC0 1.0"
+    }
+  ]
+}

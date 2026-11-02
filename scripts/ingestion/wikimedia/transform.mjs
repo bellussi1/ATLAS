@@ -2,6 +2,32 @@ import { digest } from './archive.mjs';
 import { claimItem, statementReferences, datesFor, entityType } from './normalize.mjs';
 import { reconcileRequests, titleIndex, uniqueLabels, mergeRecords } from './reconcile.mjs';
 
+const ownerPriority = ['person', 'work', 'event', 'institution', 'place', 'concept', 'ideology'];
+
+/**
+ * In remote mode a Commons file becomes one URL, and asset paths must be unique. When several
+ * records cite the same file (a portrait reused by an ideology), the most specific record owns it.
+ */
+export function remoteMediaOwners(records) {
+  const rank = (kind) => {
+    const index = ownerPriority.indexOf(kind);
+    return index === -1 ? ownerPriority.length : index;
+  };
+  const owners = new Map();
+  for (const record of records) {
+    const file = record.item.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
+    if (!file) continue;
+    const current = records.find((r) => r.entity.id === owners.get(file));
+    const better =
+      !current ||
+      rank(record.entity.kind) < rank(current.entity.kind) ||
+      (rank(record.entity.kind) === rank(current.entity.kind) &&
+        record.entity.id < current.entity.id);
+    if (better) owners.set(file, record.entity.id);
+  }
+  return owners;
+}
+
 export async function transformGraph({
   graph,
   config,
@@ -147,6 +173,7 @@ export async function transformGraph({
   const evidences = [];
   const assetLicenses = [];
   const relations = [];
+  const mediaOwners = remoteMediaOwners(records);
   for (const record of records) {
     const shortId = record.entity.id;
     sources.push({
@@ -164,7 +191,12 @@ export async function transformGraph({
       publicationDate: null,
     });
     const imageName = record.item.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
-    if (imageName && mediaMode === 'refresh') {
+    // remote: keep licence metadata and the Commons thumbnail URL; no bytes enter the repository.
+    if (
+      imageName &&
+      (mediaMode === 'refresh' ||
+        (mediaMode === 'remote' && mediaOwners.get(imageName) === record.entity.id))
+    ) {
       const commonsUrl = new URL('https://commons.wikimedia.org/w/api.php');
       commonsUrl.search = new URLSearchParams({
         action: 'query',
@@ -202,13 +234,17 @@ export async function transformGraph({
         const extension =
           new URL(info.thumburl).pathname.match(/\.(jpe?g|png|webp|gif)$/i)?.[1]?.toLowerCase() ??
           'jpg';
-        const bytes = await getImage(info.thumburl, imageName);
-        const filename = `${record.entity.id}-${digest(bytes).slice(0, 16)}.${extension}`;
-        mediaWrites.push({ assetPath: `/assets/${config.mediaDirectory}/${filename}`, bytes });
+        let assetPath = info.thumburl;
+        if (mediaMode === 'refresh') {
+          const bytes = await getImage(info.thumburl, imageName);
+          const filename = `${record.entity.id}-${digest(bytes).slice(0, 16)}.${extension}`;
+          assetPath = `/assets/${config.mediaDirectory}/${filename}`;
+          mediaWrites.push({ assetPath, bytes });
+        }
         assetLicenses.push({
           id: `${atlasKey}-asset-${shortId}`,
           entityId: record.entity.id,
-          assetPath: `/assets/${config.mediaDirectory}/${filename}`,
+          assetPath,
           sourceUrl: info.url,
           creator,
           license,

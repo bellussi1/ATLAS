@@ -25,6 +25,8 @@ Após a fase 2, sem `--output`, o destino é `src/content/knowledge/manifest.jso
 
 `--media preserve` é o padrão: mantém imagens/licenças existentes e não solicita novas mídias. `--media refresh` captura também respostas Commons e bytes das imagens cuja licença é aceita pelo pipeline. Falha de download aborta a captura inteira; não produz um snapshot aparentemente completo. Licença não autorizada não aciona download. Os arquivos novos usam nome com hash; imagens existentes não são sobrescritas. As capturas iniciais versionadas usam **preserve**; mídias anteriores continuam versionadas em `public`.
 
+`--media remote` é o modo usado desde 02/11/2026: captura as respostas Commons e aplica o mesmo filtro de licença, mas grava apenas a URL da miniatura (`upload.wikimedia.org` ou `thumb.wikimedia.org`) em `assetPath`, com autor, licença, página do arquivo e atribuição. Nenhum byte de imagem entra no repositório nem no arquivo de captura. Quando vários registros citam o mesmo arquivo Commons, `remoteMediaOwners` atribui a imagem ao registro mais específico (pessoa, obra, evento… antes de conceito e ideologia), porque caminhos de mídia são únicos no grafo. Arquivos em domínio público, que não expõem URL de licença, usam a página do arquivo como referência. A CSP em `public/_headers` libera esses dois hosts em `img-src`; a UI continua sem consultar APIs Wikimedia.
+
 `--output` escolhe o destino do JSON; em refresh, novas mídias autorizadas são instaladas em `public/assets`. Para isolar também a mídia numa execução programática, a API `runIngestion` aceita `mediaRoot`, como nos testes.
 
 ## Responsabilidades
