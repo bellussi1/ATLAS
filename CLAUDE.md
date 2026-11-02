@@ -8,6 +8,13 @@ The project rules, architecture, and editorial and design constraints live in `A
 
 Also read `docs/architecture/ARCHITECTURE.md` before creating or moving code, and `docs/design/PAGE_STANDARD.md` for ideology/tradition pages.
 
+## Economia de contexto
+
+- Busca ampla (muitos arquivos ou diretórios) vai para um subagente `Explore`; traga só o resumo.
+- Leia arquivos grandes por trecho (`offset`/`limit`) e use `head_limit` no Grep.
+- Não repita leituras de arquivos já lidos na mesma sessão.
+- Ao mudar de assunto, sugira uma nova sessão em vez de continuar a atual.
+
 ## Commands (Node 24 / npm 11)
 
 `start`, `build`, `test`, `lint`, `typecheck` and `watch` all run `npm run content:build` first through `pre*` hooks. That step compiles `src/content` (graph, translations, manifest and hashes) into the generated assets the app loads. Run it yourself after editing content if you are not going through one of those scripts.
