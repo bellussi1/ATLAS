@@ -55,6 +55,7 @@
   margin-bottom: 1rem;
 }
 .stage-marker {
+  position: relative;
   grid-row: span 2;
   display: grid;
   place-items: center;
@@ -92,7 +93,6 @@
   list-style: none;
 }
 .work {
-  padding: 0.9rem 1rem;
   border: 3px solid var(--color-ink);
   background: var(--color-surface-raised);
   transition: opacity var(--motion-standard) var(--ease-out);
@@ -100,24 +100,78 @@
 .work.is-dimmed {
   opacity: 0.35;
 }
+.work.is-first {
+  box-shadow: 0.35rem 0.35rem 0 var(--color-accent);
+}
+.first-step {
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  font: 600 0.7rem/1.4 var(--font-mono);
+  text-transform: uppercase;
+}
+.work-toggle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.1rem 0.5rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.6rem 0.75rem;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  text-align: left;
+  cursor: pointer;
+}
+.work-toggle > span:not(.work-cue) {
+  grid-column: 1;
+}
+.work-toggle:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: -3px;
+}
+.work-cue {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  align-self: center;
+  color: var(--color-accent);
+  font: 700 1.3rem/1 var(--font-sans);
+}
 .work-meta,
 .work-edition {
   margin: 0;
   color: var(--color-ink-muted);
   font: 0.75rem/1.4 var(--font-mono);
 }
-.work h4 {
-  margin: 0.3rem 0 0.1rem;
-  font: 700 1.1rem/1.2 var(--font-serif);
+.work-kind {
+  margin-right: 0.35rem;
+  padding: 0 0.3rem;
+  border: 1px solid currentColor;
+  text-transform: uppercase;
+}
+.work-kind[data-kind='primária'] {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+}
+.work-title {
+  font: 700 1.05rem/1.2 var(--font-serif);
 }
 .work-author {
-  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  font-size: 0.9rem;
+}
+.work-detail {
+  padding: 0 0.75rem 0.75rem;
 }
 .work-why {
   margin: 0 0 0.5rem;
   font: 0.95rem/1.5 var(--font-serif);
+}
+.filter-count {
+  margin-left: auto;
+  color: var(--color-ink-muted);
+  font: 0.75rem var(--font-mono);
 }
 .work-open {
   min-height: 2.5rem;
@@ -136,8 +190,19 @@
 }
 @media (hover: hover) and (pointer: fine) {
   .theme-filter button[aria-pressed='false']:hover,
+  .work-toggle:hover,
   .work-open:hover {
     background: var(--color-surface-subtle);
+  }
+}
+/* Desktop: the trail runs through the markers, so stage text sits below them. */
+@media (min-width: 761px) {
+  .stage header {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .stage-marker {
+    grid-row: auto;
   }
 }
 @media (max-width: 760px) {
@@ -151,5 +216,10 @@
     right: auto;
     border-top: 0;
     border-left: 4px dashed var(--color-ink);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work {
+    transition: none;
   }
 }

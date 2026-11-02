@@ -887,6 +887,7 @@
               "level": "introdutório",
               "theme": "História e política",
               "why": "Curto e direto: apresenta a luta de classes e o programa político de 1848.",
+              "kind": "primária",
               "entityId": "work-communist-manifesto"
             },
             {
@@ -897,6 +898,7 @@
               "level": "introdutório",
               "theme": "Economia",
               "why": "Introdução acessível às ideias de salário, capital e exploração.",
+              "kind": "primária",
               "entityId": null
             },
             {
@@ -907,6 +909,7 @@
               "level": "introdutório",
               "theme": "Teoria",
               "why": "Síntese de divulgação sobre materialismo histórico e crítica aos socialistas anteriores.",
+              "kind": "primária",
               "entityId": null
             },
             {
@@ -917,6 +920,7 @@
               "level": "introdutório",
               "theme": "Panorama",
               "why": "Panorama breve e crítico da obra de Marx, escrito por um filósofo não marxista.",
+              "kind": "introdução",
               "entityId": null
             },
             {
@@ -927,6 +931,7 @@
               "level": "intermediário",
               "theme": "Economia",
               "why": "Ponte entre os textos curtos e O capital: valor, salário e lucro em linguagem falada.",
+              "kind": "primária",
               "entityId": null
             },
             {
@@ -937,6 +942,7 @@
               "level": "intermediário",
               "theme": "História e política",
               "why": "Análise de conjuntura sobre classes, Estado e o golpe de 1851 na França.",
+              "kind": "primária",
               "entityId": null
             },
             {
@@ -947,6 +953,7 @@
               "level": "intermediário",
               "theme": "Debates",
               "why": "A resposta clássica a Bernstein sobre o caminho para o socialismo.",
+              "kind": "primária",
               "entityId": "person-rosa-luxemburg"
             },
             {
@@ -957,6 +964,7 @@
               "level": "intermediário",
               "theme": "Estado",
               "why": "A leitura leninista do Estado, central para entender 1917 e suas críticas.",
+              "kind": "primária",
               "entityId": "person-vladimir-lenin"
             },
             {
@@ -967,6 +975,7 @@
               "level": "intermediário",
               "theme": "História da tradição",
               "why": "Ensaios de um historiador sobre como as ideias de Marx circularam e mudaram.",
+              "kind": "estudo",
               "entityId": null
             },
             {
@@ -977,6 +986,7 @@
               "level": "avançado",
               "theme": "Economia",
               "why": "A obra central: mercadoria, valor, mais-valia e acumulação.",
+              "kind": "primária",
               "entityId": "work-capital-volume-i"
             },
             {
@@ -987,6 +997,7 @@
               "level": "avançado",
               "theme": "Filosofia",
               "why": "Base do marxismo ocidental: reificação e consciência de classe.",
+              "kind": "primária",
               "entityId": null
             },
             {
@@ -997,6 +1008,7 @@
               "level": "avançado",
               "theme": "Cultura e hegemonia",
               "why": "Hegemonia, intelectuais e sociedade civil, em notas escritas na prisão.",
+              "kind": "primária",
               "entityId": "person-antonio-gramsci"
             },
             {
@@ -1007,6 +1019,7 @@
               "level": "avançado",
               "theme": "Crítica e história",
               "why": "História monumental das correntes marxistas, com balanço crítico.",
+              "kind": "estudo",
               "entityId": null
             }
           ]

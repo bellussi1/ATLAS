@@ -10,6 +10,9 @@
       {{ theme }}
     </button>
   }
+  <span class="filter-count" aria-live="polite"
+    >{{ matching() }} de {{ works().length }} obras em destaque</span
+  >
 </div>
 
 <ol class="path" appReveal>
@@ -22,21 +25,48 @@
       </header>
       <ul>
         @for (work of stage(level.key); track work.title) {
-          <li class="work" [class.is-dimmed]="dimmed(work)">
-            <p class="work-meta">{{ work.year }} · {{ work.theme }}</p>
-            <h4>{{ work.title }}</h4>
-            <p class="work-author">{{ work.author }}</p>
-            <p class="work-why">{{ work.why }}</p>
-            <p class="work-edition">{{ work.edition }}</p>
-            @if (work.entityId) {
-              <button
-                type="button"
-                class="work-open atlas-press"
-                [appKnowledgeContext]="{ entityId: work.entityId }"
-              >
-                Abrir ficha <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
-              </button>
+          <li
+            class="work"
+            [class.is-dimmed]="dimmed(work)"
+            [class.is-first]="work === first()"
+            [class.is-open]="open() === work.title"
+          >
+            @if (work === first()) {
+              <p class="first-step">Primeiro passo sugerido</p>
             }
+            <button
+              type="button"
+              class="work-toggle"
+              [attr.aria-expanded]="open() === work.title"
+              [attr.aria-controls]="detailId(work)"
+              (click)="expand(work)"
+            >
+              <span class="work-meta">
+                @if (work.kind) {
+                  <span class="work-kind" [attr.data-kind]="work.kind">{{ work.kind }}</span>
+                }
+                {{ work.year }} · {{ work.theme }}
+              </span>
+              <span class="work-title">{{ work.title }}</span>
+              <span class="work-author">{{ work.author }}</span>
+              <span class="work-cue" aria-hidden="true">{{
+                open() === work.title ? '−' : '+'
+              }}</span>
+            </button>
+            <div class="work-detail" [id]="detailId(work)" [hidden]="open() !== work.title">
+              <p class="work-why">{{ work.why }}</p>
+              <p class="work-edition">{{ work.edition }}</p>
+              @if (work.entityId) {
+                <button
+                  type="button"
+                  class="work-open atlas-press"
+                  [appKnowledgeContext]="{ entityId: work.entityId }"
+                >
+                  Abrir ficha
+                  <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+                </button>
+              }
+            </div>
           </li>
         }
       </ul>
@@ -44,6 +74,8 @@
   }
 </ol>
 <p class="path-note">
-  Sugestões editoriais de ordem de leitura, não um cânone. Edições indicadas são as originais;
-  procure traduções e edições críticas na biblioteca.
+  Sugestões editoriais de ordem de leitura, não um cânone; leitores experientes podem entrar em
+  qualquer etapa. “Primária” indica texto da própria tradição; “introdução” e “estudo”, obras sobre
+  ela; “crítica”, objeção externa. Edições indicadas são as originais; procure traduções e edições
+  críticas na biblioteca.
 </p>

@@ -5,7 +5,10 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
 
 type Work = Extract<PageBlock, { type: 'reading-path' }>['works'][number];
 
-/** Reading roadmap: three stages of difficulty, filterable by theme without moving the page. */
+/**
+ * Reading roadmap: three stages of difficulty as a compact guided trail. Each work is a
+ * row that expands in place; themes dim, never remove, so the trail keeps its shape.
+ */
 @Component({
   selector: 'app-reading-path',
   imports: [KnowledgeContextDirective, AtlasRevealDirective],
@@ -15,12 +18,19 @@ type Work = Extract<PageBlock, { type: 'reading-path' }>['works'][number];
 export class ReadingPathComponent {
   readonly works = input.required<Work[]>();
   readonly theme = signal<string | null>(null);
+  readonly open = signal<string | null>(null);
   readonly levels = [
     { key: 'introdutório', label: 'Comece aqui', hint: 'Textos curtos ou panoramas' },
     { key: 'intermediário', label: 'Aprofunde', hint: 'Argumentos completos e debates' },
     { key: 'avançado', label: 'Avance', hint: 'Obras longas e teoria' },
   ] as const;
   readonly themes = computed(() => [...new Set(this.works().map((w) => w.theme))]);
+  /** The suggested first step: the first introductory work. */
+  readonly first = computed(() => this.works().find((w) => w.level === 'introdutório'));
+  readonly matching = computed(() => {
+    const theme = this.theme();
+    return theme ? this.works().filter((w) => w.theme === theme).length : this.works().length;
+  });
 
   stage(level: Work['level']): Work[] {
     return this.works().filter((w) => w.level === level);
@@ -30,5 +40,11 @@ export class ReadingPathComponent {
   }
   toggle(theme: string): void {
     this.theme.update((current) => (current === theme ? null : theme));
+  }
+  expand(work: Work): void {
+    this.open.update((current) => (current === work.title ? null : work.title));
+  }
+  detailId(work: Work): string {
+    return `work-${this.works().indexOf(work)}`;
   }
 }

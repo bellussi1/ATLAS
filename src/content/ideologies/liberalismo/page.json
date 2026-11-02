@@ -728,6 +728,7 @@
               "level": "introdutório",
               "theme": "Estado e direitos",
               "why": "Consentimento, propriedade e direito de resistência em linguagem direta.",
+              "kind": "primária",
               "entityId": "person-john-locke"
             },
             {
@@ -738,6 +739,7 @@
               "level": "introdutório",
               "theme": "Liberdade individual",
               "why": "O princípio do dano e a defesa da liberdade de expressão.",
+              "kind": "primária",
               "entityId": "person-john-stuart-mill"
             },
             {
@@ -748,6 +750,7 @@
               "level": "introdutório",
               "theme": "Panorama",
               "why": "Mapa curto das camadas e vertentes do liberalismo.",
+              "kind": "introdução",
               "entityId": null
             },
             {
@@ -758,6 +761,7 @@
               "level": "intermediário",
               "theme": "Instituições",
               "why": "Separação dos poderes e relação entre leis, clima e costumes.",
+              "kind": "primária",
               "entityId": "person-montesquieu"
             },
             {
@@ -768,6 +772,7 @@
               "level": "intermediário",
               "theme": "Economia",
               "why": "Divisão do trabalho, mercado e crítica ao mercantilismo.",
+              "kind": "primária",
               "entityId": "work-wealth-of-nations"
             },
             {
@@ -778,6 +783,7 @@
               "level": "intermediário",
               "theme": "Democracia",
               "why": "Igualdade, associações e tirania da maioria vistas nos Estados Unidos.",
+              "kind": "primária",
               "entityId": "person-alexis-de-tocqueville"
             },
             {
@@ -788,6 +794,7 @@
               "level": "intermediário",
               "theme": "Filosofia política",
               "why": "A distinção entre liberdade negativa e positiva em uma aula curta.",
+              "kind": "primária",
               "entityId": "person-isaiah-berlin"
             },
             {
@@ -798,6 +805,7 @@
               "level": "avançado",
               "theme": "Economia e Estado",
               "why": "A crítica liberal ao planejamento econômico no pós-guerra.",
+              "kind": "primária",
               "entityId": "person-friedrich-hayek"
             },
             {
@@ -808,6 +816,7 @@
               "level": "avançado",
               "theme": "Justiça",
               "why": "O liberalismo igualitário: justiça como equidade.",
+              "kind": "primária",
               "entityId": null
             },
             {
@@ -818,6 +827,7 @@
               "level": "avançado",
               "theme": "Crítica",
               "why": "A crítica mais influente ao mercado autorregulado.",
+              "kind": "crítica",
               "entityId": null
             },
             {
@@ -828,6 +838,7 @@
               "level": "avançado",
               "theme": "História",
               "why": "História do liberalismo como prática política desde o século XIX.",
+              "kind": "estudo",
               "entityId": null
             }
           ]

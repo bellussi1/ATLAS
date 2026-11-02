@@ -86,6 +86,8 @@ export const pageBlockSchema = z.discriminatedUnion('type', [
           level: z.enum(['introdutório', 'intermediário', 'avançado']),
           theme: z.string().min(1),
           why: z.string().min(1),
+          /** Primary text of the tradition, introduction, scholarly study or external critique. */
+          kind: z.enum(['primária', 'introdução', 'estudo', 'crítica']).nullable().default(null),
           entityId: id.nullable().default(null),
         }),
       )

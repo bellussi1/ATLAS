@@ -240,3 +240,20 @@ test('épocas list dated records and the graph explains each kind of line', asyn
     await expect(graph.locator('.genealogy-node.related')).toHaveCount(2);
   }
 });
+
+test('reading roadmap shows a first step and expands works in place', async ({ page }) => {
+  for (const path of ['/marxismo/', '/liberalismo/']) {
+    await page.goto(path);
+    const roadmap = page.locator('#leituras app-reading-path');
+    await expect(roadmap.locator('.first-step')).toHaveCount(1);
+    const first = roadmap.locator('.work-toggle').first();
+    await first.focus();
+    await page.keyboard.press('Enter');
+    await expect(first).toHaveAttribute('aria-expanded', 'true');
+    await expect(roadmap.locator('.work-detail:visible')).toHaveCount(1);
+    await roadmap.locator('.theme-filter button').first().click();
+    expect(await roadmap.locator('.work.is-dimmed').count()).toBeGreaterThan(0);
+    const total = await roadmap.locator('.work').count();
+    await expect(roadmap.locator('.filter-count')).not.toContainText(`${total} de ${total}`);
+  }
+});
