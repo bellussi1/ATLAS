@@ -314,3 +314,8 @@ h2 .chapter-number[data-shape='3'] {
     grid-column: 1;
   }
 }
+.opening-portrait figcaption a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+}

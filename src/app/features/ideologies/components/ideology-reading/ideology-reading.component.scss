@@ -2,7 +2,7 @@
   --tint: var(--color-canvas);
   display: block;
   /* Full-bleed paint without an oversized layer; --tint is a registered colour, so it animates. */
-  border-image: linear-gradient(var(--tint) 0 0) fill 0 / /0 100vmax;
+  border-image: linear-gradient(var(--tint) 0 0) fill 0 / 1 / 0 100vmax;
   transition: --tint var(--motion-slow) var(--ease-out);
 }
 :host([data-tone='1']) {

@@ -50,3 +50,10 @@
     transition: none;
   }
 }
+/* Source links stand alone in the reading panel: keep a 24px target (WCAG 2.5.8). */
+.relation-reading > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+  margin-right: 1rem;
+}

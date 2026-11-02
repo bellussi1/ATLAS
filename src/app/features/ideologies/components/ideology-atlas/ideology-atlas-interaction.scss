@@ -167,3 +167,10 @@
     grid-template-columns: minmax(0, 1fr) auto;
   }
 }
+/* Caption controls meet the 24px minimum target (WCAG 2.5.8). */
+.gallery figcaption button,
+.gallery figcaption a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+}

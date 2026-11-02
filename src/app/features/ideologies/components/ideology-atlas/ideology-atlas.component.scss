@@ -319,9 +319,9 @@
   text-align: center;
   cursor: pointer;
   transition:
-    background-color 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
+    background-color var(--motion-selection) var(--ease-out),
+    color var(--motion-selection) var(--ease-out),
+    transform var(--motion-selection) var(--ease-out);
 }
 .graph-node.root-node {
   width: 8.4rem;
