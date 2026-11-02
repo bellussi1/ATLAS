@@ -96,6 +96,7 @@
   border-bottom: 2px solid var(--color-ink);
 }
 .tick {
+  white-space: nowrap;
   position: absolute;
   bottom: 0.25rem;
   translate: -50% 0;
@@ -310,7 +311,11 @@
     --name: 6.5rem;
     padding-inline: 0.75rem;
   }
-  .marker > span {
+  .marker > span,
+  .life-bar > span {
+    display: none;
+  }
+  .tick:nth-child(even) {
     display: none;
   }
 }
