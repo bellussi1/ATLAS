@@ -103,6 +103,8 @@ for (const width of [1440, 390, 320]) {
 test('three retained pages: desktop and mobile visual and accessibility audit', async ({
   page,
 }) => {
+  // Nine axe passes and eighteen full-page captures of long readings.
+  test.setTimeout(120_000);
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: 'reduce' });

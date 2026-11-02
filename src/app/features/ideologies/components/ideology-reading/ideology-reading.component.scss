@@ -1,12 +1,9 @@
 :host {
   --tint: var(--color-canvas);
   display: block;
-  background: var(--tint);
-  box-shadow: 0 0 0 100vmax var(--tint);
-  clip-path: inset(0 -100vmax);
-  transition:
-    background-color var(--motion-slow) var(--ease-out),
-    box-shadow var(--motion-slow) var(--ease-out);
+  /* Full-bleed paint without an oversized layer; --tint is a registered colour, so it animates. */
+  border-image: linear-gradient(var(--tint) 0 0) fill 0 / /0 100vmax;
+  transition: --tint var(--motion-slow) var(--ease-out);
 }
 :host([data-tone='1']) {
   --tint: color-mix(in srgb, var(--color-ochre-paper) 22%, var(--color-canvas));
