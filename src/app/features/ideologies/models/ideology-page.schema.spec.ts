@@ -72,6 +72,14 @@ describe('V4 page contract and editorial integrity', () => {
       Object.values(legacyChapterAnchors).every((id) => canonicalChapters.some((c) => c.id === id)),
     ).toBe(true);
   });
+  it('gives both readings a structured debate and marks declared gaps as partial coverage', () => {
+    for (const page of [marxismo, publishedLiberalismo].map((p) => ideologyPageSchema.parse(p))) {
+      const debates = page.chapters.find((c) => c.id === 'debates')!;
+      expect(debates.blocks.some((b) => b.type === 'debate')).toBe(true);
+      for (const chapter of page.chapters.filter((c) => c.gap && c.layout !== 'introduction'))
+        expect.soft(chapter.coverage, chapter.id).not.toBe('complete');
+    }
+  });
   it('rejects out-of-order chapters and pending coverage without a reason', () => {
     const swapped = structuredClone(marxismo);
     [swapped.chapters[2], swapped.chapters[3]] = [swapped.chapters[3], swapped.chapters[2]];

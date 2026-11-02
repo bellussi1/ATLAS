@@ -335,7 +335,8 @@
             }
           ]
         }
-      ]
+      ],
+      "coverage": "partial"
     },
     {
       "question": "Quem formulou, revisou e contestou essas ideias?",
@@ -542,8 +543,13 @@
     {
       "question": "O que o liberalismo deixa de ver, segundo seus críticos?",
       "bridge": "Para além das críticas, o liberalismo dialoga com outras tradições.",
-      "gap": "As críticas estão atribuídas, mas ainda falta o quadro estruturado defesa → crítica → resposta → limites, com fontes por posição.",
-      "sourceIds": ["source-sep-liberalism", "source-sep-communitarianism"],
+      "gap": "Apenas um debate segue o quadro defesa → crítica → resposta → limites; as críticas de Burke, Marx, Polanyi e dos comunitaristas ainda não têm respostas documentadas.",
+      "sourceIds": [
+        "source-sep-liberalism",
+        "source-sep-communitarianism",
+        "source-berlin-two-concepts",
+        "source-sep-liberty"
+      ],
       "id": "debates",
       "anchor": "debates",
       "title": "Críticas à liberdade liberal",
@@ -551,9 +557,72 @@
       "layout": "debate",
       "minutes": 4,
       "narrative": [
-        "Cada crítica tem autoria e alvo próprios. Elas não se somam em um veredito: conservadores, socialistas e comunitaristas criticam o liberalismo por razões opostas."
+        "Cada crítica tem autoria e alvo próprios. Elas não se somam em um veredito: conservadores, socialistas e comunitaristas criticam o liberalismo por razões opostas.",
+        "O primeiro quadro reconstrói um debate interno: a disputa entre liberdade negativa e positiva, com defesa, crítica, resposta e limites atribuídos."
       ],
       "blocks": [
+        {
+          "type": "debate",
+          "topics": [
+            {
+              "id": "debate-liberty-concepts",
+              "title": "Liberdade negativa ou positiva",
+              "scope": "Debate conceitual interno à teoria política liberal e a seus interlocutores: Berlin e Taylor. As posições são atribuídas; não há aqui veredito sobre qual concepção é correta.",
+              "defence": {
+                "id": "defence-liberty-negative",
+                "title": "Berlin: a área livre de interferência",
+                "kicker": "Defesa atribuída",
+                "summary": "Liberdade negativa é a ausência de obstáculos impostos por outros; a positiva, o controle de si.",
+                "paragraphs": [
+                  "Em Dois conceitos de liberdade (1958), Berlin distingue duas perguntas: qual é a área em que alguém pode agir sem interferência, e quem ou o que controla suas ações. Ele vê na segunda resposta, a do autodomínio, um risco: dividir a pessoa num eu “superior” e outro “inferior” permitiria coagir alguém em nome do que seria seu verdadeiro interesse.",
+                  "Como avaliar: separar a distinção conceitual do alerta político que Berlin formula no contexto da Guerra Fria, que a enciclopédia registra."
+                ],
+                "sourceIds": ["source-berlin-two-concepts", "source-sep-liberty"],
+                "entityIds": ["person-isaiah-berlin"],
+                "classification": "tese atribuída"
+              },
+              "criticism": {
+                "id": "criticism-liberty-exercise",
+                "title": "Taylor: liberdade também é exercício",
+                "kicker": "Crítica atribuída",
+                "summary": "Ter oportunidades abertas não basta; ser livre envolve dirigir efetivamente a própria vida.",
+                "paragraphs": [
+                  "Em What’s Wrong with Negative Liberty (1979), Charles Taylor contrapõe um “conceito de oportunidade”, centrado no que a pessoa pode fazer, a um “conceito de exercício”, centrado em agir de fato segundo escolhas próprias. Para ele, a versão negativa deixa de fora essa segunda dimensão.",
+                  "Como criticar com rigor: identificar qual premissa é contestada (o que conta como obstáculo, e se obstáculos internos contam) em vez de reduzir a posição de Berlin à defesa de um mercado sem regras."
+                ],
+                "sourceIds": ["source-sep-liberty"],
+                "entityIds": [],
+                "classification": "interpretação"
+              },
+              "response": {
+                "id": "response-liberty-triadic",
+                "title": "Um conceito, interpretações diferentes",
+                "kicker": "Resposta documentada",
+                "summary": "Para MacCallum e leitores posteriores, as duas posições disputam como interpretar um mesmo conceito.",
+                "paragraphs": [
+                  "A enciclopédia registra a proposta de Gerald MacCallum: liberdade é sempre a de um agente, livre de certos obstáculos, para fazer ou ser algo. Nessa leitura, negativos e positivos divergem sobre o que conta como agente, obstáculo e fim, e não sobre dois conceitos opostos.",
+                  "Eric Nelson (2005) argumenta, além disso, que autores classificados como positivos também definiam liberdade como ausência de restrições. Não se apresenta aqui uma réplica direta de Berlin a Taylor: ela não foi incorporada ao recorte."
+                ],
+                "sourceIds": ["source-sep-liberty"],
+                "entityIds": [],
+                "classification": "interpretação"
+              },
+              "limits": {
+                "id": "limits-liberty-concepts",
+                "title": "Conceitos não medem resultados",
+                "kicker": "Limites e controvérsias",
+                "summary": "A disputa organiza argumentos; não decide quais instituições produzem mais liberdade.",
+                "paragraphs": [
+                  "O debate é conceitual. Avaliar políticas concretas (tributação, assistência, regulação) exige evidência empírica específica, que este recorte não apresenta.",
+                  "Há ainda uma terceira posição, republicana (Pettit, Skinner), que define liberdade como ausência de dominação. A enciclopédia registra que segue em aberto se ela constitui de fato um terceiro conceito."
+                ],
+                "sourceIds": ["source-sep-liberty"],
+                "entityIds": [],
+                "classification": "limitação editorial"
+              }
+            }
+          ]
+        },
         {
           "type": "explorations",
           "mode": "schools",

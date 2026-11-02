@@ -543,7 +543,8 @@
       ],
       "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte.",
       "question": "Reforma ou revolução? Partido, Estado ou cultura?",
-      "bridge": "As vertentes se formaram em experiências concretas, em cidades e países."
+      "bridge": "As vertentes se formaram em experiências concretas, em cidades e países.",
+      "coverage": "partial"
     },
     {
       "id": "experiencias",
@@ -835,7 +836,8 @@
       ],
       "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria.",
       "question": "O que os críticos de dentro e de fora apontam como falha?",
-      "bridge": "Para além das críticas, o marxismo dialoga com outras tradições."
+      "bridge": "Para além das críticas, o marxismo dialoga com outras tradições.",
+      "coverage": "partial"
     },
     {
       "id": "conexoes",
