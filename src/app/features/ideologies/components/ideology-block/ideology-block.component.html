@@ -160,6 +160,7 @@
                 animate.enter="connection-enter"
                 animate.leave="connection-leave"
                 [class.selected]="highlightEdge(edge)"
+                [attr.data-line]="relation(edge).line"
                 [attr.d]="graphPaths().get(edge.id)"
                 vector-effect="non-scaling-stroke"
               />
@@ -172,6 +173,7 @@
               [style.left.%]="node.x / 9"
               [style.top.%]="(node.y / graph().height) * 100"
               [class.related]="selectedEdge()?.from === node.id || selectedEdge()?.to === node.id"
+              [class.muted]="!!selectedEdge() && !touches(node.id)"
               (mouseenter)="hoveredNode.set(node.id)"
               (mouseleave)="hoveredNode.set(null)"
               (focus)="hoveredNode.set(node.id)"
@@ -183,12 +185,19 @@
             </button>
           }
         </div>
+        <ul class="relation-legend" aria-label="Como ler as linhas">
+          @for (type of edgeTypes(); track type) {
+            <li [attr.data-line]="relationOf(type).line">
+              <strong>{{ relationOf(type).label }}</strong> {{ relationOf(type).meaning }}
+            </li>
+          }
+        </ul>
         <label class="graph-filter"
           >Tipo de conexão
           <select [value]="edgeFilter()" (change)="edgeFilter.set($any($event.target).value)">
             <option value="all">Todos os tipos</option>
             @for (type of edgeTypes(); track type) {
-              <option [value]="type">{{ type }}</option>
+              <option [value]="type">{{ relationOf(type).label }}</option>
             }
           </select></label
         >
@@ -212,7 +221,11 @@
             aria-label="Relação selecionada"
           >
             <p class="metadata">
-              {{ edge.type }} · certeza {{ edge.certainty }} · revisão pendente
+              {{ relation(edge).label }} · certeza {{ edge.certainty }} · revisão pendente
+            </p>
+            <p class="relation-meaning">
+              {{ relation(edge).meaning }}
+              {{ relation(edge).historical ? '' : 'Não é uma relação histórica documentada.' }}
             </p>
             <h3>{{ entity(edge.from)?.title }} {{ edge.label }} {{ entity(edge.to)?.title }}</h3>
             <p>{{ edge.context }}</p>
@@ -248,7 +261,7 @@
                     {{ entity(edge.from)?.title }} → {{ entity(edge.to)?.title }}
                     <p>{{ edge.label }}</p>
                   </td>
-                  <td>{{ edge.type }} · {{ edge.certainty }}</td>
+                  <td>{{ relation(edge).label }} · {{ edge.certainty }}</td>
                   <td>
                     {{ edge.context }}
                     @for (id of edge.sources; track id) {

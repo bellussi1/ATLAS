@@ -70,6 +70,17 @@ export class EraChartComponent {
     return this.lives().filter((life) => life.start <= epoch.end && life.end >= epoch.start);
   });
 
+  /** Dated records inside the selected epoch, so the markers have a readable list too. */
+  readonly inEpoch = computed(() => {
+    const epoch = this.selected();
+    return this.dated().filter((mark) => mark.year >= epoch.start && mark.year <= epoch.end);
+  });
+  /** Records left off the scale because a year is missing; said aloud, never guessed. */
+  readonly undated = computed(
+    () =>
+      this.people().length - this.lives().length + (this.markers().length - this.dated().length),
+  );
+
   x(year: number): string {
     const { start, end } = this.range();
     return `${((year - start) / (end - start)) * 100}%`;

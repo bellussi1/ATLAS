@@ -92,6 +92,24 @@
       <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
     </button>
     <h5>
+      Registros datados na época <span>{{ inEpoch().length }}</span>
+    </h5>
+    <ul class="alive-list dated-list">
+      @for (mark of inEpoch(); track mark.entity.id) {
+        <li>
+          <button
+            type="button"
+            class="atlas-press"
+            [appKnowledgeContext]="{ entityId: mark.entity.id }"
+          >
+            {{ mark.entity.title }} <span>{{ mark.year }}</span>
+          </button>
+        </li>
+      } @empty {
+        <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
+      }
+    </ul>
+    <h5>
       Vivos durante a época <span>{{ alive().length }}</span>
     </h5>
     <ul class="alive-list">
@@ -113,6 +131,11 @@
 
   <p class="era-note">
     Barras mostram nascimento e morte registrados, não o período de atividade nem influência. As
-    datas das épocas são aproximações didáticas.
+    datas das épocas são aproximações didáticas. Marcadores indicam o ano de início registrado, não
+    duração nem causa.
+    @if (undated()) {
+      {{ undated() }} {{ undated() === 1 ? 'registro fica' : 'registros ficam' }} fora da escala por
+      falta de data registrada.
+    }
   </p>
 </figure>

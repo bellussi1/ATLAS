@@ -31,12 +31,41 @@ describe('EraChartComponent', () => {
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
     const names = () =>
-      [...root.querySelectorAll('.alive-list button')].map((b) => b.textContent!.trim());
+      [...root.querySelectorAll('.alive-list:not(.dated-list) button')].map((b) =>
+        b.textContent!.trim(),
+      );
     expect(names()).toEqual([expect.stringContaining('marx')]);
     const first = root.querySelector<HTMLButtonElement>('.epoch-picker button')!;
     first.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
     fixture.detectChanges();
     expect(root.querySelector('.epoch-detail h4')!.textContent).toBe('b');
     expect(names()).toEqual([expect.stringContaining('gramsci')]);
+  });
+
+  it('lists dated records of the selected epoch and says how many lack a date', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    const record = (id: string, startYear: number | null) =>
+      ({
+        id,
+        title: id,
+        temporalExtent: startYear
+          ? { startYear, endYear: null, precision: 'year', label: null }
+          : undefined,
+      }) as unknown as Entity;
+    fixture.componentRef.setInput('epochs', [epoch('a', 1840, 1850), epoch('b', 1900, 1920)]);
+    fixture.componentRef.setInput('people', [person('marx', 1818, 1883)]);
+    fixture.componentRef.setInput('markers', [
+      record('manifesto', 1848),
+      record('revolution', 1917),
+      record('undated', null),
+    ]);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const dated = () =>
+      [...root.querySelectorAll('.dated-list button')].map((b) => b.textContent!.trim());
+    expect(dated()).toEqual([expect.stringContaining('manifesto')]);
+    expect(root.querySelector('.era-note')!.textContent).toContain(
+      '1 registro fica fora da escala',
+    );
   });
 });

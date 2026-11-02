@@ -19,6 +19,7 @@ import type {
   IdeologyEdge,
   PageBlock,
 } from '@ideologies/models/ideology-page.schema';
+import { type RelationType, relationTypes } from '@ideologies/models/relation-types';
 import { entityMedia, type PageMedia } from '@ideologies/utils/page-media-plan';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
@@ -40,6 +41,7 @@ import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive
     './ideology-block.component.scss',
     './ideology-exploration.scss',
     './ideology-media.scss',
+    './ideology-relations.scss',
   ],
 })
 export class IdeologyBlockComponent {
@@ -218,6 +220,17 @@ export class IdeologyBlockComponent {
         label: `${this.entity(id)?.title ?? id} · abrir contexto relacionado`,
       })),
     };
+  }
+  relation(edge: IdeologyEdge) {
+    return relationTypes[edge.type];
+  }
+  relationOf(type: string) {
+    return relationTypes[type as RelationType];
+  }
+  /** Selection dims unrelated nodes but never moves them. */
+  touches(id: string): boolean {
+    const edge = this.selectedEdge();
+    return edge?.from === id || edge?.to === id;
   }
   highlightEdge(edge: IdeologyEdge): boolean {
     return this.hoveredNode()

@@ -219,3 +219,24 @@ test('each image appears once in the narrative; only the archive catalogue repea
     expect(new Set(sources).size).toBe(sources.length);
   }
 });
+
+test('épocas list dated records and the graph explains each kind of line', async ({ page }) => {
+  for (const path of ['/marxismo/', '/liberalismo/']) {
+    await page.goto(path);
+    const era = page.locator('#epocas .era-chart');
+    await expect(era.locator('.dated-list li').first()).toBeVisible();
+    await era.locator('.epoch-picker button').nth(1).click();
+    await expect(era.locator('.epoch-detail h5').first()).toContainText('Registros datados');
+
+    const graph = page.locator('#vertentes .genealogy');
+    await expect(graph.locator('.relation-legend li').first()).toBeVisible();
+    await expect(graph.locator('.relation-meaning')).not.toBeEmpty();
+    const nodes = graph.locator('.genealogy-node');
+    const before = await nodes.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left));
+    await graph.locator('.relation-controls button').last().click();
+    expect(await nodes.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left))).toEqual(
+      before,
+    );
+    await expect(graph.locator('.genealogy-node.related')).toHaveCount(2);
+  }
+});
