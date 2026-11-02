@@ -10,6 +10,7 @@ export class IdeologyReadingIndexComponent {
   readonly sections = input<readonly IdeologyReadingSection[]>([]);
   readonly active = input('');
   readonly progress = input(0);
+  readonly tone = input(0);
   readonly reducedMotion = input(false);
   readonly hasPrevious = input(false);
 

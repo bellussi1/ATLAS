@@ -1,4 +1,4 @@
-<aside class="reading-index" aria-label="Orientação da leitura">
+<aside class="reading-index" aria-label="Orientação da leitura" [attr.data-tone]="tone()">
   <div class="index-topline">
     <p class="index-heading">Nesta leitura</p>
     <label class="progress-label" for="reading-progress">Percurso {{ progress() }}%</label>
@@ -12,7 +12,9 @@
         [attr.aria-current]="active() === section.anchor ? 'location' : null"
         (click)="followChapter($event, section.anchor)"
       >
-        <span class="chapter-number">{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span>
+        <span class="chapter-number" [attr.data-shape]="index % 4"
+          >{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
+        >
         <span class="chapter-title">
           {{ section.title }}
           @if (section.minutes !== undefined) {

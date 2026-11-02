@@ -1,12 +1,35 @@
 :host {
+  --tone: var(--color-ochre-paper);
+  --on-tone: var(--ink);
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
   height: 100%;
   min-width: 0;
   background: var(--paper);
   color: var(--ink);
-  border: 2px solid var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 0.6rem 0.6rem 0 var(--tone);
   overflow: hidden;
+}
+:host([data-tone='person']) {
+  --tone: var(--color-rose-paper);
+}
+:host([data-tone='work']) {
+  --tone: var(--color-ochre-paper);
+}
+:host([data-tone='concept']) {
+  --tone: var(--color-teal-paper);
+}
+:host([data-tone='event']) {
+  --tone: var(--color-orange-paper);
+}
+:host([data-tone='idea']) {
+  --tone: var(--color-indigo);
+  --on-tone: #fff;
+}
+:host([data-tone='reading']) {
+  --tone: var(--color-accent);
+  --on-tone: #fff;
 }
 header {
   display: flex;
@@ -14,16 +37,59 @@ header {
   align-items: flex-start;
   gap: 1rem;
   padding: 1.2rem 1.5rem;
-  border-bottom: 1px solid var(--rule-strong);
-  background: var(--color-ochre-paper);
+  border-bottom: 3px solid var(--ink);
+  background: var(--tone);
+  color: var(--on-tone);
+  transition: background-color var(--motion-standard) var(--ease-out);
 }
 header p {
   font: 0.75rem/1.5 var(--font-mono);
   margin: 0 0 0.4rem;
 }
+.kind-chip {
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.45rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+.context-close {
+  flex-shrink: 0;
+  border-width: 2px;
+  font-weight: 650;
+}
+.context-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.4rem;
+  padding: 0.5rem 1.5rem;
+  border-bottom: 1px solid var(--rule-strong);
+  background: var(--color-surface-subtle);
+  font: 0.75rem/1.4 var(--font-mono);
+}
+.context-trail button {
+  min-height: 2rem;
+  padding: 0.2rem 0.45rem;
+  border: 0;
+  background: none;
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+.context-trail [aria-current] {
+  font-weight: 700;
+}
+.opens-here {
+  margin-left: 0.4rem;
+  font: 0.7rem var(--font-mono);
+  color: var(--color-ink-muted);
+}
+.context-permanent small {
+  display: block;
+  color: var(--color-ink-muted);
+}
 h2 {
-  font: 700 clamp(1.5rem, 4vw, 2.5rem)/1.1 var(--font-sans);
-  letter-spacing: -0.03em;
+  font: 700 clamp(1.8rem, 4.5vw, 3rem)/1 var(--font-sans);
+  letter-spacing: -0.045em;
   margin: 0;
   overflow-wrap: anywhere;
 }

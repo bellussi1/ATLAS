@@ -1,5 +1,13 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
-import { afterNextRender, Component, ElementRef, inject, Injector, signal } from '@angular/core';
+import {
+  afterNextRender,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  Injector,
+  signal,
+} from '@angular/core';
 import {
   type ContextConnection,
   type KnowledgeContext,
@@ -11,6 +19,7 @@ import { ContentRepository } from '@core/content/repositories/content-repository
   selector: 'app-knowledge-context',
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
+  host: { '[attr.data-tone]': 'tone()' },
 })
 export class KnowledgeContextComponent {
   private readonly initial = inject<KnowledgeContext>(DIALOG_DATA);
@@ -27,6 +36,18 @@ export class KnowledgeContextComponent {
       expanded: string[];
     }[]
   >([]);
+  /** Colour family by record kind, so each opened context is recognisable at a glance. */
+  readonly tone = computed(() => {
+    const kind = this.record().kind;
+    if (/^Pensador|^Pessoa/.test(kind)) return 'person';
+    if (/^Obra|^Artigo/.test(kind)) return 'work';
+    if (/^Conceito/.test(kind)) return 'concept';
+    if (/^Acontecimento|^Lugar/.test(kind)) return 'event';
+    if (/^Tradição|^Instituição|^Partido|^Regime|^País|^Governo/.test(kind)) return 'idea';
+    return 'reading';
+  });
+  /** Where the reader came from: every step can be revisited without closing the dialog. */
+  readonly trail = computed(() => this.history().map((step) => step.record.title));
   permanentPath(): string | undefined {
     return this.record().entityId
       ? this.repository.discoveryIndex.find((entry) => entry.id === this.record().entityId)?.path
@@ -49,6 +70,10 @@ export class KnowledgeContextComponent {
     ]);
     this.record.set(entityContext(this.repository, connection.entityId));
     this.present(0);
+  }
+  backTo(index: number): void {
+    while (this.history().length > index + 1) this.history.update((items) => items.slice(0, -1));
+    this.back();
   }
   back(): void {
     const previous = this.history().at(-1);

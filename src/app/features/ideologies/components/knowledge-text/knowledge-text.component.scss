@@ -12,7 +12,9 @@
   background: none;
   padding: 0;
   border: 0;
-  border-bottom: 1px dotted currentColor;
+  border-bottom: 0;
+  box-shadow: inset 0 -0.35em
+    color-mix(in srgb, var(--tone, var(--color-ochre-paper)) 55%, transparent);
   cursor: pointer;
   text-align: left;
   text-decoration: underline;
@@ -33,8 +35,10 @@
   padding: 0.8rem;
   font: 0.85rem/1.5 var(--font-sans);
   color: var(--ink);
-  background: var(--color-ochre-paper);
-  border: 1px solid var(--ink);
+  background: var(--color-canvas);
+  border: 2px solid var(--ink);
+  border-top: 0.5rem solid var(--tone, var(--color-ochre-paper));
+  box-shadow: 0.35rem 0.35rem 0 var(--ink);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -46,6 +50,32 @@
 .term-preview strong {
   display: block;
   margin-bottom: 0.3rem;
+  font: 0.7rem var(--font-mono);
+  text-transform: none;
+}
+.term-preview em {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--color-accent);
+  font: 600 0.75rem var(--font-sans);
+  font-style: normal;
+}
+[data-kind^='Pensador'],
+[data-kind='Dirigente'] {
+  --tone: var(--color-rose-paper);
+}
+[data-kind='Conceito'] {
+  --tone: var(--color-teal-paper);
+}
+[data-kind='Obra'] {
+  --tone: var(--color-ochre-paper);
+}
+[data-kind='Acontecimento'] {
+  --tone: var(--color-orange-paper);
+}
+[data-kind='Tradição'],
+[data-kind='Instituição'] {
+  --tone: var(--color-indigo);
 }
 .knowledge-term:focus-visible {
   outline: 3px solid var(--color-focus);

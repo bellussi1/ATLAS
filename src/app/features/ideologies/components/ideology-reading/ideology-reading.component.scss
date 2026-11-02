@@ -1,5 +1,27 @@
 :host {
+  --tint: var(--color-canvas);
   display: block;
+  background: var(--tint);
+  box-shadow: 0 0 0 100vmax var(--tint);
+  clip-path: inset(0 -100vmax);
+  transition:
+    background-color var(--motion-slow) var(--ease-out),
+    box-shadow var(--motion-slow) var(--ease-out);
+}
+:host([data-tone='1']) {
+  --tint: color-mix(in srgb, var(--color-ochre-paper) 22%, var(--color-canvas));
+}
+:host([data-tone='2']) {
+  --tint: color-mix(in srgb, var(--color-teal-paper) 22%, var(--color-canvas));
+}
+:host([data-tone='3']) {
+  --tint: color-mix(in srgb, var(--color-rose-paper) 26%, var(--color-canvas));
+}
+:host([data-tone='4']) {
+  --tint: color-mix(in srgb, var(--color-indigo) 9%, var(--color-canvas));
+}
+:host([data-tone='5']) {
+  --tint: color-mix(in srgb, var(--color-orange-paper) 16%, var(--color-canvas));
 }
 .reading-layout {
   display: grid;

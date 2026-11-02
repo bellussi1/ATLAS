@@ -1,10 +1,28 @@
 <header>
   <div>
-    <p>{{ record().kind }} · {{ statusLabel(record().editorialStatus) }}</p>
+    <p class="context-kind">
+      <span class="kind-chip">{{ record().kind }}</span> {{ statusLabel(record().editorialStatus) }}
+    </p>
     <h2 id="knowledge-context-title" tabindex="-1">{{ record().title }}</h2>
   </div>
-  <button type="button" (click)="close()" aria-label="Fechar contexto">Fechar ×</button>
+  <button
+    type="button"
+    class="context-close"
+    (click)="close()"
+    aria-label="Voltar à leitura (fechar contexto)"
+  >
+    Voltar à leitura <span aria-hidden="true">×</span>
+  </button>
 </header>
+@if (trail().length) {
+  <nav class="context-trail" aria-label="Percurso neste contexto">
+    @for (title of trail(); track $index) {
+      <button type="button" (click)="backTo($index)">{{ title }}</button
+      ><span aria-hidden="true">›</span>
+    }
+    <span aria-current="location">{{ record().title }}</span>
+  </nav>
+}
 <div class="context-body">
   @if (history().length) {
     <button type="button" class="context-back" (click)="back()">← Contexto anterior</button>
@@ -25,8 +43,9 @@
   }
   <p class="context-summary">{{ record().summary }}</p>
   @if (permanentPath(); as path) {
-    <p>
+    <p class="context-permanent">
       <a [href]="path">Abrir página permanente de {{ record().title }}</a>
+      <small>Sai desta leitura e abre o verbete completo.</small>
     </p>
   }
   @for (paragraph of record().paragraphs; track $index) {
@@ -34,7 +53,10 @@
   }
   <section aria-label="Conexões deste contexto">
     <h3>Continue por uma conexão</h3>
-    <p>Os vínculos importados são caminhos de investigação; não comprovam influência por si sós.</p>
+    <p>
+      Cada conexão abre aqui mesmo; use o percurso acima para voltar. Vínculos importados são
+      caminhos de investigação e não comprovam influência por si sós.
+    </p>
     <div class="context-connections">
       @for (connection of record().connections; track connection.id ?? connection.entityId) {
         <article class="context-connection">
@@ -43,7 +65,7 @@
             [attr.data-connection]="connection.id ?? connection.entityId"
             (click)="follow(connection)"
           >
-            {{ connection.label }} <span aria-hidden="true">↗</span>
+            {{ connection.label }} <span class="opens-here" aria-hidden="true">abre aqui →</span>
           </button>
           @if (connection.relation; as relation) {
             <p class="relation-label">{{ relation.label }}</p>

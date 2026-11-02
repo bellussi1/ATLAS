@@ -19,7 +19,7 @@ import { IdeologyReadingIndexComponent } from '../reading-index/reading-index.co
   imports: [IdeologyReadingIndexComponent],
   templateUrl: './ideology-reading.component.html',
   styleUrl: './ideology-reading.component.scss',
-  host: { '[class.atlas-layout]': "layout() === 'atlas'" },
+  host: { '[class.atlas-layout]': "layout() === 'atlas'", '[attr.data-tone]': 'tone()' },
 })
 export class IdeologyReadingComponent {
   private readonly document = inject(DOCUMENT);
@@ -35,6 +35,14 @@ export class IdeologyReadingComponent {
     this.sections().some((s) => s.anchor === this.selected())
       ? this.selected()
       : (this.sections()[0]?.anchor ?? ''),
+  );
+  /** Each chapter tints the reading surface, so scrolling reads as moving between rooms. */
+  readonly tone = computed(
+    () =>
+      Math.max(
+        0,
+        this.sections().findIndex((s) => s.anchor === this.active()),
+      ) % 6,
   );
   readonly progress = signal(0);
   readonly previous = signal<string | null>(null);
