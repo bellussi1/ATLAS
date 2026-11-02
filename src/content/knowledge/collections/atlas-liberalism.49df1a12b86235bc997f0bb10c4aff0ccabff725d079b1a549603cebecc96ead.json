@@ -1,0 +1,1609 @@
+{
+  "id": "atlas-liberalism",
+  "slug": "atlas-liberalismo",
+  "title": "Atlas do Liberalismo",
+  "description": "Rede exploratória de pessoas, correntes e acontecimentos ligados ao liberalismo; dados enciclopédicos importados aguardam revisão editorial humana.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-02",
+  "entityIds": [
+    "ideology-liberalism",
+    "person-john-locke",
+    "person-john-stuart-mill",
+    "person-montesquieu",
+    "person-alexis-de-tocqueville",
+    "person-friedrich-hayek",
+    "person-isaiah-berlin",
+    "ideology-classical-liberalism",
+    "ideology-social-liberalism",
+    "ideology-neoliberalism",
+    "event-glorious-revolution",
+    "event-american-revolution",
+    "event-french-revolution"
+  ],
+  "entities": [
+    {
+      "id": "ideology-liberalism",
+      "slug": "liberalism",
+      "title": "Liberalismo",
+      "summary": "filosofia política e moral baseada na liberdade, no consentimento dos governados e na igualdade",
+      "aliases": [],
+      "context": "A página “Liberalismo” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Liberalismo” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q6216", "wikipedia": "Liberalismo" },
+      "discoveryMetadata": {
+        "description": "filosofia política e moral baseada na liberdade, no consentimento dos governados e na igualdade",
+        "wikipediaTitle": "Liberalismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Liberalismo",
+        "wikipediaLanguage": "pt",
+        "categories": ["Liberalismo", "Sistemas econômicos"],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Liberalismo”, Wikipedia (pt). Descrição estruturada do Wikidata (Q6216), sob CC0."
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "person-john-locke",
+      "slug": "john-locke",
+      "title": "John Locke",
+      "summary": "filósofo e médico inglês (1632–1704)",
+      "aliases": [],
+      "context": "A página “John Locke” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1632, "endYear": 1704, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “John Locke” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q9353", "wikipedia": "John Locke" },
+      "discoveryMetadata": {
+        "description": "filósofo e médico inglês (1632–1704)",
+        "wikipediaTitle": "John Locke",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/John_Locke",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Anglicanos do Reino Unido",
+          "Contratualistas",
+          "Empiristas",
+          "Filósofos cristãos",
+          "Filósofos do Reino Unido",
+          "Filósofos do século XVII",
+          "Filósofos políticos",
+          "Ingleses",
+          "Liberalismo",
+          "Mortos em 1704",
+          "Nascidos em 1632",
+          "Naturais de Somerset",
+          "Socianistas do Reino Unido"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “John Locke”, Wikipedia (pt). Descrição estruturada do Wikidata (Q9353), sob CC0."
+      },
+      "kind": "person"
+    },
+    {
+      "id": "person-john-stuart-mill",
+      "slug": "john-stuart-mill",
+      "title": "John Stuart Mill",
+      "summary": "influente pensador britânico do século XIX (1806-1873) primo do Pedro Singer",
+      "aliases": ["J. S. Mill"],
+      "context": "A página “John Stuart Mill” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1806, "endYear": 1873, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “John Stuart Mill” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q50020", "wikipedia": "John Stuart Mill" },
+      "discoveryMetadata": {
+        "description": "influente pensador britânico do século XIX (1806-1873) primo do Pedro Singer",
+        "wikipediaTitle": "John Stuart Mill",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/John_Stuart_Mill",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Ateus da Inglaterra",
+          "Ativistas da liberdade de expressão do Reino Unido",
+          "Economistas da Inglaterra",
+          "Escola clássica",
+          "Feministas da Inglaterra",
+          "Filósofos ateus",
+          "Filósofos da Inglaterra",
+          "Filósofos da Inglaterra do século XIX",
+          "Filósofos da ciência",
+          "Filósofos da linguagem",
+          "Filósofos do século XIX",
+          "Homens feministas",
+          "John Stuart Mill",
+          "Liberais clássicos",
+          "Lógicos do Reino Unido",
+          "Mortos em 1873",
+          "Nascidos em 1806",
+          "Naturais de Londres",
+          "Políticos britânicos do século XIX",
+          "Social-liberais do Reino Unido"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “John Stuart Mill”, Wikipedia (pt). Descrição estruturada do Wikidata (Q50020), sob CC0."
+      },
+      "kind": "person"
+    },
+    {
+      "id": "person-montesquieu",
+      "slug": "montesquieu",
+      "title": "Montesquieu",
+      "summary": "Juiz, historiador e filósofo político francês (1689-1755)",
+      "aliases": [
+        "De Montesquieu",
+        "Baron de Montesquieu",
+        "Charles-Louis de Secondat, baron de La Brède et de Montesquieu",
+        "Charles Louis de Secondat de Montesquieu",
+        "Charles-Louis de Secondat"
+      ],
+      "context": "A página “Montesquieu” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1689, "endYear": 1755, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Montesquieu” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q15975", "wikipedia": "Montesquieu" },
+      "discoveryMetadata": {
+        "description": "Juiz, historiador e filósofo político francês (1689-1755)",
+        "wikipediaTitle": "Montesquieu",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Montesquieu",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Enciclopedistas da França",
+          "Filosofia da linguagem",
+          "Filósofos da França",
+          "Filósofos do direito da França",
+          "Iluministas",
+          "Liberalismo",
+          "Livros de Montesquieu",
+          "Maçons de França",
+          "Membros da Academia Francesa",
+          "Membros da Academia de Ciências da Prússia",
+          "Monárquicos da França",
+          "Mortos em 1755",
+          "Nascidos em 1689",
+          "Políticos franceses do século XVIII"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Montesquieu”, Wikipedia (pt). Descrição estruturada do Wikidata (Q15975), sob CC0."
+      },
+      "kind": "person"
+    },
+    {
+      "id": "person-alexis-de-tocqueville",
+      "slug": "alexis-de-tocqueville",
+      "title": "Alexis de Tocqueville",
+      "summary": "político francês",
+      "aliases": [
+        "Tocqueville",
+        "Alexis-Charles-Henri Clerel de Tocqueville",
+        "Alexis Clérel de Tocqueville"
+      ],
+      "context": "A página “Alexis de Tocqueville” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1805, "endYear": 1859, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Alexis de Tocqueville” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q140694", "wikipedia": "Alexis de Tocqueville" },
+      "discoveryMetadata": {
+        "description": "político francês",
+        "wikipediaTitle": "Alexis de Tocqueville",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Alexis_de_Tocqueville",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Católicos da França",
+          "Escritores em língua francesa",
+          "Filósofos da França",
+          "Historiadores da França",
+          "Liberais clássicos",
+          "Membros da Academia Francesa",
+          "Ministros das Relações Exteriores da França",
+          "Mortos em 1859",
+          "Nascidos em 1805",
+          "Naturais de Paris",
+          "Revolução Francesa",
+          "Sociólogos da França",
+          "Teoria da história"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Alexis de Tocqueville”, Wikipedia (pt). Descrição estruturada do Wikidata (Q140694), sob CC0."
+      },
+      "kind": "person"
+    },
+    {
+      "id": "person-friedrich-hayek",
+      "slug": "friedrich-hayek",
+      "title": "Friedrich Hayek",
+      "summary": "economista austríaco-britânico (1899–1992)",
+      "aliases": [
+        "Hayek",
+        "Friedrich A. Von Hayek",
+        "F. A. von Hayek",
+        "F. A. Hayek",
+        "Friedrich August Von Hayek",
+        "Friedrich von Hayek"
+      ],
+      "context": "A página “Friedrich Hayek” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1899, "endYear": 1992, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Friedrich Hayek” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q1325", "wikipedia": "Friedrich Hayek" },
+      "discoveryMetadata": {
+        "description": "economista austríaco-britânico (1899–1992)",
+        "wikipediaTitle": "Friedrich Hayek",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Friedrich_Hayek",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Acadêmicos do Reino Unido",
+          "Agnósticos da Inglaterra",
+          "Alunos da Universidade de Nova Iorque",
+          "Alunos da Universidade de Viena",
+          "Anticomunistas do Reino Unido",
+          "Austro-húngaros",
+          "Austríacos do século XIX",
+          "Austríacos do século XX",
+          "Economistas da Escola Austríaca",
+          "Economistas da Áustria",
+          "Economistas do Reino Unido",
+          "Escola Austríaca",
+          "Filósofos do Reino Unido",
+          "Filósofos do direito",
+          "Friedrich Hayek",
+          "Historiadores da Áustria",
+          "Historiadores do Reino Unido",
+          "Laureados da Áustria com o Nobel",
+          "Laureados do Reino Unido com o Nobel",
+          "Libertarianismo"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Friedrich Hayek”, Wikipedia (pt). Descrição estruturada do Wikidata (Q1325), sob CC0."
+      },
+      "kind": "person"
+    },
+    {
+      "id": "person-isaiah-berlin",
+      "slug": "isaiah-berlin",
+      "title": "Isaiah Berlin",
+      "summary": "Russo-British-Latvian Jewish social and political theorist, philosopher and historian of ideas (1909–1997)",
+      "aliases": ["Sir Isaiah Berlin", "Isaiah Mendelevich Berlin"],
+      "context": "A página “Isaiah Berlin” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1909, "endYear": 1997, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Isaiah Berlin” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q205162", "wikipedia": "Isaiah Berlin" },
+      "discoveryMetadata": {
+        "description": "Russo-British-Latvian Jewish social and political theorist, philosopher and historian of ideas (1909–1997)",
+        "wikipediaTitle": "Isaiah Berlin",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Isaiah_Berlin",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Agnósticos",
+          "Britânicos de ascendência letã",
+          "Cidadãos naturalizados do Reino Unido",
+          "Comendadores da Ordem do Império Britânico",
+          "Doutores honoris causa da Universidade Yale",
+          "Doutores honoris causa da Universidade de Cambridge",
+          "Filósofos analíticos",
+          "Filósofos da Rússia",
+          "Filósofos do Reino Unido",
+          "Filósofos do século XX",
+          "Historiadores da Inglaterra",
+          "Historiadores da Rússia",
+          "Judeus da Letônia",
+          "Judeus do Reino Unido",
+          "Membros da Academia de Artes e Ciências dos Estados Unidos",
+          "Mortos em 1997",
+          "Nascidos em 1909",
+          "Naturais de Riga",
+          "Social-liberais do Reino Unido"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Isaiah Berlin”, Wikipedia (pt). Descrição estruturada do Wikidata (Q205162), sob CC0."
+      },
+      "kind": "person"
+    },
+    {
+      "id": "ideology-classical-liberalism",
+      "slug": "classical-liberalism",
+      "title": "Liberalismo clássico",
+      "summary": "filosofia política",
+      "aliases": ["classic liberalism"],
+      "context": "A página “Liberalismo clássico” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Liberalismo clássico” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q794394", "wikipedia": "Liberalismo clássico" },
+      "discoveryMetadata": {
+        "description": "filosofia política",
+        "wikipediaTitle": "Liberalismo clássico",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Crédito",
+          "Direita (política)",
+          "Economia financeira",
+          "Finanças",
+          "Ideologias econômicas",
+          "Liberalismo",
+          "Mercado financeiro",
+          "Sistema bancário"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Liberalismo clássico”, Wikipedia (pt). Descrição estruturada do Wikidata (Q794394), sob CC0."
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "ideology-social-liberalism",
+      "slug": "social-liberalism",
+      "title": "Liberalismo social",
+      "summary": "ideologia política",
+      "aliases": ["Social liberalismo", "Esquerda-liberal", "left-liberalism"],
+      "context": "A página “Liberalismo social” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Liberalismo social” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q201712", "wikipedia": "Liberalismo social" },
+      "discoveryMetadata": {
+        "description": "ideologia política",
+        "wikipediaTitle": "Liberalismo social",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Liberalismo_social",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Cultura política",
+          "Filosofia social",
+          "Ideologias de centro-esquerda",
+          "Liberalismo",
+          "Liberalismo social",
+          "Políticas sociais",
+          "Social-democracia"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Liberalismo social”, Wikipedia (pt). Descrição estruturada do Wikidata (Q201712), sob CC0."
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "ideology-neoliberalism",
+      "slug": "neoliberalism",
+      "title": "Neoliberalismo",
+      "summary": "filosofia política que apoia a liberalização econômica",
+      "aliases": [
+        "Neoliberal",
+        "Neo-liberal",
+        "Neoliberais",
+        "Neo-liberalismo",
+        "neo-liberalism",
+        "Neoliberalism"
+      ],
+      "context": "A página “Neoliberalismo” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Neoliberalismo” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q162719", "wikipedia": "Neoliberalismo" },
+      "discoveryMetadata": {
+        "description": "filosofia política que apoia a liberalização econômica",
+        "wikipediaTitle": "Neoliberalismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Neoliberalismo",
+        "wikipediaLanguage": "pt",
+        "categories": ["História do pensamento econômico", "Macroeconomia", "Neoliberalismo"],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Neoliberalismo”, Wikipedia (pt). Descrição estruturada do Wikidata (Q162719), sob CC0."
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "event-glorious-revolution",
+      "slug": "glorious-revolution",
+      "title": "Revolução Gloriosa",
+      "summary": "golpe de estado ocorrido na Inglaterra entre 1688 e 1689",
+      "aliases": ["Gloriosa revolução", "Revolução Inglesa"],
+      "context": "A página “Revolução Gloriosa” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1688, "endYear": 1689, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Revolução Gloriosa” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q189508", "wikipedia": "Revolução Gloriosa" },
+      "discoveryMetadata": {
+        "description": "golpe de estado ocorrido na Inglaterra entre 1688 e 1689",
+        "wikipediaTitle": "Revolução Gloriosa",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Gloriosa",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Golpes de Estado na Inglaterra",
+          "Guerras de sucessão",
+          "Guilherme III de Inglaterra",
+          "Invasões da Inglaterra",
+          "Jacobitismo",
+          "Revolução Gloriosa",
+          "Revoluções do século XVII",
+          "Revoluções não violentas"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Revolução Gloriosa”, Wikipedia (pt). Descrição estruturada do Wikidata (Q189508), sob CC0."
+      },
+      "kind": "event"
+    },
+    {
+      "id": "event-american-revolution",
+      "slug": "american-revolution",
+      "title": "Revolução Americana",
+      "summary": "fundação dos Estados Unidos da América",
+      "aliases": [
+        "Guerra da independência dos eua",
+        "Revolução Americana de 1776",
+        "Revolução Americana de 1776-1783",
+        "Independência dos EUA",
+        "Guerra da independência americana"
+      ],
+      "context": "A página “Revolução Americana” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1775, "endYear": 1783, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Revolução Americana” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q192769", "wikipedia": "Revolução Americana" },
+      "discoveryMetadata": {
+        "description": "fundação dos Estados Unidos da América",
+        "wikipediaTitle": "Revolução Americana",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Americana",
+        "wikipediaLanguage": "pt",
+        "categories": [
+          "Conflitos na década de 1770",
+          "Conflitos na década de 1780",
+          "Década de 1770 nos Estados Unidos",
+          "Década de 1780 nos Estados Unidos",
+          "Guerra de Independência dos Estados Unidos",
+          "História da colonização dos Estados Unidos",
+          "História do Reino Unido",
+          "Revoluções do Atlântico"
+        ],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Revolução Americana”, Wikipedia (pt). Descrição estruturada do Wikidata (Q192769), sob CC0."
+      },
+      "kind": "event"
+    },
+    {
+      "id": "event-french-revolution",
+      "slug": "french-revolution",
+      "title": "Revolução Francesa",
+      "summary": "revolução na França de 1789 a 1799",
+      "aliases": [],
+      "context": "A página “Revolução Francesa” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas.",
+      "temporalExtent": { "startYear": 1789, "endYear": 1799, "precision": "range", "label": null },
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Contexto de descoberta",
+          "paragraphs": [
+            "A página “Revolução Francesa” na Wikipedia foi consultada para descobrir categorias e links internos. Essas conexões são caminhos de navegação, não relações historiográficas validadas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "externalIds": { "wikidata": "Q6534", "wikipedia": "Revolução Francesa" },
+      "discoveryMetadata": {
+        "description": "revolução na França de 1789 a 1799",
+        "wikipediaTitle": "Revolução Francesa",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Francesa",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-02",
+        "contentLicense": "CC0 1.0 (descrições estruturadas do Wikidata); metadados de descoberta da Wikipedia",
+        "contentLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "attribution": "Categorias e links consultados na página “Revolução Francesa”, Wikipedia (pt). Descrição estruturada do Wikidata (Q6534), sob CC0."
+      },
+      "kind": "event"
+    }
+  ],
+  "sources": [
+    {
+      "id": "liberalism-source-wikipedia-ideology-liberalism",
+      "title": "Liberalismo — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Liberalismo",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-ideology-liberalism",
+      "title": "Q6216 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q6216",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-person-john-locke",
+      "title": "John Locke — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/John_Locke",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-person-john-locke",
+      "title": "Q9353 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q9353",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-person-adam-smith",
+      "title": "Adam Smith — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Adam_Smith",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-person-adam-smith",
+      "title": "Q9381 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q9381",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-person-john-stuart-mill",
+      "title": "John Stuart Mill — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/John_Stuart_Mill",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-person-john-stuart-mill",
+      "title": "Q50020 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q50020",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-person-montesquieu",
+      "title": "Montesquieu — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Montesquieu",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-person-montesquieu",
+      "title": "Q15975 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q15975",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-person-alexis-de-tocqueville",
+      "title": "Alexis de Tocqueville — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Alexis_de_Tocqueville",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-person-alexis-de-tocqueville",
+      "title": "Q140694 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q140694",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-person-friedrich-hayek",
+      "title": "Friedrich Hayek — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Friedrich_Hayek",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-person-friedrich-hayek",
+      "title": "Q1325 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q1325",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-person-isaiah-berlin",
+      "title": "Isaiah Berlin — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Isaiah_Berlin",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-person-isaiah-berlin",
+      "title": "Q205162 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q205162",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-ideology-classical-liberalism",
+      "title": "Liberalismo clássico — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-ideology-classical-liberalism",
+      "title": "Q794394 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q794394",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-ideology-social-liberalism",
+      "title": "Liberalismo social — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Liberalismo_social",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-ideology-social-liberalism",
+      "title": "Q201712 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q201712",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-ideology-neoliberalism",
+      "title": "Neoliberalismo — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Neoliberalismo",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-ideology-neoliberalism",
+      "title": "Q162719 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q162719",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-event-glorious-revolution",
+      "title": "Revolução Gloriosa — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Gloriosa",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-event-glorious-revolution",
+      "title": "Q189508 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q189508",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-event-american-revolution",
+      "title": "Revolução Americana — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Americana",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-event-american-revolution",
+      "title": "Q192769 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q192769",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikipedia-event-french-revolution",
+      "title": "Revolução Francesa — Wikipedia",
+      "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Francesa",
+      "edition": "Wikipedia (pt); categorias e links usados para descoberta",
+      "publicationDate": null
+    },
+    {
+      "id": "liberalism-source-wikidata-event-french-revolution",
+      "title": "Q6534 — Wikidata",
+      "url": "https://www.wikidata.org/wiki/Q6534",
+      "edition": "Wikidata; dados estruturados sob CC0",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "liberalism-evidence-person-alexis-de-tocqueville-p737-person-montesquieu",
+      "sourceId": "liberalism-source-wikidata-person-alexis-de-tocqueville",
+      "locator": "Q140694 P737 Q15975",
+      "accessedAt": "2026-11-02",
+      "note": "Declaração estruturada do Wikidata; pendente de avaliação editorial e historiográfica. Referências registradas na declaração: nenhuma referência anexada no registro consultado."
+    },
+    {
+      "id": "liberalism-evidence-ideology-classical-liberalism-p279-ideology-liberalism",
+      "sourceId": "liberalism-source-wikidata-ideology-classical-liberalism",
+      "locator": "Q794394 P279 Q6216",
+      "accessedAt": "2026-11-02",
+      "note": "Declaração estruturada do Wikidata; pendente de avaliação editorial e historiográfica. Referências registradas na declaração: nenhuma referência anexada no registro consultado."
+    },
+    {
+      "id": "liberalism-evidence-ideology-social-liberalism-p279-ideology-liberalism",
+      "sourceId": "liberalism-source-wikidata-ideology-social-liberalism",
+      "locator": "Q201712 P279 Q6216",
+      "accessedAt": "2026-11-02",
+      "note": "Declaração estruturada do Wikidata; pendente de avaliação editorial e historiográfica. Referências registradas na declaração: nenhuma referência anexada no registro consultado."
+    }
+  ],
+  "citations": [],
+  "claims": [],
+  "reviews": [],
+  "assetLicenses": [
+    {
+      "id": "liberalism-asset-person-friedrich-hayek",
+      "entityId": "person-friedrich-hayek",
+      "assetPath": "/assets/liberalism/person-friedrich-hayek-d7be270dbd6580e7.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Friedrich_Hayek_portrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "The original uploader was DickClarkMises at English Wikipedia .",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Friedrich Hayek portrait.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Friedrich_Hayek_portrait.jpg",
+      "attribution": "Friedrich Hayek portrait.jpg, The original uploader was DickClarkMises at English Wikipedia ., CC BY-SA 3.0",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-person-isaiah-berlin",
+      "entityId": "person-isaiah-berlin",
+      "assetPath": "/assets/liberalism/person-isaiah-berlin-41b14d9c5866ead5.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/IsaiahBerlin1983.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Rob C. Croes (ANEFO)",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "IsaiahBerlin1983.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:IsaiahBerlin1983.jpg",
+      "attribution": "IsaiahBerlin1983.jpg, Rob C. Croes (ANEFO), CC0",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-ideology-neoliberalism",
+      "entityId": "ideology-neoliberalism",
+      "assetPath": "/assets/liberalism/ideology-neoliberalism-da972547748de88f.png",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/EffectOfTariff.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Austin512",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "EffectOfTariff.svg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:EffectOfTariff.svg",
+      "attribution": "Austin Donisan",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-event-american-revolution",
+      "entityId": "event-american-revolution",
+      "assetPath": "/assets/liberalism/event-american-revolution-b48873795db4663d.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Declaration_of_Independence_%281819%29%2C_by_John_Trumbull.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "John Trumbull",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Declaration_of_Independence_(1819)%2C_by_John_Trumbull.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Declaration of Independence (1819), by John Trumbull.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Declaration_of_Independence_(1819)%2C_by_John_Trumbull.jpg",
+      "attribution": "Declaration of Independence (1819), by John Trumbull.jpg, John Trumbull, Public domain",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-event-french-revolution",
+      "entityId": "event-french-revolution",
+      "assetPath": "/assets/liberalism/event-french-revolution-5ed63e737684326e.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/LouisXVIExecutionBig.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Isidore Stanislas Helman / After Charles Monnet",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:LouisXVIExecutionBig.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "LouisXVIExecutionBig.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:LouisXVIExecutionBig.jpg",
+      "attribution": "LouisXVIExecutionBig.jpg, Isidore Stanislas Helman / After Charles Monnet, Public domain",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-ideology-classical-liberalism",
+      "entityId": "ideology-classical-liberalism",
+      "assetPath": "/assets/liberalism/ideology-classical-liberalism-f81604efe9ee9edf.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/1846_-_Anti-Corn_Law_League_Meeting.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Unknown author Unknown author",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:1846_-_Anti-Corn_Law_League_Meeting.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "1846 - Anti-Corn Law League Meeting.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:1846_-_Anti-Corn_Law_League_Meeting.jpg",
+      "attribution": "1846 - Anti-Corn Law League Meeting.jpg, Unknown author Unknown author, Public domain",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-ideology-liberalism",
+      "entityId": "ideology-liberalism",
+      "assetPath": "/assets/liberalism/ideology-liberalism-ccafac6709fc5f06.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Declaration_of_the_Rights_of_Man_and_of_the_Citizen_in_1789.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": null,
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Declaration_of_the_Rights_of_Man_and_of_the_Citizen_in_1789.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Declaration of the Rights of Man and of the Citizen in 1789.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Declaration_of_the_Rights_of_Man_and_of_the_Citizen_in_1789.jpg",
+      "attribution": "Declaration of the Rights of Man and of the Citizen in 1789.jpg, autor não identificado, Public domain",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-person-adam-smith",
+      "entityId": "person-adam-smith",
+      "assetPath": "/assets/liberalism/person-adam-smith-c9025c339f13bf7c.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0a/AdamSmith.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Etching created by Cadell and Davies (1811), John Horsburgh (1828) or R.C. Bell (1872).",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:AdamSmith.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "AdamSmith.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:AdamSmith.jpg",
+      "attribution": "AdamSmith.jpg, Etching created by Cadell and Davies (1811), John Horsburgh (1828) or R.C. Bell (1872)., Public domain",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-person-alexis-de-tocqueville",
+      "entityId": "person-alexis-de-tocqueville",
+      "assetPath": "/assets/liberalism/person-alexis-de-tocqueville-58b60afcf5ea252c.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Alexis_de_tocqueville_cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Théodore Chassériau",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Alexis_de_tocqueville_cropped.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Alexis de tocqueville cropped.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Alexis_de_tocqueville_cropped.jpg",
+      "attribution": "Alexis de tocqueville cropped.jpg, Théodore Chassériau, Public domain",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-person-john-locke",
+      "entityId": "person-john-locke",
+      "assetPath": "/assets/liberalism/person-john-locke-b9c4f485609d4de6.png",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d1/JohnLocke.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Godfrey Kneller",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:JohnLocke.png",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "JohnLocke.png",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:JohnLocke.png",
+      "attribution": "JohnLocke.png, Godfrey Kneller, Public domain",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-person-john-stuart-mill",
+      "entityId": "person-john-stuart-mill",
+      "assetPath": "/assets/liberalism/person-john-stuart-mill-4c5eb7ee0255ee5b.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/John_Stuart_Mill_by_London_Stereoscopic_Company%2C_c1870.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "London Stereoscopic Company",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:John_Stuart_Mill_by_London_Stereoscopic_Company%2C_c1870.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "John Stuart Mill by London Stereoscopic Company, c1870.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:John_Stuart_Mill_by_London_Stereoscopic_Company%2C_c1870.jpg",
+      "attribution": "John Stuart Mill by London Stereoscopic Company, c1870.jpg, London Stereoscopic Company, Public domain",
+      "retrievedAt": "2026-11-02"
+    },
+    {
+      "id": "liberalism-asset-person-montesquieu",
+      "entityId": "person-montesquieu",
+      "assetPath": "/assets/liberalism/person-montesquieu-1ac64ea3ab1363cb.png",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Montesquieu_1.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "After Jacques-Antoine Dassier",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Montesquieu_1.png",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Montesquieu 1.png",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Montesquieu_1.png",
+      "attribution": "Montesquieu 1.png, After Jacques-Antoine Dassier, Public domain",
+      "retrievedAt": "2026-11-02"
+    }
+  ],
+  "relations": [
+    {
+      "id": "liberalism-discovery-ideology-liberalism-person-adam-smith",
+      "fromEntityId": "ideology-liberalism",
+      "toEntityId": "person-adam-smith",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-liberalism-person-alexis-de-tocqueville",
+      "fromEntityId": "ideology-liberalism",
+      "toEntityId": "person-alexis-de-tocqueville",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-person-john-locke-person-adam-smith",
+      "fromEntityId": "person-john-locke",
+      "toEntityId": "person-adam-smith",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/John_Locke",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-person-john-stuart-mill-person-adam-smith",
+      "fromEntityId": "person-john-stuart-mill",
+      "toEntityId": "person-adam-smith",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/John_Stuart_Mill",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-person-john-stuart-mill-person-alexis-de-tocqueville",
+      "fromEntityId": "person-john-stuart-mill",
+      "toEntityId": "person-alexis-de-tocqueville",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/John_Stuart_Mill",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-person-alexis-de-tocqueville-person-adam-smith",
+      "fromEntityId": "person-alexis-de-tocqueville",
+      "toEntityId": "person-adam-smith",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Alexis_de_Tocqueville",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-person-isaiah-berlin-person-john-stuart-mill",
+      "fromEntityId": "person-isaiah-berlin",
+      "toEntityId": "person-john-stuart-mill",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Isaiah_Berlin",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-classical-liberalism-person-adam-smith",
+      "fromEntityId": "ideology-classical-liberalism",
+      "toEntityId": "person-adam-smith",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-classical-liberalism-person-alexis-de-tocqueville",
+      "fromEntityId": "ideology-classical-liberalism",
+      "toEntityId": "person-alexis-de-tocqueville",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-social-liberalism-person-adam-smith",
+      "fromEntityId": "ideology-social-liberalism",
+      "toEntityId": "person-adam-smith",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_social",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-social-liberalism-person-alexis-de-tocqueville",
+      "fromEntityId": "ideology-social-liberalism",
+      "toEntityId": "person-alexis-de-tocqueville",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_social",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-neoliberalism-person-adam-smith",
+      "fromEntityId": "ideology-neoliberalism",
+      "toEntityId": "person-adam-smith",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Neoliberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-neoliberalism-person-alexis-de-tocqueville",
+      "fromEntityId": "ideology-neoliberalism",
+      "toEntityId": "person-alexis-de-tocqueville",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Neoliberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-event-american-revolution-person-adam-smith",
+      "fromEntityId": "event-american-revolution",
+      "toEntityId": "person-adam-smith",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Americana",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-event-american-revolution-person-alexis-de-tocqueville",
+      "fromEntityId": "event-american-revolution",
+      "toEntityId": "person-alexis-de-tocqueville",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Americana",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-statement-person-alexis-de-tocqueville-p737-person-montesquieu",
+      "fromEntityId": "person-alexis-de-tocqueville",
+      "toEntityId": "person-montesquieu",
+      "type": "influenced_by",
+      "label": "é listado no Wikidata como influenciado por",
+      "reverseLabel": "é listado no Wikidata como influência para",
+      "context": "Mapeado da declaração P737 em Q140694; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["liberalism-evidence-person-alexis-de-tocqueville-p737-person-montesquieu"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q140694",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-statement-ideology-classical-liberalism-p279-ideology-liberalism",
+      "fromEntityId": "ideology-classical-liberalism",
+      "toEntityId": "ideology-liberalism",
+      "type": "related_to",
+      "label": "é classificado no Wikidata como subtipo de",
+      "reverseLabel": "tem como subtipo registrado no Wikidata",
+      "context": "Mapeado da declaração P279 em Q794394; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["liberalism-evidence-ideology-classical-liberalism-p279-ideology-liberalism"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q794394",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-statement-ideology-social-liberalism-p279-ideology-liberalism",
+      "fromEntityId": "ideology-social-liberalism",
+      "toEntityId": "ideology-liberalism",
+      "type": "related_to",
+      "label": "é classificado no Wikidata como subtipo de",
+      "reverseLabel": "tem como subtipo registrado no Wikidata",
+      "context": "Mapeado da declaração P279 em Q201712; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+      "temporalExtent": null,
+      "uncertainty": "moderate",
+      "evidenceIds": ["liberalism-evidence-ideology-social-liberalism-p279-ideology-liberalism"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q201712",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-event-glorious-revolution-event-paris-commune",
+      "fromEntityId": "event-glorious-revolution",
+      "toEntityId": "event-paris-commune",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Gloriosa",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-classical-liberalism-work-wealth-of-nations",
+      "fromEntityId": "ideology-classical-liberalism",
+      "toEntityId": "work-wealth-of-nations",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-classical-liberalism-person-montesquieu",
+      "fromEntityId": "ideology-classical-liberalism",
+      "toEntityId": "person-montesquieu",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_cl%C3%A1ssico",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-liberalism-person-montesquieu",
+      "fromEntityId": "ideology-liberalism",
+      "toEntityId": "person-montesquieu",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-liberalism-country-brazil",
+      "fromEntityId": "ideology-liberalism",
+      "toEntityId": "country-brazil",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-liberalism-event-paris-commune",
+      "fromEntityId": "ideology-liberalism",
+      "toEntityId": "event-paris-commune",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-liberalism-ideology-communism",
+      "fromEntityId": "ideology-liberalism",
+      "toEntityId": "ideology-communism",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-neoliberalism-person-montesquieu",
+      "fromEntityId": "ideology-neoliberalism",
+      "toEntityId": "person-montesquieu",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Neoliberalismo",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-social-liberalism-person-montesquieu",
+      "fromEntityId": "ideology-social-liberalism",
+      "toEntityId": "person-montesquieu",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_social",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-social-liberalism-country-brazil",
+      "fromEntityId": "ideology-social-liberalism",
+      "toEntityId": "country-brazil",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_social",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-ideology-social-liberalism-ideology-communism",
+      "fromEntityId": "ideology-social-liberalism",
+      "toEntityId": "ideology-communism",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Liberalismo_social",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-person-adam-smith-work-wealth-of-nations",
+      "fromEntityId": "person-adam-smith",
+      "toEntityId": "work-wealth-of-nations",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Adam_Smith",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-person-alexis-de-tocqueville-person-montesquieu",
+      "fromEntityId": "person-alexis-de-tocqueville",
+      "toEntityId": "person-montesquieu",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Alexis_de_Tocqueville",
+        "retrievedAt": "2026-11-02"
+      }
+    },
+    {
+      "id": "liberalism-discovery-person-isaiah-berlin-ideology-communism",
+      "fromEntityId": "person-isaiah-berlin",
+      "toEntityId": "ideology-communism",
+      "type": "encyclopedic-link",
+      "label": "link de descoberta na Wikipedia",
+      "reverseLabel": "mencionado por link de descoberta na Wikipedia",
+      "context": "Conexão de navegação entre páginas da Wikipedia; não constitui relação historiográfica validada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": [],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Isaiah_Berlin",
+        "retrievedAt": "2026-11-02"
+      }
+    }
+  ],
+  "learningPaths": []
+}
