@@ -527,3 +527,68 @@ Estas afirmações ainda não estão confirmadas:
 - **Subagentes:** seis de análise (somente leitura) e um de captura visual, com cerca de 190 arquivos lidos e 23 capturas.
 - **Comandos executados pelo orquestrador:** `npm run typecheck` (exit 0); `npm test` (exit 0; 36 arquivos e 170 testes); `npm run lint` (exit 0). Dev server `ng serve` na porta 4303, parado ao fim.
 - **Git:** baseline `f99d01a` na branch `feat/atlas-carrosseis-e-exploracao`. `master` está em `79f4dbc`. Não há issues criadas.
+
+---
+
+## 10. Status de implementação (02/11/2026)
+
+Commits em `master`: `a4baa60`, `e8a9dc6`, `e9f9bca` (fases anteriores); `e3b8aa1`, `6d8df57` (fase 3); `bab87b6` (fase 2); `515a8f2` (baixos); `51ef687` e `8115b23` (lotes seguintes).
+
+Legenda: **feito**, **parcial** (o que falta está descrito), **pendente** (sem implementação, com motivo), **decidido** (decisão registrada, sem mudança de código).
+
+| ID | Status | Nota |
+|---|---|---|
+| AUD-01 | feito | Fase 1. |
+| AUD-02 | feito | Altura medida em `--reading-bar-h`. |
+| AUD-03 | feito | Canvas oculto até 650 px; lista aberta por padrão. |
+| AUD-04 | feito | Container query em `.chapter-sequence`; correção de especificidade em `6d8df57`. |
+| AUD-05 | parcial | Lista textual do atlas fechada em telas largas e aberta abaixo de 42rem. Índice, grafo e linha do tempo mantêm controles próprios. |
+| AUD-06 | feito | "Abrir ficha +" para painel, "Selecionar ficha", "Destacar no grafo" e "Ver conexões" sem "+", "Abrir ficha de … →" para a página. |
+| AUD-07 | parcial | Hover de botão secundário com tinta, não com token de erro. Vermelho ainda decorativo em sombras e bordas de estado. Decisão de produto registrada em 11. |
+| AUD-08 | parcial | Sombras de repouso removidas de cinco componentes; sombras ativas, de hover e de diálogo ficam. |
+| AUD-09 | decidido | Documento de design alinhado ao CSS. Logos mantidos por decisão de marca. |
+| AUD-10 | parcial | Faixa "Explorar por tipo" com seis catálogos, sem contagens. Contagens exigiriam carregar o grafo na home. |
+| AUD-11 | feito | Composições fixas por rota; a recomposição fica como ação secundária do rodapé e da home. |
+| AUD-12 | parcial | `:hover` sob `(hover: hover)` em dez regras. Taxonomia de botões em `ui-primitives` não consolidada. |
+| AUD-13 | feito | Página "Página não encontrada" (Fase 1). |
+| AUD-14 | feito | Metadados sem ramos por rota (Fase 1). |
+| AUD-15 | feito | Colagem decorativa fora da ordem de tabulação; mapa é a única navegação. |
+| AUD-16 | parcial | Filtro de categorias virou grupo, não navegação; contagem de página vai ao topo da lista; "Estado da revisão". Os dois eixos (catálogo e categoria) permanecem por decisão. |
+| AUD-17 | feito | Conexões mantêm `origem`; teste em `knowledge-explorer.spec.ts`. |
+| AUD-18 | feito | Diálogo com "Fechar" único (Fase 1). |
+| AUD-19 | parcial | Breadcrumb com catálogo pai; "Copiar link"; dados técnicos em disclosure. Migalha para verbete desconhecido não aparece. |
+| AUD-20 | parcial | Repetição removida em relações e debate; rótulos por item só quando diferem. |
+| AUD-21 | parcial | Prévia só por teclado ou hover fino; nome acessível começa pelo texto visível. Toque abre o diálogo de contexto, sem definição curta no topo. |
+| AUD-22 | parcial | Legenda de 0,75 rem no celular; cores mantidas em repouso. Texto alternativo descritivo exige mudança no schema e no conteúdo. |
+| AUD-23 | parcial | Fontes com 24 px de altura mínima; demais controles conforme Fase 3. |
+| AUD-24 | parcial | Abertura unificada em 760 px. Cerca de 20 breakpoints e a escala tipográfica não foram tokenizados. |
+| AUD-25 | feito | Prosa limitada a 72ch; teste em `pages.spec.ts`. |
+| AUD-26 | feito | Retrato empilhado abaixo de 600 px. |
+| AUD-27 | feito | Lista de vidas com nome e anos no celular. |
+| AUD-28 | parcial | Nó escala com o canvas; sobreposição não medida. |
+| AUD-29 | feito | Smooth global removido (Fase 1). |
+| AUD-30 | feito | `@media print` e `focus-within` já existiam. |
+| AUD-31 | feito | Transição só com opacidade (Fase 1). |
+| AUD-32 | pendente | Troca de tom e leitura por frame exigem trace em aba visível, que não foi possível obter. |
+| AUD-33 | feito | Títulos não selecionados em tinta sólida. |
+| AUD-34 | feito | Fontes em WOFF2 (`e8a9dc6`). |
+| AUD-35 | parcial | Axe e overflow em todas as rotas públicas e teste de foco. Falta cobertura de `KnowledgeContextDirective`, rodapé e zoom. |
+| AUD-36 | decidido | Componente órfão removido; `/rede` segue redirecionando. Mapa relacional não foi construído. |
+| AUD-37 | feito | `aria-disabled` e `tabindex` condicionais. |
+| AUD-38 | parcial | Diálogos anunciados como modais; gatilho aponta para o diálogo aberto com `aria-controls`. |
+| AUD-39 | feito | Rótulos da cronologia abrem para a esquerda perto da borda. |
+| AUD-40 | feito | Texto da figura não promete tabela. |
+| AUD-41 | feito | Saltos de capítulo entram no histórico; o índice acompanha o fragmento. Teste em `pages.spec.ts`. |
+| AUD-42 | parcial | Citações recolhidas por fonte. Índice interno por tipo não foi criado. |
+| AUD-43 | feito | Menu mobile fecha quando o foco sai (já existia). |
+| AUD-44 | feito | Uma coluna até 40rem (já existia). |
+| AUD-45 | feito | Região de status permanente. |
+| AUD-46 | parcial | Exceções de CSP documentadas em `scripts/security-headers.mjs`; nenhum header mudou. |
+| AUD-47 | feito | Easing e duração por token; restos são legítimos. |
+| AUD-48 | feito | Cores fora de tokens migradas; `#000` do carrossel mantido por decisão anterior. |
+| AUD-49 | feito | Seta ↗ só em links externos. |
+| AUD-50 | parcial | Filtro de rádio removido; os dois vínculos aparecem rotulados. Textos continuam no template. |
+| AUD-51 | feito | Link de fonte volta à origem. |
+| AUD-52 | feito | "Você leu N%", "Voltar de onde veio". |
+| AUD-53 | pendente | Mídia sem dimensões no schema; CLS já medido em zero nas rotas principais. Exige dados. |
+| AUD-54 | feito | Resolvers sem uso removidos; documentação atualizada. |
