@@ -1,9 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-test('explores entities, graph, timeline, licensed media and returns to prior context', async ({
-  page,
-}) => {
+test('explores entities, graph, timeline and returns to prior context', async ({ page }) => {
   await page.goto('/liberalismo/');
   await expect(
     page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 1 }),
@@ -27,32 +25,14 @@ test('explores entities, graph, timeline, licensed media and returns to prior co
     page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
   ).toBeVisible();
   await page.locator('#atlas-section-tempo').scrollIntoViewIfNeeded();
-  await page.locator('.timeline-list button').filter({ hasText: 'Revolução Gloriosa' }).click();
+  await page.locator('.timeline-node').filter({ hasText: 'Revolução Gloriosa' }).click();
   await expect(
     page.getByRole('heading', { name: 'Revolução Gloriosa', exact: true }),
   ).toBeVisible();
-  await page.locator('#atlas-section-imagens').scrollIntoViewIfNeeded();
-  await expect(page.getByRole('heading', { name: 'Imagens com licença registrada' })).toBeVisible();
-  const figure = page.locator('.gallery figure').first();
-  await figure.scrollIntoViewIfNeeded();
-  await expect(figure.locator('img')).toHaveAttribute('alt', /Imagem associada a/);
-  await expect
-    .poll(() =>
-      figure
-        .locator('img')
-        .evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0),
-    )
-    .toBe(true);
-  const expand = figure.getByRole('button', { name: /Ampliar imagem/ });
-  await expand.click();
-  await expect(figure.getByRole('button', { name: /Reduzir imagem/ })).toHaveAttribute(
-    'aria-expanded',
-    'true',
-  );
-  await expect(figure.getByRole('link', { name: /CC BY|CC0/ })).toBeVisible();
-  await expect(figure.getByRole('link', { name: 'Página do arquivo no Commons' })).toHaveAttribute(
-    'href',
-    /commons\.wikimedia\.org/,
+  await page.getByRole('button', { name: 'Próximo →' }).click();
+  await expect(page.getByRole('button', { name: '← Anterior' })).toHaveAttribute(
+    'aria-disabled',
+    'false',
   );
   await page.locator('#atlas-section-rede').scrollIntoViewIfNeeded();
   await expect(page.locator('.text-network summary')).toBeVisible();
@@ -75,10 +55,9 @@ test('mobile keeps entity navigation available without horizontal overflow', asy
   });
   const locke = page.locator('.entity-card').filter({ hasText: 'John Locke' });
   await locke.focus();
-  await expect(locke.locator('.card-preview')).toBeHidden();
+  await expect(locke.locator('.card-preview')).toBeVisible();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'John Locke', exact: true })).toBeVisible();
-  await page.keyboard.press('Escape');
   await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
   await expect(
     page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
@@ -89,16 +68,17 @@ test('mobile keeps entity navigation available without horizontal overflow', asy
   ).toEqual([]);
 });
 
-test('mobile opens and reopens the selected entity without duplicating history', async ({
-  page,
-}) => {
+test('mobile reopens the selected entity without duplicating history', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/liberalismo/');
-  const root = page.locator('.entity-card').filter({ hasText: 'Liberalismo' }).first();
+  const locke = page.locator('.entity-card').filter({ hasText: 'John Locke' });
   for (let attempt = 0; attempt < 2; attempt++) {
-    await root.click();
-    await expect(page.getByRole('dialog')).toContainText('Liberalismo');
-    await page.keyboard.press('Escape');
-    await expect(root).toBeFocused();
+    await locke.click();
+    await expect(page.getByRole('heading', { name: 'John Locke', exact: true })).toBeVisible();
   }
+  await page.getByRole('button', { name: '← Voltar ao contexto anterior' }).click();
+  await expect(
+    page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
+  ).toBeVisible();
+  await expect(page.getByRole('button', { name: '← Voltar ao contexto anterior' })).toHaveCount(0);
 });

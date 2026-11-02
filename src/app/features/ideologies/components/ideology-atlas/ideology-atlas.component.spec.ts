@@ -180,17 +180,19 @@ describe('Liberalism atlas snapshot', () => {
     ).toBe(true);
   });
 
-  it('provides dated people and events and only fully licensed media to the views', () => {
+  it('provides dated people and events in chronological periods that step one record at a time', () => {
     const page = createAtlas();
     expect(page.timelineEntities().some((entity) => entity.kind === 'event')).toBe(true);
     expect(page.timelineEntities().some((entity) => entity.kind === 'person')).toBe(true);
     expect(
-      page
-        .media()
-        .every((item) =>
-          Boolean(item.asset.licenseUrl && item.asset.filePageUrl && item.asset.attribution),
-        ),
-    ).toBe(true);
+      page.timelinePeriods().flatMap((period) => period.entities.map((entity) => entity.id)),
+    ).toEqual(page.timelineEntities().map((entity) => entity.id));
+
+    const last = page.timelineEntities().length - 1;
+    page.stepTimeline(-1);
+    expect(page.timelineIndex()).toBe(0);
+    for (let step = 0; step <= last; step++) page.stepTimeline(1);
+    expect(page.timelineIndex()).toBe(last);
     expect(page.unconnectedEntityCount()).toBeGreaterThan(0);
   });
 });

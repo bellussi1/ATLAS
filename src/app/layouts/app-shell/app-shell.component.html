@@ -8,50 +8,7 @@
   Pular para o conteúdo
 </a>
 
-<header class="site-header">
-  <div class="site-header__inner">
-    <a class="wordmark" routerLink="/" aria-label="ATLAS — História em relação — página inicial">
-      <img class="wordmark__logo" src="/brand/atlas-logo.svg" alt="" width="280" height="80" />
-      <span class="wordmark__caption">História em relação</span>
-    </a>
-    <nav class="graphic-doors" aria-label="Entradas para explorar">
-      <a
-        class="graphic-door atlas-press"
-        routerLink="/marxismo"
-        routerLinkActive="is-active"
-        ariaCurrentWhenActive="page"
-        ><app-geometric-mosaic [columns]="3" [rows]="1" palette="marx" [seed]="11" /><span
-          class="door-verb"
-          >Ler</span
-        ><span class="door-label"
-          >Marxismo <span class="atlas-arrow" aria-hidden="true">↗</span></span
-        ></a
-      >
-      <a
-        class="graphic-door atlas-press"
-        routerLink="/liberalismo"
-        routerLinkActive="is-active"
-        ariaCurrentWhenActive="page"
-        ><app-geometric-mosaic [columns]="3" [rows]="1" palette="liberal" [seed]="23" /><span
-          class="door-verb"
-          >Percorrer</span
-        ><span class="door-label"
-          >Liberalismo <span class="atlas-arrow" aria-hidden="true">↗</span></span
-        ></a
-      >
-      <a
-        class="graphic-door graphic-door--search atlas-press"
-        routerLink="/conhecimento"
-        routerLinkActive="is-active"
-        ariaCurrentWhenActive="page"
-        ><span class="door-glyph" aria-hidden="true"></span><span class="door-verb">Buscar</span
-        ><span class="door-label"
-          >Acervo <span class="atlas-arrow" aria-hidden="true">↗</span></span
-        ></a
-      >
-    </nav>
-  </div>
-</header>
+<app-site-header />
 
 <app-breadcrumbs />
 

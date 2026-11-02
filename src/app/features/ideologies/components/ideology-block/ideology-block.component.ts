@@ -53,6 +53,12 @@ export class IdeologyBlockComponent {
   readonly repository = inject(ContentRepository);
   readonly hoveredNode = signal<string | null>(null);
   readonly edgeFilter = signal('all');
+  readonly showAllEntities = signal(false);
+  readonly entityPreviewCount = 6;
+  readonly entityNoun = computed(() => {
+    const block = this.block();
+    return block.type === 'entities' && block.mode === 'thinkers' ? 'pensadores' : 'registros';
+  });
   readonly phases = [
     { key: 'defence', label: 'Defesa' },
     { key: 'criticism', label: 'Crítica' },
@@ -156,6 +162,7 @@ export class IdeologyBlockComponent {
   readonly graphPaths = computed(
     () => new Map(this.edges().map((edge, i) => [edge.id, this.graph().paths[i]])),
   );
+  readonly graphPoints = computed(() => new Map(this.graph().nodes.map((node) => [node.id, node])));
   readonly timelineAxis = computed(
     () =>
       this.repository.layouts.editorial[this.dossier().page.slug]?.timelines[this.blockId()] ??
@@ -245,6 +252,22 @@ export class IdeologyBlockComponent {
     return this.hoveredNode()
       ? edge.from === this.hoveredNode() || edge.to === this.hoveredNode()
       : this.selectedEdge()?.id === edge.id;
+  }
+  /** Lines outside the hovered node or the selected relation recede, without moving. */
+  isDimmed(edge: IdeologyEdge): boolean {
+    return !this.highlightEdge(edge) && (!!this.hoveredNode() || !!this.selectedEdge());
+  }
+  /** Label anchor: midpoint of the two nodes, lifted above the line. */
+  edgeLabelPoint(edge: IdeologyEdge): { x: number; y: number } {
+    const from = this.graphPoints().get(edge.from);
+    const to = this.graphPoints().get(edge.to);
+    return {
+      x: ((from?.x ?? 0) + (to?.x ?? 0)) / 2,
+      y: ((from?.y ?? 0) + (to?.y ?? 0)) / 2 - 10,
+    };
+  }
+  toggleEntities(): void {
+    this.showAllEntities.update((open) => !open);
   }
   selectNode(id: string): void {
     const edge = this.visibleEdges().find((e) => e.from === id || e.to === id);

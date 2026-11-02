@@ -201,6 +201,13 @@ a.atlas-link--feature {
   font-stretch: var(--stretch-display);
 }
 
+/* Items of app-card-carousel: fixed card width, snapped to the track edge. */
+.carousel-item {
+  flex: 0 0 min(17rem, 82%);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
 .atlas-band-heading > p:last-child {
   margin: 0;
   color: var(--color-ink-muted);

@@ -1,6 +1,15 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
+import { explorerCatalogues } from '../src/app/core/content/queries/knowledge-explorer';
+
+const declaredDestinations = [
+  '/',
+  '/marxismo',
+  '/liberalismo',
+  ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
+];
+
 test('unknown and unpublished institutional routes still return home', async ({ page }) => {
   for (const path of ['/sobre', '/estudar', '/rota-inexistente']) {
     await page.goto('/');
@@ -41,9 +50,7 @@ test('reading navigation includes the knowledge explorer', async ({ page }) => {
         .filter((u) => u.origin === location.origin)
         .map((u) => u.pathname.replace(/\/$/, '') || '/'),
     );
-    expect(
-      hrefs.filter((p) => !['/', '/marxismo', '/liberalismo', '/conhecimento'].includes(p)),
-    ).toEqual([]);
+    expect(hrefs.filter((p) => !declaredDestinations.includes(p))).toEqual([]);
   }
 });
 

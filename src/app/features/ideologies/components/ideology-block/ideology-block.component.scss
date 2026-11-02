@@ -31,6 +31,19 @@ button {
   gap: 2rem;
   margin-block: 2rem;
 }
+.gallery-toggle {
+  min-height: 2.75rem;
+  padding: 0.6rem 1.1rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: 600 0.95rem/1.3 var(--font-sans);
+  cursor: pointer;
+}
+.gallery-toggle:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
 .entity-entry {
   border: 3px solid var(--ink);
   min-width: 0;

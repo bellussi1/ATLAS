@@ -57,3 +57,54 @@
   min-height: 1.5rem;
   margin-right: 1rem;
 }
+/* Direction and labels: arrows leave the registro that formulates the relation. */
+.genealogy path {
+  transition:
+    stroke var(--motion-standard),
+    stroke-dashoffset var(--motion-slow),
+    opacity var(--motion-standard);
+}
+.genealogy path.dimmed,
+.genealogy .edge-label.dimmed {
+  opacity: 0.3;
+}
+.genealogy-arrow path {
+  fill: var(--ink);
+  stroke: none;
+  stroke-dasharray: none;
+}
+/* Wide transparent strokes keep thin lines easy to hit; the relation buttons stay the keyboard path. */
+.genealogy .genealogy-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 22px;
+  stroke-dasharray: none;
+  pointer-events: stroke;
+  cursor: pointer;
+}
+.genealogy .edge-label {
+  fill: var(--ink);
+  font: 600 13px/1 var(--font-sans);
+  paint-order: stroke;
+  stroke: var(--paper-shade);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+  pointer-events: none;
+  transition: opacity var(--motion-standard);
+}
+.graph-direction {
+  margin: 0.9rem 0 0;
+  color: var(--color-ink-muted);
+  font: 0.85rem/1.5 var(--font-serif);
+}
+@media (max-width: 42rem) {
+  /* Labels scale down with the canvas on phones; the relation list carries the same text. */
+  .genealogy .edge-label {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .genealogy path {
+    transition: none;
+  }
+}

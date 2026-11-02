@@ -1,0 +1,75 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.carousel-count {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 0.8rem/1.4 var(--font-mono);
+}
+
+.carousel-buttons {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.carousel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: 700 1.1rem/1 var(--font-sans);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast),
+    color var(--motion-fast),
+    opacity var(--motion-fast);
+}
+
+.carousel-button[aria-disabled='true'] {
+  opacity: 0.4;
+  cursor: default;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .carousel-button:not([aria-disabled='true']):hover {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+  }
+}
+
+.carousel-button:focus-visible,
+.carousel-track:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.carousel-track {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  padding-block: 0.25rem 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-button {
+    transition: none;
+  }
+}

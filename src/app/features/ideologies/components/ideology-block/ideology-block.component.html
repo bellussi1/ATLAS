@@ -20,12 +20,18 @@
   @case ('entities') {
     <div
       class="entity-gallery"
+      [id]="blockId() + '-gallery'"
       appReveal
       [class.portraits]="block().type === 'entities' && $any(block()).mode === 'thinkers'"
       [class.documents]="block().type === 'entities' && $any(block()).mode === 'documents'"
     >
       @for (entity of entities(); track entity.id; let e = $index) {
-        <div class="entity-entry" data-stagger [style.--stagger]="e % 6">
+        <div
+          class="entity-entry"
+          data-stagger
+          [style.--stagger]="e % 6"
+          [hidden]="e >= entityPreviewCount && !showAllEntities()"
+        >
           <button type="button" class="atlas-press" [appKnowledgeContext]="{ entityId: entity.id }">
             @if (entityPicture(entity); as asset) {
               <img [src]="asset.assetPath" alt="" width="180" height="210" loading="lazy" />
@@ -42,6 +48,21 @@
         <p role="status">Nenhum registro disponível neste capítulo.</p>
       }
     </div>
+    @if (entities().length > entityPreviewCount) {
+      <button
+        type="button"
+        class="gallery-toggle atlas-press"
+        [attr.aria-expanded]="showAllEntities()"
+        [attr.aria-controls]="blockId() + '-gallery'"
+        (click)="toggleEntities()"
+      >
+        {{
+          showAllEntities()
+            ? 'Mostrar menos'
+            : 'Ver todos os ' + entities().length + ' ' + entityNoun() + ' deste capítulo'
+        }}
+      </button>
+    }
   }
   @case ('timeline') {
     <div class="timeline-filters">
@@ -155,15 +176,52 @@
               Relações documentadas entre autores, sem hierarquia de descendência. Os controles e a
               tabela a seguir apresentam as mesmas relações.
             </desc>
+            <defs>
+              <marker
+                [id]="blockId() + '-arrow'"
+                class="genealogy-arrow"
+                viewBox="0 0 10 10"
+                refX="9"
+                refY="5"
+                markerWidth="14"
+                markerHeight="14"
+                markerUnits="userSpaceOnUse"
+                orient="auto"
+              >
+                <path d="M0 0 L10 5 L0 10 Z" />
+              </marker>
+            </defs>
             @for (edge of visibleEdges(); track edge.id) {
               <path
                 animate.enter="connection-enter"
                 animate.leave="connection-leave"
                 [class.selected]="highlightEdge(edge)"
+                [class.dimmed]="isDimmed(edge)"
                 [attr.data-line]="relation(edge).line"
                 [attr.d]="graphPaths().get(edge.id)"
+                [attr.marker-end]="'url(#' + blockId() + '-arrow)'"
                 vector-effect="non-scaling-stroke"
               />
+            }
+            <!-- Wide transparent strokes make each line selectable with a pointer. -->
+            @for (edge of visibleEdges(); track edge.id) {
+              <path
+                class="genealogy-hit"
+                [attr.d]="graphPaths().get(edge.id)"
+                vector-effect="non-scaling-stroke"
+                (click)="update('relacao', edge.id)"
+              />
+            }
+            @for (edge of visibleEdges(); track edge.id) {
+              <text
+                class="edge-label"
+                [class.dimmed]="isDimmed(edge)"
+                [attr.x]="edgeLabelPoint(edge).x"
+                [attr.y]="edgeLabelPoint(edge).y"
+                text-anchor="middle"
+              >
+                {{ relation(edge).label }}
+              </text>
             }
           </svg>
           @for (node of graphNodes(); track node.id) {
@@ -185,6 +243,9 @@
             </button>
           }
         </div>
+        <p class="graph-direction">
+          A seta parte do registro que formula a relação e aponta para o outro registro.
+        </p>
         <ul class="relation-legend" aria-label="Como ler as linhas">
           @for (type of edgeTypes(); track type) {
             <li [attr.data-line]="relationOf(type).line">

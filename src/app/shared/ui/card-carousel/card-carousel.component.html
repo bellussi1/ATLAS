@@ -1,0 +1,47 @@
+<div class="carousel">
+  <div class="carousel-controls">
+    <p class="carousel-count">
+      @if (total()) {
+        @if (firstVisible() === lastVisible()) {
+          {{ firstVisible() + 1 }} de {{ total() }}
+        } @else {
+          {{ firstVisible() + 1 }}–{{ lastVisible() + 1 }} de {{ total() }}
+        }
+      }
+    </p>
+    <div class="carousel-buttons">
+      <button
+        type="button"
+        class="carousel-button"
+        [attr.aria-controls]="trackId"
+        [attr.aria-disabled]="atStart()"
+        [attr.aria-label]="'Mostrar anteriores: ' + label()"
+        (click)="page(-1)"
+      >
+        <span aria-hidden="true">←</span>
+      </button>
+      <button
+        type="button"
+        class="carousel-button"
+        [attr.aria-controls]="trackId"
+        [attr.aria-disabled]="atEnd()"
+        [attr.aria-label]="'Mostrar próximos: ' + label()"
+        (click)="page(1)"
+      >
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </div>
+  <div
+    #track
+    class="carousel-track"
+    [id]="trackId"
+    role="region"
+    tabindex="0"
+    aria-roledescription="carrossel"
+    [attr.aria-label]="label()"
+    (scroll)="update()"
+  >
+    <ng-content />
+  </div>
+</div>

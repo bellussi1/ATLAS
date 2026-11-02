@@ -4,6 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { routes } from '@app/app.routes';
+import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
 import { provideContentFixture } from '@testing/content-fixture';
 
 import { AppComponent } from './app-shell.component';
@@ -20,14 +21,20 @@ describe('ATLAS navigation', () => {
       ],
     }),
   );
-  it('makes the knowledge explorer reachable from the shell', () => {
+  it('keeps every shell link on a declared destination and reaches the archive from the header', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
+    const destinations = [
+      '/',
+      '/marxismo',
+      '/liberalismo',
+      ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
+    ];
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))
-      if (a.origin === location.origin)
-        expect(['/', '/marxismo', '/liberalismo', '/conhecimento']).toContain(a.pathname);
+      if (a.origin === location.origin) expect(destinations).toContain(a.pathname);
     expect(root.querySelector('header a[href="/conhecimento"]')).not.toBeNull();
+    expect(root.querySelector('footer a[href="/pessoas"]')).not.toBeNull();
   });
   it('redirects a removed page to the home', async () => {
     const h = await RouterTestingHarness.create('/sobre');

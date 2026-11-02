@@ -1,18 +1,26 @@
-import { Dialog } from '@angular/cdk/dialog';
 import { DOCUMENT } from '@angular/common';
-import { Component, computed, inject, input, linkedSignal, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  type ElementRef,
+  inject,
+  input,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import type { Entity, Relation } from '@core/content/models/content-schema';
-import { entityContext } from '@core/content/queries/entity-context';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
-import { KnowledgeContextComponent } from '@shared/ui/knowledge-context/knowledge-context.component';
+import { centuryLabel } from '@ideologies/utils/timeline-periods';
+import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
+import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 
 import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
 
-type ViewMode = 'rede' | 'tempo' | 'imagens';
 type RelationFilter = 'all' | 'discovery' | 'structured';
 interface GraphNode {
   entity: Entity;
@@ -26,10 +34,20 @@ interface GraphEdge {
   x2: number;
   y2: number;
 }
+interface TimelinePeriod {
+  label: string;
+  entities: Entity[];
+}
 
 @Component({
   selector: 'app-ideology-atlas',
-  imports: [EditorialSourcesComponent, RouterLink, KnowledgeTextComponent],
+  imports: [
+    EditorialSourcesComponent,
+    RouterLink,
+    KnowledgeTextComponent,
+    KnowledgeContextDirective,
+    CardCarouselComponent,
+  ],
   templateUrl: './ideology-atlas.component.html',
   styleUrls: [
     './ideology-atlas.component.scss',
@@ -39,9 +57,9 @@ interface GraphEdge {
 })
 export class IdeologyAtlasComponent {
   private readonly document = inject(DOCUMENT);
-  private readonly dialog = inject(Dialog);
   private readonly repository = inject(ContentRepository);
   private readonly graph = this.repository.knowledgeGraph;
+  private readonly timelineStrip = viewChild<ElementRef<HTMLElement>>('timelineStrip');
   readonly atlasId = input.required<string>();
   readonly rootEntityId = input.required<string>();
   readonly origin = input.required<string>();
@@ -68,12 +86,10 @@ export class IdeologyAtlasComponent {
       ).length,
   );
   readonly hoveredId = signal<string | null>(null);
-  readonly mode = signal<ViewMode>('rede');
   readonly relationFilter = signal<RelationFilter>('all');
   readonly selectedId = linkedSignal(() => this.rootEntityId());
   readonly search = signal('');
   readonly history = signal<string[]>([]);
-  readonly expandedMediaId = signal<string | null>(null);
   readonly entities = computed(() => {
     return this.atlas().entities;
   });
@@ -146,54 +162,35 @@ export class IdeologyAtlasComponent {
           entity.temporalExtent &&
           (entity.temporalExtent.startYear !== null || entity.temporalExtent.endYear !== null),
       )
-      .sort(
-        (a, b) =>
-          (a.temporalExtent?.startYear ?? a.temporalExtent?.endYear ?? 0) -
-          (b.temporalExtent?.startYear ?? b.temporalExtent?.endYear ?? 0),
-      ),
+      .sort((a, b) => this.timelineYear(a) - this.timelineYear(b)),
   );
-  readonly media = computed(() =>
-    this.atlas().assetLicenses.flatMap((asset) => {
-      const entity = this.entities().find((item) => item.id === asset.entityId);
-      return entity &&
-        asset.status === 'known' &&
-        asset.reproduction === 'allowed' &&
-        asset.license &&
-        asset.licenseUrl &&
-        asset.attribution &&
-        asset.filePageUrl
-        ? [{ asset, entity }]
-        : [];
-    }),
+  readonly timelineKinds = computed(() => [
+    ...new Set(this.timelineEntities().map((entity) => entity.kind)),
+  ]);
+  /** Consecutive records grouped by century; the strip keeps chronological order. */
+  readonly timelinePeriods = computed(() =>
+    this.timelineEntities().reduce<TimelinePeriod[]>((periods, entity) => {
+      const label = centuryLabel(this.timelineYear(entity));
+      const current = periods.at(-1);
+      if (current?.label === label) current.entities.push(entity);
+      else periods.push({ label, entities: [entity] });
+      return periods;
+    }, []),
+  );
+  readonly timelineId = signal<string | null>(null);
+  readonly timelineSelected = computed(
+    () =>
+      this.timelineEntities().find((entity) => entity.id === this.timelineId()) ??
+      this.timelineEntities()[0],
+  );
+  readonly timelineIndex = computed(() =>
+    this.timelineEntities().findIndex((entity) => entity.id === this.timelineSelected()?.id),
   );
 
-  setMode(mode: ViewMode): void {
-    this.mode.set(mode);
-  }
-  setRelationFilter(value: string): void {
-    if (value === 'all' || value === 'discovery' || value === 'structured') {
-      this.relationFilter.set(value);
-    }
-  }
-  setSearch(value: string): void {
-    this.search.set(value);
-  }
   openEntity(entityId: string): void {
-    if (entityId !== this.selectedId()) {
-      this.history.update((items) => [...items, this.selectedId()]);
-      this.selectedId.set(entityId);
-    }
-    if (this.document.defaultView?.matchMedia?.('(max-width: 1100px)').matches) {
-      this.dialog.open(KnowledgeContextComponent, {
-        data: entityContext(this.repository, entityId),
-        ariaLabelledBy: 'knowledge-context-title',
-        autoFocus: 'first-tabbable',
-        restoreFocus: true,
-        width: 'min(56rem, calc(100vw - 2rem))',
-        height: 'min(44rem, calc(100dvh - 2rem))',
-        panelClass: 'atlas-context-panel',
-      });
-    }
+    if (entityId === this.selectedId()) return;
+    this.history.update((items) => [...items, this.selectedId()]);
+    this.selectedId.set(entityId);
   }
   returnContext(): void {
     const previous = this.history().at(-1);
@@ -203,6 +200,29 @@ export class IdeologyAtlasComponent {
     }
     this.history.update((items) => items.slice(0, -1));
     this.selectedId.set(previous);
+  }
+  setRelationFilter(value: string): void {
+    if (value === 'all' || value === 'discovery' || value === 'structured') {
+      this.relationFilter.set(value);
+    }
+  }
+  setSearch(value: string): void {
+    this.search.set(value);
+  }
+  selectTimeline(entityId: string): void {
+    this.timelineId.set(entityId);
+  }
+  /** Moves the selection one record at a time and keeps it visible in the strip. */
+  stepTimeline(step: 1 | -1): void {
+    const entities = this.timelineEntities();
+    const index = Math.min(Math.max(this.timelineIndex() + step, 0), entities.length - 1);
+    const next = entities[index];
+    if (!next) return;
+    this.selectTimeline(next.id);
+    this.scrollTimelineTo(next.id);
+  }
+  timelineYear(entity: Entity): number {
+    return entity.temporalExtent?.startYear ?? entity.temporalExtent?.endYear ?? 0;
   }
   yearLabel(entity: Entity): string {
     const extent = entity.temporalExtent;
@@ -215,6 +235,9 @@ export class IdeologyAtlasComponent {
     return extent.label ?? 'Data não informada';
   }
   kindLabel(entity: Entity): string {
+    return this.kindName(entity.kind);
+  }
+  kindName(kind: Entity['kind']): string {
     const labels: Record<Entity['kind'], string> = {
       person: 'Pessoa',
       ideology: 'Corrente ideológica',
@@ -231,7 +254,7 @@ export class IdeologyAtlasComponent {
       policy: 'Política pública',
       article: 'Artigo',
     };
-    return labels[entity.kind];
+    return labels[kind];
   }
   relationName(relation: KnowledgeRelationResult): string {
     const labels: Record<string, string> = {
@@ -334,13 +357,23 @@ export class IdeologyAtlasComponent {
   relationDestination(relation: KnowledgeRelationResult): Entity | undefined {
     return relation.direction === 'outgoing' ? this.relationTarget(relation) : this.selected();
   }
-  mediaFor(entity: Entity) {
-    return this.media().find((item) => item.entity.id === entity.id);
-  }
   nodePosition(entityId: string): GraphNode | undefined {
     return this.graphNodes().find((node) => node.entity.id === entityId);
   }
-  toggleMedia(mediaId: string): void {
-    this.expandedMediaId.update((current) => (current === mediaId ? null : mediaId));
+  /** Scrolls only the strip horizontally, so the page does not jump. */
+  private scrollTimelineTo(entityId: string): void {
+    const strip = this.timelineStrip()?.nativeElement;
+    const node = Array.from(strip?.querySelectorAll<HTMLElement>('[data-entity-id]') ?? []).find(
+      (item) => item.dataset['entityId'] === entityId,
+    );
+    if (!strip || !node) return;
+    const reduced = this.document.defaultView?.matchMedia?.(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    const offset = node.getBoundingClientRect().left - strip.getBoundingClientRect().left;
+    strip.scrollTo({
+      left: strip.scrollLeft + offset - (strip.clientWidth - node.offsetWidth) / 2,
+      behavior: reduced ? 'auto' : 'smooth',
+    });
   }
 }

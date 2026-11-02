@@ -2,28 +2,20 @@ import { DOCUMENT } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
-import {
-  NavigationEnd,
-  NavigationError,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-  RouterOutlet,
-} from '@angular/router';
+import { NavigationEnd, NavigationError, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { SiteFooterComponent } from '@layouts/site-footer/site-footer.component';
+import { SiteHeaderComponent } from '@layouts/site-header/site-header.component';
 import { BreadcrumbsComponent } from '@shared/ui/breadcrumbs/breadcrumbs.component';
-import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasNoticeComponent } from '@shared/ui/notice/notice.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    AtlasGeometricMosaicComponent,
     SiteFooterComponent,
+    SiteHeaderComponent,
     AtlasNoticeComponent,
     BreadcrumbsComponent,
     RouterLink,
-    RouterLinkActive,
     RouterOutlet,
   ],
   templateUrl: './app-shell.component.html',

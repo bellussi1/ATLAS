@@ -22,9 +22,9 @@
           <a class="collage-piece collage-piece--study" routerLink="/liberalismo"
             ><app-editorial-mark kind="atlas" /><span>Explorar o Liberalismo</span></a
           >
-          <a class="collage-piece collage-piece--about" routerLink="/"
+          <a class="collage-piece collage-piece--search" routerLink="/conhecimento"
             ><span class="collage-letter" aria-hidden="true">a.</span
-            ><span>Voltar ao início</span></a
+            ><span>Buscar no acervo</span></a
           >
         </nav>
         <div class="composition-control">
@@ -38,11 +38,16 @@
       <div>
         <h2>Ler</h2>
         <a routerLink="/marxismo">Marxismo</a>
-        <a routerLink="/liberalismo">Atlas do Liberalismo</a>
+        <a routerLink="/liberalismo">Liberalismo</a>
       </div>
-      <div>
+      <div class="footer-explore">
         <h2>Explorar</h2>
-        <a routerLink="/conhecimento">Buscar no acervo</a>
+        <div class="footer-links">
+          <a routerLink="/conhecimento">Buscar no acervo</a>
+          @for (catalogue of catalogues; track catalogue.path) {
+            <a [routerLink]="'/' + catalogue.path">{{ catalogue.title }}</a>
+          }
+        </div>
       </div>
       <div>
         <h2>Projeto</h2>
