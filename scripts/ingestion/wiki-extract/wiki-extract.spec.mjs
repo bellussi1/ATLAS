@@ -3,6 +3,7 @@ import { test } from 'node:test';
 
 import { articleSections, articleText } from './article.mjs';
 import { parseExtraction, verifyQuotes } from './extraction.mjs';
+import { rankCandidates } from './discovery.mjs';
 
 const html = `<html><body>
 <section><p>Karl Marx<sup class="reference">[1]</sup> foi um filósofo alemão.</p><table><tr><td>caixa</td></tr></table></section>
@@ -45,4 +46,43 @@ test('keeps only items whose quote appears literally in the source', () => {
 test('treats refusals and truncated outputs as errors', () => {
   assert.throws(() => parseExtraction({ stop_reason: 'refusal', content: [] }), /refusal/);
   assert.throws(() => parseExtraction({ stop_reason: 'max_tokens', content: [] }), /max_tokens/);
+});
+
+test('ranks pages linked from several seeds and drops seeds, years, lists and disambiguations', () => {
+  const link = (title, extra = {}) => ({
+    lang: 'pt',
+    title,
+    qid: `Q-${title}`,
+    disambiguation: false,
+    ...extra,
+  });
+  const seedA = { label: 'A', lang: 'pt', title: 'Seed A', qid: 'Q-seedA' };
+  const seedB = { label: 'B', lang: 'pt', title: 'Seed B', qid: 'Q-seedB' };
+  const ranked = rankCandidates(
+    [
+      {
+        seed: seedA,
+        links: [
+          link('Seed B'),
+          link('Revolução'),
+          link('1917'),
+          link('Lista de partidos'),
+          link('Ambíguo', { disambiguation: true }),
+          link('Comum'),
+          link('Único'),
+        ],
+      },
+      { seed: seedB, links: [link('Revolução'), link('Comum'), link('Seed A')] },
+    ],
+    { minShared: 2 },
+  );
+  assert.deepEqual(
+    ranked.map((item) => [item.title, item.sharedByCount]),
+    [
+      ['Comum', 2],
+      ['Revolução', 2],
+    ],
+  );
+  assert.deepEqual(ranked[0].linkedFrom, ['A', 'B']);
+  assert.equal(ranked[0].decision, null);
 });

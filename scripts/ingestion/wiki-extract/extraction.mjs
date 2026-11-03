@@ -47,7 +47,7 @@ export function extractionParams(entity, text) {
     messages: [
       {
         role: 'user',
-        content: `Entidade: ${entity.label} (${entity.type}, Wikidata ${entity.qid})\n\n<artigo>\n${text}\n</artigo>`,
+        content: `Entidade: ${entity.label} (${entity.type}, Wikidata ${entity.qid ?? 'sem item'})\n\n<artigo>\n${text}\n</artigo>`,
       },
     ],
   };

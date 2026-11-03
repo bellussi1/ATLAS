@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 // Wikipedia → Claude Haiku → R2. Usage:
-//   node scripts/wiki-extract.mjs fetch <tradição> [--limit N]
+//   node scripts/wiki-extract.mjs discover <tradição> [--top N]   # propõe candidatos (sem baixar)
+//   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N]
 //   node scripts/wiki-extract.mjs extract <tradição> [--sync] [--limit N] [--resume <batchId>]
 //   node scripts/wiki-extract.mjs publish <tradição> [--dry-run]
+// Candidates need `"decision": "accept"` in their candidates file before `fetch --candidates`.
 // Extractions are drafts reviewed by `assistant` (AI); they do not enter the site build.
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -18,6 +20,7 @@ import {
   sha256Hex,
 } from './content/r2-content.mjs';
 import { articleText, fetchArticle, sitelinkTitles } from './ingestion/wiki-extract/article.mjs';
+import { linkedArticles, rankCandidates } from './ingestion/wiki-extract/discovery.mjs';
 import {
   extractionModel,
   extractionParams,
@@ -30,20 +33,29 @@ const { positionals, values } = parseArgs({
   allowPositionals: true,
   options: {
     limit: { type: 'string' },
+    top: { type: 'string' },
+    candidates: { type: 'boolean', default: false },
     sync: { type: 'boolean', default: false },
     resume: { type: 'string' },
     'dry-run': { type: 'boolean', default: false },
   },
 });
 const [command, tradition] = positionals;
-if (!['fetch', 'extract', 'publish'].includes(command) || !/^[a-z-]+$/.test(tradition ?? ''))
-  throw new Error('Uso: wiki-extract.mjs <fetch|extract|publish> <tradição>');
+const commandNames = ['discover', 'fetch', 'extract', 'publish'];
+if (!commandNames.includes(command) || !/^[a-z-]+$/.test(tradition ?? ''))
+  throw new Error(`Uso: wiki-extract.mjs <${commandNames.join('|')}> <tradição>`);
 const limit = values.limit ? Number(values.limit) : Number.POSITIVE_INFINITY;
 
 const workDirectory = join(projectRoot, 'generated/wiki-extract', tradition);
 const articlesDirectory = join(workDirectory, 'articles');
 const extractsDirectory = join(workDirectory, 'extracts');
 const indexPath = join(projectRoot, 'scripts/ingestion/wiki-extract/index', `${tradition}.json`);
+const candidatesPath = join(
+  projectRoot,
+  'scripts/ingestion/wiki-extract/candidates',
+  `${tradition}.json`,
+);
+const seedsPath = join(projectRoot, 'scripts/ingestion/wiki-extract/seeds', `${tradition}.json`);
 const extractKey = (sha256) => `w/${sha256}.json`;
 
 const readJson = async (path) => JSON.parse(await readFile(path, 'utf8'));
@@ -60,18 +72,55 @@ async function selectedEntities() {
   return selection.entities.map(([id, label, , type, qid]) => ({ id, label, type, qid }));
 }
 
+const slug = (text) =>
+  text
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+/** Lang and title are known for accepted candidates; selected entities resolve them via Wikidata. */
+async function resolveArticle(target) {
+  if (target.lang) return { lang: target.lang, title: target.title };
+  const titles = await sitelinkTitles(target.entity.qid);
+  const lang = titles.pt ? 'pt' : titles.en ? 'en' : null;
+  return lang ? { lang, title: titles[lang] } : null;
+}
+
+async function selectedTargets() {
+  return (await selectedEntities()).map((entity) => ({ entity, lang: null, title: null }));
+}
+
+async function acceptedTargets() {
+  const { candidates } = await readJson(candidatesPath);
+  return candidates
+    .filter((candidate) => candidate.decision === 'accept')
+    .map((candidate) => ({
+      entity: {
+        id: `topic-${slug(candidate.title)}`,
+        label: candidate.title,
+        type: 'topic',
+        qid: candidate.qid,
+      },
+      lang: candidate.lang,
+      title: candidate.title,
+    }));
+}
+
 async function fetchCommand() {
   await mkdir(articlesDirectory, { recursive: true });
   const done = new Set(await listIds(articlesDirectory));
-  const pending = (await selectedEntities()).filter((entity) => !done.has(entity.id));
-  for (const entity of pending.slice(0, limit)) {
-    const titles = await sitelinkTitles(entity.qid);
-    const lang = titles.pt ? 'pt' : titles.en ? 'en' : null;
-    if (!lang) {
+  const targets = values.candidates ? await acceptedTargets() : await selectedTargets();
+  const pending = targets.filter((target) => !done.has(target.entity.id));
+  for (const target of pending.slice(0, limit)) {
+    const { entity } = target;
+    const resolved = await resolveArticle(target);
+    if (!resolved) {
       console.log(`sem artigo: ${entity.id} (${entity.qid})`);
       continue;
     }
-    const article = await fetchArticle(lang, titles[lang]);
+    const article = await fetchArticle(resolved.lang, resolved.title);
     await writeJson(join(articlesDirectory, `${entity.id}.json`), {
       entity,
       retrievedAt: new Date().toISOString(),
@@ -79,6 +128,42 @@ async function fetchCommand() {
     });
     console.log(`baixado: ${entity.id} ← ${article.url}`);
   }
+}
+
+/** Seeds are the selected entities' articles plus the editor's topic list, if present. */
+async function seedArticles() {
+  const seeds = [];
+  for (const entity of await selectedEntities()) {
+    const resolved = await resolveArticle({ entity });
+    if (resolved) seeds.push({ label: entity.label, qid: entity.qid, ...resolved });
+    else console.log(`sem artigo: ${entity.id}`);
+  }
+  const topics = await readJson(seedsPath).then(
+    (file) => file.topics,
+    () => [],
+  );
+  for (const topic of topics) seeds.push({ label: topic.title, qid: null, ...topic });
+  return seeds;
+}
+
+async function discoverCommand() {
+  const seeds = await seedArticles();
+  const linked = [];
+  for (const seed of seeds) {
+    const links = await linkedArticles(seed.lang, seed.title);
+    linked.push({ seed, links });
+    console.log(`links: ${seed.label} → ${links.length}`);
+  }
+  const candidates = rankCandidates(linked, { top: values.top ? Number(values.top) : 60 });
+  await writeJson(candidatesPath, {
+    tradition,
+    generatedAt: new Date().toISOString(),
+    seeds: seeds.map(({ label, lang, title }) => ({ label, lang, title })),
+    candidates,
+  });
+  console.log(`${candidates.length} candidatos em ${candidatesPath.slice(projectRoot.length)}`);
+  for (const candidate of candidates.slice(0, 20))
+    console.log(`  ${candidate.sharedByCount}× ${candidate.lang}:${candidate.title}`);
 }
 
 /** Turns one model message into a stored draft, or reports why it was discarded. */
@@ -193,7 +278,12 @@ async function publishCommand() {
   console.log(`índice atualizado: ${indexPath.slice(projectRoot.length)}`);
 }
 
-const commands = { fetch: fetchCommand, extract: extractCommand, publish: publishCommand };
+const commands = {
+  discover: discoverCommand,
+  fetch: fetchCommand,
+  extract: extractCommand,
+  publish: publishCommand,
+};
 commands[command]().catch((error) => {
   console.error(error.message);
   process.exitCode = 1;
