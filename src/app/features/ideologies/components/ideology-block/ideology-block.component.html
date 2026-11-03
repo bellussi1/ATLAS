@@ -126,7 +126,7 @@
           @if (media(entity); as asset) {
             <figure>
               <img
-                [src]="asset.assetPath | contentMedia"
+                [src]="asset.assetPath"
                 [alt]="'Documento associado a ' + entity.title"
                 width="320"
                 height="200"
