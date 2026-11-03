@@ -2,6 +2,7 @@ import { Component, computed, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
+import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import type { Entity, Source } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
@@ -46,6 +47,7 @@ import { RecordCardComponent } from '@shared/ui/record-card/record-card.componen
     IdeologyAtlasComponent,
     ReadingPathComponent,
     PositionsEstimateComponent,
+    ContentMediaPipe,
   ],
   templateUrl: './ideology-block.component.html',
   styleUrls: [

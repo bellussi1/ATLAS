@@ -12,6 +12,12 @@
   margin-block: 0.75rem;
   font: 0.875rem/1.5 var(--font-sans);
 }
+.how-to-read summary {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
 .how-to-read dl {
   display: grid;
   gap: 0.5rem;

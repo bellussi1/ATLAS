@@ -39,7 +39,7 @@
           >
             @if (smithPortrait; as asset) {
               <img
-                [src]="asset.assetPath"
+                [src]="asset.assetPath | contentMedia"
                 alt=""
                 width="500"
                 height="609"
@@ -81,7 +81,7 @@
           >
             @if (marxPortrait; as asset) {
               <img
-                [src]="asset.assetPath"
+                [src]="asset.assetPath | contentMedia"
                 alt=""
                 width="500"
                 height="781"
