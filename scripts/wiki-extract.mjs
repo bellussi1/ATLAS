@@ -2,25 +2,20 @@
 // Wikipedia → Claude Haiku → R2. Usage:
 //   node scripts/wiki-extract.mjs run <tradição> [--accept-top N] [--sync]  # discover + fetch + extract
 //   node scripts/wiki-extract.mjs discover <tradição> [--top N] [--accept-top N]
+//   node scripts/wiki-extract.mjs text <tradição> [--chars N]     # exporta o texto que será lido
+//   node scripts/wiki-extract.mjs store <tradição> [--chars N]    # grava manual/<id>.json verificado
 //   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N]
 //   node scripts/wiki-extract.mjs extract <tradição> [--sync] [--limit N] [--resume <batchId>]
-//   node scripts/wiki-extract.mjs publish <tradição> [--dry-run]
 // Candidates with `"decision": "accept"` are fetched by `fetch --candidates`. Decisions made by the
 // editor (`decidedBy: "editor"`) survive re-running discover; rule-based ones are recomputed.
 // Extractions are drafts reviewed by `assistant` (AI); they do not enter the site build.
-import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 
 import Anthropic from '@anthropic-ai/sdk';
 
-import {
-  atomicFile,
-  loadR2Config,
-  projectRoot,
-  putImmutable,
-  sha256Hex,
-} from './content/r2-content.mjs';
+import { atomicFile, projectRoot } from './content/r2-content.mjs';
 import {
   articleText,
   fetchArticle,
@@ -32,6 +27,7 @@ import { linkedArticles, rankCandidates } from './ingestion/wiki-extract/discove
 import {
   extractionModel,
   extractionParams,
+  extractionSchema,
   maxInputChars,
   parseExtraction,
   verifyQuotes,
@@ -43,14 +39,14 @@ const { positionals, values } = parseArgs({
     limit: { type: 'string' },
     top: { type: 'string' },
     'accept-top': { type: 'string' },
+    chars: { type: 'string' },
     candidates: { type: 'boolean', default: false },
     sync: { type: 'boolean', default: false },
     resume: { type: 'string' },
-    'dry-run': { type: 'boolean', default: false },
   },
 });
 const [command, tradition] = positionals;
-const commandNames = ['discover', 'fetch', 'extract', 'publish', 'run'];
+const commandNames = ['discover', 'fetch', 'text', 'store', 'extract', 'run'];
 if (!commandNames.includes(command) || !/^[a-z-]+$/.test(tradition ?? ''))
   throw new Error(`Uso: wiki-extract.mjs <${commandNames.join('|')}> <tradição>`);
 const limit = values.limit ? Number(values.limit) : Number.POSITIVE_INFINITY;
@@ -58,14 +54,15 @@ const limit = values.limit ? Number(values.limit) : Number.POSITIVE_INFINITY;
 const workDirectory = join(projectRoot, 'generated/wiki-extract', tradition);
 const articlesDirectory = join(workDirectory, 'articles');
 const extractsDirectory = join(workDirectory, 'extracts');
-const indexPath = join(projectRoot, 'scripts/ingestion/wiki-extract/index', `${tradition}.json`);
+const textDirectory = join(workDirectory, 'text');
+const manualDirectory = join(workDirectory, 'manual');
+const textChars = values.chars ? Number(values.chars) : 12000;
 const candidatesPath = join(
   projectRoot,
   'scripts/ingestion/wiki-extract/candidates',
   `${tradition}.json`,
 );
 const seedsPath = join(projectRoot, 'scripts/ingestion/wiki-extract/seeds', `${tradition}.json`);
-const extractKey = (sha256) => `w/${sha256}.json`;
 
 const readJson = async (path) => JSON.parse(await readFile(path, 'utf8'));
 const writeJson = (path, value) => atomicFile(path, `${JSON.stringify(value, null, 2)}\n`);
@@ -236,10 +233,9 @@ async function runCommand() {
   await extractCommand();
 }
 
-/** Turns one model message into a stored draft, or reports why it was discarded. */
-async function storeExtraction(record, message) {
-  const { text, truncated } = articleText(record.article, maxInputChars);
-  const { extraction, rejected } = verifyQuotes(parseExtraction(message), text);
+/** Writes one draft; quotes that are not literal in the source text are dropped and reported. */
+async function writeDraft(record, extraction, { text, truncated }, review) {
+  const verified = verifyQuotes(extraction, text);
   await writeJson(join(extractsDirectory, `${record.entity.id}.json`), {
     entity: record.entity,
     source: {
@@ -251,13 +247,49 @@ async function storeExtraction(record, message) {
       licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
       truncated,
     },
-    review: { by: 'assistant', model: extractionModel, status: 'draft' },
-    ...extraction,
+    review,
+    ...verified.extraction,
   });
-  const kept = extraction.dates.length + extraction.relations.length + extraction.claims.length;
+  const { dates, relations, claims } = verified.extraction;
+  const kept = dates.length + relations.length + claims.length;
   console.log(
-    `extraído: ${record.entity.id} (${kept} itens, ${rejected.length} sem trecho literal)`,
+    `extraído: ${record.entity.id} (${kept} itens, ${verified.rejected.length} sem trecho literal)`,
   );
+}
+
+/** API path: parses the model message and stores it as a draft. */
+async function storeExtraction(record, message) {
+  await writeDraft(record, parseExtraction(message), articleText(record.article, maxInputChars), {
+    by: 'assistant',
+    model: extractionModel,
+    status: 'draft',
+  });
+}
+
+/** Chat path: exports the capped text the assistant reads, so each quote can be checked against it. */
+async function textCommand() {
+  await mkdir(textDirectory, { recursive: true });
+  for (const id of (await listIds(articlesDirectory)).slice(0, limit)) {
+    const record = await readJson(join(articlesDirectory, `${id}.json`));
+    const { text, truncated } = articleText(record.article, textChars);
+    await atomicFile(join(textDirectory, `${id}.txt`), text);
+    console.log(`texto: ${id} (${text.length} caracteres${truncated ? ', cortado' : ''})`);
+  }
+}
+
+/** Chat path: validates `manual/<id>.json` written by the assistant, then stores it as a draft. */
+async function storeCommand() {
+  await mkdir(extractsDirectory, { recursive: true });
+  for (const id of (await listIds(manualDirectory)).slice(0, limit)) {
+    const record = await readJson(join(articlesDirectory, `${id}.json`));
+    const extraction = extractionSchema.parse(await readJson(join(manualDirectory, `${id}.json`)));
+    await writeDraft(record, extraction, articleText(record.article, textChars), {
+      by: 'assistant',
+      model: 'assistente-chat',
+      method: 'chat',
+      status: 'draft',
+    });
+  }
 }
 
 async function pendingRecords() {
@@ -325,35 +357,12 @@ async function extractCommand() {
   }
 }
 
-async function publishCommand() {
-  const dryRun = values['dry-run'];
-  const config = await loadR2Config().catch((error) => {
-    if (!dryRun) throw error;
-    console.log(`[dry-run] sem credenciais: ${error.message}`);
-    return null;
-  });
-  const entries = {};
-  for (const id of (await listIds(extractsDirectory)).sort()) {
-    const body = await readFile(join(extractsDirectory, `${id}.json`));
-    const sha256 = sha256Hex(body);
-    await putImmutable(
-      config,
-      { key: extractKey(sha256), body, contentType: 'application/json' },
-      { dryRun },
-    );
-    entries[id] = { key: extractKey(sha256), sha256, bytes: body.byteLength };
-  }
-  if (dryRun) return console.log(`[dry-run] ${Object.keys(entries).length} extrações`);
-  await mkdir(join(indexPath, '..'), { recursive: true });
-  await writeFile(indexPath, `${JSON.stringify({ tradition, entries }, null, 2)}\n`);
-  console.log(`índice atualizado: ${indexPath.slice(projectRoot.length)}`);
-}
-
 const commands = {
   discover: discoverCommand,
   fetch: fetchCommand,
+  text: textCommand,
+  store: storeCommand,
   extract: extractCommand,
-  publish: publishCommand,
   run: runCommand,
 };
 commands[command]().catch((error) => {
