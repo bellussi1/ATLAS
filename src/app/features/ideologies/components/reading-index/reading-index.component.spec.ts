@@ -23,7 +23,7 @@ describe('IdeologyReadingIndexComponent', () => {
     expect(root.textContent).not.toContain('minundefined');
   });
 
-  it('labels canonical groups once in the sidebar and as optgroups in the mobile picker', () => {
+  it('lists only the active act in the sidebar and every group in the mobile picker', () => {
     const fixture = TestBed.createComponent(IdeologyReadingIndexComponent);
     fixture.componentRef.setInput('sections', [
       { anchor: 'introducao', title: 'O que é?', group: 'Entender' },
@@ -33,10 +33,11 @@ describe('IdeologyReadingIndexComponent', () => {
     fixture.detectChanges();
 
     const root = fixture.nativeElement as HTMLElement;
-    expect([...root.querySelectorAll('.index-group')].map((g) => g.textContent?.trim())).toEqual([
-      'Entender',
-      'Situar',
-    ]);
+    const acts = [...root.querySelectorAll('.index-act')];
+    expect(acts.map((a) => a.firstChild?.textContent?.trim())).toEqual(['Entender', 'Situar']);
+    expect(acts[1].getAttribute('href')).toBe('#epocas');
+    expect(root.querySelector('.desktop-nav a[href="#origens"]:not(.index-act)')).not.toBeNull();
+    expect(root.querySelector('.desktop-nav a[href="#epocas"]:not(.index-act)')).toBeNull();
     const groups = [...root.querySelectorAll('optgroup')];
     expect(groups.map((g) => g.label)).toEqual(['Entender', 'Situar']);
     expect(groups[0].querySelectorAll('option')).toHaveLength(2);

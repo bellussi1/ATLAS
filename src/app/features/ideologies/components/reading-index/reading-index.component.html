@@ -6,25 +6,35 @@
   <progress id="reading-progress" max="100" [value]="progress()"></progress>
 
   <nav class="desktop-nav" aria-label="Capítulos">
-    @for (section of sections(); track section.anchor; let index = $index) {
-      @if (section.group && section.group !== sections()[index - 1]?.group) {
-        <p class="index-group">{{ section.group }}</p>
-      }
-      <a
-        [href]="'#' + section.anchor"
-        [attr.aria-current]="active() === section.anchor ? 'location' : null"
-        (click)="followChapter($event, section.anchor)"
-      >
-        <span class="chapter-number" [attr.data-shape]="index % 4"
-          >{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
+    @for (group of groups(); track $index) {
+      @if (group.label) {
+        <a
+          class="index-act"
+          [href]="'#' + group.items[0].section.anchor"
+          [attr.data-open]="group.label === activeGroup()"
+          (click)="followChapter($event, group.items[0].section.anchor)"
+          >{{ group.label }}<small>{{ group.items.length }} capítulos</small></a
         >
-        <span class="chapter-title">
-          {{ section.title }}
-          @if (section.minutes !== undefined) {
-            <small>{{ section.minutes }} min</small>
-          }
-        </span>
-      </a>
+      }
+      @if (!group.label || group.label === activeGroup()) {
+        @for (item of group.items; track item.section.anchor) {
+          <a
+            [href]="'#' + item.section.anchor"
+            [attr.aria-current]="active() === item.section.anchor ? 'location' : null"
+            (click)="followChapter($event, item.section.anchor)"
+          >
+            <span class="chapter-number" [attr.data-shape]="item.index % 4"
+              >{{ item.index + 1 < 10 ? '0' : '' }}{{ item.index + 1 }}</span
+            >
+            <span class="chapter-title">
+              {{ item.section.title }}
+              @if (item.section.minutes !== undefined) {
+                <small>{{ item.section.minutes }} min</small>
+              }
+            </span>
+          </a>
+        }
+      }
     }
   </nav>
 

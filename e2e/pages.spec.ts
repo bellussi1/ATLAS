@@ -7,6 +7,8 @@ const declaredDestinations = [
   '/',
   '/marxismo',
   '/liberalismo',
+  '/marxismo/mesa',
+  '/liberalismo/mesa',
   ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
 ];
 
@@ -61,16 +63,18 @@ test('Marxism chapters, comparison and sources remain on the same page', async (
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/marxismo/');
   await expect(page.locator('.ideology-chapter')).toHaveCount(12);
-  await page
-    .getByRole('navigation', { name: 'Capítulos', exact: true })
-    .getByRole('link', { name: /Vozes que/ })
-    .click();
+  const chapters = page.getByRole('navigation', { name: 'Capítulos', exact: true });
+  // Acts other than the current one are folded; opening Situar lists its chapters.
+  await chapters.getByRole('link', { name: /^Situar/ }).click();
+  await chapters.getByRole('link', { name: /Vozes que/ }).click();
   await expect(page).toHaveURL(/#pensadores$/);
   const author = page.locator('#pensadores').getByRole('button', { name: /Friedrich Engels/ });
   await author.click();
   await expect(page.getByRole('dialog')).toContainText('Friedrich Engels');
   await page.keyboard.press('Escape');
   await expect(author).toBeFocused();
+  // The value debate is an optional deepening inside the concepts chapter.
+  await page.getByText('Aprofundar: o debate sobre valor e trabalho').click();
   await page
     .getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ })
     .click();
@@ -114,7 +118,7 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
         fullPage: true,
       });
     }
-    const chapterLinks = page.locator('app-ideology-reading-index .desktop-nav a');
+    const chapterLinks = page.locator('app-ideology-reading-index .desktop-nav a:not(.index-act)');
     expect(await chapterLinks.count()).toBeGreaterThan(1);
     await chapterLinks.nth(1).click();
     await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
@@ -159,7 +163,7 @@ test('shared reading preserves filters and clears motion preference when leaving
     await page.goto(`${path}?bibliografia=Locke`);
     const reader = page.locator('app-ideology-reading');
     await expect(reader).toHaveCount(1);
-    await reader.locator('.desktop-nav a').nth(1).click();
+    await reader.locator('.desktop-nav a:not(.index-act)').nth(1).click();
     await expect(page).toHaveURL(new RegExp(`bibliografia=Locke#${secondAnchor}$`));
     await expect(reader.locator('a[aria-current="location"]')).toHaveAttribute(
       'href',
@@ -201,12 +205,9 @@ test('both readings share the twelve canonical chapters, one index and no nested
     expect(
       await page.locator('article .ideology-chapter').evaluateAll((s) => s.map((e) => e.id)),
     ).toEqual(canonical);
-    await expect(page.locator('.desktop-nav a')).toHaveCount(12);
-    await expect(page.locator('.index-group')).toHaveText([
-      'Entender',
-      'Situar',
-      'Avaliar e continuar',
-    ]);
+    // Three acts; only the act being read (Situar, for #vertentes) lists its four chapters.
+    await expect(page.locator('.desktop-nav .index-act')).toHaveCount(3);
+    await expect(page.locator('.desktop-nav a:not(.index-act)')).toHaveCount(4);
     const nested = await page.evaluate(() =>
       [...document.querySelectorAll('.chapter-sequence *')]
         .filter(
@@ -235,19 +236,23 @@ test('each image appears once in the narrative; only the archive catalogue repea
 
 test('épocas list dated records and the graph explains each kind of line', async ({ page }) => {
   for (const path of ['/marxismo/', '/liberalismo/']) {
-    await page.goto(path);
-    const era = page.locator('#epocas .era-chart');
+    await page.goto(`${path}mesa/?mesa=tempo`);
+    const era = page.locator('#desk-panel-tempo .era-chart').first();
     await expect(era.locator('.dated-list li').first()).toBeVisible();
     await era.locator('.epoch-picker button').nth(1).click();
     await expect(era.locator('.epoch-detail h5').first()).toContainText('Registros datados');
 
-    const graph = page.locator('#vertentes .genealogy');
+    await page.getByRole('tab', { name: /^Rede/ }).click();
+    const block = page.locator('#desk-panel-rede app-ideology-block', {
+      has: page.locator('.genealogy'),
+    });
+    const graph = block.locator('.genealogy');
     await expect(graph.locator('.relation-legend li').first()).toBeVisible();
     await expect(graph.locator('.relation-meaning')).not.toBeEmpty();
     const nodes = graph.locator('.genealogy-node');
     const before = await nodes.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left));
-    await page.locator('#vertentes .relation-table > summary').click();
-    await page.locator('#vertentes .relation-card-select').last().click();
+    await block.locator('.relation-table > summary').click();
+    await block.locator('.relation-card-select').last().click();
     expect(await nodes.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left))).toEqual(
       before,
     );
@@ -356,17 +361,17 @@ test('chapter jumps enter the history and Back returns to the previous chapter',
   page,
 }) => {
   await page.goto('/marxismo');
-  const index = page.locator('app-ideology-reading .desktop-nav a');
+  const index = page.locator('app-ideology-reading .desktop-nav a:not(.index-act)');
   await index.nth(1).click();
   await expect(page).toHaveURL(/#.+/);
   const second = new URL(page.url()).hash;
   await index.nth(2).click();
   await expect(
-    page.locator(`app-ideology-reading .desktop-nav a[href="${second}"]`),
+    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${second}"]`),
   ).not.toHaveAttribute('aria-current');
   await page.goBack();
   await expect(page).toHaveURL(new RegExp(`${second.replace('#', '#')}$`));
   await expect(
-    page.locator(`app-ideology-reading .desktop-nav a[href="${second}"]`),
+    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${second}"]`),
   ).toHaveAttribute('aria-current', 'location');
 });

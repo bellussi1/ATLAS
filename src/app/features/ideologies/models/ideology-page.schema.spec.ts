@@ -21,7 +21,9 @@ describe('Public pages', () => {
     expect(routes.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
       '',
       'marxismo',
+      'marxismo/mesa',
       'liberalismo',
+      'liberalismo/mesa',
       'conhecimento',
       'entidades',
       'ideologias',

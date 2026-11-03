@@ -41,7 +41,7 @@ test('SSR transfers all compiled data needed for hydration without duplicate HTT
     if (request.url().includes('/content/')) resources.push(request.url());
   });
   await page.goto('/liberalismo/');
-  await expect(page.getByLabel('Buscar neste atlas', { exact: true })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Capítulos' })).toBeVisible();
   await page
     .getByRole('button', { name: 'John Locke: abrir contexto de Pensador', exact: true })
     .first()

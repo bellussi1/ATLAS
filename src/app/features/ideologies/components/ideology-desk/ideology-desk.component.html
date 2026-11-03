@@ -1,0 +1,50 @@
+<section class="ideology-desk" aria-labelledby="desk-title">
+  <header class="desk-heading">
+    <h2 id="desk-title">Mesa de exploração</h2>
+    <p>
+      Os mesmos registros da leitura, reunidos para consulta livre. Cada peça indica o capítulo que
+      a explica.
+    </p>
+  </header>
+  <div class="desk-tabs" role="tablist" aria-label="Modos da mesa">
+    @for (v of views(); track v.key) {
+      <button
+        type="button"
+        role="tab"
+        [id]="'desk-tab-' + v.key"
+        [attr.aria-selected]="current() === v.key"
+        [attr.aria-controls]="'desk-panel-' + v.key"
+        [tabIndex]="current() === v.key ? 0 : -1"
+        (click)="viewChange.emit(v.key)"
+        (keydown)="onKey($event)"
+      >
+        <span class="tab-label">{{ v.label }}</span>
+        <span class="tab-count">{{ v.count }}</span>
+      </button>
+    }
+  </div>
+  @for (v of views(); track v.key) {
+    <div
+      class="desk-panel"
+      [hidden]="current() !== v.key"
+      role="tabpanel"
+      [id]="'desk-panel-' + v.key"
+      [attr.aria-labelledby]="'desk-tab-' + v.key"
+    >
+      <p class="desk-hint">{{ v.hint }}</p>
+      @for (item of items()[v.key]; track item.blockId) {
+        <div class="desk-item">
+          <a class="desk-origin" [routerLink]="basePath()" [fragment]="item.chapterAnchor"
+            >Explicado em: {{ item.chapterTitle }}</a
+          >
+          <app-ideology-block
+            [block]="item.block"
+            [dossier]="dossier()"
+            [blockId]="item.blockId"
+            [mediaPlan]="mediaPlan()"
+          />
+        </div>
+      }
+    </div>
+  }
+</section>

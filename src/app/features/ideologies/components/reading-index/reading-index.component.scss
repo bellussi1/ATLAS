@@ -85,13 +85,18 @@ progress::-moz-progress-bar {
   display: grid;
 }
 
-.index-group {
-  margin: 0.6rem 0 0.1rem;
+.desktop-nav a.index-act {
+  justify-content: space-between;
+  margin-top: 0.4rem;
   font: 600 0.75rem/1.2 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-ink);
-  opacity: 0.72;
+  border-top: 2px solid var(--color-ink);
+}
+.desktop-nav a.index-act small {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
 .desktop-nav a {
   position: relative;

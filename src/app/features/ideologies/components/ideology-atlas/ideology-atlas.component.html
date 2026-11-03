@@ -6,7 +6,7 @@
   @if (!embedded()) {
     <header class="opening">
       <div>
-        <p class="eyebrow">{{ atlas().title }} <span>· dados em revisão editorial</span></p>
+        <p class="eyebrow">{{ atlas().title }}</p>
         <h1 id="atlas-title">
           {{ openingTitle() }}<br /><em>{{ openingSubtitle() }}</em>
         </h1>
@@ -378,9 +378,7 @@
               Próximo →
             </button>
           </div>
-          <p class="metadata">
-            {{ yearLabel(current) }} · {{ kindLabel(current) }} · registro em revisão
-          </p>
+          <p class="metadata">{{ yearLabel(current) }} · {{ kindLabel(current) }}</p>
           <h3>{{ current.title }}</h3>
           <p><app-knowledge-text [text]="current.summary" /></p>
           <button

@@ -12,6 +12,8 @@ test('explores entities, graph, timeline and returns to prior context', async ({
     path: 'output/playwright/atlas-liberalismo-continuous-desktop.png',
     fullPage: true,
   });
+  await page.getByRole('link', { name: /^Mesa/ }).click();
+  await expect(page).toHaveURL(/\/liberalismo\/mesa/);
   await page.getByRole('button', { name: /^Pessoa John Locke/ }).click();
   await expect(
     page.locator('.entity-reading').getByRole('heading', { name: 'John Locke', exact: true }),
@@ -55,7 +57,7 @@ test('explores entities, graph, timeline and returns to prior context', async ({
 test('mobile keeps entity navigation available without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/liberalismo/');
+  await page.goto('/liberalismo/mesa/');
   await expect(page.locator('.text-network')).toHaveJSProperty('open', true);
   await expect(page.locator('.text-network li[data-relation-id]').first()).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -84,7 +86,7 @@ test('mobile keeps entity navigation available without horizontal overflow', asy
 
 test('mobile reopens the selected entity without duplicating history', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/liberalismo/');
+  await page.goto('/liberalismo/mesa/');
   const locke = page.locator('.entity-card').filter({ hasText: 'John Locke' });
   for (let attempt = 0; attempt < 2; attempt++) {
     await locke.click();

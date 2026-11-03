@@ -28,6 +28,12 @@ export class IdeologyReadingIndexComponent {
     }, []),
   );
 
+  /** Only the act being read lists its chapters; the others stay as one line each. */
+  readonly activeGroup = computed(
+    () =>
+      (this.sections().find((s) => s.anchor === this.active()) ?? this.sections()[0])?.group ?? '',
+  );
+
   readonly chapterSelected = output<string>();
   readonly previousRequested = output<void>();
   readonly motionToggleRequested = output<void>();

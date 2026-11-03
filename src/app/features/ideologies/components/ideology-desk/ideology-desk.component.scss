@@ -1,0 +1,77 @@
+:host {
+  display: block;
+}
+.ideology-desk {
+  border-top: 3px solid var(--ink);
+  padding-top: 1.5rem;
+}
+.desk-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 0.5rem 2rem;
+  align-items: end;
+}
+.desk-heading h2 {
+  margin: 0;
+  font: 800 clamp(2rem, 5vw, 3.5rem) / 0.95 var(--font-sans);
+  letter-spacing: var(--tracking-display);
+}
+.desk-heading p {
+  margin: 0;
+  max-width: 60ch;
+  font: 1rem/1.55 var(--font-serif);
+}
+.desk-tabs {
+  display: flex;
+  gap: 0;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+.desk-tabs button {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  background: none;
+  color: inherit;
+  font: 600 1rem/1 var(--font-sans);
+  cursor: pointer;
+}
+.desk-tabs button[aria-selected='true'] {
+  border-color: var(--ink);
+  background: var(--paper);
+  margin-bottom: -1px;
+}
+.desk-tabs button:focus-visible {
+  outline: 3px solid var(--color-focus, var(--color-accent));
+  outline-offset: -3px;
+}
+.tab-count {
+  font: 0.75rem/1 var(--font-mono);
+}
+.desk-hint {
+  margin: 1rem 0 0;
+  font: 0.8rem/1.5 var(--font-mono);
+}
+.desk-item {
+  margin-top: 2rem;
+}
+.desk-origin {
+  display: inline-block;
+  min-height: 1.5rem;
+  font: 500 0.8rem/1.5 var(--font-sans);
+  color: var(--color-accent);
+}
+@media (max-width: 760px) {
+  .desk-heading {
+    grid-template-columns: 1fr;
+  }
+  .desk-tabs button {
+    flex: 1;
+    justify-content: center;
+    padding-inline: 0.5rem;
+  }
+}

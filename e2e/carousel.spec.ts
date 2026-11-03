@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 
 test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/marxismo/#conexoes');
+  await page.goto('/marxismo/mesa/');
   const region = page.getByRole('region', { name: 'Fichas deste atlas' });
   await region.scrollIntoViewIfNeeded();
   await expect(region).toBeVisible();
@@ -47,9 +47,9 @@ test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ 
 });
 
 test('relation cards open their evidence and select the line in the graph', async ({ page }) => {
-  await page.goto('/marxismo/#vertentes');
-  await page.locator('#vertentes .relation-table > summary').click();
-  const card = page.locator('#vertentes .relation-card').first();
+  await page.goto('/marxismo/mesa/');
+  await page.locator('#desk-panel-rede .relation-table > summary').first().click();
+  const card = page.locator('#desk-panel-rede .relation-card').first();
   const select = card.locator('.relation-card-select');
   await select.click();
   await expect(select).toHaveAttribute('aria-pressed', 'true');
@@ -59,7 +59,7 @@ test('relation cards open their evidence and select the line in the graph', asyn
 
 test('mobile carousels swipe without horizontal page overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/marxismo/#conexoes');
+  await page.goto('/marxismo/mesa/');
   const region = page.getByRole('region', { name: 'Registros em ordem cronológica' });
   await region.scrollIntoViewIfNeeded();
   await expect(region).toBeVisible();
@@ -68,7 +68,7 @@ test('mobile carousels swipe without horizontal page overflow', async ({ page })
 
 test('timeline period chips bring their first record into view', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/marxismo/#conexoes');
+  await page.goto('/marxismo/mesa/');
   const track = page.locator('.timeline-carousel .carousel-track');
   await track.scrollIntoViewIfNeeded();
   await page.getByRole('button', { name: /^Século XX/ }).click();
@@ -88,7 +88,7 @@ test('timeline period chips bring their first record into view', async ({ page }
 test('timeline record opens its full context and Escape returns to the reading', async ({
   page,
 }) => {
-  await page.goto('/marxismo/#conexoes');
+  await page.goto('/marxismo/mesa/');
   const reading = page.locator('.strip-reading');
   await reading.scrollIntoViewIfNeeded();
   await reading.getByRole('button', { name: 'Abrir ficha completa +' }).click();
