@@ -2,7 +2,7 @@
 import { JSDOM } from 'jsdom';
 
 import { getJson, getResource } from '../wikimedia/client.mjs';
-import { resolveTargets } from './targets.mjs';
+import { classifyQids, resolveTargets, targetKind } from './targets.mjs';
 
 /** Elements that carry navigation, footnote lists or layout rather than article prose. */
 const noise = [
@@ -180,9 +180,13 @@ export async function fetchArticle(lang, title) {
     lang,
     links.map((link) => link.written),
   );
+  const kinds = await classifyQids(
+    [...resolvedTargets.values()].flatMap((target) => target.qid ?? []),
+  );
   return {
     lang,
     title: resolved.title,
+    qid: resolved.qid,
     redirectedFrom: resolved.redirectedFrom,
     url: `https://${lang}.wikipedia.org/wiki/${path}`,
     revision: etag?.match(/^(?:W\/)?"?(\d+)/)?.[1] ?? null,
@@ -191,16 +195,23 @@ export async function fetchArticle(lang, title) {
       ...link,
       target: resolvedTargets.get(written).title,
     })),
-    targets: targetRecords(resolvedTargets),
+    targets: targetRecords(resolvedTargets, kinds),
     references,
   };
 }
 
-/** One record per canonical target, listing the titles that were written and redirected to it. */
-export function targetRecords(resolvedTargets) {
+/** One record per canonical target: its Wikidata item, its type, and the titles that reached it. */
+export function targetRecords(resolvedTargets, kinds = new Map()) {
   const records = new Map();
-  for (const [written, { title, qid, missing }] of resolvedTargets) {
-    const record = records.get(title) ?? { title, qid, missing, redirectedFrom: [] };
+  for (const [written, target] of resolvedTargets) {
+    const { title, qid, missing } = target;
+    const record = records.get(title) ?? {
+      title,
+      qid,
+      missing,
+      ...targetKind(target, kinds),
+      redirectedFrom: [],
+    };
     if (written !== title && !record.redirectedFrom.includes(written))
       record.redirectedFrom.push(written);
     records.set(title, record);

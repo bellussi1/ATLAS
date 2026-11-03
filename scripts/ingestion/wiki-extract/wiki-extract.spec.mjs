@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { articleText, linkedTitle, parseArticle, parseWikiUrl, targetRecords } from './article.mjs';
 import { parseExtraction, verifyQuotes } from './extraction.mjs';
 import { rankCandidates } from './discovery.mjs';
-import { mapResolution } from './targets.mjs';
+import { classifyItem, mapResolution, targetKind } from './targets.mjs';
 
 const html = `<html><body>
 <section><p>Karl Marx<sup class="reference"><a href="./Karl_Marx#cite_note-1">[1]</a></sup> foi um <a rel="mw:WikiLink" href="./Filósofo_alemão">filósofo</a> alemão.</p><table><tr><td><a rel="mw:WikiLink" href="./Caixa">caixa</a></td></tr></table></section>
@@ -67,16 +67,116 @@ test('resolves redirects and missing pages from one MediaWiki response', () => {
   ]);
 });
 
-test('lists each canonical target once, with the titles that reached it', () => {
+test('lists each canonical target once, with its type and the titles that reached it', () => {
   const resolved = new Map([
     ['Capitalista', { title: 'Capitalismo', qid: 'Q4', missing: false }],
     ['Capitalismo', { title: 'Capitalismo', qid: 'Q4', missing: false }],
     ['Socialismo', { title: 'Socialismo', qid: null, missing: false }],
+    ['Não existe', { title: 'Não existe', qid: null, missing: true }],
   ]);
-  assert.deepEqual(targetRecords(resolved), [
-    { title: 'Capitalismo', qid: 'Q4', missing: false, redirectedFrom: ['Capitalista'] },
-    { title: 'Socialismo', qid: null, missing: false, redirectedFrom: [] },
+  const kinds = new Map([['Q4', { type: 'conceito', classes: ['Q151885'], distance: 1 }]]);
+  assert.deepEqual(targetRecords(resolved, kinds), [
+    {
+      title: 'Capitalismo',
+      qid: 'Q4',
+      missing: false,
+      type: 'conceito',
+      classes: ['Q151885'],
+      distance: 1,
+      redirectedFrom: ['Capitalista'],
+    },
+    {
+      title: 'Socialismo',
+      qid: null,
+      missing: false,
+      type: 'sem-item',
+      classes: [],
+      distance: null,
+      redirectedFrom: [],
+    },
+    {
+      title: 'Não existe',
+      qid: null,
+      missing: true,
+      type: 'ausente',
+      classes: [],
+      distance: null,
+      redirectedFrom: [],
+    },
   ]);
+});
+
+test('types an item by the first target type reached through P31 and P279', () => {
+  const graph = new Map([
+    ['Q9061', { instanceOf: ['Q5'], subclassOf: [] }],
+    ['Q5', { instanceOf: ['Q55983715'], subclassOf: [] }],
+    ['Q7264', { instanceOf: ['Q12909644'], subclassOf: [] }],
+    ['Q12909644', { instanceOf: [], subclassOf: ['Q7257'] }],
+    ['Q7257', { instanceOf: [], subclassOf: ['Q151885'] }],
+    ['Qpartido', { instanceOf: ['Q7278'], subclassOf: [] }],
+    ['Q7278', { instanceOf: [], subclassOf: ['Q43229'] }],
+    ['Q999', { instanceOf: ['Q9999'], subclassOf: [] }],
+    ['Q9999', { instanceOf: [], subclassOf: [] }],
+  ]);
+  assert.deepEqual(classifyItem(graph, 'Q9061'), { type: 'pessoa', distance: 1, classes: ['Q5'] });
+  assert.equal(classifyItem(graph, 'Q7264').type, 'ideologia');
+  assert.equal(classifyItem(graph, 'Qpartido').type, 'partido');
+  assert.deepEqual(classifyItem(graph, 'Q999'), {
+    type: 'outro',
+    distance: null,
+    classes: ['Q9999'],
+  });
+});
+
+test('prefers the nearest target type, not the earlier one in the list', () => {
+  const graph = new Map([
+    ['Qmix', { instanceOf: ['Qa', 'Q151885'], subclassOf: [] }],
+    ['Qa', { instanceOf: [], subclassOf: ['Q43229'] }],
+  ]);
+  assert.deepEqual(classifyItem(graph, 'Qmix'), {
+    type: 'conceito',
+    distance: 1,
+    classes: ['Qa', 'Q151885'],
+  });
+  assert.deepEqual(classifyItem(new Map([['Qsem', { instanceOf: [], subclassOf: [] }]]), 'Qsem'), {
+    type: 'sem-classe',
+    distance: null,
+    classes: [],
+  });
+});
+
+test('stops following classes after four links, so a deep chain stays unclassified', () => {
+  const chain = ['Qc0', 'Qc1', 'Qc2', 'Qc3', 'Qc4', 'Qc5', 'Qc6'];
+  const graph = new Map(
+    chain.map((qid, index) => [
+      qid,
+      { instanceOf: [], subclassOf: index + 1 < chain.length ? [chain[index + 1]] : ['Q151885'] },
+    ]),
+  );
+  graph.set('Qitem', { instanceOf: ['Qc0'], subclassOf: [] });
+  assert.equal(classifyItem(graph, 'Qitem').type, 'outro');
+  assert.equal(classifyItem(graph, 'Qc3').type, 'conceito');
+});
+
+test('marks wiki pages, missing pages and targets without an item explicitly', () => {
+  const none = new Map();
+  assert.equal(
+    targetKind({ title: 'Maurice Brinton', qid: null, missing: true }, none).type,
+    'ausente',
+  );
+  assert.equal(
+    targetKind({ title: 'Socialismo', qid: null, missing: false }, none).type,
+    'sem-item',
+  );
+  assert.equal(
+    targetKind({ title: 'Socialismo', qid: 'Q1', missing: false }, none).type,
+    'não-classificado',
+  );
+  assert.equal(
+    targetKind({ title: 'Especial:Fontes de livros/0521329221', qid: null, missing: false }, none)
+      .type,
+    'não-artigo',
+  );
 });
 
 const section = (index, heading, text) => ({ index, heading, text });
