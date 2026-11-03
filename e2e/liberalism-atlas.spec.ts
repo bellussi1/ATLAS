@@ -12,7 +12,7 @@ test('explores entities, graph, timeline and returns to prior context', async ({
     path: 'output/playwright/atlas-liberalismo-continuous-desktop.png',
     fullPage: true,
   });
-  await page.getByRole('button', { name: /^Pessoa John Locke/ }).click();
+  await page.locator('.entity-card', { hasText: 'John Locke' }).first().click();
   await expect(
     page.locator('.entity-reading').getByRole('heading', { name: 'John Locke', exact: true }),
   ).toBeVisible();

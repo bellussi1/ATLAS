@@ -43,7 +43,7 @@ test('SSR transfers all compiled data needed for hydration without duplicate HTT
   await page.goto('/liberalismo/');
   await expect(page.getByRole('navigation', { name: 'Capítulos' })).toBeVisible();
   await page
-    .getByRole('button', { name: 'John Locke: abrir contexto de Pensador', exact: true })
+    .getByRole('button', { name: /^John Locke: abrir contexto de / })
     .first()
     .click();
   await expect(page.getByRole('dialog')).toContainText('John Locke');

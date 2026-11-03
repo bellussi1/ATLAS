@@ -61,6 +61,7 @@
   font-style: normal;
 }
 [data-kind^='Pensador'],
+[data-kind='Pessoa'],
 [data-kind='Dirigente'] {
   --tone: var(--color-rose-paper);
 }
@@ -74,6 +75,8 @@
   --tone: var(--color-orange-paper);
 }
 [data-kind='Tradição'],
+[data-kind='Corrente'],
+[data-kind='Partido'],
 [data-kind='Instituição'] {
   --tone: var(--color-indigo);
 }

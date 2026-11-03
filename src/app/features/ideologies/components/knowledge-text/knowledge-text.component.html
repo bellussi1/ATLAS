@@ -6,12 +6,17 @@
         class="knowledge-term"
         [attr.data-kind]="term.kind"
         [attr.aria-label]="part.text + ': abrir contexto de ' + term.kind"
+        [attr.aria-describedby]="id + '-' + $index"
         [appKnowledgeContext]="{ entityId: term.entityId }"
       >
         {{ part.text }}<span aria-hidden="true" class="term-cue">+</span></button
-      ><span class="term-preview" aria-hidden="true" [attr.data-kind]="term.kind"
+      ><span
+        class="term-preview"
+        role="tooltip"
+        [id]="id + '-' + $index"
+        [attr.data-kind]="term.kind"
         ><strong>{{ term.kind }}</strong
-        >{{ term.definition }}<em>Clique para abrir a ficha com fontes →</em></span
+        >{{ term.definition }}<em aria-hidden="true">Abrir a folha com fontes →</em></span
       ></span
     >
   } @else {

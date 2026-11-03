@@ -122,3 +122,22 @@ test('relations open stacked sheets that Esc and the back button lift one at a t
   await expect(sheet).toHaveCount(0);
   await expect(page).toHaveURL(/cadeia=person-karl-marx/);
 });
+
+test('graph terms explain themselves on focus and open their sheet on activation', async ({
+  page,
+}) => {
+  await page.goto('/liberalismo/');
+  const term = page.locator('.knowledge-term', { hasText: 'John Locke' }).first();
+  await term.focus();
+  const tip = page.locator(`#${await term.getAttribute('aria-describedby')}`);
+  await expect(tip).toBeVisible();
+  await expect(tip).toHaveAttribute('role', 'tooltip');
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('dialog').locator('h2')).toHaveText('John Locke');
+  await expect(page.getByRole('dialog')).toContainText(
+    (await tip.textContent())!
+      .replace(/^Pessoa/, '')
+      .split('…')[0]
+      .slice(0, 30),
+  );
+});

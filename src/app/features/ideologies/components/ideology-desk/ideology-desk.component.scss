@@ -140,21 +140,32 @@ h4,
   gap: 3px;
   height: 5rem;
   border-bottom: 1px solid var(--desk-line);
+  /* The whole column is the target; the bar inside shows the count. */
   button {
     flex: 1;
     min-width: 0;
-    height: calc(15% + 85% * var(--h, 0));
-    background: #5a5a55;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    background: none;
     border: 0;
     padding: 0;
-    transition: background var(--motion-fast);
-    &:hover,
-    &[aria-pressed='true'] {
+    &::before {
+      content: '';
+      width: 100%;
+      height: calc(15% + 85% * var(--h, 0));
+      background: #5a5a55;
+      transition: background var(--motion-fast);
+    }
+    &:hover::before,
+    &[aria-pressed='true']::before {
       background: var(--color-ochre-paper, #c8a24a);
     }
     &:disabled {
       cursor: default;
-      background: #333330;
+      &::before {
+        background: #333330;
+      }
     }
   }
 }
