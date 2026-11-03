@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "baseUrl": "https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev",
+  "release": "85c5358edeedbf1514bca8a86ea9afd5e6abb14d05bff847c665723b0d3c401a",
+  "manifest": {
+    "sha256": "ce42e9807e5bd57b78915a2c48187cb2579775d4583302fd481e85753407b7da",
+    "bytes": 2470
+  },
+  "artifacts": [
+    {
+      "sha256": "d5d9637bcf449cdfaa2fda1ce8255750bc118202e81072253cf3bc5c1578c3f1",
+      "bytes": 4704,
+      "file": "atlas-methodology.d5d9637bcf449cdfaa2fda1ce8255750bc118202e81072253cf3bc5c1578c3f1.json"
+    },
+    {
+      "sha256": "d1207bdc01db90c9e229cbfd0458375fba55bec6ecca13b2e51b973432d70aea",
+      "bytes": 7876,
+      "file": "atlas-processo-constituinte.d1207bdc01db90c9e229cbfd0458375fba55bec6ecca13b2e51b973432d70aea.json"
+    },
+    {
+      "sha256": "7e671443781f296a62e38096b04eb0ddd8b6dcd755b73daa5113dea5e5176f4f",
+      "bytes": 3038,
+      "file": "atlas-direitos-constitucionais.7e671443781f296a62e38096b04eb0ddd8b6dcd755b73daa5113dea5e5176f4f.json"
+    },
+    {
+      "sha256": "ba47e8d5231ec9ca66c61b62cd7fb309c2c59996fb15dcd3bfbc946a6f8b11d2",
+      "bytes": 141426,
+      "file": "atlas-liberalism.ba47e8d5231ec9ca66c61b62cd7fb309c2c59996fb15dcd3bfbc946a6f8b11d2.json"
+    },
+    {
+      "sha256": "3005ebe05794d76dfd27c499f6d99e61f9c8587544ecf91d1f28eeabc1a794bc",
+      "bytes": 213111,
+      "file": "atlas-marx-valor.3005ebe05794d76dfd27c499f6d99e61f9c8587544ecf91d1f28eeabc1a794bc.json"
+    },
+    {
+      "sha256": "c60ba49d4d1636f50d57323daa9c98b2d0b233a0c54f3cb62b29fc8fdbaa6214",
+      "bytes": 20410,
+      "file": "atlas-constitutional-contexts.c60ba49d4d1636f50d57323daa9c98b2d0b233a0c54f3cb62b29fc8fdbaa6214.json"
+    },
+    {
+      "sha256": "ae188f311ac1fdae8b5cf42fb6226be6fa1dc897107506965f2385458ee06142",
+      "bytes": 344958,
+      "file": "search.ae188f311ac1fdae8b5cf42fb6226be6fa1dc897107506965f2385458ee06142.json"
+    },
+    {
+      "sha256": "266b6ec16c21f92d6c978f52bd215cf429d7063732579d4f35b7a097d4398a49",
+      "bytes": 202207,
+      "file": "adjacency.266b6ec16c21f92d6c978f52bd215cf429d7063732579d4f35b7a097d4398a49.json"
+    },
+    {
+      "sha256": "ad65e990d3269d27d227b47a491c10fe859bfafd7b39e7782bd254d9f07bd45e",
+      "bytes": 194393,
+      "file": "layouts.ad65e990d3269d27d227b47a491c10fe859bfafd7b39e7782bd254d9f07bd45e.json"
+    }
+  ],
+  "media": [
+    {
+      "sha256": "b86cea22a5cfb81227a080f33ebe1df867eda91067de7c553a91aae8796b4222",
+      "bytes": 54329,
+      "path": "/images/atlas/karl-marx.jpg",
+      "key": "m/b86cea22a5cfb81227a080f33ebe1df867eda91067de7c553a91aae8796b4222.jpg",
+      "contentType": "image/jpeg",
+      "license": {
+        "assetPath": "/images/atlas/karl-marx.jpg",
+        "creator": "John Jabez Edwin Mayall e ateliê / Wien Museum",
+        "license": "Domínio público — PD-old e PD-US-expired",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:Karl_Marx_by_John_Jabez_Edwin_Mayall_-_Wien_Museum_(cropped).jpg",
+        "status": "known",
+        "reproduction": "allowed"
+      }
+    },
+    {
+      "sha256": "a0f70ca26bc947572db951a5469586686c6e300eb4f3d4bceed2dca5e591b026",
+      "bytes": 70289,
+      "path": "/images/atlas/adam-smith.jpg",
+      "key": "m/a0f70ca26bc947572db951a5469586686c6e300eb4f3d4bceed2dca5e591b026.jpg",
+      "contentType": "image/jpeg",
+      "license": {
+        "assetPath": "/images/atlas/adam-smith.jpg",
+        "creator": "Autoria desconhecida, retrato Muir, c. 1800; versão com cores editadas",
+        "license": "Domínio público — PD-old e PD-US-expired",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:Adam_Smith_(Muir_portrait).jpg",
+        "status": "known",
+        "reproduction": "allowed"
+      }
+    },
+    {
+      "sha256": "de971b1858543911c3b638732338b651a317d893259c1a347cc12620f4bbc8fe",
+      "bytes": 152402,
+      "path": "/assets/marxism/ideology-marxism-de971b1858543911.jpg",
+      "key": "m/de971b1858543911c3b638732338b651a317d893259c1a347cc12620f4bbc8fe.jpg",
+      "contentType": "image/jpeg",
+      "license": {
+        "assetPath": "/assets/marxism/ideology-marxism-de971b1858543911.jpg",
+        "creator": "Photo of Karl Marx by Friedrich Karl Wunder Photo of Friedrich Engels by George Lester",
+        "license": "Public domain",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/File:Marx_and_Engels.jpg",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/79/Marx_and_Engels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "status": "known",
+        "reproduction": "allowed"
+      }
+    }
+  ]
+}
