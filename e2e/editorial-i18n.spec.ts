@@ -60,7 +60,7 @@ test('English search finds translated narrative and keeps locale when returning 
 }) => {
   await page.goto('/paises?idioma=en&q=Federative');
   const results = page.getByRole('region', { name: 'Resultados da busca' });
-  await results.getByRole('link', { name: 'Brazil', exact: true }).click();
+  await results.getByRole('link', { name: /^País Brazil/ }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Brazil');
   await page.getByRole('link', { name: 'Voltar aos resultados' }).click();
   await expect(page).toHaveURL(/idioma=en/);
