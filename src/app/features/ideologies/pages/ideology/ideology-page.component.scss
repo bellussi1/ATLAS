@@ -36,28 +36,6 @@ a {
     max-width: var(--measure-reading);
   }
 }
-.desk-masthead {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: var(--space-2) var(--space-6);
-  border-top: 3px solid var(--ink);
-  padding-block: var(--space-6);
-  h1 {
-    grid-column: 1;
-    font: 700 clamp(2.4rem, 6vw, 4.5rem) / 0.95 var(--font-sans);
-    letter-spacing: -0.04em;
-    margin: 0;
-  }
-  a {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    font-weight: 700;
-    min-height: var(--control-min-size);
-    display: inline-flex;
-    align-items: center;
-  }
-}
 /* Each chapter is laid out as an atlas spread: running head, a numeral in the margin, then text. */
 .ideology-chapter {
   display: grid;
@@ -263,13 +241,6 @@ h2 {
   .chapter-narrative {
     font-size: 1.1rem;
   }
-  .desk-masthead {
-    grid-template-columns: 1fr;
-    a {
-      grid-column: 1;
-      grid-row: auto;
-    }
-  }
 }
 .chapter-aside {
   margin-block: 1.5rem;
@@ -300,4 +271,8 @@ h2 {
     transition: none;
     transform: none !important;
   }
+}
+.explore-section {
+  scroll-margin-top: var(--space-6);
+  outline: none;
 }

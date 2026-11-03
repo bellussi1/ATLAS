@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, type Params, Router, RouterLink } from '@angular/router';
 import type { Atlas } from '@core/content/models/content-schema';
@@ -20,7 +20,7 @@ import { chapterDeskKind } from '@ideologies/utils/reading-trails';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
 
 /**
- * Exploration desk over the tradition's graph: search, kind and era filters, and a
+ * Explorar section of a tradition's page, over its graph: search, kind and era filters, and a
  * chain of records joined by documented relations. The whole state lives in the URL,
  * including the chapter the reader came from, so it can be shared and undone.
  */
@@ -35,7 +35,8 @@ export class IdeologyDeskComponent {
   private readonly router = inject(Router);
   private readonly repository = inject(ContentRepository);
   readonly page = input.required<IdeologyPage>();
-  readonly basePath = input.required<string>();
+  /** Asks the page to return to a chapter of the reading. */
+  readonly chapterRequested = output<string>();
 
   private readonly params = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,

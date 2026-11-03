@@ -5,134 +5,123 @@
     [attr.data-accent]="page.identity.accent"
     aria-labelledby="ideology-title"
   >
-    @if (mode() === 'mesa') {
-      <header class="desk-masthead">
-        <p class="folio">{{ page.kicker }}</p>
-        <h1 id="ideology-title">{{ page.title }}</h1>
-        <a [routerLink]="basePath()">Ler o percurso completo</a>
-      </header>
-    } @else {
-      <app-ideology-poster [page]="page" [basePath]="basePath()" [minutes]="minutes()" />
-      <details class="editorial-strip">
-        <summary>Conteúdo com fontes · revisão humana pendente · recorte e classificação</summary>
-        <p>{{ page.classificationNote }}</p>
-        <p>Atualizado em {{ page.review.updatedAt }}. {{ page.identity.signature }}.</p>
-      </details>
-    }
+    <app-ideology-poster [page]="page" [basePath]="basePath()" [minutes]="minutes()" />
+    <details class="editorial-strip">
+      <summary>Conteúdo com fontes · revisão humana pendente · recorte e classificação</summary>
+      <p>{{ page.classificationNote }}</p>
+      <p>Atualizado em {{ page.review.updatedAt }}. {{ page.identity.signature }}.</p>
+    </details>
 
-    @if (mode() === 'mesa') {
-      <app-ideology-desk [page]="page" [basePath]="basePath()" />
-    } @else {
-      <app-ideology-reading #reading [sections]="sections()">
-        @for (chapter of page.chapters; track chapter.id; let index = $index) {
-          <section
-            class="ideology-chapter"
-            [id]="chapter.anchor"
-            [attr.data-layout]="chapter.layout"
-            [attr.data-coverage]="chapter.coverage"
-            tabindex="-1"
-            [attr.aria-labelledby]="'title-' + chapter.id"
-          >
-            <p class="running-head" aria-hidden="true">
-              <span>{{ page.title }} — {{ chapter.kicker }}</span
-              ><span>{{ roman[index] }} · ~{{ chapter.minutes }} min</span>
+    <app-ideology-reading #reading [sections]="sections()">
+      @for (chapter of page.chapters; track chapter.id; let index = $index) {
+        <section
+          class="ideology-chapter"
+          [id]="chapter.anchor"
+          [attr.data-layout]="chapter.layout"
+          [attr.data-coverage]="chapter.coverage"
+          tabindex="-1"
+          [attr.aria-labelledby]="'title-' + chapter.id"
+        >
+          <p class="running-head" aria-hidden="true">
+            <span>{{ page.title }} — {{ chapter.kicker }}</span
+            ><span>{{ roman[index] }} · ~{{ chapter.minutes }} min</span>
+          </p>
+          <header class="chapter-heading" appReveal data-reveal="wipe">
+            <p class="chapter-numeral" aria-hidden="true" [attr.data-shape]="index % 3">
+              {{ roman[index] }}
             </p>
-            <header class="chapter-heading" appReveal data-reveal="wipe">
-              <p class="chapter-numeral" aria-hidden="true" [attr.data-shape]="index % 3">
-                {{ roman[index] }}
-              </p>
-              <p class="folio">{{ chapter.kicker }}</p>
-              <h2 [id]="'title-' + chapter.id">{{ chapter.title }}</h2>
-              <p class="chapter-measure">
-                Capítulo {{ index + 1 }} de {{ page.chapters.length }} · depois dele, ~{{
-                  remaining()[index]
-                }}
-                min
-              </p>
-            </header>
-            <app-geometric-mosaic
-              class="chapter-mosaic"
-              [columns]="2"
-              [rows]="3"
-              [palette]="palette()"
-              [seed]="index * 7 + 3"
-              [interactive]="true"
-              aria-hidden="true"
-            />
-            @if (chapter.question) {
-              <p class="chapter-question">{{ chapter.question }}</p>
+            <p class="folio">{{ chapter.kicker }}</p>
+            <h2 [id]="'title-' + chapter.id">{{ chapter.title }}</h2>
+            <p class="chapter-measure">
+              Capítulo {{ index + 1 }} de {{ page.chapters.length }} · depois dele, ~{{
+                remaining()[index]
+              }}
+              min
+            </p>
+          </header>
+          <app-geometric-mosaic
+            class="chapter-mosaic"
+            [columns]="2"
+            [rows]="3"
+            [palette]="palette()"
+            [seed]="index * 7 + 3"
+            [interactive]="true"
+            aria-hidden="true"
+          />
+          @if (chapter.question) {
+            <p class="chapter-question">{{ chapter.question }}</p>
+          }
+          <div class="chapter-narrative">
+            @for (paragraph of chapter.narrative; track $index) {
+              <p><app-knowledge-text [text]="paragraph" /></p>
             }
-            <div class="chapter-narrative">
-              @for (paragraph of chapter.narrative; track $index) {
-                <p><app-knowledge-text [text]="paragraph" /></p>
-              }
-            </div>
-            @if (chapter.gap) {
-              <p class="editorial-gap" [attr.data-coverage]="chapter.coverage">
-                <strong>{{
-                  chapter.coverage === 'pending'
-                    ? 'Cobertura pendente.'
-                    : chapter.coverage === 'partial'
-                      ? 'Cobertura parcial.'
-                      : 'Limite deste recorte.'
-                }}</strong>
-                {{ chapter.gap }}
-              </p>
-            }
-            @for (block of chapter.blocks; track $index; let blockIndex = $index) {
-              @if (block.type === 'argument') {
-                <details class="chapter-aside">
-                  <summary>Aprofundar: argumentos e respostas</summary>
-                  <app-ideology-block
-                    [block]="block"
-                    [dossier]="state().dossier!"
-                    [blockId]="chapter.id + '-' + blockIndex"
-                    [mediaPlan]="mediaPlan()"
-                  />
-                </details>
-              } @else {
+          </div>
+          @if (chapter.gap) {
+            <p class="editorial-gap" [attr.data-coverage]="chapter.coverage">
+              <strong>{{
+                chapter.coverage === 'pending'
+                  ? 'Cobertura pendente.'
+                  : chapter.coverage === 'partial'
+                    ? 'Cobertura parcial.'
+                    : 'Limite deste recorte.'
+              }}</strong>
+              {{ chapter.gap }}
+            </p>
+          }
+          @for (block of chapter.blocks; track $index; let blockIndex = $index) {
+            @if (block.type === 'argument') {
+              <details class="chapter-aside">
+                <summary>Aprofundar: argumentos e respostas</summary>
                 <app-ideology-block
                   [block]="block"
                   [dossier]="state().dossier!"
                   [blockId]="chapter.id + '-' + blockIndex"
                   [mediaPlan]="mediaPlan()"
                 />
-              }
-            }
-            <p class="desk-pointer">
-              <a
-                [routerLink]="basePath() + '/mesa'"
-                [queryParams]="{ de: chapter.anchor, tipo: chapterDeskKind(chapter) }"
-                >Explorar os registros deste capítulo na mesa <span aria-hidden="true">→</span></a
-              >
-            </p>
-            @if (chapter.sourceIds.length) {
-              <details class="chapter-sources">
-                <summary>Conferir fontes deste capítulo ({{ chapter.sourceIds.length }})</summary>
-                <app-editorial-sources [references]="sources(chapter.sourceIds)" />
               </details>
+            } @else {
+              <app-ideology-block
+                [block]="block"
+                [dossier]="state().dossier!"
+                [blockId]="chapter.id + '-' + blockIndex"
+                [mediaPlan]="mediaPlan()"
+              />
             }
-            @if (chapter.bridge) {
-              <p class="chapter-bridge">{{ chapter.bridge }}</p>
-            }
-            @if (page.chapters[index + 1]; as next) {
-              <a
-                class="next-chapter atlas-press"
-                [href]="'#' + next.anchor"
-                (click)="reading.navigateChapter($event, next.anchor)"
-                >A seguir: {{ next.title }}
-                <span class="atlas-arrow atlas-arrow--down" aria-hidden="true">↓</span></a
-              >
-            }
-          </section>
-        }
-        <footer class="reading-end">
-          <p>Uma leitura termina. As perguntas continuam.</p>
-          <a routerLink="/">Voltar à página inicial</a
-          ><a [routerLink]="companion().path">{{ companion().label }}</a>
-        </footer>
-      </app-ideology-reading>
-    }
+          }
+          <p class="desk-pointer">
+            <a [href]="exploreHref(chapter)" (click)="exploreChapter($event, chapter)"
+              >Explorar os registros deste capítulo <span aria-hidden="true">↓</span></a
+            >
+          </p>
+          @if (chapter.sourceIds.length) {
+            <details class="chapter-sources">
+              <summary>Conferir fontes deste capítulo ({{ chapter.sourceIds.length }})</summary>
+              <app-editorial-sources [references]="sources(chapter.sourceIds)" />
+            </details>
+          }
+          @if (chapter.bridge) {
+            <p class="chapter-bridge">{{ chapter.bridge }}</p>
+          }
+          @if (page.chapters[index + 1]; as next) {
+            <a
+              class="next-chapter atlas-press"
+              [href]="'#' + next.anchor"
+              (click)="reading.navigateChapter($event, next.anchor)"
+              >A seguir: {{ next.title }}
+              <span class="atlas-arrow atlas-arrow--down" aria-hidden="true">↓</span></a
+            >
+          }
+        </section>
+      }
+      <footer class="reading-end">
+        <p>Uma leitura termina. As perguntas continuam.</p>
+        <a routerLink="/">Voltar à página inicial</a
+        ><a [routerLink]="companion().path">{{ companion().label }}</a>
+      </footer>
+    </app-ideology-reading>
+    <section id="explorar" class="explore-section" tabindex="-1" aria-label="Explorar">
+      <app-ideology-desk #desk [page]="page" (chapterRequested)="reading.go($event)" />
+    </section>
   </article>
 } @else {
   <section class="page-state">

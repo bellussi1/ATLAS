@@ -7,8 +7,6 @@ const declaredDestinations = [
   '/',
   '/marxismo',
   '/liberalismo',
-  '/marxismo/mesa',
-  '/liberalismo/mesa',
   ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
 ];
 
@@ -55,7 +53,9 @@ test('reading navigation includes the knowledge explorer', async ({ page }) => {
         .filter((u) => u.origin === location.origin)
         .map((u) => u.pathname.replace(/\/$/, '') || '/'),
     );
-    expect(hrefs.filter((p) => !declaredDestinations.includes(p))).toEqual([]);
+    expect(
+      hrefs.filter((p) => !declaredDestinations.includes(p) && !p.startsWith('/verbete/')),
+    ).toEqual([]);
   }
 });
 

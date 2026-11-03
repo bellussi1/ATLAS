@@ -1,13 +1,16 @@
 <section class="desk" aria-labelledby="desk-title">
   <header class="desk-head">
-    <h2 id="desk-title">Mesa de exploração</h2>
+    <h2 id="desk-title">Explorar</h2>
     <p>
       {{ entities().length }} registros do grafo de {{ page().title }}. Busque, filtre e siga as
       relações documentadas de um registro a outro.
     </p>
     @if (origin(); as origin) {
-      <a class="desk-origin" [routerLink]="basePath()" [fragment]="origin.anchor"
-        ><span aria-hidden="true">←</span> Voltar ao capítulo “{{ origin.title }}”</a
+      <a
+        class="desk-origin"
+        [href]="'#' + origin.anchor"
+        (click)="$event.preventDefault(); chapterRequested.emit(origin.anchor)"
+        ><span aria-hidden="true">↑</span> Voltar ao capítulo “{{ origin.title }}”</a
       >
     }
   </header>
