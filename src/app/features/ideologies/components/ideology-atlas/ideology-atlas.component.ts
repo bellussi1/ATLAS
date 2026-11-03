@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   DestroyRef,
+  ElementRef,
   inject,
   input,
   linkedSignal,
@@ -23,6 +24,55 @@ import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
+
+/** Stage units (the 920x572 canvas) taken by a label box; the root keeps a larger clearance. */
+const nodeBox = { width: 134, height: 72 };
+const rootBox = { width: 150, height: 84 };
+
+/** Pushes overlapping label boxes apart along their shallowest axis; the root never moves. */
+function relaxNodes(points: Map<string, { x: number; y: number }>, root: { x: number; y: number }) {
+  const list = [...points.values()];
+  const clamp = (value: number, half: number, size: number) =>
+    Math.min(size - half - 4, Math.max(half + 4, value));
+  for (let pass = 0; pass < 200; pass++) {
+    let moved = false;
+    for (let i = 0; i < list.length; i++) {
+      const a = list[i]!;
+      const rx = a.x - root.x;
+      const ry = a.y - root.y;
+      const rootX = (nodeBox.width + rootBox.width) / 2 - Math.abs(rx);
+      const rootY = (nodeBox.height + rootBox.height) / 2 - Math.abs(ry);
+      if (rootX > 0 && rootY > 0) {
+        if (rootX < rootY) a.x += (rx >= 0 ? 1 : -1) * (rootX + 1);
+        else a.y += (ry >= 0 ? 1 : -1) * (rootY + 1);
+        moved = true;
+      }
+      for (let j = i + 1; j < list.length; j++) {
+        const b = list[j]!;
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const ox = nodeBox.width - Math.abs(dx);
+        const oy = nodeBox.height - Math.abs(dy);
+        if (ox <= 0 || oy <= 0) continue;
+        moved = true;
+        if (ox < oy) {
+          const shift = ((dx >= 0 ? 1 : -1) * (ox + 1)) / 2;
+          a.x += shift;
+          b.x -= shift;
+        } else {
+          const shift = ((dy >= 0 ? 1 : -1) * (oy + 1)) / 2;
+          a.y += shift;
+          b.y -= shift;
+        }
+      }
+    }
+    for (const point of list) {
+      point.x = clamp(point.x, nodeBox.width / 2, 920);
+      point.y = clamp(point.y, nodeBox.height / 2, 572);
+    }
+    if (!moved) break;
+  }
+}
 
 type RelationFilter = 'all' | 'discovery' | 'structured';
 interface GraphNode {
@@ -138,14 +188,37 @@ export class IdeologyAtlasComponent {
     const layout = this.repository.layouts.atlases;
     const root = layout.order[this.rootEntityId()];
     if (root === undefined) throw new Error('Raiz do atlas ausente do layout compilado.');
-    return items.map((entity) => {
-      const position = layout.order[entity.id];
-      const point =
-        entity.id === this.rootEntityId()
-          ? layout.center
-          : layout.slots[position - (position > root ? 1 : 0)];
-      return { entity, ...point };
+    // Neighbours sit on concentric ellipses, evenly spaced, so labels never stack on each other.
+    const rings = [
+      { capacity: 8, rx: 250, ry: 140 },
+      { capacity: 13, rx: 335, ry: 218 },
+      { capacity: 18, rx: 395, ry: 250 },
+    ];
+    const around = items
+      .filter((entity) => entity.id !== this.rootEntityId())
+      .sort((a, b) => layout.order[a.id]! - layout.order[b.id]!);
+    const placed = new Map<string, { x: number; y: number }>();
+    let from = 0;
+    rings.forEach((ring, index) => {
+      const last = index === rings.length - 1;
+      const group = around.slice(from, last ? undefined : from + ring.capacity);
+      from += group.length;
+      group.forEach((entity, i) => {
+        const angle =
+          -Math.PI / 2 +
+          (2 * Math.PI * i) / group.length +
+          (index % 2 ? Math.PI / group.length : 0);
+        placed.set(entity.id, {
+          x: layout.center.x + Math.cos(angle) * ring.rx,
+          y: layout.center.y + Math.sin(angle) * ring.ry,
+        });
+      });
     });
+    relaxNodes(placed, layout.center);
+    return items.map((entity) => ({
+      entity,
+      ...(placed.get(entity.id) ?? layout.center),
+    }));
   });
   readonly graphEdges = computed<GraphEdge[]>(() => {
     const positions = new Map(this.graphNodes().map((node) => [node.entity.id, node]));
@@ -195,12 +268,14 @@ export class IdeologyAtlasComponent {
 
   constructor() {
     const view = inject(DOCUMENT).defaultView;
-    if (!view?.matchMedia) return;
-    const narrow = view.matchMedia('(max-width: 42rem)');
-    const sync = () => this.textAlternative.set(narrow.matches);
-    sync();
-    narrow.addEventListener('change', sync);
-    inject(DestroyRef).onDestroy(() => narrow.removeEventListener('change', sync));
+    const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+    if (!view?.ResizeObserver) return;
+    // The canvas is a 920-wide stage: below ~40rem of real column width it gives way to the text list.
+    const observer = new view.ResizeObserver(([entry]) =>
+      this.textAlternative.set(entry.contentRect.width < 640),
+    );
+    observer.observe(host);
+    inject(DestroyRef).onDestroy(() => observer.disconnect());
   }
 
   openEntity(entityId: string): void {

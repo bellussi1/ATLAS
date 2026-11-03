@@ -254,11 +254,11 @@
             aria-label="Relação selecionada"
           >
             <p class="metadata">{{ relation(edge).label }} · certeza {{ edge.certainty }}</p>
+            <h3>{{ entity(edge.from)?.title }} {{ edge.label }} {{ entity(edge.to)?.title }}</h3>
             <p class="relation-meaning">
               {{ relation(edge).meaning }}
               {{ relation(edge).historical ? '' : 'Não é uma relação histórica documentada.' }}
             </p>
-            <h3>{{ entity(edge.from)?.title }} {{ edge.label }} {{ entity(edge.to)?.title }}</h3>
             <p>{{ edge.context }}</p>
             @for (id of edge.sources; track id) {
               <a [href]="source(id)?.url">{{ source(id)?.title }}</a>

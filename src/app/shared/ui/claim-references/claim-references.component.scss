@@ -13,7 +13,7 @@
 }
 h3 {
   margin: 0 0 0.6rem;
-  font: 600 1.1rem/1.3 var(--font-sans, var(--sans));
+  font: 600 1.125rem/1.3 var(--font-sans, var(--sans));
 }
 p {
   margin: 0.45rem 0;
@@ -24,11 +24,11 @@ p {
 }
 .claim-reference__status,
 .claim-reference__review {
-  font-size: 0.88rem;
+  font-size: 0.875rem;
 }
 .claim-reference__source {
   margin-top: 0.8rem;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
 }
 a {
   color: var(--color-accent, var(--signal));

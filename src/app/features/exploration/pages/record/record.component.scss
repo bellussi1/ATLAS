@@ -64,7 +64,7 @@ h1 {
   cursor: pointer;
 }
 .copy-status {
-  font: 0.85rem var(--font-sans);
+  font: 0.875rem var(--font-sans);
 }
 .record-data summary {
   padding-block: 0.5rem;
@@ -86,11 +86,11 @@ h2 {
   margin: 0 0 1rem;
 }
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin: 0 0 0.5rem;
 }
 .reading p {
-  font: 1.1rem/1.7 var(--font-serif);
+  font: 1.125rem/1.7 var(--font-serif);
 }
 .record-meta,
 .reading .record-meta,
@@ -117,7 +117,7 @@ summary {
 }
 .record-file p,
 dd {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 dt {

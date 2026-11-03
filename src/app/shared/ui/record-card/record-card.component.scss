@@ -3,7 +3,7 @@
   --tab: var(--desk-line, #5f5e59);
   width: 100%;
   height: 100%;
-  min-height: 9.5rem;
+  min-height: 7.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -21,14 +21,14 @@
     max-width: calc(100% - 2.6rem);
   }
   small {
-    font: 0.68rem var(--font-mono);
+    font: 0.75rem var(--font-mono);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: #5d5a54;
   }
   strong {
     color: #141414;
-    font: 700 1.05rem/1.2 var(--font-sans);
+    font: 700 1rem/1.2 var(--font-sans);
     text-wrap: balance;
   }
   .card-kind {
@@ -40,11 +40,11 @@
   }
   .card-period {
     margin-top: auto;
-    font: 0.78rem var(--font-mono);
+    font: 0.75rem var(--font-mono);
     color: #4a4030;
   }
   .card-links {
-    font: 0.7rem var(--font-mono);
+    font: 0.75rem var(--font-mono);
     color: #4a4642;
     border-top: 1px solid #14141433;
     padding-top: var(--space-1);

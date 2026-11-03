@@ -23,7 +23,7 @@
   overflow-wrap: anywhere;
 }
 .footer-invitation > p {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   margin-top: 0;
 }
 .footer-invitation h2 {
@@ -46,7 +46,7 @@
   min-height: 2.75rem;
   color: white;
   text-underline-offset: 0.25em;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   margin-top: 1rem;
 }
 .footer-playground {
@@ -72,7 +72,7 @@
 }
 .collage-piece > span:last-child {
   padding: 0.75rem;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   min-height: 2.75rem;
   position: relative;
 }
@@ -217,7 +217,7 @@
 .footer-directory h2 {
   margin: 0 0 0.5rem;
   color: var(--color-ochre-paper);
-  font: 0.78rem/1.5 var(--font-mono);
+  font: 0.75rem/1.5 var(--font-mono);
 }
 .footer-directory a {
   display: flex;
@@ -243,7 +243,7 @@
 .footer-status {
   max-width: 52ch;
   margin: 0 0 0.75rem;
-  font: 0.85rem/1.55 var(--font-serif);
+  font: 0.875rem/1.55 var(--font-serif);
 }
 @media (hover: hover) and (pointer: fine) {
   .footer-directory a:hover {

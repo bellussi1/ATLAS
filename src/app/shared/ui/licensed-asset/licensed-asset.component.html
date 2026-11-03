@@ -2,12 +2,14 @@
   @if (kind() === 'image') {
     <figure>
       <img [src]="record.assetPath" [alt]="alt()" loading="lazy" />
-      <figcaption>
-        {{ creator(record) }}
-        <a [href]="record.licenseUrl" target="_blank" rel="noopener noreferrer">{{
-          record.license
-        }}</a>
-      </figcaption>
+      @if (credit()) {
+        <figcaption>
+          {{ creator(record) }}
+          <a [href]="record.licenseUrl" target="_blank" rel="noopener noreferrer">{{
+            record.license
+          }}</a>
+        </figcaption>
+      }
     </figure>
   } @else {
     <p>

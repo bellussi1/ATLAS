@@ -12,6 +12,8 @@ export class AtlasLicensedAssetComponent {
   readonly assetPath = input.required<string>();
   readonly alt = input.required<string>();
   readonly kind = input<'image' | 'document'>('image');
+  /** Set to false where the page already credits the asset elsewhere (e.g. a link to its record). */
+  readonly credit = input(true);
   readonly license = computed(() => reproducibleAsset(this.atlas(), this.assetPath()));
 
   creator(asset: AssetLicense): string {

@@ -5,17 +5,18 @@
     <p class="poster-summary">{{ page().summary }}</p>
 
     @if (figures().length) {
-      <ul class="poster-figures" aria-label="Registros ilustrados desta tradição">
+      <ul class="poster-figures">
         @for (figure of figures(); track figure.entity.id) {
           <li [attr.data-frame]="figure.frame">
-            <app-licensed-asset
-              [atlas]="figure.owner"
-              [assetPath]="figure.asset.assetPath"
-              [alt]="figure.entity.title"
-            />
-            <a class="figure-name" [routerLink]="'/verbete/' + figure.entity.slug">{{
-              figure.entity.title
-            }}</a>
+            <a class="figure-link" [routerLink]="'/verbete/' + figure.entity.slug">
+              <app-licensed-asset
+                [atlas]="figure.owner"
+                [assetPath]="figure.asset.assetPath"
+                alt=""
+                [credit]="false"
+              />
+              <span class="figure-name">{{ figure.entity.title }}</span>
+            </a>
           </li>
         }
       </ul>
@@ -25,12 +26,7 @@
       <h2 class="poster-label">Comece por uma pergunta</h2>
       <ol class="poster-questions">
         @for (trail of trails(); track trail.group) {
-          <li
-            (mouseenter)="highlighted.set(trail.group)"
-            (mouseleave)="highlighted.set(null)"
-            (focusin)="highlighted.set(trail.group)"
-            (focusout)="highlighted.set(null)"
-          >
+          <li>
             <a [routerLink]="basePath()" [fragment]="trail.stops[0].anchor">
               <strong>{{ trail.question }}</strong>
               <small
@@ -45,50 +41,4 @@
       </ol>
     }
   </div>
-
-  <nav class="poster-map" aria-label="Mapa da tradição">
-    <app-geometric-mosaic
-      class="poster-mosaic"
-      [columns]="3"
-      [rows]="2"
-      [palette]="palette()"
-      [seed]="page().title.length"
-      [interactive]="true"
-      aria-hidden="true"
-    />
-    <p class="poster-label">
-      Mapa · {{ page().chapters.length }} capítulos · ~{{ minutes() }} min de leitura
-    </p>
-    <div class="map-columns">
-      @for (column of columns(); track column.group) {
-        <section class="map-column" [attr.aria-label]="column.group">
-          <h3>
-            <span>{{ column.numeral }}</span> {{ column.group }}
-          </h3>
-          @for (tile of column.chapters; track tile.anchor) {
-            <a
-              class="map-tile"
-              [routerLink]="basePath()"
-              [fragment]="tile.anchor"
-              [attr.data-shape]="tile.shape"
-              [attr.data-lit]="lit(tile.anchor)"
-              [style.--weight]="tile.weight"
-            >
-              <span class="tile-numeral" aria-hidden="true">{{ tile.numeral }}</span>
-              <span class="tile-title">{{ tile.title }}</span>
-              <small>{{ tile.label }} · {{ tile.minutes }} min</small>
-            </a>
-          }
-        </section>
-      }
-    </div>
-    <div class="poster-doors">
-      <a [routerLink]="basePath()" [fragment]="page().chapters[0]?.anchor"
-        >Ler do início <span aria-hidden="true">↓</span></a
-      >
-      <a [routerLink]="basePath()" fragment="explorar"
-        >Explorar pessoas, obras e conceitos <span aria-hidden="true">→</span></a
-      >
-    </div>
-  </nav>
 </header>

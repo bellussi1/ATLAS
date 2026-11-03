@@ -55,7 +55,7 @@
           [class.is-approx]="mark.approx"
           [class.is-flipped]="flipsLeft(mark.year)"
           [style.left]="x(mark.year)"
-          [style.--row]="m % 3"
+          [style.--row]="m % 4"
           ><span
             >{{ mark.approx ? 'c. ' : '' }}{{ mark.year }} · {{ mark.entity.title }}</span
           ></span
@@ -70,6 +70,7 @@
               <span
                 class="life-bar"
                 [class.is-approx]="life.approx"
+                [class.is-late]="flipsLeft(life.end, 0.8)"
                 [style.left]="x(life.start)"
                 [style.width]="span(life.start, life.end)"
                 ><span>{{ life.start }}–{{ life.end }}</span></span
@@ -99,42 +100,48 @@
       [picture]="null"
       [appKnowledgeContext]="{ record: selected().context }"
     ></button>
-    <h5>
-      Registros datados na época <span>{{ inEpoch().length }}</span>
-    </h5>
-    <ul class="alive-list dated-list">
-      @for (mark of inEpoch(); track mark.entity.id) {
-        <li>
-          <button
-            appRecordCard
-            [entityId]="mark.entity.id"
-            [title]="mark.entity.title"
-            [period]="(mark.approx ? 'c. ' : '') + mark.year"
-            [appKnowledgeContext]="{ entityId: mark.entity.id }"
-          ></button>
-        </li>
-      } @empty {
-        <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
-      }
-    </ul>
-    <h5>
-      Vivos durante a época <span>{{ alive().length }}</span>
-    </h5>
-    <ul class="alive-list">
-      @for (life of alive(); track life.entity.id) {
-        <li>
-          <button
-            appRecordCard
-            [entityId]="life.entity.id"
-            [title]="life.entity.title"
-            [period]="life.start + '–' + life.end"
-            [appKnowledgeContext]="{ entityId: life.entity.id }"
-          ></button>
-        </li>
-      } @empty {
-        <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>
-      }
-    </ul>
+    <div class="epoch-lists">
+      <div class="epoch-list">
+        <h5>
+          Registros datados na época <span>{{ inEpoch().length }}</span>
+        </h5>
+        <ul class="alive-list dated-list">
+          @for (mark of inEpoch(); track mark.entity.id) {
+            <li>
+              <button
+                appRecordCard
+                [entityId]="mark.entity.id"
+                [title]="mark.entity.title"
+                [period]="(mark.approx ? 'c. ' : '') + mark.year"
+                [appKnowledgeContext]="{ entityId: mark.entity.id }"
+              ></button>
+            </li>
+          } @empty {
+            <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
+          }
+        </ul>
+      </div>
+      <div class="epoch-list">
+        <h5>
+          Vivos durante a época <span>{{ alive().length }}</span>
+        </h5>
+        <ul class="alive-list">
+          @for (life of alive(); track life.entity.id) {
+            <li>
+              <button
+                appRecordCard
+                [entityId]="life.entity.id"
+                [title]="life.entity.title"
+                [period]="life.start + '–' + life.end"
+                [appKnowledgeContext]="{ entityId: life.entity.id }"
+              ></button>
+            </li>
+          } @empty {
+            <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>
+          }
+        </ul>
+      </div>
+    </div>
   </section>
 
   <p class="era-note">

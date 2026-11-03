@@ -31,7 +31,7 @@
 .wordmark__caption {
   display: block;
   margin-top: 0.65rem;
-  font: 0.8rem/1.4 var(--font-serif);
+  font: 0.875rem/1.4 var(--font-serif);
 }
 .menu-toggle {
   display: none;
@@ -43,7 +43,7 @@
   border: 2px solid var(--color-ink);
   background: var(--color-canvas);
   color: var(--color-ink);
-  font: 650 0.85rem/1 var(--font-mono);
+  font: 650 0.875rem/1 var(--font-mono);
   cursor: pointer;
 }
 .menu-toggle[aria-expanded='true'] {
@@ -113,7 +113,7 @@
   align-items: end;
   gap: 0.25rem;
   padding: 0.1rem 0.6rem 0;
-  font: 650 0.95rem/1.15 var(--font-sans);
+  font: 650 0.875rem/1.15 var(--font-sans);
   overflow-wrap: anywhere;
 }
 .graphic-door.is-active {
@@ -189,6 +189,6 @@
   }
   .door-label {
     padding: 0.2rem 0.85rem 0.7rem;
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 }

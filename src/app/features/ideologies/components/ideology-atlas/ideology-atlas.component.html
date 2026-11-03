@@ -116,48 +116,50 @@
         <option value="structured">Relações estruturadas</option>
       </select>
 
-      <div
-        class="graph-canvas"
-        role="group"
-        aria-label="Grafo interativo deste atlas; uma lista textual equivalente aparece abaixo"
-      >
-        <svg class="edges" viewBox="0 0 920 572" aria-hidden="true" focusable="false">
-          @for (edge of graphEdges(); track edge.relation.id) {
-            <line
-              [class.highlighted]="
-                hoveredId() === edge.relation.fromEntityId ||
-                hoveredId() === edge.relation.toEntityId
-              "
-              [class.discovery-edge]="edge.relation.type === 'encyclopedic-link'"
-              [class.structured-edge]="edge.relation.type !== 'encyclopedic-link'"
-              [attr.x1]="edge.x1"
-              [attr.y1]="edge.y1"
-              [attr.x2]="edge.x2"
-              [attr.y2]="edge.y2"
-            />
+      @if (!textAlternative()) {
+        <div
+          class="graph-canvas"
+          role="group"
+          aria-label="Grafo interativo deste atlas; uma lista textual equivalente aparece abaixo"
+        >
+          <svg class="edges" viewBox="0 0 920 572" aria-hidden="true" focusable="false">
+            @for (edge of graphEdges(); track edge.relation.id) {
+              <line
+                [class.highlighted]="
+                  hoveredId() === edge.relation.fromEntityId ||
+                  hoveredId() === edge.relation.toEntityId
+                "
+                [class.discovery-edge]="edge.relation.type === 'encyclopedic-link'"
+                [class.structured-edge]="edge.relation.type !== 'encyclopedic-link'"
+                [attr.x1]="edge.x1"
+                [attr.y1]="edge.y1"
+                [attr.x2]="edge.x2"
+                [attr.y2]="edge.y2"
+              />
+            }
+          </svg>
+          @for (node of graphNodes(); track node.entity.id) {
+            <button
+              type="button"
+              class="graph-node"
+              [class.root-node]="node.entity.id === rootEntityId()"
+              [class.active]="selectedId() === node.entity.id"
+              [style.left.%]="node.x / 9.2"
+              [style.top.%]="node.y / 5.72"
+              [attr.aria-pressed]="selectedId() === node.entity.id"
+              [attr.aria-label]="'Selecionar contexto: ' + node.entity.title"
+              (mouseenter)="hoveredId.set(node.entity.id)"
+              (mouseleave)="hoveredId.set(null)"
+              (focus)="hoveredId.set(node.entity.id)"
+              (blur)="hoveredId.set(null)"
+              (click)="openEntity(node.entity.id)"
+            >
+              <span>{{ node.entity.title }}</span
+              ><span class="node-preview">{{ node.entity.summary }}</span>
+            </button>
           }
-        </svg>
-        @for (node of graphNodes(); track node.entity.id) {
-          <button
-            type="button"
-            class="graph-node"
-            [class.root-node]="node.entity.id === rootEntityId()"
-            [class.active]="selectedId() === node.entity.id"
-            [style.left.%]="node.x / 9.2"
-            [style.top.%]="node.y / 5.72"
-            [attr.aria-pressed]="selectedId() === node.entity.id"
-            [attr.aria-label]="'Selecionar contexto: ' + node.entity.title"
-            (mouseenter)="hoveredId.set(node.entity.id)"
-            (mouseleave)="hoveredId.set(null)"
-            (focus)="hoveredId.set(node.entity.id)"
-            (blur)="hoveredId.set(null)"
-            (click)="openEntity(node.entity.id)"
-          >
-            <span>{{ node.entity.title }}</span
-            ><span class="node-preview">{{ node.entity.summary }}</span>
-          </button>
-        }
-      </div>
+        </div>
+      }
     </section>
 
     <section class="entity-reading" aria-labelledby="context-title">

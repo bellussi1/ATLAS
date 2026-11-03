@@ -16,7 +16,7 @@ a {
   text-underline-offset: 0.2em;
 }
 .folio {
-  font: 500 0.72rem/1.4 var(--font-mono);
+  font: 500 0.75rem/1.4 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-muted);
@@ -55,7 +55,7 @@ a {
   margin: 0 0 var(--space-6);
   padding-bottom: 0.35rem;
   border-bottom: 1px solid var(--ink);
-  font: 500 0.7rem/1.4 var(--font-mono);
+  font: 500 0.75rem/1.4 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-muted);
@@ -94,10 +94,10 @@ h2 {
   padding: 0.9rem 1.1rem;
   background: var(--ink);
   color: var(--paper);
-  font: 1.05rem/1.5 var(--font-serif);
+  font: 1rem/1.5 var(--font-serif);
 }
 .chapter-narrative {
-  font: 1.18rem/1.75 var(--font-serif);
+  font: 1.125rem/1.75 var(--font-serif);
 }
 .chapter-narrative p {
   margin: 0 0 1.25rem;
@@ -111,13 +111,13 @@ h2 {
   border-left: 3px solid var(--color-indigo);
   background: var(--paper-shade);
   padding: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 .chapter-sources {
   margin-top: 1.5rem;
   border-top: 1px solid var(--rule-strong);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 .chapter-sources summary {
   padding-block: 0.75rem;
@@ -229,7 +229,7 @@ h2 {
     width: max-content;
   }
   .chapter-narrative {
-    font-size: 1.1rem;
+    font-size: 1.125rem;
   }
 }
 .chapter-aside {
@@ -239,7 +239,7 @@ h2 {
 .chapter-aside > summary {
   min-height: 2.75rem;
   padding: 0.75rem 0;
-  font: 600 0.95rem/1.3 var(--font-sans);
+  font: 600 0.875rem/1.3 var(--font-sans);
   cursor: pointer;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -272,6 +272,6 @@ h2 {
   margin: var(--space-3) 0 0;
   > span {
     grid-column: 1 / -1;
-    font: 0.8rem var(--font-mono);
+    font: 0.875rem var(--font-mono);
   }
 }

@@ -40,7 +40,7 @@ button {
   border: 2px solid var(--ink);
   background: var(--paper);
   color: var(--ink);
-  font: 600 0.95rem/1.3 var(--font-sans);
+  font: 600 0.875rem/1.3 var(--font-sans);
   cursor: pointer;
 }
 @media (hover: hover) {
@@ -65,7 +65,7 @@ button {
   padding: 0.35rem;
 }
 .timeline-filters span {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 }
 .timeline-axis {
   display: block;
@@ -111,10 +111,10 @@ button {
 }
 .timeline-list summary {
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.125rem;
 }
 .timeline-list p {
-  font: 1.05rem/1.65 var(--font-serif);
+  font: 1rem/1.65 var(--font-serif);
 }
 .genealogy {
   background: var(--paper-shade);
@@ -144,16 +144,34 @@ text {
   font: 20px var(--font-sans);
 }
 .relation-reading {
-  padding: 1.5rem;
-  border-top: 1px solid var(--rule-strong);
-  background: var(--paper);
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  padding: 1.25rem 1.5rem 1.5rem;
+  border-top: 3px solid var(--color-ink);
+  background: var(--color-surface-raised);
+}
+.relation-reading .metadata {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 500 0.75rem/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .relation-reading h3 {
-  font-size: 1.5rem;
-  line-height: 1.3;
+  margin: 0;
+  font: 700 clamp(1.25rem, 2.4vw, 1.6rem) / 1.2 var(--font-sans);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 .relation-reading p:not(.metadata) {
-  font: 1.15rem/1.65 var(--font-serif);
+  max-width: var(--measure-reading);
+  margin: 0;
+  font: 1rem/1.6 var(--font-serif);
+}
+.relation-reading .relation-meaning {
+  color: var(--color-ink-muted);
+  font-size: 0.875rem;
 }
 .relation-table {
   margin-top: 1rem;
@@ -184,6 +202,6 @@ input {
     grid-template-columns: 4.5rem minmax(0, 1fr);
   }
   .year {
-    font-size: 1.1rem;
+    font-size: 1.125rem;
   }
 }

@@ -59,7 +59,7 @@ h1 .line + .line {
   border: 0;
   background: none;
   color: var(--color-ink);
-  font: 0.8rem var(--font-mono);
+  font: 0.875rem var(--font-mono);
   cursor: pointer;
 }
 .recompose-dot {
@@ -85,7 +85,7 @@ form {
 }
 .console ::ng-deep .atlas-field label {
   color: var(--color-canvas);
-  font: 0.78rem/1.5 var(--font-mono);
+  font: 0.75rem/1.5 var(--font-mono);
 }
 .console ::ng-deep .atlas-field input {
   min-height: 3.5rem;
@@ -93,7 +93,7 @@ form {
   border-radius: 0;
   background: var(--color-canvas);
   color: var(--color-ink);
-  font: 1.15rem var(--font-serif);
+  font: 1.125rem var(--font-serif);
 }
 .search-button {
   min-height: 3.5rem;
@@ -206,7 +206,7 @@ form {
 .sheet-summary {
   max-width: 34ch;
   margin: 1rem 0 1.5rem;
-  font: 1.3rem/1.45 var(--font-serif);
+  font: 1.25rem/1.45 var(--font-serif);
 }
 .excerpt {
   display: grid;
@@ -285,12 +285,12 @@ form {
 .method strong {
   display: block;
   margin-top: 1rem;
-  font-size: 1.15rem;
+  font-size: 1.125rem;
 }
 .method p {
   margin: 0.35rem 0 0;
   color: var(--color-ink-muted);
-  font: 0.98rem/1.55 var(--font-serif);
+  font: 1rem/1.55 var(--font-serif);
 }
 .method-shape {
   display: block;
@@ -352,14 +352,14 @@ form {
     gap: 0.35rem;
   }
   .mobile-sheet-control label {
-    font: 0.78rem/1.5 var(--font-mono);
+    font: 0.75rem/1.5 var(--font-mono);
   }
   .mobile-sheet-control select {
     min-height: var(--control-min-size);
     padding: 0.5rem;
     border: 2px solid var(--color-ink);
     background: var(--color-canvas);
-    font-size: 1.1rem;
+    font-size: 1.125rem;
   }
   .reading-sheet {
     box-shadow: 0.4rem 0.4rem 0 var(--color-ink);

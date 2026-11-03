@@ -22,7 +22,7 @@
   span {
     display: block;
     padding: 0.15rem 0.6rem;
-    font: 0.68rem/1.4 var(--font-mono);
+    font: 0.75rem/1.4 var(--font-mono);
     color: var(--color-ink-muted);
     white-space: nowrap;
     overflow: hidden;
@@ -68,7 +68,7 @@
   padding: 0.6rem clamp(1rem, 4vw, 2.5rem);
   border-top: 3px solid var(--ink);
   background: var(--paper);
-  font: 0.78rem/1.45 var(--font-mono);
+  font: 0.75rem/1.45 var(--font-mono);
   p {
     margin: 0;
     min-width: 0;
@@ -195,10 +195,10 @@ button {
   max-width: 68ch;
 }
 .context-body > p {
-  font: 1.1rem/1.75 var(--font-serif);
+  font: 1.125rem/1.75 var(--font-serif);
 }
 .context-body .context-summary {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
 }
 /* Media sits above the text so the reading column keeps the full container width. */
 figure {
@@ -226,7 +226,7 @@ section {
   border-top: 1px solid var(--rule-strong);
 }
 h3 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 a {
   color: var(--color-accent);
@@ -293,7 +293,7 @@ button:active {
   .sheet-footer {
     gap: 0.15rem 0.75rem;
     padding: 0.4rem 1rem;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     small {
       display: none;
     }

@@ -1,5 +1,5 @@
 .action-cue {
-  font: 0.8rem/1.5 var(--font-sans);
+  font: 0.875rem/1.5 var(--font-sans);
   text-decoration: underline;
   text-underline-offset: 0.2em;
   color: var(--color-accent-hover);
@@ -97,9 +97,21 @@
   font: 0.75rem var(--font-mono);
 }
 .timeline-position progress {
+  appearance: none;
   width: 100%;
   height: 4px;
-  accent-color: var(--color-accent);
+  border: 0;
+  background: var(--color-border-strong);
+  color: var(--color-accent);
+}
+.timeline-position progress::-webkit-progress-bar {
+  background: var(--color-border-strong);
+}
+.timeline-position progress::-webkit-progress-value {
+  background: var(--color-accent);
+}
+.timeline-position progress::-moz-progress-bar {
+  background: var(--color-accent);
 }
 .context-action {
   background: transparent;
@@ -139,7 +151,7 @@
   display: block;
   margin-top: 0.4rem;
   color: var(--color-accent-hover);
-  font: 0.7rem/1.3 var(--font-sans);
+  font: 0.75rem/1.3 var(--font-sans);
   text-decoration: underline;
 }
 .genealogy-node.related {
@@ -163,11 +175,18 @@
   gap: 0.5rem;
   padding: 1rem;
 }
+.graph-filter {
+  font: 600 0.875rem/1.2 var(--font-sans);
+}
 .graph-filter select {
-  background: var(--paper);
+  min-height: var(--control-min-size);
   max-width: 100%;
-  border: 1px solid var(--ink);
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: 600 0.875rem var(--font-sans);
+  cursor: pointer;
 }
 .relation-reading {
   min-height: 19rem;
@@ -202,7 +221,7 @@
 }
 .debate-scope {
   min-height: 4rem;
-  font: 0.9rem/1.6 var(--font-sans);
+  font: 0.875rem/1.6 var(--font-sans);
 }
 .argument-board {
   display: grid;
