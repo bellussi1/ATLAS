@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 
 test('the old desk address redirects to the single page', async ({ page }) => {
   await page.goto('/marxismo/mesa/');
@@ -98,7 +98,7 @@ test('previous and next walk the reading order and a sheet can be pinned to comp
   await expect(pinned).toHaveCount(0);
 });
 
-test('on phones the sheet is a bottom sheet with a trapped focus, big targets and no overflow', async ({
+test('on phones the panel fills the screen with a trapped focus, big targets and no overflow', async ({
   page,
 }) => {
   for (const width of [360, 390]) {
@@ -110,11 +110,15 @@ test('on phones the sheet is a bottom sheet with a trapped focus, big targets an
     await expect(sheet).toHaveAttribute('aria-modal', 'true');
     await expect(sheet.locator('#knowledge-context-title')).toHaveText('Karl Marx');
     await expect(async () => {
-      const box = (await sheet.boundingBox())!;
-      expect(box.x).toBe(0);
-      expect(box.width).toBe(width);
-      expect(box.y + box.height).toBe(800);
-      expect(box.y).toBeGreaterThan(20);
+      const pane = (await page.locator('.atlas-context-pane').boundingBox())!;
+      const screen = (await page.locator('.cdk-global-overlay-wrapper').boundingBox())!;
+      expect(Math.round(pane.x)).toBe(Math.round(screen.x));
+      expect(Math.round(pane.width)).toBe(Math.round(screen.width));
+      expect(Math.round(pane.height)).toBe(800);
+      const shifted = await page.evaluate(
+        () => document.querySelector('app-root')!.getBoundingClientRect().x,
+      );
+      expect(Math.round(shifted)).toBe(-Math.round(screen.width));
     }).toPass();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
       width,
@@ -133,75 +137,66 @@ test('on phones the sheet is a bottom sheet with a trapped focus, big targets an
   }
 });
 
-/** Geometry that a docked panel must not disturb: the reading paragraph and the trigger. */
-async function geometry(page: Page, trigger: Locator) {
+/** Reading paragraph and page overflow: what the side panel must never cover or push sideways. */
+async function reading(page: Page) {
   const paragraph = page.locator('[data-reading-column] p').nth(3);
+  await expect(paragraph).toBeVisible();
+  await expect
+    .poll(() =>
+      page.evaluate(() => document.documentElement.classList.contains('atlas-panel-open')),
+    )
+    .toBe(true);
   const text = (await paragraph.boundingBox())!;
   return {
-    x: Math.round(text.x),
-    width: Math.round(text.width),
-    top: Math.round((await trigger.boundingBox())!.y),
+    right: Math.round(text.x + text.width),
     overflow: await page.evaluate(() =>
       Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth),
     ),
   };
 }
 
-async function openedGeometry(page: Page, width: number) {
+async function openPanel(page: Page, width: number) {
   await page.setViewportSize({ width, height: 900 });
   await page.goto('/marxismo/', { waitUntil: 'networkidle' });
   const trigger = page.locator('button.record-card', { hasText: 'Karl Marx' }).first();
   await trigger.scrollIntoViewIfNeeded();
-  const before = await geometry(page, trigger);
   await trigger.click();
   await expect(page.getByRole('dialog')).toBeVisible();
-  const after = await geometry(page, trigger);
-  const inset = await page.evaluate(() =>
-    parseFloat(document.documentElement.style.getPropertyValue('--atlas-panel-inset')),
-  );
-  const panel = (await page.getByRole('dialog').boundingBox())!.width;
-  return { before, after, inset, panel };
+  // Let the page finish easing into place before measuring.
+  await page.waitForTimeout(400);
+  return (await page.getByRole('dialog').boundingBox())!;
 }
 
-test('with a free margin beside the text the page does not move when a sheet opens', async ({
-  page,
-}) => {
-  const { before, after, inset } = await openedGeometry(page, 2200);
-  expect(inset).toBe(0);
-  expect({ ...after, top: 0 }).toEqual({ ...before, top: 0 });
-  expect(Math.abs(after.top - before.top)).toBeLessThanOrEqual(3);
+test('a docked panel pushes the text aside instead of covering it', async ({ page }) => {
+  for (const width of [1440, 1024]) {
+    const panel = await openPanel(page, width);
+    const text = await reading(page);
+    expect(text.right).toBeLessThanOrEqual(Math.round(panel.x) + 1);
+    expect(text.overflow).toBe(0);
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('dialog')).toHaveCount(0);
+    await expect
+      .poll(() =>
+        page.evaluate(() => document.documentElement.classList.contains('atlas-panel-open')),
+      )
+      .toBe(false);
+  }
 });
 
-test('on a narrower desktop the panel takes the margin first and the trigger stays put', async ({
+test('below 64rem the panel takes the full width and the page slides out to the left', async ({
   page,
 }) => {
-  const { before, after, inset, panel } = await openedGeometry(page, 1440);
-  expect(inset).toBeGreaterThan(0);
-  expect(inset).toBeLessThan(panel);
-  expect(after.x).toBe(before.x);
-  expect(Math.abs(after.top - before.top)).toBeLessThanOrEqual(3);
-  expect(after.overflow).toBe(0);
+  await openPanel(page, 800);
+  const pane = (await page.locator('.atlas-context-pane').boundingBox())!;
+  const screen = (await page.locator('.cdk-global-overlay-wrapper').boundingBox())!;
+  expect(Math.round(pane.width)).toBe(Math.round(screen.width));
+  const shifted = await page.evaluate(
+    () => document.querySelector('app-root')!.getBoundingClientRect().x,
+  );
+  expect(shifted).toBeLessThan(0);
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
   await expect
-    .poll(() =>
-      page.evaluate(() => document.documentElement.style.getPropertyValue('--atlas-panel-inset')),
-    )
-    .toBe('');
-});
-
-test('at 1024px the text reflows into what the margin cannot hold, without moving the trigger', async ({
-  page,
-}) => {
-  const { before, after, inset, panel } = await openedGeometry(page, 1024);
-  expect(inset).toBeGreaterThan(0);
-  expect(inset).toBeLessThan(panel);
-  expect(after.width).toBeLessThan(before.width);
-  expect(Math.abs(after.top - before.top)).toBeLessThanOrEqual(3);
-  expect(after.overflow).toBe(0);
-});
-
-test('below 48rem the bottom sheet never pads the page', async ({ page }) => {
-  const { before, after } = await openedGeometry(page, 390);
-  expect(after).toEqual(before);
+    .poll(() => page.evaluate(() => document.querySelector('app-root')!.getBoundingClientRect().x))
+    .toBe(0);
 });

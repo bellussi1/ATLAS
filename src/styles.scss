@@ -234,8 +234,9 @@ html {
   scrollbar-gutter: stable;
 }
 /*
- * Reading panel (knowledge-context). From 48rem it docks to the right edge beside the page,
- * which stays scrollable and clickable; below that it is a bottom sheet over a dimmed page.
+ * Reading panel (knowledge-context). From 64rem it sits at the right edge and pushes the page
+ * aside while open, so it never covers text; the page eases back when the panel closes. Below
+ * that the panel takes the full width and the page slides out to the left instead.
  */
 .atlas-context-pane {
   --panel-width: var(--atlas-panel-width, clamp(22rem, 32vw, 30rem));
@@ -252,30 +253,38 @@ html {
 .atlas-context-pane .cdk-dialog-container {
   outline: 0;
 }
+/* The panel never dims the page: the backdrop stays transparent and lets clicks through. */
 .cdk-overlay-backdrop.atlas-context-backdrop {
-  background: rgb(0 0 0 / 0.5);
-}
-@media (min-width: 48rem) {
-  .cdk-overlay-backdrop.atlas-context-backdrop {
-    background: transparent;
-    pointer-events: none;
-  }
+  background: transparent;
+  pointer-events: none;
 }
 @media (min-width: 64rem) {
+  body {
+    transition: padding-inline-end var(--motion-standard) var(--ease-out);
+  }
   html.atlas-panel-open body {
-    /* The panel first takes the free margin; the service publishes only what is left over. */
-    padding-inline-end: var(
-      --atlas-panel-inset,
-      var(--atlas-panel-width, clamp(22rem, 32vw, 30rem))
-    );
+    padding-inline-end: var(--atlas-panel-width, clamp(22rem, 32vw, 30rem));
   }
 }
-@media (max-width: 47.99rem) {
+@media (max-width: 63.99rem) {
   .atlas-context-pane {
-    inset: auto 0 0 0 !important;
-    width: 100vw;
-    height: min(88dvh, calc(100dvh - 3rem));
+    inset: 0 0 0 auto !important;
+    width: 100%;
+    height: 100dvh;
     padding: 0;
+  }
+  app-root {
+    display: block;
+    transition: translate var(--motion-standard) var(--ease-out);
+  }
+  html.atlas-panel-open app-root {
+    translate: -100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body,
+  app-root {
+    transition: none;
   }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -285,22 +294,7 @@ html {
 }
 @keyframes atlas-pane-in {
   from {
-    opacity: 0;
-    translate: 1.5rem 0;
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-  }
-}
-@media (prefers-reduced-motion: no-preference) and (max-width: 47.99rem) {
-  .atlas-context-pane {
-    animation-name: atlas-sheet-in;
-  }
-}
-@keyframes atlas-sheet-in {
-  from {
-    translate: 0 100%;
+    translate: 100% 0;
   }
   to {
     translate: 0 0;

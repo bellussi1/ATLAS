@@ -25,13 +25,10 @@ import { keepScrollAnchor } from './keep-scroll';
 
 /** How many earlier sheets stay visible behind the current one. */
 const VISIBLE_SHEETS = 3;
-/** Side panel from this width; below it the sheet rises from the bottom edge. */
-const WIDE = '(min-width: 48rem)';
 /** Room for a pinned sheet beside the current one. */
 const COMPARE = '(min-width: 72rem)';
-/** Dragging the sheet down this far, or this fast (px/ms), closes it. */
-const DRAG_CLOSE_DISTANCE = 120;
-const DRAG_CLOSE_SPEED = 0.7;
+/** Docked beside the page from this width; below it the panel is a full-width pane. */
+const WIDE = '(min-width: 64rem)';
 
 export interface ContextPanelData {
   record: KnowledgeContext;
@@ -50,8 +47,8 @@ function toneOf(kind: string): string {
 }
 
 /**
- * Reading panel for a record. On wide screens it docks beside the page without modal
- * semantics; on narrow ones it is a bottom sheet that can be dragged shut. Following a
+ * Reading panel for a record. It sits at the side of the page and pushes the page aside
+ * while open, so nothing is covered; on narrow screens it takes the full width. Following a
  * relation lays a new sheet on the pile; the button, Esc and the browser's back button lift
  * it again. Previous and next step through the reading order; one sheet can be pinned
  * to compare it with the next.
@@ -64,8 +61,6 @@ function toneOf(kind: string): string {
   host: {
     '[attr.data-tone]': 'tone()',
     '[style.--depth]': 'depth()',
-    '[style.--drag]': 'dragY() + "px"',
-    '[class.is-dragging]': 'dragging()',
     '[class.has-pinned]': '!!pinned()',
   },
 })
@@ -86,11 +81,7 @@ export class KnowledgeContextComponent {
   readonly index = signal(this.initial.index);
   /** Sheet kept open in its own column while the reader moves on to the next one. */
   readonly pinned = signal<KnowledgeContext | null>(null);
-  readonly wide = signal(true);
   readonly canCompare = signal(false);
-  readonly dragY = signal(0);
-  readonly dragging = signal(false);
-  private dragStart: { y: number; at: number } | null = null;
   readonly history = signal<
     {
       record: KnowledgeContext;
@@ -127,6 +118,7 @@ export class KnowledgeContextComponent {
     return {
       source,
       extra: Math.max(0, record.sources.length - 1),
+      attribution: record.media?.attribution ?? record.media?.creator,
       license: record.media?.license,
       licenseUrl: record.media?.licenseUrl,
       checkUrl: source?.url ?? provenance?.url ?? record.media?.filePageUrl ?? null,
@@ -190,28 +182,6 @@ export class KnowledgeContextComponent {
     this.pinned.set(null);
     this.present(0);
   }
-  startDrag(event: PointerEvent): void {
-    if (this.wide() || event.button > 0 || (event.target as HTMLElement).closest('button, a')) {
-      return;
-    }
-    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
-    this.dragStart = { y: event.clientY, at: event.timeStamp };
-    this.dragging.set(true);
-  }
-  moveDrag(event: PointerEvent): void {
-    if (!this.dragStart) return;
-    this.dragY.set(Math.max(0, event.clientY - this.dragStart.y));
-  }
-  endDrag(event: PointerEvent): void {
-    if (!this.dragStart) return;
-    const distance = Math.max(0, event.clientY - this.dragStart.y);
-    const speed = distance / Math.max(1, event.timeStamp - this.dragStart.at);
-    this.dragStart = null;
-    this.dragging.set(false);
-    this.dragY.set(0);
-    if (distance > DRAG_CLOSE_DISTANCE || speed > DRAG_CLOSE_SPEED) this.close();
-  }
-
   permanentPath(): string | undefined {
     return this.record().entityId
       ? this.repository.discoveryIndex.find((entry) => entry.id === this.record().entityId)?.path
@@ -302,7 +272,7 @@ export class KnowledgeContextComponent {
 
   /**
    * Keeps panel behaviour in step with the viewport: no focus trap or modal role while
-   * docked, space reserved beside the page, and the compare column only where it fits.
+   * docked, and the compare column only where it fits.
    */
   private watchLayout(): void {
     const win = this.window;
@@ -310,7 +280,6 @@ export class KnowledgeContextComponent {
     const wide = win.matchMedia(WIDE);
     const compare = win.matchMedia(COMPARE);
     const sync = () => {
-      this.wide.set(wide.matches);
       this.canCompare.set(compare.matches);
       if (!compare.matches) this.pinned.set(null);
       const container = this.host.nativeElement.closest<HTMLElement>('.cdk-dialog-container');
@@ -366,6 +335,9 @@ export class KnowledgeContextComponent {
           });
         const body = this.host.nativeElement.querySelector<HTMLElement>('.sheet .context-body');
         if (body) body.scrollTop = scroll;
+        // The newest step is the last crumb; keep it in view when the trail overflows.
+        const trail = this.host.nativeElement.querySelector<HTMLElement>('.context-trail');
+        if (trail) trail.scrollLeft = trail.scrollWidth;
         const target = focusId
           ? this.host.nativeElement.querySelector<HTMLElement>(`[data-connection="${focusId}"]`)
           : this.host.nativeElement.querySelector<HTMLElement>('#knowledge-context-title');
