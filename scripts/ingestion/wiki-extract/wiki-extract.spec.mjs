@@ -1,25 +1,86 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { articleSections, articleText, parseWikiUrl } from './article.mjs';
+import { articleText, linkedTitle, parseArticle, parseWikiUrl, targetRecords } from './article.mjs';
 import { parseExtraction, verifyQuotes } from './extraction.mjs';
 import { rankCandidates } from './discovery.mjs';
+import { mapResolution } from './targets.mjs';
 
 const html = `<html><body>
-<section><p>Karl Marx<sup class="reference">[1]</sup> foi um filósofo alemão.</p><table><tr><td>caixa</td></tr></table></section>
-<section><h2>Vida<span class="mw-editsection">editar</span></h2><p>Nasceu em   Trier em 1818.</p></section>
+<section><p>Karl Marx<sup class="reference"><a href="./Karl_Marx#cite_note-1">[1]</a></sup> foi um <a rel="mw:WikiLink" href="./Filósofo_alemão">filósofo</a> alemão.</p><table><tr><td><a rel="mw:WikiLink" href="./Caixa">caixa</a></td></tr></table></section>
+<section><h2>Vida<span class="mw-editsection">editar</span></h2><p>Nasceu em   Trier em 1818, veja <a rel="mw:WikiLink" href="./Friedrich_Engels#Obra">Engels</a>.</p><ul><li>Item com <a rel="mw:WikiLink" href="./Trier">Trier</a></li></ul></section>
+<section><h2>Ver também</h2><ul><li><a rel="mw:WikiLink" href="./Socialismo">Socialismo</a></li></ul></section>
 <section><h2>Referências</h2><ul><li>Livro citado</li></ul></section>
+<ol class="references"><li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">Biografia citada.</span></li></ol>
 </body></html>`;
 
-test('reduces Parsoid HTML to prose sections without footnotes, tables or bibliography', () => {
-  assert.deepEqual(articleSections(html), [
-    { heading: '', text: 'Karl Marx foi um filósofo alemão.' },
-    { heading: 'Vida', text: 'Nasceu em Trier em 1818.' },
+test('reads prose sections without footnotes, tables or bibliography', () => {
+  assert.deepEqual(parseArticle(html).sections, [
+    { index: 0, heading: '', text: 'Karl Marx foi um filósofo alemão.' },
+    { index: 1, heading: 'Vida', text: 'Nasceu em Trier em 1818, veja Engels.\nItem com Trier' },
+  ]);
+});
+
+test('keeps body links with their section, heading, paragraph and written title', () => {
+  assert.deepEqual(parseArticle(html).links, [
+    { text: 'filósofo', written: 'Filósofo alemão', section: 0, heading: '', paragraph: 0 },
+    { text: 'Engels', written: 'Friedrich Engels', section: 1, heading: 'Vida', paragraph: 0 },
+    { text: 'Trier', written: 'Trier', section: 1, heading: 'Vida', paragraph: 1 },
+    { text: 'Socialismo', written: 'Socialismo', section: 2, heading: 'Ver também', paragraph: 0 },
+  ]);
+});
+
+test('keeps footnotes and bibliography apart from the prose, with where each is cited', () => {
+  const { references } = parseArticle(html);
+  assert.deepEqual(references.notes, [
+    { id: 'cite_note-1', text: 'Biografia citada.', cites: [{ section: 0, paragraph: 0 }] },
+  ]);
+  assert.deepEqual(references.bibliography, [
+    { index: 2, heading: 'Ver também', text: 'Socialismo' },
+    { index: 3, heading: 'Referências', text: 'Livro citado' },
+  ]);
+});
+
+test('reads the written title from a Parsoid wikilink without fragment or query', () => {
+  assert.equal(linkedTitle('./Karl_Marx#Vida'), 'Karl Marx');
+  assert.equal(linkedTitle('./Pagina_inexistente?action=edit&redlink=1'), 'Pagina inexistente');
+});
+
+test('resolves redirects and missing pages from one MediaWiki response', () => {
+  const resolved = mapResolution(['karl marx', 'Socialismo', 'Capitalista', 'Não existe'], {
+    query: {
+      normalized: [{ from: 'karl marx', to: 'Karl marx' }],
+      redirects: [{ from: 'Capitalista', to: 'Capitalismo' }],
+      pages: [
+        { title: 'Karl marx', pageprops: { wikibase_item: 'Q9061' } },
+        { title: 'Socialismo', pageprops: {} },
+        { title: 'Capitalismo', pageprops: { wikibase_item: 'Q4' } },
+        { title: 'Não existe', missing: true },
+      ],
+    },
+  });
+  assert.deepEqual(resolved, [
+    ['karl marx', { title: 'Karl marx', qid: 'Q9061', missing: false }],
+    ['Socialismo', { title: 'Socialismo', qid: null, missing: false }],
+    ['Capitalista', { title: 'Capitalismo', qid: 'Q4', missing: false }],
+    ['Não existe', { title: 'Não existe', qid: null, missing: true }],
+  ]);
+});
+
+test('lists each canonical target once, with the titles that reached it', () => {
+  const resolved = new Map([
+    ['Capitalista', { title: 'Capitalismo', qid: 'Q4', missing: false }],
+    ['Capitalismo', { title: 'Capitalismo', qid: 'Q4', missing: false }],
+    ['Socialismo', { title: 'Socialismo', qid: null, missing: false }],
+  ]);
+  assert.deepEqual(targetRecords(resolved), [
+    { title: 'Capitalismo', qid: 'Q4', missing: false, redirectedFrom: ['Capitalista'] },
+    { title: 'Socialismo', qid: null, missing: false, redirectedFrom: [] },
   ]);
 });
 
 test('marks a capped article as truncated instead of cutting silently', () => {
-  const article = { sections: articleSections(html) };
+  const article = { sections: parseArticle(html).sections };
   assert.equal(articleText(article, 1000).truncated, false);
   assert.deepEqual(articleText(article, 10), { text: 'Karl Marx ', truncated: true });
 });

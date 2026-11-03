@@ -1,13 +1,13 @@
-// Fetches a Wikipedia article as Parsoid HTML and reduces it to plain sections for extraction.
+// Fetches a Wikipedia article as Parsoid HTML and reduces it to prose sections, body links and references.
 import { JSDOM } from 'jsdom';
 
 import { getJson, getResource } from '../wikimedia/client.mjs';
+import { resolveTargets } from './targets.mjs';
 
-/** Elements that carry navigation, footnote markers or layout rather than article prose. */
+/** Elements that carry navigation, footnote lists or layout rather than article prose. */
 const noise = [
   'style',
   'script',
-  'sup.reference',
   '.mw-editsection',
   '.reflist',
   '.references',
@@ -26,6 +26,8 @@ const noise = [
 const skippedHeadings =
   /^(referências|notas|bibliografia|ligações externas|ver também|leitura adicional|references|notes|bibliography|external links|see also|further reading|sources|fontes)$/i;
 
+const normalize = (text) => text.replace(/\s+/g, ' ').trim();
+
 export async function sitelinkTitles(qid) {
   const url = `https://www.wikidata.org/w/api.php?action=wbgetentities&ids=${qid}&props=sitelinks&sitefilter=ptwiki|enwiki&format=json`;
   const entity = (await getJson(url)).entities?.[qid];
@@ -35,20 +37,95 @@ export async function sitelinkTitles(qid) {
   };
 }
 
-/** Parsoid HTML sections as `{ heading, text }`; the lead section has an empty heading. */
-export function articleSections(html) {
+/** Title written in a Parsoid wikilink `href`: `./Karl_Marx#Vida` → `Karl Marx`. */
+export function linkedTitle(href) {
+  return decodeURIComponent(href.replace(/^\.\//, '').split(/[?#]/)[0]).replaceAll('_', ' ');
+}
+
+const headingOf = (section) =>
+  [...section.children].find((child) => /^H[1-6]$/.test(child.tagName))?.textContent.trim() ?? '';
+
+/** A section is bibliography when it or any section it sits in has a skipped heading. */
+function isSkipped(section) {
+  for (let node = section; node; node = node.parentElement?.closest('section'))
+    if (skippedHeadings.test(headingOf(node))) return true;
+  return false;
+}
+
+/** Paragraph and list items that belong to this section itself, not to a subsection. */
+const ownBlocks = (section) =>
+  [...section.querySelectorAll('p, li')].filter((block) => block.closest('section') === section);
+
+/** Text of a block without its nested blocks, so nested lists are not read twice. */
+function blockText(block) {
+  const copy = block.cloneNode(true);
+  for (const nested of copy.querySelectorAll('p, li')) nested.remove();
+  return normalize(copy.textContent);
+}
+
+/**
+ * Parsoid HTML as `{ sections, links, references }`, with one entry per section in document order.
+ * `sections` holds prose only (the lead has an empty heading; each paragraph is one line). `links`
+ * covers internal links of the body and of bibliography sections, with their section index,
+ * heading and paragraph. Footnote citations are kept in `references` with where they are cited.
+ */
+export function parseArticle(html) {
   const { document } = new JSDOM(html).window;
+  const notes = new Map(
+    [...document.querySelectorAll('li[id^="cite_note"]')].map((item) => [
+      item.id,
+      normalize((item.querySelector('.reference-text') ?? item).textContent),
+    ]),
+  );
   for (const node of document.querySelectorAll(noise.join(','))) node.remove();
   const sections = [];
-  for (const section of document.querySelectorAll('body > section')) {
-    const heading = section.querySelector(':scope > h2')?.textContent.trim() ?? '';
-    if (skippedHeadings.test(heading)) continue;
-    const paragraphs = [...section.querySelectorAll('p, li')]
-      .map((node) => node.textContent.replace(/\s+/g, ' ').trim())
-      .filter((text) => text.length > 0);
-    if (paragraphs.length) sections.push({ heading, text: paragraphs.join('\n') });
+  const bibliography = [];
+  const links = [];
+  const cites = new Map();
+  const seenAnchors = new WeakSet();
+  for (const [index, section] of [...document.querySelectorAll('body section')].entries()) {
+    const heading = headingOf(section);
+    const paragraphs = [];
+    for (const block of ownBlocks(section)) {
+      for (const sup of block.querySelectorAll('sup.reference')) {
+        if (sup.closest('p, li') !== block) continue;
+        for (const anchor of sup.querySelectorAll('a[href*="#cite_note"]')) {
+          const href = anchor.getAttribute('href');
+          const id = href.slice(href.indexOf('#') + 1);
+          cites.set(id, [
+            ...(cites.get(id) ?? []),
+            { section: index, paragraph: paragraphs.length },
+          ]);
+        }
+        sup.remove();
+      }
+      const text = blockText(block);
+      if (!text) continue;
+      for (const anchor of block.querySelectorAll('a[rel~="mw:WikiLink"]')) {
+        if (anchor.closest('p, li') !== block || seenAnchors.has(anchor)) continue;
+        seenAnchors.add(anchor);
+        links.push({
+          text: normalize(anchor.textContent),
+          written: linkedTitle(anchor.getAttribute('href')),
+          section: index,
+          heading,
+          paragraph: paragraphs.length,
+        });
+      }
+      paragraphs.push(text);
+    }
+    if (!paragraphs.length) continue;
+    const entry = { index, heading, text: paragraphs.join('\n') };
+    if (isSkipped(section)) bibliography.push(entry);
+    else sections.push(entry);
   }
-  return sections;
+  const references = {
+    notes: [...notes]
+      .filter(([, text]) => text.length > 0)
+      .map(([id, text]) => ({ id, text, cites: cites.get(id) ?? [] })),
+    bibliography,
+  };
+  return { sections, links, references };
 }
 
 /** `{ lang, title }` of a Wikipedia article URL; any other URL is rejected. */
@@ -86,7 +163,10 @@ export async function resolveTitle(lang, title) {
   };
 }
 
-/** Downloads one article under its canonical title; `revision` comes from the Parsoid ETag (`"<revid>/<uuid>"`). */
+/**
+ * Downloads one article under its canonical title; `revision` comes from the Parsoid ETag
+ * (`"<revid>/<uuid>"`). Each body link points to its canonical target; `targets` describes them.
+ */
 export async function fetchArticle(lang, title) {
   const resolved = await resolveTitle(lang, title);
   if (!resolved) throw new Error(`Artigo inexistente: ${lang}:${title}`);
@@ -95,14 +175,37 @@ export async function fetchArticle(lang, title) {
     `https://${lang}.wikipedia.org/api/rest_v1/page/html/${path}`,
     'html',
   );
+  const { sections, links, references } = parseArticle(bytes.toString('utf8'));
+  const resolvedTargets = await resolveTargets(
+    lang,
+    links.map((link) => link.written),
+  );
   return {
     lang,
     title: resolved.title,
     redirectedFrom: resolved.redirectedFrom,
     url: `https://${lang}.wikipedia.org/wiki/${path}`,
     revision: etag?.match(/^(?:W\/)?"?(\d+)/)?.[1] ?? null,
-    sections: articleSections(bytes.toString('utf8')),
+    sections,
+    links: links.map(({ written, ...link }) => ({
+      ...link,
+      target: resolvedTargets.get(written).title,
+    })),
+    targets: targetRecords(resolvedTargets),
+    references,
   };
+}
+
+/** One record per canonical target, listing the titles that were written and redirected to it. */
+export function targetRecords(resolvedTargets) {
+  const records = new Map();
+  for (const [written, { title, qid, missing }] of resolvedTargets) {
+    const record = records.get(title) ?? { title, qid, missing, redirectedFrom: [] };
+    if (written !== title && !record.redirectedFrom.includes(written))
+      record.redirectedFrom.push(written);
+    records.set(title, record);
+  }
+  return [...records.values()];
 }
 
 /** Plain text handed to the model, capped explicitly so a truncation is never silent. */
