@@ -120,77 +120,6 @@
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
-.genealogy-canvas {
-  width: 100%;
-  min-width: 0;
-  position: relative;
-  aspect-ratio: 900/380;
-  min-height: 300px;
-  overflow: hidden;
-}
-.genealogy {
-  min-width: 0;
-  width: 100%;
-}
-.genealogy-canvas svg {
-  height: 100%;
-  position: absolute;
-  inset: 0;
-}
-.genealogy-node {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 28%;
-  min-height: 4.5rem;
-  background: var(--paper);
-  border: 1px solid var(--ink);
-  padding: 0.7rem;
-  font: 600 clamp(0.75rem, 1.2vw, 1rem)/1.3 var(--font-sans);
-}
-.genealogy-node span {
-  display: block;
-  margin-top: 0.4rem;
-  color: var(--color-accent-hover);
-  font: 0.75rem/1.3 var(--font-sans);
-  text-decoration: underline;
-}
-.genealogy-node.related {
-  background: var(--color-ochre-paper);
-  border-color: var(--color-accent);
-}
-.genealogy path {
-  stroke-dasharray: 6 5;
-  transition:
-    stroke var(--motion-standard),
-    stroke-dashoffset var(--motion-slow);
-}
-.genealogy path.selected {
-  stroke-dasharray: none;
-  stroke: var(--color-accent);
-}
-.graph-filter {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-}
-.graph-filter {
-  font: 600 0.875rem/1.2 var(--font-sans);
-}
-.graph-filter select {
-  min-height: var(--control-min-size);
-  max-width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 2px solid var(--color-ink);
-  background: var(--color-canvas);
-  color: var(--color-ink);
-  font: 600 0.875rem var(--font-sans);
-  cursor: pointer;
-}
-.relation-reading {
-  min-height: 19rem;
-}
 /* Every card has the same size and place in a regular grid; only content varies. */
 .exploration-set {
   margin-block: 2rem;
@@ -233,9 +162,6 @@
     background: var(--color-teal-paper);
     transform: translateX(2px);
   }
-  .genealogy-node:hover {
-    background: var(--color-teal-paper);
-  }
 }
 @media (max-width: 650px) {
   .timeline-explorer {
@@ -246,12 +172,6 @@
   }
   .timeline-reading {
     height: 30rem;
-  }
-  .genealogy-canvas {
-    display: none;
-  }
-  .relation-reading {
-    min-height: 0;
   }
 }
 @container (max-width: 48rem) {

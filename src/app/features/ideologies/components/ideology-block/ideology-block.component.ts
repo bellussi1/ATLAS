@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, computed, DestroyRef, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
@@ -22,7 +21,11 @@ import type {
   IdeologyEdge,
   PageBlock,
 } from '@ideologies/models/ideology-page.schema';
-import { type RelationType, relationTypes } from '@ideologies/models/relation-types';
+import {
+  type RelationType,
+  relationSentence,
+  relationTypes,
+} from '@ideologies/models/relation-types';
 import { type PageMedia } from '@ideologies/utils/page-media-plan';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
@@ -58,10 +61,7 @@ export class IdeologyBlockComponent {
   readonly dossier = input.required<IdeologyDossier>();
   readonly blockId = input.required<string>();
   readonly repository = inject(ContentRepository);
-  readonly hoveredNode = signal<string | null>(null);
   readonly edgeFilter = signal('all');
-  /** At phone width the canvas is hidden and the relation list opens by default (same breakpoint as the CSS). */
-  readonly compactGraph = signal(false);
   readonly showAllEntities = signal(false);
   readonly entityPreviewCount = 6;
   readonly entityNoun = computed(() => {
@@ -98,16 +98,15 @@ export class IdeologyBlockComponent {
       ? this.dossier().supplement.edges.filter((e) => block.edgeIds.includes(e.id))
       : [];
   });
-  /** The list shows the same relations as the canvas, so the type filter applies to both. */
   readonly visibleEdges = computed(() =>
     this.edges().filter((e) => this.edgeFilter() === 'all' || e.type === this.edgeFilter()),
   );
-  readonly selectedEdge = computed<IdeologyEdge | undefined>(
-    () =>
-      this.visibleEdges().find((e) => e.id === this.params().get('relacao')) ??
-      this.visibleEdges()[0],
-  );
   readonly edgeTypes = computed(() => [...new Set(this.edges().map((e) => e.type))]);
+  /** The legend explains only the kind being shown. */
+  readonly legendTypes = computed(() => {
+    const filter = this.edgeFilter();
+    return filter === 'all' ? this.edgeTypes() : [filter];
+  });
   readonly eraEpochs = computed<EraChartEpoch[]>(() => {
     const block = this.block();
     if (block.type !== 'chronology') return [];
@@ -152,24 +151,6 @@ export class IdeologyBlockComponent {
       this.debateTopics().find((t) => t.id === this.params().get('debate')) ??
       this.debateTopics()[0],
   );
-  readonly graph = computed(
-    () =>
-      this.repository.layouts.editorial[this.dossier().page.slug]?.graphs[this.blockId()] ?? {
-        nodes: [],
-        height: 380,
-        paths: [],
-      },
-  );
-  readonly graphNodes = computed(() =>
-    this.graph().nodes.map((node) => ({
-      ...node,
-      title: this.entity(node.id)?.title ?? node.id,
-    })),
-  );
-  readonly graphPaths = computed(
-    () => new Map(this.edges().map((edge, i) => [edge.id, this.graph().paths[i]])),
-  );
-  readonly graphPoints = computed(() => new Map(this.graph().nodes.map((node) => [node.id, node])));
   readonly timelineAxis = computed(
     () =>
       this.repository.layouts.editorial[this.dossier().page.slug]?.timelines[this.blockId()] ??
@@ -207,16 +188,6 @@ export class IdeologyBlockComponent {
   );
   /** Card pictures planned for the whole page; see `planPageMedia`. */
   readonly mediaPlan = input<ReadonlyMap<string, PageMedia>>(new Map());
-
-  constructor() {
-    const view = inject(DOCUMENT).defaultView;
-    if (!view?.matchMedia) return;
-    const compact = view.matchMedia('(max-width: 650px)');
-    const sync = () => this.compactGraph.set(compact.matches);
-    sync();
-    compact.addEventListener('change', sync);
-    inject(DestroyRef).onDestroy(() => compact.removeEventListener('change', sync));
-  }
 
   note(id: string): string | undefined {
     const block = this.block();
@@ -273,38 +244,17 @@ export class IdeologyBlockComponent {
   relation(edge: IdeologyEdge) {
     return relationTypes[edge.type];
   }
+  sentence(edge: IdeologyEdge) {
+    return relationSentence(edge);
+  }
   relationOf(type: string) {
     return relationTypes[type as RelationType];
   }
-  /** Selection dims unrelated nodes but never moves them. */
-  touches(id: string): boolean {
-    const edge = this.selectedEdge();
-    return edge?.from === id || edge?.to === id;
-  }
-  highlightEdge(edge: IdeologyEdge): boolean {
-    return this.hoveredNode()
-      ? edge.from === this.hoveredNode() || edge.to === this.hoveredNode()
-      : this.selectedEdge()?.id === edge.id;
-  }
-  /** Lines outside the hovered node or the selected relation recede, without moving. */
-  isDimmed(edge: IdeologyEdge): boolean {
-    return !this.highlightEdge(edge) && (!!this.hoveredNode() || !!this.selectedEdge());
-  }
-  /** Label anchor: midpoint of the two nodes, lifted above the line. */
-  edgeLabelPoint(edge: IdeologyEdge): { x: number; y: number } {
-    const from = this.graphPoints().get(edge.from);
-    const to = this.graphPoints().get(edge.to);
-    return {
-      x: ((from?.x ?? 0) + (to?.x ?? 0)) / 2,
-      y: ((from?.y ?? 0) + (to?.y ?? 0)) / 2 - 10,
-    };
+  countOf(type: string): number {
+    return this.edges().filter((e) => e.type === type).length;
   }
   toggleEntities(): void {
     this.showAllEntities.update((open) => !open);
-  }
-  selectNode(id: string): void {
-    const edge = this.visibleEdges().find((e) => e.from === id || e.to === id);
-    if (edge) this.update('relacao', edge.id);
   }
   period(entity: Entity): string {
     const t = entity.temporalExtent;

@@ -46,15 +46,20 @@ test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ 
   ).toEqual([]);
 });
 
-test('relation cards open their evidence and select the line in the graph', async ({ page }) => {
+test('relations read as sentences, filter by type chips and open each side', async ({ page }) => {
   await page.goto('/marxismo/');
-  await page.locator('.relation-table > summary').first().click();
-  const card = page.locator('.relation-card').first();
-  const select = card.locator('.relation-card-select');
-  await select.click();
-  await expect(select).toHaveAttribute('aria-pressed', 'true');
-  await card.locator('.relation-card-evidence > summary').click();
-  await expect(card.locator('.relation-card-evidence')).toHaveAttribute('open', '');
+  const relations = page.locator('.relations').first();
+  const items = relations.locator('.relation-item');
+  const total = await items.count();
+  expect(total).toBeGreaterThan(1);
+  await expect(items.first().locator('.relation-sentence')).toContainText(/\w+ \w+/);
+  const chips = relations.locator('.relation-chip');
+  await expect(chips.first()).toHaveAttribute('aria-pressed', 'true');
+  await chips.nth(1).click();
+  await expect(chips.nth(1)).toHaveAttribute('aria-pressed', 'true');
+  await expect(chips.first()).toHaveAttribute('aria-pressed', 'false');
+  await items.first().locator('.relation-party').first().click();
+  await expect(page.getByRole('dialog')).toBeVisible();
 });
 
 test('mobile carousels swipe without horizontal page overflow', async ({ page }) => {

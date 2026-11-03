@@ -116,14 +116,6 @@ button {
 .timeline-list p {
   font: 1rem/1.65 var(--font-serif);
 }
-.genealogy {
-  background: var(--paper-shade);
-  border-block: 3px solid var(--ink);
-}
-.genealogy svg {
-  width: 100%;
-  display: block;
-}
 path {
   fill: none;
   stroke: var(--color-border-strong);
@@ -142,43 +134,6 @@ circle {
 text {
   fill: var(--ink);
   font: 20px var(--font-sans);
-}
-.relation-reading {
-  display: grid;
-  gap: 0.6rem;
-  align-content: start;
-  padding: 1.25rem 1.5rem 1.5rem;
-  border-top: 3px solid var(--color-ink);
-  background: var(--color-surface-raised);
-}
-.relation-reading .metadata {
-  margin: 0;
-  color: var(--color-ink-muted);
-  font: 500 0.75rem/1.4 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.relation-reading h3 {
-  margin: 0;
-  font: 700 clamp(1.25rem, 2.4vw, 1.6rem) / 1.2 var(--font-sans);
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
-.relation-reading p:not(.metadata) {
-  max-width: var(--measure-reading);
-  margin: 0;
-  font: 1rem/1.6 var(--font-serif);
-}
-.relation-reading .relation-meaning {
-  color: var(--color-ink-muted);
-  font-size: 0.875rem;
-}
-.relation-table {
-  margin-top: 1rem;
-}
-.relation-table summary {
-  padding-block: 0.75rem;
-  font-weight: 600;
 }
 .source-search {
   display: grid;

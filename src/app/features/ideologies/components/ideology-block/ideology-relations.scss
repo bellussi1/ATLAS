@@ -1,179 +1,132 @@
-/* Relation vocabulary: one line style per kind of link, shared by graph and legend. */
-.genealogy path[data-line='solid'] {
-  stroke-dasharray: none;
+/* Relations as readable sentences: who says what about whom, with the evidence beneath. */
+.relations {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-block: 3px solid var(--color-ink);
+  background: var(--color-surface-raised);
 }
-.genealogy path[data-line='dotted'] {
-  stroke-dasharray: 2 5;
+.relations > * {
+  margin-inline: 1rem;
 }
-.genealogy-node {
-  transition: opacity var(--motion-standard);
-}
-.genealogy-node.muted {
-  opacity: 0.45;
-}
-.relation-legend {
+.relation-filter {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 0.875rem;
-  line-height: 1.4;
+  align-items: center;
+  gap: 0.5rem;
 }
-.relation-legend li {
-  display: grid;
-  grid-template-columns: 2.25rem minmax(0, 1fr);
-  gap: 0 0.5rem;
-  max-width: 34ch;
+.relation-filter-label {
+  margin-right: 0.25rem;
+  font: 600 0.875rem/1.2 var(--font-sans);
 }
-.relation-legend li::before {
-  content: '';
-  grid-row: 1 / 3;
-  align-self: center;
-  border-top: 2px solid var(--color-ink);
-}
-.relation-legend li[data-line='dashed']::before {
-  border-top-style: dashed;
-}
-.relation-legend li[data-line='dotted']::before {
-  border-top-style: dotted;
-}
-.relation-legend strong {
-  display: block;
-}
-.relation-meaning {
-  font-size: 0.875rem;
-}
-@media (prefers-reduced-motion: reduce) {
-  .genealogy-node {
-    transition: none;
-  }
-}
-/* Source links stand alone in the reading panel: keep a 24px target (WCAG 2.5.8). */
-.relation-reading > a {
+.relation-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 1.5rem;
-  margin-right: 1rem;
-}
-/* Direction and labels: arrows leave the registro that formulates the relation. */
-.genealogy path {
+  gap: 0.5rem;
+  min-height: var(--control-min-size);
+  padding: 0.4rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 999px;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: 600 0.875rem/1.2 var(--font-sans);
+  cursor: pointer;
   transition:
-    stroke var(--motion-standard),
-    stroke-dashoffset var(--motion-slow),
-    opacity var(--motion-standard);
+    background-color var(--motion-fast),
+    color var(--motion-fast);
 }
-.genealogy path.dimmed,
-.genealogy .edge-label.dimmed {
-  opacity: 0.3;
+.relation-chip[aria-pressed='true'] {
+  background: var(--color-ink);
+  color: var(--color-canvas);
 }
-.genealogy-arrow path {
-  fill: var(--ink);
-  stroke: none;
-  stroke-dasharray: none;
-}
-/* Wide transparent strokes keep thin lines easy to hit; the relation buttons stay the keyboard path. */
-.genealogy .genealogy-hit {
-  fill: none;
-  stroke: transparent;
-  stroke-width: 22px;
-  stroke-dasharray: none;
-  pointer-events: stroke;
-  cursor: pointer;
-}
-.genealogy .edge-label {
-  fill: var(--ink);
-  font: 600 13px/1 var(--font-sans);
-  paint-order: stroke;
-  stroke: var(--paper-shade);
-  stroke-width: 6px;
-  stroke-linejoin: round;
-  pointer-events: none;
-  transition: opacity var(--motion-standard);
-}
-.graph-direction {
-  margin: 0.9rem 0 0;
-  color: var(--color-ink-muted);
-  font: 0.875rem/1.5 var(--font-serif);
-}
-@media (max-width: 42rem) {
-  /* Labels scale down with the canvas on phones; the relation list carries the same text. */
-  .genealogy .edge-label {
-    display: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .genealogy path {
-    transition: none;
-  }
-}
-
-/* Relations as carousel cards: the card selects the line in the graph; evidence opens inside it. */
-.relation-card {
-  --carousel-item-width: min(19rem, 84%);
-  display: grid;
-  align-content: start;
-  gap: 0.6rem;
-  padding: 0.9rem;
-  border: 2px solid var(--ink);
-  background: var(--paper);
-}
-.relation-card.is-selected {
-  border-color: var(--color-accent);
-  box-shadow: inset 0 0.35rem 0 var(--color-accent);
-}
-.relation-card-select {
-  display: grid;
-  gap: 0.35rem;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-.relation-card-select:focus-visible {
+.relation-chip:focus-visible,
+.relation-party:focus-visible,
+.relation-sources a:focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
-.relation-card-type {
-  justify-self: start;
-  padding: 0.12rem 0.35rem;
-  background: var(--color-teal-paper);
-  font: 0.75rem/1.4 var(--font-mono);
+.relation-chip-count {
+  font: 0.75rem/1 var(--font-mono);
+  opacity: 0.8;
 }
-.relation-card strong {
-  font: 700 1rem/1.3 var(--font-sans);
-  overflow-wrap: anywhere;
-}
-.relation-card-label {
+.relation-legend {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   color: var(--color-ink-muted);
-  font: 0.875rem/1.45 var(--font-serif);
+  font: 0.875rem/1.45 var(--font-sans);
 }
-.relation-card-evidence summary {
-  padding-block: 0.25rem;
-  color: var(--color-accent);
-  font: 600 0.875rem var(--font-sans);
+.relation-legend strong {
+  color: var(--color-ink);
+}
+.relation-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.relation-item {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.9rem 0 0.9rem 0.9rem;
+  border-top: 1px solid var(--color-border-strong);
+  border-left: 4px solid var(--color-ink);
+}
+.relation-type {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 500 0.75rem/1.4 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.relation-sentence {
+  max-width: var(--measure-reading);
+  margin: 0;
+  font: 1.125rem/1.5 var(--font-sans);
+  text-wrap: pretty;
+}
+.relation-party {
+  display: inline;
+  min-height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  font: 700 inherit var(--font-sans);
   text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
   cursor: pointer;
 }
-.relation-card-evidence[open] {
-  display: grid;
-  gap: 0.5rem;
-}
-.relation-card-evidence p {
+.relation-topic {
   margin: 0;
+  font: 600 0.875rem/1.4 var(--font-sans);
+}
+.relation-context,
+.relation-sources {
+  max-width: var(--measure-reading);
+  margin: 0;
+  color: var(--color-ink-muted);
   font: 0.875rem/1.5 var(--font-serif);
 }
-/* Source links keep a 24px target (WCAG 2.5.8) even inside the compact card. */
-.relation-card-evidence a {
-  display: inline-flex;
-  align-items: center;
+.relation-sources a {
+  display: inline-block;
   min-height: 1.5rem;
-  color: var(--color-accent);
-  font-size: 0.875rem;
-  text-underline-offset: 0.2em;
+}
+@media (hover: hover) and (pointer: fine) {
+  .relation-chip[aria-pressed='false']:hover {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+  }
+  .relation-party:hover {
+    color: var(--color-accent-hover);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .relation-chip {
+    transition: none;
+  }
 }

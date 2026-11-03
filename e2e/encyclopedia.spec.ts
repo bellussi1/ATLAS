@@ -66,8 +66,7 @@ test('timeline selection and graph exploration preserve geometry', async ({ page
   await page.locator('.timeline-event').filter({ hasText: 'Comuna de Paris' }).click();
   await expect(panel).toContainText('Comuna de Paris');
   expect((await panel.boundingBox())?.height).toBe(before?.height);
-  await page.locator('.genealogy-node').filter({ hasText: 'Rosa Luxemburgo' }).click();
-  await expect(page.locator('.relation-reading')).toContainText('Bernstein');
+  await expect(page.locator('.relation-item').first()).toContainText('Bernstein');
 });
 
 test('temporal axis stays fixed across filters and SVG is prerendered', async ({
@@ -78,7 +77,7 @@ test('temporal axis stays fixed across filters and SVG is prerendered', async ({
   const response = await request.get('/marxismo/');
   const html = await response.text();
   expect(html).toContain('class="timeline-axis"');
-  expect(html).toContain('Polêmicas documentadas');
+  expect(html).toContain('class="relation-list"');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.setViewportSize({ width: 320, height: 740 });
   const errors: string[] = [];
@@ -111,6 +110,6 @@ test('temporal axis stays fixed across filters and SVG is prerendered', async ({
     .locator('.timeline-reading')
     .screenshot({ path: 'output/playwright/marxismo-timeline-desktop.png' });
   await page
-    .locator('.genealogy')
+    .locator('.relations')
     .screenshot({ path: 'output/playwright/marxismo-grafo-desktop.png' });
 });

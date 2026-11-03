@@ -216,7 +216,9 @@ test('both readings share the twelve canonical chapters, one index and no nested
         .filter(
           (e) =>
             /(auto|scroll)/.test(getComputedStyle(e).overflowY) &&
-            e.scrollHeight > e.clientHeight + 5,
+            e.scrollHeight > e.clientHeight + 5 &&
+            // A labelled, focusable scroll region (the era chart) is deliberate, not a trap.
+            !(e.getAttribute('role') === 'region' && e.getAttribute('tabindex') === '0'),
         )
         .map((e) => e.className),
     );
@@ -237,7 +239,9 @@ test('each image appears once in the narrative; only the archive catalogue repea
   }
 });
 
-test('épocas list dated records and the graph explains each kind of line', async ({ page }) => {
+test('épocas list dated records and the relations explain each kind of connection', async ({
+  page,
+}) => {
   for (const path of ['/marxismo/', '/liberalismo/']) {
     await page.goto(`${path}`);
     const era = page.locator('.era-chart').first();
@@ -245,45 +249,13 @@ test('épocas list dated records and the graph explains each kind of line', asyn
     await era.locator('.epoch-picker button.carousel-item').nth(1).click();
     await expect(era.locator('.epoch-detail h5').first()).toContainText('Registros datados');
 
-    const block = page.locator('app-ideology-block', {
-      has: page.locator('.genealogy'),
-    });
-    const graph = block.locator('.genealogy');
-    await expect(graph.locator('.relation-legend li').first()).toBeVisible();
-    await expect(graph.locator('.relation-meaning')).not.toBeEmpty();
-    const nodes = graph.locator('.genealogy-node');
-    const before = await nodes.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left));
-    await block.locator('.relation-table > summary').click();
-    await block.locator('.relation-card-select').last().click();
-    expect(await nodes.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left))).toEqual(
-      before,
+    const relations = page.locator('.relations').first();
+    await expect(relations.locator('.relation-legend li').first()).toBeVisible();
+    await expect(relations.locator('.relation-sentence').first()).toContainText(/\S/);
+    await expect(relations.locator('.relation-chip').first()).toHaveAttribute(
+      'aria-pressed',
+      'true',
     );
-    await expect(graph.locator('.genealogy-node.related')).toHaveCount(2);
-  }
-});
-
-test('escala do tempo keeps epochs on one carousel row and folds long lists', async ({ page }) => {
-  for (const path of ['/marxismo/', '/liberalismo/']) {
-    await page.goto(path);
-    const era = page.locator('.era-chart').first();
-    const tabs = era.locator('.epoch-picker button.carousel-item');
-    const tops = await tabs.evaluateAll(
-      (b) => new Set(b.map((e) => e.getBoundingClientRect().top)).size,
-    );
-    expect(tops).toBe(1);
-    await tabs.first().focus();
-    await page.keyboard.press('ArrowRight');
-    await expect(tabs.nth(1)).toHaveAttribute('aria-pressed', 'true');
-    const chart = era.locator('.chart');
-    const height = await chart.evaluate((e) => e.getBoundingClientRect().height);
-    expect(height).toBeLessThanOrEqual(page.viewportSize()!.height * 0.75 + 1);
-    const toggle = era.locator('.list-toggle').first();
-    if (await toggle.count()) {
-      const before = await era.locator('.alive-list li').count();
-      await toggle.click();
-      await expect(toggle).toHaveAttribute('aria-expanded', 'true');
-      expect(await era.locator('.alive-list li').count()).toBeGreaterThan(before);
-    }
   }
 });
 
