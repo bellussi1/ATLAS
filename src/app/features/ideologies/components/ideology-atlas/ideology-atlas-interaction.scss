@@ -42,6 +42,20 @@
   overflow-wrap: anywhere;
   text-underline-offset: 0.16em;
 }
+.relation-more {
+  min-height: 2.75rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: 600 0.875rem/1.3 var(--font-sans);
+  cursor: pointer;
+}
+.relation-more:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
 .relation-evidence {
   display: grid;
   grid-column: 1 / -1;

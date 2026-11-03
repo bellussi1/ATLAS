@@ -176,6 +176,14 @@ export class IdeologyAtlasComponent {
       return true;
     }),
   );
+  /** The textual list carries each relation's evidence, so it opens folded past this many. */
+  readonly relationPreview = 5;
+  readonly showAllRelations = signal(false);
+  readonly shownRelations = computed(() =>
+    this.showAllRelations()
+      ? this.visibleRelations()
+      : this.visibleRelations().slice(0, this.relationPreview),
+  );
   readonly graphNodes = computed<GraphNode[]>(() => {
     const focusId = this.selectedId();
     const visibleIds = new Set([

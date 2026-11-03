@@ -144,6 +144,7 @@ describe('Liberalism atlas snapshot', () => {
 
     for (const filter of ['discovery', 'structured'] as const) {
       page.setRelationFilter(filter);
+      page.showAllRelations.set(true);
       fixture.detectChanges();
       const visibleIds = Array.from(
         (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLElement>(

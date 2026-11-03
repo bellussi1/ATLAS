@@ -260,7 +260,7 @@
         Lista textual das conexões visíveis nesta seleção ({{ visibleRelations().length }})
       </summary>
       <ul>
-        @for (relation of visibleRelations(); track relation.relationId) {
+        @for (relation of shownRelations(); track relation.relationId) {
           <li [attr.data-relation-id]="relation.relationId">
             @if (relationSource(relation); as source) {
               <button type="button" (click)="openEntity(source.id)">{{ source.title }}</button>
@@ -292,6 +292,18 @@
           </li>
         }
       </ul>
+      @if (visibleRelations().length > relationPreview) {
+        <button
+          type="button"
+          class="relation-more"
+          [attr.aria-expanded]="showAllRelations()"
+          (click)="showAllRelations.set(!showAllRelations())"
+        >
+          {{
+            showAllRelations() ? 'Mostrar menos' : 'Ver todas (' + visibleRelations().length + ')'
+          }}
+        </button>
+      }
     </details>
     @if (unconnectedEntityCount()) {
       <p class="graph-note">
