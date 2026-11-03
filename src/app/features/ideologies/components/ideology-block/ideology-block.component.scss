@@ -49,48 +49,101 @@ button {
     color: var(--paper);
   }
 }
-.timeline-filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.8rem;
+/* The scale is the filter: each marker opens its record, and the list beside it follows. */
+.timeline-scale {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem 0.75rem;
   background: var(--color-ochre-paper);
   border-block: 2px solid var(--ink);
 }
-.timeline-filters select {
-  max-width: 100%;
-  border: 1px solid var(--ink);
+.timeline-scale-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+.timeline-scale-title {
+  margin: 0;
+  font: 700 1.125rem/1.3 var(--font-sans);
+  text-wrap: balance;
+}
+.timeline-scale-count {
+  margin: 0;
+  font: 0.875rem/1.3 var(--font-mono);
+}
+.timeline-scale-count strong {
+  font-size: 1.125rem;
+}
+.timeline-scale-track {
+  position: relative;
+  height: 4.5rem;
+  margin-inline: 0.5rem;
+}
+.timeline-scale-line {
+  position: absolute;
+  inset: 1.4rem 0 auto;
+  border-top: 3px solid var(--ink);
+}
+.timeline-stop {
+  position: absolute;
+  top: 0;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.2rem;
+  width: 2.5rem;
+  min-height: 4.5rem;
+  padding: 0.35rem 0 0;
+  border: 0;
+  background: none;
+  translate: -50% 0;
+  cursor: pointer;
+}
+.timeline-stop-dot {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
   background: var(--paper);
-  padding: 0.35rem;
+  transition:
+    scale var(--motion-fast) var(--ease-out),
+    background-color var(--motion-fast);
 }
-.timeline-filters span {
-  font-size: 0.875rem;
+.timeline-stop-year {
+  padding: 0.1rem 0.3rem;
+  font: 0.875rem/1.3 var(--font-mono);
 }
-.timeline-axis {
-  display: block;
-  flex-basis: 100%;
-  width: 100%;
-  height: auto;
-  min-height: 3rem;
-  max-height: 6rem;
+.timeline-stop[aria-pressed='true'] .timeline-stop-dot {
+  scale: 1.45;
+  border-color: var(--color-accent);
+  background: var(--color-accent);
 }
-.timeline-axis line {
-  stroke: var(--ink);
-  stroke-width: 2;
+.timeline-stop[aria-pressed='true'] .timeline-stop-year {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
 }
-.timeline-axis text {
-  font: 24px var(--font-mono);
+.timeline-stop:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 0;
 }
-.timeline-axis circle {
-  fill: var(--paper);
-  stroke: var(--ink);
-  stroke-width: 2;
+@media (hover: hover) and (pointer: fine) {
+  .timeline-stop[aria-pressed='false']:hover .timeline-stop-dot {
+    scale: 1.25;
+    background: var(--color-accent);
+  }
 }
-.timeline-axis circle.current {
-  fill: var(--color-accent);
-  stroke: var(--color-accent);
-  r: 10;
+.timeline-scale-note {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 0.75rem/1.4 var(--font-mono);
+}
+@media (prefers-reduced-motion: reduce) {
+  .timeline-stop-dot {
+    transition: none;
+  }
 }
 .timeline-list {
   list-style: none;
@@ -150,8 +203,9 @@ input {
   min-width: 0;
 }
 @media (max-width: 650px) {
-  .timeline-axis text {
-    font-size: 44px;
+  .timeline-stop-year {
+    padding-inline: 0.15rem;
+    font-size: 0.75rem;
   }
   .timeline-list li {
     grid-template-columns: 4.5rem minmax(0, 1fr);

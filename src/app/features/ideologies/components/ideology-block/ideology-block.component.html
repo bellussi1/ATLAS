@@ -49,35 +49,42 @@
     }
   }
   @case ('timeline') {
-    <div class="timeline-filters">
-      <label [for]="blockId() + '-period'">Recorte temporal</label>
-      <select
-        [id]="blockId() + '-period'"
-        [value]="params().get('periodo') ?? 'todos'"
-        (change)="update('periodo', $any($event.target).value)"
+    <div class="timeline-scale">
+      <div class="timeline-scale-head">
+        <p class="timeline-scale-title" [id]="blockId() + '-scale-title'">
+          Linha do tempo: toque num marco para abrir o registro
+        </p>
+        <p class="timeline-scale-count">
+          <strong>{{ selectedTimelineIndex() + 1 }}</strong> de {{ timeline().length }}
+        </p>
+      </div>
+      <div
+        class="timeline-scale-track"
+        role="group"
+        [attr.aria-labelledby]="blockId() + '-scale-title'"
       >
-        <option value="todos">Todo o período</option>
-        <option value="antes-1850">Antes de 1850</option>
-        <option value="desde-1850">A partir de 1850</option>
-      </select>
-      <span>Data não implica causalidade</span>
-      @if (timelineAxis(); as axis) {
-        <svg class="timeline-axis" viewBox="0 0 900 100" aria-hidden="true" focusable="false">
-          <line x1="40" y1="35" x2="860" y2="35" />
-          @for (tick of axis.ticks; track tick.year) {
-            <line [attr.x1]="tick.x" y1="30" [attr.x2]="tick.x" y2="45" />
-            <text [attr.x]="tick.x" y="80" text-anchor="middle">{{ tick.year }}</text>
-          }
-          @for (marker of axis.markers; track marker.id) {
-            <circle
-              [attr.cx]="marker.x"
-              cy="35"
-              r="7"
-              [class.current]="selectedTimeline()?.id === marker.id"
-            />
-          }
-        </svg>
-      }
+        <span class="timeline-scale-line" aria-hidden="true"></span>
+        @for (stop of timelineStops(); track stop.id; let i = $index) {
+          <button
+            type="button"
+            class="timeline-stop"
+            [style.left.%]="stop.left"
+            [attr.aria-pressed]="selectedTimeline()?.id === stop.id"
+            [attr.aria-label]="stop.year + ': ' + entity(stop.id)?.title"
+            [attr.aria-controls]="blockId() + '-timeline-reading'"
+            [attr.tabindex]="selectedTimeline()?.id === stop.id ? 0 : -1"
+            (click)="update('evento', stop.id)"
+            (keydown)="stepStop($event, i)"
+          >
+            <span class="timeline-stop-dot" aria-hidden="true"></span>
+            <span class="timeline-stop-year" aria-hidden="true">{{ stop.year }}</span>
+          </button>
+        }
+      </div>
+      <p class="timeline-scale-note">
+        Data não implica causalidade. Marcos em ordem cronológica; o espaço entre anos próximos é
+        ampliado para facilitar o toque.
+      </p>
     </div>
     <div class="timeline-explorer">
       <ol class="timeline-list" aria-label="Acontecimentos e publicações">

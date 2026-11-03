@@ -22,14 +22,14 @@ import type {
   PageBlock,
 } from '@ideologies/models/ideology-page.schema';
 import {
-  type RelationType,
   relationSentence,
+  type RelationType,
   relationTypes,
 } from '@ideologies/models/relation-types';
 import { type PageMedia } from '@ideologies/utils/page-media-plan';
+import { timelineStops } from '@ideologies/utils/timeline-stops';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
-import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 import { type IconKind, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
@@ -46,7 +46,6 @@ import { RecordCardComponent } from '@shared/ui/record-card/record-card.componen
     IdeologyAtlasComponent,
     ReadingPathComponent,
     PositionsEstimateComponent,
-    CardCarouselComponent,
   ],
   templateUrl: './ideology-block.component.html',
   styleUrls: [
@@ -151,24 +150,19 @@ export class IdeologyBlockComponent {
       this.debateTopics().find((t) => t.id === this.params().get('debate')) ??
       this.debateTopics()[0],
   );
-  readonly timelineAxis = computed(
-    () =>
-      this.repository.layouts.editorial[this.dossier().page.slug]?.timelines[this.blockId()] ??
-      null,
+  readonly timeline = computed(() =>
+    [...this.entities()]
+      .filter(
+        (e) => e.temporalExtent?.startYear !== null && e.temporalExtent?.startYear !== undefined,
+      )
+      .sort((a, b) => (a.temporalExtent?.startYear ?? 0) - (b.temporalExtent?.startYear ?? 0)),
   );
-  readonly timeline = computed(() => {
-    const period = this.params().get('periodo');
-    return [...this.entities()]
-      .filter((e) => {
-        const year = e.temporalExtent?.startYear;
-        return (
-          year !== null &&
-          year !== undefined &&
-          (period === 'antes-1850' ? year < 1850 : period === 'desde-1850' ? year >= 1850 : true)
-        );
-      })
-      .sort((a, b) => (a.temporalExtent?.startYear ?? 0) - (b.temporalExtent?.startYear ?? 0));
-  });
+  /** Markers of the scale: the same records as the list, so both always agree. */
+  readonly timelineStops = computed(() =>
+    timelineStops(
+      this.timeline().map((e) => ({ id: e.id, year: e.temporalExtent?.startYear ?? 0 })),
+    ),
+  );
   readonly selectedTimeline = computed<Entity | undefined>(
     () => this.timeline().find((e) => e.id === this.params().get('evento')) ?? this.timeline()[0],
   );
@@ -252,6 +246,17 @@ export class IdeologyBlockComponent {
   }
   countOf(type: string): number {
     return this.edges().filter((e) => e.type === type).length;
+  }
+  /** Arrow keys walk the markers and open each record, like the epoch tabs. */
+  stepStop(event: KeyboardEvent, index: number): void {
+    const delta = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+    const stops = this.timelineStops();
+    const next = stops[index + delta];
+    if (!delta || !next) return;
+    event.preventDefault();
+    this.update('evento', next.id);
+    const buttons = (event.currentTarget as HTMLElement).parentElement?.querySelectorAll('button');
+    buttons?.[index + delta]?.focus();
   }
   toggleEntities(): void {
     this.showAllEntities.update((open) => !open);

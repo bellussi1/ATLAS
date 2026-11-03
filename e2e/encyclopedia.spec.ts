@@ -69,47 +69,51 @@ test('timeline selection and graph exploration preserve geometry', async ({ page
   await expect(page.locator('.relation-item').first()).toContainText('Bernstein');
 });
 
-test('temporal axis stays fixed across filters and SVG is prerendered', async ({
+test('the timeline scale is the filter: markers open records and stay in place', async ({
   page,
   request,
 }) => {
-  // The reading prerenders the timeline and the debate.
-  const response = await request.get('/marxismo/');
-  const html = await response.text();
-  expect(html).toContain('class="timeline-axis"');
+  const html = await (await request.get('/marxismo/')).text();
+  expect(html).toContain('class="timeline-scale-track"');
   expect(html).toContain('class="relation-list"');
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.setViewportSize({ width: 320, height: 740 });
+  await page.setViewportSize({ width: 360, height: 740 });
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/marxismo/');
-  const axis = page.locator('.timeline-axis');
-  const initial = await axis.innerHTML();
-  await page.getByLabel('Recorte temporal', { exact: true }).selectOption('antes-1850');
-  await expect(page).toHaveURL(/periodo=antes-1850/);
-  // Selection may change, but the time scale and all dated markers keep their coordinates.
-  const positions = () =>
-    axis.locator('circle').evaluateAll((nodes) => nodes.map((n) => n.getAttribute('cx')));
-  const before = await positions();
-  expect(initial).toContain('<line');
-  await page.getByLabel('Recorte temporal', { exact: true }).selectOption('desde-1850');
-  await expect(page).toHaveURL(/periodo=desde-1850/);
-  expect(await positions()).toEqual(before);
-  const event = page.locator('.timeline-event').first();
-  await event.focus();
-  await page.keyboard.press('Enter');
-  await expect(event).toBeFocused();
-  await expect(event).toHaveAttribute('aria-pressed', 'true');
+  const scale = page.locator('.timeline-scale').first();
+  await expect(scale).toBeAttached();
+  await page.waitForLoadState('networkidle');
+  await scale.scrollIntoViewIfNeeded();
+  await expect(scale).toContainText('Linha do tempo');
+  const stops = scale.locator('.timeline-stop');
+  const total = await stops.count();
+  expect(total).toBeGreaterThan(3);
+  await expect(scale.locator('.timeline-scale-count')).toContainText(`1 de ${total}`);
+  const lefts = () => stops.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left));
+  const before = await lefts();
+  // No two markers overlap, so each keeps its own touch target.
+  const boxes = await stops.evaluateAll((n) =>
+    n.map((e) => {
+      const r = e.getBoundingClientRect();
+      return [r.left, r.right];
+    }),
+  );
+  for (let i = 1; i < boxes.length; i++)
+    expect(boxes[i][0]).toBeGreaterThanOrEqual(boxes[i - 1][1] - 4);
+  await stops.nth(2).click();
+  await expect(page).toHaveURL(/evento=/);
+  await expect(stops.nth(2)).toHaveAttribute('aria-pressed', 'true');
+  await expect(scale.locator('.timeline-scale-count')).toContainText(`3 de ${total}`);
+  await expect(page.locator('.timeline-event[aria-pressed="true"]')).toHaveCount(1);
+  await expect(page.locator('.timeline-reading h3')).toHaveText(
+    (await page.locator('.timeline-event[aria-pressed="true"] strong').textContent())!,
+  );
+  await stops.nth(2).focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(stops.nth(3)).toBeFocused();
+  await expect(stops.nth(3)).toHaveAttribute('aria-pressed', 'true');
+  expect(await lefts()).toEqual(before);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
-  await page
-    .locator('.timeline-reading')
-    .screenshot({ path: 'output/playwright/marxismo-timeline-320.png' });
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  await page
-    .locator('.timeline-reading')
-    .screenshot({ path: 'output/playwright/marxismo-timeline-desktop.png' });
-  await page
-    .locator('.relations')
-    .screenshot({ path: 'output/playwright/marxismo-grafo-desktop.png' });
 });
