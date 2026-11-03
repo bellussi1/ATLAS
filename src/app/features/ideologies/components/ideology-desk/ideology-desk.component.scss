@@ -190,6 +190,10 @@ h4,
   padding: var(--space-3);
   box-shadow: 0 6px 16px #0007;
   transition: transform var(--motion-fast) var(--ease-out);
+  small,
+  strong {
+    max-width: calc(100% - 2.6rem);
+  }
   small {
     font: 0.68rem var(--font-mono);
     letter-spacing: 0.06em;
@@ -204,8 +208,49 @@ h4,
     font: 0.75rem var(--font-mono);
     color: #5b4f35;
   }
+  position: relative;
+  overflow: hidden;
+  animation: card-in var(--motion-standard) var(--ease-out) both;
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
+  .card-picture {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.2rem;
+    height: 3.2rem;
+    object-fit: cover;
+    border-radius: 0 0 0 100%;
+    filter: grayscale(1);
+    transition:
+      filter var(--motion-standard),
+      width var(--motion-standard) var(--ease-out),
+      height var(--motion-standard) var(--ease-out);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    background: var(--tab);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--motion-standard) var(--ease-out);
+  }
   &:hover {
-    transform: translateY(-3px) rotate(-0.5deg);
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--tab);
+    .card-picture {
+      filter: none;
+      width: 4.2rem;
+      height: 4.2rem;
+    }
+    &::after {
+      transform: scaleX(1);
+    }
   }
   &[aria-pressed='true'] {
     outline: 3px solid #ffd400;
@@ -269,7 +314,25 @@ h4,
     font: 0.92rem/1.5 var(--font-serif);
   }
 }
+.chain-step[data-last='true'] {
+  animation: step-in var(--motion-standard) var(--ease-out) both;
+}
+.chain-picture ::ng-deep figure {
+  margin: var(--space-2) 0 0;
+  img {
+    width: 100%;
+    max-height: 12rem;
+    object-fit: cover;
+    clip-path: circle(75% at 0 0);
+    animation: picture-in var(--motion-slow) var(--ease-out) both;
+  }
+  figcaption {
+    font: 0.68rem var(--font-mono);
+    color: var(--desk-muted);
+  }
+}
 .chain-via {
+  animation: step-in var(--motion-standard) var(--ease-out) both;
   margin-left: var(--space-3);
   padding: var(--space-2) 0 var(--space-2) var(--space-4);
   border-left: 1px dashed var(--desk-line);
@@ -283,6 +346,15 @@ h4,
     border: 1px solid var(--desk-line);
     padding: var(--space-2) var(--space-3);
     border-left: 4px solid var(--tab, var(--desk-line));
+  }
+  li {
+    transition:
+      background var(--motion-fast),
+      transform var(--motion-fast) var(--ease-out);
+    &:hover {
+      background: #2a2a28;
+      transform: translateX(4px);
+    }
   }
   button {
     width: 100%;
@@ -343,9 +415,33 @@ h4,
     position: static;
   }
 }
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+@keyframes picture-in {
+  from {
+    clip-path: circle(0 at 0 0);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .desk-card,
+  .desk-card *,
+  .desk-card::after,
+  .chain-step,
+  .chain-via,
+  .chain-next li,
+  .chain-picture ::ng-deep img,
   .era-bars button {
+    animation: none !important;
     transition: none;
     transform: none !important;
   }

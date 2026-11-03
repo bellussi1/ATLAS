@@ -38,7 +38,9 @@
               ><span>{{ roman[index] }} · ~{{ chapter.minutes }} min</span>
             </p>
             <header class="chapter-heading" appReveal data-reveal="wipe">
-              <p class="chapter-numeral" aria-hidden="true">{{ roman[index] }}</p>
+              <p class="chapter-numeral" aria-hidden="true" [attr.data-shape]="index % 3">
+                {{ roman[index] }}
+              </p>
               <p class="folio">{{ chapter.kicker }}</p>
               <h2 [id]="'title-' + chapter.id">{{ chapter.title }}</h2>
               <p class="chapter-measure">
@@ -48,6 +50,15 @@
                 min
               </p>
             </header>
+            <app-geometric-mosaic
+              class="chapter-mosaic"
+              [columns]="2"
+              [rows]="3"
+              [palette]="palette()"
+              [seed]="index * 7 + 3"
+              [interactive]="true"
+              aria-hidden="true"
+            />
             @if (chapter.question) {
               <p class="chapter-question">{{ chapter.question }}</p>
             }

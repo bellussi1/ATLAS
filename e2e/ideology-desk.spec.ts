@@ -38,6 +38,19 @@ test('desk filters, chains records and returns to the chapter of origin', async 
   await expect(page).toHaveURL(/\/marxismo\/?#pensadores$/);
 });
 
+test('desk filters and chain steps keep the scroll position', async ({ page }) => {
+  await page.goto('/marxismo/mesa/');
+  await page.evaluate(() => window.scrollTo(0, 600));
+  // Clicking through the DOM avoids Playwright scrolling the target into view.
+  await page.evaluate(() =>
+    (document.querySelectorAll('.desk-kinds button')[1] as HTMLElement).click(),
+  );
+  await expect(page).toHaveURL(/tipo=/);
+  await page.evaluate(() => (document.querySelector('.desk-card') as HTMLElement).click());
+  await expect(page).toHaveURL(/cadeia=/);
+  expect(await page.evaluate(() => window.scrollY)).toBe(600);
+});
+
 test('desk works at 320px without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 740 });
   await page.goto('/liberalismo/mesa/?cadeia=person-john-locke');

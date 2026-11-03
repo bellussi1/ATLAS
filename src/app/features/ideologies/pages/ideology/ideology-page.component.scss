@@ -148,9 +148,70 @@ h2 {
 }
 .next-chapter {
   display: inline-flex;
+  gap: 0.5rem;
   min-height: 44px;
   align-items: center;
   margin-top: 1rem;
+  padding: 0 0.75rem;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  justify-self: start;
+  box-shadow: 0 0 0 var(--ink);
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out),
+    background var(--motion-fast);
+  &:hover {
+    background: var(--color-ochre-paper);
+    transform: translate(-3px, -3px);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+}
+/* Geometric motif in the margin of each spread: decorative, seeded per chapter. */
+.chapter-mosaic {
+  grid-column: 1 !important;
+  grid-row: 5 / span 6;
+  align-self: start;
+  position: sticky;
+  top: calc(var(--space-8) + var(--reading-bar-h, 0px));
+  width: 100%;
+  max-width: 5rem;
+  margin-top: var(--space-6);
+}
+.chapter-numeral[data-shape='1'] {
+  border-top: 0;
+  width: 1.9em;
+  height: 1.9em;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+}
+.chapter-numeral[data-shape='2'] {
+  border-top: 0;
+  border-left: 6px solid var(--color-teal-paper);
+  padding-left: 0.4rem;
+}
+.desk-pointer a {
+  display: inline-flex;
+  gap: 0.35rem;
+  span {
+    transition: transform var(--motion-fast) var(--ease-out);
+  }
+  &:hover span {
+    transform: translateX(0.35rem);
+  }
+}
+.chapter-sources summary,
+.chapter-aside summary {
+  transition: color var(--motion-fast);
+  &:hover {
+    color: var(--color-accent);
+  }
 }
 .graph-placeholder {
   min-height: 380px;
@@ -189,6 +250,9 @@ h2 {
     > * {
       grid-column: 1;
     }
+  }
+  .chapter-mosaic {
+    display: none;
   }
   .chapter-numeral {
     grid-column: 1 !important;
@@ -229,4 +293,11 @@ h2 {
   display: inline-block;
   min-height: 1.5rem;
   font: 600 0.9rem/1.5 var(--font-sans);
+}
+@media (prefers-reduced-motion: reduce) {
+  .next-chapter,
+  .desk-pointer a span {
+    transition: none;
+    transform: none !important;
+  }
 }

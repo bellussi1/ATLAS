@@ -16,6 +16,7 @@ import { IdeologyRepository } from '@ideologies/services/ideology-repository.ser
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
 import { chapterDeskKind } from '@ideologies/utils/reading-trails';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
+import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
 interface PageState {
@@ -33,6 +34,7 @@ interface PageState {
     EditorialSourcesComponent,
     IdeologyPosterComponent,
     AtlasRevealDirective,
+    AtlasGeometricMosaicComponent,
   ],
   templateUrl: './ideology-page.component.html',
   styleUrl: './ideology-page.component.scss',
@@ -55,6 +57,7 @@ export class IdeologyPageComponent {
   );
   readonly basePath = computed(() => `/${this.page()?.slug ?? ''}`);
   readonly chapterDeskKind = chapterDeskKind;
+  readonly palette = computed(() => (this.page()?.slug === 'liberalismo' ? 'liberal' : 'marx'));
   readonly roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   /** Text for the always-present status region: screen readers announce changes to a live region that already exists. */
   readonly stateAnnouncement = computed(() => {

@@ -4,6 +4,23 @@
     <h1 id="ideology-title">{{ page().title }}</h1>
     <p class="poster-summary">{{ page().summary }}</p>
 
+    @if (figures().length) {
+      <ul class="poster-figures" aria-label="Registros ilustrados desta tradição">
+        @for (figure of figures(); track figure.entity.id) {
+          <li [attr.data-frame]="figure.frame">
+            <app-licensed-asset
+              [atlas]="figure.owner"
+              [assetPath]="figure.asset.assetPath"
+              [alt]="figure.entity.title"
+            />
+            <a class="figure-name" [routerLink]="'/verbete/' + figure.entity.slug">{{
+              figure.entity.title
+            }}</a>
+          </li>
+        }
+      </ul>
+    }
+
     @if (trails().length) {
       <h2 class="poster-label">Comece por uma pergunta</h2>
       <ol class="poster-questions">
@@ -30,6 +47,15 @@
   </div>
 
   <nav class="poster-map" aria-label="Mapa da tradição">
+    <app-geometric-mosaic
+      class="poster-mosaic"
+      [columns]="3"
+      [rows]="2"
+      [palette]="palette()"
+      [seed]="page().title.length"
+      [interactive]="true"
+      aria-hidden="true"
+    />
     <p class="poster-label">
       Mapa · {{ page().chapters.length }} capítulos · ~{{ minutes() }} min de leitura
     </p>

@@ -1,6 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, type Params, Router, RouterLink } from '@angular/router';
+import type { Atlas } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
 import {
@@ -14,7 +15,9 @@ import {
   linkBetween,
   parseChain,
 } from '@ideologies/utils/desk-graph';
+import { entityMedia } from '@ideologies/utils/page-media-plan';
 import { chapterDeskKind } from '@ideologies/utils/reading-trails';
+import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
 
 /**
  * Exploration desk over the tradition's graph: search, kind and era filters, and a
@@ -23,7 +26,7 @@ import { chapterDeskKind } from '@ideologies/utils/reading-trails';
  */
 @Component({
   selector: 'app-ideology-desk',
-  imports: [RouterLink],
+  imports: [RouterLink, AtlasLicensedAssetComponent],
   templateUrl: './ideology-desk.component.html',
   styleUrl: './ideology-desk.component.scss',
 })
@@ -43,6 +46,17 @@ export class IdeologyDeskComponent {
     this.repository.knowledgeGraph.atlases.find((a) => a.id === this.page().atlasId),
   );
   readonly entities = computed(() => deskEntities(this.atlas()));
+  /** Licensed picture per record id, so cards and the chain can show the person or work. */
+  readonly media = computed(() => {
+    const graph = this.repository.knowledgeGraph;
+    const pictures = new Map<string, { assetPath: string; owner: Atlas }>();
+    for (const entity of this.atlas()?.entities ?? []) {
+      const asset = entityMedia(graph, entity);
+      const owner = asset && graph.atlases.find((a) => a.assetLicenses.includes(asset));
+      if (asset && owner) pictures.set(entity.id, { assetPath: asset.assetPath, owner });
+    }
+    return pictures;
+  });
   readonly origin = computed(() => {
     const anchor = this.params().get('de');
     return this.page().chapters.find((c) => c.anchor === anchor) ?? null;
@@ -120,6 +134,8 @@ export class IdeologyDeskComponent {
       queryParams,
       queryParamsHandling: 'merge',
       replaceUrl: !('cadeia' in queryParams),
+      // Filters and selections change the desk in place; only chapter links should scroll.
+      scroll: 'manual',
     });
   }
 }

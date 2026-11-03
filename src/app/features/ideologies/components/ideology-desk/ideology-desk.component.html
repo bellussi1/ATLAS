@@ -81,6 +81,9 @@
                 [attr.aria-pressed]="chain()[0]?.entity?.id === entity.id"
                 (click)="start(entity.id)"
               >
+                @if (media().get(entity.id); as picture) {
+                  <img class="card-picture" [src]="picture.assetPath" alt="" loading="lazy" />
+                }
                 <small>{{ kindLabel(entity.kind) }}</small>
                 <strong>{{ entity.title }}</strong>
                 @if (entity.period) {
@@ -118,6 +121,14 @@
               }
               <small>{{ kindLabel(step.entity.kind) }} {{ step.entity.period }}</small>
               @if (last) {
+                @if (media().get(step.entity.id); as picture) {
+                  <app-licensed-asset
+                    class="chain-picture"
+                    [atlas]="picture.owner"
+                    [assetPath]="picture.assetPath"
+                    [alt]="step.entity.title"
+                  />
+                }
                 <p>{{ step.entity.summary }}</p>
                 <a [routerLink]="'/verbete/' + step.entity.slug">Abrir o verbete</a>
               }

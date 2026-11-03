@@ -16,12 +16,15 @@
   color: var(--ink-muted);
   margin: 0;
 }
+.poster-copy {
+  container-type: inline-size;
+}
 h1 {
-  font: 700 clamp(3rem, 9vw, 8rem) / 0.88 var(--font-sans);
+  /* Sized to the column so the longest title (“Liberalismo”) never breaks mid-word. */
+  font: 700 clamp(2.4rem, 15cqi, 8rem) / 0.88 var(--font-sans);
   letter-spacing: -0.045em;
   margin: var(--space-6) 0 var(--space-2);
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: normal;
 }
 .poster-summary {
   max-width: 36ch;
@@ -178,13 +181,164 @@ h1 {
     span {
       color: var(--color-accent);
     }
+    background: linear-gradient(var(--color-ochre-paper), var(--color-ochre-paper)) left bottom / 0
+      100% no-repeat;
+    transition: background-size var(--motion-standard) var(--ease-out);
+    span {
+      transition: transform var(--motion-fast) var(--ease-out);
+    }
     &:hover {
       text-decoration: underline;
+      background-size: 100% 100%;
+    }
+    &:first-child:hover span {
+      transform: translateY(0.25rem);
+    }
+    &:last-child:hover span {
+      transform: translateX(0.35rem);
     }
   }
   a + a {
     border-left: 1px solid var(--ink);
     padding-left: var(--space-4);
+  }
+}
+/* Licensed portraits cut in alternating geometric frames. */
+.poster-figures {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  padding: 0;
+  margin: 0 0 var(--space-8);
+  li {
+    animation: figure-in var(--motion-slow) var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
+  li:nth-child(2) {
+    --i: 1;
+  }
+  li:nth-child(3) {
+    --i: 2;
+  }
+  li:nth-child(4) {
+    --i: 3;
+  }
+  li {
+    position: relative;
+  }
+  ::ng-deep figure {
+    margin: 0;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--color-ochre-paper);
+    transition: border-radius var(--motion-standard) var(--ease-out);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.1);
+      mix-blend-mode: multiply;
+      transition:
+        filter var(--motion-standard),
+        transform var(--motion-slow) var(--ease-out);
+    }
+    figcaption {
+      position: absolute;
+      z-index: 2;
+      inset: auto 0 0;
+      padding: 2px 4px;
+      font: 0.6rem/1.3 var(--font-mono);
+      background: var(--paper);
+      opacity: 0;
+      transition: opacity var(--motion-fast);
+    }
+  }
+  [data-frame='disc'] ::ng-deep figure {
+    border-radius: 50%;
+  }
+  [data-frame='arch'] ::ng-deep figure {
+    border-radius: 999px 999px 0 0;
+    background: var(--color-teal-paper);
+  }
+  [data-frame='quarter'] ::ng-deep figure {
+    border-radius: 0 100% 0 0;
+    background: var(--color-rose-paper);
+  }
+  [data-frame='square'] ::ng-deep figure {
+    box-shadow: inset 0 0 0 3px var(--ink);
+  }
+  li:hover ::ng-deep figcaption,
+  li:focus-within ::ng-deep figcaption {
+    opacity: 1;
+  }
+  li:hover ::ng-deep img,
+  li:focus-within ::ng-deep img {
+    filter: none;
+    mix-blend-mode: normal;
+    transform: scale(1.06);
+  }
+  li:hover ::ng-deep figure,
+  li:focus-within ::ng-deep figure {
+    border-radius: var(--radius-tight, 2px);
+  }
+  ::ng-deep figure {
+    position: relative;
+  }
+  .figure-name {
+    display: block;
+    margin-top: var(--space-1);
+    font: 600 0.75rem/1.25 var(--font-sans);
+    color: var(--ink);
+    text-decoration: none;
+    /* The name link covers the picture too, so the whole frame opens the record. */
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      aspect-ratio: 1;
+      z-index: 1;
+    }
+    &:hover,
+    &:focus-visible {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+  }
+}
+.poster-mosaic {
+  width: 9rem;
+  align-self: flex-end;
+  margin-bottom: calc(var(--space-6) * -1);
+}
+h1 {
+  animation: poster-rise var(--motion-slow) var(--ease-out) both;
+}
+.map-tile {
+  animation: figure-in var(--motion-slow) var(--ease-out) both;
+}
+.map-column:nth-child(2) .map-tile {
+  animation-delay: 80ms;
+}
+.map-column:nth-child(3) .map-tile {
+  animation-delay: 160ms;
+}
+@keyframes poster-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 -10% 0);
+  }
+}
+@keyframes figure-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
   }
 }
 @media (max-width: 860px) {
@@ -209,10 +363,24 @@ h1 {
     border-top: 1px solid var(--ink);
   }
 }
+@media (max-width: 560px) {
+  .poster-figures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .poster-mosaic {
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .map-tile,
-  .poster-questions a::after {
-    transition: none;
+  .poster-questions a::after,
+  .poster-figures *,
+  .poster-figures li,
+  .poster-doors a,
+  .poster-doors span,
+  h1 {
+    animation: none !important;
+    transition: none !important;
     transform: none !important;
   }
 }
