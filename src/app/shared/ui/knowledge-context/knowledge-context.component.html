@@ -66,13 +66,13 @@
           @for (connection of record().connections; track connection.id ?? connection.entityId) {
             <article class="context-connection">
               <button
-                type="button"
+                appRecordCard
+                [entityId]="connection.entityId"
+                [title]="connection.label"
+                [note]="'abre a ficha aqui →'"
                 [attr.data-connection]="connection.id ?? connection.entityId"
                 (click)="follow(connection)"
-              >
-                {{ connection.label }}
-                <span class="opens-here" aria-hidden="true">abre a ficha →</span>
-              </button>
+              ></button>
               @if (connection.relation; as relation) {
                 <p class="relation-label">{{ relation.label }}</p>
                 <small

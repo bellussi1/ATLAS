@@ -5,11 +5,17 @@ import { reproducibleAsset } from '@core/content/media/asset-license';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { study } from '@ideologies/data/value-study';
 import { AtlasDiscoveryPreviewDirective } from '@shared/directives/discovery-preview/discovery-preview.directive';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 import { AtlasStudyExerciseComponent } from '@shared/ui/study-exercise/study-exercise.component';
 
 @Component({
   selector: 'app-marx-atlas-page',
-  imports: [RouterLink, AtlasStudyExerciseComponent, AtlasDiscoveryPreviewDirective],
+  imports: [
+    RouterLink,
+    AtlasStudyExerciseComponent,
+    AtlasDiscoveryPreviewDirective,
+    RecordCardComponent,
+  ],
   templateUrl: './value-debate.component.html',
   styleUrl: './value-debate.component.scss',
 })

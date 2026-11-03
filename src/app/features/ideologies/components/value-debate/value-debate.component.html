@@ -138,9 +138,12 @@
           }
           <div class="preview-actions" aria-label="Prévias dos registros desta leitura">
             @for (preview of previewRecords(); track preview.id) {
-              <button type="button" [appDiscoveryPreview]="{ entry: preview, origin: origin() }">
-                Prévia: {{ preview.title }}
-              </button>
+              <button
+                appRecordCard
+                [entityId]="preview.id"
+                [title]="preview.title"
+                [appDiscoveryPreview]="{ entry: preview, origin: origin() }"
+              ></button>
             }
           </div>
         } @else {

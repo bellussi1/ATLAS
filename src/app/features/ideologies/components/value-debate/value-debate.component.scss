@@ -135,11 +135,9 @@ input:focus-visible {
 }
 .preview-actions {
   display: grid;
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+  gap: 0.75rem;
   margin-top: 1rem;
-}
-.preview-actions button {
-  text-align: left;
 }
 .method,
 .study {

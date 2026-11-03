@@ -106,12 +106,12 @@
       @for (mark of inEpoch(); track mark.entity.id) {
         <li>
           <button
-            type="button"
-            class="atlas-press"
+            appRecordCard
+            [entityId]="mark.entity.id"
+            [title]="mark.entity.title"
+            [period]="(mark.approx ? 'c. ' : '') + mark.year"
             [appKnowledgeContext]="{ entityId: mark.entity.id }"
-          >
-            {{ mark.entity.title }} <span>{{ mark.approx ? 'c. ' : '' }}{{ mark.year }}</span>
-          </button>
+          ></button>
         </li>
       } @empty {
         <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
@@ -124,12 +124,12 @@
       @for (life of alive(); track life.entity.id) {
         <li>
           <button
-            type="button"
-            class="atlas-press"
+            appRecordCard
+            [entityId]="life.entity.id"
+            [title]="life.entity.title"
+            [period]="life.start + '–' + life.end"
             [appKnowledgeContext]="{ entityId: life.entity.id }"
-          >
-            {{ life.entity.title }} <span>{{ life.start }}–{{ life.end }}</span>
-          </button>
+          ></button>
         </li>
       } @empty {
         <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>

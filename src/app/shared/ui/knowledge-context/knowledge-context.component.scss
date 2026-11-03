@@ -37,6 +37,7 @@
   height: calc(100% - var(--depth) * var(--step));
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   background: var(--paper);
   border: 3px solid var(--ink);
   box-shadow: 0.6rem 0.6rem 0 var(--tone);
@@ -163,11 +164,6 @@ header p {
 .context-trail [aria-current] {
   font-weight: 700;
 }
-.opens-here {
-  margin-left: 0.4rem;
-  font: 0.75rem var(--font-mono);
-  color: var(--color-ink-muted);
-}
 .context-permanent small {
   display: block;
   color: var(--color-ink-muted);
@@ -241,8 +237,8 @@ a {
   display: grid;
   gap: 0.5rem;
 }
-.context-connections button {
-  font-size: 0.85rem;
+.context-connection .record-card {
+  height: auto;
 }
 .context-connection {
   padding: 1rem 0;

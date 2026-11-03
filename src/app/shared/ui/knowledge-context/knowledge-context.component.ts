@@ -17,6 +17,7 @@ import {
 } from '@core/content/models/knowledge-context';
 import { entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 /** How many earlier sheets stay visible behind the current one. */
 const VISIBLE_SHEETS = 3;
@@ -27,7 +28,7 @@ const VISIBLE_SHEETS = 3;
  */
 @Component({
   selector: 'app-knowledge-context',
-  imports: [RouterLink],
+  imports: [RouterLink, RecordCardComponent],
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
   host: {
