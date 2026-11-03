@@ -12,6 +12,7 @@ import {
   signal,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import {
   type ContextConnection,
   type ContextStop,
@@ -55,7 +56,7 @@ function toneOf(kind: string): string {
  */
 @Component({
   selector: 'app-knowledge-context',
-  imports: [RouterLink, RecordCardComponent],
+  imports: [RouterLink, RecordCardComponent, ContentMediaPipe],
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
   host: {

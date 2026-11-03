@@ -38,6 +38,7 @@ export class ContentRepository {
   private state = inject(CONTENT_INITIAL_PACKAGE);
   private readonly requests = new Map<string, Promise<string>>();
   private pointer?: Promise<ContentPointer>;
+  private pinned?: ContentPointer;
   private manifest?: Promise<ContentManifest>;
   private pending?: Promise<KnowledgeGraph>;
 
@@ -72,6 +73,11 @@ export class ContentRepository {
       await this.prepare();
       return this.atlas;
     });
+  }
+  /** Public R2 address of a licensed file in the pinned release; null when the release lacks it. */
+  mediaUrl(assetPath: string): string | null {
+    const entry = this.pinned?.media.find((item) => item.path === assetPath);
+    return this.pinned && entry ? `${this.pinned.baseUrl}/${entry.key}` : null;
   }
   findBySlug(slug: string | null, atlas: Atlas = this.atlas): Entity | undefined {
     return atlas.entities.find((entity) => entity.slug === slug);
@@ -120,6 +126,10 @@ export class ContentRepository {
   private getPointer(): Promise<ContentPointer> {
     this.pointer ??= this.asset('pointer.json')
       .then((text) => contentPointerSchema.parse(JSON.parse(text)))
+      .then((pointer) => {
+        this.pinned = pointer;
+        return pointer;
+      })
       .catch((error: unknown) => {
         this.pointer = undefined;
         this.requests.delete('pointer.json');

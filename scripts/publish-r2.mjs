@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 // Publishes the compiled content and licensed media to the public R2 bucket, then pins the
-// release in src/content/content-pointer.json. Run `npm run content:build` first.
+// release in src/content/content-pointer.json. Run `npm run content:build` first. New licensed
+// files are read from generated/media-source/ (never from the repository); a file already pinned
+// in the current pointer is not re-read and is checked against the bucket instead.
 import './content/register-source-modules.mjs';
-import { readFile, stat } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 import { formatJson } from './content/source-graph.mjs';
@@ -28,6 +30,7 @@ const { DEFAULT_CONTENT_BASE_URL } =
   await import('../src/app/core/content/models/content-pointer.ts');
 const dryRun = process.argv.includes('--dry-run');
 const compiled = join(projectRoot, 'generated/content');
+const mediaSource = join(projectRoot, 'generated/media-source');
 const putImmutable = (config, object) => putObject(config, object, { dryRun });
 
 async function loadArtifacts() {
@@ -49,54 +52,69 @@ async function loadArtifacts() {
   return { manifest, manifestBody, manifestEntry, artifacts };
 }
 
-/** Only media with a known, reproducible licence is published; the rest are reported. */
-async function loadMedia(manifest) {
-  const seen = new Map();
-  const skipped = [];
+function licenseRecord(license) {
+  return {
+    assetPath: license.assetPath,
+    creator: license.creator,
+    license: license.license,
+    licenseUrl: license.licenseUrl,
+    ...(license.sourceUrl ? { sourceUrl: license.sourceUrl } : {}),
+    status: license.status,
+    reproduction: license.reproduction,
+  };
+}
+
+/**
+ * Only media with a known, reproducible licence is published; the rest are reported. A file
+ * without `body` is already pinned in the current pointer and is only verified on the bucket.
+ */
+async function loadMedia(manifest, pinned) {
+  const licenses = new Map();
   for (const collection of manifest.collections) {
     const atlas = JSON.parse(await readFile(join(compiled, collection.file), 'utf8'));
-    for (const license of atlas.assetLicenses) {
-      if (!license.assetPath.startsWith('/') || seen.has(license.assetPath)) continue;
-      seen.set(license.assetPath, license);
-      if (license.status !== 'known' || license.reproduction !== 'allowed' || !license.license) {
-        skipped.push(`${license.assetPath}: licença não reproduzível`);
-        continue;
-      }
-      const file = join(projectRoot, 'public', license.assetPath);
-      try {
-        await stat(file);
-      } catch {
-        skipped.push(`${license.assetPath}: arquivo ausente em public/`);
-        continue;
-      }
-      const extension = license.assetPath.split('.').pop().toLowerCase();
-      const body = await readFile(file);
-      seen.set(license.assetPath, { ...license, body, extension });
-    }
+    for (const license of atlas.assetLicenses)
+      if (license.assetPath.startsWith('/') && !licenses.has(license.assetPath))
+        licenses.set(license.assetPath, license);
   }
   const media = [];
-  for (const entry of seen.values()) {
-    if (!entry.body) continue;
-    const sha256 = sha256Hex(entry.body);
-    media.push({
-      path: entry.assetPath,
-      key: mediaKey(sha256, entry.extension),
-      sha256,
-      bytes: entry.body.byteLength,
-      contentType: mediaContentType(entry.extension),
-      license: {
-        assetPath: entry.assetPath,
-        creator: entry.creator,
-        license: entry.license,
-        licenseUrl: entry.licenseUrl,
-        ...(entry.sourceUrl ? { sourceUrl: entry.sourceUrl } : {}),
-        status: entry.status,
-        reproduction: entry.reproduction,
-      },
-      body: entry.body,
-    });
+  const skipped = [];
+  for (const [assetPath, license] of licenses) {
+    if (license.status !== 'known' || license.reproduction !== 'allowed' || !license.license) {
+      skipped.push(`${assetPath}: licença não reproduzível`);
+      continue;
+    }
+    const extension = assetPath.split('.').pop().toLowerCase();
+    try {
+      const body = await readFile(join(mediaSource, assetPath));
+      const sha256 = sha256Hex(body);
+      media.push({
+        path: assetPath,
+        key: mediaKey(sha256, extension),
+        sha256,
+        bytes: body.byteLength,
+        contentType: mediaContentType(extension),
+        license: licenseRecord(license),
+        body,
+      });
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+      const entry = pinned.media.find((item) => item.path === assetPath);
+      if (!entry) {
+        skipped.push(`${assetPath}: arquivo ausente em generated/media-source/`);
+        continue;
+      }
+      media.push({ ...entry, license: licenseRecord(license) });
+    }
   }
   return { media, skipped };
+}
+
+/** A pinned file that is not re-uploaded must still be on the bucket with the pinned size. */
+async function checkPinnedMedia(config, item) {
+  const head = await r2(config, 'HEAD', item.key);
+  if (head.status !== 200 || Number(head.headers.get('content-length')) !== item.bytes)
+    throw new Error(`Mídia fixada ausente ou divergente no R2: ${item.path}`);
+  console.log(`mídia já publicada: ${item.key}`);
 }
 
 async function main() {
@@ -114,7 +132,7 @@ async function main() {
     throw new Error(`R2_PUBLIC_URL difere da URL que o app lê: ${DEFAULT_CONTENT_BASE_URL}`);
 
   const { manifest, manifestBody, manifestEntry, artifacts } = await loadArtifacts();
-  const { media, skipped } = await loadMedia(manifest);
+  const { media, skipped } = await loadMedia(manifest, existing ?? { media: [] });
 
   await putImmutable(config, {
     key: artifactKey(manifestEntry.sha256),
@@ -127,8 +145,15 @@ async function main() {
       body: artifact.body,
       contentType: 'application/json',
     });
-  for (const item of media)
-    await putImmutable(config, { key: item.key, body: item.body, contentType: item.contentType });
+  for (const item of media) {
+    if (item.body) {
+      await putImmutable(config, { key: item.key, body: item.body, contentType: item.contentType });
+    } else if (dryRun) {
+      console.log(`[dry-run] mídia fixada reutilizada: ${item.key}`);
+    } else {
+      await checkPinnedMedia(config, item);
+    }
+  }
 
   const pointer = buildPointer({
     baseUrl,

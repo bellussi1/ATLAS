@@ -1,7 +1,7 @@
 @if (license(); as record) {
   @if (kind() === 'image') {
     <figure>
-      <img [src]="record.assetPath" [alt]="alt()" loading="lazy" />
+      <img [src]="record.assetPath | contentMedia" [alt]="alt()" loading="lazy" />
       @if (credit()) {
         <figcaption>
           {{ creator(record) }}
@@ -13,7 +13,7 @@
     </figure>
   } @else {
     <p>
-      <a [href]="record.assetPath">{{ alt() }}</a> · {{ creator(record) }}
+      <a [href]="record.assetPath | contentMedia">{{ alt() }}</a> · {{ creator(record) }}
       <a [href]="record.licenseUrl" target="_blank" rel="noopener noreferrer">{{
         record.license
       }}</a>

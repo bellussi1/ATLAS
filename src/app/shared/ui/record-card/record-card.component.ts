@@ -6,6 +6,7 @@ import {
   inject,
   input,
 } from '@angular/core';
+import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import {
   AtlasKindIconComponent,
@@ -56,7 +57,7 @@ const kindNames: Record<string, string> = {
   // Attribute selector so the host stays a native button or link.
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[appRecordCard], a[appRecordCard]',
-  imports: [AtlasKindIconComponent],
+  imports: [AtlasKindIconComponent, ContentMediaPipe],
   templateUrl: './record-card.component.html',
   styleUrl: './record-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

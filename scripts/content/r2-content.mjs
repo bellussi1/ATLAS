@@ -148,13 +148,18 @@ export function signRequest({ method, url, headers = {}, body = Buffer.alloc(0),
   };
 }
 
-/** Signed S3-compatible request to the R2 bucket; `config` never leaves this process. */
+/**
+ * Signed S3-compatible request to the R2 bucket; `config` never leaves this process. Identity
+ * encoding keeps HEAD's Content-Length equal to the stored size (R2 gzips JSON otherwise).
+ */
 export async function r2(config, method, key, { body, contentType, cacheControl } = {}) {
   const url = new URL(`/${config.bucket}/${key}`, config.endpoint);
   const headers = Object.fromEntries(
-    Object.entries({ 'content-type': contentType, 'cache-control': cacheControl }).filter(
-      ([, value]) => value !== undefined,
-    ),
+    Object.entries({
+      'content-type': contentType,
+      'cache-control': cacheControl,
+      'accept-encoding': 'identity',
+    }).filter(([, value]) => value !== undefined),
   );
   const { host, authorization, ...transport } = signRequest({
     method,

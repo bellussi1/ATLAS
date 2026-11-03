@@ -1,9 +1,11 @@
 import { Component, computed, input } from '@angular/core';
 import { reproducibleAsset } from '@core/content/media/asset-license';
+import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import type { AssetLicense, Atlas } from '@core/content/models/content-schema';
 
 @Component({
   selector: 'app-licensed-asset',
+  imports: [ContentMediaPipe],
   templateUrl: './licensed-asset.component.html',
   styleUrl: './licensed-asset.component.scss',
 })

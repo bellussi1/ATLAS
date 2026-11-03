@@ -43,7 +43,7 @@
         @if (record().media; as media) {
           <img
             class="context-thumb"
-            [src]="media.assetPath"
+            [src]="media.assetPath | contentMedia"
             [alt]="'Imagem associada a ' + record().title"
             width="72"
             height="72"

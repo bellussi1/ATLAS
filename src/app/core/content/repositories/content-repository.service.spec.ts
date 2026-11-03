@@ -53,6 +53,15 @@ describe('ContentRepository generated assets', () => {
     expect(repository.discoveryIndex.some((entry) => entry.id === 'person-karl-marx')).toBe(true);
   });
 
+  it('maps a pinned licensed path to its R2 key and returns null for an unpinned one', async () => {
+    const repository = TestBed.inject(ContentRepository);
+    await firstValueFrom(repository.loadKnowledgeGraph());
+    const pointer = JSON.parse(contentAssetFixture['pointer.json']);
+    expect(repository.mediaUrl('/images/ausente.jpg')).toBeNull();
+    for (const item of pointer.media)
+      expect(repository.mediaUrl(item.path)).toBe(`${pointer.baseUrl}/${item.key}`);
+  });
+
   it('uses compiled incoming/outgoing relations with the same filters as graph queries', async () => {
     const repository = TestBed.inject(ContentRepository);
     await firstValueFrom(repository.loadKnowledgeGraph());

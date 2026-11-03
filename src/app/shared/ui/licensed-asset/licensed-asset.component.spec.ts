@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { methodologyAtlas } from '@testing/content-fixture';
 
 import { AtlasLicensedAssetComponent } from './licensed-asset.component';
@@ -16,6 +17,17 @@ class LicensedAssetHost {
 }
 
 describe('licensed editorial assets', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: ContentRepository,
+          useValue: { mediaUrl: (path: string) => `https://media.example.test${path}` },
+        },
+      ],
+    });
+  });
+
   it('does not render an image whose license is unknown', () => {
     const fixture = TestBed.createComponent(LicensedAssetHost);
     fixture.detectChanges();
@@ -54,7 +66,9 @@ describe('licensed editorial assets', () => {
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
 
-    expect(root.querySelector('a[href="/fonts/IBMPlexSans.ttf"]')).not.toBeNull();
+    expect(
+      root.querySelector('a[href="https://media.example.test/fonts/IBMPlexSans.ttf"]'),
+    ).not.toBeNull();
     expect(
       root.querySelector('a[href="https://github.com/IBM/plex/blob/master/LICENSE.txt"]')
         ?.textContent,
