@@ -9,6 +9,7 @@ export const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
 export const pointerPath = join(projectRoot, 'src/content/content-pointer.json');
 export const cacheDirectory = join(projectRoot, 'generated/content-cache');
 export const publicBucket = 'atlas-public';
+export const draftsBucket = 'atlas-drafts';
 const forbiddenBuckets = new Set(['atlas-drafts']);
 
 const { artifactKey, contentPointerSchema } =
@@ -60,27 +61,48 @@ export const defaultEnvFile = () =>
   process.env.ATLAS_R2_ENV_FILE ?? join(homedir(), '.atlas', 'r2.env');
 
 /** Environment variables win over the local file; both stay outside the repository. */
-export async function loadR2Config({ env = process.env, file = defaultEnvFile() } = {}) {
+async function readR2Config({ env = process.env, file = defaultEnvFile(), keys = {} } = {}) {
   let fileValues = {};
   try {
     fileValues = parseEnvFile(await readFile(file, 'utf8'));
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
-  const read = (name) => env[name] ?? fileValues[name];
+  const read = (...names) => names.map((name) => env[name] ?? fileValues[name]).find(Boolean);
   const config = {
     endpoint: read('R2_ENDPOINT'),
     bucket: read('R2_BUCKET'),
     publicUrl: read('R2_PUBLIC_URL'),
-    accessKeyId: read('R2_ACCESS_KEY_ID'),
-    secretAccessKey: read('R2_SECRET_ACCESS_KEY'),
+    accessKeyId: read(...(keys.accessKeyId ?? ['R2_ACCESS_KEY_ID'])),
+    secretAccessKey: read(...(keys.secretAccessKey ?? ['R2_SECRET_ACCESS_KEY'])),
   };
   const missing = Object.entries(config)
     .filter(([, value]) => !value)
     .map(([name]) => name);
   if (missing.length) throw new Error(`Configuração R2 ausente: ${missing.join(', ')}`);
-  assertPublicBucket(config.bucket);
   return { ...config, publicUrl: config.publicUrl.replace(/\/+$/, '') };
+}
+
+export async function loadR2Config(options) {
+  const config = await readR2Config(options);
+  assertPublicBucket(config.bucket);
+  return config;
+}
+
+/**
+ * Always the private drafts bucket, never the public one. R2_DRAFTS_ACCESS_KEY_ID and
+ * R2_DRAFTS_SECRET_ACCESS_KEY (a token scoped to atlas-drafts) take precedence when present.
+ */
+export async function loadR2DraftsConfig({ env = process.env, file = defaultEnvFile() } = {}) {
+  const config = await readR2Config({
+    env,
+    file,
+    keys: {
+      accessKeyId: ['R2_DRAFTS_ACCESS_KEY_ID', 'R2_ACCESS_KEY_ID'],
+      secretAccessKey: ['R2_DRAFTS_SECRET_ACCESS_KEY', 'R2_SECRET_ACCESS_KEY'],
+    },
+  });
+  return { ...config, bucket: draftsBucket };
 }
 
 export function assertPublicBucket(bucket) {

@@ -15,7 +15,14 @@ import { parseArgs } from 'node:util';
 
 import Anthropic from '@anthropic-ai/sdk';
 
-import { atomicFile, projectRoot } from './content/r2-content.mjs';
+import {
+  atomicFile,
+  loadR2DraftsConfig,
+  projectRoot,
+  putImmutable,
+  r2,
+  sha256Hex,
+} from './content/r2-content.mjs';
 import {
   articleText,
   fetchArticle,
@@ -40,13 +47,14 @@ const { positionals, values } = parseArgs({
     top: { type: 'string' },
     'accept-top': { type: 'string' },
     chars: { type: 'string' },
+    'dry-run': { type: 'boolean', default: false },
     candidates: { type: 'boolean', default: false },
     sync: { type: 'boolean', default: false },
     resume: { type: 'string' },
   },
 });
 const [command, tradition] = positionals;
-const commandNames = ['discover', 'fetch', 'text', 'store', 'extract', 'run'];
+const commandNames = ['discover', 'fetch', 'text', 'store', 'extract', 'run', 'publish-drafts'];
 if (!commandNames.includes(command) || !/^[a-z-]+$/.test(tradition ?? ''))
   throw new Error(`Uso: wiki-extract.mjs <${commandNames.join('|')}> <tradição>`);
 const limit = values.limit ? Number(values.limit) : Number.POSITIVE_INFINITY;
@@ -292,6 +300,36 @@ async function storeCommand() {
   }
 }
 
+/** Uploads the drafts to the private atlas-drafts bucket: content-addressed objects plus a mutable index. */
+async function publishDraftsCommand() {
+  const dryRun = values['dry-run'];
+  const config = await loadR2DraftsConfig().catch((error) => {
+    if (!dryRun) throw error;
+    console.log(`[dry-run] sem credenciais: ${error.message}`);
+    return null;
+  });
+  const prefix = `wiki/${tradition}`;
+  const entries = {};
+  for (const id of (await listIds(extractsDirectory)).sort()) {
+    const body = await readFile(join(extractsDirectory, `${id}.json`));
+    const sha256 = sha256Hex(body);
+    const key = `${prefix}/${sha256}.json`;
+    await putImmutable(config, { key, body, contentType: 'application/json' }, { dryRun });
+    entries[id] = { key, sha256, bytes: body.byteLength };
+  }
+  if (dryRun) return console.log(`[dry-run] ${Object.keys(entries).length} rascunhos`);
+  const index = Buffer.from(
+    `${JSON.stringify({ tradition, publishedAt: new Date().toISOString(), entries }, null, 2)}\n`,
+  );
+  const put = await r2(config, 'PUT', `${prefix}/index.json`, {
+    body: index,
+    contentType: 'application/json',
+    cacheControl: 'no-cache',
+  });
+  if (!put.ok) throw new Error(`Falha ao publicar índice: HTTP ${put.status}`);
+  console.log(`índice publicado: ${config.bucket}/${prefix}/index.json`);
+}
+
 async function pendingRecords() {
   const done = new Set(await listIds(extractsDirectory));
   const ids = (await listIds(articlesDirectory)).filter((id) => !done.has(id)).slice(0, limit);
@@ -364,6 +402,7 @@ const commands = {
   store: storeCommand,
   extract: extractCommand,
   run: runCommand,
+  'publish-drafts': publishDraftsCommand,
 };
 commands[command]().catch((error) => {
   console.error(error.message);
