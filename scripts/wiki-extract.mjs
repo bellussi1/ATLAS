@@ -5,6 +5,7 @@
 //   node scripts/wiki-extract.mjs text <tradição> [--chars N]     # exporta o texto lido, por seção
 //   node scripts/wiki-extract.mjs store <tradição> [--chars N]    # grava manual/<id>.json verificado
 //   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N]
+//   node scripts/wiki-extract.mjs fetch <tradição> --url <artigo pt/en da Wikipedia>  # um artigo avulso
 //   node scripts/wiki-extract.mjs extract <tradição> [--sync] [--limit N] [--resume <batchId>]
 // Candidates with `"decision": "accept"` are fetched by `fetch --candidates`. Decisions made by the
 // editor (`decidedBy: "editor"`) survive re-running discover; rule-based ones are recomputed.
@@ -31,6 +32,7 @@ import {
   sitelinkTitles,
 } from './ingestion/wiki-extract/article.mjs';
 import { linkedArticles, rankCandidates } from './ingestion/wiki-extract/discovery.mjs';
+import { classifyQids, targetKind } from './ingestion/wiki-extract/targets.mjs';
 import {
   extractionModel,
   extractionParams,
@@ -51,6 +53,7 @@ const { positionals, values } = parseArgs({
     candidates: { type: 'boolean', default: false },
     sync: { type: 'boolean', default: false },
     resume: { type: 'string' },
+    url: { type: 'string' },
   },
 });
 const [command, tradition] = positionals;
@@ -122,8 +125,39 @@ async function acceptedTargets() {
     }));
 }
 
+/** One article chosen by URL, outside the seeds and candidates; typed by its own Wikidata item. */
+async function fetchUrlCommand() {
+  const { lang, title } = parseWikiUrl(values.url);
+  const article = await fetchArticle(lang, title);
+  const stored = await Promise.all(
+    (await listIds(articlesDirectory)).map((id) => readJson(join(articlesDirectory, `${id}.json`))),
+  );
+  const existing = stored.find((record) => sameArticle(record.article, article));
+  if (existing) return console.log(`já baixado: ${existing.entity.id}`);
+  const kind = targetKind(
+    { title: article.title, qid: article.qid, missing: false },
+    await classifyQids(article.qid ? [article.qid] : []),
+  );
+  const prefix = kind.type === 'sem-item' ? 'topic' : kind.type;
+  const entity = {
+    id: `${slug(prefix)}-${slug(article.title)}`,
+    label: article.title,
+    type: kind.type,
+    qid: article.qid,
+    classes: kind.classes,
+  };
+  await writeJson(join(articlesDirectory, `${entity.id}.json`), {
+    entity,
+    retrievedAt: new Date().toISOString(),
+    article,
+  });
+  const redirected = article.redirectedFrom ? ` (redirecionado de ${article.redirectedFrom})` : '';
+  console.log(`baixado: ${entity.id} ← ${article.url}${redirected}`);
+}
+
 async function fetchCommand() {
   await mkdir(articlesDirectory, { recursive: true });
+  if (values.url) return fetchUrlCommand();
   const done = new Set(await listIds(articlesDirectory));
   const targets = values.candidates ? await acceptedTargets() : await selectedTargets();
   const pending = targets.filter((target) => !done.has(target.entity.id));
