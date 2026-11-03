@@ -32,7 +32,7 @@ import {
   sitelinkTitles,
 } from './ingestion/wiki-extract/article.mjs';
 import { linkedArticles, rankCandidates } from './ingestion/wiki-extract/discovery.mjs';
-import { classifyQids, targetKind } from './ingestion/wiki-extract/targets.mjs';
+import { classifyReport, targetKind } from './ingestion/wiki-extract/targets.mjs';
 import {
   extractionModel,
   extractionParams,
@@ -134,10 +134,8 @@ async function fetchUrlCommand() {
   );
   const existing = stored.find((record) => sameArticle(record.article, article));
   if (existing) return console.log(`já baixado: ${existing.entity.id}`);
-  const kind = targetKind(
-    { title: article.title, qid: article.qid, missing: false },
-    await classifyQids(article.qid ? [article.qid] : []),
-  );
+  const { kinds, classification } = await classifyReport(article.qid ? [article.qid] : []);
+  const kind = targetKind({ title: article.title, qid: article.qid, missing: false }, kinds);
   const prefix = kind.type === 'sem-item' ? 'topic' : kind.type;
   const entity = {
     id: `${slug(prefix)}-${slug(article.title)}`,
@@ -145,6 +143,7 @@ async function fetchUrlCommand() {
     type: kind.type,
     qid: article.qid,
     classes: kind.classes,
+    classification,
   };
   await writeJson(join(articlesDirectory, `${entity.id}.json`), {
     entity,

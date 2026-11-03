@@ -156,6 +156,18 @@ export async function classifyQids(qids) {
 }
 
 /**
+ * `classifyQids` for callers that must keep their artifact: a failed Wikidata read is reported as
+ * `{ status: 'falhou', error }`, and every target then falls back to `não-classificado`.
+ */
+export async function classifyReport(qids, classify = classifyQids) {
+  try {
+    return { kinds: await classify(qids), classification: { status: 'ok' } };
+  } catch (error) {
+    return { kinds: new Map(), classification: { status: 'falhou', error: error.message } };
+  }
+}
+
+/**
  * Type of a link target, as `{ type, classes, distance }`. Explicit fallbacks: `não-artigo` for wiki
  * namespaces, `ausente` when the page does not exist, `sem-item` when it has no Wikidata item.
  */

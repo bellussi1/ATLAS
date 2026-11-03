@@ -2,7 +2,7 @@
 import { JSDOM } from 'jsdom';
 
 import { getJson, getResource } from '../wikimedia/client.mjs';
-import { classifyQids, resolveTargets, targetKind } from './targets.mjs';
+import { classifyReport, resolveTargets, targetKind } from './targets.mjs';
 
 /** Elements that carry navigation, footnote lists or layout rather than article prose. */
 const noise = [
@@ -180,7 +180,7 @@ export async function fetchArticle(lang, title) {
     lang,
     links.map((link) => link.written),
   );
-  const kinds = await classifyQids(
+  const { kinds, classification } = await classifyReport(
     [...resolvedTargets.values()].flatMap((target) => target.qid ?? []),
   );
   return {
@@ -196,6 +196,7 @@ export async function fetchArticle(lang, title) {
       target: resolvedTargets.get(written).title,
     })),
     targets: targetRecords(resolvedTargets, kinds),
+    classification,
     references,
   };
 }

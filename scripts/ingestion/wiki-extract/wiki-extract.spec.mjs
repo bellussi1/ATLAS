@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { articleText, linkedTitle, parseArticle, parseWikiUrl, targetRecords } from './article.mjs';
 import { parseExtraction, verifyQuotes } from './extraction.mjs';
 import { rankCandidates } from './discovery.mjs';
-import { classifyItem, mapResolution, targetKind } from './targets.mjs';
+import { classifyItem, classifyReport, mapResolution, targetKind } from './targets.mjs';
 
 const html = `<html><body>
 <section><p>Karl Marx<sup class="reference"><a href="./Karl_Marx#cite_note-1">[1]</a></sup> foi um <a rel="mw:WikiLink" href="./Filósofo_alemão">filósofo</a> alemão.</p><table><tr><td><a rel="mw:WikiLink" href="./Caixa">caixa</a></td></tr></table></section>
@@ -156,6 +156,21 @@ test('stops following classes after four links, so a deep chain stays unclassifi
   graph.set('Qitem', { instanceOf: ['Qc0'], subclassOf: [] });
   assert.equal(classifyItem(graph, 'Qitem').type, 'outro');
   assert.equal(classifyItem(graph, 'Qc3').type, 'conceito');
+});
+
+test('reports a failed Wikidata read in the result instead of throwing', async () => {
+  const failed = await classifyReport(['Q1'], async () => {
+    throw new Error('Wikimedia request retries exhausted');
+  });
+  assert.deepEqual(failed, {
+    kinds: new Map(),
+    classification: { status: 'falhou', error: 'Wikimedia request retries exhausted' },
+  });
+  const kinds = new Map([['Q1', { type: 'pessoa', classes: ['Q5'], distance: 1 }]]);
+  assert.deepEqual(await classifyReport(['Q1'], async () => kinds), {
+    kinds,
+    classification: { status: 'ok' },
+  });
 });
 
 test('marks wiki pages, missing pages and targets without an item explicitly', () => {
