@@ -83,7 +83,7 @@
 .chart {
   --name: 11rem;
   max-height: min(34rem, 75vh);
-  padding: calc(2.6rem + var(--rows, 4) * 1.05rem) 1.25rem 1rem;
+  padding: calc(1.6rem + var(--rows, 4) * 1.1rem) 1.25rem 1rem;
   overflow: auto;
   overscroll-behavior: contain;
 }
@@ -102,6 +102,9 @@
   border-bottom: 2px solid var(--color-ink);
 }
 .tick {
+  z-index: 2;
+  padding-inline: 0.2rem;
+  background: var(--color-surface-raised);
   white-space: nowrap;
   position: absolute;
   bottom: 0.25rem;
@@ -139,13 +142,16 @@
 }
 .marker {
   position: absolute;
-  top: calc(-1.5rem - var(--row) * 1.05rem);
-  bottom: 0;
+  top: calc(-1.5rem - var(--row) * 1.1rem);
+  /* The guide stops at the epoch bands so it never cuts through names or bars below. */
+  height: calc(1.5rem + var(--row) * 1.1rem + 3.1rem);
   width: 0;
   border-left: 1px dashed var(--color-border-strong);
   pointer-events: none;
 }
 .marker > span {
+  padding-inline: 0.2rem;
+  background: var(--color-surface-raised);
   position: absolute;
   top: 0;
   left: 0.3rem;
@@ -331,6 +337,7 @@
   }
   .marker {
     top: 0;
+    height: 3.1rem;
   }
   .marker > span,
   .life-bar > span {
