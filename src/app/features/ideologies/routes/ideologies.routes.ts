@@ -2,7 +2,7 @@ import { type Routes } from '@angular/router';
 import { knowledgeContentResolver } from '@core/routing/knowledge-content.resolver';
 
 /**
- * Each tradition is one page: reading and exploration live together. The old
+ * Each tradition is one page. The old
  * `/:slug/mesa` desk address redirects to the page.
  */
 function ideologyRoutesFor(slug: string, label: string, metaDescription: string): Routes {

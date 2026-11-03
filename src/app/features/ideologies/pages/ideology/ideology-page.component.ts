@@ -1,31 +1,27 @@
-import { DOCUMENT } from '@angular/common';
 import { Component, computed, inject, Injector, signal } from '@angular/core';
 import { pendingUntilEvent, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import type { Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
 import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/ideology-block.component';
-import { IdeologyDeskComponent } from '@ideologies/components/ideology-desk/ideology-desk.component';
 import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/ideology-poster.component';
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { terms } from '@ideologies/data/knowledge-vocabulary';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
-import type { IdeologyDossier, IdeologyPage } from '@ideologies/models/ideology-page.schema';
+import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
 import { chapterReviews } from '@ideologies/utils/chapter-review';
 import { graphVocabulary } from '@ideologies/utils/graph-vocabulary';
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
-import { chapterDeskKind } from '@ideologies/utils/reading-trails';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
-type Chapter = IdeologyPage['chapters'][number];
 interface PageState {
   status: 'loading' | 'error' | 'missing' | 'ready';
   dossier: IdeologyDossier | null;
@@ -36,7 +32,6 @@ interface PageState {
     RecordCardComponent,
     RouterLink,
     IdeologyBlockComponent,
-    IdeologyDeskComponent,
     KnowledgeTextComponent,
     IdeologyReadingComponent,
     EditorialSourcesComponent,
@@ -55,8 +50,6 @@ export class IdeologyPageComponent {
   private readonly title = inject(Title);
   private readonly retry = new BehaviorSubject(0);
   private readonly injector = inject(Injector);
-  private readonly router = inject(Router);
-  private readonly document = inject(DOCUMENT);
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
   readonly page = computed(() => this.state().dossier?.page);
   readonly basePath = computed(() => `/${this.page()?.slug ?? ''}`);
@@ -135,39 +128,6 @@ export class IdeologyPageComponent {
               ? 'Página não encontrada — ATLAS'
               : 'Leitura de ideologia — ATLAS',
         );
-      });
-  }
-  /** Static address of a chapter's records in the Explorar section (works without JavaScript). */
-  exploreHref(chapter: Pick<Chapter, 'anchor' | 'id'>): string {
-    const kind = chapterDeskKind(chapter);
-    return `${this.basePath()}?de=${chapter.anchor}${kind ? `&tipo=${kind}` : ''}#explorar`;
-  }
-  /** Filters Explorar in place: the URL records the filter, and only the section scrolls into view. */
-  exploreChapter(event: MouseEvent, chapter: Pick<Chapter, 'anchor' | 'id'>): void {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
-      return;
-    event.preventDefault();
-    void this.router
-      .navigate([], {
-        relativeTo: this.route,
-        queryParams: {
-          de: chapter.anchor,
-          tipo: chapterDeskKind(chapter),
-          cadeia: null,
-          q: null,
-          epoca: null,
-        },
-        queryParamsHandling: 'merge',
-        scroll: 'manual',
-      })
-      .then(() => {
-        const section = this.document.getElementById('explorar');
-        if (!section) return;
-        const reduce = this.document.defaultView?.matchMedia(
-          '(prefers-reduced-motion: reduce)',
-        ).matches;
-        section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-        section.focus({ preventScroll: true });
       });
   }
   reload(): void {

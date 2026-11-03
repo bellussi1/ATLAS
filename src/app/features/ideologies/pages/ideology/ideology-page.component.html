@@ -88,11 +88,6 @@
               />
             }
           }
-          <p class="desk-pointer">
-            <a [href]="exploreHref(chapter)" (click)="exploreChapter($event, chapter)"
-              >Explorar os registros deste capítulo <span aria-hidden="true">↓</span></a
-            >
-          </p>
           @if (reviews()[index]; as review) {
             @if (review.recall || review.revisit.length) {
               <aside class="chapter-review" [attr.aria-label]="'Revisão: ' + chapter.title">
@@ -146,9 +141,6 @@
         ><a [routerLink]="companion().path">{{ companion().label }}</a>
       </footer>
     </app-ideology-reading>
-    <section id="explorar" class="explore-section" tabindex="-1" aria-label="Explorar">
-      <app-ideology-desk #desk [page]="page" (chapterRequested)="reading.go($event)" />
-    </section>
   </article>
 } @else {
   <section class="page-state">

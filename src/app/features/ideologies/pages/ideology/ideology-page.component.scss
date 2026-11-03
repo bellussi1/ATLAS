@@ -174,16 +174,6 @@ h2 {
   border-left: 6px solid var(--color-teal-paper);
   padding-left: 0.4rem;
 }
-.desk-pointer a {
-  display: inline-flex;
-  gap: 0.35rem;
-  span {
-    transition: transform var(--motion-fast) var(--ease-out);
-  }
-  &:hover span {
-    transform: translateX(0.35rem);
-  }
-}
 .chapter-sources summary,
 .chapter-aside summary {
   transition: color var(--motion-fast);
@@ -252,29 +242,11 @@ h2 {
   font: 600 0.95rem/1.3 var(--font-sans);
   cursor: pointer;
 }
-.desk-pointer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 1rem;
-  margin: 1.5rem 0 0;
-  font: 0.8rem/1.5 var(--font-mono);
-}
-.desk-pointer a {
-  display: inline-block;
-  min-height: 1.5rem;
-  font: 600 0.9rem/1.5 var(--font-sans);
-}
 @media (prefers-reduced-motion: reduce) {
-  .next-chapter,
-  .desk-pointer a span {
+  .next-chapter {
     transition: none;
     transform: none !important;
   }
-}
-.explore-section {
-  scroll-margin-top: var(--space-6);
-  outline: none;
 }
 .chapter-review {
   margin-block: var(--space-6);
