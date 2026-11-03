@@ -187,7 +187,7 @@
             </li>
           }
         </ul>
-        <ol class="relation-list" [attr.aria-label]="visibleEdges().length + ' relações'">
+        <ol class="relation-sentences" [attr.aria-label]="visibleEdges().length + ' relações'">
           @for (edge of visibleEdges(); track edge.id) {
             <li class="relation-item">
               <p class="relation-type">{{ relation(edge).short }} · certeza {{ edge.certainty }}</p>

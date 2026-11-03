@@ -75,7 +75,7 @@ test('the timeline scale is the filter: markers open records and stay in place',
 }) => {
   const html = await (await request.get('/marxismo/')).text();
   expect(html).toContain('class="timeline-scale-track"');
-  expect(html).toContain('class="relation-list"');
+  expect(html).toContain('class="relation-sentences"');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.setViewportSize({ width: 360, height: 740 });
   const errors: string[] = [];
