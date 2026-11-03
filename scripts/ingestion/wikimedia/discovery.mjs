@@ -113,20 +113,20 @@ const KIND_BY_INSTANCE = {
   Q7257: 'ideology',
 };
 
-export function classify(entity) {
+export function classify(entity, rootQid = 'Q7264') {
   const instances = values(entity, 'P31');
   for (const id of instances) if (KIND_BY_INSTANCE[id]) return KIND_BY_INSTANCE[id];
-  if (values(entity, 'P279').includes('Q7264')) return 'ideology';
+  if (values(entity, 'P279').includes(rootQid)) return 'ideology';
   return 'other';
 }
 
-export function candidateRecord(entity, roles) {
+export function candidateRecord(entity, roles, rootQid = 'Q7264') {
   const label = (lang) => entity.labels?.[lang]?.value ?? null;
   const description = (lang) => entity.descriptions?.[lang]?.value ?? null;
   const sitelinks = entity.sitelinks ?? {};
   return {
     qid: entity.id,
-    kind: classify(entity),
+    kind: classify(entity, rootQid),
     labels: { pt: label('pt'), en: label('en') },
     descriptions: { pt: description('pt'), en: description('en') },
     sitelinks: {
@@ -142,21 +142,39 @@ export function candidateRecord(entity, roles) {
   };
 }
 
-export const MARXISM_SEARCHES = [
-  { role: 'political-ideology', srsearch: 'haswbstatement:P1142=Q7264' },
-  { role: 'influenced-by-marx', srsearch: 'haswbstatement:P737=Q9061' },
-  { role: 'main-subject', srsearch: 'haswbstatement:P921=Q7264' },
-  { role: 'subclass-of-marxism', srsearch: 'haswbstatement:P279=Q7264' },
-];
+/**
+ * Standard Wikidata properties used to discover any tradition: members labelled with
+ * the ideology (P1142, which also brings parties), people influenced by its founders
+ * (P737), works about it (P921) and its sub-currents (P279). Labels, not evidence.
+ */
+export function searchesFor({ rootQid, founderQids = [] }) {
+  return [
+    { role: 'political-ideology', srsearch: `haswbstatement:P1142=${rootQid}` },
+    ...founderQids.map((qid) => ({
+      role: 'influenced-by-founder',
+      srsearch: `haswbstatement:P737=${qid}`,
+    })),
+    { role: 'main-subject', srsearch: `haswbstatement:P921=${rootQid}` },
+    { role: 'subclass-of-root', srsearch: `haswbstatement:P279=${rootQid}` },
+  ];
+}
 
-export async function discoverWikidataCandidates(searches = MARXISM_SEARCHES, fetchJson = getJson) {
+export const MARXISM_SEARCHES = searchesFor({ rootQid: 'Q7264', founderQids: ['Q9061'] });
+
+export async function discoverWikidataCandidates(
+  searches = MARXISM_SEARCHES,
+  fetchJson = getJson,
+  rootQid = 'Q7264',
+) {
   const rolesById = new Map();
   for (const { role, srsearch } of searches) {
     const ids = await searchIds(srsearch, fetchJson);
     for (const id of ids) rolesById.set(id, new Set([...(rolesById.get(id) ?? []), role]));
   }
   const entities = await fetchEntities([...rolesById.keys()], fetchJson);
-  return [...entities.values()].map((entity) => candidateRecord(entity, rolesById.get(entity.id)));
+  return [...entities.values()].map((entity) =>
+    candidateRecord(entity, rolesById.get(entity.id), rootQid),
+  );
 }
 
 export function commonsCategoryUrl(category, type = 'subcat') {

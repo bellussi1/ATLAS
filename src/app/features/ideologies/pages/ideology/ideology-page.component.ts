@@ -11,11 +11,15 @@ import { IdeologyDeskComponent } from '@ideologies/components/ideology-desk/ideo
 import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/ideology-poster.component';
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
+import { terms } from '@ideologies/data/knowledge-vocabulary';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier, IdeologyPage } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
+import { chapterReviews } from '@ideologies/utils/chapter-review';
+import { graphVocabulary } from '@ideologies/utils/graph-vocabulary';
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
 import { chapterDeskKind } from '@ideologies/utils/reading-trails';
+import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
@@ -37,6 +41,7 @@ interface PageState {
     IdeologyPosterComponent,
     AtlasRevealDirective,
     AtlasGeometricMosaicComponent,
+    KnowledgeContextDirective,
   ],
   templateUrl: './ideology-page.component.html',
   styleUrl: './ideology-page.component.scss',
@@ -78,6 +83,17 @@ export class IdeologyPageComponent {
   readonly mediaPlan = computed(() => {
     const page = this.page();
     return page ? planPageMedia(page, this.repository.knowledgeGraph) : new Map();
+  });
+  /** Recall question and spaced revisit per chapter, derived from the graph. */
+  readonly reviews = computed(() => {
+    const page = this.page();
+    if (!page) return [];
+    const graph = this.repository.knowledgeGraph;
+    return chapterReviews(
+      page.chapters,
+      graph.atlases.find((a) => a.id === page.atlasId),
+      graphVocabulary(graph, terms),
+    );
   });
   readonly minutes = computed(
     () => this.page()?.chapters.reduce((sum, c) => sum + c.minutes, 0) ?? 0,

@@ -1,0 +1,202 @@
+{
+  "tradition": "liberalismo",
+  "basedOn": "liberalismo.json",
+  "retrievedAt": "2026-11-03",
+  "entities": [
+    ["person-voltaire", "Voltaire", "Voltaire", "person", "Q9068"],
+    ["person-immanuel-kant", "Immanuel Kant", "Immanuel Kant", "person", "Q9312"],
+    ["person-lorenz-von-stein", "Lorenz von Stein", "Lorenz von Stein", "person", "Q61956"],
+    ["person-ion-c-bratianu", "Ion C. Brătianu", "Ion C. Brătianu", "person", "Q153047"],
+    ["person-john-rawls", "John Rawls", "John Rawls", "person", "Q172544"],
+    [
+      "person-emmanuel-joseph-sieyes",
+      "Emmanuel Joseph Sieyès",
+      "Emmanuel Joseph Sieyès",
+      "person",
+      "Q294344"
+    ],
+    ["person-ion-i-c-bratianu", "Ion I. C. Brătianu", "Ion I. C. Brătianu", "person", "Q462175"],
+    [
+      "ideology-conservative-liberalism",
+      "liberalismo conservador",
+      "conservative liberalism",
+      "ideology",
+      "Q617609"
+    ],
+    [
+      "ideology-national-liberalism",
+      "Nacional-liberalismo",
+      "national liberalism",
+      "ideology",
+      "Q660018"
+    ],
+    ["ideology-ordoliberalism", "ordoliberalismo", "ordoliberalism", "ideology", "Q727480"],
+    [
+      "ideology-economic-liberalism",
+      "liberalismo económico",
+      "economic liberalism",
+      "ideology",
+      "Q729119"
+    ],
+    [
+      "ideology-cultural-liberalism",
+      "liberalismo cultural",
+      "cultural liberalism",
+      "ideology",
+      "Q939214"
+    ],
+    ["ideology-green-liberalism", "liberalismo verde", "green liberalism", "ideology", "Q1321721"],
+    [
+      "ideology-liberal-socialism",
+      "Socialismo liberal",
+      "liberal socialism",
+      "ideology",
+      "Q1822939"
+    ]
+  ],
+  "included": [
+    {
+      "qid": "Q9068",
+      "kind": "person",
+      "label": "Voltaire",
+      "sitelinks": 257,
+      "roles": ["influenced-by-founder"]
+    },
+    {
+      "qid": "Q9312",
+      "kind": "person",
+      "label": "Immanuel Kant",
+      "sitelinks": 255,
+      "roles": ["influenced-by-founder"]
+    },
+    {
+      "qid": "Q61956",
+      "kind": "person",
+      "label": "Lorenz von Stein",
+      "sitelinks": 31,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q153047",
+      "kind": "person",
+      "label": "Ion C. Brătianu",
+      "sitelinks": 31,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q172544",
+      "kind": "person",
+      "label": "John Rawls",
+      "sitelinks": 85,
+      "roles": ["influenced-by-founder"]
+    },
+    {
+      "qid": "Q201712",
+      "kind": "ideology",
+      "label": "liberalismo social",
+      "sitelinks": 57,
+      "roles": ["subclass-of-root"]
+    },
+    {
+      "qid": "Q205162",
+      "kind": "person",
+      "label": "Isaiah Berlin",
+      "sitelinks": 80,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q231690",
+      "kind": "person",
+      "label": null,
+      "sitelinks": 149,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q294344",
+      "kind": "person",
+      "label": "Emmanuel Joseph Sieyès",
+      "sitelinks": 65,
+      "roles": ["influenced-by-founder"]
+    },
+    {
+      "qid": "Q462175",
+      "kind": "person",
+      "label": "Ion I. C. Brătianu",
+      "sitelinks": 31,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q617609",
+      "kind": "ideology",
+      "label": "liberalismo conservador",
+      "sitelinks": 37,
+      "roles": ["subclass-of-root"]
+    },
+    {
+      "qid": "Q660018",
+      "kind": "ideology",
+      "label": "Nacional-liberalismo",
+      "sitelinks": 31,
+      "roles": ["subclass-of-root"]
+    },
+    {
+      "qid": "Q727480",
+      "kind": "ideology",
+      "label": "ordoliberalismo",
+      "sitelinks": 27,
+      "roles": ["subclass-of-root"]
+    },
+    {
+      "qid": "Q729119",
+      "kind": "ideology",
+      "label": "liberalismo económico",
+      "sitelinks": 53,
+      "roles": ["subclass-of-root"]
+    },
+    {
+      "qid": "Q794394",
+      "kind": "ideology",
+      "label": "liberalismo clássico",
+      "sitelinks": 53,
+      "roles": ["subclass-of-root"]
+    },
+    {
+      "qid": "Q939214",
+      "kind": "ideology",
+      "label": "liberalismo cultural",
+      "sitelinks": 20,
+      "roles": ["subclass-of-root"]
+    },
+    {
+      "qid": "Q1321721",
+      "kind": "ideology",
+      "label": "liberalismo verde",
+      "sitelinks": 25,
+      "roles": ["subclass-of-root"]
+    },
+    {
+      "qid": "Q1822939",
+      "kind": "ideology",
+      "label": "Socialismo liberal",
+      "sitelinks": 30,
+      "roles": ["subclass-of-root"]
+    }
+  ],
+  "excluded": [
+    {
+      "qid": "Q159481",
+      "label": "Adam Weishaupt",
+      "reason": "Adam Weishaupt: rótulo P1142 não corresponde ao recorte da página; fundador dos Illuminati, sem relação documentada no grafo."
+    },
+    {
+      "qid": "Q165792",
+      "label": "Edmund Burke",
+      "reason": "Edmund Burke: classificado como crítico conservador do liberalismo revolucionário; o rótulo P1142 é contestado."
+    },
+    {
+      "qid": "Q219934",
+      "label": "despotismo esclarecido",
+      "reason": "Despotismo esclarecido: forma de governo absolutista, não uma vertente do liberalismo."
+    }
+  ]
+}

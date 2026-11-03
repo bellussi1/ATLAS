@@ -17,11 +17,13 @@ A ingestão é **dados e proveniência**, não texto. Ela cria registros (nome, 
 
 ## Fluxo
 
-1. **Descoberta** (`npm run discover:marxism`): consulta buscas do Wikidata (`haswbstatement`), entidades em lotes de 50, árvore de categorias do Commons (profundidade 2) e o resumo de pt.wikipedia. Grava `scripts/ingestion/wikimedia/discovery/marxismo.json`, com data e fontes.
+0. **Registrar a tradição** em `scripts/ingestion/wikimedia/traditions.mjs` (raiz Wikidata, fundadores para P737, categoria do Commons, artigo pt.wikipedia). Os scripts são genéricos: `node scripts/discover-wikimedia.mjs <tradição>` e `node scripts/select-wikimedia.mjs <tradição>` (atalhos `discover:*`/`select:*`).
+1. **Descoberta** (`npm run discover:marxism`, `npm run discover:liberalism`): consulta buscas do Wikidata (`haswbstatement`), entidades em lotes de 50, árvore de categorias do Commons (profundidade 2) e o resumo de pt.wikipedia. Grava `scripts/ingestion/wikimedia/discovery/marxismo.json`, com data e fontes.
 2. **Seleção** (`npm run select:marxism`): regras explícitas em `selection.mjs` (pessoa: rótulo da tradição, ≥30 wikis e nascimento até 1930; ideologia e obra: ≥20 wikis; inclusões forçadas e exclusões com motivo em `*.decisions.json`). Grava `marxismo.selection.json`, que `configurations.mjs` lê.
 3. **Captura** (`npm run ingest:marxism -- --capture <diretório novo> --media remote`): cria um snapshot reproduzível. Diretório novo por execução.
-4. **Verificação**: `npm run ingest:verify` (replay offline), `npm run content:build`, testes de ingestão e de conteúdo.
-5. **Página**: referenciar os IDs gerados nos blocos do capítulo. O schema recusa ID inexistente.
+4. **Rascunho de página**: `ideologyDraftFromGraph()` (`src/app/features/ideologies/utils/ideology-draft-from-graph.ts`) monta os 12 capítulos com blocos derivados dos tipos de registro e relações (linhas do tempo, grafo de vertentes, fontes), `partial` com texto pendente; validado por Zod no teste.
+5. **Verificação**: `npm run ingest:verify` (replay offline), `npm run content:build`, testes de ingestão e de conteúdo.
+6. **Página**: referenciar os IDs gerados nos blocos do capítulo. O schema recusa ID inexistente.
 
 ## Checklist por registro
 

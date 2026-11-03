@@ -1,0 +1,27 @@
+{
+  "tradition": "liberalismo",
+  "note": "Decisões editoriais sobre a seleção automática. As regras de selection.mjs foram calibradas para o marxismo; P1142 e P737 são rótulos de contribuidores do Wikidata, não evidência de pertencimento ou influência. Revisão humana pendente.",
+  "include": [
+    {
+      "qid": "Q9068",
+      "reason": "Wikidata registra influência de Locke (P737); figura central do Iluminismo citada nas histórias do liberalismo. Rótulo, não influência documentada."
+    },
+    {
+      "qid": "Q9312",
+      "reason": "Wikidata registra influência de fundadores (P737); autonomia e Estado de direito em Kant aparecem nas histórias do liberalismo. Rótulo, não influência documentada."
+    },
+    {
+      "qid": "Q294344",
+      "reason": "Wikidata registra influência de fundadores (P737); autor de O que é o Terceiro Estado? (1789), ligado à Revolução Francesa já presente no grafo."
+    },
+    {
+      "qid": "Q172544",
+      "reason": "Wikidata registra influência de fundadores (P737); Uma teoria da justiça (1971) é referência do liberalismo igualitário."
+    }
+  ],
+  "exclude": {
+    "Q159481": "Adam Weishaupt: rótulo P1142 não corresponde ao recorte da página; fundador dos Illuminati, sem relação documentada no grafo.",
+    "Q165792": "Edmund Burke: classificado como crítico conservador do liberalismo revolucionário; o rótulo P1142 é contestado.",
+    "Q219934": "Despotismo esclarecido: forma de governo absolutista, não uma vertente do liberalismo."
+  }
+}

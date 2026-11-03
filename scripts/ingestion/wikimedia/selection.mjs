@@ -48,7 +48,9 @@ export function toConfigEntities(included, existingQids = new Set()) {
   const prefix = { person: 'person', ideology: 'ideology', work: 'work' };
   const rows = [];
   for (const candidate of included) {
+    // Without a pt or en label there is no name to publish; leave it for review.
     if (seen.has(candidate.qid) || !prefix[candidate.kind]) continue;
+    if (!candidate.labels.en && !candidate.labels.pt) continue;
     seen.add(candidate.qid);
     const en = candidate.labels.en ?? candidate.labels.pt;
     const pt = candidate.labels.pt ?? en;

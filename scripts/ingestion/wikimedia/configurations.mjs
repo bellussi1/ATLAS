@@ -1,10 +1,12 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
-// Entities selected from Wikidata discovery (see discovery/marxismo.selection.json,
-// produced by scripts/select-wikimedia-marxism.mjs). Curated base entries come first.
-export const discoveredMarxismEntities = JSON.parse(
-  readFileSync(new URL('./discovery/marxismo.selection.json', import.meta.url), 'utf8'),
-).entities;
+// Entities selected from Wikidata discovery (discovery/<tradição>.selection.json,
+// produced by scripts/select-wikimedia.mjs). Curated base entries come first.
+function discovered(slug) {
+  const url = new URL(`./discovery/${slug}.selection.json`, import.meta.url);
+  return existsSync(url) ? JSON.parse(readFileSync(url, 'utf8')).entities : [];
+}
+export const discoveredMarxismEntities = discovered('marxismo');
 
 export const marxismBaseEntities = [
   ['ideology-marxism', 'Marxism', 'Marxism', 'ideology', 'Q7264'],
@@ -68,7 +70,7 @@ export const marxismBaseEntities = [
   ],
 ];
 
-const liberalismEntities = [
+export const liberalismBaseEntities = [
   ['ideology-liberalism', 'liberalism', 'Liberalism', 'ideology', 'Q6216'],
   ['person-john-locke', 'John Locke', 'John Locke', 'person', 'Q9353'],
   ['person-adam-smith', 'Adam Smith', 'Adam Smith', 'person', 'Q9381'],
@@ -96,6 +98,9 @@ const liberalismEntities = [
   ['event-american-revolution', 'American Revolution', 'American Revolution', 'event', 'Q192769'],
   ['event-french-revolution', 'French Revolution', 'French Revolution', 'event', 'Q6534'],
 ];
+/** Curated entries per configuration, which discovery never duplicates. */
+export const baseEntities = { marxism: marxismBaseEntities, liberalism: liberalismBaseEntities };
+
 export const configurations = {
   liberalism: {
     id: 'atlas-liberalism',
@@ -104,7 +109,7 @@ export const configurations = {
     description:
       'Rede exploratória de pessoas, correntes e acontecimentos ligados ao liberalismo; dados enciclopédicos importados aguardam revisão editorial humana.',
     mediaDirectory: 'liberalism',
-    entities: liberalismEntities,
+    entities: [...liberalismBaseEntities, ...discovered('liberalismo')],
   },
   marxism: {
     id: 'atlas-marx-valor',

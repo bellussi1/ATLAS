@@ -39,7 +39,7 @@ describe('ContentRepository generated assets', () => {
   it('loads only a requested collection and shares its cached request with full loading', async () => {
     const repository = TestBed.inject(ContentRepository);
     const atlas = await repository.loadCollection('atlas-liberalism');
-    expect(atlas?.entities).toHaveLength(13);
+    expect(atlas?.entities).toHaveLength(27);
     expect(reads).toHaveLength(2);
     expect(reads.some((path) => path.includes('atlas-marx-valor'))).toBe(false);
     const [first, second] = await Promise.all([
