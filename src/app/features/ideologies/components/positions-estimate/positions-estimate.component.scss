@@ -129,3 +129,7 @@
   color: var(--color-ink-muted);
   font: 0.85rem/1.5 var(--font-sans);
 }
+.entity > .record-card {
+  height: auto;
+  margin-bottom: 0.75rem;
+}

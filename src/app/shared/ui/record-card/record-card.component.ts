@@ -6,7 +6,6 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { entityMedia } from '@core/content/media/asset-license';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import {
   AtlasKindIconComponent,
@@ -48,8 +47,8 @@ const kindNames: Record<string, string> = {
 
 /**
  * Uniform record card on a native button or link: kind (glyph and label), title, period and a
- * closing note (relations, classification). With `entityId` it fills itself from the graph;
- * explicit inputs override. The licensed picture replaces the glyph corner, and the colour
+ * closing note (relations, classification). With `entityId` it fills itself from the graph
+ * (except the picture, which callers pass); explicit inputs override. The licensed picture replaces the glyph corner, and the colour
  * family is the same as the context sheet's. The host stays a native control so opening
  * directives or router links sit on it.
  */
@@ -76,7 +75,7 @@ export class RecordCardComponent {
   readonly title = input<string | null>(null);
   readonly period = input<string | null>(null);
   readonly note = input<string | null>(null);
-  readonly picture = input<string | null | undefined>(undefined);
+  readonly picture = input<string | null>(null);
   /** Colour family; defaults to the family of the glyph. Graph kinds are accepted too. */
   readonly tone = input<string | null>(null);
 
@@ -124,12 +123,8 @@ export class RecordCardComponent {
       .filter((r) => r.fromEntityId === id || r.toEntityId === id).length;
     return count ? `${count} ${count === 1 ? 'relação' : 'relações'}` : '';
   });
-  readonly shownPicture = computed(() => {
-    if (this.picture() !== undefined) return this.picture();
-    const id = this.entityId();
-    const graph = this.graph();
-    return id && graph ? (entityMedia(graph, { id })?.assetPath ?? null) : null;
-  });
+  /** Pictures are opt-in so a licensed image appears once in the reading. */
+  readonly shownPicture = computed(() => this.picture() ?? null);
   readonly shownTone = computed<RecordTone>(() => {
     const tone = this.tone();
     if (tone && tone in toneByIcon) return toneByIcon[tone as IconKind];
