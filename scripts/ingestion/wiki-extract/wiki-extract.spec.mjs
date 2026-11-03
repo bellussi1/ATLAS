@@ -79,10 +79,62 @@ test('lists each canonical target once, with the titles that reached it', () => 
   ]);
 });
 
-test('marks a capped article as truncated instead of cutting silently', () => {
-  const article = { sections: parseArticle(html).sections };
-  assert.equal(articleText(article, 1000).truncated, false);
-  assert.deepEqual(articleText(article, 10), { text: 'Karl Marx ', truncated: true });
+const section = (index, heading, text) => ({ index, heading, text });
+
+test('reads whole sections in order and lists the ones that do not fit', () => {
+  const article = {
+    sections: [
+      section(0, '', 'A'.repeat(50)),
+      section(1, 'Vida', 'B'.repeat(50)),
+      section(2, 'Obra', 'C'.repeat(50)),
+    ],
+  };
+  const { text, truncated, coverage } = articleText(article, 130);
+  assert.equal(truncated, true);
+  assert.deepEqual(
+    coverage.read.map(({ section, heading }) => [section, heading]),
+    [
+      [0, ''],
+      [1, 'Vida'],
+    ],
+  );
+  assert.deepEqual(
+    coverage.skipped.map(({ section, heading }) => [section, heading]),
+    [[2, 'Obra']],
+  );
+  assert.equal(text, `${'A'.repeat(50)}\n\n## Vida\n${'B'.repeat(50)}`);
+});
+
+test('divides a long section by paragraph and marks each part', () => {
+  const paragraphs = ['p1', 'p2', 'p3'].map((name) => name.padEnd(40, '.')).join('\n');
+  const { coverage } = articleText({ sections: [section(0, 'Longa', paragraphs)] }, 100);
+  assert.deepEqual(
+    coverage.read.map(({ heading, part, parts }) => [heading, part, parts]),
+    [['Longa', 1, 3]],
+  );
+  assert.deepEqual(
+    coverage.skipped.map(({ part, parts }) => [part, parts]),
+    [
+      [2, 3],
+      [3, 3],
+    ],
+  );
+});
+
+test('reports a paragraph larger than the budget as skipped, never cut', () => {
+  const { text, truncated, coverage } = articleText(
+    { sections: [section(0, 'Enorme', 'x'.repeat(200))] },
+    100,
+  );
+  assert.equal(text, '');
+  assert.equal(truncated, true);
+  assert.equal(coverage.skipped[0].chars > 100, true);
+});
+
+test('reports a complete article with nothing skipped', () => {
+  const { truncated, coverage } = articleText({ sections: [section(0, '', 'Curto.')] }, 1000);
+  assert.equal(truncated, false);
+  assert.deepEqual(coverage.skipped, []);
 });
 
 test('keeps only items whose quote appears literally in the source', () => {

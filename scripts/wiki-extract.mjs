@@ -2,7 +2,7 @@
 // Wikipedia → Claude Haiku → R2. Usage:
 //   node scripts/wiki-extract.mjs run <tradição> [--accept-top N] [--sync]  # discover + fetch + extract
 //   node scripts/wiki-extract.mjs discover <tradição> [--top N] [--accept-top N]
-//   node scripts/wiki-extract.mjs text <tradição> [--chars N]     # exporta o texto que será lido
+//   node scripts/wiki-extract.mjs text <tradição> [--chars N]     # exporta o texto lido, por seção
 //   node scripts/wiki-extract.mjs store <tradição> [--chars N]    # grava manual/<id>.json verificado
 //   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N]
 //   node scripts/wiki-extract.mjs extract <tradição> [--sync] [--limit N] [--resume <batchId>]
@@ -64,7 +64,7 @@ const articlesDirectory = join(workDirectory, 'articles');
 const extractsDirectory = join(workDirectory, 'extracts');
 const textDirectory = join(workDirectory, 'text');
 const manualDirectory = join(workDirectory, 'manual');
-const textChars = values.chars ? Number(values.chars) : 12000;
+const textChars = values.chars ? Number(values.chars) : maxInputChars;
 const candidatesPath = join(
   projectRoot,
   'scripts/ingestion/wiki-extract/candidates',
@@ -242,7 +242,7 @@ async function runCommand() {
 }
 
 /** Writes one draft; quotes that are not literal in the source text are dropped and reported. */
-async function writeDraft(record, extraction, { text, truncated }, review) {
+async function writeDraft(record, extraction, { text, coverage }, review) {
   const verified = verifyQuotes(extraction, text);
   await writeJson(join(extractsDirectory, `${record.entity.id}.json`), {
     entity: record.entity,
@@ -253,7 +253,7 @@ async function writeDraft(record, extraction, { text, truncated }, review) {
       retrievedAt: record.retrievedAt,
       license: 'CC BY-SA 4.0',
       licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
-      truncated,
+      coverage,
     },
     review,
     ...verified.extraction,
@@ -274,14 +274,26 @@ async function storeExtraction(record, message) {
   });
 }
 
-/** Chat path: exports the capped text the assistant reads, so each quote can be checked against it. */
+const unitLabel = ({ section, heading, part, parts }) =>
+  `[${section}] ${heading || 'Introdução'}${parts > 1 ? ` (parte ${part}/${parts})` : ''}`;
+
+/** Chat path: exports the text the assistant reads, with the sections it covers and those it leaves out. */
 async function textCommand() {
   await mkdir(textDirectory, { recursive: true });
   for (const id of (await listIds(articlesDirectory)).slice(0, limit)) {
     const record = await readJson(join(articlesDirectory, `${id}.json`));
-    const { text, truncated } = articleText(record.article, textChars);
-    await atomicFile(join(textDirectory, `${id}.txt`), text);
-    console.log(`texto: ${id} (${text.length} caracteres${truncated ? ', cortado' : ''})`);
+    const { article } = record;
+    const { text, coverage } = articleText(article, textChars);
+    const header = [
+      `# ${article.title} (${article.lang}), revisão ${article.revision}`,
+      `Limite: ${coverage.maxChars} caracteres. Lidas: ${coverage.read.map(unitLabel).join('; ') || 'nenhuma'}.`,
+    ];
+    if (coverage.skipped.length)
+      header.push(`NÃO LIDAS neste texto: ${coverage.skipped.map(unitLabel).join('; ')}.`);
+    await atomicFile(join(textDirectory, `${id}.txt`), `${header.join('\n')}\n\n${text}\n`);
+    console.log(
+      `texto: ${id} (${text.length} caracteres; ${coverage.read.length} de ${coverage.read.length + coverage.skipped.length} unidades lidas)`,
+    );
   }
 }
 

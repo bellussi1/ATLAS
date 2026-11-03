@@ -208,12 +208,69 @@ export function targetRecords(resolvedTargets) {
   return [...records.values()];
 }
 
-/** Plain text handed to the model, capped explicitly so a truncation is never silent. */
+/** Reading units of one section: the whole section, or paragraph groups when it exceeds `maxChars`. */
+function sectionUnits(section, index, maxChars) {
+  // Room for the heading line, sized for a two-digit part count.
+  const room = section.heading ? `## ${section.heading} (parte 00/00)\n`.length : 0;
+  const groups = [];
+  let group = [];
+  for (const paragraph of section.text.split('\n')) {
+    if (group.length && room + [...group, paragraph].join('\n').length > maxChars) {
+      groups.push(group);
+      group = [];
+    }
+    group.push(paragraph);
+  }
+  if (group.length) groups.push(group);
+  return groups.map((lines, offset) => {
+    const part = offset + 1;
+    const parts = groups.length;
+    const heading = section.heading
+      ? `## ${section.heading}${parts > 1 ? ` (parte ${part}/${parts})` : ''}\n`
+      : '';
+    return {
+      section: index,
+      heading: section.heading,
+      part,
+      parts,
+      text: heading + lines.join('\n'),
+    };
+  });
+}
+
+const describeUnit = ({ section, heading, part, parts, text }) => ({
+  section,
+  heading,
+  part,
+  parts,
+  chars: text.length,
+});
+
+/**
+ * Text handed to the model, divided by section. Units are read in order until the next one would
+ * exceed `maxChars`; that unit and every later one are listed as skipped, never cut silently.
+ */
 export function articleText(article, maxChars) {
-  const text = article.sections
-    .map(({ heading, text }) => (heading ? `## ${heading}\n${text}` : text))
-    .join('\n\n');
-  return text.length > maxChars
-    ? { text: text.slice(0, maxChars), truncated: true }
-    : { text, truncated: false };
+  const units = article.sections.flatMap((section, position) =>
+    sectionUnits(section, section.index ?? position, maxChars),
+  );
+  const read = [];
+  const skipped = [];
+  let length = 0;
+  for (const unit of units) {
+    const next = length + (read.length ? 2 : 0) + unit.text.length;
+    if (!skipped.length && next <= maxChars) {
+      read.push(unit);
+      length = next;
+    } else skipped.push(unit);
+  }
+  return {
+    text: read.map((unit) => unit.text).join('\n\n'),
+    truncated: skipped.length > 0,
+    coverage: {
+      maxChars,
+      read: read.map(describeUnit),
+      skipped: skipped.map(describeUnit),
+    },
+  };
 }
