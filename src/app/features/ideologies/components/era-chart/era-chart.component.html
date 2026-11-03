@@ -7,25 +7,33 @@
     </p>
   </figcaption>
 
-  <div class="epoch-picker" role="group" aria-label="Épocas">
-    @for (epoch of epochs(); track epoch.id; let i = $index) {
-      <button
-        type="button"
-        class="atlas-press"
-        [attr.data-tone]="i % 6"
-        [attr.aria-pressed]="selected().id === epoch.id"
-        [attr.tabindex]="selected().id === epoch.id ? 0 : -1"
-        (click)="select(epoch.id)"
-        (keydown)="step($event, i)"
-      >
-        <span class="picker-years">{{ epoch.start }}–{{ epoch.end }}</span>
-        <span class="picker-title">{{ epoch.title }}</span>
-      </button>
-    }
+  <div class="epoch-picker">
+    <app-card-carousel label="Épocas" hint="Arraste, use as setas ou as setas do teclado">
+      @for (epoch of epochs(); track epoch.id; let i = $index) {
+        <button
+          type="button"
+          class="carousel-item atlas-press"
+          [attr.data-tone]="i % 6"
+          [attr.aria-pressed]="selected().id === epoch.id"
+          [attr.tabindex]="selected().id === epoch.id ? 0 : -1"
+          (click)="select(epoch.id)"
+          (keydown)="step($event, i)"
+        >
+          <span class="picker-years">{{ epoch.start }}–{{ epoch.end }}</span>
+          <span class="picker-title">{{ epoch.title }}</span>
+        </button>
+      }
+    </app-card-carousel>
   </div>
 
-  <div class="chart" aria-hidden="true">
-    <div class="plot">
+  <div
+    class="chart"
+    [style.--rows]="markerRowCount()"
+    role="region"
+    tabindex="0"
+    aria-label="Gráfico da escala do tempo, com rolagem. As listas abaixo trazem o mesmo conteúdo."
+  >
+    <div class="plot" aria-hidden="true">
       <div class="axis">
         @for (tick of ticks(); track tick) {
           <span class="tick" [style.left]="x(tick)">{{ tick }}</span>
@@ -55,7 +63,7 @@
           [class.is-approx]="mark.approx"
           [class.is-flipped]="flipsLeft(mark.year)"
           [style.left]="x(mark.year)"
-          [style.--row]="m % 4"
+          [style.--row]="markerRows()[m]"
           ><span
             >{{ mark.approx ? 'c. ' : '' }}{{ mark.year }} · {{ mark.entity.title }}</span
           ></span
@@ -106,7 +114,7 @@
           Registros datados na época <span>{{ inEpoch().length }}</span>
         </h5>
         <ul class="alive-list dated-list">
-          @for (mark of inEpoch(); track mark.entity.id) {
+          @for (mark of datedShown(); track mark.entity.id) {
             <li>
               <button
                 appRecordCard
@@ -120,13 +128,23 @@
             <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
           }
         </ul>
+        @if (inEpoch().length > limit) {
+          <button
+            type="button"
+            class="list-toggle"
+            [attr.aria-expanded]="datedExpanded()"
+            (click)="datedExpanded.set(!datedExpanded())"
+          >
+            {{ datedExpanded() ? 'Mostrar menos' : 'Ver todas (' + inEpoch().length + ')' }}
+          </button>
+        }
       </div>
       <div class="epoch-list">
         <h5>
           Vivos durante a época <span>{{ alive().length }}</span>
         </h5>
         <ul class="alive-list">
-          @for (life of alive(); track life.entity.id) {
+          @for (life of aliveShown(); track life.entity.id) {
             <li>
               <button
                 appRecordCard
@@ -140,6 +158,16 @@
             <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>
           }
         </ul>
+        @if (alive().length > limit) {
+          <button
+            type="button"
+            class="list-toggle"
+            [attr.aria-expanded]="aliveExpanded()"
+            (click)="aliveExpanded.set(!aliveExpanded())"
+          >
+            {{ aliveExpanded() ? 'Mostrar menos' : 'Ver todas (' + alive().length + ')' }}
+          </button>
+        }
       </div>
     </div>
   </section>

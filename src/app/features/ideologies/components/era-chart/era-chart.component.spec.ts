@@ -35,7 +35,7 @@ describe('EraChartComponent', () => {
         b.textContent!.trim(),
       );
     expect(names()).toEqual([expect.stringContaining('marx')]);
-    const first = root.querySelector<HTMLButtonElement>('.epoch-picker button')!;
+    const first = root.querySelector<HTMLButtonElement>('.epoch-picker button.carousel-item')!;
     first.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
     fixture.detectChanges();
     expect(root.querySelector('.epoch-detail h4')!.textContent).toBe('b');
@@ -88,5 +88,44 @@ describe('EraChartComponent', () => {
     expect(root.querySelectorAll('.marker.is-approx')).toHaveLength(1);
     expect(root.querySelector('.marker.is-approx > span')!.textContent).toContain('c. 1845');
     expect(root.querySelector('.era-note')!.textContent).toContain('bordas tracejadas');
+  });
+
+  it('shows the eight people closest to the epoch and expands on demand', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    fixture.componentRef.setInput('epochs', [epoch('a', 1800, 1900), epoch('b', 1950, 1960)]);
+    fixture.componentRef.setInput(
+      'people',
+      Array.from({ length: 12 }, (_, i) => person(`p${i}`, 1810 + i, 1850 + i)),
+    );
+    fixture.componentRef.setInput('markers', []);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const cards = () => root.querySelectorAll('.alive-list:not(.dated-list) button').length;
+    const toggle = () => root.querySelector<HTMLButtonElement>('.list-toggle')!;
+    expect(cards()).toBe(8);
+    expect(toggle().textContent).toContain('Ver todas (12)');
+    toggle().click();
+    fixture.detectChanges();
+    expect(cards()).toBe(12);
+    expect(toggle().getAttribute('aria-expanded')).toBe('true');
+    expect(toggle().textContent).toContain('Mostrar menos');
+    root.querySelectorAll<HTMLButtonElement>('.epoch-picker button.carousel-item')[1].click();
+    fixture.detectChanges();
+    expect(root.querySelector('.list-toggle')).toBeNull();
+  });
+
+  it('puts close marker labels on different rows', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    const record = (id: string, startYear: number) =>
+      ({
+        id,
+        title: id,
+        temporalExtent: { startYear, endYear: null, precision: 'year', label: null },
+      }) as unknown as Entity;
+    fixture.componentRef.setInput('epochs', [epoch('a', 1800, 1900)]);
+    fixture.componentRef.setInput('people', [person('marx', 1818, 1883)]);
+    fixture.componentRef.setInput('markers', [record('um', 1848), record('dois', 1849)]);
+    fixture.detectChanges();
+    expect(fixture.componentInstance.markerRows()).toEqual([0, 1]);
   });
 });

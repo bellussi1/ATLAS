@@ -3,7 +3,14 @@ import type { Entity } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
+import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
+
+/** Cards shown per list before "Ver todas"; the rest stay one press away. */
+export const ERA_LIST_LIMIT = 8;
+/** Plot width assumed when packing marker labels into rows; real widths only vary a little. */
+const ASSUMED_PLOT_PX = 760;
+const LABEL_CHAR_PX = 7.4;
 
 export interface EraChartEpoch {
   id: string;
@@ -21,7 +28,12 @@ export interface EraChartEpoch {
  */
 @Component({
   selector: 'app-era-chart',
-  imports: [RecordCardComponent, KnowledgeContextDirective, AtlasRevealDirective],
+  imports: [
+    RecordCardComponent,
+    KnowledgeContextDirective,
+    AtlasRevealDirective,
+    CardCarouselComponent,
+  ],
   templateUrl: './era-chart.component.html',
   styleUrl: './era-chart.component.scss',
 })
@@ -68,10 +80,51 @@ export class EraChartComponent {
       })
       .sort((a, b) => a.year - b.year),
   );
+  /** Everyone alive in the epoch, those present for most of it first. */
   readonly alive = computed(() => {
     const epoch = this.selected();
-    return this.lives().filter((life) => life.start <= epoch.end && life.end >= epoch.start);
+    const overlap = (life: { start: number; end: number }) =>
+      Math.min(life.end, epoch.end) - Math.max(life.start, epoch.start);
+    return this.lives()
+      .filter((life) => life.start <= epoch.end && life.end >= epoch.start)
+      .sort((a, b) => overlap(b) - overlap(a) || a.start - b.start);
   });
+  readonly aliveExpanded = signal(false);
+  readonly datedExpanded = signal(false);
+  readonly limit = ERA_LIST_LIMIT;
+  readonly aliveShown = computed(() =>
+    this.aliveExpanded() ? this.alive() : this.alive().slice(0, ERA_LIST_LIMIT),
+  );
+  readonly datedShown = computed(() =>
+    this.datedExpanded() ? this.inEpoch() : this.inEpoch().slice(0, ERA_LIST_LIMIT),
+  );
+
+  /**
+   * Row of each marker label (same order as `dated`): the first row where it does not
+   * run into the previous label, so captions never overprint.
+   */
+  readonly markerRows = computed(() => {
+    const { start, end } = this.range();
+    const px = (end - start) / ASSUMED_PLOT_PX;
+    const rows: number[] = [];
+    const taken: [number, number][][] = [];
+    for (const mark of this.dated()) {
+      const width =
+        (`${mark.approx ? 'c. ' : ''}${mark.year} · ${mark.entity.title}`.length * LABEL_CHAR_PX +
+          12) *
+        px;
+      const [from, to] = this.flipsLeft(mark.year)
+        ? [mark.year - width, mark.year]
+        : [mark.year, mark.year + width];
+      let row = 0;
+      const gap = 6 * px;
+      while (taken[row]?.some(([a, b]) => from < b + gap && to + gap > a)) row++;
+      taken[row] = [...(taken[row] ?? []), [from, to]];
+      rows.push(row);
+    }
+    return rows;
+  });
+  readonly markerRowCount = computed(() => Math.max(1, ...this.markerRows().map((r) => r + 1)));
 
   /** Dated records inside the selected epoch, so the markers have a readable list too. */
   readonly inEpoch = computed(() => {
@@ -103,6 +156,8 @@ export class EraChartComponent {
   }
   select(id: string): void {
     this.selectedId.set(id);
+    this.aliveExpanded.set(false);
+    this.datedExpanded.set(false);
   }
   step(event: KeyboardEvent, index: number): void {
     const delta = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;

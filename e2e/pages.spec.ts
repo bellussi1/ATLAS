@@ -242,7 +242,7 @@ test('épocas list dated records and the graph explains each kind of line', asyn
     await page.goto(`${path}`);
     const era = page.locator('.era-chart').first();
     await expect(era.locator('.dated-list li').first()).toBeVisible();
-    await era.locator('.epoch-picker button').nth(1).click();
+    await era.locator('.epoch-picker button.carousel-item').nth(1).click();
     await expect(era.locator('.epoch-detail h5').first()).toContainText('Registros datados');
 
     const block = page.locator('app-ideology-block', {
@@ -259,6 +259,31 @@ test('épocas list dated records and the graph explains each kind of line', asyn
       before,
     );
     await expect(graph.locator('.genealogy-node.related')).toHaveCount(2);
+  }
+});
+
+test('escala do tempo keeps epochs on one carousel row and folds long lists', async ({ page }) => {
+  for (const path of ['/marxismo/', '/liberalismo/']) {
+    await page.goto(path);
+    const era = page.locator('.era-chart').first();
+    const tabs = era.locator('.epoch-picker button.carousel-item');
+    const tops = await tabs.evaluateAll(
+      (b) => new Set(b.map((e) => e.getBoundingClientRect().top)).size,
+    );
+    expect(tops).toBe(1);
+    await tabs.first().focus();
+    await page.keyboard.press('ArrowRight');
+    await expect(tabs.nth(1)).toHaveAttribute('aria-pressed', 'true');
+    const chart = era.locator('.chart');
+    const height = await chart.evaluate((e) => e.getBoundingClientRect().height);
+    expect(height).toBeLessThanOrEqual(page.viewportSize()!.height * 0.75 + 1);
+    const toggle = era.locator('.list-toggle').first();
+    if (await toggle.count()) {
+      const before = await era.locator('.alive-list li').count();
+      await toggle.click();
+      await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+      expect(await era.locator('.alive-list li').count()).toBeGreaterThan(before);
+    }
   }
 });
 

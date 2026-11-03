@@ -51,11 +51,12 @@
   --on-tone: var(--color-ink);
 }
 .epoch-picker {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  --carousel-item-width: 10.5rem;
+  --carousel-gap: 0;
+  padding: 0.75rem 1.25rem 0.5rem;
   border-bottom: 3px solid var(--color-ink);
 }
-.epoch-picker button {
+.epoch-picker .carousel-item {
   display: grid;
   align-content: start;
   gap: 0.2rem;
@@ -63,15 +64,13 @@
   padding: 0.6rem 0.7rem;
   border: 0;
   border-top: 0.5rem solid var(--tone);
+  border-left: 1px solid var(--color-border-strong);
   background: none;
   color: var(--color-ink);
   text-align: left;
   cursor: pointer;
 }
-.epoch-picker button + button {
-  border-left: 1px solid var(--color-border-strong);
-}
-.epoch-picker button[aria-pressed='true'] {
+.epoch-picker .carousel-item[aria-pressed='true'] {
   background: var(--tone);
   color: var(--on-tone);
 }
@@ -83,12 +82,19 @@
 }
 .chart {
   --name: 11rem;
-  padding: 6rem 1.25rem 1rem;
-  overflow: hidden;
+  max-height: min(34rem, 75vh);
+  padding: calc(2.6rem + var(--rows, 4) * 1.05rem) 1.25rem 1rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.chart:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: -3px;
 }
 .plot {
   position: relative;
   margin-left: var(--name);
+  margin-right: 0.5rem;
 }
 .axis {
   position: relative;
@@ -268,6 +274,20 @@
   text-underline-offset: 0.2em;
   cursor: pointer;
 }
+.list-toggle {
+  margin-top: 0.5rem;
+  min-height: var(--control-min-size);
+  padding: 0.4rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: 650 0.875rem/1.2 var(--font-sans);
+  cursor: pointer;
+}
+.list-toggle:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
 .alive-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr));
@@ -284,7 +304,7 @@
   font: 0.75rem/1.5 var(--font-mono);
 }
 @media (hover: hover) and (pointer: fine) {
-  .epoch-picker button[aria-pressed='false']:hover,
+  .epoch-picker .carousel-item[aria-pressed='false']:hover,
   .band:hover {
     opacity: 0.7;
   }
@@ -299,10 +319,8 @@
     grid-row: auto !important;
   }
   .epoch-picker {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .epoch-picker button:nth-child(odd) {
-    border-left: 0;
+    --carousel-item-width: 9rem;
+    padding-inline: 0.5rem;
   }
   .chart {
     --name: 6.5rem;
