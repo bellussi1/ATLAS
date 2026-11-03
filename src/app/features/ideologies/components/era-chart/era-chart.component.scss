@@ -82,7 +82,7 @@
 }
 .chart {
   --name: 11rem;
-  max-height: min(34rem, 75vh);
+  max-height: min(40rem, 85vh);
   padding: calc(1.6rem + var(--rows, 4) * 1.1rem) 1.25rem 1rem;
   overflow: auto;
   overscroll-behavior: contain;

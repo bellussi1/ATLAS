@@ -99,15 +99,12 @@
     <h4>{{ selected().title }}</h4>
     <p class="detail-summary">{{ selected().summary }}</p>
     <button
-      appRecordCard
-      [icon]="'event'"
-      [kindLabel]="selected().kicker"
-      [title]="selected().title"
-      period=""
-      note="Fundamento e fontes"
-      [picture]="null"
+      type="button"
+      class="detail-open"
       [appKnowledgeContext]="{ record: selected().context }"
-    ></button>
+    >
+      Ver fundamento e fontes desta época
+    </button>
     <div class="epoch-lists">
       <div class="epoch-list">
         <h5>
