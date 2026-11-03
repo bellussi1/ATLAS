@@ -208,9 +208,9 @@ test('both readings share the twelve canonical chapters, one index and no nested
     expect(
       await page.locator('article .ideology-chapter').evaluateAll((s) => s.map((e) => e.id)),
     ).toEqual(canonical);
-    // Three acts; only the act being read (Situar, for #vertentes) lists its four chapters.
+    // Three acts; the sidebar lists the chapters of every act.
     await expect(page.locator('.desktop-nav .index-act')).toHaveCount(3);
-    await expect(page.locator('.desktop-nav a:not(.index-act)')).toHaveCount(4);
+    await expect(page.locator('.desktop-nav a:not(.index-act)')).toHaveCount(12);
     const nested = await page.evaluate(() =>
       [...document.querySelectorAll('.chapter-sequence *')]
         .filter(

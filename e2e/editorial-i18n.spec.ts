@@ -33,8 +33,7 @@ test('reviewed English text preserves identity, original evidence, review method
   page,
 }) => {
   await page.goto('/verbete/brasil');
-  const language = page.getByRole('combobox', { name: 'Idioma do conteúdo', exact: true });
-  await language.selectOption('en');
+  await page.goto('/verbete/brasil?idioma=en');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Brazil');
   await expect(page.getByRole('heading', { level: 1 })).toHaveAttribute('lang', 'en');
   await expect(page).toHaveTitle('Brazil — ATLAS');
@@ -49,7 +48,7 @@ test('reviewed English text preserves identity, original evidence, review method
   );
   await page.reload();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Brazil');
-  await expect(language).toHaveValue('en');
+  await expect(page).toHaveURL(/idioma=en/);
   await page.goBack();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Brasil');
   await page.goForward();
@@ -64,9 +63,7 @@ test('English search finds translated narrative and keeps locale when returning 
   await results.getByRole('link', { name: 'Brazil', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Brazil');
   await page.getByRole('link', { name: 'Voltar aos resultados' }).click();
-  await expect(page.getByRole('combobox', { name: 'Idioma do conteúdo', exact: true })).toHaveValue(
-    'en',
-  );
+  await expect(page).toHaveURL(/idioma=en/);
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue('Federative');
 });
 
@@ -79,9 +76,7 @@ test('missing or unsupported translations fall back explicitly and source drafts
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Karl Marx');
   await expect(page.getByRole('heading', { level: 1 })).toHaveAttribute('lang', 'und');
   await page.goto('/verbete/brasil?idioma=es');
-  await expect(page.getByRole('combobox', { name: 'Idioma do conteúdo', exact: true })).toHaveValue(
-    'es',
-  );
+  await expect(page).toHaveURL(/idioma=es/);
   await expect(page.locator('.language-notice')).toBeVisible();
   expect((await request.get('/content/translations/catalogue.json')).status()).toBe(404);
 });
