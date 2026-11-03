@@ -6,7 +6,6 @@
     <a routerLink="/conhecimento">Buscar no acervo</a>
   </nav>
   @if (entity(); as entity) {
-    <app-content-language [requested]="query().get('idioma')" (changed)="setLanguage($event)" />
     @if (presentation()?.fallback) {
       <p class="language-notice" role="status">
         Tradução revisada indisponível para o idioma solicitado. Exibindo o texto original ({{
