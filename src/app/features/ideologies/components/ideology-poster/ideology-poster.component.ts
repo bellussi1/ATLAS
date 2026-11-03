@@ -1,9 +1,9 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { chapterGroup, chapterGroups } from '@ideologies/models/ideology-chapters';
 import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
-import { entityMedia } from '@ideologies/utils/page-media-plan';
 import { chapterWeight, readingTrails } from '@ideologies/utils/reading-trails';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';

@@ -23,7 +23,10 @@ test('universal search starts at home, handles aliases and keeps filters through
   await page.getByRole('button', { name: 'Pesquisar', exact: true }).click();
   await expect(page).toHaveURL(/conhecimento\?q=guimaraes/);
   const results = page.getByRole('region', { name: 'Resultados da busca' });
-  await results.getByRole('link', { name: 'Ulysses Guimarães', exact: true }).click();
+  await results
+    .getByRole('link')
+    .filter({ has: page.locator('strong', { hasText: /^Ulysses Guimarães$/ }) })
+    .click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Ulysses Guimarães');
   await expect(page.getByRole('navigation', { name: 'Breadcrumb' })).toContainText('Pessoas');
   await expect(page.getByRole('button', { name: 'Copiar link', exact: true })).toBeVisible();
@@ -76,7 +79,7 @@ test('catalogues expose actual records and permanent pages update when following
     expect(await page.locator('.results article').count()).toBeGreaterThan(0);
     expect(
       await page
-        .locator('.results h2 a')
+        .locator('.results article a')
         .evaluateAll((links) =>
           links.every((a) => a.getAttribute('href')?.startsWith('/verbete/')),
         ),

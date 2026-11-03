@@ -143,47 +143,75 @@
           </nav>
         }
       </div>
-      <section id="resultados" aria-label="Resultados da busca" class="results">
+      <section
+        id="resultados"
+        aria-label="Resultados da busca"
+        class="results"
+        [class.results--cards]="catalogue.path !== 'fontes'"
+      >
         @for (entry of page().items; track entry.id) {
-          <article [id]="entry.fragment ?? entry.id" class="result">
-            <p class="result-meta">
-              <span class="kind-tag" [attr.data-kind]="entry.kind">{{ entry.kindLabel }}</span>
-              · {{ entry.stateLabel }}
-            </p>
-            <h2 [attr.lang]="shown(entry).locale">
-              @if (catalogue.path === 'fontes') {
-                {{ shown(entry).title }}
-              } @else {
-                <a
-                  [routerLink]="entry.path"
-                  [fragment]="entry.fragment"
-                  [queryParams]="
-                    entry.kind === 'fonte'
-                      ? {}
-                      : { origem: origin(), idioma: params().get('idioma') }
-                  "
-                  >{{ shown(entry).title }}</a
-                >
-              }
-            </h2>
-            <p [attr.lang]="shown(entry).locale">{{ shown(entry).summary }}</p>
-            @if (catalogue.path === 'fontes') {
-              @if (sourceUrl(entry.id); as url) {
-                <p><a [href]="url">Consultar fonte original</a></p>
-              }
-              <details class="source-uses">
-                <summary>Citações no acervo ({{ entry.backlinks.length }})</summary>
-                @for (backlink of entry.backlinks; track backlink.id) {
-                  <p class="source-use">
-                    <a [routerLink]="backlink.path">{{ backlink.title }}</a
-                    >: {{ backlink.label }}. {{ backlink.context }}
-                  </p>
-                } @empty {
-                  <p>Sem citação em afirmação registrada neste recorte.</p>
+          @if (catalogue.path === 'fontes') {
+            <article [id]="entry.fragment ?? entry.id" class="result">
+              <p class="result-meta">
+                <span class="kind-tag" [attr.data-kind]="entry.kind">{{ entry.kindLabel }}</span>
+                · {{ entry.stateLabel }}
+              </p>
+              <h2 [attr.lang]="shown(entry).locale">
+                @if (catalogue.path === 'fontes') {
+                  {{ shown(entry).title }}
+                } @else {
+                  <a
+                    [routerLink]="entry.path"
+                    [fragment]="entry.fragment"
+                    [queryParams]="
+                      entry.kind === 'fonte'
+                        ? {}
+                        : { origem: origin(), idioma: params().get('idioma') }
+                    "
+                    >{{ shown(entry).title }}</a
+                  >
                 }
-              </details>
-            }
-          </article>
+              </h2>
+              <p [attr.lang]="shown(entry).locale">{{ shown(entry).summary }}</p>
+              @if (catalogue.path === 'fontes') {
+                @if (sourceUrl(entry.id); as url) {
+                  <p><a [href]="url">Consultar fonte original</a></p>
+                }
+                <details class="source-uses">
+                  <summary>Citações no acervo ({{ entry.backlinks.length }})</summary>
+                  @for (backlink of entry.backlinks; track backlink.id) {
+                    <p class="source-use">
+                      <a [routerLink]="backlink.path">{{ backlink.title }}</a
+                      >: {{ backlink.label }}. {{ backlink.context }}
+                    </p>
+                  } @empty {
+                    <p>Sem citação em afirmação registrada neste recorte.</p>
+                  }
+                </details>
+              }
+            </article>
+          } @else {
+            <article [id]="entry.fragment ?? entry.id" class="result-card">
+              <a
+                appRecordCard
+                [routerLink]="entry.path"
+                [fragment]="entry.fragment"
+                [queryParams]="{ origem: origin(), idioma: params().get('idioma') }"
+                [icon]="icon(entry.kind)"
+                [kindLabel]="entry.kindLabel"
+                [title]="shown(entry).title"
+                [period]="entry.stateLabel"
+                [note]="
+                  entry.backlinks.length
+                    ? entry.backlinks.length +
+                      (entry.backlinks.length === 1 ? ' citação' : ' citações')
+                    : ''
+                "
+                [picture]="picture(entry.id)"
+                [attr.lang]="shown(entry).locale"
+              ></a>
+            </article>
+          }
         } @empty {
           <div class="empty">
             <h2>Nenhum registro encontrado</h2>

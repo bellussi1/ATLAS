@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, computed, DestroyRef, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
 import type { Entity, Source } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
@@ -14,7 +15,6 @@ import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/id
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { PositionsEstimateComponent } from '@ideologies/components/positions-estimate/positions-estimate.component';
 import { ReadingPathComponent } from '@ideologies/components/reading-path/reading-path.component';
-import { RecordCardComponent } from '@ideologies/components/record-card/record-card.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
   ExplorationItem,
@@ -23,11 +23,12 @@ import type {
   PageBlock,
 } from '@ideologies/models/ideology-page.schema';
 import { type RelationType, relationTypes } from '@ideologies/models/relation-types';
-import { entityMedia, type PageMedia } from '@ideologies/utils/page-media-plan';
+import { type PageMedia } from '@ideologies/utils/page-media-plan';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 import { type IconKind, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 @Component({
   selector: 'app-ideology-block',

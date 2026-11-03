@@ -32,7 +32,20 @@ const known = new Set<string>([
 ]);
 
 /** Maps a graph kind (including `historical-polity`, `government`) to an icon family. */
+/** Catalogue kinds (pt facets, articles, sources) that share a family. */
+const aliases: Record<string, IconKind> = {
+  pessoa: 'person',
+  evento: 'event',
+  artigo: 'work',
+  article: 'work',
+  fonte: 'work',
+  source: 'work',
+  leitura: 'work',
+  policy: 'thesis',
+};
+
 export function iconKind(kind: string): IconKind {
+  if (aliases[kind]) return aliases[kind];
   if (kind === 'historical-polity' || kind === 'government' || kind === 'country') return 'polity';
   if (kind === 'regime') return 'polity';
   return known.has(kind) ? (kind as IconKind) : 'record';

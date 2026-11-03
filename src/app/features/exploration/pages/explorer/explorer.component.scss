@@ -370,3 +370,21 @@ h2 {
     gap: 1.5rem;
   }
 }
+/* Catalogue results use the same record card as the readings, in a regular grid. */
+.results--cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-ink);
+  .empty {
+    grid-column: 1 / -1;
+    background: var(--color-canvas);
+    padding: var(--space-4);
+  }
+}
+.result-card {
+  min-width: 0;
+  scroll-margin-top: 2rem;
+}

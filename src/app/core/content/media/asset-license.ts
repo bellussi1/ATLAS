@@ -1,4 +1,9 @@
-import type { AssetLicense, Atlas } from '@core/content/models/content-schema';
+import type {
+  AssetLicense,
+  Atlas,
+  Entity,
+  KnowledgeGraph,
+} from '@core/content/models/content-schema';
 
 export function reproducibleAsset(
   atlas: Atlas | undefined,
@@ -11,4 +16,19 @@ export function reproducibleAsset(
     asset.licenseUrl
     ? asset
     : undefined;
+}
+
+/** Licensed, attributed image for a record, from any atlas (Smith appears in both readings). */
+export function entityMedia(graph: KnowledgeGraph, entity: Pick<Entity, 'id'>) {
+  for (const atlas of graph.atlases) {
+    const asset = atlas.assetLicenses.find(
+      (item) =>
+        item.entityId === entity.id &&
+        item.attribution &&
+        item.filePageUrl &&
+        reproducibleAsset(atlas, item.assetPath),
+    );
+    if (asset) return asset;
+  }
+  return undefined;
 }

@@ -35,7 +35,8 @@ test('home search opens the universal catalogue and the reading sheet stays avai
   await expect(
     page
       .getByRole('region', { name: 'Resultados da busca' })
-      .getByRole('link', { name: 'Liberalismo', exact: true }),
+      .getByRole('link')
+      .filter({ has: page.locator('strong', { hasText: /^Liberalismo$/ }) }),
   ).toHaveCount(2);
   await page.goto('/');
   await page.getByRole('button', { name: /atlas\s*Liberalismo/ }).click();

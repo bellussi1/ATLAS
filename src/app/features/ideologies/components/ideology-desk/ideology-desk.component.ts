@@ -1,9 +1,9 @@
 import { Component, computed, inject, input, output } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, type Params, Router, RouterLink } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
 import type { Atlas } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
-import { RecordCardComponent } from '@ideologies/components/record-card/record-card.component';
 import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
 import {
   deskEntities,
@@ -16,11 +16,11 @@ import {
   linkBetween,
   parseChain,
 } from '@ideologies/utils/desk-graph';
-import { entityMedia } from '@ideologies/utils/page-media-plan';
 import { chapterDeskKind } from '@ideologies/utils/reading-trails';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 /**
  * Explorar section of a tradition's page, over its graph: search, kind and era filters, and a

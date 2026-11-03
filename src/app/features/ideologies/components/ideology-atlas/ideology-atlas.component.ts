@@ -10,17 +10,17 @@ import {
   viewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
 import type { Entity, Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
-import { RecordCardComponent } from '@ideologies/components/record-card/record-card.component';
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
-import { entityMedia } from '@ideologies/utils/page-media-plan';
 import { centuryLabel } from '@ideologies/utils/timeline-periods';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
 

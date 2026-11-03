@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
 import type { DiscoveryIndexEntry } from '@core/content/queries/discovery-index';
 import {
   EXPLORER_PAGE_SIZES,
@@ -17,10 +18,18 @@ import { contentLanguageLabels } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { ContentLanguageComponent } from '@shared/ui/content-language/content-language.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
+import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 @Component({
   selector: 'app-explorer',
-  imports: [RouterLink, RouterLinkActive, AtlasGeometricMosaicComponent, ContentLanguageComponent],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    AtlasGeometricMosaicComponent,
+    ContentLanguageComponent,
+    RecordCardComponent,
+  ],
   templateUrl: './explorer.component.html',
   styleUrl: './explorer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -58,6 +67,7 @@ export class ExplorerComponent {
     }),
   );
   // Sources keep one list: records link to their anchors (#source-…), which must stay on the page.
+  readonly icon = iconKind;
   readonly paginated = this.catalogue.path !== 'fontes';
   readonly pageSize = computed(() => parseExplorerPageSize(this.params().get('porPagina')));
   readonly page = computed(() =>
@@ -112,6 +122,10 @@ export class ExplorerComponent {
     return text
       ? { title: text.title, summary: text.summary, locale: locale! }
       : { title: entry.title, summary: entry.summary, locale: entry.sourceLocale ?? 'und' };
+  }
+  /** Licensed picture of the record, when one may be reproduced. */
+  picture(id: string): string | null {
+    return entityMedia(this.repository.knowledgeGraph, { id })?.assetPath ?? null;
   }
   private queryString(): string {
     const params = new URLSearchParams();

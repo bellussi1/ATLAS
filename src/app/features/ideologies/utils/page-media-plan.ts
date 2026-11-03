@@ -1,26 +1,11 @@
-import { reproducibleAsset } from '@core/content/media/asset-license';
-import type { Entity, KnowledgeGraph } from '@core/content/models/content-schema';
+import { entityMedia } from '@core/content/media/asset-license';
+import type { KnowledgeGraph } from '@core/content/models/content-schema';
 import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
 
 export interface PageMedia {
   assetPath: string;
   entityId: string;
   title: string;
-}
-
-/** Licensed, attributed image for a record, from any atlas (Smith appears in both readings). */
-export function entityMedia(graph: KnowledgeGraph, entity: Entity) {
-  for (const atlas of graph.atlases) {
-    const asset = atlas.assetLicenses.find(
-      (item) =>
-        item.entityId === entity.id &&
-        item.attribution &&
-        item.filePageUrl &&
-        reproducibleAsset(atlas, item.assetPath),
-    );
-    if (asset) return asset;
-  }
-  return undefined;
 }
 
 const cardPriority = ['event', 'work', 'institution', 'ideology', 'concept', 'person'];
