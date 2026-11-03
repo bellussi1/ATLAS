@@ -40,7 +40,7 @@ describe('ContentRepository generated assets', () => {
     const repository = TestBed.inject(ContentRepository);
     const atlas = await repository.loadCollection('atlas-liberalism');
     expect(atlas?.entities).toHaveLength(27);
-    expect(reads).toHaveLength(2);
+    expect(reads).toHaveLength(3);
     expect(reads.some((path) => path.includes('atlas-marx-valor'))).toBe(false);
     const [first, second] = await Promise.all([
       firstValueFrom(repository.loadKnowledgeGraph()),
@@ -48,7 +48,7 @@ describe('ContentRepository generated assets', () => {
     ]);
     expect(first).toEqual(methodologyKnowledgeGraph);
     expect(first).toBe(second);
-    expect(reads).toHaveLength(contentManifestFixture.collections.length + 4);
+    expect(reads).toHaveLength(contentManifestFixture.collections.length + 5);
     expect(new Set(reads).size).toBe(reads.length);
     expect(repository.discoveryIndex.some((entry) => entry.id === 'person-karl-marx')).toBe(true);
   });
@@ -90,7 +90,7 @@ describe('ContentRepository generated assets', () => {
   });
 
   it('rejects corrupt bytes without exposing a partial graph and retries the failed asset', async () => {
-    const file = `/content/${contentManifestFixture.collections[0].file}`;
+    const file = `c/${contentManifestFixture.collections[0].sha256}.json`;
     let fail = true;
     TestBed.overrideProvider(CONTENT_ASSET_READER, {
       useValue: async (path: string) => {
@@ -118,7 +118,7 @@ describe('ContentRepository generated assets', () => {
       firstValueFrom(TestBed.inject(ContentRepository).loadKnowledgeGraph()),
     ).rejects.toThrow();
     const http = TestBed.inject(HttpTestingController);
-    const request = http.expectOne('/content/manifest.json');
+    const request = http.expectOne((req) => req.url.endsWith('/pointer.json'));
     expect(request.request.responseType).toBe('text');
     request.flush('{"schemaVersion":999}');
     await pending;

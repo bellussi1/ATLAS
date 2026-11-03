@@ -1,6 +1,8 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
+import { DEFAULT_CONTENT_BASE_URL } from '../src/app/core/content/models/content-pointer';
+
 test('a connection keeps the search origin so the results stay one step away', async ({ page }) => {
   await page.goto('/entidades?q=Marx');
   const results = page.getByRole('region', { name: 'Resultados da busca' });
@@ -114,8 +116,10 @@ test('contextual exploration opens the matching permanent entity page', async ({
 test('all search destinations have prerendered HTML with matching title, canonical and fragments', async ({
   request,
 }) => {
-  const manifest = await (await request.get('/content/manifest.json')).json();
-  const index = (await (await request.get('/content/' + manifest.search.file)).json()) as {
+  const base = DEFAULT_CONTENT_BASE_URL;
+  const pointer = await (await request.get(`${base}/pointer.json`)).json();
+  const manifest = await (await request.get(`${base}/c/${pointer.manifest.sha256}.json`)).json();
+  const index = (await (await request.get(`${base}/c/${manifest.search.sha256}.json`)).json()) as {
     path: string;
     title: string;
     fragment?: string;

@@ -1,12 +1,24 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { type APIRequestContext, expect, test } from '@playwright/test';
+
+import { DEFAULT_CONTENT_BASE_URL } from '../src/app/core/content/models/content-pointer';
+
+const base = DEFAULT_CONTENT_BASE_URL;
+
+async function loadManifest(request: APIRequestContext) {
+  const pointer = await (await request.get(`${base}/pointer.json`)).json();
+  return (await (await request.get(`${base}/c/${pointer.manifest.sha256}.json`)).json()) as {
+    collections: unknown[];
+    adjacency: { sha256: string };
+  };
+}
 
 test('home loads no graph; SPA navigation uses hashed assets once across both readings', async ({
   page,
 }) => {
   const resources: string[] = [];
   page.on('request', (request) => {
-    if (request.url().includes('/content/')) resources.push(new URL(request.url()).pathname);
+    if (request.url().startsWith(base)) resources.push(new URL(request.url()).pathname);
   });
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
@@ -16,21 +28,17 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
     .getByRole('link', { name: /Marxismo/ })
     .click();
   await expect(page.locator('h1')).toHaveText('Marxismo');
-  const compiled = resources.filter((path) => /^\/content\/[^/]+\.json$/.test(path));
-  const manifest = await (await page.request.get('/content/manifest.json')).json();
+  const compiled = resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path));
+  const manifest = await loadManifest(page.request);
   expect(compiled).toHaveLength(manifest.collections.length + 4);
   expect(new Set(compiled).size).toBe(compiled.length);
-  expect(compiled.filter((path) => path.includes('/atlas-'))).toHaveLength(
-    manifest.collections.length,
-  );
-  expect(compiled.some((path) => /\/adjacency\.[a-f0-9]{64}\.json$/.test(path))).toBe(true);
-  expect(resources).not.toContain('/content/atlas.json');
+  expect(compiled).toContain(`/c/${manifest.adjacency.sha256}.json`);
   await page
     .locator('.site-header')
     .getByRole('link', { name: /Liberalismo/ })
     .click();
   await expect(page.locator('h1')).toHaveText('Liberalismo');
-  expect(resources.filter((path) => /^\/content\/[^/]+\.json$/.test(path))).toEqual(compiled);
+  expect(resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path))).toEqual(compiled);
 });
 
 test('SSR transfers all compiled data needed for hydration without duplicate HTTP', async ({
@@ -38,7 +46,7 @@ test('SSR transfers all compiled data needed for hydration without duplicate HTT
 }) => {
   const resources: string[] = [];
   page.on('request', (request) => {
-    if (request.url().includes('/content/')) resources.push(request.url());
+    if (request.url().startsWith(base)) resources.push(request.url());
   });
   await page.goto('/liberalismo/');
   await expect(page.getByRole('navigation', { name: 'Capítulos' })).toBeVisible();
@@ -54,7 +62,7 @@ test('a failed content asset preserves the current page and offers a working ret
   page,
 }) => {
   await page.goto('/');
-  await page.route('**/content/manifest.json', (route) => route.abort());
+  await page.route(`${base}/pointer.json`, (route) => route.abort());
   await page
     .locator('.site-header')
     .getByRole('link', { name: /Liberalismo/ })
@@ -67,7 +75,7 @@ test('a failed content asset preserves the current page and offers a working ret
       ['critical', 'serious'].includes(violation.impact ?? ''),
     ),
   ).toEqual([]);
-  await page.unroute('**/content/manifest.json');
+  await page.unroute(`${base}/pointer.json`);
   await page.getByRole('button', { name: 'Tentar novamente' }).click();
   await expect(page.locator('h1')).toHaveText('Liberalismo');
   await expect(page.getByRole('alert')).toHaveCount(0);

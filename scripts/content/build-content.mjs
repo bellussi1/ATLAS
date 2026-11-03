@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { formatJson, readSourceGraph, sha256, validateSourceGraph } from './source-graph.mjs';
 import { buildExplorationLayout } from './exploration-layout.mjs';
 import { compileTranslations } from './translations.mjs';
+import { artifactKey, buildPointer } from './r2-content.mjs';
 
 const { buildDiscoveryIndex } =
   await import('../../src/app/core/content/queries/discovery-index.ts');
@@ -143,6 +144,14 @@ export async function buildContent({
     await atomicFile(join(outputDirectory, resource.file), resource.body);
   await atomicFile(join(outputDirectory, 'manifest.json'), await formatJson(manifest));
   if (fixture) {
+    const manifestBody = `${JSON.stringify(manifest)}\n`;
+    const pointer = buildPointer({
+      baseUrl: 'https://fixture.invalid',
+      release: manifest.release,
+      manifest: { sha256: sha256(manifestBody), bytes: Buffer.byteLength(manifestBody) },
+      artifacts: assets.map(({ file, sha256: digest, bytes }) => ({ file, sha256: digest, bytes })),
+      media: [],
+    });
     await mkdir(join(projectRoot, 'generated/testing'), { recursive: true });
     await atomicFile(
       join(projectRoot, 'generated/testing/content-fixture.json'),
@@ -152,9 +161,13 @@ export async function buildContent({
         adjacency,
         layouts,
         manifest,
-        assets: Object.fromEntries(
-          assets.map((resource) => [`/content/${resource.file}`, resource.body]),
-        ),
+        assets: {
+          'pointer.json': JSON.stringify(pointer),
+          [artifactKey(sha256(manifestBody))]: manifestBody,
+          ...Object.fromEntries(
+            assets.map((resource) => [artifactKey(resource.sha256), resource.body]),
+          ),
+        },
       }),
     );
   }
