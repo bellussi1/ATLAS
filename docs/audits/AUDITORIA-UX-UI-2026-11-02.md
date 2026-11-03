@@ -592,3 +592,5 @@ Legenda: **feito**, **parcial** (o que falta está descrito), **pendente** (sem 
 | AUD-52 | feito | "Você leu N%", "Voltar de onde veio". |
 | AUD-53 | pendente | Mídia sem dimensões no schema; CLS já medido em zero nas rotas principais. Exige dados. |
 | AUD-54 | feito | Resolvers sem uso removidos; documentação atualizada. |
+
+Falha pré-existente `editorial-i18n.spec.ts:59` corrigida em 03/11/2026: resultados exibem o título traduzido e a origem de retorno aceita `idioma`.

@@ -150,9 +150,9 @@
               <span class="kind-tag" [attr.data-kind]="entry.kind">{{ entry.kindLabel }}</span>
               · {{ entry.stateLabel }}
             </p>
-            <h2 [attr.lang]="entry.sourceLocale">
+            <h2 [attr.lang]="shown(entry).locale">
               @if (catalogue.path === 'fontes') {
-                {{ entry.title }}
+                {{ shown(entry).title }}
               } @else {
                 <a
                   [routerLink]="entry.path"
@@ -162,11 +162,11 @@
                       ? {}
                       : { origem: origin(), idioma: params().get('idioma') }
                   "
-                  >{{ entry.title }}</a
+                  >{{ shown(entry).title }}</a
                 >
               }
             </h2>
-            <p [attr.lang]="entry.sourceLocale">{{ entry.summary }}</p>
+            <p [attr.lang]="shown(entry).locale">{{ shown(entry).summary }}</p>
             @if (catalogue.path === 'fontes') {
               @if (sourceUrl(entry.id); as url) {
                 <p><a [href]="url">Consultar fonte original</a></p>

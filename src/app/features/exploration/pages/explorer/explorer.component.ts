@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import type { DiscoveryIndexEntry } from '@core/content/queries/discovery-index';
 import {
   EXPLORER_PAGE_SIZES,
   explorerCatalogues,
@@ -103,6 +104,14 @@ export class ExplorerComponent {
         idioma: this.params().get('idioma'),
       },
     });
+  }
+  /** Title and summary in the requested language when an approved translation exists. */
+  shown(entry: DiscoveryIndexEntry): { title: string; summary: string; locale: string } {
+    const locale = this.params().get('idioma');
+    const text = entry.translations?.find((t) => t.locale === locale)?.text;
+    return text
+      ? { title: text.title, summary: text.summary, locale: locale! }
+      : { title: entry.title, summary: entry.summary, locale: entry.sourceLocale ?? 'und' };
   }
   private queryString(): string {
     const params = new URLSearchParams();

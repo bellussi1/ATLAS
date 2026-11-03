@@ -214,7 +214,7 @@ export function safeExplorerReturn(value: string | null): string | null {
       url.hash ||
       !explorerCatalogues.some((c) => '/' + c.path === url.pathname) ||
       [...url.searchParams.keys()].some(
-        (k) => !['q', 'tipo', 'estado', 'porPagina', 'pagina'].includes(k),
+        (k) => !['q', 'tipo', 'estado', 'porPagina', 'pagina', 'idioma'].includes(k),
       )
     )
       return null;
