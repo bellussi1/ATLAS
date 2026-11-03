@@ -14,10 +14,7 @@ export const contentFixture: ContentPackage = {
 } as ContentPackage;
 export const methodologyKnowledgeGraph = contentFixture.graph;
 export const methodologyAtlas = methodologyKnowledgeGraph.atlases[0];
-export const contentAssetFixture: Record<string, string> = {
-  ...data.assets,
-  '/content/manifest.json': JSON.stringify(data.manifest),
-};
+export const contentAssetFixture: Record<string, string> = data.assets;
 export const contentManifestFixture = data.manifest;
 export function provideContentFixture(): Provider[] {
   return [

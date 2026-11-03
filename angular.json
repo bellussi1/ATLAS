@@ -34,11 +34,6 @@
                 "input": "src/content",
                 "output": "content",
                 "ignore": ["knowledge/**", "translations/**", "atlas.json"]
-              },
-              {
-                "glob": "**/*.json",
-                "input": "generated/content",
-                "output": "content"
               }
             ],
             "styles": ["src/styles.scss"],

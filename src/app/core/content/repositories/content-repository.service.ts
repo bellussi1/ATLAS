@@ -9,6 +9,11 @@ import {
   searchIndexSchema,
 } from '@core/content/models/content-artifacts';
 import {
+  artifactKey,
+  type ContentPointer,
+  contentPointerSchema,
+} from '@core/content/models/content-pointer';
+import {
   type Atlas,
   atlasSchema,
   type Entity,
@@ -32,6 +37,7 @@ export class ContentRepository {
   private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
   private state = inject(CONTENT_INITIAL_PACKAGE);
   private readonly requests = new Map<string, Promise<string>>();
+  private pointer?: Promise<ContentPointer>;
   private manifest?: Promise<ContentManifest>;
   private pending?: Promise<KnowledgeGraph>;
 
@@ -53,7 +59,7 @@ export class ContentRepository {
     const manifest = await this.getManifest();
     const entry = manifest.collections.find((collection) => collection.id === id);
     if (!entry) return undefined;
-    const atlas = atlasSchema.parse(await this.resource(entry));
+    const atlas = atlasSchema.parse(await this.resource(entry, entry.file));
     if (atlas.id !== id) throw new Error('Identidade da coleção incompatível com o manifesto.');
     return atlas;
   }
@@ -89,40 +95,57 @@ export class ContentRepository {
     if (!this.state) throw new Error('Índices de conteúdo indisponíveis.');
     return this.state;
   }
-  private asset(path: string): Promise<string> {
-    const previous = this.requests.get(path);
+  /** Reads one object key from the base URL once; browser reads reuse the server's TransferState. */
+  private asset(key: string): Promise<string> {
+    const previous = this.requests.get(key);
     if (previous) return previous;
-    const key = makeStateKey<string>(`content:${path}`);
+    const transferKey = makeStateKey<string>(`content:${key}`);
     const request = (async () => {
-      if (this.browser && this.transfer.hasKey(key)) {
-        const value = this.transfer.get(key, '');
-        this.transfer.remove(key);
+      if (this.browser && this.transfer.hasKey(transferKey)) {
+        const value = this.transfer.get(transferKey, '');
+        this.transfer.remove(transferKey);
         return value;
       }
-      const value = await this.read(path);
-      if (!this.browser) this.transfer.set(key, value);
+      const value = await this.read(key);
+      if (!this.browser) this.transfer.set(transferKey, value);
       return value;
     })().catch((error: unknown) => {
-      this.requests.delete(path);
+      this.requests.delete(key);
       throw error;
     });
-    this.requests.set(path, request);
+    this.requests.set(key, request);
     return request;
   }
+  /** The live pointer is the only mutable object; everything it names is verified by digest. */
+  private getPointer(): Promise<ContentPointer> {
+    this.pointer ??= this.asset('pointer.json')
+      .then((text) => contentPointerSchema.parse(JSON.parse(text)))
+      .catch((error: unknown) => {
+        this.pointer = undefined;
+        this.requests.delete('pointer.json');
+        throw error;
+      });
+    return this.pointer;
+  }
   private getManifest(): Promise<ContentManifest> {
-    this.manifest ??= this.asset('/content/manifest.json')
-      .then((text) => contentManifestSchema.parse(JSON.parse(text)))
+    this.manifest ??= this.getPointer()
+      .then((pointer) => this.resource(pointer.manifest, 'manifest.json'))
+      .then((value) => contentManifestSchema.parse(value))
       .catch((error: unknown) => {
         this.manifest = undefined;
-        this.requests.delete('/content/manifest.json');
+        this.pointer = undefined;
+        this.requests.delete('pointer.json');
         throw error;
       });
     return this.manifest;
   }
-  private async resource(resource: ContentManifest['search']): Promise<unknown> {
-    const path = `/content/${resource.file}`;
+  private async resource(
+    resource: { sha256: string; bytes: number },
+    label: string,
+  ): Promise<unknown> {
+    const key = artifactKey(resource.sha256);
     try {
-      const text = await this.asset(path);
+      const text = await this.asset(key);
       const bytes = new TextEncoder().encode(text);
       const hash = Array.from(
         new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256', bytes)),
@@ -130,10 +153,10 @@ export class ContentRepository {
         .map((value) => value.toString(16).padStart(2, '0'))
         .join('');
       if (bytes.byteLength !== resource.bytes || hash !== resource.sha256)
-        throw new Error(`Falha de integridade: ${resource.file}`);
+        throw new Error(`Falha de integridade: ${label}`);
       return JSON.parse(text);
     } catch (error) {
-      this.requests.delete(path);
+      this.requests.delete(key);
       throw error;
     }
   }
@@ -144,9 +167,9 @@ export class ContentRepository {
       const manifest = await this.getManifest();
       const [atlases, search, adjacency, layouts] = await Promise.all([
         Promise.all(manifest.collections.map((entry) => this.loadCollection(entry.id))),
-        this.resource(manifest.search),
-        this.resource(manifest.adjacency),
-        this.resource(manifest.layouts),
+        this.resource(manifest.search, manifest.search.file),
+        this.resource(manifest.adjacency, manifest.adjacency.file),
+        this.resource(manifest.layouts, manifest.layouts.file),
       ]);
       const graph = knowledgeGraphSchema.parse({ ...manifest.graph, atlases });
       this.state = {
@@ -159,7 +182,8 @@ export class ContentRepository {
     })().catch((error: unknown) => {
       this.pending = undefined;
       this.manifest = undefined;
-      this.requests.delete('/content/manifest.json');
+      this.pointer = undefined;
+      this.requests.delete('pointer.json');
       throw error;
     });
     return this.pending;
