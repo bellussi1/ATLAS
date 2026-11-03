@@ -105,14 +105,17 @@
                   </details>
                 }
                 @if (review.revisit.length) {
-                  <p class="review-revisit">
+                  <div class="review-revisit">
                     <span>Rever de dois capítulos atrás:</span>
                     @for (item of review.revisit; track item.entityId) {
-                      <button type="button" [appKnowledgeContext]="{ entityId: item.entityId }">
-                        {{ item.label }}
-                      </button>
+                      <button
+                        appRecordCard
+                        [entityId]="item.entityId"
+                        [title]="item.label"
+                        [appKnowledgeContext]="{ entityId: item.entityId }"
+                      ></button>
                     }
-                  </p>
+                  </div>
                 }
               </aside>
             }

@@ -105,7 +105,7 @@ test('relations open stacked sheets that Esc and the back button lift one at a t
   page,
 }) => {
   await page.goto('/marxismo/?cadeia=person-karl-marx');
-  await page.getByRole('button', { name: 'Abrir a folha com fontes' }).click();
+  await page.locator('.chain-step .record-card').click();
   const sheet = page.getByRole('dialog');
   await expect(sheet.locator('h2')).toHaveText('Karl Marx');
   await expect(sheet.locator('.sheet-footer')).toContainText('Fonte');

@@ -91,10 +91,10 @@ test('timeline record opens its full context and Escape returns to the reading',
   await page.goto('/marxismo/');
   const reading = page.locator('.strip-reading');
   await reading.scrollIntoViewIfNeeded();
-  await reading.getByRole('button', { name: 'Abrir ficha completa +' }).click();
+  await reading.locator('.context-card').click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
-  await expect(reading.getByRole('button', { name: 'Abrir ficha completa +' })).toBeFocused();
+  await expect(reading.locator('.context-card')).toBeFocused();
 });

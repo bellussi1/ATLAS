@@ -1,13 +1,13 @@
-@if (picture(); as src) {
+@if (shownPicture(); as src) {
   <img class="card-picture" [src]="src" alt="" loading="lazy" />
 } @else {
-  <app-kind-icon class="card-glyph" [kind]="icon()" />
+  <app-kind-icon class="card-glyph" [kind]="shownIcon()" />
 }
-<small class="card-kind"><app-kind-icon [kind]="icon()" />{{ kindLabel() }}</small>
-<strong>{{ title() }}</strong>
-@if (period()) {
-  <span class="card-period">{{ period() }}</span>
+<small class="card-kind"><app-kind-icon [kind]="shownIcon()" />{{ shownKind() }}</small>
+<strong>{{ shownTitle() }}</strong>
+@if (shownPeriod()) {
+  <span class="card-period">{{ shownPeriod() }}</span>
 }
-@if (note()) {
-  <span class="card-links">{{ note() }}</span>
+@if (shownNote()) {
+  <span class="card-links">{{ shownNote() }}</span>
 }

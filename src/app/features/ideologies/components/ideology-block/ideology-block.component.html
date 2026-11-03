@@ -18,32 +18,16 @@
     <app-marx-atlas-page [inline]="true" />
   }
   @case ('entities') {
-    <div
-      class="entity-gallery"
-      [id]="blockId() + '-gallery'"
-      appReveal
-      [class.portraits]="block().type === 'entities' && $any(block()).mode === 'thinkers'"
-      [class.documents]="block().type === 'entities' && $any(block()).mode === 'documents'"
-    >
+    <div class="entity-gallery" [id]="blockId() + '-gallery'" appReveal>
       @for (entity of entities(); track entity.id; let e = $index) {
-        <div
-          class="entity-entry"
-          data-stagger
-          [style.--stagger]="e % 6"
+        <button
+          appRecordCard
+          [entityId]="entity.id"
+          [title]="entity.title"
+          [picture]="entityPicture(entity)?.assetPath ?? null"
           [hidden]="e >= entityPreviewCount && !showAllEntities()"
-        >
-          <button type="button" class="atlas-press" [appKnowledgeContext]="{ entityId: entity.id }">
-            @if (entityPicture(entity); as asset) {
-              <img [src]="asset.assetPath" alt="" width="180" height="210" loading="lazy" />
-            }
-            <span class="entity-date">{{ period(entity) }}</span>
-            <strong>{{ entity.title }}</strong>
-            @if (note(entity.id); as why) {
-              <span class="entity-why">{{ why }}</span>
-            }
-            <span class="action-cue">Abrir ficha +</span>
-          </button>
-        </div>
+          [appKnowledgeContext]="{ entityId: entity.id }"
+        ></button>
       } @empty {
         <p role="status">Nenhum registro disponível neste capítulo.</p>
       }
@@ -149,12 +133,12 @@
           <p><app-knowledge-text [text]="entity.summary" /></p>
           <p>{{ entity.context }}</p>
           <button
-            class="context-action"
-            type="button"
+            appRecordCard
+            class="context-card"
+            [entityId]="entity.id"
+            [title]="entity.title"
             [appKnowledgeContext]="{ entityId: entity.id }"
-          >
-            Abrir ficha +
-          </button>
+          ></button>
         } @else {
           <p>Selecione outro período para continuar.</p>
         }
@@ -361,18 +345,26 @@
         <div class="argument-board" aria-label="Defesa, crítica, resposta e limites">
           @for (phase of phases; track phase.key; let p = $index) {
             <button
-              type="button"
-              class="argument-card atlas-press"
+              appRecordCard
+              class="argument-card"
               [attr.data-position]="phase.key"
-              [style.--stagger]="p"
+              [icon]="'thesis'"
+              [kindLabel]="phase.label"
+              [title]="topic[phase.key].title"
+              period=""
+              [note]="topic[phase.key].classification"
+              [picture]="null"
+              [tone]="
+                phase.key === 'criticism'
+                  ? 'event'
+                  : phase.key === 'response'
+                    ? 'concept'
+                    : phase.key === 'limits'
+                      ? 'reading'
+                      : 'work'
+              "
               [appKnowledgeContext]="{ record: explorationContext(topic[phase.key]) }"
-            >
-              <span class="argument-position">{{ phase.label }}</span
-              ><strong>{{ topic[phase.key].title }}</strong
-              ><span class="metadata">{{ topic[phase.key].classification }}</span
-              ><span class="argument-summary">{{ topic[phase.key].summary }}</span
-              ><span class="action-cue">Abrir ficha +</span>
-            </button>
+            ></button>
           }
         </div>
       }

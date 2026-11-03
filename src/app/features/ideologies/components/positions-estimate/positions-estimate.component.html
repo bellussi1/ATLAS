@@ -45,16 +45,13 @@
   <div class="entities">
     @for (row of rows(); track row.id) {
       <article class="entity">
-        <h4>
-          <button
-            type="button"
-            class="entity-open atlas-press"
-            [appKnowledgeContext]="{ entityId: row.id }"
-          >
-            {{ row.title }}
-            <span class="atlas-arrow" aria-hidden="true">→</span>
-          </button>
-        </h4>
+        <h4 class="sr-only">{{ row.title }}</h4>
+        <button
+          appRecordCard
+          [entityId]="row.id"
+          [title]="row.title"
+          [appKnowledgeContext]="{ entityId: row.id }"
+        ></button>
 
         @if (row.evidence.length) {
           <ul class="axes">

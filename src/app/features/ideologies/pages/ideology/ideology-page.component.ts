@@ -22,6 +22,7 @@ import { chapterDeskKind } from '@ideologies/utils/reading-trails';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
 type Chapter = IdeologyPage['chapters'][number];
@@ -32,6 +33,7 @@ interface PageState {
 @Component({
   selector: 'app-ideology-page',
   imports: [
+    RecordCardComponent,
     RouterLink,
     IdeologyBlockComponent,
     IdeologyDeskComponent,

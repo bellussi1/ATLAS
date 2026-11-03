@@ -3,6 +3,7 @@ import type { Entity } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 export interface EraChartEpoch {
   id: string;
@@ -20,7 +21,7 @@ export interface EraChartEpoch {
  */
 @Component({
   selector: 'app-era-chart',
-  imports: [KnowledgeContextDirective, AtlasRevealDirective],
+  imports: [RecordCardComponent, KnowledgeContextDirective, AtlasRevealDirective],
   templateUrl: './era-chart.component.html',
   styleUrl: './era-chart.component.scss',
 })

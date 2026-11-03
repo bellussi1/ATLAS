@@ -133,12 +133,12 @@
                 <p>{{ step.entity.summary }}</p>
                 <p class="chain-actions">
                   <button
-                    type="button"
-                    class="chain-open"
+                    appRecordCard
+                    [entityId]="step.entity.id"
+                    [title]="step.entity.title"
+                    note="Abrir a folha com fontes"
                     [appKnowledgeContext]="{ entityId: step.entity.id }"
-                  >
-                    Abrir a folha com fontes
-                  </button>
+                  ></button>
                   <a [routerLink]="'/verbete/' + step.entity.slug">Abrir o verbete</a>
                 </p>
               }

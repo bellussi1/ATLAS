@@ -2,6 +2,7 @@ import { Component, computed, input, signal } from '@angular/core';
 import type { PageBlock } from '@ideologies/models/ideology-page.schema';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 type Work = Extract<PageBlock, { type: 'reading-path' }>['works'][number];
 
@@ -11,7 +12,7 @@ type Work = Extract<PageBlock, { type: 'reading-path' }>['works'][number];
  */
 @Component({
   selector: 'app-reading-path',
-  imports: [KnowledgeContextDirective, AtlasRevealDirective],
+  imports: [RecordCardComponent, KnowledgeContextDirective, AtlasRevealDirective],
   templateUrl: './reading-path.component.html',
   styleUrl: './reading-path.component.scss',
 })

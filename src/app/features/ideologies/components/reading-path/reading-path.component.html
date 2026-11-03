@@ -58,13 +58,11 @@
               <p class="work-edition">{{ work.edition }}</p>
               @if (work.entityId) {
                 <button
-                  type="button"
-                  class="work-open atlas-press"
+                  appRecordCard
+                  [entityId]="work.entityId"
+                  [title]="work.title"
                   [appKnowledgeContext]="{ entityId: work.entityId }"
-                >
-                  Abrir ficha
-                  <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
-                </button>
+                ></button>
               }
             </div>
           </li>

@@ -1,10 +1,57 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, input } from '@angular/core';
-import { AtlasKindIconComponent, type IconKind } from '@shared/ui/kind-icon/kind-icon.component';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  ElementRef,
+  inject,
+  input,
+} from '@angular/core';
+import { entityMedia } from '@core/content/media/asset-license';
+import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import {
+  AtlasKindIconComponent,
+  type IconKind,
+  iconKind,
+} from '@shared/ui/kind-icon/kind-icon.component';
+
+/** Colour families shared with the context sheet, so a card and the sheet it opens match. */
+export type RecordTone = 'person' | 'work' | 'concept' | 'event' | 'idea' | 'reading';
+
+const toneByIcon: Record<IconKind, RecordTone> = {
+  person: 'person',
+  activist: 'person',
+  politician: 'person',
+  work: 'work',
+  thesis: 'work',
+  concept: 'concept',
+  event: 'event',
+  place: 'event',
+  ideology: 'idea',
+  party: 'idea',
+  institution: 'idea',
+  polity: 'idea',
+  record: 'reading',
+};
+
+const kindNames: Record<string, string> = {
+  person: 'Pessoa',
+  work: 'Obra',
+  concept: 'Conceito',
+  event: 'Acontecimento',
+  ideology: 'Corrente',
+  institution: 'Instituição',
+  party: 'Partido',
+  place: 'Lugar',
+  government: 'Governo',
+  'historical-polity': 'Formação política',
+};
 
 /**
  * Uniform record card on a native button or link: kind (glyph and label), title, period and a
- * closing note (relations, classification). The licensed picture replaces the glyph
- * corner. The host stays a native control so opening directives or router links sit on it.
+ * closing note (relations, classification). With `entityId` it fills itself from the graph;
+ * explicit inputs override. The licensed picture replaces the glyph corner, and the colour
+ * family is the same as the context sheet's. The host stays a native control so opening
+ * directives or router links sit on it.
  */
 @Component({
   // Attribute selector so the host stays a native button or link.
@@ -17,17 +64,78 @@ import { AtlasKindIconComponent, type IconKind } from '@shared/ui/kind-icon/kind
   host: {
     class: 'record-card',
     '[attr.type]': "isButton ? 'button' : null",
-    '[attr.data-kind]': 'tone() ?? icon()',
+    '[attr.data-tone]': 'shownTone()',
   },
 })
 export class RecordCardComponent {
+  private readonly repository = inject(ContentRepository);
   readonly isButton = inject(ElementRef).nativeElement.tagName === 'BUTTON';
-  readonly icon = input.required<IconKind>();
-  readonly kindLabel = input.required<string>();
-  readonly title = input.required<string>();
-  readonly period = input<string>('');
-  readonly note = input<string>('');
-  readonly picture = input<string | null>(null);
-  /** Colour family of the top rule; defaults to the glyph family. */
+  readonly entityId = input<string | null>(null);
+  readonly icon = input<IconKind | null>(null);
+  readonly kindLabel = input<string | null>(null);
+  readonly title = input<string | null>(null);
+  readonly period = input<string | null>(null);
+  readonly note = input<string | null>(null);
+  readonly picture = input<string | null | undefined>(undefined);
+  /** Colour family; defaults to the family of the glyph. Graph kinds are accepted too. */
   readonly tone = input<string | null>(null);
+
+  /** The graph, or null before content loads; explicit inputs still render the card. */
+  private readonly graph = computed(() => {
+    if (!this.entityId()) return null;
+    try {
+      return this.repository.knowledgeGraph;
+    } catch {
+      return null;
+    }
+  });
+  private readonly entity = computed(() => {
+    const id = this.entityId();
+    if (!id) return undefined;
+    for (const atlas of this.graph()?.atlases ?? []) {
+      const entity = atlas.entities.find((e) => e.id === id);
+      if (entity) return entity;
+    }
+    return undefined;
+  });
+  readonly shownIcon = computed<IconKind>(
+    () => this.icon() ?? iconKind(this.entity()?.kind ?? 'record'),
+  );
+  readonly shownKind = computed(
+    () => this.kindLabel() ?? kindNames[this.entity()?.kind ?? ''] ?? 'Registro',
+  );
+  readonly shownTitle = computed(() => this.title() ?? this.entity()?.title ?? '');
+  readonly shownPeriod = computed(() => {
+    if (this.period() !== null) return this.period();
+    const extent = this.entity()?.temporalExtent;
+    if (!extent) return '';
+    if (extent.label) return extent.label;
+    if (extent.startYear === null) return '';
+    return extent.endYear && extent.endYear !== extent.startYear
+      ? `${extent.startYear}–${extent.endYear}`
+      : `${extent.startYear}`;
+  });
+  readonly shownNote = computed(() => {
+    if (this.note() !== null) return this.note();
+    const id = this.entityId();
+    if (!id) return '';
+    const count = (this.graph()?.atlases ?? [])
+      .flatMap((a) => a.relations)
+      .filter((r) => r.fromEntityId === id || r.toEntityId === id).length;
+    return count ? `${count} ${count === 1 ? 'relação' : 'relações'}` : '';
+  });
+  readonly shownPicture = computed(() => {
+    if (this.picture() !== undefined) return this.picture();
+    const id = this.entityId();
+    const graph = this.graph();
+    return id && graph ? (entityMedia(graph, { id })?.assetPath ?? null) : null;
+  });
+  readonly shownTone = computed<RecordTone>(() => {
+    const tone = this.tone();
+    if (tone && tone in toneByIcon) return toneByIcon[tone as IconKind];
+    if (tone && ['person', 'work', 'concept', 'event', 'idea', 'reading'].includes(tone))
+      return tone as RecordTone;
+    if (tone) return toneByIcon[iconKind(tone)];
+    return toneByIcon[this.shownIcon()];
+  });
 }

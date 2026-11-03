@@ -382,12 +382,12 @@
           <h3>{{ current.title }}</h3>
           <p><app-knowledge-text [text]="current.summary" /></p>
           <button
-            type="button"
-            class="context-action"
+            appRecordCard
+            class="context-card"
+            [entityId]="current.id"
+            [title]="current.title"
             [appKnowledgeContext]="{ entityId: current.id }"
-          >
-            Abrir ficha completa +
-          </button>
+          ></button>
         </article>
       } @else {
         <p role="status">Ainda não há datas estruturadas suficientes para esta visualização.</p>

@@ -7,6 +7,7 @@ import {
   largestPairDifference,
 } from '@ideologies/utils/positions';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
+import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 interface ClaimView {
   id: string;
@@ -36,7 +37,7 @@ interface EntityView {
  */
 @Component({
   selector: 'app-positions-estimate',
-  imports: [KnowledgeContextDirective],
+  imports: [RecordCardComponent, KnowledgeContextDirective],
   templateUrl: './positions-estimate.component.html',
   styleUrl: './positions-estimate.component.scss',
 })

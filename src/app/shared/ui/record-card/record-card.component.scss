@@ -59,7 +59,7 @@
     padding: 0.55rem 0.55rem 0.9rem 0.9rem;
     border-radius: 0 0 0 100%;
     background: var(--tab);
-    color: #141414;
+    color: var(--on-tab, #141414);
     transition: transform var(--motion-standard) var(--ease-out);
     transform-origin: top right;
   }
@@ -116,21 +116,6 @@
     outline-offset: 3px;
   }
 }
-:host([data-kind='person']) {
-  --tab: #6f82ff;
-}
-:host([data-kind='work']) {
-  --tab: #d0a63e;
-}
-:host([data-kind='concept']) {
-  --tab: #45a77c;
-}
-:host([data-kind='event']) {
-  --tab: #ff6a5c;
-}
-:host([data-kind='ideology']) {
-  --tab: #c792ea;
-}
 @media (prefers-reduced-motion: reduce) {
   :host {
     transition: none;
@@ -139,13 +124,27 @@
     transform: none;
   }
 }
-:host([data-kind='thesis']) {
-  --tab: #eab0c2;
+/* Same families as the context sheet (knowledge-context): person, work, concept, event, idea. */
+:host([data-tone='person']) {
+  --tab: var(--color-rose-paper, #eab0c2);
 }
-:host([data-kind='politician']),
-:host([data-kind='party']) {
-  --tab: #7fbdb5;
+:host([data-tone='work']) {
+  --tab: var(--color-ochre-paper, #eec35a);
 }
-:host([data-kind='institution']) {
-  --tab: #eec35a;
+:host([data-tone='concept']) {
+  --tab: var(--color-teal-paper, #7fbdb5);
+}
+:host([data-tone='event']) {
+  --tab: var(--color-orange-paper, #ef8a3a);
+}
+:host([data-tone='idea']) {
+  --tab: var(--color-indigo, #363a5f);
+  --on-tab: #fbf8f1;
+}
+:host([data-tone='reading']) {
+  --tab: var(--color-accent, #b81d16);
+  --on-tab: #fbf8f1;
+}
+:host(.is-expanded) {
+  box-shadow: 6px 6px 0 var(--color-accent, #b81d16);
 }

@@ -90,13 +90,15 @@
     <h4>{{ selected().title }}</h4>
     <p class="detail-summary">{{ selected().summary }}</p>
     <button
-      type="button"
-      class="detail-open atlas-press"
+      appRecordCard
+      [icon]="'event'"
+      [kindLabel]="selected().kicker"
+      [title]="selected().title"
+      period=""
+      note="Fundamento e fontes"
+      [picture]="null"
       [appKnowledgeContext]="{ record: selected().context }"
-    >
-      Abrir fundamento e fontes
-      <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
-    </button>
+    ></button>
     <h5>
       Registros datados na época <span>{{ inEpoch().length }}</span>
     </h5>
