@@ -38,7 +38,14 @@
             (click)="select('smith')"
           >
             @if (smithPortrait; as asset) {
-              <img [src]="asset.assetPath" alt="" width="500" height="609" />
+              <img
+                [src]="asset.assetPath"
+                alt=""
+                width="500"
+                height="609"
+                loading="lazy"
+                decoding="async"
+              />
             }
             <span class="thesis-copy"
               ><span>1776 · Adam Smith · A riqueza das nações</span>Trabalho que uma mercadoria pode
@@ -73,7 +80,14 @@
             (click)="select('marx')"
           >
             @if (marxPortrait; as asset) {
-              <img [src]="asset.assetPath" alt="" width="500" height="781" />
+              <img
+                [src]="asset.assetPath"
+                alt=""
+                width="500"
+                height="781"
+                loading="lazy"
+                decoding="async"
+              />
             }
             <span class="thesis-copy"
               ><span>1867 · Karl Marx · O capital, volume I</span>Tempo de trabalho socialmente
