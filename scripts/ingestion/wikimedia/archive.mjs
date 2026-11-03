@@ -1,9 +1,14 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
 import { basename, dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { z } from 'zod';
 
 export const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
+/** Digest-named JSON responses fetched from R2 by fetch-raw.mjs; git keeps only the manifests. */
+export const rawCacheDirectory = fileURLToPath(
+  new URL('../../../generated/raw-cache/', import.meta.url),
+);
 export const configSchema = z.object({
   id: z.string().regex(/^[a-z][a-z0-9-]*$/),
   slug: z.string(),
@@ -76,6 +81,19 @@ export function captureClient(fetchResource) {
   };
 }
 
+/** Local blob first, then the R2 cache; a missing JSON body points to `npm run ingest:fetch-raw`. */
+async function readBlob(root, sha256) {
+  const name = `${sha256}.bin`;
+  for (const directory of [join(root, 'blobs'), rawCacheDirectory]) {
+    try {
+      return await readFile(join(directory, name));
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
+  }
+  throw Error(`Blob ausente: ${sha256}. Rode \`npm run ingest:fetch-raw\`.`);
+}
+
 export async function loadArchive(directory) {
   const root = resolve(directory);
   const manifest = manifestSchema.parse(
@@ -88,7 +106,7 @@ export async function loadArchive(directory) {
   const responses = new Map();
   for (const request of manifest.requests) {
     if (responses.has(request.url)) throw Error(`URL duplicada no manifest: ${request.url}`);
-    const bytes = await readFile(join(root, 'blobs', `${request.sha256}.bin`));
+    const bytes = await readBlob(root, request.sha256);
     if (digest(bytes) !== request.sha256) throw Error(`Falha de integridade/hash: ${request.url}`);
     responses.set(request.url, { ...request, bytes });
   }

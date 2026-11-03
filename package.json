@@ -24,6 +24,8 @@
     "select:marxism": "node scripts/select-wikimedia.mjs marxismo",
     "select:liberalism": "node scripts/select-wikimedia.mjs liberalismo",
     "ingest:verify": "node scripts/verify-ingestion.mjs",
+    "ingest:fetch-raw": "node scripts/ingestion/fetch-raw.mjs",
+    "ingest:publish-raw": "node scripts/ingestion/publish-raw.mjs",
     "test:ingestion": "node --test scripts/ingestion/wikimedia/*.spec.mjs scripts/ingestion/wiki-extract/*.spec.mjs",
     "wiki:extract": "node scripts/wiki-extract.mjs",
     "watch": "ng build --watch --configuration development",
@@ -38,7 +40,7 @@
     "check:links": "node scripts/check-links.mjs",
     "test:e2e": "playwright test",
     "prepare": "husky",
-    "verify": "npm audit --omit=dev --audit-level=moderate && npm run lint && npm run typecheck && npm test && npm run test:ingestion && npm run test:content && npm run ingest:verify && npm run build && npm run check:links && npm run test:e2e"
+    "verify": "npm audit --omit=dev --audit-level=moderate && npm run lint && npm run typecheck && npm test && npm run test:ingestion && npm run test:content && npm run ingest:fetch-raw && npm run ingest:verify && npm run build && npm run check:links && npm run test:e2e"
   },
   "private": true,
   "packageManager": "npm@11.6.2",

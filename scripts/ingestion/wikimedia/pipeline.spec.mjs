@@ -195,7 +195,7 @@ test('missing response, changed configuration or API error fails closed without 
       mode: 'offline',
       fetchResource: () => assert.fail('Offline attempted network'),
     }),
-    /ENOENT/,
+    /Blob ausente/,
   );
   const invalid = await scenario();
   await assert.rejects(
