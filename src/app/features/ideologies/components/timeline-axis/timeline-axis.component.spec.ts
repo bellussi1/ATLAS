@@ -147,4 +147,48 @@ describe('TimelineAxisComponent', () => {
     fixture.componentInstance.step(-1);
     expect(picked).toEqual(['lenin', 'marx']);
   });
+
+  it('cuts to the span chosen on the ruler by keyboard: Enter, arrows, Enter, and Esc cancels', () => {
+    const { fixture, root } = create(items);
+    const axis = fixture.componentInstance;
+    const ruler = root.querySelector<HTMLElement>('.axis-ruler')!;
+    const press = (key: string) =>
+      ruler.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }));
+    press('Enter');
+    expect(axis.brush()).not.toBeNull();
+    press('Escape');
+    expect(axis.brush()).toBeNull();
+    press('Enter');
+    for (let i = 0; i < 6; i++) press('ArrowRight');
+    fixture.detectChanges();
+    expect(root.querySelector('.axis-brush')).not.toBeNull();
+    press('Enter');
+    fixture.detectChanges();
+    expect(axis.cut()).not.toBeNull();
+    expect(axis.brush()).toBeNull();
+    expect(axis.cut()!.to).toBeGreaterThan(axis.cut()!.from);
+    expect(axis.visible().length).toBeLessThan(items.length);
+  });
+
+  it('cuts to a dragged span on the ruler and ignores a click without drag', () => {
+    const { fixture, root } = create(items);
+    const axis = fixture.componentInstance;
+    const ruler = root.querySelector<HTMLElement>('.axis-ruler')!;
+    ruler.setPointerCapture = () => undefined;
+    ruler.getBoundingClientRect = () => ({ left: 0, width: 2000, top: 0, height: 44 }) as DOMRect;
+    const fire = (type: string, x: number) =>
+      ruler.dispatchEvent(
+        Object.assign(new MouseEvent(type, { bubbles: true, button: 0, clientX: x }), {
+          pointerId: 1,
+        }),
+      );
+    fire('pointerdown', 100);
+    fire('pointerup', 100);
+    expect(axis.cut()).toBeNull();
+    fire('pointerdown', 100);
+    fire('pointermove', 900);
+    fire('pointerup', 900);
+    expect(axis.cut()).not.toBeNull();
+    expect(axis.cut()!.from).toBeLessThan(axis.cut()!.to);
+  });
 });

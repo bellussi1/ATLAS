@@ -18,7 +18,7 @@ import { EditorialSourcesComponent } from '@ideologies/components/editorial-sour
 import { TimelineAxisComponent } from '@ideologies/components/timeline-axis/timeline-axis.component';
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
 import { TimelineFocusService } from '@ideologies/services/timeline-focus.service';
-import type { TimelineAxisItem } from '@ideologies/utils/timeline-axis-layout';
+import { axisItemOf, entityKindLabel } from '@ideologies/utils/timeline-axis-items';
 import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
@@ -248,21 +248,8 @@ export class IdeologyAtlasComponent {
       )
       .sort((a, b) => this.timelineYear(a) - this.timelineYear(b)),
   );
-  readonly timelineItems = computed<TimelineAxisItem[]>(() =>
-    this.timelineEntities().map((entity) => {
-      const extent = entity.temporalExtent!;
-      const first = extent.startYear ?? extent.endYear ?? 0;
-      const last = extent.endYear ?? extent.startYear ?? 0;
-      return {
-        id: entity.id,
-        title: entity.title,
-        kind: entity.kind,
-        kindLabel: this.kindName(entity.kind),
-        start: Math.min(first, last),
-        end: Math.max(first, last),
-        approximate: extent.precision === 'approximate',
-      };
-    }),
+  readonly timelineItems = computed(() =>
+    this.timelineEntities().flatMap((entity) => axisItemOf(entity) ?? []),
   );
   /** Records the axis could carry if they had a date. */
   readonly timelineUndated = computed(
@@ -349,23 +336,7 @@ export class IdeologyAtlasComponent {
     return this.kindName(entity.kind);
   }
   kindName(kind: Entity['kind']): string {
-    const labels: Record<Entity['kind'], string> = {
-      person: 'Pessoa',
-      ideology: 'Corrente ideológica',
-      concept: 'Conceito',
-      work: 'Obra',
-      event: 'Acontecimento',
-      'historical-polity': 'Formação política histórica',
-      country: 'País',
-      regime: 'Regime',
-      place: 'Território',
-      party: 'Partido',
-      institution: 'Organização',
-      government: 'Governo',
-      policy: 'Política pública',
-      article: 'Artigo',
-    };
-    return labels[kind];
+    return entityKindLabel(kind);
   }
   relationName(relation: KnowledgeRelationResult): string {
     const labels: Record<string, string> = {

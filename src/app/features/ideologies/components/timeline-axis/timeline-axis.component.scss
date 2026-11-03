@@ -3,49 +3,53 @@
   min-width: 0;
   container: axis / inline-size;
 }
-
-/* Controls ------------------------------------------------------------------ */
-.axis-controls {
-  display: grid;
-  gap: 0.75rem 1.25rem;
-  margin-bottom: 0.75rem;
-}
-.axis-cuts {
+.axis-controls,
+.axis-cuts,
+.axis-interval,
+.axis-zoom,
+.axis-position,
+.axis-stepper {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
 }
-.axis-chip,
-.axis-button {
+.axis-controls {
+  margin-bottom: 0.75rem;
+  gap: 0.75rem 1.25rem;
+}
+.axis-cuts {
+  flex-basis: 100%;
+}
+.axis-interval {
+  align-items: end;
+}
+.axis-interval .atlas-field {
+  width: 6.5rem;
+  gap: 0.2rem;
+}
+.axis-error {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--color-danger);
+  font: var(--text-small) / 1.4 var(--font-sans);
+}
+.axis-chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
-  min-width: var(--control-min-size);
   min-height: var(--control-min-size);
   padding: 0.45rem 0.8rem;
   border: 2px solid var(--color-ink);
   background: var(--color-canvas);
   color: var(--color-ink);
-  cursor: pointer;
-}
-.axis-chip {
   font: 700 0.75rem/1.2 var(--font-mono);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
-.axis-button {
-  font: 600 0.875rem/1.2 var(--font-sans);
-}
-.axis-icon {
-  padding-inline: 0.5rem;
-  font: 700 1.25rem/1 var(--font-sans);
+  cursor: pointer;
 }
 .axis-chip span {
-  display: inline-grid;
-  min-width: 1.6rem;
-  place-items: center;
-  padding: 0.1rem 0.3rem;
+  padding: 0.1rem 0.4rem;
   background: var(--color-ochre-paper);
   color: var(--color-ink);
 }
@@ -57,75 +61,32 @@
   background: var(--color-accent);
   color: var(--color-accent-contrast);
 }
+.axis-icon {
+  padding-inline: 0.5rem;
+  font-size: 1.25rem;
+}
 [aria-disabled='true'] {
   opacity: 0.4;
   cursor: default;
 }
-@media (hover: hover) and (pointer: fine) {
-  .axis-chip:not([aria-pressed='true']):hover,
-  .axis-button:not([aria-disabled='true']):hover {
-    background: var(--color-ochre-paper);
-  }
-}
-
-.axis-interval {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: end;
-  gap: 0.5rem 0.75rem;
-}
-.axis-interval label {
-  display: grid;
-  gap: 0.2rem;
-  color: var(--color-ink-muted);
-  font: 700 0.75rem/1.2 var(--font-mono);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.axis-interval input {
-  width: 6.5rem;
-  min-height: var(--control-min-size);
-  padding: 0.4rem 0.6rem;
-  border: 2px solid var(--color-ink);
-  background: var(--color-surface-raised);
-  color: var(--color-ink);
-  font: 1rem var(--font-mono);
-}
-.axis-error {
-  flex-basis: 100%;
-  margin: 0;
-  color: var(--color-danger);
-  font: 0.875rem/1.4 var(--font-sans);
-}
-.axis-zoom {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
 .axis-zoom-level {
   min-width: 3rem;
   text-align: center;
-  font: 0.875rem var(--font-mono);
+  font: var(--text-small) var(--font-mono);
 }
-
 .axis-hint,
 .axis-note {
   margin: 0 0 0.75rem;
   color: var(--color-ink-muted);
-  font: 0.875rem/1.5 var(--font-serif);
+  font: var(--text-small) / 1.5 var(--font-serif);
 }
 .axis-note {
   margin: 1rem 0 0;
 }
 
-/* Axis ---------------------------------------------------------------------- */
-.axis-frame {
-  position: relative;
-}
+/* Axis: one scroller, a sticky ruler and one track per kind. */
 .axis-scroller {
-  position: relative;
-  max-height: min(34rem, 75vh);
-  overflow: auto;
+  overflow: auto hidden;
   overscroll-behavior-x: contain;
   border: 3px solid var(--color-ink);
   background: var(--color-surface-raised);
@@ -141,22 +102,48 @@
   min-width: 100%;
 }
 .axis-ruler {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 3;
-  height: 30px;
+  height: 44px;
   overflow: hidden;
-  background: var(--color-surface-raised);
   border-bottom: 2px solid var(--color-ink);
+  background: var(--color-surface-raised);
+  cursor: crosshair;
+  touch-action: none;
 }
 .axis-tick {
   position: absolute;
   bottom: 0;
   padding: 0 0 4px 4px;
   border-left: 2px solid var(--color-ink);
-  color: var(--color-ink);
   font: 600 0.75rem/1.2 var(--font-mono);
   white-space: nowrap;
+}
+.axis-brush,
+.axis-cursor {
+  position: absolute;
+  inset-block: 0;
+  border: 0 solid var(--color-accent);
+}
+.axis-brush {
+  border-width: 0 3px;
+  background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+}
+.axis-brush span {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  padding: 0 0.3rem;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font: 700 0.75rem/1.4 var(--font-mono);
+  white-space: nowrap;
+}
+.axis-cursor {
+  border-left-width: 3px;
+}
+.axis-ruler:focus-visible {
+  outline-offset: -3px;
 }
 .axis-track {
   position: absolute;
@@ -171,11 +158,11 @@
   left: 0;
   z-index: 1;
   display: inline-flex;
-  align-items: center;
   gap: 0.5rem;
   height: 28px;
   margin: 0;
   padding: 0 0.6rem 0 0.5rem;
+  align-items: center;
   background: var(--color-ink);
   color: var(--color-canvas);
   font: 700 0.75rem/1 var(--font-mono);
@@ -185,8 +172,17 @@
 .axis-track-name span {
   color: var(--color-ochre-paper);
 }
+.axis-track[data-track='works'] {
+  --shape-color: var(--color-archive);
+}
+.axis-track[data-track='events'] {
+  --shape-color: var(--color-accent);
+}
+.axis-track[data-track='organizations'] {
+  --shape-color: var(--color-cartographic);
+}
 
-/* Markers: the button is the touch target; shape and label sit inside it. */
+/* The button is the touch target; shape and label sit inside it. */
 .axis-marker {
   position: absolute;
   display: block;
@@ -197,18 +193,9 @@
   text-align: left;
   cursor: pointer;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .axis-marker,
-  .axis-shape,
-  .axis-track {
-    transition:
-      left var(--motion-standard) var(--ease-out),
-      top var(--motion-standard) var(--ease-out),
-      width var(--motion-standard) var(--ease-out),
-      height var(--motion-standard) var(--ease-out),
-      background-color var(--motion-fast),
-      transform var(--motion-selection) var(--ease-out);
-  }
+.axis-marker:focus-visible {
+  z-index: 2;
+  outline-offset: 1px;
 }
 .axis-shape {
   position: absolute;
@@ -220,15 +207,6 @@
   border-radius: 50%;
   background: var(--shape-color, var(--color-ink));
 }
-.axis-track[data-track='works'] {
-  --shape-color: var(--color-archive);
-}
-.axis-track[data-track='events'] {
-  --shape-color: var(--color-accent);
-}
-.axis-track[data-track='organizations'] {
-  --shape-color: var(--color-cartographic);
-}
 .axis-track[data-track='works'] .axis-shape {
   border-radius: 0;
 }
@@ -237,12 +215,10 @@
 }
 .axis-track[data-track='organizations'] .axis-shape {
   border-radius: 0.2rem;
-  background: var(--color-surface-raised);
   box-shadow: inset 0 0 0 2px var(--color-surface-raised);
-  background-color: var(--shape-color);
 }
 /* A life is a bar from the first to the last recorded year. */
-.axis-marker.is-life .axis-shape {
+.axis-track .is-life .axis-shape {
   left: var(--mx);
   width: max(var(--bar), 0.5rem);
   height: 0.75rem;
@@ -250,12 +226,12 @@
   transform: none;
 }
 /* Approximate dates are hollow and dashed, never a solid fill. */
-.axis-marker.is-approx .axis-shape {
+.axis-track .is-approx .axis-shape {
   border-style: dashed;
   background: transparent;
   box-shadow: none;
 }
-.axis-marker.is-approx.is-life .axis-shape {
+.axis-track .is-approx.is-life .axis-shape {
   background: repeating-linear-gradient(
     90deg,
     color-mix(in srgb, var(--shape-color, var(--color-ink)) 28%, transparent) 0 4px,
@@ -266,50 +242,50 @@
   position: absolute;
   inset: 24px 0 auto;
   overflow: hidden;
-  font: 600 0.875rem/1.3 var(--font-sans);
+  font: 600 var(--text-small) / 1.3 var(--font-sans);
   text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.axis-marker.is-selected .axis-label {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
+.is-selected .axis-label {
+  text-decoration: underline 2px;
   text-underline-offset: 0.2em;
 }
-.axis-marker.is-selected .axis-shape {
+.is-selected .axis-shape {
   outline: 3px solid var(--color-ink);
   outline-offset: 2px;
 }
-.axis-track[data-track='events'] .is-selected .axis-shape {
-  transform: rotate(45deg) scale(1.1);
-}
-.axis-marker:focus-visible {
-  outline: var(--focus-width) solid var(--color-focus);
-  outline-offset: 1px;
-  z-index: 2;
+@media (prefers-reduced-motion: no-preference) {
+  .axis-marker,
+  .axis-shape,
+  .axis-track,
+  .axis-thumb {
+    transition-duration: var(--motion-standard);
+    transition-property: left, top, width, height, transform;
+    transition-timing-function: var(--ease-out);
+  }
 }
 @media (hover: hover) and (pointer: fine) {
   .axis-marker:hover .axis-label {
     text-decoration: underline;
     text-underline-offset: 0.2em;
   }
+  .axis-chip:not([aria-pressed='true']):hover {
+    background: var(--color-ochre-paper);
+  }
 }
-
 .axis-empty {
   margin: 0;
   padding: 1rem;
-  background: var(--color-surface-raised);
-  font: 1rem/1.5 var(--font-serif);
+  font: var(--text-body) / 1.5 var(--font-serif);
 }
 .axis-frame:has(.axis-empty) .axis-scroller {
   display: none;
 }
 
-/* Position indicator and pan buttons ---------------------------------------- */
+/* Position indicator, pan buttons and reading. */
 .axis-position {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  flex-wrap: nowrap;
   margin-top: 0.5rem;
 }
 .axis-bar {
@@ -323,39 +299,20 @@
   inset-block: 0;
   background: var(--color-ink);
 }
-@media (prefers-reduced-motion: no-preference) {
-  .axis-thumb {
-    transition: left var(--motion-fast) linear;
-  }
-}
-
-/* Reading ------------------------------------------------------------------- */
-.axis-sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-}
 .axis-reading {
   margin-top: 1rem;
 }
 .axis-stepper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
-  gap: 0.5rem 1rem;
   margin-bottom: 0.75rem;
 }
 .axis-selected {
   display: grid;
   flex: 1 1 14rem;
-  gap: 0.15rem;
-  margin: 0;
-  min-width: 0;
   order: -1;
+  gap: 0.15rem;
+  min-width: 0;
+  margin: 0;
   overflow-wrap: anywhere;
 }
 .axis-selected-label {
@@ -367,8 +324,6 @@
   font: 700 1.125rem/1.3 var(--font-sans);
 }
 .axis-list {
-  display: grid;
-  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -376,6 +331,10 @@
 }
 .axis-list li {
   border-bottom: 1px solid var(--color-border-strong);
+}
+.axis-list li.current {
+  background: var(--color-ochre-paper);
+  box-shadow: inset 4px 0 0 var(--color-ink);
 }
 .axis-row {
   display: grid;
@@ -392,7 +351,7 @@
   cursor: pointer;
 }
 .axis-row strong {
-  font: 650 0.875rem/1.35 var(--font-sans);
+  font: 650 var(--text-small) / 1.35 var(--font-sans);
   overflow-wrap: anywhere;
 }
 .axis-row-year,
@@ -400,21 +359,9 @@
   color: var(--color-ink-muted);
   font: 0.75rem/1.4 var(--font-mono);
 }
-.axis-list li.current {
-  background: var(--color-ochre-paper);
-  box-shadow: inset 4px 0 0 var(--color-ink);
-}
-.axis-row:focus-visible,
-.axis-chip:focus-visible,
-.axis-button:focus-visible,
-.axis-interval input:focus-visible {
-  outline: var(--focus-width) solid var(--color-focus);
-  outline-offset: var(--focus-offset);
-}
 .axis-more {
   margin-top: 0.75rem;
 }
-
 @container axis (max-width: 36rem) {
   .axis-row {
     grid-template-columns: minmax(0, 1fr) auto;
@@ -424,14 +371,5 @@
   }
   .axis-hint {
     font-size: 0.75rem;
-  }
-}
-@container axis (min-width: 56rem) {
-  .axis-controls {
-    grid-template-columns: 1fr auto;
-    align-items: start;
-  }
-  .axis-cuts {
-    grid-column: 1 / -1;
   }
 }

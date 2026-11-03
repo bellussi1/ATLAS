@@ -1,8 +1,6 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { entityMedia } from '@core/content/media/asset-license';
-import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import type { Entity, Source } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
@@ -12,9 +10,9 @@ import {
   type EraChartEpoch,
 } from '@ideologies/components/era-chart/era-chart.component';
 import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
-import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { PositionsEstimateComponent } from '@ideologies/components/positions-estimate/positions-estimate.component';
 import { ReadingPathComponent } from '@ideologies/components/reading-path/reading-path.component';
+import { TimelineAxisComponent } from '@ideologies/components/timeline-axis/timeline-axis.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
   ExplorationItem,
@@ -28,7 +26,7 @@ import {
   relationTypes,
 } from '@ideologies/models/relation-types';
 import { type PageMedia } from '@ideologies/utils/page-media-plan';
-import { timelineStops } from '@ideologies/utils/timeline-stops';
+import { axisItemOf } from '@ideologies/utils/timeline-axis-items';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { type IconKind, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
@@ -41,13 +39,12 @@ import { RecordCardComponent } from '@shared/ui/record-card/record-card.componen
     EditorialSourcesComponent,
     ValueDebateComponent,
     KnowledgeContextDirective,
-    KnowledgeTextComponent,
     AtlasRevealDirective,
     EraChartComponent,
+    TimelineAxisComponent,
     IdeologyAtlasComponent,
     ReadingPathComponent,
     PositionsEstimateComponent,
-    ContentMediaPipe,
   ],
   templateUrl: './ideology-block.component.html',
   styleUrls: [
@@ -159,17 +156,11 @@ export class IdeologyBlockComponent {
       )
       .sort((a, b) => (a.temporalExtent?.startYear ?? 0) - (b.temporalExtent?.startYear ?? 0)),
   );
-  /** Markers of the scale: the same records as the list, so both always agree. */
-  readonly timelineStops = computed(() =>
-    timelineStops(
-      this.timeline().map((e) => ({ id: e.id, year: e.temporalExtent?.startYear ?? 0 })),
-    ),
+  readonly timelineItems = computed(() =>
+    this.timeline().flatMap((entity) => axisItemOf(entity) ?? []),
   );
   readonly selectedTimeline = computed<Entity | undefined>(
     () => this.timeline().find((e) => e.id === this.params().get('evento')) ?? this.timeline()[0],
-  );
-  readonly selectedTimelineIndex = computed(() =>
-    this.timeline().findIndex((e) => e.id === this.selectedTimeline()?.id),
   );
   readonly sourceList = computed(() => {
     const block = this.block();
@@ -199,9 +190,6 @@ export class IdeologyBlockComponent {
       ...this.dossier().supplement.sources,
       ...this.repository.knowledgeGraph.atlases.flatMap((a) => a.sources),
     ].find((s) => s.id === id);
-  }
-  media(entity: Entity) {
-    return entityMedia(this.repository.knowledgeGraph, entity);
   }
   entityPicture(entity: Entity) {
     return this.mediaPlan().get(`${this.blockId()}/${entity.id}`);
@@ -249,28 +237,8 @@ export class IdeologyBlockComponent {
   countOf(type: string): number {
     return this.edges().filter((e) => e.type === type).length;
   }
-  /** Arrow keys walk the markers and open each record, like the epoch tabs. */
-  stepStop(event: KeyboardEvent, index: number): void {
-    const delta = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
-    const stops = this.timelineStops();
-    const next = stops[index + delta];
-    if (!delta || !next) return;
-    event.preventDefault();
-    this.update('evento', next.id);
-    const buttons = (event.currentTarget as HTMLElement).parentElement?.querySelectorAll('button');
-    buttons?.[index + delta]?.focus();
-  }
   toggleEntities(): void {
     this.showAllEntities.update((open) => !open);
-  }
-  period(entity: Entity): string {
-    const t = entity.temporalExtent;
-    return (
-      t?.label ??
-      (t?.startYear
-        ? `${t.startYear}${t.endYear && t.endYear !== t.startYear ? '–' + t.endYear : ''}`
-        : 'Período não informado')
-    );
   }
   update(key: string, value: string | null): void {
     void this.router.navigate([], {

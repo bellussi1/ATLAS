@@ -36,7 +36,8 @@ const MAX_PX_PER_YEAR = 96;
 const MIN_PX_PER_YEAR = 3;
 const DRAG_THRESHOLD = 5;
 const HEADER_PX = 28;
-const AXIS_PX = 30;
+const AXIS_PX = 44;
+const BRUSH_MIN_PX = 8;
 const LIST_PREVIEW = 8;
 
 let nextAxisId = 0;
@@ -78,6 +79,10 @@ export class TimelineAxisComponent {
   readonly fromField = signal('');
   readonly toField = signal('');
   readonly fieldError = signal('');
+  /** Span being chosen on the ruler, in years; anchor first, cursor second. */
+  readonly brush = signal<{ anchor: number; cursor: number } | null>(null);
+  /** Year under the keyboard cursor of the ruler; null until the ruler is focused. */
+  readonly rulerYear = signal<number | null>(null);
 
   readonly full = computed(() => fullRange(this.items()));
   readonly range = computed(() => this.cut() ?? this.full());
@@ -160,6 +165,18 @@ export class TimelineAxisComponent {
   readonly cutLabel = computed(() => {
     const cut = this.cut();
     return cut ? `${cut.from} a ${cut.to}` : 'toda a linha do tempo';
+  });
+
+  readonly brushBox = computed(() => {
+    const brush = this.brush();
+    if (!brush) return null;
+    const from = Math.min(brush.anchor, brush.cursor);
+    const to = Math.max(brush.anchor, brush.cursor);
+    return {
+      left: (from - this.range().from) * this.pxPerYear(),
+      width: (to - from) * this.pxPerYear(),
+      label: `${Math.round(from)}–${Math.round(to)}`,
+    };
   });
 
   private drag: { pointer: number; startX: number; startLeft: number; moved: boolean } | null =
@@ -295,21 +312,16 @@ export class TimelineAxisComponent {
     this.pick(target.id);
   }
 
-  /** Brings a record into view when it sits near or past an edge of the axis. */
+  /** Brings a record into view when it sits near or past a side edge of the axis. */
   reveal(id: string): void {
     const tracks = this.layout().tracks;
-    const t = tracks.findIndex((track) => track.items.some((p) => p.item.id === id));
-    const placed = tracks[t]?.items.find((p) => p.item.id === id);
+    const placed = tracks.flatMap((t) => t.items).find((p) => p.item.id === id);
     if (!placed) return;
     const el = this.scroller().nativeElement;
     const centre = placed.left + placed.markerX;
     const margin = 48;
     if (centre < el.scrollLeft + margin || centre > el.scrollLeft + el.clientWidth - margin)
       this.scrollTo(Math.max(0, centre - el.clientWidth / 2), true);
-    const top = this.trackTops()[t]! + HEADER_PX + placed.row * ROW_PX;
-    if (top < el.scrollTop + AXIS_PX) el.scrollTop = Math.max(0, top - AXIS_PX - 8);
-    else if (top + ROW_PX > el.scrollTop + el.clientHeight)
-      el.scrollTop = top + ROW_PX - el.clientHeight + 8;
   }
 
   onPointerDown(event: PointerEvent): void {
@@ -341,18 +353,73 @@ export class TimelineAxisComponent {
     this.dragging.set(false);
   }
 
+  /** Mouse, pen or finger dragged across the ruler picks a span of years to cut to. */
+  onRulerDown(event: PointerEvent): void {
+    if (event.button !== 0) return;
+    event.stopPropagation();
+    const year = this.yearAt(event);
+    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+    this.brush.set({ anchor: year, cursor: year });
+  }
+  onRulerMove(event: PointerEvent): void {
+    const brush = this.brush();
+    if (brush) this.brush.set({ ...brush, cursor: this.yearAt(event) });
+  }
+  onRulerUp(event: PointerEvent): void {
+    const brush = this.brush();
+    if (!brush) return;
+    this.brush.set(null);
+    if (Math.abs(brush.cursor - brush.anchor) * this.pxPerYear() >= BRUSH_MIN_PX)
+      this.cutBetween(brush.anchor, this.yearAt(event));
+  }
+
+  /** The same cut from the keyboard: arrows move, Enter marks the start and then applies, Esc cancels. */
+  onRulerKey(event: KeyboardEvent): void {
+    const brush = this.brush();
+    const year = this.rulerYear() ?? Math.round((this.range().from + this.range().to) / 2);
+    const step = Math.max(1, Math.round(24 / this.pxPerYear())) * (event.shiftKey ? 5 : 1);
+    const move = (to: number) => {
+      const next = Math.min(this.range().to, Math.max(this.range().from, to));
+      this.rulerYear.set(next);
+      if (brush) this.brush.set({ ...brush, cursor: next });
+      this.announce(`${next}${brush ? `, trecho de ${brush.anchor} a ${next}` : ''}`);
+    };
+    if (event.key === 'ArrowRight') move(year + step);
+    else if (event.key === 'ArrowLeft') move(year - step);
+    else if (event.key === 'Escape' && brush) this.brush.set(null);
+    else if (event.key === 'Enter' || event.key === ' ') {
+      if (!brush) {
+        this.brush.set({ anchor: year, cursor: year });
+        this.announce(`Início em ${year}. Mova com as setas e confirme com Enter.`);
+      } else {
+        this.brush.set(null);
+        if (brush.cursor !== brush.anchor) this.cutBetween(brush.anchor, brush.cursor);
+      }
+    } else return;
+    event.preventDefault();
+  }
+
   /** Pans by most of a screen, for the buttons beside the position bar. */
   pan(direction: 1 | -1): void {
     const el = this.scroller().nativeElement;
     this.scrollTo(Math.max(0, el.scrollLeft + direction * el.clientWidth * 0.8), true);
   }
 
+  private yearAt(event: PointerEvent): number {
+    const box = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    const x = Math.min(box.width, Math.max(0, event.clientX - box.left));
+    return this.range().from + x / this.pxPerYear();
+  }
+
+  private cutBetween(a: number, b: number): void {
+    const from = Math.round(Math.min(a, b));
+    this.setCut({ from, to: Math.max(from + 1, Math.round(Math.max(a, b))) });
+  }
+
   private focusMarker(id: string): void {
     this.reveal(id);
     queueMicrotask(() =>
-      this.scroller()
-        .nativeElement.querySelector<HTMLElement>(`[data-axis-id="${id}"]`)
-        ?.focus({ preventScroll: true }),
+      this.scroller().nativeElement.querySelector<HTMLElement>(`[data-axis-id="${id}"]`)?.focus(),
     );
   }
 

@@ -60,60 +60,86 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
 test('timeline selection and graph exploration preserve geometry', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/marxismo/');
-  const panel = page.locator('.timeline-reading');
-  await panel.scrollIntoViewIfNeeded();
-  const before = await panel.boundingBox();
-  await page.locator('.timeline-event').filter({ hasText: 'Comuna de Paris' }).click();
-  await expect(panel).toContainText('Comuna de Paris');
-  expect((await panel.boundingBox())?.height).toBe(before?.height);
+  const axis = page.locator('app-ideology-block app-timeline-axis').first();
+  await axis.scrollIntoViewIfNeeded();
+  const frame = axis.locator('.axis-scroller');
+  const before = await frame.boundingBox();
+  await axis.locator('.axis-marker').filter({ hasText: 'Comuna de Paris' }).click();
+  await expect(page).toHaveURL(/evento=/);
+  await expect(axis.locator('.axis-list li.current')).toContainText('Comuna de Paris');
+  expect((await frame.boundingBox())?.height).toBe(before?.height);
   await expect(page.locator('.relation-item').first()).toContainText('Bernstein');
 });
 
-test('the timeline scale is the filter: markers open records and stay in place', async ({
+test('the timeline axis keeps markers apart and answers the keyboard on a phone', async ({
   page,
   request,
 }) => {
   const html = await (await request.get('/marxismo/')).text();
-  expect(html).toContain('class="timeline-scale-track"');
+  expect(html).toContain('class="axis-marker');
   expect(html).toContain('class="relation-sentences"');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.setViewportSize({ width: 360, height: 740 });
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/marxismo/');
-  const scale = page.locator('.timeline-scale').first();
-  await expect(scale).toBeAttached();
+  const axis = page.locator('app-ideology-block app-timeline-axis').first();
+  await expect(axis).toBeAttached();
   await page.waitForLoadState('networkidle');
-  await scale.scrollIntoViewIfNeeded();
-  await expect(scale).toContainText('Linha do tempo');
-  const stops = scale.locator('.timeline-stop');
-  const total = await stops.count();
+  await axis.scrollIntoViewIfNeeded();
+  const markers = axis.locator('.axis-marker');
+  const total = await markers.count();
   expect(total).toBeGreaterThan(3);
-  await expect(scale.locator('.timeline-scale-count')).toContainText(`1 de ${total}`);
-  const lefts = () => stops.evaluateAll((n) => n.map((e) => (e as HTMLElement).style.left));
-  const before = await lefts();
-  // No two markers overlap, so each keeps its own touch target.
-  const boxes = await stops.evaluateAll((n) =>
+  // No two markers of a track share a row and overlap, so each keeps its own touch target.
+  const boxes = await markers.evaluateAll((n) =>
     n.map((e) => {
       const r = e.getBoundingClientRect();
-      return [r.left, r.right];
+      return {
+        track: e.closest('.axis-track')?.getAttribute('data-track'),
+        top: Math.round(r.top),
+        l: r.left,
+        r: r.right,
+      };
     }),
   );
-  for (let i = 1; i < boxes.length; i++)
-    expect(boxes[i][0]).toBeGreaterThanOrEqual(boxes[i - 1][1] - 4);
-  await stops.nth(2).click();
+  for (const a of boxes)
+    for (const b of boxes)
+      if (a !== b && a.track === b.track && a.top === b.top)
+        expect(a.r <= b.l + 1 || b.r <= a.l + 1).toBe(true);
+  await markers.nth(2).click();
+  await page.keyboard.press('Escape');
   await expect(page).toHaveURL(/evento=/);
-  await expect(stops.nth(2)).toHaveAttribute('aria-pressed', 'true');
-  await expect(scale.locator('.timeline-scale-count')).toContainText(`3 de ${total}`);
-  await expect(page.locator('.timeline-event[aria-pressed="true"]')).toHaveCount(1);
-  await expect(page.locator('.timeline-reading h3')).toHaveText(
-    (await page.locator('.timeline-event[aria-pressed="true"] strong').textContent())!,
-  );
-  await stops.nth(2).focus();
+  await expect(axis.locator('.axis-marker[aria-current="true"]')).toHaveCount(1);
+  await expect(axis.locator('.axis-list li.current')).toHaveCount(1);
+  await markers.nth(2).focus();
   await page.keyboard.press('ArrowRight');
-  await expect(stops.nth(3)).toBeFocused();
-  await expect(stops.nth(3)).toHaveAttribute('aria-pressed', 'true');
-  expect(await lefts()).toEqual(before);
+  await expect(axis.locator('.axis-marker[aria-current="true"]')).toBeFocused();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
+});
+
+test('dragging across the ruler cuts the axis, and the keyboard does the same', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/marxismo/');
+  await page.waitForLoadState('networkidle');
+  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
+  await axis.locator('.axis-ruler').evaluate((el) => el.scrollIntoView({ block: 'center' }));
+  const all = await axis.locator('.axis-marker').count();
+  const ruler = axis.locator('.axis-ruler');
+  const box = (await ruler.boundingBox())!;
+  const visible = (await axis.locator('.axis-scroller').boundingBox())!;
+  await page.mouse.move(visible.x + 60, box.y + 20);
+  await page.mouse.down();
+  await page.mouse.move(visible.x + visible.width - 60, box.y + 20, { steps: 6 });
+  await page.mouse.up();
+  await expect(axis.locator('.axis-marker')).not.toHaveCount(all);
+  await axis.getByRole('button', { name: /^Tudo/ }).click();
+  await ruler.focus();
+  await page.keyboard.press('Enter');
+  for (let i = 0; i < 12; i++) await page.keyboard.press('ArrowRight');
+  await page.keyboard.press('Enter');
+  await expect(axis.locator('.axis-marker')).not.toHaveCount(all);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });

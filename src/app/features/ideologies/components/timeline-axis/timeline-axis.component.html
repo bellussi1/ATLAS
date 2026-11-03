@@ -15,7 +15,7 @@
     }
   </div>
   <form class="axis-interval" (submit)="$event.preventDefault(); applyFields()">
-    <label>
+    <label class="atlas-field">
       <span>De</span>
       <input
         type="number"
@@ -25,7 +25,7 @@
         (input)="fromField.set($any($event.target).value)"
       />
     </label>
-    <label>
+    <label class="atlas-field">
       <span>Até</span>
       <input
         type="number"
@@ -35,7 +35,7 @@
         (input)="toField.set($any($event.target).value)"
       />
     </label>
-    <button type="submit" class="axis-button">Aplicar intervalo</button>
+    <button type="submit" class="atlas-button atlas-button--secondary">Aplicar intervalo</button>
     @if (fieldError()) {
       <p class="axis-error" [id]="uid + '-error'" role="alert">{{ fieldError() }}</p>
     }
@@ -43,7 +43,7 @@
   <div class="axis-zoom" role="group" aria-label="Ampliação do eixo">
     <button
       type="button"
-      class="axis-button axis-icon"
+      class="atlas-button atlas-button--secondary axis-icon"
       aria-label="Diminuir a ampliação"
       [attr.aria-disabled]="zoom() <= 0"
       (click)="setZoom(zoom() - 1)"
@@ -53,7 +53,7 @@
     <span class="axis-zoom-level" aria-hidden="true">{{ zoom() + 1 }}/{{ maxZoom() + 1 }}</span>
     <button
       type="button"
-      class="axis-button axis-icon"
+      class="atlas-button atlas-button--secondary axis-icon"
       aria-label="Aumentar a ampliação"
       [attr.aria-disabled]="zoom() >= maxZoom()"
       (click)="setZoom(zoom() + 1)"
@@ -64,8 +64,9 @@
 </div>
 
 <p class="axis-hint" [id]="uid + '-hint'">
-  Arraste ou role o eixo. Com um marco em foco: ← → percorrem a ordem do tempo, ↑ ↓ trocam de
-  trilha, Início e Fim vão aos extremos, Enter abre a ficha.
+  Arraste ou role o eixo; arraste na régua dos anos para recortar um trecho. Com um marco em foco: ←
+  → percorrem a ordem do tempo, ↑ ↓ trocam de trilha, Início e Fim vão aos extremos, Enter abre a
+  ficha.
 </p>
 
 <div class="axis-frame">
@@ -83,11 +84,41 @@
     (pointercancel)="onPointerEnd($event)"
   >
     <div class="axis-inner" [style.width.px]="layout().width" [style.height.px]="innerHeight()">
-      <div class="axis-ruler" aria-hidden="true">
+      <div
+        class="axis-ruler"
+        role="group"
+        tabindex="0"
+        aria-label="Régua do tempo. Arraste para recortar um trecho; pelo teclado, setas movem, Enter marca o início e aplica, Esc cancela."
+        (pointerdown)="onRulerDown($event)"
+        (pointermove)="onRulerMove($event)"
+        (pointerup)="onRulerUp($event)"
+        (pointercancel)="brush.set(null)"
+        (keydown)="onRulerKey($event)"
+        (blur)="rulerYear.set(null)"
+      >
         @for (tick of ticks(); track tick) {
-          <span class="axis-tick" [style.left.px]="(tick - range().from) * pxPerYear()">{{
-            tick
-          }}</span>
+          <span
+            class="axis-tick"
+            aria-hidden="true"
+            [style.left.px]="(tick - range().from) * pxPerYear()"
+            >{{ tick }}</span
+          >
+        }
+        @if (brushBox(); as box) {
+          <span
+            class="axis-brush"
+            aria-hidden="true"
+            [style.left.px]="box.left"
+            [style.width.px]="box.width"
+            ><span>{{ box.label }}</span></span
+          >
+        }
+        @if (rulerYear() !== null && !brush()) {
+          <span
+            class="axis-cursor"
+            aria-hidden="true"
+            [style.left.px]="(rulerYear()! - range().from) * pxPerYear()"
+          ></span>
         }
       </div>
       @for (track of layout().tracks; track track.key; let t = $index) {
@@ -148,7 +179,7 @@
 <div class="axis-position">
   <button
     type="button"
-    class="axis-button axis-icon"
+    class="atlas-button atlas-button--secondary axis-icon"
     aria-label="Rolar o eixo para trás"
     [attr.aria-disabled]="!scrollable() || scrollLeft() <= 0"
     (click)="pan(-1)"
@@ -160,7 +191,7 @@
   </div>
   <button
     type="button"
-    class="axis-button axis-icon"
+    class="atlas-button atlas-button--secondary axis-icon"
     aria-label="Rolar o eixo para a frente"
     [attr.aria-disabled]="!scrollable()"
     (click)="pan(1)"
@@ -169,13 +200,13 @@
   </button>
 </div>
 
-<p class="axis-sr" role="status">{{ announcement() }}</p>
+<p class="sr-only" role="status">{{ announcement() }}</p>
 
 <div class="axis-reading">
   <div class="axis-stepper">
     <button
       type="button"
-      class="axis-button"
+      class="atlas-button atlas-button--secondary"
       [attr.aria-disabled]="selectedIndex() <= 0"
       (click)="step(-1)"
     >
@@ -187,7 +218,7 @@
     </p>
     <button
       type="button"
-      class="axis-button"
+      class="atlas-button atlas-button--secondary"
       [attr.aria-disabled]="selectedIndex() >= visible().length - 1"
       (click)="step(1)"
     >
@@ -218,7 +249,7 @@
   @if (visible().length > shownList().length) {
     <button
       type="button"
-      class="axis-button axis-more"
+      class="atlas-button atlas-button--secondary axis-more"
       [attr.aria-expanded]="listExpanded()"
       (click)="listExpanded.set(true)"
     >
@@ -227,7 +258,7 @@
   } @else if (listExpanded() && visible().length > 8) {
     <button
       type="button"
-      class="axis-button axis-more"
+      class="atlas-button atlas-button--secondary axis-more"
       [attr.aria-expanded]="true"
       (click)="listExpanded.set(false)"
     >

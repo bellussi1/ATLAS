@@ -168,27 +168,15 @@
 .marker.is-on {
   border-left: 2px solid var(--color-ink);
 }
-.marker.is-on > span {
+.marker.is-on > span,
+.marker.is-echo > span,
+.lives li.is-echo {
   color: var(--color-ink);
   font-weight: 600;
 }
 /* Echo of the record picked on the atlas timeline. */
 .marker.is-echo {
   border-left: 3px solid var(--color-accent);
-}
-.marker.is-echo > span {
-  color: var(--color-ink);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-.lives li.is-echo {
-  color: var(--color-ink);
-  font-weight: 700;
-}
-.lives li.is-echo .life-bar {
-  outline: 3px solid var(--color-ink);
-  outline-offset: 1px;
 }
 .lives {
   margin: 0.75rem 0 0;
@@ -240,7 +228,7 @@
   left: auto;
   right: calc(100% + 0.35rem);
 }
-.lives li.is-on .life-bar {
+.lives li:is(.is-on, .is-echo) .life-bar {
   background: var(--color-accent);
 }
 .epoch-detail {
