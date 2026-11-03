@@ -1,119 +1,166 @@
-<header>
-  <div>
-    <p class="context-kind">
-      <span class="kind-chip">{{ record().kind }}</span> {{ statusLabel(record().editorialStatus) }}
-    </p>
-    <h2 id="knowledge-context-title" tabindex="-1">{{ record().title }}</h2>
+@for (sheet of pile(); track $index) {
+  <div class="sheet-ghost" aria-hidden="true" [style.--offset]="sheet.offset">
+    <span>{{ sheet.title }}</span>
   </div>
-  <button type="button" class="context-close" aria-label="Fechar contexto" (click)="close()">
-    Fechar <span aria-hidden="true">×</span>
-  </button>
-</header>
-@if (trail().length) {
-  <nav class="context-trail" aria-label="Percurso neste contexto">
-    @for (title of trail(); track $index) {
-      <button type="button" (click)="backTo($index)">{{ title }}</button
-      ><span aria-hidden="true">›</span>
-    }
-    <span aria-current="location">{{ record().title }}</span>
-  </nav>
 }
-<div class="context-body">
-  @if (record().media; as media) {
-    <figure>
-      <img
-        [src]="media.assetPath"
-        [alt]="'Imagem associada a ' + record().title"
-        width="480"
-        height="480"
-      />
-      <figcaption>
-        {{ media.attribution ?? media.creator }} ·
-        <a [href]="media.filePageUrl ?? media.licenseUrl">{{ media.license }}</a>
-      </figcaption>
-    </figure>
-  }
-  <p class="context-summary">{{ record().summary }}</p>
-  @if (permanentPath(); as path) {
-    <p class="context-permanent">
-      <a [routerLink]="path" (click)="close()">Abrir ficha de {{ record().title }} →</a>
-      <small>Sai desta leitura e abre o verbete completo.</small>
-    </p>
-  }
-  @for (paragraph of record().paragraphs; track $index) {
-    <p>{{ paragraph }}</p>
-  }
-  <section aria-label="Conexões deste contexto">
-    <h3>Continue por uma conexão</h3>
-    <p>
-      Cada conexão abre a ficha aqui mesmo; use o percurso acima para voltar. Vínculos importados
-      são caminhos de investigação e não comprovam influência por si sós.
-    </p>
-    <div class="context-connections">
-      @for (connection of record().connections; track connection.id ?? connection.entityId) {
-        <article class="context-connection">
-          <button
-            type="button"
-            [attr.data-connection]="connection.id ?? connection.entityId"
-            (click)="follow(connection)"
-          >
-            {{ connection.label }} <span class="opens-here" aria-hidden="true">abre a ficha →</span>
-          </button>
-          @if (connection.relation; as relation) {
-            <p class="relation-label">{{ relation.label }}</p>
-            <small
-              >{{ relationKind(connection) }} · {{ statusLabel(relation.editorialStatus) }}</small
-            >
-            <details [attr.data-relation]="connection.id ?? connection.entityId">
-              <summary>Contexto e evidências do vínculo</summary>
-              <p>{{ relation.context }}</p>
-              <p>Incerteza: {{ uncertaintyLabel(relation.uncertainty) }}.</p>
-              @for (reference of relation.references; track reference.id) {
-                <p>
-                  @if (reference.source.url; as url) {
-                    <a [href]="url" target="_blank" rel="noopener noreferrer">{{
-                      reference.source.title
-                    }}</a>
-                  } @else {
-                    {{ reference.source.title }}
-                  }
-                  <small>{{ reference.source.edition }} · {{ reference.locator }}</small>
-                </p>
-              } @empty {
-                <p>Sem evidência historiográfica específica registrada para este vínculo.</p>
-              }
-              @if (relation.provenance; as provenance) {
-                <p>
-                  <a [href]="provenance.url" target="_blank" rel="noopener noreferrer"
-                    >Procedência: {{ provenance.source }}</a
-                  >
-                  <small>Coleta: {{ provenance.retrievedAt }}</small>
-                </p>
-              }
-            </details>
-          }
-        </article>
-      } @empty {
-        <p>Não há conexões registradas neste contexto.</p>
+@for (current of [record()]; track current) {
+  <div class="sheet">
+    <header>
+      <div>
+        <p class="context-kind">
+          <span class="kind-chip">{{ record().kind }}</span>
+          {{ statusLabel(record().editorialStatus) }}
+        </p>
+        <h2 id="knowledge-context-title" tabindex="-1">{{ record().title }}</h2>
+      </div>
+      @if (trail().length) {
+        <button type="button" class="context-back" (click)="back()">
+          <span aria-hidden="true">←</span> Voltar
+        </button>
       }
-    </div>
-  </section>
-  <section aria-label="Fontes do contexto">
-    <h3>Fontes e proveniência</h3>
-    @for (source of record().sources; track source.id) {
-      <p>
-        @if (source.url; as url) {
-          <a [href]="url" target="_blank" rel="noopener noreferrer">{{ source.title }}</a>
-        } @else {
-          {{ source.title }}
+      <button type="button" class="context-close" aria-label="Fechar contexto" (click)="close()">
+        Fechar <span aria-hidden="true">×</span>
+      </button>
+    </header>
+    @if (trail().length) {
+      <nav class="context-trail" aria-label="Percurso neste contexto">
+        @for (title of trail(); track $index) {
+          <button type="button" (click)="backTo($index)">{{ title }}</button
+          ><span aria-hidden="true">›</span>
         }
-        <small>{{ source.edition }}</small>
-      </p>
-    } @empty {
-      <p>
-        Não há referência específica registrada neste recorte. Não tratar o resumo como afirmação
-        validada.
-      </p>
+        <span aria-current="location">{{ record().title }}</span>
+      </nav>
     }
-  </section>
-</div>
+    <div class="context-body">
+      @if (record().media; as media) {
+        <figure>
+          <img
+            [src]="media.assetPath"
+            [alt]="'Imagem associada a ' + record().title"
+            width="480"
+            height="480"
+          />
+          <figcaption>
+            {{ media.attribution ?? media.creator }} ·
+            <a [href]="media.filePageUrl ?? media.licenseUrl">{{ media.license }}</a>
+          </figcaption>
+        </figure>
+      }
+      <p class="context-summary">{{ record().summary }}</p>
+      @if (permanentPath(); as path) {
+        <p class="context-permanent">
+          <a [routerLink]="path" (click)="leave()">Abrir ficha de {{ record().title }} →</a>
+          <small>Sai desta leitura e abre o verbete completo.</small>
+        </p>
+      }
+      @for (paragraph of record().paragraphs; track $index) {
+        <p>{{ paragraph }}</p>
+      }
+      <section aria-label="Conexões deste contexto">
+        <h3>Continue por uma conexão</h3>
+        <p>
+          Cada conexão abre a ficha aqui mesmo; use o percurso acima para voltar. Vínculos
+          importados são caminhos de investigação e não comprovam influência por si sós.
+        </p>
+        <div class="context-connections">
+          @for (connection of record().connections; track connection.id ?? connection.entityId) {
+            <article class="context-connection">
+              <button
+                type="button"
+                [attr.data-connection]="connection.id ?? connection.entityId"
+                (click)="follow(connection)"
+              >
+                {{ connection.label }}
+                <span class="opens-here" aria-hidden="true">abre a ficha →</span>
+              </button>
+              @if (connection.relation; as relation) {
+                <p class="relation-label">{{ relation.label }}</p>
+                <small
+                  >{{ relationKind(connection) }} ·
+                  {{ statusLabel(relation.editorialStatus) }}</small
+                >
+                <details [attr.data-relation]="connection.id ?? connection.entityId">
+                  <summary>Contexto e evidências do vínculo</summary>
+                  <p>{{ relation.context }}</p>
+                  <p>Incerteza: {{ uncertaintyLabel(relation.uncertainty) }}.</p>
+                  @for (reference of relation.references; track reference.id) {
+                    <p>
+                      @if (reference.source.url; as url) {
+                        <a [href]="url" target="_blank" rel="noopener noreferrer">{{
+                          reference.source.title
+                        }}</a>
+                      } @else {
+                        {{ reference.source.title }}
+                      }
+                      <small>{{ reference.source.edition }} · {{ reference.locator }}</small>
+                    </p>
+                  } @empty {
+                    <p>Sem evidência historiográfica específica registrada para este vínculo.</p>
+                  }
+                  @if (relation.provenance; as provenance) {
+                    <p>
+                      <a [href]="provenance.url" target="_blank" rel="noopener noreferrer"
+                        >Procedência: {{ provenance.source }}</a
+                      >
+                      <small>Coleta: {{ provenance.retrievedAt }}</small>
+                    </p>
+                  }
+                </details>
+              }
+            </article>
+          } @empty {
+            <p>Não há conexões registradas neste contexto.</p>
+          }
+        </div>
+      </section>
+      <section aria-label="Fontes do contexto">
+        <h3>Fontes e proveniência</h3>
+        @for (source of record().sources; track source.id) {
+          <p>
+            @if (source.url; as url) {
+              <a [href]="url" target="_blank" rel="noopener noreferrer">{{ source.title }}</a>
+            } @else {
+              {{ source.title }}
+            }
+            <small>{{ source.edition }}</small>
+          </p>
+        } @empty {
+          <p>
+            Não há referência específica registrada neste recorte. Não tratar o resumo como
+            afirmação validada.
+          </p>
+        }
+      </section>
+    </div>
+    <footer class="sheet-footer">
+      @if (citation().source; as source) {
+        <p>
+          <span class="footer-label">Fonte</span> {{ source.title }}
+          @if (source.edition) {
+            <small>{{ source.edition }}</small>
+          }
+          @if (citation().extra) {
+            <small>e mais {{ citation().extra }} abaixo</small>
+          }
+        </p>
+      } @else {
+        <p><span class="footer-label">Fonte</span> Sem referência específica registrada.</p>
+      }
+      @if (citation().license; as license) {
+        <p>
+          <span class="footer-label">Imagem</span>
+          @if (citation().licenseUrl; as url) {
+            <a [href]="url" target="_blank" rel="noopener noreferrer">{{ license }}</a>
+          } @else {
+            {{ license }}
+          }
+        </p>
+      }
+      @if (citation().checkUrl; as url) {
+        <a class="footer-check" [href]="url" target="_blank" rel="noopener noreferrer"
+          >Conferir <span aria-hidden="true">↗</span></a
+        >
+      }
+    </footer>
+  </div>
+}

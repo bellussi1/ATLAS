@@ -1,4 +1,5 @@
 import type { Atlas } from '@core/content/models/content-schema';
+import { type IconKind, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 
 export type DeskKind = Atlas['entities'][number]['kind'];
 
@@ -11,6 +12,10 @@ export interface DeskEntity {
   start: number | null;
   end: number | null;
   period: string;
+  /** Glyph family; a person tied to a party or government reads as a politician. */
+  icon: IconKind;
+  /** Number of documented relations to other records of the tradition. */
+  links: number;
 }
 
 export interface DeskLink {
@@ -62,7 +67,19 @@ function period(
 }
 
 export function deskEntities(atlas: Atlas | undefined): DeskEntity[] {
-  return (atlas?.entities ?? [])
+  const entities = atlas?.entities ?? [];
+  const kindOf = new Map(entities.map((e) => [e.id, e.kind]));
+  const neighbours = new Map<string, string[]>();
+  for (const r of atlas?.relations ?? []) {
+    if (!kindOf.has(r.fromEntityId) || !kindOf.has(r.toEntityId)) continue;
+    neighbours.set(r.fromEntityId, [...(neighbours.get(r.fromEntityId) ?? []), r.toEntityId]);
+    neighbours.set(r.toEntityId, [...(neighbours.get(r.toEntityId) ?? []), r.fromEntityId]);
+  }
+  const political = (id: string) =>
+    (neighbours.get(id) ?? []).some((other) =>
+      ['party', 'government'].includes(kindOf.get(other)!),
+    );
+  return entities
     .map((e) => ({
       id: e.id,
       slug: e.slug,
@@ -72,6 +89,8 @@ export function deskEntities(atlas: Atlas | undefined): DeskEntity[] {
       start: e.temporalExtent?.startYear ?? null,
       end: e.temporalExtent?.endYear ?? null,
       period: period(e.temporalExtent),
+      icon: e.kind === 'person' && political(e.id) ? 'politician' : iconKind(e.kind),
+      links: neighbours.get(e.id)?.length ?? 0,
     }))
     .sort((a, b) => (a.start ?? 9999) - (b.start ?? 9999) || a.title.localeCompare(b.title));
 }

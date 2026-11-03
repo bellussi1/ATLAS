@@ -1,0 +1,148 @@
+:host {
+  display: block;
+  height: 100%;
+}
+.record-card {
+  --tab: var(--desk-line);
+  width: 100%;
+  height: 100%;
+  min-height: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  text-align: left;
+  background: var(--desk-card, #efe8d6);
+  color: #141414;
+  border: 0;
+  border-top: 6px solid var(--tab);
+  padding: var(--space-3);
+  box-shadow: 0 6px 16px #0007;
+  transition: transform var(--motion-fast) var(--ease-out);
+  small,
+  strong {
+    max-width: calc(100% - 2.6rem);
+  }
+  small {
+    font: 0.68rem var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5d5a54;
+  }
+  strong {
+    font: 700 1.05rem/1.2 var(--font-sans);
+    text-wrap: balance;
+  }
+  .card-kind {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    --kind-icon-size: 0.95rem;
+    color: #3f3c37;
+  }
+  .card-period {
+    margin-top: auto;
+    font: 0.78rem var(--font-mono);
+    color: #4a4030;
+  }
+  .card-links {
+    font: 0.7rem var(--font-mono);
+    color: #4a4642;
+    border-top: 1px solid #14141433;
+    padding-top: var(--space-1);
+    width: 100%;
+  }
+  .card-glyph {
+    position: absolute;
+    top: 0;
+    right: 0;
+    --kind-icon-size: 1.7rem;
+    padding: 0.55rem 0.55rem 0.9rem 0.9rem;
+    border-radius: 0 0 0 100%;
+    background: var(--tab);
+    color: #141414;
+    transition: transform var(--motion-standard) var(--ease-out);
+    transform-origin: top right;
+  }
+  position: relative;
+  overflow: hidden;
+  animation: card-in var(--motion-standard) var(--ease-out) both;
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
+  .card-picture {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.2rem;
+    height: 3.2rem;
+    object-fit: cover;
+    border-radius: 0 0 0 100%;
+    filter: grayscale(1);
+    transition:
+      filter var(--motion-standard),
+      width var(--motion-standard) var(--ease-out),
+      height var(--motion-standard) var(--ease-out);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    background: var(--tab);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--motion-standard) var(--ease-out);
+  }
+  &:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--tab);
+    .card-glyph {
+      transform: scale(1.25) rotate(-8deg);
+    }
+    .card-picture {
+      filter: none;
+      width: 4.2rem;
+      height: 4.2rem;
+    }
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+  &[aria-pressed='true'] {
+    outline: 3px solid #ffd400;
+    outline-offset: 3px;
+  }
+}
+[data-kind='person'] {
+  --tab: #6f82ff;
+}
+[data-kind='work'] {
+  --tab: #d0a63e;
+}
+[data-kind='concept'] {
+  --tab: #45a77c;
+}
+[data-kind='event'] {
+  --tab: #ff6a5c;
+}
+[data-kind='ideology'] {
+  --tab: #c792ea;
+}
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .record-card {
+    animation: none;
+    transition: none;
+  }
+  .record-card:hover .card-glyph {
+    transform: none;
+  }
+}

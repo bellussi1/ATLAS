@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, type Params, Router, RouterLink } from '@angular/router';
 import type { Atlas } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { RecordCardComponent } from '@ideologies/components/record-card/record-card.component';
 import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
 import {
   deskEntities,
@@ -17,6 +18,8 @@ import {
 } from '@ideologies/utils/desk-graph';
 import { entityMedia } from '@ideologies/utils/page-media-plan';
 import { chapterDeskKind } from '@ideologies/utils/reading-trails';
+import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
+import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
 
 /**
@@ -26,7 +29,13 @@ import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-
  */
 @Component({
   selector: 'app-ideology-desk',
-  imports: [RouterLink, AtlasLicensedAssetComponent],
+  imports: [
+    RouterLink,
+    AtlasLicensedAssetComponent,
+    AtlasKindIconComponent,
+    KnowledgeContextDirective,
+    RecordCardComponent,
+  ],
   templateUrl: './ideology-desk.component.html',
   styleUrl: './ideology-desk.component.scss',
 })

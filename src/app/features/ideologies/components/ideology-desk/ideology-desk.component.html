@@ -77,22 +77,12 @@
         <ul class="desk-cards">
           @for (entity of results(); track entity.id) {
             <li>
-              <button
-                type="button"
-                class="desk-card"
-                [attr.data-kind]="entity.kind"
-                [attr.aria-pressed]="chain()[0]?.entity?.id === entity.id"
-                (click)="start(entity.id)"
-              >
-                @if (media().get(entity.id); as picture) {
-                  <img class="card-picture" [src]="picture.assetPath" alt="" loading="lazy" />
-                }
-                <small>{{ kindLabel(entity.kind) }}</small>
-                <strong>{{ entity.title }}</strong>
-                @if (entity.period) {
-                  <span class="card-period">{{ entity.period }}</span>
-                }
-              </button>
+              <app-record-card
+                [entity]="entity"
+                [picture]="media().get(entity.id)?.assetPath ?? null"
+                [pressed]="chain()[0]?.entity?.id === entity.id"
+                (picked)="start($event)"
+              />
             </li>
           }
         </ul>
@@ -133,7 +123,16 @@
                   />
                 }
                 <p>{{ step.entity.summary }}</p>
-                <a [routerLink]="'/verbete/' + step.entity.slug">Abrir o verbete</a>
+                <p class="chain-actions">
+                  <button
+                    type="button"
+                    class="chain-open"
+                    [appKnowledgeContext]="{ entityId: step.entity.id }"
+                  >
+                    Abrir a folha com fontes
+                  </button>
+                  <a [routerLink]="'/verbete/' + step.entity.slug">Abrir o verbete</a>
+                </p>
               }
             </li>
           }
@@ -144,7 +143,10 @@
             @for (link of links(); track link.relationId) {
               <li [attr.data-kind]="link.other.kind">
                 <button type="button" (click)="follow(link.otherId)">
-                  <small>{{ link.label }}</small>
+                  <small
+                    ><app-kind-icon [kind]="link.other.icon" />{{ kindLabel(link.other.kind) }} ·
+                    {{ link.label }}</small
+                  >
                   <strong>{{ link.other.title }}</strong>
                 </button>
                 <details>

@@ -1,8 +1,10 @@
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
+import { DOCUMENT } from '@angular/common';
 import {
   afterNextRender,
   Component,
   computed,
+  DestroyRef,
   ElementRef,
   inject,
   Injector,
@@ -16,12 +18,22 @@ import {
 import { entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 
+/** How many earlier sheets stay visible behind the current one. */
+const VISIBLE_SHEETS = 3;
+
+/**
+ * Context sheet over the reading. Following a relation lays a new sheet on top of the
+ * pile, slightly offset; the button, Esc and the browser's back button lift it again.
+ */
 @Component({
   selector: 'app-knowledge-context',
   imports: [RouterLink],
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
-  host: { '[attr.data-tone]': 'tone()' },
+  host: {
+    '[attr.data-tone]': 'tone()',
+    '[style.--depth]': 'depth()',
+  },
 })
 export class KnowledgeContextComponent {
   private readonly initial = inject<KnowledgeContext>(DIALOG_DATA);
@@ -29,6 +41,11 @@ export class KnowledgeContextComponent {
   private readonly repository = inject(ContentRepository);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly injector = inject(Injector);
+  private readonly window = inject(DOCUMENT).defaultView;
+  /** Browser history entries this dialog added and has not yet consumed. */
+  private pushed = 0;
+  /** Pops triggered by the dialog itself, which the popstate listener must ignore. */
+  private ownPops = 0;
   readonly record = signal(this.initial);
   readonly history = signal<
     {
@@ -50,6 +67,53 @@ export class KnowledgeContextComponent {
   });
   /** Where the reader came from: every step can be revisited without closing the dialog. */
   readonly trail = computed(() => this.history().map((step) => step.record.title));
+  /** Earlier sheets drawn behind the current one, nearest last. */
+  readonly pile = computed(() =>
+    this.history()
+      .slice(-VISIBLE_SHEETS)
+      .map((step, i, all) => ({ title: step.record.title, offset: all.length - i })),
+  );
+  readonly depth = computed(() => Math.min(this.history().length, VISIBLE_SHEETS));
+  /** First registered source and the license of the picture, for the sheet's footer. */
+  readonly citation = computed(() => {
+    const record = this.record();
+    const source = record.sources[0] ?? record.connections[0]?.relation?.references[0]?.source;
+    const provenance = record.connections.find((c) => c.relation?.provenance)?.relation?.provenance;
+    return {
+      source,
+      extra: Math.max(0, record.sources.length - 1),
+      license: record.media?.license,
+      licenseUrl: record.media?.licenseUrl,
+      checkUrl: source?.url ?? provenance?.url ?? record.media?.filePageUrl ?? null,
+    };
+  });
+
+  constructor() {
+    this.ref.keydownEvents?.subscribe((event) => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      if (this.history().length) this.back();
+      else this.close();
+    });
+    this.ref.backdropClick?.subscribe(() => this.close());
+    const onPop = (event: PopStateEvent) => {
+      if (this.ownPops) {
+        this.ownPops--;
+        return;
+      }
+      // Back past the first sheet leaves the dialog, as the router would have.
+      if (!this.history().length) {
+        this.ref.close();
+        return;
+      }
+      // The browser went back: lift sheets until the pile matches the restored entry.
+      const target = Number(event.state?.atlasSheet ?? 0);
+      this.pushed = target;
+      while (this.history().length > target) this.lift();
+    };
+    this.window?.addEventListener('popstate', onPop);
+    inject(DestroyRef).onDestroy(() => this.window?.removeEventListener('popstate', onPop));
+  }
   permanentPath(): string | undefined {
     return this.record().entityId
       ? this.repository.discoveryIndex.find((entry) => entry.id === this.record().entityId)?.path
@@ -71,21 +135,30 @@ export class KnowledgeContextComponent {
       },
     ]);
     this.record.set(entityContext(this.repository, connection.entityId));
+    this.pushed++;
+    this.window?.history.pushState(
+      { ...this.window.history.state, atlasSheet: this.history().length },
+      '',
+    );
     this.present(0);
   }
   backTo(index: number): void {
-    while (this.history().length > index + 1) this.history.update((items) => items.slice(0, -1));
-    this.back();
+    const steps = this.history().length - index;
+    while (this.history().length > index) this.lift();
+    this.unwind(steps);
   }
   back(): void {
-    const previous = this.history().at(-1);
-    if (previous) {
-      this.record.set(previous.record);
-      this.history.update((items) => items.slice(0, -1));
-      this.present(previous.scroll, previous.focusId, previous.expanded);
-    }
+    if (!this.history().length) return;
+    this.lift();
+    this.unwind(1);
   }
+  /** Closes the pile and drops the browser entries it added. */
   close(): void {
+    this.unwind(this.pushed);
+    this.ref.close();
+  }
+  /** Leaves through a link: the router navigation replaces the sheets' entries. */
+  leave(): void {
     this.ref.close();
   }
 
@@ -127,6 +200,21 @@ export class KnowledgeContextComponent {
 
   uncertaintyLabel(value: NonNullable<ContextConnection['relation']>['uncertainty']): string {
     return { low: 'baixa', moderate: 'moderada', high: 'alta', unknown: 'não determinada' }[value];
+  }
+
+  private lift(): void {
+    const previous = this.history().at(-1);
+    if (!previous) return;
+    this.record.set(previous.record);
+    this.history.update((items) => items.slice(0, -1));
+    this.present(previous.scroll, previous.focusId, previous.expanded);
+  }
+  private unwind(steps: number): void {
+    const count = Math.min(steps, this.pushed);
+    if (!count || !this.window) return;
+    this.pushed -= count;
+    this.ownPops++;
+    this.window.history.go(-count);
   }
 
   private present(scroll: number, focusId?: string, expanded: string[] = []): void {

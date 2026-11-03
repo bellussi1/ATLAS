@@ -35,7 +35,7 @@ test('chapter links filter Explorar in place, chain records and return to the ch
   await expect(page.getByRole('button', { name: /^Pessoa/, pressed: true })).toBeVisible();
 
   await page.getByRole('searchbox', { name: 'Buscar registros' }).fill('marx');
-  await page.locator('.desk-card', { hasText: 'Karl Marx' }).click();
+  await page.locator('.record-card', { hasText: 'Karl Marx' }).click();
   await page.locator('.chain-next button', { hasText: 'O capital: volume I' }).click();
   await expect(page.locator('.chain-via').first()).toContainText('escreveu');
   await expect(page).toHaveURL(/cadeia=person-karl-marx,work-capital-volume-i/);
@@ -59,7 +59,7 @@ test('desk filters and chain steps keep the scroll position', async ({ page }) =
     (document.querySelectorAll('.desk-kinds button')[1] as HTMLElement).click(),
   );
   await expect(page).toHaveURL(/tipo=/);
-  await page.evaluate(() => (document.querySelector('.desk-card') as HTMLElement).click());
+  await page.evaluate(() => (document.querySelector('.record-card') as HTMLElement).click());
   await expect(page).toHaveURL(/cadeia=/);
   expect(await page.evaluate(() => window.scrollY)).toBe(top);
 });
@@ -98,3 +98,27 @@ for (const width of [320, 375, 768, 1024, 1440]) {
     }
   });
 }
+
+test('relations open stacked sheets that Esc and the back button lift one at a time', async ({
+  page,
+}) => {
+  await page.goto('/marxismo/?cadeia=person-karl-marx');
+  await page.getByRole('button', { name: 'Abrir a folha com fontes' }).click();
+  const sheet = page.getByRole('dialog');
+  await expect(sheet.locator('h2')).toHaveText('Karl Marx');
+  await expect(sheet.locator('.sheet-footer')).toContainText('Fonte');
+  await sheet.locator('[data-connection]').nth(1).click();
+  await expect(page.locator('.sheet-ghost')).toHaveCount(1);
+  await expect(sheet.locator('h2')).not.toHaveText('Karl Marx');
+  const second = await sheet.locator('h2').textContent();
+  await sheet.locator('[data-connection]').nth(1).click();
+  await expect(page.locator('.sheet-ghost')).toHaveCount(2);
+  await page.keyboard.press('Escape');
+  await expect(sheet.locator('h2')).toHaveText(second!);
+  await page.goBack();
+  await expect(sheet.locator('h2')).toHaveText('Karl Marx');
+  await expect(page.locator('.sheet-ghost')).toHaveCount(0);
+  await page.keyboard.press('Escape');
+  await expect(sheet).toHaveCount(0);
+  await expect(page).toHaveURL(/cadeia=person-karl-marx/);
+});

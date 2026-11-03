@@ -30,6 +30,10 @@ export class KnowledgeContextDirective {
     const ref = this.dialog.open(KnowledgeContextComponent, {
       data: record,
       ariaModal: true,
+      // The sheet handles Esc and backdrop itself, so Esc lifts one sheet before closing.
+      disableClose: true,
+      // The browser's back button lifts sheets; the sheet closes itself when none is left.
+      closeOnNavigation: false,
       ariaLabelledBy: 'knowledge-context-title',
       autoFocus: 'first-tabbable',
       restoreFocus: event.currentTarget as HTMLElement,

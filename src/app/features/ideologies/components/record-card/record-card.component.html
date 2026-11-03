@@ -1,0 +1,26 @@
+@let record = entity();
+<button
+  type="button"
+  class="record-card"
+  [attr.data-kind]="record.kind"
+  [attr.aria-pressed]="pressed()"
+  (click)="picked.emit(record.id)"
+>
+  @if (picture(); as src) {
+    <img class="card-picture" [src]="src" alt="" loading="lazy" />
+  } @else {
+    <app-kind-icon class="card-glyph" [kind]="record.icon" />
+  }
+  <small class="card-kind"
+    ><app-kind-icon [kind]="record.icon" />{{ kindLabel(record.kind) }}</small
+  >
+  <strong>{{ record.title }}</strong>
+  @if (record.period) {
+    <span class="card-period">{{ record.period }}</span>
+  }
+  @if (record.links) {
+    <span class="card-links"
+      >{{ record.links }} {{ record.links === 1 ? 'relação' : 'relações' }}</span
+    >
+  }
+</button>
