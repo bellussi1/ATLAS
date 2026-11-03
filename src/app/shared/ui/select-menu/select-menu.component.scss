@@ -1,0 +1,106 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.select-menu {
+  position: relative;
+}
+.select-menu__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.7rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: 650 0.875rem/1.2 var(--font-sans);
+  text-align: left;
+  cursor: pointer;
+}
+.select-menu__trigger[aria-expanded='true'] {
+  box-shadow: inset 0 -3px var(--color-accent);
+}
+.select-menu__value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* A solid triangle, the geometric marker of the trigger. It turns when the menu opens. */
+.select-menu__chevron {
+  flex: none;
+  width: 0;
+  height: 0;
+  border-inline: 6px solid transparent;
+  border-top: 7px solid var(--color-ink);
+  transition: transform 120ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.select-menu__trigger[aria-expanded='true'] .select-menu__chevron {
+  transform: rotate(180deg);
+}
+.select-menu__list {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 100%;
+  max-height: 20rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+  box-shadow: 6px 6px 0 var(--color-ink);
+  list-style: none;
+}
+.select-menu__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.8rem;
+  color: var(--color-ink);
+  font: 650 0.875rem/1.25 var(--font-sans);
+  cursor: pointer;
+}
+.select-menu__option + .select-menu__option {
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 22%, transparent);
+}
+/* Focus and selection never change the text colour: the marker and the fill carry the state. */
+.select-menu__option:focus-visible,
+.select-menu__option:focus {
+  outline: none;
+  background: var(--color-surface-subtle);
+  box-shadow: inset 5px 0 0 var(--color-accent);
+}
+.select-menu__option[aria-selected='true'] {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+  box-shadow: inset 0 -3px var(--color-accent);
+}
+.select-menu__option[aria-selected='true'] .select-menu__count {
+  color: var(--color-ochre-paper);
+}
+.select-menu__count {
+  flex: none;
+  color: var(--color-ink-muted);
+  font: 0.875rem/1 var(--font-mono);
+}
+.select-menu__trigger:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .select-menu__option:not([aria-selected='true']):hover {
+    background: var(--color-surface-subtle);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .select-menu__chevron {
+    transition: none;
+  }
+}

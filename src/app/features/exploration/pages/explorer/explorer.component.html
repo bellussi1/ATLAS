@@ -44,32 +44,30 @@
       aria-label="Busca no acervo"
       (submit)="$event.preventDefault(); apply(filters)"
     >
-      <label for="explorer-query">Procurar no acervo</label>
-      <input
-        id="explorer-query"
-        type="search"
-        name="q"
-        [value]="params().get('q') ?? ''"
-        placeholder="Nome, conceito ou expressão"
-      />
-      <button type="submit">Pesquisar</button>
-      <label for="explorer-state">Estado da revisão</label>
-      <select
-        id="explorer-state"
-        name="estado"
-        [value]="params().get('estado') ?? ''"
-        (change)="apply(filters)"
-      >
-        <option value="">Todas as situações</option>
-        @if (unknownState()) {
-          <option [value]="params().get('estado')">Situação indisponível</option>
-        }
-        @for (facet of facets.states; track facet.value) {
-          <option [value]="facet.value">{{ facet.label }} ({{ facet.count }})</option>
-        }
-      </select>
-      <a class="clear" [routerLink]="'/' + catalogue.path">Limpar busca e filtros</a>
-      <p>
+      <div class="toolbar">
+        <div class="field field--query">
+          <label for="explorer-query">Procurar no acervo</label>
+          <input
+            id="explorer-query"
+            type="search"
+            name="q"
+            [value]="params().get('q') ?? ''"
+            placeholder="Nome, conceito ou expressão"
+          />
+        </div>
+        <button type="submit">Pesquisar</button>
+        <div class="field field--state">
+          <span class="field__label" id="explorer-state-label">Estado da revisão</span>
+          <app-select-menu
+            labelledBy="explorer-state-label"
+            [options]="stateOptions()"
+            [value]="params().get('estado') ?? ''"
+            (changed)="applyState($event)"
+          />
+        </div>
+        <a class="clear" [routerLink]="'/' + catalogue.path">Limpar busca e filtros</a>
+      </div>
+      <p class="archive-note">
         Um registro cadastrado não equivale a conteúdo verificado. Confira as fontes e a situação
         editorial.
       </p>
@@ -125,25 +123,11 @@
             Nenhum resultado
           }
         </p>
-        @if (paginated) {
-          <nav class="page-size" aria-label="Resultados por página">
-            <span class="page-size__label">Mostrar</span>
-            @for (size of pageSizes; track size) {
-              <a
-                class="page-size__item"
-                [routerLink]="[]"
-                [queryParams]="{ porPagina: size === 10 ? null : size, pagina: null }"
-                queryParamsHandling="merge"
-                fragment="resultados"
-                [attr.aria-current]="pageSize() === size ? 'true' : null"
-                >{{ size }}</a
-              >
-            }
-          </nav>
+        @if (paginated && page().pageCount > 1) {
+          <ng-container *ngTemplateOutlet="pager" />
         }
       </div>
       <section
-        id="resultados"
         aria-label="Resultados da busca"
         class="results"
         [class.results--cards]="catalogue.path !== 'fontes'"
@@ -156,38 +140,23 @@
                 · {{ entry.stateLabel }}
               </p>
               <h2 [attr.lang]="shown(entry).locale">
-                @if (catalogue.path === 'fontes') {
-                  {{ shown(entry).title }}
-                } @else {
-                  <a
-                    [routerLink]="entry.path"
-                    [fragment]="entry.fragment"
-                    [queryParams]="
-                      entry.kind === 'fonte'
-                        ? {}
-                        : { origem: origin(), idioma: params().get('idioma') }
-                    "
-                    >{{ shown(entry).title }}</a
-                  >
-                }
+                {{ shown(entry).title }}
               </h2>
               <p [attr.lang]="shown(entry).locale">{{ shown(entry).summary }}</p>
-              @if (catalogue.path === 'fontes') {
-                @if (sourceUrl(entry.id); as url) {
-                  <p><a [href]="url">Consultar fonte original</a></p>
-                }
-                <details class="source-uses">
-                  <summary>Citações no acervo ({{ entry.backlinks.length }})</summary>
-                  @for (backlink of entry.backlinks; track backlink.id) {
-                    <p class="source-use">
-                      <a [routerLink]="backlink.path">{{ backlink.title }}</a
-                      >: {{ backlink.label }}. {{ backlink.context }}
-                    </p>
-                  } @empty {
-                    <p>Sem citação em afirmação registrada neste recorte.</p>
-                  }
-                </details>
+              @if (sourceUrl(entry.id); as url) {
+                <p><a [href]="url">Consultar fonte original</a></p>
               }
+              <details class="source-uses">
+                <summary>Citações no acervo ({{ entry.backlinks.length }})</summary>
+                @for (backlink of entry.backlinks; track backlink.id) {
+                  <p class="source-use">
+                    <a [routerLink]="backlink.path">{{ backlink.title }}</a
+                    >: {{ backlink.label }}. {{ backlink.context }}
+                  </p>
+                } @empty {
+                  <p>Sem citação em afirmação registrada neste recorte.</p>
+                }
+              </details>
             </article>
           } @else {
             <article [id]="entry.fragment ?? entry.id" class="result-card">
@@ -219,37 +188,41 @@
           </div>
         }
       </section>
-      @if (page().pageCount > 1) {
-        <nav class="pager" aria-label="Paginação do acervo">
-          @if (page().page > 1) {
-            <a
-              class="pager__link"
-              rel="prev"
-              [routerLink]="[]"
-              [queryParams]="{ pagina: page().page - 1 === 1 ? null : page().page - 1 }"
-              queryParamsHandling="merge"
-              fragment="resultados"
-              >← Anterior</a
-            >
-          } @else {
-            <span class="pager__link is-disabled" aria-disabled="true">← Anterior</span>
-          }
-          <p class="pager__status">Página {{ page().page }} de {{ page().pageCount }}</p>
-          @if (page().page < page().pageCount) {
-            <a
-              class="pager__link"
-              rel="next"
-              [routerLink]="[]"
-              [queryParams]="{ pagina: page().page + 1 }"
-              queryParamsHandling="merge"
-              fragment="resultados"
-              >Próxima →</a
-            >
-          } @else {
-            <span class="pager__link is-disabled" aria-disabled="true">Próxima →</span>
-          }
-        </nav>
-      }
+      <div class="results-bar results-bar--foot">
+        @if (paginated && page().pageCount > 1) {
+          <ng-container *ngTemplateOutlet="pager" />
+        }
+      </div>
     </div>
   </div>
 </section>
+
+<ng-template #pager>
+  <nav class="pager" aria-label="Paginação do acervo">
+    @if (page().page > 1) {
+      <a
+        class="pager__link"
+        rel="prev"
+        [routerLink]="[]"
+        [queryParams]="{ pagina: page().page - 1 === 1 ? null : page().page - 1 }"
+        queryParamsHandling="merge"
+        >← Anterior</a
+      >
+    } @else {
+      <span class="pager__link is-disabled" aria-disabled="true">← Anterior</span>
+    }
+    <p class="pager__status">Página {{ page().page }} de {{ page().pageCount }}</p>
+    @if (page().page < page().pageCount) {
+      <a
+        class="pager__link"
+        rel="next"
+        [routerLink]="[]"
+        [queryParams]="{ pagina: page().page + 1 }"
+        queryParamsHandling="merge"
+        >Próxima →</a
+      >
+    } @else {
+      <span class="pager__link is-disabled" aria-disabled="true">Próxima →</span>
+    }
+  </nav>
+</ng-template>

@@ -1,10 +1,18 @@
+import { NgTemplateOutlet, ViewportScroller } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import {
+  ActivatedRoute,
+  NavigationStart,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  Scroll,
+} from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
 import type { DiscoveryIndexEntry } from '@core/content/queries/discovery-index';
 import {
-  EXPLORER_PAGE_SIZES,
+  EXPLORER_PAGE_SIZE,
   explorerCatalogues,
   explorerContentGroups,
   explorerEntries,
@@ -12,21 +20,26 @@ import {
   explorerGroups,
   explorerPage,
   parseExplorerPage,
-  parseExplorerPageSize,
 } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
+import {
+  SelectMenuComponent,
+  type SelectMenuOption,
+} from '@shared/ui/select-menu/select-menu.component';
 
 @Component({
   selector: 'app-explorer',
   imports: [
+    NgTemplateOutlet,
     RouterLink,
     RouterLinkActive,
     AtlasGeometricMosaicComponent,
     RecordCardComponent,
+    SelectMenuComponent,
   ],
   templateUrl: './explorer.component.html',
   styleUrl: './explorer.component.scss',
@@ -36,6 +49,9 @@ export class ExplorerComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly repository = inject(ContentRepository);
+  private readonly viewport = inject(ViewportScroller);
+  // Pager links keep the reader's place: the router would otherwise scroll to the top of the page.
+  private keptScrollY: number | null = null;
   readonly groups = explorerGroups.map((group) => ({
     ...group,
     catalogues: explorerCatalogues.filter((c) => c.group === group.id),
@@ -44,7 +60,6 @@ export class ExplorerComponent {
     explorerCatalogues.find((c) => c.path === this.route.snapshot.data['catalogue']) ??
     explorerCatalogues[0];
   readonly mosaicSeed = explorerCatalogues.indexOf(this.catalogue) + 3;
-  readonly pageSizes = EXPLORER_PAGE_SIZES;
   readonly languages = contentLanguageLabels;
   readonly params = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,
@@ -67,12 +82,11 @@ export class ExplorerComponent {
   // Sources keep one list: records link to their anchors (#source-…), which must stay on the page.
   readonly icon = iconKind;
   readonly paginated = this.catalogue.path !== 'fontes';
-  readonly pageSize = computed(() => parseExplorerPageSize(this.params().get('porPagina')));
   readonly page = computed(() =>
     explorerPage(
       this.results(),
       parseExplorerPage(this.params().get('pagina')),
-      this.paginated ? this.pageSize() : Math.max(1, this.results().length),
+      this.paginated ? EXPLORER_PAGE_SIZE : Math.max(1, this.results().length),
     ),
   );
   readonly origin = computed(() => '/' + this.catalogue.path + this.queryString());
@@ -86,13 +100,46 @@ export class ExplorerComponent {
       !!this.params().get('estado') &&
       !this.facets.states.some((f) => f.value === this.params().get('estado')),
   );
+  readonly stateOptions = computed<SelectMenuOption[]>(() => [
+    { value: '', label: 'Todas as situações' },
+    ...(this.unknownState()
+      ? [{ value: this.params().get('estado') ?? '', label: 'Situação indisponível' }]
+      : []),
+    ...this.facets.states.map((facet) => ({
+      value: facet.value,
+      label: facet.label,
+      count: facet.count,
+    })),
+  ]);
+  constructor() {
+    this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
+      // Filters, search and pager only change the query string: the reader stays where they are.
+      if (event instanceof NavigationStart) {
+        const samePage = event.url.split('?')[0] === this.router.url.split('?')[0];
+        this.keptScrollY = samePage ? this.viewport.getScrollPosition()[1] : null;
+      }
+      if (event instanceof Scroll && this.keptScrollY !== null) {
+        const y = this.keptScrollY;
+        this.keptScrollY = null;
+        // The router scrolls to the top after its own Scroll event, so the restore waits one turn.
+        setTimeout(() => this.viewport.scrollToPosition([0, y]));
+      }
+    });
+  }
   sourceUrl(id: string): string | null {
     return (
       this.repository.knowledgeGraph.atlases.flatMap((a) => a.sources).find((s) => s.id === id)
         ?.url ?? null
     );
   }
-  // Category and page size links live in the URL; the search and state filters keep both.
+  applyState(state: string): void {
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { estado: state || null, pagina: null },
+      queryParamsHandling: 'merge',
+    });
+  }
+  // Category links live in the URL; the search and state filters keep it.
   apply(form: HTMLFormElement): void {
     const data = new FormData(form);
     void this.router.navigate([], {
@@ -100,8 +147,7 @@ export class ExplorerComponent {
       queryParams: {
         q: String(data.get('q') ?? '').trim() || null,
         tipo: this.params().get('tipo'),
-        estado: data.get('estado') || null,
-        porPagina: this.params().get('porPagina'),
+        estado: this.params().get('estado'),
         idioma: this.params().get('idioma'),
       },
     });
@@ -120,7 +166,7 @@ export class ExplorerComponent {
   }
   private queryString(): string {
     const params = new URLSearchParams();
-    for (const key of ['q', 'tipo', 'estado', 'porPagina', 'pagina', 'idioma']) {
+    for (const key of ['q', 'tipo', 'estado', 'pagina', 'idioma']) {
       const value = this.params().get(key);
       if (value) params.set(key, value);
     }

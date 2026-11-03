@@ -6,7 +6,6 @@ import {
   explorerFacets,
   explorerPage,
   parseExplorerPage,
-  parseExplorerPageSize,
   safeExplorerReturn,
 } from './knowledge-explorer';
 
@@ -69,12 +68,10 @@ describe('Knowledge Explorer', () => {
     for (const value of [null, '', '0', '-1', '2x', '1.5'])
       expect(parseExplorerPage(value)).toBe(1);
   });
-  it('offers 10, 20 or 50 records per page and falls back to 10', () => {
-    expect(parseExplorerPageSize(null)).toBe(10);
-    expect(parseExplorerPageSize('20')).toBe(20);
-    expect(parseExplorerPageSize('50')).toBe(50);
-    expect(parseExplorerPageSize('30')).toBe(10);
-    expect(parseExplorerPageSize('abc')).toBe(10);
+  it('pages the archive by a fixed size of 24 records (6 columns of 4 rows)', () => {
+    const items = Array.from({ length: 50 }, (_, index) => index);
+    expect(explorerPage(items, 1)).toMatchObject({ pageCount: 3, start: 1, end: 24 });
+    expect(explorerPage(items, 3)).toMatchObject({ page: 3, start: 49, end: 50 });
   });
   it('accepts shareable catalog returns and rejects external or arbitrary destinations', () => {
     expect(safeExplorerReturn('/pessoas?q=marx&estado=pending')).toBe(

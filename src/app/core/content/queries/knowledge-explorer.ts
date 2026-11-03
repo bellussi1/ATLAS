@@ -88,8 +88,8 @@ export const explorerCatalogues = [
   },
 ] as const;
 export type ExplorerCatalogue = (typeof explorerCatalogues)[number]['path'];
-export const EXPLORER_PAGE_SIZES: readonly number[] = [10, 20, 50];
-export const EXPLORER_PAGE_SIZE = 10;
+// Fixed page: 6 columns × 4 rows of cards on desktop. The size is not a user choice.
+export const EXPLORER_PAGE_SIZE = 24;
 
 // Separates what the archive holds: records, sources and editorial pages are read differently.
 export const explorerContentGroups = [
@@ -184,11 +184,6 @@ export function parseExplorerPage(value: string | null): number {
   return /^\d+$/.test(value ?? '') ? Math.max(1, Number(value)) : 1;
 }
 
-export function parseExplorerPageSize(value: string | null): number {
-  const size = Number(value);
-  return EXPLORER_PAGE_SIZES.includes(size) ? size : EXPLORER_PAGE_SIZE;
-}
-
 // Clamps the requested page to the available range so a stale link never shows an empty page.
 export function explorerPage<T>(items: readonly T[], requested: number, size = EXPLORER_PAGE_SIZE) {
   const pageCount = Math.max(1, Math.ceil(items.length / size));
@@ -214,7 +209,7 @@ export function safeExplorerReturn(value: string | null): string | null {
       url.hash ||
       !explorerCatalogues.some((c) => '/' + c.path === url.pathname) ||
       [...url.searchParams.keys()].some(
-        (k) => !['q', 'tipo', 'estado', 'porPagina', 'pagina', 'idioma'].includes(k),
+        (k) => !['q', 'tipo', 'estado', 'pagina', 'idioma'].includes(k),
       )
     )
       return null;
