@@ -22,7 +22,7 @@
 }
 .term-cue {
   display: inline-block;
-  font: 0.7em var(--font-mono);
+  font: var(--text-caption) var(--font-mono);
   margin-left: 0.15em;
   transition: transform var(--motion-fast) var(--ease-out);
 }

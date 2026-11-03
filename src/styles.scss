@@ -137,6 +137,11 @@ html {
   background: var(--paper);
 }
 
+/* The browser default shrinks <small> to 80%, below the type scale; keep it on the caption step. */
+small {
+  font-size: var(--text-caption);
+}
+
 body {
   min-width: 0;
   min-height: 100dvh;
