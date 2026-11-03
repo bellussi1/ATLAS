@@ -358,8 +358,8 @@
         "Socialismo liberal",
         "Liberalismo"
       ],
-      "decision": "accept",
-      "decidedBy": "rule:top-20"
+      "decision": "reject",
+      "decidedBy": "assistant"
     },
     {
       "lang": "pt",
