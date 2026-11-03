@@ -144,6 +144,7 @@
               class="graph-node"
               [class.root-node]="node.entity.id === rootEntityId()"
               [class.active]="selectedId() === node.entity.id"
+              [class.echo]="echoId() === node.entity.id"
               [style.left.%]="node.x / 9.2"
               [style.top.%]="node.y / 5.72"
               [attr.aria-pressed]="selectedId() === node.entity.id"
@@ -325,91 +326,20 @@
           <h2 id="timeline-title">Pessoas e acontecimentos no tempo</h2>
         </div>
         <p>
-          Os registros seguem a ordem das datas do Wikidata, com espaçamento igual: a sequência
-          importa, a distância entre os anos não. Datas aproximadas permanecem aproximadas.
+          Os registros seguem as datas do Wikidata, na escala dos anos. Datas aproximadas permanecem
+          aproximadas e intervalos imprecisos não foram convertidos em datas exatas.
         </p>
       </div>
-      @if (timelineSelected(); as current) {
-        <ul class="timeline-kinds" aria-label="Tipos de registro">
-          @for (kind of timelineKinds(); track kind) {
-            <li [attr.data-kind]="kind">
-              <span class="timeline-dot" aria-hidden="true"></span>{{ kindName(kind) }}
-            </li>
-          }
-        </ul>
-        <div class="timeline-periods" role="group" aria-label="Ir para um período">
-          @for (period of timelinePeriods(); track period.label) {
-            <button
-              type="button"
-              class="timeline-period-button"
-              [attr.aria-pressed]="periodLabelOf(current) === period.label"
-              (click)="jumpToPeriod(period)"
-            >
-              {{ period.label }} <span>{{ period.entities.length }}</span>
-            </button>
-          }
-        </div>
-        <app-card-carousel
-          #timelineCarousel
-          class="timeline-carousel"
-          label="Registros em ordem cronológica"
-          hint="Arraste, use as setas ou escolha um período acima"
-          [style.--carousel-gap]="'0px'"
-        >
-          @for (entity of timelineEntities(); track entity.id) {
-            <button
-              type="button"
-              class="carousel-item timeline-node"
-              [attr.data-kind]="entity.kind"
-              [attr.data-entity-id]="entity.id"
-              [attr.aria-pressed]="current.id === entity.id"
-              (click)="selectTimeline(entity.id)"
-            >
-              <span class="timeline-year">{{ yearLabel(entity) }}</span>
-              <span class="timeline-dot" aria-hidden="true"></span>
-              <span class="timeline-name">{{ entity.title }}</span>
-            </button>
-          }
-        </app-card-carousel>
-
-        <article class="strip-reading" aria-live="polite">
-          <div class="timeline-stepper">
-            <button
-              type="button"
-              class="timeline-step"
-              [attr.aria-disabled]="timelineIndex() <= 0"
-              (click)="stepTimeline(-1)"
-            >
-              ← Anterior
-            </button>
-            <p>Registro {{ timelineIndex() + 1 }} de {{ timelineEntities().length }}</p>
-            <button
-              type="button"
-              class="timeline-step"
-              [attr.aria-disabled]="timelineIndex() >= timelineEntities().length - 1"
-              (click)="stepTimeline(1)"
-            >
-              Próximo →
-            </button>
-          </div>
-          <p class="metadata">{{ yearLabel(current) }} · {{ kindLabel(current) }}</p>
-          <h3>{{ current.title }}</h3>
-          <p><app-knowledge-text [text]="current.summary" /></p>
-          <button
-            appRecordCard
-            class="context-card"
-            [entityId]="current.id"
-            [title]="current.title"
-            [appKnowledgeContext]="{ entityId: current.id }"
-          ></button>
-        </article>
+      @if (timelineItems().length) {
+        <app-timeline-axis
+          [items]="timelineItems()"
+          [selectedId]="timelineSelectedId()"
+          [undated]="timelineUndated()"
+          (picked)="selectTimeline($event)"
+        />
       } @else {
         <p role="status">Ainda não há datas estruturadas suficientes para esta visualização.</p>
       }
-      <p class="timeline-note">
-        A posição das fichas segue os anos registrados; intervalos imprecisos não foram convertidos
-        em datas exatas.
-      </p>
     </section>
   </section>
   <footer class="editorial-note">

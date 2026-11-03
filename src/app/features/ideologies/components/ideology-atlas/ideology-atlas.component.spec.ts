@@ -182,19 +182,17 @@ describe('Liberalism atlas snapshot', () => {
     ).toBe(false);
   });
 
-  it('provides dated people and events in chronological periods that step one record at a time', () => {
+  it('feeds the time axis with dated people and events and echoes the pick', () => {
     const page = createAtlas();
     expect(page.timelineEntities().some((entity) => entity.kind === 'event')).toBe(true);
     expect(page.timelineEntities().some((entity) => entity.kind === 'person')).toBe(true);
-    expect(
-      page.timelinePeriods().flatMap((period) => period.entities.map((entity) => entity.id)),
-    ).toEqual(page.timelineEntities().map((entity) => entity.id));
-
-    const last = page.timelineEntities().length - 1;
-    page.stepTimeline(-1);
-    expect(page.timelineIndex()).toBe(0);
-    for (let step = 0; step <= last; step++) page.stepTimeline(1);
-    expect(page.timelineIndex()).toBe(last);
+    expect(page.timelineItems().map((item) => item.id)).toEqual(
+      page.timelineEntities().map((entity) => entity.id),
+    );
+    const last = page.timelineItems().at(-1)!;
+    page.selectTimeline(last.id);
+    expect(page.timelineSelected()?.id).toBe(last.id);
+    expect(page.echoId()).toBe(last.id);
     expect(page.unconnectedEntityCount()).toBeGreaterThan(0);
   });
 });

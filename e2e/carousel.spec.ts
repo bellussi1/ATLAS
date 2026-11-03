@@ -65,41 +65,64 @@ test('relations read as sentences, filter by type chips and open each side', asy
 test('mobile carousels swipe without horizontal page overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/marxismo/');
-  const region = page.getByRole('region', { name: 'Registros em ordem cronológica' });
-  await region.scrollIntoViewIfNeeded();
-  await expect(region).toBeVisible();
+  const axis = page.getByRole('group', { name: /^Eixo do tempo/ });
+  await axis.scrollIntoViewIfNeeded();
+  await expect(axis).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  // The axis scrolls inside its own frame, with a position bar and 44px buttons.
+  await expect(page.getByRole('button', { name: 'Rolar o eixo para a frente' })).toBeVisible();
+  const small = await page
+    .locator('app-timeline-axis')
+    .getByRole('button')
+    .evaluateAll(
+      (buttons) =>
+        buttons.filter((b) => b.getBoundingClientRect().height < 43 && !b.matches('.axis-row'))
+          .length,
+    );
+  expect(small).toBe(0);
 });
 
-test('timeline period chips bring their first record into view', async ({ page }) => {
+test('timeline century chips cut the axis and the list together', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/marxismo/');
-  const track = page.locator('.timeline-carousel .carousel-track');
-  await track.scrollIntoViewIfNeeded();
-  await page.getByRole('button', { name: /^Século XX/ }).click();
-  const selected = track.locator('.timeline-node[aria-pressed="true"]');
-  await expect(selected).toHaveCount(1);
-  await expect
-    .poll(() =>
-      selected.evaluate((node) => {
-        const box = node.getBoundingClientRect();
-        const frame = node.closest('.carousel-track')?.getBoundingClientRect();
-        return !!frame && box.left >= frame.left - 2 && box.right <= frame.right + 2;
-      }),
-    )
-    .toBe(true);
+  const axis = page.locator('app-timeline-axis');
+  await axis.scrollIntoViewIfNeeded();
+  const all = await axis.locator('.axis-marker').count();
+  await axis.getByRole('button', { name: /^Século XX/ }).click();
+  const cut = await axis.locator('.axis-marker').count();
+  expect(cut).toBeGreaterThan(0);
+  expect(cut).toBeLessThan(all);
+  await expect(axis.locator('.axis-row')).toHaveCount(Math.min(cut, 8));
+  await axis.getByRole('button', { name: 'Aumentar a ampliação' }).click();
+  await expect(axis.locator('.axis-zoom-level')).toContainText('2/');
 });
 
-test('timeline record opens its full context and Escape returns to the reading', async ({
-  page,
-}) => {
+test('timeline marker opens the reading panel and Escape returns focus to it', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/marxismo/');
-  const reading = page.locator('.strip-reading');
-  await reading.scrollIntoViewIfNeeded();
-  await reading.locator('.context-card').click();
+  const axis = page.locator('app-timeline-axis');
+  await axis.scrollIntoViewIfNeeded();
+  const marker = axis.locator('.axis-marker').filter({ hasText: 'Karl Marx' });
+  await marker.focus();
+  await page.keyboard.press('Enter');
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();
+  await expect(axis.locator('.axis-list li.current')).toContainText('Karl Marx');
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
-  await expect(reading.locator('.context-card')).toBeFocused();
+  await expect(marker).toBeFocused();
+});
+
+test('timeline arrows walk the records and keep one tab stop', async ({ page }) => {
+  await page.goto('/marxismo/');
+  const axis = page.locator('app-timeline-axis');
+  await axis.scrollIntoViewIfNeeded();
+  await axis.locator('.axis-marker[tabindex="0"]').focus();
+  const before = await axis.locator('.axis-selected strong').textContent();
+  await page.keyboard.press('ArrowRight');
+  await expect(axis.locator('.axis-selected strong')).not.toHaveText(before!);
+  await page.keyboard.press('End');
+  const total = await axis.locator('.axis-marker').count();
+  await expect(axis.locator('.axis-selected strong')).toContainText(`${total} de ${total}`);
+  await expect(axis.locator('.axis-marker[tabindex="0"]')).toHaveCount(1);
 });

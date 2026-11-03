@@ -60,6 +60,7 @@
         <span
           class="marker"
           [class.is-on]="overlaps(mark.year, mark.year)"
+          [class.is-echo]="echoId() === mark.entity.id"
           [class.is-approx]="mark.approx"
           [class.is-flipped]="flipsLeft(mark.year)"
           [style.left]="x(mark.year)"
@@ -71,7 +72,10 @@
       }
       <ol class="lives">
         @for (life of lives(); track life.entity.id) {
-          <li [class.is-on]="overlaps(life.start, life.end)">
+          <li
+            [class.is-on]="overlaps(life.start, life.end)"
+            [class.is-echo]="echoId() === life.entity.id"
+          >
             <span class="life-name">{{ life.entity.title }}</span>
             <span class="life-years">{{ life.start }}–{{ life.end }}</span>
             <span class="life-track">

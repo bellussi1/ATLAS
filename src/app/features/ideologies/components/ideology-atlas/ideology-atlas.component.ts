@@ -8,7 +8,6 @@ import {
   input,
   linkedSignal,
   signal,
-  viewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
@@ -16,9 +15,10 @@ import type { Entity, Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
+import { TimelineAxisComponent } from '@ideologies/components/timeline-axis/timeline-axis.component';
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
-import { centuryLabel } from '@ideologies/utils/timeline-periods';
-import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
+import { TimelineFocusService } from '@ideologies/services/timeline-focus.service';
+import type { TimelineAxisItem } from '@ideologies/utils/timeline-axis-layout';
 import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
@@ -87,10 +87,6 @@ interface GraphEdge {
   x2: number;
   y2: number;
 }
-interface TimelinePeriod {
-  label: string;
-  entities: Entity[];
-}
 
 @Component({
   selector: 'app-ideology-atlas',
@@ -99,21 +95,22 @@ interface TimelinePeriod {
     EditorialSourcesComponent,
     RouterLink,
     KnowledgeTextComponent,
-    KnowledgeContextDirective,
     CardCarouselComponent,
+    TimelineAxisComponent,
   ],
   templateUrl: './ideology-atlas.component.html',
   styleUrls: [
     './ideology-atlas.component.scss',
     './ideology-atlas-visual.scss',
-    './ideology-atlas-timeline.scss',
     './ideology-atlas-interaction.scss',
   ],
 })
 export class IdeologyAtlasComponent {
   private readonly repository = inject(ContentRepository);
   private readonly graph = this.repository.knowledgeGraph;
-  private readonly timelineCarousel = viewChild<CardCarouselComponent>('timelineCarousel');
+  private readonly focus = inject(TimelineFocusService);
+  /** Record echoed from the timeline, so the graph can mark it when it is on screen. */
+  readonly echoId = this.focus.entityId;
   readonly atlasId = input.required<string>();
   readonly rootEntityId = input.required<string>();
   readonly origin = input.required<string>();
@@ -251,27 +248,38 @@ export class IdeologyAtlasComponent {
       )
       .sort((a, b) => this.timelineYear(a) - this.timelineYear(b)),
   );
-  readonly timelineKinds = computed(() => [
-    ...new Set(this.timelineEntities().map((entity) => entity.kind)),
-  ]);
-  /** Consecutive records grouped by century; the strip keeps chronological order. */
-  readonly timelinePeriods = computed(() =>
-    this.timelineEntities().reduce<TimelinePeriod[]>((periods, entity) => {
-      const label = centuryLabel(this.timelineYear(entity));
-      const current = periods.at(-1);
-      if (current?.label === label) current.entities.push(entity);
-      else periods.push({ label, entities: [entity] });
-      return periods;
-    }, []),
+  readonly timelineItems = computed<TimelineAxisItem[]>(() =>
+    this.timelineEntities().map((entity) => {
+      const extent = entity.temporalExtent!;
+      const first = extent.startYear ?? extent.endYear ?? 0;
+      const last = extent.endYear ?? extent.startYear ?? 0;
+      return {
+        id: entity.id,
+        title: entity.title,
+        kind: entity.kind,
+        kindLabel: this.kindName(entity.kind),
+        start: Math.min(first, last),
+        end: Math.max(first, last),
+        approximate: extent.precision === 'approximate',
+      };
+    }),
+  );
+  /** Records the axis could carry if they had a date. */
+  readonly timelineUndated = computed(
+    () =>
+      this.entities().filter(
+        (entity) =>
+          entity.kind !== 'ideology' &&
+          entity.kind !== 'concept' &&
+          !this.timelineEntities().includes(entity),
+      ).length,
   );
   readonly timelineId = signal<string | null>(null);
+  readonly timelineSelectedId = computed(() => this.timelineSelected()?.id ?? null);
   readonly timelineSelected = computed(
     () =>
       this.timelineEntities().find((entity) => entity.id === this.timelineId()) ??
       this.timelineEntities()[0],
-  );
-  readonly timelineIndex = computed(() =>
-    this.timelineEntities().findIndex((entity) => entity.id === this.timelineSelected()?.id),
   );
 
   constructor() {
@@ -310,25 +318,7 @@ export class IdeologyAtlasComponent {
   }
   selectTimeline(entityId: string): void {
     this.timelineId.set(entityId);
-  }
-  /** Moves the selection one record at a time and keeps it visible in the carousel. */
-  stepTimeline(step: 1 | -1): void {
-    const entities = this.timelineEntities();
-    const index = Math.min(Math.max(this.timelineIndex() + step, 0), entities.length - 1);
-    const next = entities[index];
-    if (!next) return;
-    this.selectTimeline(next.id);
-    this.revealTimeline();
-  }
-  /** Selects the first record of a period and brings it into view. */
-  jumpToPeriod(period: { entities: readonly Entity[] }): void {
-    const first = period.entities[0];
-    if (!first) return;
-    this.selectTimeline(first.id);
-    this.revealTimeline();
-  }
-  periodLabelOf(entity: Entity): string {
-    return centuryLabel(this.timelineYear(entity));
+    this.focus.entityId.set(entityId);
   }
   timelineYear(entity: Entity): number {
     return entity.temporalExtent?.startYear ?? entity.temporalExtent?.endYear ?? 0;
@@ -480,9 +470,5 @@ export class IdeologyAtlasComponent {
   }
   nodePosition(entityId: string): GraphNode | undefined {
     return this.graphNodes().find((node) => node.entity.id === entityId);
-  }
-  /** Scrolls only the timeline carousel, so the page does not jump. */
-  private revealTimeline(): void {
-    this.timelineCarousel()?.revealIndex(this.timelineIndex());
   }
 }

@@ -1,6 +1,7 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import type { Entity } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
+import { TimelineFocusService } from '@ideologies/services/timeline-focus.service';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
@@ -42,6 +43,8 @@ export class EraChartComponent {
   readonly people = input.required<Entity[]>();
   readonly markers = input.required<Entity[]>();
   readonly selectedId = signal<string | null>(null);
+  /** The record picked on the atlas timeline, echoed on its marker or life bar. */
+  readonly echoId = inject(TimelineFocusService).entityId;
 
   readonly selected = computed(
     () => this.epochs().find((e) => e.id === this.selectedId()) ?? this.epochs()[0],

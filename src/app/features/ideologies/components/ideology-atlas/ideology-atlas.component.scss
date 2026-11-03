@@ -257,6 +257,11 @@
   outline: 3px solid var(--color-focus);
   outline-offset: 2px;
 }
+/* The record picked on the timeline, echoed here while it is on the canvas. */
+.graph-node.echo:not(.active) {
+  outline: 3px dashed var(--color-ink);
+  outline-offset: 2px;
+}
 .graph-node:focus-visible {
   z-index: 3;
   transform: translate(-50%, -50%) scale(1.04);

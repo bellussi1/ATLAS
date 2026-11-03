@@ -33,12 +33,9 @@ test('explores entities, graph, timeline and returns to prior context', async ({
       .getByRole('heading', { name: 'Liberalismo', exact: true, level: 2 }),
   ).toBeVisible();
   await page.locator('#atlas-section-tempo').scrollIntoViewIfNeeded();
-  await page.locator('.timeline-node').filter({ hasText: 'Revolução Gloriosa' }).click();
-  await expect(
-    page
-      .locator('#atlas-section-tempo')
-      .getByRole('heading', { name: 'Revolução Gloriosa', exact: true }),
-  ).toBeVisible();
+  await page.locator('.axis-marker').filter({ hasText: 'Revolução Gloriosa' }).click();
+  await expect(page.locator('.axis-selected strong')).toContainText('Revolução Gloriosa');
+  await page.keyboard.press('Escape');
   await page.getByRole('button', { name: 'Próximo →' }).click();
   await expect(page.getByRole('button', { name: '← Anterior' })).toHaveAttribute(
     'aria-disabled',
