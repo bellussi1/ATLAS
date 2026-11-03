@@ -74,7 +74,7 @@ test('Marxism chapters, comparison and sources remain on the same page', async (
   await page.keyboard.press('Escape');
   await expect(author).toBeFocused();
   // The value debate is an optional deepening inside the concepts chapter.
-  await page.getByText('Aprofundar: o debate sobre valor e trabalho').click();
+  await page.getByText('Aprofundar: argumentos e respostas').click();
   await page
     .getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ })
     .click();
@@ -236,14 +236,13 @@ test('each image appears once in the narrative; only the archive catalogue repea
 
 test('épocas list dated records and the graph explains each kind of line', async ({ page }) => {
   for (const path of ['/marxismo/', '/liberalismo/']) {
-    await page.goto(`${path}mesa/?mesa=tempo`);
-    const era = page.locator('#desk-panel-tempo .era-chart').first();
+    await page.goto(`${path}`);
+    const era = page.locator('.era-chart').first();
     await expect(era.locator('.dated-list li').first()).toBeVisible();
     await era.locator('.epoch-picker button').nth(1).click();
     await expect(era.locator('.epoch-detail h5').first()).toContainText('Registros datados');
 
-    await page.getByRole('tab', { name: /^Rede/ }).click();
-    const block = page.locator('#desk-panel-rede app-ideology-block', {
+    const block = page.locator('app-ideology-block', {
       has: page.locator('.genealogy'),
     });
     const graph = block.locator('.genealogy');

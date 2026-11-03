@@ -1,22 +1,21 @@
 import { Component, computed, inject, Injector, signal } from '@angular/core';
 import { pendingUntilEvent, takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { reproducibleAsset } from '@core/content/media/asset-license';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import type { Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
 import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/ideology-block.component';
 import { IdeologyDeskComponent } from '@ideologies/components/ideology-desk/ideology-desk.component';
+import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/ideology-poster.component';
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
-import { chapterDeskViews, type DeskView, readingBlocks } from '@ideologies/utils/reading-plan';
+import { chapterDeskKind } from '@ideologies/utils/reading-trails';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
-import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
 interface PageState {
@@ -32,7 +31,7 @@ interface PageState {
     KnowledgeTextComponent,
     IdeologyReadingComponent,
     EditorialSourcesComponent,
-    AtlasGeometricMosaicComponent,
+    IdeologyPosterComponent,
     AtlasRevealDirective,
   ],
   templateUrl: './ideology-page.component.html',
@@ -40,7 +39,6 @@ interface PageState {
 })
 export class IdeologyPageComponent {
   private readonly route = inject(ActivatedRoute);
-  private readonly router = inject(Router);
   private readonly repository = inject(ContentRepository);
   private readonly ideologies = inject(IdeologyRepository);
   private readonly title = inject(Title);
@@ -48,9 +46,6 @@ export class IdeologyPageComponent {
   private readonly injector = inject(Injector);
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
   readonly page = computed(() => this.state().dossier?.page);
-  private readonly query = toSignal(this.route.queryParamMap, {
-    initialValue: this.route.snapshot.queryParamMap,
-  });
   /** Reading (percurso) and discovery (mesa) are sibling prerendered routes. */
   readonly mode = toSignal(
     this.route.data.pipe(map((d) => (d['mode'] === 'mesa' ? 'mesa' : 'percurso'))),
@@ -59,14 +54,8 @@ export class IdeologyPageComponent {
     },
   );
   readonly basePath = computed(() => `/${this.page()?.slug ?? ''}`);
-  readonly deskView = computed(() => (this.query().get('mesa') as DeskView | null) ?? 'rede');
-  readonly deskViewLabels: Record<DeskView, string> = {
-    rede: 'Rede',
-    tempo: 'Tempo',
-    fichas: 'Fichas',
-  };
-  readonly readingBlocks = readingBlocks;
-  readonly chapterDeskViews = chapterDeskViews;
+  readonly chapterDeskKind = chapterDeskKind;
+  readonly roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   /** Text for the always-present status region: screen readers announce changes to a live region that already exists. */
   readonly stateAnnouncement = computed(() => {
     if (this.page()) return '';
@@ -94,23 +83,15 @@ export class IdeologyPageComponent {
   readonly minutes = computed(
     () => this.page()?.chapters.reduce((sum, c) => sum + c.minutes, 0) ?? 0,
   );
-  readonly portrait = computed(() => {
-    const page = this.page();
-    const atlas = this.repository.knowledgeGraph.atlases.find((a) => a.id === page?.atlasId);
-    const asset = atlas?.assetLicenses.find((a) => a.id === page?.portrait?.assetId);
-    return asset ? reproducibleAsset(atlas, asset.assetPath) : undefined;
+  /** Minutes left after each chapter, for the reading measure in the margin. */
+  readonly remaining = computed(() => {
+    const chapters = this.page()?.chapters ?? [];
+    return chapters.map((_, i) => chapters.slice(i + 1).reduce((sum, c) => sum + c.minutes, 0));
   });
-  readonly palette = computed(() => (this.page()?.slug === 'liberalismo' ? 'liberal' : 'marx'));
   readonly companion = computed(() =>
     this.page()?.slug === 'liberalismo'
       ? { path: '/marxismo', label: 'Ler o Marxismo' }
       : { path: '/liberalismo', label: 'Ler o Liberalismo' },
-  );
-  readonly portraitTitle = computed(
-    () =>
-      this.repository.knowledgeGraph.atlases
-        .flatMap((a) => a.entities)
-        .find((e) => e.id === this.page()?.portrait?.entityId)?.title ?? 'Retrato',
   );
 
   constructor() {
@@ -138,14 +119,6 @@ export class IdeologyPageComponent {
               : 'Leitura de ideologia — ATLAS',
         );
       });
-  }
-  setDeskView(view: DeskView): void {
-    void this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { mesa: view },
-      queryParamsHandling: 'merge',
-      replaceUrl: true,
-    });
   }
   reload(): void {
     this.retry.next(this.retry.value + 1);

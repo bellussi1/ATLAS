@@ -5,71 +5,23 @@
     [attr.data-accent]="page.identity.accent"
     aria-labelledby="ideology-title"
   >
-    <header class="ideology-opening">
-      <div class="opening-copy">
+    @if (mode() === 'mesa') {
+      <header class="desk-masthead">
         <p class="folio">{{ page.kicker }}</p>
-        <h1 id="ideology-title">{{ page.title }}<span aria-hidden="true">.</span></h1>
-        <p class="opening-summary">{{ page.summary }}</p>
-        <p class="reading-meta">
-          {{ page.chapters.length }} capítulos · cerca de {{ minutes() }} min de leitura, além das
-          explorações
-        </p>
-        <a class="start-reading atlas-press" [routerLink]="basePath()" fragment="introducao"
-          >Começar a leitura
-          <span class="atlas-arrow atlas-arrow--down" aria-hidden="true">↓</span></a
-        >
-      </div>
-      <figure class="opening-portrait">
-        <app-geometric-mosaic
-          class="opening-mosaic"
-          [columns]="4"
-          [rows]="portrait() ? 2 : 5"
-          [style.aspect-ratio]="portrait() ? '2 / 1' : '4 / 5'"
-          [palette]="palette()"
-          [seed]="palette() === 'liberal' ? 23 : 11"
-        />
-        @if (portrait(); as portrait) {
-          <img
-            [src]="portrait.assetPath"
-            [alt]="'Retrato de ' + portraitTitle()"
-            width="500"
-            height="781"
-            fetchpriority="high"
-          />
-          <figcaption>
-            {{ portraitTitle() }} · {{ portrait.creator }}
-            <a [href]="portrait.sourceUrl ?? portrait.filePageUrl ?? portrait.licenseUrl">Origem</a>
-            · <a [href]="portrait.licenseUrl">{{ portrait.license }}</a>
-          </figcaption>
-        }
-      </figure>
-      <div class="editorial-strip">
-        <span>Conteúdo com fontes · revisão humana pendente</span>
-        <details>
-          <summary>Recorte e classificação</summary>
-          <p>{{ page.classificationNote }}</p>
-          <p>Atualizado em {{ page.review.updatedAt }}. {{ page.identity.signature }}.</p>
-        </details>
-      </div>
-    </header>
-
-    <nav class="mode-switch" aria-label="Modo da página">
-      <a [routerLink]="basePath()" [attr.aria-current]="mode() === 'percurso' ? 'page' : null"
-        ><strong>Percurso</strong><span>Ler em ordem, do começo ao fim</span></a
-      >
-      <a [routerLink]="basePath() + '/mesa'" [attr.aria-current]="mode() === 'mesa' ? 'page' : null"
-        ><strong>Mesa</strong><span>Explorar rede, tempo e fichas livremente</span></a
-      >
-    </nav>
+        <h1 id="ideology-title">{{ page.title }}</h1>
+        <a [routerLink]="basePath()">Ler o percurso completo</a>
+      </header>
+    } @else {
+      <app-ideology-poster [page]="page" [basePath]="basePath()" [minutes]="minutes()" />
+      <details class="editorial-strip">
+        <summary>Conteúdo com fontes · revisão humana pendente · recorte e classificação</summary>
+        <p>{{ page.classificationNote }}</p>
+        <p>Atualizado em {{ page.review.updatedAt }}. {{ page.identity.signature }}.</p>
+      </details>
+    }
 
     @if (mode() === 'mesa') {
-      <app-ideology-desk
-        [dossier]="state().dossier!"
-        [mediaPlan]="mediaPlan()"
-        [view]="deskView()"
-        [basePath]="basePath()"
-        (viewChange)="setDeskView($event)"
-      />
+      <app-ideology-desk [page]="page" [basePath]="basePath()" />
     } @else {
       <app-ideology-reading #reading [sections]="sections()">
         @for (chapter of page.chapters; track chapter.id; let index = $index) {
@@ -81,19 +33,20 @@
             tabindex="-1"
             [attr.aria-labelledby]="'title-' + chapter.id"
           >
+            <p class="running-head" aria-hidden="true">
+              <span>{{ page.title }} — {{ chapter.kicker }}</span
+              ><span>{{ roman[index] }} · ~{{ chapter.minutes }} min</span>
+            </p>
             <header class="chapter-heading" appReveal data-reveal="wipe">
-              <p class="folio">
-                {{ chapter.kicker }} <span>~{{ chapter.minutes }} min</span>
+              <p class="chapter-numeral" aria-hidden="true">{{ roman[index] }}</p>
+              <p class="folio">{{ chapter.kicker }}</p>
+              <h2 [id]="'title-' + chapter.id">{{ chapter.title }}</h2>
+              <p class="chapter-measure">
+                Capítulo {{ index + 1 }} de {{ page.chapters.length }} · depois dele, ~{{
+                  remaining()[index]
+                }}
+                min
               </p>
-              <h2 [id]="'title-' + chapter.id">
-                <span
-                  class="chapter-number"
-                  appReveal
-                  data-reveal="shape"
-                  [attr.data-shape]="index % 4"
-                  >{{ index + 1 < 10 ? '0' : '' }}{{ index + 1 }}</span
-                ><span class="chapter-title">{{ chapter.title }}</span>
-              </h2>
             </header>
             @if (chapter.question) {
               <p class="chapter-question">{{ chapter.question }}</p>
@@ -115,38 +68,33 @@
                 {{ chapter.gap }}
               </p>
             }
-            @for (item of readingBlocks(chapter); track item.blockId) {
-              @if (item.block.type === 'argument') {
+            @for (block of chapter.blocks; track $index; let blockIndex = $index) {
+              @if (block.type === 'argument') {
                 <details class="chapter-aside">
-                  <summary>Aprofundar: o debate sobre valor e trabalho</summary>
+                  <summary>Aprofundar: argumentos e respostas</summary>
                   <app-ideology-block
-                    [block]="item.block"
+                    [block]="block"
                     [dossier]="state().dossier!"
-                    [blockId]="item.blockId"
+                    [blockId]="chapter.id + '-' + blockIndex"
                     [mediaPlan]="mediaPlan()"
                   />
                 </details>
               } @else {
                 <app-ideology-block
-                  [block]="item.block"
+                  [block]="block"
                   [dossier]="state().dossier!"
-                  [blockId]="item.blockId"
+                  [blockId]="chapter.id + '-' + blockIndex"
                   [mediaPlan]="mediaPlan()"
                 />
               }
             }
-            @if (chapterDeskViews(chapter); as views) {
-              @if (views.length) {
-                <p class="desk-pointer">
-                  <span>Na Mesa:</span>
-                  @for (view of views; track view) {
-                    <a [routerLink]="basePath() + '/mesa'" [queryParams]="{ mesa: view }">{{
-                      deskViewLabels[view]
-                    }}</a>
-                  }
-                </p>
-              }
-            }
+            <p class="desk-pointer">
+              <a
+                [routerLink]="basePath() + '/mesa'"
+                [queryParams]="{ de: chapter.anchor, tipo: chapterDeskKind(chapter) }"
+                >Explorar os registros deste capítulo na mesa <span aria-hidden="true">→</span></a
+              >
+            </p>
             @if (chapter.sourceIds.length) {
               <details class="chapter-sources">
                 <summary>Conferir fontes deste capítulo ({{ chapter.sourceIds.length }})</summary>

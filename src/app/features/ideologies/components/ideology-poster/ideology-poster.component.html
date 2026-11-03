@@ -1,0 +1,68 @@
+<header class="poster" aria-labelledby="ideology-title">
+  <div class="poster-copy">
+    <p class="poster-kicker">{{ page().kicker }}</p>
+    <h1 id="ideology-title">{{ page().title }}</h1>
+    <p class="poster-summary">{{ page().summary }}</p>
+
+    @if (trails().length) {
+      <h2 class="poster-label">Comece por uma pergunta</h2>
+      <ol class="poster-questions">
+        @for (trail of trails(); track trail.group) {
+          <li
+            (mouseenter)="highlighted.set(trail.group)"
+            (mouseleave)="highlighted.set(null)"
+            (focusin)="highlighted.set(trail.group)"
+            (focusout)="highlighted.set(null)"
+          >
+            <a [routerLink]="basePath()" [fragment]="trail.stops[0].anchor">
+              <strong>{{ trail.question }}</strong>
+              <small
+                >Trilha {{ trail.group }} · {{ trail.stops.length }} paradas · ~{{
+                  trail.minutes
+                }}
+                min</small
+              >
+            </a>
+          </li>
+        }
+      </ol>
+    }
+  </div>
+
+  <nav class="poster-map" aria-label="Mapa da tradição">
+    <p class="poster-label">
+      Mapa · {{ page().chapters.length }} capítulos · ~{{ minutes() }} min de leitura
+    </p>
+    <div class="map-columns">
+      @for (column of columns(); track column.group) {
+        <section class="map-column" [attr.aria-label]="column.group">
+          <h3>
+            <span>{{ column.numeral }}</span> {{ column.group }}
+          </h3>
+          @for (tile of column.chapters; track tile.anchor) {
+            <a
+              class="map-tile"
+              [routerLink]="basePath()"
+              [fragment]="tile.anchor"
+              [attr.data-shape]="tile.shape"
+              [attr.data-lit]="lit(tile.anchor)"
+              [style.--weight]="tile.weight"
+            >
+              <span class="tile-numeral" aria-hidden="true">{{ tile.numeral }}</span>
+              <span class="tile-title">{{ tile.title }}</span>
+              <small>{{ tile.label }} · {{ tile.minutes }} min</small>
+            </a>
+          }
+        </section>
+      }
+    </div>
+    <div class="poster-doors">
+      <a [routerLink]="basePath()" [fragment]="page().chapters[0]?.anchor"
+        >Ler do início <span aria-hidden="true">↓</span></a
+      >
+      <a [routerLink]="basePath() + '/mesa'"
+        >Explorar pessoas, obras e conceitos <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </nav>
+</header>

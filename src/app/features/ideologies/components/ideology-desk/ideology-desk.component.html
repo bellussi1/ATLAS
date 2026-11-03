@@ -1,50 +1,153 @@
-<section class="ideology-desk" aria-labelledby="desk-title">
-  <header class="desk-heading">
+<section class="desk" aria-labelledby="desk-title">
+  <header class="desk-head">
     <h2 id="desk-title">Mesa de exploração</h2>
     <p>
-      Os mesmos registros da leitura, reunidos para consulta livre. Cada peça indica o capítulo que
-      a explica.
+      {{ entities().length }} registros do grafo de {{ page().title }}. Busque, filtre e siga as
+      relações documentadas de um registro a outro.
     </p>
-  </header>
-  <div class="desk-tabs" role="tablist" aria-label="Modos da mesa">
-    @for (v of views(); track v.key) {
-      <button
-        type="button"
-        role="tab"
-        [id]="'desk-tab-' + v.key"
-        [attr.aria-selected]="current() === v.key"
-        [attr.aria-controls]="'desk-panel-' + v.key"
-        [tabIndex]="current() === v.key ? 0 : -1"
-        (click)="viewChange.emit(v.key)"
-        (keydown)="onKey($event)"
+    @if (origin(); as origin) {
+      <a class="desk-origin" [routerLink]="basePath()" [fragment]="origin.anchor"
+        ><span aria-hidden="true">←</span> Voltar ao capítulo “{{ origin.title }}”</a
       >
-        <span class="tab-label">{{ v.label }}</span>
-        <span class="tab-count">{{ v.count }}</span>
-      </button>
     }
-  </div>
-  @for (v of views(); track v.key) {
-    <div
-      class="desk-panel"
-      [hidden]="current() !== v.key"
-      role="tabpanel"
-      [id]="'desk-panel-' + v.key"
-      [attr.aria-labelledby]="'desk-tab-' + v.key"
-    >
-      <p class="desk-hint">{{ v.hint }}</p>
-      @for (item of items()[v.key]; track item.blockId) {
-        <div class="desk-item">
-          <a class="desk-origin" [routerLink]="basePath()" [fragment]="item.chapterAnchor"
-            >Explicado em: {{ item.chapterTitle }}</a
+  </header>
+
+  <div class="desk-grid">
+    <div class="desk-filters" role="search" aria-label="Filtrar registros">
+      <label class="desk-search">
+        <span class="sr-only">Buscar registros</span>
+        <span aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          placeholder="Buscar nome ou tema"
+          [value]="text()"
+          (input)="setText($any($event.target).value)"
+        />
+      </label>
+      <fieldset class="desk-kinds">
+        <legend>Tipo</legend>
+        <button type="button" [attr.aria-pressed]="kind() === null" (click)="setKind(null)">
+          Todos <span>{{ entities().length }}</span>
+        </button>
+        @for (item of counts(); track item.kind) {
+          <button
+            type="button"
+            [attr.data-kind]="item.kind"
+            [attr.aria-pressed]="kind() === item.kind"
+            (click)="setKind(item.kind)"
           >
-          <app-ideology-block
-            [block]="item.block"
-            [dossier]="dossier()"
-            [blockId]="item.blockId"
-            [mediaPlan]="mediaPlan()"
-          />
-        </div>
+            {{ kindLabel(item.kind) }} <span>{{ item.count }}</span>
+          </button>
+        }
+      </fieldset>
+      @if (eras().length > 1) {
+        <fieldset class="desk-eras">
+          <legend>Época (início)</legend>
+          <div class="era-bars">
+            @for (bucket of eras(); track bucket.start) {
+              <button
+                type="button"
+                [attr.aria-pressed]="bucket.start === era()"
+                [disabled]="!bucket.count"
+                [attr.aria-label]="bucket.start + ' a ' + (bucket.start + 24) + ': ' + bucket.count"
+                [style.--h]="bucket.count / eraMax()"
+                (click)="setEra(bucket.start)"
+              ></button>
+            }
+          </div>
+          <p class="era-axis" aria-hidden="true">
+            <span>{{ eras()[0].start }}</span
+            ><span>{{ eras().at(-1)!.start + 25 }}</span>
+          </p>
+        </fieldset>
       }
     </div>
-  }
+
+    <div class="desk-results">
+      <p class="desk-count" role="status">
+        {{ results().length }} de {{ entities().length }}
+        @if (results().length !== entities().length) {
+          · <button type="button" class="link-button" (click)="clearFilters()">limpar</button>
+        }
+      </p>
+      @if (results().length) {
+        <ul class="desk-cards">
+          @for (entity of results(); track entity.id) {
+            <li>
+              <button
+                type="button"
+                class="desk-card"
+                [attr.data-kind]="entity.kind"
+                [attr.aria-pressed]="chain()[0]?.entity?.id === entity.id"
+                (click)="start(entity.id)"
+              >
+                <small>{{ kindLabel(entity.kind) }}</small>
+                <strong>{{ entity.title }}</strong>
+                @if (entity.period) {
+                  <span class="card-period">{{ entity.period }}</span>
+                }
+              </button>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p class="desk-empty">Nenhum registro com esses filtros.</p>
+      }
+    </div>
+
+    <aside class="desk-chain" aria-labelledby="chain-title">
+      <h3 id="chain-title">Sua cadeia</h3>
+      @if (chain().length) {
+        <ol>
+          @for (step of chain(); track step.entity.id; let index = $index; let last = $last) {
+            @if (step.via; as via) {
+              <li class="chain-via">
+                {{ via.label }}
+                @if (via.period) {
+                  · {{ via.period }}
+                }
+              </li>
+            }
+            <li class="chain-step" [attr.data-kind]="step.entity.kind" [attr.data-last]="last">
+              @if (last) {
+                <strong>{{ step.entity.title }}</strong>
+              } @else {
+                <button type="button" class="link-button" (click)="truncate(index)">
+                  {{ step.entity.title }}
+                </button>
+              }
+              <small>{{ kindLabel(step.entity.kind) }} {{ step.entity.period }}</small>
+              @if (last) {
+                <p>{{ step.entity.summary }}</p>
+                <a [routerLink]="'/verbete/' + step.entity.slug">Abrir o verbete</a>
+              }
+            </li>
+          }
+        </ol>
+        @if (links().length) {
+          <h4>Seguir para</h4>
+          <ul class="chain-next">
+            @for (link of links(); track link.relationId) {
+              <li [attr.data-kind]="link.other.kind">
+                <button type="button" (click)="follow(link.otherId)">
+                  <small>{{ link.label }}</small>
+                  <strong>{{ link.other.title }}</strong>
+                </button>
+                <details>
+                  <summary>Contexto da relação</summary>
+                  <p>{{ link.context }}</p>
+                </details>
+              </li>
+            }
+          </ul>
+        } @else {
+          <p class="desk-empty">Nenhuma outra relação documentada a partir daqui.</p>
+        }
+      } @else {
+        <p class="desk-empty">
+          Escolha um registro para começar. Cada passo mostra a relação que o liga ao anterior.
+        </p>
+      }
+    </aside>
+  </div>
 </section>

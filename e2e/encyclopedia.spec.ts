@@ -59,14 +59,13 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
 
 test('timeline selection and graph exploration preserve geometry', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/marxismo/mesa/?mesa=tempo');
-  const panel = page.locator('#desk-panel-tempo .timeline-reading');
+  await page.goto('/marxismo/');
+  const panel = page.locator('.timeline-reading');
   await panel.scrollIntoViewIfNeeded();
   const before = await panel.boundingBox();
   await page.locator('.timeline-event').filter({ hasText: 'Comuna de Paris' }).click();
   await expect(panel).toContainText('Comuna de Paris');
   expect((await panel.boundingBox())?.height).toBe(before?.height);
-  await page.getByRole('tab', { name: /^Rede/ }).click();
   await page.locator('.genealogy-node').filter({ hasText: 'Rosa Luxemburgo' }).click();
   await expect(page.locator('.relation-reading')).toContainText('Bernstein');
 });
@@ -75,8 +74,8 @@ test('temporal axis stays fixed across filters and SVG is prerendered', async ({
   page,
   request,
 }) => {
-  // The desk prerenders all of its panels; only the selected one is shown.
-  const response = await request.get('/marxismo/mesa/');
+  // The reading prerenders the timeline and the debate.
+  const response = await request.get('/marxismo/');
   const html = await response.text();
   expect(html).toContain('class="timeline-axis"');
   expect(html).toContain('Polêmicas documentadas');
@@ -84,7 +83,7 @@ test('temporal axis stays fixed across filters and SVG is prerendered', async ({
   await page.setViewportSize({ width: 320, height: 740 });
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/marxismo/mesa/?mesa=tempo');
+  await page.goto('/marxismo/');
   const axis = page.locator('.timeline-axis');
   const initial = await axis.innerHTML();
   await page.getByLabel('Recorte temporal', { exact: true }).selectOption('antes-1850');
@@ -105,13 +104,12 @@ test('temporal axis stays fixed across filters and SVG is prerendered', async ({
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
   await page
-    .locator('#desk-panel-tempo')
+    .locator('.timeline-reading')
     .screenshot({ path: 'output/playwright/marxismo-timeline-320.png' });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page
-    .locator('#desk-panel-tempo')
+    .locator('.timeline-reading')
     .screenshot({ path: 'output/playwright/marxismo-timeline-desktop.png' });
-  await page.getByRole('tab', { name: /^Rede/ }).click();
   await page
     .locator('.genealogy')
     .screenshot({ path: 'output/playwright/marxismo-grafo-desktop.png' });

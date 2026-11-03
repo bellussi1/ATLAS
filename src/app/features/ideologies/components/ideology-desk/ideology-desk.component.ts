@@ -1,57 +1,125 @@
-import { Component, computed, input, output } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/ideology-block.component';
-import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
-import type { PageMedia } from '@ideologies/utils/page-media-plan';
-import { deskItems, type DeskView } from '@ideologies/utils/reading-plan';
+import { Component, computed, inject, input } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, type Params, Router, RouterLink } from '@angular/router';
+import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
+import {
+  deskEntities,
+  type DeskKind,
+  deskLinks,
+  eraBuckets,
+  filterDesk,
+  kindCounts,
+  kindLabel,
+  linkBetween,
+  parseChain,
+} from '@ideologies/utils/desk-graph';
+import { chapterDeskKind } from '@ideologies/utils/reading-trails';
 
-const views: { key: DeskView; label: string; hint: string }[] = [
-  { key: 'rede', label: 'Rede', hint: 'Quem se liga a quem, e por quê.' },
-  { key: 'tempo', label: 'Tempo', hint: 'Épocas, obras e acontecimentos em sequência.' },
-  { key: 'fichas', label: 'Fichas', hint: 'Conceitos, correntes e registros para consultar.' },
-];
-
+/**
+ * Exploration desk over the tradition's graph: search, kind and era filters, and a
+ * chain of records joined by documented relations. The whole state lives in the URL,
+ * including the chapter the reader came from, so it can be shared and undone.
+ */
 @Component({
   selector: 'app-ideology-desk',
-  imports: [RouterLink, IdeologyBlockComponent],
+  imports: [RouterLink],
   templateUrl: './ideology-desk.component.html',
   styleUrl: './ideology-desk.component.scss',
 })
 export class IdeologyDeskComponent {
-  readonly dossier = input.required<IdeologyDossier>();
-  readonly mediaPlan = input.required<Map<string, PageMedia>>();
-  readonly view = input<DeskView>('rede');
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly repository = inject(ContentRepository);
+  readonly page = input.required<IdeologyPage>();
   readonly basePath = input.required<string>();
-  readonly viewChange = output<DeskView>();
 
-  readonly items = computed(() => deskItems(this.dossier().page));
-  readonly views = computed(() =>
-    views
-      .filter((v) => this.items()[v.key].length)
-      .map((v) => ({
-        ...v,
-        count: this.items()[v.key].length,
-      })),
+  private readonly params = toSignal(this.route.queryParamMap, {
+    initialValue: this.route.snapshot.queryParamMap,
+  });
+  readonly kindLabel = kindLabel;
+
+  private readonly atlas = computed(() =>
+    this.repository.knowledgeGraph.atlases.find((a) => a.id === this.page().atlasId),
   );
-  readonly current = computed(() =>
-    this.views().some((v) => v.key === this.view())
-      ? this.view()
-      : (this.views()[0]?.key ?? 'rede'),
+  readonly entities = computed(() => deskEntities(this.atlas()));
+  readonly origin = computed(() => {
+    const anchor = this.params().get('de');
+    return this.page().chapters.find((c) => c.anchor === anchor) ?? null;
+  });
+  readonly text = computed(() => this.params().get('q') ?? '');
+  readonly kind = computed<DeskKind | null>(() => {
+    const value = this.params().get('tipo');
+    if (value) return this.counts().some((c) => c.kind === value) ? (value as DeskKind) : null;
+    const fromChapter = this.origin() && chapterDeskKind(this.origin()!);
+    return fromChapter && this.counts().some((c) => c.kind === fromChapter) ? fromChapter : null;
+  });
+  readonly era = computed(() => {
+    const value = Number(this.params().get('epoca'));
+    return this.eras().some((e) => e.start === value) ? value : null;
+  });
+  readonly counts = computed(() => kindCounts(this.entities()));
+  readonly eras = computed(() => eraBuckets(this.entities()));
+  readonly eraMax = computed(() => Math.max(1, ...this.eras().map((e) => e.count)));
+  readonly results = computed(() =>
+    filterDesk(this.entities(), { text: this.text(), kind: this.kind(), era: this.era() }),
   );
 
-  /** Arrow keys move between tabs, as in the WAI-ARIA tabs pattern. */
-  onKey(event: KeyboardEvent): void {
-    const keys = this.views().map((v) => v.key);
-    const index = keys.indexOf(this.current());
-    const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
-    const target =
-      event.key === 'Home' ? 0 : event.key === 'End' ? keys.length - 1 : step ? index + step : -1;
-    if (target < 0 && !step) return;
-    event.preventDefault();
-    const next = keys[(target + keys.length) % keys.length];
-    this.viewChange.emit(next);
-    (event.currentTarget as HTMLElement).parentElement
-      ?.querySelector<HTMLElement>(`#desk-tab-${next}`)
-      ?.focus();
+  readonly chain = computed(() => {
+    const byId = new Map(this.entities().map((e) => [e.id, e]));
+    const ids = parseChain(this.params().get('cadeia'), this.entities());
+    return ids.map((id, index) => ({
+      entity: byId.get(id)!,
+      via: index ? linkBetween(this.atlas(), ids[index - 1], id) : undefined,
+    }));
+  });
+  readonly current = computed(() => this.chain().at(-1)?.entity ?? null);
+  readonly links = computed(() => {
+    const current = this.current();
+    if (!current) return [];
+    const inChain = new Set(this.chain().map((s) => s.entity.id));
+    const byId = new Map(this.entities().map((e) => [e.id, e]));
+    return deskLinks(this.atlas(), current.id)
+      .filter((link) => !inChain.has(link.otherId))
+      .map((link) => ({ ...link, other: byId.get(link.otherId)! }));
+  });
+
+  setText(value: string): void {
+    this.update({ q: value.trim() || null });
+  }
+  setKind(kind: DeskKind | null): void {
+    this.update({ tipo: kind ?? (this.origin() ? 'todos' : null) });
+  }
+  setEra(start: number): void {
+    this.update({ epoca: this.era() === start ? null : start });
+  }
+  clearFilters(): void {
+    this.update({ q: null, tipo: this.origin() ? 'todos' : null, epoca: null });
+  }
+  /** Picking a record from the results starts a new chain. */
+  start(id: string): void {
+    this.update({ cadeia: id });
+  }
+  follow(id: string): void {
+    this.update({ cadeia: [...this.chain().map((s) => s.entity.id), id].join(',') });
+  }
+  /** Returns to an earlier step, dropping what came after it. */
+  truncate(index: number): void {
+    this.update({
+      cadeia:
+        this.chain()
+          .slice(0, index + 1)
+          .map((s) => s.entity.id)
+          .join(',') || null,
+    });
+  }
+
+  private update(queryParams: Params): void {
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams,
+      queryParamsHandling: 'merge',
+      replaceUrl: !('cadeia' in queryParams),
+    });
   }
 }

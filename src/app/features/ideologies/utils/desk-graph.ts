@@ -1,0 +1,141 @@
+import type { Atlas } from '@core/content/models/content-schema';
+
+export type DeskKind = Atlas['entities'][number]['kind'];
+
+export interface DeskEntity {
+  id: string;
+  slug: string;
+  title: string;
+  kind: DeskKind;
+  summary: string;
+  start: number | null;
+  end: number | null;
+  period: string;
+}
+
+export interface DeskLink {
+  relationId: string;
+  otherId: string;
+  label: string;
+  context: string;
+  period: string;
+}
+
+export interface DeskQuery {
+  text: string;
+  kind: DeskKind | null;
+  /** First year of the selected era bucket. */
+  era: number | null;
+}
+
+export const ERA_SPAN = 25;
+
+export const deskKindLabels: Partial<Record<DeskKind, string>> = {
+  person: 'Pessoa',
+  work: 'Obra',
+  concept: 'Conceito',
+  event: 'Acontecimento',
+  ideology: 'Corrente',
+  institution: 'Instituição',
+  party: 'Partido',
+  place: 'Lugar',
+};
+
+export const kindLabel = (kind: DeskKind) => deskKindLabels[kind] ?? 'Registro';
+
+const normalize = (value: string) =>
+  value
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .trim();
+
+function period(
+  extent: { startYear: number | null; endYear: number | null; label?: string | null } | null,
+) {
+  if (!extent) return '';
+  if (extent.label) return extent.label;
+  if (extent.startYear === null) return '';
+  return extent.endYear && extent.endYear !== extent.startYear
+    ? `${extent.startYear}–${extent.endYear}`
+    : `${extent.startYear}`;
+}
+
+export function deskEntities(atlas: Atlas | undefined): DeskEntity[] {
+  return (atlas?.entities ?? [])
+    .map((e) => ({
+      id: e.id,
+      slug: e.slug,
+      title: e.title,
+      kind: e.kind,
+      summary: e.summary,
+      start: e.temporalExtent?.startYear ?? null,
+      end: e.temporalExtent?.endYear ?? null,
+      period: period(e.temporalExtent),
+    }))
+    .sort((a, b) => (a.start ?? 9999) - (b.start ?? 9999) || a.title.localeCompare(b.title));
+}
+
+export function eraOf(entity: DeskEntity): number | null {
+  return entity.start === null ? null : Math.floor(entity.start / ERA_SPAN) * ERA_SPAN;
+}
+
+export function filterDesk(entities: readonly DeskEntity[], query: DeskQuery): DeskEntity[] {
+  const text = normalize(query.text);
+  return entities.filter(
+    (e) =>
+      (!query.kind || e.kind === query.kind) &&
+      (query.era === null || eraOf(e) === query.era) &&
+      (!text || normalize(`${e.title} ${e.summary}`).includes(text)),
+  );
+}
+
+/** Counts per kind, so filter chips can show what each one keeps. */
+export function kindCounts(entities: readonly DeskEntity[]): { kind: DeskKind; count: number }[] {
+  const counts = new Map<DeskKind, number>();
+  for (const e of entities) counts.set(e.kind, (counts.get(e.kind) ?? 0) + 1);
+  return [...counts].map(([kind, count]) => ({ kind, count })).sort((a, b) => b.count - a.count);
+}
+
+/** Dated entities grouped in fixed spans, from the earliest to the latest bucket. */
+export function eraBuckets(entities: readonly DeskEntity[]): { start: number; count: number }[] {
+  const eras = entities.flatMap((e) => eraOf(e) ?? []);
+  if (!eras.length) return [];
+  const first = Math.min(...eras);
+  const last = Math.max(...eras);
+  const buckets: { start: number; count: number }[] = [];
+  for (let start = first; start <= last; start += ERA_SPAN)
+    buckets.push({ start, count: eras.filter((era) => era === start).length });
+  return buckets;
+}
+
+/** Relations of one entity, read from its side: incoming ones use the reverse label. */
+export function deskLinks(atlas: Atlas | undefined, id: string): DeskLink[] {
+  const known = new Set(atlas?.entities.map((e) => e.id));
+  return (atlas?.relations ?? []).flatMap((r) => {
+    const outgoing = r.fromEntityId === id;
+    if (!outgoing && r.toEntityId !== id) return [];
+    const otherId = outgoing ? r.toEntityId : r.fromEntityId;
+    if (!known.has(otherId) || otherId === id) return [];
+    return [
+      {
+        relationId: r.id,
+        otherId,
+        label: outgoing ? r.label : r.reverseLabel,
+        context: r.context,
+        period: period(r.temporalExtent),
+      },
+    ];
+  });
+}
+
+/** The relation that joined two consecutive steps of a chain, if any. */
+export function linkBetween(atlas: Atlas | undefined, from: string, to: string) {
+  return deskLinks(atlas, from).find((link) => link.otherId === to);
+}
+
+/** Keeps only known ids, without repeats, so a shared URL cannot build a broken chain. */
+export function parseChain(value: string | null, entities: readonly DeskEntity[]): string[] {
+  const known = new Set(entities.map((e) => e.id));
+  return [...new Set((value ?? '').split(',').filter((id) => known.has(id)))];
+}

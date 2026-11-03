@@ -15,7 +15,7 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
     .locator('.site-header')
     .getByRole('link', { name: /Marxismo/ })
     .click();
-  await expect(page.locator('h1')).toHaveText('Marxismo.');
+  await expect(page.locator('h1')).toHaveText('Marxismo');
   const compiled = resources.filter((path) => /^\/content\/[^/]+\.json$/.test(path));
   const manifest = await (await page.request.get('/content/manifest.json')).json();
   expect(compiled).toHaveLength(manifest.collections.length + 4);
@@ -29,7 +29,7 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
     .locator('.site-header')
     .getByRole('link', { name: /Liberalismo/ })
     .click();
-  await expect(page.locator('h1')).toHaveText('Liberalismo.');
+  await expect(page.locator('h1')).toHaveText('Liberalismo');
   expect(resources.filter((path) => /^\/content\/[^/]+\.json$/.test(path))).toEqual(compiled);
 });
 
@@ -69,7 +69,7 @@ test('a failed content asset preserves the current page and offers a working ret
   ).toEqual([]);
   await page.unroute('**/content/manifest.json');
   await page.getByRole('button', { name: 'Tentar novamente' }).click();
-  await expect(page.locator('h1')).toHaveText('Liberalismo.');
+  await expect(page.locator('h1')).toHaveText('Liberalismo');
   await expect(page.getByRole('alert')).toHaveCount(0);
   await expect(page.locator('#conteudo')).toBeFocused();
 });
