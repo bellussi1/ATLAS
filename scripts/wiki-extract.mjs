@@ -2,9 +2,10 @@
 // Wikipedia → Claude Haiku → R2. Usage:
 //   node scripts/wiki-extract.mjs run <tradição> [--accept-top N] [--sync]  # discover + fetch + extract
 //   node scripts/wiki-extract.mjs discover <tradição> [--top N] [--accept-top N]
-//   node scripts/wiki-extract.mjs text <tradição> [--chars N]     # exporta o texto que será lido
+//   node scripts/wiki-extract.mjs text <tradição> [--chars N]     # exporta o texto lido, por seção
 //   node scripts/wiki-extract.mjs store <tradição> [--chars N]    # grava manual/<id>.json verificado
 //   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N]
+//   node scripts/wiki-extract.mjs fetch <tradição> --url <artigo pt/en da Wikipedia>  # um artigo avulso
 //   node scripts/wiki-extract.mjs extract <tradição> [--sync] [--limit N] [--resume <batchId>]
 // Candidates with `"decision": "accept"` are fetched by `fetch --candidates`. Decisions made by the
 // editor (`decidedBy: "editor"`) survive re-running discover; rule-based ones are recomputed.
@@ -31,6 +32,7 @@ import {
   sitelinkTitles,
 } from './ingestion/wiki-extract/article.mjs';
 import { linkedArticles, rankCandidates } from './ingestion/wiki-extract/discovery.mjs';
+import { classifyReport, targetKind } from './ingestion/wiki-extract/targets.mjs';
 import {
   extractionModel,
   extractionParams,
@@ -51,6 +53,7 @@ const { positionals, values } = parseArgs({
     candidates: { type: 'boolean', default: false },
     sync: { type: 'boolean', default: false },
     resume: { type: 'string' },
+    url: { type: 'string' },
   },
 });
 const [command, tradition] = positionals;
@@ -64,7 +67,7 @@ const articlesDirectory = join(workDirectory, 'articles');
 const extractsDirectory = join(workDirectory, 'extracts');
 const textDirectory = join(workDirectory, 'text');
 const manualDirectory = join(workDirectory, 'manual');
-const textChars = values.chars ? Number(values.chars) : 12000;
+const textChars = values.chars ? Number(values.chars) : maxInputChars;
 const candidatesPath = join(
   projectRoot,
   'scripts/ingestion/wiki-extract/candidates',
@@ -122,8 +125,38 @@ async function acceptedTargets() {
     }));
 }
 
+/** One article chosen by URL, outside the seeds and candidates; typed by its own Wikidata item. */
+async function fetchUrlCommand() {
+  const { lang, title } = parseWikiUrl(values.url);
+  const article = await fetchArticle(lang, title);
+  const stored = await Promise.all(
+    (await listIds(articlesDirectory)).map((id) => readJson(join(articlesDirectory, `${id}.json`))),
+  );
+  const existing = stored.find((record) => sameArticle(record.article, article));
+  if (existing) return console.log(`já baixado: ${existing.entity.id}`);
+  const { kinds, classification } = await classifyReport(article.qid ? [article.qid] : []);
+  const kind = targetKind({ title: article.title, qid: article.qid, missing: false }, kinds);
+  const prefix = kind.type === 'sem-item' ? 'topic' : kind.type;
+  const entity = {
+    id: `${slug(prefix)}-${slug(article.title)}`,
+    label: article.title,
+    type: kind.type,
+    qid: article.qid,
+    classes: kind.classes,
+    classification,
+  };
+  await writeJson(join(articlesDirectory, `${entity.id}.json`), {
+    entity,
+    retrievedAt: new Date().toISOString(),
+    article,
+  });
+  const redirected = article.redirectedFrom ? ` (redirecionado de ${article.redirectedFrom})` : '';
+  console.log(`baixado: ${entity.id} ← ${article.url}${redirected}`);
+}
+
 async function fetchCommand() {
   await mkdir(articlesDirectory, { recursive: true });
+  if (values.url) return fetchUrlCommand();
   const done = new Set(await listIds(articlesDirectory));
   const targets = values.candidates ? await acceptedTargets() : await selectedTargets();
   const pending = targets.filter((target) => !done.has(target.entity.id));
@@ -242,7 +275,7 @@ async function runCommand() {
 }
 
 /** Writes one draft; quotes that are not literal in the source text are dropped and reported. */
-async function writeDraft(record, extraction, { text, truncated }, review) {
+async function writeDraft(record, extraction, { text, coverage }, review) {
   const verified = verifyQuotes(extraction, text);
   await writeJson(join(extractsDirectory, `${record.entity.id}.json`), {
     entity: record.entity,
@@ -253,7 +286,7 @@ async function writeDraft(record, extraction, { text, truncated }, review) {
       retrievedAt: record.retrievedAt,
       license: 'CC BY-SA 4.0',
       licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
-      truncated,
+      coverage,
     },
     review,
     ...verified.extraction,
@@ -274,14 +307,26 @@ async function storeExtraction(record, message) {
   });
 }
 
-/** Chat path: exports the capped text the assistant reads, so each quote can be checked against it. */
+const unitLabel = ({ section, heading, part, parts }) =>
+  `[${section}] ${heading || 'Introdução'}${parts > 1 ? ` (parte ${part}/${parts})` : ''}`;
+
+/** Chat path: exports the text the assistant reads, with the sections it covers and those it leaves out. */
 async function textCommand() {
   await mkdir(textDirectory, { recursive: true });
   for (const id of (await listIds(articlesDirectory)).slice(0, limit)) {
     const record = await readJson(join(articlesDirectory, `${id}.json`));
-    const { text, truncated } = articleText(record.article, textChars);
-    await atomicFile(join(textDirectory, `${id}.txt`), text);
-    console.log(`texto: ${id} (${text.length} caracteres${truncated ? ', cortado' : ''})`);
+    const { article } = record;
+    const { text, coverage } = articleText(article, textChars);
+    const header = [
+      `# ${article.title} (${article.lang}), revisão ${article.revision}`,
+      `Limite: ${coverage.maxChars} caracteres. Lidas: ${coverage.read.map(unitLabel).join('; ') || 'nenhuma'}.`,
+    ];
+    if (coverage.skipped.length)
+      header.push(`NÃO LIDAS neste texto: ${coverage.skipped.map(unitLabel).join('; ')}.`);
+    await atomicFile(join(textDirectory, `${id}.txt`), `${header.join('\n')}\n\n${text}\n`);
+    console.log(
+      `texto: ${id} (${text.length} caracteres; ${coverage.read.length} de ${coverage.read.length + coverage.skipped.length} unidades lidas)`,
+    );
   }
 }
 
