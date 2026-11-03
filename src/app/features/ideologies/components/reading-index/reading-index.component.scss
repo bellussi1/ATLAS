@@ -7,17 +7,22 @@
   align-self: start;
   padding: 0 0.5rem 0.5rem 0;
 }
-/* The index keeps its own scroll on any desktop height, so its last control is never clipped. */
+/* The index fills the visible height on desktop and never scrolls itself: rows scale with the viewport. */
 @media (min-width: 761px) {
   :host {
-    max-height: calc(100dvh - 2rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
+    height: calc(100dvh - 2rem);
+    overflow: hidden;
   }
 }
 
 .reading-index {
   --swatch: var(--color-accent);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
   border: 3px solid var(--color-ink);
   background: var(--color-canvas);
 }
@@ -83,11 +88,15 @@ progress::-moz-progress-bar {
 
 .desktop-nav {
   display: grid;
+  flex: 1 1 auto;
+  align-content: start;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .desktop-nav a.index-act {
   justify-content: space-between;
-  margin-top: 0.4rem;
+  margin-top: clamp(0.15rem, 0.8dvh, 0.4rem);
   font: 600 0.75rem/1.2 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -101,10 +110,10 @@ progress::-moz-progress-bar {
 .desktop-nav a {
   position: relative;
   display: flex;
-  min-height: 2.25rem;
+  min-height: clamp(1.6rem, 4dvh, 2.25rem);
   align-items: center;
   gap: 0.65rem;
-  padding: 0.3rem 0.6rem;
+  padding: clamp(0.1rem, 0.5dvh, 0.3rem) 0.6rem;
   border-top: 1px solid var(--color-border);
   color: var(--color-ink);
   font-size: 0.8rem;
@@ -144,7 +153,7 @@ progress::-moz-progress-bar {
   display: grid;
   flex: 0 0 auto;
   place-items: center;
-  width: 1.9rem;
+  width: clamp(1.5rem, 3.6dvh, 1.9rem);
   aspect-ratio: 1;
   background: var(--color-surface-subtle);
   color: var(--color-ink);
@@ -207,14 +216,16 @@ a[aria-current='location'] .chapter-number[data-shape='2'] {
 
 .index-controls {
   display: grid;
+  flex: 0 0 auto;
   gap: 0.4rem;
-  padding: 0.6rem 0.75rem 0.75rem;
+  margin-top: auto;
+  padding: clamp(0.35rem, 1.2dvh, 0.6rem) 0.75rem clamp(0.4rem, 1.4dvh, 0.75rem);
   border-top: 3px solid var(--color-ink);
 }
 
 .index-controls button {
-  min-height: 44px;
-  padding: 0.55rem 0.65rem;
+  min-height: clamp(1.9rem, 4.5dvh, 44px);
+  padding: clamp(0.25rem, 0.9dvh, 0.55rem) 0.65rem;
   border: 1px solid var(--color-border-strong);
   border-radius: 0;
   background: transparent;
@@ -252,7 +263,8 @@ a[aria-current='location'] .chapter-number[data-shape='2'] {
   :host {
     z-index: 5;
     top: 0;
-    max-height: none;
+    display: block;
+    height: auto;
     overflow: visible;
     margin-inline: calc(-1 * var(--grid-gutter));
     padding: 0 var(--grid-gutter) 0.65rem;

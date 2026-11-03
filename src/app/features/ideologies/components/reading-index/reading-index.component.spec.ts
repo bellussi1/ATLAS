@@ -23,7 +23,7 @@ describe('IdeologyReadingIndexComponent', () => {
     expect(root.textContent).not.toContain('minundefined');
   });
 
-  it('lists only the active act in the sidebar and every group in the mobile picker', () => {
+  it('lists the chapters of every act in the sidebar and in the mobile picker', () => {
     const fixture = TestBed.createComponent(IdeologyReadingIndexComponent);
     fixture.componentRef.setInput('sections', [
       { anchor: 'introducao', title: 'O que é?', group: 'Entender' },
@@ -37,7 +37,7 @@ describe('IdeologyReadingIndexComponent', () => {
     expect(acts.map((a) => a.firstChild?.textContent?.trim())).toEqual(['Entender', 'Situar']);
     expect(acts[1].getAttribute('href')).toBe('#epocas');
     expect(root.querySelector('.desktop-nav a[href="#origens"]:not(.index-act)')).not.toBeNull();
-    expect(root.querySelector('.desktop-nav a[href="#epocas"]:not(.index-act)')).toBeNull();
+    expect(root.querySelector('.desktop-nav a[href="#epocas"]:not(.index-act)')).not.toBeNull();
     const groups = [...root.querySelectorAll('optgroup')];
     expect(groups.map((g) => g.label)).toEqual(['Entender', 'Situar']);
     expect(groups[0].querySelectorAll('option')).toHaveLength(2);

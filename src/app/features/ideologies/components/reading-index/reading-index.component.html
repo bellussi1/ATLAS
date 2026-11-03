@@ -16,24 +16,22 @@
           >{{ group.label }}<small>{{ group.items.length }} capítulos</small></a
         >
       }
-      @if (!group.label || group.label === activeGroup()) {
-        @for (item of group.items; track item.section.anchor) {
-          <a
-            [href]="'#' + item.section.anchor"
-            [attr.aria-current]="active() === item.section.anchor ? 'location' : null"
-            (click)="followChapter($event, item.section.anchor)"
+      @for (item of group.items; track item.section.anchor) {
+        <a
+          [href]="'#' + item.section.anchor"
+          [attr.aria-current]="active() === item.section.anchor ? 'location' : null"
+          (click)="followChapter($event, item.section.anchor)"
+        >
+          <span class="chapter-number" [attr.data-shape]="item.index % 4"
+            >{{ item.index + 1 < 10 ? '0' : '' }}{{ item.index + 1 }}</span
           >
-            <span class="chapter-number" [attr.data-shape]="item.index % 4"
-              >{{ item.index + 1 < 10 ? '0' : '' }}{{ item.index + 1 }}</span
-            >
-            <span class="chapter-title">
-              {{ item.section.title }}
-              @if (item.section.minutes !== undefined) {
-                <small>{{ item.section.minutes }} min</small>
-              }
-            </span>
-          </a>
-        }
+          <span class="chapter-title">
+            {{ item.section.title }}
+            @if (item.section.minutes !== undefined) {
+              <small>{{ item.section.minutes }} min</small>
+            }
+          </span>
+        </a>
       }
     }
   </nav>
