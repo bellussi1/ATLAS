@@ -42,9 +42,9 @@
     </p>
   }
 
-  <div class="entities">
+  <app-card-carousel label="Posições por registro" hint="Arraste ou use as setas para comparar">
     @for (row of rows(); track row.id) {
-      <article class="entity">
+      <article class="entity carousel-item">
         <h4 class="sr-only">{{ row.title }}</h4>
         <button
           appRecordCard
@@ -97,5 +97,5 @@
         }
       </article>
     }
-  </div>
+  </app-card-carousel>
 </section>
