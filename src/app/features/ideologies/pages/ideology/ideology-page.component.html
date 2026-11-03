@@ -51,7 +51,7 @@
           @if (chapter.question) {
             <p class="chapter-question">{{ chapter.question }}</p>
           }
-          <div class="chapter-narrative">
+          <div class="chapter-narrative" data-reading-column>
             @for (paragraph of chapter.narrative; track $index) {
               <p><app-knowledge-text [text]="paragraph" /></p>
             }

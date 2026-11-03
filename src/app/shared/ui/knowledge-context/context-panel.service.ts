@@ -11,6 +11,11 @@ import { entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 
 import { KnowledgeContextComponent } from './knowledge-context.component';
+import { panelInset, readingEdge } from './panel-inset';
+
+const OPEN_CLASS = 'atlas-panel-open';
+const INSET_VAR = '--atlas-panel-inset';
+const DOCKS_PAGE = '(min-width: 64rem)';
 
 /** Stable identity of a request, so the same record met twice in a chapter is one stop. */
 export function contextKey(request: ContextRequest): string {
@@ -28,6 +33,7 @@ export class ContextPanelService {
   private readonly repository = inject(ContentRepository);
   private readonly window = inject(DOCUMENT).defaultView;
   private ref: DialogRef<unknown, KnowledgeContextComponent> | null = null;
+  private stopFitting: (() => void) | null = null;
   /** Trigger that currently owns the panel, for aria-expanded and for returning focus. */
   readonly active = signal<HTMLElement | null>(null);
   readonly dialogId = signal<string | null>(null);
@@ -50,7 +56,8 @@ export class ContextPanelService {
       return;
     }
     const narrow = !this.window?.matchMedia('(min-width: 48rem)').matches;
-    this.docked(trigger, true);
+    const before = trigger.getBoundingClientRect().top;
+    this.window?.document.documentElement.classList.add(OPEN_CLASS);
     const ref = this.dialog.open<unknown, unknown, KnowledgeContextComponent>(
       KnowledgeContextComponent,
       {
@@ -80,12 +87,14 @@ export class ContextPanelService {
     );
     this.ref = ref;
     this.dialogId.set(ref.id);
+    this.fit(trigger, before);
+    this.watchFit();
     ref.closed.subscribe(() => {
       const trigger = this.active();
       this.ref = null;
       this.active.set(null);
       this.dialogId.set(null);
-      this.docked(trigger, false);
+      this.release(trigger);
       const doc = this.window?.document;
       if (trigger?.isConnected && (!doc?.activeElement || doc.activeElement === doc.body)) {
         trigger.focus({ preventScroll: true });
@@ -94,17 +103,69 @@ export class ContextPanelService {
   }
 
   /**
-   * Docks or releases the page beside the panel. The text reflows into the remaining
-   * width, so the scroll position is corrected to keep the trigger where the reader's eye was.
+   * Gives the page the room the docked panel needs. The free margin beside the reading
+   * column is used first; only the shortfall becomes padding, published as --atlas-panel-inset.
+   * The natural layout is measured with no inset, in the same frame, so nothing flashes.
+   * Whatever reflow remains is corrected by keeping the trigger where the reader's eye was.
    */
-  private docked(trigger: HTMLElement | null, on: boolean): void {
+  private fit(trigger: HTMLElement | null, before = this.topOf(trigger)): void {
+    const doc = this.window?.document;
+    const root = doc?.documentElement;
+    if (!doc || !root || !this.window) return;
+    const pane = doc.querySelector('.atlas-context-pane');
+    root.style.setProperty(INSET_VAR, '0px');
+    const edge = readingEdge(doc);
+    if (pane && edge !== null && this.window.matchMedia(DOCKS_PAGE).matches) {
+      const width = pane.getBoundingClientRect().width;
+      root.style.setProperty(INSET_VAR, `${panelInset(width, root.clientWidth, edge)}px`);
+    } else {
+      root.style.removeProperty(INSET_VAR);
+    }
+    this.restore(trigger, before);
+  }
+
+  /**
+   * Re-fits when the viewport resizes or the panel width changes. Pinning a sheet widens the
+   * panel by rewriting --atlas-panel-width on <html>, which is watched through that attribute.
+   */
+  private watchFit(): void {
+    const win = this.window;
+    const root = win?.document.documentElement;
+    if (!win || !root) return;
+    const refit = () => this.fit(this.active());
+    const width = () => root.style.getPropertyValue('--atlas-panel-width');
+    let seen = width();
+    const observer = new MutationObserver(() => {
+      if (width() === seen) return;
+      seen = width();
+      refit();
+    });
+    observer.observe(root, { attributes: true, attributeFilter: ['style'] });
+    win.addEventListener('resize', refit);
+    this.stopFitting = () => {
+      win.removeEventListener('resize', refit);
+      observer.disconnect();
+    };
+  }
+
+  private release(trigger: HTMLElement | null): void {
+    this.stopFitting?.();
+    this.stopFitting = null;
     const root = this.window?.document.documentElement;
-    if (!root || !this.window) return;
-    const connected = trigger?.isConnected ? trigger : null;
-    const before = connected?.getBoundingClientRect().top;
-    root.classList.toggle('atlas-panel-open', on);
-    if (!connected || before === undefined) return;
-    const shift = connected.getBoundingClientRect().top - before;
+    if (!root) return;
+    const before = this.topOf(trigger);
+    root.classList.remove(OPEN_CLASS);
+    root.style.removeProperty(INSET_VAR);
+    this.restore(trigger, before);
+  }
+
+  private topOf(trigger: HTMLElement | null): number | undefined {
+    return trigger?.isConnected ? trigger.getBoundingClientRect().top : undefined;
+  }
+
+  private restore(trigger: HTMLElement | null, before: number | undefined): void {
+    if (!trigger?.isConnected || before === undefined || !this.window) return;
+    const shift = trigger.getBoundingClientRect().top - before;
     if (shift) this.window.scrollBy({ top: shift, behavior: 'instant' });
   }
 }

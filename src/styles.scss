@@ -263,7 +263,11 @@ html {
 }
 @media (min-width: 64rem) {
   html.atlas-panel-open body {
-    padding-inline-end: var(--atlas-panel-width, clamp(22rem, 32vw, 30rem));
+    /* The panel first takes the free margin; the service publishes only what is left over. */
+    padding-inline-end: var(
+      --atlas-panel-inset,
+      var(--atlas-panel-width, clamp(22rem, 32vw, 30rem))
+    );
   }
 }
 @media (max-width: 47.99rem) {

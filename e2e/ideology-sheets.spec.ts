@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 
 test('the old desk address redirects to the single page', async ({ page }) => {
   await page.goto('/marxismo/mesa/');
@@ -62,7 +62,10 @@ test('on wide screens the sheet docks beside the page, which stays usable', asyn
   expect(box.width).toBeLessThan(560);
   // No horizontal scroll, and the page behind still takes clicks.
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(1440);
-  await page.locator('button.record-card', { hasText: 'Friedrich Engels' }).first().click();
+  // Wide blocks may sit under the panel, so the next record is opened by keyboard.
+  const engels = page.locator('button.record-card', { hasText: 'Friedrich Engels' }).first();
+  await engels.focus();
+  await page.keyboard.press('Enter');
   await expect(panel).toHaveCount(1);
   await expect(panel.locator('#knowledge-context-title')).toHaveText('Friedrich Engels');
   await page.keyboard.press('Escape');
@@ -128,4 +131,77 @@ test('on phones the sheet is a bottom sheet with a trapped focus, big targets an
     await expect(sheet).toHaveCount(0);
     await expect(trigger).toBeFocused();
   }
+});
+
+/** Geometry that a docked panel must not disturb: the reading paragraph and the trigger. */
+async function geometry(page: Page, trigger: Locator) {
+  const paragraph = page.locator('[data-reading-column] p').nth(3);
+  const text = (await paragraph.boundingBox())!;
+  return {
+    x: Math.round(text.x),
+    width: Math.round(text.width),
+    top: Math.round((await trigger.boundingBox())!.y),
+    overflow: await page.evaluate(() =>
+      Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth),
+    ),
+  };
+}
+
+async function openedGeometry(page: Page, width: number) {
+  await page.setViewportSize({ width, height: 900 });
+  await page.goto('/marxismo/', { waitUntil: 'networkidle' });
+  const trigger = page.locator('button.record-card', { hasText: 'Karl Marx' }).first();
+  await trigger.scrollIntoViewIfNeeded();
+  const before = await geometry(page, trigger);
+  await trigger.click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  const after = await geometry(page, trigger);
+  const inset = await page.evaluate(() =>
+    parseFloat(document.documentElement.style.getPropertyValue('--atlas-panel-inset')),
+  );
+  const panel = (await page.getByRole('dialog').boundingBox())!.width;
+  return { before, after, inset, panel };
+}
+
+test('with a free margin beside the text the page does not move when a sheet opens', async ({
+  page,
+}) => {
+  const { before, after, inset } = await openedGeometry(page, 2200);
+  expect(inset).toBe(0);
+  expect({ ...after, top: 0 }).toEqual({ ...before, top: 0 });
+  expect(Math.abs(after.top - before.top)).toBeLessThanOrEqual(3);
+});
+
+test('on a narrower desktop the panel takes the margin first and the trigger stays put', async ({
+  page,
+}) => {
+  const { before, after, inset, panel } = await openedGeometry(page, 1440);
+  expect(inset).toBeGreaterThan(0);
+  expect(inset).toBeLessThan(panel);
+  expect(after.x).toBe(before.x);
+  expect(Math.abs(after.top - before.top)).toBeLessThanOrEqual(3);
+  expect(after.overflow).toBe(0);
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect
+    .poll(() =>
+      page.evaluate(() => document.documentElement.style.getPropertyValue('--atlas-panel-inset')),
+    )
+    .toBe('');
+});
+
+test('at 1024px the text reflows into what the margin cannot hold, without moving the trigger', async ({
+  page,
+}) => {
+  const { before, after, inset, panel } = await openedGeometry(page, 1024);
+  expect(inset).toBeGreaterThan(0);
+  expect(inset).toBeLessThan(panel);
+  expect(after.width).toBeLessThan(before.width);
+  expect(Math.abs(after.top - before.top)).toBeLessThanOrEqual(3);
+  expect(after.overflow).toBe(0);
+});
+
+test('below 48rem the bottom sheet never pads the page', async ({ page }) => {
+  const { before, after } = await openedGeometry(page, 390);
+  expect(after).toEqual(before);
 });
