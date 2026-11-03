@@ -77,12 +77,20 @@
         <ul class="desk-cards">
           @for (entity of results(); track entity.id) {
             <li>
-              <app-record-card
-                [entity]="entity"
+              <button
+                appRecordCard
+                [icon]="entity.icon"
+                [kindLabel]="kindLabel(entity.kind)"
+                [title]="entity.title"
+                [period]="entity.period"
+                [note]="
+                  entity.links ? entity.links + (entity.links === 1 ? ' relação' : ' relações') : ''
+                "
+                [tone]="entity.kind"
                 [picture]="media().get(entity.id)?.assetPath ?? null"
-                [pressed]="chain()[0]?.entity?.id === entity.id"
-                (picked)="start($event)"
-              />
+                [attr.aria-pressed]="chain()[0]?.entity?.id === entity.id"
+                (click)="start(entity.id)"
+              ></button>
             </li>
           }
         </ul>

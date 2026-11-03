@@ -326,35 +326,20 @@
     }
   }
   @case ('explorations') {
-    <div
-      class="exploration-set"
-      appReveal
-      [class.schools]="explorationMode() === 'schools'"
-      [class.principles]="explorationMode() === 'principles'"
-    >
-      @for (item of explorationItems(); track item.id; let i = $index) {
+    <div class="exploration-set" appReveal>
+      @for (item of explorationItems(); track item.id) {
+        @let card = itemCard(item);
         <button
-          type="button"
-          class="exploration-card atlas-press"
-          data-stagger
-          [style.--stagger]="i"
+          appRecordCard
+          class="exploration-card"
+          [icon]="card.icon"
+          [kindLabel]="item.kicker"
+          [title]="item.title"
+          [period]="card.period"
+          [note]="item.classification"
+          [picture]="itemMedia(item)?.assetPath ?? null"
           [appKnowledgeContext]="{ record: explorationContext(item) }"
-        >
-          @if (itemMedia(item); as pic) {
-            <img
-              class="card-image"
-              [src]="pic.assetPath"
-              [alt]="'Imagem de ' + pic.title"
-              width="320"
-              height="180"
-              loading="lazy"
-            />
-          }
-          <span class="metadata">{{ item.kicker }} · {{ item.classification }}</span
-          ><strong>{{ item.title }}</strong
-          ><span class="exploration-summary">{{ item.summary }}</span
-          ><span class="action-cue">Abrir ficha +</span>
-        </button>
+        ></button>
       }
     </div>
   }

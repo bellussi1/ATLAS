@@ -186,12 +186,16 @@
 .relation-reading {
   min-height: 19rem;
 }
+/* Every card has the same size and place in a regular grid; only content varies. */
 .exploration-set {
   margin-block: 2rem;
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--ink);
 }
-.exploration-card,
 .argument-card {
   display: flex;
   flex-direction: column;
@@ -205,27 +209,6 @@
   transition:
     transform var(--motion-fast) var(--ease-out),
     background var(--motion-fast);
-}
-.exploration-card strong {
-  font: 600 1.7rem/1.15 var(--font-serif);
-}
-.exploration-summary {
-  font: 1rem/1.65 var(--font-serif);
-}
-.schools {
-  border-block: 1px solid var(--ink);
-  gap: 0;
-}
-.schools .exploration-card {
-  display: grid;
-  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1fr);
-  border: 0;
-  border-bottom: 1px solid var(--rule-strong);
-  padding: 1.5rem 0.5rem;
-}
-.schools .metadata,
-.schools .action-cue {
-  grid-column: 1/-1;
 }
 .debate-topics {
   display: flex;
@@ -281,12 +264,10 @@
 .argument-card[data-position='response'] {
   background: var(--color-ochre-paper);
 }
-.argument-card .action-cue,
-.exploration-card .action-cue {
+.argument-card .action-cue {
   color: var(--ink);
 }
-.argument-card.is-expanded,
-.exploration-card.is-expanded {
+.argument-card.is-expanded {
   box-shadow: 0.5rem 0.5rem 0 var(--color-accent);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -303,7 +284,6 @@
   .genealogy-node:hover {
     background: var(--color-teal-paper);
   }
-  .exploration-card:hover,
   .argument-card:hover {
     transform: translate(-3px, -3px);
     box-shadow: 0.4rem 0.4rem 0 var(--ink);
@@ -327,15 +307,7 @@
   }
 }
 @container (max-width: 48rem) {
-  .principles,
   .argument-board {
-    grid-template-columns: 1fr;
-  }
-  .principles .exploration-card {
-    grid-column: 1 / -1;
-    margin-top: 0;
-  }
-  .schools .exploration-card {
     grid-template-columns: 1fr;
   }
 }

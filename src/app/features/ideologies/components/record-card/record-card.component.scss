@@ -1,12 +1,8 @@
 :host {
-  display: block;
-  height: 100%;
-}
-.record-card {
-  --tab: var(--desk-line);
+  --tab: var(--desk-line, #5f5e59);
   width: 100%;
   height: 100%;
-  min-height: 7.5rem;
+  min-height: 9.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -30,6 +26,7 @@
     color: #5d5a54;
   }
   strong {
+    color: #141414;
     font: 700 1.05rem/1.2 var(--font-sans);
     text-wrap: balance;
   }
@@ -57,6 +54,7 @@
     top: 0;
     right: 0;
     --kind-icon-size: 1.7rem;
+    box-sizing: content-box;
     padding: 0.55rem 0.55rem 0.9rem 0.9rem;
     border-radius: 0 0 0 100%;
     background: var(--tab);
@@ -66,7 +64,6 @@
   }
   position: relative;
   overflow: hidden;
-  animation: card-in var(--motion-standard) var(--ease-out) both;
   transition:
     transform var(--motion-fast) var(--ease-out),
     box-shadow var(--motion-fast) var(--ease-out);
@@ -111,38 +108,43 @@
       transform: scaleX(1);
     }
   }
-  &[aria-pressed='true'] {
+}
+:host([aria-pressed='true']) {
+  & {
     outline: 3px solid #ffd400;
     outline-offset: 3px;
   }
 }
-[data-kind='person'] {
+:host([data-kind='person']) {
   --tab: #6f82ff;
 }
-[data-kind='work'] {
+:host([data-kind='work']) {
   --tab: #d0a63e;
 }
-[data-kind='concept'] {
+:host([data-kind='concept']) {
   --tab: #45a77c;
 }
-[data-kind='event'] {
+:host([data-kind='event']) {
   --tab: #ff6a5c;
 }
-[data-kind='ideology'] {
+:host([data-kind='ideology']) {
   --tab: #c792ea;
 }
-@keyframes card-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-}
 @media (prefers-reduced-motion: reduce) {
-  .record-card {
-    animation: none;
+  :host {
     transition: none;
   }
-  .record-card:hover .card-glyph {
+  :host(:hover) .card-glyph {
     transform: none;
   }
+}
+:host([data-kind='thesis']) {
+  --tab: #eab0c2;
+}
+:host([data-kind='politician']),
+:host([data-kind='party']) {
+  --tab: #7fbdb5;
+}
+:host([data-kind='institution']) {
+  --tab: #eec35a;
 }

@@ -14,6 +14,7 @@ import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/id
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { PositionsEstimateComponent } from '@ideologies/components/positions-estimate/positions-estimate.component';
 import { ReadingPathComponent } from '@ideologies/components/reading-path/reading-path.component';
+import { RecordCardComponent } from '@ideologies/components/record-card/record-card.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
   ExplorationItem,
@@ -26,10 +27,12 @@ import { entityMedia, type PageMedia } from '@ideologies/utils/page-media-plan';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
+import { type IconKind, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 
 @Component({
   selector: 'app-ideology-block',
   imports: [
+    RecordCardComponent,
     EditorialSourcesComponent,
     ValueDebateComponent,
     KnowledgeContextDirective,
@@ -137,10 +140,6 @@ export class IdeologyBlockComponent {
     const block = this.block();
     return block.type === 'explorations' ? block.items : [];
   });
-  readonly explorationMode = computed(() => {
-    const block = this.block();
-    return block.type === 'explorations' ? block.mode : 'principles';
-  });
   readonly debateTopics = computed(() => {
     const block = this.block();
     return block.type === 'debate' ? block.topics : [];
@@ -241,6 +240,21 @@ export class IdeologyBlockComponent {
   }
   itemMedia(item: ExplorationItem) {
     return this.mediaPlan().get(`${this.blockId()}/${item.id}`);
+  }
+  /** Glyph and period of an exploration card, read from the first record it names. */
+  itemCard(item: ExplorationItem): { icon: IconKind; period: string } {
+    const entity = item.entityIds.map((id) => this.entity(id)).find(Boolean);
+    const extent = entity?.temporalExtent;
+    const period =
+      extent?.label ??
+      (extent?.startYear != null
+        ? extent.endYear && extent.endYear !== extent.startYear
+          ? `${extent.startYear}–${extent.endYear}`
+          : `${extent.startYear}`
+        : '');
+    const icon =
+      item.classification === 'tese atribuída' || !entity ? 'thesis' : iconKind(entity.kind);
+    return { icon, period };
   }
   explorationContext(item: ExplorationItem): KnowledgeContext {
     return {

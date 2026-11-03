@@ -35,7 +35,7 @@ test('chapter links filter Explorar in place, chain records and return to the ch
   await expect(page.getByRole('button', { name: /^Pessoa/, pressed: true })).toBeVisible();
 
   await page.getByRole('searchbox', { name: 'Buscar registros' }).fill('marx');
-  await page.locator('.record-card', { hasText: 'Karl Marx' }).click();
+  await page.locator('.desk-cards .record-card', { hasText: 'Karl Marx' }).click();
   await page.locator('.chain-next button', { hasText: 'O capital: volume I' }).click();
   await expect(page.locator('.chain-via').first()).toContainText('escreveu');
   await expect(page).toHaveURL(/cadeia=person-karl-marx,work-capital-volume-i/);
@@ -59,7 +59,9 @@ test('desk filters and chain steps keep the scroll position', async ({ page }) =
     (document.querySelectorAll('.desk-kinds button')[1] as HTMLElement).click(),
   );
   await expect(page).toHaveURL(/tipo=/);
-  await page.evaluate(() => (document.querySelector('.record-card') as HTMLElement).click());
+  await page.evaluate(() =>
+    (document.querySelector('.desk-cards .record-card') as HTMLElement).click(),
+  );
   await expect(page).toHaveURL(/cadeia=/);
   expect(await page.evaluate(() => window.scrollY)).toBe(top);
 });

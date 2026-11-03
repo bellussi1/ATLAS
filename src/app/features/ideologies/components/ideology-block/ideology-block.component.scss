@@ -140,57 +140,6 @@ button {
 .documents .entity-entry img {
   height: clamp(220px, 28vw, 390px);
 }
-.principles {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1.25rem 1.5rem;
-  border-top: 5px solid var(--color-accent);
-  padding-top: 1.25rem;
-}
-.principles .exploration-card {
-  min-height: 0;
-  padding: 1.25rem 1.25rem 1.25rem 4.5rem;
-  background: var(--paper);
-}
-.principles .exploration-card::before {
-  content: '';
-  position: absolute;
-  left: 1rem;
-  top: 1.25rem;
-  width: 2.5rem;
-  aspect-ratio: 1;
-  border-radius: 0 0 100% 0;
-  background: var(--color-accent);
-}
-.principles .exploration-card:nth-child(4n + 2)::before {
-  border-radius: 50%;
-  background: var(--ink);
-}
-.principles .exploration-card:nth-child(4n + 3)::before {
-  border-radius: 100% 100% 0 0;
-  background: var(--color-ochre-paper);
-}
-.principles .exploration-card:nth-child(4n + 4)::before {
-  border-radius: 0;
-  background: var(--color-indigo);
-}
-.principles .exploration-card:nth-child(4n + 1) {
-  grid-column: span 7;
-}
-.principles .exploration-card:nth-child(4n + 2) {
-  grid-column: span 5;
-  margin-top: 2.5rem;
-}
-.principles .exploration-card:nth-child(4n + 3) {
-  grid-column: span 4;
-}
-.principles .exploration-card:nth-child(4n + 4) {
-  grid-column: span 8;
-  margin-top: 1.5rem;
-}
-.principles .exploration-card strong {
-  max-width: 20ch;
-  font-size: clamp(1.5rem, 2.7vw, 2.2rem);
-}
 .timeline-filters {
   display: flex;
   flex-wrap: wrap;

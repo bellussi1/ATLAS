@@ -14,10 +14,13 @@ import type { Entity, Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
+import { RecordCardComponent } from '@ideologies/components/record-card/record-card.component';
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
+import { entityMedia } from '@ideologies/utils/page-media-plan';
 import { centuryLabel } from '@ideologies/utils/timeline-periods';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
+import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 
 import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
 
@@ -42,6 +45,7 @@ interface TimelinePeriod {
 @Component({
   selector: 'app-ideology-atlas',
   imports: [
+    RecordCardComponent,
     EditorialSourcesComponent,
     RouterLink,
     KnowledgeTextComponent,
@@ -255,6 +259,18 @@ export class IdeologyAtlasComponent {
     if (extent.startYear !== null) return `${qualifier}a partir de ${extent.startYear}`;
     if (extent.endYear !== null) return `${qualifier}até ${extent.endYear}`;
     return extent.label ?? 'Data não informada';
+  }
+  cardIcon(entity: Entity) {
+    return iconKind(entity.kind);
+  }
+  picture(entity: Entity): string | null {
+    return entityMedia(this.repository.knowledgeGraph, entity)?.assetPath ?? null;
+  }
+  relationNote(id: string): string {
+    const count = this.atlas().relations.filter(
+      (r) => r.fromEntityId === id || r.toEntityId === id,
+    ).length;
+    return count ? `${count} ${count === 1 ? 'relação' : 'relações'}` : '';
   }
   kindLabel(entity: Entity): string {
     return this.kindName(entity.kind);
