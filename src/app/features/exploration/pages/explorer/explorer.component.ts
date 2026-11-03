@@ -16,7 +16,6 @@ import {
 } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
-import { ContentLanguageComponent } from '@shared/ui/content-language/content-language.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
@@ -27,7 +26,6 @@ import { RecordCardComponent } from '@shared/ui/record-card/record-card.componen
     RouterLink,
     RouterLinkActive,
     AtlasGeometricMosaicComponent,
-    ContentLanguageComponent,
     RecordCardComponent,
   ],
   templateUrl: './explorer.component.html',
@@ -93,13 +91,6 @@ export class ExplorerComponent {
       this.repository.knowledgeGraph.atlases.flatMap((a) => a.sources).find((s) => s.id === id)
         ?.url ?? null
     );
-  }
-  setLanguage(locale: string | null): void {
-    void this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { idioma: locale },
-      queryParamsHandling: 'merge',
-    });
   }
   // Category and page size links live in the URL; the search and state filters keep both.
   apply(form: HTMLFormElement): void {

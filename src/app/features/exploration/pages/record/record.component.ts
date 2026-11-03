@@ -11,7 +11,6 @@ import { contentLanguageLabels, localizedEntity } from '@core/content/queries/lo
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EntityProfileComponent } from '@exploration/components/entity-profile/entity-profile.component';
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
-import { ContentLanguageComponent } from '@shared/ui/content-language/content-language.component';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
 import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found-message.component';
 
@@ -21,7 +20,6 @@ import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found
     RouterLink,
     AtlasLicensedAssetComponent,
     AtlasClaimReferencesComponent,
-    ContentLanguageComponent,
     EntityProfileComponent,
     NotFoundMessageComponent,
   ],
@@ -121,12 +119,5 @@ export class RecordComponent {
     } catch {
       this.copyStatus.set('Copie o endereço da barra do navegador.');
     }
-  }
-  setLanguage(locale: string | null): void {
-    void this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { idioma: locale },
-      queryParamsHandling: 'merge',
-    });
   }
 }
