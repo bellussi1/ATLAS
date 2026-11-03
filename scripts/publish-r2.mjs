@@ -16,8 +16,9 @@ import {
   parsePointer,
   pointerPath,
   projectRoot,
+  putImmutable as putObject,
+  r2,
   sha256Hex,
-  signRequest,
   verifyBytes,
 } from './content/r2-content.mjs';
 
@@ -27,44 +28,7 @@ const { DEFAULT_CONTENT_BASE_URL } =
   await import('../src/app/core/content/models/content-pointer.ts');
 const dryRun = process.argv.includes('--dry-run');
 const compiled = join(projectRoot, 'generated/content');
-
-/** Signed S3-compatible request to the R2 bucket; `config` never leaves this process. */
-async function r2(config, method, key, { body, contentType, cacheControl } = {}) {
-  const url = new URL(`/${config.bucket}/${key}`, config.endpoint);
-  const headers = Object.fromEntries(
-    Object.entries({ 'content-type': contentType, 'cache-control': cacheControl }).filter(
-      ([, value]) => value !== undefined,
-    ),
-  );
-  const { host, authorization, ...transport } = signRequest({
-    method,
-    url,
-    headers,
-    body,
-    config,
-    now: new Date(),
-  });
-  return fetch(url, { method, headers: { ...transport, authorization }, body });
-}
-
-/** Content-addressed objects are immutable: an existing key with the same size is reused. */
-async function putImmutable(config, { key, body, contentType }) {
-  if (dryRun) return console.log(`[dry-run] ${key} (${body.byteLength} bytes)`);
-  const head = await r2(config, 'HEAD', key);
-  if (head.status === 200) {
-    if (Number(head.headers.get('content-length')) !== body.byteLength)
-      throw new Error(`Objeto imutável com tamanho divergente: ${key}`);
-    return console.log(`já publicado: ${key}`);
-  }
-  if (head.status !== 404) throw new Error(`Falha ao consultar ${key}: HTTP ${head.status}`);
-  const put = await r2(config, 'PUT', key, {
-    body,
-    contentType,
-    cacheControl: 'public, max-age=31536000, immutable',
-  });
-  if (!put.ok) throw new Error(`Falha ao publicar ${key}: HTTP ${put.status}`);
-  console.log(`publicado: ${key}`);
-}
+const putImmutable = (config, object) => putObject(config, object, { dryRun });
 
 async function loadArtifacts() {
   const manifestBody = await readFile(join(compiled, 'manifest.json'));

@@ -23,7 +23,11 @@ export async function getResource(url, kind = 'json') {
         const contentType = response.headers.get('content-type') ?? '';
         if (kind === 'image' && !contentType.startsWith('image/'))
           throw new Error(`Commons retornou mídia inválida: ${url}`);
-        return { bytes: Buffer.from(await response.arrayBuffer()), contentType };
+        return {
+          bytes: Buffer.from(await response.arrayBuffer()),
+          contentType,
+          etag: response.headers.get('etag'),
+        };
       }
     } finally {
       clearTimeout(timeout);

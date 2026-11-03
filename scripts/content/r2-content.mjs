@@ -126,6 +126,44 @@ export function signRequest({ method, url, headers = {}, body = Buffer.alloc(0),
   };
 }
 
+/** Signed S3-compatible request to the R2 bucket; `config` never leaves this process. */
+export async function r2(config, method, key, { body, contentType, cacheControl } = {}) {
+  const url = new URL(`/${config.bucket}/${key}`, config.endpoint);
+  const headers = Object.fromEntries(
+    Object.entries({ 'content-type': contentType, 'cache-control': cacheControl }).filter(
+      ([, value]) => value !== undefined,
+    ),
+  );
+  const { host, authorization, ...transport } = signRequest({
+    method,
+    url,
+    headers,
+    body,
+    config,
+    now: new Date(),
+  });
+  return fetch(url, { method, headers: { ...transport, authorization }, body });
+}
+
+/** Content-addressed objects are immutable: an existing key with the same size is reused. */
+export async function putImmutable(config, { key, body, contentType }, { dryRun = false } = {}) {
+  if (dryRun) return console.log(`[dry-run] ${key} (${body.byteLength} bytes)`);
+  const head = await r2(config, 'HEAD', key);
+  if (head.status === 200) {
+    if (Number(head.headers.get('content-length')) !== body.byteLength)
+      throw new Error(`Objeto imutável com tamanho divergente: ${key}`);
+    return console.log(`já publicado: ${key}`);
+  }
+  if (head.status !== 404) throw new Error(`Falha ao consultar ${key}: HTTP ${head.status}`);
+  const put = await r2(config, 'PUT', key, {
+    body,
+    contentType,
+    cacheControl: 'public, max-age=31536000, immutable',
+  });
+  if (!put.ok) throw new Error(`Falha ao publicar ${key}: HTTP ${put.status}`);
+  console.log(`publicado: ${key}`);
+}
+
 /** Writes through a temporary file so an interrupted run never leaves a partial cache entry. */
 export async function atomicFile(path, body) {
   await mkdir(dirname(path), { recursive: true });
