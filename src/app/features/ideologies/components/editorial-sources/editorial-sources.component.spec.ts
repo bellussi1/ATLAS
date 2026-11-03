@@ -40,4 +40,22 @@ describe('Shared editorial sources', () => {
     );
     expect(fixture.nativeElement.querySelector('a')).toBeNull();
   });
+
+  it('folds a long list after the limit and expands it on demand', () => {
+    const fixture = TestBed.createComponent(EditorialSourcesComponent);
+    fixture.componentRef.setInput(
+      'references',
+      Array.from({ length: 12 }, (_, i) => ({ id: `s${i}`, title: `Fonte ${i}`, url: null })),
+    );
+    fixture.componentRef.setInput('limit', 8);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelectorAll('li')).toHaveLength(8);
+    const toggle = root.querySelector<HTMLButtonElement>('.sources-more')!;
+    expect(toggle.textContent).toContain('Ver todas (12)');
+    toggle.click();
+    fixture.detectChanges();
+    expect(root.querySelectorAll('li')).toHaveLength(12);
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+  });
 });

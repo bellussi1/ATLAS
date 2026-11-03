@@ -1,5 +1,5 @@
 <ul [class]="variant()">
-  @for (source of references(); track source.id) {
+  @for (source of shown(); track source.id) {
     <li>
       @if (source.url) {
         <a
@@ -25,3 +25,13 @@
     <li role="status">{{ emptyText() }}</li>
   }
 </ul>
+@if (foldable()) {
+  <button
+    type="button"
+    class="sources-more"
+    [attr.aria-expanded]="expanded()"
+    (click)="expanded.set(!expanded())"
+  >
+    {{ expanded() ? 'Mostrar menos' : 'Ver todas (' + references().length + ')' }}
+  </button>
+}

@@ -47,3 +47,17 @@ li {
   min-height: 1.5rem;
   padding-block: 0.2rem;
 }
+.sources-more {
+  min-height: 2.75rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: 600 0.875rem/1.3 var(--font-sans);
+  cursor: pointer;
+}
+.sources-more:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
