@@ -31,7 +31,13 @@ for (const width of [1440, 390, 320]) {
       }
       const dialog = page.getByRole('dialog');
       await expect(dialog).toBeVisible();
-      const panel = await dialog.boundingBox();
+      // The panel slides in, so measure once two consecutive readings agree.
+      let panel = await dialog.boundingBox();
+      await expect(async () => {
+        const previous = panel;
+        panel = await dialog.boundingBox();
+        expect(panel?.height).toBe(previous?.height);
+      }).toPass();
       const connection =
         route === 'marxismo'
           ? dialog.locator('[data-connection="relation-marx-capital"]')

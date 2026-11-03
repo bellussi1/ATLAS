@@ -3,10 +3,71 @@
   --on-tone: var(--ink);
   --step: clamp(0.4rem, 1.4vw, 0.85rem);
   position: relative;
-  display: block;
+  display: flex;
+  gap: 0.75rem;
   height: 100%;
+  width: 100%;
   min-width: 0;
   color: var(--ink);
+}
+/* The current sheet and its pile; a pinned sheet sits in a column of its own beside it. */
+.stack {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.pinned {
+  --tone: var(--color-ochre-paper);
+  --on-tone: var(--ink);
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  overflow: hidden;
+}
+.pinned-source {
+  font: 0.75rem/1.5 var(--font-mono);
+}
+.pinned-source small {
+  display: inline;
+  margin-left: 0.4rem;
+}
+/* On a phone the sheet follows the finger while it is dragged shut. */
+@media (max-width: 47.99rem) {
+  :host {
+    translate: 0 var(--drag, 0px);
+    transition: translate var(--motion-standard) var(--ease-out);
+  }
+  :host(.is-dragging) {
+    transition: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    transition: none;
+  }
+}
+.sheet-top {
+  touch-action: pan-x;
+}
+.grip {
+  display: none;
+}
+@media (max-width: 47.99rem) {
+  .sheet-top {
+    touch-action: none;
+  }
+  .grip {
+    display: block;
+    width: 3rem;
+    height: 0.3rem;
+    margin: 0.5rem auto 0;
+    background: var(--ink);
+    border-radius: 0.15rem;
+    opacity: 0.55;
+  }
 }
 /* Earlier sheets peek out above and to the left, like a pile of loose pages. */
 .sheet-ghost {
@@ -35,9 +96,8 @@
   transform: translate(calc(var(--depth) * var(--step)), calc(var(--depth) * var(--step)));
   width: calc(100% - var(--depth) * var(--step));
   height: calc(100% - var(--depth) * var(--step));
-  display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr) auto;
-  grid-template-columns: minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
   background: var(--paper);
   border: 3px solid var(--ink);
   box-shadow: 0.6rem 0.6rem 0 var(--tone);
@@ -61,6 +121,7 @@
   }
 }
 .sheet-footer {
+  flex: none;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -97,27 +158,34 @@
   border-width: 2px;
   font-weight: 650;
 }
-:host([data-tone='person']) {
+:host([data-tone='person']),
+.pinned[data-tone='person'] {
   --tone: var(--color-rose-paper);
 }
-:host([data-tone='work']) {
+:host([data-tone='work']),
+.pinned[data-tone='work'] {
   --tone: var(--color-ochre-paper);
 }
-:host([data-tone='concept']) {
+:host([data-tone='concept']),
+.pinned[data-tone='concept'] {
   --tone: var(--color-teal-paper);
 }
-:host([data-tone='event']) {
+:host([data-tone='event']),
+.pinned[data-tone='event'] {
   --tone: var(--color-orange-paper);
 }
-:host([data-tone='idea']) {
+:host([data-tone='idea']),
+.pinned[data-tone='idea'] {
   --tone: var(--color-indigo);
   --on-tone: var(--color-on-strong-surface);
 }
-:host([data-tone='reading']) {
+:host([data-tone='reading']),
+.pinned[data-tone='reading'] {
   --tone: var(--color-accent);
   --on-tone: var(--color-on-strong-surface);
 }
 header {
+  flex: none;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -143,7 +211,35 @@ header p {
   border-width: 2px;
   font-weight: 650;
 }
+.context-steps {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  padding: 0.4rem 1rem;
+  border-bottom: 1px solid var(--rule-strong);
+  background: var(--color-surface-subtle);
+  font: 0.875rem/1.3 var(--font-sans);
+}
+.context-steps button {
+  min-width: 44px;
+  padding-inline: 0.75rem;
+}
+.context-steps button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.context-position {
+  font: 0.75rem/1.4 var(--font-mono);
+  min-width: 4.5ch;
+  text-align: center;
+}
+.context-pin {
+  margin-left: auto;
+}
 .context-trail {
+  flex: none;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -169,8 +265,8 @@ header p {
   color: var(--color-ink-muted);
 }
 h2 {
-  font: 700 clamp(1.8rem, 4.5vw, 3rem)/1 var(--font-sans);
-  letter-spacing: -0.045em;
+  font: 700 1.25rem/1.2 var(--font-sans);
+  letter-spacing: -0.02em;
   margin: 0;
   overflow-wrap: anywhere;
 }
@@ -184,6 +280,8 @@ button {
   text-align: left;
 }
 .context-body {
+  flex: 1 1 auto;
+  min-height: 0;
   max-width: 100%;
   overflow: auto;
   overscroll-behavior: contain;
@@ -278,7 +376,8 @@ button:active {
     flex-wrap: wrap;
   }
   header > div {
-    flex: 1 0 100%;
+    flex: 1 1 10rem;
+    min-width: 0;
   }
   figure {
     float: none;

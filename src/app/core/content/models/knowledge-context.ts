@@ -29,3 +29,9 @@ export interface KnowledgeContext {
 }
 
 export type ContextRequest = { entityId: string } | { record: KnowledgeContext };
+
+/** One record of the reading order the context panel steps through with previous and next. */
+export interface ContextStop {
+  key: string;
+  request: ContextRequest;
+}

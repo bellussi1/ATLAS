@@ -20,7 +20,7 @@ describe('KnowledgeContextComponent', () => {
         provideRouter([]),
         ...provideContentFixture(),
         provideHttpClient(),
-        { provide: DIALOG_DATA, useValue: record },
+        { provide: DIALOG_DATA, useValue: { record, stops: [], index: -1 } },
         { provide: DialogRef, useValue: { close: vi.fn() } },
       ],
     });
@@ -53,20 +53,24 @@ describe('KnowledgeContextComponent', () => {
         {
           provide: DIALOG_DATA,
           useValue: {
-            title: 'Recorte editorial',
-            kind: 'Nota',
-            summary: 'Resumo',
-            paragraphs: [],
-            connections: [],
-            sources: [
-              {
-                id: 'source-note',
-                title: 'Fonte impressa',
-                url: null,
-                edition: 'Edição registrada',
-                publicationDate: null,
-              },
-            ],
+            stops: [],
+            index: -1,
+            record: {
+              title: 'Recorte editorial',
+              kind: 'Nota',
+              summary: 'Resumo',
+              paragraphs: [],
+              connections: [],
+              sources: [
+                {
+                  id: 'source-note',
+                  title: 'Fonte impressa',
+                  url: null,
+                  edition: 'Edição registrada',
+                  publicationDate: null,
+                },
+              ],
+            },
           },
         },
       ],
@@ -78,5 +82,77 @@ describe('KnowledgeContextComponent', () => {
     expect(host.textContent).toContain('Fonte impressa');
     expect(host.querySelector('a')).toBeNull();
     expect(host.textContent).toContain('Estado editorial não informado');
+  });
+
+  describe('reading order and comparison', () => {
+    const repository = { knowledgeGraph: methodologyKnowledgeGraph } as ContentRepository;
+    const record = entityContext(repository, 'person-karl-marx');
+    const stops = [
+      'person-karl-marx',
+      ...record.connections.slice(0, 2).map((connection) => connection.entityId),
+    ].map((id) => ({ key: id, request: { entityId: id } }));
+    const setup = (index: number) => {
+      TestBed.configureTestingModule({
+        providers: [
+          provideRouter([]),
+          ...provideContentFixture(),
+          provideHttpClient(),
+          { provide: DIALOG_DATA, useValue: { record, stops, index } },
+          { provide: DialogRef, useValue: { close: vi.fn() } },
+        ],
+      });
+      const fixture = TestBed.createComponent(KnowledgeContextComponent);
+      fixture.detectChanges();
+      return fixture;
+    };
+
+    it('shows where the reader is and disables the ends of the order', () => {
+      const fixture = setup(0);
+      const host = fixture.nativeElement as HTMLElement;
+      expect(host.querySelector('.context-position')?.textContent).toBe(`1 de ${stops.length}`);
+      const [previous, next] = Array.from(
+        host.querySelectorAll<HTMLButtonElement>('.context-steps button'),
+      );
+      expect(previous.disabled).toBe(true);
+      expect(next.disabled).toBe(false);
+      fixture.componentInstance.step(-1);
+      expect(fixture.componentInstance.index()).toBe(0);
+    });
+
+    it('steps to the next record and updates the position', () => {
+      const fixture = setup(0);
+      const before = fixture.componentInstance.record().title;
+      fixture.componentInstance.step(1);
+      fixture.detectChanges();
+      expect(fixture.componentInstance.index()).toBe(1);
+      expect(fixture.componentInstance.record().title).not.toBe(before);
+      expect(
+        (fixture.nativeElement as HTMLElement).querySelector('.context-position')?.textContent,
+      ).toBe(`2 de ${stops.length}`);
+    });
+
+    it('hides the steps when there is nothing to step through', () => {
+      const fixture = setup(-1);
+      expect((fixture.nativeElement as HTMLElement).querySelector('.context-steps')).toBeNull();
+    });
+
+    it('pins a sheet as a labelled column and releases it', () => {
+      const fixture = setup(0);
+      const host = fixture.nativeElement as HTMLElement;
+      fixture.componentInstance.pin();
+      fixture.detectChanges();
+      expect(host.querySelector('aside.pinned')?.getAttribute('aria-label')).toContain(
+        fixture.componentInstance.record().title,
+      );
+      fixture.componentInstance.step(1);
+      fixture.detectChanges();
+      expect(host.querySelector('aside.pinned h2')?.textContent).toContain('Karl Marx');
+      expect(host.querySelector('#knowledge-context-title')?.textContent).not.toContain(
+        'Karl Marx',
+      );
+      fixture.componentInstance.unpin();
+      fixture.detectChanges();
+      expect(host.querySelector('aside.pinned')).toBeNull();
+    });
   });
 });

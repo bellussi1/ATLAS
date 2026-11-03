@@ -5,26 +5,56 @@ import {
   Component,
   computed,
   DestroyRef,
+  effect,
   ElementRef,
   inject,
   Injector,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   type ContextConnection,
+  type ContextStop,
   type KnowledgeContext,
 } from '@core/content/models/knowledge-context';
 import { entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
+import { keepScrollAnchor } from './keep-scroll';
+
 /** How many earlier sheets stay visible behind the current one. */
 const VISIBLE_SHEETS = 3;
+/** Side panel from this width; below it the sheet rises from the bottom edge. */
+const WIDE = '(min-width: 48rem)';
+/** Room for a pinned sheet beside the current one. */
+const COMPARE = '(min-width: 72rem)';
+/** Dragging the sheet down this far, or this fast (px/ms), closes it. */
+const DRAG_CLOSE_DISTANCE = 120;
+const DRAG_CLOSE_SPEED = 0.7;
+
+export interface ContextPanelData {
+  record: KnowledgeContext;
+  /** Reading order the previous and next buttons step through. */
+  stops: ContextStop[];
+  index: number;
+}
+
+function toneOf(kind: string): string {
+  if (/^Pensador|^Pessoa/.test(kind)) return 'person';
+  if (/^Obra|^Artigo/.test(kind)) return 'work';
+  if (/^Conceito/.test(kind)) return 'concept';
+  if (/^Acontecimento|^Lugar/.test(kind)) return 'event';
+  if (/^Tradição|^Instituição|^Partido|^Regime|^País|^Governo/.test(kind)) return 'idea';
+  return 'reading';
+}
 
 /**
- * Context sheet over the reading. Following a relation lays a new sheet on top of the
- * pile, slightly offset; the button, Esc and the browser's back button lift it again.
+ * Reading panel for a record. On wide screens it docks beside the page without modal
+ * semantics; on narrow ones it is a bottom sheet that can be dragged shut. Following a
+ * relation lays a new sheet on the pile; the button, Esc and the browser's back button lift
+ * it again. Previous and next step through the reading order; one sheet can be pinned
+ * to compare it with the next.
  */
 @Component({
   selector: 'app-knowledge-context',
@@ -34,12 +64,16 @@ const VISIBLE_SHEETS = 3;
   host: {
     '[attr.data-tone]': 'tone()',
     '[style.--depth]': 'depth()',
+    '[style.--drag]': 'dragY() + "px"',
+    '[class.is-dragging]': 'dragging()',
+    '[class.has-pinned]': '!!pinned()',
   },
 })
 export class KnowledgeContextComponent {
-  private readonly initial = inject<KnowledgeContext>(DIALOG_DATA);
+  private readonly initial = inject<ContextPanelData>(DIALOG_DATA);
   private readonly ref = inject(DialogRef);
   private readonly repository = inject(ContentRepository);
+  private readonly router = inject(Router);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly injector = inject(Injector);
   private readonly window = inject(DOCUMENT).defaultView;
@@ -47,7 +81,16 @@ export class KnowledgeContextComponent {
   private pushed = 0;
   /** Pops triggered by the dialog itself, which the popstate listener must ignore. */
   private ownPops = 0;
-  readonly record = signal(this.initial);
+  readonly record = signal(this.initial.record);
+  readonly stops = signal(this.initial.stops);
+  readonly index = signal(this.initial.index);
+  /** Sheet kept open in its own column while the reader moves on to the next one. */
+  readonly pinned = signal<KnowledgeContext | null>(null);
+  readonly wide = signal(true);
+  readonly canCompare = signal(false);
+  readonly dragY = signal(0);
+  readonly dragging = signal(false);
+  private dragStart: { y: number; at: number } | null = null;
   readonly history = signal<
     {
       record: KnowledgeContext;
@@ -57,14 +100,15 @@ export class KnowledgeContextComponent {
     }[]
   >([]);
   /** Colour family by record kind, so each opened context is recognisable at a glance. */
-  readonly tone = computed(() => {
-    const kind = this.record().kind;
-    if (/^Pensador|^Pessoa/.test(kind)) return 'person';
-    if (/^Obra|^Artigo/.test(kind)) return 'work';
-    if (/^Conceito/.test(kind)) return 'concept';
-    if (/^Acontecimento|^Lugar/.test(kind)) return 'event';
-    if (/^Tradição|^Instituição|^Partido|^Regime|^País|^Governo/.test(kind)) return 'idea';
-    return 'reading';
+  readonly tone = computed(() => toneOf(this.record().kind));
+  readonly pinnedTone = computed(() => toneOf(this.pinned()?.kind ?? ''));
+  /** Where the reader is in the reading order; steps are hidden inside a followed relation. */
+  readonly position = computed(() => {
+    const total = this.stops().length;
+    const at = this.index();
+    return total > 1 && at >= 0 && !this.history().length
+      ? { at: at + 1, total, hasPrevious: at > 0, hasNext: at < total - 1 }
+      : null;
   });
   /** Where the reader came from: every step can be revisited without closing the dialog. */
   readonly trail = computed(() => this.history().map((step) => step.record.title));
@@ -107,6 +151,7 @@ export class KnowledgeContextComponent {
         this.ref.close();
         return;
       }
+      this.keepPlace();
       // The browser went back: lift sheets until the pile matches the restored entry.
       const target = Number(event.state?.atlasSheet ?? 0);
       this.pushed = target;
@@ -114,14 +159,66 @@ export class KnowledgeContextComponent {
     };
     this.window?.addEventListener('popstate', onPop);
     inject(DestroyRef).onDestroy(() => this.window?.removeEventListener('popstate', onPop));
+    this.watchLayout();
   }
+
+  /** Replaces what the open panel shows, as when another record is opened from the page. */
+  show(record: KnowledgeContext, stops: ContextStop[], index: number): void {
+    this.unwind(this.pushed);
+    this.history.set([]);
+    this.record.set(record);
+    this.stops.set(stops);
+    this.index.set(index);
+    this.present(0);
+  }
+  /** Previous (-1) or next (+1) record in the reading order. */
+  step(delta: -1 | 1): void {
+    const at = this.index() + delta;
+    const stop = this.stops()[at];
+    if (!stop) return;
+    const record =
+      'record' in stop.request
+        ? stop.request.record
+        : entityContext(this.repository, stop.request.entityId);
+    this.show(record, this.stops(), at);
+  }
+  pin(): void {
+    this.pinned.set(this.record());
+    this.present(0);
+  }
+  unpin(): void {
+    this.pinned.set(null);
+    this.present(0);
+  }
+  startDrag(event: PointerEvent): void {
+    if (this.wide() || event.button > 0 || (event.target as HTMLElement).closest('button, a')) {
+      return;
+    }
+    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+    this.dragStart = { y: event.clientY, at: event.timeStamp };
+    this.dragging.set(true);
+  }
+  moveDrag(event: PointerEvent): void {
+    if (!this.dragStart) return;
+    this.dragY.set(Math.max(0, event.clientY - this.dragStart.y));
+  }
+  endDrag(event: PointerEvent): void {
+    if (!this.dragStart) return;
+    const distance = Math.max(0, event.clientY - this.dragStart.y);
+    const speed = distance / Math.max(1, event.timeStamp - this.dragStart.at);
+    this.dragStart = null;
+    this.dragging.set(false);
+    this.dragY.set(0);
+    if (distance > DRAG_CLOSE_DISTANCE || speed > DRAG_CLOSE_SPEED) this.close();
+  }
+
   permanentPath(): string | undefined {
     return this.record().entityId
       ? this.repository.discoveryIndex.find((entry) => entry.id === this.record().entityId)?.path
       : undefined;
   }
   follow(connection: ContextConnection): void {
-    const scroll = this.host.nativeElement.querySelector('.context-body')?.scrollTop ?? 0;
+    const scroll = this.host.nativeElement.querySelector('.sheet .context-body')?.scrollTop ?? 0;
     this.history.update((items) => [
       ...items,
       {
@@ -203,6 +300,46 @@ export class KnowledgeContextComponent {
     return { low: 'baixa', moderate: 'moderada', high: 'alta', unknown: 'não determinada' }[value];
   }
 
+  /**
+   * Keeps panel behaviour in step with the viewport: no focus trap or modal role while
+   * docked, space reserved beside the page, and the compare column only where it fits.
+   */
+  private watchLayout(): void {
+    const win = this.window;
+    if (!win?.matchMedia) return;
+    const wide = win.matchMedia(WIDE);
+    const compare = win.matchMedia(COMPARE);
+    const sync = () => {
+      this.wide.set(wide.matches);
+      this.canCompare.set(compare.matches);
+      if (!compare.matches) this.pinned.set(null);
+      const container = this.host.nativeElement.closest<HTMLElement>('.cdk-dialog-container');
+      container?.setAttribute('aria-modal', String(!wide.matches));
+      const trap = (this.ref as { containerInstance?: { _focusTrap?: { enabled: boolean } } })
+        .containerInstance?._focusTrap;
+      if (trap) trap.enabled = !wide.matches;
+    };
+    wide.addEventListener('change', sync);
+    compare.addEventListener('change', sync);
+    afterNextRender(sync, { injector: this.injector });
+    const root = win.document.documentElement;
+    effect(() =>
+      root.style.setProperty('--atlas-panel-width', this.pinned() ? 'min(60rem, 62vw)' : ''),
+    );
+    inject(DestroyRef).onDestroy(() => {
+      wide.removeEventListener('change', sync);
+      compare.removeEventListener('change', sync);
+      root.style.removeProperty('--atlas-panel-width');
+    });
+  }
+  /** Keeps the reader's place in the page across the router's reaction to a history pop. */
+  private keepPlace(): void {
+    if (!this.window) return;
+    const trigger = this.window.document.querySelector(
+      '[data-context-trigger][aria-expanded="true"]',
+    );
+    keepScrollAnchor(this.router, this.window, trigger);
+  }
   private lift(): void {
     const previous = this.history().at(-1);
     if (!previous) return;
@@ -213,6 +350,7 @@ export class KnowledgeContextComponent {
   private unwind(steps: number): void {
     const count = Math.min(steps, this.pushed);
     if (!count || !this.window) return;
+    this.keepPlace();
     this.pushed -= count;
     this.ownPops++;
     this.window.history.go(-count);
@@ -226,11 +364,11 @@ export class KnowledgeContextComponent {
           .forEach((details) => {
             details.open = expanded.includes(details.dataset['relation']!);
           });
-        const body = this.host.nativeElement.querySelector<HTMLElement>('.context-body');
+        const body = this.host.nativeElement.querySelector<HTMLElement>('.sheet .context-body');
         if (body) body.scrollTop = scroll;
         const target = focusId
           ? this.host.nativeElement.querySelector<HTMLElement>(`[data-connection="${focusId}"]`)
-          : this.host.nativeElement.querySelector<HTMLElement>('h2');
+          : this.host.nativeElement.querySelector<HTMLElement>('#knowledge-context-title');
         target?.focus({ preventScroll: true });
       },
       { injector: this.injector },

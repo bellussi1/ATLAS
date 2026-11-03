@@ -233,19 +233,73 @@ html.atlas-reduced-motion * {
 html {
   scrollbar-gutter: stable;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .atlas-context-panel {
-    animation: atlas-context-reveal var(--motion-standard) var(--ease-out) both;
+/*
+ * Reading panel (knowledge-context). From 48rem it docks to the right edge beside the page,
+ * which stays scrollable and clickable; below that it is a bottom sheet over a dimmed page.
+ */
+.atlas-context-pane {
+  --panel-width: var(--atlas-panel-width, clamp(22rem, 32vw, 30rem));
+  /* The global overlay strategy writes inline position; the stylesheet owns the geometry. */
+  position: fixed !important;
+  inset: 0 0 0 auto !important;
+  width: var(--panel-width);
+  max-width: 100vw;
+  height: 100dvh;
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+.atlas-context-pane .cdk-dialog-container {
+  outline: 0;
+}
+.cdk-overlay-backdrop.atlas-context-backdrop {
+  background: rgb(0 0 0 / 0.5);
+}
+@media (min-width: 48rem) {
+  .cdk-overlay-backdrop.atlas-context-backdrop {
+    background: transparent;
+    pointer-events: none;
   }
 }
-@keyframes atlas-context-reveal {
+@media (min-width: 64rem) {
+  html.atlas-panel-open body {
+    padding-inline-end: var(--atlas-panel-width, clamp(22rem, 32vw, 30rem));
+  }
+}
+@media (max-width: 47.99rem) {
+  .atlas-context-pane {
+    inset: auto 0 0 0 !important;
+    width: 100vw;
+    height: min(88dvh, calc(100dvh - 3rem));
+    padding: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .atlas-context-pane {
+    animation: atlas-pane-in var(--motion-standard) var(--ease-out) both;
+  }
+}
+@keyframes atlas-pane-in {
   from {
     opacity: 0;
-    transform: translateY(10px) scale(0.985);
+    translate: 1.5rem 0;
   }
   to {
     opacity: 1;
-    transform: none;
+    translate: 0 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (max-width: 47.99rem) {
+  .atlas-context-pane {
+    animation-name: atlas-sheet-in;
+  }
+}
+@keyframes atlas-sheet-in {
+  from {
+    translate: 0 100%;
+  }
+  to {
+    translate: 0 0;
   }
 }
 html[data-input='keyboard'] *,

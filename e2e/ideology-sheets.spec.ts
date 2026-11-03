@@ -48,3 +48,84 @@ test('graph terms explain themselves on focus and open their sheet on activation
       .slice(0, 30),
   );
 });
+
+test('on wide screens the sheet docks beside the page, which stays usable', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/marxismo/');
+  const trigger = page.locator('button.record-card', { hasText: 'Karl Marx' }).first();
+  await trigger.click();
+  const panel = page.getByRole('dialog');
+  await expect(panel).toHaveAttribute('aria-modal', 'false');
+  await expect(panel.locator('h2').first()).toHaveText('Karl Marx');
+  const box = (await panel.boundingBox())!;
+  expect(box.x + box.width).toBeGreaterThan(1400);
+  expect(box.width).toBeLessThan(560);
+  // No horizontal scroll, and the page behind still takes clicks.
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(1440);
+  await page.locator('button.record-card', { hasText: 'Friedrich Engels' }).first().click();
+  await expect(panel).toHaveCount(1);
+  await expect(panel.locator('#knowledge-context-title')).toHaveText('Friedrich Engels');
+  await page.keyboard.press('Escape');
+  await expect(panel).toHaveCount(0);
+  await expect(trigger).not.toHaveAttribute('aria-expanded', 'true');
+});
+
+test('previous and next walk the reading order and a sheet can be pinned to compare', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/marxismo/');
+  await page.locator('button.record-card', { hasText: 'Karl Marx' }).first().click();
+  const panel = page.getByRole('dialog');
+  const title = panel.locator('#knowledge-context-title');
+  const where = panel.locator('.context-position');
+  await expect(where).toHaveText(/^\d+ de \d+$/);
+  const first = (await title.textContent())!;
+  await panel.getByRole('button', { name: /Próximo/ }).click();
+  await expect(title).not.toHaveText(first);
+  await panel.getByRole('button', { name: /Anterior/ }).click();
+  await expect(title).toHaveText(first);
+  await panel.getByRole('button', { name: 'Fixar para comparar' }).click();
+  const pinned = panel.getByRole('complementary', { name: `Ficha fixada: ${first}` });
+  await expect(pinned).toBeVisible();
+  await panel.getByRole('button', { name: /Próximo/ }).click();
+  await expect(title).not.toHaveText(first);
+  await expect(pinned).toBeVisible();
+  await pinned.getByRole('button', { name: /Soltar/ }).click();
+  await expect(pinned).toHaveCount(0);
+});
+
+test('on phones the sheet is a bottom sheet with a trapped focus, big targets and no overflow', async ({
+  page,
+}) => {
+  for (const width of [360, 390]) {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto('/marxismo/');
+    const trigger = page.locator('button.record-card', { hasText: 'Karl Marx' }).first();
+    await trigger.click();
+    const sheet = page.getByRole('dialog');
+    await expect(sheet).toHaveAttribute('aria-modal', 'true');
+    await expect(sheet.locator('#knowledge-context-title')).toHaveText('Karl Marx');
+    await expect(async () => {
+      const box = (await sheet.boundingBox())!;
+      expect(box.x).toBe(0);
+      expect(box.width).toBe(width);
+      expect(box.y + box.height).toBe(800);
+      expect(box.y).toBeGreaterThan(20);
+    }).toPass();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+      width,
+    );
+    for (const name of ['Fechar contexto', 'Anterior', 'Próximo']) {
+      const target = (await sheet.getByRole('button', { name: new RegExp(name) }).boundingBox())!;
+      expect(target.height).toBeGreaterThanOrEqual(44);
+    }
+    for (let i = 0; i < 40; i++) await page.keyboard.press('Tab');
+    expect(await page.evaluate(() => !!document.activeElement?.closest('[role="dialog"]'))).toBe(
+      true,
+    );
+    await page.keyboard.press('Escape');
+    await expect(sheet).toHaveCount(0);
+    await expect(trigger).toBeFocused();
+  }
+});
