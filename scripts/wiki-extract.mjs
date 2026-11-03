@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 // Wikipedia → Claude Haiku → R2. Usage:
-//   node scripts/wiki-extract.mjs discover <tradição> [--top N]   # propõe candidatos (sem baixar)
+//   node scripts/wiki-extract.mjs run <tradição> [--accept-top N] [--sync]  # discover + fetch + extract
+//   node scripts/wiki-extract.mjs discover <tradição> [--top N] [--accept-top N]
 //   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N]
 //   node scripts/wiki-extract.mjs extract <tradição> [--sync] [--limit N] [--resume <batchId>]
 //   node scripts/wiki-extract.mjs publish <tradição> [--dry-run]
-// Candidates need `"decision": "accept"` in their candidates file before `fetch --candidates`.
+// Candidates with `"decision": "accept"` are fetched by `fetch --candidates`. Decisions made by the
+// editor (`decidedBy: "editor"`) survive re-running discover; rule-based ones are recomputed.
 // Extractions are drafts reviewed by `assistant` (AI); they do not enter the site build.
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -19,7 +21,13 @@ import {
   putImmutable,
   sha256Hex,
 } from './content/r2-content.mjs';
-import { articleText, fetchArticle, sitelinkTitles } from './ingestion/wiki-extract/article.mjs';
+import {
+  articleText,
+  fetchArticle,
+  parseWikiUrl,
+  resolveTitle,
+  sitelinkTitles,
+} from './ingestion/wiki-extract/article.mjs';
 import { linkedArticles, rankCandidates } from './ingestion/wiki-extract/discovery.mjs';
 import {
   extractionModel,
@@ -34,6 +42,7 @@ const { positionals, values } = parseArgs({
   options: {
     limit: { type: 'string' },
     top: { type: 'string' },
+    'accept-top': { type: 'string' },
     candidates: { type: 'boolean', default: false },
     sync: { type: 'boolean', default: false },
     resume: { type: 'string' },
@@ -41,7 +50,7 @@ const { positionals, values } = parseArgs({
   },
 });
 const [command, tradition] = positionals;
-const commandNames = ['discover', 'fetch', 'extract', 'publish'];
+const commandNames = ['discover', 'fetch', 'extract', 'publish', 'run'];
 if (!commandNames.includes(command) || !/^[a-z-]+$/.test(tradition ?? ''))
   throw new Error(`Uso: wiki-extract.mjs <${commandNames.join('|')}> <tradição>`);
 const limit = values.limit ? Number(values.limit) : Number.POSITIVE_INFINITY;
@@ -130,20 +139,38 @@ async function fetchCommand() {
   }
 }
 
-/** Seeds are the selected entities' articles plus the editor's topic list, if present. */
+/** Seeds are the selected entities' articles plus the editor's topics, given as URLs or titles. */
 async function seedArticles() {
   const seeds = [];
   for (const entity of await selectedEntities()) {
     const resolved = await resolveArticle({ entity });
-    if (resolved) seeds.push({ label: entity.label, qid: entity.qid, ...resolved });
+    if (resolved)
+      seeds.push({ label: entity.label, qid: entity.qid, origin: 'entity', ...resolved });
     else console.log(`sem artigo: ${entity.id}`);
   }
   const topics = await readJson(seedsPath).then(
     (file) => file.topics,
     () => [],
   );
-  for (const topic of topics) seeds.push({ label: topic.title, qid: null, ...topic });
+  for (const topic of topics) {
+    const { lang, title } = topic.url ? parseWikiUrl(topic.url) : topic;
+    const resolved = await resolveTitle(lang, title);
+    if (!resolved) throw new Error(`Tópico inexistente: ${lang}:${title}`);
+    seeds.push({ label: resolved.title, origin: 'topic', ...resolved });
+  }
   return seeds;
+}
+
+const sameArticle = (a, b) =>
+  (a.qid && a.qid === b.qid) || `${a.lang}:${a.title}` === `${b.lang}:${b.title}`;
+
+/** Re-running discover keeps the editor's decisions and recomputes the rule-based ones. */
+async function previousEditorDecisions() {
+  const previous = await readJson(candidatesPath).then(
+    (file) => file.candidates,
+    () => [],
+  );
+  return previous.filter((candidate) => candidate.decidedBy === 'editor');
 }
 
 async function discoverCommand() {
@@ -154,16 +181,59 @@ async function discoverCommand() {
     linked.push({ seed, links });
     console.log(`links: ${seed.label} → ${links.length}`);
   }
-  const candidates = rankCandidates(linked, { top: values.top ? Number(values.top) : 60 });
+  const ranked = rankCandidates(linked, { top: values.top ? Number(values.top) : 60 });
+  const topicCandidates = seeds
+    .filter((seed) => seed.origin === 'topic')
+    .map(({ lang, title, qid }) => ({
+      lang,
+      title,
+      qid,
+      sharedByCount: 0,
+      linkedFrom: [],
+      decision: 'accept',
+      decidedBy: 'seed',
+    }));
+  const editorDecisions = await previousEditorDecisions();
+  const candidates = [...topicCandidates, ...ranked].map((candidate) => {
+    const editor = editorDecisions.find((previous) => sameArticle(previous, candidate));
+    return editor ? { ...candidate, decision: editor.decision, decidedBy: 'editor' } : candidate;
+  });
+  const acceptTop = values['accept-top'] ? Number(values['accept-top']) : 0;
+  let accepted = 0;
+  for (const candidate of candidates) {
+    if (candidate.decision !== null || accepted >= acceptTop) continue;
+    Object.assign(candidate, { decision: 'accept', decidedBy: `rule:top-${acceptTop}` });
+    accepted += 1;
+  }
   await writeJson(candidatesPath, {
     tradition,
     generatedAt: new Date().toISOString(),
     seeds: seeds.map(({ label, lang, title }) => ({ label, lang, title })),
     candidates,
   });
-  console.log(`${candidates.length} candidatos em ${candidatesPath.slice(projectRoot.length)}`);
+  const total = candidates.filter((candidate) => candidate.decision === 'accept').length;
+  console.log(
+    `${candidates.length} candidatos, ${total} aceitos, em ${candidatesPath.slice(projectRoot.length)}`,
+  );
   for (const candidate of candidates.slice(0, 20))
-    console.log(`  ${candidate.sharedByCount}× ${candidate.lang}:${candidate.title}`);
+    console.log(
+      `  [${candidate.decision ?? '-'}] ${candidate.sharedByCount}× ${candidate.lang}:${candidate.title}`,
+    );
+}
+
+/** Fails before any network call when the extraction cannot authenticate. */
+function requireApiKey() {
+  if (!process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN)
+    throw new Error('Defina ANTHROPIC_API_KEY no ambiente antes de extrair.');
+}
+
+/** Discover, fetch accepted candidates, then extract: the whole sweep for one tradition. */
+async function runCommand() {
+  requireApiKey();
+  await discoverCommand();
+  values.candidates = true;
+  await fetchCommand();
+  await extractCommand();
 }
 
 /** Turns one model message into a stored draft, or reports why it was discarded. */
@@ -197,6 +267,7 @@ async function pendingRecords() {
 }
 
 async function extractCommand() {
+  requireApiKey();
   await mkdir(extractsDirectory, { recursive: true });
   const client = new Anthropic();
   const records = new Map((await pendingRecords()).map((record) => [record.entity.id, record]));
@@ -283,6 +354,7 @@ const commands = {
   fetch: fetchCommand,
   extract: extractCommand,
   publish: publishCommand,
+  run: runCommand,
 };
 commands[command]().catch((error) => {
   console.error(error.message);

@@ -1,6 +1,6 @@
 {
   "tradition": "marxismo",
-  "generatedAt": "2026-11-03T17:35:35.281Z",
+  "generatedAt": "2026-11-03T17:44:37.911Z",
   "seeds": [
     {
       "label": "leninismo",
@@ -76,14 +76,28 @@
       "label": "revisionismo",
       "lang": "pt",
       "title": "Revisionismo (marxismo)"
+    },
+    {
+      "label": "Marxismo",
+      "lang": "pt",
+      "title": "Marxismo"
     }
   ],
   "candidates": [
     {
       "lang": "pt",
+      "title": "Marxismo",
+      "qid": "Q7264",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
       "title": "Karl Marx",
       "qid": "Q9061",
-      "sharedByCount": 13,
+      "sharedByCount": 14,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
@@ -97,14 +111,40 @@
         "Imperialismo, fase superior do capitalismo",
         "Crítica ao Programa de Gotha",
         "pós-marxismo",
-        "revisionismo"
+        "revisionismo",
+        "Marxismo"
       ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Lenin",
       "qid": "Q1394",
+      "sharedByCount": 14,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "Materialismo e Empiriocriticismo",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Ateísmo Marxista-leninista",
+        "Imperialismo, fase superior do capitalismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Friedrich Engels",
+      "qid": "Q34787",
       "sharedByCount": 13,
       "linkedFrom": [
         "leninismo",
@@ -113,41 +153,176 @@
         "Anton Pannekoek",
         "marxismo analítico",
         "Anti-Dühring",
-        "Materialismo e Empiriocriticismo",
         "marxismo ocidental",
         "neomarxismo",
         "Ateísmo Marxista-leninista",
         "Imperialismo, fase superior do capitalismo",
         "Crítica ao Programa de Gotha",
-        "pós-marxismo"
+        "pós-marxismo",
+        "Marxismo"
       ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Friedrich Engels",
-      "qid": "Q34787",
-      "sharedByCount": 12,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Ateísmo Marxista-leninista",
-        "Imperialismo, fase superior do capitalismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Socialismo",
       "qid": "Q7272",
+      "sharedByCount": 13,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Ateísmo Marxista-leninista",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Burguesia",
+      "qid": "Q52090",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Capital (economia)",
+      "qid": "Q8137",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Imperialismo, fase superior do capitalismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Comunismo",
+      "qid": "Q6186",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Ditadura do proletariado",
+      "qid": "Q118365",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Economia marxiana",
+      "qid": "Q854537",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Eurocomunismo",
+      "qid": "Q206743",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Filosofia marxista",
+      "qid": "Q1639471",
       "sharedByCount": 12,
       "linkedFrom": [
         "leninismo",
@@ -161,135 +336,16 @@
         "Ateísmo Marxista-leninista",
         "Crítica ao Programa de Gotha",
         "pós-marxismo",
-        "revisionismo"
+        "Marxismo"
       ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Burguesia",
-      "qid": "Q52090",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Capital (economia)",
-      "qid": "Q8137",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Imperialismo, fase superior do capitalismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Comunismo",
-      "qid": "Q6186",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Ditadura do proletariado",
-      "qid": "Q118365",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Eurocomunismo",
-      "qid": "Q206743",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Filosofia marxista",
-      "qid": "Q1639471",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Ateísmo Marxista-leninista",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Internacionalismo proletário",
       "qid": "Q1337795",
-      "sharedByCount": 11,
+      "sharedByCount": 12,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
@@ -301,15 +357,39 @@
         "neomarxismo",
         "Crítica ao Programa de Gotha",
         "pós-marxismo",
-        "revisionismo"
+        "revisionismo",
+        "Marxismo"
       ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Livre associação (conceito)",
+      "qid": "Q5500187",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Luta de classes",
       "qid": "Q1744607",
-      "sharedByCount": 11,
+      "sharedByCount": 12,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
@@ -321,15 +401,17 @@
         "neomarxismo",
         "Crítica ao Programa de Gotha",
         "pós-marxismo",
-        "revisionismo"
+        "revisionismo",
+        "Marxismo"
       ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Mais-valia",
       "qid": "Q332425",
-      "sharedByCount": 11,
+      "sharedByCount": 12,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
@@ -341,827 +423,21 @@
         "neomarxismo",
         "Crítica ao Programa de Gotha",
         "pós-marxismo",
-        "revisionismo"
+        "revisionismo",
+        "Marxismo"
       ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Maoismo",
-      "qid": "Q167651",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Marxismo",
-      "qid": "Q7264",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Marxismo-leninismo-maoismo",
-      "qid": "Q18127879",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Materialismo histórico",
-      "qid": "Q190004",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Meios de produção",
-      "qid": "Q260747",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Modo de produção",
-      "qid": "Q1548084",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Proletariado",
-      "qid": "Q132603",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Propriedade privada",
-      "qid": "Q555911",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Ateísmo Marxista-leninista",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Revolução mundial",
-      "qid": "Q874579",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Socialismo científico",
-      "qid": "Q865354",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Sociedade comunista",
-      "qid": "Q5154552",
-      "sharedByCount": 11,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "A Ideologia Alemã",
-      "qid": "Q470600",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "Materialismo e Empiriocriticismo",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Acumulação primitiva",
-      "qid": "Q1848870",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Alexandra Kollontai",
-      "qid": "Q179558",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Alienação (marxismo)",
-      "qid": "Q13417770",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Álvaro Cunhal",
-      "qid": "Q250919",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Anarcocomunismo",
-      "qid": "Q188670",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Anarquismo social",
-      "qid": "Q370919",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Antonio Gramsci",
-      "qid": "Q83003",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Che Guevara",
-      "qid": "Q5809",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Classe trabalhadora",
-      "qid": "Q191159",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Comunismo de conselhos",
-      "qid": "Q933306",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Consciência de classe",
-      "qid": "Q1066261",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Crise do capitalismo",
-      "qid": "Q16569668",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Dialética",
-      "qid": "Q9453",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Economia marxiana",
-      "qid": "Q854537",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Eduard Bernstein",
-      "qid": "Q75786",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Escola de Frankfurt",
-      "qid": "Q151843",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "A Obra de Arte na Era de Sua Reprodutibilidade Técnica",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Eugene V. Debs",
-      "qid": "Q334993",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Exploração (socioeconomia)",
-      "qid": "Q5853443",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Fidel Castro",
-      "qid": "Q11256",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Forças produtivas",
-      "qid": "Q1433881",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Gueorgui Plekhanov",
-      "qid": "Q182905",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "História do comunismo",
-      "qid": "Q2583742",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Ho Chi Minh",
-      "qid": "Q36014",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Karl Kautsky",
-      "qid": "Q76586",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Lei do valor",
-      "qid": "Q1375678",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Luís Carlos Prestes",
-      "qid": "Q742047",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Lumpemproletariado",
-      "qid": "Q501764",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo",
-        "revisionismo"
-      ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Mao Tsé-Tung",
       "qid": "Q5816",
-      "sharedByCount": 10,
+      "sharedByCount": 12,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
         "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Marxismo clássico",
-      "qid": "Q5128296",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "marxismo-leninismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Max Horkheimer",
-      "qid": "Q76826",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
-        "Anton Pannekoek",
-        "marxismo analítico",
-        "Anti-Dühring",
-        "marxismo ocidental",
-        "neomarxismo",
-        "A Obra de Arte na Era de Sua Reprodutibilidade Técnica",
-        "Crítica ao Programa de Gotha",
-        "pós-marxismo"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Modo de produção socialista",
-      "qid": "Q3704432",
-      "sharedByCount": 10,
-      "linkedFrom": [
-        "leninismo",
-        "trotskismo",
         "Anton Pannekoek",
         "marxismo analítico",
         "Anti-Dühring",
@@ -1169,7 +445,118 @@
         "neomarxismo",
         "Crítica ao Programa de Gotha",
         "pós-marxismo",
-        "revisionismo"
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Maoismo",
+      "qid": "Q167651",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Marxismo-leninismo-maoismo",
+      "qid": "Q18127879",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Materialismo histórico",
+      "qid": "Q190004",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Meios de produção",
+      "qid": "Q260747",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Modo de produção",
+      "qid": "Q1548084",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
       ],
       "decision": null
     },
@@ -1177,7 +564,7 @@
       "lang": "pt",
       "title": "Nova Esquerda",
       "qid": "Q160637",
-      "sharedByCount": 10,
+      "sharedByCount": 12,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
@@ -1188,34 +575,142 @@
         "marxismo ocidental",
         "neomarxismo",
         "Crítica ao Programa de Gotha",
-        "pós-marxismo"
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
       ],
       "decision": null
     },
     {
       "lang": "pt",
-      "title": "O Capital",
-      "qid": "Q58784",
-      "sharedByCount": 10,
+      "title": "Proletariado",
+      "qid": "Q132603",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Propriedade privada",
+      "qid": "Q555911",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Ateísmo Marxista-leninista",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Revolução mundial",
+      "qid": "Q874579",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Socialismo científico",
+      "qid": "Q865354",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Sociedade comunista",
+      "qid": "Q5154552",
+      "sharedByCount": 12,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "A Ideologia Alemã",
+      "qid": "Q470600",
+      "sharedByCount": 11,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
         "Anton Pannekoek",
         "marxismo analítico",
         "Anti-Dühring",
+        "Materialismo e Empiriocriticismo",
         "marxismo ocidental",
         "neomarxismo",
-        "Imperialismo, fase superior do capitalismo",
         "Crítica ao Programa de Gotha",
-        "pós-marxismo"
+        "pós-marxismo",
+        "Marxismo"
       ],
       "decision": null
     },
     {
       "lang": "pt",
-      "title": "Relações de produção",
-      "qid": "Q1757232",
-      "sharedByCount": 10,
+      "title": "Acumulação primitiva",
+      "qid": "Q1848870",
+      "sharedByCount": 11,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
@@ -1226,15 +721,96 @@
         "neomarxismo",
         "Crítica ao Programa de Gotha",
         "pós-marxismo",
-        "revisionismo"
+        "revisionismo",
+        "Marxismo"
       ],
       "decision": null
     },
     {
       "lang": "pt",
-      "title": "Revolução proletária",
-      "qid": "Q29502",
-      "sharedByCount": 10,
+      "title": "Alexandra Kollontai",
+      "qid": "Q179558",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Alienação (marxismo)",
+      "qid": "Q13417770",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Álvaro Cunhal",
+      "qid": "Q250919",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Anarcocomunismo",
+      "qid": "Q188670",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Anarquismo social",
+      "qid": "Q370919",
+      "sharedByCount": 11,
       "linkedFrom": [
         "leninismo",
         "trotskismo",
@@ -1245,7 +821,528 @@
         "neomarxismo",
         "Crítica ao Programa de Gotha",
         "pós-marxismo",
-        "revisionismo"
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Antonio Gramsci",
+      "qid": "Q83003",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Che Guevara",
+      "qid": "Q5809",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Classe trabalhadora",
+      "qid": "Q191159",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Comunismo de conselhos",
+      "qid": "Q933306",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Consciência de classe",
+      "qid": "Q1066261",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Crise do capitalismo",
+      "qid": "Q16569668",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Dialética",
+      "qid": "Q9453",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Eduard Bernstein",
+      "qid": "Q75786",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Escola de Frankfurt",
+      "qid": "Q151843",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "A Obra de Arte na Era de Sua Reprodutibilidade Técnica",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Esquerda (política)",
+      "qid": "Q164597",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Eugene V. Debs",
+      "qid": "Q334993",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Exploração (socioeconomia)",
+      "qid": "Q5853443",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Fidel Castro",
+      "qid": "Q11256",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Forças produtivas",
+      "qid": "Q1433881",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Gueorgui Plekhanov",
+      "qid": "Q182905",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "História do comunismo",
+      "qid": "Q2583742",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Ho Chi Minh",
+      "qid": "Q36014",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Infraestrutura e superestrutura (Marxismo)",
+      "qid": "Q335833",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Karl Kautsky",
+      "qid": "Q76586",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Lei do valor",
+      "qid": "Q1375678",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Luís Carlos Prestes",
+      "qid": "Q742047",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Lumpemproletariado",
+      "qid": "Q501764",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Marxismo clássico",
+      "qid": "Q5128296",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Marxismo e religião",
+      "qid": "Q1564610",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "marxismo-leninismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Max Horkheimer",
+      "qid": "Q76826",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "A Obra de Arte na Era de Sua Reprodutibilidade Técnica",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "Marxismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Modo de produção socialista",
+      "qid": "Q3704432",
+      "sharedByCount": 11,
+      "linkedFrom": [
+        "leninismo",
+        "trotskismo",
+        "Anton Pannekoek",
+        "marxismo analítico",
+        "Anti-Dühring",
+        "marxismo ocidental",
+        "neomarxismo",
+        "Crítica ao Programa de Gotha",
+        "pós-marxismo",
+        "revisionismo",
+        "Marxismo"
       ],
       "decision": null
     }

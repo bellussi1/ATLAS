@@ -17,6 +17,7 @@ export async function linkedArticles(lang, title, { maxPages = 5 } = {}) {
       action: 'query',
       generator: 'links',
       titles: title,
+      redirects: '1',
       gpllimit: 'max',
       gplnamespace: '0',
       prop: 'pageprops',

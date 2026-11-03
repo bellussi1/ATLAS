@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { articleSections, articleText } from './article.mjs';
+import { articleSections, articleText, parseWikiUrl } from './article.mjs';
 import { parseExtraction, verifyQuotes } from './extraction.mjs';
 import { rankCandidates } from './discovery.mjs';
 
@@ -85,4 +85,17 @@ test('ranks pages linked from several seeds and drops seeds, years, lists and di
   );
   assert.deepEqual(ranked[0].linkedFrom, ['A', 'B']);
   assert.equal(ranked[0].decision, null);
+});
+
+test('reads lang and title from Wikipedia article URLs and rejects other URLs', () => {
+  assert.deepEqual(parseWikiUrl('https://pt.wikipedia.org/wiki/Marxismo'), {
+    lang: 'pt',
+    title: 'Marxismo',
+  });
+  assert.deepEqual(parseWikiUrl('https://en.wikipedia.org/wiki/Karl_Marx%27s_theory'), {
+    lang: 'en',
+    title: "Karl Marx's theory",
+  });
+  assert.throws(() => parseWikiUrl('https://example.org/wiki/Marxismo'), /inválida/);
+  assert.throws(() => parseWikiUrl('http://pt.wikipedia.org/wiki/Marxismo'), /inválida/);
 });

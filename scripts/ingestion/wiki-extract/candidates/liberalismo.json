@@ -1,6 +1,6 @@
 {
   "tradition": "liberalismo",
-  "generatedAt": "2026-11-03T17:38:36.391Z",
+  "generatedAt": "2026-11-03T17:52:35.519Z",
   "seeds": [
     {
       "label": "Voltaire",
@@ -71,6 +71,11 @@
       "label": "Socialismo liberal",
       "lang": "pt",
       "title": "Socialismo liberal"
+    },
+    {
+      "label": "Liberalismo",
+      "lang": "pt",
+      "title": "Liberalismo"
     }
   ],
   "candidates": [
@@ -78,64 +83,37 @@
       "lang": "pt",
       "title": "Liberalismo",
       "qid": "Q6216",
-      "sharedByCount": 12,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "Ion C. Brătianu",
-        "John Rawls",
-        "Ion I. C. Brătianu",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo cultural",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Jeremy Bentham",
-      "qid": "Q60887",
-      "sharedByCount": 9,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "John Rawls",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
     },
     {
       "lang": "pt",
       "title": "John Locke",
       "qid": "Q9353",
-      "sharedByCount": 9,
+      "sharedByCount": 11,
       "linkedFrom": [
         "Voltaire",
         "Immanuel Kant",
+        "John Rawls",
         "Emmanuel Joseph Sieyès",
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
-      "title": "Libertarismo",
-      "qid": null,
-      "sharedByCount": 9,
+      "title": "Jeremy Bentham",
+      "qid": "Q60887",
+      "sharedByCount": 10,
       "linkedFrom": [
         "Voltaire",
         "Immanuel Kant",
@@ -145,203 +123,325 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Robert Nozick",
-      "qid": "Q205927",
-      "sharedByCount": 9,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "John Rawls",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Adam Ferguson",
-      "qid": "Q183094",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Adam Smith",
-      "qid": "Q9381",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Ali Latifiyan",
-      "qid": "Q111370029",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "David Hume",
-      "qid": "Q37160",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Igualitarismo",
-      "qid": "Q188958",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Isaiah Berlin",
-      "qid": "Q205162",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "John Stuart Mill",
-      "qid": "Q50020",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "José Ortega y Gasset",
-      "qid": "Q153020",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Liberalismo clássico",
-      "qid": "Q794394",
-      "sharedByCount": 8,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Liberalismo social",
       "qid": "Q201712",
-      "sharedByCount": 8,
+      "sharedByCount": 10,
       "linkedFrom": [
         "Voltaire",
+        "John Rawls",
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo cultural",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Libertarianismo",
+      "qid": "Q178598",
+      "sharedByCount": 10,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "John Rawls",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Montesquieu",
+      "qid": "Q15975",
+      "sharedByCount": 10,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "John Rawls",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Robert Nozick",
+      "qid": "Q205927",
+      "sharedByCount": 10,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "John Rawls",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Adam Ferguson",
+      "qid": "Q183094",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Adam Smith",
+      "qid": "Q9381",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Adamántios Koraís",
+      "qid": "Q319635",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Ali Latifiyan",
+      "qid": "Q111370029",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "David Hume",
+      "qid": "Q37160",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Frédéric Bastiat",
+      "qid": "Q13515",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "John Rawls",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Igualitarismo",
+      "qid": "Q188958",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "International Standard Book Number",
+      "qid": "Q33057",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "Lorenz von Stein",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo cultural",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Isaiah Berlin",
+      "qid": "Q205162",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "John Stuart Mill",
+      "qid": "Q50020",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "José Ortega y Gasset",
+      "qid": "Q153020",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
+    },
+    {
+      "lang": "pt",
+      "title": "Liberalismo clássico",
+      "qid": "Q794394",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Mary Wollstonecraft",
       "qid": "Q101638",
-      "sharedByCount": 8,
+      "sharedByCount": 9,
       "linkedFrom": [
         "Voltaire",
         "Immanuel Kant",
@@ -350,15 +450,17 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Mercado livre",
       "qid": "Q46607",
-      "sharedByCount": 8,
+      "sharedByCount": 9,
       "linkedFrom": [
         "Voltaire",
         "Immanuel Kant",
@@ -367,15 +469,17 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "rule:top-20"
     },
     {
       "lang": "pt",
       "title": "Radicalismo",
       "qid": "Q913401",
-      "sharedByCount": 8,
+      "sharedByCount": 9,
       "linkedFrom": [
         "Ion C. Brătianu",
         "Ion I. C. Brătianu",
@@ -384,7 +488,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -392,7 +497,7 @@
       "lang": "pt",
       "title": "Thomas Jefferson",
       "qid": "Q11812",
-      "sharedByCount": 8,
+      "sharedByCount": 9,
       "linkedFrom": [
         "Voltaire",
         "Immanuel Kant",
@@ -401,7 +506,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -409,7 +515,7 @@
       "lang": "pt",
       "title": "Thomas Paine",
       "qid": "Q126462",
-      "sharedByCount": 8,
+      "sharedByCount": 9,
       "linkedFrom": [
         "Voltaire",
         "Immanuel Kant",
@@ -418,7 +524,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -426,7 +533,7 @@
       "lang": "pt",
       "title": "Wilhelm von Humboldt",
       "qid": "Q77888",
-      "sharedByCount": 8,
+      "sharedByCount": 9,
       "linkedFrom": [
         "Voltaire",
         "Immanuel Kant",
@@ -435,7 +542,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -443,7 +551,7 @@
       "lang": "pt",
       "title": "Alexis de Tocqueville",
       "qid": "Q140694",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -451,7 +559,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -459,7 +568,7 @@
       "lang": "pt",
       "title": "Democracia liberal",
       "qid": "Q192125",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -467,7 +576,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -475,7 +585,7 @@
       "lang": "pt",
       "title": "Friedrich Hayek",
       "qid": "Q1325",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -483,7 +593,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -491,7 +602,7 @@
       "lang": "pt",
       "title": "Giuseppe Mazzini",
       "qid": "Q187336",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -499,7 +610,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -507,7 +619,7 @@
       "lang": "pt",
       "title": "Individualismo",
       "qid": "Q171995",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Immanuel Kant",
         "liberalismo conservador",
@@ -515,23 +627,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "International Standard Book Number",
-      "qid": "Q33057",
-      "sharedByCount": 7,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo cultural",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -539,7 +636,7 @@
       "lang": "pt",
       "title": "Laissez-faire",
       "qid": "Q171990",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -547,39 +644,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Liberalismo econômico",
-      "qid": null,
-      "sharedByCount": 7,
-      "linkedFrom": [
-        "Voltaire",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Liberalismo nacional",
-      "qid": null,
-      "sharedByCount": 7,
-      "linkedFrom": [
-        "Voltaire",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -587,7 +653,7 @@
       "lang": "pt",
       "title": "Liberdade de imprensa",
       "qid": "Q22688",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -595,7 +661,25 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Liberdade negativa",
+      "qid": "Q536814",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "John Rawls",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -603,7 +687,7 @@
       "lang": "pt",
       "title": "Liberdade positiva",
       "qid": "Q831359",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "John Rawls",
         "liberalismo conservador",
@@ -611,23 +695,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Liberdades negativas",
-      "qid": null,
-      "sharedByCount": 7,
-      "linkedFrom": [
-        "John Rawls",
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -635,7 +704,7 @@
       "lang": "pt",
       "title": "Ludwig von Mises",
       "qid": "Q84233",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -643,7 +712,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -651,7 +721,7 @@
       "lang": "pt",
       "title": "Murray Rothbard",
       "qid": "Q297079",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -659,7 +729,25 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Nacionalismo cívico",
+      "qid": "Q59599",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Voltaire",
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -667,7 +755,7 @@
       "lang": "pt",
       "title": "Separação Igreja-Estado",
       "qid": "Q753623",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -675,7 +763,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -683,7 +772,7 @@
       "lang": "pt",
       "title": "Sociedade aberta",
       "qid": "Q505605",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -691,7 +780,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -699,7 +789,7 @@
       "lang": "pt",
       "title": "Victor Hugo",
       "qid": "Q535",
-      "sharedByCount": 7,
+      "sharedByCount": 8,
       "linkedFrom": [
         "Voltaire",
         "liberalismo conservador",
@@ -707,52 +797,8 @@
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Adamantios Korais",
-      "qid": null,
-      "sharedByCount": 6,
-      "linkedFrom": [
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Aliança dos Democratas e Liberais pela Europa",
-      "qid": null,
-      "sharedByCount": 6,
-      "linkedFrom": [
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Aliança dos Democratas e Liberais pela Europa (partido)",
-      "qid": null,
-      "sharedByCount": 6,
-      "linkedFrom": [
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -760,14 +806,15 @@
       "lang": "pt",
       "title": "Anarcocapitalismo",
       "qid": "Q192424",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -775,44 +822,15 @@
       "lang": "pt",
       "title": "Anders Chydenius",
       "qid": "Q490870",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Baron de Montesquieu",
-      "qid": null,
-      "sharedByCount": 6,
-      "linkedFrom": [
-        "liberalismo conservador",
-        "Nacional-liberalismo",
-        "ordoliberalismo",
-        "liberalismo económico",
-        "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Base Virtual Internacional de Autoridade",
-      "qid": "Q54919",
-      "sharedByCount": 6,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "Ion C. Brătianu",
-        "John Rawls",
-        "Emmanuel Joseph Sieyès",
-        "Ion I. C. Brătianu"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -820,29 +838,15 @@
       "lang": "pt",
       "title": "Bertrand de Jouvenel",
       "qid": "Q828641",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
-      ],
-      "decision": null
-    },
-    {
-      "lang": "pt",
-      "title": "Biblioteca Nacional da França",
-      "qid": "Q193563",
-      "sharedByCount": 6,
-      "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "Ion C. Brătianu",
-        "John Rawls",
-        "Emmanuel Joseph Sieyès",
-        "Ion I. C. Brătianu"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -850,14 +854,15 @@
       "lang": "pt",
       "title": "Câmbio flutuante",
       "qid": "Q594063",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -865,14 +870,15 @@
       "lang": "pt",
       "title": "Capitalismo democrático",
       "qid": "Q831126",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -880,14 +886,15 @@
       "lang": "pt",
       "title": "Catalaxia",
       "qid": "Q1735584",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -895,29 +902,31 @@
       "lang": "pt",
       "title": "Centrismo radical",
       "qid": "Q3448005",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
     {
       "lang": "pt",
-      "title": "Comunismo liberal",
-      "qid": null,
-      "sharedByCount": 6,
+      "title": "Comunismo gulash",
+      "qid": "Q785309",
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -925,29 +934,47 @@
       "lang": "pt",
       "title": "David Lloyd George",
       "qid": "Q134982",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
     {
       "lang": "pt",
-      "title": "Direitos individuais",
-      "qid": null,
-      "sharedByCount": 6,
+      "title": "Digital object identifier",
+      "qid": "Q25670",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "Lorenz von Stein",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "Liberalismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Direitos individuais e coletivos",
+      "qid": "Q1661649",
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -955,14 +982,15 @@
       "lang": "pt",
       "title": "Divisão do trabalho",
       "qid": "Q207449",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -970,29 +998,31 @@
       "lang": "pt",
       "title": "Economia de mercado",
       "qid": "Q179522",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
     {
       "lang": "pt",
-      "title": "Enciclopédia Treccani",
-      "qid": "Q731361",
-      "sharedByCount": 6,
+      "title": "Educação democrática",
+      "qid": "Q831278",
+      "sharedByCount": 7,
       "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "Ion C. Brătianu",
-        "John Rawls",
-        "Emmanuel Joseph Sieyès",
-        "Ion I. C. Brătianu"
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
@@ -1000,44 +1030,111 @@
       "lang": "pt",
       "title": "Encyclopædia Britannica",
       "qid": "Q455",
-      "sharedByCount": 6,
+      "sharedByCount": 7,
       "linkedFrom": [
         "Voltaire",
         "Immanuel Kant",
         "Ion C. Brătianu",
         "John Rawls",
         "Emmanuel Joseph Sieyès",
-        "Ion I. C. Brătianu"
+        "Ion I. C. Brătianu",
+        "Liberalismo"
       ],
       "decision": null
     },
     {
       "lang": "pt",
-      "title": "Escola democrática",
-      "qid": null,
-      "sharedByCount": 6,
+      "title": "Filosofia política",
+      "qid": "Q179805",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Voltaire",
+        "Immanuel Kant",
+        "John Rawls",
+        "Nacional-liberalismo",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Franklin D. Roosevelt",
+      "qid": "Q8007",
+      "sharedByCount": 7,
       "linkedFrom": [
         "liberalismo conservador",
         "Nacional-liberalismo",
         "ordoliberalismo",
         "liberalismo económico",
         "liberalismo verde",
-        "Socialismo liberal"
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     },
     {
       "lang": "pt",
-      "title": "Faceted Application of Subject Terminology",
-      "qid": "Q3294867",
-      "sharedByCount": 6,
+      "title": "Geolibertarianismo",
+      "qid": "Q1009337",
+      "sharedByCount": 7,
       "linkedFrom": [
-        "Voltaire",
-        "Immanuel Kant",
-        "Ion C. Brătianu",
-        "John Rawls",
-        "Emmanuel Joseph Sieyès",
-        "Ion I. C. Brătianu"
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "História do liberalismo",
+      "qid": "Q830997",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Internacional Liberal",
+      "qid": "Q212712",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
+      ],
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Joel Feinberg",
+      "qid": "Q1691712",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "liberalismo conservador",
+        "Nacional-liberalismo",
+        "ordoliberalismo",
+        "liberalismo económico",
+        "liberalismo verde",
+        "Socialismo liberal",
+        "Liberalismo"
       ],
       "decision": null
     }

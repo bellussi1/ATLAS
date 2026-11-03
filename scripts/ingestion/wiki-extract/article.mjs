@@ -51,18 +51,57 @@ export function articleSections(html) {
   return sections;
 }
 
-/** Downloads one article; `revision` comes from the Parsoid ETag (`"<revid>/<uuid>"`). */
-export async function fetchArticle(lang, title) {
-  const path = encodeURIComponent(title.replaceAll(' ', '_'));
-  const url = `https://${lang}.wikipedia.org/api/rest_v1/page/html/${path}`;
-  const { bytes, etag } = await getResource(url, 'html');
-  const html = bytes.toString('utf8');
+/** `{ lang, title }` of a Wikipedia article URL; any other URL is rejected. */
+export function parseWikiUrl(value) {
+  const url = new URL(value);
+  const host = url.hostname.match(/^([a-z-]+)\.wikipedia\.org$/);
+  if (url.protocol !== 'https:' || !host || !url.pathname.startsWith('/wiki/'))
+    throw new Error(`URL de artigo Wikipedia inválida: ${value}`);
+  const title = decodeURIComponent(url.pathname.slice('/wiki/'.length)).replaceAll('_', ' ');
+  return { lang: host[1], title };
+}
+
+/** Canonical title behind redirects, plus the title it was reached by; `null` if the page is missing. */
+export async function resolveTitle(lang, title) {
+  const url = new URL(`https://${lang}.wikipedia.org/w/api.php`);
+  for (const [name, value] of Object.entries({
+    action: 'query',
+    titles: title,
+    redirects: '1',
+    prop: 'pageprops',
+    ppprop: 'wikibase_item',
+    format: 'json',
+    formatversion: '2',
+  }))
+    url.searchParams.set(name, value);
+  const data = await getJson(url.href);
+  const page = data.query?.pages?.[0];
+  if (!page || page.missing) return null;
+  const redirect = data.query.redirects?.find((entry) => entry.to === page.title);
   return {
     lang,
-    title,
+    title: page.title,
+    qid: page.pageprops?.wikibase_item ?? null,
+    redirectedFrom: redirect?.from ?? null,
+  };
+}
+
+/** Downloads one article under its canonical title; `revision` comes from the Parsoid ETag (`"<revid>/<uuid>"`). */
+export async function fetchArticle(lang, title) {
+  const resolved = await resolveTitle(lang, title);
+  if (!resolved) throw new Error(`Artigo inexistente: ${lang}:${title}`);
+  const path = encodeURIComponent(resolved.title.replaceAll(' ', '_'));
+  const { bytes, etag } = await getResource(
+    `https://${lang}.wikipedia.org/api/rest_v1/page/html/${path}`,
+    'html',
+  );
+  return {
+    lang,
+    title: resolved.title,
+    redirectedFrom: resolved.redirectedFrom,
     url: `https://${lang}.wikipedia.org/wiki/${path}`,
     revision: etag?.match(/^(?:W\/)?"?(\d+)/)?.[1] ?? null,
-    sections: articleSections(html),
+    sections: articleSections(bytes.toString('utf8')),
   };
 }
 
