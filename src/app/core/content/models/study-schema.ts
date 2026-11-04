@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import * as z from 'zod';
 
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/);
 export const feedbackSchema = z.object({ explanation: z.string().trim().min(1), sourceId: id });

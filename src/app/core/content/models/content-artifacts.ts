@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import * as z from 'zod';
 
 import { type KnowledgeGraph, relationSchema, temporalExtentSchema } from './content-schema';
 import { contentTranslationSchema } from './content-translation';

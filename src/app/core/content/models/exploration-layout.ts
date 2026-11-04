@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import * as z from 'zod';
 
 export const explorationTimelineSchema = z.object({
   ticks: z.array(z.object({ year: z.number().int(), x: z.number().finite() })),

@@ -1,5 +1,5 @@
 import { type KnowledgeGraph, sourceSchema } from '@core/content/models/content-schema';
-import { z } from 'zod';
+import * as z from 'zod';
 
 import { canonicalChapters } from './ideology-chapters';
 import { positionAxisIds } from './position-axes';

@@ -1,7 +1,6 @@
-import { Dialog, type DialogRef } from '@angular/cdk/dialog';
-import { Overlay } from '@angular/cdk/overlay';
+import type { DialogRef } from '@angular/cdk/dialog';
 import { DOCUMENT } from '@angular/common';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, Injector, signal } from '@angular/core';
 import {
   type ContextRequest,
   type ContextStop,
@@ -10,7 +9,7 @@ import {
 import { entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 
-import { KnowledgeContextComponent } from './knowledge-context.component';
+import type { KnowledgeContextComponent } from './knowledge-context.component';
 
 const OPEN_CLASS = 'atlas-panel-open';
 
@@ -25,11 +24,12 @@ export function contextKey(request: ContextRequest): string {
  */
 @Injectable({ providedIn: 'root' })
 export class ContextPanelService {
-  private readonly dialog = inject(Dialog);
-  private readonly overlay = inject(Overlay);
+  private readonly injector = inject(Injector);
   private readonly repository = inject(ContentRepository);
   private readonly window = inject(DOCUMENT).defaultView;
   private ref: DialogRef<unknown, KnowledgeContextComponent> | null = null;
+  /** Latest request while the panel code loads, so a second click replaces the first. */
+  private pending = 0;
   /** Trigger that currently owns the panel, for aria-expanded and for returning focus. */
   readonly active = signal<HTMLElement | null>(null);
   readonly dialogId = signal<string | null>(null);
@@ -38,7 +38,8 @@ export class ContextPanelService {
     return 'record' in request ? request.record : entityContext(this.repository, request.entityId);
   }
 
-  open(request: ContextRequest, trigger: HTMLElement, order: ContextStop[]): void {
+  /** The panel and the CDK dialog load on first use: most readers of a page never open it. */
+  async open(request: ContextRequest, trigger: HTMLElement, order: ContextStop[]): Promise<void> {
     this.active.set(trigger);
     const key = contextKey(request);
     const stops = order.some((stop) => stop.key === key) ? order : [...order, { key, request }];
@@ -51,11 +52,19 @@ export class ContextPanelService {
       );
       return;
     }
+    const ticket = ++this.pending;
+    const [{ Dialog }, { Overlay }, { KnowledgeContextComponent }] = await Promise.all([
+      import('@angular/cdk/dialog'),
+      import('@angular/cdk/overlay'),
+      import('./knowledge-context.component'),
+    ]);
+    if (ticket !== this.pending) return;
+    const overlay = this.injector.get(Overlay);
     const narrow = !this.window?.matchMedia('(min-width: 64rem)').matches;
     this.window?.document.documentElement.classList.add(OPEN_CLASS);
-    const ref = this.dialog.open<unknown, unknown, KnowledgeContextComponent>(
-      KnowledgeContextComponent,
-      {
+    const ref = this.injector
+      .get(Dialog)
+      .open<unknown, unknown, KnowledgeContextComponent>(KnowledgeContextComponent, {
         data: {
           record: this.resolve(request),
           stops,
@@ -75,11 +84,8 @@ export class ContextPanelService {
         ariaLabelledBy: 'knowledge-context-title',
         autoFocus: 'first-heading',
         restoreFocus: false,
-        scrollStrategy: narrow
-          ? this.overlay.scrollStrategies.block()
-          : this.overlay.scrollStrategies.noop(),
-      },
-    );
+        scrollStrategy: narrow ? overlay.scrollStrategies.block() : overlay.scrollStrategies.noop(),
+      });
     this.ref = ref;
     this.dialogId.set(ref.id);
     ref.closed.subscribe(() => {
