@@ -65,19 +65,31 @@ export const traditionRegistrySchema = z
       includes: z.array(text).min(1),
       excludes: z.array(text).min(1),
     }),
-    /** Artigos centrais; a descoberta parte deles e expande por menções com decisão editorial. */
-    seeds: z.array(z.object({ url: wikipediaUrl, note: text.optional() })).min(3),
+    /** Dicas opcionais. A descoberta parte da raiz Wikidata; semente nunca é pré-requisito. */
+    seeds: z.array(z.object({ url: wikipediaUrl, note: text.optional() })).default([]),
     discovery: z.object({
       founderQids: z.array(z.string().regex(/^Q\d+$/)).default([]),
       /** Categoria do Commons onde as imagens da tradição são procuradas (licença por arquivo). */
       commonsCategory: z.string().regex(/^Category:.+/),
+      /** Sobrescrevem os padrões da expansão por pontuação (scoring.mjs). */
+      thresholds: z
+        .object({ accept: z.number(), review: z.number(), regionalReview: z.number() })
+        .partial()
+        .optional(),
+      ringCaps: z
+        .object({ 1: z.number().int(), 2: z.number().int(), 3: z.number().int() })
+        .partial()
+        .optional(),
     }),
   })
   .superRefine((entry, context) => {
     const urls = entry.seeds.map((seed) => seed.url);
     if (new Set(urls).size !== urls.length)
       context.addIssue({ code: 'custom', message: 'Sementes repetidas.', path: ['seeds'] });
-    if (!entry.seeds.some((seed) => seed.url.startsWith('https://pt.wikipedia.org/')))
+    if (
+      entry.seeds.length &&
+      !entry.seeds.some((seed) => seed.url.startsWith('https://pt.wikipedia.org/'))
+    )
       context.addIssue({
         code: 'custom',
         message: 'Ao menos uma semente em pt.wikipedia.org: o texto da leitura é em pt-BR.',

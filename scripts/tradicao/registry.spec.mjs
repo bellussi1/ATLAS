@@ -71,8 +71,13 @@ test('rejeita registro sem recorte, com semente fora da Wikipedia ou sem semente
     bad((e) => ({ ...e, rootQid: 'social' })),
     false,
   );
+  // Sementes são dicas opcionais: a descoberta parte da raiz Wikidata, não de escolha de pessoa.
   assert.equal(
-    bad((e) => ({ ...e, seeds: e.seeds.slice(0, 2) })),
+    bad((e) => ({ ...e, seeds: [] })),
+    true,
+  );
+  assert.equal(
+    bad((e) => ({ ...e, discovery: { ...e.discovery, thresholds: { accept: 'alto' } } })),
     false,
   );
   assert.equal(

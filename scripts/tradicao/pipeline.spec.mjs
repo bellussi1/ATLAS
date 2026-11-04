@@ -168,7 +168,7 @@ test('estágio de API sem chave não executa e informa', async (t) => {
 test('os estágios cobrem 0 a 12 em ordem e nenhum comando publica ou envia', () => {
   assert.deepEqual(
     stages.map((stage) => stage.n),
-    Array.from({ length: 13 }, (_, i) => i),
+    Array.from({ length: 15 }, (_, i) => i),
   );
   const ctx = { slug: 'x', root: '/tmp', full: true };
   for (const stage of stages) {
@@ -179,8 +179,8 @@ test('os estágios cobrem 0 a 12 em ordem e nenhum comando publica ou envia', ()
         `estágio ${stage.n} executa ${command.argv.join(' ')}`,
       );
   }
-  assert.equal(stages[12].kind, 'human');
-  assert.equal(stages[12].commands(ctx).length, 0);
+  assert.equal(stages[14].kind, 'human');
+  assert.equal(stages[14].commands(ctx).length, 0);
 });
 
 test('o custo estimado usa o preço do Haiku 5.5 em lote e o teto de entrada', () => {
@@ -204,4 +204,30 @@ test('lacunas de registro: aponta cada ponto da aplicação que ainda não lista
     await writeFile(join(root, file), `// ${needle}`);
   }
   assert.equal((await registrationGaps(root, 'nova')).length, 4);
+});
+
+test('o trabalho em processo roda uma vez por execução e não depois de comando que falhou', async (t) => {
+  const root = await project(t);
+  await writeFile(join(root, 'in.txt'), 'um');
+  const ctx = { slug: 'x', root };
+  const { a } = fakeStages(root);
+  let runs = 0;
+  a.commands = () => [];
+  a.run = async () => {
+    runs += 1;
+    await writeFile(join(root, 'a.out'), 'feito');
+  };
+  const first = await runStage(a, ctx, await loadState(root, 'x'), { previous: null });
+  assert.equal(first.status, 'passed');
+  assert.equal(runs, 1);
+
+  const failing = fakeStages(root).a;
+  failing.commands = () => [{ label: 'quebra', argv: [process.execPath, '-e', 'process.exit(1)'] }];
+  let after = 0;
+  failing.run = async () => {
+    after += 1;
+  };
+  await rm(join(root, 'a.out'));
+  await runStage(failing, ctx, await loadState(root, 'x'), { previous: null });
+  assert.equal(after, 0);
 });

@@ -22,6 +22,8 @@ import {
 import { captureSchema } from '../ingestion/wiki-extract/raw.mjs';
 import { traditionFor } from '../ingestion/wikimedia/traditions.mjs';
 import { checkFloor, loadFloor, measureTradition, measure, flatten } from './coverage.mjs';
+import { buildGlossary, modelChoiceSchema, richGaps, unverifiedQuotes } from './rich.mjs';
+import { defaults, isGenericTitle, maxRing } from './scoring.mjs';
 import {
   atlasIdOf,
   draftInput,
@@ -73,6 +75,7 @@ export function paths({ root, slug }) {
     graph: join(root, 'content/graph', `${slug}.json`),
     manifest: join(root, 'content/knowledge/manifest.json'),
     coverage: join(root, 'generated/pipeline', slug, 'coverage.json'),
+    glossary: join(root, 'generated/pipeline', slug, 'glossary.json'),
   };
 }
 
@@ -141,6 +144,7 @@ export const stages = [
   {
     n: 0,
     id: 'regua',
+    alwaysRun: true,
     title: 'Régua de cobertura',
     kind: 'auto',
     cost: 'grátis',
@@ -299,14 +303,17 @@ export const stages = [
   {
     n: 2,
     id: 'descoberta',
-    title: 'Descoberta e seleção de candidatos',
+    title: 'Descoberta por expansão e pontuação',
     kind: 'auto',
-    cost: 'rede (Wikipedia/Wikidata, grátis)',
+    cost: 'rede (Wikidata e Wikipedia, grátis)',
+    manual:
+      'a expansão ao vivo no Wikidata (anéis de 1 a 3 saltos, núcleo em scoring.mjs) ainda não tem coletor: hoje roda o discover por links do texto, e a pontuação e a decisão por faixa entram quando o coletor existir',
     contract: {
-      needs: 'sementes',
-      produces: 'candidates/<slug>.json com decisão e decisor em cada aceito',
+      needs: 'raiz Wikidata e lente do registro (sem sementes escolhidas por pessoa)',
+      produces:
+        'candidates/<slug>.json com anel, pontuação, faixa (aceita, revisa, descarta) e motivo; QID único',
     },
-    inputs: (c) => [paths(c).seeds],
+    inputs: (c) => [paths(c).registry, paths(c).seeds],
     outputs: (c) => [paths(c).candidates],
     commands: (c) => [
       command(
@@ -325,37 +332,75 @@ export const stages = [
       ),
     ],
     async gate(ctx) {
-      const accepted = await acceptedCandidates(paths(ctx));
-      if (!accepted) return [check('candidatos descobertos', false, 'rode o estágio 2')];
-      const types = new Set(
-        accepted.filter((c) => c.decidedBy !== 'seed' && c.type).map((c) => c.type),
-      );
-      return [
+      const file = await readJsonOr(paths(ctx).candidates, null);
+      if (!file) return [check('candidatos descobertos', false, 'rode o estágio 2')];
+      const accepted = file.candidates.filter((c) => c.decision === 'accept');
+      const scored = file.candidates.some((c) => c.score != null);
+      const entry = await loadRegistry(ctx.slug, ctx.root).catch(() => null);
+      const caps = { ...defaults.ringCaps, ...entry?.discovery.ringCaps };
+      const thresholds = { ...defaults.thresholds, ...entry?.discovery.thresholds };
+      const out = [
         check('aceitos suficientes', accepted.length >= 8, `${accepted.length} (mínimo 8)`),
         check(
-          'todo aceito tem decisor',
-          accepted.every((c) => c.decidedBy),
-          accepted.every((c) => c.decidedBy)
-            ? `decisores: ${[...new Set(accepted.map((c) => c.decidedBy))].join(', ')}`
-            : 'decidedBy ausente',
+          'sem lista, desambiguação ou ano genérico aceito',
+          !accepted.some((c) => isGenericTitle(c.title)),
+          accepted
+            .filter((c) => isGenericTitle(c.title))
+            .map((c) => c.title)
+            .join(', '),
         ),
         check(
-          'sem catálogo ou registro de autoridade aceito sem decisor nomeado',
-          !accepted.some(
-            (c) => unreviewedTypes.has(c.type) && (!c.decidedBy || c.decidedBy.startsWith('rule:')),
-          ),
-          '',
-        ),
-        check(
-          'aceitos de ao menos 3 tipos além das sementes',
-          types.size >= 3,
-          [...types].join(', '),
-        ),
-        check(
-          'sem duplicatas',
-          new Set(accepted.map((c) => `${c.lang}:${c.title}`)).size === accepted.length,
+          'sem duplicata (mesmo QID no mesmo idioma)',
+          new Set(accepted.map((c) => `${c.qid ?? c.title}:${c.lang}`)).size === accepted.length,
         ),
       ];
+      if (scored) {
+        const perRing = (ring) => accepted.filter((c) => c.ring === ring).length;
+        out.push(
+          check(
+            'todo candidato com anel de 1 a 3',
+            file.candidates.every((c) => c.ring >= 1 && c.ring <= maxRing),
+          ),
+          check(
+            'teto por anel respeitado',
+            [1, 2, 3].every((ring) => perRing(ring) <= caps[ring]),
+            [1, 2, 3].map((ring) => `anel ${ring}: ${perRing(ring)}/${caps[ring]}`).join(', '),
+          ),
+          check(
+            'aceito automático só acima do limite (ou regional, ou decisão nomeada)',
+            accepted.every((c) => c.score >= thresholds.accept || c.regional || c.decidedBy),
+          ),
+          check(
+            'faixa do meio é lista curta (≤ 30)',
+            file.candidates.filter((c) => c.decision === 'review').length <= 30,
+            `${file.candidates.filter((c) => c.decision === 'review').length} para decidir`,
+          ),
+        );
+      } else {
+        const types = new Set(
+          accepted.filter((c) => c.decidedBy !== 'seed' && c.type).map((c) => c.type),
+        );
+        out.push(
+          check(
+            'legado: aceitos por decisão registrada, sem pontuação',
+            accepted.every((c) => c.decidedBy),
+            `decisores: ${[...new Set(accepted.map((c) => c.decidedBy))].join(', ')}; refazer pela expansão quando houver coletor`,
+          ),
+          check(
+            'sem catálogo ou registro de autoridade aceito sem decisor nomeado',
+            !accepted.some(
+              (c) =>
+                unreviewedTypes.has(c.type) && (!c.decidedBy || c.decidedBy.startsWith('rule:')),
+            ),
+          ),
+          check(
+            'aceitos de ao menos 3 tipos além das sementes',
+            types.size >= 3,
+            [...types].join(', '),
+          ),
+        );
+      }
+      return out;
     },
   },
   {
@@ -407,14 +452,73 @@ export const stages = [
   },
   {
     n: 4,
+    id: 'calibracao',
+    title: 'Calibração de modelo por estágio',
+    kind: 'agent',
+    cost: 'API Anthropic (amostra de 10+ entidades, antes de escalar)',
+    agent: {
+      skill: 'atlas-pipeline-tradicao',
+      model: 'Haiku 5.5 low, Haiku 5.5 medium e um modelo maior',
+      effort: 'comparação',
+      does: 'roda a mesma amostra nas três configurações, mede relevância, relações e classificação contra rótulos de referência e fixa o modelo de cada estágio em scripts/tradicao/model-choice.json',
+    },
+    contract: {
+      needs: 'artigos locais (amostra) e rótulos de referência',
+      produces: 'model-choice.json: medição por configuração e modelo escolhido por estágio',
+    },
+    inputs: (c) => [paths(c).articles],
+    outputs: (c) => [join(c.root, 'scripts/tradicao/model-choice.json')],
+    commands: () => [],
+    async gate(ctx) {
+      const file = join(ctx.root, 'scripts/tradicao/model-choice.json');
+      const raw = await readJsonOr(file, null);
+      if (!raw)
+        return [
+          check(
+            'model-choice.json existe',
+            false,
+            'sem medição: o modelo por estágio não está fixado',
+          ),
+        ];
+      const parsed = modelChoiceSchema.safeParse(raw);
+      if (!parsed.success)
+        return [
+          check(
+            'escolha de modelo válida',
+            false,
+            parsed.error.issues
+              .map((i) => i.message)
+              .slice(0, 2)
+              .join('; '),
+          ),
+        ];
+      const chosen = Object.keys(parsed.data.chosen);
+      return [
+        check(
+          'escolha de modelo válida (Haiku low e medium e um modelo maior medidos)',
+          true,
+          `${parsed.data.candidates.length} configurações`,
+        ),
+        check(
+          'todo estágio de IA com modelo fixado',
+          ['descoberta', 'extracao', 'redacao', 'edicao'].every((n) => chosen.includes(n)),
+          chosen.join(', '),
+        ),
+      ];
+    },
+  },
+  {
+    n: 5,
     id: 'extracao',
-    title: 'Extração (Haiku 5.5, effort low, lote)',
+    title: 'Extração rica por entidade',
     kind: 'auto',
+    manual:
+      'o extrator atual (extraction.mjs) grava o rascunho enxuto; o conteúdo rico (linha, resumo, seções, glossário, relações em frase) pede o prompt novo sobre richExtractionSchema, montado e guardado por entidade em generated/pipeline/<slug>/prompts/, com o modelo fixado no estágio 4',
     cost: 'API Anthropic (Batch, ~US$ 0,02 por 16 artigos)',
     contract: {
       needs: 'artigos locais',
       produces:
-        'extracts/<id>.json: resumo, datas, relações e afirmações com citação literal, revisão `assistant`',
+        'extracts/<id>.json: linha de hover, resumo, seções, glossário pt/en, relações em frase e afirmações, tudo com citação literal, revisão `assistant`',
     },
     inputs: (c) => [paths(c).articles],
     outputs: (c) => [paths(c).extracts],
@@ -503,11 +607,38 @@ export const stages = [
           `${skipped} seções não lidas no total`,
         ),
       );
+      let lean = 0;
+      let richRejected = 0;
+      for (const id of extracts) {
+        const draft = await readJson(join(p.extracts, `${id}.json`));
+        if (richGaps(draft).length) {
+          lean += 1;
+          continue;
+        }
+        const record = await readJsonOr(join(p.articles, `${id}.json`), null);
+        if (record)
+          richRejected += unverifiedQuotes(
+            draft,
+            articleText(record.article, maxInputChars).text,
+          ).length;
+      }
+      out.push(
+        check(
+          'conteúdo rico (linha, resumo, seções, glossário, relações em frase)',
+          extracts.length > 0 && lean === 0,
+          `${lean} de ${extracts.length} rascunhos ainda enxutos`,
+        ),
+        check(
+          'citações de seções e relações literais no artigo',
+          extracts.length > 0 && lean === 0 && richRejected === 0,
+          `${richRejected} rejeitadas`,
+        ),
+      );
       return out;
     },
   },
   {
-    n: 5,
+    n: 6,
     id: 'consolidacao',
     title: 'Consolidação no grafo',
     kind: 'auto',
@@ -534,7 +665,7 @@ export const stages = [
       if (!atlas)
         return [
           check('grafo válido', true),
-          check(`coleção ${atlasId} no manifesto`, false, 'rode o estágio 5'),
+          check(`coleção ${atlasId} no manifesto`, false, 'rode o estágio 6'),
         ];
       const ids = new Set(graph.atlases.flatMap((a) => a.entities.map((e) => e.id)));
       const qids = new Set(
@@ -580,7 +711,82 @@ export const stages = [
     },
   },
   {
-    n: 6,
+    n: 7,
+    id: 'glossario',
+    title: 'Glossário e hovers',
+    kind: 'auto',
+    cost: 'grátis',
+    contract: {
+      needs: 'entidades consolidadas com conteúdo rico',
+      produces:
+        'glossary.json: termos pt/en ligados a uma entidade, ambíguos separados, e linha e resumo por entidade para hover e folha',
+    },
+    inputs: (c) => [paths(c).extracts, paths(c).manifest],
+    outputs: (c) => [paths(c).glossary],
+    commands: () => [],
+    async run(ctx) {
+      const p = paths(ctx);
+      const entities = [];
+      for (const id of await listJson(p.extracts)) {
+        const draft = await readJson(join(p.extracts, `${id}.json`));
+        if (!draft.oneLine) continue;
+        entities.push({
+          id: `wiki-${draft.entity.id}`,
+          oneLine: draft.oneLine,
+          summary: draft.summary,
+          glossary: draft.glossary ?? [],
+        });
+      }
+      await writeJsonAtomic(p.glossary, {
+        ...buildGlossary(entities),
+        hovers: Object.fromEntries(
+          entities.map((e) => [e.id, { oneLine: e.oneLine, summary: e.summary }]),
+        ),
+      });
+    },
+    async gate(ctx) {
+      const p = paths(ctx);
+      const glossary = await readJsonOr(p.glossary, null);
+      if (!glossary)
+        return [
+          check(
+            'glossário gerado',
+            false,
+            'sem conteúdo rico para gerar: rode o estágio 5 com o extrator rico',
+          ),
+        ];
+      const graph = await readSourceGraph(join(ctx.root, 'content/knowledge'));
+      const atlas = graph.atlases.find((a) => a.id === `atlas-${ctx.slug}`);
+      const ids = new Set((atlas?.entities ?? []).map((e) => e.id));
+      const hovers = Object.entries(glossary.hovers);
+      const covered = [...ids].filter((id) => glossary.hovers[id]).length;
+      return [
+        check(
+          'toda entidade com linha de hover (≤ 140) e resumo (≤ 600)',
+          hovers.length > 0 &&
+            hovers.every(([, h]) => h.oneLine.length <= 140 && h.summary.length <= 600),
+          `${hovers.length} hovers`,
+        ),
+        check(
+          'hover cobre ao menos 90% das entidades da tradição',
+          ids.size > 0 && covered / ids.size >= 0.9,
+          `${covered} de ${ids.size}`,
+        ),
+        check(
+          'todo termo ligado aponta para entidade existente',
+          glossary.links.every((l) => ids.has(l.entityId)),
+          `${glossary.links.length} termos`,
+        ),
+        check(
+          'termos ambíguos não são ligados sozinhos',
+          glossary.ambiguous.every((a) => !glossary.links.some((l) => l.term === a.term)),
+          `${glossary.ambiguous.length} ambíguos`,
+        ),
+      ];
+    },
+  },
+  {
+    n: 8,
     id: 'redacao',
     title: 'Redação dos 12 capítulos',
     kind: 'agent',
@@ -646,7 +852,7 @@ export const stages = [
     },
   },
   {
-    n: 7,
+    n: 9,
     id: 'edicao',
     title: 'Edição de texto',
     kind: 'agent',
@@ -703,7 +909,7 @@ export const stages = [
     },
   },
   {
-    n: 8,
+    n: 10,
     id: 'identidade',
     title: 'Ícones e identidade',
     kind: 'auto',
@@ -763,7 +969,7 @@ export const stages = [
     },
   },
   {
-    n: 9,
+    n: 11,
     id: 'imagens',
     title: 'Imagens de referência',
     kind: 'auto',
@@ -817,7 +1023,7 @@ export const stages = [
     },
   },
   {
-    n: 10,
+    n: 12,
     id: 'montagem',
     title: 'Montagem e registro da leitura',
     kind: 'auto',
@@ -853,7 +1059,7 @@ export const stages = [
     },
   },
   {
-    n: 11,
+    n: 13,
     id: 'verificacao',
     title: 'Verificação',
     kind: 'auto',
@@ -902,7 +1108,7 @@ export const stages = [
     },
   },
   {
-    n: 12,
+    n: 14,
     id: 'publicacao',
     title: 'Publicação (aprovação humana)',
     kind: 'human',

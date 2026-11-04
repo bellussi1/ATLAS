@@ -12,8 +12,8 @@
  * O orquestrador nunca publica no R2 e nunca faz push.
  */
 import { spawnSync } from 'node:child_process';
-import { resolve } from 'node:path';
-import { dirname } from 'node:path';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 
@@ -118,17 +118,19 @@ export async function runStage(
   let commands = [];
   let note = null;
   if (force || plan.wouldRun) {
-    if (stage.kind !== 'auto' || !stage.commands(ctx).length) {
-      if (stage.run) await stage.run(ctx);
-      else
-        note = stage.agent
-          ? `estágio de agente (${stage.agent.model}, effort ${stage.agent.effort}): ${stage.agent.does}`
+    const planned = stage.commands(ctx);
+    if (planned.length) commands = runCommands(planned, ctx);
+    // Commands that failed or were skipped (no API key) must not be followed by in-process work.
+    if (stage.run && commands.every((command) => command.exitCode === 0)) await stage.run(ctx);
+    if (!planned.length && !stage.run)
+      note = stage.agent
+        ? `estágio de agente (${stage.agent.model}, effort ${stage.agent.effort}): ${stage.agent.does}`
+        : stage.manual
+          ? `sem automação: ${stage.manual}`
           : 'estágio humano: nada a executar';
-    } else {
-      commands = runCommands(stage.commands(ctx), ctx);
-    }
-    if (stage.run && stage.kind === 'auto') await stage.run(ctx);
   } else {
+    // Cheap, idempotent bookkeeping (e.g. the coverage baseline) still runs when the gate is open.
+    if (stage.alwaysRun && stage.run) await stage.run(ctx);
     note =
       plan.standing === 'fresco'
         ? 'pulado: entradas inalteradas'
@@ -172,10 +174,54 @@ export function formatPlan(plan) {
       lines.push(
         `    executaria: ${c.argv.join(' ')}${c.api ? '  [API]' : c.network ? '  [rede]' : ''}`,
       );
-    if (!plan.agent && !plan.commands.length)
-      lines.push('    executaria: nada (em processo ou ação humana)');
+    if (plan.inProcess)
+      lines.push('    executaria: em processo (aplica o estágio sobre os arquivos locais)');
+    else if (!plan.agent && !plan.commands.length) lines.push('    executaria: nada (ação humana)');
   }
+  if (plan.manual) lines.push(`    ${plan.wouldRun ? 'manual' : 'nota'}: ${plan.manual}`);
   return lines.join('\n');
+}
+
+/**
+ * README that lets a fresh session resume without this conversation: where each stage stands, the
+ * next one to run and the exact commands. Rewritten after every real run; never edited by hand.
+ */
+export function renderReadme(slug, plans, state) {
+  const next = plans.find((plan) => !plan.gateOpen);
+  const open = next?.checks
+    .filter((c) => !c.ok)
+    .map((c) => c.name)
+    .join('; ');
+  const lines = [
+    `# Pipeline de ${slug}`,
+    '',
+    `Gerado em ${new Date().toISOString()}. Não edite: é reescrito a cada execução.`,
+    '',
+    next
+      ? `**Próximo estágio:** ${next.n} (${next.title}), ${next.kind}. Porta aberta por: ${open}.`
+      : '**Todas as portas estão fechadas.** Falta só a decisão humana de publicar, se ainda não houve.',
+    '',
+    '## Estado',
+    '',
+    '| Estágio | Tipo | Porta | Última execução |',
+    '| --- | --- | --- | --- |',
+    ...plans.map((plan) => {
+      const ran = state.stages[plan.n];
+      const last = ran ? `${ran.status} em ${ran.ranAt.slice(0, 16)}Z (${ran.durationMs} ms)` : '-';
+      return `| ${plan.n} ${plan.title} | ${plan.kind} | ${plan.gateOpen ? 'fechada' : 'aberta'} | ${last} |`;
+    }),
+    '',
+    '## Retomar',
+    '',
+    '```bash',
+    `npm run tradicao -- ${slug} --status`,
+    `npm run tradicao -- ${slug} --stage ${next?.n ?? 0} --dry-run`,
+    `npm run tradicao -- ${slug} --stage ${next?.n ?? 0}`,
+    '```',
+    '',
+    'Regras: nada de fonte, data, citação, imagem ou revisão humana inventada; revisão de IA é `assistant`; o orquestrador não publica nem faz push; skill `atlas-pipeline-tradicao`.',
+  ];
+  return `${lines.join('\n')}\n`;
 }
 
 export async function main(argv = process.argv.slice(2)) {
@@ -248,6 +294,14 @@ export async function main(argv = process.argv.slice(2)) {
         break;
       }
     }
+  }
+  if (!dry) {
+    const fresh = await loadState(ctx.root, slug);
+    const plans = [];
+    for (const stage of stages) plans.push(await planStage(stage, ctx, fresh));
+    const readme = join(dirname(statePath(ctx.root, slug)), 'README.md');
+    await mkdir(dirname(readme), { recursive: true });
+    await writeFile(readme, renderReadme(slug, plans, fresh));
   }
   if (values.json) console.log(JSON.stringify(output, null, 2));
   process.exitCode = exitCode;
