@@ -7,6 +7,7 @@ export interface IdeologyDraftInput {
   kind: IdeologyPage['kind'];
   classificationNote: string;
   atlasId: string;
+  palette?: IdeologyPage['identity']['palette'];
 }
 
 /**
@@ -32,7 +33,12 @@ export function ideologyDraft(input: IdeologyDraftInput): IdeologyPage {
       reviewer: null,
       updatedAt: new Date().toISOString().slice(0, 10),
     },
-    identity: { accent: 'teal', signature: 'Rascunho estrutural', keyVisualization: 'timeline' },
+    identity: {
+      accent: 'teal',
+      signature: 'Rascunho estrutural',
+      keyVisualization: 'timeline',
+      ...(input.palette ? { palette: input.palette } : {}),
+    },
     portrait: null,
     chapters: canonicalChapters.map((chapter) => ({
       id: chapter.id,

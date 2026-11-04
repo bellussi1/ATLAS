@@ -35,7 +35,19 @@ export function ideologyDraftFromGraph(input: IdeologyDraftInput, atlas: Atlas):
     const kinds = chapterKinds[id];
     if (kinds) {
       const entityIds = dated(atlas, kinds);
-      return entityIds.length >= MIN_RECORDS ? [{ type: 'timeline', entityIds }] : [];
+      if (entityIds.length >= MIN_RECORDS) return [{ type: 'timeline', entityIds }];
+      // Without dates a timeline would say nothing: the records still deserve a gallery.
+      const records = atlas.entities.filter((e) => kinds.includes(e.kind)).map((e) => e.id);
+      return records.length >= MIN_RECORDS
+        ? [
+            {
+              type: 'entities',
+              entityIds: records,
+              mode: id === 'leituras' ? 'documents' : 'thinkers',
+              notes: {},
+            },
+          ]
+        : [];
     }
     if (id === 'conexoes') {
       const edgeIds = atlas.relations

@@ -293,3 +293,29 @@ h2 {
     font: 0.875rem var(--font-mono);
   }
 }
+
+/* Accent per reading; each value keeps at least 4.5:1 on the canvas. Marx and liberal keep the default. */
+.ideology-page[data-palette='anarquismo'] {
+  --color-accent: #141211;
+}
+.ideology-page[data-palette='social-democracia'] {
+  --color-accent: #a8324f;
+}
+.ideology-page[data-palette='conservadorismo'] {
+  --color-accent: #363a5f;
+}
+.ideology-page[data-palette='fascismo'] {
+  --color-accent: #4a4640;
+}
+.ideology-page[data-palette='libertarianismo'] {
+  --color-accent: #8a5a00;
+}
+.ideology-page[data-palette='nacionalismo'] {
+  --color-accent: #164f60;
+}
+.ideology-page[data-palette='ecologismo'] {
+  --color-accent: #2f6b4a;
+}
+.ideology-page[data-palette='feminismo'] {
+  --color-accent: #5d4a86;
+}

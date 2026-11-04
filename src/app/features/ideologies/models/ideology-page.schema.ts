@@ -121,6 +121,20 @@ export const positionClaimSchema = z.object({
   editorialStatus: z.literal('pending'),
 });
 export type PositionClaim = z.infer<typeof positionClaimSchema>;
+/** Page identity; keep in step with `MosaicPalette`, which the page component type-checks. */
+export const ideologyPaletteSchema = z.enum([
+  'atlas',
+  'marx',
+  'liberal',
+  'anarquismo',
+  'social-democracia',
+  'conservadorismo',
+  'fascismo',
+  'libertarianismo',
+  'nacionalismo',
+  'ecologismo',
+  'feminismo',
+]);
 export const ideologyPageSchema = z
   .object({
     schemaVersion: z.literal(1),
@@ -145,6 +159,7 @@ export const ideologyPageSchema = z
       ),
     identity: z.object({
       accent: z.enum(['indigo', 'teal', 'ochre']),
+      palette: ideologyPaletteSchema.optional(),
       signature: z.string().min(1),
       keyVisualization: z.enum(['graph', 'timeline', 'comparison']),
     }),

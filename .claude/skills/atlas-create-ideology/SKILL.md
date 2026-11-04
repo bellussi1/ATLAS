@@ -21,7 +21,7 @@ Fontes de verdade, leia sob demanda:
 1. **Entrada.** Nome, slug, recorte histórico-geográfico, classificação (`kind`: ideologia, corrente, tradição, movimento ou programa), público e status pretendido. Infira o que puder; pergunte só o que mudar a classificação ou o recorte.
 2. **Pesquisa inicial.** QIDs no Wikidata, Wikipedia, arquivos no Commons (licença **por arquivo**), enciclopédias acadêmicas (SEP, IEP), obras primárias e historiografia. Produza um plano **por capítulo** com fontes, localizadores e lacunas. Não redija textos completos sem fonte.
 3. **Reconciliar.** Antes de criar uma entidade, procure-a nos snapshots (`content/knowledge/collections`, `content/graph`). Reutilize `person-karl-marx` e afins; nunca crie `person-marx-2`. A ingestão Wikimedia passa por `scripts/ingestion/wikimedia` (`--media remote`).
-4. **Esqueleto.** Gere o rascunho com `ideologyDraft()` (`src/app/features/ideologies/utils/ideology-draft.ts`): 12 capítulos `pending`, `published: false`, sem blocos. Salve como `content/ideologies/<slug>/page.json` e o grafo em `content/graph/<slug>.json`.
+4. **Esqueleto.** Rode `npm run ideology:new -- --slug <slug> --title <título> --kind <kind> --atlas <atlas-id> --palette <paleta> --note "<recorte>"`. Ele cria `content/ideologies/<slug>/page.json` e `content/graph/<slug>.json` com 12 capítulos, `published: false`, e blocos só onde o atlas tem registros. Paletas: `ideologyPaletteSchema`.
 5. **Preencher por capítulo.** Para cada capítulo com fontes verificadas, escreva a pergunta do iniciante, a narrativa atribuída e os blocos adequados ([mapa](references/chapter-blocks.md)). Depois passe `coverage` para `partial` (com `gap`) ou remova-o. Capítulo sem evidência continua `pending` com motivo.
 6. **Verificar.** `npm run content:build`, `npm test`, `npm run lint`, `npm run typecheck`. Preview local só com `published: false`: nada entra em `published-ideologies.ts`, rotas ou prerender antes de aprovação explícita do usuário.
 7. **Relatório.** Liste o que foi criado, o que está `pending` ou `partial` e por quê, as fontes não lidas diretamente e o que precisa de revisão humana. Revisão `assistant` é IA, nunca "revisado".
@@ -32,4 +32,4 @@ Fontes de verdade, leia sob demanda:
 - Diferenciar fato documentado, interpretação, hipótese e controvérsia (`classification` dos itens).
 - Debates seguem defesa → crítica → resposta → limites, todos atribuídos. Falsa equivalência não.
 - Uma imagem aparece uma vez na narrativa (`planPageMedia`); retratos ficam em `pensadores`.
-- Publicar uma terceira leitura exige generalizar `palette`/`companion` em `IdeologyPageComponent`, hoje fixos por slug. Proponha isso ao usuário antes de publicar.
+- Publicar, só com aprovação explícita: `published: true` no `page.json`, uma entrada em `data/ideology-readings.ts` (rota e próxima leitura) e outra em `data/published-ideologies.ts`. Links fixos em cabeçalho, rodapé e home continuam manuais.

@@ -3,6 +3,7 @@
   <article
     class="ideology-page"
     [attr.data-accent]="page.identity.accent"
+    [attr.data-palette]="palette()"
     aria-labelledby="ideology-title"
   >
     <app-ideology-poster [page]="page" [basePath]="basePath()" />
@@ -137,8 +138,10 @@
       }
       <footer class="reading-end">
         <p>Uma leitura termina. As perguntas continuam.</p>
-        <a routerLink="/">Voltar à página inicial</a
-        ><a [routerLink]="companion().path">{{ companion().label }}</a>
+        <a routerLink="/">Voltar à página inicial</a>
+        @if (companion(); as next) {
+          <a [routerLink]="'/' + next.slug">Ler o {{ next.label }}</a>
+        }
       </footer>
     </app-ideology-reading>
   </article>

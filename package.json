@@ -6,6 +6,7 @@
     "content:build": "node scripts/content/build-content.mjs",
     "content:fetch": "node scripts/content/fetch-content.mjs",
     "content:publish": "npm run content:build && node scripts/publish-r2.mjs",
+    "ideology:new": "node scripts/content/new-ideology.mjs",
     "editorial:apply": "node scripts/content/apply-editorial-edition.mjs",
     "test:content": "node --test scripts/content/*.spec.mjs",
     "prestart": "npm run content:build",

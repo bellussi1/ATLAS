@@ -1,5 +1,17 @@
 /** Original decorative tiles for the ATLAS poster language. They never encode data. */
-export type MosaicPalette = 'atlas' | 'marx' | 'liberal' | 'tissi';
+export type MosaicPalette =
+  | 'atlas'
+  | 'marx'
+  | 'liberal'
+  | 'tissi'
+  | 'anarquismo'
+  | 'social-democracia'
+  | 'conservadorismo'
+  | 'fascismo'
+  | 'libertarianismo'
+  | 'nacionalismo'
+  | 'ecologismo'
+  | 'feminismo';
 
 export type MosaicMotif =
   | 'quarter'
@@ -34,6 +46,9 @@ const colors = {
   rose: 'var(--color-rose-paper)',
   teal: 'var(--color-teal-paper)',
   indigo: 'var(--color-indigo)',
+  moss: 'var(--color-moss)',
+  violet: 'var(--color-violet)',
+  steel: 'var(--color-steel)',
 };
 
 const palettes: Record<MosaicPalette, readonly string[]> = {
@@ -49,6 +64,14 @@ const palettes: Record<MosaicPalette, readonly string[]> = {
   marx: [colors.red, colors.ink, colors.ochre, colors.paper, colors.orange, colors.rose],
   liberal: [colors.indigo, colors.teal, colors.ochre, colors.paper, colors.rose, colors.ink],
   tissi: [colors.ink, colors.paper, colors.red, colors.paper],
+  anarquismo: [colors.ink, colors.paper, colors.red, colors.ochre, colors.paper],
+  'social-democracia': [colors.rose, colors.red, colors.paper, colors.indigo, colors.ochre],
+  conservadorismo: [colors.indigo, colors.paper, colors.ochre, colors.steel, colors.ink],
+  fascismo: [colors.steel, colors.ink, colors.paper, colors.ink, colors.orange],
+  libertarianismo: [colors.ochre, colors.ink, colors.paper, colors.orange, colors.teal],
+  nacionalismo: [colors.teal, colors.indigo, colors.paper, colors.ochre, colors.ink],
+  ecologismo: [colors.moss, colors.teal, colors.paper, colors.ochre, colors.ink],
+  feminismo: [colors.violet, colors.rose, colors.paper, colors.ochre, colors.ink],
 };
 
 const motifs: readonly MosaicMotif[] = [

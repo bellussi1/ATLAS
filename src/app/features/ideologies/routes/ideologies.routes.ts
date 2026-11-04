@@ -1,5 +1,6 @@
 import { type Routes } from '@angular/router';
 import { knowledgeContentResolver } from '@core/routing/knowledge-content.resolver';
+import { ideologyReadings } from '@ideologies/data/ideology-readings';
 
 /**
  * Each tradition is one page. The old
@@ -21,15 +22,6 @@ function ideologyRoutesFor(slug: string, label: string, metaDescription: string)
   ];
 }
 
-export const ideologyRoutes: Routes = [
-  ...ideologyRoutesFor(
-    'marxismo',
-    'Marxismo',
-    'Conceitos, pensadores, cronologia, divergências e fontes do marxismo.',
-  ),
-  ...ideologyRoutesFor(
-    'liberalismo',
-    'Liberalismo',
-    'Conceitos, pensadores, épocas, lugares, vertentes, críticas e fontes do liberalismo.',
-  ),
-];
+export const ideologyRoutes: Routes = ideologyReadings.flatMap((reading) =>
+  ideologyRoutesFor(reading.slug, reading.label, reading.metaDescription),
+);
