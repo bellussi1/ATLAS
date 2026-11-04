@@ -1,0 +1,63 @@
+{
+  "name": "social-democracia",
+  "root": "Q121254",
+  "provenance": {
+    "source": "Wikidata",
+    "property": "P279",
+    "meaning": "child P279 parent (subclasse de), direção filho -> pai",
+    "retrievedAt": "2026-11-04",
+    "endpoints": ["https://query.wikidata.org/sparql", "https://www.wikidata.org/w/api.php"],
+    "rules": {
+      "maxDepth": 5,
+      "maxNodesPerLevel": 20,
+      "selection": "sitelinks desc, desempate por QID numérico; só ramos aceitos são explorados"
+    }
+  },
+  "levels": [
+    {
+      "depth": 0,
+      "candidates": 1,
+      "kept": 1,
+      "cut": 0
+    },
+    {
+      "depth": 1,
+      "candidates": 1,
+      "kept": 1,
+      "cut": 0
+    },
+    {
+      "depth": 2,
+      "candidates": 0,
+      "kept": 0,
+      "cut": 0
+    }
+  ],
+  "nodes": [
+    {
+      "qid": "Q121254",
+      "labels": {
+        "pt": "social-democracia",
+        "en": "social democracy"
+      },
+      "sitelinks": 101,
+      "depth": 0
+    },
+    {
+      "qid": "Q76984200",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 1,
+      "depth": 1
+    }
+  ],
+  "edges": [
+    {
+      "child": "Q76984200",
+      "parent": "Q121254",
+      "property": "P279"
+    }
+  ]
+}

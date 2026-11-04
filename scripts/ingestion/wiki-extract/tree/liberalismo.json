@@ -1,0 +1,519 @@
+{
+  "name": "liberalismo",
+  "root": "Q6216",
+  "provenance": {
+    "source": "Wikidata",
+    "property": "P279",
+    "meaning": "child P279 parent (subclasse de), direção filho -> pai",
+    "retrievedAt": "2026-11-04",
+    "endpoints": ["https://query.wikidata.org/sparql", "https://www.wikidata.org/w/api.php"],
+    "rules": {
+      "maxDepth": 5,
+      "maxNodesPerLevel": 20,
+      "selection": "sitelinks desc, desempate por QID numérico; só ramos aceitos são explorados"
+    }
+  },
+  "levels": [
+    {
+      "depth": 0,
+      "candidates": 1,
+      "kept": 1,
+      "cut": 0
+    },
+    {
+      "depth": 1,
+      "candidates": 31,
+      "kept": 20,
+      "cut": 11
+    },
+    {
+      "depth": 2,
+      "candidates": 11,
+      "kept": 11,
+      "cut": 0
+    },
+    {
+      "depth": 3,
+      "candidates": 1,
+      "kept": 1,
+      "cut": 0
+    },
+    {
+      "depth": 4,
+      "candidates": 0,
+      "kept": 0,
+      "cut": 0
+    }
+  ],
+  "nodes": [
+    {
+      "qid": "Q6216",
+      "labels": {
+        "pt": "liberalismo",
+        "en": "liberalism"
+      },
+      "sitelinks": 189,
+      "depth": 0
+    },
+    {
+      "qid": "Q201712",
+      "labels": {
+        "pt": "liberalismo social",
+        "en": "social liberalism"
+      },
+      "sitelinks": 57,
+      "depth": 1
+    },
+    {
+      "qid": "Q729119",
+      "labels": {
+        "pt": "liberalismo económico",
+        "en": "economic liberalism"
+      },
+      "sitelinks": 53,
+      "depth": 1
+    },
+    {
+      "qid": "Q794394",
+      "labels": {
+        "pt": "liberalismo clássico",
+        "en": "classical liberalism"
+      },
+      "sitelinks": 53,
+      "depth": 1
+    },
+    {
+      "qid": "Q219934",
+      "labels": {
+        "pt": "despotismo esclarecido",
+        "en": "enlightened absolutism"
+      },
+      "sitelinks": 42,
+      "depth": 1
+    },
+    {
+      "qid": "Q617609",
+      "labels": {
+        "pt": "liberalismo conservador",
+        "en": "conservative liberalism"
+      },
+      "sitelinks": 37,
+      "depth": 1
+    },
+    {
+      "qid": "Q660018",
+      "labels": {
+        "pt": "Nacional-liberalismo",
+        "en": "national liberalism"
+      },
+      "sitelinks": 31,
+      "depth": 1
+    },
+    {
+      "qid": "Q1822939",
+      "labels": {
+        "pt": "Socialismo liberal",
+        "en": "liberal socialism"
+      },
+      "sitelinks": 30,
+      "depth": 1
+    },
+    {
+      "qid": "Q727480",
+      "labels": {
+        "pt": "ordoliberalismo",
+        "en": "ordoliberalism"
+      },
+      "sitelinks": 27,
+      "depth": 1
+    },
+    {
+      "qid": "Q1321721",
+      "labels": {
+        "pt": "liberalismo verde",
+        "en": "green liberalism"
+      },
+      "sitelinks": 25,
+      "depth": 1
+    },
+    {
+      "qid": "Q939214",
+      "labels": {
+        "pt": "liberalismo cultural",
+        "en": "cultural liberalism"
+      },
+      "sitelinks": 20,
+      "depth": 1
+    },
+    {
+      "qid": "Q721556",
+      "labels": {
+        "pt": "liberalismo nos Estados Unidos",
+        "en": "liberalism in the United States"
+      },
+      "sitelinks": 17,
+      "depth": 1
+    },
+    {
+      "qid": "Q3564160",
+      "labels": {
+        "pt": null,
+        "en": "Venizelism"
+      },
+      "sitelinks": 12,
+      "depth": 1
+    },
+    {
+      "qid": "Q729080",
+      "labels": {
+        "pt": "Liberalismo democrático",
+        "en": "democratic liberalism"
+      },
+      "sitelinks": 10,
+      "depth": 1
+    },
+    {
+      "qid": "Q3237983",
+      "labels": {
+        "pt": "Liberalismo incorporado",
+        "en": "embedded liberalism"
+      },
+      "sitelinks": 10,
+      "depth": 1
+    },
+    {
+      "qid": "Q7444781",
+      "labels": {
+        "pt": null,
+        "en": "secular liberalism"
+      },
+      "sitelinks": 7,
+      "depth": 1
+    },
+    {
+      "qid": "Q17156545",
+      "labels": {
+        "pt": null,
+        "en": "Technoliberalism"
+      },
+      "sitelinks": 7,
+      "depth": 1
+    },
+    {
+      "qid": "Q6540900",
+      "labels": {
+        "pt": null,
+        "en": "liberalism in Europe"
+      },
+      "sitelinks": 6,
+      "depth": 1
+    },
+    {
+      "qid": "Q442421",
+      "labels": {
+        "pt": null,
+        "en": "Old Liberals"
+      },
+      "sitelinks": 4,
+      "depth": 1
+    },
+    {
+      "qid": "Q11881037",
+      "labels": {
+        "pt": null,
+        "en": "market liberalism"
+      },
+      "sitelinks": 4,
+      "depth": 1
+    },
+    {
+      "qid": "Q4118645",
+      "labels": {
+        "pt": null,
+        "en": "liberalism in Egypt"
+      },
+      "sitelinks": 3,
+      "depth": 1
+    },
+    {
+      "qid": "Q162719",
+      "labels": {
+        "pt": "neoliberalismo",
+        "en": "neoliberalism"
+      },
+      "sitelinks": 83,
+      "depth": 2
+    },
+    {
+      "qid": "Q16152203",
+      "labels": {
+        "pt": "liberalismo moderno nos Estados Unidos",
+        "en": "modern liberalism in the United States"
+      },
+      "sitelinks": 19,
+      "depth": 2
+    },
+    {
+      "qid": "Q1888807",
+      "labels": {
+        "pt": "Escola de Manchester",
+        "en": "Manchester liberalism"
+      },
+      "sitelinks": 15,
+      "depth": 2
+    },
+    {
+      "qid": "Q131426226",
+      "labels": {
+        "pt": null,
+        "en": "scienticide"
+      },
+      "sitelinks": 4,
+      "depth": 2
+    },
+    {
+      "qid": "Q1206158",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q1816490",
+      "labels": {
+        "pt": null,
+        "en": "liberals"
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q3237987",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q6540946",
+      "labels": {
+        "pt": null,
+        "en": "liberalism in North Macedonia"
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q25475523",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q104846427",
+      "labels": {
+        "pt": null,
+        "en": "successor ideology"
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q124537930",
+      "labels": {
+        "pt": null,
+        "en": "liberal nationalism"
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q745640",
+      "labels": {
+        "pt": "Rogernomics",
+        "en": "Rogernomics"
+      },
+      "sitelinks": 7,
+      "depth": 3
+    }
+  ],
+  "edges": [
+    {
+      "child": "Q162719",
+      "parent": "Q729119",
+      "property": "P279"
+    },
+    {
+      "child": "Q201712",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q219934",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q442421",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q617609",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q660018",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q721556",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q727480",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q727480",
+      "parent": "Q729119",
+      "property": "P279"
+    },
+    {
+      "child": "Q729080",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q729119",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q745640",
+      "parent": "Q162719",
+      "property": "P279"
+    },
+    {
+      "child": "Q794394",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q939214",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q1206158",
+      "parent": "Q660018",
+      "property": "P279"
+    },
+    {
+      "child": "Q1321721",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q1816490",
+      "parent": "Q794394",
+      "property": "P279"
+    },
+    {
+      "child": "Q1822939",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q1888807",
+      "parent": "Q729119",
+      "property": "P279"
+    },
+    {
+      "child": "Q3237983",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q3237987",
+      "parent": "Q729119",
+      "property": "P279"
+    },
+    {
+      "child": "Q3564160",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q4118645",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q6540900",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q6540946",
+      "parent": "Q6540900",
+      "property": "P279"
+    },
+    {
+      "child": "Q7444781",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q11881037",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q16152203",
+      "parent": "Q201712",
+      "property": "P279"
+    },
+    {
+      "child": "Q16152203",
+      "parent": "Q721556",
+      "property": "P279"
+    },
+    {
+      "child": "Q17156545",
+      "parent": "Q6216",
+      "property": "P279"
+    },
+    {
+      "child": "Q25475523",
+      "parent": "Q660018",
+      "property": "P279"
+    },
+    {
+      "child": "Q104846427",
+      "parent": "Q201712",
+      "property": "P279"
+    },
+    {
+      "child": "Q124537930",
+      "parent": "Q201712",
+      "property": "P279"
+    },
+    {
+      "child": "Q131426226",
+      "parent": "Q729119",
+      "property": "P279"
+    }
+  ]
+}
