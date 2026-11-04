@@ -1,0 +1,907 @@
+{
+  "name": "marxismo",
+  "root": "Q7264",
+  "provenance": {
+    "source": "Wikidata",
+    "property": "P279",
+    "meaning": "child P279 parent (subclasse de), direção filho -> pai",
+    "retrievedAt": "2026-11-04",
+    "endpoints": ["https://query.wikidata.org/sparql", "https://www.wikidata.org/w/api.php"],
+    "rules": {
+      "maxDepth": 5,
+      "maxNodesPerLevel": 20,
+      "selection": "sitelinks desc, desempate por QID numérico; só ramos aceitos são explorados"
+    }
+  },
+  "levels": [
+    {
+      "depth": 0,
+      "candidates": 1,
+      "kept": 1,
+      "cut": 0
+    },
+    {
+      "depth": 1,
+      "candidates": 23,
+      "kept": 20,
+      "cut": 3
+    },
+    {
+      "depth": 2,
+      "candidates": 19,
+      "kept": 19,
+      "cut": 0
+    },
+    {
+      "depth": 3,
+      "candidates": 24,
+      "kept": 20,
+      "cut": 4
+    },
+    {
+      "depth": 4,
+      "candidates": 0,
+      "kept": 0,
+      "cut": 0
+    }
+  ],
+  "nodes": [
+    {
+      "qid": "Q7264",
+      "labels": {
+        "pt": "marxismo",
+        "en": "Marxism"
+      },
+      "sitelinks": 173,
+      "depth": 0
+    },
+    {
+      "qid": "Q155059",
+      "labels": {
+        "pt": "leninismo",
+        "en": "Leninism"
+      },
+      "sitelinks": 83,
+      "depth": 1
+    },
+    {
+      "qid": "Q211930",
+      "labels": {
+        "pt": "marxismo-leninismo",
+        "en": "Marxism–Leninism"
+      },
+      "sitelinks": 80,
+      "depth": 1
+    },
+    {
+      "qid": "Q1058263",
+      "labels": {
+        "pt": "neomarxismo",
+        "en": "Neo-Marxism"
+      },
+      "sitelinks": 36,
+      "depth": 1
+    },
+    {
+      "qid": "Q2083688",
+      "labels": {
+        "pt": "revisionismo",
+        "en": "revisionism"
+      },
+      "sitelinks": 34,
+      "depth": 1
+    },
+    {
+      "qid": "Q1376649",
+      "labels": {
+        "pt": "pós-marxismo",
+        "en": "post-Marxism"
+      },
+      "sitelinks": 27,
+      "depth": 1
+    },
+    {
+      "qid": "Q917453",
+      "labels": {
+        "pt": "marxismo ocidental",
+        "en": "Western Marxism"
+      },
+      "sitelinks": 25,
+      "depth": 1
+    },
+    {
+      "qid": "Q1186975",
+      "labels": {
+        "pt": "Ateísmo Marxista-leninista",
+        "en": "Marxist‒Leninist atheism"
+      },
+      "sitelinks": 24,
+      "depth": 1
+    },
+    {
+      "qid": "Q485393",
+      "labels": {
+        "pt": "marxismo analítico",
+        "en": "analytical Marxism"
+      },
+      "sitelinks": 22,
+      "depth": 1
+    },
+    {
+      "qid": "Q3842",
+      "labels": {
+        "pt": "Humanismo marxista",
+        "en": "Marxist humanism"
+      },
+      "sitelinks": 19,
+      "depth": 1
+    },
+    {
+      "qid": "Q5062764",
+      "labels": {
+        "pt": "Marxismo Centrista",
+        "en": "Centrist Marxism"
+      },
+      "sitelinks": 19,
+      "depth": 1
+    },
+    {
+      "qid": "Q937465",
+      "labels": {
+        "pt": "marxismo ortodoxo",
+        "en": "Orthodox Marxism"
+      },
+      "sitelinks": 16,
+      "depth": 1
+    },
+    {
+      "qid": "Q1000683",
+      "labels": {
+        "pt": null,
+        "en": "Budapest School"
+      },
+      "sitelinks": 13,
+      "depth": 1
+    },
+    {
+      "qid": "Q3052803",
+      "labels": {
+        "pt": "marxismo libertário",
+        "en": "libertarian Marxism"
+      },
+      "sitelinks": 12,
+      "depth": 1
+    },
+    {
+      "qid": "Q6778656",
+      "labels": {
+        "pt": "teoria marxista de relações internacionais",
+        "en": "Marxist international relations theory"
+      },
+      "sitelinks": 11,
+      "depth": 1
+    },
+    {
+      "qid": "Q7096125",
+      "labels": {
+        "pt": null,
+        "en": "open Marxism"
+      },
+      "sitelinks": 7,
+      "depth": 1
+    },
+    {
+      "qid": "Q6041898",
+      "labels": {
+        "pt": null,
+        "en": "instrumental Marxism"
+      },
+      "sitelinks": 3,
+      "depth": 1
+    },
+    {
+      "qid": "Q12352476",
+      "labels": {
+        "pt": null,
+        "en": "Menshevism"
+      },
+      "sitelinks": 2,
+      "depth": 1
+    },
+    {
+      "qid": "Q25377236",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 2,
+      "depth": 1
+    },
+    {
+      "qid": "Q31900235",
+      "labels": {
+        "pt": null,
+        "en": "Revolutionary Marxism"
+      },
+      "sitelinks": 1,
+      "depth": 1
+    },
+    {
+      "qid": "Q84316366",
+      "labels": {
+        "pt": null,
+        "en": "Marxism in Catalonia"
+      },
+      "sitelinks": 1,
+      "depth": 1
+    },
+    {
+      "qid": "Q179121",
+      "labels": {
+        "pt": "estalinismo",
+        "en": "Stalinism"
+      },
+      "sitelinks": 85,
+      "depth": 2
+    },
+    {
+      "qid": "Q167651",
+      "labels": {
+        "pt": "Maoísmo",
+        "en": "Maoism"
+      },
+      "sitelinks": 79,
+      "depth": 2
+    },
+    {
+      "qid": "Q181133",
+      "labels": {
+        "pt": "trotskismo",
+        "en": "Trotskyism"
+      },
+      "sitelinks": 65,
+      "depth": 2
+    },
+    {
+      "qid": "Q206743",
+      "labels": {
+        "pt": "Eurocomunismo",
+        "en": "Eurocommunism"
+      },
+      "sitelinks": 47,
+      "depth": 2
+    },
+    {
+      "qid": "Q663333",
+      "labels": {
+        "pt": "Titoísmo",
+        "en": "Titoism"
+      },
+      "sitelinks": 44,
+      "depth": 2
+    },
+    {
+      "qid": "Q1066224",
+      "labels": {
+        "pt": "comunismo de esquerda",
+        "en": "left communism"
+      },
+      "sitelinks": 31,
+      "depth": 2
+    },
+    {
+      "qid": "Q8881",
+      "labels": {
+        "pt": "socialismo do século XXI",
+        "en": "socialism of the 21st century"
+      },
+      "sitelinks": 30,
+      "depth": 2
+    },
+    {
+      "qid": "Q2712657",
+      "labels": {
+        "pt": "Antirrevisionismo",
+        "en": "anti-revisionism"
+      },
+      "sitelinks": 30,
+      "depth": 2
+    },
+    {
+      "qid": "Q1692115",
+      "labels": {
+        "pt": "Nacional Comunismo",
+        "en": "national communism"
+      },
+      "sitelinks": 27,
+      "depth": 2
+    },
+    {
+      "qid": "Q1049968",
+      "labels": {
+        "pt": "castrismo",
+        "en": "Castroism"
+      },
+      "sitelinks": 23,
+      "depth": 2
+    },
+    {
+      "qid": "Q18127879",
+      "labels": {
+        "pt": "Marxismo–Leninismo–Maoismo",
+        "en": "Marxism–Leninism–Maoism"
+      },
+      "sitelinks": 19,
+      "depth": 2
+    },
+    {
+      "qid": "Q904148",
+      "labels": {
+        "pt": "Pensamento Ho Chi Minh",
+        "en": "Ho Chi Minh Thought"
+      },
+      "sitelinks": 17,
+      "depth": 2
+    },
+    {
+      "qid": "Q1109552",
+      "labels": {
+        "pt": "Operaísmo",
+        "en": "Workerism"
+      },
+      "sitelinks": 15,
+      "depth": 2
+    },
+    {
+      "qid": "Q167376",
+      "labels": {
+        "pt": "De Leonismo",
+        "en": "De Leonism"
+      },
+      "sitelinks": 13,
+      "depth": 2
+    },
+    {
+      "qid": "Q104864469",
+      "labels": {
+        "pt": "Pensamento de Kaysone Phomvihane",
+        "en": "Kaysone Phomvihane Thought"
+      },
+      "sitelinks": 8,
+      "depth": 2
+    },
+    {
+      "qid": "Q65160558",
+      "labels": {
+        "pt": null,
+        "en": "Machelism"
+      },
+      "sitelinks": 3,
+      "depth": 2
+    },
+    {
+      "qid": "Q42896194",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 2,
+      "depth": 2
+    },
+    {
+      "qid": "Q10433159",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q11774982",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 1,
+      "depth": 2
+    },
+    {
+      "qid": "Q571627",
+      "labels": {
+        "pt": "nacional-bolchevismo",
+        "en": "National Bolshevism"
+      },
+      "sitelinks": 34,
+      "depth": 3
+    },
+    {
+      "qid": "Q589468",
+      "labels": {
+        "pt": "Hoxhaismo",
+        "en": "Hoxhaism"
+      },
+      "sitelinks": 34,
+      "depth": 3
+    },
+    {
+      "qid": "Q933306",
+      "labels": {
+        "pt": "Comunismo de conselhos",
+        "en": "council communism"
+      },
+      "sitelinks": 31,
+      "depth": 3
+    },
+    {
+      "qid": "Q3413640",
+      "labels": {
+        "pt": "Quarta Internacional Posadista",
+        "en": "Fourth International Posadist"
+      },
+      "sitelinks": 12,
+      "depth": 3
+    },
+    {
+      "qid": "Q6778617",
+      "labels": {
+        "pt": "Caminho Marxismo-Leninismo-Maoísmo-Prachanda",
+        "en": "Marxism–Leninism–Maoism–Prachanda Path"
+      },
+      "sitelinks": 8,
+      "depth": 3
+    },
+    {
+      "qid": "Q2276041",
+      "labels": {
+        "pt": null,
+        "en": "Trotskyism in Vietnam"
+      },
+      "sitelinks": 7,
+      "depth": 3
+    },
+    {
+      "qid": "Q7104504",
+      "labels": {
+        "pt": null,
+        "en": "Orthodox Trotskyism"
+      },
+      "sitelinks": 7,
+      "depth": 3
+    },
+    {
+      "qid": "Q2910755",
+      "labels": {
+        "pt": "bordiguismo",
+        "en": "bordigism"
+      },
+      "sitelinks": 6,
+      "depth": 3
+    },
+    {
+      "qid": "Q82162548",
+      "labels": {
+        "pt": "Pensamento Gonzalo",
+        "en": "Gonzalo Thought"
+      },
+      "sitelinks": 6,
+      "depth": 3
+    },
+    {
+      "qid": "Q3565648",
+      "labels": {
+        "pt": null,
+        "en": "Archeio-Marxism"
+      },
+      "sitelinks": 4,
+      "depth": 3
+    },
+    {
+      "qid": "Q1508835",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 3,
+      "depth": 3
+    },
+    {
+      "qid": "Q6516835",
+      "labels": {
+        "pt": "Comunismo de esquerda na China",
+        "en": "Left Communism in China"
+      },
+      "sitelinks": 3,
+      "depth": 3
+    },
+    {
+      "qid": "Q7318890",
+      "labels": {
+        "pt": null,
+        "en": "Revolutionary Workers' Party"
+      },
+      "sitelinks": 3,
+      "depth": 3
+    },
+    {
+      "qid": "Q7318888",
+      "labels": {
+        "pt": null,
+        "en": "Revolutionary Workers' Party-Struggle"
+      },
+      "sitelinks": 2,
+      "depth": 3
+    },
+    {
+      "qid": "Q7460152",
+      "labels": {
+        "pt": null,
+        "en": "Shachtmanism"
+      },
+      "sitelinks": 2,
+      "depth": 3
+    },
+    {
+      "qid": "Q47010202",
+      "labels": {
+        "pt": null,
+        "en": "Second Great Rectification Movement"
+      },
+      "sitelinks": 2,
+      "depth": 3
+    },
+    {
+      "qid": "Q60760598",
+      "labels": {
+        "pt": null,
+        "en": "African Peoples' Democratic Union of Southern Africa"
+      },
+      "sitelinks": 2,
+      "depth": 3
+    },
+    {
+      "qid": "Q141108933",
+      "labels": {
+        "pt": null,
+        "en": "Morenoism"
+      },
+      "sitelinks": 2,
+      "depth": 3
+    },
+    {
+      "qid": "Q5154504",
+      "labels": {
+        "pt": null,
+        "en": "Communist Vanguard of the Revolutionary Workers' Party"
+      },
+      "sitelinks": 1,
+      "depth": 3
+    },
+    {
+      "qid": "Q10650070",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 1,
+      "depth": 3
+    }
+  ],
+  "edges": [
+    {
+      "child": "Q3842",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q8881",
+      "parent": "Q2083688",
+      "property": "P279"
+    },
+    {
+      "child": "Q155059",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q167376",
+      "parent": "Q3052803",
+      "property": "P279"
+    },
+    {
+      "child": "Q167651",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q179121",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q181133",
+      "parent": "Q155059",
+      "property": "P279"
+    },
+    {
+      "child": "Q206743",
+      "parent": "Q2083688",
+      "property": "P279"
+    },
+    {
+      "child": "Q211930",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q211930",
+      "parent": "Q155059",
+      "property": "P279"
+    },
+    {
+      "child": "Q485393",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q571627",
+      "parent": "Q1692115",
+      "property": "P279"
+    },
+    {
+      "child": "Q589468",
+      "parent": "Q2712657",
+      "property": "P279"
+    },
+    {
+      "child": "Q663333",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q904148",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q917453",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q933306",
+      "parent": "Q1066224",
+      "property": "P279"
+    },
+    {
+      "child": "Q937465",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q1000683",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q1049968",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q1058263",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q1066224",
+      "parent": "Q3052803",
+      "property": "P279"
+    },
+    {
+      "child": "Q1109552",
+      "parent": "Q1058263",
+      "property": "P279"
+    },
+    {
+      "child": "Q1109552",
+      "parent": "Q3052803",
+      "property": "P279"
+    },
+    {
+      "child": "Q1186975",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q1186975",
+      "parent": "Q155059",
+      "property": "P279"
+    },
+    {
+      "child": "Q1376649",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q1508835",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q1692115",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q2083688",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q2276041",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q2712657",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q2910755",
+      "parent": "Q1066224",
+      "property": "P279"
+    },
+    {
+      "child": "Q3052803",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q3413640",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q3565648",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q5062764",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q5154504",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q6041898",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q6516835",
+      "parent": "Q1066224",
+      "property": "P279"
+    },
+    {
+      "child": "Q6778617",
+      "parent": "Q18127879",
+      "property": "P279"
+    },
+    {
+      "child": "Q6778656",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q7096125",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q7104504",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q7318888",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q7318890",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q7460152",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q10433159",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q10650070",
+      "parent": "Q167651",
+      "property": "P279"
+    },
+    {
+      "child": "Q11774982",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q12352476",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q18127879",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q25377236",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q31900235",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q42896194",
+      "parent": "Q1186975",
+      "property": "P279"
+    },
+    {
+      "child": "Q47010202",
+      "parent": "Q2712657",
+      "property": "P279"
+    },
+    {
+      "child": "Q60760598",
+      "parent": "Q181133",
+      "property": "P279"
+    },
+    {
+      "child": "Q65160558",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q82162548",
+      "parent": "Q18127879",
+      "property": "P279"
+    },
+    {
+      "child": "Q84316366",
+      "parent": "Q7264",
+      "property": "P279"
+    },
+    {
+      "child": "Q104864469",
+      "parent": "Q211930",
+      "property": "P279"
+    },
+    {
+      "child": "Q104864469",
+      "parent": "Q904148",
+      "property": "P279"
+    },
+    {
+      "child": "Q141108933",
+      "parent": "Q181133",
+      "property": "P279"
+    }
+  ]
+}

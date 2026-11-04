@@ -1,0 +1,763 @@
+{
+  "name": "anarquismo",
+  "root": "Q6199",
+  "provenance": {
+    "source": "Wikidata",
+    "property": "P279",
+    "meaning": "child P279 parent (subclasse de), direção filho -> pai",
+    "retrievedAt": "2026-11-04",
+    "endpoints": ["https://query.wikidata.org/sparql", "https://www.wikidata.org/w/api.php"],
+    "rules": {
+      "maxDepth": 5,
+      "maxNodesPerLevel": 20,
+      "selection": "sitelinks desc, desempate por QID numérico; só ramos aceitos são explorados"
+    }
+  },
+  "levels": [
+    {
+      "depth": 0,
+      "candidates": 1,
+      "kept": 1,
+      "cut": 0
+    },
+    {
+      "depth": 1,
+      "candidates": 45,
+      "kept": 20,
+      "cut": 25
+    },
+    {
+      "depth": 2,
+      "candidates": 12,
+      "kept": 12,
+      "cut": 0
+    },
+    {
+      "depth": 3,
+      "candidates": 7,
+      "kept": 7,
+      "cut": 0
+    },
+    {
+      "depth": 4,
+      "candidates": 7,
+      "kept": 7,
+      "cut": 0
+    },
+    {
+      "depth": 5,
+      "candidates": 3,
+      "kept": 3,
+      "cut": 0
+    }
+  ],
+  "nodes": [
+    {
+      "qid": "Q6199",
+      "labels": {
+        "pt": "anarquismo",
+        "en": "anarchism"
+      },
+      "sitelinks": 185,
+      "depth": 0
+    },
+    {
+      "qid": "Q188670",
+      "labels": {
+        "pt": "anarcocomunismo",
+        "en": "anarcho-communism"
+      },
+      "sitelinks": 55,
+      "depth": 1
+    },
+    {
+      "qid": "Q188993",
+      "labels": {
+        "pt": "anarcossindicalismo",
+        "en": "anarcho-syndicalism"
+      },
+      "sitelinks": 54,
+      "depth": 1
+    },
+    {
+      "qid": "Q211380",
+      "labels": {
+        "pt": "anarcafeminismo",
+        "en": "anarcha-feminism"
+      },
+      "sitelinks": 53,
+      "depth": 1
+    },
+    {
+      "qid": "Q329659",
+      "labels": {
+        "pt": "anarquismo cristão",
+        "en": "Christian anarchism"
+      },
+      "sitelinks": 38,
+      "depth": 1
+    },
+    {
+      "qid": "Q7076",
+      "labels": {
+        "pt": "anarquismo individualista",
+        "en": "individualist anarchism"
+      },
+      "sitelinks": 36,
+      "depth": 1
+    },
+    {
+      "qid": "Q294864",
+      "labels": {
+        "pt": "anarquismo verde",
+        "en": "green anarchism"
+      },
+      "sitelinks": 35,
+      "depth": 1
+    },
+    {
+      "qid": "Q223178",
+      "labels": {
+        "pt": "anarquismo coletivista",
+        "en": "collectivist anarchism"
+      },
+      "sitelinks": 29,
+      "depth": 1
+    },
+    {
+      "qid": "Q176339",
+      "labels": {
+        "pt": "plataformismo",
+        "en": "platformism"
+      },
+      "sitelinks": 23,
+      "depth": 1
+    },
+    {
+      "qid": "Q202005",
+      "labels": {
+        "pt": "anarquismo insurrecionário",
+        "en": "insurrectionary anarchism"
+      },
+      "sitelinks": 23,
+      "depth": 1
+    },
+    {
+      "qid": "Q486371",
+      "labels": {
+        "pt": "Anarcopacifismo",
+        "en": "anarcho-pacifism"
+      },
+      "sitelinks": 23,
+      "depth": 1
+    },
+    {
+      "qid": "Q370919",
+      "labels": {
+        "pt": "anarquismo social",
+        "en": "social anarchism"
+      },
+      "sitelinks": 22,
+      "depth": 1
+    },
+    {
+      "qid": "Q2648196",
+      "labels": {
+        "pt": "anarco-queer",
+        "en": "anarcho-queer"
+      },
+      "sitelinks": 20,
+      "depth": 1
+    },
+    {
+      "qid": "Q486271",
+      "labels": {
+        "pt": "anarquismo sem adjetivos",
+        "en": "anarchism without adjectives"
+      },
+      "sitelinks": 17,
+      "depth": 1
+    },
+    {
+      "qid": "Q2574500",
+      "labels": {
+        "pt": "Anarquismo pós-esquerdismo",
+        "en": "post-left anarchy"
+      },
+      "sitelinks": 17,
+      "depth": 1
+    },
+    {
+      "qid": "Q952745",
+      "labels": {
+        "pt": "pós-anarquismo",
+        "en": "post-anarchism"
+      },
+      "sitelinks": 15,
+      "depth": 1
+    },
+    {
+      "qid": "Q3508949",
+      "labels": {
+        "pt": "Anarquismo sintetista",
+        "en": "synthesis anarchism"
+      },
+      "sitelinks": 15,
+      "depth": 1
+    },
+    {
+      "qid": "Q5348185",
+      "labels": {
+        "pt": "Anarquismo egoísta",
+        "en": "egoist anarchism"
+      },
+      "sitelinks": 15,
+      "depth": 1
+    },
+    {
+      "qid": "Q10323082",
+      "labels": {
+        "pt": "Magonismo",
+        "en": "Magonism"
+      },
+      "sitelinks": 13,
+      "depth": 1
+    },
+    {
+      "qid": "Q3292974",
+      "labels": {
+        "pt": "Infoanarquismo",
+        "en": "info-anarchism"
+      },
+      "sitelinks": 10,
+      "depth": 1
+    },
+    {
+      "qid": "Q3615062",
+      "labels": {
+        "pt": "Anarconaturismo",
+        "en": "anarcho-naturism"
+      },
+      "sitelinks": 10,
+      "depth": 1
+    },
+    {
+      "qid": "Q667672",
+      "labels": {
+        "pt": "anarcoprimitivismo",
+        "en": "anarcho-primitivism"
+      },
+      "sitelinks": 41,
+      "depth": 2
+    },
+    {
+      "qid": "Q1852084",
+      "labels": {
+        "pt": "socialismo libertário",
+        "en": "libertarian socialism"
+      },
+      "sitelinks": 41,
+      "depth": 2
+    },
+    {
+      "qid": "Q657907",
+      "labels": {
+        "pt": "tolstoísmo",
+        "en": "Tolstoyan movement"
+      },
+      "sitelinks": 29,
+      "depth": 2
+    },
+    {
+      "qid": "Q10910958",
+      "labels": {
+        "pt": "ecologia social",
+        "en": "social ecology"
+      },
+      "sitelinks": 20,
+      "depth": 2
+    },
+    {
+      "qid": "Q945763",
+      "labels": {
+        "pt": null,
+        "en": "free-market anarchism"
+      },
+      "sitelinks": 17,
+      "depth": 2
+    },
+    {
+      "qid": "Q778779",
+      "labels": {
+        "pt": "Anarquismo filosófico",
+        "en": "philosophical anarchism"
+      },
+      "sitelinks": 16,
+      "depth": 2
+    },
+    {
+      "qid": "Q507238",
+      "labels": {
+        "pt": "municipalismo libertário",
+        "en": "libertarian municipalism"
+      },
+      "sitelinks": 9,
+      "depth": 2
+    },
+    {
+      "qid": "Q6025357",
+      "labels": {
+        "pt": null,
+        "en": "Individualist anarchism in the United States"
+      },
+      "sitelinks": 5,
+      "depth": 2
+    },
+    {
+      "qid": "Q4897042",
+      "labels": {
+        "pt": "Veganarquismo",
+        "en": "Veganarchism"
+      },
+      "sitelinks": 4,
+      "depth": 2
+    },
+    {
+      "qid": "Q48834915",
+      "labels": {
+        "pt": null,
+        "en": "Banda del Matese"
+      },
+      "sitelinks": 2,
+      "depth": 2
+    },
+    {
+      "qid": "Q116450857",
+      "labels": {
+        "pt": null,
+        "en": "anarchist terrorism"
+      },
+      "sitelinks": 0,
+      "depth": 2
+    },
+    {
+      "qid": "Q137524168",
+      "labels": {
+        "pt": null,
+        "en": "Anarcho-Nihilist Cadres"
+      },
+      "sitelinks": 0,
+      "depth": 2
+    },
+    {
+      "qid": "Q192424",
+      "labels": {
+        "pt": "Anarcocapitalismo",
+        "en": "anarcho-capitalism"
+      },
+      "sitelinks": 56,
+      "depth": 3
+    },
+    {
+      "qid": "Q844212",
+      "labels": {
+        "pt": "mutualismo",
+        "en": "mutualism"
+      },
+      "sitelinks": 34,
+      "depth": 3
+    },
+    {
+      "qid": "Q127393",
+      "labels": {
+        "pt": "autonomismo",
+        "en": "autonomism"
+      },
+      "sitelinks": 32,
+      "depth": 3
+    },
+    {
+      "qid": "Q1989705",
+      "labels": {
+        "pt": "Agorismo",
+        "en": "agorism"
+      },
+      "sitelinks": 26,
+      "depth": 3
+    },
+    {
+      "qid": "Q2705134",
+      "labels": {
+        "pt": "Comunalismo",
+        "en": "libertarian communalism"
+      },
+      "sitelinks": 22,
+      "depth": 3
+    },
+    {
+      "qid": "Q3052803",
+      "labels": {
+        "pt": "marxismo libertário",
+        "en": "libertarian Marxism"
+      },
+      "sitelinks": 12,
+      "depth": 3
+    },
+    {
+      "qid": "Q10549161",
+      "labels": {
+        "pt": null,
+        "en": null
+      },
+      "sitelinks": 1,
+      "depth": 3
+    },
+    {
+      "qid": "Q1066224",
+      "labels": {
+        "pt": "comunismo de esquerda",
+        "en": "left communism"
+      },
+      "sitelinks": 31,
+      "depth": 4
+    },
+    {
+      "qid": "Q794833",
+      "labels": {
+        "pt": "criptoanarquismo",
+        "en": "crypto-anarchism"
+      },
+      "sitelinks": 25,
+      "depth": 4
+    },
+    {
+      "qid": "Q1186368",
+      "labels": {
+        "pt": "confederalismo democrático",
+        "en": "democratic confederalism"
+      },
+      "sitelinks": 25,
+      "depth": 4
+    },
+    {
+      "qid": "Q1109552",
+      "labels": {
+        "pt": "Operaísmo",
+        "en": "Workerism"
+      },
+      "sitelinks": 15,
+      "depth": 4
+    },
+    {
+      "qid": "Q167376",
+      "labels": {
+        "pt": "De Leonismo",
+        "en": "De Leonism"
+      },
+      "sitelinks": 13,
+      "depth": 4
+    },
+    {
+      "qid": "Q140520866",
+      "labels": {
+        "pt": null,
+        "en": "Autonomist anarchists"
+      },
+      "sitelinks": 2,
+      "depth": 4
+    },
+    {
+      "qid": "Q140474677",
+      "labels": {
+        "pt": null,
+        "en": "Autonomist Marxism"
+      },
+      "sitelinks": 1,
+      "depth": 4
+    },
+    {
+      "qid": "Q933306",
+      "labels": {
+        "pt": "Comunismo de conselhos",
+        "en": "council communism"
+      },
+      "sitelinks": 31,
+      "depth": 5
+    },
+    {
+      "qid": "Q2910755",
+      "labels": {
+        "pt": "bordiguismo",
+        "en": "bordigism"
+      },
+      "sitelinks": 6,
+      "depth": 5
+    },
+    {
+      "qid": "Q6516835",
+      "labels": {
+        "pt": "Comunismo de esquerda na China",
+        "en": "Left Communism in China"
+      },
+      "sitelinks": 3,
+      "depth": 5
+    }
+  ],
+  "edges": [
+    {
+      "child": "Q7076",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q127393",
+      "parent": "Q1852084",
+      "property": "P279"
+    },
+    {
+      "child": "Q167376",
+      "parent": "Q3052803",
+      "property": "P279"
+    },
+    {
+      "child": "Q176339",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q188670",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q188993",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q192424",
+      "parent": "Q945763",
+      "property": "P279"
+    },
+    {
+      "child": "Q202005",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q211380",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q223178",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q294864",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q329659",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q370919",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q486271",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q486371",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q507238",
+      "parent": "Q952745",
+      "property": "P279"
+    },
+    {
+      "child": "Q657907",
+      "parent": "Q329659",
+      "property": "P279"
+    },
+    {
+      "child": "Q667672",
+      "parent": "Q7076",
+      "property": "P279"
+    },
+    {
+      "child": "Q667672",
+      "parent": "Q294864",
+      "property": "P279"
+    },
+    {
+      "child": "Q778779",
+      "parent": "Q7076",
+      "property": "P279"
+    },
+    {
+      "child": "Q794833",
+      "parent": "Q192424",
+      "property": "P279"
+    },
+    {
+      "child": "Q844212",
+      "parent": "Q945763",
+      "property": "P279"
+    },
+    {
+      "child": "Q933306",
+      "parent": "Q1066224",
+      "property": "P279"
+    },
+    {
+      "child": "Q945763",
+      "parent": "Q7076",
+      "property": "P279"
+    },
+    {
+      "child": "Q952745",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q1066224",
+      "parent": "Q3052803",
+      "property": "P279"
+    },
+    {
+      "child": "Q1109552",
+      "parent": "Q3052803",
+      "property": "P279"
+    },
+    {
+      "child": "Q1186368",
+      "parent": "Q2705134",
+      "property": "P279"
+    },
+    {
+      "child": "Q1852084",
+      "parent": "Q370919",
+      "property": "P279"
+    },
+    {
+      "child": "Q1989705",
+      "parent": "Q945763",
+      "property": "P279"
+    },
+    {
+      "child": "Q2574500",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q2648196",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q2705134",
+      "parent": "Q1852084",
+      "property": "P279"
+    },
+    {
+      "child": "Q2910755",
+      "parent": "Q1066224",
+      "property": "P279"
+    },
+    {
+      "child": "Q3052803",
+      "parent": "Q1852084",
+      "property": "P279"
+    },
+    {
+      "child": "Q3292974",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q3508949",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q3615062",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q4897042",
+      "parent": "Q294864",
+      "property": "P279"
+    },
+    {
+      "child": "Q5348185",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q6025357",
+      "parent": "Q7076",
+      "property": "P279"
+    },
+    {
+      "child": "Q6516835",
+      "parent": "Q1066224",
+      "property": "P279"
+    },
+    {
+      "child": "Q10323082",
+      "parent": "Q6199",
+      "property": "P279"
+    },
+    {
+      "child": "Q10323082",
+      "parent": "Q188670",
+      "property": "P279"
+    },
+    {
+      "child": "Q10549161",
+      "parent": "Q667672",
+      "property": "P279"
+    },
+    {
+      "child": "Q10910958",
+      "parent": "Q294864",
+      "property": "P279"
+    },
+    {
+      "child": "Q48834915",
+      "parent": "Q202005",
+      "property": "P279"
+    },
+    {
+      "child": "Q116450857",
+      "parent": "Q188993",
+      "property": "P279"
+    },
+    {
+      "child": "Q137524168",
+      "parent": "Q202005",
+      "property": "P279"
+    },
+    {
+      "child": "Q140474677",
+      "parent": "Q127393",
+      "property": "P279"
+    },
+    {
+      "child": "Q140520866",
+      "parent": "Q127393",
+      "property": "P279"
+    }
+  ]
+}
