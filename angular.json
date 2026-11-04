@@ -28,12 +28,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/content",
-                "output": "content",
-                "ignore": ["knowledge/**", "translations/**", "atlas.json"]
               }
             ],
             "styles": ["src/styles.scss"],

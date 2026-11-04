@@ -9,7 +9,7 @@ import { readSourceGraph } from './source-graph.mjs';
 import { buildContent } from './build-content.mjs';
 
 const catalogue = JSON.parse(
-  await readFile(new URL('../../src/content/translations/catalogue.json', import.meta.url)),
+  await readFile(new URL('../../content/translations/catalogue.json', import.meta.url)),
 );
 test('translation reviews explicitly identify assistant review and reject source drift', async () => {
   const graph = await readSourceGraph();

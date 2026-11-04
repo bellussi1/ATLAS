@@ -1,20 +1,19 @@
-interface PublishedIdeology {
-  pageUrl: string;
-  supplementUrl: string;
-  loadPage: () => Promise<{ default: unknown }>;
-  loadSupplement: () => Promise<{ default: unknown }>;
+/**
+ * Source files of the published readings. Build-time only: `content:build` compiles them into the
+ * R2 release, and the app reads them from there, never from its bundle.
+ */
+export interface PublishedIdeologySource {
+  page: string;
+  supplement: string;
 }
-export const publishedIdeologies: Readonly<Record<string, PublishedIdeology | undefined>> = {
+
+export const publishedIdeologies: Readonly<Record<string, PublishedIdeologySource | undefined>> = {
   marxismo: {
-    pageUrl: '/content/ideologies/marxismo/page.json',
-    supplementUrl: '/content/graph/marxismo.json',
-    loadPage: () => import('../../../../content/ideologies/marxismo/page.json'),
-    loadSupplement: () => import('../../../../content/graph/marxismo.json'),
+    page: 'content/ideologies/marxismo/page.json',
+    supplement: 'content/graph/marxismo.json',
   },
   liberalismo: {
-    pageUrl: '/content/ideologies/liberalismo/page.json',
-    supplementUrl: '/content/graph/liberalismo.json',
-    loadPage: () => import('../../../../content/ideologies/liberalismo/page.json'),
-    loadSupplement: () => import('../../../../content/graph/liberalismo.json'),
+    page: 'content/ideologies/liberalismo/page.json',
+    supplement: 'content/graph/liberalismo.json',
   },
 };

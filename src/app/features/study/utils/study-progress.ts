@@ -4,7 +4,6 @@ import { demonstrationPath } from '@study/data/demonstration-path';
 export const STUDY_PATH_ID = demonstrationPath.id;
 export const STUDY_LESSON_ID = demonstrationPath.lessons[0].id;
 export const STUDY_EXERCISE_ID = demonstrationPath.lessons[0].exercises[0].id;
-export const STORAGE_KEY = 'atlas-study-progress-v1';
 
 export function emptyProgress(): ProgressVersion {
   return { version: 1, pathId: STUDY_PATH_ID, completedLessonIds: [], reviewItems: [] };

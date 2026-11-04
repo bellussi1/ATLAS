@@ -42,7 +42,7 @@ npm run test:e2e
 
 ## Como o conteúdo funciona
 
-Dossiês ficam em `src/content/ideologies/<slug>/page.json`, com fontes e relações em `src/content/graph/<slug>.json`. Um atlas novo é um dossiê novo: copie o do Liberalismo, troque capítulos e fontes e registre o slug em `src/app/features/ideologies/data/published-ideologies.ts`. O build valida tudo com Zod e recusa referências quebradas.
+Dossiês ficam em `content/ideologies/<slug>/page.json`, com fontes e relações em `content/graph/<slug>.json`. Um atlas novo é um dossiê novo: copie o do Liberalismo, troque capítulos e fontes e registre o slug em `src/app/features/ideologies/data/published-ideologies.ts`. O build valida tudo com Zod e recusa referências quebradas.
 
 Leia também [Arquitetura](docs/architecture/ARCHITECTURE.md) e [Padrão de páginas](docs/design/PAGE_STANDARD.md).
 

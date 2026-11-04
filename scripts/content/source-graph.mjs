@@ -8,9 +8,7 @@ import { z } from 'zod';
 import { knowledgeGraphSchema } from '../../src/app/core/content/models/content-schema.ts';
 import { reconcileRequests } from '../ingestion/wikimedia/reconcile.mjs';
 
-export const sourceDirectory = fileURLToPath(
-  new URL('../../src/content/knowledge/', import.meta.url),
-);
+export const sourceDirectory = fileURLToPath(new URL('../../content/knowledge/', import.meta.url));
 export const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 export function validateSourceGraph(input) {
   const graph = knowledgeGraphSchema.parse(input);

@@ -110,12 +110,6 @@ export function filterDesk(entities: readonly DeskEntity[], query: DeskQuery): D
 }
 
 /** Counts per kind, so filter chips can show what each one keeps. */
-export function kindCounts(entities: readonly DeskEntity[]): { kind: DeskKind; count: number }[] {
-  const counts = new Map<DeskKind, number>();
-  for (const e of entities) counts.set(e.kind, (counts.get(e.kind) ?? 0) + 1);
-  return [...counts].map(([kind, count]) => ({ kind, count })).sort((a, b) => b.count - a.count);
-}
-
 /** Dated entities grouped in fixed spans, from the earliest to the latest bucket. */
 export function eraBuckets(entities: readonly DeskEntity[]): { start: number; count: number }[] {
   const eras = entities.flatMap((e) => eraOf(e) ?? []);
@@ -149,10 +143,6 @@ export function deskLinks(atlas: Atlas | undefined, id: string): DeskLink[] {
 }
 
 /** The relation that joined two consecutive steps of a chain, if any. */
-export function linkBetween(atlas: Atlas | undefined, from: string, to: string) {
-  return deskLinks(atlas, from).find((link) => link.otherId === to);
-}
-
 /** Keeps only known ids, without repeats, so a shared URL cannot build a broken chain. */
 export function parseChain(value: string | null, entities: readonly DeskEntity[]): string[] {
   const known = new Set(entities.map((e) => e.id));

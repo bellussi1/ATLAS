@@ -14,10 +14,14 @@ export const contentManifestSchema = z.object({
   release: z.string().regex(/^[a-f0-9]{64}$/),
   graph: z.object({ id: z.string(), version: z.string(), updatedAt: z.iso.date() }),
   collections: z.array(resourceSchema.extend({ id: z.string() })).min(1),
+  ideologies: z.array(resourceSchema.extend({ id: z.string() })),
   search: resourceSchema,
   adjacency: resourceSchema,
   layouts: resourceSchema,
 });
+/** A published reading: its page and the sourced relations it cites, released as one object. */
+export const ideologyBundleSchema = z.object({ page: z.unknown(), supplement: z.unknown() });
+export type IdeologyBundle = z.infer<typeof ideologyBundleSchema>;
 export const searchIndexSchema = z.array(
   z.object({
     sourceLocale: z.string().optional(),

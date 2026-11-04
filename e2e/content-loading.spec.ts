@@ -30,7 +30,7 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   await expect(page.locator('h1')).toHaveText('Marxismo');
   const compiled = resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path));
   const manifest = await loadManifest(page.request);
-  expect(compiled).toHaveLength(manifest.collections.length + 4);
+  expect(compiled).toHaveLength(manifest.collections.length + manifest.ideologies.length + 4);
   expect(new Set(compiled).size).toBe(compiled.length);
   expect(compiled).toContain(`/c/${manifest.adjacency.sha256}.json`);
   await page

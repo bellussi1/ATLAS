@@ -22,4 +22,3 @@ export const explorationLayoutSchema = z.object({
   ),
   timeline: explorationTimelineSchema,
 });
-export type ExplorationTimeline = z.infer<typeof explorationTimelineSchema>;

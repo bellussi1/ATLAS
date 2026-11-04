@@ -5,6 +5,8 @@ import {
   type ContentManifest,
   contentManifestSchema,
   type ContentPackage,
+  type IdeologyBundle,
+  ideologyBundleSchema,
   layoutsSchema,
   searchIndexSchema,
 } from '@core/content/models/content-artifacts';
@@ -41,6 +43,7 @@ export class ContentRepository {
   private pinned?: ContentPointer;
   private manifest?: Promise<ContentManifest>;
   private pending?: Promise<KnowledgeGraph>;
+  private readonly readings = new Map<string, Promise<IdeologyBundle | null>>();
 
   get knowledgeGraph(): KnowledgeGraph {
     if (!this.state) throw new Error('Carregue o conteúdo antes de criar a página.');
@@ -63,6 +66,21 @@ export class ContentRepository {
     const atlas = atlasSchema.parse(await this.resource(entry, entry.file));
     if (atlas.id !== id) throw new Error('Identidade da coleção incompatível com o manifesto.');
     return atlas;
+  }
+
+  /** A published reading's page and supplement from the release; null when the release lacks it. */
+  loadIdeology(id: string): Promise<IdeologyBundle | null> {
+    let reading = this.readings.get(id);
+    if (!reading) {
+      reading = this.getManifest().then(async (manifest) => {
+        const entry = manifest.ideologies.find((ideology) => ideology.id === id);
+        if (!entry) return null;
+        return ideologyBundleSchema.parse(await this.resource(entry, entry.file));
+      });
+      this.readings.set(id, reading);
+      reading.catch(() => this.readings.delete(id));
+    }
+    return reading;
   }
 
   loadKnowledgeGraph(): Observable<KnowledgeGraph> {
@@ -188,6 +206,10 @@ export class ContentRepository {
         adjacency: adjacencySchema.parse(adjacency),
         layouts: layoutsSchema.parse(layouts),
       };
+      // Readings start with the graph but do not hold it: opening a reading awaits its request.
+      void Promise.all(manifest.ideologies.map((entry) => this.loadIdeology(entry.id))).catch(
+        () => undefined,
+      );
       return graph;
     })().catch((error: unknown) => {
       this.pending = undefined;

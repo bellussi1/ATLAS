@@ -46,6 +46,4 @@ export const progressVersionSchema = z.object({
 });
 export type Lesson = z.infer<typeof lessonSchema>;
 export type Exercise = z.infer<typeof exerciseSchema>;
-export type Feedback = z.infer<typeof feedbackSchema>;
-export type ReviewItem = z.infer<typeof reviewItemSchema>;
 export type ProgressVersion = z.infer<typeof progressVersionSchema>;

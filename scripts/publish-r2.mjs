@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Publishes the compiled content and licensed media to the public R2 bucket, then pins the
-// release in src/content/content-pointer.json. Run `npm run content:build` first. New licensed
+// release in content/content-pointer.json. Run `npm run content:build` first. New licensed
 // files are read from generated/media-source/ (never from the repository); a file already pinned
 // in the current pointer is not re-read and is checked against the bucket instead.
 import './content/register-source-modules.mjs';
@@ -38,6 +38,7 @@ async function loadArtifacts() {
   const manifest = contentManifestSchema.parse(JSON.parse(manifestBody.toString('utf8')));
   const resources = [
     ...manifest.collections,
+    ...manifest.ideologies,
     manifest.search,
     manifest.adjacency,
     manifest.layouts,
@@ -176,7 +177,7 @@ async function main() {
     if (!live.ok || (await live.text()) !== pointerText)
       throw new Error('pointer.json publicado não confere com o ponteiro local.');
     await atomicFile(pointerPath, pointerText);
-    console.log(`ponteiro atualizado: src/content/content-pointer.json (${pointer.release})`);
+    console.log(`ponteiro atualizado: content/content-pointer.json (${pointer.release})`);
   }
   for (const reason of skipped) console.log(`mídia não publicada: ${reason}`);
 }

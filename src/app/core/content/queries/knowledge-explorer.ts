@@ -87,7 +87,6 @@ export const explorerCatalogues = [
     description: 'Lugares e espaços documentados, distintos dos registros de países.',
   },
 ] as const;
-export type ExplorerCatalogue = (typeof explorerCatalogues)[number]['path'];
 // Fixed page: 6 columns × 4 rows of cards on desktop. The size is not a user choice.
 export const EXPLORER_PAGE_SIZE = 24;
 
