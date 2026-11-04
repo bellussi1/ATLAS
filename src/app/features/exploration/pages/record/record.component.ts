@@ -78,6 +78,15 @@ export class RecordComponent {
     if (!entity?.context || entity.context === entity.summary) return false;
     return !entity.sections.some((section) => section.paragraphs.includes(entity.context));
   });
+  /** Imported drafts carry their review warning in the context; it must stand out from prose. */
+  readonly isDraft = computed(() => this.entity()?.context.startsWith('Rascunho') ?? false);
+  /** Sections keep their source index, the public `section-N` anchor; ones equal to the lead are skipped. */
+  readonly readableSections = computed(() => {
+    const entity = this.entity();
+    return (entity?.sections ?? [])
+      .map((section, index) => ({ section, index }))
+      .filter(({ section }) => section.paragraphs.join(' ') !== entity?.summary);
+  });
   readonly context = computed(() =>
     this.entity() ? entityContext(this.repository, this.entity()!.id) : undefined,
   );
@@ -134,21 +143,31 @@ export class RecordComponent {
     const entity = this.entity();
     if (!entity) return [];
     const period = entity.temporalExtent;
+    const count = (label: string, total: number, target: string) => ({
+      label,
+      value: String(total),
+      target: total ? target : undefined,
+    });
     return [
-      { label: 'Tipo', value: this.entry()?.kindLabel ?? '' },
       ...(period
-        ? [{ label: 'Período', value: period.label ?? this.precisionLabel[period.precision] }]
+        ? [
+            {
+              label: 'Período',
+              value: period.label ?? this.precisionLabel[period.precision],
+              target: undefined,
+            },
+          ]
         : []),
-      { label: 'Afirmações', value: String(this.claims().length) },
-      { label: 'Conexões', value: String(this.context()?.connections.length ?? 0) },
-      { label: 'Fontes', value: String(this.context()?.sources.length ?? 0) },
+      count('Afirmações', this.claims().length, 'claims-title'),
+      count('Conexões', this.context()?.connections.length ?? 0, 'connections-title'),
+      count('Fontes', this.context()?.sources.length ?? 0, 'sources-title'),
     ];
   });
   readonly toc = computed(() => {
     const entity = this.entity();
     if (!entity) return [];
     return [
-      ...entity.sections.map((section, index) => ({
+      ...this.readableSections().map(({ section, index }) => ({
         id: 'section-' + index,
         label: section.heading,
       })),
