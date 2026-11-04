@@ -36,7 +36,9 @@
           <p class="aliases">Também chamado de {{ entity.aliases.join('; ') }}</p>
         }
         <p class="lead" [attr.lang]="presentation()?.locale">{{ entity.summary }}</p>
-        <p class="context" [attr.lang]="presentation()?.locale">{{ entity.context }}</p>
+        @if (showContext()) {
+          <p class="context" [attr.lang]="presentation()?.locale">{{ entity.context }}</p>
+        }
         <p class="record-actions">
           <button type="button" class="copy-link" (click)="copyLink()">Copiar link</button>
           <span role="status" class="copy-status">{{ copyStatus() }}</span>
@@ -119,47 +121,54 @@
           </p>
           @for (group of connectionGroups(); track group.label) {
             <p class="group-label">{{ group.label }} · {{ group.items.length }}</p>
-            @for (connection of group.items; track connection.id) {
-              <article class="connection">
-                <h3>
-                  <a
-                    [routerLink]="pathFor(connection.entityId)"
-                    [queryParams]="{ idioma: query().get('idioma'), origem: query().get('origem') }"
-                    queryParamsHandling="merge"
-                    >{{ connection.label }}</a
-                  >
-                </h3>
-                @if (connection.relation; as relation) {
-                  <p class="direction">
-                    {{
-                      relation.direction === 'incoming' ? 'Vínculo de entrada' : 'Vínculo de saída'
-                    }}
-                  </p>
-                  <details>
-                    <summary>Contexto e evidências do vínculo</summary>
-                    <p>{{ relation.context }}</p>
-                    <p>
-                      {{ statusLabel(relation.editorialStatus) }}. Incerteza:
-                      {{ uncertaintyLabel[relation.uncertainty] }}.
+            <div class="connection-list">
+              @for (connection of group.items; track connection.id) {
+                <article class="connection">
+                  <h3>
+                    <a
+                      [routerLink]="pathFor(connection.entityId)"
+                      [queryParams]="{
+                        idioma: query().get('idioma'),
+                        origem: query().get('origem'),
+                      }"
+                      queryParamsHandling="merge"
+                      >{{ connection.label }}</a
+                    >
+                  </h3>
+                  @if (connection.relation; as relation) {
+                    <p class="direction">
+                      {{
+                        relation.direction === 'incoming'
+                          ? 'Vínculo de entrada'
+                          : 'Vínculo de saída'
+                      }}
                     </p>
-                    @for (reference of relation.references; track reference.id) {
+                    <details>
+                      <summary>Contexto e evidências do vínculo</summary>
+                      <p>{{ relation.context }}</p>
                       <p>
-                        <a routerLink="/fontes" [fragment]="'source-' + reference.source.id">{{
-                          reference.source.title
-                        }}</a>
-                        · {{ reference.locator }}
+                        {{ statusLabel(relation.editorialStatus) }}. Incerteza:
+                        {{ uncertaintyLabel[relation.uncertainty] }}.
                       </p>
-                    }
-                    @if (relation.provenance; as provenance) {
-                      <p>
-                        <a [href]="provenance.url">Procedência: {{ provenance.source }}</a> ·
-                        {{ provenance.retrievedAt }}
-                      </p>
-                    }
-                  </details>
-                }
-              </article>
-            }
+                      @for (reference of relation.references; track reference.id) {
+                        <p>
+                          <a routerLink="/fontes" [fragment]="'source-' + reference.source.id">{{
+                            reference.source.title
+                          }}</a>
+                          · {{ reference.locator }}
+                        </p>
+                      }
+                      @if (relation.provenance; as provenance) {
+                        <p>
+                          <a [href]="provenance.url">Procedência: {{ provenance.source }}</a> ·
+                          {{ provenance.retrievedAt }}
+                        </p>
+                      }
+                    </details>
+                  }
+                </article>
+              }
+            </div>
           } @empty {
             <p>Não há conexões cadastradas para este registro.</p>
           }

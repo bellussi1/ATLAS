@@ -72,6 +72,12 @@ export class RecordComponent {
   });
   readonly entity = computed(() => this.presentation()?.entity);
   readonly languages = contentLanguageLabels;
+  /** The hero repeats the context only when no section already carries it. */
+  readonly showContext = computed(() => {
+    const entity = this.entity();
+    if (!entity?.context || entity.context === entity.summary) return false;
+    return !entity.sections.some((section) => section.paragraphs.includes(entity.context));
+  });
   readonly context = computed(() =>
     this.entity() ? entityContext(this.repository, this.entity()!.id) : undefined,
   );
