@@ -110,6 +110,8 @@ Evolução da enciclopédia, matriz de responsabilidades e fases: [Exploração 
 3. Para exploração de coleção, forneça configuração própria ao `IdeologyAtlasComponent`; não copie o atlas do Liberalismo. Leitura pode usar o renderer de blocos existente.
 4. Adicione rota lazy e metadados na feature, só dentro do escopo autorizado. Teste referências, slugs, estados vazio e erro, teclado, mobile, conteúdo prerenderizado e links. Exemplos não publicados ficam fora do registro e das rotas.
 
+Para uma tradição nova de ponta a ponta (registro, extração, grafo, capítulos, imagens e verificação), use o pipeline `npm run tradicao -- <slug>`: estágios, portas e estado em `scripts/tradicao` e no skill `atlas-pipeline-tradicao`. O piso de cobertura (`scripts/tradicao/coverage-floor.json`) é medido nas leituras de Marxismo e Liberalismo e testado em `npm run test:content`.
+
 ## Como adicionar um bloco interativo
 
 Comece pelo contrato discriminado em `models/ideology-page.schema.ts`, com IDs, referências e validação editorial. Adicione apresentação em `components` e integre ao renderer de blocos. Interação complexa com estado próprio vira componente separado; não criar componentes idênticos por ideologia. Dados específicos ficam em `data` ou snapshots, e consultas puras fora do template. Preservar âncoras, query params, teclado, foco, reduced motion e estados vazios. Testar o comportamento observável e a integridade das referências.

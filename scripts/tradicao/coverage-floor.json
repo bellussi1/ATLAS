@@ -1,0 +1,22 @@
+{
+  "derivation": "Medido em /marxismo e /liberalismo (npm run tradicao:coverage). Contagens: metade do menor valor entre as duas referências, arredondada para baixo. Estrutura (capítulos, tipos de bloco): o menor valor menos um. Tipos que as duas referências não têm (partido, estado, lugar, conceito, instituição) não são exigidos: a régua mede o mínimo comum, não o ideal. Mude o piso só com nova medição.",
+  "minimum": {
+    "entities.pessoa": 7,
+    "entities.evento": 1,
+    "entities.ideologia": 5,
+    "entities.total": 15,
+    "relations.grafo": 37,
+    "sources.total": 41,
+    "sources.citadas": 11,
+    "chapters.total": 12,
+    "chapters.comBlocos": 10,
+    "chapters.completos": 6,
+    "blocks.total": 7,
+    "blocks.tipos": 7,
+    "images.licenciadas": 10,
+    "images.entidadesComImagem": 10
+  },
+  "maximum": {
+    "chapters.pendentes": 1
+  }
+}

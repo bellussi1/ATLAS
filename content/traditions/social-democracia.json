@@ -1,0 +1,37 @@
+{
+  "slug": "social-democracia",
+  "kind": "tradicao",
+  "rootQid": "Q121254",
+  "titles": { "pt": "Social-democracia", "en": "Social democracy" },
+  "palette": "social-democracia",
+  "icon": "ideology",
+  "scope": {
+    "classificationNote": "Tradição político-intelectual e partidária, sem doutrina única. O recorte cobre sobretudo a Europa a partir do fim do século XIX e trata a Terceira Via como ramificação debatida. A classificação segue o verbete e pode ser revista.",
+    "period": "fins do século XIX em diante",
+    "geography": "Europa ocidental e do norte, com recepção debatida na América Latina",
+    "includes": [
+      "partidos e internacionais socialistas reformistas",
+      "pensadores do revisionismo e do reformismo",
+      "políticas de bem-estar e pactos sociais",
+      "disputas com o marxismo revolucionário e com o liberalismo"
+    ],
+    "excludes": [
+      "socialismo revolucionário e leninismo, tratados na leitura de Marxismo",
+      "partidos que adotam o rótulo sem vínculo documentado com a tradição"
+    ]
+  },
+  "seeds": [
+    { "url": "https://pt.wikipedia.org/wiki/Social-democracia" },
+    { "url": "https://en.wikipedia.org/wiki/Social_democracy" },
+    { "url": "https://pt.wikipedia.org/wiki/Eduard_Bernstein" },
+    { "url": "https://pt.wikipedia.org/wiki/Ferdinand_Lassalle" },
+    { "url": "https://pt.wikipedia.org/wiki/Jean_Jaur%C3%A8s" },
+    { "url": "https://pt.wikipedia.org/wiki/Willy_Brandt" },
+    { "url": "https://pt.wikipedia.org/wiki/Olof_Palme" },
+    { "url": "https://pt.wikipedia.org/wiki/Bruno_Kreisky" }
+  ],
+  "discovery": {
+    "founderQids": ["Q75784", "Q75786"],
+    "commonsCategory": "Category:Social democracy"
+  }
+}
