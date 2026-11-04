@@ -1,5 +1,5 @@
 /** Original decorative tiles for the ATLAS poster language. They never encode data. */
-export type MosaicPalette = 'atlas' | 'marx' | 'liberal' | 'tissi';
+export type MosaicPalette = 'atlas' | 'marx' | 'liberal' | 'tissi' | 'social' | 'anarco';
 
 export type MosaicMotif =
   | 'quarter'
@@ -49,6 +49,8 @@ const palettes: Record<MosaicPalette, readonly string[]> = {
   marx: [colors.red, colors.ink, colors.ochre, colors.paper, colors.orange, colors.rose],
   liberal: [colors.indigo, colors.teal, colors.ochre, colors.paper, colors.rose, colors.ink],
   tissi: [colors.ink, colors.paper, colors.red, colors.paper],
+  social: [colors.teal, colors.ochre, colors.paper, colors.orange, colors.ink],
+  anarco: [colors.red, colors.ink, colors.paper, colors.rose, colors.ink, colors.red],
 };
 
 const motifs: readonly MosaicMotif[] = [

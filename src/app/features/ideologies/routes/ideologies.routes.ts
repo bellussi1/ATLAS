@@ -32,4 +32,14 @@ export const ideologyRoutes: Routes = [
     'Liberalismo',
     'Conceitos, pensadores, épocas, lugares, vertentes, críticas e fontes do liberalismo.',
   ),
+  ...ideologyRoutesFor(
+    'social-democracia',
+    'Social-democracia',
+    'Reformas, Estado de bem-estar e disputas da social-democracia com o socialismo e o liberalismo.',
+  ),
+  ...ideologyRoutesFor(
+    'anarquismo',
+    'Anarquismo',
+    'Origens, correntes, experiências históricas e debates do anarquismo.',
+  ),
 ];

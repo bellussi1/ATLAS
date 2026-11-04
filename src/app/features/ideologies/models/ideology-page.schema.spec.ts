@@ -22,6 +22,8 @@ describe('Public pages', () => {
       '',
       'marxismo',
       'liberalismo',
+      'social-democracia',
+      'anarquismo',
       'conhecimento',
       'entidades',
       'ideologias',

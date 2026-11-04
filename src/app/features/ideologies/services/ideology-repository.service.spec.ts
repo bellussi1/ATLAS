@@ -69,7 +69,7 @@ describe('IdeologyRepository', () => {
     expect(reads.some((key) => key.startsWith('c/'))).toBe(true);
   });
 
-  it.each(['anarquismo', 'slug-ausente', '__proto__', 'constructor'])(
+  it.each(['fascismo', 'slug-ausente', '__proto__', 'constructor'])(
     'resolves unknown or unpublished readings to null: %s',
     async (slug) => {
       await expect(

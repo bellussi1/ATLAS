@@ -90,10 +90,12 @@ export class RecordComponent {
   readonly dossier = computed(
     () =>
       (
-        ({ 'ideology-marxism': '/marxismo', 'ideology-liberalism': '/liberalismo' }) as Record<
-          string,
-          string
-        >
+        ({
+          'ideology-marxism': '/marxismo',
+          'ideology-liberalism': '/liberalismo',
+          'wiki-topic-social-democracia': '/social-democracia',
+          'wiki-topic-anarquismo': '/anarquismo',
+        }) as Record<string, string>
       )[this.entity()?.id ?? ''],
   );
   readonly claims = computed(() =>

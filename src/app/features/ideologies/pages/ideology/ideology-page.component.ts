@@ -10,6 +10,7 @@ import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { terms } from '@ideologies/data/knowledge-vocabulary';
+import { readingSettingsFor } from '@ideologies/data/reading-settings';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
@@ -53,7 +54,8 @@ export class IdeologyPageComponent {
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
   readonly page = computed(() => this.state().dossier?.page);
   readonly basePath = computed(() => `/${this.page()?.slug ?? ''}`);
-  readonly palette = computed(() => (this.page()?.slug === 'liberalismo' ? 'liberal' : 'marx'));
+  readonly settings = computed(() => readingSettingsFor(this.page()?.slug));
+  readonly palette = computed(() => this.settings().palette);
   readonly roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   /** Text for the always-present status region: screen readers announce changes to a live region that already exists. */
   readonly stateAnnouncement = computed(() => {
@@ -98,11 +100,7 @@ export class IdeologyPageComponent {
     const chapters = this.page()?.chapters ?? [];
     return chapters.map((_, i) => chapters.slice(i + 1).reduce((sum, c) => sum + c.minutes, 0));
   });
-  readonly companion = computed(() =>
-    this.page()?.slug === 'liberalismo'
-      ? { path: '/marxismo', label: 'Ler o Marxismo' }
-      : { path: '/liberalismo', label: 'Ler o Liberalismo' },
-  );
+  readonly companion = computed(() => this.settings().companion);
 
   constructor() {
     combineLatest([this.route.paramMap, this.retry])
