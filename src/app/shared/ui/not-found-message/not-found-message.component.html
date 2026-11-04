@@ -1,12 +1,42 @@
 <section class="not-found" aria-labelledby="not-found-title">
-  <h1 id="not-found-title">{{ heading() }}</h1>
-  <p>{{ message() }}</p>
-  <nav aria-label="Caminhos sugeridos">
-    <ul class="not-found__links">
-      <li><a routerLink="/">Início</a></li>
-      <li><a routerLink="/marxismo">Marxismo</a></li>
-      <li><a routerLink="/liberalismo">Liberalismo</a></li>
-      <li><a routerLink="/conhecimento">Acervo</a></li>
-    </ul>
-  </nav>
+  <div class="not-found__text">
+    <p class="not-found__code" aria-hidden="true">404</p>
+    <h1 id="not-found-title">
+      {{ headingParts().lead }} <span class="not-found__accent">{{ headingParts().accent }}</span>
+    </h1>
+    <p class="not-found__lead">{{ message() }}</p>
+
+    <nav aria-label="Caminhos sugeridos">
+      <ul class="not-found__doors">
+        @for (door of doors; track door.link) {
+          <li>
+            <a
+              class="door atlas-press"
+              [class]="'door door--' + door.tone"
+              [routerLink]="door.link"
+            >
+              <span class="door__label">{{ door.label }}</span>
+              <span class="door__hint">{{ door.hint }}</span>
+              <span class="door__arrow atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+
+  <div class="not-found__art">
+    <app-geometric-mosaic
+      class="not-found__mosaic"
+      [columns]="4"
+      [rows]="4"
+      [seed]="seed()"
+      palette="atlas"
+      [interactive]="true"
+      aria-hidden="true"
+    />
+    <button type="button" class="not-found__shuffle atlas-press" (click)="recompose()">
+      Recompor o mosaico
+    </button>
+  </div>
 </section>
