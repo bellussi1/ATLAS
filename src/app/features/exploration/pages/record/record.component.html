@@ -1,7 +1,9 @@
 <article class="record">
   <nav aria-label="Caminhos do registro" class="record-nav">
     @if (returnTree(); as back) {
-      <a [routerLink]="back">Voltar aos resultados</a>
+      <a class="record-back" [routerLink]="back"
+        ><span aria-hidden="true">←</span> Voltar aos resultados</a
+      >
     }
     <a routerLink="/conhecimento">Buscar no acervo</a>
     @if (catalogue(); as list) {
@@ -25,7 +27,7 @@
         </p>
       }
     }
-    <header class="hero">
+    <header class="hero" [class.hero--text]="!context()?.media">
       <div class="hero-text">
         <p class="record-meta">{{ entry()?.kindLabel }} · {{ entry()?.stateLabel }}</p>
         <h1 [attr.lang]="presentation()?.locale">{{ entity.title }}</h1>
@@ -37,7 +39,13 @@
         }
         <p class="lead" [attr.lang]="presentation()?.locale">{{ entity.summary }}</p>
         @if (showContext()) {
-          <p class="context" [attr.lang]="presentation()?.locale">{{ entity.context }}</p>
+          <p
+            class="context"
+            [class.context--draft]="isDraft()"
+            [attr.lang]="presentation()?.locale"
+          >
+            {{ entity.context }}
+          </p>
         }
         <p class="record-actions">
           <button type="button" class="copy-link" (click)="copyLink()">Copiar link</button>
@@ -49,8 +57,8 @@
           }
         </p>
       </div>
-      <div class="hero-media">
-        @if (context()?.media; as media) {
+      @if (context()?.media; as media) {
+        <div class="hero-media">
           @if (atlas(); as atlas) {
             <app-licensed-asset
               [atlas]="atlas"
@@ -58,20 +66,23 @@
               [alt]="'Imagem associada a ' + entity.title"
             />
           }
-        } @else {
-          <div class="hero-placeholder" aria-hidden="true">
-            <span>{{ entity.title.charAt(0) }}</span>
-            <small>Sem imagem com licença de reprodução</small>
-          </div>
-        }
-      </div>
+        </div>
+      }
     </header>
 
     <dl class="facts" aria-label="Resumo do registro">
       @for (fact of facts(); track fact.label) {
         <div>
           <dt>{{ fact.label }}</dt>
-          <dd>{{ fact.value }}</dd>
+          <dd>
+            @if (fact.target; as target) {
+              <a [routerLink]="[]" [fragment]="target" queryParamsHandling="preserve">{{
+                fact.value
+              }}</a>
+            } @else {
+              {{ fact.value }}
+            }
+          </dd>
         </div>
       }
     </dl>
@@ -94,10 +105,10 @@
         @if (entity.kind === 'country' || entity.kind === 'regime') {
           <app-entity-profile [entity]="originalEntity()!" [graph]="repository.knowledgeGraph" />
         }
-        @for (section of entity.sections; track $index) {
-          <section [attr.lang]="presentation()?.locale" [id]="'section-' + $index">
-            <h2>{{ section.heading }}</h2>
-            @for (paragraph of section.paragraphs; track $index) {
+        @for (item of readableSections(); track item.index) {
+          <section [attr.lang]="presentation()?.locale" [id]="'section-' + item.index">
+            <h2>{{ item.section.heading }}</h2>
+            @for (paragraph of item.section.paragraphs; track $index) {
               <p>{{ paragraph }}</p>
             }
           </section>
@@ -112,13 +123,18 @@
               cadastro não equivale a revisão humana.
             </p>
           }
+          @if (claims().length) {
+            <a class="source-library-link" routerLink="/fontes">Abrir biblioteca de fontes</a>
+          }
         </section>
         <section aria-labelledby="connections-title">
           <h2 id="connections-title">Conexões</h2>
-          <p class="note">
-            Os vínculos importados são caminhos de investigação; não comprovam influência por si
-            sós.
-          </p>
+          @if (connectionGroups().length) {
+            <p class="note">
+              Os vínculos importados são caminhos de investigação; não comprovam influência por si
+              sós.
+            </p>
+          }
           @for (group of connectionGroups(); track group.label) {
             <p class="group-label">{{ group.label }} · {{ group.items.length }}</p>
             <div class="connection-list">
@@ -175,7 +191,7 @@
         </section>
         @if (related().length) {
           <section aria-labelledby="related-title">
-            <h2 id="related-title">Continue lendo: {{ entry()?.kindLabel }}</h2>
+            <h2 id="related-title">Outros em {{ catalogue()?.title ?? entry()?.kindLabel }}</h2>
             <ul class="related">
               @for (item of related(); track item.id) {
                 <li>
