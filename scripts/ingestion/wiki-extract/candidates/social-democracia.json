@@ -1,6 +1,6 @@
 {
   "tradition": "social-democracia",
-  "generatedAt": "2026-11-04T01:01:39.391Z",
+  "generatedAt": "2026-11-04T02:00:35.343Z",
   "seeds": [
     {
       "label": "Martin Luther King Jr.",
@@ -1051,6 +1051,621 @@
       "linkedFrom": ["Social-democracia", "Social democracy", "Eduard Bernstein", "Jean Jaurès"],
       "decision": null,
       "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Internacional Socialista",
+      "qid": "Q159454",
+      "type": "organização",
+      "sharedByCount": 4,
+      "linkedFrom": [
+        "pt:Olof Palme",
+        "pt:Social-democracia",
+        "en:Social democracy",
+        "pt:Willy Brandt"
+      ],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Luta de classes",
+      "qid": "Q1744607",
+      "type": "conceito",
+      "sharedByCount": 4,
+      "linkedFrom": [
+        "pt:Jean Jaurès",
+        "pt:Olof Palme",
+        "pt:Social-democracia",
+        "en:Social democracy"
+      ],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Suécia",
+      "qid": "Q34",
+      "type": "organização",
+      "sharedByCount": 4,
+      "linkedFrom": [
+        "pt:Olof Palme",
+        "pt:Social-democracia",
+        "en:Social democracy",
+        "pt:Willy Brandt"
+      ],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "August Bebel",
+      "qid": "Q76520",
+      "type": "pessoa",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Conservadorismo",
+      "qid": "Q7169",
+      "type": "ideologia",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Democracia representativa",
+      "qid": "Q188759",
+      "type": "ideologia",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Desigualdade econômica",
+      "qid": "Q5055020",
+      "type": "acontecimento",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Direita (política)",
+      "qid": "Q76074",
+      "type": "ideologia",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "en:Social democracy", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Karl Kautsky",
+      "qid": "Q76586",
+      "type": "pessoa",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Leis Antissocialistas",
+      "qid": "Q693331",
+      "type": "conceito",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Liberdade",
+      "qid": "Q2979",
+      "type": "conceito",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Nacionalização",
+      "qid": "Q178564",
+      "type": "conceito",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Otto von Bismarck",
+      "qid": "Q8442",
+      "type": "pessoa",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Ferdinand Lassalle", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Partido Operário Social-Democrata da Suécia",
+      "qid": "Q105112",
+      "type": "partido",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Partido Operário Social-Democrata Russo",
+      "qid": "Q204911",
+      "type": "partido",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Polónia",
+      "qid": "Q36",
+      "type": "organização",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Ferdinand Lassalle", "pt:Olof Palme", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Reformismo (marxismo)",
+      "qid": "Q878445",
+      "type": "ideologia",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Revisionismo (marxismo)",
+      "qid": "Q2083688",
+      "type": "ideologia",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Sindicato",
+      "qid": "Q178790",
+      "type": "organização",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Terceira via",
+      "qid": "Q494792",
+      "type": "ideologia",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Wilhelm Liebknecht",
+      "qid": "Q20127",
+      "type": "pessoa",
+      "sharedByCount": 3,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "18 de dezembro",
+      "qid": "Q2438",
+      "type": "acontecimento",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Acordos de Bretton Woods",
+      "qid": "Q188532",
+      "type": "acontecimento",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Alemães",
+      "qid": "Q42884",
+      "type": "conceito",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Ferdinand Lassalle", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Alemanha Oriental",
+      "qid": "Q16957",
+      "type": "lugar",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Anarquismo",
+      "qid": "Q6199",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Anticapitalismo",
+      "qid": "Q389647",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Associação Internacional dos Trabalhadores",
+      "qid": "Q183725",
+      "type": "organização",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Áustria",
+      "qid": "Q40",
+      "type": "organização",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Bernie Sanders",
+      "qid": "Q359442",
+      "type": "pessoa",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Bolchevique",
+      "qid": "Q83372",
+      "type": "movimento",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Burguesia",
+      "qid": "Q52090",
+      "type": "conceito",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Jean Jaurès", "pt:Social-democracia"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Capital (economia)",
+      "qid": "Q8137",
+      "type": "conceito",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Capitalismo",
+      "qid": "Q6206",
+      "type": "movimento",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Centro (política)",
+      "qid": "Q6587194",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Centro-esquerda",
+      "qid": "Q737014",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "en",
+      "title": "Chancellor of Germany",
+      "qid": "Q56022",
+      "type": "conceito",
+      "sharedByCount": 2,
+      "linkedFrom": ["en:Social democracy", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Checoslováquia",
+      "qid": "Q33946",
+      "type": "lugar",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Corporativismo social",
+      "qid": "Q15718641",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Cuba",
+      "qid": "Q241",
+      "type": "organização",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Democracia",
+      "qid": "Q7174",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Democracia cristã",
+      "qid": "Q209158",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Democracia liberal",
+      "qid": "Q192125",
+      "type": "organização",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Direitos humanos",
+      "qid": "Q8458",
+      "type": "movimento",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "en",
+      "title": "Eastern Bloc",
+      "qid": "Q170541",
+      "type": "organização",
+      "sharedByCount": 2,
+      "linkedFrom": ["en:Social democracy", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Erich Honecker",
+      "qid": "Q2607",
+      "type": "pessoa",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Escandinávia",
+      "qid": "Q21195",
+      "type": "lugar",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Esquerda (política)",
+      "qid": "Q164597",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Estado de bem-estar social",
+      "qid": "Q192451",
+      "type": "conceito",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Estocolmo",
+      "qid": "Q1754",
+      "type": "conceito",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Europa",
+      "qid": "Q46",
+      "type": "lugar",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Europa Ocidental",
+      "qid": "Q27496",
+      "type": "lugar",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "en",
+      "title": "European Economic Community",
+      "qid": "Q52847",
+      "type": "organização",
+      "sharedByCount": 2,
+      "linkedFrom": ["en:Social democracy", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Fascismo",
+      "qid": "Q6223",
+      "type": "ideologia",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Fidel Castro",
+      "qid": "Q11256",
+      "type": "pessoa",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "pt:Willy Brandt"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Filosofia",
+      "qid": "Q5891",
+      "type": "conceito",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Ferdinand Lassalle", "pt:Jean Jaurès"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "François Mitterrand",
+      "qid": "Q2038",
+      "type": "pessoa",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Olof Palme", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Georg Wilhelm Friedrich Hegel",
+      "qid": "Q9235",
+      "type": "pessoa",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Eduard Bernstein", "pt:Jean Jaurès"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Grande Depressão",
+      "qid": "Q8698",
+      "type": "acontecimento",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
+    },
+    {
+      "lang": "pt",
+      "title": "Grande Recessão",
+      "qid": "Q154510",
+      "type": "acontecimento",
+      "sharedByCount": 2,
+      "linkedFrom": ["pt:Social-democracia", "en:Social democracy"],
+      "origin": "mention",
+      "decision": null
     }
   ]
 }
