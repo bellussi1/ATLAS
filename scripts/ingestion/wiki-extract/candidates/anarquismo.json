@@ -1,0 +1,1075 @@
+{
+  "tradition": "anarquismo",
+  "generatedAt": "2026-11-04T12:54:36.099Z",
+  "seeds": [
+    {
+      "label": "Anarquismo",
+      "lang": "pt",
+      "title": "Anarquismo"
+    },
+    {
+      "label": "Anarchism",
+      "lang": "en",
+      "title": "Anarchism"
+    },
+    {
+      "label": "Mikhail Bakunin",
+      "lang": "pt",
+      "title": "Mikhail Bakunin"
+    },
+    {
+      "label": "Piotr Kropotkin",
+      "lang": "pt",
+      "title": "Piotr Kropotkin"
+    },
+    {
+      "label": "Pierre-Joseph Proudhon",
+      "lang": "pt",
+      "title": "Pierre-Joseph Proudhon"
+    },
+    {
+      "label": "Emma Goldman",
+      "lang": "pt",
+      "title": "Emma Goldman"
+    },
+    {
+      "label": "Errico Malatesta",
+      "lang": "pt",
+      "title": "Errico Malatesta"
+    }
+  ],
+  "candidates": [
+    {
+      "lang": "pt",
+      "title": "Anarquismo",
+      "qid": "Q6199",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "en",
+      "title": "Anarchism",
+      "qid": "Q6199",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Mikhail Bakunin",
+      "qid": "Q27645",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Piotr Kropotkin",
+      "qid": "Q5752",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Pierre-Joseph Proudhon",
+      "qid": "Q5749",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Emma Goldman",
+      "qid": "Q79969",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Errico Malatesta",
+      "qid": "Q215673",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Autogestão",
+      "qid": "Q15981562",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Benjamin Tucker",
+      "qid": "Q505871",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Charles Fourier",
+      "qid": "Q181707",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Conselhos operários",
+      "qid": "Q627093",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Cooperativismo",
+      "qid": "Q4539",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Daniel Guérin",
+      "qid": "Q465156",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Encyclopædia Britannica",
+      "qid": "Q455",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Mutualismo (economia)",
+      "qid": "Q844212",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Número de controle da Biblioteca do Congresso",
+      "qid": "Q620946",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "Abdullah Öcalan",
+      "qid": "Q191530",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Albert Camus",
+      "qid": "Q34670",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Alexander Berkman",
+      "qid": "Q195390",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Amor livre",
+      "qid": "Q867081",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "movimento"
+    },
+    {
+      "lang": "pt",
+      "title": "Anarcocomunismo",
+      "qid": "Q188670",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Anarcossindicalismo",
+      "qid": "Q188993",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Anarquismo coletivista",
+      "qid": "Q223178",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Anarquismo cristão",
+      "qid": "Q329659",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Anarquismo individualista",
+      "qid": "Q7076",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Anarquismo sem adjetivos",
+      "qid": "Q486271",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Antiautoritarismo",
+      "qid": "Q1030234",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Anticapitalismo",
+      "qid": "Q389647",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Anticonsumismo",
+      "qid": "Q1783091",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Antiestadismo",
+      "qid": "Q646407",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Anton Pannekoek",
+      "qid": "Q347930",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Antonio Negri",
+      "qid": "Q310341",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Apoio mútuo",
+      "qid": "Q766238",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "acontecimento"
+    },
+    {
+      "lang": "pt",
+      "title": "Assassinato de William McKinley",
+      "qid": "Q2866985",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "acontecimento"
+    },
+    {
+      "lang": "pt",
+      "title": "Associação Internacional dos Trabalhadores",
+      "qid": "Q183725",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Autonomismo",
+      "qid": "Q127393",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da Dieta",
+      "qid": "Q477675",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da Espanha",
+      "qid": "Q750403",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da França",
+      "qid": "Q193563",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biênio Vermelho",
+      "qid": "Q391511",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "acontecimento"
+    },
+    {
+      "lang": "pt",
+      "title": "Buenaventura Durruti",
+      "qid": "Q208815",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Colin Ward",
+      "qid": "Q1108751",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Comuna de Paris",
+      "qid": "Q133132",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Comuna de Strandzha",
+      "qid": "Q2353476",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "lugar"
+    },
+    {
+      "lang": "pt",
+      "title": "Comunismo de conselhos",
+      "qid": "Q933306",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Comunização",
+      "qid": "Q2989699",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Cornelius Castoriadis",
+      "qid": "Q158030",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "David Graeber",
+      "qid": "Q1174579",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Diego Abad de Santillán",
+      "qid": "Q952737",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Dorothy Day",
+      "qid": "Q150281",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Dualidade de poderes",
+      "qid": "Q21765377",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Economia de oferta",
+      "qid": "Q2233575",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "sem-classe"
+    },
+    {
+      "lang": "pt",
+      "title": "Élisée Reclus",
+      "qid": "Q20951",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Enragés",
+      "qid": "Q1343705",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Escravidão do salário",
+      "qid": "Q650487",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Espanha",
+      "qid": "Q29",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "Exército Insurgente Makhnovista",
+      "qid": "Q8666419",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Exército Zapatista de Libertação Nacional",
+      "qid": "Q188590",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Faceted Application of Subject Terminology",
+      "qid": "Q3294867",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "França",
+      "qid": "Q142",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Gemeinsame Normdatei",
+      "qid": "Q36578",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Pierre-Joseph Proudhon",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "obra"
+    },
+    {
+      "lang": "pt",
+      "title": "Gustav Landauer",
+      "qid": "Q61723",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Herbert Marcuse",
+      "qid": "Q60030",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Internacional Situacionista",
+      "qid": "Q850181",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "movimento"
+    },
+    {
+      "lang": "pt",
+      "title": "John Zerzan",
+      "qid": "Q454268",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Leon Czolgosz",
+      "qid": "Q348187",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Libertarianismo",
+      "qid": "Q178598",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Anarquismo",
+        "Anarchism",
+        "Mikhail Bakunin",
+        "Piotr Kropotkin",
+        "Emma Goldman",
+        "Errico Malatesta"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    }
+  ]
+}

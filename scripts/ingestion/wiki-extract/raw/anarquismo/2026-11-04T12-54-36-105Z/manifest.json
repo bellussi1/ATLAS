@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "kind": "wikipedia-capture",
+  "tradition": "anarquismo",
+  "capturedAt": "2026-11-04T12:54:36.105Z",
+  "requests": [
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&generator=links&titles=Anarchism&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "c4e8911fd8942e27c817c772dd03bca3b7e6016244b3c684b4619953fbd204b9",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&generator=links&titles=Anarchism&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=12%7C0%7CEscuela_Moderna&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "91e29de80e79cd6523df09b0dbd7468e1e9bc74ea9026d411fbe48700aab42ed",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&generator=links&titles=Anarchism&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=12%7C0%7CNeo-romanticism&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "a867ec429c6f628135c1ec2d048a2d19c1adf86e645c8cbe2fa373c987a6fc62",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&generator=links&titles=Anarchism&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=12%7C0%7CWage_slavery&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "25041466979dbbd2a734cb376b0da01542f441cfcbe337955e703c31e5b4da88",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&titles=Anarchism&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "4ffdd96aa21117a56b2f7d52702d098adf14c696737f4750949b378c694a08a0",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Anarquismo&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "31fec81860b95d9f90e278c9279ffc4028d5758af9482d5acacb40cf9728b816",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Anarquismo&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=230%7C0%7CGuy_Debord&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "d8ef0d95dc8aa74009928e8a064b44e275c7f4321cd8d6ffd4a5dd72aed33f37",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Emma+Goldman&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "6ac9cce0f5a7bfcd3992deaa67810c5651d7ab964ba0a9d08bc0414a4a8cb69d",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Emma+Goldman&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=109121%7C0%7CWilliam_McKinley&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "8021be8e5664a44145a17be5615d327942106cabbb6937ba86379483bb6d9be5",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Errico+Malatesta&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "eeb5ca8183c58512674e01c2352be3806303b4323be3540c8211cd1b9c32a501",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Mikhail+Bakunin&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3ed71457acbad2950ea0602c381ee8858a6455cccfe096afe6d044e8993deda7",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Mikhail+Bakunin&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=13106%7C0%7CRevolta_de_Janeiro&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "eca13c3ca662906712a84514d386131f40bd84fa5a615314747ace15f7bc5f8a",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Pierre-Joseph+Proudhon&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "c9d9f718bce174be787aa6239e703b2b0646d698278649c4f2b5f2a5a0e48097",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Piotr+Kropotkin&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "028ed0c6ad4ff27db2b1f1c44ea0bb5f6a6b35e51a9e7c172a9d346da017a98c",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Piotr+Kropotkin&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=100157%7C0%7CSocialismo&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "0a71ca3712108c0191484735d20926e63f5ab4340ebc52619afd5a3b5e0f312e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Anarquismo&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "ff33968f52f04600221b88d1561e87d72c57ab7fc77298987f8278552329a538",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Emma+Goldman&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "46cf51381cbed3b8e123ccd7bdf7dc7e766c7e609178f2ea60f61746704df6e6",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Errico+Malatesta&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "b9ffbb2615ac8bad82d2c0ee4efa52a95c769bae015d618ddec62f4be37d6c22",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Mikhail+Bakunin&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "068f9cb705b3213ce57fa1ea653064e14f0f333b3f4c51e950de7931592cd303",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Pierre-Joseph+Proudhon&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "06e800e86c272118c853c33d8e3ca20c8333369388b63b35d8d9ee7f0a965328",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Piotr+Kropotkin&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5afcd49364747e1cfad8a125df822d3e8480ec5277c74da9e903ddea9e0d1b81",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1190277%7CQ2673073%7CQ5%7CQ4358176%7CQ2135465%7CQ1269299%7CQ295382%7CQ783794%7CQ43229%7CQ1071015%7CQ47461344%7CQ1401304%7CQ1278791%7CQ12909644%7CQ945763%7CQ268919%7CQ36646373%7CQ36524%7CQ1969448%7CQ49773%7CQ6199%7CQ6186%7CQ49780%7CQ2353993%7CQ1914636%7CQ2738074%7CQ20045456%7CQ7257%7CQ52948%7CQ19483216%7CQ3882219%7CQ132821%7CQ2716508%7CQ1852084%7CQ22806%7CQ2052886%7CQ856584%7CQ28564%7CQ12317349%7CQ2085381%7CQ2352616%7CQ11514315%7CQ1075020%7CQ1388421%7CQ1323212%7CQ3533467%7CQ56061%7CQ131621892%7CQ3024240%7CQ1066224&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "c852fa80a4feb60f81253dca5e70989945755480e6bce491958bcdfe110a933c",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q125542526%7CQ130804054%7CQ3239681%7CQ2465832%7CQ627436%7CQ483394%7CQ105948247%7CQ141439648%7CQ124711104%7CQ67518978%7CQ1190554%7CQ141182775%7CQ141257229%7CQ141204674%7CQ141183644%7CQ141750035%7CQ141751599%7CQ9415%7CQ34394%7CQ71966963%7CQ125598647%7CQ141537802%7CQ141453101%7CQ140639962%7CQ9332%7CQ3505845%7CQ1456832%7CQ104086571%7CQ5962346%7CQ11268999%7CQ844482%7CQ74948922%7CQ29142%7CQ4%7CQ1121708%7CQ1132455%7CQ124490%7CQ3839081%7CQ268592%7CQ117023459%7CQ385994%7CQ2659904%7CQ131733833%7CQ111972893%7CQ811979%7CQ12046615%7CQ8205328%7CQ27096235%7CQ618123%7CQ15710813&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "58251b28e05f04cada64d4039dee3a6666b83ffc0821db95810c9ac0428ce67a",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q141222018%7CQ140451665%7CQ1048607%7CQ49447%7CQ141152439%7CQ33104279%7CQ141641947%7CQ2267705%7CQ4671286%7CQ3769299%7CQ130583773%7CQ4676786%7CQ2438541%7CQ133829011%7CQ16688120%7CQ149086%7CQ855919%7CQ1689296%7CQ1520311%7CQ7210356%7CQ370919%7CQ25397890%7CQ65768782%7CQ327333%7CQ1438040%7CQ811102%7CQ41176%7CQ13226383%7CQ11908691%7CQ7075%7CQ11396180%7CQ105044823%7CQ6881511%7CQ104624828%7CQ12139612%7CQ2668072%7CQ16686448%7CQ13136%7CQ6423319%7CQ17524420%7CQ186081%7CQ7281%7CQ83267%7CQ101965%7CQ124734%7CQ769620%7CQ646293%7CQ141104744%7CQ7188%7CQ19953632&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "2d0ad5cca976bb12f63f9e558d6b00d8b68fecf50afeb1830a64d7429d87d423",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q15981562%7CQ505871%7CQ181707%7CQ627093%7CQ4539%7CQ465156%7CQ455%7CQ844212%7CQ620946%7CQ191530%7CQ34670%7CQ195390%7CQ867081%7CQ188670%7CQ188993%7CQ223178%7CQ329659%7CQ7076%7CQ486271%7CQ1030234%7CQ389647%7CQ1783091%7CQ646407%7CQ347930%7CQ310341%7CQ766238%7CQ2866985%7CQ183725%7CQ127393%7CQ477675%7CQ750403%7CQ193563%7CQ391511%7CQ208815%7CQ1108751%7CQ133132%7CQ2353476%7CQ933306%7CQ2989699%7CQ158030%7CQ1174579%7CQ952737%7CQ150281%7CQ21765377%7CQ2233575%7CQ20951%7CQ1343705%7CQ650487%7CQ29%7CQ8666419&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "a731f50086499e0a502e6b9704402f12c1380440a3ea32b3574693895822eaee",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q188590%7CQ3294867%7CQ142%7CQ36578%7CQ61723%7CQ60030%7CQ850181%7CQ454268%7CQ348187%7CQ178598&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "be6c10c2e5221aa20d6b598c928942dcaf87a5f5df30e752e8e8b92a46446393",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q212468%7CQ7140451%7CQ29017603%7CQ55983715%7CQ2250224%7CQ164509%7CQ154954%7CQ5891007%7CQ16334295%7CQ895526%7CQ897395%7CQ137429456%7CQ151885%7CQ10541491%7CQ17197366%7CQ4830453%7CQ815823%7CQ3778211%7CQ134602570%7CQ96116695%7CQ106559804%7CQ106668099%7CQ1639378%7CQ854457%7CQ131085629%7CQ133449656%7CQ15621286%7CQ1990987%7CQ1387659%7CQ110401282%7CQ273005%7CQ179522%7CQ7272%7CQ6545185%7CQ48937186%7CQ3695082%7CQ2305441%7CQ2548752%7CQ1510761%7CQ24902509%7CQ12765852%7CQ9357091%7CQ5891%7CQ5333510%7CQ29028649%7CQ208701%7CQ2447690%7CQ116505632%7CQ3249551%7CQ141187917&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "f824f2be137dce02a7accf2d5cb8f2eb66cfe2a71a0713787e79df14dc3c85f2",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q3152824%7CQ58326331%7CQ1880737%7CQ3409269%7CQ2085518%7CQ937228%7CQ58901077%7CQ1437361%7CQ138665581%7CQ16887380%7CQ1128340%7CQ141756664%7CQ223393%7CQ1063801%7CQ1348645%7CQ49848%7CQ3622126%7CQ141159005%7CQ141439861%7CQ21040055%7CQ26907166%7CQ135524362%7CQ106466760%7CQ905726%7CQ11024%7CQ4202233%7CQ121757905%7CQ1920219%7CQ1184244%7CQ1003030%7CQ118563234%7CQ2672648%7CQ13418847%7CQ350604%7CQ141344358%7CQ137022846%7CQ141104747%7CQ96088545%7CQ52551684%7CQ1063239%7CQ1620908%7CQ211606%7CQ1896989%7CQ7264%7CQ184511%7CQ187931%7CQ3026787%7CQ35102%7CQ21281405%7CQ2574811&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "0b9380e227f4e59220881f74b4013782197937529cdbafc723e67389b7543ee4",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q6055890%7CQ868575%7CQ2920921%7CQ141164229%7CQ19478619%7CQ21871294%7CQ215627%7CQ795052%7CQ141164427%7CQ72638%7CQ729%7CQ134601860%7CQ111360549%7CQ134264207%7CQ15978631%7CQ141131708%7CQ134601727%7CQ134261520%7CQ35798%7CQ21146257%7CQ23958852%7CQ7048977%7CQ7551287%7CQ24017414%7CQ141403457%7CQ96251598%7CQ1047113%7CQ155076%7CQ1979154%7CQ931483%7CQ134602526%7CQ24229398%7CQ488383%7CQ58778%7CQ99527517%7CQ386724%7CQ362165%7CQ336%7CQ5389993%7CQ1377163%7CQ12558574%7CQ137189275%7CQ37654%7CQ1641112%7CQ420330%7CQ141750218%7CQ141594779%7CQ483247%7CQ921513%7CQ5193493&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "f209f5570c6c77688fa92f4a02710acc14e0467828d013f5996632e921f852c0",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q66762677%7CQ201610%7CQ8134%7CQ1393724%7CQ8463%7CQ3624078%7CQ1250464%7CQ6256%7CQ51576574%7CQ179671%7CQ8473%7CQ20642011%7CQ17149090%7CQ1469824%7CQ20181813%7CQ7270%7CQ17152639%7CQ1172284%7CQ2915955%7CQ179805&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "2fda6121308700e97464f0ea7629f8d7a161b104036661ebfd942e0ad844763b",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7958%7CQ1207505%7CQ123241435%7CQ110402867%7CQ15831325%7CQ33122512%7CQ97929320%7CQ600571%7CQ268378%7CQ1424047%7CQ5780945%7CQ6229%7CQ82794%7CQ104098715%7CQ28108%7CQ176799%7CQ26256810%7CQ2752458%7CQ213051%7CQ10383930%7CQ138303935%7CQ140311475%7CQ115668308%7CQ141523833%7CQ109542218&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "7843dd233b250c5827243faf731f9c361b5558e4b465f5ffa775069422fa6d6b",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q96196009%7CQ19832712%7CQ7275%7CQ3052803%7CQ137426749%7CQ66746920%7CQ12355361%7CQ3062294%7CQ71533077%7CQ1642334%7CQ131362181%7CQ813912%7CQ11862829%7CQ34749%7CQ859884%7CQ705818%7CQ183366%7CQ15617994%7CQ4835091%7CQ1048835%7CQ2325086%7CQ772547%7CQ1673189%7CQ6499736%7CQ121841020%7CQ183039%7CQ1307214%7CQ5589178%7CQ1900326%7CQ286583%7CQ11826511%7CQ732577%7CQ111955339%7CQ22811234%7CQ138596068&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "bd5354554b19552895d089e7e87dc7373186a79e5a9ff9c2c23a3c32111d7f11",
+      "license": "CC0 1.0"
+    }
+  ]
+}

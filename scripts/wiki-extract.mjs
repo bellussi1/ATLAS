@@ -109,10 +109,14 @@ const http = values.replay
   ? replayHttp((await loadCapture(join(wikiRawRoot, tradition, values.replay))).responses)
   : recorder.http;
 
+/** Entities chosen by the Wikidata selection; a tradition without one is seeded by its topics only. */
 async function selectedEntities() {
   const selection = await readJson(
     join(projectRoot, 'scripts/ingestion/wikimedia/discovery', `${tradition}.selection.json`),
-  );
+  ).catch((error) => {
+    if (error.code === 'ENOENT') return { entities: [] };
+    throw error;
+  });
   return selection.entities.map(([id, label, , type, qid]) => ({ id, label, type, qid }));
 }
 

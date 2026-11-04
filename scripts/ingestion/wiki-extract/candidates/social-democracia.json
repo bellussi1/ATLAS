@@ -1065,7 +1065,8 @@
         "pt:Willy Brandt"
       ],
       "origin": "mention",
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "assistente:lote-2"
     },
     {
       "lang": "pt",
@@ -1105,7 +1106,8 @@
       "sharedByCount": 3,
       "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
       "origin": "mention",
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "assistente:lote-2"
     },
     {
       "lang": "pt",
@@ -1155,7 +1157,8 @@
       "sharedByCount": 3,
       "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
       "origin": "mention",
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "assistente:lote-2"
     },
     {
       "lang": "pt",
@@ -1165,7 +1168,8 @@
       "sharedByCount": 3,
       "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
       "origin": "mention",
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "assistente:lote-2"
     },
     {
       "lang": "pt",
@@ -1195,7 +1199,8 @@
       "sharedByCount": 3,
       "linkedFrom": ["pt:Ferdinand Lassalle", "pt:Social-democracia", "en:Social democracy"],
       "origin": "mention",
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "assistente:lote-2"
     },
     {
       "lang": "pt",
@@ -1245,7 +1250,8 @@
       "sharedByCount": 3,
       "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
       "origin": "mention",
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "assistente:lote-2"
     },
     {
       "lang": "pt",
@@ -1265,7 +1271,8 @@
       "sharedByCount": 3,
       "linkedFrom": ["pt:Olof Palme", "pt:Social-democracia", "en:Social democracy"],
       "origin": "mention",
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "assistente:lote-2"
     },
     {
       "lang": "pt",
@@ -1275,7 +1282,8 @@
       "sharedByCount": 3,
       "linkedFrom": ["pt:Eduard Bernstein", "pt:Social-democracia", "en:Social democracy"],
       "origin": "mention",
-      "decision": null
+      "decision": "accept",
+      "decidedBy": "assistente:lote-2"
     },
     {
       "lang": "pt",
