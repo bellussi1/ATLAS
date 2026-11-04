@@ -3,6 +3,7 @@ import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
+import { gunzipSync } from 'node:zlib';
 
 import {
   assertPublicBucket,
@@ -14,6 +15,7 @@ import {
   sha256Hex,
   signRequest,
   verifyBytes,
+  putImmutable,
 } from './r2-content.mjs';
 import { syncContentCache } from './fetch-content.mjs';
 
@@ -140,4 +142,37 @@ test('syncContentCache writes only digest-matching objects and rejects tampered 
     /Falha de integridade/,
   );
   await assert.rejects(readFile(join(tamperedDirectory, 'c', `${expected.sha256}.json`)));
+});
+
+test('putImmutable gzips a compressed object and replaces an uncompressed copy once', async (t) => {
+  const config = {
+    endpoint: 'https://r2.test',
+    bucket: 'atlas-public',
+    accessKeyId: 'id',
+    secretAccessKey: 'secret',
+  };
+  const body = Buffer.from('{"a":1}');
+  const stored = { encoding: null, length: String(body.byteLength) };
+  const puts = [];
+  t.mock.method(globalThis, 'fetch', async (_url, init) => {
+    if (init.method === 'PUT') {
+      puts.push(init);
+      stored.encoding = init.headers['content-encoding'];
+      return new Response(null, { status: 200 });
+    }
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'content-length': stored.length,
+        ...(stored.encoding ? { 'content-encoding': stored.encoding } : {}),
+      },
+    });
+  });
+  t.mock.method(console, 'log', () => undefined);
+  const object = { key: 'c/x.json', body, contentType: 'application/json', compress: true };
+  await putImmutable(config, object);
+  await putImmutable(config, object);
+  assert.equal(puts.length, 1);
+  assert.equal(puts[0].headers['content-encoding'], 'gzip');
+  assert.equal(gunzipSync(puts[0].body).toString(), '{"a":1}');
 });

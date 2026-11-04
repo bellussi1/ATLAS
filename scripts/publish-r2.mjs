@@ -139,12 +139,14 @@ async function main() {
     key: artifactKey(manifestEntry.sha256),
     body: manifestBody,
     contentType: 'application/json',
+    compress: true,
   });
   for (const artifact of artifacts)
     await putImmutable(config, {
       key: artifactKey(artifact.sha256),
       body: artifact.body,
       contentType: 'application/json',
+      compress: true,
     });
   for (const item of media) {
     if (item.body) {

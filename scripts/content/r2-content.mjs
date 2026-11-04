@@ -4,6 +4,7 @@ import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gzipSync } from 'node:zlib';
 
 export const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
 export const pointerPath = join(projectRoot, 'content/content-pointer.json');
@@ -152,11 +153,17 @@ export function signRequest({ method, url, headers = {}, body = Buffer.alloc(0),
  * Signed S3-compatible request to the R2 bucket; `config` never leaves this process. Identity
  * encoding keeps HEAD's Content-Length equal to the stored size (R2 gzips JSON otherwise).
  */
-export async function r2(config, method, key, { body, contentType, cacheControl } = {}) {
+export async function r2(
+  config,
+  method,
+  key,
+  { body, contentType, contentEncoding, cacheControl } = {},
+) {
   const url = new URL(`/${config.bucket}/${key}`, config.endpoint);
   const headers = Object.fromEntries(
     Object.entries({
       'content-type': contentType,
+      'content-encoding': contentEncoding,
       'cache-control': cacheControl,
       'accept-encoding': 'identity',
     }).filter(([, value]) => value !== undefined),
@@ -172,19 +179,31 @@ export async function r2(config, method, key, { body, contentType, cacheControl 
   return fetch(url, { method, headers: { ...transport, authorization }, body });
 }
 
-/** Content-addressed objects are immutable: an existing key with the same size is reused. */
-export async function putImmutable(config, { key, body, contentType }, { dryRun = false } = {}) {
+/**
+ * Content-addressed objects are immutable: an existing key with the same content is reused.
+ * With `compress`, the object is stored gzipped; the key and the pinned digest describe the
+ * decompressed bytes, which is what fetch returns. An uncompressed copy is replaced in place.
+ */
+export async function putImmutable(
+  config,
+  { key, body, contentType, compress = false },
+  { dryRun = false } = {},
+) {
   if (dryRun) return console.log(`[dry-run] ${key} (${body.byteLength} bytes)`);
   const head = await r2(config, 'HEAD', key);
+  if (head.status !== 200 && head.status !== 404)
+    throw new Error(`Falha ao consultar ${key}: HTTP ${head.status}`);
   if (head.status === 200) {
+    const stored = head.headers.get('content-encoding');
+    if (compress && stored === 'gzip') return console.log(`já publicado: ${key}`);
     if (Number(head.headers.get('content-length')) !== body.byteLength)
       throw new Error(`Objeto imutável com tamanho divergente: ${key}`);
-    return console.log(`já publicado: ${key}`);
+    if (!compress) return console.log(`já publicado: ${key}`);
   }
-  if (head.status !== 404) throw new Error(`Falha ao consultar ${key}: HTTP ${head.status}`);
   const put = await r2(config, 'PUT', key, {
-    body,
+    body: compress ? gzipSync(body, { level: 9 }) : body,
     contentType,
+    ...(compress ? { contentEncoding: 'gzip' } : {}),
     cacheControl: 'public, max-age=31536000, immutable',
   });
   if (!put.ok) throw new Error(`Falha ao publicar ${key}: HTTP ${put.status}`);
