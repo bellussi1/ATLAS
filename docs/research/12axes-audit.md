@@ -1,154 +1,144 @@
 # Auditoria da referência 12axes
 
-Data: 01/11/2026. Repositório público inspecionado no commit `e1c7adeb67c100f13fdbe16f226f5ca21c09801c`, confirmado por `git ls-remote` e checkout raso temporário. Este documento distingue observação de código, execução de navegador e recomendações para implementação independente no ATLAS.
+Data: 01/11/2026. Commit auditado: `e1c7adeb67c100f13fdbe16f226f5ca21c09801c` (confirmado por `git ls-remote` e checkout raso temporário). Distingue observação de código, execução de navegador e recomendações para implementação independente no ATLAS.
 
 ## Limites e direitos
 
-A [licença desse commit](https://github.com/RomanCypherpunk/12axes/blob/e1c7adeb67c100f13fdbe16f226f5ca21c09801c/LICENSE) declara o projeto proprietário, com direitos reservados: estar disponível publicamente não o torna código aberto. Ela restringe reprodução/reutilização de código, dados, textos, imagens e modelo, além de proibir clientes externos da API sem autorização. A investigação não transfere nenhum desses ativos para o produto ATLAS. As propostas abaixo tratam de técnicas gerais de engenharia e experiência; sua implementação deve ser independente, usando os contratos e registros próprios do ATLAS.
+A [licença do commit](https://github.com/RomanCypherpunk/12axes/blob/e1c7adeb67c100f13fdbe16f226f5ca21c09801c/LICENSE) declara o projeto proprietário, com direitos reservados: estar público não o torna código aberto. Restringe reprodução e reutilização de código, dados, textos, imagens e modelo, e proíbe clientes externos da API sem autorização. Nenhum ativo é transferido ao ATLAS. As propostas tratam de técnicas gerais de engenharia e experiência, com implementação independente e contratos próprios.
 
-As páginas foram acessadas pelo navegador somente depois de instalar uma interceptação de rede que aborta qualquer requisição fora de `12axes.vercel.app` e qualquer caminho `/api/`. Os testes não enviaram respostas de quiz, não chamaram os comparadores remotos e não acessaram a API. CDN e analytics externos foram bloqueados. O fallback dos assets para a própria origem permitiu observar as teias mesmo com esse bloqueio.
+**Método de acesso:** navegador com interceptação que aborta qualquer requisição fora de `12axes.vercel.app` e qualquer `/api/`. Nenhuma resposta de quiz enviada, nenhum comparador remoto chamado, nenhum acesso à API. CDN e analytics bloqueados; o fallback de assets para a origem permitiu observar as teias.
 
-## Matriz de funcionalidades e responsabilidades
+## Matriz de funcionalidades
 
-| Área                           | Evidência no repositório 12axes                                                                         | Achado verificável                                                                                                                                 | Aplicação independente no ATLAS                                                                                                                    |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Catálogos                      | `backend/src/main/resources/data/{ideologies,personalities,countries,parties,books}.json`               | Metadados separados por categoria; perfis numéricos em arquivos próprios; referências como `countryId` e `personalityId`                           | Preservar IDs internos próprios e Zod; separar payloads por necessidade de leitura após medir tamanho e cache                                      |
-| Identificadores                | Arquivos acima; `*-profiles.json`                                                                       | Catálogos principais usam `id` textual também aproveitado em URLs; perfis usam chaves como `ideologyId`; livros não têm ID próprio nessa estrutura | Separar identidade estável de slug e título; obras precisam de identidade própria; reconciliação de IDs externos não deve depender do nome exibido |
-| Páginas estáticas              | `frontend/package.json`; `frontend/scripts/generate-pages.mjs`                                          | Build executa TypeScript, Vite e gerador de páginas HTML por catálogo/entidade/idioma                                                              | Continuar usando Router + prerender Angular; não introduzir outro gerador HTML paralelo                                                            |
-| Teia                           | `frontend/src/tree/TreePage.tsx`; `frontend/src/main.tsx`                                               | Visão em canvas com busca, seleção, pan, zoom, pinch, painel de perfil, vizinhos e link para página específica                                     | Compartilhar seleção/ficha com a leitura editorial; oferecer alternativa semântica em lista e interação por teclado                                |
-| Layout antecipado              | `frontend/scripts/tree-data.mjs`; `tree-layout.mjs`                                                     | Build calcula coordenadas determinísticas, arestas, graus e vizinhos, exportando um JSON por catálogo/idioma                                       | Pré-calcular layouts a partir de relações explícitas do ATLAS; registrar versão do algoritmo e hash da entrada                                     |
-| Natureza das conexões          | Mesmos scripts                                                                                          | Arestas resultam de similaridade entre perfis numéricos, com filtros e ancoragem no espectro político                                              | Não apresentar proximidade numérica como influência histórica; similaridade analítica deve ter classificação, metodologia e limites próprios       |
-| Dados da teia                  | `frontend/src/tree/data.ts`                                                                             | Fetch de snapshot estático; cache de dados e promessas em voo; fallback CDN→origem; prefetch de outros catálogos no tempo ocioso                   | HttpClient/TransferState e cache existente; cancelamento/erros explícitos; prefetch somente após medir impacto em redes móveis                     |
-| Hipertexto                     | `frontend/src/components/GlossaryText.tsx`; `backend/.../GlossaryResolver.java`; `glossary.json`        | Segmentos com offsets e definições; validação de sobreposição; mouse, foco, toque, Escape e fechamento externo                                     | Reaproveitar o hipertexto e CDK Dialog já presentes no ATLAS; termos resolvem IDs do grafo, não texto solto sem proveniência                       |
-| Navegação entre catálogos      | `TreePage.tsx`; `scripts/site-header.mjs`                                                               | Links de catálogo e lista; troca entre teias usa History API e cache; página específica permanece disponível                                       | Usar Angular Router e URLs reais, preservando o limite atual de três rotas; catálogos futuros entram por fase autorizada                           |
-| Comparadores                   | `frontend/src/components/compare/{ComparePage,ComparePeoplePage,PairDetail}.tsx`; `services/quizApi.ts` | Seleção de 2–3 perfis; query serializa seleção; catálogo é carregado sob demanda; cálculo/resultados dependem também da API                        | Comparador histórico futuro deve usar atributos documentados e recortes temporais; pode ser estático e não exige backend permanente                |
-| Lazy loading                   | `frontend/src/main.tsx`; `App.tsx`; `i18n/index.ts`                                                     | Imports dinâmicos de teia, comparadores, resultados, exportação e dicionário de idioma                                                             | Preservar `loadComponent`; avaliar `@defer` para visualizações pesadas sem ocultar conteúdo editorial essencial no prerender                       |
-| Internacionalização            | `frontend/src/i18n/{index,pt,en}.ts`; gerador estático; `scripts/check_i18n.py`                         | Dicionários PT/EN, overlays por ID e fallback PT; verificador compara cobertura de catálogos/glossário                                             | IDs independentes do idioma; tradução editorial deve ter estado de revisão; não adicionar i18n completo nesta fatia                                |
-| Separação de responsabilidades | `frontend/scripts`, `src/tree`, `src/utils`, `backend/.../{model,service,controller}`                   | Geração, consumo de snapshots, renderização e serviços de quiz têm áreas distintas                                                                 | Conservar fronteiras `core`/`shared`/features e scripts offline do ATLAS; não importar Spring, React nem persistência externa                      |
-| Testes e CI                    | `.github/workflows/ci.yml`; `frontend/test`; `src/tree/layout.test.ts`; testes Java                     | CI tem jobs Maven/Java 21 e frontend Node 22; executa checagem i18n, testes e build estático                                                       | Manter ferramentas atuais Angular/Vitest/Playwright; testar contratos, referências, foco e retorno, não apenas algoritmos visuais                  |
-| Licenciamento de mídia         | Metadados `imageSource*`, `flagSource*`, `logoSource*`; README e LICENSE                                | Há campos de origem de mídia; isso, isoladamente, não demonstra direito de republicar cada arquivo                                                 | Preservar `MediaAsset`, licença individual, créditos e bloqueio de reprodução de ativos não autorizados                                            |
+| Área | Evidência na referência | Achado | Aplicação independente no ATLAS |
+|---|---|---|---|
+| Catálogos | `backend/src/main/resources/data/{ideologies,personalities,countries,parties,books}.json` | Metadados por categoria; perfis numéricos em arquivos próprios; referências por `countryId` e `personalityId` | Preservar IDs próprios e Zod; separar payloads por necessidade de leitura após medir tamanho e cache |
+| Identificadores | Arquivos acima; `*-profiles.json` | `id` textual usado em URLs; perfis com chaves como `ideologyId`; livros sem ID próprio | Separar identidade estável de slug e título; obras com identidade própria; reconciliação de IDs externos não depende do nome exibido |
+| Páginas estáticas | `frontend/package.json`; `frontend/scripts/generate-pages.mjs` | Build com TypeScript, Vite e gerador de HTML por catálogo/entidade/idioma | Manter Router + prerender Angular; sem gerador HTML paralelo |
+| Teia | `frontend/src/tree/TreePage.tsx`; `frontend/src/main.tsx` | Canvas com busca, seleção, pan, zoom, pinch, ficha, vizinhos e link para página | Compartilhar seleção e ficha com a leitura editorial; alternativa semântica em lista e teclado |
+| Layout antecipado | `frontend/scripts/tree-data.mjs`; `tree-layout.mjs` | Coordenadas determinísticas, arestas, graus e vizinhos exportados por catálogo/idioma no build | Pré-calcular a partir de relações explícitas; registrar versão do algoritmo e hash da entrada |
+| Natureza das conexões | Mesmos scripts | Arestas por similaridade entre perfis numéricos, com filtros e ancoragem no espectro político | Proximidade numérica nunca apresentada como influência histórica; similaridade analítica com classificação, método e limites próprios |
+| Dados da teia | `frontend/src/tree/data.ts` | Fetch de snapshot; cache e promessas em voo; fallback CDN→origem; prefetch no tempo ocioso | HttpClient/TransferState existentes; cancelamento e erros explícitos; prefetch só após medir impacto em rede móvel |
+| Hipertexto | `GlossaryText.tsx`; `GlossaryResolver.java`; `glossary.json` | Segmentos com offsets; validação de sobreposição; mouse, foco, toque, Escape, fechamento externo | Reaproveitar hipertexto e CDK Dialog do ATLAS; termos resolvem IDs do grafo, não texto solto sem proveniência |
+| Navegação entre catálogos | `TreePage.tsx`; `scripts/site-header.mjs` | Links de catálogo; troca via History API e cache; página específica disponível | Angular Router e URLs reais, respeitando o limite atual de três rotas; novos catálogos por fase autorizada |
+| Comparadores | `frontend/src/components/compare/{ComparePage,ComparePeoplePage,PairDetail}.tsx`; `services/quizApi.ts` | Seleção de 2–3 perfis serializada na query; catálogo sob demanda; resultados dependem também da API | Comparador histórico futuro com atributos documentados e recortes temporais; pode ser estático |
+| Lazy loading | `main.tsx`; `App.tsx`; `i18n/index.ts` | Imports dinâmicos de teia, comparadores, resultados, exportação e dicionário | Preservar `loadComponent`; avaliar `@defer` em visualizações pesadas sem ocultar conteúdo essencial do prerender |
+| Internacionalização | `frontend/src/i18n/{index,pt,en}.ts`; `scripts/check_i18n.py` | Dicionários PT/EN com overlays por ID e fallback PT; verificador de cobertura | IDs independentes do idioma; tradução com estado de revisão; sem i18n completo nesta fatia |
+| Responsabilidades | `frontend/scripts`, `src/tree`, `src/utils`, `backend/.../{model,service,controller}` | Geração, snapshots, renderização e serviços de quiz em áreas distintas | Manter `core`/`shared`/features e scripts offline; sem Spring, React ou persistência externa |
+| Testes e CI | `.github/workflows/ci.yml`; `frontend/test`; `src/tree/layout.test.ts`; testes Java | Jobs Maven/Java 21 e Node 22; checagem i18n, testes e build estático | Manter Angular/Vitest/Playwright; testar contratos, referências, foco e retorno, não só algoritmos visuais |
+| Licenciamento de mídia | Metadados `imageSource*`, `flagSource*`, `logoSource*`; README; LICENSE | Campos de origem existem; isso não demonstra direito de republicar cada arquivo | Manter `MediaAsset`, licença individual, créditos e bloqueio de ativos não autorizados |
 
-Os caminhos acima são relativos ao [snapshot auditado](https://github.com/RomanCypherpunk/12axes/tree/e1c7adeb67c100f13fdbe16f226f5ca21c09801c). O README pode descrever um inventário anterior: para contagem e comportamento prevalecem os arquivos e a execução observados.
+Caminhos relativos ao [snapshot auditado](https://github.com/RomanCypherpunk/12axes/tree/e1c7adeb67c100f13fdbe16f226f5ca21c09801c). O README pode descrever inventário anterior; prevalecem os arquivos e a execução observados.
 
 ## Inventário observado
 
-Contagem feita com parse JSON, sem importar registros para o ATLAS:
+Contagem por parse JSON, sem importar registros:
 
-| Catálogo                | Registros | Tamanho do arquivo bruto |
-| ----------------------- | --------: | -----------------------: |
-| Ideologias              |       274 |            182.706 bytes |
-| Personalidades          |       675 |            510.561 bytes |
-| Países e regimes        |       320 |            238.936 bytes |
-| Partidos e organizações |       203 |            167.685 bytes |
-| Livros                  |       334 |             78.496 bytes |
-| Glossário               |        83 |             18.960 bytes |
+| Catálogo | Registros | Bytes brutos |
+|---|--:|--:|
+| Ideologias | 274 | 182.706 |
+| Personalidades | 675 | 510.561 |
+| Países e regimes | 320 | 238.936 |
+| Partidos e organizações | 203 | 167.685 |
+| Livros | 334 | 78.496 |
+| Glossário | 83 | 18.960 |
 
-Não foram encontrados IDs duplicados nos quatro catálogos principais nem no glossário. Isso não é uma auditoria completa de integridade referencial. Os perfis usam chaves específicas de entidade; o catálogo de livros referencia o autor por `personalityId`. A separação de países atuais e regimes históricos por um booleano serve ao produto de referência, mas é insuficiente para a distinção temporal/documental pretendida pelo ATLAS.
+Sem IDs duplicados nos quatro catálogos principais nem no glossário (não é auditoria completa de integridade referencial). O catálogo de livros referencia o autor por `personalityId`. Países atuais e regimes históricos separados por booleano servem ao produto de referência, mas são insuficientes para a distinção temporal e documental do ATLAS.
 
-## Teias: interpretação do mecanismo
+## Teias: mecanismo
 
-O [pipeline de dados](https://github.com/RomanCypherpunk/12axes/blob/e1c7adeb67c100f13fdbe16f226f5ca21c09801c/frontend/scripts/tree-data.mjs) monta matrizes de compatibilidade, listas de vizinhos e snapshots por categoria/idioma. O [layout](https://github.com/RomanCypherpunk/12axes/blob/e1c7adeb67c100f13fdbe16f226f5ca21c09801c/frontend/scripts/tree-layout.mjs) é determinístico e executado no build. Coordenadas, arestas e grau chegam prontos ao navegador; a renderização não precisa repetir o posicionamento completo. Há custo quadrático em partes do processamento antecipado; mover trabalho para o build não elimina o custo nem garante escalabilidade irrestrita.
+O [pipeline](https://github.com/RomanCypherpunk/12axes/blob/e1c7adeb67c100f13fdbe16f226f5ca21c09801c/frontend/scripts/tree-data.mjs) monta matrizes de compatibilidade, vizinhos e snapshots por categoria/idioma. O [layout](https://github.com/RomanCypherpunk/12axes/blob/e1c7adeb67c100f13fdbe16f226f5ca21c09801c/frontend/scripts/tree-layout.mjs) é determinístico e roda no build; o navegador recebe coordenadas, arestas e grau prontos. Há custo quadrático no processamento antecipado; mover trabalho para o build não elimina o custo nem garante escala ilimitada.
 
-A ideia aproveitável é publicar geometria estável e cacheável, com dados versionados. O ATLAS deve obter arestas de suas relações tipadas e evidenciadas. Uma representação de influência, divergência ou associação precisa preservar direção, natureza e fonte. Uma eventual visualização de similaridade deve ser separada e explicada como analítica. Nenhum vínculo da Wikipedia ou ponto próximo na tela autoriza inferência causal.
+Aproveitável: publicar geometria estável e cacheável, com dados versionados. Para o ATLAS, as arestas devem vir de relações tipadas e evidenciadas. Influência, divergência ou associação precisam de direção, natureza e fonte. Similaridade, se visualizada, é separada e explicada como analítica. Nenhum vínculo da Wikipedia nem proximidade na tela autoriza inferência causal.
 
-## Funcionamento real observado
+## Funcionamento observado
 
-Foram feitas requisições HTTP somente ao HTML das cinco URLs e, separadamente, execução real com Chromium headless via `@playwright/test` já instalado no ATLAS. As cinco páginas retornaram HTTP 200. O HTML inicial das teias tem o título da Home; após JavaScript o título muda para a teia correspondente. Isso confirma a distinção entre as páginas de catálogo geradas e a visão alternativa em canvas. O código da teia define `noindex, follow`.
+HTTP ao HTML das cinco URLs e execução com Chromium headless via `@playwright/test` (já instalado no ATLAS). As cinco páginas retornaram 200. O HTML inicial das teias tem o título da Home; após JavaScript, muda para o da teia. Confirma a distinção entre páginas de catálogo geradas e a visão em canvas. A teia define `noindex, follow`.
 
-| Superfície/ação          | Resultado observado                                                                                                                      |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `/`                      | Home renderizada com apresentação do quiz, eixos e acesso aos catálogos; não foi iniciado o quiz                                         |
-| `/tree/parties`          | Título de Partidos, um canvas e uma busca renderizados                                                                                   |
-| `/tree/countries`        | Título de Países, um canvas e uma busca renderizados                                                                                     |
-| `/tree/personalities`    | Título de Personalidades, um canvas e uma busca renderizados                                                                             |
-| `/tree/ideologies`       | Título de Ideologias, um canvas e uma busca renderizados                                                                                 |
-| Desktop 1440×1000        | Buscar termo, selecionar sugestão, abrir ficha e selecionar vizinho funcionaram; link de aprofundamento presente; Escape fechou o painel |
-| Troca desktop + Voltar   | Clique em Países mudou a URL sem navegação documental completa; Voltar restaurou URL da teia de Ideologias                               |
-| Mobile com toque 390×844 | Busca, sugestão, ficha, vizinho e botão Fechar funcionaram; não houve overflow horizontal do documento                                   |
-| Proteção de rede         | Bloqueio instalado antes de cada navegação; nenhuma requisição de API observada nos fluxos concluídos                                    |
+| Superfície/ação | Resultado |
+|---|---|
+| `/` | Home com apresentação do quiz, eixos e acesso aos catálogos; quiz não iniciado |
+| `/tree/parties`, `/tree/countries`, `/tree/personalities`, `/tree/ideologies` | Título correspondente, um canvas e uma busca |
+| Desktop 1440×1000 | Busca, sugestão, ficha e vizinho funcionaram; link de aprofundamento presente; Escape fechou o painel |
+| Troca + Voltar (desktop) | Clique em Países mudou a URL sem navegação documental completa; Voltar restaurou a teia de Ideologias |
+| Mobile com toque 390×844 | Busca, sugestão, ficha, vizinho e Fechar funcionaram; sem overflow horizontal |
+| Proteção de rede | Bloqueio antes de cada navegação; nenhuma requisição de API nos fluxos concluídos |
 
-Os termos de busca e entidades utilizados serviram somente para acionar a interface de referência. Não foram reaproveitados textos, vetores ou descrições. Os comparadores e o hipertexto do quiz foram inspecionados no código; sua execução conectada não foi validada, pois exigiria ampliar o acesso de rede/API.
+Termos e entidades usados só acionaram a interface; nenhum texto, vetor ou descrição foi reaproveitado. Comparadores e hipertexto do quiz foram inspecionados no código, sem execução conectada (exigiria ampliar acesso de rede e API).
 
-### Problemas e limites encontrados na referência
+### Problemas e limites da referência
 
-- No viewport 390×844, a navegação entre os quatro catálogos não aparece entre os links acessíveis: restam logo, idioma e início. Uma tentativa Playwright de clicar no link Países terminou em timeout. O ATLAS deve preservar uma navegação equivalente no mobile.
-- A ficha móvel apresentou caixa `x=-9`, largura `390`, em viewport de largura `390`. Isso indica deslocamento de 9 px para fora da viewport, embora o documento não tenha overflow horizontal. A captura foi inspecionada: a borda esquerda da ficha está fora da área visível, mas os rótulos da lista de conexões continuam legíveis; não se constatou corte de texto específico nessa captura.
-- O canvas tem um nome acessível, mas os nós não aparecem como controles individuais no DOM; a implementação precisa de busca/lista equivalente e não deve usar o canvas como único acesso ao conhecimento.
-- Escape fecha a seleção; isso não demonstra navegação integral dos nós por teclado nem retorno de foco correto. Não foi feita auditoria WCAG completa da referência.
-- O browser tool de pesquisa retornou 403/inacessível para as URLs. Essa limitação foi superada pela execução local do Chromium, sem remover o bloqueio de API. Uma tentativa do MCP Playwright falhou porque seu perfil estava em uso; os resultados acima vêm do pacote local, em contexto isolado.
-- Não foram instaladas dependências, executados testes unitários, Maven ou build do 12axes. Existência dos testes e passos de CI foi verificada no código; resultados de execução de CI não foram atestados.
+- Em 390×844, a navegação entre os quatro catálogos não aparece entre os links acessíveis (restam logo, idioma e início); clicar em Países deu timeout. O ATLAS deve manter navegação equivalente no mobile.
+- Ficha móvel com caixa em `x=-9` e largura 390 (deslocamento de 9 px, sem overflow do documento); os rótulos continuam legíveis.
+- O canvas tem nome acessível, mas os nós não são controles individuais no DOM; é preciso busca ou lista equivalente, e o canvas não pode ser o único acesso.
+- Escape fecha a seleção, mas não demonstra navegação integral por teclado nem retorno de foco. Sem auditoria WCAG completa.
+- A ferramenta de pesquisa retornou 403 para as URLs; o Chromium local contornou isso sem remover o bloqueio de API. Uma tentativa com o MCP Playwright falhou por perfil em uso; os resultados acima vêm do pacote local, em contexto isolado.
+- Não foram instalados dependências nem executados testes, Maven ou build da referência. A existência de testes e passos de CI foi verificada no código; a execução de CI não foi atestada.
 
-Capturas diagnósticas, fora do produto e sem uso como ativos editoriais:
-
-- `C:/Users/Bellussi/AppData/Local/Temp/12axes-audit-live-desktop.png`: visão geral da teia.
-- `C:/Users/Bellussi/AppData/Local/Temp/12axes-audit-live-1440.png`: ficha e conexões em desktop.
-- `C:/Users/Bellussi/AppData/Local/Temp/12axes-audit-live-mobile-touch.png`: ficha em viewport móvel com toque.
-
-As capturas temporárias não são persistência garantida do projeto. O registro verificável das ações e medidas está neste relatório; nenhum screenshot foi incorporado à aplicação.
+Capturas diagnósticas (fora do produto, sem uso editorial), em `C:/Users/Bellussi/AppData/Local/Temp/`: `12axes-audit-live-desktop.png`, `12axes-audit-live-1440.png`, `12axes-audit-live-mobile-touch.png`. São temporárias e não são persistência do projeto; o registro verificável está neste relatório.
 
 ## Decisões propostas ao ATLAS
 
-1. Preservar sua base Angular, infraestrutura estática e grafo validado. O ganho imediato vem de completar o contrato de exploração contextual existente, mantendo proveniência e tipos de vínculo.
-2. Publicar primeiro o ciclo hipertexto → ficha → relação explícita → outra ficha → retorno. Abrir catálogos, comparadores e grandes redes só depois da validação desse ciclo nas duas páginas editoriais.
-3. Construir índices reversos, de busca e geometria em etapa reproduzível, com ordem estável, versão e checagem de referências; não adotar o modelo numérico proprietário da referência.
-4. Compartilhar seleção e ficha entre os dois modos de produto, sem duplicar páginas Angular ou introduzir gerador HTML concorrente ao prerender.
-5. Manter permalinks somente para páginas publicadas. Até a ampliação deliberada do roteamento, uma entidade sem página própria deve informar isso e continuar explorável em contexto.
-6. Tratar acessibilidade e proveniência como parte do contrato: controles reais, histórico local previsível, Escape, foco restaurado, origem/direção do vínculo e evidência consultável; validar mobile com toque e teclado em vez de extrapolar do desktop.
+1. Preservar a base Angular, a infraestrutura estática e o grafo validado. O ganho vem de completar o contrato de exploração contextual, com proveniência e tipos de vínculo.
+2. Publicar primeiro o ciclo hipertexto → ficha → relação explícita → outra ficha → retorno. Catálogos, comparadores e redes grandes só depois de validar esse ciclo nas páginas editoriais.
+3. Construir índices reversos, de busca e de geometria em etapa reproduzível, com ordem estável, versão e checagem de referências. Não adotar o modelo numérico proprietário.
+4. Compartilhar seleção e ficha entre os modos de produto, sem páginas Angular duplicadas nem gerador HTML concorrente ao prerender.
+5. Permalinks só para páginas publicadas. Entidade sem página própria informa isso e continua explorável em contexto.
+6. Acessibilidade e proveniência como contrato: controles reais, histórico local previsível, Escape, foco restaurado, origem e direção do vínculo, evidência consultável. Validar mobile com toque e teclado.
 
 ## Origem dos dados e cruzamentos (aprofundamento)
 
-Leitura adicional do mesmo commit `e1c7adeb67c100f13fdbe16f226f5ca21c09801c`. Descreve o método do projeto de referência para entendê-lo. Nada foi copiado; os números abaixo vêm dos nomes e estruturas dos arquivos, não do conteúdo.
+Leitura adicional do mesmo commit, para entender o método. Nada foi copiado; os números vêm de nomes e estruturas de arquivos.
 
-### 1. De onde vêm os dados
+### 1. Origem dos dados
 
-- **Metadados** (nome, categoria, descrição curta, país e personalidade associados, religiões): escritos por quem mantém o projeto, com apoio de IA, em `ideologies.json`, `personalities.json`, `countries.json`, `parties.json` e nas traduções em `i18n/en/`. Descrições têm cerca de 30 palavras e não trazem fonte por afirmação.
-- **Vetores de 12 eixos** (a parte central): não são coletados de nenhuma base. Cada perfil é "auditado" por um subagente de IA que responde às mesmas 240 perguntas do quiz, mais as perguntas de arquétipo, após pesquisa sobre o perfil. O processo está em `profile-audit/README.md` e `NEW_PROFILE.md`: lotes de 15, subagentes em paralelo, validação por `validate.py`, respostas arquivadas em `profile-audit/answers/` (cerca de 1.540 arquivos), progresso em `STATE.json`. O próprio documento afirma que respostas copiadas entre perfis parecidos e modelos fracos já produziram vetores ruins, e que duas sessões independentes geraram vetores diferentes para a mesma pessoa viva.
-- **Imagens**: Wikimedia Commons, com `imageSourceName`, `imageSourceUrl` e `imageNote` por registro.
-- **Livros** (`books.json`, 334 registros): só `personalityId`, `title`, `year` e `url`. Os links são de loja com identificador de afiliado. Não há editora, edição nem ISBN.
-- **Valores políticos** (`political-values.json`): categorias definidas no próprio projeto, com perfil nos eixos.
+- **Metadados** (nome, categoria, descrição curta, país e personalidade, religiões): escritos por quem mantém o projeto, com apoio de IA, em `ideologies.json`, `personalities.json`, `countries.json`, `parties.json` e `i18n/en/`. Descrições de cerca de 30 palavras, sem fonte por afirmação.
+- **Vetores de 12 eixos** (o centro do método): não vêm de base alguma. Cada perfil é "auditado" por subagente de IA que responde às 240 perguntas do quiz mais as de arquétipo, após pesquisa sobre o perfil (`profile-audit/README.md`, `NEW_PROFILE.md`): lotes de 15, paralelismo, `validate.py`, respostas em `profile-audit/answers/` (~1.540 arquivos), progresso em `STATE.json`. O próprio documento admite que respostas copiadas entre perfis parecidos e modelos fracos geraram vetores ruins, e que duas sessões independentes geraram vetores diferentes para a mesma pessoa viva.
+- **Imagens:** Wikimedia Commons, com `imageSourceName`, `imageSourceUrl` e `imageNote`.
+- **Livros** (334): `personalityId`, `title`, `year` e `url` (link de loja com afiliado). Sem editora, edição ou ISBN.
+- **Valores políticos** (`political-values.json`): categorias definidas pelo projeto, com perfil nos eixos.
 
-Conclusão: a base não é histórica no sentido de citação por fato. Os vetores são estimativas de um modelo calibrado por pesquisa, e o projeto assume isso no aviso metodológico.
+Conclusão: a base não é histórica no sentido de citação por fato. Os vetores são estimativas de modelo calibrado, e o projeto assume isso no aviso metodológico.
 
 ### 2. Como um perfil vira vetor
 
-Mesma fórmula do quiz: cada resposta vira um valor de 0 a 1 do lado do polo esquerdo (`DT=0`, `D=0.25`, `N=0.5`, `C=0.75`, `CT=1`, invertido quando o polo de concordância é o direito). Cada eixo é a média ponderada de suas perguntas. As alternativas de arquétipo escolhidas entram como respostas extras. A implementação está em `profile-audit/profile_vector.py`, espelhando `ScoringService.java`.
+Mesma fórmula do quiz: cada resposta vira 0 a 1 pelo polo esquerdo (`DT=0`, `D=0.25`, `N=0.5`, `C=0.75`, `CT=1`, invertido quando a concordância é do polo direito). Cada eixo é a média ponderada de suas perguntas; as alternativas de arquétipo entram como respostas extras. Implementação em `profile-audit/profile_vector.py`, espelhando `ScoringService.java`.
 
-### 3. Cruzamentos: como o resultado do usuário encontra perfis
+### 3. Cruzamentos com o resultado do usuário
 
-- Um único escorador, `ProfileMatchScorer`, é usado para ideologias, personalidades, países e partidos. Ele existe em três implementações sincronizadas: Java (backend), JavaScript (`frontend/scripts/profile-match.mjs`) e Python (`profile-audit/compatibility.py`).
-- Pontuação em quatro partes, com pesos 0,42 (similaridade por eixo, com penalidade para lados opostos), 0,33 (direção com cosseno aumentado perto do centro), 0,18 (intensidade) e 0,07 (divergência máxima em um eixo).
-- Cada catálogo é comparado isoladamente com o vetor do usuário. Ideologia, país, personalidade e partido não se cruzam entre si durante o quiz.
-- Os percentis são calculados contra o catálogo inteiro. Filtro de religião tira perfis do ranking, sem mudar a nota.
+- Um único escorador, `ProfileMatchScorer`, atende ideologias, personalidades, países e partidos, em três implementações sincronizadas: Java (backend), JavaScript (`frontend/scripts/profile-match.mjs`) e Python (`profile-audit/compatibility.py`).
+- Pontuação em quatro partes: similaridade por eixo com penalidade para lados opostos (0,42); direção por cosseno aumentado perto do centro (0,33); intensidade (0,18); divergência máxima em um eixo (0,07).
+- Cada catálogo é comparado isoladamente ao vetor do usuário; não há cruzamento entre catálogos durante o quiz.
+- Percentis calculados contra o catálogo inteiro. Filtro de religião remove perfis do ranking sem mudar a nota.
 
 ### 4. Conexões entre perfis (a teia)
 
-`frontend/scripts/tree-data.mjs` roda no build:
+`tree-data.mjs`, no build:
+- **Matriz de similaridade:** a mesma pontuação, média nos dois sentidos, zero se as religiões forem incompatíveis.
+- **Vizinhos:** cada perfil liga-se aos 3 mais parecidos (`tree-layout.mjs`), união nos dois sentidos; a lista "similares" usa `SIMILAR_COUNT`.
+- **Posição:** âncoras combinam o posto na bússola (economia, controle, poder, representação, estrutura) com o centro de uma região temática. Ideologias usam a categoria; os demais, o espectro mais próximo entre referências. Determinístico, gerado no build.
 
-- **Matriz de similaridade**: a mesma pontuação de compatibilidade, média nos dois sentidos, zero quando as religiões são incompatíveis.
-- **Vizinhos**: cada perfil liga-se aos 3 mais parecidos (`tree-layout.mjs`), união dos dois sentidos. A lista "similares" usa `SIMILAR_COUNT`.
-- **Posição**: âncoras combinam o posto do perfil na bússola (economia, controle, poder, representação, estrutura) com o centro de uma região temática. Ideologias usam a categoria; os demais usam o espectro mais próximo entre referências. O resultado é determinístico (sem aleatoriedade) e é gerado no build.
+Uma conexão significa "vetores parecidos", não influência, origem ou relação histórica. O projeto não rotula como histórico, mas a interface mostra os nós como rede de relações.
 
-Uma conexão, portanto, significa "vetores parecidos". Não significa influência, origem ou relação histórica. O projeto não rotula isso como histórico, mas a interface mostra os nós como se fossem uma rede de relações.
+### 5. Outras camadas
 
-### 5. Outras camadas de cruzamento
-
-| Camada                                       | Como funciona                                                                                                                                         | Limite                                        |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| Tensão entre eixos (`AxisTensionService`)    | Compara a combinação do usuário com a correlação típica entre eixos no catálogo de ideologias; só aparece se pender além de `MIN_LEAN` nos dois eixos | Depende da correlação do próprio catálogo     |
-| Divergência (`DisagreementService`)          | Eixos em que o usuário mais se afasta da ideologia, personalidade e país mais compatíveis                                                             | Mesma base de vetores                         |
-| Valores políticos (`PoliticalValuesService`) | Distância do usuário a perfis fixos de cada categoria                                                                                                 | Categorias e perfis são escolhas do projeto   |
-| Livros (`BookRecommendationService`)         | Livros das personalidades mais compatíveis, com link de afiliado                                                                                      | Não há edição nem fonte do livro              |
-| Referências entre catálogos                  | Partido tem `countryId`; ideologia tem `countryId` e `personalityId` escolhidos a partir dos perfis existentes; livro tem `personalityId`             | São ligações manuais de metadado, não cálculo |
+| Camada | Como funciona | Limite |
+|---|---|---|
+| Tensão entre eixos (`AxisTensionService`) | Compara a combinação do usuário com a correlação típica entre eixos no catálogo de ideologias; aparece se pender além de `MIN_LEAN` nos dois eixos | Depende da correlação do próprio catálogo |
+| Divergência (`DisagreementService`) | Eixos em que o usuário mais se afasta da ideologia, personalidade e país mais compatíveis | Mesma base de vetores |
+| Valores políticos (`PoliticalValuesService`) | Distância do usuário a perfis fixos por categoria | Categorias e perfis são escolhas do projeto |
+| Livros (`BookRecommendationService`) | Livros das personalidades mais compatíveis, com link de afiliado | Sem edição nem fonte do livro |
+| Referências entre catálogos | Partido tem `countryId`; ideologia tem `countryId` e `personalityId` escolhidos entre perfis existentes; livro tem `personalityId` | Ligações manuais de metadado, não cálculo |
 
 ### 6. O que isso significa para o ATLAS
 
-- **Não adotar** a camada de vetores como dado histórico. O ATLAS exige fonte por afirmação e separa fato, interpretação, hipótese e controvérsia. Um vetor de 12 números estimados por modelo não atende a isso.
-- **Separar** qualquer análise de posicionamento do acervo histórico, com rótulo de estimativa e método publicado, como o próprio projeto faz no aviso metodológico.
-- **Aproveitar as técnicas gerais**: validação que recusa sequências de respostas copiadas, avaliação de cada perfil isolada, filtro por religião explícito, e layout determinístico gerado no build.
-- **Manter as relações com tipo e proveniência**, que é o que o ATLAS já faz em `relation-types.ts`. Similaridade analítica não vira influência documentada.
+- **Não adotar** a camada de vetores como dado histórico. O ATLAS exige fonte por afirmação e separa fato, interpretação, hipótese e controvérsia; doze números estimados por modelo não atendem a isso.
+- **Separar** qualquer análise de posicionamento do acervo histórico, com rótulo de estimativa e método publicado.
+- **Aproveitar as técnicas gerais:** validação que recusa sequências de respostas copiadas, avaliação isolada de cada perfil, filtro explícito por religião, layout determinístico no build.
+- **Manter relações com tipo e proveniência**, como já faz em `relation-types.ts`. Similaridade analítica não vira influência documentada.
 
-### 7. Observações sobre o projeto de referência
+### 7. Observações sobre a referência
 
-- O README diz "+230 ideologias, +170 países e regimes, +390 figuras". Os arquivos têm 271 ideologias, 321 países e regimes e 667 personalidades auditadas no `STATE.json`. Os arquivos prevalecem.
-- O processo de auditoria depende de subagentes de IA com modelos de alta qualidade. Isso tem custo e reprodutibilidade limitada: refazer um perfil pode dar outro vetor, e o próprio documento registra isso.
-- Partes do conteúdo (descrições e vetores) ficam protegidas por licença própria. Por isso o ATLAS não reaproveita nenhuma delas.
+- O README cita "+230 ideologias, +170 países e regimes, +390 figuras". Os arquivos têm 271 ideologias, 321 países e regimes e 667 personalidades auditadas em `STATE.json`. Prevalecem os arquivos.
+- A auditoria depende de subagentes de IA de alta qualidade: custo e reprodutibilidade limitados, e refazer um perfil pode gerar outro vetor, como o próprio documento registra.
+- Descrições e vetores são protegidos por licença própria; o ATLAS não reaproveita nenhum dos dois.
