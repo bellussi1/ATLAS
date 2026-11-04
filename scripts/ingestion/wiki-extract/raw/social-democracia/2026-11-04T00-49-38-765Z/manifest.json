@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "kind": "wikipedia-capture",
+  "tradition": "social-democracia",
+  "capturedAt": "2026-11-04T00:49:38.765Z",
+  "requests": [
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&generator=links&titles=Social+democracy&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "b006ad95e568a23fd684bbf86bc96d2784559f8f545cef212623be5c2d1fff29",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&generator=links&titles=Social+democracy&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=18247265%7C0%7CFull_employment&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "2252e9433180edb5b368616c055e06392986191f7978b1985fec578f59a1d870",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&generator=links&titles=Social+democracy&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=18247265%7C0%7CMuhammad_Iqbal&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "217ba51d686fe0f1fe41fa30e04c616113e2aa0aaa8c1d78dcfde13038d17afc",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&generator=links&titles=Social+democracy&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=18247265%7C0%7CSt_Martin%27s_Press&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "83ff23a32a681492025e685ea12d0c397481a9415608fb6ae899341853442d55",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://en.wikipedia.org/w/api.php?action=query&titles=Social+democracy&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e65805f9fd775fd840636574ecbd141bac1e1fa846f276fb43d22dbbc5b08d3e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Bruno+Kreisky&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "2a799b933e34e4f2f38d25f016a228b058237b9b910115a5a7b96798b7ac68c1",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Eduard+Bernstein&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "20bf99d89605758504b3ef6b2fab7cfa4b3ace980dffacfe1c7bee04a53f4e64",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Ferdinand+Lassalle&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "a7330a255441cbf88d6d0cc9e77f40c33540bd727f352cf12ec011c5c158915a",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Ion+Iliescu&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "ec124d077df9f364fee9dd0afec28c48e6835fd54384f2f0e4570dc9e47a638c",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Jean+Jaur%C3%A8s&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "ed8460b6016681387b73a1574ef0b54aacda33880e7ee953e86e080551b2dd7f",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Martin+Luther+King+Jr.&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "af485d3c62822c4d196bec28aa6dac3936b0de704aa71665e565980d3412a1a7",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Martin+Luther+King+Jr.&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=21666%7C0%7CIgreja_de_Deus_em_Cristo&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "fd186cb54fbf07de3f9c5312829092b96dcc5ff2e04b1d6f5e5da74931810a0b",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Martin+Luther+King+Jr.&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=21666%7C0%7CTerceiro_mundo&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e51d892f03c40a1ad031ea6b4c725d7737b834eef7237fe4848d504c59c8f80f",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Mike+Gravel&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "90510a6828cd102cd12332f79440f30d4cb53f119d8b22269f5388cd213328c1",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Olof+Palme&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "88403b7a00fa4a6e0e68034163a656308b0d590f0cc7fb79af408edbdde4778c",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Social-democracia&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "28a8910876e8ea2213d0d20607acbfb28b27caf014752f2c98f19a51666c359b",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Social-democracia&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=101997%7C0%7C%C3%81ustria&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "49378c654309d1ea17a88f00cd2a7b312b2716df24e7bdcaf9381f30c2182cd5",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Willy+Brandt&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5543aa9a24a90e4fcbf9fc17986637a57f081857e8b1c9477af9f80bf52cedbe",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&generator=links&titles=Willy+Brandt&redirects=1&gpllimit=max&gplnamespace=0&prop=pageprops&ppprop=wikibase_item%7Cdisambiguation&format=json&formatversion=2&gplcontinue=123070%7C0%7CSistema_Universit%C3%A1rio_de_Documenta%C3%A7%C3%A3o&continue=gplcontinue%7C%7C",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e27039bfa5f336248573727787039e74dabc87fa6d8b8ee2cacdc2d0472427e5",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Bruno+Kreisky&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5ce0abd402d55f20120f132e7bd3ed13dab406fd6c53fea110241e90536f6c65",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Eduard+Bernstein&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "9ccded10fc811b10cdef50b4894eb51bbdb46ac61ccf3fdb2ba69cd2bc649114",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Ferdinand+Lassalle&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e7dcb7108e8c2b1e564da075b2b42d07091e09530dea0af6d5c97673e2a9fea8",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Jean+Jaur%C3%A8s&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "6eb86c48669014c2951775f6817478fcc56e612223588efdf769e2cd5f4a5d0a",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Olof+Palme&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "c27eb526d06e3fe4ae9aa223281fbe1943dc6391d97dd5545572cd8fcaf5712b",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Social-democracia&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3d69f820096cc95f4bbc843ac07875638dfca5da34ec9ee5e8d46e3a83eaa099",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Willy+Brandt&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "7412daa643b53d0e877f18b0db3ff43ede0c979e32fc3573c02353e1106b2a06",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q189575&props=sitelinks&sitefilter=ptwiki|enwiki&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "fc9acd96cb2f4a5bba5d2ed4d2bf792277ca0dc64df0bc18582fdc229ea07a29",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q352422&props=sitelinks&sitefilter=ptwiki|enwiki&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "d2ee2bb8698194d36048e78d59dbe109b31939142fe3a722f0d9f83302f83c04",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q8027&props=sitelinks&sitefilter=ptwiki|enwiki&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "62ed6d710ba641a7ecd9bf579287b419f8dbfb7877fdbbdcf9394bc2f8f0416b",
+      "license": "CC0 1.0"
+    }
+  ]
+}

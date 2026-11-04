@@ -1,0 +1,47 @@
+{
+  "tradition": "social-democracia",
+  "basedOn": "social-democracia.json",
+  "retrievedAt": "2026-11-04",
+  "entities": [
+    [
+      "person-martin-luther-king-jr",
+      "Martin Luther King Jr.",
+      "Martin Luther King Jr.",
+      "person",
+      "Q8027"
+    ],
+    ["person-ion-iliescu", "Ion Iliescu", "Ion Iliescu", "person", "Q189575"],
+    ["person-mike-gravel", "Mike Gravel", "Mike Gravel", "person", "Q352422"]
+  ],
+  "included": [
+    {
+      "qid": "Q8027",
+      "kind": "person",
+      "label": "Martin Luther King Jr.",
+      "sitelinks": 250,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q75786",
+      "kind": "person",
+      "label": "Eduard Bernstein",
+      "sitelinks": 70,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q189575",
+      "kind": "person",
+      "label": "Ion Iliescu",
+      "sitelinks": 71,
+      "roles": ["political-ideology"]
+    },
+    {
+      "qid": "Q352422",
+      "kind": "person",
+      "label": "Mike Gravel",
+      "sitelinks": 34,
+      "roles": ["political-ideology"]
+    }
+  ],
+  "excluded": []
+}

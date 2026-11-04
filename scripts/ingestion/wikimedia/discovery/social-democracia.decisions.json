@@ -1,0 +1,6 @@
+{
+  "tradition": "social-democracia",
+  "note": "Decisões editoriais sobre a seleção automática. Entradas aqui prevalecem sobre as regras de selection.mjs. P1142 e P737 são rótulos de contribuidores do Wikidata, não evidência de pertencimento ou influência. Vazio = aceitar as regras. Revisão humana pendente.",
+  "include": [],
+  "exclude": {}
+}

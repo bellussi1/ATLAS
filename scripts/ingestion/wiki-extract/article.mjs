@@ -1,8 +1,8 @@
 // Fetches a Wikipedia article as Parsoid HTML and reduces it to prose sections, body links and references.
 import { JSDOM } from 'jsdom';
 
-import { getJson, getResource } from '../wikimedia/client.mjs';
-import { classifyReport, resolveTargets, targetKind } from './targets.mjs';
+import { liveHttp } from './http.mjs';
+import { classifyQids, classifyReport, resolveTargets, targetKind } from './targets.mjs';
 
 /** Elements that carry navigation, footnote lists or layout rather than article prose. */
 const noise = [
@@ -28,9 +28,9 @@ const skippedHeadings =
 
 const normalize = (text) => text.replace(/\s+/g, ' ').trim();
 
-export async function sitelinkTitles(qid) {
+export async function sitelinkTitles(qid, http = liveHttp) {
   const url = `https://www.wikidata.org/w/api.php?action=wbgetentities&ids=${qid}&props=sitelinks&sitefilter=ptwiki|enwiki&format=json`;
-  const entity = (await getJson(url)).entities?.[qid];
+  const entity = (await http.json(url)).entities?.[qid];
   return {
     pt: entity?.sitelinks?.ptwiki?.title ?? null,
     en: entity?.sitelinks?.enwiki?.title ?? null,
@@ -139,7 +139,7 @@ export function parseWikiUrl(value) {
 }
 
 /** Canonical title behind redirects, plus the title it was reached by; `null` if the page is missing. */
-export async function resolveTitle(lang, title) {
+export async function resolveTitle(lang, title, http = liveHttp) {
   const url = new URL(`https://${lang}.wikipedia.org/w/api.php`);
   for (const [name, value] of Object.entries({
     action: 'query',
@@ -151,7 +151,7 @@ export async function resolveTitle(lang, title) {
     formatversion: '2',
   }))
     url.searchParams.set(name, value);
-  const data = await getJson(url.href);
+  const data = await http.json(url.href);
   const page = data.query?.pages?.[0];
   if (!page || page.missing) return null;
   const redirect = data.query.redirects?.find((entry) => entry.to === page.title);
@@ -167,11 +167,11 @@ export async function resolveTitle(lang, title) {
  * Downloads one article under its canonical title; `revision` comes from the Parsoid ETag
  * (`"<revid>/<uuid>"`). Each body link points to its canonical target; `targets` describes them.
  */
-export async function fetchArticle(lang, title) {
-  const resolved = await resolveTitle(lang, title);
+export async function fetchArticle(lang, title, http = liveHttp) {
+  const resolved = await resolveTitle(lang, title, http);
   if (!resolved) throw new Error(`Artigo inexistente: ${lang}:${title}`);
   const path = encodeURIComponent(resolved.title.replaceAll(' ', '_'));
-  const { bytes, etag } = await getResource(
+  const { bytes, etag } = await http.resource(
     `https://${lang}.wikipedia.org/api/rest_v1/page/html/${path}`,
     'html',
   );
@@ -179,9 +179,11 @@ export async function fetchArticle(lang, title) {
   const resolvedTargets = await resolveTargets(
     lang,
     links.map((link) => link.written),
+    http,
   );
   const { kinds, classification } = await classifyReport(
     [...resolvedTargets.values()].flatMap((target) => target.qid ?? []),
+    (qids) => classifyQids(qids, http),
   );
   return {
     lang,

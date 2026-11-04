@@ -48,3 +48,7 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Corpos brutos da coleta Wikipedia: manifests são versionados; blobs ficam locais
+# (publicam-se só as respostas JSON, via ingest:publish-raw).
+scripts/ingestion/wiki-extract/raw/**/blobs/

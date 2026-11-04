@@ -98,8 +98,88 @@ export const liberalismBaseEntities = [
   ['event-american-revolution', 'American Revolution', 'American Revolution', 'event', 'Q192769'],
   ['event-french-revolution', 'French Revolution', 'French Revolution', 'event', 'Q6534'],
 ];
+// Curated start of the social-democracy collection. Names in English are the Wikidata labels, used
+// where the pt-BR label was not checked. Discovery adds the rest; Wikidata P1142/P737 are labels.
+export const socialDemocracyBaseEntities = [
+  ['ideology-social-democracy', 'Social-democracia', 'Social democracy', 'ideology', 'Q121254'],
+  [
+    'ideology-democratic-socialism',
+    'Democratic socialism',
+    'Democratic socialism',
+    'ideology',
+    'Q189280',
+  ],
+  [
+    'institution-socialist-international',
+    'Socialist International',
+    'Socialist International',
+    'institution',
+    'Q159454',
+  ],
+  [
+    'institution-party-of-european-socialists',
+    'Party of European Socialists',
+    'Party of European Socialists',
+    'institution',
+    'Q220945',
+  ],
+  [
+    'institution-progressive-alliance-socialists-democrats',
+    'Progressive Alliance of Socialists and Democrats',
+    'Progressive Alliance of Socialists and Democrats',
+    'institution',
+    'Q507343',
+  ],
+  [
+    'institution-spd',
+    'Social Democratic Party of Germany',
+    'Social Democratic Party of Germany',
+    'institution',
+    'Q49768',
+  ],
+  [
+    'institution-swedish-social-democratic-party',
+    'Swedish Social Democratic Party',
+    'Swedish Social Democratic Party',
+    'institution',
+    'Q105112',
+  ],
+  [
+    'institution-spo',
+    'Social Democratic Party of Austria',
+    'Social Democratic Party of Austria',
+    'institution',
+    'Q179111',
+  ],
+  [
+    'institution-australian-labor-party',
+    'Australian Labor Party',
+    'Australian Labor Party',
+    'institution',
+    'Q216082',
+  ],
+  [
+    'institution-psoe',
+    'Spanish Socialist Workers Party',
+    'Spanish Socialist Workers Party',
+    'institution',
+    'Q138198',
+  ],
+  ['concept-welfare-state', 'Welfare state', 'Welfare state', 'concept', 'Q192451'],
+  ['person-ferdinand-lassalle', 'Ferdinand Lassalle', 'Ferdinand Lassalle', 'person', 'Q75784'],
+  ['person-eduard-bernstein', 'Eduard Bernstein', 'Eduard Bernstein', 'person', 'Q75786'],
+  ['person-jean-jaures', 'Jean Jaurès', 'Jean Jaurès', 'person', 'Q12688'],
+  ['person-willy-brandt', 'Willy Brandt', 'Willy Brandt', 'person', 'Q2514'],
+  ['person-olof-palme', 'Olof Palme', 'Olof Palme', 'person', 'Q53713'],
+  ['person-bruno-kreisky', 'Bruno Kreisky', 'Bruno Kreisky', 'person', 'Q44517'],
+];
+
 /** Curated entries per configuration, which discovery never duplicates. */
-export const baseEntities = { marxism: marxismBaseEntities, liberalism: liberalismBaseEntities };
+export const baseEntities = {
+  marxism: marxismBaseEntities,
+  liberalism: liberalismBaseEntities,
+  'social-democracy': socialDemocracyBaseEntities,
+};
 
 export const configurations = {
   liberalism: {
@@ -110,6 +190,15 @@ export const configurations = {
       'Rede exploratória de pessoas, correntes e acontecimentos ligados ao liberalismo; dados enciclopédicos importados aguardam revisão editorial humana.',
     mediaDirectory: 'liberalism',
     entities: [...liberalismBaseEntities, ...discovered('liberalismo')],
+  },
+  'social-democracy': {
+    id: 'atlas-social-democracia',
+    slug: 'social-democracia',
+    title: 'Atlas da Social-democracia',
+    description:
+      'Rede exploratória de pessoas, correntes e políticas ligadas à social-democracia; dados enciclopédicos importados aguardam revisão editorial humana. Rótulos do Wikidata (P1142, P737) não comprovam pertencimento nem influência.',
+    mediaDirectory: 'social-democracy',
+    entities: [...socialDemocracyBaseEntities, ...discovered('social-democracia')],
   },
   marxism: {
     id: 'atlas-marx-valor',

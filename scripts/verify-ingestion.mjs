@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 import { loadArchive } from './ingestion/wikimedia/archive.mjs';
 import { runIngestion } from './ingestion/wikimedia/pipeline.mjs';
+import { verifyCaptures } from './ingestion/wiki-extract/raw.mjs';
 
 const root = fileURLToPath(new URL('./ingestion/wikimedia/raw/', import.meta.url));
 const directory = await mkdtemp(join(tmpdir(), 'atlas-offline-verification-'));
@@ -44,6 +45,14 @@ try {
   }
   assert.ok(count > 0, 'Nenhuma captura versionada foi verificada.');
   console.log(`${count} capturas reproduzidas duas vezes sem acesso à rede.`);
+  // Wikipedia captures replay through the recorded-response layer, which the unit tests cover; here
+  // each saved capture is checked for its manifest and for the digest of every body that is present.
+  const wiki = await verifyCaptures();
+  for (const { directory, requests, localHtml } of wiki)
+    console.log(
+      `${basename(dirname(directory))}/${basename(directory)}: ${requests} respostas com SHA-256 conferido; ${localHtml} HTML local.`,
+    );
+  console.log(`${wiki.length} capturas Wikipedia conferidas.`);
 } finally {
   globalThis.fetch = originalFetch;
   if (

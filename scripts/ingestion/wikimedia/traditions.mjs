@@ -16,6 +16,13 @@ export const traditions = {
     commonsCategory: 'Category:Liberalism',
     ptTitle: 'Liberalismo',
   },
+  'social-democracia': {
+    configuration: 'social-democracy',
+    rootQid: 'Q121254',
+    founderQids: ['Q75784', 'Q75786'],
+    commonsCategory: 'Category:Social democracy',
+    ptTitle: 'Social-democracia',
+  },
 };
 
 export function traditionFor(slug) {

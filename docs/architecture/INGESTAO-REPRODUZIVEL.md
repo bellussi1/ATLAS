@@ -86,3 +86,12 @@ Resultados executados, hashes e limites de validação ficam em [Validação da 
 ## Descoberta e seleção da tradição marxista
 
 Antes da captura, `npm run discover:marxism` consulta a Wikidata (buscas por `P1142`, `P737`, `P921` e `P279` com `Q7264` e `Q9061`), as entidades encontradas, a árvore de categorias do Commons (profundidade 2) e o resumo de pt.wikipedia. O resultado vai para `scripts/ingestion/wikimedia/discovery/marxismo.json`, com data e fontes. `npm run select:marxism` aplica regras explícitas e as decisões de `marxismo.decisions.json` e grava `marxismo.selection.json`, que `configurations.mjs` lê. Só então `npm run ingest:marxism -- --capture <diretório novo> --media remote` cria a captura reproduzível. Rótulos do Wikidata (`P1142`, `P737`) são classificações importadas, não influência documentada. A skill `atlas-wiki-discovery` descreve o fluxo e os limites.
+
+## Coleta Wikipedia (rascunhos, fora do build)
+
+`scripts/wiki-extract.mjs` lê Wikipedia (pt e en) por uma camada HTTP injetável (`scripts/ingestion/wiki-extract/http.mjs`). Cada execução que acessa a rede grava as respostas em `scripts/ingestion/wiki-extract/raw/<tradição>/<instante>/`: o `manifest.json` (URL, tipo, SHA-256, `etag` com a revisão, licença) é versionado; os corpos ficam em `blobs/`, ignorados pelo Git. `--replay <captura>` reproduz `discover` ou `fetch` a partir dessa captura, sem rede.
+
+- Respostas JSON (metadados da API da Wikipedia e da Wikidata) seguem para `raw/<sha256>.bin` com `npm run ingest:publish-raw`, como as capturas Wikimedia. `npm run ingest:verify` confere o SHA-256 de cada captura.
+- O HTML dos artigos é texto CC BY-SA 4.0 e não é publicado: fica local e só se reproduz com a captura desta máquina. Publicar esse texto no bucket público é decisão editorial pendente.
+- `discover` propõe, além dos links dos artigos-semente, as entidades tipadas que os artigos já lidos ligam no corpo do texto (`origin: "mention"`), com a lista dos artigos que as citam. Menção não é relação: relações só entram com fonte e natureza declaradas, pela extração revisada.
+- Rascunhos de extração (`generated/wiki-extract/<tradição>/extracts`) têm revisão `assistant`, nunca `revisado`, e vão só ao bucket privado `atlas-drafts` até aprovação.

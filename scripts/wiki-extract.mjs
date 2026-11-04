@@ -1,17 +1,22 @@
 #!/usr/bin/env node
 // Wikipedia → Claude Haiku → R2. Usage:
-//   node scripts/wiki-extract.mjs run <tradição> [--accept-top N] [--sync]  # discover + fetch + extract
-//   node scripts/wiki-extract.mjs discover <tradição> [--top N] [--accept-top N]
+//   node scripts/wiki-extract.mjs run <tradição> [--accept-top N] [--min-shared N] [--sync]
+//   node scripts/wiki-extract.mjs discover <tradição> [--top N] [--accept-top N] [--min-shared N] [--replay <captura>]
 //   node scripts/wiki-extract.mjs text <tradição> [--chars N]     # exporta o texto lido, por seção
 //   node scripts/wiki-extract.mjs store <tradição> [--chars N]    # grava manual/<id>.json verificado
-//   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N]
+//   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N] [--replay <captura>]
 //   node scripts/wiki-extract.mjs fetch <tradição> --url <artigo pt/en da Wikipedia>  # um artigo avulso
 //   node scripts/wiki-extract.mjs extract <tradição> [--sync] [--limit N] [--resume <batchId>]
 // Candidates with `"decision": "accept"` are fetched by `fetch --candidates`. Decisions made by the
 // editor (`decidedBy: "editor"`) survive re-running discover; rule-based ones are recomputed.
+// Discover also proposes the typed targets that the articles already read link to (`origin:
+// "mention"`), so a second discover after a fetch widens the list. Mentions are not relations.
+// Every command that reads Wikipedia or Wikidata saves its responses as a capture under
+// scripts/ingestion/wiki-extract/raw/<tradição>/<instante>/ (manifest versioned, bodies local).
+// `--replay <captura>` reproduces discover or fetch from that capture without network access.
 // Extractions are drafts reviewed by `assistant` (AI); they do not enter the site build.
 import { mkdir, readdir, readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 import { parseArgs } from 'node:util';
 
 import Anthropic from '@anthropic-ai/sdk';
@@ -31,8 +36,16 @@ import {
   resolveTitle,
   sitelinkTitles,
 } from './ingestion/wiki-extract/article.mjs';
-import { linkedArticles, rankCandidates } from './ingestion/wiki-extract/discovery.mjs';
-import { classifyReport, targetKind } from './ingestion/wiki-extract/targets.mjs';
+import {
+  articleKeys,
+  linkedArticles,
+  mentionTypes,
+  rankCandidates,
+  rankMentions,
+} from './ingestion/wiki-extract/discovery.mjs';
+import { liveHttp, recordingHttp, replayHttp } from './ingestion/wiki-extract/http.mjs';
+import { loadCapture, saveCapture, wikiRawRoot } from './ingestion/wiki-extract/raw.mjs';
+import { classifyQids, classifyReport, targetKind } from './ingestion/wiki-extract/targets.mjs';
 import {
   extractionModel,
   extractionParams,
@@ -48,12 +61,14 @@ const { positionals, values } = parseArgs({
     limit: { type: 'string' },
     top: { type: 'string' },
     'accept-top': { type: 'string' },
+    'min-shared': { type: 'string' },
     chars: { type: 'string' },
     'dry-run': { type: 'boolean', default: false },
     candidates: { type: 'boolean', default: false },
     sync: { type: 'boolean', default: false },
     resume: { type: 'string' },
     url: { type: 'string' },
+    replay: { type: 'string' },
   },
 });
 const [command, tradition] = positionals;
@@ -61,6 +76,7 @@ const commandNames = ['discover', 'fetch', 'text', 'store', 'extract', 'run', 'p
 if (!commandNames.includes(command) || !/^[a-z-]+$/.test(tradition ?? ''))
   throw new Error(`Uso: wiki-extract.mjs <${commandNames.join('|')}> <tradição>`);
 const limit = values.limit ? Number(values.limit) : Number.POSITIVE_INFINITY;
+const minShared = values['min-shared'] ? Number(values['min-shared']) : 2;
 
 const workDirectory = join(projectRoot, 'generated/wiki-extract', tradition);
 const articlesDirectory = join(workDirectory, 'articles');
@@ -82,6 +98,17 @@ const listIds = async (directory) =>
     .filter((name) => name.endsWith('.json'))
     .map((name) => name.slice(0, -5));
 
+/** Network access of this run: live and recorded, or replayed from one capture of this tradition. */
+const networkCommands = ['discover', 'fetch', 'run'];
+if (values.replay && !['discover', 'fetch'].includes(command))
+  throw new Error('--replay só vale para discover e fetch.');
+if (values.replay && !/^[\w.-]+$/.test(values.replay))
+  throw new Error(`Captura inválida: ${values.replay}`);
+const recorder = values.replay ? null : recordingHttp(liveHttp);
+const http = values.replay
+  ? replayHttp((await loadCapture(join(wikiRawRoot, tradition, values.replay))).responses)
+  : recorder.http;
+
 async function selectedEntities() {
   const selection = await readJson(
     join(projectRoot, 'scripts/ingestion/wikimedia/discovery', `${tradition}.selection.json`),
@@ -100,7 +127,7 @@ const slug = (text) =>
 /** Lang and title are known for accepted candidates; selected entities resolve them via Wikidata. */
 async function resolveArticle(target) {
   if (target.lang) return { lang: target.lang, title: target.title };
-  const titles = await sitelinkTitles(target.entity.qid);
+  const titles = await sitelinkTitles(target.entity.qid, http);
   const lang = titles.pt ? 'pt' : titles.en ? 'en' : null;
   return lang ? { lang, title: titles[lang] } : null;
 }
@@ -117,7 +144,8 @@ async function acceptedTargets() {
       entity: {
         id: `topic-${slug(candidate.title)}`,
         label: candidate.title,
-        type: 'topic',
+        // Mentions carry the type their Wikidata item had when the article was read.
+        type: candidate.type ?? 'topic',
         qid: candidate.qid,
       },
       lang: candidate.lang,
@@ -128,13 +156,15 @@ async function acceptedTargets() {
 /** One article chosen by URL, outside the seeds and candidates; typed by its own Wikidata item. */
 async function fetchUrlCommand() {
   const { lang, title } = parseWikiUrl(values.url);
-  const article = await fetchArticle(lang, title);
+  const article = await fetchArticle(lang, title, http);
   const stored = await Promise.all(
     (await listIds(articlesDirectory)).map((id) => readJson(join(articlesDirectory, `${id}.json`))),
   );
   const existing = stored.find((record) => sameArticle(record.article, article));
   if (existing) return console.log(`já baixado: ${existing.entity.id}`);
-  const { kinds, classification } = await classifyReport(article.qid ? [article.qid] : []);
+  const { kinds, classification } = await classifyReport(article.qid ? [article.qid] : [], (qids) =>
+    classifyQids(qids, http),
+  );
   const kind = targetKind({ title: article.title, qid: article.qid, missing: false }, kinds);
   const prefix = kind.type === 'sem-item' ? 'topic' : kind.type;
   const entity = {
@@ -167,7 +197,7 @@ async function fetchCommand() {
       console.log(`sem artigo: ${entity.id} (${entity.qid})`);
       continue;
     }
-    const article = await fetchArticle(resolved.lang, resolved.title);
+    const article = await fetchArticle(resolved.lang, resolved.title, http);
     await writeJson(join(articlesDirectory, `${entity.id}.json`), {
       entity,
       retrievedAt: new Date().toISOString(),
@@ -192,7 +222,7 @@ async function seedArticles() {
   );
   for (const topic of topics) {
     const { lang, title } = topic.url ? parseWikiUrl(topic.url) : topic;
-    const resolved = await resolveTitle(lang, title);
+    const resolved = await resolveTitle(lang, title, http);
     if (!resolved) throw new Error(`Tópico inexistente: ${lang}:${title}`);
     seeds.push({ label: resolved.title, origin: 'topic', ...resolved });
   }
@@ -211,15 +241,35 @@ async function previousEditorDecisions() {
   return previous.filter((candidate) => candidate.decidedBy === 'editor');
 }
 
+/** Articles already read by fetch, as stored: the source of the mention candidates. */
+async function storedArticles() {
+  const records = await Promise.all(
+    (await listIds(articlesDirectory)).map((id) => readJson(join(articlesDirectory, `${id}.json`))),
+  );
+  return records.map((record) => record.article);
+}
+
 async function discoverCommand() {
   const seeds = await seedArticles();
   const linked = [];
   for (const seed of seeds) {
-    const links = await linkedArticles(seed.lang, seed.title);
+    const links = await linkedArticles(seed.lang, seed.title, { http });
     linked.push({ seed, links });
     console.log(`links: ${seed.label} → ${links.length}`);
   }
-  const ranked = rankCandidates(linked, { top: values.top ? Number(values.top) : 60 });
+  const top = values.top ? Number(values.top) : 60;
+  // Authority records and catalogues are linked from most articles (templates), so every ranked
+  // candidate is typed by Wikidata first; only typed topics are accepted by rule.
+  const ranked = rankCandidates(linked, { top, minShared });
+  const { kinds } = await classifyReport(
+    ranked.flatMap((candidate) => (candidate.qid ? [candidate.qid] : [])),
+    (qids) => classifyQids(qids, http),
+  );
+  for (const candidate of ranked)
+    candidate.type = targetKind(
+      { title: candidate.title, qid: candidate.qid, missing: false },
+      kinds,
+    ).type;
   const topicCandidates = seeds
     .filter((seed) => seed.origin === 'topic')
     .map(({ lang, title, qid }) => ({
@@ -231,8 +281,14 @@ async function discoverCommand() {
       decision: 'accept',
       decidedBy: 'seed',
     }));
+  const known = [...seeds, ...ranked].flatMap((candidate) => articleKeys(candidate));
+  const mentions = rankMentions(await storedArticles(), {
+    minShared,
+    top,
+    excluded: new Set(known),
+  });
   const editorDecisions = await previousEditorDecisions();
-  const candidates = [...topicCandidates, ...ranked].map((candidate) => {
+  const candidates = [...topicCandidates, ...ranked, ...mentions].map((candidate) => {
     const editor = editorDecisions.find((previous) => sameArticle(previous, candidate));
     return editor ? { ...candidate, decision: editor.decision, decidedBy: 'editor' } : candidate;
   });
@@ -240,6 +296,7 @@ async function discoverCommand() {
   let accepted = 0;
   for (const candidate of candidates) {
     if (candidate.decision !== null || accepted >= acceptTop) continue;
+    if (!mentionTypes.has(candidate.type)) continue;
     Object.assign(candidate, { decision: 'accept', decidedBy: `rule:top-${acceptTop}` });
     accepted += 1;
   }
@@ -251,11 +308,11 @@ async function discoverCommand() {
   });
   const total = candidates.filter((candidate) => candidate.decision === 'accept').length;
   console.log(
-    `${candidates.length} candidatos, ${total} aceitos, em ${candidatesPath.slice(projectRoot.length)}`,
+    `${candidates.length} candidatos (${mentions.length} menções), ${total} aceitos, em ${relative(projectRoot, candidatesPath)}`,
   );
   for (const candidate of candidates.slice(0, 20))
     console.log(
-      `  [${candidate.decision ?? '-'}] ${candidate.sharedByCount}× ${candidate.lang}:${candidate.title}`,
+      `  [${candidate.decision ?? '-'}] ${candidate.sharedByCount}× ${candidate.lang}:${candidate.title}${candidate.origin === 'mention' ? ` (${candidate.type})` : ''}`,
     );
 }
 
@@ -449,7 +506,17 @@ const commands = {
   run: runCommand,
   'publish-drafts': publishDraftsCommand,
 };
-commands[command]().catch((error) => {
+try {
+  await commands[command]();
+} catch (error) {
   console.error(error.message);
   process.exitCode = 1;
-});
+} finally {
+  // Responses are kept even when the command failed part-way, so the partial run can be replayed.
+  if (recorder?.responses.size && networkCommands.includes(command)) {
+    const directory = await saveCapture(tradition, recorder.responses);
+    console.log(
+      `captura: ${relative(projectRoot, directory)} (${recorder.responses.size} respostas)`,
+    );
+  }
+}

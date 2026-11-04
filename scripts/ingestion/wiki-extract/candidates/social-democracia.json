@@ -1,0 +1,1056 @@
+{
+  "tradition": "social-democracia",
+  "generatedAt": "2026-11-04T01:01:39.391Z",
+  "seeds": [
+    {
+      "label": "Martin Luther King Jr.",
+      "lang": "pt",
+      "title": "Martin Luther King Jr."
+    },
+    {
+      "label": "Ion Iliescu",
+      "lang": "pt",
+      "title": "Ion Iliescu"
+    },
+    {
+      "label": "Mike Gravel",
+      "lang": "pt",
+      "title": "Mike Gravel"
+    },
+    {
+      "label": "Social-democracia",
+      "lang": "pt",
+      "title": "Social-democracia"
+    },
+    {
+      "label": "Social democracy",
+      "lang": "en",
+      "title": "Social democracy"
+    },
+    {
+      "label": "Eduard Bernstein",
+      "lang": "pt",
+      "title": "Eduard Bernstein"
+    },
+    {
+      "label": "Ferdinand Lassalle",
+      "lang": "pt",
+      "title": "Ferdinand Lassalle"
+    },
+    {
+      "label": "Jean Jaurès",
+      "lang": "pt",
+      "title": "Jean Jaurès"
+    },
+    {
+      "label": "Willy Brandt",
+      "lang": "pt",
+      "title": "Willy Brandt"
+    },
+    {
+      "label": "Olof Palme",
+      "lang": "pt",
+      "title": "Olof Palme"
+    },
+    {
+      "label": "Bruno Kreisky",
+      "lang": "pt",
+      "title": "Bruno Kreisky"
+    }
+  ],
+  "candidates": [
+    {
+      "lang": "pt",
+      "title": "Social-democracia",
+      "qid": "Q121254",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "en",
+      "title": "Social democracy",
+      "qid": "Q121254",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Eduard Bernstein",
+      "qid": "Q75786",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Ferdinand Lassalle",
+      "qid": "Q75784",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Jean Jaurès",
+      "qid": "Q12688",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Willy Brandt",
+      "qid": "Q2514",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Olof Palme",
+      "qid": "Q53713",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Bruno Kreisky",
+      "qid": "Q44517",
+      "sharedByCount": 0,
+      "linkedFrom": [],
+      "decision": "accept",
+      "decidedBy": "seed"
+    },
+    {
+      "lang": "pt",
+      "title": "Encyclopædia Britannica",
+      "qid": "Q455",
+      "sharedByCount": 10,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Base Virtual Internacional de Autoridade",
+      "qid": "Q54919",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "obra"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Real dos Países Baixos",
+      "qid": "Q1526131",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "CiNii",
+      "qid": "Q10726338",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Faceted Application of Subject Terminology",
+      "qid": "Q3294867",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "Gemeinsame Normdatei",
+      "qid": "Q36578",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "obra"
+    },
+    {
+      "lang": "pt",
+      "title": "International Standard Name Identifier",
+      "qid": "Q423048",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "obra"
+    },
+    {
+      "lang": "pt",
+      "title": "Número de controle da Biblioteca do Congresso",
+      "qid": "Q620946",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "Sistema Universitário de Documentação",
+      "qid": "Q2597810",
+      "sharedByCount": 9,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "obra"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da Espanha",
+      "qid": "Q750403",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da França",
+      "qid": "Q193563",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da Grécia",
+      "qid": "Q1467610",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da Polónia",
+      "qid": "Q856423",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Bibsys",
+      "qid": "Q4584301",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Find a Grave",
+      "qid": "Q63056",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Grande Enciclopédia Soviética",
+      "qid": "Q234535",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "Istituto centrale per il catalogo unico delle biblioteche italiane e per le informazioni bibliografiche",
+      "qid": "Q3803707",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "NNDB",
+      "qid": "Q1373513",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Open Library",
+      "qid": "Q1201876",
+      "sharedByCount": 8,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "obra"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da Austrália",
+      "qid": "Q623578",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional de Israel",
+      "qid": "Q188915",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional do Brasil",
+      "qid": "Q948882",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Enciclopédia Treccani",
+      "qid": "Q731361",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "International Standard Book Number",
+      "qid": "Q33057",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Partido político",
+      "qid": "Q7278",
+      "sharedByCount": 7,
+      "linkedFrom": [
+        "Ion Iliescu",
+        "Mike Gravel",
+        "Social-democracia",
+        "Social democracy",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "partido"
+    },
+    {
+      "lang": "pt",
+      "title": "Alemanha",
+      "qid": "Q183",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Eduard Bernstein",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional de Portugal",
+      "qid": "Q245966",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "International Standard Serial Number",
+      "qid": "Q131276",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Político",
+      "qid": "Q82955",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Segunda Guerra Mundial",
+      "qid": "Q362",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "acontecimento"
+    },
+    {
+      "lang": "pt",
+      "title": "Socialismo",
+      "qid": "Q7272",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Socialismo democrático",
+      "qid": "Q189280",
+      "sharedByCount": 6,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Alemanha Ocidental",
+      "qid": "Q713750",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Willy Brandt",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "lugar"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional da Dieta",
+      "qid": "Q477675",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Catálogo de autoridades de nomes e títulos da Catalunha",
+      "qid": "Q8342938",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "Digital object identifier",
+      "qid": "Q25670",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "outro"
+    },
+    {
+      "lang": "pt",
+      "title": "Discogs",
+      "qid": "Q504063",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Ion Iliescu",
+        "Willy Brandt",
+        "Olof Palme",
+        "Bruno Kreisky"
+      ],
+      "decision": null,
+      "type": "obra"
+    },
+    {
+      "lang": "pt",
+      "title": "Hjalmar Branting",
+      "qid": "Q53620",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Willy Brandt",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Karl Marx",
+      "qid": "Q9061",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Marxismo",
+      "qid": "Q7264",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Nelson Mandela",
+      "qid": "Q8023",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Willy Brandt",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Partido Social-Democrata da Alemanha",
+      "qid": "Q49768",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Willy Brandt"
+      ],
+      "decision": null,
+      "type": "partido"
+    },
+    {
+      "lang": "pt",
+      "title": "Pontifícia Universidade São Tomás de Aquino",
+      "qid": "Q246887",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Jean Jaurès",
+        "Willy Brandt"
+      ],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Primeira Guerra Mundial",
+      "qid": "Q361",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Jean Jaurès"
+      ],
+      "decision": null,
+      "type": "acontecimento"
+    },
+    {
+      "lang": "pt",
+      "title": "União Soviética",
+      "qid": "Q15180",
+      "sharedByCount": 5,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Willy Brandt",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "movimento"
+    },
+    {
+      "lang": "pt",
+      "title": "Alma mater",
+      "qid": "Q174376",
+      "sharedByCount": 4,
+      "linkedFrom": ["Ferdinand Lassalle", "Jean Jaurès", "Olof Palme", "Bruno Kreisky"],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Arquivos Nacionais e Administração de Documentos",
+      "qid": "Q518155",
+      "sharedByCount": 4,
+      "linkedFrom": ["Martin Luther King Jr.", "Mike Gravel", "Willy Brandt", "Bruno Kreisky"],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Associação Geral dos Trabalhadores Alemães",
+      "qid": "Q565426",
+      "sharedByCount": 4,
+      "linkedFrom": [
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle"
+      ],
+      "decision": null,
+      "type": "partido"
+    },
+    {
+      "lang": "pt",
+      "title": "Berlim",
+      "qid": "Q64",
+      "sharedByCount": 4,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle",
+        "Willy Brandt"
+      ],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Apostólica Vaticana",
+      "qid": "Q213678",
+      "sharedByCount": 4,
+      "linkedFrom": ["Martin Luther King Jr.", "Jean Jaurès", "Willy Brandt", "Olof Palme"],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Biblioteca Nacional do Chile",
+      "qid": "Q2901485",
+      "sharedByCount": 4,
+      "linkedFrom": ["Martin Luther King Jr.", "Jean Jaurès", "Willy Brandt", "Olof Palme"],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Comunismo",
+      "qid": "Q6186",
+      "sharedByCount": 4,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Olof Palme"
+      ],
+      "decision": null,
+      "type": "ideologia"
+    },
+    {
+      "lang": "pt",
+      "title": "Escola keynesiana",
+      "qid": "Q83937",
+      "sharedByCount": 4,
+      "linkedFrom": ["Social-democracia", "Social democracy", "Eduard Bernstein", "Olof Palme"],
+      "decision": null,
+      "type": "conceito"
+    },
+    {
+      "lang": "pt",
+      "title": "Estados Unidos",
+      "qid": "Q30",
+      "sharedByCount": 4,
+      "linkedFrom": ["Martin Luther King Jr.", "Social-democracia", "Willy Brandt", "Olof Palme"],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "França",
+      "qid": "Q142",
+      "sharedByCount": 4,
+      "linkedFrom": ["Martin Luther King Jr.", "Social-democracia", "Jean Jaurès", "Olof Palme"],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Franklin D. Roosevelt",
+      "qid": "Q8007",
+      "sharedByCount": 4,
+      "linkedFrom": [
+        "Martin Luther King Jr.",
+        "Social-democracia",
+        "Social democracy",
+        "Willy Brandt"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Friedrich Ebert",
+      "qid": "Q2646",
+      "sharedByCount": 4,
+      "linkedFrom": ["Social-democracia", "Social democracy", "Willy Brandt", "Olof Palme"],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "Friedrich Engels",
+      "qid": "Q34787",
+      "sharedByCount": 4,
+      "linkedFrom": [
+        "Social-democracia",
+        "Social democracy",
+        "Eduard Bernstein",
+        "Ferdinand Lassalle"
+      ],
+      "decision": null,
+      "type": "pessoa"
+    },
+    {
+      "lang": "pt",
+      "title": "IMDb",
+      "qid": "Q37312",
+      "sharedByCount": 4,
+      "linkedFrom": ["Martin Luther King Jr.", "Willy Brandt", "Olof Palme", "Bruno Kreisky"],
+      "decision": null,
+      "type": "organização"
+    },
+    {
+      "lang": "pt",
+      "title": "Immanuel Kant",
+      "qid": "Q9312",
+      "sharedByCount": 4,
+      "linkedFrom": ["Social-democracia", "Social democracy", "Eduard Bernstein", "Jean Jaurès"],
+      "decision": null,
+      "type": "pessoa"
+    }
+  ]
+}

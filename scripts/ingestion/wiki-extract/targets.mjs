@@ -1,10 +1,10 @@
 // Resolves the titles linked from an article to their canonical page and Wikidata item, in batches.
-import { getJson } from '../wikimedia/client.mjs';
+import { liveHttp } from './http.mjs';
 
 const batchSize = 50;
 
 /** Maps each requested title, through normalization and redirects, to `{ title, qid, missing }`. */
-export async function resolveTargets(lang, titles) {
+export async function resolveTargets(lang, titles, http = liveHttp) {
   const unique = [...new Set(titles)];
   const resolved = new Map();
   for (let start = 0; start < unique.length; start += batchSize) {
@@ -20,7 +20,7 @@ export async function resolveTargets(lang, titles) {
       formatversion: '2',
     }))
       url.searchParams.set(name, value);
-    for (const [title, target] of mapResolution(batch, await getJson(url.href)))
+    for (const [title, target] of mapResolution(batch, await http.json(url.href)))
       resolved.set(title, target);
   }
   return resolved;
@@ -77,7 +77,7 @@ const statementIds = (statements = []) =>
     .filter(Boolean);
 
 /** `{ instanceOf, subclassOf }` of each Wikidata item, read 50 per request. */
-async function readStatements(qids) {
+async function readStatements(qids, http) {
   const found = new Map();
   for (let start = 0; start < qids.length; start += batchSize) {
     const batch = qids.slice(start, start + batchSize);
@@ -89,7 +89,7 @@ async function readStatements(qids) {
       format: 'json',
     }))
       url.searchParams.set(name, value);
-    const entities = (await getJson(url.href)).entities ?? {};
+    const entities = (await http.json(url.href)).entities ?? {};
     for (const qid of batch) {
       const claims = entities[qid]?.claims ?? {};
       found.set(qid, {
@@ -107,12 +107,12 @@ const parents = (graph, qid) => [
 ];
 
 /** Statements of the items and of their classes, read level by level up to `depth` links away. */
-async function classGraph(qids, depth) {
+async function classGraph(qids, depth, http) {
   const graph = new Map();
   let frontier = [...new Set(qids)];
   for (let level = 0; level <= depth && frontier.length; level += 1) {
     const unread = frontier.filter((qid) => !graph.has(qid));
-    for (const [qid, statements] of await readStatements(unread)) graph.set(qid, statements);
+    for (const [qid, statements] of await readStatements(unread, http)) graph.set(qid, statements);
     frontier = [...new Set(frontier.flatMap((qid) => parents(graph, qid)))].filter(
       (qid) => !graph.has(qid),
     );
@@ -149,9 +149,9 @@ export function classifyItem(graph, qid) {
 }
 
 /** Type of each Wikidata item, as `{ type, classes }`; `classes` are the P31 values. */
-export async function classifyQids(qids) {
+export async function classifyQids(qids, http = liveHttp) {
   const unique = [...new Set(qids)];
-  const graph = await classGraph(unique, classDepth - 1);
+  const graph = await classGraph(unique, classDepth - 1, http);
   return new Map(unique.map((qid) => [qid, classifyItem(graph, qid)]));
 }
 
