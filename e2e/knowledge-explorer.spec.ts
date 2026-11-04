@@ -154,13 +154,7 @@ test('catalogues and entries reflow at 320px and have no serious axe findings', 
 }) => {
   await page.setViewportSize({ width: 320, height: 740 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  for (const path of [
-    '/conhecimento?q=xyzzy',
-    '/pessoas',
-    '/verbete/karl-marx',
-    '/fontes',
-    '/explorar/artigo/conhecimento-com-contexto',
-  ]) {
+  for (const path of ['/conhecimento?q=xyzzy', '/pessoas', '/verbete/karl-marx', '/fontes']) {
     await page.goto(path);
     await expect(page.locator('h1')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(

@@ -55,7 +55,6 @@ describe('Knowledge Explorer', () => {
   it('separates records, sources and editorial pages into their own content groups', () => {
     expect(explorerContentGroup('pessoa')).toBe('registros');
     expect(explorerContentGroup('fonte')).toBe('fontes');
-    expect(explorerContentGroup('verbete')).toBe('editorial');
     expect(explorerContentGroup('leitura')).toBe('editorial');
   });
   it('paginates results, clamps out-of-range pages and parses only positive integers', () => {

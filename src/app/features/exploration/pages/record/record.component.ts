@@ -2,11 +2,14 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { getEditorialType } from '@core/content/editorial/content-types';
-import { findEditorialEntry } from '@core/content/editorial/editorial-entries';
 import { editorialStatusLabel } from '@core/content/editorial/editorial-status';
+import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { entityContext } from '@core/content/queries/entity-context';
-import { safeExplorerReturn } from '@core/content/queries/knowledge-explorer';
+import {
+  catalogueForKind,
+  explorerCatalogues,
+  safeExplorerReturn,
+} from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels, localizedEntity } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EntityProfileComponent } from '@exploration/components/entity-profile/entity-profile.component';
@@ -55,9 +58,7 @@ export class RecordComponent {
     this.origin() ? this.router.parseUrl(this.origin()!) : null,
   );
   readonly originalEntity = computed(() =>
-    this.params().get('tipo')
-      ? undefined
-      : this.repository.findEntityBySlug(this.params().get('slug')),
+    this.repository.findEntityBySlug(this.params().get('slug')),
   );
   readonly presentation = computed(() => {
     const entity = this.originalEntity();
@@ -71,12 +72,12 @@ export class RecordComponent {
   });
   readonly entity = computed(() => this.presentation()?.entity);
   readonly languages = contentLanguageLabels;
-  readonly editorial = computed(() =>
-    findEditorialEntry(
-      getEditorialType(this.params().get('tipo'))?.slug,
-      this.params().get('slug'),
-    ),
-  );
+  /** The hero repeats the context only when no section already carries it. */
+  readonly showContext = computed(() => {
+    const entity = this.entity();
+    if (!entity?.context || entity.context === entity.summary) return false;
+    return !entity.sections.some((section) => section.paragraphs.includes(entity.context));
+  });
   readonly context = computed(() =>
     this.entity() ? entityContext(this.repository, this.entity()!.id) : undefined,
   );
@@ -102,6 +103,60 @@ export class RecordComponent {
         .map((claim) => ({ claim, atlas })),
     ),
   );
+  /** Connections gathered under the relation that links them to this record. */
+  readonly connectionGroups = computed(() => {
+    const groups = new Map<string, KnowledgeContext['connections']>();
+    for (const connection of this.context()?.connections ?? []) {
+      const label = connection.relation?.label ?? 'Relacionado';
+      groups.set(label, [...(groups.get(label) ?? []), connection]);
+    }
+    return [...groups].map(([label, items]) => ({ label, items }));
+  });
+  /** Other records of the same kind, as a way to keep reading. */
+  readonly related = computed(() => {
+    const current = this.entry();
+    if (!current) return [];
+    return this.repository.discoveryIndex
+      .filter(
+        (item) =>
+          item.kind === current.kind && item.id !== current.id && item.path.startsWith('/verbete/'),
+      )
+      .slice(0, 6);
+  });
+  readonly catalogue = computed(() => {
+    const kind = this.entry()?.kind;
+    const catalogue = kind
+      ? explorerCatalogues.find((item) => item.path === catalogueForKind(kind))
+      : undefined;
+    return catalogue ? { title: catalogue.title, path: '/' + catalogue.path } : undefined;
+  });
+  readonly facts = computed(() => {
+    const entity = this.entity();
+    if (!entity) return [];
+    const period = entity.temporalExtent;
+    return [
+      { label: 'Tipo', value: this.entry()?.kindLabel ?? '' },
+      ...(period
+        ? [{ label: 'Período', value: period.label ?? this.precisionLabel[period.precision] }]
+        : []),
+      { label: 'Afirmações', value: String(this.claims().length) },
+      { label: 'Conexões', value: String(this.context()?.connections.length ?? 0) },
+      { label: 'Fontes', value: String(this.context()?.sources.length ?? 0) },
+    ];
+  });
+  readonly toc = computed(() => {
+    const entity = this.entity();
+    if (!entity) return [];
+    return [
+      ...entity.sections.map((section, index) => ({
+        id: 'section-' + index,
+        label: section.heading,
+      })),
+      { id: 'claims-title', label: 'Afirmações e evidências' },
+      { id: 'connections-title', label: 'Conexões' },
+      { id: 'sources-title', label: 'Fontes e proveniência' },
+    ];
+  });
   pathFor(id: string): string {
     return this.repository.discoveryIndex.find((e) => e.id === id)?.path ?? '/entidades';
   }

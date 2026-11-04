@@ -87,7 +87,6 @@ export const explorerCatalogues = [
     description: 'Lugares e espaços documentados, distintos dos registros de países.',
   },
 ] as const;
-export type ExplorerCatalogue = (typeof explorerCatalogues)[number]['path'];
 // Fixed page: 6 columns × 4 rows of cards on desktop. The size is not a user choice.
 export const EXPLORER_PAGE_SIZE = 24;
 
@@ -98,14 +97,7 @@ export const explorerContentGroups = [
   { id: 'editorial', title: 'Páginas editoriais' },
 ] as const;
 export type ExplorerContentGroup = (typeof explorerContentGroups)[number]['id'];
-const editorialKinds: readonly string[] = [
-  'atlas',
-  'dossie',
-  'leitura',
-  'trilha',
-  'verbete',
-  'visualizacao',
-];
+const editorialKinds: readonly string[] = ['leitura'];
 
 export function explorerContentGroup(kind: string): ExplorerContentGroup {
   if (kind === 'fonte') return 'fontes';

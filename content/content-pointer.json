@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev",
-  "release": "85c5358edeedbf1514bca8a86ea9afd5e6abb14d05bff847c665723b0d3c401a",
+  "release": "7d6dab523c5d7b05bf97637079885189f5cf85ab7769815ce8eb69eaaa586de7",
   "manifest": {
-    "sha256": "ce42e9807e5bd57b78915a2c48187cb2579775d4583302fd481e85753407b7da",
-    "bytes": 2470
+    "sha256": "f2b868871ac54108b6772f7b6639d6a8ec0d04d2adffa75b1978fa4a71a15c38",
+    "bytes": 2992
   },
   "artifacts": [
     {
@@ -36,6 +36,16 @@
       "sha256": "c60ba49d4d1636f50d57323daa9c98b2d0b233a0c54f3cb62b29fc8fdbaa6214",
       "bytes": 20410,
       "file": "atlas-constitutional-contexts.c60ba49d4d1636f50d57323daa9c98b2d0b233a0c54f3cb62b29fc8fdbaa6214.json"
+    },
+    {
+      "sha256": "665daf9e5970746fc8459e6bd382f84a67ba6eede5ddca92163c5dfd1ebd5ac9",
+      "bytes": 57403,
+      "file": "ideology-marxismo.665daf9e5970746fc8459e6bd382f84a67ba6eede5ddca92163c5dfd1ebd5ac9.json"
+    },
+    {
+      "sha256": "e45cef5e047c5c0bc89d664bffb8102c3ab2a880eab69d252e17cff530a95c50",
+      "bytes": 39351,
+      "file": "ideology-liberalismo.e45cef5e047c5c0bc89d664bffb8102c3ab2a880eab69d252e17cff530a95c50.json"
     },
     {
       "sha256": "ae188f311ac1fdae8b5cf42fb6226be6fa1dc897107506965f2385458ee06142",

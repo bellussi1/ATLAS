@@ -60,7 +60,6 @@ export const translationCatalogueSchema = z
         context.addIssue({ code: 'custom', message: 'Revisão não pode anteceder a preparação.' });
     }
   });
-export type ContentLocale = z.infer<typeof contentLocaleSchema>;
 export type ContentTranslation = z.infer<typeof contentTranslationSchema>;
 export type TranslatedText = z.infer<typeof translatedTextSchema>;
 export function entityTranslationSource(entity: Entity): TranslatedText {

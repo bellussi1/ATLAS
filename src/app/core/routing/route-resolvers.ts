@@ -1,18 +1,8 @@
 import { inject, Injector } from '@angular/core';
 import { type ResolveFn } from '@angular/router';
-import { getEditorialType } from '@core/content/editorial/content-types';
-import { findEditorialEntry } from '@core/content/editorial/editorial-entries';
 import { catalogueForKind, explorerCatalogues } from '@core/content/queries/knowledge-explorer';
 import { localizedEntity } from '@core/content/queries/localized-content';
 import { firstValueFrom } from 'rxjs';
-
-export const editorialEntryTitleResolver: ResolveFn<string> = (route) => {
-  const category = getEditorialType(route.paramMap.get('tipo'));
-  return (
-    (findEditorialEntry(category?.slug, route.paramMap.get('slug'))?.title ??
-      'Conteúdo não encontrado') + ' — ATLAS'
-  );
-};
 
 async function loadedRepository() {
   const injector = inject(Injector);

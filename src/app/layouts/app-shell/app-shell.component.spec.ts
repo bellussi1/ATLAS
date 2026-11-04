@@ -39,7 +39,9 @@ describe('ATLAS navigation', () => {
   it('keeps an unknown address and says it was not found', async () => {
     const h = await RouterTestingHarness.create('/sobre');
     expect(TestBed.inject(Router).url).toBe('/sobre');
-    expect(h.routeNativeElement?.querySelector('h1')?.textContent).toBe('Página não encontrada');
+    expect(h.routeNativeElement?.querySelector('h1')?.textContent?.trim()).toBe(
+      'Página não encontrada',
+    );
   });
   it('opens universal search with the query from home', async () => {
     const h = await RouterTestingHarness.create('/');

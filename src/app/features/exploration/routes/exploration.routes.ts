@@ -2,7 +2,6 @@ import { type Routes } from '@angular/router';
 import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
 import { knowledgeContentResolver } from '@core/routing/knowledge-content.resolver';
 import {
-  editorialEntryTitleResolver,
   knowledgeEntryBreadcrumbResolver,
   knowledgeEntryCatalogueResolver,
   knowledgeEntryDescriptionResolver,
@@ -35,17 +34,6 @@ export const explorationRoutes: Routes = [
       breadcrumbParent: knowledgeEntryCatalogueResolver,
       metaDescription: knowledgeEntryDescriptionResolver,
     },
-    loadComponent: () =>
-      import('@exploration/pages/record/record.component').then((m) => m.RecordComponent),
-  },
-  {
-    path: 'explorar/:tipo/:slug',
-    title: editorialEntryTitleResolver,
-    data: {
-      breadcrumb: 'Metodologia',
-      metaDescription: 'Exemplo de metodologia editorial do ATLAS.',
-    },
-    resolve: { knowledge: knowledgeContentResolver },
     loadComponent: () =>
       import('@exploration/pages/record/record.component').then((m) => m.RecordComponent),
   },

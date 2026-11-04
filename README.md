@@ -79,10 +79,10 @@ npm start
 | `npm run test:e2e` | Navegador, acessibilidade (axe) e estabilidade de layout (Playwright) |
 | `npm run lint` | ESLint, limites arquiteturais, Biome e Prettier |
 | `npm run typecheck` | TypeScript da aplicação e dos testes |
-| `npm run content:build` | Compila `src/content` nos artefatos que o app carrega |
+| `npm run content:build` | Compila `content` nos artefatos que o app carrega |
 | `npm run preview` | Serve a saída estática em `127.0.0.1:4305` |
 
-Os comandos `start`, `build`, `test`, `lint` e `typecheck` executam `content:build` antes. Depois de editar `src/content` com o servidor aberto, reinicie `npm start`.
+Os comandos `start`, `build`, `test`, `lint` e `typecheck` executam `content:build` antes. Depois de editar `content` com o servidor aberto, reinicie `npm start`.
 
 ## Estrutura
 

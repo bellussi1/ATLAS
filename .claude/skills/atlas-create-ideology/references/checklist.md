@@ -24,4 +24,4 @@
 
 ## Remover um rascunho
 
-Apague `src/content/ideologies/<slug>/` e `src/content/graph/<slug>.json` e rode `npm run content:build`. Como o rascunho não entra em rotas nem no registro publicado, nada mais precisa mudar.
+Apague `content/ideologies/<slug>/` e `content/graph/<slug>.json` e rode `npm run content:build`. Como o rascunho não entra em rotas nem no registro publicado, nada mais precisa mudar.

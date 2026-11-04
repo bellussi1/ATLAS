@@ -44,9 +44,7 @@ export async function buildContent({
   const graph = validateSourceGraph(input ?? (await readSourceGraph()));
   const translations = compileTranslations(
     translationCatalogue ??
-      JSON.parse(
-        await readFile(join(projectRoot, 'src/content/translations/catalogue.json'), 'utf8'),
-      ),
+      JSON.parse(await readFile(join(projectRoot, 'content/translations/catalogue.json'), 'utf8')),
     graph,
   );
   const entities = graph.atlases.flatMap((atlas) => atlas.entities);
@@ -69,14 +67,13 @@ export async function buildContent({
     },
     editorial: {},
   };
-  for (const [slug, recipe] of Object.entries(publishedIdeologies)) {
-    const load = async (url) =>
-      JSON.parse(await readFile(join(projectRoot, 'src', url.slice(1)), 'utf8'));
-    const dossier = validateIdeologyDossier(
-      await load(recipe.pageUrl),
-      await load(recipe.supplementUrl),
-      graph,
-    );
+  const readings = [];
+  for (const [slug, source] of Object.entries(publishedIdeologies)) {
+    const load = async (path) => JSON.parse(await readFile(join(projectRoot, path), 'utf8'));
+    const page = await load(source.page);
+    const supplement = await load(source.supplement);
+    const dossier = validateIdeologyDossier(page, supplement, graph);
+    readings.push({ slug, page, supplement });
     const text = (value) =>
       typeof value === 'string'
         ? value
@@ -127,10 +124,14 @@ export async function buildContent({
   const collections = [];
   for (const atlas of graph.atlases)
     collections.push({ id: atlas.id, ...(await asset(atlas.id, atlas)) });
+  const ideologies = [];
+  for (const { slug, page, supplement } of readings)
+    ideologies.push({ id: slug, ...(await asset(`ideology-${slug}`, { page, supplement })) });
   const resources = {
     schemaVersion: 1,
     graph: { id: graph.id, version: graph.version, updatedAt: graph.updatedAt },
     collections,
+    ideologies,
     search: await asset('search', search),
     adjacency: await asset('adjacency', adjacency),
     layouts: await asset('layouts', layouts),

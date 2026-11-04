@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
-export const pointerPath = join(projectRoot, 'src/content/content-pointer.json');
+export const pointerPath = join(projectRoot, 'content/content-pointer.json');
 export const cacheDirectory = join(projectRoot, 'generated/content-cache');
 export const publicBucket = 'atlas-public';
 export const draftsBucket = 'atlas-drafts';

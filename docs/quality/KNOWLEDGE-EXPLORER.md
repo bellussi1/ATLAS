@@ -8,7 +8,7 @@ Entrega de 01/11/2026 sobre o commit `26e0577`, em Windows, Node 24 e npm 11. O 
 - `/entidades`, `/ideologias`, `/pessoas` e `/obras` recortam os registros do grafo. Exemplos de metodologia sobre pessoas ou artigos continuam disponíveis na busca universal, mas não são apresentados como registros históricos nesses catálogos.
 - `/verbete/:slug` é a página permanente compartilhada por todos os catálogos. Reutiliza IDs/slugs existentes e exibe contexto, seções, afirmações, fontes, imagens autorizadas e conexões com direção, evidências e procedência. As leituras `/marxismo` e `/liberalismo` mantêm seus URLs próprios.
 - `/fontes#source-<id>` publica as referências e os registros que as citam. Fontes têm âncoras permanentes no índice; não recebem cópias em páginas individuais.
-- `/explorar/:tipo/:slug` torna acessíveis os oito exemplos metodológicos já cadastrados, com identificação explícita de exemplo ou formato previsto.
+- `/explorar/:tipo/:slug` foi removida (01–03/11/2026): eram páginas-modelo sem conteúdo histórico. A metodologia vive em `/verbete/metodologia-do-atlas`.
 - `q`, `tipo` e `estado` preservam busca/filtros em reload e histórico. `origem` permite retornar ao recorte anterior, validando os destinos locais permitidos. O link permanente e o canonical excluem esses parâmetros.
 - Home encaminha a busca para `/conhecimento`, sem carregar o grafo. Header, footer e prévias contextuais abrem os novos destinos. Catálogos e registros são lazy e preparados pelo resolver antes da ativação, reutilizando cache e TransferState.
 
