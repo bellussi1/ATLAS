@@ -1,0 +1,4099 @@
+{
+  "id": "atlas-outras-ideologias",
+  "slug": "outras-ideologias-wikipedia",
+  "title": "Outras ideologias (rascunhos da Wikipédia)",
+  "description": "Rascunhos assistidos por IA extraídos da Wikipédia, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-04",
+  "entityIds": [
+    "wiki-topic-conservadorismo",
+    "wiki-topic-ecologismo",
+    "wiki-topic-fascismo",
+    "wiki-topic-nacionalismo",
+    "wiki-topic-populismo"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-conservadorismo",
+      "slug": "conservadorismo",
+      "title": "Conservadorismo",
+      "summary": "Conservadorismo é uma filosofia social que defende a preservação de instituições, costumes e valores tradicionais. O termo ganhou uso político com Chateaubriand em 1818, e Edmund Burke é apontado como o primeiro teórico explicitamente conservador, em reação à Revolução Francesa. O artigo descreve as vertentes autoritária, liberal, nacional, paternalista, reacionária e religiosa, as variantes nacionais e a história dos partidos conservadores brasileiros, além do debate sobre o que significa ser conservador.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73165453. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Conservadorismo é uma filosofia social que defende a preservação de instituições, costumes e valores tradicionais. O termo ganhou uso político com Chateaubriand em 1818, e Edmund Burke é apontado como o primeiro teórico explicitamente conservador, em reação à Revolução Francesa. O artigo descreve as vertentes autoritária, liberal, nacional, paternalista, reacionária e religiosa, as variantes nacionais e a história dos partidos conservadores brasileiros, além do debate sobre o que significa ser conservador."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q7169", "wikipedia": "Conservadorismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Conservadorismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Conservadorismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-04",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73165453, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-ecologismo",
+      "slug": "ecologismo",
+      "title": "Ecologismo",
+      "summary": "Ecologismo é uma corrente de pensamento e um movimento político global que defende a proteção do meio ambiente. O texto o trata como ideologia de segunda geração, pós-materialista e de posição à esquerda, e o distingue do ambientalismo por privilegiar o desenvolvimento social humano de forma antropocêntrica. O artigo é curto e foi lido integralmente (Introdução e diferenças com o ambientalismo); não traz datas.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 65133768. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Ecologismo é uma corrente de pensamento e um movimento político global que defende a proteção do meio ambiente. O texto o trata como ideologia de segunda geração, pós-materialista e de posição à esquerda, e o distingue do ambientalismo por privilegiar o desenvolvimento social humano de forma antropocêntrica. O artigo é curto e foi lido integralmente (Introdução e diferenças com o ambientalismo); não traz datas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q2855609", "wikipedia": "Ecologismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Ecologismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Ecologismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-04",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 65133768, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-fascismo",
+      "slug": "fascismo",
+      "title": "Fascismo",
+      "summary": "Fascismo é uma ideologia ultranacionalista e autoritária, com partido único, repressão da oposição e organização corporativa da economia. O artigo traça suas raízes no fin de siècle, em autores como Maurras, Sorel e Marinetti, e seu surgimento na Itália durante a Primeira Guerra Mundial. Trata da expansão europeia nos anos 1930, da posição disputada no espectro político e dos regimes após 1945, incluindo Espanha e Portugal. Extração parcial: 22 de 27 unidades lidas. Não lidas: Cristianismo e fascismo; Neofascismo; Fascismo de esquerda; Fundamentalismos religiosos; Fascista como insulto.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72915553. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Fascismo é uma ideologia ultranacionalista e autoritária, com partido único, repressão da oposição e organização corporativa da economia. O artigo traça suas raízes no fin de siècle, em autores como Maurras, Sorel e Marinetti, e seu surgimento na Itália durante a Primeira Guerra Mundial. Trata da expansão europeia nos anos 1930, da posição disputada no espectro político e dos regimes após 1945, incluindo Espanha e Portugal. Extração parcial: 22 de 27 unidades lidas. Não lidas: Cristianismo e fascismo; Neofascismo; Fascismo de esquerda; Fundamentalismos religiosos; Fascista como insulto."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q6223", "wikipedia": "Fascismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Fascismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Fascismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-04",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72915553, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-nacionalismo",
+      "slug": "nacionalismo",
+      "title": "Nacionalismo",
+      "summary": "Nacionalismo é uma ideia e um movimento que busca a autogovernação e a autodeterminação de uma nação, com identidade baseada em cultura, língua, religião, história e território. O artigo apresenta as principais teorias sobre sua origem, as variantes étnica e cívica e suas combinações com a esquerda e a direita. Descreve o nacionalismo revolucionário na Europa e na América Latina, o nacionalismo anticolonial do pós-guerra e o ultranacionalismo, em que se insere o fascismo. Texto lido integralmente; afirmações sem fonte sobre países e políticas atuais não foram extraídas.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73092724. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Nacionalismo é uma ideia e um movimento que busca a autogovernação e a autodeterminação de uma nação, com identidade baseada em cultura, língua, religião, história e território. O artigo apresenta as principais teorias sobre sua origem, as variantes étnica e cívica e suas combinações com a esquerda e a direita. Descreve o nacionalismo revolucionário na Europa e na América Latina, o nacionalismo anticolonial do pós-guerra e o ultranacionalismo, em que se insere o fascismo. Texto lido integralmente; afirmações sem fonte sobre países e políticas atuais não foram extraídas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q6235", "wikipedia": "Nacionalismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Nacionalismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Nacionalismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-04",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73092724, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-populismo",
+      "slug": "populismo",
+      "title": "Populismo",
+      "summary": "Populismo é um conceito contestado: designa práticas políticas que apelam ao \"povo\" em oposição a uma \"elite\". Não há definição única, e o termo mudou de sentido desde o século XIX, quando nomeou o populismo russo e o Partido do Povo nos Estados Unidos, até a estigmatização nas ciências sociais a partir dos anos 1950. O artigo expõe as quatro grandes abordagens teóricas (ideacional, classista, discursiva e performativa) e as críticas ao antipopulismo na política, na academia, no marxismo, na economia e na mídia.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73315738. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Populismo é um conceito contestado: designa práticas políticas que apelam ao \"povo\" em oposição a uma \"elite\". Não há definição única, e o termo mudou de sentido desde o século XIX, quando nomeou o populismo russo e o Partido do Povo nos Estados Unidos, até a estigmatização nas ciências sociais a partir dos anos 1950. O artigo expõe as quatro grandes abordagens teóricas (ideacional, classista, discursiva e performativa) e as críticas ao antipopulismo na política, na academia, no marxismo, na economia e na mídia."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q180490", "wikipedia": "Populismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Populismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Populismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-04",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73315738, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-conservadorismo",
+      "title": "Conservadorismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Conservadorismo",
+      "edition": "revisão 73165453; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-ecologismo",
+      "title": "Ecologismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Ecologismo",
+      "edition": "revisão 65133768; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-fascismo",
+      "title": "Fascismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Fascismo",
+      "edition": "revisão 72915553; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-nacionalismo",
+      "title": "Nacionalismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Nacionalismo",
+      "edition": "revisão 73092724; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-populismo",
+      "title": "Populismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Populismo",
+      "edition": "revisão 73315738; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-conservadorismo-001",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Em 1790, quando a Revolução Francesa ainda parecia prometer uma utopia sem sangue",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-002",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "O primeiro uso estabelecido do termo em um contexto político originou-se com François-René de Chateaubriand em 1818",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-003",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "O Partido Conservador no Brasil surgiu em 1836, a partir do antigo Partido Restaurador",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-004",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Sob a gestão de Eusébio de Queiroz surge a Lei do Ventre Livre, de 1871",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-005",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "dissolveu-se com a proclamação da república, em 1889",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-006",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "A partir de 1931 o DNVP radicaliza as suas posições e entra numa aliança com os Nacionais-Socialistas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-007",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "os principais autores do falhado golpe de Julho de 1944 de Stauffenberg contra Hitler",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-008",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "A União Democrática Nacional (UDN) foi um partido político brasileiro fundado em 7 de abril de 1945",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-009",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Como todos os demais partidos, a UDN foi extinta pelo governo militar que assumiu o poder em 1964, através do Ato Institucional Número Dois",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-010",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Fundada em 4 de abril de 1966, a ARENA era um partido político predominantemente conservador",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-011",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "a partir de 1980 com Ronald Reagan e os candidatos e presidentes subsequentes",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-012",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "O caso mais recente ocorreu na Bolívia em 2024, quando o General Juan José Zúñiga tentou um golpe para derrubar o presidente de extrema esquerda Luis Arce",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-013",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "o primeiro teórico político explicitamente conservador é geralmente considerado ser Edmund Burke",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-014",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Criticando os revolucionários franceses, Joseph de Maistre escreveu",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-015",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "foi um dos primeiros e principais divulgadores e tradutores das obras de Adam Smith e Edmund Burke no Brasil",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-016",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Bernardo Pereira de Vasconcelos, fundador do Partido Conservador e organizador do movimento denominado",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-017",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Ruy Barbosa defendeu a criação de um",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-018",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "No entanto, sua principal liderança, o jornalista Carlos Lacerda, apesar de ter sido um dos líderes civis do golpe, voltou-se contra ele em 1966",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-019",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Disraeli, que concedeu o direito de voto aos operários urbanos, tentou dar um carácter social ao conservadorismo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-020",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "No século XIX, na Alemanha, o Chanceler Otto von Bismarck adotou um conjunto de programas sociais, conhecidos como socialismo de estado",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-021",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "O filósofo político Yoram Hazony defendeu o conservadorismo nacional em seu trabalho A Virtude do Nacionalismo (2018)",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-022",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "teóricos políticos como Corey Robin definem o conservadorismo principalmente em termos de uma defesa geral da desigualdade social e econômica",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-023",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Outros, como Mark Lilla, argumentam que reacionarismo e conservadorismo são visões de mundo distintas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-024",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "o descritor foi adotado por intelectuais como o tradicionalista esotérico italiano Julius Evola",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-025",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Conservadorismo ou conservantismo é uma filosofia social que defende a preservação das instituições, costumes e valores sociais tradicionais no contexto da cultura e da civilização",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-026",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Burke previu em sua obra Reflections on the Revolution in France — e não por sorte, mas por uma análise da rejeição da tradição e dos valores herdados — que a revolução decairia para terror e ditadura",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-027",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Para o conservador, as tradições são a base de qualquer atuação política e social, pois elas oferecem ao agente algo sobre o qual a sociedade pode operar, criticar e, consequentemente, mudar",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-028",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "não faz sentido elaborar projetos universais de sociedade ideal",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-029",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Os conservadores consideram que o individualismo e as promessas de liberdade irrestrita acabam por conduzir aos seus aparentes opostos, o estatismo e o totalitarismo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-030",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Em contraste com a definição de conservadorismo baseada na tradição, teóricos políticos como Corey Robin definem o conservadorismo principalmente em termos de uma defesa geral da desigualdade social e econômica",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-031",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Movimentos conservadores autoritários foram proeminentes na mesma era do fascismo, com o qual às vezes entraram em conflito",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-032",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "De acordo com Erik von Kuehnelt-Leddihn, as ditaduras militares surgem em sistemas democráticos para impedir que partidos de esquerda se tornem totalitários",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-033",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Originalmente oposto ao capitalismo e à revolução industrial, a ideologia conservadora em muitos países adotou o liberalismo econômico, especialmente nos Estados Unidos, onde essa ideologia é conhecida como conservadorismo fiscal",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-034",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Seus defensores frequentemente enfatizam a importância de uma rede de segurança social para lidar com a pobreza, apoiando uma redistribuição limitada de riqueza",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-035",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "Há partidos como o PSDB e o MDB que são comumente confundidos como partidos de viés conservador, todavia são partidos do centro",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-conservadorismo-036",
+      "sourceId": "src-wiki-topic-conservadorismo",
+      "locator": "O seminarista católico António de Oliveira Salazar, que foi o ditador de Portugal por 40 anos, denunciou o fascismo e o nazismo como um",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-001",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "o primeiro utilizar os conhecimentos científicos e técnicos da segunda",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-002",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "Enquanto o ambientalismo se concentra na defesa intransigente do meio ambiente",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-003",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "É também considerado uma ideologia de segunda geração, por ser pós-materialista.",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-004",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "Apesar de ser considerada como uma ideologia à esquerda do espectro político",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-005",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "é uma corrente de pensamento (ideológico ou filosófico) e um movimento político global, que defende a proteção do meio ambiente",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-006",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "É também considerado uma ideologia de segunda geração, por ser pós-materialista.",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-007",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "O ecologismo é muitas vezes confundido com Ecologia, apesar de o primeiro utilizar os conhecimentos científicos e técnicos da segunda para intervir a nível económico, social e político.",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-008",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "Apesar de ser considerada como uma ideologia à esquerda do espectro político, o ecologismo ganhou uma relativa independência ideológica.",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-009",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "o ecologismo defende o meio ambiente e a conservação da Natureza, mas de forma a privilegiar, de forma antropocêntrica, o desenvolvimento social do ser humano",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ecologismo-010",
+      "sourceId": "src-wiki-topic-ecologismo",
+      "locator": "os mais fundamentalistas são apoiantes da sua própria extinção",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-001",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "As raízes ideológicas do fascismo foram traçados em 1880",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-002",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Gaetano Mosca em sua obra A classe dominante (1896) desenvolveu a teoria",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-003",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "em sua obra Reflexões sobre Violência (1908)",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-004",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Com a eclosão da Primeira Guerra Mundial em agosto de 1914",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-005",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "foi usado pela primeira vez em 1915 por membros do movimento de Mussolini, o Fasci d'Azione Rivoluzionaria",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-006",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Um grande evento que muito influenciou o desenvolvimento do fascismo foi a Revolução de Outubro de 1917",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-007",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "onde 1919 e 1920 ficaram conhecidos como os",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-008",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "da fundação da Carta de Carnaro em 1920",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-009",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "subiu ao poder como primeiro-ministro da Hungria em 1932",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-010",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Em 6 de fevereiro de 1934, a França enfrentou a maior crise política interna desde o Caso Dreyfus",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-011",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "forçou Mussolini a renunciar como chefe de governo e o colocou na prisão, em 1943",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-012",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Desde o fim da Segunda Guerra Mundial, em 1945, poucos partidos se têm declarado abertamente fascistas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-013",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Mussolini adotou esse símbolo para o seu partido",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-014",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "O francês nacionalista e reacionário monárquico Charles Maurras influenciou o fascismo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-015",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "A fusão do nacionalismo maurassiano com o sindicalismo de Sorel influenciou o radical e nacionalista italiano Enrico Corradini",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-016",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "O futurismo influenciou o fascismo em sua ênfase em reconhecer a natureza viril da ação violenta",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-017",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "tanto o bolchevismo e o fascismo mantiveram semelhanças ideológicas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-018",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Outra ideologia fortemente influenciado pelo fascismo é o baathismo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-019",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "esmagou o fascismo português depois de ter copiado algumas das suas técnicas de mobilização popular",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-020",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "criaram um entendimento estratégico entre Hitler e Mussolini",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-021",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "O conceito de capitalismo produtivo teve origem nas ideias de Henri de Saint Simon",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-022",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "salientou a importância da ação direta como o principal meio das políticas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-023",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Fascismo é uma ideologia política ultranacionalista e autoritária caracterizada por poder ditatorial, repressão da oposição por via da força",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-024",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "O termo fascismo é derivado da palavra latina fasces",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-025",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Os primeiros movimentos fascistas surgiram na Itália durante a I Guerra Mundial",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-026",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "O fascismo promovia-se como sendo uma terceira posição, alternativa tanto ao socialismo internacional como ao capitalismo de livre mercado",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-027",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "O fascismo é considerado por alguns estudiosos como de extrema-direita por causa de seu conservadorismo social",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-028",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "a propaganda fascista que alegava anti-capitalismo e socialismo nacional era uma fraude",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-029",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Os governos fascistas ilegalizaram os movimentos sindicais e substituíram-nos por organizações denominadas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-030",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Os estados fascistas promoviam políticas de doutrinação social através de propaganda na educação e na comunicação social, ambas totalmente controladas pelo estado",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-031",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Os homossexuais assumidos eram internados em campos de concentração nazis.",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-032",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Para Mussolini, o principal papel da mulher na sociedade era o da maternidade",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-033",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Um dos principais objetivos da maior parte dos governos fascistas era atingir a autossuficiência económica, denominada autarquia",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fascismo-034",
+      "sourceId": "src-wiki-topic-fascismo",
+      "locator": "Outros historiadores, como Fernando Rosas e Manuel Villaverde Cabral, pensam que o Estado Novo deve ser considerado fascista",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-001",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Ernest Renan exemplificou esse conceito em sua palestra de 1882",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-002",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Na década de 1920, Carlton Hayes chamou à atenção para o facto de o nacionalismo ter-se assemelhado a uma religião",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-003",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "adotada na Alemanha, de 1933 a 1945",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-004",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "que, em 1959, liderou a Revolução Cubana e pôs fim ao governo de Fulgencio Batista",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-005",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "O nacionalismo radical combinado com o ódio racial foi um fator-chave no Holocausto perpetrado pela Alemanha nazi",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-006",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "O fascismo é uma forma de ultranacionalismo palingenético",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-007",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "O nazismo, ideologia formulada por Adolf Hitler e adotada na Alemanha, de 1933 a 1945, é uma forma de nacionalismo étnico",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-008",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Surgiu como uma ideologia da Revolução Francesa",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-009",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Simón Bolívar foi o líder maior desse nacionalismo revolucionário latino-americano",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-010",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Giuseppe Mazzini foi o líder maior desse nacionalismo revolucionário na Europa",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-011",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "apesar de Stálin apoiar a ideia de nações revolucionárias e reacionárias",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-012",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Carlton Hayes chamou à atenção para o facto de o nacionalismo ter-se assemelhado a uma religião",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-013",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Ernest Renan exemplificou esse conceito em sua palestra de 1882",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-014",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Segundo Benedict Anderson, o nacionalismo anticolonial tem suas raízes na experiência de intelectuais indígenas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-015",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "incluindo o movimento de resistência pacífica liderado por Mahatma Gandhi na Índia",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-016",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "tem como objetivo promover os interesses internos de uma nação em particular (como um grupo étnico), especialmente com o objetivo de ganhar e manter a autogovernação e a autodeterminação",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-017",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "cujo não possui uma orientação ideologia podendo vir tanto pela esquerda quanto pela direita",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-018",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "O consenso entre os estudiosos é as nações serem socialmente construídas e historicamente contingentes",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-019",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "propõe que o nacionalismo surgiu devido a processos de modernização, tais como a industrialização, urbanização e educação de massas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-020",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "O valor moral do nacionalismo, a relação entre nacionalismo e patriotismo, e a compatibilidade entre nacionalismo e cosmopolitismo são todos temas de debate filosófico",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-021",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "O nacionalismo pode ser combinado com diversos objetivos e ideologias políticas, tais como o conservadorismo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-022",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "As duas principais formas divergentes são o nacionalismo étnico e o nacionalismo cívico",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-023",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Algumas correntes nacionalistas, entretanto, defendem o protecionismo étnico ou mesmo uma supremacia étnica",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-024",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Tem também sido utilizado para legitimar divisões raciais, étnicas e religiosas, suprimir ou atacar minorias",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-025",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Muitas vezes, é caracterizado pelo autoritarismo, esforços para a redução ou proibição da imigração",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-026",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "O nacionalismo anticolonial emergiu após a descolonização do período pós-guerra",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-nacionalismo-027",
+      "sourceId": "src-wiki-topic-nacionalismo",
+      "locator": "Apesar disso, ainda em vida, Marx defendeu o nacionalismo irlandês",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-001",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "No início de 1949, influenciado por Assis Chateaubriand, o presidente Eurico Gaspar Dutra, do PSD, buscou sem sucesso traçar um acordo com o governador mineiro Milton Campos, da UDN",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-002",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "No Brasil, por exemplo, o termo entra no vocabulário político para deslegitimar a aliança que uniu Adhemar de Barros e Getúlio Vargas nas eleições de 1950.",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-003",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Entre os anos 1950 e 1970, o populismo começa a ser encarado com desconfiança por diferentes correntes político-ideológicas",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-004",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "No Brasil, e notadamente no período posterior ao golpe militar de 1964, pensadores de esquerda passaram a atribuir às limitações do populismo as causas do fim da democracia",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-005",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Em 1967, uma conferência realizada em Londres, reunindo os principais especialistas da área, não chegou a um consenso sobre o termo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-006",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "tais como os inaugurados pela Constituição de 1988",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-007",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "notadamente após a eleição de Donald Trump nos Estados Unidos em 2016",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-008",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Foi desenvolvida notadamente por Cas Mudde e Cristóbal Rovira Kaltwasser",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-009",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "A discursiva teve como seu principal expoente o teórico político argentino Ernesto Laclau",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-010",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Efetivamente, Ernesto Laclau e Chantal Mouffe buscaram desconstruir e problematizar as interpretações negativas do populismo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-011",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Na sociologia americana, Seymour Martin Lipset afirmava que o populismo seria um movimento que reúne diversas classes sociais",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-012",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "muito presente na América Latina com figuras como Francisco Weffort e Fernando Henrique Cardoso",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-013",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Seus principais expoentes são Pierre Ostiguy, Benjamin Moffitt e María Esperanza Casullo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-014",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "as críticas a um alegado populismo econômico foram originalmente formuladas pelo economista argentino Marcelo Diamand",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-015",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "As ideias de Diamand teriam sido então recuperadas por economistas do NBER como Jeffrey Sachs, Rudiger Dornbusch e Sebastian Edwards",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-016",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Nele, há ciclos de expansão de direitos sociais, tais como os inaugurados pela Constituição de 1988 que são sucedidos por reações conservadoras",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-017",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Frances McCall Rosenbluth e Ian Shapiro argumentam que a ascensão do populismo e o crescente afastamento do eleitorado derivam do enfraquecimento dos partidos",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-018",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Foi em reação a essa alcunha que Vargas e Adhemar passam a adotar o termo de maneira positiva",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-019",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Essas críticas marxistas foram problematizadas por historiadores como Daniel Aarão Reis",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-020",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "A noção de populismo é considerada um conceito contestado por não haver consenso na academia sobre uma definição do termo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-021",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "defende que o populismo seria uma ideologia de centro fino (thin-centred ideology)",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-022",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Segundo Mudde e Kaltwasser, líderes e movimentos populistas poderiam revigorar a democracia liberal quando estão na oposição, mas costumam colocá-la em perigo quando chegam ao poder",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-023",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Tal abordagem afirma que o populismo emerge num momento de equilíbrio de forças, em que a burguesia já perdeu sua capacidade de liderança, mas o proletariado ainda não triunfou",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-024",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "enquanto o fascismo se basearia principalmente nas classes médias, o populismo teria sua base social principal entre os pobres",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-025",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "se distingue das abordagens anteriores por ver algumas experiências populistas no poder como autenticamente democratizantes",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-026",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Autores dessa tradição costumam acusar o populismo de estabelecer um vínculo emocional, e portanto não-racional, com o povo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-027",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "a ideia de que o vínculo entre o líder populista e as massas seria de ordem emocional se baseia em uma distinção entre razão e emoção que não se sustenta",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-028",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "essa integração seria apenas proto-democratizante, estando subordinada a um enquadramento estritamente burguês",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-029",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "contribuiria para normalizar ideias de extrema-direita através de eufemismos, agendamento (agenda setting) e amplificação de mensagens consideradas reacionárias",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-030",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "Ela é criticada por interditar o debate econômico, por ignorar a origem inerentemente política da ideia de populismo",
+      "accessedAt": "2026-11-04",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-populismo-031",
+      "sourceId": "src-wiki-topic-populismo",
+      "locator": "outros pesquisadores defendem que o populismo é emancipatório por definição",
+      "accessedAt": "2026-11-04",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-conservadorismo-001",
+      "evidenceId": "ev-wiki-topic-conservadorismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-002",
+      "evidenceId": "ev-wiki-topic-conservadorismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-003",
+      "evidenceId": "ev-wiki-topic-conservadorismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-004",
+      "evidenceId": "ev-wiki-topic-conservadorismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-005",
+      "evidenceId": "ev-wiki-topic-conservadorismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-006",
+      "evidenceId": "ev-wiki-topic-conservadorismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-007",
+      "evidenceId": "ev-wiki-topic-conservadorismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-008",
+      "evidenceId": "ev-wiki-topic-conservadorismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-009",
+      "evidenceId": "ev-wiki-topic-conservadorismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-010",
+      "evidenceId": "ev-wiki-topic-conservadorismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-011",
+      "evidenceId": "ev-wiki-topic-conservadorismo-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-012",
+      "evidenceId": "ev-wiki-topic-conservadorismo-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-013",
+      "evidenceId": "ev-wiki-topic-conservadorismo-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-014",
+      "evidenceId": "ev-wiki-topic-conservadorismo-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-015",
+      "evidenceId": "ev-wiki-topic-conservadorismo-015",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-016",
+      "evidenceId": "ev-wiki-topic-conservadorismo-016",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-017",
+      "evidenceId": "ev-wiki-topic-conservadorismo-017",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-018",
+      "evidenceId": "ev-wiki-topic-conservadorismo-018",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-019",
+      "evidenceId": "ev-wiki-topic-conservadorismo-019",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-020",
+      "evidenceId": "ev-wiki-topic-conservadorismo-020",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-021",
+      "evidenceId": "ev-wiki-topic-conservadorismo-021",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-022",
+      "evidenceId": "ev-wiki-topic-conservadorismo-022",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-023",
+      "evidenceId": "ev-wiki-topic-conservadorismo-023",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-024",
+      "evidenceId": "ev-wiki-topic-conservadorismo-024",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-025",
+      "evidenceId": "ev-wiki-topic-conservadorismo-025",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-026",
+      "evidenceId": "ev-wiki-topic-conservadorismo-026",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-027",
+      "evidenceId": "ev-wiki-topic-conservadorismo-027",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-028",
+      "evidenceId": "ev-wiki-topic-conservadorismo-028",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-029",
+      "evidenceId": "ev-wiki-topic-conservadorismo-029",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-030",
+      "evidenceId": "ev-wiki-topic-conservadorismo-030",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-031",
+      "evidenceId": "ev-wiki-topic-conservadorismo-031",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-032",
+      "evidenceId": "ev-wiki-topic-conservadorismo-032",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-033",
+      "evidenceId": "ev-wiki-topic-conservadorismo-033",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-034",
+      "evidenceId": "ev-wiki-topic-conservadorismo-034",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-035",
+      "evidenceId": "ev-wiki-topic-conservadorismo-035",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-conservadorismo-036",
+      "evidenceId": "ev-wiki-topic-conservadorismo-036",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-001",
+      "evidenceId": "ev-wiki-topic-ecologismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-002",
+      "evidenceId": "ev-wiki-topic-ecologismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-003",
+      "evidenceId": "ev-wiki-topic-ecologismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-004",
+      "evidenceId": "ev-wiki-topic-ecologismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-005",
+      "evidenceId": "ev-wiki-topic-ecologismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-006",
+      "evidenceId": "ev-wiki-topic-ecologismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-007",
+      "evidenceId": "ev-wiki-topic-ecologismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-008",
+      "evidenceId": "ev-wiki-topic-ecologismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-009",
+      "evidenceId": "ev-wiki-topic-ecologismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ecologismo-010",
+      "evidenceId": "ev-wiki-topic-ecologismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-001",
+      "evidenceId": "ev-wiki-topic-fascismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-002",
+      "evidenceId": "ev-wiki-topic-fascismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-003",
+      "evidenceId": "ev-wiki-topic-fascismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-004",
+      "evidenceId": "ev-wiki-topic-fascismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-005",
+      "evidenceId": "ev-wiki-topic-fascismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-006",
+      "evidenceId": "ev-wiki-topic-fascismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-007",
+      "evidenceId": "ev-wiki-topic-fascismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-008",
+      "evidenceId": "ev-wiki-topic-fascismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-009",
+      "evidenceId": "ev-wiki-topic-fascismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-010",
+      "evidenceId": "ev-wiki-topic-fascismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-011",
+      "evidenceId": "ev-wiki-topic-fascismo-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-012",
+      "evidenceId": "ev-wiki-topic-fascismo-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-013",
+      "evidenceId": "ev-wiki-topic-fascismo-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-014",
+      "evidenceId": "ev-wiki-topic-fascismo-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-015",
+      "evidenceId": "ev-wiki-topic-fascismo-015",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-016",
+      "evidenceId": "ev-wiki-topic-fascismo-016",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-017",
+      "evidenceId": "ev-wiki-topic-fascismo-017",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-018",
+      "evidenceId": "ev-wiki-topic-fascismo-018",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-019",
+      "evidenceId": "ev-wiki-topic-fascismo-019",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-020",
+      "evidenceId": "ev-wiki-topic-fascismo-020",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-021",
+      "evidenceId": "ev-wiki-topic-fascismo-021",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-022",
+      "evidenceId": "ev-wiki-topic-fascismo-022",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-023",
+      "evidenceId": "ev-wiki-topic-fascismo-023",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-024",
+      "evidenceId": "ev-wiki-topic-fascismo-024",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-025",
+      "evidenceId": "ev-wiki-topic-fascismo-025",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-026",
+      "evidenceId": "ev-wiki-topic-fascismo-026",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-027",
+      "evidenceId": "ev-wiki-topic-fascismo-027",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-028",
+      "evidenceId": "ev-wiki-topic-fascismo-028",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-029",
+      "evidenceId": "ev-wiki-topic-fascismo-029",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-030",
+      "evidenceId": "ev-wiki-topic-fascismo-030",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-031",
+      "evidenceId": "ev-wiki-topic-fascismo-031",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-032",
+      "evidenceId": "ev-wiki-topic-fascismo-032",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-033",
+      "evidenceId": "ev-wiki-topic-fascismo-033",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fascismo-034",
+      "evidenceId": "ev-wiki-topic-fascismo-034",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-001",
+      "evidenceId": "ev-wiki-topic-nacionalismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-002",
+      "evidenceId": "ev-wiki-topic-nacionalismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-003",
+      "evidenceId": "ev-wiki-topic-nacionalismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-004",
+      "evidenceId": "ev-wiki-topic-nacionalismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-005",
+      "evidenceId": "ev-wiki-topic-nacionalismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-006",
+      "evidenceId": "ev-wiki-topic-nacionalismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-007",
+      "evidenceId": "ev-wiki-topic-nacionalismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-008",
+      "evidenceId": "ev-wiki-topic-nacionalismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-009",
+      "evidenceId": "ev-wiki-topic-nacionalismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-010",
+      "evidenceId": "ev-wiki-topic-nacionalismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-011",
+      "evidenceId": "ev-wiki-topic-nacionalismo-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-012",
+      "evidenceId": "ev-wiki-topic-nacionalismo-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-013",
+      "evidenceId": "ev-wiki-topic-nacionalismo-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-014",
+      "evidenceId": "ev-wiki-topic-nacionalismo-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-015",
+      "evidenceId": "ev-wiki-topic-nacionalismo-015",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-016",
+      "evidenceId": "ev-wiki-topic-nacionalismo-016",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-017",
+      "evidenceId": "ev-wiki-topic-nacionalismo-017",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-018",
+      "evidenceId": "ev-wiki-topic-nacionalismo-018",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-019",
+      "evidenceId": "ev-wiki-topic-nacionalismo-019",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-020",
+      "evidenceId": "ev-wiki-topic-nacionalismo-020",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-021",
+      "evidenceId": "ev-wiki-topic-nacionalismo-021",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-022",
+      "evidenceId": "ev-wiki-topic-nacionalismo-022",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-023",
+      "evidenceId": "ev-wiki-topic-nacionalismo-023",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-024",
+      "evidenceId": "ev-wiki-topic-nacionalismo-024",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-025",
+      "evidenceId": "ev-wiki-topic-nacionalismo-025",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-026",
+      "evidenceId": "ev-wiki-topic-nacionalismo-026",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-nacionalismo-027",
+      "evidenceId": "ev-wiki-topic-nacionalismo-027",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-001",
+      "evidenceId": "ev-wiki-topic-populismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-002",
+      "evidenceId": "ev-wiki-topic-populismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-003",
+      "evidenceId": "ev-wiki-topic-populismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-004",
+      "evidenceId": "ev-wiki-topic-populismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-005",
+      "evidenceId": "ev-wiki-topic-populismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-006",
+      "evidenceId": "ev-wiki-topic-populismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-007",
+      "evidenceId": "ev-wiki-topic-populismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-008",
+      "evidenceId": "ev-wiki-topic-populismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-009",
+      "evidenceId": "ev-wiki-topic-populismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-010",
+      "evidenceId": "ev-wiki-topic-populismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-011",
+      "evidenceId": "ev-wiki-topic-populismo-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-012",
+      "evidenceId": "ev-wiki-topic-populismo-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-013",
+      "evidenceId": "ev-wiki-topic-populismo-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-014",
+      "evidenceId": "ev-wiki-topic-populismo-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-015",
+      "evidenceId": "ev-wiki-topic-populismo-015",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-016",
+      "evidenceId": "ev-wiki-topic-populismo-016",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-017",
+      "evidenceId": "ev-wiki-topic-populismo-017",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-018",
+      "evidenceId": "ev-wiki-topic-populismo-018",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-019",
+      "evidenceId": "ev-wiki-topic-populismo-019",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-020",
+      "evidenceId": "ev-wiki-topic-populismo-020",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-021",
+      "evidenceId": "ev-wiki-topic-populismo-021",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-022",
+      "evidenceId": "ev-wiki-topic-populismo-022",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-023",
+      "evidenceId": "ev-wiki-topic-populismo-023",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-024",
+      "evidenceId": "ev-wiki-topic-populismo-024",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-025",
+      "evidenceId": "ev-wiki-topic-populismo-025",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-026",
+      "evidenceId": "ev-wiki-topic-populismo-026",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-027",
+      "evidenceId": "ev-wiki-topic-populismo-027",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-028",
+      "evidenceId": "ev-wiki-topic-populismo-028",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-029",
+      "evidenceId": "ev-wiki-topic-populismo-029",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-030",
+      "evidenceId": "ev-wiki-topic-populismo-030",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-populismo-031",
+      "evidenceId": "ev-wiki-topic-populismo-031",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-conservadorismo-001",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Burke prevê, em Reflections on the Revolution in France, que a revolução decairia para terror e ditadura (1790).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-002",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Primeiro uso estabelecido do termo em contexto político, por Chateaubriand, durante a Restauração (1818).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-003",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Surge o Partido Conservador no Brasil, a partir do antigo Partido Restaurador (1836).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-004",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Lei do Ventre Livre, citada entre as realizações do Partido Conservador brasileiro (1871).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-005",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "O Partido Conservador brasileiro se dissolve com a proclamação da República (1889).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-006",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "O DNVP alemão radicaliza suas posições e entra em aliança com os nacional-socialistas (1931).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-007",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Golpe de Stauffenberg contra Hitler, com conservadores entre os principais autores (1944-07).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-008",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Fundação da UDN, partido de orientação conservadora, opositor de Getúlio Vargas (1945-04-07).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-009",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "O governo militar extingue a UDN pelo Ato Institucional Número Dois (1964).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-010",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Fundação da ARENA, partido predominantemente conservador criado após o regime militar (1966-04-04).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-011",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "A aliança conservadora passa a controlar o Partido Republicano com Ronald Reagan, depois de Barry Goldwater em 1964 (1980).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-011"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-012",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Tentativa de golpe do general Juan José Zúñiga para derrubar o presidente Luis Arce, na Bolívia (2024).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-012"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-013",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Edmund Burke: primeiro teórico político explicitamente conservador, segundo o artigo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-013"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-014",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Joseph de Maistre: criticou os revolucionários franceses.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-014"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-015",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Visconde de Cairu: um dos primeiros divulgadores e tradutores de Adam Smith e Edmund Burke no Brasil.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-015"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-016",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Bernardo Pereira de Vasconcelos: fundador do Partido Conservador e organizador do movimento Regresso.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-016"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-017",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Ruy Barbosa: defendeu a criação de um partido conservador republicano.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-017"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-018",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Carlos Lacerda: líder civil da UDN que se voltou contra o regime militar em 1966.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-018"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-019",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Benjamin Disraeli: tentou dar caráter social ao conservadorismo britânico, estendendo o voto aos operários urbanos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-019"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-020",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Otto von Bismarck: adotou programas sociais conhecidos como socialismo de estado, com seguros para trabalhadores.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-020"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-021",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Yoram Hazony: defendeu o conservadorismo nacional em A Virtude do Nacionalismo (2018).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-021"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-022",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Corey Robin: define o conservadorismo pela defesa da desigualdade social e econômica, e trata reacionário e conservador como sinônimos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-022"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-023",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Mark Lilla: argumenta que reacionarismo e conservadorismo são visões de mundo distintas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-023"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-024",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Relação com Julius Evola: tradicionalista esotérico italiano que adotou o descritor reacionário.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-024"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-025",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Conservadorismo é uma filosofia social que defende a preservação das instituições, costumes e valores sociais tradicionais no contexto da cultura e da civilização.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-025"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-026",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Burke previu que a Revolução Francesa decairia para terror e ditadura, por analisar a rejeição da tradição e dos valores herdados.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-026"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-027",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Para o conservador, as tradições são a base de qualquer atuação política, por permitirem criticar e mudar a sociedade.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-027"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-028",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Segundo a visão conservadora, não faz sentido elaborar projetos universais de sociedade ideal, por causa da diversidade de histórias e tradições.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-028"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-029",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Os conservadores consideram que o individualismo e a liberdade irrestrita conduzem ao estatismo e ao totalitarismo.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-029"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-030",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Autores como Corey Robin definem o conservadorismo pela defesa da desigualdade, e não pela defesa da tradição.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-030"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-031",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Movimentos conservadores autoritários foram proeminentes na era do fascismo e às vezes entraram em conflito com ele.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-031"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-032",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Segundo Erik von Kuehnelt-Leddihn, ditaduras militares surgem em democracias para impedir que partidos de esquerda se tornem totalitários.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-032"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-033",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "A ideologia conservadora em muitos países adotou o liberalismo econômico, e nos Estados Unidos isso é chamado de conservadorismo fiscal.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-033"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-034",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "O conservadorismo paternalista apoia uma rede de segurança social e uma redistribuição limitada de riqueza, junto com a regulação dos mercados.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-034"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-035",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Autores apontam que partidos como PSDB e MDB são comumente confundidos com partidos conservadores, mas são de centro.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-035"]
+    },
+    {
+      "id": "claim-wiki-topic-conservadorismo-036",
+      "entityId": "wiki-topic-conservadorismo",
+      "text": "Salazar, ditador de Portugal, denunciou o fascismo e o nazismo como um cesarismo pagão sem limites legais, religiosos ou morais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-conservadorismo-036"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-001",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "Relação com Ecologia: fornece conhecimentos científicos e técnicos que o ecologismo utiliza.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-002",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "Relação com Ambientalismo: distinto do ecologismo quanto à prioridade dada ao ser humano.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-003",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "Relação com Pós-materialismo: caracteriza o ecologismo como ideologia de segunda geração.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-004",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "Relação com Esquerda política: posição do ecologismo no espectro político.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-005",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "O ecologismo é uma corrente de pensamento e um movimento político global que defende a proteção do meio ambiente.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-006",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "O ecologismo é considerado uma ideologia de segunda geração e pós-materialista.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-007",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "O ecologismo é muitas vezes confundido com a Ecologia, da qual usa conhecimentos científicos e técnicos para intervir na economia, na sociedade e na política.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-008",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "O ecologismo é considerado uma ideologia de esquerda, com relativa independência ideológica.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-009",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "Segundo o texto, o ambientalismo concentra-se na defesa do meio ambiente, da fauna e da flora em detrimento do ser humano, enquanto o ecologismo privilegia o desenvolvimento social humano de forma antropocêntrica.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-ecologismo-010",
+      "entityId": "wiki-topic-ecologismo",
+      "text": "Segundo o texto, os ambientalistas mais fundamentalistas apoiariam a própria extinção.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ecologismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-001",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Fin de siècle: início das raízes ideológicas do fascismo, segundo o artigo (1880).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-002",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Gaetano Mosca publica A classe dominante e a teoria da minoria organizada (1896).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-003",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Georges Sorel publica Reflexões sobre a violência, defendendo a violência política (1908).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-004",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Eclosão da Primeira Guerra Mundial; a esquerda italiana se divide sobre a intervenção (1914-08).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-005",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Membros do movimento de Mussolini usam pela primeira vez o termo fascismo (1915).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-006",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Revolução de Outubro na Rússia, citada como evento influente para o fascismo (1917).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-007",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Anos Vermelhos: auge da atividade grevista na Itália (1919).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-008",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Fundação da Carta de Carnaro, após o ataque a Fiume por Gabriele d'Annunzio (1920).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-009",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Gyula Gömbös torna-se primeiro-ministro da Hungria (1932).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-010",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Crise política na França; movimentos de extrema-direita se revoltam em Paris (1934-02-06).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-011",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Vítor Emanuel III afasta Mussolini do governo e o prende (1943).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-011"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-012",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Fim da Segunda Guerra Mundial; desde então poucos partidos se declaram abertamente fascistas (1945).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-012"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-013",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Benito Mussolini: adotou o símbolo dos fasces para o seu partido.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-013"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-014",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Charles Maurras: influenciou o fascismo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-014"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-015",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Enrico Corradini: foi influenciado pela fusão do nacionalismo de Maurras com o sindicalismo de Sorel.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-015"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-016",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Futurismo (Filippo Tommaso Marinetti): influenciou o fascismo na ênfase na violência e na guerra.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-016"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-017",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Bolchevismo: teve semelhanças ideológicas com o fascismo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-017"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-018",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Baathismo: fortemente influenciado pelo fascismo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-018"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-019",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Oliveira Salazar: copiou algumas técnicas de mobilização popular do fascismo, segundo Paxton.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-019"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-020",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Adolf Hitler: entendimento estratégico com Mussolini.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-020"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-021",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Henri de Saint-Simon: origem das ideias do conceito de capitalismo produtivo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-021"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-022",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Relação com Mikhail Bakunin: ênfase na ação direta e na violência revolucionária, adotada pelos fascistas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-022"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-023",
+      "entityId": "wiki-topic-fascismo",
+      "text": "O artigo define o fascismo como ideologia ultranacionalista e autoritária, com poder ditatorial e repressão da oposição pela força; a natureza exata do fascismo é debatida entre historiadores.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-023"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-024",
+      "entityId": "wiki-topic-fascismo",
+      "text": "O termo fascismo deriva do latim fasces, símbolo de poder dos magistrados da República Romana.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-024"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-025",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Os primeiros movimentos fascistas surgiram na Itália durante a Primeira Guerra Mundial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-025"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-026",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Movimentos fascistas se apresentavam como uma terceira posição, alternativa ao socialismo internacional e ao capitalismo de livre mercado.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-026"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-027",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Alguns estudiosos classificam o fascismo como extrema-direita por causa do seu conservadorismo social e da oposição ao igualitarismo.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-027"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-028",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Segundo o artigo, a propaganda fascista de anticapitalismo era uma fraude do ponto de vista econômico.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-028"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-029",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Os governos fascistas ilegalizaram os sindicatos e os substituíram por organizações controladas pelo governo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-029"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-030",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Os estados fascistas controlavam a propaganda e a educação para doutrinar a população.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-030"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-031",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Os nazistas internavam homossexuais assumidos em campos de concentração.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-031"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-032",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Para Mussolini, o principal papel da mulher era a maternidade.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-032"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-033",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Um dos principais objetivos da maioria dos governos fascistas era a autarquia, ou autossuficiência econômica.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-033"]
+    },
+    {
+      "id": "claim-wiki-topic-fascismo-034",
+      "entityId": "wiki-topic-fascismo",
+      "text": "Há divergência entre historiadores sobre classificar o Estado Novo português como fascista.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fascismo-034"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-001",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Ernest Renan profere a palestra O que é uma Nação?, exemplo de nacionalismo cívico (1882).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-002",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Década de 1920: Carlton Hayes associa o nacionalismo a uma religião (1920).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-003",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Nazismo na Alemanha, descrito como forma de nacionalismo étnico (1933).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-004",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Movimento 26 de Julho, de Fidel Castro, lidera a Revolução Cubana (1959).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-005",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Holocausto: fator-chave, junto ao ódio racial, do nacionalismo radical nazista.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-006",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Fascismo: forma de ultranacionalismo palingenético, segundo o artigo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-007",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Nazismo: forma de nacionalismo étnico, segundo o artigo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-008",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Revolução Francesa: origem ideológica do nacionalismo, segundo o artigo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-009",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Simón Bolívar: principal líder do nacionalismo revolucionário latino-americano.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-010",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Giuseppe Mazzini: principal líder do nacionalismo revolucionário europeu.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-011",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Stalin: apoiou a ideia de nações revolucionárias e reacionárias.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-011"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-012",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Carlton Hayes: comparou o nacionalismo a uma religião.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-012"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-013",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Ernest Renan: exemplo de nacionalismo cívico; definiu a nação como referendo diário.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-013"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-014",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Benedict Anderson: atribui ao nacionalismo anticolonial raízes em intelectuais indígenas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-014"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-015",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Relação com Mahatma Gandhi: liderou movimento de resistência pacífica no nacionalismo anticolonial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-015"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-016",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "O artigo define o nacionalismo como ideia e movimento que busca promover os interesses de uma nação, especialmente a autogovernação e a autodeterminação.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-016"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-017",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "O nacionalismo não tem orientação ideológica fixa e pode vir tanto da esquerda quanto da direita.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-017"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-018",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Segundo o artigo, há consenso acadêmico de que as nações são socialmente construídas e historicamente contingentes.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-018"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-019",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "A teoria da modernização explica o nacionalismo como produto da industrialização, da urbanização e da educação de massas.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-019"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-020",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "O valor moral do nacionalismo e sua compatibilidade com o cosmopolitismo são temas de debate filosófico.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-020"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-021",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "O nacionalismo pode ser combinado com conservadorismo ou socialismo, e seus resultados dependem da ideologia e do contexto.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-021"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-022",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "As duas principais formas de nacionalismo são o étnico e o cívico, que diferem na definição de nação.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-022"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-023",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Algumas correntes nacionalistas defendem o protecionismo étnico ou a supremacia étnica.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-023"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-024",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "O nacionalismo já foi usado para legitimar divisões raciais e suprimir ou atacar minorias.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-024"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-025",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "O ultranacionalismo costuma combinar autoritarismo, restrição à imigração e demagogia, segundo o artigo.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-025"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-026",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "O nacionalismo anticolonial surgiu após a descolonização do pós-guerra, principalmente na África e na Ásia.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-026"]
+    },
+    {
+      "id": "claim-wiki-topic-nacionalismo-027",
+      "entityId": "wiki-topic-nacionalismo",
+      "text": "Segundo o artigo, Karl Marx defendeu o nacionalismo irlandês ainda em vida.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-nacionalismo-027"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-001",
+      "entityId": "wiki-topic-populismo",
+      "text": "Dutra tenta, sem sucesso, um acordo com Milton Campos para enfrentar os chamados populistas (1949).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-002",
+      "entityId": "wiki-topic-populismo",
+      "text": "O termo é usado para deslegitimar a aliança eleitoral entre Adhemar de Barros e Getúlio Vargas (1950).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-003",
+      "entityId": "wiki-topic-populismo",
+      "text": "Entre 1950 e 1970, o populismo passa a ser visto com desconfiança, e o termo ganha sentido pejorativo (1950).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-004",
+      "entityId": "wiki-topic-populismo",
+      "text": "Após o golpe militar, intelectuais de esquerda atribuem às limitações do populismo as causas do fim da democracia (1964).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-005",
+      "entityId": "wiki-topic-populismo",
+      "text": "Conferência em Londres reúne os principais especialistas e não chega a consenso sobre o termo (1967).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-006",
+      "entityId": "wiki-topic-populismo",
+      "text": "Segundo Avritzer, a Constituição de 1988 inaugura um ciclo de expansão de direitos sociais (1988).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-007",
+      "entityId": "wiki-topic-populismo",
+      "text": "Após a eleição de Donald Trump, pesquisadores apontam aumento de publicações sobre populismo (2016).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-008",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Cas Mudde e Cristóbal Rovira Kaltwasser: desenvolveram a abordagem ideacional, que trata o populismo como ideologia de centro fino.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-009",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Ernesto Laclau: principal expoente da abordagem discursiva.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-010",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Chantal Mouffe: buscou, com Laclau, desconstruir as interpretações negativas do populismo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-011",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Seymour Martin Lipset: analisou o populismo como movimento que reúne diversas classes sociais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-011"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-012",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Francisco Weffort e Fernando Henrique Cardoso: figuras da abordagem marxista de classe na América Latina.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-012"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-013",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Pierre Ostiguy, Benjamin Moffitt e María Esperanza Casullo: principais expoentes da abordagem performativa.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-013"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-014",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Marcelo Diamand: originou as críticas ao chamado populismo econômico.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-014"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-015",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Jeffrey Sachs, Rudiger Dornbusch e Sebastian Edwards: recuperaram as ideias de Diamand, mas abandonaram a sua crítica à austeridade.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-015"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-016",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Leonardo Avritzer: interpreta a instabilidade democrática brasileira como parte de um pêndulo democrático.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-016"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-017",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Frances McCall Rosenbluth e Ian Shapiro: associam a ascensão do populismo ao enfraquecimento dos partidos como instâncias de representação.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-017"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-018",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Getúlio Vargas e Adhemar de Barros: adotaram o termo populismo de maneira positiva em reação à alcunha.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-018"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-019",
+      "entityId": "wiki-topic-populismo",
+      "text": "Relação com Daniel Aarão Reis: problematizou as críticas marxistas ao período populista brasileiro.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-019"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-020",
+      "entityId": "wiki-topic-populismo",
+      "text": "Não há consenso acadêmico sobre uma definição de populismo, o que o torna um conceito contestado.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-020"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-021",
+      "entityId": "wiki-topic-populismo",
+      "text": "Para a abordagem ideacional, o populismo é uma ideologia de centro fino, sem corpo doutrinal próprio.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-021"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-022",
+      "entityId": "wiki-topic-populismo",
+      "text": "Segundo Mudde e Kaltwasser, líderes populistas podem revigorar a democracia liberal na oposição, mas tendem a colocá-la em perigo no poder.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-022"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-023",
+      "entityId": "wiki-topic-populismo",
+      "text": "Para a abordagem marxista, o populismo surge num momento de equilíbrio de forças entre burguesia e proletariado.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-023"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-024",
+      "entityId": "wiki-topic-populismo",
+      "text": "Lipset associa o fascismo sobretudo às classes médias e o populismo sobretudo aos pobres.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-024"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-025",
+      "entityId": "wiki-topic-populismo",
+      "text": "Para a abordagem discursiva, algumas experiências populistas no poder são autenticamente democratizantes.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-025"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-026",
+      "entityId": "wiki-topic-populismo",
+      "text": "Parte dos intelectuais acusa o populismo de manter vínculo emocional e, portanto, não racional, com o povo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-026"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-027",
+      "entityId": "wiki-topic-populismo",
+      "text": "Autores críticos afirmam que a distinção entre razão e emoção que sustenta essa acusação não se sustenta.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-027"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-028",
+      "entityId": "wiki-topic-populismo",
+      "text": "Marxistas brasileiros consideram que a integração das massas pelo populismo foi apenas proto-democratizante.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-028"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-029",
+      "entityId": "wiki-topic-populismo",
+      "text": "Pesquisadores afirmam que o uso do termo na imprensa contribuiria para normalizar ideias de extrema-direita.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-029"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-030",
+      "entityId": "wiki-topic-populismo",
+      "text": "A crítica ao populismo econômico é criticada por interditar o debate econômico e por ignorar a origem política do termo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-030"]
+    },
+    {
+      "id": "claim-wiki-topic-populismo-031",
+      "entityId": "wiki-topic-populismo",
+      "text": "Autores como Biglieri, Cadahia, Vergara e Tarragoni defendem que o populismo é emancipatório por definição.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-populismo-031"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-conservadorismo-001",
+      "claimId": "claim-wiki-topic-conservadorismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-002",
+      "claimId": "claim-wiki-topic-conservadorismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-003",
+      "claimId": "claim-wiki-topic-conservadorismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-004",
+      "claimId": "claim-wiki-topic-conservadorismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-005",
+      "claimId": "claim-wiki-topic-conservadorismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-006",
+      "claimId": "claim-wiki-topic-conservadorismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-007",
+      "claimId": "claim-wiki-topic-conservadorismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-008",
+      "claimId": "claim-wiki-topic-conservadorismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-009",
+      "claimId": "claim-wiki-topic-conservadorismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-010",
+      "claimId": "claim-wiki-topic-conservadorismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-011",
+      "claimId": "claim-wiki-topic-conservadorismo-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-012",
+      "claimId": "claim-wiki-topic-conservadorismo-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-013",
+      "claimId": "claim-wiki-topic-conservadorismo-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-014",
+      "claimId": "claim-wiki-topic-conservadorismo-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-015",
+      "claimId": "claim-wiki-topic-conservadorismo-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-016",
+      "claimId": "claim-wiki-topic-conservadorismo-016",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-017",
+      "claimId": "claim-wiki-topic-conservadorismo-017",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-018",
+      "claimId": "claim-wiki-topic-conservadorismo-018",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-019",
+      "claimId": "claim-wiki-topic-conservadorismo-019",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-020",
+      "claimId": "claim-wiki-topic-conservadorismo-020",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-021",
+      "claimId": "claim-wiki-topic-conservadorismo-021",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-022",
+      "claimId": "claim-wiki-topic-conservadorismo-022",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-023",
+      "claimId": "claim-wiki-topic-conservadorismo-023",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-024",
+      "claimId": "claim-wiki-topic-conservadorismo-024",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-025",
+      "claimId": "claim-wiki-topic-conservadorismo-025",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-026",
+      "claimId": "claim-wiki-topic-conservadorismo-026",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-027",
+      "claimId": "claim-wiki-topic-conservadorismo-027",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-028",
+      "claimId": "claim-wiki-topic-conservadorismo-028",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-029",
+      "claimId": "claim-wiki-topic-conservadorismo-029",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-030",
+      "claimId": "claim-wiki-topic-conservadorismo-030",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-031",
+      "claimId": "claim-wiki-topic-conservadorismo-031",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-032",
+      "claimId": "claim-wiki-topic-conservadorismo-032",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-033",
+      "claimId": "claim-wiki-topic-conservadorismo-033",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-034",
+      "claimId": "claim-wiki-topic-conservadorismo-034",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-035",
+      "claimId": "claim-wiki-topic-conservadorismo-035",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-conservadorismo-036",
+      "claimId": "claim-wiki-topic-conservadorismo-036",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-001",
+      "claimId": "claim-wiki-topic-ecologismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-002",
+      "claimId": "claim-wiki-topic-ecologismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-003",
+      "claimId": "claim-wiki-topic-ecologismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-004",
+      "claimId": "claim-wiki-topic-ecologismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-005",
+      "claimId": "claim-wiki-topic-ecologismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-006",
+      "claimId": "claim-wiki-topic-ecologismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-007",
+      "claimId": "claim-wiki-topic-ecologismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-008",
+      "claimId": "claim-wiki-topic-ecologismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-009",
+      "claimId": "claim-wiki-topic-ecologismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ecologismo-010",
+      "claimId": "claim-wiki-topic-ecologismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-001",
+      "claimId": "claim-wiki-topic-fascismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-002",
+      "claimId": "claim-wiki-topic-fascismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-003",
+      "claimId": "claim-wiki-topic-fascismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-004",
+      "claimId": "claim-wiki-topic-fascismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-005",
+      "claimId": "claim-wiki-topic-fascismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-006",
+      "claimId": "claim-wiki-topic-fascismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-007",
+      "claimId": "claim-wiki-topic-fascismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-008",
+      "claimId": "claim-wiki-topic-fascismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-009",
+      "claimId": "claim-wiki-topic-fascismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-010",
+      "claimId": "claim-wiki-topic-fascismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-011",
+      "claimId": "claim-wiki-topic-fascismo-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-012",
+      "claimId": "claim-wiki-topic-fascismo-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-013",
+      "claimId": "claim-wiki-topic-fascismo-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-014",
+      "claimId": "claim-wiki-topic-fascismo-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-015",
+      "claimId": "claim-wiki-topic-fascismo-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-016",
+      "claimId": "claim-wiki-topic-fascismo-016",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-017",
+      "claimId": "claim-wiki-topic-fascismo-017",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-018",
+      "claimId": "claim-wiki-topic-fascismo-018",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-019",
+      "claimId": "claim-wiki-topic-fascismo-019",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-020",
+      "claimId": "claim-wiki-topic-fascismo-020",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-021",
+      "claimId": "claim-wiki-topic-fascismo-021",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-022",
+      "claimId": "claim-wiki-topic-fascismo-022",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-023",
+      "claimId": "claim-wiki-topic-fascismo-023",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-024",
+      "claimId": "claim-wiki-topic-fascismo-024",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-025",
+      "claimId": "claim-wiki-topic-fascismo-025",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-026",
+      "claimId": "claim-wiki-topic-fascismo-026",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-027",
+      "claimId": "claim-wiki-topic-fascismo-027",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-028",
+      "claimId": "claim-wiki-topic-fascismo-028",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-029",
+      "claimId": "claim-wiki-topic-fascismo-029",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-030",
+      "claimId": "claim-wiki-topic-fascismo-030",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-031",
+      "claimId": "claim-wiki-topic-fascismo-031",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-032",
+      "claimId": "claim-wiki-topic-fascismo-032",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-033",
+      "claimId": "claim-wiki-topic-fascismo-033",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fascismo-034",
+      "claimId": "claim-wiki-topic-fascismo-034",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-001",
+      "claimId": "claim-wiki-topic-nacionalismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-002",
+      "claimId": "claim-wiki-topic-nacionalismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-003",
+      "claimId": "claim-wiki-topic-nacionalismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-004",
+      "claimId": "claim-wiki-topic-nacionalismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-005",
+      "claimId": "claim-wiki-topic-nacionalismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-006",
+      "claimId": "claim-wiki-topic-nacionalismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-007",
+      "claimId": "claim-wiki-topic-nacionalismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-008",
+      "claimId": "claim-wiki-topic-nacionalismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-009",
+      "claimId": "claim-wiki-topic-nacionalismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-010",
+      "claimId": "claim-wiki-topic-nacionalismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-011",
+      "claimId": "claim-wiki-topic-nacionalismo-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-012",
+      "claimId": "claim-wiki-topic-nacionalismo-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-013",
+      "claimId": "claim-wiki-topic-nacionalismo-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-014",
+      "claimId": "claim-wiki-topic-nacionalismo-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-015",
+      "claimId": "claim-wiki-topic-nacionalismo-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-016",
+      "claimId": "claim-wiki-topic-nacionalismo-016",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-017",
+      "claimId": "claim-wiki-topic-nacionalismo-017",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-018",
+      "claimId": "claim-wiki-topic-nacionalismo-018",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-019",
+      "claimId": "claim-wiki-topic-nacionalismo-019",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-020",
+      "claimId": "claim-wiki-topic-nacionalismo-020",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-021",
+      "claimId": "claim-wiki-topic-nacionalismo-021",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-022",
+      "claimId": "claim-wiki-topic-nacionalismo-022",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-023",
+      "claimId": "claim-wiki-topic-nacionalismo-023",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-024",
+      "claimId": "claim-wiki-topic-nacionalismo-024",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-025",
+      "claimId": "claim-wiki-topic-nacionalismo-025",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-026",
+      "claimId": "claim-wiki-topic-nacionalismo-026",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-nacionalismo-027",
+      "claimId": "claim-wiki-topic-nacionalismo-027",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-001",
+      "claimId": "claim-wiki-topic-populismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-002",
+      "claimId": "claim-wiki-topic-populismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-003",
+      "claimId": "claim-wiki-topic-populismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-004",
+      "claimId": "claim-wiki-topic-populismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-005",
+      "claimId": "claim-wiki-topic-populismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-006",
+      "claimId": "claim-wiki-topic-populismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-007",
+      "claimId": "claim-wiki-topic-populismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-008",
+      "claimId": "claim-wiki-topic-populismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-009",
+      "claimId": "claim-wiki-topic-populismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-010",
+      "claimId": "claim-wiki-topic-populismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-011",
+      "claimId": "claim-wiki-topic-populismo-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-012",
+      "claimId": "claim-wiki-topic-populismo-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-013",
+      "claimId": "claim-wiki-topic-populismo-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-014",
+      "claimId": "claim-wiki-topic-populismo-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-015",
+      "claimId": "claim-wiki-topic-populismo-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-016",
+      "claimId": "claim-wiki-topic-populismo-016",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-017",
+      "claimId": "claim-wiki-topic-populismo-017",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-018",
+      "claimId": "claim-wiki-topic-populismo-018",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-019",
+      "claimId": "claim-wiki-topic-populismo-019",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-020",
+      "claimId": "claim-wiki-topic-populismo-020",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-021",
+      "claimId": "claim-wiki-topic-populismo-021",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-022",
+      "claimId": "claim-wiki-topic-populismo-022",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-023",
+      "claimId": "claim-wiki-topic-populismo-023",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-024",
+      "claimId": "claim-wiki-topic-populismo-024",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-025",
+      "claimId": "claim-wiki-topic-populismo-025",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-026",
+      "claimId": "claim-wiki-topic-populismo-026",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-027",
+      "claimId": "claim-wiki-topic-populismo-027",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-028",
+      "claimId": "claim-wiki-topic-populismo-028",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-029",
+      "claimId": "claim-wiki-topic-populismo-029",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-030",
+      "claimId": "claim-wiki-topic-populismo-030",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-populismo-031",
+      "claimId": "claim-wiki-topic-populismo-031",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [],
+  "learningPaths": []
+}

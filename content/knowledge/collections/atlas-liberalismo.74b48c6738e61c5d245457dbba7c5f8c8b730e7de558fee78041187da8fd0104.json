@@ -1,0 +1,4589 @@
+{
+  "id": "atlas-liberalismo",
+  "slug": "liberalismo-wikipedia",
+  "title": "Liberalismo (rascunhos da Wikipédia)",
+  "description": "Rascunhos assistidos por IA extraídos da Wikipédia, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-03",
+  "entityIds": [
+    "wiki-topic-adam-ferguson",
+    "wiki-topic-adamantios-korais",
+    "wiki-topic-ali-latifiyan",
+    "wiki-topic-david-hume",
+    "wiki-topic-frederic-bastiat",
+    "wiki-topic-igualitarismo",
+    "wiki-topic-jeremy-bentham",
+    "wiki-topic-jose-ortega-y-gasset",
+    "wiki-topic-libertarianismo",
+    "wiki-topic-mary-wollstonecraft",
+    "wiki-topic-mercado-livre",
+    "wiki-topic-robert-nozick"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-adam-ferguson",
+      "slug": "adam-ferguson",
+      "title": "Adam Ferguson",
+      "summary": "Adam Ferguson (1723–1816), filósofo e historiador escocês do Iluminismo escocês, criticou a sociedade comercial por enfraquecer a virtude cívica e defendeu a liberdade civil com representação política. Seu Ensaio sobre a História da Sociedade Civil (1767) é uma das bases da sociologia moderna.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72475020. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Adam Ferguson (1723–1816), filósofo e historiador escocês do Iluminismo escocês, criticou a sociedade comercial por enfraquecer a virtude cívica e defendeu a liberdade civil com representação política. Seu Ensaio sobre a História da Sociedade Civil (1767) é uma das bases da sociologia moderna."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q183094", "wikipedia": "Adam Ferguson" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Adam Ferguson",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Adam_Ferguson",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72475020, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-adamantios-korais",
+      "slug": "adamantios-korais",
+      "title": "Adamántios Koraís",
+      "summary": "Adamantios Korais (1748–1833), estudioso e escritor grego, é considerado um reformador da língua e da literatura gregas. Viveu sobretudo em Paris, criou a katharevousa e teve influência indireta sobre as constituições da Grécia independente, por meio do jurista N. I. Saripolos.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72180345. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Adamantios Korais (1748–1833), estudioso e escritor grego, é considerado um reformador da língua e da literatura gregas. Viveu sobretudo em Paris, criou a katharevousa e teve influência indireta sobre as constituições da Grécia independente, por meio do jurista N. I. Saripolos."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q319635", "wikipedia": "Adamántios Koraís" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Adamántios Koraís",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Adam%C3%A1ntios_Kora%C3%ADs",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72180345, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-ali-latifiyan",
+      "slug": "ali-latifiyan",
+      "title": "Ali Latifiyan",
+      "summary": "Ali Latifiyan (nascido em 1968, em Teerã) é um escritor, pesquisador e historiador iraniano. Sua obra trata de iluminismo, intelectualismo, liberalismo e cultura iraniana, com foco nos intelectuais do Irã entre 1941 e 1979.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72941721. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Ali Latifiyan (nascido em 1968, em Teerã) é um escritor, pesquisador e historiador iraniano. Sua obra trata de iluminismo, intelectualismo, liberalismo e cultura iraniana, com foco nos intelectuais do Irã entre 1941 e 1979."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q111370029", "wikipedia": "Ali Latifiyan" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Ali Latifiyan",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Ali_Latifiyan",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72941721, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-david-hume",
+      "slug": "david-hume",
+      "title": "David Hume",
+      "summary": "David Hume (1711–1776), filósofo, historiador e ensaísta escocês, integra com Locke e Berkeley a tríade do empirismo britânico. Ligado ao ceticismo e ao método experimental, influenciou Kant, a filosofia analítica e a fenomenologia. Seu Tratado da Natureza Humana passou quase despercebido na publicação.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 70961682. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "David Hume (1711–1776), filósofo, historiador e ensaísta escocês, integra com Locke e Berkeley a tríade do empirismo britânico. Ligado ao ceticismo e ao método experimental, influenciou Kant, a filosofia analítica e a fenomenologia. Seu Tratado da Natureza Humana passou quase despercebido na publicação."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q37160", "wikipedia": "David Hume" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "David Hume",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/David_Hume",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 70961682, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-frederic-bastiat",
+      "slug": "frederic-bastiat",
+      "title": "Frédéric Bastiat",
+      "summary": "Frédéric Bastiat (1801–1850), economista e escritor francês da escola liberal, defendeu o livre comércio contra o protecionismo e o socialismo. É conhecido por A Lei (1850), em que afirma que a lei deve proteger a vida, a liberdade e a propriedade, e pela parábola da janela quebrada.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73087918. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Frédéric Bastiat (1801–1850), economista e escritor francês da escola liberal, defendeu o livre comércio contra o protecionismo e o socialismo. É conhecido por A Lei (1850), em que afirma que a lei deve proteger a vida, a liberdade e a propriedade, e pela parábola da janela quebrada."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q13515", "wikipedia": "Frédéric Bastiat" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Frédéric Bastiat",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Bastiat",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73087918, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-igualitarismo",
+      "slug": "igualitarismo",
+      "title": "Igualitarismo",
+      "summary": "Igualitarismo é, na filosofia política, a doutrina que defende igualdade de direitos e oportunidades para todos, nos planos político, econômico e social. Para Karl Popper, na perspectiva liberal, significa tratamento imparcial perante a lei; na esquerda, inclui a luta contra a desigualdade social e econômica.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69072880. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Igualitarismo é, na filosofia política, a doutrina que defende igualdade de direitos e oportunidades para todos, nos planos político, econômico e social. Para Karl Popper, na perspectiva liberal, significa tratamento imparcial perante a lei; na esquerda, inclui a luta contra a desigualdade social e econômica."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q188958", "wikipedia": "Igualitarismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Igualitarismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Igualitarismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69072880, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-jeremy-bentham",
+      "slug": "jeremy-bentham",
+      "title": "Jeremy Bentham",
+      "summary": "Jeremy Bentham (1748–1832), filósofo, jurista e reformador inglês, é considerado o fundador do utilitarismo moderno, com o princípio da maior felicidade do maior número. Defendeu liberdades individuais, a separação entre Igreja e Estado e o fim da pena de morte; propôs o Panóptico, prisão que nunca foi construída.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73087912. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Jeremy Bentham (1748–1832), filósofo, jurista e reformador inglês, é considerado o fundador do utilitarismo moderno, com o princípio da maior felicidade do maior número. Defendeu liberdades individuais, a separação entre Igreja e Estado e o fim da pena de morte; propôs o Panóptico, prisão que nunca foi construída."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q60887", "wikipedia": "Jeremy Bentham" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Jeremy Bentham",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Jeremy_Bentham",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73087912, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-jose-ortega-y-gasset",
+      "slug": "jose-ortega-y-gasset",
+      "title": "José Ortega y Gasset",
+      "summary": "José Ortega y Gasset (1883–1955), filósofo, ensaísta e jornalista espanhol, fundador da Escola de Madrid, é considerado o maior filósofo espanhol do século XX. Para ele, a realidade está na vivência histórica, expressa em 'eu sou eu e a minha circunstância'; atuou também na política da Segunda República.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 70889178. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "José Ortega y Gasset (1883–1955), filósofo, ensaísta e jornalista espanhol, fundador da Escola de Madrid, é considerado o maior filósofo espanhol do século XX. Para ele, a realidade está na vivência histórica, expressa em 'eu sou eu e a minha circunstância'; atuou também na política da Segunda República."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q153020", "wikipedia": "José Ortega y Gasset" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "José Ortega y Gasset",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Jos%C3%A9_Ortega_y_Gasset",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 70889178, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-libertarianismo",
+      "slug": "libertarianismo",
+      "title": "Libertarianismo",
+      "summary": "Libertarianismo é uma filosofia política e movimento que defende a liberdade como princípio central e desconfia da autoridade do Estado. Tem uma vertente de esquerda, ligada ao anarquismo e ao socialismo libertário, e uma de direita, ligada ao capitalismo de livre mercado e ao anarcocapitalismo, dominante nos Estados Unidos.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69073357. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Libertarianismo é uma filosofia política e movimento que defende a liberdade como princípio central e desconfia da autoridade do Estado. Tem uma vertente de esquerda, ligada ao anarquismo e ao socialismo libertário, e uma de direita, ligada ao capitalismo de livre mercado e ao anarcocapitalismo, dominante nos Estados Unidos."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q178598", "wikipedia": "Libertarianismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Libertarianismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Libertarianismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69073357, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-mary-wollstonecraft",
+      "slug": "mary-wollstonecraft",
+      "title": "Mary Wollstonecraft",
+      "summary": "Mary Wollstonecraft (1759–1797), escritora e filósofa inglesa, é considerada uma das fundadoras da filosofia feminista. Em Reivindicação dos Direitos da Mulher (1792) argumentou que as mulheres não são naturalmente inferiores aos homens, mas parecem sê-lo por falta de educação.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72817868. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Mary Wollstonecraft (1759–1797), escritora e filósofa inglesa, é considerada uma das fundadoras da filosofia feminista. Em Reivindicação dos Direitos da Mulher (1792) argumentou que as mulheres não são naturalmente inferiores aos homens, mas parecem sê-lo por falta de educação."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q101638", "wikipedia": "Mary Wollstonecraft" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Mary Wollstonecraft",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mary_Wollstonecraft",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72817868, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-mercado-livre",
+      "slug": "mercado-livre",
+      "title": "Mercado livre",
+      "summary": "Livre mercado é o princípio pelo qual preços e trocas são determinados pela oferta e pela demanda, sem intervenção governamental nem privilégios ou monopólios. Associado ao capitalismo, também apareceu em formas de socialismo; a crítica sustenta que mercados com poder desigual exigem regulação.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 71927692. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Livre mercado é o princípio pelo qual preços e trocas são determinados pela oferta e pela demanda, sem intervenção governamental nem privilégios ou monopólios. Associado ao capitalismo, também apareceu em formas de socialismo; a crítica sustenta que mercados com poder desigual exigem regulação."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q46607", "wikipedia": "Mercado livre" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Mercado livre",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mercado_livre",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71927692, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-robert-nozick",
+      "slug": "robert-nozick",
+      "title": "Robert Nozick",
+      "summary": "Robert Nozick (1938–2002), filósofo norte-americano de Harvard, defendeu em Anarquia, Estado e Utopia (1974) um Estado mínimo, limitado à proteção contra a força, o roubo e o cumprimento de contratos. Sua obra respondeu a Uma Teoria da Justiça, de John Rawls, e é uma referência do libertarianismo.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69001579. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Robert Nozick (1938–2002), filósofo norte-americano de Harvard, defendeu em Anarquia, Estado e Utopia (1974) um Estado mínimo, limitado à proteção contra a força, o roubo e o cumprimento de contratos. Sua obra respondeu a Uma Teoria da Justiça, de John Rawls, e é uma referência do libertarianismo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q205927", "wikipedia": "Robert Nozick" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Robert Nozick",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Robert_Nozick",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69001579, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-adam-ferguson",
+      "title": "Adam Ferguson (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Adam_Ferguson",
+      "edition": "revisão 72475020; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-adamantios-korais",
+      "title": "Adamántios Koraís (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Adam%C3%A1ntios_Kora%C3%ADs",
+      "edition": "revisão 72180345; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-ali-latifiyan",
+      "title": "Ali Latifiyan (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Ali_Latifiyan",
+      "edition": "revisão 72941721; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-david-hume",
+      "title": "David Hume (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/David_Hume",
+      "edition": "revisão 70961682; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-frederic-bastiat",
+      "title": "Frédéric Bastiat (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Bastiat",
+      "edition": "revisão 73087918; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-igualitarismo",
+      "title": "Igualitarismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Igualitarismo",
+      "edition": "revisão 69072880; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-jeremy-bentham",
+      "title": "Jeremy Bentham (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Jeremy_Bentham",
+      "edition": "revisão 73087912; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-jose-ortega-y-gasset",
+      "title": "José Ortega y Gasset (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Jos%C3%A9_Ortega_y_Gasset",
+      "edition": "revisão 70889178; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-libertarianismo",
+      "title": "Libertarianismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Libertarianismo",
+      "edition": "revisão 69073357; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-mary-wollstonecraft",
+      "title": "Mary Wollstonecraft (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Mary_Wollstonecraft",
+      "edition": "revisão 72817868; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-mercado-livre",
+      "title": "Mercado livre (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Mercado_livre",
+      "edition": "revisão 71927692; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-robert-nozick",
+      "title": "Robert Nozick (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Robert_Nozick",
+      "edition": "revisão 69001579; licença CC BY-SA 4.0; extração assistida por IA (assistente-chat)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-adam-ferguson-001",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "1 de julho N.S. / 20 de junho O.S. 1723",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-002",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Em 1767, publicou seu Ensaio sobre a História da Sociedade Civil",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-003",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Em 1783, apareceu sua História do Progresso e Terminação da República Romana",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-004",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "22 de fevereiro de 1816",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-005",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "sucedeu David Hume como bibliotecário da Faculdade de Advogados",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-006",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Como seus amigos Adam Smith e David Hume, bem como outros intelectuais escoceses, ele enfatizou a importância da ordem espontânea",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-007",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Na parte política de seu sistema, Ferguson segue Montesquieu",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-008",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "viajou novamente para o Continente e conheceu Voltaire",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-009",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "influenciou Hegel e Marx",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-010",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Ele criticava a sociedade comercial por tornar os homens fracos, desonrosos e despreocupados com sua comunidade",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-011",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "\"o pai da sociologia moderna\"",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-012",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "A história social é, de acordo com esse progresso natural, feita pelos humanos e, por causa desse fator, sofre reveses ocasionais",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-013",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "a civilização é em grande parte sobre leis que restringem nossa independência como indivíduos, mas fornecem liberdade no sentido de segurança e justiça",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-014",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Ele defendeu o Império Britânico, mas argumentou que a representação política era fundamental para impedir que ele se tornasse tirânico",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-001",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "27 de abril de 1748",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-002",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "Korais estabeleceu-se em Paris em 1788",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-003",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "Adamantios Korais morreu em Paris em 6 de abril de 1833",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-004",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "foram descobertas e levadas à luz acadêmica em 1996",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-005",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "outro intelectual grego, o jurista de renome internacional N. I. Saripolos",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-006",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "mais próximas de Montesquieu do que de Rousseau",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-007",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "Korais criticava a Igreja Ortodoxa Grega",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-008",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "para onde Korais legou sua valiosa biblioteca",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-009",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "Korais é considerado um reformador da literatura grega",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-010",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "entrou para a história da língua grega como o inventor do Katharevousa",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-011",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "conseguiram ter um grande, embora indireto, impacto nas Constituições da Revolução Grega",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-012",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "baseia-se na correspondência trocada entre os dois homens durante um longo período de tempo",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adamantios-korais-013",
+      "sourceId": "src-wiki-topic-adamantios-korais",
+      "locator": "A igreja rejeitou estritamente uma Grécia independente",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ali-latifiyan-001",
+      "sourceId": "src-wiki-topic-ali-latifiyan",
+      "locator": "Ali Latifiyan nasceu em 15 de dezembro de 1968 em Teerã",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ali-latifiyan-002",
+      "sourceId": "src-wiki-topic-ali-latifiyan",
+      "locator": "investiga intelectuais como Jalal Al-Ahmad, AbdolKarim Soroush, Ali Shariati",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ali-latifiyan-003",
+      "sourceId": "src-wiki-topic-ali-latifiyan",
+      "locator": "especialmente durante os eventos do Primeiro Ministro Dr. Mohammad Mosaddegh",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ali-latifiyan-004",
+      "sourceId": "src-wiki-topic-ali-latifiyan",
+      "locator": "é um escritor iraniano, pesquisador, teórico político-social e historiador",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ali-latifiyan-005",
+      "sourceId": "src-wiki-topic-ali-latifiyan",
+      "locator": "A maioria de suas teorias e pesquisas estão no campo do iluminismo, intelectualismo, liberalismo e cultura iraniana",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ali-latifiyan-006",
+      "sourceId": "src-wiki-topic-ali-latifiyan",
+      "locator": "Reviewing the Performance of Intellectuals from 1941 to 1979",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-001",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Edimburgo, 7 de maio (ou 26 de abril-Antigo) de 1711",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-002",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Em 1739, consegue publicar os dois primeiros volumes de seu Tratado, e em 1740 é publicado o terceiro e último volume",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-003",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "sua candidatura enfrenta forte oposição devido à sua fama de ateísta e acaba por ser rejeitada",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-004",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Essa obra historiográfica monumental foi publicada em seis volumes, nos anos de 1754, 1756, 1759 e 1762",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-005",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Edimburgo, 25 de Agosto de 1776",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-006",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Ao lado de John Locke e George Berkeley, David Hume compõe a famosa tríade do empirismo britânico",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-007",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Teve profunda influência sobre Kant",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-008",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "é entretanto a Newton que Hume deve o seu método de análise",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-009",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Em 1775, disse a Benjamin Franklin: \"sou americano nos meus princípios\"",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-010",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Francis Hutcheson (seu professor)",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-011",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "se tornou célebre pelo seu empirismo radical e ceticismo filosófico",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-012",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "a publicação do livro passou quase despercebida",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-013",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "devido à sua fama de ateísta",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-014",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Convencido de que o problema do Tratado era mais uma questão de forma que de conteúdo",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-015",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "tomou partido da independência americana",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-001",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Bastiat nasceu em 29 de junho de 1801 em Bayonne",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-002",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "em 1846 mudou-se para Paris",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-003",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "publicado originalmente como panfleto em 1850",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-004",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "\"o mais brilhante jornalista econômico que já existiu\" pelo teórico econômico Joseph Schumpeter",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-005",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "a Liga Anti-Corn Law antiprotecionista de Richard Cobden",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-006",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "O economista Murray Rothbard escreveu",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-007",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Como defensor da economia clássica e da economia de Adam Smith",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-008",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Sofismas Econômicos foi traduzido e adaptado para um público americano em 1867 pelo economista e historiador do dinheiro Alexander del Mar",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-009",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "argumentou que a lei deve proteger direitos como a propriedade privada, e não \"saquear\" a propriedade de outros",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-010",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "substituição de uma força comum pelas forças individuais",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-011",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Sob circunstâncias extraordinárias, para casos urgentes, o Estado deve reservar alguns recursos para auxiliar certas pessoas infelizes",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-012",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "a satírica parábola conhecida como a petição dos fabricantes de velas",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-013",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "nos quais culpava a tributação excessiva pela crise da indústria regional",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-igualitarismo-001",
+      "sourceId": "src-wiki-topic-igualitarismo",
+      "locator": "tal como definido por Karl Popper em A sociedade aberta e seus inimigos",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-igualitarismo-002",
+      "sourceId": "src-wiki-topic-igualitarismo",
+      "locator": "defende a igualdade de direitos e oportunidades, para todos os seres humanos",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-igualitarismo-003",
+      "sourceId": "src-wiki-topic-igualitarismo",
+      "locator": "a exigência de que todos os cidadãos do Estado sejam tratados imparcialmente",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-igualitarismo-004",
+      "sourceId": "src-wiki-topic-igualitarismo",
+      "locator": "o igualitarismo não reconhece privilégios 'naturais'",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-igualitarismo-005",
+      "sourceId": "src-wiki-topic-igualitarismo",
+      "locator": "envolvendo também a luta de classes contra a desigualdade social e econômica",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-001",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "4 de fevereiro de 1747/8 O.S.",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-002",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "Uma Introdução aos Princípios da Moral e da Legislação (1789)",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-003",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "Em 1791, publicou o material que havia escrito como um livro",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-004",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "Bentham comprou o terreno em nome da Coroa por £12 000 em novembro de 1799",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-005",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "Bentham morreu em 6 de junho de 1832",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-006",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "seu secretário e colaborador James Mill",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-007",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "o filho deste, John Stuart Mill",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-008",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "Mais bem-sucedida foi sua cooperação com Patrick Colquhoun no combate à corrupção no Pool of London",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-009",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "o panóptico era paradigmático de várias instituições \"disciplinares\" do século XIX",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-010",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "Outro foi Edwin Chadwick",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-011",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "é a maior felicidade do maior número que é a medida do certo e do errado",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-012",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "absurdo sobre palafitas",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-013",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "Defendeu o fim da escravidão, da pena de morte e da punição física",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-014",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "A proposta, que acabou fracassando, de construir uma prisão panóptica na Inglaterra",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jeremy-bentham-015",
+      "sourceId": "src-wiki-topic-jeremy-bentham",
+      "locator": "foi a primeira força policial preventiva do país",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-001",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "José Ortega y Gasset (Madrid, 9 de maio de 1883",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-002",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "Em 1898, pela Paz de Paris, que pôs fim à guerra hispano-americana",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-003",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "Nesse mesmo ano publicou Meditaciones del Quijote, seu primeiro livro",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-004",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "em 1931, quando a República chegou, fundou, juntamente com Gregorio Marañón e Pérez de Ayala, o Agrupamento ao Serviço da República",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-005",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "Madrid, 18 de outubro de 1955",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-006",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "Ortega atribui à história uma nova categoria do conhecimento, aos moldes de Martin Heidegger, seu contemporâneo",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-007",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "Miguel de Unamuno, Pío Baroja, Antonio Machado e o próprio Ortega",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-008",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "os neokantianos H. Cohen e P. Natorp, a quem ele sempre considerará seus professores",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-009",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "Durante dez anos vivi no mundo do pensamento kantiano",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-010",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "apenas no ano do início da ditadura do general Primo de Rivera",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-011",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "a realidade está na nossa vivência histórica",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-012",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "tal problema residia no individualismo dos homens e regiões da Espanha",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-013",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "promover a organização de uma minoria",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-014",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "Seu confronto doutrinário com a política da ditadura leva Ortega, em 1929, a renunciar ao seu cargo de professor universitário",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jose-ortega-y-gasset-015",
+      "sourceId": "src-wiki-topic-jose-ortega-y-gasset",
+      "locator": "A desilusão que a vida do deputado lhe causa logo o leva a retirar-se da política ativa",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-001",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "O primeiro uso registrado do termo libertário foi em 1789, quando William Belsham escreveu sobre libertarianismo",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-002",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "cunhado em uma carta que o comunista libertário francês Joseph Déjacque escreveu ao mutualista Pierre-Joseph Proudhon em 1857",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-003",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "O libertarianismo como sinônimo de liberalismo foi popularizado em maio de 1955 pelo escritor Dean Russell",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-004",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "é creditado como o primeiro a caracterizar suas posições políticas como \"libertárias\"",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-005",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "principalmente com o economista Murray Rothbard, que começou a publicar trabalhos libertários na década de 1960",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-006",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "Nos Estados Unidos, o termo foi popularizado pelo anarquista individualista Benjamin Tucker",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-007",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "Os proponentes históricos dessa visão incluem Thomas Paine, Herbert Spencer e Henry George",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-008",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "a partir de obras de escritores europeus como John Locke, Friedrich Hayek e Ludwig Von Mises",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-009",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "defender o capitalismo do laissez-faire e fortes direitos de propriedade privada",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-010",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "os recursos naturais da Terra pertencem a todos de forma igualitária, quer sejam ou não possuídos",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-011",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "os minarquistas defendem o Estado mínimo, com apenas as funções de governo necessário para salvaguardar os direitos naturais",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-012",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "acreditam que o capitalismo implica escravidão salarial",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-013",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "Esta é a forma dominante de libertarianismo nos Estados Unidos",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-001",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "Wollstonecraft nasceu em 27 de abril de 1759 em Spitalfields, Londres",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-002",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "Reivindicação dos Direitos da Mulher (1792)",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-003",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "no dia 14 de Maio de 1794, Mary deu à luz sua primeira filha, Fanny",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-004",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "Londres, 10 de setembro de 1797",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-005",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "Wollstonecraft casou-se em 1797 com o filósofo William Godwin",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-006",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "conhecia personagens como o radical Thomas Paine",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-007",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "resposta à crítica conservadora de Edmund Burke da Revolução Francesa",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-008",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "apoiada pelo editor liberal Joseph Johnson",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-009",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "Mary conheceu, e apaixonou-se, por Gilbert Imlay, um aventureiro norte-americano",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-010",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "argumentou que as mulheres não são naturalmente inferiores aos homens, mas apenas pareciam ser porque lhes faltava educação",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-011",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "Wollstonecraft é considerada uma das fundadoras da filosofia feminista",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-012",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "a vida de Wollstonecraft e suas várias relações pessoais não convencionais àquela altura, receberam mais atenção do que a sua escrita",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-013",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "revelando seu estilo de vida pouco ortodoxo, que inadvertidamente afetou sua reputação pública na sociedade inglesa do século XIX",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mary-wollstonecraft-014",
+      "sourceId": "src-wiki-topic-mary-wollstonecraft",
+      "locator": "imaginava uma ordem social fundada na razão",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-001",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "Para economistas clássicos como Adam Smith, o termo mercado livre refere-se a um mercado livre de todas as formas de privilégio econômico, monopólios e escassez artificial",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-002",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "o mais famoso proponente desta tese",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-003",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "Ele argumentou que a livre concorrência só poderia ser realizada sob condições de propriedade estatal dos recursos naturais e da terra",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-004",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "incluem Pierre-Joseph Proudhon, Benjamin Tucker e os socialistas ricardianos",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-005",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "Segundo Karl Popper, a ideia de mercado livre é paradoxal, pois requer intervenções com o objetivo de prevenir intervenções",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-006",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "os preços dos bens e serviços são fixados livremente pelas forças da oferta e da demanda",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-007",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "com a regulamentação sendo necessária para controlar esses desequilíbrios",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-008",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "Na prática, os governos costumam intervir para reduzir externalidades como as emissões de gases de efeito estufa",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mercado-livre-009",
+      "sourceId": "src-wiki-topic-mercado-livre",
+      "locator": "A terra é a mãe de todos os monopólios",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-001",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "Robert Nozick (Nova Iorque, 16 de novembro de 1938",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-002",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "Uma Teoria da Justiça de John Rawls, publicada em 1971",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-003",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "A sua obra Anarquia, Estado e Utopia, de 1974",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-004",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "Nozick morreu em 2002",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-005",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "foi uma resposta libertarista à Uma Teoria da Justiça de John Rawls",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-006",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "Esta foi cunhada por John Locke",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-007",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "de acordo com Kant, os imperativos categóricos são incondicionais",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-008",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "professor da Universidade Harvard",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-009",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "um Estado mínimo, limitado às funções de proteção contra a força, o roubo e de cumprimento de contratos",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-010",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "o Estado não pode usar sua máquina de coerção para obrigar cidadãos a ajudarem a outros",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-011",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "direitos individuais, tais como a propriedade, não podem ser atropelados para edificar a felicidade",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-012",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "a aquisição de coisas não possuídas; (ii) a transferência voluntária",
+      "accessedAt": "2026-11-03",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-robert-nozick-013",
+      "sourceId": "src-wiki-topic-robert-nozick",
+      "locator": "ele defende o liberalismo radical, no qual é imprescindível uma posição neutra do Estado",
+      "accessedAt": "2026-11-03",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-adam-ferguson-001",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-002",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-003",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-004",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-005",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-006",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-007",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-008",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-009",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-010",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-011",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-012",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-013",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-014",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-001",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-002",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-003",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-004",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-005",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-006",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-007",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-008",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-009",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-010",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-011",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-012",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adamantios-korais-013",
+      "evidenceId": "ev-wiki-topic-adamantios-korais-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ali-latifiyan-001",
+      "evidenceId": "ev-wiki-topic-ali-latifiyan-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ali-latifiyan-002",
+      "evidenceId": "ev-wiki-topic-ali-latifiyan-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ali-latifiyan-003",
+      "evidenceId": "ev-wiki-topic-ali-latifiyan-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ali-latifiyan-004",
+      "evidenceId": "ev-wiki-topic-ali-latifiyan-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ali-latifiyan-005",
+      "evidenceId": "ev-wiki-topic-ali-latifiyan-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ali-latifiyan-006",
+      "evidenceId": "ev-wiki-topic-ali-latifiyan-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-001",
+      "evidenceId": "ev-wiki-topic-david-hume-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-002",
+      "evidenceId": "ev-wiki-topic-david-hume-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-003",
+      "evidenceId": "ev-wiki-topic-david-hume-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-004",
+      "evidenceId": "ev-wiki-topic-david-hume-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-005",
+      "evidenceId": "ev-wiki-topic-david-hume-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-006",
+      "evidenceId": "ev-wiki-topic-david-hume-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-007",
+      "evidenceId": "ev-wiki-topic-david-hume-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-008",
+      "evidenceId": "ev-wiki-topic-david-hume-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-009",
+      "evidenceId": "ev-wiki-topic-david-hume-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-010",
+      "evidenceId": "ev-wiki-topic-david-hume-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-011",
+      "evidenceId": "ev-wiki-topic-david-hume-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-012",
+      "evidenceId": "ev-wiki-topic-david-hume-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-013",
+      "evidenceId": "ev-wiki-topic-david-hume-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-014",
+      "evidenceId": "ev-wiki-topic-david-hume-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-015",
+      "evidenceId": "ev-wiki-topic-david-hume-015",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-001",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-002",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-003",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-004",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-005",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-006",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-007",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-008",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-009",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-010",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-011",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-012",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-013",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-igualitarismo-001",
+      "evidenceId": "ev-wiki-topic-igualitarismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-igualitarismo-002",
+      "evidenceId": "ev-wiki-topic-igualitarismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-igualitarismo-003",
+      "evidenceId": "ev-wiki-topic-igualitarismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-igualitarismo-004",
+      "evidenceId": "ev-wiki-topic-igualitarismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-igualitarismo-005",
+      "evidenceId": "ev-wiki-topic-igualitarismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-001",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-002",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-003",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-004",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-005",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-006",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-007",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-008",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-009",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-010",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-011",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-012",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-013",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-014",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jeremy-bentham-015",
+      "evidenceId": "ev-wiki-topic-jeremy-bentham-015",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-001",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-002",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-003",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-004",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-005",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-006",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-007",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-008",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-009",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-010",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-011",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-012",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-013",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-014",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jose-ortega-y-gasset-015",
+      "evidenceId": "ev-wiki-topic-jose-ortega-y-gasset-015",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-001",
+      "evidenceId": "ev-wiki-topic-libertarianismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-002",
+      "evidenceId": "ev-wiki-topic-libertarianismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-003",
+      "evidenceId": "ev-wiki-topic-libertarianismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-004",
+      "evidenceId": "ev-wiki-topic-libertarianismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-005",
+      "evidenceId": "ev-wiki-topic-libertarianismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-006",
+      "evidenceId": "ev-wiki-topic-libertarianismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-007",
+      "evidenceId": "ev-wiki-topic-libertarianismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-008",
+      "evidenceId": "ev-wiki-topic-libertarianismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-009",
+      "evidenceId": "ev-wiki-topic-libertarianismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-010",
+      "evidenceId": "ev-wiki-topic-libertarianismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-011",
+      "evidenceId": "ev-wiki-topic-libertarianismo-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-012",
+      "evidenceId": "ev-wiki-topic-libertarianismo-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-013",
+      "evidenceId": "ev-wiki-topic-libertarianismo-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-001",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-002",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-003",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-004",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-005",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-006",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-007",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-008",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-009",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-010",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-011",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-012",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-013",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mary-wollstonecraft-014",
+      "evidenceId": "ev-wiki-topic-mary-wollstonecraft-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-001",
+      "evidenceId": "ev-wiki-topic-mercado-livre-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-002",
+      "evidenceId": "ev-wiki-topic-mercado-livre-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-003",
+      "evidenceId": "ev-wiki-topic-mercado-livre-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-004",
+      "evidenceId": "ev-wiki-topic-mercado-livre-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-005",
+      "evidenceId": "ev-wiki-topic-mercado-livre-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-006",
+      "evidenceId": "ev-wiki-topic-mercado-livre-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-007",
+      "evidenceId": "ev-wiki-topic-mercado-livre-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-008",
+      "evidenceId": "ev-wiki-topic-mercado-livre-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mercado-livre-009",
+      "evidenceId": "ev-wiki-topic-mercado-livre-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-001",
+      "evidenceId": "ev-wiki-topic-robert-nozick-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-002",
+      "evidenceId": "ev-wiki-topic-robert-nozick-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-003",
+      "evidenceId": "ev-wiki-topic-robert-nozick-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-004",
+      "evidenceId": "ev-wiki-topic-robert-nozick-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-005",
+      "evidenceId": "ev-wiki-topic-robert-nozick-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-006",
+      "evidenceId": "ev-wiki-topic-robert-nozick-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-007",
+      "evidenceId": "ev-wiki-topic-robert-nozick-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-008",
+      "evidenceId": "ev-wiki-topic-robert-nozick-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-009",
+      "evidenceId": "ev-wiki-topic-robert-nozick-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-010",
+      "evidenceId": "ev-wiki-topic-robert-nozick-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-011",
+      "evidenceId": "ev-wiki-topic-robert-nozick-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-012",
+      "evidenceId": "ev-wiki-topic-robert-nozick-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-robert-nozick-013",
+      "evidenceId": "ev-wiki-topic-robert-nozick-013",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-adam-ferguson-001",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Nascimento em Logierait, Perthshire (1723).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-001"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-002",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Publicação do Ensaio sobre a História da Sociedade Civil (1767).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-002"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-003",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Publicação da História do Progresso e Terminação da República Romana (1783).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-003"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-004",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Morte em St Andrews (1816).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-004"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-005",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Relação com David Hume: sucedeu Hume como bibliotecário da Faculdade de Advogados de Edimburgo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-005"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-006",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Relação com Adam Smith: amigo e colega do Iluminismo escocês, com quem compartilhou a ênfase na ordem espontânea.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-006"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-007",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Relação com Montesquieu: seguiu Montesquieu na parte política de seu sistema.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-007"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-008",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Relação com Voltaire: conheceu Voltaire em viagem ao continente nos anos 1770.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-008"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-009",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Relação com Hegel: sua crítica à sociedade comercial influenciou Hegel e Marx.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-009"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-010",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Ferguson criticava a sociedade comercial por tornar os homens fracos, desonrosos e despreocupados com a comunidade.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-010"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-011",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Ferguson foi chamado de pai da sociologia moderna.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-011"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-012",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Para Ferguson, a história social é feita pelos humanos e sofre reveses, dentro de um progresso natural criado por Deus.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-012"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-013",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Para Ferguson, a civilização restringe a independência individual, mas dá liberdade como segurança e justiça.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-013"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-014",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Ferguson defendeu o Império Britânico, mas argumentou que a representação política era necessária para impedi-lo de se tornar tirânico.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-014"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-001",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Nascimento em Esmirna (1748).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-001"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-002",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Estabelece-se em Paris para se dedicar à literatura (1788).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-002"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-003",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Morte em Paris (1833).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-003"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-004",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Cartas trocadas com Saripolos são descobertas e publicadas (1996).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-004"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-005",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Relação com N. I. Saripolos: jurista que, após a Revolução Grega, se tornou o pai fundador do direito grego.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-005"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-006",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Relação com Montesquieu: suas opiniões sobre o sistema jurídico estavam mais próximas de Montesquieu do que de Rousseau.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-006"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-007",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Relação com Igreja Ortodoxa Grega: criticada por Korais por rejeitar uma Grécia independente.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-007"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-008",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Relação com Biblioteca Korais (Quios): legou sua biblioteca ao Liceu de Quios.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-008"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-009",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Korais é considerado um reformador da literatura grega.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-009"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-010",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Korais entrou para a história da língua grega como o inventor da katharevousa, uma língua intermediária entre o grego antigo e o vernáculo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-010"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-011",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "Korais teve influência indireta, mas grande, sobre as constituições da Revolução Grega e da Constituição posterior.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-011"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-012",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "A relação de Korais com Saripolos é comprovada por correspondência trocada entre os dois.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-012"]
+    },
+    {
+      "id": "claim-wiki-topic-adamantios-korais-013",
+      "entityId": "wiki-topic-adamantios-korais",
+      "text": "A igreja rejeitou estritamente uma Grécia independente, segundo Korais.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adamantios-korais-013"]
+    },
+    {
+      "id": "claim-wiki-topic-ali-latifiyan-001",
+      "entityId": "wiki-topic-ali-latifiyan",
+      "text": "Nascimento em Teerã (1968).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ali-latifiyan-001"]
+    },
+    {
+      "id": "claim-wiki-topic-ali-latifiyan-002",
+      "entityId": "wiki-topic-ali-latifiyan",
+      "text": "Relação com Jalal Al-Ahmad: um dos intelectuais analisados no livro Reviewing the Performance of Intellectuals from 1941 to 1979.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ali-latifiyan-002"]
+    },
+    {
+      "id": "claim-wiki-topic-ali-latifiyan-003",
+      "entityId": "wiki-topic-ali-latifiyan",
+      "text": "Relação com Mohammad Mosaddegh: o período analisado no livro inclui os eventos do primeiro-ministro Mosaddegh.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ali-latifiyan-003"]
+    },
+    {
+      "id": "claim-wiki-topic-ali-latifiyan-004",
+      "entityId": "wiki-topic-ali-latifiyan",
+      "text": "Ali Latifiyan é escritor, pesquisador, teórico político-social e historiador iraniano.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ali-latifiyan-004"]
+    },
+    {
+      "id": "claim-wiki-topic-ali-latifiyan-005",
+      "entityId": "wiki-topic-ali-latifiyan",
+      "text": "Grande parte da obra de Latifiyan trata de iluminismo, intelectualismo, liberalismo e cultura iraniana.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ali-latifiyan-005"]
+    },
+    {
+      "id": "claim-wiki-topic-ali-latifiyan-006",
+      "entityId": "wiki-topic-ali-latifiyan",
+      "text": "O livro Reviewing the Performance of Intellectuals from 1941 to 1979 avalia intelectuais iranianos do período entre 1941 e 1979.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ali-latifiyan-006"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-001",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Nascimento em Edimburgo (1711).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-001"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-002",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Publicação dos dois primeiros volumes do Tratado da Natureza Humana (1739).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-002"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-003",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Candidatura à cátedra de Filosofia em Edimburgo é rejeitada (1744).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-003"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-004",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Publicação da História da Inglaterra, em seis volumes até 1762 (1754).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-004"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-005",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Morte em Edimburgo (1776).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-005"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-006",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Relação com John Locke: com George Berkeley, forma a tríade do empirismo britânico.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-006"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-007",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Relação com Immanuel Kant: influência profunda sobre o pensamento de Kant.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-007"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-008",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Relação com Isaac Newton: do método de análise newtoniano Hume tirou o modelo de seu projeto.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-008"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-009",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Relação com Benjamin Franklin: declarou-se americano em seus princípios durante a crise colonial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-009"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-010",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Relação com Francis Hutcheson: professor de Hume, entre as referências intelectuais de sua formação.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-010"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-011",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Hume ficou conhecido pelo empirismo radical e pelo ceticismo filosófico.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-011"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-012",
+      "entityId": "wiki-topic-david-hume",
+      "text": "A publicação do Tratado da Natureza Humana passou quase despercebida.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-012"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-013",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Hume foi tido como ateísta, o que lhe custou candidaturas acadêmicas recusadas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-013"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-014",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Hume achava que o problema do Tratado era de forma, e não de conteúdo, e o resumiu na Investigação sobre o Entendimento Humano.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-014"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-015",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Hume tomou partido da independência americana.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-015"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-001",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Nascimento em Bayonne (1801).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-001"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-002",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Muda-se para Paris (1846).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-002"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-003",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Publicação de A Lei, originalmente como panfleto (1850).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-003"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-004",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Relação com Joseph Schumpeter: descreveu Bastiat como o mais brilhante jornalista econômico que já existiu.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-004"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-005",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Relação com Richard Cobden: aliança política contra o protecionismo, com a Liga Anti-Corn Law.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-005"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-006",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Relação com Murray Rothbard: elogiou Bastiat como advogado do livre mercado irrestrito.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-006"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-007",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Relação com Adam Smith: defensor da economia clássica e da economia de Adam Smith.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-007"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-008",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Relação com Alexander del Mar: traduziu e adaptou Sofismas Econômicos para o público americano em 1867.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-008"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-009",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Bastiat argumentou que a lei deve proteger direitos como a propriedade privada, e não saquear a propriedade de outros.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-009"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-010",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Para Bastiat, o Estado é apenas uma substituição de uma força comum pelas forças individuais na defesa dos direitos.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-010"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-011",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Bastiat admitiu que, em circunstâncias extraordinárias, o Estado deve auxiliar pessoas em dificuldade.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-011"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-012",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Bastiat usou a parábola da petição dos fabricantes de velas para criticar o protecionismo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-012"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-013",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Bastiat atribuía a crise da indústria vinícola de Landes à tributação excessiva.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-013"]
+    },
+    {
+      "id": "claim-wiki-topic-igualitarismo-001",
+      "entityId": "wiki-topic-igualitarismo",
+      "text": "Relação com Karl Popper: definiu o igualitarismo na perspectiva liberal, em A sociedade aberta e seus inimigos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-igualitarismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-igualitarismo-002",
+      "entityId": "wiki-topic-igualitarismo",
+      "text": "O igualitarismo defende igualdade de direitos e oportunidades para todos os seres humanos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-igualitarismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-igualitarismo-003",
+      "entityId": "wiki-topic-igualitarismo",
+      "text": "Na perspectiva liberal, o igualitarismo exige que todos os cidadãos sejam tratados imparcialmente perante a lei.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-igualitarismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-igualitarismo-004",
+      "entityId": "wiki-topic-igualitarismo",
+      "text": "Segundo Popper, o igualitarismo não reconhece privilégios naturais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-igualitarismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-igualitarismo-005",
+      "entityId": "wiki-topic-igualitarismo",
+      "text": "No discurso da esquerda, o igualitarismo inclui a luta de classes contra a desigualdade social e econômica.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-igualitarismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-001",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Nascimento em Londres (1748).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-001"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-002",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Publicação de Uma Introdução aos Princípios da Moral e da Legislação (1789).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-002"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-003",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Publicação do projeto do Panóptico (1791).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-003"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-004",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Compra do terreno em Millbank para a prisão (1799).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-004"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-005",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Morte em Londres (1832).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-005"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-006",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Relação com James Mill: secretário e colaborador de Bentham.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-006"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-007",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Relação com John Stuart Mill: filho de James Mill e aluno de Bentham.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-007"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-008",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Relação com Patrick Colquhoun: cooperou no combate à corrupção no Pool of London.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-008"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-009",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Relação com Michel Foucault: argumentou que o panóptico era paradigmático das instituições disciplinares do século XIX.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-009"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-010",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Relação com Edwin Chadwick: discípulo que escreveu sobre higiene, saneamento e policiamento.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-010"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-011",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Bentham definiu como axioma fundamental que a maior felicidade do maior número é a medida do certo e do errado.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-011"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-012",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Bentham opôs-se à ideia de direito natural, que chamou de absurdo sobre palafitas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-012"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-013",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "Bentham defendeu o fim da escravidão, da pena de morte e da punição física.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-013"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-014",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "A proposta de construir uma prisão panóptica na Inglaterra fracassou e a prisão nunca foi construída.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-014"]
+    },
+    {
+      "id": "claim-wiki-topic-jeremy-bentham-015",
+      "entityId": "wiki-topic-jeremy-bentham",
+      "text": "A Polícia Fluvial do Tâmisa, criada em 1800, foi a primeira força policial preventiva do país.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jeremy-bentham-015"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-001",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Nascimento em Madrid (1883).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-001"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-002",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Paz de Paris; a Espanha perde suas últimas colônias para os EUA (1898).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-002"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-003",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Funda a Liga Espanhola de Educação Política e publica Meditaciones del Quijote (1914).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-003"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-004",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Fundação do Agrupamento ao Serviço da República, após a proclamação da República (1931).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-004"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-005",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Morte em Madri (1955).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-005"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-006",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Relação com Martin Heidegger: atribuiu à história uma nova categoria do conhecimento, aos moldes de Heidegger.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-006"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-007",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Relação com Miguel de Unamuno: integrou a geração de 1898, que refletiu sobre o declínio da Espanha.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-007"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-008",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Relação com Hermann Cohen e Paul Natorp: neokantianos de Marburg, considerados por Ortega seus professores.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-008"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-009",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Relação com Immanuel Kant: viveu no mundo do pensamento kantiano, que ele precisou superar.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-009"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-010",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Relação com Miguel Primo de Rivera: a ditadura de Primo de Rivera levou Ortega a deixar a cátedra.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-010"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-011",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Para Ortega, a realidade está na nossa vivência histórica.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-011"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-012",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Ortega diagnosticou o individualismo dos homens e regiões espanholas como o problema central da Espanha.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-012"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-013",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Ortega propôs que a regeneração da Espanha exigia uma elite intelectual que educasse politicamente as massas.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-013"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-014",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Ortega renunciou à cátedra universitária em 1929 em oposição à ditadura.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-014"]
+    },
+    {
+      "id": "claim-wiki-topic-jose-ortega-y-gasset-015",
+      "entityId": "wiki-topic-jose-ortega-y-gasset",
+      "text": "Ortega afastou-se da política ativa após se desiludir com a vida de deputado nas Cortes Constituintes.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jose-ortega-y-gasset-015"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-001",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Primeiro uso registrado do termo, por William Belsham (1789).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-002",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Déjacque cunha o termo libertaire em carta a Proudhon (1857).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-003",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Dean Russell popularizou o uso como sinônimo de liberalismo (1955).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-004",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Relação com Joseph Déjacque: creditado como o primeiro a caracterizar suas posições como libertárias.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-005",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Relação com Murray Rothbard: principal responsável pelo uso do termo no sentido de livre mercado nos EUA.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-006",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Relação com Benjamin Tucker: popularizou o termo nos Estados Unidos no fim do século XIX.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-007",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Relação com Thomas Paine: proponente histórico do libertarismo de esquerda, com Herbert Spencer e Henry George.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-008",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Relação com Friedrich Hayek: nas origens do libertarianismo de direita, com Locke e Ludwig von Mises.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-009",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "O libertarianismo de direita defende o capitalismo do laissez-faire e fortes direitos de propriedade privada.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-010",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Libertários de esquerda sustentam que os recursos naturais da Terra pertencem a todos de forma igualitária.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-011",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Minarquistas defendem um Estado mínimo, limitado a salvaguardar os direitos naturais; anarcocapitalistas defendem sua eliminação.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-011"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-012",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Libertários de esquerda acreditam que o capitalismo implica escravidão salarial.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-012"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-013",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "A forma de libertarianismo de direita é a dominante nos Estados Unidos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-013"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-001",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Nascimento em Spitalfields, Londres (1759).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-001"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-002",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Publicação de Reivindicação dos Direitos da Mulher (1792).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-002"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-003",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Nascimento de sua primeira filha, Fanny (1794).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-003"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-004",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Morte em Londres, após dar à luz Mary Shelley (1797).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-004"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-005",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Relação com William Godwin: casou-se com o filósofo William Godwin em 1797.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-005"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-006",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Relação com Thomas Paine: conheceu Paine nos jantares do editor Joseph Johnson.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-006"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-007",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Relação com Edmund Burke: sua Reivindicação dos Direitos dos Homens respondeu à crítica conservadora de Burke.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-007"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-008",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Relação com Joseph Johnson: editor liberal que a apoiou para viver como escritora.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-008"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-009",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Relação com Gilbert Imlay: relação amorosa que resultou no nascimento de Fanny.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-009"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-010",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Wollstonecraft argumentou que as mulheres não são naturalmente inferiores aos homens, mas parecem sê-lo por falta de educação.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-010"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-011",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Wollstonecraft é considerada uma das fundadoras da filosofia feminista.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-011"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-012",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Até o fim do século XX, a vida pessoal de Wollstonecraft recebeu mais atenção do que a sua escrita.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-012"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-013",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "A Memória publicada pelo marido após sua morte afetou sua reputação no século XIX.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-013"]
+    },
+    {
+      "id": "claim-wiki-topic-mary-wollstonecraft-014",
+      "entityId": "wiki-topic-mary-wollstonecraft",
+      "text": "Wollstonecraft imaginava uma ordem social fundada na razão, em que homens e mulheres são tratados como seres racionais.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mary-wollstonecraft-014"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-001",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Relação com Adam Smith: para os clássicos, o mercado livre é livre de privilégios econômicos, monopólios e escassez artificial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-001"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-002",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Relação com Henry George: defendeu a tributação do valor da terra como base do mercado livre.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-002"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-003",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Relação com Léon Walras: afirmou que a livre concorrência exige propriedade estatal da terra e dos recursos naturais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-003"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-004",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Relação com Pierre-Joseph Proudhon: um dos primeiros proponentes socialistas do livre mercado.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-004"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-005",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Relação com Karl Popper: considerou paradoxal a ideia de mercado livre, que exige intervenções para evitar intervenções.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-005"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-006",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Em um livre mercado, os preços são fixados pela oferta e pela demanda, sem intervenção governamental.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-006"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-007",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Segundo a crítica, sistemas com poder de mercado significativo exigem regulação para funcionar melhor.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-007"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-008",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Na prática, os governos costumam intervir para reduzir externalidades, como as emissões de gases de efeito estufa.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-008"]
+    },
+    {
+      "id": "claim-wiki-topic-mercado-livre-009",
+      "entityId": "wiki-topic-mercado-livre",
+      "text": "Winston Churchill afirmou que a terra é a mãe de todos os monopólios.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mercado-livre-009"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-001",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Nascimento em Nova Iorque (1938).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-001"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-002",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Publicação de Uma Teoria da Justiça, de Rawls, a que Nozick responde (1971).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-002"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-003",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Publicação de Anarquia, Estado e Utopia (1974).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-003"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-004",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Morte (2002).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-004"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-005",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Relação com John Rawls: Anarquia, Estado e Utopia foi uma resposta libertarista a Uma Teoria da Justiça.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-005"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-006",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Relação com John Locke: a teoria da propriedade pelo trabalho, que Nozick retoma.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-006"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-007",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Relação com Immanuel Kant: os direitos individuais funcionam como restrições de tipo kantiano, incondicionais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-007"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-008",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Relação com Universidade Harvard: professor de filosofia.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-008"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-009",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Nozick defende que um Estado mínimo se justifica, enquanto Estados mais amplos violam direitos individuais.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-009"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-010",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Para Nozick, o Estado não pode usar sua coerção para obrigar cidadãos a ajudar outros.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-010"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-011",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Nozick sustenta que direitos individuais, como a propriedade, não podem ser sacrificados para promover a felicidade.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-011"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-012",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Nozick define como legítima a propriedade adquirida por aquisição de coisas não possuídas ou por transferência voluntária.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-012"]
+    },
+    {
+      "id": "claim-wiki-topic-robert-nozick-013",
+      "entityId": "wiki-topic-robert-nozick",
+      "text": "Nozick descreve sua posição como liberalismo radical, com o Estado neutro diante das escolhas voluntárias de adultos.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-robert-nozick-013"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-adam-ferguson-001",
+      "claimId": "claim-wiki-topic-adam-ferguson-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-002",
+      "claimId": "claim-wiki-topic-adam-ferguson-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-003",
+      "claimId": "claim-wiki-topic-adam-ferguson-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-004",
+      "claimId": "claim-wiki-topic-adam-ferguson-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-005",
+      "claimId": "claim-wiki-topic-adam-ferguson-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-006",
+      "claimId": "claim-wiki-topic-adam-ferguson-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-007",
+      "claimId": "claim-wiki-topic-adam-ferguson-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-008",
+      "claimId": "claim-wiki-topic-adam-ferguson-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-009",
+      "claimId": "claim-wiki-topic-adam-ferguson-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-010",
+      "claimId": "claim-wiki-topic-adam-ferguson-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-011",
+      "claimId": "claim-wiki-topic-adam-ferguson-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-012",
+      "claimId": "claim-wiki-topic-adam-ferguson-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-013",
+      "claimId": "claim-wiki-topic-adam-ferguson-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-014",
+      "claimId": "claim-wiki-topic-adam-ferguson-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-001",
+      "claimId": "claim-wiki-topic-adamantios-korais-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-002",
+      "claimId": "claim-wiki-topic-adamantios-korais-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-003",
+      "claimId": "claim-wiki-topic-adamantios-korais-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-004",
+      "claimId": "claim-wiki-topic-adamantios-korais-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-005",
+      "claimId": "claim-wiki-topic-adamantios-korais-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-006",
+      "claimId": "claim-wiki-topic-adamantios-korais-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-007",
+      "claimId": "claim-wiki-topic-adamantios-korais-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-008",
+      "claimId": "claim-wiki-topic-adamantios-korais-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-009",
+      "claimId": "claim-wiki-topic-adamantios-korais-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-010",
+      "claimId": "claim-wiki-topic-adamantios-korais-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-011",
+      "claimId": "claim-wiki-topic-adamantios-korais-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-012",
+      "claimId": "claim-wiki-topic-adamantios-korais-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adamantios-korais-013",
+      "claimId": "claim-wiki-topic-adamantios-korais-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ali-latifiyan-001",
+      "claimId": "claim-wiki-topic-ali-latifiyan-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ali-latifiyan-002",
+      "claimId": "claim-wiki-topic-ali-latifiyan-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ali-latifiyan-003",
+      "claimId": "claim-wiki-topic-ali-latifiyan-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ali-latifiyan-004",
+      "claimId": "claim-wiki-topic-ali-latifiyan-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ali-latifiyan-005",
+      "claimId": "claim-wiki-topic-ali-latifiyan-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ali-latifiyan-006",
+      "claimId": "claim-wiki-topic-ali-latifiyan-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-001",
+      "claimId": "claim-wiki-topic-david-hume-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-002",
+      "claimId": "claim-wiki-topic-david-hume-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-003",
+      "claimId": "claim-wiki-topic-david-hume-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-004",
+      "claimId": "claim-wiki-topic-david-hume-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-005",
+      "claimId": "claim-wiki-topic-david-hume-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-006",
+      "claimId": "claim-wiki-topic-david-hume-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-007",
+      "claimId": "claim-wiki-topic-david-hume-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-008",
+      "claimId": "claim-wiki-topic-david-hume-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-009",
+      "claimId": "claim-wiki-topic-david-hume-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-010",
+      "claimId": "claim-wiki-topic-david-hume-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-011",
+      "claimId": "claim-wiki-topic-david-hume-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-012",
+      "claimId": "claim-wiki-topic-david-hume-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-013",
+      "claimId": "claim-wiki-topic-david-hume-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-014",
+      "claimId": "claim-wiki-topic-david-hume-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-015",
+      "claimId": "claim-wiki-topic-david-hume-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-001",
+      "claimId": "claim-wiki-topic-frederic-bastiat-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-002",
+      "claimId": "claim-wiki-topic-frederic-bastiat-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-003",
+      "claimId": "claim-wiki-topic-frederic-bastiat-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-004",
+      "claimId": "claim-wiki-topic-frederic-bastiat-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-005",
+      "claimId": "claim-wiki-topic-frederic-bastiat-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-006",
+      "claimId": "claim-wiki-topic-frederic-bastiat-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-007",
+      "claimId": "claim-wiki-topic-frederic-bastiat-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-008",
+      "claimId": "claim-wiki-topic-frederic-bastiat-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-009",
+      "claimId": "claim-wiki-topic-frederic-bastiat-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-010",
+      "claimId": "claim-wiki-topic-frederic-bastiat-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-011",
+      "claimId": "claim-wiki-topic-frederic-bastiat-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-012",
+      "claimId": "claim-wiki-topic-frederic-bastiat-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-013",
+      "claimId": "claim-wiki-topic-frederic-bastiat-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-igualitarismo-001",
+      "claimId": "claim-wiki-topic-igualitarismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-igualitarismo-002",
+      "claimId": "claim-wiki-topic-igualitarismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-igualitarismo-003",
+      "claimId": "claim-wiki-topic-igualitarismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-igualitarismo-004",
+      "claimId": "claim-wiki-topic-igualitarismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-igualitarismo-005",
+      "claimId": "claim-wiki-topic-igualitarismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-001",
+      "claimId": "claim-wiki-topic-jeremy-bentham-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-002",
+      "claimId": "claim-wiki-topic-jeremy-bentham-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-003",
+      "claimId": "claim-wiki-topic-jeremy-bentham-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-004",
+      "claimId": "claim-wiki-topic-jeremy-bentham-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-005",
+      "claimId": "claim-wiki-topic-jeremy-bentham-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-006",
+      "claimId": "claim-wiki-topic-jeremy-bentham-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-007",
+      "claimId": "claim-wiki-topic-jeremy-bentham-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-008",
+      "claimId": "claim-wiki-topic-jeremy-bentham-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-009",
+      "claimId": "claim-wiki-topic-jeremy-bentham-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-010",
+      "claimId": "claim-wiki-topic-jeremy-bentham-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-011",
+      "claimId": "claim-wiki-topic-jeremy-bentham-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-012",
+      "claimId": "claim-wiki-topic-jeremy-bentham-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-013",
+      "claimId": "claim-wiki-topic-jeremy-bentham-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-014",
+      "claimId": "claim-wiki-topic-jeremy-bentham-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jeremy-bentham-015",
+      "claimId": "claim-wiki-topic-jeremy-bentham-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-001",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-002",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-003",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-004",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-005",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-006",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-007",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-008",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-009",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-010",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-011",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-012",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-013",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-014",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jose-ortega-y-gasset-015",
+      "claimId": "claim-wiki-topic-jose-ortega-y-gasset-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-001",
+      "claimId": "claim-wiki-topic-libertarianismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-002",
+      "claimId": "claim-wiki-topic-libertarianismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-003",
+      "claimId": "claim-wiki-topic-libertarianismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-004",
+      "claimId": "claim-wiki-topic-libertarianismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-005",
+      "claimId": "claim-wiki-topic-libertarianismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-006",
+      "claimId": "claim-wiki-topic-libertarianismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-007",
+      "claimId": "claim-wiki-topic-libertarianismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-008",
+      "claimId": "claim-wiki-topic-libertarianismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-009",
+      "claimId": "claim-wiki-topic-libertarianismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-010",
+      "claimId": "claim-wiki-topic-libertarianismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-011",
+      "claimId": "claim-wiki-topic-libertarianismo-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-012",
+      "claimId": "claim-wiki-topic-libertarianismo-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-013",
+      "claimId": "claim-wiki-topic-libertarianismo-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-001",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-002",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-003",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-004",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-005",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-006",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-007",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-008",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-009",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-010",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-011",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-012",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-013",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mary-wollstonecraft-014",
+      "claimId": "claim-wiki-topic-mary-wollstonecraft-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-001",
+      "claimId": "claim-wiki-topic-mercado-livre-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-002",
+      "claimId": "claim-wiki-topic-mercado-livre-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-003",
+      "claimId": "claim-wiki-topic-mercado-livre-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-004",
+      "claimId": "claim-wiki-topic-mercado-livre-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-005",
+      "claimId": "claim-wiki-topic-mercado-livre-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-006",
+      "claimId": "claim-wiki-topic-mercado-livre-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-007",
+      "claimId": "claim-wiki-topic-mercado-livre-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-008",
+      "claimId": "claim-wiki-topic-mercado-livre-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mercado-livre-009",
+      "claimId": "claim-wiki-topic-mercado-livre-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-001",
+      "claimId": "claim-wiki-topic-robert-nozick-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-002",
+      "claimId": "claim-wiki-topic-robert-nozick-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-003",
+      "claimId": "claim-wiki-topic-robert-nozick-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-004",
+      "claimId": "claim-wiki-topic-robert-nozick-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-005",
+      "claimId": "claim-wiki-topic-robert-nozick-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-006",
+      "claimId": "claim-wiki-topic-robert-nozick-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-007",
+      "claimId": "claim-wiki-topic-robert-nozick-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-008",
+      "claimId": "claim-wiki-topic-robert-nozick-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-009",
+      "claimId": "claim-wiki-topic-robert-nozick-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-010",
+      "claimId": "claim-wiki-topic-robert-nozick-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-011",
+      "claimId": "claim-wiki-topic-robert-nozick-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-012",
+      "claimId": "claim-wiki-topic-robert-nozick-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-robert-nozick-013",
+      "claimId": "claim-wiki-topic-robert-nozick-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [],
+  "learningPaths": []
+}
