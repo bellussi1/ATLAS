@@ -28,6 +28,7 @@ describe('ideology readings', () => {
 
   it('links each reading to the next one, wrapping around', () => {
     expect(companionOf('marxismo')?.slug).toBe('liberalismo');
-    expect(companionOf('liberalismo')?.slug).toBe('marxismo');
+    expect(companionOf('liberalismo')?.slug).toBe('social-democracia');
+    expect(companionOf('anarquismo')?.slug).toBe('marxismo');
   });
 });

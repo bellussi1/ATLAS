@@ -62,11 +62,13 @@ describe('Liberalism atlas snapshot', () => {
         .filter((entity) => wikidataIds.includes(entity.externalIds?.wikidata ?? ''))
         .every((entity) => entity.editorialStatus === 'pending'),
     ).toBe(true);
-    expect(
-      entities
-        .filter((entity) => wikidataIds.includes(entity.externalIds?.wikidata ?? ''))
-        .every((entity) => entity.summary.length < 260),
-    ).toBe(true);
+    // The 260-character limit covers the curated records of this atlas. Wikipedia drafts in
+    // atlas-liberalismo carry the full lead of each article, so they are outside this rule.
+    const curated = (atlas?.entities ?? []).filter((entity) =>
+      wikidataIds.includes(entity.externalIds?.wikidata ?? ''),
+    );
+    expect(curated.length).toBeGreaterThan(0);
+    expect(curated.every((entity) => entity.summary.length < 260)).toBe(true);
   });
 
   it('marks encyclopedic discovery links as pending rather than validated historical relations', () => {
@@ -83,7 +85,10 @@ describe('Liberalism atlas snapshot', () => {
         atlasId: 'atlas-liberalism',
       }).length,
     ).toBeGreaterThan(0);
-    expect(atlas?.reviews).toEqual([]);
+    // Claims appended from Wikipedia drafts bring pending reviews; none is approved.
+    expect(
+      atlas?.reviews.every((review) => review.status === 'pending' && review.reviewer === null),
+    ).toBe(true);
     expect(
       atlas?.relations.some(
         (relation) => relation.type === 'related_to' && relation.evidenceIds.length > 0,

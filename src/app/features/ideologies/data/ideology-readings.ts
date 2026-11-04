@@ -23,12 +23,25 @@ export const ideologyReadings: readonly IdeologyReading[] = [
     metaDescription:
       'Conceitos, pensadores, épocas, lugares, vertentes, críticas e fontes do liberalismo.',
   },
+  {
+    slug: 'social-democracia',
+    label: 'Social-democracia',
+    metaDescription:
+      'Reformas, Estado de bem-estar e disputas da social-democracia com o socialismo e o liberalismo.',
+  },
+  {
+    slug: 'anarquismo',
+    label: 'Anarquismo',
+    metaDescription: 'Origens, correntes, experiências históricas e debates do anarquismo.',
+  },
 ];
 
 /** Palette of snapshots released before `identity.palette` existed. */
 const releasedPalettes: Readonly<Record<string, MosaicPalette | undefined>> = {
   marxismo: 'marx',
   liberalismo: 'liberal',
+  'social-democracia': 'social-democracia',
+  anarquismo: 'anarquismo',
 };
 
 export function paletteOf(page: IdeologyPage): MosaicPalette {

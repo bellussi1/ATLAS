@@ -12,4 +12,16 @@ export const publicReadings = [
     summary: 'Explore pessoas, ideias, obras e acontecimentos no Atlas do Liberalismo.',
     path: '/liberalismo',
   },
+  {
+    slug: 'social-democracia',
+    title: 'Social-democracia',
+    summary: 'Reformas, Estado de bem-estar e disputas com o socialismo e o liberalismo.',
+    path: '/social-democracia',
+  },
+  {
+    slug: 'anarquismo',
+    title: 'Anarquismo',
+    summary: 'Origens, correntes, experiências históricas e debates do anarquismo.',
+    path: '/anarquismo',
+  },
 ] as const;

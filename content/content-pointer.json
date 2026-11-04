@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev",
-  "release": "be9198222df67c2e0ee588bc781efa2e108cb0cb974e925ec8c40d3853d1ed8e",
+  "release": "159f9a1a522405871fc79d6aa3799b1ecfa489e7f963e51c70b3d05c8a12cea0",
   "manifest": {
-    "sha256": "0597110fc0bd8c1a5993b5fba452e9f46716636de6b351a76d315e2254a75750",
-    "bytes": 4294
+    "sha256": "83962e8fa0bfd81c5b956dcb01518fa2a8c3a45f676bf1e105222fbec49c5544",
+    "bytes": 4810
   },
   "artifacts": [
     {
@@ -73,9 +73,19 @@
       "file": "ideology-liberalismo.e45cef5e047c5c0bc89d664bffb8102c3ab2a880eab69d252e17cff530a95c50.json"
     },
     {
-      "sha256": "3ba703435482b9bfeeb2ab3cec49e4c52137b345b62ff6eb0ae2bf8e76059216",
-      "bytes": 1224108,
-      "file": "search.3ba703435482b9bfeeb2ab3cec49e4c52137b345b62ff6eb0ae2bf8e76059216.json"
+      "sha256": "1cbe98b3d1a3733ed55922f3611adc56409291381e9537c8433209c12e4b66b5",
+      "bytes": 23426,
+      "file": "ideology-social-democracia.1cbe98b3d1a3733ed55922f3611adc56409291381e9537c8433209c12e4b66b5.json"
+    },
+    {
+      "sha256": "cf78665b8eb3d7ba09af84a6da19aeeb3c1a3eeb575c715b855c8b6b38435552",
+      "bytes": 22939,
+      "file": "ideology-anarquismo.cf78665b8eb3d7ba09af84a6da19aeeb3c1a3eeb575c715b855c8b6b38435552.json"
+    },
+    {
+      "sha256": "e8e8faa00003c772efab023fa5b23d7ee9427705a7b18f6b3fee3db1f4e578ad",
+      "bytes": 1262032,
+      "file": "search.e8e8faa00003c772efab023fa5b23d7ee9427705a7b18f6b3fee3db1f4e578ad.json"
     },
     {
       "sha256": "d4a58862d407b03a4ea3887b6830382c9292984914612eefa94d3a48602c2d8d",
@@ -83,9 +93,9 @@
       "file": "adjacency.d4a58862d407b03a4ea3887b6830382c9292984914612eefa94d3a48602c2d8d.json"
     },
     {
-      "sha256": "9008cdc3a51312e3809e3afc285ff703f0d2e7dfb7b215207ae1e81e029ad00d",
-      "bytes": 215799,
-      "file": "layouts.9008cdc3a51312e3809e3afc285ff703f0d2e7dfb7b215207ae1e81e029ad00d.json"
+      "sha256": "ea8b95db9a9de9de129bb05c601a0f123d7970b2df26cff506b85c13fc06a70d",
+      "bytes": 215890,
+      "file": "layouts.ea8b95db9a9de9de129bb05c601a0f123d7970b2df26cff506b85c13fc06a70d.json"
     }
   ],
   "media": [

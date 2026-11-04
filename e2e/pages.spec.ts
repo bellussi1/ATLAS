@@ -7,6 +7,8 @@ const declaredDestinations = [
   '/',
   '/marxismo',
   '/liberalismo',
+  '/social-democracia',
+  '/anarquismo',
   ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
 ];
 

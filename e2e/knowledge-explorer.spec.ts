@@ -128,14 +128,12 @@ test('all search destinations have prerendered HTML with matching title, canonic
     const response = await request.get(entry.path);
     expect(response.ok(), entry.path).toBe(true);
     const html = await response.text();
-    const pageTitle =
-      entry.path === '/marxismo'
-        ? 'Marxismo: ideias e divergências'
-        : entry.path === '/liberalismo'
-          ? 'Liberalismo: ideias e divergências'
-          : entry.path === '/fontes'
-            ? 'Fontes'
-            : entry.title;
+    const readingPaths = ['/marxismo', '/liberalismo', '/social-democracia', '/anarquismo'];
+    const pageTitle = readingPaths.includes(entry.path)
+      ? `${entry.title}: ideias e divergências`
+      : entry.path === '/fontes'
+        ? 'Fontes'
+        : entry.title;
     const title = pageTitle
       .replaceAll('&', '&amp;')
       .replaceAll('<', '&lt;')

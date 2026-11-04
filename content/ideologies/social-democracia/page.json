@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-social-democracia",
+  "slug": "social-democracia",
+  "kind": "tradicao",
+  "classificationNote": "Tradição político-intelectual e partidária, sem doutrina única. O recorte cobre sobretudo a Europa a partir do fim do século XIX e trata a Terceira Via como ramificação debatida. A classificação segue o verbete e pode ser revista.",
+  "title": "Social-democracia",
+  "kicker": "Tradição político-intelectual · fins do século XIX em diante",
+  "summary": "Rascunho de leitura sobre reformas, Estado de bem-estar e disputas da social-democracia com o socialismo e o liberalismo. Baseado em verbetes da Wikipédia; sem revisão humana.",
+  "published": true,
+  "atlasId": "atlas-social-democracia",
+  "review": {
+    "status": "rascunho",
+    "reviewer": null,
+    "updatedAt": "2026-11-04"
+  },
+  "identity": {
+    "accent": "ochre",
+    "signature": "Reformas, pactos e fronteiras disputadas",
+    "keyVisualization": "comparison"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "Reformar o capitalismo pela política",
+      "kicker": "O que é?",
+      "minutes": 2,
+      "narrative": [
+        "Segundo o verbete da Wikipédia em português, a social-democracia é uma ideologia de centro-esquerda que defende a intervenção do Estado para promover justiça social dentro do capitalismo. Combina Estado de bem-estar social, sindicatos fortes e democracia representativa.",
+        "O nome designa ideias, partidos, governos e uma rede internacional. Há debate acadêmico sobre se ela é distinta do socialismo ou parte do movimento socialista mais amplo; esta leitura não resolve essa disputa."
+      ],
+      "question": "Por que a social-democracia é tantas vezes confundida com o socialismo?",
+      "bridge": "Para separar as duas coisas, é preciso voltar à Alemanha do século XIX, onde o nome ganhou organização.",
+      "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
+      "gap": "Definição baseada em verbetes da Wikipédia (pt e en). Faltam literatura acadêmica e textos primários.",
+      "coverage": "partial",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Do Lassalle ao SPD",
+      "kicker": "Origens e formação",
+      "minutes": 4,
+      "narrative": [
+        "Ferdinand Lassalle fundou, na década de 1860, a Associação Geral dos Trabalhadores Alemães (ADAV), apontada pelo verbete como origem da social-democracia. Em 1875, a ADAV se fundiu ao partido de Wilhelm Liebknecht e August Bebel, e deu origem ao SPD.",
+        "Nos anos 1860, o socialismo associado a Marx também se tornou, segundo o verbete, a base teórica oficial do primeiro partido social-democrata da Europa, o SDAP. A Primeira Internacional, fundada em 1864, marca o mesmo período de organização operária.",
+        "A repressão moldou o movimento. A partir de 1878, o Reichstag aprovou as Leis Antissocialistas, por iniciativa de Bismarck, para reduzir a força do SPD: elas proibiram reuniões socialistas, tornaram os sindicatos ilegais e encerraram 45 jornais. Segundo o verbete, não impediram o crescimento do partido e perderam eficácia em 1890."
+      ],
+      "question": "Onde a social-democracia começou a se organizar, e sob que pressão?",
+      "bridge": "A repressão e o crescimento eleitoral levaram o SPD a discutir o que deveria ser o socialismo.",
+      "sourceIds": [
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-social-democracy",
+        "src-wiki-topic-ferdinand-lassalle",
+        "src-wiki-topic-wilhelm-liebknecht",
+        "src-wiki-topic-august-bebel",
+        "src-wiki-topic-leis-antissocialistas"
+      ],
+      "gap": "Recorte limitado ao caso alemão e às fontes da Wikipédia. As origens britânica e escandinava ainda não foram cobertas.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Reforma, democracia e igualdade",
+      "kicker": "Pilares e princípios",
+      "minutes": 4,
+      "narrative": [
+        "O verbete descreve a social-democracia como favorável à democracia política e econômica e a uma abordagem gradualista, reformista e democrática para alcançar a igualdade social.",
+        "Essa ênfase na ação política, e não na ruptura revolucionária, é um dos pontos que a distinguem do marxismo ortodoxo, segundo o próprio verbete."
+      ],
+      "question": "O que a social-democracia quer preservar e o que quer mudar?",
+      "bridge": "Os princípios ganham sentido quando aparecem em decisões partidárias concretas.",
+      "sourceIds": [
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-social-democracy",
+        "src-wiki-topic-terceira-via"
+      ],
+      "gap": "Pilares formulados a partir de verbetes; falta comparar com programas partidários originais.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "principio-reforma-gradual",
+              "title": "Reforma gradual",
+              "kicker": "Gradualismo",
+              "summary": "A mudança social se faz por instituições democráticas e reformas sucessivas.",
+              "paragraphs": [
+                "O verbete descreve a abordagem como gradualista, reformista e democrática para alcançar a igualdade social."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
+              "entityIds": ["wiki-topic-social-democracia"],
+              "classification": "interpretação"
+            },
+            {
+              "id": "principio-godesberg",
+              "title": "Rejeição da luta de classes",
+              "kicker": "Programa de Godesberg, 1959",
+              "summary": "Em 1959, o SPD rejeitou a luta de classes e o marxismo como base partidária.",
+              "paragraphs": [
+                "Segundo o verbete, o Programa de Godesberg, aprovado em 1959, rejeitou a luta de classes e o marxismo. É uma data e uma decisão documentadas, não uma interpretação."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracia"],
+              "entityIds": [],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "principio-estado-bem-estar",
+              "title": "Estado de bem-estar",
+              "kicker": "Instituições",
+              "summary": "Intervenção do Estado para reduzir desigualdades, com sindicatos fortes e democracia representativa.",
+              "paragraphs": [
+                "O verbete associa a social-democracia ao Estado de bem-estar social e à força dos sindicatos, como instrumentos de justiça social dentro do capitalismo."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
+              "entityIds": [],
+              "classification": "interpretação"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Palavras que mudam de sentido",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 3,
+      "narrative": [
+        "Segundo o verbete em inglês, Friedrich Engels teria usado o termo social democracy pela primeira vez em 1844. O sentido da palavra mudou desde então, e cada país a usa de um modo.",
+        "O verbete sobre a Terceira Via a descreve como uma corrente centrista que concilia medidas de centro-direita e de centro-esquerda, surgida nas décadas de 1980 e 1990 como reconceitualização da social-democracia."
+      ],
+      "question": "Por que o mesmo nome designa projetos políticos tão diferentes?",
+      "bridge": "Essas palavras reaparecem nas vertentes e nos debates, onde o sentido precisa ser fixado.",
+      "sourceIds": ["src-wiki-topic-social-democracy", "src-wiki-topic-terceira-via"],
+      "gap": "Glossário ainda sem entradas próprias no acervo, como Estado de bem-estar e economia mista.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "Da Alemanha de Bismarck ao século XXI",
+      "kicker": "História e épocas",
+      "minutes": 5,
+      "narrative": [
+        "Em 1883, o Império Alemão lançou um conjunto de programas sociais. O verbete registra que Bismarck colocou em prática propostas de assistência social inicialmente sugeridas pelos social-democratas, mesmo depois de reprimir o partido com as Leis Antissocialistas.",
+        "Com a Revolução Russa de 1917, os socialistas se dividiram. Os que apoiaram a revolução passaram a se chamar comunistas; os bolcheviques criaram a Internacional Comunista em 1919, e os reformistas fundaram a Labour and Socialist International em 1923.",
+        "Depois da Segunda Guerra, o Partido Socialista Democrático Italiano foi fundado, em 1947. Em 1956, Anthony Crosland publicou The Future of Socialism, para quem um novo capitalismo exigia um novo socialismo.",
+        "Nos anos 1990, a Terceira Via, associada a Tony Blair e ao New Labour, reconfigurou parte do campo social-democrata. Em 2013, partidos membros ou ex-membros da Internacional Socialista fundaram a Progressive Alliance."
+      ],
+      "question": "Como a social-democracia mudou entre o século XIX e os dias atuais?",
+      "bridge": "Os governos que deram corpo a essas mudanças aparecem nas experiências históricas.",
+      "sourceIds": [
+        "src-wiki-topic-social-democracy",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-otto-von-bismarck",
+        "src-wiki-topic-internacional-socialista",
+        "src-wiki-topic-terceira-via"
+      ],
+      "gap": "Linha do tempo montada a partir de datas de verbetes. Faltam fontes históricas que confirmem o peso relativo de cada episódio.",
+      "coverage": "partial",
+      "layout": "timeline",
+      "blocks": []
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Quem formulou e quem disputou",
+      "kicker": "Pensadores e obras",
+      "minutes": 4,
+      "narrative": [
+        "Ferdinand Lassalle, Wilhelm Liebknecht e August Bebel aparecem entre os fundadores da organização social-democrata alemã. Bebel participou da fusão de 1875 que formou o SPD.",
+        "Eduard Bernstein, cujas ideias, segundo o verbete, prepararam a social-democracia do pós-guerra, e Karl Kautsky, que o criticou em livro, são as referências do debate interno ao SPD. Rosa Luxemburgo também debateu com Bernstein dentro do partido.",
+        "Jean Jaurès defendia uma revolução social democrática e não violenta, segundo o verbete. Olof Palme, Willy Brandt e Bruno Kreisky representam a social-democracia do pós-guerra em seus países."
+      ],
+      "question": "Quem deu forma à social-democracia, e como cada um a entendia?",
+      "bridge": "Os governos desses pensadores mostram como as ideias chegaram à prática.",
+      "sourceIds": [
+        "src-wiki-topic-ferdinand-lassalle",
+        "src-wiki-topic-wilhelm-liebknecht",
+        "src-wiki-topic-august-bebel",
+        "src-wiki-topic-jean-jaures",
+        "src-wiki-topic-olof-palme",
+        "src-wiki-topic-willy-brandt",
+        "src-wiki-topic-bruno-kreisky",
+        "src-wiki-topic-social-democracy"
+      ],
+      "gap": "As obras dos pensadores não foram consultadas diretamente. Os registros de Bernstein e Kautsky vêm de outra coleção do acervo.",
+      "coverage": "partial",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-ferdinand-lassalle",
+            "wiki-topic-wilhelm-liebknecht",
+            "wiki-topic-august-bebel",
+            "person-eduard-bernstein",
+            "person-karl-kautsky",
+            "wiki-topic-jean-jaures",
+            "wiki-topic-olof-palme",
+            "wiki-topic-willy-brandt",
+            "wiki-topic-bruno-kreisky"
+          ],
+          "mode": "thinkers",
+          "notes": {
+            "wiki-topic-ferdinand-lassalle": "Fundou a ADAV, origem apontada pelo verbete.",
+            "wiki-topic-wilhelm-liebknecht": "Um dos principais fundadores do SPD.",
+            "wiki-topic-august-bebel": "Participou da fusão de 1875 que formou o SPD.",
+            "person-eduard-bernstein": "Suas ideias, segundo o verbete, prepararam a social-democracia do pós-guerra.",
+            "person-karl-kautsky": "Criticou Bernstein no debate interno do SPD.",
+            "wiki-topic-jean-jaures": "Defendia uma revolução social democrática e não violenta.",
+            "wiki-topic-olof-palme": "Representante da social-democracia escandinava.",
+            "wiki-topic-willy-brandt": "Conduziu a Ostpolitik como chanceler da Alemanha Ocidental.",
+            "wiki-topic-bruno-kreisky": "Chanceler da Áustria por mais de uma década."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Reformistas, terceiras vias e críticas",
+      "kicker": "Correntes e vertentes",
+      "minutes": 4,
+      "narrative": [
+        "O verbete distingue ao menos duas vertentes: a social-democracia reformista do pós-guerra, ligada à Internacional Socialista, e a Terceira Via dos anos 1980 e 1990, que tentou conciliar medidas de centro-direita e de centro-esquerda.",
+        "Há divergências sobre o enquadramento. Alguns cientistas políticos caracterizam a Terceira Via como efetivamente neoliberal, e outros socialistas criticam a social-democracia por fortalecer o capitalismo que deveria substituir.",
+        "No Brasil, o verbete aponta a criação do PSDB, em 1988, como origem local da Terceira Via."
+      ],
+      "question": "Todos os social-democratas concordam entre si?",
+      "bridge": "As divergências aparecem com força nos debates sobre o papel do Estado e a relação com o capitalismo.",
+      "sourceIds": [
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-social-democracy",
+        "src-wiki-topic-internacional-socialista",
+        "src-wiki-topic-terceira-via"
+      ],
+      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas além dos verbetes.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "schools",
+          "items": [
+            {
+              "id": "vertente-reformista",
+              "title": "Social-democracia reformista",
+              "kicker": "Pós-guerra",
+              "summary": "Gradualismo e Estado de bem-estar dentro da democracia representativa.",
+              "paragraphs": [
+                "Ligada à Internacional Socialista, esta vertente aceita o capitalismo como quadro e disputa a sua orientação por reformas."
+              ],
+              "sourceIds": [
+                "src-wiki-topic-social-democracia",
+                "src-wiki-topic-internacional-socialista"
+              ],
+              "entityIds": ["wiki-topic-internacional-socialista"],
+              "classification": "interpretação"
+            },
+            {
+              "id": "vertente-terceira-via",
+              "title": "Terceira Via",
+              "kicker": "Anos 1980 e 1990",
+              "summary": "Tentativa de conciliar medidas de centro-direita e de centro-esquerda.",
+              "paragraphs": [
+                "O verbete sobre a Terceira Via a apresenta como reconceitualização da social-democracia, com o New Labour de Blair como caso central."
+              ],
+              "sourceIds": ["src-wiki-topic-terceira-via"],
+              "entityIds": ["wiki-topic-terceira-via"],
+              "classification": "interpretação"
+            },
+            {
+              "id": "vertente-leitura-neoliberal",
+              "title": "Leitura crítica da Terceira Via",
+              "kicker": "Controvérsia",
+              "summary": "Parte dos analistas enquadra a Terceira Via como neoliberal.",
+              "paragraphs": [
+                "Alguns cientistas políticos e analistas caracterizam a Terceira Via como um movimento efetivamente neoliberal. O verbete registra a afirmação como controversa."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracy"],
+              "entityIds": [],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Governos e reformas",
+      "kicker": "Experiências históricas",
+      "minutes": 4,
+      "narrative": [
+        "Na Suécia, Olof Palme governou em dois períodos, de 1969 a 1976 e de 1982 a 1986, à frente do Partido Operário Social-Democrata.",
+        "Na Alemanha Ocidental, Willy Brandt foi chanceler de 1969 a 1974 e conduziu a Ostpolitik, pela qual recebeu o Nobel da Paz em 1971. Na Áustria, Bruno Kreisky foi chanceler de 1970 a 1983, em um mandato que o verbete descreve como o mais longo da Áustria republicana.",
+        "Sobre resultados, o verbete cita relatórios que colocam os países nórdicos entre os de maior PIB per capita, igualdade econômica, saúde pública e expectativa de vida. O próprio artigo marca essas fontes como a melhorar."
+      ],
+      "question": "Onde a social-democracia governou, e com que resultados?",
+      "bridge": "Os limites desses resultados levam aos debates sobre o que a tradição realmente conseguiu.",
+      "sourceIds": [
+        "src-wiki-topic-olof-palme",
+        "src-wiki-topic-willy-brandt",
+        "src-wiki-topic-bruno-kreisky",
+        "src-wiki-topic-social-democracy"
+      ],
+      "gap": "A amostra é europeia. Experiências da América Latina e do Brasil não foram incluídas.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "schools",
+          "items": [
+            {
+              "id": "experiencia-palme-suecia",
+              "title": "Suécia de Palme",
+              "kicker": "Governos de 1969 a 1986",
+              "summary": "Dois mandatos de Olof Palme à frente da social-democracia sueca.",
+              "paragraphs": [
+                "Olof Palme governou a Suécia de 1969 a 1976 e de 1982 a 1986, à frente do Partido Operário Social-Democrata."
+              ],
+              "sourceIds": ["src-wiki-topic-olof-palme"],
+              "entityIds": ["wiki-topic-olof-palme"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "experiencia-brandt-ostpolitik",
+              "title": "Ostpolitik de Brandt",
+              "kicker": "Alemanha Ocidental, 1969 a 1974",
+              "summary": "Política de aproximação com o bloco oriental, conduzida por Willy Brandt.",
+              "paragraphs": [
+                "Willy Brandt foi chanceler da Alemanha Ocidental entre 1969 e 1974, conduziu a Ostpolitik e recebeu o Nobel da Paz em 1971."
+              ],
+              "sourceIds": ["src-wiki-topic-willy-brandt"],
+              "entityIds": ["wiki-topic-willy-brandt"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "experiencia-kreisky-austria",
+              "title": "Era Kreisky",
+              "kicker": "Áustria, 1970 a 1983",
+              "summary": "Chancelaria mais longa da Áustria republicana, segundo o verbete.",
+              "paragraphs": [
+                "Bruno Kreisky foi chanceler da Áustria de 1970 a 1983. O verbete descreve seu mandato de 13 anos como o mais longo de um chanceler da Áustria republicana."
+              ],
+              "sourceIds": ["src-wiki-topic-bruno-kreisky"],
+              "entityIds": ["wiki-topic-bruno-kreisky"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "experiencia-limite-dados",
+              "title": "Limite dos dados comparativos",
+              "kicker": "Cautela editorial",
+              "summary": "Indicadores nórdicos vêm de relatórios citados e não provam sozinhos um efeito.",
+              "paragraphs": [
+                "Os indicadores de bem-estar nos países nórdicos vêm de relatórios citados pelo verbete, que o próprio artigo marca como a melhorar. Eles não bastam, sozinhos, para atribuir esses resultados à social-democracia."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracy"],
+              "entityIds": [],
+              "classification": "limitação editorial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Objeções e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 5,
+      "narrative": [
+        "Críticos marxistas acusaram o reformismo social-democrata desde cedo. Lenin criticou o revisionismo nas Teses de Abril, em 1917, e Stalin foi crítico vocal dos social-democratas reformistas.",
+        "Walter Benjamin atribuiu à social-democracia parte da culpa pela ascensão do nazismo, afirmação que o verbete registra como controversa. Joseph Schumpeter criticou o reformismo socialista em Capitalism, Socialism and Democracy (1942).",
+        "Do lado da defesa, Anthony Crosland argumentou, em 1956, que a social-democracia precisava de um novo socialismo para um novo capitalismo. O verbete não registra uma resposta sistemática dos defensores às críticas de Benjamin e Schumpeter."
+      ],
+      "question": "Quais são as objeções mais fortes, e o que os defensores respondem?",
+      "bridge": "Os debates mostram que a tradição não é consensual, nem dentro nem fora dela.",
+      "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
+      "gap": "Falta a resposta dos defensores às críticas de Benjamin e Schumpeter, com fonte própria.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "debate-revisionismo",
+              "title": "Crítica marxista ao revisionismo",
+              "kicker": "Teses de Abril, 1917",
+              "summary": "Lenin atacou o revisionismo social-democrata após a Revolução Russa.",
+              "paragraphs": [
+                "Segundo o verbete, Lenin criticou o revisionismo nas Teses de Abril, em 1917."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracia"],
+              "entityIds": [],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "debate-responsabilidade-nazismo",
+              "title": "Responsabilidade pelo nazismo",
+              "kicker": "Walter Benjamin",
+              "summary": "Benjamin atribuiu à social-democracia parte da culpa pela ascensão do nazismo.",
+              "paragraphs": [
+                "A afirmação é atribuída a Walter Benjamin. O verbete a classifica como controversa e não a adota como fato."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracy"],
+              "entityIds": [],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "debate-fortalecer-capitalismo",
+              "title": "Reformas que fortalecem o capitalismo",
+              "kicker": "Crítica socialista",
+              "summary": "Outros socialistas veem na social-democracia um reforço do sistema que ela deveria substituir.",
+              "paragraphs": [
+                "Essa crítica, registrada pelo verbete, aponta conflito entre a administração do capitalismo e o objetivo de substituí-lo."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracy"],
+              "entityIds": [],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "debate-limites-leitura",
+              "title": "Limites desta leitura",
+              "kicker": "Cautela editorial",
+              "summary": "Os debates foram reunidos a partir de verbetes, sem leitura direta das obras citadas.",
+              "paragraphs": [
+                "Não há aqui resposta sistemática dos defensores às críticas, nem leitura direta das obras citadas. Esta seção organiza o que os verbetes registram."
+              ],
+              "sourceIds": ["src-wiki-topic-social-democracia"],
+              "entityIds": [],
+              "classification": "limitação editorial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Com quem a social-democracia dialoga",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 3,
+      "narrative": [
+        "Segundo o verbete, a social-democracia se distingue do liberalismo econômico e do marxismo ortodoxo. Marx e Engels aparecem entre as fontes de influência da tradição.",
+        "Com o marxismo, a relação é de herança e ruptura. Uma interpretação registrada no verbete afirma que a social-democracia moderna se afastou do socialismo científico e se aproximou do Estado de bem-estar social.",
+        "Essas ligações vêm de verbetes enciclopédicos. Por isso aparecem como texto e no acervo de descoberta, e não como relações de influência documentadas."
+      ],
+      "question": "Como a social-democracia se relaciona com o liberalismo e o marxismo?",
+      "bridge": "Para ler as tradições lado a lado, siga para as fontes e a metodologia desta leitura.",
+      "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
+      "gap": "Arestas tipadas de influência documentada ainda não foram levantadas para este recorte.",
+      "coverage": "partial",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "atlas",
+          "rootEntityId": "wiki-topic-social-democracia"
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 2,
+      "narrative": [
+        "Ainda não há roteiro verificado. Este capítulo permanece pendente até que sejam identificadas obras primárias e estudos acadêmicos, com edição e ano conferidos."
+      ],
+      "question": "O que ler depois desta introdução?",
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Sem bibliografia verificada: os verbetes usados não bastam para indicar leituras.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Como esta leitura foi feita",
+      "kicker": "Fontes e metodologia",
+      "minutes": 2,
+      "narrative": [
+        "Esta leitura foi montada a partir de rascunhos extraídos de verbetes da Wikipédia em português e em inglês. Cada afirmação traz a fonte do verbete. As citações não foram conferidas diretamente contra o texto dos verbetes.",
+        "A classificação de cada afirmação, entre fato documentado, interpretação e alegação controversa, vem da extração e ainda não passou por revisão humana. Esta página é um rascunho com revisão de IA pendente."
+      ],
+      "question": "Como sei que o que está aqui é verdade?",
+      "bridge": null,
+      "sourceIds": [
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-social-democracy",
+        "src-wiki-topic-august-bebel",
+        "src-wiki-topic-bruno-kreisky",
+        "src-wiki-topic-ferdinand-lassalle",
+        "src-wiki-topic-internacional-socialista",
+        "src-wiki-topic-jean-jaures",
+        "src-wiki-topic-leis-antissocialistas",
+        "src-wiki-topic-olof-palme",
+        "src-wiki-topic-otto-von-bismarck",
+        "src-wiki-topic-terceira-via",
+        "src-wiki-topic-wilhelm-liebknecht",
+        "src-wiki-topic-willy-brandt"
+      ],
+      "gap": "Faltam fontes primárias e acadêmicas. A revisão humana ainda não foi registrada.",
+      "coverage": "partial",
+      "layout": "sources",
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "src-wiki-topic-social-democracia",
+            "src-wiki-topic-social-democracy",
+            "src-wiki-topic-august-bebel",
+            "src-wiki-topic-bruno-kreisky",
+            "src-wiki-topic-ferdinand-lassalle",
+            "src-wiki-topic-internacional-socialista",
+            "src-wiki-topic-jean-jaures",
+            "src-wiki-topic-leis-antissocialistas",
+            "src-wiki-topic-olof-palme",
+            "src-wiki-topic-otto-von-bismarck",
+            "src-wiki-topic-terceira-via",
+            "src-wiki-topic-wilhelm-liebknecht",
+            "src-wiki-topic-willy-brandt"
+          ]
+        }
+      ]
+    }
+  ]
+}
