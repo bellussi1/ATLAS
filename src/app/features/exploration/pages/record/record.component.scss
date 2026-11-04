@@ -23,9 +23,157 @@ a {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
-header {
+header.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
   border-top: 3px solid var(--ink);
   padding-block: 1.5rem 2rem;
+}
+.descriptor {
+  margin: -0.75rem 0 0.75rem;
+  font: 600 1rem/1.4 var(--font-sans);
+  color: var(--ink-muted);
+}
+.aliases {
+  margin: 0 0 1rem;
+  font: 0.875rem/1.5 var(--font-sans);
+  color: var(--ink-muted);
+}
+.hero-media figure {
+  margin: 0;
+}
+.hero-media img {
+  display: block;
+  width: 100%;
+  max-height: 28rem;
+  object-fit: cover;
+  background: var(--paper-shade);
+}
+.hero-placeholder {
+  display: grid;
+  align-content: space-between;
+  min-height: 14rem;
+  padding: 1rem;
+  background: var(--paper-shade);
+  border: 1px solid var(--rule);
+  span {
+    font: 700 clamp(5rem, 14vw, 9rem) / 1 var(--font-serif);
+    color: var(--ink);
+  }
+  small {
+    font: 0.75rem/1.4 var(--font-sans);
+    color: var(--ink-muted);
+  }
+}
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 0 3rem;
+  border-block: 1px solid var(--ink);
+  div {
+    flex: 1 1 8rem;
+    padding: 0.75rem 1rem;
+    border-left: 1px solid var(--rule);
+  }
+  div:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+  dt {
+    margin: 0;
+    font: 0.75rem/1.4 var(--font-sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  dd {
+    margin: 0.125rem 0 0;
+    font: 600 1.125rem/1.3 var(--font-sans);
+  }
+}
+.toc {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  h2 {
+    font: 0.75rem/1.4 var(--font-sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-left: 1px solid var(--rule);
+  }
+  li a {
+    display: block;
+    padding: 0.35rem 0 0.35rem 0.75rem;
+    font: 0.875rem/1.4 var(--font-sans);
+    text-decoration: none;
+  }
+}
+.group-label {
+  margin: 1.5rem 0 0;
+  font: 600 0.75rem/1.4 var(--font-sans);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.direction {
+  margin: 0;
+  font: 0.875rem/1.5 var(--font-sans);
+  color: var(--ink-muted);
+}
+.related {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  a {
+    display: block;
+    height: 100%;
+    padding: 1rem;
+    border: 1px solid var(--rule);
+    text-decoration: none;
+  }
+  strong,
+  span {
+    display: block;
+  }
+  span {
+    margin-top: 0.25rem;
+    font: 0.875rem/1.5 var(--font-sans);
+    color: var(--ink-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    padding: 0.125rem 0.5rem;
+    border: 1px solid var(--rule);
+    font: 0.75rem/1.5 var(--font-sans);
+  }
+}
+.record-file h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 1rem;
 }
 h1 {
   font-size: clamp(2.25rem, 6vw, 5.5rem);
@@ -42,16 +190,12 @@ h1 {
   max-width: 75ch;
   line-height: 1.6;
 }
-.dossier-link {
-  display: inline-block;
-  margin: 1rem 2rem;
-}
 .record-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.5rem 1rem;
-  margin: 1rem 2rem;
+  gap: 0.5rem 1.5rem;
+  margin: 1.5rem 0 0;
 }
 .copy-link {
   padding: 0;
@@ -72,8 +216,8 @@ h1 {
 }
 .record-body {
   display: grid;
-  grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr) minmax(0, 20rem);
+  gap: clamp(1.5rem, 3vw, 3rem);
 }
 .reading {
   max-width: 72ch;
@@ -130,15 +274,32 @@ dd {
 small {
   display: block;
 }
+@media (max-width: 1100px) {
+  .record-body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 18rem);
+  }
+  .toc {
+    position: static;
+    grid-column: 1 / -1;
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
+      border-left: 0;
+    }
+    li a {
+      padding-left: 0;
+    }
+  }
+}
 @media (max-width: 760px) {
+  header.hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .record-body {
     grid-template-columns: minmax(0, 1fr);
   }
   .record-file {
-    grid-row: 2;
-  }
-  .dossier-link {
-    margin: 1rem 0;
-    display: block;
+    grid-row: auto;
   }
 }

@@ -1,5 +1,3 @@
-import { getEditorialType } from '@core/content/editorial/content-types';
-import { editorialEntries, getEntryPath } from '@core/content/editorial/editorial-entries';
 import { editorialStatusLabels as statusLabels } from '@core/content/editorial/editorial-status';
 import { publicReadings } from '@core/content/editorial/public-readings';
 import type { Atlas, Claim, KnowledgeGraph, Source } from '@core/content/models/content-schema';
@@ -215,29 +213,6 @@ export function buildDiscoveryIndex(
     }
   }
 
-  for (const entry of editorialEntries) {
-    const type = getEditorialType(entry.type);
-    entries.push({
-      id: `editorial-${entry.type}-${entry.slug}`,
-      title: entry.title,
-      summary: entry.summary,
-      aliases: [],
-      kind: entry.type,
-      kindLabel: type?.label ?? 'Conteúdo',
-      state: entry.status,
-      stateLabel: entry.statusLabel,
-      path: getEntryPath(entry.type, entry.slug),
-      context: entry.sections[0]?.paragraphs[0] ?? '',
-      backlinks: [],
-      searchText: searchContent([
-        entry.title,
-        entry.summary,
-        entry.statusLabel,
-        entry.sections.map((section) => [section.heading, section.paragraphs]),
-      ]),
-    });
-  }
-
   for (const reading of publicReadings)
     entries.push({
       id: 'reading-' + reading.slug,
@@ -310,18 +285,12 @@ export function validateDiscoveryDestinations(
   const sourceIds = new Set(
     graph.atlases.flatMap((atlas) => atlas.sources.map((source) => source.id)),
   );
-  const editorialPaths = new Set(
-    editorialEntries.map((entry) => getEntryPath(entry.type, entry.slug)),
-  );
   const errors: string[] = [];
   const hasDestination = (path: string, fragment?: string): boolean => {
     if (path.startsWith('/verbete/')) return entityPaths.has(path) && !fragment;
     if (path === '/fontes')
       return !fragment || (fragment.startsWith('source-') && sourceIds.has(fragment.slice(7)));
-    return (
-      (editorialPaths.has(path) || publicReadings.some((reading) => reading.path === path)) &&
-      !fragment
-    );
+    return publicReadings.some((reading) => reading.path === path) && !fragment;
   };
   for (const entry of index) {
     if (!hasDestination(entry.path, entry.fragment))

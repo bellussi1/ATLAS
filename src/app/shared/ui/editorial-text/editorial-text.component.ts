@@ -8,14 +8,11 @@ interface TextPart {
   fragment?: string;
 }
 const destinations: Record<string, { path: string; fragment?: string }> = {
-  contexto: { path: '/explorar/artigo/conhecimento-com-contexto' },
   fonte: { path: '/verbete/metodologia-do-atlas', fragment: 'section-0' },
   fontes: { path: '/verbete/metodologia-do-atlas', fragment: 'section-0' },
   evidencia: { path: '/verbete/metodologia-do-atlas', fragment: 'section-0' },
   evidencias: { path: '/verbete/metodologia-do-atlas', fragment: 'section-0' },
   metodologia: { path: '/verbete/metodologia-do-atlas' },
-  verbete: { path: '/explorar/verbete' },
-  verbetes: { path: '/explorar/verbete' },
 };
 @Component({
   selector: 'app-editorial-text',
@@ -31,8 +28,7 @@ export class AtlasEditorialTextComponent {
   readonly inverse = input(false);
   readonly parts = computed(() => {
     const text = this.text();
-    const pattern =
-      /(?<![\p{L}\p{N}])(contexto|fontes?|evidências?|metodologia|verbetes?)(?![\p{L}\p{N}])/giu;
+    const pattern = /(?<![\p{L}\p{N}])(fontes?|evidências?|metodologia)(?![\p{L}\p{N}])/giu;
     const parts: TextPart[] = [];
     const used = new Set<string>();
     let offset = 0;

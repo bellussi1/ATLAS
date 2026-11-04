@@ -98,14 +98,7 @@ export const explorerContentGroups = [
   { id: 'editorial', title: 'Páginas editoriais' },
 ] as const;
 export type ExplorerContentGroup = (typeof explorerContentGroups)[number]['id'];
-const editorialKinds: readonly string[] = [
-  'atlas',
-  'dossie',
-  'leitura',
-  'trilha',
-  'verbete',
-  'visualizacao',
-];
+const editorialKinds: readonly string[] = ['leitura'];
 
 export function explorerContentGroup(kind: string): ExplorerContentGroup {
   if (kind === 'fonte') return 'fontes';

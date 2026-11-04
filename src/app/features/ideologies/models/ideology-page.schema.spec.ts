@@ -3,12 +3,12 @@ import { safeDiscoveryOrigin } from '@core/content/queries/discovery-index';
 import { estimateAxis, estimateEntity } from '@ideologies/utils/positions';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
-import supplement from '../../../../content/graph/marxismo.json';
-import anarquismo from '../../../../content/ideologies/examples/anarquismo.json';
-import liberalismo from '../../../../content/ideologies/examples/liberalismo.json';
-import socialDemocracia from '../../../../content/ideologies/examples/social-democracia.json';
-import publishedLiberalismo from '../../../../content/ideologies/liberalismo/page.json';
-import marxismo from '../../../../content/ideologies/marxismo/page.json';
+import supplement from '../../../../../content/graph/marxismo.json';
+import anarquismo from '../../../../../content/ideologies/examples/anarquismo.json';
+import liberalismo from '../../../../../content/ideologies/examples/liberalismo.json';
+import socialDemocracia from '../../../../../content/ideologies/examples/social-democracia.json';
+import publishedLiberalismo from '../../../../../content/ideologies/liberalismo/page.json';
+import marxismo from '../../../../../content/ideologies/marxismo/page.json';
 import { canonicalChapters, legacyChapterAnchors } from './ideology-chapters';
 import {
   ideologyGraphSchema,
@@ -36,7 +36,6 @@ describe('Public pages', () => {
       'conceitos',
       'lugares',
       'verbete/:slug',
-      'explorar/:tipo/:slug',
     ]);
     expect(routes.find((r) => r.path === '**')?.title).toBe('Página não encontrada — ATLAS');
   });
