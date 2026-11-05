@@ -1,0 +1,57 @@
+{
+  "measuredAt": "2026-11-05",
+  "sample": {
+    "size": 20,
+    "entityIds": [
+      "topic-anarquismo",
+      "topic-august-bebel",
+      "topic-bruno-kreisky",
+      "topic-eduard-bernstein",
+      "topic-emma-goldman",
+      "topic-ferdinand-lassalle",
+      "topic-internacional-socialista",
+      "topic-jean-jaures",
+      "topic-karl-kautsky",
+      "topic-leis-antissocialistas",
+      "topic-mikhail-bakunin",
+      "topic-olof-palme",
+      "topic-otto-von-bismarck",
+      "topic-pierre-joseph-proudhon",
+      "topic-piotr-kropotkin",
+      "topic-revisionismo-marxismo",
+      "topic-social-democracia",
+      "topic-terceira-via",
+      "topic-wilhelm-liebknecht",
+      "topic-willy-brandt"
+    ]
+  },
+  "candidates": [
+    {
+      "model": "claude-haiku-5-5",
+      "effort": "low",
+      "residualError": null,
+      "quotesRejected": 0.022058823529411766,
+      "relationsRejected": 0.6440677966101694,
+      "costUsd": 0.02258668
+    },
+    {
+      "model": "claude-haiku-5-5",
+      "effort": "medium",
+      "residualError": 0.05,
+      "quotesRejected": 0.008771929824561403,
+      "relationsRejected": 0.4878048780487805,
+      "costUsd": 0.045495050000000016
+    }
+  ],
+  "chosen": {
+    "extracao": {
+      "model": "claude-haiku-5-5",
+      "effort": "medium"
+    },
+    "relacoes": {
+      "model": "claude-sonnet-5-5",
+      "effort": "low"
+    }
+  },
+  "rationale": "Texto abaixo de 5% em haiku-medium, relações acima nos dois braços: só a etapa de relações sobe de modelo. Conferência: 14 itens por pessoa e 66 por IA."
+}

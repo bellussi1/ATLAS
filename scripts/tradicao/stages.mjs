@@ -22,8 +22,8 @@ import {
 import { captureSchema } from '../ingestion/wiki-extract/raw.mjs';
 import { traditionFor } from '../ingestion/wikimedia/traditions.mjs';
 import { checkFloor, loadFloor, measureTradition, measure, flatten } from './coverage.mjs';
-import { loadRecords, planRun } from './extract.mjs';
-import { defaultModel, richSourceText } from './prompts.mjs';
+import { chosenOptions, loadRecords, planRun } from './extract.mjs';
+import { richSourceText } from './prompts.mjs';
 import { buildGlossary, modelChoiceSchema, richGaps, unverifiedQuotes } from './rich.mjs';
 import { defaults, isGenericTitle, maxRing } from './scoring.mjs';
 import {
@@ -88,12 +88,6 @@ async function acceptedCandidates(p) {
 
 /** Catalogue-like types that must never be accepted without a named human or AI decision. */
 const unreviewedTypes = new Set(['outro', 'sem-item']);
-
-/** Modelo e effort da extração: os fixados pela avaliação, ou Haiku low antes da medição. */
-async function chosenExtraction(root) {
-  const choice = await readJsonOr(join(root, 'scripts/tradicao/model-choice.json'), null);
-  return choice?.chosen?.extracao ?? { model: defaultModel, effort: 'low' };
-}
 
 /** Where a reading must be listed once it is public (stage 10); `needle` is searched in the file. */
 export const registrationPoints = (slug) => [
@@ -498,12 +492,15 @@ export const stages = [
     ],
     async estimate(ctx) {
       const p = paths(ctx);
-      const { model, effort } = await chosenExtraction(ctx.root);
+      const { model, effort, relationModel } = chosenOptions(
+        await readJsonOr(join(ctx.root, 'scripts/tradicao/model-choice.json'), null),
+      );
       const plan = planRun({
         records: await loadRecords(p.articles),
         state: await loadState(ctx.root, ctx.slug),
         model,
         effort,
+        relationModel,
       });
       return {
         articles: plan.prepared.length,

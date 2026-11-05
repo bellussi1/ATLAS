@@ -667,6 +667,15 @@ export const workPaths = (root, slug) => ({
   state: statePath(root, slug),
 });
 
+/** What the evaluation fixed in model-choice.json; a flag on the command line wins. */
+export function chosenOptions(choice, flags = {}) {
+  return {
+    model: flags.model ?? choice?.chosen?.extracao?.model ?? defaultModel,
+    effort: flags.effort ?? choice?.chosen?.extracao?.effort ?? 'low',
+    relationModel: flags['relation-model'] ?? choice?.chosen?.relacoes?.model,
+  };
+}
+
 export async function main(argv = process.argv.slice(2)) {
   const { positionals, values } = parseArgs({
     args: argv,
@@ -677,8 +686,8 @@ export async function main(argv = process.argv.slice(2)) {
       'retry-failed': { type: 'boolean', default: false },
       'max-usd': { type: 'string', default: '1' },
       'max-total-usd': { type: 'string', default: '10' },
-      effort: { type: 'string', default: 'low' },
-      model: { type: 'string', default: defaultModel },
+      effort: { type: 'string' },
+      model: { type: 'string' },
       'relation-model': { type: 'string' },
       limit: { type: 'string' },
       only: { type: 'string' },
@@ -695,11 +704,10 @@ export async function main(argv = process.argv.slice(2)) {
     records = records.filter((record) => only.has(record.id));
   }
   if (values.limit) records = records.slice(0, Number(values.limit));
-  const options = {
-    model: values.model,
-    relationModel: values['relation-model'],
-    effort: values.effort,
-  };
+  const options = chosenOptions(
+    await readJson(join(projectRoot, 'scripts/tradicao/model-choice.json')).catch(() => null),
+    values,
+  );
   const loadStateFile = () => loadState(projectRoot, slug);
   if (values['dry-run']) {
     const plan = planRun({

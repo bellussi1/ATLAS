@@ -6,7 +6,14 @@ import { join } from 'node:path';
 import { test } from 'node:test';
 
 import { BudgetExceeded, costOfUsage, createBudget, estimateRun, estimateTokens } from './cost.mjs';
-import { customIdFor, planRun, reapplyGuards, renderPlan, runExtraction } from './extract.mjs';
+import {
+  chosenOptions,
+  customIdFor,
+  planRun,
+  reapplyGuards,
+  renderPlan,
+  runExtraction,
+} from './extract.mjs';
 import { loadStateFile, withStateDefaults } from './state.mjs';
 
 const sentence = 'Bernstein criticou Karl Kautsky por sua leitura ortodoxa do marxismo.';
@@ -426,6 +433,26 @@ test('conferência do texto: só fica o item confirmado, e a etapa não paga dua
   const count = client.calls.batches.length;
   await runExtraction({ records, client, ...paths });
   assert.equal(client.calls.batches.length, count, 'retomada não reenvia');
+});
+
+test('a extração usa o que a avaliação fixou; flag na linha de comando vence', () => {
+  const choice = {
+    chosen: {
+      extracao: { model: 'claude-haiku-5-5', effort: 'medium' },
+      relacoes: { model: 'claude-sonnet-5-5', effort: 'low' },
+    },
+  };
+  assert.deepEqual(chosenOptions(choice), {
+    model: 'claude-haiku-5-5',
+    effort: 'medium',
+    relationModel: 'claude-sonnet-5-5',
+  });
+  assert.equal(chosenOptions(choice, { effort: 'low' }).effort, 'low');
+  assert.deepEqual(chosenOptions(null), {
+    model: 'claude-haiku-5-5',
+    effort: 'low',
+    relationModel: undefined,
+  });
 });
 
 test('modo síncrono: teto vale a cada pedido e a segunda passada descarta o que não confirma', async (t) => {

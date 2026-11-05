@@ -10,8 +10,8 @@ Como uma tradição sai do Wikidata e chega ao grafo. Orquestrador: `npm run tra
 | 1 | Registro | pessoa | `content/traditions/<slug>.json` | `--stage 1` valida | registro válido, paleta existe | funciona; arquivo escrito à mão |
 | 2 | Descoberta | QID raiz | `candidates/<slug>.json`, `wikidata-labels.json`, captura | `npm run tradicao:discover -- <slug>` | ≥ 8 aceitos, teto por anel, lista curta ≤ 30, sem genérico | funciona; lento (minutos por anel); faixa do meio é decisão humana |
 | 3 | Captura | aceitos | `generated/wiki-extract/<slug>/articles/`, manifesto | `node scripts/wiki-extract.mjs fetch <slug> --candidates [--refresh]` | todo aceito com artigo; SHA-256 | funciona; Wikipedia devolve 429 com várias sessões |
-| 4 | Avaliação (paga) | ~20 artigos | `generated/eval/<id>/`, `model-choice.json` | `npm run tradicao:eval -- run --from a,b --sample 20`, `report`, `score` | modelo de extração fixado | pronta, nunca executada; conferência é humana |
-| 5 | Extração rica (paga) | artigos | `extracts/<id>.json`, respostas cruas, `STATE.json` | `npm run tradicao:extract -- <slug> --dry-run`, depois `--max-usd N` | conteúdo rico, citações literais, relações confirmadas | pronta, testada só com cliente falso |
+| 4 | Avaliação (paga) | ~20 artigos | `generated/eval/<id>/`, `model-choice.json` | `npm run tradicao:eval -- run --from a,b --sample 20`, `report`, `score` | modelo de extração fixado | executada; ver resultado abaixo |
+| 5 | Extração rica (paga) | artigos | `extracts/<id>.json`, respostas cruas, `STATE.json` | `npm run tradicao:extract -- <slug> --dry-run`, depois `--max-usd N` | conteúdo rico, citações literais, relações confirmadas | validada na amostra; `extract` lê o modelo de `model-choice.json` |
 | 6 | Consolidação | rascunhos, rótulos, imagens | coleção no manifesto, com arestas | `node scripts/content/wiki-drafts-to-collections.mjs` | grafo válido, ≥ 1 relação tipada | funciona; aresta depende do estágio 5 |
 | 7 | Glossário | rascunhos ricos | `glossary.json` | `--stage 7` | hover em ≥ 90%, ambíguo não liga | funciona; UI de hover ainda não lê este arquivo |
 | 8 | Redação | grafo | `content/ideologies/<slug>/page.json` | agente, `atlas-create-ideology` | dossiê válido, ≤ 1 capítulo pendente | manual |
@@ -38,7 +38,7 @@ Uma relação só vira aresta se passar por todas, nesta ordem (`guards.mjs`, `w
 1. Tipo da lista fechada e direção declarada (`entidade-para-alvo` ou `alvo-para-entidade`).
 2. Citação literal do que o modelo leu, com ao menos 20 caracteres e 3 palavras. Só tipografia é normalizada.
 3. Alvo nomeado na própria citação; verbo compatível com o tipo; voz passiva coerente com a direção.
-4. Segunda passada: o modelo lê o parágrafo e responde `confirma`, `inverte` ou `nao-sustenta`. Só `confirma` fica; silêncio é rejeição.
+4. Segunda passada: o modelo lê o parágrafo e responde `confirma`, `inverte` ou `nao-sustenta`. Só `confirma` fica; silêncio é rejeição. Seções, datas e afirmações passam por conferência igual, contra a citação e o parágrafo.
 5. Alvo com QID, resolvido pelos links do artigo, presente no grafo. Sem isso fica no relatório do conversor, não vira palpite.
 
 A aresta guarda a citação como evidência, a fonte Wikipedia e `editorialStatus: pending`. Rótulo do Wikidata (P737, P1142) vira `associated_with`, com aviso de que não documenta influência.
@@ -59,6 +59,14 @@ A aresta guarda a citação como evidência, a fonte Wikipedia e `editorialStatu
 - texto abaixo de 5% e relações acima nos dois: só relações sobe, para Sonnet 5.5, com `--relation-model` (`so-relacoes-sobe`). Isso troca o modelo da segunda passada; a proposta das relações continua no Haiku, então uma cobertura ruim de relações pede outra medição;
 - texto acima nos dois: revisar prompt e travas (`revisar-prompt`), sem fixar modelo;
 - menos de 40 itens conferidos por braço: `insuficiente`.
+
+## Resultado da avaliação (05/11/2026)
+
+Gasto até aqui: US$ 0,12. Decisão da regra: `so-relacoes-sobe`, gravada em `scripts/tradicao/model-choice.json`: extração em Haiku 5.5 `medium` e segunda passada das relações em Sonnet 5.5, sem medição própria ainda.
+
+- Erro restante do modelo, em `medium`: texto 2,6% (1 de 38) e relações 7,1% (3 de 42). Erros de fonte à parte: 3.
+- A conferência foi feita em dois tempos: 14 marcas herdadas de uma conferência com fontes externas e 66 por IA, a pedido do usuário. Só a IA julgou a versão final, e não houve segunda leitura humana.
+- A conferência do texto tirou 66 de 257 itens. Dos que tinham marca, removeu 5 dos 6 errados e 7 de 34 certos, então perde conteúdo verdadeiro. 9 saíram por falta de veredito.
 
 ## Quebrado ou manual
 
