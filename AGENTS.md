@@ -44,6 +44,7 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 - Afirmações históricas devem ter fontes confiáveis e contexto suficiente para o leitor conferir a evidência. Diferencie fato documentado, interpretação, hipótese e alegação controversa; não invente fonte, data, citação ou validação humana.
 - Reproduza imagens, mapas e textos apenas quando os direitos permitirem o uso. Os arquivos em `referencias` são inspiração visual e não ativos autorizados para publicação.
 - Registre fontes e licenças perto do conteúdo ou no mecanismo editorial definido pelo projeto.
+- Todo texto ao leitor segue `docs/design/GUIA-DE-VOZ.md`: a prosa não fala do projeto nem de como foi produzida; atribuição, licença e estado de revisão ficam na área de fontes e no selo editorial.
 
 ## Integração e commits
 

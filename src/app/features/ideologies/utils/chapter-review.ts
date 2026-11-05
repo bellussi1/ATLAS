@@ -1,3 +1,4 @@
+import { readerPredicate, readerProse } from '@core/content/editorial/reader-voice';
 import type { Atlas } from '@core/content/models/content-schema';
 import type { KnowledgeTerm } from '@ideologies/models/knowledge-term';
 import { knowledgeTextParts } from '@ideologies/utils/knowledge-text-parts';
@@ -39,13 +40,14 @@ export function chapterReviews(
         names.has(r.toEntityId) &&
         titles.has(r.fromEntityId) &&
         titles.has(r.toEntityId) &&
+        r.type !== 'encyclopedic-link' &&
         r.context,
     );
     const recall = relation
       ? {
           question: `Antes de continuar: que ligação o acervo registra entre ${titles.get(relation.fromEntityId)} e ${titles.get(relation.toEntityId)}?`,
-          answer: `${titles.get(relation.fromEntityId)} ${relation.label} ${titles.get(relation.toEntityId)}.`,
-          context: relation.context,
+          answer: `${titles.get(relation.fromEntityId)} ${readerPredicate(relation.label)} ${titles.get(relation.toEntityId)}.`,
+          context: readerProse(relation.context) ?? '',
         }
       : null;
     const earlier = index >= 2 ? seen[index - 2] : new Map<string, string>();

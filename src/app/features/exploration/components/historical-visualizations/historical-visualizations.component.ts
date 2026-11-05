@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { readerProse } from '@core/content/editorial/reader-voice';
 import type { Atlas, KnowledgeGraph, Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasEditorialLinkDirective } from '@shared/directives/editorial-link/editorial-link.directive';
@@ -76,7 +77,7 @@ export function buildHistoricalRecords(graph: KnowledgeGraph): HistoricalRecord[
         kind: entity.kind,
         kindLabel: kindLabels[entity.kind] ?? 'Registro',
         summary: entity.summary,
-        context: entity.context,
+        context: readerProse(entity.context) ?? entity.summary,
         startYear: entity.temporalExtent?.startYear ?? null,
         endYear: entity.temporalExtent?.endYear ?? null,
         precision: entity.temporalExtent?.precision ?? 'unknown',

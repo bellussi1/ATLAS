@@ -1,0 +1,32 @@
+<p class="relation-sentence"><ng-content /></p>
+@if (nature() || meta()) {
+  <p class="relation-meta">
+    @if (nature(); as nature) {
+      <strong>{{ nature }}</strong>
+    }
+    @if (meta(); as meta) {
+      <span>{{ meta }}</span>
+    }
+  </p>
+}
+@if (prose(); as prose) {
+  <p class="relation-prose">{{ prose }}</p>
+}
+@for (item of evidence(); track item.id) {
+  <figure class="relation-evidence">
+    @if (item.quote; as quote) {
+      <blockquote>“{{ quote }}”</blockquote>
+    }
+    <figcaption>
+      Fonte:
+      @if (item.url; as url) {
+        <a [href]="url" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+      } @else {
+        {{ item.title }}
+      }
+      @if (item.locator; as locator) {
+        <span>, {{ locator }}</span>
+      }
+    </figcaption>
+  </figure>
+}

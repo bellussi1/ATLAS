@@ -37,7 +37,7 @@ export const knowledgeEntryBreadcrumbResolver: ResolveFn<string> = async (route)
   'Verbete não encontrado';
 export const knowledgeEntryDescriptionResolver: ResolveFn<string> = async (route) =>
   (await knowledgeEntity(route.paramMap.get('slug'), route.queryParamMap.get('idioma')))?.summary ??
-  'Este endereço não corresponde a um verbete cadastrado no ATLAS.';
+  'Este endereço não corresponde a um verbete do acervo.';
 
 /** The catalogue that lists the record, as a breadcrumb crumb; `undefined` when the record is unknown. */
 export const knowledgeEntryCatalogueResolver: ResolveFn<

@@ -27,7 +27,7 @@ test('following a connection starts the new context and restores the previous fo
   await expect(dialog.locator('h2')).toBeFocused();
   expect(await dialog.locator('.context-body').evaluate((e) => e.scrollTop)).toBe(0);
   await dialog
-    .getByRole('navigation', { name: 'Percurso neste contexto' })
+    .getByRole('navigation', { name: 'Percurso nesta leitura' })
     .getByRole('button')
     .last()
     .click();
@@ -49,7 +49,7 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
   await page.getByRole('button', { name: 'Fechar contexto' }).tap();
   await page.locator('#debates .argument-card').first().tap();
   await expect(
-    page.getByRole('dialog').getByRole('region', { name: 'Fontes do contexto' }),
+    page.getByRole('dialog').getByRole('region', { name: 'Fontes e licença' }),
   ).toContainText('Bernstein');
   await page.getByRole('button', { name: 'Fechar contexto' }).tap();
   await page.getByRole('button', { name: 'Estado e revolução', exact: true }).tap();

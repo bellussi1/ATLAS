@@ -81,7 +81,50 @@ describe('KnowledgeContextComponent', () => {
     expect(host.textContent).toContain('Não há conexões registradas');
     expect(host.textContent).toContain('Fonte impressa');
     expect(host.querySelector('a')).toBeNull();
-    expect(host.textContent).toContain('Estado editorial não informado');
+    expect(host.textContent).toContain('Situação editorial não informada');
+  });
+
+  it('reads a relation as a sentence, with evidence and no process text in the prose', () => {
+    const record = entityContext(
+      { knowledgeGraph: methodologyKnowledgeGraph } as ContentRepository,
+      'person-karl-marx',
+    );
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter([]),
+        ...provideContentFixture(),
+        provideHttpClient(),
+        {
+          provide: DIALOG_DATA,
+          useValue: {
+            record: { ...record, relevance: { note: 'Formula a crítica.', chapter: 'Vozes' } },
+            stops: [],
+            index: -1,
+          },
+        },
+        { provide: DialogRef, useValue: { close: vi.fn() } },
+      ],
+    });
+    const fixture = TestBed.createComponent(KnowledgeContextComponent);
+    fixture.detectChanges();
+    const host = fixture.nativeElement as HTMLElement;
+    const entry = host
+      .querySelector('[data-connection="relation-marx-capital"]')!
+      .closest<HTMLElement>('.context-connection')!;
+    expect(entry.querySelector('.relation-sentence')?.textContent).toMatch(
+      /Karl Marx\s+escreveu\s+O capital/,
+    );
+    expect(entry.querySelector('figcaption a')).not.toBeNull();
+    expect(host.querySelector('.context-relevance')?.textContent).toContain('Por que importa aqui');
+    expect(
+      Array.from(host.querySelectorAll('.relation-group summary')).map((s) => s.textContent),
+    ).not.toHaveLength(0);
+    const prose = [
+      ...host.querySelectorAll('.context-body > p, .context-section p, .relation-sentence'),
+    ]
+      .map((element) => element.textContent)
+      .join(' ');
+    expect(prose).not.toMatch(/Wikip[eé]dia|Wikidata|ATLAS|[Rr]ascunho|Extraído por IA/);
   });
 
   describe('reading order and comparison', () => {

@@ -11,16 +11,16 @@
           {{ openingTitle() }}<br /><em>{{ openingSubtitle() }}</em>
         </h1>
         <p class="dek">
-          Explore pessoas, correntes, conceitos e acontecimentos deste atlas. A rede combina
-          descoberta enciclopédica e dados estruturados; essas conexões não equivalem, por si, a
-          relações historiográficas validadas.
+          Pessoas, correntes, conceitos e acontecimentos em rede. As ligações vêm de verbetes de
+          consulta e de catálogos colaborativos; não equivalem, por si, a relações historiográficas
+          validadas.
         </p>
       </div>
-      <aside class="source-stamp" aria-label="Camadas de dados">
+      <aside class="source-stamp" aria-label="Fontes dos dados">
         <span>Wikipedia</span><span>Wikidata</span><span>Commons</span>
         <p>
-          {{ entities().length }} entidades · {{ discoveryLinkCount() }} links enciclopédicos ·
-          {{ structuredRelationCount() }} relações estruturadas
+          {{ entities().length }} entidades · {{ discoveryLinkCount() }} pistas de leitura ·
+          {{ structuredRelationCount() }} classificações de catálogo
         </p>
       </aside>
     </header>
@@ -86,22 +86,22 @@
             <p class="eyebrow">Relações entre registros</p>
             <h2 id="graph-title">Uma ideia. Muitas conexões.</h2>
             <p class="edge-legend">
-              Cada linha nomeia os dois registros e o vínculo importado. Selecione um nome para
+              Cada linha nomeia os dois registros e o vínculo entre eles. Selecione um nome para
               abrir a ficha logo abaixo do grafo.
             </p>
           } @else {
-            <p class="eyebrow">Conexões de navegação</p>
+            <p class="eyebrow">Pistas de leitura</p>
             <h2 id="graph-title">Uma rede para seguir</h2>
             <p class="edge-legend">
-              Tracejado: link de descoberta da Wikipedia. Linha contínua: relação estruturada do
-              Wikidata; confira o rótulo, a procedência e o estado na ficha.
+              Tracejado: pista de leitura entre verbetes. Linha contínua: classificação de catálogo
+              colaborativo; confira o rótulo, a fonte e o estado na ficha.
             </p>
           }
         </div>
         @if (!continuous()) {
           <p>
-            Linhas indicam links entre páginas da Wikipedia ou declarações estruturadas. Selecione
-            um nome para abrir a ficha.
+            Linhas indicam ligações entre verbetes ou classificações de catálogo. Selecione um nome
+            para abrir a ficha.
           </p>
         }
       </div>
@@ -181,21 +181,20 @@
             <div class="entity-meta">
               <span>{{ kindLabel(entity) }}</span
               ><span>{{ yearLabel(entity) }}</span
-              ><span class="status"
-                >Dados importados ·
-                {{
-                  entity.editorialStatus === 'pending'
-                    ? 'revisão pendente'
-                    : 'estado editorial não informado'
-                }}</span
-              >
+              ><span class="status">{{
+                entity.editorialStatus === 'pending'
+                  ? 'revisão pendente'
+                  : 'estado editorial não informado'
+              }}</span>
             </div>
             @if (entity.discoveryMetadata; as metadata) {
               @if (metadata.description && metadata.description !== entity.summary) {
                 <p class="description">{{ metadata.description }}</p>
               }
-              @if (entity.context !== entity.summary) {
-                <p class="description">{{ entity.context }}</p>
+              @if (prose(entity.context); as context) {
+                @if (context !== entity.summary) {
+                  <p class="description">{{ context }}</p>
+                }
               }
               <div class="categories">
                 <strong>Categorias principais</strong>
@@ -214,7 +213,7 @@
                 [href]="metadata.wikipediaUrl"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Abrir artigo na Wikipedia ({{ metadata.wikipediaLanguage }}) ↗</a
+                >Abrir fonte: Wikipédia ({{ metadata.wikipediaLanguage }}) ↗</a
               >
               <a
                 class="source-link"
@@ -240,7 +239,7 @@
                       <button type="button" (click)="openEntity(target.id)">
                         <span class="relation-chip">{{ relationName(relation) }}</span
                         ><strong>{{ target.title }}</strong
-                        ><span>{{ relation.label }}</span>
+                        ><span>{{ predicate(relation.label) }}</span>
                       </button>
                     </li>
                   }
@@ -266,7 +265,7 @@
             @if (relationSource(relation); as source) {
               <button type="button" (click)="openEntity(source.id)">{{ source.title }}</button>
             }
-            <span class="relation-direction">{{ relation.label }}</span>
+            <span class="relation-direction">{{ predicate(relation.label) }}</span>
             @if (relationDestination(relation); as destination) {
               <button type="button" (click)="openEntity(destination.id)">
                 {{ destination.title }}
@@ -278,7 +277,9 @@
                 {{ relationSourceLabel(relation) }} ·
                 {{ relationStatusLabel(relation) }}
               </small>
-              <p>{{ relation.context }}</p>
+              @if (prose(relation.context); as context) {
+                <p>{{ context }}</p>
+              }
               <app-editorial-sources
                 [references]="relationSources(relation)"
                 variant="inline"
@@ -322,12 +323,12 @@
     >
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Datas importadas</p>
+          <p class="eyebrow">Datas registradas</p>
           <h2 id="timeline-title">Pessoas e acontecimentos no tempo</h2>
         </div>
         <p>
-          Os registros seguem as datas do Wikidata, na escala dos anos. Datas aproximadas permanecem
-          aproximadas e intervalos imprecisos não foram convertidos em datas exatas.
+          Os registros aparecem na escala dos anos. Datas aproximadas permanecem aproximadas e
+          intervalos imprecisos não foram convertidos em datas exatas.
         </p>
       </div>
       @if (timelineItems().length) {
@@ -344,9 +345,8 @@
   </section>
   <footer class="editorial-note">
     <p>
-      Wikipedia e Wikidata são camadas de descoberta e estruturação. Links entre páginas não são,
-      por si, evidência de influência ou causalidade. Conteúdo importado e relações permanecem
-      pendentes de revisão humana.
+      Ligações entre verbetes e classificações de catálogo não são, por si, evidência de influência
+      ou causalidade. Estes registros e relações permanecem com revisão humana pendente.
     </p>
   </footer>
 </section>

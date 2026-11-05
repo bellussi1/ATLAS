@@ -12,7 +12,7 @@ import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geome
 })
 export class NotFoundMessageComponent {
   readonly heading = input('Página não encontrada');
-  readonly message = input('Este endereço não existe no ATLAS. Escolha um dos caminhos abaixo.');
+  readonly message = input('Este endereço não existe no acervo. Escolha um dos caminhos abaixo.');
 
   /** The last word of the heading carries the accent colour. */
   protected readonly headingParts = computed(() => {
@@ -25,7 +25,7 @@ export class NotFoundMessageComponent {
 
   protected readonly doors = [
     { label: 'Marxismo', hint: 'Leitura da tradição', link: '/marxismo', tone: 'red' },
-    { label: 'Liberalismo', hint: 'Atlas exploratório', link: '/liberalismo', tone: 'teal' },
+    { label: 'Liberalismo', hint: 'Leitura exploratória', link: '/liberalismo', tone: 'teal' },
     { label: 'Acervo', hint: 'Todos os registros', link: '/conhecimento', tone: 'ochre' },
     { label: 'Início', hint: 'Voltar à abertura', link: '/', tone: 'rose' },
   ] as const;

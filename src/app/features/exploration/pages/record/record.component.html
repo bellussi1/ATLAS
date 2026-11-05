@@ -29,7 +29,7 @@
     }
     <header class="hero" [class.hero--text]="!context()?.media">
       <div class="hero-text">
-        <p class="record-meta">{{ entry()?.kindLabel }} · {{ entry()?.stateLabel }}</p>
+        <p class="record-meta">{{ entry()?.kindLabel }} · {{ seal() }}</p>
         <h1 [attr.lang]="presentation()?.locale">{{ entity.title }}</h1>
         @if (entity.discoveryMetadata?.description; as descriptor) {
           <p class="descriptor">{{ descriptor }}</p>
@@ -38,14 +38,8 @@
           <p class="aliases">Também chamado de {{ entity.aliases.join('; ') }}</p>
         }
         <p class="lead" [attr.lang]="presentation()?.locale">{{ entity.summary }}</p>
-        @if (showContext()) {
-          <p
-            class="context"
-            [class.context--draft]="isDraft()"
-            [attr.lang]="presentation()?.locale"
-          >
-            {{ entity.context }}
-          </p>
+        @if (heroContext(); as prose) {
+          <p class="context" [attr.lang]="presentation()?.locale">{{ prose }}</p>
         }
         <p class="record-actions">
           <button type="button" class="copy-link" (click)="copyLink()">Copiar link</button>
@@ -119,8 +113,8 @@
             <app-claim-references [claim]="item.claim" [atlas]="item.atlas" />
           } @empty {
             <p>
-              Não há afirmação com evidência historiográfica específica registrada neste recorte. O
-              cadastro não equivale a revisão humana.
+              Não há afirmação com fonte específica registrada neste recorte. O registro não
+              equivale a revisão humana.
             </p>
           }
           @if (claims().length) {
@@ -128,65 +122,42 @@
           }
         </section>
         <section aria-labelledby="connections-title">
-          <h2 id="connections-title">Conexões</h2>
-          @if (connectionGroups().length) {
-            <p class="note">
-              Os vínculos importados são caminhos de investigação; não comprovam influência por si
-              sós.
-            </p>
-          }
-          @for (group of connectionGroups(); track group.label) {
-            <p class="group-label">{{ group.label }} · {{ group.items.length }}</p>
-            <div class="connection-list">
-              @for (connection of group.items; track connection.id) {
-                <article class="connection">
-                  <h3>
-                    <a
-                      [routerLink]="pathFor(connection.entityId)"
-                      [queryParams]="{
-                        idioma: query().get('idioma'),
-                        origem: query().get('origem'),
-                      }"
-                      queryParamsHandling="merge"
-                      >{{ connection.label }}</a
-                    >
-                  </h3>
-                  @if (connection.relation; as relation) {
-                    <p class="direction">
-                      {{
-                        relation.direction === 'incoming'
-                          ? 'Vínculo de entrada'
-                          : 'Vínculo de saída'
-                      }}
-                    </p>
-                    <details>
-                      <summary>Contexto e evidências do vínculo</summary>
-                      <p>{{ relation.context }}</p>
-                      <p>
-                        {{ statusLabel(relation.editorialStatus) }}. Incerteza:
-                        {{ uncertaintyLabel[relation.uncertainty] }}.
-                      </p>
-                      @for (reference of relation.references; track reference.id) {
-                        <p>
-                          <a routerLink="/fontes" [fragment]="'source-' + reference.source.id">{{
-                            reference.source.title
-                          }}</a>
-                          · {{ reference.locator }}
-                        </p>
-                      }
-                      @if (relation.provenance; as provenance) {
-                        <p>
-                          <a [href]="provenance.url">Procedência: {{ provenance.source }}</a> ·
-                          {{ provenance.retrievedAt }}
-                        </p>
-                      }
-                    </details>
-                  }
-                </article>
+          <h2 id="connections-title">Como se liga às demais</h2>
+          @for (group of connectionGroups(); track group.tier) {
+            <details class="connection-group" [open]="!group.collapsed">
+              <summary class="group-label">
+                {{ group.title }} <span>{{ group.items.length }}</span>
+              </summary>
+              @if (group.hint; as hint) {
+                <p class="note">{{ hint }}</p>
               }
-            </div>
+              <div class="connection-list">
+                @for (item of group.items; track item.connection.id ?? item.connection.entityId) {
+                  <article class="connection">
+                    <app-relation-entry
+                      [nature]="group.tier === 'lead' ? null : item.reading?.nature"
+                      [meta]="item.reading?.meta"
+                      [prose]="item.reading?.prose"
+                      [evidence]="item.reading?.evidence ?? []"
+                    >
+                      <strong>{{ entity.title }}</strong> {{ item.reading?.predicate }}
+                      <a
+                        class="relation-party"
+                        [routerLink]="pathFor(item.connection.entityId)"
+                        [queryParams]="{
+                          idioma: query().get('idioma'),
+                          origem: query().get('origem'),
+                        }"
+                        queryParamsHandling="merge"
+                        >{{ item.connection.label }}</a
+                      >
+                    </app-relation-entry>
+                  </article>
+                }
+              </div>
+            </details>
           } @empty {
-            <p>Não há conexões cadastradas para este registro.</p>
+            <p class="reading-empty">Não há conexões registradas neste recorte.</p>
           }
         </section>
         @if (related().length) {
@@ -206,8 +177,8 @@
         }
       </div>
 
-      <aside aria-label="Ficha e proveniência" class="record-file">
-        <h2 id="sources-title">Fontes e proveniência</h2>
+      <aside aria-label="Fontes e licença" class="record-file">
+        <h2 id="sources-title">Fontes e licença</h2>
         @for (source of context()?.sources; track source.id) {
           <p>
             @if (source.url; as url) {
@@ -219,8 +190,7 @@
           </p>
         }
         @if (entity.discoveryMetadata; as metadata) {
-          <p>Coleta: {{ metadata.fetchedAt }}.</p>
-          <p>{{ metadata.attribution }}</p>
+          <p>Consulta em {{ consulted(metadata.fetchedAt) }}.</p>
           <p>
             <a [href]="metadata.contentLicenseUrl">{{ metadata.contentLicense }}</a>
           </p>

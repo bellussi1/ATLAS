@@ -59,11 +59,10 @@ export const relationTypes: Record<
     line: 'dotted',
   },
   'descoberta-enciclopedica': {
-    label: 'Link de descoberta',
-    short: 'Descoberta',
-    verb: 'liga-se a',
-    meaning:
-      'Ligação vinda de enciclopédias abertas, útil para explorar, sem validação historiográfica.',
+    label: 'Pista de leitura',
+    short: 'Pista',
+    verb: 'remete a',
+    meaning: 'Ligação entre verbetes de consulta. Ajuda a explorar e não comprova influência.',
     historical: false,
     line: 'dotted',
   },

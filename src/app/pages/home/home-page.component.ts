@@ -77,7 +77,7 @@ export class HomePage {
       tagline: 'Liberdade, propriedade e mercado',
       palette: 'liberal' as const,
       seed: 23,
-      summary: 'Explore pessoas, ideias, obras e acontecimentos no Atlas do Liberalismo.',
+      summary: 'Explore pessoas, ideias, obras e acontecimentos na leitura do liberalismo.',
       statusLabel: 'Acervo em revisão',
       sections: [
         {

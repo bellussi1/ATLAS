@@ -1,5 +1,10 @@
+import {
+  hasPartialCoverage,
+  isAiAssisted,
+  readerProse,
+} from '@core/content/editorial/reader-voice';
 import { reproducibleAsset } from '@core/content/media/asset-license';
-import { type KnowledgeContext } from '@core/content/models/knowledge-context';
+import { type ContextRequest, type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { type ContentRepository } from '@core/content/repositories/content-repository.service';
 
 export function entityContext(
@@ -14,7 +19,7 @@ export function entityContext(
     return {
       title: 'Registro indisponível',
       kind: 'Acervo',
-      summary: 'Este contexto não foi encontrado.',
+      summary: 'Este registro não foi encontrado no acervo.',
       paragraphs: [],
       sources: [],
       connections: [],
@@ -100,17 +105,49 @@ export function entityContext(
         (id === 'person-karl-marx' && a.id === 'asset-marx-portrait') ||
         (id === 'person-adam-smith' && a.id === 'asset-smith-portrait'),
     );
+  const seen = new Set([entity.summary]);
+  const fresh = (paragraph: string) => {
+    const prose = readerProse(paragraph);
+    if (!prose || seen.has(prose)) return [];
+    seen.add(prose);
+    return [prose];
+  };
+  const sections = entity.sections.flatMap(({ heading, paragraphs }) => {
+    const prose = paragraphs.flatMap(fresh);
+    return prose.length ? [{ heading, paragraphs: prose }] : [];
+  });
+  const discovery = entity.discoveryMetadata;
   return {
     entityId: entity.id,
     editorialStatus: entity.editorialStatus,
+    aiAssisted: isAiAssisted(references),
+    partialCoverage: hasPartialCoverage(entity.context),
     title: entity.title,
     kind: labels[entity.kind] ?? 'Registro',
+    description:
+      discovery?.description && discovery.description !== entity.summary
+        ? discovery.description
+        : null,
+    aliases: entity.aliases,
     summary: entity.summary,
-    paragraphs: [
-      ...new Set([entity.context, ...entity.sections.flatMap((s) => s.paragraphs)]),
-    ].filter((paragraph) => paragraph !== entity.summary),
+    paragraphs: fresh(entity.context),
+    sections,
     sources: references,
+    contentLicense: discovery && {
+      name: discovery.contentLicense,
+      url: discovery.contentLicenseUrl,
+    },
     connections,
     media: asset && reproducibleAsset(atlas, asset.assetPath),
   };
+}
+
+/** What a request shows: the entity's record, with why it matters where it was opened. */
+export function contextFor(
+  repository: Parameters<typeof entityContext>[0],
+  request: ContextRequest,
+): KnowledgeContext {
+  if ('record' in request) return request.record;
+  const record = entityContext(repository, request.entityId);
+  return request.relevance ? { ...record, relevance: request.relevance } : record;
 }

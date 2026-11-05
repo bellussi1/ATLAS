@@ -2,8 +2,12 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { editorialStatusLabel } from '@core/content/editorial/editorial-status';
-import { type KnowledgeContext } from '@core/content/models/knowledge-context';
+import {
+  editorialSeal,
+  readerDate,
+  readerProse,
+  relationGroups,
+} from '@core/content/editorial/reader-voice';
 import { entityContext } from '@core/content/queries/entity-context';
 import {
   catalogueForKind,
@@ -16,6 +20,7 @@ import { EntityProfileComponent } from '@exploration/components/entity-profile/e
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
 import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found-message.component';
+import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry.component';
 
 @Component({
   selector: 'app-record',
@@ -25,6 +30,7 @@ import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found
     AtlasClaimReferencesComponent,
     EntityProfileComponent,
     NotFoundMessageComponent,
+    RelationEntryComponent,
   ],
   templateUrl: './record.component.html',
   styleUrl: './record.component.scss',
@@ -36,18 +42,11 @@ export class RecordComponent {
   private readonly doc = inject(DOCUMENT);
   readonly repository = inject(ContentRepository);
   readonly copyStatus = signal('');
-  readonly statusLabel = editorialStatusLabel;
   readonly precisionLabel: Record<string, string> = {
     year: 'ano',
     approximate: 'data aproximada',
     range: 'intervalo',
     unknown: 'data desconhecida',
-  };
-  readonly uncertaintyLabel: Record<string, string> = {
-    low: 'baixa',
-    moderate: 'moderada',
-    high: 'alta',
-    unknown: 'não determinada',
   };
   readonly params = toSignal(this.route.paramMap, { initialValue: this.route.snapshot.paramMap });
   readonly query = toSignal(this.route.queryParamMap, {
@@ -72,20 +71,28 @@ export class RecordComponent {
   });
   readonly entity = computed(() => this.presentation()?.entity);
   readonly languages = contentLanguageLabels;
-  /** The hero repeats the context only when no section already carries it. */
-  readonly showContext = computed(() => {
+  /** The hero repeats the context only when it is prose and no section already carries it. */
+  readonly heroContext = computed(() => {
     const entity = this.entity();
-    if (!entity?.context || entity.context === entity.summary) return false;
-    return !entity.sections.some((section) => section.paragraphs.includes(entity.context));
+    const prose = readerProse(entity?.context);
+    if (!entity || !prose || prose === entity.summary) return null;
+    return entity.sections.some((section) => section.paragraphs.includes(prose)) ? null : prose;
   });
-  /** Imported drafts carry their review warning in the context; it must stand out from prose. */
-  readonly isDraft = computed(() => this.entity()?.context.startsWith('Rascunho') ?? false);
-  /** Sections keep their source index, the public `section-N` anchor; ones equal to the lead are skipped. */
+  /** Sections keep their source index, the public `section-N` anchor; ones equal to the lead or with only process notes are skipped. */
   readonly readableSections = computed(() => {
     const entity = this.entity();
     return (entity?.sections ?? [])
-      .map((section, index) => ({ section, index }))
-      .filter(({ section }) => section.paragraphs.join(' ') !== entity?.summary);
+      .map((section, index) => ({
+        index,
+        section: {
+          heading: section.heading,
+          paragraphs: section.paragraphs.flatMap((paragraph) => readerProse(paragraph) ?? []),
+        },
+      }))
+      .filter(
+        ({ section }) =>
+          section.paragraphs.length && section.paragraphs.join(' ') !== entity?.summary,
+      );
   });
   readonly context = computed(() =>
     this.entity() ? entityContext(this.repository, this.entity()!.id) : undefined,
@@ -114,14 +121,12 @@ export class RecordComponent {
         .map((claim) => ({ claim, atlas })),
     ),
   );
-  /** Connections gathered under the relation that links them to this record. */
-  readonly connectionGroups = computed(() => {
-    const groups = new Map<string, KnowledgeContext['connections']>();
-    for (const connection of this.context()?.connections ?? []) {
-      const label = connection.relation?.label ?? 'Relacionado';
-      groups.set(label, [...(groups.get(label) ?? []), connection]);
-    }
-    return [...groups].map(([label, items]) => ({ label, items }));
+  /** Connections by weight of evidence, each read as a sentence. */
+  readonly connectionGroups = computed(() => relationGroups(this.context()?.connections ?? []));
+  /** Editorial state as a discreet seal, away from the running text. */
+  readonly seal = computed(() => {
+    const context = this.context();
+    return context ? editorialSeal(context) : '';
   });
   /** Other records of the same kind, as a way to keep reading. */
   readonly related = computed(() => {
@@ -174,10 +179,11 @@ export class RecordComponent {
         label: section.heading,
       })),
       { id: 'claims-title', label: 'Afirmações e evidências' },
-      { id: 'connections-title', label: 'Conexões' },
-      { id: 'sources-title', label: 'Fontes e proveniência' },
+      { id: 'connections-title', label: 'Como se liga às demais' },
+      { id: 'sources-title', label: 'Fontes e licença' },
     ];
   });
+  readonly consulted = readerDate;
   pathFor(id: string): string {
     return this.repository.discoveryIndex.find((e) => e.id === id)?.path ?? '/entidades';
   }

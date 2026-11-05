@@ -120,12 +120,12 @@ export const EDGE_BY_NATURE = {
 /** Wikidata labels are contributors' classifications: association, whatever the property says. */
 export const LABEL_EDGES = {
   P737: {
-    label: 'é rotulado no Wikidata em associação com (P737)',
-    reverseLabel: 'tem rótulo de associação no Wikidata vindo de (P737)',
+    label: 'é classificado em associação com',
+    reverseLabel: 'recebe classificação de associação de',
   },
   P1142: {
-    label: 'é rotulado no Wikidata com a ideologia (P1142)',
-    reverseLabel: 'é a ideologia rotulada no Wikidata de (P1142)',
+    label: 'é classificado com a ideologia',
+    reverseLabel: 'é a ideologia atribuída a',
   },
 };
 
@@ -502,7 +502,7 @@ function edgesForDraft(item, entityId, resolve, pending) {
       type: edge.type,
       label: edge.label,
       reverseLabel: edge.reverseLabel,
-      context: `${sentence(relation.sentence)} Extraído por IA (Wikipédia ${draft.source.language}, revisão ${draft.source.revision}, ${LICENSE}) e conferido contra o trecho. ${REVIEW_NOTE}.`,
+      context: sentence(relation.sentence),
       temporalExtent: null,
       uncertainty: 'unknown',
       evidenceIds: [evidenceId],
@@ -557,7 +557,7 @@ function labelEdges(statements, resolve, existingPairs, atlasOf, retrievedAt) {
       type: 'associated_with',
       label: edge.label,
       reverseLabel: edge.reverseLabel,
-      context: `Associação vinda de um rótulo do Wikidata (${statement.property}). Não é influência documentada. ${REVIEW_NOTE}.`,
+      context: `Classificação de catálogo colaborativo. Não é influência documentada.`,
       temporalExtent: null,
       uncertainty: 'unknown',
       evidenceIds: [`ev-wiki-wd-${key}`],
@@ -574,9 +574,8 @@ function entityFor(canonical, members, slug) {
   const language = draft.source.language;
   const title = wikipediaTitle(draft.source.url, draft.entity.label);
   const context = [
-    `Rascunho assistido por IA a partir da Wikipédia (${language}), revisão ${draft.source.revision}.`,
-    draft.source.truncated === true ? 'Leitura parcial do artigo; cobertura incompleta.' : null,
-    `${REVIEW_NOTE}.`,
+    'Síntese de fonte enciclopédica com revisão editorial pendente.',
+    draft.source.truncated === true ? 'Cobertura parcial da fonte.' : null,
   ]
     .filter(Boolean)
     .join(' ');
@@ -592,7 +591,9 @@ function entityFor(canonical, members, slug) {
     title: draft.entity.label,
     summary: draft.summary,
     aliases: aliasesFor(members, draft.entity.label),
-    context: merged.length ? `${context} Fontes adicionais em: ${merged.join(', ')}.` : context,
+    context: merged.length
+      ? `${context} Fontes adicionais em outro idioma: ${merged.join(', ')}.`
+      : context,
     temporalExtent: null,
     uncertainty: 'unknown',
     revision: 1,
@@ -827,8 +828,8 @@ export function convertDrafts(
     const atlas = {
       id: atlasIdFor(tradition.key),
       slug: `${tradition.key}-wikipedia`,
-      title: `${tradition.label} (rascunhos da Wikipédia)`,
-      description: `Rascunhos assistidos por IA extraídos da Wikipédia, ${LICENSE}. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.`,
+      title: `${tradition.label}: registros em revisão`,
+      description: `Sínteses por IA de fontes enciclopédicas, ${LICENSE}. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.`,
       version: '1.0.0',
       updatedAt,
       entityIds: bucket.entities.map((entity) => entity.id),

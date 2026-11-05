@@ -489,7 +489,7 @@ test('relação confirmada vira aresta com tipo, direção, evidência literal, 
   assert.equal(edge.editorialStatus, 'pending');
   assert.equal(edge.provenance.source, 'wikipedia');
   assert.equal(edge.provenance.url, 'https://pt.wikipedia.org/wiki/Karl_Marx');
-  assert.match(edge.context, /Revisão humana não registrada/);
+  assert.doesNotMatch(edge.context, /Wikip[eé]dia|Extraído por IA|Revisão humana/);
   const evidence = atlas.evidences.find((e) => e.id === edge.evidenceIds[0]);
   assert.equal(evidence.locator, 'Marx influenciou profundamente Friedrich Engels');
   assert.equal(evidence.sourceId, 'src-wiki-a');

@@ -12,15 +12,16 @@ import {
   signal,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { editorialSeal, relationGroups } from '@core/content/editorial/reader-voice';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import {
   type ContextConnection,
   type ContextStop,
   type KnowledgeContext,
 } from '@core/content/models/knowledge-context';
-import { entityContext } from '@core/content/queries/entity-context';
+import { contextFor, entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
-import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
+import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry.component';
 
 import { keepScrollAnchor } from './keep-scroll';
 
@@ -56,7 +57,7 @@ function toneOf(kind: string): string {
  */
 @Component({
   selector: 'app-knowledge-context',
-  imports: [RouterLink, RecordCardComponent, ContentMediaPipe],
+  imports: [RouterLink, RelationEntryComponent, ContentMediaPipe],
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
   host: {
@@ -111,20 +112,10 @@ export class KnowledgeContextComponent {
       .map((step, i, all) => ({ title: step.record.title, offset: all.length - i })),
   );
   readonly depth = computed(() => Math.min(this.history().length, VISIBLE_SHEETS));
-  /** First registered source and the license of the picture, for the sheet's footer. */
-  readonly citation = computed(() => {
-    const record = this.record();
-    const source = record.sources[0] ?? record.connections[0]?.relation?.references[0]?.source;
-    const provenance = record.connections.find((c) => c.relation?.provenance)?.relation?.provenance;
-    return {
-      source,
-      extra: Math.max(0, record.sources.length - 1),
-      attribution: record.media?.attribution ?? record.media?.creator,
-      license: record.media?.license,
-      licenseUrl: record.media?.licenseUrl,
-      checkUrl: source?.url ?? provenance?.url ?? record.media?.filePageUrl ?? null,
-    };
-  });
+  /** Editorial state as a discreet seal, away from the running text. */
+  readonly seal = computed(() => editorialSeal(this.record()));
+  /** Connections by weight of evidence, each read as a sentence. */
+  readonly groups = computed(() => relationGroups(this.record().connections));
 
   constructor() {
     this.ref.keydownEvents?.subscribe((event) => {
@@ -169,11 +160,13 @@ export class KnowledgeContextComponent {
     const at = this.index() + delta;
     const stop = this.stops()[at];
     if (!stop) return;
-    const record =
-      'record' in stop.request
-        ? stop.request.record
-        : entityContext(this.repository, stop.request.entityId);
-    this.show(record, this.stops(), at);
+    this.show(contextFor(this.repository, stop.request), this.stops(), at);
+  }
+  /** Moves the reader to a part of a long sheet; immediate, so it needs no reduced-motion case. */
+  jump(id: string): void {
+    const target = this.host.nativeElement.querySelector<HTMLElement>(`.sheet #${id}`);
+    target?.scrollIntoView({ block: 'start' });
+    target?.focus({ preventScroll: true });
   }
   pin(): void {
     this.pinned.set(this.record());
@@ -229,46 +222,6 @@ export class KnowledgeContextComponent {
   /** Leaves through a link: the router navigation replaces the sheets' entries. */
   leave(): void {
     this.ref.close();
-  }
-
-  statusLabel(status: KnowledgeContext['editorialStatus']): string {
-    switch (status) {
-      case 'pending':
-        return 'Revisão editorial pendente';
-      case 'draft':
-        return 'Rascunho';
-      case 'verified':
-        return 'Marcado como verificado';
-      case 'contested':
-        return 'Contestado';
-      case 'needs-update':
-        return 'Precisa de atualização';
-      default:
-        return 'Estado editorial não informado';
-    }
-  }
-
-  relationKind(connection: ContextConnection): string {
-    switch (connection.relation?.type) {
-      case 'encyclopedic-link':
-        return 'Descoberta enciclopédica';
-      case 'editorial-link':
-        return 'Vínculo editorial';
-      case 'documented-association':
-        return 'Associação documentada';
-      case 'influence':
-      case 'influenced':
-      case 'influenced_by':
-        return 'Influência registrada';
-      case 'reacted_against':
-        return 'Divergência registrada';
-      default:
-        return 'Relação registrada';
-    }
-  }
-
-  uncertaintyLabel(value: NonNullable<ContextConnection['relation']>['uncertainty']): string {
-    return { low: 'baixa', moderate: 'moderada', high: 'alta', unknown: 'não determinada' }[value];
   }
 
   /**
