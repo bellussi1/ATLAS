@@ -27,9 +27,16 @@ import {
   relationFamilies,
   relationFamilyDefinition,
   type RelationFamilyId,
+  relationNatureDefinition,
   searchNodes,
+  shortestPath,
 } from '@core/content/queries/knowledge-network';
-import { type LabelCandidate, placeLabels } from '@core/content/queries/network-labels';
+import {
+  LABEL_HEIGHT,
+  type LabelCandidate,
+  labelWidth,
+  placeLabels,
+} from '@core/content/queries/network-labels';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 
@@ -40,20 +47,6 @@ interface View {
   y: number;
   k: number;
 }
-
-const reverseLabels: Record<RelationFamilyId, string> = {
-  influenced: 'Foi influenciado por',
-  participated: 'Teve a participação de',
-  member: 'Teve como membro',
-  founded: 'Foi fundado por',
-  wrote: 'Foi escrito por',
-  developed: 'Originou-se de',
-  reacted: 'Foi alvo de reação de',
-  succeeded: 'Foi sucedido por',
-  governed: 'Foi governado por',
-  occurred: 'Foi cenário de',
-  associated: 'Associado a',
-};
 
 const classificationLabels: Record<string, string> = {
   'documented-fact': 'Fato documentado',
@@ -80,6 +73,7 @@ export class GraphComponent {
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
   private readonly network = buildKnowledgeNetwork(this.repository.knowledgeGraph);
   private readonly nodeIndex = new Map(this.network.nodes.map((node) => [node.id, node]));
+  private readonly edgeIndex = new Map(this.network.edges.map((edge) => [edge.id, edge]));
 
   readonly kinds = networkKinds;
   readonly families = relationFamilies;
@@ -109,6 +103,14 @@ export class GraphComponent {
   readonly positions = signal<ReadonlyMap<string, NetworkPoint> | null>(null);
   readonly reducedMotion = signal(false);
   readonly dragging = signal(false);
+  /** True while the view glides to a new place; labels wait until it settles. */
+  readonly animating = signal(false);
+  /** Edge under the pointer or focused in the detail list. */
+  readonly hoveredEdgeId = signal<string | null>(null);
+  /** Pointer position inside the stage, for the hover card. */
+  readonly pointerAt = signal<{ x: number; y: number } | null>(null);
+  /** Start of a path between two nodes; the end is the selected node. */
+  readonly pathFromId = signal<string | null>(null);
 
   readonly total = this.network.nodes.length;
   readonly loading = computed(() => this.positions() === null && this.total > 0);
@@ -146,12 +148,42 @@ export class GraphComponent {
     const node = this.selected();
     return node ? positionClaims(node).slice(0, 3) : [];
   });
-  /** The node whose surroundings are lit: the selected one, otherwise the one under the pointer. */
-  readonly activeId = computed(() => this.selectedId() ?? this.hoveredId());
-  readonly neighbours = computed(() => {
+  /** The node whose surroundings are lit: the one under the pointer, otherwise the selected one. */
+  readonly activeId = computed(() => this.hoveredId() ?? this.selectedId());
+  readonly activeLinks = computed(() => {
     const id = this.activeId();
-    if (!id) return new Set<string>();
-    return new Set(linksOf(id, this.visible().edges, this.nodeIndex).map((link) => link.other.id));
+    return id ? linksOf(id, this.visible().edges, this.nodeIndex) : [];
+  });
+  readonly neighbours = computed(() => new Set(this.activeLinks().map((link) => link.other.id)));
+  readonly pathFrom = computed(() => {
+    const id = this.pathFromId();
+    return id ? (this.nodeIndex.get(id) ?? null) : null;
+  });
+  /** Steps from the path origin to the selected node; null when they are not connected. */
+  readonly path = computed(() => {
+    const from = this.pathFromId();
+    const to = this.selectedId();
+    if (!from || !to || from === to) return undefined;
+    return shortestPath(from, to, this.visible().edges);
+  });
+  readonly pathSteps = computed(() =>
+    (this.path() ?? []).map((step) => ({
+      ...step,
+      fromNode: this.nodeIndex.get(step.from)!,
+      toNode: this.nodeIndex.get(step.to)!,
+      nature: relationNatureDefinition(step.edge.nature),
+      forward: step.edge.source === step.from,
+    })),
+  );
+  private readonly pathEdgeIds = computed(
+    () => new Set((this.path() ?? []).map((step) => step.edge.id)),
+  );
+  /** Nodes that stay lit: the path, or the active node with its neighbours; null when all are. */
+  private readonly litNodes = computed<ReadonlySet<string> | null>(() => {
+    const path = this.path();
+    if (path?.length) return new Set(path.flatMap((step) => [step.from, step.to]));
+    const active = this.activeId();
+    return active ? new Set([active, ...this.neighbours()]) : null;
   });
   /** Free part of the stage, in pixels, between the floating panels. */
   readonly insets = computed(() => {
@@ -183,7 +215,17 @@ export class GraphComponent {
       if (!point) return [];
       const kind = networkKindDefinition(node.kind);
       const r = nodeRadius(node.degree);
-      return [{ node, kind, r, x: point.x, y: point.y, path: shapePath(kind.shape, r) }];
+      return [
+        {
+          node,
+          kind,
+          r,
+          x: point.x,
+          y: point.y,
+          path: shapePath(kind.shape, r),
+          drift: driftOf(node.id),
+        },
+      ];
     });
   });
   readonly zoomK = computed(() => this.view().k);
@@ -205,6 +247,7 @@ export class GraphComponent {
         {
           edge,
           family,
+          delay: (hash(edge.id) % 10) * 28,
           x1: from.x,
           y1: from.y,
           x2: to.x - (dx / length) * pad,
@@ -219,38 +262,50 @@ export class GraphComponent {
   });
   /** Shapes keep a readable size on screen: larger when zoomed out, smaller when zoomed in. */
   readonly nodeScale = computed(() => Math.round(nodeScaleFor(this.zoomK()) * 100) / 100);
-  /** Labels are placed in screen space so none covers another label or a node shape. */
+  /**
+   * Labels are placed in screen space so none covers another label or a node shape. Zoomed out
+   * only the best connected nodes are named; each zoom step names more. While a node is lit,
+   * only that node and its neighbours keep their names.
+   */
   readonly labels = computed(() => {
     const nodes = this.drawnNodes();
-    if (!nodes.length) return [];
+    if (!nodes.length || this.animating()) return [];
     const k = this.zoomK();
     const scale = nodeScaleFor(k);
     const zoom = k / this.fitK();
+    const lit = this.litNodes();
+    const selectedId = this.selectedId();
+    const activeId = this.activeId();
     const forced = new Set<string>([
-      ...this.neighbours(),
       ...this.matchIds(),
-      ...[this.selectedId(), this.hoveredId(), this.focusId()].filter((id): id is string => !!id),
+      ...[selectedId, this.hoveredId(), this.focusId()].filter((id): id is string => !!id),
     ]);
+    const minDegree = zoom < 1.6 ? 2 : zoom < 3.2 ? 1 : 0;
     const ranked = [...nodes].sort((a, b) => b.node.degree - a.node.degree);
     const candidates: LabelCandidate[] = [];
     ranked.forEach((item, rank) => {
-      const isForced = forced.has(item.node.id);
+      const id = item.node.id;
+      if (lit && !lit.has(id)) return;
+      const important = lit !== null || forced.has(id);
+      if (!important && item.node.degree < minDegree) return;
       candidates.push({
-        id: item.node.id,
-        text: item.node.title,
+        id,
+        text: important ? item.node.title : shorten(item.node.title),
         x: item.x * k,
         y: item.y * k,
         radius: item.r * scale * k,
-        priority: item.node.id === this.selectedId() ? -2 : isForced ? -1 : rank,
-        forced: item.node.id === this.selectedId(),
+        priority: id === activeId ? -2 : important ? -1 : rank,
+        forced: id === activeId || id === selectedId,
       });
     });
-    const obstacles = nodes.map((item) => ({
-      id: item.node.id,
-      x: item.x * k,
-      y: item.y * k,
-      radius: item.r * scale * k,
-    }));
+    const obstacles = nodes
+      .filter((item) => !lit || lit.has(item.node.id))
+      .map((item) => ({
+        id: item.node.id,
+        x: item.x * k,
+        y: item.y * k,
+        radius: item.r * scale * k,
+      }));
     const byId = new Map(nodes.map((item) => [item.node.id, item]));
     const { x: vx, y: vy } = this.view();
     const { width, height } = this.size();
@@ -261,14 +316,115 @@ export class GraphComponent {
       right: width - inset.right - vx,
       bottom: height - inset.bottom - vy,
     };
-    return placeLabels(candidates, obstacles, Math.round(10 + 14 * zoom), bounds).flatMap(
-      (label) => {
-        const item = byId.get(label.id);
-        return item
-          ? [{ ...label, wx: item.x * k, wy: item.y * k, dimmed: this.isDimmed(label.id) }]
-          : [];
+    const limit = lit ? Infinity : Math.round(16 + 30 * zoom);
+    const neighbours = this.neighbours();
+    return placeLabels(candidates, obstacles, limit, bounds).flatMap((label, order) => {
+      const item = byId.get(label.id);
+      return item
+        ? [
+            {
+              ...label,
+              wx: item.x * k,
+              wy: item.y * k,
+              neighbour: neighbours.has(label.id),
+              delay: Math.min(order, 14) * 24,
+            },
+          ]
+        : [];
+    });
+  });
+  /** Short phrases on the links of the lit node, placed at the middle of each link. */
+  readonly edgeLabels = computed(() => {
+    const active = this.activeId();
+    const positions = this.positions();
+    if (!active || !positions || this.animating()) return [];
+    const k = this.zoomK();
+    const { x: vx, y: vy } = this.view();
+    const taken = this.labels().map((label) => {
+      const width = labelWidth(label.text);
+      const x = vx + label.wx + label.dx;
+      const y = vy + label.wy + label.dy;
+      const left =
+        label.anchor === 'start' ? x : label.anchor === 'end' ? x - width : x - width / 2;
+      return { left, right: left + width, top: y - LABEL_HEIGHT / 2, bottom: y + LABEL_HEIGHT / 2 };
+    });
+    const placed: { id: string; text: string; x: number; y: number; delay: number }[] = [];
+    for (const link of this.activeLinks().slice(0, 18)) {
+      const from = positions.get(link.edge.source);
+      const to = positions.get(link.edge.target);
+      if (!from || !to) continue;
+      const text = this.linkVerb(link);
+      const x = ((from.x + to.x) / 2) * k + vx;
+      const y = ((from.y + to.y) / 2) * k + vy;
+      const width = labelWidth(text);
+      const box = { left: x - width / 2, right: x + width / 2, top: y - 8, bottom: y + 8 };
+      const clash = taken.some(
+        (other) =>
+          box.left < other.right &&
+          box.right > other.left &&
+          box.top < other.bottom &&
+          box.bottom > other.top,
+      );
+      if (clash) continue;
+      taken.push(box);
+      placed.push({ id: link.edge.id, text, x, y, delay: 120 + placed.length * 30 });
+    }
+    return placed;
+  });
+  /** Overview of the whole map with the part on screen outlined. */
+  readonly minimap = computed(() => {
+    const world = this.world();
+    if (!this.positions() || !world.width) return null;
+    const width = 168;
+    const height = Math.round(Math.max(60, Math.min(120, (width * world.height) / world.width)));
+    const scale = Math.min(width / world.width, height / world.height);
+    const { x, y, k } = this.view();
+    const { width: sw, height: sh } = this.size();
+    return {
+      width,
+      height,
+      scale,
+      dots: this.drawnNodes().map((item) => ({
+        id: item.node.id,
+        x: item.x * scale,
+        y: item.y * scale,
+        color: item.kind.color,
+      })),
+      box: { x: (-x / k) * scale, y: (-y / k) * scale, w: (sw / k) * scale, h: (sh / k) * scale },
+    };
+  });
+  /** Card that follows the pointer: the node, or the link, under it. */
+  readonly hoverCard = computed(() => {
+    const at = this.pointerAt();
+    if (!at || this.dragging()) return null;
+    const { width, height } = this.size();
+    const left = at.x > width - 340 ? at.x - 320 : at.x + 16;
+    const top = Math.max(8, Math.min(at.y + 16, height - 200));
+    const hoveredId = this.hoveredId();
+    const edgeId = this.hoveredEdgeId();
+    if (edgeId && !hoveredId) {
+      const edge = this.edgeIndex.get(edgeId);
+      const source = edge && this.nodeIndex.get(edge.source);
+      const target = edge && this.nodeIndex.get(edge.target);
+      if (edge && source && target)
+        return { left, top, relation: this.describeEdge(edge, source, target), node: null };
+    }
+    const node = hoveredId ? this.nodeIndex.get(hoveredId) : null;
+    if (!node) return null;
+    const links = this.activeLinks();
+    return {
+      left,
+      top,
+      relation: null,
+      node: {
+        title: node.title,
+        kind: this.kindLabel(node),
+        total: links.length,
+        top: links
+          .slice(0, 3)
+          .map((link) => ({ verb: this.linkVerb(link), name: link.other.title })),
       },
-    );
+    };
   });
   readonly zoomPercent = computed(() => Math.round((this.zoomK() / this.fitK()) * 100));
   readonly status = computed(() => {
@@ -287,6 +443,9 @@ export class GraphComponent {
   private pinch: { distance: number; origin: View } | null = null;
   /** The view follows window resizes until the reader moves or zooms it. */
   private autoFit = true;
+  private tweenToken = 0;
+  private allK = 0.1;
+  private cycleOrigin: string | null = null;
 
   constructor() {
     afterNextRender(() => {
@@ -304,7 +463,8 @@ export class GraphComponent {
       wideMedia?.addEventListener('change', onWide);
       let fitted = false;
       const observer = new (globalThis.ResizeObserver ?? FallbackObserver)(() => {
-        if (!element) return;
+        // A hidden or collapsed stage reports no size; keep the last real one.
+        if (!element?.clientWidth || !element.clientHeight) return;
         this.size.set({ width: element.clientWidth, height: element.clientHeight });
         if (this.positions() && (!fitted || this.autoFit)) {
           fitted = true;
@@ -374,13 +534,16 @@ export class GraphComponent {
       L: () => this.toggleControls(),
       o: () => this.openSelected(),
       O: () => this.openSelected(),
-      '+': () => this.zoomBy(1.25),
-      '=': () => this.zoomBy(1.25),
-      '-': () => this.zoomBy(0.8),
-      _: () => this.zoomBy(0.8),
-      '0': () => this.fit(),
+      '+': () => this.zoomStep(1.25),
+      '=': () => this.zoomStep(1.25),
+      '-': () => this.zoomStep(0.8),
+      _: () => this.zoomStep(0.8),
+      '0': () => this.fit(true),
+      c: () => this.togglePathStart(),
+      C: () => this.togglePathStart(),
       Escape: () => {
         if (this.shortcutsOpen()) this.shortcutsOpen.set(false);
+        else if (this.pathFromId()) this.pathFromId.set(null);
         else if (this.selectedId()) this.clearSelection();
         else if (this.controlsOpen() && !this.wide()) this.controlsOpen.set(false);
       },
@@ -417,14 +580,23 @@ export class GraphComponent {
     this.selectedId.set(null);
   }
   isDimmed(id: string): boolean {
-    const active = this.activeId();
-    if (active) return id !== active && !this.neighbours().has(id);
-    const matches = this.matchIds();
-    return this.query().trim() !== '' && !matches.has(id);
+    const lit = this.litNodes();
+    if (lit) return !lit.has(id);
+    return this.query().trim() !== '' && !this.matchIds().has(id);
   }
   edgeDimmed(edge: NetworkEdge): boolean {
+    const path = this.path();
+    if (path?.length) return !this.pathEdgeIds().has(edge.id);
     const active = this.activeId();
     return !!active && edge.source !== active && edge.target !== active;
+  }
+  edgeLit(edge: NetworkEdge): boolean {
+    const active = this.activeId();
+    return (
+      this.pathEdgeIds().has(edge.id) ||
+      edge.id === this.hoveredEdgeId() ||
+      (!!active && (edge.source === active || edge.target === active))
+    );
   }
   tabIndexFor(id: string): number {
     const roving = this.focusId() ?? this.drawnNodes()[0]?.node.id;
@@ -440,12 +612,17 @@ export class GraphComponent {
   kindLabel(node: NetworkNode): string {
     return networkKindDefinition(node.kind).label;
   }
-  /** Reading of a link from the selected node's side: "Influenciou" or "Foi influenciado por". */
-  linkVerb(edge: NetworkEdge): string {
-    return relationFamilyDefinition(edge.family).label;
+  /** Reading of a link from the lit node's side: "influenciou" or "foi influenciado por". */
+  linkVerb(link: { edge: NetworkEdge; outgoing: boolean }): string {
+    return link.outgoing ? link.edge.phrase : link.edge.phraseReverse;
   }
-  linkVerbReverse(edge: NetworkEdge): string {
-    return reverseLabels[edge.family];
+  natureOf(edge: NetworkEdge) {
+    return relationNatureDefinition(edge.nature);
+  }
+  /** Why the link exists, in a sentence the reader can check against the source. */
+  reasonOf(edge: NetworkEdge): string {
+    const nature = relationNatureDefinition(edge.nature);
+    return edge.nature === 'stated' || edge.nature === 'editorial' ? edge.context : nature.note;
   }
   classificationLabel(value: string): string {
     return classificationLabels[value] ?? value;
@@ -461,6 +638,12 @@ export class GraphComponent {
       this.select(id);
       return;
     }
+    if (event.key === ']' || event.key === '[') {
+      event.preventDefault();
+      event.stopPropagation();
+      this.cycleNeighbour(id, event.key === ']' ? 1 : -1);
+      return;
+    }
     const direction = {
       ArrowRight: [1, 0],
       ArrowLeft: [-1, 0],
@@ -474,16 +657,71 @@ export class GraphComponent {
     if (!next) return;
     this.focusId.set(next);
     this.reveal(next);
-    queueMicrotask(() =>
-      this.stage()
-        ?.nativeElement.querySelector<SVGElement>(`[data-node="${CSS.escape(next)}"]`)
-        ?.focus({ preventScroll: true }),
-    );
+    this.focusNode(next);
+  }
+
+  // ---- relations: hover, path and neighbours ----
+
+  hoverNode(id: string | null): void {
+    this.hoveredId.set(id);
+  }
+  hoverEdge(id: string | null): void {
+    this.hoveredEdgeId.set(id);
+  }
+  stagePointer(event: PointerEvent): void {
+    if (event.pointerType === 'touch') return;
+    const rect = this.stage()?.nativeElement.getBoundingClientRect();
+    if (rect) this.pointerAt.set({ x: event.clientX - rect.left, y: event.clientY - rect.top });
+  }
+  stageLeave(): void {
+    this.pointerAt.set(null);
+    this.hoveredId.set(null);
+    this.hoveredEdgeId.set(null);
+  }
+  togglePathStart(): void {
+    const id = this.selectedId();
+    if (this.pathFromId()) this.pathFromId.set(null);
+    else if (id) this.pathFromId.set(id);
+  }
+  clearPath(): void {
+    this.pathFromId.set(null);
+  }
+  /** Moves selection or focus to the next (or previous) neighbour of a node. */
+  cycleNeighbour(id: string, step: 1 | -1): void {
+    const edges = this.visible().edges;
+    let origin = this.cycleOrigin;
+    if (
+      !origin ||
+      (id !== origin && !linksOf(origin, edges, this.nodeIndex).some((l) => l.other.id === id))
+    )
+      origin = id;
+    this.cycleOrigin = origin;
+    const links = linksOf(origin, edges, this.nodeIndex);
+    if (!links.length) return;
+    const at = links.findIndex((link) => link.other.id === id);
+    const index =
+      at === -1 ? (step > 0 ? 0 : links.length - 1) : (at + step + links.length) % links.length;
+    const next = links[index].other.id;
+    this.focusId.set(next);
+    this.reveal(next);
+    this.focusNode(next);
+  }
+  /** Click or key on the overview: centres the view on that spot. */
+  minimapJump(event: MouseEvent): void {
+    const map = this.minimap();
+    if (!map) return;
+    const rect = (event.currentTarget as SVGElement).getBoundingClientRect();
+    const wx = (event.clientX - rect.left) / map.scale;
+    const wy = (event.clientY - rect.top) / map.scale;
+    const { width, height } = this.size();
+    const { k } = this.view();
+    this.autoFit = false;
+    this.glideTo({ k, x: width / 2 - wx * k, y: height / 2 - wy * k }, true);
   }
 
   // ---- view: zoom and pan ----
 
-  fit(): void {
+  fit(animate = false): void {
     const { width, height } = this.size();
     if (!width || !height) return;
     this.autoFit = true;
@@ -491,25 +729,60 @@ export class GraphComponent {
     const inset = this.insets();
     const freeW = Math.max(120, width - inset.left - inset.right);
     const freeH = Math.max(120, height - inset.top - inset.bottom);
-    const k = Math.min(freeW / world.width, freeH / world.height) * 0.98;
+    const allK = Math.min(freeW / world.width, freeH / world.height) * 0.98;
+    this.allK = allK;
+    // The linked core fills the view; the ring of unlinked entries stays one zoom-out away.
+    const positions = this.positions();
+    const core = this.drawnNodes().filter((item) => item.node.degree > 0);
+    const box =
+      core.length >= 3 && positions
+        ? core.reduce(
+            (acc, item) => ({
+              minX: Math.min(acc.minX, item.x - item.r * 2),
+              maxX: Math.max(acc.maxX, item.x + item.r * 2),
+              minY: Math.min(acc.minY, item.y - item.r * 2),
+              maxY: Math.max(acc.maxY, item.y + item.r * 2),
+            }),
+            { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity },
+          )
+        : { minX: 0, maxX: world.width, minY: 0, maxY: world.height };
+    const bw = Math.max(1, box.maxX - box.minX + 160);
+    const bh = Math.max(1, box.maxY - box.minY + 120);
+    const k = Math.max(allK, Math.min(freeW / bw, freeH / bh) * 0.98);
     this.fitK.set(k);
-    this.view.set({
-      k,
-      x: inset.left + (freeW - world.width * k) / 2,
-      y: inset.top + (freeH - world.height * k) / 2,
-    });
+    this.glideTo(
+      {
+        k,
+        x: inset.left + freeW / 2 - ((box.minX + box.maxX) / 2) * k,
+        y: inset.top + freeH / 2 - ((box.minY + box.maxY) / 2) * k,
+      },
+      animate,
+    );
+  }
+  zoomStep(factor: number): void {
+    const { width, height } = this.size();
+    const { x, y, k } = this.view();
+    const next = Math.min(this.fitK() * 12, Math.max(this.minK(), k * factor));
+    const ratio = next / k;
+    this.autoFit = false;
+    this.glideTo(
+      { k: next, x: width / 2 - (width / 2 - x) * ratio, y: height / 2 - (height / 2 - y) * ratio },
+      true,
+    );
   }
   zoomBy(factor: number, around?: { x: number; y: number }): void {
+    this.stopGlide();
     this.autoFit = false;
     const { width, height } = this.size();
     const point = around ?? { x: width / 2, y: height / 2 };
     this.view.update(({ x, y, k }) => {
-      const next = Math.min(this.fitK() * 12, Math.max(this.fitK() * 0.5, k * factor));
+      const next = Math.min(this.fitK() * 12, Math.max(this.minK(), k * factor));
       const ratio = next / k;
       return { k: next, x: point.x - (point.x - x) * ratio, y: point.y - (point.y - y) * ratio };
     });
   }
   panBy(dx: number, dy: number): void {
+    this.stopGlide();
     this.autoFit = false;
     this.view.update(({ x, y, k }) => ({ k, x: x + dx, y: y + dy }));
   }
@@ -526,6 +799,7 @@ export class GraphComponent {
   pointerDown(event: PointerEvent): void {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
     this.suppressClick = false;
+    this.stopGlide();
     this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
     if (this.touches.size === 2) {
       const [a, b] = [...this.touches.values()];
@@ -551,7 +825,7 @@ export class GraphComponent {
       const [a, b] = [...this.touches.values()];
       const ratio = (Math.hypot(a.x - b.x, a.y - b.y) || 1) / this.pinch.distance;
       const { x, y, k } = this.pinch.origin;
-      const next = Math.min(this.fitK() * 12, Math.max(this.fitK() * 0.5, k * ratio));
+      const next = Math.min(this.fitK() * 12, Math.max(this.minK(), k * ratio));
       const mid = { x: (a.x + b.x) / 2 - rect.left, y: (a.y + b.y) / 2 - rect.top };
       this.autoFit = false;
       this.view.set({
@@ -621,6 +895,51 @@ export class GraphComponent {
     }
   }
 
+  private describeEdge(edge: NetworkEdge, source: NetworkNode, target: NetworkNode) {
+    return {
+      sentence: `${source.title} ${edge.phrase} ${target.title}`,
+      nature: relationNatureDefinition(edge.nature),
+      reason: this.reasonOf(edge),
+      source: edge.sourceName,
+    };
+  }
+  private minK(): number {
+    return Math.min(this.allK * 0.9, this.fitK() * 0.5);
+  }
+  /** Moves the view; with animation it glides, unless the reader asked for reduced motion. */
+  private glideTo(target: View, animate: boolean): void {
+    const token = ++this.tweenToken;
+    if (!animate || this.reducedMotion() || typeof requestAnimationFrame === 'undefined') {
+      this.animating.set(false);
+      this.view.set(target);
+      return;
+    }
+    const from = this.view();
+    const start = performance.now();
+    const duration = 520;
+    this.animating.set(true);
+    const step = () => {
+      if (token !== this.tweenToken) return;
+      const t = Math.max(0, Math.min(1, (performance.now() - start) / duration));
+      const e = easeInOut(t);
+      this.view.set({
+        k: from.k * (target.k / from.k) ** e,
+        x: from.x + (target.x - from.x) * e,
+        y: from.y + (target.y - from.y) * e,
+      });
+      if (t < 1) requestAnimationFrame(step);
+      else {
+        this.view.set(target);
+        this.animating.set(false);
+      }
+    };
+    requestAnimationFrame(step);
+  }
+  private stopGlide(): void {
+    this.tweenToken++;
+    this.animating.set(false);
+  }
+
   private nearestInDirection(id: string, dx: number, dy: number): string | null {
     const origin = this.positions()?.get(id);
     if (!origin) return null;
@@ -647,13 +966,44 @@ export class GraphComponent {
     const { width, height } = this.size();
     if (!point || !width) return;
     this.autoFit = false;
-    const k = Math.max(this.view().k, this.fitK() * 3.5);
+    // The node and its neighbours frame the view, within a readable range of zoom.
+    const positions = this.positions();
+    const near = linksOf(id, this.visible().edges, this.nodeIndex)
+      .map((link) => positions?.get(link.other.id))
+      .filter((p): p is NetworkPoint => !!p);
+    const xs = [point.x, ...near.map((p) => p.x)];
+    const ys = [point.y, ...near.map((p) => p.y)];
+    const box = {
+      minX: Math.min(...xs),
+      maxX: Math.max(...xs),
+      minY: Math.min(...ys),
+      maxY: Math.max(...ys),
+    };
     // The detail panel opens on the right: aim at the middle of what stays free.
     const inset = this.insets();
     const right = this.wide() ? 23 * 16 + 32 : inset.right;
-    const cx = inset.left + (width - inset.left - right) / 2;
-    const cy = inset.top + (height - inset.top - inset.bottom) / 2;
-    this.view.set({ k, x: cx - point.x * k, y: cy - point.y * k });
+    const freeW = Math.max(120, width - inset.left - right);
+    const freeH = Math.max(120, height - inset.top - inset.bottom);
+    const fitted = Math.min(
+      freeW / (box.maxX - box.minX + 220),
+      freeH / (box.maxY - box.minY + 180),
+    );
+    const k = Math.min(this.fitK() * 4.5, Math.max(this.fitK() * 1.6, fitted));
+    const cx = inset.left + freeW / 2;
+    const cy = inset.top + freeH / 2;
+    // Neighbours too far apart to frame together: stay on the node itself.
+    const spread = fitted < this.fitK() * 1.6;
+    const mx = spread ? point.x : (box.minX + box.maxX) / 2;
+    const my = spread ? point.y : (box.minY + box.maxY) / 2;
+    this.glideTo({ k, x: cx - mx * k, y: cy - my * k }, true);
+  }
+
+  private focusNode(id: string): void {
+    queueMicrotask(() =>
+      [...(this.stage()?.nativeElement.querySelectorAll<SVGElement>('[data-node]') ?? [])]
+        .find((el) => el.getAttribute('data-node') === id)
+        ?.focus({ preventScroll: true }),
+    );
   }
 
   private reveal(id: string): void {
@@ -688,4 +1038,31 @@ function toggled<T>(set: ReadonlySet<T>, value: T): ReadonlySet<T> {
   const next = new Set(set);
   if (!next.delete(value)) next.add(value);
   return next;
+}
+
+function hash(text: string): number {
+  let value = 2166136261;
+  for (let i = 0; i < text.length; i++) value = Math.imul(value ^ text.charCodeAt(i), 16777619);
+  return value >>> 0;
+}
+
+/** Small, stable wander of a node: a few pixels, each node on its own rhythm. */
+function driftOf(id: string): { ax: number; ay: number; duration: number; delay: number } {
+  const h = hash(id);
+  const unit = (shift: number) => ((h >>> shift) & 255) / 255;
+  return {
+    ax: Math.round((0.8 + unit(0) * 1.4) * 10) / 10,
+    ay: Math.round((0.8 + unit(8) * 1.4) * 10) / 10,
+    duration: Math.round((6 + unit(16) * 5) * 10) / 10,
+    delay: -Math.round(unit(24) * 110) / 10,
+  };
+}
+
+/** Long titles are cut in the crowded view; the full name shows when the node is lit. */
+function shorten(title: string, limit = 28): string {
+  return title.length <= limit ? title : `${title.slice(0, limit - 1).trimEnd()}…`;
+}
+
+function easeInOut(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
 }

@@ -116,9 +116,9 @@ describe('GraphComponent', () => {
     const before = fixture.componentInstance.view();
     const canvas = root(fixture).querySelector('svg.canvas')!;
     canvas.dispatchEvent(new KeyboardEvent('keydown', { key: '+', bubbles: true }));
-    expect(fixture.componentInstance.view().k).toBeGreaterThan(before.k);
+    await vi.waitFor(() => expect(fixture.componentInstance.view().k).toBeGreaterThan(before.k));
     canvas.dispatchEvent(new KeyboardEvent('keydown', { key: '0', bubbles: true }));
-    expect(fixture.componentInstance.view().k).toBeCloseTo(before.k);
+    await vi.waitFor(() => expect(fixture.componentInstance.view().k).toBeCloseTo(before.k));
     canvas.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }));
     expect(fixture.componentInstance.view().x).toBeGreaterThan(before.x);
   });
@@ -197,5 +197,64 @@ describe('GraphComponent', () => {
       expect(y).toBeLessThanOrEqual(700 - inset.bottom + 1);
       expect(x).toBeGreaterThanOrEqual(inset.left - 1);
     }
+  });
+
+  it('names only the hovered node and its neighbours, with a phrase on each link', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    component.hoverNode(linked.node.id);
+    fixture.detectChanges();
+    const lit = new Set([linked.node.id, ...component.neighbours()]);
+    expect(component.labels().length).toBeGreaterThan(0);
+    for (const label of component.labels()) expect(lit.has(label.id)).toBe(true);
+    expect(component.edgeLabels().length).toBeGreaterThan(0);
+    expect(root(fixture).querySelector('.node.is-dimmed')).not.toBeNull();
+  });
+
+  it('explains the relation of the selected node: reading, nature and reason', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.select(linked.node.id);
+    fixture.detectChanges();
+    const items = root(fixture).querySelectorAll('.links li');
+    expect(items.length).toBeGreaterThan(0);
+    expect(items[0].querySelector('.links__verb')?.textContent?.trim()).toBeTruthy();
+    expect(items[0].querySelector('.nature')?.textContent?.trim()).toBeTruthy();
+    expect(items[0].querySelector('.links__why')?.textContent?.trim()).toBeTruthy();
+    expect(root(fixture).querySelector('.detail__count')?.textContent).toContain('conex');
+  });
+
+  it('traces a path from a marked node to the selected one', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    const other = component.selectedLinks().length
+      ? null
+      : (() => {
+          component.select(linked.node.id);
+          return component.selectedLinks()[0].other;
+        })();
+    component.select(linked.node.id);
+    component.togglePathStart();
+    component.select((other ?? component.selectedLinks()[0].other).id);
+    fixture.detectChanges();
+    expect(component.pathSteps().length).toBe(1);
+    expect(root(fixture).querySelector('.steps li')).not.toBeNull();
+    component.clearPath();
+    fixture.detectChanges();
+    expect(root(fixture).querySelector('.steps')).toBeNull();
+  });
+
+  it('cycles through the neighbours of a node with the bracket keys', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    const el = root(fixture).querySelector(`[data-node="${linked.node.id}"]`)!;
+    el.dispatchEvent(new KeyboardEvent('keydown', { key: ']', bubbles: true }));
+    expect(component.focusId()).not.toBe(linked.node.id);
   });
 });

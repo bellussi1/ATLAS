@@ -1,3 +1,4 @@
+import type { Relation } from '@core/content/models/content-schema';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import {
@@ -8,12 +9,15 @@ import {
   layoutNetwork,
   linksOf,
   MAX_NODE_SCALE,
+  natureOf,
+  type NetworkEdge,
   networkKindOf,
   networkKinds,
   nodeRadius,
   nodeScaleFor,
   relationFamilies,
   searchNodes,
+  shortestPath,
 } from './knowledge-network';
 
 const network = buildKnowledgeNetwork(methodologyKnowledgeGraph);
@@ -130,5 +134,44 @@ describe('knowledge network', () => {
     expect(nodeScaleFor(0.01)).toBe(MAX_NODE_SCALE);
     expect(nodeScaleFor(1)).toBe(1);
     expect(nodeScaleFor(50)).toBeGreaterThanOrEqual(0.6);
+  });
+
+  it('tells catalogue entries and navigation links apart from statements in a source', () => {
+    const base = { type: 'influenced', evidenceIds: [] } as unknown as Relation;
+    const from = (patch: Partial<Relation>) => ({ ...base, ...patch }) as Relation;
+    const provenance = (source: 'wikipedia' | 'wikidata') => ({
+      source,
+      url: 'https://example.org',
+      retrievedAt: '2026-01-01',
+    });
+    expect(natureOf(from({ provenance: provenance('wikidata') }))).toBe('catalogue');
+    expect(natureOf(from({ provenance: provenance('wikipedia') }))).toBe('stated');
+    expect(natureOf(from({ type: 'encyclopedic-link', provenance: provenance('wikipedia') }))).toBe(
+      'navigation',
+    );
+    expect(natureOf(from({ type: 'editorial-link' }))).toBe('editorial');
+  });
+
+  it('reads each link from both sides and records why it exists', () => {
+    for (const edge of network.edges) {
+      expect(edge.phrase.length).toBeGreaterThan(0);
+      expect(edge.phraseReverse.length).toBeGreaterThan(0);
+      expect(edge.context.length).toBeGreaterThan(0);
+    }
+  });
+
+  it('finds the shortest chain between two nodes in either direction', () => {
+    const edge = (id: string, source: string, target: string) =>
+      ({ id, source, target }) as unknown as NetworkEdge;
+    const edges = [
+      edge('1', 'a', 'b'),
+      edge('2', 'c', 'b'),
+      edge('3', 'c', 'd'),
+      edge('4', 'a', 'd'),
+    ];
+    expect(shortestPath('a', 'a', edges)).toEqual([]);
+    expect(shortestPath('a', 'c', edges)?.map((step) => step.edge.id)).toHaveLength(2);
+    expect(shortestPath('a', 'd', edges)?.map((step) => step.edge.id)).toEqual(['4']);
+    expect(shortestPath('a', 'z', edges)).toBeNull();
   });
 });

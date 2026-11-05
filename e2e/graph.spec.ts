@@ -138,3 +138,64 @@ test('on a phone the cards float above the map with a gap, and pinch zooms', asy
   await touch('touchEnd', []);
   await expect(page.locator('.zoom__level')).not.toHaveText(before ?? '');
 });
+
+const linkedNode = '[data-node]:not([aria-label$=", 0 ligações"])';
+
+test('hovering a node shows only its neighbours and explains what it relates to', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator(linkedNode).first()).toBeVisible();
+  const total = await page.locator('[data-node]').count();
+  await page.locator(linkedNode).first().dispatchEvent('pointerenter');
+  await expect(page.locator('.node.is-dimmed')).not.toHaveCount(0);
+  expect(await page.locator('.node.is-dimmed').count()).toBeLessThan(total);
+  await expect(page.locator('.label--edge').first()).toBeVisible();
+});
+
+test('a selected node lists each link with its reading, nature and reason', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await page.locator(linkedNode).first().focus();
+  await page.keyboard.press('Enter');
+  const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
+  const item = detail.locator('.links li').first();
+  await expect(item.locator('.links__verb')).not.toBeEmpty();
+  await expect(item.locator('.nature')).not.toBeEmpty();
+  await expect(item.locator('.links__why')).not.toBeEmpty();
+  await expect(detail.getByText(/conex(ão|ões) no acervo/)).toBeVisible();
+});
+
+test('traces a path between two entries from the detail panel', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await page.locator(linkedNode).first().focus();
+  await page.keyboard.press('Enter');
+  const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
+  await detail.getByRole('button', { name: 'Começar caminho a partir daqui' }).click();
+  await detail.locator('.links li button').first().click();
+  await expect(detail.getByRole('list', { name: /Trajeto de/ })).toBeVisible();
+  await detail.getByRole('button', { name: 'Limpar caminho' }).click();
+  await expect(detail.getByRole('list', { name: /Trajeto de/ })).toHaveCount(0);
+});
+
+test('keeps nodes still when the reader prefers reduced motion', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/rede');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const animation = await page
+    .locator('.node__drift')
+    .first()
+    .evaluate((el) => getComputedStyle(el).animationName);
+  expect(animation).toBe('none');
+});
+
+test('the overview map stays inside the window', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const map = await page.getByRole('group', { name: /Visão geral do mapa/ }).boundingBox();
+  expect(map!.x + map!.width).toBeLessThanOrEqual(1280);
+  expect(map!.y + map!.height).toBeLessThanOrEqual(800);
+});
