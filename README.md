@@ -15,6 +15,8 @@
   <img alt="Zod" src="https://img.shields.io/badge/conte%C3%BAdo-validado%20com%20Zod-363a5f?style=flat-square" />
   <img alt="Wikimedia" src="https://img.shields.io/badge/dados-Wikipedia%20%C2%B7%20Wikidata%20%C2%B7%20Commons-7fbdb5?style=flat-square" />
   <img alt="Playwright + axe" src="https://img.shields.io/badge/testes-Vitest%20%C2%B7%20Playwright%20%C2%B7%20axe-eab0c2?style=flat-square" />
+  <img alt="Código MIT" src="https://img.shields.io/badge/c%C3%B3digo-MIT-363a5f?style=flat-square" />
+  <img alt="Conteúdo CC BY-SA 4.0" src="https://img.shields.io/badge/conte%C3%BAdo-CC%20BY--SA%204.0-7fbdb5?style=flat-square" />
 </p>
 
 <p align="center">
@@ -143,14 +145,36 @@ Leia antes de contribuir: [arquitetura](docs/architecture/ARCHITECTURE.md), [pad
 - Linhas de crítica não são linhas de descendência. Proximidade em uma visualização não sugere causalidade.
 - Imagens só são publicadas com autoria e licença registradas junto a elas.
 
+## Pipeline de conteúdo
+
+Novas tradições e verbetes entram por uma pipeline com portas de verificação em cada estágio, e não por edição manual:
+
+| Comando | Uso |
+| --- | --- |
+| `npm run tradicao -- <slug> --stage N --dry-run` | Roda um estágio da pipeline de uma tradição (estado retomável, sem gastar nada no `--dry-run`) |
+| `npm run tradicao:coverage -- <slug>` | Mede o quanto falta para a tradição chegar ao piso de /marxismo e /liberalismo |
+| `npm run ideology:new` | Cria o esqueleto de uma leitura |
+| `npm run wiki:extract` | Extração de rascunhos a partir da Wikipedia (exige `ANTHROPIC_API_KEY`; os rascunhos ficam em um bucket privado) |
+| `npm run ingest:fetch-raw` e `npm run ingest:verify` | Baixam as respostas brutas do R2 e reproduzem as capturas Wikimedia offline |
+| `npm run content:publish` | Publica o conteúdo compilado no R2 (exige credenciais fora do repositório) |
+
+A pipeline não publica sozinha: publicar é decisão humana. Conteúdo extraído com IA é marcado como revisão de IA até que uma pessoa o revise. Os estágios estão em `.claude/skills/atlas-pipeline-tradicao/SKILL.md`.
+
 ## Contribuir
 
 Encontrou um erro, uma fonte melhor ou uma conexão que falta? [Abra uma issue](https://github.com/bellussi1/ATLAS/issues) ou leia o [guia de contribuição](CONTRIBUTING.md). Pull requests devem passar `lint`, `typecheck`, `test`, `test:e2e` e `build`.
 
+Este projeto segue um [código de conduta](CODE_OF_CONDUCT.md). Vulnerabilidades: veja a [política de segurança](SECURITY.md).
+
 ## Licença
 
-A definir. Até que haja um arquivo `LICENSE`, o código e o conteúdo não têm licença de reuso concedida.
+- **Código:** [MIT](LICENSE).
+- **Conteúdo editorial, grafo e relações:** [CC BY-SA 4.0](LICENSE-CONTEUDO.md). Textos derivados da Wikipedia mantêm a licença de origem.
+- **Imagens:** licença de cada arquivo do Wikimedia Commons, registrada junto a ela. Não são cobertas por este repositório.
+- **Tipografia:** SIL Open Font License 1.1.
+
+Detalhes, regras de reutilização e o aviso sobre conteúdo assistido por IA em [LICENSE-CONTEUDO.md](LICENSE-CONTEUDO.md). Para citar o projeto, use [CITATION.cff](CITATION.cff).
 
 ## Créditos
 
-Imagens do [Wikimedia Commons](https://commons.wikimedia.org), com autoria e licença registradas em cada uma. Dados de descoberta da Wikipedia e do Wikidata, lidos de snapshots versionados. Tipografia IBM Plex e Source Serif 4 sob a SIL Open Font License.
+Imagens do [Wikimedia Commons](https://commons.wikimedia.org), com autoria e licença registradas em cada uma. Textos e dados de descoberta da Wikipedia (CC BY-SA 4.0) e do Wikidata (CC0), lidos de capturas reproduzíveis versionadas. Tipografia IBM Plex e Source Serif 4 sob a SIL Open Font License.

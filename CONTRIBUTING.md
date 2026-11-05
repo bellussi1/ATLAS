@@ -42,9 +42,37 @@ npm run test:e2e
 
 ## Como o conteúdo funciona
 
-Dossiês ficam em `content/ideologies/<slug>/page.json`, com fontes e relações em `content/graph/<slug>.json`. Um atlas novo é um dossiê novo: copie o do Liberalismo, troque capítulos e fontes e registre o slug em `src/app/features/ideologies/data/published-ideologies.ts`. O build valida tudo com Zod e recusa referências quebradas.
+Dossiês ficam em `content/ideologies/<slug>/page.json`, com fontes e relações em `content/graph/<slug>.json`. O conteúdo compilado é publicado no R2 e o app lê só de lá (veja o [README](README.md#como-funciona)).
 
-Leia também [Arquitetura](docs/architecture/ARCHITECTURE.md) e [Padrão de páginas](docs/design/PAGE_STANDARD.md).
+Uma tradição nova **não** é uma cópia de outra: ela passa pela pipeline, com portas de verificação por estágio. Comece por `npm run tradicao:coverage -- <slug>` e `npm run tradicao -- <slug> --stage N --dry-run`, e leia `.claude/skills/atlas-pipeline-tradicao/SKILL.md`. A pipeline não publica no R2: a publicação é feita por quem mantém o projeto.
+
+Extrair rascunhos da Wikipedia (`npm run wiki:extract`) exige uma chave da API da Anthropic, que fica no seu ambiente, nunca no repositório. Quem só revisa texto ou contribui com código não precisa dela.
+
+## Conteúdo assistido por IA
+
+- Identifique no PR o que foi gerado ou assistido por IA.
+- Revisão de IA nunca é apresentada como revisão humana.
+- Toda citação precisa ser literal e conferível no artigo de origem.
+
+## Dados, textos e imagens de terceiros
+
+- Só entram com licença compatível e registrada (autoria, licença e URL do arquivo).
+- Não copie catálogos, textos ou imagens de projetos com direitos reservados, mesmo que estejam públicos. Use a ideia, refaça a partir de fontes abertas (Wikidata, Wikipedia, Commons) ou peça autorização por escrito e anexe-a ao PR.
+- Wikipedia exige atribuição (CC BY-SA 4.0): guarde título, URL e licença junto do texto.
+
+## Licença das contribuições
+
+Ao contribuir, você concorda que:
+
+- **Código** é licenciado sob a [MIT](LICENSE).
+- **Texto, relações e traduções** são licenciados sob [CC BY-SA 4.0](LICENSE-CONTEUDO.md).
+- Você tem o direito de oferecer o que está enviando, e não está copiando material sem licença compatível.
+
+Você mantém a autoria da sua contribuição.
+
+## Conduta
+
+Este projeto segue o [código de conduta](CODE_OF_CONDUCT.md). Vulnerabilidades vão pelo [canal privado](SECURITY.md), não por issue pública.
 
 ## Pull requests
 

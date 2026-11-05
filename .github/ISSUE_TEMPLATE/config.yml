@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Vulnerabilidade de segurança
+    url: https://github.com/bellussi1/ATLAS/security/advisories/new
+    about: Reporte em privado. Não abra uma issue pública.
+  - name: Guia de contribuição
+    url: https://github.com/bellussi1/ATLAS/blob/master/CONTRIBUTING.md
+    about: Como contribuir com conteúdo, imagens, design e código.
