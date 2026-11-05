@@ -9,6 +9,7 @@ const declaredDestinations = [
   '/liberalismo',
   '/social-democracia',
   '/anarquismo',
+  '/rede',
   ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
 ];
 
@@ -23,7 +24,7 @@ test('unknown and unpublished institutional routes say so and keep the address',
     }, path);
     await expect(page).toHaveURL(new RegExp(`${path}$`));
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Página não encontrada');
-    await expect(page.getByRole('link', { name: 'Início', exact: true })).toBeVisible();
+    await expect(page.getByRole('link', { name: /^Início/ })).toBeVisible();
   }
 });
 
@@ -285,7 +286,7 @@ test('home keeps the poster colour and tints each later section as it scrolls', 
   const home = page.locator('app-home-page');
   await expect(home).toHaveAttribute('data-tone', '0');
   await page.locator('.readings').scrollIntoViewIfNeeded();
-  await expect(home).toHaveAttribute('data-tone', '2');
+  await expect(home).toHaveAttribute('data-tone', '4');
   await expect(home).not.toHaveAttribute('data-tone', '0');
 });
 
@@ -316,11 +317,11 @@ test('reading prose keeps a measure of about 72 characters on desktop', async ({
   }
 });
 
-test('retired /rede and /comparar redirect to the archive search', async ({ page }) => {
-  for (const path of ['/rede', '/comparar?esquerda=person-karl-marx']) {
-    await page.goto(path);
-    await expect(page).toHaveURL(/\/conhecimento/);
-  }
+test('retired /comparar redirects to the archive search and /grafo to /rede', async ({ page }) => {
+  await page.goto('/comparar?esquerda=person-karl-marx');
+  await expect(page).toHaveURL(/\/conhecimento/);
+  await page.goto('/grafo');
+  await expect(page).toHaveURL(/\/rede$/);
 });
 
 test('debates show estimated positions with their evidence, in words and not only colour', async ({

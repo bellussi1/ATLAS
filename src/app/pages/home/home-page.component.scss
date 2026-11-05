@@ -112,7 +112,9 @@ form {
 }
 
 .readings,
-.method {
+.method,
+.guide,
+.study {
   padding: clamp(3rem, 7vw, 6rem) var(--home-inline);
 }
 .reading-table {
@@ -249,6 +251,8 @@ form {
 }
 
 .method h2,
+.guide h2,
+.study h2,
 .catalogue-band h2 {
   margin: 0 0 1.5rem;
   font: 800 clamp(2rem, 5vw, 4.25rem) / 0.95 var(--font-sans);
@@ -422,5 +426,86 @@ form {
 @media (prefers-reduced-motion: reduce) {
   .catalogue-band a {
     transition: none;
+  }
+}
+
+.guide-lead {
+  max-inline-size: 46rem;
+  margin: 0 0 2rem;
+  font: 1.125rem/1.6 var(--font-serif);
+}
+.guide-doors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  a {
+    display: grid;
+    gap: 0.5rem;
+    block-size: 100%;
+    padding: 1.25rem;
+    border: 3px solid var(--color-ink);
+    border-radius: var(--radius-tight);
+    background: var(--color-surface-raised);
+    color: var(--color-ink);
+    box-shadow: 5px 5px 0 var(--color-ink);
+    text-decoration: none;
+    transition:
+      transform var(--motion-standard) var(--ease-out),
+      box-shadow var(--motion-standard) var(--ease-out);
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--color-ink);
+    }
+  }
+  strong {
+    font: 800 1.35rem/1.1 var(--font-sans);
+  }
+  span:last-child {
+    color: var(--color-ink-muted);
+    font: 1rem/1.5 var(--font-serif);
+  }
+}
+.guide-verb {
+  color: var(--color-accent-hover);
+  font: 600 0.8125rem/1 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.study {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  border-top: 1px solid var(--color-border-strong);
+  p {
+    font: 1.125rem/1.6 var(--font-serif);
+  }
+  code {
+    padding: 0.1rem 0.35rem;
+    background: var(--color-surface-subtle);
+    font: 0.9em var(--font-mono);
+  }
+  h3 {
+    margin: 0 0 1rem;
+    font: 700 1.25rem/1.2 var(--font-sans);
+  }
+  ol {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding-inline-start: 1.5rem;
+    list-style: decimal;
+    font: 1.0625rem/1.55 var(--font-serif);
+  }
+  li::marker {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+}
+@media (max-width: 52rem) {
+  .study {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

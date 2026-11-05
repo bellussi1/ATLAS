@@ -88,6 +88,43 @@ export class HomePage {
         },
       ],
     },
+    {
+      slug: 'social-democracia',
+      type: 'atlas' as const,
+      title: 'Social-democracia',
+      tagline: 'Reforma, Estado e bem-estar',
+      palette: 'atlas' as const,
+      seed: 41,
+      summary:
+        'Do debate entre reforma e revolução às disputas sobre Estado, mercado e direitos sociais.',
+      statusLabel: 'Conteúdo em revisão',
+      sections: [
+        {
+          heading: 'Reforma ou ruptura',
+          paragraphs: [
+            'Siga pessoas, partidos e obras que defenderam transformar a sociedade por meios democráticos, e veja onde essa leitura se separa do marxismo e do liberalismo.',
+          ],
+        },
+      ],
+    },
+    {
+      slug: 'anarquismo',
+      type: 'atlas' as const,
+      title: 'Anarquismo',
+      tagline: 'Autoridade, autonomia e apoio mútuo',
+      palette: 'atlas' as const,
+      seed: 53,
+      summary: 'Uma tradição que questiona a autoridade e propõe formas de organização sem Estado.',
+      statusLabel: 'Conteúdo em revisão',
+      sections: [
+        {
+          heading: 'Contra a autoridade imposta',
+          paragraphs: [
+            'Conheça correntes, pensadores e acontecimentos do anarquismo, com as fontes e as divergências internas à vista.',
+          ],
+        },
+      ],
+    },
   ];
   readonly selected = signal(this.readings[0]);
   readonly sheet = viewChild<ElementRef<HTMLElement>>('sheet');

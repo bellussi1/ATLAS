@@ -40,11 +40,80 @@
   </form>
 </section>
 
-<section class="readings" aria-labelledby="readings-title" data-tone-section>
+<section class="guide" id="como-navegar" aria-labelledby="guide-title" data-tone-section>
+  <h2 id="guide-title">Como navegar no ATLAS</h2>
+  <p class="guide-lead">
+    O ATLAS tem três jeitos de entrar. Leia um texto contínuo, consulte verbetes soltos ou abra a
+    rede para ver como tudo se liga. Dá para trocar de um para outro a qualquer momento.
+  </p>
+  <ul class="guide-doors">
+    <li>
+      <a routerLink="/" fragment="leituras">
+        <span class="guide-verb">1 · Ler</span>
+        <strong>Leituras contínuas</strong>
+        <span
+          >Um texto longo por tradição, em capítulos, com fontes ao lado de cada afirmação.</span
+        >
+      </a>
+    </li>
+    <li>
+      <a routerLink="/conhecimento">
+        <span class="guide-verb">2 · Consultar</span>
+        <strong>Acervo de verbetes</strong>
+        <span>Busca e catálogos por tipo: pessoas, obras, países, acontecimentos, conceitos.</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/rede">
+        <span class="guide-verb">3 · Conectar</span>
+        <strong>Rede em tela cheia</strong>
+        <span>O acervo inteiro como mapa: filtre por tipo, busque um nome e siga as ligações.</span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section class="study" aria-labelledby="study-title" data-tone-section>
+  <div class="study-term">
+    <h2 id="study-title">O que é um verbete</h2>
+    <p>
+      Um verbete é uma ficha curta e permanente sobre uma pessoa, obra, acontecimento, conceito,
+      lugar, organização ou ideologia. Traz um resumo, o período, as ligações com outros verbetes e
+      as fontes que sustentam cada afirmação. Cada um tem endereço próprio, como
+      <code>/verbete/karl-marx</code>.
+    </p>
+  </div>
+  <div class="study-steps">
+    <h3>Como estudar</h3>
+    <ol>
+      <li>
+        <strong>Comece por uma leitura.</strong> Escolha uma tradição abaixo e siga os capítulos na
+        ordem.
+      </li>
+      <li>
+        <strong>Abra os verbetes.</strong> Quando um nome ou conceito chamar a atenção, abra a ficha
+        para ver o resumo e as fontes.
+      </li>
+      <li>
+        <strong>Siga as ligações.</strong> Cada verbete mostra quem influenciou quem, quem escreveu
+        o quê. A rede mostra tudo isso de uma vez.
+      </li>
+      <li>
+        <strong>Compare e confira.</strong> Volte às leituras e note onde as tradições divergem.
+        Veja se cada trecho é fato documentado, interpretação ou controvérsia.
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="readings" id="leituras" aria-labelledby="readings-title" data-tone-section>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
     <p class="atlas-band-number" aria-hidden="true">A</p>
-    <h2 id="readings-title">Duas leituras, <em>uma enciclopédia.</em></h2>
-    <p>Cada tradição tem seu ritmo. Escolha uma leitura para ver o resumo e o texto completo.</p>
+    <h2 id="readings-title">Leituras contínuas, <em>uma enciclopédia.</em></h2>
+    <p>
+      Marxismo, Liberalismo, Social-democracia e Anarquismo, cada um no seu ritmo. Escolha uma
+      leitura para ver o resumo e o texto completo.
+    </p>
   </header>
   <div appReveal class="reading-table" [attr.data-reading]="selected().slug">
     <div class="cover-index">
@@ -108,6 +177,12 @@
 <section class="catalogue-band" aria-labelledby="catalogues-title" data-tone-section>
   <h2 id="catalogues-title">Explorar por tipo</h2>
   <ul>
+    <li>
+      <a routerLink="/conhecimento">Acervo completo</a>
+    </li>
+    <li>
+      <a routerLink="/rede">Rede de ligações</a>
+    </li>
     @for (catalogue of catalogues; track catalogue.path) {
       <li>
         <a [routerLink]="'/' + catalogue.path">{{ catalogue.title }}</a>
