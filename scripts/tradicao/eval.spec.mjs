@@ -95,6 +95,8 @@ function fakeClient() {
     messages: {
       batches: {
         create: async ({ requests }) => {
+          for (const { custom_id } of requests)
+            assert.match(custom_id, /^[a-zA-Z0-9_-]{1,64}$/, 'padrão de custom_id da API');
           const id = `b${batches.length}`;
           batches.push(requests);
           stored.set(id, requests);
@@ -108,7 +110,7 @@ function fakeClient() {
               result: {
                 type: 'succeeded',
                 message: message(
-                  custom_id.startsWith('verify:')
+                  custom_id.startsWith('verify__')
                     ? { verdicts: [{ index: 0, verdict: 'confirma', reason: 'lido' }] }
                     : answer,
                 ),

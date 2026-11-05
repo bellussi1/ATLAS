@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { test } from 'node:test';
 
 import { BudgetExceeded, costOfUsage, createBudget, estimateRun, estimateTokens } from './cost.mjs';
-import { planRun, renderPlan, runExtraction } from './extract.mjs';
+import { customIdFor, planRun, renderPlan, runExtraction } from './extract.mjs';
 import { loadStateFile, withStateDefaults } from './state.mjs';
 
 const sentence = 'Bernstein criticou Karl Kautsky por sua leitura ortodoxa do marxismo.';
@@ -62,7 +62,7 @@ function fakeClient({ failIds = [], verdict = 'confirma' } = {}) {
   const calls = { batches: [], sync: [], retrieve: 0 };
   const stored = new Map();
   const answer = (customId) => {
-    if (customId.startsWith('verify:'))
+    if (customId.startsWith('verify__'))
       return modelText({ verdicts: [{ index: 0, verdict, reason: 'lido' }] });
     return modelText(extraction);
   };
@@ -77,6 +77,8 @@ function fakeClient({ failIds = [], verdict = 'confirma' } = {}) {
       },
       batches: {
         create: async ({ requests }) => {
+          for (const { custom_id } of requests)
+            assert.match(custom_id, /^[a-zA-Z0-9_-]{1,64}$/, 'padrão de custom_id da API');
           const id = `batch-${calls.batches.length}`;
           calls.batches.push({ id, requests });
           stored.set(id, requests);
@@ -112,6 +114,15 @@ async function workspace(t) {
     maxUsd: 1,
   };
 }
+
+test('custom_id segue o padrão da API, mesmo com id longo ou fora do padrão', () => {
+  assert.equal(customIdFor('extract', 'topic-karl-marx'), 'extract__topic-karl-marx');
+  for (const id of ['x'.repeat(80), 'topic-organização:1']) {
+    const custom = customIdFor('verify', id);
+    assert.match(custom, /^verify__[a-f0-9]{32}$/);
+    assert.notEqual(custom, customIdFor('verify', `${id}2`));
+  }
+});
 
 test('custo: entrada estimada para mais, pior caso usa todo max_tokens e toda escrita de cache', () => {
   assert.equal(estimateTokens(2700), 1000);
@@ -212,7 +223,7 @@ test('lote: duas passadas, cache, rascunho com travas e STATE.json como razão',
     type: 'ephemeral',
     ttl: '1h',
   });
-  assert.equal(verify.requests[0].custom_id, 'verify:a');
+  assert.equal(verify.requests[0].custom_id, 'verify__a');
   const draft = JSON.parse(await readFile(join(paths.outDirectory, 'a.json'), 'utf8'));
   assert.equal(draft.contract, 'rich-v1');
   assert.equal(draft.review.by, 'assistant');
@@ -247,14 +258,14 @@ test('retomada: rodar de novo não reenvia o que está pronto nem paga duas veze
   newer.article.revision = '2';
   await runExtraction({ records: [records[0], newer], client, ...paths });
   assert.equal(client.calls.batches.at(-2).requests.length, 1);
-  assert.equal(client.calls.batches.at(-2).requests[0].custom_id, 'extract:b');
+  assert.equal(client.calls.batches.at(-2).requests[0].custom_id, 'extract__b');
 });
 
 test('lote aberto é retomado, sem reenvio; resposta ainda não baixada não se perde', async (t) => {
   const paths = await workspace(t);
   const client = fakeClient();
   const first = await client.messages.batches.create({
-    requests: [{ custom_id: 'extract:a', params: {} }],
+    requests: [{ custom_id: 'extract__a', params: {} }],
   });
   const { writeJsonAtomic } = await import('./state.mjs');
   await writeJsonAtomic(
@@ -265,7 +276,7 @@ test('lote aberto é retomado, sem reenvio; resposta ainda não baixada não se 
           id: first.id,
           phase: 'extract',
           status: 'open',
-          ids: ['extract:a'],
+          ids: ['extract__a'],
           model: 'claude-haiku-5-5',
         },
       ],
@@ -273,7 +284,7 @@ test('lote aberto é retomado, sem reenvio; resposta ainda não baixada não se 
   );
   const { state } = await runExtraction({ records: [record('a')], client, ...paths });
   assert.equal(
-    client.calls.batches.filter((b) => b.requests[0].custom_id === 'extract:a').length,
+    client.calls.batches.filter((b) => b.requests[0].custom_id === 'extract__a').length,
     1,
   );
   assert.equal(state.entities.a.extract.status, 'done');
@@ -285,7 +296,7 @@ test('envio interrompido antes de registrar o lote para e pede conferência, em 
   await writeJsonAtomic(
     paths.stateFile,
     withStateDefaults({
-      submitting: { phase: 'extract', at: '2026-11-04T00:00:00Z', ids: ['extract:a'] },
+      submitting: { phase: 'extract', at: '2026-11-04T00:00:00Z', ids: ['extract__a'] },
     }),
   );
   const client = fakeClient();
@@ -296,7 +307,7 @@ test('envio interrompido antes de registrar o lote para e pede conferência, em 
 test('falha fica no STATE e só volta com --retry-failed; quem não falhou segue', async (t) => {
   const paths = await workspace(t);
   const records = [record('a'), record('b')];
-  const client = fakeClient({ failIds: ['extract:a'] });
+  const client = fakeClient({ failIds: ['extract__a'] });
   const { state } = await runExtraction({ records, client, ...paths });
   assert.equal(state.entities.a.extract.status, 'failed');
   assert.equal(state.entities.b.extract.status, 'done');

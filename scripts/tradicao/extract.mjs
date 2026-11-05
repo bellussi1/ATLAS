@@ -11,6 +11,7 @@
  * onde parou: lote aberto é reaproveitado, resposta paga é gravada crua antes de qualquer análise e
  * nunca é pedida de novo. Progresso e razão de gasto ficam só no STATE.json.
  */
+import { createHash } from 'node:crypto';
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { parseArgs } from 'node:util';
@@ -39,6 +40,16 @@ import {
 import { projectRoot } from './registry.mjs';
 import { richContract } from './rich.mjs';
 import { loadState, statePath, totalSpent, writeJsonAtomic } from './state.mjs';
+
+/**
+ * Id of a request in a batch. The API accepts only letters, digits, `_` and `-`, up to 64
+ * characters; an entity id that does not fit is replaced by its hash.
+ */
+export function customIdFor(phase, id) {
+  const plain = `${phase}__${id}`;
+  if (/^[a-zA-Z0-9_-]{1,64}$/.test(plain)) return plain;
+  return `${phase}__${createHash('sha256').update(id).digest('hex').slice(0, 32)}`;
+}
 
 const readJson = async (path) => JSON.parse(await readFile(path, 'utf8'));
 const stepOf = (state, id, phase) => state.entities[id]?.[phase] ?? null;
@@ -79,7 +90,7 @@ export function planRun({ records, state, model, relationModel, effort, retryFai
   const open = new Set(state.batches.filter((b) => b.status === 'open').flatMap((b) => b.ids));
   const toExtract = prepared.filter((record) => {
     const step = stepOf(state, record.id, 'extract');
-    if (isDone(step, record) || open.has(`extract:${record.id}`)) return false;
+    if (isDone(step, record) || open.has(customIdFor('extract', record.id))) return false;
     return step?.status !== 'failed' || retryFailed;
   });
   const costShape = (fixed, variable, phase) => ({
@@ -97,7 +108,7 @@ export function planRun({ records, state, model, relationModel, effort, retryFai
     prepared
       .filter((record) => {
         const step = stepOf(state, record.id, 'verify');
-        return !isDone(step, record) && !open.has(`verify:${record.id}`);
+        return !isDone(step, record) && !open.has(customIdFor('verify', record.id));
       })
       .map(() => costShape(verifySystem.length, 12 * 1500, 'verify')),
     // The second-pass prompt is under the cacheable minimum (512 tokens): no cache mark, no discount.
@@ -284,8 +295,14 @@ export async function runExtraction({
     await mkdir(dirname(rawPath(phase, id)), { recursive: true });
     await writeFile(rawPath(phase, id), `${JSON.stringify(message, null, 1)}\n`);
   };
+  const recordIdOf = new Map(
+    allRecords.flatMap((record) => [
+      [customIdFor('extract', record.id), record.id],
+      [customIdFor('verify', record.id), record.id],
+    ]),
+  );
   const failure = (phase) => async (customId, reason) => {
-    const id = customId.slice(phase.length + 1);
+    const id = recordIdOf.get(customId) ?? customId;
     setStep(state, id, phase, {
       status: 'failed',
       reason,
@@ -330,7 +347,7 @@ export async function runExtraction({
   await runPhase({
     phase: 'extract',
     requests: plan.toExtract.map((record) => ({
-      customId: `extract:${record.id}`,
+      customId: customIdFor('extract', record.id),
       params: richParams({
         entity: record.entity,
         text: record.source.text,
@@ -350,7 +367,7 @@ export async function runExtraction({
     worstCaseEach: plan.toExtract.length ? plan.extract.worstCaseUsd / plan.toExtract.length : 0,
     onFailure: failure('extract'),
     onMessage: async (customId, message, usd) => {
-      const id = customId.slice('extract:'.length);
+      const id = recordIdOf.get(customId);
       const record = byId.get(id);
       await keepRaw('extract', id, message);
       let output;
@@ -388,7 +405,7 @@ export async function runExtraction({
   const toVerify = [];
   for (const record of plan.prepared) {
     const open = state.batches.some(
-      (b) => b.status === 'open' && b.ids.includes(`verify:${record.id}`),
+      (b) => b.status === 'open' && b.ids.includes(customIdFor('verify', record.id)),
     );
     if (!isDone(stepOf(state, record.id, 'extract'), record) || open) continue;
     if (isDone(stepOf(state, record.id, 'verify'), record)) continue;
@@ -411,7 +428,7 @@ export async function runExtraction({
   await runPhase({
     phase: 'verify',
     requests: toVerify.map((record) => ({
-      customId: `verify:${record.id}`,
+      customId: customIdFor('verify', record.id),
       params: verifyParams({
         entity: record.entity,
         relations: drafts.get(record.id).relations,
@@ -431,7 +448,7 @@ export async function runExtraction({
     worstCaseEach: plan.verify.requests ? plan.verify.worstCaseUsd / plan.verify.requests : 0,
     onFailure: failure('verify'),
     onMessage: async (customId, message, usd) => {
-      const id = customId.slice('verify:'.length);
+      const id = recordIdOf.get(customId);
       const record = byId.get(id);
       await keepRaw('verify', id, message);
       const draft = drafts.get(id) ?? (await readJson(join(outDirectory, `${id}.json`)));
