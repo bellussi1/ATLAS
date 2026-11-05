@@ -275,6 +275,7 @@ export async function main(argv = process.argv.slice(2)) {
       'max-ring': { type: 'string', default: '3' },
       replay: { type: 'string' },
       output: { type: 'string' },
+      root: { type: 'string' },
     },
   });
   const [slug] = positionals;
@@ -282,7 +283,9 @@ export async function main(argv = process.argv.slice(2)) {
     throw new Error(
       'Uso: tradicao:discover <slug> [--max-ring N] [--replay <captura>] [--output <arquivo>]',
     );
-  const { rootQid } = traditionFor(slug);
+  // Uma tradição sem registro ainda pode ser descoberta, com o QID conferido passado à mão.
+  if (values.root && !/^Q\d+$/.test(values.root)) throw new Error(`QID inválido: ${values.root}`);
+  const rootQid = values.root ?? traditionFor(slug).rootQid;
   const recorder = values.replay ? null : recordingHttp(liveHttp);
   const http = values.replay
     ? replayHttp((await loadCapture(join(wikiRawRoot, slug, values.replay))).responses)
