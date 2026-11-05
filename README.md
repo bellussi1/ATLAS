@@ -29,7 +29,7 @@ ATLAS está em construção. Nem todo o acervo foi revisado:
 
 - Parte do conteúdo tem **revisão de IA**, ainda sem revisão humana. Essa condição aparece no próprio site.
 - Lacunas e pendências são marcadas como tais, não preenchidas com texto genérico.
-- A cobertura por tema é desigual entre as tradições.
+- A cobertura varia entre as tradições e as entidades.
 
 Erros, fontes faltando e sugestões são bem-vindos (veja [Contribuir](#contribuir)).
 
@@ -40,23 +40,25 @@ O ATLAS não organiza o conhecimento em artigos isolados. Cada grande tema é um
 | | |
 | --- | --- |
 | **Leituras contínuas** | Textos longos por tradição, em capítulos, com índice e fontes ao lado de cada afirmação. |
-| **Acervo de verbetes** | Pessoas, obras, conceitos, acontecimentos e instituições, cada um com página permanente (`/verbete/:slug`). |
+| **Acervo de verbetes** | Pessoas, obras, conceitos, acontecimentos, países, regimes, partidos, instituições e lugares, cada um com página permanente. |
 | **Rede de conhecimento** | Entidades com IDs estáveis e relações tipadas, reaproveitadas em todas as telas. |
 | **Contexto por demanda** | Termos e nós abrem fichas com fontes por hover, foco, toque ou clique. |
 | **Tipo de afirmação à vista** | Fato documentado, interpretação, controvérsia ou lacuna, sempre marcados. |
 
-## Rotas principais
+## Rotas
 
 | Rota | Conteúdo |
 | --- | --- |
-| `/` | Página inicial, busca e entrada para as leituras |
-| `/marxismo`, `/liberalismo` | Leituras contínuas por tradição |
+| `/` | Página inicial: busca universal, entrada para as leituras e mesa de pesquisa |
+| `/marxismo`, `/liberalismo`, `/social-democracia`, `/anarquismo` | Leituras contínuas por tradição (`/:slug/mesa` redireciona para a página) |
 | `/conhecimento` | Busca no acervo, com filtros que ficam na URL |
-| `/rede` | Rede de ligações entre entidades (`/grafo` redireciona para cá) |
-| `/verbete/:slug` | Ficha de uma entidade, com fontes e conexões |
-| `/pessoas`, `/obras`, `/conceitos`, `/acontecimentos`, `/lugares`, `/fontes` | Listagens por tipo |
+| `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` | Catálogos por tipo |
+| `/rede` | Mapa de ligações em tela cheia (`/grafo` redireciona para cá) |
+| `/verbete/:slug` | Página permanente de uma entidade, com contexto, fontes e conexões |
 
-Caminhos desconhecidos mostram "Página não encontrada". `/comparar` redireciona para `/conhecimento`.
+`/comparar` redireciona para `/conhecimento`. Caminhos desconhecidos mostram "Página não encontrada", sem redirecionar.
+
+As rotas publicadas são prerenderizadas no build. Leituras e verbetes não publicados não entram no prerender.
 
 ## Começar
 
@@ -71,14 +73,17 @@ Abra `http://localhost:4200`.
 
 | Comando | Uso |
 | --- | --- |
-| `npm start` | Servidor de desenvolvimento |
+| `npm start` | Servidor de desenvolvimento (`ng serve`) |
 | `npm run build` | Build de produção, prerender e cabeçalhos de segurança |
 | `npm run preview` | Serve a saída estática em `127.0.0.1:4305` |
 | `npm test` | Testes unitários (Vitest) |
-| `npm run test:e2e` | Navegador, acessibilidade (axe) e estabilidade de layout (Playwright) |
+| `npm run test:e2e` | Jornadas no navegador, acessibilidade (axe) e estabilidade de layout (Playwright) |
+| `npm run test:content` | Testes dos scripts de build de conteúdo |
+| `npm run test:ingestion` | Testes da ingestão Wikimedia |
 | `npm run lint` | ESLint, limites arquiteturais, Biome e Prettier |
 | `npm run typecheck` | TypeScript da aplicação e dos testes |
-| `npm run check:links` | Verifica links internos da saída estática |
+| `npm run check:links` | Verifica links da saída estática |
+| `npm run verify` | Pipeline completo: auditoria, lint, testes, ingestão, build, links e E2E |
 | `npm run content:build` | Compila `content` nos artefatos que o app carrega |
 
 `start`, `build`, `test`, `lint` e `typecheck` executam `content:build` antes. Depois de editar `content` com o servidor aberto, reinicie `npm start`.
@@ -97,24 +102,39 @@ flowchart LR
   A -->|prerender| H[Site estático]
 ```
 
-- O conteúdo compilado é publicado no R2 como objetos imutáveis (`c/<sha256>.json`, `m/<sha256>.<ext>`). Apenas `pointer.json` muda.
-- O build baixa a versão fixada em `content/content-pointer.json`, verificando tamanho e SHA-256.
-- O app lê o ponteiro e os objetos por hash, sem API em tempo de leitura.
+- O conteúdo compilado é publicado no R2 como objetos imutáveis (`c/<sha256>.json`, `m/<sha256>.<ext>`). Só `pointer.json` é mutável.
+- `content/content-pointer.json` fixa a versão publicada. O build (`content:fetch`) a baixa, verificando tamanho e SHA-256.
+- O app lê o ponteiro e os objetos por hash, com integridade preservada na hidratação. Não há API em tempo de leitura.
 - Publicar (`npm run content:publish`) exige credenciais do R2 fora do repositório. Quem só lê ou contribui com código não precisa delas.
 
 ## Estrutura
 
 ```
-content/            grafo, dossiês, traduções e ponteiro do conteúdo publicado
-src/app/core/       contratos Zod, repositório de conteúdo, consultas puras
-src/app/features/   ideologies · exploration · study
-src/app/shared/     UI e diretivas reutilizáveis
-src/app/layouts/    shell e rodapé
-scripts/            build de conteúdo, ingestão Wikimedia, verificações
-docs/               arquitetura, design, editorial e qualidade
+src/app/
+  app.routes.ts       composição central das rotas
+  core/
+    content/          modelos Zod, repositório, consultas puras, editorial, mídia
+    routing/          resolvers de conteúdo
+  shared/
+    ui/               componentes de apresentação reutilizáveis
+    directives/       comportamento compartilhado (revelação, contexto, links editoriais)
+    motion/           movimento compartilhado
+  features/
+    ideologies/       leituras de tradições: páginas, blocos, modelos, dados, serviço
+    exploration/      catálogos, busca, rede, verbetes e visualizações históricas
+    study/            trilha de estudo e progresso
+  layouts/            app-shell, cabeçalho e rodapé
+  pages/home/         página inicial
+content/              grafo, ideologias, conhecimento, tradições e traduções (fonte versionada)
+public/               marca, fontes, mídia, cabeçalhos e redirecionamentos
+scripts/              build e publicação de conteúdo, ingestão Wikimedia, pipeline de tradições
+e2e/                  jornadas no navegador
+docs/                 arquitetura, design, editorial, pesquisa e qualidade
 ```
 
-Antes de contribuir, leia a [arquitetura](docs/architecture/ARCHITECTURE.md), o [padrão de páginas](docs/design/PAGE_STANDARD.md) e o [índice da documentação](docs/README.md).
+Regras de dependência: `core` não importa apresentação; `shared` não importa features; features não acessam a implementação interna umas das outras. Imports entre responsabilidades usam os aliases de `tsconfig.json`. A regra `architecture/boundaries` do ESLint verifica os limites e a ausência de ciclos.
+
+Leia antes de contribuir: [arquitetura](docs/architecture/ARCHITECTURE.md), [padrão de páginas](docs/design/PAGE_STANDARD.md) e [índice da documentação](docs/README.md).
 
 ## Princípios editoriais
 
