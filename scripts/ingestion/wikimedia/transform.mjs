@@ -1,4 +1,5 @@
 import { digest } from './archive.mjs';
+import { assessCommonsFile } from './commons-license.mjs';
 import { claimItem, statementReferences, datesFor, entityType } from './normalize.mjs';
 import { reconcileRequests, titleIndex, uniqueLabels, mergeRecords } from './reconcile.mjs';
 
@@ -209,28 +210,9 @@ export async function transformGraph({
       const commons = await getJson(commonsUrl);
       const filePage = Object.values(commons.query?.pages ?? {})[0];
       const info = filePage?.imageinfo?.[0];
-      const meta = info?.extmetadata ?? {};
-      const clean = (value) =>
-        value?.value
-          ?.replace(/<[^>]*>/g, ' ')
-          .replace(/\s+/g, ' ')
-          .trim() || null;
-      const license = clean(meta.LicenseShortName);
-      const filePageUrl = `https://commons.wikimedia.org/wiki/${encodeURIComponent(`File:${imageName}`).replaceAll('%3A', ':').replaceAll('%20', '_')}`;
-      // Public-domain files carry their rationale on the file page instead of a licence URL.
-      const licenseUrl =
-        meta.LicenseUrl?.value || (/^public domain$/i.test(license ?? '') ? filePageUrl : null);
-      const creator = clean(meta.Artist);
-      const licensePage = licenseUrl?.toLocaleLowerCase('en') ?? '';
-      const reusableLicense =
-        /creativecommons\.org\/licenses\/(?:by|by-sa|zero)(?:\/|$)/.test(licensePage) ||
-        /creativecommons\.org\/publicdomain\/(?:zero|mark)(?:\/|$)/.test(licensePage) ||
-        /gnu\.org\/copyleft\/fdl\.html/.test(licensePage) ||
-        /^public domain$/i.test(license);
-      if (info?.thumburl && license && licenseUrl && reusableLicense) {
-        const attribution =
-          clean(meta.Attribution) ||
-          `${imageName}, ${creator ?? 'autor não identificado'}, ${license}`;
+      const { license, licenseUrl, creator, filePageUrl, attribution, reusable } =
+        assessCommonsFile(imageName, info);
+      if (info?.thumburl && reusable) {
         const extension =
           new URL(info.thumburl).pathname.match(/\.(jpe?g|png|webp|gif)$/i)?.[1]?.toLowerCase() ??
           'jpg';
