@@ -18,11 +18,17 @@ export const defaults = {
   weights: { languages: 1, citedBy: 4, position: 6, regional: 15 },
   thresholds: { accept: 60, review: 30, regionalReview: 20 },
   ringCaps: { 1: 40, 2: 30, 3: 20 },
+  /** Vagas à parte por anel para o nicho regional: sem isso, páginas famosas tomam todo o teto. */
+  regionalCap: 15,
   /** Lista curta para a pessoa decidir: passou disso, o excedente é descartado com motivo. */
   reviewCap: 30,
   /** Link mais adiante que isto, citado por um nó só, não é aceito sozinho: vai para a lista curta. */
   relevantPosition: 0.3,
 };
+
+/** Tipos que quase todo artigo cita ("Política", "Estado"): link no texto não basta para aceitar. */
+export const broadTypes = new Set(['conceito', 'acontecimento', 'movimento', 'lugar']);
+const textLink = 'link no texto';
 
 /** Brasil, América Latina e países da região; Guerra Fria como período. A regra é dado, não palpite. */
 export const regionalRules = {
@@ -115,6 +121,7 @@ export async function expand(roots, neighbors, options = {}) {
   const ringCaps = { ...defaults.ringCaps, ...options.ringCaps };
   const weights = { ...defaults.weights, ...options.weights };
   const reviewCap = options.reviewCap ?? defaults.reviewCap;
+  const regionalCap = options.regionalCap ?? defaults.regionalCap;
   const relevantPosition = options.relevantPosition ?? defaults.relevantPosition;
   const expandable = options.expandable ?? (() => true);
   let reviews = 0;
@@ -141,8 +148,12 @@ export async function expand(roots, neighbors, options = {}) {
           scoreCandidate({ ...entry, citedByAccepted }, weights) +
           (regional ? weights.regional : 0);
         const decided = decide({ ...entry, score }, { thresholds, regional });
+        const declared = (entry.via ?? []).some((via) => via !== textLink);
         const relevant =
-          regional || citedByAccepted >= 2 || (entry.linkPosition ?? 1) <= relevantPosition;
+          regional ||
+          declared ||
+          citedByAccepted >= 2 ||
+          (!broadTypes.has(entry.type) && (entry.linkPosition ?? 1) <= relevantPosition);
         return {
           ...entry,
           citers: undefined,
@@ -158,7 +169,10 @@ export async function expand(roots, neighbors, options = {}) {
       })
       .sort((a, b) => b.score - a.score || a.qid.localeCompare(b.qid, 'en'));
     // The ring cap bounds what is opened further: review and discard keep their decision.
-    const kept = ranked.slice(0, ringCaps[ring]);
+    const kept = [
+      ...ranked.filter((entry) => !entry.regional).slice(0, ringCaps[ring]),
+      ...ranked.filter((entry) => entry.regional).slice(0, regionalCap),
+    ];
     for (const entry of ranked) {
       if (!kept.includes(entry)) {
         seen.set(entry.qid, {

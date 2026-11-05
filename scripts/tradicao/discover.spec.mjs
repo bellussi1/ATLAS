@@ -214,7 +214,7 @@ test('lugar é aceito, mas não abre o anel seguinte; a lista curta tem teto', a
   const opened = [];
   const graph = {
     Q1: [
-      { qid: 'Q2', title: 'Brasil', languages: 80, linkPosition: 0, type: 'lugar' },
+      { qid: 'Q2', title: 'Brasil', languages: 80, linkPosition: 0, type: 'lugar', via: ['país'] },
       { qid: 'Q3', title: 'Pessoa', languages: 80, linkPosition: 0, type: 'pessoa' },
       ...Array.from({ length: 5 }, (_, i) => ({
         qid: `Q${10 + i}`,
@@ -236,6 +236,110 @@ test('lugar é aceito, mas não abre o anel seguinte; a lista curta tem teto', a
   assert.deepEqual(opened, ['Q1', 'Q3']);
   assert.equal(found.filter((c) => c.decision === 'review').length, 2);
   assert.equal(found.filter((c) => /lista curta/.test(c.reason ?? '')).length, 3);
+});
+
+test('página genérica citada no texto vai para a lista curta; pessoa no início do artigo é aceita', async () => {
+  const graph = {
+    Q1: [
+      {
+        qid: 'Q2',
+        title: 'Política',
+        languages: 80,
+        linkPosition: 0,
+        type: 'conceito',
+        via: ['link no texto'],
+      },
+      {
+        qid: 'Q3',
+        title: 'Marx',
+        languages: 80,
+        linkPosition: 0.1,
+        type: 'pessoa',
+        via: ['link no texto'],
+      },
+      {
+        qid: 'Q4',
+        title: 'Trabalhismo',
+        languages: 80,
+        linkPosition: 0.9,
+        type: 'conceito',
+        via: ['parte de'],
+      },
+    ],
+  };
+  const found = await expand(['Q1'], async (qid) => graph[qid] ?? [], { maxRing: 1 });
+  const by = Object.fromEntries(found.map((c) => [c.qid, c]));
+  assert.equal(by.Q2.decision, 'review');
+  assert.equal(by.Q3.decision, 'accept');
+  assert.equal(by.Q4.decision, 'accept');
+});
+
+test('nicho regional tem vagas próprias: páginas famosas não o tiram do teto do anel', async () => {
+  const graph = {
+    Q1: [
+      ...Array.from({ length: 5 }, (_, i) => ({
+        qid: `Q${10 + i}`,
+        title: `Famosa ${i}`,
+        languages: 80,
+        linkPosition: 0,
+        type: 'pessoa',
+      })),
+      {
+        qid: 'Q2',
+        title: 'Partido dos Trabalhadores',
+        languages: 40,
+        linkPosition: 0.5,
+        type: 'partido',
+        regions: ['Q155'],
+      },
+    ],
+  };
+  const found = await expand(['Q1'], async (qid) => graph[qid] ?? [], {
+    maxRing: 1,
+    ringCaps: { 1: 3 },
+  });
+  const party = found.find((c) => c.qid === 'Q2');
+  assert.equal(party.decision, 'accept');
+  assert.equal(party.regional, 'América Latina ou Brasil');
+  assert.equal(found.filter((c) => /teto do anel/.test(c.reason)).length, 2);
+});
+
+test('a raiz não abre as próprias classes nem as classes dos tipos', async () => {
+  const { http } = fakeHttp();
+  const table = { ...wikidata };
+  table.Q100 = item('Q100', {
+    title: 'Fascismo',
+    claims: {
+      P31: [claim('Q7257')],
+      P279: [claim('Q101')],
+      P737: [claim('Q101')],
+      P102: [claim('Q7278')],
+    },
+    languages: 100,
+  });
+  const scoped = createHttp(async (url, kind) => {
+    const parsed = new URL(url);
+    if (parsed.searchParams.get('action') === 'wbgetentities') {
+      const ids = parsed.searchParams.get('ids').split('|');
+      return {
+        bytes: Buffer.from(
+          JSON.stringify({
+            entities: Object.fromEntries(ids.map((id) => [id, table[id] ?? { id, missing: '' }])),
+          }),
+        ),
+      };
+    }
+    return http.resource(url, kind);
+  });
+  const { neighbors } = createNeighbors({
+    http: scoped,
+    root: 'Q100',
+    readArticle: async () => ({}),
+  });
+  const qids = (await neighbors('Q100')).map((c) => c.qid);
+  assert.ok(!qids.includes('Q7257'));
+  assert.ok(!qids.includes('Q7278'));
+  assert.ok(!qids.includes('Q101'), 'classe da qual a raiz é subclasse');
 });
 
 test('regra regional cobre o Brasil e a região; Europa não recebe bônus', () => {

@@ -62,7 +62,7 @@ export const targetTypes = [
   { type: 'movimento', items: ['Q49773'] },
   { type: 'obra', items: ['Q17537576'] },
   { type: 'acontecimento', items: ['Q1190554'] },
-  { type: 'lugar', items: ['Q2221906'] },
+  { type: 'lugar', items: ['Q2221906', 'Q6256', 'Q3624078'] },
   { type: 'conceito', items: ['Q151885', 'Q17737', 'Q187588', 'Q1401304'] },
 ];
 

@@ -20,7 +20,7 @@ import {
   replayHttp,
 } from '../ingestion/wiki-extract/http.mjs';
 import { loadCapture, saveCapture, wikiRawRoot } from '../ingestion/wiki-extract/raw.mjs';
-import { classifyQids } from '../ingestion/wiki-extract/targets.mjs';
+import { classifyQids, targetTypes } from '../ingestion/wiki-extract/targets.mjs';
 import { callApi, entitiesUrl, searchUrl } from '../ingestion/wikimedia/discovery.mjs';
 import { traditionFor } from '../ingestion/wikimedia/traditions.mjs';
 import { projectRoot } from './registry.mjs';
@@ -29,7 +29,7 @@ import { expand, regionalRules, summarize } from './scoring.mjs';
 /** Propriedades seguidas e o peso do vínculo: 0 vale como link no início do artigo. */
 export const neighborProperties = {
   P737: { via: 'influenciado por', position: 0 },
-  P279: { via: 'subclasse de', position: 0 },
+  P279: { via: 'subclasse de', position: 0.6 },
   P1142: { via: 'ideologia política', position: 0 },
   P112: { via: 'fundador', position: 0 },
   P102: { via: 'partido', position: 0.1 },
@@ -73,6 +73,9 @@ const regionalProbes = (root) =>
     `haswbstatement:P1142=${root} haswbstatement:P17=${country}`,
     `haswbstatement:P1142=${root} haswbstatement:P27=${country}`,
   ]);
+
+/** As classes que definem os tipos ("ideologia", "partido político") são rótulo, não entidade da rede. */
+const classItems = new Set(targetTypes.flatMap((type) => type.items));
 
 const statementIds = (entity, property) =>
   (entity.claims?.[property] ?? [])
@@ -200,6 +203,9 @@ export function createNeighbors({
         for (const hit of await search(query)) add(found, hit, 'sonda regional', 0.3);
     }
     found.delete(qid);
+    for (const parent of [...statementIds(entity, 'P31'), ...statementIds(entity, 'P279')])
+      if (qid === root) found.delete(parent);
+    for (const item of classItems) found.delete(item);
     const qids = [...found.keys()];
     await load(qids);
     const kinds = await classifyQids(
