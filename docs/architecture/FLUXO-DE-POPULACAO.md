@@ -4,23 +4,23 @@ Como uma tradição sai do Wikidata e chega ao grafo. Orquestrador: `npm run tra
 
 ## Estágios
 
-| N | Estágio | Entrada | Saída | Comando | Porta de saída | Situação |
-|---|---|---|---|---|---|---|
-| 0 | Régua | `content/` | `coverage.json` | `npm run tradicao:coverage -- <slug>` | piso definido e cumprido pelas referências | funciona |
-| 1 | Registro | pessoa | `content/traditions/<slug>.json` | `--stage 1` valida | registro válido, paleta existe | funciona; arquivo escrito à mão |
-| 2 | Descoberta | QID raiz | `candidates/<slug>.json`, `wikidata-labels.json`, captura | `npm run tradicao:discover -- <slug>` | ≥ 8 aceitos, teto por anel, lista curta ≤ 30, sem genérico | funciona; lento (minutos por anel); faixa do meio é decisão humana |
-| 3 | Captura | aceitos | `generated/wiki-extract/<slug>/articles/`, manifesto | `node scripts/wiki-extract.mjs fetch <slug> --candidates [--refresh]` | todo aceito com artigo; SHA-256 | funciona; Wikipedia devolve 429 com várias sessões |
-| 4 | Avaliação (paga) | ~20 artigos | `generated/eval/<id>/`, `model-choice.json` | `npm run tradicao:eval -- run --from a,b --sample 20`, `report`, `score` | modelo de extração fixado | executada; ver resultado abaixo |
-| 5 | Extração rica (paga) | artigos | `extracts/<id>.json`, respostas cruas, `STATE.json` | `npm run tradicao:extract -- <slug> --dry-run`, depois `--max-usd N` | conteúdo rico, citações literais, relações confirmadas | validada na amostra; `extract` lê o modelo de `model-choice.json` |
-| 6 | Consolidação | rascunhos, rótulos, imagens | coleção no manifesto, com arestas | `node scripts/content/wiki-drafts-to-collections.mjs` | grafo válido, ≥ 1 relação tipada | funciona; aresta depende do estágio 5 |
-| 7 | Glossário | rascunhos ricos | `glossary.json` | `--stage 7` | hover em ≥ 90%, ambíguo não liga | funciona; UI de hover ainda não lê este arquivo |
-| 8 | Redação | grafo | `content/ideologies/<slug>/page.json` | agente, `atlas-create-ideology` | dossiê válido, ≤ 1 capítulo pendente | manual |
-| 9 | Edição | dossiê | dossiê revisado | agente | sem texto de reserva | manual |
-| 10 | Identidade | registro | paleta, assinatura | `--stage 10` verifica | paleta igual à do registro | funciona |
-| 11 | Imagens | QIDs | `images.json`, `assetLicenses` | `npm run tradicao:images -- <slug>` | autor, licença, atribuição, uma vez cada; piso | funciona; ícone por tipo sem licença |
-| 12 | Montagem | leitura | seis pontos da aplicação | manual | registrada se publicada | a porta só verifica |
-| 13 | Verificação | tudo | build | `--stage 13 [--full]` | dossiê válido, piso de cobertura | funciona; hoje barra social-democracia por relações |
-| 14 | Publicação | revisão humana | R2 | só pessoa: `npm run content:publish` | revisão com pessoa e data | nunca automática |
+| N   | Estágio              | Entrada                     | Saída                                                     | Comando                                                                  | Porta de saída                                             | Situação                                                           |
+| --- | -------------------- | --------------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------------ |
+| 0   | Régua                | `content/`                  | `coverage.json`                                           | `npm run tradicao:coverage -- <slug>`                                    | piso definido e cumprido pelas referências                 | funciona                                                           |
+| 1   | Registro             | pessoa                      | `content/traditions/<slug>.json`                          | `--stage 1` valida                                                       | registro válido, paleta existe                             | funciona; arquivo escrito à mão                                    |
+| 2   | Descoberta           | QID raiz                    | `candidates/<slug>.json`, `wikidata-labels.json`, captura | `npm run tradicao:discover -- <slug>`                                    | ≥ 8 aceitos, teto por anel, lista curta ≤ 30, sem genérico | funciona; lento (minutos por anel); faixa do meio é decisão humana |
+| 3   | Captura              | aceitos                     | `generated/wiki-extract/<slug>/articles/`, manifesto      | `node scripts/wiki-extract.mjs fetch <slug> --candidates [--refresh]`    | todo aceito com artigo; SHA-256                            | funciona; Wikipedia devolve 429 com várias sessões                 |
+| 4   | Avaliação (paga)     | ~20 artigos                 | `generated/eval/<id>/`, `model-choice.json`               | `npm run tradicao:eval -- run --from a,b --sample 20`, `report`, `score` | modelo de extração fixado                                  | executada; ver resultado abaixo                                    |
+| 5   | Extração rica (paga) | artigos                     | `extracts/<id>.json`, respostas cruas, `STATE.json`       | `npm run tradicao:extract -- <slug> --dry-run`, depois `--max-usd N`     | conteúdo rico, citações literais, relações confirmadas     | validada na amostra; `extract` lê o modelo de `model-choice.json`  |
+| 6   | Consolidação         | rascunhos, rótulos, imagens | coleção no manifesto, com arestas                         | `node scripts/content/wiki-drafts-to-collections.mjs`                    | grafo válido, ≥ 1 relação tipada                           | funciona; aresta depende do estágio 5                              |
+| 7   | Glossário            | rascunhos ricos             | `glossary.json`                                           | `--stage 7`                                                              | hover em ≥ 90%, ambíguo não liga                           | funciona; UI de hover ainda não lê este arquivo                    |
+| 8   | Redação              | grafo                       | `content/ideologies/<slug>/page.json`                     | agente, `atlas-create-ideology`                                          | dossiê válido, ≤ 1 capítulo pendente                       | manual                                                             |
+| 9   | Edição               | dossiê                      | dossiê revisado                                           | agente                                                                   | sem texto de reserva                                       | manual                                                             |
+| 10  | Identidade           | registro                    | paleta, assinatura                                        | `--stage 10` verifica                                                    | paleta igual à do registro                                 | funciona                                                           |
+| 11  | Imagens              | QIDs                        | `images.json`, `assetLicenses`                            | `npm run tradicao:images -- <slug>`                                      | autor, licença, atribuição, uma vez cada; piso             | funciona; ícone por tipo sem licença                               |
+| 12  | Montagem             | leitura                     | seis pontos da aplicação                                  | manual                                                                   | registrada se publicada                                    | a porta só verifica                                                |
+| 13  | Verificação          | tudo                        | build                                                     | `--stage 13 [--full]`                                                    | dossiê válido, piso de cobertura                           | funciona; hoje barra social-democracia por relações                |
+| 14  | Publicação           | revisão humana              | R2                                                        | só pessoa: `npm run content:publish`                                     | revisão com pessoa e data                                  | nunca automática                                                   |
 
 ## O que o extrator entrega
 
@@ -67,6 +67,20 @@ Gasto até aqui: US$ 0,12. Decisão da regra: `so-relacoes-sobe`, gravada em `sc
 - Erro restante do modelo, em `medium`: texto 2,6% (1 de 38) e relações 7,1% (3 de 42). Erros de fonte à parte: 3.
 - A conferência foi feita em dois tempos: 14 marcas herdadas de uma conferência com fontes externas e 66 por IA, a pedido do usuário. Só a IA julgou a versão final, e não houve segunda leitura humana.
 - A conferência do texto tirou 66 de 257 itens. Dos que tinham marca, removeu 5 dos 6 errados e 7 de 34 certos, então perde conteúdo verdadeiro. 9 saíram por falta de veredito.
+
+## Depois da coleção: o que aparece onde
+
+| Saída                                        | Como nasce                                                            | Quem decide                       |
+| -------------------------------------------- | --------------------------------------------------------------------- | --------------------------------- |
+| `/verbete/:slug` e `/conhecimento`           | Automático: toda entidade da coleção entra no grafo (`content:build`) | ninguém; vale o que está no grafo |
+| Página de ideologia (dossiê de 12 capítulos) | Manual, estágios 8 e 9, só para famílias                              | agente redige, pessoa revisa      |
+| Publicação no R2                             | `npm run content:publish`                                             | só pessoa; nunca automática       |
+
+Ordem: descoberta, captura, extração, conversão para coleção, `content:build` e testes, commit local, **revisão humana**, publicação.
+
+## Ideologias principais
+
+Coleção curada (`content/traditions/ideologias-principais.json` e `candidates/ideologias-principais.json`) para dar ficha, relações e lugar no mapa a cerca de 60 ideologias com artigo próprio, de várias famílias. Não leva descoberta por anéis nem dossiê: os candidatos vêm de lista curada (decisor `curadoria`), cada nome é conferido contra a Wikipédia, e o que não tem artigo próprio fica de fora. Os estágios de dossiê (8 e 9) valem só para as famílias. O cheque de tipos do estágio 2 não se aplica a essa coleção.
 
 ## Quebrado ou manual
 
