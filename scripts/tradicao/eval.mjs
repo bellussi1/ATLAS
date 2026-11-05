@@ -334,6 +334,8 @@ export async function reguardEval({ root = projectRoot, id = 'amostra-20', log =
   return totals;
 }
 
+const markKey = (item) => [item.arm, item.kind, item.statement, item.quote].join('|');
+
 /** Writes metrics and the review list. Marks a person already made are kept across runs. */
 export async function buildReport({ root = projectRoot, id = 'amostra-20', from }) {
   const directory = evalDirectory(root, id);
@@ -356,14 +358,14 @@ export async function buildReport({ root = projectRoot, id = 'amostra-20', from 
   }
   const reviewPath = join(directory, 'revisao.json');
   const previous = await readFile(reviewPath, 'utf8')
-    .then((text) => new Map(JSON.parse(text).map((item) => [`${item.arm}|${item.quote}`, item])))
+    .then((text) => new Map(JSON.parse(text).map((item) => [markKey(item), item])))
     .catch((error) => {
       // A broken file holds a person's marks: stop, never overwrite it with an empty list.
       if (error.code === 'ENOENT') return new Map();
       throw new Error(`revisao.json inválido, nada foi gravado: ${error.message}`);
     });
   const merged = items.map((item) => {
-    const old = previous.get(`${item.arm}|${item.quote}`);
+    const old = previous.get(markKey(item));
     return old ? { ...item, ok: old.ok, note: old.note } : item;
   });
   await writeJsonAtomic(reviewPath, merged);
