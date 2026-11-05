@@ -4,7 +4,11 @@
 // no human review is recorded here.
 // A draft whose Wikidata item already belongs to an existing entity is merged into that entity:
 // its sources, evidences, citations, claims and reviews are appended to the existing collection.
+// Relations that passed the guards and the second pass become edges, with source and nature; a
+// relation whose target is not in the graph waits in the report. Wikidata labels (P737, P1142)
+// become associations, never documented influence. Licensed images become asset licences.
 import './register-source-modules.mjs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { mkdir, readdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 import { join, resolve } from 'node:path';
@@ -25,13 +29,37 @@ const LICENSE = 'CC BY-SA 4.0';
 const LICENSE_URL = 'https://creativecommons.org/licenses/by-sa/4.0/';
 export const REVIEW_NOTE = 'Revisão humana não registrada';
 
-export const TRADITIONS = [
+const BASE_TRADITIONS = [
   { key: 'marxismo', label: 'Marxismo' },
   { key: 'liberalismo', label: 'Liberalismo' },
   { key: 'social-democracia', label: 'Social-democracia' },
   { key: 'outras-ideologias', label: 'Outras ideologias' },
   { key: 'anarquismo', label: 'Anarquismo' },
 ];
+
+/** The fixed list keeps its order (ids depend on it); registered traditions follow, by key. */
+export function mergeTraditions(base, registered) {
+  const known = new Set(base.map((tradition) => tradition.key));
+  const extra = registered
+    .filter((entry) => !known.has(entry.slug))
+    .map((entry) => ({ key: entry.slug, label: entry.titles.pt }))
+    .sort((a, b) => (a.key < b.key ? -1 : 1));
+  return [...base, ...extra];
+}
+
+function registeredTraditions() {
+  const directory = join(projectRoot, 'content/traditions');
+  try {
+    return readdirSync(directory)
+      .filter((name) => name.endsWith('.json'))
+      .map((name) => JSON.parse(readFileSync(join(directory, name), 'utf8')));
+  } catch (error) {
+    if (error.code === 'ENOENT') return [];
+    throw error;
+  }
+}
+
+export const TRADITIONS = mergeTraditions(BASE_TRADITIONS, registeredTraditions());
 const TRADITION_BY_KEY = new Map(
   TRADITIONS.map((tradition, index) => [tradition.key, { ...tradition, index }]),
 );
@@ -40,8 +68,81 @@ const OWN_ATLAS_IDS = new Set(TRADITIONS.map((tradition) => atlasIdFor(tradition
 
 // Records added by this converter carry these id prefixes. They are stripped from existing
 // collections before the additions are derived again, so repeated runs give the same files.
-const ADDED_RECORD_ID = /^(src|ev|cit|claim|rev)-wiki-/;
-const RECORD_KEYS = ['sources', 'evidences', 'citations', 'claims', 'reviews'];
+const ADDED_RECORD_ID = /^(src|ev|cit|claim|rev|rel|asset)-wiki-/;
+const RECORD_KEYS = [
+  'sources',
+  'evidences',
+  'citations',
+  'claims',
+  'reviews',
+  'relations',
+  'assetLicenses',
+];
+
+/** Closed list of natures -> graph type and labels. Anything else never becomes an edge. */
+export const EDGE_BY_NATURE = {
+  influenciou: { type: 'influenced', label: 'influenciou', reverseLabel: 'foi influenciado por' },
+  'participou-de': {
+    type: 'participated_in',
+    label: 'participou de',
+    reverseLabel: 'teve a participação de',
+  },
+  'membro-de': {
+    type: 'documented-association',
+    label: 'foi membro de',
+    reverseLabel: 'teve como membro',
+  },
+  fundou: { type: 'documented-association', label: 'fundou', reverseLabel: 'foi fundado por' },
+  escreveu: { type: 'wrote', label: 'escreveu', reverseLabel: 'foi escrito por' },
+  'desenvolveu-se-em': {
+    type: 'developed_into',
+    label: 'desenvolveu-se em',
+    reverseLabel: 'deriva de',
+  },
+  'reagiu-contra': {
+    type: 'reacted_against',
+    label: 'reagiu contra',
+    reverseLabel: 'recebeu reação de',
+  },
+  sucedeu: { type: 'documented-association', label: 'sucedeu', reverseLabel: 'foi sucedido por' },
+  governou: {
+    type: 'documented-association',
+    label: 'governou',
+    reverseLabel: 'foi governado por',
+  },
+  'ocorreu-em': {
+    type: 'documented-association',
+    label: 'ocorreu em',
+    reverseLabel: 'foi palco de',
+  },
+};
+
+/** Wikidata labels are contributors' classifications: association, whatever the property says. */
+export const LABEL_EDGES = {
+  P737: {
+    label: 'é rotulado no Wikidata em associação com (P737)',
+    reverseLabel: 'tem rótulo de associação no Wikidata vindo de (P737)',
+  },
+  P1142: {
+    label: 'é rotulado no Wikidata com a ideologia (P1142)',
+    reverseLabel: 'é a ideologia rotulada no Wikidata de (P1142)',
+  },
+};
+
+const SECTION_HEADINGS = {
+  origem: 'Origem',
+  'ideias-centrais': 'Ideias centrais',
+  contexto: 'Contexto',
+  controversias: 'Controvérsias',
+  bibliografia: 'Bibliografia',
+};
+const SECTION_CLASSIFICATION = {
+  origem: 'documented-fact',
+  'ideias-centrais': 'attributed-thesis',
+  contexto: 'documented-fact',
+  controversias: 'contested-claim',
+  bibliografia: 'documented-fact',
+};
 
 // Draft type -> schema kind. Types the drafts actually use are listed; "topic" is generic in Wikipedia.
 const KIND_BY_DRAFT_TYPE = {
@@ -56,6 +157,7 @@ const KIND_BY_DRAFT_TYPE = {
   work: 'work',
   obra: 'work',
   institution: 'institution',
+  movimento: 'institution',
   organização: 'institution',
   organizacao: 'institution',
   place: 'place',
@@ -151,13 +253,18 @@ export function slugify(text) {
 
 const sentence = (text) => (/[.!?…]$/.test(text) ? text : `${text}.`);
 const dateOf = (isoInstant) => isoInstant.slice(0, 10);
-const weight = (draft) => draft.dates.length + draft.relations.length + draft.claims.length;
+const weight = (draft) =>
+  draft.dates.length + draft.relations.length + draft.claims.length + (draft.sections?.length ?? 0);
+/** Structured relation of a rich draft; the old free-text ones stay as claims. */
+const isStructured = (relation) => typeof relation.nature === 'string';
 const emptyRecords = () => ({
   sources: [],
   evidences: [],
   citations: [],
   claims: [],
   reviews: [],
+  relations: [],
+  assetLicenses: [],
   retrievedAt: [],
 });
 
@@ -255,9 +362,16 @@ function statementsFor(draft) {
     classification: 'documented-fact',
     quote: item.quote,
   }));
-  const relations = draft.relations.map((item) => ({
-    text: sentence(`Relação com ${item.target}: ${item.relation}`),
-    classification: 'documented-fact',
+  const relations = draft.relations
+    .filter((item) => !isStructured(item))
+    .map((item) => ({
+      text: sentence(`Relação com ${item.target}: ${item.relation}`),
+      classification: 'documented-fact',
+      quote: item.quote,
+    }));
+  const sections = (draft.sections ?? []).map((item) => ({
+    text: sentence(item.text),
+    classification: SECTION_CLASSIFICATION[item.kind] ?? 'documented-fact',
     quote: item.quote,
   }));
   const claims = draft.claims.map((item) => ({
@@ -265,7 +379,7 @@ function statementsFor(draft) {
     classification: classificationForKind(item.kind),
     quote: item.quote,
   }));
-  return [...dates, ...relations, ...claims].map((statement, index) => {
+  return [...sections, ...dates, ...relations, ...claims].map((statement, index) => {
     if (typeof statement.quote !== 'string' || statement.quote.trim() === '') {
       throw new Error(`Afirmação sem citação literal em ${draft.entity.id}: "${statement.text}".`);
     }
@@ -285,7 +399,8 @@ function recordsForDraft(item, entityId) {
     edition: `revisão ${draft.source.revision}; licença ${LICENSE}; extração assistida por IA (${draft.review?.model ?? 'assistente'})`,
     publicationDate: null,
   };
-  const records = { sources: [source], evidences: [], citations: [], claims: [], reviews: [] };
+  const records = { ...emptyRecords(), sources: [source] };
+  delete records.retrievedAt;
   for (const statement of statementsFor(draft)) {
     const suffix = `${base}-${statement.number}`;
     const evidence = {
@@ -320,6 +435,140 @@ function recordsForDraft(item, entityId) {
   return records;
 }
 
+/** Terms and nicknames of every reading of the entity, to link keywords; the title is not one. */
+function aliasesFor(members, title) {
+  const seen = new Set([title.toLocaleLowerCase('pt-BR')]);
+  const aliases = [];
+  for (const { draft } of members)
+    for (const item of draft.glossary ?? [])
+      for (const term of [
+        item.term,
+        ...(item.pt ?? []),
+        ...(item.en ?? []),
+        ...(item.aliases ?? []),
+      ]) {
+        const key = term?.trim().toLocaleLowerCase('pt-BR');
+        if (!key || seen.has(key)) continue;
+        seen.add(key);
+        aliases.push(term.trim());
+      }
+  return aliases;
+}
+
+/**
+ * Edges of one draft: only relations of the closed list that the second pass confirmed, whose target
+ * resolves to an entity by QID. Everything else is reported, not guessed. The edge keeps the literal
+ * quote as evidence and its Wikipedia source; its review stays pending.
+ */
+function edgesForDraft(item, entityId, resolve, pending) {
+  const { draft } = item;
+  const base = `wiki-${draft.entity.id}`;
+  const records = { evidences: [], relations: [] };
+  for (const [index, relation] of (draft.relations ?? []).filter(isStructured).entries()) {
+    const edge = EDGE_BY_NATURE[relation.nature];
+    const where = `${item.tradition}/${draft.entity.id}`;
+    const wait = (reason) => pending.push({ draft: where, target: relation.target, reason });
+    if (!edge) {
+      wait(`natureza fora da lista: ${relation.nature}`);
+      continue;
+    }
+    if (relation.verified !== true) {
+      wait('sem confirmação da segunda passada');
+      continue;
+    }
+    const targetId = relation.targetQid ? resolve(relation.targetQid) : null;
+    if (!targetId) {
+      wait(relation.targetQid ? 'alvo fora do grafo' : 'alvo sem QID');
+      continue;
+    }
+    if (targetId === entityId) {
+      wait('alvo é a própria entidade');
+      continue;
+    }
+    const number = String(index + 1).padStart(3, '0');
+    const evidenceId = `ev-${base}-rel-${number}`;
+    const forward = relation.direction !== 'alvo-para-entidade';
+    records.evidences.push({
+      id: evidenceId,
+      sourceId: `src-${base}`,
+      locator: relation.quote,
+      accessedAt: dateOf(draft.source.retrievedAt),
+      note: null,
+    });
+    records.relations.push({
+      id: `rel-${base}-${number}`,
+      fromEntityId: forward ? entityId : targetId,
+      toEntityId: forward ? targetId : entityId,
+      type: edge.type,
+      label: edge.label,
+      reverseLabel: edge.reverseLabel,
+      context: `${sentence(relation.sentence)} Extraído por IA (Wikipédia ${draft.source.language}, revisão ${draft.source.revision}, ${LICENSE}) e conferido contra o trecho. ${REVIEW_NOTE}.`,
+      temporalExtent: null,
+      uncertainty: 'unknown',
+      evidenceIds: [evidenceId],
+      editorialStatus: 'pending',
+      provenance: {
+        source: 'wikipedia',
+        url: draft.source.url,
+        retrievedAt: dateOf(draft.source.retrievedAt),
+      },
+    });
+  }
+  return records;
+}
+
+/** Wikidata P737/P1142 between two graph entities, as associations with the item as the source. */
+function labelEdges(statements, resolve, existingPairs, atlasOf, retrievedAt) {
+  const seen = new Set();
+  const byAtlas = new Map();
+  for (const statement of [...statements].sort((a, b) =>
+    `${a.qid}${a.property}${a.targetQid}` < `${b.qid}${b.property}${b.targetQid}` ? -1 : 1,
+  )) {
+    const edge = LABEL_EDGES[statement.property];
+    const fromId = resolve(statement.qid);
+    const toId = resolve(statement.targetQid);
+    if (!edge || !fromId || !toId || fromId === toId) continue;
+    const key = `${statement.qid}-${statement.property}-${statement.targetQid}`.toLowerCase();
+    if (seen.has(key) || existingPairs.has(`${fromId}>${toId}`)) continue;
+    seen.add(key);
+    const atlas = atlasOf(fromId);
+    if (!atlas) continue;
+    const records = byAtlas.get(atlas) ?? { sources: [], evidences: [], relations: [] };
+    const sourceId = `src-wiki-wd-${statement.qid.toLowerCase()}`;
+    if (!records.sources.some((source) => source.id === sourceId))
+      records.sources.push({
+        id: sourceId,
+        title: `${statement.qid} (Wikidata)`,
+        url: `https://www.wikidata.org/wiki/${statement.qid}`,
+        edition: 'Wikidata; dados estruturados sob CC0; rótulo de contribuidores',
+        publicationDate: null,
+      });
+    records.evidences.push({
+      id: `ev-wiki-wd-${key}`,
+      sourceId,
+      locator: `${statement.qid}, ${statement.property} = ${statement.targetQid}`,
+      accessedAt: retrievedAt,
+      note: 'Rótulo do Wikidata; não documenta influência.',
+    });
+    records.relations.push({
+      id: `rel-wiki-wd-${key}`,
+      fromEntityId: fromId,
+      toEntityId: toId,
+      type: 'associated_with',
+      label: edge.label,
+      reverseLabel: edge.reverseLabel,
+      context: `Associação vinda de um rótulo do Wikidata (${statement.property}). Não é influência documentada. ${REVIEW_NOTE}.`,
+      temporalExtent: null,
+      uncertainty: 'unknown',
+      evidenceIds: [`ev-wiki-wd-${key}`],
+      editorialStatus: 'pending',
+      provenance: { source: 'wikidata', url: statement.url, retrievedAt },
+    });
+    byAtlas.set(atlas, records);
+  }
+  return byAtlas;
+}
+
 function entityFor(canonical, members, slug) {
   const { draft } = canonical;
   const language = draft.source.language;
@@ -332,25 +581,29 @@ function entityFor(canonical, members, slug) {
     .filter(Boolean)
     .join(' ');
   const merged = members.slice(1).map((item) => item.draft.source.language);
+  const richSections = Object.entries(SECTION_HEADINGS).flatMap(([kind, heading]) => {
+    const paragraphs = (draft.sections ?? []).filter((s) => s.kind === kind).map((s) => s.text);
+    return paragraphs.length ? [{ heading, paragraphs }] : [];
+  });
   return {
     id: `wiki-${draft.entity.id}`,
     kind: kindForDraft(draft),
     slug,
     title: draft.entity.label,
     summary: draft.summary,
-    aliases: [],
+    aliases: aliasesFor(members, draft.entity.label),
     context: merged.length ? `${context} Fontes adicionais em: ${merged.join(', ')}.` : context,
     temporalExtent: null,
     uncertainty: 'unknown',
     revision: 1,
-    sections: [{ heading: 'Resumo', paragraphs: [draft.summary] }],
+    sections: [{ heading: 'Resumo', paragraphs: [draft.summary] }, ...richSections],
     editorialStatus: 'pending',
     textLocale: language === 'pt' ? 'pt-BR' : 'en',
     externalIds: /^Q\d+$/.test(draft.entity.qid ?? '')
       ? { wikidata: draft.entity.qid, wikipedia: title }
       : undefined,
     discoveryMetadata: {
-      description: null,
+      description: draft.oneLine ?? null,
       wikipediaTitle: title,
       wikipediaUrl: draft.source.url,
       wikipediaLanguage: language,
@@ -373,11 +626,16 @@ function withoutAddedRecords(atlas) {
     citations: atlas.citations.filter(keep),
     claims: atlas.claims.filter(keep),
     reviews: atlas.reviews.filter(keep),
+    relations: atlas.relations.filter(keep),
+    assetLicenses: atlas.assetLicenses.filter(keep),
   };
 }
 
 // Pure conversion: drafts in, collections out. Deterministic for the same input and existing atlases.
-export function convertDrafts(items, { existingAtlases = [] } = {}) {
+export function convertDrafts(
+  items,
+  { existingAtlases = [], wikidataLabels = [], images = {} } = {},
+) {
   items.forEach(assertDraftShape);
   const ordered = [...items].sort(compareItems);
   const dropped = [];
@@ -423,6 +681,32 @@ export function convertDrafts(items, { existingAtlases = [] } = {}) {
   );
   const additions = new Map(); // existing atlas id -> records appended to it
   const mergedIntoExisting = [];
+  const pendingRelations = [];
+  const iconOnly = [];
+  const usedAssetPaths = new Set(
+    existingAtlases.flatMap((atlas) => (atlas.assetLicenses ?? []).map((asset) => asset.assetPath)),
+  );
+
+  // Whole-graph QID -> entity, known before any edge is built: an edge may point to a later draft.
+  const entityIdByQid = new Map([...existingByQid].map(([qid, entity]) => [qid, entity.id]));
+  for (const members of groups) {
+    const { qid, id } = members[0].draft.entity;
+    if (/^Q\d+$/.test(qid ?? '') && !entityIdByQid.has(qid)) entityIdByQid.set(qid, `wiki-${id}`);
+  }
+  const resolve = (qid) => entityIdByQid.get(qid) ?? null;
+
+  /** Licensed image of a draft as an asset record; without one the UI falls back to the type icon. */
+  const assetsFor = (item, entityId) => {
+    const image = images[item.draft.entity.id];
+    if (image?.status !== 'licensed') {
+      if (image) iconOnly.push({ entity: entityId, icon: image.icon, reason: image.reason });
+      return [];
+    }
+    const { restrictions: _restrictions, ...asset } = image.asset;
+    if (usedAssetPaths.has(asset.assetPath)) return [];
+    usedAssetPaths.add(asset.assetPath);
+    return [{ id: `asset-wiki-${item.draft.entity.id}`, entityId, ...asset }];
+  };
 
   for (const members of groups) {
     const canonical = members[0];
@@ -437,6 +721,10 @@ export function convertDrafts(items, { existingAtlases = [] } = {}) {
       const addition = additions.get(target.atlasId) ?? emptyRecords();
       for (const item of members) {
         const records = recordsForDraft(item, target.id);
+        const edges = edgesForDraft(item, target.id, resolve, pendingRelations);
+        records.evidences.push(...edges.evidences);
+        records.relations.push(...edges.relations);
+        records.assetLicenses.push(...assetsFor(item, target.id));
         for (const key of RECORD_KEYS) addition[key].push(...records[key]);
         addition.retrievedAt.push(item.draft.source.retrievedAt);
       }
@@ -466,11 +754,50 @@ export function convertDrafts(items, { existingAtlases = [] } = {}) {
     }
     for (const item of members) {
       const records = recordsForDraft(item, entity.id);
+      const edges = edgesForDraft(item, entity.id, resolve, pendingRelations);
+      records.evidences.push(...edges.evidences);
+      records.relations.push(...edges.relations);
+      records.assetLicenses.push(...assetsFor(item, entity.id));
       for (const key of RECORD_KEYS) bucket[key].push(...records[key]);
       bucket.retrievedAt.push(item.draft.source.retrievedAt);
-      bucket.relationTargets += item.draft.relations.length;
+      bucket.relationTargets += item.draft.relations.filter((r) => !isStructured(r)).length;
       bucket.dates += item.draft.dates.length;
     }
+  }
+
+  // Wikidata labels attach to the atlas of their origin entity, when that entity was drafted here.
+  const atlasOfDrafted = new Map();
+  for (const [key, bucket] of buckets)
+    for (const entity of bucket.entities) atlasOfDrafted.set(entity.id, { bucket: key });
+  for (const entry of mergedIntoExisting) atlasOfDrafted.set(entry.entity, { atlas: entry.atlas });
+  const pairs = new Set(
+    [
+      ...existingAtlases.flatMap((atlas) => atlas.relations ?? []),
+      ...[...buckets.values()].flatMap((bucket) => bucket.relations),
+      ...[...additions.values()].flatMap((addition) => addition.relations),
+    ].map((relation) => `${relation.fromEntityId}>${relation.toEntityId}`),
+  );
+  const labelRecords = labelEdges(
+    wikidataLabels,
+    resolve,
+    pairs,
+    (id) => {
+      const owner = atlasOfDrafted.get(id);
+      return owner ? (owner.bucket ? `bucket:${owner.bucket}` : `atlas:${owner.atlas}`) : null;
+    },
+    [...buckets.values(), ...additions.values()]
+      .flatMap((b) => b.retrievedAt)
+      .map(dateOf)
+      .sort()
+      .at(-1) ?? null,
+  );
+  for (const [owner, records] of labelRecords) {
+    const target = owner.startsWith('bucket:')
+      ? buckets.get(owner.slice('bucket:'.length))
+      : (additions.get(owner.slice('atlas:'.length)) ?? emptyRecords());
+    target.sources.push(...records.sources);
+    target.evidences.push(...records.evidences);
+    target.relations.push(...records.relations);
   }
 
   const augmentedAtlases = existingAtlases
@@ -486,6 +813,8 @@ export function convertDrafts(items, { existingAtlases = [] } = {}) {
         citations: [...atlas.citations, ...addition.citations],
         claims: [...atlas.claims, ...addition.claims],
         reviews: [...atlas.reviews, ...addition.reviews],
+        relations: [...atlas.relations, ...addition.relations],
+        assetLicenses: [...atlas.assetLicenses, ...addition.assetLicenses],
       };
     });
 
@@ -509,8 +838,8 @@ export function convertDrafts(items, { existingAtlases = [] } = {}) {
       citations: bucket.citations,
       claims: bucket.claims,
       reviews: bucket.reviews,
-      assetLicenses: [],
-      relations: [],
+      assetLicenses: bucket.assetLicenses,
+      relations: bucket.relations,
       learningPaths: [],
     };
     atlases.push(atlas);
@@ -521,6 +850,8 @@ export function convertDrafts(items, { existingAtlases = [] } = {}) {
       entities: atlas.entities.length,
       sources: atlas.sources.length,
       claims: atlas.claims.length,
+      relations: atlas.relations.length,
+      images: atlas.assetLicenses.length,
       relationTargetsAsText: bucket.relationTargets,
       dates: bucket.dates,
       merged: bucket.merged,
@@ -534,8 +865,29 @@ export function convertDrafts(items, { existingAtlases = [] } = {}) {
     dropped,
     merged: traditions.flatMap((item) => item.merged),
     mergedIntoExisting,
+    pendingRelations,
+    iconOnly,
     slugAdjustments: traditions.flatMap((item) => item.slugAdjustments),
   };
+}
+
+/** Optional per-tradition files written by discovery and by the image collector. */
+export async function readSidecars(root = defaultDraftRoot) {
+  const wikidataLabels = [];
+  const images = {};
+  const optional = (path) =>
+    readFile(path, 'utf8')
+      .then(JSON.parse)
+      .catch((error) => {
+        if (error.code === 'ENOENT') return null;
+        throw error;
+      });
+  for (const tradition of TRADITIONS) {
+    const labels = await optional(join(root, tradition.key, 'wikidata-labels.json'));
+    if (labels) wikidataLabels.push(...labels);
+    Object.assign(images, await optional(join(root, tradition.key, 'images.json')));
+  }
+  return { wikidataLabels, images };
 }
 
 export async function readDrafts(root = defaultDraftRoot) {
@@ -602,7 +954,10 @@ export async function convertDraftsToCollections({
     baseAtlases.push(withoutAddedRecords(await readVerifiedAtlas(directory, entry)));
   }
 
-  const converted = convertDrafts(items, { existingAtlases: baseAtlases });
+  const converted = convertDrafts(items, {
+    existingAtlases: baseAtlases,
+    ...(await readSidecars(root)),
+  });
   const augmentedById = new Map(converted.augmentedAtlases.map((atlas) => [atlas.id, atlas]));
   const updatedAt = [
     manifest.updatedAt,
@@ -653,6 +1008,8 @@ export async function convertDraftsToCollections({
     dropped: converted.dropped,
     merged: converted.merged,
     mergedIntoExisting: converted.mergedIntoExisting,
+    pendingRelations: converted.pendingRelations,
+    iconOnly: converted.iconOnly,
     augmentedCollections: converted.augmentedAtlases.map((atlas) => atlas.id),
     slugAdjustments: converted.slugAdjustments,
     files: files.map(({ id, file }) => ({ id, file })),
@@ -662,8 +1019,12 @@ export async function convertDraftsToCollections({
 function formatReport(report) {
   const lines = report.traditions.map(
     (item) =>
-      `${item.label}: ${item.entities} entidades novas, ${item.sources} fontes, ${item.claims} afirmações (${item.dates} datas, relações em texto: ${item.relationTargetsAsText})`,
+      `${item.label}: ${item.entities} entidades novas, ${item.sources} fontes, ${item.claims} afirmações (${item.dates} datas, ${item.relations} arestas, ${item.images} imagens, relações só em texto: ${item.relationTargetsAsText})`,
   );
+  lines.push(`Relações que ainda não viram aresta: ${report.pendingRelations.length}`);
+  for (const item of report.pendingRelations.slice(0, 20))
+    lines.push(`  - ${item.draft} -> ${item.target}: ${item.reason}`);
+  lines.push(`Entidades só com ícone: ${report.iconOnly.length}`);
   lines.push(`Descartados por URL repetida: ${report.dropped.length}`);
   for (const item of report.dropped) lines.push(`  - ${item.id}: ${item.reason}`);
   lines.push(`Entidades com fontes de idiomas múltiplos: ${report.merged.length}`);
