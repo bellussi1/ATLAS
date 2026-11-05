@@ -32,18 +32,45 @@
               [class.is-active]="section() === 'leituras'"
               (click)="toggleReadings()"
             >
-              Leituras <span class="nav__caret" aria-hidden="true"></span>
+              <span class="nav__glyph nav__glyph--quarter" aria-hidden="true"></span>Leituras
+              <span class="nav__caret" aria-hidden="true"></span>
             </button>
-            <ul id="menu-leituras" class="readings-menu" [class.is-open]="readingsOpen()">
-              @for (reading of readings; track reading.path) {
-                <li>
-                  <a [routerLink]="reading.path" (click)="close()">
-                    <strong>{{ reading.title }}</strong>
-                    <span>{{ reading.note }}</span>
-                  </a>
-                </li>
-              }
-            </ul>
+            <div id="menu-leituras" class="mega" [class.is-open]="readingsOpen()">
+              <div class="mega__readings">
+                <p class="mega__label">Ler · textos contínuos</p>
+                <ul class="readings-menu">
+                  @for (reading of readings; track reading.path) {
+                    <li>
+                      <a
+                        [routerLink]="reading.path"
+                        [attr.data-shape]="reading.shape"
+                        [style.--swatch]="reading.color"
+                        (click)="close()"
+                      >
+                        <span class="shape" aria-hidden="true"></span>
+                        <strong>{{ reading.title }}</strong>
+                        <span class="note">{{ reading.note }}</span>
+                      </a>
+                    </li>
+                  }
+                </ul>
+              </div>
+              <div class="mega__aside">
+                <p class="mega__label">Consultar · por tipo</p>
+                <ul class="catalogue-links">
+                  @for (catalogue of catalogues; track catalogue.path) {
+                    <li>
+                      <a [routerLink]="'/' + catalogue.path" (click)="close()">{{
+                        catalogue.title
+                      }}</a>
+                    </li>
+                  }
+                </ul>
+                <a class="mega__help" routerLink="/" fragment="como-usar" (click)="close()"
+                  >Primeira vez? Veja como usar <span aria-hidden="true">→</span></a
+                >
+              </div>
+            </div>
           </li>
           <li>
             <a
@@ -52,7 +79,7 @@
               [class.is-active]="section() === 'acervo'"
               [attr.aria-current]="section() === 'acervo' ? 'page' : null"
               (click)="close()"
-              >Acervo</a
+              ><span class="nav__glyph nav__glyph--square" aria-hidden="true"></span>Acervo</a
             >
           </li>
           <li>
@@ -62,12 +89,12 @@
               [class.is-active]="section() === 'rede'"
               [attr.aria-current]="section() === 'rede' ? 'page' : null"
               (click)="close()"
-              >Rede</a
+              ><span class="nav__glyph nav__glyph--circle" aria-hidden="true"></span>Rede</a
             >
           </li>
           <li>
-            <a class="nav__link" routerLink="/" fragment="como-navegar" (click)="close()"
-              >Como usar</a
+            <a class="nav__link" routerLink="/" fragment="como-usar" (click)="close()"
+              ><span class="nav__glyph nav__glyph--half" aria-hidden="true"></span>Como usar</a
             >
           </li>
         </ul>

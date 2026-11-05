@@ -40,16 +40,89 @@
   </form>
 </section>
 
-<section class="guide" id="como-navegar" aria-labelledby="guide-title" data-tone-section>
-  <h2 id="guide-title">Como navegar no ATLAS</h2>
-  <p class="guide-lead">
-    O ATLAS tem três jeitos de entrar. Leia um texto contínuo, consulte verbetes soltos ou abra a
-    rede para ver como tudo se liga. Dá para trocar de um para outro a qualquer momento.
-  </p>
-  <ul class="guide-doors">
+<section class="howto" id="como-usar" aria-labelledby="howto-title" data-tone-section>
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
+    <p class="atlas-band-number" aria-hidden="true">?</p>
+    <h2 id="howto-title">Quatro gestos, <em>uma descoberta.</em></h2>
+    <p>O ATLAS se usa com quatro movimentos. Escolha um para ver como ele acontece nas páginas.</p>
+  </header>
+  <div class="howto-table" appReveal>
+    <fieldset class="howto-steps">
+      <legend class="sr-only">Escolha um gesto</legend>
+      @for (item of howTo; track item.id; let index = $index) {
+        <button
+          class="howto-step atlas-press"
+          type="button"
+          [attr.aria-pressed]="step().id === item.id"
+          [attr.data-step]="item.id"
+          (click)="step.set(item)"
+        >
+          <span class="howto-index" aria-hidden="true">{{ index + 1 }}</span>
+          <strong>{{ item.verb }}<span aria-hidden="true">.</span></strong>
+          <span class="howto-short">{{ item.short }}</span>
+        </button>
+      }
+    </fieldset>
+    <article class="howto-card" [attr.data-step]="step().id" aria-labelledby="howto-card-title">
+      <div class="howto-art" aria-hidden="true">
+        @switch (step().id) {
+          @case ('procurar') {
+            <div class="art-search">
+              <span class="art-field"><i></i>karl marx<b></b></span>
+              <span class="art-chip art-chip--person">Pessoa · Karl Marx</span>
+              <span class="art-chip art-chip--work">Obra · O Capital</span>
+              <span class="art-chip art-chip--concept">Conceito · Mais-valia</span>
+            </div>
+          }
+          @case ('abrir') {
+            <div class="art-open">
+              <p>
+                A crítica da economia política parte da <u>mercadoria</u> e do trabalho que a
+                produz.
+              </p>
+              <div class="art-pop">
+                <strong>Mercadoria</strong><span>Conceito · ficha com fontes</span>
+              </div>
+            </div>
+          }
+          @case ('seguir') {
+            <svg class="art-net" viewBox="0 0 240 120">
+              <path d="M40 80 L120 30 L200 84 M120 30 L120 100" />
+              <circle cx="40" cy="80" r="14" class="n1" />
+              <circle cx="120" cy="30" r="18" class="n2" />
+              <rect x="186" y="70" width="28" height="28" class="n3" />
+              <path d="M106 88 h28 a14 14 0 0 1 -28 0z" class="n4" />
+            </svg>
+          }
+          @case ('conferir') {
+            <div class="art-check">
+              <p>“Afirmação de exemplo, com a fonte logo abaixo.”</p>
+              <ul>
+                <li><i class="s-fact"></i>Fato</li>
+                <li><i class="s-reading"></i>Interpretação</li>
+                <li><i class="s-debate"></i>Controvérsia</li>
+                <li><i class="s-gap"></i>Lacuna</li>
+              </ul>
+            </div>
+          }
+        }
+      </div>
+      <div class="howto-copy">
+        <h3 id="howto-card-title">{{ step().title }}</h3>
+        <p>{{ step().body }}</p>
+        <a class="sheet-action atlas-press" [routerLink]="step().path" [fragment]="step().fragment"
+          >{{ step().action }}
+          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
+        >
+      </div>
+    </article>
+  </div>
+  <p class="sr-only" role="status">Gesto selecionado: {{ step().verb }}.</p>
+
+  <ul class="guide-doors" id="como-navegar">
     <li>
       <a routerLink="/" fragment="leituras">
-        <span class="guide-verb">1 · Ler</span>
+        <span class="guide-verb">Ler</span>
         <strong>Leituras contínuas</strong>
         <span
           >Um texto longo por tradição, em capítulos, com fontes ao lado de cada afirmação.</span
@@ -58,52 +131,22 @@
     </li>
     <li>
       <a routerLink="/conhecimento">
-        <span class="guide-verb">2 · Consultar</span>
+        <span class="guide-verb">Consultar</span>
         <strong>Acervo de verbetes</strong>
-        <span>Busca e catálogos por tipo: pessoas, obras, países, acontecimentos, conceitos.</span>
+        <span>
+          Um verbete é uma ficha curta sobre uma pessoa, obra, conceito ou acontecimento, com
+          endereço próprio.
+        </span>
       </a>
     </li>
     <li>
       <a routerLink="/rede">
-        <span class="guide-verb">3 · Conectar</span>
+        <span class="guide-verb">Conectar</span>
         <strong>Rede em tela cheia</strong>
         <span>O acervo inteiro como mapa: filtre por tipo, busque um nome e siga as ligações.</span>
       </a>
     </li>
   </ul>
-</section>
-
-<section class="study" aria-labelledby="study-title" data-tone-section>
-  <div class="study-term">
-    <h2 id="study-title">O que é um verbete</h2>
-    <p>
-      Um verbete é uma ficha curta e permanente sobre uma pessoa, obra, acontecimento, conceito,
-      lugar, organização ou ideologia. Traz um resumo, o período, as ligações com outros verbetes e
-      as fontes que sustentam cada afirmação. Cada um tem endereço próprio, como
-      <code>/verbete/karl-marx</code>.
-    </p>
-  </div>
-  <div class="study-steps">
-    <h3>Como estudar</h3>
-    <ol>
-      <li>
-        <strong>Comece por uma leitura.</strong> Escolha uma tradição abaixo e siga os capítulos na
-        ordem.
-      </li>
-      <li>
-        <strong>Abra os verbetes.</strong> Quando um nome ou conceito chamar a atenção, abra a ficha
-        para ver o resumo e as fontes.
-      </li>
-      <li>
-        <strong>Siga as ligações.</strong> Cada verbete mostra quem influenciou quem, quem escreveu
-        o quê. A rede mostra tudo isso de uma vez.
-      </li>
-      <li>
-        <strong>Compare e confira.</strong> Volte às leituras e note onde as tradições divergem.
-        Veja se cada trecho é fato documentado, interpretação ou controvérsia.
-      </li>
-    </ol>
-  </div>
 </section>
 
 <section class="readings" id="leituras" aria-labelledby="readings-title" data-tone-section>
@@ -191,7 +234,7 @@
   </ul>
 </section>
 
-<section class="method" aria-labelledby="method-title" data-tone-section>
+<section class="method" id="metodo" aria-labelledby="method-title" data-tone-section>
   <h2 id="method-title">Como ler o acervo</h2>
   <ol appReveal>
     <li data-stagger style="--stagger: 0">
