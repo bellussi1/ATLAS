@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // Wikipedia → Claude Haiku → R2. Usage:
-//   node scripts/wiki-extract.mjs run <tradição> [--accept-top N] [--min-shared N] [--sync]
 //   node scripts/wiki-extract.mjs discover <tradição> [--top N] [--accept-top N] [--min-shared N] [--replay <captura>]
 //   node scripts/wiki-extract.mjs text <tradição> [--chars N]     # exporta o texto lido, por seção
 //   node scripts/wiki-extract.mjs store <tradição> [--chars N]    # grava manual/<id>.json verificado
-//   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N] [--replay <captura>]
+//   node scripts/wiki-extract.mjs fetch <tradição> [--candidates] [--limit N] [--refresh] [--replay <captura>]
 //   node scripts/wiki-extract.mjs fetch <tradição> --url <artigo pt/en da Wikipedia>  # um artigo avulso
-//   node scripts/wiki-extract.mjs extract <tradição> [--sync] [--limit N] [--resume <batchId>]
+// Extraction with the API lives in scripts/tradicao/extract.mjs (npm run tradicao:extract), which has a
+// spending cap, dry run and resume. `extract` and `run` here stop and point to it.
 // Candidates with `"decision": "accept"` are fetched by `fetch --candidates`. Decisions made by the
 // editor (`decidedBy: "editor"`) survive re-running discover; rule-based ones are recomputed.
 // Discover also proposes the typed targets that the articles already read link to (`origin:
@@ -18,8 +18,6 @@
 import { mkdir, readdir, readFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 import { parseArgs } from 'node:util';
-
-import Anthropic from '@anthropic-ai/sdk';
 
 import {
   atomicFile,
@@ -47,11 +45,8 @@ import { liveHttp, recordingHttp, replayHttp } from './ingestion/wiki-extract/ht
 import { loadCapture, saveCapture, wikiRawRoot } from './ingestion/wiki-extract/raw.mjs';
 import { classifyQids, classifyReport, targetKind } from './ingestion/wiki-extract/targets.mjs';
 import {
-  extractionModel,
-  extractionParams,
   extractionSchema,
   maxInputChars,
-  parseExtraction,
   verifyQuotes,
 } from './ingestion/wiki-extract/extraction.mjs';
 
@@ -65,8 +60,7 @@ const { positionals, values } = parseArgs({
     chars: { type: 'string' },
     'dry-run': { type: 'boolean', default: false },
     candidates: { type: 'boolean', default: false },
-    sync: { type: 'boolean', default: false },
-    resume: { type: 'string' },
+    refresh: { type: 'boolean', default: false },
     url: { type: 'string' },
     replay: { type: 'string' },
   },
@@ -99,7 +93,7 @@ const listIds = async (directory) =>
     .map((name) => name.slice(0, -5));
 
 /** Network access of this run: live and recorded, or replayed from one capture of this tradition. */
-const networkCommands = ['discover', 'fetch', 'run'];
+const networkCommands = ['discover', 'fetch'];
 if (values.replay && !['discover', 'fetch'].includes(command))
   throw new Error('--replay só vale para discover e fetch.');
 if (values.replay && !/^[\w.-]+$/.test(values.replay))
@@ -191,7 +185,18 @@ async function fetchUrlCommand() {
 async function fetchCommand() {
   await mkdir(articlesDirectory, { recursive: true });
   if (values.url) return fetchUrlCommand();
-  const done = new Set(await listIds(articlesDirectory));
+  // Older articles lack body links and targets, so their relations cannot resolve to a QID.
+  const stored = await Promise.all(
+    (await listIds(articlesDirectory)).map(async (id) => ({
+      id,
+      current: Array.isArray(
+        (await readJson(join(articlesDirectory, `${id}.json`))).article.targets,
+      ),
+    })),
+  );
+  const done = new Set(
+    stored.filter((item) => !values.refresh || item.current).map((item) => item.id),
+  );
   const targets = values.candidates ? await acceptedTargets() : await selectedTargets();
   const pending = targets.filter((target) => !done.has(target.entity.id));
   for (const target of pending.slice(0, limit)) {
@@ -320,19 +325,11 @@ async function discoverCommand() {
     );
 }
 
-/** Fails before any network call when the extraction cannot authenticate. */
-function requireApiKey() {
-  if (!process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN)
-    throw new Error('Defina ANTHROPIC_API_KEY no ambiente antes de extrair.');
-}
-
-/** Discover, fetch accepted candidates, then extract: the whole sweep for one tradition. */
-async function runCommand() {
-  requireApiKey();
-  await discoverCommand();
-  values.candidates = true;
-  await fetchCommand();
-  await extractCommand();
+/** The old paid path had no cap. Fail before anything is sent and say where the capped one is. */
+function paidPathMoved() {
+  throw new Error(
+    `Extração pela API agora é: npm run tradicao:extract -- ${tradition} --dry-run (tem teto de gasto e retomada).`,
+  );
 }
 
 /** Writes one draft; quotes that are not literal in the source text are dropped and reported. */
@@ -357,15 +354,6 @@ async function writeDraft(record, extraction, { text, coverage }, review) {
   console.log(
     `extraído: ${record.entity.id} (${kept} itens, ${verified.rejected.length} sem trecho literal)`,
   );
-}
-
-/** API path: parses the model message and stores it as a draft. */
-async function storeExtraction(record, message) {
-  await writeDraft(record, parseExtraction(message), articleText(record.article, maxInputChars), {
-    by: 'assistant',
-    model: extractionModel,
-    status: 'draft',
-  });
 }
 
 const unitLabel = ({ section, heading, part, parts }) =>
@@ -436,78 +424,13 @@ async function publishDraftsCommand() {
   console.log(`índice publicado: ${config.bucket}/${prefix}/index.json`);
 }
 
-async function pendingRecords() {
-  const done = new Set(await listIds(extractsDirectory));
-  const ids = (await listIds(articlesDirectory)).filter((id) => !done.has(id)).slice(0, limit);
-  return Promise.all(ids.map((id) => readJson(join(articlesDirectory, `${id}.json`))));
-}
-
-async function extractCommand() {
-  requireApiKey();
-  await mkdir(extractsDirectory, { recursive: true });
-  const client = new Anthropic();
-  const records = new Map((await pendingRecords()).map((record) => [record.entity.id, record]));
-  const paramsFor = (record) =>
-    extractionParams(record.entity, articleText(record.article, maxInputChars).text);
-
-  if (values.sync) {
-    for (const record of records.values()) {
-      try {
-        await storeExtraction(record, await client.messages.create(paramsFor(record)));
-      } catch (error) {
-        console.log(`falhou: ${record.entity.id}: ${error.message}`);
-      }
-    }
-    return;
-  }
-
-  let batchId = values.resume;
-  if (!batchId) {
-    if (!records.size) return console.log('nada a extrair');
-    const batch = await client.messages.batches.create({
-      requests: [...records.values()].map((record) => ({
-        custom_id: record.entity.id,
-        params: paramsFor(record),
-      })),
-    });
-    batchId = batch.id;
-    await writeJson(join(workDirectory, 'batch.json'), {
-      id: batchId,
-      createdAt: batch.created_at,
-    });
-    console.log(
-      `lote criado: ${batchId} (${records.size} pedidos; retome com --resume ${batchId})`,
-    );
-  }
-  for (;;) {
-    const batch = await client.messages.batches.retrieve(batchId);
-    if (batch.processing_status === 'ended') break;
-    console.log(`aguardando lote: ${batch.request_counts.processing} em processamento`);
-    await new Promise((resolve) => setTimeout(resolve, 30_000));
-  }
-  for await (const result of await client.messages.batches.results(batchId)) {
-    const record =
-      records.get(result.custom_id) ??
-      (await readJson(join(articlesDirectory, `${result.custom_id}.json`)));
-    if (result.result.type !== 'succeeded') {
-      console.log(`falhou: ${result.custom_id}: ${result.result.type}`);
-      continue;
-    }
-    try {
-      await storeExtraction(record, result.result.message);
-    } catch (error) {
-      console.log(`descartado: ${result.custom_id}: ${error.message}`);
-    }
-  }
-}
-
 const commands = {
   discover: discoverCommand,
   fetch: fetchCommand,
   text: textCommand,
   store: storeCommand,
-  extract: extractCommand,
-  run: runCommand,
+  extract: paidPathMoved,
+  run: paidPathMoved,
   'publish-drafts': publishDraftsCommand,
 };
 try {

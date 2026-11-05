@@ -112,6 +112,7 @@ const rich = () => ({
     {
       target: 'Karl Marx',
       nature: 'reagiu-contra',
+      direction: 'entidade-para-alvo',
       sentence: 'Criticou Marx.',
       quote: 'criticou Marx',
     },
@@ -152,30 +153,35 @@ test('glossário: termo de uma entidade liga; termo disputado, curto ou comum n�
   assert.deepEqual(ambiguous, [{ term: 'revisionismo', entityIds: ['a', 'b'] }]);
 });
 
-test('escolha de modelo exige Haiku low e medium, um modelo maior e escolhas medidas', () => {
+test('escolha de modelo exige Haiku low e medium medidos; só relações pode subir sem medição', () => {
   const candidate = (model, effort) => ({
     model,
     effort,
-    relevance: 0.8,
-    relations: 0.7,
-    classification: 0.9,
+    residualError: 0.03,
+    quotesRejected: 0.1,
+    relationsRejected: 0.3,
     costUsd: 0.1,
   });
   const choice = {
     measuredAt: '2026-11-04',
     sample: { size: 10, entityIds: Array.from({ length: 10 }, (_, i) => `e${i}`) },
-    candidates: [
-      candidate('claude-haiku-5-5', 'low'),
-      candidate('claude-haiku-5-5', 'medium'),
-      candidate('claude-sonnet-5-5', 'low'),
-    ],
+    candidates: [candidate('claude-haiku-5-5', 'low'), candidate('claude-haiku-5-5', 'medium')],
     chosen: { extracao: { model: 'claude-haiku-5-5', effort: 'medium' } },
-    rationale: 'Haiku medium igualou o maior em relações.',
+    rationale: 'Haiku medium ficou abaixo de 5% de erro restante.',
   };
   assert.ok(modelChoiceSchema.safeParse(choice).success);
   assert.equal(
-    modelChoiceSchema.safeParse({ ...choice, candidates: choice.candidates.slice(0, 2) }).success,
+    modelChoiceSchema.safeParse({ ...choice, candidates: choice.candidates.slice(0, 1) }).success,
     false,
+  );
+  assert.ok(
+    modelChoiceSchema.safeParse({
+      ...choice,
+      chosen: {
+        extracao: { model: 'claude-haiku-5-5', effort: 'medium' },
+        relacoes: { model: 'claude-sonnet-5-5', effort: 'low' },
+      },
+    }).success,
   );
   assert.equal(
     modelChoiceSchema.safeParse({
