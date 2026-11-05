@@ -206,7 +206,16 @@ async function fetchCommand() {
       console.log(`sem artigo: ${entity.id} (${entity.qid})`);
       continue;
     }
-    const article = await fetchArticle(resolved.lang, resolved.title, http);
+    let article;
+    try {
+      article = await fetchArticle(resolved.lang, resolved.title, http);
+    } catch (error) {
+      // A title that does not exist (a candidate named by its English label, for one) skips only
+      // itself; any other failure still stops the run.
+      if (!String(error.message).startsWith('Artigo inexistente')) throw error;
+      console.log(`sem artigo: ${entity.id} (${resolved.lang}:${resolved.title})`);
+      continue;
+    }
     await writeJson(join(articlesDirectory, `${entity.id}.json`), {
       entity,
       retrievedAt: new Date().toISOString(),
