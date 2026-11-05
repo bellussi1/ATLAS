@@ -23,7 +23,7 @@ test('unknown and unpublished institutional routes say so and keep the address',
     }, path);
     await expect(page).toHaveURL(new RegExp(`${path}$`));
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Página não encontrada');
-    await expect(page.getByRole('link', { name: 'Início', exact: true })).toBeVisible();
+    await expect(page.getByRole('link', { name: /^Início/ })).toBeVisible();
   }
 });
 

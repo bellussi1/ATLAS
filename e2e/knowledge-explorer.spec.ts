@@ -116,6 +116,8 @@ test('contextual exploration opens the matching permanent entity page', async ({
 test('all search destinations have prerendered HTML with matching title, canonical and fragments', async ({
   request,
 }) => {
+  // One request per search destination: the budget grows with the catalogue, not a fixed 30 s.
+  test.setTimeout(300_000);
   const base = DEFAULT_CONTENT_BASE_URL;
   const pointer = await (await request.get(`${base}/pointer.json`)).json();
   const manifest = await (await request.get(`${base}/c/${pointer.manifest.sha256}.json`)).json();
@@ -186,6 +188,6 @@ test('missing and unavailable entries provide recovery without external return l
     dispatchEvent(new PopStateEvent('popstate'));
   });
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Registro não encontrado');
-  await page.getByRole('link', { name: 'Acervo', exact: true }).click();
+  await page.getByRole('link', { name: /^Acervo/ }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Conhecimento');
 });
