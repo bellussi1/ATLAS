@@ -13,6 +13,8 @@ import {
   convertDraftsToCollections,
   kindForDraft,
   mergeTraditions,
+  positionStatement,
+  readDrafts,
   slugify,
 } from './wiki-drafts-to-collections.mjs';
 
@@ -711,4 +713,45 @@ test('rascunhos de uma tradição não apagam a coleção de outra', async () =>
     'atlas-existente',
     'atlas-marxismo',
   ]);
+});
+
+test('a posição vira afirmação atribuída, com a frase do artigo como evidência', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'atlas-wiki-posicao-'));
+  const write = async (kind, name, value) => {
+    const dir = join(root, 'marxismo', kind);
+    await mkdir(dir, { recursive: true });
+    await writeFile(join(dir, name), JSON.stringify(value), 'utf8');
+  };
+  const frase = 'A Terceira Via é uma corrente política predominantemente centrista.';
+  await write(
+    'extracts',
+    'a.json',
+    draft({ id: 'a', label: 'Terceira via', type: 'ideologia', qid: 'Q10' }),
+  );
+  await write('articles', 'a.json', {
+    article: {
+      url: 'https://pt.wikipedia.org/wiki/Terceira_via',
+      sections: [{ index: 0, heading: '', text: frase }],
+    },
+  });
+  await write(
+    'extracts',
+    'b.json',
+    draft({ id: 'b', label: 'Fulano', type: 'pessoa', qid: 'Q11' }),
+  );
+  await write('articles', 'b.json', {
+    article: {
+      url: 'https://pt.wikipedia.org/wiki/Fulano',
+      sections: [{ index: 0, heading: '', text: 'Foi um político de esquerda.' }],
+    },
+  });
+  const items = await readDrafts(root);
+  const by = Object.fromEntries(items.map((item) => [item.draft.entity.id, item.draft]));
+  assert.equal(by.a.position.value, 'centro');
+  assert.equal(by.a.position.quote, frase);
+  assert.equal(by.b.position, undefined, 'pessoa não recebe posição');
+  const statement = positionStatement(by.a.position);
+  assert.equal(statement.classification, 'attributed-thesis');
+  assert.match(statement.text, /centro\.$/);
+  assert.match(positionStatement({ value: 'variavel', quote: 'x' }).text, /varia conforme/);
 });

@@ -14,6 +14,7 @@ import { randomUUID } from 'node:crypto';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { positionFromArticle, positions } from '../tradicao/position.mjs';
 import {
   formatJson,
   readSourceGraph,
@@ -355,6 +356,25 @@ function reserveSlug(label, qid, reserved) {
   return { slug, adjusted: slug !== base };
 }
 
+/**
+ * Political position as the source states it, never as the project's own label: an attributed
+ * thesis whose evidence is the sentence of the article.
+ */
+const POSITION_LABEL = new Map(positions.map((item) => [item.value, item.label]));
+const POSITIONED_TYPES = new Set(['ideologia', 'movimento', 'partido', 'organização', 'conceito']);
+export function positionStatement(position) {
+  const label = POSITION_LABEL.get(position.value);
+  return {
+    text: sentence(
+      label
+        ? `Posição política descrita na fonte: ${label}`
+        : 'Posição política descrita na fonte: varia conforme a vertente',
+    ),
+    classification: 'attributed-thesis',
+    quote: position.quote,
+  };
+}
+
 function statementsFor(draft) {
   const dates = draft.dates.map((item) => ({
     text: sentence(`${item.event} (${item.date})`),
@@ -378,7 +398,8 @@ function statementsFor(draft) {
     classification: classificationForKind(item.kind),
     quote: item.quote,
   }));
-  return [...sections, ...dates, ...relations, ...claims].map((statement, index) => {
+  const position = draft.position ? [positionStatement(draft.position)] : [];
+  return [...sections, ...dates, ...relations, ...claims, ...position].map((statement, index) => {
     if (typeof statement.quote !== 'string' || statement.quote.trim() === '') {
       throw new Error(`Afirmação sem citação literal em ${draft.entity.id}: "${statement.text}".`);
     }
@@ -906,6 +927,17 @@ export async function readDrafts(root = defaultDraftRoot) {
     }
     for (const file of names) {
       const draft = JSON.parse(await readFile(join(directory, file), 'utf8'));
+      if (POSITIONED_TYPES.has(draft.entity?.type)) {
+        // The article is the source of the position; without it the draft keeps none.
+        const article = await readFile(join(root, tradition.key, 'articles', file), 'utf8')
+          .then((text) => JSON.parse(text).article)
+          .catch((error) => {
+            if (error.code === 'ENOENT') return null;
+            throw error;
+          });
+        const position = article ? positionFromArticle(article) : null;
+        if (position) draft.position = position;
+      }
       items.push({ tradition: tradition.key, file, draft });
     }
   }
