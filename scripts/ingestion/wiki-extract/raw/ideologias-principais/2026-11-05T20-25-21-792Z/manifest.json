@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "kind": "wikipedia-capture",
+  "tradition": "ideologias-principais",
+  "capturedAt": "2026-11-05T20:25:21.792Z",
+  "requests": [
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3A1846+-+Anti-Corn+Law+League+Meeting.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "bfcec92e35c59bdc7f194376d9de929ed707741da2b16b011ceec36cb5b40d8d",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AAnarchist+flag.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "8637f5fde5d67f86fb9168b02fdababe2a603d33bf2f4013305eb4123cc92a0e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AAuguste+Comte.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "68fa8916002fa3b7ebb21fbe68ea9d0850b884007b3933483bade1e2c10f8562",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ABiogradska+suma.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "f6f3903fe8c711038df8c5c37feb07249f3fd6fc6080a455246bc67675f9feca",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ABlack+%26+Dark+Green+Flag.png&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "522a588f142170239f78371ffc06c1b23c525e160760c1962680e1d9d5c2c064",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ABlueMarble-2001-2002.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "a1743926d4159f29e1821d8d9a2e29d6e0a10ace6aeef5431ffc7f0499b01e44",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ABolsonaro+with+US+President+Donald+Trump+in+White+House%2C+19+March+2019.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "1ccdcef20576230048caab779299b3985ddc8f269ec3fa197e7ba20bad1e56ca",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ABundesarchiv+Bild+102-16748%2C+Ausstellung+%27Wunder+des+Lebens%27+rotate+crop.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5fe08de115e3141ae13911dea5631e56175a4cf1ce2f0b128dfc244ed444a636",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ACarl+Steffeck-Reille1884%2CRuhmeshalle-3.JPG&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e07ec0680f9f4d58576acd13c182804039c83c8899a159d410a4854458d9142f",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AConservatism+-+K.+LCCN2011647256+%28cropped%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "35a28d04beecd2e910afe976cf4586b36393522733e3dd82c9fb82400fc845fd",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ADIEU+PROTEGE+LA+FRANCE.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3f957cbc605f30e4047c8666582a8e8ca43e9c7a58abc0e99dde61f4c463f9d0",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AEurasia+and+eurasianism.png&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "158b4f777cbe3aa3b527d562d794a2b1373e0df711a9f7e6af575b2cd72c7203",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Anarcho-capitalism.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "b489d4df4be107185edb858d4e1bf7587bd1bd9a08b2cb6411df2e7195e316b8",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFREE+TRADE+FREE+LAND+FREE+MEN+%28Georgist+campaign+button%29.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e7409989dbc27f54246803a9d72921c7329869985bc02d4c38df2bef9f96c0b3",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFridays+For+Future+-+Global+Climate+Strike+%28Melbourne%29+%2851052073462%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "2f6dd20a65a5ec4d8dc2da76f59cb2d9da94f1470eebd5abe78f2b56308afad7",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AIslam+by+country.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3bf2448e71574fa275fe48270919924567865e1fb6502003f7abcee133943641",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AJuche+Tower+torch.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "59d014b0cf9880ccab03ba9a669ba731806855161dab335f1f7e6d7979b7611f",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ALa+esp+Rep.+Federal%2C+Rep.+Unitaria+%282%29.JPG&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5d6b5977cdf01bbfc976a2be2258cf15a0b94d0d5525a83cb3d5aaf6a419f463",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ALeon+Trotsky%2C+1930s.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "36f20bf6353355face6c87e2961b12293a9f97cf396090100e79ae5c566d85c8",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AMaoflag1.PNG&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5dc97c1f50913edec2a1dabe6dfedd7c105c2a3cb1ba5cc0e5400b75bba3854b",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AMosque.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5d6becc27d39ed1d82697e30aae95bfc2457634cde4065d3c9f4ee5ec12ead40",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AMussolini+and+Hitler+1940+%28retouched%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "262a491be41f162f41d59428381310d2acfd93c4900c67f94f868d1ccd430a39",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ANational+Bolshevik+Party+flag.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3f00743436bedcb3a9ae44ef0c9ffa5c0753427d193b6e6b211944f6d70c3698",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ANew+harmony+vision.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "aff73b4c8cc1f3f8bb22272e09922dd3ab92c21fa200100bc31e56e70a7bca45",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AOccupy+Wall+Street+sign+in+Queens%2C+NYC.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3f7a396a7167693ba3105d515377b74600767c66379ec82ff1738bd7e3b4f197",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AOrange+flag+waving.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5c9e3195b726a77de9a35b61f36d326c9b95ab4a664db3ca310fcef076bfa0a4",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ARosa+Luxemburg.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "94420a0bee25d59e95d542ec29bc365027b852abc4295ecdfe08cd23dc5985b5",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AStalin+vector+portraits+%28cropped%29.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "813e42aadbe8580443d0f9d57edb4f41b2a342fed064ae9ce94621e16d47453b",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AStar+of+David.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "072c3e53fb8cd61c2ed22aa3a9d8f6685b22defd0320ad7d05373a4e8ba0ae95",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AThe+hand+that+will+rule+the+world.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "03bac84ec6a0c0ab8703cd4dc7457d29130225aee735a8b88a8cc8fcd9231723",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ATornbergs+ur+Centralen+2013+03.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "894944576f49edb189362996bc3a904afbffa564f76cb3c446ed883c743081f9",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ATribunaFrentePatri%C3%B3ticoAustriaco1936.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "08d7ad487f16b9dd84ea59bb6afe9335aece451e4a4157a9bfefac6c004dd684",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ATwemoji-style+ancom.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "af8c573edef739a8f3cc2c5459350deba462c052827885016419c58879a11579",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AYugoslav+Star.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "0576ddac619289f8e87a6e91fdde0b9e50746cc3a819d476e44cdd943e881332",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AZunftwappen.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "df4e8f5aae64e2040c8a91bc5076f39e8afecad67fc4c8b2ff4a322400efbbbb",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q125769291%7CQ877848%7CQ2353993%7CQ42388%7CQ1852084%7CQ192447%7CQ179121%7CQ190044%7CQ663333%7CQ125378958%7CQ2466570%7CQ181133&props=labels%7Cdescriptions%7Cclaims%7Csitelinks&languages=pt%7Cen&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "854b10588b69613eca83c8b4b3f571e60931614bba92b1f1b6addc5e5c4b40c0",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q16001522%7CQ8189417%7CQ192424%7CQ188670%7CQ667672%7CQ188993%7CQ783910%7CQ672087%7CQ679189%7CQ933306%7CQ324530%7CQ7169%7CQ192886%7CQ209158%7CQ1143021%7CQ1229663%7CQ216279%7CQ275595%7CQ83937%7CQ1324222%7CQ206743%7CQ5431652%7CQ6223%7CQ204886%7CQ679595%7CQ899306%7CQ695838%7CQ432%7CQ181800%7CQ269443%7CQ794394%7CQ201712%7CQ178598%7CQ334689%7CQ167651%7CQ177266%7CQ9097512%7CQ2720514%7CQ571627%7CQ7310%7CQ192139%7CQ697569%7CQ727480%7CQ1074954%7CQ430032%7CQ464555%7CQ436860%7CQ11900614%7CQ131015%7CQ821102&props=labels%7Cdescriptions%7Cclaims%7Csitelinks&languages=pt%7Cen&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "6492e6319f62167d8e556a4a9960a94df4bf111464731a7f176c378351d58bbe",
+      "license": "CC0 1.0"
+    }
+  ]
+}

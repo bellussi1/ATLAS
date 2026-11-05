@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "kind": "wikipedia-capture",
+  "tradition": "anarquismo",
+  "capturedAt": "2026-11-05T20:29:57.312Z",
+  "requests": [
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3A1943+Colored+Waiting+Room+Sign.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "f7c17da56e3828c02f94c0428594a8c78ee77a97516c609f04fbeaec526b4b83",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AA+Reading+in+the+Salon+of+Mme+Geoffrin%2C+1755+Small.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "2bb48ca63dafdc3ef72c6d6ac830c2d77d6764423afa2e6dae0edb94fb423ccc",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AAerial+view+of+the+point+of+Porto+Alegre+extending+into+Gua%C3%ADba+Lake.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "c01faa63b204ac794042852adf946ff7e3bbe336aa333e1e7d562e6db8778af1",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ABakunin+Nadar.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "bbdb28bd24d1795feca43fd5207387fe20add0c393ba504c019ea80d3c89676c",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AChina+imperialism+cartoon.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "03c978a22b20873b961c9a6f82d0293ce8d0376099edfe62d247d9f669ba8511",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ACustomers+shopping+inside+Co-operative+Grocery+Store+No+1%2C+Seattle%2C+circa+1918+%28MOHAI+15357%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "b5eaee71557af6d66fb4655c73e1b56a016cfe4b2fb0cb1fb2b1548f7c74cbd2",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ADaniel+Ortega+on+July+20%2C+2024.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3baf1f90cf7e98037604036413bb0c0cfda7cc175ecad017de953b010b40dbe1",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ADe+ministers+die+deel+uitmaken+van+het+derde+kabinet+Van+Agt+op+de+trappen+van+Paleis+Huis+ten+Bosch+in+%27s-Gravenhage.+D+-+SFA001009248.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "c3a9dd56acf3d722b258c046e6043c77c1f0520da789969b4fbe6edaee11cc92",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ADiogenes-statue-Sinop-enhanced.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5e2a079a3dff584b941d55c9607fbf7495a0efc3abe02e93d64f920793cab169",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AEmma+Goldman+seated.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "78cd8b26398723edd39a14c49d31817a205288334e74759c46c8a70c039846a0",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AEvo+Morales+Ayma+%28cropped%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "86a6157e0b9a4291ae5ae5bc3af9de5dbf0c690607b7b6ad340bc484d0f8e831",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFernando+Henrique+Cardoso+%281999%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "738bf9e7d96fbbe6187cee0309fd7c9499673604086ae70da82692190fc6a8bd",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Argentina.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "99b76e826ea0b5f554fe37da74268d162f29dc8801779fceaa54b49dac0a2442",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Brazil.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "c8ffd51678c796f3d3606a84ea22504b2bbdbc587b6b97a84e9d260f44f0f803",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Chile.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "68b02b6fb23ca029ff3eaa18ab3ef04f9f48743987e038737246b2545e256c77",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Cuba.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "ef3f6999648da8e5977d5b47894d61e6a6ae6920d20429c419d65e7d8471b4b7",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Mexico.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "54d699fe0b6db30e7d48453c38575b30fd3a3361e175109de584e55ecc18e7a8",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Paraguay+%281812-1826%29.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "81cc7c89ce78ae792302c2e6aff65375a6b5515b959a2d7848d1f2861f47c31d",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Peru.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "1b8e4dd1674b318cf7d7aab88dd3a9a58982700a3147e8ac74ee6b1f9d0f23f2",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Puerto+Rico.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "1e90253981cc52ce0d8beee1fe21a58feaad4d6c3160756165b108a9254531ce",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Uruguay.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "24284f69120663785e8a8391b9b5b3a9a9fe3e2e5edc4a6a467f0396a28742e9",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFlag+of+Venezuela.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3ffc9d975fefac8cb29d4d1343be4280691a78a747e3be04e5f648a9ba67a281",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFoto+oficial+de+Luiz+In%C3%A1cio+Lula+da+Silva+%28estreita%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "81bb6b6465ad390c01f137b1142749c50ce9dcfe507a6eaac5832ce6e4365df4",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AFrancois+Rabelais+-+Portrait.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "ddf46543051d9067a501be55580f5aa1dd213bc03f749b31f75c1a7b5c98d84b",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AGetulio+Vargas+%281930%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3ba89990776e410a1d617ff6e1f94274e73d902bb070c8210871e782268e0900",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AGraffiti+%22No+Gods%2C+No+Masters%22+and+anarchy+symbol+at+central+bus+station+ZOB+in+Munich%2C+Germany.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e676a4ccd25384f03e8ef0cd38a8dd0c013513ba61087a58781973a5bf551a49",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AHistorical+dictators.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e8ef9cd327a6c88b905871ccc7645ddef4354975465caf114aadb9e4f2c7cb68",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AHole+in+flag+-+Budapest+1956.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "3d934bc5b3038c813b36e98cc4bbaa3af7c2d2ddd0e93ff0242a168b396320c7",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AHugo+Ch%C3%A1vez+in+Bras%C3%ADlia+2011+%283x4+cropped%29+%282%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5da1823d22db28aecde725c6d6a70dc4eed449d04c36c54130ff2dc5326c357f",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AHungarian+Revolution+of+1956.png&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "fc8d65c70b76cfa80e335671748a0a96e7f15464479c7533b86d67ec9f659018",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AKorean+War+Montage+2.png&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "da1b6988676509af0c1cf9f3560ae552cf4d87a26a9ce26af1ebf361baeecf16",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AKropotkin1.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "72b281ce62e753120705d73b36b5a92a64cdd3255c388f15cf76b22e6037e2c4",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ALes+salons+au+XVIIIe+si%C3%A8cle+-+Histoire+Image.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e54b411960b33f97efb4c7e4acae1036f7c1a800628ee130c3037d0fef64f5a0",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ALogo+of+the+United+Nations.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "6bb3bf57dc82e1251bc115f30a7adcc69c8578843a814eab99cf8031067a821c",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AM%C3%A9moires+de+la+Soci%C3%A9t%C3%A9+g%C3%A9ologique+de+France+%28IA+meymoiresdelaso00socig%29.pdf&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "62f8c56c4a2afc5bf5c4a0b955fd19fe441e46918baf6c3b361fa48d6097ad1e",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AMalatesta.png&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "029e664f6cccff2e6cd0817ffe57bae75fcac3f55d0905c6f5c1d2bdb46b2219",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AMarx+and+Engels.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "166b12600f0a8dd84c0acaa3fa636b752118c188f0420010cc8d669556a5758b",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3APanoramica+Santos.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "efcee0b266a6bae0f7127ad041e02b3b34fe0fa22d129438ab2e6d260fde6839",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3APierre+Joseph+Proudhon.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "6ab67fc2c99f214f2dd944579daa8a8fef4fa1734e8233818e6b183e4be534d6",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ARafael+Correa%2C+Ecuador+expresident.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "d2d63448595146df46fb18e133513b7548222f6c64d4335a0d21d4e5a64478f9",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ARed+rose+02.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "1f94963ecb3d4663798632ab114866b078232e868cc840cd6f9eb91259532eab",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ARiver+Plate.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5dbbc3c3331329861c34e477567d7f51a228ad438b5350185ab4cc59e8575883",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ARobespierre.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "0526e0847949e91a402d1d5b28357b4091f073578194ebc5cbf4fdbb15906262",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ASalvador+Allende%2C+President+of+Chile%2C+gtfy.00154.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "2dd6c0d990ffb2f1add8fe3d316317e34275d0c8bdfb099dd51ee020bde375fc",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ASandro+Botticelli+046.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "d6ab54f1b8dd321e35daab1e3292a392efb5bd0e11c7f250bade74777dbd6174",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ASocialist+red+flag.svg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "7aa3571aeeeaafda842d78e34806e6940b6d8ce88c48d855e3a25936c55b4780",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ASouth+America+satellite+orthographic.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "b2845eaf2cf2263536117c7c9086b0173bd70a6d68d44ca291383d20d92e82bd",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AThe+hand+that+will+rule+the+world.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "03bac84ec6a0c0ab8703cd4dc7457d29130225aee735a8b88a8cc8fcd9231723",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AThure+de+Thulstrup+-+L.+Prang+and+Co.+-+Battle+of+Gettysburg+-+Restoration+by+Adam+Cuerden.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "73f0189ad1a59b3f93c430627bfd2726ca6dc727f550468283335821772034c0",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3ATobas+en+el+Pilcomayo+1892.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "5bc3b5d4d03fe524645e506c2be0e5a32aae9ac224db7a0774391b297b1ca166",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AValpara%C3%ADso+9451.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "4713ff513042289d3ba0224da53f5858b05a05fee9d606190d462b09669d84da",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AVietnamMural.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "a4fb93fc7a802863cd4a91a0e7bc122020f77b4dfcfce9c57f78e778a8b84ccf",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AWorld+1898+empires+colonies+territory.png&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "0b83ba52cfb55249b7600eb93d37b8ac10cd62c387d329b2e43089fb99300e36",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&titles=File%3AZhang+Lu-Laozi+Riding+an+Ox+%28cropped%29.jpg&prop=imageinfo&iiprop=url%7Cextmetadata&iiurlwidth=640",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "7ac9c8d775f458a04d44d076c01d073d8a514ad292794ada8b338b2a9a03c7f5",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&titles=Iluminismo&redirects=1&prop=pageimages&piprop=name",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "1464de3a3912f11c884bd3bb49bccc19590cafc6f837fdc5a7584e95ec8b1e85",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&titles=Porto+Rico&redirects=1&prop=pageimages&piprop=name",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "293620030602b9ccbf56b46e5706e1dca5fdd7e8e582b85464c945f0673164c7",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q57402%7CQ59180%7CQ42410%7CQ230578%7CQ131018%7CQ156844%7CQ8440%7CQ9333%7CQ37181%7CQ44197%7CQ19581%7CQ440%7CQ36442%7CQ7167%7CQ198%7CQ8663%7CQ8740%7CQ164348%7CQ2269%7CQ18%7CQ6199%7CQ414%7CQ6229%7CQ155%7CQ298%7CQ4539%7CQ241%7CQ79969%7CQ215673%7CQ7188%7CQ12539%7CQ7260%7CQ7264%7CQ96%7CQ27645%7CQ1065%7CQ733%7CQ419%7CQ5749%7CQ5752%7CQ40269%7CQ1183%7CQ8461%7CQ4692%7CQ35827%7CQ81882%7CQ178790%7CQ121254%7CQ7272%7CQ133311&props=labels%7Cdescriptions%7Cclaims%7Csitelinks&languages=pt%7Cen&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "334c5c46642472d3a6b80cfb0d4810580cab063712eec8a7c094e3196e7b9831",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q77%7CQ33986%7CQ717&props=labels%7Cdescriptions%7Cclaims%7Csitelinks&languages=pt%7Cen&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "ae14b8dbaf1c80c440a9f261b59b00efbc2f7aeee97e1a1d2ec64890c4f52476",
+      "license": "CC0 1.0"
+    }
+  ]
+}
