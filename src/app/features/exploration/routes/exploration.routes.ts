@@ -12,6 +12,19 @@ export const explorationRoutes: Routes = [
   // Retired tools: the archive search at /conhecimento replaces them.
   { path: 'rede', redirectTo: 'conhecimento', pathMatch: 'full' },
   { path: 'comparar', redirectTo: 'conhecimento', pathMatch: 'full' },
+  {
+    path: 'grafo',
+    title: 'Grafo do acervo — ATLAS',
+    data: {
+      fullscreen: true,
+      breadcrumb: 'Grafo',
+      metaDescription:
+        'Mapa interativo das ideologias, pessoas, obras e acontecimentos do acervo e das ligações entre eles, com legenda e filtros.',
+    },
+    resolve: { knowledge: knowledgeContentResolver },
+    loadComponent: () =>
+      import('@exploration/pages/graph/graph.component').then((m) => m.GraphComponent),
+  },
   ...explorerCatalogues.map((catalogue) => ({
     path: catalogue.path,
     title: catalogue.title + ' — ATLAS',

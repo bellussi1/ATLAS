@@ -32,6 +32,8 @@ export class AppComponent {
   private readonly router = inject(Router);
   private currentPath: string | null = null;
   readonly failedNavigation = signal<string | null>(null);
+  /** Routes with `data.fullscreen` own the whole window: no header, breadcrumbs or footer. */
+  readonly fullscreen = signal(false);
   readonly pageTitle = signal('ATLAS — compreender o mundo');
 
   constructor() {
@@ -78,6 +80,7 @@ export class AppComponent {
       this.activeRouteDescription() ||
       'Explore o acervo do ATLAS, com contexto e fontes identificadas.';
     this.pageTitle.set(pageTitle);
+    this.fullscreen.set(route.data['fullscreen'] === true);
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });
     this.meta.updateTag({ property: 'og:description', content: description });

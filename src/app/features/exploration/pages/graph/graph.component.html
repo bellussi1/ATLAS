@@ -1,0 +1,365 @@
+<div class="graph-page">
+  <header class="bar">
+    <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">ATLAS</a>
+    <h1 class="bar__title">Grafo do acervo</h1>
+    <form class="search" role="search" (submit)="$event.preventDefault()">
+      <label for="graph-search" class="search__label">Buscar por nome</label>
+      <input
+        id="graph-search"
+        class="search__input"
+        type="search"
+        autocomplete="off"
+        placeholder="Ex.: Marx, Liberalismo"
+        [value]="query()"
+        (input)="setQuery($any($event.target).value)"
+        (keydown)="searchKey($event)"
+        aria-describedby="graph-search-hint"
+      />
+      <span id="graph-search-hint" class="visually-hidden"
+        >Enter abre o primeiro resultado. Escape limpa a busca.</span
+      >
+      @if (query().trim()) {
+        <ul class="search__results" aria-label="Resultados da busca">
+          @for (match of matches(); track match.id) {
+            <li>
+              <button type="button" (click)="select(match.id)">
+                <app-kind-icon [kind]="networkIcon(match)" />
+                <span>{{ match.title }}</span>
+                <small>{{ kindLabel(match) }}</small>
+              </button>
+            </li>
+          } @empty {
+            <li class="search__none">Nenhum verbete com esse nome no recorte atual.</li>
+          }
+        </ul>
+      }
+    </form>
+    <button
+      type="button"
+      class="bar__toggle"
+      [attr.aria-expanded]="controlsOpen()"
+      aria-controls="graph-controls"
+      (click)="controlsOpen.set(!controlsOpen())"
+    >
+      Legenda e filtros
+    </button>
+    <a class="bar__list" routerLink="/conhecimento">Ver como lista</a>
+  </header>
+
+  <div class="workspace" [class.workspace--detail]="!!selected()">
+    <aside
+      id="graph-controls"
+      class="controls"
+      [class.controls--open]="controlsOpen()"
+      aria-label="Legenda e filtros"
+    >
+      <section aria-labelledby="legend-kinds">
+        <h2 id="legend-kinds">Tipos de nó</h2>
+        <p class="hint">Cada tipo tem cor e forma próprias. Clique para mostrar ou ocultar.</p>
+        <ul class="legend">
+          @for (kind of kinds; track kind.id) {
+            <li>
+              <button
+                type="button"
+                class="legend__item"
+                [attr.aria-pressed]="kindsOn().has(kind.id)"
+                (click)="toggleKind(kind.id)"
+                (dblclick)="soloKind(kind.id)"
+              >
+                <svg class="swatch" viewBox="-12 -12 24 24" aria-hidden="true">
+                  <path
+                    [attr.d]="shape(kind.shape, 8)"
+                    [style.fill]="'var(' + kind.color + ')'"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                <span class="legend__name">{{ kind.plural }}</span>
+                <span class="legend__count">{{ counts().kinds.get(kind.id) ?? 0 }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+        <p class="hint">Duplo clique mostra só aquele tipo.</p>
+      </section>
+
+      <section aria-labelledby="legend-relations">
+        <h2 id="legend-relations">Tipos de ligação</h2>
+        <p class="hint">A ponta da seta aponta para quem recebe a ação.</p>
+        <ul class="legend">
+          @for (family of families; track family.id) {
+            <li>
+              <button
+                type="button"
+                class="legend__item"
+                [attr.aria-pressed]="familiesOn().has(family.id)"
+                (click)="toggleFamily(family.id)"
+              >
+                <svg class="swatch swatch--line" viewBox="0 0 32 12" aria-hidden="true">
+                  <line
+                    x1="1"
+                    y1="6"
+                    [attr.x2]="family.directed ? 25 : 31"
+                    y2="6"
+                    [attr.stroke-dasharray]="family.dash || null"
+                    [style.stroke]="'var(' + family.color + ')'"
+                  />
+                  @if (family.directed) {
+                    <path d="M24 2.5L31 6L24 9.5z" [style.fill]="'var(' + family.color + ')'" />
+                  }
+                </svg>
+                <span class="legend__name">{{ family.label }}</span>
+                <span class="legend__count">{{ counts().families.get(family.id) ?? 0 }}</span>
+              </button>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section aria-labelledby="legend-collections">
+        <h2 id="legend-collections">Coleções</h2>
+        <ul class="legend">
+          @for (collection of collections; track collection.id) {
+            <li>
+              <label class="check">
+                <input
+                  type="checkbox"
+                  [checked]="collectionsOn().has(collection.id)"
+                  (change)="toggleCollection(collection.id)"
+                />
+                <span>{{ collection.title }}</span>
+                <span class="legend__count">{{ collection.count }}</span>
+              </label>
+            </li>
+          }
+        </ul>
+        <label class="check check--solo">
+          <input
+            type="checkbox"
+            [checked]="onlyConnected()"
+            (change)="onlyConnected.set(!onlyConnected())"
+          />
+          <span>Ocultar verbetes sem ligação</span>
+        </label>
+      </section>
+
+      <button
+        type="button"
+        class="atlas-button atlas-button--secondary"
+        [disabled]="!filtersActive() && !query()"
+        (click)="resetFilters()"
+      >
+        Limpar filtros
+      </button>
+
+      <section class="howto-block" aria-labelledby="howto-title">
+        <h2 id="howto-title">Como explorar</h2>
+        <ul class="howto">
+          <li>Arraste o fundo para mover; a roda do mouse aproxima e afasta.</li>
+          <li>Clique em um nó para ver o resumo e as ligações dele.</li>
+          <li>Pelo teclado: Tab entra no grafo, setas movem entre nós, Enter abre.</li>
+        </ul>
+      </section>
+    </aside>
+
+    <div
+      class="stage"
+      #stage
+      [class.stage--dragging]="dragging()"
+      [class.stage--animated]="!reducedMotion()"
+    >
+      <svg
+        class="canvas"
+        tabindex="0"
+        role="group"
+        aria-label="Grafo de verbetes e ligações. Setas movem a vista, mais e menos aproximam, zero reenquadra, Escape limpa a seleção."
+        aria-describedby="graph-status"
+        (wheel)="wheel($event)"
+        (pointerdown)="pointerDown($event)"
+        (pointermove)="pointerMove($event)"
+        (pointerup)="pointerUp($event)"
+        (pointercancel)="pointerUp($event)"
+        (keydown)="canvasKey($event)"
+      >
+        <defs>
+          @for (family of families; track family.id) {
+            @if (family.directed) {
+              <marker
+                [attr.id]="'arrow-' + family.id"
+                viewBox="0 0 8 8"
+                refX="7"
+                refY="4"
+                markerWidth="6"
+                markerHeight="6"
+                orient="auto"
+              >
+                <path d="M0 0L8 4L0 8z" [style.fill]="'var(' + family.color + ')'" />
+              </marker>
+            }
+          }
+        </defs>
+        <g class="world" [attr.transform]="transform()">
+          <g class="edges">
+            @for (item of drawnEdges(); track item.edge.id) {
+              <line
+                [attr.x1]="item.x1"
+                [attr.y1]="item.y1"
+                [attr.x2]="item.x2"
+                [attr.y2]="item.y2"
+                [attr.stroke-dasharray]="item.family.dash || null"
+                [attr.marker-end]="
+                  item.family.directed ? 'url(#arrow-' + item.family.id + ')' : null
+                "
+                [style.stroke]="'var(' + item.family.color + ')'"
+                [class.is-dimmed]="edgeDimmed(item.edge)"
+                [class.is-active]="
+                  selectedId() === item.edge.source || selectedId() === item.edge.target
+                "
+              >
+                <title>{{ item.family.label }}: {{ item.edge.label }}</title>
+              </line>
+            }
+          </g>
+          <g class="nodes">
+            @for (item of drawnNodes(); track item.node.id) {
+              <g
+                class="node"
+                role="button"
+                [attr.data-node]="item.node.id"
+                [attr.tabindex]="tabIndexFor(item.node.id)"
+                [attr.aria-label]="nodeLabel(item.node)"
+                [attr.aria-pressed]="selectedId() === item.node.id"
+                [attr.transform]="
+                  'translate(' + item.x + ' ' + item.y + ') scale(' + nodeScale() + ')'
+                "
+                [class.is-dimmed]="isDimmed(item.node.id)"
+                [class.is-selected]="selectedId() === item.node.id"
+                (click)="nodeClick(item.node.id)"
+                (keydown)="nodeKey($event, item.node.id)"
+                (focus)="focusId.set(item.node.id)"
+                (pointerenter)="hoveredId.set(item.node.id)"
+                (pointerleave)="hoveredId.set(null)"
+              >
+                <path
+                  class="node__shape"
+                  fill-rule="evenodd"
+                  [attr.d]="item.path"
+                  [style.fill]="'var(' + item.kind.color + ')'"
+                />
+                @if (showLabel(item.node)) {
+                  <text class="node__label" [attr.y]="item.r + 13" text-anchor="middle">
+                    {{ item.node.title }}
+                  </text>
+                }
+              </g>
+            }
+          </g>
+        </g>
+      </svg>
+
+      <div class="zoom" role="group" aria-label="Zoom">
+        <button type="button" (click)="zoomBy(1.3)" aria-label="Aproximar">+</button>
+        <button type="button" (click)="zoomBy(1 / 1.3)" aria-label="Afastar">−</button>
+        <button type="button" (click)="fit()" aria-label="Reenquadrar o grafo inteiro">⤢</button>
+        <span class="zoom__level" aria-hidden="true">{{ zoomPercent() }}%</span>
+      </div>
+
+      <p id="graph-status" class="status" role="status">{{ status() }}</p>
+
+      @if (loading()) {
+        <div class="overlay" role="status">
+          <span class="spinner" aria-hidden="true"></span>
+          <p>Organizando o mapa de {{ total }} verbetes…</p>
+        </div>
+      } @else if (total === 0) {
+        <div class="overlay">
+          <h2>Nada para mostrar ainda</h2>
+          <p>O acervo não tem verbetes publicados. Volte em breve.</p>
+          <a class="atlas-button" routerLink="/conhecimento">Ver o acervo</a>
+        </div>
+      } @else if (visible().nodes.length === 0) {
+        <div class="overlay">
+          <h2>Nenhum verbete neste recorte</h2>
+          <p>Os filtros escondem todos os verbetes. Amplie a seleção para voltar a ver o mapa.</p>
+          <button type="button" class="atlas-button" (click)="resetFilters()">
+            Limpar filtros
+          </button>
+        </div>
+      }
+    </div>
+
+    <aside
+      class="detail"
+      [class.detail--empty]="!selected()"
+      aria-label="Detalhes do verbete"
+      aria-live="polite"
+    >
+      @if (selected(); as node) {
+        @if (selectedKind(); as kind) {
+          <header class="detail__head">
+            <p class="detail__kind">
+              <app-kind-icon [kind]="kind.icon" />
+              <span>{{ kind.label }}</span>
+              @if (node.period) {
+                <span class="detail__period">{{ node.period }}</span>
+              }
+            </p>
+            <button
+              type="button"
+              class="detail__close"
+              (click)="clearSelection()"
+              aria-label="Fechar detalhes"
+            >
+              ×
+            </button>
+          </header>
+          <h2 class="detail__title">{{ node.title }}</h2>
+          <p class="detail__definition">{{ node.definition }}</p>
+          @if (node.summary !== node.definition) {
+            <details class="detail__more">
+              <summary>Resumo completo</summary>
+              <p>{{ node.summary }}</p>
+            </details>
+          }
+          @if (node.inReview) {
+            <p class="detail__note">Texto ainda em revisão editorial.</p>
+          }
+          @if (selectedClaims().length) {
+            <section aria-labelledby="detail-claims">
+              <h3 id="detail-claims">Posição e teses atribuídas</h3>
+              <ul class="claims">
+                @for (claim of selectedClaims(); track claim.id) {
+                  <li>
+                    <p>{{ claim.text }}</p>
+                    <small>{{ classificationLabel(claim.classification) }}</small>
+                  </li>
+                }
+              </ul>
+            </section>
+          }
+          <a class="atlas-button detail__open" [routerLink]="['/verbete', node.slug]"
+            >Abrir o verbete <span aria-hidden="true">→</span></a
+          >
+          <section aria-labelledby="detail-links">
+            <h3 id="detail-links">Ligações ({{ selectedLinks().length }})</h3>
+            @if (selectedLinks().length) {
+              <ul class="links">
+                @for (link of selectedLinks(); track link.edge.id) {
+                  <li>
+                    <button type="button" (click)="select(link.other.id)">
+                      <span class="links__verb">{{
+                        link.outgoing ? linkVerb(link.edge) : linkVerbReverse(link.edge)
+                      }}</span>
+                      <span class="links__name">{{ link.other.title }}</span>
+                    </button>
+                  </li>
+                }
+              </ul>
+            } @else {
+              <p class="hint">Nenhuma ligação visível com os filtros atuais.</p>
+            }
+          </section>
+        }
+      }
+    </aside>
+  </div>
+</div>
