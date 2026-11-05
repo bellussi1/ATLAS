@@ -60,3 +60,10 @@ test('a onda soma aos candidatos sem repetir nem apagar o que já havia', () => 
   assert.equal(added[0].decidedBy, 'citação');
   assert.equal(added[0].type, 'pessoa');
 });
+
+test('idioma e identificador de catálogo não são verbete', () => {
+  const articles = [1, 2, 3].map(() =>
+    article(target('Q1', 'Língua inglesa', 'conceito'), target('Q2', 'ISBN', 'conceito')),
+  );
+  assert.deepEqual(rankCited(articles, { min: 2, minBroad: 2 }), []);
+});

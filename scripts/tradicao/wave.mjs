@@ -60,7 +60,8 @@ export const stopTitles = new Set([
 
 const titleLooksGeneric = (title) =>
   stopTitles.has(title) ||
-  /^(lista|anexo|categoria|século|ano)\b/i.test(title) ||
+  /^(lista|anexo|categoria|século|ano|l[ií]ngua)\b/i.test(title) ||
+  /^(isbn|issn|doi|wikipédia)$/i.test(title) ||
   /^\d{1,4}$/.test(title);
 
 /**
@@ -176,7 +177,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   console.log(
     added
       .slice(0, 25)
-      .map((entry) => `${entry.title} (${entry.type}, ${entry.n})`)
+      .map((entry) => `${entry.title} (${entry.type}, ${entry.sharedByCount})`)
       .join('; '),
   );
   if (values.write) {
