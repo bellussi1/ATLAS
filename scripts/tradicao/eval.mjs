@@ -74,6 +74,7 @@ export function armMetrics(drafts, state) {
     relationsProposed: 0,
     relationsRejectedByCode: 0,
     relationsRejectedBySecondPass: 0,
+    textRejectedBySecondPass: 0,
     relationsAccepted: 0,
     relationsPending: 0,
     relationsWithQid: 0,
@@ -96,6 +97,8 @@ export function armMetrics(drafts, state) {
     for (const item of draft.rejected ?? []) {
       metrics.reasons[item.reason] = (metrics.reasons[item.reason] ?? 0) + 1;
       if (item.reason.startsWith('segunda-passada:')) metrics.relationsRejectedBySecondPass += 1;
+      else if (item.reason.startsWith('segunda-passada-texto:'))
+        metrics.textRejectedBySecondPass += 1;
       else if (item.list === 'relations') metrics.relationsRejectedByCode += 1;
       if (item.reason.startsWith('citacao-')) metrics.quotesRejected += 1;
     }
@@ -239,7 +242,7 @@ export function decideModel(
     };
   return {
     outcome: 'revisar-prompt',
-    rationale: `Texto acima de ${limit * 100}% nos dois braços: trocar o modelo das relações não resolve. Revise prompt e travas.`,
+    rationale: `Texto acima de ${limit * 100}% nos braços conferidos: trocar o modelo das relações não resolve. Revise prompt e travas.`,
   };
 }
 
@@ -270,6 +273,7 @@ export async function runEval({
   size = 20,
   client,
   dryRun = false,
+  only,
   maxUsd = 1,
   maxTotalUsd = 10,
   pollMs,
@@ -278,14 +282,17 @@ export async function runEval({
   const directory = evalDirectory(root, id);
   const records = sampleRecords(await recordsFrom(root, from), size);
   if (!records.length) throw new Error(`Sem artigos locais em: ${from.join(', ')}`);
+  const chosenArms = only ? arms.filter((arm) => arm.name === only) : arms;
+  if (!chosenArms.length) throw new Error(`Braço desconhecido: ${only}`);
   const plans = [];
-  for (const arm of arms) {
+  for (const arm of chosenArms) {
     const state = await loadStateFile(armPaths(directory, arm).stateFile);
     plans.push({ arm, plan: planRun({ records, state, model: arm.model, effort: arm.effort }) });
   }
   const worst = plans.reduce((sum, { plan }) => sum + plan.worstCaseUsd, 0);
   const expected = plans.reduce(
-    (sum, { plan }) => sum + plan.extract.expectedUsd + plan.verify.expectedUsd,
+    (sum, { plan }) =>
+      sum + plan.extract.expectedUsd + plan.verify.expectedUsd + plan.verifytext.expectedUsd,
     0,
   );
   log(`Amostra de ${records.length} artigos (${from.join(', ')}):`);
@@ -309,7 +316,7 @@ export async function runEval({
     ids: records.map((record) => record.id),
     articles: records.map((record) => ({ id: record.id, entity: record.entity })),
   });
-  for (const arm of arms) {
+  for (const arm of chosenArms) {
     const paths = armPaths(directory, arm);
     await runExtraction({
       records,
@@ -404,6 +411,12 @@ export async function scoreEval({
   const decidable = only ? arms.filter((arm) => arm.name === only) : arms;
   if (!decidable.length) throw new Error(`Braço desconhecido: ${only}`);
   const decision = decideModel(byArm, { minimum, decidable });
+  // Who checked is part of the result: the project never claims a human review that did not happen.
+  const checked = items.filter(
+    (item) => typeof item.ok === 'boolean' && decidable.some((arm) => arm.name === item.arm),
+  );
+  const byAi = checked.filter((item) => item.note?.includes('[conferência de IA]')).length;
+  decision.rationale += ` Conferência: ${checked.length - byAi} itens por pessoa e ${byAi} por IA.`;
   await writeJsonAtomic(join(directory, 'decisao.json'), { byArm, ...decision });
   // Corrections for the editorial review: what the article says, what it should say, and why.
   await writeJsonAtomic(
@@ -479,7 +492,7 @@ export function renderMetrics(metrics) {
   return Object.entries(metrics)
     .map(
       ([arm, m]) =>
-        `${arm}: ${m.drafts} rascunhos; citações rejeitadas ${m.quotesRejected}/${m.quotes} (${percent(m.quotesRejectedRate)}); relações propostas ${m.relationsProposed}, rejeitadas por código ${m.relationsRejectedByCode}, pela segunda passada ${m.relationsRejectedBySecondPass} (${percent(m.relationsRejectedRate)}), aceitas ${m.relationsAccepted} (${m.relationsWithQid} com QID), à espera da segunda passada ${m.relationsPending}; custo ${formatUsd(m.costUsd)}; falhas ${m.failed}; motivos ${JSON.stringify(m.reasons)}`,
+        `${arm}: ${m.drafts} rascunhos; citações rejeitadas ${m.quotesRejected}/${m.quotes} (${percent(m.quotesRejectedRate)}); relações propostas ${m.relationsProposed}, rejeitadas por código ${m.relationsRejectedByCode}, pela segunda passada ${m.relationsRejectedBySecondPass} (${percent(m.relationsRejectedRate)}), aceitas ${m.relationsAccepted} (${m.relationsWithQid} com QID), itens de texto descartados pela conferência ${m.textRejectedBySecondPass}, à espera da segunda passada ${m.relationsPending}; custo ${formatUsd(m.costUsd)}; falhas ${m.failed}; motivos ${JSON.stringify(m.reasons)}`,
     )
     .join('\n');
 }
@@ -513,6 +526,7 @@ export async function main(argv = process.argv.slice(2)) {
       size: Number(values.sample),
       client,
       dryRun,
+      only: values.arm,
       maxUsd: Number(values['max-usd']),
       maxTotalUsd: Number(values['max-total-usd']),
     });

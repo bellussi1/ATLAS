@@ -58,10 +58,11 @@ const extraction = {
 };
 
 /** Double of the Anthropic client: answers by phase and records every paid-for request. */
-function fakeClient({ failIds = [], verdict = 'confirma' } = {}) {
+function fakeClient({ failIds = [], verdict = 'confirma', textVerdicts = [] } = {}) {
   const calls = { batches: [], sync: [], retrieve: 0 };
   const stored = new Map();
   const answer = (customId) => {
+    if (customId.startsWith('verifytext__')) return modelText({ verdicts: textVerdicts });
     if (customId.startsWith('verify__'))
       return modelText({ verdicts: [{ index: 0, verdict, reason: 'lido' }] });
     return modelText(extraction);
@@ -216,7 +217,11 @@ test('lote: duas passadas, cache, rascunho com travas e STATE.json como razão',
     ...paths,
     effort: 'low',
   });
-  assert.equal(client.calls.batches.length, 2);
+  assert.equal(
+    client.calls.batches.length,
+    2,
+    'sem item de texto, a conferência do texto não paga',
+  );
   const [extract, verify] = client.calls.batches;
   assert.equal(extract.requests.length, 3);
   assert.deepEqual(extract.requests[0].params.system[0].cache_control, {
@@ -382,6 +387,45 @@ test('segunda passada paga só o que está pendente e mantém o que já foi conf
   const after = JSON.parse(await readFile(path, 'utf8'));
   assert.equal(after.relations.length, 2);
   assert.ok(after.relations.every((r) => r.verified));
+});
+
+test('conferência do texto: só fica o item confirmado, e a etapa não paga duas vezes', async (t) => {
+  const paths = await workspace(t);
+  const longSentence = 'Bernstein nasceu em Berlim em 1850, filho de um maquinista ferroviário.';
+  const withText = record('a');
+  withText.article.sections[0].text = `${sentence}\n${longSentence}`;
+  const body = {
+    ...extraction,
+    claims: [
+      { statement: 'Nasceu em Berlim.', kind: 'fact', quote: 'nasceu em Berlim em 1850' },
+      {
+        statement: 'Era filho de um rei.',
+        kind: 'fact',
+        quote: 'filho de um maquinista ferroviário',
+      },
+    ],
+  };
+  const client = fakeClient({ textVerdicts: [{ index: 0, verdict: 'confirma', reason: 'ok' }] });
+  const inner = client.messages.batches.results;
+  client.messages.batches.results = async function* results(id) {
+    for await (const item of await inner(id)) {
+      if (item.custom_id.startsWith('extract__')) item.result.message = modelText(body);
+      yield item;
+    }
+  };
+  const records = [withText];
+  const { state } = await runExtraction({ records, client, ...paths });
+  const draft = JSON.parse(await readFile(join(paths.outDirectory, 'a.json'), 'utf8'));
+  assert.deepEqual(
+    draft.claims.map((c) => c.statement),
+    ['Nasceu em Berlim.'],
+  );
+  assert.ok(draft.rejected.some((r) => r.reason === 'segunda-passada-texto:sem-veredito'));
+  assert.equal(state.entities.a.verifytext.status, 'done');
+  assert.ok(state.spend.byPhase.verifytext > 0);
+  const count = client.calls.batches.length;
+  await runExtraction({ records, client, ...paths });
+  assert.equal(client.calls.batches.length, count, 'retomada não reenvia');
 });
 
 test('modo síncrono: teto vale a cada pedido e a segunda passada descarta o que não confirma', async (t) => {

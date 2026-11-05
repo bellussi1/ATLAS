@@ -25,6 +25,7 @@ export const estimateTokens = (chars) => Math.ceil(chars / charsPerToken);
 export const assumedOutputTokens = {
   extract: { low: 5_000, medium: 7_000 },
   verify: { low: 500, medium: 800 },
+  verifytext: { low: 1_500, medium: 2_000 },
 };
 
 function rates(model, promptTokens) {

@@ -25,17 +25,27 @@ import {
   estimateRun,
   formatUsd,
 } from './cost.mjs';
-import { applyVerdicts, contractGaps, guardExtraction, relationKey } from './guards.mjs';
+import {
+  applyTextVerdicts,
+  applyVerdicts,
+  contractGaps,
+  guardExtraction,
+  relationKey,
+} from './guards.mjs';
 import {
   defaultModel,
   maxOutputTokens,
+  maxTextItems,
   messageJson,
   promptHash,
   richParams,
   richSourceText,
   richSystem,
+  textItems,
   verifyParams,
   verifySystem,
+  verifyTextParams,
+  verifyTextSystem,
 } from './prompts.mjs';
 import { projectRoot } from './registry.mjs';
 import { richContract } from './rich.mjs';
@@ -81,6 +91,13 @@ function isDone(step, record) {
   );
 }
 
+/** The text pass has its own prompt, so it can change without redoing the extraction. */
+const textPrompt = createHash('sha256').update(verifyTextSystem).digest('hex').slice(0, 12);
+const isTextDone = (step, record) =>
+  step?.status === 'done' &&
+  step.revision === record.article.revision &&
+  step.prompt === textPrompt;
+
 /** Everything one run needs to know, computed without sending anything. */
 export function planRun({ records, state, model, relationModel, effort, retryFailed }) {
   const prepared = records.map((record) => ({
@@ -114,12 +131,19 @@ export function planRun({ records, state, model, relationModel, effort, retryFai
     // The second-pass prompt is under the cacheable minimum (512 tokens): no cache mark, no discount.
     { model: relationModel ?? model, cached: false },
   );
+  const verifytext = estimateRun(
+    prepared
+      .filter((record) => !isTextDone(stepOf(state, record.id, 'verifytext'), record))
+      .map(() => costShape(verifyTextSystem.length, maxTextItems * 1000, 'verifytext')),
+    { model, cached: false },
+  );
   return {
     prepared,
     toExtract,
     extract,
     verify,
-    worstCaseUsd: extract.worstCaseUsd + verify.worstCaseUsd,
+    verifytext,
+    worstCaseUsd: extract.worstCaseUsd + verify.worstCaseUsd + verifytext.worstCaseUsd,
   };
 }
 
@@ -129,7 +153,8 @@ export function renderPlan(plan, { model, effort, relationModel }) {
   return [
     line('extração', plan.extract, `${model} ${effort}`),
     line('segunda passada', plan.verify, `${relationModel ?? model} ${effort}`),
-    `  total: esperado ${formatUsd(plan.extract.expectedUsd + plan.verify.expectedUsd)}, pior caso ${formatUsd(plan.worstCaseUsd)}`,
+    line('conferência do texto', plan.verifytext, `${model} ${effort}`),
+    `  total: esperado ${formatUsd(plan.extract.expectedUsd + plan.verify.expectedUsd + plan.verifytext.expectedUsd)}, pior caso ${formatUsd(plan.worstCaseUsd)}`,
   ].join('\n');
 }
 
@@ -299,6 +324,7 @@ export async function runExtraction({
     allRecords.flatMap((record) => [
       [customIdFor('extract', record.id), record.id],
       [customIdFor('verify', record.id), record.id],
+      [customIdFor('verifytext', record.id), record.id],
     ]),
   );
   const failure = (phase) => async (customId, reason) => {
@@ -483,6 +509,84 @@ export async function runExtraction({
       log(
         `conferido: ${id} (${applied.relations.length} confirmadas, ${applied.rejected.length} descartadas)`,
       );
+    },
+  });
+  await save();
+
+  // Second pass on text: the quote must hold everything the item says.
+  const textDrafts = new Map();
+  const textToVerify = [];
+  for (const record of plan.prepared) {
+    const open = state.batches.some(
+      (b) => b.status === 'open' && b.ids.includes(customIdFor('verifytext', record.id)),
+    );
+    if (!isDone(stepOf(state, record.id, 'extract'), record) || open) continue;
+    const step = stepOf(state, record.id, 'verifytext');
+    if (isTextDone(step, record) || (step?.status === 'failed' && !retryFailed)) continue;
+    const draft = await readJson(join(outDirectory, `${record.id}.json`));
+    textDrafts.set(record.id, draft);
+    if (textItems(draft).length) textToVerify.push(record);
+    else
+      setStep(state, record.id, 'verifytext', {
+        status: 'done',
+        revision: record.article.revision,
+        prompt: textPrompt,
+        usd: 0,
+        confirmed: 0,
+      });
+  }
+  await save();
+  await runPhase({
+    phase: 'verifytext',
+    requests: textToVerify.map((record) => ({
+      customId: customIdFor('verifytext', record.id),
+      params: verifyTextParams({
+        entity: record.entity,
+        items: textItems(textDrafts.get(record.id)),
+        text: record.source.text,
+        model,
+        effort,
+      }),
+    })),
+    client,
+    save,
+    state,
+    model,
+    sync,
+    pollMs,
+    log,
+    budget,
+    worstCaseEach: plan.verifytext.requests
+      ? plan.verifytext.worstCaseUsd / plan.verifytext.requests
+      : 0,
+    onFailure: failure('verifytext'),
+    onMessage: async (customId, message, usd) => {
+      const id = recordIdOf.get(customId);
+      const record = byId.get(id);
+      await keepRaw('verifytext', id, message);
+      const draft = textDrafts.get(id) ?? (await readJson(join(outDirectory, `${id}.json`)));
+      let output;
+      try {
+        output = messageJson(message);
+      } catch (error) {
+        await failure('verifytext')(customId, error.message);
+        return;
+      }
+      const applied = applyTextVerdicts(textItems(draft), output);
+      draft.sections = applied.sections;
+      draft.dates = applied.dates;
+      draft.claims = applied.claims;
+      draft.rejected = [...draft.rejected, ...applied.rejected];
+      await writeFile(join(outDirectory, `${id}.json`), `${JSON.stringify(draft, null, 2)}\n`);
+      setStep(state, id, 'verifytext', {
+        status: 'done',
+        revision: record.article.revision,
+        prompt: textPrompt,
+        model,
+        usd,
+        rejected: applied.rejected.length,
+      });
+      log(`texto conferido: ${id} (${applied.rejected.length} itens descartados)`);
     },
   });
   await save();

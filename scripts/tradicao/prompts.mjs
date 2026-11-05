@@ -21,7 +21,10 @@ export const defaultModel = 'claude-haiku-5-5';
 export const maxArticleChars = 60_000;
 export const maxBibliographyChars = 3_000;
 /** Pensamento conta em `max_tokens`: é o teto real de saída e, por isso, do custo. */
-export const maxOutputTokens = { extract: 12_000, verify: 3_000 };
+export const maxOutputTokens = { extract: 12_000, verify: 3_000, verifytext: 6_000 };
+/** Por rascunho: 10 seções, 12 datas e 12 afirmações, cada uma com citação e parágrafo curto. */
+export const maxTextItems = 34;
+const textPassageChars = 600;
 
 export const richSystem = `Você extrai dados de um artigo da Wikipedia para uma plataforma educacional pública sobre política e história. A saída alimenta um grafo de conhecimento: cada campo é conferido por código contra o artigo, e o que não bater é descartado.
 
@@ -67,6 +70,49 @@ Responda um veredito por índice:
 - "nao-sustenta": o parágrafo só menciona os dois nós, compara, fala de outra pessoa, usa dúvida ou hipótese como fato, ou o tipo não descreve o que está escrito.
 
 Se o parágrafo afirma o fato com outras palavras, confirme; recuse quando faltar o fato, não quando faltar o verbo exato. Significados dos tipos: influenciou (influência intelectual ou política afirmada); participou-de (tomou parte em evento ou atuou em organização); membro-de (filiação formal a partido ou organização); fundou (criou ou foi um dos fundadores de organização, movimento ou publicação); escreveu (autoria de obra); desenvolveu-se-em (corrente que deu origem a outra); reagiu-contra (oposição ou crítica afirmada); sucedeu (assumiu o cargo que o alvo ocupava); governou (chefiou governo, Estado ou região; presidir organização não conta); ocorreu-em (evento e lugar).`;
+
+/** Prompt à parte: mudar este texto refaz só a conferência do texto, não a extração. */
+export const verifyTextSystem = `Você confere itens de texto extraídos de um artigo da Wikipedia. Cada item traz a afirmação, a citação literal e o parágrafo de onde ela veio. Julgue só por esse material; não use conhecimento próprio e não corrija o artigo.
+
+Responda um veredito por índice:
+- "confirma": tudo o que a afirmação diz está na citação ou na mesma frase do parágrafo, com o mesmo sujeito e o mesmo sentido.
+- "nao-sustenta": a afirmação acrescenta fato, detalhe, data ou causa que não está ali; junta fatos de frases diferentes; troca quem age (por exemplo, "leninistas" virou "Lenin"); troca o objeto; exagera ("começaram a flertar" virou "adotaram"); transforma "talvez" em fato; ou trata um ano citado de passagem como marco de início ou fim.
+
+Paráfrase fiel é confirmação: recuse quando o sentido mudar, não quando as palavras mudarem. Mesmo que o artigo pareça errado, confirme a afirmação que o repete fielmente.`;
+
+/** Text items of a draft, flattened in a fixed order so a verdict finds its item by index. */
+export function textItems(draft) {
+  return [
+    ...(draft.sections ?? []).map((item) => ({ list: 'sections', item, says: item.text })),
+    ...(draft.dates ?? []).map((item) => ({
+      list: 'dates',
+      item,
+      says: `${item.date}: ${item.event}`,
+    })),
+    ...(draft.claims ?? []).map((item) => ({ list: 'claims', item, says: item.statement })),
+  ];
+}
+
+export function verifyTextParams({ entity, items, text, model, effort }) {
+  const listed = items.map(({ item, says }, index) => ({
+    index,
+    afirmacao: says,
+    citacao: item.quote,
+    paragrafo: passageFor(item.quote, text, textPassageChars),
+  }));
+  return {
+    model,
+    max_tokens: maxOutputTokens.verifytext,
+    output_config: { effort, format: zodOutputFormat(verdictOutputSchema) },
+    system: verifyTextSystem,
+    messages: [
+      {
+        role: 'user',
+        content: `Entidade do artigo: ${entity.label}.\n\n<itens>\n${JSON.stringify(listed, null, 1)}\n</itens>`,
+      },
+    ],
+  };
+}
 
 /** O que olhar primeiro em cada tipo; fica na mensagem do usuário para não quebrar o cache. */
 const typeHints = {

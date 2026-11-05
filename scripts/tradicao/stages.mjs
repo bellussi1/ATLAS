@@ -509,7 +509,7 @@ export const stages = [
         articles: plan.prepared.length,
         inputTokens: plan.extract.inputTokens + plan.verify.inputTokens,
         outputTokens: plan.extract.expectedOutputTokens + plan.verify.expectedOutputTokens,
-        usd: plan.extract.expectedUsd + plan.verify.expectedUsd,
+        usd: plan.extract.expectedUsd + plan.verify.expectedUsd + plan.verifytext.expectedUsd,
         worstCaseUsd: plan.worstCaseUsd,
         basis: `${model} ${effort}, em lote; pior caso US$ ${plan.worstCaseUsd.toFixed(3)}`,
       };

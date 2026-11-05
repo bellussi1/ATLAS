@@ -112,9 +112,17 @@ function fakeClient() {
               result: {
                 type: 'succeeded',
                 message: message(
-                  custom_id.startsWith('verify__')
-                    ? { verdicts: [{ index: 0, verdict: 'confirma', reason: 'lido' }] }
-                    : answer,
+                  custom_id.startsWith('verifytext__')
+                    ? {
+                        verdicts: Array.from({ length: 40 }, (_, index) => ({
+                          index,
+                          verdict: 'confirma',
+                          reason: 'lido',
+                        })),
+                      }
+                    : custom_id.startsWith('verify__')
+                      ? { verdicts: [{ index: 0, verdict: 'confirma', reason: 'lido' }] }
+                      : answer,
                 ),
               },
             };
@@ -282,9 +290,9 @@ test('ponta a ponta com cliente falso: dois braços, travas, relatório, confer�
   );
   const client = fakeClient();
   await runEval({ root, from: ['x'], size: 10, client, ...quiet });
-  assert.equal(client.batches.length, 4, 'extração e conferência por braço');
+  assert.equal(client.batches.length, 6, 'extração, relações e texto, por braço');
   const efforts = client.batches.map((requests) => requests[0].params.output_config.effort);
-  assert.deepEqual(efforts, ['low', 'low', 'medium', 'medium']);
+  assert.deepEqual(efforts, ['low', 'low', 'low', 'medium', 'medium', 'medium']);
   assert.ok((await totalSpent(root)) > 0);
 
   const { metrics, items, directory } = await buildReport({ root });
@@ -444,6 +452,6 @@ test('retomada da avaliação: segunda execução não paga de novo', async (t) 
   await runEval({ root, from: ['x'], size: 2, client, ...quiet });
   const spent = await totalSpent(root);
   await runEval({ root, from: ['x'], size: 2, client, ...quiet });
-  assert.equal(client.batches.length, 4);
+  assert.equal(client.batches.length, 6);
   assert.equal(await totalSpent(root), spent);
 });

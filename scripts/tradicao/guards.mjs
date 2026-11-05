@@ -326,6 +326,28 @@ export function applyVerdicts(relations, output, { model }) {
   return { relations: kept, rejected };
 }
 
+/**
+ * Second pass on text: an item stays only if the model confirms that its quote and paragraph hold
+ * everything it says. Same rule as relations: silence is a rejection.
+ */
+export function applyTextVerdicts(items, output) {
+  const byIndex = new Map((output.verdicts ?? []).map((verdict) => [verdict.index, verdict]));
+  const kept = { sections: [], dates: [], claims: [] };
+  const rejected = [];
+  items.forEach(({ list, item }, position) => {
+    const verdict = byIndex.get(position);
+    if (verdict?.verdict === 'confirma') kept[list].push(item);
+    else
+      rejected.push(
+        dropped(list, `segunda-passada-texto:${verdict?.verdict ?? 'sem-veredito'}`, {
+          ...item,
+          motivo: verdict?.reason,
+        }),
+      );
+  });
+  return { ...kept, rejected };
+}
+
 /** Whether what survived is a complete rich draft; returns contract problems (empty when valid). */
 export function contractGaps(extraction) {
   const parsed = richExtractionSchema.safeParse(extraction);
