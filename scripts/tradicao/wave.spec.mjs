@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { mergeCandidates, rankCited } from './wave.mjs';
+import { mergeCandidates, rankCited, relationTargets } from './wave.mjs';
 
 const target = (qid, title, type) => ({ qid, title, type, missing: false });
 const article = (...targets) => ({ targets });
@@ -66,4 +66,30 @@ test('idioma e identificador de catálogo não são verbete', () => {
     article(target('Q1', 'Língua inglesa', 'conceito'), target('Q2', 'ISBN', 'conceito')),
   );
   assert.deepEqual(rankCited(articles, { min: 2, minBroad: 2 }), []);
+});
+
+test('alvo de relação confirmada entra antes, mesmo citado uma vez', () => {
+  const typeByQid = new Map([
+    ['Q1', { title: 'Jules Guesde', type: 'pessoa' }],
+    ['Q2', { title: 'Política', type: 'acontecimento' }],
+  ]);
+  const extracts = [
+    {
+      relations: [
+        { targetQid: 'Q1', verified: true },
+        { targetQid: 'Q1', verified: true },
+        { targetQid: 'Q2', verified: true },
+        { targetQid: 'Q3', verified: true },
+        { targetQid: 'Q1', verified: false },
+      ],
+    },
+  ];
+  const found = relationTargets(extracts, typeByQid, { known: new Set() });
+  assert.deepEqual(
+    found.map((entry) => [entry.qid, entry.n]),
+    [['Q1', 2]],
+  );
+  assert.equal(relationTargets(extracts, typeByQid, { known: new Set(['Q1']) }).length, 0);
+  const { added } = mergeCandidates([], found);
+  assert.match(added[0].reason, /relações confirmadas/);
 });

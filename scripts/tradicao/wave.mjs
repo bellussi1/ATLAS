@@ -95,7 +95,47 @@ export function rankCited(
     .sort((a, b) => b.n - a.n || a.title.localeCompare(b.title, 'pt'));
 }
 
+/**
+ * Alvos de relação já confirmada que o grafo ainda não tem: cada um vira aresta assim que ganha
+ * verbete, por isso entram antes dos mais citados, mesmo citados uma vez só. O tipo vem dos
+ * artigos locais (`typeByQid`); sem tipo conhecido o item fica de fora.
+ */
+export function relationTargets(
+  extracts,
+  typeByQid,
+  { known = new Set(), types = defaultTypes } = {},
+) {
+  const counts = new Map();
+  for (const extract of extracts) {
+    for (const relation of extract.relations ?? []) {
+      const qid = relation.targetQid;
+      if (!qid || relation.verified !== true || known.has(qid)) continue;
+      const info = typeByQid.get(qid);
+      if (!info || !types.includes(info.type) || titleLooksGeneric(info.title)) continue;
+      const entry = counts.get(qid) ?? { ...info, qid, n: 0, relation: true };
+      entry.n += 1;
+      counts.set(qid, entry);
+    }
+  }
+  return [...counts.values()].sort((a, b) => b.n - a.n || a.title.localeCompare(b.title, 'pt'));
+}
+
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
+
+function localExtracts(root) {
+  const base = join(root, 'generated/wiki-extract');
+  if (!existsSync(base)) return [];
+  return readdirSync(base, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .flatMap((entry) => {
+      const directory = join(base, entry.name, 'extracts');
+      return existsSync(directory)
+        ? readdirSync(directory)
+            .filter((name) => name.endsWith('.json'))
+            .map((name) => readJson(join(directory, name)))
+        : [];
+    });
+}
 
 function localArticles(root) {
   const base = join(root, 'generated/wiki-extract');
@@ -140,7 +180,9 @@ export function mergeCandidates(existing, ranked) {
       score: null,
       decision: 'accept',
       decidedBy: 'citação',
-      reason: `citado por ${entry.n} artigos da coleção`,
+      reason: entry.relation
+        ? `alvo de ${entry.n} relações confirmadas`
+        : `citado por ${entry.n} artigos da coleção`,
     }));
   return { candidates: [...existing, ...added], added };
 }
@@ -164,7 +206,15 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     : { tradition: waveSlug, rootQid: 'Q7257', seeds: [], candidates: [] };
   const known = graphQids(projectRoot);
   for (const candidate of file.candidates) known.add(candidate.qid);
-  const ranked = rankCited(localArticles(projectRoot), { known, types, min, minBroad }).slice(
+  const articles = localArticles(projectRoot);
+  const typeByQid = new Map();
+  for (const article of articles)
+    for (const target of article.targets ?? [])
+      if (target.qid && !target.missing && !typeByQid.has(target.qid))
+        typeByQid.set(target.qid, { title: target.title, type: target.type });
+  const byRelation = relationTargets(localExtracts(projectRoot), typeByQid, { known, types });
+  for (const entry of byRelation) known.add(entry.qid);
+  const ranked = [...byRelation, ...rankCited(articles, { known, types, min, minBroad })].slice(
     0,
     Number(values.limit),
   );
