@@ -46,11 +46,11 @@ export function quoteProblem(quote, normalizedSource) {
 /** Palavras que precisam aparecer no trecho para o tipo ser aceito. Sobre texto sem acentos. */
 const natureCues = {
   influenciou:
-    /influen|inspir|discipul|seguidor|mentor|follower|disciple|adept|baseou|baseado em|based on|draw[ns]? on/,
+    /influen|inspir|discipul|seguidor|partidari|mentor|follower|disciple|adept|baseou|baseado em|based on|draw[ns]? on/,
   'participou-de':
     /particip|tomou parte|took part|integr|lider|led\b|led the|combat|lutou|fought|delegad|attend|compareceu|envolv|involved/,
   'membro-de':
-    /membro|member|filiad|ingress|joined|integr|militant|presid|lider|leader|secretar|cofund|fund/,
+    /membro|member|filiad|ingress|incorpor|associad|joined|integr|militant|presid|lider|leader|secretar|cofund|fund/,
   fundou:
     /fund[oa]|fundad|fundador|cofund|found|criou|criad|created|establish|estabelec|organiz|instituiu/,
   escreveu:
@@ -58,7 +58,7 @@ const natureCues = {
   'desenvolveu-se-em':
     /desenvolv|origin|deriv|evolu|emerg|develop|transform|surgiu|grew|tornou-se|became|deu origem|gave rise/,
   'reagiu-contra':
-    /contra\b|opos|opus|opun|critic|against|oppos|rejeit|reject|combat|denunci|polemi|rompeu|broke with/,
+    /contra\b|opos|opoe|opus|opun|critic|conden|against|oppos|rejeit|reject|combat|denunci|polemi|rompeu|broke with|em resposta a|in response to/,
   sucedeu: /suced|succeed|substitu|replac|successor|sucessor/,
   governou:
     /govern|presid|primeiro-ministro|prime minister|chancel|ruled|reign|reinou|ditador|dictator|chefe de estado|head of state/,
@@ -74,6 +74,24 @@ const passiveCues = {
   sucedeu: /sucedid[oa]s? (?:por|pel[oa]s?)|succeeded by/,
   governou: /governad[oa]s? (?:por|pel[oa]s?)|ruled by/,
 };
+
+/** Seção que lista obras da própria entidade: ali o título, sem verbo, já afirma a autoria. */
+const worksHeading =
+  /^(obras|principais obras|publica|escritos|livros|works|selected works|publications|writings)/i;
+
+function listedWork(relation, article) {
+  if (relation.nature !== 'escreveu' || relation.direction !== 'entidade-para-alvo') return null;
+  const title = folded(relation.target ?? '');
+  const quote = folded(relation.quote ?? '');
+  for (const section of article?.sections ?? []) {
+    if (!worksHeading.test(section.heading ?? '')) continue;
+    const found = section.text
+      .split('\n')
+      .some((line) => folded(line).startsWith(title) && folded(line).includes(quote));
+    if (found) return section.heading;
+  }
+  return null;
+}
 
 /** Every name a link target is known by in this article, folded, longest first when matched. */
 function targetIndex(article) {
@@ -104,6 +122,28 @@ function nameForms(name) {
 
 const mentions = (haystack, name) => nameForms(name).some((form) => haystack.includes(form));
 
+const wholeWords = (outer, inner) => ` ${outer} `.includes(` ${inner} `);
+
+/**
+ * Target of a name as the model wrote it: exact, or the only link whose name contains it or is
+ * contained in it, in whole words ("Hegel", "Georg Wilhelm Friedrich Hegel"). Two candidates mean
+ * no answer: a QID is identity, and a guess here would draw a wrong edge.
+ */
+export function resolveTarget(name, index) {
+  const wanted = folded(name);
+  const exact = index.get(wanted);
+  if (exact) return exact;
+  if (wanted.length < 4) return null;
+  const found = new Set();
+  for (const [key, target] of index)
+    if (key.length >= 4 && (wholeWords(key, wanted) || wholeWords(wanted, key))) found.add(target);
+  return found.size === 1 ? [...found][0] : null;
+}
+
+/** Identity of a relation across runs of the guards, to reuse a verdict already paid for. */
+export const relationKey = (relation) =>
+  [relation.nature, relation.direction, folded(relation.target ?? ''), relation.quote].join('|');
+
 /** Paragraph holding the quote: what the second pass reads. Falls back to the quote itself. */
 export function passageFor(quote, text, maxChars = 1200) {
   const wanted = normalizeText(quote);
@@ -127,15 +167,20 @@ export function checkRelation(relation, { entity, article, normalizedSource, ind
   const target = relation.target?.trim();
   if (!target) return { problem: 'alvo-ausente' };
   const quote = folded(relation.quote);
-  const resolved = index.get(folded(target));
-  const names = [target, resolved?.title, ...(resolved?.redirectedFrom ?? [])].filter(Boolean);
+  const resolved = resolveTarget(target, index);
+  const names = [
+    target,
+    ...(resolved ? [...index].filter(([, known]) => known === resolved).map(([key]) => key) : []),
+  ];
   if (!names.some((name) => mentions(quote, name))) return { problem: 'alvo-fora-da-citacao' };
   if (
     folded(target) === folded(entity.label) ||
     (resolved?.qid && resolved.qid === (entity.qid ?? article?.qid))
   )
     return { problem: 'alvo-igual-a-entidade' };
-  if (!natureCues[relation.nature].test(quote)) return { problem: 'sem-verbo-do-tipo' };
+  const listedIn = natureCues[relation.nature].test(quote) ? null : listedWork(relation, article);
+  if (!natureCues[relation.nature].test(quote) && !listedIn)
+    return { problem: 'sem-verbo-do-tipo' };
   const passive = passiveCues[relation.nature]?.exec(quote);
   if (passive && relation.direction === 'entidade-para-alvo') {
     const after = quote.slice(
@@ -156,12 +201,23 @@ export function checkRelation(relation, { entity, article, normalizedSource, ind
       direction: relation.direction,
       sentence: sentence.trim(),
       quote: relation.quote,
+      ...(listedIn ? { listedIn } : {}),
       verified: false,
     },
   };
 }
 
 const dropped = (list, reason, item) => ({ list, reason, item });
+
+/** The sentences that fit, whole; nothing is rewritten, and an empty result means none fits. */
+function wholeSentences(value, max) {
+  let kept = '';
+  for (const sentence of value.match(/[^.!?]+[.!?]+(?:\s+|$)/g) ?? []) {
+    if ((kept + sentence).trim().length > max) break;
+    kept += sentence;
+  }
+  return kept.trim();
+}
 
 /**
  * Applies every guard to a parsed model response. `text` is exactly what the model read. Items that
@@ -209,6 +265,13 @@ export function guardExtraction(output, { text, entity, article }) {
   const field = (name, max) => {
     const value = output[name]?.trim() ?? '';
     if (value && value.length <= max) return value;
+    if (name === 'summary') {
+      const cut = wholeSentences(value, max);
+      if (cut) {
+        rejected.push(dropped(name, 'campo-cortado-na-frase', { [name]: value }));
+        return cut;
+      }
+    }
     rejected.push(dropped(name, value ? 'campo-longo' : 'campo-vazio', { [name]: value }));
     return null;
   };

@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
 
 import { BudgetExceeded, costOfUsage, createBudget, estimateRun, estimateTokens } from './cost.mjs';
-import { customIdFor, planRun, renderPlan, runExtraction } from './extract.mjs';
+import { customIdFor, planRun, reapplyGuards, renderPlan, runExtraction } from './extract.mjs';
 import { loadStateFile, withStateDefaults } from './state.mjs';
 
 const sentence = 'Bernstein criticou Karl Kautsky por sua leitura ortodoxa do marxismo.';
@@ -318,6 +318,70 @@ test('falha fica no STATE e só volta com --retry-failed; quem não falhou segue
   const retried = await runExtraction({ records, client: healthy, ...paths, retryFailed: true });
   assert.equal(healthy.calls.batches[0].requests.length, 1);
   assert.equal(retried.state.entities.a.extract.status, 'done');
+});
+
+test('reaplicar travas: sem cliente, reaproveita veredito e só a relação nova volta à segunda passada', async (t) => {
+  const paths = await workspace(t);
+  const client = fakeClient();
+  const records = [record('a')];
+  await runExtraction({ records, client, ...paths });
+  const path = join(paths.outDirectory, 'a.json');
+  // Simula uma trava antiga mais rígida: a relação tinha caído antes da segunda passada.
+  const raw = join(paths.responsesDirectory, 'extract', 'a.json');
+  const message = JSON.parse(await readFile(raw, 'utf8'));
+  const body = JSON.parse(message.content[0].text);
+  body.relations.push({
+    target: 'Karl Kautsky',
+    nature: 'reagiu-contra',
+    direction: 'alvo-para-entidade',
+    sentence: 'Kautsky reagiu.',
+    quote: 'Bernstein criticou Karl Kautsky por sua leitura',
+  });
+  message.content[0].text = JSON.stringify(body);
+  await writeFile(raw, JSON.stringify(message));
+  const before = JSON.parse(await readFile(paths.stateFile, 'utf8')).spend.usd;
+  const totals = await reapplyGuards({ records, ...paths });
+  assert.equal(totals.reused, 1);
+  assert.equal(totals.pending, 1);
+  const state = JSON.parse(await readFile(paths.stateFile, 'utf8'));
+  assert.equal(state.spend.usd, before, 'não gasta');
+  assert.equal(state.entities.a.verify, undefined);
+  const draft = JSON.parse(await readFile(path, 'utf8'));
+  assert.equal(draft.relations.length, 2);
+  assert.equal(draft.relations.filter((r) => r.verified).length, 1);
+  // Rodar de novo não muda nada.
+  const again = await reapplyGuards({ records, ...paths });
+  assert.deepEqual(again, totals);
+});
+
+test('segunda passada paga só o que está pendente e mantém o que já foi confirmado', async (t) => {
+  const paths = await workspace(t);
+  const client = fakeClient();
+  const records = [record('a')];
+  await runExtraction({ records, client, ...paths });
+  const path = join(paths.outDirectory, 'a.json');
+  const draft = JSON.parse(await readFile(path, 'utf8'));
+  draft.relations.push({
+    ...draft.relations[0],
+    nature: 'reagiu-contra',
+    target: 'Outro',
+    verified: false,
+  });
+  await writeFile(path, JSON.stringify(draft));
+  const state = JSON.parse(await readFile(paths.stateFile, 'utf8'));
+  delete state.entities.a.verify;
+  await writeFile(paths.stateFile, JSON.stringify(state));
+  await runExtraction({ records, client, ...paths });
+  const request = client.calls.batches.at(-1).requests[0];
+  assert.equal(request.custom_id, 'verify__a');
+  assert.equal(
+    JSON.parse(request.params.messages[0].content.match(/<relacoes>([\s\S]*)<\/relacoes>/)[1])
+      .length,
+    1,
+  );
+  const after = JSON.parse(await readFile(path, 'utf8'));
+  assert.equal(after.relations.length, 2);
+  assert.ok(after.relations.every((r) => r.verified));
 });
 
 test('modo síncrono: teto vale a cada pedido e a segunda passada descarta o que não confirma', async (t) => {

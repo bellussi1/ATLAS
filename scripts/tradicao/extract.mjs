@@ -25,7 +25,7 @@ import {
   estimateRun,
   formatUsd,
 } from './cost.mjs';
-import { applyVerdicts, contractGaps, guardExtraction } from './guards.mjs';
+import { applyVerdicts, contractGaps, guardExtraction, relationKey } from './guards.mjs';
 import {
   defaultModel,
   maxOutputTokens,
@@ -411,7 +411,8 @@ export async function runExtraction({
     if (isDone(stepOf(state, record.id, 'verify'), record)) continue;
     const draft = await readJson(join(outDirectory, `${record.id}.json`));
     drafts.set(record.id, draft);
-    if (!draft.relations.length) {
+    // Relations confirmed earlier keep their verdict; only the new ones are paid for.
+    if (!draft.relations.some((relation) => !relation.verified)) {
       setStep(state, record.id, 'verify', {
         status: 'done',
         revision: record.article.revision,
@@ -431,7 +432,7 @@ export async function runExtraction({
       customId: customIdFor('verify', record.id),
       params: verifyParams({
         entity: record.entity,
-        relations: drafts.get(record.id).relations,
+        relations: drafts.get(record.id).relations.filter((relation) => !relation.verified),
         text: record.source.text,
         model: verifyModel,
         effort,
@@ -459,8 +460,15 @@ export async function runExtraction({
         await failure('verify')(customId, error.message);
         return;
       }
-      const applied = applyVerdicts(draft.relations, output, { model: verifyModel });
-      draft.relations = applied.relations;
+      const applied = applyVerdicts(
+        draft.relations.filter((relation) => !relation.verified),
+        output,
+        { model: verifyModel },
+      );
+      draft.relations = [
+        ...draft.relations.filter((relation) => relation.verified),
+        ...applied.relations,
+      ];
       draft.rejected = [...draft.rejected, ...applied.rejected];
       await writeFile(join(outDirectory, `${id}.json`), `${JSON.stringify(draft, null, 2)}\n`);
       setStep(state, id, 'verify', {
@@ -479,6 +487,72 @@ export async function runExtraction({
   });
   await save();
   return { state, plan, spent: budget.spent };
+}
+
+/**
+ * Runs the current guards over responses already paid for, with no client and no cost. Verdicts of
+ * the second pass carry over by relation; a relation that only now passes waits for its verdict,
+ * with `verified: false`, and never reaches the graph before that.
+ */
+export async function reapplyGuards({
+  records,
+  stateFile,
+  outDirectory,
+  responsesDirectory,
+  loadStateFile,
+  log = () => {},
+}) {
+  const state = await loadStateFile();
+  const totals = { drafts: 0, pending: 0, reused: 0 };
+  for (const record of records) {
+    const raw = join(responsesDirectory, 'extract', `${record.id}.json`);
+    const message = await readJson(raw).catch(() => null);
+    if (!message) continue;
+    const previous = await readJson(join(outDirectory, `${record.id}.json`));
+    const confirmed = new Map(
+      previous.relations.filter((r) => r.verified).map((r) => [relationKey(r), r]),
+    );
+    const refused = new Map(
+      previous.rejected
+        .filter((item) => item.reason.startsWith('segunda-passada:'))
+        .map((item) => [relationKey(item.item), item]),
+    );
+    const { text } = richSourceText(record.article);
+    const { extraction, rejected, counts } = guardExtraction(messageJson(message), {
+      text,
+      entity: record.entity,
+      article: record.article,
+    });
+    const relations = [];
+    for (const relation of extraction.relations) {
+      const key = relationKey(relation);
+      if (refused.has(key)) {
+        rejected.push(refused.get(key));
+        totals.reused += 1;
+      } else if (confirmed.has(key)) {
+        relations.push({
+          ...relation,
+          verified: true,
+          verifiedBy: confirmed.get(key).verifiedBy,
+        });
+        totals.reused += 1;
+      } else {
+        relations.push(relation);
+        totals.pending += 1;
+      }
+    }
+    const draft = { ...previous, ...extraction, relations, rejected, counts };
+    await writeFile(join(outDirectory, `${record.id}.json`), `${JSON.stringify(draft, null, 2)}\n`);
+    // Pending relations reopen the second pass for this entity, and only for what is pending.
+    if (relations.some((relation) => !relation.verified) && state.entities[record.id])
+      delete state.entities[record.id].verify;
+    totals.drafts += 1;
+  }
+  await writeJsonAtomic(stateFile, state);
+  log(
+    `${totals.drafts} rascunhos refeitos sem API; ${totals.reused} vereditos reaproveitados, ${totals.pending} relações à espera da segunda passada`,
+  );
+  return totals;
 }
 
 /** Paths of one tradition, shared by this CLI and the stage gates. */

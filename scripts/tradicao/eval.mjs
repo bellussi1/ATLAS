@@ -3,6 +3,7 @@
  * Avaliação do modelo na amostra de ~20 artigos: Haiku 5.5 `low` x `medium`, nas mesmas travas.
  *   npm run tradicao:eval -- run --from marxismo,liberalismo --sample 20 --dry-run
  *   npm run tradicao:eval -- run --from marxismo,liberalismo --sample 20 --max-usd 0.60
+ *   npm run tradicao:eval -- reguard     # reaplica as travas às respostas pagas, sem API
  *   npm run tradicao:eval -- report      # métricas e lista para conferência humana
  *   npm run tradicao:eval -- score       # lê a conferência, aplica a regra e grava model-choice.json
  * Mede o que as travas rejeitam (citações e relações) e separa para a pessoa uma lista do que passou.
@@ -16,7 +17,7 @@ import { parseArgs } from 'node:util';
 import { pathToFileURL } from 'node:url';
 
 import { BudgetExceeded, createBudget, formatUsd } from './cost.mjs';
-import { loadRecords, planRun, renderPlan, runExtraction } from './extract.mjs';
+import { loadRecords, planRun, reapplyGuards, renderPlan, runExtraction } from './extract.mjs';
 import { passageFor } from './guards.mjs';
 import { richSourceText } from './prompts.mjs';
 import { projectRoot } from './registry.mjs';
@@ -71,6 +72,7 @@ export function armMetrics(drafts, state) {
     relationsRejectedByCode: 0,
     relationsRejectedBySecondPass: 0,
     relationsAccepted: 0,
+    relationsPending: 0,
     relationsWithQid: 0,
     reasons: {},
     gaps: 0,
@@ -83,8 +85,10 @@ export function armMetrics(drafts, state) {
   for (const draft of drafts) {
     metrics.quotes += draft.counts?.quotes ?? 0;
     metrics.relationsProposed += draft.counts?.relations ?? 0;
-    metrics.relationsAccepted += draft.relations.length;
-    metrics.relationsWithQid += draft.relations.filter((relation) => relation.targetQid).length;
+    const accepted = draft.relations.filter((relation) => relation.verified !== false);
+    metrics.relationsAccepted += accepted.length;
+    metrics.relationsPending += draft.relations.length - accepted.length;
+    metrics.relationsWithQid += accepted.filter((relation) => relation.targetQid).length;
     if (!draft.oneLine || !draft.summary) metrics.gaps += 1;
     for (const item of draft.rejected ?? []) {
       metrics.reasons[item.reason] = (metrics.reasons[item.reason] ?? 0) + 1;
@@ -119,7 +123,8 @@ export function reviewItems(arm, drafts, textById, { textPerDraft = 2 } = {}) {
       ok: null,
       note: '',
     };
-    for (const relation of draft.relations)
+    // A relation waiting for the second pass is not ready for a person to check.
+    for (const relation of draft.relations.filter((item) => item.verified !== false))
       items.push({
         ...base,
         kind: 'relation',
@@ -309,6 +314,26 @@ export async function runEval({
   return { dryRun: false, expected, worst, records };
 }
 
+/** Current guards over the responses of every arm, with no client: this cannot spend. */
+export async function reguardEval({ root = projectRoot, id = 'amostra-20', log = console.log }) {
+  const directory = evalDirectory(root, id);
+  const sample = await readSample(directory);
+  const wanted = new Set(sample.ids);
+  const records = (await recordsFrom(root, sample.from)).filter((record) => wanted.has(record.id));
+  const totals = {};
+  for (const arm of arms) {
+    const paths = armPaths(directory, arm);
+    log(`${arm.name}:`);
+    totals[arm.name] = await reapplyGuards({
+      records,
+      ...paths,
+      loadStateFile: () => loadStateFile(paths.stateFile),
+      log,
+    });
+  }
+  return totals;
+}
+
 /** Writes metrics and the review list. Marks a person already made are kept across runs. */
 export async function buildReport({ root = projectRoot, id = 'amostra-20', from }) {
   const directory = evalDirectory(root, id);
@@ -381,7 +406,7 @@ export function renderMetrics(metrics) {
   return Object.entries(metrics)
     .map(
       ([arm, m]) =>
-        `${arm}: ${m.drafts} rascunhos; citações rejeitadas ${m.quotesRejected}/${m.quotes} (${percent(m.quotesRejectedRate)}); relações propostas ${m.relationsProposed}, rejeitadas por código ${m.relationsRejectedByCode}, pela segunda passada ${m.relationsRejectedBySecondPass} (${percent(m.relationsRejectedRate)}), aceitas ${m.relationsAccepted} (${m.relationsWithQid} com QID); custo ${formatUsd(m.costUsd)}; falhas ${m.failed}; motivos ${JSON.stringify(m.reasons)}`,
+        `${arm}: ${m.drafts} rascunhos; citações rejeitadas ${m.quotesRejected}/${m.quotes} (${percent(m.quotesRejectedRate)}); relações propostas ${m.relationsProposed}, rejeitadas por código ${m.relationsRejectedByCode}, pela segunda passada ${m.relationsRejectedBySecondPass} (${percent(m.relationsRejectedRate)}), aceitas ${m.relationsAccepted} (${m.relationsWithQid} com QID), à espera da segunda passada ${m.relationsPending}; custo ${formatUsd(m.costUsd)}; falhas ${m.failed}; motivos ${JSON.stringify(m.reasons)}`,
     )
     .join('\n');
 }
@@ -418,6 +443,10 @@ export async function main(argv = process.argv.slice(2)) {
     });
     return 0;
   }
+  if (command === 'reguard') {
+    await reguardEval({ id });
+    return 0;
+  }
   if (command === 'report') {
     const { metrics, items, directory } = await buildReport({ id });
     console.log(renderMetrics(metrics));
@@ -432,7 +461,7 @@ export async function main(argv = process.argv.slice(2)) {
     return 0;
   }
   throw new Error(
-    'Uso: tradicao:eval <run|report|score> [--from a,b] [--sample N] [--dry-run] [--max-usd N]',
+    'Uso: tradicao:eval <run|reguard|report|score> [--from a,b] [--sample N] [--dry-run] [--max-usd N]',
   );
 }
 

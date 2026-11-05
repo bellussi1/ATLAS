@@ -130,6 +130,7 @@ export function verifyParams({ entity, relations, text, model, effort }) {
     tipo: relation.nature,
     sentido: directionPhrase(relation, entity.label),
     citacao: relation.quote,
+    ...(relation.listedIn ? { secao: relation.listedIn } : {}),
     paragrafo: passageFor(relation.quote, text),
   }));
   return {

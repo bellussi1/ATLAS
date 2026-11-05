@@ -53,7 +53,7 @@ A aresta guarda a citação como evidência, a fonte Wikipedia e `editorialStatu
 
 ## Avaliação e regra de decisão
 
-`run` executa a amostra em Haiku 5.5 `low` e `medium`. `report` mede citações e relações rejeitadas e gera `revisao.md` e `revisao.json`, com toda relação aceita e dois itens de texto por artigo, sem marca. A pessoa marca `ok` em `revisao.json`. `score` calcula o erro restante:
+`run` executa a amostra em Haiku 5.5 `low` e `medium`. `reguard` reaplica as travas às respostas já pagas, sem API, reaproveitando vereditos; relação que só agora passa fica à espera da segunda passada e não vai para a conferência nem para o grafo. `report` mede citações e relações rejeitadas e gera `revisao.md` e `revisao.json`, com toda relação aceita e dois itens de texto por artigo, sem marca. A pessoa marca `ok` em `revisao.json`. `score` calcula o erro restante:
 
 - abaixo de 5% em relações e em texto, no braço mais barato que passar: Haiku fica (`haiku-fica`);
 - texto abaixo de 5% e relações acima nos dois: só relações sobe, para Sonnet 5.5, com `--relation-model` (`so-relacoes-sobe`). Isso troca o modelo da segunda passada; a proposta das relações continua no Haiku, então uma cobertura ruim de relações pede outra medição;

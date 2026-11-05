@@ -9,6 +9,7 @@ import {
   normalizeText,
   passageFor,
   quoteProblem,
+  resolveTarget,
 } from './guards.mjs';
 import {
   cacheControl,
@@ -79,15 +80,9 @@ test('relação boa passa e resolve o QID do alvo pelos links do artigo', () => 
 });
 
 test('relação sem link no artigo fica sem QID, sem virar aresta depois', () => {
-  const { relation } = checkRelation(
-    {
-      ...good,
-      target: 'Kautsky',
-      quote: 'Bernstein criticou Karl Kautsky por sua leitura ortodoxa',
-    },
-    ctx(),
-  );
-  assert.equal(relation.targetQid, null);
+  assert.equal(checkRelation(good, { ...ctx(), index: new Map() }).relation.targetQid, null);
+  const short = { ...good, target: 'Kautsky' };
+  assert.equal(checkRelation(short, ctx()).relation.targetQid, 'Q60025', 'sobrenome único resolve');
 });
 
 test('travas de relação: tipo, direção, alvo na citação, verbo do tipo e voz passiva', () => {
@@ -133,6 +128,95 @@ test('travas de relação: tipo, direção, alvo na citação, verbo do tipo e v
     ctx(),
   );
   assert.equal(passive.problem, undefined);
+});
+
+test('calibração sobre a rodada real: verdadeiras passam e "contato próximo" continua barrado', () => {
+  const source =
+    'Opõe-se, nessa época, aos marxistas ortodoxos, cujo líder, Jules Guesde, discordava.\nRosa Luxemburgo condenou o Socialismo de Bernstein em seu ensaio.\nLá ele teve contato próximo com Friedrich Engels.';
+  const check = (relation) =>
+    checkRelation(
+      { sentence: 'Frase.', direction: 'entidade-para-alvo', ...relation },
+      { ...ctx(), normalizedSource: normalizeText(source) },
+    );
+  assert.equal(
+    check({
+      target: 'Jules Guesde',
+      nature: 'reagiu-contra',
+      quote: 'Opõe-se, nessa época, aos marxistas ortodoxos, cujo líder, Jules Guesde',
+    }).problem,
+    undefined,
+  );
+  assert.equal(
+    check({
+      target: 'Rosa Luxemburgo',
+      nature: 'reagiu-contra',
+      direction: 'alvo-para-entidade',
+      quote: 'Rosa Luxemburgo condenou o Socialismo de Bernstein',
+    }).problem,
+    undefined,
+  );
+  assert.equal(
+    check({
+      target: 'Friedrich Engels',
+      nature: 'influenciou',
+      direction: 'alvo-para-entidade',
+      quote: 'Lá ele teve contato próximo com Friedrich Engels.',
+    }).problem,
+    'sem-verbo-do-tipo',
+  );
+});
+
+test('título em seção de obras afirma autoria; fora dela, ou de outro autor, não', () => {
+  const works = {
+    ...article,
+    sections: [
+      { heading: 'Obras', text: 'Les Deux Méthodes (1900)\nVers la république sociale' },
+      { heading: 'Vida', text: 'Les Deux Méthodes (1900) foi citado por muitos autores' },
+    ],
+  };
+  const base = {
+    target: 'Les Deux Méthodes',
+    nature: 'escreveu',
+    direction: 'entidade-para-alvo',
+    sentence: 'Escreveu a obra.',
+    quote: 'Les Deux Méthodes (1900)',
+  };
+  const source = normalizeText(works.sections.map((s) => s.text).join('\n'));
+  const run = (relation, used = works) =>
+    checkRelation(relation, { ...ctx(), article: used, normalizedSource: source });
+  assert.equal(run(base).relation.listedIn, 'Obras');
+  assert.equal(run({ ...base, direction: 'alvo-para-entidade' }).problem, 'sem-verbo-do-tipo');
+  assert.equal(run(base, { ...works, sections: [works.sections[1]] }).problem, 'sem-verbo-do-tipo');
+});
+
+test('alvo escrito de outro jeito resolve o QID só quando há um único candidato', () => {
+  const engels = { title: 'Friedrich Engels', qid: 'Q1' };
+  const hegelA = { title: 'Georg Hegel', qid: 'Q2' };
+  const hegelB = { title: 'Hegel Filho', qid: 'Q3' };
+  const one = new Map([['friedrich engels', engels]]);
+  assert.equal(resolveTarget('Engels', one), engels);
+  assert.equal(resolveTarget('Friedrich Engels', one), engels);
+  assert.equal(resolveTarget('Friedrich Engels (filósofo)', one), engels);
+  assert.equal(resolveTarget('Eng', one), null);
+  assert.equal(resolveTarget('Engelsberg', one), null, 'só palavra inteira');
+  const two = new Map([
+    ['georg hegel', hegelA],
+    ['hegel filho', hegelB],
+  ]);
+  assert.equal(resolveTarget('Hegel', two), null, 'dois candidatos: sem palpite');
+});
+
+test('resumo longo fica nas frases inteiras que cabem, com registro; sem frase que caiba, sai', () => {
+  const long = `${'Primeira frase curta. '.repeat(25)}${'x'.repeat(100)}.`;
+  const cut = guardExtraction({ ...fullOutput(), summary: long }, { text, entity, article });
+  assert.ok(cut.extraction.summary.length <= 600);
+  assert.ok(cut.extraction.summary.endsWith('curta.'));
+  assert.ok(cut.rejected.some((r) => r.reason === 'campo-cortado-na-frase'));
+  const none = guardExtraction(
+    { ...fullOutput(), summary: 'x'.repeat(700) },
+    { text, entity, article },
+  );
+  assert.equal(none.extraction.summary, null);
 });
 
 test('menção não é relação: citação que só compara não passa', () => {
