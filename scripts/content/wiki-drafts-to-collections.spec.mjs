@@ -1,6 +1,6 @@
 import './register-source-modules.mjs';
 import assert from 'node:assert/strict';
-import { mkdir, mkdtemp, readFile, readdir, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
@@ -672,5 +672,35 @@ test('tradição registrada entra na lista sem mudar a ordem das fixas', () => {
     { key: 'b', label: 'B' },
     { key: 'c', label: 'Cê' },
     { key: 'z', label: 'Zê' },
+  ]);
+});
+
+test('rascunhos de uma tradição não apagam a coleção de outra', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'atlas-wiki-parcial-'));
+  const drafts = join(root, 'drafts');
+  const knowledge = join(root, 'knowledge');
+  await mkdir(join(knowledge, 'collections'), { recursive: true });
+  const write = async (tradition, value) => {
+    const dir = join(drafts, tradition, 'extracts');
+    await mkdir(dir, { recursive: true });
+    await writeFile(join(dir, `${value.entity.id}.json`), JSON.stringify(value), 'utf8');
+  };
+  await write('marxismo', draft({ id: 'a', label: 'Karl Marx', qid: 'Q1' }));
+  await write('anarquismo', draft({ id: 'b', label: 'Emma Goldman', qid: 'Q2' }));
+  const empty = {
+    schemaVersion: 1,
+    id: 'knowledge-graph-atlas',
+    version: '1.0.0',
+    updatedAt: '2026-11-03',
+    collections: [],
+  };
+  await writeFile(join(knowledge, 'manifest.json'), await formatJson(empty));
+  await convertDraftsToCollections({ root: drafts, directory: knowledge });
+  await rm(join(drafts, 'marxismo'), { recursive: true });
+  await convertDraftsToCollections({ root: drafts, directory: knowledge });
+  const { collections } = JSON.parse(await readFile(join(knowledge, 'manifest.json'), 'utf8'));
+  assert.deepEqual(collections.map((entry) => entry.id).sort(), [
+    'atlas-anarquismo',
+    'atlas-marxismo',
   ]);
 });

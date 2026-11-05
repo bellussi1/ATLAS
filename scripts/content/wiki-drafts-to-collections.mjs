@@ -64,7 +64,6 @@ const TRADITION_BY_KEY = new Map(
   TRADITIONS.map((tradition, index) => [tradition.key, { ...tradition, index }]),
 );
 export const atlasIdFor = (key) => `atlas-${key}`;
-const OWN_ATLAS_IDS = new Set(TRADITIONS.map((tradition) => atlasIdFor(tradition.key)));
 
 // Records added by this converter carry these id prefixes. They are stripped from existing
 // collections before the additions are derived again, so repeated runs give the same files.
@@ -648,7 +647,10 @@ export function convertDrafts(
       ...atlas.entities.map((entity) => entity.slug),
     ]),
   );
+  const drafted = new Set(items.map((item) => item.tradition));
   for (const tradition of TRADITIONS) {
+    // A tradition without drafts here keeps its collection, which already holds this slug.
+    if (!drafted.has(tradition.key)) continue;
     const atlasSlug = `${tradition.key}-wikipedia`;
     if (reservedSlugs.has(atlasSlug)) throw new Error(`Slug de coleção já usado: ${atlasSlug}.`);
     reservedSlugs.add(atlasSlug);
@@ -948,9 +950,12 @@ export async function convertDraftsToCollections({
   const items = await readDrafts(root);
   await readSourceGraph(directory); // validates the current graph before changing it
   const manifest = JSON.parse(await readFile(join(directory, 'manifest.json'), 'utf8'));
+  // Only collections rebuilt from drafts present here are replaced: a checkout holding the drafts
+  // of one tradition must not erase the others from the graph.
+  const rebuilt = new Set(items.map((item) => atlasIdFor(item.tradition)));
   const baseAtlases = [];
   for (const entry of manifest.collections) {
-    if (OWN_ATLAS_IDS.has(entry.id)) continue;
+    if (rebuilt.has(entry.id)) continue;
     baseAtlases.push(withoutAddedRecords(await readVerifiedAtlas(directory, entry)));
   }
 
@@ -988,7 +993,7 @@ export async function convertDraftsToCollections({
   };
   const entries = [];
   for (const entry of manifest.collections) {
-    if (OWN_ATLAS_IDS.has(entry.id)) continue;
+    if (rebuilt.has(entry.id)) continue;
     entries.push(
       augmentedById.has(entry.id) ? await collectionEntry(parsedById.get(entry.id)) : entry,
     );
