@@ -1,4 +1,4 @@
-import type { Relation } from '@core/content/models/content-schema';
+﻿import type { Relation } from '@core/content/models/content-schema';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import {
@@ -194,5 +194,41 @@ describe('knowledge network', () => {
     const reach = Math.max(...points.map((p) => Math.hypot(p.x - cx, p.y - cy)));
     const pair = positions.get('x1')!;
     expect(Math.hypot(pair.x - cx, pair.y - cy)).toBeLessThanOrEqual(reach * 1.25);
+  });
+
+  it('lays out a graph of about 700 entries and 1000 links within a time budget', () => {
+    const count = 700;
+    const nodes = Array.from(
+      { length: count },
+      (_, i) =>
+        ({
+          id: `n${i}`,
+          kind: 'person',
+          collections: [`c${i % 12}`],
+          degree: 0,
+        }) as unknown as NetworkNode,
+    );
+    let state = 12345;
+    const next = () => {
+      state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+      return state / 4294967296;
+    };
+    const edges = Array.from({ length: 1000 }, (_, i) => {
+      const source = Math.floor(next() * 500);
+      const target = Math.floor(next() * 500);
+      nodes[source].degree++;
+      nodes[target].degree++;
+      return {
+        id: `e${i}`,
+        source: `n${source}`,
+        target: `n${(target + (source === target ? 1 : 0)) % 500}`,
+      };
+    }) as unknown as NetworkEdge[];
+    const started = performance.now();
+    const { positions } = layoutNetwork(nodes, edges);
+    const elapsed = performance.now() - started;
+    console.info(`layout of ${count} nodes and ${edges.length} links: ${Math.round(elapsed)} ms`);
+    expect(positions.size).toBe(count);
+    expect(elapsed).toBeLessThan(8000);
   });
 });

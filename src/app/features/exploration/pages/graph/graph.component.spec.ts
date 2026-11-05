@@ -316,15 +316,34 @@ describe('GraphComponent', () => {
     root(fixture).remove();
   });
 
-  it('selects a node when its name is clicked', async () => {
+  it('gives every node a larger invisible hit area than its shape', async () => {
+    const fixture = await render();
+    const node = fixture.componentInstance.drawnNodes()[0];
+    const hit = root(fixture).querySelector('[data-hit]')!;
+    const shown =
+      node.r * fixture.componentInstance.nodeScale() * fixture.componentInstance.zoomK();
+    expect(
+      Number(hit.getAttribute('r')) * fixture.componentInstance.zoomK(),
+    ).toBeGreaterThanOrEqual(Math.max(16, shown + 5));
+    expect(root(fixture).querySelector('[data-label]')).toBeNull();
+  });
+
+  it('shows only the lines when zoomed out and the wording of each link up close', async () => {
     const fixture = await render();
     const component = fixture.componentInstance;
     component.size.set({ width: 1400, height: 900 });
     component.fit();
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.pointerAt.set({ x: 400, y: 300 });
+    component.hoverNode(linked.node.id);
+    expect(component.near()).toBe(false);
+    expect(component.hoverCard()?.node?.top).toEqual([]);
     fixture.detectChanges();
-    const label = root(fixture).querySelector<SVGTextElement>('[data-label]')!;
-    const id = label.getAttribute('data-label');
-    label.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    expect(component.selectedId()).toBe(id);
+    expect(root(fixture).querySelector('.edge-hits')?.classList.contains('is-off')).toBe(true);
+    component.zoomBy(3, { x: 700, y: 450 });
+    fixture.detectChanges();
+    expect(component.near()).toBe(true);
+    expect(component.hoverCard()?.node?.top.length).toBeGreaterThan(0);
+    expect(root(fixture).querySelector('.edge-hits')?.classList.contains('is-off')).toBe(false);
   });
 });

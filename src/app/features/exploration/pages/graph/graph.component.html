@@ -1,4 +1,4 @@
-<div class="graph-page">
+﻿<div class="graph-page">
   <div class="floating" [class.has-detail]="!!selected()">
     <header class="bar card">
       <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
@@ -231,7 +231,7 @@
               />
             }
           </g>
-          <g class="edge-hits">
+          <g class="edge-hits" [class.is-off]="!near()">
             @for (item of drawnEdges(); track item.edge.id) {
               <line
                 class="edge-hit"
@@ -241,6 +241,20 @@
                 [attr.y2]="item.y2"
                 (pointerenter)="hoverEdge(item.edge.id)"
                 (pointerleave)="hoverEdge(null)"
+              />
+            }
+          </g>
+          <g class="node-hits">
+            @for (item of drawnNodes(); track item.node.id) {
+              <circle
+                class="node__hit"
+                [attr.data-hit]="item.node.id"
+                [attr.cx]="item.x"
+                [attr.cy]="item.y"
+                [attr.r]="hitRadius(item.r)"
+                (click)="nodeClick(item.node.id)"
+                (pointerenter)="hoverNode(item.node.id)"
+                (pointerleave)="hoverNode(null)"
               />
             }
           </g>
@@ -276,18 +290,24 @@
                   />
                 }
                 <g
-                  class="node__drift"
+                  class="node__drift-x"
                   [style.--ax.px]="item.drift.ax"
-                  [style.--ay.px]="item.drift.ay"
-                  [style.--dur.s]="item.drift.duration"
+                  [style.--dx.s]="item.drift.durationX"
                   [style.--wait.s]="item.drift.delay"
                 >
-                  <path
-                    class="node__shape"
-                    fill-rule="evenodd"
-                    [attr.d]="item.path"
-                    [style.fill]="'var(' + item.kind.color + ')'"
-                  />
+                  <g
+                    class="node__drift-y"
+                    [style.--ay.px]="item.drift.ay"
+                    [style.--dy.s]="item.drift.durationY"
+                    [style.--wait.s]="item.drift.delay"
+                  >
+                    <path
+                      class="node__shape"
+                      fill-rule="evenodd"
+                      [attr.d]="item.path"
+                      [style.fill]="'var(' + item.kind.color + ')'"
+                    />
+                  </g>
                 </g>
               </g>
             }
@@ -308,12 +328,8 @@
           }
           @for (label of labels(); track label.id) {
             <text
-              class="label label--node"
-              [attr.data-label]="label.id"
+              class="label"
               [class.is-neighbour]="label.neighbour"
-              (click)="nodeClick(label.id)"
-              (pointerenter)="hoverNode(label.id)"
-              (pointerleave)="hoverNode(null)"
               [style.--delay.ms]="label.delay"
               [attr.x]="view().x + label.wx + label.dx"
               [attr.y]="view().y + label.wy + label.dy"
