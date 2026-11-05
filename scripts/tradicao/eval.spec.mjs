@@ -9,6 +9,7 @@ import { BudgetExceeded } from './cost.mjs';
 import {
   armMetrics,
   buildReport,
+  importMarks,
   decideModel,
   relationUpgrade,
   residualErrors,
@@ -16,6 +17,7 @@ import {
   runEval,
   sampleRecords,
   scoreEval,
+  writePending,
 } from './eval.mjs';
 import { totalSpent } from './state.mjs';
 
@@ -331,6 +333,68 @@ test('a marca de um item não vaza para outro com a mesma citação', async (t) 
   const wrong = again.items.filter((item) => item.ok === false);
   assert.equal(wrong.length, 1);
   assert.equal(wrong[0].url, target.url);
+});
+
+test('conferir um braço só: lista de pendentes, marcas parciais e decisão sobre esse braço', async (t) => {
+  const root = await project(
+    t,
+    Array.from({ length: 10 }, (_, i) => `art${i}`),
+  );
+  await runEval({ root, from: ['x'], size: 10, client: fakeClient(), ...quiet });
+  const { directory, items } = await buildReport({ root });
+  const { path, count } = await writePending({ root, arm: 'haiku-medium' });
+  const pending = JSON.parse(await readFile(path, 'utf8'));
+  assert.equal(count, items.filter((item) => item.arm === 'haiku-medium').length);
+  assert.ok(pending.every((item) => item.arm === 'haiku-medium' && item.ok === null));
+
+  // Arquivo cortado não altera nada.
+  const main = join(directory, 'revisao.json');
+  const before = await readFile(main, 'utf8');
+  const cut = join(directory, 'cortado.json');
+  await writeFile(cut, '}, { "ok": true } ]');
+  await assert.rejects(importMarks({ root, file: cut }));
+  assert.equal(await readFile(main, 'utf8'), before);
+
+  // Marca que não é booleana também não entra.
+  await writeFile(cut, JSON.stringify([{ ...pending[0], ok: 'sim' }]));
+  await assert.rejects(importMarks({ root, file: cut }), /Marca inválida/);
+
+  // Parcial soma, sem apagar; item desconhecido é contado.
+  const partial = join(directory, 'parcial.json');
+  await writeFile(
+    partial,
+    `\uFEFF${JSON.stringify([
+      { ...pending[0], ok: false, note: 'errado' },
+      { ...pending[1], statement: 'outro', ok: true },
+    ])}`,
+  );
+  const first = await importMarks({ root, file: partial });
+  assert.equal(first.imported, 1);
+  assert.equal(first.unknown, 1);
+  assert.equal(first.stillPending, items.length - 1);
+
+  const full = join(directory, 'completo.json');
+  await writeFile(full, JSON.stringify(pending.slice(1).map((item) => ({ ...item, ok: true }))));
+  await importMarks({ root, file: full });
+  const kept = JSON.parse(await readFile(main, 'utf8'));
+  assert.equal(kept.filter((item) => item.ok === false).length, 1, 'a marca anterior ficou');
+
+  const scored = await scoreEval({ root, minimum: 5, only: 'haiku-medium', today: '2026-11-05' });
+  assert.equal(scored.wrote, scored.decision.outcome !== 'revisar-prompt');
+  assert.deepEqual(
+    Object.keys(scored.byArm),
+    ['haiku-low', 'haiku-medium'],
+    'o outro braço segue no relatório',
+  );
+  assert.equal(scored.byArm['haiku-low'].overall.checked, 0);
+  if (scored.wrote) {
+    const choice = JSON.parse(
+      await readFile(join(root, 'scripts/tradicao/model-choice.json'), 'utf8'),
+    );
+    assert.equal(choice.candidates[0].residualError, null);
+    assert.equal(choice.chosen.extracao.effort, 'medium');
+  }
+  await assert.rejects(scoreEval({ root, only: 'sonnet' }), /desconhecido/);
 });
 
 test('revisao.json quebrado para o relatório e não apaga as marcas', async (t) => {

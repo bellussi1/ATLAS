@@ -246,8 +246,8 @@ export const modelChoiceSchema = z
         z.object({
           model: z.string(),
           effort: z.enum(['low', 'medium', 'high', 'xhigh', 'max']),
-          /** Erro restante depois das travas, na conferência humana. */
-          residualError: rate,
+          /** Erro restante depois das travas, na conferência humana; `null` se a pessoa não conferiu este braço. */
+          residualError: rate.nullable(),
           quotesRejected: rate,
           relationsRejected: rate,
           costUsd: z.number().min(0),

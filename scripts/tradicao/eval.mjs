@@ -5,7 +5,9 @@
  *   npm run tradicao:eval -- run --from marxismo,liberalismo --sample 20 --max-usd 0.60
  *   npm run tradicao:eval -- reguard     # reaplica as travas às respostas pagas, sem API
  *   npm run tradicao:eval -- report      # métricas e lista para conferência humana
- *   npm run tradicao:eval -- score       # lê a conferência, aplica a regra e grava model-choice.json
+ *   npm run tradicao:eval -- pending --arm haiku-medium        # lista só o que falta conferir
+ *   npm run tradicao:eval -- marks --file <arquivo>            # traz as marcas, item a item
+ *   npm run tradicao:eval -- score [--arm haiku-medium]        # aplica a regra e grava model-choice.json
  * Mede o que as travas rejeitam (citações e relações) e separa para a pessoa uma lista do que passou.
  * Regra: Haiku fica se o erro restante, depois das travas, ficar abaixo de 5%. Se o texto passar e as
  * relações não, só a etapa de relações sobe de modelo.
@@ -198,12 +200,15 @@ export function residualErrors(items, arm) {
  * 5% with relations above: extraction stays on Haiku and only the relations step moves up. Neither,
  * or too few checks: no model choice is written, because the data does not support one.
  */
-export function decideModel(byArm, { limit = maxResidualError, minimum = minChecked } = {}) {
-  const usable = arms.filter((arm) => byArm[arm.name]?.overall.checked >= minimum);
-  if (usable.length < arms.length)
+export function decideModel(
+  byArm,
+  { limit = maxResidualError, minimum = minChecked, decidable = arms } = {},
+) {
+  const usable = decidable.filter((arm) => byArm[arm.name]?.overall.checked >= minimum);
+  if (usable.length < decidable.length)
     return {
       outcome: 'insuficiente',
-      rationale: `Cada braço precisa de ao menos ${minimum} itens conferidos.`,
+      rationale: `Cada braço em decisão precisa de ao menos ${minimum} itens conferidos.`,
     };
   const good = (kind) => (arm) => byArm[arm.name][kind].error < limit;
   const both = usable.find((arm) => good('relation')(arm) && good('text')(arm));
@@ -380,12 +385,16 @@ export async function scoreEval({
   id = 'amostra-20',
   minimum = minChecked,
   today = new Date().toISOString().slice(0, 10),
+  only,
 }) {
   const directory = evalDirectory(root, id);
   const items = JSON.parse(await readFile(join(directory, 'revisao.json'), 'utf8'));
   const metrics = JSON.parse(await readFile(join(directory, 'metricas.json'), 'utf8'));
   const byArm = Object.fromEntries(arms.map((arm) => [arm.name, residualErrors(items, arm.name)]));
-  const decision = decideModel(byArm, { minimum });
+  // A person may check one arm only; the other stays measured by the guards, with no error rate.
+  const decidable = only ? arms.filter((arm) => arm.name === only) : arms;
+  if (!decidable.length) throw new Error(`Braço desconhecido: ${only}`);
+  const decision = decideModel(byArm, { minimum, decidable });
   await writeJsonAtomic(join(directory, 'decisao.json'), { byArm, ...decision });
   if (!decision.chosen) return { byArm, decision, wrote: false };
   const sample = await readSample(directory);
@@ -395,7 +404,7 @@ export async function scoreEval({
     candidates: arms.map((arm) => ({
       model: arm.model,
       effort: arm.effort,
-      residualError: byArm[arm.name].overall.error,
+      residualError: decidable.includes(arm) ? byArm[arm.name].overall.error : null,
       quotesRejected: metrics[arm.name].quotesRejectedRate,
       relationsRejected: metrics[arm.name].relationsRejectedRate,
       costUsd: metrics[arm.name].costUsd,
@@ -405,6 +414,47 @@ export async function scoreEval({
   });
   await writeJsonAtomic(join(root, 'scripts/tradicao/model-choice.json'), choice);
   return { byArm, decision, wrote: true };
+}
+
+/** List of what a person still has to check in one arm, apart from the main file. */
+export async function writePending({ root = projectRoot, id = 'amostra-20', arm }) {
+  const directory = evalDirectory(root, id);
+  const items = JSON.parse(await readFile(join(directory, 'revisao.json'), 'utf8'));
+  const pending = items.filter((item) => item.arm === arm && item.ok === null);
+  if (!items.some((item) => item.arm === arm)) throw new Error(`Braço sem itens: ${arm}`);
+  const path = join(directory, `pendentes-${arm}.json`);
+  await writeJsonAtomic(path, pending);
+  await writeFile(join(directory, `pendentes-${arm}.md`), renderReview(pending));
+  return { path, count: pending.length };
+}
+
+/**
+ * Brings a person's marks into revisao.json, by item. A broken or cut file changes nothing, and a
+ * partial one only adds what it holds: the main file is never replaced by what came back.
+ */
+export async function importMarks({ root = projectRoot, id = 'amostra-20', file }) {
+  const incoming = JSON.parse((await readFile(file, 'utf8')).replace(/^\uFEFF/, ''));
+  if (!Array.isArray(incoming)) throw new Error('Esperava uma lista de itens.');
+  for (const item of incoming)
+    if (item.ok !== null && typeof item.ok !== 'boolean')
+      throw new Error(`Marca inválida (${item.ok}) em: ${item.statement}`);
+  const path = join(evalDirectory(root, id), 'revisao.json');
+  const items = JSON.parse(await readFile(path, 'utf8'));
+  const known = new Set(items.map(markKey));
+  const marks = new Map(incoming.map((item) => [markKey(item), item]));
+  const merged = items.map((item) => {
+    const mark = marks.get(markKey(item));
+    return mark && typeof mark.ok === 'boolean'
+      ? { ...item, ok: mark.ok, note: mark.note ?? '' }
+      : item;
+  });
+  await writeJsonAtomic(path, merged);
+  return {
+    imported: incoming.filter((item) => typeof item.ok === 'boolean' && known.has(markKey(item)))
+      .length,
+    unknown: incoming.filter((item) => !known.has(markKey(item))).length,
+    stillPending: merged.filter((item) => item.ok === null).length,
+  };
 }
 
 const percent = (value) => `${(value * 100).toFixed(1)}%`;
@@ -429,6 +479,8 @@ export async function main(argv = process.argv.slice(2)) {
       'dry-run': { type: 'boolean', default: false },
       'max-usd': { type: 'string', default: '1' },
       'max-total-usd': { type: 'string', default: '10' },
+      arm: { type: 'string' },
+      file: { type: 'string' },
     },
   });
   const [command] = positionals;
@@ -460,15 +512,29 @@ export async function main(argv = process.argv.slice(2)) {
     console.log(`${items.length} itens para conferência em ${join(directory, 'revisao.md')}`);
     return 0;
   }
+  if (command === 'pending') {
+    if (!values.arm) throw new Error('Informe --arm.');
+    const { path, count } = await writePending({ id, arm: values.arm });
+    console.log(`${count} itens pendentes em ${path}`);
+    return 0;
+  }
+  if (command === 'marks') {
+    if (!values.file) throw new Error('Informe --file.');
+    const { imported, unknown, stillPending } = await importMarks({ id, file: values.file });
+    console.log(
+      `${imported} marcas trazidas, ${unknown} itens não reconhecidos, ${stillPending} ainda pendentes no total.`,
+    );
+    return 0;
+  }
   if (command === 'score') {
-    const { byArm, decision, wrote } = await scoreEval({ id });
+    const { byArm, decision, wrote } = await scoreEval({ id, only: values.arm });
     console.log(JSON.stringify(byArm, null, 1));
     console.log(`Decisão: ${decision.outcome}. ${decision.rationale}`);
     console.log(wrote ? 'Gravado em scripts/tradicao/model-choice.json.' : 'Nenhum modelo fixado.');
     return 0;
   }
   throw new Error(
-    'Uso: tradicao:eval <run|reguard|report|score> [--from a,b] [--sample N] [--dry-run] [--max-usd N]',
+    'Uso: tradicao:eval <run|reguard|report|pending|marks|score> [--from a,b] [--sample N] [--dry-run] [--max-usd N]',
   );
 }
 
