@@ -40,7 +40,7 @@ export class AtlasClaimReferencesComponent {
     return (
       (
         {
-          draft: 'Rascunho',
+          draft: 'Versão preliminar',
           pending: 'Revisão editorial pendente',
           verified: 'Verificada após revisão humana',
           contested: 'Contestada',

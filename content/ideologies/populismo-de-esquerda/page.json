@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-populismo-de-esquerda",
+  "slug": "populismo-de-esquerda",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Populismo de esquerda",
+  "kicker": "Ideologia política",
+  "summary": "Populismo de esquerda é uma ideologia política que combina temas e retórica da esquerda com o populismo, com sentimentos anti-elitistas e a busca de uma voz em nome do 'povo comum'. Entre seus temas centrais estão o anticapitalismo, a justiça social e a antiglobalização. Já na entrada do século XXI, a imigração e os direitos LGBT passaram a integrar sua agenda. O tema é disputado, pois o populismo é visto de forma pejorativa e pesquisadores divergem sobre ele.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Populismo de esquerda é uma ideologia política que combina temas e retórica da esquerda com o populismo, com sentimentos anti-elitistas e a busca de uma voz em nome do 'povo comum'. Entre seus temas centrais estão o anticapitalismo, a justiça social e a antiglobalização. Já na entrada do século XXI, a imigração e os direitos LGBT passaram a integrar sua agenda. O tema é disputado, pois o populismo é visto de forma pejorativa e pesquisadores divergem sobre ele.",
+        "Posição política descrita na fonte: esquerda."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-populismo-de-esquerda"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Um dos principais pontos da ideologia é a defesa do combate às desigualdades, da inclusão social e do igualitarismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-populismo-de-esquerda"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Um dos principais pontos da ideologia é a defesa do combate às desigualdades, da inclusão social e do igualitarismo.",
+              "paragraphs": [
+                "Um dos principais pontos da ideologia é a defesa do combate às desigualdades, da inclusão social e do igualitarismo."
+              ],
+              "sourceIds": ["src-wiki-topic-populismo-de-esquerda"],
+              "entityIds": ["wiki-topic-populismo-de-esquerda"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "O grafo não registra nomes alternativos nem termos-chave desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo traz datas ou contexto histórico.",
+      "coverage": "pending",
+      "layout": "timeline",
+      "blocks": []
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Registros ligados à ideologia: Luiz Inácio Lula da Silva."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-luiz-inacio-lula-da-silva"],
+          "mode": "thinkers",
+          "notes": { "wiki-topic-luiz-inacio-lula-da-silva": "Não é influência documentada." }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Partido Democrático Trabalhista, Movimento Regeneração Nacional."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-partido-democratico-trabalhista",
+            "wiki-topic-movimento-regeneracao-nacional"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-partido-democratico-trabalhista": "Não é influência documentada.",
+            "wiki-topic-movimento-regeneracao-nacional": "Não é influência documentada."
+          }
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "O populismo é visto de forma pejorativa, o que gera posicionamentos antagônicos entre pesquisadores."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-populismo-de-esquerda"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "O populismo é visto de forma pejorativa, o que gera posicionamentos antagônicos entre pesquisadores.",
+              "paragraphs": [
+                "O populismo é visto de forma pejorativa, o que gera posicionamentos antagônicos entre pesquisadores."
+              ],
+              "sourceIds": ["src-wiki-topic-populismo-de-esquerda"],
+              "entityIds": ["wiki-topic-populismo-de-esquerda"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 5 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-populismo-de-esquerda"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-populismo-de-esquerda"] }]
+    }
+  ]
+}

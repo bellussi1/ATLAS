@@ -1,8 +1,7 @@
-// Structured extraction of one Wikipedia article by a small model, kept honest by quote checks.
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
+// Lean drafts written by hand (chat path) and read by the converter, kept honest by quote checks.
+// The API path is the rich extractor: scripts/tradicao/extract.mjs.
 import { z } from 'zod';
 
-export const extractionModel = 'claude-haiku-5-5';
 export const maxInputChars = 60000;
 
 export const extractionSchema = z.object({
@@ -29,29 +28,6 @@ export const extractionSchema = z.object({
     }),
   ),
 });
-
-const system = `Você extrai dados de artigos da Wikipedia para uma plataforma educacional.
-Use apenas o texto fornecido; não acrescente conhecimento próprio.
-Cada data, relação e afirmação precisa de "quote": um trecho copiado literalmente do artigo, com até 300 caracteres, sem reticências nem alterações.
-Classifique "kind": "fact" para fato documentado, "interpretation" para leitura de autores, "controversy" para alegação disputada.
-Escreva resumo, eventos, relações e afirmações em português do Brasil, em tom neutro.
-Prefira poucos itens bem sustentados a muitos itens fracos (no máximo 12 por lista).`;
-
-/** Message params for one entity; identical for the sync and batch paths. */
-export function extractionParams(entity, text) {
-  return {
-    model: extractionModel,
-    max_tokens: 8000,
-    output_config: { effort: 'low', format: zodOutputFormat(extractionSchema) },
-    system,
-    messages: [
-      {
-        role: 'user',
-        content: `Entidade: ${entity.label} (${entity.type}, Wikidata ${entity.qid ?? 'sem item'})\n\n<artigo>\n${text}\n</artigo>`,
-      },
-    ],
-  };
-}
 
 const normalize = (value) => value.replace(/\s+/g, ' ').trim().toLowerCase();
 

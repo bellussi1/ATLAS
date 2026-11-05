@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-islamismo",
+  "slug": "islamismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Islamismo",
+  "kicker": "Ideologia política",
+  "summary": "Religião monoteísta centrada no Alcorão e nos ensinamentos de Maomé, cujos fiéis são chamados muçulmanos. Surgiu no século VII em Meca e expandiu-se por meio de califados e conversões. Reúne cerca de 1,9 bilhão de pessoas e divide-se principalmente entre sunitas e xiitas, cuja diferença inicial dizia respeito à sucessão de Maomé.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Religião monoteísta centrada no Alcorão e nos ensinamentos de Maomé, cujos fiéis são chamados muçulmanos. Surgiu no século VII em Meca e expandiu-se por meio de califados e conversões. Reúne cerca de 1,9 bilhão de pessoas e divide-se principalmente entre sunitas e xiitas, cuja diferença inicial dizia respeito à sucessão de Maomé."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-islamismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": ["A religião ensina que Deus é único e incomparável."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-islamismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "A religião ensina que Deus é único e incomparável.",
+              "paragraphs": ["A religião ensina que Deus é único e incomparável."],
+              "sourceIds": ["src-wiki-topic-islamismo"],
+              "entityIds": ["wiki-topic-islamismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de Islã."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-islamismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-islamismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-islamismo": "Nomes alternativos: Islã." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Cerca de 24% da população global, ou cerca de 1,9 bilhão de pessoas, era muçulmana.",
+        "O islamismo é o principal grupo religioso que mais cresce no mundo, segundo o verbete."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-islamismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "2020",
+              "kicker": "Marco datado",
+              "summary": "Cerca de 24% da população global, ou cerca de 1,9 bilhão de pessoas, era muçulmana.",
+              "paragraphs": [
+                "Cerca de 24% da população global, ou cerca de 1,9 bilhão de pessoas, era muçulmana."
+              ],
+              "sourceIds": ["src-wiki-topic-islamismo"],
+              "entityIds": ["wiki-topic-islamismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "O islamismo é o principal grupo religioso que mais cresce no mundo, segundo o verbete.",
+              "paragraphs": [
+                "O islamismo é o principal grupo religioso que mais cresce no mundo, segundo o verbete."
+              ],
+              "sourceIds": ["src-wiki-topic-islamismo"],
+              "entityIds": ["wiki-topic-islamismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 2020, "end": 2020 }],
+          "entityIds": ["wiki-topic-islamismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "As diferenças entre sunitas e xiitas surgiram inicialmente de divergências sobre a sucessão de Maomé."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-islamismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "As diferenças entre sunitas e xiitas surgiram inicialmente de divergências sobre a sucessão de Maomé.",
+              "paragraphs": [
+                "As diferenças entre sunitas e xiitas surgiram inicialmente de divergências sobre a sucessão de Maomé."
+              ],
+              "sourceIds": ["src-wiki-topic-islamismo"],
+              "entityIds": ["wiki-topic-islamismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 5 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-islamismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-islamismo"] }]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+:host {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+p,
+figure {
+  margin: 0;
+  max-width: var(--measure-reading);
+}
+.relation-sentence {
+  font: 1.0625rem/1.5 var(--font-sans);
+  text-wrap: pretty;
+}
+/* Names inside a sentence are targets: more room between lines on touch screens. */
+@media (pointer: coarse) {
+  .relation-sentence {
+    line-height: 1.8;
+  }
+}
+.relation-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.6rem;
+  color: var(--color-ink-muted);
+  font: 0.75rem/1.5 var(--font-mono);
+}
+.relation-meta strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.relation-prose {
+  font: 1rem/1.6 var(--font-serif);
+}
+.relation-evidence {
+  color: var(--color-ink-muted);
+  font: 0.75rem/1.6 var(--font-mono);
+}
+blockquote {
+  margin: 0.15rem 0 0.25rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--color-border-strong);
+  color: var(--color-ink);
+  font: italic 0.9375rem/1.55 var(--font-serif);
+}
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+}

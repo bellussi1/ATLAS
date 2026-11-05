@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-eurasianismo",
+  "slug": "eurasianismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Eurasianismo",
+  "kicker": "Ideologia política",
+  "summary": "O eurasianismo é um movimento político russo que surgiu na comunidade de emigrantes russos na década de 1920 e postula que a Rússia pertence ao conceito geopolítico da Eurásia, nem europeu nem asiático. Apoiou em parte a revolução bolchevique sem aderir ao comunismo. Após deixar de publicar seus periódicos em 1929, ressurgiu parcialmente com a dissolução da União Soviética em 1991, quando parte de sua ideologia foi incorporada a um novo movimento com o mesmo nome. O verbete também trata de correntes neoeurasianas e de usos políticos posteriores.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O eurasianismo é um movimento político russo que surgiu na comunidade de emigrantes russos na década de 1920 e postula que a Rússia pertence ao conceito geopolítico da Eurásia, nem europeu nem asiático. Apoiou em parte a revolução bolchevique sem aderir ao comunismo. Após deixar de publicar seus periódicos em 1929, ressurgiu parcialmente com a dissolução da União Soviética em 1991, quando parte de sua ideologia foi incorporada a um novo movimento com o mesmo nome. O verbete também trata de correntes neoeurasianas e de usos políticos posteriores."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-eurasianismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Movimento desenvolvido na década de 1920 na comunidade de emigrantes russos, que apoiou em parte a revolução bolchevique."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-eurasianismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Movimento desenvolvido na década de 1920 na comunidade de emigrantes russos, que apoiou em parte a revolução bolchevique.",
+              "paragraphs": [
+                "Movimento desenvolvido na década de 1920 na comunidade de emigrantes russos, que apoiou em parte a revolução bolchevique."
+              ],
+              "sourceIds": ["src-wiki-topic-eurasianismo"],
+              "entityIds": ["wiki-topic-eurasianismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Defende que a civilização russa não pertence às categorias europeia ou asiática, mas ao conceito geopolítico da Eurásia."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-eurasianismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Defende que a civilização russa não pertence às categorias europeia ou asiática, mas ao conceito geopolítico da Eurásia.",
+              "paragraphs": [
+                "Defende que a civilização russa não pertence às categorias europeia ou asiática, mas ao conceito geopolítico da Eurásia."
+              ],
+              "sourceIds": ["src-wiki-topic-eurasianismo"],
+              "entityIds": ["wiki-topic-eurasianismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de Eurasianism, евразийство, yevraziystvo."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-eurasianismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-eurasianismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-eurasianismo": "Nomes alternativos: Eurasianism, евразийство, yevraziystvo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Os eurasianistas deixaram de publicar seus periódicos.",
+        "Após a dissolução da União Soviética, parte da ideologia do movimento foi incorporada a um novo movimento com o mesmo nome."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-eurasianismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1929",
+              "kicker": "Marco datado",
+              "summary": "Os eurasianistas deixaram de publicar seus periódicos.",
+              "paragraphs": ["Os eurasianistas deixaram de publicar seus periódicos."],
+              "sourceIds": ["src-wiki-topic-eurasianismo"],
+              "entityIds": ["wiki-topic-eurasianismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "Após a dissolução da União Soviética, parte da ideologia do movimento foi incorporada a um novo movimento com o mesmo nome.",
+              "paragraphs": [
+                "Após a dissolução da União Soviética, parte da ideologia do movimento foi incorporada a um novo movimento com o mesmo nome."
+              ],
+              "sourceIds": ["src-wiki-topic-eurasianismo"],
+              "entityIds": ["wiki-topic-eurasianismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 1929, "end": 1929 }],
+          "entityIds": ["wiki-topic-eurasianismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Opositores entre os emigrados argumentaram que os eurasianistas pediam compromisso e apoio ao regime soviético."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-eurasianismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Opositores entre os emigrados argumentaram que os eurasianistas pediam compromisso e apoio ao regime soviético.",
+              "paragraphs": [
+                "Opositores entre os emigrados argumentaram que os eurasianistas pediam compromisso e apoio ao regime soviético."
+              ],
+              "sourceIds": ["src-wiki-topic-eurasianismo"],
+              "entityIds": ["wiki-topic-eurasianismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "Obra de Marlène Laruelle listada na bibliografia do verbete, publicada em 2015."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-eurasianismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "Obra de Marlène Laruelle listada na bibliografia do verbete, publicada em 2015.",
+              "paragraphs": [
+                "Obra de Marlène Laruelle listada na bibliografia do verbete, publicada em 2015."
+              ],
+              "sourceIds": ["src-wiki-topic-eurasianismo"],
+              "entityIds": ["wiki-topic-eurasianismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 9 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-eurasianismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-eurasianismo"] }]
+    }
+  ]
+}

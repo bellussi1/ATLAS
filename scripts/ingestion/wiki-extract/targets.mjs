@@ -62,7 +62,7 @@ export const targetTypes = [
   { type: 'movimento', items: ['Q49773'] },
   { type: 'obra', items: ['Q17537576'] },
   { type: 'acontecimento', items: ['Q1190554'] },
-  { type: 'lugar', items: ['Q2221906'] },
+  { type: 'lugar', items: ['Q2221906', 'Q6256', 'Q3624078'] },
   { type: 'conceito', items: ['Q151885', 'Q17737', 'Q187588', 'Q1401304'] },
 ];
 
@@ -76,8 +76,23 @@ const statementIds = (statements = []) =>
     .map((statement) => statement.mainsnak?.datavalue?.value?.id)
     .filter(Boolean);
 
+/**
+ * Statements already read, per transport: a class ("ser humano", "partido político") is read once
+ * and reused by every article of the run. Each read downloads whole claims, which is what made a
+ * fetch take minutes per article.
+ */
+const statementCache = new WeakMap();
+
 /** `{ instanceOf, subclassOf }` of each Wikidata item, read 50 per request. */
 async function readStatements(qids, http) {
+  const cache = statementCache.get(http) ?? new Map();
+  statementCache.set(http, cache);
+  const unread = qids.filter((qid) => !cache.has(qid));
+  for (const [qid, statements] of await fetchStatements(unread, http)) cache.set(qid, statements);
+  return new Map(qids.map((qid) => [qid, cache.get(qid)]));
+}
+
+async function fetchStatements(qids, http) {
   const found = new Map();
   for (let start = 0; start < qids.length; start += batchSize) {
     const batch = qids.slice(start, start + batchSize);

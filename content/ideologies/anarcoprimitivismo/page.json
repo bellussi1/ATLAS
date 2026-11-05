@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-anarcoprimitivismo",
+  "slug": "anarcoprimitivismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Anarcoprimitivismo",
+  "kicker": "Ideologia política",
+  "summary": "Corrente política que defende a desindustrialização, a abolição da divisão do trabalho e o abandono das tecnologias de organização em grande escala, com retorno a modos de vida não civilizados. Segundo o verbete, seus adeptos criticam as origens da civilização, apontando a Revolução Neolítica como marco da coerção, da alienação e da estratificação sociais, e criticam também a Revolução Industrial. O texto trata de temas como domesticação, reprimitização, cultura simbólica e hipocrisia, além de críticas de anarquistas como Murray Bookchin e Ted Kaczynski.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Corrente política que defende a desindustrialização, a abolição da divisão do trabalho e o abandono das tecnologias de organização em grande escala, com retorno a modos de vida não civilizados. Segundo o verbete, seus adeptos criticam as origens da civilização, apontando a Revolução Neolítica como marco da coerção, da alienação e da estratificação sociais, e criticam também a Revolução Industrial. O texto trata de temas como domesticação, reprimitização, cultura simbólica e hipocrisia, além de críticas de anarquistas como Murray Bookchin e Ted Kaczynski."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Os anarcoprimitivistas atribuem à Revolução Neolítica a origem da coerção, da alienação e da estratificação sociais."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Os anarcoprimitivistas atribuem à Revolução Neolítica a origem da coerção, da alienação e da estratificação sociais.",
+              "paragraphs": [
+                "Os anarcoprimitivistas atribuem à Revolução Neolítica a origem da coerção, da alienação e da estratificação sociais."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+              "entityIds": ["wiki-topic-anarcoprimitivismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": ["John Zerzan define domesticação como a vontade de dominar animais e plantas."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "John Zerzan define domesticação como a vontade de dominar animais e plantas.",
+              "paragraphs": [
+                "John Zerzan define domesticação como a vontade de dominar animais e plantas."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+              "entityIds": ["wiki-topic-anarcoprimitivismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de anarcho-primitivism."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-anarcoprimitivismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-anarcoprimitivismo": "Nomes alternativos: anarcho-primitivism." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo traz datas ou contexto histórico.",
+      "coverage": "pending",
+      "layout": "timeline",
+      "blocks": []
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Lawrence Keely contesta a visão de que as sociedades de caçadores-coletores são menos violentas, citando que muitas pessoas baseadas em tribos são mais propensas à violência do que estados desenvolvidos.",
+        "Brian Sheppard afirma que o anarcoprimitivismo não é uma forma de anarquismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "Lawrence Keely contesta a visão de que as sociedades de caçadores-coletores são menos violentas, citando que muitas pessoas baseadas em tribos são mais propensas à violência do que estados desenvolvidos.",
+              "paragraphs": [
+                "Lawrence Keely contesta a visão de que as sociedades de caçadores-coletores são menos violentas, citando que muitas pessoas baseadas em tribos são mais propensas à violência do que estados desenvolvidos."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+              "entityIds": ["wiki-topic-anarcoprimitivismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "Brian Sheppard afirma que o anarcoprimitivismo não é uma forma de anarquismo.",
+              "paragraphs": [
+                "Brian Sheppard afirma que o anarcoprimitivismo não é uma forma de anarquismo."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+              "entityIds": ["wiki-topic-anarcoprimitivismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "A bibliografia do verbete lista The Unabomber Manifesto, de Theodore Kaczynski."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "A bibliografia do verbete lista The Unabomber Manifesto, de Theodore Kaczynski.",
+              "paragraphs": [
+                "A bibliografia do verbete lista The Unabomber Manifesto, de Theodore Kaczynski."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+              "entityIds": ["wiki-topic-anarcoprimitivismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 6 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcoprimitivismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-anarcoprimitivismo"] }]
+    }
+  ]
+}

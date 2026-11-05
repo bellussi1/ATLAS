@@ -95,7 +95,7 @@ function runCommands(commands, ctx) {
 
 /**
  * Runs one stage for real. Never runs when the previous gate is closed (unless `force`), adopts a
- * gate that is already open without re-executing, and records the outcome in state.json.
+ * gate that is already open without re-executing, and records the outcome in STATE.json.
  */
 export async function runStage(
   stage,
@@ -149,6 +149,9 @@ export async function runStage(
     checks,
     ...(plan.estimate ? { estimatedCostUsd: plan.estimate.usd } : {}),
   };
+  // A stage command may have updated STATE.json (entities, batches, spend): keep what it wrote.
+  const latest = await loadState(ctx.root, ctx.slug);
+  Object.assign(state, latest);
   state.stages[stage.n] = entry;
   await writeJsonAtomic(statePath(ctx.root, ctx.slug), state);
   return { n: stage.n, status: entry.status, note, commands, checks, durationMs: entry.durationMs };

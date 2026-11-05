@@ -22,6 +22,9 @@ import {
 import { captureSchema } from '../ingestion/wiki-extract/raw.mjs';
 import { traditionFor } from '../ingestion/wikimedia/traditions.mjs';
 import { checkFloor, loadFloor, measureTradition, measure, flatten } from './coverage.mjs';
+import { chosenOptions, loadRecords, planRun } from './extract.mjs';
+import { richSourceText } from './prompts.mjs';
+import { generateReadings } from './reading.mjs';
 import { buildGlossary, modelChoiceSchema, richGaps, unverifiedQuotes } from './rich.mjs';
 import { defaults, isGenericTitle, maxRing } from './scoring.mjs';
 import {
@@ -33,7 +36,7 @@ import {
   seedsFile,
   seedsPath,
 } from './registry.mjs';
-import { writeFormattedJson, writeJsonAtomic } from './state.mjs';
+import { loadState, writeFormattedJson, writeJsonAtomic } from './state.mjs';
 
 const { validateIdeologyDossier } =
   await import('../../src/app/features/ideologies/models/ideology-page.schema.ts');
@@ -87,26 +90,6 @@ async function acceptedCandidates(p) {
 /** Catalogue-like types that must never be accepted without a named human or AI decision. */
 const unreviewedTypes = new Set(['outro', 'sem-item']);
 
-// Haiku 5.5 (claude-haiku-5-5), prompts up to 100K tokens; Batch API halves both prices.
-export const pricing = { inputPerMTok: 0.1, outputPerMTok: 0.5, batchFactor: 0.5 };
-/** Output per article is an assumption (effort low, up to 36 quoted items); input is measured. */
-const ASSUMED_OUTPUT_TOKENS = 2500;
-const CHARS_PER_TOKEN = 3.5;
-
-export function estimateExtractionCost({ articleChars, outputTokensEach = ASSUMED_OUTPUT_TOKENS }) {
-  const inputTokens = Math.round(
-    articleChars.reduce(
-      (sum, chars) => sum + Math.min(chars, maxInputChars) / CHARS_PER_TOKEN + 400,
-      0,
-    ),
-  );
-  const outputTokens = articleChars.length * outputTokensEach;
-  const usd =
-    ((inputTokens * pricing.inputPerMTok + outputTokens * pricing.outputPerMTok) / 1e6) *
-    pricing.batchFactor;
-  return { articles: articleChars.length, inputTokens, outputTokens, usd };
-}
-
 /** Where a reading must be listed once it is public (stage 10); `needle` is searched in the file. */
 export const registrationPoints = (slug) => [
   ['src/app/features/ideologies/data/published-ideologies.ts', `'${slug}'`, `${slug}:`],
@@ -136,6 +119,20 @@ async function dossier(ctx) {
     await readJsonOr(p.graph, { sources: [], edges: [] }),
     graph,
   );
+}
+
+/**
+ * Ideologias que o estágio 8 monta: a raiz de uma família (pelo QID do registro) ou, num
+ * programa, todas as da coleção. Leituras escritas à mão não são tocadas por `generateReadings`.
+ */
+async function readingSlugs(ctx, registry) {
+  if (registry.kind === 'programa') return null;
+  const graph = await readSourceGraph(join(ctx.root, 'content/knowledge'));
+  const atlas = graph.atlases.find((a) => a.id === atlasIdOf(registry));
+  const root = atlas?.entities.find(
+    (e) => e.kind === 'ideology' && e.externalIds?.wikidata === registry.rootQid,
+  );
+  return root ? [root.slug] : [];
 }
 
 const command = (label, argv, extra = {}) => ({ label, argv, ...extra });
@@ -306,34 +303,22 @@ export const stages = [
     title: 'Descoberta por expansão e pontuação',
     kind: 'auto',
     cost: 'rede (Wikidata e Wikipedia, grátis)',
-    manual:
-      'a expansão ao vivo no Wikidata (anéis de 1 a 3 saltos, núcleo em scoring.mjs) ainda não tem coletor: hoje roda o discover por links do texto, e a pontuação e a decisão por faixa entram quando o coletor existir',
     contract: {
       needs: 'raiz Wikidata e lente do registro (sem sementes escolhidas por pessoa)',
       produces:
         'candidates/<slug>.json com anel, pontuação, faixa (aceita, revisa, descarta) e motivo; QID único',
     },
-    inputs: (c) => [paths(c).registry, paths(c).seeds],
+    inputs: (c) => [paths(c).registry],
     outputs: (c) => [paths(c).candidates],
     commands: (c) => [
-      command(
-        'descobrir',
-        [
-          'node',
-          'scripts/wiki-extract.mjs',
-          'discover',
-          c.slug,
-          '--accept-top',
-          '0',
-          '--min-shared',
-          '2',
-        ],
-        { network: true },
-      ),
+      command('expandir a partir da raiz', ['node', 'scripts/tradicao/discover.mjs', c.slug], {
+        network: true,
+      }),
     ],
     async gate(ctx) {
       const file = await readJsonOr(paths(ctx).candidates, null);
       if (!file) return [check('candidatos descobertos', false, 'rode o estágio 2')];
+      // A faixa do descarte é auditoria: fica no arquivo e não precisa passar pelas regras dos aceitos.
       const accepted = file.candidates.filter((c) => c.decision === 'accept');
       const scored = file.candidates.some((c) => c.score != null);
       const entry = await loadRegistry(ctx.slug, ctx.root).catch(() => null);
@@ -384,7 +369,7 @@ export const stages = [
           check(
             'legado: aceitos por decisão registrada, sem pontuação',
             accepted.every((c) => c.decidedBy),
-            `decisores: ${[...new Set(accepted.map((c) => c.decidedBy))].join(', ')}; refazer pela expansão quando houver coletor`,
+            `decisores: ${[...new Set(accepted.map((c) => c.decidedBy))].join(', ')}; refaça com npm run tradicao:discover`,
           ),
           check(
             'sem catálogo ou registro de autoridade aceito sem decisor nomeado',
@@ -453,18 +438,15 @@ export const stages = [
   {
     n: 4,
     id: 'calibracao',
-    title: 'Calibração de modelo por estágio',
-    kind: 'agent',
-    cost: 'API Anthropic (amostra de 10+ entidades, antes de escalar)',
-    agent: {
-      skill: 'atlas-pipeline-tradicao',
-      model: 'Haiku 5.5 low, Haiku 5.5 medium e um modelo maior',
-      effort: 'comparação',
-      does: 'roda a mesma amostra nas três configurações, mede relevância, relações e classificação contra rótulos de referência e fixa o modelo de cada estágio em scripts/tradicao/model-choice.json',
-    },
+    title: 'Avaliação de modelo',
+    kind: 'human',
+    cost: 'API Anthropic (amostra de ~20 artigos, Haiku 5.5 low e medium, centavos); a execução é aprovada por pessoa',
+    manual:
+      'chamada paga e conferência humana: npm run tradicao:eval -- run --from <tradições> --sample 20 --dry-run; sem --dry-run para rodar; depois report, a conferência em revisao.json e score',
     contract: {
-      needs: 'artigos locais (amostra) e rótulos de referência',
-      produces: 'model-choice.json: medição por configuração e modelo escolhido por estágio',
+      needs: 'artigos locais com links e alvos (amostra) e conferência humana',
+      produces:
+        'model-choice.json: erro restante por configuração e modelo fixado; Haiku fica abaixo de 5%, senão só relações sobe',
     },
     inputs: (c) => [paths(c).articles],
     outputs: (c) => [join(c.root, 'scripts/tradicao/model-choice.json')],
@@ -477,7 +459,7 @@ export const stages = [
           check(
             'model-choice.json existe',
             false,
-            'sem medição: o modelo por estágio não está fixado',
+            'sem medição: rode npm run tradicao:eval (ver FLUXO-DE-POPULACAO.md)',
           ),
         ];
       const parsed = modelChoiceSchema.safeParse(raw);
@@ -495,15 +477,11 @@ export const stages = [
       const chosen = Object.keys(parsed.data.chosen);
       return [
         check(
-          'escolha de modelo válida (Haiku low e medium e um modelo maior medidos)',
+          'escolha de modelo válida (Haiku low e medium medidos)',
           true,
           `${parsed.data.candidates.length} configurações`,
         ),
-        check(
-          'todo estágio de IA com modelo fixado',
-          ['descoberta', 'extracao', 'redacao', 'edicao'].every((n) => chosen.includes(n)),
-          chosen.join(', '),
-        ),
+        check('extração com modelo fixado', chosen.includes('extracao'), chosen.join(', ')),
       ];
     },
   },
@@ -512,9 +490,7 @@ export const stages = [
     id: 'extracao',
     title: 'Extração rica por entidade',
     kind: 'auto',
-    manual:
-      'o extrator atual (extraction.mjs) grava o rascunho enxuto; o conteúdo rico (linha, resumo, seções, glossário, relações em frase) pede o prompt novo sobre richExtractionSchema, montado e guardado por entidade em generated/pipeline/<slug>/prompts/, com o modelo fixado no estágio 4',
-    cost: 'API Anthropic (Batch, ~US$ 0,02 por 16 artigos)',
+    cost: 'API Anthropic (lote, com teto de gasto); estimativa por --dry-run',
     contract: {
       needs: 'artigos locais',
       produces:
@@ -523,29 +499,31 @@ export const stages = [
     inputs: (c) => [paths(c).articles],
     outputs: (c) => [paths(c).extracts],
     commands: (c) => [
-      command('extrair em lote', ['node', 'scripts/wiki-extract.mjs', 'extract', c.slug], {
-        api: true,
-      }),
+      command(
+        'extrair em lote, com teto',
+        ['node', 'scripts/tradicao/extract.mjs', c.slug, '--max-usd', '1'],
+        { api: true },
+      ),
     ],
     async estimate(ctx) {
       const p = paths(ctx);
-      const ids = await listJson(p.articles);
-      const articleChars = [];
-      for (const id of ids)
-        articleChars.push(
-          articleText((await readJson(join(p.articles, `${id}.json`))).article, maxInputChars).text
-            .length,
-        );
-      if (!articleChars.length)
-        return {
-          ...estimateExtractionCost({
-            articleChars: Array(((await acceptedCandidates(p)) ?? []).length).fill(60000),
-          }),
-          basis: 'sem artigos locais: teto de 60 mil caracteres por aceito',
-        };
+      const { model, effort, relationModel } = chosenOptions(
+        await readJsonOr(join(ctx.root, 'scripts/tradicao/model-choice.json'), null),
+      );
+      const plan = planRun({
+        records: await loadRecords(p.articles),
+        state: await loadState(ctx.root, ctx.slug),
+        model,
+        effort,
+        relationModel,
+      });
       return {
-        ...estimateExtractionCost({ articleChars }),
-        basis: 'texto dos artigos locais; saída assumida em 2.500 tokens por artigo',
+        articles: plan.prepared.length,
+        inputTokens: plan.extract.inputTokens + plan.verify.inputTokens,
+        outputTokens: plan.extract.expectedOutputTokens + plan.verify.expectedOutputTokens,
+        usd: plan.extract.expectedUsd + plan.verify.expectedUsd + plan.verifytext.expectedUsd,
+        worstCaseUsd: plan.worstCaseUsd,
+        basis: `${model} ${effort}, em lote; pior caso US$ ${plan.worstCaseUsd.toFixed(3)}`,
       };
     },
     async gate(ctx) {
@@ -571,6 +549,8 @@ export const stages = [
         if (draft.review?.by !== 'assistant' || draft.review?.status !== 'draft') unreviewed += 1;
         if (!draft.source?.coverage) uncovered += 1;
         else skipped += draft.source.coverage.skipped?.length ?? 0;
+        // Rich drafts carry their own contract; below, the rich checks read them.
+        if (draft.contract) continue;
         const parsed = extractionSchema.safeParse({
           summary: draft.summary,
           dates: draft.dates,
@@ -609,18 +589,17 @@ export const stages = [
       );
       let lean = 0;
       let richRejected = 0;
+      let unconfirmed = 0;
       for (const id of extracts) {
         const draft = await readJson(join(p.extracts, `${id}.json`));
         if (richGaps(draft).length) {
           lean += 1;
           continue;
         }
+        unconfirmed += (draft.relations ?? []).filter((r) => r.verified !== true).length;
         const record = await readJsonOr(join(p.articles, `${id}.json`), null);
         if (record)
-          richRejected += unverifiedQuotes(
-            draft,
-            articleText(record.article, maxInputChars).text,
-          ).length;
+          richRejected += unverifiedQuotes(draft, richSourceText(record.article).text).length;
       }
       out.push(
         check(
@@ -632,6 +611,11 @@ export const stages = [
           'citações de seções e relações literais no artigo',
           extracts.length > 0 && lean === 0 && richRejected === 0,
           `${richRejected} rejeitadas`,
+        ),
+        check(
+          'toda relação confirmada pela segunda passada',
+          extracts.length > 0 && unconfirmed === 0,
+          `${unconfirmed} sem confirmação`,
         ),
       );
       return out;
@@ -705,7 +689,7 @@ export const stages = [
         check(
           'relações tipadas no grafo (≥ 1)',
           ownRelations > 0,
-          `${ownRelations}: as relações dos rascunhos ainda não viram aresta`,
+          `${ownRelations} arestas; pendências no relatório do conversor`,
         ),
       ];
     },
@@ -788,65 +772,60 @@ export const stages = [
   {
     n: 8,
     id: 'redacao',
-    title: 'Redação dos 12 capítulos',
-    kind: 'agent',
-    cost: 'API Anthropic (Haiku 5.5, effort low)',
-    agent: {
-      skill: 'atlas-create-ideology',
-      model: 'claude-haiku-5-5',
-      effort: 'low',
-      does: 'preenche pergunta, narrativa atribuída e blocos de cada capítulo com fontes do grafo',
-    },
+    title: 'Leitura montada do grafo',
+    kind: 'auto',
+    cost: 'grátis',
     contract: {
-      needs: 'coleção consolidada e esqueleto da leitura',
+      needs: 'coleção consolidada no grafo',
       produces:
-        'page.json com capítulos `partial`/`complete`, blocos tipados e fontes; `pending` só com motivo',
+        'page.json por ideologia com capítulos montados só de passagens citadas; `pending` com motivo onde o grafo não sustenta; sem pergunta nem ponte (estágio 9)',
     },
     inputs: (c) => [paths(c).manifest, paths(c).registry],
     outputs: (c) => [paths(c).page, paths(c).graph],
     commands: () => [],
+    async run(ctx) {
+      const registry = await loadRegistry(ctx.slug, ctx.root);
+      await generateReadings({
+        root: ctx.root,
+        atlasId: atlasIdOf(registry),
+        slugs: await readingSlugs(ctx, registry),
+      });
+    },
     async gate(ctx) {
+      const registry = await loadRegistry(ctx.slug, ctx.root);
       let result;
       try {
-        result = await dossier(ctx);
+        result = await generateReadings({
+          root: ctx.root,
+          atlasId: atlasIdOf(registry),
+          slugs: await readingSlugs(ctx, registry),
+          write: false,
+        });
       } catch (error) {
         return [
           check(
-            'dossiê válido (schema e referências)',
+            'leituras válidas (schema e referências)',
             false,
             String(error.message).split('\n')[0],
           ),
         ];
       }
-      const { page } = result;
-      const floor = await loadFloor(ctx.root);
-      const sourced = (chapter) =>
-        chapter.sourceIds.length > 0 ||
-        chapter.blocks.some(
-          (b) =>
-            b.sourceIds?.length || b.items?.some((i) => i.sourceIds.length) || b.type === 'sources',
-        );
-      const open = page.chapters.filter((c) => c.coverage !== 'pending' && !sourced(c));
       return [
-        check('dossiê válido (schema e referências)', true),
-        check('12 capítulos canônicos', page.chapters.length === 12),
+        check('leituras válidas (schema e referências)', true, `${result.written.length} leituras`),
         check(
-          'capítulos pendentes ≤ 1, cada um com motivo',
-          page.chapters.filter((c) => c.coverage === 'pending').length <= 1 &&
-            page.chapters.filter((c) => c.coverage !== 'complete').every((c) => c.gap),
-          `${page.chapters.filter((c) => c.coverage === 'pending').length} pendentes`,
-        ),
-        check('capítulo preenchido tem fonte', open.length === 0, open.map((c) => c.id).join(', ')),
-        check(
-          'capítulos com blocos atingem o piso',
-          page.chapters.filter((c) => c.blocks.length > 0).length >=
-            floor.minimum['chapters.comBlocos'],
-          `${page.chapters.filter((c) => c.blocks.length > 0).length} de ${floor.minimum['chapters.comBlocos']}`,
+          'cada leitura gerada tem algum capítulo completo',
+          result.reports.every((r) => r.complete.length >= 1),
+          `${result.reports.filter((r) => r.complete.length < 1).length} sem capítulo completo`,
         ),
         check(
-          'sem revisão humana alegada',
-          page.review.status !== 'revisado' || Boolean(page.review.reviewer),
-          page.review.status,
+          'capítulo pendente ou parcial tem motivo',
+          result.reports.every((r) => [...r.pending, ...r.partial].every((id) => r.gaps[id])),
+        ),
+        check(
+          '12 capítulos canônicos por leitura',
+          result.reports.every(
+            (r) => r.complete.length + r.partial.length + r.pending.length === 12,
+          ),
         ),
       ];
     },
@@ -978,11 +957,14 @@ export const stages = [
       needs: 'entidades do escopo',
       produces: 'ativos com licença por arquivo, miniatura remota e cada imagem uma só vez',
     },
-    inputs: (c) => [paths(c).manifest],
-    outputs: (c) => [paths(c).manifest],
-    commands: () => [],
-    manual:
-      'ainda sem automação: colher P18 e metadados por arquivo no Commons para as entidades do escopo exige um coletor próprio (a configuração `social-democracy` de ingest-wikimedia-atlas reutiliza o id atlas-social-democracia e sobrescreveria a coleção dos rascunhos)',
+    inputs: (c) => [paths(c).extracts],
+    outputs: (c) => [paths(c).manifest, join(paths(c).work, 'images.json')],
+    commands: (c) => [
+      command('conferir licença por arquivo', ['node', 'scripts/tradicao/images.mjs', c.slug], {
+        network: true,
+      }),
+      command('gravar ativos no grafo', ['node', 'scripts/content/wiki-drafts-to-collections.mjs']),
+    ],
     async gate(ctx) {
       const page = await readJsonOr(paths(ctx).page, null);
       if (!page) return [check('leitura existe', false)];

@@ -6,8 +6,8 @@ import { join } from 'node:path';
 import { test } from 'node:test';
 
 import { planStage, runStage } from './pipeline.mjs';
-import { hashPaths, loadState, statePath } from './state.mjs';
-import { estimateExtractionCost, registrationGaps, registrationPoints, stages } from './stages.mjs';
+import { hashPaths, loadState, statePath, withStateDefaults, writeJsonAtomic } from './state.mjs';
+import { registrationGaps, registrationPoints, stages } from './stages.mjs';
 
 async function project(t) {
   const root = await mkdtemp(join(tmpdir(), 'atlas-tradicao-'));
@@ -69,6 +69,28 @@ test('hashPaths muda com o conteúdo e não depende de onde o projeto está', as
   assert.equal(await hashOf(one), await hashOf(two));
   await writeFile(join(two, 'dir/x.json'), '{"a":2}');
   assert.notEqual(await hashOf(one), await hashOf(two));
+});
+
+test('STATE.json é a fonte única: o estágio não apaga o que o comando gravou', async (t) => {
+  const root = await project(t);
+  await writeFile(join(root, 'in.txt'), 'um');
+  const { a } = fakeStages(root);
+  const ctx = { slug: 'x', root };
+  a.run = async () => {
+    const written = withStateDefaults({
+      slug: 'x',
+      entities: { e: { extract: { status: 'done' } } },
+    });
+    written.spend.usd = 0.5;
+    await writeJsonAtomic(statePath(root, 'x'), written);
+  };
+  assert.match(statePath(root, 'x'), /STATE\.json$/);
+  const stale = await loadState(root, 'x');
+  assert.equal((await runStage(a, ctx, stale, { previous: null })).status, 'passed');
+  const state = await loadState(root, 'x');
+  assert.equal(state.entities.e.extract.status, 'done');
+  assert.equal(state.spend.usd, 0.5);
+  assert.equal(state.stages[1].status, 'passed');
 });
 
 test('dry-run mostra o plano sem executar comando nem gravar estado', async (t) => {
@@ -181,17 +203,6 @@ test('os estágios cobrem 0 a 12 em ordem e nenhum comando publica ou envia', ()
   }
   assert.equal(stages[14].kind, 'human');
   assert.equal(stages[14].commands(ctx).length, 0);
-});
-
-test('o custo estimado usa o preço do Haiku 5.5 em lote e o teto de entrada', () => {
-  const small = estimateExtractionCost({ articleChars: [35_000] });
-  assert.equal(small.articles, 1);
-  assert.equal(small.inputTokens, 10_400);
-  assert.equal(small.outputTokens, 2500);
-  // (10.400 × 0,10 + 2.500 × 0,50) / 1e6 × 0,5
-  assert.ok(Math.abs(small.usd - 0.001145) < 1e-9);
-  const capped = estimateExtractionCost({ articleChars: [500_000] });
-  assert.equal(capped.inputTokens, estimateExtractionCost({ articleChars: [60_000] }).inputTokens);
 });
 
 test('lacunas de registro: aponta cada ponto da aplicação que ainda não lista a leitura', async (t) => {

@@ -39,9 +39,7 @@
   background: var(--color-ink);
   color: var(--color-canvas);
 }
-.relation-chip:focus-visible,
-.relation-party:focus-visible,
-.relation-sources a:focus-visible {
+.relation-chip:focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
@@ -67,62 +65,19 @@
   padding: 0;
   list-style: none;
 }
+/* Names flow with the sentence: the block's 44px control height would open gaps between its lines. */
+.relation-item .relation-party {
+  min-height: 1.5rem;
+}
 .relation-item {
-  display: grid;
-  gap: 0.35rem;
   padding: 0.9rem 0 0.9rem 0.9rem;
   border-top: 1px solid var(--color-border-strong);
   border-left: 4px solid var(--color-ink);
-}
-.relation-type {
-  margin: 0;
-  color: var(--color-ink-muted);
-  font: 500 0.75rem/1.4 var(--font-mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.relation-sentence {
-  max-width: var(--measure-reading);
-  margin: 0;
-  font: 1.125rem/1.5 var(--font-sans);
-  text-wrap: pretty;
-}
-.relation-party {
-  display: inline;
-  min-height: 1.5rem;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--color-ink);
-  font: 700 inherit var(--font-sans);
-  text-decoration: underline;
-  text-decoration-color: var(--color-accent);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.2em;
-  cursor: pointer;
-}
-.relation-topic {
-  margin: 0;
-  font: 600 0.875rem/1.4 var(--font-sans);
-}
-.relation-context,
-.relation-sources {
-  max-width: var(--measure-reading);
-  margin: 0;
-  color: var(--color-ink-muted);
-  font: 0.875rem/1.5 var(--font-serif);
-}
-.relation-sources a {
-  display: inline-block;
-  min-height: 1.5rem;
 }
 @media (hover: hover) and (pointer: fine) {
   .relation-chip[aria-pressed='false']:hover {
     background: var(--color-ink);
     color: var(--color-canvas);
-  }
-  .relation-party:hover {
-    color: var(--color-accent-hover);
   }
 }
 @media (prefers-reduced-motion: reduce) {

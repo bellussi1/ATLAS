@@ -16,18 +16,26 @@ export const sectionKinds = [
   'controversias',
   'bibliografia',
 ];
-/** Naturezas históricas aceitas; `related_to` e semelhança ficam de fora de propósito. */
+/**
+ * Lista fechada de naturezas históricas; `related_to` e semelhança ficam de fora de propósito.
+ * "Foi influenciado por" não é um tipo: é `influenciou` com direção `alvo-para-entidade`.
+ */
 export const relationNatures = [
   'influenciou',
-  'foi-influenciado-por',
   'participou-de',
+  'membro-de',
   'fundou',
   'escreveu',
   'desenvolveu-se-em',
   'reagiu-contra',
   'sucedeu',
   'governou',
+  'ocorreu-em',
 ];
+/** Quem pratica a ação: a entidade do artigo ou o alvo. */
+export const relationDirections = ['entidade-para-alvo', 'alvo-para-entidade'];
+/** Versão do contrato gravada em cada rascunho; rascunho de outra versão é refeito. */
+export const richContract = 'rich-v1';
 
 const quoted = z.string().trim().min(1).max(300);
 const text = z.string().trim().min(1);
@@ -53,8 +61,14 @@ export const richExtractionSchema = z.object({
         targetQid: z
           .string()
           .regex(/^Q\d+$/)
+          .nullable()
           .optional(),
+        targetTitle: text.optional(),
+        targetType: text.optional(),
+        verified: z.boolean().optional(),
+        verifiedBy: text.optional(),
         nature: z.enum(relationNatures),
+        direction: z.enum(relationDirections),
         sentence: text.max(240),
         quote: quoted,
       }),
@@ -76,11 +90,82 @@ export const richExtractionSchema = z.object({
     .max(12),
 });
 
-const normalize = (value) => value.replace(/\s+/g, ' ').trim().toLowerCase();
+/**
+ * O que o modelo devolve: sem limites de tamanho nem refinamentos, que a saída estruturada não
+ * garante. Quem aplica os limites, item a item, é `guardExtraction` (guards.mjs): um item ruim é
+ * descartado com motivo, sem jogar fora a resposta inteira já paga.
+ */
+export const modelOutputSchema = z.object({
+  oneLine: z.string().describe('Definição neutra de uma linha, em pt-BR, até 140 caracteres.'),
+  summary: z.string().describe('Resumo neutro em pt-BR, até 600 caracteres.'),
+  sections: z.array(
+    z.object({
+      kind: z.string().describe(`Um destes valores: ${sectionKinds.join(', ')}.`),
+      text: z.string().describe('Paráfrase em pt-BR, até 500 caracteres.'),
+      quote: z.string().describe('Trecho copiado literalmente do artigo, até 300 caracteres.'),
+    }),
+  ),
+  glossary: z.array(
+    z.object({
+      term: z.string().describe('Nome principal desta entidade.'),
+      pt: z.array(z.string()).describe('Formas em português.'),
+      en: z.array(z.string()).describe('Formas em inglês.'),
+      aliases: z.array(z.string()).describe('Apelidos e siglas que designam só esta entidade.'),
+    }),
+  ),
+  relations: z.array(
+    z.object({
+      target: z.string().describe('Nome do outro nó, como escrito no artigo.'),
+      nature: z.string().describe(`Um destes valores: ${relationNatures.join(', ')}.`),
+      direction: z.string().describe(`Um destes valores: ${relationDirections.join(', ')}.`),
+      sentence: z.string().describe('A relação em uma frase em pt-BR, até 240 caracteres.'),
+      quote: z.string().describe('Trecho literal que afirma a relação e nomeia o alvo.'),
+    }),
+  ),
+  dates: z.array(
+    z.object({
+      date: z.string().describe('AAAA, AAAA-MM ou AAAA-MM-DD.'),
+      event: z.string().describe('O que aconteceu, em pt-BR.'),
+      quote: z.string().describe('Trecho literal que contém o ano.'),
+    }),
+  ),
+  claims: z.array(
+    z.object({
+      statement: z.string().describe('Afirmação em pt-BR.'),
+      kind: z.string().describe('fact, interpretation ou controversy.'),
+      quote: z.string().describe('Trecho literal que sustenta a afirmação.'),
+    }),
+  ),
+});
+
+/** Second pass: one verdict per relation, read against the passage it came from. */
+export const verdicts = ['confirma', 'inverte', 'nao-sustenta'];
+export const verdictOutputSchema = z.object({
+  verdicts: z.array(
+    z.object({
+      index: z.number().describe('Índice da relação na lista.'),
+      verdict: z.string().describe(`Um destes valores: ${verdicts.join(', ')}.`),
+      reason: z.string().describe('Motivo em uma frase curta, em pt-BR.'),
+    }),
+  ),
+});
+
+/** Só tipografia: aspas, travessões, hífen condicional, espaços e caixa. Nunca palavras. */
+export function normalizeText(value) {
+  return value
+    .normalize('NFC')
+    .replace(/[\u2018\u2019\u201A\u201B`´]/g, "'")
+    .replace(/[\u201C\u201D\u201E\u00AB\u00BB]/g, '"')
+    .replace(/[\u2010-\u2015\u2212]/g, '-')
+    .replaceAll('\u00AD', '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
 
 /** Every quote must be literally in the article; returns what is not. Same rule as the lean draft. */
 export function unverifiedQuotes(extraction, sourceText) {
-  const source = normalize(sourceText);
+  const source = normalizeText(sourceText);
   const lists = {
     sections: extraction.sections,
     relations: extraction.relations,
@@ -89,7 +174,7 @@ export function unverifiedQuotes(extraction, sourceText) {
   };
   return Object.entries(lists).flatMap(([list, items]) =>
     items
-      .filter((item) => !source.includes(normalize(item.quote)))
+      .filter((item) => !source.includes(normalizeText(item.quote)))
       .map((item) => ({ list, quote: item.quote })),
   );
 }
@@ -124,7 +209,7 @@ const commonWords = new Set([
   'trabalho',
   'economia',
 ]);
-const key = (term) => normalize(term).normalize('NFD').replace(/[̀-ͯ]/g, '');
+const key = (term) => normalizeText(term).normalize('NFD').replace(/[̀-ͯ]/g, '');
 
 /**
  * Glossary index: term (any pt/en label or alias) -> entity. A term that two entities claim is
@@ -161,15 +246,16 @@ export const modelChoiceSchema = z
         z.object({
           model: z.string(),
           effort: z.enum(['low', 'medium', 'high', 'xhigh', 'max']),
-          relevance: rate,
-          relations: rate,
-          classification: rate,
+          /** Erro restante depois das travas, na conferência humana; `null` se a pessoa não conferiu este braço. */
+          residualError: rate.nullable(),
+          quotesRejected: rate,
+          relationsRejected: rate,
           costUsd: z.number().min(0),
         }),
       )
-      .min(3),
+      .min(2),
     chosen: z.partialRecord(
-      z.enum(['descoberta', 'extracao', 'redacao', 'edicao']),
+      z.enum(['extracao', 'relacoes']),
       z.object({ model: z.string(), effort: z.string() }),
     ),
     rationale: text,
@@ -183,14 +269,9 @@ export const modelChoiceSchema = z
         message: 'Compare Haiku 5.5 low e medium.',
         path: ['candidates'],
       });
-    if (!choice.candidates.some((c) => !c.model.startsWith('claude-haiku')))
-      ctx.addIssue({
-        code: 'custom',
-        message: 'Inclua um modelo maior na comparação.',
-        path: ['candidates'],
-      });
+    // Só a etapa de relações pode subir de modelo sem medição própria (regra de decisão da avaliação).
     for (const [stage, pick] of Object.entries(choice.chosen))
-      if (!has(pick.model, pick.effort))
+      if (stage !== 'relacoes' && !has(pick.model, pick.effort))
         ctx.addIssue({
           code: 'custom',
           message: `Escolha de ${stage} sem medição.`,

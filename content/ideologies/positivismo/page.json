@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-positivismo",
+  "slug": "positivismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Positivismo",
+  "kicker": "Ideologia política",
+  "summary": "Positivismo é uma corrente filosófica, sociológica e política associada principalmente a Auguste Comte, que defende que o conhecimento científico é a única forma de conhecimento verdadeiro. O termo surgiu por volta de 1830 nas línguas alemã e francesa, e a escola ganhou força na Europa na segunda metade do século XIX e início do XX. O verbete mostra sua influência na sociologia de Durkheim, na historiografia, no positivismo lógico e no Brasil, onde inspirou o lema da bandeira. Também registra críticas, como as de Dilthey e do antipositivismo de Max Weber.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Positivismo é uma corrente filosófica, sociológica e política associada principalmente a Auguste Comte, que defende que o conhecimento científico é a única forma de conhecimento verdadeiro. O termo surgiu por volta de 1830 nas línguas alemã e francesa, e a escola ganhou força na Europa na segunda metade do século XIX e início do XX. O verbete mostra sua influência na sociologia de Durkheim, na historiografia, no positivismo lógico e no Brasil, onde inspirou o lema da bandeira. Também registra críticas, como as de Dilthey e do antipositivismo de Max Weber."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-positivismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Para os positivistas, somente pode-se afirmar que uma teoria é correta se foi comprovada por métodos científicos válidos."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-positivismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Para os positivistas, somente pode-se afirmar que uma teoria é correta se foi comprovada por métodos científicos válidos.",
+              "paragraphs": [
+                "Para os positivistas, somente pode-se afirmar que uma teoria é correta se foi comprovada por métodos científicos válidos."
+              ],
+              "sourceIds": ["src-wiki-topic-positivismo"],
+              "entityIds": ["wiki-topic-positivismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de positivism, Positivismo lógico, logical positivism, Círculo de Viena."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-positivismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-positivismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-positivismo": "Nomes alternativos: positivism, Positivismo lógico, logical positivism, Círculo de Viena."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Durkheim cria o primeiro departamento europeu de sociologia na Universidade de Bordeaux.",
+        "É publicado o livro A Lógica da Física Moderna, que cunhou o termo definição operacional.",
+        "Durkheim manteve e refinou o método positivista, sustentando que as ciências sociais continuam as ciências naturais no domínio da atividade humana.",
+        "O lema Ordem e Progresso da bandeira do Brasil foi inspirado pelo lema positivista, e várias pessoas envolvidas na Proclamação da República eram seguidoras de Comte.",
+        "O positivismo lógico cresceu a partir das discussões do Primeiro Círculo de Viena, que se reuniu no Café Central antes da Primeira Guerra Mundial."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-positivismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1895",
+              "kicker": "Marco datado",
+              "summary": "Durkheim cria o primeiro departamento europeu de sociologia na Universidade de Bordeaux.",
+              "paragraphs": [
+                "Durkheim cria o primeiro departamento europeu de sociologia na Universidade de Bordeaux."
+              ],
+              "sourceIds": ["src-wiki-topic-positivismo"],
+              "entityIds": ["wiki-topic-positivismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1927",
+              "kicker": "Marco datado",
+              "summary": "É publicado o livro A Lógica da Física Moderna, que cunhou o termo definição operacional.",
+              "paragraphs": [
+                "É publicado o livro A Lógica da Física Moderna, que cunhou o termo definição operacional."
+              ],
+              "sourceIds": ["src-wiki-topic-positivismo"],
+              "entityIds": ["wiki-topic-positivismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto 1",
+              "kicker": "Situação histórica",
+              "summary": "Durkheim manteve e refinou o método positivista, sustentando que as ciências sociais continuam as ciências naturais no domínio da atividade humana.",
+              "paragraphs": [
+                "Durkheim manteve e refinou o método positivista, sustentando que as ciências sociais continuam as ciências naturais no domínio da atividade humana."
+              ],
+              "sourceIds": ["src-wiki-topic-positivismo"],
+              "entityIds": ["wiki-topic-positivismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-2",
+              "title": "Contexto 2",
+              "kicker": "Situação histórica",
+              "summary": "O lema Ordem e Progresso da bandeira do Brasil foi inspirado pelo lema positivista, e várias pessoas envolvidas na Proclamação da República eram seguidoras de Comte.",
+              "paragraphs": [
+                "O lema Ordem e Progresso da bandeira do Brasil foi inspirado pelo lema positivista, e várias pessoas envolvidas na Proclamação da República eram seguidoras de Comte."
+              ],
+              "sourceIds": ["src-wiki-topic-positivismo"],
+              "entityIds": ["wiki-topic-positivismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-3",
+              "title": "Contexto 3",
+              "kicker": "Situação histórica",
+              "summary": "O positivismo lógico cresceu a partir das discussões do Primeiro Círculo de Viena, que se reuniu no Café Central antes da Primeira Guerra Mundial.",
+              "paragraphs": [
+                "O positivismo lógico cresceu a partir das discussões do Primeiro Círculo de Viena, que se reuniu no Café Central antes da Primeira Guerra Mundial."
+              ],
+              "sourceIds": ["src-wiki-topic-positivismo"],
+              "entityIds": ["wiki-topic-positivismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1895, "end": 1895 },
+            { "itemId": "marco-2", "start": 1927, "end": 1927 }
+          ],
+          "entityIds": ["wiki-topic-positivismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": ["O positivismo tem sido criticado pelo seu reducionismo."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-positivismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "O positivismo tem sido criticado pelo seu reducionismo.",
+              "paragraphs": ["O positivismo tem sido criticado pelo seu reducionismo."],
+              "sourceIds": ["src-wiki-topic-positivismo"],
+              "entityIds": ["wiki-topic-positivismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 9 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-positivismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-positivismo"] }]
+    }
+  ]
+}

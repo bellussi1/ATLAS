@@ -1,4 +1,9 @@
-const requestHeaders = { 'User-Agent': 'ATLAS educational project/1.0 (static content ingestion)' };
+// Wikimedia asks automated clients to say how to reach them and throttles anonymous ones harder.
+// The contact is the project page; `WIKIMEDIA_CONTACT` (a URL or an e-mail) replaces it locally.
+const contact = process.env.WIKIMEDIA_CONTACT || 'https://github.com/bellussi1/ATLAS';
+const requestHeaders = {
+  'User-Agent': `ATLAS educational project/1.0 (static content ingestion; ${contact})`,
+};
 let lastRequestAt = 0;
 
 export async function getResource(url, kind = 'json') {

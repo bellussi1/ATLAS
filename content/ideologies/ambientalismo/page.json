@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-ambientalismo",
+  "slug": "ambientalismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Ambientalismo",
+  "kicker": "Ideologia política",
+  "summary": "O ambientalismo, também chamado movimento ecológico ou movimento verde, reúne correntes de pensamento e movimentos sociais que têm na defesa do meio ambiente sua principal preocupação, reivindicando medidas de proteção ambiental e uma ampla mudança nos hábitos e valores da sociedade. O verbete situa suas origens em preocupações da Antiguidade, na consolidação a partir de meados do século XVIII, na emergência após as guerras mundiais e na expansão nas décadas de 1960 e 1970, com a contracultura, a publicação de Primavera Silenciosa e a Conferência de Estocolmo.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O ambientalismo, também chamado movimento ecológico ou movimento verde, reúne correntes de pensamento e movimentos sociais que têm na defesa do meio ambiente sua principal preocupação, reivindicando medidas de proteção ambiental e uma ampla mudança nos hábitos e valores da sociedade. O verbete situa suas origens em preocupações da Antiguidade, na consolidação a partir de meados do século XVIII, na emergência após as guerras mundiais e na expansão nas décadas de 1960 e 1970, com a contracultura, a publicação de Primavera Silenciosa e a Conferência de Estocolmo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ambientalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O verbete descreve preocupações ambientais na Antiguidade, mas afirma que elas pouco contribuíram para uma consciência ecológica em larga escala."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ambientalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O verbete descreve preocupações ambientais na Antiguidade, mas afirma que elas pouco contribuíram para uma consciência ecológica em larga escala.",
+              "paragraphs": [
+                "O verbete descreve preocupações ambientais na Antiguidade, mas afirma que elas pouco contribuíram para uma consciência ecológica em larga escala."
+              ],
+              "sourceIds": ["src-wiki-topic-ambientalismo"],
+              "entityIds": ["wiki-topic-ambientalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de movimento ecológico, movimento verde, environmentalism."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ambientalismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-ambientalismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-ambientalismo": "Nomes alternativos: movimento ecológico, movimento verde, environmentalism."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Publicação do livro Silent Spring, de Rachel Carson, considerado um marco do movimento.",
+        "Realização da Conferência das Nações Unidas sobre o Meio Ambiente e o Desenvolvimento, Rio-92.",
+        "A Conferência de Estocolmo, em 1972, é descrita como a primeira reunião internacional a propor uma política ambientalista de aplicação global."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ambientalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1962",
+              "kicker": "Marco datado",
+              "summary": "Publicação do livro Silent Spring, de Rachel Carson, considerado um marco do movimento.",
+              "paragraphs": [
+                "Publicação do livro Silent Spring, de Rachel Carson, considerado um marco do movimento."
+              ],
+              "sourceIds": ["src-wiki-topic-ambientalismo"],
+              "entityIds": ["wiki-topic-ambientalismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1992",
+              "kicker": "Marco datado",
+              "summary": "Realização da Conferência das Nações Unidas sobre o Meio Ambiente e o Desenvolvimento, Rio-92.",
+              "paragraphs": [
+                "Realização da Conferência das Nações Unidas sobre o Meio Ambiente e o Desenvolvimento, Rio-92."
+              ],
+              "sourceIds": ["src-wiki-topic-ambientalismo"],
+              "entityIds": ["wiki-topic-ambientalismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "A Conferência de Estocolmo, em 1972, é descrita como a primeira reunião internacional a propor uma política ambientalista de aplicação global.",
+              "paragraphs": [
+                "A Conferência de Estocolmo, em 1972, é descrita como a primeira reunião internacional a propor uma política ambientalista de aplicação global."
+              ],
+              "sourceIds": ["src-wiki-topic-ambientalismo"],
+              "entityIds": ["wiki-topic-ambientalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1962, "end": 1962 },
+            { "itemId": "marco-2", "start": 1992, "end": 1992 }
+          ],
+          "entityIds": ["wiki-topic-ambientalismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Críticos sustentam que o ambientalismo seria uma máscara verde para um programa totalitário, segundo o verbete."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ambientalismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Críticos sustentam que o ambientalismo seria uma máscara verde para um programa totalitário, segundo o verbete.",
+              "paragraphs": [
+                "Críticos sustentam que o ambientalismo seria uma máscara verde para um programa totalitário, segundo o verbete."
+              ],
+              "sourceIds": ["src-wiki-topic-ambientalismo"],
+              "entityIds": ["wiki-topic-ambientalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 7 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ambientalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-ambientalismo"] }]
+    }
+  ]
+}

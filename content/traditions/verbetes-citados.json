@@ -1,0 +1,26 @@
+{
+  "slug": "verbetes-citados",
+  "kind": "programa",
+  "rootQid": "Q7257",
+  "titles": { "pt": "Verbetes citados", "en": "Cited entries" },
+  "palette": "atlas",
+  "icon": "ideology",
+  "scope": {
+    "classificationNote": "Pessoas, obras, organizações, partidos, movimentos, acontecimentos e ideologias que as leituras já existentes citam com frequência e que ainda não têm verbete próprio. A seleção é por número de artigos que citam o item, sem juízo de importância.",
+    "period": "da Antiguidade ao século XXI, conforme cada item",
+    "geography": "mundial, com atenção ao Brasil e à América Latina",
+    "includes": [
+      "itens citados por seis ou mais artigos das coleções de ideologias",
+      "relações documentadas desses itens com as ideologias que os citam"
+    ],
+    "excludes": [
+      "temas gerais demais para um verbete de leitura, como política, história ou ciência",
+      "itens sem artigo próprio na Wikipédia"
+    ]
+  },
+  "seeds": [{ "url": "https://pt.wikipedia.org/wiki/Ideologia" }],
+  "discovery": {
+    "founderQids": [],
+    "commonsCategory": "Category:Political ideologies"
+  }
+}

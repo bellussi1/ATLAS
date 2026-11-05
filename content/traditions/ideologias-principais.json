@@ -1,0 +1,27 @@
+{
+  "slug": "ideologias-principais",
+  "kind": "programa",
+  "rootQid": "Q7257",
+  "titles": { "pt": "Ideologias principais", "en": "Main ideologies" },
+  "palette": "atlas",
+  "icon": "ideology",
+  "scope": {
+    "classificationNote": "Conjunto curado de ideologias e correntes políticas com artigo próprio na Wikipédia, para dar a cada uma ficha, relações e lugar no mapa. Não é uma tradição única: reúne correntes de várias famílias, cada uma tratada no recorte do próprio verbete.",
+    "period": "da Antiguidade ao século XXI, conforme cada corrente",
+    "geography": "mundial, com atenção ao Brasil e à América Latina",
+    "includes": [
+      "ideologias e correntes políticas com artigo próprio",
+      "pessoas, obras e organizações que o artigo cita como centrais",
+      "relações documentadas entre as correntes"
+    ],
+    "excludes": [
+      "combinações de rótulos sem artigo próprio",
+      "correntes tratadas em profundidade nas leituras de Marxismo, Liberalismo, Social-democracia e Anarquismo"
+    ]
+  },
+  "seeds": [{ "url": "https://pt.wikipedia.org/wiki/Ideologia" }],
+  "discovery": {
+    "founderQids": [],
+    "commonsCategory": "Category:Political ideologies"
+  }
+}

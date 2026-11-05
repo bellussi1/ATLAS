@@ -83,7 +83,7 @@
               "kicker": "História e sociedade",
               "summary": "Marx relaciona formas políticas e jurídicas às condições materiais de vida.",
               "paragraphs": [
-                "No prefácio de 1859, Marx situa sua investigação na produção social e nas relações que ela estabelece. É uma formulação atribuída ao autor, não uma lei histórica validada pelo ATLAS.",
+                "No prefácio de 1859, Marx situa sua investigação na produção social e nas relações que ela estabelece. É uma formulação atribuída ao autor, não uma lei histórica comprovada.",
                 "Problema: compreender mudanças sociais. Pressuposto: as condições materiais importam. Mecanismo investigado: relações de produção e seus conflitos. A extensão explicativa dessa abordagem é objeto de debate."
               ],
               "sourceIds": ["source-marx-preface-1859"],
@@ -361,7 +361,7 @@
       "minutes": 4,
       "narrative": [
         "Uma tradição não pensa com uma só voz. Selecione um autor para consultar seu registro, período e fontes sem abandonar o percurso. A presença na seleção é um caminho de estudo; não implica concordância entre todas as pessoas.",
-        "Os retratos só aparecem quando o acervo registra licença e atribuição. Os dados biográficos importados são apresentados com sua proveniência e revisão pendente."
+        "Os retratos só aparecem quando o acervo registra licença e atribuição. Os dados biográficos aparecem com sua fonte e com a revisão pendente indicada."
       ],
       "sourceIds": ["source-v4-marx-sep"],
       "blocks": [
@@ -655,7 +655,7 @@
       "layout": "debate",
       "minutes": 3,
       "narrative": [
-        "Crítica política interna: Luxemburg contesta Bernstein sobre reformas e transformação socialista; Lenin critica Kautsky sobre Estado e revolução. Cada relação atribui o argumento ao autor que o formulou, sem tornar sua acusação um veredito do ATLAS.",
+        "Crítica política interna: Luxemburg contesta Bernstein sobre reformas e transformação socialista; Lenin critica Kautsky sobre Estado e revolução. Cada relação atribui o argumento ao autor que o formulou, sem tornar sua acusação um veredito.",
         "Debate acadêmico: a interpretação da história, a teoria do valor e a exploração em Marx têm leituras concorrentes. Consulte as seções 2 e 3 da Stanford Encyclopedia of Philosophy para distinguir reconstrução filosófica, objeções e alternativas. A existência de debate não significa que todas as posições tenham o mesmo apoio."
       ],
       "sourceIds": [
@@ -888,7 +888,7 @@
       "question": "Com quais pessoas, obras e tradições o marxismo se relaciona?",
       "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria.",
       "narrative": [
-        "Este acervo reúne registros importados da Wikipedia, do Wikidata e do Commons. As ligações enciclopédicas ajudam a descobrir, mas não equivalem a relações historiográficas validadas."
+        "Este acervo reúne registros de verbetes de consulta e de catálogos colaborativos, com a fonte indicada em cada um. Essas ligações ajudam a explorar, mas não equivalem a relações historiográficas validadas."
       ],
       "sourceIds": [],
       "gap": "Relações tipadas com outras tradições (liberalismo, anarquismo, social-democracia) ainda não foram documentadas com fontes; o acervo abaixo serve à descoberta.",

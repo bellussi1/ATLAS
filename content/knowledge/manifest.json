@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "knowledge-graph-atlas",
   "version": "1.1.0",
-  "updatedAt": "2026-11-04",
+  "updatedAt": "2026-11-05",
   "collections": [
     {
       "id": "atlas-methodology",
@@ -21,13 +21,13 @@
     },
     {
       "id": "atlas-liberalism",
-      "file": "collections/atlas-liberalism.5467222642bd26b027b1031edc04f0234407941f59e49de921e8a2effa95f726.json",
-      "sha256": "5467222642bd26b027b1031edc04f0234407941f59e49de921e8a2effa95f726"
+      "file": "collections/atlas-liberalism.fa4ac973920aaff9fa1ef9687af6dfe40f88506a997609defc7a96811cd714c3.json",
+      "sha256": "fa4ac973920aaff9fa1ef9687af6dfe40f88506a997609defc7a96811cd714c3"
     },
     {
       "id": "atlas-marx-valor",
-      "file": "collections/atlas-marx-valor.3d9cb2035c3f783163623cd2ec88c145067074ec275f22e3956b0fc92d051d7f.json",
-      "sha256": "3d9cb2035c3f783163623cd2ec88c145067074ec275f22e3956b0fc92d051d7f"
+      "file": "collections/atlas-marx-valor.f0c921f9ca7397001312c77e9bdaa7d679adf305dee5300efa86426ac3f849bc.json",
+      "sha256": "f0c921f9ca7397001312c77e9bdaa7d679adf305dee5300efa86426ac3f849bc"
     },
     {
       "id": "atlas-constitutional-contexts",
@@ -36,28 +36,33 @@
     },
     {
       "id": "atlas-marxismo",
-      "file": "collections/atlas-marxismo.c42c3326a743ae31768bebdbbd7d78d1ee66bab84bb299770244a46d3e9548a0.json",
-      "sha256": "c42c3326a743ae31768bebdbbd7d78d1ee66bab84bb299770244a46d3e9548a0"
+      "file": "collections/atlas-marxismo.d48708f002a260e879e807c1387821c05efa5841c76e24f23f365671bac8269c.json",
+      "sha256": "d48708f002a260e879e807c1387821c05efa5841c76e24f23f365671bac8269c"
     },
     {
       "id": "atlas-liberalismo",
-      "file": "collections/atlas-liberalismo.74b48c6738e61c5d245457dbba7c5f8c8b730e7de558fee78041187da8fd0104.json",
-      "sha256": "74b48c6738e61c5d245457dbba7c5f8c8b730e7de558fee78041187da8fd0104"
-    },
-    {
-      "id": "atlas-social-democracia",
-      "file": "collections/atlas-social-democracia.9c8d0b5ce12df7523b2024ef15aecfa96c4b969374a34660a40687794bd028f0.json",
-      "sha256": "9c8d0b5ce12df7523b2024ef15aecfa96c4b969374a34660a40687794bd028f0"
+      "file": "collections/atlas-liberalismo.06a26fda809edf3ab75e864aaa8620f497c2eac8b3d17df5a54d9dd4953936b6.json",
+      "sha256": "06a26fda809edf3ab75e864aaa8620f497c2eac8b3d17df5a54d9dd4953936b6"
     },
     {
       "id": "atlas-outras-ideologias",
-      "file": "collections/atlas-outras-ideologias.253c5a9d38d80d8c2e4ad6762ff4b348f7426894e5c06835a30117843508bbf4.json",
-      "sha256": "253c5a9d38d80d8c2e4ad6762ff4b348f7426894e5c06835a30117843508bbf4"
+      "file": "collections/atlas-outras-ideologias.5871102a387fa28e733d1fe6a5e81ced252a9e3b8c23bc5412a15508971902cc.json",
+      "sha256": "5871102a387fa28e733d1fe6a5e81ced252a9e3b8c23bc5412a15508971902cc"
+    },
+    {
+      "id": "atlas-social-democracia",
+      "file": "collections/atlas-social-democracia.575ce29b144314af71932a3572f6ef0d9abc5f63d7432d5a876ad71a5a23d691.json",
+      "sha256": "575ce29b144314af71932a3572f6ef0d9abc5f63d7432d5a876ad71a5a23d691"
     },
     {
       "id": "atlas-anarquismo",
-      "file": "collections/atlas-anarquismo.74a6f01fedf87f1343e1a5228f4fe5f197749e58770428776409a0df640a9cb6.json",
-      "sha256": "74a6f01fedf87f1343e1a5228f4fe5f197749e58770428776409a0df640a9cb6"
+      "file": "collections/atlas-anarquismo.ec4afb6075ab3459a71047508740138b142a207a8c2b85cbf71276c6d7d4ef34.json",
+      "sha256": "ec4afb6075ab3459a71047508740138b142a207a8c2b85cbf71276c6d7d4ef34"
+    },
+    {
+      "id": "atlas-ideologias-principais",
+      "file": "collections/atlas-ideologias-principais.e9b43111e072b98ebda483eb70b98d76297abb70a39a513234d7a20ad53da4c3.json",
+      "sha256": "e9b43111e072b98ebda483eb70b98d76297abb70a39a513234d7a20ad53da4c3"
     }
   ]
 }

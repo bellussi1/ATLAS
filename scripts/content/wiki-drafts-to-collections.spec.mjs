@@ -1,6 +1,6 @@
 import './register-source-modules.mjs';
 import assert from 'node:assert/strict';
-import { mkdir, mkdtemp, readFile, readdir, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
@@ -12,6 +12,9 @@ import {
   convertDrafts,
   convertDraftsToCollections,
   kindForDraft,
+  mergeTraditions,
+  positionStatement,
+  readDrafts,
   slugify,
 } from './wiki-drafts-to-collections.mjs';
 
@@ -442,5 +445,344 @@ test('coleção existente ampliada mantém posição e dá o mesmo resultado em 
   assert.equal(
     await readFile(join(knowledge, augmentedEntry.file), 'utf8'),
     await formatJson(augmented),
+  );
+});
+
+// Arestas, conteúdo rico, rótulos do Wikidata e imagens
+
+const richDraft = ({ id, label, qid, relations = [], sections = [], glossary = [], oneLine }) => ({
+  ...draft({ id, label, qid, type: 'pessoa' }),
+  contract: 'rich-v1',
+  oneLine,
+  sections,
+  glossary,
+  relations,
+});
+const edgeRelation = (overrides = {}) => ({
+  target: 'Friedrich Engels',
+  targetQid: 'Q2',
+  nature: 'influenciou',
+  direction: 'entidade-para-alvo',
+  sentence: 'Marx influenciou Engels',
+  quote: 'Marx influenciou profundamente Friedrich Engels',
+  verified: true,
+  ...overrides,
+});
+const richItems = (relations) => [
+  item('marxismo', 'a.json', richDraft({ id: 'a', label: 'Karl Marx', qid: 'Q1', relations })),
+  item('marxismo', 'b.json', richDraft({ id: 'b', label: 'Friedrich Engels', qid: 'Q2' })),
+];
+const graphOf = (report, existing = []) =>
+  validateSourceGraph({
+    id: 'knowledge-graph-atlas',
+    version: '1.1.0',
+    updatedAt: '2026-11-04',
+    atlases: [...existing, ...report.atlases],
+  });
+
+test('relação confirmada vira aresta com tipo, direção, evidência literal, fonte e revisão pendente', () => {
+  const report = convertDrafts(richItems([edgeRelation()]));
+  const [atlas] = report.atlases;
+  assert.equal(atlas.relations.length, 1);
+  const [edge] = atlas.relations;
+  assert.equal(edge.type, 'influenced');
+  assert.equal(edge.fromEntityId, 'wiki-a');
+  assert.equal(edge.toEntityId, 'wiki-b');
+  assert.equal(edge.editorialStatus, 'pending');
+  assert.equal(edge.provenance.source, 'wikipedia');
+  assert.equal(edge.provenance.url, 'https://pt.wikipedia.org/wiki/Karl_Marx');
+  assert.doesNotMatch(edge.context, /Wikip[eé]dia|Extraído por IA|Revisão humana/);
+  const evidence = atlas.evidences.find((e) => e.id === edge.evidenceIds[0]);
+  assert.equal(evidence.locator, 'Marx influenciou profundamente Friedrich Engels');
+  assert.equal(evidence.sourceId, 'src-wiki-a');
+  assert.equal(atlas.claims.length, 0, 'aresta não duplica como afirmação');
+  graphOf(report);
+});
+
+test('direção alvo-para-entidade inverte a aresta; tipo fora da lista vira associação nomeada ou nada', () => {
+  const report = convertDrafts(richItems([edgeRelation({ direction: 'alvo-para-entidade' })]));
+  const [edge] = report.atlases[0].relations;
+  assert.equal(edge.fromEntityId, 'wiki-b');
+  assert.equal(edge.toEntityId, 'wiki-a');
+  const founded = convertDrafts(richItems([edgeRelation({ nature: 'fundou' })])).atlases[0]
+    .relations[0];
+  assert.equal(founded.type, 'documented-association');
+  assert.equal(founded.label, 'fundou');
+});
+
+test('sem confirmação, sem QID, alvo fora do grafo ou tipo estranho: nada de aresta, tudo no relatório', () => {
+  const report = convertDrafts(
+    richItems([
+      edgeRelation({ verified: false }),
+      edgeRelation({ targetQid: null }),
+      edgeRelation({ targetQid: 'Q999' }),
+      edgeRelation({ nature: 'semelhante-a' }),
+      edgeRelation({ targetQid: 'Q1' }),
+    ]),
+  );
+  assert.equal(report.atlases[0].relations.length, 0);
+  assert.deepEqual(
+    report.pendingRelations.map((p) => p.reason),
+    [
+      'sem confirmação da segunda passada',
+      'alvo sem QID',
+      'alvo fora do grafo',
+      'natureza fora da lista: semelhante-a',
+      'alvo é a própria entidade',
+    ],
+  );
+  graphOf(report);
+});
+
+test('aresta liga rascunho a entidade já existente no grafo, por QID', () => {
+  const existing = existingAtlasFixture();
+  const qid = existing.entities[0].externalIds.wikidata;
+  const report = convertDrafts(
+    [
+      item(
+        'marxismo',
+        'z.json',
+        richDraft({
+          id: 'z',
+          label: 'Outra Pessoa',
+          qid: 'Q777',
+          relations: [edgeRelation({ targetQid: qid })],
+        }),
+      ),
+    ],
+    { existingAtlases: [existing] },
+  );
+  assert.equal(report.atlases[0].relations[0].toEntityId, existing.entities[0].id);
+});
+
+test('conteúdo rico vira hover, seções, apelidos e afirmações com citação', () => {
+  const report = convertDrafts([
+    item(
+      'marxismo',
+      'a.json',
+      richDraft({
+        id: 'a',
+        label: 'Karl Marx',
+        qid: 'Q1',
+        oneLine: 'Filósofo e economista alemão.',
+        sections: [
+          { kind: 'origem', text: 'Nasceu em Trier', quote: 'nasceu em Trier em 1818' },
+          {
+            kind: 'controversias',
+            text: 'A teoria é disputada',
+            quote: 'a teoria do valor é disputada',
+          },
+        ],
+        glossary: [
+          { term: 'Karl Marx', pt: ['Marx'], en: ['Karl Marx', 'Marx'], aliases: ['o Mouro'] },
+        ],
+      }),
+    ),
+  ]);
+  const [atlas] = report.atlases;
+  const [entity] = atlas.entities;
+  assert.equal(entity.discoveryMetadata.description, 'Filósofo e economista alemão.');
+  assert.deepEqual(entity.aliases, ['Marx', 'o Mouro']);
+  assert.deepEqual(
+    entity.sections.map((s) => s.heading),
+    ['Resumo', 'Origem', 'Controvérsias'],
+  );
+  assert.deepEqual(
+    atlas.claims.map((c) => c.classification),
+    ['documented-fact', 'contested-claim'],
+  );
+  assert.ok(atlas.reviews.every((r) => r.status === 'pending' && r.reviewer === null));
+  graphOf(report);
+});
+
+test('rótulo do Wikidata (P737, P1142) entra como associação, nunca como influência', () => {
+  const statement = (property) => ({
+    qid: 'Q1',
+    property,
+    targetQid: 'Q2',
+    url: `https://www.wikidata.org/wiki/Q1#${property}`,
+  });
+  const report = convertDrafts(richItems([]), {
+    wikidataLabels: [
+      statement('P737'),
+      statement('P1142'),
+      statement('P737'),
+      { ...statement('P737'), targetQid: 'Q999' },
+    ],
+  });
+  const relations = report.atlases[0].relations;
+  assert.equal(relations.length, 2);
+  for (const relation of relations) {
+    assert.equal(relation.type, 'associated_with');
+    assert.equal(relation.provenance.source, 'wikidata');
+    assert.match(relation.context, /Não é influência documentada/);
+  }
+  assert.ok(report.atlases[0].sources.some((s) => s.url === 'https://www.wikidata.org/wiki/Q1'));
+  graphOf(report);
+  const withEdge = convertDrafts(richItems([edgeRelation()]), {
+    wikidataLabels: [statement('P737')],
+  });
+  assert.equal(withEdge.atlases[0].relations.length, 1, 'aresta documentada dispensa o rótulo');
+  assert.equal(withEdge.atlases[0].relations[0].type, 'influenced');
+});
+
+test('imagem licenciada vira ativo uma só vez; sem licença fica o ícone, no relatório', () => {
+  const asset = {
+    assetPath: 'https://upload.wikimedia.org/thumb/m.jpg',
+    sourceUrl: 'https://upload.wikimedia.org/m.jpg',
+    creator: 'Fulana',
+    license: 'CC BY 4.0',
+    licenseUrl: 'https://creativecommons.org/licenses/by/4.0/',
+    status: 'known',
+    reproduction: 'allowed',
+    fileTitle: 'm.jpg',
+    filePageUrl: 'https://commons.wikimedia.org/wiki/File:m.jpg',
+    attribution: 'm.jpg, Fulana, CC BY 4.0',
+    retrievedAt: '2026-11-04',
+  };
+  const report = convertDrafts(richItems([]), {
+    images: {
+      a: { status: 'licensed', asset },
+      b: { status: 'icon', icon: 'person', reason: 'licença não aceita' },
+    },
+  });
+  const [atlas] = report.atlases;
+  assert.equal(atlas.assetLicenses.length, 1);
+  assert.equal(atlas.assetLicenses[0].entityId, 'wiki-a');
+  assert.deepEqual(report.iconOnly, [
+    { entity: 'wiki-b', icon: 'person', reason: 'licença não aceita' },
+  ]);
+  graphOf(report);
+});
+
+test('rascunho enxuto antigo continua virando afirmação em texto, sem aresta', () => {
+  const report = convertDrafts(fixtureItems());
+  assert.ok(report.atlases.every((atlas) => atlas.relations.length === 0));
+  assert.ok(report.atlases.some((atlas) => atlas.claims.some((c) => /^Relação com /.test(c.text))));
+});
+
+test('tradição registrada entra na lista sem mudar a ordem das fixas', () => {
+  const merged = mergeTraditions(
+    [{ key: 'b', label: 'B' }],
+    [
+      { slug: 'z', titles: { pt: 'Zê' } },
+      { slug: 'b', titles: { pt: 'Outro B' } },
+      { slug: 'c', titles: { pt: 'Cê' } },
+    ],
+  );
+  assert.deepEqual(merged, [
+    { key: 'b', label: 'B' },
+    { key: 'c', label: 'Cê' },
+    { key: 'z', label: 'Zê' },
+  ]);
+});
+
+test('rascunhos de uma tradição não apagam a coleção de outra', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'atlas-wiki-parcial-'));
+  const drafts = join(root, 'drafts');
+  const knowledge = join(root, 'knowledge');
+  await mkdir(join(knowledge, 'collections'), { recursive: true });
+  const write = async (tradition, value) => {
+    const dir = join(drafts, tradition, 'extracts');
+    await mkdir(dir, { recursive: true });
+    await writeFile(join(dir, `${value.entity.id}.json`), JSON.stringify(value), 'utf8');
+  };
+  await write('marxismo', draft({ id: 'a', label: 'Vladimir Lenin', qid: 'Q1001' }));
+  await write('anarquismo', draft({ id: 'b', label: 'Emma Goldman', qid: 'Q1002' }));
+  const existing = existingAtlasFixture();
+  const bytes = await formatJson(existing);
+  const hash = sha256(bytes);
+  const file = `collections/${existing.id}.${hash}.json`;
+  await writeFile(join(knowledge, file), bytes);
+  await writeFile(
+    join(knowledge, 'manifest.json'),
+    await formatJson({
+      schemaVersion: 1,
+      id: 'knowledge-graph-atlas',
+      version: '1.0.0',
+      updatedAt: '2026-11-03',
+      collections: [{ id: existing.id, file, sha256: hash }],
+    }),
+  );
+  await convertDraftsToCollections({ root: drafts, directory: knowledge });
+  await rm(join(drafts, 'marxismo'), { recursive: true });
+  await convertDraftsToCollections({ root: drafts, directory: knowledge });
+  const { collections } = JSON.parse(await readFile(join(knowledge, 'manifest.json'), 'utf8'));
+  assert.deepEqual(collections.map((entry) => entry.id).sort(), [
+    'atlas-anarquismo',
+    'atlas-existente',
+    'atlas-marxismo',
+  ]);
+});
+
+test('a posição vira afirmação atribuída, com a frase do artigo como evidência', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'atlas-wiki-posicao-'));
+  const write = async (kind, name, value) => {
+    const dir = join(root, 'marxismo', kind);
+    await mkdir(dir, { recursive: true });
+    await writeFile(join(dir, name), JSON.stringify(value), 'utf8');
+  };
+  const frase = 'A Terceira Via é uma corrente política predominantemente centrista.';
+  await write(
+    'extracts',
+    'a.json',
+    draft({ id: 'a', label: 'Terceira via', type: 'ideologia', qid: 'Q10' }),
+  );
+  await write('articles', 'a.json', {
+    article: {
+      url: 'https://pt.wikipedia.org/wiki/Terceira_via',
+      sections: [{ index: 0, heading: '', text: frase }],
+    },
+  });
+  await write(
+    'extracts',
+    'b.json',
+    draft({ id: 'b', label: 'Fulano', type: 'pessoa', qid: 'Q11' }),
+  );
+  await write('articles', 'b.json', {
+    article: {
+      url: 'https://pt.wikipedia.org/wiki/Fulano',
+      sections: [{ index: 0, heading: '', text: 'Foi um político de esquerda.' }],
+    },
+  });
+  const items = await readDrafts(root);
+  const by = Object.fromEntries(items.map((item) => [item.draft.entity.id, item.draft]));
+  assert.equal(by.a.position.value, 'centro');
+  assert.equal(by.a.position.quote, frase);
+  assert.equal(by.b.position, undefined, 'pessoa não recebe posição');
+  const statement = positionStatement(by.a.position);
+  assert.equal(statement.classification, 'attributed-thesis');
+  assert.match(statement.text, /centro\.$/);
+  assert.match(positionStatement({ value: 'variavel', quote: 'x' }).text, /varia conforme/);
+});
+
+test('tipo genérico do rascunho mescla na entidade existente; outro tipo divergente para', () => {
+  const existing = existingAtlasFixture();
+  const merge = (type) =>
+    convertDrafts(
+      [
+        {
+          tradition: 'marxismo',
+          file: 'a.json',
+          draft: draft({ id: 'topic-karl-marx', label: 'Karl Marx', type, qid: 'Q9061' }),
+        },
+      ],
+      { existingAtlases: [existing] },
+    );
+  assert.equal(merge('conceito').mergedIntoExisting.length, 1);
+  assert.throws(() => merge('lugar'), /Tipo divergente/);
+  const generic = existingAtlasFixture();
+  generic.entities[0].kind = 'concept';
+  assert.doesNotThrow(() =>
+    convertDrafts(
+      [
+        {
+          tradition: 'marxismo',
+          file: 'a.json',
+          draft: draft({ id: 'topic-karl-marx', label: 'Karl Marx', type: 'pessoa', qid: 'Q9061' }),
+        },
+      ],
+      { existingAtlases: [generic] },
+    ),
   );
 });

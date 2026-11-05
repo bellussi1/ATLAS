@@ -1,5 +1,5 @@
 export const editorialStatusLabels: Readonly<Record<string, string>> = {
-  draft: 'Rascunho',
+  draft: 'Versão preliminar',
   pending: 'Revisão editorial pendente',
   verified: 'Verificada após revisão humana',
   contested: 'Contestada',

@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-falangismo",
+  "slug": "falangismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Falangismo",
+  "kicker": "Ideologia política",
+  "summary": "O Falangismo é a ideologia política da Falange Española de las JONS, depois Falange Española Tradicionalista y de las Juntas de Ofensiva Nacional Sindicalista, e de seus derivados em outros países. Em sua forma original é amplamente considerado fascista. Sob Francisco Franco, muitos elementos radicais foram diluídos, e a ideologia tornou-se autoritária e conservadora ligada à Espanha franquista. O texto destaca a ênfase católica, a defesa de autoridade e hierarquia, o anticapitalismo original, o antiliberalismo e a alegada terceira posição.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O Falangismo é a ideologia política da Falange Española de las JONS, depois Falange Española Tradicionalista y de las Juntas de Ofensiva Nacional Sindicalista, e de seus derivados em outros países. Em sua forma original é amplamente considerado fascista. Sob Francisco Franco, muitos elementos radicais foram diluídos, e a ideologia tornou-se autoritária e conservadora ligada à Espanha franquista. O texto destaca a ênfase católica, a defesa de autoridade e hierarquia, o anticapitalismo original, o antiliberalismo e a alegada terceira posição."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-falangismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de Falangism, Falange Española de las JONS, Falange."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-falangismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-falangismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-falangismo": "Nomes alternativos: Falangism, Falange Española de las JONS, Falange."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Sob Franco, a Falange abandonou suas tendências anticapitalistas originais e declarou a ideologia totalmente compatível com o capitalismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-falangismo"],
+      "gap": "Há contexto histórico, mas nenhuma data verificada para montar a cronologia.",
+      "coverage": "partial",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "Sob Franco, a Falange abandonou suas tendências anticapitalistas originais e declarou a ideologia totalmente compatível com o capitalismo.",
+              "paragraphs": [
+                "Sob Franco, a Falange abandonou suas tendências anticapitalistas originais e declarou a ideologia totalmente compatível com o capitalismo."
+              ],
+              "sourceIds": ["src-wiki-topic-falangismo"],
+              "entityIds": ["wiki-topic-falangismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "O Falangismo se declarava nem de esquerda nem de direita, mas fontes acadêmicas o colocam na direita política."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-falangismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "O Falangismo se declarava nem de esquerda nem de direita, mas fontes acadêmicas o colocam na direita política.",
+              "paragraphs": [
+                "O Falangismo se declarava nem de esquerda nem de direita, mas fontes acadêmicas o colocam na direita política."
+              ],
+              "sourceIds": ["src-wiki-topic-falangismo"],
+              "entityIds": ["wiki-topic-falangismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 4 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-falangismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-falangismo"] }]
+    }
+  ]
+}

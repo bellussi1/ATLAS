@@ -35,7 +35,7 @@ Execute na worktree do projeto. Comandos entre crases.
    - Até 12 itens por lista. Prefira poucos itens bem sustentados.
    - Nomes e citações ficam no idioma do artigo.
    - Divergência entre artigos vira `controversy`, sem escolher uma versão.
-   - Alternativa com chave de API: `node scripts/wiki-extract.mjs extract <tradição>` (lote batch), com `ANTHROPIC_API_KEY` definida. Os rascunhos vêm com revisão de IA no mesmo formato.
+   - Com chave de API, use o extrator rico: `npm run tradicao:extract -- <tradição> --dry-run` para ver o custo e, com aprovação do usuário, `--max-usd N`. Ele aplica as travas de `scripts/tradicao/guards.mjs` e a segunda passada; não há `wiki-extract extract`.
 7. **Validar.** `node scripts/wiki-extract.mjs store <tradição>`. O comando informa quantas citações foram rejeitadas por item. Corrija até zero.
 8. **Publicar rascunhos.** `node scripts/wiki-extract.mjs publish-drafts <tradição>`. Usa as credenciais `R2_DRAFTS_*` de `~/.atlas/r2.env`. Repetir o comando não duplica objetos (são imutáveis por hash).
 9. **Ampliar.** Após o fetch, uma nova `discover` lista menções tipadas dos artigos já lidos (`origin: "mention"`). Eles são o próximo lote, a partir de nova decisão.
@@ -44,7 +44,7 @@ Execute na worktree do projeto. Comandos entre crases.
 
 - Relações em cadeia (ex.: Marxismo → Leninismo → Stalinismo → Juche → Kim Il Sung) são expandidas até **5 saltos** a partir de cada tradição. Nó além do 5º não é expandido.
 - No máximo 20 nós por salto, escolhidos pelo número de wikis (sitelinks). Sem esse teto a expansão cresce sem controle.
-- Hoje o pipeline só faz menções de um salto. O teto passa a valer quando o grafo de relações for implementado.
+- A expansão por anéis de 1 a 3 saltos, com teto por anel, é `npm run tradicao:discover`. O `discover` daqui só faz menções de um salto a partir de sementes.
 
 ## Temas
 

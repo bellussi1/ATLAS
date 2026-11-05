@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-neoconservadorismo",
+  "slug": "neoconservadorismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Neoconservadorismo",
+  "kicker": "Ideologia política",
+  "summary": "Corrente da filosofia política surgida nos Estados Unidos após a rejeição ao liberalismo social, ao pacifismo e à contracultura da Nova Esquerda. Defende a promoção da democracia e o intervencionismo internacional. O verbete a associa à influência sobre o governo George W. Bush e à invasão do Iraque em 2003, e a situa como parte de um realinhamento da política estadunidense nas décadas de 1960 e 1970.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Corrente da filosofia política surgida nos Estados Unidos após a rejeição ao liberalismo social, ao pacifismo e à contracultura da Nova Esquerda. Defende a promoção da democracia e o intervencionismo internacional. O verbete a associa à influência sobre o governo George W. Bush e à invasão do Iraque em 2003, e a situa como parte de um realinhamento da política estadunidense nas décadas de 1960 e 1970."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O primeiro neoconservador declarado foi Irving Kristol, que se identificou como tal em artigo de 1979."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O primeiro neoconservador declarado foi Irving Kristol, que se identificou como tal em artigo de 1979.",
+              "paragraphs": [
+                "O primeiro neoconservador declarado foi Irving Kristol, que se identificou como tal em artigo de 1979."
+              ],
+              "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+              "entityIds": ["wiki-topic-neoconservadorismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Os neoconservadores normalmente defendem a promoção da democracia e do intervencionismo nos assuntos internacionais, incluindo a paz pela força."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Os neoconservadores normalmente defendem a promoção da democracia e do intervencionismo nos assuntos internacionais, incluindo a paz pela força.",
+              "paragraphs": [
+                "Os neoconservadores normalmente defendem a promoção da democracia e do intervencionismo nos assuntos internacionais, incluindo a paz pela força."
+              ],
+              "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+              "entityIds": ["wiki-topic-neoconservadorismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de neocon."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-neoconservadorismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-neoconservadorismo": "Nomes alternativos: neocon." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Irving Kristol explicitou sua condição de neoconservador em artigo.",
+        "Neoconservadores tiveram papel importante na promoção e planejamento da invasão do Iraque."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1979",
+              "kicker": "Marco datado",
+              "summary": "Irving Kristol explicitou sua condição de neoconservador em artigo.",
+              "paragraphs": ["Irving Kristol explicitou sua condição de neoconservador em artigo."],
+              "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+              "entityIds": ["wiki-topic-neoconservadorismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "2003",
+              "kicker": "Marco datado",
+              "summary": "Neoconservadores tiveram papel importante na promoção e planejamento da invasão do Iraque.",
+              "paragraphs": [
+                "Neoconservadores tiveram papel importante na promoção e planejamento da invasão do Iraque."
+              ],
+              "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+              "entityIds": ["wiki-topic-neoconservadorismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1979, "end": 1979 },
+            { "itemId": "marco-2", "start": 2003, "end": 2003 }
+          ],
+          "entityIds": ["wiki-topic-neoconservadorismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Críticos usaram o termo para descrever a política externa e os falcões de guerra que apoiam o militarismo agressivo ou o neoimperialismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Críticos usaram o termo para descrever a política externa e os falcões de guerra que apoiam o militarismo agressivo ou o neoimperialismo.",
+              "paragraphs": [
+                "Críticos usaram o termo para descrever a política externa e os falcões de guerra que apoiam o militarismo agressivo ou o neoimperialismo."
+              ],
+              "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+              "entityIds": ["wiki-topic-neoconservadorismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-neoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-neoconservadorismo"] }]
+    }
+  ]
+}

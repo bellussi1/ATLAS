@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-titoismo",
+  "slug": "titoismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Titoísmo",
+  "kicker": "Ideologia política",
+  "summary": "O titoísmo é uma filosofia política socialista associada a Josip Broz Tito durante a Guerra Fria, com identidade iugoslava, autogestão dos trabalhadores, separação da União Soviética e liderança no Movimento Não Alinhado. Surgiu na Iugoslávia após a Segunda Guerra Mundial, durante a liderança de Tito, que governou até sua morte em 1980. Importa por marcar uma via independente do modelo soviético e por ser objeto de interpretações divergentes.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O titoísmo é uma filosofia política socialista associada a Josip Broz Tito durante a Guerra Fria, com identidade iugoslava, autogestão dos trabalhadores, separação da União Soviética e liderança no Movimento Não Alinhado. Surgiu na Iugoslávia após a Segunda Guerra Mundial, durante a liderança de Tito, que governou até sua morte em 1980. Importa por marcar uma via independente do modelo soviético e por ser objeto de interpretações divergentes."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-titoismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Tito liderou os partisans iugoslavos comunistas durante a Segunda Guerra Mundial na Iugoslávia."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-titoismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Tito liderou os partisans iugoslavos comunistas durante a Segunda Guerra Mundial na Iugoslávia.",
+              "paragraphs": [
+                "Tito liderou os partisans iugoslavos comunistas durante a Segunda Guerra Mundial na Iugoslávia."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "O titoísmo caracteriza-se por identidade iugoslava ampla, autogestão dos trabalhadores, separação política da URSS e liderança no Movimento Não Alinhado.",
+        "Cada país deveria definir os meios para atingir objetivos comunistas conforme suas próprias condições, e não por padrão de outro país."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-titoismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central 1",
+              "kicker": "Pilares e princípios",
+              "summary": "O titoísmo caracteriza-se por identidade iugoslava ampla, autogestão dos trabalhadores, separação política da URSS e liderança no Movimento Não Alinhado.",
+              "paragraphs": [
+                "O titoísmo caracteriza-se por identidade iugoslava ampla, autogestão dos trabalhadores, separação política da URSS e liderança no Movimento Não Alinhado."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Ideia central 2",
+              "kicker": "Pilares e princípios",
+              "summary": "Cada país deveria definir os meios para atingir objetivos comunistas conforme suas próprias condições, e não por padrão de outro país.",
+              "paragraphs": [
+                "Cada país deveria definir os meios para atingir objetivos comunistas conforme suas próprias condições, e não por padrão de outro país."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de titismo."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-titoismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-titoismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-titoismo": "Nomes alternativos: titismo." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "O governo central iugoslavo começou a ceder poder a governos locais comunais.",
+        "A Iugoslávia restaurou relações com a URSS com a declaração de Belgrado.",
+        "A Iugoslávia tornou-se membro associado do Comecon.",
+        "Morte de Tito, que liderou a Iugoslávia até então.",
+        "Antes da ruptura com Stalin, Tito era inicialmente um favorito pessoal da URSS."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-titoismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1949",
+              "kicker": "Marco datado",
+              "summary": "O governo central iugoslavo começou a ceder poder a governos locais comunais.",
+              "paragraphs": [
+                "O governo central iugoslavo começou a ceder poder a governos locais comunais."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1956",
+              "kicker": "Marco datado",
+              "summary": "A Iugoslávia restaurou relações com a URSS com a declaração de Belgrado.",
+              "paragraphs": [
+                "A Iugoslávia restaurou relações com a URSS com a declaração de Belgrado."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1964",
+              "kicker": "Marco datado",
+              "summary": "A Iugoslávia tornou-se membro associado do Comecon.",
+              "paragraphs": ["A Iugoslávia tornou-se membro associado do Comecon."],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-4",
+              "title": "1980",
+              "kicker": "Marco datado",
+              "summary": "Morte de Tito, que liderou a Iugoslávia até então.",
+              "paragraphs": ["Morte de Tito, que liderou a Iugoslávia até então."],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "Antes da ruptura com Stalin, Tito era inicialmente um favorito pessoal da URSS.",
+              "paragraphs": [
+                "Antes da ruptura com Stalin, Tito era inicialmente um favorito pessoal da URSS."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1949, "end": 1949 },
+            { "itemId": "marco-2", "start": 1956, "end": 1956 },
+            { "itemId": "marco-3", "start": 1964, "end": 1964 },
+            { "itemId": "marco-4", "start": 1980, "end": 1980 }
+          ],
+          "entityIds": ["wiki-topic-titoismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "A União Soviética e seus estados satélites acusaram a Iugoslávia de trotskismo e social-democracia.",
+        "Alguns trotskistas viam Tito como um 'trotskista inconsciente' pela ruptura com Stalin."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-titoismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "A União Soviética e seus estados satélites acusaram a Iugoslávia de trotskismo e social-democracia.",
+              "paragraphs": [
+                "A União Soviética e seus estados satélites acusaram a Iugoslávia de trotskismo e social-democracia."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "Alguns trotskistas viam Tito como um 'trotskista inconsciente' pela ruptura com Stalin.",
+              "paragraphs": [
+                "Alguns trotskistas viam Tito como um 'trotskista inconsciente' pela ruptura com Stalin."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "Tony Cliff, Background to Hungary (1958), listado como perspectiva trotskista contemporânea sobre o confronto de Tito com Moscou."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-titoismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "Tony Cliff, Background to Hungary (1958), listado como perspectiva trotskista contemporânea sobre o confronto de Tito com Moscou.",
+              "paragraphs": [
+                "Tony Cliff, Background to Hungary (1958), listado como perspectiva trotskista contemporânea sobre o confronto de Tito com Moscou."
+              ],
+              "sourceIds": ["src-wiki-topic-titoismo"],
+              "entityIds": ["wiki-topic-titoismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 16 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-titoismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-titoismo"] }]
+    }
+  ]
+}

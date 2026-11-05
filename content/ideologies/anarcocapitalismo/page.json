@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-anarcocapitalismo",
+  "slug": "anarcocapitalismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Anarcocapitalismo",
+  "kicker": "Ideologia política",
+  "summary": "O anarcocapitalismo é uma filosofia política e teoria político-econômica associada ao libertarianismo de direita. Defende a substituição do Estado por uma ordem baseada em propriedade privada, livre mercado e contratos voluntários, na qual defesa, arbitragem e aplicação do direito seriam oferecidas por agentes privados. Sua formulação moderna é geralmente associada ao economista Murray Rothbard. A classificação do movimento como forma de anarquismo é disputada entre fontes de teoria política e correntes anarquistas.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O anarcocapitalismo é uma filosofia política e teoria político-econômica associada ao libertarianismo de direita. Defende a substituição do Estado por uma ordem baseada em propriedade privada, livre mercado e contratos voluntários, na qual defesa, arbitragem e aplicação do direito seriam oferecidas por agentes privados. Sua formulação moderna é geralmente associada ao economista Murray Rothbard. A classificação do movimento como forma de anarquismo é disputada entre fontes de teoria política e correntes anarquistas.",
+        "Posição política descrita na fonte: direita."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "A formulação moderna do anarcocapitalismo é geralmente associada ao economista norte-americano Murray Rothbard, que combinou elementos de diferentes tradições."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "A formulação moderna do anarcocapitalismo é geralmente associada ao economista norte-americano Murray Rothbard, que combinou elementos de diferentes tradições.",
+              "paragraphs": [
+                "A formulação moderna do anarcocapitalismo é geralmente associada ao economista norte-americano Murray Rothbard, que combinou elementos de diferentes tradições."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+              "entityIds": ["wiki-topic-anarcocapitalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Seus defensores sustentam que funções tradicionalmente públicas, como tribunais, policiamento, defesa, emissão monetária e regulação de contratos, poderiam ser oferecidas por agentes privados em concorrência."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Seus defensores sustentam que funções tradicionalmente públicas, como tribunais, policiamento, defesa, emissão monetária e regulação de contratos, poderiam ser oferecidas por agentes privados em concorrência.",
+              "paragraphs": [
+                "Seus defensores sustentam que funções tradicionalmente públicas, como tribunais, policiamento, defesa, emissão monetária e regulação de contratos, poderiam ser oferecidas por agentes privados em concorrência."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+              "entityIds": ["wiki-topic-anarcocapitalismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "O grafo não registra nomes alternativos nem termos-chave desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo traz datas ou contexto histórico.",
+      "coverage": "pending",
+      "layout": "timeline",
+      "blocks": []
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "A classificação do anarcocapitalismo é disputada: grande parte da tradição anarquista não o reconhece como forma de anarquismo por causa da defesa da propriedade privada capitalista e das relações de mercado.",
+        "Autores anarcocapitalistas argumentam que a rejeição integral do Estado e do monopólio legal da coerção justificaria sua inclusão entre as teorias anarquistas."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "A classificação do anarcocapitalismo é disputada: grande parte da tradição anarquista não o reconhece como forma de anarquismo por causa da defesa da propriedade privada capitalista e das relações de mercado.",
+              "paragraphs": [
+                "A classificação do anarcocapitalismo é disputada: grande parte da tradição anarquista não o reconhece como forma de anarquismo por causa da defesa da propriedade privada capitalista e das relações de mercado."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+              "entityIds": ["wiki-topic-anarcocapitalismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "Autores anarcocapitalistas argumentam que a rejeição integral do Estado e do monopólio legal da coerção justificaria sua inclusão entre as teorias anarquistas.",
+              "paragraphs": [
+                "Autores anarcocapitalistas argumentam que a rejeição integral do Estado e do monopólio legal da coerção justificaria sua inclusão entre as teorias anarquistas."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+              "entityIds": ["wiki-topic-anarcocapitalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["O verbete lista For a New Liberty, de Murray N. Rothbard, publicado em 1978."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "O verbete lista For a New Liberty, de Murray N. Rothbard, publicado em 1978.",
+              "paragraphs": [
+                "O verbete lista For a New Liberty, de Murray N. Rothbard, publicado em 1978."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+              "entityIds": ["wiki-topic-anarcocapitalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcocapitalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-anarcocapitalismo"] }]
+    }
+  ]
+}

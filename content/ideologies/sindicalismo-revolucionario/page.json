@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-sindicalismo-revolucionario",
+  "slug": "sindicalismo-revolucionario",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Sindicalismo revolucionário",
+  "kicker": "Ideologia política",
+  "summary": "O sindicalismo revolucionário é uma orientação estratégica, político-ideológica e teórico-programática, com antecedente na Associação Internacional dos Trabalhadores. Foi formulado nominalmente após a unificação da Fédération des Bourses de travail com a CGT em 1902 e expresso na Carta de Amiens. Tem como eixo o federalismo organizacional, a autonomia sindical frente ao poder político e a ação direta. Teve grande relevância global no início do século XX e perdeu força após a Primeira Guerra Mundial. Importa também por ser muitas vezes confundido com o anarcossindicalismo.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O sindicalismo revolucionário é uma orientação estratégica, político-ideológica e teórico-programática, com antecedente na Associação Internacional dos Trabalhadores. Foi formulado nominalmente após a unificação da Fédération des Bourses de travail com a CGT em 1902 e expresso na Carta de Amiens. Tem como eixo o federalismo organizacional, a autonomia sindical frente ao poder político e a ação direta. Teve grande relevância global no início do século XX e perdeu força após a Primeira Guerra Mundial. Importa também por ser muitas vezes confundido com o anarcossindicalismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "A orientação tem como antecedente a Associação Internacional dos Trabalhadores, principalmente sua ala federalista-coletivista."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "A orientação tem como antecedente a Associação Internacional dos Trabalhadores, principalmente sua ala federalista-coletivista.",
+              "paragraphs": [
+                "A orientação tem como antecedente a Associação Internacional dos Trabalhadores, principalmente sua ala federalista-coletivista."
+              ],
+              "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+              "entityIds": ["wiki-topic-sindicalismo-revolucionario"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Seus eixos são o federalismo organizacional, a autonomia do sindicato frente ao poder político e a ação direta como método de luta."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Seus eixos são o federalismo organizacional, a autonomia do sindicato frente ao poder político e a ação direta como método de luta.",
+              "paragraphs": [
+                "Seus eixos são o federalismo organizacional, a autonomia do sindicato frente ao poder político e a ação direta como método de luta."
+              ],
+              "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+              "entityIds": ["wiki-topic-sindicalismo-revolucionario"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "O grafo não registra nomes alternativos nem termos-chave desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Formulação nominal do sindicalismo revolucionário após a unificação da Fédération des Bourses de travail com a CGT.",
+        "Carta de Amiens, expressão do sindicalismo revolucionário, resultado do Congresso."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1902",
+              "kicker": "Marco datado",
+              "summary": "Formulação nominal do sindicalismo revolucionário após a unificação da Fédération des Bourses de travail com a CGT.",
+              "paragraphs": [
+                "Formulação nominal do sindicalismo revolucionário após a unificação da Fédération des Bourses de travail com a CGT."
+              ],
+              "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+              "entityIds": ["wiki-topic-sindicalismo-revolucionario"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1906",
+              "kicker": "Marco datado",
+              "summary": "Carta de Amiens, expressão do sindicalismo revolucionário, resultado do Congresso.",
+              "paragraphs": [
+                "Carta de Amiens, expressão do sindicalismo revolucionário, resultado do Congresso."
+              ],
+              "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+              "entityIds": ["wiki-topic-sindicalismo-revolucionario"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1902, "end": 1902 },
+            { "itemId": "marco-2", "start": 1906, "end": 1906 }
+          ],
+          "entityIds": ["wiki-topic-sindicalismo-revolucionario"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Há divergência sobre a diferenciação entre sindicalismo revolucionário e anarcossindicalismo, descrita pelo verbete como ambígua em alguns contextos."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Há divergência sobre a diferenciação entre sindicalismo revolucionário e anarcossindicalismo, descrita pelo verbete como ambígua em alguns contextos.",
+              "paragraphs": [
+                "Há divergência sobre a diferenciação entre sindicalismo revolucionário e anarcossindicalismo, descrita pelo verbete como ambígua em alguns contextos."
+              ],
+              "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+              "entityIds": ["wiki-topic-sindicalismo-revolucionario"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "Consta na bibliografia uma tese de doutorado sobre a história da AIT e as origens do sindicalismo revolucionário."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "Consta na bibliografia uma tese de doutorado sobre a história da AIT e as origens do sindicalismo revolucionário.",
+              "paragraphs": [
+                "Consta na bibliografia uma tese de doutorado sobre a história da AIT e as origens do sindicalismo revolucionário."
+              ],
+              "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+              "entityIds": ["wiki-topic-sindicalismo-revolucionario"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 9 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-sindicalismo-revolucionario"] }]
+    }
+  ]
+}
