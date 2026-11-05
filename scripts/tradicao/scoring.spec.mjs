@@ -53,7 +53,8 @@ const graph = {
     { qid: 'Q9', title: 'Lista de A', languages: 80, linkPosition: 0 },
   ],
   Q2: [
-    { qid: 'Q4', title: 'C', languages: 70, linkPosition: 0.1 },
+    // Fora do anel 1, a posição do link não prova relevância: C entra por vínculo declarado.
+    { qid: 'Q4', title: 'C', languages: 70, linkPosition: 0.1, via: ['P737'] },
     { qid: 'Q3', title: 'B', languages: 5, linkPosition: 0.2 },
   ],
   Q4: [{ qid: 'Q5', title: 'D', languages: 70, linkPosition: 0.1 }],
@@ -190,4 +191,43 @@ test('escolha de modelo exige Haiku low e medium medidos; só relações pode su
     }).success,
     false,
   );
+});
+
+test('nos anéis 2 e 3, lugar e conceito saem e pessoa sem vínculo regional vai para a lista curta', async () => {
+  const graph = {
+    Q1: [{ qid: 'Q2', title: 'Ideia', type: 'ideologia', languages: 70, linkPosition: 0 }],
+    Q2: [
+      { qid: 'Q3', title: 'México', type: 'lugar', languages: 70, linkPosition: 0, via: ['P17'] },
+      {
+        qid: 'Q4',
+        title: 'Pobreza',
+        type: 'conceito',
+        languages: 70,
+        linkPosition: 0,
+        via: ['P17'],
+      },
+      { qid: 'Q5', title: 'Kant', type: 'pessoa', languages: 70, linkPosition: 0, via: ['P737'] },
+      {
+        qid: 'Q6',
+        title: 'Lula',
+        type: 'pessoa',
+        languages: 70,
+        linkPosition: 0,
+        regions: ['Q155'],
+      },
+    ],
+  };
+  const found = await expand(['Q1'], async (qid) => graph[qid] ?? [], {
+    thresholds: { accept: 60, review: 30, regionalReview: 20 },
+  });
+  const by = Object.fromEntries(found.map((c) => [c.title, c.decision]));
+  assert.deepEqual(by, {
+    Ideia: 'accept',
+    México: 'discard',
+    Pobreza: 'discard',
+    Kant: 'review',
+    Lula: 'accept',
+  });
+  assert.equal(decide({ title: 'Língua castelhana', score: 999 }).decision, 'discard');
+  assert.equal(decide({ title: '11 de setembro', score: 999 }).decision, 'discard');
 });

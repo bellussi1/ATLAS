@@ -66,6 +66,8 @@ const genericTitle = [
   /^\d{1,4}( (a\.?\s?c\.?|bc|ad))?$/i,
   /^(s[eé]culo|century|siglo)\b/i,
   /^\d{4}s?$/,
+  /^l[ií]ngua\b/i, // idiomas são citados por quase tudo
+  /^\d{1,2}º? de [a-zç]+$/i, // "11 de setembro" é dia do calendário, não o acontecimento
 ];
 export const isGenericTitle = (title) => genericTitle.some((pattern) => pattern.test(title.trim()));
 
@@ -84,6 +86,8 @@ export function scoreCandidate(candidate, weights = defaults.weights) {
  * with the lower threshold. The rule is data, so a reader can see why a candidate was kept.
  */
 export function regionalReason(candidate, rules = {}) {
+  // País de origem de um lugar ou conceito ("Língua castelhana", "Cidade do México") não é vínculo com a tradição.
+  if (['lugar', 'conceito'].includes(candidate.type)) return null;
   const regions = rules.regions ?? regionalRules.regions;
   const periods = rules.periods ?? regionalRules.periods;
   const tagged = new Set(candidate.regions ?? []);
@@ -149,11 +153,14 @@ export async function expand(roots, neighbors, options = {}) {
           (regional ? weights.regional : 0);
         const decided = decide({ ...entry, score }, { thresholds, regional });
         const declared = (entry.via ?? []).some((via) => via !== textLink);
+        // Nos anéis 2 e 3 a posição do link não basta: só vínculo declarado, região ou duas citações.
         const relevant =
           regional ||
           declared ||
           citedByAccepted >= 2 ||
-          (!broadTypes.has(entry.type) && (entry.linkPosition ?? 1) <= relevantPosition);
+          (ring === 1 &&
+            !broadTypes.has(entry.type) &&
+            (entry.linkPosition ?? 1) <= relevantPosition);
         return {
           ...entry,
           citers: undefined,
@@ -161,9 +168,18 @@ export async function expand(roots, neighbors, options = {}) {
           ring,
           score,
           // Fame alone is not relevance: a famous page linked once, deep in an article, waits for a person.
-          ...(decided.decision === 'accept' && !relevant
-            ? { decision: 'review', reason: `sem sinal de relevância; pontuação ${score}` }
-            : decided),
+          ...(ring > 1 && ['lugar', 'conceito'].includes(entry.type)
+            ? // Further out, places and concepts are only what every article cites ("México", "Pobreza").
+              { decision: 'discard', reason: `${entry.type} só entra no anel 1` }
+            : ring > 1 && entry.type === 'pessoa' && !regional && decided.decision === 'accept'
+              ? // A person two hops away without a regional tie ("Kant", "Newton") waits for a human.
+                {
+                  decision: 'review',
+                  reason: `pessoa distante, sem vínculo regional; pontuação ${score}`,
+                }
+              : decided.decision === 'accept' && !relevant
+                ? { decision: 'review', reason: `sem sinal de relevância; pontuação ${score}` }
+                : decided),
           ...(regional ? { regional } : {}),
         };
       })
