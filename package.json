@@ -11,6 +11,7 @@
     "test:content": "node --test scripts/content/*.spec.mjs scripts/tradicao/*.spec.mjs",
     "tradicao": "node scripts/tradicao/pipeline.mjs",
     "tradicao:coverage": "node scripts/tradicao/coverage.mjs",
+    "tradicao:reading": "node scripts/tradicao/reading.mjs",
     "tradicao:discover": "node scripts/tradicao/discover.mjs",
     "tradicao:extract": "node scripts/tradicao/extract.mjs",
     "tradicao:images": "node scripts/tradicao/images.mjs",

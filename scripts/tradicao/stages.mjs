@@ -24,6 +24,7 @@ import { traditionFor } from '../ingestion/wikimedia/traditions.mjs';
 import { checkFloor, loadFloor, measureTradition, measure, flatten } from './coverage.mjs';
 import { chosenOptions, loadRecords, planRun } from './extract.mjs';
 import { richSourceText } from './prompts.mjs';
+import { generateReadings } from './reading.mjs';
 import { buildGlossary, modelChoiceSchema, richGaps, unverifiedQuotes } from './rich.mjs';
 import { defaults, isGenericTitle, maxRing } from './scoring.mjs';
 import {
@@ -118,6 +119,20 @@ async function dossier(ctx) {
     await readJsonOr(p.graph, { sources: [], edges: [] }),
     graph,
   );
+}
+
+/**
+ * Ideologias que o estágio 8 monta: a raiz de uma família (pelo QID do registro) ou, num
+ * programa, todas as da coleção. Leituras escritas à mão não são tocadas por `generateReadings`.
+ */
+async function readingSlugs(ctx, registry) {
+  if (registry.kind === 'programa') return null;
+  const graph = await readSourceGraph(join(ctx.root, 'content/knowledge'));
+  const atlas = graph.atlases.find((a) => a.id === atlasIdOf(registry));
+  const root = atlas?.entities.find(
+    (e) => e.kind === 'ideology' && e.externalIds?.wikidata === registry.rootQid,
+  );
+  return root ? [root.slug] : [];
 }
 
 const command = (label, argv, extra = {}) => ({ label, argv, ...extra });
@@ -757,65 +772,60 @@ export const stages = [
   {
     n: 8,
     id: 'redacao',
-    title: 'Redação dos 12 capítulos',
-    kind: 'agent',
-    cost: 'API Anthropic (Haiku 5.5, effort low)',
-    agent: {
-      skill: 'atlas-create-ideology',
-      model: 'claude-haiku-5-5',
-      effort: 'low',
-      does: 'preenche pergunta, narrativa atribuída e blocos de cada capítulo com fontes do grafo',
-    },
+    title: 'Leitura montada do grafo',
+    kind: 'auto',
+    cost: 'grátis',
     contract: {
-      needs: 'coleção consolidada e esqueleto da leitura',
+      needs: 'coleção consolidada no grafo',
       produces:
-        'page.json com capítulos `partial`/`complete`, blocos tipados e fontes; `pending` só com motivo',
+        'page.json por ideologia com capítulos montados só de passagens citadas; `pending` com motivo onde o grafo não sustenta; sem pergunta nem ponte (estágio 9)',
     },
     inputs: (c) => [paths(c).manifest, paths(c).registry],
     outputs: (c) => [paths(c).page, paths(c).graph],
     commands: () => [],
+    async run(ctx) {
+      const registry = await loadRegistry(ctx.slug, ctx.root);
+      await generateReadings({
+        root: ctx.root,
+        atlasId: atlasIdOf(registry),
+        slugs: await readingSlugs(ctx, registry),
+      });
+    },
     async gate(ctx) {
+      const registry = await loadRegistry(ctx.slug, ctx.root);
       let result;
       try {
-        result = await dossier(ctx);
+        result = await generateReadings({
+          root: ctx.root,
+          atlasId: atlasIdOf(registry),
+          slugs: await readingSlugs(ctx, registry),
+          write: false,
+        });
       } catch (error) {
         return [
           check(
-            'dossiê válido (schema e referências)',
+            'leituras válidas (schema e referências)',
             false,
             String(error.message).split('\n')[0],
           ),
         ];
       }
-      const { page } = result;
-      const floor = await loadFloor(ctx.root);
-      const sourced = (chapter) =>
-        chapter.sourceIds.length > 0 ||
-        chapter.blocks.some(
-          (b) =>
-            b.sourceIds?.length || b.items?.some((i) => i.sourceIds.length) || b.type === 'sources',
-        );
-      const open = page.chapters.filter((c) => c.coverage !== 'pending' && !sourced(c));
       return [
-        check('dossiê válido (schema e referências)', true),
-        check('12 capítulos canônicos', page.chapters.length === 12),
+        check('leituras válidas (schema e referências)', true, `${result.written.length} leituras`),
         check(
-          'capítulos pendentes ≤ 1, cada um com motivo',
-          page.chapters.filter((c) => c.coverage === 'pending').length <= 1 &&
-            page.chapters.filter((c) => c.coverage !== 'complete').every((c) => c.gap),
-          `${page.chapters.filter((c) => c.coverage === 'pending').length} pendentes`,
-        ),
-        check('capítulo preenchido tem fonte', open.length === 0, open.map((c) => c.id).join(', ')),
-        check(
-          'capítulos com blocos atingem o piso',
-          page.chapters.filter((c) => c.blocks.length > 0).length >=
-            floor.minimum['chapters.comBlocos'],
-          `${page.chapters.filter((c) => c.blocks.length > 0).length} de ${floor.minimum['chapters.comBlocos']}`,
+          'cada leitura gerada tem algum capítulo completo',
+          result.reports.every((r) => r.complete.length >= 1),
+          `${result.reports.filter((r) => r.complete.length < 1).length} sem capítulo completo`,
         ),
         check(
-          'sem revisão humana alegada',
-          page.review.status !== 'revisado' || Boolean(page.review.reviewer),
-          page.review.status,
+          'capítulo pendente ou parcial tem motivo',
+          result.reports.every((r) => [...r.pending, ...r.partial].every((id) => r.gaps[id])),
+        ),
+        check(
+          '12 capítulos canônicos por leitura',
+          result.reports.every(
+            (r) => r.complete.length + r.partial.length + r.pending.length === 12,
+          ),
         ),
       ];
     },
