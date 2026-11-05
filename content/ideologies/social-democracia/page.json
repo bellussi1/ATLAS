@@ -309,7 +309,7 @@
       "narrative": [
         "Na Suécia, Olof Palme governou em dois períodos, de 1969 a 1976 e de 1982 a 1986, à frente do Partido Operário Social-Democrata.",
         "Na Alemanha Ocidental, Willy Brandt foi chanceler de 1969 a 1974 e conduziu a Ostpolitik, pela qual recebeu o Nobel da Paz em 1971. Na Áustria, Bruno Kreisky foi chanceler de 1970 a 1983, em um mandato que o verbete descreve como o mais longo da Áustria republicana.",
-        "Sobre resultados, o verbete cita relatórios que colocam os países nórdicos entre os de maior PIB per capita, igualdade econômica, saúde pública e expectativa de vida. O próprio artigo marca essas fontes como a melhorar."
+        "Sobre resultados, relatórios colocam os países nórdicos entre os de maior PIB per capita, igualdade econômica, saúde pública e expectativa de vida. A fonte consultada marca essas referências como a melhorar."
       ],
       "question": "Onde a social-democracia governou, e com que resultados?",
       "bridge": "Os limites desses resultados levam aos debates sobre o que a tradição realmente conseguiu.",
@@ -369,7 +369,7 @@
               "kicker": "Cautela editorial",
               "summary": "Indicadores nórdicos vêm de relatórios citados e não provam sozinhos um efeito.",
               "paragraphs": [
-                "Os indicadores de bem-estar nos países nórdicos vêm de relatórios citados pelo verbete, que o próprio artigo marca como a melhorar. Eles não bastam, sozinhos, para atribuir esses resultados à social-democracia."
+                "Os indicadores de bem-estar nos países nórdicos vêm de relatórios que a fonte consultada marca como a melhorar. Eles não bastam, sozinhos, para atribuir esses resultados à social-democracia."
               ],
               "sourceIds": ["src-wiki-topic-social-democracy"],
               "entityIds": [],
@@ -501,8 +501,8 @@
       "kicker": "Fontes e metodologia",
       "minutes": 2,
       "narrative": [
-        "Esta leitura foi montada a partir de rascunhos extraídos de verbetes da Wikipédia em português e em inglês. Cada afirmação traz a fonte do verbete. As citações não foram conferidas diretamente contra o texto dos verbetes.",
-        "A classificação de cada afirmação, entre fato documentado, interpretação e alegação controversa, vem da extração e ainda não passou por revisão humana. Esta página é um rascunho com revisão de IA pendente."
+        "Esta leitura reúne afirmações de verbetes de consulta em português e em inglês. Cada afirmação traz a sua fonte. As citações não foram conferidas diretamente contra o texto dos verbetes.",
+        "A classificação de cada afirmação, entre fato documentado, interpretação e alegação controversa, ainda não passou por revisão humana."
       ],
       "question": "Como sei que o que está aqui é verdade?",
       "bridge": null,
