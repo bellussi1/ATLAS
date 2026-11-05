@@ -97,3 +97,4 @@ Rótulos da Wikidata (`P1142`, `P737`) são classificações importadas, não in
 - O HTML dos artigos é texto CC BY-SA 4.0 e não é publicado: fica local e só se reproduz com a captura desta máquina. Publicá-lo no bucket público é decisão editorial pendente.
 - `discover` propõe, além dos links dos artigos-semente, entidades tipadas que os artigos lidos ligam no corpo do texto (`origin: "mention"`), com a lista dos artigos que as citam. Menção não é relação: relações só entram com fonte e natureza declaradas, pela extração revisada.
 - Rascunhos de extração (`generated/wiki-extract/<tradição>/extracts`) têm revisão `assistant`, nunca `revisado`, e vão só ao bucket privado `atlas-drafts` até aprovação.
+- O fluxo completo, do registro à publicação, está em [Fluxo de população](FLUXO-DE-POPULACAO.md).
