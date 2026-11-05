@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-democracia-crista",
+  "slug": "democracia-crista",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Democracia cristã",
+  "kicker": "Ideologia política",
+  "summary": "A democracia cristã é uma ideologia política que une a fé cristã a um modelo de governança democrática voltado à promoção do estado de bem-estar social numa economia mista. O verbete situa sua origem no século XIX, na Europa, como resposta à urbanização e à emergência do socialismo. Descreve sua presença em partidos de vários países, em organizações internacionais e regionais, em Portugal e no Brasil. Também registra posições sociais e morais em geral conservadoras e a classificação histórica de centro-esquerda em economia e de centro-direita em temas morais, que é objeto de debate.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "A democracia cristã é uma ideologia política que une a fé cristã a um modelo de governança democrática voltado à promoção do estado de bem-estar social numa economia mista. O verbete situa sua origem no século XIX, na Europa, como resposta à urbanização e à emergência do socialismo. Descreve sua presença em partidos de vários países, em organizações internacionais e regionais, em Portugal e no Brasil. Também registra posições sociais e morais em geral conservadoras e a classificação histórica de centro-esquerda em economia e de centro-direita em temas morais, que é objeto de debate."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-democracia-crista"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "A origem do movimento é situada no século XIX, na Europa, como resposta à urbanização crescente e à emergência do socialismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-democracia-crista"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "A origem do movimento é situada no século XIX, na Europa, como resposta à urbanização crescente e à emergência do socialismo.",
+              "paragraphs": [
+                "A origem do movimento é situada no século XIX, na Europa, como resposta à urbanização crescente e à emergência do socialismo."
+              ],
+              "sourceIds": ["src-wiki-topic-democracia-crista"],
+              "entityIds": ["wiki-topic-democracia-crista"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "A corrente busca levar para a política princípios e valores que seus defensores consideram intrínsecos ao cristianismo, como solidariedade, personalismo e humanismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-democracia-crista"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "A corrente busca levar para a política princípios e valores que seus defensores consideram intrínsecos ao cristianismo, como solidariedade, personalismo e humanismo.",
+              "paragraphs": [
+                "A corrente busca levar para a política princípios e valores que seus defensores consideram intrínsecos ao cristianismo, como solidariedade, personalismo e humanismo."
+              ],
+              "sourceIds": ["src-wiki-topic-democracia-crista"],
+              "entityIds": ["wiki-topic-democracia-crista"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de democrata-cristão."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-democracia-crista"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-democracia-crista"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-democracia-crista": "Nomes alternativos: democrata-cristão." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo traz datas ou contexto histórico.",
+      "coverage": "pending",
+      "layout": "timeline",
+      "blocks": []
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Segundo o verbete, a democracia cristã tem sido historicamente considerada de centro-esquerda em questões econômicas e laborais e de centro-direita em questões sociais e morais."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-democracia-crista"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Segundo o verbete, a democracia cristã tem sido historicamente considerada de centro-esquerda em questões econômicas e laborais e de centro-direita em questões sociais e morais.",
+              "paragraphs": [
+                "Segundo o verbete, a democracia cristã tem sido historicamente considerada de centro-esquerda em questões econômicas e laborais e de centro-direita em questões sociais e morais."
+              ],
+              "sourceIds": ["src-wiki-topic-democracia-crista"],
+              "entityIds": ["wiki-topic-democracia-crista"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 4 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-democracia-crista"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-democracia-crista"] }]
+    }
+  ]
+}

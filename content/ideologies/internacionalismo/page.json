@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-internacionalismo",
+  "slug": "internacionalismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Internacionalismo",
+  "kicker": "Ideologia política",
+  "summary": "O internacionalismo é um princípio político que defende maior cooperação política ou económica entre Estados e nações. No verbete, aparece também como doutrina, sistema de crenças ou movimento, frequentemente associado à esquerda. Na teoria socialista, liga-se à união dos trabalhadores além das fronteiras e à oposição ao nacionalismo e à guerra. O texto cita a formulação de 1848 no Manifesto do Partido Comunista e a posição bolchevique durante a Primeira Guerra Mundial.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O internacionalismo é um princípio político que defende maior cooperação política ou económica entre Estados e nações. No verbete, aparece também como doutrina, sistema de crenças ou movimento, frequentemente associado à esquerda. Na teoria socialista, liga-se à união dos trabalhadores além das fronteiras e à oposição ao nacionalismo e à guerra. O texto cita a formulação de 1848 no Manifesto do Partido Comunista e a posição bolchevique durante a Primeira Guerra Mundial.",
+        "Posição política descrita na fonte: esquerda."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-internacionalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Desde o século XIX, organizações socialistas e sindicatos radicais promovem ideologias internacionalistas e buscam organizar trabalhadores além das fronteiras."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-internacionalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Desde o século XIX, organizações socialistas e sindicatos radicais promovem ideologias internacionalistas e buscam organizar trabalhadores além das fronteiras.",
+              "paragraphs": [
+                "Desde o século XIX, organizações socialistas e sindicatos radicais promovem ideologias internacionalistas e buscam organizar trabalhadores além das fronteiras."
+              ],
+              "sourceIds": ["src-wiki-topic-internacionalismo"],
+              "entityIds": ["wiki-topic-internacionalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "O internacionalismo é descrito como princípio que defende maior cooperação política ou económica entre Estados e nações."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-internacionalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "O internacionalismo é descrito como princípio que defende maior cooperação política ou económica entre Estados e nações.",
+              "paragraphs": [
+                "O internacionalismo é descrito como princípio que defende maior cooperação política ou económica entre Estados e nações."
+              ],
+              "sourceIds": ["src-wiki-topic-internacionalismo"],
+              "entityIds": ["wiki-topic-internacionalismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "O grafo não registra nomes alternativos nem termos-chave desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": ["O internacionalismo é frequentemente associado à esquerda política."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-internacionalismo"],
+      "gap": "Há contexto histórico, mas nenhuma data verificada para montar a cronologia.",
+      "coverage": "partial",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "O internacionalismo é frequentemente associado à esquerda política.",
+              "paragraphs": ["O internacionalismo é frequentemente associado à esquerda política."],
+              "sourceIds": ["src-wiki-topic-internacionalismo"],
+              "entityIds": ["wiki-topic-internacionalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Registros ligados à ideologia: Organização das Nações Unidas."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-organizacao-das-nacoes-unidas"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-organizacao-das-nacoes-unidas": "Não é influência documentada." }
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Segundo a perspectiva socialista, ideologias liberais que promovem o capitalismo internacional e o comércio livre estão enraizadas nas forças económicas que levam ao conflito mundial."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-internacionalismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Segundo a perspectiva socialista, ideologias liberais que promovem o capitalismo internacional e o comércio livre estão enraizadas nas forças económicas que levam ao conflito mundial.",
+              "paragraphs": [
+                "Segundo a perspectiva socialista, ideologias liberais que promovem o capitalismo internacional e o comércio livre estão enraizadas nas forças económicas que levam ao conflito mundial."
+              ],
+              "sourceIds": ["src-wiki-topic-internacionalismo"],
+              "entityIds": ["wiki-topic-internacionalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-internacionalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-internacionalismo"] }]
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-tecnocracia",
+  "slug": "tecnocracia",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Tecnocracia",
+  "kicker": "Ideologia política",
+  "summary": "Tecnocracia é um sistema ideológico de governo no qual os tomadores de decisão são selecionados com base em sua experiência em uma área de responsabilidade, principalmente em conhecimento científico ou técnico. Em sentido mais estrito, refere-se a um modelo de governabilidade funcional com aplicação das ciências nas cadeias produtivas. O verbete traça o termo desde a origem grega e o uso por William Henry Smith em 1919, passando por antecedentes como Pitágoras e Saint-Simon, até usos no Brasil, onde o tema aparece ligado à industrialização, ao Estado Novo e ao regime militar.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Tecnocracia é um sistema ideológico de governo no qual os tomadores de decisão são selecionados com base em sua experiência em uma área de responsabilidade, principalmente em conhecimento científico ou técnico. Em sentido mais estrito, refere-se a um modelo de governabilidade funcional com aplicação das ciências nas cadeias produtivas. O verbete traça o termo desde a origem grega e o uso por William Henry Smith em 1919, passando por antecedentes como Pitágoras e Saint-Simon, até usos no Brasil, onde o tema aparece ligado à industrialização, ao Estado Novo e ao regime militar."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-tecnocracia"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O termo deriva de palavras gregas: tekhne, ligada a técnica e habilidade, e kratos, que designa governo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-tecnocracia"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O termo deriva de palavras gregas: tekhne, ligada a técnica e habilidade, e kratos, que designa governo.",
+              "paragraphs": [
+                "O termo deriva de palavras gregas: tekhne, ligada a técnica e habilidade, e kratos, que designa governo."
+              ],
+              "sourceIds": ["src-wiki-topic-tecnocracia"],
+              "entityIds": ["wiki-topic-tecnocracia"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de technocracy."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-tecnocracia"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-tecnocracia"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-tecnocracia": "Nomes alternativos: technocracy." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "O Conde de Saint-Simon concebeu a Tecnocracia.",
+        "William Henry Smith é apontado como o inventor do termo tecnocracia.",
+        "Abílio de Nequete fundou o Partido Tecnocrata.",
+        "O verbete registra que o termo passou a ser usado popularmente para qualquer administração feita por especialistas de qualquer campo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-tecnocracia"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1814",
+              "kicker": "Marco datado",
+              "summary": "O Conde de Saint-Simon concebeu a Tecnocracia.",
+              "paragraphs": ["O Conde de Saint-Simon concebeu a Tecnocracia."],
+              "sourceIds": ["src-wiki-topic-tecnocracia"],
+              "entityIds": ["wiki-topic-tecnocracia"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1919",
+              "kicker": "Marco datado",
+              "summary": "William Henry Smith é apontado como o inventor do termo tecnocracia.",
+              "paragraphs": [
+                "William Henry Smith é apontado como o inventor do termo tecnocracia."
+              ],
+              "sourceIds": ["src-wiki-topic-tecnocracia"],
+              "entityIds": ["wiki-topic-tecnocracia"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1926",
+              "kicker": "Marco datado",
+              "summary": "Abílio de Nequete fundou o Partido Tecnocrata.",
+              "paragraphs": ["Abílio de Nequete fundou o Partido Tecnocrata."],
+              "sourceIds": ["src-wiki-topic-tecnocracia"],
+              "entityIds": ["wiki-topic-tecnocracia"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "O verbete registra que o termo passou a ser usado popularmente para qualquer administração feita por especialistas de qualquer campo.",
+              "paragraphs": [
+                "O verbete registra que o termo passou a ser usado popularmente para qualquer administração feita por especialistas de qualquer campo."
+              ],
+              "sourceIds": ["src-wiki-topic-tecnocracia"],
+              "entityIds": ["wiki-topic-tecnocracia"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1814, "end": 1814 },
+            { "itemId": "marco-2", "start": 1919, "end": 1919 },
+            { "itemId": "marco-3", "start": 1926, "end": 1926 }
+          ],
+          "entityIds": ["wiki-topic-tecnocracia"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "O verbete afirma que o projeto tecnocrata foi adaptado a uma realidade autoritária, com exclusão da classe trabalhadora das decisões políticas."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-tecnocracia"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "O verbete afirma que o projeto tecnocrata foi adaptado a uma realidade autoritária, com exclusão da classe trabalhadora das decisões políticas.",
+              "paragraphs": [
+                "O verbete afirma que o projeto tecnocrata foi adaptado a uma realidade autoritária, com exclusão da classe trabalhadora das decisões políticas."
+              ],
+              "sourceIds": ["src-wiki-topic-tecnocracia"],
+              "entityIds": ["wiki-topic-tecnocracia"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-tecnocracia"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-tecnocracia"] }]
+    }
+  ]
+}

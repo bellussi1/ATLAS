@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-paleoconservadorismo",
+  "slug": "paleoconservadorismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Paleoconservadorismo",
+  "kicker": "Ideologia política",
+  "summary": "Paleoconservadorismo é uma vertente do conservadorismo estadunidense que defende tradicionalismo baseado no cristianismo, regionalismo, constitucionalismo e anticomunismo, junto com governo limitado e federalista e uma política externa protecionista, isolacionista e não-intervencionista. O termo surgiu após a Guerra do Vietnã, quando se dividiu o conservadorismo entre intervencionistas e isolacionistas. O verbete o associa às preocupações da Velha Direita que se opôs ao New Deal e menciona sua possível relação com o trumpismo na política contemporânea dos EUA.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Paleoconservadorismo é uma vertente do conservadorismo estadunidense que defende tradicionalismo baseado no cristianismo, regionalismo, constitucionalismo e anticomunismo, junto com governo limitado e federalista e uma política externa protecionista, isolacionista e não-intervencionista. O termo surgiu após a Guerra do Vietnã, quando se dividiu o conservadorismo entre intervencionistas e isolacionistas. O verbete o associa às preocupações da Velha Direita que se opôs ao New Deal e menciona sua possível relação com o trumpismo na política contemporânea dos EUA.",
+        "Posição política descrita na fonte: direita."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Os termos neoconservador e paleoconservador foram cunhados após a eclosão da Guerra do Vietnã e de uma divisão no conservadorismo estadunidense entre intervencionistas e isolacionistas."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Os termos neoconservador e paleoconservador foram cunhados após a eclosão da Guerra do Vietnã e de uma divisão no conservadorismo estadunidense entre intervencionistas e isolacionistas.",
+              "paragraphs": [
+                "Os termos neoconservador e paleoconservador foram cunhados após a eclosão da Guerra do Vietnã e de uma divisão no conservadorismo estadunidense entre intervencionistas e isolacionistas."
+              ],
+              "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+              "entityIds": ["wiki-topic-paleoconservadorismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Os paleoconservadores apoiam restrições à imigração, descentralização, tarifas comerciais e protecionismo, nacionalismo econômico e isolacionismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Os paleoconservadores apoiam restrições à imigração, descentralização, tarifas comerciais e protecionismo, nacionalismo econômico e isolacionismo.",
+              "paragraphs": [
+                "Os paleoconservadores apoiam restrições à imigração, descentralização, tarifas comerciais e protecionismo, nacionalismo econômico e isolacionismo."
+              ],
+              "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+              "entityIds": ["wiki-topic-paleoconservadorismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de paleoconservador, paleoconservadores, paleoconservatism, paleocon, Neoconservadorismo, neoconservador, neoconservadores, neoconservatism, neocon."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-paleoconservadorismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-paleoconservadorismo": "Nomes alternativos: paleoconservador, paleoconservadores, paleoconservatism, paleocon, Neoconservadorismo, neoconservador, neoconservadores, neoconservatism, neocon."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "A revista Chronicles promoveu uma visão de mundo tradicionalista do Sul a partir de meados da década de 1980.",
+        "Segundo o historiador Paul V. Murphy, os paleoconservadores desenvolveram um foco no localismo e nos direitos dos estados.",
+        "O verbete afirma que, segundo essa visão, seguidores da Velha Direita continuam a ter influência significativa no Partido Republicano."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1980",
+              "kicker": "Marco datado",
+              "summary": "A revista Chronicles promoveu uma visão de mundo tradicionalista do Sul a partir de meados da década de 1980.",
+              "paragraphs": [
+                "A revista Chronicles promoveu uma visão de mundo tradicionalista do Sul a partir de meados da década de 1980."
+              ],
+              "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+              "entityIds": ["wiki-topic-paleoconservadorismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto 1",
+              "kicker": "Situação histórica",
+              "summary": "Segundo o historiador Paul V. Murphy, os paleoconservadores desenvolveram um foco no localismo e nos direitos dos estados.",
+              "paragraphs": [
+                "Segundo o historiador Paul V. Murphy, os paleoconservadores desenvolveram um foco no localismo e nos direitos dos estados."
+              ],
+              "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+              "entityIds": ["wiki-topic-paleoconservadorismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-2",
+              "title": "Contexto 2",
+              "kicker": "Situação histórica",
+              "summary": "O verbete afirma que, segundo essa visão, seguidores da Velha Direita continuam a ter influência significativa no Partido Republicano.",
+              "paragraphs": [
+                "O verbete afirma que, segundo essa visão, seguidores da Velha Direita continuam a ter influência significativa no Partido Republicano."
+              ],
+              "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+              "entityIds": ["wiki-topic-paleoconservadorismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 1980, "end": 1980 }],
+          "entityIds": ["wiki-topic-paleoconservadorismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Segundo Hague, Beirich e Sebesta, o antimodernismo do movimento paleoconservador definiu o movimento neoconfederado das décadas de 1980 e 1990."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Segundo Hague, Beirich e Sebesta, o antimodernismo do movimento paleoconservador definiu o movimento neoconfederado das décadas de 1980 e 1990.",
+              "paragraphs": [
+                "Segundo Hague, Beirich e Sebesta, o antimodernismo do movimento paleoconservador definiu o movimento neoconfederado das décadas de 1980 e 1990."
+              ],
+              "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+              "entityIds": ["wiki-topic-paleoconservadorismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-paleoconservadorismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-paleoconservadorismo"] }]
+    }
+  ]
+}

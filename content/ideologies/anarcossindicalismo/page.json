@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-anarcossindicalismo",
+  "slug": "anarcossindicalismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Anarcossindicalismo",
+  "kicker": "Ideologia política",
+  "summary": "O anarcossindicalismo é uma corrente que o verbete descreve como autônoma, com doutrina própria, combinando elementos do anarquismo e do marxismo. Seus adeptos veem os sindicatos como instrumentos para substituir o capitalismo e o Estado por uma sociedade autogerida pelos trabalhadores. Entre seus princípios estão a solidariedade, a ação direta e a democracia direta. O verbete também registra debate no Brasil sobre a distinção em relação ao sindicalismo revolucionário.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O anarcossindicalismo é uma corrente que o verbete descreve como autônoma, com doutrina própria, combinando elementos do anarquismo e do marxismo. Seus adeptos veem os sindicatos como instrumentos para substituir o capitalismo e o Estado por uma sociedade autogerida pelos trabalhadores. Entre seus princípios estão a solidariedade, a ação direta e a democracia direta. O verbete também registra debate no Brasil sobre a distinção em relação ao sindicalismo revolucionário."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Segundo Hubert Lagardelle, Pierre-Joseph Proudhon estabeleceu as teorias fundamentais do anarco-sindicalismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Segundo Hubert Lagardelle, Pierre-Joseph Proudhon estabeleceu as teorias fundamentais do anarco-sindicalismo.",
+              "paragraphs": [
+                "Segundo Hubert Lagardelle, Pierre-Joseph Proudhon estabeleceu as teorias fundamentais do anarco-sindicalismo."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+              "entityIds": ["wiki-topic-anarcossindicalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "O objetivo final é abolir o sistema de salários, relacionado à escravidão assalariada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "O objetivo final é abolir o sistema de salários, relacionado à escravidão assalariada.",
+              "paragraphs": [
+                "O objetivo final é abolir o sistema de salários, relacionado à escravidão assalariada."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+              "entityIds": ["wiki-topic-anarcossindicalismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de Anarco-sindicalismo, Sindicalismo revolucionário."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-anarcossindicalismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-anarcossindicalismo": "Nomes alternativos: Anarco-sindicalismo, Sindicalismo revolucionário."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "No Brasil, a corrente não deve ser confundida com o sindicalismo revolucionário."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+      "gap": "Há contexto histórico, mas nenhuma data verificada para montar a cronologia.",
+      "coverage": "partial",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "No Brasil, a corrente não deve ser confundida com o sindicalismo revolucionário.",
+              "paragraphs": [
+                "No Brasil, a corrente não deve ser confundida com o sindicalismo revolucionário."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+              "entityIds": ["wiki-topic-anarcossindicalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Autores brasileiros, como Edgar Rodrigues e Raymundo Primitivo Soares, dão definições diferentes e quase opostas para esses modos de luta."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Autores brasileiros, como Edgar Rodrigues e Raymundo Primitivo Soares, dão definições diferentes e quase opostas para esses modos de luta.",
+              "paragraphs": [
+                "Autores brasileiros, como Edgar Rodrigues e Raymundo Primitivo Soares, dão definições diferentes e quase opostas para esses modos de luta."
+              ],
+              "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+              "entityIds": ["wiki-topic-anarcossindicalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 5 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-anarcossindicalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-anarcossindicalismo"] }]
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-ecossocialismo",
+  "slug": "ecossocialismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Ecossocialismo",
+  "kicker": "Ideologia política",
+  "summary": "O ecossocialismo é uma ideologia marxista revolucionária que combina elementos do socialismo com a ecologia. Segundo o verbete, defende que a expansão do capitalismo causa exclusão social, pobreza, exploração e degradação ambiental, e propõe uma revolução socialista rumo a uma sociedade sem classes e sem exploração. Suas raízes são atribuídas a Karl Marx e William Morris no fim do século XIX, e a discussão se ampliou após a Revolução Russa, nos anos 1970 e 1980 e a partir da década de 1990. No Brasil, o verbete cita sua presença em partidos como PSOL, PSTU e PT.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O ecossocialismo é uma ideologia marxista revolucionária que combina elementos do socialismo com a ecologia. Segundo o verbete, defende que a expansão do capitalismo causa exclusão social, pobreza, exploração e degradação ambiental, e propõe uma revolução socialista rumo a uma sociedade sem classes e sem exploração. Suas raízes são atribuídas a Karl Marx e William Morris no fim do século XIX, e a discussão se ampliou após a Revolução Russa, nos anos 1970 e 1980 e a partir da década de 1990. No Brasil, o verbete cita sua presença em partidos como PSOL, PSTU e PT."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ecossocialismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O ecossocialismo é descrito como ideologia marxista revolucionária que combina socialismo e ecologia."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ecossocialismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O ecossocialismo é descrito como ideologia marxista revolucionária que combina socialismo e ecologia.",
+              "paragraphs": [
+                "O ecossocialismo é descrito como ideologia marxista revolucionária que combina socialismo e ecologia."
+              ],
+              "sourceIds": ["src-wiki-topic-ecossocialismo"],
+              "entityIds": ["wiki-topic-ecossocialismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Os ecossocialistas afirmam que a expansão do sistema capitalista causa exclusão social, pobreza, exploração e degradação ambiental."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ecossocialismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Os ecossocialistas afirmam que a expansão do sistema capitalista causa exclusão social, pobreza, exploração e degradação ambiental.",
+              "paragraphs": [
+                "Os ecossocialistas afirmam que a expansão do sistema capitalista causa exclusão social, pobreza, exploração e degradação ambiental."
+              ],
+              "sourceIds": ["src-wiki-topic-ecossocialismo"],
+              "entityIds": ["wiki-topic-ecossocialismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de comunismo solar, ecomarxismo, leninismo ecológico, ecosocialism."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ecossocialismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-ecossocialismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-ecossocialismo": "Nomes alternativos: comunismo solar, ecomarxismo, leninismo ecológico, ecosocialism."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Barry Commoner postulou que as tecnologias capitalistas foram as principais responsáveis pela degradação ambiental.",
+        "William Morris é geralmente creditado pelo desenvolvimento de princípios-chave do que mais tarde foi chamado ecossocialismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ecossocialismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1970",
+              "kicker": "Marco datado",
+              "summary": "Barry Commoner postulou que as tecnologias capitalistas foram as principais responsáveis pela degradação ambiental.",
+              "paragraphs": [
+                "Barry Commoner postulou que as tecnologias capitalistas foram as principais responsáveis pela degradação ambiental."
+              ],
+              "sourceIds": ["src-wiki-topic-ecossocialismo"],
+              "entityIds": ["wiki-topic-ecossocialismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "William Morris é geralmente creditado pelo desenvolvimento de princípios-chave do que mais tarde foi chamado ecossocialismo.",
+              "paragraphs": [
+                "William Morris é geralmente creditado pelo desenvolvimento de princípios-chave do que mais tarde foi chamado ecossocialismo."
+              ],
+              "sourceIds": ["src-wiki-topic-ecossocialismo"],
+              "entityIds": ["wiki-topic-ecossocialismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 1970, "end": 1970 }],
+          "entityIds": ["wiki-topic-ecossocialismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": ["Há divergência entre autores sobre a leitura ecológica de Marx."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ecossocialismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Há divergência entre autores sobre a leitura ecológica de Marx.",
+              "paragraphs": ["Há divergência entre autores sobre a leitura ecológica de Marx."],
+              "sourceIds": ["src-wiki-topic-ecossocialismo"],
+              "entityIds": ["wiki-topic-ecossocialismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "Uma das obras listadas no bloco de bibliografia é Ecosocialism: A Radical Alternative to Capitalist Catastrophe, de Michael Löwy."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ecossocialismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "Uma das obras listadas no bloco de bibliografia é Ecosocialism: A Radical Alternative to Capitalist Catastrophe, de Michael Löwy.",
+              "paragraphs": [
+                "Uma das obras listadas no bloco de bibliografia é Ecosocialism: A Radical Alternative to Capitalist Catastrophe, de Michael Löwy."
+              ],
+              "sourceIds": ["src-wiki-topic-ecossocialismo"],
+              "entityIds": ["wiki-topic-ecossocialismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 9 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-ecossocialismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-ecossocialismo"] }]
+    }
+  ]
+}

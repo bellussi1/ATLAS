@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-peronismo",
+  "slug": "peronismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Peronismo",
+  "kicker": "Ideologia política",
+  "summary": "O peronismo é o nome genérico dado ao Movimento Nacional Justicialista, criado e liderado a partir do pensamento de Juan Domingo Perón, militar e estadista argentino que presidiu o país e foi eleito em 1946, 1951 e 1973. Depois, o movimento transformou-se no Partido Justicialista, descrito no verbete como a força política majoritária na Argentina. Sua doutrina aparece em escritos de Perón e orienta, segundo o texto, o pensamento acadêmico e a vida política argentina.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O peronismo é o nome genérico dado ao Movimento Nacional Justicialista, criado e liderado a partir do pensamento de Juan Domingo Perón, militar e estadista argentino que presidiu o país e foi eleito em 1946, 1951 e 1973. Depois, o movimento transformou-se no Partido Justicialista, descrito no verbete como a força política majoritária na Argentina. Sua doutrina aparece em escritos de Perón e orienta, segundo o texto, o pensamento acadêmico e a vida política argentina."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-peronismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O peronismo é o nome genérico dado ao Movimento Nacional Justicialista, criado e liderado a partir do pensamento de Juan Domingo Perón.",
+        "O Movimento Justicialista transformou-se, mais tarde, em Partido Justicialista."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-peronismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem 1",
+              "kicker": "Origens e formação",
+              "summary": "O peronismo é o nome genérico dado ao Movimento Nacional Justicialista, criado e liderado a partir do pensamento de Juan Domingo Perón.",
+              "paragraphs": [
+                "O peronismo é o nome genérico dado ao Movimento Nacional Justicialista, criado e liderado a partir do pensamento de Juan Domingo Perón."
+              ],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-2",
+              "title": "Origem 2",
+              "kicker": "Origens e formação",
+              "summary": "O Movimento Justicialista transformou-se, mais tarde, em Partido Justicialista.",
+              "paragraphs": [
+                "O Movimento Justicialista transformou-se, mais tarde, em Partido Justicialista."
+              ],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "A doutrina do peronismo está expressa em escritos de Perón, entre eles La Comunidad Organizada e Conducción Política.",
+        "O peronismo tem sua própria doutrina política, econômica e social, chamada justicialismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-peronismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central 1",
+              "kicker": "Pilares e princípios",
+              "summary": "A doutrina do peronismo está expressa em escritos de Perón, entre eles La Comunidad Organizada e Conducción Política.",
+              "paragraphs": [
+                "A doutrina do peronismo está expressa em escritos de Perón, entre eles La Comunidad Organizada e Conducción Política."
+              ],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Ideia central 2",
+              "kicker": "Pilares e princípios",
+              "summary": "O peronismo tem sua própria doutrina política, econômica e social, chamada justicialismo.",
+              "paragraphs": [
+                "O peronismo tem sua própria doutrina política, econômica e social, chamada justicialismo."
+              ],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de Peronism, Movimento Nacional Justicialista, Partido Justicialista."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-peronismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-peronismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-peronismo": "Nomes alternativos: Peronism, Movimento Nacional Justicialista, Partido Justicialista."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Criação do peronismo.",
+        "Perón foi eleito presidente da Argentina.",
+        "Perón foi eleito presidente da Argentina.",
+        "Perón foi eleito presidente da Argentina."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-peronismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1945",
+              "kicker": "Marco datado",
+              "summary": "Criação do peronismo.",
+              "paragraphs": ["Criação do peronismo."],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1946",
+              "kicker": "Marco datado",
+              "summary": "Perón foi eleito presidente da Argentina.",
+              "paragraphs": ["Perón foi eleito presidente da Argentina."],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1951",
+              "kicker": "Marco datado",
+              "summary": "Perón foi eleito presidente da Argentina.",
+              "paragraphs": ["Perón foi eleito presidente da Argentina."],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-4",
+              "title": "1973",
+              "kicker": "Marco datado",
+              "summary": "Perón foi eleito presidente da Argentina.",
+              "paragraphs": ["Perón foi eleito presidente da Argentina."],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1945, "end": 1945 },
+            { "itemId": "marco-2", "start": 1946, "end": 1946 },
+            { "itemId": "marco-3", "start": 1951, "end": 1951 },
+            { "itemId": "marco-4", "start": 1973, "end": 1973 }
+          ],
+          "entityIds": ["wiki-topic-peronismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "O verbete cita a interpretação de que os movimentos personalistas latino-americanos expressavam uma situação de compromisso entre paternalismo oligárquico e modernização industrial."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-peronismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "O verbete cita a interpretação de que os movimentos personalistas latino-americanos expressavam uma situação de compromisso entre paternalismo oligárquico e modernização industrial.",
+              "paragraphs": [
+                "O verbete cita a interpretação de que os movimentos personalistas latino-americanos expressavam uma situação de compromisso entre paternalismo oligárquico e modernização industrial."
+              ],
+              "sourceIds": ["src-wiki-topic-peronismo"],
+              "entityIds": ["wiki-topic-peronismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 11 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-peronismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-peronismo"] }]
+    }
+  ]
+}

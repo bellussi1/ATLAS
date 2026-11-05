@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-distributismo",
+  "slug": "distributismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Distributismo",
+  "kicker": "Ideologia política",
+  "summary": "O distributismo é uma teoria econômica baseada na doutrina social da Igreja Católica, articulada na encíclica Rerum novarum (1891) e explicada na Quadragesimo anno (1931). Propõe que os meios de produção sejam distribuídos amplamente entre a população, como alternativa ao socialismo e ao capitalismo. Influenciou movimentos democrata-cristãos e foi defendido por G. K. Chesterton e Hilaire Belloc. No Brasil, tem apoio entre chestertonianos e grupos integralistas.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O distributismo é uma teoria econômica baseada na doutrina social da Igreja Católica, articulada na encíclica Rerum novarum (1891) e explicada na Quadragesimo anno (1931). Propõe que os meios de produção sejam distribuídos amplamente entre a população, como alternativa ao socialismo e ao capitalismo. Influenciou movimentos democrata-cristãos e foi defendido por G. K. Chesterton e Hilaire Belloc. No Brasil, tem apoio entre chestertonianos e grupos integralistas."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-distributismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "A teoria foi articulada pela primeira vez pelo Papa Leão XIII na encíclica Rerum novarum, de 1891."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-distributismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "A teoria foi articulada pela primeira vez pelo Papa Leão XIII na encíclica Rerum novarum, de 1891.",
+              "paragraphs": [
+                "A teoria foi articulada pela primeira vez pelo Papa Leão XIII na encíclica Rerum novarum, de 1891."
+              ],
+              "sourceIds": ["src-wiki-topic-distributismo"],
+              "entityIds": ["wiki-topic-distributismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "A propriedade privada dos meios de produção deve ser distribuída o mais amplamente possível entre a população."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-distributismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "A propriedade privada dos meios de produção deve ser distribuída o mais amplamente possível entre a população.",
+              "paragraphs": [
+                "A propriedade privada dos meios de produção deve ser distribuída o mais amplamente possível entre a população."
+              ],
+              "sourceIds": ["src-wiki-topic-distributismo"],
+              "entityIds": ["wiki-topic-distributismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de distribucionismo."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-distributismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-distributismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-distributismo": "Nomes alternativos: distribucionismo." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "A encíclica Rerum novarum, do Papa Leão XIII, articula pela primeira vez o distributismo.",
+        "Hilaire Belloc expõe uma crítica que serve de ponto de partida para justificar o nome distributismo.",
+        "O Papa Pio XI explica o distributismo de forma mais extensa na encíclica Quadragesimo anno.",
+        "Segundo o texto, o socialismo não permite que as pessoas possuam os meios de produção, enquanto o capitalismo permite que apenas alguns os possuam."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-distributismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1891",
+              "kicker": "Marco datado",
+              "summary": "A encíclica Rerum novarum, do Papa Leão XIII, articula pela primeira vez o distributismo.",
+              "paragraphs": [
+                "A encíclica Rerum novarum, do Papa Leão XIII, articula pela primeira vez o distributismo."
+              ],
+              "sourceIds": ["src-wiki-topic-distributismo"],
+              "entityIds": ["wiki-topic-distributismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1913",
+              "kicker": "Marco datado",
+              "summary": "Hilaire Belloc expõe uma crítica que serve de ponto de partida para justificar o nome distributismo.",
+              "paragraphs": [
+                "Hilaire Belloc expõe uma crítica que serve de ponto de partida para justificar o nome distributismo."
+              ],
+              "sourceIds": ["src-wiki-topic-distributismo"],
+              "entityIds": ["wiki-topic-distributismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1931",
+              "kicker": "Marco datado",
+              "summary": "O Papa Pio XI explica o distributismo de forma mais extensa na encíclica Quadragesimo anno.",
+              "paragraphs": [
+                "O Papa Pio XI explica o distributismo de forma mais extensa na encíclica Quadragesimo anno."
+              ],
+              "sourceIds": ["src-wiki-topic-distributismo"],
+              "entityIds": ["wiki-topic-distributismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "Segundo o texto, o socialismo não permite que as pessoas possuam os meios de produção, enquanto o capitalismo permite que apenas alguns os possuam.",
+              "paragraphs": [
+                "Segundo o texto, o socialismo não permite que as pessoas possuam os meios de produção, enquanto o capitalismo permite que apenas alguns os possuam."
+              ],
+              "sourceIds": ["src-wiki-topic-distributismo"],
+              "entityIds": ["wiki-topic-distributismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1891, "end": 1891 },
+            { "itemId": "marco-2", "start": 1913, "end": 1913 },
+            { "itemId": "marco-3", "start": 1931, "end": 1931 }
+          ],
+          "entityIds": ["wiki-topic-distributismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Alguns autores consideram o distributismo mais uma aspiração do que uma terceira via econômica."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-distributismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Alguns autores consideram o distributismo mais uma aspiração do que uma terceira via econômica.",
+              "paragraphs": [
+                "Alguns autores consideram o distributismo mais uma aspiração do que uma terceira via econômica."
+              ],
+              "sourceIds": ["src-wiki-topic-distributismo"],
+              "entityIds": ["wiki-topic-distributismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-distributismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-distributismo"] }]
+    }
+  ]
+}

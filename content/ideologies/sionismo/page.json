@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-sionismo",
+  "slug": "sionismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Sionismo",
+  "kicker": "Ideologia política",
+  "summary": "O sionismo é um movimento político nacionalista que defende o direito à autodeterminação do povo judeu e a existência de um Estado nacional judaico na região onde historicamente existiu o antigo Reino de Israel. Surgiu no final do século XIX na Europa Central e Oriental, com o uso do termo cunhado em Viena em 1892. Seu marco organizacional foi o Primeiro Congresso Sionista, realizado em Basileia em 1897, que fundou a Organização Sionista Mundial sob a presidência de Theodor Herzl.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O sionismo é um movimento político nacionalista que defende o direito à autodeterminação do povo judeu e a existência de um Estado nacional judaico na região onde historicamente existiu o antigo Reino de Israel. Surgiu no final do século XIX na Europa Central e Oriental, com o uso do termo cunhado em Viena em 1892. Seu marco organizacional foi o Primeiro Congresso Sionista, realizado em Basileia em 1897, que fundou a Organização Sionista Mundial sob a presidência de Theodor Herzl."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "O movimento defende a manutenção da identidade judaica e se opõe à assimilação dos judeus pelas sociedades dos países em que viviam."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "O movimento defende a manutenção da identidade judaica e se opõe à assimilação dos judeus pelas sociedades dos países em que viviam.",
+              "paragraphs": [
+                "O movimento defende a manutenção da identidade judaica e se opõe à assimilação dos judeus pelas sociedades dos países em que viviam."
+              ],
+              "sourceIds": ["src-wiki-topic-sionismo"],
+              "entityIds": ["wiki-topic-sionismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de Movimento sionista, Zionism, Nacionalismo judaico."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sionismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-sionismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-sionismo": "Nomes alternativos: Movimento sionista, Zionism, Nacionalismo judaico."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": ["Herzl escreve Der Judenstaat.", "Surgimento dos sionistas revisionistas."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1895",
+              "kicker": "Marco datado",
+              "summary": "Herzl escreve Der Judenstaat.",
+              "paragraphs": ["Herzl escreve Der Judenstaat."],
+              "sourceIds": ["src-wiki-topic-sionismo"],
+              "entityIds": ["wiki-topic-sionismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1925",
+              "kicker": "Marco datado",
+              "summary": "Surgimento dos sionistas revisionistas.",
+              "paragraphs": ["Surgimento dos sionistas revisionistas."],
+              "sourceIds": ["src-wiki-topic-sionismo"],
+              "entityIds": ["wiki-topic-sionismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1895, "end": 1895 },
+            { "itemId": "marco-2", "start": 1925, "end": 1925 }
+          ],
+          "entityIds": ["wiki-topic-sionismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Os críticos do sionismo o consideram um movimento colonialista ou racista, enquanto os sionistas rebatem essas críticas."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sionismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Os críticos do sionismo o consideram um movimento colonialista ou racista, enquanto os sionistas rebatem essas críticas.",
+              "paragraphs": [
+                "Os críticos do sionismo o consideram um movimento colonialista ou racista, enquanto os sionistas rebatem essas críticas."
+              ],
+              "sourceIds": ["src-wiki-topic-sionismo"],
+              "entityIds": ["wiki-topic-sionismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 6 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-sionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-sionismo"] }]
+    }
+  ]
+}

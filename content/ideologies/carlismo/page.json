@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-carlismo",
+  "slug": "carlismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Carlismo",
+  "kicker": "Ideologia política",
+  "summary": "Movimento político tradicionalista e legitimista, de caráter antiliberal e antirrevolucionário, surgido na Espanha em 1836 em apoio a Carlos como legítimo rei. Sua origem está na disputa sobre a sucessão ao trono após a decisão de Fernando VII de declarar sucessora sua filha Isabel, o que deu origem às Guerras Carlistas. O verbete também trata de sua ligação com o miguelismo em Portugal e da divisão do movimento no século XX.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Movimento político tradicionalista e legitimista, de caráter antiliberal e antirrevolucionário, surgido na Espanha em 1836 em apoio a Carlos como legítimo rei. Sua origem está na disputa sobre a sucessão ao trono após a decisão de Fernando VII de declarar sucessora sua filha Isabel, o que deu origem às Guerras Carlistas. O verbete também trata de sua ligação com o miguelismo em Portugal e da divisão do movimento no século XX."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-carlismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O movimento emergiu quando Fernando VII declarou sua filha Isabel como sucessora, em oposição às pretensões do irmão Carlos Maria de Bourbon."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-carlismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O movimento emergiu quando Fernando VII declarou sua filha Isabel como sucessora, em oposição às pretensões do irmão Carlos Maria de Bourbon.",
+              "paragraphs": [
+                "O movimento emergiu quando Fernando VII declarou sua filha Isabel como sucessora, em oposição às pretensões do irmão Carlos Maria de Bourbon."
+              ],
+              "sourceIds": ["src-wiki-topic-carlismo"],
+              "entityIds": ["wiki-topic-carlismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "O carlismo é descrito como um movimento político tradicionalista e legitimista, de caráter antiliberal, antirrevolucionário e antimaçônico."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-carlismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "O carlismo é descrito como um movimento político tradicionalista e legitimista, de caráter antiliberal, antirrevolucionário e antimaçônico.",
+              "paragraphs": [
+                "O carlismo é descrito como um movimento político tradicionalista e legitimista, de caráter antiliberal, antirrevolucionário e antimaçônico."
+              ],
+              "sourceIds": ["src-wiki-topic-carlismo"],
+              "entityIds": ["wiki-topic-carlismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "O grafo não registra nomes alternativos nem termos-chave desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "A sanção pragmática é definitivamente aprovada após intrigas judiciais.",
+        "Início das guerras civis carlistas.",
+        "Surgimento do movimento carlista na Espanha.",
+        "III Guerra Carlista, com envolvimento de carlo-miguelistas em Portugal.",
+        "Tradicionalmente, a maioria dos reinos espanhóis permitia a sucessão de filhas na ausência de filhos, com exceção de Aragão, que tendia a favorecer o semi-salicismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-carlismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1832",
+              "kicker": "Marco datado",
+              "summary": "A sanção pragmática é definitivamente aprovada após intrigas judiciais.",
+              "paragraphs": [
+                "A sanção pragmática é definitivamente aprovada após intrigas judiciais."
+              ],
+              "sourceIds": ["src-wiki-topic-carlismo"],
+              "entityIds": ["wiki-topic-carlismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1833",
+              "kicker": "Marco datado",
+              "summary": "Início das guerras civis carlistas.",
+              "paragraphs": ["Início das guerras civis carlistas."],
+              "sourceIds": ["src-wiki-topic-carlismo"],
+              "entityIds": ["wiki-topic-carlismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1836",
+              "kicker": "Marco datado",
+              "summary": "Surgimento do movimento carlista na Espanha.",
+              "paragraphs": ["Surgimento do movimento carlista na Espanha."],
+              "sourceIds": ["src-wiki-topic-carlismo"],
+              "entityIds": ["wiki-topic-carlismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-4",
+              "title": "1872",
+              "kicker": "Marco datado",
+              "summary": "III Guerra Carlista, com envolvimento de carlo-miguelistas em Portugal.",
+              "paragraphs": [
+                "III Guerra Carlista, com envolvimento de carlo-miguelistas em Portugal."
+              ],
+              "sourceIds": ["src-wiki-topic-carlismo"],
+              "entityIds": ["wiki-topic-carlismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "Tradicionalmente, a maioria dos reinos espanhóis permitia a sucessão de filhas na ausência de filhos, com exceção de Aragão, que tendia a favorecer o semi-salicismo.",
+              "paragraphs": [
+                "Tradicionalmente, a maioria dos reinos espanhóis permitia a sucessão de filhas na ausência de filhos, com exceção de Aragão, que tendia a favorecer o semi-salicismo."
+              ],
+              "sourceIds": ["src-wiki-topic-carlismo"],
+              "entityIds": ["wiki-topic-carlismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1832, "end": 1832 },
+            { "itemId": "marco-2", "start": 1833, "end": 1833 },
+            { "itemId": "marco-3", "start": 1836, "end": 1836 },
+            { "itemId": "marco-4", "start": 1872, "end": 1872 }
+          ],
+          "entityIds": ["wiki-topic-carlismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Muitos contemporâneos, começando pelo irmão do rei e pelos ramos cadetes de Bourbon, consideraram a alteração da sucessão ilegal em vários pontos."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-carlismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Muitos contemporâneos, começando pelo irmão do rei e pelos ramos cadetes de Bourbon, consideraram a alteração da sucessão ilegal em vários pontos.",
+              "paragraphs": [
+                "Muitos contemporâneos, começando pelo irmão do rei e pelos ramos cadetes de Bourbon, consideraram a alteração da sucessão ilegal em vários pontos."
+              ],
+              "sourceIds": ["src-wiki-topic-carlismo"],
+              "entityIds": ["wiki-topic-carlismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 11 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-carlismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-carlismo"] }]
+    }
+  ]
+}
