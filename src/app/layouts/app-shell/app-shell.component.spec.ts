@@ -29,6 +29,9 @@ describe('ATLAS navigation', () => {
       '/',
       '/marxismo',
       '/liberalismo',
+      '/social-democracia',
+      '/anarquismo',
+      '/rede',
       ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
     ];
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))

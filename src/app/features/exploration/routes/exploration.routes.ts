@@ -9,15 +9,15 @@ import {
 } from '@core/routing/route-resolvers';
 
 export const explorationRoutes: Routes = [
-  // Retired tools: the archive search at /conhecimento replaces them.
-  { path: 'rede', redirectTo: 'conhecimento', pathMatch: 'full' },
+  // /comparar is retired: the archive search at /conhecimento replaces it. /rede is the full-screen graph.
+  { path: 'grafo', redirectTo: 'rede', pathMatch: 'full' },
   { path: 'comparar', redirectTo: 'conhecimento', pathMatch: 'full' },
   {
-    path: 'grafo',
-    title: 'Grafo do acervo — ATLAS',
+    path: 'rede',
+    title: 'Rede do acervo — ATLAS',
     data: {
       fullscreen: true,
-      breadcrumb: 'Grafo',
+      breadcrumb: 'Rede',
       metaDescription:
         'Mapa interativo das ideologias, pessoas, obras e acontecimentos do acervo e das ligações entre eles, com legenda e filtros.',
     },

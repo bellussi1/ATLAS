@@ -5,8 +5,8 @@ test('the graph page fills the window without page scroll and explains its legen
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/grafo');
-  await expect(page.getByRole('heading', { name: 'Grafo do acervo', level: 1 })).toBeVisible();
+  await page.goto('/rede');
+  await expect(page.getByRole('heading', { name: 'Rede do acervo', level: 1 })).toBeVisible();
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const metrics = await page.evaluate(() => ({
     scrollHeight: document.documentElement.scrollHeight,
@@ -22,7 +22,7 @@ test('the graph page fills the window without page scroll and explains its legen
 });
 
 test('filters, searches and opens a node with a link to its entry', async ({ page }) => {
-  await page.goto('/grafo');
+  await page.goto('/rede');
   const legend = page.getByRole('complementary', { name: 'Legenda e filtros' });
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const people = legend.getByRole('button', { name: /Pessoas/ });
@@ -42,7 +42,7 @@ test('filters, searches and opens a node with a link to its entry', async ({ pag
 });
 
 test('works from the keyboard and has no detectable accessibility violations', async ({ page }) => {
-  await page.goto('/grafo');
+  await page.goto('/rede');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   await page.locator('[data-node]').first().focus();
   await page.keyboard.press('Enter');
@@ -56,7 +56,7 @@ test('on a phone the legend opens as a drawer and the page still does not scroll
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 780 });
-  await page.goto('/grafo');
+  await page.goto('/rede');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const overflow = await page.evaluate(
     () => document.documentElement.scrollHeight > window.innerHeight,

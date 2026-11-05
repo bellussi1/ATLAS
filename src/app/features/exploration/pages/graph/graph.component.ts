@@ -71,6 +71,7 @@ const classificationLabels: Record<string, string> = {
   templateUrl: './graph.component.html',
   styleUrl: './graph.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { '(document:keydown)': 'slashFocus($event)' },
 })
 export class GraphComponent {
   private readonly repository = inject(ContentRepository);
@@ -311,6 +312,14 @@ export class GraphComponent {
   }
   setQuery(value: string): void {
     this.query.set(value);
+  }
+  /** The slash key jumps to the search field, unless the reader is already typing somewhere. */
+  slashFocus(event: KeyboardEvent): void {
+    const target = event.target as HTMLElement | null;
+    if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (target?.closest('input, textarea, select, [contenteditable]')) return;
+    event.preventDefault();
+    this.stage()?.nativeElement.ownerDocument.getElementById('graph-search')?.focus();
   }
   searchKey(event: KeyboardEvent): void {
     if (event.key === 'Enter') {

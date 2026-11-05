@@ -38,11 +38,15 @@
   background: var(--color-surface-raised);
 }
 .bar__home {
-  font: 800 1.1rem/1 var(--font-sans);
-  letter-spacing: 0.08em;
-  color: var(--color-ink);
-  text-decoration: none;
-  padding: 0.5rem 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  padding-inline-end: 0.25rem;
+  img {
+    display: block;
+    block-size: 1.9rem;
+    inline-size: auto;
+  }
 }
 .bar__title {
   margin: 0;
@@ -73,24 +77,41 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  flex: 1 1 16rem;
-  max-inline-size: 28rem;
+  flex: 1 1 18rem;
+  max-inline-size: 32rem;
 }
-.search__label {
-  font: 600 0.8125rem/1 var(--font-sans);
-  white-space: nowrap;
+.search__icon {
+  position: absolute;
+  inset-inline-start: 0.85rem;
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  fill: none;
+  stroke: var(--color-ink-muted);
+  stroke-width: 2;
+  pointer-events: none;
+}
+.search__key {
+  position: absolute;
+  inset-inline-end: 0.7rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0.25rem;
+  color: var(--color-ink-muted);
+  font: 500 0.75rem/1.2 var(--font-mono);
 }
 .search__input {
   flex: 1;
   min-inline-size: 0;
-  min-block-size: 2.5rem;
-  padding: 0 0.75rem;
+  min-block-size: 2.75rem;
+  padding: 0 2.5rem 0 2.6rem;
   border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-tight);
+  border-radius: 999px;
   background: var(--color-canvas);
   color: var(--color-ink);
   font: 400 1rem/1 var(--font-sans);
+  &:focus-visible {
+    border-color: var(--color-focus);
+  }
 }
 .search__results {
   position: absolute;
@@ -600,4 +621,42 @@
 }
 .workspace:not(.workspace--detail) .detail {
   display: none;
+}
+
+.panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tight);
+  background: var(--color-canvas);
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-block-size: 2.75rem;
+    padding: 0 0.75rem;
+    cursor: pointer;
+    list-style: none;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &::after {
+      content: '+';
+      color: var(--color-ink-muted);
+      font: 600 1.1rem/1 var(--font-mono);
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+  &[open] summary::after {
+    content: '−';
+  }
+  > :not(summary) {
+    margin-inline: 0.5rem;
+  }
+  > .hint {
+    margin-inline: 0.75rem;
+  }
+  > :last-child {
+    margin-block-end: 0.5rem;
+  }
 }

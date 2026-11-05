@@ -1,22 +1,30 @@
 <div class="graph-page">
   <header class="bar">
-    <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">ATLAS</a>
-    <h1 class="bar__title">Grafo do acervo</h1>
+    <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
+      <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
+    </a>
+    <h1 class="bar__title">Rede do acervo</h1>
     <form class="search" role="search" (submit)="$event.preventDefault()">
-      <label for="graph-search" class="search__label">Buscar por nome</label>
+      <label for="graph-search" class="visually-hidden">Buscar por nome</label>
+      <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5" />
+        <path d="M15.5 15.5L21 21" />
+      </svg>
       <input
         id="graph-search"
         class="search__input"
         type="search"
         autocomplete="off"
-        placeholder="Ex.: Marx, Liberalismo"
+        placeholder="Buscar verbete, pessoa, obra…"
         [value]="query()"
         (input)="setQuery($any($event.target).value)"
         (keydown)="searchKey($event)"
         aria-describedby="graph-search-hint"
       />
+      <kbd class="search__key" aria-hidden="true">/</kbd>
       <span id="graph-search-hint" class="visually-hidden"
-        >Enter abre o primeiro resultado. Escape limpa a busca.</span
+        >Enter abre o primeiro resultado. Escape limpa a busca. A tecla barra leva o foco até
+        aqui.</span
       >
       @if (query().trim()) {
         <ul class="search__results" aria-label="Resultados da busca">
@@ -53,8 +61,8 @@
       [class.controls--open]="controlsOpen()"
       aria-label="Legenda e filtros"
     >
-      <section aria-labelledby="legend-kinds">
-        <h2 id="legend-kinds">Tipos de nó</h2>
+      <details class="panel" open>
+        <summary><h2>Tipos de nó</h2></summary>
         <p class="hint">Cada tipo tem cor e forma próprias. Clique para mostrar ou ocultar.</p>
         <ul class="legend">
           @for (kind of kinds; track kind.id) {
@@ -80,10 +88,10 @@
           }
         </ul>
         <p class="hint">Duplo clique mostra só aquele tipo.</p>
-      </section>
+      </details>
 
-      <section aria-labelledby="legend-relations">
-        <h2 id="legend-relations">Tipos de ligação</h2>
+      <details class="panel" open>
+        <summary><h2>Tipos de ligação</h2></summary>
         <p class="hint">A ponta da seta aponta para quem recebe a ação.</p>
         <ul class="legend">
           @for (family of families; track family.id) {
@@ -113,10 +121,10 @@
             </li>
           }
         </ul>
-      </section>
+      </details>
 
-      <section aria-labelledby="legend-collections">
-        <h2 id="legend-collections">Coleções</h2>
+      <details class="panel" open>
+        <summary><h2>Coleções</h2></summary>
         <ul class="legend">
           @for (collection of collections; track collection.id) {
             <li>
@@ -140,7 +148,7 @@
           />
           <span>Ocultar verbetes sem ligação</span>
         </label>
-      </section>
+      </details>
 
       <button
         type="button"
