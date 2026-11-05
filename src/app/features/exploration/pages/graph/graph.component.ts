@@ -22,20 +22,18 @@ import {
   type NetworkNode,
   type NetworkPoint,
   nodeRadius,
+  nodeScaleFor,
   positionClaims,
   relationFamilies,
   relationFamilyDefinition,
   type RelationFamilyId,
   searchNodes,
 } from '@core/content/queries/knowledge-network';
+import { type LabelCandidate, placeLabels } from '@core/content/queries/network-labels';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 
 import { shapePath } from './graph-shapes';
-
-const WORLD = { width: 1600, height: 1000 };
-const MIN_ZOOM = 0.3;
-const MAX_ZOOM = 6;
 
 interface View {
   x: number;
@@ -86,7 +84,8 @@ export class GraphComponent {
   readonly collections = this.network.collections.filter((c) => c.count > 0);
   readonly shape = shapePath;
   readonly radius = nodeRadius;
-  readonly world = WORLD;
+  readonly world = signal({ width: 1600, height: 1000 });
+  private readonly fitK = signal(1);
 
   readonly kindsOn = signal<ReadonlySet<NetworkKindId>>(new Set(networkKinds.map((k) => k.id)));
   readonly familiesOn = signal<ReadonlySet<RelationFamilyId>>(
@@ -162,9 +161,11 @@ export class GraphComponent {
       return [{ node, kind, r, x: point.x, y: point.y, path: shapePath(kind.shape, r) }];
     });
   });
+  readonly zoomK = computed(() => this.view().k);
   readonly drawnEdges = computed(() => {
     const positions = this.positions();
     if (!positions) return [];
+    const scale = nodeScaleFor(this.zoomK());
     return this.visible().edges.flatMap((edge: NetworkEdge) => {
       const from = positions.get(edge.source);
       const to = positions.get(edge.target);
@@ -174,7 +175,7 @@ export class GraphComponent {
       const dx = to.x - from.x;
       const dy = to.y - from.y;
       const length = Math.hypot(dx, dy) || 1;
-      const pad = nodeRadius(target.degree) + 3;
+      const pad = nodeRadius(target.degree) * scale + 3 / this.zoomK();
       return [
         {
           edge,
@@ -192,10 +193,48 @@ export class GraphComponent {
     return `translate(${x} ${y}) scale(${k})`;
   });
   /** Shapes keep a readable size on screen: larger when zoomed out, smaller when zoomed in. */
-  readonly nodeScale = computed(
-    () => Math.round(Math.min(2.2, Math.max(0.5, 1 / Math.sqrt(this.view().k))) * 100) / 100,
-  );
-  readonly zoomPercent = computed(() => Math.round(this.view().k * 100));
+  readonly nodeScale = computed(() => Math.round(nodeScaleFor(this.zoomK()) * 100) / 100);
+  /** Labels are placed in screen space so none covers another label or a node shape. */
+  readonly labels = computed(() => {
+    const nodes = this.drawnNodes();
+    if (!nodes.length) return [];
+    const k = this.zoomK();
+    const scale = nodeScaleFor(k);
+    const zoom = k / this.fitK();
+    const forced = new Set<string>([
+      ...this.neighbours(),
+      ...this.matchIds(),
+      ...[this.selectedId(), this.hoveredId(), this.focusId()].filter((id): id is string => !!id),
+    ]);
+    const ranked = [...nodes].sort((a, b) => b.node.degree - a.node.degree);
+    const candidates: LabelCandidate[] = [];
+    ranked.forEach((item, rank) => {
+      const isForced = forced.has(item.node.id);
+      candidates.push({
+        id: item.node.id,
+        text: item.node.title,
+        x: item.x * k,
+        y: item.y * k,
+        radius: item.r * scale * k,
+        priority: item.node.id === this.selectedId() ? -2 : isForced ? -1 : rank,
+        forced: item.node.id === this.selectedId(),
+      });
+    });
+    const obstacles = nodes.map((item) => ({
+      id: item.node.id,
+      x: item.x * k,
+      y: item.y * k,
+      radius: item.r * scale * k,
+    }));
+    const byId = new Map(nodes.map((item) => [item.node.id, item]));
+    return placeLabels(candidates, obstacles, Math.round(10 + 14 * zoom)).flatMap((label) => {
+      const item = byId.get(label.id);
+      return item
+        ? [{ ...label, wx: item.x * k, wy: item.y * k, dimmed: this.isDimmed(label.id) }]
+        : [];
+    });
+  });
+  readonly zoomPercent = computed(() => Math.round((this.zoomK() / this.fitK()) * 100));
   readonly status = computed(() => {
     if (this.loading()) return 'Organizando o mapa…';
     const { nodes, edges } = this.visible();
@@ -208,6 +247,8 @@ export class GraphComponent {
 
   private pointer: { id: number; x: number; y: number; origin: View; moved: boolean } | null = null;
   private suppressClick = false;
+  /** The view follows window resizes until the reader moves or zooms it. */
+  private autoFit = true;
 
   constructor() {
     afterNextRender(() => {
@@ -220,7 +261,7 @@ export class GraphComponent {
       const observer = new (globalThis.ResizeObserver ?? FallbackObserver)(() => {
         if (!element) return;
         this.size.set({ width: element.clientWidth, height: element.clientHeight });
-        if (!fitted && this.positions()) {
+        if (this.positions() && (!fitted || this.autoFit)) {
           fitted = true;
           this.fit();
         }
@@ -231,7 +272,9 @@ export class GraphComponent {
       }
       // The layout runs after the first paint so the loading state is visible meanwhile.
       const timer = setTimeout(() => {
-        this.positions.set(layoutNetwork(this.network.nodes, this.network.edges, WORLD));
+        const layout = layoutNetwork(this.network.nodes, this.network.edges);
+        this.world.set({ width: layout.width, height: layout.height });
+        this.positions.set(layout.positions);
         if (this.size().width && !fitted) {
           fitted = true;
           this.fit();
@@ -301,18 +344,6 @@ export class GraphComponent {
     const selected = this.selectedId();
     return !!selected && edge.source !== selected && edge.target !== selected;
   }
-  showLabel(node: NetworkNode): boolean {
-    const id = node.id;
-    return (
-      id === this.selectedId() ||
-      id === this.hoveredId() ||
-      id === this.focusId() ||
-      this.neighbours().has(id) ||
-      this.matchIds().has(id) ||
-      this.view().k >= 1.6 ||
-      node.degree >= 8
-    );
-  }
   tabIndexFor(id: string): number {
     const roving = this.focusId() ?? this.drawnNodes()[0]?.node.id;
     return id === roving ? 0 : -1;
@@ -373,19 +404,24 @@ export class GraphComponent {
   fit(): void {
     const { width, height } = this.size();
     if (!width || !height) return;
-    const k = Math.min(width / WORLD.width, height / WORLD.height) * 0.96;
-    this.view.set({ k, x: (width - WORLD.width * k) / 2, y: (height - WORLD.height * k) / 2 });
+    this.autoFit = true;
+    const world = this.world();
+    const k = Math.min(width / world.width, height / world.height) * 0.96;
+    this.fitK.set(k);
+    this.view.set({ k, x: (width - world.width * k) / 2, y: (height - world.height * k) / 2 });
   }
   zoomBy(factor: number, around?: { x: number; y: number }): void {
+    this.autoFit = false;
     const { width, height } = this.size();
     const point = around ?? { x: width / 2, y: height / 2 };
     this.view.update(({ x, y, k }) => {
-      const next = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, k * factor));
+      const next = Math.min(this.fitK() * 12, Math.max(this.fitK() * 0.5, k * factor));
       const ratio = next / k;
       return { k: next, x: point.x - (point.x - x) * ratio, y: point.y - (point.y - y) * ratio };
     });
   }
   panBy(dx: number, dy: number): void {
+    this.autoFit = false;
     this.view.update(({ x, y, k }) => ({ k, x: x + dx, y: y + dy }));
   }
 
@@ -418,6 +454,7 @@ export class GraphComponent {
     if (!pointer.moved) {
       pointer.moved = true;
       this.dragging.set(true);
+      this.autoFit = false;
       (event.currentTarget as Element).setPointerCapture(event.pointerId);
     }
     this.view.set({ ...pointer.origin, x: pointer.origin.x + dx, y: pointer.origin.y + dy });
@@ -479,7 +516,8 @@ export class GraphComponent {
     const point = this.positions()?.get(id);
     const { width, height } = this.size();
     if (!point || !width) return;
-    const k = Math.max(this.view().k, 1.2);
+    this.autoFit = false;
+    const k = Math.max(this.view().k, this.fitK() * 3.5);
     this.view.set({ k, x: width / 2 - point.x * k, y: height / 2 - point.y * k });
   }
 

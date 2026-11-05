@@ -29,7 +29,7 @@
               </button>
             </li>
           } @empty {
-            <li class="search__none">Nenhum verbete com esse nome no recorte atual.</li>
+            <li class="hint">Nenhum verbete com esse nome no recorte atual.</li>
           }
         </ul>
       }
@@ -239,20 +239,36 @@
                 (pointerenter)="hoveredId.set(item.node.id)"
                 (pointerleave)="hoveredId.set(null)"
               >
+                @if (item.node.degree >= 6) {
+                  <circle
+                    class="node__halo"
+                    [attr.r]="item.r * 1.9"
+                    [style.fill]="'var(' + item.kind.color + ')'"
+                  />
+                }
                 <path
                   class="node__shape"
                   fill-rule="evenodd"
                   [attr.d]="item.path"
                   [style.fill]="'var(' + item.kind.color + ')'"
                 />
-                @if (showLabel(item.node)) {
-                  <text class="node__label" [attr.y]="item.r + 13" text-anchor="middle">
-                    {{ item.node.title }}
-                  </text>
-                }
               </g>
             }
           </g>
+        </g>
+        <g class="labels" aria-hidden="true">
+          @for (label of labels(); track label.id) {
+            <text
+              class="label"
+              [class.is-dimmed]="label.dimmed"
+              [attr.x]="view().x + label.wx + label.dx"
+              [attr.y]="view().y + label.wy + label.dy"
+              [attr.text-anchor]="label.anchor"
+              dominant-baseline="central"
+            >
+              {{ label.text }}
+            </text>
+          }
         </g>
       </svg>
 

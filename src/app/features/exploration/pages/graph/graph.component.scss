@@ -129,11 +129,6 @@
     }
   }
 }
-.search__none {
-  padding: 0.6rem;
-  color: var(--color-ink-muted);
-  font-size: 0.875rem;
-}
 
 // ---- workspace ----
 .workspace {
@@ -313,14 +308,21 @@
   stroke: var(--color-focus);
   stroke-width: 4;
 }
-.node__label {
+.node__halo {
+  opacity: 0.16;
+  pointer-events: none;
+}
+.label {
   pointer-events: none;
   fill: var(--color-ink);
-  font: 600 11px/1 var(--font-sans);
+  font: 600 12px/1 var(--font-sans);
   paint-order: stroke;
   stroke: var(--color-canvas);
-  stroke-width: 3.5px;
+  stroke-width: 4px;
   stroke-linejoin: round;
+  &.is-dimmed {
+    opacity: 0.35;
+  }
 }
 
 .zoom {

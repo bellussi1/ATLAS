@@ -1,4 +1,13 @@
 import type { Claim, EntityKind, KnowledgeGraph } from '@core/content/models/content-schema';
+import {
+  forceCollide,
+  forceLink,
+  forceManyBody,
+  forceSimulation,
+  forceX,
+  forceY,
+  type SimulationNodeDatum,
+} from 'd3-force';
 
 /** Node families of the graph page. Each one has a colour, a shape and an icon family. */
 export type NetworkKindId =
@@ -420,6 +429,12 @@ export interface NetworkPoint {
   y: number;
 }
 
+export interface NetworkLayout {
+  positions: Map<string, NetworkPoint>;
+  width: number;
+  height: number;
+}
+
 function seeded(seed: number): () => number {
   let state = seed >>> 0 || 1;
   return () => {
@@ -428,102 +443,91 @@ function seeded(seed: number): () => number {
   };
 }
 
+/** Largest on-screen growth of a node shape; the layout reserves room for it. */
+export const MAX_NODE_SCALE = 1.6;
+const NODE_GAP = 14;
+
+/** Shapes stay readable at any zoom: larger when zoomed out, smaller when zoomed in. */
+export function nodeScaleFor(zoom: number): number {
+  return Math.min(MAX_NODE_SCALE, Math.max(0.6, 1 / Math.sqrt(zoom)));
+}
+
+/** Space a node keeps for itself in the layout, including its largest on-screen size. */
+export function nodeClearance(degree: number): number {
+  return nodeRadius(degree) * MAX_NODE_SCALE + NODE_GAP / 2;
+}
+
+interface SimNode extends SimulationNodeDatum {
+  id: string;
+  clearance: number;
+  tx: number;
+  ty: number;
+}
+
 /**
- * Deterministic force layout in a unit space of `width` × `height`: collections start in their
- * own sector, edges pull, nodes repel, a weak gravity keeps components together.
+ * Deterministic force layout (d3-force): links pull, nodes repel, each collection leans toward
+ * its own sector and a collision force keeps every shape, at its largest size, apart.
  */
 export function layoutNetwork(
   nodes: readonly NetworkNode[],
   edges: readonly NetworkEdge[],
-  options: { width: number; height: number; iterations?: number; seed?: number } = {
-    width: 1600,
-    height: 1000,
-  },
-): Map<string, NetworkPoint> {
-  const { width, height } = options;
-  const iterations = options.iterations ?? 220;
-  const random = seeded(options.seed ?? 7);
-  const count = nodes.length;
+  options: { ticks?: number; seed?: number } = {},
+): NetworkLayout {
   const positions = new Map<string, NetworkPoint>();
-  if (!count) return positions;
-  const index = new Map(nodes.map((node, i) => [node.id, i]));
-  const x = new Float64Array(count);
-  const y = new Float64Array(count);
+  const count = nodes.length;
+  if (!count) return { positions, width: 0, height: 0 };
+  const random = seeded(options.seed ?? 7);
+  const span = Math.sqrt(count) * 90;
   const collectionIds = [...new Set(nodes.map((node) => node.collections[0]))];
-  nodes.forEach((node, i) => {
+  const simNodes: SimNode[] = nodes.map((node) => {
     const sector = collectionIds.indexOf(node.collections[0]) / collectionIds.length;
-    const angle = sector * Math.PI * 2 + random() * 0.9;
-    const radius = (0.15 + random() * 0.3) * Math.min(width, height);
-    x[i] = width / 2 + Math.cos(angle) * radius * 1.4;
-    y[i] = height / 2 + Math.sin(angle) * radius;
+    const angle = sector * Math.PI * 2;
+    const tx = Math.cos(angle) * span * 0.2 * 1.4;
+    const ty = Math.sin(angle) * span * 0.2;
+    return {
+      id: node.id,
+      clearance: nodeClearance(node.degree),
+      tx,
+      ty,
+      x: tx + (random() - 0.5) * span * 0.4,
+      y: ty + (random() - 0.5) * span * 0.4,
+    };
   });
-  const pairs = edges
-    .map((edge) => [index.get(edge.source), index.get(edge.target)] as const)
-    .filter(
-      (pair): pair is readonly [number, number] => pair[0] !== undefined && pair[1] !== undefined,
-    );
-  const area = width * height;
-  const ideal = Math.sqrt(area / count) * 0.8;
-  const fx = new Float64Array(count);
-  const fy = new Float64Array(count);
-  for (let step = 0; step < iterations; step++) {
-    const cooling = 1 - step / iterations;
-    const limit = ideal * 0.6 * cooling + 1;
-    fx.fill(0);
-    fy.fill(0);
-    for (let i = 0; i < count; i++) {
-      for (let j = i + 1; j < count; j++) {
-        let dx = x[i] - x[j];
-        let dy = y[i] - y[j];
-        let distance = dx * dx + dy * dy;
-        if (distance < 0.01) {
-          dx = random() - 0.5;
-          dy = random() - 0.5;
-          distance = dx * dx + dy * dy + 0.01;
-        }
-        if (distance > ideal * ideal * 16) continue;
-        const push = (ideal * ideal) / distance;
-        fx[i] += dx * push;
-        fy[i] += dy * push;
-        fx[j] -= dx * push;
-        fy[j] -= dy * push;
-      }
-    }
-    for (const [a, b] of pairs) {
-      const dx = x[a] - x[b];
-      const dy = y[a] - y[b];
-      const distance = Math.sqrt(dx * dx + dy * dy) || 1;
-      const pull = (distance - ideal * 0.7) / (distance * 3);
-      fx[a] -= dx * pull;
-      fy[a] -= dy * pull;
-      fx[b] += dx * pull;
-      fy[b] += dy * pull;
-    }
-    for (let i = 0; i < count; i++) {
-      fx[i] += (width / 2 - x[i]) * 0.01;
-      fy[i] += (height / 2 - y[i]) * 0.01 * (width / height);
-      const size = Math.hypot(fx[i], fy[i]) || 1;
-      const move = Math.min(size, limit);
-      x[i] += (fx[i] / size) * move;
-      y[i] += (fy[i] / size) * move;
-    }
-  }
-  const minX = Math.min(...x);
-  const maxX = Math.max(...x);
-  const minY = Math.min(...y);
-  const maxY = Math.max(...y);
-  const margin = 40;
-  const scale = Math.min(
-    (width - margin * 2) / Math.max(maxX - minX, 1),
-    (height - margin * 2) / Math.max(maxY - minY, 1),
-  );
-  nodes.forEach((node, i) => {
+  const known = new Set(simNodes.map((node) => node.id));
+  const links = edges
+    .filter((edge) => known.has(edge.source) && known.has(edge.target))
+    .map((edge) => ({ source: edge.source, target: edge.target }));
+  const simulation = forceSimulation(simNodes)
+    .randomSource(random)
+    .stop()
+    .force(
+      'link',
+      forceLink<SimNode, { source: string; target: string }>(links)
+        .id((node) => node.id)
+        .distance(90)
+        .strength(0.25),
+    )
+    .force('charge', forceManyBody<SimNode>().strength(-110).distanceMax(600))
+    .force('x', forceX<SimNode>((node) => node.tx).strength(0.09))
+    .force('y', forceY<SimNode>((node) => node.ty).strength(0.09))
+    .force('collide', forceCollide<SimNode>((node) => node.clearance).iterations(3));
+  const ticks = options.ticks ?? 320;
+  for (let i = 0; i < ticks; i++) simulation.tick();
+  // A last pass with collisions alone settles any pair the other forces left touching.
+  simulation.force('link', null).force('charge', null).force('x', null).force('y', null);
+  for (let i = 0; i < 80; i++) simulation.tick();
+  const marginX = 160;
+  const marginY = 64;
+  const minX = Math.min(...simNodes.map((node) => (node.x ?? 0) - node.clearance));
+  const minY = Math.min(...simNodes.map((node) => (node.y ?? 0) - node.clearance));
+  const maxX = Math.max(...simNodes.map((node) => (node.x ?? 0) + node.clearance));
+  const maxY = Math.max(...simNodes.map((node) => (node.y ?? 0) + node.clearance));
+  for (const node of simNodes)
     positions.set(node.id, {
-      x: margin + (x[i] - minX) * scale + (width - margin * 2 - (maxX - minX) * scale) / 2,
-      y: margin + (y[i] - minY) * scale + (height - margin * 2 - (maxY - minY) * scale) / 2,
+      x: (node.x ?? 0) - minX + marginX,
+      y: (node.y ?? 0) - minY + marginY,
     });
-  });
-  return positions;
+  return { positions, width: maxX - minX + marginX * 2, height: maxY - minY + marginY * 2 };
 }
 
 /** Node radius grows with connections, within a readable range. */

@@ -4,21 +4,22 @@ Decisão aplicada em 01/11/2026, com base no resumo fornecido pelo usuário. O a
 
 ## Matriz por necessidade
 
-| Necessidade | Escolha do ATLAS | Quando considerar outra opção |
-|---|---|---|
-| Entrada e saída de elementos | CSS com `animate.enter` e `animate.leave`; transições de estado em CSS | View Transitions como melhoria progressiva de navegação, sem animar âncoras ou filtros nem atrasar o foco |
-| Acessibilidade | HTML nativo primeiro; CDK Dialog para painéis, foco e restauração | `@angular/aria` para padrão composto que precise de comportamento headless; CDK virtual scroll só com volume medido e alternativa textual |
-| Grafo editorial | D3 modular e SVG declarativo do Angular | Cytoscape.js se algoritmos de rede forem requisito; Sigma.js só para grafo global grande cuja escala justifique WebGL |
-| Timeline | SVG próprio com eixo temporal sticky e lista cronológica operável | vis-timeline só se o ganho de prazo compensar adaptar aparência, foco e prerender |
-| Mapas históricos | MapLibre GL JS sob demanda, com `maplibre-gl-dates` e dados do OpenHistoricalMap | Leaflet para mapa simples; escolher tiles e hospedagem explicitamente, com custos e atribuições próprios |
-| Gráficos quantitativos | SVG e módulos D3 conforme a necessidade | Biblioteca mais completa só quando um gráfico real exigir; sempre tabela com unidades, período, fonte e incerteza |
-| Motion complexo | CSS primeiro; WAAPI existente no shell permanece | GSAP Flip e DrawSVG só com caso concreto e import dinâmico; revisar a licença vigente antes da adoção |
+| Necessidade                  | Escolha do ATLAS                                                                 | Quando considerar outra opção                                                                                                             |
+| ---------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Entrada e saída de elementos | CSS com `animate.enter` e `animate.leave`; transições de estado em CSS           | View Transitions como melhoria progressiva de navegação, sem animar âncoras ou filtros nem atrasar o foco                                 |
+| Acessibilidade               | HTML nativo primeiro; CDK Dialog para painéis, foco e restauração                | `@angular/aria` para padrão composto que precise de comportamento headless; CDK virtual scroll só com volume medido e alternativa textual |
+| Grafo editorial              | D3 modular e SVG declarativo do Angular                                          | Cytoscape.js se algoritmos de rede forem requisito; Sigma.js só para grafo global grande cuja escala justifique WebGL                     |
+| Timeline                     | SVG próprio com eixo temporal sticky e lista cronológica operável                | vis-timeline só se o ganho de prazo compensar adaptar aparência, foco e prerender                                                         |
+| Mapas históricos             | MapLibre GL JS sob demanda, com `maplibre-gl-dates` e dados do OpenHistoricalMap | Leaflet para mapa simples; escolher tiles e hospedagem explicitamente, com custos e atribuições próprios                                  |
+| Gráficos quantitativos       | SVG e módulos D3 conforme a necessidade                                          | Biblioteca mais completa só quando um gráfico real exigir; sempre tabela com unidades, período, fonte e incerteza                         |
+| Motion complexo              | CSS primeiro; WAAPI existente no shell permanece                                 | GSAP Flip e DrawSVG só com caso concreto e import dinâmico; revisar a licença vigente antes da adoção                                     |
 
 Evitar em código novo: `@angular/animations` (depreciado desde 20.2), bibliotecas que imponham React, temas prontos que substituam a identidade editorial, múltiplos motores para a mesma visualização, ScrollSmoother e bibliotecas de smooth scroll. A rolagem pertence ao navegador e à pessoa.
 
 ## Aplicação no Marxismo
 
 - `d3-shape` 3 e `d3-scale` 4 são as únicas novas dependências de produção; os tipos ficam em desenvolvimento. Ambas têm licença ISC, conferida nos arquivos LICENSE instalados. Preservar os avisos no empacotamento e na distribuição.
+- `d3-force` 3 (ISC) calcula o layout do grafo em `/grafo` (links, repulsão e colisão entre formas); roda só no navegador e é determinístico com semente fixa. Tipos em desenvolvimento.
 - D3 calcula curvas e coordenadas em funções puras de `features/ideologies/utils/visualization-geometry.ts`. Angular cria o SVG, os controles e os IDs. Sem `d3-selection`, seleção global do DOM ou simulação de força concorrendo com a hidratação.
 - O grafo usa todos os registros para fixar coordenadas; filtros alteram relações visíveis sem reorganizar nós. A altura acompanha o número de nós. A tabela conserva contexto, direção, certeza e fontes; posições não representam genealogia nem distância histórica.
 - Timeline: anos iniciais disponíveis em escala proporcional, com domínio fixo durante filtros. Datas ausentes não viram zero; anos iguais compartilham posição. O SVG é complemento visual, oculto da árvore acessível, porque a lista contém os mesmos registros e controla o painel. O eixo integra a faixa sticky existente.
