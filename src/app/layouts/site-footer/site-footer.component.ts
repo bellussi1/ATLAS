@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 
 import { headerReadings } from '../site-header/site-header.component';
 
 @Component({
   selector: 'app-site-footer',
-  imports: [RouterLink],
+  imports: [AtlasRevealDirective, RouterLink],
   templateUrl: './site-footer.component.html',
   styleUrl: './site-footer.component.scss',
 })

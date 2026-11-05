@@ -27,7 +27,7 @@
 </section>
 
 <section class="console" aria-label="Busca e ferramentas" data-tone-section>
-  <form role="search" aria-label="Busca no acervo" (submit)="search($event)">
+  <form role="search" aria-label="Busca no acervo" appReveal (submit)="search($event)">
     <app-text-field
       controlId="atlas-search"
       label="Procurar no acervo"
@@ -148,29 +148,37 @@
           }
         }
       </div>
-      <div class="howto-copy">
-        <h3 id="howto-card-title">{{ step().title }}</h3>
-        <p>{{ step().body }}</p>
-        <div class="howto-actions">
-          <a
-            class="sheet-action atlas-press"
-            [routerLink]="step().path"
-            [fragment]="step().fragment"
-            >{{ step().action }}
-            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
+      <div class="howto-copies">
+        @for (item of howTo; track item.id) {
+          <div
+            class="howto-copy"
+            [class.is-active]="item.id === step().id"
+            [attr.inert]="item.id === step().id ? null : ''"
           >
-          <button class="howto-next atlas-press" type="button" (click)="nextStep()">
-            {{ stepNumber() === howTo.length ? 'Recomeçar' : 'Próximo gesto' }}
-            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
-          </button>
-        </div>
+            <h3 [attr.id]="item.id === step().id ? 'howto-card-title' : null">{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+            <div class="howto-actions">
+              <a
+                class="sheet-action atlas-press"
+                [routerLink]="item.path"
+                [fragment]="item.fragment"
+                >{{ item.action }}
+                <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
+              >
+              <button class="howto-next atlas-press" type="button" (click)="nextStep()">
+                {{ item.id === howTo[howTo.length - 1].id ? 'Recomeçar' : 'Próximo gesto' }}
+                <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+        }
       </div>
     </article>
   </div>
   <p class="sr-only" role="status">Gesto selecionado: {{ step().verb }}.</p>
 
-  <ul class="guide-doors" id="como-navegar">
-    <li>
+  <ul class="guide-doors" id="como-navegar" appReveal>
+    <li data-stagger style="--stagger: 0">
       <a routerLink="/" fragment="leituras">
         <span class="guide-verb">Ler</span>
         <strong>Leituras contínuas</strong>
@@ -179,7 +187,7 @@
         >
       </a>
     </li>
-    <li>
+    <li data-stagger style="--stagger: 1">
       <a routerLink="/conhecimento">
         <span class="guide-verb">Consultar</span>
         <strong>Acervo de verbetes</strong>
@@ -189,7 +197,7 @@
         </span>
       </a>
     </li>
-    <li>
+    <li data-stagger style="--stagger: 2">
       <a routerLink="/rede">
         <span class="guide-verb">Conectar</span>
         <strong>Rede em tela cheia</strong>
@@ -268,44 +276,67 @@
 </section>
 
 <section class="catalogue-band" aria-labelledby="catalogues-title" data-tone-section>
-  <h2 id="catalogues-title">Explorar por tipo</h2>
-  <ul>
-    <li>
-      <a routerLink="/conhecimento">Acervo completo</a>
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
+    <p class="atlas-band-number atlas-band-number--square" aria-hidden="true">B</p>
+    <h2 id="catalogues-title">Explorar <em>por tipo.</em></h2>
+    <p>Pessoas, obras, países, acontecimentos: escolha um tipo de ficha e comece por ele.</p>
+  </header>
+  <ul class="doors" appReveal>
+    <li class="door door--wide door--search" data-stagger style="--stagger: 0">
+      <a routerLink="/conhecimento">
+        <span class="door-glyph" aria-hidden="true"></span>
+        <strong>Acervo completo</strong>
+        <span class="door-note">Busque em todas as fichas de uma vez, com filtros por tipo.</span>
+        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+      </a>
     </li>
-    <li>
-      <a routerLink="/rede">Rede de ligações</a>
+    <li class="door door--wide door--net" data-stagger style="--stagger: 1">
+      <a routerLink="/rede">
+        <span class="door-glyph" aria-hidden="true"></span>
+        <strong>Rede de ligações</strong>
+        <span class="door-note">O acervo como mapa: siga quem se liga a quem.</span>
+        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+      </a>
     </li>
-    @for (catalogue of catalogues; track catalogue.path) {
-      <li>
-        <a [routerLink]="'/' + catalogue.path">{{ catalogue.title }}</a>
+    @for (catalogue of catalogues; track catalogue.path; let index = $index) {
+      <li class="door" data-stagger [style.--stagger]="index + 2">
+        <a [routerLink]="'/' + catalogue.path">
+          <span class="door-glyph" aria-hidden="true"></span>
+          <strong>{{ catalogue.title }}</strong>
+          <span class="door-note">{{ catalogue.description }}</span>
+          <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+        </a>
       </li>
     }
   </ul>
 </section>
 
 <section class="method" id="metodo" aria-labelledby="method-title" data-tone-section>
-  <h2 id="method-title">Como ler o acervo</h2>
-  <ol appReveal>
-    <li data-stagger style="--stagger: 0">
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
+    <p class="atlas-band-number atlas-band-number--circle" aria-hidden="true">C</p>
+    <h2 id="method-title">Como ler <em>o acervo.</em></h2>
+    <p>Cada trecho carrega uma marca que diz que tipo de afirmação ele é.</p>
+  </header>
+  <ul class="method-list" appReveal>
+    <li class="method-card" data-stagger style="--stagger: 0">
       <span class="method-shape method-shape--fact" aria-hidden="true"></span>
       <strong>Fato documentado</strong>
       <p>Afirmações acompanhadas de fonte identificável, perto do texto.</p>
     </li>
-    <li data-stagger style="--stagger: 1">
+    <li class="method-card" data-stagger style="--stagger: 1">
       <span class="method-shape method-shape--reading" aria-hidden="true"></span>
       <strong>Interpretação</strong>
       <p>Leituras atribuídas a autores e correntes, nunca apresentadas como fato.</p>
     </li>
-    <li data-stagger style="--stagger: 2">
+    <li class="method-card" data-stagger style="--stagger: 2">
       <span class="method-shape method-shape--debate" aria-hidden="true"></span>
       <strong>Controvérsia</strong>
       <p>Debates com defesa, crítica e limites explícitos, sem simetria inventada.</p>
     </li>
-    <li data-stagger style="--stagger: 3">
+    <li class="method-card" data-stagger style="--stagger: 3">
       <span class="method-shape method-shape--gap" aria-hidden="true"></span>
       <strong>Lacuna</strong>
       <p>O que ainda não foi revisado aparece marcado como pendente.</p>
     </li>
-  </ol>
+  </ul>
 </section>

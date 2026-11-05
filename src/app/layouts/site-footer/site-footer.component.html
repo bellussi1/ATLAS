@@ -1,6 +1,6 @@
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div class="footer-invitation">
+    <div class="footer-invitation" appReveal>
       <p class="footer-kicker">Um acervo, muitos caminhos.</p>
       <h2>A próxima descoberta <em>é sua.</em></h2>
       <a class="footer-cta atlas-press" routerLink="/conhecimento">Explorar o acervo</a>
@@ -9,9 +9,9 @@
     <nav class="footer-directory" aria-label="Mapa do acervo">
       <section class="footer-readings">
         <h2>Ler</h2>
-        <ul>
+        <ul appReveal>
           @for (reading of readings; track reading.path) {
-            <li>
+            <li data-stagger [style.--stagger]="$index">
               <a
                 [routerLink]="reading.path"
                 [attr.data-shape]="reading.shape"
@@ -27,7 +27,7 @@
       </section>
       <section class="footer-explore">
         <h2>Explorar</h2>
-        <ul class="footer-links">
+        <ul class="footer-links" appReveal>
           <li><a routerLink="/conhecimento">Buscar no acervo</a></li>
           @for (catalogue of catalogues; track catalogue.path) {
             <li>
@@ -38,7 +38,7 @@
       </section>
       <section>
         <h2>Projeto</h2>
-        <ul class="footer-links">
+        <ul class="footer-links" appReveal>
           <li>
             <a href="https://github.com/bellussi1/ATLAS" rel="noopener"
               >Código no GitHub <span aria-hidden="true">↗</span></a

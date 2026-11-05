@@ -165,8 +165,12 @@
   color: var(--color-on-strong-surface);
   font: 500 1rem/1.3 var(--font-sans);
   text-underline-offset: 0.2em;
+  transition:
+    color var(--motion-fast),
+    translate var(--motion-standard) var(--ease-out);
   &:hover {
     color: var(--color-ochre-paper);
+    translate: 4px 0;
   }
 }
 
@@ -218,7 +222,9 @@
 @media (prefers-reduced-motion: reduce) {
   .footer-cta,
   .footer-cta::after,
-  .footer-readings .shape {
+  .footer-readings .shape,
+  .footer-readings a,
+  .footer-links a {
     transition: none;
   }
 }
