@@ -8,9 +8,11 @@
   Pular para o conteúdo
 </a>
 
-<app-site-header />
+@if (!fullscreen()) {
+  <app-site-header />
 
-<app-breadcrumbs />
+  <app-breadcrumbs />
+}
 
 <main id="conteudo" tabindex="-1" [attr.aria-label]="pageTitle()">
   @if (failedNavigation()) {
@@ -24,4 +26,6 @@
   <router-outlet />
 </main>
 
-<app-site-footer />
+@if (!fullscreen()) {
+  <app-site-footer />
+}
