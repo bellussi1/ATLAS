@@ -318,6 +318,17 @@ test('ponta a ponta com cliente falso: dois braços, travas, relatório, confer�
   assert.equal(choice.candidates.length, 2);
 });
 
+test('revisao.json quebrado para o relatório e não apaga as marcas', async (t) => {
+  const root = await project(t);
+  await runEval({ root, from: ['x'], size: 3, client: fakeClient(), ...quiet });
+  const { directory } = await buildReport({ root });
+  const path = join(directory, 'revisao.json');
+  const broken = '}, { "ok": true } ]';
+  await writeFile(path, broken);
+  await assert.rejects(buildReport({ root }), /revisao\.json inválido/);
+  assert.equal(await readFile(path, 'utf8'), broken);
+});
+
 test('retomada da avaliação: segunda execução não paga de novo', async (t) => {
   const root = await project(t);
   const client = fakeClient();

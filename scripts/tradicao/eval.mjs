@@ -357,7 +357,11 @@ export async function buildReport({ root = projectRoot, id = 'amostra-20', from 
   const reviewPath = join(directory, 'revisao.json');
   const previous = await readFile(reviewPath, 'utf8')
     .then((text) => new Map(JSON.parse(text).map((item) => [`${item.arm}|${item.quote}`, item])))
-    .catch(() => new Map());
+    .catch((error) => {
+      // A broken file holds a person's marks: stop, never overwrite it with an empty list.
+      if (error.code === 'ENOENT') return new Map();
+      throw new Error(`revisao.json inválido, nada foi gravado: ${error.message}`);
+    });
   const merged = items.map((item) => {
     const old = previous.get(`${item.arm}|${item.quote}`);
     return old ? { ...item, ok: old.ok, note: old.note } : item;
