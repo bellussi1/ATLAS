@@ -31,7 +31,7 @@
           <ul class="search__results card" aria-label="Resultados da busca">
             @for (match of matches(); track match.id) {
               <li>
-                <button type="button" (click)="select(match.id)">
+                <button type="button" (click)="select(match.id)" (keydown)="resultKey($event)">
                   <app-kind-icon [kind]="networkIcon(match)" />
                   <span>{{ match.title }}</span>
                   <small>{{ kindLabel(match) }} · {{ match.degree }}</small>
@@ -409,7 +409,11 @@
                 <dt><kbd>Shift</kbd> + setas</dt>
                 <dd>Mover a vista mais rápido</dd>
                 <dt><kbd>Enter</kbd></dt>
-                <dd>Selecionar o nó</dd>
+                <dd>Selecionar o nó. Na busca, abre o primeiro resultado</dd>
+                <dt><kbd>↓</kbd><kbd>↑</kbd> na busca</dt>
+                <dd>Percorrer os resultados. <kbd>Esc</kbd> volta ao campo</dd>
+                <dt><kbd>Home</kbd></dt>
+                <dd>Reenquadrar o grafo, como o <kbd>0</kbd></dd>
                 <dt><kbd>]</kbd><kbd>[</kbd></dt>
                 <dd>Num nó: passar ao próximo ou ao anterior entre os vizinhos</dd>
                 <dt><kbd>C</kbd></dt>

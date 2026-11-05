@@ -595,6 +595,32 @@ interface SimNode extends SimulationNodeDatum {
   ty: number;
   /** Nodes without links wait on a ring around the connected core. */
   isolated: boolean;
+  /** Linked, but apart from the largest group: pulled toward the centre so they stay near. */
+  satellite: boolean;
+}
+
+/** Ids of the largest group of linked nodes. */
+function mainComponent(edges: readonly NetworkEdge[]): Set<string> {
+  const adjacent = new Map<string, string[]>();
+  for (const edge of edges) {
+    adjacent.set(edge.source, [...(adjacent.get(edge.source) ?? []), edge.target]);
+    adjacent.set(edge.target, [...(adjacent.get(edge.target) ?? []), edge.source]);
+  }
+  let best = new Set<string>();
+  const seen = new Set<string>();
+  for (const start of adjacent.keys()) {
+    if (seen.has(start)) continue;
+    const group = new Set([start]);
+    seen.add(start);
+    for (const id of group)
+      for (const next of adjacent.get(id) ?? [])
+        if (!seen.has(next)) {
+          seen.add(next);
+          group.add(next);
+        }
+    if (group.size > best.size) best = group;
+  }
+  return best;
 }
 
 /**
@@ -613,15 +639,18 @@ export function layoutNetwork(
   const span = Math.sqrt(count) * 130;
   const collectionIds = [...new Set(nodes.map((node) => node.collections[0]))];
   const linked = new Set(edges.flatMap((edge) => [edge.source, edge.target]));
+  const main = mainComponent(edges);
   const simNodes: SimNode[] = nodes.map((node) => {
     const sector = collectionIds.indexOf(node.collections[0]) / collectionIds.length;
     const angle = sector * Math.PI * 2;
-    const tx = Math.cos(angle) * span * 0.2 * 1.4;
-    const ty = Math.sin(angle) * span * 0.2;
+    const own = !linked.has(node.id) || main.has(node.id);
+    const tx = own ? Math.cos(angle) * span * 0.2 * 1.4 : 0;
+    const ty = own ? Math.sin(angle) * span * 0.2 : 0;
     return {
       id: node.id,
       clearance: nodeClearance(node.degree),
       isolated: !linked.has(node.id),
+      satellite: linked.has(node.id) && !main.has(node.id),
       tx,
       ty,
       x: tx + (random() - 0.5) * span * 0.4,
@@ -653,11 +682,15 @@ export function layoutNetwork(
     .force('charge', forceManyBody<SimNode>().strength(-260).distanceMax(900))
     .force(
       'x',
-      forceX<SimNode>((node) => node.tx).strength((node) => (node.isolated ? 0 : 0.05)),
+      forceX<SimNode>((node) => node.tx).strength((node) =>
+        node.isolated ? 0 : node.satellite ? 0.16 : 0.05,
+      ),
     )
     .force(
       'y',
-      forceY<SimNode>((node) => node.ty).strength((node) => (node.isolated ? 0 : 0.05)),
+      forceY<SimNode>((node) => node.ty).strength((node) =>
+        node.isolated ? 0 : node.satellite ? 0.16 : 0.05,
+      ),
     )
     .force(
       'ring',

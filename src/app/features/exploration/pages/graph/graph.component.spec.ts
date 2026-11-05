@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+﻿import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { provideContentFixture } from '@testing/content-fixture';
 import { vi } from 'vitest';
@@ -210,7 +210,7 @@ describe('GraphComponent', () => {
     const lit = new Set([linked.node.id, ...component.neighbours()]);
     expect(component.labels().length).toBeGreaterThan(0);
     for (const label of component.labels()) expect(lit.has(label.id)).toBe(true);
-    expect(component.edgeLabels().length).toBeGreaterThan(0);
+    expect(component.edgeLabels()).toEqual([]);
     expect(root(fixture).querySelector('.node.is-dimmed')).not.toBeNull();
   });
 
@@ -256,5 +256,63 @@ describe('GraphComponent', () => {
     const el = root(fixture).querySelector(`[data-node="${linked.node.id}"]`)!;
     el.dispatchEvent(new KeyboardEvent('keydown', { key: ']', bubbles: true }));
     expect(component.focusId()).not.toBe(linked.node.id);
+  });
+
+  it('names more nodes at each zoom step and words the links only up close', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.hoverNode(linked.node.id);
+    expect(component.edgeLabels()).toEqual([]);
+    component.hoverNode(null);
+    const degrees = new Map(component.drawnNodes().map((n) => [n.node.id, n.node.degree]));
+    for (const label of component.labels()) expect(degrees.get(label.id)).toBeGreaterThanOrEqual(2);
+    const centre = { x: 700, y: 450 };
+    component.zoomBy(2.2, centre);
+    component.zoomBy(2.2, centre);
+    component.select(linked.node.id);
+    component.hoverNode(linked.node.id);
+    await vi.waitFor(() => expect(component.edgeLabels().length).toBeGreaterThan(0));
+  });
+
+  it('reframes with Home, ignores letter shortcuts on buttons and unwinds Escape in steps', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1000, height: 600 });
+    component.fit();
+    const base = component.view().k;
+    component.zoomBy(2);
+    press('Home');
+    await vi.waitFor(() => expect(component.view().k).toBeCloseTo(base));
+    const button = root(fixture).querySelector<HTMLButtonElement>('.zoom button')!;
+    press('l', button);
+    expect(component.controlsOpen()).toBeNull();
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.select(linked.node.id);
+    component.togglePathStart();
+    press('Escape');
+    expect(component.pathFromId()).toBeNull();
+    expect(component.selectedId()).toBe(linked.node.id);
+    press('Escape');
+    expect(component.selectedId()).toBeNull();
+  });
+
+  it('walks through the search results with the arrow keys and Escape returns to the field', async () => {
+    const fixture = await render();
+    const first = fixture.componentInstance.drawnNodes()[0].node;
+    const input = root(fixture).querySelector<HTMLInputElement>('#graph-search')!;
+    document.body.append(root(fixture));
+    input.value = first.title.slice(0, 3);
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+    const buttons = root(fixture).querySelectorAll<HTMLButtonElement>('.search__results button');
+    expect(buttons.length).toBeGreaterThan(0);
+    expect(document.activeElement).toBe(buttons[0]);
+    buttons[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    expect(document.activeElement).toBe(input);
+    root(fixture).remove();
   });
 });

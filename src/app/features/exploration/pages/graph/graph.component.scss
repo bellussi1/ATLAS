@@ -1,4 +1,4 @@
-:host {
+﻿:host {
   --color-orange-strong: #9a4a0c;
   --card-shadow: 4px 4px 0 var(--color-ink);
   --rise: 240ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
@@ -551,7 +551,7 @@ kbd {
     pointer-events: auto;
   }
 }
-.hud__row {
+.hud > .hud__row {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;

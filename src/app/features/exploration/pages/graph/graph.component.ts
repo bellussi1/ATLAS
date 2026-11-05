@@ -1,4 +1,4 @@
-import {
+﻿import {
   afterNextRender,
   ChangeDetectionStrategy,
   Component,
@@ -338,6 +338,8 @@ export class GraphComponent {
     const active = this.activeId();
     const positions = this.positions();
     if (!active || !positions || this.animating()) return [];
+    // Zoomed out the lines speak for themselves; the wording appears when the reader comes close.
+    if (this.zoomK() / this.fitK() < EDGE_LABEL_ZOOM) return [];
     const k = this.zoomK();
     const { x: vx, y: vy } = this.view();
     const taken = this.labels().map((label) => {
@@ -539,6 +541,7 @@ export class GraphComponent {
       '-': () => this.zoomStep(0.8),
       _: () => this.zoomStep(0.8),
       '0': () => this.fit(true),
+      Home: () => this.fit(true),
       c: () => this.togglePathStart(),
       C: () => this.togglePathStart(),
       Escape: () => {
@@ -548,6 +551,9 @@ export class GraphComponent {
         else if (this.controlsOpen() && !this.wide()) this.controlsOpen.set(false);
       },
     };
+    // Letter shortcuts stay out of the way of links, buttons and menus, which keep their own keys.
+    if (/^[a-z]$/i.test(event.key) && target?.closest('a, button, summary, [role="menuitem"]'))
+      return;
     const action = actions[event.key];
     if (!action) return;
     event.preventDefault();
@@ -564,9 +570,22 @@ export class GraphComponent {
       event.preventDefault();
     } else if (event.key === 'Escape') {
       this.query.set('');
+    } else if (event.key === 'ArrowDown' && this.matches().length) {
+      event.preventDefault();
+      this.searchResult(event, 'first');
     }
   }
-
+  /** Arrow keys walk through the search results; Escape returns to the field. */
+  resultKey(event: KeyboardEvent): void {
+    const key = event.key;
+    if (key !== 'ArrowDown' && key !== 'ArrowUp' && key !== 'Escape') return;
+    event.preventDefault();
+    event.stopPropagation();
+    this.searchResult(
+      event,
+      key === 'ArrowDown' ? 'next' : key === 'ArrowUp' ? 'previous' : 'field',
+    );
+  }
   // ---- selection and focus ----
 
   select(id: string | null): void {
@@ -895,6 +914,19 @@ export class GraphComponent {
     }
   }
 
+  private searchResult(event: Event, move: 'first' | 'next' | 'previous' | 'field'): void {
+    const form = (event.target as HTMLElement).closest('form');
+    const buttons = [
+      ...(form?.querySelectorAll<HTMLButtonElement>('.search__results button') ?? []),
+    ];
+    const input = form?.querySelector<HTMLInputElement>('input');
+    const at = buttons.indexOf(event.target as HTMLButtonElement);
+    if (move === 'first') buttons[0]?.focus();
+    else if (move === 'next') buttons[Math.min(at + 1, buttons.length - 1)]?.focus();
+    else if (move === 'previous') (at <= 0 ? input : buttons[at - 1])?.focus();
+    else input?.focus();
+  }
+
   private describeEdge(edge: NetworkEdge, source: NetworkNode, target: NetworkNode) {
     return {
       sentence: `${source.title} ${edge.phrase} ${target.title}`,
@@ -988,11 +1020,11 @@ export class GraphComponent {
       freeW / (box.maxX - box.minX + 220),
       freeH / (box.maxY - box.minY + 180),
     );
-    const k = Math.min(this.fitK() * 4.5, Math.max(this.fitK() * 1.6, fitted));
+    const k = Math.min(this.fitK() * 4.5, Math.max(this.fitK() * 2, fitted));
     const cx = inset.left + freeW / 2;
     const cy = inset.top + freeH / 2;
     // Neighbours too far apart to frame together: stay on the node itself.
-    const spread = fitted < this.fitK() * 1.6;
+    const spread = fitted < this.fitK() * 2;
     const mx = spread ? point.x : (box.minX + box.maxX) / 2;
     const my = spread ? point.y : (box.minY + box.maxY) / 2;
     this.glideTo({ k, x: cx - mx * k, y: cy - my * k }, true);
@@ -1039,6 +1071,9 @@ function toggled<T>(set: ReadonlySet<T>, value: T): ReadonlySet<T> {
   if (!next.delete(value)) next.add(value);
   return next;
 }
+
+/** Zoom, relative to the first view, from which links show their wording. */
+const EDGE_LABEL_ZOOM = 1.8;
 
 function hash(text: string): number {
   let value = 2166136261;
