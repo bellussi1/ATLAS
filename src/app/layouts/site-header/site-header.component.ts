@@ -1,23 +1,29 @@
 import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { filter, map } from 'rxjs';
 
-type Section = 'marxismo' | 'liberalismo' | 'acervo' | null;
+type Section = 'leituras' | 'acervo' | 'rede' | null;
 
-// Every page outside the two readings belongs to the archive (catalogues, records, search).
+export const headerReadings = [
+  { path: '/marxismo', title: 'Marxismo', note: 'Trabalho, valor e divergências' },
+  { path: '/liberalismo', title: 'Liberalismo', note: 'Liberdade, propriedade e mercado' },
+  { path: '/social-democracia', title: 'Social-democracia', note: 'Reforma, Estado e bem-estar' },
+  { path: '/anarquismo', title: 'Anarquismo', note: 'Autoridade, autonomia e apoio mútuo' },
+] as const;
+
+// Every page outside the readings and the network belongs to the archive (catalogues, records, search).
 const sectionOf = (url: string): Section => {
   const path = url.split(/[?#]/)[0];
   if (path === '/') return null;
-  if (path.startsWith('/marxismo')) return 'marxismo';
-  if (path.startsWith('/liberalismo')) return 'liberalismo';
+  if (path.startsWith('/rede')) return 'rede';
+  if (headerReadings.some((reading) => path.startsWith(reading.path))) return 'leituras';
   return 'acervo';
 };
 
 @Component({
   selector: 'app-site-header',
-  imports: [AtlasGeometricMosaicComponent, RouterLink],
+  imports: [RouterLink],
   templateUrl: './site-header.component.html',
   styleUrl: './site-header.component.scss',
   host: {
@@ -30,7 +36,12 @@ export class SiteHeaderComponent {
   private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly router = inject(Router);
   private readonly menuToggle = viewChild.required<ElementRef<HTMLButtonElement>>('menuToggle');
+  private readonly readingsToggle =
+    viewChild.required<ElementRef<HTMLButtonElement>>('readingsToggle');
+  readonly readings = headerReadings;
   readonly menuOpen = signal(false);
+  readonly readingsOpen = signal(false);
+  readonly query = signal('');
   readonly section = toSignal(
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd),
@@ -45,28 +56,46 @@ export class SiteHeaderComponent {
         filter((event) => event instanceof NavigationEnd),
         takeUntilDestroyed(),
       )
-      .subscribe(() => this.menuOpen.set(false));
+      .subscribe(() => {
+        this.menuOpen.set(false);
+        this.readingsOpen.set(false);
+      });
   }
 
   toggle(): void {
     this.menuOpen.update((open) => !open);
   }
 
+  toggleReadings(): void {
+    this.readingsOpen.update((open) => !open);
+  }
+
+  search(event: Event): void {
+    event.preventDefault();
+    void this.router.navigate(['/conhecimento'], {
+      queryParams: { q: this.query().trim() || null },
+    });
+  }
+
   close(returnFocus = false): void {
-    if (!this.menuOpen()) return;
+    if (!this.menuOpen() && !this.readingsOpen()) return;
+    const smallScreen = this.menuToggle().nativeElement.offsetParent !== null;
     this.menuOpen.set(false);
-    if (returnFocus) this.menuToggle().nativeElement.focus();
+    this.readingsOpen.set(false);
+    if (returnFocus) {
+      // On a small screen the menu button owns focus; on a wide one, the submenu button does.
+      (smallScreen ? this.menuToggle() : this.readingsToggle()).nativeElement.focus();
+    }
   }
 
   closeOnOutsidePointer(event: PointerEvent): void {
     if (!this.element.nativeElement.contains(event.target as Node)) this.close();
   }
 
-  // Tabbing out of the open panel closes it, so focus never moves behind a hidden menu.
+  // Tabbing out of an open panel closes it, so focus never moves behind a hidden menu.
   closeWhenFocusLeaves(event: FocusEvent): void {
     const next = event.relatedTarget as Node | null;
-    if (!next || !this.menuOpen()) return;
-    const panel = this.element.nativeElement.querySelector('#navegacao-principal');
-    if (!panel?.contains(next) && next !== this.menuToggle().nativeElement) this.close();
+    if (!next || (!this.menuOpen() && !this.readingsOpen())) return;
+    if (!this.element.nativeElement.contains(next)) this.close();
   }
 }

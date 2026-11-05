@@ -1,13 +1,12 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a
-      class="wordmark"
+      class="brand"
       routerLink="/"
-      (click)="close()"
       aria-label="ATLAS — História em relação — página inicial"
+      (click)="close()"
     >
-      <img class="wordmark__logo" src="/brand/atlas-logo.svg" alt="" width="280" height="80" />
-      <span class="wordmark__caption">História em relação</span>
+      <img class="brand__logo" src="/brand/atlas-logo.svg" alt="" width="140" height="40" />
     </a>
     <button
       #menuToggle
@@ -20,52 +19,76 @@
       <span class="menu-toggle__icon" aria-hidden="true"></span>
       <span>Menu</span>
     </button>
-    <nav
-      id="navegacao-principal"
-      class="graphic-doors"
-      [class.is-open]="menuOpen()"
-      aria-label="Navegação principal"
-    >
-      <a
-        class="graphic-door atlas-press"
-        routerLink="/marxismo"
-        [class.is-active]="section() === 'marxismo'"
-        [attr.aria-current]="section() === 'marxismo' ? 'page' : null"
-        (click)="close()"
-      >
-        <app-geometric-mosaic [columns]="3" [rows]="1" palette="marx" [seed]="11" />
-        <span class="door-verb">Ler </span>
-        <span class="door-label"
-          >Marxismo <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></span
-        >
-      </a>
-      <a
-        class="graphic-door atlas-press"
-        routerLink="/liberalismo"
-        [class.is-active]="section() === 'liberalismo'"
-        [attr.aria-current]="section() === 'liberalismo' ? 'page' : null"
-        (click)="close()"
-      >
-        <app-geometric-mosaic [columns]="3" [rows]="1" palette="liberal" [seed]="23" />
-        <span class="door-verb">Percorrer </span>
-        <span class="door-label"
-          >Liberalismo
-          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></span
-        >
-      </a>
-      <a
-        class="graphic-door graphic-door--search atlas-press"
-        routerLink="/conhecimento"
-        [class.is-active]="section() === 'acervo'"
-        [attr.aria-current]="section() === 'acervo' ? 'page' : null"
-        (click)="close()"
-      >
-        <span class="door-glyph" aria-hidden="true"></span>
-        <span class="door-verb">Buscar </span>
-        <span class="door-label"
-          >Acervo <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></span
-        >
-      </a>
-    </nav>
+    <div id="navegacao-principal" class="panel" [class.is-open]="menuOpen()">
+      <nav class="nav" aria-label="Navegação principal">
+        <ul>
+          <li class="nav__readings">
+            <button
+              #readingsToggle
+              type="button"
+              class="nav__link nav__link--button"
+              aria-controls="menu-leituras"
+              [attr.aria-expanded]="readingsOpen()"
+              [class.is-active]="section() === 'leituras'"
+              (click)="toggleReadings()"
+            >
+              Leituras <span class="nav__caret" aria-hidden="true"></span>
+            </button>
+            <ul id="menu-leituras" class="readings-menu" [class.is-open]="readingsOpen()">
+              @for (reading of readings; track reading.path) {
+                <li>
+                  <a [routerLink]="reading.path" (click)="close()">
+                    <strong>{{ reading.title }}</strong>
+                    <span>{{ reading.note }}</span>
+                  </a>
+                </li>
+              }
+            </ul>
+          </li>
+          <li>
+            <a
+              class="nav__link"
+              routerLink="/conhecimento"
+              [class.is-active]="section() === 'acervo'"
+              [attr.aria-current]="section() === 'acervo' ? 'page' : null"
+              (click)="close()"
+              >Acervo</a
+            >
+          </li>
+          <li>
+            <a
+              class="nav__link"
+              routerLink="/rede"
+              [class.is-active]="section() === 'rede'"
+              [attr.aria-current]="section() === 'rede' ? 'page' : null"
+              (click)="close()"
+              >Rede</a
+            >
+          </li>
+          <li>
+            <a class="nav__link" routerLink="/" fragment="como-navegar" (click)="close()"
+              >Como usar</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <form class="search" role="search" aria-label="Busca no acervo" (submit)="search($event)">
+        <label for="header-search" class="visually-hidden">Buscar no acervo</label>
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5" />
+          <path d="M15.5 15.5L21 21" />
+        </svg>
+        <input
+          id="header-search"
+          class="search__input"
+          type="search"
+          autocomplete="off"
+          placeholder="Buscar no acervo…"
+          [value]="query()"
+          (input)="query.set($any($event.target).value)"
+        />
+        <button class="search__submit" type="submit">Buscar</button>
+      </form>
+    </div>
   </div>
 </header>

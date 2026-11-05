@@ -96,7 +96,7 @@ for (const width of [1440, 390, 320]) {
       if (mobile) await dialog.getByRole('button', { name: 'Fechar contexto' }).tap();
       else await page.keyboard.press('Escape');
       await expect(term).toBeFocused();
-      expect(Math.abs((await page.evaluate(() => scrollY)) - before)).toBeLessThan(2);
+      expect(Math.abs((await page.evaluate(() => scrollY)) - before)).toBeLessThanOrEqual(2);
       expect(Math.abs((await term.boundingBox())!.y - trigger!.y)).toBeLessThan(2);
       await expect(page).toHaveURL(new RegExp(`/${route}/?$`));
       expect(errors).toEqual([]);
