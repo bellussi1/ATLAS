@@ -49,6 +49,9 @@
   <div class="howto-table" appReveal>
     <fieldset class="howto-steps">
       <legend class="sr-only">Escolha um gesto</legend>
+      <p class="howto-hint" aria-hidden="true">
+        Toque em um gesto, ou siga em frente <span>→</span>
+      </p>
       @for (item of howTo; track item.id; let index = $index) {
         <button
           class="howto-step atlas-press"
@@ -57,21 +60,59 @@
           [attr.data-step]="item.id"
           (click)="step.set(item)"
         >
-          <span class="howto-index" aria-hidden="true">{{ index + 1 }}</span>
+          <span class="howto-icon" aria-hidden="true">
+            @switch (item.id) {
+              @case ('procurar') {
+                <svg viewBox="0 0 48 48">
+                  <circle cx="20" cy="20" r="10" />
+                  <path d="M28 28 L39 39" />
+                </svg>
+              }
+              @case ('abrir') {
+                <svg viewBox="0 0 48 48">
+                  <path d="M8 14h20M8 24h14M8 34h18" />
+                  <path class="pointer" d="M30 22 L30 40 L35 35 L40 36 Z" />
+                </svg>
+              }
+              @case ('seguir') {
+                <svg viewBox="0 0 48 48">
+                  <path d="M12 34 L24 12 L38 32" />
+                  <circle cx="12" cy="34" r="4.5" />
+                  <circle cx="24" cy="12" r="4.5" />
+                  <circle cx="38" cy="32" r="4.5" />
+                </svg>
+              }
+              @case ('conferir') {
+                <svg viewBox="0 0 48 48">
+                  <circle cx="24" cy="24" r="15" />
+                  <path d="M16 25 L22 31 L33 18" />
+                </svg>
+              }
+            }
+          </span>
           <strong>{{ item.verb }}<span aria-hidden="true">.</span></strong>
           <span class="howto-short">{{ item.short }}</span>
+          <span class="howto-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
         </button>
       }
     </fieldset>
     <article class="howto-card" [attr.data-step]="step().id" aria-labelledby="howto-card-title">
+      <div class="howto-meta" aria-hidden="true">
+        <span>Gesto {{ stepNumber() }} de {{ howTo.length }}</span>
+        <span class="howto-progress">
+          @for (item of howTo; track item.id; let index = $index) {
+            <i [class.is-done]="index < stepNumber()"></i>
+          }
+        </span>
+      </div>
       <div class="howto-art" aria-hidden="true">
         @switch (step().id) {
           @case ('procurar') {
             <div class="art-search">
-              <span class="art-field"><i></i>karl marx<b></b></span>
-              <span class="art-chip art-chip--person">Pessoa · Karl Marx</span>
-              <span class="art-chip art-chip--work">Obra · O Capital</span>
-              <span class="art-chip art-chip--concept">Conceito · Mais-valia</span>
+              <span class="art-field"><i></i><em class="art-typed">karl marx</em><b></b></span>
+              <span class="art-chip art-chip--person" style="--i: 0">Pessoa · Karl Marx</span>
+              <span class="art-chip art-chip--work" style="--i: 1">Obra · O Capital</span>
+              <span class="art-chip art-chip--concept" style="--i: 2">Conceito · Mais-valia</span>
             </div>
           }
           @case ('abrir') {
@@ -87,21 +128,21 @@
           }
           @case ('seguir') {
             <svg class="art-net" viewBox="0 0 240 120">
-              <path d="M40 80 L120 30 L200 84 M120 30 L120 100" />
+              <path class="edge" pathLength="1" d="M40 80 L120 30 L200 84 M120 30 L120 100" />
               <circle cx="40" cy="80" r="14" class="n1" />
               <circle cx="120" cy="30" r="18" class="n2" />
               <rect x="186" y="70" width="28" height="28" class="n3" />
-              <path d="M106 88 h28 a14 14 0 0 1 -28 0z" class="n4" />
+              <path d="M106 100 h28 a14 14 0 0 0 -28 0z" class="n4" />
             </svg>
           }
           @case ('conferir') {
             <div class="art-check">
               <p>“Afirmação de exemplo, com a fonte logo abaixo.”</p>
               <ul>
-                <li><i class="s-fact"></i>Fato</li>
-                <li><i class="s-reading"></i>Interpretação</li>
-                <li><i class="s-debate"></i>Controvérsia</li>
-                <li><i class="s-gap"></i>Lacuna</li>
+                <li style="--i: 0"><i class="s-fact"></i>Fato</li>
+                <li style="--i: 1"><i class="s-reading"></i>Interpretação</li>
+                <li style="--i: 2"><i class="s-debate"></i>Controvérsia</li>
+                <li style="--i: 3"><i class="s-gap"></i>Lacuna</li>
               </ul>
             </div>
           }
@@ -110,10 +151,19 @@
       <div class="howto-copy">
         <h3 id="howto-card-title">{{ step().title }}</h3>
         <p>{{ step().body }}</p>
-        <a class="sheet-action atlas-press" [routerLink]="step().path" [fragment]="step().fragment"
-          >{{ step().action }}
-          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
-        >
+        <div class="howto-actions">
+          <a
+            class="sheet-action atlas-press"
+            [routerLink]="step().path"
+            [fragment]="step().fragment"
+            >{{ step().action }}
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
+          >
+          <button class="howto-next atlas-press" type="button" (click)="nextStep()">
+            {{ stepNumber() === howTo.length ? 'Recomeçar' : 'Próximo gesto' }}
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+          </button>
+        </div>
       </div>
     </article>
   </div>
@@ -182,7 +232,7 @@
             [attr.aria-pressed]="selected().slug === entry.slug"
             (click)="select(entry, $event)"
           >
-            <span class="choice-kind">{{ entry.type }}</span>
+            <span class="choice-kind">Leitura</span>
             <strong>{{ entry.title }}<span aria-hidden="true">.</span></strong>
             <span class="choice-note">{{ entry.tagline }}</span>
           </button>

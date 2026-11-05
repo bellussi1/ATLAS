@@ -169,6 +169,7 @@ export class HomePage {
     },
   ];
   readonly step = signal(this.howTo[0]);
+  readonly stepNumber = computed(() => this.howTo.indexOf(this.step()) + 1);
   readonly selected = signal(this.readings[0]);
   readonly sheet = viewChild<ElementRef<HTMLElement>>('sheet');
   private selectionMotion?: Animation;
@@ -230,6 +231,9 @@ export class HomePage {
       duration: parseFloat(tokens.getPropertyValue('--motion-selection')) || 180,
       easing: tokens.getPropertyValue('--ease-out').trim() || 'cubic-bezier(0.23, 1, 0.32, 1)',
     });
+  }
+  nextStep(): void {
+    this.step.set(this.howTo[this.stepNumber() % this.howTo.length]);
   }
   recompose(): void {
     this.seed.update((seed) => (seed * 31 + 17) % 9973);
