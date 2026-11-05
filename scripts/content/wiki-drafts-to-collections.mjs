@@ -737,7 +737,9 @@ export function convertDrafts(
     const target = existingByQid.get(canonical.draft.entity.qid);
     if (target) {
       const kind = kindForDraft(canonical.draft);
-      if (kind !== target.kind) {
+      // "concept" is the type the automatic classification falls back to; the entity already in the
+      // graph is more specific (ideology, movement), so it keeps its kind. Any other mismatch stops.
+      if (kind !== target.kind && kind !== 'concept' && target.kind !== 'concept') {
         throw new Error(
           `Tipo divergente ao mesclar ${canonical.tradition}/${canonical.draft.entity.id} em ${target.id}: ${kind} x ${target.kind}.`,
         );

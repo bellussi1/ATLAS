@@ -755,3 +755,34 @@ test('a posição vira afirmação atribuída, com a frase do artigo como evidê
   assert.match(statement.text, /centro\.$/);
   assert.match(positionStatement({ value: 'variavel', quote: 'x' }).text, /varia conforme/);
 });
+
+test('tipo genérico do rascunho mescla na entidade existente; outro tipo divergente para', () => {
+  const existing = existingAtlasFixture();
+  const merge = (type) =>
+    convertDrafts(
+      [
+        {
+          tradition: 'marxismo',
+          file: 'a.json',
+          draft: draft({ id: 'topic-karl-marx', label: 'Karl Marx', type, qid: 'Q9061' }),
+        },
+      ],
+      { existingAtlases: [existing] },
+    );
+  assert.equal(merge('conceito').mergedIntoExisting.length, 1);
+  assert.throws(() => merge('lugar'), /Tipo divergente/);
+  const generic = existingAtlasFixture();
+  generic.entities[0].kind = 'concept';
+  assert.doesNotThrow(() =>
+    convertDrafts(
+      [
+        {
+          tradition: 'marxismo',
+          file: 'a.json',
+          draft: draft({ id: 'topic-karl-marx', label: 'Karl Marx', type: 'pessoa', qid: 'Q9061' }),
+        },
+      ],
+      { existingAtlases: [generic] },
+    ),
+  );
+});

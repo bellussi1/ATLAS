@@ -1,0 +1,1082 @@
+{
+  "id": "atlas-marxismo",
+  "slug": "marxismo-wikipedia",
+  "title": "Marxismo (rascunhos da Wikipédia)",
+  "description": "Rascunhos assistidos por IA extraídos da Wikipédia, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-05",
+  "entityIds": [
+    "wiki-topic-burguesia",
+    "wiki-topic-capital-economia",
+    "wiki-topic-ditadura-do-proletariado",
+    "wiki-topic-economia-marxiana",
+    "wiki-topic-eurocomunismo",
+    "wiki-topic-filosofia-marxista",
+    "wiki-topic-internacionalismo-proletario",
+    "wiki-topic-livre-associacao-conceito",
+    "wiki-topic-luta-de-classes",
+    "wiki-topic-mais-valia",
+    "wiki-topic-maoismo",
+    "wiki-topic-marxismo-leninismo-maoismo",
+    "wiki-topic-meios-de-producao"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-burguesia",
+      "slug": "burguesia",
+      "title": "Burguesia",
+      "summary": "Burguesia designou, na origem, os habitantes dos burgos com direito de cidadania. Na Idade Média tornou-se uma classe urbana que tomou o poder nas cidades e formou um patriciado. Na teoria de Marx é a classe que detém os meios de produção; o termo é polimorfo e controverso.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73211929. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Burguesia designou, na origem, os habitantes dos burgos com direito de cidadania. Na Idade Média tornou-se uma classe urbana que tomou o poder nas cidades e formou um patriciado. Na teoria de Marx é a classe que detém os meios de produção; o termo é polimorfo e controverso."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q52090", "wikipedia": "Burguesia" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Burguesia",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Burguesia",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73211929, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-capital-economia",
+      "slug": "capital-economia",
+      "title": "Capital (economia)",
+      "summary": "Em economia, capital é qualquer bem usado na produção de outros bens ou serviços. Na economia clássica é um dos três fatores de produção; Marx distingue capital variável, investido na força de trabalho e fonte da mais-valia, de capital constante, investido em fatores não humanos.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 68490733. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Em economia, capital é qualquer bem usado na produção de outros bens ou serviços. Na economia clássica é um dos três fatores de produção; Marx distingue capital variável, investido na força de trabalho e fonte da mais-valia, de capital constante, investido em fatores não humanos."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q8137", "wikipedia": "Capital (economia)" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Capital (economia)",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Capital_(economia)",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 68490733, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-ditadura-do-proletariado",
+      "slug": "ditadura-do-proletariado",
+      "title": "Ditadura do proletariado",
+      "summary": "Na teoria marxista, a ditadura do proletariado é o Estado de transição entre o capitalismo e o comunismo, em que o proletariado controla o poder político. O termo foi criado por Weydemeyer e usado por Marx e Engels; Lênin o desenvolveu com a defesa da repressão violenta. Bakunin e Hayek criticaram a ideia.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69673016. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Na teoria marxista, a ditadura do proletariado é o Estado de transição entre o capitalismo e o comunismo, em que o proletariado controla o poder político. O termo foi criado por Weydemeyer e usado por Marx e Engels; Lênin o desenvolveu com a defesa da repressão violenta. Bakunin e Hayek criticaram a ideia."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q118365", "wikipedia": "Ditadura do proletariado" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Ditadura do proletariado",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Ditadura_do_proletariado",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69673016, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-economia-marxiana",
+      "slug": "economia-marxiana",
+      "title": "Economia marxiana",
+      "summary": "A economia marxista é uma escola heterodoxa de pensamento econômico fundada na crítica de Marx à economia política. Analisa crises, mais-valia, valor e luta de classes; reúne teorias diversas, distintas do marxismo como ideologia, e é contestada por economistas como Stigler e Solow.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72004688. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A economia marxista é uma escola heterodoxa de pensamento econômico fundada na crítica de Marx à economia política. Analisa crises, mais-valia, valor e luta de classes; reúne teorias diversas, distintas do marxismo como ideologia, e é contestada por economistas como Stigler e Solow."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q854537", "wikipedia": "Economia marxiana" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Economia marxiana",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Economia_marxiana",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72004688, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-eurocomunismo",
+      "slug": "eurocomunismo",
+      "title": "Eurocomunismo",
+      "summary": "Eurocomunismo foi uma vertente do comunismo surgida nos anos 1970 em partidos da Europa Ocidental, sobretudo Itália, França e Espanha. Apresentou-se como versão democrática do comunismo, defendendo o consenso parlamentar e a independência em relação a Moscou; nenhum partido eurocomunista chegou ao poder.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73128972. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Eurocomunismo foi uma vertente do comunismo surgida nos anos 1970 em partidos da Europa Ocidental, sobretudo Itália, França e Espanha. Apresentou-se como versão democrática do comunismo, defendendo o consenso parlamentar e a independência em relação a Moscou; nenhum partido eurocomunista chegou ao poder."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q206743", "wikipedia": "Eurocomunismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Eurocomunismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Eurocomunismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73128972, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-filosofia-marxista",
+      "slug": "filosofia-marxista",
+      "title": "Filosofia marxista",
+      "summary": "Filosofia marxista são as concepções filosóficas das obras de Marx e Engels e da produção de autores que se referem a eles. Sua existência é controversa; o pensamento marxista se desdobrou em leituras soviéticas, neomarxistas e pós-soviéticas, e recebeu forte influência da filosofia de Hegel.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69545272. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Filosofia marxista são as concepções filosóficas das obras de Marx e Engels e da produção de autores que se referem a eles. Sua existência é controversa; o pensamento marxista se desdobrou em leituras soviéticas, neomarxistas e pós-soviéticas, e recebeu forte influência da filosofia de Hegel."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1639471", "wikipedia": "Filosofia marxista" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Filosofia marxista",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Filosofia_marxista",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69545272, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-internacionalismo-proletario",
+      "slug": "internacionalismo-proletario",
+      "title": "Internacionalismo proletário",
+      "summary": "Internacionalismo proletário é a visão de que as revoluções comunistas fazem parte de uma única luta de classes global. O slogan 'Trabalhadores do mundo, uni-vos!' vem do Manifesto Comunista; a Primeira e a Segunda Internacional, a Revolução Russa e a União Soviética deram forma prática a essa ideia.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 68746592. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Internacionalismo proletário é a visão de que as revoluções comunistas fazem parte de uma única luta de classes global. O slogan 'Trabalhadores do mundo, uni-vos!' vem do Manifesto Comunista; a Primeira e a Segunda Internacional, a Revolução Russa e a União Soviética deram forma prática a essa ideia."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1337795", "wikipedia": "Internacionalismo proletário" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Internacionalismo proletário",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Internacionalismo_prolet%C3%A1rio",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 68746592, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-livre-associacao-conceito",
+      "slug": "livre-associacao-conceito",
+      "title": "Livre associação (conceito)",
+      "summary": "Livre associação, ou comunidade dos indivíduos livremente associados, é na tradição anarquista e comunista uma sociedade sem Estado, classes ou propriedade privada dos meios de produção. Anarquistas e marxistas divergem sobre a transição: reformas graduais, revolução política ou ação direta dos conselhos operários.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 71446946. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Livre associação, ou comunidade dos indivíduos livremente associados, é na tradição anarquista e comunista uma sociedade sem Estado, classes ou propriedade privada dos meios de produção. Anarquistas e marxistas divergem sobre a transição: reformas graduais, revolução política ou ação direta dos conselhos operários."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q5500187", "wikipedia": "Livre associação (conceito)" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Livre associação (conceito)",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Livre_associa%C3%A7%C3%A3o_(conceito)",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71446946, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-luta-de-classes",
+      "slug": "luta-de-classes",
+      "title": "Luta de classes",
+      "summary": "Luta de classes é o antagonismo entre grupos de classes sociais diferentes, que se expressa nos campos econômico, ideológico e político. Para Marx, é o motor das mudanças sociais e só acaba com o fim do capitalismo e das classes; o termo também é usado de forma pejorativa por críticos conservadores.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 68881078. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Luta de classes é o antagonismo entre grupos de classes sociais diferentes, que se expressa nos campos econômico, ideológico e político. Para Marx, é o motor das mudanças sociais e só acaba com o fim do capitalismo e das classes; o termo também é usado de forma pejorativa por críticos conservadores."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1744607", "wikipedia": "Luta de classes" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Luta de classes",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Luta_de_classes",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 68881078, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-mais-valia",
+      "slug": "mais-valia",
+      "title": "Mais-valia",
+      "summary": "Mais-valia é, em Marx, a diferença entre o valor final da mercadoria e a soma do valor dos meios de produção com o valor do trabalho; é a base do lucro no capitalismo. Marx distingue a mais-valia absoluta, obtida pelo prolongamento ou intensificação da jornada, da relativa, obtida pelo aumento da produtividade com a mecanização.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69733437. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Mais-valia é, em Marx, a diferença entre o valor final da mercadoria e a soma do valor dos meios de produção com o valor do trabalho; é a base do lucro no capitalismo. Marx distingue a mais-valia absoluta, obtida pelo prolongamento ou intensificação da jornada, da relativa, obtida pelo aumento da produtividade com a mecanização."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q332425", "wikipedia": "Mais-valia" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Mais-valia",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mais-valia",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69733437, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-maoismo",
+      "slug": "maoismo",
+      "title": "Maoismo",
+      "summary": "Maoismo, ou Pensamento de Mao Tsé-tung, é uma corrente socialista baseada em Mao. Distingue-se do leninismo pela guerra popular camponesa, pela linha de massas e pela continuidade da luta de classes após a revolução. É doutrina oficial do Partido Comunista da China, que se afastou dela após 1978.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72278313. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Maoismo, ou Pensamento de Mao Tsé-tung, é uma corrente socialista baseada em Mao. Distingue-se do leninismo pela guerra popular camponesa, pela linha de massas e pela continuidade da luta de classes após a revolução. É doutrina oficial do Partido Comunista da China, que se afastou dela após 1978."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q167651", "wikipedia": "Maoismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Maoismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Maoismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72278313, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-marxismo-leninismo-maoismo",
+      "slug": "marxismo-leninismo-maoismo",
+      "title": "Marxismo-leninismo-maoismo",
+      "summary": "Marxismo-leninismo-maoismo (MLM) é uma corrente do marxismo-leninismo originada do maoismo após a ruptura sino-soviética. Defende a guerra popular e a guerrilha rural, considera a China e outros países capitalistas de Estado e não é uma doutrina única, pois há correntes divergentes.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73023081. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Marxismo-leninismo-maoismo (MLM) é uma corrente do marxismo-leninismo originada do maoismo após a ruptura sino-soviética. Defende a guerra popular e a guerrilha rural, considera a China e outros países capitalistas de Estado e não é uma doutrina única, pois há correntes divergentes."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q18127879", "wikipedia": "Marxismo-leninismo-maoismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Marxismo-leninismo-maoismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Marxismo-leninismo-maoismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73023081, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-meios-de-producao",
+      "slug": "meios-de-producao",
+      "title": "Meios de produção",
+      "summary": "Na teoria marxista, meios de produção são os meios de trabalho e os objetos de trabalho; com a força de trabalho formam as forças produtivas. O socialismo e o comunismo exigem a socialização desses meios, que não se confunde com estatização.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 67015299. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Na teoria marxista, meios de produção são os meios de trabalho e os objetos de trabalho; com a força de trabalho formam as forças produtivas. O socialismo e o comunismo exigem a socialização desses meios, que não se confunde com estatização."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q260747", "wikipedia": "Meios de produção" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Meios de produção",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Meios_de_produ%C3%A7%C3%A3o",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 67015299, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-eurocomunismo",
+      "title": "Eurocomunismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Eurocomunismo",
+      "edition": "revisão 73128972; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-maoismo",
+      "title": "Maoismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Maoismo",
+      "edition": "revisão 72278313; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-eurocomunismo-001",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "surgida entre os partidos comunistas dos países da Europa Ocidental, na década de 1970, particularmente Itália, França e Espanha",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-002",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "apresentou-se como uma versão democrática da ideologia comunista, buscando um intermédio socialista entre a social-democracia clássica e os regimes comunistas",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-003",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "O socialismo só pode ser alcançado através do consenso da maioria da população, recorrendo às instituições parlamentares formais",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-004",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Foi na Conferência de Berlim, em 1976, que reuniu todos os 29 partidos comunistas na Europa, que as teses do eurocomunismo começaram a ser debatidas",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-005",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Criticado como revisionista do marxismo pelos comunistas ortodoxos ou saudado como alternativa ao stalinismo pelos admiradores",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-006",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Para os críticos, por outro lado, esse \"momento decisivo\" foi uma mera tática para ampliar a popularidade dos partidos comunistas",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-007",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Foi na Conferência de Berlim, em 1976, que reuniu todos os 29 partidos comunistas",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-008",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Em 1977, numa conferência de partidos comunistas de todo o mundo, realizada em Moscovo, na União Soviética, Berlinguer referiu-se à democracia política como \"valor universal\"",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-009",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "De acordo com Perry Anderson, o principal fundamento teórico do eurocomunismo foi a escrita de Antonio Gramsci sobre a teoria marxista",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-010",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "A origem do termo Eurocomunismo foi alvo de grande debate em meados da década de 1970, sendo atribuído a Zbigniew Brzezinski e Arrigo Levi, entre outros",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-011",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "nenhum partido ou movimento eurocomunista conseguiu estabelecer-se no poder e implantar seus projetos",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-012",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Entretanto, nenhum partido ou movimento eurocomunista conseguiu estabelecer-se no poder e implantar seus projetos: na Itália, onde o Partido Comunista Italiano (PCI) se destacou na elaboração de importantes pontos teóricos, a política de \"compromisso histórico\" com a Democracia Cristã teve vida rela",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-001",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "originária da visão de Mao sobre os Três Princípios do Povo e algumas particularidades do Comunismo",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-002",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Mao defendeu a ideia de que o campesinato era uma força revolucionária que poderia ser mobilizada pelo Partido Comunista sob o seu liderado",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-003",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Há quem considere que as modificações levadas a cabo por Mao constituem apenas uma adaptação do preexistente às especificidades da Revolução Chinesa",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-004",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Batchelor, J. Maoism and Classical Marxism, Clio History Journal, 2009.",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-005",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Desde 1962 a crítica à política soviética realizada por Mao provocou diversas divisões",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-006",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Em 24 de dezembro de 2004, quatro chineses foram condenados a prisão",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-007",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "a teoria maoista foi instrumental na formação dos Panteras Negras nos Estados Unidos",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-008",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "para Mao, a URSS tinha-se transformado em um país social-fascista",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-009",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Há quem considere que as modificações levadas a cabo por Mao constituem apenas uma adaptação do preexistente às especificidades da Revolução Chinesa",
+      "accessedAt": "2026-11-05",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-eurocomunismo-001",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-002",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-003",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-004",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-005",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-006",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-007",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-008",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-009",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-010",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-011",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-012",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-001",
+      "evidenceId": "ev-wiki-topic-maoismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-002",
+      "evidenceId": "ev-wiki-topic-maoismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-003",
+      "evidenceId": "ev-wiki-topic-maoismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-004",
+      "evidenceId": "ev-wiki-topic-maoismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-005",
+      "evidenceId": "ev-wiki-topic-maoismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-006",
+      "evidenceId": "ev-wiki-topic-maoismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-007",
+      "evidenceId": "ev-wiki-topic-maoismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-008",
+      "evidenceId": "ev-wiki-topic-maoismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-009",
+      "evidenceId": "ev-wiki-topic-maoismo-009",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-eurocomunismo-001",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "O eurocomunismo surgiu entre partidos comunistas da Europa Ocidental na década de 1970, particularmente Itália, França e Espanha.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-002",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "O eurocomunismo apresentou-se como uma versão democrática da ideologia comunista, buscando um intermédio socialista entre a social-democracia clássica e os regimes comunistas do Leste europeu.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-003",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Segundo a teoria, o socialismo só poderia ser alcançado pelo consenso da maioria da população, por meio das instituições parlamentares.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-004",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "A Conferência de Berlim, em 1976, reuniu partidos comunistas europeus, e nela as teses do eurocomunismo começaram a ser debatidas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-005",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Os eurocomunistas foram criticados como revisionistas do marxismo pelos comunistas ortodoxos e saudados como alternativa ao stalinismo pelos admiradores.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-006",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Para os críticos, o momento decisivo da teoria foi uma mera tática para ampliar a popularidade dos partidos comunistas.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-007",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Conferência de Berlim, em que as teses do eurocomunismo começaram a ser debatidas. (1976).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-008",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Em Moscou, Berlinguer referiu-se à democracia política como valor universal. (1977).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-009",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "O principal fundamento teórico do eurocomunismo, segundo Perry Anderson, foi a escrita de Antonio Gramsci sobre a teoria marxista.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-010",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "A origem do termo eurocomunismo foi alvo de grande debate, sendo atribuída a Zbigniew Brzezinski e Arrigo Levi, entre outros.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-011",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Nenhum partido ou movimento eurocomunista conseguiu estabelecer-se no poder e implantar seus projetos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-011"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-012",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Posição política descrita na fonte: esquerda.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-012"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-001",
+      "entityId": "wiki-topic-maoismo",
+      "text": "O maoísmo teria origem na visão de Mao sobre os Três Princípios do Povo e em algumas particularidades do comunismo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-002",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Mao considerava que o campesinato era uma força revolucionária que podia ser mobilizada pelo Partido Comunista.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-003",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Há divergência sobre o grau de modificação do marxismo-leninismo por Mao: uns veem apenas adaptação às especificidades chinesas, outros veem desenvolvimento substancial do leninismo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-004",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Obra listada no bloco de bibliografia do artigo, sobre a relação entre maoismo e marxismo clássico.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-005",
+      "entityId": "wiki-topic-maoismo",
+      "text": "A crítica de Mao à política soviética provocou divisões nos partidos comunistas (1962).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-006",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Quatro chineses foram condenados a prisão por distribuírem panfletos (2004-12-24).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-007",
+      "entityId": "wiki-topic-maoismo",
+      "text": "A teoria maoista foi instrumental na formação dos Panteras Negras nos Estados Unidos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-008",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Mao considerava que a URSS se tinha transformado em um país social-fascista.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-009",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Há quem considere que as modificações de Mao ao marxismo-leninismo são apenas uma adaptação do preexistente.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-009"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-eurocomunismo-001",
+      "claimId": "claim-wiki-topic-eurocomunismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-002",
+      "claimId": "claim-wiki-topic-eurocomunismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-003",
+      "claimId": "claim-wiki-topic-eurocomunismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-004",
+      "claimId": "claim-wiki-topic-eurocomunismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-005",
+      "claimId": "claim-wiki-topic-eurocomunismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-006",
+      "claimId": "claim-wiki-topic-eurocomunismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-007",
+      "claimId": "claim-wiki-topic-eurocomunismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-008",
+      "claimId": "claim-wiki-topic-eurocomunismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-009",
+      "claimId": "claim-wiki-topic-eurocomunismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-010",
+      "claimId": "claim-wiki-topic-eurocomunismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-011",
+      "claimId": "claim-wiki-topic-eurocomunismo-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-012",
+      "claimId": "claim-wiki-topic-eurocomunismo-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-001",
+      "claimId": "claim-wiki-topic-maoismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-002",
+      "claimId": "claim-wiki-topic-maoismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-003",
+      "claimId": "claim-wiki-topic-maoismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-004",
+      "claimId": "claim-wiki-topic-maoismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-005",
+      "claimId": "claim-wiki-topic-maoismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-006",
+      "claimId": "claim-wiki-topic-maoismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-007",
+      "claimId": "claim-wiki-topic-maoismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-008",
+      "claimId": "claim-wiki-topic-maoismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-009",
+      "claimId": "claim-wiki-topic-maoismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [],
+  "learningPaths": []
+}

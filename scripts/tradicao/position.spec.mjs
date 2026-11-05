@@ -38,3 +38,15 @@ test('sem menção na abertura, sem posição', () => {
   );
   assert.equal(positionFromArticle({ sections: [] }), null);
 });
+
+test('palavra que só contém o termo e nome próprio não contam', () => {
+  assert.deepEqual(valuesIn('Oposição ao antropocentrismo e à centralidade do humano.'), []);
+  assert.deepEqual(
+    valuesIn('Desenvolvida pela Oposição de Esquerda e pela Quarta Internacional.'),
+    [],
+  );
+  assert.deepEqual(valuesIn('Esquerda política e direita política se opõem.'), [
+    'esquerda',
+    'direita',
+  ]);
+});

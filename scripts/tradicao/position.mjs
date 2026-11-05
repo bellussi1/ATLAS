@@ -32,7 +32,7 @@ export const positions = [
   {
     value: 'centro',
     label: 'centro',
-    pattern: /centrista|(?<!\p{L})(?:de|do) centro(?!\p{L})|centrismo/gu,
+    pattern: /(?<!\p{L})centrista|(?<!\p{L})(?:de|do) centro(?!\p{L})|(?<!\p{L})centrismo/gu,
   },
 ];
 
@@ -46,7 +46,8 @@ export const sentences = (text) =>
 
 /** Valores citados em uma frase, depois de tirar as formas compostas do caminho das simples. */
 export function valuesIn(sentence) {
-  let rest = sentence.toLowerCase();
+  // Só a primeira letra desce: "Oposição de Esquerda" é nome próprio, não posição.
+  let rest = sentence.charAt(0).toLowerCase() + sentence.slice(1);
   const found = [];
   for (const { value, pattern } of positions) {
     const matches = rest.match(pattern);
