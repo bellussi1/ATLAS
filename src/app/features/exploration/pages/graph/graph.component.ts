@@ -229,6 +229,11 @@ export class GraphComponent {
     });
   });
   readonly zoomK = computed(() => this.view().k);
+  /** How much the nodes float: nothing zoomed out, where sub-pixel motion only shimmers. */
+  readonly sway = computed(() => {
+    const zoom = this.zoomK() / this.fitK();
+    return Math.round(Math.min(1, Math.max(0, (zoom - 1.1) / 1.4)) * 20) / 20;
+  });
   /** Close enough to read what each link says; farther away the lines alone are shown. */
   readonly near = computed(() => this.zoomK() / this.fitK() >= EDGE_LABEL_ZOOM);
   readonly drawnEdges = computed(() => {
@@ -610,6 +615,18 @@ export class GraphComponent {
     if (path?.length) return !this.pathEdgeIds().has(edge.id);
     const active = this.activeId();
     return !!active && edge.source !== active && edge.target !== active;
+  }
+  /**
+   * Colour, dash and arrowhead tell the kind of link. Far away every link is the same plain line;
+   * up close, or on the links of the selected node and of a path, the kind shows.
+   */
+  edgeDetailed(edge: NetworkEdge): boolean {
+    if (this.near()) return true;
+    const selected = this.selectedId();
+    return (
+      this.pathEdgeIds().has(edge.id) ||
+      (!!selected && (edge.source === selected || edge.target === selected))
+    );
   }
   edgeLit(edge: NetworkEdge): boolean {
     const active = this.activeId();

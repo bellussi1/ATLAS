@@ -316,6 +316,22 @@ describe('GraphComponent', () => {
     root(fixture).remove();
   });
 
+  it('draws every link as the same plain line zoomed out, and tells the kinds up close', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    fixture.detectChanges();
+    const edge = component.drawnEdges()[0].edge;
+    expect(component.edgeDetailed(edge)).toBe(false);
+    expect(component.sway()).toBe(0);
+    expect(root(fixture).querySelector('.edges line')?.getAttribute('marker-end')).toBeNull();
+    component.zoomBy(3, { x: 700, y: 450 });
+    fixture.detectChanges();
+    expect(component.edgeDetailed(edge)).toBe(true);
+    expect(component.sway()).toBeGreaterThan(0);
+  });
+
   it('gives every node a larger invisible hit area than its shape', async () => {
     const fixture = await render();
     const node = fixture.componentInstance.drawnNodes()[0];

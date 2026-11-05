@@ -178,6 +178,7 @@
       [class.stage--dragging]="dragging()"
       [class.stage--animated]="!reducedMotion()"
       [class.stage--moving]="animating()"
+      [style.--sway]="sway()"
       (pointermove)="stagePointer($event)"
       (pointerleave)="stageLeave()"
     >
@@ -220,11 +221,17 @@
                 [attr.y1]="item.y1"
                 [attr.x2]="item.x2"
                 [attr.y2]="item.y2"
-                [attr.stroke-dasharray]="item.family.dash || null"
+                [attr.stroke-dasharray]="edgeDetailed(item.edge) ? item.family.dash || null : null"
                 [attr.marker-end]="
-                  item.family.directed ? 'url(#arrow-' + item.family.id + ')' : null
+                  edgeDetailed(item.edge) && item.family.directed
+                    ? 'url(#arrow-' + item.family.id + ')'
+                    : null
                 "
-                [style.stroke]="'var(' + item.family.color + ')'"
+                [style.stroke]="
+                  edgeDetailed(item.edge)
+                    ? 'var(' + item.family.color + ')'
+                    : 'var(--color-border-strong)'
+                "
                 [style.--delay.ms]="item.delay"
                 [class.is-dimmed]="edgeDimmed(item.edge)"
                 [class.is-active]="edgeLit(item.edge)"
