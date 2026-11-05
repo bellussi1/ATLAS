@@ -1,5 +1,13 @@
 @if (shownPicture(); as src) {
   <img class="card-picture" [src]="src | contentMedia" alt="" loading="lazy" />
+} @else if (illustration(); as art) {
+  <app-geometric-illustration
+    class="card-picture card-illustration"
+    [entityId]="art.id"
+    [kind]="art.kind"
+    [palette]="art.palette"
+    [decorative]="true"
+  />
 } @else {
   <app-kind-icon class="card-glyph" [kind]="shownIcon()" />
 }

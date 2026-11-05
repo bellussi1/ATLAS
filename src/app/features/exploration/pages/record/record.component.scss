@@ -57,6 +57,10 @@ header.hero {
   font: 0.875rem/1.5 var(--font-sans);
   color: var(--ink-muted);
 }
+.hero-media app-geometric-illustration {
+  --illustration-size: clamp(10rem, 24vw, 16rem);
+  --illustration-border: 2px solid var(--ink);
+}
 .hero-media figure {
   margin: 0;
 }

@@ -14,12 +14,15 @@ import { contentLanguageLabels, localizedEntity } from '@core/content/queries/lo
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EntityProfileComponent } from '@exploration/components/entity-profile/entity-profile.component';
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
+import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
+import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
 import { AtlasLicensedAssetComponent } from '@shared/ui/licensed-asset/licensed-asset.component';
 import { NotFoundMessageComponent } from '@shared/ui/not-found-message/not-found-message.component';
 
 @Component({
   selector: 'app-record',
   imports: [
+    AtlasGeometricIllustrationComponent,
     RouterLink,
     AtlasLicensedAssetComponent,
     AtlasClaimReferencesComponent,
@@ -90,6 +93,13 @@ export class RecordComponent {
   readonly context = computed(() =>
     this.entity() ? entityContext(this.repository, this.entity()!.id) : undefined,
   );
+  /** Own illustration when the record has no licensed picture, so the hero always has an image. */
+  readonly illustration = computed(() => {
+    const entity = this.entity();
+    const atlas = this.atlas();
+    if (!entity || !atlas || this.context()?.media) return null;
+    return { id: entity.id, kind: entity.kind, palette: illustrationPalette(atlas.id) };
+  });
   readonly atlas = computed(() =>
     this.entity() ? this.repository.atlasForEntity(this.entity()!.id) : undefined,
   );

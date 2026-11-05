@@ -177,6 +177,7 @@
                       (entry.backlinks.length === 1 ? ' citação' : ' citações')
                     : ''
                 "
+                [entityId]="entry.id"
                 [picture]="picture(entry.id)"
                 [attr.lang]="shown(entry).locale"
               ></a>

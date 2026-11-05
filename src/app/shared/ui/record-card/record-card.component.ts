@@ -8,6 +8,12 @@ import {
 } from '@angular/core';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
+import {
+  atlasOf,
+  illustrationPalette,
+  needsIllustration,
+} from '@shared/ui/geometric-illustration/illustration';
 import {
   AtlasKindIconComponent,
   type IconKind,
@@ -57,7 +63,7 @@ const kindNames: Record<string, string> = {
   // Attribute selector so the host stays a native button or link.
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'button[appRecordCard], a[appRecordCard]',
-  imports: [AtlasKindIconComponent, ContentMediaPipe],
+  imports: [AtlasKindIconComponent, AtlasGeometricIllustrationComponent, ContentMediaPipe],
   templateUrl: './record-card.component.html',
   styleUrl: './record-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -125,6 +131,18 @@ export class RecordCardComponent {
     return count ? `${count} ${count === 1 ? 'relação' : 'relações'}` : '';
   });
   /** Pictures are opt-in so a licensed image appears once in the reading. */
+  /** Own illustration, only for a graph record that has no licensed picture. */
+  readonly illustration = computed(() => {
+    const graph = this.graph();
+    const id = this.entityId();
+    if (!graph || !id || this.picture() || !this.entity()) return null;
+    if (!needsIllustration(graph, id)) return null;
+    return {
+      id,
+      kind: this.entity()!.kind,
+      palette: illustrationPalette(atlasOf(graph, id)?.id),
+    };
+  });
   readonly shownPicture = computed(() => this.picture() ?? null);
   readonly shownTone = computed<RecordTone>(() => {
     const tone = this.tone();

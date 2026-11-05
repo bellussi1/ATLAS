@@ -20,6 +20,12 @@ import {
 } from '@core/content/models/knowledge-context';
 import { entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
+import {
+  atlasOf,
+  illustrationPalette,
+  needsIllustration,
+} from '@shared/ui/geometric-illustration/illustration';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 import { keepScrollAnchor } from './keep-scroll';
@@ -56,7 +62,7 @@ function toneOf(kind: string): string {
  */
 @Component({
   selector: 'app-knowledge-context',
-  imports: [RouterLink, RecordCardComponent, ContentMediaPipe],
+  imports: [RouterLink, RecordCardComponent, ContentMediaPipe, AtlasGeometricIllustrationComponent],
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
   host: {
@@ -92,6 +98,16 @@ export class KnowledgeContextComponent {
     }[]
   >([]);
   /** Colour family by record kind, so each opened context is recognisable at a glance. */
+  /** Own illustration for a graph record without a licensed picture. */
+  readonly illustration = computed(() => {
+    const id = this.record().entityId;
+    if (!id || this.record().media) return null;
+    const graph = this.repository.knowledgeGraph;
+    const atlas = atlasOf(graph, id);
+    const entity = atlas?.entities.find((e) => e.id === id);
+    if (!atlas || !entity || !needsIllustration(graph, id)) return null;
+    return { id, kind: entity.kind, palette: illustrationPalette(atlas.id) };
+  });
   readonly tone = computed(() => toneOf(this.record().kind));
   readonly pinnedTone = computed(() => toneOf(this.pinned()?.kind ?? ''));
   /** Where the reader is in the reading order; steps are hidden inside a followed relation. */
