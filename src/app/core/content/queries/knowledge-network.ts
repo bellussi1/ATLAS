@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   Claim,
   EntityKind,
   KnowledgeGraph,
@@ -575,8 +575,8 @@ function seeded(seed: number): () => number {
 }
 
 /** Largest on-screen growth of a node shape; the layout reserves room for it. */
-export const MAX_NODE_SCALE = 1.6;
-const NODE_GAP = 30;
+export const MAX_NODE_SCALE = 1.25;
+const NODE_GAP = 44;
 
 /** Shapes stay readable at any zoom: larger when zoomed out, smaller when zoomed in. */
 export function nodeScaleFor(zoom: number): number {
@@ -597,6 +597,8 @@ interface SimNode extends SimulationNodeDatum {
   isolated: boolean;
   /** Linked, but apart from the largest group: pulled toward the centre so they stay near. */
   satellite: boolean;
+  /** Square root of the number of links: hubs push harder so their leaves fan out. */
+  weight: number;
 }
 
 /** Ids of the largest group of linked nodes. */
@@ -651,6 +653,7 @@ export function layoutNetwork(
       clearance: nodeClearance(node.degree),
       isolated: !linked.has(node.id),
       satellite: linked.has(node.id) && !main.has(node.id),
+      weight: Math.sqrt(node.degree),
       tx,
       ty,
       x: tx + (random() - 0.5) * span * 0.4,
@@ -676,27 +679,32 @@ export function layoutNetwork(
       'link',
       forceLink<SimNode, { source: string; target: string }>(links)
         .id((node) => node.id)
-        .distance(130)
-        .strength(0.2),
+        .distance(160)
+        .strength(0.12),
     )
-    .force('charge', forceManyBody<SimNode>().strength(-260).distanceMax(900))
+    .force(
+      'charge',
+      forceManyBody<SimNode>()
+        .strength((node) => -(380 + node.weight * 60))
+        .distanceMax(1500),
+    )
     .force(
       'x',
       forceX<SimNode>((node) => node.tx).strength((node) =>
-        node.isolated ? 0 : node.satellite ? 0.16 : 0.05,
+        node.isolated ? 0 : node.satellite ? 0.16 : 0.07,
       ),
     )
     .force(
       'y',
       forceY<SimNode>((node) => node.ty).strength((node) =>
-        node.isolated ? 0 : node.satellite ? 0.16 : 0.05,
+        node.isolated ? 0 : node.satellite ? 0.16 : 0.07,
       ),
     )
     .force(
       'ring',
       forceRadial<SimNode>(ringRadius, 0, 0).strength((node) => (node.isolated ? 0.25 : 0)),
     )
-    .force('collide', forceCollide<SimNode>((node) => node.clearance + 6).iterations(4));
+    .force('collide', forceCollide<SimNode>((node) => node.clearance + 16).iterations(4));
   const ticks = options.ticks ?? 320;
   for (let i = 0; i < ticks; i++) simulation.tick();
   // A last pass with collisions alone settles any pair the other forces left touching.
