@@ -1,7 +1,7 @@
 import type { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
-import { entityContext } from './entity-context';
+import { contextFor, entityContext } from './entity-context';
 
 const repository = { knowledgeGraph: methodologyKnowledgeGraph } as ContentRepository;
 
@@ -74,6 +74,35 @@ describe('Entity context projection', () => {
         provenance: { source: 'wikipedia', url: 'https://pt.wikipedia.org/wiki/John_Locke' },
       },
     });
+  });
+
+  it('keeps process notes out of the prose while sources and license remain', () => {
+    const graph = structuredClone(methodologyKnowledgeGraph);
+    const entity = graph.atlases
+      .flatMap((a) => a.entities)
+      .find((e) => e.id === 'person-john-locke')!;
+    entity.context =
+      'Rascunho assistido por IA a partir da Wikipédia (pt), revisão 1. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.';
+    entity.sections = [
+      { heading: 'Resumo', paragraphs: [entity.summary] },
+      { heading: 'Origem', paragraphs: ['Nasceu em Somerset.'] },
+    ];
+    const record = entityContext({ knowledgeGraph: graph } as ContentRepository, entity.id);
+    expect(record.paragraphs).toEqual([]);
+    expect(record.sections).toEqual([{ heading: 'Origem', paragraphs: ['Nasceu em Somerset.'] }]);
+    expect(record.partialCoverage).toBe(true);
+    expect(record.sources.length).toBeGreaterThan(0);
+    expect(record.contentLicense?.url).toMatch(/^https:/);
+  });
+
+  it('adds where a record was opened only when the page knows it', () => {
+    expect(
+      contextFor(repository, {
+        entityId: 'person-karl-marx',
+        relevance: { note: 'Formula a crítica.', chapter: 'Vozes' },
+      }).relevance,
+    ).toEqual({ note: 'Formula a crítica.', chapter: 'Vozes' });
+    expect(contextFor(repository, { entityId: 'person-karl-marx' }).relevance).toBeUndefined();
   });
 
   it('handles missing entities and records without connections explicitly', () => {

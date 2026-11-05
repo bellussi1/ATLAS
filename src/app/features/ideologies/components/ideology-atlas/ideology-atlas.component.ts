@@ -10,6 +10,7 @@ import {
   signal,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { readerPredicate, readerProse } from '@core/content/editorial/reader-voice';
 import { entityMedia } from '@core/content/media/asset-license';
 import type { Entity, Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
@@ -269,6 +270,9 @@ export class IdeologyAtlasComponent {
       this.timelineEntities()[0],
   );
 
+  readonly prose = readerProse;
+  readonly predicate = readerPredicate;
+
   constructor() {
     const view = inject(DOCUMENT).defaultView;
     const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
@@ -340,7 +344,7 @@ export class IdeologyAtlasComponent {
   }
   relationName(relation: KnowledgeRelationResult): string {
     const labels: Record<string, string> = {
-      'encyclopedic-link': 'link enciclopédico',
+      'encyclopedic-link': 'pista de leitura',
       related_to: 'classificação relacionada',
       influenced: 'influenciou',
       influenced_by: 'influenciado por',
@@ -358,9 +362,9 @@ export class IdeologyAtlasComponent {
     const provenance = this.atlas().relations.find((item) => item.id === relation.relationId)
       ?.provenance?.source;
     return provenance === 'wikipedia'
-      ? 'Descoberta na Wikipedia'
+      ? 'Ligação entre verbetes'
       : provenance === 'wikidata'
-        ? 'Afirmação estruturada no Wikidata'
+        ? 'Classificação de catálogo'
         : 'Relação editorial';
   }
   relationStatusLabel(relation: KnowledgeRelationResult): string {
@@ -376,7 +380,7 @@ export class IdeologyAtlasComponent {
           : status === 'needs-update'
             ? 'precisa de atualização'
             : status === 'draft'
-              ? 'rascunho'
+              ? 'versão preliminar'
               : 'estado editorial não informado';
   }
   relationUncertaintyLabel(relation: KnowledgeRelationResult): string {
@@ -411,7 +415,7 @@ export class IdeologyAtlasComponent {
     if (record.provenance) {
       addReference({
         id: `provenance-${record.id}`,
-        title: record.provenance.source === 'wikipedia' ? 'Wikipedia' : 'Wikidata',
+        title: record.provenance.source === 'wikipedia' ? 'Wikipédia' : 'Wikidata',
         url: record.provenance.url,
         locator: `Consultada em ${record.provenance.retrievedAt}`,
       });

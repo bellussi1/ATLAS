@@ -27,13 +27,6 @@
   border: 3px solid var(--ink);
   overflow: hidden;
 }
-.pinned-source {
-  font: 0.75rem/1.5 var(--font-mono);
-}
-.pinned-source small {
-  display: inline;
-  margin-left: 0.4rem;
-}
 /* Earlier sheets peek out above and to the left, like a pile of loose pages. */
 .sheet-ghost {
   position: absolute;
@@ -162,6 +155,14 @@ h2 {
   margin: 0;
   overflow-wrap: anywhere;
 }
+header p.context-seal {
+  margin: 0.35rem 0 0;
+  opacity: 0.85;
+}
+header p.context-description {
+  margin: 0.3rem 0 0;
+  font: 0.9375rem/1.4 var(--font-sans);
+}
 
 /* One button style for every action in the panel: header, steps, pin and release. */
 .panel-button {
@@ -258,10 +259,6 @@ h2 {
   font-weight: 700;
 }
 
-.context-permanent small {
-  display: block;
-  color: var(--color-ink-muted);
-}
 .context-body {
   flex: 1 1 auto;
   min-height: 0;
@@ -275,36 +272,116 @@ h2 {
 .context-body > * {
   max-width: 68ch;
 }
-.context-body > p {
-  font: 1.125rem/1.75 var(--font-serif);
+/* One scale of type: a lead that says what it is, serif body, sans headings, mono metadata. */
+.context-body > p,
+.context-section p,
+.context-relevance p {
+  margin: 0 0 0.75rem;
+  font: 1.0625rem/1.65 var(--font-serif);
 }
 .context-body .context-summary {
   font-size: 1.25rem;
+  line-height: 1.5;
 }
-section {
-  clear: both;
-  padding-top: 1.5rem;
-  margin-top: 1.5rem;
-  border-top: 1px solid var(--rule-strong);
+/* Catalogue descriptions come in lowercase; the first letter of a lead does not. */
+.context-summary::first-letter,
+.context-description::first-letter {
+  text-transform: uppercase;
 }
-/* Sources and the picture's credit close the reading, at the end of the scroll. */
-.sheet-footer {
+.context-body .context-aliases,
+.context-body .context-permanent {
+  font: 0.875rem/1.5 var(--font-sans);
+}
+.context-body .context-aliases {
+  color: var(--color-ink-muted);
+}
+/* What the page knows and the graph does not: why this record is here. */
+.context-relevance {
+  margin-block: 1rem 1.25rem;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid var(--tone);
+  background: var(--color-surface-subtle);
+}
+.context-relevance p:last-child {
+  margin-bottom: 0;
+}
+.context-relevance .context-chapter {
+  color: var(--color-ink-muted);
+  font: 0.75rem/1.5 var(--font-mono);
+}
+/* Shortcuts through a long sheet, so sources are never a long scroll away. */
+.context-jump {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 1.25rem;
+  gap: 0.5rem;
+  margin-block: 0.75rem 1rem;
+}
+.context-jump button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--rule-strong);
+  background: none;
+  color: var(--ink);
+  font: 600 0.875rem/1 var(--font-sans);
+  cursor: pointer;
+}
+.context-section,
+.context-links {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule-strong);
+}
+.context-connections {
+  display: grid;
+  gap: 0.75rem;
+}
+.relation-group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.relation-group summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  font: 650 0.9375rem/1.3 var(--font-sans);
+  cursor: pointer;
+}
+.relation-group summary::before {
+  content: '▸';
+  flex: none;
+}
+.relation-group[open] summary::before {
+  content: '▾';
+}
+.group-count {
+  color: var(--color-ink-muted);
+  font: 0.75rem/1 var(--font-mono);
+}
+.group-hint {
+  margin: 0 0 0.5rem;
+  color: var(--color-ink-muted);
+  font: 0.875rem/1.5 var(--font-sans);
+}
+.context-connection {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--rule-strong);
+}
+/* Sources, licenses and credits close the reading, at the end of the scroll. */
+.sheet-footer {
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 3px solid var(--ink);
   font: 0.75rem/1.6 var(--font-mono);
   p {
-    margin: 0;
-    min-width: 0;
-    flex: 1 1 14rem;
+    margin: 0.5rem 0 0;
   }
   small {
-    display: inline;
-    margin: 0 0 0 0.4rem;
+    display: block;
     color: var(--color-ink-muted);
   }
   .footer-label {
@@ -314,48 +391,17 @@ section {
     color: var(--paper);
   }
 }
-.footer-check {
-  font-weight: 700;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-}
-h3 {
-  font-size: 1.25rem;
+.source-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 a {
   color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 0.2em;
-}
-.context-connections {
-  display: grid;
-  gap: 0.5rem;
-}
-.context-connection .record-card {
-  height: auto;
-}
-.context-connection {
-  padding: 1rem 0;
-  border-top: 1px solid var(--rule-strong);
-}
-.context-connection p {
-  line-height: 1.6;
-}
-.relation-label {
-  margin: 0.5rem 0;
-}
-summary {
-  cursor: pointer;
-  padding: 0.75rem 0;
-  min-height: 44px;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-small {
-  display: block;
-  font: 0.75rem/1.6 var(--font-mono);
-  margin-top: 0.5rem;
 }
 :focus-visible {
   outline: 3px solid var(--color-focus);
@@ -366,18 +412,51 @@ small {
     text-decoration-thickness: 2px;
   }
 }
+@media (hover: hover) and (pointer: fine) {
+  .context-jump button:hover {
+    background: var(--color-teal-paper);
+  }
+}
+/* On a phone the reading gets the screen: one row of header, one of steps, actions as glyphs. */
 @media (max-width: 500px) {
   header {
-    padding: 1rem;
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+    padding: 0.6rem 0.75rem;
+  }
+  header p {
+    margin-bottom: 0.2rem;
+  }
+  h2 {
+    font-size: 1.0625rem;
+  }
+  header p.context-description {
+    font-size: 0.8125rem;
+  }
+  header p.context-seal {
+    font-size: 0.6875rem;
+    line-height: 1.35;
   }
   .context-thumb {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
   }
-  .sheet-footer {
-    font-size: 0.6875rem;
+  .context-actions {
+    flex-wrap: nowrap;
+    gap: 0.35rem;
   }
-  .footer-check {
-    min-height: 2rem;
+  .panel-button {
+    min-width: 44px;
+    padding: 0 0.6rem;
+  }
+  header .panel-button-text {
+    display: none;
+  }
+  .context-steps {
+    justify-content: space-between;
+    padding: 0.3rem 0.75rem;
+  }
+  .context-body .context-summary {
+    font-size: 1.125rem;
   }
 }

@@ -24,12 +24,16 @@
           appRecordCard
           [entityId]="entity.id"
           [title]="entity.title"
+          [note]="note(entity.id) ?? null"
           [picture]="entityPicture(entity)?.assetPath ?? null"
           [hidden]="e >= entityPreviewCount && !showAllEntities()"
-          [appKnowledgeContext]="{ entityId: entity.id }"
+          [appKnowledgeContext]="{
+            entityId: entity.id,
+            relevance: { note: note(entity.id), chapter: chapterTitle() },
+          }"
         ></button>
       } @empty {
-        <p role="status">Nenhum registro disponível neste capítulo.</p>
+        <p class="reading-empty" role="status">Não há registros neste capítulo.</p>
       }
     </div>
     @if (entities().length > entityPreviewCount) {
@@ -59,8 +63,8 @@
   @case ('graph') {
     @if (edges().length) {
       <div class="relations" data-context-group>
-        <div class="relation-filter" role="group" aria-label="Tipo de conexão">
-          <span class="relation-filter-label" aria-hidden="true">Tipo de conexão</span>
+        <div class="relation-filter" role="group" aria-label="Natureza da relação">
+          <span class="relation-filter-label" aria-hidden="true">Natureza da relação</span>
           <button
             type="button"
             class="relation-chip"
@@ -81,7 +85,7 @@
             </button>
           }
         </div>
-        <ul class="relation-legend" aria-label="O que cada tipo significa">
+        <ul class="relation-legend" aria-label="O que cada natureza significa">
           @for (type of legendTypes(); track type) {
             <li>
               <strong>{{ relationOf(type).label }}.</strong> {{ relationOf(type).meaning }}
@@ -94,8 +98,12 @@
         <ol class="relation-sentences" [attr.aria-label]="visibleEdges().length + ' relações'">
           @for (edge of visibleEdges(); track edge.id) {
             <li class="relation-item">
-              <p class="relation-type">{{ relation(edge).short }} · certeza {{ edge.certainty }}</p>
-              <p class="relation-sentence">
+              <app-relation-entry
+                [nature]="relation(edge).label"
+                [meta]="edgeMeta(edge)"
+                [prose]="edgeProse(edge)"
+                [evidence]="edgeEvidence(edge)"
+              >
                 <button
                   type="button"
                   class="relation-party"
@@ -111,28 +119,13 @@
                 >
                   {{ entity(edge.to)?.title }}
                 </button>
-              </p>
-              @if (sentence(edge).topic; as topic) {
-                <p class="relation-topic">Tema: {{ topic }}</p>
-              }
-              @if (edge.context) {
-                <p class="relation-context">{{ edge.context }}</p>
-              }
-              @if (edge.sources.length) {
-                <p class="relation-sources">
-                  Fonte:
-                  @for (id of edge.sources; track id; let last = $last) {
-                    <a [href]="source(id)?.url">{{ source(id)?.title }}</a
-                    >{{ last ? '' : '; ' }}
-                  }
-                </p>
-              }
+              </app-relation-entry>
             </li>
           }
         </ol>
       </div>
     } @else {
-      <p role="status">Não há relações documentadas neste recorte.</p>
+      <p class="reading-empty" role="status">Não há relações documentadas neste recorte.</p>
     }
   }
   @case ('explorations') {
@@ -215,7 +208,7 @@
       [references]="sourceList()"
       variant="bibliography"
       [limit]="8"
-      emptyText="Nenhuma referência encontrada. Apague o filtro para ver a bibliografia."
+      emptyText="Não há referências para este filtro. Apague o filtro para ver toda a bibliografia."
     />
   }
 }

@@ -8,7 +8,7 @@ test('a connection keeps the search origin so the results stay one step away', a
   const results = page.getByRole('region', { name: 'Resultados da busca' });
   await results.getByRole('link').first().click();
   await expect(page).toHaveURL(/origem=/);
-  const connection = page.locator('.connection h3 a').first();
+  const connection = page.locator('.connection a.relation-party').first();
   await connection.click();
   await expect(page).toHaveURL(/origem=/);
   await expect(page.getByRole('link', { name: 'Voltar aos resultados' })).toHaveAttribute(
@@ -90,13 +90,13 @@ test('catalogues expose actual records and permanent pages update when following
   await page.goto('/verbete/karl-marx');
   await expect(page).toHaveTitle('Karl Marx — ATLAS');
   await page
-    .getByRole('heading', { level: 3 })
+    .locator('.connection')
     .getByRole('link', { name: 'O capital: volume I', exact: true })
     .click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('O capital: volume I');
   await expect(page).toHaveTitle('O capital: volume I — ATLAS');
   await expect(
-    page.getByRole('heading', { level: 3 }).getByRole('link', { name: 'Karl Marx', exact: true }),
+    page.locator('.connection').getByRole('link', { name: 'Karl Marx', exact: true }),
   ).toBeVisible();
   await page.getByRole('link', { name: 'Abrir esta fonte no índice' }).first().click();
   await expect(page).toHaveURL(/fontes#source-/);
@@ -108,7 +108,7 @@ test('contextual exploration opens the matching permanent entity page', async ({
   await page.locator('#conceitos .knowledge-term').first().click();
   const dialog = page.getByRole('dialog');
   const title = (await dialog.locator('h2').textContent())!.trim();
-  await dialog.getByRole('link', { name: /Abrir ficha de/ }).click();
+  await dialog.getByRole('link', { name: /Abrir o verbete de/ }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
   await expect(page).toHaveURL(/\/verbete\//);
 });

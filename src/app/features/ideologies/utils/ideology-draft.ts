@@ -24,8 +24,8 @@ export function ideologyDraft(input: IdeologyDraftInput): IdeologyPage {
     kind: input.kind,
     classificationNote: input.classificationNote,
     title: input.title,
-    kicker: 'Rascunho',
-    summary: `Rascunho de ${input.title}: estrutura sem conteúdo verificado.`,
+    kicker: 'Versão preliminar',
+    summary: `${input.title}: estrutura de leitura sem conteúdo verificado.`,
     published: false,
     atlasId: input.atlasId,
     review: {
@@ -35,7 +35,7 @@ export function ideologyDraft(input: IdeologyDraftInput): IdeologyPage {
     },
     identity: {
       accent: 'teal',
-      signature: 'Rascunho estrutural',
+      signature: 'Estrutura preliminar',
       keyVisualization: 'timeline',
       ...(input.palette ? { palette: input.palette } : {}),
     },

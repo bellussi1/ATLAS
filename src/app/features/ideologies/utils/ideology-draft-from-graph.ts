@@ -69,7 +69,7 @@ export function ideologyDraftFromGraph(input: IdeologyDraftInput, atlas: Atlas):
             blocks,
             // Records exist but the text does not: partial, never complete.
             coverage: 'partial' as const,
-            gap: 'Texto pendente: os registros vêm do grafo importado, sem revisão editorial.',
+            gap: 'Texto pendente: os registros ainda não têm revisão editorial.',
           }
         : chapter;
     }),

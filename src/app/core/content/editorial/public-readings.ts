@@ -9,7 +9,7 @@ export const publicReadings = [
   {
     slug: 'liberalismo',
     title: 'Liberalismo',
-    summary: 'Explore pessoas, ideias, obras e acontecimentos no Atlas do Liberalismo.',
+    summary: 'Explore pessoas, ideias, obras e acontecimentos na leitura do liberalismo.',
     path: '/liberalismo',
   },
   {

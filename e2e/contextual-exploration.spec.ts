@@ -38,19 +38,24 @@ for (const width of [1440, 390, 320]) {
         panel = await dialog.boundingBox();
         expect(panel?.height).toBe(previous?.height);
       }).toPass();
+      // Reading leads start closed below stronger relations.
+      if (route !== 'marxismo') {
+        const summary = dialog.locator('.relation-group summary', { hasText: 'Pistas de leitura' });
+        await (mobile ? summary.tap() : summary.click());
+      }
       const connection =
         route === 'marxismo'
           ? dialog.locator('[data-connection="relation-marx-capital"]')
           : dialog.getByRole('button', { name: 'Adam Smith', exact: false });
-      const article = connection.locator('..');
-      await article.locator('summary').click();
-      await expect(article.locator('details')).toHaveAttribute('open', '');
+      const entry = connection.locator('xpath=ancestor::li[1]');
       if (route === 'marxismo') {
-        await expect(article).toContainText('escreveu');
-        await expect(article.locator('details a').first()).toBeVisible();
+        await expect(entry).toContainText('escreveu');
+        await expect(entry.locator('figcaption a').first()).toBeVisible();
       } else {
-        await expect(article).toContainText('Descoberta enciclopédica');
-        await expect(article.locator('details')).toContainText('Sem evidência historiográfica');
+        await expect(entry).toContainText('remete a');
+        await expect(connection.locator('xpath=ancestor::details[1]')).toContainText(
+          'Pistas de leitura',
+        );
       }
       await connection.scrollIntoViewIfNeeded();
       const contextScroll = await dialog
@@ -71,7 +76,7 @@ for (const width of [1440, 390, 320]) {
         a11y.violations.filter((v) => ['critical', 'serious'].includes(v.impact ?? '')),
       ).toEqual([]);
       const back = dialog
-        .getByRole('navigation', { name: 'Percurso neste contexto' })
+        .getByRole('navigation', { name: 'Percurso nesta leitura' })
         .getByRole('button')
         .last();
       if (mobile) await back.tap();
@@ -80,7 +85,7 @@ for (const width of [1440, 390, 320]) {
         await page.keyboard.press('Enter');
       }
       await expect(connection).toBeFocused();
-      await expect(article.locator('details')).toHaveAttribute('open', '');
+      await expect(connection.locator('xpath=ancestor::details[1]')).toHaveAttribute('open', '');
       expect(
         Math.abs(
           (await dialog.locator('.context-body').evaluate((element) => element.scrollTop)) -

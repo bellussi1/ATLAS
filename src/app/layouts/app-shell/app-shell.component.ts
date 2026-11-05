@@ -75,8 +75,7 @@ export class AppComponent {
     // NavigationEnd precedes the Router's title update; use the resolved snapshot.
     const pageTitle = route.title || this.title.getTitle() || 'ATLAS — compreender o mundo';
     const description =
-      this.activeRouteDescription() ||
-      'Explore o acervo do ATLAS, com contexto e fontes identificadas.';
+      this.activeRouteDescription() || 'Explore o acervo, com contexto e fontes identificadas.';
     this.pageTitle.set(pageTitle);
     this.meta.updateTag({ name: 'description', content: description });
     this.meta.updateTag({ property: 'og:title', content: pageTitle });

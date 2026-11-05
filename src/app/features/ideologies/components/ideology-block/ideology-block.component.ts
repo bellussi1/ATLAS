@@ -1,6 +1,7 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
+import { readerProse, type RelationEvidence } from '@core/content/editorial/reader-voice';
 import type { Entity, Source } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
@@ -31,11 +32,13 @@ import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { type IconKind, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
+import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry.component';
 
 @Component({
   selector: 'app-ideology-block',
   imports: [
     RecordCardComponent,
+    RelationEntryComponent,
     EditorialSourcesComponent,
     ValueDebateComponent,
     KnowledgeContextDirective,
@@ -173,6 +176,15 @@ export class IdeologyBlockComponent {
   readonly atlas = computed(() =>
     this.repository.knowledgeGraph.atlases.find((a) => a.id === this.dossier().page.atlasId)!,
   );
+  /** The chapter this block belongs to, so a record opened here says where it was met. */
+  readonly chapterTitle = computed(() => {
+    const id = this.blockId();
+    return (
+      this.dossier().page.chapters.find(
+        (chapter) => chapter.id === id.slice(0, id.lastIndexOf('-')),
+      )?.title ?? null
+    );
+  });
   /** Card pictures planned for the whole page; see `planPageMedia`. */
   readonly mediaPlan = input<ReadonlyMap<string, PageMedia>>(new Map());
 
@@ -217,12 +229,13 @@ export class IdeologyBlockComponent {
       title: item.title,
       kind: `${item.kicker} · ${item.classification}`,
       summary: item.summary,
+      relevance: { chapter: this.chapterTitle() },
       paragraphs: item.paragraphs,
       sources: item.sourceIds.flatMap((id) => this.source(id) ?? []),
-      connections: item.entityIds.map((id) => ({
-        entityId: id,
-        label: `${this.entity(id)?.title ?? id} · abrir contexto relacionado`,
-      })),
+      connections: item.entityIds.flatMap((id) => {
+        const label = this.entity(id)?.title;
+        return label ? [{ entityId: id, label }] : [];
+      }),
     };
   }
   relation(edge: IdeologyEdge) {
@@ -230,6 +243,22 @@ export class IdeologyBlockComponent {
   }
   sentence(edge: IdeologyEdge) {
     return relationSentence(edge);
+  }
+  /** Topic and certainty of an edge, in the same line as the nature of any other relation. */
+  edgeMeta(edge: IdeologyEdge): string {
+    const topic = this.sentence(edge).topic;
+    return [topic && `tema: ${topic}`, `relação ${edge.certainty}`].filter(Boolean).join(' · ');
+  }
+  edgeProse(edge: IdeologyEdge): string | null {
+    return readerProse(edge.context);
+  }
+  edgeEvidence(edge: IdeologyEdge): RelationEvidence[] {
+    return edge.sources.flatMap((id) => {
+      const source = this.source(id);
+      return source
+        ? [{ id, quote: null, locator: null, title: source.title, url: source.url }]
+        : [];
+    });
   }
   relationOf(type: string) {
     return relationTypes[type as RelationType];

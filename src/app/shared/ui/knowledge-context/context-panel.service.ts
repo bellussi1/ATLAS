@@ -6,7 +6,7 @@ import {
   type ContextStop,
   type KnowledgeContext,
 } from '@core/content/models/knowledge-context';
-import { entityContext } from '@core/content/queries/entity-context';
+import { contextFor } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 
 import type { KnowledgeContextComponent } from './knowledge-context.component';
@@ -35,7 +35,7 @@ export class ContextPanelService {
   readonly dialogId = signal<string | null>(null);
 
   resolve(request: ContextRequest): KnowledgeContext {
-    return 'record' in request ? request.record : entityContext(this.repository, request.entityId);
+    return contextFor(this.repository, request);
   }
 
   /** The panel and the CDK dialog load on first use: most readers of a page never open it. */
