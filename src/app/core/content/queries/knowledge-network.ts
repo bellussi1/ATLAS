@@ -3,6 +3,7 @@ import {
   forceCollide,
   forceLink,
   forceManyBody,
+  forceRadial,
   forceSimulation,
   forceX,
   forceY,
@@ -462,6 +463,8 @@ interface SimNode extends SimulationNodeDatum {
   clearance: number;
   tx: number;
   ty: number;
+  /** Nodes without links wait on a ring around the connected core. */
+  isolated: boolean;
 }
 
 /**
@@ -479,6 +482,7 @@ export function layoutNetwork(
   const random = seeded(options.seed ?? 7);
   const span = Math.sqrt(count) * 90;
   const collectionIds = [...new Set(nodes.map((node) => node.collections[0]))];
+  const linked = new Set(edges.flatMap((edge) => [edge.source, edge.target]));
   const simNodes: SimNode[] = nodes.map((node) => {
     const sector = collectionIds.indexOf(node.collections[0]) / collectionIds.length;
     const angle = sector * Math.PI * 2;
@@ -487,12 +491,21 @@ export function layoutNetwork(
     return {
       id: node.id,
       clearance: nodeClearance(node.degree),
+      isolated: !linked.has(node.id),
       tx,
       ty,
       x: tx + (random() - 0.5) * span * 0.4,
       y: ty + (random() - 0.5) * span * 0.4,
     };
   });
+  const coreArea = simNodes
+    .filter((n) => !n.isolated)
+    .reduce((sum, n) => sum + n.clearance ** 2, 0);
+  const coreRadius = Math.sqrt(coreArea / 0.55);
+  const ringNeed =
+    simNodes.filter((n) => n.isolated).reduce((sum, n) => sum + n.clearance * 2.2, 0) /
+    (2 * Math.PI);
+  const ringRadius = Math.max(coreRadius + 90, ringNeed);
   const known = new Set(simNodes.map((node) => node.id));
   const links = edges
     .filter((edge) => known.has(edge.source) && known.has(edge.target))
@@ -508,13 +521,28 @@ export function layoutNetwork(
         .strength(0.25),
     )
     .force('charge', forceManyBody<SimNode>().strength(-110).distanceMax(600))
-    .force('x', forceX<SimNode>((node) => node.tx).strength(0.09))
-    .force('y', forceY<SimNode>((node) => node.ty).strength(0.09))
+    .force(
+      'x',
+      forceX<SimNode>((node) => node.tx).strength((node) => (node.isolated ? 0 : 0.09)),
+    )
+    .force(
+      'y',
+      forceY<SimNode>((node) => node.ty).strength((node) => (node.isolated ? 0 : 0.09)),
+    )
+    .force(
+      'ring',
+      forceRadial<SimNode>(ringRadius, 0, 0).strength((node) => (node.isolated ? 0.25 : 0)),
+    )
     .force('collide', forceCollide<SimNode>((node) => node.clearance).iterations(3));
   const ticks = options.ticks ?? 320;
   for (let i = 0; i < ticks; i++) simulation.tick();
   // A last pass with collisions alone settles any pair the other forces left touching.
-  simulation.force('link', null).force('charge', null).force('x', null).force('y', null);
+  simulation
+    .force('link', null)
+    .force('charge', null)
+    .force('x', null)
+    .force('y', null)
+    .force('ring', null);
   for (let i = 0; i < 80; i++) simulation.tick();
   const marginX = 160;
   const marginY = 64;

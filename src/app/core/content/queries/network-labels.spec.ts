@@ -78,4 +78,13 @@ describe('placeLabels', () => {
     const placed = placeLabels([candidate('b', 100, 108, 2), candidate('a', 100, 100, 1)], nodes);
     expect(placed[0].id).toBe('a');
   });
+
+  it('keeps labels inside the visible bounds by choosing another side', () => {
+    const nodes = [{ id: 'a', x: 280, y: 100, radius: 8 }];
+    const bounds = { left: 0, top: 0, right: 310, bottom: 200 };
+    const [label] = placeLabels([candidate('a', 280, 100)], nodes, Infinity, bounds);
+    expect(label.anchor).not.toBe('start');
+    const tiny = { left: 0, top: 0, right: 250, bottom: 110 };
+    expect(placeLabels([candidate('a', 280, 100)], nodes, Infinity, tiny)).toEqual([]);
+  });
 });

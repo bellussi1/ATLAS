@@ -27,7 +27,7 @@ export interface PlacedLabel {
   anchor: 'start' | 'middle' | 'end';
 }
 
-interface Box {
+export interface Box {
   left: number;
   top: number;
   right: number;
@@ -39,6 +39,15 @@ const GAP = 4;
 
 export function labelWidth(text: string): number {
   return text.length * 6.6 + 8;
+}
+
+function insideBounds(box: Box, bounds: Box): boolean {
+  return (
+    box.left >= bounds.left &&
+    box.right <= bounds.right &&
+    box.top >= bounds.top &&
+    box.bottom <= bounds.bottom
+  );
 }
 
 function boxesOverlap(a: Box, b: Box): boolean {
@@ -54,12 +63,14 @@ function hitsCircle(box: Box, circle: LabelObstacle): boolean {
 /**
  * Greedy label placement: each label tries right, below, above and left of its node and takes
  * the first spot that covers no other label and no node shape. A label that fits nowhere is
- * dropped, except forced ones, which keep their first spot.
+ * dropped, except forced ones, which keep their first spot. With `bounds`, a label that would
+ * leave the visible area tries another side first.
  */
 export function placeLabels(
   candidates: readonly LabelCandidate[],
   obstacles: readonly LabelObstacle[],
   limit = Infinity,
+  bounds?: Box,
 ): PlacedLabel[] {
   let optional = 0;
   const placed: PlacedLabel[] = [];
@@ -119,6 +130,7 @@ export function placeLabels(
     ];
     const free = options.find(
       (option) =>
+        (!bounds || insideBounds(option.box, bounds)) &&
         !taken.some((box) => boxesOverlap(option.box, box)) &&
         !obstacles.some((node) => node.id !== candidate.id && hitsCircle(option.box, node)),
     );

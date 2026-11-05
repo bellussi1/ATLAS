@@ -113,6 +113,19 @@ describe('knowledge network', () => {
     expect(layoutNetwork([], []).positions.size).toBe(0);
   });
 
+  it('puts nodes without links on a ring around the connected core', () => {
+    const layout = layoutNetwork(network.nodes, network.edges);
+    const linked = new Set(network.edges.flatMap((e) => [e.source, e.target]));
+    const center = { x: layout.width / 2, y: layout.height / 2 };
+    const radius = (id: string) =>
+      Math.hypot(layout.positions.get(id)!.x - center.x, layout.positions.get(id)!.y - center.y);
+    const core = network.nodes.filter((n) => linked.has(n.id)).map((n) => radius(n.id));
+    const isolated = network.nodes.filter((n) => !linked.has(n.id)).map((n) => radius(n.id));
+    expect(isolated.length).toBeGreaterThan(0);
+    const mean = (values: number[]) => values.reduce((a, b) => a + b, 0) / values.length;
+    expect(mean(isolated)).toBeGreaterThan(mean(core));
+  });
+
   it('keeps the on-screen node scale within the reserved range', () => {
     expect(nodeScaleFor(0.01)).toBe(MAX_NODE_SCALE);
     expect(nodeScaleFor(1)).toBe(1);
