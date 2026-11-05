@@ -685,22 +685,30 @@ test('rascunhos de uma tradição não apagam a coleção de outra', async () =>
     await mkdir(dir, { recursive: true });
     await writeFile(join(dir, `${value.entity.id}.json`), JSON.stringify(value), 'utf8');
   };
-  await write('marxismo', draft({ id: 'a', label: 'Karl Marx', qid: 'Q1' }));
-  await write('anarquismo', draft({ id: 'b', label: 'Emma Goldman', qid: 'Q2' }));
-  const empty = {
-    schemaVersion: 1,
-    id: 'knowledge-graph-atlas',
-    version: '1.0.0',
-    updatedAt: '2026-11-03',
-    collections: [],
-  };
-  await writeFile(join(knowledge, 'manifest.json'), await formatJson(empty));
+  await write('marxismo', draft({ id: 'a', label: 'Vladimir Lenin', qid: 'Q1001' }));
+  await write('anarquismo', draft({ id: 'b', label: 'Emma Goldman', qid: 'Q1002' }));
+  const existing = existingAtlasFixture();
+  const bytes = await formatJson(existing);
+  const hash = sha256(bytes);
+  const file = `collections/${existing.id}.${hash}.json`;
+  await writeFile(join(knowledge, file), bytes);
+  await writeFile(
+    join(knowledge, 'manifest.json'),
+    await formatJson({
+      schemaVersion: 1,
+      id: 'knowledge-graph-atlas',
+      version: '1.0.0',
+      updatedAt: '2026-11-03',
+      collections: [{ id: existing.id, file, sha256: hash }],
+    }),
+  );
   await convertDraftsToCollections({ root: drafts, directory: knowledge });
   await rm(join(drafts, 'marxismo'), { recursive: true });
   await convertDraftsToCollections({ root: drafts, directory: knowledge });
   const { collections } = JSON.parse(await readFile(join(knowledge, 'manifest.json'), 'utf8'));
   assert.deepEqual(collections.map((entry) => entry.id).sort(), [
     'atlas-anarquismo',
+    'atlas-existente',
     'atlas-marxismo',
   ]);
 });
