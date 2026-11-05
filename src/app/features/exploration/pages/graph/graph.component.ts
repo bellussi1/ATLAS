@@ -9,7 +9,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   buildKnowledgeNetwork,
   filterNetwork,
@@ -71,10 +71,11 @@ const classificationLabels: Record<string, string> = {
   templateUrl: './graph.component.html',
   styleUrl: './graph.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { '(document:keydown)': 'slashFocus($event)' },
+  host: { '(document:keydown)': 'globalKey($event)' },
 })
 export class GraphComponent {
   private readonly repository = inject(ContentRepository);
+  private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
   private readonly network = buildKnowledgeNetwork(this.repository.knowledgeGraph);
@@ -98,7 +99,11 @@ export class GraphComponent {
   readonly selectedId = signal<string | null>(null);
   readonly hoveredId = signal<string | null>(null);
   readonly focusId = signal<string | null>(null);
-  readonly controlsOpen = signal(false);
+  /** Explicit choice of the reader; until then the panel follows the screen size. */
+  readonly controlsOpen = signal<boolean | null>(null);
+  readonly wide = signal(false);
+  readonly controlsShown = computed(() => this.controlsOpen() ?? this.wide());
+  readonly shortcutsOpen = signal(false);
   readonly view = signal<View>({ x: 0, y: 0, k: 1 });
   readonly size = signal({ width: 0, height: 0 });
   readonly positions = signal<ReadonlyMap<string, NetworkPoint> | null>(null);
@@ -141,7 +146,26 @@ export class GraphComponent {
     const node = this.selected();
     return node ? positionClaims(node).slice(0, 3) : [];
   });
-  readonly neighbours = computed(() => new Set(this.selectedLinks().map((link) => link.other.id)));
+  /** The node whose surroundings are lit: the selected one, otherwise the one under the pointer. */
+  readonly activeId = computed(() => this.selectedId() ?? this.hoveredId());
+  readonly neighbours = computed(() => {
+    const id = this.activeId();
+    if (!id) return new Set<string>();
+    return new Set(linksOf(id, this.visible().edges, this.nodeIndex).map((link) => link.other.id));
+  });
+  /** Free part of the stage, in pixels, between the floating panels. */
+  readonly insets = computed(() => {
+    const { width, height } = this.size();
+    const rem = 16;
+    const wide = this.wide();
+    return {
+      left: wide && this.controlsShown() ? 19 * rem + 32 : 12,
+      right: wide && this.selected() ? 23 * rem + 32 : 12,
+      top: wide ? 92 : 84,
+      bottom: !wide && this.selected() ? Math.round(height * 0.5) : 64,
+      width,
+    };
+  });
   readonly counts = computed(() => {
     const kinds = new Map<NetworkKindId, number>();
     for (const node of this.network.nodes) kinds.set(node.kind, (kinds.get(node.kind) ?? 0) + 1);
@@ -228,12 +252,23 @@ export class GraphComponent {
       radius: item.r * scale * k,
     }));
     const byId = new Map(nodes.map((item) => [item.node.id, item]));
-    return placeLabels(candidates, obstacles, Math.round(10 + 14 * zoom)).flatMap((label) => {
-      const item = byId.get(label.id);
-      return item
-        ? [{ ...label, wx: item.x * k, wy: item.y * k, dimmed: this.isDimmed(label.id) }]
-        : [];
-    });
+    const { x: vx, y: vy } = this.view();
+    const { width, height } = this.size();
+    const inset = this.insets();
+    const bounds = {
+      left: inset.left - vx,
+      top: inset.top - vy,
+      right: width - inset.right - vx,
+      bottom: height - inset.bottom - vy,
+    };
+    return placeLabels(candidates, obstacles, Math.round(10 + 14 * zoom), bounds).flatMap(
+      (label) => {
+        const item = byId.get(label.id);
+        return item
+          ? [{ ...label, wx: item.x * k, wy: item.y * k, dimmed: this.isDimmed(label.id) }]
+          : [];
+      },
+    );
   });
   readonly zoomPercent = computed(() => Math.round((this.zoomK() / this.fitK()) * 100));
   readonly status = computed(() => {
@@ -248,6 +283,8 @@ export class GraphComponent {
 
   private pointer: { id: number; x: number; y: number; origin: View; moved: boolean } | null = null;
   private suppressClick = false;
+  private readonly touches = new Map<number, { x: number; y: number }>();
+  private pinch: { distance: number; origin: View } | null = null;
   /** The view follows window resizes until the reader moves or zooms it. */
   private autoFit = true;
 
@@ -258,6 +295,13 @@ export class GraphComponent {
       this.reducedMotion.set(media?.matches ?? false);
       const onMedia = (event: MediaQueryListEvent) => this.reducedMotion.set(event.matches);
       media?.addEventListener('change', onMedia);
+      const wideMedia = window.matchMedia?.('(min-width: 62rem)');
+      this.wide.set(wideMedia?.matches ?? false);
+      const onWide = (event: MediaQueryListEvent) => {
+        this.wide.set(event.matches);
+        if (this.autoFit) this.fit();
+      };
+      wideMedia?.addEventListener('change', onWide);
       let fitted = false;
       const observer = new (globalThis.ResizeObserver ?? FallbackObserver)(() => {
         if (!element) return;
@@ -285,6 +329,7 @@ export class GraphComponent {
         clearTimeout(timer);
         observer.disconnect();
         media?.removeEventListener('change', onMedia);
+        wideMedia?.removeEventListener('change', onWide);
       });
     });
   }
@@ -313,13 +358,41 @@ export class GraphComponent {
   setQuery(value: string): void {
     this.query.set(value);
   }
-  /** The slash key jumps to the search field, unless the reader is already typing somewhere. */
-  slashFocus(event: KeyboardEvent): void {
+  toggleControls(): void {
+    this.controlsOpen.set(!this.controlsShown());
+    if (this.autoFit) this.fit();
+  }
+  /** Shortcuts that work anywhere on the page, unless the reader is typing in a field. */
+  globalKey(event: KeyboardEvent): void {
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
     const target = event.target as HTMLElement | null;
-    if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey) return;
     if (target?.closest('input, textarea, select, [contenteditable]')) return;
+    const actions: Record<string, () => void> = {
+      '/': () => this.stage()?.nativeElement.ownerDocument.getElementById('graph-search')?.focus(),
+      '?': () => this.shortcutsOpen.update((open) => !open),
+      l: () => this.toggleControls(),
+      L: () => this.toggleControls(),
+      o: () => this.openSelected(),
+      O: () => this.openSelected(),
+      '+': () => this.zoomBy(1.25),
+      '=': () => this.zoomBy(1.25),
+      '-': () => this.zoomBy(0.8),
+      _: () => this.zoomBy(0.8),
+      '0': () => this.fit(),
+      Escape: () => {
+        if (this.shortcutsOpen()) this.shortcutsOpen.set(false);
+        else if (this.selectedId()) this.clearSelection();
+        else if (this.controlsOpen() && !this.wide()) this.controlsOpen.set(false);
+      },
+    };
+    const action = actions[event.key];
+    if (!action) return;
     event.preventDefault();
-    this.stage()?.nativeElement.ownerDocument.getElementById('graph-search')?.focus();
+    action();
+  }
+  openSelected(): void {
+    const node = this.selected();
+    if (node) void this.router.navigate(['/verbete', node.slug]);
   }
   searchKey(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
@@ -344,14 +417,14 @@ export class GraphComponent {
     this.selectedId.set(null);
   }
   isDimmed(id: string): boolean {
-    const selected = this.selectedId();
-    if (selected) return id !== selected && !this.neighbours().has(id);
+    const active = this.activeId();
+    if (active) return id !== active && !this.neighbours().has(id);
     const matches = this.matchIds();
     return this.query().trim() !== '' && !matches.has(id);
   }
   edgeDimmed(edge: NetworkEdge): boolean {
-    const selected = this.selectedId();
-    return !!selected && edge.source !== selected && edge.target !== selected;
+    const active = this.activeId();
+    return !!active && edge.source !== active && edge.target !== active;
   }
   tabIndexFor(id: string): number {
     const roving = this.focusId() ?? this.drawnNodes()[0]?.node.id;
@@ -415,9 +488,16 @@ export class GraphComponent {
     if (!width || !height) return;
     this.autoFit = true;
     const world = this.world();
-    const k = Math.min(width / world.width, height / world.height) * 0.96;
+    const inset = this.insets();
+    const freeW = Math.max(120, width - inset.left - inset.right);
+    const freeH = Math.max(120, height - inset.top - inset.bottom);
+    const k = Math.min(freeW / world.width, freeH / world.height) * 0.98;
     this.fitK.set(k);
-    this.view.set({ k, x: (width - world.width * k) / 2, y: (height - world.height * k) / 2 });
+    this.view.set({
+      k,
+      x: inset.left + (freeW - world.width * k) / 2,
+      y: inset.top + (freeH - world.height * k) / 2,
+    });
   }
   zoomBy(factor: number, around?: { x: number; y: number }): void {
     this.autoFit = false;
@@ -444,8 +524,16 @@ export class GraphComponent {
     });
   }
   pointerDown(event: PointerEvent): void {
-    if (event.button !== 0) return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
     this.suppressClick = false;
+    this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (this.touches.size === 2) {
+      const [a, b] = [...this.touches.values()];
+      this.pinch = { distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, origin: this.view() };
+      this.pointer = null;
+      this.dragging.set(true);
+      return;
+    }
     this.pointer = {
       id: event.pointerId,
       x: event.clientX,
@@ -455,6 +543,24 @@ export class GraphComponent {
     };
   }
   pointerMove(event: PointerEvent): void {
+    if (this.touches.has(event.pointerId))
+      this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (this.pinch && this.touches.size === 2) {
+      const rect = this.stage()?.nativeElement.getBoundingClientRect();
+      if (!rect) return;
+      const [a, b] = [...this.touches.values()];
+      const ratio = (Math.hypot(a.x - b.x, a.y - b.y) || 1) / this.pinch.distance;
+      const { x, y, k } = this.pinch.origin;
+      const next = Math.min(this.fitK() * 12, Math.max(this.fitK() * 0.5, k * ratio));
+      const mid = { x: (a.x + b.x) / 2 - rect.left, y: (a.y + b.y) / 2 - rect.top };
+      this.autoFit = false;
+      this.view.set({
+        k: next,
+        x: mid.x - (mid.x - x) * (next / k),
+        y: mid.y - (mid.y - y) * (next / k),
+      });
+      return;
+    }
     const pointer = this.pointer;
     if (!pointer || pointer.id !== event.pointerId) return;
     const dx = event.clientX - pointer.x;
@@ -469,6 +575,16 @@ export class GraphComponent {
     this.view.set({ ...pointer.origin, x: pointer.origin.x + dx, y: pointer.origin.y + dy });
   }
   pointerUp(event: PointerEvent): void {
+    this.touches.delete(event.pointerId);
+    if (this.pinch) {
+      if (this.touches.size < 2) {
+        this.pinch = null;
+        this.dragging.set(false);
+        this.suppressClick = true;
+        setTimeout(() => (this.suppressClick = false));
+      }
+      return;
+    }
     const pointer = this.pointer;
     if (!pointer || pointer.id !== event.pointerId) return;
     if (pointer.moved) {
@@ -482,22 +598,27 @@ export class GraphComponent {
     this.dragging.set(false);
   }
   canvasKey(event: KeyboardEvent): void {
-    const step = 48;
+    const step = event.shiftKey ? 240 : 60;
     const handlers: Record<string, () => void> = {
       ArrowLeft: () => this.panBy(step, 0),
       ArrowRight: () => this.panBy(-step, 0),
       ArrowUp: () => this.panBy(0, step),
       ArrowDown: () => this.panBy(0, -step),
-      '+': () => this.zoomBy(1.25),
-      '=': () => this.zoomBy(1.25),
-      '-': () => this.zoomBy(0.8),
-      '0': () => this.fit(),
-      Escape: () => this.clearSelection(),
     };
     const handler = handlers[event.key];
     if (!handler) return;
     event.preventDefault();
     handler();
+  }
+  canvasDoubleClick(event: MouseEvent): void {
+    const node = (event.target as Element).closest('[data-node]');
+    const rect = this.stage()?.nativeElement.getBoundingClientRect();
+    if (node) {
+      const slug = this.nodeIndex.get(node.getAttribute('data-node') ?? '')?.slug;
+      if (slug) void this.router.navigate(['/verbete', slug]);
+    } else if (rect) {
+      this.zoomBy(1.7, { x: event.clientX - rect.left, y: event.clientY - rect.top });
+    }
   }
 
   private nearestInDirection(id: string, dx: number, dy: number): string | null {
@@ -527,7 +648,12 @@ export class GraphComponent {
     if (!point || !width) return;
     this.autoFit = false;
     const k = Math.max(this.view().k, this.fitK() * 3.5);
-    this.view.set({ k, x: width / 2 - point.x * k, y: height / 2 - point.y * k });
+    // The detail panel opens on the right: aim at the middle of what stays free.
+    const inset = this.insets();
+    const right = this.wide() ? 23 * 16 + 32 : inset.right;
+    const cx = inset.left + (width - inset.left - right) / 2;
+    const cy = inset.top + (height - inset.top - inset.bottom) / 2;
+    this.view.set({ k, x: cx - point.x * k, y: cy - point.y * k });
   }
 
   private reveal(id: string): void {

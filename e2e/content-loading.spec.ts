@@ -23,6 +23,7 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
   expect(resources).toEqual([]);
+  await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
   await page
     .locator('.site-header')
     .getByRole('link', { name: /Marxismo/ })
@@ -33,6 +34,7 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   expect(compiled).toHaveLength(manifest.collections.length + manifest.ideologies.length + 4);
   expect(new Set(compiled).size).toBe(compiled.length);
   expect(compiled).toContain(`/c/${manifest.adjacency.sha256}.json`);
+  await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
   await page
     .locator('.site-header')
     .getByRole('link', { name: /Liberalismo/ })
@@ -63,6 +65,7 @@ test('a failed content asset preserves the current page and offers a working ret
 }) => {
   await page.goto('/');
   await page.route(`${base}/pointer.json`, (route) => route.abort());
+  await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
   await page
     .locator('.site-header')
     .getByRole('link', { name: /Liberalismo/ })

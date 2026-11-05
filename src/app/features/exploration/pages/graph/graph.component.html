@@ -1,64 +1,76 @@
 <div class="graph-page">
-  <header class="bar">
-    <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
-      <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
-    </a>
-    <h1 class="bar__title">Rede do acervo</h1>
-    <form class="search" role="search" (submit)="$event.preventDefault()">
-      <label for="graph-search" class="visually-hidden">Buscar por nome</label>
-      <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="10.5" cy="10.5" r="6.5" />
-        <path d="M15.5 15.5L21 21" />
-      </svg>
-      <input
-        id="graph-search"
-        class="search__input"
-        type="search"
-        autocomplete="off"
-        placeholder="Buscar verbete, pessoa, obra…"
-        [value]="query()"
-        (input)="setQuery($any($event.target).value)"
-        (keydown)="searchKey($event)"
-        aria-describedby="graph-search-hint"
-      />
-      <kbd class="search__key" aria-hidden="true">/</kbd>
-      <span id="graph-search-hint" class="visually-hidden"
-        >Enter abre o primeiro resultado. Escape limpa a busca. A tecla barra leva o foco até
-        aqui.</span
-      >
-      @if (query().trim()) {
-        <ul class="search__results" aria-label="Resultados da busca">
-          @for (match of matches(); track match.id) {
-            <li>
-              <button type="button" (click)="select(match.id)">
-                <app-kind-icon [kind]="networkIcon(match)" />
-                <span>{{ match.title }}</span>
-                <small>{{ kindLabel(match) }}</small>
-              </button>
-            </li>
-          } @empty {
-            <li class="hint">Nenhum verbete com esse nome no recorte atual.</li>
-          }
-        </ul>
-      }
-    </form>
-    <button
-      type="button"
-      class="bar__toggle"
-      [attr.aria-expanded]="controlsOpen()"
-      aria-controls="graph-controls"
-      (click)="controlsOpen.set(!controlsOpen())"
-    >
-      Legenda e filtros
-    </button>
-    <a class="bar__list" routerLink="/conhecimento">Ver como lista</a>
-  </header>
+  <div class="floating" [class.has-detail]="!!selected()">
+    <header class="bar card">
+      <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
+        <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
+      </a>
+      <h1 class="bar__title">Rede do acervo</h1>
+      <form class="search" role="search" (submit)="$event.preventDefault()">
+        <label for="graph-search" class="visually-hidden">Buscar por nome</label>
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5" />
+          <path d="M15.5 15.5L21 21" />
+        </svg>
+        <input
+          id="graph-search"
+          class="search__input"
+          type="search"
+          autocomplete="off"
+          placeholder="Buscar verbete, pessoa, obra…"
+          [value]="query()"
+          (input)="setQuery($any($event.target).value)"
+          (keydown)="searchKey($event)"
+          aria-describedby="graph-search-hint"
+        />
+        <kbd class="search__key" aria-hidden="true">/</kbd>
+        <span id="graph-search-hint" class="visually-hidden"
+          >Enter abre o primeiro resultado. Escape limpa a busca. A tecla barra leva o foco até
+          aqui.</span
+        >
+        @if (query().trim()) {
+          <ul class="search__results card" aria-label="Resultados da busca">
+            @for (match of matches(); track match.id) {
+              <li>
+                <button type="button" (click)="select(match.id)">
+                  <app-kind-icon [kind]="networkIcon(match)" />
+                  <span>{{ match.title }}</span>
+                  <small>{{ kindLabel(match) }}</small>
+                </button>
+              </li>
+            } @empty {
+              <li class="hint">Nenhum verbete com esse nome no recorte atual.</li>
+            }
+          </ul>
+        }
+      </form>
+      <div class="bar__actions">
+        <button
+          type="button"
+          class="chip"
+          [attr.aria-expanded]="controlsShown()"
+          aria-controls="graph-controls"
+          (click)="toggleControls()"
+        >
+          Legenda e filtros
+        </button>
+        <button
+          type="button"
+          class="chip chip--icon"
+          [attr.aria-expanded]="shortcutsOpen()"
+          aria-controls="graph-shortcuts"
+          aria-label="Atalhos de teclado e mouse"
+          (click)="shortcutsOpen.set(!shortcutsOpen())"
+        >
+          ?
+        </button>
+        <a class="chip bar__list" routerLink="/conhecimento">Ver como lista</a>
+      </div>
+    </header>
 
-  <div class="workspace" [class.workspace--detail]="!!selected()">
     <aside
       id="graph-controls"
-      class="controls"
-      [class.controls--open]="controlsOpen()"
+      class="controls card"
+      [class.is-shown]="controlsShown()"
       aria-label="Legenda e filtros"
     >
       <details class="panel" open>
@@ -152,21 +164,12 @@
 
       <button
         type="button"
-        class="atlas-button atlas-button--secondary"
+        class="chip chip--solid"
         [disabled]="!filtersActive() && !query()"
         (click)="resetFilters()"
       >
         Limpar filtros
       </button>
-
-      <section class="howto-block" aria-labelledby="howto-title">
-        <h2 id="howto-title">Como explorar</h2>
-        <ul class="howto">
-          <li>Arraste o fundo para mover; a roda do mouse aproxima e afasta.</li>
-          <li>Clique em um nó para ver o resumo e as ligações dele.</li>
-          <li>Pelo teclado: Tab entra no grafo, setas movem entre nós, Enter abre.</li>
-        </ul>
-      </section>
     </aside>
 
     <div
@@ -179,13 +182,14 @@
         class="canvas"
         tabindex="0"
         role="group"
-        aria-label="Grafo de verbetes e ligações. Setas movem a vista, mais e menos aproximam, zero reenquadra, Escape limpa a seleção."
+        aria-label="Grafo de verbetes e ligações. Setas movem a vista, mais e menos aproximam, zero reenquadra, Escape limpa a seleção. A tecla ponto de interrogação lista os atalhos."
         aria-describedby="graph-status"
         (wheel)="wheel($event)"
         (pointerdown)="pointerDown($event)"
         (pointermove)="pointerMove($event)"
         (pointerup)="pointerUp($event)"
         (pointercancel)="pointerUp($event)"
+        (dblclick)="canvasDoubleClick($event)"
         (keydown)="canvasKey($event)"
       >
         <defs>
@@ -220,7 +224,7 @@
                 [style.stroke]="'var(' + item.family.color + ')'"
                 [class.is-dimmed]="edgeDimmed(item.edge)"
                 [class.is-active]="
-                  selectedId() === item.edge.source || selectedId() === item.edge.target
+                  activeId() === item.edge.source || activeId() === item.edge.target
                 "
               >
                 <title>{{ item.family.label }}: {{ item.edge.label }}</title>
@@ -280,15 +284,6 @@
         </g>
       </svg>
 
-      <div class="zoom" role="group" aria-label="Zoom">
-        <button type="button" (click)="zoomBy(1.3)" aria-label="Aproximar">+</button>
-        <button type="button" (click)="zoomBy(1 / 1.3)" aria-label="Afastar">−</button>
-        <button type="button" (click)="fit()" aria-label="Reenquadrar o grafo inteiro">⤢</button>
-        <span class="zoom__level" aria-hidden="true">{{ zoomPercent() }}%</span>
-      </div>
-
-      <p id="graph-status" class="status" role="status">{{ status() }}</p>
-
       @if (loading()) {
         <div class="overlay" role="status">
           <span class="spinner" aria-hidden="true"></span>
@@ -298,21 +293,96 @@
         <div class="overlay">
           <h2>Nada para mostrar ainda</h2>
           <p>O acervo não tem verbetes publicados. Volte em breve.</p>
-          <a class="atlas-button" routerLink="/conhecimento">Ver o acervo</a>
+          <a class="chip chip--solid" routerLink="/conhecimento">Ver o acervo</a>
         </div>
       } @else if (visible().nodes.length === 0) {
         <div class="overlay">
           <h2>Nenhum verbete neste recorte</h2>
           <p>Os filtros escondem todos os verbetes. Amplie a seleção para voltar a ver o mapa.</p>
-          <button type="button" class="atlas-button" (click)="resetFilters()">
+          <button type="button" class="chip chip--solid" (click)="resetFilters()">
             Limpar filtros
           </button>
         </div>
       }
     </div>
 
+    <div class="hud">
+      @if (shortcutsOpen()) {
+        <section id="graph-shortcuts" class="shortcuts card" aria-labelledby="shortcuts-title">
+          <header>
+            <h2 id="shortcuts-title">Atalhos</h2>
+            <button
+              type="button"
+              class="detail__close"
+              aria-label="Fechar atalhos"
+              (click)="shortcutsOpen.set(false)"
+            >
+              ×
+            </button>
+          </header>
+          <div class="shortcuts__cols">
+            <div>
+              <h3>Teclado</h3>
+              <dl>
+                <dt><kbd>/</kbd></dt>
+                <dd>Buscar por nome</dd>
+                <dt><kbd>Tab</kbd></dt>
+                <dd>Entrar no grafo e passar entre painéis</dd>
+                <dt><kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd></dt>
+                <dd>Num nó: ir ao vizinho mais próximo. No fundo: mover a vista</dd>
+                <dt><kbd>Shift</kbd> + setas</dt>
+                <dd>Mover a vista mais rápido</dd>
+                <dt><kbd>Enter</kbd></dt>
+                <dd>Selecionar o nó</dd>
+                <dt><kbd>O</kbd></dt>
+                <dd>Abrir o verbete selecionado</dd>
+                <dt><kbd>+</kbd><kbd>−</kbd><kbd>0</kbd></dt>
+                <dd>Aproximar, afastar, reenquadrar</dd>
+                <dt><kbd>L</kbd></dt>
+                <dd>Mostrar ou ocultar legenda e filtros</dd>
+                <dt><kbd>Esc</kbd></dt>
+                <dd>Fechar, limpar seleção ou busca</dd>
+                <dt><kbd>?</kbd></dt>
+                <dd>Esta lista</dd>
+              </dl>
+            </div>
+            <div>
+              <h3>Mouse e toque</h3>
+              <dl>
+                <dt>Arrastar o fundo</dt>
+                <dd>Mover a vista</dd>
+                <dt>Roda do mouse</dt>
+                <dd>Aproximar e afastar</dd>
+                <dt>Pinça (toque)</dt>
+                <dd>Aproximar e afastar</dd>
+                <dt>Clique em um nó</dt>
+                <dd>Ver resumo e ligações</dd>
+                <dt>Passar o mouse</dt>
+                <dd>Destacar as ligações do nó</dd>
+                <dt>Duplo clique em um nó</dt>
+                <dd>Abrir o verbete</dd>
+                <dt>Duplo clique no fundo</dt>
+                <dd>Aproximar</dd>
+                <dt>Duplo clique na legenda</dt>
+                <dd>Mostrar só aquele tipo</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+      }
+      <div class="hud__row">
+        <p id="graph-status" class="status card" role="status">{{ status() }}</p>
+        <div class="zoom card" role="group" aria-label="Zoom">
+          <button type="button" (click)="zoomBy(1.3)" aria-label="Aproximar">+</button>
+          <button type="button" (click)="zoomBy(1 / 1.3)" aria-label="Afastar">−</button>
+          <button type="button" (click)="fit()" aria-label="Reenquadrar o grafo inteiro">⤢</button>
+          <span class="zoom__level" aria-hidden="true">{{ zoomPercent() }}%</span>
+        </div>
+      </div>
+    </div>
+
     <aside
-      class="detail"
+      class="detail card"
       [class.detail--empty]="!selected()"
       aria-label="Detalhes do verbete"
       aria-live="polite"
@@ -360,7 +430,7 @@
               </ul>
             </section>
           }
-          <a class="atlas-button detail__open" [routerLink]="['/verbete', node.slug]"
+          <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
             >Abrir o verbete <span aria-hidden="true">→</span></a
           >
           <section aria-labelledby="detail-links">
