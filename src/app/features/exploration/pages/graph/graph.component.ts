@@ -229,6 +229,8 @@ export class GraphComponent {
     });
   });
   readonly zoomK = computed(() => this.view().k);
+  /** Close enough to read what each link says; farther away the lines alone are shown. */
+  readonly near = computed(() => this.zoomK() / this.fitK() >= EDGE_LABEL_ZOOM);
   readonly drawnEdges = computed(() => {
     const positions = this.positions();
     if (!positions) return [];
@@ -339,7 +341,7 @@ export class GraphComponent {
     const positions = this.positions();
     if (!active || !positions) return [];
     // Zoomed out the lines speak for themselves; the wording appears when the reader comes close.
-    if (this.zoomK() / this.fitK() < EDGE_LABEL_ZOOM) return [];
+    if (!this.near()) return [];
     const k = this.zoomK();
     const { x: vx, y: vy } = this.view();
     const taken = this.labels().map((label) => {
@@ -404,7 +406,7 @@ export class GraphComponent {
     const top = Math.max(8, Math.min(at.y + 16, height - 200));
     const hoveredId = this.hoveredId();
     const edgeId = this.hoveredEdgeId();
-    if (edgeId && !hoveredId) {
+    if (edgeId && !hoveredId && this.near()) {
       const edge = this.edgeIndex.get(edgeId);
       const source = edge && this.nodeIndex.get(edge.source);
       const target = edge && this.nodeIndex.get(edge.target);
@@ -422,7 +424,7 @@ export class GraphComponent {
         title: node.title,
         kind: this.kindLabel(node),
         total: links.length,
-        top: links
+        top: (this.near() ? links : [])
           .slice(0, 3)
           .map((link) => ({ verb: this.linkVerb(link), name: link.other.title })),
       },
@@ -616,6 +618,11 @@ export class GraphComponent {
       edge.id === this.hoveredEdgeId() ||
       (!!active && (edge.source === active || edge.target === active))
     );
+  }
+  /** Invisible click target around an icon: never under 16 px on screen, whatever the zoom. */
+  hitRadius(radius: number): number {
+    const scale = this.nodeScale();
+    return Math.max(radius * scale + 6 / this.zoomK(), 16 / this.zoomK());
   }
   tabIndexFor(id: string): number {
     const roving = this.focusId() ?? this.drawnNodes()[0]?.node.id;
@@ -884,7 +891,7 @@ export class GraphComponent {
       this.suppressClick = true;
       // A drag ends with a click on whatever is under the pointer; let it pass first.
       setTimeout(() => (this.suppressClick = false));
-    } else if ((event.target as Element).closest('[data-node], [data-label]') === null) {
+    } else if ((event.target as Element).closest('[data-node], [data-hit]') === null) {
       this.clearSelection();
     }
     this.pointer = null;
@@ -904,11 +911,11 @@ export class GraphComponent {
     handler();
   }
   canvasDoubleClick(event: MouseEvent): void {
-    const node = (event.target as Element).closest('[data-node], [data-label]');
+    const node = (event.target as Element).closest('[data-node], [data-hit]');
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (node) {
       const slug = this.nodeIndex.get(
-        node.getAttribute('data-node') ?? node.getAttribute('data-label') ?? '',
+        node.getAttribute('data-node') ?? node.getAttribute('data-hit') ?? '',
       )?.slug;
       if (slug) void this.router.navigate(['/verbete', slug]);
     } else if (rect) {
@@ -1084,14 +1091,21 @@ function hash(text: string): number {
 }
 
 /** Small, stable wander of a node: a few pixels, each node on its own rhythm. */
-function driftOf(id: string): { ax: number; ay: number; duration: number; delay: number } {
+function driftOf(id: string): {
+  ax: number;
+  ay: number;
+  durationX: number;
+  durationY: number;
+  delay: number;
+} {
   const h = hash(id);
   const unit = (shift: number) => ((h >>> shift) & 255) / 255;
   return {
-    ax: Math.round((0.8 + unit(0) * 1.4) * 10) / 10,
-    ay: Math.round((0.8 + unit(8) * 1.4) * 10) / 10,
-    duration: Math.round((6 + unit(16) * 5) * 10) / 10,
-    delay: -Math.round(unit(24) * 110) / 10,
+    ax: Math.round((2.6 + unit(0) * 2.4) * 10) / 10,
+    ay: Math.round((2.6 + unit(8) * 2.4) * 10) / 10,
+    durationX: Math.round(13 + unit(16) * 8),
+    durationY: Math.round(17 + unit(24) * 9),
+    delay: -Math.round(unit(12) * 30),
   };
 }
 

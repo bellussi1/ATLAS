@@ -184,7 +184,7 @@ test('keeps nodes still when the reader prefers reduced motion', async ({ page }
   await page.goto('/rede');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const animation = await page
-    .locator('.node__drift')
+    .locator('.node__drift-x')
     .first()
     .evaluate((el) => getComputedStyle(el).animationName);
   expect(animation).toBe('none');
@@ -280,15 +280,25 @@ test.describe('touch', () => {
   });
 });
 
-test('clicking a name on the map selects that node', async ({ page }) => {
+test('a click just beside a node icon still selects it, and names are not clickable', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/rede');
-  await expect(page.locator('[data-label]').first()).toBeVisible();
-  const name = (await page.locator('[data-label]').first().textContent())?.trim() ?? '';
-  await page.locator('[data-label]').first().click();
-  await expect(
-    page.getByRole('complementary', { name: 'Detalhes do verbete' }).getByRole('heading', {
-      level: 2,
-    }),
-  ).toContainText(name.replace('…', '').slice(0, 8));
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  await expect(page.locator('[data-label]')).toHaveCount(0);
+  // A linked node in the free middle of the stage, away from the floating panels.
+  const spot = await page.locator(linkedNode).evaluateAll((nodes) => {
+    for (const el of nodes) {
+      const r = el.querySelector('.node__shape')!.getBoundingClientRect();
+      const cx = r.x + r.width / 2;
+      const cy = r.y + r.height / 2;
+      if (cx > 450 && cx < 800 && cy > 200 && cy < 600)
+        return { x: r.right + 8, y: cy, id: el.getAttribute('data-node') };
+    }
+    return null;
+  });
+  expect(spot).not.toBeNull();
+  await page.mouse.click(spot!.x, spot!.y);
+  await expect(page.getByRole('complementary', { name: 'Detalhes do verbete' })).toBeVisible();
 });
