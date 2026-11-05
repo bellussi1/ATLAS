@@ -67,6 +67,27 @@ export function imageFiles(entity, type) {
   );
 }
 
+/** Lead image the Wikipedia article itself shows, for items whose Wikidata entry has no image. */
+export function pageImageUrl(lang, title) {
+  const url = new URL(`https://${lang}.wikipedia.org/w/api.php`);
+  url.search = new URLSearchParams({
+    action: 'query',
+    format: 'json',
+    formatversion: '2',
+    titles: title,
+    redirects: '1',
+    prop: 'pageimages',
+    piprop: 'name',
+  }).toString();
+  return url.toString();
+}
+
+/** File name behind `pageImageUrl`, with spaces as in Commons titles; `null` when there is none. */
+export function pageImageFile(data) {
+  const name = data?.query?.pages?.[0]?.pageimage;
+  return typeof name === 'string' && name ? name.replaceAll('_', ' ') : null;
+}
+
 export function commonsInfoUrl(file) {
   const url = new URL(COMMONS_API);
   url.search = new URLSearchParams({
@@ -127,7 +148,13 @@ export async function collectImages(entities, { http, retrievedAt, usedFiles = n
   for (const entity of entities) {
     const reasons = [];
     let asset = null;
-    for (const file of imageFiles(items.get(entity.qid), entity.type)) {
+    const files = imageFiles(items.get(entity.qid), entity.type);
+    if (!files.length && entity.lang && entity.title) {
+      // Nothing on Wikidata: the article's own lead image, held to the same licence check.
+      const lead = pageImageFile(await callApi(pageImageUrl(entity.lang, entity.title), http.json));
+      if (lead) files.push(lead);
+    }
+    for (const file of files) {
       if (used.has(file)) {
         reasons.push(`já usada: ${file}`);
         continue;
@@ -180,7 +207,13 @@ export async function main(argv = process.argv.slice(2)) {
   const directory = join(projectRoot, 'generated/wiki-extract', slug);
   const records = await loadRecords(join(directory, 'articles'));
   const entities = records
-    .map((record) => ({ id: record.entity.id, type: record.entity.type, qid: record.entity.qid }))
+    .map((record) => ({
+      id: record.entity.id,
+      type: record.entity.type,
+      qid: record.entity.qid,
+      lang: record.article?.lang,
+      title: record.article?.title,
+    }))
     .sort((a, b) => rank(a.type) - rank(b.type) || a.id.localeCompare(b.id, 'en'))
     .slice(0, values.limit ? Number(values.limit) : undefined);
   const recorder = recordingHttp(liveHttp);

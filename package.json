@@ -15,6 +15,7 @@
     "tradicao:discover": "node scripts/tradicao/discover.mjs",
     "tradicao:extract": "node scripts/tradicao/extract.mjs",
     "tradicao:images": "node scripts/tradicao/images.mjs",
+    "tradicao:imagens-relatorio": "node scripts/tradicao/image-coverage.mjs",
     "tradicao:onda": "node scripts/tradicao/wave.mjs",
     "tradicao:eval": "node scripts/tradicao/eval.mjs",
     "prestart": "npm run content:build",
