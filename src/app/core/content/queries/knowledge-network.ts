@@ -1,4 +1,9 @@
-import type { Claim, EntityKind, KnowledgeGraph } from '@core/content/models/content-schema';
+import type {
+  Claim,
+  EntityKind,
+  KnowledgeGraph,
+  Relation,
+} from '@core/content/models/content-schema';
 import {
   forceCollide,
   forceLink,
@@ -235,6 +240,52 @@ export interface NetworkNode {
   degree: number;
 }
 
+/**
+ * How well a link is grounded. Catalogue entries and navigation links are never presented as
+ * documented influence: the reader sees the nature next to the phrase.
+ */
+export type RelationNature = 'stated' | 'catalogue' | 'navigation' | 'editorial';
+
+export interface RelationNatureDefinition {
+  id: RelationNature;
+  label: string;
+  /** One sentence for the reader about what this nature does and does not say. */
+  note: string;
+  /** Lower comes first when links are listed. */
+  rank: number;
+}
+
+export const relationNatures: readonly RelationNatureDefinition[] = [
+  {
+    id: 'stated',
+    label: 'Afirmado em fonte',
+    note: 'Uma fonte de referência afirma esta relação, no texto indicado.',
+    rank: 0,
+  },
+  {
+    id: 'editorial',
+    label: 'Ligação editorial',
+    note: 'Associação feita pela edição do ATLAS para situar o tema, sem tese histórica própria.',
+    rank: 1,
+  },
+  {
+    id: 'catalogue',
+    label: 'Registro de catálogo',
+    note: 'Classificação de um catálogo colaborativo. Mostra associação, não influência documentada.',
+    rank: 2,
+  },
+  {
+    id: 'navigation',
+    label: 'Ligação de navegação',
+    note: 'Os verbetes se citam, mas isso não diz que um influenciou o outro.',
+    rank: 3,
+  },
+];
+
+export function relationNatureDefinition(id: RelationNature): RelationNatureDefinition {
+  return relationNatures.find((nature) => nature.id === id) ?? relationNatures[0];
+}
+
 export interface NetworkEdge {
   id: string;
   source: string;
@@ -242,6 +293,17 @@ export interface NetworkEdge {
   family: RelationFamilyId;
   label: string;
   collection: string;
+  /** Phrase read from source to target: "influenciou". */
+  phrase: string;
+  /** Phrase read from target to source: "foi influenciado por". */
+  phraseReverse: string;
+  /** Short sentence saying why the link exists. */
+  context: string;
+  nature: RelationNature;
+  /** Name of the source of the claim, when the relation records one. */
+  sourceName: string | null;
+  sourceUrl: string | null;
+  uncertainty: string;
 }
 
 export interface NetworkCollection {
@@ -284,6 +346,18 @@ export function collectionLabel(title: string): string {
   return title.replace(/\s*\([^)]*(wikip[eé]dia|rascunho)[^)]*\)/i, '').trim();
 }
 
+function provenanceName(source: 'wikipedia' | 'wikidata'): string {
+  return source === 'wikidata' ? 'Wikidata' : 'Wikipédia';
+}
+
+export function natureOf(relation: Relation): RelationNature {
+  if (relation.provenance?.source === 'wikidata') return 'catalogue';
+  if (relation.type === 'encyclopedic-link') return 'navigation';
+  if (relation.type === 'editorial-link') return 'editorial';
+  if (relation.provenance) return 'stated';
+  return 'editorial';
+}
+
 /** Flattens the knowledge graph into one deduplicated network: entities once, relations by id. */
 export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
   const atlases = graph.atlases.filter((atlas) => !hiddenCollections.has(atlas.id));
@@ -320,6 +394,7 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
       if (edges.has(relation.id)) continue;
       if (!nodes.has(relation.fromEntityId) || !nodes.has(relation.toEntityId)) continue;
       const mapped = familyByType[relation.type] ?? { family: 'associated' as const };
+      const reverse = !!mapped.reverse;
       edges.set(relation.id, {
         id: relation.id,
         source: mapped.reverse ? relation.toEntityId : relation.fromEntityId,
@@ -327,6 +402,13 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
         family: mapped.family,
         label: relation.label,
         collection: atlas.id,
+        phrase: reverse ? relation.reverseLabel : relation.label,
+        phraseReverse: reverse ? relation.label : relation.reverseLabel,
+        context: relation.context,
+        nature: natureOf(relation),
+        sourceName: relation.provenance ? provenanceName(relation.provenance.source) : null,
+        sourceUrl: relation.provenance?.url ?? null,
+        uncertainty: relation.uncertainty,
       });
     }
   }
@@ -413,7 +495,55 @@ export function linksOf(
     const other = nodes.get(edge.source === id ? edge.target : edge.source);
     if (other) links.push({ edge, other, outgoing: edge.source === id });
   }
-  return links.sort((a, b) => b.other.degree - a.other.degree);
+  return links.sort(
+    (a, b) =>
+      relationNatureDefinition(a.edge.nature).rank - relationNatureDefinition(b.edge.nature).rank ||
+      b.other.degree - a.other.degree,
+  );
+}
+
+export interface PathStep {
+  edge: NetworkEdge;
+  from: string;
+  to: string;
+}
+
+/**
+ * Shortest chain of links between two nodes (breadth-first, links read in either direction).
+ * Returns null when they are not connected; an empty list when both are the same node.
+ */
+export function shortestPath(
+  fromId: string,
+  toId: string,
+  edges: readonly NetworkEdge[],
+): PathStep[] | null {
+  if (fromId === toId) return [];
+  const adjacent = new Map<string, { edge: NetworkEdge; other: string }[]>();
+  for (const edge of edges) {
+    adjacent.set(edge.source, [...(adjacent.get(edge.source) ?? []), { edge, other: edge.target }]);
+    adjacent.set(edge.target, [...(adjacent.get(edge.target) ?? []), { edge, other: edge.source }]);
+  }
+  const previous = new Map<string, { edge: NetworkEdge; from: string }>();
+  const queue = [fromId];
+  const seen = new Set([fromId]);
+  for (const current of queue) {
+    for (const { edge, other } of adjacent.get(current) ?? []) {
+      if (seen.has(other)) continue;
+      seen.add(other);
+      previous.set(other, { edge, from: current });
+      if (other === toId) {
+        const steps: PathStep[] = [];
+        for (let at = toId; at !== fromId;) {
+          const step = previous.get(at)!;
+          steps.unshift({ edge: step.edge, from: step.from, to: at });
+          at = step.from;
+        }
+        return steps;
+      }
+      queue.push(other);
+    }
+  }
+  return null;
 }
 
 const positionPattern = /\b(esquerda|direita|centro|extrema|progressist|conservador)/i;
@@ -446,7 +576,7 @@ function seeded(seed: number): () => number {
 
 /** Largest on-screen growth of a node shape; the layout reserves room for it. */
 export const MAX_NODE_SCALE = 1.6;
-const NODE_GAP = 14;
+const NODE_GAP = 30;
 
 /** Shapes stay readable at any zoom: larger when zoomed out, smaller when zoomed in. */
 export function nodeScaleFor(zoom: number): number {
@@ -465,6 +595,32 @@ interface SimNode extends SimulationNodeDatum {
   ty: number;
   /** Nodes without links wait on a ring around the connected core. */
   isolated: boolean;
+  /** Linked, but apart from the largest group: pulled toward the centre so they stay near. */
+  satellite: boolean;
+}
+
+/** Ids of the largest group of linked nodes. */
+function mainComponent(edges: readonly NetworkEdge[]): Set<string> {
+  const adjacent = new Map<string, string[]>();
+  for (const edge of edges) {
+    adjacent.set(edge.source, [...(adjacent.get(edge.source) ?? []), edge.target]);
+    adjacent.set(edge.target, [...(adjacent.get(edge.target) ?? []), edge.source]);
+  }
+  let best = new Set<string>();
+  const seen = new Set<string>();
+  for (const start of adjacent.keys()) {
+    if (seen.has(start)) continue;
+    const group = new Set([start]);
+    seen.add(start);
+    for (const id of group)
+      for (const next of adjacent.get(id) ?? [])
+        if (!seen.has(next)) {
+          seen.add(next);
+          group.add(next);
+        }
+    if (group.size > best.size) best = group;
+  }
+  return best;
 }
 
 /**
@@ -480,18 +636,21 @@ export function layoutNetwork(
   const count = nodes.length;
   if (!count) return { positions, width: 0, height: 0 };
   const random = seeded(options.seed ?? 7);
-  const span = Math.sqrt(count) * 90;
+  const span = Math.sqrt(count) * 130;
   const collectionIds = [...new Set(nodes.map((node) => node.collections[0]))];
   const linked = new Set(edges.flatMap((edge) => [edge.source, edge.target]));
+  const main = mainComponent(edges);
   const simNodes: SimNode[] = nodes.map((node) => {
     const sector = collectionIds.indexOf(node.collections[0]) / collectionIds.length;
     const angle = sector * Math.PI * 2;
-    const tx = Math.cos(angle) * span * 0.2 * 1.4;
-    const ty = Math.sin(angle) * span * 0.2;
+    const own = !linked.has(node.id) || main.has(node.id);
+    const tx = own ? Math.cos(angle) * span * 0.2 * 1.4 : 0;
+    const ty = own ? Math.sin(angle) * span * 0.2 : 0;
     return {
       id: node.id,
       clearance: nodeClearance(node.degree),
       isolated: !linked.has(node.id),
+      satellite: linked.has(node.id) && !main.has(node.id),
       tx,
       ty,
       x: tx + (random() - 0.5) * span * 0.4,
@@ -501,7 +660,7 @@ export function layoutNetwork(
   const coreArea = simNodes
     .filter((n) => !n.isolated)
     .reduce((sum, n) => sum + n.clearance ** 2, 0);
-  const coreRadius = Math.sqrt(coreArea / 0.55);
+  const coreRadius = Math.sqrt(coreArea / 0.4);
   const ringNeed =
     simNodes.filter((n) => n.isolated).reduce((sum, n) => sum + n.clearance * 2.2, 0) /
     (2 * Math.PI);
@@ -517,23 +676,27 @@ export function layoutNetwork(
       'link',
       forceLink<SimNode, { source: string; target: string }>(links)
         .id((node) => node.id)
-        .distance(90)
-        .strength(0.25),
+        .distance(130)
+        .strength(0.2),
     )
-    .force('charge', forceManyBody<SimNode>().strength(-110).distanceMax(600))
+    .force('charge', forceManyBody<SimNode>().strength(-260).distanceMax(900))
     .force(
       'x',
-      forceX<SimNode>((node) => node.tx).strength((node) => (node.isolated ? 0 : 0.09)),
+      forceX<SimNode>((node) => node.tx).strength((node) =>
+        node.isolated ? 0 : node.satellite ? 0.16 : 0.05,
+      ),
     )
     .force(
       'y',
-      forceY<SimNode>((node) => node.ty).strength((node) => (node.isolated ? 0 : 0.09)),
+      forceY<SimNode>((node) => node.ty).strength((node) =>
+        node.isolated ? 0 : node.satellite ? 0.16 : 0.05,
+      ),
     )
     .force(
       'ring',
       forceRadial<SimNode>(ringRadius, 0, 0).strength((node) => (node.isolated ? 0.25 : 0)),
     )
-    .force('collide', forceCollide<SimNode>((node) => node.clearance).iterations(3));
+    .force('collide', forceCollide<SimNode>((node) => node.clearance + 6).iterations(4));
   const ticks = options.ticks ?? 320;
   for (let i = 0; i < ticks; i++) simulation.tick();
   // A last pass with collisions alone settles any pair the other forces left touching.

@@ -1,4 +1,4 @@
-import AxeBuilder from '@axe-core/playwright';
+﻿import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 test('the graph page fills the window without page scroll and explains its legend', async ({
@@ -77,7 +77,7 @@ test('keyboard and mouse shortcuts: search, legend, zoom, shortcuts list and dou
   await page.keyboard.press('/');
   await expect(page.getByLabel('Buscar por nome')).toBeFocused();
   await page.keyboard.press('Escape');
-  await page.locator('body').click({ position: { x: 700, y: 400 } });
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
   const zoom = page.locator('.zoom__level');
   const before = await zoom.textContent();
   await page.keyboard.press('+');
@@ -137,4 +137,158 @@ test('on a phone the cards float above the map with a gap, and pinch zooms', asy
   ]);
   await touch('touchEnd', []);
   await expect(page.locator('.zoom__level')).not.toHaveText(before ?? '');
+});
+
+const linkedNode = '[data-node]:not([aria-label$=", 0 ligações"])';
+
+test('hovering a node shows only its neighbours and explains what it relates to', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator(linkedNode).first()).toBeVisible();
+  const total = await page.locator('[data-node]').count();
+  await page.locator(linkedNode).first().dispatchEvent('pointerenter');
+  await expect(page.locator('.node.is-dimmed')).not.toHaveCount(0);
+  expect(await page.locator('.node.is-dimmed').count()).toBeLessThan(total);
+});
+
+test('a selected node lists each link with its reading, nature and reason', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await page.locator(linkedNode).first().focus();
+  await page.keyboard.press('Enter');
+  const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
+  const item = detail.locator('.links li').first();
+  await expect(item.locator('.links__verb')).not.toBeEmpty();
+  await expect(item.locator('.nature')).not.toBeEmpty();
+  await expect(item.locator('.links__why')).not.toBeEmpty();
+  await expect(detail.getByText(/conex(ão|ões) no acervo/)).toBeVisible();
+});
+
+test('traces a path between two entries from the detail panel', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await page.locator(linkedNode).first().focus();
+  await page.keyboard.press('Enter');
+  const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
+  await detail.getByRole('button', { name: 'Começar caminho a partir daqui' }).click();
+  await detail.locator('.links li button').first().click();
+  await expect(detail.getByRole('list', { name: /Trajeto de/ })).toBeVisible();
+  await detail.getByRole('button', { name: 'Limpar caminho' }).click();
+  await expect(detail.getByRole('list', { name: /Trajeto de/ })).toHaveCount(0);
+});
+
+test('keeps nodes still when the reader prefers reduced motion', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/rede');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const animation = await page
+    .locator('.node__drift')
+    .first()
+    .evaluate((el) => getComputedStyle(el).animationName);
+  expect(animation).toBe('none');
+});
+
+test('the overview map stays inside the window', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const map = await page.getByRole('group', { name: /Visão geral do mapa/ }).boundingBox();
+  expect(map!.x + map!.width).toBeLessThanOrEqual(1280);
+  expect(map!.y + map!.height).toBeLessThanOrEqual(800);
+});
+
+test('zoomed out the links are plain lines; up close they carry their wording', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator(linkedNode).first()).toBeVisible();
+  await page.locator(linkedNode).first().dispatchEvent('pointerenter');
+  await expect(page.locator('.label--edge')).toHaveCount(0);
+  await page.locator(linkedNode).first().dispatchEvent('pointerleave');
+  await page.locator(linkedNode).first().focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.label--edge').first()).toBeVisible();
+});
+
+test('mouse: the wheel zooms, dragging pans and a double click on the background zooms in', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const zoom = page.locator('.zoom__level');
+  const start = await zoom.textContent();
+  await page.mouse.move(640, 420);
+  await page.mouse.wheel(0, -400);
+  await expect(zoom).not.toHaveText(start ?? '');
+  const world = page.locator('g.world');
+  const before = await world.getAttribute('transform');
+  await page.mouse.move(640, 700);
+  await page.mouse.down();
+  await page.mouse.move(700, 660, { steps: 6 });
+  await page.mouse.up();
+  await expect(world).not.toHaveAttribute('transform', before ?? '');
+  const level = await zoom.textContent();
+  await page.mouse.dblclick(900, 720);
+  await expect(zoom).not.toHaveText(level ?? '');
+});
+
+test('keyboard: search results walk with the arrows and Home reframes the map', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const zoom = page.locator('.zoom__level');
+  const start = await zoom.textContent();
+  await page.keyboard.press('/');
+  await page.keyboard.type('Li');
+  await page.keyboard.press('ArrowDown');
+  await expect(page.locator('.search__results button').first()).toBeFocused();
+  await page.keyboard.press('Escape');
+  await expect(page.getByLabel('Buscar por nome')).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('complementary', { name: 'Detalhes do verbete' })).toBeVisible();
+  await page.keyboard.press('Escape');
+  await page.keyboard.press('Escape');
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
+  await page.keyboard.press('Home');
+  await expect(zoom).toHaveText(start ?? '');
+});
+
+test('the list alternative is one link away', async ({ page }) => {
+  await page.goto('/rede');
+  await page.getByRole('link', { name: 'Ver como lista' }).click();
+  await expect(page).toHaveURL(/\/conhecimento/);
+});
+
+test.describe('touch', () => {
+  test.use({ hasTouch: true, viewport: { width: 390, height: 780 } });
+
+  test('a tap selects a node and opens its summary', async ({ page }) => {
+    await page.goto('/rede');
+    await expect(page.locator(linkedNode).first()).toBeVisible();
+    await page.locator(linkedNode).first().dispatchEvent('click');
+    await expect(
+      page.getByRole('complementary', { name: 'Detalhes do verbete' }).getByRole('heading', {
+        level: 2,
+      }),
+    ).toBeVisible();
+  });
+});
+
+test('clicking a name on the map selects that node', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator('[data-label]').first()).toBeVisible();
+  const name = (await page.locator('[data-label]').first().textContent())?.trim() ?? '';
+  await page.locator('[data-label]').first().click();
+  await expect(
+    page.getByRole('complementary', { name: 'Detalhes do verbete' }).getByRole('heading', {
+      level: 2,
+    }),
+  ).toContainText(name.replace('…', '').slice(0, 8));
 });

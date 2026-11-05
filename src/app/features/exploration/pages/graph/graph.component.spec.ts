@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+﻿import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { provideContentFixture } from '@testing/content-fixture';
 import { vi } from 'vitest';
@@ -116,9 +116,9 @@ describe('GraphComponent', () => {
     const before = fixture.componentInstance.view();
     const canvas = root(fixture).querySelector('svg.canvas')!;
     canvas.dispatchEvent(new KeyboardEvent('keydown', { key: '+', bubbles: true }));
-    expect(fixture.componentInstance.view().k).toBeGreaterThan(before.k);
+    await vi.waitFor(() => expect(fixture.componentInstance.view().k).toBeGreaterThan(before.k));
     canvas.dispatchEvent(new KeyboardEvent('keydown', { key: '0', bubbles: true }));
-    expect(fixture.componentInstance.view().k).toBeCloseTo(before.k);
+    await vi.waitFor(() => expect(fixture.componentInstance.view().k).toBeCloseTo(before.k));
     canvas.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }));
     expect(fixture.componentInstance.view().x).toBeGreaterThan(before.x);
   });
@@ -197,5 +197,134 @@ describe('GraphComponent', () => {
       expect(y).toBeLessThanOrEqual(700 - inset.bottom + 1);
       expect(x).toBeGreaterThanOrEqual(inset.left - 1);
     }
+  });
+
+  it('names only the hovered node and its neighbours, with a phrase on each link', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    component.hoverNode(linked.node.id);
+    fixture.detectChanges();
+    const lit = new Set([linked.node.id, ...component.neighbours()]);
+    expect(component.labels().length).toBeGreaterThan(0);
+    for (const label of component.labels()) expect(lit.has(label.id)).toBe(true);
+    expect(component.edgeLabels()).toEqual([]);
+    expect(root(fixture).querySelector('.node.is-dimmed')).not.toBeNull();
+  });
+
+  it('explains the relation of the selected node: reading, nature and reason', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.select(linked.node.id);
+    fixture.detectChanges();
+    const items = root(fixture).querySelectorAll('.links li');
+    expect(items.length).toBeGreaterThan(0);
+    expect(items[0].querySelector('.links__verb')?.textContent?.trim()).toBeTruthy();
+    expect(items[0].querySelector('.nature')?.textContent?.trim()).toBeTruthy();
+    expect(items[0].querySelector('.links__why')?.textContent?.trim()).toBeTruthy();
+    expect(root(fixture).querySelector('.detail__count')?.textContent).toContain('conex');
+  });
+
+  it('traces a path from a marked node to the selected one', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    const other = component.selectedLinks().length
+      ? null
+      : (() => {
+          component.select(linked.node.id);
+          return component.selectedLinks()[0].other;
+        })();
+    component.select(linked.node.id);
+    component.togglePathStart();
+    component.select((other ?? component.selectedLinks()[0].other).id);
+    fixture.detectChanges();
+    expect(component.pathSteps().length).toBe(1);
+    expect(root(fixture).querySelector('.steps li')).not.toBeNull();
+    component.clearPath();
+    fixture.detectChanges();
+    expect(root(fixture).querySelector('.steps')).toBeNull();
+  });
+
+  it('cycles through the neighbours of a node with the bracket keys', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    const el = root(fixture).querySelector(`[data-node="${linked.node.id}"]`)!;
+    el.dispatchEvent(new KeyboardEvent('keydown', { key: ']', bubbles: true }));
+    expect(component.focusId()).not.toBe(linked.node.id);
+  });
+
+  it('names more nodes at each zoom step and words the links only up close', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.hoverNode(linked.node.id);
+    expect(component.edgeLabels()).toEqual([]);
+    component.hoverNode(null);
+    const degrees = new Map(component.drawnNodes().map((n) => [n.node.id, n.node.degree]));
+    for (const label of component.labels()) expect(degrees.get(label.id)).toBeGreaterThanOrEqual(2);
+    const centre = { x: 700, y: 450 };
+    component.zoomBy(2.2, centre);
+    component.zoomBy(2.2, centre);
+    component.select(linked.node.id);
+    component.hoverNode(linked.node.id);
+    await vi.waitFor(() => expect(component.edgeLabels().length).toBeGreaterThan(0));
+  });
+
+  it('reframes with Home, ignores letter shortcuts on buttons and unwinds Escape in steps', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1000, height: 600 });
+    component.fit();
+    const base = component.view().k;
+    component.zoomBy(2);
+    press('Home');
+    await vi.waitFor(() => expect(component.view().k).toBeCloseTo(base));
+    const button = root(fixture).querySelector<HTMLButtonElement>('.zoom button')!;
+    press('l', button);
+    expect(component.controlsOpen()).toBeNull();
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.select(linked.node.id);
+    component.togglePathStart();
+    press('Escape');
+    expect(component.pathFromId()).toBeNull();
+    expect(component.selectedId()).toBe(linked.node.id);
+    press('Escape');
+    expect(component.selectedId()).toBeNull();
+  });
+
+  it('walks through the search results with the arrow keys and Escape returns to the field', async () => {
+    const fixture = await render();
+    const first = fixture.componentInstance.drawnNodes()[0].node;
+    const input = root(fixture).querySelector<HTMLInputElement>('#graph-search')!;
+    document.body.append(root(fixture));
+    input.value = first.title.slice(0, 3);
+    input.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+    const buttons = root(fixture).querySelectorAll<HTMLButtonElement>('.search__results button');
+    expect(buttons.length).toBeGreaterThan(0);
+    expect(document.activeElement).toBe(buttons[0]);
+    buttons[0].dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    expect(document.activeElement).toBe(input);
+    root(fixture).remove();
+  });
+
+  it('selects a node when its name is clicked', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    fixture.detectChanges();
+    const label = root(fixture).querySelector<SVGTextElement>('[data-label]')!;
+    const id = label.getAttribute('data-label');
+    label.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    expect(component.selectedId()).toBe(id);
   });
 });
