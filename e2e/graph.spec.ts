@@ -77,7 +77,7 @@ test('keyboard and mouse shortcuts: search, legend, zoom, shortcuts list and dou
   await page.keyboard.press('/');
   await expect(page.getByLabel('Buscar por nome')).toBeFocused();
   await page.keyboard.press('Escape');
-  await page.locator('body').click({ position: { x: 700, y: 400 } });
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur());
   const zoom = page.locator('.zoom__level');
   const before = await zoom.textContent();
   await page.keyboard.press('+');
@@ -278,4 +278,17 @@ test.describe('touch', () => {
       }),
     ).toBeVisible();
   });
+});
+
+test('clicking a name on the map selects that node', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/rede');
+  await expect(page.locator('[data-label]').first()).toBeVisible();
+  const name = (await page.locator('[data-label]').first().textContent())?.trim() ?? '';
+  await page.locator('[data-label]').first().click();
+  await expect(
+    page.getByRole('complementary', { name: 'Detalhes do verbete' }).getByRole('heading', {
+      level: 2,
+    }),
+  ).toContainText(name.replace('…', '').slice(0, 8));
 });

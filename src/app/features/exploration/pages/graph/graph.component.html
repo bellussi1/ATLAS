@@ -308,8 +308,12 @@
           }
           @for (label of labels(); track label.id) {
             <text
-              class="label"
+              class="label label--node"
+              [attr.data-label]="label.id"
               [class.is-neighbour]="label.neighbour"
+              (click)="nodeClick(label.id)"
+              (pointerenter)="hoverNode(label.id)"
+              (pointerleave)="hoverNode(null)"
               [style.--delay.ms]="label.delay"
               [attr.x]="view().x + label.wx + label.dx"
               [attr.y]="view().y + label.wy + label.dy"

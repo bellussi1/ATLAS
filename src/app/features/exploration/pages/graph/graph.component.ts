@@ -269,7 +269,7 @@ export class GraphComponent {
    */
   readonly labels = computed(() => {
     const nodes = this.drawnNodes();
-    if (!nodes.length || this.animating()) return [];
+    if (!nodes.length) return [];
     const k = this.zoomK();
     const scale = nodeScaleFor(k);
     const zoom = k / this.fitK();
@@ -337,7 +337,7 @@ export class GraphComponent {
   readonly edgeLabels = computed(() => {
     const active = this.activeId();
     const positions = this.positions();
-    if (!active || !positions || this.animating()) return [];
+    if (!active || !positions) return [];
     // Zoomed out the lines speak for themselves; the wording appears when the reader comes close.
     if (this.zoomK() / this.fitK() < EDGE_LABEL_ZOOM) return [];
     const k = this.zoomK();
@@ -884,7 +884,7 @@ export class GraphComponent {
       this.suppressClick = true;
       // A drag ends with a click on whatever is under the pointer; let it pass first.
       setTimeout(() => (this.suppressClick = false));
-    } else if ((event.target as Element).closest('[data-node]') === null) {
+    } else if ((event.target as Element).closest('[data-node], [data-label]') === null) {
       this.clearSelection();
     }
     this.pointer = null;
@@ -904,10 +904,12 @@ export class GraphComponent {
     handler();
   }
   canvasDoubleClick(event: MouseEvent): void {
-    const node = (event.target as Element).closest('[data-node]');
+    const node = (event.target as Element).closest('[data-node], [data-label]');
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (node) {
-      const slug = this.nodeIndex.get(node.getAttribute('data-node') ?? '')?.slug;
+      const slug = this.nodeIndex.get(
+        node.getAttribute('data-node') ?? node.getAttribute('data-label') ?? '',
+      )?.slug;
       if (slug) void this.router.navigate(['/verbete', slug]);
     } else if (rect) {
       this.zoomBy(1.7, { x: event.clientX - rect.left, y: event.clientY - rect.top });

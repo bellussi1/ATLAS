@@ -315,4 +315,16 @@ describe('GraphComponent', () => {
     expect(document.activeElement).toBe(input);
     root(fixture).remove();
   });
+
+  it('selects a node when its name is clicked', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    fixture.detectChanges();
+    const label = root(fixture).querySelector<SVGTextElement>('[data-label]')!;
+    const id = label.getAttribute('data-label');
+    label.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    expect(component.selectedId()).toBe(id);
+  });
 });

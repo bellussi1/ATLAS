@@ -486,6 +486,13 @@ kbd {
   stroke-width: 4px;
   stroke-linejoin: round;
 }
+.label--node {
+  pointer-events: auto;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 .stage--animated .label {
   animation: fade 220ms ease-out both;
   animation-delay: var(--delay, 0ms);
