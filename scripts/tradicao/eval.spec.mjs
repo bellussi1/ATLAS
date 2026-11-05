@@ -397,6 +397,36 @@ test('conferir um braço só: lista de pendentes, marcas parciais e decisão sob
   await assert.rejects(scoreEval({ root, only: 'sonnet' }), /desconhecido/);
 });
 
+test('erro da fonte não conta para os 5% e vira lista de correções', async (t) => {
+  const items = [
+    { arm: 'x', kind: 'text', ok: true, note: 'FONTE: era revista, não jornal.' },
+    { arm: 'x', kind: 'text', ok: true, note: 'ressalva qualquer' },
+    { arm: 'x', kind: 'text', ok: false, note: 'FONTE: marcou false por engano de critério' },
+    { arm: 'y', kind: 'text', ok: true, note: 'fonte: minúscula também' },
+  ];
+  const errors = residualErrors(items, 'x');
+  assert.equal(errors.text.checked, 3);
+  assert.equal(errors.text.wrong, 1, 'false continua sendo erro do modelo');
+  assert.equal(errors.sourceErrors, 1);
+  assert.equal(residualErrors(items, 'y').sourceErrors, 1);
+
+  const root = await project(
+    t,
+    Array.from({ length: 10 }, (_, i) => `art${i}`),
+  );
+  await runEval({ root, from: ['x'], size: 10, client: fakeClient(), ...quiet });
+  const { directory, items: list } = await buildReport({ root });
+  const marked = list.map((item) => ({ ...item, ok: true }));
+  marked[0].note = 'FONTE: correção com referência.';
+  await writeFile(join(directory, 'revisao.json'), JSON.stringify(marked));
+  const scored = await scoreEval({ root, minimum: 5, today: '2026-11-05' });
+  assert.equal(scored.decision.outcome, 'haiku-fica');
+  const corrections = JSON.parse(await readFile(join(directory, 'correcoes-fonte.json'), 'utf8'));
+  assert.equal(corrections.length, 1);
+  assert.equal(corrections[0].note, 'FONTE: correção com referência.');
+  assert.match(await readFile(join(directory, 'revisao.md'), 'utf8'), /FONTE:/);
+});
+
 test('revisao.json quebrado para o relatório e não apaga as marcas', async (t) => {
   const root = await project(t);
   await runEval({ root, from: ['x'], size: 3, client: fakeClient(), ...quiet });

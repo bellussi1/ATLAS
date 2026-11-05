@@ -9,7 +9,8 @@
  *   npm run tradicao:eval -- marks --file <arquivo>            # traz as marcas, item a item
  *   npm run tradicao:eval -- score [--arm haiku-medium]        # aplica a regra e grava model-choice.json
  * Mede o que as travas rejeitam (citações e relações) e separa para a pessoa uma lista do que passou.
- * Regra: Haiku fica se o erro restante, depois das travas, ficar abaixo de 5%. Se o texto passar e as
+ * Regra: Haiku fica se o erro restante do modelo, depois das travas, ficar abaixo de 5%; erro da própria
+ * fonte não conta e vira lista de correções. Se o texto passar e as
  * relações não, só a etapa de relações sobe de modelo.
  */
 import { createHash } from 'node:crypto';
@@ -156,7 +157,11 @@ export function renderReview(items) {
   const lines = [
     '# Conferência humana da avaliação',
     '',
-    'Marque `ok` em `revisao.json` (true: o trecho sustenta exatamente o item, com o sentido certo; false: não). Item sem marca não conta.',
+    'Marque `ok` no JSON. Item sem marca não conta.',
+    '',
+    '- `false`, **erro do modelo**: o trecho não sustenta exatamente o item, ou o sentido está errado. Conta para a regra dos 5%.',
+    '- `true`: o trecho sustenta o item.',
+    '- `true` com nota começando por `FONTE:`, **erro da fonte**: o item repete o trecho fielmente, mas o fato está errado por outra fonte. Explique a correção e a fonte na nota. Não conta para os 5% e vai para a lista de correções.',
     '',
   ];
   for (const [index, item] of items.entries()) {
@@ -174,7 +179,10 @@ export function renderReview(items) {
   return `${lines.join('\n')}\n`;
 }
 
-/** Share of checked items a person marked wrong, by kind, for one arm. */
+/** Item que repete fielmente um artigo errado: a culpa é da fonte, e a correção vai para a edição. */
+export const isSourceError = (item) => item.ok === true && /^\s*FONTE:/i.test(item.note ?? '');
+
+/** Share of checked items the model got wrong, by kind, for one arm. Source errors do not count. */
 export function residualErrors(items, arm) {
   const summary = {};
   for (const kind of ['relation', 'text']) {
@@ -184,6 +192,7 @@ export function residualErrors(items, arm) {
     const wrong = checked.filter((item) => item.ok === false).length;
     summary[kind] = { checked: checked.length, wrong, error: rate(wrong, checked.length) };
   }
+  summary.sourceErrors = items.filter((item) => item.arm === arm && isSourceError(item)).length;
   summary.overall = {
     checked: summary.relation.checked + summary.text.checked,
     wrong: summary.relation.wrong + summary.text.wrong,
@@ -396,6 +405,13 @@ export async function scoreEval({
   if (!decidable.length) throw new Error(`Braço desconhecido: ${only}`);
   const decision = decideModel(byArm, { minimum, decidable });
   await writeJsonAtomic(join(directory, 'decisao.json'), { byArm, ...decision });
+  // Corrections for the editorial review: what the article says, what it should say, and why.
+  await writeJsonAtomic(
+    join(directory, 'correcoes-fonte.json'),
+    items
+      .filter(isSourceError)
+      .map(({ entity, url, statement, quote, note }) => ({ entity, url, statement, quote, note })),
+  );
   if (!decision.chosen) return { byArm, decision, wrote: false };
   const sample = await readSample(directory);
   const choice = modelChoiceSchema.parse({
