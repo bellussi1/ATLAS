@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-integralismo-brasileiro",
+  "slug": "integralismo-brasileiro",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Integralismo brasileiro",
+  "kicker": "Ideologia política",
+  "summary": "Movimento político brasileiro de extrema-direita, de caráter nacionalista e fascista, desenvolvido por Plínio Salgado no início da década de 1930. Organizou-se na Sociedade de Estudos Políticos e, a partir do Manifesto de Outubro de 1932, na Ação Integralista Brasileira (AIB). O verbete descreve a doutrina, que reúne nacionalismo, corporativismo e Estado confessional católico, episódios como a Batalha da Praça da Sé, em 1934, e as sucessivas tentativas de recriação do movimento, inclusive o neointegralismo.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Movimento político brasileiro de extrema-direita, de caráter nacionalista e fascista, desenvolvido por Plínio Salgado no início da década de 1930. Organizou-se na Sociedade de Estudos Políticos e, a partir do Manifesto de Outubro de 1932, na Ação Integralista Brasileira (AIB). O verbete descreve a doutrina, que reúne nacionalismo, corporativismo e Estado confessional católico, episódios como a Batalha da Praça da Sé, em 1934, e as sucessivas tentativas de recriação do movimento, inclusive o neointegralismo.",
+        "Posição política descrita na fonte: extrema direita."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O integralismo foi desenvolvido por Plínio Salgado no início da década de 1930, inicialmente na Sociedade de Estudos Políticos."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O integralismo foi desenvolvido por Plínio Salgado no início da década de 1930, inicialmente na Sociedade de Estudos Políticos.",
+              "paragraphs": [
+                "O integralismo foi desenvolvido por Plínio Salgado no início da década de 1930, inicialmente na Sociedade de Estudos Políticos."
+              ],
+              "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+              "entityIds": ["wiki-topic-integralismo-brasileiro"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "O movimento defendia nacionalismo, patriotismo, espiritualismo, democracia orgânica corporativista e Estado confessional católico."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "O movimento defendia nacionalismo, patriotismo, espiritualismo, democracia orgânica corporativista e Estado confessional católico.",
+              "paragraphs": [
+                "O movimento defendia nacionalismo, patriotismo, espiritualismo, democracia orgânica corporativista e Estado confessional católico."
+              ],
+              "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+              "entityIds": ["wiki-topic-integralismo-brasileiro"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "O grafo não registra nomes alternativos nem termos-chave desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Fundação do movimento por Plínio Salgado, segundo o verbete.",
+        "Realização do I Congresso Integralista para o Século XXI em São Paulo.",
+        "A Batalha da Praça da Sé é considerada um dos episódios mais violentos da história política do Brasil."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1932",
+              "kicker": "Marco datado",
+              "summary": "Fundação do movimento por Plínio Salgado, segundo o verbete.",
+              "paragraphs": ["Fundação do movimento por Plínio Salgado, segundo o verbete."],
+              "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+              "entityIds": ["wiki-topic-integralismo-brasileiro"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "2004",
+              "kicker": "Marco datado",
+              "summary": "Realização do I Congresso Integralista para o Século XXI em São Paulo.",
+              "paragraphs": [
+                "Realização do I Congresso Integralista para o Século XXI em São Paulo."
+              ],
+              "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+              "entityIds": ["wiki-topic-integralismo-brasileiro"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "A Batalha da Praça da Sé é considerada um dos episódios mais violentos da história política do Brasil.",
+              "paragraphs": [
+                "A Batalha da Praça da Sé é considerada um dos episódios mais violentos da história política do Brasil."
+              ],
+              "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+              "entityIds": ["wiki-topic-integralismo-brasileiro"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1932, "end": 1932 },
+            { "itemId": "marco-2", "start": 2004, "end": 2004 }
+          ],
+          "entityIds": ["wiki-topic-integralismo-brasileiro"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Há ampla discussão entre autores sobre as proximidades do integralismo com o fascismo de Benito Mussolini."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Há ampla discussão entre autores sobre as proximidades do integralismo com o fascismo de Benito Mussolini.",
+              "paragraphs": [
+                "Há ampla discussão entre autores sobre as proximidades do integralismo com o fascismo de Benito Mussolini."
+              ],
+              "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+              "entityIds": ["wiki-topic-integralismo-brasileiro"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 10 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-integralismo-brasileiro"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-integralismo-brasileiro"] }]
+    }
+  ]
+}

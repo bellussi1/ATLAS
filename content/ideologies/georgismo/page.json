@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-georgismo",
+  "slug": "georgismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Georgismo",
+  "kicker": "Ideologia política",
+  "summary": "O georgismo é uma filosofia econômica que defende que as pessoas devem possuir o valor que produzem, mas que a renda derivada da terra e dos recursos naturais pertence igualmente a todos os membros da sociedade. Seu principal instrumento é um imposto sobre o valor da terra. Desenvolveu-se a partir dos escritos de Henry George, sobretudo de Progresso e Pobreza (1879), e foi popular e influente no final do século XIX e início do século XX. O verbete também trata de seus desdobramentos em políticas públicas, comunidades, organizações, recepção crítica e influência no Brasil.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O georgismo é uma filosofia econômica que defende que as pessoas devem possuir o valor que produzem, mas que a renda derivada da terra e dos recursos naturais pertence igualmente a todos os membros da sociedade. Seu principal instrumento é um imposto sobre o valor da terra. Desenvolveu-se a partir dos escritos de Henry George, sobretudo de Progresso e Pobreza (1879), e foi popular e influente no final do século XIX e início do século XX. O verbete também trata de seus desdobramentos em políticas públicas, comunidades, organizações, recepção crítica e influência no Brasil."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-georgismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O conceito de obter receitas públicas principalmente de privilégios de terras e recursos naturais foi amplamente popularizado por Henry George em seu primeiro livro, Progresso e Pobreza."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-georgismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O conceito de obter receitas públicas principalmente de privilégios de terras e recursos naturais foi amplamente popularizado por Henry George em seu primeiro livro, Progresso e Pobreza.",
+              "paragraphs": [
+                "O conceito de obter receitas públicas principalmente de privilégios de terras e recursos naturais foi amplamente popularizado por Henry George em seu primeiro livro, Progresso e Pobreza."
+              ],
+              "sourceIds": ["src-wiki-topic-georgismo"],
+              "entityIds": ["wiki-topic-georgismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "A principal recomendação política georgista é um imposto avaliado sobre o valor da terra."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-georgismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "A principal recomendação política georgista é um imposto avaliado sobre o valor da terra.",
+              "paragraphs": [
+                "A principal recomendação política georgista é um imposto avaliado sobre o valor da terra."
+              ],
+              "sourceIds": ["src-wiki-topic-georgismo"],
+              "entityIds": ["wiki-topic-georgismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de geoísmo, georgism, geoism, movimento do imposto único."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-georgismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-georgismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-georgismo": "Nomes alternativos: geoísmo, georgism, geoism, movimento do imposto único."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "O conceito de obter receitas públicas principalmente de privilégios de terras e recursos naturais foi amplamente popularizado por Henry George em seu primeiro livro, Progresso e Pobreza.",
+        "Henry George publica Progresso e Pobreza, livro que popularizou o conceito de obter receitas públicas de privilégios de terras.",
+        "Joseph Jay Pastoriza promulga o Plano de Tributação de Houston.",
+        "As ideias georgistas foram populares e influentes durante o final do século XIX e início do século XX."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-georgismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1879",
+              "kicker": "Marco datado",
+              "summary": "O conceito de obter receitas públicas principalmente de privilégios de terras e recursos naturais foi amplamente popularizado por Henry George em seu primeiro livro, Progresso e Pobreza.",
+              "paragraphs": [
+                "O conceito de obter receitas públicas principalmente de privilégios de terras e recursos naturais foi amplamente popularizado por Henry George em seu primeiro livro, Progresso e Pobreza."
+              ],
+              "sourceIds": ["src-wiki-topic-georgismo"],
+              "entityIds": ["wiki-topic-georgismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1879",
+              "kicker": "Marco datado",
+              "summary": "Henry George publica Progresso e Pobreza, livro que popularizou o conceito de obter receitas públicas de privilégios de terras.",
+              "paragraphs": [
+                "Henry George publica Progresso e Pobreza, livro que popularizou o conceito de obter receitas públicas de privilégios de terras."
+              ],
+              "sourceIds": ["src-wiki-topic-georgismo"],
+              "entityIds": ["wiki-topic-georgismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1912",
+              "kicker": "Marco datado",
+              "summary": "Joseph Jay Pastoriza promulga o Plano de Tributação de Houston.",
+              "paragraphs": ["Joseph Jay Pastoriza promulga o Plano de Tributação de Houston."],
+              "sourceIds": ["src-wiki-topic-georgismo"],
+              "entityIds": ["wiki-topic-georgismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "As ideias georgistas foram populares e influentes durante o final do século XIX e início do século XX.",
+              "paragraphs": [
+                "As ideias georgistas foram populares e influentes durante o final do século XIX e início do século XX."
+              ],
+              "sourceIds": ["src-wiki-topic-georgismo"],
+              "entityIds": ["wiki-topic-georgismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1879, "end": 1879 },
+            { "itemId": "marco-2", "start": 1879, "end": 1879 },
+            { "itemId": "marco-3", "start": 1912, "end": 1912 }
+          ],
+          "entityIds": ["wiki-topic-georgismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Críticos iniciais argumentaram que o georgismo geraria receita pública demais, enquanto críticos posteriores argumentaram que não geraria receita suficiente para cobrir os gastos do governo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-georgismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Críticos iniciais argumentaram que o georgismo geraria receita pública demais, enquanto críticos posteriores argumentaram que não geraria receita suficiente para cobrir os gastos do governo.",
+              "paragraphs": [
+                "Críticos iniciais argumentaram que o georgismo geraria receita pública demais, enquanto críticos posteriores argumentaram que não geraria receita suficiente para cobrir os gastos do governo."
+              ],
+              "sourceIds": ["src-wiki-topic-georgismo"],
+              "entityIds": ["wiki-topic-georgismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "O verbete cita, entre suas obras, o estudo de T. H. Bonaparte sobre o impacto de Henry George."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-georgismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "O verbete cita, entre suas obras, o estudo de T. H. Bonaparte sobre o impacto de Henry George.",
+              "paragraphs": [
+                "O verbete cita, entre suas obras, o estudo de T. H. Bonaparte sobre o impacto de Henry George."
+              ],
+              "sourceIds": ["src-wiki-topic-georgismo"],
+              "entityIds": ["wiki-topic-georgismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-georgismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-georgismo"] }]
+    }
+  ]
+}

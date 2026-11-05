@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-escola-keynesiana",
+  "slug": "escola-keynesiana",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Escola keynesiana",
+  "kicker": "Ideologia política",
+  "summary": "A escola keynesiana, ou keynesianismo, é a teoria econômica consolidada por John Maynard Keynes em sua obra Teoria geral do emprego, do juro e da moeda, publicada em 1936, durante a Grande Depressão. Ela sustenta que o ciclo econômico não se autorregula e que o Estado deve atuar, por meio de política fiscal e monetária, para conduzir a economia ao pleno emprego. Serviu de modelo macroeconômico padrão nas nações desenvolvidas no pós-guerra e foi redesenhada depois da estagflação dos anos 1970. O verbete também mostra seu interesse renovado após a crise financeira de 2007–2008.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "A escola keynesiana, ou keynesianismo, é a teoria econômica consolidada por John Maynard Keynes em sua obra Teoria geral do emprego, do juro e da moeda, publicada em 1936, durante a Grande Depressão. Ela sustenta que o ciclo econômico não se autorregula e que o Estado deve atuar, por meio de política fiscal e monetária, para conduzir a economia ao pleno emprego. Serviu de modelo macroeconômico padrão nas nações desenvolvidas no pós-guerra e foi redesenhada depois da estagflação dos anos 1970. O verbete também mostra seu interesse renovado após a crise financeira de 2007–2008."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "A escola sustenta que o ciclo econômico não é autorregulado e que a intervenção do Estado na economia é necessária.",
+        "Política fiscal e monetária coordenadas podem estabilizar a produção, a inflação e o desemprego ao longo do ciclo de negócios."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central 1",
+              "kicker": "Pilares e princípios",
+              "summary": "A escola sustenta que o ciclo econômico não é autorregulado e que a intervenção do Estado na economia é necessária.",
+              "paragraphs": [
+                "A escola sustenta que o ciclo econômico não é autorregulado e que a intervenção do Estado na economia é necessária."
+              ],
+              "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+              "entityIds": ["wiki-topic-escola-keynesiana"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Ideia central 2",
+              "kicker": "Pilares e princípios",
+              "summary": "Política fiscal e monetária coordenadas podem estabilizar a produção, a inflação e o desemprego ao longo do ciclo de negócios.",
+              "paragraphs": [
+                "Política fiscal e monetária coordenadas podem estabilizar a produção, a inflação e o desemprego ao longo do ciclo de negócios."
+              ],
+              "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+              "entityIds": ["wiki-topic-escola-keynesiana"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de Keynesianismo, Economia keynesiana, Keynesian economics."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-escola-keynesiana"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-escola-keynesiana": "Nomes alternativos: Keynesianismo, Economia keynesiana, Keynesian economics."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Publicação da Teoria Geral do Emprego, do Juro e da Moeda, por Keynes.",
+        "A influência keynesiana diminuiu após o choque do petróleo e a estagflação da década de 1970."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1936",
+              "kicker": "Marco datado",
+              "summary": "Publicação da Teoria Geral do Emprego, do Juro e da Moeda, por Keynes.",
+              "paragraphs": [
+                "Publicação da Teoria Geral do Emprego, do Juro e da Moeda, por Keynes."
+              ],
+              "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+              "entityIds": ["wiki-topic-escola-keynesiana"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "A influência keynesiana diminuiu após o choque do petróleo e a estagflação da década de 1970.",
+              "paragraphs": [
+                "A influência keynesiana diminuiu após o choque do petróleo e a estagflação da década de 1970."
+              ],
+              "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+              "entityIds": ["wiki-topic-escola-keynesiana"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 1936, "end": 1936 }],
+          "entityIds": ["wiki-topic-escola-keynesiana"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Monetaristas e keynesianos divergiram sobre o papel do governo na estabilização da economia."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Monetaristas e keynesianos divergiram sobre o papel do governo na estabilização da economia.",
+              "paragraphs": [
+                "Monetaristas e keynesianos divergiram sobre o papel do governo na estabilização da economia."
+              ],
+              "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+              "entityIds": ["wiki-topic-escola-keynesiana"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 7 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-escola-keynesiana"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-escola-keynesiana"] }]
+    }
+  ]
+}

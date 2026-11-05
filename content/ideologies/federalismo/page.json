@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-federalismo",
+  "slug": "federalismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Federalismo",
+  "kicker": "Ideologia política",
+  "summary": "Federalismo é uma forma de governo que combina um nível geral de governo com níveis regionais e divide os poderes de governança entre eles. O termo deriva do latim foedus, pacto ou aliança. Desenvolveu-se historicamente desde ligas da Antiguidade até a Constituição dos Estados Unidos de 1787, que o consolidou no sentido moderno. O conceito é central na organização de países como Brasil, Estados Unidos, Alemanha e Austrália, e é contrastado com confederalismo e estado unitário, em debates sobre autonomia, soberania e prevenção de conflitos.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Federalismo é uma forma de governo que combina um nível geral de governo com níveis regionais e divide os poderes de governança entre eles. O termo deriva do latim foedus, pacto ou aliança. Desenvolveu-se historicamente desde ligas da Antiguidade até a Constituição dos Estados Unidos de 1787, que o consolidou no sentido moderno. O conceito é central na organização de países como Brasil, Estados Unidos, Alemanha e Austrália, e é contrastado com confederalismo e estado unitário, em debates sobre autonomia, soberania e prevenção de conflitos."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-federalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Os termos federalismo e confederalismo compartilham a raiz latina foedus, que significa tratado, pacto ou aliança."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-federalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Os termos federalismo e confederalismo compartilham a raiz latina foedus, que significa tratado, pacto ou aliança.",
+              "paragraphs": [
+                "Os termos federalismo e confederalismo compartilham a raiz latina foedus, que significa tratado, pacto ou aliança."
+              ],
+              "sourceIds": ["src-wiki-topic-federalismo"],
+              "entityIds": ["wiki-topic-federalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "O federalismo é apresentado como a combinação de autogoverno e governo compartilhado, expressando a ideia de soberania compartilhada entre níveis de governo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-federalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "O federalismo é apresentado como a combinação de autogoverno e governo compartilhado, expressando a ideia de soberania compartilhada entre níveis de governo.",
+              "paragraphs": [
+                "O federalismo é apresentado como a combinação de autogoverno e governo compartilhado, expressando a ideia de soberania compartilhada entre níveis de governo."
+              ],
+              "sourceIds": ["src-wiki-topic-federalismo"],
+              "entityIds": ["wiki-topic-federalismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de federalism."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-federalismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-federalismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-federalismo": "Nomes alternativos: federalism." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Althusius descreveu pela primeira vez as bases dessa filosofia política em sua obra Politica Methodice Digesta.",
+        "Segundo o texto, James Madison descreveu a nova Constituição dos Estados Unidos como uma composição de elementos nacionais e federais."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-federalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1603",
+              "kicker": "Marco datado",
+              "summary": "Althusius descreveu pela primeira vez as bases dessa filosofia política em sua obra Politica Methodice Digesta.",
+              "paragraphs": [
+                "Althusius descreveu pela primeira vez as bases dessa filosofia política em sua obra Politica Methodice Digesta."
+              ],
+              "sourceIds": ["src-wiki-topic-federalismo"],
+              "entityIds": ["wiki-topic-federalismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "Segundo o texto, James Madison descreveu a nova Constituição dos Estados Unidos como uma composição de elementos nacionais e federais.",
+              "paragraphs": [
+                "Segundo o texto, James Madison descreveu a nova Constituição dos Estados Unidos como uma composição de elementos nacionais e federais."
+              ],
+              "sourceIds": ["src-wiki-topic-federalismo"],
+              "entityIds": ["wiki-topic-federalismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 1603, "end": 1603 }],
+          "entityIds": ["wiki-topic-federalismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma controvérsia ou crítica consta no grafo para esta ideologia.",
+      "coverage": "pending",
+      "layout": "debate",
+      "blocks": []
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 6 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-federalismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-federalismo"] }]
+    }
+  ]
+}

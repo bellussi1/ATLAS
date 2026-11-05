@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-nacional-bolchevismo",
+  "slug": "nacional-bolchevismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Nacional-bolchevismo",
+  "kicker": "Ideologia política",
+  "summary": "Nacional-bolchevismo é um movimento político sincrético que reivindicava unir ultranacionalismo e bolchevismo. Surgiu na Alemanha na década de 1920, com os irmãos Gregor e Otto Strasser entre seus representantes, e foi eliminado no país após a repressão de 1933. Ressurgiu após a Guerra Fria, sobretudo na Rússia, ligado a Alexandr Dugin. O verbete o descreve como um paradoxo que reaproxima nacionalismo alemão e comunismo russo.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Nacional-bolchevismo é um movimento político sincrético que reivindicava unir ultranacionalismo e bolchevismo. Surgiu na Alemanha na década de 1920, com os irmãos Gregor e Otto Strasser entre seus representantes, e foi eliminado no país após a repressão de 1933. Ressurgiu após a Guerra Fria, sobretudo na Rússia, ligado a Alexandr Dugin. O verbete o descreve como um paradoxo que reaproxima nacionalismo alemão e comunismo russo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Os principais representantes do movimento na Alemanha foram os irmãos Gregor Strasser e Otto Strasser."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Os principais representantes do movimento na Alemanha foram os irmãos Gregor Strasser e Otto Strasser.",
+              "paragraphs": [
+                "Os principais representantes do movimento na Alemanha foram os irmãos Gregor Strasser e Otto Strasser."
+              ],
+              "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+              "entityIds": ["wiki-topic-nacional-bolchevismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Thiriart rejeitava os nacionalismos particulares de cada país europeu e defendia um grande nacionalismo europeu."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Thiriart rejeitava os nacionalismos particulares de cada país europeu e defendia um grande nacionalismo europeu.",
+              "paragraphs": [
+                "Thiriart rejeitava os nacionalismos particulares de cada país europeu e defendia um grande nacionalismo europeu."
+              ],
+              "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+              "entityIds": ["wiki-topic-nacional-bolchevismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de Nacional Bolchevismo, Nazbol, Strasserismo."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-nacional-bolchevismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-nacional-bolchevismo": "Nomes alternativos: Nacional Bolchevismo, Nazbol, Strasserismo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Louis Dupeux publicou ensaio sobre os sentidos da expressão nacional-bolchevismo na República de Weimar.",
+        "José Quadrado Costa publicou um estudo sobre o pensamento de Jean Thiriart e as teses dos nacional-bolcheviques alemães.",
+        "O movimento ressurgiu após o fim da Guerra Fria, principalmente na Rússia, com o objetivo de unir radicais de esquerda e direita contra o liberalismo ocidental."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1974",
+              "kicker": "Marco datado",
+              "summary": "Louis Dupeux publicou ensaio sobre os sentidos da expressão nacional-bolchevismo na República de Weimar.",
+              "paragraphs": [
+                "Louis Dupeux publicou ensaio sobre os sentidos da expressão nacional-bolchevismo na República de Weimar."
+              ],
+              "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+              "entityIds": ["wiki-topic-nacional-bolchevismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1982",
+              "kicker": "Marco datado",
+              "summary": "José Quadrado Costa publicou um estudo sobre o pensamento de Jean Thiriart e as teses dos nacional-bolcheviques alemães.",
+              "paragraphs": [
+                "José Quadrado Costa publicou um estudo sobre o pensamento de Jean Thiriart e as teses dos nacional-bolcheviques alemães."
+              ],
+              "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+              "entityIds": ["wiki-topic-nacional-bolchevismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "O movimento ressurgiu após o fim da Guerra Fria, principalmente na Rússia, com o objetivo de unir radicais de esquerda e direita contra o liberalismo ocidental.",
+              "paragraphs": [
+                "O movimento ressurgiu após o fim da Guerra Fria, principalmente na Rússia, com o objetivo de unir radicais de esquerda e direita contra o liberalismo ocidental."
+              ],
+              "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+              "entityIds": ["wiki-topic-nacional-bolchevismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1974, "end": 1974 },
+            { "itemId": "marco-2", "start": 1982, "end": 1982 }
+          ],
+          "entityIds": ["wiki-topic-nacional-bolchevismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Parte-se da observação de que o bolchevismo nacional parece um paradoxo, pois sugere o encontro de extremos."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Parte-se da observação de que o bolchevismo nacional parece um paradoxo, pois sugere o encontro de extremos.",
+              "paragraphs": [
+                "Parte-se da observação de que o bolchevismo nacional parece um paradoxo, pois sugere o encontro de extremos."
+              ],
+              "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+              "entityIds": ["wiki-topic-nacional-bolchevismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 10 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nacional-bolchevismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-nacional-bolchevismo"] }]
+    }
+  ]
+}

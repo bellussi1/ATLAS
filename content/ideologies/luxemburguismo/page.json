@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-luxemburguismo",
+  "slug": "luxemburguismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Luxemburguismo",
+  "kicker": "Ideologia política",
+  "summary": "Corrente política marxista surgida na Alemanha no início do século XX, também chamada espartaquismo por sua ligação com a Liga Espartaquista. Inspira-se nas teorias de Rosa Luxemburgo e de Karl Marx. O termo foi usado pela primeira vez por líderes bolcheviques, que denunciavam seus desvios em relação ao leninismo. Destaca-se pela crítica ao revisionismo da social-democracia, pela defesa da espontaneidade revolucionária das massas e pela proposta de uma república dos conselhos operários.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Corrente política marxista surgida na Alemanha no início do século XX, também chamada espartaquismo por sua ligação com a Liga Espartaquista. Inspira-se nas teorias de Rosa Luxemburgo e de Karl Marx. O termo foi usado pela primeira vez por líderes bolcheviques, que denunciavam seus desvios em relação ao leninismo. Destaca-se pela crítica ao revisionismo da social-democracia, pela defesa da espontaneidade revolucionária das massas e pela proposta de uma república dos conselhos operários."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-luxemburguismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Defende a espontaneidade revolucionária das massas e a ideia de que a classe operária se emancipa por si mesma.",
+        "Propõe uma república dos conselhos operários como forma de organização revolucionária."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-luxemburguismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central 1",
+              "kicker": "Pilares e princípios",
+              "summary": "Defende a espontaneidade revolucionária das massas e a ideia de que a classe operária se emancipa por si mesma.",
+              "paragraphs": [
+                "Defende a espontaneidade revolucionária das massas e a ideia de que a classe operária se emancipa por si mesma."
+              ],
+              "sourceIds": ["src-wiki-topic-luxemburguismo"],
+              "entityIds": ["wiki-topic-luxemburguismo"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Ideia central 2",
+              "kicker": "Pilares e princípios",
+              "summary": "Propõe uma república dos conselhos operários como forma de organização revolucionária.",
+              "paragraphs": [
+                "Propõe uma república dos conselhos operários como forma de organização revolucionária."
+              ],
+              "sourceIds": ["src-wiki-topic-luxemburguismo"],
+              "entityIds": ["wiki-topic-luxemburguismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de espartaquismo."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-luxemburguismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-luxemburguismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-luxemburguismo": "Nomes alternativos: espartaquismo." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo traz datas ou contexto histórico.",
+      "coverage": "pending",
+      "layout": "timeline",
+      "blocks": []
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Registros ligados à ideologia: Rosa Luxemburgo, Karl Marx."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-luxemburguismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["person-rosa-luxemburg", "person-karl-marx"],
+          "mode": "thinkers",
+          "notes": {
+            "person-rosa-luxemburg": "O luxemburguismo se inspira nas teorias de Rosa Luxemburgo.",
+            "person-karl-marx": "O luxemburguismo se inspira nas teorias de Karl Marx."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Rosa Luxemburgo criticou a concepção de partido de vanguarda de Lênin e o centralismo democrático, que ela chamou de burocrático."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-luxemburguismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Rosa Luxemburgo criticou a concepção de partido de vanguarda de Lênin e o centralismo democrático, que ela chamou de burocrático.",
+              "paragraphs": [
+                "Rosa Luxemburgo criticou a concepção de partido de vanguarda de Lênin e o centralismo democrático, que ela chamou de burocrático."
+              ],
+              "sourceIds": ["src-wiki-topic-luxemburguismo"],
+              "entityIds": ["wiki-topic-luxemburguismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "Entre as obras citadas no verbete está Reforma ou Revolução, de Rosa Luxemburgo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-luxemburguismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "Entre as obras citadas no verbete está Reforma ou Revolução, de Rosa Luxemburgo.",
+              "paragraphs": [
+                "Entre as obras citadas no verbete está Reforma ou Revolução, de Rosa Luxemburgo."
+              ],
+              "sourceIds": ["src-wiki-topic-luxemburguismo"],
+              "entityIds": ["wiki-topic-luxemburguismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 5 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-luxemburguismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-luxemburguismo"] }]
+    }
+  ]
+}

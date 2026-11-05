@@ -1,0 +1,318 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-aceleracionismo",
+  "slug": "aceleracionismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Aceleracionismo",
+  "kicker": "Ideologia política",
+  "summary": "Aceleracionismo é a ideia de que o capitalismo e certos processos sociais e tecnológicos devem ser ampliados, reaproveitados ou acelerados para gerar mudança social. Suas raízes aparecem em Marx, Nietzsche e na teoria de Deleuze e Guattari, e o termo foi usado por correntes de esquerda e de direita. A partir do fim da década de 2010, grupos neofascistas e supremacistas brancos passaram a empregá-lo com objetivos extremistas. O verbete o relaciona a Marx, Nietzsche, Deleuze e Guattari e Nick Land.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Aceleracionismo é a ideia de que o capitalismo e certos processos sociais e tecnológicos devem ser ampliados, reaproveitados ou acelerados para gerar mudança social. Suas raízes aparecem em Marx, Nietzsche e na teoria de Deleuze e Guattari, e o termo foi usado por correntes de esquerda e de direita. A partir do fim da década de 2010, grupos neofascistas e supremacistas brancos passaram a empregá-lo com objetivos extremistas. O verbete o relaciona a Marx, Nietzsche, Deleuze e Guattari e Nick Land."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-aceleracionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Muito do pensamento aceleracionista contemporâneo parte da teoria da desterritorialização de Deleuze e Guattari."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-aceleracionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Muito do pensamento aceleracionista contemporâneo parte da teoria da desterritorialização de Deleuze e Guattari.",
+              "paragraphs": [
+                "Muito do pensamento aceleracionista contemporâneo parte da teoria da desterritorialização de Deleuze e Guattari."
+              ],
+              "sourceIds": ["src-wiki-topic-aceleracionismo"],
+              "entityIds": ["wiki-topic-aceleracionismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "A ideia central é que o sistema capitalista e certos processos sociais e tecnológicos devem ser ampliados, reaproveitados ou acelerados para gerar mudança social."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-aceleracionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "A ideia central é que o sistema capitalista e certos processos sociais e tecnológicos devem ser ampliados, reaproveitados ou acelerados para gerar mudança social.",
+              "paragraphs": [
+                "A ideia central é que o sistema capitalista e certos processos sociais e tecnológicos devem ser ampliados, reaproveitados ou acelerados para gerar mudança social."
+              ],
+              "sourceIds": ["src-wiki-topic-aceleracionismo"],
+              "entityIds": ["wiki-topic-aceleracionismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de accelerationism, /acc."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-aceleracionismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-aceleracionismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-aceleracionismo": "Nomes alternativos: accelerationism, /acc." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Karl Marx fez o discurso Sobre a questão do livre-câmbio, citado como exemplo de ideia aceleracionista.",
+        "Roger Zelazny usou pela primeira vez o termo aceleracionismo na obra Senhor da Luz."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-aceleracionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1848",
+              "kicker": "Marco datado",
+              "summary": "Karl Marx fez o discurso Sobre a questão do livre-câmbio, citado como exemplo de ideia aceleracionista.",
+              "paragraphs": [
+                "Karl Marx fez o discurso Sobre a questão do livre-câmbio, citado como exemplo de ideia aceleracionista."
+              ],
+              "sourceIds": ["src-wiki-topic-aceleracionismo"],
+              "entityIds": ["wiki-topic-aceleracionismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1967",
+              "kicker": "Marco datado",
+              "summary": "Roger Zelazny usou pela primeira vez o termo aceleracionismo na obra Senhor da Luz.",
+              "paragraphs": [
+                "Roger Zelazny usou pela primeira vez o termo aceleracionismo na obra Senhor da Luz."
+              ],
+              "sourceIds": ["src-wiki-topic-aceleracionismo"],
+              "entityIds": ["wiki-topic-aceleracionismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1848, "end": 1848 },
+            { "itemId": "marco-2", "start": 1967, "end": 1967 }
+          ],
+          "entityIds": ["wiki-topic-aceleracionismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "O termo é eventualmente usado de forma pejorativa para designar a intensificação do capitalismo, na crença de que ela levaria ao colapso. O texto considera esse uso equivocado."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-aceleracionismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "O termo é eventualmente usado de forma pejorativa para designar a intensificação do capitalismo, na crença de que ela levaria ao colapso. O texto considera esse uso equivocado.",
+              "paragraphs": [
+                "O termo é eventualmente usado de forma pejorativa para designar a intensificação do capitalismo, na crença de que ela levaria ao colapso. O texto considera esse uso equivocado."
+              ],
+              "sourceIds": ["src-wiki-topic-aceleracionismo"],
+              "entityIds": ["wiki-topic-aceleracionismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 9 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-aceleracionismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-aceleracionismo"] }]
+    }
+  ]
+}

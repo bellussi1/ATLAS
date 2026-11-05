@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-progressismo",
+  "slug": "progressismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Progressismo",
+  "kicker": "Ideologia política",
+  "summary": "O progressismo é uma corrente política que defende o progresso, as transformações ou as reformas nos campos político, social e econômico. O verbete o descreve como um conjunto de doutrinas baseadas na ideia de que o avanço científico, tecnológico, econômico e comunitário é vital para o aperfeiçoamento da condição humana. A ideia de progresso ganha força na Europa com o Iluminismo, é relacionada ao evolucionismo e ao positivismo, e ganha desdobramentos no século XIX com o marxismo, o darwinismo social e, nos anos 1960 e 1970, a Nova Esquerda.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O progressismo é uma corrente política que defende o progresso, as transformações ou as reformas nos campos político, social e econômico. O verbete o descreve como um conjunto de doutrinas baseadas na ideia de que o avanço científico, tecnológico, econômico e comunitário é vital para o aperfeiçoamento da condição humana. A ideia de progresso ganha força na Europa com o Iluminismo, é relacionada ao evolucionismo e ao positivismo, e ganha desdobramentos no século XIX com o marxismo, o darwinismo social e, nos anos 1960 e 1970, a Nova Esquerda."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-progressismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "A ideia de progresso ganha grande avanço na Europa com o Iluminismo, quando alguns filósofos passaram a entender que o próprio ser humano, e não os deuses, poderia mudar a sociedade e seu modo de vida."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-progressismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "A ideia de progresso ganha grande avanço na Europa com o Iluminismo, quando alguns filósofos passaram a entender que o próprio ser humano, e não os deuses, poderia mudar a sociedade e seu modo de vida.",
+              "paragraphs": [
+                "A ideia de progresso ganha grande avanço na Europa com o Iluminismo, quando alguns filósofos passaram a entender que o próprio ser humano, e não os deuses, poderia mudar a sociedade e seu modo de vida."
+              ],
+              "sourceIds": ["src-wiki-topic-progressismo"],
+              "entityIds": ["wiki-topic-progressismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "O progressismo está ligado à ideia de progresso infinito mediante transformações da sociedade, da economia e da política.",
+        "O progressismo fiscal baseia-se na ideia de que mercados capitalistas com regulamentação governamental limitada são injustos, favorecendo grandes empresas e os ricos."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-progressismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central 1",
+              "kicker": "Pilares e princípios",
+              "summary": "O progressismo está ligado à ideia de progresso infinito mediante transformações da sociedade, da economia e da política.",
+              "paragraphs": [
+                "O progressismo está ligado à ideia de progresso infinito mediante transformações da sociedade, da economia e da política."
+              ],
+              "sourceIds": ["src-wiki-topic-progressismo"],
+              "entityIds": ["wiki-topic-progressismo"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Ideia central 2",
+              "kicker": "Pilares e princípios",
+              "summary": "O progressismo fiscal baseia-se na ideia de que mercados capitalistas com regulamentação governamental limitada são injustos, favorecendo grandes empresas e os ricos.",
+              "paragraphs": [
+                "O progressismo fiscal baseia-se na ideia de que mercados capitalistas com regulamentação governamental limitada são injustos, favorecendo grandes empresas e os ricos."
+              ],
+              "sourceIds": ["src-wiki-topic-progressismo"],
+              "entityIds": ["wiki-topic-progressismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de progressista, progressistas, progressivism."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-progressismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-progressismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-progressismo": "Nomes alternativos: progressista, progressistas, progressivism."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "O movimento da Nova Esquerda começa a perder força.",
+        "No contexto político, o progressismo refere-se sobretudo à concepção de que o progresso humano é viabilizado pela liberdade civil, pela defesa dos direitos de minorias e do feminismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-progressismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1970",
+              "kicker": "Marco datado",
+              "summary": "O movimento da Nova Esquerda começa a perder força.",
+              "paragraphs": ["O movimento da Nova Esquerda começa a perder força."],
+              "sourceIds": ["src-wiki-topic-progressismo"],
+              "entityIds": ["wiki-topic-progressismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "No contexto político, o progressismo refere-se sobretudo à concepção de que o progresso humano é viabilizado pela liberdade civil, pela defesa dos direitos de minorias e do feminismo.",
+              "paragraphs": [
+                "No contexto político, o progressismo refere-se sobretudo à concepção de que o progresso humano é viabilizado pela liberdade civil, pela defesa dos direitos de minorias e do feminismo."
+              ],
+              "sourceIds": ["src-wiki-topic-progressismo"],
+              "entityIds": ["wiki-topic-progressismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 1970, "end": 1970 }],
+          "entityIds": ["wiki-topic-progressismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Registros ligados à ideologia: Luiz Inácio Lula da Silva."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-luiz-inacio-lula-da-silva"],
+          "mode": "thinkers",
+          "notes": { "wiki-topic-luiz-inacio-lula-da-silva": "Não é influência documentada." }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma controvérsia ou crítica consta no grafo para esta ideologia.",
+      "coverage": "pending",
+      "layout": "debate",
+      "blocks": []
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-progressismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-progressismo"] }]
+    }
+  ]
+}

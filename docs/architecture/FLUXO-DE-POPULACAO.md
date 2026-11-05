@@ -14,7 +14,7 @@ Como uma tradição sai do Wikidata e chega ao grafo. Orquestrador: `npm run tra
 | 5   | Extração rica (paga) | artigos                     | `extracts/<id>.json`, respostas cruas, `STATE.json`       | `npm run tradicao:extract -- <slug> --dry-run`, depois `--max-usd N`     | conteúdo rico, citações literais, relações confirmadas     | validada na amostra; `extract` lê o modelo de `model-choice.json`  |
 | 6   | Consolidação         | rascunhos, rótulos, imagens | coleção no manifesto, com arestas                         | `node scripts/content/wiki-drafts-to-collections.mjs`                    | grafo válido, ≥ 1 relação tipada                           | funciona; aresta depende do estágio 5                              |
 | 7   | Glossário            | rascunhos ricos             | `glossary.json`                                           | `--stage 7`                                                              | hover em ≥ 90%, ambíguo não liga                           | funciona; UI de hover ainda não lê este arquivo                    |
-| 8   | Redação              | grafo                       | `content/ideologies/<slug>/page.json`                     | agente, `atlas-create-ideology`                                          | dossiê válido, ≤ 1 capítulo pendente                       | manual                                                             |
+| 8   | Leitura montada      | grafo                       | `content/ideologies/<slug>/page.json`                     | `npm run tradicao:reading -- <slug                                       | --all> [--dry-run]`                                        | schema do build, 12 capítulos, `pending` só com motivo             | automático; sem pergunta nem ponte, sem prosa nova |
 | 9   | Edição               | dossiê                      | dossiê revisado                                           | agente                                                                   | sem texto de reserva                                       | manual                                                             |
 | 10  | Identidade           | registro                    | paleta, assinatura                                        | `--stage 10` verifica                                                    | paleta igual à do registro                                 | funciona                                                           |
 | 11  | Imagens              | QIDs                        | `images.json`, `assetLicenses`                            | `npm run tradicao:images -- <slug>`                                      | autor, licença, atribuição, uma vez cada; piso             | funciona; ícone por tipo sem licença                               |
@@ -70,17 +70,39 @@ Gasto até aqui: US$ 0,12. Decisão da regra: `so-relacoes-sobe`, gravada em `sc
 
 ## Depois da coleção: o que aparece onde
 
-| Saída                                        | Como nasce                                                            | Quem decide                       |
-| -------------------------------------------- | --------------------------------------------------------------------- | --------------------------------- |
-| `/verbete/:slug` e `/conhecimento`           | Automático: toda entidade da coleção entra no grafo (`content:build`) | ninguém; vale o que está no grafo |
-| Página de ideologia (dossiê de 12 capítulos) | Manual, estágios 8 e 9, só para famílias                              | agente redige, pessoa revisa      |
-| Publicação no R2                             | `npm run content:publish`                                             | só pessoa; nunca automática       |
+| Saída                                        | Como nasce                                                            | Quem decide                        |
+| -------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------- |
+| `/verbete/:slug` e `/conhecimento`           | Automático: toda entidade da coleção entra no grafo (`content:build`) | ninguém; vale o que está no grafo  |
+| Página de ideologia (dossiê de 12 capítulos) | Estágio 8 automático (todas as ideologias); estágio 9 manual          | pessoa decide publicar e registrar |
+| Publicação no R2                             | `npm run content:publish`                                             | só pessoa; nunca automática        |
 
 Ordem: descoberta, captura, extração, conversão para coleção, `content:build` e testes, commit local, **revisão humana**, publicação.
 
 ## Ideologias principais
 
-Coleção curada (`content/traditions/ideologias-principais.json` e `candidates/ideologias-principais.json`) para dar ficha, relações e lugar no mapa a cerca de 60 ideologias com artigo próprio, de várias famílias. Não leva descoberta por anéis nem dossiê: os candidatos vêm de lista curada (decisor `curadoria`), cada nome é conferido contra a Wikipédia, e o que não tem artigo próprio fica de fora. Os estágios de dossiê (8 e 9) valem só para as famílias. O cheque de tipos do estágio 2 não se aplica a essa coleção.
+Coleção curada (`content/traditions/ideologias-principais.json` e `candidates/ideologias-principais.json`) para dar ficha, relações e lugar no mapa a cerca de 60 ideologias com artigo próprio, de várias famílias. Não leva descoberta por anéis: os candidatos vêm de lista curada (decisor `curadoria`), cada nome é conferido contra a Wikipédia, e o que não tem artigo próprio fica de fora. O estágio 8 gera uma leitura por ideologia (53 hoje, em `content/ideologies/<slug>/page.json`, não publicadas e sem rota); o estágio 9 vale só para as famílias. O cheque de tipos do estágio 2 não se aplica a essa coleção.
+
+## Leitura montada do grafo (estágio 8)
+
+`scripts/tradicao/reading.mjs` monta o dossiê de 12 capítulos sem redigir nada: cada capítulo reúne afirmações, seções e relações que já estão no grafo, com a fonte e a passagem citada.
+
+| Capítulo                                      | Vem de                                                                                        |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| O que é?                                      | resumo e, se houver, a posição política descrita pela fonte                                   |
+| Origens, Princípios                           | seções "Origem" e "Ideias centrais", uma afirmação por item, com a classificação da afirmação |
+| Conceitos                                     | nomes alternativos (parcial: sem termos de glossário)                                         |
+| Épocas                                        | afirmações com data (cronologia) e "Contexto"                                                 |
+| Pensadores, Correntes, Experiências, Conexões | relações da ideologia, separadas pelo tipo do outro registro                                  |
+| Debates                                       | "Controvérsias" e alegações contestadas (parcial: sem defesa nem resposta)                    |
+| Leituras                                      | seção "Bibliografia" (parcial: sem edição nem nível)                                          |
+| Fontes                                        | a fonte citada                                                                                |
+
+- Sem conteúdo, o capítulo fica `pending`, com o motivo em `gap` e sem blocos. Nada é preenchido por inferência.
+- Texto ao leitor: "o artigo" vira "o verbete"; frases de processo saem (`readerProse`). Revisão de IA fica `rascunho`, `published: false`.
+- Leituras geradas levam a assinatura "Leitura montada do grafo" em `identity.signature` e podem ser regeradas; páginas escritas à mão nunca são sobrescritas.
+- Relatório por leitura (completos, parciais, pendentes): `generated/readings/<atlas>.md` e `.json`.
+- Fica de fora de propósito: pergunta, ponte e prosa de ligação (passada paga e separada, estágio 9). Rota e registro em `published-ideologies` continuam decisão humana.
+- Limite atual: poucas relações no grafo (pessoas e obras ainda não são entidades), então Pensadores, Correntes, Experiências e Conexões ficam pendentes na maioria.
 
 ## Quebrado ou manual
 

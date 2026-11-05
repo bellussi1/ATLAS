@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-corporativismo",
+  "slug": "corporativismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Corporativismo",
+  "kicker": "Ideologia política",
+  "summary": "O corporativismo é uma ideologia que propõe organizar a sociedade por grupos corporativos, como sindicatos, associações profissionais e militares, a partir de interesses comuns. O verbete percorre sua origem antiga, o papel da Igreja Católica, as versões progressiva, fascista e neocorporativista, sua presença em regimes como Portugal e Brasil e controvérsias sobre o uso do conceito para analisar China e Rússia. Importa por relacionar teorias de organização social a regimes políticos diversos.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O corporativismo é uma ideologia que propõe organizar a sociedade por grupos corporativos, como sindicatos, associações profissionais e militares, a partir de interesses comuns. O verbete percorre sua origem antiga, o papel da Igreja Católica, as versões progressiva, fascista e neocorporativista, sua presença em regimes como Portugal e Brasil e controvérsias sobre o uso do conceito para analisar China e Rússia. Importa por relacionar teorias de organização social a regimes políticos diversos."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-corporativismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O verbete afirma que a Grécia antiga desenvolveu conceitos iniciais de corporativismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-corporativismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O verbete afirma que a Grécia antiga desenvolveu conceitos iniciais de corporativismo.",
+              "paragraphs": [
+                "O verbete afirma que a Grécia antiga desenvolveu conceitos iniciais de corporativismo."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "A teoria corporativista supõe que a harmonia social surge quando cada divisão da sociedade cumpre sua função, como os órgãos de um corpo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-corporativismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "A teoria corporativista supõe que a harmonia social surge quando cada divisão da sociedade cumpre sua função, como os órgãos de um corpo.",
+              "paragraphs": [
+                "A teoria corporativista supõe que a harmonia social surge quando cada divisão da sociedade cumpre sua função, como os órgãos de um corpo."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de corporatism."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-corporativismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-corporativismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-corporativismo": "Nomes alternativos: corporatism." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "De 1789 a 1850, a maioria dos defensores do corporativismo era reacionária, segundo o verbete.",
+        "O Papa Leão XIII encarregou teólogos e pensadores sociais de estudar o corporativismo.",
+        "Em Freiburg, a comissão declarou o corporativismo como sistema de organização social.",
+        "O corporativismo tornou-se influente entre os nacionalistas italianos liderados por Mussolini.",
+        "Implantou-se no Brasil um modelo corporativo de Estado sob Getúlio Vargas."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-corporativismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1789",
+              "kicker": "Marco datado",
+              "summary": "De 1789 a 1850, a maioria dos defensores do corporativismo era reacionária, segundo o verbete.",
+              "paragraphs": [
+                "De 1789 a 1850, a maioria dos defensores do corporativismo era reacionária, segundo o verbete."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1881",
+              "kicker": "Marco datado",
+              "summary": "O Papa Leão XIII encarregou teólogos e pensadores sociais de estudar o corporativismo.",
+              "paragraphs": [
+                "O Papa Leão XIII encarregou teólogos e pensadores sociais de estudar o corporativismo."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1884",
+              "kicker": "Marco datado",
+              "summary": "Em Freiburg, a comissão declarou o corporativismo como sistema de organização social.",
+              "paragraphs": [
+                "Em Freiburg, a comissão declarou o corporativismo como sistema de organização social."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-4",
+              "title": "1922",
+              "kicker": "Marco datado",
+              "summary": "O corporativismo tornou-se influente entre os nacionalistas italianos liderados por Mussolini.",
+              "paragraphs": [
+                "O corporativismo tornou-se influente entre os nacionalistas italianos liderados por Mussolini."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-5",
+              "title": "1930",
+              "kicker": "Marco datado",
+              "summary": "Implantou-se no Brasil um modelo corporativo de Estado sob Getúlio Vargas.",
+              "paragraphs": [
+                "Implantou-se no Brasil um modelo corporativo de Estado sob Getúlio Vargas."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1789, "end": 1789 },
+            { "itemId": "marco-2", "start": 1881, "end": 1881 },
+            { "itemId": "marco-3", "start": 1884, "end": 1884 },
+            { "itemId": "marco-4", "start": 1922, "end": 1922 },
+            { "itemId": "marco-5", "start": 1930, "end": 1930 }
+          ],
+          "entityIds": ["wiki-topic-corporativismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Registros ligados à ideologia: Partido Revolucionário Institucional."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-partido-revolucionario-institucional"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-partido-revolucionario-institucional": "Não é influência documentada."
+          }
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Autores observaram que o corporativismo econômico também foi usado para reduzir a oposição e recompensar a lealdade política.",
+        "O uso do corporativismo para entender o Estado central chinês foi criticado por Bruce Gilley e William Hurst."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-corporativismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "Autores observaram que o corporativismo econômico também foi usado para reduzir a oposição e recompensar a lealdade política.",
+              "paragraphs": [
+                "Autores observaram que o corporativismo econômico também foi usado para reduzir a oposição e recompensar a lealdade política."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "O uso do corporativismo para entender o Estado central chinês foi criticado por Bruce Gilley e William Hurst.",
+              "paragraphs": [
+                "O uso do corporativismo para entender o Estado central chinês foi criticado por Bruce Gilley e William Hurst."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "A bibliografia do verbete inclui o texto de Schmitter de 1974 sobre o corporativismo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-corporativismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "A bibliografia do verbete inclui o texto de Schmitter de 1974 sobre o corporativismo.",
+              "paragraphs": [
+                "A bibliografia do verbete inclui o texto de Schmitter de 1974 sobre o corporativismo."
+              ],
+              "sourceIds": ["src-wiki-topic-corporativismo"],
+              "entityIds": ["wiki-topic-corporativismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 14 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-corporativismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-corporativismo"] }]
+    }
+  ]
+}

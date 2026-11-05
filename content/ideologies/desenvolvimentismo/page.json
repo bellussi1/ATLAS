@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-desenvolvimentismo",
+  "slug": "desenvolvimentismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Desenvolvimentismo",
+  "kicker": "Ideologia política",
+  "summary": "O desenvolvimentismo é uma política econômica voltada ao crescimento da produção industrial e da infraestrutura, com participação ativa do Estado. O verbete descreve sua aplicação na América Latina a partir da década de 1930 e no Brasil, tanto por regimes autoritários quanto democráticos, como nos governos Juscelino Kubitschek e na nova matriz econômica do governo Dilma Rousseff. Também trata de suas origens teóricas, da economia social de mercado, do paralelo com o ordoliberalismo alemão e de críticas ao modelo.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O desenvolvimentismo é uma política econômica voltada ao crescimento da produção industrial e da infraestrutura, com participação ativa do Estado. O verbete descreve sua aplicação na América Latina a partir da década de 1930 e no Brasil, tanto por regimes autoritários quanto democráticos, como nos governos Juscelino Kubitschek e na nova matriz econômica do governo Dilma Rousseff. Também trata de suas origens teóricas, da economia social de mercado, do paralelo com o ordoliberalismo alemão e de críticas ao modelo."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Segundo o verbete, o desenvolvimentismo tem diversas origens, entre elas a visão de Keynes e de economistas neo-keynesianos, além da visão cepalina de transformação produtiva com equidade social."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "Segundo o verbete, o desenvolvimentismo tem diversas origens, entre elas a visão de Keynes e de economistas neo-keynesianos, além da visão cepalina de transformação produtiva com equidade social.",
+              "paragraphs": [
+                "Segundo o verbete, o desenvolvimentismo tem diversas origens, entre elas a visão de Keynes e de economistas neo-keynesianos, além da visão cepalina de transformação produtiva com equidade social."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "Greenwald e Stiglitz argumentam que, com mercados incompletos ou informação imperfeita, a alocação em mercados competitivos não é necessariamente Pareto-otimizada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Greenwald e Stiglitz argumentam que, com mercados incompletos ou informação imperfeita, a alocação em mercados competitivos não é necessariamente Pareto-otimizada.",
+              "paragraphs": [
+                "Greenwald e Stiglitz argumentam que, com mercados incompletos ou informação imperfeita, a alocação em mercados competitivos não é necessariamente Pareto-otimizada."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de nacional-desenvolvimentismo, neomercantilismo."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-desenvolvimentismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-desenvolvimentismo": "Nomes alternativos: nacional-desenvolvimentismo, neomercantilismo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Início do período em que, segundo Bresser-Pereira, o modelo desenvolvimentista vigorou no Brasil.",
+        "Fim do período em que, segundo Bresser-Pereira, o modelo desenvolvimentista vigorou no Brasil.",
+        "Início da crise econômica brasileira, à qual a nova matriz econômica foi apontada como uma das causas.",
+        "Na América Latina, o nacional-desenvolvimentismo foi executado a partir da década de 1930."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1930",
+              "kicker": "Marco datado",
+              "summary": "Início do período em que, segundo Bresser-Pereira, o modelo desenvolvimentista vigorou no Brasil.",
+              "paragraphs": [
+                "Início do período em que, segundo Bresser-Pereira, o modelo desenvolvimentista vigorou no Brasil."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1960",
+              "kicker": "Marco datado",
+              "summary": "Fim do período em que, segundo Bresser-Pereira, o modelo desenvolvimentista vigorou no Brasil.",
+              "paragraphs": [
+                "Fim do período em que, segundo Bresser-Pereira, o modelo desenvolvimentista vigorou no Brasil."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "2014",
+              "kicker": "Marco datado",
+              "summary": "Início da crise econômica brasileira, à qual a nova matriz econômica foi apontada como uma das causas.",
+              "paragraphs": [
+                "Início da crise econômica brasileira, à qual a nova matriz econômica foi apontada como uma das causas."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "Na América Latina, o nacional-desenvolvimentismo foi executado a partir da década de 1930.",
+              "paragraphs": [
+                "Na América Latina, o nacional-desenvolvimentismo foi executado a partir da década de 1930."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1930, "end": 1930 },
+            { "itemId": "marco-2", "start": 1960, "end": 1960 },
+            { "itemId": "marco-3", "start": 2014, "end": 2014 }
+          ],
+          "entityIds": ["wiki-topic-desenvolvimentismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Há críticas à ideia de que o modelo alemão funcione com a mesma eficiência em países de renda média, como o Brasil.",
+        "A nova matriz econômica do governo Dilma Rousseff foi apontada como uma das causas da crise econômica brasileira de 2014.",
+        "Uma crítica geral ao desenvolvimentismo é que ele é planejado por grupos com necessidade de retornos financeiros, muitas vezes à revelia das populações afetadas."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "Há críticas à ideia de que o modelo alemão funcione com a mesma eficiência em países de renda média, como o Brasil.",
+              "paragraphs": [
+                "Há críticas à ideia de que o modelo alemão funcione com a mesma eficiência em países de renda média, como o Brasil."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "A nova matriz econômica do governo Dilma Rousseff foi apontada como uma das causas da crise econômica brasileira de 2014.",
+              "paragraphs": [
+                "A nova matriz econômica do governo Dilma Rousseff foi apontada como uma das causas da crise econômica brasileira de 2014."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-3",
+              "title": "Crítica ou controvérsia 3",
+              "kicker": "Argumentos e críticas",
+              "summary": "Uma crítica geral ao desenvolvimentismo é que ele é planejado por grupos com necessidade de retornos financeiros, muitas vezes à revelia das populações afetadas.",
+              "paragraphs": [
+                "Uma crítica geral ao desenvolvimentismo é que ele é planejado por grupos com necessidade de retornos financeiros, muitas vezes à revelia das populações afetadas."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "Obra de Bresser-Pereira sobre o novo desenvolvimentismo, listada na bibliografia do verbete."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "Obra de Bresser-Pereira sobre o novo desenvolvimentismo, listada na bibliografia do verbete.",
+              "paragraphs": [
+                "Obra de Bresser-Pereira sobre o novo desenvolvimentismo, listada na bibliografia do verbete."
+              ],
+              "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+              "entityIds": ["wiki-topic-desenvolvimentismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 11 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-desenvolvimentismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-desenvolvimentismo"] }]
+    }
+  ]
+}

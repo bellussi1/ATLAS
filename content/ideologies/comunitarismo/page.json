@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-comunitarismo",
+  "slug": "comunitarismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Comunitarismo",
+  "kicker": "Ideologia política",
+  "summary": "O comunitarismo é uma filosofia que enfatiza a conexão entre o indivíduo e a comunidade, sustentando que a identidade social e a personalidade são amplamente moldadas pelas relações comunitárias. Como filosofia política, valoriza a família e as instituições intermediárias da sociedade civil. Surgiu como formulação filosófica no século XX, com Dorothy Day e o Movimento dos Trabalhadores Católicos, e ganhou corpo acadêmico nas críticas de Michael Sandel e Charles Taylor ao liberalismo. Na década de 1990, o comunitarismo responsivo, liderado por Amitai Etzioni e William A.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "O comunitarismo é uma filosofia que enfatiza a conexão entre o indivíduo e a comunidade, sustentando que a identidade social e a personalidade são amplamente moldadas pelas relações comunitárias. Como filosofia política, valoriza a família e as instituições intermediárias da sociedade civil. Surgiu como formulação filosófica no século XX, com Dorothy Day e o Movimento dos Trabalhadores Católicos, e ganhou corpo acadêmico nas críticas de Michael Sandel e Charles Taylor ao liberalismo. Na década de 1990, o comunitarismo responsivo, liderado por Amitai Etzioni e William A."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-comunitarismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O termo 'comunitarista' foi cunhado apenas em meados do século XIX, embora ideias de natureza comunitarista sejam anteriores."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-comunitarismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O termo 'comunitarista' foi cunhado apenas em meados do século XIX, embora ideias de natureza comunitarista sejam anteriores.",
+              "paragraphs": [
+                "O termo 'comunitarista' foi cunhado apenas em meados do século XIX, embora ideias de natureza comunitarista sejam anteriores."
+              ],
+              "sourceIds": ["src-wiki-topic-comunitarismo"],
+              "entityIds": ["wiki-topic-comunitarismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": [
+        "A principal tese do comunitarismo responsivo é que existem duas grandes fontes de normatividade, o bem comum e a autonomia e os direitos individuais, e que nenhuma deve, em princípio, ter precedência sobre a outra."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-comunitarismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "A principal tese do comunitarismo responsivo é que existem duas grandes fontes de normatividade, o bem comum e a autonomia e os direitos individuais, e que nenhuma deve, em princípio, ter precedência sobre a outra.",
+              "paragraphs": [
+                "A principal tese do comunitarismo responsivo é que existem duas grandes fontes de normatividade, o bem comum e a autonomia e os direitos individuais, e que nenhuma deve, em princípio, ter precedência sobre a outra."
+              ],
+              "sourceIds": ["src-wiki-topic-comunitarismo"],
+              "entityIds": ["wiki-topic-comunitarismo"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de communitarianism, Comunitarismo responsivo, responsive communitarianism."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-comunitarismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-comunitarismo"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-comunitarismo": "Nomes alternativos: communitarianism, Comunitarismo responsivo, responsive communitarianism."
+          }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Robert Putnam documentou o declínio do capital social no livro Bowling Alone."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-comunitarismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "2000",
+              "kicker": "Marco datado",
+              "summary": "Robert Putnam documentou o declínio do capital social no livro Bowling Alone.",
+              "paragraphs": [
+                "Robert Putnam documentou o declínio do capital social no livro Bowling Alone."
+              ],
+              "sourceIds": ["src-wiki-topic-comunitarismo"],
+              "entityIds": ["wiki-topic-comunitarismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 2000, "end": 2000 }],
+          "entityIds": ["wiki-topic-comunitarismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Teóricos liberais, como Simon Caney, discordam de que o comunitarismo filosófico apresente críticas relevantes ao liberalismo.",
+        "Segundo Peter Sutch, uma das críticas ao comunitarismo é que ele conduz necessariamente ao relativismo moral."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-comunitarismo"],
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "Teóricos liberais, como Simon Caney, discordam de que o comunitarismo filosófico apresente críticas relevantes ao liberalismo.",
+              "paragraphs": [
+                "Teóricos liberais, como Simon Caney, discordam de que o comunitarismo filosófico apresente críticas relevantes ao liberalismo."
+              ],
+              "sourceIds": ["src-wiki-topic-comunitarismo"],
+              "entityIds": ["wiki-topic-comunitarismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "Segundo Peter Sutch, uma das críticas ao comunitarismo é que ele conduz necessariamente ao relativismo moral.",
+              "paragraphs": [
+                "Segundo Peter Sutch, uma das críticas ao comunitarismo é que ele conduz necessariamente ao relativismo moral."
+              ],
+              "sourceIds": ["src-wiki-topic-comunitarismo"],
+              "entityIds": ["wiki-topic-comunitarismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 6 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-comunitarismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-comunitarismo"] }]
+    }
+  ]
+}

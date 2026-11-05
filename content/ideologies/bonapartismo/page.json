@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-bonapartismo",
+  "slug": "bonapartismo",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Bonapartismo",
+  "kicker": "Ideologia política",
+  "summary": "Ideologia política e culto à personalidade de origem francesa, inspirada no modo como Napoleão Bonaparte e Napoleão III governaram. Hoje o termo designa governos em que o legislativo perde força para o executivo. O movimento foi essencial para a eleição de Luís Napoleão e para a proclamação do Segundo Império, em 1852. Importa como referência para o estudo de regimes autoritários de líder carismático e pelas disputas monarquistas francesas após 1870.",
+  "published": false,
+  "atlasId": "atlas-ideologias-principais",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "identity": {
+    "accent": "teal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Ideologia política e culto à personalidade de origem francesa, inspirada no modo como Napoleão Bonaparte e Napoleão III governaram. Hoje o termo designa governos em que o legislativo perde força para o executivo. O movimento foi essencial para a eleição de Luís Napoleão e para a proclamação do Segundo Império, em 1852. Importa como referência para o estudo de regimes autoritários de líder carismático e pelas disputas monarquistas francesas após 1870."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-bonapartismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Originalmente, o bonapartismo combinava elementos do despotismo ilustrado e do pensamento de Rousseau.",
+        "A partir de 1815, os principais seguidores do bonapartismo foram os que não aceitaram a derrota em Waterloo nem o Congresso de Viena."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-bonapartismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem 1",
+              "kicker": "Origens e formação",
+              "summary": "Originalmente, o bonapartismo combinava elementos do despotismo ilustrado e do pensamento de Rousseau.",
+              "paragraphs": [
+                "Originalmente, o bonapartismo combinava elementos do despotismo ilustrado e do pensamento de Rousseau."
+              ],
+              "sourceIds": ["src-wiki-topic-bonapartismo"],
+              "entityIds": ["wiki-topic-bonapartismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-2",
+              "title": "Origem 2",
+              "kicker": "Origens e formação",
+              "summary": "A partir de 1815, os principais seguidores do bonapartismo foram os que não aceitaram a derrota em Waterloo nem o Congresso de Viena.",
+              "paragraphs": [
+                "A partir de 1815, os principais seguidores do bonapartismo foram os que não aceitaram a derrota em Waterloo nem o Congresso de Viena."
+              ],
+              "sourceIds": ["src-wiki-topic-bonapartismo"],
+              "entityIds": ["wiki-topic-bonapartismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Pilares e princípios",
+      "kicker": "Pilares e princípios",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.",
+      "coverage": "pending",
+      "layout": "concepts",
+      "blocks": []
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de Bonapartism."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-bonapartismo"],
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-bonapartismo"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-bonapartismo": "Nomes alternativos: Bonapartism." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Luís Napoleão descartou a constituição e proclamou o Segundo Império, com apoio do bonapartismo.",
+        "Napoleão III levou a França a uma derrota desastrosa diante da Prússia na Guerra Franco-Prussiana.",
+        "O bonapartismo teve papel essencial na eleição de Luís Napoleão Bonaparte como Presidente da Segunda República."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-bonapartismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1852",
+              "kicker": "Marco datado",
+              "summary": "Luís Napoleão descartou a constituição e proclamou o Segundo Império, com apoio do bonapartismo.",
+              "paragraphs": [
+                "Luís Napoleão descartou a constituição e proclamou o Segundo Império, com apoio do bonapartismo."
+              ],
+              "sourceIds": ["src-wiki-topic-bonapartismo"],
+              "entityIds": ["wiki-topic-bonapartismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1870",
+              "kicker": "Marco datado",
+              "summary": "Napoleão III levou a França a uma derrota desastrosa diante da Prússia na Guerra Franco-Prussiana.",
+              "paragraphs": [
+                "Napoleão III levou a França a uma derrota desastrosa diante da Prússia na Guerra Franco-Prussiana."
+              ],
+              "sourceIds": ["src-wiki-topic-bonapartismo"],
+              "entityIds": ["wiki-topic-bonapartismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "O bonapartismo teve papel essencial na eleição de Luís Napoleão Bonaparte como Presidente da Segunda República.",
+              "paragraphs": [
+                "O bonapartismo teve papel essencial na eleição de Luís Napoleão Bonaparte como Presidente da Segunda República."
+              ],
+              "sourceIds": ["src-wiki-topic-bonapartismo"],
+              "entityIds": ["wiki-topic-bonapartismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1852, "end": 1852 },
+            { "itemId": "marco-2", "start": 1870, "end": 1870 }
+          ],
+          "entityIds": ["wiki-topic-bonapartismo"],
+          "markerIds": []
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Pensadores e obras",
+      "kicker": "Pensadores e obras",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "thinkers",
+      "blocks": []
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Correntes e vertentes",
+      "kicker": "Correntes e vertentes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma controvérsia ou crítica consta no grafo para esta ideologia.",
+      "coverage": "pending",
+      "layout": "debate",
+      "blocks": []
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
+      "coverage": "pending",
+      "layout": "graph",
+      "blocks": []
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "Obra de Frédéric Bluche sobre o bonapartismo, listada na bibliografia do verbete."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-bonapartismo"],
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "Obra de Frédéric Bluche sobre o bonapartismo, listada na bibliografia do verbete.",
+              "paragraphs": [
+                "Obra de Frédéric Bluche sobre o bonapartismo, listada na bibliografia do verbete."
+              ],
+              "sourceIds": ["src-wiki-topic-bonapartismo"],
+              "entityIds": ["wiki-topic-bonapartismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 9 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-bonapartismo"],
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-bonapartismo"] }]
+    }
+  ]
+}
