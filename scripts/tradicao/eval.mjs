@@ -334,7 +334,8 @@ export async function reguardEval({ root = projectRoot, id = 'amostra-20', log =
   return totals;
 }
 
-const markKey = (item) => [item.arm, item.kind, item.statement, item.quote].join('|');
+const markKey = (item) =>
+  [item.arm, item.entity, item.url, item.kind, item.statement, item.quote].join('|');
 
 /** Writes metrics and the review list. Marks a person already made are kept across runs. */
 export async function buildReport({ root = projectRoot, id = 'amostra-20', from }) {

@@ -318,23 +318,19 @@ test('ponta a ponta com cliente falso: dois braços, travas, relatório, confer�
   assert.equal(choice.candidates.length, 2);
 });
 
-test('a mesma citação em dois itens mantém a marca de cada um', async (t) => {
+test('a marca de um item não vaza para outro com a mesma citação', async (t) => {
   const root = await project(t);
   await runEval({ root, from: ['x'], size: 3, client: fakeClient(), ...quiet });
   const { directory, items } = await buildReport({ root });
-  const twin = items.find((item) => item.kind === 'text');
-  const marked = [
-    ...items,
-    { ...twin, statement: 'Outra leitura da mesma citação.', ok: false },
-  ].map((item) => (item === twin ? { ...item, ok: true } : item));
-  const path = join(directory, 'revisao.json');
-  await writeFile(path, JSON.stringify(marked));
+  const texts = items.filter((item) => item.kind === 'text' && item.arm === 'haiku-low');
+  assert.equal(texts[0].quote, texts[2].quote, 'mesma citação em artigos diferentes');
+  const target = texts[0];
+  const marked = items.map((item) => (item === target ? { ...item, ok: false } : item));
+  await writeFile(join(directory, 'revisao.json'), JSON.stringify(marked));
   const again = await buildReport({ root });
-  const same = again.items.find(
-    (item) =>
-      item.statement === twin.statement && item.arm === twin.arm && item.quote === twin.quote,
-  );
-  assert.equal(same.ok, true);
+  const wrong = again.items.filter((item) => item.ok === false);
+  assert.equal(wrong.length, 1);
+  assert.equal(wrong[0].url, target.url);
 });
 
 test('revisao.json quebrado para o relatório e não apaga as marcas', async (t) => {
