@@ -21,13 +21,13 @@
     },
     {
       "id": "atlas-liberalism",
-      "file": "collections/atlas-liberalism.fa4ac973920aaff9fa1ef9687af6dfe40f88506a997609defc7a96811cd714c3.json",
-      "sha256": "fa4ac973920aaff9fa1ef9687af6dfe40f88506a997609defc7a96811cd714c3"
+      "file": "collections/atlas-liberalism.5c907c0e7ad742cd32406733bd4c4aeb8a764591c7b3e874cef448ed71b949ee.json",
+      "sha256": "5c907c0e7ad742cd32406733bd4c4aeb8a764591c7b3e874cef448ed71b949ee"
     },
     {
       "id": "atlas-marx-valor",
-      "file": "collections/atlas-marx-valor.f0c921f9ca7397001312c77e9bdaa7d679adf305dee5300efa86426ac3f849bc.json",
-      "sha256": "f0c921f9ca7397001312c77e9bdaa7d679adf305dee5300efa86426ac3f849bc"
+      "file": "collections/atlas-marx-valor.27a2d1b6521cb5a6d60b6a379b6198644fa27b131d1cfdd924df89441b7b02c5.json",
+      "sha256": "27a2d1b6521cb5a6d60b6a379b6198644fa27b131d1cfdd924df89441b7b02c5"
     },
     {
       "id": "atlas-constitutional-contexts",
@@ -51,18 +51,23 @@
     },
     {
       "id": "atlas-social-democracia",
-      "file": "collections/atlas-social-democracia.575ce29b144314af71932a3572f6ef0d9abc5f63d7432d5a876ad71a5a23d691.json",
-      "sha256": "575ce29b144314af71932a3572f6ef0d9abc5f63d7432d5a876ad71a5a23d691"
+      "file": "collections/atlas-social-democracia.cd4cc250434881d8a44a0ee47cd9fd8b9ac37f0933c7cda978b884de032c22a9.json",
+      "sha256": "cd4cc250434881d8a44a0ee47cd9fd8b9ac37f0933c7cda978b884de032c22a9"
     },
     {
       "id": "atlas-anarquismo",
-      "file": "collections/atlas-anarquismo.ec4afb6075ab3459a71047508740138b142a207a8c2b85cbf71276c6d7d4ef34.json",
-      "sha256": "ec4afb6075ab3459a71047508740138b142a207a8c2b85cbf71276c6d7d4ef34"
+      "file": "collections/atlas-anarquismo.9931f6538170bec096cd9116e83af80ec9df0b75afead912110ca2fc308b37ec.json",
+      "sha256": "9931f6538170bec096cd9116e83af80ec9df0b75afead912110ca2fc308b37ec"
     },
     {
       "id": "atlas-ideologias-principais",
-      "file": "collections/atlas-ideologias-principais.e9b43111e072b98ebda483eb70b98d76297abb70a39a513234d7a20ad53da4c3.json",
-      "sha256": "e9b43111e072b98ebda483eb70b98d76297abb70a39a513234d7a20ad53da4c3"
+      "file": "collections/atlas-ideologias-principais.df2b0382502920b2d7ff73787d5d2aa74f57ea7696c4a7665bc79a64110ad8cd.json",
+      "sha256": "df2b0382502920b2d7ff73787d5d2aa74f57ea7696c4a7665bc79a64110ad8cd"
+    },
+    {
+      "id": "atlas-verbetes-citados",
+      "file": "collections/atlas-verbetes-citados.328cd512293733ef3c5ff58f97168c4bd0385024474e1ae1e31fbb0baec23089.json",
+      "sha256": "328cd512293733ef3c5ff58f97168c4bd0385024474e1ae1e31fbb0baec23089"
     }
   ]
 }

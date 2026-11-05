@@ -13,7 +13,11 @@ import {
 import { firstValueFrom } from 'rxjs';
 
 import { CONTENT_ASSET_READER } from './content-assets';
-import { ContentRepository } from './content-repository.service';
+import {
+  ContentRepository,
+  isEntryPageRequest,
+  isTransferable,
+} from './content-repository.service';
 
 describe('ContentRepository generated assets', () => {
   const reads: string[] = [];
@@ -98,6 +102,37 @@ describe('ContentRepository generated assets', () => {
     expect(result).toEqual(methodologyKnowledgeGraph);
     expect(read).not.toHaveBeenCalled();
     expect(state.isEmpty).toBe(true);
+  });
+
+  it('recognises entry pages by the request URL', () => {
+    expect(isEntryPageRequest('http://localhost/verbete/cooperativismo')).toBe(true);
+    expect(isEntryPageRequest('/verbete/cooperativismo')).toBe(true);
+    expect(isEntryPageRequest('http://localhost/marxismo')).toBe(false);
+    expect(isEntryPageRequest(undefined)).toBe(false);
+  });
+
+  it('embeds only small objects while rendering an entry page', async () => {
+    const transferred = async (path: string) => {
+      window.history.pushState({}, '', path);
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: PLATFORM_ID, useValue: 'server' },
+          {
+            provide: CONTENT_ASSET_READER,
+            useValue: async (path: string) => contentAssetFixture[path],
+          },
+        ],
+      });
+      await firstValueFrom(TestBed.inject(ContentRepository).loadKnowledgeGraph());
+      const state = JSON.parse(TestBed.inject(TransferState).toJson()) as Record<string, string>;
+      return Object.values(state);
+    };
+    const onEntry = await transferred('/verbete/x');
+    const onOther = await transferred('/marxismo');
+    expect(onEntry.every(isTransferable)).toBe(true);
+    expect(onOther.length).toBeGreaterThan(onEntry.length);
+    window.history.pushState({}, '', '/');
   });
 
   it('rejects corrupt bytes without exposing a partial graph and retries the failed asset', async () => {
