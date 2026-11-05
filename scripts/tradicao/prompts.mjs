@@ -29,7 +29,10 @@ REGRAS GERAIS
 - Use apenas o texto dentro de <artigo>. Não acrescente conhecimento próprio, datas, nomes ou avaliações.
 - Tudo que você redige fica em português do Brasil, em tom neutro, sem adjetivo de juízo. Citações ficam no idioma do artigo.
 - Diferencie fato documentado de interpretação e de alegação disputada; divergência entre autores é controvérsia, sem escolher lado.
-- Prefira poucos itens bem sustentados a muitos fracos. Lista vazia é resposta válida.
+- Cada item afirma um único fato. Tudo o que o item afirma precisa estar na sua própria citação: não some fatos de outras frases nem acrescente detalhe, sigla, cargo ou data que a citação não traz.
+- Antes de escrever, confira de quem a citação fala e sobre o quê: mantenha o mesmo sujeito e o mesmo objeto. Não transforme "talvez" em fato, nem um ano citado de passagem em marco de início ou fim.
+- Inclua só o que trata da entidade do artigo; o que o artigo conta sobre outro assunto fica de fora.
+- Lista vazia é resposta válida para datas, afirmações e seções sem sustentação.
 
 CITAÇÕES
 - Todo campo "quote" é um trecho copiado letra por letra do artigo, com pelo menos três palavras e no máximo 300 caracteres.
@@ -37,21 +40,21 @@ CITAÇÕES
 - Se não houver trecho literal que sustente o item, não produza o item.
 
 CAMPOS
-- oneLine: define a entidade em uma linha, até 140 caracteres, para um cartão de hover. Sem começar pelo nome dela.
-- summary: até 600 caracteres, para a folha lateral: o que é, quando, onde e por que importa no artigo.
+- oneLine: define a entidade em uma linha, com no máximo 120 caracteres, para um cartão de hover. Sem começar pelo nome dela.
+- summary: de 300 a 500 caracteres, para a folha lateral: o que é, quando, onde e por que importa no artigo.
 - sections: até 10 itens. "kind" é um de: ${sectionKinds.join(', ')}. "text" parafraseia em até 500 caracteres e "quote" sustenta. Em bibliografia, cite só obras listadas no bloco de bibliografia do artigo.
 - glossary: um item por entidade do artigo, para esta entidade apenas: nome principal, formas em pt e en e apelidos ou siglas que designem só ela. Só formas presentes no artigo ou no título. Não inclua palavras comuns.
 - dates: até 12. "date" em AAAA, AAAA-MM ou AAAA-MM-DD, e o ano aparece na citação.
 - claims: até 12. "kind" é fact, interpretation ou controversy.
 
 RELAÇÕES
-Uma relação é um fato histórico afirmado no texto entre a entidade do artigo e outro nó nomeado. Até 12.
+Uma relação é um fato histórico afirmado no texto entre a entidade do artigo e outro nó nomeado. Percorra todas as seções e produza até 12: filiações, fundações, autoria, oposições, sucessões e influências que o texto afirme. A maioria dos artigos tem várias; só devolva poucas se o texto de fato tiver poucas.
 - "nature" é exatamente um de: ${relationNatures.join(', ')}. Não invente outro valor. Semelhança, afinidade, comparação, tema comum e mera menção não são relação: nesses casos não produza o item.
 - "direction" diz quem pratica a ação. "entidade-para-alvo": a entidade do artigo fundou, influenciou ou escreveu o alvo. "alvo-para-entidade": o alvo fundou, influenciou ou escreveu a entidade. "Foi influenciado por X" é influenciou com alvo-para-entidade.
-- "target" é o nome do outro nó como está escrito no artigo, sem cargo nem descrição.
+- "target" é uma pessoa, organização, obra, evento, lugar ou corrente específica, com o nome como está escrito no artigo, sem cargo nem descrição. Grupo genérico ("os críticos", "sociais-democratas irredutíveis") não é alvo.
 - "quote" afirma a relação e nomeia o alvo na mesma frase. Se a frase fala de outra pessoa agindo, não é relação desta entidade.
 - "sentence" escreve a relação em uma frase, em português, até 240 caracteres, com o sujeito certo.
-- Significados: influenciou (influência intelectual ou política afirmada); participou-de (tomou parte em evento ou organização); membro-de (filiação a partido ou organização); fundou (criou organização, movimento ou publicação); escreveu (autoria de obra); desenvolveu-se-em (corrente que deu origem a outra); reagiu-contra (oposição ou crítica afirmada); sucedeu (assumiu o posto de); governou (chefiou governo, Estado ou região); ocorreu-em (evento e lugar).
+- Significados: influenciou (influência intelectual ou política afirmada; amizade, encontro ou contato não bastam); participou-de (tomou parte em evento ou atuou em organização, sem filiação formal afirmada); membro-de (filiação formal de pessoa a partido ou organização); fundou (criou ou foi um dos fundadores de organização, movimento ou publicação; só a organização que o texto diz ter sido fundada, não a sucessora); escreveu (autoria de obra); desenvolveu-se-em (corrente que deu origem a outra); reagiu-contra (oposição ou crítica afirmada a esse alvo); sucedeu (assumiu o cargo que o alvo ocupava); governou (chefiou governo, Estado ou região; presidir organização é participou-de); ocorreu-em (evento e lugar).
 
 COBERTURA
 O artigo pode estar parcial; não trate o silêncio do texto como negação. Responda somente com o JSON do formato pedido.`;
@@ -59,11 +62,11 @@ O artigo pode estar parcial; não trate o silêncio do texto como negação. Res
 export const verifySystem = `Você confere relações extraídas de um artigo da Wikipedia. Para cada relação recebe o tipo, o sentido declarado, a citação e o parágrafo de onde ela veio. Julgue só pelo parágrafo; não use conhecimento próprio.
 
 Responda um veredito por índice:
-- "confirma": o parágrafo afirma esse fato, com esse tipo, entre esses dois nós e nesse sentido.
+- "confirma": o parágrafo afirma esse fato, com esse tipo, entre esses dois nós e nesse sentido. Formas equivalentes contam: "um dos fundadores de X" e "fundaram X juntos" confirmam fundou; "X sucedeu Y como chanceler" confirma X sucedeu Y; um título listado em "secao" de obras da própria entidade confirma escreveu.
 - "inverte": o fato existe, mas quem age é o outro nó.
 - "nao-sustenta": o parágrafo só menciona os dois nós, compara, fala de outra pessoa, usa dúvida ou hipótese como fato, ou o tipo não descreve o que está escrito.
 
-Na dúvida, "nao-sustenta". Significados dos tipos: influenciou (influência intelectual ou política afirmada); participou-de (tomou parte em evento ou organização); membro-de (filiação a partido ou organização); fundou (criou organização, movimento ou publicação); escreveu (autoria de obra); desenvolveu-se-em (corrente que deu origem a outra); reagiu-contra (oposição ou crítica afirmada); sucedeu (assumiu o posto de); governou (chefiou governo, Estado ou região); ocorreu-em (evento e lugar).`;
+Se o parágrafo afirma o fato com outras palavras, confirme; recuse quando faltar o fato, não quando faltar o verbo exato. Significados dos tipos: influenciou (influência intelectual ou política afirmada); participou-de (tomou parte em evento ou atuou em organização); membro-de (filiação formal a partido ou organização); fundou (criou ou foi um dos fundadores de organização, movimento ou publicação); escreveu (autoria de obra); desenvolveu-se-em (corrente que deu origem a outra); reagiu-contra (oposição ou crítica afirmada); sucedeu (assumiu o cargo que o alvo ocupava); governou (chefiou governo, Estado ou região; presidir organização não conta); ocorreu-em (evento e lugar).`;
 
 /** O que olhar primeiro em cada tipo; fica na mensagem do usuário para não quebrar o cache. */
 const typeHints = {

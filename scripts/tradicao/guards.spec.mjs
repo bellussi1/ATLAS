@@ -166,6 +166,30 @@ test('calibração sobre a rodada real: verdadeiras passam e "contato próximo" 
   );
 });
 
+test('alvo genérico sem link não é nó do grafo; corrente em minúscula com link continua', () => {
+  const source =
+    'A Terceira Via já foi criticada por sociais-democratas irredutíveis e pelo marxismo.';
+  const quote =
+    'A Terceira Via já foi criticada por sociais-democratas irredutíveis e pelo marxismo';
+  const base = {
+    nature: 'reagiu-contra',
+    direction: 'alvo-para-entidade',
+    sentence: 'Frase.',
+    quote,
+  };
+  const context = { ...ctx(), normalizedSource: normalizeText(source) };
+  assert.equal(
+    checkRelation({ ...base, target: 'sociais-democratas irredutíveis' }, context).problem,
+    'alvo-generico',
+  );
+  const linked = new Map([['marxismo', { title: 'Marxismo', qid: 'Q7264' }]]);
+  assert.equal(
+    checkRelation({ ...base, target: 'marxismo' }, { ...context, index: linked }).relation
+      .targetQid,
+    'Q7264',
+  );
+});
+
 test('título em seção de obras afirma autoria; fora dela, ou de outro autor, não', () => {
   const works = {
     ...article,

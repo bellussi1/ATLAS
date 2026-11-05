@@ -168,6 +168,9 @@ export function checkRelation(relation, { entity, article, normalizedSource, ind
   if (!target) return { problem: 'alvo-ausente' };
   const quote = folded(relation.quote);
   const resolved = resolveTarget(target, index);
+  // Sem link e em minúscula: é descrição de um grupo ("os críticos"), não um nó do grafo.
+  if (!resolved && target[0] === target[0].toLowerCase() && target[0] !== target[0].toUpperCase())
+    return { problem: 'alvo-generico' };
   const names = [
     target,
     ...(resolved ? [...index].filter(([, known]) => known === resolved).map(([key]) => key) : []),
