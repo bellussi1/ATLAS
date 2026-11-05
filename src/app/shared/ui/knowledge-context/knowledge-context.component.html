@@ -68,6 +68,14 @@
             width="72"
             height="72"
           />
+        } @else if (illustration(); as art) {
+          <app-geometric-illustration
+            class="context-thumb"
+            [entityId]="art.id"
+            [kind]="art.kind"
+            [palette]="art.palette"
+            [title]="record().title"
+          />
         }
         <div class="context-title">
           <p class="context-kind">

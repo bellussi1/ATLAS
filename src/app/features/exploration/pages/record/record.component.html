@@ -61,6 +61,15 @@
             />
           }
         </div>
+      } @else if (illustration(); as art) {
+        <div class="hero-media">
+          <app-geometric-illustration
+            [entityId]="art.id"
+            [kind]="art.kind"
+            [palette]="art.palette"
+            [title]="entity.title"
+          />
+        </div>
       }
     </header>
 

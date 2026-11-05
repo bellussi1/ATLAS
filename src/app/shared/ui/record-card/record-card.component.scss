@@ -148,3 +148,8 @@
 :host(.is-expanded) {
   box-shadow: 6px 6px 0 var(--color-accent, #b81d16);
 }
+
+:host .card-illustration {
+  --illustration-size: 3.2rem;
+  filter: none;
+}
