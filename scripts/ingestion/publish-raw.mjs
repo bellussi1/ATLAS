@@ -29,7 +29,10 @@ for (const [sha256, response] of responses) {
       console.log(`já publicado, sem corpo local: ${key}`);
       continue;
     }
-    throw new Error(`Corpo ausente e não publicado: ${key} (${response.url})`);
+    // A capture older than the local checkout may have lost its body; report it and keep going so
+    // the other captures still publish. The CI will surface the gap if that blob is ever needed.
+    console.warn(`corpo ausente e não publicado: ${key} (${response.url})`);
+    continue;
   }
   if (sha256Hex(body) !== sha256) throw new Error(`Falha de integridade: ${response.url}`);
   await putImmutable(
