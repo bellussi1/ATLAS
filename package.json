@@ -1,6 +1,7 @@
 {
   "name": "atlas",
   "version": "0.0.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "content:build": "node scripts/content/build-content.mjs",
