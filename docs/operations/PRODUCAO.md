@@ -65,9 +65,9 @@ O conteúdo HTML e o prerender continuam disponíveis para indexação.
 A medição local em 06/11/2026 passou de aproximadamente 460 MB para 86 MB no diretório público, cerca de 81% de redução. A página de pessoas passou de cerca de 15 MB para 176 KB. Os valores dependem do release de conteúdo.
 
 A redução vale para novos builds. Para reduzir o histórico retido, abrir
-ATLAS → Settings → Security → Deployment Retention Policy no Vercel.
+ATLAS → Settings → Build and Deployment → Deployment Retention Policy no Vercel.
 Uma configuração inicial para este projeto é 1 dia para cancelados/com erro,
-7 dias para previews e 30 dias para produção. Conferir as exceções que preservam
+7 dias para previews e 7 dias para produção. Conferir as exceções que preservam
 o deployment atual e os alvos de rollback antes de salvar.
 Aplicar ao projeto ATLAS. O uso agregado da equipe pode incluir outros projetos.
 
@@ -75,3 +75,5 @@ Conferir o total dos arquivos em `dist/atlas/browser`, as rotas principais, a
 hidratação e os links antes de publicar. Após o próximo deploy, comparar o
 mesmo intervalo em Usage → Deployment Storage. A atualização do uso depende
 da exclusão dos deployments antigos e da atualização das métricas.
+
+Referência verificada em 06/11/2026 — [retenção de deployments](https://vercel.com/docs/deployment-retention).
