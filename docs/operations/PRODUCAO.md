@@ -10,7 +10,9 @@ Site: `https://atlasbr.vercel.app` (Vercel). Conteúdo: bucket R2 `atlas-public`
 2. `scripts/infra/vercel-config.mjs` (último passo do `npm run build`) escreve `dist/atlas/vercel.json` com os headers e a CSP com hashes do build, os redirecionamentos de `public/_redirects`, `cleanUrls` e cache longo para JS e CSS com hash.
 3. O job `deploy` copia esse arquivo para a raiz e roda `vercel build` e `vercel deploy --prebuilt`: `master` vai para produção, pull requests viram pré-visualização. O job só roda quando a variável `VERCEL_PROJECT_ID` existe.
 
-`public/404.html` é servido pelo Vercel com status 404 para endereços desconhecidos.
+O `vercel.json` da raiz é versionado e cobre o deploy pelo Git enquanto o job `deploy` está inerte (falta `VERCEL_PROJECT_ID`). Ele fixa `framework: null` para desligar o preset Angular, que hoje responde `index.html` com status 200 em endereços desconhecidos, e repete `redirects`, `routes` e os headers de segurança. A CSP com os hashes do build fica só no arquivo gerado, porque os hashes mudam a cada build; `scripts/infra/vercel-config.spec.mjs` falha se as regras determinísticas dos dois arquivos divergirem.
+
+`public/404.html` é servido pelo Vercel com status 404 para endereços desconhecidos. O `routes` termina em `{ "status": 404, "dest": "/404.html" }` depois de `handle: filesystem`, e `/verbete/*` continua na SPA para slugs não prerenderizados. Sem `framework: null` (ou seja, no preset Angular), o mesmo endereço devolve 200 com `index.html`; o `uptime.yml` detecta isso porque exige 404 no caminho inexistente.
 
 ## O que fica a cargo de uma pessoa
 

@@ -17,6 +17,28 @@ test('converte _headers e _redirects reais para o formato do Vercel', async () =
     statusCode: 301,
   });
   assert.equal(config.cleanUrls, true);
+  assert.deepEqual(config.routes, [
+    { handle: 'filesystem' },
+    { src: '/verbete/(.*)', dest: '/index.html' },
+    { src: '/(.*)', status: 404, dest: '/404.html' },
+  ]);
+});
+
+test('vercel.json da raiz acompanha o gerador nas regras determinísticas', async () => {
+  const headers = await readFile(new URL('../../public/_headers', import.meta.url), 'utf8');
+  const redirects = await readFile(new URL('../../public/_redirects', import.meta.url), 'utf8');
+  const root = JSON.parse(await readFile(new URL('../../vercel.json', import.meta.url), 'utf8'));
+  const generated = buildVercelConfig(headers, redirects);
+  for (const key of ['framework', 'outputDirectory', 'cleanUrls', 'trailingSlash', 'routes'])
+    assert.deepEqual(root[key], generated[key], `${key} divergiu do gerador`);
+  assert.deepEqual(root.redirects, generated.redirects);
+  assert.equal(root.buildCommand, 'npm run build');
+  assert.equal(root.installCommand, 'npm ci');
+  const global = root.headers.find((entry) => entry.source === '/(.*)').headers;
+  assert.ok(
+    !global.some((entry) => entry.key === 'Content-Security-Policy'),
+    'a CSP depende dos hashes do build e fica no arquivo gerado, não na raiz',
+  );
 });
 
 test('valores com dois pontos e ancoras sobrevivem ao parse', () => {
