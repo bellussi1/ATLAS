@@ -9,6 +9,23 @@
   color: var(--color-ink);
 }
 
+:host(.is-embedded) {
+  block-size: clamp(30rem, 68vh, 46rem);
+  overflow: hidden;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-canvas);
+}
+:host(.is-embedded) .bar {
+  gap: 0.4rem 0.5rem;
+  padding: 0.4rem 0.5rem;
+}
+:host(.is-embedded) .search {
+  flex-basis: 12rem;
+}
+:host(.is-embedded) .bar__actions {
+  gap: 0.35rem;
+}
+
 .visually-hidden {
   position: absolute;
   inline-size: 1px;

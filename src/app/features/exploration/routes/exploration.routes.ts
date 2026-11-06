@@ -25,7 +25,9 @@ export const explorationRoutes: Routes = [
     },
     resolve: { knowledge: knowledgeContentResolver },
     loadComponent: () =>
-      import('@exploration/pages/graph/graph.component').then((m) => m.GraphComponent),
+      import('@shared/ui/knowledge-network/knowledge-network.component').then(
+        (m) => m.KnowledgeNetworkComponent,
+      ),
   },
   ...explorerCatalogues.map((catalogue) => ({
     path: catalogue.path,

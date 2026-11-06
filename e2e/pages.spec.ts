@@ -226,6 +226,21 @@ test('both readings share the twelve canonical chapters, one index and no nested
   }
 });
 
+test('the connections chapter draws the tradition as a graph scoped to its atlas', async ({
+  page,
+}) => {
+  await page.goto('/marxismo#conexoes');
+  const network = page.locator('#conexoes app-knowledge-network');
+  await expect(network).toBeVisible();
+  await expect(network.locator('[data-node]')).toHaveCount(42);
+  await expect(network.locator('.zoom__level')).toHaveText('100%');
+  await expect(network.locator('#graph-status')).toContainText(/42 de \d+ verbetes/);
+  await expect(network.locator('.detail')).toHaveCount(0);
+  await network.locator('#graph-search').fill('Friedrich Engels');
+  await network.locator('#graph-search').press('Enter');
+  await expect(page.locator('#conexoes .entity-reading h2')).toHaveText('Friedrich Engels');
+});
+
 test('each image appears once in the narrative; only the archive catalogue repeats', async ({
   page,
 }) => {

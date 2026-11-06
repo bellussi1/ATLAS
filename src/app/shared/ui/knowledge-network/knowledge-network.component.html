@@ -1,10 +1,12 @@
 ﻿<div class="graph-page">
   <div class="floating" [class.has-detail]="!!selected()">
     <header class="bar card">
-      <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
-        <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
-      </a>
-      <h1 class="bar__title">Grafo do acervo</h1>
+      @if (!embedded()) {
+        <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
+          <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
+        </a>
+        <h1 class="bar__title">Grafo do acervo</h1>
+      }
       <form class="search" role="search" (submit)="$event.preventDefault()">
         <label for="graph-search" class="visually-hidden">Buscar por nome</label>
         <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -63,7 +65,9 @@
         >
           ?
         </button>
-        <a class="chip bar__list" routerLink="/acervo">Ver como lista</a>
+        @if (!embedded()) {
+          <a class="chip bar__list" routerLink="/acervo">Ver como lista</a>
+        }
       </div>
     </header>
 
@@ -135,32 +139,34 @@
         </ul>
       </details>
 
-      <details class="panel" open>
-        <summary><h2>Coleções</h2></summary>
-        <ul class="legend">
-          @for (collection of collections; track collection.id) {
-            <li>
-              <label class="check">
-                <input
-                  type="checkbox"
-                  [checked]="collectionsOn().has(collection.id)"
-                  (change)="toggleCollection(collection.id)"
-                />
-                <span>{{ collection.title }}</span>
-                <span class="legend__count">{{ collection.count }}</span>
-              </label>
-            </li>
-          }
-        </ul>
-        <label class="check check--solo">
-          <input
-            type="checkbox"
-            [checked]="onlyConnected()"
-            (change)="onlyConnected.set(!onlyConnected())"
-          />
-          <span>Ocultar verbetes sem ligação</span>
-        </label>
-      </details>
+      @if (!embedded()) {
+        <details class="panel" open>
+          <summary><h2>Coleções</h2></summary>
+          <ul class="legend">
+            @for (collection of collections; track collection.id) {
+              <li>
+                <label class="check">
+                  <input
+                    type="checkbox"
+                    [checked]="collectionsOn().has(collection.id)"
+                    (change)="toggleCollection(collection.id)"
+                  />
+                  <span>{{ collection.title }}</span>
+                  <span class="legend__count">{{ collection.count }}</span>
+                </label>
+              </li>
+            }
+          </ul>
+          <label class="check check--solo">
+            <input
+              type="checkbox"
+              [checked]="onlyConnected()"
+              (change)="onlyConnected.set(!onlyConnected())"
+            />
+            <span>Ocultar verbetes sem ligação</span>
+          </label>
+        </details>
+      }
 
       <button
         type="button"
@@ -360,7 +366,7 @@
               <span class="skeleton-node"></span>
             }
           </div>
-          <p>Organizando o mapa de {{ total }} verbetes…</p>
+          <p>Organizando o mapa de {{ visible().nodes.length }} verbetes…</p>
         </div>
       } @else if (total === 0) {
         <div class="overlay">
@@ -495,36 +501,42 @@
         </section>
       }
       <div class="hud__row">
-        <p id="graph-status" class="status card" role="status">{{ status() }}</p>
+        @if (!embedded()) {
+          <p id="graph-status" class="status card" role="status">{{ status() }}</p>
+        } @else {
+          <p id="graph-status" class="visually-hidden" role="status">{{ status() }}</p>
+        }
         <div class="hud__side">
-          @if (minimap(); as map) {
-            <svg
-              class="minimap card"
-              [attr.viewBox]="'0 0 ' + map.width + ' ' + map.height"
-              [attr.width]="map.width"
-              [attr.height]="map.height"
-              role="group"
-              tabindex="0"
-              aria-label="Visão geral do mapa. Clique para levar a vista até aquele ponto; setas movem a vista."
-              (click)="minimapJump($event)"
-              (keydown)="canvasKey($event)"
-            >
-              @for (path of map.dotPaths; track path.color) {
-                <path
-                  [attr.d]="path.d"
-                  [attr.stroke]="'var(' + path.color + ')'"
-                  stroke-linecap="round"
-                  stroke-width="3.2"
+          @if (!embedded()) {
+            @if (minimap(); as map) {
+              <svg
+                class="minimap card"
+                [attr.viewBox]="'0 0 ' + map.width + ' ' + map.height"
+                [attr.width]="map.width"
+                [attr.height]="map.height"
+                role="group"
+                tabindex="0"
+                aria-label="Visão geral do mapa. Clique para levar a vista até aquele ponto; setas movem a vista."
+                (click)="minimapJump($event)"
+                (keydown)="canvasKey($event)"
+              >
+                @for (path of map.dotPaths; track path.color) {
+                  <path
+                    [attr.d]="path.d"
+                    [attr.stroke]="'var(' + path.color + ')'"
+                    stroke-linecap="round"
+                    stroke-width="3.2"
+                  />
+                }
+                <rect
+                  class="minimap__view"
+                  [attr.x]="map.box.x"
+                  [attr.y]="map.box.y"
+                  [attr.width]="map.box.w"
+                  [attr.height]="map.box.h"
                 />
-              }
-              <rect
-                class="minimap__view"
-                [attr.x]="map.box.x"
-                [attr.y]="map.box.y"
-                [attr.width]="map.box.w"
-                [attr.height]="map.box.h"
-              />
-            </svg>
+              </svg>
+            }
           }
           <div class="zoom card" role="group" aria-label="Zoom">
             <button type="button" (click)="zoomStep(1.3)" aria-label="Aproximar">+</button>
@@ -538,137 +550,139 @@
       </div>
     </div>
 
-    <aside
-      class="detail card"
-      [class.detail--empty]="!selected()"
-      aria-label="Detalhes do verbete"
-      aria-live="polite"
-    >
-      @if (selected(); as node) {
-        @if (selectedKind(); as kind) {
-          <header class="detail__head">
-            <p class="detail__kind">
-              <app-kind-icon [kind]="kind.icon" />
-              <span>{{ kind.label }}</span>
-              @if (node.period) {
-                <span class="detail__period">{{ node.period }}</span>
-              }
-            </p>
-            <button
-              type="button"
-              class="detail__close"
-              (click)="clearSelection()"
-              aria-label="Fechar detalhes"
-            >
-              ×
-            </button>
-          </header>
-          <h2 class="detail__title">{{ node.title }}</h2>
-          <p class="detail__count">
-            {{ node.degree }} {{ node.degree === 1 ? 'conexão' : 'conexões' }} no acervo
-          </p>
-          <p class="detail__definition">{{ node.definition }}</p>
-          @if (node.summary !== node.definition) {
-            <details class="detail__more">
-              <summary>Resumo completo</summary>
-              <p>{{ node.summary }}</p>
-            </details>
-          }
-          @if (node.inReview) {
-            <p class="detail__note">Texto ainda em revisão editorial.</p>
-          }
-          @if (selectedClaims().length) {
-            <section aria-labelledby="detail-claims">
-              <h3 id="detail-claims">Posição e teses atribuídas</h3>
-              <ul class="claims">
-                @for (claim of selectedClaims(); track claim.id) {
-                  <li>
-                    <p>{{ claim.text }}</p>
-                    <small>{{ classificationLabel(claim.classification) }}</small>
-                  </li>
+    @if (!embedded()) {
+      <aside
+        class="detail card"
+        [class.detail--empty]="!selected()"
+        aria-label="Detalhes do verbete"
+        aria-live="polite"
+      >
+        @if (selected(); as node) {
+          @if (selectedKind(); as kind) {
+            <header class="detail__head">
+              <p class="detail__kind">
+                <app-kind-icon [kind]="kind.icon" />
+                <span>{{ kind.label }}</span>
+                @if (node.period) {
+                  <span class="detail__period">{{ node.period }}</span>
                 }
-              </ul>
-            </section>
-          }
-          <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
-            >Abrir o verbete <span aria-hidden="true">→</span></a
-          >
-          <section class="pathbox" aria-labelledby="detail-path">
-            <h3 id="detail-path">Caminho entre verbetes</h3>
-            @if (!pathFrom()) {
-              <button type="button" class="chip" (click)="togglePathStart()">
-                Começar caminho a partir daqui
-              </button>
-              <p class="hint">Marque este verbete e selecione outro para ver como se ligam.</p>
-            } @else if (pathFrom()!.id === node.id) {
-              <p class="hint">
-                Início marcado em {{ node.title }}. Selecione outro verbete para ver o trajeto.
               </p>
-              <button type="button" class="chip" (click)="clearPath()">Cancelar caminho</button>
-            } @else {
-              @if (path() === null) {
-                <p class="hint">
-                  Não há trajeto entre {{ pathFrom()!.title }} e {{ node.title }} com as ligações
-                  visíveis.
-                </p>
-              } @else {
-                <ol
-                  class="steps"
-                  [attr.aria-label]="'Trajeto de ' + pathFrom()!.title + ' até ' + node.title"
-                >
-                  @for (step of pathSteps(); track step.edge.id) {
+              <button
+                type="button"
+                class="detail__close"
+                (click)="clearSelection()"
+                aria-label="Fechar detalhes"
+              >
+                ×
+              </button>
+            </header>
+            <h2 class="detail__title">{{ node.title }}</h2>
+            <p class="detail__count">
+              {{ node.degree }} {{ node.degree === 1 ? 'conexão' : 'conexões' }} no acervo
+            </p>
+            <p class="detail__definition">{{ node.definition }}</p>
+            @if (node.summary !== node.definition) {
+              <details class="detail__more">
+                <summary>Resumo completo</summary>
+                <p>{{ node.summary }}</p>
+              </details>
+            }
+            @if (node.inReview) {
+              <p class="detail__note">Texto ainda em revisão editorial.</p>
+            }
+            @if (selectedClaims().length) {
+              <section aria-labelledby="detail-claims">
+                <h3 id="detail-claims">Posição e teses atribuídas</h3>
+                <ul class="claims">
+                  @for (claim of selectedClaims(); track claim.id) {
                     <li>
-                      <span class="steps__line"
-                        >{{ step.fromNode.title }}
-                        <em>{{ step.forward ? step.edge.phrase : step.edge.phraseReverse }}</em>
-                        {{ step.toNode.title }}</span
-                      >
-                      <span class="nature nature--{{ step.nature.id }}">{{
-                        step.nature.label
-                      }}</span>
+                      <p>{{ claim.text }}</p>
+                      <small>{{ classificationLabel(claim.classification) }}</small>
                     </li>
                   }
-                </ol>
-              }
-              <button type="button" class="chip" (click)="clearPath()">Limpar caminho</button>
+                </ul>
+              </section>
             }
-          </section>
-          <section aria-labelledby="detail-links">
-            <h3 id="detail-links">Ligações ({{ selectedLinks().length }})</h3>
-            @if (selectedLinks().length) {
-              <ul class="links">
-                @for (link of selectedLinks(); track link.edge.id) {
-                  <li
-                    (pointerenter)="hoverEdge(link.edge.id)"
-                    (pointerleave)="hoverEdge(null)"
-                    (focusin)="hoverEdge(link.edge.id)"
-                    (focusout)="hoverEdge(null)"
+            <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
+              >Abrir o verbete <span aria-hidden="true">→</span></a
+            >
+            <section class="pathbox" aria-labelledby="detail-path">
+              <h3 id="detail-path">Caminho entre verbetes</h3>
+              @if (!pathFrom()) {
+                <button type="button" class="chip" (click)="togglePathStart()">
+                  Começar caminho a partir daqui
+                </button>
+                <p class="hint">Marque este verbete e selecione outro para ver como se ligam.</p>
+              } @else if (pathFrom()!.id === node.id) {
+                <p class="hint">
+                  Início marcado em {{ node.title }}. Selecione outro verbete para ver o trajeto.
+                </p>
+                <button type="button" class="chip" (click)="clearPath()">Cancelar caminho</button>
+              } @else {
+                @if (path() === null) {
+                  <p class="hint">
+                    Não há trajeto entre {{ pathFrom()!.title }} e {{ node.title }} com as ligações
+                    visíveis.
+                  </p>
+                } @else {
+                  <ol
+                    class="steps"
+                    [attr.aria-label]="'Trajeto de ' + pathFrom()!.title + ' até ' + node.title"
                   >
-                    <button type="button" (click)="select(link.other.id)">
-                      <span class="links__verb">{{ linkVerb(link) }}</span>
-                      <span class="links__name">{{ link.other.title }}</span>
-                    </button>
-                    <p class="links__why">{{ reasonOf(link.edge) }}</p>
-                    <p class="links__meta">
-                      <span class="nature nature--{{ link.edge.nature }}">{{
-                        natureOf(link.edge).label
-                      }}</span>
-                      @if (link.edge.sourceUrl) {
-                        <a [href]="link.edge.sourceUrl" target="_blank" rel="noopener noreferrer"
-                          >Fonte: {{ link.edge.sourceName
-                          }}<span class="visually-hidden"> (abre em nova aba)</span></a
+                    @for (step of pathSteps(); track step.edge.id) {
+                      <li>
+                        <span class="steps__line"
+                          >{{ step.fromNode.title }}
+                          <em>{{ step.forward ? step.edge.phrase : step.edge.phraseReverse }}</em>
+                          {{ step.toNode.title }}</span
                         >
-                      }
-                    </p>
-                  </li>
+                        <span class="nature nature--{{ step.nature.id }}">{{
+                          step.nature.label
+                        }}</span>
+                      </li>
+                    }
+                  </ol>
                 }
-              </ul>
-            } @else {
-              <p class="hint">Nenhuma ligação visível com os filtros atuais.</p>
-            }
-          </section>
+                <button type="button" class="chip" (click)="clearPath()">Limpar caminho</button>
+              }
+            </section>
+            <section aria-labelledby="detail-links">
+              <h3 id="detail-links">Ligações ({{ selectedLinks().length }})</h3>
+              @if (selectedLinks().length) {
+                <ul class="links">
+                  @for (link of selectedLinks(); track link.edge.id) {
+                    <li
+                      (pointerenter)="hoverEdge(link.edge.id)"
+                      (pointerleave)="hoverEdge(null)"
+                      (focusin)="hoverEdge(link.edge.id)"
+                      (focusout)="hoverEdge(null)"
+                    >
+                      <button type="button" (click)="select(link.other.id)">
+                        <span class="links__verb">{{ linkVerb(link) }}</span>
+                        <span class="links__name">{{ link.other.title }}</span>
+                      </button>
+                      <p class="links__why">{{ reasonOf(link.edge) }}</p>
+                      <p class="links__meta">
+                        <span class="nature nature--{{ link.edge.nature }}">{{
+                          natureOf(link.edge).label
+                        }}</span>
+                        @if (link.edge.sourceUrl) {
+                          <a [href]="link.edge.sourceUrl" target="_blank" rel="noopener noreferrer"
+                            >Fonte: {{ link.edge.sourceName
+                            }}<span class="visually-hidden"> (abre em nova aba)</span></a
+                          >
+                        }
+                      </p>
+                    </li>
+                  }
+                </ul>
+              } @else {
+                <p class="hint">Nenhuma ligação visível com os filtros atuais.</p>
+              }
+            </section>
+          }
         }
-      }
-    </aside>
+      </aside>
+    }
   </div>
 </div>

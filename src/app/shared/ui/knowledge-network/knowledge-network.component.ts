@@ -4,9 +4,13 @@ import {
   Component,
   computed,
   DestroyRef,
-  type ElementRef,
+  effect,
+  ElementRef,
   inject,
+  input,
+  output,
   signal,
+  untracked,
   viewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
@@ -41,8 +45,8 @@ import {
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 
-import { batchDots, batchEdgeSegments, type EdgeSegment } from './graph-batching';
-import { shapePath } from './graph-shapes';
+import { batchDots, batchEdgeSegments, type EdgeSegment } from './network-batching';
+import { shapePath } from './network-shapes';
 
 interface LabelView extends PlacedLabel {
   wx: number;
@@ -79,21 +83,34 @@ interface DrawnEdge {
 }
 
 @Component({
-  selector: 'app-graph',
+  selector: 'app-knowledge-network',
   imports: [RouterLink, AtlasKindIconComponent],
-  templateUrl: './graph.component.html',
-  styleUrl: './graph.component.scss',
+  templateUrl: './knowledge-network.component.html',
+  styleUrl: './knowledge-network.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { '(document:keydown)': 'globalKey($event)' },
+  host: {
+    '(document:keydown)': 'globalKey($event)',
+    '[class.is-embedded]': 'embedded()',
+  },
 })
-export class GraphComponent {
+export class KnowledgeNetworkComponent {
   private readonly repository = inject(ContentRepository);
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
   private readonly network = buildKnowledgeNetwork(this.repository.knowledgeGraph);
   private readonly nodeIndex = new Map(this.network.nodes.map((node) => [node.id, node]));
   private readonly edgeIndex = new Map(this.network.edges.map((edge) => [edge.id, edge]));
+
+  /** In a chapter, the graph keeps its own toolbar but gives up the page chrome and detail panel. */
+  readonly embedded = input(false);
+  /** Atlas ids that bound the graph; when set, the reader cannot widen the scope from the legend. */
+  readonly scope = input<readonly string[] | null>(null);
+  /** Selected node, kept in step with the record shown under the graph. */
+  readonly focus = input<string | null>(null);
+  /** Node picked in the map, so the chapter can open its record in place. */
+  readonly picked = output<string | null>();
 
   readonly kinds = networkKinds;
   readonly families = relationFamilies;
@@ -109,6 +126,13 @@ export class GraphComponent {
     new Set(relationFamilies.map((f) => f.id)),
   );
   readonly collectionsOn = signal<ReadonlySet<string>>(new Set(this.collections.map((c) => c.id)));
+  /** Atlas ids merged into the scope, or null when the reader can pick any collection. */
+  readonly scopeIds = computed(() => {
+    const scope = this.scope();
+    return scope?.length ? new Set(scope) : null;
+  });
+  /** The collections actually filter the map: the fixed scope wins over the legend checkboxes. */
+  readonly activeCollections = computed(() => this.scopeIds() ?? this.collectionsOn());
   readonly onlyConnected = signal(false);
   readonly query = signal('');
   readonly selectedId = signal<string | null>(null);
@@ -152,7 +176,7 @@ export class GraphComponent {
     filterNetwork(this.network, {
       kinds: this.kindsOn(),
       families: this.familiesOn(),
-      collections: this.collectionsOn(),
+      collections: this.activeCollections(),
       onlyConnected: this.onlyConnected(),
     }),
   );
@@ -161,7 +185,7 @@ export class GraphComponent {
     () =>
       this.kindsOn().size < this.kinds.length ||
       this.familiesOn().size < this.families.length ||
-      this.collectionsOn().size < this.collections.length ||
+      (!this.scopeIds() && this.collectionsOn().size < this.collections.length) ||
       this.onlyConnected(),
   );
   readonly matches = computed(() => searchNodes(this.visible().nodes, this.query()));
@@ -226,9 +250,9 @@ export class GraphComponent {
     const wide = this.wide();
     return {
       left: wide && this.controlsShown() ? 19 * rem + 32 : 12,
-      right: wide && this.selected() ? 23 * rem + 32 : 12,
+      right: wide && !this.embedded() && this.selected() ? 23 * rem + 32 : 12,
       top: wide ? 92 : 84,
-      bottom: !wide && this.selected() ? Math.round(height * 0.5) : 64,
+      bottom: !wide && !this.embedded() && this.selected() ? Math.round(height * 0.5) : 64,
       width,
     };
   });
@@ -541,8 +565,26 @@ export class GraphComponent {
   private tweenToken = 0;
   private allK = 0.1;
   private cycleOrigin: string | null = null;
+  /** Last selection received from the chapter, so the graph does not echo it back. */
+  private lastFocus: string | null = null;
 
   constructor() {
+    // The chapter owns the record panel; the map only mirrors the record it is showing.
+    effect(() => {
+      const id = this.focus();
+      if (id === this.lastFocus) return;
+      this.lastFocus = id;
+      untracked(() => {
+        if (!id || id === this.selectedId()) return;
+        this.selectedId.set(id);
+        this.focusId.set(id);
+        if (this.positions()) this.reveal(id);
+      });
+    });
+    // In a chapter the legend starts folded: the map should read as a map, not as a dashboard.
+    effect(() => {
+      if (this.embedded() && this.controlsOpen() === null) this.controlsOpen.set(false);
+    });
     afterNextRender(() => {
       const element = this.stage()?.nativeElement;
       const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
@@ -578,6 +620,11 @@ export class GraphComponent {
           : layoutNetwork(this.network.nodes, this.network.edges);
         this.world.set({ width: layout.width, height: layout.height });
         this.positions.set(layout.positions);
+        const selected = this.focus();
+        if (selected) {
+          this.selectedId.set(selected);
+          this.focusId.set(selected);
+        }
         if (this.size().width && !fitted) {
           fitted = true;
           this.fit();
@@ -602,6 +649,7 @@ export class GraphComponent {
     this.familiesOn.update((set) => toggled(set, id));
   }
   toggleCollection(id: string): void {
+    if (this.scopeIds()) return;
     this.collectionsOn.update((set) => toggled(set, id));
   }
   soloKind(id: NetworkKindId): void {
@@ -610,7 +658,7 @@ export class GraphComponent {
   resetFilters(): void {
     this.kindsOn.set(new Set(networkKinds.map((k) => k.id)));
     this.familiesOn.set(new Set(relationFamilies.map((f) => f.id)));
-    this.collectionsOn.set(new Set(this.collections.map((c) => c.id)));
+    if (!this.scopeIds()) this.collectionsOn.set(new Set(this.collections.map((c) => c.id)));
     this.onlyConnected.set(false);
     this.query.set('');
   }
@@ -625,6 +673,8 @@ export class GraphComponent {
   globalKey(event: KeyboardEvent): void {
     if (event.ctrlKey || event.metaKey || event.altKey) return;
     const target = event.target as HTMLElement | null;
+    // Embedded in a reading page, the map listens only while the reader is inside it.
+    if (this.embedded() && (!target || !this.host.nativeElement.contains(target))) return;
     if (target?.closest('input, textarea, select, [contenteditable]')) return;
     const actions: Record<string, () => void> = {
       '/': () => this.stage()?.nativeElement.ownerDocument.getElementById('graph-search')?.focus(),
@@ -691,9 +741,11 @@ export class GraphComponent {
       this.focusId.set(id);
       this.center(id);
     }
+    this.picked.emit(id);
   }
   clearSelection(): void {
     this.selectedId.set(null);
+    this.picked.emit(null);
   }
   isDimmed(id: string): boolean {
     const lit = this.litNodes();
@@ -867,24 +919,11 @@ export class GraphComponent {
     const { width, height } = this.size();
     if (!width || !height) return;
     this.autoFit = true;
-    const world = this.world();
-    const inset = this.insets();
-    const freeW = Math.max(120, width - inset.left - inset.right);
-    const freeH = Math.max(120, height - inset.top - inset.bottom);
-    const allK = Math.min(freeW / world.width, freeH / world.height) * 0.98;
-    this.allK = allK;
-    const box = { minX: 0, maxX: world.width, minY: 0, maxY: world.height };
-    // The whole graph is the 100% mark; opening and "reframe" use the same framing.
-    const k = allK;
-    this.fitK.set(k);
-    this.glideTo(
-      {
-        k,
-        x: inset.left + freeW / 2 - ((box.minX + box.maxX) / 2) * k,
-        y: inset.top + freeH / 2 - ((box.minY + box.maxY) / 2) * k,
-      },
-      animate,
-    );
+    if (this.embedded() && this.scopeIds()) {
+      this.fitScope(animate);
+      return;
+    }
+    this.fitWhole(animate);
   }
   zoomStep(factor: number): void {
     const { width, height } = this.size();
@@ -1056,6 +1095,68 @@ export class GraphComponent {
       if (this.lastPointer && !this.dragging()) this.pointerAt.set(this.lastPointer);
     });
   }
+  /** The whole map is the 100% mark of the page view. */
+  private fitWhole(animate: boolean): void {
+    const { width, height } = this.size();
+    const world = this.world();
+    const inset = this.insets();
+    const freeW = Math.max(120, width - inset.left - inset.right);
+    const freeH = Math.max(120, height - inset.top - inset.bottom);
+    const k = Math.min(freeW / world.width, freeH / world.height) * 0.98;
+    this.allK = k;
+    this.fitK.set(k);
+    this.glideTo(
+      {
+        k,
+        x: inset.left + freeW / 2 - (world.width / 2) * k,
+        y: inset.top + freeH / 2 - (world.height / 2) * k,
+      },
+      animate,
+    );
+  }
+  /** In a chapter, the 100% mark is the atlas it shows, not the whole archive. */
+  private fitScope(animate: boolean): void {
+    const positions = this.positions();
+    const nodes = this.visible().nodes;
+    if (!positions || !nodes.length) {
+      this.fitWhole(animate);
+      return;
+    }
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    let maxY = -Infinity;
+    for (const node of nodes) {
+      const point = positions.get(node.id);
+      if (!point) continue;
+      minX = Math.min(minX, point.x);
+      maxX = Math.max(maxX, point.x);
+      minY = Math.min(minY, point.y);
+      maxY = Math.max(maxY, point.y);
+    }
+    if (!Number.isFinite(minX) || !Number.isFinite(minY)) {
+      this.fitWhole(animate);
+      return;
+    }
+    const inset = this.insets();
+    const freeW = Math.max(120, this.size().width - inset.left - inset.right);
+    const freeH = Math.max(120, this.size().height - inset.top - inset.bottom);
+    const spanX = Math.max(1, maxX - minX);
+    const spanY = Math.max(1, maxY - minY);
+    const padX = Math.max(48, spanX * 0.08);
+    const padY = Math.max(48, spanY * 0.08);
+    const k = Math.min(freeW / (spanX + padX * 2), freeH / (spanY + padY * 2)) * 0.98;
+    this.allK = k;
+    this.fitK.set(k);
+    this.glideTo(
+      {
+        k,
+        x: inset.left + freeW / 2 - ((minX + maxX) / 2) * k,
+        y: inset.top + freeH / 2 - ((minY + maxY) / 2) * k,
+      },
+      animate,
+    );
+  }
   private minK(): number {
     return Math.min(this.allK * 0.9, this.fitK() * 0.5);
   }
@@ -1134,7 +1235,7 @@ export class GraphComponent {
     };
     // The detail panel opens on the right: aim at the middle of what stays free.
     const inset = this.insets();
-    const right = this.wide() ? 23 * 16 + 32 : inset.right;
+    const right = this.wide() && !this.embedded() ? 23 * 16 + 32 : inset.right;
     const freeW = Math.max(120, width - inset.left - right);
     const freeH = Math.max(120, height - inset.top - inset.bottom);
     const fitted = Math.min(
