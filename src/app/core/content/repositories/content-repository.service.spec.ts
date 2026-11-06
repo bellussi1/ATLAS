@@ -125,6 +125,30 @@ describe('ContentRepository generated assets', () => {
     window.history.pushState({}, '', '/');
   });
 
+  it('reuses a verified package across server renders and restores small hydration assets', async () => {
+    const read = vi.fn(async (key: string) => contentAssetFixture[key]);
+    const render = async () => {
+      TestBed.resetTestingModule();
+      TestBed.configureTestingModule({
+        providers: [
+          { provide: PLATFORM_ID, useValue: 'server' },
+          { provide: CONTENT_ASSET_READER, useValue: read },
+        ],
+      });
+      const graph = await firstValueFrom(TestBed.inject(ContentRepository).loadKnowledgeGraph());
+      return { graph, transfer: JSON.parse(TestBed.inject(TransferState).toJson()) };
+    };
+    const first = await render();
+    read.mockClear();
+    const second = await render();
+    expect(second.graph).toBe(first.graph);
+    expect(second.transfer).toEqual(first.transfer);
+    const collectionKeys = new Set(
+      contentManifestFixture.collections.map((entry) => `c/${entry.sha256}.json`),
+    );
+    expect(read.mock.calls.some(([key]) => collectionKeys.has(key))).toBe(false);
+  });
+
   it('rejects corrupt bytes without exposing a partial graph and retries the failed asset', async () => {
     const file = `c/${contentManifestFixture.collections[0].sha256}.json`;
     let fail = true;

@@ -38,8 +38,18 @@ const TRANSFER_LIMIT_CHARS = 16_000;
 /** Large immutable artifacts stay on R2 instead of repeating in every prerendered HTML. */
 export const isTransferable = (value: string): boolean => value.length <= TRANSFER_LIMIT_CHARS;
 
+interface ServerSnapshot {
+  state: ContentPackage;
+  assets: ReadonlyMap<string, string>;
+}
+
 @Injectable({ providedIn: 'root' })
 export class ContentRepository {
+  // Static builds reuse immutable, digest-verified packages between route renders.
+  private static readonly serverSnapshots = new WeakMap<
+    (key: string) => Promise<string>,
+    Map<string, Promise<ServerSnapshot>>
+  >();
   private readonly read = inject(CONTENT_ASSET_READER);
   private readonly transfer = inject(TransferState);
   private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
@@ -199,24 +209,44 @@ export class ContentRepository {
     if (this.state) return this.state.graph;
     this.pending ??= (async () => {
       const manifest = await this.getManifest();
-      const [atlases, search, adjacency, layouts] = await Promise.all([
-        Promise.all(manifest.collections.map((entry) => this.loadCollection(entry.id))),
-        this.resource(manifest.search, manifest.search.file),
-        this.resource(manifest.adjacency, manifest.adjacency.file),
-        this.resource(manifest.layouts, manifest.layouts.file),
-      ]);
-      const graph = knowledgeGraphSchema.parse({ ...manifest.graph, atlases });
-      this.state = {
-        graph,
-        search: searchIndexSchema.parse(search),
-        adjacency: adjacencySchema.parse(adjacency),
-        layouts: layoutsSchema.parse(layouts),
-      };
+      if (this.browser) {
+        this.state = await this.buildState(manifest);
+      } else {
+        let snapshots = ContentRepository.serverSnapshots.get(this.read);
+        if (!snapshots) {
+          snapshots = new Map();
+          ContentRepository.serverSnapshots.set(this.read, snapshots);
+        }
+        const hash = this.pinned!.manifest.sha256;
+        let snapshot = snapshots.get(hash);
+        if (!snapshot) {
+          snapshots.clear();
+          snapshot = (async () => {
+            const state = await this.buildState(manifest);
+            const assets = await Promise.all(
+              [...this.requests]
+                .filter(([key]) => key !== 'pointer.json')
+                .map(async ([key, request]) => [key, await request] as const),
+            );
+            return { state, assets: new Map(assets.filter(([, text]) => isTransferable(text))) };
+          })();
+          snapshots.set(hash, snapshot);
+          snapshot.catch(() => {
+            if (snapshots.get(hash) === snapshot) snapshots.delete(hash);
+          });
+        }
+        const cached = await snapshot;
+        this.state = cached.state;
+        for (const [key, text] of cached.assets) {
+          this.requests.set(key, Promise.resolve(text));
+          this.transfer.set(makeStateKey<string>(`content:${key}`), text);
+        }
+      }
       // Readings start with the graph but do not hold it: opening a reading awaits its request.
       void Promise.all(manifest.ideologies.map((entry) => this.loadIdeology(entry.id))).catch(
         () => undefined,
       );
-      return graph;
+      return this.state.graph;
     })().catch((error: unknown) => {
       this.pending = undefined;
       this.manifest = undefined;
@@ -225,5 +255,20 @@ export class ContentRepository {
       throw error;
     });
     return this.pending;
+  }
+  private async buildState(manifest: ContentManifest): Promise<ContentPackage> {
+    const [atlases, search, adjacency, layouts] = await Promise.all([
+      Promise.all(manifest.collections.map((entry) => this.loadCollection(entry.id))),
+      this.resource(manifest.search, manifest.search.file),
+      this.resource(manifest.adjacency, manifest.adjacency.file),
+      this.resource(manifest.layouts, manifest.layouts.file),
+    ]);
+    const graph = knowledgeGraphSchema.parse({ ...manifest.graph, atlases });
+    return {
+      graph,
+      search: searchIndexSchema.parse(search),
+      adjacency: adjacencySchema.parse(adjacency),
+      layouts: layoutsSchema.parse(layouts),
+    };
   }
 }
