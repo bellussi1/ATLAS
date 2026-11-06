@@ -50,6 +50,7 @@
     "preview": "node scripts/preview.mjs",
     "check:links": "node scripts/check-links.mjs",
     "infra:switch-cdn": "node scripts/infra/switch-content-domain.mjs",
+    "infra:content-worker": "npx --yes wrangler@latest deploy --config scripts/infra/content-delivery.wrangler.toml",
     "test:e2e": "playwright test",
     "prepare": "husky",
     "verify": "npm audit --omit=dev --audit-level=moderate && npm run lint && npm run typecheck && npm test && npm run test:ingestion && npm run test:content && npm run ingest:fetch-raw && npm run ingest:verify && npm run build && npm run check:links && npm run test:e2e"

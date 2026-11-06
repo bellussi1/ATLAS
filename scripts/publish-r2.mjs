@@ -127,10 +127,8 @@ async function main() {
   const existing = await readFile(pointerPath, 'utf8')
     .then(parsePointer)
     .catch(() => null);
-  const baseUrl = config?.publicUrl ?? existing?.baseUrl;
-  if (!baseUrl) throw new Error('URL pública ausente: defina R2_PUBLIC_URL.');
-  if (baseUrl !== DEFAULT_CONTENT_BASE_URL)
-    throw new Error(`R2_PUBLIC_URL difere da URL que o app lê: ${DEFAULT_CONTENT_BASE_URL}`);
+  const baseUrl = DEFAULT_CONTENT_BASE_URL;
+  if (!baseUrl) throw new Error('URL pública ausente: defina DEFAULT_CONTENT_BASE_URL.');
 
   const { manifest, manifestBody, manifestEntry, artifacts } = await loadArtifacts();
   const { media, skipped } = await loadMedia(manifest, existing ?? { media: [] });
