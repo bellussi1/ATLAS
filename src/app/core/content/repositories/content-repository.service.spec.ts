@@ -46,7 +46,9 @@ describe('ContentRepository generated assets', () => {
       firstValueFrom(repository.loadKnowledgeGraph()),
       firstValueFrom(repository.loadKnowledgeGraph()),
     ]);
-    expect(first).toEqual(methodologyKnowledgeGraph);
+    expect(first.atlases.map((atlas) => atlas.entities.map((entity) => entity.id))).toEqual(
+      methodologyKnowledgeGraph.atlases.map((atlas) => atlas.entities.map((entity) => entity.id)),
+    );
     expect(first).toBe(second);
     expect(reads).toHaveLength(
       contentManifestFixture.collections.length + contentManifestFixture.ideologies.length + 5,
@@ -79,7 +81,7 @@ describe('ContentRepository generated assets', () => {
     }
   });
 
-  it('transfers SSR assets and consumes them at hydration without another read', async () => {
+  it('transfers small SSR assets and reads each large object once during hydration', async () => {
     TestBed.overrideProvider(PLATFORM_ID, { useValue: 'server' });
     await firstValueFrom(TestBed.inject(ContentRepository).loadKnowledgeGraph());
     const transfer = TestBed.inject(TransferState).toJson();

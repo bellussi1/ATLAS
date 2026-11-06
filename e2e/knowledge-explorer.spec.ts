@@ -154,12 +154,10 @@ test('all search destinations have prerendered HTML with matching title, canonic
   }
 });
 
-test('catalogues and entries reflow at 320px and have no serious axe findings', async ({
-  page,
-}) => {
-  await page.setViewportSize({ width: 320, height: 740 });
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  for (const path of ['/conhecimento?q=xyzzy', '/pessoas', '/verbete/karl-marx', '/fontes']) {
+for (const path of ['/conhecimento?q=xyzzy', '/pessoas', '/verbete/karl-marx', '/fontes']) {
+  test(`${path} reflows at 320px and has no serious axe findings`, async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 740 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(path);
     await expect(page.locator('h1')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
@@ -169,16 +167,15 @@ test('catalogues and entries reflow at 320px and have no serious axe findings', 
     expect(
       result.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical'),
     ).toEqual([]);
-  }
-  await page.goto('/verbete/karl-marx');
-  await page.screenshot({ path: 'output/playwright/explorer-record-mobile.png', fullPage: true });
+  });
+}
+
+test('the catalogue skip link focuses its content on a phone', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 740 });
   await page.goto('/conhecimento');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');
   await expect(page.locator('#conteudo')).toBeFocused();
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto('/pessoas');
-  await page.screenshot({ path: 'output/playwright/explorer-people-desktop.png', fullPage: true });
 });
 
 test('missing and unavailable entries provide recovery without external return links', async ({
