@@ -1,6 +1,7 @@
+import { readFile } from 'node:fs/promises';
+
 import AxeBuilder from '@axe-core/playwright';
 
-import { DEFAULT_CONTENT_BASE_URL } from '../src/app/core/content/models/content-pointer';
 import { expect, test } from './content-fixture';
 
 test('a connection keeps the search origin so the results stay one step away', async ({ page }) => {
@@ -118,10 +119,13 @@ test('all search destinations have prerendered HTML with matching title, canonic
 }) => {
   // One request per search destination: the budget grows with the catalogue, not a fixed 30 s.
   test.setTimeout(300_000);
-  const base = DEFAULT_CONTENT_BASE_URL;
-  const pointer = await (await request.get(`${base}/pointer.json`)).json();
-  const manifest = await (await request.get(`${base}/c/${pointer.manifest.sha256}.json`)).json();
-  const index = (await (await request.get(`${base}/c/${manifest.search.sha256}.json`)).json()) as {
+  const cache = 'generated/content-cache';
+  const asset = async (hash: string) =>
+    JSON.parse(await readFile(`${cache}/c/${hash}.json`, 'utf8'));
+  const pointer = JSON.parse(await readFile(`${cache}/pointer.json`, 'utf8'));
+  const manifest = await asset(pointer.manifest.sha256);
+  const site = process.env['ATLAS_SITE_URL']?.replace(/\/+$/, '');
+  const index = (await asset(manifest.search.sha256)) as {
     path: string;
     title: string;
     fragment?: string;
@@ -144,7 +148,8 @@ test('all search destinations have prerendered HTML with matching title, canonic
     expect(html.match(/property="og:title" content="([^"]*)"/)?.[1], entry.path).toBe(
       title + ' — ATLAS',
     );
-    expect(html, entry.path).toContain('rel="canonical" href="' + entry.path + '"');
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
+    expect(canonical, entry.path).toBe(site ? site + entry.path : undefined);
     if (entry.fragment) expect(html).toContain('id="' + entry.fragment + '"');
   }
 });
