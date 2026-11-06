@@ -44,6 +44,35 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   expect(resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path))).toEqual(compiled);
 });
 
+test('the graph loads collections and layouts without the search and adjacency indexes', async ({
+  page,
+}) => {
+  const resources: string[] = [];
+  page.on('request', (request) => {
+    if (request.url().startsWith(base)) resources.push(new URL(request.url()).pathname);
+  });
+  await page.goto('/grafos');
+  await expect(page.locator('svg.canvas')).toBeVisible();
+  const manifest = await loadManifest();
+  const compiled = resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path));
+  expect(compiled).toContain(`/c/${manifest.layouts.sha256}.json`);
+  expect(compiled).not.toContain(`/c/${manifest.search.sha256}.json`);
+  expect(compiled).not.toContain(`/c/${manifest.adjacency.sha256}.json`);
+  expect(
+    compiled.every(
+      (path) =>
+        path === `/c/${manifest.layouts.sha256}.json` ||
+        manifest.collections.some((entry) => path === `/c/${entry.sha256}.json`),
+    ),
+  ).toBe(true);
+  // Small collections hydrate from the server TransferState; the large ones come from R2.
+  expect(
+    compiled.some((path) =>
+      manifest.collections.some((entry) => path === `/c/${entry.sha256}.json`),
+    ),
+  ).toBe(true);
+});
+
 test('SSR hydrates through the pinned release without duplicate HTTP', async ({ page }) => {
   const resources: string[] = [];
   page.on('request', (request) => {

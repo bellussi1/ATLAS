@@ -59,6 +59,9 @@ export class ContentRepository {
   private pinned?: ContentPointer;
   private manifest?: Promise<ContentManifest>;
   private pending?: Promise<KnowledgeGraph>;
+  private networkPending?: Promise<KnowledgeGraph>;
+  /** True when only the graph and layouts were loaded for /grafos. */
+  private networkOnly = false;
   private readonly readings = new Map<string, Promise<IdeologyBundle | null>>();
 
   get knowledgeGraph(): KnowledgeGraph {
@@ -101,6 +104,10 @@ export class ContentRepository {
 
   loadKnowledgeGraph(): Observable<KnowledgeGraph> {
     return defer(() => from(this.prepare()));
+  }
+  /** The full-screen graph only needs the collections and the compiled positions. */
+  loadNetworkGraph(): Observable<KnowledgeGraph> {
+    return defer(() => from(this.prepareNetwork()));
   }
   loadAtlas(): Observable<Atlas> {
     return defer(async () => {
@@ -206,11 +213,16 @@ export class ContentRepository {
   }
 
   private async prepare(): Promise<KnowledgeGraph> {
-    if (this.state) return this.state.graph;
+    if (this.state && !this.networkOnly) return this.state.graph;
+    if (this.networkPending) await this.networkPending.catch(() => undefined);
+    if (this.state && !this.networkOnly) return this.state.graph;
+    // A network-only package is upgraded in place when a route needs search or adjacency.
+    if (this.state && this.networkOnly) this.state = null;
     this.pending ??= (async () => {
       const manifest = await this.getManifest();
       if (this.browser) {
         this.state = await this.buildState(manifest);
+        this.networkOnly = false;
       } else {
         let snapshots = ContentRepository.serverSnapshots.get(this.read);
         if (!snapshots) {
@@ -237,6 +249,7 @@ export class ContentRepository {
         }
         const cached = await snapshot;
         this.state = cached.state;
+        this.networkOnly = false;
         for (const [key, text] of cached.assets) {
           this.requests.set(key, Promise.resolve(text));
           this.transfer.set(makeStateKey<string>(`content:${key}`), text);
@@ -256,6 +269,23 @@ export class ContentRepository {
     });
     return this.pending;
   }
+  private async prepareNetwork(): Promise<KnowledgeGraph> {
+    if (this.state) return this.state.graph;
+    if (this.pending) return this.pending;
+    this.networkPending ??= (async () => {
+      const manifest = await this.getManifest();
+      this.state = await this.buildNetworkState(manifest);
+      this.networkOnly = true;
+      return this.state.graph;
+    })().catch((error: unknown) => {
+      this.networkPending = undefined;
+      this.manifest = undefined;
+      this.pointer = undefined;
+      this.requests.delete('pointer.json');
+      throw error;
+    });
+    return this.networkPending;
+  }
   private async buildState(manifest: ContentManifest): Promise<ContentPackage> {
     const [atlases, search, adjacency, layouts] = await Promise.all([
       Promise.all(manifest.collections.map((entry) => this.resource(entry, entry.file))),
@@ -270,6 +300,21 @@ export class ContentRepository {
       graph,
       search: searchIndexSchema.parse(search),
       adjacency: adjacencySchema.parse(adjacency),
+      layouts: layoutsSchema.parse(layouts),
+    };
+  }
+  private async buildNetworkState(manifest: ContentManifest): Promise<ContentPackage> {
+    const [atlases, layouts] = await Promise.all([
+      Promise.all(manifest.collections.map((entry) => this.resource(entry, entry.file))),
+      this.resource(manifest.layouts, manifest.layouts.file),
+    ]);
+    const graph = knowledgeGraphSchema.parse({ ...manifest.graph, atlases });
+    if (graph.atlases.some((atlas, index) => atlas.id !== manifest.collections[index].id))
+      throw new Error('Identidade da coleção incompatível com o manifesto.');
+    return {
+      graph,
+      search: [],
+      adjacency: {},
       layouts: layoutsSchema.parse(layouts),
     };
   }
