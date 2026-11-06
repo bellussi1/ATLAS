@@ -30,6 +30,8 @@ export class IdeologyReadingComponent {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private readonly selected = signal('');
+  /** A chapter the reader just picked: the scroll measure must not undo it before the router scrolls. */
+  private pending: { anchor: string; scrollY: number } | null = null;
   readonly sections = input.required<readonly IdeologyReadingSection[]>();
   readonly layout = input<'narrative' | 'atlas'>('narrative');
   readonly activeOffset = input(150);
@@ -56,8 +58,10 @@ export class IdeologyReadingComponent {
     });
     // Back and forward between chapter jumps change the fragment; the index follows it.
     this.route.fragment.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((fragment) => {
-      if (fragment && this.sections().some((s) => s.anchor === fragment))
+      if (fragment && this.sections().some((s) => s.anchor === fragment)) {
+        this.pending = null;
         this.selected.set(fragment);
+      }
     });
     afterNextRender(() => {
       const win = this.document.defaultView;
@@ -87,6 +91,13 @@ export class IdeologyReadingComponent {
         let active = sections[0].id;
         for (const section of sections) {
           if (section.getBoundingClientRect().top < this.activeOffset()) active = section.id;
+        }
+        const pending = this.pending;
+        if (pending) {
+          if (active === pending.anchor) this.pending = null;
+          // Still at the old position: the router has not scrolled to the picked chapter yet.
+          else if (Math.abs(win.scrollY - pending.scrollY) < 4) return;
+          else this.pending = null;
         }
         this.selected.set(active);
       };
@@ -124,6 +135,7 @@ export class IdeologyReadingComponent {
     if (!section) return;
     if (anchor !== this.active()) this.previous.set(this.active());
     this.selected.set(anchor);
+    this.pending = { anchor, scrollY: this.document.defaultView?.scrollY ?? 0 };
     void this.router.navigate([], {
       relativeTo: this.route,
       fragment: anchor,

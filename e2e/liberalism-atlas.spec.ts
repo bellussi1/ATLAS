@@ -36,7 +36,11 @@ test('explores entities, graph, timeline and returns to prior context', async ({
   await page.locator('#atlas-section-tempo').scrollIntoViewIfNeeded();
   await page.locator('.axis-marker').filter({ hasText: 'Revolução Gloriosa' }).click();
   await expect(page.locator('.axis-selected strong')).toContainText('Revolução Gloriosa');
+  // The panel loads on demand; Escape only reaches it once the dialog exists.
+  const contextDialog = page.getByRole('dialog', { name: 'Revolução Gloriosa' });
+  await expect(contextDialog).toBeVisible();
   await page.keyboard.press('Escape');
+  await expect(contextDialog).toHaveCount(0);
   await page.getByRole('button', { name: 'Próximo →' }).click();
   await expect(page.getByRole('button', { name: '← Anterior' })).toHaveAttribute(
     'aria-disabled',
