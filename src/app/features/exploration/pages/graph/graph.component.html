@@ -178,7 +178,6 @@
       [class.stage--dragging]="dragging()"
       [class.stage--animated]="!reducedMotion()"
       [class.stage--moving]="animating()"
-      [style.--sway]="sway()"
       (pointermove)="stagePointer($event)"
       (pointerleave)="stageLeave()"
     >
@@ -212,8 +211,32 @@
               </marker>
             }
           }
+          @for (region of regionViews(); track region.id) {
+            <radialGradient [attr.id]="'region-' + region.index">
+              <stop
+                offset="0%"
+                [attr.stop-color]="'hsl(' + region.hue + ' 60% 52%)'"
+                stop-opacity="0.2"
+              />
+              <stop
+                offset="100%"
+                [attr.stop-color]="'hsl(' + region.hue + ' 60% 52%)'"
+                stop-opacity="0"
+              />
+            </radialGradient>
+          }
         </defs>
         <g class="world" [attr.transform]="transform()">
+          <g class="regions" aria-hidden="true">
+            @for (region of regionViews(); track region.id) {
+              <circle
+                [attr.cx]="region.x"
+                [attr.cy]="region.y"
+                [attr.r]="region.radius * 1.35"
+                [attr.fill]="'url(#region-' + region.index + ')'"
+              />
+            }
+          </g>
           <g class="edges">
             @for (item of drawnEdges(); track item.edge.id) {
               <line
@@ -233,6 +256,7 @@
                     : 'var(--color-border-strong)'
                 "
                 [style.--delay.ms]="item.delay"
+                [style.--fade]="item.fade"
                 [class.is-dimmed]="edgeDimmed(item.edge)"
                 [class.is-active]="edgeLit(item.edge)"
               />
@@ -296,31 +320,30 @@
                     [style.fill]="'var(' + item.kind.color + ')'"
                   />
                 }
-                <g
-                  class="node__drift-x"
-                  [style.--ax.px]="item.drift.ax"
-                  [style.--dx.s]="item.drift.durationX"
-                  [style.--wait.s]="item.drift.delay"
-                >
-                  <g
-                    class="node__drift-y"
-                    [style.--ay.px]="item.drift.ay"
-                    [style.--dy.s]="item.drift.durationY"
-                    [style.--wait.s]="item.drift.delay"
-                  >
-                    <path
-                      class="node__shape"
-                      fill-rule="evenodd"
-                      [attr.d]="item.path"
-                      [style.fill]="'var(' + item.kind.color + ')'"
-                    />
-                  </g>
-                </g>
+                <path
+                  class="node__shape"
+                  fill-rule="evenodd"
+                  [attr.d]="item.path"
+                  [style.fill]="'var(' + item.kind.color + ')'"
+                />
               </g>
             }
           </g>
         </g>
         <g class="labels" aria-hidden="true">
+          @for (region of regionViews(); track region.id) {
+            <text
+              class="region-label"
+              [style.fill]="'hsl(' + region.hue + ' 45% 30%)'"
+              [attr.x]="region.sx"
+              [attr.y]="region.sy"
+              [attr.opacity]="region.opacity"
+              text-anchor="middle"
+              dominant-baseline="central"
+            >
+              {{ region.title }}
+            </text>
+          }
           @for (item of edgeLabels(); track item.id) {
             <text
               class="label label--edge"
@@ -333,7 +356,7 @@
               {{ item.text }}
             </text>
           }
-          @for (label of labels(); track label.id) {
+          @for (label of shownLabels(); track label.id) {
             <text
               class="label"
               [class.is-neighbour]="label.neighbour"

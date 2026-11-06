@@ -179,15 +179,15 @@ test('traces a path between two entries from the detail panel', async ({ page })
   await expect(detail.getByRole('list', { name: /Trajeto de/ })).toHaveCount(0);
 });
 
-test('keeps nodes still when the reader prefers reduced motion', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'reduce' });
+test('nodes stay still and the map is drawn as named regions', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/rede');
   await expect(page.locator('[data-node]').first()).toBeVisible();
-  const animation = await page
-    .locator('.node__drift-x')
-    .first()
-    .evaluate((el) => getComputedStyle(el).animationName);
-  expect(animation).toBe('none');
+  await expect(page.locator('[class*="drift"]')).toHaveCount(0);
+  await expect(page.locator('.region-label').first()).toBeVisible();
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.reload();
+  await expect(page.locator('[data-node]').first()).toBeVisible();
 });
 
 test('the overview map stays inside the window', async ({ page }) => {
@@ -232,7 +232,16 @@ test('mouse: the wheel zooms, dragging pans and a double click on the background
   await page.mouse.up();
   await expect(world).not.toHaveAttribute('transform', before ?? '');
   const level = await zoom.textContent();
-  await page.mouse.dblclick(900, 720);
+  const background = await page.locator('svg.canvas').evaluate((canvas) => {
+    const rect = canvas.getBoundingClientRect();
+    for (let y = rect.top + 40; y < rect.bottom - 40; y += 24) {
+      for (let x = rect.left + 40; x < rect.right - 40; x += 24) {
+        if (document.elementFromPoint(x, y) === canvas) return { x, y };
+      }
+    }
+    throw new Error('No visible canvas background');
+  });
+  await page.mouse.dblclick(background.x, background.y);
   await expect(zoom).not.toHaveText(level ?? '');
 });
 

@@ -1,4 +1,4 @@
-﻿import {
+import {
   afterNextRender,
   ChangeDetectionStrategy,
   Component,
@@ -21,9 +21,12 @@ import {
   networkKinds,
   type NetworkNode,
   type NetworkPoint,
+  type NetworkRegion,
   nodeRadius,
   nodeScaleFor,
+  OTHER_REGION,
   positionClaims,
+  regionOf,
   relationFamilies,
   relationFamilyDefinition,
   type RelationFamilyId,
@@ -35,12 +38,20 @@ import {
   LABEL_HEIGHT,
   type LabelCandidate,
   labelWidth,
+  type PlacedLabel,
   placeLabels,
 } from '@core/content/queries/network-labels';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 
 import { shapePath } from './graph-shapes';
+
+interface LabelView extends PlacedLabel {
+  wx: number;
+  wy: number;
+  neighbour: boolean;
+  delay: number;
+}
 
 interface View {
   x: number;
@@ -73,6 +84,12 @@ export class GraphComponent {
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
   private readonly network = buildKnowledgeNetwork(this.repository.knowledgeGraph);
   private readonly nodeIndex = new Map(this.network.nodes.map((node) => [node.id, node]));
+  private readonly regionSizes = (() => {
+    const sizes = new Map<string, number>();
+    for (const node of this.network.nodes)
+      sizes.set(node.collections[0], (sizes.get(node.collections[0]) ?? 0) + 1);
+    return sizes;
+  })();
   private readonly edgeIndex = new Map(this.network.edges.map((edge) => [edge.id, edge]));
 
   readonly kinds = networkKinds;
@@ -81,6 +98,7 @@ export class GraphComponent {
   readonly shape = shapePath;
   readonly radius = nodeRadius;
   readonly world = signal({ width: 1600, height: 1000 });
+  private readonly regions = signal<readonly NetworkRegion[]>([]);
   private readonly fitK = signal(1);
 
   readonly kindsOn = signal<ReadonlySet<NetworkKindId>>(new Set(networkKinds.map((k) => k.id)));
@@ -103,6 +121,19 @@ export class GraphComponent {
   readonly positions = signal<ReadonlyMap<string, NetworkPoint> | null>(null);
   readonly reducedMotion = signal(false);
   readonly dragging = signal(false);
+  private readonly wheeling = signal(false);
+  private wheelTimer: ReturnType<typeof setTimeout> | undefined;
+  /** The view is moving (drag, pinch, wheel or glide): heavy parts of the drawing wait. */
+  private readonly busy = computed(() => this.dragging() || this.animating() || this.wheeling());
+  private lastLabels: { k: number; items: readonly LabelView[] } = {
+    k: 0,
+    items: [],
+  };
+  /** Names to draw: those placed for this zoom, never stretched across another one. */
+  readonly shownLabels = computed(() => {
+    const items = this.labels();
+    return this.busy() && this.lastLabels.k !== this.zoomK() ? [] : items;
+  });
   /** True while the view glides to a new place; labels wait until it settles. */
   readonly animating = signal(false);
   /** Edge under the pointer or focused in the detail list. */
@@ -223,23 +254,47 @@ export class GraphComponent {
           x: point.x,
           y: point.y,
           path: shapePath(kind.shape, r),
-          drift: driftOf(node.id),
         },
       ];
     });
   });
   readonly zoomK = computed(() => this.view().k);
-  /** How much the nodes float: nothing zoomed out, where sub-pixel motion only shimmers. */
-  readonly sway = computed(() => {
-    const zoom = this.zoomK() / this.fitK();
-    return Math.round(Math.min(1, Math.max(0, (zoom - 1.1) / 1.4)) * 20) / 20;
+  /** Soft areas behind each group, with its name; the name fades as the reader comes close. */
+  readonly regionViews = computed(() => {
+    const regions = this.regions();
+    if (!regions.length) return [];
+    const present = new Set(this.visible().nodes.map((node) => regionOf(node, this.regionSizes)));
+    const { x: vx, y: vy, k } = this.view();
+    const zoom = k / this.fitK();
+    const titles = new Map(
+      this.collections.map((c) => [c.id, c.title.split(':')[0].trim()] as const),
+    );
+    return regions
+      .filter((region) => present.has(region.id))
+      .map((region, index) => ({
+        id: region.id,
+        index,
+        x: region.x,
+        y: region.y,
+        radius: region.radius,
+        hue: (index * 67 + 8) % 360,
+        title: region.id === OTHER_REGION ? 'Outros recortes' : (titles.get(region.id) ?? ''),
+        sx: region.x * k + vx,
+        sy: region.y * k + vy,
+        opacity: Math.round(Math.min(1, Math.max(0, 1.9 - zoom)) * 95) / 100,
+      }));
   });
   /** Close enough to read what each link says; farther away the lines alone are shown. */
   readonly near = computed(() => this.zoomK() / this.fitK() >= EDGE_LABEL_ZOOM);
+  /** Zoom in quarter-octave steps: what depends on it is redrawn per step, not per frame. */
+  private readonly zoomStep4 = computed(() => Math.round(Math.log2(this.zoomK()) * 4));
+  private readonly steppedK = computed(() => 2 ** (this.zoomStep4() / 4));
   readonly drawnEdges = computed(() => {
     const positions = this.positions();
     if (!positions) return [];
-    const scale = nodeScaleFor(this.zoomK());
+    const scale = this.nodeScale();
+    const { width, height } = this.world();
+    const spacing = Math.sqrt((width * height) / Math.max(1, this.total));
     return this.visible().edges.flatMap((edge: NetworkEdge) => {
       const from = positions.get(edge.source);
       const to = positions.get(edge.target);
@@ -249,12 +304,15 @@ export class GraphComponent {
       const dx = to.x - from.x;
       const dy = to.y - from.y;
       const length = Math.hypot(dx, dy) || 1;
-      const pad = nodeRadius(target.degree) * scale + 3 / this.zoomK();
+      const pad = nodeRadius(target.degree) * scale + 3 / this.steppedK();
+      // Long links between far regions fade, so the map reads as areas, not a tangle.
+      const fade = Math.max(0.08, 1 - length / (4 * spacing));
       return [
         {
           edge,
           family,
           delay: (hash(edge.id) % 10) * 28,
+          fade,
           x1: from.x,
           y1: from.y,
           x2: to.x - (dx / length) * pad,
@@ -268,13 +326,15 @@ export class GraphComponent {
     return `translate(${x} ${y}) scale(${k})`;
   });
   /** Shapes keep a readable size on screen: larger when zoomed out, smaller when zoomed in. */
-  readonly nodeScale = computed(() => Math.round(nodeScaleFor(this.zoomK()) * 100) / 100);
+  readonly nodeScale = computed(() => Math.round(nodeScaleFor(this.steppedK()) * 20) / 20);
   /**
    * Labels are placed in screen space so none covers another label or a node shape. Zoomed out
    * only the best connected nodes are named; each zoom step names more. While a node is lit,
    * only that node and its neighbours keep their names.
    */
   readonly labels = computed(() => {
+    // While the view moves, names wait: placing hundreds of them every frame is what stutters.
+    if (this.busy()) return this.lastLabels.items;
     const nodes = this.drawnNodes();
     if (!nodes.length) return [];
     const k = this.zoomK();
@@ -325,7 +385,7 @@ export class GraphComponent {
     };
     const limit = lit ? Infinity : Math.round(16 + 30 * zoom);
     const neighbours = this.neighbours();
-    return placeLabels(candidates, obstacles, limit, bounds).flatMap((label, order) => {
+    const placed = placeLabels(candidates, obstacles, limit, bounds).flatMap((label, order) => {
       const item = byId.get(label.id);
       return item
         ? [
@@ -339,9 +399,12 @@ export class GraphComponent {
           ]
         : [];
     });
+    this.lastLabels = { k: this.zoomK(), items: placed };
+    return placed;
   });
   /** Short phrases on the links of the lit node, placed at the middle of each link. */
   readonly edgeLabels = computed(() => {
+    if (this.busy()) return [];
     const active = this.activeId();
     const positions = this.positions();
     if (!active || !positions) return [];
@@ -488,6 +551,7 @@ export class GraphComponent {
       const timer = setTimeout(() => {
         const layout = layoutNetwork(this.network.nodes, this.network.edges);
         this.world.set({ width: layout.width, height: layout.height });
+        this.regions.set(layout.regions);
         this.positions.set(layout.positions);
         if (this.size().width && !fitted) {
           fitted = true;
@@ -639,7 +703,8 @@ export class GraphComponent {
   /** Invisible click target around an icon: never under 16 px on screen, whatever the zoom. */
   hitRadius(radius: number): number {
     const scale = this.nodeScale();
-    return Math.max(radius * scale + 6 / this.zoomK(), 16 / this.zoomK());
+    const k = this.steppedK();
+    return Math.max(radius * scale + 6 / k, 16 / k);
   }
   tabIndexFor(id: string): number {
     const roving = this.focusId() ?? this.drawnNodes()[0]?.node.id;
@@ -774,21 +839,7 @@ export class GraphComponent {
     const freeH = Math.max(120, height - inset.top - inset.bottom);
     const allK = Math.min(freeW / world.width, freeH / world.height) * 0.98;
     this.allK = allK;
-    // The linked core fills the view; the ring of unlinked entries stays one zoom-out away.
-    const positions = this.positions();
-    const core = this.drawnNodes().filter((item) => item.node.degree > 0);
-    const box =
-      core.length >= 3 && positions
-        ? core.reduce(
-            (acc, item) => ({
-              minX: Math.min(acc.minX, item.x - item.r * 2),
-              maxX: Math.max(acc.maxX, item.x + item.r * 2),
-              minY: Math.min(acc.minY, item.y - item.r * 2),
-              maxY: Math.max(acc.maxY, item.y + item.r * 2),
-            }),
-            { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity },
-          )
-        : { minX: 0, maxX: world.width, minY: 0, maxY: world.height };
+    const box = { minX: 0, maxX: world.width, minY: 0, maxY: world.height };
     const bw = Math.max(1, box.maxX - box.minX + 160);
     const bh = Math.max(1, box.maxY - box.minY + 120);
     const k = Math.max(allK, Math.min(freeW / bw, freeH / bh) * 0.98);
@@ -834,6 +885,9 @@ export class GraphComponent {
     event.preventDefault();
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (!rect) return;
+    this.wheeling.set(true);
+    clearTimeout(this.wheelTimer);
+    this.wheelTimer = setTimeout(() => this.wheeling.set(false), 160);
     this.zoomBy(Math.exp(-event.deltaY * 0.0015), {
       x: event.clientX - rect.left,
       y: event.clientY - rect.top,
@@ -1105,25 +1159,6 @@ function hash(text: string): number {
   let value = 2166136261;
   for (let i = 0; i < text.length; i++) value = Math.imul(value ^ text.charCodeAt(i), 16777619);
   return value >>> 0;
-}
-
-/** Small, stable wander of a node: a few pixels, each node on its own rhythm. */
-function driftOf(id: string): {
-  ax: number;
-  ay: number;
-  durationX: number;
-  durationY: number;
-  delay: number;
-} {
-  const h = hash(id);
-  const unit = (shift: number) => ((h >>> shift) & 255) / 255;
-  return {
-    ax: Math.round((2.6 + unit(0) * 2.4) * 10) / 10,
-    ay: Math.round((2.6 + unit(8) * 2.4) * 10) / 10,
-    durationX: Math.round(13 + unit(16) * 8),
-    durationY: Math.round(17 + unit(24) * 9),
-    delay: -Math.round(unit(12) * 30),
-  };
 }
 
 /** Long titles are cut in the crowded view; the full name shows when the node is lit. */
