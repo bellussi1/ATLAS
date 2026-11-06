@@ -22,10 +22,19 @@ const files = await htmlFiles(root);
 if (!files.length)
   throw new Error('Nenhum HTML encontrado; execute npm run build antes da verificação.');
 const quiet = new VirtualConsole();
+const documents = new Map();
 for (const file of files) {
   const dom = new JSDOM(await readFile(file, 'utf8'), { virtualConsole: quiet });
-  for (const link of dom.window.document.querySelectorAll('a[href]')) {
-    const href = link.getAttribute('href');
+  documents.set(file, {
+    links: [...dom.window.document.querySelectorAll('a[href]')].map((link) =>
+      link.getAttribute('href'),
+    ),
+    ids: new Set([...dom.window.document.querySelectorAll('[id]')].map((element) => element.id)),
+  });
+  dom.window.close();
+}
+for (const [file, document] of documents) {
+  for (const href of document.links) {
     if (!href) continue;
     let url;
     try {
@@ -41,21 +50,19 @@ for (const file of files) {
       continue;
     }
     if (url.origin !== 'https://atlas.invalid') continue;
-    let target = resolve(root, '.' + decodeURIComponent(url.pathname));
+    const target = resolve(root, '.' + decodeURIComponent(url.pathname));
     if (target !== root && !target.startsWith(root + sep)) {
       errors.push(`${file}: ${href}`);
       continue;
     }
-    try {
-      if ((await stat(target)).isDirectory()) target = join(target, 'index.html');
-      const content = await readFile(target, 'utf8');
-      if (
-        url.hash &&
-        !new JSDOM(content, { virtualConsole: quiet }).window.document.getElementById(
-          decodeURIComponent(url.hash.slice(1)),
-        )
-      )
+    const destination = documents.get(target) ?? documents.get(join(target, 'index.html'));
+    if (destination) {
+      if (url.hash && !destination.ids.has(decodeURIComponent(url.hash.slice(1))))
         errors.push(`${file}: âncora ${href}`);
+      continue;
+    }
+    try {
+      if (!(await stat(target)).isFile()) throw new Error('Destino sem documento HTML');
     } catch {
       errors.push(`${file}: destino ${href}`);
     }
