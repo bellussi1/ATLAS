@@ -167,6 +167,12 @@ export function checkRelation(relation, { entity, article, normalizedSource, ind
   const target = relation.target?.trim();
   if (!target) return { problem: 'alvo-ausente' };
   const quote = folded(relation.quote);
+  // "Membro fundador" names a founding member, not the person who founded the organisation.
+  if (
+    relation.nature === 'fundou' &&
+    /membro\s+fundador|membro\s+fundadora|founding member|membro-fundador/i.test(quote)
+  )
+    return { problem: 'membro-fundador-nao-e-fundador' };
   const resolved = resolveTarget(target, index);
   // Sem link e em minúscula: é descrição de um grupo ("os críticos"), não um nó do grafo.
   if (!resolved && target[0] === target[0].toLowerCase() && target[0] !== target[0].toUpperCase())

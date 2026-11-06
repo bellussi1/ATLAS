@@ -595,7 +595,7 @@ test('conteúdo rico vira hover, seções, apelidos e afirmações com citação
   graphOf(report);
 });
 
-test('rótulo do Wikidata (P737, P1142) entra como associação, nunca como influência', () => {
+test('rótulo do Wikidata: P737 entra como associação; P1142 de pessoa fica fora', () => {
   const statement = (property) => ({
     qid: 'Q1',
     property,
@@ -611,7 +611,7 @@ test('rótulo do Wikidata (P737, P1142) entra como associação, nunca como infl
     ],
   });
   const relations = report.atlases[0].relations;
-  assert.equal(relations.length, 2);
+  assert.equal(relations.length, 1, 'P1142 de pessoa não vira aresta; P737 continua como rótulo');
   for (const relation of relations) {
     assert.equal(relation.type, 'associated_with');
     assert.equal(relation.provenance.source, 'wikidata');
