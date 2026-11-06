@@ -124,6 +124,31 @@ da exclusão dos deployments antigos e da atualização das métricas.
 
 Referência verificada em 06/11/2026 — [retenção de deployments](https://vercel.com/docs/deployment-retention).
 
+## Capturas cruas no R2
+
+As respostas JSON usadas para replay ficam em `raw/<sha256>.bin`. Em 06/11/2026 o bucket tinha
+**16.058 objetos e 9,6 GB** (a maior parte em JSON sem compressão), perto do limite gratuito de
+10 GB do R2. Três medidas mantêm isso sob controle:
+
+1. **gzip**: `publish-raw` grava novos objetos com `Content-Encoding: gzip`; as capturas antigas
+   podem ser recompactadas com `npm run ingest:compress-raw -- --apply`. A chave continua sendo o
+   SHA-256 do JSON descomprimido; `fetch-raw` e o Worker continuam recebendo o corpo original.
+2. **ciclo de vida de 90 dias**: a regra está em `scripts/infra/raw-lifecycle.json` e vale só para
+   o prefixo `raw/`. Com um token de **Workers R2 Storage:Write**:
+
+```bash
+npx wrangler r2 bucket lifecycle set atlas-public --file scripts/infra/raw-lifecycle.json
+```
+
+O comando da API S3 (`npm run infra:raw-lifecycle -- --days 90 --apply`) só funciona se a chave
+S3 também tiver permissão de lifecycle; hoje ela responde 403. A regra não apaga imediatamente
+objetos recém-enviados: eles expiram 90 dias depois do upload. 3. **manter as N capturas mais recentes**: `npm run infra:raw-prune -- --keep 20` mostra o plano;
+`--apply` apaga os objetos `raw/` que não são referenciados pelos manifests das N capturas mais
+novas. Isso reduz o espaço agora, mas capturas antigas deixam de ser reexecutáveis por
+`ingest:fetch-raw`; use apenas se a retenção menor for uma decisão editorial.
+
+O ciclo de vida não toca `pointer.json`, `c/` nem `m/`. O `atlas-drafts` nunca entra nesse bucket.
+
 ## Capturas do CI
 
 O Worker `atlas-raw-delivery` entrega somente GET e HEAD de `raw/<sha256>.bin`,

@@ -52,7 +52,11 @@ for (const [sha256, response] of responses) {
   }
   if (sha256Hex(body) !== sha256) throw new Error(`Falha de integridade: ${response.url}`);
   await withRetry(key, () =>
-    putImmutable(config, { key, body, contentType: 'application/json; charset=utf-8' }, { dryRun }),
+    putImmutable(
+      config,
+      { key, body, contentType: 'application/json; charset=utf-8', compress: true },
+      { dryRun },
+    ),
   );
   // Small pause keeps the whole capture from arriving as one burst at the bucket.
   await wait(25);

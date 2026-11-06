@@ -1,0 +1,12 @@
+{
+  "rules": [
+    {
+      "id": "expire-raw-captures",
+      "enabled": true,
+      "conditions": { "prefix": "raw/" },
+      "deleteObjectsTransition": {
+        "condition": { "type": "Age", "maxAge": 7776000 }
+      }
+    }
+  ]
+}
