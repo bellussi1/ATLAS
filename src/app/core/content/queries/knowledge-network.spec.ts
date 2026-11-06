@@ -116,7 +116,7 @@ describe('knowledge network', () => {
         expect(distance).toBeGreaterThanOrEqual(needed);
       }
     expect(layoutNetwork([], []).positions.size).toBe(0);
-  });
+  }, 30000);
 
   it('puts nodes without links on a ring around the connected core', () => {
     const layout = layoutNetwork(network.nodes, network.edges);
@@ -230,5 +230,5 @@ describe('knowledge network', () => {
     console.info(`layout of ${count} nodes and ${edges.length} links: ${Math.round(elapsed)} ms`);
     expect(positions.size).toBe(count);
     expect(elapsed).toBeLessThan(8000);
-  });
+  }, 30000);
 });

@@ -949,18 +949,18 @@ kbd {
 }
 @keyframes sway-x {
   from {
-    transform: translateX(calc(var(--ax, 2px) * -1));
+    transform: translateX(calc(var(--ax, 2px) * var(--sway, 1) * -1));
   }
   to {
-    transform: translateX(var(--ax, 2px));
+    transform: translateX(calc(var(--ax, 2px) * var(--sway, 1)));
   }
 }
 @keyframes sway-y {
   from {
-    transform: translateY(calc(var(--ay, 2px) * -1));
+    transform: translateY(calc(var(--ay, 2px) * var(--sway, 1) * -1));
   }
   to {
-    transform: translateY(var(--ay, 2px));
+    transform: translateY(calc(var(--ay, 2px) * var(--sway, 1)));
   }
 }
 @keyframes pulse {
