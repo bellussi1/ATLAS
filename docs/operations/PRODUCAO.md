@@ -117,6 +117,34 @@ a possibilidade de rollback para um release mais antigo, então a decisão é ed
 06/11/2026 a primeira execução removeu **92 objetos / 19,9 MB** e deixou **30 objetos em `c/` e 3
 em `m/`**.
 
+## Cloudflare Pages (host estático)
+
+O build em `dist/atlas/browser` já contém `_headers`, `_redirects` e `404.html`, que são o
+contrato nativo do Pages: cache dos assets, cabeçalhos de segurança, redirecionamentos e a
+página de rota desconhecida. O conteúdo continua vindo do R2; o Pages serve o app e as mídias
+locais.
+
+O plano gratuito do Pages não cobra requisições nem banda e aceita até 20.000 arquivos e 25 MiB
+por arquivo. Em 06/11/2026 o build tinha **1.242 arquivos, 133,7 MB** e o maior arquivo era
+`marxismo/index.html` com **0,86 MB**, dentro dos limites.
+
+```bash
+npm run build
+npm run infra:pages:check   # valida limites e mostra o comando
+npm run infra:pages         # publica em atlas-bellussi.pages.dev
+```
+
+O primeiro deploy exige um projeto e credencial Cloudflare (Workers/Pages Edit) ou
+`npx wrangler login`:
+
+```bash
+npx wrangler pages project create atlas-bellussi --production-branch master
+```
+
+Para usar domínio próprio, adicione o domínio ao projeto no painel e atualize `ATLAS_SITE_URL`;
+o `ATLAS_CDN_URL` continua apontando para o Worker de conteúdo. Depois de validar o Pages,
+desative o deploy da Vercel para não manter duas origens.
+
 ## Armazenamento dos deployments
 
 Os HTMLs estáticos incluíam cópias dos objetos do grafo via TransferState.
