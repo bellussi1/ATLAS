@@ -37,6 +37,7 @@
     "ingest:verify": "node scripts/verify-ingestion.mjs",
     "ingest:fetch-raw": "node scripts/ingestion/fetch-raw.mjs",
     "ingest:publish-raw": "node scripts/ingestion/publish-raw.mjs",
+    "ingest:compress-raw": "node scripts/ingestion/compress-raw.mjs",
     "test:ingestion": "node --test scripts/ingestion/wikimedia/*.spec.mjs scripts/ingestion/wiki-extract/*.spec.mjs",
     "wiki:extract": "node scripts/wiki-extract.mjs",
     "watch": "ng build --watch --configuration development",
@@ -51,6 +52,8 @@
     "check:links": "node scripts/check-links.mjs",
     "infra:switch-cdn": "node scripts/infra/switch-content-domain.mjs",
     "infra:content-worker": "npx --yes wrangler@latest deploy --config scripts/infra/content-delivery.wrangler.toml",
+    "infra:raw-lifecycle": "node scripts/infra/raw-lifecycle.mjs",
+    "infra:raw-prune": "node scripts/infra/raw-prune.mjs",
     "test:e2e": "playwright test",
     "prepare": "husky",
     "verify": "npm audit --omit=dev --audit-level=moderate && npm run lint && npm run typecheck && npm test && npm run test:ingestion && npm run test:content && npm run ingest:fetch-raw && npm run ingest:verify && npm run build && npm run check:links && npm run test:e2e"
