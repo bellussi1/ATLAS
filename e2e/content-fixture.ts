@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-import { expect, test as base, type BrowserContext, type Page } from '@playwright/test';
+import { type BrowserContext, expect, type Page, test as base } from '@playwright/test';
 
 import { DEFAULT_CONTENT_BASE_URL } from '../src/app/core/content/models/content-pointer';
 
