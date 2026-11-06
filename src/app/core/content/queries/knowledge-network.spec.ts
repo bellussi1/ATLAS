@@ -51,10 +51,9 @@ describe('knowledge network', () => {
     expect(new Set(networkKinds.map((k) => k.color)).size).toBe(8);
   });
 
-  it('treats curated topic-like events as concepts without reclassifying dated events', () => {
-    expect(networkKindOfEntity({ id: 'wiki-topic-aborto', kind: 'event' })).toBe('concept');
-    expect(networkKindOfEntity({ id: 'wiki-topic-casamento', kind: 'event' })).toBe('concept');
+  it('keeps dated events as events and topic records as concepts', () => {
     expect(networkKindOfEntity({ id: 'event-guerra-da-coreia', kind: 'event' })).toBe('event');
+    expect(networkKindOfEntity({ id: 'wiki-topic-aborto', kind: 'concept' })).toBe('concept');
   });
 
   it('gives each relation family its own colour or dash pattern', () => {

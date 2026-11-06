@@ -38,6 +38,19 @@ test('expanded catalogues expose grounded country/regime profiles and the other 
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Portugal');
 });
 
+test('topic records are catalogued as concepts, while named happenings stay events', async ({
+  page,
+}) => {
+  await page.goto('/conceitos?q=aborto');
+  await expect(page.locator('.results a[href^="/verbete/aborto?"]')).toHaveCount(1);
+  await page.goto('/acontecimentos?q=aborto');
+  await expect(page.locator('.results a[href^="/verbete/aborto?"]')).toHaveCount(0);
+  await page.goto('/acontecimentos?q=primeira%20guerra%20mundial');
+  await expect(page.locator('.results a[href^="/verbete/primeira-guerra-mundial?"]')).toHaveCount(
+    1,
+  );
+});
+
 test('reviewed English text preserves identity, original evidence, review method and navigation history', async ({
   page,
 }) => {

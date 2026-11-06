@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev",
-  "release": "d6ac0ed5dbb18fa8d620210126bf47691888fbf4b344a1f903b0c006b65195ac",
+  "release": "63fac66afb990d26220a84aeea30be3074873b08946e2ce63dc4757ea06cf00a",
   "manifest": {
-    "sha256": "6a1e1a644bf308799cbfbc8a9e4adb77d9cf128aa62915d04eb3ead3a467d8a7",
+    "sha256": "d7373721b2ea9b29878ae3e166d714649a3c08c6ac4635dc746e17b063fa12be",
     "bytes": 5354
   },
   "artifacts": [
@@ -68,9 +68,9 @@
       "file": "atlas-ideologias-principais.fa078a44a82413525f3026f2335db652ce84442ce85f1a1c7f4b4702f3c02e2a.json"
     },
     {
-      "sha256": "562dac62c322d8ef2db7f1481e56361cc9e52970e1bdb1ba78dc2bef35496c52",
-      "bytes": 10339459,
-      "file": "atlas-verbetes-citados.562dac62c322d8ef2db7f1481e56361cc9e52970e1bdb1ba78dc2bef35496c52.json"
+      "sha256": "40c74767096f041d8c432a8d5356274861cbcce9288df1f7ed1a197436873f4e",
+      "bytes": 10339597,
+      "file": "atlas-verbetes-citados.40c74767096f041d8c432a8d5356274861cbcce9288df1f7ed1a197436873f4e.json"
     },
     {
       "sha256": "96da8960ae36f7d95c91f41257ec6c4e945494e85fdceeb1462b8d203e3e031e",
@@ -93,9 +93,9 @@
       "file": "ideology-anarquismo.1cdacd283179ba02372aaca955f6dcb12f5282b72c343d1c0f77c3e589f587c2.json"
     },
     {
-      "sha256": "ac1d1a79af125cf895ea96592458f8bfa5bb9ff9b0a23f7df11df3bfec6b3c26",
-      "bytes": 9524923,
-      "file": "search.ac1d1a79af125cf895ea96592458f8bfa5bb9ff9b0a23f7df11df3bfec6b3c26.json"
+      "sha256": "c2f1a66a705d89ce881d61d98879b194951dc48e27a2eb4726bd1f1444344e2a",
+      "bytes": 9525130,
+      "file": "search.c2f1a66a705d89ce881d61d98879b194951dc48e27a2eb4726bd1f1444344e2a.json"
     },
     {
       "sha256": "7ab23050655188ca4f433461cf0fc8052f92481d78d3d9e15d6ae21cd2223bdb",
@@ -103,9 +103,9 @@
       "file": "adjacency.7ab23050655188ca4f433461cf0fc8052f92481d78d3d9e15d6ae21cd2223bdb.json"
     },
     {
-      "sha256": "db0d5a4df0fd665db126d77f6cd94aab976dd3acc82e219fd981639793568a86",
-      "bytes": 1077877,
-      "file": "layouts.db0d5a4df0fd665db126d77f6cd94aab976dd3acc82e219fd981639793568a86.json"
+      "sha256": "71dbf90484fef9798fe44939bf1d4779d199be180d7027c071da78cf90d0915e",
+      "bytes": 1077885,
+      "file": "layouts.71dbf90484fef9798fe44939bf1d4779d199be180d7027c071da78cf90d0915e.json"
     }
   ],
   "media": [
