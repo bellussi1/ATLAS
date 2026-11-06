@@ -41,6 +41,7 @@ import {
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 
+import { batchDots, batchEdgeSegments, type EdgeSegment } from './graph-batching';
 import { shapePath } from './graph-shapes';
 
 interface LabelView extends PlacedLabel {
@@ -66,6 +67,17 @@ const classificationLabels: Record<string, string> = {
   unverified: 'Não verificado',
 };
 
+interface DrawnEdge {
+  edge: NetworkEdge;
+  family: ReturnType<typeof relationFamilyDefinition>;
+  delay: number;
+  fade: number;
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+}
+
 @Component({
   selector: 'app-graph',
   imports: [RouterLink, AtlasKindIconComponent],
@@ -85,6 +97,7 @@ export class GraphComponent {
 
   readonly kinds = networkKinds;
   readonly families = relationFamilies;
+  private readonly familyById = new Map(this.families.map((family) => [family.id, family]));
   readonly collections = this.network.collections.filter((c) => c.count > 0);
   readonly shape = shapePath;
   readonly radius = nodeRadius;
@@ -254,6 +267,13 @@ export class GraphComponent {
   /** Zoom in quarter-octave steps: what depends on it is redrawn per step, not per frame. */
   private readonly zoomStep4 = computed(() => Math.round(Math.log2(this.zoomK()) * 4));
   private readonly steppedK = computed(() => 2 ** (this.zoomStep4() / 4));
+  /** Halos sit behind every well-connected node; keeping them apart lets a node be one path. */
+  readonly haloNodes = computed(() => this.drawnNodes().filter((item) => item.node.degree >= 6));
+  /** The selected node and the start of a path pulse above the map. */
+  readonly pulseNodes = computed(() => {
+    const ids = new Set([this.selectedId(), this.pathFromId()].filter((id): id is string => !!id));
+    return ids.size ? this.drawnNodes().filter((item) => ids.has(item.node.id)) : [];
+  });
   readonly drawnEdges = computed(() => {
     const positions = this.positions();
     if (!positions) return [];
@@ -285,6 +305,41 @@ export class GraphComponent {
         },
       ];
     });
+  });
+  /** Edges collapse into a few paths; only lit links stay individual so their animation survives. */
+  readonly edgeBatches = computed(() => {
+    const plain: EdgeSegment[] = [];
+    const detailed = new Map<RelationFamilyId, EdgeSegment[]>();
+    const lit: DrawnEdge[] = [];
+    for (const item of this.drawnEdges()) {
+      const segment: EdgeSegment = {
+        key: 'plain',
+        x1: item.x1,
+        y1: item.y1,
+        x2: item.x2,
+        y2: item.y2,
+        fade: item.fade,
+      };
+      if (this.edgeLit(item.edge)) {
+        lit.push(item);
+      } else if (this.edgeDetailed(item.edge)) {
+        const list = detailed.get(item.family.id) ?? [];
+        list.push({ ...segment, key: item.family.id });
+        detailed.set(item.family.id, list);
+      } else {
+        plain.push(segment);
+      }
+    }
+    return {
+      plain: batchEdgeSegments(plain),
+      detailed: [...detailed].flatMap(([familyId, segments]) =>
+        batchEdgeSegments(segments).map((batch) => ({
+          ...batch,
+          family: this.familyById.get(familyId),
+        })),
+      ),
+      lit,
+    };
   });
   readonly transform = computed(() => {
     const { x, y, k } = this.view();
@@ -421,12 +476,13 @@ export class GraphComponent {
       width,
       height,
       scale,
-      dots: this.drawnNodes().map((item) => ({
-        id: item.node.id,
-        x: item.x * scale,
-        y: item.y * scale,
-        color: item.kind.color,
-      })),
+      dotPaths: batchDots(
+        this.drawnNodes().map((item) => ({
+          x: item.x * scale,
+          y: item.y * scale,
+          color: item.kind.color,
+        })),
+      ),
       box: { x: (-x / k) * scale, y: (-y / k) * scale, w: (sw / k) * scale, h: (sh / k) * scale },
     };
   });
@@ -481,6 +537,8 @@ export class GraphComponent {
   /** The view follows window resizes until the reader moves or zooms it. */
   private autoFit = true;
   private fitMode: 'default' | 'whole' = 'default';
+  private pointerFrame = 0;
+  private lastPointer: { x: number; y: number } | null = null;
   private tweenToken = 0;
   private allK = 0.1;
   private cycleOrigin: string | null = null;
@@ -528,6 +586,7 @@ export class GraphComponent {
       });
       this.destroyRef.onDestroy(() => {
         clearTimeout(timer);
+        if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
         observer.disconnect();
         media?.removeEventListener('change', onMedia);
         wideMedia?.removeEventListener('change', onWide);
@@ -740,16 +799,24 @@ export class GraphComponent {
 
   hoverNode(id: string | null): void {
     this.hoveredId.set(id);
+    if (id) this.schedulePointer();
   }
   hoverEdge(id: string | null): void {
     this.hoveredEdgeId.set(id);
   }
   stagePointer(event: PointerEvent): void {
-    if (event.pointerType === 'touch') return;
+    if (event.pointerType === 'touch' || this.dragging()) return;
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
-    if (rect) this.pointerAt.set({ x: event.clientX - rect.left, y: event.clientY - rect.top });
+    if (!rect) return;
+    this.lastPointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    // The card only exists over a node (or a lit link up close); elsewhere no signal is written.
+    if (!this.hoveredId() && !this.hoveredEdgeId() && !this.near()) return;
+    this.schedulePointer();
   }
   stageLeave(): void {
+    if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
+    this.pointerFrame = 0;
+    this.lastPointer = null;
     this.pointerAt.set(null);
     this.hoveredId.set(null);
     this.hoveredEdgeId.set(null);
@@ -982,6 +1049,14 @@ export class GraphComponent {
       reason: this.reasonOf(edge),
       source: edge.sourceName,
     };
+  }
+  private schedulePointer(): void {
+    if (this.pointerFrame || !this.lastPointer || typeof requestAnimationFrame !== 'function')
+      return;
+    this.pointerFrame = requestAnimationFrame(() => {
+      this.pointerFrame = 0;
+      if (this.lastPointer && !this.dragging()) this.pointerAt.set(this.lastPointer);
+    });
   }
   private minK(): number {
     return Math.min(this.allK * 0.9, this.fitK() * 0.5);

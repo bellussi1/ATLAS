@@ -36,6 +36,40 @@ export interface Box {
 
 export const LABEL_HEIGHT = 16;
 const GAP = 4;
+/** Side of the spatial bucket used to avoid testing every node for every label. */
+const CELL = 64;
+
+type ObstacleIndex = Map<string, LabelObstacle[]>;
+
+const cellKey = (x: number, y: number): string => `${x}:${y}`;
+
+/** Buckets each node circle into every cell it touches, so nearby labels test only that cell. */
+function indexObstacles(obstacles: readonly LabelObstacle[]): ObstacleIndex {
+  const cells: ObstacleIndex = new Map();
+  for (const obstacle of obstacles) {
+    const minX = Math.floor((obstacle.x - obstacle.radius) / CELL);
+    const maxX = Math.floor((obstacle.x + obstacle.radius) / CELL);
+    const minY = Math.floor((obstacle.y - obstacle.radius) / CELL);
+    const maxY = Math.floor((obstacle.y + obstacle.radius) / CELL);
+    for (let x = minX; x <= maxX; x++)
+      for (let y = minY; y <= maxY; y++) {
+        const key = cellKey(x, y);
+        const list = cells.get(key) ?? [];
+        list.push(obstacle);
+        cells.set(key, list);
+      }
+  }
+  return cells;
+}
+
+/** Obstacles whose circle can touch the box: only the cells the box overlaps. */
+function nearbyObstacles(cells: ObstacleIndex, box: Box): Set<LabelObstacle> {
+  const found = new Set<LabelObstacle>();
+  for (let x = Math.floor(box.left / CELL); x <= Math.floor(box.right / CELL); x++)
+    for (let y = Math.floor(box.top / CELL); y <= Math.floor(box.bottom / CELL); y++)
+      for (const obstacle of cells.get(cellKey(x, y)) ?? []) found.add(obstacle);
+  return found;
+}
 
 export function labelWidth(text: string): number {
   return text.length * 6.6 + 8;
@@ -75,6 +109,7 @@ export function placeLabels(
   let optional = 0;
   const placed: PlacedLabel[] = [];
   const taken: Box[] = [];
+  const cells = indexObstacles(obstacles);
   const ordered = [...candidates].sort(
     (a, b) => Number(!!b.forced) - Number(!!a.forced) || a.priority - b.priority,
   );
@@ -128,12 +163,13 @@ export function placeLabels(
         anchor: 'end',
       },
     ];
-    const free = options.find(
-      (option) =>
-        (!bounds || insideBounds(option.box, bounds)) &&
-        !taken.some((box) => boxesOverlap(option.box, box)) &&
-        !obstacles.some((node) => node.id !== candidate.id && hitsCircle(option.box, node)),
-    );
+    const free = options.find((option) => {
+      if (bounds && !insideBounds(option.box, bounds)) return false;
+      if (taken.some((box) => boxesOverlap(option.box, box))) return false;
+      for (const node of nearbyObstacles(cells, option.box))
+        if (node.id !== candidate.id && hitsCircle(option.box, node)) return false;
+      return true;
+    });
     const choice = free ?? (candidate.forced ? options[0] : undefined);
     if (!choice) continue;
     if (!candidate.forced && candidate.priority >= 0) optional++;

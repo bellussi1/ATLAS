@@ -302,7 +302,7 @@ test('a click just beside a node icon still selects it, and names are not clicka
   // A linked node in the free middle of the stage, away from the floating panels.
   const spot = await page.locator(linkedNode).evaluateAll((nodes) => {
     for (const el of nodes) {
-      const r = el.querySelector('.node__shape')!.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
       const cx = r.x + r.width / 2;
       const cy = r.y + r.height / 2;
       if (cx > 450 && cx < 800 && cy > 200 && cy < 600)
