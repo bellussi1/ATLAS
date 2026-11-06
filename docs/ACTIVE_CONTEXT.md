@@ -35,8 +35,8 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
    - O capítulo escolhido no seletor mobile não é mais desfeito por uma medição de rolagem anterior à rolagem do roteador.
    - O fixture de e2e espera o fim do event replay (`jsaction`) e serve o conteúdo fixado também nos contextos criados pelos testes; as auditorias pesadas ganharam 60 s de teto.
 5. **Zoom inicial do grafo**
-   - `/grafos` abre 1,6 vez mais próximo que o grafo inteiro; esse enquadramento passou a ser o 100% do HUD.
-   - Home e a tecla `0` voltam a esse padrão; o botão "Reenquadrar o grafo inteiro" mostra o grafo todo (abaixo de 100%).
+   - `/grafos` abre no enquadramento do **grafo inteiro**, e esse enquadramento é o **100%** do HUD.
+   - Home, a tecla `0` e o botão "Reenquadrar o grafo inteiro" voltam ao mesmo 100%.
    - Testes: unidade em `graph.component.spec.ts` e asserção de `100%` em `e2e/graph.spec.ts`.
 6. **Publicação das capturas**
    - `publish-raw` confere o R2 por HEAD quando o corpo local sumiu e avisa em vez de abortar um recorte antigo; os blobs novos seguem sendo publicados.
