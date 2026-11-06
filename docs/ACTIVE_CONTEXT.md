@@ -57,10 +57,11 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
    - Estado restaurado no release `7fb37afa…`; nenhum conteúdo corrompido foi publicado.
    - Próximo: modo `--partial` no tradutor (preserva registros e funde só o QID do rascunho), desempate que prefere rascunho com seções e, só então, lote de verbetes prioritários. O perfil político (partido, ideologia, vertente, lado) deve ser derivado das relações e exibido com atribuição, sem rótulo inventado.
 10. **`/fontes` paginado**
-   - A lista passou de um artigo por fonte, todos na mesma página, para **linhas compactas** com título, resumo curto, link para a fonte e citações recolhidas.
-   - **24 fontes por página**, com o pager existente; o HTML prerenderizado de `/fontes` caiu de **4,8 MB para ~195 KB**.
-   - Links `#source-…` continuam funcionando: o componente descobre a página da fonte, navega para `?pagina=N` e rola até o item, sem restaurar o scroll antigo.
-   - Teste: `pages.spec.ts` cobre paginação, “Próxima” e deep link para uma fonte da página 2; `public-routes` confirma `/fontes` em 390 e 1440 sem achados sérios.
+
+- A lista passou de um artigo por fonte, todos na mesma página, para **linhas compactas** com título, resumo curto, link para a fonte e citações recolhidas.
+- **24 fontes por página**, com o pager existente; o HTML prerenderizado de `/fontes` caiu de **4,8 MB para ~195 KB**.
+- Links `#source-…` continuam funcionando: o componente descobre a página da fonte, navega para `?pagina=N` e rola até o item, sem restaurar o scroll antigo.
+- Teste: `pages.spec.ts` cobre paginação, “Próxima” e deep link para uma fonte da página 2; `public-routes` confirma `/fontes` em 390 e 1440 sem achados sérios.
 
 11. **Grafo compartilhado no capítulo de conexões**
     - O componente do `/grafos` foi promovido para `shared/ui/knowledge-network` (`app-knowledge-network`) e ganhou `embedded`, `scope`, `focus` e `picked`; a rota `/grafos` consome o mesmo componente.
@@ -87,14 +88,21 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
     - Efeito observado: o antigo grupo `atlas-verbetes-citados` com **896 nós** virou **14 grupos semânticos**, o maior com **167**. Dos **554 nós sem relação**, a mediana de distância até um nó conectado ficou em **51 px** (p90 **75 px**).
     - O painel de legenda passa a explicar que a posição aproxima por vocabulário e ligações, não por distância histórica. Release `45300c5…` publicado; ponteiro atualizado.
 
+15. **CDN de conteúdo e `/fontes` em produção**
+    - O Worker `atlas-content-delivery` foi preparado em `scripts/infra/content-delivery.worker.mjs` com binding somente leitura em `atlas-public`; serve `pointer.json`, `c/<sha256>.json` e `m/<sha256>.<ext>` com CORS, `ETag` e cache imutável, sem expor o endpoint S3.
+    - O deploy está pendente de credencial Cloudflare Workers (`CLOUDFLARE_API_TOKEN` com Workers Scripts:Edit + `CLOUDFLARE_ACCOUNT_ID`, ou `npx wrangler login`). O endereço padrão será `https://atlas-content-delivery.atlas-bellussi.workers.dev`.
+    - Produção ainda serve o `master` antigo: `/fontes` responde **4.847.763 bytes** crus (**634.979 bytes** comprimidos); o build local tem **194.726 bytes**. O `master` mantém `paginated = path !== 'fontes'`; a paginação está no `develop`.
+    - Armazenamento do release atual: **24,25 MB brutos** em artefatos, **~3,71 MB gzip + 0,28 MB de mídia ≈ 4 MB** no R2; `dist` do Vercel com **140 MB**. O gargalo é a banda/deploy, não o espaço.
+    - Depois do Worker: `switch-content-domain --apply`, `content:publish`, `content:fetch`, build e deploy. O `publish-r2` passou a usar `DEFAULT_CONTENT_BASE_URL`, então o `R2_PUBLIC_URL` local pode continuar no endpoint S3.
+
 ## Piloto de modelo (Anthropic)
 
 Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo `targets` (`amostra-20v2`):
 
-| Braço | Custo | Relações aceitas | Com QID | Rejeição | Citações rejeitadas |
-| --- | --- | --- | --- | --- | --- |
-| Haiku 5.5 `low` | US$ 0,021 | 6 | 5 | 80,0% | 3,7% |
-| Haiku 5.5 `medium` | US$ 0,038 | 23 | 18 | 62,9% | 2,4% |
+| Braço              | Custo     | Relações aceitas | Com QID | Rejeição | Citações rejeitadas |
+| ------------------ | --------- | ---------------- | ------- | -------- | ------------------- |
+| Haiku 5.5 `low`    | US$ 0,021 | 6                | 5       | 80,0%    | 3,7%                |
+| Haiku 5.5 `medium` | US$ 0,038 | 23               | 18      | 62,9%    | 2,4%                |
 
 - Custo por relação útil: **US$ 0,0042** em `low` e **US$ 0,0021** em `medium`.
 - `medium` rende cerca de duas vezes mais relações com QID por dólar; `model-choice.json` já fixa Haiku `medium` para extração e Sonnet `low` para relações.
@@ -105,7 +113,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.
 2. **Suíte e2e completa** — `contextual-exploration` (liberalismo 1440) falha no y do termo ao voltar (diferença de **64 px**), embora o scroll volte ao lugar. Corrigir a estabilidade do painel ou a tolerância do teste antes de considerar a rodada verde.
-3. **Produção na Vercel** — o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`).
+3. **Produção na Vercel** - o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`). Enquanto o `master` não receber a paginação, `/fontes` segue em 4,8 MB; o Worker de conteúdo também aguarda token Cloudflare.
 4. **Probe de 404** — hoje `https://atlasbr.vercel.app/caminho-inexistente` responde 200 com `index.html`; o `uptime.yml` falha por isso. Só verificar depois do deploy.
 5. **Verbetes** — corrigir o modo `--partial` do tradutor e o desempate de rascunhos; depois rodar o lote prioritário e derivar o perfil político das relações.
 

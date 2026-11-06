@@ -56,6 +56,50 @@ npm run content:publish                                      # republica o point
 - Espelhar no R2 as imagens da Wikimedia com licença de reprodução (hoje há hotlink).
 - Hoje o `vercel.json` gerado nunca rodou contra o Vercel real: o primeiro deploy de pré-visualização é o teste.
 
+## CDN de conteúdo (Worker)
+
+O endereço público do conteúdo ainda é o `r2.dev`, que tem limite de taxa. O Worker
+`atlas-content-delivery` serve o mesmo contrato sem expor o endpoint S3: `pointer.json`,
+`c/<sha256>.json` e `m/<sha256>.<ext>`, com CORS, `ETag`, cache imutável para os artefatos e
+`no-cache` para o ponteiro. O binding é somente leitura no bucket `atlas-public`; `atlas-drafts`
+não entra no Worker.
+
+Deploy (exige `CLOUDFLARE_API_TOKEN` com Workers Scripts:Edit e `CLOUDFLARE_ACCOUNT_ID`, ou
+`npx wrangler login`):
+
+```bash
+npm run infra:content-worker
+```
+
+O endereço padrão fica em `https://atlas-content-delivery.atlas-bellussi.workers.dev`. Para um
+domínio próprio, adicione o domínio ao Worker no painel da Cloudflare e use essa origem no passo
+seguinte.
+
+Depois de o Worker responder `GET /pointer.json`:
+
+```bash
+node scripts/infra/switch-content-domain.mjs https://atlas-content-delivery.atlas-bellussi.workers.dev --apply
+npm run content:publish
+npm run content:fetch
+npm run build
+gh variable set ATLAS_CDN_URL --body https://atlas-content-delivery.atlas-bellussi.workers.dev
+```
+
+O `switch-content-domain` troca a constante do app, o ponteiro local e a CSP; o
+`content:publish` grava o `pointer.json` com a origem nova. O `publish-r2` usa
+`DEFAULT_CONTENT_BASE_URL` como origem pública, então o `R2_PUBLIC_URL` do ambiente pode continuar
+apontando para o endpoint S3; ele não é mais a URL pública do app.
+
+Conferir:
+
+```bash
+curl -sI https://atlas-content-delivery.atlas-bellussi.workers.dev/pointer.json
+curl -sI https://atlas-content-delivery.atlas-bellussi.workers.dev/c/<sha256>.json
+```
+
+O primeiro deve responder `Cache-Control: public, max-age=0, must-revalidate`; o segundo,
+`public, max-age=31536000, immutable`. Ambos precisam de `Access-Control-Allow-Origin: *`.
+
 ## Armazenamento dos deployments
 
 Os HTMLs estáticos incluíam cópias dos objetos do grafo via TransferState.
