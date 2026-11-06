@@ -1,13 +1,29 @@
-﻿import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { provideContentFixture } from '@testing/content-fixture';
+import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 import { vi } from 'vitest';
 
 import { GraphComponent } from './graph.component';
 
 describe('GraphComponent', () => {
   beforeEach(() =>
-    TestBed.configureTestingModule({ providers: [...provideContentFixture(), provideRouter([])] }),
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter([]),
+        {
+          provide: ContentRepository,
+          useValue: {
+            knowledgeGraph: {
+              ...methodologyKnowledgeGraph,
+              atlases: methodologyKnowledgeGraph.atlases.filter(
+                (atlas) => atlas.id === 'atlas-liberalism',
+              ),
+            },
+          },
+        },
+      ],
+    }),
   );
 
   async function render() {
