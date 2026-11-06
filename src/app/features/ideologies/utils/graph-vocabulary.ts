@@ -1,4 +1,4 @@
-import type { KnowledgeGraph } from '@core/content/models/content-schema';
+import { type KnowledgeGraph, placeTypeOf } from '@core/content/models/content-schema';
 import type { KnowledgeTerm } from '@ideologies/models/knowledge-term';
 import { kindLabel } from '@ideologies/utils/desk-graph';
 
@@ -36,7 +36,7 @@ export function graphVocabulary(
     if (byId.has(entity.id)) continue;
     const base = {
       entityId: entity.id,
-      kind: kindLabel(entity.kind),
+      kind: kindLabel(entity.kind, placeTypeOf(entity)),
       definition: shortDefinition(entity.summary),
     };
     byId.set(entity.id, { ...base, label: entity.title });

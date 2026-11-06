@@ -107,8 +107,6 @@ const kindByEntityKind: Partial<Record<EntityKind, NetworkKindId>> = {
   party: 'party',
   event: 'event',
   place: 'place',
-  country: 'place',
-  regime: 'place',
   'historical-polity': 'place',
   government: 'place',
   concept: 'concept',

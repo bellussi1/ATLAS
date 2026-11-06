@@ -1,4 +1,4 @@
-import type { Entity } from '@core/content/models/content-schema';
+import { type Entity, type PlaceType, placeTypeOf } from '@core/content/models/content-schema';
 
 import type { TimelineAxisItem } from './timeline-axis-layout';
 
@@ -9,8 +9,6 @@ const kindLabels: Record<Entity['kind'], string> = {
   work: 'Obra',
   event: 'Acontecimento',
   'historical-polity': 'Formação política histórica',
-  country: 'País',
-  regime: 'Regime',
   place: 'Território',
   party: 'Partido',
   institution: 'Organização',
@@ -19,7 +17,9 @@ const kindLabels: Record<Entity['kind'], string> = {
   article: 'Artigo',
 };
 
-export function entityKindLabel(kind: Entity['kind']): string {
+export function entityKindLabel(kind: Entity['kind'], placeType?: PlaceType): string {
+  if (kind === 'place')
+    return placeType === 'country' ? 'País' : placeType === 'regime' ? 'Regime' : 'Território';
   return kindLabels[kind];
 }
 
@@ -33,7 +33,7 @@ export function axisItemOf(entity: Entity): TimelineAxisItem | null {
     id: entity.id,
     title: entity.title,
     kind: entity.kind,
-    kindLabel: entityKindLabel(entity.kind),
+    kindLabel: entityKindLabel(entity.kind, placeTypeOf(entity)),
     start: Math.min(first, last),
     end: Math.max(first, last),
     approximate: extent.precision === 'approximate',
