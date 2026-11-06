@@ -19,6 +19,14 @@ describe('placeLabels', () => {
     expect(label.dx).toBeGreaterThan(8);
   });
 
+  it('finds obstacles that straddle cell boundaries', () => {
+    const [label] = placeLabels(
+      [candidate('a', 100, 100)],
+      [{ id: 'b', x: 140, y: 100, radius: 20 }],
+    );
+    expect(label.anchor).not.toBe('start');
+  });
+
   it('never overlaps two labels or a label and another node', () => {
     const nodes = Array.from({ length: 40 }, (_, i) => ({
       id: `n${i}`,

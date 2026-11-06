@@ -388,6 +388,18 @@ kbd {
   cursor: grabbing;
 }
 
+.edge-batch {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+.edge-rest {
+  transition: opacity 180ms;
+}
+.edge-rest.is-dimmed {
+  opacity: 0.05;
+}
 .edges line {
   fill: none;
   stroke-width: 1.4;
@@ -479,6 +491,8 @@ kbd {
   cursor: pointer;
   outline: none;
   transition: opacity 180ms;
+  transform: translate(calc(var(--node-x) * 1px), calc(var(--node-y) * 1px))
+    scale(var(--node-scale));
   &.is-dimmed {
     opacity: 0.16;
   }
@@ -498,7 +512,7 @@ kbd {
   transform-origin: center;
   animation: pulse 1800ms var(--ease-out, ease-out) infinite;
 }
-.node.is-origin .node__pulse {
+.node__pulse.is-origin {
   stroke: var(--color-focus);
   stroke-dasharray: 4 3;
 }
@@ -508,10 +522,10 @@ kbd {
   vector-effect: non-scaling-stroke;
   transform-box: fill-box;
   transform-origin: center;
-  transition: transform 160ms var(--ease-out, ease-out);
+  transition: scale 160ms var(--ease-out, ease-out);
 }
-.node:hover .node__shape {
-  transform: scale(1.22);
+.node.node__shape:hover {
+  scale: 1.22;
   stroke: var(--color-ink);
 }
 .node__halo {
@@ -519,15 +533,15 @@ kbd {
   pointer-events: none;
   transition: opacity 180ms;
 }
-.node:hover .node__halo {
+.node__halo.is-lit {
   opacity: 0.3;
 }
-.node.is-selected .node__shape {
+.node.is-selected {
   stroke: var(--color-ink);
   stroke-width: 3;
   animation: pop 360ms var(--ease-out, ease-out);
 }
-.node:focus-visible .node__shape {
+.node:focus-visible {
   stroke: var(--color-focus);
   stroke-width: 4;
 }
@@ -985,10 +999,10 @@ kbd {
 @keyframes pop {
   from {
     opacity: 0;
-    transform: scale(0.94);
+    scale: 0.94;
   }
   60% {
-    transform: scale(1.04);
+    scale: 1.04;
   }
 }
 @keyframes pulse {
@@ -1084,7 +1098,7 @@ kbd {
   .shortcuts,
   .search__results,
   .overlay,
-  .node.is-selected .node__shape,
+  .node.is-selected,
   .node__pulse,
   .label,
   .tip,

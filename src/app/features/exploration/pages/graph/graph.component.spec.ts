@@ -370,7 +370,10 @@ describe('GraphComponent', () => {
     fixture.detectChanges();
     const edge = component.drawnEdges()[0].edge;
     expect(component.edgeDetailed(edge)).toBe(false);
-    expect(root(fixture).querySelector('.edges line')?.getAttribute('marker-end')).toBeNull();
+    const batch = root(fixture).querySelector('.edge-batch');
+    expect(batch).not.toBeNull();
+    expect(batch?.getAttribute('marker-end')).toBeNull();
+    expect(root(fixture).querySelectorAll('.edges line').length).toBe(0);
     component.zoomBy(3, { x: 700, y: 450 });
     fixture.detectChanges();
     expect(component.edgeDetailed(edge)).toBe(true);

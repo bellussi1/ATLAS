@@ -405,6 +405,12 @@ export const atlasSchema = z
     const evidenceIds = new Set(atlas.evidences.map((evidence) => evidence.id));
     const citationIds = new Set(atlas.citations.map((citation) => citation.id));
     const claimIds = new Set(atlas.claims.map((claim) => claim.id));
+    const reviewsByClaim = new Map<string, typeof atlas.reviews>();
+    for (const review of atlas.reviews) {
+      const list = reviewsByClaim.get(review.claimId) ?? [];
+      list.push(review);
+      reviewsByClaim.set(review.claimId, list);
+    }
     const validateRefs = (values: string[], available: Set<string>, path: (string | number)[]) =>
       values.forEach((value) => {
         if (!available.has(value))
@@ -433,7 +439,7 @@ export const atlasSchema = z
       unique(claim.citationIds, ['claims', index, 'citationIds']);
       validateRefs([claim.entityId], entityIds, ['claims', index, 'entityId']);
       validateRefs(claim.citationIds, citationIds, ['claims', index, 'citationIds']);
-      const matchingReviews = atlas.reviews.filter((review) => review.claimId === claim.id);
+      const matchingReviews = reviewsByClaim.get(claim.id) ?? [];
       if (matchingReviews.length !== 1)
         context.addIssue({
           code: 'custom',

@@ -215,8 +215,31 @@
         </defs>
         <g class="world" [attr.transform]="transform()">
           <g class="edges">
-            @for (item of drawnEdges(); track item.edge.id) {
+            @let edges = edgeBatches();
+            <g class="edge-rest" [class.is-dimmed]="!!activeId() || !!path()">
+              @for (batch of edges.plain; track batch.key) {
+                <path
+                  class="edge-batch"
+                  [attr.d]="batch.d"
+                  [style.stroke-opacity]="batch.opacity"
+                />
+              }
+              @for (batch of edges.detailed; track batch.key) {
+                @if (batch.family; as family) {
+                  <path
+                    class="edge-batch"
+                    [attr.d]="batch.d"
+                    [attr.stroke-dasharray]="family.dash || null"
+                    [attr.marker-end]="family.directed ? 'url(#arrow-' + family.id + ')' : null"
+                    [style.stroke]="'var(' + family.color + ')'"
+                    [style.stroke-opacity]="batch.opacity"
+                  />
+                }
+              }
+            </g>
+            @for (item of edges.lit; track item.edge.id) {
               <line
+                class="is-active"
                 [attr.x1]="item.x1"
                 [attr.y1]="item.y1"
                 [attr.x2]="item.x2"
@@ -234,8 +257,6 @@
                 "
                 [style.--delay.ms]="item.delay"
                 [style.--fade]="item.fade"
-                [class.is-dimmed]="edgeDimmed(item.edge)"
-                [class.is-active]="edgeLit(item.edge)"
               />
             }
           </g>
@@ -253,18 +274,44 @@
               />
             }
           </g>
+          <g class="node-halos" aria-hidden="true">
+            @for (item of haloNodes(); track item.node.id) {
+              <circle
+                class="node__halo"
+                [class.is-lit]="activeId() === item.node.id"
+                [attr.cx]="item.x"
+                [attr.cy]="item.y"
+                [attr.r]="item.r * 1.9"
+                [style.fill]="'var(' + item.kind.color + ')'"
+              />
+            }
+          </g>
+          <g class="node-pulses" aria-hidden="true">
+            @for (item of pulseNodes(); track item.node.id) {
+              <circle
+                class="node__pulse"
+                [class.is-origin]="pathFromId() === item.node.id"
+                [attr.cx]="item.x"
+                [attr.cy]="item.y"
+                [attr.r]="item.r + 3"
+              />
+            }
+          </g>
           <g class="nodes">
             @for (item of drawnNodes(); track item.node.id) {
-              <g
-                class="node"
+              <path
+                class="node node__shape"
                 role="button"
                 [attr.data-node]="item.node.id"
                 [attr.tabindex]="tabIndexFor(item.node.id)"
                 [attr.aria-label]="nodeLabel(item.node)"
                 [attr.aria-pressed]="selectedId() === item.node.id"
-                [attr.transform]="
-                  'translate(' + item.x + ' ' + item.y + ') scale(' + nodeScale() + ')'
-                "
+                [style.--node-x]="item.x"
+                [style.--node-y]="item.y"
+                [style.--node-scale]="nodeScale()"
+                [attr.d]="item.path"
+                fill-rule="evenodd"
+                [style.fill]="'var(' + item.kind.color + ')'"
                 [class.is-dimmed]="isDimmed(item.node.id)"
                 [class.is-selected]="selectedId() === item.node.id"
                 [class.is-origin]="pathFromId() === item.node.id"
@@ -273,24 +320,7 @@
                 (focus)="focusId.set(item.node.id)"
                 (pointerenter)="hoverNode(item.node.id)"
                 (pointerleave)="hoverNode(null)"
-              >
-                @if (selectedId() === item.node.id || pathFromId() === item.node.id) {
-                  <circle class="node__pulse" [attr.r]="item.r + 3" />
-                }
-                @if (item.node.degree >= 6) {
-                  <circle
-                    class="node__halo"
-                    [attr.r]="item.r * 1.9"
-                    [style.fill]="'var(' + item.kind.color + ')'"
-                  />
-                }
-                <path
-                  class="node__shape"
-                  fill-rule="evenodd"
-                  [attr.d]="item.path"
-                  [style.fill]="'var(' + item.kind.color + ')'"
-                />
-              </g>
+              />
             }
           </g>
         </g>
@@ -479,12 +509,12 @@
               (click)="minimapJump($event)"
               (keydown)="canvasKey($event)"
             >
-              @for (dot of map.dots; track dot.id) {
-                <circle
-                  [attr.cx]="dot.x"
-                  [attr.cy]="dot.y"
-                  r="1.6"
-                  [style.fill]="'var(' + dot.color + ')'"
+              @for (path of map.dotPaths; track path.color) {
+                <path
+                  [attr.d]="path.d"
+                  [attr.stroke]="'var(' + path.color + ')'"
+                  stroke-linecap="round"
+                  stroke-width="3.2"
                 />
               }
               <rect
