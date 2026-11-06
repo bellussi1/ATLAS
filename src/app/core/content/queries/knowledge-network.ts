@@ -8,7 +8,6 @@ import {
   forceCollide,
   forceLink,
   forceManyBody,
-  forceRadial,
   forceSimulation,
   forceX,
   forceY,
@@ -564,6 +563,8 @@ export interface NetworkLayout {
   positions: Map<string, NetworkPoint>;
   width: number;
   height: number;
+  /** Where each group of entries sits, for the soft areas drawn behind them. */
+  regions: NetworkRegion[];
 }
 
 function seeded(seed: number): () => number {
@@ -576,7 +577,7 @@ function seeded(seed: number): () => number {
 
 /** Largest on-screen growth of a node shape; the layout reserves room for it. */
 export const MAX_NODE_SCALE = 1.25;
-const NODE_GAP = 44;
+const NODE_GAP = 26;
 
 /** Shapes stay readable at any zoom: larger when zoomed out, smaller when zoomed in. */
 export function nodeScaleFor(zoom: number): number {
@@ -590,44 +591,44 @@ export function nodeClearance(degree: number): number {
 
 interface SimNode extends SimulationNodeDatum {
   id: string;
+  group: string;
   clearance: number;
+  /** Centre of the group this node belongs to. */
   tx: number;
   ty: number;
-  /** Nodes without links wait on a ring around the connected core. */
-  isolated: boolean;
-  /** Linked, but apart from the largest group: pulled toward the centre so they stay near. */
-  satellite: boolean;
-  /** Square root of the number of links: hubs push harder so their leaves fan out. */
-  weight: number;
+  linked: boolean;
 }
 
-/** Ids of the largest group of linked nodes. */
-function mainComponent(edges: readonly NetworkEdge[]): Set<string> {
-  const adjacent = new Map<string, string[]>();
-  for (const edge of edges) {
-    adjacent.set(edge.source, [...(adjacent.get(edge.source) ?? []), edge.target]);
-    adjacent.set(edge.target, [...(adjacent.get(edge.target) ?? []), edge.source]);
-  }
-  let best = new Set<string>();
-  const seen = new Set<string>();
-  for (const start of adjacent.keys()) {
-    if (seen.has(start)) continue;
-    const group = new Set([start]);
-    seen.add(start);
-    for (const id of group)
-      for (const next of adjacent.get(id) ?? [])
-        if (!seen.has(next)) {
-          seen.add(next);
-          group.add(next);
-        }
-    if (group.size > best.size) best = group;
-  }
-  return best;
+export interface NetworkRegion {
+  id: string;
+  x: number;
+  y: number;
+  radius: number;
+  count: number;
 }
+
+/** Groups smaller than this are merged into one shared region. */
+const MIN_REGION = 8;
+export const OTHER_REGION = 'other';
+
+/** Region a node is drawn in: its first collection, or the shared one when that is tiny. */
+export function regionOf(node: NetworkNode, sizes: ReadonlyMap<string, number>): string {
+  const id = node.collections[0];
+  return (sizes.get(id) ?? 0) >= MIN_REGION ? id : OTHER_REGION;
+}
+
+/** Step of the even spiral that holds a group: nodes sit about two clearances apart. */
+function spiralStep(list: readonly NetworkNode[]): number {
+  const mean = list.reduce((sum, node) => sum + nodeClearance(node.degree), 0) / list.length;
+  return (2 * (mean + 4)) / 1.9;
+}
+
+const GOLDEN_ANGLE = 2.399963229728653;
 
 /**
- * Deterministic force layout (d3-force): links pull, nodes repel, each collection leans toward
- * its own sector and a collision force keeps every shape, at its largest size, apart.
+ * Deterministic layout (d3-force) in two steps, like a map of regions: first the regions find
+ * their places (related ones side by side, none overlapping), then each node settles inside its
+ * own region with even spacing. Nodes without links stay in their region, close to the others.
  */
 export function layoutNetwork(
   nodes: readonly NetworkNode[],
@@ -636,100 +637,166 @@ export function layoutNetwork(
 ): NetworkLayout {
   const positions = new Map<string, NetworkPoint>();
   const count = nodes.length;
-  if (!count) return { positions, width: 0, height: 0 };
+  if (!count) return { positions, width: 0, height: 0, regions: [] };
   const random = seeded(options.seed ?? 7);
-  const span = Math.sqrt(count) * 130;
-  const collectionIds = [...new Set(nodes.map((node) => node.collections[0]))];
+  const sizes = new Map<string, number>();
+  for (const node of nodes) {
+    const id = node.collections[0];
+    sizes.set(id, (sizes.get(id) ?? 0) + 1);
+  }
+  const groupOf = new Map(nodes.map((node) => [node.id, regionOf(node, sizes)]));
+  const members = new Map<string, NetworkNode[]>();
+  for (const node of nodes) {
+    const group = groupOf.get(node.id)!;
+    members.set(group, [...(members.get(group) ?? []), node]);
+  }
   const linked = new Set(edges.flatMap((edge) => [edge.source, edge.target]));
-  const main = mainComponent(edges);
+
+  // Step 1: places for the regions, nearer when they share many links.
+  interface Hub extends SimulationNodeDatum {
+    id: string;
+    radius: number;
+  }
+  const hubs: Hub[] = [...members.entries()]
+    .sort((a, b) => b[1].length - a[1].length)
+    .map(([id, list], index, all) => {
+      const angle = (index / all.length) * Math.PI * 2;
+      const spread = Math.sqrt(count) * 40;
+      return {
+        id,
+        radius: Math.max(70, spiralStep(list) * Math.sqrt(list.length) + 30),
+        x: Math.cos(angle) * spread,
+        y: Math.sin(angle) * spread,
+      };
+    });
+  const between = new Map<string, number>();
+  for (const edge of edges) {
+    const a = groupOf.get(edge.source);
+    const b = groupOf.get(edge.target);
+    if (!a || !b || a === b) continue;
+    const key = a < b ? `${a}|${b}` : `${b}|${a}`;
+    between.set(key, (between.get(key) ?? 0) + 1);
+  }
+  const hubLinks = [...between.entries()].map(([key, weight]) => {
+    const [source, target] = key.split('|');
+    return { source, target, weight };
+  });
+  const hubSim = forceSimulation(hubs)
+    .randomSource(random)
+    .stop()
+    .force(
+      'link',
+      forceLink<Hub, { source: string; target: string; weight: number }>(hubLinks)
+        .id((hub) => hub.id)
+        .distance(
+          (link) =>
+            ((link.source as unknown as Hub).radius + (link.target as unknown as Hub).radius) *
+              1.05 +
+            30,
+        )
+        .strength((link) => Math.min(0.5, 0.04 + link.weight * 0.02)),
+    )
+    .force('center', forceX<Hub>(0).strength(0.04))
+    .force('centerY', forceY<Hub>(0).strength(0.05))
+    .force('collide', forceCollide<Hub>((hub) => hub.radius + 28).iterations(4));
+  for (let i = 0; i < 300; i++) hubSim.tick();
+  const hubById = new Map(hubs.map((hub) => [hub.id, hub]));
+
+  // Step 2: nodes sit on an even spiral inside their region, linked ones in the middle;
+  // unlinked ones stay on the spiral, the rest settle with the forces.
+  const slot = new Map<string, number>();
+  const order = new Map<string, number>();
+  for (const [group, list] of members) {
+    const sorted = [...list].sort(
+      (a, b) =>
+        Number(linked.has(b.id)) - Number(linked.has(a.id)) ||
+        (linked.has(a.id) ? b.degree - a.degree : a.kind.localeCompare(b.kind)) ||
+        (a.title ?? a.id).localeCompare(b.title ?? b.id),
+    );
+    sorted.forEach((node, index) => {
+      slot.set(node.id, index);
+      order.set(group, spiralStep(list));
+    });
+  }
   const simNodes: SimNode[] = nodes.map((node) => {
-    const sector = collectionIds.indexOf(node.collections[0]) / collectionIds.length;
-    const angle = sector * Math.PI * 2;
-    const own = !linked.has(node.id) || main.has(node.id);
-    const tx = own ? Math.cos(angle) * span * 0.2 * 1.4 : 0;
-    const ty = own ? Math.sin(angle) * span * 0.2 : 0;
+    const group = groupOf.get(node.id)!;
+    const hub = hubById.get(group)!;
+    const index = slot.get(node.id)!;
+    const step = order.get(group)!;
+    const reach = step * Math.sqrt(index + 0.5);
+    const angle = index * GOLDEN_ANGLE;
+    const x = (hub.x ?? 0) + Math.cos(angle) * reach;
+    const y = (hub.y ?? 0) + Math.sin(angle) * reach;
+    const free = linked.has(node.id);
     return {
       id: node.id,
+      group,
       clearance: nodeClearance(node.degree),
-      isolated: !linked.has(node.id),
-      satellite: linked.has(node.id) && !main.has(node.id),
-      weight: Math.sqrt(node.degree),
-      tx,
-      ty,
-      x: tx + (random() - 0.5) * span * 0.4,
-      y: ty + (random() - 0.5) * span * 0.4,
+      linked: free,
+      tx: hub.x ?? 0,
+      ty: hub.y ?? 0,
+      x,
+      y,
+      fx: free ? undefined : x,
+      fy: free ? undefined : y,
     };
   });
-  const coreArea = simNodes
-    .filter((n) => !n.isolated)
-    .reduce((sum, n) => sum + n.clearance ** 2, 0);
-  const coreRadius = Math.sqrt(coreArea / 0.4);
-  const ringNeed =
-    simNodes.filter((n) => n.isolated).reduce((sum, n) => sum + n.clearance * 2.2, 0) /
-    (2 * Math.PI);
-  const ringRadius = Math.max(coreRadius + 90, ringNeed);
   const known = new Set(simNodes.map((node) => node.id));
   const links = edges
     .filter((edge) => known.has(edge.source) && known.has(edge.target))
-    .map((edge) => ({ source: edge.source, target: edge.target }));
+    .map((edge) => ({
+      source: edge.source,
+      target: edge.target,
+      same: groupOf.get(edge.source) === groupOf.get(edge.target),
+    }));
   const simulation = forceSimulation(simNodes)
     .randomSource(random)
     .stop()
     .force(
       'link',
-      forceLink<SimNode, { source: string; target: string }>(links)
+      forceLink<SimNode, { source: string; target: string; same: boolean }>(links)
         .id((node) => node.id)
-        .distance(160)
-        .strength(0.12),
+        .distance((link) => (link.same ? 46 : 150))
+        .strength((link) => (link.same ? 0.35 : 0.01)),
     )
-    .force(
-      'charge',
-      forceManyBody<SimNode>()
-        .strength((node) => -(380 + node.weight * 60))
-        .distanceMax(1500),
-    )
-    .force(
-      'x',
-      forceX<SimNode>((node) => node.tx).strength((node) =>
-        node.isolated ? 0 : node.satellite ? 0.16 : 0.07,
-      ),
-    )
-    .force(
-      'y',
-      forceY<SimNode>((node) => node.ty).strength((node) =>
-        node.isolated ? 0 : node.satellite ? 0.16 : 0.07,
-      ),
-    )
-    .force(
-      'ring',
-      forceRadial<SimNode>(ringRadius, 0, 0).strength((node) => (node.isolated ? 0.25 : 0)),
-    )
-    .force('collide', forceCollide<SimNode>((node) => node.clearance + 16).iterations(4));
-  const ticks = options.ticks ?? 320;
+    .force('charge', forceManyBody<SimNode>().strength(-45).distanceMax(140))
+    .force('x', forceX<SimNode>((node) => node.tx).strength(0.09))
+    .force('y', forceY<SimNode>((node) => node.ty).strength(0.09))
+    .force('collide', forceCollide<SimNode>((node) => node.clearance + 6).iterations(3));
+  const ticks = options.ticks ?? 260;
   for (let i = 0; i < ticks; i++) simulation.tick();
   // A last pass with collisions alone settles any pair the other forces left touching.
-  simulation
-    .force('link', null)
-    .force('charge', null)
-    .force('x', null)
-    .force('y', null)
-    .force('ring', null);
-  for (let i = 0; i < 80; i++) simulation.tick();
+  simulation.force('link', null).force('charge', null).force('x', null).force('y', null);
+  for (let i = 0; i < 60; i++) simulation.tick();
+
   const marginX = 160;
-  const marginY = 64;
+  const marginY = 100;
   const minX = Math.min(...simNodes.map((node) => (node.x ?? 0) - node.clearance));
   const minY = Math.min(...simNodes.map((node) => (node.y ?? 0) - node.clearance));
   const maxX = Math.max(...simNodes.map((node) => (node.x ?? 0) + node.clearance));
   const maxY = Math.max(...simNodes.map((node) => (node.y ?? 0) + node.clearance));
+  const shiftX = marginX - minX;
+  const shiftY = marginY - minY;
   for (const node of simNodes)
-    positions.set(node.id, {
-      x: (node.x ?? 0) - minX + marginX,
-      y: (node.y ?? 0) - minY + marginY,
-    });
-  return { positions, width: maxX - minX + marginX * 2, height: maxY - minY + marginY * 2 };
+    positions.set(node.id, { x: (node.x ?? 0) + shiftX, y: (node.y ?? 0) + shiftY });
+  const regions: NetworkRegion[] = [...members.keys()].map((id) => {
+    const own = simNodes.filter((node) => node.group === id);
+    const cx = own.reduce((sum, node) => sum + (node.x ?? 0), 0) / own.length;
+    const cy = own.reduce((sum, node) => sum + (node.y ?? 0), 0) / own.length;
+    const reach = Math.max(
+      ...own.map((node) => Math.hypot((node.x ?? 0) - cx, (node.y ?? 0) - cy)),
+    );
+    return { id, x: cx + shiftX, y: cy + shiftY, radius: reach + 46, count: own.length };
+  });
+  return {
+    positions,
+    width: maxX - minX + marginX * 2,
+    height: maxY - minY + marginY * 2,
+    regions,
+  };
 }
 
 /** Node radius grows with connections, within a readable range. */
 export function nodeRadius(degree: number): number {
-  return Math.min(16, 6 + Math.sqrt(degree) * 2.2);
+  return Math.min(13, 4.5 + Math.sqrt(degree) * 1.7);
 }

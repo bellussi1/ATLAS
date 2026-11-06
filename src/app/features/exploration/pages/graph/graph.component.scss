@@ -392,7 +392,7 @@ kbd {
   fill: none;
   stroke-width: 1.4;
   vector-effect: non-scaling-stroke;
-  opacity: 0.55;
+  opacity: calc(0.55 * var(--fade, 1));
   transition:
     opacity 180ms,
     stroke-width 180ms;
@@ -407,6 +407,10 @@ kbd {
 .stage--animated .edges line.is-active {
   animation: edge-in 360ms var(--ease-out, ease-out) both;
   animation-delay: var(--delay, 0ms);
+}
+// While the view moves nothing needs hover: skipping hit tests keeps dragging and zoom smooth.
+.stage--busy :is(.edge-hits, .node-hits, .nodes) {
+  pointer-events: none;
 }
 .edge-hits.is-off {
   pointer-events: none;
@@ -430,19 +434,6 @@ kbd {
   fill: transparent;
   pointer-events: all;
   cursor: pointer;
-}
-// Two slow, out-of-step sways (one per axis) read as a gentle float instead of a jitter.
-.stage--animated .node__drift-x {
-  animation: sway-x var(--dx, 15s) ease-in-out infinite alternate;
-  animation-delay: var(--wait, 0s);
-}
-.stage--animated .node__drift-y {
-  animation: sway-y var(--dy, 19s) ease-in-out infinite alternate;
-  animation-delay: var(--wait, 0s);
-}
-.stage--animated.stage--dragging :is(.node__drift-x, .node__drift-y),
-.stage--animated.stage--moving :is(.node__drift-x, .node__drift-y) {
-  animation-play-state: paused;
 }
 .node__pulse {
   fill: none;
@@ -947,22 +938,6 @@ kbd {
     transform: scale(1.04);
   }
 }
-@keyframes sway-x {
-  from {
-    transform: translateX(calc(var(--ax, 2px) * var(--sway, 1) * -1));
-  }
-  to {
-    transform: translateX(calc(var(--ax, 2px) * var(--sway, 1)));
-  }
-}
-@keyframes sway-y {
-  from {
-    transform: translateY(calc(var(--ay, 2px) * var(--sway, 1) * -1));
-  }
-  to {
-    transform: translateY(calc(var(--ay, 2px) * var(--sway, 1)));
-  }
-}
 @keyframes pulse {
   from {
     opacity: 0.9;
@@ -1057,8 +1032,6 @@ kbd {
   .search__results,
   .overlay,
   .node.is-selected .node__shape,
-  .node__drift-x,
-  .node__drift-y,
   .node__pulse,
   .label,
   .tip,
