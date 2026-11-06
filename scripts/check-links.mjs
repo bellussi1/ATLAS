@@ -63,6 +63,12 @@ for (const [file, document] of documents) {
     }
     try {
       if (!(await stat(target)).isFile()) throw new Error('Destino sem documento HTML');
+      if (url.hash) {
+        const asset = new JSDOM(await readFile(target, 'utf8'), { virtualConsole: quiet });
+        if (!asset.window.document.getElementById(decodeURIComponent(url.hash.slice(1))))
+          errors.push(`${file}: âncora ${href}`);
+        asset.window.close();
+      }
     } catch {
       errors.push(`${file}: destino ${href}`);
     }
