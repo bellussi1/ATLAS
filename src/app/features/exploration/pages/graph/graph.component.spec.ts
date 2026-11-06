@@ -1,13 +1,29 @@
-﻿import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { provideContentFixture } from '@testing/content-fixture';
+import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 import { vi } from 'vitest';
 
 import { GraphComponent } from './graph.component';
 
 describe('GraphComponent', () => {
   beforeEach(() =>
-    TestBed.configureTestingModule({ providers: [...provideContentFixture(), provideRouter([])] }),
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter([]),
+        {
+          provide: ContentRepository,
+          useValue: {
+            knowledgeGraph: {
+              ...methodologyKnowledgeGraph,
+              atlases: methodologyKnowledgeGraph.atlases.filter(
+                (atlas) => atlas.id === 'atlas-liberalism',
+              ),
+            },
+          },
+        },
+      ],
+    }),
   );
 
   async function render() {
@@ -324,12 +340,10 @@ describe('GraphComponent', () => {
     fixture.detectChanges();
     const edge = component.drawnEdges()[0].edge;
     expect(component.edgeDetailed(edge)).toBe(false);
-    expect(component.sway()).toBe(0);
     expect(root(fixture).querySelector('.edges line')?.getAttribute('marker-end')).toBeNull();
     component.zoomBy(3, { x: 700, y: 450 });
     fixture.detectChanges();
     expect(component.edgeDetailed(edge)).toBe(true);
-    expect(component.sway()).toBeGreaterThan(0);
   });
 
   it('gives every node a larger invisible hit area than its shape', async () => {
@@ -355,11 +369,16 @@ describe('GraphComponent', () => {
     expect(component.near()).toBe(false);
     expect(component.hoverCard()?.node?.top).toEqual([]);
     fixture.detectChanges();
-    expect(root(fixture).querySelector('.edge-hits')?.classList.contains('is-off')).toBe(true);
+    expect(root(fixture).querySelector('.edge-hits')).toBeNull();
     component.zoomBy(3, { x: 700, y: 450 });
     fixture.detectChanges();
     expect(component.near()).toBe(true);
     expect(component.hoverCard()?.node?.top.length).toBeGreaterThan(0);
-    expect(root(fixture).querySelector('.edge-hits')?.classList.contains('is-off')).toBe(false);
+    expect(root(fixture).querySelector('.edge-hits')).not.toBeNull();
+  });
+
+  it('keeps the nodes still: nothing in the map floats or sways', async () => {
+    const fixture = await render();
+    expect(root(fixture).querySelector('[class*="drift"]')).toBeNull();
   });
 });

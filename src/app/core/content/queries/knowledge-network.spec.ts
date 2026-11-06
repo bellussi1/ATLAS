@@ -16,6 +16,7 @@ import {
   type NetworkNode,
   nodeRadius,
   nodeScaleFor,
+  regionOf,
   relationFamilies,
   searchNodes,
   shortestPath,
@@ -118,17 +119,30 @@ describe('knowledge network', () => {
     expect(layoutNetwork([], []).positions.size).toBe(0);
   }, 30000);
 
-  it('puts nodes without links on a ring around the connected core', () => {
+  it('keeps nodes without links inside their own region, among the others', () => {
     const layout = layoutNetwork(network.nodes, network.edges);
     const linked = new Set(network.edges.flatMap((e) => [e.source, e.target]));
-    const center = { x: layout.width / 2, y: layout.height / 2 };
-    const radius = (id: string) =>
-      Math.hypot(layout.positions.get(id)!.x - center.x, layout.positions.get(id)!.y - center.y);
-    const core = network.nodes.filter((n) => linked.has(n.id)).map((n) => radius(n.id));
-    const isolated = network.nodes.filter((n) => !linked.has(n.id)).map((n) => radius(n.id));
+    const sizes = new Map<string, number>();
+    for (const n of network.nodes)
+      sizes.set(n.collections[0], (sizes.get(n.collections[0]) ?? 0) + 1);
+    const regions = new Map(layout.regions.map((r) => [r.id, r]));
+    const isolated = network.nodes.filter((n) => !linked.has(n.id));
     expect(isolated.length).toBeGreaterThan(0);
-    const mean = (values: number[]) => values.reduce((a, b) => a + b, 0) / values.length;
-    expect(mean(isolated)).toBeGreaterThan(mean(core));
+    for (const node of isolated) {
+      const region = regions.get(regionOf(node, sizes))!;
+      const at = layout.positions.get(node.id)!;
+      expect(Math.hypot(at.x - region.x, at.y - region.y)).toBeLessThanOrEqual(region.radius + 1);
+    }
+  });
+
+  it('gives every region its own place, none overlapping another', () => {
+    const { regions } = layoutNetwork(network.nodes, network.edges);
+    expect(regions.length).toBeGreaterThan(0);
+    for (let i = 0; i < regions.length; i++)
+      for (let j = i + 1; j < regions.length; j++) {
+        const gap = Math.hypot(regions[i].x - regions[j].x, regions[i].y - regions[j].y);
+        expect(gap).toBeGreaterThan(Math.min(regions[i].radius, regions[j].radius));
+      }
   });
 
   it('keeps the on-screen node scale within the reserved range', () => {
@@ -174,26 +188,6 @@ describe('knowledge network', () => {
     expect(shortestPath('a', 'c', edges)?.map((step) => step.edge.id)).toHaveLength(2);
     expect(shortestPath('a', 'd', edges)?.map((step) => step.edge.id)).toEqual(['4']);
     expect(shortestPath('a', 'z', edges)).toBeNull();
-  });
-
-  it('keeps small linked groups close to the main group instead of drifting away', () => {
-    const node = (id: string) =>
-      ({ id, kind: 'person', collections: ['c'], degree: 1 }) as unknown as NetworkNode;
-    const edge = (id: string, source: string, target: string) =>
-      ({ id, source, target }) as unknown as NetworkEdge;
-    const main = Array.from({ length: 40 }, (_, i) => `m${i}`);
-    const nodes = [...main, 'x1', 'x2'].map(node);
-    const edges = [
-      ...main.slice(1).map((id, i) => edge(`e${i}`, main[i], id)),
-      edge('far', 'x1', 'x2'),
-    ];
-    const { positions } = layoutNetwork(nodes, edges);
-    const points = main.map((id) => positions.get(id)!);
-    const cx = points.reduce((sum, p) => sum + p.x, 0) / points.length;
-    const cy = points.reduce((sum, p) => sum + p.y, 0) / points.length;
-    const reach = Math.max(...points.map((p) => Math.hypot(p.x - cx, p.y - cy)));
-    const pair = positions.get('x1')!;
-    expect(Math.hypot(pair.x - cx, pair.y - cy)).toBeLessThanOrEqual(reach * 1.25);
   });
 
   it('lays out a graph of about 700 entries and 1000 links within a time budget', () => {
