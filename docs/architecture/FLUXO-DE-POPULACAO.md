@@ -72,7 +72,7 @@ Gasto até aqui: US$ 0,12. Decisão da regra: `so-relacoes-sobe`, gravada em `sc
 
 | Saída                                        | Como nasce                                                            | Quem decide                        |
 | -------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------- |
-| `/verbete/:slug` e `/conhecimento`           | Automático: toda entidade da coleção entra no grafo (`content:build`) | ninguém; vale o que está no grafo  |
+| `/verbete/:slug` e `/acervo`                | Automático: toda entidade da coleção entra no grafo (`content:build`) | ninguém; vale o que está no grafo  |
 | Página de ideologia (dossiê de 12 capítulos) | Estágio 8 automático (todas as ideologias); estágio 9 manual          | pessoa decide publicar e registrar |
 | Publicação no R2                             | `npm run content:publish`                                             | só pessoa; nunca automática        |
 

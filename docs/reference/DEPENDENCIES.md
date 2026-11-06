@@ -19,7 +19,7 @@ Evitar em código novo: `@angular/animations` (depreciado desde 20.2), bibliotec
 ## Aplicação no Marxismo
 
 - `d3-shape` 3 e `d3-scale` 4 são as únicas novas dependências de produção; os tipos ficam em desenvolvimento. Ambas têm licença ISC, conferida nos arquivos LICENSE instalados. Preservar os avisos no empacotamento e na distribuição.
-- `d3-force` 3 (ISC) calcula o layout do grafo em `/grafo` (links, repulsão e colisão entre formas); roda só no navegador e é determinístico com semente fixa. Tipos em desenvolvimento.
+- `d3-force` 3 (ISC) calcula o layout do grafo em `/grafos` (links, repulsão e colisão entre formas); o build pré-calcula e o cliente usa o resultado compilado, com fallback determinístico.
 - D3 calcula curvas e coordenadas em funções puras de `features/ideologies/utils/visualization-geometry.ts`. Angular cria o SVG, os controles e os IDs. Sem `d3-selection`, seleção global do DOM ou simulação de força concorrendo com a hidratação.
 - O grafo usa todos os registros para fixar coordenadas; filtros alteram relações visíveis sem reorganizar nós. A altura acompanha o número de nós. A tabela conserva contexto, direção, certeza e fontes; posições não representam genealogia nem distância histórica.
 - Timeline: anos iniciais disponíveis em escala proporcional, com domínio fixo durante filtros. Datas ausentes não viram zero; anos iguais compartilham posição. O SVG é complemento visual, oculto da árvore acessível, porque a lista contém os mesmos registros e controla o painel. O eixo integra a faixa sticky existente.

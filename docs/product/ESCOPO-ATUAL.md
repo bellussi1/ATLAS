@@ -2,15 +2,15 @@
 
 Pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos e páginas permanentes. As leituras `/marxismo` e `/liberalismo` e a mesa da Home seguem disponíveis.
 
-**Rotas:** `/conhecimento`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos` e `/lugares`. São 82 rotas prerenderizadas, incluindo 56 entidades e oito exemplos identificados como metodologia. `/fontes#source-<id>` mantém o destino das referências.
+**Rotas:** `/acervo`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos` e `/lugares`. São 1.185 rotas prerenderizadas no build atual. `/fontes#source-<id>` mantém o destino das referências.
 
 - Busca e filtros usam `q`, `tipo` e `estado`; a página de detalhe permite voltar ao recorte anterior. Permalink e canonical não dependem desses parâmetros. IDs e slugs existentes preservados.
-- `/rede` e `/comparar` redirecionam para `/conhecimento`.
+- `/conhecimento` e `/comparar` redirecionam para `/acervo`; `/grafo` e `/rede` redirecionam para `/grafos`.
 - Endereços desconhecidos mostram "Página não encontrada" no próprio endereço, sem redirecionar para a home. Verbetes desconhecidos usam a mesma mensagem na SPA e não são gerados no prerender.
 
 Verificações e limites: [Knowledge Explorer](../quality/KNOWLEDGE-EXPLORER.md).
 
-**Rede e comparadores:** geometria antecipada por coleção; filtros comuns (`colecao`, `tipo`, `relacao`, `de`, `ate`, `semData`); timeline reutilizada na rede e na comparação histórica. `/comparar` preserva dois IDs (`esquerda`, `direita`) e `modo=historica|conceitual`; `/rede` preserva a seleção em `no`. Fontes, direção, incerteza e lacunas seguem explícitas; a interface não calcula similaridade nem inventa causalidade. [Método e validação](../quality/REDE-E-COMPARADORES.md).
+**Rede e comparadores:** geometria antecipada por coleção; filtros comuns (`colecao`, `tipo`, `relacao`, `de`, `ate`, `semData`); timeline reutilizada na rede e na comparação histórica. `/grafos` preserva a seleção em `no`. Fontes, direção, incerteza e lacunas seguem explícitas; a interface não calcula similaridade nem inventa causalidade. [Método e validação](../quality/REDE-E-COMPARADORES.md).
 
 **Ampliação editorial:** dois países, dois recortes de regime, um partido, uma instituição, um acontecimento e uma obra, com fontes institucionais. Tipos `country` e `regime` têm contratos próprios, sem reclassificar automaticamente lugares, governos ou formações políticas antigas. Quatro narrativas têm tradução para inglês revisada pelo assistente, identificada como IA e sem revisão humana; o estado historiográfico segue pendente. Seletor de idioma e fallback valem para catálogos e registros, não para a interface inteira nem para os dossiês. [Contratos e validação](../quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
 

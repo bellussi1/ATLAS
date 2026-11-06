@@ -53,12 +53,12 @@ O ATLAS não organiza o conhecimento em artigos isolados. Cada grande tema é um
 | --- | --- |
 | `/` | Página inicial: busca universal, entrada para as leituras e mesa de pesquisa |
 | `/marxismo`, `/liberalismo`, `/social-democracia`, `/anarquismo` | Leituras contínuas por tradição (`/:slug/mesa` redireciona para a página) |
-| `/conhecimento` | Busca no acervo, com filtros que ficam na URL |
+| `/acervo` | Busca no acervo, com filtros que ficam na URL |
 | `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` | Catálogos por tipo |
-| `/rede` | Mapa de ligações em tela cheia (`/grafo` redireciona para cá) |
+| `/grafos` | Mapa de ligações em tela cheia (`/grafo` e `/rede` redirecionam para cá) |
 | `/verbete/:slug` | Página permanente de uma entidade, com contexto, fontes e conexões |
 
-`/comparar` redireciona para `/conhecimento`. Caminhos desconhecidos mostram "Página não encontrada", sem redirecionar.
+`/conhecimento` e `/comparar` redirecionam para `/acervo`. Caminhos desconhecidos mostram "Página não encontrada", sem redirecionar.
 
 As rotas publicadas são prerenderizadas no build. Leituras e verbetes não publicados não entram no prerender.
 

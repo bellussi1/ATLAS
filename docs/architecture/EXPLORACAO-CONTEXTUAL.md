@@ -3,7 +3,7 @@
 **Status das fases**
 - **Fases 1 e 2:** entregues. Contratos e validação em [Knowledge Explorer](../quality/KNOWLEDGE-EXPLORER.md).
 - **Fase 3:** autorizada pelo pedido de Knowledge Explorer, que amplia as três rotas originais para catálogos e páginas permanentes.
-- **Fase 4:** `/rede` e `/comparar`, layouts compilados por coleção e globais, filtros comuns e timeline compartilhada. Comparações históricas ou conceituais preservam fontes, estados e limites; não são sínteses nem escores automáticos. Ver [Rede e comparadores](../quality/REDE-E-COMPARADORES.md).
+- **Fase 4:** `/grafos` e o comparador aposentado (`/comparar` redireciona para `/acervo`), layouts compilados por coleção e globais, filtros comuns e timeline compartilhada. Comparações históricas ou conceituais preservam fontes, estados e limites; não são sínteses nem escores automáticos. Ver [Rede e comparadores](../quality/REDE-E-COMPARADORES.md).
 - **Fase 5:** contratos específicos de país e regime, sete catálogos adicionais, oito registros constitucionais e internacionalização inicial pt-BR/en. Quatro traduções têm revisão assistida por IA, distinta de revisão humana. Cobertura mundial e tradução integral de interface e dossiês seguem em aberto. Ver [Entrega e limites](../quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
 
 O diagnóstico e as restrições abaixo documentam a base histórica da migração.

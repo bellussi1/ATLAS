@@ -1,6 +1,6 @@
 # Rede e comparadores
 
-> **Estado atual (02/11/2026):** `/rede` e `/comparar` redirecionam para `/conhecimento` no escopo temporário de 01/11/2026, e `features/exploration/pages/analysis` não existe nesta árvore. O texto abaixo é o registro histórico da entrega, não uma descrição de rotas ativas.
+> **Estado atual (06/11/2026):** `/grafos` é o mapa relacional em tela cheia; `/rede` e `/grafo` redirecionam para ele. `/comparar` está aposentado e redireciona para `/acervo`. O texto abaixo é o registro histórico da entrega, não uma descrição de rotas ativas.
 
 Entrega de 01/11/2026, sobre o commit `43d911e`, em Windows, Node 24 e npm 11. Implementa a fase 4 da exploração com o acervo existente, preservando as 48 entidades, 66 relações, fontes, IDs e estados editoriais. Não altera snapshots históricos nem faz coletas.
 
