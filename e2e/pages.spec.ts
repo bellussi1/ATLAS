@@ -152,6 +152,7 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
     await expect(chapterPicker.locator('option')).toHaveCount(12);
     await chapterPicker.selectOption(secondAnchor);
     await expect(chapterPicker).toHaveValue(secondAnchor);
+    await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
   }
 });
 

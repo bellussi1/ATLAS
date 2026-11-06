@@ -1,6 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 
-import { expect, test } from './content-fixture';
+import { expect, routeContent, test, waitForHydration } from './content-fixture';
 
 for (const width of [1440, 390, 320]) {
   const mobile = width < 600;
@@ -14,10 +14,12 @@ for (const width of [1440, 390, 320]) {
         hasTouch: mobile,
         reducedMotion: mobile ? 'reduce' : 'no-preference',
       });
+      await routeContent(context);
       const page = await context.newPage();
       const errors: string[] = [];
       page.on('pageerror', (error) => errors.push(error.message));
       await page.goto(`/${route}/`);
+      await waitForHydration(page);
       const term =
         route === 'marxismo'
           ? page.getByRole('button', { name: /^Karl Marx: abrir contexto de / }).first()
