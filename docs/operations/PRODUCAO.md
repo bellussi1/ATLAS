@@ -113,7 +113,9 @@ npm run infra:prune-releases -- --keep 4 --apply
 
 O `--apply` apaga somente objetos de `c/` e `m/` que nenhum dos ponteiros retidos referencia;
 `pointer.json`, `raw/` e `atlas-drafts` não entram. Reduzir para menos de quatro releases remove
-a possibilidade de rollback para um release mais antigo, então a decisão é editorial.
+a possibilidade de rollback para um release mais antigo, então a decisão é editorial. Em
+06/11/2026 a primeira execução removeu **92 objetos / 19,9 MB** e deixou **30 objetos em `c/` e 3
+em `m/`**.
 
 ## Armazenamento dos deployments
 

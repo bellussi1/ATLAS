@@ -118,8 +118,9 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 
 17. **Carregamento do grafo e retenção de releases**
     - `/grafos` passou a usar `loadNetworkGraph()`/`networkContentResolver`: baixa as coleções e `layouts` e não baixa `search` (9,5 MB) nem `adjacency` (744 KB). Se uma rota de catálogo abrir depois, o mesmo repositório completa o pacote sem repetir as coleções.
-    - Testes: unidade em `content-repository.service.spec.ts` e `e2e/content-loading.spec.ts` verificam que `search` e `adjacency` não são pedidos em `/grafos`.
-    - `npm run infra:prune-releases` mantém o ponteiro atual e os três releases anteriores distintos, a partir do histórico de `content/content-pointer.json`; o padrão é dry-run e `--apply` apaga só objetos de `c/` e `m/`.
+    - Medição no release `45300c5…`: o pacote do grafo caiu de **24,1 MB brutos / 3,66 MB gzip** para **13,8 MB / 1,92 MB**; o HTML prerenderizado de `/grafos` ficou em **92 KB**.
+    - Testes: unidade em `content-repository.service.spec.ts` e `e2e/content-loading.spec.ts` verificam que `search` e `adjacency` não são pedidos em `/grafos`; `e2e/graph.spec.ts` **18/18**.
+    - `npm run infra:prune-releases` mantém o ponteiro atual e os três releases anteriores distintos, a partir do histórico de `content/content-pointer.json`; o padrão é dry-run e `--apply` apaga só objetos de `c/` e `m/`. Executado em 06/11: **92 objetos / 19,9 MB** removidos; restaram **30 objetos em `c/` e 3 em `m/`**, com o release atual conferido por HEAD.
     - O Worker `atlas-content-delivery` e o lifecycle de `raw/` continuam aguardando o token Cloudflare; o `r2.dev` segue como origem pública.
 
 ## Pendências que bloqueiam
