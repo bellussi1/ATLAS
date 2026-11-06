@@ -15,7 +15,7 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
 - `npm test`: **301/301**.
 - `npm run test:content`: **171/171**.
 - `npm run build`: passou, **1.185 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `npm run test:e2e`: **132/132** antes da performance; `e2e/graph.spec.ts` **18/18**; depois da revisão editorial, `pages.spec.ts` **17/17** e `ideology-sheets.spec.ts` **8/8**.
+- `npm run test:e2e`: **132/132** antes da performance; `e2e/graph.spec.ts` **18/18**; depois da revisão editorial, `pages.spec.ts` **17/17** e `ideology-sheets.spec.ts` **8/8**. A suíte completa depois do conteúdo fez **131/132**: `contextual-exploration` liberalismo 1440 falha na altura do painel (1000→976, passo da pilha) e no y do termo; ajustar a estabilidade do painel ou a tolerância do teste.
 - `npm run lint` e `npm run typecheck`: passaram.
 
 ## O que mudou nesta rodada
@@ -51,6 +51,11 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
    - Palavras por página: **marxismo 1.130**, **liberalismo 933**, **social-democracia 908**, **anarquismo 900**; minutos recalculados por palavra e bloco (19/19/14/14), em vez de 2–8 min por capítulo.
    - `leituras` de social-democracia e anarquismo saiu de `pending` e ganhou roteiro com obras primárias e estudos; `fontes` recebeu título e prosa próprios, sem falar do processo editorial.
    - Conteúdo e ponteiro publicados no release `7fb37afa…`; capturas e páginas conferidas por `content:build`, 171 testes de conteúdo e e2e de páginas/ideologia.
+9. **Verbetes: auditoria e bloqueio**
+   - 1.158 entidades e 825 relações; **554 sem nenhuma relação**; mediana de **131 palavras** em `sections`; 217 abaixo de 100. Não há campos de ideologia, vertente ou lado político.
+   - Piloto de John Locke: US$ 0,006, resumo de 583 caracteres, 2 seções e 3 relações confirmadas. O tradutor não foi usado para publicar: ele (a) reconstrói a coleção inteira a partir de um subconjunto de rascunhos e (b) remove fontes/evidências que outros verbetes ainda usam, deixando `sourceId` pendente.
+   - Estado restaurado no release `7fb37afa…`; nenhum conteúdo corrompido foi publicado.
+   - Próximo: modo `--partial` no tradutor (preserva registros e funde só o QID do rascunho), desempate que prefere rascunho com seções e, só então, lote de verbetes prioritários. O perfil político (partido, ideologia, vertente, lado) deve ser derivado das relações e exibido com atribuição, sem rótulo inventado.
 
 ## Piloto de modelo (Anthropic)
 
@@ -69,9 +74,10 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 ## Pendências que bloqueiam
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.
-2. **Suíte e2e completa** — repetir os 132 testes depois das mudanças de grafo e da validação; os 18 do grafo passaram.
+2. **Suíte e2e completa** — **131/132** depois do conteúdo; `contextual-exploration` (liberalismo 1440) falha na altura do painel (1000→976, passo da pilha) e no y do termo. Corrigir a estabilidade do painel ou a tolerância do teste antes de considerar a rodada verde.
 3. **Produção na Vercel** — o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`).
 4. **Probe de 404** — hoje `https://atlasbr.vercel.app/caminho-inexistente` responde 200 com `index.html`; o `uptime.yml` falha por isso. Só verificar depois do deploy.
+5. **Verbetes** — corrigir o modo `--partial` do tradutor e o desempate de rascunhos; depois rodar o lote prioritário e derivar o perfil político das relações.
 
 ## Pendências que pedem decisão
 
