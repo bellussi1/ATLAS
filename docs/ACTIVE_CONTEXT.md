@@ -123,6 +123,11 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `npm run infra:prune-releases` mantém o ponteiro atual e os três releases anteriores distintos, a partir do histórico de `content/content-pointer.json`; o padrão é dry-run e `--apply` apaga só objetos de `c/` e `m/`. Executado em 06/11: **92 objetos / 19,9 MB** removidos; restaram **30 objetos em `c/` e 3 em `m/`**, com o release atual conferido por HEAD.
     - O Worker `atlas-content-delivery` e o lifecycle de `raw/` continuam aguardando o token Cloudflare; o `r2.dev` segue como origem pública.
 
+18. **Cloudflare Pages preparado**
+    - `npm run infra:pages:check` valida o build contra os limites do plano gratuito (20.000 arquivos, 25 MiB por arquivo) e `npm run infra:pages` publica `dist/atlas/browser` em `atlas-bellussi.pages.dev`.
+    - O build em 06/11/2026 tinha **1.242 arquivos, 133,7 MB** e o maior arquivo em **0,86 MB**. `_headers`, `_redirects` e `404.html` já são o contrato nativo do Pages.
+    - Falta apenas criar o projeto e publicar com uma credencial Cloudflare (`npx wrangler login` ou token com Pages Edit). O R2 continua como origem do conteúdo; `ATLAS_CDN_URL` não muda.
+
 ## Pendências que bloqueiam
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.

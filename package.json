@@ -55,6 +55,8 @@
     "infra:raw-lifecycle": "node scripts/infra/raw-lifecycle.mjs",
     "infra:raw-prune": "node scripts/infra/raw-prune.mjs",
     "infra:prune-releases": "node scripts/infra/prune-releases.mjs",
+    "infra:pages": "node scripts/infra/pages-deploy.mjs",
+    "infra:pages:check": "node scripts/infra/pages-deploy.mjs --dry-run",
     "test:e2e": "playwright test",
     "prepare": "husky",
     "verify": "npm audit --omit=dev --audit-level=moderate && npm run lint && npm run typecheck && npm test && npm run test:ingestion && npm run test:content && npm run ingest:fetch-raw && npm run ingest:verify && npm run build && npm run check:links && npm run test:e2e"
