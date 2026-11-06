@@ -128,7 +128,8 @@ Referência verificada em 06/11/2026 — [retenção de deployments](https://ver
 
 As respostas JSON usadas para replay ficam em `raw/<sha256>.bin`. Em 06/11/2026 o bucket tinha
 **16.058 objetos e 9,6 GB** (a maior parte em JSON sem compressão), perto do limite gratuito de
-10 GB do R2. Três medidas mantêm isso sob controle:
+10 GB do R2. Após a migração gzip, o prefixo ficou em **1,58 GB**. Três medidas mantêm isso sob
+controle:
 
 1. **gzip**: `publish-raw` grava novos objetos com `Content-Encoding: gzip`; as capturas antigas
    podem ser recompactadas com `npm run ingest:compress-raw -- --apply`. A chave continua sendo o

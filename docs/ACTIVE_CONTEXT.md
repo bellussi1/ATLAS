@@ -97,10 +97,10 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
 
 16. **Capturas cruas: gzip e ciclo de vida**
     - O bucket não tinha 438 MB: a listagem do prefixo `raw/` em 06/11/2026 mostrou **16.058 objetos e 9,6 GB**, perto do limite gratuito de 10 GB do R2. A maior parte é JSON sem compressão.
-    - `publish-raw` passou a gravar novos objetos com `Content-Encoding: gzip`; `npm run ingest:compress-raw -- --apply` recompacta os antigos sem mudar a chave SHA-256 do JSON descomprimido. A migração está rodando em segundo plano; a amostra de 5 objetos caiu de **5,4 MB para 0,9 MB** (~6×) e o hash descomprimido continua batendo.
+    - `publish-raw` passou a gravar novos objetos com `Content-Encoding: gzip`; `npm run ingest:compress-raw -- --apply` recompacta os antigos sem mudar a chave SHA-256 do JSON descomprimido. A migração terminou: **13.171 objetos** recompactados; o prefixo `raw/` caiu de **9,6 GB para 1,58 GB** (16.058 objetos) e o hash descomprimido continua batendo.
     - A regra de ciclo de vida de **90 dias** para `raw/` está em `scripts/infra/raw-lifecycle.json`. A chave S3 atual responde **403** ao lifecycle; é preciso um token **Workers R2 Storage:Write** e `npx wrangler r2 bucket lifecycle set atlas-public --file scripts/infra/raw-lifecycle.json`, ou `wrangler login`.
     - `npm run infra:raw-prune -- --keep 20` mostra o plano de manter as 20 capturas mais recentes; `--apply` apaga o resto. Em 06/11 o plano de `--keep 20` removia **3.361 objetos / 3,16 GB** antes do gzip, mas capturas antigas deixariam de ser reexecutáveis; não foi aplicado.
-    - Próximo: terminar a migração gzip, medir o bucket, aplicar o lifecycle com o token e escolher se a poda por contagem será usada.
+    - Próximo: aplicar o lifecycle com o token e decidir se a poda por contagem será usada; o gzip já reduziu o bucket para 1,58 GB.
 
 ## Piloto de modelo (Anthropic)
 
