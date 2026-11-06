@@ -42,6 +42,7 @@ async function compress(object) {
   if (!response.ok) throw new Error(`Falha ao ler ${object.key}: HTTP ${response.status}`);
   const body = Buffer.from(await response.arrayBuffer());
   const packed = gzipSync(body, { level: 9 });
+  if (packed.byteLength >= body.byteLength) return;
   before += body.byteLength;
   after += packed.byteLength;
   if (apply)
@@ -58,8 +59,8 @@ async function compress(object) {
   if (checked % 200 === 0) console.log(`${checked}/${objects.length} verificados`);
 }
 
-for (let offset = 0; offset < objects.length; offset += 16) {
-  await Promise.all(objects.slice(offset, offset + 16).map(compress));
+for (let offset = 0; offset < objects.length; offset += 32) {
+  await Promise.all(objects.slice(offset, offset + 32).map(compress));
 }
 console.log(
   `${checked} objetos verificados; ${changed} sem gzip; ` +
