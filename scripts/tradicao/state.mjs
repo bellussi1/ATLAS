@@ -38,15 +38,26 @@ export function withStateDefaults(state) {
   };
 }
 
+async function childDirectories(path) {
+  try {
+    return (await readdir(path, { withFileTypes: true }))
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name);
+  } catch (error) {
+    if (error.code === 'ENOENT') return [];
+    throw error;
+  }
+}
+
 /** Everything spent so far, in every STATE.json of this checkout: the account has one balance. */
 export async function totalSpent(root) {
   const files = [];
   const pipeline = join(root, 'generated/pipeline');
-  for (const name of await readdir(pipeline).catch(() => []))
+  for (const name of await childDirectories(pipeline))
     files.push(join(pipeline, name, 'STATE.json'));
   const evals = join(root, 'generated/eval');
-  for (const id of await readdir(evals).catch(() => []))
-    for (const name of await readdir(join(evals, id)).catch(() => []))
+  for (const id of await childDirectories(evals))
+    for (const name of await childDirectories(join(evals, id)))
       files.push(join(evals, id, name, 'STATE.json'));
   let usd = 0;
   for (const file of files) usd += (await loadStateFile(file)).spend.usd;
