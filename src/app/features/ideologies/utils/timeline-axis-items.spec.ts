@@ -29,5 +29,8 @@ describe('axisItemOf', () => {
   });
   it('names the kind in Portuguese', () => {
     expect(entityKindLabel('event')).toBe('Acontecimento');
+    expect(entityKindLabel('place', 'country')).toBe('País');
+    expect(entityKindLabel('place', 'regime')).toBe('Regime');
+    expect(entityKindLabel('place')).toBe('Território');
   });
 });

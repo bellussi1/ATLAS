@@ -18,6 +18,14 @@ test('expanded catalogues expose grounded country/regime profiles and the other 
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
     expect(await page.locator('.results article').count()).toBeGreaterThan(0);
   }
+  await page.goto('/paises');
+  await expect(page.locator('.results a[href^="/verbete/brasil?"]')).toBeVisible();
+  await page.goto('/regimes');
+  await expect(
+    page.locator('.results a[href^="/verbete/brasil-recorte-constitucional-1988?"]'),
+  ).toBeVisible();
+  await page.goto('/lugares');
+  await expect(page.locator('.results a[href^="/verbete/brasil?"]')).toHaveCount(0);
   await page.goto('/verbete/brasil');
   await expect(page.getByRole('region', { name: 'Perfil específico do registro' })).toContainText(
     'República Federativa do Brasil',

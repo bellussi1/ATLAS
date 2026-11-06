@@ -19,6 +19,14 @@ describe('static discovery index', () => {
     });
     expect(index.find((item) => item.kind === 'evento')?.kindLabel).toBe('Evento');
     expect(index.find((item) => item.kind === 'work')?.kindLabel).toBe('Obra');
+    expect(index.find((item) => item.path === '/verbete/brasil')).toMatchObject({
+      kind: 'country',
+      kindLabel: 'País',
+    });
+    expect(
+      index.find((item) => item.path === '/verbete/brasil-recorte-constitucional-1988'),
+    ).toMatchObject({ kind: 'regime', kindLabel: 'Regime' });
+    expect(index.find((item) => item.kind === 'place')?.kindLabel).toBe('Lugar');
     expect(index.find((item) => item.kind === 'fonte')).toMatchObject({
       path: '/fontes',
       fragment: expect.stringMatching(/^source-/),

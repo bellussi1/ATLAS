@@ -1,27 +1,43 @@
 import { contentFixture } from '@testing/content-fixture';
 
 import { localizedEntity } from '../queries/localized-content';
-import { countrySchema, knowledgeGraphSchema, regimeSchema } from './content-schema';
+import { entitySchema, knowledgeGraphSchema } from './content-schema';
 import { translationCatalogueSchema } from './content-translation';
 
-describe('country and regime editorial contracts', () => {
+describe('place editorial contracts', () => {
   const graph = contentFixture.graph;
-  it('keeps countries distinct from places, governments and regimes', () => {
+  it('keeps the country and regime cuts as places with their own profiles', () => {
     const country = graph.atlases
       .flatMap((a) => a.entities)
       .find((e) => e.id === 'country-brazil')!;
-    expect(countrySchema.safeParse(country).success).toBe(true);
-    expect(countrySchema.safeParse({ ...country, countryProfile: undefined }).success).toBe(false);
-    expect(regimeSchema.safeParse(country).success).toBe(false);
+    expect(country.kind).toBe('place');
+    expect(country.kind === 'place' ? country.placeType : undefined).toBe('country');
+    expect(entitySchema.safeParse(country).success).toBe(true);
+    expect(entitySchema.safeParse({ ...country, countryProfile: undefined }).success).toBe(false);
+    expect(entitySchema.safeParse({ ...country, placeType: 'regime' }).success).toBe(false);
     const regime = graph.atlases
       .flatMap((a) => a.entities)
       .find((e) => e.id === 'regime-brazil-constitution-1988')!;
-    expect(regimeSchema.safeParse({ ...regime, temporalExtent: null }).success).toBe(false);
+    expect(regime.kind).toBe('place');
+    expect(regime.kind === 'place' ? regime.placeType : undefined).toBe('regime');
+    expect(entitySchema.safeParse({ ...regime, temporalExtent: null }).success).toBe(false);
+  });
+  it('normalizes the former country and regime kinds into places', () => {
+    const country = graph.atlases
+      .flatMap((a) => a.entities)
+      .find((e) => e.id === 'country-brazil')!;
+    const legacy = { ...country, kind: 'country' } as Record<string, unknown>;
+    delete legacy['placeType'];
+    const parsed = entitySchema.parse(legacy);
+    expect(parsed.kind).toBe('place');
+    expect(parsed.kind === 'place' ? parsed.placeType : undefined).toBe('country');
   });
   it('rejects ungrounded classifications and non-country references before publication', () => {
     const invalid = structuredClone(graph);
-    const regime = invalid.atlases.flatMap((a) => a.entities).find((e) => e.kind === 'regime')!;
-    if (regime.kind !== 'regime') throw Error('Missing regime fixture');
+    const regime = invalid.atlases
+      .flatMap((a) => a.entities)
+      .find((e) => e.kind === 'place' && e.placeType === 'regime')!;
+    if (regime.kind !== 'place' || !regime.regimeProfile) throw Error('Missing regime fixture');
     regime.regimeProfile.countryIds = ['person-karl-marx'];
     expect(knowledgeGraphSchema.safeParse(invalid).success).toBe(false);
     regime.regimeProfile.countryIds = ['country-brazil'];

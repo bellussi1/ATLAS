@@ -6,16 +6,16 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
 - Gitflow: `develop` existe no remoto e é a integração; a última rodada publicada é `791a362`. As frentes de zoom, performance do grafo e `publish-raw` estão mescladas localmente e ainda não foram pushadas. `master` não recebeu esta rodada.
-- Conteúdo: 13 coleções publicadas no release `7fb37afa…`; `content/content-pointer.json` atualizado.
+- Conteúdo: 13 coleções publicadas no release `d6ac0ed…`; `content/content-pointer.json` atualizado.
 - Build local: **1.185 rotas prerenderizadas**.
 - CI: `42274140215` falhou em `ingest:fetch-raw` porque os dois novos manifests de captura ainda não tinham blobs publicados no R2. `npm run ingest:publish-raw` foi corrigido e está publicando; reexecutar o run depois do upload.
 
 ## Verificações executadas
 
-- `npm test`: **302/302**.
+- `npm test`: **303/303**.
 - `npm run test:content`: **171/171**.
 - `npm run build`: passou, **1.185 rotas**; `vercel.json` gerado com CSP de 9 hashes.
-- `npm run test:e2e`: `e2e/graph.spec.ts` **18/18**; `pages.spec.ts` **19/19** (inclui `/fontes` paginado e o grafo de `#conexoes`); `ideology-sheets.spec.ts` **8/8**; `public-routes` **35/35** em 390/1440, sem achados sérios em `/marxismo` e `/liberalismo`. `contextual-exploration` segue com **6/7**: liberalismo 1440 falha no y do termo ao voltar (diferença observada de **64 px**); ajustar a estabilidade do painel ou a tolerância do teste.
+- `npm run test:e2e`: `e2e/graph.spec.ts` **18/18**; `pages.spec.ts` **19/19** (inclui `/fontes` paginado e o grafo de `#conexoes`); `ideology-sheets.spec.ts` **8/8**; `public-routes` **35/35** em 390/1440, sem achados sérios em `/marxismo` e `/liberalismo`; `editorial-i18n` **2/2** (países, regimes e perfis); `knowledge-explorer` (catálogos) **1/1**. `contextual-exploration` segue com **6/7**: liberalismo 1440 falha no y do termo ao voltar (diferença observada de **64 px**); ajustar a estabilidade do painel ou a tolerância do teste.
 - `npm run lint` e `npm run typecheck`: passaram.
 
 ## O que mudou nesta rodada
@@ -67,6 +67,13 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
     - Em `/marxismo#conexoes` (e nas demais tradições), o capítulo usa o motor real do grafo limitado ao atlas da tradição — **42 entidades** em `atlas-marx-valor` —, com o conceito raiz selecionado e o enquadramento do atlas como **100%**.
     - O painel de detalhe do grafo fica desligado no capítulo: a seleção no mapa abre a ficha no painel de leitura abaixo, e índice e linha do tempo continuam funcionando. O canvas radial de 920×572 foi removido.
     - No modo embutido o grafo não captura atalhos de teclado fora do próprio componente; a barra fica compacta e o status vira texto acessível.
+
+12. **Regime, país e lugar unificados**
+    - O tipo de entidade `place` passou a ser único; `placeType` (`country` ou `regime`) marca apenas os recortes que têm perfil próprio. O grafo agora tem **127 lugares** e nenhum nó `country` ou `regime`.
+    - `country` e `regime` continuam aceitos na entrada por um `preprocess` do `entitySchema`, que os converte em `place` com o `placeType` correspondente; capturas e snapshots antigos seguem válidos.
+    - O índice de descoberta continua derivando `País` e `Regime` do `placeType`, então `/paises`, `/regimes` e os filtros do acervo preservam os recortes; `/lugares` lista apenas os 123 lugares sem perfil.
+    - `/verbete/brasil` e `/verbete/portugal-recorte-constitucional-1976` mantêm os perfis de país e regime; a rede, o card e a linha do tempo usam o mesmo nó de lugar, com rótulo de catálogo quando aplicável.
+    - Conteúdo republicado no release `d6ac0ed…`; ponteiro atualizado.
 
 ## Piloto de modelo (Anthropic)
 

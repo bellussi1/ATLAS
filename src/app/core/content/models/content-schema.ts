@@ -82,45 +82,79 @@ export const eventSchema = entityBaseSchema.extend({ kind: z.literal('event') })
 export const historicalPolitySchema = entityBaseSchema.extend({
   kind: z.literal('historical-polity'),
 });
-export const placeSchema = entityBaseSchema.extend({ kind: z.literal('place') });
+export const placeTypeSchema = z.enum(['place', 'country', 'regime']);
+export type PlaceType = z.infer<typeof placeTypeSchema>;
+const countryProfileSchema = z.object({
+  officialName: z.string().trim().min(1),
+  territorialScope: z.string().trim().min(1),
+  identityNote: z.string().trim().min(1),
+  evidenceIds: z.array(identifier).min(1),
+});
+const regimeProfileSchema = z.object({
+  countryIds: z.array(identifier).min(1),
+  periodNote: z.string().trim().min(1),
+  classifications: z
+    .array(
+      z.object({
+        label: z.string().trim().min(1),
+        attribution: z.string().trim().min(1),
+        edition: z.string().trim().min(1),
+        limits: z.string().trim().min(1),
+        evidenceIds: z.array(identifier).min(1),
+      }),
+    )
+    .min(1),
+});
+export const placeSchema = entityBaseSchema
+  .extend({
+    kind: z.literal('place'),
+    placeType: placeTypeSchema.optional(),
+    countryProfile: countryProfileSchema.optional(),
+    regimeProfile: regimeProfileSchema.optional(),
+  })
+  .superRefine((value, context) => {
+    if (value.placeType === 'country' && !value.countryProfile)
+      context.addIssue({
+        code: 'custom',
+        path: ['countryProfile'],
+        message: 'Recorte de país exige país, território e nota de identidade.',
+      });
+    if (value.placeType === 'regime' && !value.regimeProfile)
+      context.addIssue({
+        code: 'custom',
+        path: ['regimeProfile'],
+        message: 'Recorte de regime exige país associado, nota de período e classificação.',
+      });
+    if (value.placeType !== 'country' && value.countryProfile)
+      context.addIssue({
+        code: 'custom',
+        path: ['countryProfile'],
+        message: 'Só um recorte de país pode trazer perfil de país.',
+      });
+    if (value.placeType !== 'regime' && value.regimeProfile)
+      context.addIssue({
+        code: 'custom',
+        path: ['regimeProfile'],
+        message: 'Só um recorte de regime pode trazer perfil de regime.',
+      });
+    if (
+      value.placeType === 'regime' &&
+      (!value.temporalExtent || value.temporalExtent.startYear === null)
+    )
+      context.addIssue({
+        code: 'custom',
+        path: ['temporalExtent'],
+        message: 'Regime exige um início temporal registrado.',
+      });
+  });
 export const partySchema = entityBaseSchema.extend({ kind: z.literal('party') });
 export const institutionSchema = entityBaseSchema.extend({ kind: z.literal('institution') });
 export const governmentSchema = entityBaseSchema.extend({ kind: z.literal('government') });
 export const policySchema = entityBaseSchema.extend({ kind: z.literal('policy') });
 export const articleSchema = entityBaseSchema.extend({ kind: z.literal('article') });
-export const countrySchema = entityBaseSchema.extend({
-  kind: z.literal('country'),
-  countryProfile: z.object({
-    officialName: z.string().trim().min(1),
-    territorialScope: z.string().trim().min(1),
-    identityNote: z.string().trim().min(1),
-    evidenceIds: z.array(identifier).min(1),
-  }),
-});
-export const regimeSchema = entityBaseSchema.extend({
-  kind: z.literal('regime'),
-  temporalExtent: temporalExtentSchema.refine(
-    (e) => e.startYear !== null,
-    'Regime exige um início temporal registrado.',
-  ),
-  regimeProfile: z.object({
-    countryIds: z.array(identifier).min(1),
-    periodNote: z.string().trim().min(1),
-    classifications: z
-      .array(
-        z.object({
-          label: z.string().trim().min(1),
-          attribution: z.string().trim().min(1),
-          edition: z.string().trim().min(1),
-          limits: z.string().trim().min(1),
-          evidenceIds: z.array(identifier).min(1),
-        }),
-      )
-      .min(1),
-  }),
-});
 
-export const entitySchema = z.discriminatedUnion('kind', [
+/** Legacy country/regime records enter as places with their curated profile. */
+const entityUnion = z.discriminatedUnion('kind', [
   personSchema,
   ideologySchema,
   conceptSchema,
@@ -133,9 +167,15 @@ export const entitySchema = z.discriminatedUnion('kind', [
   governmentSchema,
   policySchema,
   articleSchema,
-  countrySchema,
-  regimeSchema,
 ]);
+export const entitySchema = z.preprocess((value) => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return value;
+  const kind = (value as Record<string, unknown>)['kind'];
+  if (kind === 'country' || kind === 'regime') {
+    return { ...value, kind: 'place', placeType: kind };
+  }
+  return value;
+}, entityUnion);
 
 export const sourceSchema = z.object({
   id: identifier,
@@ -557,8 +597,9 @@ export const knowledgeGraphSchema = z
               path,
             });
         };
-        if (entity.kind === 'country') validateProfileEvidence(entity.countryProfile.evidenceIds);
-        if (entity.kind === 'regime') {
+        if (entity.kind === 'place' && entity.placeType === 'country' && entity.countryProfile)
+          validateProfileEvidence(entity.countryProfile.evidenceIds);
+        if (entity.kind === 'place' && entity.placeType === 'regime' && entity.regimeProfile) {
           if (!entity.temporalExtent || entity.temporalExtent.startYear === null)
             context.addIssue({
               code: 'custom',
@@ -568,7 +609,7 @@ export const knowledgeGraphSchema = z
           const countryIds = entity.regimeProfile.countryIds;
           const countries = new Set(
             all((a) => a.entities)
-              .filter((e) => e.kind === 'country')
+              .filter((e) => e.kind === 'place' && e.placeType === 'country')
               .map((e) => e.id),
           );
           if (
@@ -648,6 +689,10 @@ export type Atlas = z.infer<typeof atlasSchema>;
 export type KnowledgeGraph = z.infer<typeof knowledgeGraphSchema>;
 export type Entity = z.infer<typeof entitySchema>;
 export type EntityKind = Entity['kind'];
+/** Subtype of a place, or undefined for every other record kind. */
+export function placeTypeOf(entity: Entity): PlaceType | undefined {
+  return entity.kind === 'place' ? entity.placeType : undefined;
+}
 export type Person = z.infer<typeof personSchema>;
 export type Ideology = z.infer<typeof ideologySchema>;
 export type Work = z.infer<typeof workSchema>;
@@ -657,8 +702,6 @@ export type Party = z.infer<typeof partySchema>;
 export type Government = z.infer<typeof governmentSchema>;
 export type Policy = z.infer<typeof policySchema>;
 export type Article = z.infer<typeof articleSchema>;
-export type Country = z.infer<typeof countrySchema>;
-export type Regime = z.infer<typeof regimeSchema>;
 export type Source = z.infer<typeof sourceSchema>;
 export type Evidence = z.infer<typeof evidenceSchema>;
 export type Citation = z.infer<typeof citationSchema>;

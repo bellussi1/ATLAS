@@ -37,8 +37,6 @@ export function entityContext(
     'historical-polity': 'Formação política histórica',
     policy: 'Política pública',
     article: 'Artigo',
-    country: 'País',
-    regime: 'Regime',
   };
   const sources = graph.atlases.flatMap((a) => a.sources);
   const evidenceIds = graph.atlases
@@ -117,13 +115,19 @@ export function entityContext(
     return prose.length ? [{ heading, paragraphs: prose }] : [];
   });
   const discovery = entity.discoveryMetadata;
+  const kind =
+    entity.kind === 'place' && entity.placeType === 'country'
+      ? 'País'
+      : entity.kind === 'place' && entity.placeType === 'regime'
+        ? 'Regime'
+        : (labels[entity.kind] ?? 'Registro');
   return {
     entityId: entity.id,
     editorialStatus: entity.editorialStatus,
     aiAssisted: isAiAssisted(references),
     partialCoverage: hasPartialCoverage(entity.context),
     title: entity.title,
-    kind: labels[entity.kind] ?? 'Registro',
+    kind,
     description:
       discovery?.description && discovery.description !== entity.summary
         ? discovery.description

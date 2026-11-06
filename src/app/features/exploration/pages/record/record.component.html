@@ -105,8 +105,10 @@
       </nav>
 
       <div class="reading">
-        @if (entity.kind === 'country' || entity.kind === 'regime') {
-          <app-entity-profile [entity]="originalEntity()!" [graph]="repository.knowledgeGraph" />
+        @if (entity.kind === 'place') {
+          @if (entity.countryProfile || entity.regimeProfile) {
+            <app-entity-profile [entity]="originalEntity()!" [graph]="repository.knowledgeGraph" />
+          }
         }
         @for (item of readableSections(); track item.index) {
           <section [attr.lang]="presentation()?.locale" [id]="'section-' + item.index">

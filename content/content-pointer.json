@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev",
-  "release": "7fb37afaa9a555e0eb1cd4c10cf036e87a3a89bd7a1d479e089b983081d87b7c",
+  "release": "d6ac0ed5dbb18fa8d620210126bf47691888fbf4b344a1f903b0c006b65195ac",
   "manifest": {
-    "sha256": "6258712e19476cecd33103a8ab1338d5e5191dceff94cc93fc21facd751f08ba",
+    "sha256": "6a1e1a644bf308799cbfbc8a9e4adb77d9cf128aa62915d04eb3ead3a467d8a7",
     "bytes": 5354
   },
   "artifacts": [
@@ -33,9 +33,9 @@
       "file": "atlas-marx-valor.f5f436e1177cbf41eb63c1fd0624a4b50c29990d17474605b567eeb7fd55973e.json"
     },
     {
-      "sha256": "c60ba49d4d1636f50d57323daa9c98b2d0b233a0c54f3cb62b29fc8fdbaa6214",
-      "bytes": 20410,
-      "file": "atlas-constitutional-contexts.c60ba49d4d1636f50d57323daa9c98b2d0b233a0c54f3cb62b29fc8fdbaa6214.json"
+      "sha256": "6313f0470179ab6fb545928c70c2cc6ad804f467febf08bfa92e1f23fc070683",
+      "bytes": 20490,
+      "file": "atlas-constitutional-contexts.6313f0470179ab6fb545928c70c2cc6ad804f467febf08bfa92e1f23fc070683.json"
     },
     {
       "sha256": "3d030c6e95d440ca862436d7f6a34cecc444c9316d006b0c6518aed132a03981",
@@ -103,9 +103,9 @@
       "file": "adjacency.7ab23050655188ca4f433461cf0fc8052f92481d78d3d9e15d6ae21cd2223bdb.json"
     },
     {
-      "sha256": "41687a2a811f21d2cd3f024ff6f1d3c94def1b8053709937d7942256a93bcc7f",
-      "bytes": 1077788,
-      "file": "layouts.41687a2a811f21d2cd3f024ff6f1d3c94def1b8053709937d7942256a93bcc7f.json"
+      "sha256": "db0d5a4df0fd665db126d77f6cd94aab976dd3acc82e219fd981639793568a86",
+      "bytes": 1077877,
+      "file": "layouts.db0d5a4df0fd665db126d77f6cd94aab976dd3acc82e219fd981639793568a86.json"
     }
   ],
   "media": [

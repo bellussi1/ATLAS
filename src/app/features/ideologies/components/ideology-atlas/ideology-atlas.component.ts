@@ -12,7 +12,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { readerPredicate, readerProse } from '@core/content/editorial/reader-voice';
 import { entityMedia } from '@core/content/media/asset-license';
-import type { Entity, Relation } from '@core/content/models/content-schema';
+import { type Entity, placeTypeOf, type Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
@@ -194,7 +194,7 @@ export class IdeologyAtlasComponent {
     return extent.label ?? 'Data não informada';
   }
   cardIcon(entity: Entity) {
-    return iconKind(entity.kind);
+    return iconKind(entity.kind, placeTypeOf(entity));
   }
   picture(entity: Entity): string | null {
     return entityMedia(this.repository.knowledgeGraph, entity)?.assetPath ?? null;
@@ -206,10 +206,7 @@ export class IdeologyAtlasComponent {
     return count ? `${count} ${count === 1 ? 'relação' : 'relações'}` : '';
   }
   kindLabel(entity: Entity): string {
-    return this.kindName(entity.kind);
-  }
-  kindName(kind: Entity['kind']): string {
-    return entityKindLabel(kind);
+    return entityKindLabel(entity.kind, placeTypeOf(entity));
   }
   relationName(relation: KnowledgeRelationResult): string {
     const labels: Record<string, string> = {

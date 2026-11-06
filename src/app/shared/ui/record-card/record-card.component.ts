@@ -7,6 +7,7 @@ import {
   input,
 } from '@angular/core';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
+import { placeTypeOf } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import {
@@ -104,12 +105,24 @@ export class RecordCardComponent {
     }
     return undefined;
   });
-  readonly shownIcon = computed<IconKind>(
-    () => this.icon() ?? iconKind(this.entity()?.kind ?? 'record'),
-  );
-  readonly shownKind = computed(
-    () => this.kindLabel() ?? kindNames[this.entity()?.kind ?? ''] ?? 'Registro',
-  );
+  readonly shownIcon = computed<IconKind>(() => {
+    const entity = this.entity();
+    return (
+      this.icon() ?? iconKind(entity?.kind ?? 'record', entity ? placeTypeOf(entity) : undefined)
+    );
+  });
+  readonly shownKind = computed(() => {
+    if (this.kindLabel()) return this.kindLabel();
+    const entity = this.entity();
+    if (!entity) return 'Registro';
+    if (entity.kind === 'place')
+      return entity.placeType === 'country'
+        ? 'País'
+        : entity.placeType === 'regime'
+          ? 'Regime'
+          : 'Lugar';
+    return kindNames[entity.kind] ?? 'Registro';
+  });
   readonly shownTitle = computed(() => this.title() ?? this.entity()?.title ?? '');
   readonly shownPeriod = computed(() => {
     if (this.period() !== null) return this.period();

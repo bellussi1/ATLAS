@@ -916,8 +916,6 @@ export const stages = [
         'party',
         'institution',
         'government',
-        'country',
-        'regime',
         'policy',
         'article',
       ]);

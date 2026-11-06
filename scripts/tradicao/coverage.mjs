@@ -23,8 +23,6 @@ export const bucketOfKind = {
   concept: 'conceito',
   work: 'obra',
   institution: 'instituicao',
-  country: 'estado',
-  regime: 'estado',
   'historical-polity': 'estado',
   government: 'estado',
   place: 'lugar',
@@ -109,7 +107,14 @@ export function measure({ page, supplement, atlases }) {
   for (const id of referencedEntityIds(page, supplement)) if (byId.has(id)) scopeIds.add(id);
 
   const entities = Object.fromEntries(entityBuckets.map((bucket) => [bucket, 0]));
-  for (const id of scopeIds) entities[bucketOfKind[byId.get(id).kind] ?? 'outros'] += 1;
+  for (const id of scopeIds) {
+    const entity = byId.get(id);
+    const bucket =
+      entity.kind === 'place' && entity.placeType
+        ? 'estado'
+        : (bucketOfKind[entity.kind] ?? 'outros');
+    entities[bucket] += 1;
+  }
   entities.total = scopeIds.size;
 
   const relationIds = new Set();
