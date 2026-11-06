@@ -100,6 +100,21 @@ curl -sI https://atlas-content-delivery.atlas-bellussi.workers.dev/c/<sha256>.js
 O primeiro deve responder `Cache-Control: public, max-age=0, must-revalidate`; o segundo,
 `public, max-age=31536000, immutable`. Ambos precisam de `Access-Control-Allow-Origin: *`.
 
+## Retenção de releases no R2
+
+Cada `content:publish` grava objetos imutáveis novos e pode deixar releases antigos no bucket.
+`npm run infra:prune-releases` mantém o ponteiro atual e os três releases anteriores distintos,
+lendo o histórico de `content/content-pointer.json` no git. O padrão é simulação:
+
+```bash
+npm run infra:prune-releases
+npm run infra:prune-releases -- --keep 4 --apply
+```
+
+O `--apply` apaga somente objetos de `c/` e `m/` que nenhum dos ponteiros retidos referencia;
+`pointer.json`, `raw/` e `atlas-drafts` não entram. Reduzir para menos de quatro releases remove
+a possibilidade de rollback para um release mais antigo, então a decisão é editorial.
+
 ## Armazenamento dos deployments
 
 Os HTMLs estáticos incluíam cópias dos objetos do grafo via TransferState.

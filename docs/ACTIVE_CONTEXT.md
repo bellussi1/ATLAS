@@ -116,6 +116,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 - `score` respondeu "insuficiente": faltam 40 itens conferidos por pessoa em cada braço. Nenhum modelo foi alterado.
 - DeepSeek não foi medido: não há chave `DEEPSEEK_API_KEY` no ambiente. Não usar a assinatura Go para lote de dados.
 
+17. **Carregamento do grafo e retenção de releases**
+    - `/grafos` passou a usar `loadNetworkGraph()`/`networkContentResolver`: baixa as coleções e `layouts` e não baixa `search` (9,5 MB) nem `adjacency` (744 KB). Se uma rota de catálogo abrir depois, o mesmo repositório completa o pacote sem repetir as coleções.
+    - Testes: unidade em `content-repository.service.spec.ts` e `e2e/content-loading.spec.ts` verificam que `search` e `adjacency` não são pedidos em `/grafos`.
+    - `npm run infra:prune-releases` mantém o ponteiro atual e os três releases anteriores distintos, a partir do histórico de `content/content-pointer.json`; o padrão é dry-run e `--apply` apaga só objetos de `c/` e `m/`.
+    - O Worker `atlas-content-delivery` e o lifecycle de `raw/` continuam aguardando o token Cloudflare; o `r2.dev` segue como origem pública.
+
 ## Pendências que bloqueiam
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.
