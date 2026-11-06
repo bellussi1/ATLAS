@@ -1,6 +1,6 @@
 # Produção: roteiro de infraestrutura
 
-Site: `https://atlasbr.vercel.app` (Vercel). Conteúdo: bucket R2 `atlas-public` (hoje em `r2.dev`).
+Site: `https://atlasbr.vercel.app` (Vercel). A migração do host estático para Cloudflare Pages está preparada em `npm run infra:pages`; falta publicar com credencial Cloudflare. Conteúdo: bucket R2 `atlas-public` (hoje em `r2.dev`).
 
 **O repositório é público.** Nada sensível entra nele: tokens, chaves, IDs de conta e e-mails ficam em segredos do GitHub, em `~/.atlas/*.env` ou no painel do provedor. O CI roda o gitleaks sobre todo o histórico, o hook de pré-commit roda `gitleaks protect --staged` quando o gitleaks está instalado, e `.gitignore` bloqueia `.env*`, `*.pem`, `*.key` e `.vercel`.
 
