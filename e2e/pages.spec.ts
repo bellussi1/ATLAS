@@ -325,6 +325,21 @@ test('retired /comparar redirects to the archive search and /grafo and /rede to 
   await expect(page).toHaveURL(/\/grafos$/);
 });
 
+test('/fontes paginates and a source anchor opens the page that holds it', async ({ page }) => {
+  await page.goto('/fontes');
+  const rows = page.locator('.source-row');
+  await expect(rows).toHaveCount(24);
+  const pager = page.getByRole('navigation', { name: 'Paginação do acervo' }).first();
+  await expect(pager).toBeVisible();
+  await pager.getByRole('link', { name: /Próxima/ }).click();
+  await expect(page).toHaveURL(/pagina=2/);
+  const id = await rows.first().getAttribute('id');
+  expect(id).toBeTruthy();
+  await page.goto(`/fontes#${id}`);
+  await expect(page).toHaveURL(/pagina=2/);
+  await expect(page.locator(`#${id}`)).toBeInViewport();
+});
+
 test('debates show estimated positions with their evidence, in words and not only colour', async ({
   page,
 }) => {
