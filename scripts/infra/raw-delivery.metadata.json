@@ -1,0 +1,5 @@
+{
+  "main_module": "raw-delivery.worker.mjs",
+  "compatibility_date": "2026-11-06",
+  "bindings": [{ "type": "r2_bucket", "name": "PUBLIC_CAPTURES", "bucket_name": "atlas-public" }]
+}

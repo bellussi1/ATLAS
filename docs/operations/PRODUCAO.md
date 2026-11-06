@@ -77,3 +77,16 @@ mesmo intervalo em Usage → Deployment Storage. A atualização do uso depende
 da exclusão dos deployments antigos e da atualização das métricas.
 
 Referência verificada em 06/11/2026 — [retenção de deployments](https://vercel.com/docs/deployment-retention).
+
+## Capturas do CI
+
+O Worker `atlas-raw-delivery` entrega somente GET e HEAD de `raw/<sha256>.bin`,
+com binding para `atlas-public`. O código e os metadados estão em
+`scripts/infra/raw-delivery*`. O endpoint é
+`https://atlas-raw-delivery.atlas-bellussi.workers.dev` e a variável pública
+`ATLAS_RAW_BASE_URL` do GitHub seleciona esse espelho para os downloads do CI.
+O script continua verificando o hash por objeto e escrevendo o cache de forma atômica.
+A URL usada pela aplicação continua definida no ponteiro do conteúdo.
+
+Acompanhar o uso de Workers no painel Cloudflare e os limites do plano ativo.
+Os downloads parciais verificados ficam no cache do Actions para a próxima tentativa.

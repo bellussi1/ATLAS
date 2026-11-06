@@ -22,10 +22,13 @@ async function digestOf(path) {
 const pointer = parsePointer(await readFile(pointerPath, 'utf8'));
 const responses = await listJsonResponses();
 let downloaded = 0;
+const base = new URL(process.env.ATLAS_RAW_BASE_URL || pointer.baseUrl);
+if (base.protocol !== 'https:' || base.username || base.password || base.pathname !== '/')
+  throw new Error('ATLAS_RAW_BASE_URL deve ser uma origem HTTPS sem caminho ou credenciais.');
 
 async function download(key) {
   for (let attempt = 0; attempt < 7; attempt++) {
-    const result = await fetch(`${pointer.baseUrl}/${key}`, {
+    const result = await fetch(new URL(key, base), {
       signal: AbortSignal.timeout(60_000),
     });
     if (result.ok) return Buffer.from(await result.arrayBuffer());
