@@ -6,7 +6,7 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
 - Gitflow: `develop` existe no remoto e é a integração; a última rodada publicada é `791a362`. As frentes de zoom, performance do grafo e `publish-raw` estão mescladas localmente e ainda não foram pushadas. `master` não recebeu esta rodada.
-- Conteúdo: 13 coleções publicadas no release `63fac66…`; `content/content-pointer.json` atualizado.
+- Conteúdo: 13 coleções publicadas no release `45300c5…`; `content/content-pointer.json` atualizado.
 - Build local: **1.185 rotas prerenderizadas**.
 - CI: `42274140215` falhou em `ingest:fetch-raw` porque os dois novos manifests de captura ainda não tinham blobs publicados no R2. `npm run ingest:publish-raw` foi corrigido e está publicando; reexecutar o run depois do upload.
 
@@ -80,6 +80,12 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
     - Regra aplicada: só virou conceito o verbete sem data e sem relação que nomeia prática, instituição, processo ou ideia; guerras, revoluções, invasões, eleições datadas, operações, tratados, pandemias e períodos nomeados continuam `event`.
     - O override `conceptualEventIds` do grafo foi removido; a classificação agora vem do dado.
     - `/conceitos` passou a listar esses verbetes e `/acontecimentos` ficou com os acontecimentos históricos nomeados; o release `63fac66…` foi publicado e o ponteiro atualizado.
+
+14. **Posicionamento do grafo por contexto**
+    - O layout deixou de agrupar por coleção. Os nós agora são agrupados por **similaridade de texto** (título, resumo e afirmações), com k-means determinístico sobre vetores TF-IDF; as regiões passaram a ser `ctx-…`, não ids de atlas.
+    - Links de contexto invisíveis ligam cada verbete aos três textos mais próximos; as relações documentadas continuam com peso maior. Assim, um verbete sem relação ainda fica perto do vocabulário que compartilha com outros.
+    - Efeito observado: o antigo grupo `atlas-verbetes-citados` com **896 nós** virou **14 grupos semânticos**, o maior com **167**. Dos **554 nós sem relação**, a mediana de distância até um nó conectado ficou em **51 px** (p90 **75 px**).
+    - O painel de legenda passa a explicar que a posição aproxima por vocabulário e ligações, não por distância histórica. Release `45300c5…` publicado; ponteiro atualizado.
 
 ## Piloto de modelo (Anthropic)
 
