@@ -12,7 +12,7 @@
   "review": {
     "status": "com-fontes",
     "reviewer": null,
-    "updatedAt": "2026-11-01"
+    "updatedAt": "2026-11-06"
   },
   "identity": {
     "accent": "indigo",
@@ -26,12 +26,16 @@
       "title": "Uma tradição em disputa",
       "kicker": "O que é?",
       "layout": "introduction",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
-        "O marxismo reúne tradições de interpretação e ação política inspiradas em Karl Marx e em sua colaboração com Friedrich Engels. Sua unidade não apaga divergências sobre história, economia, Estado e transformação social.",
-        "Esta leitura parte da formação europeia no século XIX e acompanha documentos, autores e debates posteriores. Não é uma história completa dos movimentos e governos que reivindicaram Marx. O recorte brasileiro e latino-americano aparece nos registros de pensadores, ainda em revisão."
+        "O marxismo reúne teorias, programas e práticas políticas que se reivindicam da obra de Karl Marx e de sua colaboração com Friedrich Engels. A unidade do nome não elimina divergências sobre história, economia, Estado e transformação social.",
+        "Três perguntas organizam a tradição: como o capitalismo produz riqueza e desigualdade; por que as relações de classe estruturam a política; e quais mudanças são possíveis. As respostas variam entre reforma e revolução, entre partidos, sindicatos e Estados.",
+        "A leitura acompanha a formação europeia do século XIX e alguns documentos, autores e debates posteriores. Não é uma história completa dos movimentos e governos que reivindicaram Marx. O recorte brasileiro e latino-americano aparece nos registros de pensadores e ainda está em revisão.",
+        "A obra de Marx não forma um sistema fechado. Manuscritos, artigos e livros respondem a conjunturas distintas, e a unidade do marxismo foi construída por gerações posteriores, em disputas sobre o que o texto autorizava."
       ],
-      "sourceIds": ["source-v4-marx-sep"],
+      "sourceIds": [
+        "source-v4-marx-sep"
+      ],
       "blocks": [],
       "gap": null,
       "question": "Por que um pensamento do século XIX ainda organiza debates hoje?",
@@ -43,16 +47,24 @@
       "title": "Ler o mundo industrial",
       "kicker": "Origens e formação",
       "layout": "documents",
-      "minutes": 3,
+      "minutes": 2,
       "narrative": [
-        "A crítica de Marx se desenvolve em confronto com a filosofia alemã, a economia política e os projetos socialistas de seu tempo. Esses encontros não formam uma sequência automática de causas: são debates intelectuais em uma sociedade em transformação.",
-        "Dois documentos oferecem entradas distintas: o Manifesto Comunista, associado a Marx e Engels, e O capital, dedicado à crítica da economia política. Abra cada registro para distinguir o propósito do texto e a evidência disponível."
+        "Marx e Engels escrevem em uma Europa que se industrializa, urbaniza e transforma o trabalho em mercadoria. A fábrica, o êxodo rural e a formação do proletariado mudam a experiência social e as linguagens políticas.",
+        "O marxismo se forma no confronto com a filosofia alemã, a economia política britânica e o socialismo francês. De Hegel vem o problema da história e da contradição; de Smith e Ricardo, a análise do valor e da produção; de Owen, Fourier e Saint-Simon, a pergunta sobre uma sociedade organizada de outro modo.",
+        "O Manifesto Comunista, de 1848, condensa um programa e uma interpretação da história; O capital, de 1867, aprofunda a crítica da economia política. São entradas diferentes, não uma doutrina concluída de uma vez.",
+        "As revoluções de 1848 e a repressão que se seguiu levam Marx ao exílio em Londres, onde estuda economia política no Museu Britânico. A Primeira Internacional, fundada em 1864, dá à tradição uma forma organizada e um novo campo de conflito."
       ],
-      "sourceIds": ["source-v4-marx-sep", "source-marx-capital"],
+      "sourceIds": [
+        "source-v4-marx-sep",
+        "source-marx-capital"
+      ],
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["work-communist-manifesto", "work-capital-volume-i"],
+          "entityIds": [
+            "work-communist-manifesto",
+            "work-capital-volume-i"
+          ],
           "mode": "documents",
           "notes": {}
         }
@@ -67,11 +79,18 @@
       "title": "Perguntas que organizam a tradição",
       "kicker": "Pilares e princípios",
       "layout": "concepts",
-      "minutes": 3,
+      "minutes": 2,
       "narrative": [
-        "Como explicar as formas de produção e as relações sociais? Materialismo histórico e tempo de trabalho socialmente necessário abrem perguntas diferentes. O primeiro orienta interpretações da mudança histórica; o segundo participa da análise do valor em O capital."
+        "O materialismo histórico parte de uma tese forte: as formas de consciência e as instituições políticas se explicam em relação às condições materiais de produção e às classes que delas participam. A tese não é um determinismo simples; a política, o direito e as ideias têm eficácia própria.",
+        "A crítica da economia política mostra que o valor não é uma propriedade natural das coisas, mas uma relação social. O tempo de trabalho socialmente necessário mede o valor das mercadorias; a diferença entre o valor produzido e o salário pago sustenta a noção de mais-valia.",
+        "Estado, revolução e reforma são os pontos em que a tradição mais se divide. A leitura não resolve essas disputas: apresenta as formulações e as fontes para que o leitor compare.",
+        "A alienação descreve o trabalho que se torna um poder estranho ao trabalhador; a emancipação não é apenas a distribuição da riqueza, mas a transformação das relações que produzem a separação."
       ],
-      "sourceIds": ["source-v4-marx-sep", "source-marx-capital", "source-marx-smith"],
+      "sourceIds": [
+        "source-v4-marx-sep",
+        "source-marx-capital",
+        "source-marx-smith"
+      ],
       "blocks": [
         {
           "type": "explorations",
@@ -86,8 +105,12 @@
                 "No prefácio de 1859, Marx situa sua investigação na produção social e nas relações que ela estabelece. É uma formulação atribuída ao autor, não uma lei histórica comprovada.",
                 "Problema: compreender mudanças sociais. Pressuposto: as condições materiais importam. Mecanismo investigado: relações de produção e seus conflitos. A extensão explicativa dessa abordagem é objeto de debate."
               ],
-              "sourceIds": ["source-marx-preface-1859"],
-              "entityIds": ["concept-historical-materialism"],
+              "sourceIds": [
+                "source-marx-preface-1859"
+              ],
+              "entityIds": [
+                "concept-historical-materialism"
+              ],
               "classification": "interpretação"
             },
             {
@@ -99,8 +122,13 @@
                 "O capítulo 1 distingue o tempo socialmente necessário do dispêndio individual de um produtor. A questão é a forma social do trabalho na análise da mercadoria.",
                 "Esse conceito não deve ser tratado como descrição automática do preço de mercado. Abra a comparação Smith–Marx para investigar o recorte textual e seus limites."
               ],
-              "sourceIds": ["source-marx-capital"],
-              "entityIds": ["concept-trabalho-socialmente-necessario", "work-capital-volume-i"],
+              "sourceIds": [
+                "source-marx-capital"
+              ],
+              "entityIds": [
+                "concept-trabalho-socialmente-necessario",
+                "work-capital-volume-i"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -112,8 +140,13 @@
                 "Na introdução de Reforma ou revolução, a autora apresenta reformas como meios e transformação socialista como finalidade. A posição é de Luxemburg e não resume todas as tradições marxistas.",
                 "O contraste com Bernstein permite investigar mecanismos políticos e divergências sobre objetivos, sem inventar uma doutrina unânime."
               ],
-              "sourceIds": ["source-v4-luxemburg"],
-              "entityIds": ["person-rosa-luxemburg", "person-eduard-bernstein"],
+              "sourceIds": [
+                "source-v4-luxemburg"
+              ],
+              "entityIds": [
+                "person-rosa-luxemburg",
+                "person-eduard-bernstein"
+              ],
               "classification": "normativa"
             }
           ]
@@ -129,11 +162,18 @@
       "title": "Trabalho, valor e sociedade",
       "kicker": "Conceitos e palavras-chave",
       "layout": "concepts",
-      "minutes": 3,
+      "minutes": 2,
       "narrative": [
-        "Na teoria de Marx, o trabalho socialmente necessário não equivale ao tempo individual de qualquer produtor. A comparação abaixo permite ler essa formulação ao lado de Smith, sem tratar valor e preço como sinônimos."
+        "A mercadoria tem valor de uso e valor de troca. O valor de troca não deriva apenas da utilidade nem do capricho individual: ele se relaciona ao tempo de trabalho socialmente necessário para produzi-la. Preço e valor não são sinônimos; o preço oscila e pode se afastar do valor.",
+        "O capital se reproduz pela extração de mais-valia, isto é, pelo trabalho não pago que excede o valor da força de trabalho. Acumulação, crise e concentração do capital são desdobramentos dessa relação, não leis naturais.",
+        "Alienação, ideologia e fetichismo da mercadoria descrevem como relações sociais aparecem como coisas. A comparação com Smith ajuda a ver o que Marx mantém e o que critica na economia política clássica.",
+        "O fetichismo da mercadoria descreve o modo como relações sociais aparecem como propriedades das coisas; a crítica não é moralista, mas uma análise das formas que o trabalho assume no capitalismo."
       ],
-      "sourceIds": ["source-v4-marx-sep", "source-marx-capital", "source-marx-smith"],
+      "sourceIds": [
+        "source-v4-marx-sep",
+        "source-marx-capital",
+        "source-marx-smith"
+      ],
       "blocks": [
         {
           "type": "entities",
@@ -159,11 +199,10 @@
       "title": "Épocas de uma tradição",
       "kicker": "História e épocas",
       "layout": "concepts",
-      "minutes": 8,
+      "minutes": 2,
       "narrative": [
-        "O marxismo mudou de forma conforme mudaram as organizações, os países e as perguntas que o mobilizavam. A divisão em épocas abaixo é um recurso didático usado por historiadores da tradição; as fronteiras entre elas são aproximadas e discutíveis.",
-        "Abra cada época para ver o que estava em jogo, quem participou e onde conferir a fonte.",
-        "A sequência aproxima publicações, acontecimentos e organizações já registrados no acervo. A posição no eixo expressa data, não influência ou causalidade. Selecione um período e abra os itens para ler o contexto."
+        "A periodização é um recurso didático. O marxismo muda com as organizações e os Estados que o mobilizam: a Liga dos Comunistas e a Primeira Internacional; a social-democracia alemã e a Segunda Internacional; a Revolução Russa e a Terceira Internacional; os partidos comunistas e os marxismos ocidentais; a crise de 1989.",
+        "As fronteiras entre essas épocas são aproximadas. A sequência não implica causalidade nem progresso; apenas situa documentos, organizações e debates no tempo."
       ],
       "sourceIds": [
         "source-hobsbawm-change-world",
@@ -254,7 +293,10 @@
                 "Na década de 1840, Marx e Engels se conheceram, colaboraram em textos críticos à filosofia de Hegel e dos jovens hegelianos e aderiram à Liga dos Comunistas.",
                 "O Manifesto do Partido Comunista, encomendado pela Liga e publicado em fevereiro de 1848, apresentou em linguagem de panfleto a tese de que a história das sociedades é atravessada por lutas de classes."
               ],
-              "sourceIds": ["source-marx-manifesto-1848", "source-v4-marx-sep"],
+              "sourceIds": [
+                "source-marx-manifesto-1848",
+                "source-v4-marx-sep"
+              ],
               "entityIds": [
                 "person-karl-marx",
                 "person-friedrich-engels",
@@ -271,8 +313,14 @@
                 "Fundada em Londres em 1864, a Associação Internacional dos Trabalhadores reunia sindicalistas, mutualistas, anarquistas e seguidores de Marx, que redigiu seu discurso inaugural.",
                 "Em A guerra civil na França, escrito para a Internacional, Marx interpretou a Comuna de Paris como uma forma de governo da classe trabalhadora. O conflito com Bakunin e os anarquistas contribuiu para a dissolução da organização em 1876."
               ],
-              "sourceIds": ["source-marx-civil-war-france", "source-kolakowski-main-currents"],
-              "entityIds": ["person-karl-marx", "event-paris-commune"],
+              "sourceIds": [
+                "source-marx-civil-war-france",
+                "source-kolakowski-main-currents"
+              ],
+              "entityIds": [
+                "person-karl-marx",
+                "event-paris-commune"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -306,7 +354,10 @@
                 "Em O Estado e a revolução, escrito em 1917, Lenin defendeu a destruição do aparelho estatal existente e a ditadura do proletariado como transição. A Internacional Comunista, criada em 1919, organizou partidos alinhados a Moscou.",
                 "A disputa entre Stalin e Trotsky após a morte de Lenin, em 1924, opôs o socialismo em um só país à revolução permanente, e marcou a divisão posterior entre stalinismo e trotskismo."
               ],
-              "sourceIds": ["source-v4-lenin", "source-kolakowski-main-currents"],
+              "sourceIds": [
+                "source-v4-lenin",
+                "source-kolakowski-main-currents"
+              ],
               "entityIds": [
                 "event-russian-revolution",
                 "person-vladimir-lenin",
@@ -329,7 +380,9 @@
                 "source-gramsci-quaderni",
                 "source-sep-critical-theory"
               ],
-              "entityIds": ["person-antonio-gramsci"],
+              "entityIds": [
+                "person-antonio-gramsci"
+              ],
               "classification": "interpretação"
             },
             {
@@ -341,8 +394,13 @@
                 "A Revolução Chinesa de 1949 e a ruptura sino-soviética mostraram que Estados que se declaravam marxistas podiam divergir abertamente. Movimentos de libertação nacional adaptaram o vocabulário marxista a sociedades agrárias e coloniais.",
                 "A queda do Muro de Berlim em 1989 e a dissolução da União Soviética em 1991 encerraram o principal modelo estatal associado ao marxismo. Hobsbawm argumenta que o interesse acadêmico por Marx persistiu depois disso, sob outras formas."
               ],
-              "sourceIds": ["source-hobsbawm-change-world", "source-kolakowski-main-currents"],
-              "entityIds": ["person-mao-zedong"],
+              "sourceIds": [
+                "source-hobsbawm-change-world",
+                "source-kolakowski-main-currents"
+              ],
+              "entityIds": [
+                "person-mao-zedong"
+              ],
               "classification": "interpretação"
             }
           ]
@@ -358,12 +416,14 @@
       "title": "Vozes que não se confundem",
       "kicker": "Pensadores e obras",
       "layout": "thinkers",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "Uma tradição não pensa com uma só voz. Selecione um autor para consultar seu registro, período e fontes sem abandonar o percurso. A presença na seleção é um caminho de estudo; não implica concordância entre todas as pessoas.",
-        "Os retratos só aparecem quando o acervo registra licença e atribuição. Os dados biográficos aparecem com sua fonte e com a revisão pendente indicada."
+        "Karl Marx e Engels formulam a crítica da economia política e a concepção materialista da história. Rosa Luxemburgo leva a análise para a acumulação e a greve de massas; Lenin, para o partido e o Estado; Antonio Gramsci, para hegemonia e sociedade civil; Eduard Bernstein, para a revisão reformista; Karl Kautsky, para a ortodoxia da Segunda Internacional.",
+        "A seleção é um caminho de estudo, não um panteão. Autores divergem sobre meios, organização e diagnóstico do capitalismo; os registros indicam período e fontes."
       ],
-      "sourceIds": ["source-v4-marx-sep"],
+      "sourceIds": [
+        "source-v4-marx-sep"
+      ],
       "blocks": [
         {
           "type": "entities",
@@ -390,7 +450,7 @@
             "person-friedrich-engels": "Coautor do Manifesto e editor dos volumes póstumos de O capital.",
             "person-vladimir-lenin": "Transforma a teoria em estratégia de partido e de tomada do Estado em 1917.",
             "person-rosa-luxemburg": "Defende a revolução contra o reformismo e critica o autoritarismo bolchevique.",
-            "person-eduard-bernstein": "Propõe revisar Marx e chegar ao socialismo por reformas graduais.",
+            "person-eduard-bernstein": "Suas ideias prepararam a social-democracia reformista do pós-guerra.",
             "person-karl-kautsky": "Principal sistematizador do marxismo da Segunda Internacional.",
             "person-antonio-gramsci": "Explica a dominação pela hegemonia: coerção somada a consentimento.",
             "person-leon-trotsky": "Teoriza a revolução permanente e critica a burocracia soviética.",
@@ -413,10 +473,10 @@
       "title": "Concordar com Marx não encerra o debate",
       "kicker": "Correntes e vertentes",
       "layout": "graph",
-      "minutes": 4,
+      "minutes": 2,
       "narrative": [
-        "O que distingue reforma e revolução? Como interpretar o Estado? A rede reúne três polêmicas documentadas entre autores. Selecione uma relação para investigar seu argumento e sua fonte; a tabela oferece o mesmo conteúdo em texto.",
-        "Linhas de crítica não são linhas de descendência. A autoria de uma crítica é documentável, mesmo quando a interpretação criticada e sua avaliação continuam em disputa."
+        "Reforma e revolução não esgotam as divisões. Há disputas sobre o papel do partido, a natureza do Estado soviético, a relação entre teoria e prática e a análise do capitalismo tardio.",
+        "Leninismo, trotskismo, marxismo ocidental e revisionismo são rótulos históricos, não blocos homogêneos. As polêmicas documentadas mostram posições identificáveis; linhas de crítica não são linhas de descendência."
       ],
       "sourceIds": [
         "source-v4-luxemburg",
@@ -439,8 +499,12 @@
                 "No prefácio de Evolutionary Socialism, Bernstein defende a extensão dos direitos da classe trabalhadora e esclarece sua prioridade ao movimento. Ele registra diferenças em relação a Marx e Engels.",
                 "Este recorte situa uma posição no debate revisionista; não define toda a social-democracia posterior como uma única corrente nem a faz descendente automática de outra."
               ],
-              "sourceIds": ["source-bernstein-preface"],
-              "entityIds": ["person-eduard-bernstein"],
+              "sourceIds": [
+                "source-bernstein-preface"
+              ],
+              "entityIds": [
+                "person-eduard-bernstein"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -452,8 +516,13 @@
                 "Luxemburg contesta a transformação das reformas em finalidade suficiente. A introdução de Reforma ou revolução identifica a polêmica e sua interlocução com Bernstein.",
                 "A posição da autora não é equivalente a rejeitar toda reforma. “Marxismo revolucionário” aqui nomeia esse recorte argumentativo, sem pretender esgotar suas vertentes."
               ],
-              "sourceIds": ["source-v4-luxemburg"],
-              "entityIds": ["person-rosa-luxemburg", "person-eduard-bernstein"],
+              "sourceIds": [
+                "source-v4-luxemburg"
+              ],
+              "entityIds": [
+                "person-rosa-luxemburg",
+                "person-eduard-bernstein"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -465,15 +534,24 @@
                 "O capítulo VI de O Estado e a revolução discute o tratamento do Estado e da revolução por Kautsky. A fonte registra a crítica de Lenin, não uma avaliação neutra de seu adversário.",
                 "Este é um recorte textual; não caracteriza sozinho todos os leninismos ou regimes que os reivindicaram."
               ],
-              "sourceIds": ["source-v4-lenin"],
-              "entityIds": ["person-vladimir-lenin", "person-karl-kautsky"],
+              "sourceIds": [
+                "source-v4-lenin"
+              ],
+              "entityIds": [
+                "person-vladimir-lenin",
+                "person-karl-kautsky"
+              ],
               "classification": "tese atribuída"
             }
           ]
         },
         {
           "type": "graph",
-          "edgeIds": ["edge-luxemburg-bernstein", "edge-lenin-kautsky", "edge-marx-smith"]
+          "edgeIds": [
+            "edge-luxemburg-bernstein",
+            "edge-lenin-kautsky",
+            "edge-marx-smith"
+          ]
         },
         {
           "type": "entities",
@@ -504,8 +582,13 @@
                 "Contra a tese do socialismo em um só país, Trotsky sustentou que a revolução em países atrasados só se completaria se fosse estendida internacionalmente.",
                 "Exilado, criticou o regime de Stalin como uma degeneração burocrática e fundou a Quarta Internacional em 1938."
               ],
-              "sourceIds": ["source-kolakowski-main-currents"],
-              "entityIds": ["person-leon-trotsky", "person-joseph-stalin"],
+              "sourceIds": [
+                "source-kolakowski-main-currents"
+              ],
+              "entityIds": [
+                "person-leon-trotsky",
+                "person-joseph-stalin"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -522,7 +605,9 @@
                 "source-sep-critical-theory",
                 "source-sep-lukacs"
               ],
-              "entityIds": ["person-antonio-gramsci"],
+              "entityIds": [
+                "person-antonio-gramsci"
+              ],
               "classification": "interpretação"
             },
             {
@@ -534,8 +619,12 @@
                 "A experiência do Partido Comunista Chinês levou Mao a dar ao campesinato um papel que a tradição europeia atribuía ao proletariado urbano.",
                 "Após a ruptura com a União Soviética, o maoísmo se apresentou como alternativa internacional ao modelo soviético."
               ],
-              "sourceIds": ["source-kolakowski-main-currents"],
-              "entityIds": ["person-mao-zedong"],
+              "sourceIds": [
+                "source-kolakowski-main-currents"
+              ],
+              "entityIds": [
+                "person-mao-zedong"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -547,7 +636,10 @@
                 "Em Sete ensaios de interpretação da realidade peruana (1928), Mariátegui relacionou a questão indígena ao problema da terra e recusou aplicar mecanicamente esquemas europeus.",
                 "No Brasil, Caio Prado Júnior e Florestan Fernandes interpretaram a formação colonial e a revolução burguesa no país; suas teses divergiam de leituras oficiais do PCB."
               ],
-              "sourceIds": ["source-mariategui-siete-ensayos", "source-hobsbawm-change-world"],
+              "sourceIds": [
+                "source-mariategui-siete-ensayos",
+                "source-hobsbawm-change-world"
+              ],
               "entityIds": [
                 "person-jose-carlos-mariategui",
                 "person-caio-prado-junior",
@@ -569,11 +661,15 @@
       "title": "Onde a tradição aconteceu",
       "kicker": "Experiências históricas",
       "layout": "documents",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "Ideias circulam por cidades, exílios, bibliotecas, fábricas e prisões. Estes lugares ajudam a situar a tradição no espaço; não formam um mapa completo nem sugerem que tudo começou ou terminou neles."
+        "A tradição circula por cidades, exílios, bibliotecas, fábricas e prisões. Trier, Paris, Bruxelas, Londres, Petrogrado e Turim não são apenas cenários: cada lugar condiciona o que foi possível escrever, organizar e disputar.",
+        "O recorte situa a tradição no espaço, sem sugerir uma origem única nem um mapa completo. Coordenadas verificadas ainda não estão registradas."
       ],
-      "sourceIds": ["source-v4-marx-sep", "source-hobsbawm-change-world"],
+      "sourceIds": [
+        "source-v4-marx-sep",
+        "source-hobsbawm-change-world"
+      ],
       "gap": "O recorte de lugares não inclui coordenadas nem mapa: o acervo ainda não registra dados geográficos verificados para estes pontos.",
       "blocks": [
         {
@@ -588,8 +684,13 @@
               "paragraphs": [
                 "Marx se mudou para Londres em 1849 e viveu ali até a morte, em 1883. A pesquisa para O capital apoiou-se na economia política britânica e em relatórios oficiais sobre as condições de trabalho."
               ],
-              "sourceIds": ["source-v4-marx-sep"],
-              "entityIds": ["person-karl-marx", "work-capital-volume-i"],
+              "sourceIds": [
+                "source-v4-marx-sep"
+              ],
+              "entityIds": [
+                "person-karl-marx",
+                "work-capital-volume-i"
+              ],
               "classification": "alegação empírica"
             },
             {
@@ -600,8 +701,12 @@
               "paragraphs": [
                 "Entre março e maio de 1871, a Comuna governou Paris até ser reprimida pelo governo de Versalhes. Marx a analisou em A guerra civil na França; anarquistas e marxistas disputaram seu legado."
               ],
-              "sourceIds": ["source-marx-civil-war-france"],
-              "entityIds": ["event-paris-commune"],
+              "sourceIds": [
+                "source-marx-civil-war-france"
+              ],
+              "entityIds": [
+                "event-paris-commune"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -612,8 +717,13 @@
               "paragraphs": [
                 "Na capital do Império Russo, a revolução de fevereiro derrubou o czarismo e a de outubro levou os bolcheviques ao poder. Lenin escreveu O Estado e a revolução nesse ano."
               ],
-              "sourceIds": ["source-v4-lenin"],
-              "entityIds": ["event-russian-revolution", "person-vladimir-lenin"],
+              "sourceIds": [
+                "source-v4-lenin"
+              ],
+              "entityIds": [
+                "event-russian-revolution",
+                "person-vladimir-lenin"
+              ],
               "classification": "alegação empírica"
             },
             {
@@ -624,8 +734,12 @@
               "paragraphs": [
                 "Gramsci acompanhou o movimento dos conselhos de fábrica em Turim. Preso pelo regime fascista em 1926, redigiu na prisão os cadernos publicados postumamente."
               ],
-              "sourceIds": ["source-gramsci-quaderni"],
-              "entityIds": ["person-antonio-gramsci"],
+              "sourceIds": [
+                "source-gramsci-quaderni"
+              ],
+              "entityIds": [
+                "person-antonio-gramsci"
+              ],
               "classification": "alegação empírica"
             },
             {
@@ -636,8 +750,12 @@
               "paragraphs": [
                 "Mariátegui fundou a revista Amauta em 1926 e publicou os Sete ensaios em 1928, em diálogo com o indigenismo peruano e com o marxismo europeu."
               ],
-              "sourceIds": ["source-mariategui-siete-ensayos"],
-              "entityIds": ["person-jose-carlos-mariategui"],
+              "sourceIds": [
+                "source-mariategui-siete-ensayos"
+              ],
+              "entityIds": [
+                "person-jose-carlos-mariategui"
+              ],
               "classification": "alegação empírica"
             }
           ]
@@ -653,10 +771,10 @@
       "title": "Uma teoria também é uma pergunta",
       "kicker": "Argumentos, críticas e respostas",
       "layout": "debate",
-      "minutes": 3,
+      "minutes": 2,
       "narrative": [
-        "Crítica política interna: Luxemburg contesta Bernstein sobre reformas e transformação socialista; Lenin critica Kautsky sobre Estado e revolução. Cada relação atribui o argumento ao autor que o formulou, sem tornar sua acusação um veredito.",
-        "Debate acadêmico: a interpretação da história, a teoria do valor e a exploração em Marx têm leituras concorrentes. Consulte as seções 2 e 3 da Stanford Encyclopedia of Philosophy para distinguir reconstrução filosófica, objeções e alternativas. A existência de debate não significa que todas as posições tenham o mesmo apoio."
+        "Luxemburgo contesta a estratégia reformista de Bernstein: reformas sociais não substituem a transformação das relações de produção. Lenin critica Kautsky sobre o Estado e a revolução, em uma disputa sobre o que é tomar o poder.",
+        "O debate sobre o valor envolve Böhm-Bawerk, Mises e a tradição marginalista; Popper questiona o historicismo. São controvérsias com autores e alvos próprios, não um veredito único sobre a tradição."
       ],
       "sourceIds": [
         "source-v4-marx-sep",
@@ -685,8 +803,12 @@
                   "Reconstrução da defesa: Bernstein considera a extensão de direitos políticos e econômicos uma tarefa central da social-democracia. O leitor pode examinar o que essa estratégia promete realizar.",
                   "Como avaliar: conferir o argumento do próprio autor, identificar sua finalidade e separar o compromisso normativo das expectativas sobre resultados."
                 ],
-                "sourceIds": ["source-bernstein-preface"],
-                "entityIds": ["person-eduard-bernstein"],
+                "sourceIds": [
+                  "source-bernstein-preface"
+                ],
+                "entityIds": [
+                  "person-eduard-bernstein"
+                ],
                 "classification": "normativa"
               },
               "criticism": {
@@ -698,8 +820,13 @@
                   "A introdução de Reforma ou revolução contesta a posição atribuída a Bernstein. A autora sustenta que reformas e transformação social têm funções diferentes.",
                   "Como criticar com rigor: localizar qual premissa é contestada e representar a posição adversária sem reduzi-la a uma caricatura."
                 ],
-                "sourceIds": ["source-v4-luxemburg"],
-                "entityIds": ["person-rosa-luxemburg", "person-eduard-bernstein"],
+                "sourceIds": [
+                  "source-v4-luxemburg"
+                ],
+                "entityIds": [
+                  "person-rosa-luxemburg",
+                  "person-eduard-bernstein"
+                ],
                 "classification": "interpretação"
               },
               "response": {
@@ -711,8 +838,12 @@
                   "A autora esclarece que a luta por reformas é um meio de ação em direção ao objetivo socialista. Essa nuance responde à falsa escolha entre aceitar toda reforma e rejeitar qualquer reforma.",
                   "Não se apresenta aqui uma réplica posterior de Bernstein a esse trecho: ela não foi incorporada ao recorte."
                 ],
-                "sourceIds": ["source-v4-luxemburg"],
-                "entityIds": ["person-rosa-luxemburg"],
+                "sourceIds": [
+                  "source-v4-luxemburg"
+                ],
+                "entityIds": [
+                  "person-rosa-luxemburg"
+                ],
                 "classification": "tese atribuída"
               },
               "limits": {
@@ -724,7 +855,10 @@
                   "Esta comparação permite analisar posições e pressupostos. Uma avaliação empírica de reformas, partidos e processos revolucionários exige fontes específicas para cada experiência.",
                   "Não deduzir sucesso, fracasso ou equivalência de regimes a partir dessas duas formulações."
                 ],
-                "sourceIds": ["source-bernstein-preface", "source-v4-luxemburg"],
+                "sourceIds": [
+                  "source-bernstein-preface",
+                  "source-v4-luxemburg"
+                ],
                 "entityIds": [],
                 "classification": "limitação editorial"
               }
@@ -741,8 +875,12 @@
                 "paragraphs": [
                   "No capítulo VI, Lenin considera insuficiente falar em conquistar poder sem enfrentar o problema da máquina estatal. A formulação pertence à sua interpretação do marxismo."
                 ],
-                "sourceIds": ["source-v4-lenin"],
-                "entityIds": ["person-vladimir-lenin"],
+                "sourceIds": [
+                  "source-v4-lenin"
+                ],
+                "entityIds": [
+                  "person-vladimir-lenin"
+                ],
                 "classification": "tese atribuída"
               },
               "criticism": {
@@ -753,8 +891,13 @@
                 "paragraphs": [
                   "A fonte permite conferir a crítica e os trechos de Kautsky que Lenin seleciona. Uma avaliação da justiça dessa interpretação exige também leitura independente da obra criticada."
                 ],
-                "sourceIds": ["source-v4-lenin"],
-                "entityIds": ["person-karl-kautsky", "person-vladimir-lenin"],
+                "sourceIds": [
+                  "source-v4-lenin"
+                ],
+                "entityIds": [
+                  "person-karl-kautsky",
+                  "person-vladimir-lenin"
+                ],
                 "classification": "interpretação"
               },
               "response": {
@@ -765,8 +908,12 @@
                 "paragraphs": [
                   "Não preencher essa posição com uma defesa inventada. O leitor dispõe da crítica de Lenin, mas a reconstrução da resposta de Kautsky depende de ampliar as fontes."
                 ],
-                "sourceIds": ["source-v4-lenin"],
-                "entityIds": ["person-karl-kautsky"],
+                "sourceIds": [
+                  "source-v4-lenin"
+                ],
+                "entityIds": [
+                  "person-karl-kautsky"
+                ],
                 "classification": "limitação editorial"
               },
               "limits": {
@@ -777,7 +924,9 @@
                 "paragraphs": [
                   "Separar o que o autor defende, o que o crítico lhe atribui e o que fontes históricas demonstram sobre ações e instituições. A tabela de relações registra a existência da crítica, não sua correção."
                 ],
-                "sourceIds": ["source-v4-lenin"],
+                "sourceIds": [
+                  "source-v4-lenin"
+                ],
                 "entityIds": [],
                 "classification": "limitação editorial"
               }
@@ -819,8 +968,12 @@
               "paragraphs": [
                 "Na Primeira Internacional, Bakunin acusou a proposta de conquista do poder político de conduzir a uma nova elite dirigente. A disputa levou à expulsão dos bakuninistas em 1872."
               ],
-              "sourceIds": ["source-kolakowski-main-currents"],
-              "entityIds": ["person-karl-marx"],
+              "sourceIds": [
+                "source-kolakowski-main-currents"
+              ],
+              "entityIds": [
+                "person-karl-marx"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -831,8 +984,13 @@
               "paragraphs": [
                 "Böhm-Bawerk sustentou que a conversão de valores em preços de produção não se concilia com a explicação dos preços pelo tempo de trabalho. O chamado problema da transformação continua debatido entre economistas."
               ],
-              "sourceIds": ["source-bohm-bawerk-close"],
-              "entityIds": ["work-capital-volume-i", "concept-trabalho-socialmente-necessario"],
+              "sourceIds": [
+                "source-bohm-bawerk-close"
+              ],
+              "entityIds": [
+                "work-capital-volume-i",
+                "concept-trabalho-socialmente-necessario"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -843,7 +1001,9 @@
               "paragraphs": [
                 "Mises argumentou que a propriedade coletiva dos meios de produção eliminaria os preços necessários ao cálculo racional. A tese abriu o debate do cálculo socialista, com respostas de Oskar Lange e outros."
               ],
-              "sourceIds": ["source-mises-calculation"],
+              "sourceIds": [
+                "source-mises-calculation"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -855,8 +1015,12 @@
               "paragraphs": [
                 "Em A sociedade aberta e seus inimigos e A miséria do historicismo, Popper criticou a ideia de leis de desenvolvimento histórico e afirmou que o marxismo teria se tornado irrefutável ao reinterpretar previsões não confirmadas."
               ],
-              "sourceIds": ["source-sep-popper"],
-              "entityIds": ["concept-historical-materialism"],
+              "sourceIds": [
+                "source-sep-popper"
+              ],
+              "entityIds": [
+                "concept-historical-materialism"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -867,7 +1031,9 @@
               "paragraphs": [
                 "Kołakowski, filósofo polonês expulso do partido em 1966, reconstruiu as principais correntes do marxismo e concluiu que elementos da doutrina favoreceram usos autoritários, tese contestada por outros historiadores."
               ],
-              "sourceIds": ["source-kolakowski-main-currents"],
+              "sourceIds": [
+                "source-kolakowski-main-currents"
+              ],
               "entityIds": [],
               "classification": "interpretação"
             }
@@ -884,11 +1050,12 @@
       "anchor": "conexoes",
       "title": "Acervo: registros e rede",
       "kicker": "Conexões com outras tradições",
-      "minutes": 3,
+      "minutes": 1,
       "question": "Com quais pessoas, obras e tradições o marxismo se relaciona?",
       "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria.",
       "narrative": [
-        "Este acervo reúne registros de verbetes de consulta e de catálogos colaborativos, com a fonte indicada em cada um. Essas ligações ajudam a explorar, mas não equivalem a relações historiográficas validadas."
+        "O marxismo compartilha perguntas com o liberalismo, o anarquismo e a social-democracia, mas responde de modo distinto sobre propriedade, Estado e mudança social. As relações mais bem documentadas são polêmicas e críticas, não fusões.",
+        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes."
       ],
       "sourceIds": [],
       "gap": "Relações tipadas com outras tradições (liberalismo, anarquismo, social-democracia) ainda não foram documentadas com fontes; o acervo abaixo serve à descoberta.",
@@ -907,13 +1074,14 @@
       "title": "Roteiro de leituras",
       "kicker": "Roteiro de leitura",
       "layout": "documents",
-      "minutes": 3,
+      "minutes": 2,
       "question": "Por onde começar a ler Marx e seus herdeiros?",
       "bridge": "Para conferir cada argumento, volte às fontes desta leitura.",
       "gap": null,
       "sourceIds": [],
       "narrative": [
-        "Um caminho em três degraus, do texto curto à obra longa. Filtre por tema para seguir um interesse; livros ligados a registros do acervo abrem a ficha sem sair da página."
+        "O roteiro começa por textos curtos e legíveis, passa por obras de intervenção e chega a estudos e obras longas. A ordem não é um cânone: serve para construir vocabulário e problemas antes de enfrentar O capital.",
+        "Textos primários permitem conferir o argumento; introduções e estudos ajudam a situar o debate; críticas mostram os limites. As edições indicadas são as originais ou as primeiras traduções disponíveis; traduções brasileiras podem ser procuradas."
       ],
       "blocks": [
         {
@@ -1072,10 +1240,10 @@
       "title": "Voltar à evidência",
       "kicker": "Fontes e metodologia",
       "layout": "sources",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
-        "Comece pelos textos primários para conferir o argumento atribuído a cada autor; use estudos acadêmicos para situar conceitos e divergências. Fontes enciclopédicas e metadados ajudam a descobrir o acervo, sem validar influência ou causalidade.",
-        "Esta página usa redação editorial própria e os registros existentes. Os trechos do comparador preservam a atribuição e o localizador. Não há revisão humana registrada. Filtre a bibliografia para reencontrar uma referência."
+        "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
+        "Uma síntese com fontes não é o mesmo que uma versão verificada por especialista. O estado editorial aparece no selo da página e na área de fontes."
       ],
       "sourceIds": [],
       "blocks": [
