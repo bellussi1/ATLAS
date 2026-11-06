@@ -9,6 +9,7 @@ test('the graph page fills the window without page scroll and explains its legen
   await page.goto('/grafos');
   await expect(page.getByRole('heading', { name: 'Grafo do acervo', level: 1 })).toBeVisible();
   await expect(page.locator('[data-node]').first()).toBeVisible();
+  await expect(page.locator('.zoom__level')).toHaveText('100%');
   const metrics = await page.evaluate(() => ({
     scrollHeight: document.documentElement.scrollHeight,
     innerHeight: window.innerHeight,

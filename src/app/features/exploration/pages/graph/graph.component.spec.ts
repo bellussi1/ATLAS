@@ -312,6 +312,17 @@ describe('GraphComponent', () => {
     await vi.waitFor(() => expect(component.edgeLabels().length).toBeGreaterThan(0));
   });
 
+  it('opens closer than the whole graph and calls that framing 100%', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit(false, 'whole');
+    const whole = component.view().k;
+    component.fit(false, 'default');
+    expect(component.zoomPercent()).toBe(100);
+    expect(component.view().k).toBeCloseTo(whole * 1.6, 6);
+  });
+
   it('reframes with Home, ignores letter shortcuts on buttons and unwinds Escape in steps', async () => {
     const fixture = await render();
     const component = fixture.componentInstance;
