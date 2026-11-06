@@ -4,6 +4,7 @@
 // before it is written.
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { setTimeout as delay } from 'node:timers/promises';
 
 import { atomicFile, parsePointer, pointerPath, sha256Hex } from '../content/r2-content.mjs';
 import { rawCacheDirectory } from './wikimedia/archive.mjs';
@@ -22,13 +23,31 @@ const pointer = parsePointer(await readFile(pointerPath, 'utf8'));
 const responses = await listJsonResponses();
 let downloaded = 0;
 
+async function download(key) {
+  for (let attempt = 0; attempt < 7; attempt++) {
+    const result = await fetch(`${pointer.baseUrl}/${key}`, {
+      signal: AbortSignal.timeout(60_000),
+    });
+    if (result.ok) return Buffer.from(await result.arrayBuffer());
+    if (![429, 500, 502, 503, 504].includes(result.status) || attempt === 6)
+      throw new Error(`Falha ao baixar ${key}: HTTP ${result.status}`);
+    const retryAfter = result.headers.get('retry-after');
+    const seconds = Number(retryAfter);
+    const wait =
+      retryAfter && !Number.isFinite(seconds)
+        ? Date.parse(retryAfter) - Date.now()
+        : seconds * 1000;
+    await result.body?.cancel();
+    await delay(Math.max(Number.isFinite(wait) ? wait : 0, 5000 * 2 ** attempt));
+  }
+  throw new Error(`Tentativas esgotadas: ${key}`);
+}
+
 async function fetchResponse([sha256, response]) {
   const local = join(response.directory, 'blobs', `${sha256}.bin`);
   const cached = join(rawCacheDirectory, `${sha256}.bin`);
   if ((await digestOf(local)) === sha256 || (await digestOf(cached)) === sha256) return;
-  const result = await fetch(`${pointer.baseUrl}/${rawKey(sha256)}`);
-  if (!result.ok) throw new Error(`Falha ao baixar ${rawKey(sha256)}: HTTP ${result.status}`);
-  const body = Buffer.from(await result.arrayBuffer());
+  const body = await download(rawKey(sha256));
   if (sha256Hex(body) !== sha256) throw new Error(`Falha de integridade: ${response.url}`);
   await atomicFile(cached, body);
   downloaded += 1;
@@ -39,5 +58,5 @@ const pending = responses.entries();
 async function worker() {
   for (const entry of pending) await fetchResponse(entry);
 }
-await Promise.all(Array.from({ length: 8 }, worker));
+await Promise.all(Array.from({ length: 2 }, worker));
 console.log(`Respostas brutas: ${downloaded} baixadas de ${responses.size}.`);

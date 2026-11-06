@@ -29,12 +29,20 @@ jobs:
       - run: npm run test:ingestion
       - run: npm run test:content
       - name: Cache das capturas verificadas
-        uses: actions/cache@v4
+        id: raw-cache
+        uses: actions/cache/restore@v4
         with:
           path: generated/raw-cache
           key: raw-${{ hashFiles('scripts/ingestion/**/raw/**/manifest.json') }}
           restore-keys: raw-
       - run: npm run ingest:fetch-raw
+        id: fetch-raw
+      - name: Preservar capturas para retomada
+        if: ${{ always() && steps.raw-cache.outputs.cache-hit != 'true' }}
+        uses: actions/cache/save@v4
+        with:
+          path: generated/raw-cache
+          key: ${{ steps.raw-cache.outputs.cache-primary-key }}${{ steps.fetch-raw.outcome == 'success' && '' || format('-partial-{0}-{1}', github.run_id, github.run_attempt) }}
       - run: npm run ingest:verify
       - run: npm run build
         env:
