@@ -12,6 +12,22 @@ const dryRun = process.argv.includes('--dry-run');
 const config = dryRun ? null : await loadR2Config();
 const responses = await listJsonResponses();
 
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+/** R2 answers 429 under bursts; retry those and transient server errors with backoff. */
+async function withRetry(label, run) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await run();
+    } catch (error) {
+      const message = String(error);
+      if (!/HTTP (429|5\d\d)/.test(message) || attempt >= 5) throw error;
+      const pause = 1000 * 2 ** attempt;
+      console.warn(`${label}: ${message}; nova tentativa em ${pause} ms`);
+      await wait(pause);
+    }
+  }
+}
+
 for (const [sha256, response] of responses) {
   const key = rawKey(sha256);
   let body;
@@ -24,7 +40,7 @@ for (const [sha256, response] of responses) {
       console.log(`[dry-run] sem corpo local: ${key}`);
       continue;
     }
-    const head = await r2(config, 'HEAD', key);
+    const head = await withRetry(key, () => r2(config, 'HEAD', key));
     if (head.status === 200) {
       console.log(`já publicado, sem corpo local: ${key}`);
       continue;
@@ -35,10 +51,10 @@ for (const [sha256, response] of responses) {
     continue;
   }
   if (sha256Hex(body) !== sha256) throw new Error(`Falha de integridade: ${response.url}`);
-  await putImmutable(
-    config,
-    { key, body, contentType: 'application/json; charset=utf-8' },
-    { dryRun },
+  await withRetry(key, () =>
+    putImmutable(config, { key, body, contentType: 'application/json; charset=utf-8' }, { dryRun }),
   );
+  // Small pause keeps the whole capture from arriving as one burst at the bucket.
+  await wait(25);
 }
 console.log(`${responses.size} respostas JSON verificadas para raw/.`);
