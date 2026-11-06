@@ -196,7 +196,7 @@ export class HomePage {
   }
   search(event: Event): void {
     event.preventDefault();
-    void this.router.navigate(['/conhecimento'], {
+    void this.router.navigate(['/acervo'], {
       queryParams: { q: this.query().trim() || null },
     });
   }

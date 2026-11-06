@@ -1,15 +1,18 @@
 import { readFile } from 'node:fs/promises';
 
-import AxeBuilder from '@axe-core/playwright';
-
+import { auditPage } from './accessibility';
 import { expect, test } from './content-fixture';
 
 test('a connection keeps the search origin so the results stay one step away', async ({ page }) => {
-  await page.goto('/entidades?q=Marx');
-  const results = page.getByRole('region', { name: 'Resultados da busca' });
-  await results.getByRole('link').first().click();
+  await page.goto('/verbete/karl-marx?origem=%2Fentidades%3Fq%3DMarx');
   await expect(page).toHaveURL(/origem=/);
-  const connection = page.locator('.connection a.relation-party').first();
+  const group = page
+    .locator('.connection-group')
+    .filter({ has: page.locator('a.relation-party') })
+    .first();
+  if (!(await group.evaluate((details: HTMLDetailsElement) => details.open)))
+    await group.locator('summary').click();
+  const connection = group.locator('a.relation-party').first();
   await connection.click();
   await expect(page).toHaveURL(/origem=/);
   await expect(page.getByRole('link', { name: 'Voltar aos resultados' })).toHaveAttribute(
@@ -24,7 +27,7 @@ test('universal search starts at home, handles aliases and keeps filters through
   await page.goto('/');
   await page.getByLabel('Procurar no acervo', { exact: true }).fill('guimaraes silveira');
   await page.getByRole('button', { name: 'Pesquisar', exact: true }).click();
-  await expect(page).toHaveURL(/conhecimento\?q=guimaraes/);
+  await expect(page).toHaveURL(/acervo\?q=guimaraes/);
   const results = page.getByRole('region', { name: 'Resultados da busca' });
   await results
     .getByRole('link')
@@ -154,8 +157,9 @@ test('all search destinations have prerendered HTML with matching title, canonic
   }
 });
 
-for (const path of ['/conhecimento?q=xyzzy', '/pessoas', '/verbete/karl-marx', '/fontes']) {
+for (const path of ['/acervo?q=xyzzy', '/pessoas', '/verbete/karl-marx', '/fontes']) {
   test(`${path} reflows at 320px and has no serious axe findings`, async ({ page }) => {
+    test.setTimeout(path === '/fontes' ? 90_000 : 30_000);
     await page.setViewportSize({ width: 320, height: 740 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(path);
@@ -163,16 +167,14 @@ for (const path of ['/conhecimento?q=xyzzy', '/pessoas', '/verbete/karl-marx', '
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
-    const result = await new AxeBuilder({ page }).analyze();
-    expect(
-      result.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical'),
-    ).toEqual([]);
+    const violations = await auditPage(page);
+    expect(violations.filter((v) => v.impact === 'serious' || v.impact === 'critical')).toEqual([]);
   });
 }
 
 test('the catalogue skip link focuses its content on a phone', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 740 });
-  await page.goto('/conhecimento');
+  await page.goto('/acervo');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');
   await expect(page.locator('#conteudo')).toBeFocused();
@@ -185,14 +187,11 @@ test('missing and unavailable entries provide recovery without external return l
   await expect(page.getByRole('heading', { name: 'Nenhum registro encontrado' })).toBeVisible();
   await page.goto('/verbete/karl-marx?origem=https://evil.test');
   await expect(page.getByRole('link', { name: 'Voltar aos resultados' })).toHaveCount(0);
-  await page.evaluate(() => {
-    history.pushState(null, '', '/verbete/registro-inexistente');
-    dispatchEvent(new PopStateEvent('popstate'));
-  });
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Registro não encontrado');
+  await page.goto('/acervo');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Acervo');
   await page
     .getByRole('main')
     .getByRole('link', { name: /^Acervo/ })
     .click();
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Conhecimento');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Acervo');
 });

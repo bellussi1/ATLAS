@@ -6,8 +6,8 @@ test('the graph page fills the window without page scroll and explains its legen
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
-  await expect(page.getByRole('heading', { name: 'Rede do acervo', level: 1 })).toBeVisible();
+  await page.goto('/grafos');
+  await expect(page.getByRole('heading', { name: 'Grafo do acervo', level: 1 })).toBeVisible();
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const metrics = await page.evaluate(() => ({
     scrollHeight: document.documentElement.scrollHeight,
@@ -23,7 +23,7 @@ test('the graph page fills the window without page scroll and explains its legen
 });
 
 test('filters, searches and opens a node with a link to its entry', async ({ page }) => {
-  await page.goto('/rede');
+  await page.goto('/grafos');
   const legend = page.getByRole('complementary', { name: 'Legenda e filtros' });
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const people = legend.getByRole('button', { name: /Pessoas/ });
@@ -43,7 +43,7 @@ test('filters, searches and opens a node with a link to its entry', async ({ pag
 });
 
 test('works from the keyboard and has no detectable accessibility violations', async ({ page }) => {
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   await page.locator('[data-node]').first().focus();
   await page.keyboard.press('Enter');
@@ -57,7 +57,7 @@ test('on a phone the legend opens as a drawer and the page still does not scroll
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 780 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const overflow = await page.evaluate(
     () => document.documentElement.scrollHeight > window.innerHeight,
@@ -73,7 +73,7 @@ test('keyboard and mouse shortcuts: search, legend, zoom, shortcuts list and dou
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   await page.keyboard.press('/');
   await expect(page.getByLabel('Buscar por nome')).toBeFocused();
@@ -102,7 +102,7 @@ test('keyboard and mouse shortcuts: search, legend, zoom, shortcuts list and dou
 
 test('floating panels keep a gap from the window edge', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const box = await page.locator('#graph-controls').boundingBox();
   expect(box!.x).toBeGreaterThanOrEqual(8);
@@ -117,7 +117,7 @@ test('floating panels keep a gap from the window edge', async ({ page }) => {
 
 test('on a phone the cards float above the map with a gap, and pinch zooms', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 780 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   await page.getByRole('button', { name: 'Legenda e filtros' }).click();
   const card = await page.locator('#graph-controls').boundingBox();
@@ -146,7 +146,7 @@ test('hovering a node shows only its neighbours and explains what it relates to'
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator(linkedNode).first()).toBeVisible();
   const total = await page.locator('[data-node]').count();
   await page.locator(linkedNode).first().dispatchEvent('pointerenter');
@@ -156,7 +156,7 @@ test('hovering a node shows only its neighbours and explains what it relates to'
 
 test('a selected node lists each link with its reading, nature and reason', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await page.locator(linkedNode).first().focus();
   await page.keyboard.press('Enter');
   const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
@@ -169,7 +169,7 @@ test('a selected node lists each link with its reading, nature and reason', asyn
 
 test('traces a path between two entries from the detail panel', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await page.locator(linkedNode).first().focus();
   await page.keyboard.press('Enter');
   const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
@@ -182,7 +182,7 @@ test('traces a path between two entries from the detail panel', async ({ page })
 
 test('nodes stay still and no region colour or name covers the map', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   await expect(page.locator('[class*="drift"]')).toHaveCount(0);
   await expect(page.locator('.region-label')).toHaveCount(0);
@@ -193,7 +193,7 @@ test('nodes stay still and no region colour or name covers the map', async ({ pa
 
 test('the overview map stays inside the window', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const map = await page.getByRole('group', { name: /Visão geral do mapa/ }).boundingBox();
   expect(map!.x + map!.width).toBeLessThanOrEqual(1280);
@@ -204,7 +204,7 @@ test('zoomed out the links are plain lines; up close they carry their wording', 
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator(linkedNode).first()).toBeVisible();
   await page.locator(linkedNode).first().dispatchEvent('pointerenter');
   await expect(page.locator('.label--edge')).toHaveCount(0);
@@ -218,7 +218,7 @@ test('mouse: the wheel zooms, dragging pans and a double click on the background
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const zoom = page.locator('.zoom__level');
   const start = await zoom.textContent();
@@ -250,7 +250,7 @@ test('keyboard: search results walk with the arrows and Home reframes the map', 
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   const zoom = page.locator('.zoom__level');
   const start = await zoom.textContent();
@@ -271,16 +271,16 @@ test('keyboard: search results walk with the arrows and Home reframes the map', 
 });
 
 test('the list alternative is one link away', async ({ page }) => {
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await page.getByRole('link', { name: 'Ver como lista' }).click();
-  await expect(page).toHaveURL(/\/conhecimento/);
+  await expect(page).toHaveURL(/\/acervo/);
 });
 
 test.describe('touch', () => {
   test.use({ hasTouch: true, viewport: { width: 390, height: 780 } });
 
   test('a tap selects a node and opens its summary', async ({ page }) => {
-    await page.goto('/rede');
+    await page.goto('/grafos');
     await expect(page.locator(linkedNode).first()).toBeVisible();
     await page.locator(linkedNode).first().dispatchEvent('click');
     await expect(
@@ -295,7 +295,7 @@ test('a click just beside a node icon still selects it, and names are not clicka
   page,
 }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/rede');
+  await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   await expect(page.locator('[data-label]')).toHaveCount(0);
   // A linked node in the free middle of the stage, away from the floating panels.

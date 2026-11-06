@@ -9,15 +9,17 @@ import {
 } from '@core/routing/route-resolvers';
 
 export const explorationRoutes: Routes = [
-  // /comparar is retired: the archive search at /conhecimento replaces it. /rede is the full-screen graph.
-  { path: 'grafo', redirectTo: 'rede', pathMatch: 'full' },
-  { path: 'comparar', redirectTo: 'conhecimento', pathMatch: 'full' },
+  // /comparar is retired: the archive search at /acervo replaces it. /grafos is the full-screen graph.
+  { path: 'grafo', redirectTo: 'grafos', pathMatch: 'full' },
+  { path: 'rede', redirectTo: 'grafos', pathMatch: 'full' },
+  { path: 'comparar', redirectTo: 'acervo', pathMatch: 'full' },
+  { path: 'conhecimento', redirectTo: 'acervo', pathMatch: 'full' },
   {
-    path: 'rede',
-    title: 'Rede do acervo — ATLAS',
+    path: 'grafos',
+    title: 'Grafo do acervo — ATLAS',
     data: {
       fullscreen: true,
-      breadcrumb: 'Rede',
+      breadcrumb: 'Grafo',
       metaDescription:
         'Mapa interativo das ideologias, pessoas, obras e acontecimentos do acervo e das ligações entre eles, com legenda e filtros.',
     },

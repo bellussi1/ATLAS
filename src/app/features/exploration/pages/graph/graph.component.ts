@@ -514,7 +514,10 @@ export class GraphComponent {
       }
       // The layout runs after the first paint so the loading state is visible meanwhile.
       const timer = setTimeout(() => {
-        const layout = layoutNetwork(this.network.nodes, this.network.edges);
+        const compiled = this.repository.layouts.network;
+        const layout = compiled
+          ? { ...compiled, positions: new Map(Object.entries(compiled.positions)) }
+          : layoutNetwork(this.network.nodes, this.network.edges);
         this.world.set({ width: layout.width, height: layout.height });
         this.positions.set(layout.positions);
         if (this.size().width && !fitted) {

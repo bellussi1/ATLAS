@@ -60,6 +60,13 @@ test('build is deterministic offline and emits search, directed adjacency and st
     search.some((entry) => entry.id === 'person-karl-marx' && entry.searchText.includes('marx')),
   );
   const layouts = await read(manifest.layouts);
+  const { buildKnowledgeNetwork } =
+    await import('../../src/app/core/content/queries/knowledge-network.ts');
+  const network = buildKnowledgeNetwork(await readSourceGraph());
+  assert.deepEqual(
+    Object.keys(layouts.network.positions).sort(),
+    network.nodes.map((node) => node.id).sort(),
+  );
   assert.deepEqual(layouts.atlases.center, {
     x: 460,
     y: 286,

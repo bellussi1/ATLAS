@@ -14,5 +14,5 @@ import { headerReadings } from '../site-header/site-header.component';
 export class SiteFooterComponent {
   readonly readings = headerReadings;
   // The search entry is listed on its own; the rest are the catalogues behind it.
-  readonly catalogues = explorerCatalogues.filter((catalogue) => catalogue.path !== 'conhecimento');
+  readonly catalogues = explorerCatalogues.filter((catalogue) => catalogue.path !== 'acervo');
 }

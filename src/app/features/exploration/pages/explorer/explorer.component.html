@@ -12,7 +12,7 @@
     />
   </header>
   <p class="graph-entry">
-    <a routerLink="/rede"
+    <a routerLink="/grafos"
       >Ver o acervo como rede, em tela cheia <span aria-hidden="true">→</span></a
     >
   </p>
@@ -138,6 +138,8 @@
         aria-label="Resultados da busca"
         class="results"
         [class.results--cards]="catalogue.path !== 'fontes'"
+        [class.is-busy]="navigating()"
+        [attr.aria-busy]="navigating()"
       >
         @for (entry of page().items; track entry.id) {
           @if (catalogue.path === 'fontes') {

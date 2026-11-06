@@ -3,7 +3,7 @@
     <div class="footer-invitation" appReveal>
       <p class="footer-kicker">Um acervo, muitos caminhos.</p>
       <h2>A próxima descoberta <em>é sua.</em></h2>
-      <a class="footer-cta atlas-press" routerLink="/conhecimento">Explorar o acervo</a>
+      <a class="footer-cta atlas-press" routerLink="/acervo">Explorar o acervo</a>
     </div>
 
     <nav class="footer-directory" aria-label="Mapa do acervo">
@@ -28,7 +28,7 @@
       <section class="footer-explore">
         <h2>Explorar</h2>
         <ul class="footer-links" appReveal>
-          <li><a routerLink="/conhecimento">Buscar no acervo</a></li>
+          <li><a routerLink="/acervo">Buscar no acervo</a></li>
           @for (catalogue of catalogues; track catalogue.path) {
             <li>
               <a [routerLink]="'/' + catalogue.path">{{ catalogue.title }}</a>

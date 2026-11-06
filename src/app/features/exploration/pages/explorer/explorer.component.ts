@@ -1,8 +1,9 @@
 import { NgTemplateOutlet, ViewportScroller } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import {
   ActivatedRoute,
+  NavigationEnd,
   NavigationStart,
   Router,
   RouterLink,
@@ -52,6 +53,8 @@ export class ExplorerComponent {
   private readonly viewport = inject(ViewportScroller);
   // Pager links keep the reader's place: the router would otherwise scroll to the top of the page.
   private keptScrollY: number | null = null;
+  /** Keeps the previous page visible and marked busy while a query-string change settles. */
+  readonly navigating = signal(false);
   readonly groups = explorerGroups.map((group) => ({
     ...group,
     catalogues: explorerCatalogues.filter((c) => c.group === group.id),
@@ -117,7 +120,9 @@ export class ExplorerComponent {
       if (event instanceof NavigationStart) {
         const samePage = event.url.split('?')[0] === this.router.url.split('?')[0];
         this.keptScrollY = samePage ? this.viewport.getScrollPosition()[1] : null;
+        this.navigating.set(samePage);
       }
+      if (event instanceof NavigationEnd) this.navigating.set(false);
       if (event instanceof Scroll && this.keptScrollY !== null) {
         const y = this.keptScrollY;
         this.keptScrollY = null;

@@ -14,6 +14,7 @@ describe('GraphComponent', () => {
         {
           provide: ContentRepository,
           useValue: {
+            layouts: {},
             knowledgeGraph: {
               ...methodologyKnowledgeGraph,
               atlases: methodologyKnowledgeGraph.atlases.filter(
@@ -34,6 +35,24 @@ describe('GraphComponent', () => {
     return fixture;
   }
   const root = (fixture: { nativeElement: unknown }) => fixture.nativeElement as HTMLElement;
+
+  it('draws the released coordinates when a compiled network is available', async () => {
+    const graph = {
+      ...methodologyKnowledgeGraph,
+      atlases: methodologyKnowledgeGraph.atlases.filter((atlas) => atlas.id === 'atlas-liberalism'),
+    };
+    const positions = Object.fromEntries(
+      graph.atlases[0].entities.map((entity, index) => [entity.id, { x: index * 50, y: 100 }]),
+    );
+    TestBed.overrideProvider(ContentRepository, {
+      useValue: {
+        knowledgeGraph: graph,
+        layouts: { network: { width: 2000, height: 1000, positions, regions: [] } },
+      },
+    });
+    const fixture = await render();
+    expect(fixture.componentInstance.positions()).toEqual(new Map(Object.entries(positions)));
+  });
 
   it('shows a loading state until the layout is ready, then draws nodes', async () => {
     const fixture = TestBed.createComponent(GraphComponent);
@@ -374,7 +393,7 @@ describe('GraphComponent', () => {
     fixture.detectChanges();
     expect(component.near()).toBe(true);
     expect(component.hoverCard()?.node?.top.length).toBeGreaterThan(0);
-    expect(root(fixture).querySelector('.edge-hits')).not.toBeNull();
+    expect(root(fixture).querySelector('.edge-hits')).toBeNull();
   });
 
   it('keeps the nodes still: nothing in the map floats or sways', async () => {

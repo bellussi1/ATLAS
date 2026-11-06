@@ -31,12 +31,12 @@ describe('ATLAS navigation', () => {
       '/liberalismo',
       '/social-democracia',
       '/anarquismo',
-      '/rede',
+      '/grafos',
       ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
     ];
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))
       if (a.origin === location.origin) expect(destinations).toContain(a.pathname);
-    expect(root.querySelector('header a[href="/conhecimento"]')).not.toBeNull();
+    expect(root.querySelector('header a[href="/acervo"]')).not.toBeNull();
     expect(root.querySelector('footer a[href="/pessoas"]')).not.toBeNull();
   });
   it('keeps an unknown address and says it was not found', async () => {
@@ -55,7 +55,7 @@ describe('ATLAS navigation', () => {
     root.querySelector('form')!.dispatchEvent(new Event('submit', { cancelable: true }));
     await h.fixture.whenStable();
     h.detectChanges();
-    expect(TestBed.inject(Router).url).toBe('/conhecimento?q=liberalismo');
-    expect(h.routeNativeElement?.querySelector('h1')?.textContent).toBe('Conhecimento');
+    expect(TestBed.inject(Router).url).toBe('/acervo?q=liberalismo');
+    expect(h.routeNativeElement?.querySelector('h1')?.textContent).toBe('Acervo');
   });
 });

@@ -11,8 +11,8 @@ describe('SiteHeaderComponent', () => {
         provideRouter([
           { path: '', children: [] },
           { path: 'marxismo', children: [] },
-          { path: 'conhecimento', children: [] },
-          { path: 'rede', children: [] },
+          { path: 'acervo', children: [] },
+          { path: 'grafos', children: [] },
         ]),
       ],
     }),
@@ -29,9 +29,9 @@ describe('SiteHeaderComponent', () => {
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector('a.brand')?.getAttribute('href')).toBe('/');
     expect(root.querySelector('a.brand img')?.getAttribute('src')).toBe('/brand/atlas-logo.svg');
-    expect(links(root)).toEqual(['Leituras', 'Acervo', 'Rede', 'Como usar']);
-    expect(root.querySelector('a[href="/rede"]')).not.toBeNull();
-    expect(root.querySelector('a[href="/conhecimento"]')).not.toBeNull();
+    expect(links(root)).toEqual(['Leituras', 'Acervo', 'Grafo', 'Como usar']);
+    expect(root.querySelector('a[href="/grafos"]')).not.toBeNull();
+    expect(root.querySelector('a[href="/acervo"]')).not.toBeNull();
   });
 
   it('opens the readings menu with the four continuous readings', () => {
@@ -57,14 +57,14 @@ describe('SiteHeaderComponent', () => {
     await router.navigateByUrl('/marxismo');
     fixture.detectChanges();
     expect(root.querySelector('.nav__link--button')?.classList.contains('is-active')).toBe(true);
-    await router.navigateByUrl('/rede');
+    await router.navigateByUrl('/grafos');
     fixture.detectChanges();
-    expect(root.querySelector('a[href="/rede"]')?.getAttribute('aria-current')).toBe('page');
-    await router.navigateByUrl('/conhecimento');
+    expect(root.querySelector('a[href="/grafos"]')?.getAttribute('aria-current')).toBe('page');
+    await router.navigateByUrl('/acervo');
     fixture.detectChanges();
-    expect(
-      root.querySelector('a[href="/conhecimento"].nav__link')?.getAttribute('aria-current'),
-    ).toBe('page');
+    expect(root.querySelector('a[href="/acervo"].nav__link')?.getAttribute('aria-current')).toBe(
+      'page',
+    );
   });
 
   it('searches the archive from the header', async () => {
@@ -76,7 +76,7 @@ describe('SiteHeaderComponent', () => {
     input.dispatchEvent(new Event('input'));
     root.querySelector('form')!.dispatchEvent(new Event('submit', { cancelable: true }));
     await fixture.whenStable();
-    expect(TestBed.inject(Router).url).toBe('/conhecimento?q=liberalismo');
+    expect(TestBed.inject(Router).url).toBe('/acervo?q=liberalismo');
   });
 
   it('closes the small-screen menu with Escape and returns focus to its toggle', () => {

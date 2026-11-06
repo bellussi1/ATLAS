@@ -18,7 +18,7 @@ export class HomeHowtoComponent {
       title: 'Comece por uma palavra',
       body: 'Digite um nome, conceito ou pergunta na busca. Ela percorre o acervo inteiro e separa o que é pessoa, obra, conceito ou acontecimento.',
       action: 'Abrir o acervo',
-      path: '/conhecimento',
+      path: '/acervo',
       fragment: undefined,
     },
     {
@@ -38,7 +38,7 @@ export class HomeHowtoComponent {
       title: 'Siga as ligações',
       body: 'Toda ficha mostra com quem e com o que ela se liga: influências, autores, obras e acontecimentos. A rede apresenta tudo isso de uma vez.',
       action: 'Abrir a rede',
-      path: '/rede',
+      path: '/grafos',
       fragment: undefined,
     },
     {

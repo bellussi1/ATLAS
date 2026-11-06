@@ -5,7 +5,7 @@
         ><span aria-hidden="true">←</span> Voltar aos resultados</a
       >
     }
-    <a routerLink="/conhecimento">Buscar no acervo</a>
+    <a routerLink="/acervo">Buscar no acervo</a>
     @if (catalogue(); as list) {
       <a [routerLink]="list.path">Todos em {{ list.title }}</a>
     }

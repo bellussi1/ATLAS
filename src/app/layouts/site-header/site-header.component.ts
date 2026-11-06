@@ -4,7 +4,7 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
 import { filter, map } from 'rxjs';
 
-type Section = 'leituras' | 'acervo' | 'rede' | null;
+type Section = 'leituras' | 'acervo' | 'grafos' | null;
 
 export const headerReadings = [
   {
@@ -46,7 +46,7 @@ const headerCatalogues = explorerCatalogues.filter((catalogue) =>
 const sectionOf = (url: string): Section => {
   const path = url.split(/[?#]/)[0];
   if (path === '/') return null;
-  if (path.startsWith('/rede')) return 'rede';
+  if (path.startsWith('/grafos')) return 'grafos';
   if (headerReadings.some((reading) => path.startsWith(reading.path))) return 'leituras';
   return 'acervo';
 };
@@ -103,7 +103,7 @@ export class SiteHeaderComponent {
 
   search(event: Event): void {
     event.preventDefault();
-    void this.router.navigate(['/conhecimento'], {
+    void this.router.navigate(['/acervo'], {
       queryParams: { q: this.query().trim() || null },
     });
   }
