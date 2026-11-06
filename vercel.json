@@ -1,0 +1,110 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/atlas/browser",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/ideologias/marxismo",
+      "destination": "/marxismo",
+      "statusCode": 301
+    },
+    {
+      "source": "/atlas/marxismo",
+      "destination": "/marxismo",
+      "statusCode": 301
+    },
+    {
+      "source": "/atlas/marxismo/valor-e-trabalho",
+      "destination": "/marxismo#conceitos",
+      "statusCode": 301
+    },
+    {
+      "source": "/atlas/liberalismos",
+      "destination": "/liberalismo",
+      "statusCode": 301
+    },
+    {
+      "source": "/conhecimento",
+      "destination": "/acervo",
+      "statusCode": 301
+    },
+    {
+      "source": "/comparar",
+      "destination": "/acervo",
+      "statusCode": 301
+    },
+    {
+      "source": "/rede",
+      "destination": "/grafos",
+      "statusCode": 301
+    },
+    {
+      "source": "/grafo",
+      "destination": "/grafos",
+      "statusCode": 301
+    }
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/verbete/(.*)",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(js|css)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
+    }
+  ]
+}
