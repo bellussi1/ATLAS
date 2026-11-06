@@ -1,7 +1,7 @@
 /*
+  Strict-Transport-Security: max-age=31536000
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
-  X-Robots-Tag: noindex, nofollow
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://upload.wikimedia.org https://thumb.wikimedia.org https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev; font-src 'self'; connect-src 'self' https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev; object-src 'none'; base-uri 'self'; frame-ancestors 'none'

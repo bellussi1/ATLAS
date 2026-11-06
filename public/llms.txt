@@ -1,0 +1,16 @@
+# ATLAS
+
+> Enciclopédia visual e gratuita sobre história, política, economia e sociedade, com perspectiva mundial e brasileira. Pessoas, obras, conceitos e acontecimentos formam uma rede navegável, e cada afirmação indica a fonte, o grau de evidência e as controvérsias.
+
+Cada página distingue fato documentado, interpretação, hipótese e alegação controversa. O conteúdo é aberto; ao citar, indique a página e a fonte original que ela aponta.
+
+## Leituras
+
+- [Marxismo](/marxismo): origens, conceitos, pensadores, escala do tempo, épocas, lugares, vertentes, críticas e fontes.
+- [Liberalismo](/liberalismo): atlas exploratório com entidades, rede, cronologia e imagens licenciadas.
+
+## Acervo
+
+- [Conhecimento](/conhecimento): busca universal com filtros compartilháveis por URL.
+- Verbetes (`/verbete/<slug>`): uma página permanente por pessoa, obra, conceito, acontecimento, instituição, país, regime ou lugar, com contexto, fontes e conexões.
+- Catálogos: [pessoas](/pessoas), [obras](/obras), [ideologias](/ideologias), [países](/paises), [regimes](/regimes), [partidos](/partidos), [instituições](/instituicoes), [acontecimentos](/acontecimentos), [conceitos](/conceitos), [lugares](/lugares).

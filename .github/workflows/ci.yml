@@ -2,6 +2,9 @@ name: Verificação
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -11,6 +14,11 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - name: Cache do conteúdo publicado (R2)
+        uses: actions/cache@v4
+        with:
+          path: generated/content-cache
+          key: content-cache-${{ hashFiles('content/content-pointer.json') }}
       - run: npm ci
       - run: npm audit --omit=dev --audit-level=moderate
       - run: npm run lint
@@ -21,6 +29,58 @@ jobs:
       - run: npm run ingest:fetch-raw
       - run: npm run ingest:verify
       - run: npm run build
+        env:
+          ATLAS_SITE_URL: ${{ vars.ATLAS_SITE_URL }}
+          ATLAS_ANALYTICS: ${{ vars.ATLAS_ANALYTICS }}
       - run: npm run check:links
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: |
+            dist/atlas/browser
+            dist/atlas/vercel.json
+          retention-days: 7
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+
+  # Varredura de segredos em todo o histórico: o repositório é público.
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Publicação no Vercel a partir do build já verificado (headers, CSP e redirecionamentos vêm de
+  # dist/atlas/vercel.json). Inerte até existir a variável VERCEL_PROJECT_ID; credenciais só como
+  # segredos do GitHub (VERCEL_TOKEN, VERCEL_ORG_ID), nunca no repositório.
+  deploy:
+    needs: [verify, secrets]
+    if: >-
+      ${{ vars.VERCEL_PROJECT_ID != '' && github.event_name != 'workflow_dispatch' &&
+      (github.ref == 'refs/heads/master' ||
+      github.event.pull_request.head.repo.full_name == github.repository) }}
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist/atlas
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm install --global vercel@65
+      - name: Publicar
+        run: |
+          cp dist/atlas/vercel.json vercel.json
+          if [ "$GITHUB_REF" = "refs/heads/master" ]; then FLAG=--prod; TARGET=production; else FLAG=; TARGET=preview; fi
+          vercel pull --yes --environment="$TARGET" --token "$VERCEL_TOKEN"
+          vercel build $FLAG --token "$VERCEL_TOKEN"
+          vercel deploy --prebuilt $FLAG --token "$VERCEL_TOKEN"
