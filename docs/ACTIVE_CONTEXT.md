@@ -5,46 +5,79 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow local: `develop` é a integração; trabalho atual na branch `feature/pipeline-relacoes` (sem push).
-- `develop` contém a frente `feature/grafos-acervo` (rotas `/grafos` e `/acervo`, layout, hover, skeleton, MCPs).
-- Conteúdo: 66 coleções em `content/knowledge`, 60 snapshots em `content/ideologies`, 3 tradições em `content/traditions`.
-- Release de conteúdo atual: `613fe8e4…`, publicado no R2; `content/content-pointer.json` atualizado.
-- Build: **1.185 rotas prerenderizadas**.
+- Gitflow: `develop` existe no remoto e é a integração; a última rodada publicada é `791a362`. As frentes de zoom, performance do grafo e `publish-raw` estão mescladas localmente e ainda não foram pushadas. `master` não recebeu esta rodada.
+- Conteúdo: 13 coleções publicadas no release `7fb37afa…`; `content/content-pointer.json` atualizado.
+- Build local: **1.185 rotas prerenderizadas**.
+- CI: `42274140215` falhou em `ingest:fetch-raw` porque os dois novos manifests de captura ainda não tinham blobs publicados no R2. `npm run ingest:publish-raw` foi corrigido e está publicando; reexecutar o run depois do upload.
 
-## Verificações desta frente
+## Verificações executadas
 
-- `npm test`: **296/296**.
-- `npm run test:content`: **170/170**.
-- `npm run build`: passou, **1.185 rotas**.
-- `npm run test:e2e -- e2e/graph.spec.ts e2e/knowledge-explorer.spec.ts`: **29/29**.
-- `npm run lint` e `npm run typecheck` passaram antes das correções de conteúdo; repetir no fechamento.
+- `npm test`: **301/301**.
+- `npm run test:content`: **171/171**.
+- `npm run build`: passou, **1.185 rotas**; `vercel.json` gerado com CSP de 8 hashes.
+- `npm run test:e2e`: **132/132** antes da performance; `e2e/graph.spec.ts` **18/18**; depois da revisão editorial, `pages.spec.ts` **17/17** e `ideology-sheets.spec.ts` **8/8**.
+- `npm run lint` e `npm run typecheck`: passaram.
 
-## O que mudou nesta frente
+## O que mudou nesta rodada
 
-1. **`membro fundador` não vira `fundou`** — a trava de relação rejeita o tipo quando a citação fala de membro fundador. Teste em `scripts/tradicao/guards.spec.mjs`.
-2. **P1142 de pessoa não vira aresta** — rótulos de ideologia do Wikidata em pessoas ficam fora do grafo. Teste em `scripts/content/wiki-drafts-to-collections.spec.mjs`.
-3. **Dados corrigidos**: 15 arestas P1142 de pessoas removidas; 8 relações de `membro fundador` reclassificadas; Dilma → PDT passou a "foi membro fundadora de".
-4. **Relações curadas com fonte e revisão pendente**:
-   - Che Guevara → Revolução Cubana, Fidel Castro e Marxismo.
-   - Leon Trótski → Revolução Russa, Comunismo, Stalin, Marx e Lenin.
-   - Fernando Haddad → Lula (assumiu a candidatura do PT após o indeferimento).
-5. Release `613fe8e4…` publicado; ponteiro atualizado.
+1. **Relações e dados**
+   - Removidas 15 arestas `P1142` de pessoas; o rótulo continua no Wikidata, mas não vira afiliação.
+   - `membro fundador` deixou de ser classificado como `fundou`; 8 relações corrigidas, incluindo Dilma → PDT como "foi membro fundadora de".
+   - Relações curadas com fonte literal e `editorialStatus: pending`: Che Guevara → Revolução Cubana, Fidel Castro e Marxismo; Leon Trótski → Revolução Russa, Comunismo, Stalin, Marx e Lenin; Fernando Haddad → Lula (candidatura após o indeferimento).
+2. **Pipeline de extração**
+   - `scripts/ingestion/wiki-extract/refresh.mjs`: `fetch --refresh` reabre todo artigo gravado sem `targets`, inclusive fora da seleção; antes só reabria o que estava na lista declarada.
+   - `scripts/tradicao/extract.mjs`: `reguard` preserva os vereditos de texto já pagos em vez de zerar a métrica.
+   - Artigos de `marxismo` e `liberalismo` refeitos com links e capturas registradas em `scripts/ingestion/wiki-extract/raw/`.
+3. **Vercel**
+   - `vercel.json` versionado na raiz com `framework: null`, `routes` de 404, redirecionamentos novos e headers de segurança; a CSP com hashes continua só no arquivo gerado pelo build.
+   - `scripts/infra/vercel-config.spec.mjs` falha se as regras determinísticas dos dois arquivos divergirem.
+4. **Leitura e e2e**
+   - O capítulo escolhido no seletor mobile não é mais desfeito por uma medição de rolagem anterior à rolagem do roteador.
+   - O fixture de e2e espera o fim do event replay (`jsaction`) e serve o conteúdo fixado também nos contextos criados pelos testes; as auditorias pesadas ganharam 60 s de teto.
+5. **Zoom inicial do grafo**
+   - `/grafos` abre 1,6 vez mais próximo que o grafo inteiro; esse enquadramento passou a ser o 100% do HUD.
+   - Home e a tecla `0` voltam a esse padrão; o botão "Reenquadrar o grafo inteiro" mostra o grafo todo (abaixo de 100%).
+   - Testes: unidade em `graph.component.spec.ts` e asserção de `100%` em `e2e/graph.spec.ts`.
+6. **Publicação das capturas**
+   - `publish-raw` confere o R2 por HEAD quando o corpo local sumiu e avisa em vez de abortar um recorte antigo; os blobs novos seguem sendo publicados.
+   - O script repete HEAD/PUT com backoff quando o R2 responde 429 e faz uma pausa curta entre objetos.
+7. **Desempenho do grafo**
+   - `graph-batching.ts` junta arestas e pontos do minimapa em poucos `<path>`; cada nó virou um único path, com halos e pulsos em grupos próprios.
+   - O cartão de hover só escreve sinal sob um nó e no máximo uma vez por frame; os rótulos usam grade espacial em vez de varrer 1.156 nós por candidato.
+   - `knowledgeGraphSchema` indexa revisões por `claimId`; a validação do grafo caiu de **~748 ms para ~80 ms**.
+   - Medido em 1440×900: primeiro nó de **~1,7 s para ~1,1 s**, maior tarefa de **~900 ms para ~300 ms**, DOM de **~5.800 para ~2.700** elementos; pan e zoom seguem perto de 60 fps (p95 ~27 ms).
+8. **Revisão das leituras de ideologias**
+   - As quatro páginas deixaram de narrar a fonte ou a interface ("Segundo o verbete...", "Selecione...") e passaram a explicar o assunto; a auditoria de voz só encontra termos técnicos e o estado `rascunho` das duas leituras em revisão.
+   - Palavras por página: **marxismo 1.130**, **liberalismo 933**, **social-democracia 908**, **anarquismo 900**; minutos recalculados por palavra e bloco (19/19/14/14), em vez de 2–8 min por capítulo.
+   - `leituras` de social-democracia e anarquismo saiu de `pending` e ganhou roteiro com obras primárias e estudos; `fontes` recebeu título e prosa próprios, sem falar do processo editorial.
+   - Conteúdo e ponteiro publicados no release `7fb37afa…`; capturas e páginas conferidas por `content:build`, 171 testes de conteúdo e e2e de páginas/ideologia.
+
+## Piloto de modelo (Anthropic)
+
+Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo `targets` (`amostra-20v2`):
+
+| Braço | Custo | Relações aceitas | Com QID | Rejeição | Citações rejeitadas |
+| --- | --- | --- | --- | --- | --- |
+| Haiku 5.5 `low` | US$ 0,021 | 6 | 5 | 80,0% | 3,7% |
+| Haiku 5.5 `medium` | US$ 0,038 | 23 | 18 | 62,9% | 2,4% |
+
+- Custo por relação útil: **US$ 0,0042** em `low` e **US$ 0,0021** em `medium`.
+- `medium` rende cerca de duas vezes mais relações com QID por dólar; `model-choice.json` já fixa Haiku `medium` para extração e Sonnet `low` para relações.
+- `score` respondeu "insuficiente": faltam 40 itens conferidos por pessoa em cada braço. Nenhum modelo foi alterado.
+- DeepSeek não foi medido: não há chave `DEEPSEEK_API_KEY` no ambiente. Não usar a assinatura Go para lote de dados.
 
 ## Pendências que bloqueiam
 
-1. **Fechar a frente**: rodar lint/typecheck completos, commitar na `feature/pipeline-relacoes` e integrar na `develop`.
-2. **CI `verify`** — repetir depois do merge.
-3. **Probe de disponibilidade** — caminho inexistente na Vercel responde 200 em vez de 404.
+1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.
+2. **Suíte e2e completa** — repetir os 132 testes depois das mudanças de grafo e da validação; os 18 do grafo passaram.
+3. **Produção na Vercel** — o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`).
+4. **Probe de 404** — hoje `https://atlasbr.vercel.app/caminho-inexistente` responde 200 com `index.html`; o `uptime.yml` falha por isso. Só verificar depois do deploy.
 
 ## Pendências que pedem decisão
 
-4. **Onda 2 do conteúdo** — 414 artigos e 896 extratos extraídos (~US$ 1,65); faltam imagens, conversão, testes e relatório. Não publicar sem aprovação.
-5. **Release `0.1.0`** — `release/0.1.0` contém o fluxo; falta CI verde para ativar `develop` remota, proteções e release.
-6. **Modelo da extração** — decisão pendente entre Anthropic (saldo de US$ 3,77) e DeepSeek. Recomendação: usar o saldo em um piloto de relações com Haiku/Sonnet; só trocar para DeepSeek após avaliação no `eval.mjs`. Não usar a assinatura Go para lote de dados.
-
-## Limitação conhecida
-
-- O seletor mobile de capítulos (`#reading-chapter-picker`) não navega no preview quando acionado por `selectOption`/evento nativo; o teste verifica o controle e a lista, não a navegação. Investigar a ligação do evento `change` na hidratação.
+4. **Onda 2 do conteúdo** — 414 artigos e 896 extratos (~US$ 1,65) não estão neste checkout; faltam imagens, conversão, testes e relatório. Não publicar sem aprovação.
+5. **Release `0.1.0`** — `release/0.1.0` contém o fluxo; falta CI verde para ativar proteções e release. Decidir se `develop` segue para `master` nesta rodada.
+6. **Revisão humana** — as relações curadas e os 109 itens de `generated/eval/amostra-20v2/revisao.md` continuam pendentes.
 
 ## Protocolo
 

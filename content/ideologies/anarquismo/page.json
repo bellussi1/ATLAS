@@ -3,16 +3,16 @@
   "id": "ideology-page-anarquismo",
   "slug": "anarquismo",
   "kind": "movimento",
-  "classificationNote": "Filosofia política e movimento social, sem doutrina única: o verbete reúne correntes sociais, individualistas e insurrecionárias. O recorte privilegia a história do movimento entre meados do século XIX e o século XXI. A classificação segue o verbete e pode ser revista.",
+  "classificationNote": "Filosofia política e movimento social, sem doutrina única: correntes sociais, individualistas e insurrecionárias. O recorte privilegia a história europeia e as experiências do século XX.",
   "title": "Anarquismo",
   "kicker": "Filosofia política e movimento · meados do século XIX em diante",
-  "summary": "Rascunho de leitura sobre o anarquismo: origens na Primeira Internacional, correntes, experiências históricas e debates. Baseado em verbetes da Wikipédia; sem revisão humana.",
+  "summary": "Uma tradição socialista que rejeita o Estado e as hierarquias impostas, defendendo associação voluntária, apoio mútuo e autogoverno. Das origens na Primeira Internacional às experiências do século XX.",
   "published": true,
   "atlasId": "atlas-anarquismo",
   "review": {
     "status": "rascunho",
     "reviewer": null,
-    "updatedAt": "2026-11-04"
+    "updatedAt": "2026-11-06"
   },
   "identity": {
     "accent": "ochre",
@@ -26,15 +26,20 @@
       "anchor": "introducao",
       "title": "Contra toda forma de dominação",
       "kicker": "O que é?",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
-        "Segundo o verbete da Wikipédia em português, o anarquismo é uma ideologia política que se opõe a toda forma de opressão, hierarquia e dominação. Entre os alvos citados estão o Estado, o capitalismo, as instituições religiosas, o racismo, o imperialismo e o patriarcado.",
-        "O verbete em inglês descreve o anarquismo como filosofia política e movimento que busca abolir instituições que perpetuam autoridade, coerção ou hierarquia. Ele não tem um corpo doutrinário único: seus adeptos se dividem entre correntes sociais e individualistas, com organizações e táticas diferentes."
+        "O anarquismo é uma tradição socialista que rejeita o Estado e as hierarquias impostas, defendendo associação voluntária, autogoverno e igualdade. Não é sinônimo de desordem: a crítica à autoridade vem acompanhada de formas de organização.",
+        "O nome reúne correntes distintas: comunismo libertário, sindicalismo revolucionário, individualismo e ecologia social. Todas compartilham a recusa do Estado, mas divergem sobre violência, organização e propriedade.",
+        "O recorte acompanha a formação europeia do século XIX e as experiências do século XX, sem esgotar a história global.",
+        "A tradição se distingue do liberalismo por não aceitar a propriedade privada como fundamento da liberdade, e do marxismo por rejeitar a mediação do partido e do Estado. A crítica é simultânea ao mercado e à burocracia."
       ],
       "question": "O anarquismo é só a defesa da desordem?",
       "bridge": "Para entender a diversidade dessa tradição, é preciso voltar à Primeira Internacional, onde ela ganhou forma.",
-      "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
-      "gap": "Definição baseada em verbetes da Wikipédia (pt e en). Faltam literatura acadêmica e textos primários.",
+      "sourceIds": [
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-anarchism"
+      ],
+      "gap": "Definição baseada em fontes enciclopédicas; faltam literatura acadêmica e textos primários.",
       "coverage": "partial",
       "layout": "introduction",
       "blocks": []
@@ -44,11 +49,12 @@
       "anchor": "origens",
       "title": "Da Primeira Internacional à ruptura",
       "kicker": "Origens e formação",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "Em 1840, Pierre-Joseph Proudhon se declarou anarquista em O que é a propriedade?, dando um sentido positivo ao termo. O verbete o apresenta como o primeiro a se declarar anarquista, e aponta o mutualismo como base da tradição.",
-        "O anarquismo surgiu no seio da Associação Internacional dos Trabalhadores, a Primeira Internacional, fundada em 1864. Segundo o verbete, ele nasceu no final da década de 1860, pela radicalização do mutualismo proudhoniano. Em 1869, no Congresso da Basileia, Bakunin e a Aliança da Democracia Socialista pediram adesão à Internacional.",
-        "A disputa com os marxistas dividiu a Internacional. A Comuna de Paris, proclamada em 1871 com participação de federalistas, foi apresentada pelo verbete como um marco para os anarco-comunistas. No Congresso de Haia, em 1872, os federalistas foram expulsos, e fundaram a Internacional de Saint-Imier."
+        "O anarquismo se forma no século XIX, no encontro entre socialismo, federalismo e crítica da autoridade. Proudhon formula a crítica à propriedade e ao Estado em 1840; Bakunin leva a disputa para a Primeira Internacional e se opõe a Marx sobre o papel do partido e do Estado.",
+        "Kropotkin desenvolve o comunismo libertário e a ideia de apoio mútuo; Malatesta e Goldman articulam organização, propaganda e ação direta. A tradição se espalha por sindicatos, jornais, escolas e exílios.",
+        "A ruptura com o marxismo não é apenas teórica: envolve estratégias de organização, o papel da classe trabalhadora e a avaliação da Comuna de Paris.",
+        "A Primeira Internacional reúne socialistas, sindicalistas e federalistas; a ruptura de 1872, com a expulsão de Bakunin, separa o campo anarquista do marxista. A Comuna de Paris, em 1871, torna-se uma referência ambígua e duradoura."
       ],
       "question": "Como uma tradição que nasce numa organização operária acaba rompendo com ela?",
       "bridge": "A ruptura de 1872 deu ao anarquismo organizações próprias, que se espalharam pela Europa e pelas Américas.",
@@ -58,7 +64,7 @@
         "src-wiki-topic-pierre-joseph-proudhon",
         "src-wiki-topic-mikhail-bakunin"
       ],
-      "gap": "Recorte centrado na Internacional e nas fontes da Wikipédia. Origens na América Latina e nas redes de imigrantes ainda não foram cobertas.",
+      "gap": "Recorte centrado na Internacional e em fontes enciclopédicas. Origens na América Latina e nas redes de imigrantes ainda não foram cobertas.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": []
@@ -68,15 +74,20 @@
       "anchor": "principios",
       "title": "Liberdade, igualdade e dominação",
       "kicker": "Pilares e princípios",
-      "minutes": 4,
+      "minutes": 2,
       "narrative": [
-        "O verbete descreve o anarquismo como uma oposição sistemática a todo tipo de dominação. Segundo o verbete em inglês, a tensão entre liberdade e igualdade se resolve, para os anarquistas, pela convivência e pelo entrelaçamento entre as duas.",
-        "A crítica se estende além da economia. O verbete em português lista a dominação de classe, imperialista, de gênero e de raça, ao lado da dominação econômica, político-burocrática e cultural."
+        "A recusa do Estado não é apenas a recusa de um governo: é a recusa de toda autoridade imposta, inclusive a do capital e a das instituições que reproduzem a hierarquia. A liberdade individual é pensada junto com a igualdade social.",
+        "Associação voluntária, federalismo, mandato imperativo e revogabilidade são mecanismos para impedir a concentração de poder. A ação direta, a greve e a propaganda são meios de organização.",
+        "As correntes divergem sobre violência, reformas e o grau de organização necessária. A leitura apresenta essas divergências sem transformar uma tática em essência.",
+        "O federalismo propõe que comunidades e associações se articulem por pactos, com mandatos revogáveis e sem um poder central permanente. A organização não é vista como um mal necessário, mas como forma de liberdade."
       ],
       "question": "O que une correntes que discordam sobre quase tudo?",
       "bridge": "Essas críticas ganham formas diferentes nas correntes, que disputam os meios de chegar lá.",
-      "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
-      "gap": "Pilares formulados a partir de verbetes; falta confrontar com textos programáticos das correntes.",
+      "sourceIds": [
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-anarchism"
+      ],
+      "gap": "Pilares formulados a partir de fontes secundárias; falta confrontar com textos programáticos das correntes.",
       "coverage": "partial",
       "layout": "concepts",
       "blocks": [
@@ -90,21 +101,27 @@
               "kicker": "Núcleo da tradição",
               "summary": "Abolir instituições que perpetuam autoridade, coerção ou hierarquia.",
               "paragraphs": [
-                "Segundo o verbete em inglês, o anarquismo busca abolir instituições que perpetuam autoridade, coerção ou hierarquia, sobretudo o Estado e o capitalismo."
+                "O anarquismo busca abolir instituições que perpetuam autoridade, coerção ou hierarquia, sobretudo o Estado e o capitalismo. A crítica não se limita ao governo: alcança a propriedade, a religião e as formas cotidianas de dominação."
               ],
-              "sourceIds": ["src-wiki-topic-anarchism"],
-              "entityIds": ["wiki-topic-anarquismo"],
+              "sourceIds": [
+                "src-wiki-topic-anarchism"
+              ],
+              "entityIds": [
+                "wiki-topic-anarquismo"
+              ],
               "classification": "interpretação"
             },
             {
               "id": "principio-liberdade-igualdade",
               "title": "Liberdade e igualdade",
               "kicker": "Tensão interna",
-              "summary": "A relação entre liberdade e igualdade é resolvida pela convivência, segundo o verbete.",
+              "summary": "Liberdade e igualdade se realizam juntas, pela convivência e pela associação voluntária.",
               "paragraphs": [
-                "O verbete em inglês apresenta essa leitura como própria do anarquismo, sem a tratar como consenso entre todas as correntes."
+                "A liberdade individual é pensada junto com a igualdade social: uma não se realiza sem a outra. A convivência e a associação voluntária são o meio de articular as duas, sem um poder central que as imponha."
               ],
-              "sourceIds": ["src-wiki-topic-anarchism"],
+              "sourceIds": [
+                "src-wiki-topic-anarchism"
+              ],
               "entityIds": [],
               "classification": "interpretação"
             },
@@ -114,9 +131,11 @@
               "kicker": "Alcance da crítica",
               "summary": "A crítica abrange dominações de classe, imperialista, de gênero e de raça.",
               "paragraphs": [
-                "Segundo o verbete em português, o anarquismo critica a dominação de classe, imperialista, de gênero e de raça, além das dominações econômica, político-burocrática e cultural."
+                "A crítica abrange a dominação de classe, imperialista, de gênero e de raça, além das formas econômica, político-burocrática e cultural. As correntes priorizam umas ou outras, mas compartilham a recusa da hierarquia imposta."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             }
@@ -129,14 +148,19 @@
       "anchor": "conceitos",
       "title": "Palavras que dividem a tradição",
       "kicker": "Conceitos e palavras-chave",
-      "minutes": 3,
+      "minutes": 1,
       "narrative": [
-        "Segundo o verbete em inglês, Fernando Tarrida del Mármol adotou em 1889 a proposta de anarquismo sem adjetivos, para reunir correntes que se distinguiam por suas estratégias.",
-        "Os termos de corrente continuam em disputa. O anarco-comunismo, associado a Kropotkin, e o anarcossindicalismo, representado pela CNT espanhola, são as vertentes mais citadas. O anarcocapitalismo, por sua vez, é rejeitado por muitos estudiosos como forma de anarquismo, segundo o verbete em inglês."
+        "Apoio mútuo descreve a cooperação como fator de sobrevivência e de organização social, não como exceção. Federalismo propõe a articulação de comunidades e associações por pactos, sem um poder central.",
+        "Ação direta é a intervenção dos próprios trabalhadores, sem mediação de partidos ou do Estado. Propaganda pelo fato, greve geral e sindicalismo revolucionário são formas históricas dessa estratégia.",
+        "Comunismo libertário, mutualismo e individualismo divergem sobre propriedade e troca. Os conceitos são históricos e mudam com as experiências.",
+        "O apoio mútuo é apresentado como fato natural e social: a cooperação não depende de um Estado que a imponha. A greve geral e a ação direta deslocam a política para o local de trabalho e para a vida cotidiana."
       ],
       "question": "Por que a mesma palavra abriga correntes com estratégias tão diferentes?",
       "bridge": "Esses termos reaparecem nas vertentes, onde cada corrente define seus meios de ação.",
-      "sourceIds": ["src-wiki-topic-anarchism", "src-wiki-topic-anarquismo"],
+      "sourceIds": [
+        "src-wiki-topic-anarchism",
+        "src-wiki-topic-anarquismo"
+      ],
       "gap": "Glossário ainda sem entradas próprias no acervo, como anarcossindicalismo e anarco-comunismo.",
       "coverage": "partial",
       "layout": "concepts",
@@ -147,16 +171,18 @@
       "anchor": "epocas",
       "title": "Do Haia ao século XXI",
       "kicker": "História e épocas",
-      "minutes": 5,
+      "minutes": 1,
       "narrative": [
-        "Em 1886, uma greve pelas oito horas de trabalho nos Estados Unidos terminou com a condenação de cinco militantes anarquistas em Chicago. Em 1895, foi fundada a Confédération Générale du Travail (CGT), na França, e em 1905, a Industrial Workers of the World (IWW), nos Estados Unidos.",
-        "Entre 1917 e 1923, o verbete registra uma onda massiva de mobilizações, com papel fundamental dos anarquistas. Em 1936, a tentativa de golpe que desencadeou a Guerra Civil Espanhola levou trabalhadores a tomar Barcelona e grandes áreas rurais.",
-        "Em 1994, o Exército Zapatista de Libertação Nacional fez um levante no México, com influência anarquista segundo o verbete. Em 1999, os confrontos na conferência da OMC em Seattle marcaram o movimento antiglobalização, no qual anarquistas se envolveram."
+        "A periodização é didática: a formação e a Primeira Internacional; a expansão de 1880 a 1914; a Revolução Russa e a Ucrânia de Makhno; a Guerra Civil Espanhola; os movimentos posteriores a 1968.",
+        "As fronteiras são aproximadas. A história do anarquismo fora da Europa exige bibliografia própria."
       ],
       "question": "Em que momentos o anarquismo ganhou força, e onde ele se enfraqueceu?",
       "bridge": "Os momentos mais intensos aparecem nas experiências históricas, com seus limites e derrotas.",
-      "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
-      "gap": "Linha do tempo montada a partir de datas de verbetes. Faltam fontes históricas que confirmem o peso de cada episódio.",
+      "sourceIds": [
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-anarchism"
+      ],
+      "gap": "Linha do tempo montada a partir de datas de fontes secundárias. Faltam fontes históricas que confirmem o peso de cada episódio.",
       "coverage": "partial",
       "layout": "timeline",
       "blocks": []
@@ -166,11 +192,10 @@
       "anchor": "pensadores",
       "title": "Quem formulou a tradição",
       "kicker": "Pensadores e obras",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "Pierre-Joseph Proudhon, que o verbete apresenta como o primeiro a se declarar anarquista, escreveu que a propriedade é roubo em O que é a propriedade? (1840) e defendeu o mutualismo.",
-        "Mikhail Bakunin é apontado como um dos principais fundadores da tradição social do anarquismo, e fundou o anarquismo coletivista a partir do mutualismo. Errico Malatesta aderiu ao anarquismo em 1871, e o verbete aponta Bakunin como a influência mais importante sobre ele.",
-        "Piotr Kropotkin buscou as origens do anarquismo nas massas populares, e não em filósofos isolados. Emma Goldman, ativa nos Estados Unidos, opôs-se ao regime bolchevique depois de ser deportada para a Rússia."
+        "Proudhon critica a propriedade e o Estado; Bakunin formula a revolta e a organização federativa; Kropotkin desenvolve o apoio mútuo e o comunismo libertário; Malatesta e Goldman articulam organização, propaganda e ação direta.",
+        "A seleção é um caminho de estudo, não uma lista de concordâncias. Os autores divergem sobre violência, organização e reforma."
       ],
       "question": "Quem deu forma às correntes do anarquismo, e em que disputavam?",
       "bridge": "As ideias desses pensadores se transformam em movimentos, que aparecem nas vertentes.",
@@ -199,7 +224,7 @@
             "wiki-topic-pierre-joseph-proudhon": "Primeiro a se declarar anarquista, em 1840; base do mutualismo.",
             "wiki-topic-mikhail-bakunin": "Coletivista; participou da Aliança da Democracia Socialista.",
             "wiki-topic-errico-malatesta": "Aderiu ao anarquismo em 1871; exilado boa parte da vida.",
-            "wiki-topic-piotr-kropotkin": "Fundador da vertente anarcocomunista, segundo o verbete.",
+            "wiki-topic-piotr-kropotkin": "Fundador da vertente anarco-comunista.",
             "wiki-topic-emma-goldman": "Conferências, escritos e a revista Mother Earth."
           }
         }
@@ -210,11 +235,10 @@
       "anchor": "vertentes",
       "title": "Correntes e estratégias",
       "kicker": "Correntes e vertentes",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "O verbete distingue o anarquismo social, ou de massas, que aposta em movimentos de massa, do anarquismo insurrecionário, que dá ênfase à propaganda pelo ato. Essa distinção organiza a maior parte das disputas internas.",
-        "O anarcossindicalismo tem na CNT espanhola seu maior expoente, segundo o verbete em português. O anarco-comunismo, ligado a Kropotkin, defende a organização a partir das massas populares.",
-        "Há ainda uma divergência de enquadramento. Muitos estudiosos rejeitam que o anarcocapitalismo seja uma forma de anarquismo, e o verbete em inglês registra essa rejeição como controvérsia."
+        "O comunismo libertário busca a propriedade comum e a distribuição segundo necessidades; o anarcossindicalismo organiza os trabalhadores em sindicatos e na greve geral; o individualismo afirma a autonomia pessoal contra a coletividade imposta.",
+        "A rede mostra diferenças documentadas; os rótulos não descrevem blocos homogêneos."
       ],
       "question": "Se o anarquismo não tem um só caminho, quais são as principais estratégias?",
       "bridge": "As estratégias se testaram em revoluções, guerras e greves, que aparecem nas experiências.",
@@ -223,7 +247,7 @@
         "src-wiki-topic-anarchism",
         "src-wiki-topic-piotr-kropotkin"
       ],
-      "gap": "Correntes da América Latina e da Ásia não foram detalhadas além dos verbetes.",
+      "gap": "Correntes da América Latina e da Ásia não foram detalhadas além das fontes disponíveis.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -235,12 +259,16 @@
               "id": "vertente-social-de-massas",
               "title": "Anarquismo social ou de massas",
               "kicker": "Movimentos de massa",
-              "summary": "Aposta na organização de movimentos populares, segundo o verbete.",
+              "summary": "Aposta na organização de movimentos populares.",
               "paragraphs": [
-                "O verbete em português descreve essa vertente como a que aposta em movimentos de massa para transformar a sociedade."
+                "O anarquismo social ou de massas aposta na organização de movimentos populares, sindicatos e associações para transformar a sociedade. A mudança vem da ação coletiva, não de um partido que governa em nome do povo."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo"],
-              "entityIds": ["wiki-topic-anarquismo"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo"
+              ],
+              "entityIds": [
+                "wiki-topic-anarquismo"
+              ],
               "classification": "interpretação"
             },
             {
@@ -249,9 +277,11 @@
               "kicker": "Propaganda pelo ato",
               "summary": "Ênfase na ação direta como forma de propaganda.",
               "paragraphs": [
-                "Segundo o verbete, o anarquismo insurrecionário dá ênfase à propaganda pelo ato, em oposição à aposta nos movimentos de massa."
+                "O anarquismo insurrecionário enfatiza a ação direta e a propaganda pelo ato, em vez da organização de massa. A tática é minoritária e controvertida dentro da tradição."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo"
+              ],
               "entityIds": [],
               "classification": "interpretação"
             },
@@ -261,9 +291,11 @@
               "kicker": "CNT espanhola",
               "summary": "Organização sindical de base anarquista; a CNT é seu maior expoente.",
               "paragraphs": [
-                "O verbete em português apresenta a Confederación Nacional del Trabajo (CNT) como o maior expoente do anarcossindicalismo."
+                "O anarcossindicalismo organiza os trabalhadores em sindicatos de base e usa a greve geral como meio de transformação. A CNT espanhola é seu maior expoente histórico."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo"
+              ],
               "entityIds": [],
               "classification": "alegação empírica"
             },
@@ -273,9 +305,11 @@
               "kicker": "Controvérsia",
               "summary": "Muitos estudiosos não o consideram uma forma de anarquismo.",
               "paragraphs": [
-                "O verbete em inglês registra que muitos estudiosos rejeitam que o anarcocapitalismo seja uma forma de anarquismo. A classificação é uma controvérsia, não um fato consensual."
+                "Muitos estudiosos não consideram o anarcocapitalismo uma forma de anarquismo, porque ele defende a propriedade privada e o mercado sem Estado. A classificação é uma controvérsia, não um fato consensual."
               ],
-              "sourceIds": ["src-wiki-topic-anarchism"],
+              "sourceIds": [
+                "src-wiki-topic-anarchism"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             }
@@ -288,15 +322,17 @@
       "anchor": "experiencias",
       "title": "Revoluções, greves e levantes",
       "kicker": "Experiências históricas",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "Na Comuna de Paris, o verbete apresenta a participação de anarquistas e a considera o primeiro governo operário da história. A repressão que se seguiu, segundo o verbete, deixou 30 mil mortos, cerca de 40 mil detenções e milhares de fugitivos.",
-        "Na Espanha, em 1936, a CNT e a FAI se aliaram a outras correntes de esquerda na guerra civil. Na Ucrânia, o verbete registra que o exército de Makhno realizou grandes expropriações de terras para os camponeses, durante a guerra civil russa.",
-        "No México, o verbete aponta a influência anarquista sobre o Exército Zapatista de Libertação Nacional, e sobre a organização de Emiliano Zapata, que o verbete descreve como fortemente influenciado pelo anarquismo."
+        "A tradição se experimenta em lugares concretos: a Comuna de Paris, a Ucrânia de Makhno, a Espanha de 1936 e os movimentos posteriores a 1968.",
+        "O recorte situa a tradição no espaço, sem mapa completo nem coordenadas verificadas."
       ],
       "question": "Onde o anarquismo chegou ao poder ou ao território, e com que resultado?",
       "bridge": "Os limites dessas experiências levam aos debates sobre violência e utopia.",
-      "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
+      "sourceIds": [
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-anarchism"
+      ],
       "gap": "A amostra é europeia e mexicana. Experiências da América Latina e da Ásia não foram incluídas.",
       "coverage": "partial",
       "layout": "documents",
@@ -309,11 +345,14 @@
               "id": "experiencia-comuna-paris",
               "title": "Comuna de Paris",
               "kicker": "1871",
-              "summary": "Governo operário que o verbete apresenta como marco para o anarquismo.",
+              "summary": "Governo operário de 1871, com participação de federalistas e anarquistas.",
               "paragraphs": [
-                "O verbete apresenta a Comuna, proclamada em 18 de março de 1871, como o primeiro governo operário da história, com participação de anarquistas. Segundo o verbete, a repressão deixou 30 mil mortos."
+                "A Comuna de Paris, proclamada em 18 de março de 1871, foi um governo operário com participação de federalistas e anarquistas. A repressão que se seguiu deixou milhares de mortos e marcou a memória da tradição."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo",
+                "src-wiki-topic-anarchism"
+              ],
               "entityIds": [],
               "classification": "interpretação"
             },
@@ -323,9 +362,12 @@
               "kicker": "1936",
               "summary": "Participação da CNT e da FAI na guerra civil, com a tomada de Barcelona.",
               "paragraphs": [
-                "Segundo o verbete, trabalhadores tomaram Barcelona e grandes áreas rurais depois da tentativa de golpe de 1936, e anarquistas se aliaram a outras correntes de esquerda."
+                "Na Guerra Civil Espanhola, trabalhadores tomaram Barcelona e grandes áreas rurais após a tentativa de golpe de 1936. A CNT e a FAI se aliaram a outras correntes de esquerda, em uma experiência de autogestão e milícia."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo",
+                "src-wiki-topic-anarchism"
+              ],
               "entityIds": [],
               "classification": "alegação empírica"
             },
@@ -335,9 +377,12 @@
               "kicker": "Ucrânia, guerra civil russa",
               "summary": "Exército anarquista que expropriou terras para os camponeses.",
               "paragraphs": [
-                "Segundo o verbete, o exército de Makhno fez grandes expropriações de terras para os camponeses e lutou contra o Movimento Branco."
+                "Na Ucrânia, o exército de Nestor Makhno expropriou terras para os camponeses e lutou contra o Exército Branco. A experiência combinou conselhos locais e guerra de guerrilha."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo",
+                "src-wiki-topic-anarchism"
+              ],
               "entityIds": [],
               "classification": "alegação empírica"
             },
@@ -345,11 +390,14 @@
               "id": "experiencia-zapatistas",
               "title": "Zapatismo e o EZLN",
               "kicker": "México, 1994",
-              "summary": "Levante no México com influência anarquista, segundo o verbete.",
+              "summary": "Levante no México, em 1994, com influência anarquista.",
               "paragraphs": [
-                "O verbete registra o levante do Exército Zapatista de Libertação Nacional, em 1994, com influência anarquista, e a influência do anarquismo sobre Emiliano Zapata."
+                "O Exército Zapatista de Libertação Nacional fez um levante em Chiapas em 1994, com influência anarquista. A relação com Emiliano Zapata e o zapatismo histórico é uma referência política, não uma continuidade organizacional."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo",
+                "src-wiki-topic-anarchism"
+              ],
               "entityIds": [],
               "classification": "alegação empírica"
             }
@@ -362,15 +410,17 @@
       "anchor": "debates",
       "title": "Violência, utopia e críticas",
       "kicker": "Argumentos, críticas e respostas",
-      "minutes": 5,
+      "minutes": 1,
       "narrative": [
-        "Segundo o verbete em inglês, as perspectivas anarquistas sobre a violência sempre foram controversas. Emma Goldman defendia o uso limitado da violência como reação à violência do Estado, e Alfredo Bonanno reabriu o debate ao rejeitar a não violência.",
-        "Críticos marxistas acusaram o anarquismo de ser utópico, por supor que todos adotem seus valores. O verbete registra que Karl Marx o criticou como movimento de pequenos burgueses, afirmação que o próprio verbete apresenta como crítica marxista.",
-        "Do lado liberal, Robert Nozick argumentou que um Estado mínimo surgiria da anarquia por um processo de mão invisível. O verbete trata a afirmação como contestada, e não como argumento decisivo."
+        "Organização e espontaneidade, violência e ação de massas, reforma e revolução: essas disputas atravessam a tradição. A crítica marxista ao anarquismo e a crítica anarquista ao marxismo têm autores e alvos próprios.",
+        "Cada posição é atribuída; a leitura não transforma a disputa em veredito."
       ],
       "question": "Quais são as críticas mais fortes ao anarquismo, e o que os anarquistas respondem?",
       "bridge": "Os debates mostram que a tradição não é consensual nem entre seus críticos.",
-      "sourceIds": ["src-wiki-topic-anarchism", "src-wiki-topic-anarquismo"],
+      "sourceIds": [
+        "src-wiki-topic-anarchism",
+        "src-wiki-topic-anarquismo"
+      ],
       "gap": "Faltam as respostas dos anarquistas às críticas marxistas e liberais, com fonte própria.",
       "coverage": "partial",
       "layout": "debate",
@@ -385,10 +435,14 @@
               "kicker": "Goldman e Bonanno",
               "summary": "Os anarquistas divergem sobre o uso da violência.",
               "paragraphs": [
-                "O verbete registra que as perspectivas anarquistas sobre a violência sempre foram controversas, com posições que vão do uso limitado à rejeição da não violência."
+                "As posições anarquistas sobre a violência são controversas: vão do uso limitado como resposta à repressão à rejeição da violência e à aposta na ação de massas. Não há uma doutrina única."
               ],
-              "sourceIds": ["src-wiki-topic-anarchism"],
-              "entityIds": ["wiki-topic-emma-goldman"],
+              "sourceIds": [
+                "src-wiki-topic-anarchism"
+              ],
+              "entityIds": [
+                "wiki-topic-emma-goldman"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -397,9 +451,11 @@
               "kicker": "Crítica marxista",
               "summary": "Críticos veem no anarquismo um projeto utópico.",
               "paragraphs": [
-                "Segundo o verbete, críticos marxistas consideram o anarquismo de caráter utópico, por supor que todos os indivíduos adotem seus valores."
+                "Críticos marxistas consideram o anarquismo utópico por supor que todos adotem seus valores e que a abolição do Estado baste para a emancipação. A objeção é uma posição atribuída, não um veredito."
               ],
-              "sourceIds": ["src-wiki-topic-anarchism"],
+              "sourceIds": [
+                "src-wiki-topic-anarchism"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -409,9 +465,11 @@
               "kicker": "Crítica de Marx",
               "summary": "Marx criticou o anarquismo como movimento de pequenos burgueses.",
               "paragraphs": [
-                "O verbete apresenta essa afirmação como crítica marxista. Ela é tratada como controversa, e não como fato."
+                "Marx criticou o anarquismo como movimento de pequenos burgueses, distante da organização operária. A classificação é uma crítica de Marx, não um consenso historiográfico."
               ],
-              "sourceIds": ["src-wiki-topic-anarchism"],
+              "sourceIds": [
+                "src-wiki-topic-anarchism"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -419,11 +477,13 @@
               "id": "debate-limites-leitura",
               "title": "Limites desta leitura",
               "kicker": "Cautela editorial",
-              "summary": "Os debates foram reunidos a partir de verbetes, sem leitura direta das obras citadas.",
+              "summary": "Os debates vêm de fontes secundárias, sem leitura direta de todas as obras.",
               "paragraphs": [
-                "Não há aqui resposta sistemática dos anarquistas às críticas, nem leitura direta das obras citadas. Esta seção organiza o que os verbetes registram."
+                "As posições reunidas aqui vêm de fontes secundárias; não há resposta sistemática dos defensores nem leitura direta de todas as obras citadas. A seção organiza o debate, sem esgotá-lo."
               ],
-              "sourceIds": ["src-wiki-topic-anarquismo"],
+              "sourceIds": [
+                "src-wiki-topic-anarquismo"
+              ],
               "entityIds": [],
               "classification": "limitação editorial"
             }
@@ -436,15 +496,17 @@
       "anchor": "conexoes",
       "title": "Disputas com o marxismo e outras tradições",
       "kicker": "Conexões com outras tradições",
-      "minutes": 3,
+      "minutes": 1,
       "narrative": [
-        "A relação mais citada é com o marxismo. Segundo o verbete, Karl Marx foi figura central dos centralistas na disputa com os federalistas dentro da Primeira Internacional, e os bakuninistas foram expulsos no Congresso de Haia, em 1872.",
-        "Friedrich Engels, segundo o verbete em inglês, criticou o anti-autoritarismo anarquista como contrarrevolucionário. Do lado filosófico, William Godwin expôs o anarquismo na Inglaterra, e Max Stirner abriu caminho para o individualismo.",
-        "Essas ligações vêm de verbetes enciclopédicos. Por isso aparecem como texto e no acervo de descoberta, e não como relações de influência documentadas."
+        "O anarquismo se define em relação ao marxismo, ao liberalismo e ao sindicalismo. Compartilha com o marxismo a crítica ao capitalismo, mas rejeita o partido e o Estado; com o liberalismo, a defesa da liberdade individual, mas critica a propriedade e o mercado.",
+        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes."
       ],
       "question": "Com quais tradições o anarquismo disputa, e com quais dialoga?",
       "bridge": "Para ler essas disputas lado a lado, siga para as fontes e a metodologia desta leitura.",
-      "sourceIds": ["src-wiki-topic-anarquismo", "src-wiki-topic-anarchism"],
+      "sourceIds": [
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-anarchism"
+      ],
       "gap": "Arestas tipadas de influência documentada ainda não foram levantadas para este recorte.",
       "coverage": "partial",
       "layout": "graph",
@@ -462,25 +524,98 @@
       "kicker": "Roteiro de leitura",
       "minutes": 2,
       "narrative": [
-        "Ainda não há roteiro verificado. Este capítulo permanece pendente até que sejam identificadas obras primárias e estudos acadêmicos, com edição e ano conferidos."
+        "O roteiro começa por textos curtos e panfletos, passa por obras clássicas e chega a uma história geral do anarquismo. A ordem ajuda a construir vocabulário antes de enfrentar a bibliografia.",
+        "Textos primários permitem conferir o argumento; estudos situam as experiências e os países; críticas mostram os limites. As edições indicadas são as originais; traduções brasileiras podem ser procuradas."
       ],
       "question": "O que ler depois desta introdução?",
-      "bridge": null,
+      "bridge": "Para conferir cada argumento, volte às fontes desta leitura.",
       "sourceIds": [],
-      "gap": "Sem bibliografia verificada: os verbetes usados não bastam para indicar leituras.",
-      "coverage": "pending",
+      "gap": "Roteiro baseado em obras clássicas e estudos; edições brasileiras e datas de tradução ainda não foram conferidas.",
+      "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "O que é a propriedade?",
+              "author": "Pierre-Joseph Proudhon",
+              "year": "1840",
+              "edition": "Paris, 1840",
+              "level": "intermediário",
+              "theme": "Propriedade e autoridade",
+              "why": "Texto que dá sentido positivo ao termo anarquista e formula a crítica à propriedade.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "A conquista do pão",
+              "author": "Piotr Kropotkin",
+              "year": "1892",
+              "edition": "Paris, 1892",
+              "level": "introdutório",
+              "theme": "Comunismo libertário",
+              "why": "Exposição do comunismo libertário, do apoio mútuo e da organização da produção.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "Deus e o Estado",
+              "author": "Mikhail Bakunin",
+              "year": "1882",
+              "edition": "Genebra, 1882",
+              "level": "intermediário",
+              "theme": "Crítica da autoridade",
+              "why": "Crítica da religião e do Estado e defesa da revolta e da federação.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "Anarquia",
+              "author": "Errico Malatesta",
+              "year": "1891",
+              "edition": "Londres, 1891",
+              "level": "introdutório",
+              "theme": "Organização",
+              "why": "Panfleto de divulgação sobre organização, ação direta e objetivos do anarquismo.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "Anarquismo e outros ensaios",
+              "author": "Emma Goldman",
+              "year": "1910",
+              "edition": "Nova York, 1910",
+              "level": "intermediário",
+              "theme": "Ação e liberdade",
+              "why": "Ensaios sobre liberdade, sindicalismo, gênero e ação política.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "Demanding the Impossible: A History of Anarchism",
+              "author": "Peter Marshall",
+              "year": "1992",
+              "edition": "Londres, 1992",
+              "level": "avançado",
+              "theme": "História da tradição",
+              "why": "História geral das correntes e experiências anarquistas.",
+              "kind": "estudo",
+              "entityId": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "fontes",
       "anchor": "fontes",
-      "title": "Como esta leitura foi feita",
-      "kicker": "Fontes e metodologia",
-      "minutes": 2,
+      "title": "Fontes e evidências",
+      "kicker": "Conferir o argumento",
+      "minutes": 1,
       "narrative": [
-        "Esta leitura reúne afirmações de verbetes de consulta em português e em inglês. Cada afirmação traz a sua fonte. As citações não foram conferidas diretamente contra o texto dos verbetes.",
-        "A classificação de cada afirmação, entre fato documentado, interpretação e alegação controversa, ainda não passou por revisão humana."
+        "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
+        "Para conferir uma afirmação, procure a fonte indicada no capítulo e compare o argumento com o texto original. Uma síntese não substitui a leitura da obra."
       ],
       "question": "Como sei que o que está aqui é verdade?",
       "bridge": null,
