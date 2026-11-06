@@ -499,7 +499,11 @@
           <div class="zoom card" role="group" aria-label="Zoom">
             <button type="button" (click)="zoomStep(1.3)" aria-label="Aproximar">+</button>
             <button type="button" (click)="zoomStep(1 / 1.3)" aria-label="Afastar">−</button>
-            <button type="button" (click)="fit(true)" aria-label="Reenquadrar o grafo inteiro">
+            <button
+              type="button"
+              (click)="fit(true, 'whole')"
+              aria-label="Reenquadrar o grafo inteiro"
+            >
               ⤢
             </button>
             <span class="zoom__level" aria-hidden="true">{{ zoomPercent() }}%</span>
