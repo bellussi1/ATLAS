@@ -54,10 +54,10 @@ describe('static discovery index', () => {
   });
 
   it('accepts only a same-site knowledge search as a contextual return destination', () => {
-    expect(safeDiscoveryOrigin('/conhecimento?q=ulysses&tipo=person&estado=registered')).toBe(
-      '/conhecimento?q=ulysses&tipo=person&estado=registered',
+    expect(safeDiscoveryOrigin('/acervo?q=ulysses&tipo=person&estado=registered')).toBe(
+      '/acervo?q=ulysses&tipo=person&estado=registered',
     );
-    expect(safeDiscoveryOrigin('https://example.org/conhecimento')).toBeNull();
+    expect(safeDiscoveryOrigin('https://example.org/acervo')).toBeNull();
     expect(safeDiscoveryOrigin('/verbete/ulysses-guimaraes')).toBeNull();
   });
 });

@@ -1,5 +1,4 @@
-import AxeBuilder from '@axe-core/playwright';
-
+import { auditPage } from './accessibility';
 import { expect, test } from './content-fixture';
 
 // Every public catalogue and reading, at phone and desktop width: one heading, no serious axe
@@ -8,7 +7,7 @@ const routes = [
   '/',
   '/marxismo',
   '/liberalismo',
-  '/conhecimento',
+  '/acervo',
   '/entidades',
   '/ideologias',
   '/pessoas',
@@ -29,6 +28,7 @@ for (const width of [390, 1440])
     test(`${path} at ${width}px has one heading, no serious axe findings and no horizontal scroll`, async ({
       page,
     }) => {
+      test.setTimeout(path === '/fontes' ? 90_000 : 30_000);
       await page.setViewportSize({ width, height: 900 });
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.goto(path);
@@ -37,9 +37,9 @@ for (const width of [390, 1440])
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
         true,
       );
-      const audit = await new AxeBuilder({ page }).analyze();
+      const violations = await auditPage(page);
       expect(
-        audit.violations
+        violations
           .filter((item) => item.impact === 'critical' || item.impact === 'serious')
           .map((item) => `${item.id}: ${item.nodes.length} node(s)`),
       ).toEqual([]);

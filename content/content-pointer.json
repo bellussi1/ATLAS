@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev",
-  "release": "73a8b5a0d120183c0be08c88df4a51ebc71ecfe218d14c4a1e19e4ab104eaaea",
+  "release": "73e2c2bf158ebbc0ba018f5176f492040638cc17427de09cd27cec15d1f595b8",
   "manifest": {
-    "sha256": "c88726ad25f1f16bde52e019ebbc5110327a5f89e436d207faa90a896d83617c",
-    "bytes": 5353
+    "sha256": "0f306241a4e5764502a553698a33d36b358988e67fb9dc0094c1788eeda3d531",
+    "bytes": 5354
   },
   "artifacts": [
     {
@@ -103,9 +103,9 @@
       "file": "adjacency.ee69d5b551ca1677296d73dd15dd9957eb282f98055722682fd7e1d9845ccb39.json"
     },
     {
-      "sha256": "d9cc24d3843640bad5e27921ed2057ec0b2040b6af2125173a4cf3eca2ed922d",
-      "bytes": 989485,
-      "file": "layouts.d9cc24d3843640bad5e27921ed2057ec0b2040b6af2125173a4cf3eca2ed922d.json"
+      "sha256": "ca91c3a0036be1b5dbc8bf6c521d64d090dc691ed0aa14e4888e4b2ae0c2f553",
+      "bytes": 1079323,
+      "file": "layouts.ca91c3a0036be1b5dbc8bf6c521d64d090dc691ed0aa14e4888e4b2ae0c2f553.json"
     }
   ],
   "media": [

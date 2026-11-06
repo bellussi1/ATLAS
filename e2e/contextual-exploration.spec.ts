@@ -22,7 +22,7 @@ for (const width of [1440, 390, 320]) {
         route === 'marxismo'
           ? page.getByRole('button', { name: /^Karl Marx: abrir contexto de / }).first()
           : page.getByRole('button', { name: /^John Locke: abrir contexto de / }).first();
-      await term.scrollIntoViewIfNeeded();
+      await term.evaluate((element) => element.scrollIntoView({ block: 'center' }));
       const before = await page.evaluate(() => scrollY);
       const trigger = await term.boundingBox();
       if (mobile) await term.tap();

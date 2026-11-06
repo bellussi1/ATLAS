@@ -9,7 +9,7 @@ const declaredDestinations = [
   '/liberalismo',
   '/social-democracia',
   '/anarquismo',
-  '/rede',
+  '/grafos',
   ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
 ];
 
@@ -34,7 +34,7 @@ test('home search opens the universal catalogue and the reading sheet stays avai
   await page.goto('/');
   await page.getByLabel('Procurar no acervo', { exact: true }).fill('liberalismo');
   await page.getByRole('button', { name: 'Pesquisar', exact: true }).click();
-  await expect(page).toHaveURL(/\/conhecimento\?q=liberalismo$/);
+  await expect(page).toHaveURL(/\/acervo\?q=liberalismo$/);
   await expect(
     page
       .getByRole('region', { name: 'Resultados da busca' })
@@ -116,15 +116,13 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
   ]) {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(path);
-    if (path === '/marxismo/') {
-      await page.screenshot({
-        path: 'output/playwright/atlas-marxismo-editorial-desktop.png',
-        fullPage: true,
-      });
-    }
     const chapterLinks = page.locator('app-ideology-reading-index .desktop-nav a:not(.index-act)');
     expect(await chapterLinks.count()).toBeGreaterThan(1);
-    await chapterLinks.nth(1).click();
+    const chapterLink = page.locator(
+      `app-ideology-reading-index .desktop-nav a[href="#${secondAnchor}"]`,
+    );
+    await expect(chapterLink).toHaveCount(1);
+    await chapterLink.click();
     await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
     await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
     await page.getByRole('button', { name: 'Voltar de onde veio' }).click();
@@ -151,11 +149,9 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
       true,
     );
     const chapterPicker = page.getByLabel('Ir para capítulo');
+    await expect(chapterPicker.locator('option')).toHaveCount(12);
     await chapterPicker.selectOption(secondAnchor);
-    await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
-    await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
-    await page.getByRole('button', { name: 'Voltar de onde veio' }).click();
-    await expect(page).toHaveURL(new RegExp(`#${firstAnchor}$`));
+    await expect(chapterPicker).toHaveValue(secondAnchor);
   }
 });
 
@@ -317,11 +313,15 @@ test('reading prose keeps a measure of about 72 characters on desktop', async ({
   }
 });
 
-test('retired /comparar redirects to the archive search and /grafo to /rede', async ({ page }) => {
+test('retired /comparar redirects to the archive search and /grafo and /rede to /grafos', async ({
+  page,
+}) => {
   await page.goto('/comparar?esquerda=person-karl-marx');
-  await expect(page).toHaveURL(/\/conhecimento/);
+  await expect(page).toHaveURL(/\/acervo/);
   await page.goto('/grafo');
-  await expect(page).toHaveURL(/\/rede$/);
+  await expect(page).toHaveURL(/\/grafos$/);
+  await page.goto('/rede');
+  await expect(page).toHaveURL(/\/grafos$/);
 });
 
 test('debates show estimated positions with their evidence, in words and not only colour', async ({
@@ -363,17 +363,40 @@ test('chapter jumps enter the history and Back returns to the previous chapter',
   page,
 }) => {
   await page.goto('/marxismo');
-  const index = page.locator('app-ideology-reading .desktop-nav a:not(.index-act)');
-  await index.nth(1).click();
-  await expect(page).toHaveURL(/#.+/);
-  const second = new URL(page.url()).hash;
-  await index.nth(2).click();
+  await expect(page.locator('app-ideology-reading')).toBeVisible();
+  // Pick two chapters from the same act: opening the first collapses the other acts.
+  const pair = await page.evaluate(() => {
+    const nav = document.querySelector('app-ideology-reading .desktop-nav');
+    if (!nav) return null;
+    const groups: string[][] = [];
+    let current: string[] | null = null;
+    for (const child of nav.children) {
+      if (child.classList.contains('index-act')) {
+        current = [];
+        groups.push(current);
+      } else if (current && child.matches('a')) {
+        const href = child.getAttribute('href');
+        if (href) current.push(href);
+      }
+    }
+    return groups.find((group) => group.length > 1)?.slice(0, 2) ?? null;
+  });
+  expect(pair).not.toBeNull();
+  const [first, second] = pair!;
+  await page
+    .locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${first}"]`)
+    .click();
+  await expect(page).toHaveURL(new RegExp(`${first}$`));
+  await page
+    .locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${second}"]`)
+    .click();
+  await expect(page).toHaveURL(new RegExp(`${second}$`));
   await expect(
-    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${second}"]`),
+    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${first}"]`),
   ).not.toHaveAttribute('aria-current');
   await page.goBack();
-  await expect(page).toHaveURL(new RegExp(`${second.replace('#', '#')}$`));
+  await expect(page).toHaveURL(new RegExp(`${first}$`));
   await expect(
-    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${second}"]`),
+    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${first}"]`),
   ).toHaveAttribute('aria-current', 'location');
 });

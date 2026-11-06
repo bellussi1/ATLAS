@@ -10,6 +10,7 @@ Also read `docs/architecture/ARCHITECTURE.md` before creating or moving code, an
 
 ## Economia de contexto
 
+- Comece por `docs/ACTIVE_CONTEXT.md` e atualize-o ao encerrar a frente; ele é o handoff entre sessões.
 - Busca ampla (muitos arquivos ou diretórios) vai para um subagente `Explore`; traga só o resumo.
 - Leia arquivos grandes por trecho (`offset`/`limit`) e use `head_limit` no Grep.
 - Não repita leituras de arquivos já lidos na mesma sessão.

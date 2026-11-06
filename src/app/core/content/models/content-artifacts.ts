@@ -80,6 +80,22 @@ const timelineLayout = z
   })
   .nullable();
 export const layoutsSchema = z.object({
+  network: z
+    .object({
+      width: z.number().positive(),
+      height: z.number().positive(),
+      positions: z.record(z.string(), point),
+      regions: z.array(
+        z.object({
+          id: z.string(),
+          x: z.number(),
+          y: z.number(),
+          radius: z.number().nonnegative(),
+          count: z.number().int().nonnegative(),
+        }),
+      ),
+    })
+    .optional(),
   exploration: explorationLayoutSchema,
   atlases: z.object({
     center: point,

@@ -26,7 +26,7 @@ export class NotFoundMessageComponent {
   protected readonly doors = [
     { label: 'Marxismo', hint: 'Leitura da tradição', link: '/marxismo', tone: 'red' },
     { label: 'Liberalismo', hint: 'Leitura exploratória', link: '/liberalismo', tone: 'teal' },
-    { label: 'Acervo', hint: 'Todos os registros', link: '/conhecimento', tone: 'ochre' },
+    { label: 'Acervo', hint: 'Todos os registros', link: '/acervo', tone: 'ochre' },
     { label: 'Início', hint: 'Voltar à abertura', link: '/', tone: 'rose' },
   ] as const;
 

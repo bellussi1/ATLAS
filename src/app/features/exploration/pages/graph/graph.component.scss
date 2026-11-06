@@ -409,18 +409,71 @@ kbd {
   animation-delay: var(--delay, 0ms);
 }
 // While the view moves nothing needs hover: skipping hit tests keeps dragging and zoom smooth.
-.stage--busy :is(.edge-hits, .node-hits, .nodes) {
-  pointer-events: none;
+.skeleton-map {
+  position: relative;
+  width: min(22rem, 70vw);
+  height: 10rem;
+  margin-bottom: 0.4rem;
 }
-.edge-hits.is-off {
-  pointer-events: none;
+.skeleton-node {
+  position: absolute;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+  opacity: 0.28;
+  animation: skeleton-pulse 1.2s var(--ease-out, ease-out) infinite alternate;
 }
-.edge-hit {
-  stroke: transparent;
-  stroke-width: 12px;
-  vector-effect: non-scaling-stroke;
-  pointer-events: stroke;
-  cursor: help;
+.skeleton-node:nth-child(1) {
+  left: 8%;
+  top: 18%;
+}
+.skeleton-node:nth-child(2) {
+  left: 28%;
+  top: 42%;
+}
+.skeleton-node:nth-child(3) {
+  left: 46%;
+  top: 12%;
+}
+.skeleton-node:nth-child(4) {
+  left: 62%;
+  top: 48%;
+}
+.skeleton-node:nth-child(5) {
+  left: 80%;
+  top: 22%;
+}
+.skeleton-node:nth-child(6) {
+  left: 18%;
+  top: 72%;
+}
+.skeleton-node:nth-child(7) {
+  left: 54%;
+  top: 74%;
+}
+.skeleton-node:nth-child(8) {
+  left: 84%;
+  top: 66%;
+}
+@keyframes skeleton-pulse {
+  from {
+    opacity: 0.18;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 0.4;
+    transform: scale(1.04);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-node {
+    animation: none;
+    opacity: 0.25;
+  }
+}
+.stage--busy :is(.node-hits, .nodes) {
+  pointer-events: none;
 }
 .node {
   cursor: pointer;

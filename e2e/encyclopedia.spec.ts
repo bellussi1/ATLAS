@@ -20,9 +20,15 @@ test('following a connection starts the new context and restores the previous fo
   page,
 }) => {
   await page.goto('/marxismo/');
-  await page.locator('#conceitos .knowledge-term').first().click();
+  await page.locator('#vertentes .exploration-card').first().click();
   const dialog = page.getByRole('dialog');
-  const connection = dialog.locator('.context-connections button').first();
+  const group = dialog
+    .locator('.context-connections details')
+    .filter({ has: page.locator('button') })
+    .first();
+  if (!(await group.evaluate((details: HTMLDetailsElement) => details.open)))
+    await group.locator('summary').click();
+  const connection = group.locator('button').first();
   await connection.click();
   await expect(dialog.locator('h2')).toBeFocused();
   expect(await dialog.locator('.context-body').evaluate((e) => e.scrollTop)).toBe(0);

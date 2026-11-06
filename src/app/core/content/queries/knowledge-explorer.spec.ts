@@ -46,10 +46,8 @@ describe('Knowledge Explorer', () => {
     expect(explorerEntries(discoveryIndex, { kind: 'desconhecido' })).toEqual([]);
   });
   it('counts each category so the filters can show how many records they hold', () => {
-    const facets = explorerFacets(discoveryIndex, 'conhecimento');
-    expect(facets.total).toBe(
-      explorerEntries(discoveryIndex, { catalogue: 'conhecimento' }).length,
-    );
+    const facets = explorerFacets(discoveryIndex, 'acervo');
+    expect(facets.total).toBe(explorerEntries(discoveryIndex, { catalogue: 'acervo' }).length);
     expect(facets.kinds.reduce((sum, kind) => sum + kind.count, 0)).toBe(facets.total);
   });
   it('separates records, sources and editorial pages into their own content groups', () => {
@@ -76,9 +74,7 @@ describe('Knowledge Explorer', () => {
     expect(safeExplorerReturn('/pessoas?q=marx&estado=pending')).toBe(
       '/pessoas?q=marx&estado=pending',
     );
-    expect(safeExplorerReturn('/conhecimento?q=marx&pagina=2')).toBe(
-      '/conhecimento?q=marx&pagina=2',
-    );
+    expect(safeExplorerReturn('/acervo?q=marx&pagina=2')).toBe('/acervo?q=marx&pagina=2');
     for (const value of [
       'https://evil.test/pessoas',
       '//evil.test/pessoas',

@@ -29,6 +29,11 @@ O escopo público inclui Home, Marxismo, Liberalismo e Knowledge Explorer: busca
 - [Ampliação editorial e idiomas](quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md)
 - [Revisão assistida das traduções iniciais](editorial/TRANSLATION-REVIEW-2026-11-01.md)
 
+## Agentes e contexto
+
+- [Contexto vivo](ACTIVE_CONTEXT.md)
+- [Sistema de prompt](agents/PROMPT-SYSTEM.md)
+
 ## Referências
 
 - [Dependências](reference/DEPENDENCIES.md)

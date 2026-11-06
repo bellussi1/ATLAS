@@ -12,6 +12,7 @@ import {
   natureOf,
   type NetworkEdge,
   networkKindOf,
+  networkKindOfEntity,
   networkKinds,
   type NetworkNode,
   nodeRadius,
@@ -48,6 +49,12 @@ describe('knowledge network', () => {
     expect(networkKinds).toHaveLength(8);
     expect(new Set(networkKinds.map((k) => k.shape)).size).toBe(8);
     expect(new Set(networkKinds.map((k) => k.color)).size).toBe(8);
+  });
+
+  it('treats curated topic-like events as concepts without reclassifying dated events', () => {
+    expect(networkKindOfEntity({ id: 'wiki-topic-aborto', kind: 'event' })).toBe('concept');
+    expect(networkKindOfEntity({ id: 'wiki-topic-casamento', kind: 'event' })).toBe('concept');
+    expect(networkKindOfEntity({ id: 'event-guerra-da-coreia', kind: 'event' })).toBe('event');
   });
 
   it('gives each relation family its own colour or dash pattern', () => {

@@ -11,6 +11,8 @@ import { artifactKey, buildPointer } from './r2-content.mjs';
 
 const { buildDiscoveryIndex } =
   await import('../../src/app/core/content/queries/discovery-index.ts');
+const { buildKnowledgeNetwork, layoutNetwork } =
+  await import('../../src/app/core/content/queries/knowledge-network.ts');
 const { queryKnowledgeRelations } =
   await import('../../src/app/core/content/queries/knowledge-graph.ts');
 const { graphGeometry, temporalAxis } =
@@ -55,7 +57,10 @@ export async function buildContent({
     ),
   );
   const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  const network = buildKnowledgeNetwork(graph);
+  const networkLayout = layoutNetwork(network.nodes, network.edges);
   const layouts = {
+    network: { ...networkLayout, positions: Object.fromEntries(networkLayout.positions) },
     exploration: buildExplorationLayout(graph),
     atlases: {
       center: { x: 460, y: 286 },

@@ -4,7 +4,7 @@
       <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
         <img src="/brand/atlas-logo.svg" alt="" width="105" height="30" />
       </a>
-      <h1 class="bar__title">Rede do acervo</h1>
+      <h1 class="bar__title">Grafo do acervo</h1>
       <form class="search" role="search" (submit)="$event.preventDefault()">
         <label for="graph-search" class="visually-hidden">Buscar por nome</label>
         <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -63,7 +63,7 @@
         >
           ?
         </button>
-        <a class="chip bar__list" routerLink="/conhecimento">Ver como lista</a>
+        <a class="chip bar__list" routerLink="/acervo">Ver como lista</a>
       </div>
     </header>
 
@@ -239,21 +239,6 @@
               />
             }
           </g>
-          @if (near()) {
-            <g class="edge-hits">
-              @for (item of drawnEdges(); track item.edge.id) {
-                <line
-                  class="edge-hit"
-                  [attr.x1]="item.x1"
-                  [attr.y1]="item.y1"
-                  [attr.x2]="item.x2"
-                  [attr.y2]="item.y2"
-                  (pointerenter)="hoverEdge(item.edge.id)"
-                  (pointerleave)="hoverEdge(null)"
-                />
-              }
-            </g>
-          }
           <g class="node-hits">
             @for (item of drawnNodes(); track item.node.id) {
               <circle
@@ -339,15 +324,19 @@
       </svg>
 
       @if (loading()) {
-        <div class="overlay" role="status">
-          <span class="spinner" aria-hidden="true"></span>
+        <div class="overlay overlay--loading" role="status">
+          <div class="skeleton-map" aria-hidden="true">
+            @for (node of [1, 2, 3, 4, 5, 6, 7, 8]; track node) {
+              <span class="skeleton-node"></span>
+            }
+          </div>
           <p>Organizando o mapa de {{ total }} verbetes…</p>
         </div>
       } @else if (total === 0) {
         <div class="overlay">
           <h2>Nada para mostrar ainda</h2>
           <p>O acervo não tem verbetes publicados. Volte em breve.</p>
-          <a class="chip chip--solid" routerLink="/conhecimento">Ver o acervo</a>
+          <a class="chip chip--solid" routerLink="/acervo">Ver o acervo</a>
         </div>
       } @else if (visible().nodes.length === 0) {
         <div class="overlay">

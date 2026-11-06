@@ -367,7 +367,7 @@ export function safeDiscoveryOrigin(value: string | null): string | null {
         return null;
       return `${url.pathname}${url.search}`;
     }
-    if (url.pathname !== '/conhecimento') return null;
+    if (url.pathname !== '/acervo' && url.pathname !== '/conhecimento') return null;
     if ([...url.searchParams.keys()].some((key) => !['q', 'tipo', 'estado'].includes(key)))
       return null;
     return `${url.pathname}${url.search}`;

@@ -88,14 +88,14 @@ Não é auditoria WCAG 2.2 AA integral. Faltam leitores de tela, usuários de te
 
 A home é uma superfície de consulta: busca funcional, rede de evidências, índice de leituras e percursos guiados, adaptada da referência Stitch escolhida. Navegação com três destinos: Relações, Tempo e espaço, Conhecimento; sem cronologia ou mapa simulados. Tipografia modernista, assimetria, filetes e geometria usando tokens compartilhados; referências visuais não são ativos de publicação.
 
-- **/conhecimento:** busca local em títulos, resumos e texto dos registros editoriais e entidades validadas. Consulta em `?q=`, aceita acentos equivalentes, oferece recuperação sem resultados. Formatos previstos mantêm seu status, sem parecer coleções publicadas.
+- **/acervo:** busca local em títulos, resumos e texto dos registros editoriais e entidades validadas. Consulta em `?q=`, aceita acentos equivalentes, oferece recuperação sem resultados. Formatos previstos mantêm seu status, sem parecer coleções publicadas.
 - **/relacoes:** rede inicial derivada apenas de `entityId` e `sourceIds` das afirmações do `ContentRepository`. Seleção, filtro e contexto em botões e select nativos; lista textual equivalente. Representa metodologia, sem simular relações históricas.
 - **/tempo-e-espaco:** linha do tempo e comparador só com períodos e metadados estruturados. Exploração geográfica indisponível: o acervo não tem polígonos históricos, e limites atuais não são sobrepostos a entidades do passado.
 - As perguntas de entrada levam a textos reais sobre evidência, contexto e organização editorial. Trilhas temáticas históricas ainda não publicadas.
 
-**Validação da consolidação A:** busca por Enter no Chrome em 390 px abriu `/conhecimento?q=evidencia` com cinco registros reais. Home e três telas medidas em 320 px sem overflow. Nó Fonte ativado por Enter atualizou seleção e contexto, com contorno de foco de 3 px. Movimento reduzido emulado e reconhecido. Home capturada em 1440×1000 e 390×844; imagens de referência não reproduzidas. Sem leitor de tela nem WCAG integral.
+**Validação da consolidação A:** busca por Enter no Chrome em 390 px abriu `/acervo?q=evidencia` com cinco registros reais. Home e três telas medidas em 320 px sem overflow. Nó Fonte ativado por Enter atualizou seleção e contexto, com contorno de foco de 3 px. Movimento reduzido emulado e reconhecido. Home capturada em 1440×1000 e 390×844; imagens de referência não reproduzidas. Sem leitor de tela nem WCAG integral.
 
-**Rede de evidências (retirada):** o componente deixou de ser publicado; `/rede` redireciona para `/conhecimento` e o código foi removido. Nova rede, se houver, será mapa relacional com lista equivalente operável por teclado (AUD-36).
+**Rede de evidências (retirada):** o componente antigo deixou de ser publicado; `/grafos` é o mapa relacional atual e `/rede` redireciona para ele. A lista equivalente operável por teclado continua disponível.
 
 **Verificação da adaptação Stitch:** home em 1440, 390 e 320 CSS px; em 320 px, documento com 320 px. Modo lista acionado por Enter, foco de 3 px, três registros, sem overflow. Movimento reduzido emulado. Testes cobrem seleção na home, troca para lista, filtro com acento ("Afirmação"), destinos e regressões de navegação. Sem leitor de tela.
 

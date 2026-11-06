@@ -260,6 +260,17 @@ label,
   color: var(--color-ink-muted);
   font-size: 0.875rem;
 }
+.results {
+  transition: opacity 140ms var(--ease-out, ease-out);
+}
+.results.is-busy {
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  .results {
+    transition: none;
+  }
+}
 .result {
   border-top: 2px solid var(--color-ink);
   padding: 1.25rem 0 1.75rem;

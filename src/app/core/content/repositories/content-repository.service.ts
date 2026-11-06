@@ -258,12 +258,14 @@ export class ContentRepository {
   }
   private async buildState(manifest: ContentManifest): Promise<ContentPackage> {
     const [atlases, search, adjacency, layouts] = await Promise.all([
-      Promise.all(manifest.collections.map((entry) => this.loadCollection(entry.id))),
+      Promise.all(manifest.collections.map((entry) => this.resource(entry, entry.file))),
       this.resource(manifest.search, manifest.search.file),
       this.resource(manifest.adjacency, manifest.adjacency.file),
       this.resource(manifest.layouts, manifest.layouts.file),
     ]);
     const graph = knowledgeGraphSchema.parse({ ...manifest.graph, atlases });
+    if (graph.atlases.some((atlas, index) => atlas.id !== manifest.collections[index].id))
+      throw new Error('Identidade da coleção incompatível com o manifesto.');
     return {
       graph,
       search: searchIndexSchema.parse(search),
