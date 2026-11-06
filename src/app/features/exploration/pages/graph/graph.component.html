@@ -178,6 +178,7 @@
       [class.stage--dragging]="dragging()"
       [class.stage--animated]="!reducedMotion()"
       [class.stage--moving]="animating()"
+      [class.stage--busy]="busy()"
       (pointermove)="stagePointer($event)"
       (pointerleave)="stageLeave()"
     >
@@ -211,32 +212,8 @@
               </marker>
             }
           }
-          @for (region of regionViews(); track region.id) {
-            <radialGradient [attr.id]="'region-' + region.index">
-              <stop
-                offset="0%"
-                [attr.stop-color]="'hsl(' + region.hue + ' 60% 52%)'"
-                stop-opacity="0.2"
-              />
-              <stop
-                offset="100%"
-                [attr.stop-color]="'hsl(' + region.hue + ' 60% 52%)'"
-                stop-opacity="0"
-              />
-            </radialGradient>
-          }
         </defs>
         <g class="world" [attr.transform]="transform()">
-          <g class="regions" aria-hidden="true">
-            @for (region of regionViews(); track region.id) {
-              <circle
-                [attr.cx]="region.x"
-                [attr.cy]="region.y"
-                [attr.r]="region.radius * 1.35"
-                [attr.fill]="'url(#region-' + region.index + ')'"
-              />
-            }
-          </g>
           <g class="edges">
             @for (item of drawnEdges(); track item.edge.id) {
               <line
@@ -262,19 +239,21 @@
               />
             }
           </g>
-          <g class="edge-hits" [class.is-off]="!near()">
-            @for (item of drawnEdges(); track item.edge.id) {
-              <line
-                class="edge-hit"
-                [attr.x1]="item.x1"
-                [attr.y1]="item.y1"
-                [attr.x2]="item.x2"
-                [attr.y2]="item.y2"
-                (pointerenter)="hoverEdge(item.edge.id)"
-                (pointerleave)="hoverEdge(null)"
-              />
-            }
-          </g>
+          @if (near()) {
+            <g class="edge-hits">
+              @for (item of drawnEdges(); track item.edge.id) {
+                <line
+                  class="edge-hit"
+                  [attr.x1]="item.x1"
+                  [attr.y1]="item.y1"
+                  [attr.x2]="item.x2"
+                  [attr.y2]="item.y2"
+                  (pointerenter)="hoverEdge(item.edge.id)"
+                  (pointerleave)="hoverEdge(null)"
+                />
+              }
+            </g>
+          }
           <g class="node-hits">
             @for (item of drawnNodes(); track item.node.id) {
               <circle
@@ -331,19 +310,6 @@
           </g>
         </g>
         <g class="labels" aria-hidden="true">
-          @for (region of regionViews(); track region.id) {
-            <text
-              class="region-label"
-              [style.fill]="'hsl(' + region.hue + ' 45% 30%)'"
-              [attr.x]="region.sx"
-              [attr.y]="region.sy"
-              [attr.opacity]="region.opacity"
-              text-anchor="middle"
-              dominant-baseline="central"
-            >
-              {{ region.title }}
-            </text>
-          }
           @for (item of edgeLabels(); track item.id) {
             <text
               class="label label--edge"

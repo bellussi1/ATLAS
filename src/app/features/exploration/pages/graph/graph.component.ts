@@ -21,12 +21,9 @@ import {
   networkKinds,
   type NetworkNode,
   type NetworkPoint,
-  type NetworkRegion,
   nodeRadius,
   nodeScaleFor,
-  OTHER_REGION,
   positionClaims,
-  regionOf,
   relationFamilies,
   relationFamilyDefinition,
   type RelationFamilyId,
@@ -84,12 +81,6 @@ export class GraphComponent {
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
   private readonly network = buildKnowledgeNetwork(this.repository.knowledgeGraph);
   private readonly nodeIndex = new Map(this.network.nodes.map((node) => [node.id, node]));
-  private readonly regionSizes = (() => {
-    const sizes = new Map<string, number>();
-    for (const node of this.network.nodes)
-      sizes.set(node.collections[0], (sizes.get(node.collections[0]) ?? 0) + 1);
-    return sizes;
-  })();
   private readonly edgeIndex = new Map(this.network.edges.map((edge) => [edge.id, edge]));
 
   readonly kinds = networkKinds;
@@ -98,7 +89,6 @@ export class GraphComponent {
   readonly shape = shapePath;
   readonly radius = nodeRadius;
   readonly world = signal({ width: 1600, height: 1000 });
-  private readonly regions = signal<readonly NetworkRegion[]>([]);
   private readonly fitK = signal(1);
 
   readonly kindsOn = signal<ReadonlySet<NetworkKindId>>(new Set(networkKinds.map((k) => k.id)));
@@ -124,7 +114,7 @@ export class GraphComponent {
   private readonly wheeling = signal(false);
   private wheelTimer: ReturnType<typeof setTimeout> | undefined;
   /** The view is moving (drag, pinch, wheel or glide): heavy parts of the drawing wait. */
-  private readonly busy = computed(() => this.dragging() || this.animating() || this.wheeling());
+  readonly busy = computed(() => this.dragging() || this.animating() || this.wheeling());
   private lastLabels: { k: number; items: readonly LabelView[] } = {
     k: 0,
     items: [],
@@ -259,31 +249,6 @@ export class GraphComponent {
     });
   });
   readonly zoomK = computed(() => this.view().k);
-  /** Soft areas behind each group, with its name; the name fades as the reader comes close. */
-  readonly regionViews = computed(() => {
-    const regions = this.regions();
-    if (!regions.length) return [];
-    const present = new Set(this.visible().nodes.map((node) => regionOf(node, this.regionSizes)));
-    const { x: vx, y: vy, k } = this.view();
-    const zoom = k / this.fitK();
-    const titles = new Map(
-      this.collections.map((c) => [c.id, c.title.split(':')[0].trim()] as const),
-    );
-    return regions
-      .filter((region) => present.has(region.id))
-      .map((region, index) => ({
-        id: region.id,
-        index,
-        x: region.x,
-        y: region.y,
-        radius: region.radius,
-        hue: (index * 67 + 8) % 360,
-        title: region.id === OTHER_REGION ? 'Outros recortes' : (titles.get(region.id) ?? ''),
-        sx: region.x * k + vx,
-        sy: region.y * k + vy,
-        opacity: Math.round(Math.min(1, Math.max(0, 1.9 - zoom)) * 95) / 100,
-      }));
-  });
   /** Close enough to read what each link says; farther away the lines alone are shown. */
   readonly near = computed(() => this.zoomK() / this.fitK() >= EDGE_LABEL_ZOOM);
   /** Zoom in quarter-octave steps: what depends on it is redrawn per step, not per frame. */
@@ -551,7 +516,6 @@ export class GraphComponent {
       const timer = setTimeout(() => {
         const layout = layoutNetwork(this.network.nodes, this.network.edges);
         this.world.set({ width: layout.width, height: layout.height });
-        this.regions.set(layout.regions);
         this.positions.set(layout.positions);
         if (this.size().width && !fitted) {
           fitted = true;

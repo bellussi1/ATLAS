@@ -408,6 +408,10 @@ kbd {
   animation: edge-in 360ms var(--ease-out, ease-out) both;
   animation-delay: var(--delay, 0ms);
 }
+// While the view moves nothing needs hover: skipping hit tests keeps dragging and zoom smooth.
+.stage--busy :is(.edge-hits, .node-hits, .nodes) {
+  pointer-events: none;
+}
 .edge-hits.is-off {
   pointer-events: none;
 }
@@ -486,16 +490,6 @@ kbd {
 .stage--animated .label {
   animation: fade 220ms ease-out both;
   animation-delay: var(--delay, 0ms);
-}
-.region-label {
-  pointer-events: none;
-  font: 800 15px/1 var(--font-sans);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  paint-order: stroke;
-  stroke: var(--color-canvas);
-  stroke-width: 5px;
-  stroke-linejoin: round;
 }
 .label--edge {
   fill: var(--color-ink-muted);

@@ -179,12 +179,12 @@ test('traces a path between two entries from the detail panel', async ({ page })
   await expect(detail.getByRole('list', { name: /Trajeto de/ })).toHaveCount(0);
 });
 
-test('nodes stay still and the map is drawn as named regions', async ({ page }) => {
+test('nodes stay still and no region colour or name covers the map', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/rede');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   await expect(page.locator('[class*="drift"]')).toHaveCount(0);
-  await expect(page.locator('.region-label').first()).toBeVisible();
+  await expect(page.locator('.region-label')).toHaveCount(0);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.reload();
   await expect(page.locator('[data-node]').first()).toBeVisible();
@@ -255,6 +255,7 @@ test('keyboard: search results walk with the arrows and Home reframes the map', 
   const start = await zoom.textContent();
   await page.keyboard.press('/');
   await page.keyboard.type('Li');
+  await expect(page.locator('.search__results button').first()).toBeVisible();
   await page.keyboard.press('ArrowDown');
   await expect(page.locator('.search__results button').first()).toBeFocused();
   await page.keyboard.press('Escape');
