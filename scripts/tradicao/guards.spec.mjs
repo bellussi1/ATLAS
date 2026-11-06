@@ -79,6 +79,23 @@ test('relação boa passa e resolve o QID do alvo pelos links do artigo', () => 
   assert.equal(relation.verified, false);
 });
 
+test('membro fundador não vira fundador', () => {
+  const relation = {
+    target: 'PDT',
+    nature: 'fundou',
+    direction: 'entidade-para-alvo',
+    sentence: 'Dilma foi membro fundadora do PDT.',
+    quote: 'Dilma foi membro fundadora do Partido Democrático Trabalhista',
+  };
+  assert.equal(
+    checkRelation(relation, {
+      ...ctx(),
+      normalizedSource: normalizeText(relation.quote),
+    }).problem,
+    'membro-fundador-nao-e-fundador',
+  );
+});
+
 test('relação sem link no artigo fica sem QID, sem virar aresta depois', () => {
   assert.equal(checkRelation(good, { ...ctx(), index: new Map() }).relation.targetQid, null);
   const short = { ...good, target: 'Kautsky' };

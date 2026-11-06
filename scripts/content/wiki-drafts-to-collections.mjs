@@ -538,7 +538,7 @@ function edgesForDraft(item, entityId, resolve, pending) {
 }
 
 /** Wikidata P737/P1142 between two graph entities, as associations with the item as the source. */
-function labelEdges(statements, resolve, existingPairs, atlasOf, retrievedAt) {
+function labelEdges(statements, resolve, existingPairs, atlasOf, kindOf, retrievedAt) {
   const seen = new Set();
   const byAtlas = new Map();
   for (const statement of [...statements].sort((a, b) =>
@@ -548,6 +548,8 @@ function labelEdges(statements, resolve, existingPairs, atlasOf, retrievedAt) {
     const fromId = resolve(statement.qid);
     const toId = resolve(statement.targetQid);
     if (!edge || !fromId || !toId || fromId === toId) continue;
+    // P1142 on a person is a contributor's label, not a political affiliation; keep it out of the graph.
+    if (statement.property === 'P1142' && kindOf(fromId) === 'person') continue;
     const key = `${statement.qid}-${statement.property}-${statement.targetQid}`.toLowerCase();
     if (seen.has(key) || existingPairs.has(`${fromId}>${toId}`)) continue;
     seen.add(key);
@@ -796,6 +798,11 @@ export function convertDrafts(
   for (const [key, bucket] of buckets)
     for (const entity of bucket.entities) atlasOfDrafted.set(entity.id, { bucket: key });
   for (const entry of mergedIntoExisting) atlasOfDrafted.set(entry.entity, { atlas: entry.atlas });
+  const kindOf = new Map();
+  for (const atlas of existingAtlases)
+    for (const entity of atlas.entities ?? []) kindOf.set(entity.id, entity.kind);
+  for (const bucket of buckets.values())
+    for (const entity of bucket.entities) kindOf.set(entity.id, entity.kind);
   const pairs = new Set(
     [
       ...existingAtlases.flatMap((atlas) => atlas.relations ?? []),
@@ -811,6 +818,7 @@ export function convertDrafts(
       const owner = atlasOfDrafted.get(id);
       return owner ? (owner.bucket ? `bucket:${owner.bucket}` : `atlas:${owner.atlas}`) : null;
     },
+    (id) => kindOf.get(id),
     [...buckets.values(), ...additions.values()]
       .flatMap((b) => b.retrievedAt)
       .map(dateOf)
