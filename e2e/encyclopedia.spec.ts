@@ -1,4 +1,4 @@
-import { expect, test } from './content-fixture';
+import { expect, routeContent, test, waitForHydration } from './content-fixture';
 
 test('keywords open sourced context without moving the reading', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -48,8 +48,10 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
     isMobile: true,
     reducedMotion: 'reduce',
   });
+  await routeContent(context);
   const page = await context.newPage();
   await page.goto('/marxismo/');
+  await waitForHydration(page);
   await page.locator('#vertentes .exploration-card').first().tap();
   await expect(page.getByRole('dialog')).toContainText('Bernstein');
   await page.getByRole('button', { name: 'Fechar contexto' }).tap();
