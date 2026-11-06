@@ -103,7 +103,7 @@ test('catalogues expose actual records and permanent pages update when following
     page.locator('.connection').getByRole('link', { name: 'Karl Marx', exact: true }),
   ).toBeVisible();
   await page.getByRole('link', { name: 'Abrir esta fonte no índice' }).first().click();
-  await expect(page).toHaveURL(/fontes#source-/);
+  await expect(page).toHaveURL(/\/fontes(\?pagina=\d+)?#source-/);
   await expect(page.locator(new URL(page.url()).hash)).toBeVisible();
 });
 
@@ -153,7 +153,11 @@ test('all search destinations have prerendered HTML with matching title, canonic
     );
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
     expect(canonical, entry.path).toBe(site ? site + entry.path : undefined);
-    if (entry.fragment) expect(html).toContain('id="' + entry.fragment + '"');
+    if (entry.fragment && entry.path !== '/fontes')
+      expect(html).toContain('id="' + entry.fragment + '"');
+    // Sources are paginated: page 1 carries the pager and its own anchors; later anchors are
+    // resolved in the browser by /fontes, as covered in pages.spec.ts.
+    if (entry.path === '/fontes') expect(html).toContain('Paginação do acervo');
   }
 });
 

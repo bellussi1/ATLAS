@@ -8,28 +8,10 @@
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
-.graph-node,
 .timeline-list button {
   transition:
     background-color var(--motion-fast),
     box-shadow var(--motion-fast);
-}
-.graph-node:active {
-  box-shadow: inset 0 0 0 2px var(--ink);
-}
-.graph-canvas .edges line {
-  transition:
-    opacity var(--motion-fast),
-    stroke var(--motion-fast);
-}
-.graph-canvas .edges line.highlighted {
-  stroke: var(--color-indigo);
-  stroke-width: 4;
-}
-@media (hover: hover) and (pointer: fine) {
-  .graph-node:hover {
-    box-shadow: inset 0 0 0 2px var(--ink);
-  }
 }
 
 .text-network li {

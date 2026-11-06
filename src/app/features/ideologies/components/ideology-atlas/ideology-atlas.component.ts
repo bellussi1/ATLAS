@@ -22,72 +22,10 @@ import { TimelineFocusService } from '@ideologies/services/timeline-focus.servic
 import { axisItemOf, entityKindLabel } from '@ideologies/utils/timeline-axis-items';
 import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
 import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
+import { KnowledgeNetworkComponent } from '@shared/ui/knowledge-network/knowledge-network.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
-
-/** Stage units (the 920x572 canvas) taken by a label box; the root keeps a larger clearance. */
-const nodeBox = { width: 134, height: 72 };
-const rootBox = { width: 150, height: 84 };
-
-/** Pushes overlapping label boxes apart along their shallowest axis; the root never moves. */
-function relaxNodes(points: Map<string, { x: number; y: number }>, root: { x: number; y: number }) {
-  const list = [...points.values()];
-  const clamp = (value: number, half: number, size: number) =>
-    Math.min(size - half - 4, Math.max(half + 4, value));
-  for (let pass = 0; pass < 200; pass++) {
-    let moved = false;
-    for (let i = 0; i < list.length; i++) {
-      const a = list[i]!;
-      const rx = a.x - root.x;
-      const ry = a.y - root.y;
-      const rootX = (nodeBox.width + rootBox.width) / 2 - Math.abs(rx);
-      const rootY = (nodeBox.height + rootBox.height) / 2 - Math.abs(ry);
-      if (rootX > 0 && rootY > 0) {
-        if (rootX < rootY) a.x += (rx >= 0 ? 1 : -1) * (rootX + 1);
-        else a.y += (ry >= 0 ? 1 : -1) * (rootY + 1);
-        moved = true;
-      }
-      for (let j = i + 1; j < list.length; j++) {
-        const b = list[j]!;
-        const dx = a.x - b.x;
-        const dy = a.y - b.y;
-        const ox = nodeBox.width - Math.abs(dx);
-        const oy = nodeBox.height - Math.abs(dy);
-        if (ox <= 0 || oy <= 0) continue;
-        moved = true;
-        if (ox < oy) {
-          const shift = ((dx >= 0 ? 1 : -1) * (ox + 1)) / 2;
-          a.x += shift;
-          b.x -= shift;
-        } else {
-          const shift = ((dy >= 0 ? 1 : -1) * (oy + 1)) / 2;
-          a.y += shift;
-          b.y -= shift;
-        }
-      }
-    }
-    for (const point of list) {
-      point.x = clamp(point.x, nodeBox.width / 2, 920);
-      point.y = clamp(point.y, nodeBox.height / 2, 572);
-    }
-    if (!moved) break;
-  }
-}
-
-type RelationFilter = 'all' | 'discovery' | 'structured';
-interface GraphNode {
-  entity: Entity;
-  x: number;
-  y: number;
-}
-interface GraphEdge {
-  relation: Relation;
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-}
 
 @Component({
   selector: 'app-ideology-atlas',
@@ -98,6 +36,7 @@ interface GraphEdge {
     KnowledgeTextComponent,
     CardCarouselComponent,
     TimelineAxisComponent,
+    KnowledgeNetworkComponent,
   ],
   templateUrl: './ideology-atlas.component.html',
   styleUrls: [
@@ -110,8 +49,6 @@ export class IdeologyAtlasComponent {
   private readonly repository = inject(ContentRepository);
   private readonly graph = this.repository.knowledgeGraph;
   private readonly focus = inject(TimelineFocusService);
-  /** Record echoed from the timeline, so the graph can mark it when it is on screen. */
-  readonly echoId = this.focus.entityId;
   readonly atlasId = input.required<string>();
   readonly rootEntityId = input.required<string>();
   readonly origin = input.required<string>();
@@ -119,8 +56,8 @@ export class IdeologyAtlasComponent {
   readonly openingSubtitle = input('Muitas entradas.');
   readonly embedded = input(false);
   readonly continuous = input(false);
-  /** Below 672px the canvas gives way to the text list, which then opens by default. */
-  readonly textAlternative = signal(false);
+  /** On narrow columns the textual list opens by default, even though the graph stays available. */
+  readonly narrow = signal(false);
   readonly atlas = computed(
     () => this.graph.atlases.find((item) => item.id === this.atlasId()) ?? this.graph.atlases[0]!,
   );
@@ -139,8 +76,6 @@ export class IdeologyAtlasComponent {
           ),
       ).length,
   );
-  readonly hoveredId = signal<string | null>(null);
-  readonly relationFilter = signal<RelationFilter>('all');
   readonly selectedId = linkedSignal(() => this.rootEntityId());
   readonly search = signal('');
   readonly history = signal<string[]>([]);
@@ -165,15 +100,7 @@ export class IdeologyAtlasComponent {
   readonly relations = computed(() =>
     this.repository.queryRelations(this.selectedId(), { atlasId: this.atlasId() }),
   );
-  readonly visibleRelations = computed(() =>
-    this.relations().filter((relation) => {
-      if (this.relationFilter() === 'discovery')
-        return relation.relationType === 'encyclopedic-link';
-      if (this.relationFilter() === 'structured')
-        return relation.relationType !== 'encyclopedic-link';
-      return true;
-    }),
-  );
+  readonly visibleRelations = computed(() => this.relations());
   /** The textual list carries each relation's evidence, so it opens folded past this many. */
   readonly relationPreview = 5;
   readonly showAllRelations = signal(false);
@@ -182,62 +109,6 @@ export class IdeologyAtlasComponent {
       ? this.visibleRelations()
       : this.visibleRelations().slice(0, this.relationPreview),
   );
-  readonly graphNodes = computed<GraphNode[]>(() => {
-    const focusId = this.selectedId();
-    const visibleIds = new Set([
-      focusId,
-      this.rootEntityId(),
-      ...this.visibleRelations().map((relation) => relation.relatedEntityId),
-    ]);
-    const entities = this.allEntities();
-    const items = entities.filter((entity) => visibleIds.has(entity.id));
-    const layout = this.repository.layouts.atlases;
-    const root = layout.order[this.rootEntityId()];
-    if (root === undefined) throw new Error('Raiz do atlas ausente do layout compilado.');
-    // Neighbours sit on concentric ellipses, evenly spaced, so labels never stack on each other.
-    const rings = [
-      { capacity: 8, rx: 250, ry: 140 },
-      { capacity: 13, rx: 335, ry: 218 },
-      { capacity: 18, rx: 395, ry: 250 },
-    ];
-    const around = items
-      .filter((entity) => entity.id !== this.rootEntityId())
-      .sort((a, b) => layout.order[a.id]! - layout.order[b.id]!);
-    const placed = new Map<string, { x: number; y: number }>();
-    let from = 0;
-    rings.forEach((ring, index) => {
-      const last = index === rings.length - 1;
-      const group = around.slice(from, last ? undefined : from + ring.capacity);
-      from += group.length;
-      group.forEach((entity, i) => {
-        const angle =
-          -Math.PI / 2 +
-          (2 * Math.PI * i) / group.length +
-          (index % 2 ? Math.PI / group.length : 0);
-        placed.set(entity.id, {
-          x: layout.center.x + Math.cos(angle) * ring.rx,
-          y: layout.center.y + Math.sin(angle) * ring.ry,
-        });
-      });
-    });
-    relaxNodes(placed, layout.center);
-    return items.map((entity) => ({
-      entity,
-      ...(placed.get(entity.id) ?? layout.center),
-    }));
-  });
-  readonly graphEdges = computed<GraphEdge[]>(() => {
-    const positions = new Map(this.graphNodes().map((node) => [node.entity.id, node]));
-    return this.visibleRelations().flatMap((result) => {
-      const relation = this.atlas().relations.find((item) => item.id === result.relationId);
-      if (!relation) return [];
-      if (relation.fromEntityId !== this.selectedId() && relation.toEntityId !== this.selectedId())
-        return [];
-      const from = positions.get(relation.fromEntityId);
-      const to = positions.get(relation.toEntityId);
-      return from && to ? [{ relation, x1: from.x, y1: from.y, x2: to.x, y2: to.y }] : [];
-    });
-  });
   readonly timelineEntities = computed(() =>
     this.entities()
       .filter(
@@ -277,9 +148,8 @@ export class IdeologyAtlasComponent {
     const view = inject(DOCUMENT).defaultView;
     const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     if (!view?.ResizeObserver) return;
-    // The canvas is a 920-wide stage: below ~40rem of real column width it gives way to the text list.
     const observer = new view.ResizeObserver(([entry]) =>
-      this.textAlternative.set(entry.contentRect.width < 640),
+      this.narrow.set(entry.contentRect.width < 640),
     );
     observer.observe(host);
     inject(DestroyRef).onDestroy(() => observer.disconnect());
@@ -290,6 +160,9 @@ export class IdeologyAtlasComponent {
     this.history.update((items) => [...items, this.selectedId()]);
     this.selectedId.set(entityId);
   }
+  openPicked(entityId: string | null): void {
+    if (entityId) this.openEntity(entityId);
+  }
   returnContext(): void {
     const previous = this.history().at(-1);
     if (!previous) {
@@ -299,17 +172,13 @@ export class IdeologyAtlasComponent {
     this.history.update((items) => items.slice(0, -1));
     this.selectedId.set(previous);
   }
-  setRelationFilter(value: string): void {
-    if (value === 'all' || value === 'discovery' || value === 'structured') {
-      this.relationFilter.set(value);
-    }
-  }
   setSearch(value: string): void {
     this.search.set(value);
   }
   selectTimeline(entityId: string): void {
     this.timelineId.set(entityId);
     this.focus.entityId.set(entityId);
+    this.openEntity(entityId);
   }
   timelineYear(entity: Entity): number {
     return entity.temporalExtent?.startYear ?? entity.temporalExtent?.endYear ?? 0;
@@ -442,8 +311,5 @@ export class IdeologyAtlasComponent {
   }
   relationDestination(relation: KnowledgeRelationResult): Entity | undefined {
     return relation.direction === 'outgoing' ? this.relationTarget(relation) : this.selected();
-  }
-  nodePosition(entityId: string): GraphNode | undefined {
-    return this.graphNodes().find((node) => node.entity.id === entityId);
   }
 }

@@ -12,10 +12,10 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
 
 ## Verificações executadas
 
-- `npm test`: **301/301**.
+- `npm test`: **302/302**.
 - `npm run test:content`: **171/171**.
-- `npm run build`: passou, **1.185 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `npm run test:e2e`: **132/132** antes da performance; `e2e/graph.spec.ts` **18/18**; depois da revisão editorial, `pages.spec.ts` **18/18** (inclui `/fontes` paginado) e `ideology-sheets.spec.ts` **8/8**; `/fontes` em 390/1440 no `public-routes` **2/2**. A suíte completa depois do conteúdo fez **131/132**: `contextual-exploration` liberalismo 1440 falha na altura do painel (1000→976, passo da pilha) e no y do termo; ajustar a estabilidade do painel ou a tolerância do teste.
+- `npm run build`: passou, **1.185 rotas**; `vercel.json` gerado com CSP de 9 hashes.
+- `npm run test:e2e`: `e2e/graph.spec.ts` **18/18**; `pages.spec.ts` **19/19** (inclui `/fontes` paginado e o grafo de `#conexoes`); `ideology-sheets.spec.ts` **8/8**; `public-routes` **35/35** em 390/1440, sem achados sérios em `/marxismo` e `/liberalismo`. `contextual-exploration` segue com **6/7**: liberalismo 1440 falha no y do termo ao voltar (diferença observada de **64 px**); ajustar a estabilidade do painel ou a tolerância do teste.
 - `npm run lint` e `npm run typecheck`: passaram.
 
 ## O que mudou nesta rodada
@@ -62,6 +62,12 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
    - Links `#source-…` continuam funcionando: o componente descobre a página da fonte, navega para `?pagina=N` e rola até o item, sem restaurar o scroll antigo.
    - Teste: `pages.spec.ts` cobre paginação, “Próxima” e deep link para uma fonte da página 2; `public-routes` confirma `/fontes` em 390 e 1440 sem achados sérios.
 
+11. **Grafo compartilhado no capítulo de conexões**
+    - O componente do `/grafos` foi promovido para `shared/ui/knowledge-network` (`app-knowledge-network`) e ganhou `embedded`, `scope`, `focus` e `picked`; a rota `/grafos` consome o mesmo componente.
+    - Em `/marxismo#conexoes` (e nas demais tradições), o capítulo usa o motor real do grafo limitado ao atlas da tradição — **42 entidades** em `atlas-marx-valor` —, com o conceito raiz selecionado e o enquadramento do atlas como **100%**.
+    - O painel de detalhe do grafo fica desligado no capítulo: a seleção no mapa abre a ficha no painel de leitura abaixo, e índice e linha do tempo continuam funcionando. O canvas radial de 920×572 foi removido.
+    - No modo embutido o grafo não captura atalhos de teclado fora do próprio componente; a barra fica compacta e o status vira texto acessível.
+
 ## Piloto de modelo (Anthropic)
 
 Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo `targets` (`amostra-20v2`):
@@ -79,7 +85,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 ## Pendências que bloqueiam
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.
-2. **Suíte e2e completa** — **131/132** depois do conteúdo; `contextual-exploration` (liberalismo 1440) falha na altura do painel (1000→976, passo da pilha) e no y do termo. Corrigir a estabilidade do painel ou a tolerância do teste antes de considerar a rodada verde.
+2. **Suíte e2e completa** — `contextual-exploration` (liberalismo 1440) falha no y do termo ao voltar (diferença de **64 px**), embora o scroll volte ao lugar. Corrigir a estabilidade do painel ou a tolerância do teste antes de considerar a rodada verde.
 3. **Produção na Vercel** — o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`).
 4. **Probe de 404** — hoje `https://atlasbr.vercel.app/caminho-inexistente` responde 200 com `index.html`; o `uptime.yml` falha por isso. Só verificar depois do deploy.
 5. **Verbetes** — corrigir o modo `--partial` do tradutor e o desempate de rascunhos; depois rodar o lote prioritário e derivar o perfil político das relações.

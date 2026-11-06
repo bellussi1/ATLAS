@@ -4,9 +4,9 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 import { vi } from 'vitest';
 
-import { GraphComponent } from './graph.component';
+import { KnowledgeNetworkComponent } from './knowledge-network.component';
 
-describe('GraphComponent', () => {
+describe('KnowledgeNetworkComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [
@@ -28,7 +28,7 @@ describe('GraphComponent', () => {
   );
 
   async function render() {
-    const fixture = TestBed.createComponent(GraphComponent);
+    const fixture = TestBed.createComponent(KnowledgeNetworkComponent);
     fixture.detectChanges();
     await vi.waitFor(() => expect(fixture.componentInstance.positions()).not.toBeNull());
     fixture.detectChanges();
@@ -55,7 +55,7 @@ describe('GraphComponent', () => {
   });
 
   it('shows a loading state until the layout is ready, then draws nodes', async () => {
-    const fixture = TestBed.createComponent(GraphComponent);
+    const fixture = TestBed.createComponent(KnowledgeNetworkComponent);
     fixture.detectChanges();
     expect(root(fixture).querySelector('.overlay')?.textContent).toContain('Organizando');
     await vi.waitFor(() => expect(fixture.componentInstance.positions()).not.toBeNull());
@@ -323,6 +323,26 @@ describe('GraphComponent', () => {
     component.fit(false);
     expect(component.view().k).toBeCloseTo(base, 6);
     expect(component.zoomPercent()).toBe(100);
+  });
+
+  it('embeds in an atlas scope, selects its root and frames that atlas as 100%', async () => {
+    const fixture = TestBed.createComponent(KnowledgeNetworkComponent);
+    fixture.componentRef.setInput('embedded', true);
+    fixture.componentRef.setInput('scope', ['atlas-liberalism']);
+    fixture.componentRef.setInput('focus', 'ideology-liberalism');
+    fixture.detectChanges();
+    await vi.waitFor(() => expect(fixture.componentInstance.positions()).not.toBeNull());
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1000, height: 700 });
+    component.fit(false);
+    fixture.detectChanges();
+    expect(component.visible().nodes.length).toBeGreaterThan(0);
+    expect(
+      component.visible().nodes.every((node) => node.collections.includes('atlas-liberalism')),
+    ).toBe(true);
+    expect(component.selectedId()).toBe('ideology-liberalism');
+    expect(component.zoomPercent()).toBe(100);
+    expect(root(fixture).querySelector('.detail')).toBeNull();
   });
 
   it('reframes with Home, ignores letter shortcuts on buttons and unwinds Escape in steps', async () => {

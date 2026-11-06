@@ -1,4 +1,4 @@
-import { batchDots, batchEdgeSegments } from './graph-batching';
+import { batchDots, batchEdgeSegments } from './network-batching';
 
 describe('graph batching', () => {
   it('joins edges by key and fade bucket, keeping the coordinates', () => {

@@ -1,7 +1,9 @@
 import { TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { queryKnowledgeRelations } from '@core/content/queries/knowledge-graph';
 import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
+import { KnowledgeNetworkComponent } from '@shared/ui/knowledge-network/knowledge-network.component';
 import { provideContentFixture } from '@testing/content-fixture';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
@@ -17,14 +19,17 @@ describe('Liberalism atlas snapshot', () => {
     return fixture.componentInstance;
   }
 
-  it('preserves arbitrary entity roots using compiled geometry', () => {
+  it('scopes the shared network to this atlas and starts on its root', () => {
     const fixture = TestBed.createComponent(IdeologyAtlasComponent);
     fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
-    fixture.componentRef.setInput('rootEntityId', 'person-john-locke');
+    fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
     fixture.componentRef.setInput('origin', '/liberalismo');
-    expect(
-      fixture.componentInstance.graphNodes().find((node) => node.entity.id === 'person-john-locke'),
-    ).toMatchObject({ x: 460, y: 286 });
+    fixture.detectChanges();
+    const network = fixture.debugElement.query(By.directive(KnowledgeNetworkComponent))
+      .componentInstance as KnowledgeNetworkComponent;
+    expect(network.embedded()).toBe(true);
+    expect(network.scope()).toEqual(['atlas-liberalism']);
+    expect(network.focus()).toBe('ideology-liberalism');
   });
   const atlas = methodologyKnowledgeGraph.atlases.find((item) => item.id === 'atlas-liberalism');
 
@@ -126,7 +131,7 @@ describe('Liberalism atlas snapshot', () => {
     expect(page.history()).toEqual([]);
   });
 
-  it('keeps the textual relation list synchronized with the graph filter', () => {
+  it('keeps the textual relation list in step with the selected record', () => {
     const fixture = TestBed.createComponent(IdeologyAtlasComponent);
     fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
     fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
@@ -135,52 +140,34 @@ describe('Liberalism atlas snapshot', () => {
     fixture.detectChanges();
 
     const page = fixture.componentInstance;
-    const candidate = page.entities().find((entity) => {
-      const types = new Set(
+    const candidate = page.entities().find(
+      (entity) =>
         queryKnowledgeRelations(methodologyKnowledgeGraph, entity.id, {
           atlasId: 'atlas-liberalism',
-        }).map((relation) => relation.relationType),
-      );
-      return types.has('encyclopedic-link') && types.size > 1;
-    });
+        }).length > 0,
+    );
     expect(candidate).toBeDefined();
     page.selectedId.set(candidate!.id);
+    page.showAllRelations.set(true);
     fixture.detectChanges();
 
-    for (const filter of ['discovery', 'structured'] as const) {
-      page.setRelationFilter(filter);
-      page.showAllRelations.set(true);
-      fixture.detectChanges();
-      const visibleIds = Array.from(
-        (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLElement>(
-          '.text-network li[data-relation-id]',
-        ),
-      ).map((item) => item.dataset['relationId']);
-      expect(visibleIds).toEqual(page.visibleRelations().map((relation) => relation.relationId));
-      expect(visibleIds.length).toBeGreaterThan(0);
-      const expectedNodeIds = [
-        page.selectedId(),
-        page.rootEntityId(),
-        ...page.visibleRelations().map((relation) => relation.relatedEntityId),
-      ];
-      expect(
-        page
-          .graphNodes()
-          .map((node) => node.entity.id)
-          .sort(),
-      ).toEqual([...new Set(expectedNodeIds)].sort());
+    const visibleIds = Array.from(
+      (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLElement>(
+        '.text-network li[data-relation-id]',
+      ),
+    ).map((item) => item.dataset['relationId']);
+    expect(visibleIds).toEqual(page.visibleRelations().map((relation) => relation.relationId));
+    expect(visibleIds.length).toBeGreaterThan(0);
 
-      const firstRelation = page.visibleRelations()[0];
-      const firstItem = (fixture.nativeElement as HTMLElement).querySelector<HTMLElement>(
-        `.text-network li[data-relation-id="${firstRelation.relationId}"]`,
-      );
-      expect(firstItem?.textContent).toContain(page.relationName(firstRelation));
-      expect(firstItem?.textContent).toContain(
-        `Incerteza ${page.relationUncertaintyLabel(firstRelation)}`,
-      );
-      expect(firstItem?.querySelector('a[href]')).not.toBeNull();
-    }
-    // The text list is a disclosure: closed on wide screens, open only where the canvas gives way to it.
+    const firstRelation = page.visibleRelations()[0];
+    const firstItem = (fixture.nativeElement as HTMLElement).querySelector<HTMLElement>(
+      `.text-network li[data-relation-id="${firstRelation.relationId}"]`,
+    );
+    expect(firstItem?.textContent).toContain(page.relationName(firstRelation));
+    expect(firstItem?.textContent).toContain(
+      `Incerteza ${page.relationUncertaintyLabel(firstRelation)}`,
+    );
+    expect(firstItem?.querySelector('a[href]')).not.toBeNull();
     expect(
       (fixture.nativeElement as HTMLElement).querySelector<HTMLDetailsElement>('.text-network')
         ?.open,
@@ -197,7 +184,7 @@ describe('Liberalism atlas snapshot', () => {
     const last = page.timelineItems().at(-1)!;
     page.selectTimeline(last.id);
     expect(page.timelineSelected()?.id).toBe(last.id);
-    expect(page.echoId()).toBe(last.id);
+    expect(page.selectedId()).toBe(last.id);
     expect(page.unconnectedEntityCount()).toBeGreaterThan(0);
   });
 });
