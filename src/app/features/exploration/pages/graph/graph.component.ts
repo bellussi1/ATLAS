@@ -536,7 +536,6 @@ export class GraphComponent {
   private pinch: { distance: number; origin: View } | null = null;
   /** The view follows window resizes until the reader moves or zooms it. */
   private autoFit = true;
-  private fitMode: 'default' | 'whole' = 'default';
   private pointerFrame = 0;
   private lastPointer: { x: number; y: number } | null = null;
   private tweenToken = 0;
@@ -638,8 +637,8 @@ export class GraphComponent {
       '=': () => this.zoomStep(1.25),
       '-': () => this.zoomStep(0.8),
       _: () => this.zoomStep(0.8),
-      '0': () => this.fit(true, 'default'),
-      Home: () => this.fit(true, 'default'),
+      '0': () => this.fit(true),
+      Home: () => this.fit(true),
       c: () => this.togglePathStart(),
       C: () => this.togglePathStart(),
       Escape: () => {
@@ -864,11 +863,10 @@ export class GraphComponent {
 
   // ---- view: zoom and pan ----
 
-  fit(animate = false, mode: 'default' | 'whole' = this.fitMode): void {
+  fit(animate = false): void {
     const { width, height } = this.size();
     if (!width || !height) return;
     this.autoFit = true;
-    this.fitMode = mode;
     const world = this.world();
     const inset = this.insets();
     const freeW = Math.max(120, width - inset.left - inset.right);
@@ -876,8 +874,8 @@ export class GraphComponent {
     const allK = Math.min(freeW / world.width, freeH / world.height) * 0.98;
     this.allK = allK;
     const box = { minX: 0, maxX: world.width, minY: 0, maxY: world.height };
-    // The reading default is closer than the whole graph: that closer framing is the 100% mark.
-    const k = mode === 'whole' ? allK : allK * DEFAULT_ZOOM;
+    // The whole graph is the 100% mark; opening and "reframe" use the same framing.
+    const k = allK;
     this.fitK.set(k);
     this.glideTo(
       {
@@ -1197,9 +1195,6 @@ function toggled<T>(set: ReadonlySet<T>, value: T): ReadonlySet<T> {
 
 /** Zoom, relative to the first view, from which links show their wording. */
 const EDGE_LABEL_ZOOM = 1.8;
-
-/** How much closer the reading default sits than the whole graph, which becomes the 100% mark. */
-const DEFAULT_ZOOM = 1.6;
 
 function hash(text: string): number {
   let value = 2166136261;
