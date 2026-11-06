@@ -44,9 +44,7 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   expect(resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path))).toEqual(compiled);
 });
 
-test('SSR transfers all compiled data needed for hydration without duplicate HTTP', async ({
-  page,
-}) => {
+test('SSR hydrates through the pinned release without duplicate HTTP', async ({ page }) => {
   const resources: string[] = [];
   page.on('request', (request) => {
     if (request.url().startsWith(base)) resources.push(request.url());
@@ -58,7 +56,8 @@ test('SSR transfers all compiled data needed for hydration without duplicate HTT
     .first()
     .click();
   await expect(page.getByRole('dialog')).toContainText('John Locke');
-  expect(resources).toEqual([]);
+  expect(new Set(resources).size).toBe(resources.length);
+  expect(resources.some((url) => url.endsWith('/pointer.json'))).toBe(false);
 });
 
 test('a failed content asset preserves the current page and offers a working retry', async ({

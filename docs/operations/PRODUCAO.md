@@ -53,3 +53,25 @@ npm run content:publish                                      # republica o point
 
 - Espelhar no R2 as imagens da Wikimedia com licença de reprodução (hoje há hotlink).
 - Hoje o `vercel.json` gerado nunca rodou contra o Vercel real: o primeiro deploy de pré-visualização é o teste.
+
+## Armazenamento dos deployments
+
+Os HTMLs estáticos incluíam cópias dos objetos do grafo via TransferState.
+O repositório agora limita cada objeto embutido a 16.000 caracteres em todas
+as rotas. Objetos maiores são baixados do release fixado no R2, conferidos por
+SHA-256 e reutilizados pelo cache do navegador e pela instância do repositório.
+O conteúdo HTML e o prerender continuam disponíveis para indexação.
+
+A medição local em 06/11/2026 passou de aproximadamente 460 MB para 86 MB no diretório público, cerca de 81% de redução. A página de pessoas passou de cerca de 15 MB para 176 KB. Os valores dependem do release de conteúdo.
+
+A redução vale para novos builds. Para reduzir o histórico retido, abrir
+ATLAS → Settings → Security → Deployment Retention Policy no Vercel.
+Uma configuração inicial para este projeto é 1 dia para cancelados/com erro,
+7 dias para previews e 30 dias para produção. Conferir as exceções que preservam
+o deployment atual e os alvos de rollback antes de salvar.
+Aplicar ao projeto ATLAS. O uso agregado da equipe pode incluir outros projetos.
+
+Conferir o total dos arquivos em `dist/atlas/browser`, as rotas principais, a
+hidratação e os links antes de publicar. Após o próximo deploy, comparar o
+mesmo intervalo em Usage → Deployment Storage. A atualização do uso depende
+da exclusão dos deployments antigos e da atualização das métricas.

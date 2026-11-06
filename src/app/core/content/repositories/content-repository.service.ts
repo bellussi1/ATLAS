@@ -1,5 +1,4 @@
 import { isPlatformBrowser } from '@angular/common';
-import { DOCUMENT } from '@angular/common';
 import { inject, Injectable, makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
 import {
   adjacencySchema,
@@ -34,19 +33,9 @@ import { defer, from, type Observable } from 'rxjs';
 import { CONTENT_ASSET_READER, CONTENT_INITIAL_PACKAGE } from './content-assets';
 
 /** Largest object, in characters, that the server hands to the browser through TransferState. */
-const TRANSFER_LIMIT_CHARS = 64_000;
+const TRANSFER_LIMIT_CHARS = 16_000;
 
-/** Whether a URL or path is an entry page (`/verbete/:slug`), one of which exists per record. */
-export const isEntryPageRequest = (url: string | undefined): boolean => {
-  if (!url) return false;
-  try {
-    return new URL(url, 'http://localhost').pathname.startsWith('/verbete/');
-  } catch {
-    return false;
-  }
-};
-
-/** Whether an entry page may embed this object; large graph artifacts are fetched by the browser. */
+/** Large immutable artifacts stay on R2 instead of repeating in every prerendered HTML. */
 export const isTransferable = (value: string): boolean => value.length <= TRANSFER_LIMIT_CHARS;
 
 @Injectable({ providedIn: 'root' })
@@ -54,7 +43,6 @@ export class ContentRepository {
   private readonly read = inject(CONTENT_ASSET_READER);
   private readonly transfer = inject(TransferState);
   private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
-  private readonly document = inject(DOCUMENT);
   private state = inject(CONTENT_INITIAL_PACKAGE);
   private readonly requests = new Map<string, Promise<string>>();
   private pointer?: Promise<ContentPointer>;
@@ -137,17 +125,7 @@ export class ContentRepository {
     if (!this.state) throw new Error('Índices de conteúdo indisponíveis.');
     return this.state;
   }
-  /**
-   * Reads one object key from the base URL once. The server hands what it read to the browser through
-   * TransferState, so hydration needs no second read. The exception is an entry page (`/verbete/:slug`,
-   * one per record): there only small objects (pointer, manifest) travel, because embedding the whole
-   * graph in every one of them made each page megabytes and the prerender run out of memory. The large
-   * objects are immutable and named by digest, so the browser fetches them with the HTTP cache.
-   */
-  /** True while the server renders an entry page; read at the moment of use, once the URL is known. */
-  private onEntryPage(): boolean {
-    return isEntryPageRequest(this.document.location?.pathname);
-  }
+  /** Small assets hydrate directly. Larger objects use the browser cache and verified R2 release. */
   private asset(key: string): Promise<string> {
     const previous = this.requests.get(key);
     if (previous) return previous;
@@ -159,8 +137,7 @@ export class ContentRepository {
         return value;
       }
       const value = await this.read(key);
-      if (!this.browser && (!this.onEntryPage() || isTransferable(value)))
-        this.transfer.set(transferKey, value);
+      if (!this.browser && isTransferable(value)) this.transfer.set(transferKey, value);
       return value;
     })().catch((error: unknown) => {
       this.requests.delete(key);

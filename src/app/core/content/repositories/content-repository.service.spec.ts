@@ -13,11 +13,7 @@ import {
 import { firstValueFrom } from 'rxjs';
 
 import { CONTENT_ASSET_READER } from './content-assets';
-import {
-  ContentRepository,
-  isEntryPageRequest,
-  isTransferable,
-} from './content-repository.service';
+import { ContentRepository, isTransferable } from './content-repository.service';
 
 describe('ContentRepository generated assets', () => {
   const reads: string[] = [];
@@ -88,7 +84,7 @@ describe('ContentRepository generated assets', () => {
     await firstValueFrom(TestBed.inject(ContentRepository).loadKnowledgeGraph());
     const transfer = TestBed.inject(TransferState).toJson();
     TestBed.resetTestingModule();
-    const read = vi.fn(() => Promise.reject(new Error('Hydration attempted network')));
+    const read = vi.fn(async (key: string) => contentAssetFixture[key]);
     TestBed.configureTestingModule({
       providers: [
         { provide: PLATFORM_ID, useValue: 'browser' },
@@ -100,18 +96,12 @@ describe('ContentRepository generated assets', () => {
       state.set(makeStateKey<string>(key), value as string);
     const result = await firstValueFrom(TestBed.inject(ContentRepository).loadKnowledgeGraph());
     expect(result).toEqual(methodologyKnowledgeGraph);
-    expect(read).not.toHaveBeenCalled();
+    expect(read.mock.calls.every(([key]) => !isTransferable(contentAssetFixture[key]))).toBe(true);
+    expect(new Set(read.mock.calls.map(([key]) => key)).size).toBe(read.mock.calls.length);
     expect(state.isEmpty).toBe(true);
   });
 
-  it('recognises entry pages by the request URL', () => {
-    expect(isEntryPageRequest('http://localhost/verbete/cooperativismo')).toBe(true);
-    expect(isEntryPageRequest('/verbete/cooperativismo')).toBe(true);
-    expect(isEntryPageRequest('http://localhost/marxismo')).toBe(false);
-    expect(isEntryPageRequest(undefined)).toBe(false);
-  });
-
-  it('embeds only small objects while rendering an entry page', async () => {
+  it('embeds only small objects on every public page', async () => {
     const transferred = async (path: string) => {
       window.history.pushState({}, '', path);
       TestBed.resetTestingModule();
@@ -131,7 +121,7 @@ describe('ContentRepository generated assets', () => {
     const onEntry = await transferred('/verbete/x');
     const onOther = await transferred('/marxismo');
     expect(onEntry.every(isTransferable)).toBe(true);
-    expect(onOther.length).toBeGreaterThan(onEntry.length);
+    expect(onOther).toEqual(onEntry);
     window.history.pushState({}, '', '/');
   });
 
