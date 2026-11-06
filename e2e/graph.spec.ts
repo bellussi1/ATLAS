@@ -1,5 +1,6 @@
 ﻿import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+
+import { expect, test } from './content-fixture';
 
 test('the graph page fills the window without page scroll and explains its legend', async ({
   page,

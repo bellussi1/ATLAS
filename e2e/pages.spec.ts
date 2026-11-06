@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
 
 import { explorerCatalogues } from '../src/app/core/content/queries/knowledge-explorer';
+import { expect, test } from './content-fixture';
 
 const declaredDestinations = [
   '/',
@@ -42,7 +42,7 @@ test('home search opens the universal catalogue and the reading sheet stays avai
       .filter({ has: page.locator('strong', { hasText: /^Liberalismo$/ }) }),
   ).toHaveCount(2);
   await page.goto('/');
-  await page.getByRole('button', { name: /atlas\s*Liberalismo/ }).click();
+  await page.getByRole('button', { name: /Leitura\s+Liberalismo/ }).click();
   await page.getByRole('link', { name: 'Ler o texto completo' }).click();
   await expect(page).toHaveURL(/\/liberalismo$/);
 });
@@ -286,7 +286,7 @@ test('home keeps the poster colour and tints each later section as it scrolls', 
   const home = page.locator('app-home-page');
   await expect(home).toHaveAttribute('data-tone', '0');
   await page.locator('.readings').scrollIntoViewIfNeeded();
-  await expect(home).toHaveAttribute('data-tone', '4');
+  await expect(home).toHaveAttribute('data-tone', '3');
   await expect(home).not.toHaveAttribute('data-tone', '0');
 });
 

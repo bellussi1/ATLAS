@@ -1,16 +1,17 @@
+import { readFile } from 'node:fs/promises';
+
 import AxeBuilder from '@axe-core/playwright';
-import { type APIRequestContext, expect, test } from '@playwright/test';
 
 import { DEFAULT_CONTENT_BASE_URL } from '../src/app/core/content/models/content-pointer';
+import { expect, test } from './content-fixture';
 
 const base = DEFAULT_CONTENT_BASE_URL;
 
-async function loadManifest(request: APIRequestContext) {
-  const pointer = await (await request.get(`${base}/pointer.json`)).json();
-  return (await (await request.get(`${base}/c/${pointer.manifest.sha256}.json`)).json()) as {
-    collections: unknown[];
-    adjacency: { sha256: string };
-  };
+async function loadManifest() {
+  const pointer = JSON.parse(await readFile('generated/content-cache/pointer.json', 'utf8'));
+  return JSON.parse(
+    await readFile(`generated/content-cache/c/${pointer.manifest.sha256}.json`, 'utf8'),
+  );
 }
 
 test('home loads no graph; SPA navigation uses hashed assets once across both readings', async ({
@@ -30,7 +31,7 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
     .click();
   await expect(page.locator('h1')).toHaveText('Marxismo');
   const compiled = resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path));
-  const manifest = await loadManifest(page.request);
+  const manifest = await loadManifest();
   expect(compiled).toHaveLength(manifest.collections.length + manifest.ideologies.length + 4);
   expect(new Set(compiled).size).toBe(compiled.length);
   expect(compiled).toContain(`/c/${manifest.adjacency.sha256}.json`);

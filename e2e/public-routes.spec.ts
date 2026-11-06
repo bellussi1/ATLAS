@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+
+import { expect, test } from './content-fixture';
 
 // Every public catalogue and reading, at phone and desktop width: one heading, no serious axe
 // findings and no horizontal page scroll. Route changes that drop focus are covered in route-focus.spec.ts.

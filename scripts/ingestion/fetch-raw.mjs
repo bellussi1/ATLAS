@@ -22,10 +22,10 @@ const pointer = parsePointer(await readFile(pointerPath, 'utf8'));
 const responses = await listJsonResponses();
 let downloaded = 0;
 
-for (const [sha256, response] of responses) {
+async function fetchResponse([sha256, response]) {
   const local = join(response.directory, 'blobs', `${sha256}.bin`);
   const cached = join(rawCacheDirectory, `${sha256}.bin`);
-  if ((await digestOf(local)) === sha256 || (await digestOf(cached)) === sha256) continue;
+  if ((await digestOf(local)) === sha256 || (await digestOf(cached)) === sha256) return;
   const result = await fetch(`${pointer.baseUrl}/${rawKey(sha256)}`);
   if (!result.ok) throw new Error(`Falha ao baixar ${rawKey(sha256)}: HTTP ${result.status}`);
   const body = Buffer.from(await result.arrayBuffer());
@@ -33,4 +33,11 @@ for (const [sha256, response] of responses) {
   await atomicFile(cached, body);
   downloaded += 1;
 }
+// Bound parallel downloads so a cold CI runner can replay large captures without
+// opening a connection for every manifest entry at once.
+const pending = responses.entries();
+async function worker() {
+  for (const entry of pending) await fetchResponse(entry);
+}
+await Promise.all(Array.from({ length: 8 }, worker));
 console.log(`Respostas brutas: ${downloaded} baixadas de ${responses.size}.`);

@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+
+import { expect, test } from './content-fixture';
 
 for (const width of [1440, 390, 320]) {
   const mobile = width < 600;

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './content-fixture';
 
 /**
  * Responsive audit: every public route at phone, tablet and desktop widths must

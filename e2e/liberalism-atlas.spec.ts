@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+
+import { expect, test } from './content-fixture';
 
 test('explores entities, graph, timeline and returns to prior context', async ({ page }) => {
   await page.goto('/liberalismo/');

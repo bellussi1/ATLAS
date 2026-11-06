@@ -1,4 +1,4 @@
-import { expect, type Page, test } from '@playwright/test';
+import { expect, type Page, test } from './content-fixture';
 
 test('the old desk address redirects to the single page', async ({ page }) => {
   await page.goto('/marxismo/mesa/');

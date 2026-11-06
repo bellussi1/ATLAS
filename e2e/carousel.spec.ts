@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+
+import { expect, test } from './content-fixture';
 
 test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });

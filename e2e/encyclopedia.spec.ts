@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './content-fixture';
 
 test('keywords open sourced context without moving the reading', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });

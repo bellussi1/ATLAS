@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './content-fixture';
 
 test('moving to another page moves focus to the content and names it by its title', async ({
   page,

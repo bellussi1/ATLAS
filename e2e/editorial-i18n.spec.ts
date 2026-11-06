@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+
+import { expect, test } from './content-fixture';
 
 test('expanded catalogues expose grounded country/regime profiles and the other entity kinds', async ({
   page,

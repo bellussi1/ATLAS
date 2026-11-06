@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
 
 import { DEFAULT_CONTENT_BASE_URL } from '../src/app/core/content/models/content-pointer';
+import { expect, test } from './content-fixture';
 
 test('a connection keeps the search origin so the results stay one step away', async ({ page }) => {
   await page.goto('/entidades?q=Marx');
@@ -188,6 +188,9 @@ test('missing and unavailable entries provide recovery without external return l
     dispatchEvent(new PopStateEvent('popstate'));
   });
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Registro não encontrado');
-  await page.getByRole('link', { name: /^Acervo/ }).click();
+  await page
+    .getByRole('main')
+    .getByRole('link', { name: /^Acervo/ })
+    .click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Conhecimento');
 });

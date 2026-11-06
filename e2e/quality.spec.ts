@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+
+import { expect, test } from './content-fixture';
 
 // Lab measurements, not field data: layout stability while scrolling the whole reading,
 // WCAG A/AA rules from axe and the 24px minimum target for standalone controls.
