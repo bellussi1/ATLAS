@@ -15,7 +15,7 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
 - `npm test`: **301/301**.
 - `npm run test:content`: **171/171**.
 - `npm run build`: passou, **1.185 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `npm run test:e2e`: **132/132** antes da performance; `e2e/graph.spec.ts` **18/18**; depois da revisão editorial, `pages.spec.ts` **17/17** e `ideology-sheets.spec.ts` **8/8**. A suíte completa depois do conteúdo fez **131/132**: `contextual-exploration` liberalismo 1440 falha na altura do painel (1000→976, passo da pilha) e no y do termo; ajustar a estabilidade do painel ou a tolerância do teste.
+- `npm run test:e2e`: **132/132** antes da performance; `e2e/graph.spec.ts` **18/18**; depois da revisão editorial, `pages.spec.ts` **18/18** (inclui `/fontes` paginado) e `ideology-sheets.spec.ts` **8/8**; `/fontes` em 390/1440 no `public-routes` **2/2**. A suíte completa depois do conteúdo fez **131/132**: `contextual-exploration` liberalismo 1440 falha na altura do painel (1000→976, passo da pilha) e no y do termo; ajustar a estabilidade do painel ou a tolerância do teste.
 - `npm run lint` e `npm run typecheck`: passaram.
 
 ## O que mudou nesta rodada
@@ -56,6 +56,11 @@ Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atu
    - Piloto de John Locke: US$ 0,006, resumo de 583 caracteres, 2 seções e 3 relações confirmadas. O tradutor não foi usado para publicar: ele (a) reconstrói a coleção inteira a partir de um subconjunto de rascunhos e (b) remove fontes/evidências que outros verbetes ainda usam, deixando `sourceId` pendente.
    - Estado restaurado no release `7fb37afa…`; nenhum conteúdo corrompido foi publicado.
    - Próximo: modo `--partial` no tradutor (preserva registros e funde só o QID do rascunho), desempate que prefere rascunho com seções e, só então, lote de verbetes prioritários. O perfil político (partido, ideologia, vertente, lado) deve ser derivado das relações e exibido com atribuição, sem rótulo inventado.
+10. **`/fontes` paginado**
+   - A lista passou de um artigo por fonte, todos na mesma página, para **linhas compactas** com título, resumo curto, link para a fonte e citações recolhidas.
+   - **24 fontes por página**, com o pager existente; o HTML prerenderizado de `/fontes` caiu de **4,8 MB para ~195 KB**.
+   - Links `#source-…` continuam funcionando: o componente descobre a página da fonte, navega para `?pagina=N` e rola até o item, sem restaurar o scroll antigo.
+   - Teste: `pages.spec.ts` cobre paginação, “Próxima” e deep link para uma fonte da página 2; `public-routes` confirma `/fontes` em 390 e 1440 sem achados sérios.
 
 ## Piloto de modelo (Anthropic)
 
