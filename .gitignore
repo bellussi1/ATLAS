@@ -52,3 +52,11 @@ Thumbs.db
 # Corpos brutos da coleta Wikipedia: manifests são versionados; blobs ficam locais
 # (publicam-se só as respostas JSON, via ingest:publish-raw).
 scripts/ingestion/wiki-extract/raw/**/blobs/
+
+# Credenciais e estado local de deploy: nunca no repositório (ele é público)
+.env
+.env.*
+*.env
+*.pem
+*.key
+.vercel

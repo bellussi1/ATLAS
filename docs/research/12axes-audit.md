@@ -75,7 +75,7 @@ Termos e entidades usados só acionaram a interface; nenhum texto, vetor ou desc
 - A ferramenta de pesquisa retornou 403 para as URLs; o Chromium local contornou isso sem remover o bloqueio de API. Uma tentativa com o MCP Playwright falhou por perfil em uso; os resultados acima vêm do pacote local, em contexto isolado.
 - Não foram instalados dependências nem executados testes, Maven ou build da referência. A existência de testes e passos de CI foi verificada no código; a execução de CI não foi atestada.
 
-Capturas diagnósticas (fora do produto, sem uso editorial), em `C:/Users/Bellussi/AppData/Local/Temp/`: `12axes-audit-live-desktop.png`, `12axes-audit-live-1440.png`, `12axes-audit-live-mobile-touch.png`. São temporárias e não são persistência do projeto; o registro verificável está neste relatório.
+Capturas diagnósticas (fora do produto, sem uso editorial), em a pasta temporária local: `12axes-audit-live-desktop.png`, `12axes-audit-live-1440.png`, `12axes-audit-live-mobile-touch.png`. São temporárias e não são persistência do projeto; o registro verificável está neste relatório.
 
 ## Decisões propostas ao ATLAS
 

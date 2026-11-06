@@ -22,7 +22,7 @@ Em 01/11/2026, a pedido do usuário, a aplicação foi limitada temporariamente 
 - `/marxismo`: leitura contínua com fontes e interações no contexto.
 - `/liberalismo`: rede, cronologia e imagens do atlas existente.
 
-Removidos os arquivos de páginas de exploração, busca geral, verbetes, estudos, fontes, sobre, sistema visual, hub de ideologias e índice antigo de Marxismo. O componente do debate de valor permanece como bloco interno de Marxismo, sem URL própria. Caminhos não reconhecidos pelo Angular voltam à home; a hospedagem deve manter seu fallback estático conforme a configuração do provedor.
+Removidos os arquivos de páginas de exploração, busca geral, verbetes, estudos, fontes, sobre, sistema visual, hub de ideologias e índice antigo de Marxismo. O componente do debate de valor permanece como bloco interno de Marxismo, sem URL própria. Caminhos não reconhecidos mostram "Página não encontrada" sem redirecionar: o Angular exibe a mensagem em navegação interna e `public/404.html` responde com status 404 na hospedagem estática (Cloudflare Pages serve o `404.html` da raiz quando não há rota correspondente).
 
 Header, footer, home e links das duas leituras ajustados ao escopo. Prévias no lugar; referências externas disponíveis. O link do exercício leva às fontes do próprio Marxismo, preservando seleção e filtros. Fontes, licenças e dados históricos preservados. As regras em `public/_redirects` compatibilizam URLs antigas nas hospedagens que suportam esse formato; não são páginas adicionais.
 

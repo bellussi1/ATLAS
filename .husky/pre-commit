@@ -1,3 +1,5 @@
 npm run format:check
 npm run lint:biome
 npm run lint:architecture
+# Repositório público: bloqueia segredos no que está para ser commitado (se o gitleaks estiver instalado).
+if command -v gitleaks >/dev/null 2>&1; then gitleaks protect --staged --no-banner --redact; fi

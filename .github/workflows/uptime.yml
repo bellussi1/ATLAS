@@ -1,0 +1,26 @@
+name: Disponibilidade
+# Verifica o site e o conteúdo a cada 15 minutos. Falha (e o GitHub avisa por e-mail) quando algo sai
+# do ar. Inerte até existirem as variáveis de repositório ATLAS_SITE_URL e ATLAS_CDN_URL.
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    if: ${{ vars.ATLAS_SITE_URL != '' && vars.ATLAS_CDN_URL != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Site, 404 real e conteúdo
+        env:
+          SITE: ${{ vars.ATLAS_SITE_URL }}
+          CDN: ${{ vars.ATLAS_CDN_URL }}
+        run: |
+          set -eu
+          check() { code=$(curl -s -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 5 --max-time 20 "$1"); [ "$code" = "$2" ] || { echo "::error::$1 respondeu $code (esperado $2)"; exit 1; }; }
+          check "$SITE/" 200
+          check "$SITE/marxismo" 200
+          check "$SITE/liberalismo" 200
+          check "$SITE/caminho-que-nao-existe-$(date +%s)" 404
+          check "$CDN/pointer.json" 200
