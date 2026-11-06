@@ -621,6 +621,11 @@ export async function reapplyGuards({
         .filter((item) => item.reason.startsWith('segunda-passada:'))
         .map((item) => [relationKey(item.item), item]),
     );
+    // Text verdicts do not depend on the article links, so a reguard keeps them instead of
+    // reporting zero text rejections just because the API was not called again.
+    const refusedText = previous.rejected.filter((item) =>
+      item.reason.startsWith('segunda-passada-texto:'),
+    );
     const { text } = richSourceText(record.article);
     const { extraction, rejected, counts } = guardExtraction(messageJson(message), {
       text,
@@ -645,7 +650,13 @@ export async function reapplyGuards({
         totals.pending += 1;
       }
     }
-    const draft = { ...previous, ...extraction, relations, rejected, counts };
+    const draft = {
+      ...previous,
+      ...extraction,
+      relations,
+      rejected: [...rejected, ...refusedText],
+      counts,
+    };
     await writeFile(join(outDirectory, `${record.id}.json`), `${JSON.stringify(draft, null, 2)}\n`);
     // Pending relations reopen the second pass for this entity, and only for what is pending.
     if (relations.some((relation) => !relation.verified) && state.entities[record.id])
