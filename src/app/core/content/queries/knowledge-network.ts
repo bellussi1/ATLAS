@@ -117,18 +117,7 @@ export function networkKindOf(kind: EntityKind): NetworkKindId {
   return kindByEntityKind[kind] ?? 'concept';
 }
 
-/**
- * Topic-like records that entered the graph as events but name a practice or idea, not a dated
- * happening. They stay here as an editorial override until the source collection is migrated.
- */
-const conceptualEventIds = new Set([
-  'wiki-topic-aborto',
-  'wiki-topic-casamento',
-  'wiki-topic-casamento-entre-pessoas-do-mesmo-sexo',
-]);
-
 export function networkKindOfEntity(entity: { id: string; kind: EntityKind }): NetworkKindId {
-  if (entity.kind === 'event' && conceptualEventIds.has(entity.id)) return 'concept';
   return networkKindOf(entity.kind);
 }
 

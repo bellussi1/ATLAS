@@ -42,6 +42,22 @@ describe('static discovery index', () => {
     ).toEqual(['O caput do artigo 5º da Constituição de 1988']);
   });
 
+  it('indexes topic-like records as concepts and named events as events', () => {
+    for (const id of [
+      'wiki-topic-aborto',
+      'wiki-topic-casamento',
+      'wiki-topic-casamento-entre-pessoas-do-mesmo-sexo',
+      'wiki-topic-desigualdade-economica',
+      'wiki-topic-estado-de-direito',
+      'wiki-topic-irreligiao',
+      'wiki-topic-violencia',
+    ])
+      expect(index.find((item) => item.id === id)?.kind).toBe('concept');
+    expect(index.find((item) => item.id === 'wiki-topic-primeira-guerra-mundial')?.kind).toBe(
+      'evento',
+    );
+  });
+
   it('builds directional backlinks with registered labels and rejects missing destinations', () => {
     const concept = index.find((item) => item.path === '/verbete/igualdade-perante-a-lei')!;
     expect(concept.backlinks).toEqual(
