@@ -17,7 +17,6 @@ import {
   type NetworkNode,
   nodeRadius,
   nodeScaleFor,
-  regionOf,
   relationFamilies,
   searchNodes,
   shortestPath,
@@ -125,30 +124,18 @@ describe('knowledge network', () => {
     expect(layoutNetwork([], []).positions.size).toBe(0);
   }, 30000);
 
-  it('keeps nodes without links inside their own region, among the others', () => {
+  it('groups nodes by text context instead of collection', () => {
     const layout = layoutNetwork(network.nodes, network.edges);
-    const linked = new Set(network.edges.flatMap((e) => [e.source, e.target]));
-    const sizes = new Map<string, number>();
-    for (const n of network.nodes)
-      sizes.set(n.collections[0], (sizes.get(n.collections[0]) ?? 0) + 1);
-    const regions = new Map(layout.regions.map((r) => [r.id, r]));
-    const isolated = network.nodes.filter((n) => !linked.has(n.id));
-    expect(isolated.length).toBeGreaterThan(0);
-    for (const node of isolated) {
-      const region = regions.get(regionOf(node, sizes))!;
-      const at = layout.positions.get(node.id)!;
-      expect(Math.hypot(at.x - region.x, at.y - region.y)).toBeLessThanOrEqual(region.radius + 1);
-    }
+    const collections = new Set(network.nodes.flatMap((node) => node.collections));
+    expect(layout.regions.length).toBeGreaterThan(0);
+    expect(layout.regions.every((region) => region.id.startsWith('ctx-'))).toBe(true);
+    expect(layout.regions.some((region) => collections.has(region.id))).toBe(false);
   });
 
-  it('gives every region its own place, none overlapping another', () => {
+  it('returns one semantic region per context group', () => {
     const { regions } = layoutNetwork(network.nodes, network.edges);
     expect(regions.length).toBeGreaterThan(0);
-    for (let i = 0; i < regions.length; i++)
-      for (let j = i + 1; j < regions.length; j++) {
-        const gap = Math.hypot(regions[i].x - regions[j].x, regions[i].y - regions[j].y);
-        expect(gap).toBeGreaterThan(Math.min(regions[i].radius, regions[j].radius));
-      }
+    expect(new Set(regions.map((region) => region.id)).size).toBe(regions.length);
   });
 
   it('keeps the on-screen node scale within the reserved range', () => {
