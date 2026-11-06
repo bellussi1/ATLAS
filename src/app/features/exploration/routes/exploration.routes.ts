@@ -1,6 +1,9 @@
 import { type Routes } from '@angular/router';
 import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
-import { knowledgeContentResolver } from '@core/routing/knowledge-content.resolver';
+import {
+  knowledgeContentResolver,
+  networkContentResolver,
+} from '@core/routing/knowledge-content.resolver';
 import {
   knowledgeEntryBreadcrumbResolver,
   knowledgeEntryCatalogueResolver,
@@ -23,7 +26,7 @@ export const explorationRoutes: Routes = [
       metaDescription:
         'Mapa interativo das ideologias, pessoas, obras e acontecimentos do acervo e das ligações entre eles, com legenda e filtros.',
     },
-    resolve: { knowledge: knowledgeContentResolver },
+    resolve: { knowledge: networkContentResolver },
     loadComponent: () =>
       import('@shared/ui/knowledge-network/knowledge-network.component').then(
         (m) => m.KnowledgeNetworkComponent,
