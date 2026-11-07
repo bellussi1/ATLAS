@@ -178,21 +178,48 @@ header p.context-description {
     background: var(--color-teal-paper);
   }
 }
-
-.context-steps {
+/* Glyph-only actions keep a square target, so the title keeps the room. */
+.panel-button--icon {
+  width: 44px;
+  padding: 0;
+  font-size: 1.125rem;
+}
+/* Reading order rides along with the shortcuts to connections and sources. */
+.context-jump .context-steps {
   flex: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.25rem;
-  border-bottom: 1px solid var(--rule-strong);
-  background: var(--color-surface-subtle);
+  margin-left: auto;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper);
+}
+.context-jump .context-steps button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 44px;
+  padding: 0 0.4rem;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 1rem/1 var(--font-sans);
+  cursor: pointer;
+}
+.context-jump .context-steps button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+@media (hover: hover) and (pointer: fine) {
+  .context-jump .context-steps button:not(:disabled):hover {
+    background: var(--color-teal-paper);
+  }
 }
 .context-position {
+  padding: 0 0.35rem;
+  border-inline: 1px solid var(--rule-strong);
   font: 0.75rem/1.4 var(--font-mono);
-  min-width: 4.5ch;
-  text-align: center;
+  white-space: nowrap;
 }
 .context-pin {
   margin-left: auto;
@@ -296,7 +323,7 @@ header p.context-description {
 .context-jump {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
   margin-block: 0.75rem 1rem;
 }
 .context-jump button {
@@ -354,32 +381,46 @@ header p.context-description {
   padding: 0.75rem 0;
   border-top: 1px solid var(--rule-strong);
 }
-/* Sources, licenses and credits close the reading, at the end of the scroll. */
+/* Sources, licenses and credits close the reading, in two labelled blocks. */
 .sheet-footer {
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 3px solid var(--ink);
-  font: 0.75rem/1.6 var(--font-mono);
-  p {
-    margin: 0.5rem 0 0;
+  font: 0.875rem/1.55 var(--font-sans);
+  h3 {
+    margin-bottom: 0.6rem;
+  }
+  .footer-subheading {
+    margin-top: 1.4rem;
   }
   small {
     display: block;
     color: var(--color-ink-muted);
+    font: 0.75rem/1.5 var(--font-mono);
   }
   .footer-label {
-    margin-right: 0.35rem;
-    padding: 0 0.3rem;
+    margin-right: 0.45rem;
+    padding: 0.05rem 0.35rem;
     background: var(--ink);
     color: var(--paper);
+    font: 0.6875rem/1.6 var(--font-mono);
+    text-transform: uppercase;
   }
 }
-.source-list {
+.source-list,
+.license-list {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.6rem;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.license-list {
+  gap: 0.45rem;
+}
+.source-list a,
+.license-list a {
+  overflow-wrap: anywhere;
 }
 a {
   color: var(--color-accent);
@@ -432,12 +473,18 @@ a {
     min-width: 44px;
     padding: 0 0.6rem;
   }
+  .panel-button--icon {
+    padding: 0;
+  }
   header .panel-button-text {
     display: none;
   }
-  .context-steps {
-    justify-content: space-between;
-    padding: 0.3rem 0.75rem;
+  /* On a phone the arrows carry the order; the counter would squeeze the title. */
+  .context-position {
+    display: none;
+  }
+  .context-jump .context-steps button {
+    min-width: 44px;
   }
   .context-body .context-summary {
     font-size: 1.125rem;

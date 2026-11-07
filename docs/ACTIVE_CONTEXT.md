@@ -278,6 +278,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Teste e2e novo em `e2e/pages.spec.ts` grava `scrollY` a cada `requestAnimationFrame` ao paginar e ao trocar de tipo; falha se algum frame cair abaixo de 200 e foi confirmado falhando com o `setTimeout` anterior.
     - Verificações: `npm test` **325/325**, `e2e/pages.spec.ts` **26/26**, `lint`, `typecheck` e `build` exit 0.
 
+39. **Ficha de contexto: ações compactas e fontes separadas**
+    - O “Fechar” virou um X de 44×44 com `aria-label` e tooltip; a leitura em ordem passou de uma linha fixa de 55 px para um grupo `‹ 1 de 6 ›` na linha existente de atalhos “Conexões/Fontes”. No cabeçalho o grupo empurrava o título e subia a altura para 188 px; na linha de atalhos ele não acrescenta altura fixa.
+    - No telefone, o contador “1 de 6” fica oculto e os rótulos acessíveis dos botões (“Anterior, registro 1 de 6”) mantêm a posição; o grupo cabe na mesma linha de atalhos.
+    - O fim da ficha passou a ter dois blocos explícitos: **Fontes** (título, URL e edição) e **Licenças e créditos** (texto e imagem), com tipografia de leitura em vez do bloco compacto em mono. A citação “Fonte:” de cada relação continua junto da evidência.
+    - Verificações: `npm test` **325/325**, `e2e/encyclopedia`, `e2e/ideology-sheets` e `e2e/contextual-exploration` **22/22**, `lint`, `typecheck` e `build` exit 0.
+
 
 
 ## Pendências que bloqueiam

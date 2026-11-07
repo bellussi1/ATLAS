@@ -56,9 +56,9 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
   await expect(page.getByRole('dialog')).toContainText('Bernstein');
   await page.getByRole('button', { name: 'Fechar contexto' }).tap();
   await page.locator('#debates .argument-card').first().tap();
-  await expect(
-    page.getByRole('dialog').getByRole('region', { name: 'Fontes e licença' }),
-  ).toContainText('Bernstein');
+  await expect(page.getByRole('dialog').getByRole('region', { name: 'Fontes' })).toContainText(
+    'Bernstein',
+  );
   await page.getByRole('button', { name: 'Fechar contexto' }).tap();
   await page.getByRole('button', { name: 'Estado e revolução', exact: true }).tap();
   await expect(page.locator('#debates')).toContainText('Réplica ainda não incorporada');
