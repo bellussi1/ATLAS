@@ -95,6 +95,8 @@ Layout shift inesperado é defeito, inclusive quando a métrica CLS o exclui por
 
 Toda ação tem cursor adequado, pista persistente além da cor, hover, foco visível, clique/toque e estado selecionado/expandido quando aplicável. Alvos não mudam de lugar com hover. Controle que parece clicável e não funciona, ou funciona e parece decoração, é defeito. HTML semântico; nenhum `span` clicável no lugar de botão.
 
+Uma falha de navegação não apaga a página anterior. O alerta nomeia o tipo de destino que falhou, mostra o endereço tentado e oferece tentar novamente, continuar na página anterior e uma saída para o acervo ou o índice de leituras. O foco vai para o título do alerta; o botão de nova tentativa tem estado de espera e não empilha navegações.
+
 ## 5. Hipertexto visual
 
 Palavras-chave são portas de conhecimento: termos centrais (materialismo histórico, trabalho socialmente necessário, Estado, liberdade, reforma, revolução), só com contexto e fonte. Não transformar toda ocorrência em controle.

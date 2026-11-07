@@ -13,14 +13,18 @@ import {
 import { SiteFooterComponent } from '@layouts/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@layouts/site-header/site-header.component';
 import { BreadcrumbsComponent } from '@shared/ui/breadcrumbs/breadcrumbs.component';
-import { AtlasNoticeComponent } from '@shared/ui/notice/notice.component';
+
+import {
+  NavigationFailureComponent,
+  type NavigationFailureKind,
+} from './navigation-failure/navigation-failure.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     SiteFooterComponent,
     SiteHeaderComponent,
-    AtlasNoticeComponent,
+    NavigationFailureComponent,
     BreadcrumbsComponent,
     RouterLink,
     RouterOutlet,
@@ -39,6 +43,9 @@ export class AppComponent {
   private readonly router = inject(Router);
   private currentPath: string | null = null;
   readonly failedNavigation = signal<string | null>(null);
+  readonly failureKind = signal<NavigationFailureKind>('route');
+  readonly previousTitle = signal<string | null>(null);
+  readonly retrying = signal(false);
   /** Routes with `data.fullscreen` own the whole window: no header, breadcrumbs or footer. */
   readonly fullscreen = signal(false);
   readonly pageTitle = signal('ATLAS — compreender o mundo');
@@ -47,7 +54,10 @@ export class AppComponent {
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
       if (event instanceof NavigationError) {
         this.failedNavigation.set(event.url);
+        this.failureKind.set(this.failureKindFor(event.error));
+        this.previousTitle.set(this.currentPath === null ? null : this.previousPageLabel());
         this.fullscreen.set(false);
+        this.retrying.set(false);
         return;
       }
       if (event instanceof NavigationStart) {
@@ -58,6 +68,9 @@ export class AppComponent {
       }
       if (!(event instanceof NavigationEnd)) return;
       this.failedNavigation.set(null);
+      this.failureKind.set('route');
+      this.previousTitle.set(null);
+      this.retrying.set(false);
       const path = event.urlAfterRedirects.split(/[?#]/)[0];
       // Moving to another page hands focus to its content; query and fragment changes keep it.
       if (this.currentPath !== null && path !== this.currentPath) this.focusMainContent();
@@ -68,13 +81,24 @@ export class AppComponent {
 
   retryNavigation(): void {
     const path = this.failedNavigation();
-    if (path)
-      void this.router
-        .navigateByUrl(path)
-        .then((success) => {
-          if (success) this.focusMainContent();
-        })
-        .catch(() => undefined);
+    if (!path || this.retrying()) return;
+    this.retrying.set(true);
+    void this.router
+      .navigateByUrl(path)
+      .then((success) => {
+        if (success) this.focusMainContent();
+      })
+      .catch(() => undefined)
+      .finally(() => this.retrying.set(false));
+  }
+
+  /** The previous page is still mounted; dismissing only removes the recovery notice. */
+  dismissFailure(): void {
+    this.failedNavigation.set(null);
+    this.failureKind.set('route');
+    this.previousTitle.set(null);
+    this.retrying.set(false);
+    this.focusMainContent();
   }
 
   setInputMode(keyboard: boolean): void {
@@ -83,6 +107,23 @@ export class AppComponent {
 
   focusMainContent(): void {
     this.document.getElementById('conteudo')?.focus({ preventScroll: true });
+  }
+
+  private failureKindFor(error: unknown): NavigationFailureKind {
+    const message = error instanceof Error ? error.message : String(error ?? '');
+    return /dynamically imported module|Loading chunk|module script failed|Failed to fetch/i.test(
+      message,
+    )
+      ? 'chunk'
+      : 'route';
+  }
+
+  private previousPageLabel(): string {
+    if (this.currentPath === '/') return 'Início';
+    const title = this.pageTitle()
+      .replace(/\s+—\s+ATLAS$/, '')
+      .trim();
+    return title && title !== 'ATLAS — compreender o mundo' ? title : 'Início';
   }
 
   private updatePageMetadata(): void {

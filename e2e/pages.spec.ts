@@ -190,6 +190,27 @@ test('the chapter review explains its purpose and reveals the answer on demand',
   await expect(review.getByRole('button', { name: 'Ocultar resposta' })).toBeVisible();
 });
 
+test('a failed navigation keeps the previous page and offers recovery', async ({ page }) => {
+  await page.goto('/');
+  await page.route('**/*.js', (route) => route.abort());
+  await page.evaluate(() => {
+    const link = [...document.querySelectorAll('a')].find(
+      (anchor) => anchor.getAttribute('href') === '/leitura/anarquismo',
+    );
+    link?.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+  });
+  const panel = page.locator('app-navigation-failure');
+  await expect(panel).toBeVisible();
+  await expect(panel.getByRole('heading', { name: 'A leitura não abriu' })).toBeFocused();
+  await expect(panel).toContainText('/leitura/anarquismo');
+  await expect(panel.getByRole('button', { name: 'Tentar novamente' })).toBeVisible();
+  await expect(panel.getByRole('button', { name: 'Continuar na página anterior' })).toBeVisible();
+  await page.unroute('**/*.js');
+  await panel.getByRole('button', { name: 'Tentar novamente' }).click();
+  await expect(page).toHaveURL(/\/leitura\/anarquismo/);
+  await expect(panel).toHaveCount(0);
+});
+
 test('the reading ends with curated cards, one wide lead and no repeated next link', async ({
   page,
 }) => {

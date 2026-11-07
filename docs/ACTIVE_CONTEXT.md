@@ -5,17 +5,17 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; a última alteração registrada é `eed3d28`. A auditoria integrada desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
+- Gitflow: `develop` é a integração; a última alteração registrada é `a461710`. A tela de falha de navegação desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**.
 - CI: não executado nesta sessão; a verificação abaixo é local.
 
 ## Verificações executadas
 
-- `npm test`: **357/357**.
+- `npm test`: **362/362**.
 - `npm run test:content`: **186/186**.
 - `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `node node_modules/@playwright/test/cli.js test e2e/pages.spec.ts e2e/graph.spec.ts`: **55/55**, incluindo a ausência do minimapa, a roda no grafo embutido, o encerramento em cards e as auditorias Axe.
+- `node node_modules/@playwright/test/cli.js test e2e/pages.spec.ts e2e/graph.spec.ts`: **56/56**, incluindo a falha de navegação, a ausência do minimapa, a roda no grafo embutido, o encerramento em cards e as auditorias Axe.
 - `npm run lint` e `npm run typecheck`: exit 0.
 
 ## O que mudou nesta rodada
@@ -398,6 +398,13 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Decisão de modelo já registrada: Haiku 5.5 medium para extração e Sonnet 5.5 low para a segunda passada das relações. O plano propõe medir Sonnet em amostra antes de escalar, com gold set humano e precisão ≥ 95%.
     - Orçamento proposto: US$ 5 a 11 para as quatro leituras, com teto disponível de US$ 10; a onda 0 é gratuita e deve começar pela captura dos artigos faltantes.
     - Próxima ação: Onda 0 (captura e baseline), depois Onda 1 (calibração Sonnet). Nenhuma chamada paga foi feita e nada foi publicado.
+
+53. **Tela de falha de navegação no app shell**
+    - O `NavigationError` mostrava um aviso genérico de leitura e mantinha a página anterior sem explicar qual endereço falhou. O texto supunha que havia contexto anterior mesmo no primeiro carregamento.
+    - Criado `NavigationFailureComponent` no app shell: nomeia o tipo de destino (leitura, verbete, grafo, acervo ou página), mostra o endereço tentado, distingue falha de recurso/rede de falha de rota e oferece tentar novamente, continuar na página anterior e uma saída para o índice de leituras ou o acervo.
+    - O app shell agora guarda o título anterior, o tipo da falha e o estado de nova tentativa. O botão fica desabilitado durante a tentativa, o retry não empilha navegações e o foco vai para o título do alerta. O `role="alert"` e o `aria-describedby` mantêm o anúncio acessível.
+    - O aviso só oferece “Continuar na página anterior” quando existe uma página anterior; no primeiro carregamento, a saída é o índice ou o acervo. A página anterior não é desmontada.
+    - Verificações: `npm test` **362/362**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **56/56**, `lint` e `typecheck` exit 0; build **1.189 rotas**. Conferência visual em 1280 e 390, sem overflow; o teste e2e bloqueia o chunk, confere o alerta, o foco e o retry. Nada foi publicado.
 
 ## Pendências que bloqueiam
 
