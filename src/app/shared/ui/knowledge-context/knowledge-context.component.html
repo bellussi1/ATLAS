@@ -21,15 +21,33 @@
       </div>
     </header>
     <div class="context-body">
-      <p class="context-summary">{{ fixed.summary }}</p>
+      <p class="context-summary">
+        <app-context-text
+          [text]="fixed.summary"
+          [vocabulary]="pinnedVocabulary()"
+          (termClick)="followTerm($event)"
+        />
+      </p>
       @for (paragraph of fixed.paragraphs; track $index) {
-        <p>{{ paragraph }}</p>
+        <p>
+          <app-context-text
+            [text]="paragraph"
+            [vocabulary]="pinnedVocabulary()"
+            (termClick)="followTerm($event)"
+          />
+        </p>
       }
       @for (section of fixed.sections; track $index) {
         <section class="context-section">
           <h3 class="reading-heading">{{ section.heading }}</h3>
           @for (paragraph of section.paragraphs; track $index) {
-            <p>{{ paragraph }}</p>
+            <p>
+              <app-context-text
+                [text]="paragraph"
+                [vocabulary]="pinnedVocabulary()"
+                (termClick)="followTerm($event)"
+              />
+            </p>
           }
         </section>
       }
@@ -140,7 +158,13 @@
         </nav>
       }
       <div class="context-body">
-        <p class="context-summary">{{ record().summary }}</p>
+        <p class="context-summary">
+          <app-context-text
+            [text]="record().summary"
+            [vocabulary]="vocabulary()"
+            (termClick)="followTerm($event)"
+          />
+        </p>
         @if (record().aliases?.length) {
           <p class="context-aliases">Também chamado de {{ record().aliases!.join('; ') }}.</p>
         }
@@ -171,13 +195,25 @@
           </button>
         </nav>
         @for (paragraph of record().paragraphs; track $index) {
-          <p>{{ paragraph }}</p>
+          <p>
+            <app-context-text
+              [text]="paragraph"
+              [vocabulary]="vocabulary()"
+              (termClick)="followTerm($event)"
+            />
+          </p>
         }
         @for (section of record().sections; track $index) {
           <section class="context-section">
             <h3 class="reading-heading">{{ section.heading }}</h3>
             @for (paragraph of section.paragraphs; track $index) {
-              <p>{{ paragraph }}</p>
+              <p>
+                <app-context-text
+                  [text]="paragraph"
+                  [vocabulary]="vocabulary()"
+                  (termClick)="followTerm($event)"
+                />
+              </p>
             }
           </section>
         }

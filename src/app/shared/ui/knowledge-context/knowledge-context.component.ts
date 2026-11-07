@@ -19,6 +19,7 @@ import {
   type ContextStop,
   type KnowledgeContext,
 } from '@core/content/models/knowledge-context';
+import { type ContextTerm, contextVocabulary } from '@core/content/queries/context-vocabulary';
 import { contextFor, entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
@@ -29,6 +30,7 @@ import {
 } from '@shared/ui/geometric-illustration/illustration';
 import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry.component';
 
+import { ContextTextComponent } from './context-text.component';
 import { keepScrollAnchor } from './keep-scroll';
 
 /** How many earlier sheets stay visible behind the current one. */
@@ -68,6 +70,7 @@ function toneOf(kind: string): string {
     RelationEntryComponent,
     ContentMediaPipe,
     AtlasGeometricIllustrationComponent,
+    ContextTextComponent,
   ],
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
@@ -137,6 +140,13 @@ export class KnowledgeContextComponent {
   readonly seal = computed(() => editorialSeal(this.record()));
   /** Connections by weight of evidence, each read as a sentence. */
   readonly groups = computed(() => relationGroups(this.record().connections));
+  /** Terms inside the current sheet; the record itself never links to itself. */
+  readonly vocabulary = computed(() =>
+    contextVocabulary(this.repository.knowledgeGraph, this.record().entityId),
+  );
+  readonly pinnedVocabulary = computed(() =>
+    this.pinned() ? contextVocabulary(this.repository.knowledgeGraph, this.pinned()!.entityId) : [],
+  );
 
   constructor() {
     this.ref.keydownEvents?.subscribe((event) => {
@@ -167,6 +177,11 @@ export class KnowledgeContextComponent {
     this.watchLayout();
   }
 
+  /** Opens another sheet from a term in the prose, keeping the same trail and Back behaviour. */
+  followTerm(term: ContextTerm): void {
+    if (term.entityId === this.record().entityId) return;
+    this.follow({ entityId: term.entityId, label: term.label });
+  }
   /** Replaces what the open panel shows, as when another record is opened from the page. */
   show(record: KnowledgeContext, stops: ContextStop[], index: number): void {
     this.unwind(this.pushed);
@@ -313,9 +328,11 @@ export class KnowledgeContextComponent {
         // The newest step is the last crumb; keep it in view when the trail overflows.
         const trail = this.host.nativeElement.querySelector<HTMLElement>('.context-trail');
         if (trail) trail.scrollLeft = trail.scrollWidth;
-        const target = focusId
-          ? this.host.nativeElement.querySelector<HTMLElement>(`[data-connection="${focusId}"]`)
-          : this.host.nativeElement.querySelector<HTMLElement>('#knowledge-context-title');
+        const target =
+          (focusId
+            ? this.host.nativeElement.querySelector<HTMLElement>(`[data-connection="${focusId}"]`)
+            : null) ??
+          this.host.nativeElement.querySelector<HTMLElement>('#knowledge-context-title');
         target?.focus({ preventScroll: true });
       },
       { injector: this.injector },

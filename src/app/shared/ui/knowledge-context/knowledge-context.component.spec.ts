@@ -3,13 +3,94 @@ import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { entityContext } from '@core/content/queries/entity-context';
-import { type ContentRepository } from '@core/content/repositories/content-repository.service';
+import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { provideContentFixture } from '@testing/content-fixture';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import { KnowledgeContextComponent } from './knowledge-context.component';
 
+function contextGraph(): typeof methodologyKnowledgeGraph {
+  const entity = (id: string, title: string, summary: string) => ({
+    id,
+    kind: 'concept',
+    slug: id,
+    title,
+    summary,
+    aliases: [],
+    context: '',
+    temporalExtent: null,
+    uncertainty: 'low',
+    revision: 1,
+    sections: [],
+    editorialStatus: 'pending',
+  });
+  return {
+    ...methodologyKnowledgeGraph,
+    atlases: [
+      {
+        ...methodologyKnowledgeGraph.atlases[0],
+        id: 'atlas-context-test',
+        entityIds: ['wiki-topic-proletariado', 'wiki-topic-meios-de-producao'],
+        entities: [
+          entity(
+            'wiki-topic-proletariado',
+            'Proletariado',
+            'O proletariado vende a força de trabalho e usa meios de produção; a classe social se define pela posse dos meios.',
+          ),
+          entity(
+            'wiki-topic-meios-de-producao',
+            'Meios de produção',
+            'Meios de produção são os recursos usados no processo produtivo.',
+          ),
+        ],
+        sources: [],
+        evidences: [],
+        citations: [],
+        claims: [],
+        reviews: [],
+        relations: [],
+        assetLicenses: [],
+      },
+    ],
+  } as typeof methodologyKnowledgeGraph;
+}
+
 describe('KnowledgeContextComponent', () => {
+  it('opens another sheet from a term inside the summary and returns by the trail', async () => {
+    const graph = contextGraph();
+    const repository = {
+      knowledgeGraph: graph,
+      discoveryIndex: [],
+      queryRelations: () => [],
+    } as unknown as ContentRepository;
+    const record = entityContext(repository, 'wiki-topic-proletariado');
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter([]),
+        provideHttpClient(),
+        { provide: ContentRepository, useValue: repository },
+        { provide: DIALOG_DATA, useValue: { record, stops: [], index: -1 } },
+        { provide: DialogRef, useValue: { close: vi.fn() } },
+      ],
+    });
+    const fixture = TestBed.createComponent(KnowledgeContextComponent);
+    fixture.detectChanges();
+    const host = fixture.nativeElement as HTMLElement;
+    const term = [...host.querySelectorAll<HTMLButtonElement>('.context-term')].find((button) =>
+      button.textContent?.includes('meios de produção'),
+    )!;
+    expect(term).toBeTruthy();
+    term.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(fixture.componentInstance.record().title).toBe('Meios de produção');
+    expect(fixture.componentInstance.history()).toHaveLength(1);
+    host.querySelector<HTMLButtonElement>('.context-trail button')!.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect(fixture.componentInstance.record().title).toBe('Proletariado');
+  });
+
   it('follows a real relation and returns to the same record and connection', async () => {
     const record = entityContext(
       { knowledgeGraph: methodologyKnowledgeGraph } as ContentRepository,

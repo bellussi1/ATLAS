@@ -1,0 +1,14 @@
+@for (part of parts(); track $index) {
+  @if (part.term; as term) {
+    <button
+      type="button"
+      class="context-term"
+      [attr.aria-label]="part.text + ': abrir contexto de ' + term.kind"
+      (click)="termClick.emit(term)"
+    >
+      {{ part.text }}
+    </button>
+  } @else {
+    {{ part.text }}
+  }
+}
