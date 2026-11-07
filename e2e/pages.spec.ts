@@ -94,6 +94,25 @@ test('Marxism chapters, comparison and sources remain on the same page', async (
   ).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('gallery toggle hides and shows cards beyond the preview', async ({ page }) => {
+  await page.goto('/marxismo/');
+  const section = page.locator('#pensadores');
+  const gallery = section.locator('.entity-gallery');
+  const toggle = section.locator('.gallery-toggle');
+  await toggle.scrollIntoViewIfNeeded();
+  const visible = () => gallery.locator('button.record-card:visible').count();
+  const total = Number((await toggle.textContent())?.match(/\d+/)?.[0]);
+  expect(total).toBeGreaterThan(6);
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  expect(await visible()).toBe(6);
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  expect(await visible()).toBe(total);
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  expect(await visible()).toBe(6);
+});
+
 test('the chapter review explains its purpose and reveals the answer on demand', async ({
   page,
 }) => {
