@@ -167,6 +167,11 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Componente próprio `app-chapter-review`, com IDs únicos por instância e foco visível; a página de ideologia não carrega mais os estilos e imports antigos.
     - Verificações: componente e util **3/3**; `npm test` **315/315**; `e2e/pages.spec` **22/22**, incluindo o novo teste de revisão; `build` **1.185 rotas**; `lint` e `typecheck` exit 0.
 
+24. **Galeria “Ver todos” corrigida**
+    - O `[hidden]` dos cards era anulado por `:host { display: flex }` no `appRecordCard`; os cards além dos seis continuavam visíveis e o botão parecia não funcionar.
+    - `record-card.component.scss` agora tem `:host([hidden]) { display: none }`. O conserto vale para todas as galerias, inclusive `vertentes-2-gallery`.
+    - Teste e2e novo em `#pensadores`: 6 cards visíveis, “Ver todos” mostra o total e “Mostrar menos” volta a 6. `e2e/pages.spec` **23/23**; `lint` exit 0.
+
 ## Pendências que bloqueiam
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.
