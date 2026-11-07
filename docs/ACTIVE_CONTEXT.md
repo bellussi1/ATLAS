@@ -5,7 +5,7 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` existe no remoto e é a integração; a última rodada publicada é `791a362`. As frentes de zoom, performance do grafo e `publish-raw` estão mescladas localmente e ainda não foram pushadas. `master` não recebeu esta rodada.
+- Gitflow: `develop` existe no remoto e é a integração; a última rodada publicada é `791a362`. As frentes de zoom, performance do grafo, `publish-raw`, rotas `/leitura/:slug`, busca por nome e aposentadoria de capturas estão mescladas localmente e ainda não foram pushadas. `master` não recebeu esta rodada.
 - Conteúdo: 13 coleções publicadas no release `45300c5…`; `content/content-pointer.json` atualizado.
 - Build local: **1.185 rotas prerenderizadas**.
 - CI: `42274140215` falhou em `ingest:fetch-raw` porque os dois novos manifests de captura ainda não tinham blobs publicados no R2. `npm run ingest:publish-raw` foi corrigido e está publicando; reexecutar o run depois do upload.
@@ -226,11 +226,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - A migração para `/leitura/:slug` foi commitada (`0086631`), com `vercel.json` alinhado em `25eebd1`; a entrega do Worker descompactado foi commitada em `ed25192`.
     - O Worker agora serve `raw/<sha256>.bin` (deploy `e1be72c7`), necessário para `ingest:fetch-raw` reidratar as capturas a partir do Worker em vez do `r2.dev`.
     - A issue **#46** foi tratada aposentando as capturas cujo replay diverge do `snapshotHash`: `liberalism/{2026-11-01-remoto,2026-11-01-retratos,2026-11-03-descoberta}` e `marxism/{2026-11-01-retratos,2026-11-02-remoto,2026-11-03-descoberta}`. Cada uma tem `retired.json` com issue, data, motivo e hash; `ingest:verify` registra e segue; `ingest:fetch-raw` não baixa blobs delas. As duas capturas `preserve` seguem verificadas.
-    - A divergência também ocorre com o código de 03/11 (`aef543c`), o que indica snapshot gerado fora do estado commitado; a cobertura `refresh`/`remote` só volta com nova captura.
+- A divergência também ocorre com o código de 03/11 (`aef543c`), o que indica snapshot gerado fora do estado commitado; a cobertura `refresh`/`remote` só volta com nova captura.
+    - `fetch-raw` passou a copiar para `generated/raw-cache` o corpo local que existia só nos blobs de uma captura; antes ele pulava o download e as outras capturas ficavam sem blob. Depois disso, `ingest:fetch-raw` baixou **15.135 de 15.979** respostas e `ingest:verify` passou: 2 capturas Wikimedia reproduzidas duas vezes sem rede e 26 capturas Wikipedia conferidas.
 
 ## Pendências que bloqueiam
 
-1. **CI do master** — a Verificação `42337655149` passou `ingest:fetch-raw` e falhou em `ingest:verify` na captura `liberalism/2026-11-01-remoto` (issue **#46**). O CodeQL está verde. Os PRs de dependências #45/#44/#41/#40/#38 estão rebaseados, mas presos nesse gate; #39/#37 aguardam recreate.
+1. **CI do master** — a issue **#46** foi resolvida localmente: as capturas incompatíveis estão aposentadas, `ingest:verify` passou e os PRs de dependências podem destravar depois do merge. Falta enviar o `develop`, abrir o PR para a `master` e confirmar `verify`, `secrets` e `CodeQL`. Os PRs #45/#44/#41/#40/#38 estão rebaseados; #39/#37 aguardam recreate.
 2. **Suíte e2e completa** — `contextual-exploration` (liberalismo 1440) falha no y do termo ao voltar (diferença de **64 px**), embora o scroll volte ao lugar. Corrigir a estabilidade do painel ou a tolerância do teste antes de considerar a rodada verde.
 3. **Produção na Vercel** - o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`). Enquanto o `master` não receber a paginação, `/fontes` segue em 4,8 MB; o Worker de conteúdo também aguarda token Cloudflare.
 4. **Probe de 404** — hoje `https://atlasbr.vercel.app/caminho-inexistente` responde 200 com `index.html`; o `uptime.yml` falha por isso. Só verificar depois do deploy.
