@@ -206,6 +206,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Ficaram no remoto `master`, `develop` e as 9 branches do Dependabot, incluindo as dos PRs #42/#43 já fechados. As branches locais e dos worktrees não foram apagadas; o link de branches do GitHub lista só as remotas.
     - `master` agora exige PR, checks `verify`, `secrets` e `CodeQL`, branch atualizada, conversa resolvida, sem force push e sem deleção; `enforce_admins` ativo. Aprovações obrigatórias ficam em **0** porque há um mantenedor; elevar para 1 quando houver um segundo revisor.
     - `delete_branch_on_merge` e `allow_update_branch` ativados. O perfil comunitário segue em **100%** (README, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, PR template e issue templates).
+    - Segurança: **private vulnerability reporting** e **Dependabot security updates** ativados (vulnerability alerts habilitados antes); secret scanning e push protection já estavam ligados.
 
 ## Pendências que bloqueiam
 
