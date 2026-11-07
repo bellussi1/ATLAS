@@ -243,8 +243,6 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `content/traditions/anarquismo.json` registra QID Q6199, recorte, 8 sementes e `Category:Anarchism`; o estágio 1 derivou as sementes e gravou `identity.palette: "anarquismo"` na leitura.
     - A cobertura continua com 10 relações no escopo da leitura (o atlas tem 59, mas 49 ligam entidades de outros atlas). Fechar o piso exige ampliar o escopo editorial ou rodar captura + extração rica; a extração é paga e não foi executada.
 
-
-
 35. **Ficha lateral do nó no grafo**
     - Ao selecionar um nó, a ficha mostra a imagem licenciada do registro (`entityMedia` + `contentMedia`) com atribuição, licença e página do arquivo. Sem imagem, entra a ilustração geométrica da mesma entidade e paleta usadas no verbete.
     - A seção “Caminho entre verbetes” foi removida, junto com o estado, os atalhos `C`, o cálculo `shortestPath` e os testes correspondentes.
@@ -252,8 +250,6 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - “Ler resumo completo” agora é um botão de largura total, com borda, contraste invertido quando aberto e ícone que vira “×”.
     - O orçamento de estilo por componente subiu de 18/20 kB para 20/22 kB (`angular.json`) porque a ficha somou cerca de 1 kB e o build passou a exceder 20 kB.
     - Verificações: `npm test` **325/325**, `e2e/graph.spec.ts` **18/18**, `lint` e `typecheck` exit 0, `build` passou.
-
-
 
 36. **Tipos de nó e de ligação no grafo**
     - Dez famílias de nó, agrupadas em Pessoas e ideias, Obras e acontecimentos e Instituições e territórios. Países e formações políticas deixaram de se misturar com Lugares e Organizações.
@@ -293,7 +289,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Verificações: `npm test` **334/334**, `npm run test:content` **184/184**, `e2e/pages.spec.ts` + `e2e/ideology-sheets.spec.ts` **34/34**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390 nas quatro leituras, com 1 a 4 figuras e sem overflow.
     - O release local é `e794a295…`; o ponteiro público continua no release anterior. A curadoria não foi publicada.
 
-
+41. **Transições da linha do tempo em `#epocas`**
+    - Diagnóstico: o `@if` removia o corpo no mesmo ciclo em que o novo período era inserido. `animate.leave` funcionava ao fechar, mas não na troca simultânea; o conteúdo antigo também passaria a ler os dados do novo período.
+    - O componente mantém o período anterior em `leavingId` por 280 ms, com `inert` e `aria-hidden`, enquanto a altura e a opacidade recolhem. O corpo que sai usa um retrato do período e do estado de expansão, então o conteúdo não troca nem salta durante a animação.
+    - O novo corpo entra com transição de `grid-template-rows` (`0fr → 1fr`) e opacidade em 240 ms, com atraso de 40 ms; o recolhimento usa a mesma duração sem atraso. A abertura inicial da página é imediata; só depois da primeira interação o movimento aparece. `prefers-reduced-motion` zera o atraso e encurta a transição pelo token global.
+    - O período aberto ganhou hierarquia além da cor: faixa lateral na cor do período, anos em chip de tinta, indicador quadrado com mais/menos animado e marcador ampliado. O corpo mantém foco, `aria-expanded` e `aria-controls`.
+    - Verificações: `npm test` **337/337**, `e2e/pages.spec.ts` **27/27** (inclui o novo teste de recolhimento e posição de scroll), `lint`, `typecheck` e `build` exit 0. Medição em 1440 e 390: altura do corpo de 312→24 px ao fechar, sem overflow; clique em outra época mantém `scrollY` e fecha em 280 ms.
 
 ## Pendências que bloqueiam
 

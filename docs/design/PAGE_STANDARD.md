@@ -114,6 +114,8 @@ Na leitura de uma tradição, a linha do tempo de **épocas é vertical**: um tr
 
 Não basta listar datas: selecionar muda informação, conexões e, quando existe, evidência visual. A estrutura semântica continua lista cronológica. Filtro vazio apresenta saída e não deixa seleção invisível como se estivesse no recorte. Datas aproximadas permanecem aproximadas. Simultaneidade, associação e causalidade são distintas.
 
+Abrir e fechar uma época revela o painel com altura e opacidade curtas, mantendo o conteúdo anterior visível enquanto ele recolhe; a página não rola sozinha. O período aberto se distingue por hierarquia (faixa, marcador e indicador), não só por cor. `prefers-reduced-motion` encurta a transição para quase zero.
+
 Conectores e progresso podem responder ao scroll ou à seleção, sem mover a narrativa. Animação de conector é curta, limitada aos vínculos relevantes, sem loop, com equivalente imediato em reduced motion.
 
 ## 8. Grafos e vertentes

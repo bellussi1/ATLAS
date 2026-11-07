@@ -376,6 +376,24 @@ test('épocas list dated records and the relations explain each kind of connecti
   }
 });
 
+test('opening an epoch animates the collapse without moving the page', async ({ page }) => {
+  await page.goto('/leitura/marxismo/');
+  const era = page.locator('.era-chart').first();
+  const rows = era.locator('.epoch-row');
+  await expect(rows.nth(1)).toBeVisible();
+  const before = await page.evaluate(() => Math.round(scrollY));
+  await page.evaluate(() =>
+    document.querySelectorAll<HTMLButtonElement>('app-era-chart .epoch-row')[1].click(),
+  );
+  await expect(rows.nth(1)).toHaveAttribute('aria-expanded', 'true');
+  await page.waitForTimeout(60);
+  await expect(era.locator('.epoch-body.is-leaving')).toHaveCount(1);
+  expect(await page.evaluate(() => Math.round(scrollY))).toBe(before);
+  await expect(era.locator('.epoch-body.is-leaving')).toHaveCount(0, { timeout: 1000 });
+  await expect(era.locator('.epoch-body')).toHaveCount(1);
+  await expect(era.locator('.epoch-body')).toHaveAttribute('id', /^epoch-/);
+});
+
 test('reading roadmap shows a first step and expands works in place', async ({ page }) => {
   for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/']) {
     await page.goto(path);

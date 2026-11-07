@@ -77,6 +77,14 @@
 }
 .era-epoch.is-selected::after {
   background: var(--tone);
+  box-shadow: 0 0 0 4px var(--paper);
+  scale: 1.15;
+}
+.era-epoch::after {
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out),
+    scale var(--motion-fast) var(--ease-out);
 }
 .epoch-row {
   display: grid;
@@ -90,17 +98,30 @@
   color: var(--color-ink);
   text-align: start;
   cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
 }
 .era-epoch.is-selected .epoch-row {
-  background: color-mix(in srgb, var(--tone) 9%, transparent);
+  background: color-mix(in srgb, var(--tone) 7%, transparent);
+  box-shadow: inset 4px 0 0 var(--tone);
 }
 .epoch-row:focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: -3px;
 }
 .epoch-years {
+  justify-self: start;
+  padding: 0.12rem 0.4rem;
   color: var(--color-ink-muted);
   font: 0.75rem/1.4 var(--font-mono);
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out);
+}
+.era-epoch.is-selected .epoch-years {
+  background: var(--ink);
+  color: var(--paper);
 }
 .epoch-copy {
   display: grid;
@@ -114,13 +135,80 @@
 .epoch-kicker {
   color: var(--color-ink-muted);
   font: 0.8125rem/1.4 var(--font-sans);
+  transition: color var(--motion-fast) var(--ease-out);
 }
+.era-epoch.is-selected .epoch-kicker {
+  color: var(--ink);
+}
+/* A square plus/minus: form, not just colour, tells whether the period is open. */
 .epoch-indicator {
-  color: var(--color-ink-muted);
-  font: 600 1.25rem/1 var(--font-mono);
+  position: relative;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    scale var(--motion-fast) var(--ease-out);
+}
+.epoch-indicator::before,
+.epoch-indicator::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  background: var(--ink);
+  translate: -50% -50%;
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    opacity var(--motion-fast) var(--ease-out);
+}
+.epoch-indicator::before {
+  inline-size: 0.7rem;
+  block-size: 2px;
+}
+.epoch-indicator::after {
+  inline-size: 2px;
+  block-size: 0.7rem;
+}
+.era-epoch.is-selected .epoch-indicator {
+  background: var(--tone);
+  scale: 1.04;
+}
+.era-epoch.is-selected .epoch-indicator::after {
+  opacity: 0;
+  transform: rotate(90deg);
 }
 .epoch-body {
+  display: grid;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  opacity: 1;
+  transition:
+    grid-template-rows var(--motion-standard) var(--ease-out) 40ms,
+    opacity var(--motion-standard) var(--ease-out) 40ms;
+}
+.era-chart.is-interactive .epoch-body {
+  @starting-style {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+}
+.epoch-body__inner {
+  min-block-size: 0;
   padding: 0 1.25rem 1.5rem 2.75rem;
+}
+/* The leaving period keeps its content until the collapse finishes. */
+.epoch-body.is-leaving {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition-delay: 0ms;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .epoch-body {
+    transition-delay: 0ms;
+  }
 }
 .epoch-summary {
   margin: 0 0 0.75rem;
@@ -207,7 +295,7 @@
     grid-column: 2;
     grid-row: 1;
   }
-  .epoch-body {
+  .epoch-body__inner {
     padding-inline: 1rem;
   }
   .epoch-row {

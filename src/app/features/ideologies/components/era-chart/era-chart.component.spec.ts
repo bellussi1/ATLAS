@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import type { Entity } from '@core/content/models/content-schema';
+import { vi } from 'vitest';
 
 import { EraChartComponent, type EraChartEpoch } from './era-chart.component';
 
@@ -31,8 +32,8 @@ describe('EraChartComponent', () => {
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
     const names = () =>
-      [...root.querySelectorAll('.alive-list:not(.dated-list) button')].map((b) =>
-        b.textContent!.trim(),
+      [...root.querySelectorAll('.era-epoch.is-selected .alive-list:not(.dated-list) button')].map(
+        (b) => b.textContent!.trim(),
       );
     expect(names()).toEqual([expect.stringContaining('marx')]);
     const first = root.querySelector<HTMLButtonElement>('.era-epoch .epoch-row')!;
@@ -62,7 +63,9 @@ describe('EraChartComponent', () => {
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
     const dated = () =>
-      [...root.querySelectorAll('.dated-list button')].map((b) => b.textContent!.trim());
+      [...root.querySelectorAll('.era-epoch.is-selected .dated-list button')].map((b) =>
+        b.textContent!.trim(),
+      );
     expect(dated()).toEqual([expect.stringContaining('manifesto')]);
     expect(root.querySelector('.era-note')!.textContent).toContain('1 registro fica fora da lista');
   });
@@ -98,8 +101,10 @@ describe('EraChartComponent', () => {
     fixture.componentRef.setInput('markers', []);
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
-    const cards = () => root.querySelectorAll('.alive-list:not(.dated-list) button').length;
-    const toggle = () => root.querySelector<HTMLButtonElement>('.list-toggle')!;
+    const cards = () =>
+      root.querySelectorAll('.era-epoch.is-selected .alive-list:not(.dated-list) button').length;
+    const toggle = () =>
+      root.querySelector<HTMLButtonElement>('.era-epoch.is-selected .list-toggle')!;
     expect(cards()).toBe(8);
     expect(toggle().textContent).toContain('Ver todas (12)');
     toggle().click();
@@ -109,7 +114,85 @@ describe('EraChartComponent', () => {
     expect(toggle().textContent).toContain('Mostrar menos');
     root.querySelectorAll<HTMLButtonElement>('.era-epoch .epoch-row')[1].click();
     fixture.detectChanges();
-    expect(root.querySelector('.list-toggle')).toBeNull();
+    expect(root.querySelector('.era-epoch.is-selected .list-toggle')).toBeNull();
+  });
+
+  it('opens the first period, keeps aria state and toggles it closed on a second press', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    fixture.componentRef.setInput('epochs', [epoch('a', 1800, 1900), epoch('b', 1901, 1950)]);
+    fixture.componentRef.setInput('people', []);
+    fixture.componentRef.setInput('markers', []);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const rows = () => [...root.querySelectorAll<HTMLButtonElement>('.era-epoch .epoch-row')];
+    expect(rows()[0].getAttribute('aria-expanded')).toBe('true');
+    expect(rows()[0].getAttribute('aria-controls')).toBe('epoch-a');
+    expect(root.querySelector('#epoch-a')).not.toBeNull();
+
+    rows()[0].click();
+    fixture.detectChanges();
+    expect(fixture.componentInstance.selected()).toBeNull();
+    expect(rows()[0].getAttribute('aria-expanded')).toBe('false');
+    expect(root.querySelectorAll('.era-epoch.is-selected')).toHaveLength(0);
+
+    rows()[0].click();
+    fixture.detectChanges();
+    expect(fixture.componentInstance.selected()?.id).toBe('a');
+    expect(rows()[0].getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('keeps the previous body while it collapses, then removes it', () => {
+    vi.useFakeTimers();
+    try {
+      const fixture = TestBed.createComponent(EraChartComponent);
+      fixture.componentRef.setInput('epochs', [epoch('a', 1800, 1900), epoch('b', 1901, 1950)]);
+      fixture.componentRef.setInput('people', []);
+      fixture.componentRef.setInput('markers', []);
+      fixture.detectChanges();
+      const root = fixture.nativeElement as HTMLElement;
+      const rows = root.querySelectorAll<HTMLButtonElement>('.epoch-row');
+      rows[1].click();
+      fixture.detectChanges();
+      expect(root.querySelectorAll('.epoch-body')).toHaveLength(2);
+      const leaving = root.querySelector<HTMLElement>('#epoch-a')!;
+      expect(leaving.classList.contains('is-leaving')).toBe(true);
+      expect(leaving.hasAttribute('inert')).toBe(true);
+      expect(leaving.querySelector('.epoch-summary')?.textContent).toBe('a');
+      vi.advanceTimersByTime(300);
+      fixture.detectChanges();
+      expect(root.querySelectorAll('.epoch-body')).toHaveLength(1);
+      expect(root.querySelector('#epoch-a')).toBeNull();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('keeps one expanded period after rapid switches and focuses the arrow-key target', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    fixture.componentRef.setInput('epochs', [
+      epoch('a', 1800, 1850),
+      epoch('b', 1851, 1900),
+      epoch('c', 1901, 1950),
+    ]);
+    fixture.componentRef.setInput('people', []);
+    fixture.componentRef.setInput('markers', []);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const rows = [...root.querySelectorAll<HTMLButtonElement>('.era-epoch .epoch-row')];
+    rows[1].click();
+    rows[2].click();
+    rows[0].click();
+    rows[1].click();
+    fixture.detectChanges();
+    expect(fixture.componentInstance.selected()?.id).toBe('b');
+    expect(root.querySelectorAll('.era-epoch .epoch-row[aria-expanded="true"]')).toHaveLength(1);
+    expect(root.querySelectorAll('.era-epoch.is-selected')).toHaveLength(1);
+    expect(root.querySelector('.era-epoch.is-selected .epoch-title')?.textContent).toBe('b');
+
+    rows[1].dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+    fixture.detectChanges();
+    expect(fixture.componentInstance.selected()?.id).toBe('c');
+    expect(document.activeElement).toBe(rows[2]);
   });
 
   it('renders a vertical ordered list instead of an absolute plot', () => {
