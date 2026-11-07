@@ -469,10 +469,75 @@ test('reading roadmap shows a first step and expands works in place', async ({ p
     await page.keyboard.press('Enter');
     await expect(first).toHaveAttribute('aria-expanded', 'true');
     await expect(roadmap.locator('.work-detail:visible')).toHaveCount(1);
-    await roadmap.locator('.theme-filter button').first().click();
+    const theme = roadmap.locator('.quick-themes button').first();
+    await theme.click();
+    await expect(theme).toHaveAttribute('aria-pressed', 'true');
     expect(await roadmap.locator('.work.is-dimmed').count()).toBeGreaterThan(0);
     const total = await roadmap.locator('.work').count();
-    await expect(roadmap.locator('.filter-count')).not.toContainText(`${total} de ${total}`);
+    await expect(roadmap.locator('.filter-count')).toContainText(`de ${total} obras em destaque`);
+    await roadmap.locator('.theme-all').click();
+    await expect(roadmap.locator('.theme-all')).toHaveAttribute('aria-pressed', 'true');
+    await expect(roadmap.locator('.work.is-dimmed')).toHaveCount(0);
+  }
+});
+
+test('theme chips separate selected, available and hover states', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/leitura/marxismo/');
+  const roadmap = page.locator('#leituras app-reading-path');
+  const active = roadmap.locator('.theme-all');
+  const available = roadmap.locator('.quick-themes button').first();
+
+  await expect(active).toHaveAttribute('aria-pressed', 'true');
+  await expect(available).toHaveAttribute('aria-pressed', 'false');
+  const activeBackground = await active.evaluate((el) => getComputedStyle(el).backgroundColor);
+  const availableBackground = await available.evaluate(
+    (el) => getComputedStyle(el).backgroundColor,
+  );
+  expect(activeBackground).not.toBe(availableBackground);
+
+  await available.hover();
+  await expect
+    .poll(() => available.evaluate((el) => getComputedStyle(el).backgroundColor))
+    .not.toBe(availableBackground);
+
+  await available.click();
+  await expect(available).toHaveAttribute('aria-pressed', 'true');
+  await expect(active).toHaveAttribute('aria-pressed', 'false');
+  await expect(roadmap.locator('.filter-count')).toContainText('Economia');
+
+  const dimmed = roadmap.locator('.work.is-dimmed').first();
+  await dimmed.locator('.work-toggle').focus();
+  await expect.poll(() => dimmed.evaluate((el) => getComputedStyle(el).opacity)).toBe('1');
+});
+
+test('theme filter uses the compact select in all four readings', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/leitura/${slug}/`);
+    const roadmap = page.locator('#leituras app-reading-path');
+    const total = await roadmap.locator('.work').count();
+    const select = roadmap.locator('select');
+
+    await expect(select).toBeVisible();
+    await expect(roadmap.locator('.quick-themes')).toBeHidden();
+    await expect(roadmap.locator('.filter-count')).toContainText(`${total} obras`);
+
+    await select.selectOption({ index: 1 });
+    expect(await select.inputValue()).not.toBe('');
+    await expect(roadmap.locator('.filter-count')).toContainText('obras em destaque');
+    await expect(roadmap.locator('.filter-count')).toContainText(`de ${total}`);
+    expect(await roadmap.locator('.work.is-dimmed').count()).toBeGreaterThan(0);
+    expect(await roadmap.locator('.work').count()).toBe(total);
+    await expect(roadmap.locator('.theme-all')).toHaveAttribute('aria-pressed', 'false');
+
+    await roadmap.locator('.theme-all').click();
+    await expect(roadmap.locator('.work.is-dimmed')).toHaveCount(0);
+    await expect(select).toHaveValue('');
+    await expect(roadmap.locator('.theme-all')).toHaveAttribute('aria-pressed', 'true');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
   }
 });
 

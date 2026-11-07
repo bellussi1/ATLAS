@@ -106,6 +106,8 @@ Pensadores têm contexto, obras e relações quando registrados. Retratos com di
 
 O gatilho comunica a ação antes do hover. Seleção e expansão persistem até fechar ou trocar; fechar devolve foco e contexto. Cliques rápidos não empilham animações nem geram dados incoerentes. O painel pode navegar por conexões com retorno interno, mantendo a página de origem.
 
+No roteiro de leitura, o seletor de tema apenas destaca obras; não remove o percurso. O tema ativo aparece no botão e no status com a contagem, os temas frequentes viram atalhos e a lista completa fica em um seletor nativo — visível no desktop quando há excedente e sempre na tela estreita. Trocar de tema não altera a altura do filtro nem fecha a obra aberta; hover, disponível e selecionado têm estados distintos.
+
 ## 7. Timeline
 
 Explica recorte e ordem: trilho, eventos selecionáveis, períodos e filtros, indicador de posição e painel sincronizado. Fotografias e documentos com contexto e licença; sem mídia, a região continua estável. Eventos podem ligar pensadores, obras e correntes documentadas.

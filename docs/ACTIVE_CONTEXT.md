@@ -5,17 +5,17 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; a última alteração registrada é `41af967`. A cronologia desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
+- Gitflow: `develop` é a integração; a última alteração registrada é `a580b0f`. O filtro de temas desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**.
 - CI: não executado nesta sessão; a verificação abaixo é local.
 
 ## Verificações executadas
 
-- `npm test`: **343/343**.
+- `npm test`: **348/348**.
 - `npm run test:content`: **184/184**.
 - `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `node node_modules/@playwright/test/cli.js test`: `pages.spec.ts` + `carousel.spec.ts` **34/34**; `public-routes.spec.ts` + `accessibility.spec.ts` **36/36**, sem achados sérios em 390/1440.
+- `node node_modules/@playwright/test/cli.js test`: `pages.spec.ts` + `contextual-exploration.spec.ts` **40/40**, incluindo as quatro leituras no filtro de temas e a auditoria Axe das páginas retidas.
 - `npm run lint` e `npm run typecheck`: exit 0.
 
 ## O que mudou nesta rodada
@@ -339,6 +339,15 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Verificações: `npm test` **343/343**, `e2e/pages.spec.ts` + `e2e/carousel.spec.ts` **34/34**, `e2e/public-routes.spec.ts` + `e2e/accessibility.spec.ts` **36/36**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390: um card por vez, chips, polos em palavras, status por forma e texto, sem overflow. A auditoria Axe do carrossel em 1280 e 390 não encontrou achados sérios.
     - O release local continua `eae46644…`; nenhuma publicação nesta rodada.
 
+47. **Filtros temáticos do roteiro de leitura**
+    - O filtro tinha um botão por tema, sem contagem, sem ação explícita de limpar e com até 11 botões nas leituras de liberalismo e marxismo. Como quase todos os temas reúnem uma só obra, o esmaecimento deixava o percurso quase apagado e o visitante não sabia se estava filtrando ou escondendo.
+    - O componente agora abre com o chip **Todos** e a contagem total. Os temas são ordenados por quantidade de obras e depois por nome; os seis primeiros viram atalhos com contagem, e a lista completa fica em um seletor nativo.
+    - O seletor aparece no desktop quando há mais de seis temas e sempre abaixo de 640 px, quando os atalhos são ocultados. O tema ativo é identificado pelo chip, pelo seletor e pela linha de status (“Economia · 3 de 13 obras em destaque”).
+    - A seleção pode ser limpa pelo chip Todos, pelo próprio chip ativo ou pela opção “Todos os temas” do seletor. Hover, disponível, selecionado e foco têm estados distintos; mudar de tema não altera a altura do filtro (155 px no desktop e 185 px no celular) nem fecha a obra aberta.
+    - O esmaecimento passou de 0,35 para 0,45, suficiente para preservar o percurso sem apagar as obras fora do tema. O rodapé explica que o filtro não remove obras.
+    - Nenhum contrato de conteúdo mudou: as contagens são derivadas de `works[].theme`; `themes` passou a devolver `{ name, count }` ordenado, e o seletor usa os mesmos nomes. O bloco continua recebendo `works`, `theme`, `open` e os níveis existentes.
+    - Verificações: `npm test` **348/348**, `e2e/pages.spec.ts` + `e2e/contextual-exploration.spec.ts` **40/40**, incluindo o filtro nas quatro leituras, o seletor compacto em 390 px, os estados de chip e a auditoria Axe; `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390 sem overflow e com altura estável antes/depois da seleção.
+    - Limite: a taxonomia de temas continua granular; o filtro é um destaque de uma obra em muitas leituras. O seletor resolve a escala da interface, mas não substitui uma futura revisão editorial dos temas. Nada foi publicado.
 ## Pendências que bloqueiam
 
 1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos, ficha do nó e tipos do grafo estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).

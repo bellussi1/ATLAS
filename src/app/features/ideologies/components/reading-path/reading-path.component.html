@@ -1,18 +1,38 @@
 <div class="theme-filter" role="group" aria-label="Filtrar por tema">
   <span class="atlas-label">Tema</span>
-  @for (theme of themes(); track theme) {
+  <div class="theme-controls">
     <button
       type="button"
-      class="atlas-press"
-      [attr.aria-pressed]="theme === this.theme()"
-      (click)="toggle(theme)"
+      class="theme-chip theme-all"
+      [attr.aria-pressed]="!theme()"
+      (click)="clear()"
     >
-      {{ theme }}
+      Todos <span class="theme-count">{{ works().length }}</span>
     </button>
-  }
-  <span class="filter-count" aria-live="polite"
-    >{{ matching() }} de {{ works().length }} obras em destaque</span
-  >
+    <div class="quick-themes">
+      @for (option of quickThemes(); track option.name) {
+        <button
+          type="button"
+          class="theme-chip"
+          [attr.data-theme]="option.name"
+          [attr.aria-pressed]="theme() === option.name"
+          (click)="toggle(option.name)"
+        >
+          {{ option.name }} <span class="theme-count">{{ option.count }}</span>
+        </button>
+      }
+    </div>
+    <label class="theme-select" [class.is-visible]="hasOverflow()">
+      <span>Lista de temas</span>
+      <select [value]="theme() ?? ''" (change)="selectTheme($any($event.target).value)">
+        <option value="">Todos os temas ({{ works().length }})</option>
+        @for (option of themes(); track option.name) {
+          <option [value]="option.name">{{ option.name }} ({{ option.count }})</option>
+        }
+      </select>
+    </label>
+  </div>
+  <p class="filter-count" role="status" aria-live="polite">{{ status() }}</p>
 </div>
 
 <ol class="path" appReveal>
@@ -75,5 +95,5 @@
   Sugestões editoriais de ordem de leitura, não um cânone; leitores experientes podem entrar em
   qualquer etapa. “Primária” indica texto da própria tradição; “introdução” e “estudo”, obras sobre
   ela; “crítica”, objeção externa. Edições indicadas são as originais; procure traduções e edições
-  críticas na biblioteca.
+  críticas na biblioteca. O filtro de tema não remove obras: apenas destaca as que correspondem.
 </p>
