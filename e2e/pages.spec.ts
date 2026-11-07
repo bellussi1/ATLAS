@@ -541,6 +541,70 @@ test('theme filter uses the compact select in all four readings', async ({ page 
   }
 });
 
+test('chapter sources fold and the integral bibliography stays in its own section', async ({
+  page,
+}) => {
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/leitura/${slug}/#fontes`);
+    const chapter = page.locator('#fontes');
+    await expect(chapter.locator('.chapter-sources')).toHaveCount(0);
+    const bibliography = chapter.locator('app-editorial-sources');
+    await expect(bibliography).toBeVisible();
+    await expect(chapter.locator('.bibliography-note')).toContainText('Bibliografia integral');
+    const shown = await bibliography.locator('li').count();
+    expect(shown).toBeGreaterThan(0);
+    const more = bibliography.locator('.sources-more');
+    if (await more.count()) {
+      await expect(more).toBeVisible();
+      await more.click();
+      expect(await bibliography.locator('li').count()).toBeGreaterThan(shown);
+    }
+  }
+
+  await page.goto('/leitura/marxismo/#debates');
+  const debates = page.locator('#debates .chapter-sources');
+  await expect(debates).toHaveCount(1);
+  await expect(debates.locator('summary')).toContainText('Conferir fontes deste capítulo (10)');
+  await debates.locator('summary').click();
+  const sources = debates.locator('app-editorial-sources');
+  await expect(sources.locator('li')).toHaveCount(5);
+  const more = sources.locator('.sources-more');
+  await expect(more).toContainText('Ver todas (10)');
+  await more.click();
+  await expect(sources.locator('li')).toHaveCount(10);
+});
+
+test('returning from the evidence chapter restores the exact reading point', async ({ page }) => {
+  await page.goto('/leitura/marxismo#conexoes');
+  const before = await page.evaluate(() => {
+    const section = document.getElementById('conexoes')!;
+    const top = section.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo(0, top + 600);
+    return window.scrollY;
+  });
+  await page.locator('app-ideology-reading-index a[href="#fontes"]').click();
+  await expect(page).toHaveURL(/#fontes$/);
+  await page.getByRole('button', { name: 'Voltar de onde veio' }).click();
+  await expect(page).toHaveURL(/#conexoes$/);
+  await expect
+    .poll(async () => Math.abs((await page.evaluate(() => window.scrollY)) - before))
+    .toBeLessThan(20);
+});
+
+test('contextual sheet jumps to sources and returns to the reading point', async ({ page }) => {
+  await page.goto('/leitura/marxismo/#pensadores');
+  await page.locator('#pensadores .record-card').filter({ hasText: 'Karl Marx' }).first().click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await dialog.getByRole('button', { name: /^Fontes/ }).click();
+  await expect(dialog.locator('.source-note')).toContainText('Fontes do registro');
+  await expect(dialog.locator('.source-list li').first()).toBeVisible();
+  const back = dialog.locator('.sheet-footer .context-return');
+  await expect(back).toBeVisible();
+  await back.click();
+  await expect(dialog.locator('#knowledge-context-title')).toBeFocused();
+});
+
 test('home keeps the poster colour and tints each later section as it scrolls', async ({
   page,
 }) => {

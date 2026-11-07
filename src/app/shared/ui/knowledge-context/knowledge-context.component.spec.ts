@@ -125,6 +125,7 @@ describe('KnowledgeContextComponent', () => {
     expect(fixture.componentInstance.record()).toBe(record);
     expect(fixture.componentInstance.history()).toEqual([]);
     expect(host.querySelector('[data-connection="relation-marx-capital"]')).not.toBeNull();
+    expect(document.activeElement?.getAttribute('data-connection')).toBe('relation-marx-capital');
   });
 
   it('renders editorial records with missing URLs and no connections without false links', () => {
@@ -166,6 +167,117 @@ describe('KnowledgeContextComponent', () => {
     expect(host.textContent).toContain('Fonte impressa');
     expect(host.querySelector('a')).toBeNull();
     expect(host.textContent).toContain('Situação editorial não informada');
+  });
+
+  it('shows a short source list first and expands it on demand', () => {
+    const sources = Array.from({ length: 12 }, (_, index) => ({
+      id: `source-${index}`,
+      title: `Fonte ${index}`,
+      url: null,
+      edition: `Edição ${index}`,
+      publicationDate: null,
+    }));
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter([]),
+        ...provideContentFixture(),
+        provideHttpClient(),
+        { provide: DialogRef, useValue: { close: vi.fn() } },
+        {
+          provide: DIALOG_DATA,
+          useValue: {
+            stops: [],
+            index: -1,
+            record: {
+              title: 'Recorte editorial',
+              kind: 'Nota',
+              summary: 'Resumo',
+              paragraphs: [],
+              connections: [],
+              sources,
+            },
+          },
+        },
+      ],
+    });
+    const fixture = TestBed.createComponent(KnowledgeContextComponent);
+    fixture.detectChanges();
+    const host = fixture.nativeElement as HTMLElement;
+    const footer = host.querySelector('.sheet-footer')!;
+    expect(footer.querySelectorAll('.source-list li')).toHaveLength(5);
+    const more = footer.querySelector<HTMLButtonElement>('.context-sources-more')!;
+    expect(more.textContent).toContain('Ver todas as fontes (12)');
+    expect(host.textContent).toContain('Fontes do registro');
+    more.click();
+    fixture.detectChanges();
+    expect(footer.querySelectorAll('.source-list li')).toHaveLength(12);
+    expect(more.getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('explains an empty source list without inventing evidence', () => {
+    TestBed.configureTestingModule({
+      providers: [
+        provideRouter([]),
+        ...provideContentFixture(),
+        provideHttpClient(),
+        { provide: DialogRef, useValue: { close: vi.fn() } },
+        {
+          provide: DIALOG_DATA,
+          useValue: {
+            stops: [],
+            index: -1,
+            record: {
+              title: 'Recorte sem fonte',
+              kind: 'Nota',
+              summary: 'Resumo',
+              paragraphs: [],
+              connections: [],
+              sources: [],
+            },
+          },
+        },
+      ],
+    });
+    const fixture = TestBed.createComponent(KnowledgeContextComponent);
+    fixture.detectChanges();
+    const host = fixture.nativeElement as HTMLElement;
+    expect(host.querySelector('.source-list')?.textContent).toContain(
+      'Não há fonte específica registrada',
+    );
+    expect(host.textContent).toContain('Fontes 0');
+  });
+
+  it('returns from the source jump to the exact point where the reader was', () => {
+    const original = HTMLElement.prototype.scrollIntoView;
+    HTMLElement.prototype.scrollIntoView = vi.fn();
+    try {
+      const record = entityContext(
+        { knowledgeGraph: methodologyKnowledgeGraph } as ContentRepository,
+        'person-karl-marx',
+      );
+      TestBed.configureTestingModule({
+        providers: [
+          provideRouter([]),
+          ...provideContentFixture(),
+          provideHttpClient(),
+          { provide: DIALOG_DATA, useValue: { record, stops: [], index: -1 } },
+          { provide: DialogRef, useValue: { close: vi.fn() } },
+        ],
+      });
+      const fixture = TestBed.createComponent(KnowledgeContextComponent);
+      fixture.detectChanges();
+      const host = fixture.nativeElement as HTMLElement;
+      fixture.componentInstance.jump('context-sources-title');
+      fixture.detectChanges();
+      const back = host.querySelector<HTMLButtonElement>('.sheet-footer .context-return')!;
+      expect(back).not.toBeNull();
+      back.click();
+      fixture.detectChanges();
+      expect(fixture.componentInstance.jumpReturn()).toBeNull();
+      expect(document.activeElement?.id).toBe('knowledge-context-title');
+    } finally {
+      HTMLElement.prototype.scrollIntoView = original;
+    }
   });
 
   it('reads a relation as a sentence, with evidence and no process text in the prose', () => {

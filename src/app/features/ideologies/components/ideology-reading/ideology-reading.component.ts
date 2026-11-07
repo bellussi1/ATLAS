@@ -10,9 +10,10 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Scroll } from '@angular/router';
 import { legacyChapterAnchors } from '@ideologies/models/ideology-chapters';
 import type { IdeologyReadingSection } from '@ideologies/models/ideology-reading-section';
+import { filter, take } from 'rxjs';
 
 import { IdeologyReadingIndexComponent } from '../reading-index/reading-index.component';
 
@@ -49,7 +50,8 @@ export class IdeologyReadingComponent {
       ) % 6,
   );
   readonly progress = signal(0);
-  readonly previous = signal<string | null>(null);
+  /** Previous chapter plus the exact scroll point the reader left it at. */
+  readonly previous = signal<{ anchor: string; scrollY: number } | null>(null);
   readonly reduced = signal(false);
 
   constructor() {
@@ -133,25 +135,51 @@ export class IdeologyReadingComponent {
   go(anchor: string): void {
     const section = this.section(anchor);
     if (!section) return;
-    if (anchor !== this.active()) this.previous.set(this.active());
+    if (anchor !== this.active())
+      this.previous.set({
+        anchor: this.active(),
+        scrollY: this.document.defaultView?.scrollY ?? 0,
+      });
+    this.openChapter(anchor);
+  }
+
+  returnToPrevious(): void {
+    const previous = this.previous();
+    if (!previous) return;
+    this.previous.set({
+      anchor: this.active(),
+      scrollY: this.document.defaultView?.scrollY ?? 0,
+    });
+    this.openChapter(previous.anchor, previous.scrollY);
+  }
+
+  toggleMotion(): void {
+    this.reduced.update((value) => !value);
+    this.document.documentElement.classList.toggle('atlas-reduced-motion', this.reduced());
+  }
+
+  private openChapter(anchor: string, restore?: number): void {
+    const section = this.section(anchor);
+    if (!section) return;
+    const win = this.document.defaultView;
     this.selected.set(anchor);
-    this.pending = { anchor, scrollY: this.document.defaultView?.scrollY ?? 0 };
+    this.pending = { anchor, scrollY: win?.scrollY ?? 0 };
+    if (win && restore !== undefined) {
+      // The router scrolls to the chapter first; restore the exact point after that scroll.
+      const wait = this.router.events
+        .pipe(
+          filter((event) => event instanceof Scroll),
+          take(1),
+        )
+        .subscribe(() => win.setTimeout(() => win.scrollTo({ top: restore, behavior: 'instant' })));
+      win.setTimeout(() => wait.unsubscribe(), 1000);
+    }
     void this.router.navigate([], {
       relativeTo: this.route,
       fragment: anchor,
       queryParamsHandling: 'preserve',
     });
     section.focus({ preventScroll: true });
-  }
-
-  returnToPrevious(): void {
-    const previous = this.previous();
-    if (previous) this.go(previous);
-  }
-
-  toggleMotion(): void {
-    this.reduced.update((value) => !value);
-    this.document.documentElement.classList.toggle('atlas-reduced-motion', this.reduced());
   }
 
   private section(anchor: string): HTMLElement | undefined {

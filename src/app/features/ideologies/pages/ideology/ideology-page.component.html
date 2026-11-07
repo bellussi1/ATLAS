@@ -98,10 +98,16 @@
           @if (reviews()[index]; as review) {
             <app-chapter-review [review]="review" [chapterTitle]="chapter.title" />
           }
-          @if (chapter.sourceIds.length) {
+          @if (chapter.sourceIds.length && !bibliographyCovers(chapter)) {
             <details class="chapter-sources">
-              <summary>Conferir fontes deste capítulo ({{ chapter.sourceIds.length }})</summary>
-              <app-editorial-sources [references]="sources(chapter.sourceIds)" />
+              <summary>
+                Conferir fontes deste capítulo ({{ sourceCount(chapter.sourceIds) }})
+              </summary>
+              <app-editorial-sources
+                [references]="sources(chapter.sourceIds)"
+                [limit]="5"
+                emptyText="Nenhuma referência registrada para este capítulo."
+              />
             </details>
           }
           @if (chapter.bridge) {

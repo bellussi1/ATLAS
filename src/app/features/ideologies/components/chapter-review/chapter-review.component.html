@@ -20,7 +20,7 @@
         <p class="review-answer-text">{{ review().answer }}</p>
         @if (review().sources.length) {
           <p class="review-sources">
-            <span class="review-label">Fontes</span>
+            <span class="review-label">Fontes da resposta</span>
             @for (source of review().sources; track source.id) {
               @if (source.url) {
                 <a [href]="source.url" target="_blank" rel="noopener noreferrer">{{

@@ -167,8 +167,13 @@ export class IdeologyBlockComponent {
     const block = this.block();
     const ids = block.type === 'sources' ? block.sourceIds : [];
     const query = this.params().get('bibliografia')?.toLocaleLowerCase('pt-BR') ?? '';
+    const seen = new Set<string>();
     return ids
-      .flatMap((id) => this.source(id) ?? [])
+      .flatMap((id) => {
+        if (seen.has(id)) return [];
+        seen.add(id);
+        return this.source(id) ?? [];
+      })
       .filter((s) => s.title.toLocaleLowerCase('pt-BR').includes(query));
   });
   readonly atlas = computed(() =>

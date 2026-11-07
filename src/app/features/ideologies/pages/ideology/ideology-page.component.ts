@@ -142,12 +142,27 @@ export class IdeologyPageComponent {
     this.retry.next(this.retry.value + 1);
   }
   sources(ids: string[]): Source[] {
-    return ids.flatMap(
-      (id) =>
+    const seen = new Set<string>();
+    return ids.flatMap((id) => {
+      if (seen.has(id)) return [];
+      seen.add(id);
+      return (
         [
           ...(this.state().dossier?.supplement.sources ?? []),
           ...this.repository.knowledgeGraph.atlases.flatMap((a) => a.sources),
-        ].find((s) => s.id === id) ?? [],
-    );
+        ].find((s) => s.id === id) ?? []
+      );
+    });
+  }
+  /** Unique references, so the chapter summary matches the rendered list. */
+  sourceCount(ids: string[]): number {
+    return this.sources(ids).length;
+  }
+  /** A bibliography block already lists the chapter's sources in its own section. */
+  bibliographyCovers(chapter: IdeologyDossier['page']['chapters'][number]): boolean {
+    const block = chapter.blocks.find((item) => item.type === 'sources');
+    if (!block?.sourceIds.length) return false;
+    const listed = new Set(block.sourceIds);
+    return chapter.sourceIds.every((id) => listed.has(id));
   }
 }

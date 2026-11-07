@@ -11,6 +11,18 @@ describe('Entity context projection', () => {
     expect(new Set(record.paragraphs).size).toBe(record.paragraphs.length);
     expect(record.paragraphs).not.toContain(record.summary);
   });
+  it('shows each source once when several claims cite the same evidence', () => {
+    const graph = structuredClone(methodologyKnowledgeGraph);
+    const atlas = graph.atlases.find((a) => a.entities.some((e) => e.id === 'person-karl-marx'))!;
+    const claim = atlas.claims.find((c) => c.entityId === 'person-karl-marx');
+    expect(claim).toBeDefined();
+    atlas.claims.push({ ...claim!, id: 'claim-repeated-source' });
+    const record = entityContext(
+      { knowledgeGraph: graph } as ContentRepository,
+      'person-karl-marx',
+    );
+    expect(new Set(record.sources.map((source) => source.id)).size).toBe(record.sources.length);
+  });
   it('keeps Wikidata P737 subject influenced BY object in both directions', () => {
     const outgoing = entityContext(repository, 'person-friedrich-engels').connections.find(
       (c) => c.id === 'marxism-statement-person-friedrich-engels-p737-person-karl-marx',

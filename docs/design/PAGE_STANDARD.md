@@ -106,6 +106,8 @@ Pensadores têm contexto, obras e relações quando registrados. Retratos com di
 
 O gatilho comunica a ação antes do hover. Seleção e expansão persistem até fechar ou trocar; fechar devolve foco e contexto. Cliques rápidos não empilham animações nem geram dados incoerentes. O painel pode navegar por conexões com retorno interno, mantendo a página de origem.
 
+Referências aparecem em camadas: a evidência da afirmação ou da relação vem primeiro, com localizador; depois a lista de fontes do capítulo; a bibliografia integral fica na seção própria. Listas longas mostram um recorte curto com “Ver todas”, sem reproduzir a bibliografia inteira em cada card. Agrupar referências idênticas não pode apagar localizador, edição ou URL distinta; fonte sem URL não vira link. O retorno de uma ficha, de um salto para fontes ou do capítulo de evidência restaura o ponto de leitura.
+
 No roteiro de leitura, o seletor de tema apenas destaca obras; não remove o percurso. O tema ativo aparece no botão e no status com a contagem, os temas frequentes viram atalhos e a lista completa fica em um seletor nativo — visível no desktop quando há excedente e sempre na tela estreita. Trocar de tema não altera a altura do filtro nem fecha a obra aberta; hover, disponível e selecionado têm estados distintos.
 
 ## 7. Timeline

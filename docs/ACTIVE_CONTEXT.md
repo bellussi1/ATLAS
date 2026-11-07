@@ -5,17 +5,17 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; a última alteração registrada é `a580b0f`. O filtro de temas desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
+- Gitflow: `develop` é a integração; a última alteração registrada é `6caa183`. As referências progressivas desta sessão entram em commit local, sem push; `master` não recebeu a rodada.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**.
 - CI: não executado nesta sessão; a verificação abaixo é local.
 
 ## Verificações executadas
 
-- `npm test`: **348/348**.
+- `npm test`: **353/353**.
 - `npm run test:content`: **184/184**.
 - `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `node node_modules/@playwright/test/cli.js test`: `pages.spec.ts` + `contextual-exploration.spec.ts` **40/40**, incluindo as quatro leituras no filtro de temas e a auditoria Axe das páginas retidas.
+- `node node_modules/@playwright/test/cli.js test`: `pages.spec.ts` + `contextual-exploration.spec.ts` + `encyclopedia.spec.ts` + `ideology-sheets.spec.ts` **58/58**, incluindo as referências progressivas, a bibliografia, o retorno exato e as auditorias Axe.
 - `npm run lint` e `npm run typecheck`: exit 0.
 
 ## O que mudou nesta rodada
@@ -348,6 +348,18 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Nenhum contrato de conteúdo mudou: as contagens são derivadas de `works[].theme`; `themes` passou a devolver `{ name, count }` ordenado, e o seletor usa os mesmos nomes. O bloco continua recebendo `works`, `theme`, `open` e os níveis existentes.
     - Verificações: `npm test` **348/348**, `e2e/pages.spec.ts` + `e2e/contextual-exploration.spec.ts` **40/40**, incluindo o filtro nas quatro leituras, o seletor compacto em 390 px, os estados de chip e a auditoria Axe; `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390 sem overflow e com altura estável antes/depois da seleção.
     - Limite: a taxonomia de temas continua granular; o filtro é um destaque de uma obra em muitas leituras. O seletor resolve a escala da interface, mas não substitui uma futura revisão editorial dos temas. Nada foi publicado.
+
+48. **Referências progressivas e retorno à evidência**
+    - A auditoria encontrou três problemas: o capítulo `fontes` de social-democracia e anarquismo repetia a bibliografia no bloco e no *details* de fontes do capítulo; o capítulo `debates` de marxismo abria até 10 referências de uma vez; e a ficha contextual podia repetir a mesma fonte e não tinha retorno de um salto para “Fontes”. O “Voltar de onde veio” do índice voltava ao topo do capítulo, não ao ponto exato.
+    - `EditorialSourcesComponent` agora agrupa referências com o mesmo título, URL, edição e localizador, mas mantém separadas as que têm localizador ou edição distinta. O contador do botão usa a lista única, e o botão ganhou `aria-controls` para o id da lista.
+    - Fontes de capítulo mostram **5** entradas e “Ver todas”; a bibliografia integral mostra **8** e “Ver todas”. O *details* de fontes do capítulo é omitido quando o bloco de bibliografia cobre todas as fontes daquele capítulo, evitando a repetição em `fontes`.
+    - A ficha contextual mostra no máximo **5** fontes, com “Ver todas as fontes”, uma nota que separa fontes do registro das evidências de cada conexão e um botão “Voltar ao ponto anterior” após saltar para Conexões ou Fontes. A lista única também protege contra fontes repetidas em registros montados fora do grafo.
+    - `entityContext` passou a deduplicar IDs de fonte; o painel e o componente de referências também agrupam repetições visíveis. Fonte sem URL continua texto, sem link; localizadores e edições distintas permanecem.
+    - O rótulo da revisão virou “Fontes da resposta” para distingui-lo das fontes do capítulo e da bibliografia. O bloco de bibliografia ganhou uma nota de hierarquia.
+    - O retorno do índice agora guarda o `scrollY` exato antes do salto e o restaura depois do evento `Scroll` do roteador; o painel contextual já restaurava foco e rolagem ao voltar de uma relação, e o teste passou a cobrir o foco da conexão. O salto para fontes restaura o ponto anterior e foca o título.
+    - Verificações: `npm test` **353/353**, `e2e/pages.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/encyclopedia.spec.ts` + `e2e/ideology-sheets.spec.ts` **58/58**, `lint`, `typecheck` e `build` exit 0. Conferência visual: capítulo com 5 + “Ver todas (10)”, bibliografia com 8 + “Ver todas (13)” e sem *details* duplicado, ficha com 3 fontes e retorno visível; sem overflow.
+    - Limite: a contagem do resumo de capítulo deduplica IDs de fonte, enquanto o componente agrupa pelo conteúdo visível; registros com o mesmo conteúdo e IDs diferentes são raros e não foram unificados no resumo. Nada foi publicado.
+
 ## Pendências que bloqueiam
 
 1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos, ficha do nó e tipos do grafo estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
