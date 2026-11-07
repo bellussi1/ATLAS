@@ -10,22 +10,11 @@
   min-width: 0;
   color: var(--ink);
 }
-/* The current sheet and its pile; a pinned sheet sits in a column of its own beside it. */
+/* The current sheet and its pile. */
 .stack {
   position: relative;
   flex: 1 1 0;
   min-width: 0;
-}
-.pinned {
-  --tone: var(--color-ochre-paper);
-  --on-tone: var(--ink);
-  flex: 1 1 0;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  background: var(--paper);
-  border: 3px solid var(--ink);
-  overflow: hidden;
 }
 /* Earlier sheets peek out above and to the left, like a pile of loose pages. */
 .sheet-ghost {
@@ -78,29 +67,23 @@
     rotate: 0deg;
   }
 }
-:host([data-tone='person']),
-.pinned[data-tone='person'] {
+:host([data-tone='person']) {
   --tone: var(--color-rose-paper);
 }
-:host([data-tone='work']),
-.pinned[data-tone='work'] {
+:host([data-tone='work']) {
   --tone: var(--color-ochre-paper);
 }
-:host([data-tone='concept']),
-.pinned[data-tone='concept'] {
+:host([data-tone='concept']) {
   --tone: var(--color-teal-paper);
 }
-:host([data-tone='event']),
-.pinned[data-tone='event'] {
+:host([data-tone='event']) {
   --tone: var(--color-orange-paper);
 }
-:host([data-tone='idea']),
-.pinned[data-tone='idea'] {
+:host([data-tone='idea']) {
   --tone: var(--color-indigo);
   --on-tone: var(--color-on-strong-surface);
 }
-:host([data-tone='reading']),
-.pinned[data-tone='reading'] {
+:host([data-tone='reading']) {
   --tone: var(--color-accent);
   --on-tone: var(--color-on-strong-surface);
 }

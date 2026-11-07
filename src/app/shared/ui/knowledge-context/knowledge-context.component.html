@@ -1,74 +1,3 @@
-@if (pinned(); as fixed) {
-  <aside
-    class="pinned"
-    [attr.data-tone]="pinnedTone()"
-    [attr.aria-label]="'Ficha fixada: ' + fixed.title"
-  >
-    <header>
-      <div class="context-title">
-        <p class="context-kind">
-          <span class="kind-chip">{{ fixed.kind }}</span> Ficha fixada
-        </p>
-        <h2>{{ fixed.title }}</h2>
-        @if (fixed.description; as description) {
-          <p class="context-description">{{ description }}</p>
-        }
-      </div>
-      <div class="context-actions">
-        <button type="button" class="panel-button" (click)="unpin()">
-          Soltar <span aria-hidden="true">×</span>
-        </button>
-      </div>
-    </header>
-    <div class="context-body">
-      <p class="context-summary">
-        <app-context-text
-          [text]="fixed.summary"
-          [vocabulary]="pinnedVocabulary()"
-          (termClick)="followTerm($event)"
-        />
-      </p>
-      @for (paragraph of fixed.paragraphs; track $index) {
-        <p>
-          <app-context-text
-            [text]="paragraph"
-            [vocabulary]="pinnedVocabulary()"
-            (termClick)="followTerm($event)"
-          />
-        </p>
-      }
-      @for (section of fixed.sections; track $index) {
-        <section class="context-section">
-          <h3 class="reading-heading">{{ section.heading }}</h3>
-          @for (paragraph of section.paragraphs; track $index) {
-            <p>
-              <app-context-text
-                [text]="paragraph"
-                [vocabulary]="pinnedVocabulary()"
-                (termClick)="followTerm($event)"
-              />
-            </p>
-          }
-        </section>
-      }
-      <footer class="sheet-footer">
-        <h3 class="reading-heading">Fontes e licença</h3>
-        <ul class="source-list">
-          @for (source of fixed.sources; track source.id) {
-            <li>
-              {{ source.title }}
-              @if (source.edition) {
-                <small>{{ source.edition }}</small>
-              }
-            </li>
-          } @empty {
-            <li class="reading-empty">Não há fonte específica registrada neste recorte.</li>
-          }
-        </ul>
-      </footer>
-    </div>
-  </aside>
-}
 <div class="stack">
   @for (sheet of pile(); track $index) {
     <div class="sheet-ghost" aria-hidden="true" [style.--offset]="sheet.offset">
@@ -129,17 +58,6 @@
           <span class="context-position" aria-live="polite">{{ pos.at }} de {{ pos.total }}</span>
           <button type="button" class="panel-button" [disabled]="!pos.hasNext" (click)="step(1)">
             Próximo <span aria-hidden="true">→</span>
-          </button>
-          @if (canCompare() && !pinned()) {
-            <button type="button" class="panel-button context-pin" (click)="pin()">
-              Fixar para comparar
-            </button>
-          }
-        </nav>
-      } @else if (canCompare() && !pinned() && !trail().length) {
-        <nav class="context-steps" aria-label="Comparação">
-          <button type="button" class="panel-button context-pin" (click)="pin()">
-            Fixar para comparar
           </button>
         </nav>
       }

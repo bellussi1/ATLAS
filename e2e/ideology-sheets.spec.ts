@@ -73,9 +73,7 @@ test('on wide screens the sheet docks beside the page, which stays usable', asyn
   await expect(trigger).not.toHaveAttribute('aria-expanded', 'true');
 });
 
-test('previous and next walk the reading order and a sheet can be pinned to compare', async ({
-  page,
-}) => {
+test('previous and next walk the reading order', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/marxismo/');
   await page.locator('button.record-card', { hasText: 'Karl Marx' }).first().click();
@@ -93,14 +91,6 @@ test('previous and next walk the reading order and a sheet can be pinned to comp
   await expect(title).not.toHaveText(first);
   await back.click();
   await expect(title).toHaveText(first);
-  await panel.getByRole('button', { name: 'Fixar para comparar' }).click();
-  const pinned = panel.getByRole('complementary', { name: `Ficha fixada: ${first}` });
-  await expect(pinned).toBeVisible();
-  await away.click();
-  await expect(title).not.toHaveText(first);
-  await expect(pinned).toBeVisible();
-  await pinned.getByRole('button', { name: /Soltar/ }).click();
-  await expect(pinned).toHaveCount(0);
 });
 
 test('on phones the panel fills the screen with a trapped focus, big targets and no overflow', async ({
