@@ -39,7 +39,9 @@ Uma leitura contínua não é exclusiva de ideologias. Pessoas, acontecimentos, 
 - A decisão e o protocolo estão em `atlas-create-reading`.
 - O tipo do assunto adapta a pergunta de cada capítulo, não a ordem nem as âncoras.
 - "Situar" e "Avaliar" exigem fontes acadêmicas e caso brasileiro documentado, não um parágrafo de atualidade.
-- Cada leitura declara **3 a 5 conexões** curadas em `ideologyReadings[].connections`, cada uma com uma razão. O limite é editorial: mais do que cinco caminhos indica que o assunto deveria ser dividido.
+- Cada leitura declara **3 a 5 conexões** curadas em `ideologyReadings[].connections`, cada uma com relação, pergunta, razão e uma imagem licenciada quando houver. O limite é editorial: mais do que cinco caminhos indica que o assunto deveria ser dividido.
+- O encerramento transforma essas conexões em cards com uma leitura-líder mais larga; não repete o mesmo destino como "próxima leitura" em link separado. O retorno à página inicial fica como ação secundária.
+- O fim de cada capítulo não repete um botão "A seguir": a continuidade é o scroll e o índice lateral.
 - O mapa dos próximos assuntos, incluindo Governo Vargas, Trabalhismo, Golpe de 1964 e Ditadura militar, está em `docs/research/readings-map.md`.
 
 ## 2. Contrato de cobertura editorial
@@ -85,7 +87,7 @@ Layout shift inesperado é defeito, inclusive quando a métrica CLS o exclui por
 | Selecionar nó/evento/tema | `button aria-pressed` ou equivalente                               | seleção, painel, linhas e legenda sincronizados      |
 | Navegar ao capítulo       | `a` com âncora e nome do destino                                   | foco no capítulo e caminho anterior                  |
 | Abrir documento/imagem    | botão de ampliação ou link para a origem                           | legenda, dimensão, licença; fechar restaura contexto |
-| Outra ideologia           | link com nome e natureza da conexão                                | apenas rota pública existente                        |
+| Outra ideologia           | card-link com relação, pergunta e natureza da conexão              | apenas rota pública existente                        |
 | Ênfase textual            | `strong`/`em` sem pista de ação                                    | não parece link nem recebe cursor de botão           |
 
 Toda ação tem cursor adequado, pista persistente além da cor, hover, foco visível, clique/toque e estado selecionado/expandido quando aplicável. Alvos não mudam de lugar com hover. Controle que parece clicável e não funciona, ou funciona e parece decoração, é defeito. HTML semântico; nenhum `span` clicável no lugar de botão.

@@ -11,6 +11,7 @@ import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/id
 import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/ideology-poster.component';
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
+import { IdeologyReadingEndComponent } from '@ideologies/components/reading-end/reading-end.component';
 import { companionOf, connectionsOf, paletteOf } from '@ideologies/data/ideology-readings';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
@@ -33,6 +34,7 @@ interface PageState {
     ChapterReviewComponent,
     KnowledgeTextComponent,
     IdeologyReadingComponent,
+    IdeologyReadingEndComponent,
     EditorialSourcesComponent,
     IdeologyPosterComponent,
     AtlasRevealDirective,
@@ -51,7 +53,6 @@ export class IdeologyPageComponent {
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
   readonly page = computed(() => this.state().dossier?.page);
   readonly basePath = computed(() => readingPath(this.page()?.slug ?? ''));
-  readonly readingPath = readingPath;
   readonly palette = computed(() => {
     const page = this.page();
     return page ? paletteOf(page) : 'atlas';

@@ -190,14 +190,38 @@ test('the chapter review explains its purpose and reveals the answer on demand',
   await expect(review.getByRole('button', { name: 'Ocultar resposta' })).toBeVisible();
 });
 
-test('the reading ends with at most five curated connections', async ({ page }) => {
+test('the reading ends with curated cards, one wide lead and no repeated next link', async ({
+  page,
+}) => {
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/leitura/${slug}/`);
+    await expect(page.locator('.next-chapter')).toHaveCount(0);
+    await expect(page.getByRole('link', { name: /^A seguir/ })).toHaveCount(0);
+
+    const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
+    await expect(connections).toBeVisible();
+    const cards = connections.locator('.end-card');
+    await expect(cards).toHaveCount(3);
+    await expect(connections.locator('li[data-lead="true"]')).toHaveCount(1);
+    await expect(connections.locator('.end-card-relation')).toHaveCount(3);
+    await expect(connections.locator('.end-card-question')).toHaveCount(3);
+
+    const hrefs = await cards.evaluateAll((links) =>
+      links.map((link) => link.getAttribute('href')),
+    );
+    expect(hrefs.every((href) => href?.startsWith('/leitura/'))).toBe(true);
+    expect(new Set(hrefs).size).toBe(hrefs.length);
+    await expect(
+      page.locator('.reading-end-home').getByRole('link', { name: 'Voltar à página inicial' }),
+    ).toBeVisible();
+  }
+
   await page.goto('/leitura/marxismo/');
-  const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
-  await expect(connections).toBeVisible();
-  await expect(connections.getByRole('link', { name: 'Liberalismo' })).toBeVisible();
-  await expect(connections.getByRole('link', { name: 'Anarquismo' })).toBeVisible();
-  await expect(connections.getByRole('link', { name: 'Social-democracia' })).toBeVisible();
-  expect(await connections.getByRole('link').count()).toBeLessThanOrEqual(5);
+  await page
+    .getByRole('navigation', { name: 'Conexões desta leitura' })
+    .getByRole('link', { name: /Liberalismo/ })
+    .click();
+  await expect(page).toHaveURL(/\/leitura\/liberalismo\/?$/);
 });
 
 test('a verbete with a continuous reading offers the contextual path', async ({ page }) => {

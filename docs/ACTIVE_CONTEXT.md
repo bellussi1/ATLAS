@@ -5,17 +5,17 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; a última alteração registrada é `6caa183`. As referências progressivas desta sessão entram em commit local, sem push; `master` não recebeu a rodada.
+- Gitflow: `develop` é a integração; a última alteração registrada é `7c4a25f`. O encerramento editorial desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**.
 - CI: não executado nesta sessão; a verificação abaixo é local.
 
 ## Verificações executadas
 
-- `npm test`: **353/353**.
+- `npm test`: **358/358**.
 - `npm run test:content`: **184/184**.
 - `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `node node_modules/@playwright/test/cli.js test`: `pages.spec.ts` + `contextual-exploration.spec.ts` + `encyclopedia.spec.ts` + `ideology-sheets.spec.ts` **58/58**, incluindo as referências progressivas, a bibliografia, o retorno exato e as auditorias Axe.
+- `node node_modules/@playwright/test/cli.js test`: `pages.spec.ts` + `contextual-exploration.spec.ts` + `encyclopedia.spec.ts` + `ideology-sheets.spec.ts` **58/58**, incluindo o encerramento em cards, o card-líder e as auditorias Axe.
 - `npm run lint` e `npm run typecheck`: exit 0.
 
 ## O que mudou nesta rodada
@@ -350,15 +350,26 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Limite: a taxonomia de temas continua granular; o filtro é um destaque de uma obra em muitas leituras. O seletor resolve a escala da interface, mas não substitui uma futura revisão editorial dos temas. Nada foi publicado.
 
 48. **Referências progressivas e retorno à evidência**
-    - A auditoria encontrou três problemas: o capítulo `fontes` de social-democracia e anarquismo repetia a bibliografia no bloco e no *details* de fontes do capítulo; o capítulo `debates` de marxismo abria até 10 referências de uma vez; e a ficha contextual podia repetir a mesma fonte e não tinha retorno de um salto para “Fontes”. O “Voltar de onde veio” do índice voltava ao topo do capítulo, não ao ponto exato.
+    - A auditoria encontrou três problemas: o capítulo `fontes` de social-democracia e anarquismo repetia a bibliografia no bloco e no _details_ de fontes do capítulo; o capítulo `debates` de marxismo abria até 10 referências de uma vez; e a ficha contextual podia repetir a mesma fonte e não tinha retorno de um salto para “Fontes”. O “Voltar de onde veio” do índice voltava ao topo do capítulo, não ao ponto exato.
     - `EditorialSourcesComponent` agora agrupa referências com o mesmo título, URL, edição e localizador, mas mantém separadas as que têm localizador ou edição distinta. O contador do botão usa a lista única, e o botão ganhou `aria-controls` para o id da lista.
-    - Fontes de capítulo mostram **5** entradas e “Ver todas”; a bibliografia integral mostra **8** e “Ver todas”. O *details* de fontes do capítulo é omitido quando o bloco de bibliografia cobre todas as fontes daquele capítulo, evitando a repetição em `fontes`.
+    - Fontes de capítulo mostram **5** entradas e “Ver todas”; a bibliografia integral mostra **8** e “Ver todas”. O _details_ de fontes do capítulo é omitido quando o bloco de bibliografia cobre todas as fontes daquele capítulo, evitando a repetição em `fontes`.
     - A ficha contextual mostra no máximo **5** fontes, com “Ver todas as fontes”, uma nota que separa fontes do registro das evidências de cada conexão e um botão “Voltar ao ponto anterior” após saltar para Conexões ou Fontes. A lista única também protege contra fontes repetidas em registros montados fora do grafo.
     - `entityContext` passou a deduplicar IDs de fonte; o painel e o componente de referências também agrupam repetições visíveis. Fonte sem URL continua texto, sem link; localizadores e edições distintas permanecem.
     - O rótulo da revisão virou “Fontes da resposta” para distingui-lo das fontes do capítulo e da bibliografia. O bloco de bibliografia ganhou uma nota de hierarquia.
     - O retorno do índice agora guarda o `scrollY` exato antes do salto e o restaura depois do evento `Scroll` do roteador; o painel contextual já restaurava foco e rolagem ao voltar de uma relação, e o teste passou a cobrir o foco da conexão. O salto para fontes restaura o ponto anterior e foca o título.
-    - Verificações: `npm test` **353/353**, `e2e/pages.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/encyclopedia.spec.ts` + `e2e/ideology-sheets.spec.ts` **58/58**, `lint`, `typecheck` e `build` exit 0. Conferência visual: capítulo com 5 + “Ver todas (10)”, bibliografia com 8 + “Ver todas (13)” e sem *details* duplicado, ficha com 3 fontes e retorno visível; sem overflow.
+    - Verificações: `npm test` **353/353**, `e2e/pages.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/encyclopedia.spec.ts` + `e2e/ideology-sheets.spec.ts` **58/58**, `lint`, `typecheck` e `build` exit 0. Conferência visual: capítulo com 5 + “Ver todas (10)”, bibliografia com 8 + “Ver todas (13)” e sem _details_ duplicado, ficha com 3 fontes e retorno visível; sem overflow.
     - Limite: a contagem do resumo de capítulo deduplica IDs de fonte, enquanto o componente agrupa pelo conteúdo visível; registros com o mesmo conteúdo e IDs diferentes são raros e não foram unificados no resumo. Nada foi publicado.
+
+49. **Encerramento editorial e continuidade de leitura**
+    - O fim de cada capítulo repetia “A seguir” mesmo com o índice e o scroll disponíveis. A página fechava com “Uma leitura termina. As perguntas continuam.”, dois links simples e uma lista de conexões; a leitura indicada como próxima também aparecia na lista, duplicando o mesmo destino.
+    - O botão “A seguir” saiu do fluxo dos capítulos. A continuidade fica com o índice lateral, o progresso e o scroll; a navegação por histórico continua coberta pelos testes.
+    - `companionOf()` deixou de escolher pela posição em `ideologyReadings`: cada leitura tem uma conexão `lead` curada, e a função devolve essa conexão publicada. A leitura-líder não vira link separado.
+    - Cada conexão passou a declarar `relation`, `question`, `reason` e uma `imageEntityId` opcional. As quatro leituras mostram **3** cards, com **Contraste**, **Continuidade**, **Divergência** e **Aprofundamento** quando a relação sustenta a categoria. O limite de 3 a 5 caminhos e a filtragem de destinos não publicados continuam em `connectionsOf()`.
+    - O novo `IdeologyReadingEndComponent` compõe um card-líder largo e dois cards menores em pares desencontrados. Cada card traz relação, nome da leitura, pergunta, razão e link para a rota publicada; a mídia licenciada é um documento, fotografia ou cartaz ligado ao destino, não um retrato repetido. Sem mídia, entra a composição geométrica da paleta da leitura. Créditos ficam em `details`, fora do link.
+    - `IdeologyReading.palette` e `readingPalette()` substituem o mapa de paletas liberadas; o encerramento não carrega o dossiê da leitura de destino para desenhar o card. O retorno à página inicial permanece como ação secundária.
+    - Nenhum contrato de capítulo ou de conteúdo tipado mudou. O contrato de `connections` é dado editorial da feature.
+    - Verificações: `npm test` **358/358**, `npm run test:content` **184/184**, `build` **1.189 rotas**, `e2e/pages.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/encyclopedia.spec.ts` + `e2e/ideology-sheets.spec.ts` **58/58**, `lint` e `typecheck` exit 0. Conferência visual em 1440 e 390 sem overflow, com o card-líder, as quatro relações e os créditos verificados nas quatro leituras.
+    - Limite: as imagens dos cards vêm de registros do grafo; uma leitura futura sem mídia licenciada cai na ilustração geométrica. A composição foi verificada com três cards por leitura, não com quatro ou cinco. Um stash de outra branch (`wip-header-home-atlas-graph`) estava aplicado sobre a árvore e foi resolvido para o lado atual; o stash continua em `git stash list`. Nada foi publicado.
 
 ## Pendências que bloqueiam
 

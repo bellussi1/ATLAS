@@ -113,40 +113,9 @@
           @if (chapter.bridge) {
             <p class="chapter-bridge">{{ chapter.bridge }}</p>
           }
-          @if (page.chapters[index + 1]; as next) {
-            <a
-              class="next-chapter atlas-press"
-              [href]="'#' + next.anchor"
-              (click)="reading.navigateChapter($event, next.anchor)"
-              >A seguir: {{ next.title }}
-              <span class="atlas-arrow atlas-arrow--down" aria-hidden="true">↓</span></a
-            >
-          }
         </section>
       }
-      <footer class="reading-end">
-        <p>Uma leitura termina. As perguntas continuam.</p>
-        <a routerLink="/">Voltar à página inicial</a>
-        @if (companion(); as next) {
-          <a [routerLink]="readingPath(next.slug)">Ler o {{ next.label }}</a>
-        }
-        @if (connections().length) {
-          <nav class="reading-connections" aria-labelledby="reading-connections-title">
-            <h2 id="reading-connections-title">Conexões desta leitura</h2>
-            <p class="reading-connections__hint">
-              Até cinco caminhos para continuar por contraste, continuidade ou disputa.
-            </p>
-            <ul>
-              @for (connection of connections(); track connection.slug) {
-                <li>
-                  <a [routerLink]="readingPath(connection.slug)">{{ connection.label }}</a>
-                  <span>{{ connection.reason }}</span>
-                </li>
-              }
-            </ul>
-          </nav>
-        }
-      </footer>
+      <app-ideology-reading-end [connections]="connections()" [lead]="companion()" />
     </app-ideology-reading>
   </article>
 } @else {
