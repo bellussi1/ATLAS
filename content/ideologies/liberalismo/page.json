@@ -244,9 +244,12 @@
     {
       "question": "Como a mesma palavra mudou de sentido em três séculos?",
       "bridge": "Essas épocas aconteceram em lugares concretos.",
-      "gap": "A periodização segue sínteses anglo-francesas. O liberalismo na América Latina, incluindo o Brasil imperial e republicano, exige bibliografia própria ainda não incorporada.",
+      "gap": "A periodização segue sínteses anglo-francesas e foi complementada por marcos brasileiros. O liberalismo em outras regiões exige bibliografia própria, ainda não incorporada.",
       "sourceIds": [
-        "source-sep-liberalism"
+        "source-sep-liberalism",
+        "source-lib-carvalho-ordem",
+        "source-lib-escravidao",
+        "source-lib-cf88"
       ],
       "id": "epocas",
       "anchor": "epocas",
@@ -256,7 +259,8 @@
       "minutes": 2,
       "narrative": [
         "A periodização é didática: as revoluções e a filosofia política dos séculos XVII e XVIII; o liberalismo clássico e o utilitarismo do XIX; o liberalismo social e o debate com o keynesianismo no XX; o neoliberalismo e a crise do Estado de bem-estar.",
-        "As fronteiras são aproximadas. O liberalismo na América Latina, incluindo o Brasil imperial e republicano, exige bibliografia própria."
+        "As fronteiras são aproximadas. O liberalismo na América Latina, incluindo o Brasil imperial e republicano, exige bibliografia própria.",
+        "No Brasil, os marcos liberais acompanham a Independência (1822), a Constituição de 1824, a Abolição (1888), a República (1889) e a Constituição de 1988. A sequência não é uma democratização linear: cada marco ampliou direitos e preservou exclusões."
       ],
       "blocks": [
         {
@@ -415,7 +419,10 @@
       "bridge": "Coloque essas vidas na mesma escala para ver quem conviveu com quais transformações.",
       "gap": null,
       "sourceIds": [
-        "source-sep-liberalism"
+        "source-sep-liberalism",
+        "source-lib-nabuco-abolicionismo",
+        "source-lib-carvalho-ordem",
+        "source-lib-escravidao"
       ],
       "id": "pensadores",
       "anchor": "pensadores",
@@ -425,7 +432,8 @@
       "minutes": 1,
       "narrative": [
         "John Locke formula o direito natural e o governo por consentimento; Adam Smith, a economia política e a mão invisível; John Stuart Mill, a liberdade individual e os limites da maioria; Isaiah Berlin, os dois conceitos de liberdade; Friedrich Hayek, a ordem espontânea e a crítica ao planejamento.",
-        "A seleção é um caminho de estudo, não uma lista de concordâncias. Os autores divergem sobre propriedade, democracia e intervenção."
+        "A seleção é um caminho de estudo, não uma lista de concordâncias. Os autores divergem sobre propriedade, democracia e intervenção.",
+        "No Brasil, a linguagem liberal foi mobilizada de formas divergentes. Joaquim Nabuco, em O Abolicionismo (1883), combinou liberalismo e crítica da escravidão; setores proprietários defendiam liberdades civis sem estender a cidadania aos escravizados. A historiografia mostra que o liberalismo imperial não formou uma doutrina única."
       ],
       "blocks": [
         {
@@ -457,7 +465,10 @@
       "bridge": "Essas disputas internas convivem com críticas vindas de fora da tradição.",
       "gap": null,
       "sourceIds": [
-        "source-sep-liberalism"
+        "source-sep-liberalism",
+        "source-lib-carvalho-ordem",
+        "source-lib-cf88",
+        "source-lib-escravidao"
       ],
       "id": "vertentes",
       "anchor": "vertentes",
@@ -467,7 +478,8 @@
       "minutes": 2,
       "narrative": [
         "O liberalismo clássico desconfia do Estado e valoriza o mercado; o liberalismo social aceita a intervenção para garantir liberdade efetiva; o liberalismo igualitário ou das capacidades desloca a pergunta para o que as pessoas podem fazer.",
-        "A rede mostra influências e críticas documentadas. Linhas de influência não são descendência linear."
+        "A rede mostra influências e críticas documentadas. Linhas de influência não são descendência linear.",
+        "No Brasil, o liberalismo não se organizou em uma corrente única: conviveu com o conservadorismo imperial, com o republicanismo e, no século XX, com o liberalismo social da Constituição de 1988. A comparação com as vertentes europeias deve evitar transpor nomes e programas sem mediação."
       ],
       "blocks": [
         {
@@ -545,9 +557,12 @@
     {
       "question": "Em que cidades essas ideias viraram instituições?",
       "bridge": "Dos lugares e épocas surgem vertentes que discordam entre si.",
-      "gap": "O acervo ainda não registra coordenadas verificadas; por isso não há mapa.",
+      "gap": "O acervo ainda não registra coordenadas verificadas; por isso não há mapa. O caso brasileiro foi incluído como interpretação historiográfica, não como comparação exaustiva.",
       "sourceIds": [
-        "source-sep-liberalism"
+        "source-sep-liberalism",
+        "source-lib-carvalho-ordem",
+        "source-lib-escravidao",
+        "source-lib-cf88"
       ],
       "id": "experiencias",
       "anchor": "experiencias",
@@ -557,7 +572,8 @@
       "minutes": 1,
       "narrative": [
         "A tradição se disputa em lugares concretos: a Inglaterra das revoluções, a Escócia do Iluminismo, a França absolutista e os Estados Unidos da Constituição.",
-        "O recorte situa a tradição no espaço, sem mapa completo nem coordenadas verificadas."
+        "O recorte situa a tradição no espaço, sem mapa completo nem coordenadas verificadas.",
+        "No Brasil, o liberalismo foi apropriado por elites que defendiam direitos individuais e representação ao mesmo tempo que preservavam a escravidão e o poder centralizado. A Constituição de 1824 combinou direitos e poder moderador; a abolição e a República ampliaram a cidadania de forma excludente. A Constituição de 1988 retomou liberdades individuais e acrescentou direitos sociais, em uma linguagem que não é apenas liberal."
       ],
       "blocks": [
         {
@@ -645,6 +661,25 @@
                 "person-friedrich-hayek"
               ],
               "classification": "alegação empírica"
+            },
+            {
+              "id": "lib-place-brazil",
+              "title": "Brasil: liberalismo, escravidão e Constituição",
+              "kicker": "Império · 1824–1988",
+              "summary": "O liberalismo brasileiro combinou direitos individuais, exclusão e, depois, direitos sociais.",
+              "paragraphs": [
+                "A Constituição de 1824 organizou um Império constitucional com direitos individuais, eleições restritas e poder moderador. A historiografia mostra que o liberalismo imperial conviveu com a escravidão e com um Estado centralizado.",
+                "A Constituição de 1988 inscreveu direitos individuais e sociais no mesmo texto. O debate brasileiro posterior não opõe liberalismo e direitos sociais de forma abstrata: discute alcance, financiamento e efetividade."
+              ],
+              "sourceIds": [
+                "source-lib-carvalho-ordem",
+                "source-lib-escravidao",
+                "source-lib-cf88"
+              ],
+              "entityIds": [
+                "article-constituicao-1988"
+              ],
+              "classification": "interpretação"
             }
           ]
         }
@@ -654,12 +689,15 @@
     {
       "question": "O que o liberalismo deixa de ver, segundo seus críticos?",
       "bridge": "Para além das críticas, o liberalismo dialoga com outras tradições.",
-      "gap": "Apenas um debate segue o quadro defesa → crítica → resposta → limites; as críticas de Burke, Marx, Polanyi e dos comunitaristas ainda não têm respostas documentadas.",
+      "gap": "Apenas um debate segue o quadro defesa → crítica → resposta → limites; o caso brasileiro foi incorporado como contexto, mas Burke, Marx, Polanyi e os comunitaristas ainda não têm respostas documentadas.",
       "sourceIds": [
         "source-sep-liberalism",
         "source-sep-communitarianism",
         "source-berlin-two-concepts",
-        "source-sep-liberty"
+        "source-sep-liberty",
+        "source-lib-carvalho-ordem",
+        "source-lib-escravidao",
+        "source-lib-cf88"
       ],
       "id": "debates",
       "anchor": "debates",
@@ -669,7 +707,8 @@
       "minutes": 2,
       "narrative": [
         "O debate entre liberdade negativa e positiva é interno: Berlin reconstrói as duas posições e mostra os riscos de cada uma. Burke, Marx, Polanyi e os comunitaristas criticam o liberalismo por razões diferentes.",
-        "Cada crítica tem autoria e alvo próprios; elas não se somam em um veredito. Apenas um debate segue o quadro completo de defesa, crítica, resposta e limites."
+        "Cada crítica tem autoria e alvo próprios; elas não se somam em um veredito. Apenas um debate segue o quadro completo de defesa, crítica, resposta e limites.",
+        "No Brasil, a crítica ao liberalismo esteve ligada à escravidão e à exclusão política; no século XX, o debate se deslocou para o papel do Estado e dos direitos sociais. A Constituição de 1988 é um ponto de encontro e de tensão entre liberdades individuais e direitos sociais, não a vitória de um dos lados."
       ],
       "blocks": [
         {
@@ -817,9 +856,11 @@
     {
       "question": "Com quais pessoas, obras e tradições o liberalismo se relaciona?",
       "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria.",
-      "gap": "Relações tipadas com outras tradições (conservadorismo, socialismo, republicanismo) ainda não foram documentadas com fontes; o acervo abaixo serve à descoberta.",
+      "gap": "Relações tipadas com outras tradições (conservadorismo, socialismo, republicanismo) ainda não foram documentadas com fontes; o acervo abaixo serve à descoberta. O caso brasileiro foi incorporado como contexto, não como aresta histórica.",
       "sourceIds": [
-        "liberalism-source-wikipedia-ideology-liberalism"
+        "liberalism-source-wikipedia-ideology-liberalism",
+        "source-lib-cf88",
+        "source-lib-carvalho-ordem"
       ],
       "id": "conexoes",
       "anchor": "conexoes",
@@ -829,7 +870,8 @@
       "minutes": 1,
       "narrative": [
         "O liberalismo se define em relação ao conservadorismo, ao socialismo e ao republicanismo. Compartilha com eles perguntas sobre liberdade, ordem e igualdade, mas responde de modo distinto.",
-        "A rede do acervo reúne registros de descoberta; relações tipadas com outras tradições ainda não estão documentadas com fontes."
+        "A rede do acervo reúne registros de descoberta; relações tipadas com outras tradições ainda não estão documentadas com fontes.",
+        "No Brasil, o liberalismo se conecta ao trabalhismo e à social-democracia pela disputa sobre direitos sociais e limites do Estado. A Constituição de 1988 é o ponto em que essas linguagens se encontram e se tensionam."
       ],
       "blocks": [
         {

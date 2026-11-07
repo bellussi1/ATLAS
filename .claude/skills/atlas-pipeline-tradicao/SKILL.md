@@ -9,6 +9,7 @@ Este skill é o maestro. Cada estágio tem um skill ou script que faz o trabalho
 
 - Descoberta e Wikimedia: `atlas-wiki-discovery`. Extração de texto: `atlas-wiki-extracao`.
 - Capítulos e blocos: `atlas-create-ideology` (e `references/chapter-blocks.md`).
+- Leituras de pessoa, acontecimento, instituição, período ou conceito: `atlas-create-reading`; decide se o assunto merece leitura, adapta os capítulos e exige caso brasileiro e até cinco conexões.
 - Identidade visual: `atlas-editorial-geometrico`.
 
 O objetivo é **acertar de primeira**: o gargalo é a revisão humana, então cada porta barra o retrabalho antes dela.
@@ -59,7 +60,7 @@ O orquestrador **nunca** executa `content:publish`, `publish-drafts`, `ingest:pu
 | 6 | Consolidação | `wiki-drafts-to-collections.mjs`, agora com arestas | todo aceito é entidade (ou unido por QID), grafo válido, ≥ 1 relação tipada |
 | 7 | Glossário e hovers | índice de termos pt/en e linha e resumo por entidade | hover em ≥ 90% das entidades, termo ambíguo não é ligado sozinho |
 | 8 | Redação | agente preenche os 12 capítulos | dossiê válido, ≤ 1 capítulo pendente (com motivo), capítulos com blocos no piso |
-| 9 | Edição | agente revisa tom, pergunta e ponte | sem texto de reserva, pergunta e ponte presentes |
+| 9 | Edição | agente revisa tom, pergunta e ponte; aprofunda "Situar" e "Avaliar" com fontes acadêmicas e caso brasileiro | sem texto de reserva, pergunta e ponte presentes, caso brasileiro atribuído |
 | 10 | Identidade | paleta, acento, assinatura, ícone por tipo | paleta declarada e igual à do registro |
 | 11 | Imagens | `tradicao:images`: licença **por arquivo**, miniatura remota, cada imagem uma vez, ícone sem licença | toda imagem com autor, licença, atribuição, página do arquivo; piso de imagens |
 | 12 | Montagem | registro nos seis pontos da aplicação | publicada: registrada; rascunho: **ainda não** registrada |
@@ -82,7 +83,7 @@ Os seis pontos do estágio 12 estão em `registrationPoints` (`scripts/tradicao/
 2. Leia `generated/pipeline/<slug>/README.md` se existir; senão, `--status`. Antes de um estágio de rede ou API, `--stage N --dry-run`.
 3. Estágio 2: aceite automático só pela pontuação; a lista do meio é para pessoa decidir e fica com `decidedBy: "editor"`, que sobrevive a nova descoberta.
 4. **Nada pago sem aprovação do usuário:** mostre o comando e a estimativa do `--dry-run`. A conta tem US$ 10; `--max-total-usd` soma todo `STATE.json` deste checkout.
-5. Estágios 8 e 9 são de agente: leia o brief que `--dry-run` imprime e siga o `atlas-create-ideology`. Capítulo sem evidência fica `pending` com `gap`.
+5. Estágios 8 e 9 são de agente: leia o brief que `--dry-run` imprime e siga o `atlas-create-ideology`. Capítulo sem evidência fica `pending` com `gap`. Para assunto que não é tradição, use `atlas-create-reading`.
 6. Pare na primeira porta aberta e relate: o que fechou, o que falta, custo estimado e medido, e o que precisa de pessoa.
 
 ## Regras que não se negociam

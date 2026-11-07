@@ -202,14 +202,16 @@
       "minutes": 2,
       "narrative": [
         "A periodização é um recurso didático. O marxismo muda com as organizações e os Estados que o mobilizam: a Liga dos Comunistas e a Primeira Internacional; a social-democracia alemã e a Segunda Internacional; a Revolução Russa e a Terceira Internacional; os partidos comunistas e os marxismos ocidentais; a crise de 1989.",
-        "As fronteiras entre essas épocas são aproximadas. A sequência não implica causalidade nem progresso; apenas situa documentos, organizações e debates no tempo."
+        "As fronteiras entre essas épocas são aproximadas. A sequência não implica causalidade nem progresso; apenas situa documentos, organizações e debates no tempo.",
+        "No Brasil, a periodização tem marcos próprios: a fundação do PCB em 1922, o levante de 1935, a legalização de 1945, o golpe de 1964, a luta armada dos anos 1960 e 1970 e a crise dos partidos comunistas entre 1989 e 1991. Esses marcos não repetem a cronologia europeia; a série História do Marxismo no Brasil os trata em volumes separados."
       ],
       "sourceIds": [
         "source-hobsbawm-change-world",
         "source-kolakowski-main-currents",
-        "source-v4-marx-sep"
+        "source-v4-marx-sep",
+        "source-marxismo-brasil-unicamp"
       ],
-      "gap": "A periodização segue sínteses europeias. A história do marxismo na Ásia, na África e na América Latina exige bibliografia própria, ainda não incorporada a este recorte. A história dos governos, partidos e experiências nacionais exige bibliografia específica. Não há base editorial suficiente neste snapshot para uma avaliação comparativa.",
+      "gap": "A periodização europeia foi complementada pelo caso brasileiro; a história do marxismo na Ásia e na África exige bibliografia própria, ainda não incorporada.",
       "blocks": [
         {
           "type": "timeline",
@@ -419,10 +421,14 @@
       "minutes": 1,
       "narrative": [
         "Karl Marx e Engels formulam a crítica da economia política e a concepção materialista da história. Rosa Luxemburgo leva a análise para a acumulação e a greve de massas; Lenin, para o partido e o Estado; Antonio Gramsci, para hegemonia e sociedade civil; Eduard Bernstein, para a revisão reformista; Karl Kautsky, para a ortodoxia da Segunda Internacional.",
-        "A seleção é um caminho de estudo, não um panteão. Autores divergem sobre meios, organização e diagnóstico do capitalismo; os registros indicam período e fontes."
+        "A seleção é um caminho de estudo, não um panteão. Autores divergem sobre meios, organização e diagnóstico do capitalismo; os registros indicam período e fontes.",
+        "No Brasil, Caio Prado Jr. e Florestan Fernandes são as referências mais recorrentes de uma interpretação marxista da formação nacional. Caio Prado deslocou a análise para a colonização e o sentido da história brasileira; Florestan Fernandes investigou a revolução burguesa e as relações raciais. Nenhum dos dois pode ser lido como aplicação mecânica de Marx."
       ],
       "sourceIds": [
-        "source-v4-marx-sep"
+        "source-v4-marx-sep",
+        "source-caio-prado-formacao",
+        "source-florestan-revolucao-burguesa",
+        "source-marxismo-brasil-unicamp"
       ],
       "blocks": [
         {
@@ -476,14 +482,16 @@
       "minutes": 2,
       "narrative": [
         "Reforma e revolução não esgotam as divisões. Há disputas sobre o papel do partido, a natureza do Estado soviético, a relação entre teoria e prática e a análise do capitalismo tardio.",
-        "Leninismo, trotskismo, marxismo ocidental e revisionismo são rótulos históricos, não blocos homogêneos. As polêmicas documentadas mostram posições identificáveis; linhas de crítica não são linhas de descendência."
+        "Leninismo, trotskismo, marxismo ocidental e revisionismo são rótulos históricos, não blocos homogêneos. As polêmicas documentadas mostram posições identificáveis; linhas de crítica não são linhas de descendência.",
+        "No Brasil, o PCB conheceu cisões e reorganizações: o PCdoB foi fundado em 1962, e organizações armadas surgiram após 1964. Essas divisões não são simples reflexos de Moscou ou Pequim; respondem também à repressão, à clandestinidade e à leitura da realidade brasileira."
       ],
       "sourceIds": [
         "source-v4-luxemburg",
         "source-v4-lenin",
         "source-marx-critique",
         "source-kolakowski-main-currents",
-        "source-gramsci-quaderni"
+        "source-gramsci-quaderni",
+        "source-marxismo-brasil-unicamp"
       ],
       "blocks": [
         {
@@ -650,7 +658,7 @@
           ]
         }
       ],
-      "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte.",
+      "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte; o caso brasileiro foi incorporado como periodização, não como árvore completa de organizações.",
       "question": "Reforma ou revolução? Partido, Estado ou cultura?",
       "bridge": "As vertentes se formaram em experiências concretas, em cidades e países.",
       "coverage": "partial"
@@ -664,13 +672,17 @@
       "minutes": 1,
       "narrative": [
         "A tradição circula por cidades, exílios, bibliotecas, fábricas e prisões. Trier, Paris, Bruxelas, Londres, Petrogrado e Turim não são apenas cenários: cada lugar condiciona o que foi possível escrever, organizar e disputar.",
-        "O recorte situa a tradição no espaço, sem sugerir uma origem única nem um mapa completo. Coordenadas verificadas ainda não estão registradas."
+        "O recorte situa a tradição no espaço, sem sugerir uma origem única nem um mapa completo. Coordenadas verificadas ainda não estão registradas.",
+        "O marxismo chegou ao Brasil antes de 1922, mas foi o PCB, fundado naquele ano, que deu à tradição sua primeira organização partidária duradoura. Intelectuais como Caio Prado Jr. e Florestan Fernandes usaram o materialismo histórico para interpretar a formação colonial, a dependência e a revolução burguesa. A série História do Marxismo no Brasil acompanha essa recepção em seis volumes e mostra que a tradução brasileira não foi cópia: ela disputou o diagnóstico do país com o nacional-desenvolvimentismo e com a sociologia acadêmica."
       ],
       "sourceIds": [
         "source-v4-marx-sep",
-        "source-hobsbawm-change-world"
+        "source-hobsbawm-change-world",
+        "source-marxismo-brasil-unicamp",
+        "source-caio-prado-formacao",
+        "source-florestan-revolucao-burguesa"
       ],
-      "gap": "O recorte de lugares não inclui coordenadas nem mapa: o acervo ainda não registra dados geográficos verificados para estes pontos.",
+      "gap": "A história do marxismo na Ásia e na África exige bibliografia própria, ainda não incorporada a este recorte. O caso brasileiro foi incluído; a comparação com outras experiências latino-americanas continua parcial.",
       "blocks": [
         {
           "type": "explorations",
@@ -757,6 +769,27 @@
                 "person-jose-carlos-mariategui"
               ],
               "classification": "alegação empírica"
+            },
+            {
+              "id": "place-brazil-marxism",
+              "title": "Brasil: partido, interpretação e dependência",
+              "kicker": "PCB · 1922 em diante",
+              "summary": "O marxismo brasileiro organizou-se em partido e em interpretações da formação nacional.",
+              "paragraphs": [
+                "O Partido Comunista do Brasil foi fundado em 1922 e passou por ilegalidades, frentes e rupturas. A série História do Marxismo no Brasil situa o PCB entre a Internacional Comunista e a política nacional.",
+                "Caio Prado Jr., em Formação do Brasil Contemporâneo, e Florestan Fernandes, em A Revolução Burguesa no Brasil, leram a sociedade brasileira com categorias históricas e sociológicas próprias. As obras não são documentos partidários; são interpretações acadêmicas em diálogo com o marxismo."
+              ],
+              "sourceIds": [
+                "source-marxismo-brasil-unicamp",
+                "source-caio-prado-formacao",
+                "source-florestan-revolucao-burguesa"
+              ],
+              "entityIds": [
+                "person-luiz-carlos-prestes",
+                "person-caio-prado-junior",
+                "person-florestan-fernandes"
+              ],
+              "classification": "interpretação"
             }
           ]
         }
@@ -774,7 +807,8 @@
       "minutes": 2,
       "narrative": [
         "Luxemburgo contesta a estratégia reformista de Bernstein: reformas sociais não substituem a transformação das relações de produção. Lenin critica Kautsky sobre o Estado e a revolução, em uma disputa sobre o que é tomar o poder.",
-        "O debate sobre o valor envolve Böhm-Bawerk, Mises e a tradição marginalista; Popper questiona o historicismo. São controvérsias com autores e alvos próprios, não um veredito único sobre a tradição."
+        "O debate sobre o valor envolve Böhm-Bawerk, Mises e a tradição marginalista; Popper questiona o historicismo. São controvérsias com autores e alvos próprios, não um veredito único sobre a tradição.",
+        "No Brasil, a disputa entre marxismo e trabalhismo foi também uma disputa sobre o sentido dos direitos sociais. O PCB e o trabalhismo varguista divergiram sobre sindicatos, Estado e reforma, mas compartilharam a linguagem da cidadania social. A bibliografia sobre o trabalhismo ajuda a distinguir aproximação, cooptação e conflito sem transformar as duas tradições em uma só."
       ],
       "sourceIds": [
         "source-v4-marx-sep",
@@ -784,7 +818,9 @@
         "source-bohm-bawerk-close",
         "source-mises-calculation",
         "source-sep-popper",
-        "source-kolakowski-main-currents"
+        "source-kolakowski-main-currents",
+        "source-marxismo-brasil-unicamp",
+        "source-marx-gomes-trabalhismo"
       ],
       "blocks": [
         {
@@ -1040,7 +1076,7 @@
           ]
         }
       ],
-      "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; precisam de documentação própria.",
+      "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; o caso brasileiro está indicado, mas ainda precisa de documentação própria.",
       "question": "O que os críticos de dentro e de fora apontam como falha?",
       "bridge": "Para além das críticas, o marxismo dialoga com outras tradições.",
       "coverage": "partial"
@@ -1055,10 +1091,14 @@
       "bridge": "Antes das fontes, um roteiro para continuar lendo por conta própria.",
       "narrative": [
         "O marxismo compartilha perguntas com o liberalismo, o anarquismo e a social-democracia, mas responde de modo distinto sobre propriedade, Estado e mudança social. As relações mais bem documentadas são polêmicas e críticas, não fusões.",
-        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes."
+        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes.",
+        "No Brasil, o marxismo se conecta ao trabalhismo e à social-democracia pela disputa sobre direitos sociais, sindicatos e Estado. O PCB e o trabalhismo varguista foram aliados e adversários em conjunturas diferentes; a leitura não deve transformar essa relação em linhagem única."
       ],
-      "sourceIds": [],
-      "gap": "Relações tipadas com outras tradições (liberalismo, anarquismo, social-democracia) ainda não foram documentadas com fontes; o acervo abaixo serve à descoberta.",
+      "sourceIds": [
+        "source-marxismo-brasil-unicamp",
+        "source-marx-gomes-trabalhismo"
+      ],
+      "gap": "Relações tipadas com outras tradições (liberalismo, anarquismo, social-democracia) ainda não foram documentadas com fontes; o acervo abaixo serve à descoberta. O caso brasileiro foi incorporado como contexto, não como aresta histórica.",
       "layout": "graph",
       "blocks": [
         {

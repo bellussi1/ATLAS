@@ -153,6 +153,34 @@
       "url": "https://www.marxists.org/reference/archive/mao/selected-works/volume-2/mswv2_12.htm",
       "edition": "Marxists Internet Archive (texto em inglês, tradução de referência)",
       "publicationDate": null
+    },
+    {
+      "id": "source-marxismo-brasil-unicamp",
+      "title": "João Quartim de Moraes (org.) — História do Marxismo no Brasil",
+      "url": "https://editoraunicamp.com.br/catalogo-categoria/?categoria=colecoes-series&colecao=S%C3%A9rie+Hist%C3%B3ria+do+Marxismo+no+Brasil",
+      "edition": "Campinas: Editora da Unicamp, 6 volumes; vols. 1–4 organizados por João Quartim de Moraes, vols. 5–6 por Daniel Aarão Reis e Marcelo Ridenti",
+      "publicationDate": null
+    },
+    {
+      "id": "source-caio-prado-formacao",
+      "title": "Caio Prado Jr. — Formação do Brasil Contemporâneo",
+      "url": null,
+      "edition": "São Paulo: Martins, 1942; edição consultada: Brasiliense, 2004",
+      "publicationDate": null
+    },
+    {
+      "id": "source-florestan-revolucao-burguesa",
+      "title": "Florestan Fernandes — A Revolução Burguesa no Brasil",
+      "url": null,
+      "edition": "Rio de Janeiro: Zahar, 1975; edição consultada: Globo, 2006",
+      "publicationDate": null
+    },
+    {
+      "id": "source-marx-gomes-trabalhismo",
+      "title": "Angela de Castro Gomes — A invenção do trabalhismo",
+      "url": "https://books.google.com.br/books?id=uhOHCgAAQBAJ",
+      "edition": "São Paulo: Vértice, 1988; 3. ed. Rio de Janeiro: FGV, 2005",
+      "publicationDate": null
     }
   ],
   "edges": [

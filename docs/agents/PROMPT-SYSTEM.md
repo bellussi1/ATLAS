@@ -29,6 +29,7 @@ Este documento é o mapa das instruções que orientam agentes no repositório. 
 
 | Skill | Usar para |
 | --- | --- |
+| `atlas-create-reading` | Decidir e criar leitura contínua de ideologia, pessoa, acontecimento, instituição, período ou conceito; 12 capítulos, fontes, caso brasileiro e até 5 conexões |
 | `atlas-create-ideology` | Criar/ampliar leitura de ideologia no contrato de 12 capítulos |
 | `atlas-pipeline-tradicao` | Orquestrar estágios 0–14 de uma tradição |
 | `atlas-wiki-discovery` | Descobrir/ingerir entidades de Wikidata, Wikipedia e Commons |

@@ -132,6 +132,34 @@
       "url": null,
       "edition": "Declaração aprovada em Mont-Pèlerin, Suíça, em 8 de abril de 1947",
       "publicationDate": null
+    },
+    {
+      "id": "source-lib-carvalho-ordem",
+      "title": "José Murilo de Carvalho — A construção da ordem: a elite política imperial",
+      "url": "https://www.editoras.com/relume/016007.htm",
+      "edition": "Rio de Janeiro: Campus, 1980; reedição com Teatro de sombras, Civilização Brasileira, 2003",
+      "publicationDate": null
+    },
+    {
+      "id": "source-lib-escravidao",
+      "title": "O liberalismo e a escravidão no Brasil do século XIX",
+      "url": "https://www.seer.ufrgs.br/aedos/article/download/123261/88501",
+      "edition": "Artigo em Anos 90 (UFRGS); consulta em 06/11/2026",
+      "publicationDate": null
+    },
+    {
+      "id": "source-lib-cf88",
+      "title": "Constituição da República Federativa do Brasil de 1988",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-publicacaooriginal-1-pl.html",
+      "edition": "Diário Oficial da União, 5 out. 1988; texto original, Câmara dos Deputados",
+      "publicationDate": "1988-10-05"
+    },
+    {
+      "id": "source-lib-nabuco-abolicionismo",
+      "title": "Joaquim Nabuco — O Abolicionismo",
+      "url": null,
+      "edition": "Londres: Typographia de Abraham Kingdon, 1883; edição consultada: Vozes, 2012",
+      "publicationDate": null
     }
   ],
   "edges": [

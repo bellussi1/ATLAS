@@ -142,6 +142,22 @@
         @if (companion(); as next) {
           <a [routerLink]="'/' + next.slug">Ler o {{ next.label }}</a>
         }
+        @if (connections().length) {
+          <nav class="reading-connections" aria-labelledby="reading-connections-title">
+            <h2 id="reading-connections-title">Conexões desta leitura</h2>
+            <p class="reading-connections__hint">
+              Até cinco caminhos para continuar por contraste, continuidade ou disputa.
+            </p>
+            <ul>
+              @for (connection of connections(); track connection.slug) {
+                <li>
+                  <a [routerLink]="'/' + connection.slug">{{ connection.label }}</a>
+                  <span>{{ connection.reason }}</span>
+                </li>
+              }
+            </ul>
+          </nav>
+        }
       </footer>
     </app-ideology-reading>
   </article>

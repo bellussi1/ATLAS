@@ -86,6 +86,8 @@ Consultar `docs/design/PAGE_STANDARD.md` para páginas de ideologias e tradiçõ
 
 Novas ideologias seguem a skill `atlas-create-ideology` (`.claude/skills/atlas-create-ideology/SKILL.md`): pesquisa e dados tipados sobre o contrato de 12 capítulos, rascunho via `ideologyDraft()`, sem nova página Angular, sem copiar componentes por ideologia e sem publicar antes de aprovação.
 
+Leituras contínuas de pessoa, acontecimento, instituição, período ou conceito — como Governo Vargas, Golpe de 1964 ou Ditadura militar — seguem `atlas-create-reading` (`.claude/skills/atlas-create-reading/SKILL.md`): decidir entre leitura e verbete, adaptar os 12 capítulos ao tipo, exigir fontes acadêmicas e caso brasileiro, e declarar até cinco conexões curadas em `ideologyReadings[].connections`. O verbete continua sendo a unidade para o que não sustenta contexto próprio.
+
 ## Governança arquitetural obrigatória
 
 Consultar `docs/architecture/ARCHITECTURE.md` antes de criar ou mover código.
