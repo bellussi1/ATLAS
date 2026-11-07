@@ -2,6 +2,11 @@
 // knowledge collections (content/knowledge/collections/atlas-<tradição>.<sha256>.json) and
 // registers them in content/knowledge/manifest.json. Every claim is left with a pending review:
 // no human review is recorded here.
+//
+// Full mode rebuilds the collections that have drafts. For an isolated verbete use partial mode:
+//   node scripts/content/wiki-drafts-to-collections.mjs --partial --only <id> [--dry-run]
+// It preserves every existing collection and record, appends only new records, and attaches a
+// missing QID by title.
 // A draft whose Wikidata item already belongs to an existing entity is merged into that entity:
 // its sources, evidences, citations, claims and reviews are appended to the existing collection.
 // Relations that passed the guards and the second pass become edges, with source and nature; a
@@ -253,8 +258,24 @@ export function slugify(text) {
 
 const sentence = (text) => (/[.!?…]$/.test(text) ? text : `${text}.`);
 const dateOf = (isoInstant) => isoInstant.slice(0, 10);
-const weight = (draft) =>
-  draft.dates.length + draft.relations.length + draft.claims.length + (draft.sections?.length ?? 0);
+/**
+ * Content first: a draft with sections is a better reading than one with many short claims.
+ * Claims are deliberately the last signal, so a noisy extraction cannot win a tie.
+ */
+const contentWeight = (draft) => [
+  draft.sections?.length ?? 0,
+  draft.dates.length,
+  draft.relations.length,
+  draft.summary?.length ?? 0,
+];
+const isRicher = (candidate, current) => {
+  const a = contentWeight(candidate);
+  const b = contentWeight(current);
+  for (let index = 0; index < a.length; index += 1) {
+    if (a[index] !== b[index]) return a[index] > b[index];
+  }
+  return false;
+};
 /** Structured relation of a rich draft; the old free-text ones stay as claims. */
 const isStructured = (relation) => typeof relation.nature === 'string';
 const emptyRecords = () => ({
@@ -311,16 +332,16 @@ function dedupeByUrl(ordered, dropped) {
     const current = best.get(url);
     if (!current) {
       best.set(url, item);
-    } else if (weight(item.draft) > weight(current.draft)) {
+    } else if (isRicher(item.draft, current.draft)) {
       dropped.push({
         id: `${current.tradition}/${current.draft.entity.id}`,
-        reason: `mesma URL; mantida ${item.tradition}/${item.draft.entity.id}`,
+        reason: `mesma URL; mantida ${item.tradition}/${item.draft.entity.label}`,
       });
       best.set(url, item);
     } else {
       dropped.push({
         id: `${item.tradition}/${item.draft.entity.id}`,
-        reason: `mesma URL; mantida ${current.tradition}/${current.draft.entity.id}`,
+        reason: `mesma URL; mantida ${current.tradition}/${current.draft.entity.label}`,
       });
     }
   }
@@ -340,7 +361,7 @@ function groupByEntity(items) {
       const bestIsPt = best.draft.source.language === 'pt';
       const itemIsPt = item.draft.source.language === 'pt';
       if (itemIsPt !== bestIsPt) return itemIsPt ? item : best;
-      return weight(item.draft) > weight(best.draft) ? item : best;
+      return isRicher(item.draft, best.draft) ? item : best;
     });
     return [canonical, ...members.filter((item) => item !== canonical)];
   });
@@ -676,6 +697,12 @@ export function convertDrafts(
     // A tradition without drafts here keeps its collection, which already holds this slug.
     if (!drafted.has(tradition.key)) continue;
     const atlasSlug = `${tradition.key}-wikipedia`;
+    // In partial mode the collection itself is in `existingAtlases`; the draft is merged into it.
+    const existingAtlas = existingAtlases.find((atlas) => atlas.id === atlasIdFor(tradition.key));
+    if (existingAtlas) {
+      reservedSlugs.add(existingAtlas.slug);
+      continue;
+    }
     if (reservedSlugs.has(atlasSlug)) throw new Error(`Slug de coleção já usado: ${atlasSlug}.`);
     reservedSlugs.add(atlasSlug);
   }
@@ -924,8 +951,9 @@ export async function readSidecars(root = defaultDraftRoot) {
   return { wikidataLabels, images };
 }
 
-export async function readDrafts(root = defaultDraftRoot) {
+export async function readDrafts(root = defaultDraftRoot, only = []) {
   const items = [];
+  const filter = new Set(only.filter(Boolean));
   for (const tradition of TRADITIONS) {
     const directory = join(root, tradition.key, 'extracts');
     let names;
@@ -937,6 +965,13 @@ export async function readDrafts(root = defaultDraftRoot) {
     }
     for (const file of names) {
       const draft = JSON.parse(await readFile(join(directory, file), 'utf8'));
+      if (
+        filter.size &&
+        !filter.has(draft.entity?.id) &&
+        !filter.has(file.replace(/\.json$/, '')) &&
+        !filter.has(draft.entity?.qid)
+      )
+        continue;
       if (POSITIONED_TYPES.has(draft.entity?.type)) {
         // The article is the source of the position; without it the draft keeps none.
         const article = await readFile(join(root, tradition.key, 'articles', file), 'utf8')
@@ -982,6 +1017,136 @@ async function readVerifiedAtlas(directory, entry) {
   return JSON.parse(bytes);
 }
 
+/** Appends records whose id is new; an existing record is never replaced. */
+function appendUnique(existing, additions) {
+  const seen = new Set(existing.map((record) => record.id));
+  const records = [...existing];
+  let duplicates = 0;
+  for (const record of additions) {
+    if (seen.has(record.id)) {
+      duplicates += 1;
+      continue;
+    }
+    seen.add(record.id);
+    records.push(record);
+  }
+  return { records, duplicates };
+}
+
+/**
+ * In partial mode a draft may arrive without a QID in the graph but with the same title.
+ * Attach only the QID (and Wikipedia identity) to the existing entity; its text and records stay.
+ */
+function patchQidsByTitle(atlases, groups) {
+  let patched = atlases;
+  const patches = [];
+  const knownQids = new Set(
+    atlases.flatMap((atlas) =>
+      atlas.entities.flatMap((entity) =>
+        entity.externalIds?.wikidata ? [entity.externalIds.wikidata] : [],
+      ),
+    ),
+  );
+  for (const members of groups) {
+    const canonical = members[0];
+    const { qid, label } = canonical.draft.entity;
+    if (!/^Q\d+$/.test(qid ?? '') || knownQids.has(qid)) continue;
+    const wanted = slugify(label);
+    const candidates = [];
+    for (const atlas of patched) {
+      for (const entity of atlas.entities) {
+        if (entity.externalIds?.wikidata) continue;
+        if (slugify(entity.title) !== wanted && entity.slug !== wanted) continue;
+        if (entity.kind !== kindForDraft(canonical.draft) && entity.kind !== 'concept') continue;
+        candidates.push({ atlas, entity });
+      }
+    }
+    if (candidates.length === 0) continue;
+    if (candidates.length > 1)
+      throw new Error(
+        `Título "${label}" corresponde a mais de uma entidade sem QID; use --only e resolva manualmente.`,
+      );
+    const [{ atlas, entity }] = candidates;
+    const wikipedia = wikipediaTitle(canonical.draft.source.url, label);
+    patched = patched.map((item) =>
+      item.id !== atlas.id
+        ? item
+        : {
+            ...item,
+            entities: item.entities.map((current) =>
+              current.id !== entity.id
+                ? current
+                : {
+                    ...current,
+                    externalIds: { ...current.externalIds, wikidata: qid, wikipedia },
+                  },
+            ),
+          },
+    );
+    knownQids.add(qid);
+    patches.push({ atlas: atlas.id, entity: entity.id, qid });
+  }
+  return { atlases: patched, patches };
+}
+
+/** Removes repeated ids from an atlas, keeping the first record (the one already in the graph). */
+function dedupeAtlas(atlas) {
+  const entities = [...new Map(atlas.entities.map((entity) => [entity.id, entity])).values()];
+  const deduped = { ...atlas, entities, entityIds: entities.map((entity) => entity.id) };
+  for (const key of [...RECORD_KEYS, 'learningPaths'])
+    deduped[key] = [...new Map((atlas[key] ?? []).map((record) => [record.id, record])).values()];
+  return deduped;
+}
+
+/** Appends new entities and their records to an existing collection without dropping anything. */
+function mergeAtlas(base, addition) {
+  const existingEntityIds = new Set(base.entities.map((entity) => entity.id));
+  const entities = [...base.entities];
+  let entitiesAdded = 0;
+  for (const entity of addition.entities) {
+    if (existingEntityIds.has(entity.id)) continue;
+    existingEntityIds.add(entity.id);
+    entities.push(entity);
+    entitiesAdded += 1;
+  }
+  const keep = (key) => appendUnique(base[key] ?? [], addition[key] ?? []);
+  const sources = keep('sources');
+  const evidences = keep('evidences');
+  const citations = keep('citations');
+  const claims = keep('claims');
+  const reviews = keep('reviews');
+  const relations = keep('relations');
+  const assetLicenses = keep('assetLicenses');
+  const learningPaths = keep('learningPaths');
+  const duplicates =
+    sources.duplicates +
+    evidences.duplicates +
+    citations.duplicates +
+    claims.duplicates +
+    reviews.duplicates +
+    relations.duplicates +
+    assetLicenses.duplicates +
+    learningPaths.duplicates;
+  return {
+    atlas: {
+      ...base,
+      updatedAt: [base.updatedAt, addition.updatedAt].sort().at(-1),
+      entityIds: entities.map((entity) => entity.id),
+      entities,
+      sources: sources.records,
+      evidences: evidences.records,
+      citations: citations.records,
+      claims: claims.records,
+      reviews: reviews.records,
+      relations: relations.records,
+      assetLicenses: assetLicenses.records,
+      learningPaths: learningPaths.records,
+    },
+    entitiesAdded,
+    duplicates,
+  };
+}
+
 // Reads drafts, converts them and registers the results. Collections that receive merged content
 // get a new file and manifest entry in place; untouched collections keep their entries and files.
 // Running twice produces the same files and manifest.
@@ -989,10 +1154,115 @@ export async function convertDraftsToCollections({
   root = defaultDraftRoot,
   directory = sourceDirectory,
   write = true,
+  partial = false,
+  only = [],
 } = {}) {
-  const items = await readDrafts(root);
+  const items = await readDrafts(root, only);
+  if (only.length && items.length === 0)
+    throw new Error(`Nenhum rascunho corresponde a --only ${only.join(', ')}.`);
   await readSourceGraph(directory); // validates the current graph before changing it
   const manifest = JSON.parse(await readFile(join(directory, 'manifest.json'), 'utf8'));
+  const sidecars = await readSidecars(root);
+
+  if (partial) {
+    // Never rebuild a collection and never strip records: an isolated draft only appends.
+    const baseAtlases = [];
+    for (const entry of manifest.collections)
+      baseAtlases.push(await readVerifiedAtlas(directory, entry));
+    const ordered = [...items].sort(compareItems);
+    const groups = groupByEntity(dedupeByUrl(ordered, []));
+    const { atlases: patched, patches } = patchQidsByTitle(baseAtlases, groups);
+    const converted = convertDrafts(items, { existingAtlases: patched, ...sidecars });
+    const augmentedById = new Map(converted.augmentedAtlases.map((atlas) => [atlas.id, atlas]));
+    const finalAtlases = patched
+      .map((atlas) => augmentedById.get(atlas.id) ?? atlas)
+      .map(dedupeAtlas);
+    let entitiesAdded = 0;
+    let duplicates = 0;
+    for (const atlas of converted.atlases) {
+      const index = finalAtlases.findIndex((item) => item.id === atlas.id);
+      if (index < 0) {
+        finalAtlases.push(atlas);
+        entitiesAdded += atlas.entities.length;
+        continue;
+      }
+      const merged = mergeAtlas(finalAtlases[index], atlas);
+      finalAtlases[index] = merged.atlas;
+      entitiesAdded += merged.entitiesAdded;
+      duplicates += merged.duplicates;
+    }
+    const changed = new Set([
+      ...augmentedById.keys(),
+      ...converted.atlases.map((atlas) => atlas.id),
+      ...patches.map((patch) => patch.atlas),
+    ]);
+    const updatedAt = [
+      manifest.updatedAt,
+      ...finalAtlases.filter((atlas) => changed.has(atlas.id)).map((atlas) => atlas.updatedAt),
+    ]
+      .sort()
+      .at(-1);
+    const graph = validateSourceGraph({
+      id: manifest.id,
+      version: GRAPH_VERSION,
+      updatedAt,
+      atlases: finalAtlases,
+    });
+    const parsedById = new Map(graph.atlases.map((atlas) => [atlas.id, atlas]));
+    const files = [];
+    const collectionEntry = async (atlas) => {
+      const bytes = await formatJson(atlas);
+      const hash = sha256(bytes);
+      const file = `collections/${atlas.id}.${hash}.json`;
+      files.push({ file, bytes, id: atlas.id });
+      return { id: atlas.id, file, sha256: hash };
+    };
+    const entries = [];
+    for (const entry of manifest.collections) {
+      entries.push(changed.has(entry.id) ? await collectionEntry(parsedById.get(entry.id)) : entry);
+    }
+    for (const atlas of graph.atlases) {
+      if (!entries.some((entry) => entry.id === atlas.id))
+        entries.push(await collectionEntry(atlas));
+    }
+    const nextManifest = { ...manifest, version: GRAPH_VERSION, updatedAt, collections: entries };
+    if (write) {
+      await mkdir(join(directory, 'collections'), { recursive: true });
+      for (const { file, bytes } of files) await writeAtlasFile(directory, file, bytes);
+      await writeAtomic(join(directory, 'manifest.json'), await formatJson(nextManifest));
+    }
+    const recordsAdded = finalAtlases.reduce((sum, atlas) => {
+      const before = baseAtlases.find((item) => item.id === atlas.id);
+      if (!before) return sum + RECORD_KEYS.reduce((n, key) => n + (atlas[key]?.length ?? 0), 0);
+      return (
+        sum +
+        RECORD_KEYS.reduce(
+          (n, key) => n + (atlas[key]?.length ?? 0) - (before[key]?.length ?? 0),
+          0,
+        )
+      );
+    }, 0);
+    return {
+      mode: 'partial',
+      written: write,
+      preservedCollections: manifest.collections.length,
+      changedCollections: [...changed],
+      entitiesAdded,
+      recordsAdded,
+      duplicatedRecords: duplicates,
+      patches,
+      traditions: converted.traditions,
+      dropped: converted.dropped,
+      merged: converted.merged,
+      mergedIntoExisting: converted.mergedIntoExisting,
+      pendingRelations: converted.pendingRelations,
+      iconOnly: converted.iconOnly,
+      augmentedCollections: converted.augmentedAtlases.map((atlas) => atlas.id),
+      slugAdjustments: converted.slugAdjustments,
+      files: files.map(({ id, file }) => ({ id, file })),
+    };
+  }
+
   // Only collections rebuilt from drafts present here are replaced: a checkout holding the drafts
   // of one tradition must not erase the others from the graph.
   const rebuilt = new Set(items.map((item) => atlasIdFor(item.tradition)));
@@ -1004,7 +1274,7 @@ export async function convertDraftsToCollections({
 
   const converted = convertDrafts(items, {
     existingAtlases: baseAtlases,
-    ...(await readSidecars(root)),
+    ...sidecars,
   });
   const augmentedById = new Map(converted.augmentedAtlases.map((atlas) => [atlas.id, atlas]));
   const updatedAt = [
@@ -1051,6 +1321,7 @@ export async function convertDraftsToCollections({
     await writeAtomic(join(directory, 'manifest.json'), await formatJson(nextManifest));
   }
   return {
+    mode: 'full',
     written: write,
     traditions: converted.traditions,
     dropped: converted.dropped,
@@ -1065,9 +1336,21 @@ export async function convertDraftsToCollections({
 }
 
 function formatReport(report) {
-  const lines = report.traditions.map(
-    (item) =>
-      `${item.label}: ${item.entities} entidades novas, ${item.sources} fontes, ${item.claims} afirmações (${item.dates} datas, ${item.relations} arestas, ${item.images} imagens, relações só em texto: ${item.relationTargetsAsText})`,
+  const lines = [];
+  if (report.mode === 'partial') {
+    lines.push(
+      `Modo parcial: ${report.preservedCollections} coleções preservadas; ` +
+        `${report.changedCollections.length} alteradas; ${report.entitiesAdded} entidades novas; ` +
+        `${report.recordsAdded} registros adicionados; ${report.duplicatedRecords} já existiam.`,
+    );
+    for (const patch of report.patches)
+      lines.push(`  - QID ${patch.qid} anexado a ${patch.entity} (${patch.atlas})`);
+  }
+  lines.push(
+    ...report.traditions.map(
+      (item) =>
+        `${item.label}: ${item.entities} entidades novas, ${item.sources} fontes, ${item.claims} afirmações (${item.dates} datas, ${item.relations} arestas, ${item.images} imagens, relações só em texto: ${item.relationTargetsAsText})`,
+    ),
   );
   lines.push(`Relações que ainda não viram aresta: ${report.pendingRelations.length}`);
   for (const item of report.pendingRelations.slice(0, 20))
@@ -1093,6 +1376,18 @@ function formatReport(report) {
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const report = await convertDraftsToCollections();
+  const args = process.argv.slice(2);
+  const partial = args.includes('--partial');
+  const dryRun = args.includes('--dry-run');
+  const onlyIndex = args.indexOf('--only');
+  const only =
+    onlyIndex >= 0
+      ? (args[onlyIndex + 1] ?? '')
+          .split(',')
+          .map((value) => value.trim())
+          .filter(Boolean)
+      : [];
+  const report = await convertDraftsToCollections({ partial, only, write: !dryRun });
   console.log(formatReport(report));
+  if (dryRun) console.log('Modo sem gravação: o manifesto e as coleções não foram alterados.');
 }

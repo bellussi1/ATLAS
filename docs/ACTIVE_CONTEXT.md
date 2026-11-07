@@ -138,13 +138,23 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - A página de leitura termina com "Conexões desta leitura" (3 a 5, com razão) e o teste de dados garante que nenhum rascunho ou auto-link apareça.
     - Verificações: `content:build` gerou o release local `869446f…` (não publicado; o ponteiro continua em `45300c5…`); `test:content` **179/179**; `npm test` **306/307** (o timeout de `knowledge-network.spec.ts` passou **17/17** isolado); `typecheck` e `lint` exit 0; unidade de leituras **6/6**; `build` **1.185 rotas**; `e2e/pages.spec.ts` **20/20** e os dois testes focados de conexões/verbete **2/2**.
 
+20. **Consolidação parcial e piloto de 20**
+    - `wiki-drafts-to-collections.mjs` ganhou `--partial --only <id>`: lê todas as coleções, **não remove** registros, funde pelo QID, anexa QID por título quando falta, deduplica por ID e grava só as coleções alteradas. `--dry-run` mostra o plano.
+    - Desempate de rascunhos agora usa **seções, datas, relações e resumo**; claims não decidem mais qual rascunho fica.
+    - Piloto: **20 artigos de liberalismo** extraídos com Haiku médio + Sonnet baixo; **18 ficaram com seções**; custo real **US$ 0,078** (estimativa era US$ 0,29 no pior caso). Restam cerca de **US$ 6,02** do teto de US$ 6,10.
+    - A consolidação parcial dos 20 anexou **684 registros** a 3 coleções (`atlas-liberalism`, `atlas-liberalismo`, `atlas-marx-valor`), sem perder entidades nem registros antigos: entidades 27→27, 12→12 e 42→42; os claims subiram de 40→159, 8→39 e 100→112.
+    - Os 20 rascunhos ricos foram publicados no bucket privado `atlas-drafts` (`wiki/liberalismo/`), que passou a ter **41 objetos** incluindo o índice.
+    - A Onda 2 continua ausente: `wiki/verbetes-citados/index.json` responde **404** e não há prefixo `wiki/verbetes-citados` no `atlas-drafts`; os 92 objetos existentes são de anarquismo, liberalismo, marxismo e social-democracia.
+    - Verificações após a consolidação: `content:build` release local `26998099…`; `test:content` **182/182**; `npm test` **308/308**; `typecheck` e `lint` exit 0; `build` **1.185 rotas**. O ponteiro público continua em `45300c5…`; nada foi publicado no `atlas-public`.
+
 ## Pendências que bloqueiam
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.
 2. **Suíte e2e completa** — `contextual-exploration` (liberalismo 1440) falha no y do termo ao voltar (diferença de **64 px**), embora o scroll volte ao lugar. Corrigir a estabilidade do painel ou a tolerância do teste antes de considerar a rodada verde.
 3. **Produção na Vercel** - o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`). Enquanto o `master` não receber a paginação, `/fontes` segue em 4,8 MB; o Worker de conteúdo também aguarda token Cloudflare.
 4. **Probe de 404** — hoje `https://atlasbr.vercel.app/caminho-inexistente` responde 200 com `index.html`; o `uptime.yml` falha por isso. Só verificar depois do deploy.
-5. **Verbetes** — corrigir o modo `--partial` do tradutor e o desempate de rascunhos; depois rodar o lote prioritário e derivar o perfil político das relações.
+5. **Verbetes** — o modo `--partial` e o desempate por conteúdo foram implementados e testados; o piloto de 20 anexou registros sem perder os antigos. Falta o lote maior (bloqueado pela Onda 2 ausente), a revisão humana dos 20 e o perfil político derivado das relações (partido, ideologia e vertente; “lado” só com classificação atribuída).
+6. **Onda 2 ausente** — `wiki/verbetes-citados/index.json` responde **404** e não há prefixo `wiki/verbetes-citados` no `atlas-drafts`; os 92 objetos existentes são de anarquismo, liberalismo, marxismo e social-democracia. Sem os 414 artigos/896 extratos não há lote maior neste checkout.
 
 ## Pendências que pedem decisão
 

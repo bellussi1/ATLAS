@@ -43,6 +43,26 @@ Uma relação só vira aresta se passar por todas, nesta ordem (`guards.mjs`, `w
 
 A aresta guarda a citação como evidência, a fonte Wikipedia e `editorialStatus: pending`. Rótulo do Wikidata (P737, P1142) vira `associated_with`, com aviso de que não documenta influência.
 
+## Consolidação parcial de um verbete
+
+O modo completo reconstrói todas as coleções que têm rascunhos. Para enriquecer um verbete isolado sem tocar nos outros, use:
+
+```bash
+node scripts/content/wiki-drafts-to-collections.mjs --partial --only <id-ou-arquivo> --dry-run
+node scripts/content/wiki-drafts-to-collections.mjs --partial --only <id-ou-arquivo>
+```
+
+O modo parcial:
+
+- lê todas as coleções existentes e **não remove** nenhum registro;
+- funde o rascunho pelo QID; se a entidade não tiver QID, anexa o QID pelo título;
+- acrescenta fontes, evidências, citações, afirmações, revisões, arestas e licenças;
+- deduplica por ID, então rodar duas vezes não duplica;
+- só grava as coleções alteradas e mantém os arquivos antigos;
+- relata quantos registros foram adicionados, quantos já existiam e quais relações ficaram pendentes.
+
+O modo completo continua sendo o certo para uma tradição inteira. O modo parcial é o certo para um verbete da Onda 2 ou para um lote pequeno. Nenhum dos dois publica: `content:publish` continua humano.
+
 ## Controle de custo
 
 - `--dry-run` não chama a API: mostra tokens e dólares, esperado e pior caso. Tokens são estimados por 2,7 caracteres por token, do lado que superestima; a saída esperada é hipótese até a primeira medição.
@@ -72,7 +92,7 @@ Gasto até aqui: US$ 0,12. Decisão da regra: `so-relacoes-sobe`, gravada em `sc
 
 | Saída                                        | Como nasce                                                            | Quem decide                        |
 | -------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------- |
-| `/verbete/:slug` e `/acervo`                | Automático: toda entidade da coleção entra no grafo (`content:build`) | ninguém; vale o que está no grafo  |
+| `/verbete/:slug` e `/acervo`                 | Automático: toda entidade da coleção entra no grafo (`content:build`) | ninguém; vale o que está no grafo  |
 | Página de ideologia (dossiê de 12 capítulos) | Estágio 8 automático (todas as ideologias); estágio 9 manual          | pessoa decide publicar e registrar |
 | Publicação no R2                             | `npm run content:publish`                                             | só pessoa; nunca automática        |
 
