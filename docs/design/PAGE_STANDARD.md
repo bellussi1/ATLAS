@@ -19,6 +19,8 @@ Uma tradição = uma página longa com scroll vertical nativo. A narrativa princ
 
 O visitante identifica onde está, o capítulo seguinte, o progresso e o caminho de volta: índice com âncoras estáveis, estimativas identificadas como aproximadas, capítulo atual e retorno ao ponto anterior. Seleções podem usar query params com `replaceUrl` e scroll manual; só a ação de navegar ao capítulo rola a página. Sem espera artificial, scroll hijacking ou parallax que prejudique a leitura.
 
+As imagens de abertura são curadas no dossiê, com IDs canônicos e justificativa; a seleção automática é só fallback. Regras, formato e escolhas atuais em `docs/design/IMAGENS-DE-ABERTURA.md`.
+
 ## 1.1 Contrato canônico de 12 capítulos
 
 Toda página publicada tem os mesmos 12 capítulos, na mesma ordem, com `id` = âncora e rótulo canônico como _kicker_: `introducao`, `origens`, `principios`, `conceitos`, `epocas`, `pensadores`, `vertentes`, `experiencias`, `debates`, `conexoes`, `leituras`, `fontes`.

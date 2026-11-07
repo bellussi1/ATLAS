@@ -88,6 +88,15 @@ h1 {
   gap: var(--space-3);
   padding: 0;
   margin: 0 0 var(--space-8);
+  &[data-count='1'] {
+    grid-template-columns: minmax(0, 15rem);
+  }
+  &[data-count='2'] {
+    grid-template-columns: repeat(2, minmax(0, 16rem));
+  }
+  &[data-count='3'] {
+    grid-template-columns: repeat(3, minmax(0, 15rem));
+  }
   li {
     animation: figure-in var(--motion-slow) var(--ease-out) both;
     animation-delay: calc(var(--i, 0) * 70ms);
@@ -170,6 +179,53 @@ h1 {
     text-underline-offset: 0.2em;
   }
 }
+/* Credits stay close to the pictures but out of the opening's way. */
+.poster-credits {
+  max-width: 52rem;
+  margin: calc(-1 * var(--space-4)) 0 var(--space-8);
+  border-top: 1px solid var(--rule-strong);
+  font: 0.75rem/1.5 var(--font-mono);
+  summary {
+    display: flex;
+    align-items: center;
+    min-height: var(--control-min-size);
+    font-weight: 650;
+    cursor: pointer;
+  }
+  summary::before {
+    content: '▸';
+    flex: none;
+    margin-right: 0.4rem;
+  }
+  &[open] summary::before {
+    content: '▾';
+  }
+  ul {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+  strong {
+    display: block;
+    font: 650 0.8125rem/1.35 var(--font-sans);
+  }
+  span {
+    display: block;
+    color: var(--color-ink-muted);
+    font: 0.875rem/1.45 var(--font-serif);
+  }
+  small {
+    display: block;
+    margin-top: 0.15rem;
+  }
+  .poster-credits__auto {
+    margin: 0 0 var(--space-3);
+    color: var(--color-ink-muted);
+    font: 0.875rem/1.5 var(--font-serif);
+  }
+}
 h2.poster-label {
   margin-top: var(--space-8);
 }
@@ -194,6 +250,16 @@ h2.poster-label {
 @media (max-width: 560px) {
   .poster-figures {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    &[data-count='1'] {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    &[data-count='2'],
+    &[data-count='3'] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    &[data-count='3'] li:last-child {
+      grid-column: span 2;
+    }
   }
 }
 @media (prefers-reduced-motion: reduce) {

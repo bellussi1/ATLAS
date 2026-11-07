@@ -2,6 +2,8 @@ import { entityMedia } from '@core/content/media/asset-license';
 import type { KnowledgeGraph } from '@core/content/models/content-schema';
 import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
 
+import { curatedOpeningAssets } from './opening-media';
+
 export interface PageMedia {
   assetPath: string;
   entityId: string;
@@ -11,11 +13,11 @@ export interface PageMedia {
 const cardPriority = ['event', 'work', 'institution', 'ideology', 'concept', 'person'];
 
 /**
- * Image uniqueness for one reading: each picture appears once in the narrative.
- * Portraits belong to the thinkers gallery; other entity cards and then exploration
- * cards take only pictures nobody shows yet, in reading order. The `atlas` gallery is
- * a catalogue and may repeat images on purpose. Keys are `<blockId>/<itemId or
- * entityId>`, where blockId is `<chapterId>-<blockIndex>`.
+ * Image uniqueness for one reading: each picture appears once in the narrative, and an image
+ * already used by the curated opening is not reused by a chapter card. Portraits belong to the
+ * thinkers gallery; other entity cards and then exploration cards take only pictures nobody shows
+ * yet, in reading order. The `atlas` gallery is a catalogue and may repeat images on purpose. Keys
+ * are `<blockId>/<itemId or entityId>`, where blockId is `<chapterId>-<blockIndex>`.
  */
 export function planPageMedia(page: IdeologyPage, graph: KnowledgeGraph): Map<string, PageMedia> {
   const entities = new Map(graph.atlases.flatMap((a) => a.entities).map((e) => [e.id, e]));
@@ -26,7 +28,7 @@ export function planPageMedia(page: IdeologyPage, graph: KnowledgeGraph): Map<st
       ? { assetPath: asset.assetPath, entityId: id, title: entity.title }
       : undefined;
   };
-  const used = new Set<string>();
+  const used = curatedOpeningAssets(page, graph);
   const plan = new Map<string, PageMedia>();
   const claim = (key: string, id: string): boolean => {
     const media = picture(id);

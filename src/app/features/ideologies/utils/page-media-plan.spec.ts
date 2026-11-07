@@ -4,6 +4,7 @@ import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
 import { planPageMedia } from './page-media-plan';
 
 const asset = (entityId: string, extra: Record<string, unknown> = {}) => ({
+  id: `asset-${entityId}`,
   entityId,
   assetPath: `https://upload.wikimedia.org/${entityId}.jpg`,
   status: 'known',
@@ -81,5 +82,19 @@ describe('planPageMedia', () => {
     expect(plan.has('principios-0/none')).toBe(false);
     const paths = [...plan.values()].map((m) => m.assetPath);
     expect(new Set(paths).size).toBe(paths.length);
+  });
+
+  it('does not reuse a picture already chosen for the opening', () => {
+    const withPoster = {
+      ...page,
+      poster: {
+        figures: [{ entityId: 'person-locke', assetId: 'asset-person-locke', note: 'Abertura' }],
+      },
+    } as unknown as IdeologyPage;
+    const planned = planPageMedia(withPoster, graph);
+    expect(planned.has('pensadores-0/person-locke')).toBe(false);
+    expect(
+      [...planned.values()].some((media) => media.assetPath === asset('person-locke').assetPath),
+    ).toBe(false);
   });
 });

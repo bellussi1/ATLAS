@@ -5,21 +5,61 @@
     <p class="poster-summary">{{ page().summary }}</p>
 
     @if (figures().length) {
-      <ul class="poster-figures">
-        @for (figure of figures(); track figure.entity.id) {
+      <ul class="poster-figures" [attr.data-count]="figures().length">
+        @for (figure of figures(); track figure.asset.assetPath) {
           <li [attr.data-frame]="figure.frame">
-            <a class="figure-link" [routerLink]="'/verbete/' + figure.entity.slug">
+            <a
+              class="figure-link"
+              [routerLink]="'/verbete/' + figure.entity.slug"
+              [attr.aria-description]="figure.note"
+            >
               <app-licensed-asset
-                [atlas]="figure.owner"
+                [atlas]="figure.atlas"
                 [assetPath]="figure.asset.assetPath"
                 alt=""
                 [credit]="false"
               />
-              <span class="figure-name">{{ figure.entity.title }}</span>
+              <span class="figure-name">{{ figure.label }}</span>
             </a>
           </li>
         }
       </ul>
+      <details class="poster-credits">
+        <summary>{{ curated() ? 'Imagens: créditos e critério' : 'Imagens: créditos' }}</summary>
+        @if (!curated()) {
+          <p class="poster-credits__auto">
+            Seleção automática entre os registros mais citados nesta leitura, sem curadoria
+            editorial.
+          </p>
+        }
+        <ul>
+          @for (figure of figures(); track figure.asset.assetPath) {
+            <li>
+              <strong>{{ figure.label }}</strong>
+              @if (figure.note) {
+                <span>{{ figure.note }}</span>
+              }
+              <small>
+                @if (figure.asset.creator ?? figure.asset.attribution; as credit) {
+                  {{ credit }} ·
+                }
+                @if (
+                  figure.asset.licenseUrl && figure.asset.licenseUrl !== figure.asset.filePageUrl
+                ) {
+                  <a [href]="figure.asset.licenseUrl" target="_blank" rel="noopener noreferrer">{{
+                    figure.asset.license
+                  }}</a>
+                } @else {
+                  {{ figure.asset.license }}
+                }
+                @if (figure.asset.filePageUrl; as file) {
+                  · <a [href]="file" target="_blank" rel="noopener noreferrer">Ver o arquivo</a>
+                }
+              </small>
+            </li>
+          }
+        </ul>
+      </details>
     }
 
     @if (trails().length) {

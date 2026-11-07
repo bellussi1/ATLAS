@@ -9,6 +9,34 @@
   "summary": "Reformas, Estado de bem-estar e as disputas da social-democracia com o socialismo e o liberalismo. Uma tradição que busca transformar o capitalismo pela via política, sem abolir o mercado.",
   "published": true,
   "atlasId": "atlas-social-democracia",
+  "poster": {
+    "figures": [
+      {
+        "entityId": "wiki-topic-august-bebel",
+        "assetId": "asset-wiki-topic-august-bebel",
+        "note": "Organizou o SPD como partido de massas.",
+        "frame": "quarter"
+      },
+      {
+        "entityId": "person-eduard-bernstein",
+        "assetId": "marxism-asset-person-eduard-bernstein",
+        "note": "Formulou a revisão reformista do marxismo.",
+        "frame": "square"
+      },
+      {
+        "entityId": "wiki-topic-jean-jaures",
+        "assetId": "asset-wiki-topic-jean-jaures",
+        "note": "Ligou socialismo e república parlamentar na França.",
+        "frame": "disc"
+      },
+      {
+        "entityId": "wiki-topic-olof-palme",
+        "assetId": "asset-wiki-topic-olof-palme",
+        "note": "Símbolo do Estado de bem-estar nórdico.",
+        "frame": "arch"
+      }
+    ]
+  },
   "review": {
     "status": "rascunho",
     "reviewer": null,

@@ -284,6 +284,15 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O fim da ficha passou a ter dois blocos explícitos: **Fontes** (título, URL e edição) e **Licenças e créditos** (texto e imagem), com tipografia de leitura em vez do bloco compacto em mono. A citação “Fonte:” de cada relação continua junto da evidência.
     - Verificações: `npm test` **325/325**, `e2e/encyclopedia`, `e2e/ideology-sheets` e `e2e/contextual-exploration` **22/22**, `lint`, `typecheck` e `build` exit 0.
 
+40. **Curadoria das imagens de abertura**
+    - As imagens do topo de `/leitura/:slug` deixaram de ser as quatro primeiras pessoas com retrato. Cada dossiê declara `poster.figures` com `entityId`, `assetId`, `label`, `note`, `frame`; o componente só resolve os IDs e mantém a composição compartilhada.
+    - Marxismo abre com Marx, Engels, Manifesto Comunista e Comuna de Paris; Liberalismo com Locke, Montesquieu, Adam Smith e a Declaração de 1789; Anarquismo com Proudhon, Bakunin, Kropotkin e Goldman; Social-democracia com Bebel, Bernstein, Jaurès e Palme.
+    - `validateIdeologyDossier` recusa imagem sem vínculo com a leitura, asset de outro registro, licença/reprodução/crédito/link ausentes e imagem repetida. `planPageMedia` reserva os assets da abertura para não repeti-los num cartão de capítulo.
+    - Sem curadoria, o fallback usa os registros mais citados na página, no máximo duas pessoas e um registro de cada outro tipo; o bloco de créditos se chama “Imagens: créditos” e declara a seleção automática. A grade aceita 1 a 4 imagens, com molduras e dimensões estáveis.
+    - Créditos, licença, link do arquivo e a razão editorial ficam em “Imagens: créditos e critério”, recolhido sob as imagens; a atribuição também continua no registro do atlas e na ficha do verbete. Regras e escolhas em `docs/design/IMAGENS-DE-ABERTURA.md`.
+    - Verificações: `npm test` **334/334**, `npm run test:content` **184/184**, `e2e/pages.spec.ts` + `e2e/ideology-sheets.spec.ts` **34/34**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390 nas quatro leituras, com 1 a 4 figuras e sem overflow.
+    - O release local é `e794a295…`; o ponteiro público continua no release anterior. A curadoria não foi publicada.
+
 
 
 ## Pendências que bloqueiam

@@ -40,6 +40,7 @@ export function ideologyDraft(input: IdeologyDraftInput): IdeologyPage {
       ...(input.palette ? { palette: input.palette } : {}),
     },
     portrait: null,
+    poster: { figures: [] },
     chapters: canonicalChapters.map((chapter) => ({
       id: chapter.id,
       anchor: chapter.id,

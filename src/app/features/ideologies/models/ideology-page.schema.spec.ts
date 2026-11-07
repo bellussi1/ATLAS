@@ -3,6 +3,7 @@ import { safeDiscoveryOrigin } from '@core/content/queries/discovery-index';
 import { estimateAxis, estimateEntity } from '@ideologies/utils/positions';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
+import liberalismoSupplement from '../../../../../content/graph/liberalismo.json';
 import supplement from '../../../../../content/graph/marxismo.json';
 import anarquismo from '../../../../../content/ideologies/examples/anarquismo.json';
 import liberalismo from '../../../../../content/ideologies/examples/liberalismo.json';
@@ -163,6 +164,32 @@ describe('positions layer', () => {
       .find((c) => c.id === 'debates')!
       .blocks.find((b) => b.type === 'positions');
     expect(block).toBeDefined();
+  });
+});
+
+describe('opening curation', () => {
+  const validate = (page: unknown, supplementData: unknown = liberalismoSupplement) =>
+    validateIdeologyDossier(page, supplementData as never, methodologyKnowledgeGraph);
+
+  it('accepts the four curated figures of a published reading', () => {
+    expect(publishedLiberalismo.poster.figures).toHaveLength(4);
+    expect(() => validate(publishedLiberalismo)).not.toThrow();
+  });
+
+  it('refuses an asset that belongs to another record and a record outside the reading', () => {
+    const wrongAsset = structuredClone(publishedLiberalismo);
+    wrongAsset.poster.figures[0].assetId = wrongAsset.poster.figures[1].assetId;
+    expect(() => validate(wrongAsset)).toThrow('Imagem de abertura não corresponde ao registro.');
+
+    const unlinked = structuredClone(publishedLiberalismo);
+    unlinked.poster.figures[0].entityId = 'person-rosa-luxemburg';
+    expect(() => validate(unlinked)).toThrow('Imagem de abertura sem vínculo com a leitura.');
+  });
+
+  it('refuses the same picture twice', () => {
+    const duplicate = structuredClone(publishedLiberalismo);
+    duplicate.poster.figures[1] = duplicate.poster.figures[0];
+    expect(() => validate(duplicate)).toThrow('Imagem de abertura repetida.');
   });
 });
 

@@ -9,6 +9,34 @@
   "summary": "Uma tradição socialista que rejeita o Estado e as hierarquias impostas, defendendo associação voluntária, apoio mútuo e autogoverno. Das origens na Primeira Internacional às experiências do século XX.",
   "published": true,
   "atlasId": "atlas-anarquismo",
+  "poster": {
+    "figures": [
+      {
+        "entityId": "wiki-topic-pierre-joseph-proudhon",
+        "assetId": "asset-wiki-topic-pierre-joseph-proudhon",
+        "note": "Propriedade como domínio e a alternativa mutualista.",
+        "frame": "arch"
+      },
+      {
+        "entityId": "wiki-topic-mikhail-bakunin",
+        "assetId": "asset-wiki-topic-mikhail-bakunin",
+        "note": "Ruptura com Marx na Primeira Internacional e ação coletiva contra o Estado.",
+        "frame": "quarter"
+      },
+      {
+        "entityId": "wiki-topic-piotr-kropotkin",
+        "assetId": "asset-wiki-topic-piotr-kropotkin",
+        "note": "Apoio mútuo e comunismo anarquista.",
+        "frame": "disc"
+      },
+      {
+        "entityId": "wiki-topic-emma-goldman",
+        "assetId": "asset-wiki-topic-emma-goldman",
+        "note": "Anarquismo, feminismo e liberdade no debate público.",
+        "frame": "square"
+      }
+    ]
+  },
   "review": {
     "status": "rascunho",
     "reviewer": null,

@@ -9,6 +9,36 @@
   "summary": "Uma tradição, muitas leituras. Investigue como a crítica da sociedade capitalista se tornou um campo de ideias, disputas e projetos políticos.",
   "published": true,
   "atlasId": "atlas-marx-valor",
+  "poster": {
+    "figures": [
+      {
+        "entityId": "person-karl-marx",
+        "assetId": "marxism-asset-person-karl-marx",
+        "note": "Formulou a crítica da economia política que organiza a tradição.",
+        "frame": "disc"
+      },
+      {
+        "entityId": "person-friedrich-engels",
+        "assetId": "marxism-asset-person-friedrich-engels",
+        "note": "Coautor do Manifesto e editor dos volumes de O capital.",
+        "frame": "arch"
+      },
+      {
+        "entityId": "work-communist-manifesto",
+        "assetId": "marxism-asset-work-communist-manifesto",
+        "label": "Manifesto Comunista, 1848",
+        "note": "Texto de fundação que liga teoria e movimento operário.",
+        "frame": "quarter"
+      },
+      {
+        "entityId": "event-paris-commune",
+        "assetId": "marxism-asset-event-paris-commune",
+        "label": "Comuna de Paris, 1871",
+        "note": "Primeira experiência de governo operário debatida por Marx e Engels.",
+        "frame": "square"
+      }
+    ]
+  },
   "review": {
     "status": "com-fontes",
     "reviewer": null,

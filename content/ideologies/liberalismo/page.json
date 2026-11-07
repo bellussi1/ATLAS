@@ -9,6 +9,35 @@
   "summary": "Uma ideia, muitas liberdades. Siga como a defesa do indivíduo contra o poder virou constituições, mercados, direitos e disputas sobre o papel do Estado.",
   "published": true,
   "atlasId": "atlas-liberalism",
+  "poster": {
+    "figures": [
+      {
+        "entityId": "person-john-locke",
+        "assetId": "liberalism-asset-person-john-locke",
+        "note": "Direitos naturais e consentimento como base do governo.",
+        "frame": "square"
+      },
+      {
+        "entityId": "person-montesquieu",
+        "assetId": "liberalism-asset-person-montesquieu",
+        "note": "Separação dos poderes como limite ao arbítrio.",
+        "frame": "disc"
+      },
+      {
+        "entityId": "person-adam-smith",
+        "assetId": "liberalism-asset-person-adam-smith",
+        "note": "Mercado e divisão do trabalho na crítica ao mercantilismo.",
+        "frame": "arch"
+      },
+      {
+        "entityId": "ideology-liberalism",
+        "assetId": "liberalism-asset-ideology-liberalism",
+        "label": "Declaração dos Direitos do Homem, 1789",
+        "note": "Transformou princípios liberais em linguagem política.",
+        "frame": "quarter"
+      }
+    ]
+  },
   "review": {
     "status": "com-fontes",
     "reviewer": null,
