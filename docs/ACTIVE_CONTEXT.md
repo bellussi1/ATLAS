@@ -136,7 +136,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Existem **51 esqueletos automáticos** de ideologias com narrativa de reserva (por exemplo, `trabalhismo`, 131 palavras); eles não contam como leitura publicada e não entram em rotas, prerender ou `ideologyReadings` antes de pesquisa.
     - O verbete ganhou tempo de leitura e contagem de seções, um bloco "Este verbete tem contexto maior" com link para a leitura contínua e "Voltar ao topo"; o mapa de entidades para leitura foi ampliado.
     - A página de leitura termina com "Conexões desta leitura" (3 a 5, com razão) e o teste de dados garante que nenhum rascunho ou auto-link apareça.
-    - Verificações: `content:build` release local `869446f…`; `test:content` **179/179**; `npm test` **306/307** (o timeout de `knowledge-network.spec.ts` passou **17/17** isolado); `typecheck` e `lint` exit 0; unidade de leituras **6/6**; `build` **1.185 rotas**; `e2e/pages.spec.ts` **20/20** e os dois testes focados de conexões/verbete **2/2**.
+    - Verificações: `content:build` gerou o release local `869446f…` (não publicado; o ponteiro continua em `45300c5…`); `test:content` **179/179**; `npm test` **306/307** (o timeout de `knowledge-network.spec.ts` passou **17/17** isolado); `typecheck` e `lint` exit 0; unidade de leituras **6/6**; `build` **1.185 rotas**; `e2e/pages.spec.ts` **20/20** e os dois testes focados de conexões/verbete **2/2**.
 
 ## Pendências que bloqueiam
 
