@@ -1,19 +1,4 @@
 /* Shared action language and predictable context geometry. */
-.view-switch a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0.7rem 1rem;
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-.timeline-list button {
-  transition:
-    background-color var(--motion-fast),
-    box-shadow var(--motion-fast);
-}
-
 .text-network li {
   display: grid;
   gap: 0.2rem;

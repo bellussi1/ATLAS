@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 
 import { explorerCatalogues } from '../src/app/core/content/queries/knowledge-explorer';
-import { expect, routeContentFixture, test } from './content-fixture';
+import { expect, openReadingFixture, routeContentFixture, test } from './content-fixture';
 
 const declaredDestinations = [
   '/',
@@ -418,12 +418,18 @@ test('each image appears once in the narrative; only the archive catalogue repea
 test('épocas list dated records and the relations explain each kind of connection', async ({
   page,
 }) => {
-  for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/']) {
-    await page.goto(`${path}`);
+  for (const slug of ['marxismo', 'liberalismo']) {
+    await openReadingFixture(page, slug);
     const era = page.locator('.era-chart').first();
-    await expect(era.locator('.dated-list li').first()).toBeVisible();
+    await expect(era.locator('.epoch-row').first()).toBeVisible();
+    await expect(era.locator('.era-epoch.is-selected .marker-note').first()).toContainText(
+      'Por que importa',
+    );
     await era.locator('.era-epoch .epoch-row').nth(1).click();
-    await expect(era.locator('.epoch-body h4').first()).toContainText('Registros datados');
+    await expect(era.locator('.era-epoch.is-selected .epoch-summary')).toBeVisible();
+    await expect(era.locator('.era-epoch.is-selected .alive-list').first()).toBeVisible();
+    await era.getByRole('button', { name: /^Pessoas/ }).click();
+    await expect(era.locator('.era-filter[aria-pressed="true"]')).toContainText('Pessoas');
 
     const relations = page.locator('.relations').first();
     await expect(relations.locator('.relation-legend li').first()).toBeVisible();

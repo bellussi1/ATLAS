@@ -17,21 +17,13 @@ import { type Entity, type Relation } from '@core/content/models/content-schema'
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
-import { TimelineAxisComponent } from '@ideologies/components/timeline-axis/timeline-axis.component';
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
-import { TimelineFocusService } from '@ideologies/services/timeline-focus.service';
-import { axisItemOf } from '@ideologies/utils/timeline-axis-items';
 import { ContextPanelService } from '@shared/ui/knowledge-context/context-panel.service';
 import { KnowledgeNetworkComponent } from '@shared/ui/knowledge-network/knowledge-network.component';
 
 @Component({
   selector: 'app-ideology-atlas',
-  imports: [
-    EditorialSourcesComponent,
-    RouterLink,
-    TimelineAxisComponent,
-    KnowledgeNetworkComponent,
-  ],
+  imports: [EditorialSourcesComponent, RouterLink, KnowledgeNetworkComponent],
   templateUrl: './ideology-atlas.component.html',
   styleUrls: [
     './ideology-atlas.component.scss',
@@ -42,7 +34,6 @@ import { KnowledgeNetworkComponent } from '@shared/ui/knowledge-network/knowledg
 export class IdeologyAtlasComponent {
   private readonly repository = inject(ContentRepository);
   private readonly graph = this.repository.knowledgeGraph;
-  private readonly focus = inject(TimelineFocusService);
   private readonly panel = inject(ContextPanelService);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly network = viewChild(KnowledgeNetworkComponent);
@@ -94,37 +85,6 @@ export class IdeologyAtlasComponent {
       ? this.visibleRelations()
       : this.visibleRelations().slice(0, this.relationPreview),
   );
-  readonly timelineEntities = computed(() =>
-    this.entities()
-      .filter(
-        (entity) =>
-          entity.kind !== 'ideology' &&
-          entity.kind !== 'concept' &&
-          entity.temporalExtent &&
-          (entity.temporalExtent.startYear !== null || entity.temporalExtent.endYear !== null),
-      )
-      .sort((a, b) => this.timelineYear(a) - this.timelineYear(b)),
-  );
-  readonly timelineItems = computed(() =>
-    this.timelineEntities().flatMap((entity) => axisItemOf(entity) ?? []),
-  );
-  /** Records the axis could carry if they had a date. */
-  readonly timelineUndated = computed(
-    () =>
-      this.entities().filter(
-        (entity) =>
-          entity.kind !== 'ideology' &&
-          entity.kind !== 'concept' &&
-          !this.timelineEntities().includes(entity),
-      ).length,
-  );
-  readonly timelineId = signal<string | null>(null);
-  readonly timelineSelectedId = computed(() => this.timelineSelected()?.id ?? null);
-  readonly timelineSelected = computed(
-    () =>
-      this.timelineEntities().find((entity) => entity.id === this.timelineId()) ??
-      this.timelineEntities()[0],
-  );
 
   readonly prose = readerProse;
   readonly predicate = readerPredicate;
@@ -155,14 +115,6 @@ export class IdeologyAtlasComponent {
     this.selectedId.set(entityId);
     const target = trigger ?? this.network()?.selectedTrigger() ?? this.host.nativeElement;
     void this.panel.open({ entityId }, target, []);
-  }
-  selectTimeline(entityId: string): void {
-    this.timelineId.set(entityId);
-    this.focus.entityId.set(entityId);
-    this.openContext(entityId);
-  }
-  timelineYear(entity: Entity): number {
-    return entity.temporalExtent?.startYear ?? entity.temporalExtent?.endYear ?? 0;
   }
   relationName(relation: KnowledgeRelationResult): string {
     const labels: Record<string, string> = {

@@ -28,14 +28,6 @@ describe('Liberalism atlas snapshot', () => {
       ],
     });
   });
-  function createAtlas() {
-    const fixture = TestBed.createComponent(IdeologyAtlasComponent);
-    fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
-    fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
-    fixture.componentRef.setInput('origin', '/leitura/liberalismo');
-    return fixture.componentInstance;
-  }
-
   it('scopes the shared network to this atlas and starts on its root', () => {
     const fixture = TestBed.createComponent(IdeologyAtlasComponent);
     fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
@@ -218,19 +210,5 @@ describe('Liberalism atlas snapshot', () => {
       (fixture.nativeElement as HTMLElement).querySelector<HTMLDetailsElement>('.text-network')
         ?.open,
     ).toBe(false);
-  });
-
-  it('feeds the time axis with dated people and events and echoes the pick', () => {
-    const page = createAtlas();
-    expect(page.timelineEntities().some((entity) => entity.kind === 'event')).toBe(true);
-    expect(page.timelineEntities().some((entity) => entity.kind === 'person')).toBe(true);
-    expect(page.timelineItems().map((item) => item.id)).toEqual(
-      page.timelineEntities().map((entity) => entity.id),
-    );
-    const last = page.timelineItems().at(-1)!;
-    page.selectTimeline(last.id);
-    expect(page.timelineSelected()?.id).toBe(last.id);
-    expect(page.selectedId()).toBe(last.id);
-    expect(page.unconnectedEntityCount()).toBeGreaterThan(0);
   });
 });

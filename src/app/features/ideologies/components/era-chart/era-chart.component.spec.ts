@@ -8,7 +8,21 @@ const person = (id: string, startYear: number, endYear: number) =>
   ({
     id,
     title: id,
+    kind: 'person',
     temporalExtent: { startYear, endYear, precision: 'year', label: null },
+  }) as Entity;
+const record = (
+  id: string,
+  kind: Entity['kind'],
+  startYear: number | null,
+  precision: 'year' | 'approximate' = 'year',
+) =>
+  ({
+    id,
+    title: id,
+    kind,
+    temporalExtent:
+      startYear === null ? null : { startYear, endYear: startYear, precision, label: null },
   }) as Entity;
 const epoch = (id: string, start: number, end: number): EraChartEpoch => ({
   id,
@@ -206,5 +220,104 @@ describe('EraChartComponent', () => {
     expect(root.querySelector('.axis')).toBeNull();
     expect(root.querySelectorAll('.era-epochs > li')).toHaveLength(2);
     expect(root.querySelector('.era-epoch.is-selected .epoch-title')!.textContent).toBe('a');
+  });
+
+  it('filters dated records and people by type without closing the epoch', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    fixture.componentRef.setInput('epochs', [epoch('a', 1840, 1900)]);
+    fixture.componentRef.setInput('people', [person('marx', 1818, 1883)]);
+    fixture.componentRef.setInput('markers', [
+      record('manifesto', 'work', 1848),
+      record('commune', 'event', 1871),
+      record('party', 'party', 1890),
+    ]);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const filter = (label: string) =>
+      [...root.querySelectorAll<HTMLButtonElement>('.era-filter')].find((button) =>
+        button.textContent?.includes(label),
+      )!;
+    expect(filter('Tudo').textContent).toContain('4');
+    expect(filter('Pessoas').textContent).toContain('1');
+    expect(filter('Obras').textContent).toContain('1');
+    expect(filter('Acontecimentos').textContent).toContain('1');
+    expect(filter('Organizações').textContent).toContain('1');
+
+    filter('Acontecimentos').click();
+    fixture.detectChanges();
+    expect(root.querySelector('.era-epoch.is-selected')).not.toBeNull();
+    expect(root.querySelector('.dated-list')!.textContent).toContain('commune');
+    expect(root.querySelector('.dated-list')!.textContent).not.toContain('manifesto');
+    expect(root.querySelector('.alive-list:not(.dated-list)')!.textContent).toContain(
+      'não inclui pessoas',
+    );
+
+    filter('Pessoas').click();
+    fixture.detectChanges();
+    expect(root.querySelector('.alive-list:not(.dated-list)')!.textContent).toContain('marx');
+    expect(root.querySelector('.dated-list')!.textContent).toContain('Nenhum registro de');
+    expect(root.querySelector('.dated-list')!.textContent).toContain('Pessoas');
+  });
+
+  it('separates transformative markers with their editorial reason from other records', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    fixture.componentRef.setInput('epochs', [epoch('a', 1840, 1900)]);
+    fixture.componentRef.setInput('people', []);
+    fixture.componentRef.setInput('markers', [
+      record('manifesto', 'work', 1848),
+      record('commune', 'event', 1871),
+    ]);
+    fixture.componentRef.setInput(
+      'markerNotes',
+      new Map([['manifesto', 'Deu ao programa comunista uma linguagem pública.']]),
+    );
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelector('.marker-list')!.textContent).toContain('manifesto');
+    expect(root.querySelector('.marker-note')!.textContent).toContain('Por que importa.');
+    expect(root.querySelector('.marker-note')!.textContent).toContain(
+      'Deu ao programa comunista uma linguagem pública.',
+    );
+    expect(root.querySelector('.dated-list')!.textContent).toContain('commune');
+    expect(root.querySelector('.dated-list')!.textContent).not.toContain('manifesto');
+  });
+
+  it('shows dated work and documented participation apart from the life span', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    fixture.componentRef.setInput('epochs', [epoch('a', 1840, 1900)]);
+    fixture.componentRef.setInput('people', [person('marx', 1818, 1883)]);
+    fixture.componentRef.setInput('markers', []);
+    fixture.componentRef.setInput(
+      'temporalNotes',
+      new Map([
+        [
+          'marx',
+          {
+            activity: { from: 1848, to: 1867, titles: ['Manifesto', 'O capital'] },
+            participation: [{ id: 'commune', title: 'Comuna de Paris', year: 1871 }],
+          },
+        ],
+      ]),
+    );
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const notes = [...root.querySelectorAll('.era-temporal-note')].map((note) =>
+      note.textContent!.trim(),
+    );
+    expect(notes).toContain('Obras datadas: 1848–1867 (2)');
+    expect(notes).toContain('Participação documentada: Comuna de Paris (1871)');
+    expect(root.querySelector('.era-life')).not.toBeNull();
+  });
+
+  it('labels a neutral century cut when there is no editorial periodization', () => {
+    const fixture = TestBed.createComponent(EraChartComponent);
+    fixture.componentRef.setInput('epochs', [epoch('a', 1801, 1900)]);
+    fixture.componentRef.setInput('people', []);
+    fixture.componentRef.setInput('markers', []);
+    fixture.componentRef.setInput('autoPeriods', true);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelector('#era-chart-title')!.textContent).toContain('Cronologia por séculos');
+    expect(root.querySelector('.era-header')!.textContent).toContain('periodização editorial');
   });
 });

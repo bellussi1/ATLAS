@@ -1,9 +1,9 @@
 import AxeBuilder from '@axe-core/playwright';
 
-import { expect, test } from './content-fixture';
+import { expect, openReadingFixture, test } from './content-fixture';
 
 test('explores entities, graph, timeline and returns to prior context', async ({ page }) => {
-  await page.goto('/leitura/liberalismo/');
+  await openReadingFixture(page, 'liberalismo');
   await expect(
     page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 1 }),
   ).toBeVisible();
@@ -35,21 +35,19 @@ test('explores entities, graph, timeline and returns to prior context', async ({
   await expect(page.getByRole('dialog', { name: 'John Locke' })).toBeVisible();
   await page.keyboard.press('Escape');
 
-  await page.locator('#atlas-section-tempo').scrollIntoViewIfNeeded();
-  await page.locator('.axis-marker').filter({ hasText: 'Revolução Gloriosa' }).click();
-  await expect(page.locator('.axis-selected strong')).toContainText('Revolução Gloriosa');
-  // The panel loads on demand; Escape only reaches it once the dialog exists.
+  await page.locator('#epocas').scrollIntoViewIfNeeded();
+  const era = page.locator('#epocas .era-chart');
+  await expect(era.locator('.marker-note').first()).toContainText('Por que importa');
+  await era
+    .locator('.marker-list .era-marker')
+    .filter({ hasText: 'Revolução Gloriosa' })
+    .locator('button')
+    .click();
   const contextDialog = page.getByRole('dialog', { name: 'Revolução Gloriosa' });
   await expect(contextDialog).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(contextDialog).toHaveCount(0);
-  await page.getByRole('button', { name: 'Próximo →' }).click();
-  await expect(page.getByRole('dialog')).toBeVisible();
-  await page.keyboard.press('Escape');
-  await expect(page.getByRole('button', { name: '← Anterior' })).toHaveAttribute(
-    'aria-disabled',
-    'false',
-  );
+  await expect(era.locator('.marker-list')).toContainText('Revolução Gloriosa');
   await page.locator('#atlas-section-rede').scrollIntoViewIfNeeded();
   await expect(page.locator('.text-network summary')).toBeVisible();
   const violations = (await new AxeBuilder({ page }).analyze()).violations;

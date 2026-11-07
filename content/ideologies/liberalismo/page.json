@@ -373,7 +373,13 @@
             "work-wealth-of-nations",
             "event-american-revolution",
             "event-french-revolution"
-          ]
+          ],
+          "markerNotes": {
+            "event-glorious-revolution": "Limitou o poder régio por lei e passou a exemplificar o governo por consentimento.",
+            "work-wealth-of-nations": "Deu ao liberalismo clássico uma linguagem econômica para o mercado, a divisão do trabalho e a crítica ao mercantilismo.",
+            "event-american-revolution": "Converteu direitos naturais em constituição escrita e federação, com exclusões que a leitura discute.",
+            "event-french-revolution": "Levou a soberania popular e a igualdade jurídica ao centro do vocabulário liberal, sem eliminar as exclusões de classe e gênero."
+          }
         },
         {
           "type": "explorations",

@@ -115,6 +115,13 @@ h2 {
   font-size: 0.875rem;
   line-height: 1.6;
 }
+.chronology-empty {
+  border: 2px dashed var(--rule-strong);
+  background: var(--paper-shade);
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
 .chapter-sources {
   margin-top: 1.5rem;
   border-top: 1px solid var(--rule-strong);

@@ -89,6 +89,12 @@
               />
             }
           }
+          @if (chapter.anchor === 'epocas' && !chaptersWithChronology().has(chapter.anchor)) {
+            <p class="chronology-empty" role="status">
+              Esta leitura ainda não tem datas estruturadas para uma cronologia. A periodização
+              acima segue a narrativa do capítulo.
+            </p>
+          }
           @if (reviews()[index]; as review) {
             <app-chapter-review [review]="review" [chapterTitle]="chapter.title" />
           }

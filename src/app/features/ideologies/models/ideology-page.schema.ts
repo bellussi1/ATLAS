@@ -115,7 +115,10 @@ export const pageBlockSchema = z.discriminatedUnion('type', [
       .array(z.object({ itemId: id, start: z.number().int(), end: z.number().int() }))
       .min(1),
     entityIds: z.array(id),
+    /** Records that changed the tradition, each explained in `markerNotes`. */
     markerIds: z.array(id),
+    /** Why each transformative record matters for this tradition. */
+    markerNotes: z.record(z.string(), z.string().min(1)).default({}),
   }),
   z.object({ type: z.literal('graph'), edgeIds: z.array(id) }),
   z.object({ type: z.literal('argument'), topic: z.literal('smith-marx') }),
@@ -415,6 +418,9 @@ export function validateIdeologyDossier(
         );
         if (block.epochs.some((e) => e.end < e.start))
           throw new Error('Época com datas invertidas.');
+        const markerIds = new Set(block.markerIds);
+        if (Object.keys(block.markerNotes).some((id) => !markerIds.has(id)))
+          throw new Error('Nota de marco para registro ausente do bloco.');
       }
       const items =
         block.type === 'explorations'

@@ -1,4 +1,10 @@
-import { expect, routeContent, test, waitForHydration } from './content-fixture';
+import {
+  expect,
+  openReadingFixture,
+  routeContent,
+  test,
+  waitForHydration,
+} from './content-fixture';
 
 test('keywords open sourced context without moving the reading', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -65,88 +71,61 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
   await context.close();
 });
 
-test('timeline selection and graph exploration preserve geometry', async ({ page }) => {
+test('chronology opens a record sheet and keeps the epoch in place', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/leitura/marxismo/');
-  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
-  await axis.scrollIntoViewIfNeeded();
-  const frame = axis.locator('.axis-scroller');
-  const before = await frame.boundingBox();
-  await axis.locator('.axis-marker').filter({ hasText: 'Comuna de Paris' }).click();
-  await expect(axis.locator('.axis-list li.current')).toContainText('Comuna de Paris');
-  expect((await frame.boundingBox())?.height).toBe(before?.height);
+  await openReadingFixture(page, 'marxismo');
+  const era = page.locator('#epocas .era-chart');
+  await era.scrollIntoViewIfNeeded();
+  const before = await era.boundingBox();
+  await era
+    .locator('.marker-list .era-marker')
+    .filter({ hasText: 'Manifesto Comunista' })
+    .first()
+    .locator('button')
+    .click();
+  const dialog = page.getByRole('dialog', { name: 'Manifesto Comunista' });
+  await expect(dialog).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  expect((await era.boundingBox())?.height).toBe(before?.height);
 });
 
-test('the timeline axis keeps markers apart and answers the keyboard on a phone', async ({
-  page,
-  request,
-}) => {
-  const html = await (await request.get('/leitura/marxismo/')).text();
-  expect(html).toContain('class="axis-marker');
-  expect(html).toContain('class="relation-sentences"');
+test('the chronology filters dense epochs and stays readable on a phone', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.setViewportSize({ width: 360, height: 740 });
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/leitura/marxismo/');
-  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
-  await expect(axis).toBeAttached();
-  await page.waitForLoadState('networkidle');
-  await axis.scrollIntoViewIfNeeded();
-  const markers = axis.locator('.axis-marker');
-  const total = await markers.count();
-  expect(total).toBeGreaterThan(3);
-  // No two markers of a track share a row and overlap, so each keeps its own touch target.
-  const boxes = await markers.evaluateAll((n) =>
-    n.map((e) => {
-      const r = e.getBoundingClientRect();
-      return {
-        track: e.closest('.axis-track')?.getAttribute('data-track'),
-        top: Math.round(r.top),
-        l: r.left,
-        r: r.right,
-      };
-    }),
+  await openReadingFixture(page, 'marxismo');
+  const era = page.locator('#epocas .era-chart');
+  await expect(era).toBeVisible();
+  await era.scrollIntoViewIfNeeded();
+  await expect(era.locator('.epoch-row').first()).toBeVisible();
+  await expect(era.locator('.marker-note').first()).toContainText('Por que importa');
+
+  await era.locator('.epoch-row').nth(1).click();
+  const selected = era.locator('.era-epoch.is-selected');
+  await era.getByRole('button', { name: /^Acontecimentos/ }).click();
+  await expect(era.locator('.era-filter[aria-pressed="true"]')).toContainText('Acontecimentos');
+  await expect(selected.locator('.marker-list')).toContainText('Comuna de Paris');
+  await expect(selected.locator('.alive-list:not(.dated-list)')).toContainText(
+    'não inclui pessoas',
   );
-  for (const a of boxes)
-    for (const b of boxes)
-      if (a !== b && a.track === b.track && a.top === b.top)
-        expect(a.r <= b.l + 1 || b.r <= a.l + 1).toBe(true);
-  await markers.nth(2).click();
-  await page.keyboard.press('Escape');
-  await expect(axis.locator('.axis-marker[aria-current="true"]')).toHaveCount(1);
-  await expect(axis.locator('.axis-list li.current')).toHaveCount(1);
-  await markers.nth(2).focus();
-  await page.keyboard.press('ArrowRight');
-  await expect(axis.locator('.axis-marker[aria-current="true"]')).toBeFocused();
+
+  await era.getByRole('button', { name: /^Tudo/ }).click();
+  await era.locator('.epoch-row').first().focus();
+  await page.keyboard.press('ArrowDown');
+  await expect(era.locator('.era-epoch.is-selected .epoch-title')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   expect(errors).toEqual([]);
 });
 
-test('dragging across the ruler cuts the axis, and the keyboard does the same', async ({
+test('a reading without structured dates says so instead of drawing an empty axis', async ({
   page,
 }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/leitura/marxismo/');
-  await page.waitForLoadState('networkidle');
-  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
-  await axis.locator('.axis-ruler').evaluate((el) => el.scrollIntoView({ block: 'center' }));
-  const all = await axis.locator('.axis-marker').count();
-  const ruler = axis.locator('.axis-ruler');
-  const box = (await ruler.boundingBox())!;
-  const visible = (await axis.locator('.axis-scroller').boundingBox())!;
-  await page.mouse.move(visible.x + 60, box.y + 20);
-  await page.mouse.down();
-  await page.mouse.move(visible.x + visible.width - 60, box.y + 20, { steps: 6 });
-  await page.mouse.up();
-  await expect(axis.locator('.axis-marker')).not.toHaveCount(all);
-  await axis.getByRole('button', { name: /^Tudo/ }).click();
-  await ruler.focus();
-  await page.keyboard.press('Enter');
-  for (let i = 0; i < 12; i++) await page.keyboard.press('ArrowRight');
-  await page.keyboard.press('Enter');
-  await expect(axis.locator('.axis-marker')).not.toHaveCount(all);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.goto('/leitura/social-democracia/');
+  await expect(page.locator('#epocas .chronology-empty')).toBeVisible();
+  await expect(page.locator('#conexoes app-timeline-axis')).toHaveCount(0);
+  await expect(page.locator('#conexoes')).not.toContainText('Pessoas e acontecimentos no tempo');
 });
 
 test('a term inside a context sheet opens another sheet and the trail returns', async ({

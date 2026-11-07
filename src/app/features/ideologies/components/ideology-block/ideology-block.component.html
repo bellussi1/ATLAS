@@ -12,7 +12,13 @@
     />
   }
   @case ('chronology') {
-    <app-era-chart [epochs]="eraEpochs()" [people]="entities()" [markers]="eraMarkers()" />
+    <app-era-chart
+      [epochs]="eraEpochs()"
+      [people]="entities()"
+      [markers]="eraMarkers()"
+      [markerNotes]="eraMarkerNotes()"
+      [temporalNotes]="eraTemporalNotes()"
+    />
   }
   @case ('argument') {
     <app-marx-atlas-page [inline]="true" />

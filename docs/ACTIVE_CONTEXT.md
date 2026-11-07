@@ -5,18 +5,18 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` existe no remoto e é a integração; a última rodada publicada é `791a362`. As frentes de zoom, performance do grafo, `publish-raw`, rotas `/leitura/:slug`, busca por nome e aposentadoria de capturas estão mescladas localmente e ainda não foram pushadas. `master` não recebeu esta rodada.
-- Conteúdo: 13 coleções publicadas no release `45300c5…`; `content/content-pointer.json` atualizado.
-- Build local: **1.185 rotas prerenderizadas**.
-- CI: `42274140215` falhou em `ingest:fetch-raw` porque os dois novos manifests de captura ainda não tinham blobs publicados no R2. `npm run ingest:publish-raw` foi corrigido e está publicando; reexecutar o run depois do upload.
+- Gitflow: `develop` é a integração; a última alteração registrada é `41af967`. A cronologia desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
+- Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
+- Build local: **1.189 rotas prerenderizadas**.
+- CI: não executado nesta sessão; a verificação abaixo é local.
 
 ## Verificações executadas
 
-- `npm test`: **304/304**.
-- `npm run test:content`: **171/171**.
-- `npm run build`: passou, **1.185 rotas**; `vercel.json` gerado com CSP de 9 hashes.
-- `npm run test:e2e`: `e2e/graph.spec.ts` **18/18**; `pages.spec.ts` **19/19** (inclui `/fontes` paginado e o grafo de `#conexoes`); `ideology-sheets.spec.ts` **8/8**; `public-routes` **35/35** em 390/1440, sem achados sérios em `/marxismo` e `/liberalismo`; `editorial-i18n` **6/6** (países, regimes, perfis e conceitos); `knowledge-explorer` (catálogos) **1/1**. `contextual-exploration` segue com **6/7**: liberalismo 1440 falha no y do termo ao voltar (diferença observada de **64 px**); ajustar a estabilidade do painel ou a tolerância do teste.
-- `npm run lint` e `npm run typecheck`: passaram.
+- `npm test`: **332/332**.
+- `npm run test:content`: **184/184**.
+- `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
+- `node node_modules/@playwright/test/cli.js test`: `pages`, `graph`, `encyclopedia`, `carousel`, `ideology-sheets`, `contextual-exploration` e `liberalism-atlas` **75/75**; `public-routes` + `accessibility` **36/36**, sem achados sérios em 390/1440.
+- `npm run lint` e `npm run typecheck`: exit 0.
 
 ## O que mudou nesta rodada
 
@@ -317,6 +317,16 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `ContextPanelService.entityId` acompanha a ficha aberta; o atlas usa esse sinal para manter a seleção do grafo em passo quando o leitor segue uma relação e volta pelo percurso. Entidades fora do recorte não alteram a seleção do grafo.
     - A lista textual de conexões continua como alternativa acessível; não há segunda ficha nem outro componente competindo pela seleção. O painel global de `/grafos` não mudou.
     - Verificações: `npm test` **342/342**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **48/48**, `e2e/liberalism-atlas.spec.ts` **3/3**, `e2e/ideology-sheets.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/encyclopedia.spec.ts` **22/22**, `e2e/carousel.spec.ts` **6/6**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390 sem `entity-reading` e sem overflow.
+
+45. **Cronologia única em `#épocas`**
+    - O eixo horizontal `app-timeline-axis` saiu de `#conexoes`. A leitura tem uma só cronologia, no capítulo de épocas; o atlas ficou restrito à rede e à lista textual. Foram removidos o componente, o layout, o serviço de foco e os testes do eixo, além do `view-switch` que apontava para uma seção inexistente.
+    - `app-era-chart` ganhou filtros por tipo (pessoas, obras, acontecimentos, organizações), faixa de duração por época, faixa da vida dentro do período, marcos destacados e “Por que importa”. Os filtros não fecham a época nem escondem a posição do período.
+    - O contrato `chronology` ganhou `markerNotes` (opcional para compatibilidade com o release publicado). As duas leituras com cronologia, marxismo e liberalismo, receberam nota editorial para cada marco; a validação recusa nota de registro ausente do bloco, mas aceita marco sem nota para não quebrar o release antigo.
+    - Vida, atividade e participação passaram a ser linhas distintas: a vida vem de `temporalExtent`; “Obras datadas” e “Participação documentada” vêm apenas de relações `authored`/`wrote` e `participated_in` já presentes no atlas. Ausência de relação significa “não registrado”, não “não aconteceu”; a ordem e a proximidade não são apresentadas como causalidade.
+    - Social-democracia e anarquismo não têm `temporalExtent` estruturado no atlas. Em vez de inventar datas ou manter um segundo eixo vazio, o capítulo de épocas mostra um estado editorial curto dizendo que faltam datas. A próxima etapa é dados, não outra visualização.
+    - O zoom/pan do eixo foi removido junto com o componente. A legibilidade em períodos densos passa a depender dos filtros e de “Ver todas”; o recorte temporal não foi transformado em gráfico de exploração. Essa é uma troca deliberada: uma cronologia vertical narrativa no lugar de duas visualizações concorrentes.
+    - Verificações: `npm test` **332/332**, `npm run test:content` **184/184**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` + `e2e/encyclopedia.spec.ts` + `e2e/carousel.spec.ts` + `e2e/ideology-sheets.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/liberalism-atlas.spec.ts` **75/75**, `e2e/public-routes.spec.ts` + `e2e/accessibility.spec.ts` **36/36**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390: cabeçalho em uma coluna no celular, sem overflow; marcos e notas legíveis; atividade/participação separadas.
+    - O release local é `eae46644…`; o ponteiro público continua em `a54eee…`. Nada foi publicado.
 
 ## Pendências que bloqueiam
 

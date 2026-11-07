@@ -110,7 +110,9 @@ O gatilho comunica a ação antes do hover. Seleção e expansão persistem até
 
 Explica recorte e ordem: trilho, eventos selecionáveis, períodos e filtros, indicador de posição e painel sincronizado. Fotografias e documentos com contexto e licença; sem mídia, a região continua estável. Eventos podem ligar pensadores, obras e correntes documentadas.
 
-Na leitura de uma tradição, a linha do tempo de **épocas é vertical**: um trilho, anos e épocas expansíveis, com registros e pessoas do intervalo. Não usar eixo horizontal com zoom, pan e régua nessa página; a exploração horizontal fica restrita ao atlas, quando o recorte temporal for o próprio objeto.
+Na leitura de uma tradição, a cronologia é **única e vive no capítulo de épocas**: um trilho vertical, anos, faixa de duração por período, filtros por tipo e épocas expansíveis com marcos, demais registros datados e pessoas do intervalo. Não usar eixo horizontal com zoom, pan e régua nessa página nem repetir a cronologia no capítulo de conexões; o atlas ficou restrito à rede e à lista textual.
+
+Cada marco transformador traz uma razão editorial curta (“Por que importa”) e só recebe esse destaque quando a fonte e a leitura sustentam a afirmação. Vida, atividade documentada (obras datadas ligadas ao registro) e participação documentada (relação de participação) são linhas distintas; ausência de relação significa “não registrado”, nunca “não aconteceu”.
 
 Não basta listar datas: selecionar muda informação, conexões e, quando existe, evidência visual. A estrutura semântica continua lista cronológica. Filtro vazio apresenta saída e não deixa seleção invisível como se estivesse no recorte. Datas aproximadas permanecem aproximadas. Simultaneidade, associação e causalidade são distintas.
 

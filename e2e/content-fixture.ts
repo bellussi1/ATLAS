@@ -52,6 +52,21 @@ export async function routeContentFixture(page: Page): Promise<void> {
   });
 }
 
+/**
+ * Opens a reading from the home page after serving the current build fixture. Client-side
+ * navigation avoids the pointer carried by the prerendered page, so unpublished editorial
+ * changes can be checked before the release is published.
+ */
+export async function openReadingFixture(page: Page, slug: string): Promise<void> {
+  await routeContentFixture(page);
+  await page.goto('/');
+  const select = page.locator('#sheet-select');
+  if (await select.isVisible()) await select.selectOption(slug);
+  else await page.locator(`.cover-choice[data-reading="${slug}"]`).click();
+  await page.getByRole('link', { name: 'Ler o texto completo' }).click();
+  await page.waitForURL(new RegExp(`/leitura/${slug}/?$`));
+}
+
 // Angular marks replayed events with `jsaction` in the SSR HTML and removes it once hydrated.
 // Waiting for that here keeps the first click or change from landing before its listener exists.
 export async function waitForHydration(page: Page): Promise<void> {

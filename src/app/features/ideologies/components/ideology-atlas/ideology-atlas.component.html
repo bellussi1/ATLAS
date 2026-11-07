@@ -24,10 +24,6 @@
         </p>
       </aside>
     </header>
-    <nav class="view-switch" aria-label="Capítulos de exploração">
-      <a [routerLink]="[]" fragment="graph-title" queryParamsHandling="preserve">Rede</a
-      ><a [routerLink]="[]" fragment="timeline-title" queryParamsHandling="preserve">Tempo</a>
-    </nav>
   }
 
   <section
@@ -44,7 +40,7 @@
             <h2 id="graph-title">Uma ideia. Muitas conexões.</h2>
             <p class="edge-legend">
               Busque um nome na barra do grafo, arraste para mover, use a roda para aproximar e
-              selecione um nó para abrir a ficha logo abaixo. Para percorrer os verbetes em lista,
+              selecione um nó para abrir a ficha de contexto. Para percorrer os verbetes em lista,
               <a routerLink="/acervo">abra o acervo completo</a>.
             </p>
           } @else {
@@ -138,34 +134,6 @@
       </p>
     }
     <p class="selection-announcement" role="status">{{ selected().title }} selecionado.</p>
-
-    <section
-      id="atlas-section-tempo"
-      class="timeline-section atlas-reading-chapter"
-      aria-labelledby="timeline-title"
-      [tabindex]="embedded() ? -1 : null"
-    >
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Datas registradas</p>
-          <h2 id="timeline-title">Pessoas e acontecimentos no tempo</h2>
-        </div>
-        <p>
-          Os registros aparecem na escala dos anos. Datas aproximadas permanecem aproximadas e
-          intervalos imprecisos não foram convertidos em datas exatas.
-        </p>
-      </div>
-      @if (timelineItems().length) {
-        <app-timeline-axis
-          [items]="timelineItems()"
-          [selectedId]="timelineSelectedId()"
-          [undated]="timelineUndated()"
-          (picked)="selectTimeline($event)"
-        />
-      } @else {
-        <p role="status">Ainda não há datas estruturadas suficientes para esta visualização.</p>
-      }
-    </section>
   </section>
   <footer class="editorial-note">
     <p>

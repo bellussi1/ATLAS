@@ -77,6 +77,15 @@ export class IdeologyPageComponent {
       group: chapterGroup(c.id),
     })),
   );
+  /** Chapters that already carry an editorial chronology block. */
+  readonly chaptersWithChronology = computed(
+    () =>
+      new Set(
+        (this.page()?.chapters ?? [])
+          .filter((chapter) => chapter.blocks.some((block) => block.type === 'chronology'))
+          .map((chapter) => chapter.anchor),
+      ),
+  );
   readonly mediaPlan = computed(() => {
     const page = this.page();
     return page ? planPageMedia(page, this.repository.knowledgeGraph) : new Map();

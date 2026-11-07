@@ -332,7 +332,15 @@
             "event-paris-commune",
             "institution-second-international",
             "event-russian-revolution"
-          ]
+          ],
+          "markerNotes": {
+            "work-wealth-of-nations": "Formulou a divisão do trabalho e a crítica ao mercantilismo, vocabulário que o marxismo retomaria para analisar a economia política.",
+            "work-communist-manifesto": "Deu ao programa comunista uma linguagem pública: luta de classes, crítica do capitalismo e organização operária.",
+            "work-capital-volume-i": "Transformou a crítica do capitalismo em análise sistemática da mercadoria, do valor e da exploração.",
+            "event-paris-commune": "Colocou um governo operário concreto no centro do debate sobre Estado e revolução.",
+            "institution-second-international": "Organizou partidos socialistas e expôs a disputa entre reforma e revolução.",
+            "event-russian-revolution": "Separou comunistas e social-democratas e deu ao marxismo um Estado concreto para defender ou criticar."
+          }
         },
         {
           "type": "explorations",

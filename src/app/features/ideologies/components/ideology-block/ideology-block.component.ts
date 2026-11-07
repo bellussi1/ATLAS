@@ -26,6 +26,7 @@ import {
   type RelationType,
   relationTypes,
 } from '@ideologies/models/relation-types';
+import { eraTemporalNotesForPeople } from '@ideologies/utils/chronology-temporal-notes';
 import { type PageMedia } from '@ideologies/utils/page-media-plan';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
@@ -136,6 +137,17 @@ export class IdeologyBlockComponent {
       ? block.markerIds.flatMap((id) => this.entity(id) ?? [])
       : [];
   });
+  /** Editorial reason for each transformative record, kept in the chronology block. */
+  readonly eraMarkerNotes = computed(() => {
+    const block = this.block();
+    return new Map<string, string>(
+      block.type === 'chronology' ? Object.entries(block.markerNotes) : [],
+    );
+  });
+  /** Dated works and documented participation come from relations already in the atlas. */
+  readonly eraTemporalNotes = computed(() =>
+    eraTemporalNotesForPeople(this.atlas(), this.entities()),
+  );
   readonly explorationItems = computed(() => {
     const block = this.block();
     return block.type === 'explorations' ? block.items : [];
