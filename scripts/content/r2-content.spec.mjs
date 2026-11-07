@@ -144,6 +144,29 @@ test('syncContentCache writes only digest-matching objects and rejects tampered 
   await assert.rejects(readFile(join(tamperedDirectory, 'c', `${expected.sha256}.json`)));
 });
 
+test('syncContentCache retries a transient 429 before failing', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'atlas-content-retry-'));
+  const pointerText = JSON.stringify(
+    buildPointer({
+      baseUrl: 'https://pub.example.test',
+      release: expected.sha256,
+      manifest: expected,
+      artifacts: [{ file: `search.${expected.sha256}.json`, ...expected }],
+      media: [],
+    }),
+  );
+  let calls = 0;
+  const fetchImpl = async () => {
+    calls += 1;
+    if (calls === 1) return new Response('busy', { status: 429, headers: { 'retry-after': '0' } });
+    return new Response(body, { status: 200 });
+  };
+  const result = await syncContentCache({ pointerText, directory, fetchImpl, retryBaseMs: 1 });
+  assert.deepEqual(result, { release: expected.sha256, downloaded: 1, total: 2 });
+  assert.equal(calls, 2);
+  assert.deepEqual(await readFile(join(directory, 'c', `${expected.sha256}.json`)), body);
+});
+
 test('putImmutable gzips a compressed object and replaces an uncompressed copy once', async (t) => {
   const config = {
     endpoint: 'https://r2.test',
