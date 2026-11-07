@@ -80,7 +80,12 @@ if (dryRun) {
   process.exitCode = 0;
 } else {
   const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
-  const result = spawnSync(npx, command, { stdio: 'inherit' });
+  // Windows cannot spawn a .cmd without a shell; quote arguments so paths with spaces survive.
+  const quote = (value) => (/[\s"&|<>^]/.test(value) ? `"${value.replaceAll('"', '""')}"` : value);
+  const result =
+    process.platform === 'win32'
+      ? spawnSync(`${npx} ${command.map(quote).join(' ')}`, { stdio: 'inherit', shell: true })
+      : spawnSync(npx, command, { stdio: 'inherit' });
   if (result.error) throw result.error;
   if (result.status !== 0) process.exitCode = result.status ?? 1;
 }

@@ -123,10 +123,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `npm run infra:prune-releases` mantém o ponteiro atual e os três releases anteriores distintos, a partir do histórico de `content/content-pointer.json`; o padrão é dry-run e `--apply` apaga só objetos de `c/` e `m/`. Executado em 06/11: **92 objetos / 19,9 MB** removidos; restaram **30 objetos em `c/` e 3 em `m/`**, com o release atual conferido por HEAD.
     - O Worker `atlas-content-delivery` e o lifecycle de `raw/` continuam aguardando o token Cloudflare; o `r2.dev` segue como origem pública.
 
-18. **Cloudflare Pages preparado**
+18. **Cloudflare Pages publicado**
     - `npm run infra:pages:check` valida o build contra os limites do plano gratuito (20.000 arquivos, 25 MiB por arquivo) e `npm run infra:pages` publica `dist/atlas/browser` em `atlas-bellussi.pages.dev`.
-    - O build em 06/11/2026 tinha **1.242 arquivos, 133,7 MB** e o maior arquivo em **0,86 MB**. `_headers`, `_redirects` e `404.html` já são o contrato nativo do Pages.
-    - Falta apenas criar o projeto e publicar com uma credencial Cloudflare (`npx wrangler login` ou token com Pages Edit). O R2 continua como origem do conteúdo; `ATLAS_CDN_URL` não muda.
+    - O build de 07/11/2026 tem **1.248 arquivos, 135,8 MB** e o maior arquivo em **0,84 MB** (`leitura/marxismo/index.html`); `_headers`, `_redirects` e `404.html` são o contrato nativo do Pages.
+    - Deploy concluído em 07/11/2026 (`https://a732d526.atlas-bellussi.pages.dev`, alias de produção `https://atlas-bellussi.pages.dev`): `/leitura/marxismo` responde **200**, `/marxismo` e `/marxismo/mesa` chegam ao mesmo destino via 301, `/fontes` serve **193 KB** e `/acervo?q=lula` responde 200.
+    - O Pages normaliza diretórios com **308** para a barra final; o canonical do app continua sem barra. É um salto a mais, não um erro de rota.
+    - `pages-deploy.mjs` passou a montar o comando com quoting no Windows, porque `spawnSync('npx.cmd')` sem shell falhava com `EINVAL`.
 
 19. **Leituras contínuas: skill, conexões e verbete**
     - Nova skill `atlas-create-reading` decide entre leitura e verbete, adapta os 12 capítulos a pessoa, acontecimento, instituição, período ou conceito, exige fontes acadêmicas e caso brasileiro e limita as conexões a cinco. `atlas-create-ideology` e `atlas-pipeline-tradicao` apontam para ela.
@@ -226,15 +228,16 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - A migração para `/leitura/:slug` foi commitada (`0086631`), com `vercel.json` alinhado em `25eebd1`; a entrega do Worker descompactado foi commitada em `ed25192`.
     - O Worker agora serve `raw/<sha256>.bin` (deploy `e1be72c7`), necessário para `ingest:fetch-raw` reidratar as capturas a partir do Worker em vez do `r2.dev`.
     - A issue **#46** foi tratada aposentando as capturas cujo replay diverge do `snapshotHash`: `liberalism/{2026-11-01-remoto,2026-11-01-retratos,2026-11-03-descoberta}` e `marxism/{2026-11-01-retratos,2026-11-02-remoto,2026-11-03-descoberta}`. Cada uma tem `retired.json` com issue, data, motivo e hash; `ingest:verify` registra e segue; `ingest:fetch-raw` não baixa blobs delas. As duas capturas `preserve` seguem verificadas.
+
 - A divergência também ocorre com o código de 03/11 (`aef543c`), o que indica snapshot gerado fora do estado commitado; a cobertura `refresh`/`remote` só volta com nova captura.
-    - `fetch-raw` passou a copiar para `generated/raw-cache` o corpo local que existia só nos blobs de uma captura; antes ele pulava o download e as outras capturas ficavam sem blob. Depois disso, `ingest:fetch-raw` baixou **15.135 de 15.979** respostas e `ingest:verify` passou: 2 capturas Wikimedia reproduzidas duas vezes sem rede e 26 capturas Wikipedia conferidas.
+  - `fetch-raw` passou a copiar para `generated/raw-cache` o corpo local que existia só nos blobs de uma captura; antes ele pulava o download e as outras capturas ficavam sem blob. Depois disso, `ingest:fetch-raw` baixou **15.135 de 15.979** respostas e `ingest:verify` passou: 2 capturas Wikimedia reproduzidas duas vezes sem rede e 26 capturas Wikipedia conferidas.
 
 ## Pendências que bloqueiam
 
 1. **CI do master** — a issue **#46** foi resolvida localmente: as capturas incompatíveis estão aposentadas, `ingest:verify` passou e os PRs de dependências podem destravar depois do merge. Falta enviar o `develop`, abrir o PR para a `master` e confirmar `verify`, `secrets` e `CodeQL`. Os PRs #45/#44/#41/#40/#38 estão rebaseados; #39/#37 aguardam recreate.
-2. **Suíte e2e completa** — `contextual-exploration` (liberalismo 1440) falha no y do termo ao voltar (diferença de **64 px**), embora o scroll volte ao lugar. Corrigir a estabilidade do painel ou a tolerância do teste antes de considerar a rodada verde.
-3. **Produção na Vercel** - o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`). Enquanto o `master` não receber a paginação, `/fontes` segue em 4,8 MB; o Worker de conteúdo também aguarda token Cloudflare.
-4. **Probe de 404** — hoje `https://atlasbr.vercel.app/caminho-inexistente` responde 200 com `index.html`; o `uptime.yml` falha por isso. Só verificar depois do deploy.
+2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** em 07/11, incluindo liberalismo em 1440; a diferença de 64 px não se reproduziu. Falta a suíte completa no CI do PR #48.
+3. **Produção** — o app está publicado no Cloudflare Pages (`atlas-bellussi.pages.dev`), com `/fontes` em **193 KB**. O `vercel.json` da raiz só vale no próximo deploy Vercel, e o job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; decidir se o Vercel segue como espelho ou se o Pages passa a ser o único alvo.
+4. **Probe de 404** — no Pages, `/rota-inexistente` responde **404** com `404.html` (3.078 bytes), `/grafos`, `/verbete/karl-marx` e `/acervo` respondem 200. O antigo `atlasbr.vercel.app` continua respondendo 200 com `index.html` e só será verificado se o Vercel for mantido.
 5. **Verbetes** — o modo `--partial` e o desempate por conteúdo foram implementados e testados; o piloto de 20 anexou registros sem perder os antigos. Falta o lote maior (bloqueado pela Onda 2 ausente), a revisão humana dos 20 e o perfil político derivado das relações (partido, ideologia e vertente; “lado” só com classificação atribuída).
 6. **Onda 2 ausente** — `wiki/verbetes-citados/index.json` responde **404** e não há prefixo `wiki/verbetes-citados` no `atlas-drafts`; os 92 objetos existentes são de anarquismo, liberalismo, marxismo e social-democracia. Sem os 414 artigos/896 extratos não há lote maior neste checkout.
 
