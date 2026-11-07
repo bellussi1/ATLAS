@@ -40,18 +40,3 @@ export function batchEdgeSegments(segments: readonly EdgeSegment[], buckets = 5)
       opacity: Math.round(0.55 * group.fade * 100) / 100,
     }));
 }
-
-/** One `<path>` per colour; each dot is a zero-length line with a round cap. */
-export function batchDots(
-  dots: readonly { x: number; y: number; color: string }[],
-): { color: string; d: string }[] {
-  const groups = new Map<string, string[]>();
-  for (const dot of dots) {
-    const parts = groups.get(dot.color) ?? [];
-    parts.push(`M${round(dot.x)} ${round(dot.y)}h0`);
-    groups.set(dot.color, parts);
-  }
-  return [...groups]
-    .sort(([a], [b]) => a.localeCompare(b, 'en'))
-    .map(([color, parts]) => ({ color, d: parts.join('') }));
-}

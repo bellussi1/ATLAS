@@ -5,17 +5,17 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; a última alteração registrada é `7c4a25f`. O encerramento editorial desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
+- Gitflow: `develop` é a integração; a última alteração registrada é `0728dd0`. A remoção do minimapa entra em commit local, sem push; `master` não recebeu a rodada.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**.
 - CI: não executado nesta sessão; a verificação abaixo é local.
 
 ## Verificações executadas
 
-- `npm test`: **358/358**.
+- `npm test`: **357/357**.
 - `npm run test:content`: **184/184**.
 - `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `node node_modules/@playwright/test/cli.js test`: `pages.spec.ts` + `contextual-exploration.spec.ts` + `encyclopedia.spec.ts` + `ideology-sheets.spec.ts` **58/58**, incluindo o encerramento em cards, o card-líder e as auditorias Axe.
+- `node node_modules/@playwright/test/cli.js test e2e/graph.spec.ts e2e/pages.spec.ts`: **54/54**, incluindo a ausência do minimapa, o encerramento em cards e as auditorias Axe.
 - `npm run lint` e `npm run typecheck`: exit 0.
 
 ## O que mudou nesta rodada
@@ -370,6 +370,13 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Nenhum contrato de capítulo ou de conteúdo tipado mudou. O contrato de `connections` é dado editorial da feature.
     - Verificações: `npm test` **358/358**, `npm run test:content` **184/184**, `build` **1.189 rotas**, `e2e/pages.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/encyclopedia.spec.ts` + `e2e/ideology-sheets.spec.ts` **58/58**, `lint` e `typecheck` exit 0. Conferência visual em 1440 e 390 sem overflow, com o card-líder, as quatro relações e os créditos verificados nas quatro leituras.
     - Limite: as imagens dos cards vêm de registros do grafo; uma leitura futura sem mídia licenciada cai na ilustração geométrica. A composição foi verificada com três cards por leitura, não com quatro ou cinco. Um stash de outra branch (`wip-header-home-atlas-graph`) estava aplicado sobre a árvore e foi resolvido para o lado atual; o stash continua em `git stash list`. Nada foi publicado.
+
+50. **Minimapa do grafo removido**
+    - O minimapa de `/grafos` recalculava a posição de todos os nós visíveis a cada mudança de `view()` e desenhava um segundo conjunto de caminhos SVG. Ele já aparecia apenas na tela cheia, porque o grafo embutido nos capítulos usa `embedded()`.
+    - Foram removidos o bloco `.minimap` do template, os sinais `minimapBase`/`minimap`, o método `minimapJump`, os estilos e o helper `batchDots` que existia só para os pontos do minimapa.
+    - A orientação em `/grafos` fica com o zoom, o reenquadramento, a busca, os rótulos e a legenda. O grafo embutido não foi alterado.
+    - Verificação: `/grafos` abriu localmente sem `.minimap` e sem o grupo “Visão geral do mapa”, com 1.156 nós e o zoom em 100%; `/leitura/marxismo` abriu com 12 capítulos e 3 cards de encerramento, sem erro de leitura. O servidor de desenvolvimento respondeu em `http://localhost:4306`; `http://127.0.0.1:4306` recusou a conexão, o que explica falha de acesso quando o endereço é trocado.
+    - Verificações: `npm test` **357/357**, `npm run test:content` **184/184**, `build` **1.189 rotas**, `e2e/graph.spec.ts` + `e2e/pages.spec.ts` **54/54**, `lint` e `typecheck` exit 0. Conferência local: `/grafos` sem minimapa, com 1.156 nós; `/leitura/marxismo` com 12 capítulos e 3 cards, sem erro de leitura. Nada foi publicado.
 
 ## Pendências que bloqueiam
 

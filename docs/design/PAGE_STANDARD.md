@@ -130,6 +130,8 @@ Conectores e progresso podem responder ao scroll ou à seleção, sem mover a na
 
 Grafo representa proposições legíveis, não decoração. Nós com hover e foco destacando as arestas incidentes, seleção por clique e contexto sincronizado. Filtros de tipo, realce de caminho, descoberta progressiva e retorno quando ajudam a pergunta histórica. Zoom e pan só quando necessários, com controles alternativos e sem excluir o teclado.
 
+O grafo em tela cheia não usa minimapa: a visão geral duplicava o mapa e recalculava todos os nós a cada mudança de `view`. Ficam o zoom, o reenquadramento e a busca; a orientação vem do recorte, dos rótulos e da legenda.
+
 Posições determinísticas, sem saltos ao selecionar. Começar com recorte legível; não abrir todos os nós por padrão. Oferecer tabela ou lista com direção, tipo, certeza e fonte.
 
 Na leitura contínua não há um índice de entidades separado acima do grafo. A busca do grafo, os nós focáveis e o link para o acervo em lista cumprem a descoberta sem repetir as mesmas fichas já vistas nos capítulos. O `CardCarouselComponent` continua disponível para usos editoriais próprios, como "Posições por registro".

@@ -247,13 +247,12 @@ test('nodes stay still and no region colour or name covers the map', async ({ pa
   await expect(page.locator('[data-node]').first()).toBeVisible();
 });
 
-test('the overview map stays inside the window', async ({ page }) => {
+test('the full-screen graph has no overview minimap', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
-  const map = await page.getByRole('group', { name: /Visão geral do mapa/ }).boundingBox();
-  expect(map!.x + map!.width).toBeLessThanOrEqual(1280);
-  expect(map!.y + map!.height).toBeLessThanOrEqual(800);
+  await expect(page.locator('.minimap')).toHaveCount(0);
+  await expect(page.getByRole('group', { name: /Visão geral do mapa/ })).toHaveCount(0);
 });
 
 test('zoomed out the links are plain lines; up close they carry their wording', async ({

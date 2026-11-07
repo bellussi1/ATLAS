@@ -691,17 +691,6 @@ kbd {
   justify-items: end;
   gap: 0.5rem;
 }
-.minimap {
-  display: block;
-  padding: 4px;
-  cursor: crosshair;
-  background: color-mix(in srgb, var(--color-surface-raised) 96%, transparent);
-}
-.minimap__view {
-  fill: color-mix(in srgb, var(--color-focus) 6%, transparent);
-  stroke: var(--color-ink);
-  stroke-width: 1.5;
-}
 .status {
   margin: 0;
   padding: 0.45rem 0.75rem;

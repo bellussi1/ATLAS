@@ -56,7 +56,7 @@ import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illust
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 
-import { batchDots, batchEdgeSegments, type EdgeSegment } from './network-batching';
+import { batchEdgeSegments, type EdgeSegment } from './network-batching';
 import { shapePath } from './network-shapes';
 
 interface LabelView extends PlacedLabel {
@@ -601,43 +601,6 @@ export class KnowledgeNetworkComponent {
     }
     return placed;
   });
-  /** Overview of the whole map with the part on screen outlined. */
-  private readonly minimapBase = computed(() => {
-    const world = this.world();
-    const positions = this.positions();
-    if (!positions || !world.width) return null;
-    const width = 168;
-    const height = Math.round(Math.max(60, Math.min(120, (width * world.height) / world.width)));
-    const scale = Math.min(width / world.width, height / world.height);
-    const dots = this.visible().nodes.flatMap((node) => {
-      const point = positions.get(node.id);
-      return point
-        ? [
-            {
-              x: point.x * scale,
-              y: point.y * scale,
-              color: networkKindDefinition(node.kind).color,
-            },
-          ]
-        : [];
-    });
-    return { width, height, scale, dotPaths: batchDots(dots) };
-  });
-  readonly minimap = computed(() => {
-    const base = this.minimapBase();
-    if (!base) return null;
-    const { x, y, k } = this.view();
-    const { width: sw, height: sh } = this.size();
-    return {
-      ...base,
-      box: {
-        x: (-x / k) * base.scale,
-        y: (-y / k) * base.scale,
-        w: (sw / k) * base.scale,
-        h: (sh / k) * base.scale,
-      },
-    };
-  });
   /** Card that follows the pointer: the node, or the link, under it. */
   readonly hoverCard = computed(() => {
     const at = this.pointerAt();
@@ -1044,19 +1007,6 @@ export class KnowledgeNetworkComponent {
     this.reveal(next);
     this.focusNode(next);
   }
-  /** Click or key on the overview: centres the view on that spot. */
-  minimapJump(event: MouseEvent): void {
-    const map = this.minimap();
-    if (!map) return;
-    const rect = (event.currentTarget as SVGElement).getBoundingClientRect();
-    const wx = (event.clientX - rect.left) / map.scale;
-    const wy = (event.clientY - rect.top) / map.scale;
-    const { width, height } = this.size();
-    const { k } = this.view();
-    this.autoFit = false;
-    this.glideTo({ k, x: width / 2 - wx * k, y: height / 2 - wy * k }, true);
-  }
-
   // ---- view: zoom and pan ----
 
   fit(animate = false): void {

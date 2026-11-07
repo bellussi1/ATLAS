@@ -528,37 +528,6 @@
           }
         }
         <div class="hud__side">
-          @if (!embedded()) {
-            @if (minimap(); as map) {
-              <svg
-                class="minimap card"
-                [attr.viewBox]="'0 0 ' + map.width + ' ' + map.height"
-                [attr.width]="map.width"
-                [attr.height]="map.height"
-                role="group"
-                tabindex="0"
-                aria-label="Visão geral do mapa. Clique para levar a vista até aquele ponto; setas movem a vista."
-                (click)="minimapJump($event)"
-                (keydown)="canvasKey($event)"
-              >
-                @for (path of map.dotPaths; track path.color) {
-                  <path
-                    [attr.d]="path.d"
-                    [attr.stroke]="'var(' + path.color + ')'"
-                    stroke-linecap="round"
-                    stroke-width="3.2"
-                  />
-                }
-                <rect
-                  class="minimap__view"
-                  [attr.x]="map.box.x"
-                  [attr.y]="map.box.y"
-                  [attr.width]="map.box.w"
-                  [attr.height]="map.box.h"
-                />
-              </svg>
-            }
-          }
           <div class="zoom card" role="group" aria-label="Zoom">
             <button type="button" (click)="zoomStep(1.3)" aria-label="Aproximar">+</button>
             <button type="button" (click)="zoomStep(1 / 1.3)" aria-label="Afastar">−</button>
