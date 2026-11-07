@@ -24,6 +24,7 @@ import {
   linksOf,
   type NetworkEdge,
   networkKindDefinition,
+  networkKindGroups,
   type NetworkKindId,
   networkKinds,
   type NetworkNode,
@@ -130,6 +131,10 @@ export class KnowledgeNetworkComponent {
   readonly inspect = output<string>();
 
   readonly kinds = networkKinds;
+  readonly kindGroups = networkKindGroups.map((group) => ({
+    ...group,
+    kinds: networkKinds.filter((kind) => kind.group === group.id),
+  }));
   readonly families = relationFamilies;
   private readonly familyById = new Map(this.families.map((family) => [family.id, family]));
   readonly collections = this.network.collections.filter((c) => c.count > 0);

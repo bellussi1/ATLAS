@@ -88,13 +88,33 @@ describe('knowledge network', () => {
     );
   });
 
-  it('maps every entity kind to one of the eight legend families', () => {
+  it('maps every entity kind to one of the ten legend families', () => {
     expect(networkKindOf('institution')).toBe('organization');
-    expect(networkKindOf('historical-polity')).toBe('place');
+    expect(networkKindOf('historical-polity')).toBe('polity');
     expect(networkKindOf('article')).toBe('work');
-    expect(networkKinds).toHaveLength(8);
-    expect(new Set(networkKinds.map((k) => k.shape)).size).toBe(8);
-    expect(new Set(networkKinds.map((k) => k.color)).size).toBe(8);
+    expect(networkKindOfEntity({ id: 'p', kind: 'place', placeType: 'country' })).toBe('country');
+    expect(networkKindOfEntity({ id: 'r', kind: 'place', placeType: 'regime' })).toBe('polity');
+    expect(networkKindOfEntity({ id: 'c', kind: 'place' })).toBe('place');
+    expect(
+      networkKindOfEntity({ id: 'p2', kind: 'place', description: 'País da Europa Central.' }),
+    ).toBe('country');
+    expect(
+      networkKindOfEntity({ id: 'p3', kind: 'concept', description: 'Capital da França.' }),
+    ).toBe('place');
+    expect(
+      networkKindOfEntity({ id: 'p4', kind: 'institution', description: 'País da Oceania.' }),
+    ).toBe('country');
+    expect(networkKindOfEntity({ id: 'wiki-topic-australia', kind: 'institution' })).toBe(
+      'country',
+    );
+    expect(networkKindOfEntity({ id: 'wiki-topic-berlim', kind: 'concept' })).toBe('place');
+    expect(networkKindOfEntity({ id: 'wiki-topic-iluminismo', kind: 'institution' })).toBe(
+      'concept',
+    );
+    expect(networkKinds).toHaveLength(10);
+    expect(new Set(networkKinds.map((k) => k.shape)).size).toBe(10);
+    expect(new Set(networkKinds.map((k) => k.color)).size).toBe(10);
+    expect(new Set(networkKinds.map((k) => k.code)).size).toBe(10);
   });
 
   it('keeps dated events as events and topic records as concepts', () => {
@@ -102,9 +122,19 @@ describe('knowledge network', () => {
     expect(networkKindOfEntity({ id: 'wiki-topic-aborto', kind: 'concept' })).toBe('concept');
   });
 
-  it('gives each relation family its own colour or dash pattern', () => {
+  it('groups relation types into seven readable families', () => {
+    expect(relationFamilies.map((family) => family.label)).toEqual([
+      'Influência',
+      'Ruptura',
+      'Atuação',
+      'Criação',
+      'Continuidade',
+      'Relação documentada',
+      'Conexão',
+    ]);
     const looks = relationFamilies.map((f) => `${f.color}|${f.dash}`);
     expect(new Set(looks).size).toBe(relationFamilies.length);
+    expect(network.edges.find((edge) => edge.nature === 'navigation')?.family).toBe('connection');
   });
 
   it('filters by kind, collection and connection, dropping edges of hidden nodes', () => {
@@ -137,7 +167,7 @@ describe('knowledge network', () => {
       id: 'link',
       source: 'root',
       target: 'person',
-      family: 'associated',
+      family: 'connection',
       collection: 'atlas-a',
     } as unknown as NetworkEdge;
     const cut = filterNetwork(

@@ -75,24 +75,26 @@ describe('KnowledgeNetworkComponent', () => {
     expect(el.querySelector('svg.canvas')?.getAttribute('aria-label')).toContain('Grafo');
     const legend = el.querySelector('#graph-controls')!.textContent!;
     for (const label of [
+      'Pessoas e ideias',
+      'Obras e acontecimentos',
+      'Instituições e territórios',
       'Ideologias',
       'Pessoas',
+      'Conceitos',
       'Obras',
+      'Acontecimentos',
       'Organizações',
       'Partidos',
-      'Acontecimentos',
+      'Países',
+      'Formações políticas',
       'Lugares',
-      'Conceitos',
-      'Influenciou',
-      'Participou de',
-      'Foi membro de',
-      'Fundou',
-      'Escreveu',
-      'Desenvolveu-se em',
-      'Reagiu contra',
-      'Sucedeu',
-      'Governou',
-      'Ocorreu em',
+      'Influência',
+      'Ruptura',
+      'Atuação',
+      'Criação',
+      'Continuidade',
+      'Relação documentada',
+      'Conexão',
     ])
       expect(legend).toContain(label);
   });

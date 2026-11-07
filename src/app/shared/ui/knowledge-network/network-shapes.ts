@@ -52,6 +52,29 @@ export function shapePath(shape: NetworkShape, r: number): string {
         [0, r * 1.25],
         [-r, r * 0.2],
       ]);
+    case 'shield':
+      return polygon([
+        [-r * 0.9, -r * 0.95],
+        [r * 0.9, -r * 0.95],
+        [r * 0.9, r * 0.1],
+        [0, r * 1.2],
+        [-r * 0.9, r * 0.1],
+      ]);
+    case 'cross':
+      return polygon([
+        [-r * 0.34, -r],
+        [r * 0.34, -r],
+        [r * 0.34, -r * 0.34],
+        [r, -r * 0.34],
+        [r, r * 0.34],
+        [r * 0.34, r * 0.34],
+        [r * 0.34, r],
+        [-r * 0.34, r],
+        [-r * 0.34, r * 0.34],
+        [-r, r * 0.34],
+        [-r, -r * 0.34],
+        [-r * 0.34, -r * 0.34],
+      ]);
     case 'diamond':
       return polygon([
         [0, -r * 1.25],

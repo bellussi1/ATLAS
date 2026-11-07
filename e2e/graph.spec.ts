@@ -19,7 +19,16 @@ test('the graph page fills the window without page scroll and explains its legen
   expect(metrics.scrollHeight).toBeLessThanOrEqual(metrics.innerHeight);
   expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.innerWidth);
   const legend = page.getByRole('complementary', { name: 'Legenda e filtros' });
-  for (const name of ['Ideologias', 'Pessoas', 'Obras', 'Influenciou', 'Escreveu', 'Associado a'])
+  for (const name of [
+    'Ideologias',
+    'Pessoas',
+    'Obras',
+    'Países',
+    'Formações políticas',
+    'Influência',
+    'Criação',
+    'Conexão',
+  ])
     await expect(legend.getByRole('button', { name: new RegExp(name) })).toBeVisible();
 });
 

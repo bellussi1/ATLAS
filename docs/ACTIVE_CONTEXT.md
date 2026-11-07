@@ -255,9 +255,20 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 
 
 
+36. **Tipos de nó e de ligação no grafo**
+    - Dez famílias de nó, agrupadas em Pessoas e ideias, Obras e acontecimentos e Instituições e territórios. Países e formações políticas deixaram de se misturar com Lugares e Organizações.
+    - `networkKindOfEntity` passou a ler `placeType` e a descrição (“País…”, “Capital…”); overrides revisados corrigem 50 registros que a captura classificou como instituição/conceito.
+    - As 11 famílias de ligação viraram 7: Influência, Ruptura, Atuação, Criação, Continuidade, Relação documentada e Conexão. O verbo exato continua na ficha.
+    - A legenda ganhou grupos, tiles com moldura, forma colorida e índice `01`–`10`; o estado desligado não depende só da cor.
+    - Contagens após a revisão: Países 69, Lugares 79, Organizações 153, Conceitos 251, Formações políticas 3; ligações Influência 132, Ruptura 77, Atuação 47, Criação 53, Continuidade 7, Relação documentada 308, Conexão 212.
+    - A classificação de origem continua ampla; os overrides são dívida declarada em `docs/design/GRAFO-TIPOS.md` e pedem uma onda de dados.
+    - Verificações: `npm test` **325/325**, `e2e/graph.spec.ts` **18/18**, `lint` e `typecheck` exit 0, `build` passou.
+
+
+
 ## Pendências que bloqueiam
 
-1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos e ficha do nó estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
+1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos, ficha do nó e tipos do grafo estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
 2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** e o CI do PR #48 concluiu `verify` em 16m39s. `e2e/graph.spec.ts` passou **18/18** depois da ficha do nó.
 3. **Produção** — o app está publicado no Cloudflare Pages (`atlas-bellussi.pages.dev`), com `/fontes` em **193 KB**. O `vercel.json` da raiz só vale no próximo deploy Vercel, e o job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; decidir se o Vercel segue como espelho ou se o Pages passa a ser o único alvo.
 4. **Probe de 404** — no Pages, `/rota-inexistente` responde **404** com `404.html` (3.078 bytes), `/grafos`, `/verbete/karl-marx` e `/acervo` respondem 200. O antigo `atlasbr.vercel.app` continua respondendo 200 com `index.html` e só será verificado se o Vercel for mantido.

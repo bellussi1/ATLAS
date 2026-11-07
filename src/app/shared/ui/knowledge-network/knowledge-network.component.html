@@ -83,30 +83,38 @@
     >
       <details class="panel" open>
         <summary><h2>Tipos de nó</h2></summary>
-        <p class="hint">Cada tipo tem cor e forma próprias. Clique para mostrar ou ocultar.</p>
-        <ul class="legend">
-          @for (kind of kinds; track kind.id) {
-            <li>
-              <button
-                type="button"
-                class="legend__item"
-                [attr.aria-pressed]="kindsOn().has(kind.id)"
-                (click)="toggleKind(kind.id)"
-                (dblclick)="soloKind(kind.id)"
-              >
-                <svg class="swatch" viewBox="-12 -12 24 24" aria-hidden="true">
-                  <path
-                    [attr.d]="shape(kind.shape, 8)"
-                    [style.fill]="'var(' + kind.color + ')'"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-                <span class="legend__name">{{ kind.plural }}</span>
-                <span class="legend__count">{{ counts().kinds.get(kind.id) ?? 0 }}</span>
-              </button>
-            </li>
-          }
-        </ul>
+        <p class="hint">
+          Cada tipo tem cor, forma e índice próprios. Clique para mostrar ou ocultar.
+        </p>
+        @for (group of kindGroups; track group.id) {
+          <section class="legend__group" [attr.aria-labelledby]="'legend-group-' + group.id">
+            <h3 class="legend__group-title" [id]="'legend-group-' + group.id">
+              {{ group.title }}
+            </h3>
+            <ul class="legend">
+              @for (kind of group.kinds; track kind.id) {
+                <li>
+                  <button
+                    type="button"
+                    class="legend__item"
+                    [attr.aria-pressed]="kindsOn().has(kind.id)"
+                    (click)="toggleKind(kind.id)"
+                    (dblclick)="soloKind(kind.id)"
+                  >
+                    <span class="legend__mark" [style.--mark]="'var(' + kind.color + ')'">
+                      <svg class="swatch" viewBox="-14 -14 28 28" aria-hidden="true">
+                        <path [attr.d]="shape(kind.shape, 8)" fill-rule="evenodd" />
+                      </svg>
+                      <span class="legend__code" aria-hidden="true">{{ kind.code }}</span>
+                    </span>
+                    <span class="legend__name">{{ kind.plural }}</span>
+                    <span class="legend__count">{{ counts().kinds.get(kind.id) ?? 0 }}</span>
+                  </button>
+                </li>
+              }
+            </ul>
+          </section>
+        }
         <p class="hint">Duplo clique mostra só aquele tipo.</p>
       </details>
 
