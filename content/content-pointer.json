@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev",
-  "release": "73a8b5a0d120183c0be08c88df4a51ebc71ecfe218d14c4a1e19e4ab104eaaea",
+  "release": "45300c5ac9cee7d2f777cf19848f9faee879c5561197664048573f1825a1033f",
   "manifest": {
-    "sha256": "c88726ad25f1f16bde52e019ebbc5110327a5f89e436d207faa90a896d83617c",
-    "bytes": 5353
+    "sha256": "6be861f3c32feacc4b6b349234a040e0b90a1e4fe464f82d3b001d83b7a8034e",
+    "bytes": 5354
   },
   "artifacts": [
     {
@@ -28,14 +28,14 @@
       "file": "atlas-liberalism.d9188623e97a8f47211c218e9676a4862b6efcdb2b4de037bb20a9e279401cab.json"
     },
     {
-      "sha256": "69bb602c913f75f2a020daa3b68c826646117375c3c61115f66484c6db4e40b6",
-      "bytes": 312526,
-      "file": "atlas-marx-valor.69bb602c913f75f2a020daa3b68c826646117375c3c61115f66484c6db4e40b6.json"
+      "sha256": "f5f436e1177cbf41eb63c1fd0624a4b50c29990d17474605b567eeb7fd55973e",
+      "bytes": 315417,
+      "file": "atlas-marx-valor.f5f436e1177cbf41eb63c1fd0624a4b50c29990d17474605b567eeb7fd55973e.json"
     },
     {
-      "sha256": "c60ba49d4d1636f50d57323daa9c98b2d0b233a0c54f3cb62b29fc8fdbaa6214",
-      "bytes": 20410,
-      "file": "atlas-constitutional-contexts.c60ba49d4d1636f50d57323daa9c98b2d0b233a0c54f3cb62b29fc8fdbaa6214.json"
+      "sha256": "6313f0470179ab6fb545928c70c2cc6ad804f467febf08bfa92e1f23fc070683",
+      "bytes": 20490,
+      "file": "atlas-constitutional-contexts.6313f0470179ab6fb545928c70c2cc6ad804f467febf08bfa92e1f23fc070683.json"
     },
     {
       "sha256": "3d030c6e95d440ca862436d7f6a34cecc444c9316d006b0c6518aed132a03981",
@@ -53,14 +53,14 @@
       "file": "atlas-outras-ideologias.7036fdf881c31320de1ad68d158496c65e5b2f16b4ed473f60006a0d94ca4c1a.json"
     },
     {
-      "sha256": "c081150c0ab772fd8348df501e851e42f0fc27696bf00c8a0bb0c2ef0142d5c8",
-      "bytes": 692891,
-      "file": "atlas-social-democracia.c081150c0ab772fd8348df501e851e42f0fc27696bf00c8a0bb0c2ef0142d5c8.json"
+      "sha256": "4fd1ebb73d0c1e593b6e4498fdc4c1ff71d8bff0152e87b521432b42010ac5a1",
+      "bytes": 687202,
+      "file": "atlas-social-democracia.4fd1ebb73d0c1e593b6e4498fdc4c1ff71d8bff0152e87b521432b42010ac5a1.json"
     },
     {
-      "sha256": "c0bf38351708673dfb72ef047610ee774021b4c0a457b2aaa19cc8c2228ab660",
-      "bytes": 573990,
-      "file": "atlas-anarquismo.c0bf38351708673dfb72ef047610ee774021b4c0a457b2aaa19cc8c2228ab660.json"
+      "sha256": "b02e239e427075677c310aa279070ea4aa1379c55ca8f2723e26bf271ed15d31",
+      "bytes": 572890,
+      "file": "atlas-anarquismo.b02e239e427075677c310aa279070ea4aa1379c55ca8f2723e26bf271ed15d31.json"
     },
     {
       "sha256": "fa078a44a82413525f3026f2335db652ce84442ce85f1a1c7f4b4702f3c02e2a",
@@ -68,44 +68,44 @@
       "file": "atlas-ideologias-principais.fa078a44a82413525f3026f2335db652ce84442ce85f1a1c7f4b4702f3c02e2a.json"
     },
     {
-      "sha256": "06026a972a107c00c80b7ce05feacc3cb9985479ff1ecc6ba4fe935a05165665",
-      "bytes": 10336591,
-      "file": "atlas-verbetes-citados.06026a972a107c00c80b7ce05feacc3cb9985479ff1ecc6ba4fe935a05165665.json"
+      "sha256": "40c74767096f041d8c432a8d5356274861cbcce9288df1f7ed1a197436873f4e",
+      "bytes": 10339597,
+      "file": "atlas-verbetes-citados.40c74767096f041d8c432a8d5356274861cbcce9288df1f7ed1a197436873f4e.json"
     },
     {
-      "sha256": "d6bdc2aa35079720250ed501910793df7784cb13bd648248528583b8b8601d8a",
-      "bytes": 57395,
-      "file": "ideology-marxismo.d6bdc2aa35079720250ed501910793df7784cb13bd648248528583b8b8601d8a.json"
+      "sha256": "96da8960ae36f7d95c91f41257ec6c4e945494e85fdceeb1462b8d203e3e031e",
+      "bytes": 60312,
+      "file": "ideology-marxismo.96da8960ae36f7d95c91f41257ec6c4e945494e85fdceeb1462b8d203e3e031e.json"
     },
     {
-      "sha256": "9b650e514e9dca11a9aa5ca870ca29fb579c2fa9bd35d56ceb6b561456a0c925",
-      "bytes": 39368,
-      "file": "ideology-liberalismo.9b650e514e9dca11a9aa5ca870ca29fb579c2fa9bd35d56ceb6b561456a0c925.json"
+      "sha256": "2f1c067805f38a45881c2a2dd9f980061908bf020e44ae669f0a47d30597823b",
+      "bytes": 42570,
+      "file": "ideology-liberalismo.2f1c067805f38a45881c2a2dd9f980061908bf020e44ae669f0a47d30597823b.json"
     },
     {
-      "sha256": "f407388237dd4e84bafa038ec0f9c1d8c4b2684f5d14ec4efed8a3562c5fd7d6",
-      "bytes": 23312,
-      "file": "ideology-social-democracia.f407388237dd4e84bafa038ec0f9c1d8c4b2684f5d14ec4efed8a3562c5fd7d6.json"
+      "sha256": "8a4b9816e1e0e7aa6f7e5292d2956378b743dbf25518f2ce5245a0202a3628f8",
+      "bytes": 25543,
+      "file": "ideology-social-democracia.8a4b9816e1e0e7aa6f7e5292d2956378b743dbf25518f2ce5245a0202a3628f8.json"
     },
     {
-      "sha256": "78a9dfcee036eaea04a770eac711418c20e0c4c02bc258c719c6aeed04e872e9",
-      "bytes": 22828,
-      "file": "ideology-anarquismo.78a9dfcee036eaea04a770eac711418c20e0c4c02bc258c719c6aeed04e872e9.json"
+      "sha256": "1cdacd283179ba02372aaca955f6dcb12f5282b72c343d1c0f77c3e589f587c2",
+      "bytes": 24364,
+      "file": "ideology-anarquismo.1cdacd283179ba02372aaca955f6dcb12f5282b72c343d1c0f77c3e589f587c2.json"
     },
     {
-      "sha256": "89623c9b8aa7f037817543d463e6e22a7b2ef3b06ed9c60e109c6be840324581",
-      "bytes": 9517378,
-      "file": "search.89623c9b8aa7f037817543d463e6e22a7b2ef3b06ed9c60e109c6be840324581.json"
+      "sha256": "c2f1a66a705d89ce881d61d98879b194951dc48e27a2eb4726bd1f1444344e2a",
+      "bytes": 9525130,
+      "file": "search.c2f1a66a705d89ce881d61d98879b194951dc48e27a2eb4726bd1f1444344e2a.json"
     },
     {
-      "sha256": "ee69d5b551ca1677296d73dd15dd9957eb282f98055722682fd7e1d9845ccb39",
-      "bytes": 748770,
-      "file": "adjacency.ee69d5b551ca1677296d73dd15dd9957eb282f98055722682fd7e1d9845ccb39.json"
+      "sha256": "7ab23050655188ca4f433461cf0fc8052f92481d78d3d9e15d6ae21cd2223bdb",
+      "bytes": 743862,
+      "file": "adjacency.7ab23050655188ca4f433461cf0fc8052f92481d78d3d9e15d6ae21cd2223bdb.json"
     },
     {
-      "sha256": "d9cc24d3843640bad5e27921ed2057ec0b2040b6af2125173a4cf3eca2ed922d",
-      "bytes": 989485,
-      "file": "layouts.d9cc24d3843640bad5e27921ed2057ec0b2040b6af2125173a4cf3eca2ed922d.json"
+      "sha256": "0ded63cc8ef88871e287de8e6f3e9df2665b3c7b00bd3d88488bce562e92e715",
+      "bytes": 1078117,
+      "file": "layouts.0ded63cc8ef88871e287de8e6f3e9df2665b3c7b00bd3d88488bce562e92e715.json"
     }
   ],
   "media": [

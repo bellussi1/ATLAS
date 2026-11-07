@@ -30,20 +30,30 @@ Toda página publicada tem os mesmos 12 capítulos, na mesma ordem, com `id` = �
 - Leitura principal sem contêiner com scroll próprio; painéis reservam altura mínima.
 - Proposta e mapeamento: `docs/research/ideologies-section-contract-proposal.md`. Nova tradição: skill `atlas-create-ideology`.
 
+## 1.2 Leituras contínuas de outros assuntos
+
+Uma leitura contínua não é exclusiva de ideologias. Pessoas, acontecimentos, instituições, períodos e conceitos podem ocupar a mesma página em `/<slug>` quando o assunto precisa de contexto, disputa e conexão. O verbete continua sendo a unidade para o que não sustenta esse recorte.
+
+- A decisão e o protocolo estão em `atlas-create-reading`.
+- O tipo do assunto adapta a pergunta de cada capítulo, não a ordem nem as âncoras.
+- "Situar" e "Avaliar" exigem fontes acadêmicas e caso brasileiro documentado, não um parágrafo de atualidade.
+- Cada leitura declara **3 a 5 conexões** curadas em `ideologyReadings[].connections`, cada uma com uma razão. O limite é editorial: mais do que cinco caminhos indica que o assunto deveria ser dividido.
+- O mapa dos próximos assuntos, incluindo Governo Vargas, Trabalhismo, Golpe de 1964 e Ditadura militar, está em `docs/research/readings-map.md`.
+
 ## 2. Contrato de cobertura editorial
 
 Define cobertura, não um layout repetível:
 
-| Área | Conteúdo | Exploração esperada |
-|---|---|---|
-| Introdução | definição, recorte, classificação, revisão | abrir recorte, conceito inicial ou fonte |
-| Origens | circunstâncias históricas, antecedentes e documentos | investigar documento e conexão; imagem licenciada quando houver |
+| Área       | Conteúdo                                                                                      | Exploração esperada                                                           |
+| ---------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Introdução | definição, recorte, classificação, revisão                                                    | abrir recorte, conceito inicial ou fonte                                      |
+| Origens    | circunstâncias históricas, antecedentes e documentos                                          | investigar documento e conexão; imagem licenciada quando houver               |
 | Princípios | problemas, valores/pressupostos, sociedade, economia, Estado/poder, mecanismos e divergências | diagrama conceitual e fichas sobre fundamentos, sem doutrina unânime fictícia |
-| Pensadores | contexto, obras, conceitos, críticas e relações | retratos editoriais, constelação ou galeria assimétrica; contexto no lugar |
-| História | eventos, publicações, instituições e períodos | timeline com seleção, filtro, mídia e conexões; sequência não é causalidade |
-| Vertentes | recorte, diferenças, figuras, períodos e relações | comparação ou genealogia sustentada; não presumir descendência linear |
-| Debate | defesa, crítica, resposta e limitações | quadro argumentativo atribuído, fontes por posição, distinção de natureza |
-| Fontes | primárias, estudos, metadados e licenças | fonte junto à afirmação, bibliografia pesquisável, localizadores |
+| Pensadores | contexto, obras, conceitos, críticas e relações                                               | retratos editoriais, constelação ou galeria assimétrica; contexto no lugar    |
+| História   | eventos, publicações, instituições e períodos                                                 | timeline com seleção, filtro, mídia e conexões; sequência não é causalidade   |
+| Vertentes  | recorte, diferenças, figuras, períodos e relações                                             | comparação ou genealogia sustentada; não presumir descendência linear         |
+| Debate     | defesa, crítica, resposta e limitações                                                        | quadro argumentativo atribuído, fontes por posição, distinção de natureza     |
+| Fontes     | primárias, estudos, metadados e licenças                                                      | fonte junto à afirmação, bibliografia pesquisável, localizadores              |
 
 Experiências históricas, mapas e conexões com outras ideologias entram quando sustentados por dados e fontes. Não fabricar mapa, estatística ou árvore para preencher layout. Ausências de cobertura são justificadas explicitamente.
 
@@ -66,15 +76,15 @@ Layout shift inesperado é defeito, inclusive quando a métrica CLS o exclui por
 
 ## 4. Linguagem universal de ação
 
-| Ação | Semântica e pista | Feedback persistente |
-|---|---|---|
-| Abrir ficha/termo | `button` + "Abrir contexto"/indicador + `aria-haspopup` se diálogo | foco, estado expandido, painel com título |
-| Expandir inline | `button aria-expanded` ou `details` com verbo e indicação | região nomeada e recolhimento reconhecível |
-| Selecionar nó/evento/tema | `button aria-pressed` ou equivalente | seleção, painel, linhas e legenda sincronizados |
-| Navegar ao capítulo | `a` com âncora e nome do destino | foco no capítulo e caminho anterior |
-| Abrir documento/imagem | botão de ampliação ou link para a origem | legenda, dimensão, licença; fechar restaura contexto |
-| Outra ideologia | link com nome e natureza da conexão | apenas rota pública existente |
-| Ênfase textual | `strong`/`em` sem pista de ação | não parece link nem recebe cursor de botão |
+| Ação                      | Semântica e pista                                                  | Feedback persistente                                 |
+| ------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------- |
+| Abrir ficha/termo         | `button` + "Abrir contexto"/indicador + `aria-haspopup` se diálogo | foco, estado expandido, painel com título            |
+| Expandir inline           | `button aria-expanded` ou `details` com verbo e indicação          | região nomeada e recolhimento reconhecível           |
+| Selecionar nó/evento/tema | `button aria-pressed` ou equivalente                               | seleção, painel, linhas e legenda sincronizados      |
+| Navegar ao capítulo       | `a` com âncora e nome do destino                                   | foco no capítulo e caminho anterior                  |
+| Abrir documento/imagem    | botão de ampliação ou link para a origem                           | legenda, dimensão, licença; fechar restaura contexto |
+| Outra ideologia           | link com nome e natureza da conexão                                | apenas rota pública existente                        |
+| Ênfase textual            | `strong`/`em` sem pista de ação                                    | não parece link nem recebe cursor de botão           |
 
 Toda ação tem cursor adequado, pista persistente além da cor, hover, foco visível, clique/toque e estado selecionado/expandido quando aplicável. Alvos não mudam de lugar com hover. Controle que parece clicável e não funciona, ou funciona e parece decoração, é defeito. HTML semântico; nenhum `span` clicável no lugar de botão.
 
@@ -97,6 +107,8 @@ O gatilho comunica a ação antes do hover. Seleção e expansão persistem até
 ## 7. Timeline
 
 Explica recorte e ordem: trilho, eventos selecionáveis, períodos e filtros, indicador de posição e painel sincronizado. Fotografias e documentos com contexto e licença; sem mídia, a região continua estável. Eventos podem ligar pensadores, obras e correntes documentadas.
+
+Na leitura de uma tradição, a linha do tempo de **épocas é vertical**: um trilho, anos e épocas expansíveis, com registros e pessoas do intervalo. Não usar eixo horizontal com zoom, pan e régua nessa página; a exploração horizontal fica restrita ao atlas, quando o recorte temporal for o próprio objeto.
 
 Não basta listar datas: selecionar muda informação, conexões e, quando existe, evidência visual. A estrutura semântica continua lista cronológica. Filtro vazio apresenta saída e não deixa seleção invisível como se estivesse no recorte. Datas aproximadas permanecem aproximadas. Simultaneidade, associação e causalidade são distintas.
 

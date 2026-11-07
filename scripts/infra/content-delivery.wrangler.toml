@@ -1,0 +1,8 @@
+name = "atlas-content-delivery"
+main = "content-delivery.worker.mjs"
+compatibility_date = "2026-11-06"
+workers_dev = true
+
+[[r2_buckets]]
+binding = "PUBLIC_CONTENT"
+bucket_name = "atlas-public"

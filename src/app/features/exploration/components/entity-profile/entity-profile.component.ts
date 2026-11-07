@@ -14,11 +14,11 @@ export class EntityProfileComponent {
   readonly graph = input.required<KnowledgeGraph>();
   readonly evidenceIds = computed(() => {
     const entity = this.entity();
-    return entity.kind === 'country'
-      ? entity.countryProfile.evidenceIds
-      : entity.kind === 'regime'
-        ? [...new Set(entity.regimeProfile.classifications.flatMap((c) => c.evidenceIds))]
-        : [];
+    if (entity.kind !== 'place') return [];
+    if (entity.countryProfile) return entity.countryProfile.evidenceIds;
+    if (entity.regimeProfile)
+      return [...new Set(entity.regimeProfile.classifications.flatMap((c) => c.evidenceIds))];
+    return [];
   });
   readonly references = computed(() =>
     this.evidenceIds().flatMap((id) => {
@@ -33,10 +33,12 @@ export class EntityProfileComponent {
   );
   readonly countries = computed(() => {
     const entity = this.entity();
-    return entity.kind === 'regime'
-      ? this.graph()
-          .atlases.flatMap((a) => a.entities)
-          .filter((e) => entity.regimeProfile.countryIds.includes(e.id))
-      : [];
+    const profile = entity.kind === 'place' ? entity.regimeProfile : undefined;
+    if (!profile) return [];
+    return this.graph()
+      .atlases.flatMap((a) => a.entities)
+      .filter(
+        (e) => e.kind === 'place' && e.placeType === 'country' && profile.countryIds.includes(e.id),
+      );
   });
 }

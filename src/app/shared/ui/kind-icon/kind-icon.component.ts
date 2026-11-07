@@ -44,10 +44,10 @@ const aliases: Record<string, IconKind> = {
   policy: 'thesis',
 };
 
-export function iconKind(kind: string): IconKind {
+export function iconKind(kind: string, placeType?: 'place' | 'country' | 'regime'): IconKind {
   if (aliases[kind]) return aliases[kind];
-  if (kind === 'historical-polity' || kind === 'government' || kind === 'country') return 'polity';
-  if (kind === 'regime') return 'polity';
+  if (kind === 'historical-polity' || kind === 'government') return 'polity';
+  if (kind === 'place' && (placeType === 'country' || placeType === 'regime')) return 'polity';
   return known.has(kind) ? (kind as IconKind) : 'record';
 }
 

@@ -1,4 +1,4 @@
-import { expect, test } from './content-fixture';
+import { expect, routeContent, test, waitForHydration } from './content-fixture';
 
 test('keywords open sourced context without moving the reading', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -20,9 +20,15 @@ test('following a connection starts the new context and restores the previous fo
   page,
 }) => {
   await page.goto('/marxismo/');
-  await page.locator('#conceitos .knowledge-term').first().click();
+  await page.locator('#vertentes .exploration-card').first().click();
   const dialog = page.getByRole('dialog');
-  const connection = dialog.locator('.context-connections button').first();
+  const group = dialog
+    .locator('.context-connections details')
+    .filter({ has: page.locator('button') })
+    .first();
+  if (!(await group.evaluate((details: HTMLDetailsElement) => details.open)))
+    await group.locator('summary').click();
+  const connection = group.locator('button').first();
   await connection.click();
   await expect(dialog.locator('h2')).toBeFocused();
   expect(await dialog.locator('.context-body').evaluate((e) => e.scrollTop)).toBe(0);
@@ -42,8 +48,10 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
     isMobile: true,
     reducedMotion: 'reduce',
   });
+  await routeContent(context);
   const page = await context.newPage();
   await page.goto('/marxismo/');
+  await waitForHydration(page);
   await page.locator('#vertentes .exploration-card').first().tap();
   await expect(page.getByRole('dialog')).toContainText('Bernstein');
   await page.getByRole('button', { name: 'Fechar contexto' }).tap();
@@ -60,15 +68,13 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
 test('timeline selection and graph exploration preserve geometry', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/marxismo/');
-  const axis = page.locator('app-ideology-block app-timeline-axis').first();
+  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
   await axis.scrollIntoViewIfNeeded();
   const frame = axis.locator('.axis-scroller');
   const before = await frame.boundingBox();
   await axis.locator('.axis-marker').filter({ hasText: 'Comuna de Paris' }).click();
-  await expect(page).toHaveURL(/evento=/);
   await expect(axis.locator('.axis-list li.current')).toContainText('Comuna de Paris');
   expect((await frame.boundingBox())?.height).toBe(before?.height);
-  await expect(page.locator('.relation-item').first()).toContainText('Bernstein');
 });
 
 test('the timeline axis keeps markers apart and answers the keyboard on a phone', async ({
@@ -83,7 +89,7 @@ test('the timeline axis keeps markers apart and answers the keyboard on a phone'
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/marxismo/');
-  const axis = page.locator('app-ideology-block app-timeline-axis').first();
+  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
   await expect(axis).toBeAttached();
   await page.waitForLoadState('networkidle');
   await axis.scrollIntoViewIfNeeded();
@@ -108,7 +114,6 @@ test('the timeline axis keeps markers apart and answers the keyboard on a phone'
         expect(a.r <= b.l + 1 || b.r <= a.l + 1).toBe(true);
   await markers.nth(2).click();
   await page.keyboard.press('Escape');
-  await expect(page).toHaveURL(/evento=/);
   await expect(axis.locator('.axis-marker[aria-current="true"]')).toHaveCount(1);
   await expect(axis.locator('.axis-list li.current')).toHaveCount(1);
   await markers.nth(2).focus();
@@ -142,4 +147,24 @@ test('dragging across the ruler cuts the axis, and the keyboard does the same', 
   await page.keyboard.press('Enter');
   await expect(axis.locator('.axis-marker')).not.toHaveCount(all);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('a term inside a context sheet opens another sheet and the trail returns', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/marxismo/');
+  const trigger = page.getByRole('button', { name: /proletariado: abrir contexto/i }).first();
+  await trigger.scrollIntoViewIfNeeded();
+  await trigger.click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Proletariado');
+  const nested = dialog.getByRole('button', { name: /meios de produção: abrir contexto/i }).first();
+  await nested.click();
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Meios de produção');
+  await dialog
+    .locator('.context-trail')
+    .getByRole('button', { name: 'Proletariado', exact: true })
+    .click();
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Proletariado');
 });

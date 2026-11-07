@@ -35,10 +35,10 @@ describe('EraChartComponent', () => {
         b.textContent!.trim(),
       );
     expect(names()).toEqual([expect.stringContaining('marx')]);
-    const first = root.querySelector<HTMLButtonElement>('.epoch-picker button.carousel-item')!;
+    const first = root.querySelector<HTMLButtonElement>('.era-epoch .epoch-row')!;
     first.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight' }));
     fixture.detectChanges();
-    expect(root.querySelector('.epoch-detail h4')!.textContent).toBe('b');
+    expect(root.querySelector('.era-epoch.is-selected .epoch-title')!.textContent).toBe('b');
     expect(names()).toEqual([expect.stringContaining('gramsci')]);
   });
 
@@ -64,12 +64,10 @@ describe('EraChartComponent', () => {
     const dated = () =>
       [...root.querySelectorAll('.dated-list button')].map((b) => b.textContent!.trim());
     expect(dated()).toEqual([expect.stringContaining('manifesto')]);
-    expect(root.querySelector('.era-note')!.textContent).toContain(
-      '1 registro fica fora da escala',
-    );
+    expect(root.querySelector('.era-note')!.textContent).toContain('1 registro fica fora da lista');
   });
 
-  it('marks approximate dates with "c." and a dashed border', () => {
+  it('marks approximate dates with "c." and a dashed outline', () => {
     const fixture = TestBed.createComponent(EraChartComponent);
     const record = (id: string, precision: 'year' | 'approximate') =>
       ({
@@ -85,9 +83,9 @@ describe('EraChartComponent', () => {
     ]);
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
-    expect(root.querySelectorAll('.marker.is-approx')).toHaveLength(1);
-    expect(root.querySelector('.marker.is-approx > span')!.textContent).toContain('c. 1845');
-    expect(root.querySelector('.era-note')!.textContent).toContain('bordas tracejadas');
+    expect(root.querySelectorAll('.dated-list li.is-approx')).toHaveLength(1);
+    expect(root.querySelector('.dated-list li.is-approx button')!.textContent).toContain('c. 1845');
+    expect(root.querySelector('.era-note')!.textContent).toContain('“c.” são aproximadas');
   });
 
   it('shows the eight people closest to the epoch and expands on demand', () => {
@@ -109,23 +107,21 @@ describe('EraChartComponent', () => {
     expect(cards()).toBe(12);
     expect(toggle().getAttribute('aria-expanded')).toBe('true');
     expect(toggle().textContent).toContain('Mostrar menos');
-    root.querySelectorAll<HTMLButtonElement>('.epoch-picker button.carousel-item')[1].click();
+    root.querySelectorAll<HTMLButtonElement>('.era-epoch .epoch-row')[1].click();
     fixture.detectChanges();
     expect(root.querySelector('.list-toggle')).toBeNull();
   });
 
-  it('puts close marker labels on different rows', () => {
+  it('renders a vertical ordered list instead of an absolute plot', () => {
     const fixture = TestBed.createComponent(EraChartComponent);
-    const record = (id: string, startYear: number) =>
-      ({
-        id,
-        title: id,
-        temporalExtent: { startYear, endYear: null, precision: 'year', label: null },
-      }) as unknown as Entity;
-    fixture.componentRef.setInput('epochs', [epoch('a', 1800, 1900)]);
-    fixture.componentRef.setInput('people', [person('marx', 1818, 1883)]);
-    fixture.componentRef.setInput('markers', [record('um', 1848), record('dois', 1849)]);
+    fixture.componentRef.setInput('epochs', [epoch('a', 1800, 1900), epoch('b', 1901, 1950)]);
+    fixture.componentRef.setInput('people', []);
+    fixture.componentRef.setInput('markers', []);
     fixture.detectChanges();
-    expect(fixture.componentInstance.markerRows()).toEqual([0, 1]);
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelector('.plot')).toBeNull();
+    expect(root.querySelector('.axis')).toBeNull();
+    expect(root.querySelectorAll('.era-epochs > li')).toHaveLength(2);
+    expect(root.querySelector('.era-epoch.is-selected .epoch-title')!.textContent).toBe('a');
   });
 });

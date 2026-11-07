@@ -1,6 +1,12 @@
 import { editorialStatusLabels as statusLabels } from '@core/content/editorial/editorial-status';
 import { publicReadings } from '@core/content/editorial/public-readings';
-import type { Atlas, Claim, KnowledgeGraph, Source } from '@core/content/models/content-schema';
+import type {
+  Atlas,
+  Claim,
+  Entity,
+  KnowledgeGraph,
+  Source,
+} from '@core/content/models/content-schema';
 import type { ContentTranslation } from '@core/content/models/content-translation';
 
 export interface DiscoveryBacklink {
@@ -64,10 +70,12 @@ const normalize = (value: string): string =>
     .replace(/[\u0300-\u036f]/g, '')
     .toLocaleLowerCase('pt-BR');
 
-function kindFacet(kind: string): string {
+function kindFacet(entity: Entity): string {
+  if (entity.kind === 'place' && entity.placeType) return entity.placeType;
   return (
-    ({ person: 'pessoa', event: 'evento', article: 'artigo' } as Record<string, string>)[kind] ??
-    kind
+    ({ person: 'pessoa', event: 'evento', article: 'artigo' } as Record<string, string>)[
+      entity.kind
+    ] ?? entity.kind
   );
 }
 
@@ -127,8 +135,8 @@ export function buildDiscoveryIndex(
       title: entity.title,
       summary: entity.summary,
       aliases: [...entity.aliases],
-      kind: kindFacet(entity.kind),
-      kindLabel: kindLabels[kindFacet(entity.kind)] ?? 'Registro',
+      kind: kindFacet(entity),
+      kindLabel: kindLabels[kindFacet(entity)] ?? 'Registro',
       state,
       stateLabel: statusLabels[state],
       path: `/verbete/${entity.slug}`,
@@ -367,7 +375,7 @@ export function safeDiscoveryOrigin(value: string | null): string | null {
         return null;
       return `${url.pathname}${url.search}`;
     }
-    if (url.pathname !== '/conhecimento') return null;
+    if (url.pathname !== '/acervo' && url.pathname !== '/conhecimento') return null;
     if ([...url.searchParams.keys()].some((key) => !['q', 'tipo', 'estado'].includes(key)))
       return null;
     return `${url.pathname}${url.search}`;

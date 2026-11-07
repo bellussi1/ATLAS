@@ -30,6 +30,7 @@ function draft({
   dates = [],
   relations = [],
   claims = [],
+  sections = [],
 }) {
   return {
     entity: { id, label, type, qid },
@@ -47,6 +48,7 @@ function draft({
     dates,
     relations,
     claims,
+    ...(sections.length ? { sections } : {}),
   };
 }
 
@@ -595,7 +597,7 @@ test('conteúdo rico vira hover, seções, apelidos e afirmações com citação
   graphOf(report);
 });
 
-test('rótulo do Wikidata (P737, P1142) entra como associação, nunca como influência', () => {
+test('rótulo do Wikidata: P737 entra como associação; P1142 de pessoa fica fora', () => {
   const statement = (property) => ({
     qid: 'Q1',
     property,
@@ -611,7 +613,7 @@ test('rótulo do Wikidata (P737, P1142) entra como associação, nunca como infl
     ],
   });
   const relations = report.atlases[0].relations;
-  assert.equal(relations.length, 2);
+  assert.equal(relations.length, 1, 'P1142 de pessoa não vira aresta; P737 continua como rótulo');
   for (const relation of relations) {
     assert.equal(relation.type, 'associated_with');
     assert.equal(relation.provenance.source, 'wikidata');
@@ -785,4 +787,242 @@ test('tipo genérico do rascunho mescla na entidade existente; outro tipo diverg
       { existingAtlases: [generic] },
     ),
   );
+});
+
+async function writeDraft(root, tradition, file, value) {
+  const directory = join(root, tradition, 'extracts');
+  await mkdir(directory, { recursive: true });
+  await writeFile(join(directory, file), JSON.stringify(value), 'utf8');
+}
+
+async function writeExistingCollection(root, atlas) {
+  const knowledge = join(root, 'knowledge');
+  await mkdir(join(knowledge, 'collections'), { recursive: true });
+  const bytes = await formatJson(atlas);
+  const hash = sha256(bytes);
+  const entry = { id: atlas.id, file: `collections/${atlas.id}.${hash}.json`, sha256: hash };
+  await writeFile(join(knowledge, entry.file), bytes);
+  await writeFile(
+    join(knowledge, 'manifest.json'),
+    await formatJson({
+      schemaVersion: 1,
+      id: 'knowledge-graph-atlas',
+      version: '1.1.0',
+      updatedAt: atlas.updatedAt,
+      collections: [entry],
+    }),
+  );
+  return { knowledge, entry };
+}
+
+function partialAtlasFixture() {
+  const source = {
+    id: 'src-old',
+    title: 'Fonte antiga',
+    url: null,
+    edition: 'edição antiga',
+    publicationDate: null,
+  };
+  const evidence = {
+    id: 'ev-old',
+    sourceId: 'src-old',
+    locator: 'trecho antigo',
+    accessedAt: '2026-01-01',
+    note: null,
+  };
+  const citation = { id: 'cit-old', evidenceId: 'ev-old', relation: 'supports' };
+  const claim = {
+    id: 'claim-old',
+    entityId: 'person-karl-marx',
+    text: 'Texto antigo.',
+    classification: 'documented-fact',
+    editorialStatus: 'pending',
+    citationIds: ['cit-old'],
+  };
+  const review = {
+    id: 'rev-old',
+    claimId: 'claim-old',
+    status: 'pending',
+    reviewer: null,
+    reviewedAt: null,
+    note: REVIEW_NOTE,
+  };
+  const entity = (id, title, slug, qid) => ({
+    id,
+    kind: 'person',
+    slug,
+    title,
+    summary: 'Resumo antigo.',
+    aliases: [],
+    context: 'Contexto antigo.',
+    temporalExtent: null,
+    uncertainty: 'low',
+    revision: 1,
+    sections: [{ heading: 'Contexto', paragraphs: ['Texto antigo.'] }],
+    externalIds: { wikidata: qid, wikipedia: title },
+    editorialStatus: 'pending',
+  });
+  return {
+    id: 'atlas-verbetes-citados',
+    slug: 'verbetes-citados-wikipedia',
+    title: 'Verbetes citados',
+    description: 'Coleção existente de teste.',
+    version: '1.0.0',
+    updatedAt: '2026-11-01',
+    entityIds: ['person-karl-marx', 'person-friedrich-engels'],
+    entities: [
+      entity('person-karl-marx', 'Karl Marx', 'karl-marx', 'Q9061'),
+      entity('person-friedrich-engels', 'Friedrich Engels', 'friedrich-engels', 'Q2'),
+    ],
+    sources: [source],
+    evidences: [evidence],
+    citations: [citation],
+    claims: [claim],
+    reviews: [review],
+    assetLicenses: [],
+    relations: [],
+    learningPaths: [],
+  };
+}
+
+test('modo parcial funde um QID sem apagar registros nem outros verbetes', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'atlas-partial-'));
+  const drafts = join(root, 'drafts');
+  await writeDraft(
+    drafts,
+    'verbetes-citados',
+    'pessoa-karl-marx.json',
+    draft({
+      id: 'pessoa-karl-marx',
+      label: 'Karl Marx',
+      qid: 'Q9061',
+      title: 'Karl_Marx',
+      claims: [
+        { statement: 'Marx escreveu O Capital.', kind: 'fact', quote: 'escreveu O Capital' },
+      ],
+    }),
+  );
+  const { knowledge, entry } = await writeExistingCollection(root, partialAtlasFixture());
+  const before = JSON.parse(await readFile(join(knowledge, entry.file), 'utf8'));
+
+  const report = await convertDraftsToCollections({
+    root: drafts,
+    directory: knowledge,
+    partial: true,
+  });
+  assert.equal(report.mode, 'partial');
+  assert.equal(report.entitiesAdded, 0);
+  assert.ok(report.recordsAdded > 0);
+  assert.deepEqual(report.changedCollections, ['atlas-verbetes-citados']);
+
+  const manifest = JSON.parse(await readFile(join(knowledge, 'manifest.json'), 'utf8'));
+  const current = JSON.parse(await readFile(join(knowledge, manifest.collections[0].file), 'utf8'));
+  assert.equal(current.entities.length, before.entities.length);
+  assert.ok(current.entities.some((entity) => entity.id === 'person-friedrich-engels'));
+  assert.ok(current.sources.some((source) => source.id === 'src-old'));
+  assert.ok(current.claims.some((claim) => claim.id === 'claim-old'));
+  assert.ok(current.claims.some((claim) => claim.id.startsWith('claim-wiki-pessoa-karl-marx')));
+  assert.equal(await readFile(join(knowledge, entry.file), 'utf8'), await formatJson(before));
+
+  const manifestOnce = await readFile(join(knowledge, 'manifest.json'), 'utf8');
+  await convertDraftsToCollections({ root: drafts, directory: knowledge, partial: true });
+  assert.equal(await readFile(join(knowledge, 'manifest.json'), 'utf8'), manifestOnce);
+});
+
+test('modo parcial anexa o QID pelo título e adiciona verbete novo sem reconstruir a coleção', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'atlas-partial-title-'));
+  const drafts = join(root, 'drafts');
+  await writeDraft(
+    drafts,
+    'verbetes-citados',
+    'pessoa-john-locke.json',
+    draft({
+      id: 'pessoa-john-locke',
+      label: 'John Locke',
+      qid: 'Q349',
+      title: 'John_Locke',
+      sections: [
+        { kind: 'origem', text: 'Locke nasceu em Wrington.', quote: 'nasceu em Wrington' },
+      ],
+    }),
+  );
+  await writeDraft(
+    drafts,
+    'verbetes-citados',
+    'pessoa-nova.json',
+    draft({ id: 'pessoa-nova', label: 'Pessoa Nova', qid: 'Q999', title: 'Pessoa_Nova' }),
+  );
+  const existing = partialAtlasFixture();
+  existing.entities = [
+    {
+      ...existing.entities[0],
+      id: 'person-john-locke',
+      slug: 'john-locke',
+      title: 'John Locke',
+      externalIds: undefined,
+    },
+  ];
+  existing.entityIds = ['person-john-locke'];
+  existing.claims = existing.claims.map((claim) => ({ ...claim, entityId: 'person-john-locke' }));
+  const { knowledge } = await writeExistingCollection(root, existing);
+
+  const report = await convertDraftsToCollections({
+    root: drafts,
+    directory: knowledge,
+    partial: true,
+  });
+  assert.deepEqual(report.patches, [
+    { atlas: 'atlas-verbetes-citados', entity: 'person-john-locke', qid: 'Q349' },
+  ]);
+  assert.equal(report.entitiesAdded, 1);
+  const manifest = JSON.parse(await readFile(join(knowledge, 'manifest.json'), 'utf8'));
+  const current = JSON.parse(await readFile(join(knowledge, manifest.collections[0].file), 'utf8'));
+  assert.deepEqual(current.entities.map((entity) => entity.id).sort(), [
+    'person-john-locke',
+    'wiki-pessoa-nova',
+  ]);
+  assert.equal(
+    current.entities.find((entity) => entity.id === 'person-john-locke').externalIds.wikidata,
+    'Q349',
+  );
+  assert.ok(current.claims.some((claim) => claim.id === 'claim-old'));
+});
+
+test('desempate por conteúdo escolhe o rascunho com seções, não o com mais claims', () => {
+  const fiveClaims = Array.from({ length: 5 }, (_, index) => ({
+    statement: `Afirmação ${index}.`,
+    kind: 'fact',
+    quote: `trecho ${index}`,
+  }));
+  const report = convertDrafts([
+    item(
+      'marxismo',
+      'a.json',
+      draft({
+        id: 'sem-secoes',
+        label: 'Sem seções',
+        qid: 'Q1',
+        title: 'Mesmo_artigo',
+        claims: fiveClaims,
+      }),
+    ),
+    item(
+      'marxismo',
+      'b.json',
+      draft({
+        id: 'com-secoes',
+        label: 'Com seções',
+        qid: 'Q2',
+        title: 'Mesmo_artigo',
+        sections: [{ kind: 'origem', text: 'Tem contexto.', quote: 'tem contexto' }],
+      }),
+    ),
+  ]);
+  const entities = report.atlases.flatMap((atlas) => atlas.entities);
+  assert.ok(entities.some((entity) => entity.title === 'Com seções'));
+  assert.equal(
+    entities.some((entity) => entity.title === 'Sem seções'),
+    false,
+  );
+  assert.match(report.dropped[0].reason, /Com seções/);
 });

@@ -2,6 +2,7 @@
 // captura já gravada. Os módulos de coleta recebem essa camada; nenhum deles chama a rede diretamente.
 import { digest } from '../wikimedia/archive.mjs';
 import { getResource } from '../wikimedia/client.mjs';
+import { isWikidataHost } from '../wikimedia/hosts.mjs';
 
 /** `resource(url, kind)` returns `{ bytes, contentType, etag }`; `json(url)` parses the body. */
 export function createHttp(resource) {
@@ -15,7 +16,7 @@ export const liveHttp = createHttp((url, kind) => getResource(url, kind));
 
 /** Licence line stored with each captured response; Wikidata is CC0, Wikipedia text is CC BY-SA. */
 export function licenseOf(url, kind) {
-  if (url.includes('wikidata.org')) return 'CC0 1.0';
+  if (isWikidataHost(url)) return 'CC0 1.0';
   if (kind === 'html')
     return 'Texto da Wikipedia (CC BY-SA 4.0); origem e atribuição preservadas; não publicado';
   return 'Metadados Wikimedia; origem e atribuição preservadas';

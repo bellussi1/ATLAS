@@ -43,6 +43,7 @@ import {
 } from './ingestion/wiki-extract/discovery.mjs';
 import { liveHttp, recordingHttp, replayHttp } from './ingestion/wiki-extract/http.mjs';
 import { loadCapture, saveCapture, wikiRawRoot } from './ingestion/wiki-extract/raw.mjs';
+import { refreshPlan } from './ingestion/wiki-extract/refresh.mjs';
 import { classifyQids, classifyReport, targetKind } from './ingestion/wiki-extract/targets.mjs';
 import {
   extractionSchema,
@@ -186,19 +187,15 @@ async function fetchCommand() {
   await mkdir(articlesDirectory, { recursive: true });
   if (values.url) return fetchUrlCommand();
   // Older articles lack body links and targets, so their relations cannot resolve to a QID.
+  // `--refresh` reopens all of them, including records outside the current selection.
   const stored = await Promise.all(
     (await listIds(articlesDirectory)).map(async (id) => ({
       id,
-      current: Array.isArray(
-        (await readJson(join(articlesDirectory, `${id}.json`))).article.targets,
-      ),
+      record: await readJson(join(articlesDirectory, `${id}.json`)),
     })),
   );
-  const done = new Set(
-    stored.filter((item) => !values.refresh || item.current).map((item) => item.id),
-  );
   const targets = values.candidates ? await acceptedTargets() : await selectedTargets();
-  const pending = targets.filter((target) => !done.has(target.entity.id));
+  const pending = refreshPlan(stored, targets, { refresh: values.refresh });
   for (const target of pending.slice(0, limit)) {
     const { entity } = target;
     const resolved = await resolveArticle(target);

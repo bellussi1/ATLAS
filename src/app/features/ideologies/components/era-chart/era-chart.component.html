@@ -1,184 +1,122 @@
 <figure class="era-chart" appReveal aria-labelledby="era-chart-title">
   <figcaption class="era-header">
-    <h3 id="era-chart-title">Escala do tempo</h3>
+    <h3 id="era-chart-title">Linha do tempo</h3>
     <p>
-      Escolha uma época para ver quem estava vivo e quais registros datados caem nela. Use as setas
-      do teclado para percorrer as épocas.
+      Percorra as épocas na ordem dos anos. Cada uma abre os registros datados e as pessoas que
+      estavam vivas no intervalo.
     </p>
   </figcaption>
 
-  <div class="epoch-picker">
-    <app-card-carousel label="Épocas" hint="Arraste, use as setas ou as setas do teclado">
-      @for (epoch of epochs(); track epoch.id; let i = $index) {
+  <ol class="era-epochs">
+    @for (epoch of epochs(); track epoch.id; let i = $index) {
+      <li
+        class="era-epoch"
+        [attr.data-tone]="i % 6"
+        [class.is-selected]="selected().id === epoch.id"
+      >
         <button
           type="button"
-          class="carousel-item atlas-press"
-          [attr.data-tone]="i % 6"
-          [attr.aria-pressed]="selected().id === epoch.id"
-          [attr.tabindex]="selected().id === epoch.id ? 0 : -1"
+          class="epoch-row"
+          [attr.aria-expanded]="selected().id === epoch.id"
+          [attr.aria-controls]="'epoch-' + epoch.id"
           (click)="select(epoch.id)"
           (keydown)="step($event, i)"
         >
-          <span class="picker-years">{{ epoch.start }}–{{ epoch.end }}</span>
-          <span class="picker-title">{{ epoch.title }}</span>
+          <span class="epoch-years">{{ epoch.start }}–{{ epoch.end }}</span>
+          <span class="epoch-copy">
+            <span class="epoch-title">{{ epoch.title }}</span>
+            <span class="epoch-kicker">{{ kicker(epoch) }}</span>
+          </span>
+          <span class="epoch-indicator" aria-hidden="true">{{
+            selected().id === epoch.id ? '−' : '+'
+          }}</span>
         </button>
-      }
-    </app-card-carousel>
-  </div>
 
-  <div
-    class="chart"
-    [style.--rows]="markerRowCount()"
-    role="region"
-    tabindex="0"
-    aria-label="Gráfico da escala do tempo, com rolagem. As listas abaixo trazem o mesmo conteúdo."
-  >
-    <div class="plot" aria-hidden="true">
-      <div class="axis">
-        @for (tick of ticks(); track tick) {
-          <span class="tick" [style.left]="x(tick)">{{ tick }}</span>
-        }
-      </div>
-      <div class="bands">
-        @for (epoch of epochs(); track epoch.id; let i = $index) {
-          <span
-            class="band"
-            [attr.data-tone]="i % 6"
-            [class.is-selected]="selected().id === epoch.id"
-            [style.left]="x(epoch.start)"
-            [style.width]="span(epoch.start, epoch.end)"
-            (click)="select(epoch.id)"
-          ></span>
-        }
-      </div>
-      <div
-        class="focus"
-        [style.left]="x(selected().start)"
-        [style.width]="span(selected().start, selected().end)"
-      ></div>
-      @for (mark of dated(); track mark.entity.id; let m = $index) {
-        <span
-          class="marker"
-          [class.is-on]="overlaps(mark.year, mark.year)"
-          [class.is-echo]="echoId() === mark.entity.id"
-          [class.is-approx]="mark.approx"
-          [class.is-flipped]="flipsLeft(mark.year)"
-          [style.left]="x(mark.year)"
-          [style.--row]="markerRows()[m]"
-          ><span
-            >{{ mark.approx ? 'c. ' : '' }}{{ mark.year }} · {{ mark.entity.title }}</span
-          ></span
-        >
-      }
-      <ol class="lives">
-        @for (life of lives(); track life.entity.id) {
-          <li
-            [class.is-on]="overlaps(life.start, life.end)"
-            [class.is-echo]="echoId() === life.entity.id"
-          >
-            <span class="life-name">{{ life.entity.title }}</span>
-            <span class="life-years">{{ life.start }}–{{ life.end }}</span>
-            <span class="life-track">
-              <span
-                class="life-bar"
-                [class.is-approx]="life.approx"
-                [class.is-late]="flipsLeft(life.end, 0.8)"
-                [style.left]="x(life.start)"
-                [style.width]="span(life.start, life.end)"
-                ><span>{{ life.start }}–{{ life.end }}</span></span
-              >
-            </span>
-          </li>
-        }
-      </ol>
-    </div>
-  </div>
+        @if (selected().id === epoch.id) {
+          <div class="epoch-body" [id]="'epoch-' + epoch.id">
+            <p class="epoch-summary">{{ epoch.summary }}</p>
+            <button
+              type="button"
+              class="detail-open"
+              [appKnowledgeContext]="{ record: epoch.context }"
+            >
+              Ver fundamento e fontes desta época
+            </button>
 
-  <section
-    class="epoch-detail"
-    aria-live="polite"
-    [attr.aria-label]="'Época selecionada: ' + selected().title"
-  >
-    <p class="detail-kicker">{{ selected().kicker }}</p>
-    <h4>{{ selected().title }}</h4>
-    <p class="detail-summary">{{ selected().summary }}</p>
-    <button
-      type="button"
-      class="detail-open"
-      [appKnowledgeContext]="{ record: selected().context }"
-    >
-      Ver fundamento e fontes desta época
-    </button>
-    <div class="epoch-lists">
-      <div class="epoch-list">
-        <h5>
-          Registros datados na época <span>{{ inEpoch().length }}</span>
-        </h5>
-        <ul class="alive-list dated-list">
-          @for (mark of datedShown(); track mark.entity.id) {
-            <li>
-              <button
-                appRecordCard
-                [entityId]="mark.entity.id"
-                [title]="mark.entity.title"
-                [period]="(mark.approx ? 'c. ' : '') + mark.year"
-                [appKnowledgeContext]="{ entityId: mark.entity.id }"
-              ></button>
-            </li>
-          } @empty {
-            <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
-          }
-        </ul>
-        @if (inEpoch().length > limit) {
-          <button
-            type="button"
-            class="list-toggle"
-            [attr.aria-expanded]="datedExpanded()"
-            (click)="datedExpanded.set(!datedExpanded())"
-          >
-            {{ datedExpanded() ? 'Mostrar menos' : 'Ver todas (' + inEpoch().length + ')' }}
-          </button>
+            <div class="epoch-lists">
+              <div class="epoch-list">
+                <h4>
+                  Registros datados na época <span>{{ inEpoch().length }}</span>
+                </h4>
+                <ul class="alive-list dated-list">
+                  @for (mark of datedShown(); track mark.entity.id) {
+                    <li [class.is-approx]="mark.approx">
+                      <button
+                        appRecordCard
+                        [entityId]="mark.entity.id"
+                        [title]="mark.entity.title"
+                        [period]="(mark.approx ? 'c. ' : '') + mark.year"
+                        [appKnowledgeContext]="{ entityId: mark.entity.id }"
+                      ></button>
+                    </li>
+                  } @empty {
+                    <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
+                  }
+                </ul>
+                @if (inEpoch().length > limit) {
+                  <button
+                    type="button"
+                    class="list-toggle"
+                    [attr.aria-expanded]="datedExpanded()"
+                    (click)="datedExpanded.set(!datedExpanded())"
+                  >
+                    {{ datedExpanded() ? 'Mostrar menos' : 'Ver todas (' + inEpoch().length + ')' }}
+                  </button>
+                }
+              </div>
+
+              <div class="epoch-list">
+                <h4>
+                  Vivos durante a época <span>{{ alive().length }}</span>
+                </h4>
+                <ul class="alive-list">
+                  @for (life of aliveShown(); track life.entity.id) {
+                    <li>
+                      <button
+                        appRecordCard
+                        [entityId]="life.entity.id"
+                        [title]="life.entity.title"
+                        [period]="life.start + '–' + life.end"
+                        [appKnowledgeContext]="{ entityId: life.entity.id }"
+                      ></button>
+                    </li>
+                  } @empty {
+                    <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>
+                  }
+                </ul>
+                @if (alive().length > limit) {
+                  <button
+                    type="button"
+                    class="list-toggle"
+                    [attr.aria-expanded]="aliveExpanded()"
+                    (click)="aliveExpanded.set(!aliveExpanded())"
+                  >
+                    {{ aliveExpanded() ? 'Mostrar menos' : 'Ver todas (' + alive().length + ')' }}
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
         }
-      </div>
-      <div class="epoch-list">
-        <h5>
-          Vivos durante a época <span>{{ alive().length }}</span>
-        </h5>
-        <ul class="alive-list">
-          @for (life of aliveShown(); track life.entity.id) {
-            <li>
-              <button
-                appRecordCard
-                [entityId]="life.entity.id"
-                [title]="life.entity.title"
-                [period]="life.start + '–' + life.end"
-                [appKnowledgeContext]="{ entityId: life.entity.id }"
-              ></button>
-            </li>
-          } @empty {
-            <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>
-          }
-        </ul>
-        @if (alive().length > limit) {
-          <button
-            type="button"
-            class="list-toggle"
-            [attr.aria-expanded]="aliveExpanded()"
-            (click)="aliveExpanded.set(!aliveExpanded())"
-          >
-            {{ aliveExpanded() ? 'Mostrar menos' : 'Ver todas (' + alive().length + ')' }}
-          </button>
-        }
-      </div>
-    </div>
-  </section>
+      </li>
+    }
+  </ol>
 
   <p class="era-note">
-    Barras mostram nascimento e morte registrados, não o período de atividade nem influência. As
-    datas das épocas são aproximações didáticas. Marcadores indicam o ano de início registrado, não
-    duração nem causa. Datas marcadas com "c." e bordas tracejadas são aproximadas.
+    As datas das épocas são aproximações didáticas. Registros aparecem no ano de início; o período
+    de vida não indica atividade nem influência. Datas com “c.” são aproximadas.
     @if (undated()) {
-      {{ undated() }} {{ undated() === 1 ? 'registro fica' : 'registros ficam' }} fora da escala por
+      {{ undated() }} {{ undated() === 1 ? 'registro fica' : 'registros ficam' }} fora da lista por
       falta de data registrada.
     }
   </p>

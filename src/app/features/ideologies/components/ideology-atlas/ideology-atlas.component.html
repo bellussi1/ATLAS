@@ -86,8 +86,8 @@
             <p class="eyebrow">Relações entre registros</p>
             <h2 id="graph-title">Uma ideia. Muitas conexões.</h2>
             <p class="edge-legend">
-              Cada linha nomeia os dois registros e o vínculo entre eles. Selecione um nome para
-              abrir a ficha logo abaixo do grafo.
+              Cada forma é um tipo de registro; cada linha, um vínculo. Arraste para mover, use a
+              roda para aproximar e selecione um nome para abrir a ficha logo abaixo do grafo.
             </p>
           } @else {
             <p class="eyebrow">Pistas de leitura</p>
@@ -100,82 +100,41 @@
         </div>
         @if (!continuous()) {
           <p>
-            Linhas indicam ligações entre verbetes ou classificações de catálogo. Selecione um nome
-            para abrir a ficha.
+            Linhas indicam ligações entre verbetes ou classificações de catálogo. Arraste, aproxime
+            e selecione um nome para abrir a ficha.
           </p>
         }
       </div>
-      <label class="relation-filter" for="relation-filter">Filtrar conexões</label>
-      <select
-        id="relation-filter"
-        [value]="relationFilter()"
-        (change)="setRelationFilter($any($event.target).value)"
-      >
-        <option value="all">Todos os tipos</option>
-        <option value="discovery">Links de descoberta</option>
-        <option value="structured">Relações estruturadas</option>
-      </select>
-
-      @if (!textAlternative()) {
-        <div
-          class="graph-canvas"
-          role="group"
-          aria-label="Grafo interativo deste atlas; uma lista textual equivalente aparece abaixo"
-        >
-          <svg class="edges" viewBox="0 0 920 572" aria-hidden="true" focusable="false">
-            @for (edge of graphEdges(); track edge.relation.id) {
-              <line
-                [class.highlighted]="
-                  hoveredId() === edge.relation.fromEntityId ||
-                  hoveredId() === edge.relation.toEntityId
-                "
-                [class.discovery-edge]="edge.relation.type === 'encyclopedic-link'"
-                [class.structured-edge]="edge.relation.type !== 'encyclopedic-link'"
-                [attr.x1]="edge.x1"
-                [attr.y1]="edge.y1"
-                [attr.x2]="edge.x2"
-                [attr.y2]="edge.y2"
-              />
-            }
-          </svg>
-          @for (node of graphNodes(); track node.entity.id) {
-            <button
-              type="button"
-              class="graph-node"
-              [class.root-node]="node.entity.id === rootEntityId()"
-              [class.active]="selectedId() === node.entity.id"
-              [class.echo]="echoId() === node.entity.id"
-              [style.left.%]="node.x / 9.2"
-              [style.top.%]="node.y / 5.72"
-              [attr.aria-pressed]="selectedId() === node.entity.id"
-              [attr.aria-label]="'Selecionar contexto: ' + node.entity.title"
-              (mouseenter)="hoveredId.set(node.entity.id)"
-              (mouseleave)="hoveredId.set(null)"
-              (focus)="hoveredId.set(node.entity.id)"
-              (blur)="hoveredId.set(null)"
-              (click)="openEntity(node.entity.id)"
-            >
-              <span>{{ node.entity.title }}</span
-              ><span class="node-preview">{{ node.entity.summary }}</span>
-            </button>
-          }
-        </div>
-      }
+      <app-knowledge-network
+        class="atlas-network"
+        [embedded]="true"
+        [scope]="[atlasId()]"
+        [focus]="selectedId()"
+        (picked)="openPicked($event)"
+        (inspect)="showRecord()"
+      />
     </section>
 
-    <section class="entity-reading" aria-labelledby="context-title">
+    <section #entityReading class="entity-reading" aria-labelledby="context-title">
       <div class="panel-topline">
         <p class="eyebrow">Ficha selecionada</p>
-        @if (history().length) {
-          <button type="button" class="back-button" (click)="returnContext()">
-            ← Voltar ao contexto anterior
-          </button>
-        }
+        <div class="panel-actions">
+          @if (history().length) {
+            <button type="button" class="back-button" (click)="returnContext()">
+              ← Voltar ao contexto anterior
+            </button>
+          }
+          @if (selected(); as entity) {
+            <a class="verbete-link" [routerLink]="['/verbete', entity.slug]">
+              Abrir verbete <span aria-hidden="true">↗</span>
+            </a>
+          }
+        </div>
       </div>
       @if (selected(); as entity) {
         <div class="entity-reading-grid">
           <div class="entity-reading-main">
-            <h2 id="context-title">{{ entity.title }}</h2>
+            <h2 id="context-title" #contextTitle tabindex="-1">{{ entity.title }}</h2>
             <p class="summary"><app-knowledge-text [text]="entity.summary" /></p>
 
             <div class="entity-meta">
@@ -255,7 +214,7 @@
       }
     </section>
 
-    <details class="text-network" [open]="textAlternative()">
+    <details class="text-network" [open]="narrow()">
       <summary>
         Lista textual das conexões visíveis nesta seleção ({{ visibleRelations().length }})
       </summary>

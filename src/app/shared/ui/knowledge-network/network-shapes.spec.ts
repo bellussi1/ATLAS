@@ -1,7 +1,7 @@
 import { networkKinds } from '@core/content/queries/knowledge-network';
 import { describe, expect, it } from 'vitest';
 
-import { shapePath } from './graph-shapes';
+import { shapePath } from './network-shapes';
 
 describe('shapePath', () => {
   it('draws a distinct closed path for every node family', () => {

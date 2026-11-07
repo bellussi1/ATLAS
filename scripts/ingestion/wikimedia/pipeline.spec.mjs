@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import test from 'node:test';
 
 import { runIngestion } from './pipeline.mjs';
+import { isCommonsHost, isWikidataHost } from './hosts.mjs';
 import { readSourceGraph, readSourceGraphBytes } from '../../content/source-graph.mjs';
 
 const baselinePath = new URL('./raw/liberalism/2026-11-01/baseline.json', import.meta.url);
@@ -23,7 +24,7 @@ function transport() {
     contentType: 'application/json',
     bytes: Buffer.from(
       JSON.stringify(
-        url.includes('wikidata.org')
+        isWikidataHost(url)
           ? {
               entities: {
                 Q9353: {
@@ -342,7 +343,7 @@ function mediaTransport({ failImage = false, blockedLicense = false } = {}) {
       if (failImage) throw Error('Download interrompido');
       return { bytes: Buffer.from('synthetic image fixture'), contentType: 'image/png' };
     }
-    if (url.includes('commons.wikimedia.org'))
+    if (isCommonsHost(url))
       return {
         contentType: 'application/json',
         bytes: Buffer.from(

@@ -14,10 +14,10 @@ test('moving to another page moves focus to the content and names it by its titl
 });
 
 test('a query change keeps focus where it is', async ({ page }) => {
-  await page.goto('/conhecimento');
+  await page.goto('/acervo');
   await page.getByLabel('Procurar no acervo', { exact: true }).focus();
   await page.evaluate(() => {
-    history.pushState(null, '', '/conhecimento?q=liberalismo');
+    history.pushState(null, '', '/acervo?q=liberalismo');
     dispatchEvent(new PopStateEvent('popstate'));
   });
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toBeFocused();

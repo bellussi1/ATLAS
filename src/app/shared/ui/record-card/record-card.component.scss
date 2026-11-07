@@ -1,3 +1,6 @@
+:host([hidden]) {
+  display: none;
+}
 :host {
   text-decoration: none;
   --tab: var(--desk-line, #5f5e59);

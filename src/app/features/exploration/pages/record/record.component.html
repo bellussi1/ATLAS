@@ -1,11 +1,11 @@
-<article class="record">
+<article class="record" id="top">
   <nav aria-label="Caminhos do registro" class="record-nav">
     @if (returnTree(); as back) {
       <a class="record-back" [routerLink]="back"
         ><span aria-hidden="true">←</span> Voltar aos resultados</a
       >
     }
-    <a routerLink="/conhecimento">Buscar no acervo</a>
+    <a routerLink="/acervo">Buscar no acervo</a>
     @if (catalogue(); as list) {
       <a [routerLink]="list.path">Todos em {{ list.title }}</a>
     }
@@ -44,9 +44,9 @@
         <p class="record-actions">
           <button type="button" class="copy-link" (click)="copyLink()">Copiar link</button>
           <span role="status" class="copy-status">{{ copyStatus() }}</span>
-          @if (dossier(); as path) {
-            <a class="dossier-link" [routerLink]="path"
-              >Abrir leitura contínua de {{ entity.title }}</a
+          @if (dossier(); as reading) {
+            <a class="dossier-link" [routerLink]="reading.path"
+              >Abrir leitura contínua de {{ reading.title }}</a
             >
           }
         </p>
@@ -105,8 +105,21 @@
       </nav>
 
       <div class="reading">
-        @if (entity.kind === 'country' || entity.kind === 'regime') {
-          <app-entity-profile [entity]="originalEntity()!" [graph]="repository.knowledgeGraph" />
+        @if (dossier(); as reading) {
+          <aside class="continuous-reading" aria-labelledby="continuous-reading-title">
+            <p class="continuous-reading__kicker">Leitura contínua</p>
+            <h2 id="continuous-reading-title">Este verbete tem contexto maior</h2>
+            <p>
+              A leitura de {{ reading.title }} situa o registro em uma narrativa de origens,
+              disputas e conexões. O verbete continua sendo a referência pontual.
+            </p>
+            <a [routerLink]="reading.path">Continuar em {{ reading.title }}</a>
+          </aside>
+        }
+        @if (entity.kind === 'place') {
+          @if (entity.countryProfile || entity.regimeProfile) {
+            <app-entity-profile [entity]="originalEntity()!" [graph]="repository.knowledgeGraph" />
+          }
         }
         @for (item of readableSections(); track item.index) {
           <section [attr.lang]="presentation()?.locale" [id]="'section-' + item.index">
@@ -184,6 +197,9 @@
             </ul>
           </section>
         }
+        <p class="reading-top">
+          <a [routerLink]="[]" fragment="top">Voltar ao topo</a>
+        </p>
       </div>
 
       <aside aria-label="Fontes e licença" class="record-file">

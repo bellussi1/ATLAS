@@ -12,7 +12,7 @@
     />
   </header>
   <p class="graph-entry">
-    <a routerLink="/rede"
+    <a routerLink="/grafos"
       >Ver o acervo como rede, em tela cheia <span aria-hidden="true">→</span></a
     >
   </p>
@@ -138,23 +138,40 @@
         aria-label="Resultados da busca"
         class="results"
         [class.results--cards]="catalogue.path !== 'fontes'"
+        [class.is-busy]="navigating()"
+        [attr.aria-busy]="navigating()"
       >
         @for (entry of page().items; track entry.id) {
           @if (catalogue.path === 'fontes') {
-            <article [id]="entry.fragment ?? entry.id" class="result">
-              <p class="result-meta">
-                <span class="kind-tag" [attr.data-kind]="entry.kind">{{ entry.kindLabel }}</span>
-                · {{ entry.stateLabel }}
+            <article [id]="entry.fragment ?? entry.id" class="result source-row">
+              <div class="source-row__head">
+                <div>
+                  <p class="result-meta">
+                    <span class="kind-tag" [attr.data-kind]="entry.kind">{{
+                      entry.kindLabel
+                    }}</span>
+                    · {{ entry.stateLabel }}
+                  </p>
+                  <h2 [attr.lang]="shown(entry).locale">{{ shown(entry).title }}</h2>
+                </div>
+                @if (sourceUrl(entry.id); as url) {
+                  <a class="source-row__link" [href]="url">Fonte original</a>
+                }
+              </div>
+              <p class="source-row__summary" [attr.lang]="shown(entry).locale">
+                {{ shown(entry).summary }}
               </p>
-              <h2 [attr.lang]="shown(entry).locale">
-                {{ shown(entry).title }}
-              </h2>
-              <p [attr.lang]="shown(entry).locale">{{ shown(entry).summary }}</p>
-              @if (sourceUrl(entry.id); as url) {
-                <p><a [href]="url">Consultar fonte original</a></p>
-              }
               <details class="source-uses">
-                <summary>Citações no acervo ({{ entry.backlinks.length }})</summary>
+                <summary>
+                  {{
+                    entry.backlinks.length
+                      ? entry.backlinks.length +
+                        (entry.backlinks.length === 1
+                          ? ' citação no acervo'
+                          : ' citações no acervo')
+                      : 'Sem citações no acervo'
+                  }}
+                </summary>
                 @for (backlink of entry.backlinks; track backlink.id) {
                   <p class="source-use">
                     <a [routerLink]="backlink.path">{{ backlink.title }}</a

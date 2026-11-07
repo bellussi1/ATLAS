@@ -2,7 +2,14 @@ import { DOCUMENT } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
-import { NavigationEnd, NavigationError, Router, RouterLink, RouterOutlet } from '@angular/router';
+import {
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterLink,
+  RouterOutlet,
+} from '@angular/router';
 import { SiteFooterComponent } from '@layouts/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@layouts/site-header/site-header.component';
 import { BreadcrumbsComponent } from '@shared/ui/breadcrumbs/breadcrumbs.component';
@@ -40,6 +47,13 @@ export class AppComponent {
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
       if (event instanceof NavigationError) {
         this.failedNavigation.set(event.url);
+        this.fullscreen.set(false);
+        return;
+      }
+      if (event instanceof NavigationStart) {
+        const path = event.url.split(/[?#]/)[0];
+        // The graph owns the window while its lazy chunk loads; otherwise the global header flashes.
+        if (/^\/(grafos|grafo|rede)(?:\/|$)/.test(path)) this.fullscreen.set(true);
         return;
       }
       if (!(event instanceof NavigationEnd)) return;

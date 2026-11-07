@@ -4,13 +4,13 @@ Entrega de 01/11/2026, sobre o commit `26e0577`, em Windows, Node 24 e npm 11. E
 
 ## Comportamento entregue
 
-- **Busca (`/conhecimento`):** índice compilado com 48 entidades, 86 fontes, oito exemplos metodológicos e duas leituras, total de 144 entradas. Nomes, aliases, resumos e textos são normalizados sem distinção de caixa ou acentos; todos os termos da consulta devem ocorrer. Ordenação alfabética.
+- **Busca (`/acervo`):** índice compilado com 48 entidades, 86 fontes, oito exemplos metodológicos e duas leituras, total de 144 entradas. Nomes, aliases, resumos e textos são normalizados sem distinção de caixa ou acentos; todos os termos da consulta devem ocorrer. Ordenação alfabética.
 - **Catálogos (`/entidades`, `/ideologias`, `/pessoas`, `/obras`):** recortam os registros do grafo. Exemplos de metodologia sobre pessoas ou artigos seguem na busca universal, mas não aparecem como registros históricos nesses catálogos.
 - **Verbete (`/verbete/:slug`):** página permanente compartilhada por todos os catálogos. Reutiliza IDs e slugs existentes e exibe contexto, seções, afirmações, fontes, imagens autorizadas e conexões com direção, evidências e procedência. `/marxismo` e `/liberalismo` mantêm seus URLs próprios.
 - **Fontes (`/fontes#source-<id>`):** referências e registros que as citam. Âncoras permanentes no índice; sem cópias em páginas individuais.
 - **Removido:** `/explorar/:tipo/:slug` (01–03/11/2026). Eram páginas-modelo sem conteúdo histórico. A metodologia vive em `/verbete/metodologia-do-atlas`.
 - **Parâmetros:** `q`, `tipo` e `estado` preservam busca e filtros em reload e histórico. `origem` permite voltar ao recorte anterior, validando destinos locais permitidos. Link permanente e canonical excluem esses parâmetros.
-- **Home:** encaminha a busca para `/conhecimento` sem carregar o grafo. Header, footer e prévias contextuais abrem os novos destinos. Catálogos e registros são lazy e preparados pelo resolver antes da ativação, reutilizando cache e TransferState.
+- **Home:** encaminha a busca para `/acervo` sem carregar o grafo. Header, footer e prévias contextuais abrem os novos destinos. Catálogos e registros são lazy e preparados pelo resolver antes da ativação, reutilizando cache e TransferState.
 
 ## Arquivos e responsabilidades
 

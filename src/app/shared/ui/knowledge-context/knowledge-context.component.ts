@@ -5,7 +5,6 @@ import {
   Component,
   computed,
   DestroyRef,
-  effect,
   ElementRef,
   inject,
   Injector,
@@ -19,6 +18,7 @@ import {
   type ContextStop,
   type KnowledgeContext,
 } from '@core/content/models/knowledge-context';
+import { type ContextTerm, contextVocabulary } from '@core/content/queries/context-vocabulary';
 import { contextFor, entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
@@ -29,12 +29,11 @@ import {
 } from '@shared/ui/geometric-illustration/illustration';
 import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry.component';
 
+import { ContextTextComponent } from './context-text.component';
 import { keepScrollAnchor } from './keep-scroll';
 
 /** How many earlier sheets stay visible behind the current one. */
 const VISIBLE_SHEETS = 3;
-/** Room for a pinned sheet beside the current one. */
-const COMPARE = '(min-width: 72rem)';
 /** Docked beside the page from this width; below it the panel is a full-width pane. */
 const WIDE = '(min-width: 64rem)';
 
@@ -58,8 +57,7 @@ function toneOf(kind: string): string {
  * Reading panel for a record. It sits at the side of the page and pushes the page aside
  * while open, so nothing is covered; on narrow screens it takes the full width. Following a
  * relation lays a new sheet on the pile; the button, Esc and the browser's back button lift
- * it again. Previous and next step through the reading order; one sheet can be pinned
- * to compare it with the next.
+ * it again. Previous and next step through the reading order.
  */
 @Component({
   selector: 'app-knowledge-context',
@@ -68,13 +66,13 @@ function toneOf(kind: string): string {
     RelationEntryComponent,
     ContentMediaPipe,
     AtlasGeometricIllustrationComponent,
+    ContextTextComponent,
   ],
   templateUrl: './knowledge-context.component.html',
   styleUrl: './knowledge-context.component.scss',
   host: {
     '[attr.data-tone]': 'tone()',
     '[style.--depth]': 'depth()',
-    '[class.has-pinned]': '!!pinned()',
   },
 })
 export class KnowledgeContextComponent {
@@ -92,9 +90,6 @@ export class KnowledgeContextComponent {
   readonly record = signal(this.initial.record);
   readonly stops = signal(this.initial.stops);
   readonly index = signal(this.initial.index);
-  /** Sheet kept open in its own column while the reader moves on to the next one. */
-  readonly pinned = signal<KnowledgeContext | null>(null);
-  readonly canCompare = signal(false);
   readonly history = signal<
     {
       record: KnowledgeContext;
@@ -115,7 +110,6 @@ export class KnowledgeContextComponent {
     return { id, kind: entity.kind, palette: illustrationPalette(atlas.id) };
   });
   readonly tone = computed(() => toneOf(this.record().kind));
-  readonly pinnedTone = computed(() => toneOf(this.pinned()?.kind ?? ''));
   /** Where the reader is in the reading order; steps are hidden inside a followed relation. */
   readonly position = computed(() => {
     const total = this.stops().length;
@@ -137,6 +131,10 @@ export class KnowledgeContextComponent {
   readonly seal = computed(() => editorialSeal(this.record()));
   /** Connections by weight of evidence, each read as a sentence. */
   readonly groups = computed(() => relationGroups(this.record().connections));
+  /** Terms inside the current sheet; the record itself never links to itself. */
+  readonly vocabulary = computed(() =>
+    contextVocabulary(this.repository.knowledgeGraph, this.record().entityId),
+  );
 
   constructor() {
     this.ref.keydownEvents?.subscribe((event) => {
@@ -167,6 +165,11 @@ export class KnowledgeContextComponent {
     this.watchLayout();
   }
 
+  /** Opens another sheet from a term in the prose, keeping the same trail and Back behaviour. */
+  followTerm(term: ContextTerm): void {
+    if (term.entityId === this.record().entityId) return;
+    this.follow({ entityId: term.entityId, label: term.label });
+  }
   /** Replaces what the open panel shows, as when another record is opened from the page. */
   show(record: KnowledgeContext, stops: ContextStop[], index: number): void {
     this.unwind(this.pushed);
@@ -188,14 +191,6 @@ export class KnowledgeContextComponent {
     const target = this.host.nativeElement.querySelector<HTMLElement>(`.sheet #${id}`);
     target?.scrollIntoView({ block: 'start' });
     target?.focus({ preventScroll: true });
-  }
-  pin(): void {
-    this.pinned.set(this.record());
-    this.present(0);
-  }
-  unpin(): void {
-    this.pinned.set(null);
-    this.present(0);
   }
   permanentPath(): string | undefined {
     return this.record().entityId
@@ -247,16 +242,13 @@ export class KnowledgeContextComponent {
 
   /**
    * Keeps panel behaviour in step with the viewport: no focus trap or modal role while
-   * docked, and the compare column only where it fits.
+   * docked beside the page.
    */
   private watchLayout(): void {
     const win = this.window;
     if (!win?.matchMedia) return;
     const wide = win.matchMedia(WIDE);
-    const compare = win.matchMedia(COMPARE);
     const sync = () => {
-      this.canCompare.set(compare.matches);
-      if (!compare.matches) this.pinned.set(null);
       const container = this.host.nativeElement.closest<HTMLElement>('.cdk-dialog-container');
       container?.setAttribute('aria-modal', String(!wide.matches));
       const trap = (this.ref as { containerInstance?: { _focusTrap?: { enabled: boolean } } })
@@ -264,16 +256,9 @@ export class KnowledgeContextComponent {
       if (trap) trap.enabled = !wide.matches;
     };
     wide.addEventListener('change', sync);
-    compare.addEventListener('change', sync);
     afterNextRender(sync, { injector: this.injector });
-    const root = win.document.documentElement;
-    effect(() =>
-      root.style.setProperty('--atlas-panel-width', this.pinned() ? 'min(60rem, 62vw)' : ''),
-    );
     inject(DestroyRef).onDestroy(() => {
       wide.removeEventListener('change', sync);
-      compare.removeEventListener('change', sync);
-      root.style.removeProperty('--atlas-panel-width');
     });
   }
   /** Keeps the reader's place in the page across the router's reaction to a history pop. */
@@ -313,9 +298,11 @@ export class KnowledgeContextComponent {
         // The newest step is the last crumb; keep it in view when the trail overflows.
         const trail = this.host.nativeElement.querySelector<HTMLElement>('.context-trail');
         if (trail) trail.scrollLeft = trail.scrollWidth;
-        const target = focusId
-          ? this.host.nativeElement.querySelector<HTMLElement>(`[data-connection="${focusId}"]`)
-          : this.host.nativeElement.querySelector<HTMLElement>('#knowledge-context-title');
+        const target =
+          (focusId
+            ? this.host.nativeElement.querySelector<HTMLElement>(`[data-connection="${focusId}"]`)
+            : null) ??
+          this.host.nativeElement.querySelector<HTMLElement>('#knowledge-context-title');
         target?.focus({ preventScroll: true });
       },
       { injector: this.injector },

@@ -1,4 +1,4 @@
-import type { Atlas } from '@core/content/models/content-schema';
+import { type Atlas, type PlaceType, placeTypeOf } from '@core/content/models/content-schema';
 import { type IconKind, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 
 export type DeskKind = Atlas['entities'][number]['kind'];
@@ -8,6 +8,7 @@ export interface DeskEntity {
   slug: string;
   title: string;
   kind: DeskKind;
+  placeType?: PlaceType;
   summary: string;
   start: number | null;
   end: number | null;
@@ -46,7 +47,11 @@ export const deskKindLabels: Partial<Record<DeskKind, string>> = {
   place: 'Lugar',
 };
 
-export const kindLabel = (kind: DeskKind) => deskKindLabels[kind] ?? 'Registro';
+export const kindLabel = (kind: DeskKind, placeType?: PlaceType) => {
+  if (kind === 'place')
+    return placeType === 'country' ? 'País' : placeType === 'regime' ? 'Regime' : 'Lugar';
+  return deskKindLabels[kind] ?? 'Registro';
+};
 
 const normalize = (value: string) =>
   value
@@ -85,11 +90,13 @@ export function deskEntities(atlas: Atlas | undefined): DeskEntity[] {
       slug: e.slug,
       title: e.title,
       kind: e.kind,
+      placeType: placeTypeOf(e),
       summary: e.summary,
       start: e.temporalExtent?.startYear ?? null,
       end: e.temporalExtent?.endYear ?? null,
       period: period(e.temporalExtent),
-      icon: e.kind === 'person' && political(e.id) ? 'politician' : iconKind(e.kind),
+      icon:
+        e.kind === 'person' && political(e.id) ? 'politician' : iconKind(e.kind, placeTypeOf(e)),
       links: neighbours.get(e.id)?.length ?? 0,
     }))
     .sort((a, b) => (a.start ?? 9999) - (b.start ?? 9999) || a.title.localeCompare(b.title));

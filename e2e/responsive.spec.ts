@@ -9,7 +9,7 @@ const routes = [
   '/',
   '/marxismo',
   '/liberalismo',
-  '/conhecimento',
+  '/acervo',
   '/pessoas',
   '/fontes',
   '/verbete/karl-marx',

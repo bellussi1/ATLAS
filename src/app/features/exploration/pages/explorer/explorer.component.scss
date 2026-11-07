@@ -260,11 +260,59 @@ label,
   color: var(--color-ink-muted);
   font-size: 0.875rem;
 }
+.results {
+  transition: opacity 140ms var(--ease-out, ease-out);
+}
+.results.is-busy {
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  .results {
+    transition: none;
+  }
+}
 .result {
   border-top: 2px solid var(--color-ink);
   padding: 1.25rem 0 1.75rem;
   scroll-margin-top: 2rem;
   overflow-wrap: anywhere;
+}
+/* Sources are a scannable list: compact rows, citations stay folded. */
+.source-row {
+  padding: 1rem 0 1.25rem;
+}
+.source-row__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.35rem 1.5rem;
+}
+.source-row h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+.source-row__link {
+  flex: none;
+  font: 0.8125rem/1.4 var(--font-mono);
+  white-space: nowrap;
+}
+.result.source-row > .source-row__summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin: 0 0 0.5rem;
+  color: var(--color-ink-muted);
+  font: 1rem/1.55 var(--font-serif);
+}
+@media (max-width: 40rem) {
+  .source-row__head {
+    flex-direction: column;
+  }
+  .source-row__link {
+    white-space: normal;
+  }
 }
 .result-meta {
   margin: 0 0 0.5rem;

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "instructions": ["docs/agents/PROMPT-SYSTEM.md"],
+  "watcher": {
+    "ignore": [
+      "dist/**",
+      "generated/**",
+      "node_modules/**",
+      "test-results/**",
+      "playwright-report/**"
+    ]
+  },
+  "permissions": [
+    { "action": "shell", "resource": "git push *", "effect": "ask" },
+    { "action": "shell", "resource": "git push --force*", "effect": "deny" },
+    { "action": "shell", "resource": "npm run content:publish *", "effect": "ask" },
+    { "action": "shell", "resource": "git reset --hard *", "effect": "ask" },
+    { "action": "shell", "resource": "rm -rf *", "effect": "ask" }
+  ],
+  "mcp": {
+    "servers": {
+      "angular": {
+        "type": "local",
+        "command": ["npx.cmd", "-y", "@angular/cli", "mcp", "--read-only"]
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "command": [
+          "npx.cmd",
+          "-y",
+          "chrome-devtools-mcp@latest",
+          "--headless",
+          "--no-usage-statistics"
+        ]
+      },
+      "vercel": {
+        "type": "remote",
+        "url": "https://mcp.vercel.com"
+      }
+    }
+  }
+}

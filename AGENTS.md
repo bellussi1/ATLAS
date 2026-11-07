@@ -4,6 +4,12 @@
 
 Construir uma plataforma educacional pública, gratuita, interativa e rigorosa sobre história, política, economia e sociedade, com perspectiva mundial e brasileira. O conteúdo deve ajudar o público a compreender relações e contextos, sem apresentar opinião como fato.
 
+## Contexto vivo e sistema de prompt
+
+- Leia `docs/ACTIVE_CONTEXT.md` no início de cada sessão e atualize-o no fim (ou use `/handoff`). Ele registra branch, verificações, pendências e próxima ação.
+- O mapa das camadas de instrução, skills, comandos e agentes está em `docs/agents/PROMPT-SYSTEM.md`.
+- Não duplique regras deste arquivo nos documentos de camada; referencie.
+
 ## Stack e arquitetura
 
 - Angular 21, standalone components, Angular Router e TypeScript strict.
@@ -11,7 +17,7 @@ Construir uma plataforma educacional pública, gratuita, interativa e rigorosa s
 - SCSS é o estilo padrão dos componentes; Tailwind está configurado. Angular CDK pode ser adicionado quando resolver uma necessidade concreta de interação ou acessibilidade.
 - Preservar a arquitetura e os componentes existentes. Não introduzir React, Next.js ou Fastify como framework base.
 - Manter a aplicação static-first. O build Angular atual gera saída estática e faz prerender das rotas públicas; manter SSR/prerender apenas onde compatível com a natureza pública do conteúdo.
-- Rotas atuais: `/`, `/marxismo`, `/liberalismo`, `/conhecimento`, `/rede`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos` e `/lugares`. Os pedidos de exploração e ampliação editorial ampliaram o escopo temporário em 01/11/2026. Parâmetros publicados são prerenderizados; `/comparar` redireciona para `/conhecimento` e `/grafo` para `/rede`; caminhos desconhecidos mostram "Página não encontrada" sem redirecionar. O grafo e os contratos globais permanecem em `content` e `src/app/core/content`; os contratos de dossiês pertencem a `features/ideologies/models`.
+- Rotas atuais: `/`, `/marxismo`, `/liberalismo`, `/acervo`, `/grafos`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos` e `/lugares`. Os pedidos de exploração e ampliação editorial ampliaram o escopo temporário em 01/11/2026. Parâmetros publicados são prerenderizados; `/conhecimento` e `/comparar` redirecionam para `/acervo`, e `/grafo` e `/rede` para `/grafos`; caminhos desconhecidos mostram "Página não encontrada" sem redirecionar. O grafo e os contratos globais permanecem em `content` e `src/app/core/content`; os contratos de dossiês pertencem a `features/ideologies/models`.
 - `country` e `regime` têm perfis próprios com evidências; regime referencia países tipados e classifica com atribuição, edição e limites. Traduções de narrativas pt-BR/en são versionadas em `content/translations`, validadas por revisão/digest e incorporadas ao índice no build. Identificar revisão `assistant` como IA, sem alegar revisão humana; preservar fontes/afirmações e fallback de idioma. Interface e dossiês não foram integralmente traduzidos.
 - O conteúdo compilado é publicado no Cloudflare R2 (bucket `atlas-public`, acesso público) por `npm run content:publish`, que envia objetos imutáveis `c/<sha256>.json` e `m/<sha256>.<ext>` e atualiza `content/content-pointer.json` (hashes, bytes, licenças; sem credenciais). `pointer.json` no bucket é o único objeto mutável. O build (`prebuild`) executa `content:fetch`, que baixa o release fixado no ponteiro para `generated/content-cache`, verificando tamanho e SHA-256. `ContentRepository` consome somente a URL base `DEFAULT_CONTENT_BASE_URL`, lendo `pointer.json` e depois os objetos por hash; o SSR lê o cache. Manifesto, hashes e TransferState preservam integridade e evitam downloads duplicados na hidratação. Credenciais ficam em `~/.atlas/r2.env` ou variáveis de ambiente, nunca no repositório, no bundle ou no log. `atlas-drafts` é privado e nunca é publicado. Schemas Zod em `src/app/core/content/models/content-schema.ts` validam IDs, slugs e referências.
 
@@ -79,6 +85,8 @@ A skill própria `atlas-editorial-geometrico`, versionada em `.agents/skills/atl
 Consultar `docs/design/PAGE_STANDARD.md` para páginas de ideologias e tradições. A implementação contínua está em `/marxismo`; o hub foi removido no escopo temporário de três páginas. O contrato Zod fica em `src/app/features/ideologies/models/ideology-page.schema.ts` e os snapshots em `content/ideologies` e `content/graph`. Exemplos não publicados não devem entrar no prerender.
 
 Novas ideologias seguem a skill `atlas-create-ideology` (`.claude/skills/atlas-create-ideology/SKILL.md`): pesquisa e dados tipados sobre o contrato de 12 capítulos, rascunho via `ideologyDraft()`, sem nova página Angular, sem copiar componentes por ideologia e sem publicar antes de aprovação.
+
+Leituras contínuas de pessoa, acontecimento, instituição, período ou conceito — como Governo Vargas, Golpe de 1964 ou Ditadura militar — seguem `atlas-create-reading` (`.claude/skills/atlas-create-reading/SKILL.md`): decidir entre leitura e verbete, adaptar os 12 capítulos ao tipo, exigir fontes acadêmicas e caso brasileiro, e declarar até cinco conexões curadas em `ideologyReadings[].connections`. O verbete continua sendo a unidade para o que não sustenta contexto próprio.
 
 ## Governança arquitetural obrigatória
 

@@ -1,5 +1,41 @@
 {
-  "sources": [],
+  "sources": [
+    {
+      "id": "source-sd-gomes-trabalhismo",
+      "title": "Angela de Castro Gomes — A invenção do trabalhismo",
+      "url": "https://books.google.com.br/books?id=uhOHCgAAQBAJ",
+      "edition": "São Paulo: Vértice, 1988; 3. ed. Rio de Janeiro: FGV, 2005",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sd-cpdoc-vargas",
+      "title": "FGV CPDOC — Governo Vargas",
+      "url": "https://expo-virtual-cpdoc.fgv.br/governo-vargas",
+      "edition": "Exposição virtual do Centro de Pesquisa e Documentação de História Contemporânea do Brasil",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sd-cf88",
+      "title": "Constituição da República Federativa do Brasil de 1988",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-publicacaooriginal-1-pl.html",
+      "edition": "Diário Oficial da União, 5 out. 1988; texto original, Câmara dos Deputados",
+      "publicationDate": "1988-10-05"
+    },
+    {
+      "id": "source-sd-brizola-trabalhismo",
+      "title": "Angela de Castro Gomes — Brizola e o trabalhismo",
+      "url": "https://seer.ufrgs.br/index.php/anos90/article/view/6349/3800",
+      "edition": "Revista Anos 90 (UFRGS), 2004",
+      "publicationDate": null
+    },
+    {
+      "id": "source-sd-pdt",
+      "title": "O Partido Democrático Trabalhista (PDT)",
+      "url": "https://periodicos.pucminas.br/historiaemcurso/article/download/34948/23011/133987",
+      "edition": "História em Curso (PUC Minas), 2024",
+      "publicationDate": null
+    }
+  ],
   "edges": [],
   "positions": []
 }

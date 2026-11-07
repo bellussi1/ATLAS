@@ -4,6 +4,8 @@ import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { z } from 'zod';
 
+import { isWikidataHost } from './hosts.mjs';
+
 export const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
 /** Digest-named JSON responses fetched from R2 by fetch-raw.mjs; git keeps only the manifests. */
 export const rawCacheDirectory = fileURLToPath(
@@ -71,7 +73,7 @@ export function captureClient(fetchResource) {
           license:
             kind === 'image'
               ? 'Consultar assetLicenses do snapshot e metadados Commons capturados'
-              : key.includes('wikidata.org')
+              : isWikidataHost(key)
                 ? 'CC0 1.0'
                 : 'Metadados Wikimedia; origem e atribuição preservadas',
         });

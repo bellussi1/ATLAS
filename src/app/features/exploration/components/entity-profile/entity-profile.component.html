@@ -1,29 +1,31 @@
 <section [attr.lang]="entity().textLocale ?? 'und'" aria-label="Perfil específico do registro">
   @if (entity(); as entity) {
-    @if (entity.kind === 'country') {
-      <h2>Identidade e recorte do país</h2>
-      <dl>
-        <dt>Denominação na fonte</dt>
-        <dd>{{ entity.countryProfile.officialName }}</dd>
-        <dt>Recorte territorial</dt>
-        <dd>{{ entity.countryProfile.territorialScope }}</dd>
-      </dl>
-      <p>{{ entity.countryProfile.identityNote }}</p>
-    }
-    @if (entity.kind === 'regime') {
-      <h2>Recorte e classificação do regime</h2>
-      <p>{{ entity.regimeProfile.periodNote }}</p>
-      <p>
-        Países associados:
-        @for (country of countries(); track country.id) {
-          <a [routerLink]="'/verbete/' + country.slug">{{ country.title }}</a>
+    @if (entity.kind === 'place') {
+      @if (entity.countryProfile; as profile) {
+        <h2>Identidade e recorte do país</h2>
+        <dl>
+          <dt>Denominação na fonte</dt>
+          <dd>{{ profile.officialName }}</dd>
+          <dt>Recorte territorial</dt>
+          <dd>{{ profile.territorialScope }}</dd>
+        </dl>
+        <p>{{ profile.identityNote }}</p>
+      }
+      @if (entity.regimeProfile; as profile) {
+        <h2>Recorte e classificação do regime</h2>
+        <p>{{ profile.periodNote }}</p>
+        <p>
+          Países associados:
+          @for (country of countries(); track country.id) {
+            <a [routerLink]="'/verbete/' + country.slug">{{ country.title }}</a>
+          }
+        </p>
+        @for (classification of profile.classifications; track $index) {
+          <h3>{{ classification.label }}</h3>
+          <p>Atribuição: {{ classification.attribution }}.</p>
+          <p>Edição: {{ classification.edition }}.</p>
+          <p>{{ classification.limits }}</p>
         }
-      </p>
-      @for (classification of entity.regimeProfile.classifications; track $index) {
-        <h3>{{ classification.label }}</h3>
-        <p>Atribuição: {{ classification.attribution }}.</p>
-        <p>Edição: {{ classification.edition }}.</p>
-        <p>{{ classification.limits }}</p>
       }
     }
     @for (item of references(); track item.evidence.id) {

@@ -4,12 +4,13 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import type { Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { ChapterReviewComponent } from '@ideologies/components/chapter-review/chapter-review.component';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
 import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/ideology-block.component';
 import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/ideology-poster.component';
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
-import { companionOf, paletteOf } from '@ideologies/data/ideology-readings';
+import { companionOf, connectionsOf, paletteOf } from '@ideologies/data/ideology-readings';
 import { terms } from '@ideologies/data/knowledge-vocabulary';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
@@ -17,10 +18,8 @@ import { IdeologyRepository } from '@ideologies/services/ideology-repository.ser
 import { chapterReviews } from '@ideologies/utils/chapter-review';
 import { graphVocabulary } from '@ideologies/utils/graph-vocabulary';
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
-import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
-import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
 interface PageState {
@@ -30,16 +29,15 @@ interface PageState {
 @Component({
   selector: 'app-ideology-page',
   imports: [
-    RecordCardComponent,
     RouterLink,
     IdeologyBlockComponent,
+    ChapterReviewComponent,
     KnowledgeTextComponent,
     IdeologyReadingComponent,
     EditorialSourcesComponent,
     IdeologyPosterComponent,
     AtlasRevealDirective,
     AtlasGeometricMosaicComponent,
-    KnowledgeContextDirective,
   ],
   templateUrl: './ideology-page.component.html',
   styleUrl: './ideology-page.component.scss',
@@ -103,6 +101,7 @@ export class IdeologyPageComponent {
     return chapters.map((_, i) => chapters.slice(i + 1).reduce((sum, c) => sum + c.minutes, 0));
   });
   readonly companion = computed(() => companionOf(this.page()?.slug ?? ''));
+  readonly connections = computed(() => connectionsOf(this.page()?.slug ?? ''));
 
   constructor() {
     combineLatest([this.route.paramMap, this.retry])

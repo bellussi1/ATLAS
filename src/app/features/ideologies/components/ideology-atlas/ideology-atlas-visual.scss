@@ -28,6 +28,7 @@
   padding: 1.2rem clamp(1rem, 2vw, 1.8rem) 1.4rem;
   border: 3px solid var(--color-ink);
   background: var(--color-ochre-paper);
+  scroll-margin-top: 5.5rem;
 }
 /* Red on ochre fails AA; links inside the panel read in ink. */
 .entity-reading > * {
@@ -35,7 +36,8 @@
 }
 .entity-reading .eyebrow,
 .entity-reading .back-button,
-.entity-reading .source-link {
+.entity-reading .source-link,
+.entity-reading .verbete-link {
   color: var(--color-ink);
 }
 .entity-reading-grid {
@@ -54,7 +56,17 @@
   align-items: start;
   gap: 1rem;
 }
-.back-button {
+.panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem 1rem;
+}
+.back-button,
+.verbete-link {
+  display: inline-flex;
+  align-items: center;
   min-height: 2.75rem;
   border: 0;
   background: transparent;
@@ -203,9 +215,6 @@ summary:focus-visible {
   .section-heading > p {
     margin-top: 0.6rem;
   }
-  .graph-node {
-    font-size: 0.75rem;
-  }
 }
 @media (max-width: 42rem) {
   .atlas {
@@ -226,9 +235,6 @@ summary:focus-visible {
     max-height: none;
     padding: 0;
   }
-  .graph-canvas {
-    display: none;
-  }
   .text-network {
     margin-top: 0.5rem;
   }
@@ -237,6 +243,9 @@ summary:focus-visible {
   }
   .panel-topline {
     display: block;
+  }
+  .panel-actions {
+    justify-content: flex-start;
   }
   .back-button {
     padding: 0;

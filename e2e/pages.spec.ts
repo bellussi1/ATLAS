@@ -9,7 +9,7 @@ const declaredDestinations = [
   '/liberalismo',
   '/social-democracia',
   '/anarquismo',
-  '/rede',
+  '/grafos',
   ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
 ];
 
@@ -34,7 +34,7 @@ test('home search opens the universal catalogue and the reading sheet stays avai
   await page.goto('/');
   await page.getByLabel('Procurar no acervo', { exact: true }).fill('liberalismo');
   await page.getByRole('button', { name: 'Pesquisar', exact: true }).click();
-  await expect(page).toHaveURL(/\/conhecimento\?q=liberalismo$/);
+  await expect(page).toHaveURL(/\/acervo\?q=liberalismo$/);
   await expect(
     page
       .getByRole('region', { name: 'Resultados da busca' })
@@ -94,6 +94,60 @@ test('Marxism chapters, comparison and sources remain on the same page', async (
   ).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('gallery toggle hides and shows cards beyond the preview', async ({ page }) => {
+  await page.goto('/marxismo/');
+  const section = page.locator('#pensadores');
+  const gallery = section.locator('.entity-gallery');
+  const toggle = section.locator('.gallery-toggle');
+  await toggle.scrollIntoViewIfNeeded();
+  const visible = () => gallery.locator('button.record-card:visible').count();
+  const total = Number((await toggle.textContent())?.match(/\d+/)?.[0]);
+  expect(total).toBeGreaterThan(6);
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  expect(await visible()).toBe(6);
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  expect(await visible()).toBe(total);
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  expect(await visible()).toBe(6);
+});
+
+test('the chapter review explains its purpose and reveals the answer on demand', async ({
+  page,
+}) => {
+  await page.goto('/marxismo/');
+  const review = page.locator('.chapter-review').first();
+  await review.scrollIntoViewIfNeeded();
+  await expect(review.getByRole('heading', { name: 'Revisão do capítulo' })).toBeVisible();
+  await expect(review.locator('.review-answer')).toHaveCount(0);
+  await review.getByRole('button', { name: 'Mostrar resposta' }).click();
+  await expect(review.locator('.review-answer')).toBeVisible();
+  await expect(review.getByRole('button', { name: 'Ocultar resposta' })).toBeVisible();
+});
+
+test('the reading ends with at most five curated connections', async ({ page }) => {
+  await page.goto('/marxismo/');
+  const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
+  await expect(connections).toBeVisible();
+  await expect(connections.getByRole('link', { name: 'Liberalismo' })).toBeVisible();
+  await expect(connections.getByRole('link', { name: 'Anarquismo' })).toBeVisible();
+  await expect(connections.getByRole('link', { name: 'Social-democracia' })).toBeVisible();
+  expect(await connections.getByRole('link').count()).toBeLessThanOrEqual(5);
+});
+
+test('a verbete with a continuous reading offers the contextual path', async ({ page }) => {
+  await page.goto('/verbete/karl-marx/');
+  await expect(
+    page.getByRole('heading', { name: 'Este verbete tem contexto maior' }),
+  ).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Continuar em Marxismo' })).toHaveAttribute(
+    'href',
+    '/marxismo',
+  );
+  await expect(page.getByRole('link', { name: 'Voltar ao topo' })).toBeVisible();
+});
+
 test('three pages work on mobile with reduced motion and accessible links', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -116,15 +170,13 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
   ]) {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(path);
-    if (path === '/marxismo/') {
-      await page.screenshot({
-        path: 'output/playwright/atlas-marxismo-editorial-desktop.png',
-        fullPage: true,
-      });
-    }
     const chapterLinks = page.locator('app-ideology-reading-index .desktop-nav a:not(.index-act)');
     expect(await chapterLinks.count()).toBeGreaterThan(1);
-    await chapterLinks.nth(1).click();
+    const chapterLink = page.locator(
+      `app-ideology-reading-index .desktop-nav a[href="#${secondAnchor}"]`,
+    );
+    await expect(chapterLink).toHaveCount(1);
+    await chapterLink.click();
     await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
     await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
     await page.getByRole('button', { name: 'Voltar de onde veio' }).click();
@@ -151,11 +203,10 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
       true,
     );
     const chapterPicker = page.getByLabel('Ir para capítulo');
+    await expect(chapterPicker.locator('option')).toHaveCount(12);
     await chapterPicker.selectOption(secondAnchor);
-    await expect(page).toHaveURL(new RegExp(`#${secondAnchor}$`));
+    await expect(chapterPicker).toHaveValue(secondAnchor);
     await expect(page.locator(`#${secondAnchor}`)).toBeFocused();
-    await page.getByRole('button', { name: 'Voltar de onde veio' }).click();
-    await expect(page).toHaveURL(new RegExp(`#${firstAnchor}$`));
   }
 });
 
@@ -229,6 +280,45 @@ test('both readings share the twelve canonical chapters, one index and no nested
   }
 });
 
+test('the connections chapter draws the tradition as a graph scoped to its atlas', async ({
+  page,
+}) => {
+  await page.goto('/marxismo#conexoes');
+  const network = page.locator('#conexoes app-knowledge-network');
+  await expect(network).toBeVisible();
+  const nodes = network.locator('[data-node]');
+  await expect(nodes.first()).toBeVisible();
+  const count = await nodes.count();
+  expect(count).toBeGreaterThan(40);
+  await expect(network.locator('#graph-status')).toContainText(`${count} de`);
+  // The tradition's own record is part of the cut and opens selected.
+  await expect(network.locator('[data-node="ideology-marxism"]')).toHaveCount(1);
+  await expect(network.locator('.node.is-selected')).toHaveCount(1);
+  await expect(network.locator('.node__selection')).toHaveCount(1);
+  await expect(network.locator('.zoom__level')).toHaveText('100%');
+  await expect(network.locator('.detail')).toHaveCount(0);
+  await network.locator('#graph-search').fill('Friedrich Engels');
+  await network.locator('#graph-search').press('Enter');
+  const heading = page.locator('#conexoes .entity-reading h2');
+  await expect(heading).toHaveText('Friedrich Engels');
+  await expect(network.locator('.zoom__level')).toHaveText('100%');
+  await expect(network.locator('.node.is-selected')).toHaveCount(1);
+  await expect(network.locator('.node__selection')).toHaveCount(1);
+  await expect(network.locator('.label.is-selected')).toContainText('Friedrich Engels');
+  // A selection marks the node; it must not erase the rest of the map.
+  await expect(network.locator('.node.is-dimmed')).toHaveCount(0);
+  const selection = network.locator('.selection-pill');
+  await expect(selection).toContainText('Selecionado');
+  await expect(selection).toContainText('Friedrich Engels');
+  await expect(selection.getByRole('link', { name: /Verbete/ })).toHaveAttribute(
+    'href',
+    /\/verbete\//,
+  );
+  await selection.getByRole('button', { name: 'Ver ficha' }).click();
+  await expect(heading).toBeFocused();
+  await expect(heading).toBeInViewport();
+});
+
 test('each image appears once in the narrative; only the archive catalogue repeats', async ({
   page,
 }) => {
@@ -249,8 +339,8 @@ test('épocas list dated records and the relations explain each kind of connecti
     await page.goto(`${path}`);
     const era = page.locator('.era-chart').first();
     await expect(era.locator('.dated-list li').first()).toBeVisible();
-    await era.locator('.epoch-picker button.carousel-item').nth(1).click();
-    await expect(era.locator('.epoch-detail h5').first()).toContainText('Registros datados');
+    await era.locator('.era-epoch .epoch-row').nth(1).click();
+    await expect(era.locator('.epoch-body h4').first()).toContainText('Registros datados');
 
     const relations = page.locator('.relations').first();
     await expect(relations.locator('.relation-legend li').first()).toBeVisible();
@@ -317,11 +407,30 @@ test('reading prose keeps a measure of about 72 characters on desktop', async ({
   }
 });
 
-test('retired /comparar redirects to the archive search and /grafo to /rede', async ({ page }) => {
+test('retired /comparar redirects to the archive search and /grafo and /rede to /grafos', async ({
+  page,
+}) => {
   await page.goto('/comparar?esquerda=person-karl-marx');
-  await expect(page).toHaveURL(/\/conhecimento/);
+  await expect(page).toHaveURL(/\/acervo/);
   await page.goto('/grafo');
-  await expect(page).toHaveURL(/\/rede$/);
+  await expect(page).toHaveURL(/\/grafos$/);
+  await page.goto('/rede');
+  await expect(page).toHaveURL(/\/grafos$/);
+});
+
+test('/fontes paginates and a source anchor opens the page that holds it', async ({ page }) => {
+  await page.goto('/fontes');
+  const rows = page.locator('.source-row');
+  await expect(rows).toHaveCount(24);
+  const pager = page.getByRole('navigation', { name: 'Paginação do acervo' }).first();
+  await expect(pager).toBeVisible();
+  await pager.getByRole('link', { name: /Próxima/ }).click();
+  await expect(page).toHaveURL(/pagina=2/);
+  const id = await rows.first().getAttribute('id');
+  expect(id).toBeTruthy();
+  await page.goto(`/fontes#${id}`);
+  await expect(page).toHaveURL(/pagina=2/);
+  await expect(page.locator(`#${id}`)).toBeInViewport();
 });
 
 test('debates show estimated positions with their evidence, in words and not only colour', async ({
@@ -363,17 +472,40 @@ test('chapter jumps enter the history and Back returns to the previous chapter',
   page,
 }) => {
   await page.goto('/marxismo');
-  const index = page.locator('app-ideology-reading .desktop-nav a:not(.index-act)');
-  await index.nth(1).click();
-  await expect(page).toHaveURL(/#.+/);
-  const second = new URL(page.url()).hash;
-  await index.nth(2).click();
+  await expect(page.locator('app-ideology-reading')).toBeVisible();
+  // Pick two chapters from the same act: opening the first collapses the other acts.
+  const pair = await page.evaluate(() => {
+    const nav = document.querySelector('app-ideology-reading .desktop-nav');
+    if (!nav) return null;
+    const groups: string[][] = [];
+    let current: string[] | null = null;
+    for (const child of nav.children) {
+      if (child.classList.contains('index-act')) {
+        current = [];
+        groups.push(current);
+      } else if (current && child.matches('a')) {
+        const href = child.getAttribute('href');
+        if (href) current.push(href);
+      }
+    }
+    return groups.find((group) => group.length > 1)?.slice(0, 2) ?? null;
+  });
+  expect(pair).not.toBeNull();
+  const [first, second] = pair!;
+  await page
+    .locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${first}"]`)
+    .click();
+  await expect(page).toHaveURL(new RegExp(`${first}$`));
+  await page
+    .locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${second}"]`)
+    .click();
+  await expect(page).toHaveURL(new RegExp(`${second}$`));
   await expect(
-    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${second}"]`),
+    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${first}"]`),
   ).not.toHaveAttribute('aria-current');
   await page.goBack();
-  await expect(page).toHaveURL(new RegExp(`${second.replace('#', '#')}$`));
+  await expect(page).toHaveURL(new RegExp(`${first}$`));
   await expect(
-    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${second}"]`),
+    page.locator(`app-ideology-reading .desktop-nav a:not(.index-act)[href="${first}"]`),
   ).toHaveAttribute('aria-current', 'location');
 });

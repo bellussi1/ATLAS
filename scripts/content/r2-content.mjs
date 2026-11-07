@@ -127,10 +127,14 @@ export function signRequest({ method, url, headers = {}, body = Buffer.alloc(0),
   const names = Object.keys(all).sort();
   const canonicalHeaders = names.map((name) => `${name}:${all[name]}\n`).join('');
   const signedHeaders = names.join(';');
+  const canonicalQuery = [...url.searchParams.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([name, value]) => `${encodeURIComponent(name)}=${encodeURIComponent(value)}`)
+    .join('&');
   const canonicalRequest = [
     method,
     url.pathname,
-    '',
+    canonicalQuery,
     canonicalHeaders,
     signedHeaders,
     payloadHash,
@@ -157,13 +161,15 @@ export async function r2(
   config,
   method,
   key,
-  { body, contentType, contentEncoding, cacheControl } = {},
+  { body, contentType, contentEncoding, cacheControl, query, contentMd5 } = {},
 ) {
   const url = new URL(`/${config.bucket}/${key}`, config.endpoint);
+  if (query) url.search = query.startsWith('?') ? query : `?${query}`;
   const headers = Object.fromEntries(
     Object.entries({
       'content-type': contentType,
       'content-encoding': contentEncoding,
+      'content-md5': contentMd5,
       'cache-control': cacheControl,
       'accept-encoding': 'identity',
     }).filter(([, value]) => value !== undefined),
@@ -179,6 +185,56 @@ export async function r2(
   return fetch(url, { method, headers: { ...transport, authorization }, body });
 }
 
+/** Lists a bucket prefix through the S3 API, following continuation tokens. */
+export async function listR2Objects(config, prefix = '') {
+  const objects = [];
+  let token;
+  do {
+    const query = new URLSearchParams({
+      'list-type': '2',
+      prefix,
+      'max-keys': '1000',
+    });
+    if (token) query.set('continuation-token', token);
+    const response = await r2(config, 'GET', '', { query: query.toString() });
+    if (!response.ok) throw new Error(`Falha ao listar ${prefix}: HTTP ${response.status}`);
+    const text = await response.text();
+    for (const match of text.matchAll(/<Contents>([\s\S]*?)<\/Contents>/g)) {
+      const key = match[1].match(/<Key>([\s\S]*?)<\/Key>/)?.[1];
+      const size = Number(match[1].match(/<Size>(\d+)<\/Size>/)?.[1] ?? 0);
+      const lastModified = match[1].match(/<LastModified>([\s\S]*?)<\/LastModified>/)?.[1];
+      if (key) objects.push({ key, size, lastModified: lastModified ?? null });
+    }
+    token = /<IsTruncated>true<\/IsTruncated>/.test(text)
+      ? text.match(/<NextContinuationToken>([\s\S]*?)<\/NextContinuationToken>/)?.[1]
+      : undefined;
+  } while (token);
+  return objects;
+}
+
+/** Deletes up to 1,000 keys per S3 batch, with the Content-MD5 the API requires. */
+export async function deleteR2Objects(config, keys) {
+  let deleted = 0;
+  for (let offset = 0; offset < keys.length; offset += 1000) {
+    const batch = keys.slice(offset, offset + 1000);
+    const body = Buffer.from(
+      `<Delete><Quiet>true</Quiet>${batch
+        .map((key) => `<Object><Key>${key}</Key></Object>`)
+        .join('')}</Delete>`,
+    );
+    const contentMd5 = createHash('md5').update(body).digest('base64');
+    const response = await r2(config, 'POST', '', {
+      query: 'delete',
+      body,
+      contentType: 'application/xml',
+      contentMd5,
+    });
+    if (!response.ok) throw new Error(`Falha ao apagar capturas: HTTP ${response.status}`);
+    deleted += batch.length;
+  }
+  return deleted;
+}
+
 /**
  * Content-addressed objects are immutable: an existing key with the same content is reused.
  * With `compress`, the object is stored gzipped; the key and the pinned digest describe the
@@ -187,18 +243,27 @@ export async function r2(
 export async function putImmutable(
   config,
   { key, body, contentType, compress = false },
-  { dryRun = false } = {},
+  { dryRun = false, quiet = false } = {},
 ) {
-  if (dryRun) return console.log(`[dry-run] ${key} (${body.byteLength} bytes)`);
+  if (dryRun) {
+    if (!quiet) console.log(`[dry-run] ${key} (${body.byteLength} bytes)`);
+    return;
+  }
   const head = await r2(config, 'HEAD', key);
   if (head.status !== 200 && head.status !== 404)
     throw new Error(`Falha ao consultar ${key}: HTTP ${head.status}`);
   if (head.status === 200) {
     const stored = head.headers.get('content-encoding');
-    if (compress && stored === 'gzip') return console.log(`já publicado: ${key}`);
+    if (compress && stored === 'gzip') {
+      if (!quiet) console.log(`já publicado: ${key}`);
+      return;
+    }
     if (Number(head.headers.get('content-length')) !== body.byteLength)
       throw new Error(`Objeto imutável com tamanho divergente: ${key}`);
-    if (!compress) return console.log(`já publicado: ${key}`);
+    if (!compress) {
+      if (!quiet) console.log(`já publicado: ${key}`);
+      return;
+    }
   }
   const put = await r2(config, 'PUT', key, {
     body: compress ? gzipSync(body, { level: 9 }) : body,
@@ -207,7 +272,7 @@ export async function putImmutable(
     cacheControl: 'public, max-age=31536000, immutable',
   });
   if (!put.ok) throw new Error(`Falha ao publicar ${key}: HTTP ${put.status}`);
-  console.log(`publicado: ${key}`);
+  if (!quiet) console.log(`publicado: ${key}`);
 }
 
 /** Writes through a temporary file so an interrupted run never leaves a partial cache entry. */

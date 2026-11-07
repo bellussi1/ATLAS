@@ -1,6 +1,6 @@
 # Produção: roteiro de infraestrutura
 
-Site: `https://atlasbr.vercel.app` (Vercel). Conteúdo: bucket R2 `atlas-public` (hoje em `r2.dev`).
+Site: `https://atlasbr.vercel.app` (Vercel). A migração do host estático para Cloudflare Pages está preparada em `npm run infra:pages`; falta publicar com credencial Cloudflare. Conteúdo: bucket R2 `atlas-public` (hoje em `r2.dev`).
 
 **O repositório é público.** Nada sensível entra nele: tokens, chaves, IDs de conta e e-mails ficam em segredos do GitHub, em `~/.atlas/*.env` ou no painel do provedor. O CI roda o gitleaks sobre todo o histórico, o hook de pré-commit roda `gitleaks protect --staged` quando o gitleaks está instalado, e `.gitignore` bloqueia `.env*`, `*.pem`, `*.key` e `.vercel`.
 
@@ -10,7 +10,9 @@ Site: `https://atlasbr.vercel.app` (Vercel). Conteúdo: bucket R2 `atlas-public`
 2. `scripts/infra/vercel-config.mjs` (último passo do `npm run build`) escreve `dist/atlas/vercel.json` com os headers e a CSP com hashes do build, os redirecionamentos de `public/_redirects`, `cleanUrls` e cache longo para JS e CSS com hash.
 3. O job `deploy` copia esse arquivo para a raiz e roda `vercel build` e `vercel deploy --prebuilt`: `master` vai para produção, pull requests viram pré-visualização. O job só roda quando a variável `VERCEL_PROJECT_ID` existe.
 
-`public/404.html` é servido pelo Vercel com status 404 para endereços desconhecidos.
+O `vercel.json` da raiz é versionado e cobre o deploy pelo Git enquanto o job `deploy` está inerte (falta `VERCEL_PROJECT_ID`). Ele fixa `framework: null` para desligar o preset Angular, que hoje responde `index.html` com status 200 em endereços desconhecidos, e repete `redirects`, `routes` e os headers de segurança. A CSP com os hashes do build fica só no arquivo gerado, porque os hashes mudam a cada build; `scripts/infra/vercel-config.spec.mjs` falha se as regras determinísticas dos dois arquivos divergirem.
+
+`public/404.html` é servido pelo Vercel com status 404 para endereços desconhecidos. O `routes` termina em `{ "status": 404, "dest": "/404.html" }` depois de `handle: filesystem`, e `/verbete/*` continua na SPA para slugs não prerenderizados. Sem `framework: null` (ou seja, no preset Angular), o mesmo endereço devolve 200 com `index.html`; o `uptime.yml` detecta isso porque exige 404 no caminho inexistente.
 
 ## O que fica a cargo de uma pessoa
 
@@ -54,6 +56,95 @@ npm run content:publish                                      # republica o point
 - Espelhar no R2 as imagens da Wikimedia com licença de reprodução (hoje há hotlink).
 - Hoje o `vercel.json` gerado nunca rodou contra o Vercel real: o primeiro deploy de pré-visualização é o teste.
 
+## CDN de conteúdo (Worker)
+
+O endereço público do conteúdo ainda é o `r2.dev`, que tem limite de taxa. O Worker
+`atlas-content-delivery` serve o mesmo contrato sem expor o endpoint S3: `pointer.json`,
+`c/<sha256>.json` e `m/<sha256>.<ext>`, com CORS, `ETag`, cache imutável para os artefatos e
+`no-cache` para o ponteiro. O binding é somente leitura no bucket `atlas-public`; `atlas-drafts`
+não entra no Worker.
+
+Deploy (exige `CLOUDFLARE_API_TOKEN` com Workers Scripts:Edit e `CLOUDFLARE_ACCOUNT_ID`, ou
+`npx wrangler login`):
+
+```bash
+npm run infra:content-worker
+```
+
+O endereço padrão fica em `https://atlas-content-delivery.atlas-bellussi.workers.dev`. Para um
+domínio próprio, adicione o domínio ao Worker no painel da Cloudflare e use essa origem no passo
+seguinte.
+
+Depois de o Worker responder `GET /pointer.json`:
+
+```bash
+node scripts/infra/switch-content-domain.mjs https://atlas-content-delivery.atlas-bellussi.workers.dev --apply
+npm run content:publish
+npm run content:fetch
+npm run build
+gh variable set ATLAS_CDN_URL --body https://atlas-content-delivery.atlas-bellussi.workers.dev
+```
+
+O `switch-content-domain` troca a constante do app, o ponteiro local e a CSP; o
+`content:publish` grava o `pointer.json` com a origem nova. O `publish-r2` usa
+`DEFAULT_CONTENT_BASE_URL` como origem pública, então o `R2_PUBLIC_URL` do ambiente pode continuar
+apontando para o endpoint S3; ele não é mais a URL pública do app.
+
+Conferir:
+
+```bash
+curl -sI https://atlas-content-delivery.atlas-bellussi.workers.dev/pointer.json
+curl -sI https://atlas-content-delivery.atlas-bellussi.workers.dev/c/<sha256>.json
+```
+
+O primeiro deve responder `Cache-Control: public, max-age=0, must-revalidate`; o segundo,
+`public, max-age=31536000, immutable`. Ambos precisam de `Access-Control-Allow-Origin: *`.
+
+## Retenção de releases no R2
+
+Cada `content:publish` grava objetos imutáveis novos e pode deixar releases antigos no bucket.
+`npm run infra:prune-releases` mantém o ponteiro atual e os três releases anteriores distintos,
+lendo o histórico de `content/content-pointer.json` no git. O padrão é simulação:
+
+```bash
+npm run infra:prune-releases
+npm run infra:prune-releases -- --keep 4 --apply
+```
+
+O `--apply` apaga somente objetos de `c/` e `m/` que nenhum dos ponteiros retidos referencia;
+`pointer.json`, `raw/` e `atlas-drafts` não entram. Reduzir para menos de quatro releases remove
+a possibilidade de rollback para um release mais antigo, então a decisão é editorial. Em
+06/11/2026 a primeira execução removeu **92 objetos / 19,9 MB** e deixou **30 objetos em `c/` e 3
+em `m/`**.
+
+## Cloudflare Pages (host estático)
+
+O build em `dist/atlas/browser` já contém `_headers`, `_redirects` e `404.html`, que são o
+contrato nativo do Pages: cache dos assets, cabeçalhos de segurança, redirecionamentos e a
+página de rota desconhecida. O conteúdo continua vindo do R2; o Pages serve o app e as mídias
+locais.
+
+O plano gratuito do Pages não cobra requisições nem banda e aceita até 20.000 arquivos e 25 MiB
+por arquivo. Em 06/11/2026 o build tinha **1.242 arquivos, 133,7 MB** e o maior arquivo era
+`marxismo/index.html` com **0,86 MB**, dentro dos limites.
+
+```bash
+npm run build
+npm run infra:pages:check   # valida limites e mostra o comando
+npm run infra:pages         # publica em atlas-bellussi.pages.dev
+```
+
+O primeiro deploy exige um projeto e credencial Cloudflare (Workers/Pages Edit) ou
+`npx wrangler login`:
+
+```bash
+npx wrangler pages project create atlas-bellussi --production-branch master
+```
+
+Para usar domínio próprio, adicione o domínio ao projeto no painel e atualize `ATLAS_SITE_URL`;
+o `ATLAS_CDN_URL` continua apontando para o Worker de conteúdo. Depois de validar o Pages,
+desative o deploy da Vercel para não manter duas origens.
+
 ## Armazenamento dos deployments
 
 Os HTMLs estáticos incluíam cópias dos objetos do grafo via TransferState.
@@ -77,6 +168,32 @@ mesmo intervalo em Usage → Deployment Storage. A atualização do uso depende
 da exclusão dos deployments antigos e da atualização das métricas.
 
 Referência verificada em 06/11/2026 — [retenção de deployments](https://vercel.com/docs/deployment-retention).
+
+## Capturas cruas no R2
+
+As respostas JSON usadas para replay ficam em `raw/<sha256>.bin`. Em 06/11/2026 o bucket tinha
+**16.058 objetos e 9,6 GB** (a maior parte em JSON sem compressão), perto do limite gratuito de
+10 GB do R2. Após a migração gzip, o prefixo ficou em **1,58 GB**. Três medidas mantêm isso sob
+controle:
+
+1. **gzip**: `publish-raw` grava novos objetos com `Content-Encoding: gzip`; as capturas antigas
+   podem ser recompactadas com `npm run ingest:compress-raw -- --apply`. A chave continua sendo o
+   SHA-256 do JSON descomprimido; `fetch-raw` e o Worker continuam recebendo o corpo original.
+2. **ciclo de vida de 90 dias**: a regra está em `scripts/infra/raw-lifecycle.json` e vale só para
+   o prefixo `raw/`. Com um token de **Workers R2 Storage:Write**:
+
+```bash
+npx wrangler r2 bucket lifecycle set atlas-public --file scripts/infra/raw-lifecycle.json
+```
+
+O comando da API S3 (`npm run infra:raw-lifecycle -- --days 90 --apply`) só funciona se a chave
+S3 também tiver permissão de lifecycle; hoje ela responde 403. A regra não apaga imediatamente
+objetos recém-enviados: eles expiram 90 dias depois do upload. 3. **manter as N capturas mais recentes**: `npm run infra:raw-prune -- --keep 20` mostra o plano;
+`--apply` apaga os objetos `raw/` que não são referenciados pelos manifests das N capturas mais
+novas. Isso reduz o espaço agora, mas capturas antigas deixam de ser reexecutáveis por
+`ingest:fetch-raw`; use apenas se a retenção menor for uma decisão editorial.
+
+O ciclo de vida não toca `pointer.json`, `c/` nem `m/`. O `atlas-drafts` nunca entra nesse bucket.
 
 ## Capturas do CI
 

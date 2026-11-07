@@ -10,8 +10,8 @@ export const explorerGroups = [
 export const explorerCatalogues = [
   {
     group: 'acervo',
-    path: 'conhecimento',
-    title: 'Conhecimento',
+    path: 'acervo',
+    title: 'Acervo',
     description: 'Busque em todo o acervo: registros, fontes e exemplos de metodologia.',
   },
   {
@@ -131,7 +131,7 @@ export function explorerEntries(
   index: readonly DiscoveryIndexEntry[],
   filter: { catalogue?: string; query?: string; kind?: string; state?: string },
 ): DiscoveryIndexEntry[] {
-  const catalogue = filter.catalogue ?? 'conhecimento';
+  const catalogue = filter.catalogue ?? 'acervo';
   const kind = catalogueKinds[catalogue];
   const terms = normalizeExplorerQuery(filter.query ?? '')
     .trim()
@@ -140,9 +140,7 @@ export function explorerEntries(
   return index
     .filter(
       (entry) =>
-        (catalogue === 'conhecimento' ||
-          catalogue === 'fontes' ||
-          entry.path.startsWith('/verbete/')) &&
+        (catalogue === 'acervo' || catalogue === 'fontes' || entry.path.startsWith('/verbete/')) &&
         (!kind || entry.kind === kind) &&
         (!filter.kind || entry.kind === filter.kind) &&
         (!filter.state || entry.state === filter.state) &&

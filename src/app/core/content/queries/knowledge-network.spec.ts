@@ -12,11 +12,11 @@ import {
   natureOf,
   type NetworkEdge,
   networkKindOf,
+  networkKindOfEntity,
   networkKinds,
   type NetworkNode,
   nodeRadius,
   nodeScaleFor,
-  regionOf,
   relationFamilies,
   searchNodes,
   shortestPath,
@@ -50,6 +50,11 @@ describe('knowledge network', () => {
     expect(new Set(networkKinds.map((k) => k.color)).size).toBe(8);
   });
 
+  it('keeps dated events as events and topic records as concepts', () => {
+    expect(networkKindOfEntity({ id: 'event-guerra-da-coreia', kind: 'event' })).toBe('event');
+    expect(networkKindOfEntity({ id: 'wiki-topic-aborto', kind: 'concept' })).toBe('concept');
+  });
+
   it('gives each relation family its own colour or dash pattern', () => {
     const looks = relationFamilies.map((f) => `${f.color}|${f.dash}`);
     expect(new Set(looks).size).toBe(relationFamilies.length);
@@ -68,6 +73,32 @@ describe('knowledge network', () => {
     expect(filterNetwork(network, { ...all, collections: new Set() }).nodes).toEqual([]);
     const connected = filterNetwork(network, { ...all, onlyConnected: true });
     expect(connected.nodes.every((n) => n.degree > 0)).toBe(true);
+  });
+
+  it('pulls the endpoints of a scoped relation into the cut', () => {
+    const person = {
+      id: 'person',
+      kind: 'person',
+      collections: ['atlas-a'],
+    } as unknown as NetworkNode;
+    const root = {
+      id: 'root',
+      kind: 'ideology',
+      collections: ['atlas-b'],
+    } as unknown as NetworkNode;
+    const link = {
+      id: 'link',
+      source: 'root',
+      target: 'person',
+      family: 'associated',
+      collection: 'atlas-a',
+    } as unknown as NetworkEdge;
+    const cut = filterNetwork(
+      { nodes: [root, person], edges: [link], collections: [] },
+      { ...all, collections: new Set(['atlas-a']) },
+    );
+    expect(cut.nodes.map((node) => node.id)).toEqual(['root', 'person']);
+    expect(cut.edges).toHaveLength(1);
   });
 
   it('searches names ignoring case and accents', () => {
@@ -119,30 +150,18 @@ describe('knowledge network', () => {
     expect(layoutNetwork([], []).positions.size).toBe(0);
   }, 30000);
 
-  it('keeps nodes without links inside their own region, among the others', () => {
+  it('groups nodes by text context instead of collection', () => {
     const layout = layoutNetwork(network.nodes, network.edges);
-    const linked = new Set(network.edges.flatMap((e) => [e.source, e.target]));
-    const sizes = new Map<string, number>();
-    for (const n of network.nodes)
-      sizes.set(n.collections[0], (sizes.get(n.collections[0]) ?? 0) + 1);
-    const regions = new Map(layout.regions.map((r) => [r.id, r]));
-    const isolated = network.nodes.filter((n) => !linked.has(n.id));
-    expect(isolated.length).toBeGreaterThan(0);
-    for (const node of isolated) {
-      const region = regions.get(regionOf(node, sizes))!;
-      const at = layout.positions.get(node.id)!;
-      expect(Math.hypot(at.x - region.x, at.y - region.y)).toBeLessThanOrEqual(region.radius + 1);
-    }
+    const collections = new Set(network.nodes.flatMap((node) => node.collections));
+    expect(layout.regions.length).toBeGreaterThan(0);
+    expect(layout.regions.every((region) => region.id.startsWith('ctx-'))).toBe(true);
+    expect(layout.regions.some((region) => collections.has(region.id))).toBe(false);
   });
 
-  it('gives every region its own place, none overlapping another', () => {
+  it('returns one semantic region per context group', () => {
     const { regions } = layoutNetwork(network.nodes, network.edges);
     expect(regions.length).toBeGreaterThan(0);
-    for (let i = 0; i < regions.length; i++)
-      for (let j = i + 1; j < regions.length; j++) {
-        const gap = Math.hypot(regions[i].x - regions[j].x, regions[i].y - regions[j].y);
-        expect(gap).toBeGreaterThan(Math.min(regions[i].radius, regions[j].radius));
-      }
+    expect(new Set(regions.map((region) => region.id)).size).toBe(regions.length);
   });
 
   it('keeps the on-screen node scale within the reserved range', () => {

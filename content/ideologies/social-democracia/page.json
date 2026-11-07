@@ -3,16 +3,16 @@
   "id": "ideology-page-social-democracia",
   "slug": "social-democracia",
   "kind": "tradicao",
-  "classificationNote": "Tradição político-intelectual e partidária, sem doutrina única. O recorte cobre sobretudo a Europa a partir do fim do século XIX e trata a Terceira Via como ramificação debatida. A classificação segue o verbete e pode ser revista.",
+  "classificationNote": "Tradição político-intelectual e partidária, sem doutrina única. O recorte cobre sobretudo a Europa a partir do fim do século XIX e trata a Terceira Via como releitura recente.",
   "title": "Social-democracia",
   "kicker": "Tradição político-intelectual · fins do século XIX em diante",
-  "summary": "Rascunho de leitura sobre reformas, Estado de bem-estar e disputas da social-democracia com o socialismo e o liberalismo. Baseado em verbetes da Wikipédia; sem revisão humana.",
+  "summary": "Reformas, Estado de bem-estar e as disputas da social-democracia com o socialismo e o liberalismo. Uma tradição que busca transformar o capitalismo pela via política, sem abolir o mercado.",
   "published": true,
   "atlasId": "atlas-social-democracia",
   "review": {
     "status": "rascunho",
     "reviewer": null,
-    "updatedAt": "2026-11-04"
+    "updatedAt": "2026-11-06"
   },
   "identity": {
     "accent": "ochre",
@@ -27,15 +27,20 @@
       "anchor": "introducao",
       "title": "Reformar o capitalismo pela política",
       "kicker": "O que é?",
-      "minutes": 2,
+      "minutes": 1,
       "narrative": [
-        "Segundo o verbete da Wikipédia em português, a social-democracia é uma ideologia de centro-esquerda que defende a intervenção do Estado para promover justiça social dentro do capitalismo. Combina Estado de bem-estar social, sindicatos fortes e democracia representativa.",
-        "O nome designa ideias, partidos, governos e uma rede internacional. Há debate acadêmico sobre se ela é distinta do socialismo ou parte do movimento socialista mais amplo; esta leitura não resolve essa disputa."
+        "A social-democracia é uma tradição de centro-esquerda que busca reformar o capitalismo pela via política. Defende eleições, sindicatos, Estado de bem-estar e direitos sociais, sem abolir a economia de mercado.",
+        "O nome designa partidos, governos e uma rede internacional. Há debate sobre se é uma corrente distinta do socialismo ou parte do movimento socialista mais amplo; a leitura não resolve a disputa.",
+        "O recorte acompanha a formação alemã, a expansão europeia e os debates sobre reforma, crise do Estado de bem-estar e Terceira Via.",
+        "A tradição se organiza em partidos de massa, sindicatos e cooperativas, e chega ao governo em vários países europeus no século XX. A experiência do poder modifica suas promessas e suas divisões."
       ],
       "question": "Por que a social-democracia é tantas vezes confundida com o socialismo?",
       "bridge": "Para separar as duas coisas, é preciso voltar à Alemanha do século XIX, onde o nome ganhou organização.",
-      "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
-      "gap": "Definição baseada em verbetes da Wikipédia (pt e en). Faltam literatura acadêmica e textos primários.",
+      "sourceIds": [
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-social-democracy"
+      ],
+      "gap": "Definição baseada em fontes enciclopédicas; faltam literatura acadêmica e textos primários.",
       "coverage": "partial",
       "layout": "introduction",
       "blocks": []
@@ -45,11 +50,12 @@
       "anchor": "origens",
       "title": "Do Lassalle ao SPD",
       "kicker": "Origens e formação",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "Ferdinand Lassalle fundou, na década de 1860, a Associação Geral dos Trabalhadores Alemães (ADAV), apontada pelo verbete como origem da social-democracia. Em 1875, a ADAV se fundiu ao partido de Wilhelm Liebknecht e August Bebel, e deu origem ao SPD.",
-        "Nos anos 1860, o socialismo associado a Marx também se tornou, segundo o verbete, a base teórica oficial do primeiro partido social-democrata da Europa, o SDAP. A Primeira Internacional, fundada em 1864, marca o mesmo período de organização operária.",
-        "A repressão moldou o movimento. A partir de 1878, o Reichstag aprovou as Leis Antissocialistas, por iniciativa de Bismarck, para reduzir a força do SPD: elas proibiram reuniões socialistas, tornaram os sindicatos ilegais e encerraram 45 jornais. Segundo o verbete, não impediram o crescimento do partido e perderam eficácia em 1890."
+        "A social-democracia se organiza na Alemanha do século XIX, com associações operárias, sindicatos e partidos. Lassalle, Bebel e Liebknecht disputam a direção do movimento; a unificação de 1875 cria o partido que, em 1890, adota o nome SPD.",
+        "As leis antissocialistas de Bismarck, em vigor de 1878 a 1890, empurram a organização para a clandestinidade e para a imprensa. A legalização e o crescimento eleitoral consolidam a estratégia parlamentar.",
+        "Bernstein formula a revisão do marxismo ortodoxo em 1899: reformas graduais e democracia poderiam transformar o capitalismo sem revolução. A Segunda Internacional reúne partidos e correntes, mas não elimina a disputa entre reforma e revolução.",
+        "A Primeira Guerra Mundial e a Revolução Russa dividem a esquerda: social-democratas optam pela ordem parlamentar, comunistas pela ruptura. A cisão de 1919 marca a trajetória do século XX."
       ],
       "question": "Onde a social-democracia começou a se organizar, e sob que pressão?",
       "bridge": "A repressão e o crescimento eleitoral levaram o SPD a discutir o que deveria ser o socialismo.",
@@ -61,7 +67,7 @@
         "src-wiki-topic-august-bebel",
         "src-wiki-topic-leis-antissocialistas"
       ],
-      "gap": "Recorte limitado ao caso alemão e às fontes da Wikipédia. As origens britânica e escandinava ainda não foram cobertas.",
+      "gap": "Recorte limitado ao caso alemão. As origens britânica e escandinava ainda não foram cobertas.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": []
@@ -71,10 +77,12 @@
       "anchor": "principios",
       "title": "Reforma, democracia e igualdade",
       "kicker": "Pilares e princípios",
-      "minutes": 4,
+      "minutes": 2,
       "narrative": [
-        "O verbete descreve a social-democracia como favorável à democracia política e econômica e a uma abordagem gradualista, reformista e democrática para alcançar a igualdade social.",
-        "Essa ênfase na ação política, e não na ruptura revolucionária, é um dos pontos que a distinguem do marxismo ortodoxo, segundo o próprio verbete."
+        "A social-democracia aceita a economia de mercado e busca corrigir seus resultados por impostos, serviços públicos, regulação e negociação coletiva. O Estado de bem-estar e a proteção social são centrais.",
+        "A democracia representativa, o sufrágio universal e a liberdade sindical são meios e fins: permitem disputar o poder e limitar o arbítrio. A tradição não é pacifista nem revolucionária por definição; varia historicamente.",
+        "Há divergências sobre o tamanho do Estado, a propriedade pública e a integração europeia. A leitura apresenta as posições sem transformar uma delas na essência da tradição.",
+        "O compromisso do pós-guerra combina pleno emprego, negociação coletiva e serviços universais. A crise dos anos 1970 e a globalização pressionam esse arranjo e reabrem o debate sobre mercado e proteção."
       ],
       "question": "O que a social-democracia quer preservar e o que quer mudar?",
       "bridge": "Os princípios ganham sentido quando aparecem em decisões partidárias concretas.",
@@ -83,7 +91,7 @@
         "src-wiki-topic-social-democracy",
         "src-wiki-topic-terceira-via"
       ],
-      "gap": "Pilares formulados a partir de verbetes; falta comparar com programas partidários originais.",
+      "gap": "Pilares formulados a partir de fontes secundárias; falta comparar com programas partidários originais.",
       "coverage": "partial",
       "layout": "concepts",
       "blocks": [
@@ -97,10 +105,15 @@
               "kicker": "Gradualismo",
               "summary": "A mudança social se faz por instituições democráticas e reformas sucessivas.",
               "paragraphs": [
-                "O verbete descreve a abordagem como gradualista, reformista e democrática para alcançar a igualdade social."
+                "A estratégia gradualista transforma a sociedade por eleições, legislação e instituições, sem ruptura revolucionária. A igualdade social é buscada por reformas sucessivas e negociação, não pela abolição imediata do mercado."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
-              "entityIds": ["wiki-topic-social-democracia"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracia",
+                "src-wiki-topic-social-democracy"
+              ],
+              "entityIds": [
+                "wiki-topic-social-democracia"
+              ],
               "classification": "interpretação"
             },
             {
@@ -109,9 +122,11 @@
               "kicker": "Programa de Godesberg, 1959",
               "summary": "Em 1959, o SPD rejeitou a luta de classes e o marxismo como base partidária.",
               "paragraphs": [
-                "Segundo o verbete, o Programa de Godesberg, aprovado em 1959, rejeitou a luta de classes e o marxismo. É uma data e uma decisão documentadas, não uma interpretação."
+                "O Programa de Godesberg, aprovado pelo SPD em 1959, rejeitou a luta de classes e o marxismo como base partidária. A decisão documenta a virada reformista do pós-guerra; é uma data e uma escolha política, não uma interpretação."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracia"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracia"
+              ],
               "entityIds": [],
               "classification": "alegação empírica"
             },
@@ -121,9 +136,12 @@
               "kicker": "Instituições",
               "summary": "Intervenção do Estado para reduzir desigualdades, com sindicatos fortes e democracia representativa.",
               "paragraphs": [
-                "O verbete associa a social-democracia ao Estado de bem-estar social e à força dos sindicatos, como instrumentos de justiça social dentro do capitalismo."
+                "O Estado de bem-estar social combina serviços públicos, transferências e regulação para reduzir desigualdades. Sindicatos fortes e democracia representativa são apresentados como instrumentos de justiça social dentro do capitalismo."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracia",
+                "src-wiki-topic-social-democracy"
+              ],
               "entityIds": [],
               "classification": "interpretação"
             }
@@ -136,14 +154,19 @@
       "anchor": "conceitos",
       "title": "Palavras que mudam de sentido",
       "kicker": "Conceitos e palavras-chave",
-      "minutes": 3,
+      "minutes": 1,
       "narrative": [
-        "Segundo o verbete em inglês, Friedrich Engels teria usado o termo social democracy pela primeira vez em 1844. O sentido da palavra mudou desde então, e cada país a usa de um modo.",
-        "O verbete sobre a Terceira Via a descreve como uma corrente centrista que concilia medidas de centro-direita e de centro-esquerda, surgida nas décadas de 1980 e 1990 como reconceitualização da social-democracia."
+        "Reformismo é a estratégia de transformar a sociedade por eleições, legislação e instituições, em vez de ruptura revolucionária. Revisionismo designa a revisão teórica do marxismo que acompanha essa estratégia.",
+        "Estado de bem-estar, cidadania social e negociação coletiva descrevem arranjos institucionais que buscam proteger parte do trabalho e da vida das pressões do mercado. A Terceira Via, nos anos 1990, propõe combinar mercado e política social com ênfase em responsabilidade e investimento.",
+        "Os conceitos são históricos: mudam com o crescimento, a crise fiscal e a composição das classes.",
+        "Cidadania social é a ideia de que direitos de proteção e participação pertencem a todos, não apenas aos que podem pagar. O conceito ajuda a distinguir seguro privado, assistência e serviço universal."
       ],
       "question": "Por que o mesmo nome designa projetos políticos tão diferentes?",
       "bridge": "Essas palavras reaparecem nas vertentes e nos debates, onde o sentido precisa ser fixado.",
-      "sourceIds": ["src-wiki-topic-social-democracy", "src-wiki-topic-terceira-via"],
+      "sourceIds": [
+        "src-wiki-topic-social-democracy",
+        "src-wiki-topic-terceira-via"
+      ],
       "gap": "Glossário ainda sem entradas próprias no acervo, como Estado de bem-estar e economia mista.",
       "coverage": "partial",
       "layout": "concepts",
@@ -154,12 +177,11 @@
       "anchor": "epocas",
       "title": "Da Alemanha de Bismarck ao século XXI",
       "kicker": "História e épocas",
-      "minutes": 5,
+      "minutes": 1,
       "narrative": [
-        "Em 1883, o Império Alemão lançou um conjunto de programas sociais. O verbete registra que Bismarck colocou em prática propostas de assistência social inicialmente sugeridas pelos social-democratas, mesmo depois de reprimir o partido com as Leis Antissocialistas.",
-        "Com a Revolução Russa de 1917, os socialistas se dividiram. Os que apoiaram a revolução passaram a se chamar comunistas; os bolcheviques criaram a Internacional Comunista em 1919, e os reformistas fundaram a Labour and Socialist International em 1923.",
-        "Depois da Segunda Guerra, o Partido Socialista Democrático Italiano foi fundado, em 1947. Em 1956, Anthony Crosland publicou The Future of Socialism, para quem um novo capitalismo exigia um novo socialismo.",
-        "Nos anos 1990, a Terceira Via, associada a Tony Blair e ao New Labour, reconfigurou parte do campo social-democrata. Em 2013, partidos membros ou ex-membros da Internacional Socialista fundaram a Progressive Alliance."
+        "A periodização é didática: a formação dos partidos no século XIX; a expansão de massas antes de 1914; o entreguerras e a divisão com os comunistas; o auge do Estado de bem-estar após 1945; a crise dos anos 1970 e a Terceira Via.",
+        "As fronteiras são aproximadas. A social-democracia fora da Europa, incluindo a América Latina, exige bibliografia própria.",
+        "No Brasil, a periodização possível começa com a legislação social dos anos 1930, passa pela CLT (1943), pelo PTB (1945), pelo golpe de 1964 e chega à Constituição de 1988. Esses marcos não reproduzem a trajetória europeia: combinam tutela estatal, mobilização sindical e redemocratização."
       ],
       "question": "Como a social-democracia mudou entre o século XIX e os dias atuais?",
       "bridge": "Os governos que deram corpo a essas mudanças aparecem nas experiências históricas.",
@@ -168,9 +190,12 @@
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-otto-von-bismarck",
         "src-wiki-topic-internacional-socialista",
-        "src-wiki-topic-terceira-via"
+        "src-wiki-topic-terceira-via",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-cpdoc-vargas",
+        "source-sd-cf88"
       ],
-      "gap": "Linha do tempo montada a partir de datas de verbetes. Faltam fontes históricas que confirmem o peso relativo de cada episódio.",
+      "gap": "A linha do tempo europeia foi complementada por marcos brasileiros; faltam datas e instituições de outros países da América Latina.",
       "coverage": "partial",
       "layout": "timeline",
       "blocks": []
@@ -180,11 +205,11 @@
       "anchor": "pensadores",
       "title": "Quem formulou e quem disputou",
       "kicker": "Pensadores e obras",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "Ferdinand Lassalle, Wilhelm Liebknecht e August Bebel aparecem entre os fundadores da organização social-democrata alemã. Bebel participou da fusão de 1875 que formou o SPD.",
-        "Eduard Bernstein, cujas ideias, segundo o verbete, prepararam a social-democracia do pós-guerra, e Karl Kautsky, que o criticou em livro, são as referências do debate interno ao SPD. Rosa Luxemburgo também debateu com Bernstein dentro do partido.",
-        "Jean Jaurès defendia uma revolução social democrática e não violenta, segundo o verbete. Olof Palme, Willy Brandt e Bruno Kreisky representam a social-democracia do pós-guerra em seus países."
+        "Bernstein formula o revisionismo; Kautsky representa a ortodoxia da Segunda Internacional; Bebel e Liebknecht organizam o partido alemão; Jaurès articula socialismo e República na França; Brandt, Palme e Kreisky dão forma à social-democracia do pós-guerra.",
+        "A seleção é um caminho de estudo, não uma lista de concordâncias. Os autores divergem sobre revolução, Estado e reforma.",
+        "No Brasil, Leonel Brizola foi a liderança que reelaborou publicamente o trabalhismo como \"novo trabalhismo\" e fundou o PDT. A bibliografia o trata como continuidade e reinvenção da tradição, não como simples herdeiro de Vargas."
       ],
       "question": "Quem deu forma à social-democracia, e como cada um a entendia?",
       "bridge": "Os governos desses pensadores mostram como as ideias chegaram à prática.",
@@ -196,7 +221,10 @@
         "src-wiki-topic-olof-palme",
         "src-wiki-topic-willy-brandt",
         "src-wiki-topic-bruno-kreisky",
-        "src-wiki-topic-social-democracy"
+        "src-wiki-topic-social-democracy",
+        "source-sd-brizola-trabalhismo",
+        "source-sd-pdt",
+        "source-sd-gomes-trabalhismo"
       ],
       "gap": "As obras dos pensadores não foram consultadas diretamente. Os registros de Bernstein e Kautsky vêm de outra coleção do acervo.",
       "coverage": "partial",
@@ -217,10 +245,10 @@
           ],
           "mode": "thinkers",
           "notes": {
-            "wiki-topic-ferdinand-lassalle": "Fundou a ADAV, origem apontada pelo verbete.",
+            "wiki-topic-ferdinand-lassalle": "Fundou a ADAV, uma das origens do partido social-democrata alemão.",
             "wiki-topic-wilhelm-liebknecht": "Um dos principais fundadores do SPD.",
             "wiki-topic-august-bebel": "Participou da fusão de 1875 que formou o SPD.",
-            "person-eduard-bernstein": "Suas ideias, segundo o verbete, prepararam a social-democracia do pós-guerra.",
+            "person-eduard-bernstein": "Suas ideias prepararam a social-democracia reformista do pós-guerra.",
             "person-karl-kautsky": "Criticou Bernstein no debate interno do SPD.",
             "wiki-topic-jean-jaures": "Defendia uma revolução social democrática e não violenta.",
             "wiki-topic-olof-palme": "Representante da social-democracia escandinava.",
@@ -235,11 +263,11 @@
       "anchor": "vertentes",
       "title": "Reformistas, terceiras vias e críticas",
       "kicker": "Correntes e vertentes",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "O verbete distingue ao menos duas vertentes: a social-democracia reformista do pós-guerra, ligada à Internacional Socialista, e a Terceira Via dos anos 1980 e 1990, que tentou conciliar medidas de centro-direita e de centro-esquerda.",
-        "Há divergências sobre o enquadramento. Alguns cientistas políticos caracterizam a Terceira Via como efetivamente neoliberal, e outros socialistas criticam a social-democracia por fortalecer o capitalismo que deveria substituir.",
-        "No Brasil, o verbete aponta a criação do PSDB, em 1988, como origem local da Terceira Via."
+        "A social-democracia se divide entre reformistas, sindicalistas e correntes mais à esquerda; os modelos nórdicos combinam Estado de bem-estar, sindicatos fortes e economia aberta; a Terceira Via se aproxima do liberalismo social.",
+        "A rede mostra diferenças documentadas; os rótulos não descrevem blocos homogêneos.",
+        "No Brasil, a social-democracia não se organizou como partido único. O trabalhismo do PTB e do PDT reivindicou reformas sociais e democracia em uma linguagem própria; a comparação com a social-democracia europeia exige distinguir origem, programa e prática de governo."
       ],
       "question": "Todos os social-democratas concordam entre si?",
       "bridge": "As divergências aparecem com força nos debates sobre o papel do Estado e a relação com o capitalismo.",
@@ -247,9 +275,12 @@
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
         "src-wiki-topic-internacional-socialista",
-        "src-wiki-topic-terceira-via"
+        "src-wiki-topic-terceira-via",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-pdt",
+        "source-sd-brizola-trabalhismo"
       ],
-      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas além dos verbetes.",
+      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas; o caso brasileiro foi incorporado como tradição própria, não como cópia da social-democracia europeia.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -269,7 +300,9 @@
                 "src-wiki-topic-social-democracia",
                 "src-wiki-topic-internacional-socialista"
               ],
-              "entityIds": ["wiki-topic-internacional-socialista"],
+              "entityIds": [
+                "wiki-topic-internacional-socialista"
+              ],
               "classification": "interpretação"
             },
             {
@@ -278,10 +311,14 @@
               "kicker": "Anos 1980 e 1990",
               "summary": "Tentativa de conciliar medidas de centro-direita e de centro-esquerda.",
               "paragraphs": [
-                "O verbete sobre a Terceira Via a apresenta como reconceitualização da social-democracia, com o New Labour de Blair como caso central."
+                "A Terceira Via, associada ao New Labour de Blair, propõe conciliar mercado e política social, com ênfase em investimento, responsabilidade e reforma das instituições. É uma releitura da social-democracia, não uma doutrina única."
               ],
-              "sourceIds": ["src-wiki-topic-terceira-via"],
-              "entityIds": ["wiki-topic-terceira-via"],
+              "sourceIds": [
+                "src-wiki-topic-terceira-via"
+              ],
+              "entityIds": [
+                "wiki-topic-terceira-via"
+              ],
               "classification": "interpretação"
             },
             {
@@ -290,9 +327,11 @@
               "kicker": "Controvérsia",
               "summary": "Parte dos analistas enquadra a Terceira Via como neoliberal.",
               "paragraphs": [
-                "Alguns cientistas políticos e analistas caracterizam a Terceira Via como um movimento efetivamente neoliberal. O verbete registra a afirmação como controversa."
+                "Parte dos analistas caracteriza a Terceira Via como neoliberal, por sua aceitação do mercado e da disciplina fiscal. A classificação é controversa e não é consenso entre estudiosos."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracy"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracy"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             }
@@ -305,11 +344,11 @@
       "anchor": "experiencias",
       "title": "Governos e reformas",
       "kicker": "Experiências históricas",
-      "minutes": 4,
+      "minutes": 1,
       "narrative": [
-        "Na Suécia, Olof Palme governou em dois períodos, de 1969 a 1976 e de 1982 a 1986, à frente do Partido Operário Social-Democrata.",
-        "Na Alemanha Ocidental, Willy Brandt foi chanceler de 1969 a 1974 e conduziu a Ostpolitik, pela qual recebeu o Nobel da Paz em 1971. Na Áustria, Bruno Kreisky foi chanceler de 1970 a 1983, em um mandato que o verbete descreve como o mais longo da Áustria republicana.",
-        "Sobre resultados, relatórios colocam os países nórdicos entre os de maior PIB per capita, igualdade econômica, saúde pública e expectativa de vida. A fonte consultada marca essas referências como a melhorar."
+        "A tradição se experimenta em países concretos: a Alemanha do SPD e das leis antissocialistas; a Suécia do modelo nórdico; a Áustria de Kreisky; a França de Jaurès.",
+        "O recorte situa a tradição no espaço, sem mapa completo.",
+        "O Brasil não organizou uma social-democracia clássica, mas combinou legislação social, partidos trabalhistas e disputas pela democracia. A CLT (1943), o PTB (1945) e o PDT (1980) organizaram uma cidadania social tutelada e disputada; a Constituição de 1988 ampliou direitos sociais em um contexto de redemocratização. A bibliografia sobre o trabalhismo discute se esse arranjo é uma variante de social-democracia ou uma tradição própria."
       ],
       "question": "Onde a social-democracia governou, e com que resultados?",
       "bridge": "Os limites desses resultados levam aos debates sobre o que a tradição realmente conseguiu.",
@@ -317,9 +356,14 @@
         "src-wiki-topic-olof-palme",
         "src-wiki-topic-willy-brandt",
         "src-wiki-topic-bruno-kreisky",
-        "src-wiki-topic-social-democracy"
+        "src-wiki-topic-social-democracy",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-cpdoc-vargas",
+        "source-sd-cf88",
+        "source-sd-brizola-trabalhismo",
+        "source-sd-pdt"
       ],
-      "gap": "A amostra é europeia. Experiências da América Latina e do Brasil não foram incluídas.",
+      "gap": "O caso brasileiro foi incorporado; faltam outras experiências latino-americanas e a comparação sistemática entre trabalhismo, social-democracia e regimes autoritários.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -335,8 +379,12 @@
               "paragraphs": [
                 "Olof Palme governou a Suécia de 1969 a 1976 e de 1982 a 1986, à frente do Partido Operário Social-Democrata."
               ],
-              "sourceIds": ["src-wiki-topic-olof-palme"],
-              "entityIds": ["wiki-topic-olof-palme"],
+              "sourceIds": [
+                "src-wiki-topic-olof-palme"
+              ],
+              "entityIds": [
+                "wiki-topic-olof-palme"
+              ],
               "classification": "alegação empírica"
             },
             {
@@ -347,20 +395,28 @@
               "paragraphs": [
                 "Willy Brandt foi chanceler da Alemanha Ocidental entre 1969 e 1974, conduziu a Ostpolitik e recebeu o Nobel da Paz em 1971."
               ],
-              "sourceIds": ["src-wiki-topic-willy-brandt"],
-              "entityIds": ["wiki-topic-willy-brandt"],
+              "sourceIds": [
+                "src-wiki-topic-willy-brandt"
+              ],
+              "entityIds": [
+                "wiki-topic-willy-brandt"
+              ],
               "classification": "alegação empírica"
             },
             {
               "id": "experiencia-kreisky-austria",
               "title": "Era Kreisky",
               "kicker": "Áustria, 1970 a 1983",
-              "summary": "Chancelaria mais longa da Áustria republicana, segundo o verbete.",
+              "summary": "Chancelaria mais longa da Áustria republicana.",
               "paragraphs": [
-                "Bruno Kreisky foi chanceler da Áustria de 1970 a 1983. O verbete descreve seu mandato de 13 anos como o mais longo de um chanceler da Áustria republicana."
+                "Bruno Kreisky foi chanceler da Áustria entre 1970 e 1983. Seu mandato de 13 anos é o mais longo da Áustria republicana e ficou associado à expansão do Estado de bem-estar e à política externa ativa."
               ],
-              "sourceIds": ["src-wiki-topic-bruno-kreisky"],
-              "entityIds": ["wiki-topic-bruno-kreisky"],
+              "sourceIds": [
+                "src-wiki-topic-bruno-kreisky"
+              ],
+              "entityIds": [
+                "wiki-topic-bruno-kreisky"
+              ],
               "classification": "alegação empírica"
             },
             {
@@ -371,9 +427,35 @@
               "paragraphs": [
                 "Os indicadores de bem-estar nos países nórdicos vêm de relatórios que a fonte consultada marca como a melhorar. Eles não bastam, sozinhos, para atribuir esses resultados à social-democracia."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracy"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracy"
+              ],
               "entityIds": [],
               "classification": "limitação editorial"
+            },
+            {
+              "id": "experiencia-brasil-trabalhismo",
+              "title": "Brasil: CLT, PTB e Constituição",
+              "kicker": "1943–1988",
+              "summary": "Direitos sociais, partidos trabalhistas e redemocratização.",
+              "paragraphs": [
+                "A Consolidação das Leis do Trabalho, de 1943, reuniu direitos trabalhistas sob tutela do Estado. O PTB, fundado em 1945, deu forma partidária ao trabalhismo; o PDT, fundado em 1980, reivindicou um novo trabalhismo.",
+                "A Constituição de 1988 inscreveu direitos sociais e universais em um contexto de saída da ditadura. A comparação com a social-democracia europeia deve distinguir universalismo, clientelismo e tutela, sem reduzir uma tradição à outra."
+              ],
+              "sourceIds": [
+                "source-sd-gomes-trabalhismo",
+                "source-sd-cpdoc-vargas",
+                "source-sd-cf88",
+                "source-sd-brizola-trabalhismo",
+                "source-sd-pdt"
+              ],
+              "entityIds": [
+                "wiki-topic-getulio-vargas",
+                "wiki-topic-partido-democratico-trabalhista",
+                "wiki-topic-leonel-brizola",
+                "wiki-topic-partido-trabalhista-brasileiro-1979"
+              ],
+              "classification": "interpretação"
             }
           ]
         }
@@ -384,16 +466,22 @@
       "anchor": "debates",
       "title": "Objeções e respostas",
       "kicker": "Argumentos, críticas e respostas",
-      "minutes": 5,
+      "minutes": 1,
       "narrative": [
-        "Críticos marxistas acusaram o reformismo social-democrata desde cedo. Lenin criticou o revisionismo nas Teses de Abril, em 1917, e Stalin foi crítico vocal dos social-democratas reformistas.",
-        "Walter Benjamin atribuiu à social-democracia parte da culpa pela ascensão do nazismo, afirmação que o verbete registra como controversa. Joseph Schumpeter criticou o reformismo socialista em Capitalism, Socialism and Democracy (1942).",
-        "Do lado da defesa, Anthony Crosland argumentou, em 1956, que a social-democracia precisava de um novo socialismo para um novo capitalismo. O verbete não registra uma resposta sistemática dos defensores às críticas de Benjamin e Schumpeter."
+        "Bernstein e Luxemburgo disputam reforma e revolução: reformas sociais podem transformar o capitalismo ou apenas administrá-lo? A Terceira Via e a social-democracia tradicional disputam o papel do Estado e da responsabilidade individual.",
+        "Cada posição tem autor e alvo; a leitura não transforma a disputa em veredito.",
+        "A disputa brasileira entre trabalhismo e social-democracia é também uma disputa de memória: o trabalhismo de Vargas foi lido como concessão, cooptação ou invenção de uma cultura política. A leitura não resolve o debate; mostra como ele muda o diagnóstico sobre direitos sociais e democracia."
       ],
       "question": "Quais são as objeções mais fortes, e o que os defensores respondem?",
       "bridge": "Os debates mostram que a tradição não é consensual, nem dentro nem fora dela.",
-      "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
-      "gap": "Falta a resposta dos defensores às críticas de Benjamin e Schumpeter, com fonte própria.",
+      "sourceIds": [
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-social-democracy",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-brizola-trabalhismo",
+        "source-sd-pdt"
+      ],
+      "gap": "Falta a resposta dos defensores às críticas de Benjamin e Schumpeter, com fonte própria. O caso brasileiro foi incorporado como debate de memória, não como resposta fechada.",
       "coverage": "partial",
       "layout": "debate",
       "blocks": [
@@ -407,9 +495,11 @@
               "kicker": "Teses de Abril, 1917",
               "summary": "Lenin atacou o revisionismo social-democrata após a Revolução Russa.",
               "paragraphs": [
-                "Segundo o verbete, Lenin criticou o revisionismo nas Teses de Abril, em 1917."
+                "Lenin criticou o revisionismo social-democrata nas Teses de Abril, em 1917, por considerar que a reforma política não bastava para enfrentar o capitalismo e a guerra. A crítica é uma posição atribuída, não um veredito."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracia"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracia"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -419,9 +509,11 @@
               "kicker": "Walter Benjamin",
               "summary": "Benjamin atribuiu à social-democracia parte da culpa pela ascensão do nazismo.",
               "paragraphs": [
-                "A afirmação é atribuída a Walter Benjamin. O verbete a classifica como controversa e não a adota como fato."
+                "Walter Benjamin atribuiu à social-democracia parte da responsabilidade pela ascensão do nazismo, ao aceitar a ordem política que facilitou a crise. A tese é uma interpretação controversa, não um fato estabelecido."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracy"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracy"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -431,9 +523,11 @@
               "kicker": "Crítica socialista",
               "summary": "Outros socialistas veem na social-democracia um reforço do sistema que ela deveria substituir.",
               "paragraphs": [
-                "Essa crítica, registrada pelo verbete, aponta conflito entre a administração do capitalismo e o objetivo de substituí-lo."
+                "Outros socialistas argumentam que administrar o capitalismo por reformas pode fortalecer o sistema que a social-democracia diz querer substituir. O conflito entre administração e transformação é o núcleo da crítica."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracy"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracy"
+              ],
               "entityIds": [],
               "classification": "tese atribuída"
             },
@@ -441,11 +535,13 @@
               "id": "debate-limites-leitura",
               "title": "Limites desta leitura",
               "kicker": "Cautela editorial",
-              "summary": "Os debates foram reunidos a partir de verbetes, sem leitura direta das obras citadas.",
+              "summary": "Os debates vêm de fontes secundárias, sem leitura direta de todas as obras.",
               "paragraphs": [
-                "Não há aqui resposta sistemática dos defensores às críticas, nem leitura direta das obras citadas. Esta seção organiza o que os verbetes registram."
+                "As posições reunidas aqui vêm de fontes secundárias; não há resposta sistemática dos defensores nem leitura direta de todas as obras citadas. A seção organiza o debate, sem esgotá-lo."
               ],
-              "sourceIds": ["src-wiki-topic-social-democracia"],
+              "sourceIds": [
+                "src-wiki-topic-social-democracia"
+              ],
               "entityIds": [],
               "classification": "limitação editorial"
             }
@@ -458,16 +554,21 @@
       "anchor": "conexoes",
       "title": "Com quem a social-democracia dialoga",
       "kicker": "Conexões com outras tradições",
-      "minutes": 3,
+      "minutes": 1,
       "narrative": [
-        "Segundo o verbete, a social-democracia se distingue do liberalismo econômico e do marxismo ortodoxo. Marx e Engels aparecem entre as fontes de influência da tradição.",
-        "Com o marxismo, a relação é de herança e ruptura. Uma interpretação registrada no verbete afirma que a social-democracia moderna se afastou do socialismo científico e se aproximou do Estado de bem-estar social.",
-        "Essas ligações vêm de verbetes enciclopédicos. Por isso aparecem como texto e no acervo de descoberta, e não como relações de influência documentadas."
+        "A social-democracia se define em relação ao liberalismo, ao comunismo e ao sindicalismo. Compartilha com o liberalismo a defesa do Estado de direito e do mercado, mas prioriza proteção social; com o comunismo, a origem socialista, mas rejeita a ruptura revolucionária.",
+        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes.",
+        "No Brasil, a social-democracia se conecta ao trabalhismo e ao liberalismo social da Constituição de 1988. A disputa sobre universalismo, tutela e direitos sociais atravessa essas tradições."
       ],
       "question": "Como a social-democracia se relaciona com o liberalismo e o marxismo?",
       "bridge": "Para ler as tradições lado a lado, siga para as fontes e a metodologia desta leitura.",
-      "sourceIds": ["src-wiki-topic-social-democracia", "src-wiki-topic-social-democracy"],
-      "gap": "Arestas tipadas de influência documentada ainda não foram levantadas para este recorte.",
+      "sourceIds": [
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-social-democracy",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-cf88"
+      ],
+      "gap": "Arestas tipadas de influência documentada ainda não foram registradas; o caso brasileiro foi incorporado como contexto, não como relação histórica fechada.",
       "coverage": "partial",
       "layout": "graph",
       "blocks": [
@@ -484,25 +585,98 @@
       "kicker": "Roteiro de leitura",
       "minutes": 2,
       "narrative": [
-        "Ainda não há roteiro verificado. Este capítulo permanece pendente até que sejam identificadas obras primárias e estudos acadêmicos, com edição e ano conferidos."
+        "O roteiro começa por textos curtos e manifestos, passa por obras de revisão e chega a estudos sobre o Estado de bem-estar. A ordem ajuda a construir o vocabulário antes de enfrentar a bibliografia acadêmica.",
+        "Textos primários permitem conferir o argumento; estudos situam as instituições e os países; críticas mostram os limites. As edições indicadas são as originais; traduções brasileiras podem ser procuradas."
       ],
       "question": "O que ler depois desta introdução?",
-      "bridge": null,
+      "bridge": "Para conferir cada argumento, volte às fontes desta leitura.",
       "sourceIds": [],
-      "gap": "Sem bibliografia verificada: os verbetes usados não bastam para indicar leituras.",
-      "coverage": "pending",
+      "gap": "Roteiro baseado em obras clássicas e estudos; edições brasileiras e datas de tradução ainda não foram conferidas.",
+      "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "reading-path",
+          "works": [
+            {
+              "title": "A evolução do socialismo",
+              "author": "Eduard Bernstein",
+              "year": "1899",
+              "edition": "Berlim, 1899",
+              "level": "intermediário",
+              "theme": "Reforma e revisionismo",
+              "why": "Texto central da revisão reformista: propõe transformar o capitalismo pela democracia e pelas reformas.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "Manifesto do Partido Comunista",
+              "author": "Karl Marx e Friedrich Engels",
+              "year": "1848",
+              "edition": "Londres, 1848",
+              "level": "introdutório",
+              "theme": "Contexto",
+              "why": "Programa de 1848 que define o campo socialista do qual a social-democracia se separa.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "O Estado e a revolução",
+              "author": "Vladimir Lenin",
+              "year": "1917",
+              "edition": "Petrogrado, 1917",
+              "level": "intermediário",
+              "theme": "Estado e revolução",
+              "why": "Crítica à estratégia reformista e defesa da ruptura revolucionária.",
+              "kind": "primária",
+              "entityId": null
+            },
+            {
+              "title": "The Three Worlds of Welfare Capitalism",
+              "author": "Gøsta Esping-Andersen",
+              "year": "1990",
+              "edition": "Cambridge, 1990",
+              "level": "avançado",
+              "theme": "Estado de bem-estar",
+              "why": "Estudo comparado dos regimes de bem-estar e das diferenças entre modelos sociais.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "One Hundred Years of Socialism",
+              "author": "Donald Sassoon",
+              "year": "1996",
+              "edition": "Londres, 1996",
+              "level": "avançado",
+              "theme": "História da tradição",
+              "why": "História dos partidos socialistas e social-democratas europeus no século XX.",
+              "kind": "estudo",
+              "entityId": null
+            },
+            {
+              "title": "A Terceira Via",
+              "author": "Anthony Giddens",
+              "year": "1998",
+              "edition": "Londres, 1998",
+              "level": "intermediário",
+              "theme": "Terceira Via",
+              "why": "Formulação intelectual da Terceira Via e do debate com a social-democracia tradicional.",
+              "kind": "estudo",
+              "entityId": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "fontes",
       "anchor": "fontes",
-      "title": "Como esta leitura foi feita",
-      "kicker": "Fontes e metodologia",
-      "minutes": 2,
+      "title": "Fontes e evidências",
+      "kicker": "Conferir o argumento",
+      "minutes": 1,
       "narrative": [
-        "Esta leitura reúne afirmações de verbetes de consulta em português e em inglês. Cada afirmação traz a sua fonte. As citações não foram conferidas diretamente contra o texto dos verbetes.",
-        "A classificação de cada afirmação, entre fato documentado, interpretação e alegação controversa, ainda não passou por revisão humana."
+        "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
+        "Para conferir uma afirmação, procure a fonte indicada no capítulo e compare o argumento com o texto original. Uma síntese não substitui a leitura da obra."
       ],
       "question": "Como sei que o que está aqui é verdade?",
       "bridge": null,

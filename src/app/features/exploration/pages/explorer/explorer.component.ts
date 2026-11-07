@@ -1,8 +1,16 @@
-import { NgTemplateOutlet, ViewportScroller } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { DOCUMENT, NgTemplateOutlet, ViewportScroller } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import {
   ActivatedRoute,
+  NavigationEnd,
   NavigationStart,
   Router,
   RouterLink,
@@ -50,8 +58,14 @@ export class ExplorerComponent {
   private readonly router = inject(Router);
   private readonly repository = inject(ContentRepository);
   private readonly viewport = inject(ViewportScroller);
+  private readonly document = inject(DOCUMENT);
   // Pager links keep the reader's place: the router would otherwise scroll to the top of the page.
   private keptScrollY: number | null = null;
+  // A #source-… link may point to another page; the scroll restoration must not undo it.
+  private resolvingFragment = false;
+  private resolvedFragment: string | null = null;
+  /** Keeps the previous page visible and marked busy while a query-string change settles. */
+  readonly navigating = signal(false);
   readonly groups = explorerGroups.map((group) => ({
     ...group,
     catalogues: explorerCatalogues.filter((c) => c.group === group.id),
@@ -63,6 +77,10 @@ export class ExplorerComponent {
   readonly languages = contentLanguageLabels;
   readonly params = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,
+  });
+  /** `#source-…` links open the page that holds that source. */
+  readonly fragment = toSignal(this.route.fragment, {
+    initialValue: this.route.snapshot.fragment,
   });
   readonly facets = explorerFacets(this.repository.discoveryIndex, this.catalogue.path);
   readonly kindGroups = explorerContentGroups
@@ -81,12 +99,12 @@ export class ExplorerComponent {
   );
   // Sources keep one list: records link to their anchors (#source-…), which must stay on the page.
   readonly icon = iconKind;
-  readonly paginated = this.catalogue.path !== 'fontes';
+  readonly paginated = true;
   readonly page = computed(() =>
     explorerPage(
       this.results(),
       parseExplorerPage(this.params().get('pagina')),
-      this.paginated ? EXPLORER_PAGE_SIZE : Math.max(1, this.results().length),
+      EXPLORER_PAGE_SIZE,
     ),
   );
   readonly origin = computed(() => '/' + this.catalogue.path + this.queryString());
@@ -116,7 +134,16 @@ export class ExplorerComponent {
       // Filters, search and pager only change the query string: the reader stays where they are.
       if (event instanceof NavigationStart) {
         const samePage = event.url.split('?')[0] === this.router.url.split('?')[0];
-        this.keptScrollY = samePage ? this.viewport.getScrollPosition()[1] : null;
+        this.keptScrollY = this.resolvingFragment
+          ? null
+          : samePage
+            ? this.viewport.getScrollPosition()[1]
+            : null;
+        this.navigating.set(samePage);
+      }
+      if (event instanceof NavigationEnd) {
+        this.navigating.set(false);
+        this.resolvingFragment = false;
       }
       if (event instanceof Scroll && this.keptScrollY !== null) {
         const y = this.keptScrollY;
@@ -124,6 +151,29 @@ export class ExplorerComponent {
         // The router scrolls to the top after its own Scroll event, so the restore waits one turn.
         setTimeout(() => this.viewport.scrollToPosition([0, y]));
       }
+    });
+    // A source anchor can live on a later page: open that page before scrolling to the item.
+    effect(() => {
+      const fragment = this.fragment();
+      const entries = this.results();
+      if (!fragment || this.catalogue.path !== 'fontes') return;
+      const index = entries.findIndex((entry) => (entry.fragment ?? entry.id) === fragment);
+      if (index < 0) return;
+      const target = Math.floor(index / EXPLORER_PAGE_SIZE) + 1;
+      if (target !== this.page().page) {
+        this.resolvingFragment = true;
+        void this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: { pagina: target === 1 ? null : target },
+          queryParamsHandling: 'merge',
+          fragment,
+          replaceUrl: true,
+        });
+        return;
+      }
+      if (this.resolvedFragment === fragment) return;
+      this.resolvedFragment = fragment;
+      setTimeout(() => this.scrollToFragment(fragment), 0);
     });
   }
   sourceUrl(id: string): string | null {
@@ -163,6 +213,11 @@ export class ExplorerComponent {
   /** Licensed picture of the record, when one may be reproduced. */
   picture(id: string): string | null {
     return entityMedia(this.repository.knowledgeGraph, { id })?.assetPath ?? null;
+  }
+  private scrollToFragment(fragment: string): void {
+    const element = this.document.getElementById(fragment);
+    if (!element) return;
+    element.scrollIntoView({ block: 'start' });
   }
   private queryString(): string {
     const params = new URLSearchParams();

@@ -4,9 +4,9 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 import { vi } from 'vitest';
 
-import { GraphComponent } from './graph.component';
+import { KnowledgeNetworkComponent } from './knowledge-network.component';
 
-describe('GraphComponent', () => {
+describe('KnowledgeNetworkComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [
@@ -14,6 +14,7 @@ describe('GraphComponent', () => {
         {
           provide: ContentRepository,
           useValue: {
+            layouts: {},
             knowledgeGraph: {
               ...methodologyKnowledgeGraph,
               atlases: methodologyKnowledgeGraph.atlases.filter(
@@ -27,7 +28,7 @@ describe('GraphComponent', () => {
   );
 
   async function render() {
-    const fixture = TestBed.createComponent(GraphComponent);
+    const fixture = TestBed.createComponent(KnowledgeNetworkComponent);
     fixture.detectChanges();
     await vi.waitFor(() => expect(fixture.componentInstance.positions()).not.toBeNull());
     fixture.detectChanges();
@@ -35,8 +36,26 @@ describe('GraphComponent', () => {
   }
   const root = (fixture: { nativeElement: unknown }) => fixture.nativeElement as HTMLElement;
 
+  it('draws the released coordinates when a compiled network is available', async () => {
+    const graph = {
+      ...methodologyKnowledgeGraph,
+      atlases: methodologyKnowledgeGraph.atlases.filter((atlas) => atlas.id === 'atlas-liberalism'),
+    };
+    const positions = Object.fromEntries(
+      graph.atlases[0].entities.map((entity, index) => [entity.id, { x: index * 50, y: 100 }]),
+    );
+    TestBed.overrideProvider(ContentRepository, {
+      useValue: {
+        knowledgeGraph: graph,
+        layouts: { network: { width: 2000, height: 1000, positions, regions: [] } },
+      },
+    });
+    const fixture = await render();
+    expect(fixture.componentInstance.positions()).toEqual(new Map(Object.entries(positions)));
+  });
+
   it('shows a loading state until the layout is ready, then draws nodes', async () => {
-    const fixture = TestBed.createComponent(GraphComponent);
+    const fixture = TestBed.createComponent(KnowledgeNetworkComponent);
     fixture.detectChanges();
     expect(root(fixture).querySelector('.overlay')?.textContent).toContain('Organizando');
     await vi.waitFor(() => expect(fixture.componentInstance.positions()).not.toBeNull());
@@ -187,15 +206,38 @@ describe('GraphComponent', () => {
 
   it('lights the surroundings of the hovered node and opens the selected entry with O', async () => {
     const fixture = await render();
-    const linked = fixture.componentInstance.drawnNodes().find((n) => n.node.degree > 0)!;
-    const el = root(fixture).querySelector(`[data-node="${linked.node.id}"]`)!;
-    el.dispatchEvent(new Event('pointerenter'));
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.hoverNode(linked.node.id);
     fixture.detectChanges();
-    expect(fixture.componentInstance.activeId()).toBe(linked.node.id);
+    expect(component.activeId()).toBe(linked.node.id);
     expect(root(fixture).querySelectorAll('.edges line.is-active').length).toBeGreaterThan(0);
-    el.dispatchEvent(new Event('pointerleave'));
+    expect(
+      root(fixture)
+        .querySelector(`[data-node="${linked.node.id}"]`)
+        ?.classList.contains('is-hovered'),
+    ).toBe(true);
+    component.hoverNode(null);
     fixture.detectChanges();
-    expect(fixture.componentInstance.activeId()).toBeNull();
+    expect(component.activeId()).toBeNull();
+  });
+
+  it('keeps the whole map readable when a node is selected', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit(false);
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.select(linked.node.id);
+    fixture.detectChanges();
+    expect(component.selectedId()).toBe(linked.node.id);
+    expect(root(fixture).querySelector('.node__selection')).not.toBeNull();
+    expect(root(fixture).querySelector('.label.is-selected')).not.toBeNull();
+    // A selection is a permanent mark; only hovering its surroundings dims the rest.
+    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBe(0);
+    component.hoverNode(linked.node.id);
+    fixture.detectChanges();
+    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);
   });
 
   it('never draws a label outside the free area of the stage', async () => {
@@ -293,6 +335,39 @@ describe('GraphComponent', () => {
     await vi.waitFor(() => expect(component.edgeLabels().length).toBeGreaterThan(0));
   });
 
+  it('opens at the whole graph and calls that framing 100%', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit(false);
+    const base = component.view().k;
+    expect(component.zoomPercent()).toBe(100);
+    component.zoomBy(2, { x: 700, y: 450 });
+    component.fit(false);
+    expect(component.view().k).toBeCloseTo(base, 6);
+    expect(component.zoomPercent()).toBe(100);
+  });
+
+  it('embeds in an atlas scope, selects its root and frames that atlas as 100%', async () => {
+    const fixture = TestBed.createComponent(KnowledgeNetworkComponent);
+    fixture.componentRef.setInput('embedded', true);
+    fixture.componentRef.setInput('scope', ['atlas-liberalism']);
+    fixture.componentRef.setInput('focus', 'ideology-liberalism');
+    fixture.detectChanges();
+    await vi.waitFor(() => expect(fixture.componentInstance.positions()).not.toBeNull());
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1000, height: 700 });
+    component.fit(false);
+    fixture.detectChanges();
+    expect(component.visible().nodes.length).toBeGreaterThan(0);
+    expect(
+      component.visible().nodes.every((node) => node.collections.includes('atlas-liberalism')),
+    ).toBe(true);
+    expect(component.selectedId()).toBe('ideology-liberalism');
+    expect(component.zoomPercent()).toBe(100);
+    expect(root(fixture).querySelector('.detail')).toBeNull();
+  });
+
   it('reframes with Home, ignores letter shortcuts on buttons and unwinds Escape in steps', async () => {
     const fixture = await render();
     const component = fixture.componentInstance;
@@ -340,7 +415,10 @@ describe('GraphComponent', () => {
     fixture.detectChanges();
     const edge = component.drawnEdges()[0].edge;
     expect(component.edgeDetailed(edge)).toBe(false);
-    expect(root(fixture).querySelector('.edges line')?.getAttribute('marker-end')).toBeNull();
+    const batch = root(fixture).querySelector('.edge-batch');
+    expect(batch).not.toBeNull();
+    expect(batch?.getAttribute('marker-end')).toBeNull();
+    expect(root(fixture).querySelectorAll('.edges line').length).toBe(0);
     component.zoomBy(3, { x: 700, y: 450 });
     fixture.detectChanges();
     expect(component.edgeDetailed(edge)).toBe(true);
@@ -374,7 +452,7 @@ describe('GraphComponent', () => {
     fixture.detectChanges();
     expect(component.near()).toBe(true);
     expect(component.hoverCard()?.node?.top.length).toBeGreaterThan(0);
-    expect(root(fixture).querySelector('.edge-hits')).not.toBeNull();
+    expect(root(fixture).querySelector('.edge-hits')).toBeNull();
   });
 
   it('keeps the nodes still: nothing in the map floats or sways', async () => {

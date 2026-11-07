@@ -91,29 +91,7 @@
           }
           @if (reviews()[index]; as review) {
             @if (review.recall || review.revisit.length) {
-              <aside class="chapter-review" [attr.aria-label]="'Revisão: ' + chapter.title">
-                @if (review.recall; as recall) {
-                  <details class="review-recall">
-                    <summary>{{ recall.question }}</summary>
-                    <p>
-                      <strong>{{ recall.answer }}</strong> {{ recall.context }}
-                    </p>
-                  </details>
-                }
-                @if (review.revisit.length) {
-                  <div class="review-revisit">
-                    <span>Rever de dois capítulos atrás:</span>
-                    @for (item of review.revisit; track item.entityId) {
-                      <button
-                        appRecordCard
-                        [entityId]="item.entityId"
-                        [title]="item.label"
-                        [appKnowledgeContext]="{ entityId: item.entityId }"
-                      ></button>
-                    }
-                  </div>
-                }
-              </aside>
+              <app-chapter-review [review]="review" [chapterTitle]="chapter.title" />
             }
           }
           @if (chapter.sourceIds.length) {
@@ -141,6 +119,22 @@
         <a routerLink="/">Voltar à página inicial</a>
         @if (companion(); as next) {
           <a [routerLink]="'/' + next.slug">Ler o {{ next.label }}</a>
+        }
+        @if (connections().length) {
+          <nav class="reading-connections" aria-labelledby="reading-connections-title">
+            <h2 id="reading-connections-title">Conexões desta leitura</h2>
+            <p class="reading-connections__hint">
+              Até cinco caminhos para continuar por contraste, continuidade ou disputa.
+            </p>
+            <ul>
+              @for (connection of connections(); track connection.slug) {
+                <li>
+                  <a [routerLink]="'/' + connection.slug">{{ connection.label }}</a>
+                  <span>{{ connection.reason }}</span>
+                </li>
+              }
+            </ul>
+          </nav>
         }
       </footer>
     </app-ideology-reading>

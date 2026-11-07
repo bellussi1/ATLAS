@@ -75,7 +75,7 @@
           <li>
             <a
               class="nav__link"
-              routerLink="/conhecimento"
+              routerLink="/acervo"
               [class.is-active]="section() === 'acervo'"
               [attr.aria-current]="section() === 'acervo' ? 'page' : null"
               (click)="close()"
@@ -85,11 +85,11 @@
           <li>
             <a
               class="nav__link"
-              routerLink="/rede"
-              [class.is-active]="section() === 'rede'"
-              [attr.aria-current]="section() === 'rede' ? 'page' : null"
+              routerLink="/grafos"
+              [class.is-active]="section() === 'grafos'"
+              [attr.aria-current]="section() === 'grafos' ? 'page' : null"
               (click)="close()"
-              ><span class="nav__glyph nav__glyph--circle" aria-hidden="true"></span>Rede</a
+              ><span class="nav__glyph nav__glyph--circle" aria-hidden="true"></span>Grafo</a
             >
           </li>
           <li>

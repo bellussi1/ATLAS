@@ -18,6 +18,14 @@ test('expanded catalogues expose grounded country/regime profiles and the other 
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
     expect(await page.locator('.results article').count()).toBeGreaterThan(0);
   }
+  await page.goto('/paises');
+  await expect(page.locator('.results a[href^="/verbete/brasil?"]')).toBeVisible();
+  await page.goto('/regimes');
+  await expect(
+    page.locator('.results a[href^="/verbete/brasil-recorte-constitucional-1988?"]'),
+  ).toBeVisible();
+  await page.goto('/lugares');
+  await expect(page.locator('.results a[href^="/verbete/brasil?"]')).toHaveCount(0);
   await page.goto('/verbete/brasil');
   await expect(page.getByRole('region', { name: 'Perfil específico do registro' })).toContainText(
     'República Federativa do Brasil',
@@ -28,6 +36,19 @@ test('expanded catalogues expose grounded country/regime profiles and the other 
   await expect(profile).toContainText('artigo 2.º');
   await profile.getByRole('link', { name: 'Portugal', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Portugal');
+});
+
+test('topic records are catalogued as concepts, while named happenings stay events', async ({
+  page,
+}) => {
+  await page.goto('/conceitos?q=aborto');
+  await expect(page.locator('.results a[href^="/verbete/aborto?"]')).toHaveCount(1);
+  await page.goto('/acontecimentos?q=aborto');
+  await expect(page.locator('.results a[href^="/verbete/aborto?"]')).toHaveCount(0);
+  await page.goto('/acontecimentos?q=primeira%20guerra%20mundial');
+  await expect(page.locator('.results a[href^="/verbete/primeira-guerra-mundial?"]')).toHaveCount(
+    1,
+  );
 });
 
 test('reviewed English text preserves identity, original evidence, review method and navigation history', async ({

@@ -19,6 +19,14 @@ describe('static discovery index', () => {
     });
     expect(index.find((item) => item.kind === 'evento')?.kindLabel).toBe('Evento');
     expect(index.find((item) => item.kind === 'work')?.kindLabel).toBe('Obra');
+    expect(index.find((item) => item.path === '/verbete/brasil')).toMatchObject({
+      kind: 'country',
+      kindLabel: 'País',
+    });
+    expect(
+      index.find((item) => item.path === '/verbete/brasil-recorte-constitucional-1988'),
+    ).toMatchObject({ kind: 'regime', kindLabel: 'Regime' });
+    expect(index.find((item) => item.kind === 'place')?.kindLabel).toBe('Lugar');
     expect(index.find((item) => item.kind === 'fonte')).toMatchObject({
       path: '/fontes',
       fragment: expect.stringMatching(/^source-/),
@@ -32,6 +40,22 @@ describe('static discovery index', () => {
     expect(
       filterDiscoveryIndex(index, { kind: 'artigo', state: 'pending' }).map((item) => item.title),
     ).toEqual(['O caput do artigo 5º da Constituição de 1988']);
+  });
+
+  it('indexes topic-like records as concepts and named events as events', () => {
+    for (const id of [
+      'wiki-topic-aborto',
+      'wiki-topic-casamento',
+      'wiki-topic-casamento-entre-pessoas-do-mesmo-sexo',
+      'wiki-topic-desigualdade-economica',
+      'wiki-topic-estado-de-direito',
+      'wiki-topic-irreligiao',
+      'wiki-topic-violencia',
+    ])
+      expect(index.find((item) => item.id === id)?.kind).toBe('concept');
+    expect(index.find((item) => item.id === 'wiki-topic-primeira-guerra-mundial')?.kind).toBe(
+      'evento',
+    );
   });
 
   it('builds directional backlinks with registered labels and rejects missing destinations', () => {
@@ -54,10 +78,10 @@ describe('static discovery index', () => {
   });
 
   it('accepts only a same-site knowledge search as a contextual return destination', () => {
-    expect(safeDiscoveryOrigin('/conhecimento?q=ulysses&tipo=person&estado=registered')).toBe(
-      '/conhecimento?q=ulysses&tipo=person&estado=registered',
+    expect(safeDiscoveryOrigin('/acervo?q=ulysses&tipo=person&estado=registered')).toBe(
+      '/acervo?q=ulysses&tipo=person&estado=registered',
     );
-    expect(safeDiscoveryOrigin('https://example.org/conhecimento')).toBeNull();
+    expect(safeDiscoveryOrigin('https://example.org/acervo')).toBeNull();
     expect(safeDiscoveryOrigin('/verbete/ulysses-guimaraes')).toBeNull();
   });
 });
