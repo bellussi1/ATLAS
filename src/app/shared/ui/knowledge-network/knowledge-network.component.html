@@ -216,6 +216,7 @@
         (pointermove)="pointerMove($event)"
         (pointerup)="pointerUp($event)"
         (pointercancel)="pointerUp($event)"
+        (click)="canvasClick($event)"
         (dblclick)="canvasDoubleClick($event)"
         (keydown)="canvasKey($event)"
       >
@@ -283,18 +284,6 @@
               />
             }
           </g>
-          <g class="node-hits">
-            @for (item of drawnNodes(); track item.node.id) {
-              <circle
-                class="node__hit"
-                [attr.data-hit]="item.node.id"
-                [attr.cx]="item.x"
-                [attr.cy]="item.y"
-                [attr.r]="hitRadius(item.r)"
-                (click)="nodeClick(item.node.id)"
-              />
-            }
-          </g>
           <g class="node-halos" aria-hidden="true">
             @for (item of haloNodes(); track item.node.id) {
               <circle
@@ -327,7 +316,7 @@
               />
             }
           </g>
-          <g class="nodes">
+          <g class="nodes" [style.--node-scale]="nodeScale()">
             @for (item of drawnNodes(); track item.node.id) {
               <path
                 class="node node__shape"
@@ -338,7 +327,6 @@
                 [attr.aria-pressed]="selectedId() === item.node.id"
                 [style.--node-x]="item.x"
                 [style.--node-y]="item.y"
-                [style.--node-scale]="nodeScale()"
                 [attr.d]="item.path"
                 fill-rule="evenodd"
                 [style.fill]="'var(' + item.kind.color + ')'"

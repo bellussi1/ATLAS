@@ -66,9 +66,10 @@
 .card {
   border: 2px solid var(--color-ink);
   border-radius: var(--radius-tight);
-  background: color-mix(in srgb, var(--color-surface-raised) 94%, transparent);
+  // Opaque on purpose: a backdrop blur over a 1.000-node SVG recomputes the whole panel on every
+  // zoom or pan frame, which is much more expensive than the small translucency is worth.
+  background: var(--color-surface-raised);
   box-shadow: var(--card-shadow);
-  backdrop-filter: blur(6px);
 }
 
 // ---- controls shared by the cards ----
@@ -535,7 +536,7 @@ kbd {
     opacity: 0.25;
   }
 }
-.stage--busy :is(.node-hits, .nodes) {
+.stage--busy .nodes {
   pointer-events: none;
 }
 .node {
@@ -547,11 +548,6 @@ kbd {
   &.is-dimmed {
     opacity: 0.4;
   }
-}
-.node__hit {
-  fill: transparent;
-  pointer-events: all;
-  cursor: pointer;
 }
 .node__pulse {
   fill: none;

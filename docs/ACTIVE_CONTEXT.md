@@ -264,6 +264,14 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - A classificação de origem continua ampla; os overrides são dívida declarada em `docs/design/GRAFO-TIPOS.md` e pedem uma onda de dados.
     - Verificações: `npm test` **325/325**, `e2e/graph.spec.ts` **18/18**, `lint` e `typecheck` exit 0, `build` passou.
 
+37. **Desempenho do zoom em `/grafos`**
+    - O perfil do Chrome mostrou que o custo não estava no JavaScript: `ScriptDuration` ~0,3 s contra `TaskOtherDuration` ~7,6 s por sequência de zoom. Repintar e testar o ponteiro sobre 1.156 nós e seus alvos invisíveis dominava o frame.
+    - Mudanças no componente compartilhado: culling de nós e arestas fora da viewport (com margem de 96 px), minimapa separado do `view()` para não recalcular os pontos a cada frame, eventos de wheel coalescidos em um `requestAnimationFrame`, `--node-scale` no grupo `.nodes` e cartões opacos sem `backdrop-filter`.
+    - Os círculos `.node-hits` foram removidos: o clique, o hover e o duplo clique resolvem o nó por `nodeAt()` com alcance mínimo de 16 px na tela. As formas continuam acessíveis por teclado e o teste e2e de clique ao lado do ícone segue passando.
+    - Benchmark local em 1440×900, 45 passos de wheel (`generated/bench-zoom.mjs`, não versionado): de **31.474 ms** de long tasks, máximo **628 ms** e **71** intervalos acima de 100 ms para **865–937 ms**, máximo **102 ms** e **1** intervalo. O culling reduziu os nós desenhados de 1.156 para 541 em 286% e 66 em 817%.
+    - `selectedVisible` deixou de depender de `drawnNodes()` para não criar ciclo de computação com `insets()`; antes da medição do palco, nenhum nó é descartado.
+    - Verificações: `npm test` **325/325**, `e2e/graph.spec.ts` **18/18**, `lint` e `typecheck` exit 0, `build` passou.
+
 
 
 ## Pendências que bloqueiam

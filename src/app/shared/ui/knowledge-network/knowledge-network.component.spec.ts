@@ -465,15 +465,25 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.edgeDetailed(edge)).toBe(true);
   });
 
-  it('gives every node a larger invisible hit area than its shape', async () => {
+  it('selects the node under a canvas click without drawing extra hit circles', async () => {
     const fixture = await render();
-    const node = fixture.componentInstance.drawnNodes()[0];
-    const hit = root(fixture).querySelector('[data-hit]')!;
-    const shown =
-      node.r * fixture.componentInstance.nodeScale() * fixture.componentInstance.zoomK();
-    expect(
-      Number(hit.getAttribute('r')) * fixture.componentInstance.zoomK(),
-    ).toBeGreaterThanOrEqual(Math.max(16, shown + 5));
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    fixture.detectChanges();
+    expect(root(fixture).querySelector('[data-hit]')).toBeNull();
+    const item = component.drawnNodes()[0];
+    const { k, x: vx, y: vy } = component.view();
+    const canvas = root(fixture).querySelector('svg.canvas')!;
+    canvas.dispatchEvent(
+      new MouseEvent('click', {
+        clientX: item.x * k + vx,
+        clientY: item.y * k + vy,
+        bubbles: true,
+      }),
+    );
+    fixture.detectChanges();
+    expect(component.selectedId()).toBe(item.node.id);
     expect(root(fixture).querySelector('[data-label]')).toBeNull();
   });
 
