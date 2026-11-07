@@ -1,7 +1,12 @@
 @if (license(); as record) {
   @if (kind() === 'image') {
     <figure>
-      <img [src]="record.assetPath | contentMedia" [alt]="alt()" loading="lazy" />
+      <img
+        [src]="record.assetPath | contentMedia"
+        [alt]="alt()"
+        [attr.loading]="loading()"
+        [attr.fetchpriority]="fetchPriority()"
+      />
       @if (credit()) {
         <figcaption>
           {{ creator(record) }}

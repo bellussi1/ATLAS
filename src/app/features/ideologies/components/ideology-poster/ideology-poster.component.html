@@ -6,7 +6,7 @@
 
     @if (figures().length) {
       <ul class="poster-figures" [attr.data-count]="figures().length">
-        @for (figure of figures(); track figure.asset.assetPath) {
+        @for (figure of figures(); track figure.asset.assetPath; let index = $index) {
           <li [attr.data-frame]="figure.frame">
             <a
               class="figure-link"
@@ -18,6 +18,8 @@
                 [assetPath]="figure.asset.assetPath"
                 alt=""
                 [credit]="false"
+                [loading]="index === 0 ? 'eager' : 'lazy'"
+                [fetchPriority]="index === 0 ? 'high' : 'auto'"
               />
               <span class="figure-name">{{ figure.label }}</span>
             </a>

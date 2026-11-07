@@ -109,18 +109,26 @@ h2 {
   line-height: 1.55;
 }
 .editorial-gap {
+  margin: 1.25rem 0 0;
+  padding: 0.35rem 0 0 0.85rem;
   border-left: 3px solid var(--color-indigo);
-  background: var(--paper-shade);
-  padding: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  background: none;
+  color: var(--color-ink-muted);
+  font: 0.8125rem/1.55 var(--font-serif);
+}
+.editorial-gap strong {
+  color: var(--color-ink);
 }
 .chronology-empty {
-  border: 2px dashed var(--rule-strong);
+  margin: 1.25rem 0 0;
+  padding: 0.6rem 0.85rem;
+  border: 1px dashed var(--rule-strong);
   background: var(--paper-shade);
-  padding: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  color: var(--color-ink-muted);
+  font: 0.8125rem/1.55 var(--font-serif);
+}
+.chronology-empty strong {
+  color: var(--color-ink);
 }
 .chapter-sources {
   margin-top: 1.5rem;

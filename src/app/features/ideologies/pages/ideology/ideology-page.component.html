@@ -8,12 +8,12 @@
   >
     <app-ideology-poster [page]="page" [basePath]="basePath()" />
     <details class="editorial-strip">
-      <summary>Conteúdo com fontes · revisão humana pendente · recorte e classificação</summary>
+      <summary>{{ reviewSummary() }}</summary>
       <p>{{ page.classificationNote }}</p>
       <p>Atualizado em {{ page.review.updatedAt }}. {{ page.identity.signature }}.</p>
     </details>
 
-    <app-ideology-reading #reading [sections]="sections()">
+    <app-ideology-reading [sections]="sections()">
       @for (chapter of page.chapters; track chapter.id; let index = $index) {
         <section
           class="ideology-chapter"
@@ -27,7 +27,7 @@
             <span>{{ page.title }} — {{ chapter.kicker }}</span
             ><span>{{ roman[index] }} · ~{{ chapter.minutes }} min</span>
           </p>
-          <header class="chapter-heading" appReveal data-reveal="wipe">
+          <header class="chapter-heading">
             <p class="chapter-numeral" aria-hidden="true" [attr.data-shape]="index % 3">
               {{ roman[index] }}
             </p>
@@ -57,7 +57,10 @@
               <p><app-knowledge-text [text]="paragraph" /></p>
             }
           </div>
-          @if (chapter.gap) {
+          @if (
+            chapter.gap &&
+            !(chapter.anchor === 'epocas' && !chaptersWithChronology().has(chapter.anchor))
+          ) {
             <p class="editorial-gap" [attr.data-coverage]="chapter.coverage">
               <strong>{{
                 chapter.coverage === 'pending'
@@ -91,8 +94,16 @@
           }
           @if (chapter.anchor === 'epocas' && !chaptersWithChronology().has(chapter.anchor)) {
             <p class="chronology-empty" role="status">
-              Esta leitura ainda não tem datas estruturadas para uma cronologia. A periodização
-              acima segue a narrativa do capítulo.
+              @if (chapter.gap) {
+                <strong>{{
+                  chapter.coverage === 'pending' ? 'Cobertura pendente.' : 'Cobertura parcial.'
+                }}</strong>
+                {{ chapter.gap }}
+              } @else {
+                <strong>Sem datas estruturadas.</strong>
+                Esta leitura ainda não tem datas para uma cronologia.
+              }
+              A periodização acima segue a narrativa do capítulo.
             </p>
           }
           @if (reviews()[index]; as review) {

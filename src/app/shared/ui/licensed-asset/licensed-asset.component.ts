@@ -16,6 +16,9 @@ export class AtlasLicensedAssetComponent {
   readonly kind = input<'image' | 'document'>('image');
   /** Set to false where the page already credits the asset elsewhere (e.g. a link to its record). */
   readonly credit = input(true);
+  /** Decoding hint for the browser; the opening uses eager on its first figure. */
+  readonly loading = input<'eager' | 'lazy'>('lazy');
+  readonly fetchPriority = input<'high' | 'low' | 'auto'>('auto');
   readonly license = computed(() => reproducibleAsset(this.atlas(), this.assetPath()));
 
   creator(asset: AssetLicense): string {

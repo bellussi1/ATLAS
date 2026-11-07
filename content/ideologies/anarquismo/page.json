@@ -94,7 +94,7 @@
         "A Primeira Internacional reúne socialistas, sindicalistas e federalistas; a ruptura de 1872, com a expulsão de Bakunin, separa o campo anarquista do marxista. A Comuna de Paris, em 1871, torna-se uma referência ambígua e duradoura."
       ],
       "question": "Como uma tradição que nasce numa organização operária acaba rompendo com ela?",
-      "bridge": "A ruptura de 1872 deu ao anarquismo organizações próprias, que se espalharam pela Europa e pelas Américas.",
+      "bridge": "Dessa ruptura saem os princípios que organizam a crítica anarquista.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism",
@@ -127,7 +127,7 @@
         "O federalismo propõe que comunidades e associações se articulem por pactos, com mandatos revogáveis e sem um poder central permanente. A organização não é vista como um mal necessário, mas como forma de liberdade."
       ],
       "question": "O que une correntes que discordam sobre quase tudo?",
-      "bridge": "Essas críticas ganham formas diferentes nas correntes, que disputam os meios de chegar lá.",
+      "bridge": "Antes das correntes, é preciso fixar as palavras que dividem a tradição.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism"
@@ -209,7 +209,7 @@
         "O apoio mútuo é apresentado como fato natural e social: a cooperação não depende de um Estado que a imponha. A greve geral e a ação direta deslocam a política para o local de trabalho e para a vida cotidiana."
       ],
       "question": "Por que a mesma palavra abriga correntes com estratégias tão diferentes?",
-      "bridge": "Esses termos reaparecem nas vertentes, onde cada corrente define seus meios de ação.",
+      "bridge": "Esses termos mudam de peso conforme a época e a experiência histórica.",
       "sourceIds": [
         "src-wiki-topic-anarchism",
         "src-wiki-topic-anarquismo"
@@ -239,7 +239,7 @@
         "No Brasil, o anarquismo se organiza na Primeira República (1889–1930), com jornais, sindicatos e experiências comunitárias. A greve geral de 1917 e a Colônia Cecília (1890) são marcos frequentes, mas a repressão e a dispersão tornam a periodização menos linear do que na Europa."
       ],
       "question": "Em que momentos o anarquismo ganhou força, e onde ele se enfraqueceu?",
-      "bridge": "Os momentos mais intensos aparecem nas experiências históricas, com seus limites e derrotas.",
+      "bridge": "Essas épocas foram formuladas e disputadas por pensadores concretos.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism",
@@ -338,7 +338,7 @@
         "src-wiki-topic-piotr-kropotkin",
         "source-anarco-toledo"
       ],
-      "gap": "Correntes da América Latina e da Ásia não foram detalhadas; o caso brasileiro foi incorporado como disputa historiográfica, não como vertente fechada.",
+      "gap": "Correntes da América Latina e da Ásia não foram detalhadas; o caso brasileiro foi incorporado como disputa historiográfica, não como vertente fechada. O comunismo libertário e o individualismo aparecem na narrativa, mas não recebem cartão próprio.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -408,9 +408,9 @@
         }
       ],
       "review": {
-        "question": "O que distingue comunismo libertário, anarcossindicalismo e individualismo anarquista?",
-        "answer": "O comunismo libertário busca propriedade comum e distribuição segundo necessidades; o anarcossindicalismo organiza trabalhadores em sindicatos e na greve geral; o individualismo afirma a autonomia pessoal contra a coletividade imposta.",
-        "rationale": "Compare estratégias e formas de organização.",
+        "question": "O que distingue anarquismo social, insurrecionário e anarcossindicalismo?",
+        "answer": "O social ou de massas aposta em organizações amplas; o insurrecionário privilegia a ação direta e o levante; o anarcossindicalismo organiza trabalhadores em sindicatos e na greve geral.",
+        "rationale": "Compare as correntes cartografadas e suas estratégias.",
         "sourceIds": [
           "source-anarco-toledo"
         ]
@@ -545,7 +545,7 @@
         "No Brasil, a repressão e a industrialização colocaram o anarquismo diante de uma escolha prática entre organização sindical, ação direta e propaganda. A greve de 1917 e a fundação do PCB em 1922 marcaram uma disputa sobre a direção do movimento operário; a leitura não transforma essa disputa em linhagem única."
       ],
       "question": "Quais são as críticas mais fortes ao anarquismo, e o que os anarquistas respondem?",
-      "bridge": "Os debates mostram que a tradição não é consensual nem entre seus críticos.",
+      "bridge": "Essas disputas também marcam as relações com o marxismo, o liberalismo e o sindicalismo.",
       "sourceIds": [
         "src-wiki-topic-anarchism",
         "src-wiki-topic-anarquismo",
@@ -648,7 +648,7 @@
         "No Brasil, o anarquismo se conecta ao marxismo pela disputa sobre organização e direção do movimento operário, e ao liberalismo pela crítica da coerção. A fundação do PCB em 1922 marca uma bifurcação importante."
       ],
       "question": "Com quais tradições o anarquismo disputa, e com quais dialoga?",
-      "bridge": "Para ler essas disputas lado a lado, siga para as fontes e a metodologia desta leitura.",
+      "bridge": "Para continuar a leitura por conta própria, siga o roteiro.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism",
@@ -773,7 +773,7 @@
       "id": "fontes",
       "anchor": "fontes",
       "title": "Fontes e evidências",
-      "kicker": "Conferir o argumento",
+      "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
         "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
@@ -788,7 +788,10 @@
         "src-wiki-topic-errico-malatesta",
         "src-wiki-topic-mikhail-bakunin",
         "src-wiki-topic-pierre-joseph-proudhon",
-        "src-wiki-topic-piotr-kropotkin"
+        "src-wiki-topic-piotr-kropotkin",
+        "source-anarco-toledo",
+        "source-anarco-greve-1917",
+        "source-anarco-colonia-cecilia"
       ],
       "gap": "Faltam fontes primárias e acadêmicas. A revisão humana ainda não foi registrada.",
       "coverage": "partial",
@@ -803,7 +806,10 @@
             "src-wiki-topic-errico-malatesta",
             "src-wiki-topic-mikhail-bakunin",
             "src-wiki-topic-pierre-joseph-proudhon",
-            "src-wiki-topic-piotr-kropotkin"
+            "src-wiki-topic-piotr-kropotkin",
+            "source-anarco-toledo",
+            "source-anarco-greve-1917",
+            "source-anarco-colonia-cecilia"
           ]
         }
       ]

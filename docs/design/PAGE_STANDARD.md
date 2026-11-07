@@ -42,6 +42,9 @@ Uma leitura contínua não é exclusiva de ideologias. Pessoas, acontecimentos, 
 - Cada leitura declara **3 a 5 conexões** curadas em `ideologyReadings[].connections`, cada uma com relação, pergunta, razão e uma imagem licenciada quando houver. O limite é editorial: mais do que cinco caminhos indica que o assunto deveria ser dividido.
 - O encerramento transforma essas conexões em cards com uma leitura-líder mais larga; não repete o mesmo destino como "próxima leitura" em link separado. O retorno à página inicial fica como ação secundária.
 - O fim de cada capítulo não repete um botão "A seguir": a continuidade é o scroll e o índice lateral.
+- O selo editorial deriva o estado do dossiê: uma leitura em `rascunho` aparece como "Versão preliminar"; `com-fontes` mantém "Conteúdo com fontes"; `revisado` exige revisor identificado.
+- A bibliografia final reúne todas as fontes citadas no dossiê, inclusive as dos blocos e das revisões. Uma lista seletiva não pode ser rotulada de integral.
+- Lacunas de capítulo usam uma nota compacta. Quando falta uma cronologia, o aviso de cobertura e o estado vazio do capítulo são uma única mensagem, não duas caixas empilhadas.
 - O mapa dos próximos assuntos, incluindo Governo Vargas, Trabalhismo, Golpe de 1964 e Ditadura militar, está em `docs/research/readings-map.md`.
 
 ## 2. Contrato de cobertura editorial
@@ -131,6 +134,8 @@ Conectores e progresso podem responder ao scroll ou à seleção, sem mover a na
 Grafo representa proposições legíveis, não decoração. Nós com hover e foco destacando as arestas incidentes, seleção por clique e contexto sincronizado. Filtros de tipo, realce de caminho, descoberta progressiva e retorno quando ajudam a pergunta histórica. Zoom e pan só quando necessários, com controles alternativos e sem excluir o teclado.
 
 O grafo em tela cheia não usa minimapa: a visão geral duplicava o mapa e recalculava todos os nós a cada mudança de `view`. Ficam o zoom, o reenquadramento e a busca; a orientação vem do recorte, dos rótulos e da legenda.
+
+No capítulo, o grafo embutido não captura a roda: rolar a página continua rolando a leitura. O zoom usa Ctrl + roda ou os botões. Arrastar e selecionar continuam disponíveis; a roda não pode transformar a leitura em pan/zoom acidental.
 
 Posições determinísticas, sem saltos ao selecionar. Começar com recorte legível; não abrir todos os nós por padrão. Oferecer tabela ou lista com direção, tipo, certeza e fonte.
 

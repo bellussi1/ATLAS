@@ -197,6 +197,11 @@ test('the reading ends with curated cards, one wide lead and no repeated next li
     await page.goto(`/leitura/${slug}/`);
     await expect(page.locator('.next-chapter')).toHaveCount(0);
     await expect(page.getByRole('link', { name: /^A seguir/ })).toHaveCount(0);
+    await expect(page.locator('.editorial-strip summary')).toContainText(
+      slug === 'social-democracia' || slug === 'anarquismo'
+        ? 'Versão preliminar'
+        : 'Conteúdo com fontes',
+    );
 
     const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
     await expect(connections).toBeVisible();
@@ -424,6 +429,22 @@ test('the connections chapter draws the tradition as a graph scoped to its atlas
   const reopened = page.getByRole('dialog', { name: 'Friedrich Engels' });
   await expect(reopened).toBeVisible();
   await expect(reopened.locator('#knowledge-context-title')).toBeFocused();
+});
+
+test('the embedded graph lets the reading page scroll with the wheel', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/leitura/marxismo#conexoes');
+  const network = page.locator('#conexoes app-knowledge-network');
+  await network.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+  const box = await network.boundingBox();
+  expect(box).not.toBeNull();
+  const before = await page.evaluate(() => window.scrollY);
+  await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+  await page.mouse.wheel(0, 500);
+  await page.waitForTimeout(300);
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(before);
+  await expect(network.locator('.zoom__level')).toHaveText('100%');
 });
 
 test('each image appears once in the narrative; only the archive catalogue repeats', async ({

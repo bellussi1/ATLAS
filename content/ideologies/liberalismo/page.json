@@ -81,7 +81,7 @@
     },
     {
       "question": "Que problemas os primeiros liberais tentavam resolver?",
-      "bridge": "Dessas obras saem os conceitos que atravessam toda a tradição.",
+      "bridge": "Dessas obras saem os princípios que atravessam a tradição.",
       "gap": null,
       "sourceIds": [
         "source-sep-locke-political",
@@ -221,7 +221,7 @@
     },
     {
       "question": "Liberdade de quê, e para quê?",
-      "bridge": "Esses conceitos ganham rosto nas pessoas que os defenderam e revisaram.",
+      "bridge": "Antes de ver quem as defendeu, situe essas ideias no tempo.",
       "gap": null,
       "sourceIds": [
         "source-sep-liberalism",
@@ -310,7 +310,7 @@
     },
     {
       "question": "Como a mesma palavra mudou de sentido em três séculos?",
-      "bridge": "Essas épocas aconteceram em lugares concretos.",
+      "bridge": "Nessas épocas, algumas vozes formularam e revisaram a tradição.",
       "gap": "A periodização segue sínteses anglo-francesas e foi complementada por marcos brasileiros. O liberalismo em outras regiões exige bibliografia própria, ainda não incorporada.",
       "sourceIds": [
         "source-sep-liberalism",
@@ -497,7 +497,7 @@
     },
     {
       "question": "Quem formulou, revisou e contestou essas ideias?",
-      "bridge": "Coloque essas vidas na mesma escala para ver quem conviveu com quais transformações.",
+      "bridge": "Das divergências entre essas vozes nascem vertentes que disputam o mesmo legado.",
       "gap": null,
       "sourceIds": [
         "source-sep-liberalism",
@@ -551,8 +551,8 @@
     },
     {
       "question": "O Estado protege ou ameaça a liberdade?",
-      "bridge": "Essas disputas internas convivem com críticas vindas de fora da tradição.",
-      "gap": null,
+      "bridge": "Essas correntes se testaram em lugares e instituições concretos.",
+      "gap": "O liberalismo igualitário de Rawls e a abordagem das capacidades não recebem cartão próprio neste recorte; a revisão compara as três correntes cartografadas.",
       "sourceIds": [
         "source-sep-liberalism",
         "source-lib-carvalho-ordem",
@@ -643,9 +643,9 @@
         }
       ],
       "review": {
-        "question": "O que distingue liberalismo clássico, social e igualitário?",
-        "answer": "O clássico desconfia do Estado e valoriza o mercado; o social aceita intervenção para garantir liberdade efetiva; o igualitário ou das capacidades pergunta o que as pessoas podem efetivamente fazer.",
-        "rationale": "Compare correntes pelo critério de intervenção e liberdade efetiva.",
+        "question": "O que distingue liberalismo clássico, social e neoliberal?",
+        "answer": "O clássico desconfia do Estado e valoriza o mercado; o social aceita intervenção para garantir liberdade efetiva; o neoliberal reforça o mercado e critica o planejamento estatal.",
+        "rationale": "Compare as três correntes cartografadas pelo critério de intervenção e liberdade efetiva.",
         "sourceIds": [
           "source-sep-liberalism"
         ],
@@ -655,11 +655,12 @@
             "why": "Retome Mill para distinguir o liberalismo social do clássico e do neoliberalismo."
           }
         ]
-      }
+      },
+      "coverage": "partial"
     },
     {
       "question": "Em que cidades essas ideias viraram instituições?",
-      "bridge": "Dos lugares e épocas surgem vertentes que discordam entre si.",
+      "bridge": "As experiências concretas também expõem os limites e as críticas ao liberalismo.",
       "gap": "O acervo ainda não registra coordenadas verificadas; por isso não há mapa. O caso brasileiro foi incluído como interpretação historiográfica, não como comparação exaustiva.",
       "sourceIds": [
         "source-sep-liberalism",
@@ -1168,7 +1169,35 @@
       "question": "Como conferir o que foi dito aqui?",
       "bridge": null,
       "gap": null,
-      "sourceIds": [],
+      "sourceIds": [
+        "source-sep-liberalism",
+        "source-sep-locke-political",
+        "source-sep-montesquieu",
+        "source-sep-smith",
+        "source-sep-mill",
+        "source-sep-tocqueville",
+        "source-sep-liberty",
+        "source-sep-communitarianism",
+        "source-locke-two-treatises",
+        "source-montesquieu-esprit",
+        "source-smith-wealth",
+        "source-tocqueville-democracy",
+        "source-mill-on-liberty",
+        "source-hayek-road",
+        "source-berlin-two-concepts",
+        "source-burke-reflections",
+        "source-polanyi-transformation",
+        "source-marx-jewish-question",
+        "source-mont-pelerin-1947",
+        "source-lib-carvalho-ordem",
+        "source-lib-escravidao",
+        "source-lib-cf88",
+        "liberalism-source-wikipedia-ideology-neoliberalism",
+        "source-lib-nabuco-abolicionismo",
+        "liberalism-source-wikipedia-event-american-revolution",
+        "liberalism-source-wikipedia-event-french-revolution",
+        "liberalism-source-wikipedia-ideology-liberalism"
+      ],
       "id": "fontes",
       "anchor": "fontes",
       "title": "Voltar à evidência",
@@ -1201,7 +1230,15 @@
             "source-burke-reflections",
             "source-polanyi-transformation",
             "source-marx-jewish-question",
-            "source-mont-pelerin-1947"
+            "source-mont-pelerin-1947",
+            "source-lib-carvalho-ordem",
+            "source-lib-escravidao",
+            "source-lib-cf88",
+            "liberalism-source-wikipedia-ideology-neoliberalism",
+            "source-lib-nabuco-abolicionismo",
+            "liberalism-source-wikipedia-event-american-revolution",
+            "liberalism-source-wikipedia-event-french-revolution",
+            "liberalism-source-wikipedia-ideology-liberalism"
           ]
         }
       ]

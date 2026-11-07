@@ -44,6 +44,8 @@ export class IdeologyAtlasComponent {
   readonly openingSubtitle = input('Muitas entradas.');
   readonly embedded = input(false);
   readonly continuous = input(false);
+  /** Stable array for the shared graph, so its scope computed is not invalidated on every CD. */
+  readonly graphScope = computed(() => [this.atlasId()]);
   /** On narrow columns the textual list opens by default, even though the graph stays available. */
   readonly narrow = signal(false);
   readonly atlas = computed(

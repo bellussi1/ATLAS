@@ -5,7 +5,7 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; a última alteração registrada é `0728dd0`. A remoção do minimapa entra em commit local, sem push; `master` não recebeu a rodada.
+- Gitflow: `develop` é a integração; a última alteração registrada é `eed3d28`. A auditoria integrada desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**.
 - CI: não executado nesta sessão; a verificação abaixo é local.
@@ -13,9 +13,9 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Verificações executadas
 
 - `npm test`: **357/357**.
-- `npm run test:content`: **184/184**.
+- `npm run test:content`: **186/186**.
 - `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `node node_modules/@playwright/test/cli.js test e2e/graph.spec.ts e2e/pages.spec.ts`: **54/54**, incluindo a ausência do minimapa, o encerramento em cards e as auditorias Axe.
+- `node node_modules/@playwright/test/cli.js test e2e/pages.spec.ts e2e/graph.spec.ts`: **55/55**, incluindo a ausência do minimapa, a roda no grafo embutido, o encerramento em cards e as auditorias Axe.
 - `npm run lint` e `npm run typecheck`: exit 0.
 
 ## O que mudou nesta rodada
@@ -377,6 +377,19 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - A orientação em `/grafos` fica com o zoom, o reenquadramento, a busca, os rótulos e a legenda. O grafo embutido não foi alterado.
     - Verificação: `/grafos` abriu localmente sem `.minimap` e sem o grupo “Visão geral do mapa”, com 1.156 nós e o zoom em 100%; `/leitura/marxismo` abriu com 12 capítulos e 3 cards de encerramento, sem erro de leitura. O servidor de desenvolvimento respondeu em `http://localhost:4306`; `http://127.0.0.1:4306` recusou a conexão, o que explica falha de acesso quando o endereço é trocado.
     - Verificações: `npm test` **357/357**, `npm run test:content` **184/184**, `build` **1.189 rotas**, `e2e/graph.spec.ts` + `e2e/pages.spec.ts` **54/54**, `lint` e `typecheck` exit 0. Conferência local: `/grafos` sem minimapa, com 1.156 nós; `/leitura/marxismo` com 12 capítulos e 3 cards, sem erro de leitura. Nada foi publicado.
+
+51. **Auditoria integrada das leituras contínuas**
+    - A revisão cobriu as quatro leituras em cinco frentes: arquitetura Angular, UI/UX e acessibilidade, narrativa e didática, história e fontes, motion e desempenho. Não há P0 de código; o bloqueio P0 é de publicação.
+    - **Publicação:** o ponteiro público `a54eee…` está atrás do release local `d35b3dc4…`. Com o ponteiro público, o HTML prerenderizado das quatro páginas tem **0 revisões de capítulo** e **0 figuras curadas**; o conteúdo local tem **10 revisões** e **4 figuras** por leitura. Um build com o ponteiro local renderiza o conteúdo novo, mas a hidratação busca o ponteiro público e a navegação falha. É preciso `npm run content:publish` e atualizar `content/content-pointer.json` (decisão humana) antes de considerar as páginas publicadas.
+    - **Selo editorial:** `IdeologyPageComponent.reviewSummary` lê `page.review.status`. `rascunho` aparece como “Versão preliminar”; `com-fontes` mantém “Conteúdo com fontes”; `revisado` exige revisor. Antes o selo era fixo e escondia o estado de social-democracia e anarquismo.
+    - **Bibliografia:** o bloco `fontes` agora é a união de todas as fontes citadas (marxismo 23, liberalismo 27, social-democracia 18, anarquismo 10), com teste em `scripts/content/readings.spec.mjs`. Antes a lista “integral” omitia 4, 8, 5 e 3 fontes.
+    - **Transições:** 19 bridges de liberalismo, social-democracia e anarquismo foram corrigidas para o capítulo seguinte; `fontes.kicker` foi padronizado em “Fontes e metodologia”.
+    - **Vertentes:** as revisões foram alinhadas aos cartões existentes. Liberalismo passou a `partial` com gap sobre Rawls e a abordagem das capacidades; social-democracia e anarquismo declaram no gap as correntes que não recebem cartão próprio.
+    - **Cronologia e lacunas:** `epocas` sem bloco `chronology` agora mostra uma única mensagem que reúne cobertura e ausência de linha do tempo. As notas de gap ficaram compactas, sem caixa pesada repetida em cada capítulo.
+    - **Grafo embutido:** a roda não sequestra mais o scroll da leitura; Ctrl/Meta ou os botões operam o zoom. `[scope]` virou `computed`, estável entre ciclos, e o texto do atlas foi atualizado.
+    - **Abertura:** a primeira figura usa `loading="eager"` e `fetchpriority="high"`; há preconnect para Wikimedia e para o Worker de conteúdo, e a primeira imagem não entra mais com animação de opacidade. O `appReveal` no cabeçalho (no-op por `display: contents`) e a referência `#reading` morta foram removidos.
+    - **Verificações:** `npm test` **357/357**, `npm run test:content` **186/186**, `build` **1.189 rotas**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **55/55**, `lint` e `typecheck` exit 0. Axe sem achados sérios com movimento reduzido em 320, 390, 768, 1280 e 1920. Screenshots antes/depois em `generated/audit-*` e `generated/audit3-*`.
+    - **Limites:** (1) a publicação do release pendente bloqueia a experiência final; (2) `debates` de social-democracia e anarquismo ainda são cartões de crítica, não um quadro defesa → crítica → resposta → limites; (3) as duas leituras seguem sem cronologia estruturada; (4) a rota de leitura ainda baixa o pacote completo (~24 MB, incluindo search e adjacency) antes de hidratar; (5) em 200% de texto, header e footer compartilhados ainda causam overflow horizontal em 1280 e 390; (6) o grafo embutido ainda captura toque de um dedo no mobile; (7) algumas revisões citam uma fonte que cobre apenas parte da resposta e há afirmações que pedem verificação humana; (8) o encerramento foi testado com 3 cards por leitura. Nada foi publicado.
 
 ## Pendências que bloqueiam
 

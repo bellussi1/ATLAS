@@ -97,7 +97,7 @@ h1 {
   &[data-count='3'] {
     grid-template-columns: repeat(3, minmax(0, 15rem));
   }
-  li {
+  li:not(:first-child) {
     animation: figure-in var(--motion-slow) var(--ease-out) both;
     animation-delay: calc(var(--i, 0) * 70ms);
   }

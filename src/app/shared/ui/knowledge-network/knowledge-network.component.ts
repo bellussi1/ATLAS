@@ -1048,6 +1048,8 @@ export class KnowledgeNetworkComponent {
   }
 
   wheel(event: WheelEvent): void {
+    // In a chapter the page keeps the wheel; Ctrl/Meta or the zoom buttons operate the graph.
+    if (this.embedded() && !event.ctrlKey && !event.metaKey) return;
     event.preventDefault();
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (!rect) return;

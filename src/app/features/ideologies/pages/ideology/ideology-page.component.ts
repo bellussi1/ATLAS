@@ -18,7 +18,6 @@ import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
 import { chapterReviews } from '@ideologies/utils/chapter-review';
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
-import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
@@ -37,7 +36,6 @@ interface PageState {
     IdeologyReadingEndComponent,
     EditorialSourcesComponent,
     IdeologyPosterComponent,
-    AtlasRevealDirective,
     AtlasGeometricMosaicComponent,
   ],
   templateUrl: './ideology-page.component.html',
@@ -56,6 +54,22 @@ export class IdeologyPageComponent {
   readonly palette = computed(() => {
     const page = this.page();
     return page ? paletteOf(page) : 'atlas';
+  });
+  /** The editorial seal reads the recorded status; a draft never presents itself as reviewed. */
+  readonly reviewSummary = computed(() => {
+    const review = this.page()?.review;
+    if (!review) return 'Recorte e classificação';
+    const status =
+      review.status === 'rascunho'
+        ? 'Versão preliminar'
+        : review.status === 'revisado'
+          ? 'Revisão registrada'
+          : 'Conteúdo com fontes';
+    const reviewer =
+      review.status === 'revisado' && review.reviewer
+        ? `revisão de ${review.reviewer}`
+        : 'revisão humana pendente';
+    return `${status} · ${reviewer} · recorte e classificação`;
   });
   readonly roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   /** Text for the always-present status region: screen readers announce changes to a live region that already exists. */

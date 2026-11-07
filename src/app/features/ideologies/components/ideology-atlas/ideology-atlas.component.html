@@ -39,9 +39,9 @@
             <p class="eyebrow">Relações entre registros</p>
             <h2 id="graph-title">Uma ideia. Muitas conexões.</h2>
             <p class="edge-legend">
-              Busque um nome na barra do grafo, arraste para mover, use a roda para aproximar e
-              selecione um nó para abrir a ficha de contexto. Para percorrer os verbetes em lista,
-              <a routerLink="/acervo">abra o acervo completo</a>.
+              Busque um nome na barra do grafo, arraste para mover, use Ctrl + roda ou os botões
+              para aproximar e selecione um nó para abrir a ficha de contexto. Para percorrer os
+              verbetes em lista, <a routerLink="/acervo">abra o acervo completo</a>.
             </p>
           } @else {
             <p class="eyebrow">Pistas de leitura</p>
@@ -54,15 +54,15 @@
         </div>
         @if (!continuous()) {
           <p>
-            Linhas indicam ligações entre verbetes ou classificações de catálogo. Arraste, aproxime
-            e selecione um nome para abrir a ficha.
+            Linhas indicam ligações entre verbetes ou classificações de catálogo. Arraste, use os
+            controles de zoom e selecione um nome para abrir a ficha.
           </p>
         }
       </div>
       <app-knowledge-network
         class="atlas-network"
         [embedded]="true"
-        [scope]="[atlasId()]"
+        [scope]="graphScope()"
         [focus]="selectedId()"
         (picked)="openPicked($event)"
         (inspect)="openPicked($event)"

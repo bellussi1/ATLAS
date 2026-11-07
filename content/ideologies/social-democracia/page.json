@@ -129,7 +129,7 @@
         "O compromisso do pós-guerra combina pleno emprego, negociação coletiva e serviços universais. A crise dos anos 1970 e a globalização pressionam esse arranjo e reabrem o debate sobre mercado e proteção."
       ],
       "question": "O que a social-democracia quer preservar e o que quer mudar?",
-      "bridge": "Os princípios ganham sentido quando aparecem em decisões partidárias concretas.",
+      "bridge": "Esses princípios dependem de palavras que mudam de sentido conforme o projeto político.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
@@ -214,7 +214,7 @@
         "Cidadania social é a ideia de que direitos de proteção e participação pertencem a todos, não apenas aos que podem pagar. O conceito ajuda a distinguir seguro privado, assistência e serviço universal."
       ],
       "question": "Por que o mesmo nome designa projetos políticos tão diferentes?",
-      "bridge": "Essas palavras reaparecem nas vertentes e nos debates, onde o sentido precisa ser fixado.",
+      "bridge": "Antes das vertentes, situe essas palavras na história que as transformou.",
       "sourceIds": [
         "src-wiki-topic-social-democracy",
         "src-wiki-topic-terceira-via"
@@ -250,7 +250,7 @@
         "No Brasil, a periodização possível começa com a legislação social dos anos 1930, passa pela CLT (1943), pelo PTB (1945), pelo golpe de 1964 e chega à Constituição de 1988. Esses marcos não reproduzem a trajetória europeia: combinam tutela estatal, mobilização sindical e redemocratização."
       ],
       "question": "Como a social-democracia mudou entre o século XIX e os dias atuais?",
-      "bridge": "Os governos que deram corpo a essas mudanças aparecem nas experiências históricas.",
+      "bridge": "Essas épocas foram vividas por pessoas que formularam e disputaram a tradição.",
       "sourceIds": [
         "src-wiki-topic-social-democracy",
         "src-wiki-topic-social-democracia",
@@ -286,7 +286,7 @@
         "No Brasil, Leonel Brizola foi a liderança que reelaborou publicamente o trabalhismo como \"novo trabalhismo\" e fundou o PDT. A bibliografia o trata como continuidade e reinvenção da tradição, não como simples herdeiro de Vargas."
       ],
       "question": "Quem deu forma à social-democracia, e como cada um a entendia?",
-      "bridge": "Os governos desses pensadores mostram como as ideias chegaram à prática.",
+      "bridge": "As ideias desses pensadores se organizam em correntes que disputam a estratégia.",
       "sourceIds": [
         "src-wiki-topic-ferdinand-lassalle",
         "src-wiki-topic-wilhelm-liebknecht",
@@ -352,7 +352,7 @@
         "No Brasil, a social-democracia não se organizou como partido único. O trabalhismo do PTB e do PDT reivindicou reformas sociais e democracia em uma linguagem própria; a comparação com a social-democracia europeia exige distinguir origem, programa e prática de governo."
       ],
       "question": "Todos os social-democratas concordam entre si?",
-      "bridge": "As divergências aparecem com força nos debates sobre o papel do Estado e a relação com o capitalismo.",
+      "bridge": "Essas correntes se testaram em governos e reformas concretos.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
@@ -362,7 +362,7 @@
         "source-sd-pdt",
         "source-sd-brizola-trabalhismo"
       ],
-      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas; o caso brasileiro foi incorporado como tradição própria, não como cópia da social-democracia europeia.",
+      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas; o caso brasileiro foi incorporado como tradição própria, não como cópia da social-democracia europeia. O modelo nórdico e o sindicalismo aparecem na narrativa, mas não recebem cartão próprio.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -421,9 +421,9 @@
         }
       ],
       "review": {
-        "question": "O que diferencia o modelo nórdico da Terceira Via?",
-        "answer": "O modelo nórdico combina Estado de bem-estar, sindicatos fortes e economia aberta; a Terceira Via aproxima-se do liberalismo social e enfatiza responsabilidade individual e mercado.",
-        "rationale": "Compare dois arranjos de bem-estar e mercado.",
+        "question": "O que diferencia a social-democracia reformista da Terceira Via?",
+        "answer": "A reformista defende reformas graduais e Estado de bem-estar dentro da democracia representativa; a Terceira Via aproxima-se do liberalismo social e enfatiza responsabilidade individual e mercado.",
+        "rationale": "Compare as duas correntes que recebem cartão neste recorte.",
         "sourceIds": [
           "src-wiki-topic-terceira-via"
         ]
@@ -577,7 +577,7 @@
         "A disputa brasileira entre trabalhismo e social-democracia é também uma disputa de memória: o trabalhismo de Vargas foi lido como concessão, cooptação ou invenção de uma cultura política. A leitura não resolve o debate; mostra como ele muda o diagnóstico sobre direitos sociais e democracia."
       ],
       "question": "Quais são as objeções mais fortes, e o que os defensores respondem?",
-      "bridge": "Os debates mostram que a tradição não é consensual, nem dentro nem fora dela.",
+      "bridge": "Essas objeções também definem as relações e as distâncias com outras tradições.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
@@ -679,7 +679,7 @@
         "No Brasil, a social-democracia se conecta ao trabalhismo e ao liberalismo social da Constituição de 1988. A disputa sobre universalismo, tutela e direitos sociais atravessa essas tradições."
       ],
       "question": "Como a social-democracia se relaciona com o liberalismo e o marxismo?",
-      "bridge": "Para ler as tradições lado a lado, siga para as fontes e a metodologia desta leitura.",
+      "bridge": "Para continuar por conta própria, siga o roteiro de leitura.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
@@ -798,7 +798,7 @@
       "id": "fontes",
       "anchor": "fontes",
       "title": "Fontes e evidências",
-      "kicker": "Conferir o argumento",
+      "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
         "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
@@ -819,7 +819,12 @@
         "src-wiki-topic-otto-von-bismarck",
         "src-wiki-topic-terceira-via",
         "src-wiki-topic-wilhelm-liebknecht",
-        "src-wiki-topic-willy-brandt"
+        "src-wiki-topic-willy-brandt",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-cpdoc-vargas",
+        "source-sd-cf88",
+        "source-sd-brizola-trabalhismo",
+        "source-sd-pdt"
       ],
       "gap": "Faltam fontes primárias e acadêmicas. A revisão humana ainda não foi registrada.",
       "coverage": "partial",
@@ -840,7 +845,12 @@
             "src-wiki-topic-otto-von-bismarck",
             "src-wiki-topic-terceira-via",
             "src-wiki-topic-wilhelm-liebknecht",
-            "src-wiki-topic-willy-brandt"
+            "src-wiki-topic-willy-brandt",
+            "source-sd-gomes-trabalhismo",
+            "source-sd-cpdoc-vargas",
+            "source-sd-cf88",
+            "source-sd-brizola-trabalhismo",
+            "source-sd-pdt"
           ]
         }
       ]

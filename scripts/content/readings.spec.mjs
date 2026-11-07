@@ -54,3 +54,48 @@ test('draft readings stay drafts and declare their gaps', async () => {
     for (const chapter of pending) assert.ok(chapter.gap, `${page.slug}/${chapter.id} sem gap`);
   }
 });
+
+function collectSourceIds(value, found = new Set()) {
+  if (Array.isArray(value)) {
+    for (const item of value) collectSourceIds(item, found);
+    return found;
+  }
+  if (!value || typeof value !== 'object') return found;
+  for (const [key, item] of Object.entries(value)) {
+    if (key === 'sourceIds' && Array.isArray(item)) for (const id of item) found.add(id);
+    else collectSourceIds(item, found);
+  }
+  return found;
+}
+
+test('the bibliography lists every source cited by the reading', async () => {
+  for (const page of (await pages()).filter((item) => item.published)) {
+    const cited = collectSourceIds(page);
+    const bibliography = page.chapters
+      .find((chapter) => chapter.id === 'fontes')
+      .blocks.find((block) => block.type === 'sources');
+    for (const id of cited) {
+      assert.ok(
+        bibliography.sourceIds.includes(id),
+        `${page.slug}: ${id} é citada, mas não aparece na bibliografia`,
+      );
+    }
+    assert.equal(
+      page.chapters.find((chapter) => chapter.id === 'fontes').kicker,
+      'Fontes e metodologia',
+    );
+  }
+});
+
+test('published readings keep chapter reviews and a curated opening', async () => {
+  for (const page of (await pages()).filter((item) => item.published)) {
+    assert.ok(
+      page.chapters.some((chapter) => chapter.review),
+      `${page.slug} perdeu as revisões de capítulo`,
+    );
+    assert.ok(
+      page.poster.figures.length > 0,
+      `${page.slug} perdeu a seleção editorial de imagens de abertura`,
+    );
+  }
+});

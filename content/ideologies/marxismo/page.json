@@ -1429,7 +1429,31 @@
         "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
         "Uma síntese com fontes não é o mesmo que uma versão verificada por especialista. O estado editorial aparece no selo da página e na área de fontes."
       ],
-      "sourceIds": [],
+      "sourceIds": [
+        "source-v4-marx-sep",
+        "source-marx-capital",
+        "source-marx-smith",
+        "source-marx-critique",
+        "source-v4-luxemburg",
+        "source-v4-lenin",
+        "source-bernstein-preface",
+        "source-marx-preface-1859",
+        "source-marx-manifesto-1848",
+        "source-marx-civil-war-france",
+        "source-sep-critical-theory",
+        "source-sep-lukacs",
+        "source-sep-popper",
+        "source-kolakowski-main-currents",
+        "source-hobsbawm-change-world",
+        "source-bohm-bawerk-close",
+        "source-mises-calculation",
+        "source-mariategui-siete-ensayos",
+        "source-gramsci-quaderni",
+        "source-marxismo-brasil-unicamp",
+        "source-caio-prado-formacao",
+        "source-florestan-revolucao-burguesa",
+        "source-marx-gomes-trabalhismo"
+      ],
       "blocks": [
         {
           "type": "sources",
@@ -1452,7 +1476,11 @@
             "source-bohm-bawerk-close",
             "source-mises-calculation",
             "source-mariategui-siete-ensayos",
-            "source-gramsci-quaderni"
+            "source-gramsci-quaderni",
+            "source-marxismo-brasil-unicamp",
+            "source-caio-prado-formacao",
+            "source-florestan-revolucao-burguesa",
+            "source-marx-gomes-trabalhismo"
           ]
         }
       ],
