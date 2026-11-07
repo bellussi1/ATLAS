@@ -151,3 +151,23 @@ test('dragging across the ruler cuts the axis, and the keyboard does the same', 
   await expect(axis.locator('.axis-marker')).not.toHaveCount(all);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
+
+test('a term inside a context sheet opens another sheet and the trail returns', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/marxismo/');
+  const trigger = page.getByRole('button', { name: /proletariado: abrir contexto/i }).first();
+  await trigger.scrollIntoViewIfNeeded();
+  await trigger.click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Proletariado');
+  const nested = dialog.getByRole('button', { name: /meios de produção: abrir contexto/i }).first();
+  await nested.click();
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Meios de produção');
+  await dialog
+    .locator('.context-trail')
+    .getByRole('button', { name: 'Proletariado', exact: true })
+    .click();
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Proletariado');
+});

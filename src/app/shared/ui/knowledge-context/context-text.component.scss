@@ -1,0 +1,31 @@
+:host {
+  display: inline;
+}
+.context-term {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0.1rem;
+  background: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (hover: hover) and (pointer: fine) {
+  .context-term:hover {
+    background: var(--color-teal-paper);
+  }
+}
+.context-term:focus-visible {
+  outline: var(--focus-width, 3px) solid var(--color-focus);
+  outline-offset: 2px;
+}
