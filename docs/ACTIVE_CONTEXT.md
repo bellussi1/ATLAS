@@ -5,7 +5,8 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; a última alteração registrada é `a461710`. A tela de falha de navegação desta sessão entra em commit local, sem push; `master` não recebeu a rodada.
+- Gitflow: `develop` é a integração; a última alteração é `2186171`. O PR **#50** (`develop` → `master`) está aberto; `master` está em `69eaed4` e recebeu #41, #45 e #39. #38/#37 foram atualizados e aguardam checks; #44 está em conflito e #40 bloqueado.
+- Dependências: #45 (d3-shape), #41 (actions/cache) e #39 (gitleaks-action) mesclados. Um 429 intermitente do R2 no build agora é repetido com backoff em `scripts/content/fetch-content.mjs` (5 tentativas, respeita `retry-after`), coberto por teste.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**.
 - CI: não executado nesta sessão; a verificação abaixo é local.
@@ -407,9 +408,14 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O número ativo do índice perdeu a transição de fundo: a animação podia deixar texto escuro sobre o vermelho por alguns quadros e foi capturada pelo Axe. O teste de falha de carregamento foi atualizado para o novo alerta.
     - Verificações: `npm test` **362/362**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **56/56**, `e2e/content-loading.spec.ts` + `e2e/liberalism-atlas.spec.ts` **7/7**, `lint` e `typecheck` exit 0; build **1.189 rotas**. Conferência visual em 1280 e 390, sem overflow; o teste e2e bloqueia o chunk, confere o alerta, o foco e o retry. Nada foi publicado.
 
+54. **429 do R2 no build**
+    - O `verify` do PR #50 falhou ao baixar `c/46b2478….json` com HTTP 429, não por código. `fetch-content.mjs` agora repete 429/5xx e falhas de rede com até 5 tentativas e backoff exponencial, respeitando `retry-after`.
+    - Novo teste `syncContentCache retries a transient 429 before failing` cobre a repetição. `node --test scripts/content/r2-content.spec.mjs` **10/10** e `npm run lint` exit 0.
+    - O MCP `cloudflare-api` foi adicionado em `~/.config/opencode/opencode.json`, mas segue `needs authentication`: o navegador embutido não conclui o login Cloudflare/Turnstile. A autenticação precisa ser feita em navegador normal.
+
 ## Pendências que bloqueiam
 
-1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos, ficha do nó e tipos do grafo estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
+1. **Nova rodada** — o PR **#50** leva `develop` para a `master` protegida; #45, #41 e #39 já foram mesclados. #38/#37 tiveram a branch atualizada e aguardam `verify`; #44 está `CONFLICTING` e #40 bloqueado. O Vercel preview falhou em #39/#50 e precisa ser diagnosticado antes de tratá-lo como check obrigatório.
 2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** e o CI do PR #48 concluiu `verify` em 16m39s. `e2e/graph.spec.ts` passou **18/18** depois da ficha do nó.
 3. **Produção** — o app está publicado no Cloudflare Pages (`atlas-bellussi.pages.dev`), com `/fontes` em **193 KB**. O `vercel.json` da raiz só vale no próximo deploy Vercel, e o job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; decidir se o Vercel segue como espelho ou se o Pages passa a ser o único alvo.
 4. **Probe de 404** — no Pages, `/rota-inexistente` responde **404** com `404.html` (3.078 bytes), `/grafos`, `/verbete/karl-marx` e `/acervo` respondem 200. O antigo `atlasbr.vercel.app` continua respondendo 200 com `index.html` e só será verificado se o Vercel for mantido.
