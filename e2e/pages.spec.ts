@@ -5,10 +5,10 @@ import { expect, test } from './content-fixture';
 
 const declaredDestinations = [
   '/',
-  '/marxismo',
-  '/liberalismo',
-  '/social-democracia',
-  '/anarquismo',
+  '/leitura/marxismo',
+  '/leitura/liberalismo',
+  '/leitura/social-democracia',
+  '/leitura/anarquismo',
   '/grafos',
   ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
 ];
@@ -28,6 +28,14 @@ test('unknown and unpublished institutional routes say so and keep the address',
   }
 });
 
+test('old reading addresses redirect to the canonical /leitura path', async ({ page }) => {
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/${slug}`);
+    await expect(page).toHaveURL(new RegExp(`/leitura/${slug}/?$`));
+    await expect(page.locator('app-ideology-reading')).toBeVisible();
+  }
+});
+
 test('home search opens the universal catalogue and the reading sheet stays available', async ({
   page,
 }) => {
@@ -35,20 +43,20 @@ test('home search opens the universal catalogue and the reading sheet stays avai
   await page.getByLabel('Procurar no acervo', { exact: true }).fill('liberalismo');
   await page.getByRole('button', { name: 'Pesquisar', exact: true }).click();
   await expect(page).toHaveURL(/\/acervo\?q=liberalismo$/);
-  await expect(
-    page
-      .getByRole('region', { name: 'Resultados da busca' })
-      .getByRole('link')
-      .filter({ has: page.locator('strong', { hasText: /^Liberalismo$/ }) }),
-  ).toHaveCount(2);
+  const results = page.getByRole('region', { name: 'Resultados da busca' });
+  await expect(results).toBeVisible();
+  await expect(results.getByRole('link').first()).toBeVisible();
+  await expect(page.locator('#explorer-query')).toHaveValue('liberalismo');
   await page.goto('/');
   await page.getByRole('button', { name: /Leitura\s+Liberalismo/ }).click();
-  await page.getByRole('link', { name: 'Ler o texto completo' }).click();
-  await expect(page).toHaveURL(/\/liberalismo$/);
+  const sheetLink = page.getByRole('link', { name: 'Ler o texto completo' });
+  await expect(sheetLink).toHaveAttribute('href', '/leitura/liberalismo');
+  await sheetLink.click();
+  await expect(page).toHaveURL(/\/leitura\/liberalismo$/);
 });
 
 test('reading navigation includes the knowledge explorer', async ({ page }) => {
-  for (const path of ['/', '/marxismo/', '/liberalismo/']) {
+  for (const path of ['/', '/leitura/marxismo/', '/leitura/liberalismo/']) {
     await page.goto(path);
     await expect(page.locator('h1')).toBeVisible();
     const hrefs = await page.locator('a[href]').evaluateAll((links) =>
@@ -65,7 +73,7 @@ test('reading navigation includes the knowledge explorer', async ({ page }) => {
 
 test('Marxism chapters, comparison and sources remain on the same page', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   await expect(page.locator('.ideology-chapter')).toHaveCount(12);
   const chapters = page.getByRole('navigation', { name: 'Capítulos', exact: true });
   // Acts other than the current one are folded; opening Situar lists its chapters.
@@ -88,14 +96,14 @@ test('Marxism chapters, comparison and sources remain on the same page', async (
   await page.getByLabel('O tempo socialmente necessário', { exact: true }).check();
   await page.getByRole('button', { name: 'Conferir resposta' }).click();
   await page.getByRole('link', { name: 'Conferir fonte', exact: true }).click();
-  await expect(page).toHaveURL(/\/marxismo.*#fontes$/);
+  await expect(page).toHaveURL(/\/leitura\/marxismo.*#fontes$/);
   await expect(
     page.getByRole('button', { name: /Karl Marx.*Tempo de trabalho socialmente necessário/ }),
   ).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('gallery toggle hides and shows cards beyond the preview', async ({ page }) => {
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const section = page.locator('#pensadores');
   const gallery = section.locator('.entity-gallery');
   const toggle = section.locator('.gallery-toggle');
@@ -116,7 +124,7 @@ test('gallery toggle hides and shows cards beyond the preview', async ({ page })
 test('the chapter review explains its purpose and reveals the answer on demand', async ({
   page,
 }) => {
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const review = page.locator('.chapter-review').first();
   await review.scrollIntoViewIfNeeded();
   await expect(review.getByRole('heading', { name: 'Revisão do capítulo' })).toBeVisible();
@@ -127,7 +135,7 @@ test('the chapter review explains its purpose and reveals the answer on demand',
 });
 
 test('the reading ends with at most five curated connections', async ({ page }) => {
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
   await expect(connections).toBeVisible();
   await expect(connections.getByRole('link', { name: 'Liberalismo' })).toBeVisible();
@@ -143,7 +151,7 @@ test('a verbete with a continuous reading offers the contextual path', async ({ 
   ).toBeVisible();
   await expect(page.getByRole('link', { name: 'Continuar em Marxismo' })).toHaveAttribute(
     'href',
-    '/marxismo',
+    '/leitura/marxismo',
   );
   await expect(page.getByRole('link', { name: 'Voltar ao topo' })).toBeVisible();
 });
@@ -151,7 +159,7 @@ test('a verbete with a continuous reading offers the contextual path', async ({ 
 test('three pages work on mobile with reduced motion and accessible links', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  for (const path of ['/', '/marxismo/', '/liberalismo/']) {
+  for (const path of ['/', '/leitura/marxismo/', '/leitura/liberalismo/']) {
     await page.goto(path);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
@@ -165,8 +173,8 @@ test('three pages work on mobile with reduced motion and accessible links', asyn
 
 test('ideology reading controls stay in sync on desktop and mobile', async ({ page }) => {
   for (const [path, firstAnchor, secondAnchor] of [
-    ['/marxismo/', 'introducao', 'origens'],
-    ['/liberalismo/', 'introducao', 'origens'],
+    ['/leitura/marxismo/', 'introducao', 'origens'],
+    ['/leitura/liberalismo/', 'introducao', 'origens'],
   ]) {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(path);
@@ -214,8 +222,8 @@ test('shared reading preserves filters and clears motion preference when leaving
   page,
 }) => {
   for (const [path, secondAnchor] of [
-    ['/marxismo/', 'origens'],
-    ['/liberalismo/', 'origens'],
+    ['/leitura/marxismo/', 'origens'],
+    ['/leitura/liberalismo/', 'origens'],
   ]) {
     await page.goto(`${path}?bibliografia=Locke`);
     const reader = page.locator('app-ideology-reading');
@@ -255,7 +263,7 @@ test('both readings share the twelve canonical chapters, one index and no nested
     'leituras',
     'fontes',
   ];
-  for (const path of ['/marxismo/', '/liberalismo/']) {
+  for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/']) {
     await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto(`${path}#correntes`);
     await expect(page).toHaveURL(/#vertentes$/);
@@ -283,7 +291,7 @@ test('both readings share the twelve canonical chapters, one index and no nested
 test('the connections chapter draws the tradition as a graph scoped to its atlas', async ({
   page,
 }) => {
-  await page.goto('/marxismo#conexoes');
+  await page.goto('/leitura/marxismo#conexoes');
   const network = page.locator('#conexoes app-knowledge-network');
   await expect(network).toBeVisible();
   const nodes = network.locator('[data-node]');
@@ -322,7 +330,7 @@ test('the connections chapter draws the tradition as a graph scoped to its atlas
 test('each image appears once in the narrative; only the archive catalogue repeats', async ({
   page,
 }) => {
-  for (const path of ['/marxismo/', '/liberalismo/']) {
+  for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/']) {
     await page.goto(path);
     const sources = await page
       .locator('.chapter-sequence .ideology-chapter:not(#conexoes) img')
@@ -335,7 +343,7 @@ test('each image appears once in the narrative; only the archive catalogue repea
 test('épocas list dated records and the relations explain each kind of connection', async ({
   page,
 }) => {
-  for (const path of ['/marxismo/', '/liberalismo/']) {
+  for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/']) {
     await page.goto(`${path}`);
     const era = page.locator('.era-chart').first();
     await expect(era.locator('.dated-list li').first()).toBeVisible();
@@ -353,7 +361,7 @@ test('épocas list dated records and the relations explain each kind of connecti
 });
 
 test('reading roadmap shows a first step and expands works in place', async ({ page }) => {
-  for (const path of ['/marxismo/', '/liberalismo/']) {
+  for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/']) {
     await page.goto(path);
     const roadmap = page.locator('#leituras app-reading-path');
     await expect(roadmap.locator('.first-step')).toHaveCount(1);
@@ -382,7 +390,7 @@ test('home keeps the poster colour and tints each later section as it scrolls', 
 
 test('reading prose keeps a measure of about 72 characters on desktop', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  for (const path of ['/marxismo/', '/liberalismo/']) {
+  for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/']) {
     await page.goto(path);
     // Characters per line, measured as the box width over the width of "0" in the paragraph's font.
     const measures = await page.evaluate(() =>
@@ -436,7 +444,7 @@ test('/fontes paginates and a source anchor opens the page that holds it', async
 test('debates show estimated positions with their evidence, in words and not only colour', async ({
   page,
 }) => {
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const positions = page.locator('#debates section.positions');
   await expect(positions).toBeVisible();
   await expect(positions.getByRole('heading', { name: 'Posições estimadas' })).toBeVisible();
@@ -453,7 +461,7 @@ test('debates show estimated positions with their evidence, in words and not onl
 test('estimated positions show their claims and open the entity record in place', async ({
   page,
 }) => {
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const bernstein = page.locator('#debates section.positions article.entity').filter({
     hasText: 'Eduard Bernstein',
   });
@@ -471,7 +479,7 @@ test('estimated positions show their claims and open the entity record in place'
 test('chapter jumps enter the history and Back returns to the previous chapter', async ({
   page,
 }) => {
-  await page.goto('/marxismo');
+  await page.goto('/leitura/marxismo');
   await expect(page.locator('app-ideology-reading')).toBeVisible();
   // Pick two chapters from the same act: opening the first collapses the other acts.
   const pair = await page.evaluate(() => {

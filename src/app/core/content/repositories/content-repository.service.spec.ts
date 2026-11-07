@@ -140,7 +140,7 @@ describe('ContentRepository generated assets', () => {
       return Object.values(state);
     };
     const onEntry = await transferred('/verbete/x');
-    const onOther = await transferred('/marxismo');
+    const onOther = await transferred('/leitura/marxismo');
     expect(onEntry.every(isTransferable)).toBe(true);
     expect(onOther).toEqual(onEntry);
     window.history.pushState({}, '', '/');

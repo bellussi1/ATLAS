@@ -91,6 +91,10 @@ describe('Marxism atlas content', () => {
   });
   it('only accepts a valid local map context', () => {
     expect(safeDiscoveryOrigin('/atlas/marxismo')).toBe('/atlas/marxismo');
+    expect(safeDiscoveryOrigin('/leitura/marxismo?argumento=marx&vinculo=critica#conceitos')).toBe(
+      '/leitura/marxismo?argumento=marx&vinculo=critica#conceitos',
+    );
+    expect(safeDiscoveryOrigin('/marxismo')).toBe('/marxismo');
     expect(
       safeDiscoveryOrigin('/atlas/marxismo/valor-e-trabalho?argumento=marx&vinculo=critica'),
     ).toBe('/atlas/marxismo/valor-e-trabalho?argumento=marx&vinculo=critica');

@@ -2,14 +2,14 @@ import { expect, type Page, test } from './content-fixture';
 
 test('the old desk address redirects to the single page', async ({ page }) => {
   await page.goto('/marxismo/mesa/');
-  await expect(page).toHaveURL(/\/marxismo\/?$/);
+  await expect(page).toHaveURL(/\/leitura\/marxismo\/?$/);
   await expect(page.locator('#explorar')).toHaveCount(0);
 });
 
 test('relations open stacked sheets that Esc and the back button lift one at a time', async ({
   page,
 }) => {
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   await page.locator('button.record-card', { hasText: 'Karl Marx' }).first().click();
   const sheet = page.getByRole('dialog');
   await expect(sheet.locator('h2')).toHaveText('Karl Marx');
@@ -27,13 +27,13 @@ test('relations open stacked sheets that Esc and the back button lift one at a t
   await expect(page.locator('.sheet-ghost')).toHaveCount(0);
   await page.keyboard.press('Escape');
   await expect(sheet).toHaveCount(0);
-  await expect(page).toHaveURL(/\/marxismo\/?$/);
+  await expect(page).toHaveURL(/\/leitura\/marxismo\/?$/);
 });
 
 test('graph terms explain themselves on focus and open their sheet on activation', async ({
   page,
 }) => {
-  await page.goto('/liberalismo/');
+  await page.goto('/leitura/liberalismo/');
   const term = page.locator('.knowledge-term', { hasText: 'John Locke' }).first();
   await term.focus();
   const tip = page.locator(`#${await term.getAttribute('aria-describedby')}`);
@@ -51,7 +51,7 @@ test('graph terms explain themselves on focus and open their sheet on activation
 
 test('on wide screens the sheet docks beside the page, which stays usable', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const trigger = page.locator('button.record-card', { hasText: 'Karl Marx' }).first();
   await trigger.click();
   const panel = page.getByRole('dialog');
@@ -75,7 +75,7 @@ test('on wide screens the sheet docks beside the page, which stays usable', asyn
 
 test('previous and next walk the reading order', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   await page.locator('button.record-card', { hasText: 'Karl Marx' }).first().click();
   const panel = page.getByRole('dialog');
   const title = panel.locator('#knowledge-context-title');
@@ -98,7 +98,7 @@ test('on phones the panel fills the screen with a trapped focus, big targets and
 }) => {
   for (const width of [360, 390]) {
     await page.setViewportSize({ width, height: 800 });
-    await page.goto('/marxismo/');
+    await page.goto('/leitura/marxismo/');
     const trigger = page.locator('button.record-card', { hasText: 'Karl Marx' }).first();
     await trigger.click();
     const sheet = page.getByRole('dialog');
@@ -152,7 +152,7 @@ async function reading(page: Page) {
 
 async function openPanel(page: Page, width: number) {
   await page.setViewportSize({ width, height: 900 });
-  await page.goto('/marxismo/', { waitUntil: 'networkidle' });
+  await page.goto('/leitura/marxismo/', { waitUntil: 'networkidle' });
   const trigger = page.locator('button.record-card', { hasText: 'Karl Marx' }).first();
   await trigger.scrollIntoViewIfNeeded();
   await trigger.click();

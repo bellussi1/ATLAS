@@ -4,8 +4,9 @@ import { expect, routeContent, test, waitForHydration } from './content-fixture'
 
 for (const width of [1440, 390, 320]) {
   const mobile = width < 600;
-  for (const route of ['marxismo', 'liberalismo']) {
-    test(`${route}: contextual round trip on ${mobile ? 'touch' : 'keyboard'} at ${width}px`, async ({
+  for (const route of ['leitura/marxismo', 'leitura/liberalismo']) {
+    const slug = route.split('/').pop()!;
+    test(`${slug}: contextual round trip on ${mobile ? 'touch' : 'keyboard'} at ${width}px`, async ({
       browser,
     }) => {
       const context = await browser.newContext({
@@ -21,7 +22,7 @@ for (const width of [1440, 390, 320]) {
       await page.goto(`/${route}/`);
       await waitForHydration(page);
       const term =
-        route === 'marxismo'
+        slug === 'marxismo'
           ? page.getByRole('button', { name: /^Karl Marx: abrir contexto de / }).first()
           : page.getByRole('button', { name: /^John Locke: abrir contexto de / }).first();
       await term.evaluate((element) => element.scrollIntoView({ block: 'center' }));
@@ -42,16 +43,16 @@ for (const width of [1440, 390, 320]) {
         expect(panel?.height).toBe(previous?.height);
       }).toPass();
       // Reading leads start closed below stronger relations.
-      if (route !== 'marxismo') {
+      if (slug !== 'marxismo') {
         const summary = dialog.locator('.relation-group summary', { hasText: 'Pistas de leitura' });
         await (mobile ? summary.tap() : summary.click());
       }
       const connection =
-        route === 'marxismo'
+        slug === 'marxismo'
           ? dialog.locator('[data-connection="relation-marx-capital"]')
           : dialog.getByRole('button', { name: 'Adam Smith', exact: false });
       const entry = connection.locator('xpath=ancestor::li[1]');
-      if (route === 'marxismo') {
+      if (slug === 'marxismo') {
         await expect(entry).toContainText('escreveu');
         await expect(entry.locator('figcaption a').first()).toBeVisible();
       } else {
@@ -70,7 +71,7 @@ for (const width of [1440, 390, 320]) {
         await page.keyboard.press('Enter');
       }
       await expect(dialog.locator('h2')).toHaveText(
-        route === 'marxismo' ? 'O capital: volume I' : 'Adam Smith',
+        slug === 'marxismo' ? 'O capital: volume I' : 'Adam Smith',
       );
       await expect(dialog.locator('h2')).toBeFocused();
       expect((await dialog.boundingBox())?.height).toBe(panel?.height);
@@ -99,7 +100,7 @@ for (const width of [1440, 390, 320]) {
       expect(bounds!.x).toBeGreaterThanOrEqual(0);
       expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
       await page.screenshot({
-        path: `output/playwright/context-${route}-${width}.png`,
+        path: `output/playwright/context-${slug}-${width}.png`,
       });
       if (mobile) await dialog.getByRole('button', { name: 'Fechar contexto' }).tap();
       else await page.keyboard.press('Escape');
@@ -121,7 +122,8 @@ test('three retained pages: desktop and mobile visual and accessibility audit', 
   for (const width of [1440, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    for (const route of ['', 'marxismo', 'liberalismo']) {
+    for (const route of ['', 'leitura/marxismo', 'leitura/liberalismo']) {
+      const shot = route.replaceAll('/', '-') || 'home';
       await page.goto(`/${route}`);
       await expect(page.locator('h1')).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
@@ -132,11 +134,11 @@ test('three retained pages: desktop and mobile visual and accessibility audit', 
         a11y.violations.filter((v) => ['critical', 'serious'].includes(v.impact ?? '')),
       ).toEqual([]);
       await page.screenshot({
-        path: `output/playwright/audit-${route || 'home'}-${width}.png`,
+        path: `output/playwright/audit-${shot}-${width}.png`,
         fullPage: true,
       });
       await page.screenshot({
-        path: `output/playwright/audit-opening-${route || 'home'}-${width}.png`,
+        path: `output/playwright/audit-opening-${shot}-${width}.png`,
       });
     }
   }

@@ -5,8 +5,8 @@ import { expect, test } from './content-fixture';
 // findings and no horizontal page scroll. Route changes that drop focus are covered in route-focus.spec.ts.
 const routes = [
   '/',
-  '/marxismo',
-  '/liberalismo',
+  '/leitura/marxismo',
+  '/leitura/liberalismo',
   '/acervo',
   '/entidades',
   '/ideologias',
@@ -46,7 +46,7 @@ for (const width of [390, 1440])
     });
 
 test('footer has one navigation and no destination repeated inside it', async ({ page }) => {
-  await page.goto('/marxismo');
+  await page.goto('/leitura/marxismo');
   const footer = page.locator('footer.site-footer');
   await expect(footer.getByRole('navigation')).toHaveCount(1);
   const links = await footer.getByRole('navigation').getByRole('link').allTextContents();

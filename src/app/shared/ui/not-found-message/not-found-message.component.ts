@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { readingPath } from '@core/routing/reading-routes';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 
 /** Shared "not found" content for unknown routes and for records that do not exist. */
@@ -24,8 +25,13 @@ export class NotFoundMessageComponent {
   protected readonly seed = signal(404);
 
   protected readonly doors = [
-    { label: 'Marxismo', hint: 'Leitura da tradição', link: '/marxismo', tone: 'red' },
-    { label: 'Liberalismo', hint: 'Leitura exploratória', link: '/liberalismo', tone: 'teal' },
+    { label: 'Marxismo', hint: 'Leitura da tradição', link: readingPath('marxismo'), tone: 'red' },
+    {
+      label: 'Liberalismo',
+      hint: 'Leitura exploratória',
+      link: readingPath('liberalismo'),
+      tone: 'teal',
+    },
     { label: 'Acervo', hint: 'Todos os registros', link: '/acervo', tone: 'ochre' },
     { label: 'Início', hint: 'Voltar à abertura', link: '/', tone: 'rose' },
   ] as const;

@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from './content-fixture';
 
 test('explores entities, graph, timeline and returns to prior context', async ({ page }) => {
-  await page.goto('/liberalismo/');
+  await page.goto('/leitura/liberalismo/');
   await expect(
     page.getByRole('heading', { name: 'Liberalismo', exact: true, level: 1 }),
   ).toBeVisible();
@@ -57,7 +57,7 @@ test('explores entities, graph, timeline and returns to prior context', async ({
 test('mobile keeps entity navigation available without horizontal overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/liberalismo/');
+  await page.goto('/leitura/liberalismo/');
   await expect(page.locator('.text-network')).toHaveJSProperty('open', true);
   await expect(page.locator('.text-network li[data-relation-id]').first()).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -86,7 +86,7 @@ test('mobile keeps entity navigation available without horizontal overflow', asy
 
 test('mobile reopens the selected entity without duplicating history', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/liberalismo/');
+  await page.goto('/leitura/liberalismo/');
   const locke = page.locator('.atlas-record').filter({ hasText: 'John Locke' });
   for (let attempt = 0; attempt < 2; attempt++) {
     await locke.click();

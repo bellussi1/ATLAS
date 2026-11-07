@@ -20,10 +20,10 @@ describe('Public pages', () => {
   it('keeps readings and exposes the knowledge explorer with permanent records', () => {
     expect(routes.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
       '',
-      'marxismo',
-      'liberalismo',
-      'social-democracia',
-      'anarquismo',
+      'leitura/marxismo',
+      'leitura/liberalismo',
+      'leitura/social-democracia',
+      'leitura/anarquismo',
       'grafos',
       'acervo',
       'entidades',

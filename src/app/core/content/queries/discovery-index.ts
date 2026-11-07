@@ -8,6 +8,7 @@ import type {
   Source,
 } from '@core/content/models/content-schema';
 import type { ContentTranslation } from '@core/content/models/content-translation';
+import { readingPath } from '@core/routing/reading-routes';
 
 export interface DiscoveryBacklink {
   id: string;
@@ -317,7 +318,11 @@ export function safeDiscoveryOrigin(value: string | null): string | null {
   try {
     const url = new URL(value, 'https://atlas.invalid');
     if (url.origin !== 'https://atlas.invalid') return null;
-    if (url.pathname === '/marxismo' || url.pathname === '/ideologias/marxismo') {
+    if (
+      url.pathname === readingPath('marxismo') ||
+      url.pathname === '/marxismo' ||
+      url.pathname === '/ideologias/marxismo'
+    ) {
       const allowed = [
         'argumento',
         'vinculo',

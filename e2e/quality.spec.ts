@@ -5,7 +5,7 @@ import { expect, test } from './content-fixture';
 // Lab measurements, not field data: layout stability while scrolling the whole reading,
 // WCAG A/AA rules from axe and the 24px minimum target for standalone controls.
 for (const width of [390, 1440])
-  for (const path of ['/marxismo/', '/liberalismo/'])
+  for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/'])
     test(`${path} at ${width}px stays stable, accessible and tappable`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.addInitScript(() => {

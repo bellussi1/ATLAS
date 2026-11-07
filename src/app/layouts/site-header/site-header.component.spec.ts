@@ -10,7 +10,7 @@ describe('SiteHeaderComponent', () => {
       providers: [
         provideRouter([
           { path: '', children: [] },
-          { path: 'marxismo', children: [] },
+          { path: 'leitura/marxismo', children: [] },
           { path: 'acervo', children: [] },
           { path: 'grafos', children: [] },
         ]),
@@ -47,14 +47,19 @@ describe('SiteHeaderComponent', () => {
       [...root.querySelectorAll<HTMLAnchorElement>('.readings-menu a')].map((a) =>
         a.getAttribute('href'),
       ),
-    ).toEqual(['/marxismo', '/liberalismo', '/social-democracia', '/anarquismo']);
+    ).toEqual([
+      '/leitura/marxismo',
+      '/leitura/liberalismo',
+      '/leitura/social-democracia',
+      '/leitura/anarquismo',
+    ]);
   });
 
   it('marks the current section: a reading, the archive or the network', async () => {
     const fixture = TestBed.createComponent(SiteHeaderComponent);
     const router = TestBed.inject(Router);
     const root = fixture.nativeElement as HTMLElement;
-    await router.navigateByUrl('/marxismo');
+    await router.navigateByUrl('/leitura/marxismo');
     fixture.detectChanges();
     expect(root.querySelector('.nav__link--button')?.classList.contains('is-active')).toBe(true);
     await router.navigateByUrl('/grafos');

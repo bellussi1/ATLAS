@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { readingPath } from '@core/routing/reading-routes';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
@@ -165,7 +166,7 @@ export class HomePage {
     });
   }
 
-  readonly entryPath = (_type: string, slug: string) => '/' + slug;
+  readonly entryPath = (_type: string, slug: string) => readingPath(slug);
 
   selectSlug(slug: string): void {
     const entry = this.readings.find((item) => item.slug === slug);

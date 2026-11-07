@@ -6,7 +6,7 @@
     <app-ideology-atlas
       [atlasId]="dossier().page.atlasId"
       [rootEntityId]="$any(block()).rootEntityId"
-      [origin]="'/' + dossier().page.slug"
+      [origin]="readingPath(dossier().page.slug)"
       [embedded]="true"
       [continuous]="true"
     />

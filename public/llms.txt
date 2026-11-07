@@ -6,8 +6,8 @@ Cada página distingue fato documentado, interpretação, hipótese e alegação
 
 ## Leituras
 
-- [Marxismo](/marxismo): origens, conceitos, pensadores, escala do tempo, épocas, lugares, vertentes, críticas e fontes.
-- [Liberalismo](/liberalismo): atlas exploratório com entidades, rede, cronologia e imagens licenciadas.
+- [Marxismo](/leitura/marxismo): origens, conceitos, pensadores, escala do tempo, épocas, lugares, vertentes, críticas e fontes.
+- [Liberalismo](/leitura/liberalismo): atlas exploratório com entidades, rede, cronologia e imagens licenciadas.
 
 ## Acervo
 

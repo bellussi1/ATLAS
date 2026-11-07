@@ -5,7 +5,7 @@ test('moving to another page moves focus to the content and names it by its titl
 }) => {
   await page.goto('/');
   await page.evaluate(() => {
-    history.pushState(null, '', '/marxismo');
+    history.pushState(null, '', '/leitura/marxismo');
     dispatchEvent(new PopStateEvent('popstate'));
   });
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Marxismo');

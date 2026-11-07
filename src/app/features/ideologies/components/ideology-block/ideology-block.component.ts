@@ -5,6 +5,7 @@ import { readerProse, type RelationEvidence } from '@core/content/editorial/read
 import type { Entity, Source } from '@core/content/models/content-schema';
 import { type KnowledgeContext } from '@core/content/models/knowledge-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { readingPath } from '@core/routing/reading-routes';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
 import {
   EraChartComponent,
@@ -58,6 +59,7 @@ export class IdeologyBlockComponent {
   readonly block = input.required<PageBlock>();
   readonly dossier = input.required<IdeologyDossier>();
   readonly blockId = input.required<string>();
+  readonly readingPath = readingPath;
   readonly repository = inject(ContentRepository);
   readonly edgeFilter = signal('all');
   readonly showAllEntities = signal(false);

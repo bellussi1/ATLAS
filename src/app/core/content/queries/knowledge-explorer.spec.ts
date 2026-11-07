@@ -13,7 +13,7 @@ const discoveryIndex = contentFixture.search;
 
 describe('Knowledge Explorer', () => {
   it('includes public readings and respects the explicit pending status of imported records', () => {
-    expect(discoveryIndex.find((e) => e.id === 'reading-marxismo')?.path).toBe('/marxismo');
+    expect(discoveryIndex.find((e) => e.id === 'reading-marxismo')?.path).toBe('/leitura/marxismo');
     expect(discoveryIndex.find((e) => e.id === 'ideology-liberalism')?.state).toBe('pending');
   });
   it('finds aliases without accents and requires every search term', () => {

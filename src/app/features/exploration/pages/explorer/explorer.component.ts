@@ -31,6 +31,7 @@ import {
 } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { readingPath } from '@core/routing/reading-routes';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
@@ -54,6 +55,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExplorerComponent {
+  readonly readingPath = readingPath;
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly repository = inject(ContentRepository);
