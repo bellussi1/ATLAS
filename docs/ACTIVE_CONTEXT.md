@@ -216,6 +216,18 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Verificado: `pointer.json` com `Cache-Control: public, max-age=0, must-revalidate`; artefato `c/<sha>.json` com `max-age=31536000, immutable`; CORS `*`; `OPTIONS` 204; `Content-Encoding: gzip` quando `Accept-Encoding: gzip`. `e2e/content-loading.spec.ts` **4/4**.
     - A produção do site continua no build antigo até um PR/deploy; a `master` protegida exige `verify`, `secrets` e `CodeQL`, e a Verificação ainda falha na captura remota da issue #46.
 
+31. **Busca por nome**
+    - A busca do acervo deixou de varrer o texto inteiro: `explorerEntries` e `filterDiscoveryIndex` comparam o termo com título, aliases e títulos traduzidos aprovados.
+    - Registros que apenas citam o termo entram só quando nenhum nome corresponde, com o aviso “Nenhum nome corresponde a …” e ordem por relevância (título exato, prefixo, alias exato, prefixo, contém).
+    - “Lula” passou de **40** resultados para **4** (pessoa, prisão e duas fontes homônimas); “Federative” continua encontrando Brasil pela tradução aprovada, via fallback de texto.
+    - Verificações: `npm test` **318/318**; `lint` e `typecheck` exit 0; `build` passou; e2e de `knowledge-explorer`, `editorial-i18n` e `route-focus` **21/21**; `test:content` sem falhas.
+
+32. **Rotas de leitura, Worker `raw/` e capturas aposentadas**
+    - A migração para `/leitura/:slug` foi commitada (`0086631`), com `vercel.json` alinhado em `25eebd1`; a entrega do Worker descompactado foi commitada em `ed25192`.
+    - O Worker agora serve `raw/<sha256>.bin` (deploy `e1be72c7`), necessário para `ingest:fetch-raw` reidratar as capturas a partir do Worker em vez do `r2.dev`.
+    - A issue **#46** foi tratada aposentando as capturas cujo replay diverge do `snapshotHash`: `liberalism/{2026-11-01-remoto,2026-11-01-retratos,2026-11-03-descoberta}` e `marxism/{2026-11-01-retratos,2026-11-02-remoto,2026-11-03-descoberta}`. Cada uma tem `retired.json` com issue, data, motivo e hash; `ingest:verify` registra e segue; `ingest:fetch-raw` não baixa blobs delas. As duas capturas `preserve` seguem verificadas.
+    - A divergência também ocorre com o código de 03/11 (`aef543c`), o que indica snapshot gerado fora do estado commitado; a cobertura `refresh`/`remote` só volta com nova captura.
+
 ## Pendências que bloqueiam
 
 1. **CI do master** — a Verificação `42337655149` passou `ingest:fetch-raw` e falhou em `ingest:verify` na captura `liberalism/2026-11-01-remoto` (issue **#46**). O CodeQL está verde. Os PRs de dependências #45/#44/#41/#40/#38 estão rebaseados, mas presos nesse gate; #39/#37 aguardam recreate.

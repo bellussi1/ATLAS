@@ -5,6 +5,7 @@ import { gzipSync } from 'node:zlib';
 import worker from './content-delivery.worker.mjs';
 
 const artifact = '/c/' + 'a'.repeat(64) + '.json';
+const raw = '/raw/' + 'c'.repeat(64) + '.bin';
 const media = '/m/' + 'b'.repeat(64) + '.jpg';
 
 function envFor(object) {
@@ -68,6 +69,18 @@ test('decodes gzip artifacts before the client verifies their digest', async () 
   assert.equal(await content.text(), body);
   assert.equal(content.headers.get('content-encoding'), null);
   assert.equal(content.headers.get('content-type'), 'application/json');
+});
+
+test('serves captured JSON responses used by offline ingestion', async () => {
+  const body = '{"entities":[]}';
+  const response = await worker.fetch(
+    new Request('https://test.invalid' + raw),
+    envFor(gzipObjectFor('application/json', body)),
+  );
+  assert.equal(await response.text(), body);
+  assert.equal(response.headers.get('content-encoding'), null);
+  assert.equal(response.headers.get('content-type'), 'application/json');
+  assert.match(response.headers.get('cache-control'), /immutable/);
 });
 
 test('handles HEAD, missing keys and preflight without a body', async () => {
