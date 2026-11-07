@@ -391,6 +391,14 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - **Verificações:** `npm test` **357/357**, `npm run test:content` **186/186**, `build` **1.189 rotas**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **55/55**, `lint` e `typecheck` exit 0. Axe sem achados sérios com movimento reduzido em 320, 390, 768, 1280 e 1920. Screenshots antes/depois em `generated/audit-*` e `generated/audit3-*`.
     - **Limites:** (1) a publicação do release pendente bloqueia a experiência final; (2) `debates` de social-democracia e anarquismo ainda são cartões de crítica, não um quadro defesa → crítica → resposta → limites; (3) as duas leituras seguem sem cronologia estruturada; (4) a rota de leitura ainda baixa o pacote completo (~24 MB, incluindo search e adjacency) antes de hidratar; (5) em 200% de texto, header e footer compartilhados ainda causam overflow horizontal em 1280 e 390; (6) o grafo embutido ainda captura toque de um dedo no mobile; (7) algumas revisões citam uma fonte que cobre apenas parte da resposta e há afirmações que pedem verificação humana; (8) o encerramento foi testado com 3 cards por leitura. Nada foi publicado.
 
+52. **Plano de expansão com Haiku e Sonnet**
+    - Criado `docs/research/PLANO-EXPANSAO-HAIKU-SONNET-2026-11.md` com o diagnóstico das quatro leituras, papéis de Haiku/Sonnet, ondas de captura, relações, entidades, fontes e conteúdo, gold set, métricas, orçamento e cronograma.
+    - Linha de base medida: Social-democracia 35 relações, 16 fontes citadas, 8/12 capítulos com blocos e 0 completos; Anarquismo 10 relações, 10 fontes citadas, 8/12 e 0 completos; Marxismo e Liberalismo já cumprem o piso.
+    - Bloqueios concretos: faltam 57 artigos em Social-democracia e 51 em Anarquismo; o estágio 5, o glossário e a cobertura ficam parados até a captura. O Sonnet 5.5 foi escolhido para verificar relações, mas ainda não tem medição própria.
+    - Decisão de modelo já registrada: Haiku 5.5 medium para extração e Sonnet 5.5 low para a segunda passada das relações. O plano propõe medir Sonnet em amostra antes de escalar, com gold set humano e precisão ≥ 95%.
+    - Orçamento proposto: US$ 5 a 11 para as quatro leituras, com teto disponível de US$ 10; a onda 0 é gratuita e deve começar pela captura dos artigos faltantes.
+    - Próxima ação: Onda 0 (captura e baseline), depois Onda 1 (calibração Sonnet). Nenhuma chamada paga foi feita e nada foi publicado.
+
 ## Pendências que bloqueiam
 
 1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos, ficha do nó e tipos do grafo estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
