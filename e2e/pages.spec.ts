@@ -121,6 +121,17 @@ test('gallery toggle hides and shows cards beyond the preview', async ({ page })
   expect(await visible()).toBe(6);
 });
 
+test('the four readings do not repeat an entity index above the graph', async ({ page }) => {
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/leitura/${slug}/`);
+    await expect(page.locator('.index, #atlas-search')).toHaveCount(0);
+    const graph = page.locator('app-knowledge-network').first();
+    await expect(graph).toBeVisible();
+    await expect(graph.locator('#graph-search')).toBeVisible();
+    await expect(page.getByText('Busque um nome na barra do grafo').first()).toBeVisible();
+  }
+});
+
 test('the chapter review explains its purpose and reveals the answer on demand', async ({
   page,
 }) => {

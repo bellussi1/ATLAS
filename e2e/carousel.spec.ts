@@ -2,20 +2,20 @@ import AxeBuilder from '@axe-core/playwright';
 
 import { expect, test } from './content-fixture';
 
-test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ page }) => {
+test('positions carousel answers arrows, progress bar, keyboard and drag', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/leitura/marxismo/');
-  const region = page.getByRole('region', { name: 'Fichas deste atlas' });
+  const region = page.getByRole('region', { name: 'Posições por registro' });
   await region.scrollIntoViewIfNeeded();
   await expect(region).toBeVisible();
   const carousel = page.locator('app-card-carousel', { has: region });
   const count = carousel.locator('.carousel-count');
   await expect(count).toHaveText(/1–\d+ de \d+/);
 
-  await carousel.getByRole('button', { name: /^Próximo: Fichas deste atlas$/ }).click();
+  await carousel.getByRole('button', { name: /^Próximo: Posições por registro$/ }).click();
   await expect(count).not.toHaveText(/^\s*1–/);
 
-  await carousel.getByRole('button', { name: /^Anterior: Fichas deste atlas$/ }).click();
+  await carousel.getByRole('button', { name: /^Anterior: Posições por registro$/ }).click();
   await expect(count).toHaveText(/1–\d+ de \d+/);
 
   const bar = carousel.locator('.carousel-bar');

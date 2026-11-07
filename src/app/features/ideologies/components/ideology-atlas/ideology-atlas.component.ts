@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { readerPredicate, readerProse } from '@core/content/editorial/reader-voice';
-import { entityMedia } from '@core/content/media/asset-license';
 import { type Entity, placeTypeOf, type Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
@@ -21,21 +20,16 @@ import { TimelineAxisComponent } from '@ideologies/components/timeline-axis/time
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
 import { TimelineFocusService } from '@ideologies/services/timeline-focus.service';
 import { axisItemOf, entityKindLabel } from '@ideologies/utils/timeline-axis-items';
-import { CardCarouselComponent } from '@shared/ui/card-carousel/card-carousel.component';
-import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { KnowledgeNetworkComponent } from '@shared/ui/knowledge-network/knowledge-network.component';
-import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
 
 @Component({
   selector: 'app-ideology-atlas',
   imports: [
-    RecordCardComponent,
     EditorialSourcesComponent,
     RouterLink,
     KnowledgeTextComponent,
-    CardCarouselComponent,
     TimelineAxisComponent,
     KnowledgeNetworkComponent,
   ],
@@ -80,7 +74,6 @@ export class IdeologyAtlasComponent {
       ).length,
   );
   readonly selectedId = linkedSignal(() => this.rootEntityId());
-  readonly search = signal('');
   readonly history = signal<string[]>([]);
   readonly entities = computed(() => {
     return this.atlas().entities;
@@ -90,16 +83,6 @@ export class IdeologyAtlasComponent {
     () =>
       this.allEntities().find((entity) => entity.id === this.selectedId()) ?? this.entities()[0],
   );
-  readonly filteredEntities = computed(() => {
-    const query = this.search().trim().toLocaleLowerCase('pt-BR');
-    return this.entities().filter(
-      (entity) =>
-        !query ||
-        [entity.title, entity.summary, ...entity.aliases].some((value) =>
-          value.toLocaleLowerCase('pt-BR').includes(query),
-        ),
-    );
-  });
   readonly relations = computed(() =>
     this.repository.queryRelations(this.selectedId(), { atlasId: this.atlasId() }),
   );
@@ -183,9 +166,6 @@ export class IdeologyAtlasComponent {
     this.history.update((items) => items.slice(0, -1));
     this.selectedId.set(previous);
   }
-  setSearch(value: string): void {
-    this.search.set(value);
-  }
   selectTimeline(entityId: string): void {
     this.timelineId.set(entityId);
     this.focus.entityId.set(entityId);
@@ -203,18 +183,6 @@ export class IdeologyAtlasComponent {
     if (extent.startYear !== null) return `${qualifier}a partir de ${extent.startYear}`;
     if (extent.endYear !== null) return `${qualifier}até ${extent.endYear}`;
     return extent.label ?? 'Data não informada';
-  }
-  cardIcon(entity: Entity) {
-    return iconKind(entity.kind, placeTypeOf(entity));
-  }
-  picture(entity: Entity): string | null {
-    return entityMedia(this.repository.knowledgeGraph, entity)?.assetPath ?? null;
-  }
-  relationNote(id: string): string {
-    const count = this.atlas().relations.filter(
-      (r) => r.fromEntityId === id || r.toEntityId === id,
-    ).length;
-    return count ? `${count} ${count === 1 ? 'relação' : 'relações'}` : '';
   }
   kindLabel(entity: Entity): string {
     return entityKindLabel(entity.kind, placeTypeOf(entity));

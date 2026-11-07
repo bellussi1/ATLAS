@@ -36,49 +36,6 @@
     aria-label="Rede e registros"
     [tabindex]="embedded() ? -1 : null"
   >
-    <section class="index" aria-labelledby="index-title">
-      <div class="index-heading">
-        <h2 id="index-title">Índice de entidades</h2>
-        <span>{{ filteredEntities().length }}</span>
-      </div>
-      <label class="search-label" for="atlas-search">Buscar neste atlas</label>
-      <input
-        id="atlas-search"
-        type="search"
-        [value]="search()"
-        (input)="setSearch($any($event.target).value)"
-        placeholder="Nome, tema ou alias"
-      />
-      <p class="index-note">
-        @if (continuous()) {
-          Cada ficha abre seu contexto logo abaixo do grafo. Use as setas para percorrer o índice.
-        } @else {
-          Selecione uma ficha para abrir o contexto. No desktop, foco e ponteiro também mostram a
-          prévia; em telas estreitas, a lista tem rolagem própria e a rede oferece uma alternativa
-          textual.
-        }
-      </p>
-      <app-card-carousel label="Fichas deste atlas">
-        @for (entity of filteredEntities(); track entity.id) {
-          <button
-            appRecordCard
-            class="carousel-item atlas-record"
-            [icon]="cardIcon(entity)"
-            [kindLabel]="kindLabel(entity)"
-            [title]="entity.title"
-            [period]="yearLabel(entity)"
-            [note]="relationNote(entity.id)"
-            [tone]="entity.kind"
-            [picture]="picture(entity)"
-            [attr.aria-pressed]="selectedId() === entity.id"
-            (click)="openEntity(entity.id)"
-          ></button>
-        } @empty {
-          <p class="empty">Nenhuma entidade corresponde à busca.</p>
-        }
-      </app-card-carousel>
-    </section>
-
     <section class="graph-section" aria-labelledby="graph-title">
       <div class="section-heading">
         <div>
@@ -86,8 +43,9 @@
             <p class="eyebrow">Relações entre registros</p>
             <h2 id="graph-title">Uma ideia. Muitas conexões.</h2>
             <p class="edge-legend">
-              Cada forma é um tipo de registro; cada linha, um vínculo. Arraste para mover, use a
-              roda para aproximar e selecione um nome para abrir a ficha logo abaixo do grafo.
+              Busque um nome na barra do grafo, arraste para mover, use a roda para aproximar e
+              selecione um nó para abrir a ficha logo abaixo. Para percorrer os verbetes em lista,
+              <a routerLink="/acervo">abra o acervo completo</a>.
             </p>
           } @else {
             <p class="eyebrow">Pistas de leitura</p>
@@ -269,7 +227,8 @@
     @if (unconnectedEntityCount()) {
       <p class="graph-note">
         {{ unconnectedEntityCount() }} fichas deste recorte ainda não têm conexões registradas. Elas
-        permanecem acessíveis pelo índice; não presumimos vínculos sem evidência.
+        permanecem acessíveis pela busca do grafo e pelo acervo em lista; não presumimos vínculos
+        sem evidência.
       </p>
     }
     <p class="selection-announcement" role="status">{{ selected().title }} selecionado.</p>

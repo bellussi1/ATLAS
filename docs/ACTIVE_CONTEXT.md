@@ -305,6 +305,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Verificações: `npm test` **341/341**, `e2e/pages.spec.ts` **27/27**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390; sem overflow.
     - O release local é `2724b855…`; o ponteiro público continua no release anterior. Nenhuma revisão humana foi registrada e nada foi publicado.
 
+43. **Índice de entidades fora da leitura**
+    - O índice card-based do `IdeologyAtlasComponent` repetia nomes, imagens e resumos que o leitor já encontrara nos capítulos. A busca do grafo e o painel de contexto cobrem a mesma descoberta.
+    - O índice foi removido da leitura contínua. A seção do grafo agora diz para buscar um nome na barra, arrastar, aproximar e selecionar um nó; um link curto leva ao acervo em lista. O aviso de registros sem conexão aponta para a busca e para o acervo.
+    - `CardCarouselComponent` não foi alterado. O teste e2e do carrossel passou a exercitar “Posições por registro”, que continua sendo consumidor real.
+    - Verificações: `npm test` **342/342**, `e2e/carousel.spec.ts` **6/6**, `e2e/pages.spec.ts` **28/28** (inclui a ausência do índice nas quatro leituras), `lint`, `typecheck` e `build` exit 0.
+
 ## Pendências que bloqueiam
 
 1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos, ficha do nó e tipos do grafo estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).

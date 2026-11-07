@@ -102,54 +102,6 @@
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
 }
-.continuous .index {
-  position: static;
-  max-height: none;
-  overflow: visible;
-  padding: 0;
-}
-.index {
-  padding-right: 0.45rem;
-}
-.index-heading {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  align-items: baseline;
-}
-.index-heading h2 {
-  margin: 0;
-  font: 700 1.6rem/1 var(--font-sans);
-  letter-spacing: -0.04em;
-}
-.index-heading span {
-  font: 0.875rem var(--font-mono);
-}
-.search-label {
-  display: block;
-  margin: 1.15rem 0 0.35rem;
-  font-weight: 600;
-}
-.index input {
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 2.8rem;
-  padding: 0.5rem 0.65rem;
-  border: 2px solid var(--color-ink);
-  border-radius: 0;
-  background: var(--color-canvas);
-  color: inherit;
-  font: inherit;
-}
-.index-note {
-  color: var(--color-ink-muted);
-  font-size: 0.875rem;
-  line-height: 1.45;
-}
-/* Same record card as Explorar; the carousel only sets its width. */
-.atlas-record {
-  --carousel-item-width: min(14rem, 84%);
-}
 .graph-section,
 .timeline-section {
   padding: 1.2rem 0 1.8rem;

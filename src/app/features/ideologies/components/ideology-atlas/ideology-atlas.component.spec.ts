@@ -118,6 +118,22 @@ describe('Liberalism atlas snapshot', () => {
     ).toBe(true);
   });
 
+  it('does not repeat the chapter records in an index; the graph search is the entry', () => {
+    const fixture = TestBed.createComponent(IdeologyAtlasComponent);
+    fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
+    fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
+    fixture.componentRef.setInput('origin', '/leitura/liberalismo');
+    fixture.componentRef.setInput('continuous', true);
+    fixture.detectChanges();
+    const host = fixture.nativeElement as HTMLElement;
+    expect(host.querySelector('.index')).toBeNull();
+    expect(host.querySelector('app-card-carousel')).toBeNull();
+    expect(host.querySelector('app-knowledge-network')).not.toBeNull();
+    expect(host.querySelector('.graph-section')?.textContent).toContain(
+      'Busque um nome na barra do grafo',
+    );
+  });
+
   it('opens an entity context and returns to the exact previous selection', () => {
     const page = createAtlas();
     expect(page.entities()).toHaveLength(page.atlas().entities.length);
