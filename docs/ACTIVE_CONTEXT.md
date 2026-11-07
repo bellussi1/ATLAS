@@ -195,9 +195,15 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `decodeRawBody` em `scripts/ingestion/wikimedia/raw-store.mjs` descompacta pelo magic gzip; `fetch-raw.mjs` usa o helper antes do hash. Teste novo em `raw-store.spec.mjs`.
     - Verificado contra o Worker: **1.215 bytes comprimidos → 4.599 bytes**, SHA-256 igual ao manifesto. `test:ingestion` **69/69**; `lint` exit 0.
 
+28. **Triagem de issues (07/11)**
+    - Fechadas com evidência: **#5** (Anarquismo publicado, 12 capítulos/45 fontes), **#7** (Social-democracia, 12 capítulos/70 fontes), **#29** (paleta e leituras por dados em `ideology-readings.ts`), **#30** (precisão de datas no `EraChartComponent`) e **#11** (previews Vercel por PR).
+    - **#35** ficou aberta com comentário: falha do R2, catálogo vazio e rota desconhecida já têm E2E; falta o caso explícito de `/verbete/<inexistente>`.
+    - Novas: **#46** (o `ingest:verify` falha na captura `liberalism/2026-11-01-remoto`, bloqueando a Verificação do master e os PRs) e **#47** (Dependabot agrupa majors incompatíveis de Angular/TypeScript/Tailwind/Vitest/jsdom).
+    - **#42** e **#43** foram fechadas sem merge: Angular 22 exige TypeScript `>=6.0 <6.1` e o grupo dev-tools sobe TypeScript para 7, incompatível com Angular 21. Ver #47.
+
 ## Pendências que bloqueiam
 
-1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.
+1. **CI do master** — a Verificação `42337655149` passou `ingest:fetch-raw` e falhou em `ingest:verify` na captura `liberalism/2026-11-01-remoto` (issue **#46**). O CodeQL está verde. Os PRs de dependências #45/#44/#41/#40/#38 estão rebaseados, mas presos nesse gate; #39/#37 aguardam recreate.
 2. **Suíte e2e completa** — `contextual-exploration` (liberalismo 1440) falha no y do termo ao voltar (diferença de **64 px**), embora o scroll volte ao lugar. Corrigir a estabilidade do painel ou a tolerância do teste antes de considerar a rodada verde.
 3. **Produção na Vercel** - o `vercel.json` da raiz só vale no próximo deploy. O job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; falta criar o token e os IDs (ver `docs/operations/PRODUCAO.md`). Enquanto o `master` não receber a paginação, `/fontes` segue em 4,8 MB; o Worker de conteúdo também aguarda token Cloudflare.
 4. **Probe de 404** — hoje `https://atlasbr.vercel.app/caminho-inexistente` responde 200 com `index.html`; o `uptime.yml` falha por isso. Só verificar depois do deploy.
