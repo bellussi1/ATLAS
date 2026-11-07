@@ -47,6 +47,13 @@ export default {
         'Content-Type',
         MEDIA.test(path) ? 'application/octet-stream' : 'application/json',
       );
+    // Some clients do not transparently decode a gzip object served with Content-Encoding. The
+    // content contract hashes the original JSON, so deliver the decoded bytes and drop the header.
+    if (request.method === 'GET' && headers.get('Content-Encoding') === 'gzip') {
+      headers.delete('Content-Encoding');
+      headers.delete('Content-Length');
+      return new Response(object.body.pipeThrough(new DecompressionStream('gzip')), { headers });
+    }
     return new Response(request.method === 'HEAD' ? null : object.body, { headers });
   },
 };

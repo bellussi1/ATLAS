@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { gzipSync } from 'node:zlib';
 
 import worker from './content-delivery.worker.mjs';
 
@@ -20,6 +21,17 @@ function objectFor(type, body = '{"ok":true}') {
     body,
     httpEtag: '"etag"',
     writeHttpMetadata: (headers) => headers.set('Content-Type', type),
+  };
+}
+
+function gzipObjectFor(type, body) {
+  return {
+    body: new Response(gzipSync(Buffer.from(body))).body,
+    httpEtag: '"etag"',
+    writeHttpMetadata: (headers) => {
+      headers.set('Content-Type', type);
+      headers.set('Content-Encoding', 'gzip');
+    },
   };
 }
 
@@ -45,6 +57,17 @@ test('serves immutable artifacts with CORS and the pointer as revalidated', asyn
   const pointer = await worker.fetch(new Request('https://test.invalid/pointer.json'), env);
   assert.match(pointer.headers.get('cache-control'), /must-revalidate/);
   assert.equal(pointer.headers.get('access-control-allow-origin'), '*');
+});
+
+test('decodes gzip artifacts before the client verifies their digest', async () => {
+  const body = '{"ok":true,"release":"test"}';
+  const content = await worker.fetch(
+    new Request('https://test.invalid' + artifact),
+    envFor(gzipObjectFor('application/json', body)),
+  );
+  assert.equal(await content.text(), body);
+  assert.equal(content.headers.get('content-encoding'), null);
+  assert.equal(content.headers.get('content-type'), 'application/json');
 });
 
 test('handles HEAD, missing keys and preflight without a body', async () => {
