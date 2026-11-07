@@ -45,7 +45,7 @@ export function chapterReviews(
     );
     const recall = relation
       ? {
-          question: `Antes de continuar: que ligação o acervo registra entre ${titles.get(relation.fromEntityId)} e ${titles.get(relation.toEntityId)}?`,
+          question: `Que relação o capítulo estabelece entre ${titles.get(relation.fromEntityId)} e ${titles.get(relation.toEntityId)}?`,
           answer: `${titles.get(relation.fromEntityId)} ${readerPredicate(relation.label)} ${titles.get(relation.toEntityId)}.`,
           context: readerProse(relation.context) ?? '',
         }

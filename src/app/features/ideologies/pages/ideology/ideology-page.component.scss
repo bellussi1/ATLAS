@@ -287,50 +287,6 @@ h2 {
     transform: none !important;
   }
 }
-.chapter-review {
-  margin-block: var(--space-6);
-  padding: var(--space-4);
-  border-left: 6px solid var(--color-teal-paper);
-  background: var(--color-surface-subtle);
-}
-.chapter-review:has(.review-recall):has(.review-revisit) {
-  display: grid;
-  gap: var(--space-3) var(--space-5);
-  align-items: start;
-}
-@media (min-width: 48rem) {
-  /* Question beside the cards it asks about, instead of a mostly empty full-width box. */
-  .chapter-review:has(.review-recall):has(.review-revisit) {
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  }
-  .chapter-review:has(.review-recall):has(.review-revisit) .review-revisit {
-    margin-top: 0;
-  }
-}
-.review-recall summary {
-  cursor: pointer;
-  min-height: var(--control-min-size);
-  font: 600 1rem/1.4 var(--font-sans);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-.review-recall p {
-  margin: 0 0 var(--space-2);
-  font: 1rem/1.6 var(--font-serif);
-}
-.review-revisit {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
-  /* Rows size to their content: equal-height rows would stretch the label row too. */
-  grid-auto-rows: auto;
-  align-items: stretch;
-  gap: var(--space-3);
-  margin: var(--space-3) 0 0;
-  > span {
-    grid-column: 1 / -1;
-    font: 0.875rem var(--font-mono);
-  }
-}
 
 /* Accent per reading; each value keeps at least 4.5:1 on the canvas. Marx and liberal keep the default. */
 .ideology-page[data-palette='anarquismo'] {

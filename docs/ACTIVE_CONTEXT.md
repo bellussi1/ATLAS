@@ -152,6 +152,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - A lista usa títulos e aliases do grafo, mas descarta rótulos ambíguos; `classe`, `Bakunin`, `Kropotkin`, `Marx`, `Engels` e `Weber` têm formas curtas curadas. Se um alias aparecer em dois registros, o título único resolve; sem título único, o rótulo não vira link.
     - O painel limita a **6 termos por parágrafo**, ignora a própria entidade e mantém o foco no título da nova ficha quando não há conexão correspondente. O componente compartilhado é `app-context-text`.
     - O botão **“Fixar para comparar”** foi removido, junto com a coluna fixada e o estado de comparação. O painel mantém Anterior/Próximo, percurso e Voltar.
+    - Testes: unidade de vocabulário, do componente e do painel **13/13**; e2e de enciclopédia **7/7**, incluindo Proletariado → “meios de produção” → Voltar; e2e de fichas **8/8**.
 
 22. **Linha do tempo vertical em `#epocas`**
     - `app-era-chart` deixou de ser um gráfico horizontal com faixas, barras de vida, marcadores absolutos e carrossel. Agora é uma lista vertical ordenada: cada época tem anos, título, contexto, registros datados e pessoas vivas no intervalo.
@@ -159,7 +160,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O bloco `timeline` duplicado foi removido de `content/ideologies/marxismo/page.json`; `A riqueza das nações` passou para `markerIds` da cronologia, para não perder o registro.
     - `docs/design/PAGE_STANDARD.md` registra a decisão: timeline de época é vertical; eixo horizontal fica restrito ao atlas quando o recorte temporal for o objeto.
     - Verificações: unidade de `era-chart` **5/5**; `e2e/pages.spec` teste de épocas **1/1**; `e2e/encyclopedia` timeline e régua **3/3**; screenshots locais em 1440 e 390 confirmaram o trilho vertical e a ausência de overflow horizontal.
-    - Testes: unidade de vocabulário, do componente e do painel **13/13**; e2e de enciclopédia **7/7**, incluindo Proletariado → “meios de produção” → Voltar; e2e de fichas **8/8**; `npm test` **314/314**; `build` **1.185 rotas**; `lint` e `typecheck` exit 0.
+
+23. **Revisão de capítulo redesenhada**
+    - O bloco deixou de ser um `details` solto com a pergunta como resumo e cartões grandes de verbete. Agora tem cabeçalho “Revisão do capítulo”, explicação curta e duas partes: **Pergunta** e **Dois capítulos atrás**.
+    - A resposta fica oculta até “Mostrar resposta”; “Ocultar resposta” a recolhe. Os registros antigos viraram links compactos com “Abrir ficha”.
+    - Componente próprio `app-chapter-review`, com IDs únicos por instância e foco visível; a página de ideologia não carrega mais os estilos e imports antigos.
+    - Verificações: componente e util **3/3**; `npm test` **315/315**; `e2e/pages.spec` **22/22**, incluindo o novo teste de revisão; `build` **1.185 rotas**; `lint` e `typecheck` exit 0.
 
 ## Pendências que bloqueiam
 
