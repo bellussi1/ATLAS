@@ -182,6 +182,13 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Verificações: `npm test` **317/317** (56 arquivos); `typecheck` e `lint` exit 0; `build` passou com o aviso de orçamento do SCSS do grafo (18 kB; 19,43 kB); `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **41/41**; a rodada anterior dos seis specs (pages, graph, encyclopedia, ideology-sheets, carousel, liberalism-atlas) tinha **65/65**. Diagnóstico de hover em `/marxismo#conexoes` e `/grafos` manteve **1 estado** estável em 25 amostras e o cartão do nó correto. Nada foi publicado; o ponteiro segue em `45300c5…`.
     - O aviso de orçamento do SCSS é anterior a esta rodada e não falha o build (`maximumError` 20 kB); se o componente crescer, dividir estilos ou rever o limite.
 
+26. **Code scanning do GitHub**
+    - Em 07/11/2026 a página tinha **6 alertas abertos** no `master` (`b50675e`): 4 de `js/incomplete-url-substring-sanitization` nos scripts de ingestão, 1 de `js/bad-tag-filter` em `security-headers.mjs` e 1 de `js/identity-replacement` em `e2e/pages.spec.ts`.
+    - `scripts/ingestion/wikimedia/hosts.mjs` passou a ler o `hostname` com `new URL`, com `isWikidataHost` e `isCommonsHost`; `archive.mjs`, `wiki-extract/http.mjs` e `pipeline.spec.mjs` usam o helper em vez de `url.includes(...)`.
+    - O extrator de hashes CSP em `security-headers.mjs` passou a aceitar o fim de tag que os navegadores aceitam, como `</script >` e `</script foo="bar">`; o build continua gerando **8 hashes**.
+    - O `identity-replacement` já não existe no `develop` (o teste foi reescrito); o `master` ainda tem a versão antiga. O CodeQL só fecha os alertas depois de uma análise no `master`, então esta correção precisa chegar lá por merge ou PR.
+    - Verificações: `npm run test:ingestion` **68/68** (inclui `hosts.spec.mjs`), `npm run test:content` **182/182**, `npm run lint` exit 0 e `npm run build` exit 0 com **8 hashes** de CSP.
+
 ## Pendências que bloqueiam
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.

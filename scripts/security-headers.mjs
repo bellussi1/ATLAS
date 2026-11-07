@@ -26,7 +26,8 @@ for (const file of await collect(root)) {
   if (html.includes('onload="this.media=\'all\'"')) {
     hashes.add(`'sha256-${createHash('sha256').update("this.media='all'").digest('base64')}'`);
   }
-  for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)) {
+  // Browsers accept `</script >` and `</script foo="bar">`; match those end tags too.
+  for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\b[^>]*>/gi)) {
     if (/\bsrc\s*=|type\s*=\s*["']application\/json/i.test(match[1]) || !match[2].trim()) continue;
     hashes.add(`'sha256-${createHash('sha256').update(match[2]).digest('base64')}'`);
   }
