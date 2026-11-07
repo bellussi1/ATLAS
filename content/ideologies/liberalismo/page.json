@@ -69,7 +69,15 @@
         "A leitura vai das revoluções inglesas do século XVII ao debate sobre o neoliberalismo, sem tratar o liberalismo como uma doutrina única.",
         "O liberalismo se expande com as revoluções americana e francesa e com as constituições que limitam o poder. No século XIX, associa-se ao Estado de direito, à representação e ao mercado; no XX, divide-se sobre o Estado social."
       ],
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Por que a pergunta liberal é sobre limites do poder, e não apenas sobre liberdade individual?",
+        "answer": "Porque a tradição nasce da pergunta sobre por que obedecer e até onde o governo pode ir; a liberdade individual é uma das respostas, junto com consentimento, direitos e limites institucionais.",
+        "rationale": "Distinga a pergunta fundadora das respostas que ela recebe.",
+        "sourceIds": [
+          "source-sep-liberalism"
+        ]
+      }
     },
     {
       "question": "Que problemas os primeiros liberais tentavam resolver?",
@@ -107,7 +115,15 @@
             "person-adam-smith": "Explica a riqueza pela divisão do trabalho e pelo comércio. Também aparece na leitura do Marxismo."
           }
         }
-      ]
+      ],
+      "review": {
+        "question": "Como Locke liga consentimento, propriedade e direito de resistência?",
+        "answer": "O poder político existe para proteger vida, liberdade e propriedade; se viola essa finalidade, perde legitimidade, e o consentimento dos governados fundamenta o direito de resistência.",
+        "rationale": "Reconstrua a cadeia de argumentos, não apenas o nome do autor.",
+        "sourceIds": [
+          "source-sep-locke-political"
+        ]
+      }
     },
     {
       "question": "O que torna um governo legítimo?",
@@ -187,7 +203,21 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Quais são os três compromissos liberais e por que eles podem entrar em tensão?",
+        "answer": "Consentimento e direitos, poder dividido e limitação da esfera individual; a tensão aparece quando a proteção da liberdade exige intervenção ou quando a maioria pressiona direitos.",
+        "rationale": "Compare princípios e localize seus conflitos.",
+        "sourceIds": [
+          "source-sep-liberalism"
+        ],
+        "revisit": [
+          {
+            "entityId": "person-john-locke",
+            "why": "Retome Locke para ver como consentimento e direitos fundamentam os limites ao poder."
+          }
+        ]
+      }
     },
     {
       "question": "Liberdade de quê, e para quê?",
@@ -268,7 +298,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Como a divisão do trabalho produz riqueza e, ao mesmo tempo, dependência e desigualdade em Smith?",
+        "answer": "A divisão aumenta a produtividade e a cooperação, mas especializa os trabalhadores, cria dependência mútua e distribui de forma desigual os ganhos.",
+        "rationale": "Reconheça um efeito ambivalente, não uma virtude ou um defeito único.",
+        "sourceIds": [
+          "source-sep-liberalism"
+        ]
+      }
     },
     {
       "question": "Como a mesma palavra mudou de sentido em três séculos?",
@@ -441,7 +479,15 @@
           ]
         }
       ],
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "Por que a periodização do liberalismo não é uma sucessão de doutrinas que se substituem?",
+        "answer": "Porque clássico, social e neoliberal convivem e disputam o mesmo vocabulário; a periodização destaca ênfases históricas, não o desaparecimento das correntes anteriores.",
+        "rationale": "Diferencie periodização didática de substituição histórica.",
+        "sourceIds": [
+          "source-sep-liberalism"
+        ]
+      }
     },
     {
       "question": "Quem formulou, revisou e contestou essas ideias?",
@@ -487,7 +533,15 @@
             "person-isaiah-berlin": "Distinção entre liberdade negativa e positiva."
           }
         }
-      ]
+      ],
+      "review": {
+        "question": "Compare a liberdade em Mill e Berlin: o que muda na preocupação central?",
+        "answer": "Mill investiga os limites da maioria sobre o indivíduo; Berlin distingue liberdade negativa e positiva e alerta para os riscos de ambas. A pergunta se desloca da tirania da maioria para a natureza da liberdade.",
+        "rationale": "Compare duas formulações do mesmo valor.",
+        "sourceIds": [
+          "source-sep-liberalism"
+        ]
+      }
     },
     {
       "question": "O Estado protege ou ameaça a liberdade?",
@@ -581,7 +635,21 @@
             "lib-edge-marx-liberalism"
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "O que distingue liberalismo clássico, social e igualitário?",
+        "answer": "O clássico desconfia do Estado e valoriza o mercado; o social aceita intervenção para garantir liberdade efetiva; o igualitário ou das capacidades pergunta o que as pessoas podem efetivamente fazer.",
+        "rationale": "Compare correntes pelo critério de intervenção e liberdade efetiva.",
+        "sourceIds": [
+          "source-sep-liberalism"
+        ],
+        "revisit": [
+          {
+            "entityId": "person-john-stuart-mill",
+            "why": "Retome Mill para distinguir o liberalismo social do clássico e do neoliberalismo."
+          }
+        ]
+      }
     },
     {
       "question": "Em que cidades essas ideias viraram instituições?",
@@ -713,7 +781,15 @@
           ]
         }
       ],
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "Como Inglaterra, Escócia, França e Estados Unidos disputam o liberalismo de formas diferentes?",
+        "answer": "Cada lugar coloca problemas institucionais distintos, como revoluções, Iluminismo, absolutismo e constituição; a tradição responde a esses contextos, não a uma essência única.",
+        "rationale": "Relacione instituições e conjunturas nacionais à tradição.",
+        "sourceIds": [
+          "source-sep-liberalism"
+        ]
+      }
     },
     {
       "question": "O que o liberalismo deixa de ver, segundo seus críticos?",
@@ -880,7 +956,21 @@
           ]
         }
       ],
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "Por que a crítica de Berlin à liberdade positiva é interna ao liberalismo, e não apenas uma crítica externa?",
+        "answer": "Porque Berlin reconhece a liberdade positiva como parte da tradição, mas mostra o risco de que um ideal de autonomia justifique coerção; a crítica vem dos próprios valores liberais.",
+        "rationale": "Examine uma objeção que nasce dos próprios valores liberais.",
+        "sourceIds": [
+          "source-berlin-two-concepts"
+        ],
+        "revisit": [
+          {
+            "entityId": "person-john-stuart-mill",
+            "why": "Retome Mill para perceber como Berlin reformula o problema da liberdade individual."
+          }
+        ]
+      }
     },
     {
       "question": "Com quais pessoas, obras e tradições o liberalismo se relaciona?",
@@ -908,7 +998,21 @@
           "rootEntityId": "ideology-liberalism"
         }
       ],
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "O que separa liberalismo de republicanismo, conservadorismo e socialismo?",
+        "answer": "Compartilham perguntas sobre liberdade, ordem e igualdade, mas divergem sobre consentimento, mercado, tradição e intervenção; a comparação não deve transformar diálogo em fusão.",
+        "rationale": "Compare tradições por suas respostas, não por rótulos.",
+        "sourceIds": [
+          "source-lib-cf88"
+        ],
+        "revisit": [
+          {
+            "entityId": "ideology-classical-liberalism",
+            "why": "Retome o liberalismo clássico para comparar suas respostas com republicanismo e socialismo."
+          }
+        ]
+      }
     },
     {
       "id": "leituras",

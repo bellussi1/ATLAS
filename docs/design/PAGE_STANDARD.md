@@ -141,6 +141,8 @@ Cada posição distingue natureza normativa, tese atribuída, hipótese, interpr
 
 "Como defender ou criticar" significa identificar premissa, fonte, recorte e evidência, não ensinar propaganda. Argumento normativo não ganha comprovação empírica por aparecer num card. Fatos históricos estabelecidos são apresentados com clareza, sem relativização por simetria de opiniões.
 
+A revisão de capítulo é uma pausa editorial, não um quiz. A pergunta é escrita para o capítulo, declara o tipo de raciocínio, fica com a resposta oculta e cita fontes do próprio capítulo; se não houver pergunta de qualidade, não há revisão. Contrato, exemplos e justificativa em `docs/design/REVISAO-DE-CAPITULOS.md`.
+
 ## 10. Motion intenso e funcional
 
 Maximizar respostas significativas nos pontos de interação: termos, fichas, eventos, nós, conectores, filtros, imagens e documentos, seleção e progresso. A intensidade vem da variedade e qualidade das respostas, sem tudo em movimento ao mesmo tempo.

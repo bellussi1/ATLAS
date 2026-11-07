@@ -71,7 +71,15 @@
       "gap": "Definição baseada em fontes enciclopédicas; faltam literatura acadêmica e textos primários.",
       "coverage": "partial",
       "layout": "introduction",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Por que o anarquismo não se define apenas pela recusa do Estado?",
+        "answer": "Porque a crítica atinge toda autoridade imposta, inclusive o capital e as instituições que reproduzem hierarquia, e vem acompanhada de formas de associação voluntária, autogoverno e igualdade.",
+        "rationale": "Distinga a crítica da autoridade das formas de organização que ela propõe.",
+        "sourceIds": [
+          "src-wiki-topic-anarquismo"
+        ]
+      }
     },
     {
       "id": "origens",
@@ -96,7 +104,15 @@
       "gap": "Recorte centrado na Internacional e em fontes enciclopédicas. Origens na América Latina e nas redes de imigrantes ainda não foram cobertas.",
       "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Qual é a ruptura entre Proudhon, Bakunin e Marx na Primeira Internacional?",
+        "answer": "Proudhon critica a propriedade e o Estado; Bakunin leva a disputa para a Internacional e rejeita o partido e o Estado como instrumentos de emancipação; Marx defende a organização operária e a conquista do poder político.",
+        "rationale": "Compare projetos de organização e poder.",
+        "sourceIds": [
+          "src-wiki-topic-mikhail-bakunin"
+        ]
+      }
     },
     {
       "id": "principios",
@@ -170,7 +186,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Como liberdade e igualdade se articulam na crítica anarquista à dominação?",
+        "answer": "A liberdade individual é pensada junto com a igualdade social; a recusa de autoridade imposta inclui capital e instituições que reproduzem hierarquia, não apenas o governo.",
+        "rationale": "Explique como dois valores se sustentam mutuamente.",
+        "sourceIds": [
+          "src-wiki-topic-anarquismo"
+        ]
+      }
     },
     {
       "id": "conceitos",
@@ -193,7 +217,15 @@
       "gap": "Glossário ainda sem entradas próprias no acervo, como anarcossindicalismo e anarco-comunismo.",
       "coverage": "partial",
       "layout": "concepts",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "O que é apoio mútuo, e por que ele é uma tese sobre a cooperação, não um elogio moral?",
+        "answer": "Apoio mútuo descreve a cooperação como fator de sobrevivência e organização social, não como exceção altruísta; serve de base para o comunismo libertário.",
+        "rationale": "Distinga descrição de cooperação e norma moral.",
+        "sourceIds": [
+          "src-wiki-topic-anarchism"
+        ]
+      }
     },
     {
       "id": "epocas",
@@ -218,7 +250,15 @@
       "gap": "A linha do tempo europeia e mexicana foi complementada pelo caso brasileiro; faltam experiências da Ásia e uma periodização comparada.",
       "coverage": "partial",
       "layout": "timeline",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Por que a periodização inclui a Ucrânia de Makhno e a Espanha de 1936?",
+        "answer": "Porque essas experiências concretas mostram como a tradição organiza federações, conselhos e milícias em contextos de guerra e revolução, não apenas como ideia.",
+        "rationale": "Relacione ideia e experiência histórica concreta.",
+        "sourceIds": [
+          "source-anarco-toledo"
+        ]
+      }
     },
     {
       "id": "pensadores",
@@ -263,7 +303,21 @@
             "wiki-topic-emma-goldman": "Conferências, escritos e a revista Mother Earth."
           }
         }
-      ]
+      ],
+      "review": {
+        "question": "Compare Proudhon, Bakunin e Kropotkin: o que cada um acrescenta à crítica da propriedade e do Estado?",
+        "answer": "Proudhon critica a propriedade e propõe mutualismo; Bakunin formula revolta e federação; Kropotkin desenvolve apoio mútuo e comunismo libertário.",
+        "rationale": "Compare contribuições sem reduzir a tradição a um fundador.",
+        "sourceIds": [
+          "src-wiki-topic-piotr-kropotkin"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-mikhail-bakunin",
+            "why": "Retome Bakunin para reler a ruptura com Marx à luz das correntes que ele ajudou a formular."
+          }
+        ]
+      }
     },
     {
       "id": "vertentes",
@@ -352,7 +406,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "O que distingue comunismo libertário, anarcossindicalismo e individualismo anarquista?",
+        "answer": "O comunismo libertário busca propriedade comum e distribuição segundo necessidades; o anarcossindicalismo organiza trabalhadores em sindicatos e na greve geral; o individualismo afirma a autonomia pessoal contra a coletividade imposta.",
+        "rationale": "Compare estratégias e formas de organização.",
+        "sourceIds": [
+          "source-anarco-toledo"
+        ]
+      }
     },
     {
       "id": "experiencias",
@@ -461,7 +523,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "O que a Comuna de Paris, a Ucrânia de Makhno e a Espanha de 1936 revelam sobre os limites e as possibilidades da organização anarquista?",
+        "answer": "Revelam formas concretas de federação, conselhos e milícias, mas também pressões de guerra, repressão e disputa com Estados e partidos; a experiência não confirma uma utopia pronta.",
+        "rationale": "Avalie experiências concretas sem tratá-las como utopia pronta.",
+        "sourceIds": [
+          "source-anarco-greve-1917"
+        ]
+      }
     },
     {
       "id": "debates",
@@ -550,7 +620,21 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Como a crítica marxista ao anarquismo e a crítica anarquista ao marxismo se dirigem a alvos diferentes?",
+        "answer": "A crítica marxista aponta a falta de estratégia e organização; a anarquista aponta o risco de o partido e o Estado reproduzirem a dominação. Cada uma atinge um núcleo distinto.",
+        "rationale": "Examine objeções cruzadas e seus pressupostos.",
+        "sourceIds": [
+          "source-anarco-toledo"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-pierre-joseph-proudhon",
+            "why": "Retome Proudhon para comparar a crítica da propriedade com a disputa sobre violência e organização."
+          }
+        ]
+      }
     },
     {
       "id": "conexoes",
@@ -579,7 +663,21 @@
           "type": "atlas",
           "rootEntityId": "wiki-topic-anarquismo"
         }
-      ]
+      ],
+      "review": {
+        "question": "O que o anarquismo compartilha com o liberalismo e com o marxismo, e onde rompe?",
+        "answer": "Com o liberalismo, a defesa da liberdade individual; com o marxismo, a crítica ao capitalismo. Rompe com o primeiro por criticar propriedade e mercado, e com o segundo por rejeitar partido e Estado.",
+        "rationale": "Compare tradições por suas respostas sobre liberdade, propriedade e poder.",
+        "sourceIds": [
+          "src-wiki-topic-anarquismo"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-piotr-kropotkin",
+            "why": "Retome Kropotkin para contrastar apoio mútuo com as respostas liberal e marxista."
+          }
+        ]
+      }
     },
     {
       "id": "leituras",

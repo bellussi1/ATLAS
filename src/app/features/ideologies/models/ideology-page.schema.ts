@@ -45,6 +45,20 @@ export const explorationItemSchema = z.object({
     'limitação editorial',
   ]),
 });
+/** A short end-of-chapter reflection, written for the chapter instead of generated from relations. */
+export const chapterReviewSchema = z.object({
+  question: z.string().min(1),
+  answer: z.string().min(1),
+  /** What kind of reasoning the question asks for, shown before the answer. */
+  rationale: z.string().min(1),
+  sourceIds: z.array(id).min(1),
+  /** Earlier records that gain a new meaning here, each with the connection to perceive. */
+  revisit: z
+    .array(z.object({ entityId: id, why: z.string().min(1) }))
+    .max(3)
+    .default([]),
+});
+export type ChapterReviewData = z.infer<typeof chapterReviewSchema>;
 export const pageBlockSchema = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('explorations'),
@@ -203,6 +217,8 @@ export const ideologyPageSchema = z
         /** One-sentence link from this chapter to the next. */
         bridge: z.string().min(1).nullable().default(null),
         sourceIds: z.array(id),
+        /** Editorial review, present only when a question is worth asking. */
+        review: chapterReviewSchema.nullable().default(null),
         gap: z.string().min(1).nullable(),
         /** `pending`: the chapter is kept in place but has no verified content yet. */
         coverage: z.enum(['complete', 'partial', 'pending']).default('complete'),
@@ -361,8 +377,21 @@ export function validateIdeologyDossier(
       c.blocks.flatMap((b) => (b.type === 'explorations' ? b.items.map((i) => i.id) : [])),
     ),
   );
+  const reviewQuestions = new Set<string>();
   for (const chapter of page.chapters) {
     requireIds(chapter.sourceIds, sources);
+    if (chapter.review) {
+      requireIds(chapter.review.sourceIds, sources);
+      if (chapter.review.sourceIds.some((sourceId) => !chapter.sourceIds.includes(sourceId)))
+        throw new Error('Revisão cita fonte fora dos capítulos.');
+      const revisitIds = chapter.review.revisit.map((item) => item.entityId);
+      requireIds(revisitIds, entities);
+      if (new Set(revisitIds).size !== revisitIds.length)
+        throw new Error('Revisão repete um registro revisitado.');
+      const question = chapter.review.question.trim().toLocaleLowerCase('pt-BR');
+      if (reviewQuestions.has(question)) throw new Error('Pergunta de revisão repetida.');
+      reviewQuestions.add(question);
+    }
     for (const block of chapter.blocks) {
       if ('entityIds' in block) requireIds(block.entityIds, entities);
       if ('edgeIds' in block) requireIds(block.edgeIds, edges);

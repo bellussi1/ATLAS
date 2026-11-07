@@ -167,6 +167,46 @@ describe('positions layer', () => {
   });
 });
 
+describe('chapter review curation', () => {
+  const validate = (page: unknown) =>
+    validateIdeologyDossier(page, liberalismoSupplement as never, methodologyKnowledgeGraph);
+  const review = (page: typeof publishedLiberalismo, index = 0) => {
+    const clone = structuredClone(page);
+    const chapter = clone.chapters[index];
+    chapter.review = {
+      question: 'Pergunta editorial de teste?',
+      answer: 'Resposta sustentada pelo capítulo.',
+      rationale: 'Explique o mecanismo.',
+      sourceIds: [chapter.sourceIds[0]],
+      revisit: [],
+    };
+    return clone;
+  };
+
+  it('accepts the editorial reviews published with the readings', () => {
+    expect(
+      publishedLiberalismo.chapters.filter((chapter) => chapter.review).length,
+    ).toBeGreaterThan(0);
+    expect(() => validate(publishedLiberalismo)).not.toThrow();
+  });
+
+  it('refuses a repeated question, a source outside the chapter and an unknown revisit', () => {
+    const second = review(publishedLiberalismo, 1);
+    second.chapters[1].review!.question = second.chapters[0].review!.question;
+    expect(() => validate(second)).toThrow('Pergunta de revisão repetida.');
+
+    const outside = review(publishedLiberalismo, 0);
+    outside.chapters[0].review!.sourceIds = ['source-lib-cf88'];
+    expect(() => validate(outside)).toThrow('Revisão cita fonte fora dos capítulos.');
+
+    const unknown = review(publishedLiberalismo, 0);
+    unknown.chapters[0].review!.revisit = [
+      { entityId: 'person-inexistente', why: 'Uma conexão inventada.' },
+    ];
+    expect(() => validate(unknown)).toThrow('Referência editorial inexistente.');
+  });
+});
+
 describe('opening curation', () => {
   const validate = (page: unknown, supplementData: unknown = liberalismoSupplement) =>
     validateIdeologyDossier(page, supplementData as never, methodologyKnowledgeGraph);

@@ -1,37 +1,76 @@
-import type { Atlas } from '@core/content/models/content-schema';
-import type { KnowledgeTerm } from '@ideologies/models/knowledge-term';
+import type { Atlas, Source } from '@core/content/models/content-schema';
+import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
 import { chapterReviews } from '@ideologies/utils/chapter-review';
 
 const atlas = {
   entities: [
-    { id: 'a', title: 'Karl Marx' },
-    { id: 'b', title: 'O capital' },
-    { id: 'c', title: 'Engels' },
+    { id: 'person-karl-marx', title: 'Karl Marx' },
+    { id: 'person-eduard-bernstein', title: 'Eduard Bernstein' },
   ],
   relations: [
-    { fromEntityId: 'a', toEntityId: 'b', label: 'escreveu', context: 'Publicado em 1867.' },
+    {
+      fromEntityId: 'person-karl-marx',
+      toEntityId: 'person-eduard-bernstein',
+      label: 'criticou',
+      context: 'Uma relação que não deve virar pergunta automaticamente.',
+    },
   ],
 } as unknown as Atlas;
-const vocabulary: KnowledgeTerm[] = [
-  { label: 'Karl Marx', entityId: 'a', kind: 'Pessoa', definition: '' },
-  { label: 'O capital', entityId: 'b', kind: 'Obra', definition: '' },
-  { label: 'Engels', entityId: 'c', kind: 'Pessoa', definition: '' },
-  { label: 'Fora', entityId: 'z', kind: 'Pessoa', definition: '' },
-];
+
+const source = (id: string): Source => ({
+  id,
+  title: `Fonte ${id}`,
+  url: null,
+  edition: '1. ed.',
+  publicationDate: null,
+});
+
+const chapters = [
+  {
+    id: 'introducao',
+    narrative: ['Karl Marx e Eduard Bernstein aparecem no texto.'],
+    review: {
+      question: 'O que separa reforma de revolução nesta tradição?',
+      answer: 'A estratégia e o diagnóstico do que pode mudar.',
+      rationale: 'Compare estratégias, não apenas nomes.',
+      sourceIds: ['source-a'],
+      revisit: [
+        {
+          entityId: 'person-eduard-bernstein',
+          why: 'Retome a revisão reformista para localizar a objeção.',
+        },
+      ],
+    },
+  },
+  {
+    id: 'origens',
+    narrative: ['Karl Marx e Eduard Bernstein aparecem de novo.'],
+    review: null,
+  },
+] as unknown as IdeologyPage['chapters'];
 
 describe('chapterReviews', () => {
-  it('asks about documented relations and revisits records from two chapters before', () => {
-    const reviews = chapterReviews(
-      [
-        { narrative: ['Karl Marx escreveu O capital com apoio de Engels, citado Fora.'] },
-        { narrative: ['Um capítulo sem nomes.'] },
-        { narrative: ['Karl Marx de novo.'] },
-      ],
-      atlas,
-      vocabulary,
-    );
-    expect(reviews[0].recall?.answer).toBe('Karl Marx escreveu O capital.');
-    expect(reviews[1].recall).toBeNull();
-    expect(reviews[2].revisit.map((r) => r.label)).toEqual(['O capital', 'Engels']);
+  it('keeps only editorial reviews and resolves labels, sources and connections', () => {
+    const resolveSources = (ids: string[]) => ids.map(source);
+    const reviews = chapterReviews(chapters, atlas, resolveSources);
+    expect(reviews[0]).toMatchObject({
+      question: 'O que separa reforma de revolução nesta tradição?',
+      answer: 'A estratégia e o diagnóstico do que pode mudar.',
+      rationale: 'Compare estratégias, não apenas nomes.',
+    });
+    expect(reviews[0]?.sources.map((item) => item.title)).toEqual(['Fonte source-a']);
+    expect(reviews[0]?.revisit).toEqual([
+      {
+        entityId: 'person-eduard-bernstein',
+        label: 'Eduard Bernstein',
+        why: 'Retome a revisão reformista para localizar a objeção.',
+      },
+    ]);
+    expect(reviews[1]).toBeNull();
+  });
+
+  it('does not turn a documented relation into a question without an editorial review', () => {
+    expect(atlas.relations).toHaveLength(1);
+    expect(chapterReviews(chapters, atlas, () => [])[1]).toBeNull();
   });
 });

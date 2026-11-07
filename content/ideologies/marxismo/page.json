@@ -69,7 +69,15 @@
       "blocks": [],
       "gap": null,
       "question": "Por que um pensamento do século XIX ainda organiza debates hoje?",
-      "bridge": "Para entender a tradição, volte ao mundo industrial em que Marx e Engels escreveram."
+      "bridge": "Para entender a tradição, volte ao mundo industrial em que Marx e Engels escreveram.",
+      "review": {
+        "question": "O que une e o que separa as correntes que se chamam marxistas?",
+        "answer": "Unem a referência à obra de Marx e Engels e a crítica do capitalismo; separam-se nas respostas sobre reforma ou revolução, partido, Estado e análise do capitalismo.",
+        "rationale": "Distinga o nome comum das divergências reais.",
+        "sourceIds": [
+          "source-v4-marx-sep"
+        ]
+      }
     },
     {
       "id": "origens",
@@ -101,7 +109,15 @@
       ],
       "gap": null,
       "question": "Que sociedade Marx e Engels estavam tentando explicar?",
-      "bridge": "Da leitura desse mundo saem os conceitos centrais: trabalho, valor e história."
+      "bridge": "Da leitura desse mundo saem os conceitos centrais: trabalho, valor e história.",
+      "review": {
+        "question": "Por que a industrialização muda o vocabulário político do século XIX?",
+        "answer": "A fábrica e o êxodo rural criam o proletariado e novas experiências de trabalho; Marx e Engels interpretam essas mudanças como relações de classe e as transformam em problemas políticos.",
+        "rationale": "Relacione contexto material e formulação conceitual.",
+        "sourceIds": [
+          "source-marx-capital"
+        ]
+      }
     },
     {
       "id": "principios",
@@ -184,7 +200,15 @@
       ],
       "gap": null,
       "question": "Que problemas Marx tenta explicar?",
-      "bridge": "Essas perguntas dependem de um vocabulário próprio: trabalho socialmente necessário, valor e materialismo histórico."
+      "bridge": "Essas perguntas dependem de um vocabulário próprio: trabalho socialmente necessário, valor e materialismo histórico.",
+      "review": {
+        "question": "O materialismo histórico reduz a política e as ideias à economia? Justifique.",
+        "answer": "Não é um determinismo simples: as condições materiais condicionam a política, o direito e as ideias, mas estas têm eficácia própria; a tese explica a relação, não reduz tudo à economia.",
+        "rationale": "Identifique um pressuposto e evite a leitura determinista.",
+        "sourceIds": [
+          "source-v4-marx-sep"
+        ]
+      }
     },
     {
       "id": "conceitos",
@@ -221,7 +245,15 @@
       ],
       "gap": null,
       "question": "O que explica o valor das coisas?",
-      "bridge": "Antes de ver quem desenvolveu esses conceitos, situe-os no tempo."
+      "bridge": "Antes de ver quem desenvolveu esses conceitos, situe-os no tempo.",
+      "review": {
+        "question": "Por que preço e valor não são sinônimos na crítica da economia política?",
+        "answer": "O valor se relaciona ao tempo de trabalho socialmente necessário; o preço oscila e pode se afastar do valor, embora seja a forma visível da relação.",
+        "rationale": "Explique um mecanismo e diferencie duas noções próximas.",
+        "sourceIds": [
+          "source-marx-capital"
+        ]
+      }
     },
     {
       "id": "epocas",
@@ -430,7 +462,21 @@
       ],
       "question": "Como uma teoria virou partidos, Estados e escolas de pensamento?",
       "bridge": "Essas épocas têm autores; muitos deles discordaram entre si.",
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "Por que a periodização do marxismo acompanha organizações e Estados, e não apenas a história das ideias?",
+        "answer": "Porque a tradição muda com as organizações que a mobilizam, como a Liga, as Internacionais, os partidos e os Estados, e essas mediações alteram problemas e estratégias.",
+        "rationale": "Entenda a periodização como recurso histórico, não como sucessão automática.",
+        "sourceIds": [
+          "source-hobsbawm-change-world"
+        ],
+        "revisit": [
+          {
+            "entityId": "work-communist-manifesto",
+            "why": "Retome o Manifesto para ver como o texto de 1848 antecede as organizações de massa e as disputas posteriores."
+          }
+        ]
+      }
     },
     {
       "id": "pensadores",
@@ -491,7 +537,21 @@
       ],
       "gap": null,
       "question": "Quem herdou, revisou ou rompeu com Marx?",
-      "bridge": "Das divergências entre essas vozes surgem vertentes distintas."
+      "bridge": "Das divergências entre essas vozes surgem vertentes distintas.",
+      "review": {
+        "question": "Compare o foco de Lenin, Gramsci e Bernstein: o que cada um desloca na herança de Marx?",
+        "answer": "Lenin desloca para o partido e o Estado; Gramsci, para hegemonia e sociedade civil; Bernstein, para a revisão reformista e o socialismo pela via democrática.",
+        "rationale": "Compare interpretações sem transformar a tradição em doutrina única.",
+        "sourceIds": [
+          "source-v4-marx-sep"
+        ],
+        "revisit": [
+          {
+            "entityId": "event-paris-commune",
+            "why": "Retome a Comuna para comparar a experiência de 1871 com as estratégias de partido e Estado discutidas pelos pensadores."
+          }
+        ]
+      }
     },
     {
       "id": "vertentes",
@@ -681,7 +741,21 @@
       "gap": "Uma genealogia abrangente de leninismos, marxismos ocidentais e outras correntes ainda exige fontes e revisão. A rede mostra somente polêmicas sustentadas pelas referências deste recorte; o caso brasileiro foi incorporado como periodização, não como árvore completa de organizações.",
       "question": "Reforma ou revolução? Partido, Estado ou cultura?",
       "bridge": "As vertentes se formaram em experiências concretas, em cidades e países.",
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "Por que “reforma versus revolução” não basta para organizar as vertentes marxistas?",
+        "answer": "Porque há disputas sobre o papel do partido, a natureza do Estado soviético, a relação entre teoria e prática e a análise do capitalismo tardio; essas clivagens não se reduzem àquela oposição.",
+        "rationale": "Reconheça dimensões que uma oposição binária esconde.",
+        "sourceIds": [
+          "source-kolakowski-main-currents"
+        ],
+        "revisit": [
+          {
+            "entityId": "person-eduard-bernstein",
+            "why": "Retome Bernstein para reconhecer a revisão reformista como uma das vertentes, não como desvio externo."
+          }
+        ]
+      }
     },
     {
       "id": "experiencias",
@@ -816,7 +890,21 @@
       ],
       "question": "Em que lugares a tradição se formou e se dividiu?",
       "bridge": "Às divergências internas somam-se críticas vindas de fora da tradição.",
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "Como os lugares de produção e exílio condicionam o que cada marxismo pôde pensar e organizar?",
+        "answer": "Fábricas, bibliotecas, prisões e exílios definem problemas e públicos: a Alemanha de partidos de massa, a Rússia revolucionária, a Itália de Gramsci e a periferia latino-americana produzem ênfases diferentes.",
+        "rationale": "Ligue geografia e instituições à formulação teórica.",
+        "sourceIds": [
+          "source-hobsbawm-change-world"
+        ],
+        "revisit": [
+          {
+            "entityId": "event-paris-commune",
+            "why": "Retome a Comuna para contrastar a experiência de 1871 com a Revolução Russa e a organização soviética."
+          }
+        ]
+      }
     },
     {
       "id": "debates",
@@ -1099,7 +1187,21 @@
       "gap": "Autocrítica histórica e controvérsias sobre regimes específicos não recebem tratamento suficiente neste recorte; o caso brasileiro está indicado, mas ainda precisa de documentação própria.",
       "question": "O que os críticos de dentro e de fora apontam como falha?",
       "bridge": "Para além das críticas, o marxismo dialoga com outras tradições.",
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "Qual é o núcleo da crítica de Luxemburgo a Bernstein, e por que ela não se resolve com o rótulo “reforma ou revolução”?",
+        "answer": "Luxemburgo sustenta que reformas sociais não substituem a transformação das relações de produção; a disputa envolve também o diagnóstico do capitalismo e o papel da ação de massas.",
+        "rationale": "Examine uma objeção em seus próprios termos.",
+        "sourceIds": [
+          "source-bernstein-preface"
+        ],
+        "revisit": [
+          {
+            "entityId": "person-eduard-bernstein",
+            "why": "Retome a revisão reformista para ler a crítica de Luxemburgo como resposta direta."
+          }
+        ]
+      }
     },
     {
       "id": "conexoes",
@@ -1126,7 +1228,21 @@
           "rootEntityId": "ideology-marxism"
         }
       ],
-      "coverage": "partial"
+      "coverage": "partial",
+      "review": {
+        "question": "O que o marxismo compartilha com liberalismo e anarquismo, e onde a comparação deixa de ser convergência?",
+        "answer": "Compartilha perguntas sobre propriedade, Estado e mudança social, mas as respostas divergem; as relações documentadas são polêmicas e críticas, não fusões.",
+        "rationale": "Compare tradições sem apagar diferenças nem inventar parentescos.",
+        "sourceIds": [
+          "source-marxismo-brasil-unicamp"
+        ],
+        "revisit": [
+          {
+            "entityId": "person-karl-marx",
+            "why": "Retome Marx para comparar a crítica da propriedade com as respostas liberal e anarquista."
+          }
+        ]
+      }
     },
     {
       "id": "leituras",

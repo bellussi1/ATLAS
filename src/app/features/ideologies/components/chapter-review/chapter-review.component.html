@@ -1,44 +1,44 @@
 <aside class="chapter-review" [attr.aria-label]="'Revisão: ' + chapterTitle()">
   <header class="review-header">
     <p class="review-kicker">Revisão</p>
-    <h3>Revisão do capítulo</h3>
-    <p class="review-intro">
-      Uma pergunta para recordar o que importa e registros de dois capítulos atrás para reconectar.
-    </p>
+    <p class="review-rationale">{{ review().rationale }}</p>
   </header>
 
-  @if (review().recall; as recall) {
-    <section class="review-question" [attr.aria-labelledby]="'review-question-label-' + uid">
-      <p class="review-label" [id]="'review-question-label-' + uid">Pergunta</p>
-      <p class="review-prompt">{{ recall.question }}</p>
-      <button
-        type="button"
-        class="review-toggle"
-        [attr.aria-expanded]="revealed()"
-        [attr.aria-controls]="answerId"
-        (click)="toggle()"
-      >
-        {{ revealed() ? 'Ocultar resposta' : 'Mostrar resposta' }}
-      </button>
-      @if (revealed()) {
-        <div class="review-answer" [id]="answerId">
-          <p>
-            <strong>{{ recall.answer }}</strong>
+  <section class="review-question" aria-label="Pergunta de revisão">
+    <p class="review-prompt">{{ review().question }}</p>
+    <button
+      type="button"
+      class="review-toggle"
+      [attr.aria-expanded]="revealed()"
+      [attr.aria-controls]="answerId"
+      (click)="toggle()"
+    >
+      {{ revealed() ? 'Ocultar resposta' : 'Mostrar resposta' }}
+    </button>
+    @if (revealed()) {
+      <div class="review-answer" [id]="answerId">
+        <p class="review-answer-text">{{ review().answer }}</p>
+        @if (review().sources.length) {
+          <p class="review-sources">
+            <span class="review-label">Fontes</span>
+            @for (source of review().sources; track source.id) {
+              @if (source.url) {
+                <a [href]="source.url" target="_blank" rel="noopener noreferrer">{{
+                  source.title
+                }}</a>
+              } @else {
+                <span>{{ source.title }}</span>
+              }
+            }
           </p>
-          @if (recall.context) {
-            <p class="review-context">{{ recall.context }}</p>
-          }
-        </div>
-      }
-    </section>
-  }
+        }
+      </div>
+    }
+  </section>
 
   @if (hasRevisit()) {
-    <section class="review-revisit" [attr.aria-labelledby]="'review-revisit-label-' + uid">
-      <p class="review-label" [id]="'review-revisit-label-' + uid">Dois capítulos atrás</p>
-      <p class="review-revisit-intro">
-        Estes registros apareceram antes e não voltaram desde então.
-      </p>
+    <section class="review-revisit" aria-label="Conexões anteriores">
+      <p class="review-label">Retome</p>
       <ul>
         @for (item of review().revisit; track item.entityId) {
           <li>
@@ -47,8 +47,13 @@
               class="review-link"
               [appKnowledgeContext]="{ entityId: item.entityId }"
             >
-              <span>{{ item.label }}</span>
-              <small>Abrir ficha <span aria-hidden="true">↗</span></small>
+              <span class="review-link__copy">
+                <span class="review-link__label">{{ item.label }}</span>
+                <small class="review-link__why">{{ item.why }}</small>
+              </span>
+              <small class="review-link__action"
+                >Abrir ficha <span aria-hidden="true">↗</span></small
+              >
             </button>
           </li>
         }

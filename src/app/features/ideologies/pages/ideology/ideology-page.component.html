@@ -90,9 +90,7 @@
             }
           }
           @if (reviews()[index]; as review) {
-            @if (review.recall || review.revisit.length) {
-              <app-chapter-review [review]="review" [chapterTitle]="chapter.title" />
-            }
+            <app-chapter-review [review]="review" [chapterTitle]="chapter.title" />
           }
           @if (chapter.sourceIds.length) {
             <details class="chapter-sources">

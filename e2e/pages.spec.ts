@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 
 import { explorerCatalogues } from '../src/app/core/content/queries/knowledge-explorer';
-import { expect, test } from './content-fixture';
+import { expect, routeContentFixture, test } from './content-fixture';
 
 const declaredDestinations = [
   '/',
@@ -124,13 +124,19 @@ test('gallery toggle hides and shows cards beyond the preview', async ({ page })
 test('the chapter review explains its purpose and reveals the answer on demand', async ({
   page,
 }) => {
-  await page.goto('/leitura/marxismo/');
+  await routeContentFixture(page);
+  await page.goto('/');
+  await page.locator('.cover-choice[data-reading="marxismo"]').click();
+  await page.getByRole('link', { name: 'Ler o texto completo' }).click();
+  await expect(page).toHaveURL(/\/leitura\/marxismo\/?$/);
   const review = page.locator('.chapter-review').first();
   await review.scrollIntoViewIfNeeded();
-  await expect(review.getByRole('heading', { name: 'Revisão do capítulo' })).toBeVisible();
+  await expect(review.locator('.review-kicker')).toHaveText('Revisão');
+  await expect(review.locator('.review-rationale')).toContainText('Distinga o nome comum');
   await expect(review.locator('.review-answer')).toHaveCount(0);
   await review.getByRole('button', { name: 'Mostrar resposta' }).click();
-  await expect(review.locator('.review-answer')).toBeVisible();
+  await expect(review.locator('.review-answer')).toContainText('Unem a referência à obra');
+  await expect(review.locator('.review-sources')).toBeVisible();
   await expect(review.getByRole('button', { name: 'Ocultar resposta' })).toBeVisible();
 });
 

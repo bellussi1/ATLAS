@@ -12,12 +12,10 @@ import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { companionOf, connectionsOf, paletteOf } from '@ideologies/data/ideology-readings';
-import { terms } from '@ideologies/data/knowledge-vocabulary';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
 import { chapterReviews } from '@ideologies/utils/chapter-review';
-import { graphVocabulary } from '@ideologies/utils/graph-vocabulary';
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
@@ -91,7 +89,7 @@ export class IdeologyPageComponent {
     return chapterReviews(
       page.chapters,
       graph.atlases.find((a) => a.id === page.atlasId),
-      graphVocabulary(graph, terms),
+      (ids) => this.sources(ids),
     );
   });
   readonly minutes = computed(

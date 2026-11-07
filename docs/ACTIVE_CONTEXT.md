@@ -296,6 +296,15 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O período aberto ganhou hierarquia além da cor: faixa lateral na cor do período, anos em chip de tinta, indicador quadrado com mais/menos animado e marcador ampliado. O corpo mantém foco, `aria-expanded` e `aria-controls`.
     - Verificações: `npm test` **337/337**, `e2e/pages.spec.ts` **27/27** (inclui o novo teste de recolhimento e posição de scroll), `lint`, `typecheck` e `build` exit 0. Medição em 1440 e 390: altura do corpo de 312→24 px ao fechar, sem overflow; clique em outra época mantém `scrollY` e fecha em 280 ms.
 
+42. **Revisão pedagógica dos capítulos**
+    - A revisão deixou de ser gerada pela primeira relação do grafo. O molde “Que relação o capítulo estabelece entre X e Y?” aparecia em 7 capítulos e repetia nomes em vez de pedir compreensão; várias fichas só listavam registros de dois capítulos antes.
+    - Os **40** capítulos de argumento das quatro leituras agora têm pergunta editorial própria (10 por leitura). O contrato do capítulo ganhou `review` com `question`, `answer`, `rationale`, `sourceIds` e `revisit[{ entityId, why }]`. `leituras` e `fontes` ficam sem revisão por serem percurso e bibliografia.
+    - A validação recusa pergunta repetida na mesma leitura, fonte fora do capítulo, registro revisitado inexistente ou repetido. A resposta é sustentada pelo capítulo e cita fontes que o capítulo já usa.
+    - A ficha perdeu o título repetido e a introdução genérica; mostra o critério da pergunta, a resposta oculta com fontes e, quando existe, “Retome” com a nova conexão a perceber. O componente segue acessível por teclado e respeita movimento reduzido.
+    - Exemplos e justificativa em `docs/design/REVISAO-DE-CAPITULOS.md`. O e2e usa o fixture local para testar a ficha ainda não publicada.
+    - Verificações: `npm test` **341/341**, `e2e/pages.spec.ts` **27/27**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390; sem overflow.
+    - O release local é `2724b855…`; o ponteiro público continua no release anterior. Nenhuma revisão humana foi registrada e nada foi publicado.
+
 ## Pendências que bloqueiam
 
 1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos, ficha do nó e tipos do grafo estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
