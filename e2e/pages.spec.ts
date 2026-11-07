@@ -94,6 +94,19 @@ test('Marxism chapters, comparison and sources remain on the same page', async (
   ).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('the chapter review explains its purpose and reveals the answer on demand', async ({
+  page,
+}) => {
+  await page.goto('/marxismo/');
+  const review = page.locator('.chapter-review').first();
+  await review.scrollIntoViewIfNeeded();
+  await expect(review.getByRole('heading', { name: 'Revisão do capítulo' })).toBeVisible();
+  await expect(review.locator('.review-answer')).toHaveCount(0);
+  await review.getByRole('button', { name: 'Mostrar resposta' }).click();
+  await expect(review.locator('.review-answer')).toBeVisible();
+  await expect(review.getByRole('button', { name: 'Ocultar resposta' })).toBeVisible();
+});
+
 test('the reading ends with at most five curated connections', async ({ page }) => {
   await page.goto('/marxismo/');
   const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
