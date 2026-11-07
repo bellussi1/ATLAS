@@ -8,7 +8,7 @@ import { setTimeout as delay } from 'node:timers/promises';
 
 import { atomicFile, parsePointer, pointerPath, sha256Hex } from '../content/r2-content.mjs';
 import { rawCacheDirectory } from './wikimedia/archive.mjs';
-import { listJsonResponses, rawKey } from './wikimedia/raw-store.mjs';
+import { decodeRawBody, listJsonResponses, rawKey } from './wikimedia/raw-store.mjs';
 
 async function digestOf(path) {
   try {
@@ -31,7 +31,11 @@ async function download(key) {
     const result = await fetch(new URL(key, base), {
       signal: AbortSignal.timeout(60_000),
     });
-    if (result.ok) return Buffer.from(await result.arrayBuffer());
+    if (result.ok) {
+      const body = await result.arrayBuffer();
+      // R2 stores the capture gzip-encoded; the digest is of the original JSON.
+      return decodeRawBody(Buffer.from(body));
+    }
     if (![429, 500, 502, 503, 504].includes(result.status) || attempt === 6)
       throw new Error(`Falha ao baixar ${key}: HTTP ${result.status}`);
     const retryAfter = result.headers.get('retry-after');

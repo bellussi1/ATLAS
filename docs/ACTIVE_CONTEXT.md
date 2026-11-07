@@ -186,8 +186,14 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Em 07/11/2026 a página tinha **6 alertas abertos** no `master` (`b50675e`): 4 de `js/incomplete-url-substring-sanitization` nos scripts de ingestão, 1 de `js/bad-tag-filter` em `security-headers.mjs` e 1 de `js/identity-replacement` em `e2e/pages.spec.ts`.
     - `scripts/ingestion/wikimedia/hosts.mjs` passou a ler o `hostname` com `new URL`, com `isWikidataHost` e `isCommonsHost`; `archive.mjs`, `wiki-extract/http.mjs` e `pipeline.spec.mjs` usam o helper em vez de `url.includes(...)`.
     - O extrator de hashes CSP em `security-headers.mjs` passou a aceitar o fim de tag que os navegadores aceitam, como `</script >` e `</script foo="bar">`; o build continua gerando **8 hashes**.
-    - O `identity-replacement` já não existe no `develop` (o teste foi reescrito); o `master` ainda tem a versão antiga. O CodeQL só fecha os alertas depois de uma análise no `master`, então esta correção precisa chegar lá por merge ou PR.
-    - Verificações: `npm run test:ingestion` **68/68** (inclui `hosts.spec.mjs`), `npm run test:content` **182/182**, `npm run lint` exit 0 e `npm run build` exit 0 com **8 hashes** de CSP.
+    - O `identity-replacement` já não existia no `develop` (o teste foi reescrito); o `master` tinha a versão antiga. A correção foi integrada ao `master` em `8779f92` (merge de `develop`) e enviada para `origin/master`; o run CodeQL `42336831876` concluiu com sucesso e a API mostra **0 alertas abertos / 6 corrigidos**.
+    - Verificações: `npm run test:ingestion` **68/68** (inclui `hosts.spec.mjs`), `npm run test:content` **182/182**, `npm run lint` exit 0 e `npm run build` exit 0 com **8 hashes** de CSP. O push também disparou a Verificação `42336831871`, que ainda estava em andamento na última consulta.
+
+27. **Capturas gzip no `ingest:fetch-raw`**
+    - A Verificação `42336831871` do merge falhou em `npm run ingest:fetch-raw` com `Falha de integridade` na resposta `acbba493…` da captura de liberalismo.
+    - O Worker entrega o objeto do R2 com `Content-Encoding: gzip`; o cliente recebia os bytes comprimidos e comparava com o SHA-256 do JSON original. O blob local está descomprimido e confere.
+    - `decodeRawBody` em `scripts/ingestion/wikimedia/raw-store.mjs` descompacta pelo magic gzip; `fetch-raw.mjs` usa o helper antes do hash. Teste novo em `raw-store.spec.mjs`.
+    - Verificado contra o Worker: **1.215 bytes comprimidos → 4.599 bytes**, SHA-256 igual ao manifesto. `test:ingestion` **69/69**; `lint` exit 0.
 
 ## Pendências que bloqueiam
 

@@ -1,6 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 
 import { wikiRawRoot } from '../wiki-extract/raw.mjs';
 
@@ -8,6 +9,15 @@ export const rawRoot = fileURLToPath(new URL('./raw/', import.meta.url));
 
 /** Immutable public key of a captured JSON response, named by its SHA-256. */
 export const rawKey = (sha256) => `raw/${sha256}.bin`;
+
+/**
+ * Raw captures are stored in R2 with gzip and `Content-Encoding: gzip`. Some clients hand the
+ * compressed bytes back without decompressing them; decode by the gzip magic before the digest
+ * check, because the manifest hashes the original JSON.
+ */
+export function decodeRawBody(body) {
+  return body.length >= 2 && body[0] === 0x1f && body[1] === 0x8b ? gunzipSync(body) : body;
+}
 
 /**
  * Every JSON response named by a committed manifest, once per digest: Wikimedia captures and
