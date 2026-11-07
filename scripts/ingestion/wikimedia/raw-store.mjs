@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 
 import { wikiRawRoot } from '../wiki-extract/raw.mjs';
+import { isRetired } from './retired.mjs';
 
 export const rawRoot = fileURLToPath(new URL('./raw/', import.meta.url));
 
@@ -33,6 +34,8 @@ export async function listJsonResponses(roots = [rawRoot, wikiRawRoot]) {
       for (const capture of await readdir(join(root, collection.name), { withFileTypes: true })) {
         if (!capture.isDirectory()) continue;
         const directory = join(root, collection.name, capture.name);
+        // A retired capture is kept for provenance, not replayed; it needs no blobs in the cache.
+        if (await isRetired(directory)) continue;
         const manifest = JSON.parse(await readFile(join(directory, 'manifest.json'), 'utf8'));
         for (const request of manifest.requests)
           if (request.kind === 'json' && !responses.has(request.sha256))

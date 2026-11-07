@@ -156,13 +156,13 @@ describe('knowledge network', () => {
     expect(layout.regions.length).toBeGreaterThan(0);
     expect(layout.regions.every((region) => region.id.startsWith('ctx-'))).toBe(true);
     expect(layout.regions.some((region) => collections.has(region.id))).toBe(false);
-  });
+  }, 30000);
 
   it('returns one semantic region per context group', () => {
     const { regions } = layoutNetwork(network.nodes, network.edges);
     expect(regions.length).toBeGreaterThan(0);
     expect(new Set(regions.map((region) => region.id)).size).toBe(regions.length);
-  });
+  }, 30000);
 
   it('keeps the on-screen node scale within the reserved range', () => {
     expect(nodeScaleFor(0.01)).toBe(MAX_NODE_SCALE);

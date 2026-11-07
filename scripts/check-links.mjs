@@ -21,6 +21,25 @@ const errors = [];
 const files = await htmlFiles(root);
 if (!files.length)
   throw new Error('Nenhum HTML encontrado; execute npm run build antes da verificação.');
+// `/fontes` is paginated, so a source anchor may live beyond the prerendered first page. Validate it
+// against the published release instead of the first page's HTML.
+async function releasedSourceAnchors() {
+  const directory = resolve('generated/content');
+  try {
+    const manifest = JSON.parse(await readFile(join(directory, 'manifest.json'), 'utf8'));
+    const ids = new Set();
+    for (const collection of manifest.collections ?? []) {
+      const data = JSON.parse(await readFile(join(directory, collection.file), 'utf8'));
+      for (const source of data.sources ?? []) ids.add(`source-${source.id}`);
+    }
+    return ids;
+  } catch {
+    return new Set();
+  }
+}
+const sourceAnchors = await releasedSourceAnchors();
+const isReleasedSource = (hash) =>
+  hash.startsWith('source-') && sourceAnchors.has(decodeURIComponent(hash));
 const quiet = new VirtualConsole();
 const documents = new Map();
 for (const file of files) {
@@ -57,7 +76,10 @@ for (const [file, document] of documents) {
     }
     const destination = documents.get(target) ?? documents.get(join(target, 'index.html'));
     if (destination) {
-      if (url.hash && !destination.ids.has(decodeURIComponent(url.hash.slice(1))))
+      const anchor = url.hash ? decodeURIComponent(url.hash.slice(1)) : '';
+      const paginatedSource =
+        url.pathname === '/fontes' && url.hash && isReleasedSource(url.hash.slice(1));
+      if (anchor && !destination.ids.has(anchor) && !paginatedSource)
         errors.push(`${file}: âncora ${href}`);
       continue;
     }

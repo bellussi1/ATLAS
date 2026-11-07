@@ -21,6 +21,18 @@ test('a connection keeps the search origin so the results stay one step away', a
   );
 });
 
+test('search returns names instead of every passage that mentions them', async ({ page }) => {
+  await page.goto('/acervo?q=lula');
+  const results = page.getByRole('region', { name: 'Resultados da busca' });
+  await expect(
+    results.getByRole('link').filter({ hasText: 'Luiz Inácio Lula da Silva' }).first(),
+  ).toBeVisible();
+  await expect(
+    results.getByRole('link').filter({ hasText: 'Partido dos Trabalhadores' }),
+  ).toHaveCount(0);
+  await expect(page.locator('.notice')).toHaveCount(0);
+});
+
 test('universal search starts at home, handles aliases and keeps filters through a permanent page', async ({
   page,
 }) => {
@@ -108,7 +120,7 @@ test('catalogues expose actual records and permanent pages update when following
 });
 
 test('contextual exploration opens the matching permanent entity page', async ({ page }) => {
-  await page.goto('/marxismo');
+  await page.goto('/leitura/marxismo');
   await page.locator('#conceitos .knowledge-term').first().click();
   const dialog = page.getByRole('dialog');
   const title = (await dialog.locator('h2').textContent())!.trim();
@@ -133,31 +145,45 @@ test('all search destinations have prerendered HTML with matching title, canonic
     title: string;
     fragment?: string;
   }[];
+  const readingPaths = [
+    '/leitura/marxismo',
+    '/leitura/liberalismo',
+    '/leitura/social-democracia',
+    '/leitura/anarquismo',
+  ];
+  // Releases published before the /leitura prefix keep old reading paths in the search index;
+  // the reading route redirects them, so the prerendered target is the canonical one.
+  const legacyReadings = new Map([
+    ['/marxismo', '/leitura/marxismo'],
+    ['/liberalismo', '/leitura/liberalismo'],
+    ['/social-democracia', '/leitura/social-democracia'],
+    ['/anarquismo', '/leitura/anarquismo'],
+  ]);
   for (const entry of index) {
-    const response = await request.get(entry.path);
-    expect(response.ok(), entry.path).toBe(true);
+    const target = legacyReadings.get(entry.path) ?? entry.path;
+    const response = await request.get(target);
+    expect(response.ok(), target).toBe(true);
     const html = await response.text();
-    const readingPaths = ['/marxismo', '/liberalismo', '/social-democracia', '/anarquismo'];
-    const pageTitle = readingPaths.includes(entry.path)
+    const pageTitle = readingPaths.includes(target)
       ? `${entry.title}: ideias e divergências`
-      : entry.path === '/fontes'
+      : target === '/fontes'
         ? 'Fontes'
         : entry.title;
     const title = pageTitle
       .replaceAll('&', '&amp;')
       .replaceAll('<', '&lt;')
       .replaceAll('>', '&gt;');
-    expect(html.match(/<title>(.*?)<\/title>/)?.[1], entry.path).toBe(title + ' — ATLAS');
-    expect(html.match(/property="og:title" content="([^"]*)"/)?.[1], entry.path).toBe(
+    expect(html.match(/<title>(.*?)<\/title>/)?.[1], target).toBe(title + ' — ATLAS');
+    expect(html.match(/property="og:title" content="([^"]*)"/)?.[1], target).toBe(
       title + ' — ATLAS',
     );
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
-    expect(canonical, entry.path).toBe(site ? site + entry.path : undefined);
-    if (entry.fragment && entry.path !== '/fontes')
+    expect(canonical, target).toBe(site ? site + target : undefined);
+    if (entry.fragment && target !== '/fontes')
       expect(html).toContain('id="' + entry.fragment + '"');
     // Sources are paginated: page 1 carries the pager and its own anchors; later anchors are
     // resolved in the browser by /fontes, as covered in pages.spec.ts.
-    if (entry.path === '/fontes') expect(html).toContain('Paginação do acervo');
+    if (target === '/fontes') expect(html).toContain('Paginação do acervo');
   }
 });
 

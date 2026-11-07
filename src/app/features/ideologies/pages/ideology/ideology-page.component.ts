@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import type { Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { readingPath } from '@core/routing/reading-routes';
 import { ChapterReviewComponent } from '@ideologies/components/chapter-review/chapter-review.component';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
 import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/ideology-block.component';
@@ -51,7 +52,8 @@ export class IdeologyPageComponent {
   private readonly injector = inject(Injector);
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
   readonly page = computed(() => this.state().dossier?.page);
-  readonly basePath = computed(() => `/${this.page()?.slug ?? ''}`);
+  readonly basePath = computed(() => readingPath(this.page()?.slug ?? ''));
+  readonly readingPath = readingPath;
   readonly palette = computed(() => {
     const page = this.page();
     return page ? paletteOf(page) : 'atlas';

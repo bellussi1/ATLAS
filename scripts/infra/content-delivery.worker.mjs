@@ -1,7 +1,9 @@
 // Public content delivery for the atlas-public bucket. It replaces the rate-limited r2.dev host
 // without changing the content contract: the same immutable c/<sha256>.json and m/<sha256>.<ext>
-// keys, plus the mutable pointer.json. The browser never talks to the S3 endpoint.
+// keys, plus the mutable pointer.json and the raw/<sha256>.bin responses replayed by ingestion.
+// The browser never talks to the S3 endpoint.
 const ARTIFACT = /^\/c\/[a-f0-9]{64}\.json$/;
+const RAW = /^\/raw\/[a-f0-9]{64}\.bin$/;
 const MEDIA = /^\/m\/[a-f0-9]{64}\.(?:jpe?g|png|webp|gif|svg)$/;
 const ALLOWED = new Set(['GET', 'HEAD', 'OPTIONS']);
 const CORS = {
@@ -26,7 +28,8 @@ export default {
 
     const path = new URL(request.url).pathname;
     const pointer = path === '/pointer.json';
-    if (!pointer && !ARTIFACT.test(path) && !MEDIA.test(path)) return failure(404);
+    if (!pointer && !ARTIFACT.test(path) && !RAW.test(path) && !MEDIA.test(path))
+      return failure(404);
 
     const key = path.slice(1);
     const object =
@@ -45,8 +48,15 @@ export default {
     if (!headers.has('Content-Type'))
       headers.set(
         'Content-Type',
-        MEDIA.test(path) ? 'application/octet-stream' : 'application/json',
+        MEDIA.test(path) || RAW.test(path) ? 'application/octet-stream' : 'application/json',
       );
+    // Some clients do not transparently decode a gzip object served with Content-Encoding. The
+    // content contract hashes the original JSON, so deliver the decoded bytes and drop the header.
+    if (request.method === 'GET' && headers.get('Content-Encoding') === 'gzip') {
+      headers.delete('Content-Encoding');
+      headers.delete('Content-Length');
+      return new Response(object.body.pipeThrough(new DecompressionStream('gzip')), { headers });
+    }
     return new Response(request.method === 'HEAD' ? null : object.body, { headers });
   },
 };

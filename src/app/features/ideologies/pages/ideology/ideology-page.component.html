@@ -118,7 +118,7 @@
         <p>Uma leitura termina. As perguntas continuam.</p>
         <a routerLink="/">Voltar à página inicial</a>
         @if (companion(); as next) {
-          <a [routerLink]="'/' + next.slug">Ler o {{ next.label }}</a>
+          <a [routerLink]="readingPath(next.slug)">Ler o {{ next.label }}</a>
         }
         @if (connections().length) {
           <nav class="reading-connections" aria-labelledby="reading-connections-title">
@@ -129,7 +129,7 @@
             <ul>
               @for (connection of connections(); track connection.slug) {
                 <li>
-                  <a [routerLink]="'/' + connection.slug">{{ connection.label }}</a>
+                  <a [routerLink]="readingPath(connection.slug)">{{ connection.label }}</a>
                   <span>{{ connection.reason }}</span>
                 </li>
               }

@@ -27,7 +27,7 @@
         </p>
       }
     }
-    <header class="hero" [class.hero--text]="!context()?.media">
+    <header class="hero" [class.hero--text]="!context()?.media && !illustration()">
       <div class="hero-text">
         <p class="record-meta">{{ entry()?.kindLabel }} · {{ seal() }}</p>
         <h1 [attr.lang]="presentation()?.locale">{{ entity.title }}</h1>
@@ -62,7 +62,7 @@
           }
         </div>
       } @else if (illustration(); as art) {
-        <div class="hero-media">
+        <div class="hero-media hero-media--illustration">
           <app-geometric-illustration
             [entityId]="art.id"
             [kind]="art.kind"

@@ -38,10 +38,10 @@
   </nav>
   @if (catalogue.path === 'ideologias') {
     <aside class="readings" aria-label="Leituras de ideologias">
-      <span>Leituras contínuas</span><a routerLink="/marxismo">Marxismo</a
-      ><a routerLink="/liberalismo">Liberalismo</a
-      ><a routerLink="/social-democracia">Social-democracia</a
-      ><a routerLink="/anarquismo">Anarquismo</a>
+      <span>Leituras contínuas</span><a [routerLink]="readingPath('marxismo')">Marxismo</a
+      ><a [routerLink]="readingPath('liberalismo')">Liberalismo</a
+      ><a [routerLink]="readingPath('social-democracia')">Social-democracia</a
+      ><a [routerLink]="readingPath('anarquismo')">Anarquismo</a>
     </aside>
   }
   <div class="archive">
@@ -134,6 +134,12 @@
           <ng-container *ngTemplateOutlet="pager" />
         }
       </div>
+      @if (matchKind() === 'text') {
+        <p class="notice">
+          Nenhum nome corresponde a “{{ params().get('q') }}”. Os resultados abaixo apenas citam o
+          termo no texto.
+        </p>
+      }
       <section
         aria-label="Resultados da busca"
         class="results"

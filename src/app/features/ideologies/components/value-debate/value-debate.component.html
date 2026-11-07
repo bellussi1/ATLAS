@@ -4,7 +4,9 @@
   [attr.aria-labelledby]="inline() ? 'debate-title' : 'atlas-title'"
 >
   @if (!inline()) {
-    <a class="atlas-return" routerLink="/marxismo">← Marxismo e economia política</a>
+    <a class="atlas-return" [routerLink]="readingPath('marxismo')"
+      >← Marxismo e economia política</a
+    >
   }
   <header>
     <p class="eyebrow">Debate intelectual</p>
@@ -177,8 +179,11 @@
       <p>
         Os trechos são curtos, com título, idioma e localizador para conferência.
         @if (!inline()) {
-          <a routerLink="/marxismo">Créditos dos retratos no índice do atlas</a>.
-          <a routerLink="/marxismo" fragment="fontes" [queryParams]="{ origem: origin() }"
+          <a [routerLink]="readingPath('marxismo')">Créditos dos retratos no índice do atlas</a>.
+          <a
+            [routerLink]="readingPath('marxismo')"
+            fragment="fontes"
+            [queryParams]="{ origem: origin() }"
             >Abrir a biblioteca de fontes</a
           >.
         }

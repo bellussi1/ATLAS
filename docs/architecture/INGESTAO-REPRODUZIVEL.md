@@ -54,6 +54,17 @@ Cada diretório `scripts/ingestion/wikimedia/raw/<coleção>/<versão>` contém:
 
 O manifest é a lista completa das respostas consumidas pela transformação. O leitor offline verifica todos os blobs antes de transformar; arquivo ausente, hash divergente, URL repetida, resposta ausente ou versão incompatível interrompem a execução. Não há busca automática por substituto remoto. O hash do resultado também precisa coincidir: mudar regras de transformação exige nova versão de captura ou pipeline, sem editar o arquivo antigo para mascarar a diferença.
 
+## Capturas aposentadas
+
+Uma captura que não reproduz o `snapshotHash` com a transformação atual não é apagada nem tem o manifest editado. Ela recebe `retired.json` com data, issue, motivo, versão do pipeline, política de mídia e o hash registrado. `ingest:verify` registra a aposentadoria e segue adiante; `ingest:fetch-raw` não baixa os corpos de uma captura aposentada, porque eles não serão reproduzidos.
+
+Em 07/11/2026 foram aposentadas as capturas abaixo porque o replay offline com a transformação atual diverge do `snapshotHash` registrado (issue #46). O replay com o código de 03/11/2026 (`aef543c`) também divergiu para as três capturas de liberalismo, então a diferença não se explica apenas por uma mudança posterior de transformação:
+
+- `liberalism/2026-11-01-remoto`, `liberalism/2026-11-01-retratos` e `liberalism/2026-11-03-descoberta`.
+- `marxism/2026-11-01-retratos`, `marxism/2026-11-02-remoto` e `marxism/2026-11-03-descoberta`.
+
+As capturas em modo `preserve` (`liberalism/2026-11-01` e `marxism/2026-11-01`) continuam verificadas. A cobertura de `refresh`/`remote` só volta com uma nova captura feita com a transformação atual, publicada em `raw/<sha256>.bin` e verificada no CI; aposentar uma captura não autoriza tratar o snapshot antigo como reproduzível.
+
 **Publicação:** o diretório completo só aparece no caminho definitivo após validar o grafo e gravar em staging próprio. O snapshot só substitui o destino após validação e preparação das mídias. Falha na publicação pode deixar uma captura completa reutilizável, sem que o snapshot tenha sido publicado. Falhas capturadas removem temporários e as mídias novas instaladas naquela tentativa. Interrupção abrupta pode deixar órfãos sem referência; não há limpeza destrutiva de ativos antigos.
 
 `.gitattributes` usa `-text` só na árvore raw, para preservar hashes em checkouts Windows e Linux. `.prettierignore` exclui essa árvore. Esses arquivos não entram em `src/content`, não são copiados pelo build e não são assets públicos.

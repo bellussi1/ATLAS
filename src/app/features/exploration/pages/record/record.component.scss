@@ -61,6 +61,10 @@ header.hero {
   --illustration-size: clamp(10rem, 24vw, 16rem);
   --illustration-border: 2px solid var(--ink);
 }
+.hero-media--illustration {
+  display: flex;
+  justify-content: flex-end;
+}
 .hero-media figure {
   margin: 0;
 }
@@ -359,6 +363,9 @@ small {
 @media (max-width: 760px) {
   header.hero {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-media--illustration {
+    justify-content: flex-start;
   }
   .record-body {
     grid-template-columns: minmax(0, 1fr);

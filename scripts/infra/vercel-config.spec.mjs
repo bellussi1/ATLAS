@@ -12,8 +12,8 @@ test('converte _headers e _redirects reais para o formato do Vercel', async () =
   assert.ok(global.some((h) => h.key === 'Strict-Transport-Security'));
   assert.ok(!global.some((h) => /robots/i.test(h.key)), 'o site não pode enviar X-Robots-Tag');
   assert.deepEqual(config.redirects[0], {
-    source: '/ideologias/marxismo',
-    destination: '/marxismo',
+    source: '/marxismo',
+    destination: '/leitura/marxismo',
     statusCode: 301,
   });
   assert.equal(config.cleanUrls, true);

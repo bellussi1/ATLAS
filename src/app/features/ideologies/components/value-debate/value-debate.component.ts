@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { reproducibleAsset } from '@core/content/media/asset-license';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { readingPath } from '@core/routing/reading-routes';
 import { study } from '@ideologies/data/value-study';
 import { AtlasDiscoveryPreviewDirective } from '@shared/directives/discovery-preview/discovery-preview.directive';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
@@ -22,6 +23,7 @@ import { AtlasStudyExerciseComponent } from '@shared/ui/study-exercise/study-exe
   styleUrl: './value-debate.component.scss',
 })
 export class ValueDebateComponent {
+  readonly readingPath = readingPath;
   readonly inline = input(false);
   private readonly repository = inject(ContentRepository);
   private readonly route = inject(ActivatedRoute);
@@ -47,8 +49,8 @@ export class ValueDebateComponent {
   /** Both relations are always shown, so the origin only needs the selected thesis. */
   readonly origin = computed(() =>
     this.inline()
-      ? `/marxismo?argumento=${this.selected()}#conceitos`
-      : `/marxismo?argumento=${this.selected()}`,
+      ? `${readingPath('marxismo')}?argumento=${this.selected()}#conceitos`
+      : `${readingPath('marxismo')}?argumento=${this.selected()}`,
   );
   readonly previewRecords = computed(() =>
     (this.selected() === 'smith'

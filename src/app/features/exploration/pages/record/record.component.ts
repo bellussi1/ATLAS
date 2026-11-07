@@ -16,6 +16,7 @@ import {
 } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels, localizedEntity } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { readingPath } from '@core/routing/reading-routes';
 import { EntityProfileComponent } from '@exploration/components/entity-profile/entity-profile.component';
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
@@ -115,17 +116,20 @@ export class RecordComponent {
   );
   /** Continuous readings that use this record as an entry point. */
   private readonly readingByEntity: Readonly<Record<string, { path: string; title: string }>> = {
-    'ideology-marxism': { path: '/marxismo', title: 'Marxismo' },
-    'person-karl-marx': { path: '/marxismo', title: 'Marxismo' },
-    'person-friedrich-engels': { path: '/marxismo', title: 'Marxismo' },
-    'ideology-liberalism': { path: '/liberalismo', title: 'Liberalismo' },
-    'person-john-locke': { path: '/liberalismo', title: 'Liberalismo' },
-    'person-adam-smith': { path: '/liberalismo', title: 'Liberalismo' },
-    'person-john-stuart-mill': { path: '/liberalismo', title: 'Liberalismo' },
-    'wiki-topic-social-democracia': { path: '/social-democracia', title: 'Social-democracia' },
-    'wiki-topic-anarquismo': { path: '/anarquismo', title: 'Anarquismo' },
-    'person-mikhail-bakunin': { path: '/anarquismo', title: 'Anarquismo' },
-    'person-piotr-kropotkin': { path: '/anarquismo', title: 'Anarquismo' },
+    'ideology-marxism': { path: readingPath('marxismo'), title: 'Marxismo' },
+    'person-karl-marx': { path: readingPath('marxismo'), title: 'Marxismo' },
+    'person-friedrich-engels': { path: readingPath('marxismo'), title: 'Marxismo' },
+    'ideology-liberalism': { path: readingPath('liberalismo'), title: 'Liberalismo' },
+    'person-john-locke': { path: readingPath('liberalismo'), title: 'Liberalismo' },
+    'person-adam-smith': { path: readingPath('liberalismo'), title: 'Liberalismo' },
+    'person-john-stuart-mill': { path: readingPath('liberalismo'), title: 'Liberalismo' },
+    'wiki-topic-social-democracia': {
+      path: readingPath('social-democracia'),
+      title: 'Social-democracia',
+    },
+    'wiki-topic-anarquismo': { path: readingPath('anarquismo'), title: 'Anarquismo' },
+    'person-mikhail-bakunin': { path: readingPath('anarquismo'), title: 'Anarquismo' },
+    'person-piotr-kropotkin': { path: readingPath('anarquismo'), title: 'Anarquismo' },
   };
   readonly dossier = computed(() => this.readingByEntity[this.entity()?.id ?? ''] ?? null);
   readonly readingMinutes = computed(() => {

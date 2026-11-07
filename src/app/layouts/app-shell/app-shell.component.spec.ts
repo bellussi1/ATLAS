@@ -27,10 +27,10 @@ describe('ATLAS navigation', () => {
     const root = fixture.nativeElement as HTMLElement;
     const destinations = [
       '/',
-      '/marxismo',
-      '/liberalismo',
-      '/social-democracia',
-      '/anarquismo',
+      '/leitura/marxismo',
+      '/leitura/liberalismo',
+      '/leitura/social-democracia',
+      '/leitura/anarquismo',
       '/grafos',
       ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
     ];

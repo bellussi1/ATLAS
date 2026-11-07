@@ -4,7 +4,7 @@ import { expect, test } from './content-fixture';
 
 test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const region = page.getByRole('region', { name: 'Fichas deste atlas' });
   await region.scrollIntoViewIfNeeded();
   await expect(region).toBeVisible();
@@ -48,7 +48,7 @@ test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ 
 });
 
 test('relations read as sentences, filter by type chips and open each side', async ({ page }) => {
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const relations = page.locator('.relations').first();
   const items = relations.locator('.relation-item');
   const total = await items.count();
@@ -65,7 +65,7 @@ test('relations read as sentences, filter by type chips and open each side', asy
 
 test('mobile carousels swipe without horizontal page overflow', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const axis = page.locator('#atlas-section-tempo').getByRole('group', { name: /^Eixo do tempo/ });
   await axis.scrollIntoViewIfNeeded();
   await expect(axis).toBeVisible();
@@ -85,7 +85,7 @@ test('mobile carousels swipe without horizontal page overflow', async ({ page })
 
 test('timeline century chips cut the axis and the list together', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const axis = page.locator('#atlas-section-tempo app-timeline-axis');
   await axis.scrollIntoViewIfNeeded();
   const all = await axis.locator('.axis-marker').count();
@@ -100,7 +100,7 @@ test('timeline century chips cut the axis and the list together', async ({ page 
 
 test('timeline marker opens the reading panel and Escape returns focus to it', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const axis = page.locator('#atlas-section-tempo app-timeline-axis');
   await axis.scrollIntoViewIfNeeded();
   const marker = axis.locator('.axis-marker').filter({ hasText: 'Karl Marx' });
@@ -115,7 +115,7 @@ test('timeline marker opens the reading panel and Escape returns focus to it', a
 });
 
 test('timeline arrows walk the records and keep one tab stop', async ({ page }) => {
-  await page.goto('/marxismo/');
+  await page.goto('/leitura/marxismo/');
   const axis = page.locator('#atlas-section-tempo app-timeline-axis');
   await axis.scrollIntoViewIfNeeded();
   await axis.locator('.axis-marker[tabindex="0"]').focus();

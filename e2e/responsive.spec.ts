@@ -7,8 +7,8 @@ import { expect, test } from './content-fixture';
 const widths = [320, 390, 768, 1024, 1440];
 const routes = [
   '/',
-  '/marxismo',
-  '/liberalismo',
+  '/leitura/marxismo',
+  '/leitura/liberalismo',
   '/acervo',
   '/pessoas',
   '/fontes',

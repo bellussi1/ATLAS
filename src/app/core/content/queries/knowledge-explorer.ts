@@ -1,4 +1,4 @@
-import type { DiscoveryIndexEntry } from './discovery-index';
+import { type DiscoveryIndexEntry, nameMatchScore } from './discovery-index';
 
 export const explorerGroups = [
   { id: 'acervo', title: 'Acervo' },
@@ -131,22 +131,58 @@ export function explorerEntries(
   index: readonly DiscoveryIndexEntry[],
   filter: { catalogue?: string; query?: string; kind?: string; state?: string },
 ): DiscoveryIndexEntry[] {
+  const query = filter.query?.trim() ?? '';
+  const terms = normalizeExplorerQuery(query).split(/\s+/).filter(Boolean);
+  const base = explorerBase(index, filter);
+  const alphabetical = (a: DiscoveryIndexEntry, b: DiscoveryIndexEntry) =>
+    a.title.localeCompare(b.title, 'pt-BR') || a.id.localeCompare(b.id);
+  if (!terms.length) return base.sort(alphabetical);
+  // Names first: a record that mentions the term in its text is not a search result while some
+  // record carries the term as a title, alias or translated title.
+  const named = base
+    .map((entry) => ({ entry, score: nameMatchScore(entry, query) }))
+    .filter((match): match is { entry: DiscoveryIndexEntry; score: number } => match.score !== null)
+    .sort(
+      (a, b) =>
+        a.score - b.score ||
+        a.entry.title.localeCompare(b.entry.title, 'pt-BR') ||
+        a.entry.id.localeCompare(b.entry.id),
+    );
+  if (named.length) return named.map((match) => match.entry);
+  // A query that names no record still finds the passages that mention it, as a last resort.
+  return base
+    .filter((entry) => terms.every((term) => entry.searchText.includes(term)))
+    .sort(alphabetical);
+}
+
+function explorerBase(
+  index: readonly DiscoveryIndexEntry[],
+  filter: { catalogue?: string; query?: string; kind?: string; state?: string },
+): DiscoveryIndexEntry[] {
   const catalogue = filter.catalogue ?? 'acervo';
   const kind = catalogueKinds[catalogue];
-  const terms = normalizeExplorerQuery(filter.query ?? '')
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
-  return index
-    .filter(
-      (entry) =>
-        (catalogue === 'acervo' || catalogue === 'fontes' || entry.path.startsWith('/verbete/')) &&
-        (!kind || entry.kind === kind) &&
-        (!filter.kind || entry.kind === filter.kind) &&
-        (!filter.state || entry.state === filter.state) &&
-        terms.every((term) => entry.searchText.includes(term)),
-    )
-    .sort((a, b) => a.title.localeCompare(b.title, 'pt-BR') || a.id.localeCompare(b.id));
+  return index.filter(
+    (entry) =>
+      (catalogue === 'acervo' || catalogue === 'fontes' || entry.path.startsWith('/verbete/')) &&
+      (!kind || entry.kind === kind) &&
+      (!filter.kind || entry.kind === filter.kind) &&
+      (!filter.state || entry.state === filter.state),
+  );
+}
+
+/** Whether a query matched names (`name`), only passages (`text`) or nothing (`none`). */
+export function explorerMatchKind(
+  index: readonly DiscoveryIndexEntry[],
+  filter: { catalogue?: string; query?: string; kind?: string; state?: string },
+): 'name' | 'text' | 'none' {
+  const query = filter.query?.trim() ?? '';
+  const terms = normalizeExplorerQuery(query).split(/\s+/).filter(Boolean);
+  if (!terms.length) return 'name';
+  const base = explorerBase(index, filter);
+  if (base.some((entry) => nameMatchScore(entry, query) !== null)) return 'name';
+  return base.some((entry) => terms.every((term) => entry.searchText.includes(term)))
+    ? 'text'
+    : 'none';
 }
 
 export function explorerFacets(index: readonly DiscoveryIndexEntry[], catalogue: string) {

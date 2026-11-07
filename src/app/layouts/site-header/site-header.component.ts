@@ -2,34 +2,35 @@ import { Component, ElementRef, inject, signal, viewChild } from '@angular/core'
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { readingPath } from '@core/routing/reading-routes';
 import { filter, map } from 'rxjs';
 
 type Section = 'leituras' | 'acervo' | 'grafos' | null;
 
 export const headerReadings = [
   {
-    path: '/marxismo',
+    path: readingPath('marxismo'),
     title: 'Marxismo',
     note: 'Trabalho, valor e divergências',
     shape: 'quarter',
     color: 'var(--color-accent)',
   },
   {
-    path: '/liberalismo',
+    path: readingPath('liberalismo'),
     title: 'Liberalismo',
     note: 'Liberdade, propriedade e mercado',
     shape: 'circle',
     color: 'var(--color-indigo)',
   },
   {
-    path: '/social-democracia',
+    path: readingPath('social-democracia'),
     title: 'Social-democracia',
     note: 'Reforma, Estado e bem-estar',
     shape: 'half',
     color: 'var(--color-ochre-paper)',
   },
   {
-    path: '/anarquismo',
+    path: readingPath('anarquismo'),
     title: 'Anarquismo',
     note: 'Autoridade, autonomia e apoio mútuo',
     shape: 'square',

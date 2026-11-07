@@ -53,7 +53,13 @@ async function download(key) {
 async function fetchResponse([sha256, response]) {
   const local = join(response.directory, 'blobs', `${sha256}.bin`);
   const cached = join(rawCacheDirectory, `${sha256}.bin`);
-  if ((await digestOf(local)) === sha256 || (await digestOf(cached)) === sha256) return;
+  if ((await digestOf(cached)) === sha256) return;
+  // The same response may live in one capture's blobs while every other capture needs it in the
+  // shared cache; copy it instead of leaving the other captures without a body.
+  if ((await digestOf(local)) === sha256) {
+    await atomicFile(cached, await readFile(local));
+    return;
+  }
   const body = await download(rawKey(sha256));
   if (sha256Hex(body) !== sha256) throw new Error(`Falha de integridade: ${response.url}`);
   await atomicFile(cached, body);

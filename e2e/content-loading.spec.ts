@@ -78,7 +78,7 @@ test('SSR hydrates through the pinned release without duplicate HTTP', async ({ 
   page.on('request', (request) => {
     if (request.url().startsWith(base)) resources.push(request.url());
   });
-  await page.goto('/liberalismo/');
+  await page.goto('/leitura/liberalismo/');
   await expect(page.getByRole('navigation', { name: 'Capítulos' })).toBeVisible();
   await page
     .getByRole('button', { name: /^John Locke: abrir contexto de / })

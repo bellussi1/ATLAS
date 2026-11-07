@@ -1,15 +1,16 @@
 import { type Routes } from '@angular/router';
 import { knowledgeContentResolver } from '@core/routing/knowledge-content.resolver';
+import { READING_ROOT } from '@core/routing/reading-routes';
 import { ideologyReadings } from '@ideologies/data/ideology-readings';
 
 /**
- * Each tradition is one page. The old
- * `/:slug/mesa` desk address redirects to the page.
+ * Each tradition is one continuous reading under `/leitura/:slug`. The old top-level address and
+ * the `/:slug/mesa` desk address redirect to the canonical one.
  */
 function ideologyRoutesFor(slug: string, label: string, metaDescription: string): Routes {
   return [
     {
-      path: slug,
+      path: `${READING_ROOT}/${slug}`,
       title: `${label}: ideias e divergências — ATLAS`,
       data: { slug, breadcrumb: label, metaDescription },
       resolve: { knowledge: knowledgeContentResolver },
@@ -18,7 +19,8 @@ function ideologyRoutesFor(slug: string, label: string, metaDescription: string)
           (m) => m.IdeologyPageComponent,
         ),
     },
-    { path: `${slug}/mesa`, redirectTo: `/${slug}`, pathMatch: 'full' },
+    { path: slug, pathMatch: 'full', redirectTo: `/${READING_ROOT}/${slug}` },
+    { path: `${slug}/mesa`, pathMatch: 'full', redirectTo: `/${READING_ROOT}/${slug}` },
   ];
 }
 

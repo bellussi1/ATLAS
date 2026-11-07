@@ -1,6 +1,7 @@
 import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import type { Exercise } from '@core/content/models/study-schema';
+import { readingPath } from '@core/routing/reading-routes';
 
 @Component({
   selector: 'app-study-exercise',
@@ -14,7 +15,7 @@ export class AtlasStudyExerciseComponent {
   private readonly router = inject(Router);
   /** The source link returns to the page that opened the exercise, at its sources section. */
   readonly sourceLink = computed(() => {
-    const link = this.router.parseUrl(this.origin() ?? '/marxismo');
+    const link = this.router.parseUrl(this.origin() ?? readingPath('marxismo'));
     link.fragment = 'fontes';
     return link;
   });

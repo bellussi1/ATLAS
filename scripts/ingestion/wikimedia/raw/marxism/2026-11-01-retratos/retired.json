@@ -1,0 +1,9 @@
+{
+  "retiredAt": "2026-11-07",
+  "issue": 46,
+  "reason": "Replay offline com a transformação atual diverge do snapshotHash registrado; a compatibilidade exige nova captura ou nova versão do pipeline.",
+  "evidence": "npm run ingest:verify reproduz a divergência; ver docs/architecture/INGESTAO-REPRODUZIVEL.md.",
+  "pipelineVersion": 1,
+  "mediaMode": "refresh",
+  "snapshotHash": "0afd39b3dcf3d041a8088beeeb98498c4c5122c63e0dd2c9890df7b29e91ae71"
+}

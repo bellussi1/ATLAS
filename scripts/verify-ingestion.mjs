@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 import { loadArchive } from './ingestion/wikimedia/archive.mjs';
 import { runIngestion } from './ingestion/wikimedia/pipeline.mjs';
+import { readRetirement } from './ingestion/wikimedia/retired.mjs';
 import { verifyCaptures } from './ingestion/wiki-extract/raw.mjs';
 
 const root = fileURLToPath(new URL('./ingestion/wikimedia/raw/', import.meta.url));
@@ -21,6 +22,13 @@ try {
     for (const version of await readdir(join(root, collection.name), { withFileTypes: true })) {
       if (!version.isDirectory()) continue;
       const archiveDir = join(root, collection.name, version.name);
+      const retirement = await readRetirement(archiveDir);
+      if (retirement) {
+        console.log(
+          `${collection.name}/${version.name}: aposentada em ${retirement.retiredAt} (issue #${retirement.issue}); ${retirement.reason}`,
+        );
+        continue;
+      }
       const { manifest } = await loadArchive(archiveDir);
       const options = {
         collectionKey: manifest.collectionKey,

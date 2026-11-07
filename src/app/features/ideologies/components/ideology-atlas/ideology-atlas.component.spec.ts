@@ -15,7 +15,7 @@ describe('Liberalism atlas snapshot', () => {
     const fixture = TestBed.createComponent(IdeologyAtlasComponent);
     fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
     fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
-    fixture.componentRef.setInput('origin', '/liberalismo');
+    fixture.componentRef.setInput('origin', '/leitura/liberalismo');
     return fixture.componentInstance;
   }
 
@@ -23,7 +23,7 @@ describe('Liberalism atlas snapshot', () => {
     const fixture = TestBed.createComponent(IdeologyAtlasComponent);
     fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
     fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
-    fixture.componentRef.setInput('origin', '/liberalismo');
+    fixture.componentRef.setInput('origin', '/leitura/liberalismo');
     fixture.detectChanges();
     const network = fixture.debugElement.query(By.directive(KnowledgeNetworkComponent))
       .componentInstance as KnowledgeNetworkComponent;
@@ -135,7 +135,7 @@ describe('Liberalism atlas snapshot', () => {
     const fixture = TestBed.createComponent(IdeologyAtlasComponent);
     fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
     fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
-    fixture.componentRef.setInput('origin', '/liberalismo');
+    fixture.componentRef.setInput('origin', '/leitura/liberalismo');
     fixture.componentRef.setInput('continuous', true);
     fixture.detectChanges();
 
