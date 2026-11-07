@@ -311,6 +311,13 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `CardCarouselComponent` não foi alterado. O teste e2e do carrossel passou a exercitar “Posições por registro”, que continua sendo consumidor real.
     - Verificações: `npm test` **342/342**, `e2e/carousel.spec.ts` **6/6**, `e2e/pages.spec.ts` **28/28** (inclui a ausência do índice nas quatro leituras), `lint`, `typecheck` e `build` exit 0.
 
+44. **Contexto único no grafo da leitura**
+    - A área “Ficha selecionada” (`entity-reading`) duplicava título, resumo, relações e fontes do painel contextual compartilhado. A seleção do grafo abria essa área por `openEntity`, enquanto `inspect` rolava até ela; o painel compartilhado ficava desativado no modo embedded.
+    - O grafo agora abre `ContextPanelService` ao selecionar um nó. O painel é lateral no desktop e ocupa a largura no celular; a página não ganha outra seção abaixo do grafo. O gatilho é o próprio nó, usado para restaurar o foco.
+    - `ContextPanelService.entityId` acompanha a ficha aberta; o atlas usa esse sinal para manter a seleção do grafo em passo quando o leitor segue uma relação e volta pelo percurso. Entidades fora do recorte não alteram a seleção do grafo.
+    - A lista textual de conexões continua como alternativa acessível; não há segunda ficha nem outro componente competindo pela seleção. O painel global de `/grafos` não mudou.
+    - Verificações: `npm test` **342/342**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **48/48**, `e2e/liberalism-atlas.spec.ts` **3/3**, `e2e/ideology-sheets.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/encyclopedia.spec.ts` **22/22**, `e2e/carousel.spec.ts` **6/6**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390 sem `entity-reading` e sem overflow.
+
 ## Pendências que bloqueiam
 
 1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos, ficha do nó e tipos do grafo estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).

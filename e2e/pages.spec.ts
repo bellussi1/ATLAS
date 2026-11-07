@@ -132,6 +132,45 @@ test('the four readings do not repeat an entity index above the graph', async ({
   }
 });
 
+test('all four readings open one shared context sheet from the graph', async ({ page }) => {
+  const readings = [
+    ['marxismo', 'Friedrich Engels'],
+    ['liberalismo', 'John Locke'],
+    ['social-democracia', 'August Bebel'],
+    ['anarquismo', 'Mikhail Bakunin'],
+  ] as const;
+  for (const [slug, name] of readings) {
+    await page.goto(`/leitura/${slug}#conexoes`);
+    const network = page.locator('#conexoes app-knowledge-network');
+    await expect(network).toBeVisible();
+    await network.locator('#graph-search').fill(name);
+    await network.locator('#graph-search').press('Enter');
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible();
+    await expect(dialog.locator('#knowledge-context-title')).toHaveText(name);
+    await page.keyboard.press('Escape');
+    await expect(dialog).toHaveCount(0);
+    await expect(network.locator('.node.is-selected')).toHaveCount(1);
+  }
+});
+
+test('mobile: a graph node opens the shared context sheet without losing the selection', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/leitura/anarquismo#conexoes');
+  const network = page.locator('#conexoes app-knowledge-network');
+  await expect(network).toBeVisible();
+  await network.locator('#graph-search').fill('Mikhail Bakunin');
+  await network.locator('#graph-search').press('Enter');
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Mikhail Bakunin');
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  await expect(network.locator('.node.is-selected')).toHaveCount(1);
+});
+
 test('the chapter review explains its purpose and reveals the answer on demand', async ({
   page,
 }) => {
@@ -340,14 +379,16 @@ test('the connections chapter draws the tradition as a graph scoped to its atlas
   await expect(network.locator('.detail')).toHaveCount(0);
   await network.locator('#graph-search').fill('Friedrich Engels');
   await network.locator('#graph-search').press('Enter');
-  const heading = page.locator('#conexoes .entity-reading h2');
-  await expect(heading).toHaveText('Friedrich Engels');
-  await expect(network.locator('.zoom__level')).toHaveText('100%');
+  const dialog = page.getByRole('dialog', { name: 'Friedrich Engels' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Friedrich Engels');
   await expect(network.locator('.node.is-selected')).toHaveCount(1);
   await expect(network.locator('.node__selection')).toHaveCount(1);
   await expect(network.locator('.label.is-selected')).toContainText('Friedrich Engels');
   // A selection marks the node; it must not erase the rest of the map.
   await expect(network.locator('.node.is-dimmed')).toHaveCount(0);
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
   const selection = network.locator('.selection-pill');
   await expect(selection).toContainText('Selecionado');
   await expect(selection).toContainText('Friedrich Engels');
@@ -356,8 +397,9 @@ test('the connections chapter draws the tradition as a graph scoped to its atlas
     /\/verbete\//,
   );
   await selection.getByRole('button', { name: 'Ver ficha' }).click();
-  await expect(heading).toBeFocused();
-  await expect(heading).toBeInViewport();
+  const reopened = page.getByRole('dialog', { name: 'Friedrich Engels' });
+  await expect(reopened).toBeVisible();
+  await expect(reopened.locator('#knowledge-context-title')).toBeFocused();
 });
 
 test('each image appears once in the narrative; only the archive catalogue repeats', async ({

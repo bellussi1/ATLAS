@@ -64,18 +64,20 @@ describe('KnowledgeContextComponent', () => {
       queryRelations: () => [],
     } as unknown as ContentRepository;
     const record = entityContext(repository, 'wiki-topic-proletariado');
+    const onRecord = vi.fn();
     TestBed.configureTestingModule({
       providers: [
         provideRouter([]),
         provideHttpClient(),
         { provide: ContentRepository, useValue: repository },
-        { provide: DIALOG_DATA, useValue: { record, stops: [], index: -1 } },
+        { provide: DIALOG_DATA, useValue: { record, stops: [], index: -1, onRecord } },
         { provide: DialogRef, useValue: { close: vi.fn() } },
       ],
     });
     const fixture = TestBed.createComponent(KnowledgeContextComponent);
     fixture.detectChanges();
     const host = fixture.nativeElement as HTMLElement;
+    expect(onRecord.mock.calls.at(-1)?.[0]).toBe(record.entityId);
     const term = [...host.querySelectorAll<HTMLButtonElement>('.context-term')].find((button) =>
       button.textContent?.includes('meios de produção'),
     )!;
@@ -84,6 +86,7 @@ describe('KnowledgeContextComponent', () => {
     fixture.detectChanges();
     await fixture.whenStable();
     expect(fixture.componentInstance.record().title).toBe('Meios de produção');
+    expect(onRecord.mock.calls.at(-1)?.[0]).toBe(fixture.componentInstance.record().entityId);
     expect(fixture.componentInstance.history()).toHaveLength(1);
     host.querySelector<HTMLButtonElement>('.context-trail button')!.click();
     fixture.detectChanges();

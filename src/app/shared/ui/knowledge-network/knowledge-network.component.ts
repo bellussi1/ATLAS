@@ -884,6 +884,12 @@ export class KnowledgeNetworkComponent {
     const node = this.selected();
     if (node) this.inspect.emit(node.id);
   }
+  /** The selected node itself, used to restore focus after the shared context closes. */
+  selectedTrigger(): HTMLElement | null {
+    const id = this.selectedId();
+    if (!id) return null;
+    return this.host.nativeElement.querySelector<HTMLElement>(`[data-node="${id}"]`);
+  }
   clearSelection(): void {
     this.selectedId.set(null);
     this.picked.emit(null);

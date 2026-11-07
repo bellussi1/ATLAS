@@ -5,6 +5,7 @@ import {
   Component,
   computed,
   DestroyRef,
+  effect,
   ElementRef,
   inject,
   Injector,
@@ -42,6 +43,8 @@ export interface ContextPanelData {
   /** Reading order the previous and next buttons step through. */
   stops: ContextStop[];
   index: number;
+  /** Lets the owner keep another view, such as the graph, in step with the open sheet. */
+  onRecord?: (entityId: string | null) => void;
 }
 
 function toneOf(kind: string): string {
@@ -137,6 +140,9 @@ export class KnowledgeContextComponent {
   );
 
   constructor() {
+    effect(() => {
+      this.initial.onRecord?.(this.record().entityId ?? null);
+    });
     this.ref.keydownEvents?.subscribe((event) => {
       if (event.key !== 'Escape') return;
       event.preventDefault();

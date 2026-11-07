@@ -1,16 +1,33 @@
+import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import { queryKnowledgeRelations } from '@core/content/queries/knowledge-graph';
 import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
+import { ContextPanelService } from '@shared/ui/knowledge-context/context-panel.service';
 import { KnowledgeNetworkComponent } from '@shared/ui/knowledge-network/knowledge-network.component';
 import { provideContentFixture } from '@testing/content-fixture';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
+import { vi } from 'vitest';
 
 describe('Liberalism atlas snapshot', () => {
-  beforeEach(() =>
-    TestBed.configureTestingModule({ providers: [...provideContentFixture(), provideRouter([])] }),
-  );
+  const panel = {
+    open: vi.fn().mockResolvedValue(undefined),
+    entityId: signal<string | null>(null),
+    active: signal<HTMLElement | null>(null),
+    dialogId: signal<string | null>(null),
+  };
+  beforeEach(() => {
+    panel.open.mockClear();
+    panel.entityId.set(null);
+    TestBed.configureTestingModule({
+      providers: [
+        ...provideContentFixture(),
+        provideRouter([]),
+        { provide: ContextPanelService, useValue: panel },
+      ],
+    });
+  });
   function createAtlas() {
     const fixture = TestBed.createComponent(IdeologyAtlasComponent);
     fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
@@ -134,17 +151,30 @@ describe('Liberalism atlas snapshot', () => {
     );
   });
 
-  it('opens an entity context and returns to the exact previous selection', () => {
-    const page = createAtlas();
+  it('opens the shared context sheet and follows its record back into the graph selection', () => {
+    const fixture = TestBed.createComponent(IdeologyAtlasComponent);
+    fixture.componentRef.setInput('atlasId', 'atlas-liberalism');
+    fixture.componentRef.setInput('rootEntityId', 'ideology-liberalism');
+    fixture.componentRef.setInput('origin', '/leitura/liberalismo');
+    fixture.componentRef.setInput('continuous', true);
+    fixture.detectChanges();
+    const page = fixture.componentInstance;
     expect(page.entities()).toHaveLength(page.atlas().entities.length);
-    page.openEntity('person-john-locke');
-    expect(page.selected()?.title).toBe('John Locke');
-    expect(page.history()).toEqual(['ideology-liberalism']);
-    page.openEntity('person-john-locke');
-    expect(page.history()).toEqual(['ideology-liberalism']);
-    page.returnContext();
-    expect(page.selected()?.title).toBe('Liberalismo');
-    expect(page.history()).toEqual([]);
+
+    page.openContext('person-john-locke');
+    expect(page.selectedId()).toBe('person-john-locke');
+    expect(panel.open).toHaveBeenCalledWith(
+      { entityId: 'person-john-locke' },
+      expect.anything(),
+      [],
+    );
+
+    panel.entityId.set('person-john-stuart-mill');
+    fixture.detectChanges();
+    expect(page.selectedId()).toBe('person-john-stuart-mill');
+
+    page.openPicked(null);
+    expect(panel.open).toHaveBeenCalledTimes(1);
   });
 
   it('keeps the textual relation list in step with the selected record', () => {

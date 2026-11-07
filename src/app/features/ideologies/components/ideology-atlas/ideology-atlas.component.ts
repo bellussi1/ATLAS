@@ -3,6 +3,7 @@ import {
   Component,
   computed,
   DestroyRef,
+  effect,
   ElementRef,
   inject,
   input,
@@ -12,24 +13,22 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { readerPredicate, readerProse } from '@core/content/editorial/reader-voice';
-import { type Entity, placeTypeOf, type Relation } from '@core/content/models/content-schema';
+import { type Entity, type Relation } from '@core/content/models/content-schema';
 import type { KnowledgeRelationResult } from '@core/content/queries/knowledge-graph';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { EditorialSourcesComponent } from '@ideologies/components/editorial-sources/editorial-sources.component';
 import { TimelineAxisComponent } from '@ideologies/components/timeline-axis/timeline-axis.component';
 import type { EditorialReference } from '@ideologies/models/editorial-reference';
 import { TimelineFocusService } from '@ideologies/services/timeline-focus.service';
-import { axisItemOf, entityKindLabel } from '@ideologies/utils/timeline-axis-items';
+import { axisItemOf } from '@ideologies/utils/timeline-axis-items';
+import { ContextPanelService } from '@shared/ui/knowledge-context/context-panel.service';
 import { KnowledgeNetworkComponent } from '@shared/ui/knowledge-network/knowledge-network.component';
-
-import { KnowledgeTextComponent } from '../knowledge-text/knowledge-text.component';
 
 @Component({
   selector: 'app-ideology-atlas',
   imports: [
     EditorialSourcesComponent,
     RouterLink,
-    KnowledgeTextComponent,
     TimelineAxisComponent,
     KnowledgeNetworkComponent,
   ],
@@ -44,8 +43,9 @@ export class IdeologyAtlasComponent {
   private readonly repository = inject(ContentRepository);
   private readonly graph = this.repository.knowledgeGraph;
   private readonly focus = inject(TimelineFocusService);
-  private readonly entityReading = viewChild<ElementRef<HTMLElement>>('entityReading');
-  private readonly contextTitle = viewChild<ElementRef<HTMLElement>>('contextTitle');
+  private readonly panel = inject(ContextPanelService);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly network = viewChild(KnowledgeNetworkComponent);
   readonly atlasId = input.required<string>();
   readonly rootEntityId = input.required<string>();
   readonly origin = input.required<string>();
@@ -74,7 +74,6 @@ export class IdeologyAtlasComponent {
       ).length,
   );
   readonly selectedId = linkedSignal(() => this.rootEntityId());
-  readonly history = signal<string[]>([]);
   readonly entities = computed(() => {
     return this.atlas().entities;
   });
@@ -131,8 +130,14 @@ export class IdeologyAtlasComponent {
   readonly predicate = readerPredicate;
 
   constructor() {
+    // Following a relation inside the shared sheet keeps the graph's selection in step.
+    effect(() => {
+      const id = this.panel.entityId();
+      if (id && id !== this.selectedId() && this.entities().some((entity) => entity.id === id))
+        this.selectedId.set(id);
+    });
     const view = inject(DOCUMENT).defaultView;
-    const host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
+    const host = this.host.nativeElement;
     if (!view?.ResizeObserver) return;
     const observer = new view.ResizeObserver(([entry]) =>
       this.narrow.set(entry.contentRect.width < 640),
@@ -141,51 +146,23 @@ export class IdeologyAtlasComponent {
     inject(DestroyRef).onDestroy(() => observer.disconnect());
   }
 
-  openEntity(entityId: string): void {
-    if (entityId === this.selectedId()) return;
-    this.history.update((items) => [...items, this.selectedId()]);
-    this.selectedId.set(entityId);
-  }
   openPicked(entityId: string | null): void {
-    if (entityId) this.openEntity(entityId);
+    if (!entityId) return;
+    this.openContext(entityId, this.network()?.selectedTrigger() ?? undefined);
   }
-  /** Takes the reader from the map to the record it just opened, with focus on the title. */
-  showRecord(): void {
-    const section = this.entityReading()?.nativeElement;
-    if (!section) return;
-    const reduce = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-    this.contextTitle()?.nativeElement.focus({ preventScroll: true });
-  }
-  returnContext(): void {
-    const previous = this.history().at(-1);
-    if (!previous) {
-      this.selectedId.set(this.rootEntityId());
-      return;
-    }
-    this.history.update((items) => items.slice(0, -1));
-    this.selectedId.set(previous);
+  /** Opens the shared context sheet; the graph remains selected behind it. */
+  openContext(entityId: string, trigger?: HTMLElement): void {
+    this.selectedId.set(entityId);
+    const target = trigger ?? this.network()?.selectedTrigger() ?? this.host.nativeElement;
+    void this.panel.open({ entityId }, target, []);
   }
   selectTimeline(entityId: string): void {
     this.timelineId.set(entityId);
     this.focus.entityId.set(entityId);
-    this.openEntity(entityId);
+    this.openContext(entityId);
   }
   timelineYear(entity: Entity): number {
     return entity.temporalExtent?.startYear ?? entity.temporalExtent?.endYear ?? 0;
-  }
-  yearLabel(entity: Entity): string {
-    const extent = entity.temporalExtent;
-    if (!extent) return 'Data não informada';
-    const qualifier = extent.precision === 'approximate' ? 'c. ' : '';
-    if (extent.startYear !== null && extent.endYear !== null)
-      return `${qualifier}${extent.startYear}–${extent.endYear}`;
-    if (extent.startYear !== null) return `${qualifier}a partir de ${extent.startYear}`;
-    if (extent.endYear !== null) return `${qualifier}até ${extent.endYear}`;
-    return extent.label ?? 'Data não informada';
-  }
-  kindLabel(entity: Entity): string {
-    return entityKindLabel(entity.kind, placeTypeOf(entity));
   }
   relationName(relation: KnowledgeRelationResult): string {
     const labels: Record<string, string> = {
