@@ -16,7 +16,19 @@ test('positions carousel answers arrows, progress bar, keyboard and drag', async
   await expect(count).not.toHaveText(/^\s*1–/);
 
   await carousel.getByRole('button', { name: /^Anterior: Posições por registro$/ }).click();
-  await expect(count).toHaveText(/1–\d+ de \d+/);
+  await expect(count).toHaveText(/^\s*1–/);
+
+  const dots = carousel.locator('.carousel-dot');
+  await expect(dots).toHaveCount(6);
+  await dots.nth(2).click();
+  await expect(count).toHaveText(/^\s*3/);
+  await expect(carousel.getByRole('status')).toContainText('Registro 3 de 6');
+
+  const firstCard = carousel.locator('article.entity').first();
+  const poder = firstCard.locator('.axis-chip').filter({ hasText: 'Limites do Estado' });
+  await poder.click();
+  await expect(poder).toHaveAttribute('aria-pressed', 'true');
+  await expect(firstCard.locator('.axis-panel h5')).toHaveText('Limites ao poder do Estado');
 
   const bar = carousel.locator('.carousel-bar');
   const box = await bar.boundingBox();
@@ -40,6 +52,34 @@ test('positions carousel answers arrows, progress bar, keyboard and drag', async
   await page.mouse.move(gapX - 240, gapY, { steps: 8 });
   await page.mouse.up();
   await expect.poll(() => region.evaluate((el) => el.scrollLeft)).toBeGreaterThan(120);
+
+  const violations = (await new AxeBuilder({ page }).analyze()).violations;
+  expect(
+    violations.filter((item) => item.impact === 'critical' || item.impact === 'serious'),
+  ).toEqual([]);
+});
+
+test('positions carousel keeps dots, chips and evidence usable on a phone', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/leitura/marxismo/');
+  const region = page.getByRole('region', { name: 'Posições por registro' });
+  await region.scrollIntoViewIfNeeded();
+  const dots = page.locator('.carousel-dot');
+  await expect(dots).toHaveCount(6);
+  const small = await dots.evaluateAll(
+    (buttons) => buttons.filter((button) => button.getBoundingClientRect().height < 43).length,
+  );
+  expect(small).toBe(0);
+
+  const first = page.locator('#debates article.entity').first();
+  await first.scrollIntoViewIfNeeded();
+  await expect(first.locator('.entity-head h4')).toBeVisible();
+  await first.locator('.axis-chip').first().click();
+  await expect(first.locator('.axis-panel')).toBeVisible();
+  await first.locator('.claims summary').click();
+  await expect(first.locator('.claims')).toHaveJSProperty('open', true);
+  await expect(first.locator('.claim-sources a').first()).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 
   const violations = (await new AxeBuilder({ page }).analyze()).violations;
   expect(

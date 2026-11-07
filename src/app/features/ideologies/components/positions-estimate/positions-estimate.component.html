@@ -2,30 +2,37 @@
   <h3 id="positions-title">Posições estimadas</h3>
   <p class="positions-note">
     Estimativas analíticas feitas a partir de afirmações atribuídas e com fonte, para comparar
-    leituras. Não são fatos históricos nem classificações pessoais.
+    leituras. Não são fatos históricos, notas de democracia nem classificações pessoais.
   </p>
 
   <details class="how-to-read">
     <summary>Como ler estas estimativas</summary>
+    <p class="how-to-read__scale">
+      Cada eixo é uma pergunta analítica com dois polos. A escala vai de um polo ao outro; o centro
+      marca posição mista ou não determinada, não neutralidade. Não há nota de democracia nem
+      ranking de pessoas.
+    </p>
     <dl>
       <div data-legend="estimada">
         <dt>Estimada</dt>
         <dd>
-          Duas fontes distintas sustentam a posição. A marca mostra o valor; a faixa, o intervalo
-          entre as afirmações.
+          Duas ou mais fontes sustentam uma faixa estreita. A marca mostra a posição combinada; a
+          faixa, a distância entre as afirmações. É uma leitura analítica, não uma medida
+          estatística.
         </dd>
       </div>
       <div data-legend="divergente">
         <dt>Divergente</dt>
         <dd>
-          Fontes distintas afirmam posições afastadas. A faixa mostra o intervalo inteiro; nenhuma
-          média esconde a diferença.
+          As fontes apontam posições afastadas. Mostramos a faixa inteira e os dois extremos;
+          nenhuma média esconde a diferença.
         </dd>
       </div>
       <div data-legend="indicativa">
         <dt>Indicativa</dt>
         <dd>
-          Uma só fonte sustenta a posição. Trate-a como pista de leitura, não como estimativa.
+          Uma única afirmação, ou afirmações que vêm de uma só fonte, sustentam a posição. Trate
+          como pista de leitura, não como estimativa.
         </dd>
       </div>
       <div data-legend="insuficiente">
@@ -33,66 +40,228 @@
         <dd>Nenhuma afirmação com fonte sobre o eixo. Nada é preenchido com um valor neutro.</dd>
       </div>
     </dl>
+    <p class="how-to-read__kinds">
+      <strong>Tese atribuída</strong> registra o que a fonte atribui ao autor;
+      <strong>interpretação</strong> é uma leitura sobre a posição; <strong>hipótese</strong> é uma
+      proposta analítica. A classificação aparece em cada evidência.
+    </p>
+    <p class="how-to-read__method">
+      A posição combinada é uma média ponderada pela confiança das afirmações. O intervalo vai da
+      menor à maior posição atribuída. Com uma só fonte ou uma única afirmação, não há média: a
+      posição fica indicativa.
+    </p>
   </details>
 
-  @if (summary(); as s) {
-    <p class="positions-summary">
-      Com os dados disponíveis, o maior contraste aparece em <strong>{{ s.axis }}</strong
-      >, entre {{ s.first }} e {{ s.second }}: diferença de {{ s.difference }} numa escala de 0 a 2.
-    </p>
+  @if (comparison(); as c) {
+    <section class="contrast" aria-labelledby="contrast-title">
+      <p class="eyebrow">Contraste mais claro</p>
+      <h4 id="contrast-title">{{ c.axis.label }}</h4>
+      <p class="contrast-note">
+        Os dois registros se afastam neste eixo. A comparação usa a mesma escala do carrossel, com
+        as posições em palavras e a faixa de cada uma.
+      </p>
+      <p class="contrast-poles">
+        <span class="pole-low">{{ c.axis.low }}</span>
+        <span class="sr-only">a</span>
+        <span class="pole-high">{{ c.axis.high }}</span>
+      </p>
+      <div class="compare-rows">
+        @for (side of [c.first, c.second]; track side.row.id) {
+          <div class="compare-row" [attr.data-status]="side.item.axis.status">
+            <div class="compare-head">
+              <strong>{{ side.row.title }}</strong>
+              <span class="status-chip" [attr.data-status]="side.item.axis.status">
+                <span class="status-mark" aria-hidden="true"></span>
+                {{ side.item.statusLabel }}
+              </span>
+            </div>
+            <span class="track" role="img" [attr.aria-label]="side.item.description">
+              <span
+                class="range"
+                aria-hidden="true"
+                [style.left.%]="pct(side.item.axis.low)"
+                [style.width.%]="pct(side.item.axis.high) - pct(side.item.axis.low)"
+              ></span>
+              @if (side.item.axis.status === 'divergente') {
+                <span
+                  class="end"
+                  aria-hidden="true"
+                  [style.left.%]="pct(side.item.axis.low)"
+                ></span>
+                <span
+                  class="end"
+                  aria-hidden="true"
+                  [style.left.%]="pct(side.item.axis.high)"
+                ></span>
+              } @else {
+                <span
+                  class="marker"
+                  aria-hidden="true"
+                  [style.left.%]="pct(side.item.axis.value)"
+                ></span>
+              }
+            </span>
+            <p class="compare-word">{{ side.item.shortInterpretation }}</p>
+            <button
+              type="button"
+              class="compare-open"
+              [attr.aria-label]="'Ver no carrossel: ' + side.row.title"
+              (click)="showCard(side.row.id)"
+            >
+              Ver no carrossel
+            </button>
+          </div>
+        }
+      </div>
+    </section>
   }
 
-  <app-card-carousel label="Posições por registro" hint="Arraste ou use as setas para comparar">
+  <app-card-carousel
+    label="Posições por registro"
+    hint="Arraste, use as setas ou os pontos para comparar"
+    [showDots]="true"
+  >
     @for (row of rows(); track row.id) {
       <article class="entity carousel-item">
-        <h4 class="sr-only">{{ row.title }}</h4>
-        <button
-          appRecordCard
-          [entityId]="row.id"
-          [title]="row.title"
-          [appKnowledgeContext]="{ entityId: row.id }"
-        ></button>
-
-        @if (row.evidence.length) {
-          <ul class="axes">
-            @for (item of row.evidence; track item.axis.axisId) {
-              <li [attr.data-status]="item.axis.status">
-                <span class="axis-name">{{ item.label }}</span>
-                <span class="poles">{{ item.poles }}</span>
-                <span class="track" role="img" [attr.aria-label]="item.description">
-                  <span
-                    class="range"
-                    [style.left.%]="pct(item.axis.low)"
-                    [style.width.%]="pct(item.axis.high) - pct(item.axis.low)"
-                  ></span>
-                  <span class="marker" [style.left.%]="pct(item.axis.value)"></span>
-                </span>
-                <span class="status">{{ item.statusText }}</span>
-                <details class="claims">
-                  <summary>Afirmações ({{ item.claims.length }})</summary>
-                  <ul>
-                    @for (claim of item.claims; track claim.id) {
-                      <li>
-                        <p>{{ claim.statement }}</p>
-                        <p class="claim-meta">{{ claim.meta }}</p>
-                      </li>
-                    }
-                  </ul>
-                </details>
-              </li>
+        <header class="entity-head">
+          <p class="entity-kicker">Registro</p>
+          <h4>{{ row.title }}</h4>
+          <p class="entity-meta">
+            {{ row.evidence.length }}
+            {{ row.evidence.length === 1 ? 'eixo' : 'eixos' }} com evidência
+            @if (row.hidden.length) {
+              · {{ row.hidden.length }} sem evidência
             }
-          </ul>
+          </p>
+          <button
+            type="button"
+            class="entity-open"
+            [attr.aria-label]="'Ver ficha de ' + row.title"
+            [appKnowledgeContext]="{ entityId: row.id }"
+          >
+            Ver ficha <span aria-hidden="true">↗</span>
+          </button>
+        </header>
+
+        @if (row.selected; as item) {
+          @if (row.evidence.length > 1) {
+            <div class="axis-picker" role="group" aria-label="Eixos com evidência">
+              @for (candidate of row.evidence; track candidate.axis.axisId) {
+                <button
+                  type="button"
+                  class="axis-chip"
+                  [attr.aria-pressed]="candidate.axis.axisId === item.axis.axisId"
+                  [attr.aria-label]="candidate.shortLabel + ', ' + candidate.statusLabel"
+                  (click)="selectAxis(row.id, candidate.axis.axisId)"
+                >
+                  <span
+                    class="status-mark"
+                    [attr.data-status]="candidate.axis.status"
+                    aria-hidden="true"
+                  ></span>
+                  {{ candidate.shortLabel }}
+                </button>
+              }
+            </div>
+          }
+
+          <section
+            class="axis-panel"
+            [attr.data-status]="item.axis.status"
+            [attr.aria-labelledby]="'axis-' + row.id"
+          >
+            <div class="axis-head">
+              <h5 [id]="'axis-' + row.id">{{ item.label }}</h5>
+              <span class="status-chip" [attr.data-status]="item.axis.status">
+                <span class="status-mark" aria-hidden="true"></span>
+                {{ item.statusLabel }}
+              </span>
+            </div>
+            <p class="axis-interpretation">{{ item.interpretation }}</p>
+            <span class="track" role="img" [attr.aria-label]="item.description">
+              <span
+                class="range"
+                aria-hidden="true"
+                [style.left.%]="pct(item.axis.low)"
+                [style.width.%]="pct(item.axis.high) - pct(item.axis.low)"
+              ></span>
+              @if (item.axis.status === 'divergente') {
+                <span class="end" aria-hidden="true" [style.left.%]="pct(item.axis.low)"></span>
+                <span class="end" aria-hidden="true" [style.left.%]="pct(item.axis.high)"></span>
+              } @else {
+                <span
+                  class="marker"
+                  aria-hidden="true"
+                  [style.left.%]="pct(item.axis.value)"
+                ></span>
+              }
+            </span>
+            <p class="poles">
+              <span class="pole-low">{{ item.poleLow }}</span>
+              <span class="sr-only">a</span>
+              <span class="pole-high">{{ item.poleHigh }}</span>
+            </p>
+            <p class="axis-confidence">{{ item.confidence }}</p>
+
+            <details class="claims">
+              <summary>Ver evidências ({{ item.claims.length }})</summary>
+              @if (item.axis.status === 'divergente') {
+                <p class="claims-method">
+                  As fontes divergem: a faixa mostra o intervalo inteiro e os dois extremos; nenhuma
+                  média é apresentada como posição do conjunto.
+                </p>
+              } @else if (item.axis.status === 'indicativa') {
+                <p class="claims-method">
+                  Uma só fonte sustenta a posição; ela fica indicativa e não vira estimativa.
+                </p>
+              } @else {
+                <p class="claims-method">
+                  Média ponderada pela confiança das afirmações abaixo; o intervalo vai da menor à
+                  maior posição atribuída.
+                </p>
+              }
+              <ul>
+                @for (claim of item.claims; track claim.id) {
+                  <li>
+                    <p>{{ claim.statement }}</p>
+                    <p class="claim-meta">
+                      {{ claim.classification }} · confiança {{ claim.confidence }}
+                    </p>
+                    <p class="claim-value">posição atribuída pela fonte: {{ claim.value }}</p>
+                    <ul class="claim-sources">
+                      @for (source of claim.sources; track source.id) {
+                        <li>
+                          @if (source.url) {
+                            <a [href]="source.url" target="_blank" rel="noopener noreferrer"
+                              >{{ source.title }} <span aria-hidden="true">↗</span></a
+                            >
+                          } @else {
+                            <span>{{ source.title }}</span>
+                          }
+                          @if (source.edition) {
+                            <span class="source-edition">{{ source.edition }}</span>
+                          }
+                        </li>
+                      }
+                    </ul>
+                  </li>
+                }
+              </ul>
+            </details>
+          </section>
         } @else {
-          <p class="no-evidence">Ainda não há afirmação com fonte para esta entidade.</p>
+          <p class="no-evidence">
+            Ainda não há afirmação com fonte para este registro. Nenhum valor foi atribuído.
+          </p>
         }
 
         @if (row.hidden.length) {
           <details class="hidden-axes">
-            <summary>
-              Sem evidência em {{ row.hidden.length }}
-              {{ row.hidden.length === 1 ? 'eixo' : 'eixos' }}
-            </summary>
-            <p>{{ row.hidden.join(', ') }}.</p>
+            <summary>Eixos sem evidência ({{ row.hidden.length }})</summary>
+            <p>
+              {{ row.hidden.join(', ') }}. Nenhuma afirmação com fonte; o eixo não recebe valor
+              neutro.
+            </p>
           </details>
         }
       </article>

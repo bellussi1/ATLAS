@@ -52,6 +52,7 @@
     [attr.tabindex]="scrollable() ? 0 : null"
     aria-roledescription="carrossel"
     [attr.aria-label]="label()"
+    [attr.aria-describedby]="scrollable() ? trackId + '-hint' : null"
     (scroll)="update()"
     (pointerdown)="onPointerDown($event)"
     (pointermove)="onPointerMove($event)"
@@ -64,6 +65,21 @@
   </div>
 
   <div class="carousel-foot">
+    @if (showDots() && total() > 1 && total() <= 12) {
+      <div class="carousel-dots" role="group" aria-label="Ir para um registro">
+        @for (index of dots(); track index) {
+          <button
+            type="button"
+            class="carousel-dot"
+            [attr.aria-label]="'Ir para o registro ' + (index + 1) + ' de ' + total()"
+            [attr.aria-current]="index === currentDot() ? 'true' : null"
+            (click)="goTo(index)"
+          >
+            <span aria-hidden="true"></span>
+          </button>
+        }
+      </div>
+    }
     <div
       #bar
       class="carousel-bar"
@@ -79,11 +95,12 @@
         [style.left.%]="thumbOffset()"
       ></span>
     </div>
-    <p class="carousel-hint">
+    <p class="carousel-hint" [id]="trackId + '-hint'">
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4" />
       </svg>
       {{ hint() }}
     </p>
   </div>
+  <p class="visually-hidden" role="status" aria-live="polite">{{ liveMessage() }}</p>
 </div>

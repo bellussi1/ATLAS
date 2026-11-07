@@ -128,6 +128,8 @@ Posições determinísticas, sem saltos ao selecionar. Começar com recorte leg�
 
 Na leitura contínua não há um índice de entidades separado acima do grafo. A busca do grafo, os nós focáveis e o link para o acervo em lista cumprem a descoberta sem repetir as mesmas fichas já vistas nos capítulos. O `CardCarouselComponent` continua disponível para usos editoriais próprios, como "Posições por registro".
 
+Em "Posições por registro", o carrossel preserva arraste, snap, setas, teclado e barra de progresso, e acrescenta pontos opcionais e anúncio de posição. Cada card abre com o registro e um eixo por vez; os demais eixos ficam em chips, e as afirmações e fontes ficam sob demanda. O intervalo é explicado em palavras; quando as fontes divergem, os dois extremos aparecem e nenhuma média é desenhada como posição do conjunto. Eixos sem afirmação com fonte não recebem valor.
+
 Selecionar um nó abre a ficha contextual compartilhada: lateral no desktop, em tela cheia no celular. A ficha inline abaixo do grafo foi removida. Seguir uma relação dentro dela atualiza a seleção do grafo; fechar ou voltar restaura o foco no nó, sem mover a posição do mapa.
 
 Tipos de aresta: `influencia-documentada`, `divergencia-ou-critica`, `continuidade`, `desenvolvimento`, `associacao-tematica`, `descoberta-enciclopedica`. Cada aresta histórica exige fontes e certeza (`estabelecida`, `debatida`, `incerta`). Descoberta enciclopédica é rotulada como navegação, nunca como afirmação histórica. Crítica não é descendência; a certeza da existência de uma crítica não prova sua correção.

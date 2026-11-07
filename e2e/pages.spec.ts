@@ -596,32 +596,68 @@ test('debates show estimated positions with their evidence, in words and not onl
   const positions = page.locator('#debates section.positions');
   await expect(positions).toBeVisible();
   await expect(positions.getByRole('heading', { name: 'Posições estimadas' })).toBeVisible();
-  await expect(positions.locator('[data-status="estimada"]').first()).toContainText(
-    'estimada em 0,76',
-  );
+  const contrast = positions.locator('.contrast');
+  await expect(contrast).toContainText('Método de mudança social');
+  await expect(contrast.locator('.compare-head strong')).toHaveCount(2);
+  await expect(contrast.locator('.compare-row .track')).toHaveCount(2);
+  await expect(contrast).not.toContainText('diferença de');
   await expect(positions).toContainText('Não são fatos históricos');
-  await expect(positions.locator('[data-status="estimada"] [role="img"]').first()).toHaveAttribute(
+  await contrast.locator('.compare-open').nth(1).click();
+  await expect(positions.locator('.carousel-count')).not.toHaveText(/^\s*1[–-]/);
+
+  const bernstein = positions
+    .locator('article.entity')
+    .filter({ has: page.getByRole('heading', { name: 'Eduard Bernstein', exact: true }) });
+  await expect(bernstein.locator('.status-chip').first()).toContainText('Estimada · 2 fontes');
+  await expect(bernstein.locator('.track').first()).toHaveAttribute(
     'aria-label',
-    /Eduard Bernstein, Método de mudança social: estimada em 0,76/,
+    /Eduard Bernstein, Método de mudança social: Estimada · 2 fontes/,
   );
+  await expect(bernstein.locator('.axis-panel .marker')).toHaveCount(1);
 });
 
 test('estimated positions show their claims and open the entity record in place', async ({
   page,
 }) => {
   await page.goto('/leitura/marxismo/');
-  const bernstein = page.locator('#debates section.positions article.entity').filter({
-    hasText: 'Eduard Bernstein',
-  });
-  const revolution = bernstein.locator('li').filter({ hasText: 'Método de mudança social' });
-  await revolution.locator('.claims summary').click();
-  await expect(revolution).toContainText('movimento significa tudo');
-  await expect(revolution).toContainText('Evolutionary Socialism');
-  await expect(bernstein.locator('.hidden-axes summary')).toContainText('Sem evidência em 4 eixos');
-  await bernstein.getByRole('button', { name: /Eduard Bernstein/ }).click();
+  const bernstein = page
+    .locator('#debates section.positions article.entity')
+    .filter({ has: page.getByRole('heading', { name: 'Eduard Bernstein', exact: true }) });
+  const claims = bernstein.locator('.axis-panel .claims');
+  await claims.locator('summary').click();
+  await expect(claims).toContainText('movimento significa tudo');
+  await expect(claims).toContainText('Evolutionary Socialism');
+  await expect(claims.locator('a').first()).toHaveAttribute('href', /^https?:/);
+  await expect(bernstein.locator('.hidden-axes summary')).toContainText('Eixos sem evidência (4)');
+  await bernstein.getByRole('button', { name: 'Ver ficha de Eduard Bernstein' }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
+test('positions distinguish divergence, indicative evidence and missing evidence', async ({
+  page,
+}) => {
+  await page.goto('/leitura/marxismo/');
+  const positions = page.locator('#debates section.positions');
+  const card = (title: string) =>
+    positions
+      .locator('article.entity')
+      .filter({ has: page.getByRole('heading', { name: title, exact: true }) });
+
+  const marx = card('Karl Marx');
+  await expect(marx.locator('.axis-chip[aria-pressed="true"]')).toContainText('Limites do Estado');
+  await expect(marx.locator('.axis-panel')).toHaveAttribute('data-status', 'divergente');
+  await expect(marx.locator('.axis-panel .end')).toHaveCount(2);
+  await expect(marx.locator('.axis-panel .marker')).toHaveCount(0);
+  await expect(marx.locator('.status-chip')).toContainText('Divergente · 2 fontes');
+
+  const lenin = card('Lenin');
+  await expect(lenin.locator('.status-chip')).toContainText('Indicativa · 1 afirmação');
+  await expect(lenin.locator('.axis-panel')).toHaveAttribute('data-status', 'indicativa');
+
+  const mao = card('Mao Tsé-Tung');
+  await expect(mao.locator('.hidden-axes summary')).toContainText('Eixos sem evidência (5)');
 });
 
 test('chapter jumps enter the history and Back returns to the previous chapter', async ({

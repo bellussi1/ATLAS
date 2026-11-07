@@ -12,10 +12,10 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 
 ## Verificações executadas
 
-- `npm test`: **332/332**.
+- `npm test`: **343/343**.
 - `npm run test:content`: **184/184**.
 - `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
-- `node node_modules/@playwright/test/cli.js test`: `pages`, `graph`, `encyclopedia`, `carousel`, `ideology-sheets`, `contextual-exploration` e `liberalism-atlas` **75/75**; `public-routes` + `accessibility` **36/36**, sem achados sérios em 390/1440.
+- `node node_modules/@playwright/test/cli.js test`: `pages.spec.ts` + `carousel.spec.ts` **34/34**; `public-routes.spec.ts` + `accessibility.spec.ts` **36/36**, sem achados sérios em 390/1440.
 - `npm run lint` e `npm run typecheck`: exit 0.
 
 ## O que mudou nesta rodada
@@ -327,6 +327,17 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O zoom/pan do eixo foi removido junto com o componente. A legibilidade em períodos densos passa a depender dos filtros e de “Ver todas”; o recorte temporal não foi transformado em gráfico de exploração. Essa é uma troca deliberada: uma cronologia vertical narrativa no lugar de duas visualizações concorrentes.
     - Verificações: `npm test` **332/332**, `npm run test:content` **184/184**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` + `e2e/encyclopedia.spec.ts` + `e2e/carousel.spec.ts` + `e2e/ideology-sheets.spec.ts` + `e2e/contextual-exploration.spec.ts` + `e2e/liberalism-atlas.spec.ts` **75/75**, `e2e/public-routes.spec.ts` + `e2e/accessibility.spec.ts` **36/36**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390: cabeçalho em uma coluna no celular, sem overflow; marcos e notas legíveis; atividade/participação separadas.
     - O release local é `eae46644…`; o ponteiro público continua em `a54eee…`. Nada foi publicado.
+
+46. **Carrossel de posições analíticas**
+    - O card de “Posições por registro” abria com o resumo da entidade, listava todos os eixos e repetia o valor numérico no texto de status. O visitante não distinguia com clareza o que era uma estimativa, um intervalo divergente ou uma pista de uma só fonte.
+    - O card agora começa pelo registro e por **um eixo selecionado**; os outros eixos ficam em chips com forma e rótulo de status. O painel mostra a interpretação do intervalo em palavras, a faixa, os polos, a confiança por afirmação e as evidências sob demanda.
+    - Estimada, divergente e indicativa têm formas diferentes: estimada usa marca central; divergente mostra os dois extremos e nenhuma média; indicativa usa marca tracejada e o rótulo “1 afirmação” ou “1 fonte”. Eixos sem afirmação com fonte não recebem trilho nem valor neutro e são listados em “Eixos sem evidência”.
+    - As evidências trazem a afirmação, a classificação, a confiança, o valor atribuído pela fonte e o link/edição de cada fonte. A média ponderada e o intervalo são explicados dentro da evidência, não no título. O texto de método muda quando as fontes divergem ou quando há uma só fonte.
+    - A comparação contextual usa o **maior contraste entre dois registros** num eixo comum, com as posições em palavras e dois trilhos; “Ver no carrossel” leva ao card correspondente. Um seletor livre de dois registros foi avaliado e descartado para não criar uma segunda interface de exploração.
+    - O `CardCarouselComponent` ganhou pontos opcionais (`showDots`, usados só nas posições), anúncio de posição em região viva, alinhamento por card e transição do indicador. Arraste, snap, setas, barra, teclado e clique continuam iguais; o padrão dos outros carrosséis não muda.
+    - `positionAxes` ganhou rótulos curtos; `positions.ts` ganhou frases de posição, interpretação de intervalo, rótulo de status, resumo de confiança e descrição acessível. Só marxismo tem afirmações de posição neste checkout; as outras leituras não exibem o bloco, e o componente segue reutilizável.
+    - Verificações: `npm test` **343/343**, `e2e/pages.spec.ts` + `e2e/carousel.spec.ts` **34/34**, `e2e/public-routes.spec.ts` + `e2e/accessibility.spec.ts` **36/36**, `lint`, `typecheck` e `build` exit 0. Conferência visual em 1440 e 390: um card por vez, chips, polos em palavras, status por forma e texto, sem overflow. A auditoria Axe do carrossel em 1280 e 390 não encontrou achados sérios.
+    - O release local continua `eae46644…`; nenhuma publicação nesta rodada.
 
 ## Pendências que bloqueiam
 
