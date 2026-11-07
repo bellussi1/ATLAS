@@ -272,6 +272,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `selectedVisible` deixou de depender de `drawnNodes()` para não criar ciclo de computação com `insets()`; antes da medição do palco, nenhum nó é descartado.
     - Verificações: `npm test` **325/325**, `e2e/graph.spec.ts` **18/18**, `lint` e `typecheck` exit 0, `build` passou.
 
+38. **Flash ao paginar e filtrar o acervo**
+    - Com `/acervo` rolado, paginar ou trocar o tipo devolvia a página ao topo por um frame antes de restaurar a posição; o cabeçalho aparecia e sumia.
+    - O roteador zera o scroll da nova entrada dentro do evento `Scroll`; o componente restaurava a posição em `setTimeout`, depois da pintura. A restauração passou a usar `queueMicrotask`, que roda depois de todos os listeners do mesmo evento e antes da pintura.
+    - Teste e2e novo em `e2e/pages.spec.ts` grava `scrollY` a cada `requestAnimationFrame` ao paginar e ao trocar de tipo; falha se algum frame cair abaixo de 200 e foi confirmado falhando com o `setTimeout` anterior.
+    - Verificações: `npm test` **325/325**, `e2e/pages.spec.ts` **26/26**, `lint`, `typecheck` e `build` exit 0.
+
 
 
 ## Pendências que bloqueiam

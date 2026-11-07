@@ -457,6 +457,55 @@ test('/fontes paginates and a source anchor opens the page that holds it', async
   await expect(page.locator(`#${id}`)).toBeInViewport();
 });
 
+test('paging and switching the record type keep the place without flashing the top', async ({
+  page,
+}) => {
+  await page.goto('/acervo');
+  await expect(page.locator('.result-card')).toHaveCount(24);
+  await page.evaluate(() => window.scrollTo(0, 700));
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(600);
+
+  const recordFrames = async (action: () => Promise<void>) => {
+    await page.evaluate(() => {
+      const trace: number[] = [];
+      Object.assign(window, { atlasTrace: trace, atlasRecording: true });
+      const tick = () => {
+        trace.push(Math.round(window.scrollY));
+        if ((window as unknown as { atlasRecording: boolean }).atlasRecording)
+          requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+    await action();
+    await page.waitForTimeout(500);
+    return page.evaluate(() => {
+      const data = window as unknown as { atlasTrace: number[]; atlasRecording: boolean };
+      data.atlasRecording = false;
+      return Math.min(...data.atlasTrace);
+    });
+  };
+
+  const afterPage = await recordFrames(() =>
+    page.evaluate(() =>
+      (document.querySelector('.pager__link[rel="next"]') as HTMLAnchorElement).click(),
+    ),
+  );
+  await expect(page).toHaveURL(/pagina=2/);
+  expect(afterPage).toBeGreaterThan(200);
+
+  const afterType = await recordFrames(() =>
+    page.evaluate(() =>
+      (
+        [...document.querySelectorAll('.kind-filter__item')].find((item) =>
+          item.textContent?.startsWith('Pessoa '),
+        ) as HTMLAnchorElement
+      ).click(),
+    ),
+  );
+  await expect(page).toHaveURL(/tipo=pessoa/);
+  expect(afterType).toBeGreaterThan(200);
+});
+
 test('debates show estimated positions with their evidence, in words and not only colour', async ({
   page,
 }) => {

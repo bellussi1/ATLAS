@@ -160,8 +160,9 @@ export class ExplorerComponent {
       if (event instanceof Scroll && this.keptScrollY !== null) {
         const y = this.keptScrollY;
         this.keptScrollY = null;
-        // The router scrolls to the top after its own Scroll event, so the restore waits one turn.
-        setTimeout(() => this.viewport.scrollToPosition([0, y]));
+        // The router resets the new entry to the top inside this same event; restoring in a
+        // microtask runs after all Scroll listeners and before the browser paints the flash.
+        queueMicrotask(() => this.viewport.scrollToPosition([0, y]));
       }
     });
     // A source anchor can live on a later page: open that page before scrolling to the item.
