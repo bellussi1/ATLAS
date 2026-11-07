@@ -52,14 +52,6 @@
       </button>
     }
   }
-  @case ('timeline') {
-    <app-timeline-axis
-      [items]="timelineItems()"
-      [selectedId]="selectedTimeline()?.id ?? null"
-      [undated]="entities().length - timelineItems().length"
-      (picked)="update('evento', $event)"
-    />
-  }
   @case ('graph') {
     @if (edges().length) {
       <div class="relations" data-context-group>

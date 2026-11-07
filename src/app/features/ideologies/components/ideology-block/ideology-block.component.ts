@@ -13,7 +13,6 @@ import {
 import { IdeologyAtlasComponent } from '@ideologies/components/ideology-atlas/ideology-atlas.component';
 import { PositionsEstimateComponent } from '@ideologies/components/positions-estimate/positions-estimate.component';
 import { ReadingPathComponent } from '@ideologies/components/reading-path/reading-path.component';
-import { TimelineAxisComponent } from '@ideologies/components/timeline-axis/timeline-axis.component';
 import { ValueDebateComponent } from '@ideologies/components/value-debate/value-debate.component';
 import type {
   ExplorationItem,
@@ -27,7 +26,6 @@ import {
   relationTypes,
 } from '@ideologies/models/relation-types';
 import { type PageMedia } from '@ideologies/utils/page-media-plan';
-import { axisItemOf } from '@ideologies/utils/timeline-axis-items';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { type IconKind, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
@@ -44,7 +42,6 @@ import { RelationEntryComponent } from '@shared/ui/relation-entry/relation-entry
     KnowledgeContextDirective,
     AtlasRevealDirective,
     EraChartComponent,
-    TimelineAxisComponent,
     IdeologyAtlasComponent,
     ReadingPathComponent,
     PositionsEstimateComponent,
@@ -151,19 +148,6 @@ export class IdeologyBlockComponent {
     () =>
       this.debateTopics().find((t) => t.id === this.params().get('debate')) ??
       this.debateTopics()[0],
-  );
-  readonly timeline = computed(() =>
-    [...this.entities()]
-      .filter(
-        (e) => e.temporalExtent?.startYear !== null && e.temporalExtent?.startYear !== undefined,
-      )
-      .sort((a, b) => (a.temporalExtent?.startYear ?? 0) - (b.temporalExtent?.startYear ?? 0)),
-  );
-  readonly timelineItems = computed(() =>
-    this.timeline().flatMap((entity) => axisItemOf(entity) ?? []),
-  );
-  readonly selectedTimeline = computed<Entity | undefined>(
-    () => this.timeline().find((e) => e.id === this.params().get('evento')) ?? this.timeline()[0],
   );
   readonly sourceList = computed(() => {
     const block = this.block();

@@ -108,6 +108,8 @@ O gatilho comunica a ação antes do hover. Seleção e expansão persistem até
 
 Explica recorte e ordem: trilho, eventos selecionáveis, períodos e filtros, indicador de posição e painel sincronizado. Fotografias e documentos com contexto e licença; sem mídia, a região continua estável. Eventos podem ligar pensadores, obras e correntes documentadas.
 
+Na leitura de uma tradição, a linha do tempo de **épocas é vertical**: um trilho, anos e épocas expansíveis, com registros e pessoas do intervalo. Não usar eixo horizontal com zoom, pan e régua nessa página; a exploração horizontal fica restrita ao atlas, quando o recorte temporal for o próprio objeto.
+
 Não basta listar datas: selecionar muda informação, conexões e, quando existe, evidência visual. A estrutura semântica continua lista cronológica. Filtro vazio apresenta saída e não deixa seleção invisível como se estivesse no recorte. Datas aproximadas permanecem aproximadas. Simultaneidade, associação e causalidade são distintas.
 
 Conectores e progresso podem responder ao scroll ou à seleção, sem mover a narrativa. Animação de conector é curta, limitada aos vínculos relevantes, sem loop, com equivalente imediato em reduced motion.

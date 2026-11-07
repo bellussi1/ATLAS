@@ -214,17 +214,6 @@
       "gap": "A periodização europeia foi complementada pelo caso brasileiro; a história do marxismo na Ásia e na África exige bibliografia própria, ainda não incorporada.",
       "blocks": [
         {
-          "type": "timeline",
-          "entityIds": [
-            "work-wealth-of-nations",
-            "work-communist-manifesto",
-            "work-capital-volume-i",
-            "event-paris-commune",
-            "institution-second-international",
-            "event-russian-revolution"
-          ]
-        },
-        {
           "type": "chronology",
           "epochs": [
             {
@@ -275,6 +264,7 @@
             "person-florestan-fernandes"
           ],
           "markerIds": [
+            "work-wealth-of-nations",
             "work-communist-manifesto",
             "work-capital-volume-i",
             "event-paris-commune",
