@@ -36,9 +36,10 @@ Execute na worktree do projeto. Comandos entre crases.
    - Nomes e citações ficam no idioma do artigo.
    - Divergência entre artigos vira `controversy`, sem escolher uma versão.
    - Com chave de API, use o extrator rico: `npm run tradicao:extract -- <tradição> --dry-run` para ver o custo e, com aprovação do usuário, `--max-usd N`. Ele aplica as travas de `scripts/tradicao/guards.mjs` e a segunda passada; não há `wiki-extract extract`.
-7. **Validar.** `node scripts/wiki-extract.mjs store <tradição>`. O comando informa quantas citações foram rejeitadas por item. Corrija até zero.
-8. **Publicar rascunhos.** `node scripts/wiki-extract.mjs publish-drafts <tradição>`. Usa as credenciais `R2_DRAFTS_*` de `~/.atlas/r2.env`. Repetir o comando não duplica objetos (são imutáveis por hash).
-9. **Ampliar.** Após o fetch, uma nova `discover` lista menções tipadas dos artigos já lidos (`origin: "mention"`). Eles são o próximo lote, a partir de nova decisão.
+7. **Consolidar.** Para a tradição inteira, `node scripts/content/wiki-drafts-to-collections.mjs`. Para um verbete isolado, `node scripts/content/wiki-drafts-to-collections.mjs --partial --only <id>` (primeiro `--dry-run`): preserva as coleções e registros existentes, funde pelo QID, anexa QID por título quando falta e não publica.
+8. **Validar.** `node scripts/wiki-extract.mjs store <tradição>`. O comando informa quantas citações foram rejeitadas por item. Corrija até zero.
+9. **Publicar rascunhos.** `node scripts/wiki-extract.mjs publish-drafts <tradição>`. Usa as credenciais `R2_DRAFTS_*` de `~/.atlas/r2.env`. Repetir o comando não duplica objetos (são imutáveis por hash).
+10. **Ampliar.** Após o fetch, uma nova `discover` lista menções tipadas dos artigos já lidos (`origin: "mention"`). Eles são o próximo lote, a partir de nova decisão.
 
 ## Profundidade das relações
 
