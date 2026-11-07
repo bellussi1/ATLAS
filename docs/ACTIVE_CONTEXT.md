@@ -404,7 +404,8 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Criado `NavigationFailureComponent` no app shell: nomeia o tipo de destino (leitura, verbete, grafo, acervo ou página), mostra o endereço tentado, distingue falha de recurso/rede de falha de rota e oferece tentar novamente, continuar na página anterior e uma saída para o índice de leituras ou o acervo.
     - O app shell agora guarda o título anterior, o tipo da falha e o estado de nova tentativa. O botão fica desabilitado durante a tentativa, o retry não empilha navegações e o foco vai para o título do alerta. O `role="alert"` e o `aria-describedby` mantêm o anúncio acessível.
     - O aviso só oferece “Continuar na página anterior” quando existe uma página anterior; no primeiro carregamento, a saída é o índice ou o acervo. A página anterior não é desmontada.
-    - Verificações: `npm test` **362/362**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **56/56**, `lint` e `typecheck` exit 0; build **1.189 rotas**. Conferência visual em 1280 e 390, sem overflow; o teste e2e bloqueia o chunk, confere o alerta, o foco e o retry. Nada foi publicado.
+    - O número ativo do índice perdeu a transição de fundo: a animação podia deixar texto escuro sobre o vermelho por alguns quadros e foi capturada pelo Axe. O teste de falha de carregamento foi atualizado para o novo alerta.
+    - Verificações: `npm test` **362/362**, `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **56/56**, `e2e/content-loading.spec.ts` + `e2e/liberalism-atlas.spec.ts` **7/7**, `lint` e `typecheck` exit 0; build **1.189 rotas**. Conferência visual em 1280 e 390, sem overflow; o teste e2e bloqueia o chunk, confere o alerta, o foco e o retry. Nada foi publicado.
 
 ## Pendências que bloqueiam
 

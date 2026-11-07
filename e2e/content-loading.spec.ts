@@ -99,9 +99,10 @@ test('a failed content asset preserves the current page and offers a working ret
     .locator('.site-header')
     .getByRole('link', { name: /Liberalismo/ })
     .click();
-  await expect(page.getByRole('alert')).toContainText('Não foi possível carregar a leitura');
+  await expect(page.getByRole('alert')).toContainText('A leitura não abriu');
+  await expect(page.getByRole('alert')).toContainText('Você continua em Início.');
   await expect(page.locator('h1')).toContainText('Tudo');
-  const audit = await new AxeBuilder({ page }).include('.atlas-notice').analyze();
+  const audit = await new AxeBuilder({ page }).include('.navigation-failure').analyze();
   expect(
     audit.violations.filter((violation) =>
       ['critical', 'serious'].includes(violation.impact ?? ''),

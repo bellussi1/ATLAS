@@ -158,9 +158,7 @@ progress::-moz-progress-bar {
   background: var(--color-surface-subtle);
   color: var(--color-ink);
   font: 600 0.75rem/1 var(--font-mono);
-  transition:
-    background-color var(--motion-standard) var(--ease-out),
-    border-radius var(--motion-standard) var(--ease-out);
+  transition: border-radius var(--motion-standard) var(--ease-out);
 }
 
 a[aria-current='location'] .chapter-number {
