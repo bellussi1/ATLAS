@@ -1,7 +1,7 @@
 import * as z from 'zod';
 
 /** Public, non-secret base URL of the atlas-public bucket; the only address the app reads from. */
-export const DEFAULT_CONTENT_BASE_URL = 'https://pub-8c938ef778c64292a6ac1a79b25a9233.r2.dev';
+export const DEFAULT_CONTENT_BASE_URL = 'https://atlas-content-delivery.atlas-bellussi.workers.dev';
 
 const digest = z.string().regex(/^[a-f0-9]{64}$/);
 const artifact = z.object({ sha256: digest, bytes: z.number().int().nonnegative() });

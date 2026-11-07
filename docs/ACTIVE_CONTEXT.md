@@ -208,6 +208,14 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `delete_branch_on_merge` e `allow_update_branch` ativados. O perfil comunitário segue em **100%** (README, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, PR template e issue templates).
     - Segurança: **private vulnerability reporting** e **Dependabot security updates** ativados (vulnerability alerts habilitados antes); secret scanning e push protection já estavam ligados.
 
+30. **Origem do conteúdo no Worker**
+    - `atlas-content-delivery` publicado (`Version ID c49f1d30-3e94-4a3a-a47e-681d6d12d2f9`) em `https://atlas-content-delivery.atlas-bellussi.workers.dev`, com binding somente leitura em `atlas-public`.
+    - `switch-content-domain --apply` trocou a constante do app, o ponteiro local e a CSP para essa origem.
+    - `content:publish` publicou o release **a54eee7274…** e gravou o `pointer.json` com `baseUrl` novo; `content:fetch` reaproveitou o cache (0 de 21 baixados) e o `build` passou.
+    - `ATLAS_CDN_URL` atualizado para o Worker.
+    - Verificado: `pointer.json` com `Cache-Control: public, max-age=0, must-revalidate`; artefato `c/<sha>.json` com `max-age=31536000, immutable`; CORS `*`; `OPTIONS` 204; `Content-Encoding: gzip` quando `Accept-Encoding: gzip`. `e2e/content-loading.spec.ts` **4/4**.
+    - A produção do site continua no build antigo até um PR/deploy; a `master` protegida exige `verify`, `secrets` e `CodeQL`, e a Verificação ainda falha na captura remota da issue #46.
+
 ## Pendências que bloqueiam
 
 1. **CI do master** — a Verificação `42337655149` passou `ingest:fetch-raw` e falhou em `ingest:verify` na captura `liberalism/2026-11-01-remoto` (issue **#46**). O CodeQL está verde. Os PRs de dependências #45/#44/#41/#40/#38 estão rebaseados, mas presos nesse gate; #39/#37 aguardam recreate.
