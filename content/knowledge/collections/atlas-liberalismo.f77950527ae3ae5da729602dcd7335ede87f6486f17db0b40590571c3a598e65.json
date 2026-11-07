@@ -1,0 +1,1755 @@
+{
+  "id": "atlas-liberalismo",
+  "slug": "liberalismo-wikipedia",
+  "title": "Liberalismo (rascunhos da Wikipédia)",
+  "description": "Rascunhos assistidos por IA extraídos da Wikipédia, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-06",
+  "entityIds": [
+    "wiki-topic-adam-ferguson",
+    "wiki-topic-adamantios-korais",
+    "wiki-topic-ali-latifiyan",
+    "wiki-topic-david-hume",
+    "wiki-topic-frederic-bastiat",
+    "wiki-topic-igualitarismo",
+    "wiki-topic-jeremy-bentham",
+    "wiki-topic-jose-ortega-y-gasset",
+    "wiki-topic-libertarianismo",
+    "wiki-topic-mary-wollstonecraft",
+    "wiki-topic-mercado-livre",
+    "wiki-topic-robert-nozick"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-adam-ferguson",
+      "slug": "adam-ferguson",
+      "title": "Adam Ferguson",
+      "summary": "Adam Ferguson (1723–1816), filósofo e historiador escocês do Iluminismo escocês, criticou a sociedade comercial por enfraquecer a virtude cívica e defendeu a liberdade civil com representação política. Seu Ensaio sobre a História da Sociedade Civil (1767) é uma das bases da sociologia moderna.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72475020. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Adam Ferguson (1723–1816), filósofo e historiador escocês do Iluminismo escocês, criticou a sociedade comercial por enfraquecer a virtude cívica e defendeu a liberdade civil com representação política. Seu Ensaio sobre a História da Sociedade Civil (1767) é uma das bases da sociologia moderna."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q183094", "wikipedia": "Adam Ferguson" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Adam Ferguson",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Adam_Ferguson",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72475020, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-adamantios-korais",
+      "slug": "adamantios-korais",
+      "title": "Adamántios Koraís",
+      "summary": "Adamantios Korais (1748–1833), estudioso e escritor grego, é considerado um reformador da língua e da literatura gregas. Viveu sobretudo em Paris, criou a katharevousa e teve influência indireta sobre as constituições da Grécia independente, por meio do jurista N. I. Saripolos.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72180345. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Adamantios Korais (1748–1833), estudioso e escritor grego, é considerado um reformador da língua e da literatura gregas. Viveu sobretudo em Paris, criou a katharevousa e teve influência indireta sobre as constituições da Grécia independente, por meio do jurista N. I. Saripolos."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q319635", "wikipedia": "Adamántios Koraís" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Adamántios Koraís",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Adam%C3%A1ntios_Kora%C3%ADs",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72180345, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-ali-latifiyan",
+      "slug": "ali-latifiyan",
+      "title": "Ali Latifiyan",
+      "summary": "Ali Latifiyan (nascido em 1968, em Teerã) é um escritor, pesquisador e historiador iraniano. Sua obra trata de iluminismo, intelectualismo, liberalismo e cultura iraniana, com foco nos intelectuais do Irã entre 1941 e 1979.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72941721. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Ali Latifiyan (nascido em 1968, em Teerã) é um escritor, pesquisador e historiador iraniano. Sua obra trata de iluminismo, intelectualismo, liberalismo e cultura iraniana, com foco nos intelectuais do Irã entre 1941 e 1979."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q111370029", "wikipedia": "Ali Latifiyan" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Ali Latifiyan",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Ali_Latifiyan",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72941721, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-david-hume",
+      "slug": "david-hume",
+      "title": "David Hume",
+      "summary": "David Hume (1711–1776), filósofo, historiador e ensaísta escocês, integra com Locke e Berkeley a tríade do empirismo britânico. Ligado ao ceticismo e ao método experimental, influenciou Kant, a filosofia analítica e a fenomenologia. Seu Tratado da Natureza Humana passou quase despercebido na publicação.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 70961682. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "David Hume (1711–1776), filósofo, historiador e ensaísta escocês, integra com Locke e Berkeley a tríade do empirismo britânico. Ligado ao ceticismo e ao método experimental, influenciou Kant, a filosofia analítica e a fenomenologia. Seu Tratado da Natureza Humana passou quase despercebido na publicação."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q37160", "wikipedia": "David Hume" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "David Hume",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/David_Hume",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 70961682, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-frederic-bastiat",
+      "slug": "frederic-bastiat",
+      "title": "Frédéric Bastiat",
+      "summary": "Frédéric Bastiat (1801–1850), economista e escritor francês da escola liberal, defendeu o livre comércio contra o protecionismo e o socialismo. É conhecido por A Lei (1850), em que afirma que a lei deve proteger a vida, a liberdade e a propriedade, e pela parábola da janela quebrada.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73087918. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Frédéric Bastiat (1801–1850), economista e escritor francês da escola liberal, defendeu o livre comércio contra o protecionismo e o socialismo. É conhecido por A Lei (1850), em que afirma que a lei deve proteger a vida, a liberdade e a propriedade, e pela parábola da janela quebrada."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q13515", "wikipedia": "Frédéric Bastiat" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Frédéric Bastiat",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Bastiat",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73087918, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-igualitarismo",
+      "slug": "igualitarismo",
+      "title": "Igualitarismo",
+      "summary": "Igualitarismo é, na filosofia política, a doutrina que defende igualdade de direitos e oportunidades para todos, nos planos político, econômico e social. Para Karl Popper, na perspectiva liberal, significa tratamento imparcial perante a lei; na esquerda, inclui a luta contra a desigualdade social e econômica.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69072880. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Igualitarismo é, na filosofia política, a doutrina que defende igualdade de direitos e oportunidades para todos, nos planos político, econômico e social. Para Karl Popper, na perspectiva liberal, significa tratamento imparcial perante a lei; na esquerda, inclui a luta contra a desigualdade social e econômica."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q188958", "wikipedia": "Igualitarismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Igualitarismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Igualitarismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69072880, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-jeremy-bentham",
+      "slug": "jeremy-bentham",
+      "title": "Jeremy Bentham",
+      "summary": "Jeremy Bentham (1748–1832), filósofo, jurista e reformador inglês, é considerado o fundador do utilitarismo moderno, com o princípio da maior felicidade do maior número. Defendeu liberdades individuais, a separação entre Igreja e Estado e o fim da pena de morte; propôs o Panóptico, prisão que nunca foi construída.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73087912. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Jeremy Bentham (1748–1832), filósofo, jurista e reformador inglês, é considerado o fundador do utilitarismo moderno, com o princípio da maior felicidade do maior número. Defendeu liberdades individuais, a separação entre Igreja e Estado e o fim da pena de morte; propôs o Panóptico, prisão que nunca foi construída."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q60887", "wikipedia": "Jeremy Bentham" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Jeremy Bentham",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Jeremy_Bentham",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73087912, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-jose-ortega-y-gasset",
+      "slug": "jose-ortega-y-gasset",
+      "title": "José Ortega y Gasset",
+      "summary": "José Ortega y Gasset (1883–1955), filósofo, ensaísta e jornalista espanhol, fundador da Escola de Madrid, é considerado o maior filósofo espanhol do século XX. Para ele, a realidade está na vivência histórica, expressa em 'eu sou eu e a minha circunstância'; atuou também na política da Segunda República.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 70889178. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "José Ortega y Gasset (1883–1955), filósofo, ensaísta e jornalista espanhol, fundador da Escola de Madrid, é considerado o maior filósofo espanhol do século XX. Para ele, a realidade está na vivência histórica, expressa em 'eu sou eu e a minha circunstância'; atuou também na política da Segunda República."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q153020", "wikipedia": "José Ortega y Gasset" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "José Ortega y Gasset",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Jos%C3%A9_Ortega_y_Gasset",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 70889178, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-libertarianismo",
+      "slug": "libertarianismo",
+      "title": "Libertarianismo",
+      "summary": "Libertarianismo é uma filosofia política e movimento que defende a liberdade como princípio central e desconfia da autoridade do Estado. Tem uma vertente de esquerda, ligada ao anarquismo e ao socialismo libertário, e uma de direita, ligada ao capitalismo de livre mercado e ao anarcocapitalismo, dominante nos Estados Unidos.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69073357. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Libertarianismo é uma filosofia política e movimento que defende a liberdade como princípio central e desconfia da autoridade do Estado. Tem uma vertente de esquerda, ligada ao anarquismo e ao socialismo libertário, e uma de direita, ligada ao capitalismo de livre mercado e ao anarcocapitalismo, dominante nos Estados Unidos."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q178598", "wikipedia": "Libertarianismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Libertarianismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Libertarianismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69073357, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-mary-wollstonecraft",
+      "slug": "mary-wollstonecraft",
+      "title": "Mary Wollstonecraft",
+      "summary": "Mary Wollstonecraft (1759–1797), escritora e filósofa inglesa, é considerada uma das fundadoras da filosofia feminista. Em Reivindicação dos Direitos da Mulher (1792) argumentou que as mulheres não são naturalmente inferiores aos homens, mas parecem sê-lo por falta de educação.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72817868. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Mary Wollstonecraft (1759–1797), escritora e filósofa inglesa, é considerada uma das fundadoras da filosofia feminista. Em Reivindicação dos Direitos da Mulher (1792) argumentou que as mulheres não são naturalmente inferiores aos homens, mas parecem sê-lo por falta de educação."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q101638", "wikipedia": "Mary Wollstonecraft" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Mary Wollstonecraft",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mary_Wollstonecraft",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72817868, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-mercado-livre",
+      "slug": "mercado-livre",
+      "title": "Mercado livre",
+      "summary": "Livre mercado é o princípio pelo qual preços e trocas são determinados pela oferta e pela demanda, sem intervenção governamental nem privilégios ou monopólios. Associado ao capitalismo, também apareceu em formas de socialismo; a crítica sustenta que mercados com poder desigual exigem regulação.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 71927692. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Livre mercado é o princípio pelo qual preços e trocas são determinados pela oferta e pela demanda, sem intervenção governamental nem privilégios ou monopólios. Associado ao capitalismo, também apareceu em formas de socialismo; a crítica sustenta que mercados com poder desigual exigem regulação."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q46607", "wikipedia": "Mercado livre" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Mercado livre",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mercado_livre",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71927692, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-robert-nozick",
+      "slug": "robert-nozick",
+      "title": "Robert Nozick",
+      "summary": "Robert Nozick (1938–2002), filósofo norte-americano de Harvard, defendeu em Anarquia, Estado e Utopia (1974) um Estado mínimo, limitado à proteção contra a força, o roubo e o cumprimento de contratos. Sua obra respondeu a Uma Teoria da Justiça, de John Rawls, e é uma referência do libertarianismo.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69001579. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Robert Nozick (1938–2002), filósofo norte-americano de Harvard, defendeu em Anarquia, Estado e Utopia (1974) um Estado mínimo, limitado à proteção contra a força, o roubo e o cumprimento de contratos. Sua obra respondeu a Uma Teoria da Justiça, de John Rawls, e é uma referência do libertarianismo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q205927", "wikipedia": "Robert Nozick" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Robert Nozick",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Robert_Nozick",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69001579, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-libertarianismo",
+      "title": "Libertarianismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Libertarianismo",
+      "edition": "revisão 69073357; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-adam-ferguson",
+      "title": "Adam Ferguson (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Adam_Ferguson",
+      "edition": "revisão 72475020; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-adamantios-korais",
+      "title": "Adamántios Koraís (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Adam%C3%A1ntios_Kora%C3%ADs",
+      "edition": "revisão 72180345; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-ali-latifiyan",
+      "title": "Ali Latifiyan (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Ali_Latifiyan",
+      "edition": "revisão 72941721; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-david-hume",
+      "title": "David Hume (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/David_Hume",
+      "edition": "revisão 70961682; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-frederic-bastiat",
+      "title": "Frédéric Bastiat (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Bastiat",
+      "edition": "revisão 73087918; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-libertarianismo-001",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "O termo \"libertarianismo\" foi introduzido por teóricos anarquistas franceses no século XIX",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-002",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "Todos os libertários começam com uma concepção de autonomia pessoal",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-003",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "Nos Estados Unidos, o termo foi popularizado pelo anarquista individualista Benjamin Tucker",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-004",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "Muitos ativistas anarquistas e estudiosos negam que o anarcocapitalismo seja uma forma de anarquismo",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-005",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "O primeiro uso registrado do termo libertário foi em 1789",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-006",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "Em 1796, libertário passou a significar \"defensor da liberdade\", especialmente nas esferas política e social",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-007",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "O libertarianismo como sinônimo de liberalismo foi popularizado em maio de 1955 pelo escritor Dean Russell",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-008",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "Os libertários compartilham um ceticismo em relação à autoridade e ao Estado",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-rel-001",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "O Free State Project e o Partido Libertário foram inspirados nos ideais do libertarismo",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-libertarianismo-rel-002",
+      "sourceId": "src-wiki-topic-libertarianismo",
+      "locator": "O Free State Project e o Partido Libertário foram inspirados nos ideais do libertarismo",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-001",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Ele criticava a sociedade comercial por tornar os homens fracos, desonrosos e despreocupados com sua comunidade.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-002",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Permanece uma questão em debate se, na Batalha de Fontenoy (1745), Ferguson lutou nas fileiras durante todo o dia",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-003",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Kettler, David Adam Ferguson: His Social and Political Thought. New Brunswick: Transaction, 2005.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-004",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "1 de julho N.S. / 20 de junho O.S. 1723 – 22 de fevereiro de 1816",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-005",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Em 1759, Ferguson tornou-se professor de filosofia natural na Universidade de Edimburgo",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-006",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Em 1767, publicou seu Ensaio sobre a História da Sociedade Civil",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-007",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Em 1783, apareceu sua História do Progresso e Terminação da República Romana",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-008",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "onde faleceu em 22 de fevereiro de 1816",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-009",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Ferguson foi chamado de \"o pai da sociologia moderna\" por suas contribuições para o desenvolvimento inicial da disciplina",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-010",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Ferguson acreditava que a história da República Romana em seu período de grandeza formava uma ilustração prática das doutrinas éticas e políticas que ele estudava especialmente",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-011",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "Permanece uma questão em debate se, na Batalha de Fontenoy (1745), Ferguson lutou nas fileiras durante todo o dia",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-adam-ferguson-rel-003",
+      "sourceId": "src-wiki-topic-adam-ferguson",
+      "locator": "A crítica de Ferguson à sociedade comercial foi muito além da de Smith e influenciou Hegel e Marx.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-001",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Por muito tempo os estudos sobre Hume destacaram apenas o lado céptico-destrutivo de sua filosofia",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-002",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Thomas Reid considerava-a uma espécie de redução ao absurdo da filosofia das ideias",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-003",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Nasceu em Edimburgo, em 26 de abril de 1711",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-004",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Em 1739, consegue publicar os dois primeiros volumes de seu Tratado",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-005",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Em 1752, Hume é convidado a dirigir a biblioteca da Faculdade dos Advogados de Edimburgo",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-006",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "A primeira veio a público em 1757 como parte das Quatro Dissertações",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-007",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Hume faleceu em 25 de agosto de 1776",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-008",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "o Tratado não causou impressão à época de sua publicação",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-009",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "sendo considerado um dos mais importantes pensadores do chamado iluminismo escocês",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-010",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Seguindo atentamente os acontecimentos nas colônias americanas, tomou partido da independência americana",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-rel-001",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Fortemente influenciado por Locke e Berkeley",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-rel-002",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Teve profunda influência sobre Kant",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-david-hume-rel-003",
+      "sourceId": "src-wiki-topic-david-hume",
+      "locator": "Hume refuta a ideia de Montesquieu de que uma grande nação está condenada a ser corrupta e ingovernável",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-001",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "suas visões favoreciam o livre mercado e influenciaram a Escola Austríaca",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-002",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Ele é mais conhecido por seu livro A Lei, onde argumentou que a lei deve proteger direitos como a propriedade privada",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-003",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Bastiat envolveu-se famosamente em um debate entre 1849 e 1850 com Pierre-Joseph Proudhon sobre a legitimidade dos juros.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-004",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Foi eleito juiz de paz de Mugron em 1831 e para o Conselho Geral",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-005",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Bastiat's Legacy in Economics by Jorg Guido Hulsmann",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-006",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Bastiat nasceu em 29 de junho de 1801 em Bayonne",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-007",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Antes de morrer em 24 de dezembro de 1850",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-008",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "publicado originalmente como panfleto em 1850",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-009",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "Foi eleito juiz de paz de Mugron em 1831",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-010",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "foi descrito por Mark Thornton, Thomas DiLorenzo e outros economistas como um precursor da Escola Austríaca",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-frederic-bastiat-rel-001",
+      "sourceId": "src-wiki-topic-frederic-bastiat",
+      "locator": "suas visões favoreciam o livre mercado e influenciaram a Escola Austríaca",
+      "accessedAt": "2026-11-06",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-libertarianismo-001",
+      "evidenceId": "ev-wiki-topic-libertarianismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-002",
+      "evidenceId": "ev-wiki-topic-libertarianismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-003",
+      "evidenceId": "ev-wiki-topic-libertarianismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-004",
+      "evidenceId": "ev-wiki-topic-libertarianismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-005",
+      "evidenceId": "ev-wiki-topic-libertarianismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-006",
+      "evidenceId": "ev-wiki-topic-libertarianismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-007",
+      "evidenceId": "ev-wiki-topic-libertarianismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-libertarianismo-008",
+      "evidenceId": "ev-wiki-topic-libertarianismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-001",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-002",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-003",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-004",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-005",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-006",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-007",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-008",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-009",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-010",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-adam-ferguson-011",
+      "evidenceId": "ev-wiki-topic-adam-ferguson-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-001",
+      "evidenceId": "ev-wiki-topic-david-hume-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-002",
+      "evidenceId": "ev-wiki-topic-david-hume-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-003",
+      "evidenceId": "ev-wiki-topic-david-hume-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-004",
+      "evidenceId": "ev-wiki-topic-david-hume-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-005",
+      "evidenceId": "ev-wiki-topic-david-hume-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-006",
+      "evidenceId": "ev-wiki-topic-david-hume-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-007",
+      "evidenceId": "ev-wiki-topic-david-hume-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-008",
+      "evidenceId": "ev-wiki-topic-david-hume-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-009",
+      "evidenceId": "ev-wiki-topic-david-hume-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-david-hume-010",
+      "evidenceId": "ev-wiki-topic-david-hume-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-001",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-002",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-003",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-004",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-005",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-006",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-007",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-008",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-009",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-frederic-bastiat-010",
+      "evidenceId": "ev-wiki-topic-frederic-bastiat-010",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-libertarianismo-001",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "O termo libertarianismo foi introduzido por teóricos anarquistas franceses no século XIX, quando defendiam a liberdade individual.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-002",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Todos os libertários partem de uma concepção de autonomia pessoal, da qual defendem as liberdades civis e a redução ou eliminação do Estado.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-003",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Nos Estados Unidos, o termo foi popularizado pelo anarquista individualista Benjamin Tucker por volta do final da década de 1870 e início da década de 1880.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-004",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Muitos ativistas anarquistas e estudiosos negam que o anarcocapitalismo seja uma forma de anarquismo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-005",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Primeiro uso registrado do termo libertário, no contexto da metafísica. (1789).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-006",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Libertário passou a significar defensor da liberdade, especialmente nas esferas política e social. (1796).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-007",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "O libertarianismo como sinônimo de liberalismo foi popularizado pelo escritor Dean Russell. (1955-05).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-libertarianismo-008",
+      "entityId": "wiki-topic-libertarianismo",
+      "text": "Os libertários compartilham um ceticismo em relação à autoridade e ao Estado.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-libertarianismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-001",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Ele criticava a sociedade comercial por tornar os homens fracos, desonrosos e despreocupados com sua comunidade, enquanto simpatizava com sociedades tradicionais.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-001"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-002",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Há debate sobre se Ferguson lutou nas fileiras na Batalha de Fontenoy, em 1745, e se recusou a deixar o campo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-002"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-003",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Entre as obras de referência listadas no artigo está um estudo de David Kettler sobre o pensamento social e político de Ferguson, publicado em 2005.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-003"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-004",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Nascimento de Adam Ferguson (1723).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-004"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-005",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Tornou-se professor de filosofia natural na Universidade de Edimburgo (1759).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-005"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-006",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Publicação do Ensaio sobre a História da Sociedade Civil (1767).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-006"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-007",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Publicação da História do Progresso e Terminação da República Romana (1783).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-007"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-008",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Morte de Adam Ferguson em St Andrews (1816-02-22).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-008"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-009",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Ferguson foi chamado de \"o pai da sociologia moderna\" por suas contribuições para o desenvolvimento inicial da disciplina.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-009"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-010",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Ferguson acreditava que a história da República Romana em seu período de grandeza ilustrava as doutrinas éticas e políticas que estudava.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-010"]
+    },
+    {
+      "id": "claim-wiki-topic-adam-ferguson-011",
+      "entityId": "wiki-topic-adam-ferguson",
+      "text": "Há debate sobre se Ferguson lutou nas fileiras na Batalha de Fontenoy, recusando-se a deixar o campo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-adam-ferguson-011"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-001",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Durante muito tempo, os estudos sobre Hume destacaram apenas o lado cético e destrutivo de sua filosofia.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-001"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-002",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Thomas Reid viu a obra de Hume como uma redução ao absurdo da filosofia das ideias iniciada por Descartes.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-002"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-003",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Nascimento de David Hume em Edimburgo. (1711-04-26).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-003"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-004",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Publicação dos dois primeiros volumes do Tratado da Natureza Humana. (1739).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-004"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-005",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Hume é convidado a dirigir a biblioteca da Faculdade dos Advogados de Edimburgo. (1752).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-005"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-006",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Publicação da História Natural da Religião como parte das Quatro Dissertações. (1757).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-006"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-007",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Morte de David Hume em Edimburgo. (1776-08-25).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-007"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-008",
+      "entityId": "wiki-topic-david-hume",
+      "text": "O Tratado da Natureza Humana não teve repercussão na época de sua publicação.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-008"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-009",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Hume é considerado um dos mais importantes pensadores do Iluminismo escocês e da história da filosofia.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-009"]
+    },
+    {
+      "id": "claim-wiki-topic-david-hume-010",
+      "entityId": "wiki-topic-david-hume",
+      "text": "Hume tomou partido da independência americana.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-david-hume-010"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-001",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Segundo o artigo, suas visões favoreciam o livre mercado e influenciaram a Escola Austríaca.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-001"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-002",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Em A Lei, Bastiat argumentou que a lei deve proteger direitos como a propriedade privada.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-002"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-003",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Bastiat envolveu-se em debate com Pierre-Joseph Proudhon, entre 1849 e 1850, sobre a legitimidade dos juros.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-003"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-004",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Em 1831 foi eleito juiz de paz de Mugron, e em 1832 foi eleito para o Conselho Geral de Landes.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-004"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-005",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "A bibliografia do artigo lista, entre as fontes, a obra Bastiat's Legacy in Economics, de Jorg Guido Hulsmann.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-005"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-006",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Nascimento em Bayonne (1801-06-29).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-006"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-007",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Morte (1850-12-24).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-007"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-008",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Publicação original de A Lei como panfleto (1850).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-008"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-009",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Bastiat foi eleito juiz de paz de Mugron em 1831.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-009"]
+    },
+    {
+      "id": "claim-wiki-topic-frederic-bastiat-010",
+      "entityId": "wiki-topic-frederic-bastiat",
+      "text": "Mark Thornton, Thomas DiLorenzo e outros economistas descreveram Bastiat como precursor da Escola Austríaca.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-frederic-bastiat-010"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-libertarianismo-001",
+      "claimId": "claim-wiki-topic-libertarianismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-002",
+      "claimId": "claim-wiki-topic-libertarianismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-003",
+      "claimId": "claim-wiki-topic-libertarianismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-004",
+      "claimId": "claim-wiki-topic-libertarianismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-005",
+      "claimId": "claim-wiki-topic-libertarianismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-006",
+      "claimId": "claim-wiki-topic-libertarianismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-007",
+      "claimId": "claim-wiki-topic-libertarianismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-libertarianismo-008",
+      "claimId": "claim-wiki-topic-libertarianismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-001",
+      "claimId": "claim-wiki-topic-adam-ferguson-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-002",
+      "claimId": "claim-wiki-topic-adam-ferguson-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-003",
+      "claimId": "claim-wiki-topic-adam-ferguson-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-004",
+      "claimId": "claim-wiki-topic-adam-ferguson-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-005",
+      "claimId": "claim-wiki-topic-adam-ferguson-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-006",
+      "claimId": "claim-wiki-topic-adam-ferguson-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-007",
+      "claimId": "claim-wiki-topic-adam-ferguson-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-008",
+      "claimId": "claim-wiki-topic-adam-ferguson-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-009",
+      "claimId": "claim-wiki-topic-adam-ferguson-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-010",
+      "claimId": "claim-wiki-topic-adam-ferguson-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-adam-ferguson-011",
+      "claimId": "claim-wiki-topic-adam-ferguson-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-001",
+      "claimId": "claim-wiki-topic-david-hume-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-002",
+      "claimId": "claim-wiki-topic-david-hume-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-003",
+      "claimId": "claim-wiki-topic-david-hume-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-004",
+      "claimId": "claim-wiki-topic-david-hume-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-005",
+      "claimId": "claim-wiki-topic-david-hume-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-006",
+      "claimId": "claim-wiki-topic-david-hume-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-007",
+      "claimId": "claim-wiki-topic-david-hume-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-008",
+      "claimId": "claim-wiki-topic-david-hume-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-009",
+      "claimId": "claim-wiki-topic-david-hume-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-david-hume-010",
+      "claimId": "claim-wiki-topic-david-hume-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-001",
+      "claimId": "claim-wiki-topic-frederic-bastiat-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-002",
+      "claimId": "claim-wiki-topic-frederic-bastiat-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-003",
+      "claimId": "claim-wiki-topic-frederic-bastiat-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-004",
+      "claimId": "claim-wiki-topic-frederic-bastiat-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-005",
+      "claimId": "claim-wiki-topic-frederic-bastiat-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-006",
+      "claimId": "claim-wiki-topic-frederic-bastiat-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-007",
+      "claimId": "claim-wiki-topic-frederic-bastiat-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-008",
+      "claimId": "claim-wiki-topic-frederic-bastiat-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-009",
+      "claimId": "claim-wiki-topic-frederic-bastiat-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-frederic-bastiat-010",
+      "claimId": "claim-wiki-topic-frederic-bastiat-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [
+    {
+      "id": "rel-wiki-topic-libertarianismo-001",
+      "fromEntityId": "wiki-topic-libertarianismo",
+      "toEntityId": "wiki-topic-free-state-project",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "O libertarianismo inspirou o Free State Project.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-libertarianismo-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Libertarianismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-libertarianismo-002",
+      "fromEntityId": "wiki-topic-libertarianismo",
+      "toEntityId": "wiki-topic-partido-libertario-estados-unidos",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "O libertarianismo inspirou o Partido Libertário.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-libertarianismo-rel-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Libertarianismo",
+        "retrievedAt": "2026-11-05"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-adam-ferguson-003",
+      "fromEntityId": "wiki-topic-adam-ferguson",
+      "toEntityId": "wiki-topic-georg-wilhelm-friedrich-hegel",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "A crítica de Ferguson à sociedade comercial influenciou Hegel.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-adam-ferguson-rel-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Adam_Ferguson",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-david-hume-001",
+      "fromEntityId": "person-john-locke",
+      "toEntityId": "wiki-topic-david-hume",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "Hume foi fortemente influenciado por John Locke, segundo o artigo.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-david-hume-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/David_Hume",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-david-hume-002",
+      "fromEntityId": "wiki-topic-david-hume",
+      "toEntityId": "person-immanuel-kant",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "Hume teve profunda influência sobre Immanuel Kant.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-david-hume-rel-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/David_Hume",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-david-hume-003",
+      "fromEntityId": "wiki-topic-david-hume",
+      "toEntityId": "person-montesquieu",
+      "type": "reacted_against",
+      "label": "reagiu contra",
+      "reverseLabel": "recebeu reação de",
+      "context": "Hume refutou a ideia de Montesquieu de que uma grande nação está condenada a ser corrupta e ingovernável.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-david-hume-rel-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/David_Hume",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-frederic-bastiat-001",
+      "fromEntityId": "wiki-topic-frederic-bastiat",
+      "toEntityId": "wiki-topic-escola-austriaca",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "Bastiat influenciou a Escola Austríaca, segundo o artigo, por suas visões favoráveis ao livre mercado.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-frederic-bastiat-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Bastiat",
+        "retrievedAt": "2026-11-06"
+      }
+    }
+  ],
+  "learningPaths": []
+}
