@@ -20,7 +20,6 @@ import {
   nodeScaleFor,
   relationFamilies,
   searchNodes,
-  shortestPath,
 } from './knowledge-network';
 
 const network = buildKnowledgeNetwork(methodologyKnowledgeGraph);
@@ -240,21 +239,6 @@ describe('knowledge network', () => {
       expect(edge.phraseReverse.length).toBeGreaterThan(0);
       expect(edge.context.length).toBeGreaterThan(0);
     }
-  });
-
-  it('finds the shortest chain between two nodes in either direction', () => {
-    const edge = (id: string, source: string, target: string) =>
-      ({ id, source, target }) as unknown as NetworkEdge;
-    const edges = [
-      edge('1', 'a', 'b'),
-      edge('2', 'c', 'b'),
-      edge('3', 'c', 'd'),
-      edge('4', 'a', 'd'),
-    ];
-    expect(shortestPath('a', 'a', edges)).toEqual([]);
-    expect(shortestPath('a', 'c', edges)?.map((step) => step.edge.id)).toHaveLength(2);
-    expect(shortestPath('a', 'd', edges)?.map((step) => step.edge.id)).toEqual(['4']);
-    expect(shortestPath('a', 'z', edges)).toBeNull();
   });
 
   it('lays out a graph of about 700 entries and 1000 links within a time budget', () => {

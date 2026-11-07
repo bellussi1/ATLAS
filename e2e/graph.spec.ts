@@ -217,23 +217,14 @@ test('a selected node lists each link with its reading, nature and reason', asyn
   await page.keyboard.press('Enter');
   const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
   const item = detail.locator('.links li').first();
+  await expect(item.locator('.links__row')).toBeVisible();
   await expect(item.locator('.links__verb')).not.toBeEmpty();
   await expect(item.locator('.nature')).not.toBeEmpty();
   await expect(item.locator('.links__why')).not.toBeEmpty();
+  await expect(item.locator('.links__go')).toBeVisible();
   await expect(detail.getByText(/conex(ão|ões) no acervo/)).toBeVisible();
-});
-
-test('traces a path between two entries from the detail panel', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/grafos');
-  await page.locator(linkedNode).first().focus();
-  await page.keyboard.press('Enter');
-  const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
-  await detail.getByRole('button', { name: 'Começar caminho a partir daqui' }).click();
-  await detail.locator('.links li button').first().click();
-  await expect(detail.getByRole('list', { name: /Trajeto de/ })).toBeVisible();
-  await detail.getByRole('button', { name: 'Limpar caminho' }).click();
-  await expect(detail.getByRole('list', { name: /Trajeto de/ })).toHaveCount(0);
+  if (await detail.locator('.detail__more').count())
+    await expect(detail.locator('.detail__more summary')).toContainText('Ler resumo completo');
 });
 
 test('nodes stay still and no region colour or name covers the map', async ({ page }) => {

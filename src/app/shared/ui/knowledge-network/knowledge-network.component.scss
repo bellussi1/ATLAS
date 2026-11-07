@@ -536,10 +536,6 @@ kbd {
   vector-effect: non-scaling-stroke;
   pointer-events: none;
 }
-.node__pulse.is-origin {
-  stroke: var(--color-focus);
-  stroke-dasharray: 4 3;
-}
 .node__shape {
   stroke: var(--color-canvas);
   stroke-width: 1.5;
@@ -897,16 +893,87 @@ kbd {
   margin: 0;
   font: 400 1.0625rem/1.5 var(--font-serif);
 }
+.detail__media {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  img {
+    inline-size: 100%;
+    block-size: 9.5rem;
+    border: 2px solid var(--color-ink);
+    background: var(--color-surface-subtle);
+    object-fit: cover;
+    object-position: center 22%;
+  }
+  figcaption {
+    color: var(--color-ink-muted);
+    font: 500 0.72rem/1.4 var(--font-sans);
+    a {
+      color: inherit;
+      text-underline-offset: 2px;
+    }
+  }
+}
+.detail__media--art {
+  place-items: center;
+  padding: 0.75rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-surface-subtle);
+  app-geometric-illustration {
+    --illustration-size: 7rem;
+    --illustration-border: 2px solid var(--color-ink);
+  }
+}
+.detail__count-inline {
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 1.6rem;
+  padding: 0.05rem 0.4rem;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 999px;
+  font: 700 0.75rem/1 var(--font-sans);
+}
 .detail__more {
   summary {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    inline-size: 100%;
     min-block-size: 44px;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-tight);
+    background: var(--color-surface-subtle);
+    color: var(--color-ink);
     cursor: pointer;
-    font: 600 0.875rem/1 var(--font-sans);
+    font: 700 0.875rem/1 var(--font-sans);
+    list-style: none;
+    transition:
+      background-color 120ms,
+      color 120ms;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &:hover {
+      background: var(--color-ink);
+      color: var(--color-canvas);
+    }
+  }
+  &[open] summary {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+  }
+  .detail__more-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform 160ms var(--ease-out, ease-out);
+  }
+  &[open] .detail__more-icon {
+    transform: rotate(45deg);
   }
   p {
-    margin: 0.25rem 0 0;
+    margin: 0.5rem 0 0;
     font: 400 0.9375rem/1.55 var(--font-serif);
   }
 }
@@ -940,44 +1007,67 @@ kbd {
     font: 500 0.75rem/1.4 var(--font-sans);
   }
 }
-.links button {
-  display: grid;
-  inline-size: 100%;
-  gap: 0.1rem;
-  min-block-size: 48px;
-  padding: 0.4rem 0.6rem;
-  border: 1px solid transparent;
-  border-radius: var(--radius-tight);
-  background: transparent;
-  color: var(--color-ink);
-  text-align: start;
-  cursor: pointer;
-  transition:
-    transform 140ms var(--ease-out, ease-out),
-    box-shadow 140ms var(--ease-out, ease-out),
-    border-color 140ms;
-  &:hover {
-    transform: translate(-2px, -2px);
-    border-color: var(--color-ink);
-    box-shadow: 3px 3px 0 var(--color-ink);
-  }
+.links {
+  gap: 0.65rem;
 }
 .links li {
   display: grid;
-  gap: 0.25rem;
-  padding: 0.25rem 0.25rem 0.5rem;
+  gap: 0.55rem;
+  padding: 0.7rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-tight);
-  transition: border-color 140ms;
+  background: var(--color-surface-subtle);
+  transition:
+    border-color 140ms,
+    background-color 140ms,
+    box-shadow 140ms;
   &:hover,
   &:focus-within {
     border-color: var(--color-ink);
+    background: var(--color-canvas);
+    box-shadow: 3px 3px 0 var(--color-border-strong);
   }
 }
+.links__row {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+  inline-size: 100%;
+  min-block-size: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  text-align: start;
+  cursor: pointer;
+  &:hover .links__go {
+    color: var(--color-ink);
+    transform: translate(2px, -2px);
+  }
+}
+.links__icon {
+  display: grid;
+  place-items: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-tight);
+  background: var(--color-canvas);
+}
+.links__body {
+  display: grid;
+  gap: 0.15rem;
+  min-inline-size: 0;
+}
 .links__why {
+  display: -webkit-box;
   margin: 0;
-  padding-inline: 0.2rem;
+  overflow: hidden;
   font: 400 0.875rem/1.45 var(--font-serif);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 .links__meta {
   display: flex;
@@ -985,7 +1075,6 @@ kbd {
   align-items: center;
   gap: 0.25rem 0.75rem;
   margin: 0;
-  padding-inline: 0.2rem;
   font: 500 0.75rem/1.3 var(--font-sans);
   a {
     color: var(--color-ink);
@@ -1011,54 +1100,22 @@ kbd {
   border-style: dashed;
   color: var(--color-ink-muted);
 }
-.pathbox {
-  display: grid;
-  gap: 0.5rem;
-  justify-items: start;
-  .hint {
-    margin: 0;
-  }
-}
-.steps {
-  display: grid;
-  gap: 0.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-  li {
-    display: grid;
-    gap: 0.2rem;
-    padding-inline-start: 1.6rem;
-    position: relative;
-    counter-increment: step;
-    &::before {
-      content: counter(step);
-      position: absolute;
-      inset-inline-start: 0;
-      inline-size: 1.15rem;
-      block-size: 1.15rem;
-      display: grid;
-      place-items: center;
-      border: 1.5px solid var(--color-ink);
-      border-radius: 50%;
-      font: 700 0.6875rem/1 var(--font-sans);
-    }
-  }
-  em {
-    color: var(--color-ink-muted);
-    font-weight: 500;
-  }
-}
-.steps__line {
-  font: 600 0.875rem/1.35 var(--font-sans);
-}
 .links__verb {
   color: var(--color-ink-muted);
-  font: 500 0.75rem/1.2 var(--font-sans);
+  font: 600 0.72rem/1.2 var(--font-sans);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 .links__name {
-  font: 600 0.9375rem/1.25 var(--font-sans);
+  font: 700 0.95rem/1.25 var(--font-sans);
+  overflow-wrap: anywhere;
+}
+.links__go {
+  color: var(--color-ink-muted);
+  font: 700 1.1rem/1 var(--font-sans);
+  transition:
+    transform 140ms var(--ease-out, ease-out),
+    color 140ms;
 }
 
 @keyframes rise {

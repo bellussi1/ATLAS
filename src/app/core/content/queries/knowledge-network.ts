@@ -598,50 +598,6 @@ export function linksOf(
   );
 }
 
-export interface PathStep {
-  edge: NetworkEdge;
-  from: string;
-  to: string;
-}
-
-/**
- * Shortest chain of links between two nodes (breadth-first, links read in either direction).
- * Returns null when they are not connected; an empty list when both are the same node.
- */
-export function shortestPath(
-  fromId: string,
-  toId: string,
-  edges: readonly NetworkEdge[],
-): PathStep[] | null {
-  if (fromId === toId) return [];
-  const adjacent = new Map<string, { edge: NetworkEdge; other: string }[]>();
-  for (const edge of edges) {
-    adjacent.set(edge.source, [...(adjacent.get(edge.source) ?? []), { edge, other: edge.target }]);
-    adjacent.set(edge.target, [...(adjacent.get(edge.target) ?? []), { edge, other: edge.source }]);
-  }
-  const previous = new Map<string, { edge: NetworkEdge; from: string }>();
-  const queue = [fromId];
-  const seen = new Set([fromId]);
-  for (const current of queue) {
-    for (const { edge, other } of adjacent.get(current) ?? []) {
-      if (seen.has(other)) continue;
-      seen.add(other);
-      previous.set(other, { edge, from: current });
-      if (other === toId) {
-        const steps: PathStep[] = [];
-        for (let at = toId; at !== fromId;) {
-          const step = previous.get(at)!;
-          steps.unshift({ edge: step.edge, from: step.from, to: at });
-          at = step.from;
-        }
-        return steps;
-      }
-      queue.push(other);
-    }
-  }
-  return null;
-}
-
 const positionPattern = /\b(esquerda|direita|centro|extrema|progressist|conservador)/i;
 
 /** Claims that place an ideology on the political spectrum come first; each stays attributed. */

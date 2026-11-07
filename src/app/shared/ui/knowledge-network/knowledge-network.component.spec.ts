@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
 import { labelRelevance } from '@core/content/queries/knowledge-network';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
@@ -16,6 +17,9 @@ describe('KnowledgeNetworkComponent', () => {
           provide: ContentRepository,
           useValue: {
             layouts: {},
+            mediaUrl: (path: string) => path,
+            atlasForEntity: () =>
+              methodologyKnowledgeGraph.atlases.find((atlas) => atlas.id === 'atlas-liberalism'),
             knowledgeGraph: {
               ...methodologyKnowledgeGraph,
               atlases: methodologyKnowledgeGraph.atlases.filter(
@@ -241,6 +245,35 @@ describe('KnowledgeNetworkComponent', () => {
     expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);
   });
 
+  it('shows the licensed image and an evident summary in the detail card', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const withMedia = component
+      .drawnNodes()
+      .find((item) => entityMedia(methodologyKnowledgeGraph, { id: item.node.id }));
+    expect(withMedia).toBeDefined();
+    component.select(withMedia!.node.id);
+    fixture.detectChanges();
+    const image = root(fixture).querySelector<HTMLImageElement>('.detail__media img');
+    expect(image?.getAttribute('src')).toBeTruthy();
+    expect(root(fixture).querySelector('.detail__media figcaption')?.textContent).toBeTruthy();
+    if (withMedia!.node.summary !== withMedia!.node.definition)
+      expect(root(fixture).querySelector('.detail__more summary')?.textContent).toContain(
+        'Ler resumo completo',
+      );
+    expect(root(fixture).querySelector('.links__row .links__go')).not.toBeNull();
+    const withoutMedia = component
+      .drawnNodes()
+      .find((item) => !entityMedia(methodologyKnowledgeGraph, { id: item.node.id }));
+    if (withoutMedia) {
+      component.select(withoutMedia.node.id);
+      fixture.detectChanges();
+      expect(
+        root(fixture).querySelector('.detail__media--art app-geometric-illustration'),
+      ).not.toBeNull();
+    }
+  });
+
   it('never draws a label outside the free area of the stage', async () => {
     const fixture = await render();
     const component = fixture.componentInstance;
@@ -285,27 +318,6 @@ describe('KnowledgeNetworkComponent', () => {
     expect(items[0].querySelector('.nature')?.textContent?.trim()).toBeTruthy();
     expect(items[0].querySelector('.links__why')?.textContent?.trim()).toBeTruthy();
     expect(root(fixture).querySelector('.detail__count')?.textContent).toContain('conex');
-  });
-
-  it('traces a path from a marked node to the selected one', async () => {
-    const fixture = await render();
-    const component = fixture.componentInstance;
-    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
-    const other = component.selectedLinks().length
-      ? null
-      : (() => {
-          component.select(linked.node.id);
-          return component.selectedLinks()[0].other;
-        })();
-    component.select(linked.node.id);
-    component.togglePathStart();
-    component.select((other ?? component.selectedLinks()[0].other).id);
-    fixture.detectChanges();
-    expect(component.pathSteps().length).toBe(1);
-    expect(root(fixture).querySelector('.steps li')).not.toBeNull();
-    component.clearPath();
-    fixture.detectChanges();
-    expect(root(fixture).querySelector('.steps')).toBeNull();
   });
 
   it('cycles through the neighbours of a node with the bracket keys', async () => {
@@ -413,10 +425,6 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.controlsOpen()).toBeNull();
     const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
     component.select(linked.node.id);
-    component.togglePathStart();
-    press('Escape');
-    expect(component.pathFromId()).toBeNull();
-    expect(component.selectedId()).toBe(linked.node.id);
     press('Escape');
     expect(component.selectedId()).toBeNull();
   });

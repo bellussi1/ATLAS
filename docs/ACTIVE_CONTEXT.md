@@ -245,10 +245,20 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 
 
 
+35. **Ficha lateral do nó no grafo**
+    - Ao selecionar um nó, a ficha mostra a imagem licenciada do registro (`entityMedia` + `contentMedia`) com atribuição, licença e página do arquivo. Sem imagem, entra a ilustração geométrica da mesma entidade e paleta usadas no verbete.
+    - A seção “Caminho entre verbetes” foi removida, junto com o estado, os atalhos `C`, o cálculo `shortestPath` e os testes correspondentes.
+    - “Ligações” virou uma lista de cartões compactos: ícone do tipo, verbo em caixa alta, título, seta, razão em até três linhas, natureza e fonte com link externo.
+    - “Ler resumo completo” agora é um botão de largura total, com borda, contraste invertido quando aberto e ícone que vira “×”.
+    - O orçamento de estilo por componente subiu de 18/20 kB para 20/22 kB (`angular.json`) porque a ficha somou cerca de 1 kB e o build passou a exceder 20 kB.
+    - Verificações: `npm test` **325/325**, `e2e/graph.spec.ts` **18/18**, `lint` e `typecheck` exit 0, `build` passou.
+
+
+
 ## Pendências que bloqueiam
 
-1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. Falta enviar os commits do anarquismo e da hierarquia de rótulos e abrir o próximo PR; depois, retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
-2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** e o CI do PR #48 concluiu `verify` em 16m39s. A hierarquia de rótulos passou `e2e/graph.spec.ts` **19/19** localmente.
+1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. As mudanças de anarquismo, rótulos e ficha do nó estão commitadas e enviadas no `develop`; falta abrir o próximo PR para a `master` e retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
+2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** e o CI do PR #48 concluiu `verify` em 16m39s. `e2e/graph.spec.ts` passou **18/18** depois da ficha do nó.
 3. **Produção** — o app está publicado no Cloudflare Pages (`atlas-bellussi.pages.dev`), com `/fontes` em **193 KB**. O `vercel.json` da raiz só vale no próximo deploy Vercel, e o job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; decidir se o Vercel segue como espelho ou se o Pages passa a ser o único alvo.
 4. **Probe de 404** — no Pages, `/rota-inexistente` responde **404** com `404.html` (3.078 bytes), `/grafos`, `/verbete/karl-marx` e `/acervo` respondem 200. O antigo `atlasbr.vercel.app` continua respondendo 200 com `index.html` e só será verificado se o Vercel for mantido.
 5. **Verbetes** — o modo `--partial` e o desempate por conteúdo foram implementados e testados; o piloto de 20 anexou registros sem perder os antigos. Falta o lote maior (bloqueado pela Onda 2 ausente), a revisão humana dos 20 e o perfil político derivado das relações (partido, ideologia e vertente; “lado” só com classificação atribuída).

@@ -14,6 +14,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
+import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import {
   buildKnowledgeNetwork,
   filterNetwork,
@@ -34,7 +36,6 @@ import {
   type RelationFamilyId,
   relationNatureDefinition,
   searchNodes,
-  shortestPath,
 } from '@core/content/queries/knowledge-network';
 import {
   LABEL_HEIGHT,
@@ -50,6 +51,8 @@ import {
   stableLabelTier,
 } from '@core/content/queries/network-labels';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
+import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
 
 import { batchDots, batchEdgeSegments, type EdgeSegment } from './network-batching';
@@ -91,7 +94,12 @@ interface DrawnEdge {
 
 @Component({
   selector: 'app-knowledge-network',
-  imports: [RouterLink, AtlasKindIconComponent],
+  imports: [
+    RouterLink,
+    AtlasKindIconComponent,
+    AtlasGeometricIllustrationComponent,
+    ContentMediaPipe,
+  ],
   templateUrl: './knowledge-network.component.html',
   styleUrl: './knowledge-network.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -178,8 +186,6 @@ export class KnowledgeNetworkComponent {
   readonly hoveredEdgeId = signal<string | null>(null);
   /** Pointer position inside the stage, for the hover card. */
   readonly pointerAt = signal<{ x: number; y: number } | null>(null);
-  /** Start of a path between two nodes; the end is the selected node. */
-  readonly pathFromId = signal<string | null>(null);
 
   readonly total = this.network.nodes.length;
   readonly loading = computed(() => this.positions() === null && this.total > 0);
@@ -209,6 +215,18 @@ export class KnowledgeNetworkComponent {
     const node = this.selected();
     return node ? networkKindDefinition(node.kind) : null;
   });
+  /** Licensed image of the selected record, shown at the top of the detail card. */
+  readonly selectedMedia = computed(() => {
+    const node = this.selected();
+    return node ? entityMedia(this.repository.knowledgeGraph, { id: node.id }) : undefined;
+  });
+  /** Geometric art keeps the card visual when the record has no licensed picture. */
+  readonly selectedIllustration = computed(() => {
+    const node = this.selected();
+    if (!node || this.selectedMedia()) return null;
+    const atlas = this.repository.atlasForEntity(node.id);
+    return atlas ? { id: node.id, kind: node.kind, palette: illustrationPalette(atlas.id) } : null;
+  });
   readonly selectedLinks = computed(() => {
     const node = this.selected();
     return node ? linksOf(node.id, this.visible().edges, this.nodeIndex) : [];
@@ -227,33 +245,8 @@ export class KnowledgeNetworkComponent {
     return id ? linksOf(id, this.visible().edges, this.nodeIndex) : [];
   });
   readonly neighbours = computed(() => new Set(this.activeLinks().map((link) => link.other.id)));
-  readonly pathFrom = computed(() => {
-    const id = this.pathFromId();
-    return id ? (this.nodeIndex.get(id) ?? null) : null;
-  });
-  /** Steps from the path origin to the selected node; null when they are not connected. */
-  readonly path = computed(() => {
-    const from = this.pathFromId();
-    const to = this.selectedId();
-    if (!from || !to || from === to) return undefined;
-    return shortestPath(from, to, this.visible().edges);
-  });
-  readonly pathSteps = computed(() =>
-    (this.path() ?? []).map((step) => ({
-      ...step,
-      fromNode: this.nodeIndex.get(step.from)!,
-      toNode: this.nodeIndex.get(step.to)!,
-      nature: relationNatureDefinition(step.edge.nature),
-      forward: step.edge.source === step.from,
-    })),
-  );
-  private readonly pathEdgeIds = computed(
-    () => new Set((this.path() ?? []).map((step) => step.edge.id)),
-  );
-  /** Nodes that stay lit: the path, or the hovered node with its neighbours; null when all are. */
+  /** Nodes that stay lit: the hovered node with its neighbours; null when all are. */
   private readonly litNodes = computed<ReadonlySet<string> | null>(() => {
-    const path = this.path();
-    if (path?.length) return new Set(path.flatMap((step) => [step.from, step.to]));
     const active = this.activeId();
     if (!active) return null;
     return new Set([active, ...this.neighbours()]);
@@ -314,10 +307,10 @@ export class KnowledgeNetworkComponent {
   private readonly steppedK = computed(() => 2 ** (this.zoomStep4() / 4));
   /** Halos sit behind every well-connected node; keeping them apart lets a node be one path. */
   readonly haloNodes = computed(() => this.drawnNodes().filter((item) => item.node.degree >= 6));
-  /** The selected node and the start of a path pulse above the map. */
+  /** The selected node pulses above the map. */
   readonly pulseNodes = computed(() => {
-    const ids = new Set([this.selectedId(), this.pathFromId()].filter((id): id is string => !!id));
-    return ids.size ? this.drawnNodes().filter((item) => ids.has(item.node.id)) : [];
+    const id = this.selectedId();
+    return id ? this.drawnNodes().filter((item) => item.node.id === id) : [];
   });
   /** A persistent ring around the selected node, independent of the pulse animation. */
   readonly selectionNodes = computed(() => {
@@ -758,11 +751,8 @@ export class KnowledgeNetworkComponent {
       _: () => this.zoomStep(0.8),
       '0': () => this.fit(true),
       Home: () => this.fit(true),
-      c: () => this.togglePathStart(),
-      C: () => this.togglePathStart(),
       Escape: () => {
         if (this.shortcutsOpen()) this.shortcutsOpen.set(false);
-        else if (this.pathFromId()) this.pathFromId.set(null);
         else if (this.selectedId() && !this.embedded()) this.clearSelection();
         else if (this.controlsOpen() && !this.wide()) this.controlsOpen.set(false);
       },
@@ -836,28 +826,22 @@ export class KnowledgeNetworkComponent {
     return this.query().trim() !== '' && !this.matchIds().has(id);
   }
   edgeDimmed(edge: NetworkEdge): boolean {
-    const path = this.path();
-    if (path?.length) return !this.pathEdgeIds().has(edge.id);
     const active = this.activeId();
     return !!active && edge.source !== active && edge.target !== active;
   }
   /**
    * Colour, dash and arrowhead tell the kind of link. Far away every link is the same plain line;
-   * up close, or on the links of the selected node and of a path, the kind shows.
+   * up close, or on the links of the selected node, the kind shows.
    */
   edgeDetailed(edge: NetworkEdge): boolean {
     if (this.near()) return true;
     const selected = this.selectedId();
-    return (
-      this.pathEdgeIds().has(edge.id) ||
-      (!!selected && (edge.source === selected || edge.target === selected))
-    );
+    return !!selected && (edge.source === selected || edge.target === selected);
   }
   edgeLit(edge: NetworkEdge): boolean {
     const active = this.activeId();
     const selected = this.selectedId();
     return (
-      this.pathEdgeIds().has(edge.id) ||
       edge.id === this.hoveredEdgeId() ||
       (!!active && (edge.source === active || edge.target === active)) ||
       (!!selected && (edge.source === selected || edge.target === selected))
@@ -968,14 +952,6 @@ export class KnowledgeNetworkComponent {
     this.pointerAt.set(null);
     this.hoveredId.set(null);
     this.hoveredEdgeId.set(null);
-  }
-  togglePathStart(): void {
-    const id = this.selectedId();
-    if (this.pathFromId()) this.pathFromId.set(null);
-    else if (id) this.pathFromId.set(id);
-  }
-  clearPath(): void {
-    this.pathFromId.set(null);
   }
   /** Moves selection or focus to the next (or previous) neighbour of a node. */
   cycleNeighbour(id: string, step: 1 | -1): void {
