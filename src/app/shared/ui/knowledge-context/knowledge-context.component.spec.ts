@@ -259,24 +259,5 @@ describe('KnowledgeContextComponent', () => {
       const fixture = setup(-1);
       expect((fixture.nativeElement as HTMLElement).querySelector('.context-steps')).toBeNull();
     });
-
-    it('pins a sheet as a labelled column and releases it', () => {
-      const fixture = setup(0);
-      const host = fixture.nativeElement as HTMLElement;
-      fixture.componentInstance.pin();
-      fixture.detectChanges();
-      expect(host.querySelector('aside.pinned')?.getAttribute('aria-label')).toContain(
-        fixture.componentInstance.record().title,
-      );
-      fixture.componentInstance.step(1);
-      fixture.detectChanges();
-      expect(host.querySelector('aside.pinned h2')?.textContent).toContain('Karl Marx');
-      expect(host.querySelector('#knowledge-context-title')?.textContent).not.toContain(
-        'Karl Marx',
-      );
-      fixture.componentInstance.unpin();
-      fixture.detectChanges();
-      expect(host.querySelector('aside.pinned')).toBeNull();
-    });
   });
 });

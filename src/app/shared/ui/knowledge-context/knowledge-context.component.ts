@@ -5,7 +5,6 @@ import {
   Component,
   computed,
   DestroyRef,
-  effect,
   ElementRef,
   inject,
   Injector,
@@ -35,8 +34,6 @@ import { keepScrollAnchor } from './keep-scroll';
 
 /** How many earlier sheets stay visible behind the current one. */
 const VISIBLE_SHEETS = 3;
-/** Room for a pinned sheet beside the current one. */
-const COMPARE = '(min-width: 72rem)';
 /** Docked beside the page from this width; below it the panel is a full-width pane. */
 const WIDE = '(min-width: 64rem)';
 
@@ -60,8 +57,7 @@ function toneOf(kind: string): string {
  * Reading panel for a record. It sits at the side of the page and pushes the page aside
  * while open, so nothing is covered; on narrow screens it takes the full width. Following a
  * relation lays a new sheet on the pile; the button, Esc and the browser's back button lift
- * it again. Previous and next step through the reading order; one sheet can be pinned
- * to compare it with the next.
+ * it again. Previous and next step through the reading order.
  */
 @Component({
   selector: 'app-knowledge-context',
@@ -77,7 +73,6 @@ function toneOf(kind: string): string {
   host: {
     '[attr.data-tone]': 'tone()',
     '[style.--depth]': 'depth()',
-    '[class.has-pinned]': '!!pinned()',
   },
 })
 export class KnowledgeContextComponent {
@@ -95,9 +90,6 @@ export class KnowledgeContextComponent {
   readonly record = signal(this.initial.record);
   readonly stops = signal(this.initial.stops);
   readonly index = signal(this.initial.index);
-  /** Sheet kept open in its own column while the reader moves on to the next one. */
-  readonly pinned = signal<KnowledgeContext | null>(null);
-  readonly canCompare = signal(false);
   readonly history = signal<
     {
       record: KnowledgeContext;
@@ -118,7 +110,6 @@ export class KnowledgeContextComponent {
     return { id, kind: entity.kind, palette: illustrationPalette(atlas.id) };
   });
   readonly tone = computed(() => toneOf(this.record().kind));
-  readonly pinnedTone = computed(() => toneOf(this.pinned()?.kind ?? ''));
   /** Where the reader is in the reading order; steps are hidden inside a followed relation. */
   readonly position = computed(() => {
     const total = this.stops().length;
@@ -143,9 +134,6 @@ export class KnowledgeContextComponent {
   /** Terms inside the current sheet; the record itself never links to itself. */
   readonly vocabulary = computed(() =>
     contextVocabulary(this.repository.knowledgeGraph, this.record().entityId),
-  );
-  readonly pinnedVocabulary = computed(() =>
-    this.pinned() ? contextVocabulary(this.repository.knowledgeGraph, this.pinned()!.entityId) : [],
   );
 
   constructor() {
@@ -204,14 +192,6 @@ export class KnowledgeContextComponent {
     target?.scrollIntoView({ block: 'start' });
     target?.focus({ preventScroll: true });
   }
-  pin(): void {
-    this.pinned.set(this.record());
-    this.present(0);
-  }
-  unpin(): void {
-    this.pinned.set(null);
-    this.present(0);
-  }
   permanentPath(): string | undefined {
     return this.record().entityId
       ? this.repository.discoveryIndex.find((entry) => entry.id === this.record().entityId)?.path
@@ -262,16 +242,13 @@ export class KnowledgeContextComponent {
 
   /**
    * Keeps panel behaviour in step with the viewport: no focus trap or modal role while
-   * docked, and the compare column only where it fits.
+   * docked beside the page.
    */
   private watchLayout(): void {
     const win = this.window;
     if (!win?.matchMedia) return;
     const wide = win.matchMedia(WIDE);
-    const compare = win.matchMedia(COMPARE);
     const sync = () => {
-      this.canCompare.set(compare.matches);
-      if (!compare.matches) this.pinned.set(null);
       const container = this.host.nativeElement.closest<HTMLElement>('.cdk-dialog-container');
       container?.setAttribute('aria-modal', String(!wide.matches));
       const trap = (this.ref as { containerInstance?: { _focusTrap?: { enabled: boolean } } })
@@ -279,16 +256,9 @@ export class KnowledgeContextComponent {
       if (trap) trap.enabled = !wide.matches;
     };
     wide.addEventListener('change', sync);
-    compare.addEventListener('change', sync);
     afterNextRender(sync, { injector: this.injector });
-    const root = win.document.documentElement;
-    effect(() =>
-      root.style.setProperty('--atlas-panel-width', this.pinned() ? 'min(60rem, 62vw)' : ''),
-    );
     inject(DestroyRef).onDestroy(() => {
       wide.removeEventListener('change', sync);
-      compare.removeEventListener('change', sync);
-      root.style.removeProperty('--atlas-panel-width');
     });
   }
   /** Keeps the reader's place in the page across the router's reaction to a history pop. */

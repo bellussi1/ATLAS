@@ -151,7 +151,8 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O texto do painel (`summary`, parágrafos e seções) agora transforma termos do grafo em botões: clicar em "meios de produção", "classe" ou "Bakunin" abre outra ficha no mesmo painel, com o mesmo percurso e o botão Voltar.
     - A lista usa títulos e aliases do grafo, mas descarta rótulos ambíguos; `classe`, `Bakunin`, `Kropotkin`, `Marx`, `Engels` e `Weber` têm formas curtas curadas. Se um alias aparecer em dois registros, o título único resolve; sem título único, o rótulo não vira link.
     - O painel limita a **6 termos por parágrafo**, ignora a própria entidade e mantém o foco no título da nova ficha quando não há conexão correspondente. O componente compartilhado é `app-context-text`.
-    - Testes: unidade de vocabulário, do componente e do painel **13/13**; e2e de enciclopédia **7/7**, incluindo Proletariado → “meios de produção” → Voltar; `npm test` **314/314**; `build` **1.185 rotas**; `lint` e `typecheck` exit 0.
+    - O botão **“Fixar para comparar”** foi removido, junto com a coluna fixada e o estado de comparação. O painel mantém Anterior/Próximo, percurso e Voltar.
+    - Testes: unidade de vocabulário, do componente e do painel **13/13**; e2e de enciclopédia **7/7**, incluindo Proletariado → “meios de produção” → Voltar; e2e de fichas **8/8**; `npm test` **314/314**; `build` **1.185 rotas**; `lint` e `typecheck` exit 0.
 
 ## Pendências que bloqueiam
 
