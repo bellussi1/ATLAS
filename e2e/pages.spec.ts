@@ -156,6 +156,22 @@ test('a verbete with a continuous reading offers the contextual path', async ({ 
   await expect(page.getByRole('link', { name: 'Voltar ao topo' })).toBeVisible();
 });
 
+test('a record without an image keeps its geometric illustration in the right column', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/verbete/burguesia');
+  const text = page.locator('.hero-text');
+  const art = page.locator('.hero-media--illustration app-geometric-illustration');
+  await expect(art).toBeVisible();
+  const [textBox, artBox] = await Promise.all([text.boundingBox(), art.boundingBox()]);
+  expect(artBox!.x).toBeGreaterThanOrEqual(textBox!.x + textBox!.width);
+  await page.setViewportSize({ width: 390, height: 844 });
+  const [mobileTextBox, mobileArtBox] = await Promise.all([text.boundingBox(), art.boundingBox()]);
+  expect(mobileArtBox!.y).toBeGreaterThan(mobileTextBox!.y);
+  expect(Math.abs(mobileArtBox!.x - mobileTextBox!.x)).toBeLessThan(2);
+});
+
 test('three pages work on mobile with reduced motion and accessible links', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
