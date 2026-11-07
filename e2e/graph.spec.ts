@@ -150,7 +150,17 @@ test('hovering a node shows only its neighbours and explains what it relates to'
   await page.goto('/grafos');
   await expect(page.locator(linkedNode).first()).toBeVisible();
   const total = await page.locator('[data-node]').count();
-  await page.locator(linkedNode).first().dispatchEvent('pointerenter');
+  const spot = await page.locator(linkedNode).evaluateAll((nodes) => {
+    for (const el of nodes) {
+      const rect = el.getBoundingClientRect();
+      const x = rect.x + rect.width / 2;
+      const y = rect.y + rect.height / 2;
+      if (x > 400 && x < 850 && y > 250 && y < 580) return { x, y };
+    }
+    return null;
+  });
+  expect(spot).not.toBeNull();
+  await page.mouse.move(spot!.x, spot!.y);
   await expect(page.locator('.node.is-dimmed')).not.toHaveCount(0);
   expect(await page.locator('.node.is-dimmed').count()).toBeLessThan(total);
 });
@@ -207,10 +217,8 @@ test('zoomed out the links are plain lines; up close they carry their wording', 
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/grafos');
   await expect(page.locator(linkedNode).first()).toBeVisible();
-  await page.locator(linkedNode).first().dispatchEvent('pointerenter');
-  await expect(page.locator('.label--edge')).toHaveCount(0);
-  // Pick a linked node in the free middle, select it, and zoom around it; up close its links
-  // carry their wording.
+  // Pick a linked node in the free middle, hover it, select it, and zoom around it; up close
+  // its links carry their wording.
   const spot = await page.locator(linkedNode).evaluateAll((nodes) => {
     for (const el of nodes) {
       const rect = el.getBoundingClientRect();
@@ -221,6 +229,8 @@ test('zoomed out the links are plain lines; up close they carry their wording', 
     return null;
   });
   expect(spot).not.toBeNull();
+  await page.mouse.move(spot!.x, spot!.y);
+  await expect(page.locator('.label--edge')).toHaveCount(0);
   await page.mouse.click(spot!.x, spot!.y);
   await expect(page.locator('.node.is-selected')).toHaveCount(1);
   await page.mouse.move(spot!.x, spot!.y);
@@ -297,7 +307,17 @@ test.describe('touch', () => {
   test('a tap selects a node and opens its summary', async ({ page }) => {
     await page.goto('/grafos');
     await expect(page.locator(linkedNode).first()).toBeVisible();
-    await page.locator(linkedNode).first().dispatchEvent('click');
+    const spot = await page.locator(linkedNode).evaluateAll((nodes) => {
+      for (const el of nodes) {
+        const rect = el.getBoundingClientRect();
+        const x = rect.x + rect.width / 2;
+        const y = rect.y + rect.height / 2;
+        if (x > 40 && x < 350 && y > 160 && y < 480) return { x, y };
+      }
+      return null;
+    });
+    expect(spot).not.toBeNull();
+    await page.touchscreen.tap(spot!.x, spot!.y);
     await expect(
       page.getByRole('complementary', { name: 'Detalhes do verbete' }).getByRole('heading', {
         level: 2,

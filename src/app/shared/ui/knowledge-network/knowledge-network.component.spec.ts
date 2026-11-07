@@ -206,15 +206,20 @@ describe('KnowledgeNetworkComponent', () => {
 
   it('lights the surroundings of the hovered node and opens the selected entry with O', async () => {
     const fixture = await render();
-    const linked = fixture.componentInstance.drawnNodes().find((n) => n.node.degree > 0)!;
-    const el = root(fixture).querySelector(`[data-node="${linked.node.id}"]`)!;
-    el.dispatchEvent(new Event('pointerenter'));
+    const component = fixture.componentInstance;
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.hoverNode(linked.node.id);
     fixture.detectChanges();
-    expect(fixture.componentInstance.activeId()).toBe(linked.node.id);
+    expect(component.activeId()).toBe(linked.node.id);
     expect(root(fixture).querySelectorAll('.edges line.is-active').length).toBeGreaterThan(0);
-    el.dispatchEvent(new Event('pointerleave'));
+    expect(
+      root(fixture)
+        .querySelector(`[data-node="${linked.node.id}"]`)
+        ?.classList.contains('is-hovered'),
+    ).toBe(true);
+    component.hoverNode(null);
     fixture.detectChanges();
-    expect(fixture.componentInstance.activeId()).toBeNull();
+    expect(component.activeId()).toBeNull();
   });
 
   it('keeps the whole map readable when a node is selected', async () => {

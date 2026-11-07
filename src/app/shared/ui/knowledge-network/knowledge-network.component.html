@@ -284,8 +284,6 @@
                 [attr.cy]="item.y"
                 [attr.r]="hitRadius(item.r)"
                 (click)="nodeClick(item.node.id)"
-                (pointerenter)="hoverNode(item.node.id)"
-                (pointerleave)="hoverNode(null)"
               />
             }
           </g>
@@ -339,12 +337,10 @@
                 [style.fill]="'var(' + item.kind.color + ')'"
                 [class.is-dimmed]="isDimmed(item.node.id)"
                 [class.is-selected]="selectedId() === item.node.id"
+                [class.is-hovered]="hoveredId() === item.node.id"
                 [class.is-origin]="pathFromId() === item.node.id"
-                (click)="nodeClick(item.node.id)"
                 (keydown)="nodeKey($event, item.node.id)"
                 (focus)="focusId.set(item.node.id)"
-                (pointerenter)="hoverNode(item.node.id)"
-                (pointerleave)="hoverNode(null)"
               />
             }
           </g>

@@ -547,8 +547,11 @@ kbd {
   transform-box: fill-box;
   transform-origin: center;
   transition: scale 160ms var(--ease-out, ease-out);
+  // The hit circle below owns the pointer. Scaling the shape can otherwise move the edge
+  // under the cursor and make hover flicker between the shape and its hit area.
+  pointer-events: none;
 }
-.node.node__shape:hover {
+.node__shape.is-hovered {
   scale: 1.22;
   stroke: var(--color-ink);
 }

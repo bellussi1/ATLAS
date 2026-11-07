@@ -860,7 +860,8 @@ export class KnowledgeNetworkComponent {
 
   nodeClick(id: string): void {
     if (this.suppressClick) return;
-    this.select(id);
+    // The card follows the nearest node under the pointer; the click follows the card.
+    this.select(this.hoveredId() ?? id);
   }
   nodeKey(event: KeyboardEvent, id: string): void {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -903,9 +904,12 @@ export class KnowledgeNetworkComponent {
     if (event.pointerType === 'touch' || this.dragging()) return;
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (!rect) return;
-    this.lastPointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    const at = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    this.lastPointer = at;
+    const node = this.nodeAt(at);
+    if (node?.id !== this.hoveredId()) this.hoverNode(node?.id ?? null);
     // The card only exists over a node (or a lit link up close); elsewhere no signal is written.
-    if (!this.hoveredId() && !this.hoveredEdgeId() && !this.near()) return;
+    if (!node && !this.hoveredEdgeId() && !this.near()) return;
     this.schedulePointer();
   }
   stageLeave(): void {
@@ -1102,13 +1106,12 @@ export class KnowledgeNetworkComponent {
     handler();
   }
   canvasDoubleClick(event: MouseEvent): void {
-    const node = (event.target as Element).closest('[data-node], [data-hit]');
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
+    const node = rect
+      ? this.nodeAt({ x: event.clientX - rect.left, y: event.clientY - rect.top })
+      : null;
     if (node) {
-      const slug = this.nodeIndex.get(
-        node.getAttribute('data-node') ?? node.getAttribute('data-hit') ?? '',
-      )?.slug;
-      if (slug) void this.router.navigate(['/verbete', slug]);
+      void this.router.navigate(['/verbete', node.slug]);
     } else if (rect) {
       this.zoomBy(1.7, { x: event.clientX - rect.left, y: event.clientY - rect.top });
     }
@@ -1240,6 +1243,26 @@ export class KnowledgeNetworkComponent {
   private stopGlide(): void {
     this.tweenToken++;
     this.animating.set(false);
+  }
+
+  /**
+   * Nearest drawn node to a point inside the stage, using the same screen reach as the hit
+   * circles. Resolving by distance keeps hover and click on the icon the reader is pointing at,
+   * even when two hit areas overlap in a dense map.
+   */
+  private nodeAt(point: { x: number; y: number }): NetworkNode | null {
+    const { k, x: vx, y: vy } = this.view();
+    const scale = this.nodeScale();
+    let best: { node: NetworkNode; distance: number } | null = null;
+    for (const item of this.drawnNodes()) {
+      const x = item.x * k + vx;
+      const y = item.y * k + vy;
+      const reach = Math.max(item.r * scale * k + 6, 16);
+      const distance = Math.hypot(point.x - x, point.y - y);
+      if (distance > reach) continue;
+      if (!best || distance < best.distance) best = { node: item.node, distance };
+    }
+    return best?.node ?? null;
   }
 
   private nearestInDirection(id: string, dx: number, dy: number): string | null {
