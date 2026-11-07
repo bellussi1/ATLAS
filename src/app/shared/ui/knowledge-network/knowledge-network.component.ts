@@ -17,6 +17,7 @@ import { Router, RouterLink } from '@angular/router';
 import {
   buildKnowledgeNetwork,
   filterNetwork,
+  labelRelevance,
   layoutNetwork,
   linksOf,
   type NetworkEdge,
@@ -37,10 +38,16 @@ import {
 } from '@core/content/queries/knowledge-network';
 import {
   LABEL_HEIGHT,
+  labelBudget,
   type LabelCandidate,
+  labelTextLimit,
+  type LabelTier,
   labelWidth,
   type PlacedLabel,
   placeLabels,
+  shortenLabel,
+  spreadCandidates,
+  stableLabelTier,
 } from '@core/content/queries/network-labels';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
@@ -158,6 +165,8 @@ export class KnowledgeNetworkComponent {
     k: 0,
     items: [],
   };
+  /** Semantic zoom level kept between frames so thresholds do not flicker. */
+  private lastTier: LabelTier | null = null;
   /** Names to draw: those placed for this zoom, never stretched across another one. */
   readonly shownLabels = computed(() => {
     const items = this.labels();
@@ -406,37 +415,13 @@ export class KnowledgeNetworkComponent {
     const lit = this.litNodes();
     const selectedId = this.selectedId();
     const activeId = this.activeId();
+    const matched = new Set(this.matchIds());
     const forced = new Set<string>([
-      ...this.matchIds(),
+      ...matched,
       ...[selectedId, this.hoveredId(), this.focusId()].filter((id): id is string => !!id),
     ]);
-    const minDegree = zoom < 1.6 ? 2 : zoom < 3.2 ? 1 : 0;
-    const ranked = [...nodes].sort((a, b) => b.node.degree - a.node.degree);
-    const candidates: LabelCandidate[] = [];
-    ranked.forEach((item, rank) => {
-      const id = item.node.id;
-      if (lit && !lit.has(id)) return;
-      const important = lit !== null || forced.has(id);
-      if (!important && item.node.degree < minDegree) return;
-      candidates.push({
-        id,
-        text: important ? item.node.title : shorten(item.node.title),
-        x: item.x * k,
-        y: item.y * k,
-        radius: item.r * scale * k,
-        priority: id === activeId ? -2 : important ? -1 : rank,
-        forced: id === activeId || id === selectedId,
-      });
-    });
-    const obstacles = nodes
-      .filter((item) => !lit || lit.has(item.node.id))
-      .map((item) => ({
-        id: item.node.id,
-        x: item.x * k,
-        y: item.y * k,
-        radius: item.r * scale * k,
-      }));
-    const byId = new Map(nodes.map((item) => [item.node.id, item]));
+    const tier = stableLabelTier(zoom, this.lastTier);
+    this.lastTier = tier;
     const { x: vx, y: vy } = this.view();
     const { width, height } = this.size();
     const inset = this.insets();
@@ -446,22 +431,86 @@ export class KnowledgeNetworkComponent {
       right: width - inset.right - vx,
       bottom: height - inset.bottom - vy,
     };
-    const limit = lit ? Infinity : Math.round(16 + 30 * zoom);
-    const neighbours = this.neighbours();
-    const placed = placeLabels(candidates, obstacles, limit, bounds).flatMap((label, order) => {
-      const item = byId.get(label.id);
-      return item
-        ? [
-            {
-              ...label,
-              wx: item.x * k,
-              wy: item.y * k,
-              neighbour: neighbours.has(label.id),
-              delay: Math.min(order, 14) * 24,
-            },
-          ]
-        : [];
+    const margin = 40;
+    const visible = nodes.filter((item) => {
+      const x = item.x * k;
+      const y = item.y * k;
+      return (
+        x >= bounds.left - margin &&
+        x <= bounds.right + margin &&
+        y >= bounds.top - margin &&
+        y <= bounds.bottom + margin
+      );
     });
+    // A name that was already on the map keeps a small edge, so thresholds do not make it blink.
+    const previous = new Set(this.lastLabels.items.map((item) => item.id));
+    const forcedItems = nodes.filter((item) => forced.has(item.node.id));
+    const pool = [...visible];
+    const poolIds = new Set(pool.map((item) => item.node.id));
+    for (const item of forcedItems) if (!poolIds.has(item.node.id)) pool.push(item);
+    const scored = pool
+      .filter((item) => !lit || lit.has(item.node.id))
+      .map((item) => ({
+        item,
+        score: labelRelevance(item.node) + (previous.has(item.node.id) ? 0.6 : 0),
+      }))
+      .sort(
+        (a, b) =>
+          b.score - a.score ||
+          a.item.node.title.localeCompare(b.item.node.title, 'pt-BR') ||
+          a.item.node.id.localeCompare(b.item.node.id),
+      );
+    const candidates: LabelCandidate[] = [];
+    const optional: LabelCandidate[] = [];
+    scored.forEach(({ item, score }, rank) => {
+      const id = item.node.id;
+      const important = lit !== null || forced.has(id);
+      // Isolated records only enter the close view; global and middle names need some connection.
+      if (!important && tier !== 'local' && (item.node.degree === 0 || score <= 0)) return;
+      const candidate: LabelCandidate = {
+        id,
+        text: important ? item.node.title : shortenLabel(item.node.title, labelTextLimit(tier)),
+        x: item.x * k,
+        y: item.y * k,
+        radius: item.r * scale * k,
+        priority: important ? -1 : rank,
+        forced: id === activeId || id === selectedId || matched.has(id),
+      };
+      if (important) candidates.push(candidate);
+      else optional.push(candidate);
+    });
+    const obstacles = visible
+      .filter((item) => !lit || lit.has(item.node.id))
+      // Minor, unlabeled dots may pass under a name; large or well-connected shapes never do.
+      .filter((item) => item.node.degree >= 8 || item.r * scale * k >= 10)
+      .map((item) => ({
+        id: item.node.id,
+        x: item.x * k,
+        y: item.y * k,
+        radius: item.r * scale * k,
+      }));
+    const byId = new Map(nodes.map((item) => [item.node.id, item]));
+    const budget = lit ? Infinity : labelBudget(tier);
+    const selected = Number.isFinite(budget)
+      ? spreadCandidates(optional, budget, { width, height })
+      : optional;
+    const neighbours = this.neighbours();
+    const placed = placeLabels([...candidates, ...selected], obstacles, Infinity, bounds).flatMap(
+      (label, order) => {
+        const item = byId.get(label.id);
+        return item
+          ? [
+              {
+                ...label,
+                wx: item.x * k,
+                wy: item.y * k,
+                neighbour: neighbours.has(label.id),
+                delay: Math.min(order, 14) * 24,
+              },
+            ]
+          : [];
+      },
+    );
     this.lastLabels = { k: this.zoomK(), items: placed };
     return placed;
   });
@@ -1372,11 +1421,6 @@ function hash(text: string): number {
   let value = 2166136261;
   for (let i = 0; i < text.length; i++) value = Math.imul(value ^ text.charCodeAt(i), 16777619);
   return value >>> 0;
-}
-
-/** Long titles are cut in the crowded view; the full name shows when the node is lit. */
-function shorten(title: string, limit = 28): string {
-  return title.length <= limit ? title : `${title.slice(0, limit - 1).trimEnd()}…`;
 }
 
 function easeInOut(t: number): number {

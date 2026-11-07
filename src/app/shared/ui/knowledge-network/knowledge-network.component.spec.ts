@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { labelRelevance } from '@core/content/queries/knowledge-network';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 import { vi } from 'vitest';
@@ -325,14 +326,44 @@ describe('KnowledgeNetworkComponent', () => {
     component.hoverNode(linked.node.id);
     expect(component.edgeLabels()).toEqual([]);
     component.hoverNode(null);
-    const degrees = new Map(component.drawnNodes().map((n) => [n.node.id, n.node.degree]));
-    for (const label of component.labels()) expect(degrees.get(label.id)).toBeGreaterThanOrEqual(2);
+    const ranked = [...component.drawnNodes()].sort(
+      (a, b) =>
+        labelRelevance(b.node) - labelRelevance(a.node) || a.node.id.localeCompare(b.node.id),
+    );
+    expect(component.labels().map((label) => label.id)).toContain(ranked[0].node.id);
+    expect(component.labels().length).toBeLessThanOrEqual(12);
+    const fitView = component.view();
+    const fitSize = component.size();
+    const fitCells = new Set(
+      component.labels().map((label) => {
+        const x = fitView.x + label.wx + label.dx;
+        const y = fitView.y + label.wy + label.dy;
+        return `${Math.min(3, Math.max(0, Math.floor((x / fitSize.width) * 4)))}:${Math.min(
+          2,
+          Math.max(0, Math.floor((y / fitSize.height) * 3)),
+        )}`;
+      }),
+    );
+    expect(fitCells.size).toBeGreaterThanOrEqual(2);
     const centre = { x: 700, y: 450 };
     component.zoomBy(2.2, centre);
     component.zoomBy(2.2, centre);
+    expect(component.labels().length).toBeLessThanOrEqual(36);
     component.select(linked.node.id);
     component.hoverNode(linked.node.id);
     await vi.waitFor(() => expect(component.edgeLabels().length).toBeGreaterThan(0));
+  });
+
+  it('keeps an accessible name on nodes whose visual label is hidden', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    const shown = new Set(component.labels().map((label) => label.id));
+    const hidden = component.drawnNodes().find((item) => !shown.has(item.node.id));
+    expect(hidden).toBeDefined();
+    const element = root(fixture).querySelector(`[data-node="${hidden!.node.id}"]`);
+    expect(element?.getAttribute('aria-label')).toContain(hidden!.node.title);
   });
 
   it('opens at the whole graph and calls that framing 100%', async () => {

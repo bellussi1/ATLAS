@@ -6,6 +6,7 @@ import {
   collectionLabel,
   filterNetwork,
   firstSentence,
+  labelRelevance,
   layoutNetwork,
   linksOf,
   MAX_NODE_SCALE,
@@ -39,6 +40,53 @@ describe('knowledge network', () => {
       expect(ids).toContain(edge.target);
     }
     expect(network.nodes.reduce((sum, n) => sum + n.degree, 0)).toBe(network.edges.length * 2);
+  });
+
+  it('counts incident edges and distinct neighbours by relation nature', () => {
+    for (const node of network.nodes) {
+      const total = Object.values(node.connections).reduce((sum, value) => sum + value, 0);
+      expect(total).toBe(node.degree);
+      expect(node.distinctNeighbours).toBeGreaterThanOrEqual(
+        Math.max(...Object.values(node.natureNeighbours)),
+      );
+    }
+    const stated = network.edges.find((edge) => edge.nature === 'stated')!;
+    expect(
+      network.nodes.find((node) => node.id === stated.source)!.connections.stated,
+    ).toBeGreaterThan(0);
+  });
+
+  it('ranks documented relations above catalogue and navigation links', () => {
+    const base = network.nodes.find((node) => node.degree > 0)!;
+    const empty = { stated: 0, editorial: 0, catalogue: 0, navigation: 0 };
+    const node = (
+      connections: Partial<Record<keyof typeof empty, number>>,
+      natureNeighbours: Partial<Record<keyof typeof empty, number>>,
+      extra: Partial<NetworkNode> = {},
+    ): NetworkNode => ({
+      ...base,
+      degree: Object.values(connections).reduce((sum, value) => sum + (value ?? 0), 0),
+      connections: { ...empty, ...connections },
+      natureNeighbours: { ...empty, ...natureNeighbours },
+      distinctNeighbours: Object.values(natureNeighbours).reduce(
+        (sum, value) => sum + (value ?? 0),
+        0,
+      ),
+      collections: ['atlas-test'],
+      inReview: false,
+      ...extra,
+    });
+    const documented = node({ stated: 4 }, { stated: 4 });
+    const catalogue = node({ catalogue: 12 }, { catalogue: 12 });
+    const navigation = node({ navigation: 30 }, { navigation: 30 });
+    expect(labelRelevance(documented)).toBeGreaterThan(labelRelevance(catalogue));
+    expect(labelRelevance(catalogue)).toBeGreaterThan(labelRelevance(navigation));
+    expect(
+      labelRelevance(node({ stated: 4 }, { stated: 4 }, { collections: ['a', 'b'] })),
+    ).toBeGreaterThan(labelRelevance(documented));
+    expect(labelRelevance({ ...documented, inReview: true })).toBeLessThan(
+      labelRelevance(documented),
+    );
   });
 
   it('maps every entity kind to one of the eight legend families', () => {

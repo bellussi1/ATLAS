@@ -232,10 +232,23 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 - A divergência também ocorre com o código de 03/11 (`aef543c`), o que indica snapshot gerado fora do estado commitado; a cobertura `refresh`/`remote` só volta com nova captura.
   - `fetch-raw` passou a copiar para `generated/raw-cache` o corpo local que existia só nos blobs de uma captura; antes ele pulava o download e as outras capturas ficavam sem blob. Depois disso, `ingest:fetch-raw` baixou **15.135 de 15.979** respostas e `ingest:verify` passou: 2 capturas Wikimedia reproduzidas duas vezes sem rede e 26 capturas Wikipedia conferidas.
 
+33. **Hierarquia de rótulos do grafo**
+    - `/grafos` deixou de ordenar nomes por `degree` bruto. `labelRelevance()` pondera arestas `stated`, `editorial`, `catalogue` e `navigation`, vizinhos distintos por natureza, presença em coleções e estado editorial; navegação não vale ponto.
+    - Zoom semântico: 12 nomes no global (< 175%), 24 no intermediário e 36 no local, com histerese (145/175 e 300/350), bônus para nomes já visíveis, filtro da área visível, distribuição em grade 4×3 e oito posições de colocação.
+    - Nós pequenos (grau < 8 e raio < 10 px) podem passar sob um nome; nós grandes continuam bloqueando. Rótulos visuais seguem `aria-hidden`; cada nó mantém nome acessível.
+    - Medição: 1440 px passou de 13 para 12 nomes no global, máximo por célula de 6 para 4, sem sobreposição; os nomes agora incluem ONU, Otan, Maquiavel, Karl Marx e Max Weber. Em 390 px, 2 → 3. No intermediário, 21 nomes em 1440 e 11 em 390 (antes 14 e 1).
+    - Plano, alternativas, pesos e limites em `docs/design/GRAFO-ROTULOS.md`. Testes: `knowledge-network.spec.ts`, `network-labels.spec.ts`, componente e `e2e/graph.spec.ts` **19/19**; `npm test` **326/326**; lint e typecheck exit 0; build passou.
+
+34. **Anarquismo no pipeline**
+    - `content/traditions/anarquismo.json` registra QID Q6199, recorte, 8 sementes e `Category:Anarchism`; o estágio 1 derivou as sementes e gravou `identity.palette: "anarquismo"` na leitura.
+    - A cobertura continua com 10 relações no escopo da leitura (o atlas tem 59, mas 49 ligam entidades de outros atlas). Fechar o piso exige ampliar o escopo editorial ou rodar captura + extração rica; a extração é paga e não foi executada.
+
+
+
 ## Pendências que bloqueiam
 
-1. **CI do master** — a issue **#46** foi resolvida localmente: as capturas incompatíveis estão aposentadas, `ingest:verify` passou e os PRs de dependências podem destravar depois do merge. Falta enviar o `develop`, abrir o PR para a `master` e confirmar `verify`, `secrets` e `CodeQL`. Os PRs #45/#44/#41/#40/#38 estão rebaseados; #39/#37 aguardam recreate.
-2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** em 07/11, incluindo liberalismo em 1440; a diferença de 64 px não se reproduziu. Falta a suíte completa no CI do PR #48.
+1. **Nova rodada** — o PR **#48** foi mesclado no `master` em `2655569`; a `develop` foi recriada em `b982aca` e a issue **#46** está fechada. Falta enviar os commits do anarquismo e da hierarquia de rótulos e abrir o próximo PR; depois, retomar os PRs de dependências #45/#44/#41/#40/#38 (#39/#37 aguardam recreate).
+2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** e o CI do PR #48 concluiu `verify` em 16m39s. A hierarquia de rótulos passou `e2e/graph.spec.ts` **19/19** localmente.
 3. **Produção** — o app está publicado no Cloudflare Pages (`atlas-bellussi.pages.dev`), com `/fontes` em **193 KB**. O `vercel.json` da raiz só vale no próximo deploy Vercel, e o job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; decidir se o Vercel segue como espelho ou se o Pages passa a ser o único alvo.
 4. **Probe de 404** — no Pages, `/rota-inexistente` responde **404** com `404.html` (3.078 bytes), `/grafos`, `/verbete/karl-marx` e `/acervo` respondem 200. O antigo `atlasbr.vercel.app` continua respondendo 200 com `index.html` e só será verificado se o Vercel for mantido.
 5. **Verbetes** — o modo `--partial` e o desempate por conteúdo foram implementados e testados; o piloto de 20 anexou registros sem perder os antigos. Falta o lote maior (bloqueado pela Onda 2 ausente), a revisão humana dos 20 e o perfil político derivado das relações (partido, ideologia e vertente; “lado” só com classificação atribuída).

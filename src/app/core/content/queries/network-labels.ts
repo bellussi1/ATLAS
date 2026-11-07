@@ -75,6 +75,125 @@ export function labelWidth(text: string): number {
   return text.length * 6.6 + 8;
 }
 
+/** Semantic zoom levels: few reference names, more names, then local detail. */
+export type LabelTier = 'global' | 'middle' | 'local';
+
+const GLOBAL_TO_MIDDLE = 1.75;
+const MIDDLE_TO_GLOBAL = 1.45;
+const MIDDLE_TO_LOCAL = 3.5;
+const LOCAL_TO_MIDDLE = 3.0;
+
+export function labelTierFor(zoom: number): LabelTier {
+  if (zoom < GLOBAL_TO_MIDDLE) return 'global';
+  if (zoom < MIDDLE_TO_LOCAL) return 'middle';
+  return 'local';
+}
+
+/**
+ * Keeps the tier stable around its thresholds: once a level is chosen, it only changes after the
+ * view crosses a wider margin. Panning and small wheel steps therefore do not reshuffle names.
+ */
+export function stableLabelTier(zoom: number, previous: LabelTier | null): LabelTier {
+  if (!previous) return labelTierFor(zoom);
+  if (previous === 'global') return zoom >= GLOBAL_TO_MIDDLE ? 'middle' : 'global';
+  if (previous === 'middle')
+    return zoom >= MIDDLE_TO_LOCAL ? 'local' : zoom < MIDDLE_TO_GLOBAL ? 'global' : 'middle';
+  return zoom < LOCAL_TO_MIDDLE ? 'middle' : 'local';
+}
+
+/** Names allowed at each level. The global view is a legend of reference points, not a list. */
+export function labelBudget(tier: LabelTier): number {
+  return tier === 'global' ? 12 : tier === 'middle' ? 24 : 36;
+}
+
+/** Long titles are shortened by tier, always on a word boundary. */
+export function labelTextLimit(tier: LabelTier): number {
+  return tier === 'global' ? 30 : tier === 'middle' ? 36 : 44;
+}
+
+export function shortenLabel(text: string, limit: number): string {
+  const clean = text.trim();
+  if (clean.length <= limit) return clean;
+  const slice = clean.slice(0, Math.max(1, limit - 1));
+  const cut = slice.replace(/\s+\S*$/, '').trim();
+  return `${cut || slice.trim()}…`;
+}
+
+export interface SpreadBox {
+  width: number;
+  height: number;
+  columns?: number;
+  rows?: number;
+}
+
+function cellOf(candidate: LabelCandidate, box: SpreadBox): string {
+  const columns = box.columns ?? 4;
+  const rows = box.rows ?? 3;
+  const x = Math.min(
+    columns - 1,
+    Math.max(0, Math.floor((candidate.x / Math.max(1, box.width)) * columns)),
+  );
+  const y = Math.min(
+    rows - 1,
+    Math.max(0, Math.floor((candidate.y / Math.max(1, box.height)) * rows)),
+  );
+  return `${x}:${y}`;
+}
+
+/**
+ * Picks a budget of candidates while keeping the map legible as a whole: the best candidate always
+ * enters, then one per occupied area, then the rest by relevance under a per-area ceiling. Without
+ * this, the highest-degree nodes of one community can fill every label slot.
+ */
+export function spreadCandidates(
+  candidates: readonly LabelCandidate[],
+  budget: number,
+  box: SpreadBox,
+): LabelCandidate[] {
+  if (budget <= 0 || !candidates.length) return [];
+  const byPriority = (a: LabelCandidate, b: LabelCandidate) =>
+    a.priority - b.priority || a.id.localeCompare(b.id);
+  const ordered = [...candidates].sort(byPriority);
+  const cells = new Map<string, LabelCandidate[]>();
+  for (const candidate of ordered) {
+    const key = cellOf(candidate, box);
+    const list = cells.get(key) ?? [];
+    list.push(candidate);
+    cells.set(key, list);
+  }
+  const cellOrder = [...cells.entries()]
+    .map(([key, list]) => ({ key, list }))
+    .sort((a, b) => byPriority(a.list[0], b.list[0]) || a.key.localeCompare(b.key));
+  const chosen: LabelCandidate[] = [];
+  const chosenIds = new Set<string>();
+  const perCell = new Map<string, number>();
+  const first = ordered[0];
+  chosen.push(first);
+  chosenIds.add(first.id);
+  perCell.set(cellOf(first, box), 1);
+  for (const cell of cellOrder) {
+    if (chosen.length >= budget) break;
+    const next = cell.list.find((candidate) => !chosenIds.has(candidate.id));
+    if (!next) continue;
+    chosen.push(next);
+    chosenIds.add(next.id);
+    perCell.set(cell.key, 1);
+  }
+  const columns = box.columns ?? 4;
+  const rows = box.rows ?? 3;
+  const cap = Math.max(1, Math.ceil(budget / (columns * rows)) + 1);
+  for (const candidate of ordered) {
+    if (chosen.length >= budget) break;
+    if (chosenIds.has(candidate.id)) continue;
+    const key = cellOf(candidate, box);
+    if ((perCell.get(key) ?? 0) >= cap) continue;
+    chosen.push(candidate);
+    chosenIds.add(candidate.id);
+    perCell.set(key, (perCell.get(key) ?? 0) + 1);
+  }
+  return chosen.sort(byPriority).map((candidate, index) => ({ ...candidate, priority: index }));
+}
+
 function insideBounds(box: Box, bounds: Box): boolean {
   return (
     box.left >= bounds.left &&
@@ -160,6 +279,50 @@ export function placeLabels(
         },
         dx: -(radius + GAP + 3),
         dy: 0,
+        anchor: 'end',
+      },
+      {
+        box: {
+          left: x + radius + GAP,
+          top: y + radius + GAP,
+          right: x + radius + GAP + width,
+          bottom: y + radius + GAP + LABEL_HEIGHT,
+        },
+        dx: radius + GAP + 3,
+        dy: radius + GAP + LABEL_HEIGHT / 2,
+        anchor: 'start',
+      },
+      {
+        box: {
+          left: x + radius + GAP,
+          top: y - radius - GAP - LABEL_HEIGHT,
+          right: x + radius + GAP + width,
+          bottom: y - radius - GAP,
+        },
+        dx: radius + GAP + 3,
+        dy: -(radius + GAP + LABEL_HEIGHT / 2),
+        anchor: 'start',
+      },
+      {
+        box: {
+          left: x - radius - GAP - width,
+          top: y + radius + GAP,
+          right: x - radius - GAP,
+          bottom: y + radius + GAP + LABEL_HEIGHT,
+        },
+        dx: -(radius + GAP + 3),
+        dy: radius + GAP + LABEL_HEIGHT / 2,
+        anchor: 'end',
+      },
+      {
+        box: {
+          left: x - radius - GAP - width,
+          top: y - radius - GAP - LABEL_HEIGHT,
+          right: x - radius - GAP,
+          bottom: y - radius - GAP,
+        },
+        dx: -(radius + GAP + 3),
+        dy: -(radius + GAP + LABEL_HEIGHT / 2),
         anchor: 'end',
       },
     ];

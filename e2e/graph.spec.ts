@@ -23,6 +23,51 @@ test('the graph page fills the window without page scroll and explains its legen
     await expect(legend.getByRole('button', { name: new RegExp(name) })).toBeVisible();
 });
 
+test('names a small, spread set of references at the global view and more up close', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/grafos');
+  await expect(page.locator('.labels text.label').first()).toBeVisible();
+  const measure = () =>
+    page.evaluate(() => {
+      const labels = [...document.querySelectorAll('.labels text.label:not(.label--edge)')];
+      const boxes = labels.map((text) => {
+        const rect = text.getBoundingClientRect();
+        return { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom };
+      });
+      let overlaps = 0;
+      for (let i = 0; i < boxes.length; i++)
+        for (let j = i + 1; j < boxes.length; j++) {
+          const a = boxes[i];
+          const b = boxes[j];
+          if (a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top)
+            overlaps += 1;
+        }
+      const cells = new Set(
+        boxes.map(
+          (box) =>
+            `${Math.floor(((box.left + box.right) / 2 / innerWidth) * 4)}:${Math.floor(
+              ((box.top + box.bottom) / 2 / innerHeight) * 3,
+            )}`,
+        ),
+      );
+      return { count: labels.length, overlaps, cells: cells.size };
+    });
+  const fit = await measure();
+  expect(fit.count).toBeGreaterThan(0);
+  expect(fit.count).toBeLessThanOrEqual(12);
+  expect(fit.overlaps).toBe(0);
+  expect(fit.cells).toBeGreaterThanOrEqual(3);
+  for (let step = 0; step < 3; step++)
+    await page.getByRole('button', { name: 'Aproximar', exact: true }).click();
+  await expect(page.locator('.labels text.label').first()).toBeVisible();
+  const zoomed = await measure();
+  expect(zoomed.count).toBeGreaterThan(0);
+  expect(zoomed.count).toBeLessThanOrEqual(24);
+  expect(zoomed.overlaps).toBe(0);
+});
+
 test('filters, searches and opens a node with a link to its entry', async ({ page }) => {
   await page.goto('/grafos');
   const legend = page.getByRole('complementary', { name: 'Legenda e filtros' });

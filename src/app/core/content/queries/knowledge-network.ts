@@ -239,6 +239,12 @@ export interface NetworkNode {
   inReview: boolean;
   claims: Claim[];
   degree: number;
+  /** Incident edges counted by relation nature, so navigation is not mistaken for evidence. */
+  connections: Record<RelationNature, number>;
+  /** Distinct neighbours of any nature. */
+  distinctNeighbours: number;
+  /** Distinct neighbours reached through each relation nature. */
+  natureNeighbours: Record<RelationNature, number>;
 }
 
 /**
@@ -285,6 +291,44 @@ export const relationNatures: readonly RelationNatureDefinition[] = [
 
 export function relationNatureDefinition(id: RelationNature): RelationNatureDefinition {
   return relationNatures.find((nature) => nature.id === id) ?? relationNatures[0];
+}
+
+/**
+ * Weights behind label relevance. A relation documented by a source is the strongest signal; an
+ * editorial bridge situates the theme; a catalogue classification only suggests association; a
+ * navigation link says nothing about historical importance and earns no prominence.
+ */
+export const labelNatureWeights: Readonly<Record<RelationNature, number>> = {
+  stated: 1,
+  editorial: 0.4,
+  catalogue: 0.12,
+  navigation: 0,
+};
+
+/**
+ * Relevance for naming a node on the map. It combines documented connections, distinct neighbours,
+ * cross-collection presence and editorial completeness. Raw degree is deliberately not used: a
+ * catalogue or navigation hub would otherwise outrank a documented thinker. Popularity of links is
+ * not historical importance.
+ */
+export function labelRelevance(node: NetworkNode): number {
+  const edgeWeight = (nature: RelationNature) =>
+    node.connections[nature] * labelNatureWeights[nature];
+  const neighbourWeight = (nature: RelationNature) =>
+    node.natureNeighbours[nature] * labelNatureWeights[nature] * 1.4;
+  const documented =
+    edgeWeight('stated') * 3 +
+    edgeWeight('editorial') * 1.2 +
+    edgeWeight('catalogue') * 0.4 +
+    edgeWeight('navigation');
+  const neighbours =
+    neighbourWeight('stated') +
+    neighbourWeight('editorial') +
+    neighbourWeight('catalogue') +
+    neighbourWeight('navigation');
+  const crossCollection = Math.max(0, node.collections.length - 1) * 0.8;
+  const completeness = node.inReview ? 0.85 : 1;
+  return Number(((documented + neighbours + crossCollection) * completeness).toFixed(3));
 }
 
 export interface NetworkEdge {
@@ -386,6 +430,9 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
         inReview: entity.editorialStatus === 'pending' || entity.editorialStatus === 'draft',
         claims: claimsByEntity.get(entity.id) ?? [],
         degree: 0,
+        connections: { stated: 0, editorial: 0, catalogue: 0, navigation: 0 },
+        distinctNeighbours: 0,
+        natureNeighbours: { stated: 0, editorial: 0, catalogue: 0, navigation: 0 },
       });
     }
   }
@@ -413,9 +460,38 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
       });
     }
   }
+  const neighbours = new Map<string, Set<string>>();
+  const natureNeighbours = new Map<string, Record<RelationNature, Set<string>>>();
+  for (const id of nodes.keys()) {
+    neighbours.set(id, new Set());
+    natureNeighbours.set(id, {
+      stated: new Set(),
+      editorial: new Set(),
+      catalogue: new Set(),
+      navigation: new Set(),
+    });
+  }
   for (const edge of edges.values()) {
-    nodes.get(edge.source)!.degree++;
-    nodes.get(edge.target)!.degree++;
+    const source = nodes.get(edge.source)!;
+    const target = nodes.get(edge.target)!;
+    source.degree++;
+    target.degree++;
+    source.connections[edge.nature]++;
+    target.connections[edge.nature]++;
+    neighbours.get(edge.source)!.add(edge.target);
+    neighbours.get(edge.target)!.add(edge.source);
+    natureNeighbours.get(edge.source)![edge.nature].add(edge.target);
+    natureNeighbours.get(edge.target)![edge.nature].add(edge.source);
+  }
+  for (const node of nodes.values()) {
+    node.distinctNeighbours = neighbours.get(node.id)!.size;
+    const byNature = natureNeighbours.get(node.id)!;
+    node.natureNeighbours = {
+      stated: byNature.stated.size,
+      editorial: byNature.editorial.size,
+      catalogue: byNature.catalogue.size,
+      navigation: byNature.navigation.size,
+    };
   }
   const collections = atlases.map((atlas) => ({
     id: atlas.id,
