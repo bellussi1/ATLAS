@@ -283,8 +283,8 @@ test('épocas list dated records and the relations explain each kind of connecti
     await page.goto(`${path}`);
     const era = page.locator('.era-chart').first();
     await expect(era.locator('.dated-list li').first()).toBeVisible();
-    await era.locator('.epoch-picker button.carousel-item').nth(1).click();
-    await expect(era.locator('.epoch-detail h5').first()).toContainText('Registros datados');
+    await era.locator('.era-epoch .epoch-row').nth(1).click();
+    await expect(era.locator('.epoch-body h4').first()).toContainText('Registros datados');
 
     const relations = page.locator('.relations').first();
     await expect(relations.locator('.relation-legend li').first()).toBeVisible();

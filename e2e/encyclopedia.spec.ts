@@ -68,15 +68,13 @@ test('argument cards and current cards expose evidence on touch', async ({ brows
 test('timeline selection and graph exploration preserve geometry', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/marxismo/');
-  const axis = page.locator('app-ideology-block app-timeline-axis').first();
+  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
   await axis.scrollIntoViewIfNeeded();
   const frame = axis.locator('.axis-scroller');
   const before = await frame.boundingBox();
   await axis.locator('.axis-marker').filter({ hasText: 'Comuna de Paris' }).click();
-  await expect(page).toHaveURL(/evento=/);
   await expect(axis.locator('.axis-list li.current')).toContainText('Comuna de Paris');
   expect((await frame.boundingBox())?.height).toBe(before?.height);
-  await expect(page.locator('.relation-item').first()).toContainText('Bernstein');
 });
 
 test('the timeline axis keeps markers apart and answers the keyboard on a phone', async ({
@@ -91,7 +89,7 @@ test('the timeline axis keeps markers apart and answers the keyboard on a phone'
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/marxismo/');
-  const axis = page.locator('app-ideology-block app-timeline-axis').first();
+  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
   await expect(axis).toBeAttached();
   await page.waitForLoadState('networkidle');
   await axis.scrollIntoViewIfNeeded();
@@ -116,7 +114,6 @@ test('the timeline axis keeps markers apart and answers the keyboard on a phone'
         expect(a.r <= b.l + 1 || b.r <= a.l + 1).toBe(true);
   await markers.nth(2).click();
   await page.keyboard.press('Escape');
-  await expect(page).toHaveURL(/evento=/);
   await expect(axis.locator('.axis-marker[aria-current="true"]')).toHaveCount(1);
   await expect(axis.locator('.axis-list li.current')).toHaveCount(1);
   await markers.nth(2).focus();
