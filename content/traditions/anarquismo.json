@@ -1,0 +1,36 @@
+{
+  "slug": "anarquismo",
+  "kind": "movimento",
+  "rootQid": "Q6199",
+  "titles": { "pt": "Anarquismo", "en": "Anarchism" },
+  "palette": "anarquismo",
+  "icon": "ideology",
+  "scope": {
+    "classificationNote": "Filosofia política e movimento social, sem doutrina única: correntes sociais, individualistas e insurrecionárias. O recorte privilegia a história europeia e as experiências do século XX.",
+    "period": "século XIX em diante",
+    "geography": "Europa e Rússia, com ramificações nas Américas",
+    "includes": [
+      "correntes socialistas, individualistas e insurrecionárias",
+      "pensadores e militantes da Primeira Internacional em diante",
+      "experiências revolucionárias e sindicalistas do século XX",
+      "debates sobre Estado, autoridade e apoio mútuo"
+    ],
+    "excludes": [
+      "marxismo e social-democracia, tratados nas leituras próprias",
+      "ação direta ou violência sem vínculo documentado com a tradição"
+    ]
+  },
+  "seeds": [
+    { "url": "https://pt.wikipedia.org/wiki/Anarquismo" },
+    { "url": "https://en.wikipedia.org/wiki/Anarchism" },
+    { "url": "https://pt.wikipedia.org/wiki/Pierre-Joseph_Proudhon" },
+    { "url": "https://pt.wikipedia.org/wiki/Mikhail_Bakunin" },
+    { "url": "https://pt.wikipedia.org/wiki/Piotr_Kropotkin" },
+    { "url": "https://pt.wikipedia.org/wiki/Errico_Malatesta" },
+    { "url": "https://pt.wikipedia.org/wiki/Emma_Goldman" },
+    { "url": "https://pt.wikipedia.org/wiki/Anarcossindicalismo" }
+  ],
+  "discovery": {
+    "commonsCategory": "Category:Anarchism"
+  }
+}

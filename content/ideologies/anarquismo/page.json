@@ -17,7 +17,8 @@
   "identity": {
     "accent": "ochre",
     "signature": "Rede de correntes, personagens e rupturas",
-    "keyVisualization": "graph"
+    "keyVisualization": "graph",
+    "palette": "anarquismo"
   },
   "portrait": null,
   "chapters": [
