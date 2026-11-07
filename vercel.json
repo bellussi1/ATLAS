@@ -8,23 +8,63 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/marxismo",
+      "destination": "/leitura/marxismo",
+      "statusCode": 301
+    },
+    {
+      "source": "/marxismo/mesa",
+      "destination": "/leitura/marxismo",
+      "statusCode": 301
+    },
+    {
+      "source": "/liberalismo",
+      "destination": "/leitura/liberalismo",
+      "statusCode": 301
+    },
+    {
+      "source": "/liberalismo/mesa",
+      "destination": "/leitura/liberalismo",
+      "statusCode": 301
+    },
+    {
+      "source": "/social-democracia",
+      "destination": "/leitura/social-democracia",
+      "statusCode": 301
+    },
+    {
+      "source": "/social-democracia/mesa",
+      "destination": "/leitura/social-democracia",
+      "statusCode": 301
+    },
+    {
+      "source": "/anarquismo",
+      "destination": "/leitura/anarquismo",
+      "statusCode": 301
+    },
+    {
+      "source": "/anarquismo/mesa",
+      "destination": "/leitura/anarquismo",
+      "statusCode": 301
+    },
+    {
       "source": "/ideologias/marxismo",
-      "destination": "/marxismo",
+      "destination": "/leitura/marxismo",
       "statusCode": 301
     },
     {
       "source": "/atlas/marxismo",
-      "destination": "/marxismo",
+      "destination": "/leitura/marxismo",
       "statusCode": 301
     },
     {
       "source": "/atlas/marxismo/valor-e-trabalho",
-      "destination": "/marxismo#conceitos",
+      "destination": "/leitura/marxismo#conceitos",
       "statusCode": 301
     },
     {
       "source": "/atlas/liberalismos",
-      "destination": "/liberalismo",
+      "destination": "/leitura/liberalismo",
       "statusCode": 301
     },
     {
