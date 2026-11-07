@@ -201,6 +201,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Novas: **#46** (o `ingest:verify` falha na captura `liberalism/2026-11-01-remoto`, bloqueando a Verificação do master e os PRs) e **#47** (Dependabot agrupa majors incompatíveis de Angular/TypeScript/Tailwind/Vitest/jsdom).
     - **#42** e **#43** foram fechadas sem merge: Angular 22 exige TypeScript `>=6.0 <6.1` e o grupo dev-tools sobe TypeScript para 7, incompatível com Angular 21. Ver #47.
 
+29. **Branchs e proteção do master**
+    - Remotas excluídas por já estarem totalmente contidas no `master` (`ahead=0`): `chore/gitflow-ci`, `claude/loving-khayyam-d2ccc9`, `claude/padrao-texto-contexto-6caf9d`, `codex/atlas-editorial-marxismo`, `codex/atlas-v4`, `docs/compactar-documentacao` e `feat/ideologia-leve-e-gerador`.
+    - Ficaram no remoto `master`, `develop` e as 9 branches do Dependabot, incluindo as dos PRs #42/#43 já fechados. As branches locais e dos worktrees não foram apagadas; o link de branches do GitHub lista só as remotas.
+    - `master` agora exige PR, checks `verify`, `secrets` e `CodeQL`, branch atualizada, conversa resolvida, sem force push e sem deleção; `enforce_admins` ativo. Aprovações obrigatórias ficam em **0** porque há um mantenedor; elevar para 1 quando houver um segundo revisor.
+    - `delete_branch_on_merge` e `allow_update_branch` ativados. O perfil comunitário segue em **100%** (README, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, PR template e issue templates).
+
 ## Pendências que bloqueiam
 
 1. **CI do master** — a Verificação `42337655149` passou `ingest:fetch-raw` e falhou em `ingest:verify` na captura `liberalism/2026-11-01-remoto` (issue **#46**). O CodeQL está verde. Os PRs de dependências #45/#44/#41/#40/#38 estão rebaseados, mas presos nesse gate; #39/#37 aguardam recreate.
