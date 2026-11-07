@@ -94,6 +94,28 @@ test('Marxism chapters, comparison and sources remain on the same page', async (
   ).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('the reading ends with at most five curated connections', async ({ page }) => {
+  await page.goto('/marxismo/');
+  const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
+  await expect(connections).toBeVisible();
+  await expect(connections.getByRole('link', { name: 'Liberalismo' })).toBeVisible();
+  await expect(connections.getByRole('link', { name: 'Anarquismo' })).toBeVisible();
+  await expect(connections.getByRole('link', { name: 'Social-democracia' })).toBeVisible();
+  expect(await connections.getByRole('link').count()).toBeLessThanOrEqual(5);
+});
+
+test('a verbete with a continuous reading offers the contextual path', async ({ page }) => {
+  await page.goto('/verbete/karl-marx/');
+  await expect(
+    page.getByRole('heading', { name: 'Este verbete tem contexto maior' }),
+  ).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Continuar em Marxismo' })).toHaveAttribute(
+    'href',
+    '/marxismo',
+  );
+  await expect(page.getByRole('link', { name: 'Voltar ao topo' })).toBeVisible();
+});
+
 test('three pages work on mobile with reduced motion and accessible links', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });

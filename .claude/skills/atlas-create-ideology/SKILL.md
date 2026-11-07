@@ -7,6 +7,8 @@ description: Iniciar ou ampliar a leitura de uma nova ideologia/tradição no AT
 
 Uma nova tradição é **pesquisa + dados**, não código. O renderer (`IdeologyPageComponent`, `IdeologyBlockComponent`, índice, cards, timeline, grafo, roteiro, debates) já existe. Nunca copie TS/HTML/SCSS de Marxismo ou Liberalismo.
 
+> Para uma leitura de **pessoa, acontecimento, instituição, período ou conceito** — como Governo Vargas, Golpe de 1964 ou Ditadura militar —, use a skill `atlas-create-reading`. Ela decide se o assunto merece leitura, adapta os 12 capítulos, exige fontes acadêmicas, caso brasileiro e até cinco conexões. Esta skill é a especialização para ideologias e tradições.
+
 Fontes de verdade, leia sob demanda:
 
 - Contrato dos capítulos: `src/app/features/ideologies/models/ideology-chapters.ts`.
@@ -23,8 +25,9 @@ Fontes de verdade, leia sob demanda:
 3. **Reconciliar.** Antes de criar uma entidade, procure-a nos snapshots (`content/knowledge/collections`, `content/graph`). Reutilize `person-karl-marx` e afins; nunca crie `person-marx-2`. A ingestão Wikimedia passa por `scripts/ingestion/wikimedia` (`--media remote`).
 4. **Esqueleto.** Rode `npm run ideology:new -- --slug <slug> --title <título> --kind <kind> --atlas <atlas-id> --palette <paleta> --note "<recorte>"`. Ele cria `content/ideologies/<slug>/page.json` e `content/graph/<slug>.json` com 12 capítulos, `published: false`, e blocos só onde o atlas tem registros. Paletas: `ideologyPaletteSchema`.
 5. **Preencher por capítulo.** Para cada capítulo com fontes verificadas, escreva a pergunta do iniciante, a narrativa atribuída e os blocos adequados ([mapa](references/chapter-blocks.md)). Depois passe `coverage` para `partial` (com `gap`) ou remova-o. Capítulo sem evidência continua `pending` com motivo.
-6. **Verificar.** `npm run content:build`, `npm test`, `npm run lint`, `npm run typecheck`. Preview local só com `published: false`: nada entra em `published-ideologies.ts`, rotas ou prerender antes de aprovação explícita do usuário.
-7. **Relatório.** Liste o que foi criado, o que está `pending` ou `partial` e por quê, as fontes não lidas diretamente e o que precisa de revisão humana. Revisão `assistant` é IA, nunca "revisado".
+6. **Aprofundar "Situar" e "Avaliar".** "Épocas", "Pensadores", "Vertentes" e "Experiências" precisam de tese e caso brasileiro documentado; "Debates" e "Conexões" precisam de posições atribuídas. Leia a skill `atlas-create-reading` para o protocolo de fontes acadêmicas, caso brasileiro e conexões.
+7. **Verificar.** `npm run content:build`, `npm test`, `npm run lint`, `npm run typecheck`. Preview local só com `published: false`: nada entra em `published-ideologies.ts`, rotas ou prerender antes de aprovação explícita do usuário.
+8. **Relatório.** Liste o que foi criado, o que está `pending` ou `partial` e por quê, as fontes não lidas diretamente e o que precisa de revisão humana. Revisão `assistant` é IA, nunca "revisado".
 
 ## Regras que não se negociam
 
@@ -32,4 +35,5 @@ Fontes de verdade, leia sob demanda:
 - Diferenciar fato documentado, interpretação, hipótese e controvérsia (`classification` dos itens).
 - Debates seguem defesa → crítica → resposta → limites, todos atribuídos. Falsa equivalência não.
 - Uma imagem aparece uma vez na narrativa (`planPageMedia`); retratos ficam em `pensadores`.
+- Conexões de leitura: 3 a 5, com razão argumentativa, em `ideologyReadings[].connections`; só leitura publicada. Ver `atlas-create-reading/references/connections.md`.
 - Publicar, só com aprovação explícita: `published: true` no `page.json`, uma entrada em `data/ideology-readings.ts` (rota e próxima leitura) e outra em `data/published-ideologies.ts`. Links fixos em cabeçalho, rodapé e home continuam manuais.

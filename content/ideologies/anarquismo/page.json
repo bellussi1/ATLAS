@@ -174,15 +174,19 @@
       "minutes": 1,
       "narrative": [
         "A periodização é didática: a formação e a Primeira Internacional; a expansão de 1880 a 1914; a Revolução Russa e a Ucrânia de Makhno; a Guerra Civil Espanhola; os movimentos posteriores a 1968.",
-        "As fronteiras são aproximadas. A história do anarquismo fora da Europa exige bibliografia própria."
+        "As fronteiras são aproximadas. A história do anarquismo fora da Europa exige bibliografia própria.",
+        "No Brasil, o anarquismo se organiza na Primeira República (1889–1930), com jornais, sindicatos e experiências comunitárias. A greve geral de 1917 e a Colônia Cecília (1890) são marcos frequentes, mas a repressão e a dispersão tornam a periodização menos linear do que na Europa."
       ],
       "question": "Em que momentos o anarquismo ganhou força, e onde ele se enfraqueceu?",
       "bridge": "Os momentos mais intensos aparecem nas experiências históricas, com seus limites e derrotas.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
-        "src-wiki-topic-anarchism"
+        "src-wiki-topic-anarchism",
+        "source-anarco-toledo",
+        "source-anarco-greve-1917",
+        "source-anarco-colonia-cecilia"
       ],
-      "gap": "Linha do tempo montada a partir de datas de fontes secundárias. Faltam fontes históricas que confirmem o peso de cada episódio.",
+      "gap": "A linha do tempo europeia e mexicana foi complementada pelo caso brasileiro; faltam experiências da Ásia e uma periodização comparada.",
       "coverage": "partial",
       "layout": "timeline",
       "blocks": []
@@ -195,7 +199,8 @@
       "minutes": 1,
       "narrative": [
         "Proudhon critica a propriedade e o Estado; Bakunin formula a revolta e a organização federativa; Kropotkin desenvolve o apoio mútuo e o comunismo libertário; Malatesta e Goldman articulam organização, propaganda e ação direta.",
-        "A seleção é um caminho de estudo, não uma lista de concordâncias. Os autores divergem sobre violência, organização e reforma."
+        "A seleção é um caminho de estudo, não uma lista de concordâncias. Os autores divergem sobre violência, organização e reforma.",
+        "No Brasil, a tradição teve militantes e jornais próprios, mas a historiografia prefere reconstruir trajetórias e redes locais em vez de um panteão nacional. Edilene Toledo, em São Paulo, acompanha militantes e trabalhadores para mostrar como o sindicalismo revolucionário se organizou."
       ],
       "question": "Quem deu forma às correntes do anarquismo, e em que disputavam?",
       "bridge": "As ideias desses pensadores se transformam em movimentos, que aparecem nas vertentes.",
@@ -204,7 +209,8 @@
         "src-wiki-topic-mikhail-bakunin",
         "src-wiki-topic-errico-malatesta",
         "src-wiki-topic-piotr-kropotkin",
-        "src-wiki-topic-emma-goldman"
+        "src-wiki-topic-emma-goldman",
+        "source-anarco-toledo"
       ],
       "gap": "As obras dos pensadores não foram consultadas diretamente. O recorte pode deixar de fora pensadores relevantes para a América Latina.",
       "coverage": "partial",
@@ -238,16 +244,18 @@
       "minutes": 1,
       "narrative": [
         "O comunismo libertário busca a propriedade comum e a distribuição segundo necessidades; o anarcossindicalismo organiza os trabalhadores em sindicatos e na greve geral; o individualismo afirma a autonomia pessoal contra a coletividade imposta.",
-        "A rede mostra diferenças documentadas; os rótulos não descrevem blocos homogêneos."
+        "A rede mostra diferenças documentadas; os rótulos não descrevem blocos homogêneos.",
+        "No Brasil, anarquismo e sindicalismo revolucionário não são sinônimos. A historiografia discute o peso de cada um na Primeira República; a leitura deve apresentar a disputa, não resolver por decreto."
       ],
       "question": "Se o anarquismo não tem um só caminho, quais são as principais estratégias?",
       "bridge": "As estratégias se testaram em revoluções, guerras e greves, que aparecem nas experiências.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism",
-        "src-wiki-topic-piotr-kropotkin"
+        "src-wiki-topic-piotr-kropotkin",
+        "source-anarco-toledo"
       ],
-      "gap": "Correntes da América Latina e da Ásia não foram detalhadas além das fontes disponíveis.",
+      "gap": "Correntes da América Latina e da Ásia não foram detalhadas; o caso brasileiro foi incorporado como disputa historiográfica, não como vertente fechada.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -325,15 +333,19 @@
       "minutes": 1,
       "narrative": [
         "A tradição se experimenta em lugares concretos: a Comuna de Paris, a Ucrânia de Makhno, a Espanha de 1936 e os movimentos posteriores a 1968.",
-        "O recorte situa a tradição no espaço, sem mapa completo nem coordenadas verificadas."
+        "O recorte situa a tradição no espaço, sem mapa completo nem coordenadas verificadas.",
+        "O anarquismo brasileiro cresceu com a imigração italiana e com o movimento operário de São Paulo e do Rio. A greve geral de 1917 e a Colônia Cecília, no Paraná, são experiências frequentes na historiografia, mas não resumem a tradição. Edilene Toledo mostra que o sindicalismo revolucionário paulista teve dinâmica própria, sem ser simples cópia do anarquismo europeu: ele organizou trabalhadores em um contexto de industrialização incipiente e repressão."
       ],
       "question": "Onde o anarquismo chegou ao poder ou ao território, e com que resultado?",
       "bridge": "Os limites dessas experiências levam aos debates sobre violência e utopia.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
-        "src-wiki-topic-anarchism"
+        "src-wiki-topic-anarchism",
+        "source-anarco-toledo",
+        "source-anarco-greve-1917",
+        "source-anarco-colonia-cecilia"
       ],
-      "gap": "A amostra é europeia e mexicana. Experiências da América Latina e da Ásia não foram incluídas.",
+      "gap": "O caso brasileiro foi incorporado; faltam experiências da Ásia e uma comparação sistemática com o sindicalismo revolucionário de outros países.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -400,6 +412,23 @@
               ],
               "entityIds": [],
               "classification": "alegação empírica"
+            },
+            {
+              "id": "experiencia-brasil-anarquismo",
+              "title": "Brasil: imigração, greve e colônia",
+              "kicker": "São Paulo e Paraná · 1890–1917",
+              "summary": "Anarquismo, sindicalismo revolucionário e experiências comunitárias.",
+              "paragraphs": [
+                "A Colônia Cecília, fundada em 1890 no Paraná, foi uma tentativa de vida comunitária anarquista. A experiência durou poucos anos e é tratada pela historiografia como caso singular, não como modelo geral.",
+                "A greve geral de 1917 em São Paulo mobilizou operários e organizações anarquistas e sindicalistas. A historiografia discute o peso do anarquismo, do sindicalismo revolucionário e das condições de vida na eclosão do movimento."
+              ],
+              "sourceIds": [
+                "source-anarco-toledo",
+                "source-anarco-greve-1917",
+                "source-anarco-colonia-cecilia"
+              ],
+              "entityIds": [],
+              "classification": "interpretação"
             }
           ]
         }
@@ -413,15 +442,18 @@
       "minutes": 1,
       "narrative": [
         "Organização e espontaneidade, violência e ação de massas, reforma e revolução: essas disputas atravessam a tradição. A crítica marxista ao anarquismo e a crítica anarquista ao marxismo têm autores e alvos próprios.",
-        "Cada posição é atribuída; a leitura não transforma a disputa em veredito."
+        "Cada posição é atribuída; a leitura não transforma a disputa em veredito.",
+        "No Brasil, a repressão e a industrialização colocaram o anarquismo diante de uma escolha prática entre organização sindical, ação direta e propaganda. A greve de 1917 e a fundação do PCB em 1922 marcaram uma disputa sobre a direção do movimento operário; a leitura não transforma essa disputa em linhagem única."
       ],
       "question": "Quais são as críticas mais fortes ao anarquismo, e o que os anarquistas respondem?",
       "bridge": "Os debates mostram que a tradição não é consensual nem entre seus críticos.",
       "sourceIds": [
         "src-wiki-topic-anarchism",
-        "src-wiki-topic-anarquismo"
+        "src-wiki-topic-anarquismo",
+        "source-anarco-toledo",
+        "source-anarco-greve-1917"
       ],
-      "gap": "Faltam as respostas dos anarquistas às críticas marxistas e liberais, com fonte própria.",
+      "gap": "Faltam as respostas dos anarquistas às críticas marxistas e liberais, com fonte própria. O caso brasileiro foi incorporado como disputa sobre organização e direção do movimento operário.",
       "coverage": "partial",
       "layout": "debate",
       "blocks": [
@@ -499,15 +531,18 @@
       "minutes": 1,
       "narrative": [
         "O anarquismo se define em relação ao marxismo, ao liberalismo e ao sindicalismo. Compartilha com o marxismo a crítica ao capitalismo, mas rejeita o partido e o Estado; com o liberalismo, a defesa da liberdade individual, mas critica a propriedade e o mercado.",
-        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes."
+        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes.",
+        "No Brasil, o anarquismo se conecta ao marxismo pela disputa sobre organização e direção do movimento operário, e ao liberalismo pela crítica da coerção. A fundação do PCB em 1922 marca uma bifurcação importante."
       ],
       "question": "Com quais tradições o anarquismo disputa, e com quais dialoga?",
       "bridge": "Para ler essas disputas lado a lado, siga para as fontes e a metodologia desta leitura.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
-        "src-wiki-topic-anarchism"
+        "src-wiki-topic-anarchism",
+        "source-anarco-toledo",
+        "source-anarco-greve-1917"
       ],
-      "gap": "Arestas tipadas de influência documentada ainda não foram levantadas para este recorte.",
+      "gap": "Arestas tipadas de influência documentada ainda não foram registradas; o caso brasileiro foi incorporado como contexto, não como relação histórica fechada.",
       "coverage": "partial",
       "layout": "graph",
       "blocks": [

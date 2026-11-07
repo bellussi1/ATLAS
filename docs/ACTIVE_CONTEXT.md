@@ -128,6 +128,16 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O build em 06/11/2026 tinha **1.242 arquivos, 133,7 MB** e o maior arquivo em **0,86 MB**. `_headers`, `_redirects` e `404.html` já são o contrato nativo do Pages.
     - Falta apenas criar o projeto e publicar com uma credencial Cloudflare (`npx wrangler login` ou token com Pages Edit). O R2 continua como origem do conteúdo; `ATLAS_CDN_URL` não muda.
 
+19. **Leituras contínuas: skill, conexões e verbete**
+    - Nova skill `atlas-create-reading` decide entre leitura e verbete, adapta os 12 capítulos a pessoa, acontecimento, instituição, período ou conceito, exige fontes acadêmicas e caso brasileiro e limita as conexões a cinco. `atlas-create-ideology` e `atlas-pipeline-tradicao` apontam para ela.
+    - `docs/research/readings-map.md` planeja o cluster Governo Vargas, Trabalhismo, Golpe de 1964, Ditadura militar e Brizola/PDT, com entidades existentes, fontes a verificar e ordem sugerida. Nada foi publicado.
+    - As quatro leituras ganharam casos brasileiros em "Situar" e "Avaliar": marxismo **1.471 palavras**, liberalismo **1.216**, social-democracia **1.163**, anarquismo **1.169**. Foram adicionadas fontes acadêmicas (História do Marxismo no Brasil, Caio Prado, Florestan Fernandes, Angela de Castro Gomes, Edilene Toledo, José Murilo de Carvalho, CPDOC, Constituição de 1988) e 3 conexões curadas por leitura.
+    - Os rascunhos de social-democracia e anarquismo continuam `rascunho`; a promoção exige revisão humana registrada. A revisão de IA permanece `assistant`.
+    - Existem **51 esqueletos automáticos** de ideologias com narrativa de reserva (por exemplo, `trabalhismo`, 131 palavras); eles não contam como leitura publicada e não entram em rotas, prerender ou `ideologyReadings` antes de pesquisa.
+    - O verbete ganhou tempo de leitura e contagem de seções, um bloco "Este verbete tem contexto maior" com link para a leitura contínua e "Voltar ao topo"; o mapa de entidades para leitura foi ampliado.
+    - A página de leitura termina com "Conexões desta leitura" (3 a 5, com razão) e o teste de dados garante que nenhum rascunho ou auto-link apareça.
+    - Verificações: `content:build` release local `869446f…`; `test:content` **179/179**; `npm test` **306/307** (o timeout de `knowledge-network.spec.ts` passou **17/17** isolado); `typecheck` e `lint` exit 0; unidade de leituras **6/6**; `build` **1.185 rotas**; `e2e/pages.spec.ts` **20/20** e os dois testes focados de conexões/verbete **2/2**.
+
 ## Pendências que bloqueiam
 
 1. **CI** — depois do upload dos blobs, reexecutar `gh run rerun 42274140215 --failed` e confirmar `verify`; lint, typecheck, 301 testes e 18 e2e do grafo já passaram localmente.

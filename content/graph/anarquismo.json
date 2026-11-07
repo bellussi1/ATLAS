@@ -1,5 +1,27 @@
 {
-  "sources": [],
+  "sources": [
+    {
+      "id": "source-anarco-toledo",
+      "title": "Edilene Toledo — Anarquismo e sindicalismo revolucionário: trabalhadores e militantes em São Paulo na Primeira República",
+      "url": null,
+      "edition": "São Paulo: Fundação Perseu Abramo, 2004",
+      "publicationDate": null
+    },
+    {
+      "id": "source-anarco-greve-1917",
+      "title": "FGV CPDOC — Greve geral de 1917 em São Paulo",
+      "url": "https://cpdoc.fgv.br/sites/default/files/verbetes/primeira-republica/GREVE%20GERAL%20DE%201917%20EM%20S%C3%83O%20PAULO.pdf",
+      "edition": "Verbete da Primeira República, CPDOC/FGV",
+      "publicationDate": null
+    },
+    {
+      "id": "source-anarco-colonia-cecilia",
+      "title": "Isabelle Felici — A verdadeira história da Colônia Cecília",
+      "url": "https://ojs.ifch.unicamp.br/index.php/ael/article/view/2469/1879",
+      "edition": "Revista Arquivo Edgard Leuenroth (Unicamp), 1998",
+      "publicationDate": null
+    }
+  ],
   "edges": [],
   "positions": []
 }

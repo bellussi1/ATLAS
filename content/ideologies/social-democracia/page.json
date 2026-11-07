@@ -180,7 +180,8 @@
       "minutes": 1,
       "narrative": [
         "A periodização é didática: a formação dos partidos no século XIX; a expansão de massas antes de 1914; o entreguerras e a divisão com os comunistas; o auge do Estado de bem-estar após 1945; a crise dos anos 1970 e a Terceira Via.",
-        "As fronteiras são aproximadas. A social-democracia fora da Europa, incluindo a América Latina, exige bibliografia própria."
+        "As fronteiras são aproximadas. A social-democracia fora da Europa, incluindo a América Latina, exige bibliografia própria.",
+        "No Brasil, a periodização possível começa com a legislação social dos anos 1930, passa pela CLT (1943), pelo PTB (1945), pelo golpe de 1964 e chega à Constituição de 1988. Esses marcos não reproduzem a trajetória europeia: combinam tutela estatal, mobilização sindical e redemocratização."
       ],
       "question": "Como a social-democracia mudou entre o século XIX e os dias atuais?",
       "bridge": "Os governos que deram corpo a essas mudanças aparecem nas experiências históricas.",
@@ -189,9 +190,12 @@
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-otto-von-bismarck",
         "src-wiki-topic-internacional-socialista",
-        "src-wiki-topic-terceira-via"
+        "src-wiki-topic-terceira-via",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-cpdoc-vargas",
+        "source-sd-cf88"
       ],
-      "gap": "Linha do tempo montada a partir de datas de fontes secundárias. Faltam fontes históricas que confirmem o peso relativo de cada episódio.",
+      "gap": "A linha do tempo europeia foi complementada por marcos brasileiros; faltam datas e instituições de outros países da América Latina.",
       "coverage": "partial",
       "layout": "timeline",
       "blocks": []
@@ -204,7 +208,8 @@
       "minutes": 1,
       "narrative": [
         "Bernstein formula o revisionismo; Kautsky representa a ortodoxia da Segunda Internacional; Bebel e Liebknecht organizam o partido alemão; Jaurès articula socialismo e República na França; Brandt, Palme e Kreisky dão forma à social-democracia do pós-guerra.",
-        "A seleção é um caminho de estudo, não uma lista de concordâncias. Os autores divergem sobre revolução, Estado e reforma."
+        "A seleção é um caminho de estudo, não uma lista de concordâncias. Os autores divergem sobre revolução, Estado e reforma.",
+        "No Brasil, Leonel Brizola foi a liderança que reelaborou publicamente o trabalhismo como \"novo trabalhismo\" e fundou o PDT. A bibliografia o trata como continuidade e reinvenção da tradição, não como simples herdeiro de Vargas."
       ],
       "question": "Quem deu forma à social-democracia, e como cada um a entendia?",
       "bridge": "Os governos desses pensadores mostram como as ideias chegaram à prática.",
@@ -216,7 +221,10 @@
         "src-wiki-topic-olof-palme",
         "src-wiki-topic-willy-brandt",
         "src-wiki-topic-bruno-kreisky",
-        "src-wiki-topic-social-democracy"
+        "src-wiki-topic-social-democracy",
+        "source-sd-brizola-trabalhismo",
+        "source-sd-pdt",
+        "source-sd-gomes-trabalhismo"
       ],
       "gap": "As obras dos pensadores não foram consultadas diretamente. Os registros de Bernstein e Kautsky vêm de outra coleção do acervo.",
       "coverage": "partial",
@@ -258,7 +266,8 @@
       "minutes": 1,
       "narrative": [
         "A social-democracia se divide entre reformistas, sindicalistas e correntes mais à esquerda; os modelos nórdicos combinam Estado de bem-estar, sindicatos fortes e economia aberta; a Terceira Via se aproxima do liberalismo social.",
-        "A rede mostra diferenças documentadas; os rótulos não descrevem blocos homogêneos."
+        "A rede mostra diferenças documentadas; os rótulos não descrevem blocos homogêneos.",
+        "No Brasil, a social-democracia não se organizou como partido único. O trabalhismo do PTB e do PDT reivindicou reformas sociais e democracia em uma linguagem própria; a comparação com a social-democracia europeia exige distinguir origem, programa e prática de governo."
       ],
       "question": "Todos os social-democratas concordam entre si?",
       "bridge": "As divergências aparecem com força nos debates sobre o papel do Estado e a relação com o capitalismo.",
@@ -266,9 +275,12 @@
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
         "src-wiki-topic-internacional-socialista",
-        "src-wiki-topic-terceira-via"
+        "src-wiki-topic-terceira-via",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-pdt",
+        "source-sd-brizola-trabalhismo"
       ],
-      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas além das fontes disponíveis.",
+      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas; o caso brasileiro foi incorporado como tradição própria, não como cópia da social-democracia europeia.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -335,7 +347,8 @@
       "minutes": 1,
       "narrative": [
         "A tradição se experimenta em países concretos: a Alemanha do SPD e das leis antissocialistas; a Suécia do modelo nórdico; a Áustria de Kreisky; a França de Jaurès.",
-        "O recorte situa a tradição no espaço, sem mapa completo."
+        "O recorte situa a tradição no espaço, sem mapa completo.",
+        "O Brasil não organizou uma social-democracia clássica, mas combinou legislação social, partidos trabalhistas e disputas pela democracia. A CLT (1943), o PTB (1945) e o PDT (1980) organizaram uma cidadania social tutelada e disputada; a Constituição de 1988 ampliou direitos sociais em um contexto de redemocratização. A bibliografia sobre o trabalhismo discute se esse arranjo é uma variante de social-democracia ou uma tradição própria."
       ],
       "question": "Onde a social-democracia governou, e com que resultados?",
       "bridge": "Os limites desses resultados levam aos debates sobre o que a tradição realmente conseguiu.",
@@ -343,9 +356,14 @@
         "src-wiki-topic-olof-palme",
         "src-wiki-topic-willy-brandt",
         "src-wiki-topic-bruno-kreisky",
-        "src-wiki-topic-social-democracy"
+        "src-wiki-topic-social-democracy",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-cpdoc-vargas",
+        "source-sd-cf88",
+        "source-sd-brizola-trabalhismo",
+        "source-sd-pdt"
       ],
-      "gap": "A amostra é europeia. Experiências da América Latina e do Brasil não foram incluídas.",
+      "gap": "O caso brasileiro foi incorporado; faltam outras experiências latino-americanas e a comparação sistemática entre trabalhismo, social-democracia e regimes autoritários.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -414,6 +432,30 @@
               ],
               "entityIds": [],
               "classification": "limitação editorial"
+            },
+            {
+              "id": "experiencia-brasil-trabalhismo",
+              "title": "Brasil: CLT, PTB e Constituição",
+              "kicker": "1943–1988",
+              "summary": "Direitos sociais, partidos trabalhistas e redemocratização.",
+              "paragraphs": [
+                "A Consolidação das Leis do Trabalho, de 1943, reuniu direitos trabalhistas sob tutela do Estado. O PTB, fundado em 1945, deu forma partidária ao trabalhismo; o PDT, fundado em 1980, reivindicou um novo trabalhismo.",
+                "A Constituição de 1988 inscreveu direitos sociais e universais em um contexto de saída da ditadura. A comparação com a social-democracia europeia deve distinguir universalismo, clientelismo e tutela, sem reduzir uma tradição à outra."
+              ],
+              "sourceIds": [
+                "source-sd-gomes-trabalhismo",
+                "source-sd-cpdoc-vargas",
+                "source-sd-cf88",
+                "source-sd-brizola-trabalhismo",
+                "source-sd-pdt"
+              ],
+              "entityIds": [
+                "wiki-topic-getulio-vargas",
+                "wiki-topic-partido-democratico-trabalhista",
+                "wiki-topic-leonel-brizola",
+                "wiki-topic-partido-trabalhista-brasileiro-1979"
+              ],
+              "classification": "interpretação"
             }
           ]
         }
@@ -427,15 +469,19 @@
       "minutes": 1,
       "narrative": [
         "Bernstein e Luxemburgo disputam reforma e revolução: reformas sociais podem transformar o capitalismo ou apenas administrá-lo? A Terceira Via e a social-democracia tradicional disputam o papel do Estado e da responsabilidade individual.",
-        "Cada posição tem autor e alvo; a leitura não transforma a disputa em veredito."
+        "Cada posição tem autor e alvo; a leitura não transforma a disputa em veredito.",
+        "A disputa brasileira entre trabalhismo e social-democracia é também uma disputa de memória: o trabalhismo de Vargas foi lido como concessão, cooptação ou invenção de uma cultura política. A leitura não resolve o debate; mostra como ele muda o diagnóstico sobre direitos sociais e democracia."
       ],
       "question": "Quais são as objeções mais fortes, e o que os defensores respondem?",
       "bridge": "Os debates mostram que a tradição não é consensual, nem dentro nem fora dela.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
-        "src-wiki-topic-social-democracy"
+        "src-wiki-topic-social-democracy",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-brizola-trabalhismo",
+        "source-sd-pdt"
       ],
-      "gap": "Falta a resposta dos defensores às críticas de Benjamin e Schumpeter, com fonte própria.",
+      "gap": "Falta a resposta dos defensores às críticas de Benjamin e Schumpeter, com fonte própria. O caso brasileiro foi incorporado como debate de memória, não como resposta fechada.",
       "coverage": "partial",
       "layout": "debate",
       "blocks": [
@@ -511,15 +557,18 @@
       "minutes": 1,
       "narrative": [
         "A social-democracia se define em relação ao liberalismo, ao comunismo e ao sindicalismo. Compartilha com o liberalismo a defesa do Estado de direito e do mercado, mas prioriza proteção social; com o comunismo, a origem socialista, mas rejeita a ruptura revolucionária.",
-        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes."
+        "As ligações entre tradições são, em grande parte, pistas de descoberta; relações tipadas ainda não estão documentadas com fontes.",
+        "No Brasil, a social-democracia se conecta ao trabalhismo e ao liberalismo social da Constituição de 1988. A disputa sobre universalismo, tutela e direitos sociais atravessa essas tradições."
       ],
       "question": "Como a social-democracia se relaciona com o liberalismo e o marxismo?",
       "bridge": "Para ler as tradições lado a lado, siga para as fontes e a metodologia desta leitura.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
-        "src-wiki-topic-social-democracy"
+        "src-wiki-topic-social-democracy",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-cf88"
       ],
-      "gap": "Arestas tipadas de influência documentada ainda não foram levantadas para este recorte.",
+      "gap": "Arestas tipadas de influência documentada ainda não foram registradas; o caso brasileiro foi incorporado como contexto, não como relação histórica fechada.",
       "coverage": "partial",
       "layout": "graph",
       "blocks": [

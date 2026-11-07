@@ -197,6 +197,44 @@ h2 {
   display: block;
   padding-block: 0.65rem;
 }
+.reading-connections {
+  margin-block-start: 2.5rem;
+  padding-block-start: 1.5rem;
+  border-block-start: 2px solid var(--color-ink);
+}
+.reading-connections h2 {
+  margin: 0;
+  font: 700 0.75rem/1.2 var(--font-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.reading-connections__hint {
+  margin: 0.4rem 0 1rem;
+  color: var(--color-ink-muted);
+  font: 400 0.9375rem/1.5 var(--font-serif);
+}
+.reading-connections ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.reading-connections li {
+  display: grid;
+  gap: 0.15rem;
+  padding-block-end: 0.75rem;
+  border-block-end: 1px solid var(--color-border);
+}
+.reading-connections a {
+  padding-block: 0;
+  font: 700 1.0625rem/1.25 var(--font-sans);
+  text-underline-offset: 3px;
+}
+.reading-connections span {
+  color: var(--color-ink-muted);
+  font: 400 0.9375rem/1.45 var(--font-serif);
+}
 .page-state {
   padding-block: 4rem;
 }

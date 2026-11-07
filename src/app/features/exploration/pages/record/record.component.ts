@@ -113,17 +113,32 @@ export class RecordComponent {
   readonly entry = computed(() =>
     this.repository.discoveryIndex.find((e) => e.id === this.entity()?.id),
   );
-  readonly dossier = computed(
-    () =>
-      (
-        ({
-          'ideology-marxism': '/marxismo',
-          'ideology-liberalism': '/liberalismo',
-          'wiki-topic-social-democracia': '/social-democracia',
-          'wiki-topic-anarquismo': '/anarquismo',
-        }) as Record<string, string>
-      )[this.entity()?.id ?? ''],
-  );
+  /** Continuous readings that use this record as an entry point. */
+  private readonly readingByEntity: Readonly<Record<string, { path: string; title: string }>> = {
+    'ideology-marxism': { path: '/marxismo', title: 'Marxismo' },
+    'person-karl-marx': { path: '/marxismo', title: 'Marxismo' },
+    'person-friedrich-engels': { path: '/marxismo', title: 'Marxismo' },
+    'ideology-liberalism': { path: '/liberalismo', title: 'Liberalismo' },
+    'person-john-locke': { path: '/liberalismo', title: 'Liberalismo' },
+    'person-adam-smith': { path: '/liberalismo', title: 'Liberalismo' },
+    'person-john-stuart-mill': { path: '/liberalismo', title: 'Liberalismo' },
+    'wiki-topic-social-democracia': { path: '/social-democracia', title: 'Social-democracia' },
+    'wiki-topic-anarquismo': { path: '/anarquismo', title: 'Anarquismo' },
+    'person-mikhail-bakunin': { path: '/anarquismo', title: 'Anarquismo' },
+    'person-piotr-kropotkin': { path: '/anarquismo', title: 'Anarquismo' },
+  };
+  readonly dossier = computed(() => this.readingByEntity[this.entity()?.id ?? ''] ?? null);
+  readonly readingMinutes = computed(() => {
+    const entity = this.entity();
+    if (!entity) return 0;
+    const words = [
+      entity.summary,
+      ...this.readableSections().flatMap(({ section }) => section.paragraphs),
+    ]
+      .join(' ')
+      .match(/\S+/g)?.length;
+    return Math.max(1, Math.round((words ?? 0) / 200));
+  });
   readonly claims = computed(() =>
     this.repository.knowledgeGraph.atlases.flatMap((atlas) =>
       atlas.claims
@@ -175,6 +190,8 @@ export class RecordComponent {
             },
           ]
         : []),
+      { label: 'Leitura', value: `~${this.readingMinutes()} min`, target: undefined },
+      { label: 'Seções', value: String(this.readableSections().length), target: undefined },
       count('Afirmações', this.claims().length, 'claims-title'),
       count('Conexões', this.context()?.connections.length ?? 0, 'connections-title'),
       count('Fontes', this.context()?.sources.length ?? 0, 'sources-title'),

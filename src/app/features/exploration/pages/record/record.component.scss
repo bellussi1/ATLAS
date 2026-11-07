@@ -242,6 +242,36 @@ h1 {
 .reading {
   max-width: 72ch;
 }
+.continuous-reading {
+  margin: 0 0 2.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--ink);
+  background: var(--color-surface-subtle, transparent);
+}
+.continuous-reading__kicker {
+  margin: 0 0 0.35rem;
+  color: var(--ink-muted);
+  font: 700 0.6875rem/1.2 var(--font-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.continuous-reading h2 {
+  margin: 0 0 0.5rem;
+  font: 700 1.25rem/1.2 var(--font-sans);
+}
+.continuous-reading p {
+  margin: 0 0 0.75rem;
+  font: 1rem/1.55 var(--font-serif);
+}
+.continuous-reading a {
+  font: 700 0.9375rem/1.4 var(--font-sans);
+}
+.reading-top {
+  margin: 2.5rem 0 0;
+  padding-block-start: 0.75rem;
+  border-block-start: 1px solid var(--rule);
+  font: 0.875rem/1.4 var(--font-sans);
+}
 .reading section {
   margin-bottom: 2.5rem;
 }

@@ -9,7 +9,7 @@ import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/id
 import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/ideology-poster.component';
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
-import { companionOf, paletteOf } from '@ideologies/data/ideology-readings';
+import { companionOf, connectionsOf, paletteOf } from '@ideologies/data/ideology-readings';
 import { terms } from '@ideologies/data/knowledge-vocabulary';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
@@ -103,6 +103,7 @@ export class IdeologyPageComponent {
     return chapters.map((_, i) => chapters.slice(i + 1).reduce((sum, c) => sum + c.minutes, 0));
   });
   readonly companion = computed(() => companionOf(this.page()?.slug ?? ''));
+  readonly connections = computed(() => connectionsOf(this.page()?.slug ?? ''));
 
   constructor() {
     combineLatest([this.route.paramMap, this.retry])
