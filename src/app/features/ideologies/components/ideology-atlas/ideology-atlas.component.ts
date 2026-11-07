@@ -8,6 +8,7 @@ import {
   input,
   linkedSignal,
   signal,
+  viewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { readerPredicate, readerProse } from '@core/content/editorial/reader-voice';
@@ -49,6 +50,8 @@ export class IdeologyAtlasComponent {
   private readonly repository = inject(ContentRepository);
   private readonly graph = this.repository.knowledgeGraph;
   private readonly focus = inject(TimelineFocusService);
+  private readonly entityReading = viewChild<ElementRef<HTMLElement>>('entityReading');
+  private readonly contextTitle = viewChild<ElementRef<HTMLElement>>('contextTitle');
   readonly atlasId = input.required<string>();
   readonly rootEntityId = input.required<string>();
   readonly origin = input.required<string>();
@@ -162,6 +165,14 @@ export class IdeologyAtlasComponent {
   }
   openPicked(entityId: string | null): void {
     if (entityId) this.openEntity(entityId);
+  }
+  /** Takes the reader from the map to the record it just opened, with focus on the title. */
+  showRecord(): void {
+    const section = this.entityReading()?.nativeElement;
+    if (!section) return;
+    const reduce = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    section.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    this.contextTitle()?.nativeElement.focus({ preventScroll: true });
   }
   returnContext(): void {
     const previous = this.history().at(-1);

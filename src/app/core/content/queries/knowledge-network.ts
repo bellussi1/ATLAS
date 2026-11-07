@@ -444,12 +444,31 @@ export function filterNetwork(network: KnowledgeNetwork, filter: NetworkFilter):
       filter.kinds.has(node.kind) && node.collections.some((id) => filter.collections.has(id)),
   );
   const ids = new Set(byKind.map((node) => node.id));
-  const edges = network.edges.filter(
-    (edge) => filter.families.has(edge.family) && ids.has(edge.source) && ids.has(edge.target),
+  // A relation in this cut of the map brings its endpoints along, even when one of them was
+  // catalogued in another collection. Otherwise a root or a bridge disappears and its links
+  // are dropped with it.
+  const joining = network.edges.filter(
+    (edge) =>
+      filter.families.has(edge.family) &&
+      filter.collections.has(edge.collection) &&
+      (ids.has(edge.source) || ids.has(edge.target)),
   );
-  if (!filter.onlyConnected) return { nodes: byKind, edges };
+  const pulled = new Set(joining.flatMap((edge) => [edge.source, edge.target]));
+  const nodes = network.nodes.filter(
+    (node) => ids.has(node.id) || (pulled.has(node.id) && filter.kinds.has(node.kind)),
+  );
+  const kept = new Set(nodes.map((node) => node.id));
+  const edges = network.edges.filter(
+    (edge) =>
+      filter.families.has(edge.family) &&
+      kept.has(edge.source) &&
+      kept.has(edge.target) &&
+      // Keep the old cross-collection links between two visible records.
+      (filter.collections.has(edge.collection) || (ids.has(edge.source) && ids.has(edge.target))),
+  );
+  if (!filter.onlyConnected) return { nodes, edges };
   const connected = new Set(edges.flatMap((edge) => [edge.source, edge.target]));
-  return { nodes: byKind.filter((node) => connected.has(node.id)), edges };
+  return { nodes: nodes.filter((node) => connected.has(node.id)), edges };
 }
 
 function fold(text: string): string {

@@ -217,6 +217,24 @@ describe('KnowledgeNetworkComponent', () => {
     expect(fixture.componentInstance.activeId()).toBeNull();
   });
 
+  it('keeps the whole map readable when a node is selected', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit(false);
+    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
+    component.select(linked.node.id);
+    fixture.detectChanges();
+    expect(component.selectedId()).toBe(linked.node.id);
+    expect(root(fixture).querySelector('.node__selection')).not.toBeNull();
+    expect(root(fixture).querySelector('.label.is-selected')).not.toBeNull();
+    // A selection is a permanent mark; only hovering its surroundings dims the rest.
+    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBe(0);
+    component.hoverNode(linked.node.id);
+    fixture.detectChanges();
+    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);
+  });
+
   it('never draws a label outside the free area of the stage', async () => {
     const fixture = await render();
     const component = fixture.componentInstance;

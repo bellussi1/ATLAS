@@ -1,5 +1,5 @@
 ﻿<div class="graph-page">
-  <div class="floating" [class.has-detail]="!!selected()">
+  <div class="floating" [class.has-detail]="!!selected() && !embedded()">
     <header class="bar card">
       @if (!embedded()) {
         <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
@@ -33,7 +33,11 @@
           <ul class="search__results card" aria-label="Resultados da busca">
             @for (match of matches(); track match.id) {
               <li>
-                <button type="button" (click)="select(match.id)" (keydown)="resultKey($event)">
+                <button
+                  type="button"
+                  (click)="select(match.id, true)"
+                  (keydown)="resultKey($event)"
+                >
                   <app-kind-icon [kind]="networkIcon(match)" />
                   <span>{{ match.title }}</span>
                   <small>{{ kindLabel(match) }} · {{ match.degree }}</small>
@@ -297,6 +301,16 @@
               />
             }
           </g>
+          <g class="node-selections" aria-hidden="true">
+            @for (item of selectionNodes(); track item.node.id) {
+              <circle
+                class="node__selection"
+                [attr.cx]="item.x"
+                [attr.cy]="item.y"
+                [attr.r]="selectionRadius(item.r)"
+              />
+            }
+          </g>
           <g class="node-pulses" aria-hidden="true">
             @for (item of pulseNodes(); track item.node.id) {
               <circle
@@ -304,7 +318,7 @@
                 [class.is-origin]="pathFromId() === item.node.id"
                 [attr.cx]="item.x"
                 [attr.cy]="item.y"
-                [attr.r]="item.r + 3"
+                [attr.r]="pulseRadius(item.r)"
               />
             }
           </g>
@@ -352,6 +366,7 @@
             <text
               class="label"
               [class.is-neighbour]="label.neighbour"
+              [class.is-selected]="label.id === selectedId()"
               [style.--delay.ms]="label.delay"
               [attr.x]="view().x + label.wx + label.dx"
               [attr.y]="view().y + label.wy + label.dy"
@@ -413,6 +428,10 @@
                   e mais {{ node.total - node.top.length }}. Clique para ver todas.
                 </p>
               }
+            } @else if (node.total) {
+              <p class="tip__more">
+                Aproxime para ler {{ node.total }} {{ node.total === 1 ? 'ligação' : 'ligações' }}.
+              </p>
             } @else {
               <p class="tip__more">Sem ligações no recorte atual.</p>
             }
@@ -510,6 +529,18 @@
           <p id="graph-status" class="status card" role="status">{{ status() }}</p>
         } @else {
           <p id="graph-status" class="visually-hidden" role="status">{{ status() }}</p>
+          @if (selectedVisible() && selected(); as node) {
+            <div class="selection-pill card">
+              <span class="selection-pill__label">Selecionado</span>
+              <strong>{{ node.title }}</strong>
+              <button type="button" class="selection-pill__action" (click)="inspectSelected()">
+                Ver ficha
+              </button>
+              <a class="selection-pill__open" [routerLink]="['/verbete', node.slug]">
+                Verbete <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          }
         }
         <div class="hud__side">
           @if (!embedded()) {
@@ -662,7 +693,7 @@
                       (focusin)="hoverEdge(link.edge.id)"
                       (focusout)="hoverEdge(null)"
                     >
-                      <button type="button" (click)="select(link.other.id)">
+                      <button type="button" (click)="select(link.other.id, true)">
                         <span class="links__verb">{{ linkVerb(link) }}</span>
                         <span class="links__name">{{ link.other.title }}</span>
                       </button>

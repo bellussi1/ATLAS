@@ -111,6 +111,8 @@ export class KnowledgeNetworkComponent {
   readonly focus = input<string | null>(null);
   /** Node picked in the map, so the chapter can open its record in place. */
   readonly picked = output<string | null>();
+  /** The reader asked to see the selected record under the map. */
+  readonly inspect = output<string>();
 
   readonly kinds = networkKinds;
   readonly families = relationFamilies;
@@ -206,8 +208,11 @@ export class KnowledgeNetworkComponent {
     const node = this.selected();
     return node ? positionClaims(node).slice(0, 3) : [];
   });
-  /** The node whose surroundings are lit: the one under the pointer, otherwise the selected one. */
-  readonly activeId = computed(() => this.hoveredId() ?? this.selectedId());
+  /**
+   * The node whose surroundings are lit while the reader hovers it. A selection is a permanent
+   * mark, not a filter: dimming every other node would erase the map around the selected one.
+   */
+  readonly activeId = computed(() => this.hoveredId());
   readonly activeLinks = computed(() => {
     const id = this.activeId();
     return id ? linksOf(id, this.visible().edges, this.nodeIndex) : [];
@@ -236,12 +241,13 @@ export class KnowledgeNetworkComponent {
   private readonly pathEdgeIds = computed(
     () => new Set((this.path() ?? []).map((step) => step.edge.id)),
   );
-  /** Nodes that stay lit: the path, or the active node with its neighbours; null when all are. */
+  /** Nodes that stay lit: the path, or the hovered node with its neighbours; null when all are. */
   private readonly litNodes = computed<ReadonlySet<string> | null>(() => {
     const path = this.path();
     if (path?.length) return new Set(path.flatMap((step) => [step.from, step.to]));
     const active = this.activeId();
-    return active ? new Set([active, ...this.neighbours()]) : null;
+    if (!active) return null;
+    return new Set([active, ...this.neighbours()]);
   });
   /** Free part of the stage, in pixels, between the floating panels. */
   readonly insets = computed(() => {
@@ -252,7 +258,13 @@ export class KnowledgeNetworkComponent {
       left: wide && this.controlsShown() ? 19 * rem + 32 : 12,
       right: wide && !this.embedded() && this.selected() ? 23 * rem + 32 : 12,
       top: wide ? 92 : 84,
-      bottom: !wide && !this.embedded() && this.selected() ? Math.round(height * 0.5) : 64,
+      // On a phone the pill and the zoom stack over the bottom of the map; keep labels clear.
+      bottom:
+        !wide && this.embedded() && this.selectedVisible()
+          ? 172
+          : !wide && !this.embedded() && this.selected()
+            ? Math.round(height * 0.5)
+            : 64,
       width,
     };
   });
@@ -298,6 +310,13 @@ export class KnowledgeNetworkComponent {
     const ids = new Set([this.selectedId(), this.pathFromId()].filter((id): id is string => !!id));
     return ids.size ? this.drawnNodes().filter((item) => ids.has(item.node.id)) : [];
   });
+  /** A persistent ring around the selected node, independent of the pulse animation. */
+  readonly selectionNodes = computed(() => {
+    const id = this.selectedId();
+    return id ? this.drawnNodes().filter((item) => item.node.id === id) : [];
+  });
+  /** True when the selected record is one of the shapes drawn in this cut of the map. */
+  readonly selectedVisible = computed(() => this.selectionNodes().length > 0);
   readonly drawnEdges = computed(() => {
     const positions = this.positions();
     if (!positions) return [];
@@ -449,11 +468,12 @@ export class KnowledgeNetworkComponent {
   /** Short phrases on the links of the lit node, placed at the middle of each link. */
   readonly edgeLabels = computed(() => {
     if (this.busy()) return [];
-    const active = this.activeId();
+    const active = this.hoveredId() ?? this.selectedId();
     const positions = this.positions();
     if (!active || !positions) return [];
     // Zoomed out the lines speak for themselves; the wording appears when the reader comes close.
     if (!this.near()) return [];
+    const links = this.hoveredId() ? this.activeLinks() : this.selectedLinks();
     const k = this.zoomK();
     const { x: vx, y: vy } = this.view();
     const taken = this.labels().map((label) => {
@@ -465,7 +485,7 @@ export class KnowledgeNetworkComponent {
       return { left, right: left + width, top: y - LABEL_HEIGHT / 2, bottom: y + LABEL_HEIGHT / 2 };
     });
     const placed: { id: string; text: string; x: number; y: number; delay: number }[] = [];
-    for (const link of this.activeLinks().slice(0, 18)) {
+    for (const link of links.slice(0, 18)) {
       const from = positions.get(link.edge.source);
       const to = positions.get(link.edge.target);
       if (!from || !to) continue;
@@ -694,7 +714,7 @@ export class KnowledgeNetworkComponent {
       Escape: () => {
         if (this.shortcutsOpen()) this.shortcutsOpen.set(false);
         else if (this.pathFromId()) this.pathFromId.set(null);
-        else if (this.selectedId()) this.clearSelection();
+        else if (this.selectedId() && !this.embedded()) this.clearSelection();
         else if (this.controlsOpen() && !this.wide()) this.controlsOpen.set(false);
       },
     };
@@ -713,7 +733,7 @@ export class KnowledgeNetworkComponent {
   searchKey(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
       const first = this.matches()[0];
-      if (first) this.select(first.id);
+      if (first) this.select(first.id, true);
       event.preventDefault();
     } else if (event.key === 'Escape') {
       this.query.set('');
@@ -735,13 +755,27 @@ export class KnowledgeNetworkComponent {
   }
   // ---- selection and focus ----
 
-  select(id: string | null): void {
+  /**
+   * Marks a node as selected. Clicking a node that is already on screen keeps the view still; only
+   * a deliberate reveal, such as a search result, moves the map to the node.
+   */
+  select(id: string | null, reveal = false): void {
     this.selectedId.set(id);
     if (id) {
       this.focusId.set(id);
-      this.center(id);
+      if (reveal) {
+        // Choosing a result closes the results list; the map returns to the whole cut.
+        this.query.set('');
+        if (this.embedded()) this.reveal(id);
+        else this.center(id);
+      }
     }
     this.picked.emit(id);
+  }
+  /** Brings the record of the selected node into view under the map. */
+  inspectSelected(): void {
+    const node = this.selected();
+    if (node) this.inspect.emit(node.id);
   }
   clearSelection(): void {
     this.selectedId.set(null);
@@ -772,10 +806,12 @@ export class KnowledgeNetworkComponent {
   }
   edgeLit(edge: NetworkEdge): boolean {
     const active = this.activeId();
+    const selected = this.selectedId();
     return (
       this.pathEdgeIds().has(edge.id) ||
       edge.id === this.hoveredEdgeId() ||
-      (!!active && (edge.source === active || edge.target === active))
+      (!!active && (edge.source === active || edge.target === active)) ||
+      (!!selected && (edge.source === selected || edge.target === selected))
     );
   }
   /** Invisible click target around an icon: never under 16 px on screen, whatever the zoom. */
@@ -783,6 +819,14 @@ export class KnowledgeNetworkComponent {
     const scale = this.nodeScale();
     const k = this.steppedK();
     return Math.max(radius * scale + 6 / k, 16 / k);
+  }
+  /** Selection ring keeps the same screen gap from the shape at every zoom. */
+  selectionRadius(radius: number): number {
+    return radius * this.nodeScale() + 9 / this.steppedK();
+  }
+  /** Pulse starts just outside the shape, also measured on screen. */
+  pulseRadius(radius: number): number {
+    return radius * this.nodeScale() + 4 / this.steppedK();
   }
   tabIndexFor(id: string): number {
     const roving = this.focusId() ?? this.drawnNodes()[0]?.node.id;
@@ -1034,7 +1078,11 @@ export class KnowledgeNetworkComponent {
       this.suppressClick = true;
       // A drag ends with a click on whatever is under the pointer; let it pass first.
       setTimeout(() => (this.suppressClick = false));
-    } else if ((event.target as Element).closest('[data-node], [data-hit]') === null) {
+    } else if (
+      !this.embedded() &&
+      (event.target as Element).closest('[data-node], [data-hit]') === null
+    ) {
+      // In a chapter the selection mirrors the record below: there is no empty state to clear to.
       this.clearSelection();
     }
     this.pointer = null;

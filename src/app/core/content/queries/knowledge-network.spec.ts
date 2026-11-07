@@ -75,6 +75,32 @@ describe('knowledge network', () => {
     expect(connected.nodes.every((n) => n.degree > 0)).toBe(true);
   });
 
+  it('pulls the endpoints of a scoped relation into the cut', () => {
+    const person = {
+      id: 'person',
+      kind: 'person',
+      collections: ['atlas-a'],
+    } as unknown as NetworkNode;
+    const root = {
+      id: 'root',
+      kind: 'ideology',
+      collections: ['atlas-b'],
+    } as unknown as NetworkNode;
+    const link = {
+      id: 'link',
+      source: 'root',
+      target: 'person',
+      family: 'associated',
+      collection: 'atlas-a',
+    } as unknown as NetworkEdge;
+    const cut = filterNetwork(
+      { nodes: [root, person], edges: [link], collections: [] },
+      { ...all, collections: new Set(['atlas-a']) },
+    );
+    expect(cut.nodes.map((node) => node.id)).toEqual(['root', 'person']);
+    expect(cut.edges).toHaveLength(1);
+  });
+
   it('searches names ignoring case and accents', () => {
     const node = network.nodes[0];
     const hits = searchNodes(network.nodes, node.title.toUpperCase());

@@ -111,22 +111,30 @@
         [scope]="[atlasId()]"
         [focus]="selectedId()"
         (picked)="openPicked($event)"
+        (inspect)="showRecord()"
       />
     </section>
 
-    <section class="entity-reading" aria-labelledby="context-title">
+    <section #entityReading class="entity-reading" aria-labelledby="context-title">
       <div class="panel-topline">
         <p class="eyebrow">Ficha selecionada</p>
-        @if (history().length) {
-          <button type="button" class="back-button" (click)="returnContext()">
-            ← Voltar ao contexto anterior
-          </button>
-        }
+        <div class="panel-actions">
+          @if (history().length) {
+            <button type="button" class="back-button" (click)="returnContext()">
+              ← Voltar ao contexto anterior
+            </button>
+          }
+          @if (selected(); as entity) {
+            <a class="verbete-link" [routerLink]="['/verbete', entity.slug]">
+              Abrir verbete <span aria-hidden="true">↗</span>
+            </a>
+          }
+        </div>
       </div>
       @if (selected(); as entity) {
         <div class="entity-reading-grid">
           <div class="entity-reading-main">
-            <h2 id="context-title">{{ entity.title }}</h2>
+            <h2 id="context-title" #contextTitle tabindex="-1">{{ entity.title }}</h2>
             <p class="summary"><app-knowledge-text [text]="entity.summary" /></p>
 
             <div class="entity-meta">

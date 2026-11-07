@@ -286,13 +286,37 @@ test('the connections chapter draws the tradition as a graph scoped to its atlas
   await page.goto('/marxismo#conexoes');
   const network = page.locator('#conexoes app-knowledge-network');
   await expect(network).toBeVisible();
-  await expect(network.locator('[data-node]')).toHaveCount(42);
+  const nodes = network.locator('[data-node]');
+  await expect(nodes.first()).toBeVisible();
+  const count = await nodes.count();
+  expect(count).toBeGreaterThan(40);
+  await expect(network.locator('#graph-status')).toContainText(`${count} de`);
+  // The tradition's own record is part of the cut and opens selected.
+  await expect(network.locator('[data-node="ideology-marxism"]')).toHaveCount(1);
+  await expect(network.locator('.node.is-selected')).toHaveCount(1);
+  await expect(network.locator('.node__selection')).toHaveCount(1);
   await expect(network.locator('.zoom__level')).toHaveText('100%');
-  await expect(network.locator('#graph-status')).toContainText(/42 de \d+ verbetes/);
   await expect(network.locator('.detail')).toHaveCount(0);
   await network.locator('#graph-search').fill('Friedrich Engels');
   await network.locator('#graph-search').press('Enter');
-  await expect(page.locator('#conexoes .entity-reading h2')).toHaveText('Friedrich Engels');
+  const heading = page.locator('#conexoes .entity-reading h2');
+  await expect(heading).toHaveText('Friedrich Engels');
+  await expect(network.locator('.zoom__level')).toHaveText('100%');
+  await expect(network.locator('.node.is-selected')).toHaveCount(1);
+  await expect(network.locator('.node__selection')).toHaveCount(1);
+  await expect(network.locator('.label.is-selected')).toContainText('Friedrich Engels');
+  // A selection marks the node; it must not erase the rest of the map.
+  await expect(network.locator('.node.is-dimmed')).toHaveCount(0);
+  const selection = network.locator('.selection-pill');
+  await expect(selection).toContainText('Selecionado');
+  await expect(selection).toContainText('Friedrich Engels');
+  await expect(selection.getByRole('link', { name: /Verbete/ })).toHaveAttribute(
+    'href',
+    /\/verbete\//,
+  );
+  await selection.getByRole('button', { name: 'Ver ficha' }).click();
+  await expect(heading).toBeFocused();
+  await expect(heading).toBeInViewport();
 });
 
 test('each image appears once in the narrative; only the archive catalogue repeats', async ({

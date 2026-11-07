@@ -209,9 +209,23 @@ test('zoomed out the links are plain lines; up close they carry their wording', 
   await expect(page.locator(linkedNode).first()).toBeVisible();
   await page.locator(linkedNode).first().dispatchEvent('pointerenter');
   await expect(page.locator('.label--edge')).toHaveCount(0);
-  await page.locator(linkedNode).first().dispatchEvent('pointerleave');
-  await page.locator(linkedNode).first().focus();
-  await page.keyboard.press('Enter');
+  // Pick a linked node in the free middle, select it, and zoom around it; up close its links
+  // carry their wording.
+  const spot = await page.locator(linkedNode).evaluateAll((nodes) => {
+    for (const el of nodes) {
+      const rect = el.getBoundingClientRect();
+      const x = rect.x + rect.width / 2;
+      const y = rect.y + rect.height / 2;
+      if (x > 400 && x < 850 && y > 250 && y < 580) return { x, y };
+    }
+    return null;
+  });
+  expect(spot).not.toBeNull();
+  await page.mouse.click(spot!.x, spot!.y);
+  await expect(page.locator('.node.is-selected')).toHaveCount(1);
+  await page.mouse.move(spot!.x, spot!.y);
+  await page.mouse.wheel(0, -500);
+  await expect(page.locator('.zoom__level')).not.toHaveText('100%');
   await expect(page.locator('.label--edge').first()).toBeVisible();
 });
 

@@ -1,6 +1,6 @@
 # Contexto vivo do ATLAS
 
-Atualizado em 06/11/2026. Este é o handoff entre sessões: leia no início, atualize no fim com `/handoff`. Não substitui `AGENTS.md` nem os documentos de arquitetura; registra o estado observado e o que está pendente.
+Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atualize no fim com `/handoff`. Não substitui `AGENTS.md` nem os documentos de arquitetura; registra o estado observado e o que está pendente.
 
 ## Estado observado
 
@@ -171,6 +171,15 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O `[hidden]` dos cards era anulado por `:host { display: flex }` no `appRecordCard`; os cards além dos seis continuavam visíveis e o botão parecia não funcionar.
     - `record-card.component.scss` agora tem `:host([hidden]) { display: none }`. O conserto vale para todas as galerias, inclusive `vertentes-2-gallery`.
     - Teste e2e novo em `#pensadores`: 6 cards visíveis, “Ver todos” mostra o total e “Mostrar menos” volta a 6. `e2e/pages.spec` **23/23**; `lint` exit 0.
+
+25. **Seleção no grafo e ficha sincronizada**
+    - Selecionar um nó deixou de ser um filtro: o mapa inteiro continua visível e só o hover ilumina a vizinhança. O nó selecionado ganha anel permanente (com raio medido em tela) e rótulo em vermelho; a seleção não apaga mais o contexto.
+    - Clicar num nó não aproxima mais para 450%: a vista fica parada. A busca ainda revela o resultado (pan no capítulo, enquadramento em `/grafos`) e fecha a lista. `filterNetwork` passou a puxar para o recorte os endpoints das relações do atlas, então a raiz e as suas ligações aparecem: social-democracia **96 nós/77 ligações**, marxismo **52**, liberalismo **38**.
+    - O painel flutuante do capítulo mostra “Ver ficha” e “Verbete”; “Ver ficha” rola até a ficha e foca o título. A ficha ganhou “Abrir verbete” no topo.
+    - No mobile o HUD não é mais escondido quando há seleção; o pill e o zoom cabem em duas linhas e o enquadramento reserva espaço para eles, então nenhum rótulo fica atrás do pill.
+    - O cartão de hover diz “Aproxime para ler N ligações” quando as frases ainda não estão visíveis, em vez de afirmar que não há ligações; o dimming do hover ficou em **0.4** para nós e **0.18** para arestas.
+    - Verificações: `npm test` **317/317** (56 arquivos); `typecheck` e `lint` exit 0; `build` passou com o aviso de orçamento do SCSS do grafo (18 kB; 19,43 kB); `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **41/41**; a rodada anterior dos seis specs (pages, graph, encyclopedia, ideology-sheets, carousel, liberalism-atlas) tinha **65/65**. Nada foi publicado; o ponteiro segue em `45300c5…`.
+    - O aviso de orçamento do SCSS é anterior a esta rodada e não falha o build (`maximumError` 20 kB); se o componente crescer, dividir estilos ou rever o limite.
 
 ## Pendências que bloqueiam
 
