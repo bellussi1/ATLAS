@@ -99,6 +99,48 @@ function searchContent(values: unknown[]): string {
   );
 }
 
+/**
+ * Name text of a record: its title, aliases and approved translated titles. Search matches names,
+ * not the narrative or the relations that mention them.
+ */
+export function recordName(
+  entry: Pick<DiscoveryIndexEntry, 'title' | 'aliases' | 'translations'>,
+): string {
+  return normalize(
+    [
+      entry.title,
+      ...entry.aliases,
+      ...(entry.translations ?? []).map((translation) => translation.text.title),
+    ].join(' '),
+  );
+}
+
+/**
+ * How well the query names a record: `0` exact title, `1` title prefix, `2` exact alias or
+ * translated title, `3` alias prefix and `4` a name that only contains the terms. `null` means the
+ * query is not a name of this record.
+ */
+export function nameMatchScore(
+  entry: Pick<DiscoveryIndexEntry, 'title' | 'aliases' | 'translations'>,
+  query: string,
+): number | null {
+  const terms = normalize(query).trim().split(/\s+/).filter(Boolean);
+  if (!terms.length) return null;
+  const name = recordName(entry);
+  if (!terms.every((term) => name.includes(term))) return null;
+  const phrase = terms.join(' ');
+  const titles = [
+    entry.title,
+    ...(entry.translations ?? []).map((translation) => translation.text.title),
+  ].map(normalize);
+  const aliases = entry.aliases.map(normalize);
+  if (titles.some((title) => title === phrase)) return 0;
+  if (titles.some((title) => title.startsWith(phrase))) return 1;
+  if (aliases.some((alias) => alias === phrase)) return 2;
+  if (aliases.some((alias) => alias.startsWith(phrase))) return 3;
+  return 4;
+}
+
 export function buildDiscoveryIndex(
   graph: KnowledgeGraph,
   readingTexts: Record<string, string> = {},
@@ -275,13 +317,26 @@ export function filterDiscoveryIndex(
   index: DiscoveryIndexEntry[],
   filter: DiscoveryIndexFilter,
 ): DiscoveryIndexEntry[] {
-  const query = normalize(filter.query?.trim() ?? '');
-  return index.filter(
-    (entry) =>
-      (!filter.kind || entry.kind === filter.kind) &&
-      (!filter.state || entry.state === filter.state) &&
-      (!query || entry.searchText.includes(query)),
-  );
+  const query = filter.query?.trim() ?? '';
+  const allowed = (entry: DiscoveryIndexEntry) =>
+    (!filter.kind || entry.kind === filter.kind) && (!filter.state || entry.state === filter.state);
+  const base = index.filter(allowed);
+  if (!query) return base;
+  const named = base
+    .map((entry) => ({ entry, score: nameMatchScore(entry, query) }))
+    .filter((match): match is { entry: DiscoveryIndexEntry; score: number } => match.score !== null)
+    .sort(
+      (a, b) =>
+        a.score - b.score ||
+        a.entry.title.localeCompare(b.entry.title, 'pt-BR') ||
+        a.entry.id.localeCompare(b.entry.id),
+    );
+  // A query that names no record still finds the passages that mention it, as a last resort.
+  if (named.length) return named.map((match) => match.entry);
+  const terms = normalize(query).split(/\s+/).filter(Boolean);
+  return base
+    .filter((entry) => terms.every((term) => entry.searchText.includes(term)))
+    .sort((a, b) => a.title.localeCompare(b.title, 'pt-BR') || a.id.localeCompare(b.id));
 }
 
 export function validateDiscoveryDestinations(

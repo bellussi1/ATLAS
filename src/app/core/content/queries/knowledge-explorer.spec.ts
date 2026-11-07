@@ -4,6 +4,7 @@ import {
   explorerContentGroup,
   explorerEntries,
   explorerFacets,
+  explorerMatchKind,
   explorerPage,
   parseExplorerPage,
   safeExplorerReturn,
@@ -21,6 +22,17 @@ describe('Knowledge Explorer', () => {
       explorerEntries(discoveryIndex, { query: 'guimaraes silveira' }).map((e) => e.title),
     ).toContain('Ulysses Guimarães');
     expect(explorerEntries(discoveryIndex, { query: 'guimaraes impossivel' })).toEqual([]);
+  });
+  it('returns names before the passages that merely mention them', () => {
+    const results = explorerEntries(discoveryIndex, { query: 'lula' });
+    expect(results[0].title).toBe('Luiz Inácio Lula da Silva');
+    expect(results.map((e) => e.title)).not.toContain('Partido dos Trabalhadores');
+    expect(explorerMatchKind(discoveryIndex, { query: 'lula' })).toBe('name');
+    // A query that names no record still finds the translation that cites it.
+    expect(explorerMatchKind(discoveryIndex, { query: 'federative' })).toBe('text');
+    expect(explorerEntries(discoveryIndex, { query: 'federative' }).map((e) => e.title)).toContain(
+      'Brasil',
+    );
   });
   it('keeps catalogues limited to graph records rather than methodological examples', () => {
     const people = explorerEntries(discoveryIndex, { catalogue: 'pessoas' });

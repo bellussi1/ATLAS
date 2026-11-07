@@ -37,6 +37,10 @@ describe('static discovery index', () => {
     expect(filterDiscoveryIndex(index, { query: 'CF/88' }).map((item) => item.title)).toContain(
       'Constituição da República Federativa do Brasil de 1988',
     );
+    const lula = filterDiscoveryIndex(index, { query: 'lula' }).map((item) => item.title);
+    expect(lula[0]).toBe('Luiz Inácio Lula da Silva');
+    expect(lula).not.toContain('Partido dos Trabalhadores');
+    expect(lula.every((title) => title.toLowerCase().includes('lula'))).toBe(true);
     expect(
       filterDiscoveryIndex(index, { kind: 'artigo', state: 'pending' }).map((item) => item.title),
     ).toEqual(['O caput do artigo 5º da Constituição de 1988']);

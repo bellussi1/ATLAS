@@ -26,6 +26,7 @@ import {
   explorerEntries,
   explorerFacets,
   explorerGroups,
+  explorerMatchKind,
   explorerPage,
   parseExplorerPage,
 } from '@core/content/queries/knowledge-explorer';
@@ -93,6 +94,15 @@ export class ExplorerComponent {
     .filter((group) => group.kinds.length);
   readonly results = computed(() =>
     explorerEntries(this.repository.discoveryIndex, {
+      catalogue: this.catalogue.path,
+      query: this.params().get('q') ?? '',
+      kind: this.params().get('tipo') ?? '',
+      state: this.params().get('estado') ?? '',
+    }),
+  );
+  /** Tells the reader when no name matched and the list only cites the term in the text. */
+  readonly matchKind = computed(() =>
+    explorerMatchKind(this.repository.discoveryIndex, {
       catalogue: this.catalogue.path,
       query: this.params().get('q') ?? '',
       kind: this.params().get('tipo') ?? '',

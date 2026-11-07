@@ -21,6 +21,18 @@ test('a connection keeps the search origin so the results stay one step away', a
   );
 });
 
+test('search returns names instead of every passage that mentions them', async ({ page }) => {
+  await page.goto('/acervo?q=lula');
+  const results = page.getByRole('region', { name: 'Resultados da busca' });
+  await expect(
+    results.getByRole('link').filter({ hasText: 'Luiz Inácio Lula da Silva' }).first(),
+  ).toBeVisible();
+  await expect(
+    results.getByRole('link').filter({ hasText: 'Partido dos Trabalhadores' }),
+  ).toHaveCount(0);
+  await expect(page.locator('.notice')).toHaveCount(0);
+});
+
 test('universal search starts at home, handles aliases and keeps filters through a permanent page', async ({
   page,
 }) => {

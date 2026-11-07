@@ -134,6 +134,12 @@
           <ng-container *ngTemplateOutlet="pager" />
         }
       </div>
+      @if (matchKind() === 'text') {
+        <p class="notice">
+          Nenhum nome corresponde a “{{ params().get('q') }}”. Os resultados abaixo apenas citam o
+          termo no texto.
+        </p>
+      }
       <section
         aria-label="Resultados da busca"
         class="results"
