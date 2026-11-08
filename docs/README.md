@@ -59,6 +59,7 @@ Nada aqui é estado publicado. São hipóteses, cronogramas ou decisões que ain
 | [Auditoria de UX/UI](archive/2026-11/audits/AUDITORIA-UX-UI-2026-11-02.md) | Auditoria de 02/11/2026 |
 | [Validações](archive/2026-11/quality/) | Relatórios de exploração, dados, ingestão, rede, posições e idiomas |
 | [Planos executados](archive/2026-11/superpowers/plans/) | Planos de implementação de 01/11/2026 |
+| [Prompts de construção](archive/2026-11/prompts/) | Prompts numerados preservados como registro de execução |
 | [Editorial](archive/2026-11/editorial/) | Revisão de traduções e lacuna editorial |
 
 ## Fonte canônica por assunto

@@ -107,7 +107,7 @@ Prévias da home, índice de seções, indicação de posição e percursos para
 
 ## Mesa de pesquisa e skills
 
-A home substitui a composição anterior de painéis pela seleção de fichas. Busca e três modos permanecem; o grafo fica na rota Relações, sem miniatura na mesa. Registros e leitor reutilizados. Desktop usa botões de seleção; mobile, select nativo sincronizado. A prévia aponta para o registro selecionado. Revisão em `animation-plans/001-research-table-review.md`.
+A home substitui a composição anterior de painéis pela seleção de fichas. Busca e três modos permanecem; o grafo fica na rota Relações, sem miniatura na mesa. Registros e leitor reutilizados. Desktop usa botões de seleção; mobile, select nativo sincronizado. A prévia aponta para o registro selecionado. Revisão em `docs/design/animation-plans/001-research-table-review.md`.
 
 Catálogo de skills com prefixo `atlas-`. Frontend e interação orientaram a composição; `find-animation-opportunities` selecionou troca de ficha, painel e feedback de pressão; `animate` implementou; `improve-animations` e `12-principles-of-animation` revisaram.
 
@@ -127,7 +127,7 @@ Favicon com redução própria em SVG/PNG, fallback ICO (16/32/48) e touch icon 
 
 ## Revisão requisito a requisito do Prompt 05 (31/10/2026)
 
-Referência: `prompts/05-design-system-acessivel.md`. A revisão preserva a identidade e a marca aprovadas depois. Alterações paralelas de conteúdo foram preservadas; a suíte abaixo reflete o workspace conjunto, e o commit da revisão se limita ao design system.
+Referência: `docs/archive/2026-11/prompts/05-design-system-acessivel.md`. A revisão preserva a identidade e a marca aprovadas depois. Alterações paralelas de conteúdo foram preservadas; a suíte abaixo reflete o workspace conjunto, e o commit da revisão se limita ao design system.
 
 | Requisito | Evidência e resultado |
 |---|---|

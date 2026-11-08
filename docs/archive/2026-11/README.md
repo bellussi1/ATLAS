@@ -14,6 +14,8 @@ Registros históricos preservados. **Nada aqui é fonte do estado atual.** Consu
 | [`quality/`](quality/) | Relatórios de validação de exploração, dados, ingestão, rede, posições e idiomas | Métricas e resultados da época |
 | [`superpowers/plans/`](superpowers/plans/) | Planos de implementação de 01/11/2026 | Registro de execução, não roteiro atual |
 | [`editorial/`](editorial/) | Revisão de traduções e lacuna editorial | Snapshot editorial |
+| [`prompts/`](prompts/) | Prompts numerados que conduziram a construção | Registro de execução; caminhos citados são os da época |
+| [`templates/`](templates/) | Modelo inicial de `AGENTS.md` | Referência histórica |
 
 ## Regras
 

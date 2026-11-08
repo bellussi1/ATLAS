@@ -49,6 +49,7 @@
     "format": "prettier --write \"src/**/*.{ts,html,scss,css,json}\" \"scripts/**/*.{mjs,js,cjs,json}\" \"e2e/**/*.{ts,js,mjs}\" \"*.{json,js,cjs,mjs}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\" \"scripts/**/*.{mjs,js,cjs,json}\" \"e2e/**/*.{ts,js,mjs}\" \"*.{json,js,cjs,mjs}\"",
     "preview": "node scripts/preview.mjs",
+    "clean": "node scripts/clean.mjs",
     "check:links": "node scripts/check-links.mjs",
     "infra:switch-cdn": "node scripts/infra/switch-content-domain.mjs",
     "infra:content-worker": "npx --yes wrangler@latest deploy --config scripts/infra/content-delivery.wrangler.toml",

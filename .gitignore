@@ -31,7 +31,9 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/.angular/
+/.wrangler/
+/.claude/worktrees/
 .playwright-mcp/
 .playwright-cli/
 output
