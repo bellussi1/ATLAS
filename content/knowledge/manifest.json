@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "knowledge-graph-atlas",
   "version": "1.1.0",
-  "updatedAt": "2026-11-06",
+  "updatedAt": "2026-11-08",
   "collections": [
     {
       "id": "atlas-methodology",
@@ -66,8 +66,8 @@
     },
     {
       "id": "atlas-verbetes-citados",
-      "file": "collections/atlas-verbetes-citados.d367970c6724ee323047930d4e0c9224c94594fe613e77cef61fc530062f7f3f.json",
-      "sha256": "d367970c6724ee323047930d4e0c9224c94594fe613e77cef61fc530062f7f3f"
+      "file": "collections/atlas-verbetes-citados.4af3b2ac9693bccca2844f5f1ee28c76ad955d426d43f48b0dfa56facdeecabc.json",
+      "sha256": "4af3b2ac9693bccca2844f5f1ee28c76ad955d426d43f48b0dfa56facdeecabc"
     }
   ]
 }

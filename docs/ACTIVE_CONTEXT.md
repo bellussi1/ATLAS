@@ -10,7 +10,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
 - Gitflow: `develop` é a integração; o PR **#50** (`develop` → `master`) está aberto. `master` está em `69eaed4` e recebeu #41, #45 e #39. Último verify verde: **`0d0a8a9`**.
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
-- Conteúdo: 13 coleções. Release local **`06a3de…`**, com o artefato `network` do grafo; o ponteiro público continua em **`a54eee…`** e nada foi publicado.
+- Conteúdo: 13 coleções. Release local **`2f7649…`**, com 12 registros de `verbetes-citados` atualizados (+126 afirmações, +13 relações); o ponteiro público continua em **`a54eee…`** e nada foi publicado.
 - Build local: **1.186 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
 - CI: o verify de `0d0a8a9` passou (lint, tipos, testes, conteúdo, ingestão, build, links e e2e). As mudanças de Lighthouse desta rodada têm verificações locais, mas ainda não têm CI próprio.
 
@@ -24,6 +24,8 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - `npm run lint` e `npm run typecheck`: exit 0.
 - Lighthouse local com brotli/gzip na preview: mobile **91–94** e desktop **100** em desempenho; acessibilidade, boas práticas e SEO **100** nas duas emulações. Nenhum reflow forçado e nenhum erro de console.
 - CSS: `/acervo` caiu de 13 para 9 cores de texto computadas e `/leitura/marxismo` de 14 para 10; tamanhos de fonte agora saem dos tokens `--text-*` (11, 12, 13, 14, 15, 16 e 17px).
+- `content:build` após a Onda 2: release **`2f7649…`**, 13 coleções; `test:content` **184/184**.
+- Auditoria assistida por IA dos 109 itens da amostra: **106 sustenta**, **2 não sustenta**, **1 inverte**; os três primeiros casos para conferência são John Rawls, Voltaire e Kant. Não substitui a revisão humana.
 - Grafo, medição local: primeiro nó **948 ms**, seleção por clique **108 ms**, pan p95 **33,3 ms**.
 
 ## Trabalho ativo
@@ -35,6 +37,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página, após o primeiro paint), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
 - **Higiene de console e CSS**: Zod roda sem JIT para não violar o CSP, o filtro de temas ganhou `id`, o logo do rodapé declara proporção e a paleta do `record-card` passou a usar tokens. A preview local agora comprime em brotli/gzip e aplica cache imutável a JS/CSS com hash, aproximando a medição do Pages.
 - **Links de compra**: registros de obra que são livros, com autor conhecido, ganham "Comprar na Amazon" direto para a busca de livros, com `rel="sponsored"` e divulgação quando houver tag. A lista curada fica em `core/content/queries/amazon-books.ts`; tópicos, periódicos e o filme do acervo não recebem link. Sem `AMAZON_ASSOCIATE_TAG`, o link existe mas não gera comissão.
+- **Onda 2 / verbetes citados**: 12 artigos baixados e extraídos com **Haiku 5.5 medium** (relações conferidas por Sonnet 5.5 low), com **US$ 0,076** de gasto acumulado. Os 12 rascunhos foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. O lote completo de 414 exige várias horas de captura (a resolução de links de cada artigo é o gargalo), não uma sessão; o extrator em si custa cerca de US$ 0,005 por artigo.
 
 ## Pendências que bloqueiam
 

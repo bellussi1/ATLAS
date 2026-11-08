@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "kind": "wikipedia-capture",
+  "tradition": "verbetes-citados",
+  "capturedAt": "2026-11-08T05:23:00.638Z",
+  "requests": [
+    {
+      "url": "https://pt.wikipedia.org/api/rest_v1/page/html/Henri_de_Saint-Simon",
+      "kind": "html",
+      "contentType": "text/html; charset=utf-8; profile=\"https://www.mediawiki.org/wiki/Specs/HTML/2.8.0\"",
+      "etag": "W/\"72117344/14c4be98-d8a0-11f1-a761-972b2c643882/view\"",
+      "sha256": "e0b5c3e2e1e88c99d22be084754b06dee37bbdd78148327f50031b1b122347dc",
+      "license": "Texto da Wikipedia (CC BY-SA 4.0); origem e atribuição preservadas; não publicado"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Henri+de+Saint-Simon&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "818da908bd082f95c7887e98003452d41247086fef07bf36a3a1f09569951c7c",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/w/api.php?action=query&titles=Paris%7C17+de+outubro%7C1760%7C19+de+maio%7C1825%7CFilosofia%7CEconomia%7CFran%C3%A7a%7CSocialismo%7CSocialismo+ut%C3%B3pico%7CSansimonismo%7CClasse+trabalhadora%7CAntigo+Regime%7CNouveau+Christianisme%7CAm%C3%A9rica+do+Norte%7CRomantismo%7CSainte-Beuve%7CVictor+Hugo%7CGeorge+Sand%7CIntervencionismo%7CAdam+Smith%7CRevolu%C3%A7%C3%A3o+Francesa%7CTrabalho+produtivo%7CKarl+Marx%7CAlan+Ryan%7CRestaura%C3%A7%C3%A3o+%28Europa%29%7CAliena%C3%A7%C3%A3o%7CAugusto+Comte%7CIgreja+Cat%C3%B3lica%7CProtestante%7CA+cada+um+segundo+sua+contribui%C3%A7%C3%A3o%7CPortal%3ABiografias&redirects=1&prop=pageprops&ppprop=wikibase_item&format=json&formatversion=2",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "2d82377a7b55247a562367d615d3d73416a23f454782d945c5b916c8de7d3123",
+      "license": "Metadados Wikimedia; origem e atribuição preservadas"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q141800260%7CQ3491521%7CQ3500368%7CQ5070802%7CQ141797905%7CQ141803738%7CQ141803787%7CQ13414953%7CQ94670589%7CQ121144598%7CQ23847174%7CQ17197366%7CQ122754124%7CQ121144515%7CQ178706%7CQ2135977%7CQ24017414%7CQ110401222%7CQ9174%7CQ5043%7CQ2711500%7CQ19610271%7CQ187931%7CQ42470%7CQ4656150%7CQ118555179%7CQ17379835&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "56b5b0b552653a64b4efa084bc8b3b45af2c7a446567d1a18133a7c47dffe734",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q20667921%7CQ3266850%7CQ192611%7CQ583865%7CQ11618417%7CQ14757767%7CQ98966309%7CQ515%7CQ960648%7CQ82794%7CQ17334923%7CQ1789452%7CQ27702623%7CQ779824%7CQ5119%7CQ16562419%7CQ125684839%7CQ1637706%7CQ7930989%7CQ1190554%7CQ186408%7CQ116600668%7CQ205892%7CQ136721469%7CQ138341156%7CQ577%7CQ56290623%7CQ235729%7CQ110402867%7CQ1047113%7CQ19478619%7CQ451967%7CQ121344523%7CQ64549097%7CQ96116695%7CQ3622126%7CQ15831325%7CQ33122512%7CQ97929320%7CQ7275%7CQ183039%7CQ1307214%7CQ5589178%7CQ15617994%7CQ4835091%7CQ1048835%7CQ110401282%7CQ7257%7CQ1639378%7CQ33104129&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "6a4a87012926db3cbdb941d418cc4ef5aa7829b8cbc6f2959988480e94702465",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q21146257%7CQ58778%7CQ16686448%7CQ7048977%7CQ336%7CQ211606%7CQ155076%7CQ1896989%7CQ96196009%7CQ2752458%7CQ43229%7CQ104098715%7CQ10541491%7CQ117023459%7CQ49447%7CQ141152439%7CQ769620%7CQ646293%7CQ3249551%7CQ483247%7CQ921513%7CQ5193493%7CQ141131708%7CQ134601727%7CQ134261520%7CQ141187917%7CQ141222018%7CQ1048607%7CQ12558574%7CQ124711104%7CQ104086571%7CQ136433660%7CQ16887380%7CQ12046615%7CQ15893266%7CQ618123%7CQ141104744%7CQ1620908%7CQ1437361%7CQ139243747%7CQ17537576%7CQ15621286%7CQ20719696%7CQ16686022%7CQ27096220%7CQ115385384%7CQ21871294%7CQ215627%7CQ795052%7CQ141164427&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "37a962c531b3489792e3b2a3eeec528d7ab0115c3d3373ea915819eab2f593b6",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2198855%7CQ968159%7CQ3326717%7CQ32880%7CQ1792644%7CQ5%7CQ4167410%7CQ13418847%7CQ10931%7CQ11514315%7CQ29028649%7CQ10361123%7CQ141800266%7CQ12055239%7CQ1920219%7CQ5283089%7CQ879146%7CQ4204511%7CQ34651%7CQ2638480%7CQ123129246%7CQ6957341%7CQ842798%7CQ30515%7CQ4663903&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "620e14d52c1732aaf346804eb457c9ed5e9369e18544690d171759d27971ce6d",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2221906%7CQ15284%7CQ56427813%7CQ192498%7CQ837766%7CQ16003513%7CQ163359%7CQ1799794%7CQ151885%7CQ5962346%7CQ137018865%7CQ124250988%7CQ137022846%7CQ3622002%7CQ98929991%7CQ124711484%7CQ137015716%7CQ115095765%7CQ4373292%7CQ96253971%7CQ1207505%7CQ123705%7CQ94575845%7CQ1306755%7CQ1063239%7CQ3257686%7CQ108586636%7CQ140451665%7CQ123095572%7CQ141447415%7CQ135524358%7CQ138341612%7CQ573%7CQ1790144%7CQ15275719%7CQ28314507%7CQ21684377%7CQ82047057%7CQ2199864%7CQ37640%7CQ110403031%7CQ26256810%7CQ21040055%7CQ19868531%7CQ115490628%7CQ16889133%7CQ125542526%7CQ15805222%7CQ5127848%7CQ23958852&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "85b9d0a3b91e5e9ef29af82a146962c341f53094ff5dbf9080513f37a3c23116",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q3533467%7CQ2305441%7CQ2548752%7CQ1510761%7CQ24902509%7CQ16334295%7CQ1914636%7CQ2738074%7CQ20045456%7CQ12331437%7CQ130804054%7CQ1387659%7CQ67518978%7CQ874405%7CQ21157127%7CQ96088545%7CQ56061%7CQ19832712%7CQ52551684%7CQ116474095%7CQ133449656%7CQ838948%7CQ47461344%7CQ205895%7CQ35145263%7CQ1792379%7CQ1292119%7CQ55983715%7CQ2250224%7CQ164509%7CQ154954%7CQ5891007%7CQ15633587%7CQ17442446%7CQ138717185%7CQ110227435%7CQ116505632%7CQ1673271%7CQ180684%7CQ17524420%7CQ186081%7CQ137429456%7CQ131362181%7CQ381060%7CQ96251598%7CQ141799471%7CQ9332%7CQ130286945%7CQ621184%7CQ169872&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "4b41a0728c2fe7d8d77cbbe0117c8a980c9ec0a93bfe57f27ddf53425bc3283f",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q47280%7CQ19842652%7CQ137426749%7CQ12812139%7CQ1786828%7CQ48937186%7CQ115786086%7CQ133250%7CQ3026787%7CQ386724%7CQ234460%7CQ14204246%7CQ1151067%7CQ51728742%7CQ1156854%7CQ58494026&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "e6a1f0d508c0dd83160ec00ffd533aa43a7d890c80852fde9ac0b9da920969e7",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q484170%7CQ22923920%7CQ200250%7CQ1200957%7CQ208511%7CQ51929311%7CQ1187811%7CQ1549591%7CQ1422929%7CQ108178728%7CQ1066984%7CQ11418818%7CQ134445478%7CQ2240381%7CQ174844%7CQ14795564%7CQ11185437%7CQ3186692%7CQ19828%7CQ217034%7CQ11186284%7CQ235673%7CQ11862829%7CQ4671286%7CQ2465832%7CQ627436%7CQ483394%7CQ105948247%7CQ2267705%7CQ34749%7CQ3624078%7CQ20181813%7CQ51576574%7CQ7270%7CQ6256%7CQ12909644%7CQ273005%7CQ1641112%7CQ49773%7CQ389647%7CQ112942219%7CQ3048444%7CQ187588%7CQ106471130%7CQ28108%7CQ19953632%7CQ7725634%7CQ5107%7CQ855697%7CQ2418896&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "55c2bdc2642ae74efe89ea7deeec12b8ebefb00f19a0f9e40f88d4f44bd86935",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q72638%7CQ729%7CQ2135465%7CQ134601860%7CQ111360549%7CQ3778211%7CQ134264207%7CQ15978631%7CQ15474042%7CQ111279923%7CQ141439648%7CQ1969448%7CQ22087155%7CQ23009439%7CQ123345464%7CQ839578%7CQ86923152%7CQ135524362%7CQ26897143%7CQ3182649%7CQ36161%7CQ141445193%7CQ141799160%7CQ96634632%7CQ2083958%7CQ2141565%7CQ123928941%7CQ7189713%7CQ112965645%7CQ5780945%7CQ60539481%7CQ3968640%7CQ123414%7CQ381072%7CQ115792501%7CQ141794152%7CQ141803732%7CQ141803784%7CQ71966963%7CQ1530022%7CQ136665122%7CQ27949697%7CQ16222597%7CQ111972893%7CQ24017465%7CQ23959932%7CQ11042%7CQ82821%7CQ5390013%7CQ136485030&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "a14cade261c3696d7f2cbabf818be7b932a70b7aa8aefc7eed30a5b6a5366fc2",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q82934&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "9678b90bbc1b481b4a961bebd11caf6b86ae4ac608793a7bd5182b7b98f57ed8",
+      "license": "CC0 1.0"
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q90%7CQ2962%7CQ7646%7CQ2578%7CQ6997%7CQ5891%7CQ8134%7CQ142%7CQ7272%7CQ192447%7CQ632032%7CQ191159%7CQ234081%7CQ3345060%7CQ49%7CQ37068%7CQ1063392%7CQ535%7CQ3816%7CQ51582342%7CQ9381%7CQ6534%7CQ7247853%7CQ9061%7CQ19960681%7CQ545825%7CQ12718%7CQ9592%7CQ23540%7CQ918238%7CQ5364766&props=claims&format=json",
+      "kind": "json",
+      "contentType": "application/json; charset=utf-8",
+      "etag": null,
+      "sha256": "d99b237ebf8e0d4122785f3287e5263993067973a4d5bc2754a6e1b1a34fd7e6",
+      "license": "CC0 1.0"
+    }
+  ]
+}
