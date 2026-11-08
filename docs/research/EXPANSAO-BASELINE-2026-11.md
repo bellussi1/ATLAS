@@ -3,8 +3,8 @@ Status: plano
 
 # Linha de base da expansão — novembro de 2026
 
-Medição local, sem rede, antes da captura dos 108 artigos que faltam em Social-democracia e
-Anarquismo. A fonte é `content/knowledge`; o script de inventário fica em `generated/` e não é
+Medição local, sem rede, antes da consolidação da captura recuperada do worktree do `.claude`
+(68 artigos de Social-democracia, 54 de Anarquismo e 907 rascunhos de verbetes citados). A fonte é `content/knowledge`; o script de inventário fica em `generated/` e não é
 publicado.
 
 | Leitura | Entidades | Relações no grafo | Documentadas | Órfãs | Fontes | Citadas | Cap. sem bloco | Claims |
@@ -49,7 +49,7 @@ pares fonte × afirmação, com `ok: null`. A conferência é humana; a IA não 
 
 ## Próximo passo
 
-1. Terminar a captura dos 108 artigos (Onda 0, gratuita).
-2. Atualizar alvos de Marxismo e Liberalismo.
-3. Refazer a linha de base com a captura concluída.
+1. Reextrair os 3/4 rascunhos enxutos e fechar o estágio 5 (pago, exige aprovação).
+2. Consolidar a captura recuperada e atualizar alvos de Marxismo e Liberalismo.
+3. Refazer a linha de base com o conteúdo consolidado.
 4. Só então aprovar a amostra paga da Onda 1.
