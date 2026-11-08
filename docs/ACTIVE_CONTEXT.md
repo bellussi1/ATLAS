@@ -23,11 +23,12 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - `npx playwright test`: **155/155**, incluindo o contrato de carregamento: leitura baixa só o `bundle` e `/grafos` só o `networkBundle`.
 - `npm run check:links`: **1.187 páginas** verificadas.
 - `npm run lint` e `npm run typecheck`: exit 0.
-- `content:build` após o empacotamento: release **`e841fac…`**, 13 coleções, `bundle` 23,7 MB e `networkBundle` 4,1 MB; o fixture de testes segue no caminho antigo e não duplica os pacotes.
+- `content:build` local: release **`c0be77b`**, 13 coleções, **1.190 entidades**, **945 relações** e **775 documentadas**; o ponteiro público segue em **`e841fac`**.
+- Cobertura documentada das quatro leituras: **Marxismo 41, Liberalismo 16, Social-democracia 34, Anarquismo 10**; metas 70/35/70/50.
 - Lighthouse local com brotli/gzip na preview: mobile **91–94** e desktop **100** em desempenho; acessibilidade, boas práticas e SEO **100** nas duas emulações. Nenhum reflow forçado e nenhum erro de console.
 - CSS: `/acervo` caiu de 13 para 9 cores de texto computadas e `/leitura/marxismo` de 14 para 10; tamanhos de fonte agora saem dos tokens `--text-*` (11, 12, 13, 14, 15, 16 e 17px).
-- `content:build` após a Onda 2: release **`2f7649…`**, 13 coleções; `test:content` **184/184**.
-- Auditoria assistida por IA dos 109 itens da amostra: **106 sustenta**, **2 não sustenta**, **1 inverte**; os três primeiros casos para conferência são John Rawls, Voltaire e Kant. Não substitui a revisão humana.
+- `test:content` **184/184** após o lote de 376 verbetes; o fixture cresceu sem duplicar os pacotes.
+- Auditoria de IA anterior (109 itens): **106 sustenta**, **2 não sustenta**, **1 inverte**; foi substituída pela revisão de IA da Onda 1 (100 itens) e não é usada como gate.
 - Grafo, medição local: primeiro nó **948 ms**, seleção por clique **108 ms**, pan p95 **33,3 ms**.
 
 ## Trabalho ativo
@@ -40,8 +41,8 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página, após o primeiro paint), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
 - **Higiene de console e CSS**: Zod roda sem JIT para não violar o CSP, o filtro de temas ganhou `id`, o logo do rodapé declara proporção e a paleta do `record-card` passou a usar tokens. A preview local agora comprime em brotli/gzip e aplica cache imutável a JS/CSS com hash, aproximando a medição do Pages.
 - **Links de compra**: registros de obra que são livros, com autor conhecido, ganham "Comprar na Amazon" direto para a busca de livros, com `rel="sponsored"` e divulgação quando houver tag. A lista curada fica em `core/content/queries/amazon-books.ts`; tópicos, periódicos e o filme do acervo não recebem link. Sem `AMAZON_ASSOCIATE_TAG`, o link existe mas não gera comissão.
-- **Expansão de relações (paga)**: reextração de Marxismo/Liberalismo, lote de 141 verbetes e 33 alvos ausentes geraram **+62 relações documentadas** e **+32 entidades** (release local **`156b98a`**, ainda não publicado). Custo de **~US$ 0,81** do teto de US$ 6. O `extract.mjs` passou a usar Sonnet **low** na segunda passada, como o `model-choice.json` já previa. CI do commit `da3d26b` verde (355 testes, 184 de conteúdo e 155 e2e). Detalhes em `docs/research/EXPANSAO-RELACOES-2026-11.md`.
-- **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. A coleção passou a **928 entidades e 459 relações** (447 antes da expansão). Restam 376 entidades sem relação; o lote completo foi estimado em US$ 4,91 e não foi executado.
+- **Expansão de relações (paga)**: reextração de Marxismo/Liberalismo, 141 verbetes, 33 alvos e os 376 verbetes restantes geraram **+99 relações documentadas** (676 → 775) e **+32 entidades** (release local **`c0be77b`**, ainda não publicado). Custo de **~US$ 1,78** do teto de US$ 6; restam ~US$ 4,2. O `extract.mjs` usa Sonnet **low** na segunda passada. Detalhes em `docs/research/EXPANSAO-RELACOES-2026-11.md`.
+- **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/`. A coleção passou a **928 entidades e 496 relações** (447 antes da expansão). O lote dos 376 verbetes sem relação foi executado em três partes e consolidado; a extração em massa está concluída. As quatro leituras seguem em **41/16/34/10** relações documentadas (metas 70/35/70/50).
 
 - **Onda 0 / expansão**: linha de base medida e gold set gerado em `docs/research/EXPANSAO-BASELINE-2026-11.md` e `docs/research/gold-set-2026-11/`. O achado principal é que as 122/75/35/10 relações incluem links de navegação; documentadas são **33/11/34/10 (88)**. A captura foi recuperada do worktree do `.claude`: Social-democracia 68/68, Anarquismo 54/54 e `verbetes-citados` 908 artigos/907 rascunhos. Os 907 rascunhos de verbetes foram publicados no `atlas-drafts`; o estágio 5 fica aberto por 3/4 rascunhos enxutos e a reextração paga ainda não foi autorizada.
 
@@ -49,7 +50,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 - **Grafo, estado atual**: o release público já tem `network`, então `/grafos` faz **2 requisições** ao Worker em vez de 11–17. Adicionei `?no=<id>` para link direto, "Ver no grafo" nos verbetes, filtro de conectados e zoom inicial de 145% no mobile (607 nós visíveis), além de "Ver como lista" no mobile. Lighthouse: desktop **88** (era 78–81), mobile **56** (TBT ~1,2 s), CLS 0/0,013. O `layoutNetwork` (d3-force) saiu do chunk do grafo: virou um chunk lazy de **21,5 kB**, carregado só quando `layouts.network` falta. O próximo ganho de TBT mobile agora é a navegação P2 (vizinhança de 1–2 saltos, histórico, caminho entre dois nós e filtro por período).
 
-- **Onda 1 / calibração**: amostra de 20 artigos de Social-democracia e Anarquismo rodada por **US$ 0,0706** (teto US$ 0,30). Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. Ficaram **100 itens** para conferência humana em `docs/research/onda1-2026-11/`. A auditoria Sonnet de 08/11 marcou **98 sustenta, 2 não sustenta** (Brasil e PT); os campos `ok` continuam nulos. O braço Sonnet low da avaliação ainda não foi medido; a decisão de modelo segue aberta. As metas da Onda 2 foram recalibradas para relações documentadas: **70/50/70/35**.
+- **Onda 1 / calibração + revisão de IA**: amostra de 20 artigos rodada por **US$ 0,0706**. Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. A revisão humana foi substituída por **revisão assistida por IA**, autorizada pelo responsável do projeto: Sonnet 5.5 marcou **96 sustenta e 4 não sustenta** nos 100 itens (2 textos e 2 tipos de relação). A re-verificação Sonnet low confirmou 22/24 relações do Haiku (low 7/7; medium 15/17) e rejeitou as duas arestas `desenvolveu-se-em` do Marxismo. Decisão: **Haiku 5.5 medium + Sonnet 5.5 low**; `model-choice.json` atualizado. Metas da Onda 2: **70/50/70/35**.
 
 ## Pendências que bloqueiam
 
@@ -68,14 +69,14 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 3. **Itinerários** — aprovar a fase 0 (schema, fixtures e testes) antes de implementar.
 4. **Aliases antigos** — se quiser que URLs antigas passem a 404, remover `/grafo`, `/rede`, `/comparar`, `/conhecimento` e os redirecionamentos top-level em uma segunda passada.
 5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
-6. **Onda 2** — os 907 rascunhos recuperados permitem auditar e consolidar sem recaptura; decidir o lote de consolidação e revisão. As metas documentadas são 70/50/70/35, não 160/120/100/80.
-7. **Publicação da expansão de relações** — o release local `156b98a` tem +62 relações documentadas e +32 entidades; publicar exige aprovação humana. O lote restante de 376 verbetes custaria ~US$ 4,91 e precisa de decisão de orçamento.
+6. **Onda 2** — o lote dos verbetes foi concluído (+99 documentadas no total). Faltam as quatro leituras: Marxismo 41/70, Liberalismo 16/35, Social-democracia 34/70, Anarquismo 10/50. O saldo restante do teto de US$ 6 é ~US$ 4,2; a próxima decisão é entre alvos editoriais das leituras e um novo lote de verbetes.
+7. **Publicação da expansão de relações** — o release local `c0be77b` tem +99 relações documentadas e +32 entidades; publicar exige aprovação humana.
 
 ## Próxima ação
 
 1. Aprovar (ou não) a publicação do release `156b98a`; o ponteiro público ainda aponta para `e841fac`.
-2. Revisar os 100 itens da Onda 1 em `docs/research/onda1-2026-11/`, começando pelos 2 sinalizados pela auditoria Sonnet, e rodar `score`.
-3. Decidir o próximo lote de relações: 376 verbetes sem relação (~US$ 4,91) ou um recorte menor por tipo.
+2. A Onda 1 está fechada por revisão de IA (96/100) e o modelo é Haiku medium + Sonnet low. O lote de verbetes da Onda 2 foi concluído; a próxima frente são as relações entre entidades das quatro leituras e os alvos que faltam.
+3. Decidir o próximo lote: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
 4. Rodar Lighthouse na URL publicada para comparar com o relatório local.
 5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
 6. Só depois iniciar a fase 0 dos itinerários.

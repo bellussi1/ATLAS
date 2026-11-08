@@ -1,37 +1,56 @@
-Status: plano
+Status: resultado
 Última verificação: 08/11/2026
 
 # Onda 1 — calibração Haiku (08/11/2026)
 
-Amostra de 20 artigos de Social-democracia e Anarquismo, mesmos artigos nos dois braços. Custo
-total da execução: **US$ 0,0706**, dentro do teto autorizado de US$ 0,30.
+Amostra de 20 artigos de Social-democracia e Anarquismo, mesmos artigos nos dois braços. A
+revisão passou a ser **assistida por IA**, por decisão do responsável do projeto; o documento não
+alega revisão humana.
 
 | Braço | Rascunhos | Citações rejeitadas | Relações aceitas | Rejeição de relações | Custo |
 |---|---:|---:|---:|---:|---:|
 | Haiku 5.5 low | 20 | 0/216 (0%) | 7 de 27 | 74,1% | US$ 0,030 |
 | Haiku 5.5 medium | 20 | 2/262 (0,8%) | 17 de 37 | 54,1% | US$ 0,041 |
 
-## Leitura
+## Revisão de IA
 
-- O texto do Haiku medium ficou abaixo de 1% de citação rejeitada.
-- As relações continuam sendo o gargalo: mais da metade das propostas é descartada pela segunda
-  passada ou pelas travas de código. O Haiku medium aceitou 17 relações, contra 7 do low.
-- **O braço Sonnet low para relações não foi executado.** O custo estimado só da segunda passada
-  com Sonnet passaria do teto restante; a comparação de desenhos da Onda 1 continua aberta.
-- **A precisão humana não foi medida:** os 100 itens de `revisao.json` estão com `ok: null`.
+### Texto
 
-## Auditoria Sonnet (08/11/2026)
-
-Os 100 itens foram auditados por **Sonnet 5.5** antes da revisão humana:
+Sonnet 5.5 auditou os 100 itens contra citação e parágrafo:
 
 - **98 sustenta**
 - **2 não sustenta** — Brasil (`haiku-low`, texto) e Partido dos Trabalhadores (`haiku-medium`,
   texto)
-- 0 inverte, 0 fonte errada
-- ~US$ 0,16 em 38.726 tokens de entrada e 8.110 de saída
 
-O resultado está em `auditoria-ia.json`/`.md`. É uma pré-triagem: não substitui a marcação humana
-e não fecha a porta de precisão ≥ 95%.
+### Relações
+
+A re-verificação das relações já confirmadas pelo Haiku foi feita com **Sonnet 5.5 low**:
+
+| Braço | Confirmadas pelo Haiku | Confirmadas pelo Sonnet | Rejeitadas | Custo |
+|---|---:|---:|---:|---:|
+| Haiku low | 7 | 7 | 0 | US$ 0,024 |
+| Haiku medium | 17 | 15 | 2 | US$ 0,041 |
+
+As 2 rejeições são as relações `Karl Marx desenvolveu-se-em Marxismo` e
+`Friedrich Engels desenvolveu-se-em Marxismo`: a citação diz que o marxismo se originou das obras
+dos dois, não que eles tenham se desenvolvido na corrente. O tipo/direção não sustenta a aresta.
+
+### Resultado final
+
+- **96 sustenta** e **4 não sustenta** nos 100 itens.
+- Texto: 1/40 (2,5%) no low e 1/36 (2,8%) no medium.
+- Relações: 0/7 no low e 2/17 (11,8%) no medium; o Sonnet low remove os 2 erros de tipo.
+- Custo da revisão: ~US$ 0,16 (texto) + US$ 0,065 (relações).
+
+## Decisão de modelo
+
+Fica **Haiku 5.5 medium para extração + Sonnet 5.5 low para verificar relações**:
+
+- O texto do medium fica abaixo de 5% e produz mais conteúdo que o low (17 relações contra 7).
+- O Haiku médio erra o tipo/direção em 2/17 relações; o Sonnet low confirma 15/17 e rejeita os 2.
+- O low é mais preciso nas 7 relações que propõe, mas a cobertura é menos da metade; a Onda 2
+  precisa de volume com precisão.
+- `scripts/tradicao/model-choice.json` registra os três candidatos e a escolha.
 
 ## Correção de custo
 
@@ -40,15 +59,8 @@ O `extract.mjs` usava o mesmo `effort` da extração na segunda passada, o que c
 `model-choice.json` (Sonnet `low`) e aceita `--relation-effort`. O Marxismo caiu de ~US$ 13 para
 **US$ 0,47** (estimado) e o Liberalismo para **US$ 0,20**.
 
-
-## Fila humana
-
-`revisao.md` e `revisao.json` nesta pasta contêm 100 itens para conferência. A marcação é humana e
-segue a regra do gold set: `true`, `false`, `"inverte"` ou `"fonte_errada"`, com nota. Sem isso, a
-porta de precisão ≥ 95% não fecha e a Onda 2 não deve escalar.
-
 ## Próximo passo
 
-1. Conferir os 100 itens e rodar `score` para decidir o modelo.
-2. Se a precisão humana fechar, implementar o braço Sonnet low dentro de um novo teto e comparar.
-3. Só então iniciar a Onda 2 com as metas documentadas recalibradas.
+1. Iniciar a Onda 2 com as metas documentadas **70/50/70/35** e o orçamento restante.
+2. Priorizar os alvos que ainda faltam no grafo, não só novas propostas de relação.
+3. Manter a revisão de IA declarada em cada lote; não registrar `ok` como revisão humana.

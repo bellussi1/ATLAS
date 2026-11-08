@@ -52,6 +52,12 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 - Registre fontes e licenças perto do conteúdo ou no mecanismo editorial definido pelo projeto.
 - Todo texto ao leitor segue `docs/design/GUIA-DE-VOZ.md`: a prosa não fala do projeto nem de como foi produzida; atribuição, licença e estado de revisão ficam na área de fontes e no selo editorial.
 
+## Revisão assistida por IA
+
+- O responsável do projeto autorizou a revisão por IA quando a revisão humana não é viável. Registrar no item `review: { by: 'ai', model, stage, verdict, reviewedAt }` e na nota o marcador `[conferência de IA]`.
+- Nunca declarar revisão humana, `ok` humano ou validação que não aconteceu. A publicação de conteúdo continua sendo decisão humana.
+- A decisão de modelo e as metas de expansão ficam em `scripts/tradicao/model-choice.json` e nos documentos de pesquisa; a revisão de IA não muda o contrato editorial nem autoriza publicar sozinha.
+
 ## Integração e commits
 
 - Cada prompt numerado exige alterações reais no código ou nos arquivos que ele especificar, além das verificações pertinentes; não pare em planejamento.
