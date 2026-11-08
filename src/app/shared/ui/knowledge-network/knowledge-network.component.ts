@@ -1116,6 +1116,11 @@ export class KnowledgeNetworkComponent {
       this.dragging.set(true);
       return;
     }
+    // Inside a chapter, one finger belongs to the reading scroll, not to the map.
+    if (this.embedded() && event.pointerType === 'touch') {
+      this.pointer = null;
+      return;
+    }
     this.pointer = {
       id: event.pointerId,
       x: event.clientX,

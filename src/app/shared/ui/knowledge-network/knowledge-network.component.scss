@@ -425,6 +425,10 @@ kbd {
     var(--color-canvas);
   touch-action: none;
 }
+:host(.is-embedded) .stage {
+  /* One finger scrolls the reading; two fingers still pinch the map. */
+  touch-action: pan-y;
+}
 .canvas {
   display: block;
   inline-size: 100%;

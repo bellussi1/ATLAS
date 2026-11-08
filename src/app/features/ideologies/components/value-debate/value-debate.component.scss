@@ -151,7 +151,7 @@ input:focus-visible {
 }
 @media (min-width: 64rem) {
   .argument-map {
-    grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.8fr);
+    grid-template-columns: minmax(0, 1fr) minmax(min(20rem, 40%), 0.8fr);
   }
 }
 @media (prefers-reduced-motion: no-preference) {

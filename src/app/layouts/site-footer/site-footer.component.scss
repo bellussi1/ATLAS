@@ -81,11 +81,16 @@
 /* Directory: readings as geometric doors, then plain link columns. */
 .footer-directory {
   display: grid;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
   grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.3fr) minmax(0, 0.9fr);
   gap: 2rem clamp(1.5rem, 4vw, 4rem);
   margin-block-start: clamp(2.5rem, 6vw, 5rem);
   padding-block: 2rem;
   border-block: 2px solid color-mix(in srgb, var(--color-on-strong-surface) 35%, transparent);
+  > * {
+    min-inline-size: 0;
+  }
   ul {
     margin: 0;
     padding: 0;

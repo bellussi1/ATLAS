@@ -117,9 +117,9 @@
   --focus-width: 3px;
   --focus-offset: 3px;
   --control-min-size: 2.75rem;
-  --measure-reading: 72ch;
-  --measure-index: 90ch;
-  --measure-profile: 60ch;
+  --measure-reading: min(72ch, 100%);
+  --measure-index: min(90ch, 100%);
+  --measure-profile: min(60ch, 100%);
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
   --motion-selection: 180ms;
   --motion-fast: 120ms;

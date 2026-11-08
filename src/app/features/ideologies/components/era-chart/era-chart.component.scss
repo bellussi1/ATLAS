@@ -140,7 +140,7 @@
 }
 .epoch-row {
   display: grid;
-  grid-template-columns: 8.5rem minmax(0, 1fr) minmax(6rem, 10rem) auto;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) minmax(0, 10rem) auto;
   gap: 0.35rem 1rem;
   align-items: center;
   inline-size: 100%;
