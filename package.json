@@ -27,7 +27,7 @@
     "prewatch": "npm run content:build",
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && node scripts/security-headers.mjs && node scripts/seo.mjs && node scripts/infra/vercel-config.mjs",
+    "build": "ng build && node scripts/security-headers.mjs && node scripts/seo.mjs",
     "ingest:liberalism": "node scripts/ingest-liberalism.mjs",
     "ingest:marxism": "node scripts/ingest-wikimedia-atlas.mjs marxism",
     "discover:marxism": "node scripts/discover-wikimedia.mjs marxismo",

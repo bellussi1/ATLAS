@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <a href="https://atlasbr.vercel.app">atlasbr.vercel.app</a>
+  <a href="https://atlas-bellussi.pages.dev">atlas-bellussi.pages.dev</a>
 </p>
 
 ---

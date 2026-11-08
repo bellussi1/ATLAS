@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Publica o build estático no Cloudflare Pages. O diretório já contém `_headers`, `_redirects` e
-// `404.html`, então o contrato de cache, segurança e rotas desconhecidas não muda em relação ao
-// Vercel. O R2 continua sendo a origem do conteúdo; o Pages serve apenas o app e as mídias locais.
+// `404.html`, então o contrato de cache, segurança e rotas desconhecidas é nativo do Pages.
+// O R2 continua sendo a origem do conteúdo; o Pages serve apenas o app e as mídias locais.
 //   npm run build
 //   node scripts/infra/pages-deploy.mjs --dry-run
 //   node scripts/infra/pages-deploy.mjs

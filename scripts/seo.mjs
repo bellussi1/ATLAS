@@ -24,17 +24,12 @@ async function collect(directory) {
   ).flat();
 }
 
-// Vercel Web Analytics (sem cookies): o script é servido pela própria origem, então a CSP não muda.
-const beacon =
-  process.env.ATLAS_ANALYTICS === 'vercel'
-    ? '<script defer src="/_vercel/insights/script.js"></script>'
-    : '';
-
+// O Pages serve cada rota como diretório com barra final (`/fontes/`); o sitemap e o canonical
+// precisam usar a mesma forma para não competir com o redirecionamento do host.
 const routeOf = (file) => {
-  const path = relative(root, file)
-    .split(sep)
-    .join('/')
-    .replace(/(^|\/)index\.html$/, '');
+  const path = relative(root, file).split(sep).join('/');
+  if (path === 'index.html') return '/';
+  if (path.endsWith('/index.html')) return `/${path.slice(0, -'index.html'.length)}`;
   return `/${path.replace(/\.html$/, '')}`;
 };
 
@@ -46,7 +41,6 @@ for (const file of await collect(root)) {
   html = html
     .replace(/<link\s+rel="canonical"[^>]*>\s*/gi, '')
     .replace(/<meta\s+property="og:url"[^>]*>\s*/gi, '');
-  if (beacon) html = html.replace('</head>', `${beacon}</head>`);
   if (site) {
     const url = `${site}${route}`;
     html = html.replace(

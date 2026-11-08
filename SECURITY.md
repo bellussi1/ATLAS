@@ -2,7 +2,7 @@
 
 ## Versões com suporte
 
-Mantemos apenas a versão em `master`, publicada em [atlasbr.vercel.app](https://atlasbr.vercel.app).
+Mantemos apenas a versão em `master`, publicada em [atlas-bellussi.pages.dev](https://atlas-bellussi.pages.dev).
 
 ## Como reportar uma vulnerabilidade
 

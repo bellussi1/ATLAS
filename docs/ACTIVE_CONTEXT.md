@@ -5,17 +5,18 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 ## Estado observado
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; a última alteração é `2186171`. O PR **#50** (`develop` → `master`) está aberto; `master` está em `69eaed4` e recebeu #41, #45 e #39. #38/#37 foram atualizados e aguardam checks; #44 está em conflito e #40 bloqueado.
+- Gitflow: `develop` é a integração. O PR **#50** (`develop` → `master`) está aberto; `master` está em `69eaed4` e recebeu #41, #45 e #39. #38/#37 foram atualizados e aguardam checks; #44 está em conflito e #40 bloqueado.
+- Deploy: a origem única é `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório; falta desligar o projeto antigo no painel e cadastrar os segredos `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID`.
 - Dependências: #45 (d3-shape), #41 (actions/cache) e #39 (gitleaks-action) mesclados. Um 429 intermitente do R2 no build agora é repetido com backoff em `scripts/content/fetch-content.mjs` (5 tentativas, respeita `retry-after`), coberto por teste.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
-- Build local: **1.189 rotas prerenderizadas**.
-- CI: não executado nesta sessão; a verificação abaixo é local.
+- Build local: **1.189 rotas prerenderizadas**; sitemap e canonical gerados para `https://atlas-bellussi.pages.dev`.
+- CI: a verificação abaixo é local; o deploy do Pages ainda não rodou.
 
 ## Verificações executadas
 
 - `npm test`: **362/362**.
-- `npm run test:content`: **186/186**.
-- `npm run build`: passou, **1.189 rotas**; `vercel.json` gerado com CSP de 8 hashes.
+- `npm run test:content`: **184/184** (dois testes do gerador Vercel removidos).
+- `npm run build`: passou, **1.189 rotas**; sitemap com **1.190 páginas**, canonical e robots apontando para `https://atlas-bellussi.pages.dev`; `dist/atlas/vercel.json` não é mais gerado.
 - `node node_modules/@playwright/test/cli.js test e2e/pages.spec.ts e2e/graph.spec.ts`: **56/56**, incluindo a falha de navegação, a ausência do minimapa, a roda no grafo embutido, o encerramento em cards e as auditorias Axe.
 - `npm run lint` e `npm run typecheck`: exit 0.
 
@@ -411,14 +412,22 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 54. **429 do R2 no build**
     - O `verify` do PR #50 falhou ao baixar `c/46b2478….json` com HTTP 429, não por código. `fetch-content.mjs` agora repete 429/5xx e falhas de rede com até 5 tentativas e backoff exponencial, respeitando `retry-after`.
     - Novo teste `syncContentCache retries a transient 429 before failing` cobre a repetição. `node --test scripts/content/r2-content.spec.mjs` **10/10** e `npm run lint` exit 0.
-    - O MCP `cloudflare-api` foi adicionado em `~/.config/opencode/opencode.json`, mas segue `needs authentication`: o navegador embutido não conclui o login Cloudflare/Turnstile. A autenticação precisa ser feita em navegador normal.
+    - O MCP `cloudflare-api` foi autenticado no navegador normal; `opencode-cli mcp list` mostra `connected`.
+
+55. **Origem única no Cloudflare Pages**
+    - `atlas.pages.dev` já pertence a outro projeto (Fieldmaps.io); o endereço mantido é `https://atlas-bellussi.pages.dev`. O Pages existente estava atrasado: último deploy no commit `abbb028`, 12 commits atrás da `master`, com `commit_dirty: true`. O Vercel era a única origem atualizada, mas duplicava banda, SEO e previews.
+    - O CI ganhou o job `deploy-pages`, que baixa o artefato verificado e roda `wrangler pages deploy` apenas em push para a `master`. O `npm run build` deixou de gerar `dist/atlas/vercel.json`; `_headers`, `_redirects` e `404.html` são o contrato do Pages.
+    - `scripts/seo.mjs` passou a gerar canonical e sitemap com a barra final do Pages (`/fontes/`), usando `ATLAS_SITE_URL=https://atlas-bellussi.pages.dev`. O sitemap tem **1.190 páginas** e o `robots.txt` aponta para ele.
+    - Removidos `vercel.json`, `scripts/infra/vercel-config.mjs`, o teste correspondente e o MCP Vercel do `opencode.jsonc`. Documentação, README e SECURITY apontam para o Pages.
+    - Verificações: `npm test` **362/362**, `npm run test:content` **184/184**, `build` **1.189 rotas** com sitemap/canonical do Pages, `lint` e `typecheck` exit 0.
+    - Pendente de pessoa: cadastrar `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` nos segredos do GitHub e desconectar/excluir o projeto Vercel no painel. Nada foi publicado nesta rodada.
 
 ## Pendências que bloqueiam
 
-1. **Nova rodada** — o PR **#50** leva `develop` para a `master` protegida; #45, #41 e #39 já foram mesclados. #38/#37 tiveram a branch atualizada e aguardam `verify`; #44 está `CONFLICTING` e #40 bloqueado. O Vercel preview falhou em #39/#50 e precisa ser diagnosticado antes de tratá-lo como check obrigatório.
+1. **Nova rodada** — o PR **#50** leva `develop` para a `master` protegida; #45, #41 e #39 já foram mesclados. #38/#37 tiveram a branch atualizada e aguardam `verify`; #44 está `CONFLICTING` e #40 bloqueado. O Vercel será desligado no painel; os checks de preview deixam de existir.
 2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** e o CI do PR #48 concluiu `verify` em 16m39s. `e2e/graph.spec.ts` passou **18/18** depois da ficha do nó.
-3. **Produção** — o app está publicado no Cloudflare Pages (`atlas-bellussi.pages.dev`), com `/fontes` em **193 KB**. O `vercel.json` da raiz só vale no próximo deploy Vercel, e o job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; decidir se o Vercel segue como espelho ou se o Pages passa a ser o único alvo.
-4. **Probe de 404** — no Pages, `/rota-inexistente` responde **404** com `404.html` (3.078 bytes), `/grafos`, `/verbete/karl-marx` e `/acervo` respondem 200. O antigo `atlasbr.vercel.app` continua respondendo 200 com `index.html` e só será verificado se o Vercel for mantido.
+3. **Produção** — a origem única é o Cloudflare Pages (`atlas-bellussi.pages.dev`), com `/fontes` em **193 KB**. O deploy agora vem do CI; falta cadastrar os segredos Cloudflare e desligar o projeto Vercel para não manter uma segunda origem.
+4. **Probe de 404** — no Pages, `/rota-inexistente` responde **404** com `404.html` (3.078 bytes), `/grafos`, `/verbete/karl-marx` e `/acervo` respondem 200. O Pages usa barra final nas rotas de diretório; canonical e sitemap seguem a mesma forma.
 5. **Verbetes** — o modo `--partial` e o desempate por conteúdo foram implementados e testados; o piloto de 20 anexou registros sem perder os antigos. Falta o lote maior (bloqueado pela Onda 2 ausente), a revisão humana dos 20 e o perfil político derivado das relações (partido, ideologia e vertente; “lado” só com classificação atribuída).
 6. **Onda 2 ausente** — `wiki/verbetes-citados/index.json` responde **404** e não há prefixo `wiki/verbetes-citados` no `atlas-drafts`; os 92 objetos existentes são de anarquismo, liberalismo, marxismo e social-democracia. Sem os 414 artigos/896 extratos não há lote maior neste checkout.
 

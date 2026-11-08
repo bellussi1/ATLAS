@@ -33,10 +33,6 @@
           "--headless",
           "--no-usage-statistics"
         ]
-      },
-      "vercel": {
-        "type": "remote",
-        "url": "https://mcp.vercel.com"
       }
     }
   }

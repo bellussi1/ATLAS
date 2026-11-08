@@ -11,7 +11,7 @@ Este documento é o mapa das instruções que orientam agentes no repositório. 
 | Arquitetura | `docs/architecture/ARCHITECTURE.md` | Antes de criar/mover código |
 | Padrão editorial | `docs/design/PAGE_STANDARD.md` | Página/dossiê de ideologia |
 | Voz | `docs/design/GUIA-DE-VOZ.md` | Todo texto ao leitor |
-| Operação | `docs/operations/PRODUCAO.md` | Deploy, R2, Vercel e CI |
+| Operação | `docs/operations/PRODUCAO.md` | Deploy, R2, Pages e CI |
 | Fluxo de população | `docs/architecture/FLUXO-DE-POPULACAO.md` | Pipeline de tradição |
 | Skills | `.claude/skills/`, `.agents/skills/` | Sob demanda, pelo `skill` |
 | Comandos | `.opencode/commands/` | Quando o usuário invoca `/...` |
