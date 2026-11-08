@@ -32,7 +32,7 @@ p {
 }
 .eyebrow,
 .legend {
-  font: 0.875rem/1.5 var(--font-mono);
+  font: var(--text-small)/1.5 var(--font-mono);
   color: var(--color-ink-muted);
 }
 .argument-map {
@@ -91,7 +91,7 @@ button {
 }
 .theses button span {
   display: block;
-  font: 0.75rem/1.5 var(--font-mono);
+  font: var(--text-caption)/1.5 var(--font-mono);
   margin-bottom: 0.5rem;
 }
 .theses button[aria-pressed='true'] {
@@ -105,7 +105,7 @@ button {
   margin-left: 1rem;
 }
 .edge p {
-  font-size: 0.875rem;
+  font-size: var(--text-small);
 }
 .context {
   background: var(--color-surface-subtle);
@@ -208,11 +208,11 @@ legend {
   margin: 0;
 }
 .theses .thesis .thesis-copy > span {
-  font: 0.75rem/1.5 var(--font-mono);
+  font: var(--text-caption)/1.5 var(--font-mono);
 }
 .thesis small {
   display: block;
-  font: 400 0.875rem/1.5 var(--font-sans);
+  font: 400 var(--text-small)/1.5 var(--font-sans);
   margin-top: 0.8rem;
   text-decoration: underline;
 }

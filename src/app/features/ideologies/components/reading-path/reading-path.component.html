@@ -24,7 +24,11 @@
     </div>
     <label class="theme-select" [class.is-visible]="hasOverflow()">
       <span>Lista de temas</span>
-      <select [value]="theme() ?? ''" (change)="selectTheme($any($event.target).value)">
+      <select
+        id="reading-theme-filter"
+        [value]="theme() ?? ''"
+        (change)="selectTheme($any($event.target).value)"
+      >
         <option value="">Todos os temas ({{ works().length }})</option>
         @for (option of themes(); track option.name) {
           <option [value]="option.name">{{ option.name }} ({{ option.count }})</option>

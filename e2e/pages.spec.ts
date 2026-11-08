@@ -314,10 +314,12 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
 
     const motionControl = page.locator('app-ideology-reading-index .motion-control');
     // The index starts beside the first chapter and sticks once the reading reaches it.
-    await page.evaluate(() =>
-      window.scrollTo(0, document.getElementById('introducao')!.offsetTop + 400),
-    );
-    await expect(motionControl).toBeInViewport();
+    // Use the document position instead of offsetTop, which depends on the positioned ancestor.
+    const target = await page
+      .locator('#introducao')
+      .evaluate((element) => element.getBoundingClientRect().top + window.scrollY + 400);
+    await page.evaluate((top) => window.scrollTo(0, top), target);
+    await expect(motionControl).toBeInViewport({ timeout: 15_000 });
     await motionControl.click();
     await expect(motionControl).toHaveAttribute('aria-pressed', 'true');
     expect(

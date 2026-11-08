@@ -1,6 +1,9 @@
 import { type KnowledgeGraph, sourceSchema } from '@core/content/models/content-schema';
 import * as z from 'zod';
 
+// The public CSP forbids eval and Zod's JIT compiles validators with `new Function`.
+z.config({ jitless: true });
+
 import { canonicalChapters } from './ideology-chapters';
 import { positionAxisIds } from './position-axes';
 

@@ -20,9 +20,10 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - `npm run test:content`: **184/184**.
 - `npm run build`: passou, **1.186 páginas no sitemap**, canonical absoluto em todas as páginas prerenderizadas.
 - `npm run check:links`: **1.187 páginas** verificadas.
-- `npx playwright test`: **153/153** no build final; depois da remoção dos preconnects, `public-routes` + `pages` deram **72/73**, com uma falha intermitente de viewport que passou **2/2** isolada.
+- `npx playwright test`: **153/153** após endurecer o teste de sincronização do índice de leitura (usava `offsetTop` e falhava sob carga).
 - `npm run lint` e `npm run typecheck`: exit 0.
-- Lighthouse local (preview sem compressão): SEO, acessibilidade e boas práticas **100**; canonical válido e nenhum reflow forçado. O desempenho local (68) não é comparável ao Pages, que serve brotli/gzip.
+- Lighthouse local com brotli/gzip na preview: mobile **91–94** e desktop **100** em desempenho; acessibilidade, boas práticas e SEO **100** nas duas emulações. Nenhum reflow forçado e nenhum erro de console.
+- CSS: `/acervo` caiu de 13 para 9 cores de texto computadas e `/leitura/marxismo` de 14 para 10; tamanhos de fonte agora saem dos tokens `--text-*` (11, 12, 13, 14, 15, 16 e 17px).
 - Grafo, medição local: primeiro nó **948 ms**, seleção por clique **108 ms**, pan p95 **33,3 ms**.
 
 ## Trabalho ativo
@@ -31,7 +32,8 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Grafo**: foco por seleção implementado; o `/grafos` lê a projeção `network` (3,13 MB contra 12,6 MB das coleções), mas o ganho de carregamento só chega ao site depois de `content:publish`.
 - **Limpeza**: `/mesa` removido; `features/study`, `historical-visualizations`, `editorial-mark`, `editorial-text`, `notice` e `timeline-periods` removidos. Redirecionamentos de compatibilidade (`/marxismo`, `/grafo`, `/rede`, `/comparar`, `/conhecimento`) foram mantidos.
 - **Documentação**: `ACTIVE_CONTEXT` compactado; histórico, auditorias, validações e planos antigos foram para `docs/archive/2026-11/`.
-- **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
+- **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página, após o primeiro paint), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
+- **Higiene de console e CSS**: Zod roda sem JIT para não violar o CSP, o filtro de temas ganhou `id`, o logo do rodapé declara proporção e a paleta do `record-card` passou a usar tokens. A preview local agora comprime em brotli/gzip e aplica cache imutável a JS/CSS com hash, aproximando a medição do Pages.
 
 ## Pendências que bloqueiam
 

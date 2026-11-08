@@ -1,5 +1,8 @@
 import * as z from 'zod';
 
+// The public CSP forbids eval and Zod's JIT compiles validators with `new Function`.
+z.config({ jitless: true });
+
 import type { Entity } from './content-schema';
 
 export const contentLocaleSchema = z.enum(['pt-BR', 'en']);

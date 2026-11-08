@@ -14,7 +14,7 @@ p {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem 0.75rem;
-  font: 0.8125rem/1.4 var(--font-sans, var(--sans));
+  font: var(--text-meta)/1.4 var(--font-sans, var(--sans));
   color: var(--color-ink-muted);
 }
 .claim-reference__kind {
@@ -40,7 +40,7 @@ p {
 }
 .claim-reference__source {
   margin-top: 0.5rem;
-  font: 0.875rem/1.5 var(--font-sans, var(--sans));
+  font: var(--text-small)/1.5 var(--font-sans, var(--sans));
   color: var(--color-ink-muted);
 }
 .claim-reference__index {

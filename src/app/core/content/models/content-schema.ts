@@ -1,5 +1,8 @@
 import * as z from 'zod';
 
+// The public CSP forbids eval and Zod's JIT compiles validators with `new Function`.
+z.config({ jitless: true });
+
 const identifier = z
   .string()
   .regex(/^[a-z][a-z0-9-]*$/, 'Use um identificador minúsculo com hífens.');

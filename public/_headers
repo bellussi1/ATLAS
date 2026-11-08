@@ -5,3 +5,14 @@
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://upload.wikimedia.org https://thumb.wikimedia.org https://atlas-content-delivery.atlas-bellussi.workers.dev; font-src 'self'; connect-src 'self' https://atlas-content-delivery.atlas-bellussi.workers.dev; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
+
+# The build names scripts and styles by content hash, so they never change in place.
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+# Fonts and brand files keep their names; cache them for long enough to help repeat visits.
+/fonts/*
+  Cache-Control: public, max-age=2592000
+/brand/*
+  Cache-Control: public, max-age=604800

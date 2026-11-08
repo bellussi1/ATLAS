@@ -170,7 +170,10 @@ export class HomePage {
       const observer =
         typeof win.ResizeObserver === 'function' ? new win.ResizeObserver(scheduleMeasure) : null;
       observer?.observe(host);
-      measure();
+      // Measure after the first paint so the read does not force a synchronous layout.
+      frame = win.requestAnimationFrame(() => {
+        frame = win.requestAnimationFrame(measure);
+      });
       void this.document.fonts?.ready.then(scheduleMeasure);
       this.destroyRef.onDestroy(() => {
         win.removeEventListener('scroll', scheduleUpdate);

@@ -26,7 +26,8 @@ function hide(element: HTMLElement) {
 
 /**
  * Reads every pending rectangle before writing any class, so a page with many
- * revealed blocks causes a single layout instead of one per directive.
+ * revealed blocks causes a single layout instead of one per directive. Two
+ * frames guarantee the browser has painted first, keeping the read passive.
  */
 function flush() {
   scheduled = false;
@@ -54,7 +55,7 @@ export class AtlasRevealDirective {
     queued.add(element);
     if (scheduled) return;
     scheduled = true;
-    queueMicrotask(flush);
+    requestAnimationFrame(() => requestAnimationFrame(flush));
     inject(DestroyRef).onDestroy(() => {
       queued.delete(element);
       observer?.unobserve(element);

@@ -20,7 +20,7 @@
 .carousel-label {
   margin: 0;
   color: var(--color-accent);
-  font: 700 0.75rem/1.2 var(--font-mono);
+  font: 700 var(--text-caption)/1.2 var(--font-mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -35,7 +35,7 @@
 .carousel-count {
   margin: 0;
   color: var(--color-ink-muted);
-  font: 0.875rem/1.4 var(--font-mono);
+  font: var(--text-small)/1.4 var(--font-mono);
 }
 
 .carousel-buttons {
@@ -211,7 +211,7 @@
   gap: 0.4rem;
   margin: 0;
   color: var(--color-ink-muted);
-  font: 0.75rem/1.4 var(--font-mono);
+  font: var(--text-caption)/1.4 var(--font-mono);
 }
 
 .carousel-hint svg {

@@ -6,11 +6,11 @@
 .positions-note {
   max-width: 70ch;
   margin: 0 0 0.75rem;
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
 }
 .how-to-read {
   margin-block: 0.75rem;
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
 }
 .how-to-read summary {
   display: flex;
@@ -24,7 +24,7 @@
   max-width: 75ch;
   margin: 0.35rem 0 0.75rem;
   color: var(--color-ink-muted);
-  font: 0.8125rem/1.55 var(--font-serif);
+  font: var(--text-meta)/1.55 var(--font-serif);
 }
 .how-to-read__kinds strong {
   color: var(--color-ink);
@@ -75,7 +75,7 @@
   max-width: 72ch;
   margin: 0;
   color: var(--color-ink-muted);
-  font: 0.8125rem/1.5 var(--font-serif);
+  font: var(--text-meta)/1.5 var(--font-serif);
 }
 .contrast-poles {
   display: grid;
@@ -129,7 +129,7 @@
 }
 .compare-word {
   margin: 0;
-  font: 0.8125rem/1.4 var(--font-serif);
+  font: var(--text-meta)/1.4 var(--font-serif);
 }
 .compare-open {
   justify-self: end;
@@ -138,7 +138,7 @@
   border: 0;
   background: transparent;
   color: var(--color-accent);
-  font: 650 0.75rem/1.2 var(--font-sans);
+  font: 650 var(--text-caption)/1.2 var(--font-sans);
   text-decoration: underline;
   text-underline-offset: 0.18em;
   cursor: pointer;
@@ -197,7 +197,7 @@
   border: 2px solid var(--color-ink);
   background: var(--color-canvas);
   color: var(--color-ink);
-  font: 650 0.75rem/1.2 var(--font-sans);
+  font: 650 var(--text-caption)/1.2 var(--font-sans);
   cursor: pointer;
 }
 .entity-open:focus-visible {
@@ -311,11 +311,11 @@
 }
 .axis-head h5 {
   margin: 0;
-  font: 700 1rem/1.25 var(--font-sans);
+  font: 700 var(--text-body)/1.25 var(--font-sans);
 }
 .axis-interpretation {
   margin: 0;
-  font: 0.875rem/1.5 var(--font-serif);
+  font: var(--text-small)/1.5 var(--font-serif);
 }
 .track {
   position: relative;
@@ -401,7 +401,7 @@
 .claims-method {
   margin: 0.25rem 0 0.6rem;
   color: var(--color-ink-muted);
-  font: 0.75rem/1.5 var(--font-serif);
+  font: var(--text-caption)/1.5 var(--font-serif);
 }
 .claims > ul {
   display: grid;
@@ -416,7 +416,7 @@
 }
 .claims p {
   margin: 0;
-  font: 0.875rem/1.5 var(--font-serif);
+  font: var(--text-small)/1.5 var(--font-serif);
 }
 .claim-meta,
 .claim-value {
@@ -432,7 +432,7 @@
 }
 .claim-sources a {
   color: var(--color-accent);
-  font: 650 0.75rem/1.4 var(--font-sans);
+  font: 650 var(--text-caption)/1.4 var(--font-sans);
   overflow-wrap: anywhere;
   text-underline-offset: 0.18em;
 }
@@ -446,7 +446,7 @@
 .no-evidence {
   margin: 0;
   color: var(--color-ink-muted);
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
 }
 .hidden-axes {
   margin-block-start: 0.1rem;

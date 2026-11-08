@@ -65,6 +65,7 @@
   --color-danger-surface: #f5e4e1;
   --color-teal-paper: #7fbdb5;
   --color-ochre-paper: #eec35a;
+  --color-ochre-strong: #9a6b00;
   /* Section tints for scroll-driven pages (home and readings share the same steps). */
   --tint-1: color-mix(in srgb, var(--color-ochre-paper) 22%, var(--color-canvas));
   --tint-2: color-mix(in srgb, var(--color-teal-paper) 22%, var(--color-canvas));
@@ -77,8 +78,12 @@
   --color-violet: #5d4a86;
   --color-steel: #5b6770;
   --color-orange-paper: #ef8a3a;
+  --color-orange-strong: #9a4a0c;
   --color-cartographic: #315f54;
   --color-archive: #176176;
+  /* Paper and line of the record desk, shared by cards and the context sheet. */
+  --color-desk-card: #efe8d6;
+  --color-desk-line: #5f5e59;
   --font-sans: 'Archivo', 'Segoe UI', sans-serif;
   /* Archivo width axis: condensed display, expanded labels. */
   --stretch-display: 82%;
@@ -86,9 +91,13 @@
   --tracking-display: -0.03em;
   --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   --font-mono: 'IBM Plex Mono', Consolas, monospace;
+  --text-micro: 0.6875rem;
   --text-caption: 0.75rem;
+  --text-meta: 0.8125rem;
   --text-small: 0.875rem;
+  --text-compact: 0.9375rem;
   --text-body: 1rem;
+  --text-subhead: 1.0625rem;
   --text-lead: clamp(1.125rem, 1.6vw, 1.375rem);
   --text-section: clamp(1.5rem, 3vw, 2.25rem);
   --text-page: clamp(2rem, 6vw, 4.75rem);
@@ -218,7 +227,7 @@ button.reading-preview-trigger {
   border: 1px solid var(--color-border-strong);
   color: var(--color-accent);
   cursor: pointer;
-  font: 0.75rem/1.5 var(--font-mono);
+  font: var(--text-caption)/1.5 var(--font-mono);
 }
 @media (hover: hover) and (pointer: fine) {
   button.reading-preview-trigger:hover {
