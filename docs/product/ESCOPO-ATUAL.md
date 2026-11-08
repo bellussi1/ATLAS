@@ -4,6 +4,8 @@ Pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos
 
 **Rotas:** `/acervo`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos` e `/lugares`. São 1.185 rotas prerenderizadas no build atual. `/fontes#source-<id>` mantém o destino das referências.
 
+**Planejado, não implementado:** `/itinerarios` e `/itinerario/:slug` são o próximo produto editorial, ainda sem rota, schema ou conteúdo. O contrato, os pilotos comparativo e histórico e as fases estão em [Itinerários editoriais](../design/ITINERARIOS.md).
+
 - Busca e filtros usam `q`, `tipo` e `estado`; a página de detalhe permite voltar ao recorte anterior. Permalink e canonical não dependem desses parâmetros. IDs e slugs existentes preservados.
 - `/conhecimento` e `/comparar` redirecionam para `/acervo`; `/grafo` e `/rede` redirecionam para `/grafos`.
 - Endereços desconhecidos mostram "Página não encontrada" no próprio endereço, sem redirecionar para a home. Verbetes desconhecidos usam a mesma mensagem na SPA e não são gerados no prerender.

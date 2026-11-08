@@ -420,7 +420,14 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `scripts/seo.mjs` passou a gerar canonical e sitemap com a barra final do Pages (`/fontes/`), usando `ATLAS_SITE_URL=https://atlas-bellussi.pages.dev`. O sitemap tem **1.190 páginas** e o `robots.txt` aponta para ele.
     - Removidos `vercel.json`, `scripts/infra/vercel-config.mjs`, o teste correspondente e o MCP Vercel do `opencode.jsonc`. Documentação, README e SECURITY apontam para o Pages.
     - Verificações: `npm test` **362/362**, `npm run test:content` **184/184**, `build` **1.189 rotas** com sitemap/canonical do Pages, `lint` e `typecheck` exit 0.
-    - Pendente de pessoa: cadastrar `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` nos segredos do GitHub e desconectar/excluir o projeto Vercel no painel. Nada foi publicado nesta rodada.
+    - Pendente de pessoa: cadastrar `CLOUDFLARE_API_TOKEN` nos segredos do GitHub e desconectar/excluir o projeto Vercel no painel. O `CLOUDFLARE_ACCOUNT_ID` já foi cadastrado. Nada foi publicado nesta rodada.
+
+56. **Planejamento de itinerários**
+    - Criado `docs/design/ITINERARIOS.md` e indexado em `docs/README.md` e `docs/product/ESCOPO-ATUAL.md`. Nada foi implementado: não há rota, schema, fixture ou componente.
+    - Decisões registradas: percurso não linear com ramos explícitos; `kind` único para histórico, comparativo, conceitual e institucional; prévia contextual reutilizando `KnowledgeContextDirective`; aviso de cobertura editorial; piloto comparativo antes de Era Vargas; publicação em índice + um artefato por itinerário no release; gate público só `verified` com revisão humana; `features/study` dormente e fora do escopo; progresso fora da v1.
+    - Correções incorporadas: o itinerário não exige leitura própria, mas exige contexto publicado em cada parada; o gate é qualitativo (mínimo de 4 paradas, razão/pergunta, dois tipos de conteúdo, sem destino repetido sem justificativa) e o máximo é editorial, não schema; o minimapa de dependências é secundário e não duplica `/grafos`; a entrada é convite na home/leituras/verbetes, não um novo hub; o vínculo é com `reading-path` e com o grafo, por links.
+    - Fases 0–5 registradas no documento, com portas de saída. O piloto histórico só começa depois de Trabalhismo publicado e da leitura Era Vargas criada; enquanto isso, o aviso de cobertura impede tratar Era Vargas como lista de verbetes.
+    - Próxima ação: aprovar a fase 0 (schema, fixtures e testes de validação) e a política de revisão por IA. Nenhuma chamada paga e nenhuma publicação.
 
 ## Pendências que bloqueiam
 
@@ -436,6 +443,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 4. **Onda 2 do conteúdo** — 414 artigos e 896 extratos (~US$ 1,65) não estão neste checkout; faltam imagens, conversão, testes e relatório. Não publicar sem aprovação.
 5. **Release `0.1.0`** — `release/0.1.0` contém o fluxo; falta CI verde para ativar proteções e release. Decidir se `develop` segue para `master` nesta rodada.
 6. **Revisão humana** — as relações curadas e os 109 itens de `generated/eval/amostra-20v2/revisao.md` continuam pendentes.
+7. **Revisão por IA em itinerários** — o plano recomenda manter `verified` apenas com revisor humano na v1; `pending` com revisão de IA fica em preview e recebe selo explícito. Decidir depois do piloto comparativo se um estado público `reviewed-ai` será permitido.
 
 ## Protocolo
 

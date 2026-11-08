@@ -17,6 +17,7 @@ O escopo público inclui Home, Marxismo, Liberalismo e Knowledge Explorer: busca
 
 - [Padrão de páginas](design/PAGE_STANDARD.md)
 - [Sistema de design](design/SISTEMA-DE-DESIGN.md)
+- [Itinerários editoriais: plano](design/ITINERARIOS.md)
 
 ## Qualidade
 
