@@ -43,6 +43,8 @@ async function loadArtifacts() {
     manifest.adjacency,
     manifest.layouts,
     ...(manifest.network ? [manifest.network] : []),
+    ...(manifest.bundle ? [manifest.bundle] : []),
+    ...(manifest.networkBundle ? [manifest.networkBundle] : []),
   ];
   const artifacts = [];
   for (const resource of resources) {
@@ -161,6 +163,12 @@ async function main() {
     baseUrl,
     release: manifest.release,
     manifest: manifestEntry,
+    bundle: manifest.bundle
+      ? { sha256: manifest.bundle.sha256, bytes: manifest.bundle.bytes }
+      : null,
+    networkBundle: manifest.networkBundle
+      ? { sha256: manifest.networkBundle.sha256, bytes: manifest.networkBundle.bytes }
+      : null,
     artifacts: artifacts.map(({ file, sha256, bytes }) => ({ file, sha256, bytes })),
     media: media.map(({ body, ...item }) => item),
   });

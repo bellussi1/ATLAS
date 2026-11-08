@@ -61,6 +61,11 @@ O endereço público do conteúdo ainda é o `r2.dev`, que tem limite de taxa. O
 `no-cache` para o ponteiro. O binding é somente leitura no bucket `atlas-public`; `atlas-drafts`
 não entra no Worker.
 
+O ponteiro também publica `bundle` e `networkBundle`. O primeiro reúne grafo, busca, adjacência,
+layouts e leituras; o segundo reúne a projeção do grafo e os layouts. Com isso, uma navegação de
+leitura ou catálogo baixa o ponteiro e **um** artefato, em vez de percorrer as 13 coleções e os
+índices. Releases antigos sem esses campos continuam funcionando pelo manifesto.
+
 Deploy (exige `CLOUDFLARE_API_TOKEN` com Workers Scripts:Edit e `CLOUDFLARE_ACCOUNT_ID`, ou
 `npx wrangler login`):
 

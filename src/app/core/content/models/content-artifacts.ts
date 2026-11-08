@@ -8,6 +8,7 @@ import {
   claimClassificationSchema,
   editorialStatusSchema,
   type KnowledgeGraph,
+  knowledgeGraphSchema,
   placeTypeSchema,
   relationSchema,
   temporalExtentSchema,
@@ -86,6 +87,13 @@ export const contentManifestSchema = z.object({
   layouts: resourceSchema,
   /** Optional so a release published before the projection keeps working. */
   network: resourceSchema.nullable().default(null),
+  /**
+   * One object with everything a reading route needs. Optional so older releases, the fixture and
+   * the graph fallback keep working; when present the route downloads it instead of 16 artifacts.
+   */
+  bundle: resourceSchema.nullable().default(null),
+  /** The projection plus compiled layouts for `/grafos`, in one request. */
+  networkBundle: resourceSchema.nullable().default(null),
 });
 /** A published reading: its page and the sourced relations it cites, released as one object. */
 export const ideologyBundleSchema = z.object({ page: z.unknown(), supplement: z.unknown() });
@@ -178,12 +186,29 @@ export const layoutsSchema = z.object({
     }),
   ),
 });
+/** The complete payload of a reading route, released as one immutable object. */
+export const contentBundleSchema = z.object({
+  graph: knowledgeGraphSchema,
+  search: searchIndexSchema,
+  adjacency: adjacencySchema,
+  layouts: layoutsSchema,
+  /** Readings travel with the bundle so opening one does not cost another request. */
+  ideologies: z.record(z.string(), ideologyBundleSchema).default({}),
+});
+export const networkBundleSchema = z.object({
+  graph: networkGraphSchema,
+  layouts: layoutsSchema,
+});
 export type ContentManifest = z.infer<typeof contentManifestSchema>;
 export type ContentLayouts = z.infer<typeof layoutsSchema>;
 export type ContentAdjacency = z.infer<typeof adjacencySchema>;
+export type ContentBundle = z.infer<typeof contentBundleSchema>;
+export type NetworkBundle = z.infer<typeof networkBundleSchema>;
 export interface ContentPackage {
   graph: KnowledgeGraph;
   search: z.infer<typeof searchIndexSchema>;
   adjacency: ContentAdjacency;
   layouts: ContentLayouts;
+  /** Present when the route read the single bundle; absent on the fallback path. */
+  ideologies?: Readonly<Record<string, IdeologyBundle>>;
 }

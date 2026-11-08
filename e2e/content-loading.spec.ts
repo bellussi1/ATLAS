@@ -32,6 +32,19 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   await expect(page.locator('h1')).toHaveText('Marxismo');
   const compiled = resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path));
   const manifest = await loadManifest();
+  if (manifest.bundle) {
+    // The reading route downloads the packaged graph, indexes and layouts in one object.
+    expect(compiled).toEqual([`/c/${manifest.bundle.sha256}.json`]);
+    expect(resources.filter((path) => path === '/pointer.json')).toHaveLength(1);
+    await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
+    await page
+      .locator('.site-header')
+      .getByRole('link', { name: /Liberalismo/ })
+      .click();
+    await expect(page.locator('h1')).toHaveText('Liberalismo');
+    expect(resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path))).toEqual(compiled);
+    return;
+  }
   expect(compiled).toHaveLength(manifest.collections.length + manifest.ideologies.length + 4);
   expect(new Set(compiled).size).toBe(compiled.length);
   expect(compiled).toContain(`/c/${manifest.adjacency.sha256}.json`);
@@ -44,7 +57,7 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   expect(resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path))).toEqual(compiled);
 });
 
-test('the graph loads collections and layouts without the search and adjacency indexes', async ({
+test('the graph loads the network bundle without the search and adjacency indexes', async ({
   page,
 }) => {
   const resources: string[] = [];
@@ -55,9 +68,16 @@ test('the graph loads collections and layouts without the search and adjacency i
   await expect(page.locator('svg.canvas')).toBeVisible();
   const manifest = await loadManifest();
   const compiled = resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path));
-  expect(compiled).toContain(`/c/${manifest.layouts.sha256}.json`);
   expect(compiled).not.toContain(`/c/${manifest.search.sha256}.json`);
   expect(compiled).not.toContain(`/c/${manifest.adjacency.sha256}.json`);
+  if (manifest.networkBundle) {
+    // The packaged projection already carries the compiled layouts.
+    expect(compiled).toEqual([`/c/${manifest.networkBundle.sha256}.json`]);
+    // A hard load gets the pointer from the prerender; an SPA arrival fetches it once.
+    expect(resources.filter((path) => path === '/pointer.json').length).toBeLessThanOrEqual(1);
+    return;
+  }
+  expect(compiled).toContain(`/c/${manifest.layouts.sha256}.json`);
   if (manifest.network) {
     // With the projection, the graph no longer downloads the collections.
     expect(compiled).toContain(`/c/${manifest.network.sha256}.json`);

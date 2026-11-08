@@ -2,12 +2,14 @@ import { isPlatformBrowser } from '@angular/common';
 import { inject, Injectable, makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
 import {
   adjacencySchema,
+  contentBundleSchema,
   type ContentManifest,
   contentManifestSchema,
   type ContentPackage,
   type IdeologyBundle,
   ideologyBundleSchema,
   layoutsSchema,
+  networkBundleSchema,
   networkGraphSchema,
   searchIndexSchema,
 } from '@core/content/models/content-artifacts';
@@ -92,11 +94,16 @@ export class ContentRepository {
   loadIdeology(id: string): Promise<IdeologyBundle | null> {
     let reading = this.readings.get(id);
     if (!reading) {
-      reading = this.getManifest().then(async (manifest) => {
+      reading = (async () => {
+        // The bundle already carries every reading, so opening one costs no extra request.
+        if (!this.state || this.networkOnly) await this.prepare();
+        const bundled = this.state?.ideologies?.[id];
+        if (bundled) return bundled;
+        const manifest = await this.getManifest();
         const entry = manifest.ideologies.find((ideology) => ideology.id === id);
         if (!entry) return null;
         return ideologyBundleSchema.parse(await this.resource(entry, entry.file));
-      });
+      })();
       this.readings.set(id, reading);
       reading.catch(() => this.readings.delete(id));
     }
@@ -220,9 +227,11 @@ export class ContentRepository {
     // A network-only package is upgraded in place when a route needs search or adjacency.
     if (this.state && this.networkOnly) this.state = null;
     this.pending ??= (async () => {
-      const manifest = await this.getManifest();
+      const pointer = await this.getPointer();
       if (this.browser) {
-        this.state = await this.buildState(manifest);
+        this.state = pointer.bundle
+          ? await this.buildBundleState(pointer.bundle)
+          : await this.buildState(await this.getManifest());
         this.networkOnly = false;
       } else {
         let snapshots = ContentRepository.serverSnapshots.get(this.read);
@@ -230,12 +239,14 @@ export class ContentRepository {
           snapshots = new Map();
           ContentRepository.serverSnapshots.set(this.read, snapshots);
         }
-        const hash = this.pinned!.manifest.sha256;
+        const hash = pointer.bundle?.sha256 ?? pointer.manifest.sha256;
         let snapshot = snapshots.get(hash);
         if (!snapshot) {
           snapshots.clear();
           snapshot = (async () => {
-            const state = await this.buildState(manifest);
+            const state = pointer.bundle
+              ? await this.buildBundleState(pointer.bundle)
+              : await this.buildState(await this.getManifest());
             const assets = await Promise.all(
               [...this.requests]
                 .filter(([key]) => key !== 'pointer.json')
@@ -256,10 +267,6 @@ export class ContentRepository {
           this.transfer.set(makeStateKey<string>(`content:${key}`), text);
         }
       }
-      // Readings start with the graph but do not hold it: opening a reading awaits its request.
-      void Promise.all(manifest.ideologies.map((entry) => this.loadIdeology(entry.id))).catch(
-        () => undefined,
-      );
       return this.state.graph;
     })().catch((error: unknown) => {
       this.pending = undefined;
@@ -274,8 +281,10 @@ export class ContentRepository {
     if (this.state) return this.state.graph;
     if (this.pending) return this.pending;
     this.networkPending ??= (async () => {
-      const manifest = await this.getManifest();
-      this.state = await this.buildNetworkState(manifest);
+      const pointer = await this.getPointer();
+      this.state = pointer.networkBundle
+        ? await this.buildNetworkBundleState(pointer.networkBundle)
+        : await this.buildNetworkState(await this.getManifest());
       this.networkOnly = true;
       return this.state.graph;
     })().catch((error: unknown) => {
@@ -286,6 +295,32 @@ export class ContentRepository {
       throw error;
     });
     return this.networkPending;
+  }
+  private async buildBundleState(resource: {
+    sha256: string;
+    bytes: number;
+  }): Promise<ContentPackage> {
+    const bundle = contentBundleSchema.parse(await this.resource(resource, 'bundle.json'));
+    return {
+      graph: bundle.graph,
+      search: bundle.search,
+      adjacency: bundle.adjacency,
+      layouts: bundle.layouts,
+      ideologies: bundle.ideologies,
+    };
+  }
+  private async buildNetworkBundleState(resource: {
+    sha256: string;
+    bytes: number;
+  }): Promise<ContentPackage> {
+    const bundle = networkBundleSchema.parse(await this.resource(resource, 'network-bundle.json'));
+    return {
+      // The graph page only reads the projected fields; a later full load upgrades this state.
+      graph: bundle.graph as unknown as KnowledgeGraph,
+      search: [],
+      adjacency: {},
+      layouts: bundle.layouts,
+    };
   }
   private async buildState(manifest: ContentManifest): Promise<ContentPackage> {
     const [atlases, search, adjacency, layouts] = await Promise.all([

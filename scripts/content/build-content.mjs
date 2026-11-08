@@ -22,7 +22,9 @@ const { publishedIdeologies } =
 const { validateIdeologyDossier } =
   await import('../../src/app/features/ideologies/models/ideology-page.schema.ts');
 const {
+  contentBundleSchema,
   contentManifestSchema,
+  networkBundleSchema,
   networkGraphSchema,
   searchIndexSchema,
   adjacencySchema,
@@ -176,12 +178,25 @@ export async function buildContent({
   const ideologies = [];
   for (const { slug, page, supplement } of readings)
     ideologies.push({ id: slug, ...(await asset(`ideology-${slug}`, { page, supplement })) });
+  const graphDocument = { id: graph.id, version: graph.version, updatedAt: graph.updatedAt };
+  const bundle = contentBundleSchema.parse({
+    graph: { ...graphDocument, atlases: graph.atlases },
+    search,
+    adjacency,
+    layouts,
+    ideologies: Object.fromEntries(
+      readings.map(({ slug, page, supplement }) => [slug, { page, supplement }]),
+    ),
+  });
+  const networkBundle = networkBundleSchema.parse({ graph: networkGraph, layouts });
   const resources = {
     schemaVersion: 1,
-    graph: { id: graph.id, version: graph.version, updatedAt: graph.updatedAt },
+    graph: graphDocument,
     collections,
     ideologies,
     network: await asset('network', networkGraph),
+    networkBundle: await asset('network-bundle', networkBundle),
+    bundle: await asset('bundle', bundle),
     search: await asset('search', search),
     adjacency: await asset('adjacency', adjacency),
     layouts: await asset('layouts', layouts),
@@ -195,13 +210,24 @@ export async function buildContent({
     await atomicFile(join(outputDirectory, resource.file), resource.body);
   await atomicFile(join(outputDirectory, 'manifest.json'), await formatJson(manifest));
   if (fixture) {
+    // The fixture keeps the pre-bundle path on purpose: it stays small for tests, while the
+    // published release and the e2e cache exercise the packaged artifacts.
+    const fixtureAssets = assets.filter(
+      ({ file }) => !file.startsWith('bundle.') && !file.startsWith('network-bundle.'),
+    );
     const manifestBody = `${JSON.stringify(manifest)}\n`;
     const pointer = buildPointer({
       baseUrl: 'https://fixture.invalid',
       release: manifest.release,
       manifest: { sha256: sha256(manifestBody), bytes: Buffer.byteLength(manifestBody) },
-      artifacts: assets.map(({ file, sha256: digest, bytes }) => ({ file, sha256: digest, bytes })),
+      artifacts: fixtureAssets.map(({ file, sha256: digest, bytes }) => ({
+        file,
+        sha256: digest,
+        bytes,
+      })),
       media: [],
+      bundle: null,
+      networkBundle: null,
     });
     await mkdir(join(projectRoot, 'generated/testing'), { recursive: true });
     await atomicFile(
@@ -216,7 +242,7 @@ export async function buildContent({
           'pointer.json': JSON.stringify(pointer),
           [artifactKey(sha256(manifestBody))]: manifestBody,
           ...Object.fromEntries(
-            assets.map((resource) => [artifactKey(resource.sha256), resource.body]),
+            fixtureAssets.map((resource) => [artifactKey(resource.sha256), resource.body]),
           ),
         },
       }),

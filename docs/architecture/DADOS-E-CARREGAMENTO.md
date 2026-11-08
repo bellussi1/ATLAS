@@ -13,8 +13,9 @@ src/content/knowledge/manifest.json
   → leitura e validação global, preservando ordem e referências entre coleções
   → scripts/content/build-content.mjs (offline)
   → generated/content/manifest.json
-      + 5 snapshots compactos de coleção, com hash
+      + 13 snapshots de coleção, com hash
       + search.<hash>.json, adjacency.<hash>.json, layouts.<hash>.json
+      + bundle.<hash>.json e network-bundle.<hash>.json (pacotes de rota)
   → assets Angular /content/* + leitor SSR
   → ContentRepository + resolver das leituras
   → apresentação dos índices e layouts já prontos
@@ -52,9 +53,9 @@ Os scripts `start`, `watch`, `test`, `typecheck`, `lint` e `build` têm hooks qu
 
 ## Carregamento, cache e hidratação
 
-- `knowledgeContentResolver` prepara o conteúdo antes de ativar cada leitura; o componente mantém acesso síncrono ao grafo validado. Home não solicita o acervo. `loadCollection(id)` busca uma coleção; `loadKnowledgeGraph()` prepara o conjunto com índices. `loadNetworkGraph()` lê `network.<hash>.json` + `layouts.<hash>.json`; releases sem o campo caem nas coleções completas.
-- **Política atual:** as duas leituras preparam as cinco coleções e os três derivados. Isso preserva consumidores síncronos e todas as conexões globais, inclusive fontes e relações de outros atlas. Particionar os arquivos não significa carregar só uma entidade ou coleção. Busca e layouts também são preparados em conjunto; carregamento mais granular pode vir depois, com medição e mudança deliberada dos contratos.
-- **Navegador:** HttpClient busca o texto dos assets locais; o repositório valida tamanho, SHA-256, JSON, Zod e referências globais. Requisições simultâneas compartilham a mesma promessa; cada URL com hash fica em cache de memória durante a sessão. A página nunca vê estado parcial. A sessão mantém sua versão coerente e não troca de manifesto entre seleções.
+- `knowledgeContentResolver` prepara o conteúdo antes de ativar cada leitura; o componente mantém acesso síncrono ao grafo validado. Home não solicita o acervo. `loadCollection(id)` busca uma coleção; `loadKnowledgeGraph()` lê o `bundle.<hash>.json` (grafo, busca, adjacência, layouts e leituras). `loadNetworkGraph()` lê o `network-bundle.<hash>.json`; releases sem os pacotes caem no manifesto e nas coleções.
+- **Política atual:** o ponteiro publicado traz `bundle` e `networkBundle`, então uma navegação de leitura ou catálogo baixa **um** objeto de conteúdo além do `pointer.json`, em vez de 16. O pacote preserva consumidores síncronos e todas as conexões globais, inclusive fontes e relações de outros atlas. Particionar os arquivos não significa carregar só uma entidade ou coleção. Busca e layouts são preparados em conjunto; um carregamento mais granular ou por entidade pode vir depois, com medição e mudança deliberada dos contratos.
+- **Navegador:** HttpClient busca o texto dos assets locais; o repositório valida tamanho, SHA-256, JSON, Zod e referências globais. Requisições simultâneas compartilham a mesma promessa; cada URL com hash fica em cache de memória durante a sessão e no cache HTTP imutável. A página nunca vê estado parcial. A sessão mantém sua versão coerente e não troca de manifesto entre seleções.
 - **Prerender:** `app.config.server.ts` fornece um leitor de arquivos para `generated/content`, que não entra no browser. Os textos passam por TransferState; na hidratação são consumidos e removidos, evitando nova requisição. As três páginas seguem prerenderizadas e os controles operáveis após a hidratação.
 - **Falhas:** HTTP com erro, hash divergente ou dado inválido impedem a ativação da leitura. Promessas com erro são descartadas, e a falha invalida o manifesto em cache para que o retry encontre uma versão corrigida. O shell mantém a página anterior, mostra aviso acessível e permite tentar de novo. Após recuperação, o foco vai ao conteúdo. Não substitui auditoria WCAG integral.
 
