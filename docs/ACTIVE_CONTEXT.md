@@ -8,12 +8,13 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 ## Estado atual
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: PR **#50** (`develop` → `master`) foi mergeado em **`31b8d8b`**, o PR **#51** (pacotes de conteúdo) em **`21bba13`** e o PR **#52** (d3-force lazy) em **`c7a0448`**; o deploy do Pages rodou com sucesso nas três rodadas. O `develop` segue para a próxima rodada.
+- Gitflow: PR **#50** (`develop` → `master`) em **`31b8d8b`**, PR **#51** (pacotes) em **`21bba13`**, PR **#52** (d3-force lazy) em **`c7a0448`**, PR **#53** (uptime) em **`729cc5b`** e PR **#54** (publicação `c0be77b`) em **`25762fa`**; `deploy-pages` concluído em todas as rodadas.
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
 - Conteúdo: 13 coleções. Release **`c0be77b…`** publicado em 08/11: **1.190 entidades**, **945 relações** e **775 documentadas**; `bundle` de 26,6 MB e `networkBundle` de 4,48 MB. O ponteiro público aponta para esse release; o build novo lê o pacote.
 - **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O release empacotado reduz a navegação de leitura/catálogo de ~17 para **2 requisições** (ponteiro + pacote), `/acervo` para **2** e `/grafos` para **2** (ponteiro + `networkBundle`). Medição na URL publicada em 08/11: home **0**; acervo **2**; leitura/verbete **2** na navegação SPA e **1** na carga direta; grafo **2** na SPA e **1** na carga direta. Depois do `/acervo`, abrir um verbete na mesma sessão custa **0**. O ponteiro vem do prerender nas cargas diretas. O consumo futuro cai, mas o limite do dia ainda depende do reset ou do upgrade.
 - Build local: **1.217 páginas prerenderizadas** e **1.218 no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
-- CI: verify do PR **#52** e do merge **`c7a0448`** verde, com 355 testes, 184 de conteúdo e 155 e2e; `deploy-pages` concluído. O `ingest:fetch-raw` segue estável. O probe agendado de `uptime` passou a testar as rotas canônicas `/leitura/marxismo/` e `/leitura/liberalismo/` como 200 e as antigas como 301, corrigindo a falha a cada 15 minutos.
+- CI: PR **#54** e merge **`25762fa`** verdes, com 355 testes, 184 de conteúdo, build de 1.217 rotas, 1.219 links e 155 e2e; `deploy-pages` concluído. O `ingest:fetch-raw` segue estável e o probe agendado de `uptime` foi corrigido para as rotas canônicas.
+- Publicado e verificado em 08/11: ponteiro `c0be77b`; `/verbete/walter-eucken/` responde 200; sitemap com **1.218 URLs**; `/grafos` baixa só o `networkBundle`, e verbete/acervo baixam só o `bundle` na carga direta.
 
 ## Verificações recentes
 
