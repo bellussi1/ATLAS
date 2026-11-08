@@ -18,7 +18,7 @@ jobs:
           node-version: 24
           cache: npm
       - name: Cache do conteúdo publicado (R2)
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: generated/content-cache
           key: content-cache-${{ hashFiles('content/content-pointer.json') }}
@@ -31,7 +31,7 @@ jobs:
       - run: npm run test:content
       - name: Cache das capturas verificadas
         id: raw-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: generated/raw-cache
           key: raw-${{ hashFiles('scripts/ingestion/**/raw/**/manifest.json') }}
@@ -40,7 +40,7 @@ jobs:
         id: fetch-raw
       - name: Preservar capturas para retomada
         if: ${{ always() && steps.raw-cache.outputs.cache-hit != 'true' }}
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         with:
           path: generated/raw-cache
           key: ${{ steps.raw-cache.outputs.cache-primary-key }}${{ steps.fetch-raw.outcome == 'success' && '' || format('-partial-{0}-{1}', github.run_id, github.run_attempt) }}
@@ -62,7 +62,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: gitleaks/gitleaks-action@v2
+      - uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
