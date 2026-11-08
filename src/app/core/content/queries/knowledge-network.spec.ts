@@ -192,6 +192,30 @@ describe('knowledge network', () => {
     expect(connected.nodes.every((n) => n.degree > 0)).toBe(true);
   });
 
+  it('isolates one or two hops around the selected node without touching the layout', () => {
+    const root =
+      network.nodes.find((node) => node.id === 'person-karl-marx') ??
+      network.nodes.find((node) => node.degree >= 4)!;
+    const one = filterNetwork(network, {
+      ...all,
+      neighborhood: { root: root.id, depth: 1 },
+    });
+    const two = filterNetwork(network, {
+      ...all,
+      neighborhood: { root: root.id, depth: 2 },
+    });
+    const full = filterNetwork(network, all);
+    expect(one.nodes.some((node) => node.id === root.id)).toBe(true);
+    expect(one.nodes.length).toBeGreaterThan(1);
+    expect(one.nodes.length).toBeLessThan(full.nodes.length);
+    expect(two.nodes.length).toBeGreaterThan(one.nodes.length);
+    const ids = new Set(one.nodes.map((node) => node.id));
+    for (const edge of one.edges) expect(ids.has(edge.source) && ids.has(edge.target)).toBe(true);
+    expect(
+      filterNetwork(network, { ...all, neighborhood: { root: 'missing', depth: 1 } }).nodes,
+    ).toEqual([]);
+  });
+
   it('pulls the endpoints of a scoped relation into the cut', () => {
     const person = {
       id: 'person',

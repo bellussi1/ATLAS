@@ -18,10 +18,10 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
-- `npm test`: **355/355**.
+- `npm test`: **356/356**.
 - `npm run test:content`: **184/184**.
 - `npm run build`: passou, **1.217 páginas prerenderizadas**, canonical absoluto em todas as páginas.
-- `npx playwright test`: **155/155**, incluindo o contrato de carregamento: leitura baixa só o `bundle` e `/grafos` só o `networkBundle`.
+- `npx playwright test`: **156/156**, incluindo o contrato de carregamento e a vizinhança de 1–2 saltos.
 - `npm run check:links`: **1.219 páginas** verificadas.
 - `npm run lint` e `npm run typecheck`: exit 0.
 - `content:build` local: release **`c0be77b`**, 13 coleções, **1.190 entidades**, **945 relações** e **775 documentadas**; o ponteiro público agora aponta para esse release.
@@ -49,7 +49,8 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 - **Limpeza de disco**: 15 worktrees mesclados e limpos removidos (incluindo `loving-khayyam`, `ATLAS-gitflow` e `pipeline-tradicao`), ~22,5 GB; `generated/raw-cache` (9,6 GB), blobs locais de `scripts/ingestion` (909 MB), `tmp` e `dist` removidos. `output/` foi movido para `C:\Users\Bellussi\Documents\ATLAS-output`. Restam apenas worktrees sujos ou não mesclados (`great-chatelet`, `mystifying-tharp`, `rede-ux`, `youthful-spence`, `zen-solomon`) e `ATLAS-release`.
 
-- **Grafo, estado atual**: o release público já tem `network`, então `/grafos` faz **2 requisições** ao Worker em vez de 11–17. Adicionei `?no=<id>` para link direto, "Ver no grafo" nos verbetes, filtro de conectados e zoom inicial de 145% no mobile (607 nós visíveis), além de "Ver como lista" no mobile. Lighthouse: desktop **88** (era 78–81), mobile **56** (TBT ~1,2 s), CLS 0/0,013. O `layoutNetwork` (d3-force) saiu do chunk do grafo: virou um chunk lazy de **21,5 kB**, carregado só quando `layouts.network` falta. O próximo ganho de TBT mobile agora é a navegação P2 (vizinhança de 1–2 saltos, histórico, caminho entre dois nós e filtro por período).
+- **Grafo, estado atual**: o release público já tem `network`, então `/grafos` faz **2 requisições** ao Worker em vez de 11–17. Adicionei `?no=<id>` para link direto, "Ver no grafo" nos verbetes, filtro de conectados e zoom inicial de 145% no mobile (607 nós visíveis), além de "Ver como lista" no mobile. Lighthouse: desktop **88** (era 78–81), mobile **56** (TBT ~1,2 s), CLS 0/0,013. O `layoutNetwork` (d3-force) saiu do chunk do grafo: virou um chunk lazy de **21,5 kB**, carregado só quando `layouts.network` falta.
+- **P2 / vizinhança**: a primeira fatia está implementada. O controle **Tudo / 1 salto / 2 saltos** isola o BFS a partir do verbete selecionado, grava `?no=<id>&saltos=1|2` e não recalcula o layout; o recorte é induzido pelas arestas filtradas. Teste unitário do BFS e e2e com restauração da URL. Faltam histórico, filtro por período e caminho entre dois nós.
 
 - **Onda 1 / calibração + revisão de IA**: amostra de 20 artigos rodada por **US$ 0,0706**. Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. A revisão humana foi substituída por **revisão assistida por IA**, autorizada pelo responsável do projeto: Sonnet 5.5 marcou **96 sustenta e 4 não sustenta** nos 100 itens (2 textos e 2 tipos de relação). A re-verificação Sonnet low confirmou 22/24 relações do Haiku (low 7/7; medium 15/17) e rejeitou as duas arestas `desenvolveu-se-em` do Marxismo. Decisão: **Haiku 5.5 medium + Sonnet 5.5 low**; `model-choice.json` atualizado. Metas da Onda 2: **70/50/70/35**.
 
@@ -75,10 +76,10 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Próxima ação
 
-1. Rodar Lighthouse mobile na URL publicada e comparar com o relatório anterior; o d3-force já saiu do chunk do grafo.
-2. A Onda 1 está fechada por revisão de IA (96/100) e o modelo é Haiku medium + Sonnet low. O lote de verbetes da Onda 2 foi concluído; a próxima frente são as relações entre entidades das quatro leituras e os alvos que faltam.
-3. Decidir o próximo lote: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
-4. Rodar Lighthouse na URL publicada para comparar com o relatório local.
+1. Rodar Lighthouse mobile na URL publicada e comparar com o relatório anterior; o d3-force já saiu do chunk do grafo e a vizinhança P2 está implementada.
+2. Seguir a P2: histórico (`?no=` com push em seleção explícita), filtro por período e caminho entre dois nós.
+3. A Onda 1 está fechada por revisão de IA (96/100) e o modelo é Haiku medium + Sonnet low. O lote de verbetes da Onda 2 foi concluído; a próxima frente são as relações entre entidades das quatro leituras e os alvos que faltam.
+4. Decidir o próximo lote: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
 5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
 6. Só depois iniciar a fase 0 dos itinerários.
 

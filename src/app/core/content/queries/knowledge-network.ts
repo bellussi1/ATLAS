@@ -683,6 +683,8 @@ export interface NetworkFilter {
   families: ReadonlySet<RelationFamilyId>;
   collections: ReadonlySet<string>;
   onlyConnected: boolean;
+  /** Keeps only the connected nodes within `depth` hops of `root`; null shows the whole cut. */
+  neighborhood?: { root: string; depth: 1 | 2 } | null;
 }
 
 export interface VisibleNetwork {
@@ -719,9 +721,45 @@ export function filterNetwork(network: KnowledgeNetwork, filter: NetworkFilter):
       // Keep the old cross-collection links between two visible records.
       (filter.collections.has(edge.collection) || (ids.has(edge.source) && ids.has(edge.target))),
   );
-  if (!filter.onlyConnected) return { nodes, edges };
-  const connected = new Set(edges.flatMap((edge) => [edge.source, edge.target]));
-  return { nodes: nodes.filter((node) => connected.has(node.id)), edges };
+  const connected = filter.onlyConnected
+    ? new Set(edges.flatMap((edge) => [edge.source, edge.target]))
+    : null;
+  const cutNodes = connected ? nodes.filter((node) => connected.has(node.id)) : nodes;
+  if (!filter.neighborhood) return { nodes: cutNodes, edges };
+  const { root, depth } = filter.neighborhood;
+  // A root hidden by the type or collection filters has no neighbourhood to show.
+  if (!nodes.some((node) => node.id === root)) return { nodes: [], edges: [] };
+  const adjacency = new Map<string, Set<string>>();
+  for (const edge of edges) {
+    let from = adjacency.get(edge.source);
+    if (!from) {
+      from = new Set();
+      adjacency.set(edge.source, from);
+    }
+    from.add(edge.target);
+    let to = adjacency.get(edge.target);
+    if (!to) {
+      to = new Set();
+      adjacency.set(edge.target, to);
+    }
+    to.add(edge.source);
+  }
+  const near = new Set([root]);
+  let frontier = [root];
+  for (let level = 0; level < depth; level += 1) {
+    const next: string[] = [];
+    for (const id of frontier)
+      for (const other of adjacency.get(id) ?? [])
+        if (!near.has(other)) {
+          near.add(other);
+          next.push(other);
+        }
+    frontier = next;
+  }
+  return {
+    nodes: nodes.filter((node) => near.has(node.id)),
+    edges: edges.filter((edge) => near.has(edge.source) && near.has(edge.target)),
+  };
 }
 
 function fold(text: string): string {

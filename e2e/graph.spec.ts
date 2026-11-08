@@ -286,6 +286,25 @@ test('zoomed out the links are plain lines; up close they carry their wording', 
   await expect(page.locator('.label--edge').first()).toBeVisible();
 });
 
+test('the neighbourhood keeps one or two hops and restores the whole cut', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/grafos?no=person-karl-marx&saltos=1');
+  await expect(page.locator('[data-node="person-karl-marx"]')).toBeVisible();
+  const neighborhood = page.locator('#graph-neighborhood-count');
+  const count = async () =>
+    Number((await neighborhood.textContent())?.match(/(\d+) verbetes/)?.[1] ?? 0);
+  await expect(page.getByRole('radio', { name: '1 salto' })).toBeChecked();
+  const one = await count();
+  expect(one).toBeGreaterThan(1);
+  await page.getByRole('radio', { name: '2 saltos' }).check();
+  await expect(page).toHaveURL(/saltos=2/);
+  await expect.poll(count).toBeGreaterThan(one);
+  const two = await count();
+  await page.getByRole('radio', { name: 'Tudo' }).check();
+  await expect(page).not.toHaveURL(/saltos=/);
+  await expect.poll(count).toBeGreaterThan(two);
+});
+
 test('mouse: the wheel zooms, dragging pans and a double click on the background zooms in', async ({
   page,
 }) => {
