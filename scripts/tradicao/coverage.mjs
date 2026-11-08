@@ -118,10 +118,14 @@ export function measure({ page, supplement, atlases }) {
   entities.total = scopeIds.size;
 
   const relationIds = new Set();
+  const documentedIds = new Set();
+  const navigationTypes = new Set(['encyclopedic-link', 'editorial-link', 'related_to']);
   for (const atlas of atlases)
     for (const relation of atlas.relations)
-      if (scopeIds.has(relation.fromEntityId) && scopeIds.has(relation.toEntityId))
+      if (scopeIds.has(relation.fromEntityId) && scopeIds.has(relation.toEntityId)) {
         relationIds.add(relation.id);
+        if (!navigationTypes.has(relation.type)) documentedIds.add(relation.id);
+      }
 
   const sourceIds = new Set([
     ...own.sources.map((s) => s.id),
@@ -149,7 +153,11 @@ export function measure({ page, supplement, atlases }) {
     published: page.published,
     reviewStatus: page.review.status,
     entities,
-    relations: { grafo: relationIds.size, tese: (supplement.edges ?? []).length },
+    relations: {
+      grafo: relationIds.size,
+      documentadas: documentedIds.size,
+      tese: (supplement.edges ?? []).length,
+    },
     sources: {
       total: sourceIds.size,
       citadas: [...cited].filter((id) => sourceIds.has(id)).length,
@@ -222,7 +230,7 @@ export function formatReport(metrics, gaps) {
       .filter((b) => e[b])
       .map((b) => `${b} ${e[b]}`)
       .join(', ')}`,
-    `  relações: ${metrics.relations.grafo} no grafo, ${metrics.relations.tese} no dossiê`,
+    `  relações: ${metrics.relations.grafo} no grafo (${metrics.relations.documentadas} documentadas), ${metrics.relations.tese} no dossiê`,
     `  fontes: ${metrics.sources.total} (${metrics.sources.citadas} citadas)`,
     `  capítulos: ${metrics.chapters.comBlocos}/${metrics.chapters.total} com blocos, ${metrics.chapters.completos} completos, ${metrics.chapters.pendentes} pendentes`,
     `  blocos: ${metrics.blocks.total} em ${metrics.blocks.tipos} tipos`,

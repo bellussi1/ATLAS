@@ -1,0 +1,127 @@
+{
+  "measuredAt": "2026-11-08",
+  "model": "claude-sonnet-5-5",
+  "effort": "low",
+  "purpose": "Re-verificação das relações já confirmadas pelo Haiku, para medir o erro de tipo/direção que a conferência de texto não vê.",
+  "arms": {
+    "low": {
+      "model": "claude-sonnet-5-5",
+      "effort": "low",
+      "inputTokens": 9280,
+      "outputTokens": 517,
+      "usd": 0.02373,
+      "report": [
+        {
+          "id": "topic-brasil",
+          "entity": "Brasil",
+          "haikuConfirmed": 1,
+          "sonnetConfirmed": 1,
+          "rejected": []
+        },
+        {
+          "id": "topic-clarin",
+          "entity": "Clarín",
+          "haikuConfirmed": 1,
+          "sonnetConfirmed": 1,
+          "rejected": []
+        },
+        {
+          "id": "topic-ferdinand-lassalle",
+          "entity": "Ferdinand Lassalle",
+          "haikuConfirmed": 1,
+          "sonnetConfirmed": 1,
+          "rejected": []
+        },
+        {
+          "id": "topic-fidel-castro",
+          "entity": "Fidel Castro",
+          "haikuConfirmed": 1,
+          "sonnetConfirmed": 1,
+          "rejected": []
+        },
+        {
+          "id": "topic-hugo-chavez",
+          "entity": "Hugo Chávez",
+          "haikuConfirmed": 1,
+          "sonnetConfirmed": 1,
+          "rejected": []
+        },
+        {
+          "id": "topic-manifesto-comunista",
+          "entity": "Manifesto Comunista",
+          "haikuConfirmed": 2,
+          "sonnetConfirmed": 2,
+          "rejected": []
+        }
+      ]
+    },
+    "medium": {
+      "model": "claude-sonnet-5-5",
+      "effort": "low",
+      "inputTokens": 14961,
+      "outputTokens": 1113,
+      "usd": 0.041052,
+      "report": [
+        {
+          "id": "topic-clarin",
+          "entity": "Clarín",
+          "haikuConfirmed": 2,
+          "sonnetConfirmed": 2,
+          "rejected": []
+        },
+        {
+          "id": "topic-ferdinand-lassalle",
+          "entity": "Ferdinand Lassalle",
+          "haikuConfirmed": 2,
+          "sonnetConfirmed": 2,
+          "rejected": []
+        },
+        {
+          "id": "topic-fidel-castro",
+          "entity": "Fidel Castro",
+          "haikuConfirmed": 3,
+          "sonnetConfirmed": 3,
+          "rejected": []
+        },
+        {
+          "id": "topic-hugo-chavez",
+          "entity": "Hugo Chávez",
+          "haikuConfirmed": 2,
+          "sonnetConfirmed": 2,
+          "rejected": []
+        },
+        {
+          "id": "topic-iluminismo",
+          "entity": "Iluminismo",
+          "haikuConfirmed": 3,
+          "sonnetConfirmed": 3,
+          "rejected": []
+        },
+        {
+          "id": "topic-manifesto-comunista",
+          "entity": "Manifesto Comunista",
+          "haikuConfirmed": 2,
+          "sonnetConfirmed": 2,
+          "rejected": []
+        },
+        {
+          "id": "topic-marxismo",
+          "entity": "Marxismo",
+          "haikuConfirmed": 2,
+          "sonnetConfirmed": 0,
+          "rejected": [
+            {},
+            {}
+          ]
+        },
+        {
+          "id": "topic-partido-social-democrata-da-alemanha",
+          "entity": "Partido Social-Democrata da Alemanha",
+          "haikuConfirmed": 1,
+          "sonnetConfirmed": 1,
+          "rejected": []
+        }
+      ]
+    }
+  }
+}

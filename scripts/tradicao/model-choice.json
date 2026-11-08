@@ -1,46 +1,54 @@
 {
-  "measuredAt": "2026-11-05",
+  "measuredAt": "2026-11-08",
   "sample": {
     "size": 20,
     "entityIds": [
-      "topic-anarquismo",
-      "topic-august-bebel",
+      "topic-brasil",
       "topic-bruno-kreisky",
-      "topic-eduard-bernstein",
-      "topic-emma-goldman",
+      "topic-ciencia-politica",
+      "topic-clarin",
+      "topic-crise-dos-misseis-de-cuba",
+      "topic-direita-politica",
       "topic-ferdinand-lassalle",
-      "topic-internacional-socialista",
-      "topic-jean-jaures",
-      "topic-karl-kautsky",
+      "topic-fidel-castro",
+      "topic-governo",
+      "topic-guerra",
+      "topic-hugo-chavez",
+      "topic-iluminismo",
       "topic-leis-antissocialistas",
-      "topic-mikhail-bakunin",
-      "topic-olof-palme",
-      "topic-otto-von-bismarck",
-      "topic-pierre-joseph-proudhon",
-      "topic-piotr-kropotkin",
-      "topic-revisionismo-marxismo",
-      "topic-social-democracia",
-      "topic-terceira-via",
-      "topic-wilhelm-liebknecht",
-      "topic-willy-brandt"
+      "topic-manifesto-comunista",
+      "topic-marxismo",
+      "topic-mexico",
+      "topic-partido-dos-trabalhadores",
+      "topic-partido-social-democrata-da-alemanha",
+      "topic-renascimento",
+      "topic-tribo"
     ]
   },
   "candidates": [
     {
       "model": "claude-haiku-5-5",
       "effort": "low",
-      "residualError": null,
-      "quotesRejected": 0.022058823529411766,
-      "relationsRejected": 0.6440677966101694,
-      "costUsd": 0.02258668
+      "residualError": 0.02127659574468085,
+      "quotesRejected": 0,
+      "relationsRejected": 0.7407407407407407,
+      "costUsd": 0.02959418000000001
     },
     {
       "model": "claude-haiku-5-5",
       "effort": "medium",
-      "residualError": 0.05,
-      "quotesRejected": 0.008771929824561403,
-      "relationsRejected": 0.4878048780487805,
-      "costUsd": 0.045495050000000016
+      "residualError": 0.05660377358490566,
+      "quotesRejected": 0.007633587786259542,
+      "relationsRejected": 0.5405405405405406,
+      "costUsd": 0.0410373
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "effort": "low",
+      "residualError": null,
+      "quotesRejected": 0,
+      "relationsRejected": 0.08333333333333333,
+      "costUsd": 0.064782
     }
   ],
   "chosen": {
@@ -53,5 +61,5 @@
       "effort": "low"
     }
   },
-  "rationale": "Texto abaixo de 5% em haiku-medium, relações acima nos dois braços: só a etapa de relações sobe de modelo. Conferência: 14 itens por pessoa e 66 por IA."
+  "rationale": "Texto: 1/40 (2,5%) no Haiku low e 1/36 (2,8%) no medium. Relações: 0/7 no low e 2/17 (11,8%) no medium, ambos erros de tipo/direção no Marxismo; a re-verificação Sonnet low confirmou 22/24 e rejeitou os 2. O medium fica pela cobertura (17 propostas contra 7) e o Sonnet low verifica as relações. Conferência: 100 itens por IA (96 sustenta, 4 não sustenta)."
 }
