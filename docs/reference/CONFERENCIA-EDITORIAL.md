@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Conferência de fontes para revisão editorial
 
 Consulta em 31/10/2026, para preparar revisão humana. Este registro não altera estados editoriais nem afirma revisão humana.

@@ -40,27 +40,17 @@
               <span aria-hidden="true">←</span> <span class="panel-button-text">Voltar</span>
             </button>
           }
-          <button type="button" class="panel-button" aria-label="Fechar contexto" (click)="close()">
-            <span class="panel-button-text">Fechar</span> <span aria-hidden="true">×</span>
+          <button
+            type="button"
+            class="panel-button panel-button--icon"
+            aria-label="Fechar contexto"
+            title="Fechar"
+            (click)="close()"
+          >
+            <span aria-hidden="true">×</span>
           </button>
         </div>
       </header>
-      @if (position(); as pos) {
-        <nav class="context-steps" aria-label="Ordem de leitura">
-          <button
-            type="button"
-            class="panel-button"
-            [disabled]="!pos.hasPrevious"
-            (click)="step(-1)"
-          >
-            <span aria-hidden="true">←</span> Anterior
-          </button>
-          <span class="context-position" aria-live="polite">{{ pos.at }} de {{ pos.total }}</span>
-          <button type="button" class="panel-button" [disabled]="!pos.hasNext" (click)="step(1)">
-            Próximo <span aria-hidden="true">→</span>
-          </button>
-        </nav>
-      }
       @if (trail().length) {
         <nav class="context-trail" aria-label="Percurso nesta leitura">
           <ol>
@@ -109,8 +99,31 @@
             </button>
           }
           <button type="button" (click)="jump('context-sources-title')">
-            Fontes <span class="group-count">{{ record().sources.length }}</span>
+            Fontes <span class="group-count">{{ sourceCount() }}</span>
           </button>
+          @if (position(); as pos) {
+            <div class="context-steps" role="group" aria-label="Ordem de leitura">
+              <button
+                type="button"
+                [disabled]="!pos.hasPrevious"
+                [attr.aria-label]="'Anterior, registro ' + pos.at + ' de ' + pos.total"
+                (click)="step(-1)"
+              >
+                <span aria-hidden="true">‹</span>
+              </button>
+              <span class="context-position" aria-live="polite"
+                >{{ pos.at }} de {{ pos.total }}</span
+              >
+              <button
+                type="button"
+                [disabled]="!pos.hasNext"
+                [attr.aria-label]="'Próximo, registro ' + pos.at + ' de ' + pos.total"
+                (click)="step(1)"
+              >
+                <span aria-hidden="true">›</span>
+              </button>
+            </div>
+          }
         </nav>
         @for (paragraph of record().paragraphs; track $index) {
           <p>
@@ -139,6 +152,11 @@
           <h3 class="reading-heading" id="context-links-title" tabindex="-1">
             Como se liga às demais
           </h3>
+          @if (jumpReturn()?.id === 'context-links-title') {
+            <button type="button" class="context-return" (click)="returnToJump()">
+              Voltar ao ponto anterior
+            </button>
+          }
           <div class="context-connections">
             @for (group of groups(); track group.tier) {
               <details
@@ -192,9 +210,18 @@
           </div>
         </section>
         <section class="sheet-footer" aria-labelledby="context-sources-title">
-          <h3 class="reading-heading" id="context-sources-title" tabindex="-1">Fontes e licença</h3>
-          <ul class="source-list">
-            @for (source of record().sources; track source.id) {
+          <h3 class="reading-heading" id="context-sources-title" tabindex="-1">Fontes</h3>
+          @if (jumpReturn()?.id === 'context-sources-title') {
+            <button type="button" class="context-return" (click)="returnToJump()">
+              Voltar ao ponto anterior
+            </button>
+          }
+          <p class="source-note">
+            Fontes do registro. As evidências de cada conexão aparecem junto da relação, com o local
+            consultado.
+          </p>
+          <ul id="context-sources-list" class="source-list">
+            @for (source of shownSources(); track $index) {
               <li>
                 @if (source.url; as url) {
                   <a [href]="url" target="_blank" rel="noopener noreferrer">{{ source.title }}</a>
@@ -212,26 +239,46 @@
               </li>
             }
           </ul>
-          @if (record().contentLicense; as license) {
-            <p>
-              <span class="footer-label">Texto</span>
-              <a [href]="license.url" target="_blank" rel="noopener noreferrer">{{
-                license.name
-              }}</a>
-            </p>
+          @if (sourcesFoldable()) {
+            <button
+              type="button"
+              class="context-sources-more"
+              [attr.aria-expanded]="sourcesExpanded()"
+              aria-controls="context-sources-list"
+              (click)="sourcesExpanded.set(!sourcesExpanded())"
+            >
+              {{
+                sourcesExpanded() ? 'Mostrar menos' : 'Ver todas as fontes (' + sourceCount() + ')'
+              }}
+            </button>
           }
-          @if (record().media?.license; as license) {
-            <p>
-              <span class="footer-label">Imagem</span>
-              @if (record().media?.attribution ?? record().media?.creator; as credit) {
-                {{ credit }} ·
+          @if (record().contentLicense || record().media?.license) {
+            <h3 class="reading-heading footer-subheading" id="context-licenses-title" tabindex="-1">
+              Licenças e créditos
+            </h3>
+            <ul class="license-list" aria-labelledby="context-licenses-title">
+              @if (record().contentLicense; as license) {
+                <li>
+                  <span class="footer-label">Texto</span>
+                  <a [href]="license.url" target="_blank" rel="noopener noreferrer">{{
+                    license.name
+                  }}</a>
+                </li>
               }
-              @if (record().media?.licenseUrl; as url) {
-                <a [href]="url" target="_blank" rel="noopener noreferrer">{{ license }}</a>
-              } @else {
-                {{ license }}
+              @if (record().media?.license; as license) {
+                <li>
+                  <span class="footer-label">Imagem</span>
+                  @if (record().media?.attribution ?? record().media?.creator; as credit) {
+                    {{ credit }} ·
+                  }
+                  @if (record().media?.licenseUrl; as url) {
+                    <a [href]="url" target="_blank" rel="noopener noreferrer">{{ license }}</a>
+                  } @else {
+                    {{ license }}
+                  }
+                </li>
               }
-            </p>
+            </ul>
           }
         </section>
       </div>

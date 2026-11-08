@@ -3,6 +3,7 @@ import {
   afterNextRender,
   ChangeDetectionStrategy,
   Component,
+  computed,
   DestroyRef,
   type ElementRef,
   inject,
@@ -39,6 +40,8 @@ export class CardCarouselComponent {
   private readonly bar = viewChild.required<ElementRef<HTMLElement>>('bar');
   readonly label = input.required<string>();
   readonly hint = input('Arraste ou use as setas');
+  /** Dots for carousels with a short, fixed list; off by default for galleries. */
+  readonly showDots = input(false);
   readonly trackId = `card-carousel-${nextCarouselId++}`;
   readonly total = signal(0);
   readonly firstVisible = signal(0);
@@ -49,6 +52,13 @@ export class CardCarouselComponent {
   readonly thumbSize = signal(100);
   readonly thumbOffset = signal(0);
   readonly dragging = signal(false);
+  /** Announced only on deliberate moves, never on every scroll frame. */
+  readonly liveMessage = signal('');
+  readonly dots = computed(() => Array.from({ length: this.total() }, (_, index) => index));
+  /** At the end the last card may not align to the start, so the last dot marks the end. */
+  readonly currentDot = computed(() =>
+    this.scrollable() && this.atEnd() ? Math.max(0, this.total() - 1) : this.firstVisible(),
+  );
   private drag: { pointer: number; startX: number; startLeft: number; moved: boolean } | null =
     null;
   private seeking: number | null = null;
@@ -104,6 +114,11 @@ export class CardCarouselComponent {
   /** Moves about one viewport and lands on a card edge in that direction. */
   page(direction: 1 | -1): void {
     const track = this.track().nativeElement;
+    this.update();
+    if (this.scrollable()) {
+      if (direction > 0 && this.atEnd()) return;
+      if (direction < 0 && this.atStart()) return;
+    }
     const max = track.scrollWidth - track.clientWidth;
     const current = track.scrollLeft;
     const step = track.clientWidth * 0.85;
@@ -119,16 +134,18 @@ export class CardCarouselComponent {
       left = (reachable[0] ?? behind.at(-1))?.offsetLeft ?? 0;
     }
     this.glide(track, clamp(left, 0, max), true);
+    const index = items.findIndex((item) => Math.abs(item.offsetLeft - left) <= 1);
+    if (index >= 0) this.announce(index);
   }
 
-  /** Brings one card to the centre of the track, for selections made outside it. */
-  revealIndex(index: number): void {
+  /** Aligns one card to the start, for dots and for the comparison links. */
+  goTo(index: number): void {
     const track = this.track().nativeElement;
     const item = this.items(track)[index];
     if (!item) return;
     const max = track.scrollWidth - track.clientWidth;
-    const left = item.offsetLeft - (track.clientWidth - item.offsetWidth) / 2;
-    this.glide(track, clamp(left, 0, max), true);
+    this.glide(track, clamp(item.offsetLeft, 0, max), true);
+    this.announce(index);
   }
 
   onPointerDown(event: PointerEvent): void {
@@ -194,9 +211,11 @@ export class CardCarouselComponent {
         break;
       case 'Home':
         this.glide(track, 0, true);
+        this.announce(0);
         break;
       case 'End':
         this.glide(track, track.scrollWidth, true);
+        this.announce(this.total() - 1);
         break;
       default:
         return;
@@ -235,5 +254,12 @@ export class CardCarouselComponent {
   private glide(track: HTMLElement, left: number, smooth: boolean): void {
     const animate = smooth && !prefersReducedMotion(this.document);
     track.scrollTo({ left, behavior: animate ? 'smooth' : 'auto' });
+  }
+
+  private announce(index: number): void {
+    const total = this.total();
+    if (!total) return;
+    const at = clamp(index, 0, total - 1);
+    this.liveMessage.set(`Registro ${at + 1} de ${total}.`);
   }
 }

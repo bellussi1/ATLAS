@@ -5,6 +5,7 @@ import {
   Component,
   computed,
   DestroyRef,
+  effect,
   ElementRef,
   inject,
   Injector,
@@ -36,12 +37,16 @@ import { keepScrollAnchor } from './keep-scroll';
 const VISIBLE_SHEETS = 3;
 /** Docked beside the page from this width; below it the panel is a full-width pane. */
 const WIDE = '(min-width: 64rem)';
+/** Sources shown before the reader asks for the whole record bibliography. */
+const SOURCE_PREVIEW = 5;
 
 export interface ContextPanelData {
   record: KnowledgeContext;
   /** Reading order the previous and next buttons step through. */
   stops: ContextStop[];
   index: number;
+  /** Lets the owner keep another view, such as the graph, in step with the open sheet. */
+  onRecord?: (entityId: string | null) => void;
 }
 
 function toneOf(kind: string): string {
@@ -135,8 +140,32 @@ export class KnowledgeContextComponent {
   readonly vocabulary = computed(() =>
     contextVocabulary(this.repository.knowledgeGraph, this.record().entityId),
   );
+  /** Visible source records, grouped without erasing a different edition or URL. */
+  readonly uniqueSources = computed(() => {
+    const seen = new Set<string>();
+    return this.record().sources.filter((source) => {
+      const key = [source.title, source.url ?? '', source.edition].join('\u0000');
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  });
+  readonly sourceCount = computed(() => this.uniqueSources().length);
+  readonly sourcesExpanded = signal(false);
+  readonly shownSources = computed(() =>
+    this.sourcesExpanded() ? this.uniqueSources() : this.uniqueSources().slice(0, SOURCE_PREVIEW),
+  );
+  readonly sourcesFoldable = computed(() => this.uniqueSources().length > SOURCE_PREVIEW);
+  /** Section the reader jumped to and the point to restore when coming back. */
+  readonly jumpReturn = signal<{ id: string; scroll: number } | null>(null);
 
   constructor() {
+    effect(() => {
+      const record = this.record();
+      this.sourcesExpanded.set(false);
+      this.jumpReturn.set(null);
+      this.initial.onRecord?.(record.entityId ?? null);
+    });
     this.ref.keydownEvents?.subscribe((event) => {
       if (event.key !== 'Escape') return;
       event.preventDefault();
@@ -186,11 +215,24 @@ export class KnowledgeContextComponent {
     if (!stop) return;
     this.show(contextFor(this.repository, stop.request), this.stops(), at);
   }
-  /** Moves the reader to a part of a long sheet; immediate, so it needs no reduced-motion case. */
+  /** Moves the reader to a part of a long sheet and remembers where they were. */
   jump(id: string): void {
+    const body = this.host.nativeElement.querySelector<HTMLElement>('.sheet .context-body');
     const target = this.host.nativeElement.querySelector<HTMLElement>(`.sheet #${id}`);
+    if (body) this.jumpReturn.set({ id, scroll: body.scrollTop });
     target?.scrollIntoView({ block: 'start' });
     target?.focus({ preventScroll: true });
+  }
+  /** Returns from a jump to the exact scroll point it left, with a readable focus target. */
+  returnToJump(): void {
+    const from = this.jumpReturn();
+    if (!from) return;
+    const body = this.host.nativeElement.querySelector<HTMLElement>('.sheet .context-body');
+    if (body) body.scrollTop = from.scroll;
+    this.host.nativeElement
+      .querySelector<HTMLElement>('#knowledge-context-title')
+      ?.focus({ preventScroll: true });
+    this.jumpReturn.set(null);
   }
   permanentPath(): string | undefined {
     return this.record().entityId

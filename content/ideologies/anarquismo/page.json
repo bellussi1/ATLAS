@@ -9,6 +9,34 @@
   "summary": "Uma tradição socialista que rejeita o Estado e as hierarquias impostas, defendendo associação voluntária, apoio mútuo e autogoverno. Das origens na Primeira Internacional às experiências do século XX.",
   "published": true,
   "atlasId": "atlas-anarquismo",
+  "poster": {
+    "figures": [
+      {
+        "entityId": "wiki-topic-pierre-joseph-proudhon",
+        "assetId": "asset-wiki-topic-pierre-joseph-proudhon",
+        "note": "Propriedade como domínio e a alternativa mutualista.",
+        "frame": "arch"
+      },
+      {
+        "entityId": "wiki-topic-mikhail-bakunin",
+        "assetId": "asset-wiki-topic-mikhail-bakunin",
+        "note": "Ruptura com Marx na Primeira Internacional e ação coletiva contra o Estado.",
+        "frame": "quarter"
+      },
+      {
+        "entityId": "wiki-topic-piotr-kropotkin",
+        "assetId": "asset-wiki-topic-piotr-kropotkin",
+        "note": "Apoio mútuo e comunismo anarquista.",
+        "frame": "disc"
+      },
+      {
+        "entityId": "wiki-topic-emma-goldman",
+        "assetId": "asset-wiki-topic-emma-goldman",
+        "note": "Anarquismo, feminismo e liberdade no debate público.",
+        "frame": "square"
+      }
+    ]
+  },
   "review": {
     "status": "rascunho",
     "reviewer": null,
@@ -17,7 +45,8 @@
   "identity": {
     "accent": "ochre",
     "signature": "Rede de correntes, personagens e rupturas",
-    "keyVisualization": "graph"
+    "keyVisualization": "graph",
+    "palette": "anarquismo"
   },
   "portrait": null,
   "chapters": [
@@ -42,7 +71,15 @@
       "gap": "Definição baseada em fontes enciclopédicas; faltam literatura acadêmica e textos primários.",
       "coverage": "partial",
       "layout": "introduction",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Por que o anarquismo não se define apenas pela recusa do Estado?",
+        "answer": "Porque a crítica atinge toda autoridade imposta, inclusive o capital e as instituições que reproduzem hierarquia, e vem acompanhada de formas de associação voluntária, autogoverno e igualdade.",
+        "rationale": "Distinga a crítica da autoridade das formas de organização que ela propõe.",
+        "sourceIds": [
+          "src-wiki-topic-anarquismo"
+        ]
+      }
     },
     {
       "id": "origens",
@@ -57,7 +94,7 @@
         "A Primeira Internacional reúne socialistas, sindicalistas e federalistas; a ruptura de 1872, com a expulsão de Bakunin, separa o campo anarquista do marxista. A Comuna de Paris, em 1871, torna-se uma referência ambígua e duradoura."
       ],
       "question": "Como uma tradição que nasce numa organização operária acaba rompendo com ela?",
-      "bridge": "A ruptura de 1872 deu ao anarquismo organizações próprias, que se espalharam pela Europa e pelas Américas.",
+      "bridge": "Dessa ruptura saem os princípios que organizam a crítica anarquista.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism",
@@ -67,7 +104,15 @@
       "gap": "Recorte centrado na Internacional e em fontes enciclopédicas. Origens na América Latina e nas redes de imigrantes ainda não foram cobertas.",
       "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Qual é a ruptura entre Proudhon, Bakunin e Marx na Primeira Internacional?",
+        "answer": "Proudhon critica a propriedade e o Estado; Bakunin leva a disputa para a Internacional e rejeita o partido e o Estado como instrumentos de emancipação; Marx defende a organização operária e a conquista do poder político.",
+        "rationale": "Compare projetos de organização e poder.",
+        "sourceIds": [
+          "src-wiki-topic-mikhail-bakunin"
+        ]
+      }
     },
     {
       "id": "principios",
@@ -82,7 +127,7 @@
         "O federalismo propõe que comunidades e associações se articulem por pactos, com mandatos revogáveis e sem um poder central permanente. A organização não é vista como um mal necessário, mas como forma de liberdade."
       ],
       "question": "O que une correntes que discordam sobre quase tudo?",
-      "bridge": "Essas críticas ganham formas diferentes nas correntes, que disputam os meios de chegar lá.",
+      "bridge": "Antes das correntes, é preciso fixar as palavras que dividem a tradição.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism"
@@ -141,7 +186,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Como liberdade e igualdade se articulam na crítica anarquista à dominação?",
+        "answer": "A liberdade individual é pensada junto com a igualdade social; a recusa de autoridade imposta inclui capital e instituições que reproduzem hierarquia, não apenas o governo.",
+        "rationale": "Explique como dois valores se sustentam mutuamente.",
+        "sourceIds": [
+          "src-wiki-topic-anarquismo"
+        ]
+      }
     },
     {
       "id": "conceitos",
@@ -156,7 +209,7 @@
         "O apoio mútuo é apresentado como fato natural e social: a cooperação não depende de um Estado que a imponha. A greve geral e a ação direta deslocam a política para o local de trabalho e para a vida cotidiana."
       ],
       "question": "Por que a mesma palavra abriga correntes com estratégias tão diferentes?",
-      "bridge": "Esses termos reaparecem nas vertentes, onde cada corrente define seus meios de ação.",
+      "bridge": "Esses termos mudam de peso conforme a época e a experiência histórica.",
       "sourceIds": [
         "src-wiki-topic-anarchism",
         "src-wiki-topic-anarquismo"
@@ -164,7 +217,15 @@
       "gap": "Glossário ainda sem entradas próprias no acervo, como anarcossindicalismo e anarco-comunismo.",
       "coverage": "partial",
       "layout": "concepts",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "O que é apoio mútuo, e por que ele é uma tese sobre a cooperação, não um elogio moral?",
+        "answer": "Apoio mútuo descreve a cooperação como fator de sobrevivência e organização social, não como exceção altruísta; serve de base para o comunismo libertário.",
+        "rationale": "Distinga descrição de cooperação e norma moral.",
+        "sourceIds": [
+          "src-wiki-topic-anarchism"
+        ]
+      }
     },
     {
       "id": "epocas",
@@ -178,7 +239,7 @@
         "No Brasil, o anarquismo se organiza na Primeira República (1889–1930), com jornais, sindicatos e experiências comunitárias. A greve geral de 1917 e a Colônia Cecília (1890) são marcos frequentes, mas a repressão e a dispersão tornam a periodização menos linear do que na Europa."
       ],
       "question": "Em que momentos o anarquismo ganhou força, e onde ele se enfraqueceu?",
-      "bridge": "Os momentos mais intensos aparecem nas experiências históricas, com seus limites e derrotas.",
+      "bridge": "Essas épocas foram formuladas e disputadas por pensadores concretos.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism",
@@ -189,7 +250,15 @@
       "gap": "A linha do tempo europeia e mexicana foi complementada pelo caso brasileiro; faltam experiências da Ásia e uma periodização comparada.",
       "coverage": "partial",
       "layout": "timeline",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Por que a periodização inclui a Ucrânia de Makhno e a Espanha de 1936?",
+        "answer": "Porque essas experiências concretas mostram como a tradição organiza federações, conselhos e milícias em contextos de guerra e revolução, não apenas como ideia.",
+        "rationale": "Relacione ideia e experiência histórica concreta.",
+        "sourceIds": [
+          "source-anarco-toledo"
+        ]
+      }
     },
     {
       "id": "pensadores",
@@ -234,7 +303,21 @@
             "wiki-topic-emma-goldman": "Conferências, escritos e a revista Mother Earth."
           }
         }
-      ]
+      ],
+      "review": {
+        "question": "Compare Proudhon, Bakunin e Kropotkin: o que cada um acrescenta à crítica da propriedade e do Estado?",
+        "answer": "Proudhon critica a propriedade e propõe mutualismo; Bakunin formula revolta e federação; Kropotkin desenvolve apoio mútuo e comunismo libertário.",
+        "rationale": "Compare contribuições sem reduzir a tradição a um fundador.",
+        "sourceIds": [
+          "src-wiki-topic-piotr-kropotkin"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-mikhail-bakunin",
+            "why": "Retome Bakunin para reler a ruptura com Marx à luz das correntes que ele ajudou a formular."
+          }
+        ]
+      }
     },
     {
       "id": "vertentes",
@@ -255,7 +338,7 @@
         "src-wiki-topic-piotr-kropotkin",
         "source-anarco-toledo"
       ],
-      "gap": "Correntes da América Latina e da Ásia não foram detalhadas; o caso brasileiro foi incorporado como disputa historiográfica, não como vertente fechada.",
+      "gap": "Correntes da América Latina e da Ásia não foram detalhadas; o caso brasileiro foi incorporado como disputa historiográfica, não como vertente fechada. O comunismo libertário e o individualismo aparecem na narrativa, mas não recebem cartão próprio.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -323,7 +406,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "O que distingue anarquismo social, insurrecionário e anarcossindicalismo?",
+        "answer": "O social ou de massas aposta em organizações amplas; o insurrecionário privilegia a ação direta e o levante; o anarcossindicalismo organiza trabalhadores em sindicatos e na greve geral.",
+        "rationale": "Compare as correntes cartografadas e suas estratégias.",
+        "sourceIds": [
+          "source-anarco-toledo"
+        ]
+      }
     },
     {
       "id": "experiencias",
@@ -432,7 +523,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "O que a Comuna de Paris, a Ucrânia de Makhno e a Espanha de 1936 revelam sobre os limites e as possibilidades da organização anarquista?",
+        "answer": "Revelam formas concretas de federação, conselhos e milícias, mas também pressões de guerra, repressão e disputa com Estados e partidos; a experiência não confirma uma utopia pronta.",
+        "rationale": "Avalie experiências concretas sem tratá-las como utopia pronta.",
+        "sourceIds": [
+          "source-anarco-greve-1917"
+        ]
+      }
     },
     {
       "id": "debates",
@@ -446,7 +545,7 @@
         "No Brasil, a repressão e a industrialização colocaram o anarquismo diante de uma escolha prática entre organização sindical, ação direta e propaganda. A greve de 1917 e a fundação do PCB em 1922 marcaram uma disputa sobre a direção do movimento operário; a leitura não transforma essa disputa em linhagem única."
       ],
       "question": "Quais são as críticas mais fortes ao anarquismo, e o que os anarquistas respondem?",
-      "bridge": "Os debates mostram que a tradição não é consensual nem entre seus críticos.",
+      "bridge": "Essas disputas também marcam as relações com o marxismo, o liberalismo e o sindicalismo.",
       "sourceIds": [
         "src-wiki-topic-anarchism",
         "src-wiki-topic-anarquismo",
@@ -521,7 +620,21 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Como a crítica marxista ao anarquismo e a crítica anarquista ao marxismo se dirigem a alvos diferentes?",
+        "answer": "A crítica marxista aponta a falta de estratégia e organização; a anarquista aponta o risco de o partido e o Estado reproduzirem a dominação. Cada uma atinge um núcleo distinto.",
+        "rationale": "Examine objeções cruzadas e seus pressupostos.",
+        "sourceIds": [
+          "source-anarco-toledo"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-pierre-joseph-proudhon",
+            "why": "Retome Proudhon para comparar a crítica da propriedade com a disputa sobre violência e organização."
+          }
+        ]
+      }
     },
     {
       "id": "conexoes",
@@ -535,7 +648,7 @@
         "No Brasil, o anarquismo se conecta ao marxismo pela disputa sobre organização e direção do movimento operário, e ao liberalismo pela crítica da coerção. A fundação do PCB em 1922 marca uma bifurcação importante."
       ],
       "question": "Com quais tradições o anarquismo disputa, e com quais dialoga?",
-      "bridge": "Para ler essas disputas lado a lado, siga para as fontes e a metodologia desta leitura.",
+      "bridge": "Para continuar a leitura por conta própria, siga o roteiro.",
       "sourceIds": [
         "src-wiki-topic-anarquismo",
         "src-wiki-topic-anarchism",
@@ -550,7 +663,21 @@
           "type": "atlas",
           "rootEntityId": "wiki-topic-anarquismo"
         }
-      ]
+      ],
+      "review": {
+        "question": "O que o anarquismo compartilha com o liberalismo e com o marxismo, e onde rompe?",
+        "answer": "Com o liberalismo, a defesa da liberdade individual; com o marxismo, a crítica ao capitalismo. Rompe com o primeiro por criticar propriedade e mercado, e com o segundo por rejeitar partido e Estado.",
+        "rationale": "Compare tradições por suas respostas sobre liberdade, propriedade e poder.",
+        "sourceIds": [
+          "src-wiki-topic-anarquismo"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-piotr-kropotkin",
+            "why": "Retome Kropotkin para contrastar apoio mútuo com as respostas liberal e marxista."
+          }
+        ]
+      }
     },
     {
       "id": "leituras",
@@ -646,7 +773,7 @@
       "id": "fontes",
       "anchor": "fontes",
       "title": "Fontes e evidências",
-      "kicker": "Conferir o argumento",
+      "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
         "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
@@ -661,7 +788,10 @@
         "src-wiki-topic-errico-malatesta",
         "src-wiki-topic-mikhail-bakunin",
         "src-wiki-topic-pierre-joseph-proudhon",
-        "src-wiki-topic-piotr-kropotkin"
+        "src-wiki-topic-piotr-kropotkin",
+        "source-anarco-toledo",
+        "source-anarco-greve-1917",
+        "source-anarco-colonia-cecilia"
       ],
       "gap": "Faltam fontes primárias e acadêmicas. A revisão humana ainda não foi registrada.",
       "coverage": "partial",
@@ -676,7 +806,10 @@
             "src-wiki-topic-errico-malatesta",
             "src-wiki-topic-mikhail-bakunin",
             "src-wiki-topic-pierre-joseph-proudhon",
-            "src-wiki-topic-piotr-kropotkin"
+            "src-wiki-topic-piotr-kropotkin",
+            "source-anarco-toledo",
+            "source-anarco-greve-1917",
+            "source-anarco-colonia-cecilia"
           ]
         }
       ]

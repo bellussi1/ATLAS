@@ -8,6 +8,7 @@ import {
   type IdeologyBundle,
   ideologyBundleSchema,
   layoutsSchema,
+  networkGraphSchema,
   searchIndexSchema,
 } from '@core/content/models/content-artifacts';
 import {
@@ -304,10 +305,24 @@ export class ContentRepository {
     };
   }
   private async buildNetworkState(manifest: ContentManifest): Promise<ContentPackage> {
-    const [atlases, layouts] = await Promise.all([
-      Promise.all(manifest.collections.map((entry) => this.resource(entry, entry.file))),
-      this.resource(manifest.layouts, manifest.layouts.file),
-    ]);
+    const layouts = layoutsSchema.parse(
+      await this.resource(manifest.layouts, manifest.layouts.file),
+    );
+    if (manifest.network) {
+      const graph = networkGraphSchema.parse(
+        await this.resource(manifest.network, manifest.network.file),
+      );
+      // The graph page only reads the projected fields; a later full load upgrades this state.
+      return {
+        graph: graph as unknown as KnowledgeGraph,
+        search: [],
+        adjacency: {},
+        layouts,
+      };
+    }
+    const atlases = await Promise.all(
+      manifest.collections.map((entry) => this.resource(entry, entry.file)),
+    );
     const graph = knowledgeGraphSchema.parse({ ...manifest.graph, atlases });
     if (graph.atlases.some((atlas, index) => atlas.id !== manifest.collections[index].id))
       throw new Error('Identidade da coleção incompatível com o manifesto.');
@@ -315,7 +330,7 @@ export class ContentRepository {
       graph,
       search: [],
       adjacency: {},
-      layouts: layoutsSchema.parse(layouts),
+      layouts,
     };
   }
 }

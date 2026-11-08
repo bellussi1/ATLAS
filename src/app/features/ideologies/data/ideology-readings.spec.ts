@@ -3,6 +3,7 @@ import {
   connectionsOf,
   ideologyReadings,
   paletteOf,
+  readingPalette,
 } from '@ideologies/data/ideology-readings';
 import { publishedIdeologies } from '@ideologies/data/published-ideologies';
 import type { IdeologyPage } from '@ideologies/models/ideology-page.schema';
@@ -29,23 +30,35 @@ describe('ideology readings', () => {
   it('prefers the page palette, keeps released ones and falls back to atlas', () => {
     expect(paletteOf(draft('anarquismo', 'anarquismo'))).toBe('anarquismo');
     expect(paletteOf(draft('liberalismo'))).toBe('liberal');
+    expect(readingPalette('social-democracia')).toBe('social-democracia');
     expect(paletteOf(draft('desconhecida'))).toBe('atlas');
   });
 
-  it('links each reading to the next one, wrapping around', () => {
+  it('leads with the curated companion, not the next item in the catalogue', () => {
     expect(companionOf('marxismo')?.slug).toBe('liberalismo');
-    expect(companionOf('liberalismo')?.slug).toBe('social-democracia');
+    expect(companionOf('liberalismo')?.slug).toBe('marxismo');
+    expect(companionOf('social-democracia')?.slug).toBe('marxismo');
     expect(companionOf('anarquismo')?.slug).toBe('marxismo');
+    expect(companionOf('inexistente')).toBeNull();
   });
 
-  it('keeps at most five published, distinct connections and never links a reading to itself', () => {
+  it('keeps three to five published, distinct connections with a relation and a reason', () => {
     const published = new Set(ideologyReadings.map((reading) => reading.slug));
     for (const reading of ideologyReadings) {
+      expect(reading.connections.length).toBeGreaterThanOrEqual(3);
       expect(reading.connections.length).toBeLessThanOrEqual(5);
       const targets = reading.connections.map((connection) => connection.slug);
       expect(new Set(targets).size).toBe(targets.length);
       expect(targets).not.toContain(reading.slug);
       expect(targets.every((slug) => published.has(slug))).toBe(true);
+      expect(reading.connections.filter((connection) => connection.lead)).toHaveLength(1);
+      for (const connection of reading.connections) {
+        expect(connection.reason.length).toBeGreaterThan(0);
+        expect(connection.question.length).toBeGreaterThan(0);
+        expect(['contraste', 'continuidade', 'divergencia', 'aprofundamento']).toContain(
+          connection.relation,
+        );
+      }
       expect(connectionsOf(reading.slug)).toHaveLength(reading.connections.length);
     }
   });

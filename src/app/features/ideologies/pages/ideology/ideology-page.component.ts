@@ -11,15 +11,13 @@ import { IdeologyBlockComponent } from '@ideologies/components/ideology-block/id
 import { IdeologyPosterComponent } from '@ideologies/components/ideology-poster/ideology-poster.component';
 import { IdeologyReadingComponent } from '@ideologies/components/ideology-reading/ideology-reading.component';
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
+import { IdeologyReadingEndComponent } from '@ideologies/components/reading-end/reading-end.component';
 import { companionOf, connectionsOf, paletteOf } from '@ideologies/data/ideology-readings';
-import { terms } from '@ideologies/data/knowledge-vocabulary';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
 import { chapterReviews } from '@ideologies/utils/chapter-review';
-import { graphVocabulary } from '@ideologies/utils/graph-vocabulary';
 import { planPageMedia } from '@ideologies/utils/page-media-plan';
-import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { BehaviorSubject, catchError, combineLatest, map, of, startWith, switchMap } from 'rxjs';
 
@@ -35,9 +33,9 @@ interface PageState {
     ChapterReviewComponent,
     KnowledgeTextComponent,
     IdeologyReadingComponent,
+    IdeologyReadingEndComponent,
     EditorialSourcesComponent,
     IdeologyPosterComponent,
-    AtlasRevealDirective,
     AtlasGeometricMosaicComponent,
   ],
   templateUrl: './ideology-page.component.html',
@@ -53,10 +51,25 @@ export class IdeologyPageComponent {
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
   readonly page = computed(() => this.state().dossier?.page);
   readonly basePath = computed(() => readingPath(this.page()?.slug ?? ''));
-  readonly readingPath = readingPath;
   readonly palette = computed(() => {
     const page = this.page();
     return page ? paletteOf(page) : 'atlas';
+  });
+  /** The editorial seal reads the recorded status; a draft never presents itself as reviewed. */
+  readonly reviewSummary = computed(() => {
+    const review = this.page()?.review;
+    if (!review) return 'Recorte e classificação';
+    const status =
+      review.status === 'rascunho'
+        ? 'Versão preliminar'
+        : review.status === 'revisado'
+          ? 'Revisão registrada'
+          : 'Conteúdo com fontes';
+    const reviewer =
+      review.status === 'revisado' && review.reviewer
+        ? `revisão de ${review.reviewer}`
+        : 'revisão humana pendente';
+    return `${status} · ${reviewer} · recorte e classificação`;
   });
   readonly roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
   /** Text for the always-present status region: screen readers announce changes to a live region that already exists. */
@@ -79,6 +92,15 @@ export class IdeologyPageComponent {
       group: chapterGroup(c.id),
     })),
   );
+  /** Chapters that already carry an editorial chronology block. */
+  readonly chaptersWithChronology = computed(
+    () =>
+      new Set(
+        (this.page()?.chapters ?? [])
+          .filter((chapter) => chapter.blocks.some((block) => block.type === 'chronology'))
+          .map((chapter) => chapter.anchor),
+      ),
+  );
   readonly mediaPlan = computed(() => {
     const page = this.page();
     return page ? planPageMedia(page, this.repository.knowledgeGraph) : new Map();
@@ -91,7 +113,7 @@ export class IdeologyPageComponent {
     return chapterReviews(
       page.chapters,
       graph.atlases.find((a) => a.id === page.atlasId),
-      graphVocabulary(graph, terms),
+      (ids) => this.sources(ids),
     );
   });
   readonly minutes = computed(
@@ -135,12 +157,27 @@ export class IdeologyPageComponent {
     this.retry.next(this.retry.value + 1);
   }
   sources(ids: string[]): Source[] {
-    return ids.flatMap(
-      (id) =>
+    const seen = new Set<string>();
+    return ids.flatMap((id) => {
+      if (seen.has(id)) return [];
+      seen.add(id);
+      return (
         [
           ...(this.state().dossier?.supplement.sources ?? []),
           ...this.repository.knowledgeGraph.atlases.flatMap((a) => a.sources),
-        ].find((s) => s.id === id) ?? [],
-    );
+        ].find((s) => s.id === id) ?? []
+      );
+    });
+  }
+  /** Unique references, so the chapter summary matches the rendered list. */
+  sourceCount(ids: string[]): number {
+    return this.sources(ids).length;
+  }
+  /** A bibliography block already lists the chapter's sources in its own section. */
+  bibliographyCovers(chapter: IdeologyDossier['page']['chapters'][number]): boolean {
+    const block = chapter.blocks.find((item) => item.type === 'sources');
+    if (!block?.sourceIds.length) return false;
+    const listed = new Set(block.sourceIds);
+    return chapter.sourceIds.every((id) => listed.has(id));
   }
 }

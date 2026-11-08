@@ -3,7 +3,7 @@
 }
 :host {
   text-decoration: none;
-  --tab: var(--desk-line, #5f5e59);
+  --tab: var(--desk-line, var(--color-desk-line));
   width: 100%;
   height: 100%;
   min-height: 7.5rem;
@@ -12,8 +12,8 @@
   align-items: flex-start;
   gap: var(--space-1);
   text-align: left;
-  background: var(--desk-card, #efe8d6);
-  color: #141414;
+  background: var(--desk-card, var(--color-desk-card));
+  color: var(--color-ink);
   border: 0;
   border-top: 6px solid var(--tab);
   padding: var(--space-3);
@@ -24,14 +24,14 @@
     max-width: calc(100% - 2.6rem);
   }
   small {
-    font: 0.75rem var(--font-mono);
+    font: var(--text-caption) var(--font-mono);
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #5d5a54;
+    color: var(--color-ink-muted);
   }
   strong {
-    color: #141414;
-    font: 700 1rem/1.2 var(--font-sans);
+    color: var(--color-ink);
+    font: 700 var(--text-body)/1.2 var(--font-sans);
     text-wrap: balance;
   }
   .card-kind {
@@ -39,17 +39,17 @@
     align-items: center;
     gap: 0.35rem;
     --kind-icon-size: 0.95rem;
-    color: #3f3c37;
+    color: var(--color-ink-muted);
   }
   .card-period {
     margin-top: auto;
-    font: 0.75rem var(--font-mono);
-    color: #4a4030;
+    font: var(--text-caption) var(--font-mono);
+    color: var(--color-ink-muted);
   }
   .card-links {
-    font: 0.75rem var(--font-mono);
-    color: #4a4642;
-    border-top: 1px solid #14141433;
+    font: var(--text-caption) var(--font-mono);
+    color: var(--color-ink-muted);
+    border-top: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
     padding-top: var(--space-1);
     width: 100%;
   }
@@ -62,7 +62,7 @@
     padding: 0.55rem 0.55rem 0.9rem 0.9rem;
     border-radius: 0 0 0 100%;
     background: var(--tab);
-    color: var(--on-tab, #141414);
+    color: var(--on-tab, var(--color-ink));
     transition: transform var(--motion-standard) var(--ease-out);
     transform-origin: top right;
   }
@@ -129,27 +129,27 @@
 }
 /* Same families as the context sheet (knowledge-context): person, work, concept, event, idea. */
 :host([data-tone='person']) {
-  --tab: var(--color-rose-paper, #eab0c2);
+  --tab: var(--color-rose-paper);
 }
 :host([data-tone='work']) {
-  --tab: var(--color-ochre-paper, #eec35a);
+  --tab: var(--color-ochre-paper);
 }
 :host([data-tone='concept']) {
-  --tab: var(--color-teal-paper, #7fbdb5);
+  --tab: var(--color-teal-paper);
 }
 :host([data-tone='event']) {
-  --tab: var(--color-orange-paper, #ef8a3a);
+  --tab: var(--color-orange-paper);
 }
 :host([data-tone='idea']) {
-  --tab: var(--color-indigo, #363a5f);
-  --on-tab: #fbf8f1;
+  --tab: var(--color-indigo);
+  --on-tab: var(--color-canvas);
 }
 :host([data-tone='reading']) {
-  --tab: var(--color-accent, #b81d16);
-  --on-tab: #fbf8f1;
+  --tab: var(--color-accent);
+  --on-tab: var(--color-canvas);
 }
 :host(.is-expanded) {
-  box-shadow: 6px 6px 0 var(--color-accent, #b81d16);
+  box-shadow: 6px 6px 0 var(--color-accent);
 }
 
 :host .card-illustration {

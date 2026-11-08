@@ -1,0 +1,562 @@
+[
+  {
+    "id": "claim-wiki-topic-adam-smith-001",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "text": "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Adam_Smith",
+    "evidence": "A data exata de seu nascimento não é conhecida, embora a do batismo tenha sido muitas vezes tomada como tal.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-friedrich-engels-009",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "text": "A obra A Situação da Classe Trabalhadora na Inglaterra foi considerada um clássico em sua época.",
+    "classification": "interpretation",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Friedrich_Engels",
+    "evidence": "Foi considerado um clássico em sua época.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-karl-marx-002",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "text": "Há divergência entre estudiosos neorricardianos e marxistas sobre o grau de influência de David Ricardo sobre Marx.",
+    "classification": "contested-claim",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Karl_Marx",
+    "evidence": "Estudiosos pertencentes à tradição neorricardiana tendem a considerar que existem poucas diferenças cruciais entre o pensamento econômico de um e outro",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-work-wealth-of-nations",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "work-wealth-of-nations",
+      "title": "A riqueza das nações"
+    },
+    "text": "Smith propõe o trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui.",
+    "classification": "attributed-thesis",
+    "sourceUrl": "https://www.gutenberg.org/files/3300/3300-h/3300-h.htm",
+    "evidence": "The Wealth of Nations, livro I, capítulo V, texto em inglês",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-manifesto-comunista-006",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "work-communist-manifesto",
+      "title": "Manifesto Comunista"
+    },
+    "text": "Publicação do Manifesto em Londres. (1848).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Manifesto_Comunista",
+    "evidence": "publicado em Londres em 1848",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-adam-smith-011",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "text": "A influência imediata de A Riqueza das Nações nas decisões de governo é debatida pelos historiadores.",
+    "classification": "contested-claim",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Adam_Smith",
+    "evidence": "a influência imediata do livro nas decisões de governo é debatida pelos historiadores",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-karl-marx-004",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "text": "Marx casou-se com Jenny von Westphalen. (1843-06-19).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Karl_Marx",
+    "evidence": "Marx casou-se, no dia 19 de junho de 1843, com Jenny von Westphalen",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-manifesto-comunista-010",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "work-communist-manifesto",
+      "title": "Manifesto Comunista"
+    },
+    "text": "Engels afirmou que o pensamento fundamental do Manifesto pertence única e exclusivamente a Marx.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Manifesto_Comunista",
+    "evidence": "pertence única e exclusivamente a Marx",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-trotskismo-002",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "ideology-trotskyism",
+      "title": "Trotskismo"
+    },
+    "text": "O trotskismo apoia a estratégia da revolução permanente, em oposição à teoria das duas etapas de seus adversários.",
+    "classification": "attributed-thesis",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Trotskismo",
+    "evidence": "Apoio à estratégia da revolução permanente, em oposição à teoria das duas etapas de seus adversários.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-trotskismo-005",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "ideology-trotskyism",
+      "title": "Trotskismo"
+    },
+    "text": "Trótski formulou a teoria da revolução permanente. (1905).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Trotskismo",
+    "evidence": "Em 1905, Trótski formulou sua teoria da revolução permanente",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-adam-smith-001",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "text": "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Adam_Smith",
+    "evidence": "A data exata de seu nascimento não é conhecida, embora a do batismo tenha sido muitas vezes tomada como tal.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-person-emmanuel-joseph-sieyes-002",
+    "tradition": "liberalismo",
+    "entity": {
+      "id": "person-emmanuel-joseph-sieyes",
+      "title": "Emmanuel Joseph Sieyès"
+    },
+    "text": "Sustentava a existência de um poder imanente à nação, superior aos poderes constituídos, que é o poder constituinte.",
+    "classification": "attributed-thesis",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Emmanuel_Joseph_Siey%C3%A8s",
+    "evidence": "vislumbrava a existência de um poder imanente à nação, superior aos poderes ordinariamente constituídos",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-ideology-liberal-socialism-001",
+    "tradition": "liberalismo",
+    "entity": {
+      "id": "ideology-liberal-socialism",
+      "title": "Socialismo liberal"
+    },
+    "text": "O socialismo liberal favorece uma economia de livre mercado, mas considera os monopólios legais e artificiais culpa do capitalismo e opõe-se ao laissez-faire do liberalismo econômico.",
+    "classification": "attributed-thesis",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Socialismo_liberal",
+    "evidence": "ela identifica os monopólios legais e artificiais como culpa do capitalismo e, portanto, se opõe totalmente ao laissez-faire do liberalismo econômico",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-revolucao-francesa-003",
+    "tradition": "liberalismo",
+    "entity": {
+      "id": "event-french-revolution",
+      "title": "Revolução Francesa"
+    },
+    "text": "A revolução teve impacto duradouro na história da França e, mais amplamente, em todo o continente europeu.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Francesa",
+    "evidence": "que teve um impacto duradouro na história do país e, mais amplamente, em todo o continente europeu",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-karl-marx-002",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "text": "Há divergência entre estudiosos neorricardianos e marxistas sobre o grau de influência de David Ricardo sobre Marx.",
+    "classification": "contested-claim",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Karl_Marx",
+    "evidence": "Estudiosos pertencentes à tradição neorricardiana tendem a considerar que existem poucas diferenças cruciais entre o pensamento econômico de um e outro",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-work-wealth-of-nations",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "work-wealth-of-nations",
+      "title": "A riqueza das nações"
+    },
+    "text": "Smith propõe o trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui.",
+    "classification": "attributed-thesis",
+    "sourceUrl": "https://www.gutenberg.org/files/3300/3300-h/3300-h.htm",
+    "evidence": "The Wealth of Nations, livro I, capítulo V, texto em inglês",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-ideology-green-liberalism-005",
+    "tradition": "liberalismo",
+    "entity": {
+      "id": "ideology-green-liberalism",
+      "title": "Liberalismo verde"
+    },
+    "text": "O termo liberalismo verde foi introduzido em estudos acadêmicos pelo filósofo político Marcel Wissenburg.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Liberalismo_verde",
+    "evidence": "O termo \"liberalismo verde\", no entanto, foi introduzido em estudos acadêmicos pelo filósofo político Marcel Wissenburg",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-person-ion-c-bratianu-008",
+    "tradition": "liberalismo",
+    "entity": {
+      "id": "person-ion-c-bratianu",
+      "title": "Ion C. Brătianu"
+    },
+    "text": "Negociador romeno no Tratado de Berlim. (1878).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Ion_C._Br%C4%83tianu",
+    "evidence": "foi o negociador romeno para o subsequente Tratado de Berlim de 1878",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-adam-smith-011",
+    "tradition": "marxismo",
+    "entity": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "text": "A influência imediata de A Riqueza das Nações nas decisões de governo é debatida pelos historiadores.",
+    "classification": "contested-claim",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Adam_Smith",
+    "evidence": "a influência imediata do livro nas decisões de governo é debatida pelos historiadores",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-person-lorenz-von-stein-010",
+    "tradition": "liberalismo",
+    "entity": {
+      "id": "person-lorenz-von-stein",
+      "title": "Lorenz von Stein"
+    },
+    "text": "Publicação da História dos Movimentos Sociais Franceses. (1850).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lorenz_von_Stein",
+    "evidence": "This theme was repeated in 1850, when Stein published a book titled History of the French Social Movements from 1789 to the Present (1850)",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-revolucao-industrial-002",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-revolucao-industrial",
+      "title": "Revolução Industrial"
+    },
+    "text": "Há divergência sobre se os padrões de vida da maioria da população cresceram durante o período ou apenas no final do século XIX e XX.",
+    "classification": "contested-claim",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Industrial",
+    "evidence": "os padrões de vida da maioria da população não cresceram significativamente até o final do século XIX e XX",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-isabel-allende-004",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-isabel-allende",
+      "title": "Isabel Allende"
+    },
+    "text": "É considerada uma das principais revelações da literatura latino-americana da década de 1980.",
+    "classification": "attributed-thesis",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Isabel_Allende",
+    "evidence": "é considerada uma das principais revelações da literatura latino-americana da década de 1980",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-leis-antissocialistas-002",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-leis-antissocialistas",
+      "title": "Leis Antissocialistas"
+    },
+    "text": "O principal promotor da medida foi o chanceler Otto von Bismarck.",
+    "classification": "attributed-thesis",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Leis_Antissocialistas",
+    "evidence": "O principal promotor da medida foi o chanceler Otto von Bismarck",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-valparaiso-chile-001",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-valparaiso-chile",
+      "title": "Valparaíso (Chile)"
+    },
+    "text": "Juan de Saavedra batizou o porto em 1536 com o nome de Valparaíso, segundo uma das duas versões registradas sobre o nome.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Valpara%C3%ADso_(Chile)",
+    "evidence": "que havia batizado o porto em 1536 com o nome de Valparaíso",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-partido-comunista-do-chile-004",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-partido-comunista-do-chile",
+      "title": "Partido Comunista do Chile"
+    },
+    "text": "Entre 1932 e 1957 o partido esteve proibido de participar das eleições com o seu nome.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Partido_Comunista_do_Chile",
+    "evidence": "Entre 1932 a 1957, o Partido Comunista estava proibido de participar com o seu nome nas eleições.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-augusto-pinochet-005",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-augusto-pinochet",
+      "title": "Augusto Pinochet"
+    },
+    "text": "Pinochet sofreu um atentado atribuído à FPMR. (1986-09-07).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Augusto_Pinochet",
+    "evidence": "Em 7 de setembro de 1986, Pinochet sofreu um atentado",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-partido-social-democrata-da-alemanha-008",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-partido-social-democrata-da-alemanha",
+      "title": "Partido Social-Democrata da Alemanha"
+    },
+    "text": "Ruptura com o Leste após prisões de membros do SPD pelos comunistas. (1946).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Partido_Social-Democrata_da_Alemanha",
+    "evidence": "Em 1946, a ruptura com o Leste foi inevitável",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-social-democracy-003",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "text": "Desde então, a social-democracia foi associada à economia keynesiana, ao modelo nórdico e aos Estados de bem-estar.",
+    "classification": "documented-fact",
+    "sourceUrl": null,
+    "evidence": "Since then, social democracy has been associated with Keynesian economics, the Nordic model, and welfare states.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-grande-depressao-003",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-grande-depressao",
+      "title": "Grande Depressão"
+    },
+    "text": "Ano considerado o ápice da Grande Depressão nos Estados Unidos. (1933).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Grande_Depress%C3%A3o",
+    "evidence": "O ano de 1933 foi o ápice da Grande Depressão nos Estados Unidos.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-esquerda-politica-008",
+    "tradition": "social-democracia",
+    "entity": {
+      "id": "wiki-topic-esquerda-politica",
+      "title": "Esquerda (política)"
+    },
+    "text": "A esquerda caracteriza-se pela defesa de uma maior igualdade social.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Esquerda_(pol%C3%ADtica)",
+    "evidence": "a esquerda caracteriza-se pela defesa de uma maior igualdade social",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-errico-malatesta-003",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-errico-malatesta",
+      "title": "Errico Malatesta"
+    },
+    "text": "Depois da Primeira Guerra Mundial voltou à Itália, onde o jornal Umanità Nova teria certa popularidade.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Errico_Malatesta",
+    "evidence": "Depois da Primeira Guerra Mundial, ele voltou para a Itália onde seu Umanità Nova teria certa popularidade",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-argentina-009",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-argentina",
+      "title": "Argentina"
+    },
+    "text": "A Argentina é membro fundador da Organização das Nações Unidas, do Mercosul, da União de Nações Sul-Americanas e da Organização Mundial do Comércio.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Argentina",
+    "evidence": "A Argentina é um membro fundador da Organização das Nações Unidas, do Mercosul, da União de Nações Sul-Americanas e da Organização Mundial do Comércio",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-santos-013",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-santos",
+      "title": "Santos"
+    },
+    "text": "Uma hipótese atribui o nome Santos ao porto de Santos existente em Lisboa.",
+    "classification": "interpretation",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Santos",
+    "evidence": "Uma outra hipótese sobre o nome Santos viria do porto de Santos que havia em Lisboa",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-cuba-004",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-cuba",
+      "title": "Cuba"
+    },
+    "text": "Ocorreu a crise dos mísseis cubanos, em plena Guerra Fria. (1962-10).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Cuba",
+    "evidence": "A crise dos mísseis cubanos (outubro de 1962), em plena Guerra Fria, quase desencadeou a Terceira Guerra Mundial.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-evo-morales-011",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-evo-morales",
+      "title": "Evo Morales"
+    },
+    "text": "Foi reeleito presidente. (2009-12-06).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Evo_Morales",
+    "evidence": "sendo reeleito em 6 de dezembro de 2009",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-santos-012",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-santos",
+      "title": "Santos"
+    },
+    "text": "A data de 1546 para a elevação à vila é controversa, e certos historiadores defendem 1543.",
+    "classification": "contested-claim",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Santos",
+    "evidence": "data controversa, o ano de 1543 também é defendido por certos historiadores",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-guerra-do-vietna-006",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-guerra-do-vietna",
+      "title": "Guerra do Vietnã"
+    },
+    "text": "Os Estados Unidos conduziram campanhas sistemáticas de bombardeio estratégico contra cidades do Vietnã do Norte.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Guerra_do_Vietn%C3%A3",
+    "evidence": "No curso da guerra, os Estados Unidos conduziram sistemáticas campanhas de bombardeio estratégico contra cidades do Vietnã do Norte, causando enorme devastação.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-tribo-002",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-tribo",
+      "title": "Tribo"
+    },
+    "text": "Nas épocas colonialista e neocolonialista, o termo foi utilizado por antropólogos.",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Tribo",
+    "evidence": "Nas épocas colonialista e neocolonialista, foi utilizado por antropólogos",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-diogenes-de-sinope-002",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-diogenes-de-sinope",
+      "title": "Diógenes de Sinope"
+    },
+    "text": "Afirmava ser uma criatura do mundo, e não de uma cidade particular.",
+    "classification": "attributed-thesis",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Di%C3%B3genes_de_Sinope",
+    "evidence": "Sou uma criatura do mundo (cosmos) e não de um Estado ou uma cidade (polis) particular",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "claim-wiki-topic-ciencia-politica-007",
+    "tradition": "anarquismo",
+    "entity": {
+      "id": "wiki-topic-ciencia-politica",
+      "title": "Ciência política"
+    },
+    "text": "O termo ciência política foi cunhado por Herbert Baxter Adams. (1880).",
+    "classification": "documented-fact",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Ci%C3%AAncia_pol%C3%ADtica",
+    "evidence": "O termo ciência política foi cunhado em 1880 por Herbert Baxter Adams, professor de História da Universidade Johns Hopkins.",
+    "ok": null,
+    "note": ""
+  }
+]

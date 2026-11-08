@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # ATLAS — Padrão de páginas de ideologia
 
 Revisão de 01/11/2026: enciclopédia visual, interativa e exploratória. Substitui a organização V4, que previa hub e rotas secundárias. Tradições publicadas: **`/leitura/marxismo` e `/leitura/liberalismo`**; as antigas rotas top-level redirecionam para `/leitura/:slug`. Catálogos, verbetes e exploração (ver `AGENTS.md`) também são públicos. Outras tradições podem vir depois, sem publicação antecipada.
@@ -19,6 +22,8 @@ Uma tradição = uma página longa com scroll vertical nativo. A narrativa princ
 
 O visitante identifica onde está, o capítulo seguinte, o progresso e o caminho de volta: índice com âncoras estáveis, estimativas identificadas como aproximadas, capítulo atual e retorno ao ponto anterior. Seleções podem usar query params com `replaceUrl` e scroll manual; só a ação de navegar ao capítulo rola a página. Sem espera artificial, scroll hijacking ou parallax que prejudique a leitura.
 
+As imagens de abertura são curadas no dossiê, com IDs canônicos e justificativa; a seleção automática é só fallback. Regras, formato e escolhas atuais em `docs/design/IMAGENS-DE-ABERTURA.md`.
+
 ## 1.1 Contrato canônico de 12 capítulos
 
 Toda página publicada tem os mesmos 12 capítulos, na mesma ordem, com `id` = âncora e rótulo canônico como _kicker_: `introducao`, `origens`, `principios`, `conceitos`, `epocas`, `pensadores`, `vertentes`, `experiencias`, `debates`, `conexoes`, `leituras`, `fontes`.
@@ -37,7 +42,12 @@ Uma leitura contínua não é exclusiva de ideologias. Pessoas, acontecimentos, 
 - A decisão e o protocolo estão em `atlas-create-reading`.
 - O tipo do assunto adapta a pergunta de cada capítulo, não a ordem nem as âncoras.
 - "Situar" e "Avaliar" exigem fontes acadêmicas e caso brasileiro documentado, não um parágrafo de atualidade.
-- Cada leitura declara **3 a 5 conexões** curadas em `ideologyReadings[].connections`, cada uma com uma razão. O limite é editorial: mais do que cinco caminhos indica que o assunto deveria ser dividido.
+- Cada leitura declara **3 a 5 conexões** curadas em `ideologyReadings[].connections`, cada uma com relação, pergunta, razão e uma imagem licenciada quando houver. O limite é editorial: mais do que cinco caminhos indica que o assunto deveria ser dividido.
+- O encerramento transforma essas conexões em cards com uma leitura-líder mais larga; não repete o mesmo destino como "próxima leitura" em link separado. O retorno à página inicial fica como ação secundária.
+- O fim de cada capítulo não repete um botão "A seguir": a continuidade é o scroll e o índice lateral.
+- O selo editorial deriva o estado do dossiê: uma leitura em `rascunho` aparece como "Versão preliminar"; `com-fontes` mantém "Conteúdo com fontes"; `revisado` exige revisor identificado.
+- A bibliografia final reúne todas as fontes citadas no dossiê, inclusive as dos blocos e das revisões. Uma lista seletiva não pode ser rotulada de integral.
+- Lacunas de capítulo usam uma nota compacta. Quando falta uma cronologia, o aviso de cobertura e o estado vazio do capítulo são uma única mensagem, não duas caixas empilhadas.
 - O mapa dos próximos assuntos, incluindo Governo Vargas, Trabalhismo, Golpe de 1964 e Ditadura militar, está em `docs/research/readings-map.md`.
 
 ## 2. Contrato de cobertura editorial
@@ -83,10 +93,12 @@ Layout shift inesperado é defeito, inclusive quando a métrica CLS o exclui por
 | Selecionar nó/evento/tema | `button aria-pressed` ou equivalente                               | seleção, painel, linhas e legenda sincronizados      |
 | Navegar ao capítulo       | `a` com âncora e nome do destino                                   | foco no capítulo e caminho anterior                  |
 | Abrir documento/imagem    | botão de ampliação ou link para a origem                           | legenda, dimensão, licença; fechar restaura contexto |
-| Outra ideologia           | link com nome e natureza da conexão                                | apenas rota pública existente                        |
+| Outra ideologia           | card-link com relação, pergunta e natureza da conexão              | apenas rota pública existente                        |
 | Ênfase textual            | `strong`/`em` sem pista de ação                                    | não parece link nem recebe cursor de botão           |
 
 Toda ação tem cursor adequado, pista persistente além da cor, hover, foco visível, clique/toque e estado selecionado/expandido quando aplicável. Alvos não mudam de lugar com hover. Controle que parece clicável e não funciona, ou funciona e parece decoração, é defeito. HTML semântico; nenhum `span` clicável no lugar de botão.
+
+Uma falha de navegação não apaga a página anterior. O alerta nomeia o tipo de destino que falhou, mostra o endereço tentado e oferece tentar novamente, continuar na página anterior e uma saída para o acervo ou o índice de leituras. O foco vai para o título do alerta; o botão de nova tentativa tem estado de espera e não empilha navegações.
 
 ## 5. Hipertexto visual
 
@@ -104,13 +116,21 @@ Pensadores têm contexto, obras e relações quando registrados. Retratos com di
 
 O gatilho comunica a ação antes do hover. Seleção e expansão persistem até fechar ou trocar; fechar devolve foco e contexto. Cliques rápidos não empilham animações nem geram dados incoerentes. O painel pode navegar por conexões com retorno interno, mantendo a página de origem.
 
+Referências aparecem em camadas: a evidência da afirmação ou da relação vem primeiro, com localizador; depois a lista de fontes do capítulo; a bibliografia integral fica na seção própria. Listas longas mostram um recorte curto com “Ver todas”, sem reproduzir a bibliografia inteira em cada card. Agrupar referências idênticas não pode apagar localizador, edição ou URL distinta; fonte sem URL não vira link. O retorno de uma ficha, de um salto para fontes ou do capítulo de evidência restaura o ponto de leitura.
+
+No roteiro de leitura, o seletor de tema apenas destaca obras; não remove o percurso. O tema ativo aparece no botão e no status com a contagem, os temas frequentes viram atalhos e a lista completa fica em um seletor nativo — visível no desktop quando há excedente e sempre na tela estreita. Trocar de tema não altera a altura do filtro nem fecha a obra aberta; hover, disponível e selecionado têm estados distintos.
+
 ## 7. Timeline
 
 Explica recorte e ordem: trilho, eventos selecionáveis, períodos e filtros, indicador de posição e painel sincronizado. Fotografias e documentos com contexto e licença; sem mídia, a região continua estável. Eventos podem ligar pensadores, obras e correntes documentadas.
 
-Na leitura de uma tradição, a linha do tempo de **épocas é vertical**: um trilho, anos e épocas expansíveis, com registros e pessoas do intervalo. Não usar eixo horizontal com zoom, pan e régua nessa página; a exploração horizontal fica restrita ao atlas, quando o recorte temporal for o próprio objeto.
+Na leitura de uma tradição, a cronologia é **única e vive no capítulo de épocas**: um trilho vertical, anos, faixa de duração por período, filtros por tipo e épocas expansíveis com marcos, demais registros datados e pessoas do intervalo. Não usar eixo horizontal com zoom, pan e régua nessa página nem repetir a cronologia no capítulo de conexões; o atlas ficou restrito à rede e à lista textual.
+
+Cada marco transformador traz uma razão editorial curta (“Por que importa”) e só recebe esse destaque quando a fonte e a leitura sustentam a afirmação. Vida, atividade documentada (obras datadas ligadas ao registro) e participação documentada (relação de participação) são linhas distintas; ausência de relação significa “não registrado”, nunca “não aconteceu”.
 
 Não basta listar datas: selecionar muda informação, conexões e, quando existe, evidência visual. A estrutura semântica continua lista cronológica. Filtro vazio apresenta saída e não deixa seleção invisível como se estivesse no recorte. Datas aproximadas permanecem aproximadas. Simultaneidade, associação e causalidade são distintas.
+
+Abrir e fechar uma época revela o painel com altura e opacidade curtas, mantendo o conteúdo anterior visível enquanto ele recolhe; a página não rola sozinha. O período aberto se distingue por hierarquia (faixa, marcador e indicador), não só por cor. `prefers-reduced-motion` encurta a transição para quase zero.
 
 Conectores e progresso podem responder ao scroll ou à seleção, sem mover a narrativa. Animação de conector é curta, limitada aos vínculos relevantes, sem loop, com equivalente imediato em reduced motion.
 
@@ -118,7 +138,17 @@ Conectores e progresso podem responder ao scroll ou à seleção, sem mover a na
 
 Grafo representa proposições legíveis, não decoração. Nós com hover e foco destacando as arestas incidentes, seleção por clique e contexto sincronizado. Filtros de tipo, realce de caminho, descoberta progressiva e retorno quando ajudam a pergunta histórica. Zoom e pan só quando necessários, com controles alternativos e sem excluir o teclado.
 
+O grafo em tela cheia não usa minimapa: a visão geral duplicava o mapa e recalculava todos os nós a cada mudança de `view`. Ficam o zoom, o reenquadramento e a busca; a orientação vem do recorte, dos rótulos e da legenda.
+
+No capítulo, o grafo embutido não captura a roda: rolar a página continua rolando a leitura. O zoom usa Ctrl + roda ou os botões. Arrastar e selecionar continuam disponíveis; a roda não pode transformar a leitura em pan/zoom acidental.
+
 Posições determinísticas, sem saltos ao selecionar. Começar com recorte legível; não abrir todos os nós por padrão. Oferecer tabela ou lista com direção, tipo, certeza e fonte.
+
+Na leitura contínua não há um índice de entidades separado acima do grafo. A busca do grafo, os nós focáveis e o link para o acervo em lista cumprem a descoberta sem repetir as mesmas fichas já vistas nos capítulos. O `CardCarouselComponent` continua disponível para usos editoriais próprios, como "Posições por registro".
+
+Em "Posições por registro", o carrossel preserva arraste, snap, setas, teclado e barra de progresso, e acrescenta pontos opcionais e anúncio de posição. Cada card abre com o registro e um eixo por vez; os demais eixos ficam em chips, e as afirmações e fontes ficam sob demanda. O intervalo é explicado em palavras; quando as fontes divergem, os dois extremos aparecem e nenhuma média é desenhada como posição do conjunto. Eixos sem afirmação com fonte não recebem valor.
+
+Selecionar um nó abre a ficha contextual compartilhada: lateral no desktop, em tela cheia no celular. A ficha inline abaixo do grafo foi removida. Seguir uma relação dentro dela atualiza a seleção do grafo; fechar ou voltar restaura o foco no nó, sem mover a posição do mapa.
 
 Tipos de aresta: `influencia-documentada`, `divergencia-ou-critica`, `continuidade`, `desenvolvimento`, `associacao-tematica`, `descoberta-enciclopedica`. Cada aresta histórica exige fontes e certeza (`estabelecida`, `debatida`, `incerta`). Descoberta enciclopédica é rotulada como navegação, nunca como afirmação histórica. Crítica não é descendência; a certeza da existência de uma crítica não prova sua correção.
 
@@ -136,6 +166,8 @@ Cada tema de debate tem quatro posições localizáveis e comparáveis:
 Cada posição distingue natureza normativa, tese atribuída, hipótese, interpretação ou alegação empírica. Fontes e localizadores no contexto. Não generalizar uma posição para a tradição inteira. Reconstruir o melhor argumento reconhecível, sem espantalho e sem falsa equivalência.
 
 "Como defender ou criticar" significa identificar premissa, fonte, recorte e evidência, não ensinar propaganda. Argumento normativo não ganha comprovação empírica por aparecer num card. Fatos históricos estabelecidos são apresentados com clareza, sem relativização por simetria de opiniões.
+
+A revisão de capítulo é uma pausa editorial, não um quiz. A pergunta é escrita para o capítulo, declara o tipo de raciocínio, fica com a resposta oculta e cita fontes do próprio capítulo; se não houver pergunta de qualidade, não há revisão. Contrato, exemplos e justificativa em `docs/design/REVISAO-DE-CAPITULOS.md`.
 
 ## 10. Motion intenso e funcional
 

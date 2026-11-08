@@ -33,6 +33,8 @@ export class ContextPanelService {
   /** Trigger that currently owns the panel, for aria-expanded and for returning focus. */
   readonly active = signal<HTMLElement | null>(null);
   readonly dialogId = signal<string | null>(null);
+  /** Current record in the panel, so a graph can keep its selected node in step. */
+  readonly entityId = signal<string | null>(null);
 
   resolve(request: ContextRequest): KnowledgeContext {
     return contextFor(this.repository, request);
@@ -45,11 +47,13 @@ export class ContextPanelService {
     const stops = order.some((stop) => stop.key === key) ? order : [...order, { key, request }];
     const present = this.ref?.componentInstance;
     if (present) {
+      const record = this.resolve(request);
       present.show(
-        this.resolve(request),
+        record,
         stops,
         stops.findIndex((stop) => stop.key === key),
       );
+      this.entityId.set(record.entityId ?? null);
       return;
     }
     const ticket = ++this.pending;
@@ -60,15 +64,17 @@ export class ContextPanelService {
     ]);
     if (ticket !== this.pending) return;
     const overlay = this.injector.get(Overlay);
+    const record = this.resolve(request);
     const narrow = !this.window?.matchMedia('(min-width: 64rem)').matches;
     this.window?.document.documentElement.classList.add(OPEN_CLASS);
     const ref = this.injector
       .get(Dialog)
       .open<unknown, unknown, KnowledgeContextComponent>(KnowledgeContextComponent, {
         data: {
-          record: this.resolve(request),
+          record,
           stops,
           index: stops.findIndex((stop) => stop.key === key),
+          onRecord: (id: string | null) => this.entityId.set(id),
         },
         // Wide: a side panel beside the page, so no modal semantics. Narrow: a full-width pane.
         ariaModal: narrow,
@@ -88,11 +94,13 @@ export class ContextPanelService {
       });
     this.ref = ref;
     this.dialogId.set(ref.id);
+    this.entityId.set(record.entityId ?? null);
     ref.closed.subscribe(() => {
       const trigger = this.active();
       this.ref = null;
       this.active.set(null);
       this.dialogId.set(null);
+      this.entityId.set(null);
       this.window?.document.documentElement.classList.remove(OPEN_CLASS);
       const doc = this.window?.document;
       if (trigger?.isConnected && (!doc?.activeElement || doc.activeElement === doc.body)) {

@@ -17,6 +17,20 @@ class CarouselHostComponent {
   readonly items = ['Locke', 'Hobbes', 'Hume'];
 }
 
+@Component({
+  imports: [CardCarouselComponent],
+  template: `
+    <app-card-carousel label="Posições de teste" [showDots]="true">
+      @for (item of items; track item) {
+        <button type="button" class="carousel-item">{{ item }}</button>
+      }
+    </app-card-carousel>
+  `,
+})
+class DotCarouselHostComponent {
+  readonly items = ['Bernstein', 'Luxemburg', 'Marx'];
+}
+
 describe('CardCarouselComponent', () => {
   it('exposes the projected cards as one named scroll region', async () => {
     const fixture = TestBed.createComponent(CarouselHostComponent);
@@ -52,6 +66,36 @@ describe('CardCarouselComponent', () => {
       expect(scrollTo).not.toHaveBeenCalled();
       track?.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
       expect(scrollTo).toHaveBeenCalledTimes(1);
+    } finally {
+      Element.prototype.scrollTo = original;
+    }
+  });
+
+  it('does not show dots by default', async () => {
+    const fixture = TestBed.createComponent(CarouselHostComponent);
+    fixture.detectChanges();
+    await fixture.whenStable();
+    expect((fixture.nativeElement as HTMLElement).querySelectorAll('.carousel-dot')).toHaveLength(
+      0,
+    );
+  });
+
+  it('shows one dot per card and announces a deliberate move', async () => {
+    const original = Element.prototype.scrollTo;
+    Element.prototype.scrollTo = vi.fn();
+    try {
+      const fixture = TestBed.createComponent(DotCarouselHostComponent);
+      fixture.detectChanges();
+      await fixture.whenStable();
+      const element = fixture.nativeElement as HTMLElement;
+      const dots = element.querySelectorAll<HTMLButtonElement>('.carousel-dot');
+      expect(dots).toHaveLength(3);
+      expect(dots[0].getAttribute('aria-current')).toBe('true');
+      expect(dots[0].getAttribute('aria-label')).toBe('Ir para o registro 1 de 3');
+
+      dots[2].click();
+      fixture.detectChanges();
+      expect(element.querySelector('[role="status"]')?.textContent).toContain('Registro 3 de 3');
     } finally {
       Element.prototype.scrollTo = original;
     }

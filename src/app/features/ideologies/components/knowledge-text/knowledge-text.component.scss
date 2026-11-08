@@ -33,7 +33,7 @@
   inset: auto 0 calc(100% + 0.65rem) auto;
   width: min(17rem, 75vw);
   padding: 0.8rem;
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
   color: var(--ink);
   background: var(--color-canvas);
   border: 2px solid var(--ink);
@@ -50,14 +50,14 @@
 .term-preview strong {
   display: block;
   margin-bottom: 0.3rem;
-  font: 0.75rem var(--font-mono);
+  font: var(--text-caption) var(--font-mono);
   text-transform: none;
 }
 .term-preview em {
   display: block;
   margin-top: 0.45rem;
   color: var(--color-accent);
-  font: 600 0.75rem var(--font-sans);
+  font: 600 var(--text-caption) var(--font-sans);
   font-style: normal;
 }
 [data-kind^='Pensador'],

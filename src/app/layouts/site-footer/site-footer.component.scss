@@ -27,7 +27,7 @@
 .footer-kicker {
   margin: 0;
   color: var(--color-ochre-paper);
-  font: 500 0.875rem/1.5 var(--font-sans);
+  font: 500 var(--text-small)/1.5 var(--font-sans);
   font-stretch: var(--stretch-label);
   letter-spacing: 0.02em;
 }
@@ -81,11 +81,16 @@
 /* Directory: readings as geometric doors, then plain link columns. */
 .footer-directory {
   display: grid;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
   grid-template-columns: minmax(0, 1.9fr) minmax(0, 1.3fr) minmax(0, 0.9fr);
   gap: 2rem clamp(1.5rem, 4vw, 4rem);
   margin-block-start: clamp(2.5rem, 6vw, 5rem);
   padding-block: 2rem;
   border-block: 2px solid color-mix(in srgb, var(--color-on-strong-surface) 35%, transparent);
+  > * {
+    min-inline-size: 0;
+  }
   ul {
     margin: 0;
     padding: 0;
@@ -94,7 +99,7 @@
   h2 {
     margin: 0 0 0.75rem;
     color: var(--color-ochre-paper);
-    font: 500 0.875rem/1.5 var(--font-sans);
+    font: 500 var(--text-small)/1.5 var(--font-sans);
     font-stretch: var(--stretch-label);
     letter-spacing: 0.02em;
   }
@@ -119,12 +124,12 @@
     border-color var(--motion-fast);
   strong {
     grid-column: 2;
-    font: 700 1.0625rem/1.2 var(--font-sans);
+    font: 700 var(--text-subhead)/1.2 var(--font-sans);
   }
   .note {
     grid-column: 2;
     color: color-mix(in srgb, var(--color-on-strong-surface) 78%, transparent);
-    font: 400 0.875rem/1.35 var(--font-sans);
+    font: 400 var(--text-small)/1.35 var(--font-sans);
   }
   .shape {
     grid-row: span 2;
@@ -163,7 +168,7 @@
   align-items: center;
   min-block-size: 2.5rem;
   color: var(--color-on-strong-surface);
-  font: 500 1rem/1.3 var(--font-sans);
+  font: 500 var(--text-body)/1.3 var(--font-sans);
   text-underline-offset: 0.2em;
   transition:
     color var(--motion-fast),
@@ -184,7 +189,7 @@
     max-inline-size: 60ch;
     margin: 0;
     color: color-mix(in srgb, var(--color-on-strong-surface) 82%, transparent);
-    font: 0.875rem/1.6 var(--font-serif);
+    font: var(--text-small)/1.6 var(--font-serif);
   }
 }
 
@@ -197,6 +202,8 @@
     display: block;
     inline-size: 100%;
     block-size: auto;
+    /* The attributes already reserve the box; the explicit ratio keeps the audit quiet. */
+    aspect-ratio: 7 / 2;
   }
 }
 

@@ -16,7 +16,7 @@ ol {
 }
 li {
   color: var(--ink-muted);
-  font-size: 0.875rem;
+  font-size: var(--text-small);
 }
 li + li::before {
   content: '/';

@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Dados particionados e carregamento
 
 Fase 2 implementada em 01/11/2026. Angular 21 standalone, Router, TypeScript strict, Zod e static-first preservados. Rotas: `/`, `/marxismo` e `/liberalismo`; esta fase não publica catálogos nem verbetes.
@@ -28,6 +31,7 @@ src/content/knowledge/manifest.json
 - **Busca:** reaproveita `buildDiscoveryIndex` (texto normalizado, aliases, tipos, estados e backlinks de fontes e relações). A busca da Home segue limitada às duas leituras; o índice global não cria sozinho uma experiência pública.
 - **Adjacência:** para cada entidade, relações de entrada e saída com ID do atlas, ID da relação, destino, natureza, rótulo orientado, contexto, incerteza, período e referências de evidência. O runtime só filtra por tipo, direção, coleção e período.
 - **Atlas:** pontos da espiral, centro e ordem dos registros pré-calculados. O componente mapeia a raiz e a seleção para esses pontos, sem trigonometria nem simulação no navegador. Qualquer entidade pode ser raiz; não há duplicação quadrática de coordenadas.
+- **Rede enxuta:** `network.<hash>.json` projeta só o que `/grafos` lê: identidade, tipo, resumo, período, estado editorial, até três claims por entidade, licenças e relações. Seções, revisões, evidências, citações e fontes longas ficam fora. A projeção caiu de **12,6 MB** (coleções completas) para **3,1 MB** no release local.
 - **Dossiê editorial:** valida os snapshots publicados pelo registro `publishedIdeologies`; gera nós, curvas e altura dos grafos e posições e marcas dos eixos temporais de cada bloco. Filtros não recalculam geometria. Exemplos não publicados não entram no registro de layouts.
 
 Os algoritmos seguem nas funções puras existentes (`knowledge-graph.ts`, `discovery-index.ts`, `visualization-geometry.ts`), mas os consumidores públicos recebem resultados materializados. D3 não é chamado pelos componentes das leituras. A posição visual é arranjo editorial, não medida de influência histórica nem de similaridade ideológica.
@@ -48,7 +52,7 @@ Os scripts `start`, `watch`, `test`, `typecheck`, `lint` e `build` têm hooks qu
 
 ## Carregamento, cache e hidratação
 
-- `knowledgeContentResolver` prepara o conteúdo antes de ativar cada leitura; o componente mantém acesso síncrono ao grafo validado. Home não solicita o acervo. `loadCollection(id)` busca uma coleção; `loadKnowledgeGraph()` prepara o conjunto com índices.
+- `knowledgeContentResolver` prepara o conteúdo antes de ativar cada leitura; o componente mantém acesso síncrono ao grafo validado. Home não solicita o acervo. `loadCollection(id)` busca uma coleção; `loadKnowledgeGraph()` prepara o conjunto com índices. `loadNetworkGraph()` lê `network.<hash>.json` + `layouts.<hash>.json`; releases sem o campo caem nas coleções completas.
 - **Política atual:** as duas leituras preparam as cinco coleções e os três derivados. Isso preserva consumidores síncronos e todas as conexões globais, inclusive fontes e relações de outros atlas. Particionar os arquivos não significa carregar só uma entidade ou coleção. Busca e layouts também são preparados em conjunto; carregamento mais granular pode vir depois, com medição e mudança deliberada dos contratos.
 - **Navegador:** HttpClient busca o texto dos assets locais; o repositório valida tamanho, SHA-256, JSON, Zod e referências globais. Requisições simultâneas compartilham a mesma promessa; cada URL com hash fica em cache de memória durante a sessão. A página nunca vê estado parcial. A sessão mantém sua versão coerente e não troca de manifesto entre seleções.
 - **Prerender:** `app.config.server.ts` fornece um leitor de arquivos para `generated/content`, que não entra no browser. Os textos passam por TransferState; na hidratação são consumidos e removidos, evitando nova requisição. As três páginas seguem prerenderizadas e os controles operáveis após a hidratação.
@@ -69,6 +73,6 @@ A publicação prepara as novas mídias, grava os novos shards e troca o manifes
 - Artefatos com hash antigos podem permanecer em `generated` entre builds locais. Build em checkout limpo começa sem eles; o manifesto identifica os recursos da versão ativa.
 - **Rollback:** reverter o commit da fase restaura o modelo anterior. Para rollback de conteúdo após a migração, restaurar o manifesto canônico e os shards versionados correspondentes; não editar hashes nem apagar capturas brutas.
 
-Validação e medidas: [Dados e carregamento](../quality/DADOS-E-CARREGAMENTO.md).
+Validação e medidas: [Dados e carregamento(../archive/2026-11/quality/DADOS-E-CARREGAMENTO.md).
 
 Referências técnicas: [resolvers Angular](https://angular.dev/guide/routing/data-resolvers), [TransferState](https://angular.dev/api/core/TransferState) e [hooks de módulos Node](https://nodejs.org/api/module.html#moduleregisterhooksoptions). Implementação executada com Node 24.13 e Angular 21 do projeto.

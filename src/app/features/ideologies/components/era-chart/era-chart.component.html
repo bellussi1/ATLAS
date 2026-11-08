@@ -1,120 +1,282 @@
-<figure class="era-chart" appReveal aria-labelledby="era-chart-title">
+<figure
+  class="era-chart"
+  [class.is-interactive]="interacted()"
+  appReveal
+  aria-labelledby="era-chart-title"
+>
   <figcaption class="era-header">
-    <h3 id="era-chart-title">Linha do tempo</h3>
+    <h3 id="era-chart-title">
+      {{ autoPeriods() ? 'Cronologia por séculos' : 'Pessoas e acontecimentos no tempo' }}
+    </h3>
     <p>
-      Percorra as épocas na ordem dos anos. Cada uma abre os registros datados e as pessoas que
-      estavam vivas no intervalo.
+      @if (autoPeriods()) {
+        Esta leitura ainda não tem uma periodização editorial. Os cortes seguem séculos e cada
+        registro aparece no ano de início, sem transformar a sequência em causalidade.
+      } @else {
+        Percorra as épocas na ordem dos anos. Cada uma abre os marcos que mudaram a tradição, os
+        demais registros datados e as pessoas vivas no intervalo.
+      }
     </p>
   </figcaption>
 
-  <ol class="era-epochs">
-    @for (epoch of epochs(); track epoch.id; let i = $index) {
-      <li
-        class="era-epoch"
-        [attr.data-tone]="i % 6"
-        [class.is-selected]="selected().id === epoch.id"
+  @if (epochs().length) {
+    <div
+      class="era-filters"
+      role="group"
+      aria-label="Filtrar registros por tipo"
+      aria-describedby="era-filter-hint"
+    >
+      <span class="era-filter-label" id="era-filter-hint">Tipo de registro</span>
+      <button
+        type="button"
+        class="era-filter"
+        [attr.aria-pressed]="typeFilter() === 'all'"
+        (click)="setFilter('all')"
       >
+        Tudo <span>{{ totalRecords() }}</span>
+      </button>
+      @for (group of groups; track group.key) {
         <button
           type="button"
-          class="epoch-row"
-          [attr.aria-expanded]="selected().id === epoch.id"
-          [attr.aria-controls]="'epoch-' + epoch.id"
-          (click)="select(epoch.id)"
-          (keydown)="step($event, i)"
+          class="era-filter"
+          [attr.aria-pressed]="typeFilter() === group.key"
+          (click)="setFilter(group.key)"
         >
-          <span class="epoch-years">{{ epoch.start }}–{{ epoch.end }}</span>
-          <span class="epoch-copy">
-            <span class="epoch-title">{{ epoch.title }}</span>
-            <span class="epoch-kicker">{{ kicker(epoch) }}</span>
-          </span>
-          <span class="epoch-indicator" aria-hidden="true">{{
-            selected().id === epoch.id ? '−' : '+'
-          }}</span>
+          {{ group.label }} <span>{{ filterCounts()[group.key] }}</span>
         </button>
+      }
+    </div>
 
-        @if (selected().id === epoch.id) {
-          <div class="epoch-body" [id]="'epoch-' + epoch.id">
-            <p class="epoch-summary">{{ epoch.summary }}</p>
-            <button
-              type="button"
-              class="detail-open"
-              [appKnowledgeContext]="{ record: epoch.context }"
+    <ol class="era-epochs">
+      @for (epoch of epochs(); track epoch.id; let i = $index) {
+        <li
+          class="era-epoch"
+          [attr.data-tone]="i % 6"
+          [class.is-selected]="selected()?.id === epoch.id"
+        >
+          <button
+            type="button"
+            class="epoch-row"
+            [attr.aria-expanded]="selected()?.id === epoch.id"
+            [attr.aria-controls]="'epoch-' + epoch.id"
+            (click)="select(epoch.id)"
+            (keydown)="step($event, i)"
+          >
+            <span class="epoch-years">{{ epoch.start }}–{{ epoch.end }}</span>
+            <span class="epoch-copy">
+              <span class="epoch-title">{{ epoch.title }}</span>
+              <span class="epoch-kicker">{{ kicker(epoch) }}</span>
+              <span class="epoch-counts">
+                {{ epochRecordCount(epoch) }}
+                {{ epochRecordCount(epoch) === 1 ? 'registro' : 'registros' }} ·
+                {{ epochPeopleCount(epoch) }}
+                {{ epochPeopleCount(epoch) === 1 ? 'pessoa' : 'pessoas' }}
+              </span>
+            </span>
+            <span class="epoch-band" aria-hidden="true">
+              <span
+                [style.left.%]="bandFor(epoch).left"
+                [style.width.%]="bandFor(epoch).width"
+              ></span>
+            </span>
+            <span class="epoch-indicator" aria-hidden="true"></span>
+          </button>
+
+          @let body = epochView(epoch);
+          @if (body) {
+            <div
+              class="epoch-body"
+              [id]="'epoch-' + epoch.id"
+              [class.is-leaving]="leavingId() === epoch.id"
+              [attr.inert]="leavingId() === epoch.id ? '' : null"
+              [attr.aria-hidden]="leavingId() === epoch.id ? 'true' : null"
             >
-              Ver fundamento e fontes desta época
-            </button>
-
-            <div class="epoch-lists">
-              <div class="epoch-list">
-                <h4>
-                  Registros datados na época <span>{{ inEpoch().length }}</span>
-                </h4>
-                <ul class="alive-list dated-list">
-                  @for (mark of datedShown(); track mark.entity.id) {
-                    <li [class.is-approx]="mark.approx">
-                      <button
-                        appRecordCard
-                        [entityId]="mark.entity.id"
-                        [title]="mark.entity.title"
-                        [period]="(mark.approx ? 'c. ' : '') + mark.year"
-                        [appKnowledgeContext]="{ entityId: mark.entity.id }"
-                      ></button>
-                    </li>
-                  } @empty {
-                    <li>Nenhum registro datado deste recorte cai nesse intervalo.</li>
-                  }
-                </ul>
-                @if (inEpoch().length > limit) {
+              <div class="epoch-body__inner">
+                <p class="epoch-summary">{{ body.epoch.summary }}</p>
+                @if (body.epoch.context; as context) {
                   <button
                     type="button"
-                    class="list-toggle"
-                    [attr.aria-expanded]="datedExpanded()"
-                    (click)="datedExpanded.set(!datedExpanded())"
+                    class="detail-open"
+                    [appKnowledgeContext]="{ record: context }"
                   >
-                    {{ datedExpanded() ? 'Mostrar menos' : 'Ver todas (' + inEpoch().length + ')' }}
+                    Ver fundamento e fontes desta época
                   </button>
                 }
-              </div>
 
-              <div class="epoch-list">
-                <h4>
-                  Vivos durante a época <span>{{ alive().length }}</span>
-                </h4>
-                <ul class="alive-list">
-                  @for (life of aliveShown(); track life.entity.id) {
-                    <li>
-                      <button
-                        appRecordCard
-                        [entityId]="life.entity.id"
-                        [title]="life.entity.title"
-                        [period]="life.start + '–' + life.end"
-                        [appKnowledgeContext]="{ entityId: life.entity.id }"
-                      ></button>
-                    </li>
-                  } @empty {
-                    <li>Nenhuma pessoa deste recorte viveu nesse intervalo.</li>
-                  }
-                </ul>
-                @if (alive().length > limit) {
-                  <button
-                    type="button"
-                    class="list-toggle"
-                    [attr.aria-expanded]="aliveExpanded()"
-                    (click)="aliveExpanded.set(!aliveExpanded())"
+                @if (body.markers.length) {
+                  <section
+                    class="epoch-markers"
+                    [attr.aria-labelledby]="'markers-' + body.epoch.id"
                   >
-                    {{ aliveExpanded() ? 'Mostrar menos' : 'Ver todas (' + alive().length + ')' }}
-                  </button>
+                    <h4 [id]="'markers-' + body.epoch.id">
+                      Marcos que transformaram a tradição <span>{{ body.markers.length }}</span>
+                    </h4>
+                    <ul class="marker-list">
+                      @for (
+                        mark of body.markersExpanded
+                          ? body.markers
+                          : body.markers.slice(0, markerLimit);
+                        track mark.entity.id
+                      ) {
+                        <li class="era-marker" [class.is-approx]="mark.approx">
+                          <button
+                            appRecordCard
+                            [entityId]="mark.entity.id"
+                            [kindLabel]="kindLabel(mark.entity)"
+                            [title]="mark.entity.title"
+                            [period]="(mark.approx ? 'c. ' : '') + mark.year"
+                            [appKnowledgeContext]="{ entityId: mark.entity.id }"
+                          ></button>
+                          <p class="marker-note">
+                            <strong>Por que importa.</strong>
+                            {{ markerNoteFor(mark.entity) }}
+                          </p>
+                        </li>
+                      }
+                    </ul>
+                    @if (body.markers.length > markerLimit) {
+                      <button
+                        type="button"
+                        class="list-toggle marker-toggle"
+                        [attr.aria-expanded]="body.markersExpanded"
+                        [attr.aria-controls]="'markers-' + body.epoch.id"
+                        (click)="body.interactive && markersExpanded.set(!body.markersExpanded)"
+                      >
+                        {{
+                          body.markersExpanded
+                            ? 'Mostrar menos'
+                            : 'Ver todos (' + body.markers.length + ')'
+                        }}
+                      </button>
+                    }
+                  </section>
                 }
+
+                <div
+                  class="epoch-lists"
+                  [class.is-single]="!body.dated.length || !body.alive.length"
+                >
+                  <div class="epoch-list">
+                    <h4>
+                      Outros registros datados na época <span>{{ body.dated.length }}</span>
+                    </h4>
+                    <ul class="alive-list dated-list">
+                      @for (
+                        mark of body.datedExpanded ? body.dated : body.dated.slice(0, limit);
+                        track mark.entity.id
+                      ) {
+                        <li [class.is-approx]="mark.approx">
+                          <button
+                            appRecordCard
+                            [entityId]="mark.entity.id"
+                            [kindLabel]="kindLabel(mark.entity)"
+                            [title]="mark.entity.title"
+                            [period]="(mark.approx ? 'c. ' : '') + mark.year"
+                            [appKnowledgeContext]="{ entityId: mark.entity.id }"
+                          ></button>
+                        </li>
+                      } @empty {
+                        <li>
+                          @if (typeFilter() === 'all') {
+                            Nenhum outro registro datado deste recorte cai nesse intervalo.
+                          } @else {
+                            Nenhum registro de “{{ filterLabel(typeFilter()) }}” neste intervalo.
+                          }
+                        </li>
+                      }
+                    </ul>
+                    @if (body.dated.length > limit) {
+                      <button
+                        type="button"
+                        class="list-toggle dated-toggle"
+                        [attr.aria-expanded]="body.datedExpanded"
+                        (click)="body.interactive && datedExpanded.set(!body.datedExpanded)"
+                      >
+                        {{
+                          body.datedExpanded
+                            ? 'Mostrar menos'
+                            : 'Ver todos (' + body.dated.length + ')'
+                        }}
+                      </button>
+                    }
+                  </div>
+
+                  <div class="epoch-list">
+                    <h4>
+                      Pessoas vivas no período <span>{{ body.alive.length }}</span>
+                    </h4>
+                    <ul class="alive-list">
+                      @for (
+                        life of body.aliveExpanded ? body.alive : body.alive.slice(0, limit);
+                        track life.entity.id
+                      ) {
+                        <li [class.is-approx]="life.approx">
+                          <button
+                            appRecordCard
+                            [entityId]="life.entity.id"
+                            [kindLabel]="kindLabel(life.entity)"
+                            [title]="life.entity.title"
+                            [period]="(life.approx ? 'c. ' : '') + life.start + '–' + life.end"
+                            [appKnowledgeContext]="{ entityId: life.entity.id }"
+                          ></button>
+                          @if (lifeBand(life, body.epoch); as band) {
+                            <span class="era-life" aria-hidden="true">
+                              <span [style.left.%]="band.left" [style.width.%]="band.width"></span>
+                            </span>
+                          }
+                          @if (noteFor(life.entity); as note) {
+                            @if (activityLabel(note); as activity) {
+                              <p class="era-temporal-note">{{ activity }}</p>
+                            }
+                            @if (participationLabel(note); as participation) {
+                              <p class="era-temporal-note era-temporal-note--participation">
+                                {{ participation }}
+                              </p>
+                            }
+                          }
+                        </li>
+                      } @empty {
+                        <li>
+                          @if (typeFilter() !== 'all' && typeFilter() !== 'people') {
+                            O filtro “{{ filterLabel(typeFilter()) }}” não inclui pessoas.
+                          } @else {
+                            Nenhuma pessoa deste recorte viveu nesse intervalo.
+                          }
+                        </li>
+                      }
+                    </ul>
+                    @if (body.alive.length > limit) {
+                      <button
+                        type="button"
+                        class="list-toggle alive-toggle"
+                        [attr.aria-expanded]="body.aliveExpanded"
+                        (click)="body.interactive && aliveExpanded.set(!body.aliveExpanded)"
+                      >
+                        {{
+                          body.aliveExpanded
+                            ? 'Mostrar menos'
+                            : 'Ver todas (' + body.alive.length + ')'
+                        }}
+                      </button>
+                    }
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        }
-      </li>
-    }
-  </ol>
+          }
+        </li>
+      }
+    </ol>
+  } @else {
+    <p class="era-empty" role="status">Ainda não há datas estruturadas para esta cronologia.</p>
+  }
 
   <p class="era-note">
-    As datas das épocas são aproximações didáticas. Registros aparecem no ano de início; o período
-    de vida não indica atividade nem influência. Datas com “c.” são aproximadas.
+    Os marcos aparecem no ano de início; a faixa de cada época mostra sua duração e, nas pessoas, o
+    trecho da vida dentro do período. O período de vida não indica atividade nem influência. A ordem
+    e a proximidade entre registros também não provam relação causal. “Obras datadas” reúne apenas
+    relações de autoria registradas; “participação documentada” aparece só quando há uma relação de
+    participação. Datas com “c.” são aproximadas.
     @if (undated()) {
       {{ undated() }} {{ undated() === 1 ? 'registro fica' : 'registros ficam' }} fora da lista por
       falta de data registrada.

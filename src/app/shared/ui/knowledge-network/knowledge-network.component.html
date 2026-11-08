@@ -83,30 +83,38 @@
     >
       <details class="panel" open>
         <summary><h2>Tipos de nó</h2></summary>
-        <p class="hint">Cada tipo tem cor e forma próprias. Clique para mostrar ou ocultar.</p>
-        <ul class="legend">
-          @for (kind of kinds; track kind.id) {
-            <li>
-              <button
-                type="button"
-                class="legend__item"
-                [attr.aria-pressed]="kindsOn().has(kind.id)"
-                (click)="toggleKind(kind.id)"
-                (dblclick)="soloKind(kind.id)"
-              >
-                <svg class="swatch" viewBox="-12 -12 24 24" aria-hidden="true">
-                  <path
-                    [attr.d]="shape(kind.shape, 8)"
-                    [style.fill]="'var(' + kind.color + ')'"
-                    fill-rule="evenodd"
-                  />
-                </svg>
-                <span class="legend__name">{{ kind.plural }}</span>
-                <span class="legend__count">{{ counts().kinds.get(kind.id) ?? 0 }}</span>
-              </button>
-            </li>
-          }
-        </ul>
+        <p class="hint">
+          Cada tipo tem cor, forma e índice próprios. Clique para mostrar ou ocultar.
+        </p>
+        @for (group of kindGroups; track group.id) {
+          <section class="legend__group" [attr.aria-labelledby]="'legend-group-' + group.id">
+            <h3 class="legend__group-title" [id]="'legend-group-' + group.id">
+              {{ group.title }}
+            </h3>
+            <ul class="legend">
+              @for (kind of group.kinds; track kind.id) {
+                <li>
+                  <button
+                    type="button"
+                    class="legend__item"
+                    [attr.aria-pressed]="kindsOn().has(kind.id)"
+                    (click)="toggleKind(kind.id)"
+                    (dblclick)="soloKind(kind.id)"
+                  >
+                    <span class="legend__mark" [style.--mark]="'var(' + kind.color + ')'">
+                      <svg class="swatch" viewBox="-14 -14 28 28" aria-hidden="true">
+                        <path [attr.d]="shape(kind.shape, 8)" fill-rule="evenodd" />
+                      </svg>
+                      <span class="legend__code" aria-hidden="true">{{ kind.code }}</span>
+                    </span>
+                    <span class="legend__name">{{ kind.plural }}</span>
+                    <span class="legend__count">{{ counts().kinds.get(kind.id) ?? 0 }}</span>
+                  </button>
+                </li>
+              }
+            </ul>
+          </section>
+        }
         <p class="hint">Duplo clique mostra só aquele tipo.</p>
       </details>
 
@@ -208,6 +216,7 @@
         (pointermove)="pointerMove($event)"
         (pointerup)="pointerUp($event)"
         (pointercancel)="pointerUp($event)"
+        (click)="canvasClick($event)"
         (dblclick)="canvasDoubleClick($event)"
         (keydown)="canvasKey($event)"
       >
@@ -231,7 +240,7 @@
         <g class="world" [attr.transform]="transform()">
           <g class="edges">
             @let edges = edgeBatches();
-            <g class="edge-rest" [class.is-dimmed]="!!activeId() || !!path()">
+            <g class="edge-rest" [class.is-dimmed]="!!activeId()">
               @for (batch of edges.plain; track batch.key) {
                 <path
                   class="edge-batch"
@@ -252,7 +261,7 @@
                 }
               }
             </g>
-            @for (item of edges.lit; track item.edge.id) {
+            @for (item of litEdges(); track item.edge.id) {
               <line
                 class="is-active"
                 [attr.x1]="item.x1"
@@ -272,18 +281,6 @@
                 "
                 [style.--delay.ms]="item.delay"
                 [style.--fade]="item.fade"
-              />
-            }
-          </g>
-          <g class="node-hits">
-            @for (item of drawnNodes(); track item.node.id) {
-              <circle
-                class="node__hit"
-                [attr.data-hit]="item.node.id"
-                [attr.cx]="item.x"
-                [attr.cy]="item.y"
-                [attr.r]="hitRadius(item.r)"
-                (click)="nodeClick(item.node.id)"
               />
             }
           </g>
@@ -313,14 +310,13 @@
             @for (item of pulseNodes(); track item.node.id) {
               <circle
                 class="node__pulse"
-                [class.is-origin]="pathFromId() === item.node.id"
                 [attr.cx]="item.x"
                 [attr.cy]="item.y"
                 [attr.r]="pulseRadius(item.r)"
               />
             }
           </g>
-          <g class="nodes">
+          <g class="nodes" [style.--node-scale]="nodeScale()">
             @for (item of drawnNodes(); track item.node.id) {
               <path
                 class="node node__shape"
@@ -331,14 +327,13 @@
                 [attr.aria-pressed]="selectedId() === item.node.id"
                 [style.--node-x]="item.x"
                 [style.--node-y]="item.y"
-                [style.--node-scale]="nodeScale()"
                 [attr.d]="item.path"
                 fill-rule="evenodd"
                 [style.fill]="'var(' + item.kind.color + ')'"
                 [class.is-dimmed]="isDimmed(item.node.id)"
+                [class.is-related]="isRelated(item.node.id)"
                 [class.is-selected]="selectedId() === item.node.id"
                 [class.is-hovered]="hoveredId() === item.node.id"
-                [class.is-origin]="pathFromId() === item.node.id"
                 (keydown)="nodeKey($event, item.node.id)"
                 (focus)="focusId.set(item.node.id)"
               />
@@ -477,11 +472,6 @@
                 <dd>Reenquadrar o grafo, como o <kbd>0</kbd></dd>
                 <dt><kbd>]</kbd><kbd>[</kbd></dt>
                 <dd>Num nó: passar ao próximo ou ao anterior entre os vizinhos</dd>
-                <dt><kbd>C</kbd></dt>
-                <dd>
-                  Marcar o nó selecionado como início de um caminho. Selecione outro nó para ver o
-                  trajeto
-                </dd>
                 <dt><kbd>O</kbd></dt>
                 <dd>Abrir o verbete selecionado</dd>
                 <dt><kbd>+</kbd><kbd>−</kbd><kbd>0</kbd></dt>
@@ -539,37 +529,6 @@
           }
         }
         <div class="hud__side">
-          @if (!embedded()) {
-            @if (minimap(); as map) {
-              <svg
-                class="minimap card"
-                [attr.viewBox]="'0 0 ' + map.width + ' ' + map.height"
-                [attr.width]="map.width"
-                [attr.height]="map.height"
-                role="group"
-                tabindex="0"
-                aria-label="Visão geral do mapa. Clique para levar a vista até aquele ponto; setas movem a vista."
-                (click)="minimapJump($event)"
-                (keydown)="canvasKey($event)"
-              >
-                @for (path of map.dotPaths; track path.color) {
-                  <path
-                    [attr.d]="path.d"
-                    [attr.stroke]="'var(' + path.color + ')'"
-                    stroke-linecap="round"
-                    stroke-width="3.2"
-                  />
-                }
-                <rect
-                  class="minimap__view"
-                  [attr.x]="map.box.x"
-                  [attr.y]="map.box.y"
-                  [attr.width]="map.box.w"
-                  [attr.height]="map.box.h"
-                />
-              </svg>
-            }
-          }
           <div class="zoom card" role="group" aria-label="Zoom">
             <button type="button" (click)="zoomStep(1.3)" aria-label="Aproximar">+</button>
             <button type="button" (click)="zoomStep(1 / 1.3)" aria-label="Afastar">−</button>
@@ -608,6 +567,38 @@
                 ×
               </button>
             </header>
+            @if (selectedMedia(); as media) {
+              <figure class="detail__media">
+                <img
+                  [src]="media.assetPath | contentMedia"
+                  [alt]="'Imagem de ' + node.title"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  @if (media.filePageUrl) {
+                    <a [href]="media.filePageUrl" target="_blank" rel="noopener noreferrer"
+                      >{{ media.attribution
+                      }}<span class="visually-hidden"> (abre em nova aba)</span></a
+                    >
+                  } @else {
+                    {{ media.attribution }}
+                  }
+                  @if (media.license) {
+                    <span> · {{ media.license }}</span>
+                  }
+                </figcaption>
+              </figure>
+            } @else if (selectedIllustration(); as art) {
+              <div class="detail__media detail__media--art">
+                <app-geometric-illustration
+                  [entityId]="art.id"
+                  [kind]="art.kind"
+                  [palette]="art.palette"
+                  [title]="node.title"
+                />
+              </div>
+            }
             <h2 class="detail__title">{{ node.title }}</h2>
             <p class="detail__count">
               {{ node.degree }} {{ node.degree === 1 ? 'conexão' : 'conexões' }} no acervo
@@ -615,7 +606,10 @@
             <p class="detail__definition">{{ node.definition }}</p>
             @if (node.summary !== node.definition) {
               <details class="detail__more">
-                <summary>Resumo completo</summary>
+                <summary>
+                  <span>Ler resumo completo</span>
+                  <span class="detail__more-icon" aria-hidden="true">+</span>
+                </summary>
                 <p>{{ node.summary }}</p>
               </details>
             }
@@ -638,48 +632,11 @@
             <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
               >Abrir o verbete <span aria-hidden="true">→</span></a
             >
-            <section class="pathbox" aria-labelledby="detail-path">
-              <h3 id="detail-path">Caminho entre verbetes</h3>
-              @if (!pathFrom()) {
-                <button type="button" class="chip" (click)="togglePathStart()">
-                  Começar caminho a partir daqui
-                </button>
-                <p class="hint">Marque este verbete e selecione outro para ver como se ligam.</p>
-              } @else if (pathFrom()!.id === node.id) {
-                <p class="hint">
-                  Início marcado em {{ node.title }}. Selecione outro verbete para ver o trajeto.
-                </p>
-                <button type="button" class="chip" (click)="clearPath()">Cancelar caminho</button>
-              } @else {
-                @if (path() === null) {
-                  <p class="hint">
-                    Não há trajeto entre {{ pathFrom()!.title }} e {{ node.title }} com as ligações
-                    visíveis.
-                  </p>
-                } @else {
-                  <ol
-                    class="steps"
-                    [attr.aria-label]="'Trajeto de ' + pathFrom()!.title + ' até ' + node.title"
-                  >
-                    @for (step of pathSteps(); track step.edge.id) {
-                      <li>
-                        <span class="steps__line"
-                          >{{ step.fromNode.title }}
-                          <em>{{ step.forward ? step.edge.phrase : step.edge.phraseReverse }}</em>
-                          {{ step.toNode.title }}</span
-                        >
-                        <span class="nature nature--{{ step.nature.id }}">{{
-                          step.nature.label
-                        }}</span>
-                      </li>
-                    }
-                  </ol>
-                }
-                <button type="button" class="chip" (click)="clearPath()">Limpar caminho</button>
-              }
-            </section>
             <section aria-labelledby="detail-links">
-              <h3 id="detail-links">Ligações ({{ selectedLinks().length }})</h3>
+              <h3 id="detail-links">
+                Ligações <span class="detail__count-inline">{{ selectedLinks().length }}</span>
+              </h3>
+              <p class="hint">Selecione uma ligação para abrir o vizinho no mapa.</p>
               @if (selectedLinks().length) {
                 <ul class="links">
                   @for (link of selectedLinks(); track link.edge.id) {
@@ -689,9 +646,19 @@
                       (focusin)="hoverEdge(link.edge.id)"
                       (focusout)="hoverEdge(null)"
                     >
-                      <button type="button" (click)="select(link.other.id, true)">
-                        <span class="links__verb">{{ linkVerb(link) }}</span>
-                        <span class="links__name">{{ link.other.title }}</span>
+                      <button
+                        type="button"
+                        class="links__row"
+                        (click)="select(link.other.id, true)"
+                      >
+                        <span class="links__icon">
+                          <app-kind-icon [kind]="networkIcon(link.other)" />
+                        </span>
+                        <span class="links__body">
+                          <span class="links__verb">{{ linkVerb(link) }}</span>
+                          <span class="links__name">{{ link.other.title }}</span>
+                        </span>
+                        <span class="links__go" aria-hidden="true">→</span>
                       </button>
                       <p class="links__why">{{ reasonOf(link.edge) }}</p>
                       <p class="links__meta">
@@ -700,8 +667,9 @@
                         }}</span>
                         @if (link.edge.sourceUrl) {
                           <a [href]="link.edge.sourceUrl" target="_blank" rel="noopener noreferrer"
-                            >Fonte: {{ link.edge.sourceName
-                            }}<span class="visually-hidden"> (abre em nova aba)</span></a
+                            >Fonte: {{ link.edge.sourceName }} ↗<span class="visually-hidden">
+                              (abre em nova aba)</span
+                            ></a
                           >
                         }
                       </p>

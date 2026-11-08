@@ -3,6 +3,7 @@ import { safeDiscoveryOrigin } from '@core/content/queries/discovery-index';
 import { estimateAxis, estimateEntity } from '@ideologies/utils/positions';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
+import liberalismoSupplement from '../../../../../content/graph/liberalismo.json';
 import supplement from '../../../../../content/graph/marxismo.json';
 import anarquismo from '../../../../../content/ideologies/examples/anarquismo.json';
 import liberalismo from '../../../../../content/ideologies/examples/liberalismo.json';
@@ -17,8 +18,17 @@ import {
 } from './ideology-page.schema';
 
 describe('Public pages', () => {
-  it('keeps readings and exposes the knowledge explorer with permanent records', () => {
-    expect(routes.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
+  it('keeps readings and exposes the knowledge explorer with permanent records', async () => {
+    const loaded = [];
+    for (const route of routes) {
+      if (route.loadChildren) {
+        const children = await route.loadChildren();
+        if (Array.isArray(children)) loaded.push(...children);
+      } else {
+        loaded.push(route);
+      }
+    }
+    expect(loaded.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
       '',
       'leitura/marxismo',
       'leitura/liberalismo',
@@ -163,6 +173,72 @@ describe('positions layer', () => {
       .find((c) => c.id === 'debates')!
       .blocks.find((b) => b.type === 'positions');
     expect(block).toBeDefined();
+  });
+});
+
+describe('chapter review curation', () => {
+  const validate = (page: unknown) =>
+    validateIdeologyDossier(page, liberalismoSupplement as never, methodologyKnowledgeGraph);
+  const review = (page: typeof publishedLiberalismo, index = 0) => {
+    const clone = structuredClone(page);
+    const chapter = clone.chapters[index];
+    chapter.review = {
+      question: 'Pergunta editorial de teste?',
+      answer: 'Resposta sustentada pelo capítulo.',
+      rationale: 'Explique o mecanismo.',
+      sourceIds: [chapter.sourceIds[0]],
+      revisit: [],
+    };
+    return clone;
+  };
+
+  it('accepts the editorial reviews published with the readings', () => {
+    expect(
+      publishedLiberalismo.chapters.filter((chapter) => chapter.review).length,
+    ).toBeGreaterThan(0);
+    expect(() => validate(publishedLiberalismo)).not.toThrow();
+  });
+
+  it('refuses a repeated question, a source outside the chapter and an unknown revisit', () => {
+    const second = review(publishedLiberalismo, 1);
+    second.chapters[1].review!.question = second.chapters[0].review!.question;
+    expect(() => validate(second)).toThrow('Pergunta de revisão repetida.');
+
+    const outside = review(publishedLiberalismo, 0);
+    outside.chapters[0].review!.sourceIds = ['source-lib-cf88'];
+    expect(() => validate(outside)).toThrow('Revisão cita fonte fora dos capítulos.');
+
+    const unknown = review(publishedLiberalismo, 0);
+    unknown.chapters[0].review!.revisit = [
+      { entityId: 'person-inexistente', why: 'Uma conexão inventada.' },
+    ];
+    expect(() => validate(unknown)).toThrow('Referência editorial inexistente.');
+  });
+});
+
+describe('opening curation', () => {
+  const validate = (page: unknown, supplementData: unknown = liberalismoSupplement) =>
+    validateIdeologyDossier(page, supplementData as never, methodologyKnowledgeGraph);
+
+  it('accepts the four curated figures of a published reading', () => {
+    expect(publishedLiberalismo.poster.figures).toHaveLength(4);
+    expect(() => validate(publishedLiberalismo)).not.toThrow();
+  });
+
+  it('refuses an asset that belongs to another record and a record outside the reading', () => {
+    const wrongAsset = structuredClone(publishedLiberalismo);
+    wrongAsset.poster.figures[0].assetId = wrongAsset.poster.figures[1].assetId;
+    expect(() => validate(wrongAsset)).toThrow('Imagem de abertura não corresponde ao registro.');
+
+    const unlinked = structuredClone(publishedLiberalismo);
+    unlinked.poster.figures[0].entityId = 'person-rosa-luxemburg';
+    expect(() => validate(unlinked)).toThrow('Imagem de abertura sem vínculo com a leitura.');
+  });
+
+  it('refuses the same picture twice', () => {
+    const duplicate = structuredClone(publishedLiberalismo);
+    duplicate.poster.figures[1] = duplicate.poster.figures[0];
+    expect(() => validate(duplicate)).toThrow('Imagem de abertura repetida.');
   });
 });
 

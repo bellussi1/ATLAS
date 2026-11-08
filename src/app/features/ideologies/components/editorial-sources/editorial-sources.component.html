@@ -1,5 +1,5 @@
-<ul [class]="variant()">
-  @for (source of shown(); track source.id) {
+<ul [id]="uid" [class]="variant()">
+  @for (source of shown(); track source.key) {
     <li>
       @if (source.url) {
         <a
@@ -30,8 +30,9 @@
     type="button"
     class="sources-more"
     [attr.aria-expanded]="expanded()"
+    [attr.aria-controls]="uid"
     (click)="expanded.set(!expanded())"
   >
-    {{ expanded() ? 'Mostrar menos' : 'Ver todas (' + references().length + ')' }}
+    {{ expanded() ? 'Mostrar menos' : 'Ver todas (' + unique().length + ')' }}
   </button>
 }

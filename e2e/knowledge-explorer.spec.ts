@@ -50,7 +50,7 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByRole('button', { name: 'Copiar link', exact: true })).toBeVisible();
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
     'href',
-    '/verbete/ulysses-guimaraes',
+    'https://atlas-bellussi.pages.dev/verbete/ulysses-guimaraes/',
   );
   await page.getByRole('link', { name: 'Voltar aos resultados' }).click();
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
@@ -129,6 +129,30 @@ test('contextual exploration opens the matching permanent entity page', async ({
   await expect(page).toHaveURL(/\/verbete\//);
 });
 
+test('book records offer a direct Amazon link and other works do not', async ({ page }) => {
+  await page.goto('/verbete/o-capital/');
+  const buy = page.getByRole('link', { name: 'Comprar na Amazon' });
+  await expect(buy).toHaveAttribute('href', /^https:\/\/www\.amazon\.com\.br\/s\?/);
+  await expect(buy).toHaveAttribute('href', /i=stripbooks/);
+  await expect(buy).toHaveAttribute('target', '_blank');
+  expect(await buy.getAttribute('rel')).toContain('noopener');
+
+  await page.goto('/verbete/futebol/');
+  await expect(page.getByRole('link', { name: 'Comprar na Amazon' })).toHaveCount(0);
+});
+
+test('a record opens the graph with its node selected and the URL restores it', async ({
+  page,
+}) => {
+  await page.goto('/verbete/karl-marx/');
+  await page.getByRole('link', { name: 'Ver no grafo' }).click();
+  await expect(page).toHaveURL(/\/grafos\?no=person-karl-marx/);
+  await expect(page.locator('.detail')).toContainText('Karl Marx');
+
+  await page.goto('/grafos?no=person-karl-marx');
+  await expect(page.locator('.detail')).toContainText('Karl Marx');
+});
+
 test('all search destinations have prerendered HTML with matching title, canonical and fragments', async ({
   request,
 }) => {
@@ -139,7 +163,11 @@ test('all search destinations have prerendered HTML with matching title, canonic
     JSON.parse(await readFile(`${cache}/c/${hash}.json`, 'utf8'));
   const pointer = JSON.parse(await readFile(`${cache}/pointer.json`, 'utf8'));
   const manifest = await asset(pointer.manifest.sha256);
-  const site = process.env['ATLAS_SITE_URL']?.replace(/\/+$/, '');
+  // Same public origin as `scripts/seo.mjs` and `src/app/core/routing/site-url.ts`.
+  const site = (process.env['ATLAS_SITE_URL'] || 'https://atlas-bellussi.pages.dev').replace(
+    /\/+$/,
+    '',
+  );
   const index = (await asset(manifest.search.sha256)) as {
     path: string;
     title: string;
@@ -178,7 +206,9 @@ test('all search destinations have prerendered HTML with matching title, canonic
       title + ' — ATLAS',
     );
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
-    expect(canonical, target).toBe(site ? site + target : undefined);
+    // The Pages host serves directory routes with a trailing slash; the canonical follows it.
+    const canonicalTarget = target === '/' ? '/' : `${target.replace(/\/+$/, '')}/`;
+    expect(canonical, target).toBe(site + canonicalTarget);
     if (entry.fragment && target !== '/fontes')
       expect(html).toContain('id="' + entry.fragment + '"');
     // Sources are paginated: page 1 carries the pager and its own anchors; later anchors are

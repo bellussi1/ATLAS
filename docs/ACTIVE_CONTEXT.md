@@ -1,254 +1,99 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Contexto vivo do ATLAS
 
-Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atualize no fim com `/handoff`. Não substitui `AGENTS.md` nem os documentos de arquitetura; registra o estado observado e o que está pendente.
+Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico completo, com as 58 entradas anteriores, está em [`archive/2026-11/active-context-history.md`](archive/2026-11/active-context-history.md). O mapa dos documentos está em [`README.md`](README.md).
 
-## Estado observado
+## Estado atual
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` existe no remoto e é a integração; a última rodada publicada é `791a362`. As frentes de zoom, performance do grafo, `publish-raw`, rotas `/leitura/:slug`, busca por nome e aposentadoria de capturas estão mescladas localmente e ainda não foram pushadas. `master` não recebeu esta rodada.
-- Conteúdo: 13 coleções publicadas no release `45300c5…`; `content/content-pointer.json` atualizado.
-- Build local: **1.185 rotas prerenderizadas**.
-- CI: `42274140215` falhou em `ingest:fetch-raw` porque os dois novos manifests de captura ainda não tinham blobs publicados no R2. `npm run ingest:publish-raw` foi corrigido e está publicando; reexecutar o run depois do upload.
+- Gitflow: `develop` é a integração; o PR **#50** (`develop` → `master`) está aberto. `master` está em `69eaed4` e recebeu #41, #45 e #39. Último verify verde: **`0d0a8a9`**.
+- Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
+- Conteúdo: 13 coleções. Release **`2f7649…`** publicado em 08/11, com 12 registros de `verbetes-citados` atualizados, revisões de capítulo, figuras curadas e a projeção `network`; `content/content-pointer.json` foi atualizado. O site público passa a ler esse release.
+- **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O Pages estático continua; o `atlas-content-delivery` pode falhar até o reset ou o upgrade. A publicação do `network` reduz o grafo, mas cada página de conteúdo ainda faz ~17 chamadas.
+- Build local: **1.186 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
+- CI: o verify de `0d0a8a9` passou (lint, tipos, testes, conteúdo, ingestão, build, links e e2e). As mudanças de Lighthouse desta rodada têm verificações locais, mas ainda não têm CI próprio.
 
-## Verificações executadas
+## Verificações recentes
 
-- `npm test`: **304/304**.
-- `npm run test:content`: **171/171**.
-- `npm run build`: passou, **1.185 rotas**; `vercel.json` gerado com CSP de 9 hashes.
-- `npm run test:e2e`: `e2e/graph.spec.ts` **18/18**; `pages.spec.ts` **19/19** (inclui `/fontes` paginado e o grafo de `#conexoes`); `ideology-sheets.spec.ts` **8/8**; `public-routes` **35/35** em 390/1440, sem achados sérios em `/marxismo` e `/liberalismo`; `editorial-i18n` **6/6** (países, regimes, perfis e conceitos); `knowledge-explorer` (catálogos) **1/1**. `contextual-exploration` segue com **6/7**: liberalismo 1440 falha no y do termo ao voltar (diferença observada de **64 px**); ajustar a estabilidade do painel ou a tolerância do teste.
-- `npm run lint` e `npm run typecheck`: passaram.
+- `npm test`: **351/351**.
+- `npm run test:content`: **184/184**.
+- `npm run build`: passou, **1.186 páginas no sitemap**, canonical absoluto em todas as páginas prerenderizadas.
+- `npm run check:links`: **1.187 páginas** verificadas.
+- `npx playwright test`: **153/153** após endurecer o teste de sincronização do índice de leitura (usava `offsetTop` e falhava sob carga).
+- `npm run lint` e `npm run typecheck`: exit 0.
+- Lighthouse local com brotli/gzip na preview: mobile **91–94** e desktop **100** em desempenho; acessibilidade, boas práticas e SEO **100** nas duas emulações. Nenhum reflow forçado e nenhum erro de console.
+- CSS: `/acervo` caiu de 13 para 9 cores de texto computadas e `/leitura/marxismo` de 14 para 10; tamanhos de fonte agora saem dos tokens `--text-*` (11, 12, 13, 14, 15, 16 e 17px).
+- `content:build` após a Onda 2: release **`2f7649…`**, 13 coleções; `test:content` **184/184**.
+- Auditoria assistida por IA dos 109 itens da amostra: **106 sustenta**, **2 não sustenta**, **1 inverte**; os três primeiros casos para conferência são John Rawls, Voltaire e Kant. Não substitui a revisão humana.
+- Grafo, medição local: primeiro nó **948 ms**, seleção por clique **108 ms**, pan p95 **33,3 ms**.
 
-## O que mudou nesta rodada
+## Trabalho ativo
 
-1. **Relações e dados**
-   - Removidas 15 arestas `P1142` de pessoas; o rótulo continua no Wikidata, mas não vira afiliação.
-   - `membro fundador` deixou de ser classificado como `fundou`; 8 relações corrigidas, incluindo Dilma → PDT como "foi membro fundadora de".
-   - Relações curadas com fonte literal e `editorialStatus: pending`: Che Guevara → Revolução Cubana, Fidel Castro e Marxismo; Leon Trótski → Revolução Russa, Comunismo, Stalin, Marx e Lenin; Fernando Haddad → Lula (candidatura após o indeferimento).
-2. **Pipeline de extração**
-   - `scripts/ingestion/wiki-extract/refresh.mjs`: `fetch --refresh` reabre todo artigo gravado sem `targets`, inclusive fora da seleção; antes só reabria o que estava na lista declarada.
-   - `scripts/tradicao/extract.mjs`: `reguard` preserva os vereditos de texto já pagos em vez de zerar a métrica.
-   - Artigos de `marxismo` e `liberalismo` refeitos com links e capturas registradas em `scripts/ingestion/wiki-extract/raw/`.
-3. **Vercel**
-   - `vercel.json` versionado na raiz com `framework: null`, `routes` de 404, redirecionamentos novos e headers de segurança; a CSP com hashes continua só no arquivo gerado pelo build.
-   - `scripts/infra/vercel-config.spec.mjs` falha se as regras determinísticas dos dois arquivos divergirem.
-4. **Leitura e e2e**
-   - O capítulo escolhido no seletor mobile não é mais desfeito por uma medição de rolagem anterior à rolagem do roteador.
-   - O fixture de e2e espera o fim do event replay (`jsaction`) e serve o conteúdo fixado também nos contextos criados pelos testes; as auditorias pesadas ganharam 60 s de teto.
-5. **Zoom inicial do grafo**
-   - `/grafos` abre no enquadramento do **grafo inteiro**, e esse enquadramento é o **100%** do HUD.
-   - Home, a tecla `0` e o botão "Reenquadrar o grafo inteiro" voltam ao mesmo 100%.
-   - Testes: unidade em `graph.component.spec.ts` e asserção de `100%` em `e2e/graph.spec.ts`.
-6. **Publicação das capturas**
-   - `publish-raw` confere o R2 por HEAD quando o corpo local sumiu e avisa em vez de abortar um recorte antigo; os blobs novos seguem sendo publicados.
-   - O script repete HEAD/PUT com backoff quando o R2 responde 429 e faz uma pausa curta entre objetos.
-7. **Desempenho do grafo**
-   - `graph-batching.ts` junta arestas e pontos do minimapa em poucos `<path>`; cada nó virou um único path, com halos e pulsos em grupos próprios.
-   - O cartão de hover só escreve sinal sob um nó e no máximo uma vez por frame; os rótulos usam grade espacial em vez de varrer 1.156 nós por candidato.
-   - `knowledgeGraphSchema` indexa revisões por `claimId`; a validação do grafo caiu de **~748 ms para ~80 ms**.
-   - Medido em 1440×900: primeiro nó de **~1,7 s para ~1,1 s**, maior tarefa de **~900 ms para ~300 ms**, DOM de **~5.800 para ~2.700** elementos; pan e zoom seguem perto de 60 fps (p95 ~27 ms).
-8. **Revisão das leituras de ideologias**
-   - As quatro páginas deixaram de narrar a fonte ou a interface ("Segundo o verbete...", "Selecione...") e passaram a explicar o assunto; a auditoria de voz só encontra termos técnicos e o estado `rascunho` das duas leituras em revisão.
-   - Palavras por página: **marxismo 1.130**, **liberalismo 933**, **social-democracia 908**, **anarquismo 900**; minutos recalculados por palavra e bloco (19/19/14/14), em vez de 2–8 min por capítulo.
-   - `leituras` de social-democracia e anarquismo saiu de `pending` e ganhou roteiro com obras primárias e estudos; `fontes` recebeu título e prosa próprios, sem falar do processo editorial.
-   - Conteúdo e ponteiro publicados no release `7fb37afa…`; capturas e páginas conferidas por `content:build`, 171 testes de conteúdo e e2e de páginas/ideologia.
-9. **Verbetes: auditoria e bloqueio**
-   - 1.158 entidades e 825 relações; **554 sem nenhuma relação**; mediana de **131 palavras** em `sections`; 217 abaixo de 100. Não há campos de ideologia, vertente ou lado político.
-   - Piloto de John Locke: US$ 0,006, resumo de 583 caracteres, 2 seções e 3 relações confirmadas. O tradutor não foi usado para publicar: ele (a) reconstrói a coleção inteira a partir de um subconjunto de rascunhos e (b) remove fontes/evidências que outros verbetes ainda usam, deixando `sourceId` pendente.
-   - Estado restaurado no release `7fb37afa…`; nenhum conteúdo corrompido foi publicado.
-   - Próximo: modo `--partial` no tradutor (preserva registros e funde só o QID do rascunho), desempate que prefere rascunho com seções e, só então, lote de verbetes prioritários. O perfil político (partido, ideologia, vertente, lado) deve ser derivado das relações e exibido com atribuição, sem rótulo inventado.
-10. **`/fontes` paginado**
+- **PR #50**: leituras, shell, deploy no Pages, foco do grafo e limpeza de código. Aguarda o verify do commit final e o merge.
+- **Grafo**: foco por seleção implementado; o `/grafos` lê a projeção `network` (3,13 MB contra 12,6 MB das coleções), mas o ganho de carregamento só chega ao site depois de `content:publish`.
+- **Limpeza**: `/mesa` removido; `features/study`, `historical-visualizations`, `editorial-mark`, `editorial-text`, `notice` e `timeline-periods` removidos. Redirecionamentos de compatibilidade (`/marxismo`, `/grafo`, `/rede`, `/comparar`, `/conhecimento`) foram mantidos.
+- **Documentação**: `ACTIVE_CONTEXT` compactado; histórico, auditorias, validações e planos antigos foram para `docs/archive/2026-11/`.
+- **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página, após o primeiro paint), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
+- **Higiene de console e CSS**: Zod roda sem JIT para não violar o CSP, o filtro de temas ganhou `id`, o logo do rodapé declara proporção e a paleta do `record-card` passou a usar tokens. A preview local agora comprime em brotli/gzip e aplica cache imutável a JS/CSS com hash, aproximando a medição do Pages.
+- **Links de compra**: registros de obra que são livros, com autor conhecido, ganham "Comprar na Amazon" direto para a busca de livros, com `rel="sponsored"` e divulgação quando houver tag. A lista curada fica em `core/content/queries/amazon-books.ts`; tópicos, periódicos e o filme do acervo não recebem link. Sem `AMAZON_ASSOCIATE_TAG`, o link existe mas não gera comissão.
+- **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. A coleção tem 896 entidades; o próximo passo é auditoria/consolidação, não recaptura.
 
-- A lista passou de um artigo por fonte, todos na mesma página, para **linhas compactas** com título, resumo curto, link para a fonte e citações recolhidas.
-- **24 fontes por página**, com o pager existente; o HTML prerenderizado de `/fontes` caiu de **4,8 MB para ~195 KB**.
-- Links `#source-…` continuam funcionando: o componente descobre a página da fonte, navega para `?pagina=N` e rola até o item, sem restaurar o scroll antigo.
-- Teste: `pages.spec.ts` cobre paginação, “Próxima” e deep link para uma fonte da página 2; `public-routes` confirma `/fontes` em 390 e 1440 sem achados sérios.
+- **Onda 0 / expansão**: linha de base medida e gold set gerado em `docs/research/EXPANSAO-BASELINE-2026-11.md` e `docs/research/gold-set-2026-11/`. O achado principal é que as 122/75/35/10 relações incluem links de navegação; documentadas são **33/11/34/10 (88)**. A captura foi recuperada do worktree do `.claude`: Social-democracia 68/68, Anarquismo 54/54 e `verbetes-citados` 908 artigos/907 rascunhos. Os 907 rascunhos de verbetes foram publicados no `atlas-drafts`; o estágio 5 fica aberto por 3/4 rascunhos enxutos e a reextração paga ainda não foi autorizada.
 
-11. **Grafo compartilhado no capítulo de conexões**
-    - O componente do `/grafos` foi promovido para `shared/ui/knowledge-network` (`app-knowledge-network`) e ganhou `embedded`, `scope`, `focus` e `picked`; a rota `/grafos` consome o mesmo componente.
-    - Em `/marxismo#conexoes` (e nas demais tradições), o capítulo usa o motor real do grafo limitado ao atlas da tradição — **42 entidades** em `atlas-marx-valor` —, com o conceito raiz selecionado e o enquadramento do atlas como **100%**.
-    - O painel de detalhe do grafo fica desligado no capítulo: a seleção no mapa abre a ficha no painel de leitura abaixo, e índice e linha do tempo continuam funcionando. O canvas radial de 920×572 foi removido.
-    - No modo embutido o grafo não captura atalhos de teclado fora do próprio componente; a barra fica compacta e o status vira texto acessível.
+- **Limpeza de disco**: 15 worktrees mesclados e limpos removidos (incluindo `loving-khayyam`, `ATLAS-gitflow` e `pipeline-tradicao`), ~22,5 GB; `generated/raw-cache` (9,6 GB), blobs locais de `scripts/ingestion` (909 MB), `tmp` e `dist` removidos. `output/` foi movido para `C:\Users\Bellussi\Documents\ATLAS-output`. Restam apenas worktrees sujos ou não mesclados (`great-chatelet`, `mystifying-tharp`, `rede-ux`, `youthful-spence`, `zen-solomon`) e `ATLAS-release`.
 
-12. **Regime, país e lugar unificados**
-    - O tipo de entidade `place` passou a ser único; `placeType` (`country` ou `regime`) marca apenas os recortes que têm perfil próprio. O grafo agora tem **127 lugares** e nenhum nó `country` ou `regime`.
-    - `country` e `regime` continuam aceitos na entrada por um `preprocess` do `entitySchema`, que os converte em `place` com o `placeType` correspondente; capturas e snapshots antigos seguem válidos.
-    - O índice de descoberta continua derivando `País` e `Regime` do `placeType`, então `/paises`, `/regimes` e os filtros do acervo preservam os recortes; `/lugares` lista apenas os 123 lugares sem perfil.
-    - `/verbete/brasil` e `/verbete/portugal-recorte-constitucional-1976` mantêm os perfis de país e regime; a rede, o card e a linha do tempo usam o mesmo nó de lugar, com rótulo de catálogo quando aplicável.
-    - Conteúdo republicado no release `d6ac0ed…`; ponteiro atualizado.
+- **Grafo, estado atual**: o release público já tem `network`, então `/grafos` faz **2 requisições** ao Worker em vez de 11–17. Adicionei `?no=<id>` para link direto, "Ver no grafo" nos verbetes, filtro de conectados e zoom inicial de 145% no mobile (607 nós visíveis), além de "Ver como lista" no mobile. Lighthouse: desktop **88** (era 78–81), mobile **56** (TBT ~1,2 s), CLS 0/0,013. Ainda faltam separar o d3-force do chunk e melhorar o TBT mobile.
 
-13. **Eventos que eram conceitos**
-    - Reclassificados **69 verbetes** de `event` para `concept` em `atlas-verbetes-citados`: os sete exemplos apontados (Aborto, Casamento, Casamento entre pessoas do mesmo sexo, Desigualdade econômica, Estado de direito, Irreligião e Violência) e outros tópicos gerais sem data, como Agnosticismo, Alienação, Coerção, Corrupção, Crime, Crise, Divórcio, Eleição, Globalização, Golpe militar, Guerra civil, Privatização, Salário mínimo, Tortura e Verão.
-    - Regra aplicada: só virou conceito o verbete sem data e sem relação que nomeia prática, instituição, processo ou ideia; guerras, revoluções, invasões, eleições datadas, operações, tratados, pandemias e períodos nomeados continuam `event`.
-    - O override `conceptualEventIds` do grafo foi removido; a classificação agora vem do dado.
-    - `/conceitos` passou a listar esses verbetes e `/acontecimentos` ficou com os acontecimentos históricos nomeados; o release `63fac66…` foi publicado e o ponteiro atualizado.
-
-14. **Posicionamento do grafo por contexto**
-    - O layout deixou de agrupar por coleção. Os nós agora são agrupados por **similaridade de texto** (título, resumo e afirmações), com k-means determinístico sobre vetores TF-IDF; as regiões passaram a ser `ctx-…`, não ids de atlas.
-    - Links de contexto invisíveis ligam cada verbete aos três textos mais próximos; as relações documentadas continuam com peso maior. Assim, um verbete sem relação ainda fica perto do vocabulário que compartilha com outros.
-    - Efeito observado: o antigo grupo `atlas-verbetes-citados` com **896 nós** virou **14 grupos semânticos**, o maior com **167**. Dos **554 nós sem relação**, a mediana de distância até um nó conectado ficou em **51 px** (p90 **75 px**).
-    - O painel de legenda passa a explicar que a posição aproxima por vocabulário e ligações, não por distância histórica. Release `45300c5…` publicado; ponteiro atualizado.
-
-15. **CDN de conteúdo e `/fontes` em produção**
-    - O Worker `atlas-content-delivery` foi preparado em `scripts/infra/content-delivery.worker.mjs` com binding somente leitura em `atlas-public`; serve `pointer.json`, `c/<sha256>.json` e `m/<sha256>.<ext>` com CORS, `ETag` e cache imutável, sem expor o endpoint S3.
-    - O deploy está pendente de credencial Cloudflare Workers (`CLOUDFLARE_API_TOKEN` com Workers Scripts:Edit + `CLOUDFLARE_ACCOUNT_ID`, ou `npx wrangler login`). O endereço padrão será `https://atlas-content-delivery.atlas-bellussi.workers.dev`.
-    - Produção ainda serve o `master` antigo: `/fontes` responde **4.847.763 bytes** crus (**634.979 bytes** comprimidos); o build local tem **194.726 bytes**. O `master` mantém `paginated = path !== 'fontes'`; a paginação está no `develop`.
-    - Armazenamento do release atual: **24,25 MB brutos** em artefatos, **~3,71 MB gzip + 0,28 MB de mídia ≈ 4 MB** no R2; `dist` do Vercel com **140 MB**. O gargalo é a banda/deploy, não o espaço.
-    - Depois do Worker: `switch-content-domain --apply`, `content:publish`, `content:fetch`, build e deploy. O `publish-r2` passou a usar `DEFAULT_CONTENT_BASE_URL`, então o `R2_PUBLIC_URL` local pode continuar no endpoint S3.
-
-16. **Capturas cruas: gzip e ciclo de vida**
-    - O bucket não tinha 438 MB: a listagem do prefixo `raw/` em 06/11/2026 mostrou **16.058 objetos e 9,6 GB**, perto do limite gratuito de 10 GB do R2. A maior parte é JSON sem compressão.
-    - `publish-raw` passou a gravar novos objetos com `Content-Encoding: gzip`; `npm run ingest:compress-raw -- --apply` recompacta os antigos sem mudar a chave SHA-256 do JSON descomprimido. A migração terminou: **13.171 objetos** recompactados; o prefixo `raw/` caiu de **9,6 GB para 1,58 GB** (16.058 objetos) e o hash descomprimido continua batendo.
-    - A regra de ciclo de vida de **90 dias** para `raw/` está em `scripts/infra/raw-lifecycle.json`. A chave S3 atual responde **403** ao lifecycle; é preciso um token **Workers R2 Storage:Write** e `npx wrangler r2 bucket lifecycle set atlas-public --file scripts/infra/raw-lifecycle.json`, ou `wrangler login`.
-    - `npm run infra:raw-prune -- --keep 20` mostra o plano de manter as 20 capturas mais recentes; `--apply` apaga o resto. Em 06/11 o plano de `--keep 20` removia **3.361 objetos / 3,16 GB** antes do gzip, mas capturas antigas deixariam de ser reexecutáveis; não foi aplicado.
-    - Próximo: aplicar o lifecycle com o token e decidir se a poda por contagem será usada; o gzip já reduziu o bucket para 1,58 GB.
-
-## Piloto de modelo (Anthropic)
-
-Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo `targets` (`amostra-20v2`):
-
-| Braço              | Custo     | Relações aceitas | Com QID | Rejeição | Citações rejeitadas |
-| ------------------ | --------- | ---------------- | ------- | -------- | ------------------- |
-| Haiku 5.5 `low`    | US$ 0,021 | 6                | 5       | 80,0%    | 3,7%                |
-| Haiku 5.5 `medium` | US$ 0,038 | 23               | 18      | 62,9%    | 2,4%                |
-
-- Custo por relação útil: **US$ 0,0042** em `low` e **US$ 0,0021** em `medium`.
-- `medium` rende cerca de duas vezes mais relações com QID por dólar; `model-choice.json` já fixa Haiku `medium` para extração e Sonnet `low` para relações.
-- `score` respondeu "insuficiente": faltam 40 itens conferidos por pessoa em cada braço. Nenhum modelo foi alterado.
-- DeepSeek não foi medido: não há chave `DEEPSEEK_API_KEY` no ambiente. Não usar a assinatura Go para lote de dados.
-
-17. **Carregamento do grafo e retenção de releases**
-    - `/grafos` passou a usar `loadNetworkGraph()`/`networkContentResolver`: baixa as coleções e `layouts` e não baixa `search` (9,5 MB) nem `adjacency` (744 KB). Se uma rota de catálogo abrir depois, o mesmo repositório completa o pacote sem repetir as coleções.
-    - Medição no release `45300c5…`: o pacote do grafo caiu de **24,1 MB brutos / 3,66 MB gzip** para **13,8 MB / 1,92 MB**; o HTML prerenderizado de `/grafos` ficou em **92 KB**.
-    - Testes: unidade em `content-repository.service.spec.ts` e `e2e/content-loading.spec.ts` verificam que `search` e `adjacency` não são pedidos em `/grafos`; `e2e/graph.spec.ts` **18/18**.
-    - `npm run infra:prune-releases` mantém o ponteiro atual e os três releases anteriores distintos, a partir do histórico de `content/content-pointer.json`; o padrão é dry-run e `--apply` apaga só objetos de `c/` e `m/`. Executado em 06/11: **92 objetos / 19,9 MB** removidos; restaram **30 objetos em `c/` e 3 em `m/`**, com o release atual conferido por HEAD.
-    - O Worker `atlas-content-delivery` e o lifecycle de `raw/` continuam aguardando o token Cloudflare; o `r2.dev` segue como origem pública.
-
-18. **Cloudflare Pages publicado**
-    - `npm run infra:pages:check` valida o build contra os limites do plano gratuito (20.000 arquivos, 25 MiB por arquivo) e `npm run infra:pages` publica `dist/atlas/browser` em `atlas-bellussi.pages.dev`.
-    - O build de 07/11/2026 tem **1.248 arquivos, 135,8 MB** e o maior arquivo em **0,84 MB** (`leitura/marxismo/index.html`); `_headers`, `_redirects` e `404.html` são o contrato nativo do Pages.
-    - Deploy concluído em 07/11/2026 (`https://a732d526.atlas-bellussi.pages.dev`, alias de produção `https://atlas-bellussi.pages.dev`): `/leitura/marxismo` responde **200**, `/marxismo` e `/marxismo/mesa` chegam ao mesmo destino via 301, `/fontes` serve **193 KB** e `/acervo?q=lula` responde 200.
-    - O Pages normaliza diretórios com **308** para a barra final; o canonical do app continua sem barra. É um salto a mais, não um erro de rota.
-    - `pages-deploy.mjs` passou a montar o comando com quoting no Windows, porque `spawnSync('npx.cmd')` sem shell falhava com `EINVAL`.
-
-19. **Leituras contínuas: skill, conexões e verbete**
-    - Nova skill `atlas-create-reading` decide entre leitura e verbete, adapta os 12 capítulos a pessoa, acontecimento, instituição, período ou conceito, exige fontes acadêmicas e caso brasileiro e limita as conexões a cinco. `atlas-create-ideology` e `atlas-pipeline-tradicao` apontam para ela.
-    - `docs/research/readings-map.md` planeja o cluster Governo Vargas, Trabalhismo, Golpe de 1964, Ditadura militar e Brizola/PDT, com entidades existentes, fontes a verificar e ordem sugerida. Nada foi publicado.
-    - As quatro leituras ganharam casos brasileiros em "Situar" e "Avaliar": marxismo **1.471 palavras**, liberalismo **1.216**, social-democracia **1.163**, anarquismo **1.169**. Foram adicionadas fontes acadêmicas (História do Marxismo no Brasil, Caio Prado, Florestan Fernandes, Angela de Castro Gomes, Edilene Toledo, José Murilo de Carvalho, CPDOC, Constituição de 1988) e 3 conexões curadas por leitura.
-    - Os rascunhos de social-democracia e anarquismo continuam `rascunho`; a promoção exige revisão humana registrada. A revisão de IA permanece `assistant`.
-    - Existem **51 esqueletos automáticos** de ideologias com narrativa de reserva (por exemplo, `trabalhismo`, 131 palavras); eles não contam como leitura publicada e não entram em rotas, prerender ou `ideologyReadings` antes de pesquisa.
-    - O verbete ganhou tempo de leitura e contagem de seções, um bloco "Este verbete tem contexto maior" com link para a leitura contínua e "Voltar ao topo"; o mapa de entidades para leitura foi ampliado.
-    - A página de leitura termina com "Conexões desta leitura" (3 a 5, com razão) e o teste de dados garante que nenhum rascunho ou auto-link apareça.
-    - Verificações: `content:build` gerou o release local `869446f…` (não publicado; o ponteiro continua em `45300c5…`); `test:content` **179/179**; `npm test` **306/307** (o timeout de `knowledge-network.spec.ts` passou **17/17** isolado); `typecheck` e `lint` exit 0; unidade de leituras **6/6**; `build` **1.185 rotas**; `e2e/pages.spec.ts` **20/20** e os dois testes focados de conexões/verbete **2/2**.
-
-20. **Consolidação parcial e piloto de 20**
-    - `wiki-drafts-to-collections.mjs` ganhou `--partial --only <id>`: lê todas as coleções, **não remove** registros, funde pelo QID, anexa QID por título quando falta, deduplica por ID e grava só as coleções alteradas. `--dry-run` mostra o plano.
-    - Desempate de rascunhos agora usa **seções, datas, relações e resumo**; claims não decidem mais qual rascunho fica.
-    - Piloto: **20 artigos de liberalismo** extraídos com Haiku médio + Sonnet baixo; **18 ficaram com seções**; custo real **US$ 0,078** (estimativa era US$ 0,29 no pior caso). Restam cerca de **US$ 6,02** do teto de US$ 6,10.
-    - A consolidação parcial dos 20 anexou **684 registros** a 3 coleções (`atlas-liberalism`, `atlas-liberalismo`, `atlas-marx-valor`), sem perder entidades nem registros antigos: entidades 27→27, 12→12 e 42→42; os claims subiram de 40→159, 8→39 e 100→112.
-    - Os 20 rascunhos ricos foram publicados no bucket privado `atlas-drafts` (`wiki/liberalismo/`), que passou a ter **41 objetos** incluindo o índice.
-    - A Onda 2 continua ausente: `wiki/verbetes-citados/index.json` responde **404** e não há prefixo `wiki/verbetes-citados` no `atlas-drafts`; os 92 objetos existentes são de anarquismo, liberalismo, marxismo e social-democracia.
-    - Verificações após a consolidação: `content:build` release local `26998099…`; `test:content` **182/182**; `npm test` **308/308**; `typecheck` e `lint` exit 0; `build` **1.185 rotas**. O ponteiro público continua em `45300c5…`; nada foi publicado no `atlas-public`.
-
-21. **Termos clicáveis dentro da ficha de contexto**
-    - O texto do painel (`summary`, parágrafos e seções) agora transforma termos do grafo em botões: clicar em "meios de produção", "classe" ou "Bakunin" abre outra ficha no mesmo painel, com o mesmo percurso e o botão Voltar.
-    - A lista usa títulos e aliases do grafo, mas descarta rótulos ambíguos; `classe`, `Bakunin`, `Kropotkin`, `Marx`, `Engels` e `Weber` têm formas curtas curadas. Se um alias aparecer em dois registros, o título único resolve; sem título único, o rótulo não vira link.
-    - O painel limita a **6 termos por parágrafo**, ignora a própria entidade e mantém o foco no título da nova ficha quando não há conexão correspondente. O componente compartilhado é `app-context-text`.
-    - O botão **“Fixar para comparar”** foi removido, junto com a coluna fixada e o estado de comparação. O painel mantém Anterior/Próximo, percurso e Voltar.
-    - Testes: unidade de vocabulário, do componente e do painel **13/13**; e2e de enciclopédia **7/7**, incluindo Proletariado → “meios de produção” → Voltar; e2e de fichas **8/8**.
-
-22. **Linha do tempo vertical em `#epocas`**
-    - `app-era-chart` deixou de ser um gráfico horizontal com faixas, barras de vida, marcadores absolutos e carrossel. Agora é uma lista vertical ordenada: cada época tem anos, título, contexto, registros datados e pessoas vivas no intervalo.
-    - A linha vertical usa trilho e marcadores; a época selecionada expande no lugar. Não há zoom, pan, régua, sobreposição de rótulos nem rolagem horizontal.
-    - O bloco `timeline` duplicado foi removido de `content/ideologies/marxismo/page.json`; `A riqueza das nações` passou para `markerIds` da cronologia, para não perder o registro.
-    - `docs/design/PAGE_STANDARD.md` registra a decisão: timeline de época é vertical; eixo horizontal fica restrito ao atlas quando o recorte temporal for o objeto.
-    - Verificações: unidade de `era-chart` **5/5**; `e2e/pages.spec` teste de épocas **1/1**; `e2e/encyclopedia` timeline e régua **3/3**; screenshots locais em 1440 e 390 confirmaram o trilho vertical e a ausência de overflow horizontal.
-
-23. **Revisão de capítulo redesenhada**
-    - O bloco deixou de ser um `details` solto com a pergunta como resumo e cartões grandes de verbete. Agora tem cabeçalho “Revisão do capítulo”, explicação curta e duas partes: **Pergunta** e **Dois capítulos atrás**.
-    - A resposta fica oculta até “Mostrar resposta”; “Ocultar resposta” a recolhe. Os registros antigos viraram links compactos com “Abrir ficha”.
-    - Componente próprio `app-chapter-review`, com IDs únicos por instância e foco visível; a página de ideologia não carrega mais os estilos e imports antigos.
-    - Verificações: componente e util **3/3**; `npm test` **315/315**; `e2e/pages.spec` **22/22**, incluindo o novo teste de revisão; `build` **1.185 rotas**; `lint` e `typecheck` exit 0.
-
-24. **Galeria “Ver todos” corrigida**
-    - O `[hidden]` dos cards era anulado por `:host { display: flex }` no `appRecordCard`; os cards além dos seis continuavam visíveis e o botão parecia não funcionar.
-    - `record-card.component.scss` agora tem `:host([hidden]) { display: none }`. O conserto vale para todas as galerias, inclusive `vertentes-2-gallery`.
-    - Teste e2e novo em `#pensadores`: 6 cards visíveis, “Ver todos” mostra o total e “Mostrar menos” volta a 6. `e2e/pages.spec` **23/23**; `lint` exit 0.
-
-25. **Seleção no grafo e ficha sincronizada**
-    - Selecionar um nó deixou de ser um filtro: o mapa inteiro continua visível e só o hover ilumina a vizinhança. O nó selecionado ganha anel permanente (com raio medido em tela) e rótulo em vermelho; a seleção não apaga mais o contexto.
-    - Clicar num nó não aproxima mais para 450%: a vista fica parada. A busca ainda revela o resultado (pan no capítulo, enquadramento em `/grafos`) e fecha a lista. `filterNetwork` passou a puxar para o recorte os endpoints das relações do atlas, então a raiz e as suas ligações aparecem: social-democracia **96 nós/77 ligações**, marxismo **52**, liberalismo **38**.
-    - O painel flutuante do capítulo mostra “Ver ficha” e “Verbete”; “Ver ficha” rola até a ficha e foca o título. A ficha ganhou “Abrir verbete” no topo.
-    - No mobile o HUD não é mais escondido quando há seleção; o pill e o zoom cabem em duas linhas e o enquadramento reserva espaço para eles, então nenhum rótulo fica atrás do pill.
-    - O cartão de hover diz “Aproxime para ler N ligações” quando as frases ainda não estão visíveis, em vez de afirmar que não há ligações; o dimming do hover ficou em **0.4** para nós e **0.18** para arestas.
-    - Hover e clique passaram a resolver o **nó mais próximo pelo centro**, com alcance de 16 px na tela, em vez de depender da ordem do DOM entre a forma e o círculo de clique. A forma não recebe mais o ponteiro; o crescimento de 1.22 no hover não devolve o evento e não pisca. O círculo continua dando o alvo acessível, e o cartão, o dimming e o clique apontam para o mesmo nó.
-    - Verificações: `npm test` **317/317** (56 arquivos); `typecheck` e `lint` exit 0; `build` passou com o aviso de orçamento do SCSS do grafo (18 kB; 19,43 kB); `e2e/pages.spec.ts` + `e2e/graph.spec.ts` **41/41**; a rodada anterior dos seis specs (pages, graph, encyclopedia, ideology-sheets, carousel, liberalism-atlas) tinha **65/65**. Diagnóstico de hover em `/marxismo#conexoes` e `/grafos` manteve **1 estado** estável em 25 amostras e o cartão do nó correto. Nada foi publicado; o ponteiro segue em `45300c5…`.
-    - O aviso de orçamento do SCSS é anterior a esta rodada e não falha o build (`maximumError` 20 kB); se o componente crescer, dividir estilos ou rever o limite.
-
-26. **Code scanning do GitHub**
-    - Em 07/11/2026 a página tinha **6 alertas abertos** no `master` (`b50675e`): 4 de `js/incomplete-url-substring-sanitization` nos scripts de ingestão, 1 de `js/bad-tag-filter` em `security-headers.mjs` e 1 de `js/identity-replacement` em `e2e/pages.spec.ts`.
-    - `scripts/ingestion/wikimedia/hosts.mjs` passou a ler o `hostname` com `new URL`, com `isWikidataHost` e `isCommonsHost`; `archive.mjs`, `wiki-extract/http.mjs` e `pipeline.spec.mjs` usam o helper em vez de `url.includes(...)`.
-    - O extrator de hashes CSP em `security-headers.mjs` passou a aceitar o fim de tag que os navegadores aceitam, como `</script >` e `</script foo="bar">`; o build continua gerando **8 hashes**.
-    - O `identity-replacement` já não existia no `develop` (o teste foi reescrito); o `master` tinha a versão antiga. A correção foi integrada ao `master` em `8779f92` (merge de `develop`) e enviada para `origin/master`; o run CodeQL `42336831876` concluiu com sucesso e a API mostra **0 alertas abertos / 6 corrigidos**.
-    - Verificações: `npm run test:ingestion` **68/68** (inclui `hosts.spec.mjs`), `npm run test:content` **182/182**, `npm run lint` exit 0 e `npm run build` exit 0 com **8 hashes** de CSP. O push também disparou a Verificação `42336831871`, que ainda estava em andamento na última consulta.
-
-27. **Capturas gzip no `ingest:fetch-raw`**
-    - A Verificação `42336831871` do merge falhou em `npm run ingest:fetch-raw` com `Falha de integridade` na resposta `acbba493…` da captura de liberalismo.
-    - O Worker entrega o objeto do R2 com `Content-Encoding: gzip`; o cliente recebia os bytes comprimidos e comparava com o SHA-256 do JSON original. O blob local está descomprimido e confere.
-    - `decodeRawBody` em `scripts/ingestion/wikimedia/raw-store.mjs` descompacta pelo magic gzip; `fetch-raw.mjs` usa o helper antes do hash. Teste novo em `raw-store.spec.mjs`.
-    - Verificado contra o Worker: **1.215 bytes comprimidos → 4.599 bytes**, SHA-256 igual ao manifesto. `test:ingestion` **69/69**; `lint` exit 0.
-
-28. **Triagem de issues (07/11)**
-    - Fechadas com evidência: **#5** (Anarquismo publicado, 12 capítulos/45 fontes), **#7** (Social-democracia, 12 capítulos/70 fontes), **#29** (paleta e leituras por dados em `ideology-readings.ts`), **#30** (precisão de datas no `EraChartComponent`) e **#11** (previews Vercel por PR).
-    - **#35** ficou aberta com comentário: falha do R2, catálogo vazio e rota desconhecida já têm E2E; falta o caso explícito de `/verbete/<inexistente>`.
-    - Novas: **#46** (o `ingest:verify` falha na captura `liberalism/2026-11-01-remoto`, bloqueando a Verificação do master e os PRs) e **#47** (Dependabot agrupa majors incompatíveis de Angular/TypeScript/Tailwind/Vitest/jsdom).
-    - **#42** e **#43** foram fechadas sem merge: Angular 22 exige TypeScript `>=6.0 <6.1` e o grupo dev-tools sobe TypeScript para 7, incompatível com Angular 21. Ver #47.
-
-29. **Branchs e proteção do master**
-    - Remotas excluídas por já estarem totalmente contidas no `master` (`ahead=0`): `chore/gitflow-ci`, `claude/loving-khayyam-d2ccc9`, `claude/padrao-texto-contexto-6caf9d`, `codex/atlas-editorial-marxismo`, `codex/atlas-v4`, `docs/compactar-documentacao` e `feat/ideologia-leve-e-gerador`.
-    - Ficaram no remoto `master`, `develop` e as 9 branches do Dependabot, incluindo as dos PRs #42/#43 já fechados. As branches locais e dos worktrees não foram apagadas; o link de branches do GitHub lista só as remotas.
-    - `master` agora exige PR, checks `verify`, `secrets` e `CodeQL`, branch atualizada, conversa resolvida, sem force push e sem deleção; `enforce_admins` ativo. Aprovações obrigatórias ficam em **0** porque há um mantenedor; elevar para 1 quando houver um segundo revisor.
-    - `delete_branch_on_merge` e `allow_update_branch` ativados. O perfil comunitário segue em **100%** (README, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, PR template e issue templates).
-    - Segurança: **private vulnerability reporting** e **Dependabot security updates** ativados (vulnerability alerts habilitados antes); secret scanning e push protection já estavam ligados.
-
-30. **Origem do conteúdo no Worker**
-    - `atlas-content-delivery` publicado (`Version ID c49f1d30-3e94-4a3a-a47e-681d6d12d2f9`) em `https://atlas-content-delivery.atlas-bellussi.workers.dev`, com binding somente leitura em `atlas-public`.
-    - `switch-content-domain --apply` trocou a constante do app, o ponteiro local e a CSP para essa origem.
-    - `content:publish` publicou o release **a54eee7274…** e gravou o `pointer.json` com `baseUrl` novo; `content:fetch` reaproveitou o cache (0 de 21 baixados) e o `build` passou.
-    - `ATLAS_CDN_URL` atualizado para o Worker.
-    - Verificado: `pointer.json` com `Cache-Control: public, max-age=0, must-revalidate`; artefato `c/<sha>.json` com `max-age=31536000, immutable`; CORS `*`; `OPTIONS` 204; `Content-Encoding: gzip` quando `Accept-Encoding: gzip`. `e2e/content-loading.spec.ts` **4/4**.
-    - A produção do site continua no build antigo até um PR/deploy; a `master` protegida exige `verify`, `secrets` e `CodeQL`, e a Verificação ainda falha na captura remota da issue #46.
-
-31. **Busca por nome**
-    - A busca do acervo deixou de varrer o texto inteiro: `explorerEntries` e `filterDiscoveryIndex` comparam o termo com título, aliases e títulos traduzidos aprovados.
-    - Registros que apenas citam o termo entram só quando nenhum nome corresponde, com o aviso “Nenhum nome corresponde a …” e ordem por relevância (título exato, prefixo, alias exato, prefixo, contém).
-    - “Lula” passou de **40** resultados para **4** (pessoa, prisão e duas fontes homônimas); “Federative” continua encontrando Brasil pela tradução aprovada, via fallback de texto.
-    - Verificações: `npm test` **318/318**; `lint` e `typecheck` exit 0; `build` passou; e2e de `knowledge-explorer`, `editorial-i18n` e `route-focus` **21/21**; `test:content` sem falhas.
-
-32. **Rotas de leitura, Worker `raw/` e capturas aposentadas**
-    - A migração para `/leitura/:slug` foi commitada (`0086631`), com `vercel.json` alinhado em `25eebd1`; a entrega do Worker descompactado foi commitada em `ed25192`.
-    - O Worker agora serve `raw/<sha256>.bin` (deploy `e1be72c7`), necessário para `ingest:fetch-raw` reidratar as capturas a partir do Worker em vez do `r2.dev`.
-    - A issue **#46** foi tratada aposentando as capturas cujo replay diverge do `snapshotHash`: `liberalism/{2026-11-01-remoto,2026-11-01-retratos,2026-11-03-descoberta}` e `marxism/{2026-11-01-retratos,2026-11-02-remoto,2026-11-03-descoberta}`. Cada uma tem `retired.json` com issue, data, motivo e hash; `ingest:verify` registra e segue; `ingest:fetch-raw` não baixa blobs delas. As duas capturas `preserve` seguem verificadas.
-
-- A divergência também ocorre com o código de 03/11 (`aef543c`), o que indica snapshot gerado fora do estado commitado; a cobertura `refresh`/`remote` só volta com nova captura.
-  - `fetch-raw` passou a copiar para `generated/raw-cache` o corpo local que existia só nos blobs de uma captura; antes ele pulava o download e as outras capturas ficavam sem blob. Depois disso, `ingest:fetch-raw` baixou **15.135 de 15.979** respostas e `ingest:verify` passou: 2 capturas Wikimedia reproduzidas duas vezes sem rede e 26 capturas Wikipedia conferidas.
+- **Onda 1 / calibração**: amostra de 20 artigos de Social-democracia e Anarquismo rodada por **US$ 0,0706** (teto US$ 0,30). Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. Ficaram **100 itens** para conferência humana em `docs/research/onda1-2026-11/`. O braço Sonnet low não foi medido; a decisão de modelo segue aberta. As metas da Onda 2 foram recalibradas para relações documentadas: **70/50/70/35**.
 
 ## Pendências que bloqueiam
 
-1. **CI do master** — a issue **#46** foi resolvida localmente: as capturas incompatíveis estão aposentadas, `ingest:verify` passou e os PRs de dependências podem destravar depois do merge. Falta enviar o `develop`, abrir o PR para a `master` e confirmar `verify`, `secrets` e `CodeQL`. Os PRs #45/#44/#41/#40/#38 estão rebaseados; #39/#37 aguardam recreate.
-2. **Suíte e2e completa** — `contextual-exploration` passou **7/7** em 07/11, incluindo liberalismo em 1440; a diferença de 64 px não se reproduziu. Falta a suíte completa no CI do PR #48.
-3. **Produção** — o app está publicado no Cloudflare Pages (`atlas-bellussi.pages.dev`), com `/fontes` em **193 KB**. O `vercel.json` da raiz só vale no próximo deploy Vercel, e o job `deploy` do CI continua inerte porque `VERCEL_PROJECT_ID` não existe; decidir se o Vercel segue como espelho ou se o Pages passa a ser o único alvo.
-4. **Probe de 404** — no Pages, `/rota-inexistente` responde **404** com `404.html` (3.078 bytes), `/grafos`, `/verbete/karl-marx` e `/acervo` respondem 200. O antigo `atlasbr.vercel.app` continua respondendo 200 com `index.html` e só será verificado se o Vercel for mantido.
-5. **Verbetes** — o modo `--partial` e o desempate por conteúdo foram implementados e testados; o piloto de 20 anexou registros sem perder os antigos. Falta o lote maior (bloqueado pela Onda 2 ausente), a revisão humana dos 20 e o perfil político derivado das relações (partido, ideologia e vertente; “lado” só com classificação atribuída).
-6. **Onda 2 ausente** — `wiki/verbetes-citados/index.json` responde **404** e não há prefixo `wiki/verbetes-citados` no `atlas-drafts`; os 92 objetos existentes são de anarquismo, liberalismo, marxismo e social-democracia. Sem os 414 artigos/896 extratos não há lote maior neste checkout.
+1. **PR #50** — aguardar o verify do commit final e fazer o merge; o `deploy-pages` roda na `master`.
+2. **Limite do Worker** — a conta gratuita passou de 100 mil requisições/dia; até o reset (00:00 UTC) ou o upgrade, o conteúdo dinâmico pode falhar. Decidir entre Workers Paid (US$ 5/mês) e reduzir as ~17 chamadas por página.
+3. **Vercel** — desconectar a integração Git e excluir o projeto antigo no painel.
+4. **Token exposto** — o token Cloudflare foi colado no chat; após o primeiro deploy, rotacionar e atualizar o segredo.
+5. **Dependências** — #38/#37 aguardam checks; #44 está em conflito; #40 bloqueado. Não forçar.
+6. **Leituras** — faltam os quadros completos de debate, a cronologia estruturada e os cartões de vertentes em Social-democracia e Anarquismo; revisões com fonte parcial e trechos de voz ainda exigem verificação humana.
+7. **Carregamento da leitura** — a rota ainda baixa o grafo completo (~24 MB) antes de hidratar. Exige desenho próprio (coleção única ou grafo combinado).
+8. **Texto a 200%** — header e footer não estouram mais; a leitura ainda tem overflow residual (~111 px em 1280 e ~61 px em 390) na cronologia/revisão.
 
 ## Pendências que pedem decisão
 
-4. **Onda 2 do conteúdo** — 414 artigos e 896 extratos (~US$ 1,65) não estão neste checkout; faltam imagens, conversão, testes e relatório. Não publicar sem aprovação.
-5. **Release `0.1.0`** — `release/0.1.0` contém o fluxo; falta CI verde para ativar proteções e release. Decidir se `develop` segue para `master` nesta rodada.
-6. **Revisão humana** — as relações curadas e os 109 itens de `generated/eval/amostra-20v2/revisao.md` continuam pendentes.
+1. **Limite do Worker** — decidir entre Workers Paid (US$ 5/mês) ou reduzir as chamadas por página antes que o conteúdo dinâmico falhe.
+2. **Revisão por IA em itinerários** — o plano recomenda manter `verified` apenas com revisor humano na v1; decidir depois do piloto comparativo.
+3. **Itinerários** — aprovar a fase 0 (schema, fixtures e testes) antes de implementar.
+4. **Aliases antigos** — se quiser que URLs antigas passem a 404, remover `/grafo`, `/rede`, `/comparar`, `/conhecimento` e os redirecionamentos top-level em uma segunda passada.
+5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
+6. **Onda 2** — os 907 rascunhos recuperados permitem auditar e consolidar sem recaptura; decidir o lote de consolidação e revisão. As metas documentadas são 70/50/70/35, não 160/120/100/80.
+
+## Próxima ação
+
+1. Fazer o verify final do PR #50; se verde, mergear e verificar o deploy do Pages — é o deploy que leva o canonical e o restante do Lighthouse à produção.
+2. Revisar os 3 itens sinalizados pela auditoria (Rawls, Voltaire, Kant) e decidir o lote de 414 ou o piloto de 12.
+3. Com autorização, executar `content:publish` e confirmar que `/grafos` passou a carregar `network` + `layouts` e que os 12 verbetes atualizados chegam ao público.
+4. Rodar Lighthouse na URL publicada (com compressão) para comparar com o relatório anterior.
+5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
+6. Só depois iniciar a fase 0 dos itinerários.
+
+## Mapa rápido
+
+- Produto e escopo: [`product/ESCOPO-ATUAL.md`](product/ESCOPO-ATUAL.md)
+- Arquitetura: [`architecture/ARCHITECTURE.md`](architecture/ARCHITECTURE.md)
+- Dados e carregamento: [`architecture/DADOS-E-CARREGAMENTO.md`](architecture/DADOS-E-CARREGAMENTO.md)
+- Pipeline editorial: [`architecture/FLUXO-DE-POPULACAO.md`](architecture/FLUXO-DE-POPULACAO.md)
+- Design e leitura: [`design/PAGE_STANDARD.md`](design/PAGE_STANDARD.md)
+- Voz: [`design/GUIA-DE-VOZ.md`](design/GUIA-DE-VOZ.md)
+- Operação: [`operations/PRODUCAO.md`](operations/PRODUCAO.md)
+- Agentes: [`agents/PROMPT-SYSTEM.md`](agents/PROMPT-SYSTEM.md)
+- Itinerários: [`design/ITINERARIOS.md`](design/ITINERARIOS.md) (plano)
+- Histórico: [`archive/2026-11/README.md`](archive/2026-11/README.md)
 
 ## Protocolo
 
-- Toda sessão que muda estado termina com `/handoff` ou atualização manual deste arquivo.
-- Registre comando executado e resultado; não registre suposição como verificação.
-- Links para arquivos e commits, não para transcrições.
+- Ao começar: ler este arquivo, `docs/README.md`, `git status` e `git log -5`.
+- Ao terminar: atualizar a seção **Estado atual**, **Trabalho ativo** e **Próxima ação**; o relato detalhado vai para o arquivo do mês, não para este handoff.
+- Não registrar transcrição, opinião ou suposição como fato verificado.
+- `AGENTS.md` continua sendo a fonte única das regras.
+

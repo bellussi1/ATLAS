@@ -10,7 +10,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { readingPath } from '@core/routing/reading-routes';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
@@ -138,30 +138,48 @@ export class HomePage {
     afterNextRender(() => {
       const win = this.document.defaultView;
       if (!win || typeof win.requestAnimationFrame !== 'function') return;
+      const host = this.host.nativeElement;
+      let sections: HTMLElement[] = [];
+      let offsets: number[] = [];
       let frame = 0;
-      const measure = () => {
-        const sections =
-          this.host.nativeElement.querySelectorAll<HTMLElement>('[data-tone-section]');
+      // Reading the section rectangles is reserved for layout changes. Scroll only compares
+      // against cached offsets, so it never forces a synchronous reflow.
+      const update = () => {
+        frame = 0;
         let active = 0;
-        sections.forEach((section, index) => {
-          if (section.getBoundingClientRect().top < 150) active = index;
-        });
+        const line = win.scrollY + 150;
+        for (let index = 0; index < offsets.length; index++)
+          if (offsets[index] < line) active = index;
         this.tone.set(active % 6);
       };
-      const schedule = () => {
-        if (!frame)
-          frame = win.requestAnimationFrame(() => {
-            frame = 0;
-            measure();
-          });
+      const scheduleUpdate = () => {
+        if (!frame) frame = win.requestAnimationFrame(update);
       };
-      win.addEventListener('scroll', schedule, { passive: true });
-      win.addEventListener('resize', schedule);
-      schedule();
+      const measure = () => {
+        frame = 0;
+        sections = [...host.querySelectorAll<HTMLElement>('[data-tone-section]')];
+        const y = win.scrollY;
+        offsets = sections.map((section) => section.getBoundingClientRect().top + y);
+        update();
+      };
+      const scheduleMeasure = () => {
+        if (!frame) frame = win.requestAnimationFrame(measure);
+      };
+      win.addEventListener('scroll', scheduleUpdate, { passive: true });
+      win.addEventListener('resize', scheduleMeasure);
+      const observer =
+        typeof win.ResizeObserver === 'function' ? new win.ResizeObserver(scheduleMeasure) : null;
+      observer?.observe(host);
+      // Measure after the first paint so the read does not force a synchronous layout.
+      frame = win.requestAnimationFrame(() => {
+        frame = win.requestAnimationFrame(measure);
+      });
+      void this.document.fonts?.ready.then(scheduleMeasure);
       this.destroyRef.onDestroy(() => {
-        win.removeEventListener('scroll', schedule);
-        win.removeEventListener('resize', schedule);
+        win.removeEventListener('scroll', scheduleUpdate);
+        win.removeEventListener('resize', scheduleMeasure);
         win.cancelAnimationFrame(frame);
+        observer?.disconnect();
       });
     });
   }

@@ -1,4 +1,6 @@
-﻿import type { Relation } from '@core/content/models/content-schema';
+﻿import type { NetworkGraph } from '@core/content/models/content-artifacts';
+import { networkGraphSchema } from '@core/content/models/content-artifacts';
+import type { Relation } from '@core/content/models/content-schema';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import {
@@ -6,6 +8,7 @@ import {
   collectionLabel,
   filterNetwork,
   firstSentence,
+  labelRelevance,
   layoutNetwork,
   linksOf,
   MAX_NODE_SCALE,
@@ -19,7 +22,6 @@ import {
   nodeScaleFor,
   relationFamilies,
   searchNodes,
-  shortestPath,
 } from './knowledge-network';
 
 const network = buildKnowledgeNetwork(methodologyKnowledgeGraph);
@@ -31,6 +33,44 @@ const all = {
 };
 
 describe('knowledge network', () => {
+  it('builds the same network from the slim projection used by /grafos', () => {
+    const slim: NetworkGraph = networkGraphSchema.parse({
+      id: methodologyKnowledgeGraph.id,
+      version: methodologyKnowledgeGraph.version,
+      updatedAt: methodologyKnowledgeGraph.updatedAt,
+      atlases: methodologyKnowledgeGraph.atlases.map((atlas) => ({
+        id: atlas.id,
+        title: atlas.title,
+        entities: atlas.entities.map((entity) => ({
+          id: entity.id,
+          slug: entity.slug,
+          title: entity.title,
+          kind: entity.kind,
+          placeType: entity.kind === 'place' ? entity.placeType : undefined,
+          summary: entity.summary,
+          temporalExtent: entity.temporalExtent,
+          editorialStatus: entity.editorialStatus,
+          discoveryMetadata: entity.discoveryMetadata
+            ? { description: entity.discoveryMetadata.description }
+            : undefined,
+        })),
+        claims: atlas.claims.slice(0, 3).map((claim) => ({
+          id: claim.id,
+          entityId: claim.entityId,
+          text: claim.text,
+          classification: claim.classification,
+          editorialStatus: claim.editorialStatus,
+        })),
+        assetLicenses: atlas.assetLicenses,
+        relations: atlas.relations,
+      })),
+    });
+    const projected = buildKnowledgeNetwork(slim);
+    expect(projected.nodes.map((node) => node.id)).toEqual(network.nodes.map((node) => node.id));
+    expect(projected.edges.map((edge) => edge.id)).toEqual(network.edges.map((edge) => edge.id));
+    expect(projected.nodes.every((node) => node.claims.length <= 3)).toBe(true);
+  });
+
   it('lists each entity once and keeps only edges between known nodes', () => {
     const ids = network.nodes.map((n) => n.id);
     expect(new Set(ids).size).toBe(ids.length);
@@ -41,13 +81,80 @@ describe('knowledge network', () => {
     expect(network.nodes.reduce((sum, n) => sum + n.degree, 0)).toBe(network.edges.length * 2);
   });
 
-  it('maps every entity kind to one of the eight legend families', () => {
+  it('counts incident edges and distinct neighbours by relation nature', () => {
+    for (const node of network.nodes) {
+      const total = Object.values(node.connections).reduce((sum, value) => sum + value, 0);
+      expect(total).toBe(node.degree);
+      expect(node.distinctNeighbours).toBeGreaterThanOrEqual(
+        Math.max(...Object.values(node.natureNeighbours)),
+      );
+    }
+    const stated = network.edges.find((edge) => edge.nature === 'stated')!;
+    expect(
+      network.nodes.find((node) => node.id === stated.source)!.connections.stated,
+    ).toBeGreaterThan(0);
+  });
+
+  it('ranks documented relations above catalogue and navigation links', () => {
+    const base = network.nodes.find((node) => node.degree > 0)!;
+    const empty = { stated: 0, editorial: 0, catalogue: 0, navigation: 0 };
+    const node = (
+      connections: Partial<Record<keyof typeof empty, number>>,
+      natureNeighbours: Partial<Record<keyof typeof empty, number>>,
+      extra: Partial<NetworkNode> = {},
+    ): NetworkNode => ({
+      ...base,
+      degree: Object.values(connections).reduce((sum, value) => sum + (value ?? 0), 0),
+      connections: { ...empty, ...connections },
+      natureNeighbours: { ...empty, ...natureNeighbours },
+      distinctNeighbours: Object.values(natureNeighbours).reduce(
+        (sum, value) => sum + (value ?? 0),
+        0,
+      ),
+      collections: ['atlas-test'],
+      inReview: false,
+      ...extra,
+    });
+    const documented = node({ stated: 4 }, { stated: 4 });
+    const catalogue = node({ catalogue: 12 }, { catalogue: 12 });
+    const navigation = node({ navigation: 30 }, { navigation: 30 });
+    expect(labelRelevance(documented)).toBeGreaterThan(labelRelevance(catalogue));
+    expect(labelRelevance(catalogue)).toBeGreaterThan(labelRelevance(navigation));
+    expect(
+      labelRelevance(node({ stated: 4 }, { stated: 4 }, { collections: ['a', 'b'] })),
+    ).toBeGreaterThan(labelRelevance(documented));
+    expect(labelRelevance({ ...documented, inReview: true })).toBeLessThan(
+      labelRelevance(documented),
+    );
+  });
+
+  it('maps every entity kind to one of the ten legend families', () => {
     expect(networkKindOf('institution')).toBe('organization');
-    expect(networkKindOf('historical-polity')).toBe('place');
+    expect(networkKindOf('historical-polity')).toBe('polity');
     expect(networkKindOf('article')).toBe('work');
-    expect(networkKinds).toHaveLength(8);
-    expect(new Set(networkKinds.map((k) => k.shape)).size).toBe(8);
-    expect(new Set(networkKinds.map((k) => k.color)).size).toBe(8);
+    expect(networkKindOfEntity({ id: 'p', kind: 'place', placeType: 'country' })).toBe('country');
+    expect(networkKindOfEntity({ id: 'r', kind: 'place', placeType: 'regime' })).toBe('polity');
+    expect(networkKindOfEntity({ id: 'c', kind: 'place' })).toBe('place');
+    expect(
+      networkKindOfEntity({ id: 'p2', kind: 'place', description: 'País da Europa Central.' }),
+    ).toBe('country');
+    expect(
+      networkKindOfEntity({ id: 'p3', kind: 'concept', description: 'Capital da França.' }),
+    ).toBe('place');
+    expect(
+      networkKindOfEntity({ id: 'p4', kind: 'institution', description: 'País da Oceania.' }),
+    ).toBe('country');
+    expect(networkKindOfEntity({ id: 'wiki-topic-australia', kind: 'institution' })).toBe(
+      'country',
+    );
+    expect(networkKindOfEntity({ id: 'wiki-topic-berlim', kind: 'concept' })).toBe('place');
+    expect(networkKindOfEntity({ id: 'wiki-topic-iluminismo', kind: 'institution' })).toBe(
+      'concept',
+    );
+    expect(networkKinds).toHaveLength(10);
+    expect(new Set(networkKinds.map((k) => k.shape)).size).toBe(10);
+    expect(new Set(networkKinds.map((k) => k.color)).size).toBe(10);
+    expect(new Set(networkKinds.map((k) => k.code)).size).toBe(10);
   });
 
   it('keeps dated events as events and topic records as concepts', () => {
@@ -55,9 +162,19 @@ describe('knowledge network', () => {
     expect(networkKindOfEntity({ id: 'wiki-topic-aborto', kind: 'concept' })).toBe('concept');
   });
 
-  it('gives each relation family its own colour or dash pattern', () => {
+  it('groups relation types into seven readable families', () => {
+    expect(relationFamilies.map((family) => family.label)).toEqual([
+      'Influência',
+      'Ruptura',
+      'Atuação',
+      'Criação',
+      'Continuidade',
+      'Relação documentada',
+      'Conexão',
+    ]);
     const looks = relationFamilies.map((f) => `${f.color}|${f.dash}`);
     expect(new Set(looks).size).toBe(relationFamilies.length);
+    expect(network.edges.find((edge) => edge.nature === 'navigation')?.family).toBe('connection');
   });
 
   it('filters by kind, collection and connection, dropping edges of hidden nodes', () => {
@@ -90,7 +207,7 @@ describe('knowledge network', () => {
       id: 'link',
       source: 'root',
       target: 'person',
-      family: 'associated',
+      family: 'connection',
       collection: 'atlas-a',
     } as unknown as NetworkEdge;
     const cut = filterNetwork(
@@ -148,7 +265,7 @@ describe('knowledge network', () => {
         expect(distance).toBeGreaterThanOrEqual(needed);
       }
     expect(layoutNetwork([], []).positions.size).toBe(0);
-  }, 30000);
+  }, 60000);
 
   it('groups nodes by text context instead of collection', () => {
     const layout = layoutNetwork(network.nodes, network.edges);
@@ -192,21 +309,6 @@ describe('knowledge network', () => {
       expect(edge.phraseReverse.length).toBeGreaterThan(0);
       expect(edge.context.length).toBeGreaterThan(0);
     }
-  });
-
-  it('finds the shortest chain between two nodes in either direction', () => {
-    const edge = (id: string, source: string, target: string) =>
-      ({ id, source, target }) as unknown as NetworkEdge;
-    const edges = [
-      edge('1', 'a', 'b'),
-      edge('2', 'c', 'b'),
-      edge('3', 'c', 'd'),
-      edge('4', 'a', 'd'),
-    ];
-    expect(shortestPath('a', 'a', edges)).toEqual([]);
-    expect(shortestPath('a', 'c', edges)?.map((step) => step.edge.id)).toHaveLength(2);
-    expect(shortestPath('a', 'd', edges)?.map((step) => step.edge.id)).toEqual(['4']);
-    expect(shortestPath('a', 'z', edges)).toBeNull();
   });
 
   it('lays out a graph of about 700 entries and 1000 links within a time budget', () => {

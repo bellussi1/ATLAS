@@ -24,10 +24,6 @@
         </p>
       </aside>
     </header>
-    <nav class="view-switch" aria-label="Capítulos de exploração">
-      <a [routerLink]="[]" fragment="graph-title" queryParamsHandling="preserve">Rede</a
-      ><a [routerLink]="[]" fragment="timeline-title" queryParamsHandling="preserve">Tempo</a>
-    </nav>
   }
 
   <section
@@ -36,49 +32,6 @@
     aria-label="Rede e registros"
     [tabindex]="embedded() ? -1 : null"
   >
-    <section class="index" aria-labelledby="index-title">
-      <div class="index-heading">
-        <h2 id="index-title">Índice de entidades</h2>
-        <span>{{ filteredEntities().length }}</span>
-      </div>
-      <label class="search-label" for="atlas-search">Buscar neste atlas</label>
-      <input
-        id="atlas-search"
-        type="search"
-        [value]="search()"
-        (input)="setSearch($any($event.target).value)"
-        placeholder="Nome, tema ou alias"
-      />
-      <p class="index-note">
-        @if (continuous()) {
-          Cada ficha abre seu contexto logo abaixo do grafo. Use as setas para percorrer o índice.
-        } @else {
-          Selecione uma ficha para abrir o contexto. No desktop, foco e ponteiro também mostram a
-          prévia; em telas estreitas, a lista tem rolagem própria e a rede oferece uma alternativa
-          textual.
-        }
-      </p>
-      <app-card-carousel label="Fichas deste atlas">
-        @for (entity of filteredEntities(); track entity.id) {
-          <button
-            appRecordCard
-            class="carousel-item atlas-record"
-            [icon]="cardIcon(entity)"
-            [kindLabel]="kindLabel(entity)"
-            [title]="entity.title"
-            [period]="yearLabel(entity)"
-            [note]="relationNote(entity.id)"
-            [tone]="entity.kind"
-            [picture]="picture(entity)"
-            [attr.aria-pressed]="selectedId() === entity.id"
-            (click)="openEntity(entity.id)"
-          ></button>
-        } @empty {
-          <p class="empty">Nenhuma entidade corresponde à busca.</p>
-        }
-      </app-card-carousel>
-    </section>
-
     <section class="graph-section" aria-labelledby="graph-title">
       <div class="section-heading">
         <div>
@@ -86,8 +39,9 @@
             <p class="eyebrow">Relações entre registros</p>
             <h2 id="graph-title">Uma ideia. Muitas conexões.</h2>
             <p class="edge-legend">
-              Cada forma é um tipo de registro; cada linha, um vínculo. Arraste para mover, use a
-              roda para aproximar e selecione um nome para abrir a ficha logo abaixo do grafo.
+              Busque um nome na barra do grafo, arraste para mover, use Ctrl + roda ou os botões
+              para aproximar e selecione um nó para abrir a ficha de contexto. Para percorrer os
+              verbetes em lista, <a routerLink="/acervo">abra o acervo completo</a>.
             </p>
           } @else {
             <p class="eyebrow">Pistas de leitura</p>
@@ -100,118 +54,19 @@
         </div>
         @if (!continuous()) {
           <p>
-            Linhas indicam ligações entre verbetes ou classificações de catálogo. Arraste, aproxime
-            e selecione um nome para abrir a ficha.
+            Linhas indicam ligações entre verbetes ou classificações de catálogo. Arraste, use os
+            controles de zoom e selecione um nome para abrir a ficha.
           </p>
         }
       </div>
       <app-knowledge-network
         class="atlas-network"
         [embedded]="true"
-        [scope]="[atlasId()]"
+        [scope]="graphScope()"
         [focus]="selectedId()"
         (picked)="openPicked($event)"
-        (inspect)="showRecord()"
+        (inspect)="openPicked($event)"
       />
-    </section>
-
-    <section #entityReading class="entity-reading" aria-labelledby="context-title">
-      <div class="panel-topline">
-        <p class="eyebrow">Ficha selecionada</p>
-        <div class="panel-actions">
-          @if (history().length) {
-            <button type="button" class="back-button" (click)="returnContext()">
-              ← Voltar ao contexto anterior
-            </button>
-          }
-          @if (selected(); as entity) {
-            <a class="verbete-link" [routerLink]="['/verbete', entity.slug]">
-              Abrir verbete <span aria-hidden="true">↗</span>
-            </a>
-          }
-        </div>
-      </div>
-      @if (selected(); as entity) {
-        <div class="entity-reading-grid">
-          <div class="entity-reading-main">
-            <h2 id="context-title" #contextTitle tabindex="-1">{{ entity.title }}</h2>
-            <p class="summary"><app-knowledge-text [text]="entity.summary" /></p>
-
-            <div class="entity-meta">
-              <span>{{ kindLabel(entity) }}</span
-              ><span>{{ yearLabel(entity) }}</span
-              ><span class="status">{{
-                entity.editorialStatus === 'pending'
-                  ? 'revisão pendente'
-                  : 'estado editorial não informado'
-              }}</span>
-            </div>
-            @if (entity.discoveryMetadata; as metadata) {
-              @if (metadata.description && metadata.description !== entity.summary) {
-                <p class="description">{{ metadata.description }}</p>
-              }
-              @if (prose(entity.context); as context) {
-                @if (context !== entity.summary) {
-                  <p class="description">{{ context }}</p>
-                }
-              }
-              <div class="categories">
-                <strong>Categorias principais</strong>
-                @for (category of metadata.categories.slice(0, 5); track category) {
-                  <span>{{ category }}</span>
-                }
-              </div>
-              <p class="attribution">
-                {{ metadata.attribution }}
-                <a [href]="metadata.contentLicenseUrl" target="_blank" rel="noopener noreferrer">{{
-                  metadata.contentLicense
-                }}</a>
-              </p>
-              <a
-                class="source-link"
-                [href]="metadata.wikipediaUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Abrir fonte: Wikipédia ({{ metadata.wikipediaLanguage }}) ↗</a
-              >
-              <a
-                class="source-link"
-                [href]="'https://www.wikidata.org/wiki/' + entity.externalIds?.wikidata"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Consultar Wikidata {{ entity.externalIds?.wikidata }} ↗</a
-              >
-            }
-            <p class="record-id">
-              Identificadores: Wikidata {{ entity.externalIds?.wikidata ?? 'indisponível' }} ·
-              Wikipedia {{ entity.externalIds?.wikipedia ?? 'indisponível' }}
-            </p>
-          </div>
-
-          <section class="relation-list" aria-labelledby="relation-heading">
-            <h3 id="relation-heading">Conexões desta ficha</h3>
-            @if (visibleRelations().length) {
-              <ul>
-                @for (relation of visibleRelations(); track relation.relationId) {
-                  @if (relationTarget(relation); as target) {
-                    <li>
-                      <button type="button" (click)="openEntity(target.id)">
-                        <span class="relation-chip">{{ relationName(relation) }}</span
-                        ><strong>{{ target.title }}</strong
-                        ><span>{{ predicate(relation.label) }}</span>
-                      </button>
-                    </li>
-                  }
-                }
-              </ul>
-            } @else {
-              <p>
-                Sem conexões registradas para esta entidade. Use a busca ou o índice para continuar.
-              </p>
-            }
-          </section>
-        </div>
-      }
     </section>
 
     <details class="text-network" [open]="narrow()">
@@ -222,11 +77,16 @@
         @for (relation of shownRelations(); track relation.relationId) {
           <li [attr.data-relation-id]="relation.relationId">
             @if (relationSource(relation); as source) {
-              <button type="button" (click)="openEntity(source.id)">{{ source.title }}</button>
+              <button type="button" (click)="openContext(source.id, $any($event.currentTarget))">
+                {{ source.title }}
+              </button>
             }
             <span class="relation-direction">{{ predicate(relation.label) }}</span>
             @if (relationDestination(relation); as destination) {
-              <button type="button" (click)="openEntity(destination.id)">
+              <button
+                type="button"
+                (click)="openContext(destination.id, $any($event.currentTarget))"
+              >
                 {{ destination.title }}
               </button>
             }
@@ -269,38 +129,11 @@
     @if (unconnectedEntityCount()) {
       <p class="graph-note">
         {{ unconnectedEntityCount() }} fichas deste recorte ainda não têm conexões registradas. Elas
-        permanecem acessíveis pelo índice; não presumimos vínculos sem evidência.
+        permanecem acessíveis pela busca do grafo e pelo acervo em lista; não presumimos vínculos
+        sem evidência.
       </p>
     }
     <p class="selection-announcement" role="status">{{ selected().title }} selecionado.</p>
-
-    <section
-      id="atlas-section-tempo"
-      class="timeline-section atlas-reading-chapter"
-      aria-labelledby="timeline-title"
-      [tabindex]="embedded() ? -1 : null"
-    >
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Datas registradas</p>
-          <h2 id="timeline-title">Pessoas e acontecimentos no tempo</h2>
-        </div>
-        <p>
-          Os registros aparecem na escala dos anos. Datas aproximadas permanecem aproximadas e
-          intervalos imprecisos não foram convertidos em datas exatas.
-        </p>
-      </div>
-      @if (timelineItems().length) {
-        <app-timeline-axis
-          [items]="timelineItems()"
-          [selectedId]="timelineSelectedId()"
-          [undated]="timelineUndated()"
-          (picked)="selectTimeline($event)"
-        />
-      } @else {
-        <p role="status">Ainda não há datas estruturadas suficientes para esta visualização.</p>
-      }
-    </section>
   </section>
   <footer class="editorial-note">
     <p>

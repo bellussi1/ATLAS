@@ -1,0 +1,141 @@
+:host {
+  display: block;
+}
+
+.navigation-failure {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  inline-size: min(calc(100% - 2 * var(--grid-gutter)), 72rem);
+  margin: clamp(1.5rem, 4vw, 3rem) auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 3px solid var(--color-danger);
+  background: var(--color-danger-surface);
+  color: var(--color-ink);
+  box-shadow: 8px 8px 0 var(--color-ink);
+}
+
+.failure-mark {
+  display: grid;
+  place-items: center;
+  inline-size: clamp(3rem, 7vw, 4.5rem);
+  block-size: clamp(3rem, 7vw, 4.5rem);
+  border: 3px solid var(--color-ink);
+  background: var(--color-danger);
+  color: var(--color-accent-contrast);
+  box-shadow: 4px 4px 0 var(--color-ink);
+  font: 800 clamp(1.6rem, 4vw, 2.4rem) / 1 var(--font-sans);
+}
+
+.failure-mark span {
+  rotate: -6deg;
+}
+
+.failure-body {
+  display: grid;
+  gap: 0.55rem;
+  min-inline-size: 0;
+}
+
+.failure-kicker {
+  margin: 0;
+  color: var(--color-danger);
+  font: 700 var(--text-caption)/1.2 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0;
+  font: 800 clamp(1.65rem, 3.6vw, 2.7rem) / 1 var(--font-sans);
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+h2:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 6px;
+}
+
+.failure-lead {
+  max-inline-size: 58ch;
+  margin: 0;
+  font: var(--text-subhead)/1.55 var(--font-serif);
+}
+
+.failure-context {
+  max-inline-size: 58ch;
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: var(--text-compact)/1.5 var(--font-serif);
+}
+
+.failure-context strong {
+  color: var(--color-ink);
+}
+
+.failure-path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.6rem;
+  margin: 0.15rem 0 0;
+  min-inline-size: 0;
+  font: var(--text-caption)/1.5 var(--font-mono);
+}
+
+.failure-path span {
+  color: var(--color-ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.failure-path code {
+  min-inline-size: 0;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-canvas);
+  font: inherit;
+  overflow-wrap: anywhere;
+}
+
+.failure-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-block-start: 0.35rem;
+}
+
+.failure-note {
+  max-inline-size: 58ch;
+  margin: 0.15rem 0 0;
+  color: var(--color-ink-muted);
+  font: var(--text-meta)/1.5 var(--font-serif);
+}
+
+@media (max-width: 40rem) {
+  .navigation-failure {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .failure-mark {
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    font-size: 1.5rem;
+  }
+
+  .failure-actions {
+    display: grid;
+  }
+
+  .failure-actions .atlas-button {
+    inline-size: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .failure-mark span {
+    rotate: none;
+  }
+}

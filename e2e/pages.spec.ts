@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 
 import { explorerCatalogues } from '../src/app/core/content/queries/knowledge-explorer';
-import { expect, test } from './content-fixture';
+import { expect, openReadingFixture, routeContentFixture, test } from './content-fixture';
 
 const declaredDestinations = [
   '/',
@@ -121,27 +121,133 @@ test('gallery toggle hides and shows cards beyond the preview', async ({ page })
   expect(await visible()).toBe(6);
 });
 
+test('the four readings do not repeat an entity index above the graph', async ({ page }) => {
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/leitura/${slug}/`);
+    await expect(page.locator('.index, #atlas-search')).toHaveCount(0);
+    const graph = page.locator('app-knowledge-network').first();
+    await expect(graph).toBeVisible();
+    await expect(graph.locator('#graph-search')).toBeVisible();
+    await expect(page.getByText('Busque um nome na barra do grafo').first()).toBeVisible();
+  }
+});
+
+test('all four readings open one shared context sheet from the graph', async ({ page }) => {
+  const readings = [
+    ['marxismo', 'Friedrich Engels'],
+    ['liberalismo', 'John Locke'],
+    ['social-democracia', 'August Bebel'],
+    ['anarquismo', 'Mikhail Bakunin'],
+  ] as const;
+  for (const [slug, name] of readings) {
+    await page.goto(`/leitura/${slug}#conexoes`);
+    const network = page.locator('#conexoes app-knowledge-network');
+    await expect(network).toBeVisible();
+    await network.locator('#graph-search').fill(name);
+    await network.locator('#graph-search').press('Enter');
+    const dialog = page.getByRole('dialog');
+    await expect(dialog).toBeVisible();
+    await expect(dialog.locator('#knowledge-context-title')).toHaveText(name);
+    await page.keyboard.press('Escape');
+    await expect(dialog).toHaveCount(0);
+    await expect(network.locator('.node.is-selected')).toHaveCount(1);
+  }
+});
+
+test('mobile: a graph node opens the shared context sheet without losing the selection', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/leitura/anarquismo#conexoes');
+  const network = page.locator('#conexoes app-knowledge-network');
+  await expect(network).toBeVisible();
+  await network.locator('#graph-search').fill('Mikhail Bakunin');
+  await network.locator('#graph-search').press('Enter');
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Mikhail Bakunin');
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  await expect(network.locator('.node.is-selected')).toHaveCount(1);
+});
+
 test('the chapter review explains its purpose and reveals the answer on demand', async ({
   page,
 }) => {
-  await page.goto('/leitura/marxismo/');
+  await routeContentFixture(page);
+  await page.goto('/');
+  await page.locator('.cover-choice[data-reading="marxismo"]').click();
+  await page.getByRole('link', { name: 'Ler o texto completo' }).click();
+  await expect(page).toHaveURL(/\/leitura\/marxismo\/?$/);
   const review = page.locator('.chapter-review').first();
   await review.scrollIntoViewIfNeeded();
-  await expect(review.getByRole('heading', { name: 'Revisão do capítulo' })).toBeVisible();
+  await expect(review.locator('.review-kicker')).toHaveText('Revisão');
+  await expect(review.locator('.review-rationale')).toContainText('Distinga o nome comum');
   await expect(review.locator('.review-answer')).toHaveCount(0);
   await review.getByRole('button', { name: 'Mostrar resposta' }).click();
-  await expect(review.locator('.review-answer')).toBeVisible();
+  await expect(review.locator('.review-answer')).toContainText('Unem a referência à obra');
+  await expect(review.locator('.review-sources')).toBeVisible();
   await expect(review.getByRole('button', { name: 'Ocultar resposta' })).toBeVisible();
 });
 
-test('the reading ends with at most five curated connections', async ({ page }) => {
+test('a failed navigation keeps the previous page and offers recovery', async ({ page }) => {
+  await page.goto('/');
+  await page.route('**/*.js', (route) => route.abort());
+  await page.evaluate(() => {
+    const link = [...document.querySelectorAll('a')].find(
+      (anchor) => anchor.getAttribute('href') === '/leitura/anarquismo',
+    );
+    link?.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+  });
+  const panel = page.locator('app-navigation-failure');
+  await expect(panel).toBeVisible();
+  await expect(panel.getByRole('heading', { name: 'A leitura não abriu' })).toBeFocused();
+  await expect(panel).toContainText('/leitura/anarquismo');
+  await expect(panel.getByRole('button', { name: 'Tentar novamente' })).toBeVisible();
+  await expect(panel.getByRole('button', { name: 'Continuar na página anterior' })).toBeVisible();
+  await page.unroute('**/*.js');
+  await panel.getByRole('button', { name: 'Tentar novamente' }).click();
+  await expect(page).toHaveURL(/\/leitura\/anarquismo/);
+  await expect(panel).toHaveCount(0);
+});
+
+test('the reading ends with curated cards, one wide lead and no repeated next link', async ({
+  page,
+}) => {
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/leitura/${slug}/`);
+    await expect(page.locator('.next-chapter')).toHaveCount(0);
+    await expect(page.getByRole('link', { name: /^A seguir/ })).toHaveCount(0);
+    await expect(page.locator('.editorial-strip summary')).toContainText(
+      slug === 'social-democracia' || slug === 'anarquismo'
+        ? 'Versão preliminar'
+        : 'Conteúdo com fontes',
+    );
+
+    const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
+    await expect(connections).toBeVisible();
+    const cards = connections.locator('.end-card');
+    await expect(cards).toHaveCount(3);
+    await expect(connections.locator('li[data-lead="true"]')).toHaveCount(1);
+    await expect(connections.locator('.end-card-relation')).toHaveCount(3);
+    await expect(connections.locator('.end-card-question')).toHaveCount(3);
+
+    const hrefs = await cards.evaluateAll((links) =>
+      links.map((link) => link.getAttribute('href')),
+    );
+    expect(hrefs.every((href) => href?.startsWith('/leitura/'))).toBe(true);
+    expect(new Set(hrefs).size).toBe(hrefs.length);
+    await expect(
+      page.locator('.reading-end-home').getByRole('link', { name: 'Voltar à página inicial' }),
+    ).toBeVisible();
+  }
+
   await page.goto('/leitura/marxismo/');
-  const connections = page.getByRole('navigation', { name: 'Conexões desta leitura' });
-  await expect(connections).toBeVisible();
-  await expect(connections.getByRole('link', { name: 'Liberalismo' })).toBeVisible();
-  await expect(connections.getByRole('link', { name: 'Anarquismo' })).toBeVisible();
-  await expect(connections.getByRole('link', { name: 'Social-democracia' })).toBeVisible();
-  expect(await connections.getByRole('link').count()).toBeLessThanOrEqual(5);
+  await page
+    .getByRole('navigation', { name: 'Conexões desta leitura' })
+    .getByRole('link', { name: /Liberalismo/ })
+    .click();
+  await expect(page).toHaveURL(/\/leitura\/liberalismo\/?$/);
 });
 
 test('a verbete with a continuous reading offers the contextual path', async ({ page }) => {
@@ -208,10 +314,12 @@ test('ideology reading controls stay in sync on desktop and mobile', async ({ pa
 
     const motionControl = page.locator('app-ideology-reading-index .motion-control');
     // The index starts beside the first chapter and sticks once the reading reaches it.
-    await page.evaluate(() =>
-      window.scrollTo(0, document.getElementById('introducao')!.offsetTop + 400),
-    );
-    await expect(motionControl).toBeInViewport();
+    // Use the document position instead of offsetTop, which depends on the positioned ancestor.
+    const target = await page
+      .locator('#introducao')
+      .evaluate((element) => element.getBoundingClientRect().top + window.scrollY + 400);
+    await page.evaluate((top) => window.scrollTo(0, top), target);
+    await expect(motionControl).toBeInViewport({ timeout: 15_000 });
     await motionControl.click();
     await expect(motionControl).toHaveAttribute('aria-pressed', 'true');
     expect(
@@ -323,14 +431,17 @@ test('the connections chapter draws the tradition as a graph scoped to its atlas
   await expect(network.locator('.detail')).toHaveCount(0);
   await network.locator('#graph-search').fill('Friedrich Engels');
   await network.locator('#graph-search').press('Enter');
-  const heading = page.locator('#conexoes .entity-reading h2');
-  await expect(heading).toHaveText('Friedrich Engels');
-  await expect(network.locator('.zoom__level')).toHaveText('100%');
+  const dialog = page.getByRole('dialog', { name: 'Friedrich Engels' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('#knowledge-context-title')).toHaveText('Friedrich Engels');
   await expect(network.locator('.node.is-selected')).toHaveCount(1);
   await expect(network.locator('.node__selection')).toHaveCount(1);
   await expect(network.locator('.label.is-selected')).toContainText('Friedrich Engels');
-  // A selection marks the node; it must not erase the rest of the map.
-  await expect(network.locator('.node.is-dimmed')).toHaveCount(0);
+  // The selection lights the node and its neighbours; the rest of the map fades.
+  await expect(network.locator('.node.is-dimmed')).not.toHaveCount(0);
+  await expect(network.locator('.node.is-related').first()).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
   const selection = network.locator('.selection-pill');
   await expect(selection).toContainText('Selecionado');
   await expect(selection).toContainText('Friedrich Engels');
@@ -339,8 +450,25 @@ test('the connections chapter draws the tradition as a graph scoped to its atlas
     /\/verbete\//,
   );
   await selection.getByRole('button', { name: 'Ver ficha' }).click();
-  await expect(heading).toBeFocused();
-  await expect(heading).toBeInViewport();
+  const reopened = page.getByRole('dialog', { name: 'Friedrich Engels' });
+  await expect(reopened).toBeVisible();
+  await expect(reopened.locator('#knowledge-context-title')).toBeFocused();
+});
+
+test('the embedded graph lets the reading page scroll with the wheel', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/leitura/marxismo#conexoes');
+  const network = page.locator('#conexoes app-knowledge-network');
+  await network.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+  const box = await network.boundingBox();
+  expect(box).not.toBeNull();
+  const before = await page.evaluate(() => window.scrollY);
+  await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+  await page.mouse.wheel(0, 500);
+  await page.waitForTimeout(300);
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(before);
+  await expect(network.locator('.zoom__level')).toHaveText('100%');
 });
 
 test('each image appears once in the narrative; only the archive catalogue repeats', async ({
@@ -359,12 +487,18 @@ test('each image appears once in the narrative; only the archive catalogue repea
 test('épocas list dated records and the relations explain each kind of connection', async ({
   page,
 }) => {
-  for (const path of ['/leitura/marxismo/', '/leitura/liberalismo/']) {
-    await page.goto(`${path}`);
+  for (const slug of ['marxismo', 'liberalismo']) {
+    await openReadingFixture(page, slug);
     const era = page.locator('.era-chart').first();
-    await expect(era.locator('.dated-list li').first()).toBeVisible();
+    await expect(era.locator('.epoch-row').first()).toBeVisible();
+    await expect(era.locator('.era-epoch.is-selected .marker-note').first()).toContainText(
+      'Por que importa',
+    );
     await era.locator('.era-epoch .epoch-row').nth(1).click();
-    await expect(era.locator('.epoch-body h4').first()).toContainText('Registros datados');
+    await expect(era.locator('.era-epoch.is-selected .epoch-summary')).toBeVisible();
+    await expect(era.locator('.era-epoch.is-selected .alive-list').first()).toBeVisible();
+    await era.getByRole('button', { name: /^Pessoas/ }).click();
+    await expect(era.locator('.era-filter[aria-pressed="true"]')).toContainText('Pessoas');
 
     const relations = page.locator('.relations').first();
     await expect(relations.locator('.relation-legend li').first()).toBeVisible();
@@ -374,6 +508,24 @@ test('épocas list dated records and the relations explain each kind of connecti
       'true',
     );
   }
+});
+
+test('opening an epoch animates the collapse without moving the page', async ({ page }) => {
+  await page.goto('/leitura/marxismo/');
+  const era = page.locator('.era-chart').first();
+  const rows = era.locator('.epoch-row');
+  await expect(rows.nth(1)).toBeVisible();
+  const before = await page.evaluate(() => Math.round(scrollY));
+  await page.evaluate(() =>
+    document.querySelectorAll<HTMLButtonElement>('app-era-chart .epoch-row')[1].click(),
+  );
+  await expect(rows.nth(1)).toHaveAttribute('aria-expanded', 'true');
+  await page.waitForTimeout(60);
+  await expect(era.locator('.epoch-body.is-leaving')).toHaveCount(1);
+  expect(await page.evaluate(() => Math.round(scrollY))).toBe(before);
+  await expect(era.locator('.epoch-body.is-leaving')).toHaveCount(0, { timeout: 1000 });
+  await expect(era.locator('.epoch-body')).toHaveCount(1);
+  await expect(era.locator('.epoch-body')).toHaveAttribute('id', /^epoch-/);
 });
 
 test('reading roadmap shows a first step and expands works in place', async ({ page }) => {
@@ -386,11 +538,140 @@ test('reading roadmap shows a first step and expands works in place', async ({ p
     await page.keyboard.press('Enter');
     await expect(first).toHaveAttribute('aria-expanded', 'true');
     await expect(roadmap.locator('.work-detail:visible')).toHaveCount(1);
-    await roadmap.locator('.theme-filter button').first().click();
+    const theme = roadmap.locator('.quick-themes button').first();
+    await theme.click();
+    await expect(theme).toHaveAttribute('aria-pressed', 'true');
     expect(await roadmap.locator('.work.is-dimmed').count()).toBeGreaterThan(0);
     const total = await roadmap.locator('.work').count();
-    await expect(roadmap.locator('.filter-count')).not.toContainText(`${total} de ${total}`);
+    await expect(roadmap.locator('.filter-count')).toContainText(`de ${total} obras em destaque`);
+    await roadmap.locator('.theme-all').click();
+    await expect(roadmap.locator('.theme-all')).toHaveAttribute('aria-pressed', 'true');
+    await expect(roadmap.locator('.work.is-dimmed')).toHaveCount(0);
   }
+});
+
+test('theme chips separate selected, available and hover states', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/leitura/marxismo/');
+  const roadmap = page.locator('#leituras app-reading-path');
+  const active = roadmap.locator('.theme-all');
+  const available = roadmap.locator('.quick-themes button').first();
+
+  await expect(active).toHaveAttribute('aria-pressed', 'true');
+  await expect(available).toHaveAttribute('aria-pressed', 'false');
+  const activeBackground = await active.evaluate((el) => getComputedStyle(el).backgroundColor);
+  const availableBackground = await available.evaluate(
+    (el) => getComputedStyle(el).backgroundColor,
+  );
+  expect(activeBackground).not.toBe(availableBackground);
+
+  await available.hover();
+  await expect
+    .poll(() => available.evaluate((el) => getComputedStyle(el).backgroundColor))
+    .not.toBe(availableBackground);
+
+  await available.click();
+  await expect(available).toHaveAttribute('aria-pressed', 'true');
+  await expect(active).toHaveAttribute('aria-pressed', 'false');
+  await expect(roadmap.locator('.filter-count')).toContainText('Economia');
+
+  const dimmed = roadmap.locator('.work.is-dimmed').first();
+  await dimmed.locator('.work-toggle').focus();
+  await expect.poll(() => dimmed.evaluate((el) => getComputedStyle(el).opacity)).toBe('1');
+});
+
+test('theme filter uses the compact select in all four readings', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/leitura/${slug}/`);
+    const roadmap = page.locator('#leituras app-reading-path');
+    const total = await roadmap.locator('.work').count();
+    const select = roadmap.locator('select');
+
+    await expect(select).toBeVisible();
+    await expect(roadmap.locator('.quick-themes')).toBeHidden();
+    await expect(roadmap.locator('.filter-count')).toContainText(`${total} obras`);
+
+    await select.selectOption({ index: 1 });
+    expect(await select.inputValue()).not.toBe('');
+    await expect(roadmap.locator('.filter-count')).toContainText('obras em destaque');
+    await expect(roadmap.locator('.filter-count')).toContainText(`de ${total}`);
+    expect(await roadmap.locator('.work.is-dimmed').count()).toBeGreaterThan(0);
+    expect(await roadmap.locator('.work').count()).toBe(total);
+    await expect(roadmap.locator('.theme-all')).toHaveAttribute('aria-pressed', 'false');
+
+    await roadmap.locator('.theme-all').click();
+    await expect(roadmap.locator('.work.is-dimmed')).toHaveCount(0);
+    await expect(select).toHaveValue('');
+    await expect(roadmap.locator('.theme-all')).toHaveAttribute('aria-pressed', 'true');
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+});
+
+test('chapter sources fold and the integral bibliography stays in its own section', async ({
+  page,
+}) => {
+  for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
+    await page.goto(`/leitura/${slug}/#fontes`);
+    const chapter = page.locator('#fontes');
+    await expect(chapter.locator('.chapter-sources')).toHaveCount(0);
+    const bibliography = chapter.locator('app-editorial-sources');
+    await expect(bibliography).toBeVisible();
+    await expect(chapter.locator('.bibliography-note')).toContainText('Bibliografia integral');
+    const shown = await bibliography.locator('li').count();
+    expect(shown).toBeGreaterThan(0);
+    const more = bibliography.locator('.sources-more');
+    if (await more.count()) {
+      await expect(more).toBeVisible();
+      await more.click();
+      expect(await bibliography.locator('li').count()).toBeGreaterThan(shown);
+    }
+  }
+
+  await page.goto('/leitura/marxismo/#debates');
+  const debates = page.locator('#debates .chapter-sources');
+  await expect(debates).toHaveCount(1);
+  await expect(debates.locator('summary')).toContainText('Conferir fontes deste capítulo (10)');
+  await debates.locator('summary').click();
+  const sources = debates.locator('app-editorial-sources');
+  await expect(sources.locator('li')).toHaveCount(5);
+  const more = sources.locator('.sources-more');
+  await expect(more).toContainText('Ver todas (10)');
+  await more.click();
+  await expect(sources.locator('li')).toHaveCount(10);
+});
+
+test('returning from the evidence chapter restores the exact reading point', async ({ page }) => {
+  await page.goto('/leitura/marxismo#conexoes');
+  const before = await page.evaluate(() => {
+    const section = document.getElementById('conexoes')!;
+    const top = section.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo(0, top + 600);
+    return window.scrollY;
+  });
+  await page.locator('app-ideology-reading-index a[href="#fontes"]').click();
+  await expect(page).toHaveURL(/#fontes$/);
+  await page.getByRole('button', { name: 'Voltar de onde veio' }).click();
+  await expect(page).toHaveURL(/#conexoes$/);
+  await expect
+    .poll(async () => Math.abs((await page.evaluate(() => window.scrollY)) - before))
+    .toBeLessThan(20);
+});
+
+test('contextual sheet jumps to sources and returns to the reading point', async ({ page }) => {
+  await page.goto('/leitura/marxismo/#pensadores');
+  await page.locator('#pensadores .record-card').filter({ hasText: 'Karl Marx' }).first().click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await dialog.getByRole('button', { name: /^Fontes/ }).click();
+  await expect(dialog.locator('.source-note')).toContainText('Fontes do registro');
+  await expect(dialog.locator('.source-list li').first()).toBeVisible();
+  const back = dialog.locator('.sheet-footer .context-return');
+  await expect(back).toBeVisible();
+  await back.click();
+  await expect(dialog.locator('#knowledge-context-title')).toBeFocused();
 });
 
 test('home keeps the poster colour and tints each later section as it scrolls', async ({
@@ -457,6 +738,55 @@ test('/fontes paginates and a source anchor opens the page that holds it', async
   await expect(page.locator(`#${id}`)).toBeInViewport();
 });
 
+test('paging and switching the record type keep the place without flashing the top', async ({
+  page,
+}) => {
+  await page.goto('/acervo');
+  await expect(page.locator('.result-card')).toHaveCount(24);
+  await page.evaluate(() => window.scrollTo(0, 700));
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(600);
+
+  const recordFrames = async (action: () => Promise<void>) => {
+    await page.evaluate(() => {
+      const trace: number[] = [];
+      Object.assign(window, { atlasTrace: trace, atlasRecording: true });
+      const tick = () => {
+        trace.push(Math.round(window.scrollY));
+        if ((window as unknown as { atlasRecording: boolean }).atlasRecording)
+          requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+    await action();
+    await page.waitForTimeout(500);
+    return page.evaluate(() => {
+      const data = window as unknown as { atlasTrace: number[]; atlasRecording: boolean };
+      data.atlasRecording = false;
+      return Math.min(...data.atlasTrace);
+    });
+  };
+
+  const afterPage = await recordFrames(() =>
+    page.evaluate(() =>
+      (document.querySelector('.pager__link[rel="next"]') as HTMLAnchorElement).click(),
+    ),
+  );
+  await expect(page).toHaveURL(/pagina=2/);
+  expect(afterPage).toBeGreaterThan(200);
+
+  const afterType = await recordFrames(() =>
+    page.evaluate(() =>
+      (
+        [...document.querySelectorAll('.kind-filter__item')].find((item) =>
+          item.textContent?.startsWith('Pessoa '),
+        ) as HTMLAnchorElement
+      ).click(),
+    ),
+  );
+  await expect(page).toHaveURL(/tipo=pessoa/);
+  expect(afterType).toBeGreaterThan(200);
+});
+
 test('debates show estimated positions with their evidence, in words and not only colour', async ({
   page,
 }) => {
@@ -464,32 +794,68 @@ test('debates show estimated positions with their evidence, in words and not onl
   const positions = page.locator('#debates section.positions');
   await expect(positions).toBeVisible();
   await expect(positions.getByRole('heading', { name: 'Posições estimadas' })).toBeVisible();
-  await expect(positions.locator('[data-status="estimada"]').first()).toContainText(
-    'estimada em 0,76',
-  );
+  const contrast = positions.locator('.contrast');
+  await expect(contrast).toContainText('Método de mudança social');
+  await expect(contrast.locator('.compare-head strong')).toHaveCount(2);
+  await expect(contrast.locator('.compare-row .track')).toHaveCount(2);
+  await expect(contrast).not.toContainText('diferença de');
   await expect(positions).toContainText('Não são fatos históricos');
-  await expect(positions.locator('[data-status="estimada"] [role="img"]').first()).toHaveAttribute(
+  await contrast.locator('.compare-open').nth(1).click();
+  await expect(positions.locator('.carousel-count')).not.toHaveText(/^\s*1[–-]/);
+
+  const bernstein = positions
+    .locator('article.entity')
+    .filter({ has: page.getByRole('heading', { name: 'Eduard Bernstein', exact: true }) });
+  await expect(bernstein.locator('.status-chip').first()).toContainText('Estimada · 2 fontes');
+  await expect(bernstein.locator('.track').first()).toHaveAttribute(
     'aria-label',
-    /Eduard Bernstein, Método de mudança social: estimada em 0,76/,
+    /Eduard Bernstein, Método de mudança social: Estimada · 2 fontes/,
   );
+  await expect(bernstein.locator('.axis-panel .marker')).toHaveCount(1);
 });
 
 test('estimated positions show their claims and open the entity record in place', async ({
   page,
 }) => {
   await page.goto('/leitura/marxismo/');
-  const bernstein = page.locator('#debates section.positions article.entity').filter({
-    hasText: 'Eduard Bernstein',
-  });
-  const revolution = bernstein.locator('li').filter({ hasText: 'Método de mudança social' });
-  await revolution.locator('.claims summary').click();
-  await expect(revolution).toContainText('movimento significa tudo');
-  await expect(revolution).toContainText('Evolutionary Socialism');
-  await expect(bernstein.locator('.hidden-axes summary')).toContainText('Sem evidência em 4 eixos');
-  await bernstein.getByRole('button', { name: /Eduard Bernstein/ }).click();
+  const bernstein = page
+    .locator('#debates section.positions article.entity')
+    .filter({ has: page.getByRole('heading', { name: 'Eduard Bernstein', exact: true }) });
+  const claims = bernstein.locator('.axis-panel .claims');
+  await claims.locator('summary').click();
+  await expect(claims).toContainText('movimento significa tudo');
+  await expect(claims).toContainText('Evolutionary Socialism');
+  await expect(claims.locator('a').first()).toHaveAttribute('href', /^https?:/);
+  await expect(bernstein.locator('.hidden-axes summary')).toContainText('Eixos sem evidência (4)');
+  await bernstein.getByRole('button', { name: 'Ver ficha de Eduard Bernstein' }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(page.getByRole('dialog')).toHaveCount(0);
+});
+
+test('positions distinguish divergence, indicative evidence and missing evidence', async ({
+  page,
+}) => {
+  await page.goto('/leitura/marxismo/');
+  const positions = page.locator('#debates section.positions');
+  const card = (title: string) =>
+    positions
+      .locator('article.entity')
+      .filter({ has: page.getByRole('heading', { name: title, exact: true }) });
+
+  const marx = card('Karl Marx');
+  await expect(marx.locator('.axis-chip[aria-pressed="true"]')).toContainText('Limites do Estado');
+  await expect(marx.locator('.axis-panel')).toHaveAttribute('data-status', 'divergente');
+  await expect(marx.locator('.axis-panel .end')).toHaveCount(2);
+  await expect(marx.locator('.axis-panel .marker')).toHaveCount(0);
+  await expect(marx.locator('.status-chip')).toContainText('Divergente · 2 fontes');
+
+  const lenin = card('Lenin');
+  await expect(lenin.locator('.status-chip')).toContainText('Indicativa · 1 afirmação');
+  await expect(lenin.locator('.axis-panel')).toHaveAttribute('data-status', 'indicativa');
+
+  const mao = card('Mao Tsé-Tung');
+  await expect(mao.locator('.hidden-axes summary')).toContainText('Eixos sem evidência (5)');
 });
 
 test('chapter jumps enter the history and Back returns to the previous chapter', async ({

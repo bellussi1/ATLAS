@@ -46,10 +46,14 @@ export function entityContext(
         graph.atlases.flatMap((a) => a.citations).find((c) => c.id === citationId)?.evidenceId ??
         [],
     );
-  const sourceIds = graph.atlases.flatMap((a) =>
-    a.evidences.filter((e) => evidenceIds.includes(e.id)).map((e) => e.sourceId),
+  const sourceIds = new Set(
+    graph.atlases.flatMap((a) =>
+      a.evidences.filter((e) => evidenceIds.includes(e.id)).map((e) => e.sourceId),
+    ),
   );
-  const references = sources.filter((s) => sourceIds.includes(s.id));
+  const references = [
+    ...new Map(sources.filter((s) => sourceIds.has(s.id)).map((s) => [s.id, s])).values(),
+  ];
   if (entity.discoveryMetadata)
     references.push({
       id: 'context-origin',

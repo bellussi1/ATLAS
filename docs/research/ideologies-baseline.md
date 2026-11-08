@@ -1,3 +1,6 @@
+Status: historico
+Última verificação: 08/11/2026
+
 # Baseline das páginas de ideologia (Prompt 00)
 
 Data: 02/11/2026. Commit de referência: `cfe9f23`. Auditoria heurística por agente; **não é pesquisa com usuários**.

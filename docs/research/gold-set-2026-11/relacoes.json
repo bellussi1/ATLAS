@@ -1,0 +1,1823 @@
+[
+  {
+    "id": "relation-capital-labour",
+    "tradition": "marxismo",
+    "from": {
+      "id": "work-capital-volume-i",
+      "title": "O capital: volume I"
+    },
+    "to": {
+      "id": "concept-trabalho-socialmente-necessario",
+      "title": "Tempo de trabalho socialmente necessário"
+    },
+    "type": "documented-association",
+    "label": "apresenta",
+    "context": "O conceito aparece no primeiro capítulo do volume I.",
+    "evidenceIds": [
+      "evidence-marx-capital"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-curation-trotsky-communism",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-leon-trotsky",
+      "title": "Leon Trótski"
+    },
+    "to": {
+      "id": "ideology-communism",
+      "title": "Comunismo"
+    },
+    "type": "documented-association",
+    "label": "foi dirigente bolchevique",
+    "context": "Trótski foi um revolucionário bolchevique e dirigente do Partido Comunista.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Leon_Tr%C3%B3tski",
+    "evidenceIds": [
+      "ev-rel-curation-trotsky-communism"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "relation-smith-wealth",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "to": {
+      "id": "work-wealth-of-nations",
+      "title": "A riqueza das nações"
+    },
+    "type": "documented-association",
+    "label": "escreveu",
+    "context": "Smith publicou a obra em 1776.",
+    "evidenceIds": [
+      "evidence-marx-smith-bio"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "relation-marx-criticizes-smith",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "to": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "type": "documented-association",
+    "label": "analisa criticamente",
+    "context": "Em Teorias da mais-valia, Marx examina definições de valor atribuídas a Smith.",
+    "evidenceIds": [
+      "evidence-marx-critique"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-curation-trotsky-lenin",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-leon-trotsky",
+      "title": "Leon Trótski"
+    },
+    "to": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "type": "documented-association",
+    "label": "foi aliado de",
+    "context": "No discurso da revolução, Trótski juntou-se ao partido bolchevique de Lenin.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Leon_Tr%C3%B3tski",
+    "evidenceIds": [
+      "ev-rel-curation-trotsky-lenin"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "relation-marx-capital",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "to": {
+      "id": "work-capital-volume-i",
+      "title": "O capital: volume I"
+    },
+    "type": "documented-association",
+    "label": "escreveu",
+    "context": "O primeiro volume foi publicado durante a vida de Marx.",
+    "evidenceIds": [
+      "evidence-marx-marx-bio"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-friedrich-engels-p737-person-adam-smith",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "to": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q34787; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q34787",
+    "evidenceIds": [
+      "marxism-evidence-person-friedrich-engels-p737-person-adam-smith"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-antonio-gramsci-p737-person-friedrich-engels",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-antonio-gramsci",
+      "title": "Antonio Gramsci"
+    },
+    "to": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q83003; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q83003",
+    "evidenceIds": [
+      "marxism-evidence-person-antonio-gramsci-p737-person-friedrich-engels"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-curation-trotsky-marx",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-leon-trotsky",
+      "title": "Leon Trótski"
+    },
+    "to": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "type": "influenced_by",
+    "label": "foi influenciado por",
+    "context": "Trótski foi um intelectual marxista e revolucionário bolchevique.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Leon_Tr%C3%B3tski",
+    "evidenceIds": [
+      "ev-rel-curation-trotsky-marx"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-anton-pannekoek-p737-person-karl-marx",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-anton-pannekoek",
+      "title": "Anton Pannekoek"
+    },
+    "to": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q347930; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q347930",
+    "evidenceIds": [
+      "marxism-evidence-person-anton-pannekoek-p737-person-karl-marx"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-vladimir-lenin-p737-person-karl-marx",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "to": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q1394; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1394",
+    "evidenceIds": [
+      "marxism-evidence-person-vladimir-lenin-p737-person-karl-marx"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-vladimir-lenin-p737-person-friedrich-engels",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "to": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q1394; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1394",
+    "evidenceIds": [
+      "marxism-evidence-person-vladimir-lenin-p737-person-friedrich-engels"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-joseph-stalin-p737-person-karl-marx",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-joseph-stalin",
+      "title": "Josef Stalin"
+    },
+    "to": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q855; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q855",
+    "evidenceIds": [
+      "marxism-evidence-person-joseph-stalin-p737-person-karl-marx"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-friedrich-engels-p737-person-karl-marx",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "to": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q34787; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q34787",
+    "evidenceIds": [
+      "marxism-evidence-person-friedrich-engels-p737-person-karl-marx"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-joseph-stalin-p737-person-vladimir-lenin",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-joseph-stalin",
+      "title": "Josef Stalin"
+    },
+    "to": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q855; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q855",
+    "evidenceIds": [
+      "marxism-evidence-person-joseph-stalin-p737-person-vladimir-lenin"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-anton-pannekoek-p737-person-friedrich-engels",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-anton-pannekoek",
+      "title": "Anton Pannekoek"
+    },
+    "to": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q347930; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q347930",
+    "evidenceIds": [
+      "marxism-evidence-person-anton-pannekoek-p737-person-friedrich-engels"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-antonio-gramsci-p737-person-karl-marx",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-antonio-gramsci",
+      "title": "Antonio Gramsci"
+    },
+    "to": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q83003; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q83003",
+    "evidenceIds": [
+      "marxism-evidence-person-antonio-gramsci-p737-person-karl-marx"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-vladimir-lenin-p737-person-karl-kautsky",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "to": {
+      "id": "person-karl-kautsky",
+      "title": "Karl Kautsky"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q1394; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1394",
+    "evidenceIds": [
+      "marxism-evidence-person-vladimir-lenin-p737-person-karl-kautsky"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-antonio-gramsci-p737-person-vladimir-lenin",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-antonio-gramsci",
+      "title": "Antonio Gramsci"
+    },
+    "to": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q83003; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q83003",
+    "evidenceIds": [
+      "marxism-evidence-person-antonio-gramsci-p737-person-vladimir-lenin"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-person-vladimir-lenin-p1344-event-russian-revolution",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "to": {
+      "id": "event-russian-revolution",
+      "title": "Revolução Russa de 1917"
+    },
+    "type": "participated_in",
+    "label": "participou de (afirmação estruturada no Wikidata)",
+    "context": "Mapeado da declaração P1344 em Q1394; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1394",
+    "evidenceIds": [
+      "marxism-evidence-person-vladimir-lenin-p1344-event-russian-revolution"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-curation-trotsky-russian-revolution",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-leon-trotsky",
+      "title": "Leon Trótski"
+    },
+    "to": {
+      "id": "event-russian-revolution",
+      "title": "Revolução Russa de 1917"
+    },
+    "type": "participated_in",
+    "label": "participou de",
+    "context": "Trótski participou ativamente da luta para derrubar o Governo Provisório em 1917.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Leon_Tr%C3%B3tski",
+    "evidenceIds": [
+      "ev-rel-curation-trotsky-russian-revolution"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-work-communist-manifesto-p50-person-karl-marx",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "to": {
+      "id": "work-communist-manifesto",
+      "title": "Manifesto Comunista"
+    },
+    "type": "authored",
+    "label": "é listado como autor de (afirmação estruturada no Wikidata)",
+    "context": "Mapeado da declaração P50 em Q40591; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q40591",
+    "evidenceIds": [
+      "marxism-evidence-work-communist-manifesto-p50-person-karl-marx"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-work-critique-of-the-gotha-program-p50-person-karl-marx",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "to": {
+      "id": "work-critique-of-the-gotha-program",
+      "title": "Crítica ao Programa de Gotha"
+    },
+    "type": "authored",
+    "label": "é listado como autor de (afirmação estruturada no Wikidata)",
+    "context": "Mapeado da declaração P50 em Q1273940; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1273940",
+    "evidenceIds": [
+      "marxism-evidence-work-critique-of-the-gotha-program-p50-person-karl-marx"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-work-imperialism-the-highest-stage-of-capitalism-p50-person-vladimir-lenin",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "to": {
+      "id": "work-imperialism-the-highest-stage-of-capitalism",
+      "title": "Imperialismo: Fase Superior do Capitalismo"
+    },
+    "type": "authored",
+    "label": "é listado como autor de (afirmação estruturada no Wikidata)",
+    "context": "Mapeado da declaração P50 em Q1194558; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1194558",
+    "evidenceIds": [
+      "marxism-evidence-work-imperialism-the-highest-stage-of-capitalism-p50-person-vladimir-lenin"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-work-anti-duhring-p50-person-friedrich-engels",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "to": {
+      "id": "work-anti-duhring",
+      "title": "Anti-Dühring"
+    },
+    "type": "authored",
+    "label": "é listado como autor de (afirmação estruturada no Wikidata)",
+    "context": "Mapeado da declaração P50 em Q574630; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q574630",
+    "evidenceIds": [
+      "marxism-evidence-work-anti-duhring-p50-person-friedrich-engels"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "liberalism-statement-person-john-rawls-p737-person-john-locke",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-john-rawls",
+      "title": "John Rawls"
+    },
+    "to": {
+      "id": "person-john-locke",
+      "title": "John Locke"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q172544; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q172544",
+    "evidenceIds": [
+      "liberalism-evidence-person-john-rawls-p737-person-john-locke"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "liberalism-statement-person-emmanuel-joseph-sieyes-p737-person-john-locke",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-emmanuel-joseph-sieyes",
+      "title": "Emmanuel Joseph Sieyès"
+    },
+    "to": {
+      "id": "person-john-locke",
+      "title": "John Locke"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q294344; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q294344",
+    "evidenceIds": [
+      "liberalism-evidence-person-emmanuel-joseph-sieyes-p737-person-john-locke"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "liberalism-statement-person-alexis-de-tocqueville-p737-person-montesquieu",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-alexis-de-tocqueville",
+      "title": "Alexis de Tocqueville"
+    },
+    "to": {
+      "id": "person-montesquieu",
+      "title": "Montesquieu"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q140694; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q140694",
+    "evidenceIds": [
+      "liberalism-evidence-person-alexis-de-tocqueville-p737-person-montesquieu"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "liberalism-statement-person-john-rawls-p737-person-immanuel-kant",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-john-rawls",
+      "title": "John Rawls"
+    },
+    "to": {
+      "id": "person-immanuel-kant",
+      "title": "Immanuel Kant"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q172544; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q172544",
+    "evidenceIds": [
+      "liberalism-evidence-person-john-rawls-p737-person-immanuel-kant"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "liberalism-statement-person-voltaire-p737-person-john-locke",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-voltaire",
+      "title": "Voltaire"
+    },
+    "to": {
+      "id": "person-john-locke",
+      "title": "John Locke"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q9068; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q9068",
+    "evidenceIds": [
+      "liberalism-evidence-person-voltaire-p737-person-john-locke"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "liberalism-statement-person-emmanuel-joseph-sieyes-p737-person-voltaire",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-emmanuel-joseph-sieyes",
+      "title": "Emmanuel Joseph Sieyès"
+    },
+    "to": {
+      "id": "person-voltaire",
+      "title": "Voltaire"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q294344; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q294344",
+    "evidenceIds": [
+      "liberalism-evidence-person-emmanuel-joseph-sieyes-p737-person-voltaire"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "liberalism-statement-person-immanuel-kant-p737-person-john-locke",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-immanuel-kant",
+      "title": "Immanuel Kant"
+    },
+    "to": {
+      "id": "person-john-locke",
+      "title": "John Locke"
+    },
+    "type": "influenced_by",
+    "label": "é listado no Wikidata como influenciado por",
+    "context": "Mapeado da declaração P737 em Q9312; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q9312",
+    "evidenceIds": [
+      "liberalism-evidence-person-immanuel-kant-p737-person-john-locke"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "liberalism-statement-person-emmanuel-joseph-sieyes-p1344-event-french-revolution",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-emmanuel-joseph-sieyes",
+      "title": "Emmanuel Joseph Sieyès"
+    },
+    "to": {
+      "id": "event-french-revolution",
+      "title": "Revolução Francesa"
+    },
+    "type": "participated_in",
+    "label": "participou de (afirmação estruturada no Wikidata)",
+    "context": "Mapeado da declaração P1344 em Q294344; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q294344",
+    "evidenceIds": [
+      "liberalism-evidence-person-emmanuel-joseph-sieyes-p1344-event-french-revolution"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-person-john-rawls-002",
+    "tradition": "liberalismo",
+    "from": {
+      "id": "person-john-rawls",
+      "title": "John Rawls"
+    },
+    "to": {
+      "id": "ideology-liberalism",
+      "title": "Liberalismo"
+    },
+    "type": "wrote",
+    "label": "escreveu",
+    "context": "Rawls escreveu O Liberalismo Político, publicado em 1993.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/John_Rawls",
+    "evidenceIds": [
+      "ev-wiki-person-john-rawls-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "relation-smith-wealth",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "to": {
+      "id": "work-wealth-of-nations",
+      "title": "A riqueza das nações"
+    },
+    "type": "documented-association",
+    "label": "escreveu",
+    "context": "Smith publicou a obra em 1776.",
+    "evidenceIds": [
+      "evidence-marx-smith-bio"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "relation-marx-criticizes-smith",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "to": {
+      "id": "person-adam-smith",
+      "title": "Adam Smith"
+    },
+    "type": "documented-association",
+    "label": "analisa criticamente",
+    "context": "Em Teorias da mais-valia, Marx examina definições de valor atribuídas a Smith.",
+    "evidenceIds": [
+      "evidence-marx-critique"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-karl-kautsky-002",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-karl-kautsky",
+      "title": "Karl Kautsky"
+    },
+    "to": {
+      "id": "person-eduard-bernstein",
+      "title": "Eduard Bernstein"
+    },
+    "type": "reacted_against",
+    "label": "reagiu contra",
+    "context": "Kautsky defendeu a ortodoxia marxista contra o revisionismo de Eduard Bernstein.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Karl_Kautsky",
+    "evidenceIds": [
+      "ev-wiki-topic-karl-kautsky-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-august-bebel-002",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-august-bebel",
+      "title": "August Bebel"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "participated_in",
+    "label": "participou de",
+    "context": "Bebel participou da fundação do Partido Social Democrata dos Trabalhadores em 7 de agosto de 1869.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/August_Bebel",
+    "evidenceIds": [
+      "ev-wiki-topic-august-bebel-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-dilma-rousseff-003",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-dilma-rousseff",
+      "title": "Dilma Rousseff"
+    },
+    "to": {
+      "id": "wiki-topic-brasil",
+      "title": "Brasil"
+    },
+    "type": "documented-association",
+    "label": "governou",
+    "context": "Dilma foi a 36.ª presidente do Brasil, no cargo de 2011 até 2016.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Dilma_Rousseff",
+    "evidenceIds": [
+      "ev-wiki-topic-dilma-rousseff-rel-003"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-partido-democratico-trabalhista-001",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-leonel-brizola",
+      "title": "Leonel Brizola"
+    },
+    "to": {
+      "id": "wiki-topic-partido-democratico-trabalhista",
+      "title": "Partido Democrático Trabalhista"
+    },
+    "type": "documented-association",
+    "label": "fundou",
+    "context": "Leonel Brizola é descrito como fundador e líder do PDT.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Partido_Democr%C3%A1tico_Trabalhista",
+    "evidenceIds": [
+      "ev-wiki-topic-partido-democratico-trabalhista-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-august-bebel-003",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-august-bebel",
+      "title": "August Bebel"
+    },
+    "to": {
+      "id": "wiki-topic-partido-social-democrata-da-alemanha",
+      "title": "Partido Social-Democrata da Alemanha"
+    },
+    "type": "documented-association",
+    "label": "fundou",
+    "context": "Bebel é apresentado como um dos fundadores do Partido Social-Democrata da Alemanha (SPD).",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/August_Bebel",
+    "evidenceIds": [
+      "ev-wiki-topic-august-bebel-rel-003"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-dilma-rousseff-001",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-dilma-rousseff",
+      "title": "Dilma Rousseff"
+    },
+    "to": {
+      "id": "wiki-topic-partido-democratico-trabalhista",
+      "title": "Partido Democrático Trabalhista"
+    },
+    "type": "documented-association",
+    "label": "foi membro fundadora de",
+    "context": "Dilma foi membro fundadora do Partido Democrático Trabalhista (PDT).",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Dilma_Rousseff",
+    "evidenceIds": [
+      "ev-wiki-topic-dilma-rousseff-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-luiz-inacio-lula-da-silva-002",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-luiz-inacio-lula-da-silva",
+      "title": "Luiz Inácio Lula da Silva"
+    },
+    "to": {
+      "id": "wiki-topic-partido-dos-trabalhadores",
+      "title": "Partido dos Trabalhadores"
+    },
+    "type": "documented-association",
+    "label": "foi membro de",
+    "context": "Lula é filiado ao Partido dos Trabalhadores.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva",
+    "evidenceIds": [
+      "ev-wiki-topic-luiz-inacio-lula-da-silva-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-partido-revolucionario-institucional-001",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-revolucionario-institucional",
+      "title": "Partido Revolucionário Institucional"
+    },
+    "to": {
+      "id": "wiki-topic-internacional-socialista",
+      "title": "Internacional Socialista"
+    },
+    "type": "documented-association",
+    "label": "foi membro de",
+    "context": "O PRI é membro da Internacional Socialista.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Partido_Revolucion%C3%A1rio_Institucional",
+    "evidenceIds": [
+      "ev-wiki-topic-partido-revolucionario-institucional-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-partido-democratico-trabalhista-002",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-democratico-trabalhista",
+      "title": "Partido Democrático Trabalhista"
+    },
+    "to": {
+      "id": "wiki-topic-internacional-socialista",
+      "title": "Internacional Socialista"
+    },
+    "type": "documented-association",
+    "label": "foi membro de",
+    "context": "O PDT é filiado à Internacional Socialista desde 1989.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Partido_Democr%C3%A1tico_Trabalhista",
+    "evidenceIds": [
+      "ev-wiki-topic-partido-democratico-trabalhista-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-luiz-inacio-lula-da-silva-004",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-dilma-rousseff",
+      "title": "Dilma Rousseff"
+    },
+    "to": {
+      "id": "wiki-topic-luiz-inacio-lula-da-silva",
+      "title": "Luiz Inácio Lula da Silva"
+    },
+    "type": "documented-association",
+    "label": "sucedeu",
+    "context": "Dilma Rousseff sucedeu Lula no cargo de presidente.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva",
+    "evidenceIds": [
+      "ev-wiki-topic-luiz-inacio-lula-da-silva-rel-004"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-leonel-brizola-001",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-leonel-brizola",
+      "title": "Leonel Brizola"
+    },
+    "to": {
+      "id": "wiki-topic-partido-democratico-trabalhista",
+      "title": "Partido Democrático Trabalhista"
+    },
+    "type": "documented-association",
+    "label": "fundou",
+    "context": "Brizola fundou o Partido Democrático Trabalhista em 1979.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Leonel_Brizola",
+    "evidenceIds": [
+      "ev-wiki-topic-leonel-brizola-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-fidel-castro-002",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-jose-marti",
+      "title": "José Martí"
+    },
+    "to": {
+      "id": "wiki-topic-fidel-castro",
+      "title": "Fidel Castro"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "José Martí é descrito por Fidel Castro como uma de suas principais influências políticas.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Fidel_Castro",
+    "evidenceIds": [
+      "ev-wiki-topic-fidel-castro-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-social-democracy-001",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "person-eduard-bernstein",
+      "title": "Eduard Bernstein"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "Eduard Bernstein influenciou e preparou o terreno para o desenvolvimento da social-democracia do pós-guerra como regime de políticas.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Social_democracy",
+    "evidenceIds": [
+      "ev-wiki-topic-social-democracy-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-social-democracia-001",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-ferdinand-lassalle",
+      "title": "Ferdinand Lassalle"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "A social-democracia foi influenciada pelo socialismo reformista de Ferdinand Lassalle.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Social-democracia",
+    "evidenceIds": [
+      "ev-wiki-topic-social-democracia-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-social-democracia-002",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "person-eduard-bernstein",
+      "title": "Eduard Bernstein"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "Os pontos de vista do revisionista marxista Eduard Bernstein influenciaram o desenvolvimento da social-democracia do pós-guerra.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Social-democracia",
+    "evidenceIds": [
+      "ev-wiki-topic-social-democracia-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-socialismo-democratico-001",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "person-eduard-bernstein",
+      "title": "Eduard Bernstein"
+    },
+    "to": {
+      "id": "wiki-topic-socialismo-democratico",
+      "title": "Socialismo democrático"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "O socialismo democrático do final do século XIX ao início do século XX foi fortemente influenciado pelo socialismo crítico de Eduard Bernstein na Alemanha.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Socialismo_democr%C3%A1tico",
+    "evidenceIds": [
+      "ev-wiki-topic-socialismo-democratico-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-social-democracy-002",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-ferdinand-lassalle",
+      "title": "Ferdinand Lassalle"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "O socialismo reformista de Ferdinand Lassalle influenciou a definição da social-democracia como tradição socialista.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Social_democracy",
+    "evidenceIds": [
+      "ev-wiki-topic-social-democracy-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q15717618-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-movimento-regeneracao-nacional",
+      "title": "Movimento Regeneração Nacional"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q15717618#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q15717618-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q682969-p1142-q189280",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-revolucionario-institucional",
+      "title": "Partido Revolucionário Institucional"
+    },
+    "to": {
+      "id": "wiki-topic-socialismo-democratico",
+      "title": "Socialismo democrático"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q682969#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q682969-p1142-q189280"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q123585-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-uniao-civica-radical",
+      "title": "União Cívica Radical"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q123585#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q123585-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q317952-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-comunista-do-chile",
+      "title": "Partido Comunista do Chile"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q317952#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q317952-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q159454-p1142-q189280",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-internacional-socialista",
+      "title": "Internacional Socialista"
+    },
+    "to": {
+      "id": "wiki-topic-socialismo-democratico",
+      "title": "Socialismo democrático"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q159454#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q159454-p1142-q189280"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q317952-p1142-q189280",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-comunista-do-chile",
+      "title": "Partido Comunista do Chile"
+    },
+    "to": {
+      "id": "wiki-topic-socialismo-democratico",
+      "title": "Socialismo democrático"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q317952#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q317952-p1142-q189280"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q682969-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-revolucionario-institucional",
+      "title": "Partido Revolucionário Institucional"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q682969#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q682969-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q9630-p1142-q189280",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-trabalhista-reino-unido",
+      "title": "Partido Trabalhista (Reino Unido)"
+    },
+    "to": {
+      "id": "wiki-topic-socialismo-democratico",
+      "title": "Socialismo democrático"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q9630#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q9630-p1142-q189280"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-chile-001",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-chile",
+      "title": "Chile"
+    },
+    "to": {
+      "id": "wiki-topic-organizacao-das-nacoes-unidas",
+      "title": "Organização das Nações Unidas"
+    },
+    "type": "documented-association",
+    "label": "foi membro de",
+    "context": "O Chile foi um dos 51 estados fundadores da ONU.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Chile",
+    "evidenceIds": [
+      "ev-wiki-topic-chile-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-pierre-joseph-proudhon-007",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-pierre-joseph-proudhon",
+      "title": "Pierre-Joseph Proudhon"
+    },
+    "to": {
+      "id": "wiki-topic-emma-goldman",
+      "title": "Emma Goldman"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "O pensamento de Proudhon influenciou Emma Goldman.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Pierre-Joseph_Proudhon",
+    "evidenceIds": [
+      "ev-wiki-topic-pierre-joseph-proudhon-rel-007"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-pierre-joseph-proudhon-004",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-pierre-joseph-proudhon",
+      "title": "Pierre-Joseph Proudhon"
+    },
+    "to": {
+      "id": "wiki-topic-mikhail-bakunin",
+      "title": "Mikhail Bakunin"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "O pensamento de Proudhon influenciou Mikhail Bakunin.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Pierre-Joseph_Proudhon",
+    "evidenceIds": [
+      "ev-wiki-topic-pierre-joseph-proudhon-rel-004"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-pierre-joseph-proudhon-005",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-pierre-joseph-proudhon",
+      "title": "Pierre-Joseph Proudhon"
+    },
+    "to": {
+      "id": "wiki-topic-piotr-kropotkin",
+      "title": "Piotr Kropotkin"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "O pensamento de Proudhon influenciou Piotr Kropotkin.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Pierre-Joseph_Proudhon",
+    "evidenceIds": [
+      "ev-wiki-topic-pierre-joseph-proudhon-rel-005"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-errico-malatesta-001",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-mikhail-bakunin",
+      "title": "Mikhail Bakunin"
+    },
+    "to": {
+      "id": "wiki-topic-errico-malatesta",
+      "title": "Errico Malatesta"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "Bakunin exerceu profunda influência sobre Malatesta, segundo o artigo.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Errico_Malatesta",
+    "evidenceIds": [
+      "ev-wiki-topic-errico-malatesta-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-pierre-joseph-proudhon-006",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-pierre-joseph-proudhon",
+      "title": "Pierre-Joseph Proudhon"
+    },
+    "to": {
+      "id": "wiki-topic-errico-malatesta",
+      "title": "Errico Malatesta"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "O pensamento de Proudhon influenciou Errico Malatesta.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Pierre-Joseph_Proudhon",
+    "evidenceIds": [
+      "ev-wiki-topic-pierre-joseph-proudhon-rel-006"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-errico-malatesta-004",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-errico-malatesta",
+      "title": "Errico Malatesta"
+    },
+    "to": {
+      "id": "wiki-topic-piotr-kropotkin",
+      "title": "Piotr Kropotkin"
+    },
+    "type": "reacted_against",
+    "label": "reagiu contra",
+    "context": "Em 1914 Malatesta se manifestou contra os que defendiam a causa aliada, inclusive Kropotkin.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Errico_Malatesta",
+    "evidenceIds": [
+      "ev-wiki-topic-errico-malatesta-rel-004"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q5752-p737-q5749",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-piotr-kropotkin",
+      "title": "Piotr Kropotkin"
+    },
+    "to": {
+      "id": "wiki-topic-pierre-joseph-proudhon",
+      "title": "Pierre-Joseph Proudhon"
+    },
+    "type": "associated_with",
+    "label": "é classificado em associação com",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q5752#P737",
+    "evidenceIds": [
+      "ev-wiki-wd-q5752-p737-q5749"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q5752-p737-q27645",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-piotr-kropotkin",
+      "title": "Piotr Kropotkin"
+    },
+    "to": {
+      "id": "wiki-topic-mikhail-bakunin",
+      "title": "Mikhail Bakunin"
+    },
+    "type": "associated_with",
+    "label": "é classificado em associação com",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q5752#P737",
+    "evidenceIds": [
+      "ev-wiki-wd-q5752-p737-q27645"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q8461-p737-q7260",
+    "tradition": "anarquismo",
+    "from": {
+      "id": "wiki-topic-racismo",
+      "title": "Racismo"
+    },
+    "to": {
+      "id": "wiki-topic-imperialismo",
+      "title": "Imperialismo"
+    },
+    "type": "associated_with",
+    "label": "é classificado em associação com",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q8461#P737",
+    "evidenceIds": [
+      "ev-wiki-wd-q8461-p737-q7260"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-eduard-bernstein-002",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-rosa-luxemburg",
+      "title": "Rosa Luxemburgo"
+    },
+    "to": {
+      "id": "person-eduard-bernstein",
+      "title": "Eduard Bernstein"
+    },
+    "type": "reacted_against",
+    "label": "reagiu contra",
+    "context": "Rosa Luxemburgo condenou o Socialismo de Bernstein em seu ensaio Reforma ou Revolução?, publicado em 1900.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Eduard_Bernstein",
+    "evidenceIds": [
+      "ev-wiki-topic-eduard-bernstein-rel-002"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-karl-marx-001",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "to": {
+      "id": "person-karl-marx",
+      "title": "Karl Marx"
+    },
+    "type": "influenced",
+    "label": "influenciou",
+    "context": "Friedrich Engels exerceu significativa influência sobre as reflexões intelectuais de Marx.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Karl_Marx",
+    "evidenceIds": [
+      "ev-wiki-topic-karl-marx-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q9630-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-trabalhista-reino-unido",
+      "title": "Partido Trabalhista (Reino Unido)"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q9630#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q9630-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q657089-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-dos-trabalhadores",
+      "title": "Partido dos Trabalhadores"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q657089#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q657089-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q657089-p1142-q189280",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-dos-trabalhadores",
+      "title": "Partido dos Trabalhadores"
+    },
+    "to": {
+      "id": "wiki-topic-socialismo-democratico",
+      "title": "Socialismo democrático"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q657089#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q657089-p1142-q189280"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-revisionismo-marxismo-001",
+    "tradition": "marxismo",
+    "from": {
+      "id": "ideology-revisionism",
+      "title": "Revisionismo (marxismo)"
+    },
+    "to": {
+      "id": "person-karl-kautsky",
+      "title": "Karl Kautsky"
+    },
+    "type": "reacted_against",
+    "label": "reagiu contra",
+    "context": "Os revisionistas criticaram Karl Kautsky pela sua ideia de socialismo estatal.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Revisionismo_(marxismo)",
+    "evidenceIds": [
+      "ev-wiki-topic-revisionismo-marxismo-rel-001"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-curation-trotsky-stalin",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-leon-trotsky",
+      "title": "Leon Trótski"
+    },
+    "to": {
+      "id": "person-joseph-stalin",
+      "title": "Josef Stalin"
+    },
+    "type": "reacted_against",
+    "label": "reagiu contra",
+    "context": "Após a morte de Lenin, Trótski tornou-se rival de Stalin na disputa pela hegemonia do partido.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Leon_Tr%C3%B3tski",
+    "evidenceIds": [
+      "ev-rel-curation-trotsky-stalin"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q49768-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-social-democrata-da-alemanha",
+      "title": "Partido Social-Democrata da Alemanha"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q49768#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q49768-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q767010-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-da-revolucao-democratica",
+      "title": "Partido da Revolução Democrática"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q767010#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q767010-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q1414708-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-partido-democratico-trabalhista",
+      "title": "Partido Democrático Trabalhista"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1414708#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q1414708-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q83162-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-congresso-nacional-africano",
+      "title": "Congresso Nacional Africano"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q83162#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q83162-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-topic-karl-kautsky-003",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-karl-kautsky",
+      "title": "Karl Kautsky"
+    },
+    "to": {
+      "id": "person-rosa-luxemburg",
+      "title": "Rosa Luxemburgo"
+    },
+    "type": "reacted_against",
+    "label": "reagiu contra",
+    "context": "Kautsky opôs-se à espontaneidade revolucionária defendida por Rosa Luxemburgo.",
+    "sourceUrl": "https://pt.wikipedia.org/wiki/Karl_Kautsky",
+    "evidenceIds": [
+      "ev-wiki-topic-karl-kautsky-rel-003"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q123585-p1142-q494792",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-uniao-civica-radical",
+      "title": "União Cívica Radical"
+    },
+    "to": {
+      "id": "wiki-topic-terceira-via",
+      "title": "Terceira via"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q123585#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q123585-p1142-q494792"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "rel-wiki-wd-q159454-p1142-q121254",
+    "tradition": "social-democracia",
+    "from": {
+      "id": "wiki-topic-internacional-socialista",
+      "title": "Internacional Socialista"
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia"
+    },
+    "type": "associated_with",
+    "label": "é classificado com a ideologia",
+    "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q159454#P1142",
+    "evidenceIds": [
+      "ev-wiki-wd-q159454-p1142-q121254"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-work-materialism-and-empirio-criticism-p50-person-vladimir-lenin",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-vladimir-lenin",
+      "title": "Lenin"
+    },
+    "to": {
+      "id": "work-materialism-and-empirio-criticism",
+      "title": "Materialismo e Empiriocriticismo"
+    },
+    "type": "authored",
+    "label": "é listado como autor de (afirmação estruturada no Wikidata)",
+    "context": "Mapeado da declaração P50 em Q706081; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q706081",
+    "evidenceIds": [
+      "marxism-evidence-work-materialism-and-empirio-criticism-p50-person-vladimir-lenin"
+    ],
+    "ok": null,
+    "note": ""
+  },
+  {
+    "id": "marxism-statement-work-communist-manifesto-p50-person-friedrich-engels",
+    "tradition": "marxismo",
+    "from": {
+      "id": "person-friedrich-engels",
+      "title": "Friedrich Engels"
+    },
+    "to": {
+      "id": "work-communist-manifesto",
+      "title": "Manifesto Comunista"
+    },
+    "type": "authored",
+    "label": "é listado como autor de (afirmação estruturada no Wikidata)",
+    "context": "Mapeado da declaração P50 em Q40591; a declaração estruturada precisa de revisão editorial e não é, por si, validação historiográfica.",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q40591",
+    "evidenceIds": [
+      "marxism-evidence-work-communist-manifesto-p50-person-friedrich-engels"
+    ],
+    "ok": null,
+    "note": ""
+  }
+]

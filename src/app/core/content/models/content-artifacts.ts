@@ -1,6 +1,17 @@
 import * as z from 'zod';
 
-import { type KnowledgeGraph, relationSchema, temporalExtentSchema } from './content-schema';
+// The public CSP forbids eval and Zod's JIT compiles validators with `new Function`.
+z.config({ jitless: true });
+
+import {
+  assetLicenseSchema,
+  claimClassificationSchema,
+  editorialStatusSchema,
+  type KnowledgeGraph,
+  placeTypeSchema,
+  relationSchema,
+  temporalExtentSchema,
+} from './content-schema';
 import { contentTranslationSchema } from './content-translation';
 import { explorationLayoutSchema } from './exploration-layout';
 
@@ -9,6 +20,61 @@ const resourceSchema = z.object({
   sha256: z.string().regex(/^[a-f0-9]{64}$/),
   bytes: z.number().int().nonnegative(),
 });
+const networkIdentifier = z.string().regex(/^[a-z][a-z0-9-]*$/);
+const networkSlug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+const networkKinds = z.enum([
+  'person',
+  'ideology',
+  'concept',
+  'work',
+  'event',
+  'historical-polity',
+  'place',
+  'party',
+  'institution',
+  'government',
+  'policy',
+  'article',
+]);
+/**
+ * The graph page does not need the long-form sections, reviews, evidences or citations. This
+ * projection keeps only the fields `buildKnowledgeNetwork` reads, so `/grafos` does not download
+ * the full collection bundles.
+ */
+export const networkClaimSchema = z.object({
+  id: networkIdentifier,
+  entityId: networkIdentifier,
+  text: z.string().trim().min(1),
+  classification: claimClassificationSchema,
+  editorialStatus: editorialStatusSchema,
+});
+export const networkEntitySchema = z.object({
+  id: networkIdentifier,
+  slug: networkSlug,
+  title: z.string().trim().min(1),
+  kind: networkKinds,
+  placeType: placeTypeSchema.optional(),
+  summary: z.string().trim().min(1),
+  temporalExtent: temporalExtentSchema.nullable(),
+  editorialStatus: editorialStatusSchema.optional(),
+  discoveryMetadata: z.object({ description: z.string().trim().nullable() }).optional(),
+});
+export const networkAtlasSchema = z.object({
+  id: networkIdentifier,
+  title: z.string().trim().min(1),
+  entities: z.array(networkEntitySchema),
+  claims: z.array(networkClaimSchema),
+  assetLicenses: z.array(assetLicenseSchema),
+  relations: z.array(relationSchema),
+});
+export const networkGraphSchema = z.object({
+  id: z.string(),
+  version: z.string().regex(/^\d+\.\d+\.\d+$/, 'Use versão semântica major.minor.patch.'),
+  updatedAt: z.iso.date(),
+  atlases: z.array(networkAtlasSchema).min(1),
+});
+export type NetworkClaim = z.infer<typeof networkClaimSchema>;
+export type NetworkGraph = z.infer<typeof networkGraphSchema>;
 export const contentManifestSchema = z.object({
   schemaVersion: z.literal(1),
   release: z.string().regex(/^[a-f0-9]{64}$/),
@@ -18,6 +84,8 @@ export const contentManifestSchema = z.object({
   search: resourceSchema,
   adjacency: resourceSchema,
   layouts: resourceSchema,
+  /** Optional so a release published before the projection keeps working. */
+  network: resourceSchema.nullable().default(null),
 });
 /** A published reading: its page and the sourced relations it cites, released as one object. */
 export const ideologyBundleSchema = z.object({ page: z.unknown(), supplement: z.unknown() });

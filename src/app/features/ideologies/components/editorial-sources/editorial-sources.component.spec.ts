@@ -53,9 +53,32 @@ describe('Shared editorial sources', () => {
     expect(root.querySelectorAll('li')).toHaveLength(8);
     const toggle = root.querySelector<HTMLButtonElement>('.sources-more')!;
     expect(toggle.textContent).toContain('Ver todas (12)');
+    expect(toggle.getAttribute('aria-controls')).toBe(root.querySelector('ul')?.id);
     toggle.click();
     fixture.detectChanges();
     expect(root.querySelectorAll('li')).toHaveLength(12);
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('groups identical visible references but keeps a different locator or edition', () => {
+    const fixture = TestBed.createComponent(EditorialSourcesComponent);
+    const base = {
+      title: 'Obra consultada',
+      url: null,
+      edition: 'Edição de 1867',
+      locator: 'Capítulo 1',
+    };
+    fixture.componentRef.setInput('references', [
+      { ...base, id: 'a' },
+      { ...base, id: 'b' },
+      { ...base, id: 'c', locator: 'Capítulo 2' },
+      { ...base, id: 'd', edition: 'Edição de 1900' },
+    ]);
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelectorAll('li')).toHaveLength(3);
+    expect(root.textContent).toContain('Capítulo 1');
+    expect(root.textContent).toContain('Capítulo 2');
+    expect(root.textContent).toContain('Edição de 1900');
   });
 });

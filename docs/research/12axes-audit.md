@@ -1,3 +1,6 @@
+Status: historico
+Última verificação: 08/11/2026
+
 # Auditoria da referência 12axes
 
 Data: 01/11/2026. Commit auditado: `e1c7adeb67c100f13fdbe16f226f5ca21c09801c` (confirmado por `git ls-remote` e checkout raso temporário). Distingue observação de código, execução de navegador e recomendações para implementação independente no ATLAS.

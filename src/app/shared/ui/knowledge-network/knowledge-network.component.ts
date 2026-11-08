@@ -13,14 +13,19 @@ import {
   untracked,
   viewChild,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
+import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import {
   buildKnowledgeNetwork,
   filterNetwork,
+  labelRelevance,
   layoutNetwork,
   linksOf,
   type NetworkEdge,
   networkKindDefinition,
+  networkKindGroups,
   type NetworkKindId,
   networkKinds,
   type NetworkNode,
@@ -33,19 +38,27 @@ import {
   type RelationFamilyId,
   relationNatureDefinition,
   searchNodes,
-  shortestPath,
 } from '@core/content/queries/knowledge-network';
 import {
   LABEL_HEIGHT,
+  labelBudget,
   type LabelCandidate,
+  labelTextLimit,
+  type LabelTier,
   labelWidth,
   type PlacedLabel,
   placeLabels,
+  shortenLabel,
+  spreadCandidates,
+  stableLabelTier,
 } from '@core/content/queries/network-labels';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
+import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
+import { map } from 'rxjs';
 
-import { batchDots, batchEdgeSegments, type EdgeSegment } from './network-batching';
+import { batchEdgeSegments, type EdgeSegment } from './network-batching';
 import { shapePath } from './network-shapes';
 
 interface LabelView extends PlacedLabel {
@@ -71,20 +84,14 @@ const classificationLabels: Record<string, string> = {
   unverified: 'Não verificado',
 };
 
-interface DrawnEdge {
-  edge: NetworkEdge;
-  family: ReturnType<typeof relationFamilyDefinition>;
-  delay: number;
-  fade: number;
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-}
-
 @Component({
   selector: 'app-knowledge-network',
-  imports: [RouterLink, AtlasKindIconComponent],
+  imports: [
+    RouterLink,
+    AtlasKindIconComponent,
+    AtlasGeometricIllustrationComponent,
+    ContentMediaPipe,
+  ],
   templateUrl: './knowledge-network.component.html',
   styleUrl: './knowledge-network.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -96,6 +103,11 @@ interface DrawnEdge {
 export class KnowledgeNetworkComponent {
   private readonly repository = inject(ContentRepository);
   private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly queryNode = toSignal(
+    this.route.queryParamMap.pipe(map((params) => params.get('no'))),
+    { initialValue: this.route.snapshot.queryParamMap.get('no') },
+  );
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
@@ -115,6 +127,10 @@ export class KnowledgeNetworkComponent {
   readonly inspect = output<string>();
 
   readonly kinds = networkKinds;
+  readonly kindGroups = networkKindGroups.map((group) => ({
+    ...group,
+    kinds: networkKinds.filter((kind) => kind.group === group.id),
+  }));
   readonly families = relationFamilies;
   private readonly familyById = new Map(this.families.map((family) => [family.id, family]));
   readonly collections = this.network.collections.filter((c) => c.count > 0);
@@ -152,12 +168,18 @@ export class KnowledgeNetworkComponent {
   readonly dragging = signal(false);
   private readonly wheeling = signal(false);
   private wheelTimer: ReturnType<typeof setTimeout> | undefined;
+  /** Wheel events are coalesced into one view update per frame; trackpads emit dozens per frame. */
+  private wheelFrame = 0;
+  private wheelFactor = 1;
+  private wheelAround: { x: number; y: number } | null = null;
   /** The view is moving (drag, pinch, wheel or glide): heavy parts of the drawing wait. */
   readonly busy = computed(() => this.dragging() || this.animating() || this.wheeling());
   private lastLabels: { k: number; items: readonly LabelView[] } = {
     k: 0,
     items: [],
   };
+  /** Semantic zoom level kept between frames so thresholds do not flicker. */
+  private lastTier: LabelTier | null = null;
   /** Names to draw: those placed for this zoom, never stretched across another one. */
   readonly shownLabels = computed(() => {
     const items = this.labels();
@@ -169,8 +191,6 @@ export class KnowledgeNetworkComponent {
   readonly hoveredEdgeId = signal<string | null>(null);
   /** Pointer position inside the stage, for the hover card. */
   readonly pointerAt = signal<{ x: number; y: number } | null>(null);
-  /** Start of a path between two nodes; the end is the selected node. */
-  readonly pathFromId = signal<string | null>(null);
 
   readonly total = this.network.nodes.length;
   readonly loading = computed(() => this.positions() === null && this.total > 0);
@@ -200,6 +220,18 @@ export class KnowledgeNetworkComponent {
     const node = this.selected();
     return node ? networkKindDefinition(node.kind) : null;
   });
+  /** Licensed image of the selected record, shown at the top of the detail card. */
+  readonly selectedMedia = computed(() => {
+    const node = this.selected();
+    return node ? entityMedia(this.repository.knowledgeGraph, { id: node.id }) : undefined;
+  });
+  /** Geometric art keeps the card visual when the record has no licensed picture. */
+  readonly selectedIllustration = computed(() => {
+    const node = this.selected();
+    if (!node || this.selectedMedia()) return null;
+    const atlas = this.repository.atlasForEntity(node.id);
+    return atlas ? { id: node.id, kind: node.kind, palette: illustrationPalette(atlas.id) } : null;
+  });
   readonly selectedLinks = computed(() => {
     const node = this.selected();
     return node ? linksOf(node.id, this.visible().edges, this.nodeIndex) : [];
@@ -209,42 +241,17 @@ export class KnowledgeNetworkComponent {
     return node ? positionClaims(node).slice(0, 3) : [];
   });
   /**
-   * The node whose surroundings are lit while the reader hovers it. A selection is a permanent
-   * mark, not a filter: dimming every other node would erase the map around the selected one.
+   * The node whose surroundings are lit. Hovering takes precedence; without a hover, the
+   * selection keeps its neighbourhood lit and dims the rest of the map.
    */
-  readonly activeId = computed(() => this.hoveredId());
+  readonly activeId = computed(() => this.hoveredId() ?? this.selectedId());
   readonly activeLinks = computed(() => {
     const id = this.activeId();
     return id ? linksOf(id, this.visible().edges, this.nodeIndex) : [];
   });
   readonly neighbours = computed(() => new Set(this.activeLinks().map((link) => link.other.id)));
-  readonly pathFrom = computed(() => {
-    const id = this.pathFromId();
-    return id ? (this.nodeIndex.get(id) ?? null) : null;
-  });
-  /** Steps from the path origin to the selected node; null when they are not connected. */
-  readonly path = computed(() => {
-    const from = this.pathFromId();
-    const to = this.selectedId();
-    if (!from || !to || from === to) return undefined;
-    return shortestPath(from, to, this.visible().edges);
-  });
-  readonly pathSteps = computed(() =>
-    (this.path() ?? []).map((step) => ({
-      ...step,
-      fromNode: this.nodeIndex.get(step.from)!,
-      toNode: this.nodeIndex.get(step.to)!,
-      nature: relationNatureDefinition(step.edge.nature),
-      forward: step.edge.source === step.from,
-    })),
-  );
-  private readonly pathEdgeIds = computed(
-    () => new Set((this.path() ?? []).map((step) => step.edge.id)),
-  );
-  /** Nodes that stay lit: the path, or the hovered node with its neighbours; null when all are. */
+  /** Nodes that stay lit: the hovered node with its neighbours; null when all are. */
   private readonly litNodes = computed<ReadonlySet<string> | null>(() => {
-    const path = this.path();
-    if (path?.length) return new Set(path.flatMap((step) => [step.from, step.to]));
     const active = this.activeId();
     if (!active) return null;
     return new Set([active, ...this.neighbours()]);
@@ -268,6 +275,20 @@ export class KnowledgeNetworkComponent {
       width,
     };
   });
+  /**
+   * Culling only needs the stage edges, not the detail panel. Keeping the selected-dependent
+   * inset out of this calculation avoids rebuilding every node and edge when a record is picked.
+   */
+  private readonly contentInsets = computed(() => {
+    const rem = 16;
+    const wide = this.wide();
+    return {
+      left: wide && this.controlsShown() ? 19 * rem + 32 : 12,
+      right: 12,
+      top: wide ? 92 : 84,
+      bottom: 64,
+    };
+  });
   readonly counts = computed(() => {
     const kinds = new Map<NetworkKindId, number>();
     for (const node of this.network.nodes) kinds.set(node.kind, (kinds.get(node.kind) ?? 0) + 1);
@@ -277,12 +298,50 @@ export class KnowledgeNetworkComponent {
     return { kinds, families };
   });
 
+  /**
+   * Visible part of the world, in content coordinates, with a screen margin. Off-screen records are
+   * not rendered: at high zoom they are most of the map and repainting them is what made zoom slow.
+   * Null before the stage is measured, when every record is drawn.
+   */
+  private lastCullingView: View = { x: 0, y: 0, k: 1 };
+  /** While the map moves, CSS carries the world; culling waits for the view to settle. */
+  private readonly cullingView = computed(() => {
+    if (this.busy()) return this.lastCullingView;
+    const view = this.view();
+    this.lastCullingView = view;
+    return view;
+  });
+  private readonly contentBounds = computed(() => {
+    const { x, y, k } = this.cullingView();
+    const { width, height } = this.size();
+    if (!width || !height) return null;
+    const inset = this.contentInsets();
+    const margin = 96 / k;
+    return {
+      left: (inset.left - x) / k - margin,
+      top: (inset.top - y) / k - margin,
+      right: (width - inset.right - x) / k + margin,
+      bottom: (height - inset.bottom - y) / k + margin,
+    };
+  });
   readonly drawnNodes = computed(() => {
     const positions = this.positions();
     if (!positions) return [];
+    const bounds = this.contentBounds();
+    // Keyboard focus may arrive during a glide, before the final culling bounds are known.
+    const kept = new Set([this.focusId()].filter((id): id is string => !!id));
     return this.visible().nodes.flatMap((node) => {
       const point = positions.get(node.id);
       if (!point) return [];
+      if (
+        bounds &&
+        !kept.has(node.id) &&
+        (point.x < bounds.left ||
+          point.x > bounds.right ||
+          point.y < bounds.top ||
+          point.y > bounds.bottom)
+      )
+        return [];
       const kind = networkKindDefinition(node.kind);
       const r = nodeRadius(node.degree);
       return [
@@ -305,10 +364,10 @@ export class KnowledgeNetworkComponent {
   private readonly steppedK = computed(() => 2 ** (this.zoomStep4() / 4));
   /** Halos sit behind every well-connected node; keeping them apart lets a node be one path. */
   readonly haloNodes = computed(() => this.drawnNodes().filter((item) => item.node.degree >= 6));
-  /** The selected node and the start of a path pulse above the map. */
+  /** The selected node pulses above the map. */
   readonly pulseNodes = computed(() => {
-    const ids = new Set([this.selectedId(), this.pathFromId()].filter((id): id is string => !!id));
-    return ids.size ? this.drawnNodes().filter((item) => ids.has(item.node.id)) : [];
+    const id = this.selectedId();
+    return id ? this.drawnNodes().filter((item) => item.node.id === id) : [];
   });
   /** A persistent ring around the selected node, independent of the pulse animation. */
   readonly selectionNodes = computed(() => {
@@ -316,18 +375,30 @@ export class KnowledgeNetworkComponent {
     return id ? this.drawnNodes().filter((item) => item.node.id === id) : [];
   });
   /** True when the selected record is one of the shapes drawn in this cut of the map. */
-  readonly selectedVisible = computed(() => this.selectionNodes().length > 0);
+  readonly selectedVisible = computed(() => {
+    const id = this.selectedId();
+    return !!id && this.visible().nodes.some((node) => node.id === id);
+  });
   readonly drawnEdges = computed(() => {
     const positions = this.positions();
     if (!positions) return [];
     const scale = this.nodeScale();
     const { width, height } = this.world();
+    const bounds = this.contentBounds();
     const spacing = Math.sqrt((width * height) / Math.max(1, this.total));
     return this.visible().edges.flatMap((edge: NetworkEdge) => {
       const from = positions.get(edge.source);
       const to = positions.get(edge.target);
       const target = this.nodeIndex.get(edge.target);
       if (!from || !to || !target) return [];
+      if (
+        bounds &&
+        (Math.max(from.x, to.x) < bounds.left ||
+          Math.min(from.x, to.x) > bounds.right ||
+          Math.max(from.y, to.y) < bounds.top ||
+          Math.min(from.y, to.y) > bounds.bottom)
+      )
+        return [];
       const family = relationFamilyDefinition(edge.family);
       const dx = to.x - from.x;
       const dy = to.y - from.y;
@@ -349,11 +420,13 @@ export class KnowledgeNetworkComponent {
       ];
     });
   });
-  /** Edges collapse into a few paths; only lit links stay individual so their animation survives. */
+  /**
+   * Base edges are batched once per zoom step. Selection and hover never rebuild these batches:
+   * their links are drawn as a small individual overlay above the dimmed base.
+   */
   readonly edgeBatches = computed(() => {
     const plain: EdgeSegment[] = [];
     const detailed = new Map<RelationFamilyId, EdgeSegment[]>();
-    const lit: DrawnEdge[] = [];
     for (const item of this.drawnEdges()) {
       const segment: EdgeSegment = {
         key: 'plain',
@@ -363,9 +436,7 @@ export class KnowledgeNetworkComponent {
         y2: item.y2,
         fade: item.fade,
       };
-      if (this.edgeLit(item.edge)) {
-        lit.push(item);
-      } else if (this.edgeDetailed(item.edge)) {
+      if (this.near()) {
         const list = detailed.get(item.family.id) ?? [];
         list.push({ ...segment, key: item.family.id });
         detailed.set(item.family.id, list);
@@ -381,8 +452,12 @@ export class KnowledgeNetworkComponent {
           family: this.familyById.get(familyId),
         })),
       ),
-      lit,
     };
+  });
+  /** Links of the active node stay individual so they animate above the dimmed base. */
+  readonly litEdges = computed(() => {
+    if (!this.activeId() && !this.selectedId() && !this.hoveredEdgeId()) return [];
+    return this.drawnEdges().filter((item) => this.edgeLit(item.edge));
   });
   readonly transform = computed(() => {
     const { x, y, k } = this.view();
@@ -406,37 +481,13 @@ export class KnowledgeNetworkComponent {
     const lit = this.litNodes();
     const selectedId = this.selectedId();
     const activeId = this.activeId();
+    const matched = new Set(this.matchIds());
     const forced = new Set<string>([
-      ...this.matchIds(),
+      ...matched,
       ...[selectedId, this.hoveredId(), this.focusId()].filter((id): id is string => !!id),
     ]);
-    const minDegree = zoom < 1.6 ? 2 : zoom < 3.2 ? 1 : 0;
-    const ranked = [...nodes].sort((a, b) => b.node.degree - a.node.degree);
-    const candidates: LabelCandidate[] = [];
-    ranked.forEach((item, rank) => {
-      const id = item.node.id;
-      if (lit && !lit.has(id)) return;
-      const important = lit !== null || forced.has(id);
-      if (!important && item.node.degree < minDegree) return;
-      candidates.push({
-        id,
-        text: important ? item.node.title : shorten(item.node.title),
-        x: item.x * k,
-        y: item.y * k,
-        radius: item.r * scale * k,
-        priority: id === activeId ? -2 : important ? -1 : rank,
-        forced: id === activeId || id === selectedId,
-      });
-    });
-    const obstacles = nodes
-      .filter((item) => !lit || lit.has(item.node.id))
-      .map((item) => ({
-        id: item.node.id,
-        x: item.x * k,
-        y: item.y * k,
-        radius: item.r * scale * k,
-      }));
-    const byId = new Map(nodes.map((item) => [item.node.id, item]));
+    const tier = stableLabelTier(zoom, this.lastTier);
+    this.lastTier = tier;
     const { x: vx, y: vy } = this.view();
     const { width, height } = this.size();
     const inset = this.insets();
@@ -446,34 +497,102 @@ export class KnowledgeNetworkComponent {
       right: width - inset.right - vx,
       bottom: height - inset.bottom - vy,
     };
-    const limit = lit ? Infinity : Math.round(16 + 30 * zoom);
-    const neighbours = this.neighbours();
-    const placed = placeLabels(candidates, obstacles, limit, bounds).flatMap((label, order) => {
-      const item = byId.get(label.id);
-      return item
-        ? [
-            {
-              ...label,
-              wx: item.x * k,
-              wy: item.y * k,
-              neighbour: neighbours.has(label.id),
-              delay: Math.min(order, 14) * 24,
-            },
-          ]
-        : [];
+    const margin = 40;
+    const visible = nodes.filter((item) => {
+      const x = item.x * k;
+      const y = item.y * k;
+      return (
+        x >= bounds.left - margin &&
+        x <= bounds.right + margin &&
+        y >= bounds.top - margin &&
+        y <= bounds.bottom + margin
+      );
     });
+    // A name that was already on the map keeps a small edge, so thresholds do not make it blink.
+    const previous = new Set(this.lastLabels.items.map((item) => item.id));
+    const forcedItems = nodes.filter((item) => forced.has(item.node.id));
+    const pool = [...visible];
+    const poolIds = new Set(pool.map((item) => item.node.id));
+    for (const item of forcedItems) if (!poolIds.has(item.node.id)) pool.push(item);
+    const scored = pool
+      .filter((item) => !lit || lit.has(item.node.id))
+      .map((item) => ({
+        item,
+        score: labelRelevance(item.node) + (previous.has(item.node.id) ? 0.6 : 0),
+      }))
+      .sort(
+        (a, b) =>
+          b.score - a.score ||
+          a.item.node.title.localeCompare(b.item.node.title, 'pt-BR') ||
+          a.item.node.id.localeCompare(b.item.node.id),
+      );
+    const candidates: LabelCandidate[] = [];
+    const optional: LabelCandidate[] = [];
+    scored.forEach(({ item, score }, rank) => {
+      const id = item.node.id;
+      const important = lit !== null || forced.has(id);
+      // Isolated records only enter the close view; global and middle names need some connection.
+      if (!important && tier !== 'local' && (item.node.degree === 0 || score <= 0)) return;
+      const candidate: LabelCandidate = {
+        id,
+        text: important ? item.node.title : shortenLabel(item.node.title, labelTextLimit(tier)),
+        x: item.x * k,
+        y: item.y * k,
+        radius: item.r * scale * k,
+        priority: important ? -1 : rank,
+        forced: id === activeId || id === selectedId || matched.has(id),
+      };
+      if (important) candidates.push(candidate);
+      else optional.push(candidate);
+    });
+    const obstacles = visible
+      .filter((item) => !lit || lit.has(item.node.id))
+      // Minor, unlabeled dots may pass under a name; large or well-connected shapes never do.
+      .filter((item) => item.node.degree >= 8 || item.r * scale * k >= 10)
+      .map((item) => ({
+        id: item.node.id,
+        x: item.x * k,
+        y: item.y * k,
+        radius: item.r * scale * k,
+      }));
+    const byId = new Map(nodes.map((item) => [item.node.id, item]));
+    const budget = lit ? Infinity : labelBudget(tier);
+    const selected = Number.isFinite(budget)
+      ? spreadCandidates(optional, budget, { width, height })
+      : optional;
+    const neighbours = this.neighbours();
+    const placed = placeLabels([...candidates, ...selected], obstacles, Infinity, bounds).flatMap(
+      (label, order) => {
+        const item = byId.get(label.id);
+        return item
+          ? [
+              {
+                ...label,
+                wx: item.x * k,
+                wy: item.y * k,
+                neighbour: neighbours.has(label.id),
+                delay: Math.min(order, 14) * 24,
+              },
+            ]
+          : [];
+      },
+    );
     this.lastLabels = { k: this.zoomK(), items: placed };
     return placed;
   });
-  /** Short phrases on the links of the lit node, placed at the middle of each link. */
+  /** Short phrases on the links of the active node, placed at the middle of each link. */
   readonly edgeLabels = computed(() => {
     if (this.busy()) return [];
-    const active = this.hoveredId() ?? this.selectedId();
+    const hovered = this.hoveredId();
+    const selected = this.selectedId();
+    const active = hovered ?? selected;
     const positions = this.positions();
     if (!active || !positions) return [];
-    // Zoomed out the lines speak for themselves; the wording appears when the reader comes close.
-    if (!this.near()) return [];
-    const links = this.hoveredId() ? this.activeLinks() : this.selectedLinks();
+    // Selection keeps a few relation labels visible even at the whole-map zoom; hover needs proximity.
+    const showFar = !hovered && !!selected;
+    if (!this.near() && !showFar) return [];
+    const links = hovered ? this.activeLinks() : this.selectedLinks();
+    const limit = this.near() ? 18 : 8;
     const k = this.zoomK();
     const { x: vx, y: vy } = this.view();
     const taken = this.labels().map((label) => {
@@ -485,7 +604,7 @@ export class KnowledgeNetworkComponent {
       return { left, right: left + width, top: y - LABEL_HEIGHT / 2, bottom: y + LABEL_HEIGHT / 2 };
     });
     const placed: { id: string; text: string; x: number; y: number; delay: number }[] = [];
-    for (const link of links.slice(0, 18)) {
+    for (const link of links.slice(0, limit)) {
       const from = positions.get(link.edge.source);
       const to = positions.get(link.edge.target);
       if (!from || !to) continue;
@@ -506,29 +625,6 @@ export class KnowledgeNetworkComponent {
       placed.push({ id: link.edge.id, text, x, y, delay: 120 + placed.length * 30 });
     }
     return placed;
-  });
-  /** Overview of the whole map with the part on screen outlined. */
-  readonly minimap = computed(() => {
-    const world = this.world();
-    if (!this.positions() || !world.width) return null;
-    const width = 168;
-    const height = Math.round(Math.max(60, Math.min(120, (width * world.height) / world.width)));
-    const scale = Math.min(width / world.width, height / world.height);
-    const { x, y, k } = this.view();
-    const { width: sw, height: sh } = this.size();
-    return {
-      width,
-      height,
-      scale,
-      dotPaths: batchDots(
-        this.drawnNodes().map((item) => ({
-          x: item.x * scale,
-          y: item.y * scale,
-          color: item.kind.color,
-        })),
-      ),
-      box: { x: (-x / k) * scale, y: (-y / k) * scale, w: (sw / k) * scale, h: (sh / k) * scale },
-    };
   });
   /** Card that follows the pointer: the node, or the link, under it. */
   readonly hoverCard = computed(() => {
@@ -569,7 +665,7 @@ export class KnowledgeNetworkComponent {
     const { nodes, edges } = this.visible();
     const selected = this.selected();
     return (
-      `${nodes.length} de ${this.total} verbetes e ${edges.length} ligações no recorte.` +
+      `${nodes.length} de ${this.total} registros e ${edges.length} ligações no recorte.` +
       (selected ? ` Selecionado: ${selected.title}.` : '')
     );
   });
@@ -582,7 +678,11 @@ export class KnowledgeNetworkComponent {
   private autoFit = true;
   private pointerFrame = 0;
   private lastPointer: { x: number; y: number } | null = null;
+  /** Hover is settled before labels are recalculated; sweeping across nodes must not rebuild them. */
+  private hoverTimer: ReturnType<typeof setTimeout> | undefined;
+  private hoverTargetId: string | null = null;
   private tweenToken = 0;
+  private glideTimer: ReturnType<typeof setTimeout> | undefined;
   private allK = 0.1;
   private cycleOrigin: string | null = null;
   /** Last selection received from the chapter, so the graph does not echo it back. */
@@ -601,12 +701,27 @@ export class KnowledgeNetworkComponent {
         if (this.positions()) this.reveal(id);
       });
     });
+    // A shared ?no= link selects its node once the compiled positions are ready.
+    effect(() => {
+      const id = this.queryNode();
+      const positions = this.positions();
+      if (this.embedded()) return;
+      if (!id) {
+        if (untracked(() => this.selectedId())) untracked(() => this.clearSelection());
+        return;
+      }
+      if (!positions || !this.nodeIndex.has(id)) return;
+      if (untracked(() => this.selectedId()) === id) return;
+      untracked(() => this.select(id, true));
+    });
     // In a chapter the legend starts folded: the map should read as a map, not as a dashboard.
     effect(() => {
       if (this.embedded() && this.controlsOpen() === null) this.controlsOpen.set(false);
     });
     afterNextRender(() => {
       const element = this.stage()?.nativeElement;
+      if (!this.embedded() && window.matchMedia?.('(max-width: 40rem)').matches)
+        this.onlyConnected.set(true);
       const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
       this.reducedMotion.set(media?.matches ?? false);
       const onMedia = (event: MediaQueryListEvent) => this.reducedMotion.set(event.matches);
@@ -648,10 +763,17 @@ export class KnowledgeNetworkComponent {
         if (this.size().width && !fitted) {
           fitted = true;
           this.fit();
+          // On a phone the whole map is too small to read; start one step closer.
+          if (!this.embedded() && window.matchMedia?.('(max-width: 40rem)').matches)
+            this.zoomBy(1.45, { x: this.size().width / 2, y: this.size().height / 2 });
         }
       });
       this.destroyRef.onDestroy(() => {
         clearTimeout(timer);
+        clearTimeout(this.hoverTimer);
+        if (this.glideTimer) clearTimeout(this.glideTimer);
+        clearTimeout(this.wheelTimer);
+        if (this.wheelFrame) cancelAnimationFrame(this.wheelFrame);
         if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
         observer.disconnect();
         media?.removeEventListener('change', onMedia);
@@ -709,11 +831,8 @@ export class KnowledgeNetworkComponent {
       _: () => this.zoomStep(0.8),
       '0': () => this.fit(true),
       Home: () => this.fit(true),
-      c: () => this.togglePathStart(),
-      C: () => this.togglePathStart(),
       Escape: () => {
         if (this.shortcutsOpen()) this.shortcutsOpen.set(false);
-        else if (this.pathFromId()) this.pathFromId.set(null);
         else if (this.selectedId() && !this.embedded()) this.clearSelection();
         else if (this.controlsOpen() && !this.wide()) this.controlsOpen.set(false);
       },
@@ -771,54 +890,54 @@ export class KnowledgeNetworkComponent {
       }
     }
     this.picked.emit(id);
+    this.syncUrl(id);
   }
   /** Brings the record of the selected node into view under the map. */
   inspectSelected(): void {
     const node = this.selected();
     if (node) this.inspect.emit(node.id);
   }
+  /** The selected node itself, used to restore focus after the shared context closes. */
+  selectedTrigger(): HTMLElement | null {
+    const id = this.selectedId();
+    if (!id) return null;
+    return this.host.nativeElement.querySelector<HTMLElement>(`[data-node="${id}"]`);
+  }
   clearSelection(): void {
     this.selectedId.set(null);
     this.picked.emit(null);
+    this.syncUrl(null);
   }
   isDimmed(id: string): boolean {
     const lit = this.litNodes();
     if (lit) return !lit.has(id);
     return this.query().trim() !== '' && !this.matchIds().has(id);
   }
+  isRelated(id: string): boolean {
+    const active = this.activeId();
+    return !!active && id !== active && this.neighbours().has(id);
+  }
   edgeDimmed(edge: NetworkEdge): boolean {
-    const path = this.path();
-    if (path?.length) return !this.pathEdgeIds().has(edge.id);
     const active = this.activeId();
     return !!active && edge.source !== active && edge.target !== active;
   }
   /**
    * Colour, dash and arrowhead tell the kind of link. Far away every link is the same plain line;
-   * up close, or on the links of the selected node and of a path, the kind shows.
+   * up close, or on the links of the selected node, the kind shows.
    */
   edgeDetailed(edge: NetworkEdge): boolean {
     if (this.near()) return true;
     const selected = this.selectedId();
-    return (
-      this.pathEdgeIds().has(edge.id) ||
-      (!!selected && (edge.source === selected || edge.target === selected))
-    );
+    return !!selected && (edge.source === selected || edge.target === selected);
   }
   edgeLit(edge: NetworkEdge): boolean {
     const active = this.activeId();
     const selected = this.selectedId();
     return (
-      this.pathEdgeIds().has(edge.id) ||
       edge.id === this.hoveredEdgeId() ||
       (!!active && (edge.source === active || edge.target === active)) ||
       (!!selected && (edge.source === selected || edge.target === selected))
     );
-  }
-  /** Invisible click target around an icon: never under 16 px on screen, whatever the zoom. */
-  hitRadius(radius: number): number {
-    const scale = this.nodeScale();
-    const k = this.steppedK();
-    return Math.max(radius * scale + 6 / k, 16 / k);
   }
   /** Selection ring keeps the same screen gap from the shape at every zoom. */
   selectionRadius(radius: number): number {
@@ -858,10 +977,13 @@ export class KnowledgeNetworkComponent {
     return classificationLabels[value] ?? value;
   }
 
-  nodeClick(id: string): void {
+  /** A click selects the node whose icon is under the pointer; pointer up clears the background. */
+  canvasClick(event: MouseEvent): void {
     if (this.suppressClick) return;
-    // The card follows the nearest node under the pointer; the click follows the card.
-    this.select(this.hoveredId() ?? id);
+    const rect = this.stage()?.nativeElement.getBoundingClientRect();
+    if (!rect) return;
+    const node = this.nodeAt({ x: event.clientX - rect.left, y: event.clientY - rect.top });
+    if (node) this.select(node.id);
   }
   nodeKey(event: KeyboardEvent, id: string): void {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -894,6 +1016,11 @@ export class KnowledgeNetworkComponent {
   // ---- relations: hover, path and neighbours ----
 
   hoverNode(id: string | null): void {
+    if (this.hoverTimer) {
+      clearTimeout(this.hoverTimer);
+      this.hoverTimer = undefined;
+    }
+    this.hoverTargetId = id;
     this.hoveredId.set(id);
     if (id) this.schedulePointer();
   }
@@ -907,7 +1034,7 @@ export class KnowledgeNetworkComponent {
     const at = { x: event.clientX - rect.left, y: event.clientY - rect.top };
     this.lastPointer = at;
     const node = this.nodeAt(at);
-    if (node?.id !== this.hoveredId()) this.hoverNode(node?.id ?? null);
+    if (node?.id !== this.hoverTargetId) this.scheduleHover(node?.id ?? null);
     // The card only exists over a node (or a lit link up close); elsewhere no signal is written.
     if (!node && !this.hoveredEdgeId() && !this.near()) return;
     this.schedulePointer();
@@ -915,18 +1042,13 @@ export class KnowledgeNetworkComponent {
   stageLeave(): void {
     if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
     this.pointerFrame = 0;
+    if (this.hoverTimer) clearTimeout(this.hoverTimer);
+    this.hoverTimer = undefined;
+    this.hoverTargetId = null;
     this.lastPointer = null;
     this.pointerAt.set(null);
     this.hoveredId.set(null);
     this.hoveredEdgeId.set(null);
-  }
-  togglePathStart(): void {
-    const id = this.selectedId();
-    if (this.pathFromId()) this.pathFromId.set(null);
-    else if (id) this.pathFromId.set(id);
-  }
-  clearPath(): void {
-    this.pathFromId.set(null);
   }
   /** Moves selection or focus to the next (or previous) neighbour of a node. */
   cycleNeighbour(id: string, step: 1 | -1): void {
@@ -948,19 +1070,6 @@ export class KnowledgeNetworkComponent {
     this.reveal(next);
     this.focusNode(next);
   }
-  /** Click or key on the overview: centres the view on that spot. */
-  minimapJump(event: MouseEvent): void {
-    const map = this.minimap();
-    if (!map) return;
-    const rect = (event.currentTarget as SVGElement).getBoundingClientRect();
-    const wx = (event.clientX - rect.left) / map.scale;
-    const wy = (event.clientY - rect.top) / map.scale;
-    const { width, height } = this.size();
-    const { k } = this.view();
-    this.autoFit = false;
-    this.glideTo({ k, x: width / 2 - wx * k, y: height / 2 - wy * k }, true);
-  }
-
   // ---- view: zoom and pan ----
 
   fit(animate = false): void {
@@ -1002,15 +1111,24 @@ export class KnowledgeNetworkComponent {
   }
 
   wheel(event: WheelEvent): void {
+    // In a chapter the page keeps the wheel; Ctrl/Meta or the zoom buttons operate the graph.
+    if (this.embedded() && !event.ctrlKey && !event.metaKey) return;
     event.preventDefault();
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (!rect) return;
     this.wheeling.set(true);
     clearTimeout(this.wheelTimer);
     this.wheelTimer = setTimeout(() => this.wheeling.set(false), 160);
-    this.zoomBy(Math.exp(-event.deltaY * 0.0015), {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top,
+    this.wheelFactor *= Math.exp(-event.deltaY * 0.0015);
+    this.wheelAround = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    if (this.wheelFrame) return;
+    this.wheelFrame = requestAnimationFrame(() => {
+      this.wheelFrame = 0;
+      const factor = this.wheelFactor;
+      const around = this.wheelAround;
+      this.wheelFactor = 1;
+      this.wheelAround = null;
+      if (around) this.zoomBy(factor, around);
     });
   }
   pointerDown(event: PointerEvent): void {
@@ -1023,6 +1141,11 @@ export class KnowledgeNetworkComponent {
       this.pinch = { distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, origin: this.view() };
       this.pointer = null;
       this.dragging.set(true);
+      return;
+    }
+    // Inside a chapter, one finger belongs to the reading scroll, not to the map.
+    if (this.embedded() && event.pointerType === 'touch') {
+      this.pointer = null;
       return;
     }
     this.pointer = {
@@ -1082,10 +1205,7 @@ export class KnowledgeNetworkComponent {
       this.suppressClick = true;
       // A drag ends with a click on whatever is under the pointer; let it pass first.
       setTimeout(() => (this.suppressClick = false));
-    } else if (
-      !this.embedded() &&
-      (event.target as Element).closest('[data-node], [data-hit]') === null
-    ) {
+    } else if (!this.embedded() && (event.target as Element).closest('[data-node]') === null) {
       // In a chapter the selection mirrors the record below: there is no empty state to clear to.
       this.clearSelection();
     }
@@ -1137,6 +1257,20 @@ export class KnowledgeNetworkComponent {
       reason: this.reasonOf(edge),
       source: edge.sourceName,
     };
+  }
+  /** Pointer sweeps settle before labels are recalculated; crossing nodes must not rebuild them. */
+  private scheduleHover(id: string | null): void {
+    if (this.hoverTimer) clearTimeout(this.hoverTimer);
+    this.hoverTimer = undefined;
+    if (id === null) {
+      this.hoverNode(null);
+      return;
+    }
+    this.hoverTargetId = id;
+    this.hoverTimer = setTimeout(() => {
+      this.hoverTimer = undefined;
+      if (this.hoverTargetId === id) this.hoverNode(id);
+    }, 70);
   }
   private schedulePointer(): void {
     if (this.pointerFrame || !this.lastPointer || typeof requestAnimationFrame !== 'function')
@@ -1214,6 +1348,8 @@ export class KnowledgeNetworkComponent {
   /** Moves the view; with animation it glides, unless the reader asked for reduced motion. */
   private glideTo(target: View, animate: boolean): void {
     const token = ++this.tweenToken;
+    if (this.glideTimer) clearTimeout(this.glideTimer);
+    this.glideTimer = undefined;
     if (!animate || this.reducedMotion() || typeof requestAnimationFrame === 'undefined') {
       this.animating.set(false);
       this.view.set(target);
@@ -1222,9 +1358,20 @@ export class KnowledgeNetworkComponent {
     const from = this.view();
     const start = performance.now();
     const duration = 520;
+    let done = false;
+    const finish = () => {
+      if (done || token !== this.tweenToken) return;
+      done = true;
+      if (this.glideTimer) clearTimeout(this.glideTimer);
+      this.glideTimer = undefined;
+      this.view.set(target);
+      this.animating.set(false);
+    };
+    // A hidden tab can pause requestAnimationFrame; finish anyway instead of keeping the map busy.
+    this.glideTimer = setTimeout(finish, duration + 140);
     this.animating.set(true);
     const step = () => {
-      if (token !== this.tweenToken) return;
+      if (done || token !== this.tweenToken) return;
       const t = Math.max(0, Math.min(1, (performance.now() - start) / duration));
       const e = easeInOut(t);
       this.view.set({
@@ -1233,23 +1380,35 @@ export class KnowledgeNetworkComponent {
         y: from.y + (target.y - from.y) * e,
       });
       if (t < 1) requestAnimationFrame(step);
-      else {
-        this.view.set(target);
-        this.animating.set(false);
-      }
+      else finish();
     };
     requestAnimationFrame(step);
   }
   private stopGlide(): void {
     this.tweenToken++;
+    if (this.glideTimer) clearTimeout(this.glideTimer);
+    this.glideTimer = undefined;
     this.animating.set(false);
   }
 
   /**
-   * Nearest drawn node to a point inside the stage, using the same screen reach as the hit
-   * circles. Resolving by distance keeps hover and click on the icon the reader is pointing at,
-   * even when two hit areas overlap in a dense map.
+   * Nearest drawn node to a point inside the stage. Resolving by distance keeps hover and click on
+   * the icon the reader is pointing at, even when two nodes overlap in a dense map; the reach is
+   * never under 16 px on screen, whatever the zoom, so a click just beside an icon still lands.
    */
+  /** Keeps the selected node in the address so a recorte can be shared or restored. */
+  private syncUrl(id: string | null): void {
+    if (this.embedded()) return;
+    const current = this.route.snapshot.queryParamMap.get('no');
+    if (current === id) return;
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { no: id },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
+  }
+
   private nodeAt(point: { x: number; y: number }): NetworkNode | null {
     const { k, x: vx, y: vy } = this.view();
     const scale = this.nodeScale();
@@ -1372,11 +1531,6 @@ function hash(text: string): number {
   let value = 2166136261;
   for (let i = 0; i < text.length; i++) value = Math.imul(value ^ text.charCodeAt(i), 16777619);
   return value >>> 0;
-}
-
-/** Long titles are cut in the crowded view; the full name shows when the node is lit. */
-function shorten(title: string, limit = 28): string {
-  return title.length <= limit ? title : `${title.slice(0, limit - 1).trimEnd()}…`;
 }
 
 function easeInOut(t: number): number {

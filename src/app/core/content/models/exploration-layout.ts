@@ -1,5 +1,8 @@
 import * as z from 'zod';
 
+// The public CSP forbids eval and Zod's JIT compiles validators with `new Function`.
+z.config({ jitless: true });
+
 export const explorationTimelineSchema = z.object({
   ticks: z.array(z.object({ year: z.number().int(), x: z.number().finite() })),
   markers: z.record(

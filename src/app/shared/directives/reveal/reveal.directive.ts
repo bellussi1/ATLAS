@@ -3,6 +3,42 @@ import { DestroyRef, Directive, ElementRef, inject, PLATFORM_ID } from '@angular
 import { prefersReducedMotion } from '@shared/motion/prefers-reduced-motion';
 
 let observer: IntersectionObserver | undefined;
+let queued = new Set<HTMLElement>();
+let scheduled = false;
+
+/** Hides one block and watches it until the first intersection. */
+function hide(element: HTMLElement) {
+  element.ownerDocument.documentElement.classList.add('atlas-reveal');
+  element.classList.add('is-pending');
+  if (!observer)
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.remove('is-pending');
+          observer?.unobserve(entry.target);
+        }
+      },
+      { rootMargin: '0px 0px -8% 0px' },
+    );
+  observer.observe(element);
+}
+
+/**
+ * Reads every pending rectangle before writing any class, so a page with many
+ * revealed blocks causes a single layout instead of one per directive. Two
+ * frames guarantee the browser has painted first, keeping the read passive.
+ */
+function flush() {
+  scheduled = false;
+  const items = [...queued];
+  queued = new Set();
+  const view = items[0]?.ownerDocument.defaultView;
+  if (!view) return;
+  const tops = items.map((element) => element.getBoundingClientRect().top);
+  for (let index = 0; index < items.length; index++)
+    if (tops[index] >= view.innerHeight) hide(items[index]);
+}
 
 /**
  * Reveals a block once, just before it scrolls into view. Content stays visible
@@ -16,21 +52,13 @@ export class AtlasRevealDirective {
     const element = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
     const view = element.ownerDocument.defaultView;
     if (!view?.IntersectionObserver || prefersReducedMotion(element.ownerDocument)) return;
-    const top = element.getBoundingClientRect().top;
-    if (top < view.innerHeight) return;
-    element.ownerDocument.documentElement.classList.add('atlas-reveal');
-    element.classList.add('is-pending');
-    observer ??= new view.IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          entry.target.classList.remove('is-pending');
-          observer?.unobserve(entry.target);
-        }
-      },
-      { rootMargin: '0px 0px -8% 0px' },
-    );
-    observer.observe(element);
-    inject(DestroyRef).onDestroy(() => observer?.unobserve(element));
+    queued.add(element);
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => requestAnimationFrame(flush));
+    inject(DestroyRef).onDestroy(() => {
+      queued.delete(element);
+      observer?.unobserve(element);
+    });
   }
 }

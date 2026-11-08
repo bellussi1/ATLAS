@@ -1,6 +1,9 @@
 import { type KnowledgeGraph, sourceSchema } from '@core/content/models/content-schema';
 import * as z from 'zod';
 
+// The public CSP forbids eval and Zod's JIT compiles validators with `new Function`.
+z.config({ jitless: true });
+
 import { canonicalChapters } from './ideology-chapters';
 import { positionAxisIds } from './position-axes';
 
@@ -45,6 +48,20 @@ export const explorationItemSchema = z.object({
     'limitação editorial',
   ]),
 });
+/** A short end-of-chapter reflection, written for the chapter instead of generated from relations. */
+export const chapterReviewSchema = z.object({
+  question: z.string().min(1),
+  answer: z.string().min(1),
+  /** What kind of reasoning the question asks for, shown before the answer. */
+  rationale: z.string().min(1),
+  sourceIds: z.array(id).min(1),
+  /** Earlier records that gain a new meaning here, each with the connection to perceive. */
+  revisit: z
+    .array(z.object({ entityId: id, why: z.string().min(1) }))
+    .max(3)
+    .default([]),
+});
+export type ChapterReviewData = z.infer<typeof chapterReviewSchema>;
 export const pageBlockSchema = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('explorations'),
@@ -101,7 +118,10 @@ export const pageBlockSchema = z.discriminatedUnion('type', [
       .array(z.object({ itemId: id, start: z.number().int(), end: z.number().int() }))
       .min(1),
     entityIds: z.array(id),
+    /** Records that changed the tradition, each explained in `markerNotes`. */
     markerIds: z.array(id),
+    /** Why each transformative record matters for this tradition. */
+    markerNotes: z.record(z.string(), z.string().min(1)).default({}),
   }),
   z.object({ type: z.literal('graph'), edgeIds: z.array(id) }),
   z.object({ type: z.literal('argument'), topic: z.literal('smith-marx') }),
@@ -121,6 +141,17 @@ export const positionClaimSchema = z.object({
   editorialStatus: z.literal('pending'),
 });
 export type PositionClaim = z.infer<typeof positionClaimSchema>;
+/** One picture chosen for the opening: the record, the existing asset and why it belongs there. */
+export const posterFigureSchema = z.object({
+  entityId: id,
+  assetId: id,
+  /** Short identification under the picture; defaults to the record title. */
+  label: z.string().min(1).optional(),
+  /** Editorial reason shown in the credits and kept with the record. */
+  note: z.string().min(1),
+  frame: z.enum(['disc', 'arch', 'quarter', 'square']).optional(),
+});
+export type PosterFigure = z.infer<typeof posterFigureSchema>;
 /** Page identity; keep in step with `MosaicPalette`, which the page component type-checks. */
 export const ideologyPaletteSchema = z.enum([
   'atlas',
@@ -175,6 +206,10 @@ export const ideologyPageSchema = z
       keyVisualization: z.enum(['graph', 'timeline', 'comparison']),
     }),
     portrait: z.object({ entityId: id, assetId: id }).nullable().default(null),
+    /** Explicit editorial selection for the opening images; empty means the safe automatic fallback. */
+    poster: z
+      .object({ figures: z.array(posterFigureSchema).max(4).default([]) })
+      .default({ figures: [] }),
     chapters: z.array(
       z.object({
         id,
@@ -188,6 +223,8 @@ export const ideologyPageSchema = z
         /** One-sentence link from this chapter to the next. */
         bridge: z.string().min(1).nullable().default(null),
         sourceIds: z.array(id),
+        /** Editorial review, present only when a question is worth asking. */
+        review: chapterReviewSchema.nullable().default(null),
         gap: z.string().min(1).nullable(),
         /** `pending`: the chapter is kept in place but has no verified content yet. */
         coverage: z.enum(['complete', 'partial', 'pending']).default('complete'),
@@ -283,6 +320,56 @@ export function validateIdeologyDossier(
     if (asset?.reproduction !== 'allowed' || !asset.licenseUrl || !asset.creator)
       throw new Error('Retrato sem licença e autoria.');
   }
+  const pageEntityIds = new Set<string>();
+  const addEntityIds = (ids: readonly string[] | undefined) => {
+    for (const value of ids ?? []) pageEntityIds.add(value);
+  };
+  if (page.portrait) pageEntityIds.add(page.portrait.entityId);
+  for (const chapter of page.chapters)
+    for (const block of chapter.blocks) {
+      if ('entityIds' in block) addEntityIds(block.entityIds);
+      if (block.type === 'atlas') addEntityIds([block.rootEntityId]);
+      if (block.type === 'reading-path')
+        addEntityIds(block.works.flatMap((work) => (work.entityId ? [work.entityId] : [])));
+      if (block.type === 'chronology') addEntityIds(block.markerIds);
+      const items =
+        block.type === 'explorations'
+          ? block.items
+          : block.type === 'debate'
+            ? block.topics.flatMap((topic) => [
+                topic.defence,
+                topic.criticism,
+                topic.response,
+                topic.limits,
+              ])
+            : [];
+      for (const item of items) addEntityIds(item.entityIds);
+    }
+  const assets = new Map(
+    graph.atlases.flatMap((atlas) =>
+      atlas.assetLicenses.map((asset) => [asset.id, asset] as const),
+    ),
+  );
+  const posterAssets = new Set<string>();
+  for (const figure of page.poster.figures) {
+    requireIds([figure.entityId], entities);
+    if (!pageEntityIds.has(figure.entityId))
+      throw new Error('Imagem de abertura sem vínculo com a leitura.');
+    const asset = assets.get(figure.assetId);
+    if (!asset || asset.entityId !== figure.entityId)
+      throw new Error('Imagem de abertura não corresponde ao registro.');
+    if (
+      asset.status !== 'known' ||
+      asset.reproduction !== 'allowed' ||
+      !asset.license ||
+      !asset.licenseUrl ||
+      !asset.attribution ||
+      !asset.filePageUrl
+    )
+      throw new Error('Imagem de abertura sem licença, crédito ou link verificável.');
+    if (posterAssets.has(asset.assetPath)) throw new Error('Imagem de abertura repetida.');
+    posterAssets.add(asset.assetPath);
+  }
   for (const edge of supplement.edges) {
     requireIds([edge.from, edge.to], entities);
     requireIds(edge.sources, sources);
@@ -296,8 +383,21 @@ export function validateIdeologyDossier(
       c.blocks.flatMap((b) => (b.type === 'explorations' ? b.items.map((i) => i.id) : [])),
     ),
   );
+  const reviewQuestions = new Set<string>();
   for (const chapter of page.chapters) {
     requireIds(chapter.sourceIds, sources);
+    if (chapter.review) {
+      requireIds(chapter.review.sourceIds, sources);
+      if (chapter.review.sourceIds.some((sourceId) => !chapter.sourceIds.includes(sourceId)))
+        throw new Error('Revisão cita fonte fora dos capítulos.');
+      const revisitIds = chapter.review.revisit.map((item) => item.entityId);
+      requireIds(revisitIds, entities);
+      if (new Set(revisitIds).size !== revisitIds.length)
+        throw new Error('Revisão repete um registro revisitado.');
+      const question = chapter.review.question.trim().toLocaleLowerCase('pt-BR');
+      if (reviewQuestions.has(question)) throw new Error('Pergunta de revisão repetida.');
+      reviewQuestions.add(question);
+    }
     for (const block of chapter.blocks) {
       if ('entityIds' in block) requireIds(block.entityIds, entities);
       if ('edgeIds' in block) requireIds(block.edgeIds, edges);
@@ -321,6 +421,9 @@ export function validateIdeologyDossier(
         );
         if (block.epochs.some((e) => e.end < e.start))
           throw new Error('Época com datas invertidas.');
+        const markerIds = new Set(block.markerIds);
+        if (Object.keys(block.markerNotes).some((id) => !markerIds.has(id)))
+          throw new Error('Nota de marco para registro ausente do bloco.');
       }
       const items =
         block.type === 'explorations'

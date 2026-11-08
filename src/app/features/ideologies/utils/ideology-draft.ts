@@ -40,6 +40,7 @@ export function ideologyDraft(input: IdeologyDraftInput): IdeologyPage {
       ...(input.palette ? { palette: input.palette } : {}),
     },
     portrait: null,
+    poster: { figures: [] },
     chapters: canonicalChapters.map((chapter) => ({
       id: chapter.id,
       anchor: chapter.id,
@@ -50,6 +51,7 @@ export function ideologyDraft(input: IdeologyDraftInput): IdeologyPage {
       question: null,
       bridge: null,
       sourceIds: [],
+      review: null,
       gap: 'Pesquisa pendente: nenhuma afirmação foi verificada para este capítulo.',
       coverage: 'pending',
       layout: chapter.id === 'introducao' ? 'introduction' : 'documents',

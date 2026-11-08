@@ -8,12 +8,10 @@ import {
   readerProse,
   relationGroups,
 } from '@core/content/editorial/reader-voice';
+import { amazonBookLink } from '@core/content/queries/amazon-books';
 import { entityContext } from '@core/content/queries/entity-context';
-import {
-  catalogueForKind,
-  explorerCatalogues,
-  safeExplorerReturn,
-} from '@core/content/queries/knowledge-explorer';
+import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { catalogueForKind, safeExplorerReturn } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels, localizedEntity } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { readingPath } from '@core/routing/reading-routes';
@@ -132,6 +130,11 @@ export class RecordComponent {
     'person-piotr-kropotkin': { path: readingPath('anarquismo'), title: 'Anarquismo' },
   };
   readonly dossier = computed(() => this.readingByEntity[this.entity()?.id ?? ''] ?? null);
+  /** Purchase link only for records that are books with a known author. */
+  readonly amazon = computed(() => {
+    const entity = this.entity();
+    return entity?.kind === 'work' ? amazonBookLink(entity.slug, entity.title) : null;
+  });
   readonly readingMinutes = computed(() => {
     const entity = this.entity();
     if (!entity) return 0;

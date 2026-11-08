@@ -6,6 +6,14 @@ import { RecordCardComponent } from '@shared/ui/record-card/record-card.componen
 
 type Work = Extract<PageBlock, { type: 'reading-path' }>['works'][number];
 
+export interface ThemeOption {
+  name: string;
+  count: number;
+}
+
+/** Quick theme chips before the full list; the rest stay one select away. */
+const QUICK_THEME_LIMIT = 6;
+
 /**
  * Reading roadmap: three stages of difficulty as a compact guided trail. Each work is a
  * row that expands in place; themes dim, never remove, so the trail keeps its shape.
@@ -25,12 +33,28 @@ export class ReadingPathComponent {
     { key: 'intermediário', label: 'Aprofunde', hint: 'Argumentos completos e debates' },
     { key: 'avançado', label: 'Avance', hint: 'Obras longas e teoria' },
   ] as const;
-  readonly themes = computed(() => [...new Set(this.works().map((w) => w.theme))]);
+  /** Themes sorted by how many works they gather, then by name. */
+  readonly themes = computed<ThemeOption[]>(() => {
+    const counts = new Map<string, number>();
+    for (const work of this.works()) {
+      counts.set(work.theme, (counts.get(work.theme) ?? 0) + 1);
+    }
+    return [...counts]
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'pt-BR'));
+  });
+  readonly quickThemes = computed(() => this.themes().slice(0, QUICK_THEME_LIMIT));
+  readonly hasOverflow = computed(() => this.themes().length > this.quickThemes().length);
   /** The suggested first step: the first introductory work. */
   readonly first = computed(() => this.works().find((w) => w.level === 'introdutório'));
   readonly matching = computed(() => {
     const theme = this.theme();
     return theme ? this.works().filter((w) => w.theme === theme).length : this.works().length;
+  });
+  readonly status = computed(() => {
+    const theme = this.theme();
+    if (!theme) return `Todos os temas · ${this.works().length} obras`;
+    return `${theme} · ${this.matching()} de ${this.works().length} obras em destaque`;
   });
 
   stage(level: Work['level']): Work[] {
@@ -41,6 +65,12 @@ export class ReadingPathComponent {
   }
   toggle(theme: string): void {
     this.theme.update((current) => (current === theme ? null : theme));
+  }
+  clear(): void {
+    this.theme.set(null);
+  }
+  selectTheme(value: string): void {
+    this.theme.set(value || null);
   }
   expand(work: Work): void {
     this.open.update((current) => (current === work.title ? null : work.title));

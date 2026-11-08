@@ -227,7 +227,7 @@ a.atlas-link--feature {
 .atlas-band-heading > p:last-child {
   margin: 0;
   color: var(--color-ink-muted);
-  font: 1rem/1.5 var(--font-serif);
+  font: var(--text-body)/1.5 var(--font-serif);
 }
 
 .atlas-band-heading em {
@@ -247,7 +247,7 @@ a.atlas-link--feature {
 
 /* Expanded Archivo label: kickers and small headings that used to be monospace. */
 .atlas-label {
-  font: 500 0.875rem/1.5 var(--font-sans);
+  font: 500 var(--text-small)/1.5 var(--font-sans);
   font-stretch: var(--stretch-label);
   letter-spacing: 0.02em;
   margin: 0 0 1.25rem;
@@ -258,13 +258,13 @@ a.atlas-link--feature {
 .reading-heading {
   margin: 0 0 0.5rem;
   color: var(--color-ink);
-  font: 700 1.0625rem/1.3 var(--font-sans);
+  font: 700 var(--text-subhead)/1.3 var(--font-sans);
   letter-spacing: -0.01em;
 }
 
 .reading-empty {
   color: var(--color-ink-muted);
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
 }
 
 /* A record named in a relation: opens that record's sheet. */

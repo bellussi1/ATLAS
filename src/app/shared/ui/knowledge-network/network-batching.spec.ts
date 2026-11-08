@@ -1,4 +1,4 @@
-import { batchDots, batchEdgeSegments } from './network-batching';
+import { batchEdgeSegments } from './network-batching';
 
 describe('graph batching', () => {
   it('joins edges by key and fade bucket, keeping the coordinates', () => {
@@ -13,20 +13,7 @@ describe('graph batching', () => {
     expect(batches[1].opacity).toBeCloseTo(0.11);
   });
 
-  it('merges minimap dots of the same colour into one path', () => {
-    const paths = batchDots([
-      { x: 1, y: 2, color: 'red' },
-      { x: 3, y: 4, color: 'blue' },
-      { x: 5, y: 6, color: 'red' },
-    ]);
-    expect(paths).toEqual([
-      { color: 'blue', d: 'M3 4h0' },
-      { color: 'red', d: 'M1 2h0M5 6h0' },
-    ]);
-  });
-
   it('emits nothing for an empty map', () => {
     expect(batchEdgeSegments([])).toEqual([]);
-    expect(batchDots([])).toEqual([]);
   });
 });

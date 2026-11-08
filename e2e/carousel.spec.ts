@@ -2,21 +2,33 @@ import AxeBuilder from '@axe-core/playwright';
 
 import { expect, test } from './content-fixture';
 
-test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ page }) => {
+test('positions carousel answers arrows, progress bar, keyboard and drag', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.goto('/leitura/marxismo/');
-  const region = page.getByRole('region', { name: 'Fichas deste atlas' });
+  const region = page.getByRole('region', { name: 'Posições por registro' });
   await region.scrollIntoViewIfNeeded();
   await expect(region).toBeVisible();
   const carousel = page.locator('app-card-carousel', { has: region });
   const count = carousel.locator('.carousel-count');
   await expect(count).toHaveText(/1–\d+ de \d+/);
 
-  await carousel.getByRole('button', { name: /^Próximo: Fichas deste atlas$/ }).click();
+  await carousel.getByRole('button', { name: /^Próximo: Posições por registro$/ }).click();
   await expect(count).not.toHaveText(/^\s*1–/);
 
-  await carousel.getByRole('button', { name: /^Anterior: Fichas deste atlas$/ }).click();
-  await expect(count).toHaveText(/1–\d+ de \d+/);
+  await carousel.getByRole('button', { name: /^Anterior: Posições por registro$/ }).click();
+  await expect(count).toHaveText(/^\s*1–/);
+
+  const dots = carousel.locator('.carousel-dot');
+  await expect(dots).toHaveCount(6);
+  await dots.nth(2).click();
+  await expect(count).toHaveText(/^\s*3/);
+  await expect(carousel.getByRole('status')).toContainText('Registro 3 de 6');
+
+  const firstCard = carousel.locator('article.entity').first();
+  const poder = firstCard.locator('.axis-chip').filter({ hasText: 'Limites do Estado' });
+  await poder.click();
+  await expect(poder).toHaveAttribute('aria-pressed', 'true');
+  await expect(firstCard.locator('.axis-panel h5')).toHaveText('Limites ao poder do Estado');
 
   const bar = carousel.locator('.carousel-bar');
   const box = await bar.boundingBox();
@@ -47,6 +59,34 @@ test('atlas carousel answers arrows, progress bar, keyboard and drag', async ({ 
   ).toEqual([]);
 });
 
+test('positions carousel keeps dots, chips and evidence usable on a phone', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/leitura/marxismo/');
+  const region = page.getByRole('region', { name: 'Posições por registro' });
+  await region.scrollIntoViewIfNeeded();
+  const dots = page.locator('.carousel-dot');
+  await expect(dots).toHaveCount(6);
+  const small = await dots.evaluateAll(
+    (buttons) => buttons.filter((button) => button.getBoundingClientRect().height < 43).length,
+  );
+  expect(small).toBe(0);
+
+  const first = page.locator('#debates article.entity').first();
+  await first.scrollIntoViewIfNeeded();
+  await expect(first.locator('.entity-head h4')).toBeVisible();
+  await first.locator('.axis-chip').first().click();
+  await expect(first.locator('.axis-panel')).toBeVisible();
+  await first.locator('.claims summary').click();
+  await expect(first.locator('.claims')).toHaveJSProperty('open', true);
+  await expect(first.locator('.claim-sources a').first()).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+
+  const violations = (await new AxeBuilder({ page }).analyze()).violations;
+  expect(
+    violations.filter((item) => item.impact === 'critical' || item.impact === 'serious'),
+  ).toEqual([]);
+});
+
 test('relations read as sentences, filter by type chips and open each side', async ({ page }) => {
   await page.goto('/leitura/marxismo/');
   const relations = page.locator('.relations').first();
@@ -61,69 +101,4 @@ test('relations read as sentences, filter by type chips and open each side', asy
   await expect(chips.first()).toHaveAttribute('aria-pressed', 'false');
   await items.first().locator('.relation-party').first().click();
   await expect(page.getByRole('dialog')).toBeVisible();
-});
-
-test('mobile carousels swipe without horizontal page overflow', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/leitura/marxismo/');
-  const axis = page.locator('#atlas-section-tempo').getByRole('group', { name: /^Eixo do tempo/ });
-  await axis.scrollIntoViewIfNeeded();
-  await expect(axis).toBeVisible();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  // The axis scrolls inside its own frame, with a position bar and 44px buttons.
-  const atlas = page.locator('#atlas-section-tempo app-timeline-axis');
-  await expect(atlas.getByRole('button', { name: 'Rolar o eixo para a frente' })).toBeVisible();
-  const small = await atlas
-    .getByRole('button')
-    .evaluateAll(
-      (buttons) =>
-        buttons.filter((b) => b.getBoundingClientRect().height < 43 && !b.matches('.axis-row'))
-          .length,
-    );
-  expect(small).toBe(0);
-});
-
-test('timeline century chips cut the axis and the list together', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/leitura/marxismo/');
-  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
-  await axis.scrollIntoViewIfNeeded();
-  const all = await axis.locator('.axis-marker').count();
-  await axis.getByRole('button', { name: /^Século XX/ }).click();
-  const cut = await axis.locator('.axis-marker').count();
-  expect(cut).toBeGreaterThan(0);
-  expect(cut).toBeLessThan(all);
-  await expect(axis.locator('.axis-row')).toHaveCount(Math.min(cut, 8));
-  await axis.getByRole('button', { name: 'Aumentar a ampliação' }).click();
-  await expect(axis.locator('.axis-zoom-level')).toContainText('2/');
-});
-
-test('timeline marker opens the reading panel and Escape returns focus to it', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 900 });
-  await page.goto('/leitura/marxismo/');
-  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
-  await axis.scrollIntoViewIfNeeded();
-  const marker = axis.locator('.axis-marker').filter({ hasText: 'Karl Marx' });
-  await marker.focus();
-  await page.keyboard.press('Enter');
-  const dialog = page.getByRole('dialog');
-  await expect(dialog).toBeVisible();
-  await expect(axis.locator('.axis-list li.current')).toContainText('Karl Marx');
-  await page.keyboard.press('Escape');
-  await expect(dialog).toBeHidden();
-  await expect(marker).toBeFocused();
-});
-
-test('timeline arrows walk the records and keep one tab stop', async ({ page }) => {
-  await page.goto('/leitura/marxismo/');
-  const axis = page.locator('#atlas-section-tempo app-timeline-axis');
-  await axis.scrollIntoViewIfNeeded();
-  await axis.locator('.axis-marker[tabindex="0"]').focus();
-  const before = await axis.locator('.axis-selected strong').textContent();
-  await page.keyboard.press('ArrowRight');
-  await expect(axis.locator('.axis-selected strong')).not.toHaveText(before!);
-  await page.keyboard.press('End');
-  const total = await axis.locator('.axis-marker').count();
-  await expect(axis.locator('.axis-selected strong')).toContainText(`${total} de ${total}`);
-  await expect(axis.locator('.axis-marker[tabindex="0"]')).toHaveCount(1);
 });

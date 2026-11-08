@@ -24,11 +24,35 @@ async function isCached(path, expected, label) {
   }
 }
 
-async function download(fetchImpl, baseUrl, key, expected) {
-  const response = await fetchImpl(`${baseUrl}/${key}`);
-  if (!response.ok) throw new Error(`Falha ao baixar ${key}: HTTP ${response.status}`);
-  const body = Buffer.from(await response.arrayBuffer());
-  return verifyBytes(body, expected, key);
+const retryableStatus = new Set([429, 500, 502, 503, 504]);
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function download(
+  fetchImpl,
+  baseUrl,
+  key,
+  expected,
+  { attempts = 5, retryBaseMs = 400 } = {},
+) {
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    let response;
+    try {
+      response = await fetchImpl(`${baseUrl}/${key}`);
+    } catch (error) {
+      if (attempt === attempts - 1) throw error;
+      await sleep(retryBaseMs * 2 ** attempt);
+      continue;
+    }
+    if (response.ok) {
+      const body = Buffer.from(await response.arrayBuffer());
+      return verifyBytes(body, expected, key);
+    }
+    const error = new Error(`Falha ao baixar ${key}: HTTP ${response.status}`);
+    if (!retryableStatus.has(response.status) || attempt === attempts - 1) throw error;
+    const retryAfter = Number(response.headers?.get?.('retry-after'));
+    await sleep(retryAfter > 0 ? retryAfter * 1000 : retryBaseMs * 2 ** attempt);
+  }
+  throw new Error(`Falha ao baixar ${key}: tentativas esgotadas.`);
 }
 
 /** Syncs the cache to a pointer text; returns how many objects were downloaded. */
@@ -36,6 +60,7 @@ export async function syncContentCache({
   pointerText,
   directory = cacheDirectory,
   fetchImpl = fetch,
+  retryBaseMs = 400,
 }) {
   const pointer = parsePointer(pointerText);
   await atomicFile(join(directory, 'pointer.json'), pointerText);
@@ -51,7 +76,10 @@ export async function syncContentCache({
   for (const { key, expected, label } of entries) {
     const path = join(directory, key);
     if (await isCached(path, expected, label)) continue;
-    await atomicFile(path, await download(fetchImpl, pointer.baseUrl, key, expected));
+    await atomicFile(
+      path,
+      await download(fetchImpl, pointer.baseUrl, key, expected, { retryBaseMs }),
+    );
     downloaded += 1;
   }
   return { release: pointer.release, downloaded, total: entries.length };

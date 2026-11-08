@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Guia de voz
 
 Vale para todo texto que o leitor vê: interface, mensagens geradas por código, resumos, relações e estados vazios. A implementação de apoio está em `src/app/core/content/editorial/reader-voice.ts`.
@@ -27,7 +30,7 @@ A marca continua onde identifica o site: logotipo, título da aba, `og:site_name
 
 Atribuição e revisão nunca somem; saem do texto corrido e viram dado.
 
-- **Fontes e licença:** área própria no fim da ficha e do verbete, com título, URL, edição e licença. Só ali, e na linha "Fonte:" de uma relação, "Wikipédia" e "Wikidata" aparecem, como nome da fonte citada. A licença CC BY-SA 4.0 exige fonte, URL e licença visíveis.
+- **Fontes e licença:** área própria no fim da ficha e do verbete, em dois blocos: **Fontes** (título, URL e edição) e **Licenças e créditos** (texto e imagem). Só ali, e na linha "Fonte:" de uma relação, "Wikipédia" e "Wikidata" aparecem, como nome da fonte citada. A licença CC BY-SA 4.0 exige fonte, URL e licença visíveis.
 - **Selo editorial:** linha discreta junto ao tipo do registro. Identifica IA e nunca sugere revisão inexistente: "Inclui síntese por IA · revisão humana não registrada", "Revisão editorial pendente", "Situação editorial não informada".
 - Conteúdo sem revisão não ganha "verificado". Conteúdo publicado com notas de processo em `context` tem essas frases separadas por `readerProse`, sem alterar o dado.
 
@@ -39,7 +42,7 @@ Toda ficha responde, nesta ordem:
 2. **Por que importa aqui:** a nota da página e o capítulo onde o registro aparece. Se a página não tiver nota, não se inventa uma.
 3. **O que se sabe:** seções com título, sem repetir o resumo.
 4. **Como se liga às demais:** relações por peso de evidência.
-5. **Fontes e licença.**
+5. **Fontes e licença:** fontes e, abaixo, licenças e créditos.
 
 ## Relações
 

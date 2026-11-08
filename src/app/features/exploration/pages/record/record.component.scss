@@ -17,7 +17,7 @@
   flex-wrap: wrap;
   gap: 0.5rem 1.5rem;
   margin-bottom: 1.5rem;
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
   a {
     color: var(--ink-muted);
   }
@@ -49,12 +49,12 @@ header.hero {
 }
 .descriptor {
   margin: -0.75rem 0 0.75rem;
-  font: 600 1rem/1.4 var(--font-sans);
+  font: 600 var(--text-body)/1.4 var(--font-sans);
   color: var(--ink-muted);
 }
 .aliases {
   margin: 0 0 1rem;
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
   color: var(--ink-muted);
 }
 .hero-media app-geometric-illustration {
@@ -91,7 +91,7 @@ header.hero {
   }
   dt {
     margin: 0;
-    font: 0.75rem/1.4 var(--font-sans);
+    font: var(--text-caption)/1.4 var(--font-sans);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--ink-muted);
@@ -106,7 +106,7 @@ header.hero {
   top: 1rem;
   align-self: start;
   h2 {
-    font: 0.75rem/1.4 var(--font-sans);
+    font: var(--text-caption)/1.4 var(--font-sans);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--ink-muted);
@@ -120,7 +120,7 @@ header.hero {
   li a {
     display: block;
     padding: 0.35rem 0 0.35rem 0.75rem;
-    font: 0.875rem/1.4 var(--font-sans);
+    font: var(--text-small)/1.4 var(--font-sans);
     color: var(--ink);
     text-decoration: none;
     &:hover {
@@ -131,16 +131,16 @@ header.hero {
 }
 .group-label {
   margin: 1.5rem 0 0;
-  font: 650 0.9375rem/1.3 var(--font-sans);
+  font: 650 var(--text-compact)/1.3 var(--font-sans);
   color: var(--ink);
 }
 .connection-group .note {
   color: var(--ink-muted);
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
 }
 .direction {
   margin: 0;
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
   color: var(--ink-muted);
 }
 .related {
@@ -167,7 +167,7 @@ header.hero {
   }
   span {
     margin-top: 0.25rem;
-    font: 0.875rem/1.5 var(--font-sans);
+    font: var(--text-small)/1.5 var(--font-sans);
     color: var(--ink-muted);
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -186,12 +186,12 @@ header.hero {
   li {
     padding: 0.125rem 0.5rem;
     border: 1px solid var(--rule);
-    font: 0.75rem/1.5 var(--font-sans);
+    font: var(--text-caption)/1.5 var(--font-sans);
   }
 }
 .record-file h3 {
   margin: 1.25rem 0 0.5rem;
-  font-size: 1rem;
+  font-size: var(--text-body);
 }
 h1 {
   font-size: clamp(2.25rem, 6vw, 5.5rem);
@@ -212,7 +212,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  font: 0.875rem var(--font-sans);
+  font: var(--text-small) var(--font-sans);
 }
 .record-actions {
   display: flex;
@@ -220,6 +220,9 @@ h1 {
   align-items: baseline;
   gap: 0.5rem 1.5rem;
   margin: 1.5rem 0 0;
+}
+.graph-link {
+  font: 600 var(--text-small) var(--font-sans);
 }
 .copy-link {
   padding: 0;
@@ -231,8 +234,27 @@ h1 {
   text-underline-offset: 0.2em;
   cursor: pointer;
 }
+.purchase-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--color-border-strong);
+  font: 600 var(--text-small) var(--font-sans);
+  text-decoration: none;
+}
+.purchase-link:hover {
+  border-color: var(--ink);
+  background: var(--color-surface-raised);
+}
+.affiliate-note {
+  max-width: 62ch;
+  margin: 0.4rem 0 0;
+  color: var(--ink-muted);
+  font: var(--text-caption)/1.5 var(--font-sans);
+}
 .copy-status {
-  font: 0.875rem var(--font-sans);
+  font: var(--text-small) var(--font-sans);
 }
 .record-data summary {
   padding-block: 0.5rem;
@@ -255,7 +277,7 @@ h1 {
 .continuous-reading__kicker {
   margin: 0 0 0.35rem;
   color: var(--ink-muted);
-  font: 700 0.6875rem/1.2 var(--font-sans);
+  font: 700 var(--text-micro)/1.2 var(--font-sans);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -265,16 +287,16 @@ h1 {
 }
 .continuous-reading p {
   margin: 0 0 0.75rem;
-  font: 1rem/1.55 var(--font-serif);
+  font: var(--text-body)/1.55 var(--font-serif);
 }
 .continuous-reading a {
-  font: 700 0.9375rem/1.4 var(--font-sans);
+  font: 700 var(--text-compact)/1.4 var(--font-sans);
 }
 .reading-top {
   margin: 2.5rem 0 0;
   padding-block-start: 0.75rem;
   border-block-start: 1px solid var(--rule);
-  font: 0.875rem/1.4 var(--font-sans);
+  font: var(--text-small)/1.4 var(--font-sans);
 }
 .reading section {
   margin-bottom: 2.5rem;
@@ -293,7 +315,7 @@ h3 {
 .record-meta,
 .reading .record-meta,
 .reading .reference {
-  font: 0.875rem/1.5 var(--font-sans);
+  font: var(--text-small)/1.5 var(--font-sans);
   color: var(--ink-muted);
 }
 .claim {
@@ -312,7 +334,7 @@ h3 {
   background: var(--paper);
   h3 {
     margin: 0 0 0.25rem;
-    font-size: 1.0625rem;
+    font-size: var(--text-subhead);
   }
 }
 summary {
@@ -329,7 +351,7 @@ summary {
 }
 .record-file p,
 dd {
-  font-size: 0.875rem;
+  font-size: var(--text-small);
   line-height: 1.6;
 }
 dt {

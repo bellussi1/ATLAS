@@ -23,7 +23,7 @@
 .era-header p {
   margin: 0;
   color: var(--color-ink-muted);
-  font: 0.875rem/1.5 var(--font-serif);
+  font: var(--text-small)/1.5 var(--font-serif);
 }
 [data-tone='0'] {
   --tone: var(--color-accent);
@@ -47,6 +47,58 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+/* Filters say what the chronology is hiding before the reader opens a period. */
+.era-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--color-border-strong);
+  background: color-mix(in srgb, var(--color-ochre-paper) 10%, var(--color-surface-raised));
+}
+.era-filter-label {
+  margin-right: 0.2rem;
+  color: var(--color-ink-muted);
+  font: 700 0.7rem/1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.era-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-block-size: var(--control-min-size);
+  padding: 0.35rem 0.65rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font: 650 var(--text-caption)/1.2 var(--font-sans);
+  cursor: pointer;
+}
+.era-filter span {
+  padding: 0.08rem 0.35rem;
+  background: var(--color-ochre-paper);
+  color: var(--color-ink);
+  font: 700 0.7rem/1.3 var(--font-mono);
+}
+.era-filter[aria-pressed='true'] {
+  background: var(--color-ink);
+  color: var(--color-canvas);
+}
+.era-filter[aria-pressed='true'] span {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+.era-filter:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.era-empty {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  font: var(--text-body)/1.5 var(--font-serif);
 }
 .era-epoch {
   position: relative;
@@ -77,10 +129,18 @@
 }
 .era-epoch.is-selected::after {
   background: var(--tone);
+  box-shadow: 0 0 0 4px var(--paper);
+  scale: 1.15;
+}
+.era-epoch::after {
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out),
+    scale var(--motion-fast) var(--ease-out);
 }
 .epoch-row {
   display: grid;
-  grid-template-columns: 8.5rem minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) minmax(0, 10rem) auto;
   gap: 0.35rem 1rem;
   align-items: center;
   inline-size: 100%;
@@ -90,17 +150,30 @@
   color: var(--color-ink);
   text-align: start;
   cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    box-shadow var(--motion-fast) var(--ease-out);
 }
 .era-epoch.is-selected .epoch-row {
-  background: color-mix(in srgb, var(--tone) 9%, transparent);
+  background: color-mix(in srgb, var(--tone) 7%, transparent);
+  box-shadow: inset 4px 0 0 var(--tone);
 }
 .epoch-row:focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: -3px;
 }
 .epoch-years {
+  justify-self: start;
+  padding: 0.12rem 0.4rem;
   color: var(--color-ink-muted);
-  font: 0.75rem/1.4 var(--font-mono);
+  font: var(--text-caption)/1.4 var(--font-mono);
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    color var(--motion-fast) var(--ease-out);
+}
+.era-epoch.is-selected .epoch-years {
+  background: var(--ink);
+  color: var(--paper);
 }
 .epoch-copy {
   display: grid;
@@ -113,19 +186,108 @@
 }
 .epoch-kicker {
   color: var(--color-ink-muted);
-  font: 0.8125rem/1.4 var(--font-sans);
+  font: var(--text-meta)/1.4 var(--font-sans);
+  transition: color var(--motion-fast) var(--ease-out);
 }
-.epoch-indicator {
+.era-epoch.is-selected .epoch-kicker {
+  color: var(--ink);
+}
+.epoch-counts {
   color: var(--color-ink-muted);
-  font: 600 1.25rem/1 var(--font-mono);
+  font: 0.7rem/1.4 var(--font-mono);
+  letter-spacing: 0.02em;
+}
+/* Duration of the epoch on the common range; each row has its own bar, so overlaps are visible. */
+.epoch-band {
+  position: relative;
+  display: block;
+  block-size: 0.45rem;
+  border: 1px solid var(--color-border-strong);
+  background: color-mix(in srgb, var(--color-ink) 8%, transparent);
+}
+.epoch-band > span {
+  position: absolute;
+  inset-block: -1px;
+  background: var(--tone);
+  box-shadow: inset 0 0 0 1px var(--color-ink);
+}
+.era-epoch.is-selected .epoch-band {
+  border-color: var(--color-ink);
+}
+/* A square plus/minus: form, not just colour, tells whether the period is open. */
+.epoch-indicator {
+  position: relative;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  transition:
+    background-color var(--motion-fast) var(--ease-out),
+    scale var(--motion-fast) var(--ease-out);
+}
+.epoch-indicator::before,
+.epoch-indicator::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  background: var(--ink);
+  translate: -50% -50%;
+  transition:
+    transform var(--motion-fast) var(--ease-out),
+    opacity var(--motion-fast) var(--ease-out);
+}
+.epoch-indicator::before {
+  inline-size: 0.7rem;
+  block-size: 2px;
+}
+.epoch-indicator::after {
+  inline-size: 2px;
+  block-size: 0.7rem;
+}
+.era-epoch.is-selected .epoch-indicator {
+  background: var(--tone);
+  scale: 1.04;
+}
+.era-epoch.is-selected .epoch-indicator::after {
+  opacity: 0;
+  transform: rotate(90deg);
 }
 .epoch-body {
+  display: grid;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  opacity: 1;
+  transition:
+    grid-template-rows var(--motion-standard) var(--ease-out) 40ms,
+    opacity var(--motion-standard) var(--ease-out) 40ms;
+}
+.era-chart.is-interactive .epoch-body {
+  @starting-style {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+}
+.epoch-body__inner {
+  min-block-size: 0;
   padding: 0 1.25rem 1.5rem 2.75rem;
+}
+/* The leaving period keeps its content until the collapse finishes. */
+.epoch-body.is-leaving {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition-delay: 0ms;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .epoch-body {
+    transition-delay: 0ms;
+  }
 }
 .epoch-summary {
   margin: 0 0 0.75rem;
   max-inline-size: 70ch;
-  font: 1rem/1.6 var(--font-serif);
+  font: var(--text-body)/1.6 var(--font-serif);
 }
 .detail-open {
   min-block-size: var(--control-min-size);
@@ -144,10 +306,85 @@
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
+/* Transformative records get their own band and an explicit editorial reason. */
+.epoch-markers {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  border-inline-start-width: 6px;
+  background: color-mix(in srgb, var(--color-ochre-paper) 18%, var(--color-surface-raised));
+}
+.epoch-markers h4 {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 0.7rem;
+  padding-block-end: 0.35rem;
+  border-block-end: 1px solid var(--color-border-strong);
+  font: 700 0.8rem/1.4 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.marker-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.era-marker {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  min-inline-size: 0;
+}
+.era-marker.is-approx .record-card {
+  outline: 1px dashed var(--color-ink-muted);
+  outline-offset: -1px;
+}
+.marker-note {
+  margin: 0;
+  padding-inline-start: 0.6rem;
+  border-inline-start: 3px solid var(--color-accent);
+  color: var(--color-ink-muted);
+  font: var(--text-small)/1.5 var(--font-serif);
+}
+.marker-note strong {
+  color: var(--color-ink);
+}
+/* A life is a bar inside the epoch; the card already carries the exact years. */
+.era-life {
+  position: relative;
+  display: block;
+  block-size: 0.3rem;
+  margin: 0.1rem 0 0;
+  background: color-mix(in srgb, var(--color-ink) 10%, transparent);
+}
+.era-life > span {
+  position: absolute;
+  inset-block: 0;
+  background: var(--color-ink);
+}
+.era-temporal-note {
+  margin: 0;
+  padding-inline-start: 0.45rem;
+  border-inline-start: 2px solid var(--color-border-strong);
+  color: var(--color-ink-muted);
+  font: 0.7rem/1.45 var(--font-mono);
+}
+.era-temporal-note--participation {
+  border-inline-start-color: var(--color-accent);
+  color: var(--color-ink);
+}
 .epoch-lists {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
   gap: 1.25rem;
+}
+/* When one side has nothing, the other uses the whole width instead of leaving a hole. */
+.epoch-lists.is-single {
+  grid-template-columns: 1fr;
 }
 .epoch-list h4 {
   display: flex;
@@ -156,7 +393,7 @@
   margin: 0 0 0.5rem;
   padding-block-end: 0.25rem;
   border-block-end: 1px solid var(--color-border-strong);
-  font: 500 0.75rem/1.4 var(--font-mono);
+  font: 500 var(--text-caption)/1.4 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -179,7 +416,7 @@
   border: 2px solid var(--color-ink);
   background: var(--color-canvas);
   color: var(--color-ink);
-  font: 650 0.875rem/1.2 var(--font-sans);
+  font: 650 var(--text-small)/1.2 var(--font-sans);
   cursor: pointer;
 }
 .era-note {
@@ -187,7 +424,7 @@
   padding: 0.75rem 1.25rem;
   border-top: 1px solid var(--color-border-strong);
   color: var(--color-ink-muted);
-  font: 0.75rem/1.5 var(--font-mono);
+  font: var(--text-caption)/1.5 var(--font-mono);
 }
 @media (hover: hover) and (pointer: fine) {
   .epoch-row:hover .epoch-title {
@@ -196,18 +433,27 @@
   }
 }
 @media (max-width: 760px) {
-  .era-header,
+  .era-header {
+    grid-template-columns: 1fr;
+  }
   .epoch-row {
     grid-template-columns: 1fr auto;
   }
   .epoch-years {
     grid-column: 1 / -1;
   }
+  .epoch-band {
+    grid-column: 1 / -1;
+    margin-block-start: 0.15rem;
+  }
   .epoch-indicator {
     grid-column: 2;
     grid-row: 1;
   }
-  .epoch-body {
+  .era-filters {
+    padding-inline: 1rem;
+  }
+  .epoch-body__inner {
     padding-inline: 1rem;
   }
   .epoch-row {
@@ -218,5 +464,8 @@
   }
   .era-epoch::after {
     inset-inline-start: 0.66rem;
+  }
+  .epoch-markers {
+    padding-inline: 0.85rem;
   }
 }

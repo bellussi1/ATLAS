@@ -19,8 +19,62 @@ test('the graph page fills the window without page scroll and explains its legen
   expect(metrics.scrollHeight).toBeLessThanOrEqual(metrics.innerHeight);
   expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.innerWidth);
   const legend = page.getByRole('complementary', { name: 'Legenda e filtros' });
-  for (const name of ['Ideologias', 'Pessoas', 'Obras', 'Influenciou', 'Escreveu', 'Associado a'])
+  for (const name of [
+    'Ideologias',
+    'Pessoas',
+    'Obras',
+    'Países',
+    'Formações políticas',
+    'Influência',
+    'Criação',
+    'Conexão',
+  ])
     await expect(legend.getByRole('button', { name: new RegExp(name) })).toBeVisible();
+});
+
+test('names a small, spread set of references at the global view and more up close', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/grafos');
+  await expect(page.locator('.labels text.label').first()).toBeVisible();
+  const measure = () =>
+    page.evaluate(() => {
+      const labels = [...document.querySelectorAll('.labels text.label:not(.label--edge)')];
+      const boxes = labels.map((text) => {
+        const rect = text.getBoundingClientRect();
+        return { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom };
+      });
+      let overlaps = 0;
+      for (let i = 0; i < boxes.length; i++)
+        for (let j = i + 1; j < boxes.length; j++) {
+          const a = boxes[i];
+          const b = boxes[j];
+          if (a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top)
+            overlaps += 1;
+        }
+      const cells = new Set(
+        boxes.map(
+          (box) =>
+            `${Math.floor(((box.left + box.right) / 2 / innerWidth) * 4)}:${Math.floor(
+              ((box.top + box.bottom) / 2 / innerHeight) * 3,
+            )}`,
+        ),
+      );
+      return { count: labels.length, overlaps, cells: cells.size };
+    });
+  const fit = await measure();
+  expect(fit.count).toBeGreaterThan(0);
+  expect(fit.count).toBeLessThanOrEqual(12);
+  expect(fit.overlaps).toBe(0);
+  expect(fit.cells).toBeGreaterThanOrEqual(3);
+  for (let step = 0; step < 3; step++)
+    await page.getByRole('button', { name: 'Aproximar', exact: true }).click();
+  await expect(page.locator('.labels text.label').first()).toBeVisible();
+  const zoomed = await measure();
+  expect(zoomed.count).toBeGreaterThan(0);
+  expect(zoomed.count).toBeLessThanOrEqual(24);
+  expect(zoomed.overlaps).toBe(0);
 });
 
 test('filters, searches and opens a node with a link to its entry', async ({ page }) => {
@@ -172,23 +226,14 @@ test('a selected node lists each link with its reading, nature and reason', asyn
   await page.keyboard.press('Enter');
   const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
   const item = detail.locator('.links li').first();
+  await expect(item.locator('.links__row')).toBeVisible();
   await expect(item.locator('.links__verb')).not.toBeEmpty();
   await expect(item.locator('.nature')).not.toBeEmpty();
   await expect(item.locator('.links__why')).not.toBeEmpty();
+  await expect(item.locator('.links__go')).toBeVisible();
   await expect(detail.getByText(/conex(ão|ões) no acervo/)).toBeVisible();
-});
-
-test('traces a path between two entries from the detail panel', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/grafos');
-  await page.locator(linkedNode).first().focus();
-  await page.keyboard.press('Enter');
-  const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
-  await detail.getByRole('button', { name: 'Começar caminho a partir daqui' }).click();
-  await detail.locator('.links li button').first().click();
-  await expect(detail.getByRole('list', { name: /Trajeto de/ })).toBeVisible();
-  await detail.getByRole('button', { name: 'Limpar caminho' }).click();
-  await expect(detail.getByRole('list', { name: /Trajeto de/ })).toHaveCount(0);
+  if (await detail.locator('.detail__more').count())
+    await expect(detail.locator('.detail__more summary')).toContainText('Ler resumo completo');
 });
 
 test('nodes stay still and no region colour or name covers the map', async ({ page }) => {
@@ -202,13 +247,12 @@ test('nodes stay still and no region colour or name covers the map', async ({ pa
   await expect(page.locator('[data-node]').first()).toBeVisible();
 });
 
-test('the overview map stays inside the window', async ({ page }) => {
+test('the full-screen graph has no overview minimap', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
-  const map = await page.getByRole('group', { name: /Visão geral do mapa/ }).boundingBox();
-  expect(map!.x + map!.width).toBeLessThanOrEqual(1280);
-  expect(map!.y + map!.height).toBeLessThanOrEqual(800);
+  await expect(page.locator('.minimap')).toHaveCount(0);
+  await expect(page.getByRole('group', { name: /Visão geral do mapa/ })).toHaveCount(0);
 });
 
 test('zoomed out the links are plain lines; up close they carry their wording', async ({

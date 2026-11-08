@@ -17,14 +17,14 @@ a {
   text-underline-offset: 0.2em;
 }
 .folio {
-  font: 500 0.75rem/1.4 var(--font-mono);
+  font: 500 var(--text-caption)/1.4 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-muted);
   margin: 0;
 }
 .editorial-strip {
-  font: 0.75rem/1.7 var(--font-mono);
+  font: var(--text-caption)/1.7 var(--font-mono);
   border-block: 1px solid var(--rule-strong);
   margin-bottom: var(--space-8);
   summary {
@@ -56,7 +56,7 @@ a {
   margin: 0 0 var(--space-6);
   padding-bottom: 0.35rem;
   border-bottom: 1px solid var(--ink);
-  font: 500 0.75rem/1.4 var(--font-mono);
+  font: 500 var(--text-caption)/1.4 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-muted);
@@ -81,7 +81,7 @@ h2 {
 }
 .chapter-measure {
   margin: 0 0 var(--space-6);
-  font: 0.75rem/1.4 var(--font-mono);
+  font: var(--text-caption)/1.4 var(--font-mono);
   color: var(--ink-muted);
 }
 .chapter-question {
@@ -95,7 +95,7 @@ h2 {
   padding: 0.9rem 1.1rem;
   background: var(--ink);
   color: var(--paper);
-  font: 1rem/1.5 var(--font-serif);
+  font: var(--text-body)/1.5 var(--font-serif);
 }
 .chapter-narrative {
   font: 1.125rem/1.75 var(--font-serif);
@@ -109,44 +109,36 @@ h2 {
   line-height: 1.55;
 }
 .editorial-gap {
+  margin: 1.25rem 0 0;
+  padding: 0.35rem 0 0 0.85rem;
   border-left: 3px solid var(--color-indigo);
+  background: none;
+  color: var(--color-ink-muted);
+  font: var(--text-meta)/1.55 var(--font-serif);
+}
+.editorial-gap strong {
+  color: var(--color-ink);
+}
+.chronology-empty {
+  margin: 1.25rem 0 0;
+  padding: 0.6rem 0.85rem;
+  border: 1px dashed var(--rule-strong);
   background: var(--paper-shade);
-  padding: 1rem;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  color: var(--color-ink-muted);
+  font: var(--text-meta)/1.55 var(--font-serif);
+}
+.chronology-empty strong {
+  color: var(--color-ink);
 }
 .chapter-sources {
   margin-top: 1.5rem;
   border-top: 1px solid var(--rule-strong);
-  font-size: 0.875rem;
+  font-size: var(--text-small);
 }
 .chapter-sources summary {
   padding-block: 0.75rem;
   color: var(--color-accent);
   font-weight: 600;
-}
-.next-chapter {
-  display: inline-flex;
-  gap: 0.5rem;
-  min-height: 44px;
-  align-items: center;
-  margin-top: 1rem;
-  padding: 0 0.75rem;
-  border: 2px solid var(--ink);
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 700;
-  justify-self: start;
-  box-shadow: 0 0 0 var(--ink);
-  transition:
-    transform var(--motion-fast) var(--ease-out),
-    box-shadow var(--motion-fast) var(--ease-out),
-    background var(--motion-fast);
-  &:hover {
-    background: var(--color-ochre-paper);
-    transform: translate(-3px, -3px);
-    box-shadow: 3px 3px 0 var(--ink);
-  }
 }
 /* Geometric motif in the margin of each spread: decorative, seeded per chapter. */
 .chapter-mosaic {
@@ -186,54 +178,6 @@ h2 {
   min-height: 380px;
   padding: 2rem;
   background: var(--paper-shade);
-}
-.reading-end {
-  padding-block: 3rem;
-}
-.reading-end p {
-  font: 1.6rem var(--font-serif);
-}
-.reading-end a {
-  display: block;
-  padding-block: 0.65rem;
-}
-.reading-connections {
-  margin-block-start: 2.5rem;
-  padding-block-start: 1.5rem;
-  border-block-start: 2px solid var(--color-ink);
-}
-.reading-connections h2 {
-  margin: 0;
-  font: 700 0.75rem/1.2 var(--font-sans);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.reading-connections__hint {
-  margin: 0.4rem 0 1rem;
-  color: var(--color-ink-muted);
-  font: 400 0.9375rem/1.5 var(--font-serif);
-}
-.reading-connections ul {
-  display: grid;
-  gap: 0.75rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.reading-connections li {
-  display: grid;
-  gap: 0.15rem;
-  padding-block-end: 0.75rem;
-  border-block-end: 1px solid var(--color-border);
-}
-.reading-connections a {
-  padding-block: 0;
-  font: 700 1.0625rem/1.25 var(--font-sans);
-  text-underline-offset: 3px;
-}
-.reading-connections span {
-  color: var(--color-ink-muted);
-  font: 400 0.9375rem/1.45 var(--font-serif);
 }
 .page-state {
   padding-block: 4rem;
@@ -278,14 +222,8 @@ h2 {
 .chapter-aside > summary {
   min-height: 2.75rem;
   padding: 0.75rem 0;
-  font: 600 0.875rem/1.3 var(--font-sans);
+  font: 600 var(--text-small)/1.3 var(--font-sans);
   cursor: pointer;
-}
-@media (prefers-reduced-motion: reduce) {
-  .next-chapter {
-    transition: none;
-    transform: none !important;
-  }
 }
 
 /* Accent per reading; each value keeps at least 4.5:1 on the canvas. Marx and liberal keep the default. */

@@ -14,14 +14,20 @@
   <app-breadcrumbs />
 }
 
-<main id="conteudo" tabindex="-1" [attr.aria-label]="pageTitle()">
-  @if (failedNavigation()) {
-    <app-notice tone="critical" accessibleRole="alert">
-      <p>Não foi possível carregar a leitura. Seu contexto anterior foi preservado.</p>
-      <button type="button" class="atlas-button" (click)="retryNavigation()">
-        Tentar novamente
-      </button>
-    </app-notice>
+<main
+  id="conteudo"
+  tabindex="-1"
+  [attr.aria-label]="failedNavigation() ? 'Falha de navegação' : pageTitle()"
+>
+  @if (failedNavigation(); as failure) {
+    <app-navigation-failure
+      [path]="failure"
+      [kind]="failureKind()"
+      [previousTitle]="previousTitle()"
+      [retrying]="retrying()"
+      (retry)="retryNavigation()"
+      (dismiss)="dismissFailure()"
+    />
   }
   <router-outlet />
 </main>

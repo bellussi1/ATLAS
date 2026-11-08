@@ -16,7 +16,7 @@
   border: 2px solid var(--color-ink);
   background: var(--color-canvas);
   color: var(--color-ink);
-  font: 650 0.875rem/1.2 var(--font-sans);
+  font: 650 var(--text-small)/1.2 var(--font-sans);
   text-align: left;
   cursor: pointer;
 }
@@ -64,7 +64,7 @@
   min-height: 2.75rem;
   padding: 0.5rem 0.8rem;
   color: var(--color-ink);
-  font: 650 0.875rem/1.25 var(--font-sans);
+  font: 650 var(--text-small)/1.25 var(--font-sans);
   cursor: pointer;
 }
 .select-menu__option + .select-menu__option {
@@ -88,7 +88,7 @@
 .select-menu__count {
   flex: none;
   color: var(--color-ink-muted);
-  font: 0.875rem/1 var(--font-mono);
+  font: var(--text-small)/1 var(--font-mono);
 }
 .select-menu__trigger:focus-visible {
   outline: 3px solid var(--color-accent);

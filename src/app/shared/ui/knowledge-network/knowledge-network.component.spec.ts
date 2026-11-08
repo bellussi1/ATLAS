@@ -1,5 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { entityMedia } from '@core/content/media/asset-license';
+import { labelRelevance } from '@core/content/queries/knowledge-network';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 import { vi } from 'vitest';
@@ -15,6 +17,9 @@ describe('KnowledgeNetworkComponent', () => {
           provide: ContentRepository,
           useValue: {
             layouts: {},
+            mediaUrl: (path: string) => path,
+            atlasForEntity: () =>
+              methodologyKnowledgeGraph.atlases.find((atlas) => atlas.id === 'atlas-liberalism'),
             knowledgeGraph: {
               ...methodologyKnowledgeGraph,
               atlases: methodologyKnowledgeGraph.atlases.filter(
@@ -70,24 +75,26 @@ describe('KnowledgeNetworkComponent', () => {
     expect(el.querySelector('svg.canvas')?.getAttribute('aria-label')).toContain('Grafo');
     const legend = el.querySelector('#graph-controls')!.textContent!;
     for (const label of [
+      'Pessoas e ideias',
+      'Obras e acontecimentos',
+      'Instituições e territórios',
       'Ideologias',
       'Pessoas',
+      'Conceitos',
       'Obras',
+      'Acontecimentos',
       'Organizações',
       'Partidos',
-      'Acontecimentos',
+      'Países',
+      'Formações políticas',
       'Lugares',
-      'Conceitos',
-      'Influenciou',
-      'Participou de',
-      'Foi membro de',
-      'Fundou',
-      'Escreveu',
-      'Desenvolveu-se em',
-      'Reagiu contra',
-      'Sucedeu',
-      'Governou',
-      'Ocorreu em',
+      'Influência',
+      'Ruptura',
+      'Atuação',
+      'Criação',
+      'Continuidade',
+      'Relação documentada',
+      'Conexão',
     ])
       expect(legend).toContain(label);
   });
@@ -222,7 +229,7 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.activeId()).toBeNull();
   });
 
-  it('keeps the whole map readable when a node is selected', async () => {
+  it('dims the rest of the map around a selected node', async () => {
     const fixture = await render();
     const component = fixture.componentInstance;
     component.size.set({ width: 1400, height: 900 });
@@ -233,11 +240,46 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.selectedId()).toBe(linked.node.id);
     expect(root(fixture).querySelector('.node__selection')).not.toBeNull();
     expect(root(fixture).querySelector('.label.is-selected')).not.toBeNull();
-    // A selection is a permanent mark; only hovering its surroundings dims the rest.
-    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBe(0);
+    // The selection keeps its neighbourhood lit; every other node fades into the map.
+    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);
+    expect(
+      root(fixture)
+        .querySelector(`[data-node="${linked.node.id}"]`)
+        ?.classList.contains('is-dimmed'),
+    ).toBe(false);
+    expect(root(fixture).querySelectorAll('.node.is-related').length).toBeGreaterThan(0);
     component.hoverNode(linked.node.id);
     fixture.detectChanges();
     expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);
+  });
+
+  it('shows the licensed image and an evident summary in the detail card', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const withMedia = component
+      .drawnNodes()
+      .find((item) => entityMedia(methodologyKnowledgeGraph, { id: item.node.id }));
+    expect(withMedia).toBeDefined();
+    component.select(withMedia!.node.id);
+    fixture.detectChanges();
+    const image = root(fixture).querySelector<HTMLImageElement>('.detail__media img');
+    expect(image?.getAttribute('src')).toBeTruthy();
+    expect(root(fixture).querySelector('.detail__media figcaption')?.textContent).toBeTruthy();
+    if (withMedia!.node.summary !== withMedia!.node.definition)
+      expect(root(fixture).querySelector('.detail__more summary')?.textContent).toContain(
+        'Ler resumo completo',
+      );
+    expect(root(fixture).querySelector('.links__row .links__go')).not.toBeNull();
+    const withoutMedia = component
+      .drawnNodes()
+      .find((item) => !entityMedia(methodologyKnowledgeGraph, { id: item.node.id }));
+    if (withoutMedia) {
+      component.select(withoutMedia.node.id);
+      fixture.detectChanges();
+      expect(
+        root(fixture).querySelector('.detail__media--art app-geometric-illustration'),
+      ).not.toBeNull();
+    }
   });
 
   it('never draws a label outside the free area of the stage', async () => {
@@ -286,27 +328,6 @@ describe('KnowledgeNetworkComponent', () => {
     expect(root(fixture).querySelector('.detail__count')?.textContent).toContain('conex');
   });
 
-  it('traces a path from a marked node to the selected one', async () => {
-    const fixture = await render();
-    const component = fixture.componentInstance;
-    const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
-    const other = component.selectedLinks().length
-      ? null
-      : (() => {
-          component.select(linked.node.id);
-          return component.selectedLinks()[0].other;
-        })();
-    component.select(linked.node.id);
-    component.togglePathStart();
-    component.select((other ?? component.selectedLinks()[0].other).id);
-    fixture.detectChanges();
-    expect(component.pathSteps().length).toBe(1);
-    expect(root(fixture).querySelector('.steps li')).not.toBeNull();
-    component.clearPath();
-    fixture.detectChanges();
-    expect(root(fixture).querySelector('.steps')).toBeNull();
-  });
-
   it('cycles through the neighbours of a node with the bracket keys', async () => {
     const fixture = await render();
     const component = fixture.componentInstance;
@@ -325,14 +346,44 @@ describe('KnowledgeNetworkComponent', () => {
     component.hoverNode(linked.node.id);
     expect(component.edgeLabels()).toEqual([]);
     component.hoverNode(null);
-    const degrees = new Map(component.drawnNodes().map((n) => [n.node.id, n.node.degree]));
-    for (const label of component.labels()) expect(degrees.get(label.id)).toBeGreaterThanOrEqual(2);
+    const ranked = [...component.drawnNodes()].sort(
+      (a, b) =>
+        labelRelevance(b.node) - labelRelevance(a.node) || a.node.id.localeCompare(b.node.id),
+    );
+    expect(component.labels().map((label) => label.id)).toContain(ranked[0].node.id);
+    expect(component.labels().length).toBeLessThanOrEqual(12);
+    const fitView = component.view();
+    const fitSize = component.size();
+    const fitCells = new Set(
+      component.labels().map((label) => {
+        const x = fitView.x + label.wx + label.dx;
+        const y = fitView.y + label.wy + label.dy;
+        return `${Math.min(3, Math.max(0, Math.floor((x / fitSize.width) * 4)))}:${Math.min(
+          2,
+          Math.max(0, Math.floor((y / fitSize.height) * 3)),
+        )}`;
+      }),
+    );
+    expect(fitCells.size).toBeGreaterThanOrEqual(2);
     const centre = { x: 700, y: 450 };
     component.zoomBy(2.2, centre);
     component.zoomBy(2.2, centre);
+    expect(component.labels().length).toBeLessThanOrEqual(36);
     component.select(linked.node.id);
     component.hoverNode(linked.node.id);
     await vi.waitFor(() => expect(component.edgeLabels().length).toBeGreaterThan(0));
+  });
+
+  it('keeps an accessible name on nodes whose visual label is hidden', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    const shown = new Set(component.labels().map((label) => label.id));
+    const hidden = component.drawnNodes().find((item) => !shown.has(item.node.id));
+    expect(hidden).toBeDefined();
+    const element = root(fixture).querySelector(`[data-node="${hidden!.node.id}"]`);
+    expect(element?.getAttribute('aria-label')).toContain(hidden!.node.title);
   });
 
   it('opens at the whole graph and calls that framing 100%', async () => {
@@ -382,10 +433,6 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.controlsOpen()).toBeNull();
     const linked = component.drawnNodes().find((n) => n.node.degree > 0)!;
     component.select(linked.node.id);
-    component.togglePathStart();
-    press('Escape');
-    expect(component.pathFromId()).toBeNull();
-    expect(component.selectedId()).toBe(linked.node.id);
     press('Escape');
     expect(component.selectedId()).toBeNull();
   });
@@ -424,15 +471,25 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.edgeDetailed(edge)).toBe(true);
   });
 
-  it('gives every node a larger invisible hit area than its shape', async () => {
+  it('selects the node under a canvas click without drawing extra hit circles', async () => {
     const fixture = await render();
-    const node = fixture.componentInstance.drawnNodes()[0];
-    const hit = root(fixture).querySelector('[data-hit]')!;
-    const shown =
-      node.r * fixture.componentInstance.nodeScale() * fixture.componentInstance.zoomK();
-    expect(
-      Number(hit.getAttribute('r')) * fixture.componentInstance.zoomK(),
-    ).toBeGreaterThanOrEqual(Math.max(16, shown + 5));
+    const component = fixture.componentInstance;
+    component.size.set({ width: 1400, height: 900 });
+    component.fit();
+    fixture.detectChanges();
+    expect(root(fixture).querySelector('[data-hit]')).toBeNull();
+    const item = component.drawnNodes()[0];
+    const { k, x: vx, y: vy } = component.view();
+    const canvas = root(fixture).querySelector('svg.canvas')!;
+    canvas.dispatchEvent(
+      new MouseEvent('click', {
+        clientX: item.x * k + vx,
+        clientY: item.y * k + vy,
+        bubbles: true,
+      }),
+    );
+    fixture.detectChanges();
+    expect(component.selectedId()).toBe(item.node.id);
     expect(root(fixture).querySelector('[data-label]')).toBeNull();
   });
 

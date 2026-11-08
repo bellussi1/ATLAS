@@ -1,5 +1,5 @@
 import type { PositionClaim } from '@ideologies/models/ideology-page.schema';
-import { positionAxes, type PositionAxisId } from '@ideologies/models/position-axes';
+import { positionAxes, positionAxis, type PositionAxisId } from '@ideologies/models/position-axes';
 
 /**
  * Estimates positions from sourced claims. A claim is one attributed statement with a
@@ -12,6 +12,11 @@ export const confidenceWeight: Record<PositionClaim['confidence'], number> = {
   média: 0.6,
   baixa: 0.3,
 };
+
+/** Values inside this band are described as "between the poles", not as a side. */
+const NEAR_CENTRE = 0.15;
+/** A range up to this width is described as narrow; above it, the sources spread out. */
+const NARROW_RANGE = 0.3;
 
 export type AxisStatus = 'estimada' | 'divergente' | 'indicativa' | 'insuficiente';
 
@@ -93,4 +98,94 @@ export function largestPairDifference(
           };
       }
   return best;
+}
+
+/** Reader-facing status with the evidence count; never a single confidence score. */
+export function statusLabel(axis: AxisEstimate): string {
+  switch (axis.status) {
+    case 'insuficiente':
+      return 'Sem evidência';
+    case 'indicativa':
+      return axis.claims === 1
+        ? 'Indicativa · 1 afirmação'
+        : `Indicativa · ${axis.sources} ${axis.sources === 1 ? 'fonte' : 'fontes'}`;
+    case 'divergente':
+      return `Divergente · ${axis.sources} fontes`;
+    case 'estimada':
+      return `Estimada · ${axis.sources} fontes`;
+  }
+}
+
+/** A short direction phrase, always in words and never a single headline number. */
+export function positionPhrase(value: number | null, axisId: PositionAxisId): string {
+  const axis = positionAxis(axisId);
+  if (value === null) return 'sem posição definida';
+  if (value >= NEAR_CENTRE) return `mais perto de ${axis.high}`;
+  if (value <= -NEAR_CENTRE) return `mais perto de ${axis.low}`;
+  return `entre ${axis.low} e ${axis.high}, sem lado claro`;
+}
+
+/**
+ * Explains the interval in words. Divergence is never averaged into a centre: the text
+ * says whether the sources split across the poles or only in intensity.
+ */
+export function axisInterpretation(axis: AxisEstimate): string {
+  const config = positionAxis(axis.axisId);
+  if (axis.status === 'insuficiente') return 'Nenhuma afirmação com fonte sobre este eixo.';
+  const direction = positionPhrase(axis.value, axis.axisId);
+  if (axis.status === 'divergente') {
+    const low = axis.low ?? 0;
+    const high = axis.high ?? 0;
+    if (low >= NEAR_CENTRE)
+      return `As fontes se dividem, mas ambas ficam do lado de ${config.high}.`;
+    if (high <= -NEAR_CENTRE)
+      return `As fontes se dividem, mas ambas ficam do lado de ${config.low}.`;
+    return `As fontes se dividem entre ${config.low} e ${config.high}; não há um centro que represente o conjunto.`;
+  }
+  if (axis.status === 'indicativa') {
+    if (axis.claims === 1)
+      return `Uma única afirmação indica uma posição ${direction}; é uma pista de leitura, não uma estimativa.`;
+    return `As afirmações vêm de uma só fonte e indicam uma posição ${direction}; é uma pista de leitura, não uma estimativa.`;
+  }
+  const low = axis.low ?? 0;
+  const high = axis.high ?? 0;
+  if (low < 0 && high > 0)
+    return `A faixa atravessa o centro: as fontes não concordam sobre o lado. ${capitalize(direction)}.`;
+  const range = high - low;
+  const opening =
+    range <= NARROW_RANGE
+      ? 'Faixa estreita: as fontes ficam próximas'
+      : 'Faixa ampla: as fontes concordam na direção, mas não na intensidade';
+  return `${opening}. ${capitalize(direction)}.`;
+}
+
+/** Compact phrase for chips and the comparison rows; the full sentence stays in the axis. */
+export function axisShortInterpretation(axis: AxisEstimate): string {
+  if (axis.status === 'divergente') return 'Fontes divergem';
+  if (axis.status === 'insuficiente') return 'Sem evidência';
+  return capitalize(positionPhrase(axis.value, axis.axisId));
+}
+
+/** How much confidence the reader actually has, listed claim by claim. */
+export function confidenceSummary(claims: readonly PositionClaim[]): string {
+  if (!claims.length) return '';
+  const counts = new Map<PositionClaim['confidence'], number>();
+  for (const claim of claims) {
+    counts.set(claim.confidence, (counts.get(claim.confidence) ?? 0) + 1);
+  }
+  const order: PositionClaim['confidence'][] = ['alta', 'média', 'baixa'];
+  const parts = order
+    .filter((confidence) => counts.has(confidence))
+    .map((confidence) => `${confidence} (${counts.get(confidence)})`);
+  return `Confiança: ${parts.join(', ')}.`;
+}
+
+/** Accessible name of the track: entity, axis, status, interval and scale in one sentence. */
+export function axisDescription(entityTitle: string, axis: AxisEstimate): string {
+  const config = positionAxis(axis.axisId);
+  return `${entityTitle}, ${config.label}: ${statusLabel(axis)}. ${axisInterpretation(axis)} Escala de ${config.low} a ${config.high}; o centro é posição mista ou não determinada.`;
+}
+
+function capitalize(text: string): string {
+  return text.charAt(0).toLocaleUpperCase('pt-BR') + text.slice(1);
 }

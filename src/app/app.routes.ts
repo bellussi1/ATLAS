@@ -1,7 +1,4 @@
 import { type Routes } from '@angular/router';
-import { explorationRoutes } from '@exploration/routes/exploration.routes';
-
-import { ideologyRoutes } from './features/ideologies/routes/ideologies.routes';
 
 export const routes: Routes = [
   {
@@ -10,8 +7,16 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home-page.component').then((m) => m.HomePage),
     title: 'ATLAS — compreender o mundo',
   },
-  ...ideologyRoutes,
-  ...explorationRoutes,
+  {
+    path: '',
+    loadChildren: () =>
+      import('./features/ideologies/routes/ideologies.routes').then((m) => m.ideologyRoutes),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./features/exploration/routes/exploration.routes').then((m) => m.explorationRoutes),
+  },
   {
     path: '**',
     loadComponent: () =>

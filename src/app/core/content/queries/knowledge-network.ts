@@ -1,9 +1,5 @@
-﻿import type {
-  Claim,
-  EntityKind,
-  KnowledgeGraph,
-  Relation,
-} from '@core/content/models/content-schema';
+﻿import type { NetworkClaim, NetworkGraph } from '@core/content/models/content-artifacts';
+import type { EntityKind, KnowledgeGraph, Relation } from '@core/content/models/content-schema';
 import {
   forceCollide,
   forceLink,
@@ -16,26 +12,67 @@ import {
 
 /** Node families of the graph page. Each one has a colour, a shape and an icon family. */
 export type NetworkKindId =
-  'ideology' | 'person' | 'work' | 'organization' | 'party' | 'event' | 'place' | 'concept';
+  | 'ideology'
+  | 'person'
+  | 'work'
+  | 'organization'
+  | 'party'
+  | 'event'
+  | 'country'
+  | 'polity'
+  | 'place'
+  | 'concept';
+
+export type NetworkKindGroupId = 'ideas' | 'culture' | 'territories';
 
 export type NetworkShape =
-  'hexagon' | 'circle' | 'square' | 'triangle' | 'bar' | 'ring' | 'pin' | 'diamond';
+  | 'hexagon'
+  | 'circle'
+  | 'square'
+  | 'triangle'
+  | 'bar'
+  | 'ring'
+  | 'shield'
+  | 'cross'
+  | 'pin'
+  | 'diamond';
 
 export interface NetworkKindDefinition {
   id: NetworkKindId;
   label: string;
   plural: string;
+  /** Visual family used to group the legend. */
+  group: NetworkKindGroupId;
+  /** Two-digit catalogue index shown in the legend. */
+  code: string;
   shape: NetworkShape;
   /** CSS custom property holding the node colour. */
   color: string;
-  icon: 'ideology' | 'person' | 'work' | 'institution' | 'party' | 'event' | 'place' | 'concept';
+  icon:
+    | 'ideology'
+    | 'person'
+    | 'work'
+    | 'institution'
+    | 'party'
+    | 'event'
+    | 'place'
+    | 'concept'
+    | 'polity';
 }
+
+export const networkKindGroups: readonly { id: NetworkKindGroupId; title: string }[] = [
+  { id: 'ideas', title: 'Pessoas e ideias' },
+  { id: 'culture', title: 'Obras e acontecimentos' },
+  { id: 'territories', title: 'Instituições e territórios' },
+];
 
 export const networkKinds: readonly NetworkKindDefinition[] = [
   {
     id: 'ideology',
     label: 'Ideologia',
     plural: 'Ideologias',
+    group: 'ideas',
+    code: '01',
     shape: 'hexagon',
     color: '--color-accent',
     icon: 'ideology',
@@ -44,22 +81,48 @@ export const networkKinds: readonly NetworkKindDefinition[] = [
     id: 'person',
     label: 'Pessoa',
     plural: 'Pessoas',
+    group: 'ideas',
+    code: '02',
     shape: 'circle',
     color: '--color-info',
     icon: 'person',
   },
   {
+    id: 'concept',
+    label: 'Conceito',
+    plural: 'Conceitos',
+    group: 'ideas',
+    code: '03',
+    shape: 'diamond',
+    color: '--color-steel',
+    icon: 'concept',
+  },
+  {
     id: 'work',
     label: 'Obra',
     plural: 'Obras',
+    group: 'culture',
+    code: '04',
     shape: 'square',
     color: '--color-warning',
     icon: 'work',
   },
   {
+    id: 'event',
+    label: 'Acontecimento',
+    plural: 'Acontecimentos',
+    group: 'culture',
+    code: '05',
+    shape: 'ring',
+    color: '--color-orange-strong',
+    icon: 'event',
+  },
+  {
     id: 'organization',
     label: 'Organização',
     plural: 'Organizações',
+    group: 'territories',
+    code: '06',
     shape: 'triangle',
     color: '--color-moss',
     icon: 'institution',
@@ -68,33 +131,41 @@ export const networkKinds: readonly NetworkKindDefinition[] = [
     id: 'party',
     label: 'Partido',
     plural: 'Partidos',
+    group: 'territories',
+    code: '07',
     shape: 'bar',
     color: '--color-violet',
     icon: 'party',
   },
   {
-    id: 'event',
-    label: 'Acontecimento',
-    plural: 'Acontecimentos',
-    shape: 'ring',
-    color: '--color-orange-strong',
-    icon: 'event',
+    id: 'country',
+    label: 'País',
+    plural: 'Países',
+    group: 'territories',
+    code: '08',
+    shape: 'shield',
+    color: '--color-indigo',
+    icon: 'polity',
+  },
+  {
+    id: 'polity',
+    label: 'Formação política',
+    plural: 'Formações políticas',
+    group: 'territories',
+    code: '09',
+    shape: 'cross',
+    color: '--color-archive',
+    icon: 'polity',
   },
   {
     id: 'place',
     label: 'Lugar',
     plural: 'Lugares',
+    group: 'territories',
+    code: '10',
     shape: 'pin',
     color: '--color-cartographic',
     icon: 'place',
-  },
-  {
-    id: 'concept',
-    label: 'Conceito',
-    plural: 'Conceitos',
-    shape: 'diamond',
-    color: '--color-steel',
-    icon: 'concept',
   },
 ];
 
@@ -107,17 +178,113 @@ const kindByEntityKind: Partial<Record<EntityKind, NetworkKindId>> = {
   party: 'party',
   event: 'event',
   place: 'place',
-  'historical-polity': 'place',
-  government: 'place',
+  'historical-polity': 'polity',
+  government: 'polity',
   concept: 'concept',
   policy: 'concept',
+};
+
+/**
+ * The source graph still carries some countries, cities, books and concepts under a broader
+ * Wikidata default (`institution` or `concept`). Until the extraction is reclassified, these
+ * reviewed ids correct the graph family without changing the record itself.
+ */
+export const networkKindOverrides: Readonly<Record<string, NetworkKindId>> = {
+  // Countries and territories
+  'wiki-topic-australia': 'country',
+  'wiki-topic-grecia': 'country',
+  'wiki-topic-hungria': 'country',
+  'wiki-topic-lituania': 'country',
+  'wiki-topic-polonia': 'country',
+  'wiki-topic-suecia': 'country',
+  'wiki-topic-turquia': 'country',
+  'wiki-topic-ucrania': 'country',
+  'wiki-topic-canada': 'country',
+  'wiki-topic-escocia': 'country',
+  'wiki-topic-uniao-sovietica': 'country',
+  'wiki-topic-porto-rico': 'place',
+  // Historical polities
+  'wiki-topic-alemanha-nazista': 'polity',
+  // Cities
+  'wiki-topic-porto-alegre': 'place',
+  'wiki-topic-santos': 'place',
+  'wiki-topic-barcelona': 'place',
+  'wiki-topic-berlim': 'place',
+  'wiki-topic-budapeste': 'place',
+  'wiki-topic-buenos-aires': 'place',
+  'wiki-topic-genebra': 'place',
+  'wiki-topic-havana': 'place',
+  'wiki-topic-londres': 'place',
+  'wiki-topic-nova-iorque': 'place',
+  'wiki-topic-sao-paulo': 'place',
+  // Books and documents
+  'wiki-topic-carta-das-nacoes-unidas': 'work',
+  'wiki-topic-discurso-sobre-a-origem-e-os-fundamentos-da-desigualdade-entre-os-homens': 'work',
+  'wiki-topic-paula-livro': 'work',
+  'wiki-topic-a-arte-da-guerra-maquiavel': 'work',
+  'wiki-topic-constituicao-brasileira-de-1988': 'work',
+  // Events
+  'wiki-topic-diretas-ja': 'event',
+  'wiki-topic-conspiracao-dos-iguais': 'event',
+  // Organizations
+  'wiki-topic-congresso-dos-estados-unidos': 'organization',
+  'wiki-topic-congresso-nacional-do-brasil': 'organization',
+  // Concepts that arrived as institutions
+  'wiki-topic-cooperativismo': 'concept',
+  'wiki-topic-iluminismo': 'concept',
+  'wiki-topic-renascimento': 'concept',
+  'wiki-topic-ateismo': 'concept',
+  'wiki-topic-autocracia': 'concept',
+  'wiki-topic-vanguarda': 'concept',
+  'wiki-topic-governo': 'concept',
+  'wiki-topic-sindicato': 'concept',
+  'wiki-topic-associacao': 'concept',
+  'wiki-topic-confederacao': 'concept',
+  'wiki-topic-empresa-estatal': 'concept',
+  'wiki-topic-capitalismo': 'concept',
+  'wiki-topic-democracia-liberal': 'concept',
+  'wiki-topic-burocracia': 'concept',
+  'wiki-topic-estado-socialista': 'concept',
+  'wiki-topic-bolsa-escola': 'concept',
+  'wiki-topic-tribo': 'concept',
+  'wiki-topic-britanicos': 'concept',
+  'wiki-topic-despotismo': 'concept',
+  'wiki-topic-ditadura-militar': 'concept',
+  'wiki-topic-evangelicalismo': 'concept',
+  'wiki-topic-manufatura': 'concept',
+  'wiki-topic-monarquia': 'concept',
+  'wiki-topic-narodnik': 'concept',
+  'wiki-topic-nova-direita': 'concept',
+  'wiki-topic-nova-esquerda': 'concept',
+  'wiki-topic-oligarquia': 'concept',
+  'wiki-topic-presidencialismo': 'concept',
+  'wiki-topic-realismo': 'concept',
+  'wiki-topic-reformismo': 'concept',
+  'wiki-topic-romantismo': 'concept',
+  'wiki-topic-unipartidarismo': 'concept',
+  // Political families
+  'wiki-topic-bolchevique': 'party',
+  'wiki-topic-menchevique': 'party',
 };
 
 export function networkKindOf(kind: EntityKind): NetworkKindId {
   return kindByEntityKind[kind] ?? 'concept';
 }
 
-export function networkKindOfEntity(entity: { id: string; kind: EntityKind }): NetworkKindId {
+export function networkKindOfEntity(entity: {
+  id: string;
+  kind: EntityKind;
+  placeType?: 'place' | 'country' | 'regime';
+  description?: string;
+}): NetworkKindId {
+  const override = networkKindOverrides[entity.id];
+  if (override) return override;
+  const description = entity.description ?? '';
+  // The source graph often omits `placeType`; the record description still names the country.
+  if (/^(país|estado soberano)\b/i.test(description)) return 'country';
+  if (/^capital\b/i.test(description)) return 'place';
+  if (entity.kind === 'place' && entity.placeType === 'country') return 'country';
+  if (entity.kind === 'place' && entity.placeType === 'regime') return 'polity';
   return networkKindOf(entity.kind);
 }
 
@@ -128,20 +295,18 @@ export function networkKindDefinition(id: NetworkKindId): NetworkKindDefinition 
 /** Relation families: one colour and one dash pattern each, so colour is never the only cue. */
 export type RelationFamilyId =
   | 'influenced'
-  | 'participated'
-  | 'member'
-  | 'founded'
-  | 'wrote'
-  | 'developed'
-  | 'reacted'
-  | 'succeeded'
-  | 'governed'
-  | 'occurred'
-  | 'associated';
+  | 'rupture'
+  | 'participation'
+  | 'creation'
+  | 'continuity'
+  | 'documented'
+  | 'connection';
 
 export interface RelationFamilyDefinition {
   id: RelationFamilyId;
   label: string;
+  /** One sentence explaining what the family groups. */
+  note: string;
   color: string;
   /** SVG stroke-dasharray; empty for a solid line. */
   dash: string;
@@ -149,49 +314,58 @@ export interface RelationFamilyDefinition {
 }
 
 export const relationFamilies: readonly RelationFamilyDefinition[] = [
-  { id: 'influenced', label: 'Influenciou', color: '--color-accent', dash: '', directed: true },
   {
-    id: 'participated',
-    label: 'Participou de',
+    id: 'influenced',
+    label: 'Influência',
+    note: 'Uma corrente, pessoa ou obra influenciou outra.',
+    color: '--color-accent',
+    dash: '',
+    directed: true,
+  },
+  {
+    id: 'rupture',
+    label: 'Ruptura',
+    note: 'Uma posição se formou contra outra.',
+    color: '--color-orange-strong',
+    dash: '3 3',
+    directed: true,
+  },
+  {
+    id: 'participation',
+    label: 'Atuação',
+    note: 'Participação, militância, cargo ou governo.',
     color: '--color-info',
     dash: '6 3',
     directed: true,
   },
   {
-    id: 'member',
-    label: 'Foi membro de',
-    color: '--color-violet',
-    dash: '2 3',
+    id: 'creation',
+    label: 'Criação',
+    note: 'Fundação de uma organização ou autoria de uma obra.',
+    color: '--color-moss',
+    dash: '',
     directed: true,
   },
-  { id: 'founded', label: 'Fundou', color: '--color-moss', dash: '', directed: true },
-  { id: 'wrote', label: 'Escreveu', color: '--color-warning', dash: '9 3 2 3', directed: true },
   {
-    id: 'developed',
-    label: 'Desenvolveu-se em',
+    id: 'continuity',
+    label: 'Continuidade',
+    note: 'Uma forma se desdobrou, sucedeu ou veio depois de outra.',
     color: '--color-cartographic',
     dash: '12 4',
     directed: true,
   },
   {
-    id: 'reacted',
-    label: 'Reagiu contra',
-    color: '--color-orange-strong',
-    dash: '3 3',
-    directed: true,
-  },
-  { id: 'succeeded', label: 'Sucedeu', color: '--color-indigo', dash: '8 2', directed: true },
-  { id: 'governed', label: 'Governou', color: '--color-danger', dash: '4 2 1 2', directed: true },
-  {
-    id: 'occurred',
-    label: 'Ocorreu em',
-    color: '--color-archive',
+    id: 'documented',
+    label: 'Relação documentada',
+    note: 'Associação histórica registrada numa fonte, sem um verbo mais específico.',
+    color: '--color-indigo',
     dash: '1 4',
-    directed: true,
+    directed: false,
   },
   {
-    id: 'associated',
-    label: 'Associado a',
+    id: 'connection',
+    label: 'Conexão',
+    note: 'Vínculo de catálogo, localização, associação editorial ou link de navegação.',
     color: '--color-border-strong',
     dash: '1 3',
     directed: false,
@@ -206,19 +380,27 @@ const familyByType: Record<string, { family: RelationFamilyId; reverse?: boolean
   'causal-claim': { family: 'influenced' },
   event_influenced_ideology: { family: 'influenced' },
   influenced_by: { family: 'influenced', reverse: true },
-  participated_in: { family: 'participated' },
-  member_of: { family: 'member' },
-  founded: { family: 'founded' },
-  founded_by: { family: 'founded', reverse: true },
-  wrote: { family: 'wrote' },
-  authored: { family: 'wrote' },
-  developed_into: { family: 'developed' },
-  reacted_against: { family: 'reacted' },
-  succeeded: { family: 'succeeded' },
-  preceded_by: { family: 'succeeded' },
-  governed: { family: 'governed' },
-  occurred_in: { family: 'occurred' },
-  located_in: { family: 'occurred' },
+  reacted_against: { family: 'rupture' },
+  participated_in: { family: 'participation' },
+  member_of: { family: 'participation' },
+  governed: { family: 'participation' },
+  founded: { family: 'creation' },
+  founded_by: { family: 'creation', reverse: true },
+  wrote: { family: 'creation' },
+  authored: { family: 'creation' },
+  developed_into: { family: 'continuity' },
+  succeeded: { family: 'continuity' },
+  preceded_by: { family: 'continuity' },
+  documented_association: { family: 'documented' },
+  'documented-association': { family: 'documented' },
+  associated_with: { family: 'connection' },
+  related_to: { family: 'connection' },
+  occurred_in: { family: 'connection' },
+  located_in: { family: 'connection' },
+  editorial_link: { family: 'connection' },
+  'editorial-link': { family: 'connection' },
+  encyclopedic_link: { family: 'connection' },
+  'encyclopedic-link': { family: 'connection' },
 };
 
 export function relationFamilyDefinition(id: RelationFamilyId): RelationFamilyDefinition {
@@ -237,8 +419,14 @@ export interface NetworkNode {
   /** Years, when known, for the panel. */
   period: string | null;
   inReview: boolean;
-  claims: Claim[];
+  claims: NetworkClaim[];
   degree: number;
+  /** Incident edges counted by relation nature, so navigation is not mistaken for evidence. */
+  connections: Record<RelationNature, number>;
+  /** Distinct neighbours of any nature. */
+  distinctNeighbours: number;
+  /** Distinct neighbours reached through each relation nature. */
+  natureNeighbours: Record<RelationNature, number>;
 }
 
 /**
@@ -285,6 +473,44 @@ export const relationNatures: readonly RelationNatureDefinition[] = [
 
 export function relationNatureDefinition(id: RelationNature): RelationNatureDefinition {
   return relationNatures.find((nature) => nature.id === id) ?? relationNatures[0];
+}
+
+/**
+ * Weights behind label relevance. A relation documented by a source is the strongest signal; an
+ * editorial bridge situates the theme; a catalogue classification only suggests association; a
+ * navigation link says nothing about historical importance and earns no prominence.
+ */
+export const labelNatureWeights: Readonly<Record<RelationNature, number>> = {
+  stated: 1,
+  editorial: 0.4,
+  catalogue: 0.12,
+  navigation: 0,
+};
+
+/**
+ * Relevance for naming a node on the map. It combines documented connections, distinct neighbours,
+ * cross-collection presence and editorial completeness. Raw degree is deliberately not used: a
+ * catalogue or navigation hub would otherwise outrank a documented thinker. Popularity of links is
+ * not historical importance.
+ */
+export function labelRelevance(node: NetworkNode): number {
+  const edgeWeight = (nature: RelationNature) =>
+    node.connections[nature] * labelNatureWeights[nature];
+  const neighbourWeight = (nature: RelationNature) =>
+    node.natureNeighbours[nature] * labelNatureWeights[nature] * 1.4;
+  const documented =
+    edgeWeight('stated') * 3 +
+    edgeWeight('editorial') * 1.2 +
+    edgeWeight('catalogue') * 0.4 +
+    edgeWeight('navigation');
+  const neighbours =
+    neighbourWeight('stated') +
+    neighbourWeight('editorial') +
+    neighbourWeight('catalogue') +
+    neighbourWeight('navigation');
+  const crossCollection = Math.max(0, node.collections.length - 1) * 0.8;
+  const completeness = node.inReview ? 0.85 : 1;
+  return Number(((documented + neighbours + crossCollection) * completeness).toFixed(3));
 }
 
 export interface NetworkEdge {
@@ -360,10 +586,10 @@ export function natureOf(relation: Relation): RelationNature {
 }
 
 /** Flattens the knowledge graph into one deduplicated network: entities once, relations by id. */
-export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
+export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): KnowledgeNetwork {
   const atlases = graph.atlases.filter((atlas) => !hiddenCollections.has(atlas.id));
   const nodes = new Map<string, NetworkNode>();
-  const claimsByEntity = new Map<string, Claim[]>();
+  const claimsByEntity = new Map<string, NetworkClaim[]>();
   for (const atlas of atlases)
     for (const claim of atlas.claims)
       claimsByEntity.set(claim.entityId, [...(claimsByEntity.get(claim.entityId) ?? []), claim]);
@@ -378,7 +604,12 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
         id: entity.id,
         slug: entity.slug,
         title: entity.title,
-        kind: networkKindOfEntity(entity),
+        kind: networkKindOfEntity({
+          id: entity.id,
+          kind: entity.kind,
+          placeType: entity.kind === 'place' ? entity.placeType : undefined,
+          description: entity.discoveryMetadata?.description ?? undefined,
+        }),
         definition: firstSentence(entity.summary),
         summary: entity.summary,
         collections: [atlas.id],
@@ -386,6 +617,9 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
         inReview: entity.editorialStatus === 'pending' || entity.editorialStatus === 'draft',
         claims: claimsByEntity.get(entity.id) ?? [],
         degree: 0,
+        connections: { stated: 0, editorial: 0, catalogue: 0, navigation: 0 },
+        distinctNeighbours: 0,
+        natureNeighbours: { stated: 0, editorial: 0, catalogue: 0, navigation: 0 },
       });
     }
   }
@@ -394,7 +628,7 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
     for (const relation of atlas.relations) {
       if (edges.has(relation.id)) continue;
       if (!nodes.has(relation.fromEntityId) || !nodes.has(relation.toEntityId)) continue;
-      const mapped = familyByType[relation.type] ?? { family: 'associated' as const };
+      const mapped = familyByType[relation.type] ?? { family: 'connection' as const };
       const reverse = !!mapped.reverse;
       edges.set(relation.id, {
         id: relation.id,
@@ -413,9 +647,38 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
       });
     }
   }
+  const neighbours = new Map<string, Set<string>>();
+  const natureNeighbours = new Map<string, Record<RelationNature, Set<string>>>();
+  for (const id of nodes.keys()) {
+    neighbours.set(id, new Set());
+    natureNeighbours.set(id, {
+      stated: new Set(),
+      editorial: new Set(),
+      catalogue: new Set(),
+      navigation: new Set(),
+    });
+  }
   for (const edge of edges.values()) {
-    nodes.get(edge.source)!.degree++;
-    nodes.get(edge.target)!.degree++;
+    const source = nodes.get(edge.source)!;
+    const target = nodes.get(edge.target)!;
+    source.degree++;
+    target.degree++;
+    source.connections[edge.nature]++;
+    target.connections[edge.nature]++;
+    neighbours.get(edge.source)!.add(edge.target);
+    neighbours.get(edge.target)!.add(edge.source);
+    natureNeighbours.get(edge.source)![edge.nature].add(edge.target);
+    natureNeighbours.get(edge.target)![edge.nature].add(edge.source);
+  }
+  for (const node of nodes.values()) {
+    node.distinctNeighbours = neighbours.get(node.id)!.size;
+    const byNature = natureNeighbours.get(node.id)!;
+    node.natureNeighbours = {
+      stated: byNature.stated.size,
+      editorial: byNature.editorial.size,
+      catalogue: byNature.catalogue.size,
+      navigation: byNature.navigation.size,
+    };
   }
   const collections = atlases.map((atlas) => ({
     id: atlas.id,
@@ -522,57 +785,17 @@ export function linksOf(
   );
 }
 
-export interface PathStep {
-  edge: NetworkEdge;
-  from: string;
-  to: string;
-}
-
-/**
- * Shortest chain of links between two nodes (breadth-first, links read in either direction).
- * Returns null when they are not connected; an empty list when both are the same node.
- */
-export function shortestPath(
-  fromId: string,
-  toId: string,
-  edges: readonly NetworkEdge[],
-): PathStep[] | null {
-  if (fromId === toId) return [];
-  const adjacent = new Map<string, { edge: NetworkEdge; other: string }[]>();
-  for (const edge of edges) {
-    adjacent.set(edge.source, [...(adjacent.get(edge.source) ?? []), { edge, other: edge.target }]);
-    adjacent.set(edge.target, [...(adjacent.get(edge.target) ?? []), { edge, other: edge.source }]);
-  }
-  const previous = new Map<string, { edge: NetworkEdge; from: string }>();
-  const queue = [fromId];
-  const seen = new Set([fromId]);
-  for (const current of queue) {
-    for (const { edge, other } of adjacent.get(current) ?? []) {
-      if (seen.has(other)) continue;
-      seen.add(other);
-      previous.set(other, { edge, from: current });
-      if (other === toId) {
-        const steps: PathStep[] = [];
-        for (let at = toId; at !== fromId;) {
-          const step = previous.get(at)!;
-          steps.unshift({ edge: step.edge, from: step.from, to: at });
-          at = step.from;
-        }
-        return steps;
-      }
-      queue.push(other);
-    }
-  }
-  return null;
-}
-
 const positionPattern = /\b(esquerda|direita|centro|extrema|progressist|conservador)/i;
 
 /** Claims that place an ideology on the political spectrum come first; each stays attributed. */
-export function positionClaims(node: NetworkNode): Claim[] {
-  return [...node.claims].sort(
+export function rankClaims(claims: readonly NetworkClaim[]): NetworkClaim[] {
+  return [...claims].sort(
     (a, b) => Number(positionPattern.test(b.text)) - Number(positionPattern.test(a.text)),
   );
+}
+
+export function positionClaims(node: NetworkNode): NetworkClaim[] {
+  return rankClaims(node.claims);
 }
 
 export interface NetworkPoint {

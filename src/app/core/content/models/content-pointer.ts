@@ -1,5 +1,8 @@
 import * as z from 'zod';
 
+// The public CSP forbids eval and Zod's JIT compiles validators with `new Function`.
+z.config({ jitless: true });
+
 /** Public, non-secret base URL of the atlas-public bucket; the only address the app reads from. */
 export const DEFAULT_CONTENT_BASE_URL = 'https://atlas-content-delivery.atlas-bellussi.workers.dev';
 

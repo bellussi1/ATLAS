@@ -1,5 +1,8 @@
 import * as z from 'zod';
 
+// The public CSP forbids eval and Zod's JIT compiles validators with `new Function`.
+z.config({ jitless: true });
+
 const id = z.string().regex(/^[a-z][a-z0-9-]*$/);
 export const feedbackSchema = z.object({ explanation: z.string().trim().min(1), sourceId: id });
 export const exerciseSchema = z

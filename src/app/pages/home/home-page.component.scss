@@ -61,7 +61,7 @@ h1 .line + .line {
   border: 0;
   background: none;
   color: var(--color-ink);
-  font: 0.875rem var(--font-mono);
+  font: var(--text-small) var(--font-mono);
   cursor: pointer;
 }
 .recompose {
@@ -99,7 +99,7 @@ form {
 }
 .console ::ng-deep .atlas-field label {
   color: var(--color-canvas);
-  font: 0.875rem/1.5 var(--font-mono);
+  font: var(--text-small)/1.5 var(--font-mono);
 }
 .console ::ng-deep .atlas-field input {
   min-height: 3.5rem;
@@ -180,7 +180,7 @@ form {
   --reading-color: var(--color-indigo);
 }
 .cover-choice[data-reading='social-democracia'] {
-  --reading-color: #9a6b00;
+  --reading-color: var(--color-ochre-strong);
 }
 .cover-choice[data-reading='anarquismo'] {
   --reading-color: var(--color-cartographic);
@@ -223,7 +223,7 @@ form {
 }
 .choice-kind,
 .choice-note {
-  font: 500 0.875rem/1.4 var(--font-sans);
+  font: 500 var(--text-small)/1.4 var(--font-sans);
   font-stretch: var(--stretch-label);
   letter-spacing: 0.02em;
 }
@@ -263,7 +263,7 @@ form {
   padding: 0.2rem 0.5rem;
   background: var(--color-ink);
   color: var(--color-canvas);
-  font: 0.875rem/1.5 var(--font-mono);
+  font: var(--text-small)/1.5 var(--font-mono);
 }
 .reading-sheet h2 {
   margin: 0;
@@ -292,7 +292,7 @@ form {
 }
 .excerpt h3 {
   margin: 0 0 0.25rem;
-  font-size: 1rem;
+  font-size: var(--text-body);
 }
 .excerpt p {
   margin: 0;
@@ -401,7 +401,7 @@ form {
 .door-note {
   grid-area: note;
   max-inline-size: 32ch;
-  font: 1rem/1.45 var(--font-serif);
+  font: var(--text-body)/1.45 var(--font-serif);
 }
 .door-glyph {
   grid-area: glyph;
@@ -494,7 +494,7 @@ form {
     grid-area: text;
     margin: 0.5rem 0 0;
     color: var(--color-ink-muted);
-    font: 1rem/1.55 var(--font-serif);
+    font: var(--text-body)/1.55 var(--font-serif);
   }
 }
 .method-shape {
@@ -624,7 +624,7 @@ form {
     margin-block-start: 0;
   }
   .door-note {
-    font-size: 0.9375rem;
+    font-size: var(--text-compact);
   }
 }
 @media (max-width: 47.99rem) {
@@ -645,7 +645,7 @@ form {
     gap: 0.35rem;
   }
   .mobile-sheet-control label {
-    font: 0.875rem/1.5 var(--font-mono);
+    font: var(--text-small)/1.5 var(--font-mono);
   }
   .mobile-sheet-control select {
     min-height: var(--control-min-size);

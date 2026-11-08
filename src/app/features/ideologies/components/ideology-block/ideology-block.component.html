@@ -12,7 +12,13 @@
     />
   }
   @case ('chronology') {
-    <app-era-chart [epochs]="eraEpochs()" [people]="entities()" [markers]="eraMarkers()" />
+    <app-era-chart
+      [epochs]="eraEpochs()"
+      [people]="entities()"
+      [markers]="eraMarkers()"
+      [markerNotes]="eraMarkerNotes()"
+      [temporalNotes]="eraTemporalNotes()"
+    />
   }
   @case ('argument') {
     <app-marx-atlas-page [inline]="true" />
@@ -189,6 +195,10 @@
     />
   }
   @case ('sources') {
+    <p class="bibliography-note">
+      Bibliografia integral da leitura. As fontes de cada afirmação e de cada relação aparecem junto
+      do trecho correspondente.
+    </p>
     <label class="source-search" [for]="blockId() + '-search'"
       >Filtrar referências<input
         type="search"

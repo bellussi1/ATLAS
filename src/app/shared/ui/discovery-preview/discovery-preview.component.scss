@@ -18,7 +18,7 @@ header p,
 .state {
   margin: 0;
   color: var(--color-ink-muted);
-  font: 0.75rem/1.5 var(--font-mono);
+  font: var(--text-caption)/1.5 var(--font-mono);
 }
 button {
   min-height: 2.75rem;

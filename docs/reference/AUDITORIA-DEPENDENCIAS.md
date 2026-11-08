@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Auditoria de dependências — 31/10/2026
 
 - `npm audit --json`: 33 entradas moderadas. `npm audit --omit=dev --json`: zero. São cadeias de ferramentas de desenvolvimento, não evidência de exploração no site estático.

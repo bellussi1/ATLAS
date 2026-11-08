@@ -58,6 +58,18 @@ test('the graph loads collections and layouts without the search and adjacency i
   expect(compiled).toContain(`/c/${manifest.layouts.sha256}.json`);
   expect(compiled).not.toContain(`/c/${manifest.search.sha256}.json`);
   expect(compiled).not.toContain(`/c/${manifest.adjacency.sha256}.json`);
+  if (manifest.network) {
+    // With the projection, the graph no longer downloads the collections.
+    expect(compiled).toContain(`/c/${manifest.network.sha256}.json`);
+    expect(
+      compiled.every(
+        (path) =>
+          path === `/c/${manifest.layouts.sha256}.json` ||
+          path === `/c/${manifest.network.sha256}.json`,
+      ),
+    ).toBe(true);
+    return;
+  }
   expect(
     compiled.every(
       (path) =>
@@ -65,7 +77,7 @@ test('the graph loads collections and layouts without the search and adjacency i
         manifest.collections.some((entry) => path === `/c/${entry.sha256}.json`),
     ),
   ).toBe(true);
-  // Small collections hydrate from the server TransferState; the large ones come from R2.
+  // Older releases without the projection still hydrate small collections from TransferState.
   expect(
     compiled.some((path) =>
       manifest.collections.some((entry) => path === `/c/${entry.sha256}.json`),
@@ -99,9 +111,10 @@ test('a failed content asset preserves the current page and offers a working ret
     .locator('.site-header')
     .getByRole('link', { name: /Liberalismo/ })
     .click();
-  await expect(page.getByRole('alert')).toContainText('Não foi possível carregar a leitura');
+  await expect(page.getByRole('alert')).toContainText('A leitura não abriu');
+  await expect(page.getByRole('alert')).toContainText('Você continua em Início.');
   await expect(page.locator('h1')).toContainText('Tudo');
-  const audit = await new AxeBuilder({ page }).include('.atlas-notice').analyze();
+  const audit = await new AxeBuilder({ page }).include('.navigation-failure').analyze();
   expect(
     audit.violations.filter((violation) =>
       ['critical', 'serious'].includes(violation.impact ?? ''),

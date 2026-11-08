@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Sistema de design acessível
 
 Base comum da interface, a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo. A direção A foi aprovada e é a base da interface principal. As alternativas B e C do Prompt 04 e as páginas de laboratório foram retiradas da documentação e da aplicação.
@@ -53,7 +56,6 @@ Primitivas standalone em `src/app/shared/ui/ui-primitives.scss` (estilos compart
 | `app-menu` | Navegação nativa com nome obrigatório; orientação horizontal ou vertical; links projetados pela página |
 | `app-content-summary` | Sumário com heading e conteúdo projetado; usado nos resumos de categoria e artigo |
 | `app-disclosure` | `<details>/<summary>` nativo, operável por teclado sem JavaScript próprio |
-| `app-notice` | `info`, `success`, `warning`, `critical`; `accessibleRole="status"` (polido) ou `"alert"` (assertivo), em um único elemento |
 | `app-page-template` | Variantes `editorial`, `index`, `profile`; largura de leitura própria; `aria-labelledby` |
 
 Já em uso: menu global; templates e sumários de páginas editoriais e categorias; headings e links editoriais; buscas funcionais na home e em Conhecimento; avisos de busca vazia. O showroom exercita as demais variantes e estados sem enviar dados.
@@ -105,16 +107,13 @@ Prévias da home, índice de seções, indicação de posição e percursos para
 
 ## Mesa de pesquisa e skills
 
-A home substitui a composição anterior de painéis pela seleção de fichas. Busca e três modos permanecem; o grafo fica na rota Relações, sem miniatura na mesa. Registros e leitor reutilizados. Desktop usa botões de seleção; mobile, select nativo sincronizado. A prévia aponta para o registro selecionado. Revisão em `animation-plans/001-research-table-review.md`.
+A home substitui a composição anterior de painéis pela seleção de fichas. Busca e três modos permanecem; o grafo fica na rota Relações, sem miniatura na mesa. Registros e leitor reutilizados. Desktop usa botões de seleção; mobile, select nativo sincronizado. A prévia aponta para o registro selecionado. Revisão em `docs/design/animation-plans/001-research-table-review.md`.
 
 Catálogo de skills com prefixo `atlas-`. Frontend e interação orientaram a composição; `find-animation-opportunities` selecionou troca de ficha, painel e feedback de pressão; `animate` implementou; `improve-animations` e `12-principles-of-animation` revisaram.
 
 ## Editorial geométrico: cores e termos navegáveis
 
 Mesa aprovada pelo usuário. Tokens adicionados: `color-teal-paper` (#85BDB5), `color-ochre-paper` (#EDC45B), `color-rose-paper` (#E9B4BF), `color-indigo` (#37395E); papel, tinta e vermelho continuam base. Texto principal nas três superfícies claras e branco sobre índigo com cobertura de contraste automatizada.
-
-- `AtlasEditorialMarkComponent`: motivos SVG originais para verbete, artigo e atlas. Miniaturas acompanham os controles de seleção; o motivo maior acompanha a ficha atual. Não são dados cartográficos nem fac-símiles. Rótulos textuais disponíveis; desenhos ocultos da árvore acessível.
-- `AtlasEditorialTextComponent`: preserva o texto e destaca termos de vocabulário editorial limitado. Contexto → artigo Conhecimento com contexto; fonte/evidência → seção de contexto e evidência da metodologia; metodologia → verbete estruturado; verbete → índice. Até dois destinos distintos por trecho. `currentPath` evita link para o próprio texto. Sublinhado complementa o vermelho; `inverse` mantém texto e foco claros em fundos fortes.
 
 Skill própria: `.agents/skills/atlas-editorial-geometrico/SKILL.md`, instalada em `~/.codex/skills/atlas-editorial-geometrico`. A cópia versionada é a fonte; ao alterá-la, atualizar a instalação local. `references/mesa-aprovada.png` preserva a composição aprovada antes da ampliação de cores. O validador estrutural passou; a validação concreta cobre esta aplicação, não a skill em geral.
 
@@ -128,7 +127,7 @@ Favicon com redução própria em SVG/PNG, fallback ICO (16/32/48) e touch icon 
 
 ## Revisão requisito a requisito do Prompt 05 (31/10/2026)
 
-Referência: `prompts/05-design-system-acessivel.md`. A revisão preserva a identidade e a marca aprovadas depois. Alterações paralelas de conteúdo foram preservadas; a suíte abaixo reflete o workspace conjunto, e o commit da revisão se limita ao design system.
+Referência: `docs/archive/2026-11/prompts/05-design-system-acessivel.md`. A revisão preserva a identidade e a marca aprovadas depois. Alterações paralelas de conteúdo foram preservadas; a suíte abaixo reflete o workspace conjunto, e o commit da revisão se limita ao design system.
 
 | Requisito | Evidência e resultado |
 |---|---|

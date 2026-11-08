@@ -1,0 +1,262 @@
+[
+  {
+    "claimId": "claim-wiki-topic-adam-smith-001",
+    "tradition": "marxismo",
+    "claim": "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida.",
+    "source": {
+      "id": "src-wiki-topic-adam-smith",
+      "title": "Adam Smith (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Adam_Smith"
+    },
+    "evidence": "A data exata de seu nascimento não é conhecida, embora a do batismo tenha sido muitas vezes tomada como tal.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-friedrich-engels-009",
+    "tradition": "marxismo",
+    "claim": "A obra A Situação da Classe Trabalhadora na Inglaterra foi considerada um clássico em sua época.",
+    "source": {
+      "id": "src-wiki-topic-friedrich-engels",
+      "title": "Friedrich Engels (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Friedrich_Engels"
+    },
+    "evidence": "Foi considerado um clássico em sua época.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-karl-marx-002",
+    "tradition": "marxismo",
+    "claim": "Há divergência entre estudiosos neorricardianos e marxistas sobre o grau de influência de David Ricardo sobre Marx.",
+    "source": {
+      "id": "src-wiki-topic-karl-marx",
+      "title": "Karl Marx (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Karl_Marx"
+    },
+    "evidence": "Estudiosos pertencentes à tradição neorricardiana tendem a considerar que existem poucas diferenças cruciais entre o pensamento econômico de um e outro",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-work-wealth-of-nations",
+    "tradition": "marxismo",
+    "claim": "Smith propõe o trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui.",
+    "source": {
+      "id": "source-marx-smith",
+      "title": "Adam Smith — A riqueza das nações",
+      "url": "https://www.gutenberg.org/files/3300/3300-h/3300-h.htm"
+    },
+    "evidence": "The Wealth of Nations, livro I, capítulo V, texto em inglês",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-manifesto-comunista-006",
+    "tradition": "marxismo",
+    "claim": "Publicação do Manifesto em Londres. (1848).",
+    "source": {
+      "id": "src-wiki-topic-manifesto-comunista",
+      "title": "Manifesto Comunista (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Manifesto_Comunista"
+    },
+    "evidence": "publicado em Londres em 1848",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-person-emmanuel-joseph-sieyes-002",
+    "tradition": "liberalismo",
+    "claim": "Sustentava a existência de um poder imanente à nação, superior aos poderes constituídos, que é o poder constituinte.",
+    "source": {
+      "id": "src-wiki-person-emmanuel-joseph-sieyes",
+      "title": "Emmanuel Joseph Sieyès (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Emmanuel_Joseph_Siey%C3%A8s"
+    },
+    "evidence": "vislumbrava a existência de um poder imanente à nação, superior aos poderes ordinariamente constituídos",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-ideology-liberal-socialism-001",
+    "tradition": "liberalismo",
+    "claim": "O socialismo liberal favorece uma economia de livre mercado, mas considera os monopólios legais e artificiais culpa do capitalismo e opõe-se ao laissez-faire do liberalismo econômico.",
+    "source": {
+      "id": "src-wiki-ideology-liberal-socialism",
+      "title": "Socialismo liberal (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Socialismo_liberal"
+    },
+    "evidence": "ela identifica os monopólios legais e artificiais como culpa do capitalismo e, portanto, se opõe totalmente ao laissez-faire do liberalismo econômico",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-revolucao-francesa-003",
+    "tradition": "liberalismo",
+    "claim": "A revolução teve impacto duradouro na história da França e, mais amplamente, em todo o continente europeu.",
+    "source": {
+      "id": "src-wiki-topic-revolucao-francesa",
+      "title": "Revolução Francesa (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Francesa"
+    },
+    "evidence": "que teve um impacto duradouro na história do país e, mais amplamente, em todo o continente europeu",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-ideology-green-liberalism-005",
+    "tradition": "liberalismo",
+    "claim": "O termo liberalismo verde foi introduzido em estudos acadêmicos pelo filósofo político Marcel Wissenburg.",
+    "source": {
+      "id": "src-wiki-ideology-green-liberalism",
+      "title": "liberalismo verde (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Liberalismo_verde"
+    },
+    "evidence": "O termo \"liberalismo verde\", no entanto, foi introduzido em estudos acadêmicos pelo filósofo político Marcel Wissenburg",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-person-ion-c-bratianu-008",
+    "tradition": "liberalismo",
+    "claim": "Negociador romeno no Tratado de Berlim. (1878).",
+    "source": {
+      "id": "src-wiki-person-ion-c-bratianu",
+      "title": "Ion C. Brătianu (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Ion_C._Br%C4%83tianu"
+    },
+    "evidence": "foi o negociador romeno para o subsequente Tratado de Berlim de 1878",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-revolucao-industrial-002",
+    "tradition": "social-democracia",
+    "claim": "Há divergência sobre se os padrões de vida da maioria da população cresceram durante o período ou apenas no final do século XIX e XX.",
+    "source": {
+      "id": "src-wiki-topic-revolucao-industrial",
+      "title": "Revolução Industrial (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o_Industrial"
+    },
+    "evidence": "os padrões de vida da maioria da população não cresceram significativamente até o final do século XIX e XX",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-isabel-allende-004",
+    "tradition": "social-democracia",
+    "claim": "É considerada uma das principais revelações da literatura latino-americana da década de 1980.",
+    "source": {
+      "id": "src-wiki-topic-isabel-allende",
+      "title": "Isabel Allende (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Isabel_Allende"
+    },
+    "evidence": "é considerada uma das principais revelações da literatura latino-americana da década de 1980",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-leis-antissocialistas-002",
+    "tradition": "social-democracia",
+    "claim": "O principal promotor da medida foi o chanceler Otto von Bismarck.",
+    "source": {
+      "id": "src-wiki-topic-leis-antissocialistas",
+      "title": "Leis Antissocialistas (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Leis_Antissocialistas"
+    },
+    "evidence": "O principal promotor da medida foi o chanceler Otto von Bismarck",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-valparaiso-chile-001",
+    "tradition": "social-democracia",
+    "claim": "Juan de Saavedra batizou o porto em 1536 com o nome de Valparaíso, segundo uma das duas versões registradas sobre o nome.",
+    "source": {
+      "id": "src-wiki-topic-valparaiso-chile",
+      "title": "Valparaíso (Chile) (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Valpara%C3%ADso_(Chile)"
+    },
+    "evidence": "que havia batizado o porto em 1536 com o nome de Valparaíso",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-partido-comunista-do-chile-004",
+    "tradition": "social-democracia",
+    "claim": "Entre 1932 e 1957 o partido esteve proibido de participar das eleições com o seu nome.",
+    "source": {
+      "id": "src-wiki-topic-partido-comunista-do-chile",
+      "title": "Partido Comunista do Chile (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Partido_Comunista_do_Chile"
+    },
+    "evidence": "Entre 1932 a 1957, o Partido Comunista estava proibido de participar com o seu nome nas eleições.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-errico-malatesta-003",
+    "tradition": "anarquismo",
+    "claim": "Depois da Primeira Guerra Mundial voltou à Itália, onde o jornal Umanità Nova teria certa popularidade.",
+    "source": {
+      "id": "src-wiki-topic-errico-malatesta",
+      "title": "Errico Malatesta (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Errico_Malatesta"
+    },
+    "evidence": "Depois da Primeira Guerra Mundial, ele voltou para a Itália onde seu Umanità Nova teria certa popularidade",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-argentina-009",
+    "tradition": "anarquismo",
+    "claim": "A Argentina é membro fundador da Organização das Nações Unidas, do Mercosul, da União de Nações Sul-Americanas e da Organização Mundial do Comércio.",
+    "source": {
+      "id": "src-wiki-topic-argentina",
+      "title": "Argentina (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Argentina"
+    },
+    "evidence": "A Argentina é um membro fundador da Organização das Nações Unidas, do Mercosul, da União de Nações Sul-Americanas e da Organização Mundial do Comércio",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-santos-013",
+    "tradition": "anarquismo",
+    "claim": "Uma hipótese atribui o nome Santos ao porto de Santos existente em Lisboa.",
+    "source": {
+      "id": "src-wiki-topic-santos",
+      "title": "Santos (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Santos"
+    },
+    "evidence": "Uma outra hipótese sobre o nome Santos viria do porto de Santos que havia em Lisboa",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-cuba-004",
+    "tradition": "anarquismo",
+    "claim": "Ocorreu a crise dos mísseis cubanos, em plena Guerra Fria. (1962-10).",
+    "source": {
+      "id": "src-wiki-topic-cuba",
+      "title": "Cuba (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Cuba"
+    },
+    "evidence": "A crise dos mísseis cubanos (outubro de 1962), em plena Guerra Fria, quase desencadeou a Terceira Guerra Mundial.",
+    "ok": null,
+    "note": ""
+  },
+  {
+    "claimId": "claim-wiki-topic-evo-morales-011",
+    "tradition": "anarquismo",
+    "claim": "Foi reeleito presidente. (2009-12-06).",
+    "source": {
+      "id": "src-wiki-topic-evo-morales",
+      "title": "Evo Morales (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Evo_Morales"
+    },
+    "evidence": "sendo reeleito em 6 de dezembro de 2009",
+    "ok": null,
+    "note": ""
+  }
+]

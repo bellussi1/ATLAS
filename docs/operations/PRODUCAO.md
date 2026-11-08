@@ -1,42 +1,39 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Produção: roteiro de infraestrutura
 
-Site: `https://atlasbr.vercel.app` (Vercel). A migração do host estático para Cloudflare Pages está preparada em `npm run infra:pages`; falta publicar com credencial Cloudflare. Conteúdo: bucket R2 `atlas-public` (hoje em `r2.dev`).
+Site: `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O CI publica o build verificado na `master`; o R2 continua sendo a origem do conteúdo. O Vercel não é mais usado como origem.
 
 **O repositório é público.** Nada sensível entra nele: tokens, chaves, IDs de conta e e-mails ficam em segredos do GitHub, em `~/.atlas/*.env` ou no painel do provedor. O CI roda o gitleaks sobre todo o histórico, o hook de pré-commit roda `gitleaks protect --staged` quando o gitleaks está instalado, e `.gitignore` bloqueia `.env*`, `*.pem`, `*.key` e `.vercel`.
 
 ## Como o deploy funciona
 
 1. O CI valida (lint, tipos, testes, build, links, E2E) e gera o site em `dist/atlas/browser`.
-2. `scripts/infra/vercel-config.mjs` (último passo do `npm run build`) escreve `dist/atlas/vercel.json` com os headers e a CSP com hashes do build, os redirecionamentos de `public/_redirects`, `cleanUrls` e cache longo para JS e CSS com hash.
-3. O job `deploy` copia esse arquivo para a raiz e roda `vercel build` e `vercel deploy --prebuilt`: `master` vai para produção, pull requests viram pré-visualização. O job só roda quando a variável `VERCEL_PROJECT_ID` existe.
+2. O build produz `_headers` (com a CSP e os hashes dos scripts inline), `_redirects` e `404.html`, que são o contrato nativo do Pages.
+3. O job `deploy-pages` baixa o artefato verificado e roda `wrangler pages deploy` somente em push para a `master`. Pull requests não publicam.
 
-O `vercel.json` da raiz é versionado e cobre o deploy pelo Git enquanto o job `deploy` está inerte (falta `VERCEL_PROJECT_ID`). Ele fixa `framework: null` para desligar o preset Angular, que hoje responde `index.html` com status 200 em endereços desconhecidos, e repete `redirects`, `routes` e os headers de segurança. A CSP com os hashes do build fica só no arquivo gerado, porque os hashes mudam a cada build; `scripts/infra/vercel-config.spec.mjs` falha se as regras determinísticas dos dois arquivos divergirem.
-
-`public/404.html` é servido pelo Vercel com status 404 para endereços desconhecidos. O `routes` termina em `{ "status": 404, "dest": "/404.html" }` depois de `handle: filesystem`, e `/verbete/*` continua na SPA para slugs não prerenderizados. Sem `framework: null` (ou seja, no preset Angular), o mesmo endereço devolve 200 com `index.html`; o `uptime.yml` detecta isso porque exige 404 no caminho inexistente.
+`public/404.html` é servido pelo Pages com status 404 para endereços desconhecidos; `/verbete/*` continua na SPA para slugs não prerenderizados. O `uptime.yml` exige 404 no caminho inexistente.
 
 ## O que fica a cargo de uma pessoa
 
-1. **Token do Vercel:** Vercel → Account Settings → Tokens → criar token com escopo no time do projeto.
-2. **IDs do projeto:** `vercel link` na raiz cria `.vercel/project.json` (ignorado pelo git) com `orgId` e `projectId`.
-3. **Segredos e variáveis do GitHub** (o valor do token é lido da entrada padrão, nunca vai para arquivo nem para o chat):
+1. **Token da Cloudflare:** My Profile → API Tokens → Create Token, com a permissão **Account → Cloudflare Pages → Edit** no escopo da conta.
+2. **Segredos do GitHub** (o valor do token é lido da entrada padrão, nunca vai para arquivo nem para o chat):
 
 ```bash
-gh secret set VERCEL_TOKEN
-gh secret set VERCEL_ORG_ID
-gh variable set VERCEL_PROJECT_ID --body <projectId>
-gh variable set ATLAS_SITE_URL --body https://atlasbr.vercel.app
-gh variable set ATLAS_ANALYTICS --body vercel
+gh secret set CLOUDFLARE_API_TOKEN
+gh secret set CLOUDFLARE_ACCOUNT_ID
+gh variable set ATLAS_SITE_URL --body https://atlas-bellussi.pages.dev
 ```
 
-4. **Painel do Vercel:** em Settings → Git, desligar o deploy automático do Git (o CI passa a ser o único caminho, para os headers sempre vencerem) e ativar Web Analytics.
-5. **Alerta de disponibilidade:** definir a variável `ATLAS_CDN_URL` com o endereço público do conteúdo para ativar o `uptime.yml`.
+3. **Vercel:** se o projeto antigo ainda existir, desconectar a integração Git e excluir o projeto no painel para não manter uma segunda origem.
+4. **Alerta de disponibilidade:** definir a variável `ATLAS_CDN_URL` com o endereço público do conteúdo para ativar o `uptime.yml`.
 
 ## O que cada peça faz
 
 | Peça            | Onde                           | Efeito                                                                                                  |
 | --------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------- |
 | SEO             | `scripts/seo.mjs`              | canonical absoluto por página, `sitemap.xml`, `Sitemap:` no `robots.txt`, links absolutos no `llms.txt` |
-| Analytics       | `ATLAS_ANALYTICS=vercel`       | script do Vercel Web Analytics servido pela própria origem (a CSP não muda)                             |
 | Disponibilidade | `uptime.yml`                   | a cada 15 minutos testa o site, o 404 real e o `pointer.json`; falha avisa por e-mail                   |
 | Dependências    | `dependabot.yml`, `codeql.yml` | atualizações semanais e análise estática                                                                |
 | Segredos        | job `secrets` do CI            | gitleaks sobre todo o histórico                                                                         |
@@ -54,7 +51,7 @@ npm run content:publish                                      # republica o point
 ## Pendências
 
 - Espelhar no R2 as imagens da Wikimedia com licença de reprodução (hoje há hotlink).
-- Hoje o `vercel.json` gerado nunca rodou contra o Vercel real: o primeiro deploy de pré-visualização é o teste.
+- O deploy do Pages depende dos segredos `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`; sem eles o job `deploy-pages` falha na `master`.
 
 ## CDN de conteúdo (Worker)
 
@@ -128,22 +125,26 @@ O plano gratuito do Pages não cobra requisições nem banda e aceita até 20.00
 por arquivo. Em 06/11/2026 o build tinha **1.242 arquivos, 133,7 MB** e o maior arquivo era
 `marxismo/index.html` com **0,86 MB**, dentro dos limites.
 
+O caminho normal é o CI: o job `deploy-pages` publica o artefato verificado quando a `master`
+avança. Para publicar manualmente em uma emergência:
+
 ```bash
 npm run build
 npm run infra:pages:check   # valida limites e mostra o comando
 npm run infra:pages         # publica em atlas-bellussi.pages.dev
 ```
 
-O primeiro deploy exige um projeto e credencial Cloudflare (Workers/Pages Edit) ou
-`npx wrangler login`:
+O projeto é Direct Upload, criado com:
 
 ```bash
 npx wrangler pages project create atlas-bellussi --production-branch master
 ```
 
-Para usar domínio próprio, adicione o domínio ao projeto no painel e atualize `ATLAS_SITE_URL`;
-o `ATLAS_CDN_URL` continua apontando para o Worker de conteúdo. Depois de validar o Pages,
-desative o deploy da Vercel para não manter duas origens.
+O Pages usa barra final nas rotas de diretório (`/fontes/`). O `scripts/seo.mjs` gera canonical
+e sitemap nessa mesma forma para não duplicar a URL, usando
+`https://atlas-bellussi.pages.dev` como origem padrão. Para usar domínio próprio, adicione o
+domínio ao projeto no painel e defina `ATLAS_SITE_URL`; o `ATLAS_CDN_URL` continua apontando
+para o Worker de conteúdo.
 
 ## Armazenamento dos deployments
 
@@ -155,19 +156,10 @@ O conteúdo HTML e o prerender continuam disponíveis para indexação.
 
 A medição local em 06/11/2026 passou de aproximadamente 460 MB para 86 MB no diretório público, cerca de 81% de redução. A página de pessoas passou de cerca de 15 MB para 176 KB. Os valores dependem do release de conteúdo.
 
-A redução vale para novos builds. Para reduzir o histórico retido, abrir
-ATLAS → Settings → Build and Deployment → Deployment Retention Policy no Vercel.
-Uma configuração inicial para este projeto é 1 dia para cancelados/com erro,
-7 dias para previews e 7 dias para produção. Conferir as exceções que preservam
-o deployment atual e os alvos de rollback antes de salvar.
-Aplicar ao projeto ATLAS. O uso agregado da equipe pode incluir outros projetos.
-
-Conferir o total dos arquivos em `dist/atlas/browser`, as rotas principais, a
-hidratação e os links antes de publicar. Após o próximo deploy, comparar o
-mesmo intervalo em Usage → Deployment Storage. A atualização do uso depende
-da exclusão dos deployments antigos e da atualização das métricas.
-
-Referência verificada em 06/11/2026 — [retenção de deployments](https://vercel.com/docs/deployment-retention).
+A redução vale para novos builds. No Pages, cada deploy guarda o conjunto de arquivos enviado;
+revisar a lista em **Deployments** e excluir versões antigas quando o uso crescer, preservando o
+deploy atual e pelo menos um alvo de rollback. Conferir o total dos arquivos em
+`dist/atlas/browser`, as rotas principais, a hidratação e os links antes de publicar.
 
 ## Capturas cruas no R2
 

@@ -25,6 +25,48 @@ export async function routeContent(context: BrowserContext): Promise<void> {
   });
 }
 
+/**
+ * Serves the current build fixture instead of the pinned release. Used by tests that need
+ * editorial data not yet published, such as a new chapter review.
+ */
+export async function routeContentFixture(page: Page): Promise<void> {
+  const fixture = JSON.parse(
+    await readFile(join('generated/testing', 'content-fixture.json'), 'utf8'),
+  ) as { assets: Record<string, string> };
+  const pointer = {
+    ...JSON.parse(fixture.assets['pointer.json']),
+    baseUrl: DEFAULT_CONTENT_BASE_URL,
+  };
+  await page.route(DEFAULT_CONTENT_BASE_URL + '/**', async (route) => {
+    const path = new URL(route.request().url()).pathname;
+    if (path === '/pointer.json') {
+      await route.fulfill({ contentType: 'application/json', body: JSON.stringify(pointer) });
+      return;
+    }
+    const body = fixture.assets[path.slice(1)];
+    if (!body) {
+      await route.fallback();
+      return;
+    }
+    await route.fulfill({ contentType: 'application/json', body });
+  });
+}
+
+/**
+ * Opens a reading from the home page after serving the current build fixture. Client-side
+ * navigation avoids the pointer carried by the prerendered page, so unpublished editorial
+ * changes can be checked before the release is published.
+ */
+export async function openReadingFixture(page: Page, slug: string): Promise<void> {
+  await routeContentFixture(page);
+  await page.goto('/');
+  const select = page.locator('#sheet-select');
+  if (await select.isVisible()) await select.selectOption(slug);
+  else await page.locator(`.cover-choice[data-reading="${slug}"]`).click();
+  await page.getByRole('link', { name: 'Ler o texto completo' }).click();
+  await page.waitForURL(new RegExp(`/leitura/${slug}/?$`));
+}
+
 // Angular marks replayed events with `jsaction` in the SSR HTML and removes it once hydrated.
 // Waiting for that here keeps the first click or change from landing before its listener exists.
 export async function waitForHydration(page: Page): Promise<void> {

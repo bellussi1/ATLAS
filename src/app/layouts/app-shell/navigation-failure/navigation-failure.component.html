@@ -1,0 +1,51 @@
+<section
+  class="navigation-failure"
+  role="alert"
+  aria-labelledby="navigation-failure-title"
+  aria-describedby="navigation-failure-lead"
+>
+  <div class="failure-mark" aria-hidden="true"><span>!</span></div>
+  <div class="failure-body">
+    <p class="failure-kicker">Falha de navegação</p>
+    <h2 id="navigation-failure-title" tabindex="-1">{{ title() }}</h2>
+    <p id="navigation-failure-lead" class="failure-lead">{{ lead() }}</p>
+
+    @if (previousTitle(); as previous) {
+      <p class="failure-context">
+        Você continua em <strong>{{ previous }}</strong
+        >.
+      </p>
+    }
+
+    <p class="failure-path">
+      <span>Endereço</span>
+      <code>{{ pathLabel() }}</code>
+    </p>
+
+    <div class="failure-actions">
+      <button type="button" class="atlas-button" [disabled]="retrying()" (click)="retry.emit()">
+        {{ retrying() ? 'Tentando novamente…' : 'Tentar novamente' }}
+      </button>
+      @if (previousTitle()) {
+        <button
+          type="button"
+          class="atlas-button atlas-button--secondary"
+          [disabled]="retrying()"
+          (click)="dismiss.emit()"
+        >
+          Continuar na página anterior
+        </button>
+      }
+      <a
+        class="atlas-button atlas-button--quiet"
+        [routerLink]="recoveryPath()"
+        [fragment]="recoveryFragment()"
+        >{{ recoveryLabel() }}</a
+      >
+    </div>
+
+    <p class="failure-note">
+      Se o problema continuar, recarregue a página ou escolha outro caminho no acervo.
+    </p>
+  </div>
+</section>

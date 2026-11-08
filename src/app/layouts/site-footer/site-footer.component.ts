@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 
 import { headerReadings } from '../site-header/site-header.component';

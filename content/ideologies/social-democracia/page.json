@@ -9,6 +9,34 @@
   "summary": "Reformas, Estado de bem-estar e as disputas da social-democracia com o socialismo e o liberalismo. Uma tradição que busca transformar o capitalismo pela via política, sem abolir o mercado.",
   "published": true,
   "atlasId": "atlas-social-democracia",
+  "poster": {
+    "figures": [
+      {
+        "entityId": "wiki-topic-august-bebel",
+        "assetId": "asset-wiki-topic-august-bebel",
+        "note": "Organizou o SPD como partido de massas.",
+        "frame": "quarter"
+      },
+      {
+        "entityId": "person-eduard-bernstein",
+        "assetId": "marxism-asset-person-eduard-bernstein",
+        "note": "Formulou a revisão reformista do marxismo.",
+        "frame": "square"
+      },
+      {
+        "entityId": "wiki-topic-jean-jaures",
+        "assetId": "asset-wiki-topic-jean-jaures",
+        "note": "Ligou socialismo e república parlamentar na França.",
+        "frame": "disc"
+      },
+      {
+        "entityId": "wiki-topic-olof-palme",
+        "assetId": "asset-wiki-topic-olof-palme",
+        "note": "Símbolo do Estado de bem-estar nórdico.",
+        "frame": "arch"
+      }
+    ]
+  },
   "review": {
     "status": "rascunho",
     "reviewer": null,
@@ -43,7 +71,15 @@
       "gap": "Definição baseada em fontes enciclopédicas; faltam literatura acadêmica e textos primários.",
       "coverage": "partial",
       "layout": "introduction",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "O que distingue social-democracia de socialismo revolucionário e de liberalismo social?",
+        "answer": "A social-democracia quer reformar o capitalismo pela via política, com eleições, sindicatos e bem-estar, sem abolir o mercado; o socialismo revolucionário rompe com a ordem, e o liberalismo social prioriza liberdades individuais e mercado com menos ênfase em proteção coletiva.",
+        "rationale": "Compare três respostas sobre mercado, Estado e mudança.",
+        "sourceIds": [
+          "src-wiki-topic-social-democracia"
+        ]
+      }
     },
     {
       "id": "origens",
@@ -70,7 +106,15 @@
       "gap": "Recorte limitado ao caso alemão. As origens britânica e escandinava ainda não foram cobertas.",
       "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Por que a unificação do partido em 1875 e as leis antissocialistas são decisivas para o SPD?",
+        "answer": "A unificação organiza correntes operárias; a repressão de Bismarck força o partido a construir imprensa, sindicatos e rede eleitoral, moldando a social-democracia de massas.",
+        "rationale": "Relacione organização partidária e repressão estatal.",
+        "sourceIds": [
+          "src-wiki-topic-leis-antissocialistas"
+        ]
+      }
     },
     {
       "id": "principios",
@@ -85,7 +129,7 @@
         "O compromisso do pós-guerra combina pleno emprego, negociação coletiva e serviços universais. A crise dos anos 1970 e a globalização pressionam esse arranjo e reabrem o debate sobre mercado e proteção."
       ],
       "question": "O que a social-democracia quer preservar e o que quer mudar?",
-      "bridge": "Os princípios ganham sentido quando aparecem em decisões partidárias concretas.",
+      "bridge": "Esses princípios dependem de palavras que mudam de sentido conforme o projeto político.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
@@ -147,7 +191,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Como a social-democracia justifica corrigir o mercado sem aboli-lo?",
+        "answer": "Por impostos, serviços públicos, regulação e negociação coletiva, que reduzem desigualdades e riscos sem substituir a economia de mercado.",
+        "rationale": "Explique o mecanismo de proteção social dentro do mercado.",
+        "sourceIds": [
+          "src-wiki-topic-social-democracia"
+        ]
+      }
     },
     {
       "id": "conceitos",
@@ -162,7 +214,7 @@
         "Cidadania social é a ideia de que direitos de proteção e participação pertencem a todos, não apenas aos que podem pagar. O conceito ajuda a distinguir seguro privado, assistência e serviço universal."
       ],
       "question": "Por que o mesmo nome designa projetos políticos tão diferentes?",
-      "bridge": "Essas palavras reaparecem nas vertentes e nos debates, onde o sentido precisa ser fixado.",
+      "bridge": "Antes das vertentes, situe essas palavras na história que as transformou.",
       "sourceIds": [
         "src-wiki-topic-social-democracy",
         "src-wiki-topic-terceira-via"
@@ -170,7 +222,21 @@
       "gap": "Glossário ainda sem entradas próprias no acervo, como Estado de bem-estar e economia mista.",
       "coverage": "partial",
       "layout": "concepts",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Qual é a diferença entre reformismo e revisionismo?",
+        "answer": "Reformismo é a estratégia política de transformar por eleições e instituições; revisionismo é a revisão teórica do marxismo que acompanha essa estratégia.",
+        "rationale": "Distinga estratégia política e revisão teórica.",
+        "sourceIds": [
+          "src-wiki-topic-social-democracy"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-leis-antissocialistas",
+            "why": "Retome as leis antissocialistas para ver como a repressão moldou a estratégia reformista."
+          }
+        ]
+      }
     },
     {
       "id": "epocas",
@@ -184,7 +250,7 @@
         "No Brasil, a periodização possível começa com a legislação social dos anos 1930, passa pela CLT (1943), pelo PTB (1945), pelo golpe de 1964 e chega à Constituição de 1988. Esses marcos não reproduzem a trajetória europeia: combinam tutela estatal, mobilização sindical e redemocratização."
       ],
       "question": "Como a social-democracia mudou entre o século XIX e os dias atuais?",
-      "bridge": "Os governos que deram corpo a essas mudanças aparecem nas experiências históricas.",
+      "bridge": "Essas épocas foram vividas por pessoas que formularam e disputaram a tradição.",
       "sourceIds": [
         "src-wiki-topic-social-democracy",
         "src-wiki-topic-social-democracia",
@@ -198,7 +264,15 @@
       "gap": "A linha do tempo europeia foi complementada por marcos brasileiros; faltam datas e instituições de outros países da América Latina.",
       "coverage": "partial",
       "layout": "timeline",
-      "blocks": []
+      "blocks": [],
+      "review": {
+        "question": "Por que a periodização inclui a crise dos anos 1970 e a Terceira Via?",
+        "answer": "Porque o Estado de bem-estar e o compromisso keynesiano são contestados, e a Terceira Via reajusta a relação entre Estado, mercado e responsabilidade individual.",
+        "rationale": "Relacione mudança histórica e reajuste programático.",
+        "sourceIds": [
+          "src-wiki-topic-social-democracy"
+        ]
+      }
     },
     {
       "id": "pensadores",
@@ -212,7 +286,7 @@
         "No Brasil, Leonel Brizola foi a liderança que reelaborou publicamente o trabalhismo como \"novo trabalhismo\" e fundou o PDT. A bibliografia o trata como continuidade e reinvenção da tradição, não como simples herdeiro de Vargas."
       ],
       "question": "Quem deu forma à social-democracia, e como cada um a entendia?",
-      "bridge": "Os governos desses pensadores mostram como as ideias chegaram à prática.",
+      "bridge": "As ideias desses pensadores se organizam em correntes que disputam a estratégia.",
       "sourceIds": [
         "src-wiki-topic-ferdinand-lassalle",
         "src-wiki-topic-wilhelm-liebknecht",
@@ -256,7 +330,15 @@
             "wiki-topic-bruno-kreisky": "Chanceler da Áustria por mais de uma década."
           }
         }
-      ]
+      ],
+      "review": {
+        "question": "Compare Bernstein, Kautsky e Jaurès: o que cada um defende sobre reforma e revolução?",
+        "answer": "Bernstein revisa o marxismo em direção à reforma; Kautsky representa a ortodoxia da Segunda Internacional; Jaurès articula socialismo e República na França. As respostas variam dentro da mesma tradição.",
+        "rationale": "Compare posições dentro da mesma tradição.",
+        "sourceIds": [
+          "src-wiki-topic-jean-jaures"
+        ]
+      }
     },
     {
       "id": "vertentes",
@@ -270,7 +352,7 @@
         "No Brasil, a social-democracia não se organizou como partido único. O trabalhismo do PTB e do PDT reivindicou reformas sociais e democracia em uma linguagem própria; a comparação com a social-democracia europeia exige distinguir origem, programa e prática de governo."
       ],
       "question": "Todos os social-democratas concordam entre si?",
-      "bridge": "As divergências aparecem com força nos debates sobre o papel do Estado e a relação com o capitalismo.",
+      "bridge": "Essas correntes se testaram em governos e reformas concretos.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
@@ -280,7 +362,7 @@
         "source-sd-pdt",
         "source-sd-brizola-trabalhismo"
       ],
-      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas; o caso brasileiro foi incorporado como tradição própria, não como cópia da social-democracia europeia.",
+      "gap": "Vertentes da América Latina e da Escandinávia não foram detalhadas; o caso brasileiro foi incorporado como tradição própria, não como cópia da social-democracia europeia. O modelo nórdico e o sindicalismo aparecem na narrativa, mas não recebem cartão próprio.",
       "coverage": "partial",
       "layout": "documents",
       "blocks": [
@@ -337,7 +419,15 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "O que diferencia a social-democracia reformista da Terceira Via?",
+        "answer": "A reformista defende reformas graduais e Estado de bem-estar dentro da democracia representativa; a Terceira Via aproxima-se do liberalismo social e enfatiza responsabilidade individual e mercado.",
+        "rationale": "Compare as duas correntes que recebem cartão neste recorte.",
+        "sourceIds": [
+          "src-wiki-topic-terceira-via"
+        ]
+      }
     },
     {
       "id": "experiencias",
@@ -459,7 +549,21 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Por que Alemanha, Suécia, Áustria e França não produzem o mesmo modelo social-democrata?",
+        "answer": "Porque instituições, partidos, sindicatos e conjunturas nacionais diferentes produzem arranjos distintos, ainda que compartilhem reformismo e proteção social.",
+        "rationale": "Relacione instituições nacionais e conjuntura.",
+        "sourceIds": [
+          "src-wiki-topic-olof-palme"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-leis-antissocialistas",
+            "why": "Retome as leis antissocialistas para comparar a repressão de Bismarck com os modelos de bem-estar do pós-guerra."
+          }
+        ]
+      }
     },
     {
       "id": "debates",
@@ -473,7 +577,7 @@
         "A disputa brasileira entre trabalhismo e social-democracia é também uma disputa de memória: o trabalhismo de Vargas foi lido como concessão, cooptação ou invenção de uma cultura política. A leitura não resolve o debate; mostra como ele muda o diagnóstico sobre direitos sociais e democracia."
       ],
       "question": "Quais são as objeções mais fortes, e o que os defensores respondem?",
-      "bridge": "Os debates mostram que a tradição não é consensual, nem dentro nem fora dela.",
+      "bridge": "Essas objeções também definem as relações e as distâncias com outras tradições.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
@@ -547,7 +651,21 @@
             }
           ]
         }
-      ]
+      ],
+      "review": {
+        "question": "Qual é o núcleo da disputa entre Bernstein e Luxemburgo, e o que ela revela sobre os limites da reforma?",
+        "answer": "A disputa é se reformas podem transformar as relações de produção ou apenas administrar o capitalismo; revela que a estratégia reformista depende de uma tese sobre o que o Estado e as instituições podem mudar.",
+        "rationale": "Examine a objeção e o que ela exige da estratégia reformista.",
+        "sourceIds": [
+          "src-wiki-topic-social-democracy"
+        ],
+        "revisit": [
+          {
+            "entityId": "wiki-topic-terceira-via",
+            "why": "Retome a Terceira Via para comparar a crítica de Bernstein com as objeções atuais à social-democracia."
+          }
+        ]
+      }
     },
     {
       "id": "conexoes",
@@ -561,7 +679,7 @@
         "No Brasil, a social-democracia se conecta ao trabalhismo e ao liberalismo social da Constituição de 1988. A disputa sobre universalismo, tutela e direitos sociais atravessa essas tradições."
       ],
       "question": "Como a social-democracia se relaciona com o liberalismo e o marxismo?",
-      "bridge": "Para ler as tradições lado a lado, siga para as fontes e a metodologia desta leitura.",
+      "bridge": "Para continuar por conta própria, siga o roteiro de leitura.",
       "sourceIds": [
         "src-wiki-topic-social-democracia",
         "src-wiki-topic-social-democracy",
@@ -576,7 +694,15 @@
           "type": "atlas",
           "rootEntityId": "wiki-topic-social-democracia"
         }
-      ]
+      ],
+      "review": {
+        "question": "O que a social-democracia compartilha e o que rejeita no liberalismo e no comunismo?",
+        "answer": "Do liberalismo, o Estado de direito e o mercado; do comunismo, a origem socialista; rejeita a ruptura revolucionária e a abolição do mercado, mas disputa proteção social e igualdade.",
+        "rationale": "Compare tradições por suas respostas sobre mercado e ruptura.",
+        "sourceIds": [
+          "source-sd-cf88"
+        ]
+      }
     },
     {
       "id": "leituras",
@@ -672,7 +798,7 @@
       "id": "fontes",
       "anchor": "fontes",
       "title": "Fontes e evidências",
-      "kicker": "Conferir o argumento",
+      "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
         "A leitura distingue textos primários, estudos acadêmicos e obras de divulgação. As afirmações são atribuídas a autores e acompanhadas de fontes; a bibliografia de cada capítulo indica onde conferir.",
@@ -693,7 +819,12 @@
         "src-wiki-topic-otto-von-bismarck",
         "src-wiki-topic-terceira-via",
         "src-wiki-topic-wilhelm-liebknecht",
-        "src-wiki-topic-willy-brandt"
+        "src-wiki-topic-willy-brandt",
+        "source-sd-gomes-trabalhismo",
+        "source-sd-cpdoc-vargas",
+        "source-sd-cf88",
+        "source-sd-brizola-trabalhismo",
+        "source-sd-pdt"
       ],
       "gap": "Faltam fontes primárias e acadêmicas. A revisão humana ainda não foi registrada.",
       "coverage": "partial",
@@ -714,7 +845,12 @@
             "src-wiki-topic-otto-von-bismarck",
             "src-wiki-topic-terceira-via",
             "src-wiki-topic-wilhelm-liebknecht",
-            "src-wiki-topic-willy-brandt"
+            "src-wiki-topic-willy-brandt",
+            "source-sd-gomes-trabalhismo",
+            "source-sd-cpdoc-vargas",
+            "source-sd-cf88",
+            "source-sd-brizola-trabalhismo",
+            "source-sd-pdt"
           ]
         }
       ]

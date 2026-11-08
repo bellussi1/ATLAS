@@ -1,10 +1,13 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Enciclopédia explorável: diagnóstico e contrato inicial
 
 **Status das fases**
-- **Fases 1 e 2:** entregues. Contratos e validação em [Knowledge Explorer](../quality/KNOWLEDGE-EXPLORER.md).
+- **Fases 1 e 2:** entregues. Contratos e validação em [Knowledge Explorer(../archive/2026-11/quality/KNOWLEDGE-EXPLORER.md).
 - **Fase 3:** autorizada pelo pedido de Knowledge Explorer, que amplia as três rotas originais para catálogos e páginas permanentes.
-- **Fase 4:** `/grafos` e o comparador aposentado (`/comparar` redireciona para `/acervo`), layouts compilados por coleção e globais, filtros comuns e timeline compartilhada. Comparações históricas ou conceituais preservam fontes, estados e limites; não são sínteses nem escores automáticos. Ver [Rede e comparadores](../quality/REDE-E-COMPARADORES.md).
-- **Fase 5:** contratos específicos de país e regime, sete catálogos adicionais, oito registros constitucionais e internacionalização inicial pt-BR/en. Quatro traduções têm revisão assistida por IA, distinta de revisão humana. Cobertura mundial e tradução integral de interface e dossiês seguem em aberto. Ver [Entrega e limites](../quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
+- **Fase 4:** `/grafos` e o comparador aposentado (`/comparar` redireciona para `/acervo`), layouts compilados por coleção e globais, filtros comuns e timeline compartilhada. Comparações históricas ou conceituais preservam fontes, estados e limites; não são sínteses nem escores automáticos. Ver [Rede e comparadores(../archive/2026-11/quality/REDE-E-COMPARADORES.md).
+- **Fase 5:** contratos específicos de país e regime, sete catálogos adicionais, oito registros constitucionais e internacionalização inicial pt-BR/en. Quatro traduções têm revisão assistida por IA, distinta de revisão humana. Cobertura mundial e tradução integral de interface e dossiês seguem em aberto. Ver [Entrega e limites(../archive/2026-11/quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
 
 O diagnóstico e as restrições abaixo documentam a base histórica da migração.
 
@@ -106,4 +109,4 @@ Conexão apresenta destino, verbo orientado, natureza e estado; evidência, loca
 
 **Riscos:** grafo empacotado e asset HTTP duplicam transporte; índices antigos contêm destinos despublicados; a ingestão atual depende de respostas mutáveis da rede e não garante replay; metadados de autoria de dados não substituem revisão humana; o Liberalismo tem menos profundidade narrativa. Nenhum se resolve copiando catálogos proprietários ou acrescentando backend automaticamente.
 
-Resultados observados e capturas: [validação da fatia](../quality/EXPLORACAO-CONTEXTUAL.md).
+Resultados observados e capturas: [validação da fatia(../archive/2026-11/quality/EXPLORACAO-CONTEXTUAL.md).

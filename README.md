@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <a href="https://atlasbr.vercel.app">atlasbr.vercel.app</a>
+  <a href="https://atlas-bellussi.pages.dev">atlas-bellussi.pages.dev</a>
 </p>
 
 ---
@@ -52,7 +52,7 @@ O ATLAS não organiza o conhecimento em artigos isolados. Cada grande tema é um
 | Rota | Conteúdo |
 | --- | --- |
 | `/` | Página inicial: busca universal, entrada para as leituras e mesa de pesquisa |
-| `/leitura/:slug` | Leituras contínuas por tradição (`/marxismo`, `/liberalismo`, `/social-democracia` e `/anarquismo` redirecionam; `/:slug/mesa` também redireciona) |
+| `/leitura/:slug` | Leituras contínuas por tradição (`/marxismo`, `/liberalismo`, `/social-democracia` e `/anarquismo` redirecionam) |
 | `/acervo` | Busca no acervo, com filtros que ficam na URL |
 | `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` | Catálogos por tipo |
 | `/grafos` | Mapa de ligações em tela cheia (`/grafo` e `/rede` redirecionam para cá) |
@@ -133,6 +133,23 @@ scripts/              build e publicação de conteúdo, ingestão Wikimedia, pi
 e2e/                  jornadas no navegador
 docs/                 arquitetura, design, editorial, pesquisa e qualidade
 ```
+
+### Mapa da raiz
+
+| Entrada | Papel | Versionada? |
+|---|---|---|
+| `src/`, `content/`, `public/`, `scripts/`, `e2e/` | Código, conteúdo-fonte, marca e pipeline | sim |
+| `docs/` | Arquitetura, design, operação, pesquisas e histórico | sim |
+| `referencias/` | Três imagens de direção de arte e o `LEIA-ME` | sim; não são ativos de publicação |
+| `AGENTS.md`, `README.md`, `LICENSE*`, `SECURITY.md`, `CITATION.cff` | Contrato, apresentação, licenças e citação | sim |
+| `angular.json`, `package*.json`, `tsconfig*.json`, `eslint.config.js`, `biome.json`, `*.config.*` | Configuração de build, tipos e qualidade | sim |
+| `generated/` | Cache de conteúdo, respostas pagas, avaliações e capturas locais | não; recriável |
+| `dist/`, `.angular/`, `node_modules/` | Saída de build, cache do Angular e dependências | não; recriável |
+| `tmp/`, `output/` | Rascunhos de sessão e mídia de lançamento | não; local |
+| `.claude/worktrees/` | Worktrees de sessões paralelas | não; podem ser removidos após o merge |
+| `prompts/`, `templates/`, `animation-plans/` | Antigos artefatos de trabalho | agora em `docs/archive/2026-11/` e `docs/design/animation-plans/` |
+
+Limpeza segura de build e testes: `npm run clean` mostra o que sairia; `npm run clean -- --yes` remove. O comando não toca em `content/`, `docs/`, `referencias/` nem em `output/`.
 
 Regras de dependência: `core` não importa apresentação; `shared` não importa features; features não acessam a implementação interna umas das outras. Imports entre responsabilidades usam os aliases de `tsconfig.json`. A regra `architecture/boundaries` do ESLint verifica os limites e a ausência de ciclos.
 

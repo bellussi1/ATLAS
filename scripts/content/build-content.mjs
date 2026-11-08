@@ -11,7 +11,7 @@ import { artifactKey, buildPointer } from './r2-content.mjs';
 
 const { buildDiscoveryIndex } =
   await import('../../src/app/core/content/queries/discovery-index.ts');
-const { buildKnowledgeNetwork, layoutNetwork } =
+const { buildKnowledgeNetwork, layoutNetwork, rankClaims } =
   await import('../../src/app/core/content/queries/knowledge-network.ts');
 const { queryKnowledgeRelations } =
   await import('../../src/app/core/content/queries/knowledge-graph.ts');
@@ -21,8 +21,13 @@ const { publishedIdeologies } =
   await import('../../src/app/features/ideologies/data/published-ideologies.ts');
 const { validateIdeologyDossier } =
   await import('../../src/app/features/ideologies/models/ideology-page.schema.ts');
-const { contentManifestSchema, searchIndexSchema, adjacencySchema, layoutsSchema } =
-  await import('../../src/app/core/content/models/content-artifacts.ts');
+const {
+  contentManifestSchema,
+  networkGraphSchema,
+  searchIndexSchema,
+  adjacencySchema,
+  layoutsSchema,
+} = await import('../../src/app/core/content/models/content-artifacts.ts');
 const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
 
 async function atomicFile(path, body) {
@@ -58,6 +63,45 @@ export async function buildContent({
   );
   const goldenAngle = Math.PI * (3 - Math.sqrt(5));
   const network = buildKnowledgeNetwork(graph);
+  const networkGraph = networkGraphSchema.parse({
+    id: graph.id,
+    version: graph.version,
+    updatedAt: graph.updatedAt,
+    atlases: graph.atlases.map((atlas) => ({
+      id: atlas.id,
+      title: atlas.title,
+      entities: atlas.entities.map((entity) => ({
+        id: entity.id,
+        slug: entity.slug,
+        title: entity.title,
+        kind: entity.kind,
+        placeType: entity.placeType,
+        summary: entity.summary,
+        temporalExtent: entity.temporalExtent,
+        editorialStatus: entity.editorialStatus,
+        discoveryMetadata: entity.discoveryMetadata
+          ? { description: entity.discoveryMetadata.description }
+          : undefined,
+      })),
+      claims: [...new Set(atlas.claims.map((claim) => claim.entityId))]
+        .map((entityId) =>
+          rankClaims(
+            atlas.claims
+              .filter((claim) => claim.entityId === entityId)
+              .map((claim) => ({
+                id: claim.id,
+                entityId: claim.entityId,
+                text: claim.text,
+                classification: claim.classification,
+                editorialStatus: claim.editorialStatus,
+              })),
+          ).slice(0, 3),
+        )
+        .flat(),
+      assetLicenses: atlas.assetLicenses,
+      relations: atlas.relations,
+    })),
+  });
   const networkLayout = layoutNetwork(network.nodes, network.edges);
   const layouts = {
     network: { ...networkLayout, positions: Object.fromEntries(networkLayout.positions) },
@@ -137,6 +181,7 @@ export async function buildContent({
     graph: { id: graph.id, version: graph.version, updatedAt: graph.updatedAt },
     collections,
     ideologies,
+    network: await asset('network', networkGraph),
     search: await asset('search', search),
     adjacency: await asset('adjacency', adjacency),
     layouts: await asset('layouts', layouts),

@@ -26,6 +26,7 @@ import {
   type RelationType,
   relationTypes,
 } from '@ideologies/models/relation-types';
+import { eraTemporalNotesForPeople } from '@ideologies/utils/chronology-temporal-notes';
 import { type PageMedia } from '@ideologies/utils/page-media-plan';
 import { KnowledgeContextDirective } from '@shared/directives/knowledge-context/knowledge-context.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
@@ -136,6 +137,17 @@ export class IdeologyBlockComponent {
       ? block.markerIds.flatMap((id) => this.entity(id) ?? [])
       : [];
   });
+  /** Editorial reason for each transformative record, kept in the chronology block. */
+  readonly eraMarkerNotes = computed(() => {
+    const block = this.block();
+    return new Map<string, string>(
+      block.type === 'chronology' ? Object.entries(block.markerNotes) : [],
+    );
+  });
+  /** Dated works and documented participation come from relations already in the atlas. */
+  readonly eraTemporalNotes = computed(() =>
+    eraTemporalNotesForPeople(this.atlas(), this.entities()),
+  );
   readonly explorationItems = computed(() => {
     const block = this.block();
     return block.type === 'explorations' ? block.items : [];
@@ -155,8 +167,13 @@ export class IdeologyBlockComponent {
     const block = this.block();
     const ids = block.type === 'sources' ? block.sourceIds : [];
     const query = this.params().get('bibliografia')?.toLocaleLowerCase('pt-BR') ?? '';
+    const seen = new Set<string>();
     return ids
-      .flatMap((id) => this.source(id) ?? [])
+      .flatMap((id) => {
+        if (seen.has(id)) return [];
+        seen.add(id);
+        return this.source(id) ?? [];
+      })
       .filter((s) => s.title.toLocaleLowerCase('pt-BR').includes(query));
   });
   readonly atlas = computed(() =>

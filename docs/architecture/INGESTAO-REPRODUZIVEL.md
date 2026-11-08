@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Ingestão Wikimedia reproduzível
 
 Fase 1 implementada em 01/11/2026. Mantém Node 24, o schema Zod do produto e snapshots estáticos. Sem backend, dependências nem requisições de ingestão no navegador.
@@ -90,7 +93,7 @@ Deduplicação não apaga perspectivas documentais: fontes com edições diferen
 - Snapshots canônicos publicados não são atualizados por testes ou pela verificação de replay. Novos resultados são validados em `output/ingestion`, para não misturar infraestrutura com publicação editorial.
 - Shards, índices no build, novas rotas e comparadores ficam fora desta implementação.
 
-Resultados executados, hashes e limites de validação: [Validação da ingestão](../quality/INGESTAO-REPRODUZIVEL.md).
+Resultados executados, hashes e limites de validação: [Validação da ingestão(../archive/2026-11/quality/INGESTAO-REPRODUZIVEL.md).
 
 ## Descoberta e seleção da tradição marxista
 

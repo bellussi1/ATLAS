@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { routes } from '@app/app.routes';
-import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { provideContentFixture } from '@testing/content-fixture';
 
 import { AppComponent } from './app-shell.component';
@@ -57,5 +57,24 @@ describe('ATLAS navigation', () => {
     h.detectChanges();
     expect(TestBed.inject(Router).url).toBe('/acervo?q=liberalismo');
     expect(h.routeNativeElement?.querySelector('h1')?.textContent).toBe('Acervo');
+  });
+
+  it('shows a contextual recovery panel and dismisses it without leaving the page', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const component = fixture.componentInstance;
+    component.failedNavigation.set('/leitura/marxismo');
+    component.failureKind.set('chunk');
+    component.previousTitle.set('Liberalismo');
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const panel = root.querySelector('app-navigation-failure');
+    expect(panel).not.toBeNull();
+    expect(panel?.textContent).toContain('A leitura não abriu');
+    expect(panel?.textContent).toContain('Liberalismo');
+    expect(panel?.textContent).toContain('/leitura/marxismo');
+    component.dismissFailure();
+    fixture.detectChanges();
+    expect(root.querySelector('app-navigation-failure')).toBeNull();
   });
 });
