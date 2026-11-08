@@ -119,9 +119,9 @@ const PROPERTIES = {
   },
 };
 
-/** Wikidata subject -> target shape. P50/P800 are work -> author; P710 is event -> participant. */
+/** Wikidata subject -> target shape. P50 is work -> author; P800 is creator -> work. */
 function shape(property, subject, target) {
-  if (property === 'P50' || property === 'P800') return { from: target, to: subject };
+  if (property === 'P50') return { from: target, to: subject };
   if (property === 'P112') return { from: target, to: subject };
   if (property === 'P710') return { from: target, to: subject };
   if (property === 'P156') return { from: target, to: subject };
@@ -142,8 +142,18 @@ export function applyWikidata(graph, { batches, report = {} }) {
   const byId = new Map(
     graph.atlases.flatMap((item) => item.entities).map((entity) => [entity.id, entity]),
   );
-  // Correct the first P276 pass: events stay, institutions become "sede", other kinds leave.
+  // Correct the first P800 pass: the statement sits on the creator, so the pair must be swapped.
   let normalized = 0;
+  atlas.relations = atlas.relations.filter((relation) => {
+    if (!relation.id.startsWith('rel-wd-') || !relation.id.includes('-p800-')) return true;
+    for (const id of relation.evidenceIds) {
+      const index = atlas.evidences.findIndex((item) => item.id === id);
+      if (index >= 0) atlas.evidences.splice(index, 1);
+    }
+    normalized += 1;
+    return false;
+  });
+  // Correct the first P276 pass: events stay, institutions become "sede", other kinds leave.
   atlas.relations = atlas.relations.filter((relation) => {
     if (!relation.id.startsWith('rel-wd-') || !relation.id.includes('-p276-')) return true;
     const subject = byId.get(relation.fromEntityId);
