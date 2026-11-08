@@ -9,7 +9,6 @@ import {
   filterNetwork,
   firstSentence,
   labelRelevance,
-  layoutNetwork,
   linksOf,
   MAX_NODE_SCALE,
   natureOf,
@@ -23,6 +22,7 @@ import {
   relationFamilies,
   searchNodes,
 } from './knowledge-network';
+import { layoutNetwork } from './network-layout';
 
 const network = buildKnowledgeNetwork(methodologyKnowledgeGraph);
 const all = {

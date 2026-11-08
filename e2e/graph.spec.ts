@@ -175,7 +175,9 @@ test('on a phone the cards float above the map with a gap, and pinch zooms', asy
   await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
   await page.getByRole('button', { name: 'Legenda e filtros' }).click();
-  const card = await page.locator('#graph-controls').boundingBox();
+  const controls = page.locator('#graph-controls');
+  await expect(controls).toBeVisible();
+  const card = await controls.boundingBox();
   expect(card!.x).toBeGreaterThanOrEqual(8);
   expect(card!.x + card!.width).toBeLessThanOrEqual(390 - 8);
   await page.getByRole('button', { name: 'Legenda e filtros' }).click();

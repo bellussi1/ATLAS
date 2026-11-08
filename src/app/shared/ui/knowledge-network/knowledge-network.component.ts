@@ -21,13 +21,13 @@ import {
   buildKnowledgeNetwork,
   filterNetwork,
   labelRelevance,
-  layoutNetwork,
   linksOf,
   type NetworkEdge,
   networkKindDefinition,
   networkKindGroups,
   type NetworkKindId,
   networkKinds,
+  type NetworkLayout,
   type NetworkNode,
   type NetworkPoint,
   nodeRadius,
@@ -748,11 +748,19 @@ export class KnowledgeNetworkComponent {
         this.size.set({ width: element.clientWidth, height: element.clientHeight });
       }
       // The layout runs after the first paint so the loading state is visible meanwhile.
-      const timer = setTimeout(() => {
+      let cancelled = false;
+      const timer = setTimeout(async () => {
         const compiled = this.repository.layouts.network;
-        const layout = compiled
-          ? { ...compiled, positions: new Map(Object.entries(compiled.positions)) }
-          : layoutNetwork(this.network.nodes, this.network.edges);
+        let layout: NetworkLayout;
+        if (compiled) {
+          layout = { ...compiled, positions: new Map(Object.entries(compiled.positions)) };
+        } else {
+          // Only a release without the compiled layout pays for the simulation chunk.
+          const { layoutNetwork } = await import('@core/content/queries/network-layout');
+          if (cancelled) return;
+          layout = layoutNetwork(this.network.nodes, this.network.edges);
+        }
+        if (cancelled) return;
         this.world.set({ width: layout.width, height: layout.height });
         this.positions.set(layout.positions);
         const selected = this.focus();
@@ -769,6 +777,7 @@ export class KnowledgeNetworkComponent {
         }
       });
       this.destroyRef.onDestroy(() => {
+        cancelled = true;
         clearTimeout(timer);
         clearTimeout(this.hoverTimer);
         if (this.glideTimer) clearTimeout(this.glideTimer);
