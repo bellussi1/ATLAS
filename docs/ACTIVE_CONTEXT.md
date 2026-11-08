@@ -11,17 +11,18 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - Gitflow: `develop` é a integração; o PR **#50** (`develop` → `master`) está aberto. `master` está em `69eaed4` e recebeu #41, #45 e #39. Último verify verde: **`0d0a8a9`**.
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
 - Conteúdo: 13 coleções. Release local **`06a3de…`**, com o artefato `network` do grafo; o ponteiro público continua em **`a54eee…`** e nada foi publicado.
-- Build local: **1.186 páginas no sitemap**; canonical e robots apontam para `https://atlas-bellussi.pages.dev`.
-- CI: o verify de `0d0a8a9` passou (lint, tipos, testes, conteúdo, ingestão, build, links e e2e). As mudanças de documentação desta rodada ainda não têm verify próprio.
+- Build local: **1.186 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
+- CI: o verify de `0d0a8a9` passou (lint, tipos, testes, conteúdo, ingestão, build, links e e2e). As mudanças de Lighthouse desta rodada têm verificações locais, mas ainda não têm CI próprio.
 
 ## Verificações recentes
 
 - `npm test`: **351/351**.
 - `npm run test:content`: **184/184**.
-- `npm run build`: passou, **1.186 páginas no sitemap**.
+- `npm run build`: passou, **1.186 páginas no sitemap**, canonical absoluto em todas as páginas prerenderizadas.
 - `npm run check:links`: **1.187 páginas** verificadas.
-- `e2e/pages.spec.ts` + `e2e/ideology-sheets.spec.ts` + `e2e/public-routes.spec.ts`: **80/80**.
+- `npx playwright test`: **153/153** no build final; depois da remoção dos preconnects, `public-routes` + `pages` deram **72/73**, com uma falha intermitente de viewport que passou **2/2** isolada.
 - `npm run lint` e `npm run typecheck`: exit 0.
+- Lighthouse local (preview sem compressão): SEO, acessibilidade e boas práticas **100**; canonical válido e nenhum reflow forçado. O desempenho local (68) não é comparável ao Pages, que serve brotli/gzip.
 - Grafo, medição local: primeiro nó **948 ms**, seleção por clique **108 ms**, pan p95 **33,3 ms**.
 
 ## Trabalho ativo
@@ -30,6 +31,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Grafo**: foco por seleção implementado; o `/grafos` lê a projeção `network` (3,13 MB contra 12,6 MB das coleções), mas o ganho de carregamento só chega ao site depois de `content:publish`.
 - **Limpeza**: `/mesa` removido; `features/study`, `historical-visualizations`, `editorial-mark`, `editorial-text`, `notice` e `timeline-periods` removidos. Redirecionamentos de compatibilidade (`/marxismo`, `/grafo`, `/rede`, `/comparar`, `/conhecimento`) foram mantidos.
 - **Documentação**: `ACTIVE_CONTEXT` compactado; histórico, auditorias, validações e planos antigos foram para `docs/archive/2026-11/`.
+- **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
 
 ## Pendências que bloqueiam
 
@@ -48,10 +50,11 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Próxima ação
 
-1. Fazer o verify final do PR #50; se verde, mergear e verificar o deploy do Pages.
+1. Fazer o verify final do PR #50; se verde, mergear e verificar o deploy do Pages — é o deploy que leva o canonical e o restante do Lighthouse à produção.
 2. Com autorização, executar `content:publish` e confirmar que `/grafos` passou a carregar `network` + `layouts`.
-3. Rotacionar o token Cloudflare e desligar o Vercel no painel.
-4. Só depois iniciar a fase 0 dos itinerários.
+3. Rodar Lighthouse na URL publicada (com compressão) para comparar com o relatório anterior.
+4. Rotacionar o token Cloudflare e desligar o Vercel no painel.
+5. Só depois iniciar a fase 0 dos itinerários.
 
 ## Mapa rápido
 

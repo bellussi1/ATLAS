@@ -10,6 +10,7 @@ import {
   RouterLink,
   RouterOutlet,
 } from '@angular/router';
+import { absoluteSiteUrl } from '@core/routing/site-url';
 import { SiteFooterComponent } from '@layouts/site-footer/site-footer.component';
 import { SiteHeaderComponent } from '@layouts/site-header/site-header.component';
 import { BreadcrumbsComponent } from '@shared/ui/breadcrumbs/breadcrumbs.component';
@@ -144,8 +145,8 @@ export class AppComponent {
       canonical.rel = 'canonical';
       this.document.head.appendChild(canonical);
     }
-    // Root-relative canonicals stay correct for static builds without inventing a production host.
-    canonical.href = this.currentPath || '/';
+    // The canonical is absolute in the build and must stay absolute after client navigation.
+    canonical.href = absoluteSiteUrl(this.currentPath || '/');
     this.title.setTitle(pageTitle);
   }
 

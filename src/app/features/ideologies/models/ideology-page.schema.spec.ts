@@ -18,8 +18,17 @@ import {
 } from './ideology-page.schema';
 
 describe('Public pages', () => {
-  it('keeps readings and exposes the knowledge explorer with permanent records', () => {
-    expect(routes.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
+  it('keeps readings and exposes the knowledge explorer with permanent records', async () => {
+    const loaded = [];
+    for (const route of routes) {
+      if (route.loadChildren) {
+        const children = await route.loadChildren();
+        if (Array.isArray(children)) loaded.push(...children);
+      } else {
+        loaded.push(route);
+      }
+    }
+    expect(loaded.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
       '',
       'leitura/marxismo',
       'leitura/liberalismo',

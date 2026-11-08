@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { routes } from '@app/app.routes';
-import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { provideContentFixture } from '@testing/content-fixture';
 
 import { AppComponent } from './app-shell.component';

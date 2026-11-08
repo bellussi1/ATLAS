@@ -141,8 +141,9 @@ npx wrangler pages project create atlas-bellussi --production-branch master
 ```
 
 O Pages usa barra final nas rotas de diretório (`/fontes/`). O `scripts/seo.mjs` gera canonical
-e sitemap nessa mesma forma para não duplicar a URL. Para usar domínio próprio, adicione o
-domínio ao projeto no painel e atualize `ATLAS_SITE_URL`; o `ATLAS_CDN_URL` continua apontando
+e sitemap nessa mesma forma para não duplicar a URL, usando
+`https://atlas-bellussi.pages.dev` como origem padrão. Para usar domínio próprio, adicione o
+domínio ao projeto no painel e defina `ATLAS_SITE_URL`; o `ATLAS_CDN_URL` continua apontando
 para o Worker de conteúdo.
 
 ## Armazenamento dos deployments

@@ -19,13 +19,12 @@ import {
 } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
 import type { DiscoveryIndexEntry } from '@core/content/queries/discovery-index';
+import { explorerCatalogues, explorerGroups } from '@core/content/queries/explorer-catalogues';
 import {
   EXPLORER_PAGE_SIZE,
-  explorerCatalogues,
   explorerContentGroups,
   explorerEntries,
   explorerFacets,
-  explorerGroups,
   explorerMatchKind,
   explorerPage,
   parseExplorerPage,

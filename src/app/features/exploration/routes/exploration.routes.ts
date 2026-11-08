@@ -1,5 +1,5 @@
 import { type Routes } from '@angular/router';
-import { explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import {
   knowledgeContentResolver,
   networkContentResolver,

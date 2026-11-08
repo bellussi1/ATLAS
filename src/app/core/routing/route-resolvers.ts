@@ -1,6 +1,7 @@
 import { inject, Injector } from '@angular/core';
 import { type ResolveFn } from '@angular/router';
-import { catalogueForKind, explorerCatalogues } from '@core/content/queries/knowledge-explorer';
+import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { catalogueForKind } from '@core/content/queries/knowledge-explorer';
 import { localizedEntity } from '@core/content/queries/localized-content';
 import { firstValueFrom } from 'rxjs';
 

@@ -50,7 +50,7 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByRole('button', { name: 'Copiar link', exact: true })).toBeVisible();
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
     'href',
-    '/verbete/ulysses-guimaraes',
+    'https://atlas-bellussi.pages.dev/verbete/ulysses-guimaraes/',
   );
   await page.getByRole('link', { name: 'Voltar aos resultados' }).click();
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
@@ -139,7 +139,11 @@ test('all search destinations have prerendered HTML with matching title, canonic
     JSON.parse(await readFile(`${cache}/c/${hash}.json`, 'utf8'));
   const pointer = JSON.parse(await readFile(`${cache}/pointer.json`, 'utf8'));
   const manifest = await asset(pointer.manifest.sha256);
-  const site = process.env['ATLAS_SITE_URL']?.replace(/\/+$/, '');
+  // Same public origin as `scripts/seo.mjs` and `src/app/core/routing/site-url.ts`.
+  const site = (process.env['ATLAS_SITE_URL'] || 'https://atlas-bellussi.pages.dev').replace(
+    /\/+$/,
+    '',
+  );
   const index = (await asset(manifest.search.sha256)) as {
     path: string;
     title: string;
@@ -180,7 +184,7 @@ test('all search destinations have prerendered HTML with matching title, canonic
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
     // The Pages host serves directory routes with a trailing slash; the canonical follows it.
     const canonicalTarget = target === '/' ? '/' : `${target.replace(/\/+$/, '')}/`;
-    expect(canonical, target).toBe(site ? site + canonicalTarget : undefined);
+    expect(canonical, target).toBe(site + canonicalTarget);
     if (entry.fragment && target !== '/fontes')
       expect(html).toContain('id="' + entry.fragment + '"');
     // Sources are paginated: page 1 carries the pager and its own anchors; later anchors are

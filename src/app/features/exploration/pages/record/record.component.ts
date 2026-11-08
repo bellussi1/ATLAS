@@ -9,11 +9,8 @@ import {
   relationGroups,
 } from '@core/content/editorial/reader-voice';
 import { entityContext } from '@core/content/queries/entity-context';
-import {
-  catalogueForKind,
-  explorerCatalogues,
-  safeExplorerReturn,
-} from '@core/content/queries/knowledge-explorer';
+import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { catalogueForKind, safeExplorerReturn } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels, localizedEntity } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { readingPath } from '@core/routing/reading-routes';
