@@ -8,12 +8,12 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 ## Estado atual
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: `develop` é a integração; o PR **#50** (`develop` → `master`) está aberto. `master` está em `69eaed4` e recebeu #41, #45 e #39. Último verify verde: **`0d0a8a9`**.
+- Gitflow: PR **#50** (`develop` → `master`) foi mergeado em **`31b8d8b`**; o deploy do Pages rodou com sucesso. O `develop` segue para a próxima rodada.
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
 - Conteúdo: 13 coleções. Release **`2f7649…`** publicado em 08/11, com 12 registros de `verbetes-citados` atualizados, revisões de capítulo, figuras curadas e a projeção `network`; `content/content-pointer.json` foi atualizado. O site público passa a ler esse release.
 - **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O Pages estático continua; o `atlas-content-delivery` pode falhar até o reset ou o upgrade. A publicação do `network` reduz o grafo, mas cada página de conteúdo ainda faz ~17 chamadas.
 - Build local: **1.186 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
-- CI: o verify de `0d0a8a9` passou (lint, tipos, testes, conteúdo, ingestão, build, links e e2e). As mudanças de Lighthouse desta rodada têm verificações locais, mas ainda não têm CI próprio.
+- CI: verify do merge **`31b8d8b`** verde (lint, tipos, testes, conteúdo, ingestão, build, links e e2e) e `deploy-pages` concluído. O run anterior falhava em `ingest:fetch-raw` por 13 capturas de 08/11 sem blobs publicados; as capturas foram removidas. Um segundo erro, no e2e, esperava coleções no `/grafos`; o teste passou a aceitar `network` + `layouts`.
 
 ## Verificações recentes
 
@@ -50,14 +50,13 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Pendências que bloqueiam
 
-1. **PR #50** — aguardar o verify do commit final e fazer o merge; o `deploy-pages` roda na `master`.
-2. **Limite do Worker** — a conta gratuita passou de 100 mil requisições/dia; até o reset (00:00 UTC) ou o upgrade, o conteúdo dinâmico pode falhar. Decidir entre Workers Paid (US$ 5/mês) e reduzir as ~17 chamadas por página.
-3. **Vercel** — desconectar a integração Git e excluir o projeto antigo no painel.
-4. **Token exposto** — o token Cloudflare foi colado no chat; após o primeiro deploy, rotacionar e atualizar o segredo.
-5. **Dependências** — #38/#37 aguardam checks; #44 está em conflito; #40 bloqueado. Não forçar.
-6. **Leituras** — faltam os quadros completos de debate, a cronologia estruturada e os cartões de vertentes em Social-democracia e Anarquismo; revisões com fonte parcial e trechos de voz ainda exigem verificação humana.
-7. **Carregamento da leitura** — a rota ainda baixa o grafo completo (~24 MB) antes de hidratar. Exige desenho próprio (coleção única ou grafo combinado).
-8. **Texto a 200%** — header e footer não estouram mais; a leitura ainda tem overflow residual (~111 px em 1280 e ~61 px em 390) na cronologia/revisão.
+1. **Limite do Worker** — a conta gratuita passou de 100 mil requisições/dia; até o reset (00:00 UTC) ou o upgrade, o conteúdo dinâmico pode falhar. Decidir entre Workers Paid (US$ 5/mês) e reduzir as ~17 chamadas por página.
+2. **Vercel** — desconectar a integração Git e excluir o projeto antigo no painel.
+3. **Token exposto** — o token Cloudflare foi colado no chat; após o primeiro deploy, rotacionar e atualizar o segredo.
+4. **Dependências** — #38/#37 aguardam checks; #44 está em conflito; #40 bloqueado. Não forçar.
+5. **Leituras** — faltam os quadros completos de debate, a cronologia estruturada e os cartões de vertentes em Social-democracia e Anarquismo; revisões com fonte parcial e trechos de voz ainda exigem verificação humana.
+6. **Carregamento da leitura** — a rota ainda baixa o grafo completo (~24 MB) antes de hidratar. Exige desenho próprio (coleção única ou grafo combinado).
+7. **Texto a 200%** — header e footer não estouram mais; a leitura ainda tem overflow residual (~111 px em 1280 e ~61 px em 390) na cronologia/revisão.
 
 ## Pendências que pedem decisão
 
@@ -70,10 +69,10 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Próxima ação
 
-1. Fazer o verify final do PR #50; se verde, mergear e verificar o deploy do Pages — é o deploy que leva o canonical e o restante do Lighthouse à produção.
-2. Revisar os 3 itens sinalizados pela auditoria (Rawls, Voltaire, Kant) e decidir o lote de 414 ou o piloto de 12.
-3. Com autorização, executar `content:publish` e confirmar que `/grafos` passou a carregar `network` + `layouts` e que os 12 verbetes atualizados chegam ao público.
-4. Rodar Lighthouse na URL publicada (com compressão) para comparar com o relatório anterior.
+1. Decidir o limite do Worker (Workers Paid ou reduzir as chamadas por página); o deploy do Pages já está feito.
+2. Revisar os 100 itens da Onda 1 em `docs/research/onda1-2026-11/` e rodar `score`; sem precisão humana ≥ 95%, não escalar.
+3. Se a precisão fechar, medir o braço Sonnet low e iniciar a Onda 2 com as metas documentadas 70/50/70/35.
+4. Rodar Lighthouse na URL publicada para comparar com o relatório local.
 5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
 6. Só depois iniciar a fase 0 dos itinerários.
 
