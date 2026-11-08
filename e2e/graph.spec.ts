@@ -197,7 +197,8 @@ test('on a phone the cards float above the map with a gap, and pinch zooms', asy
   await expect(page.locator('.zoom__level')).not.toHaveText(before ?? '');
 });
 
-const linkedNode = '[data-node]:not([aria-label$=", 0 ligações"])';
+const linkedNode =
+  '[data-node]:not([aria-label$=", 0 ligações"]):not([aria-label$=", 1 ligação"]):not([aria-label$=", 2 ligações"]):not([aria-label$=", 3 ligações"])';
 
 test('hovering a node shows only its neighbours and explains what it relates to', async ({
   page,

@@ -1,9 +1,16 @@
-import { expect, test } from './content-fixture';
+import { expect, test, type Page } from './content-fixture';
+
+/** The router owns history.state once its initial navigation has completed. */
+const routerReady = (page: Page) =>
+  page.waitForFunction(() =>
+    Boolean((history.state as { navigationId?: number } | null)?.navigationId),
+  );
 
 test('moving to another page moves focus to the content and names it by its title', async ({
   page,
 }) => {
   await page.goto('/');
+  await routerReady(page);
   await page.evaluate(() => {
     history.pushState(null, '', '/leitura/marxismo');
     dispatchEvent(new PopStateEvent('popstate'));
@@ -15,6 +22,7 @@ test('moving to another page moves focus to the content and names it by its titl
 
 test('a query change keeps focus where it is', async ({ page }) => {
   await page.goto('/acervo');
+  await routerReady(page);
   await page.getByLabel('Procurar no acervo', { exact: true }).focus();
   await page.evaluate(() => {
     history.pushState(null, '', '/acervo?q=liberalismo');
@@ -25,6 +33,7 @@ test('a query change keeps focus where it is', async ({ page }) => {
 
 test('an unknown address shows the not-found heading and keeps the address', async ({ page }) => {
   await page.goto('/');
+  await routerReady(page);
   await page.evaluate(() => {
     history.pushState(null, '', '/rota-que-nao-existe');
     dispatchEvent(new PopStateEvent('popstate'));

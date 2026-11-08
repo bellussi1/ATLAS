@@ -4,9 +4,9 @@ Status: resultado
 # Expansão de relações — 08/11/2026
 
 Trabalho pago com a API do Claude para melhorar as relações dos verbetes e das quatro leituras.
-O release **`c0be77b`** foi gerado localmente, mas **não foi publicado**: o ponteiro público
-continua em `e841fac` até uma decisão humana. A revisão dos lotes é **assistida por IA**,
-autorizada pelo responsável do projeto; não há alegação de revisão humana.
+O release **`c0be77b`** foi publicado em 08/11; o ponteiro público aponta para ele. A revisão dos
+lotes é **assistida por IA**, autorizada pelo responsável do projeto; não há alegação de revisão
+humana.
 
 ## Resultado no grafo
 
@@ -89,7 +89,7 @@ O saldo restante do teto de US$ 6 é de aproximadamente **US$ 4,2**. A Onda 1 an
 
 ## Pendências
 
-- **Publicação:** o release `c0be77b` precisa de aprovação humana para ir ao R2 e ao Pages.
+- **Publicação:** o release `c0be77b` está publicado no R2 e o ponteiro público aponta para ele; o próximo deploy do Pages fixa o conteúdo no HTML prerenderizado.
 - **Quatro leituras:** faltam 29/19/36/40 relações documentadas para 70/35/70/50.
 - **Relações ainda pendentes:** Marxismo 4, Liberalismo 20, Social-democracia 30 e Anarquismo 10.
 - **Editorial:** debates, cronologia e vertentes de Social-democracia e Anarquismo continuam

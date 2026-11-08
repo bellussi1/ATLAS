@@ -10,20 +10,20 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
 - Gitflow: PR **#50** (`develop` → `master`) foi mergeado em **`31b8d8b`**, o PR **#51** (pacotes de conteúdo) em **`21bba13`** e o PR **#52** (d3-force lazy) em **`c7a0448`**; o deploy do Pages rodou com sucesso nas três rodadas. O `develop` segue para a próxima rodada.
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
-- Conteúdo: 13 coleções. Release **`e841fac…`** publicado em 08/11 com o mesmo conteúdo do `2f7649…`, agora empacotado em `bundle` (23,7 MB) e `networkBundle` (4,1 MB); `content/content-pointer.json` aponta para os dois pacotes. O site antigo continua lendo as coleções; o novo build lê o pacote.
+- Conteúdo: 13 coleções. Release **`c0be77b…`** publicado em 08/11: **1.190 entidades**, **945 relações** e **775 documentadas**; `bundle` de 26,6 MB e `networkBundle` de 4,48 MB. O ponteiro público aponta para esse release; o build novo lê o pacote.
 - **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O release empacotado reduz a navegação de leitura/catálogo de ~17 para **2 requisições** (ponteiro + pacote), `/acervo` para **2** e `/grafos` para **2** (ponteiro + `networkBundle`). Medição na URL publicada em 08/11: home **0**; acervo **2**; leitura/verbete **2** na navegação SPA e **1** na carga direta; grafo **2** na SPA e **1** na carga direta. Depois do `/acervo`, abrir um verbete na mesma sessão custa **0**. O ponteiro vem do prerender nas cargas diretas. O consumo futuro cai, mas o limite do dia ainda depende do reset ou do upgrade.
-- Build local: **1.186 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
+- Build local: **1.217 páginas prerenderizadas** e **1.218 no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
 - CI: verify do PR **#52** e do merge **`c7a0448`** verde, com 355 testes, 184 de conteúdo e 155 e2e; `deploy-pages` concluído. O `ingest:fetch-raw` segue estável. O probe agendado de `uptime` passou a testar as rotas canônicas `/leitura/marxismo/` e `/leitura/liberalismo/` como 200 e as antigas como 301, corrigindo a falha a cada 15 minutos.
 
 ## Verificações recentes
 
 - `npm test`: **355/355**.
 - `npm run test:content`: **184/184**.
-- `npm run build`: passou, **1.185 páginas prerenderizadas**, canonical absoluto em todas as páginas.
+- `npm run build`: passou, **1.217 páginas prerenderizadas**, canonical absoluto em todas as páginas.
 - `npx playwright test`: **155/155**, incluindo o contrato de carregamento: leitura baixa só o `bundle` e `/grafos` só o `networkBundle`.
-- `npm run check:links`: **1.187 páginas** verificadas.
+- `npm run check:links`: **1.219 páginas** verificadas.
 - `npm run lint` e `npm run typecheck`: exit 0.
-- `content:build` local: release **`c0be77b`**, 13 coleções, **1.190 entidades**, **945 relações** e **775 documentadas**; o ponteiro público segue em **`e841fac`**.
+- `content:build` local: release **`c0be77b`**, 13 coleções, **1.190 entidades**, **945 relações** e **775 documentadas**; o ponteiro público agora aponta para esse release.
 - Cobertura documentada das quatro leituras: **Marxismo 41, Liberalismo 16, Social-democracia 34, Anarquismo 10**; metas 70/35/70/50.
 - Lighthouse local com brotli/gzip na preview: mobile **91–94** e desktop **100** em desempenho; acessibilidade, boas práticas e SEO **100** nas duas emulações. Nenhum reflow forçado e nenhum erro de console.
 - CSS: `/acervo` caiu de 13 para 9 cores de texto computadas e `/leitura/marxismo` de 14 para 10; tamanhos de fonte agora saem dos tokens `--text-*` (11, 12, 13, 14, 15, 16 e 17px).
@@ -41,7 +41,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página, após o primeiro paint), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
 - **Higiene de console e CSS**: Zod roda sem JIT para não violar o CSP, o filtro de temas ganhou `id`, o logo do rodapé declara proporção e a paleta do `record-card` passou a usar tokens. A preview local agora comprime em brotli/gzip e aplica cache imutável a JS/CSS com hash, aproximando a medição do Pages.
 - **Links de compra**: registros de obra que são livros, com autor conhecido, ganham "Comprar na Amazon" direto para a busca de livros, com `rel="sponsored"` e divulgação quando houver tag. A lista curada fica em `core/content/queries/amazon-books.ts`; tópicos, periódicos e o filme do acervo não recebem link. Sem `AMAZON_ASSOCIATE_TAG`, o link existe mas não gera comissão.
-- **Expansão de relações (paga)**: reextração de Marxismo/Liberalismo, 141 verbetes, 33 alvos e os 376 verbetes restantes geraram **+99 relações documentadas** (676 → 775) e **+32 entidades** (release local **`c0be77b`**, ainda não publicado). Custo de **~US$ 1,78** do teto de US$ 6; restam ~US$ 4,2. O `extract.mjs` usa Sonnet **low** na segunda passada. CI do commit `084bd9a` verde (355 testes, 184 de conteúdo e 155 e2e). Detalhes em `docs/research/EXPANSAO-RELACOES-2026-11.md`.
+- **Expansão de relações (paga)**: reextração de Marxismo/Liberalismo, 141 verbetes, 33 alvos e os 376 verbetes restantes geraram **+99 relações documentadas** (676 → 775) e **+32 entidades** (release **`c0be77b`**, publicado). Custo de **~US$ 1,78** do teto de US$ 6; restam ~US$ 4,2. O `extract.mjs` usa Sonnet **low** na segunda passada. CI do commit `084bd9a` verde (355 testes, 184 de conteúdo e 155 e2e). Detalhes em `docs/research/EXPANSAO-RELACOES-2026-11.md`.
 - **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/`. A coleção passou a **928 entidades e 496 relações** (447 antes da expansão). O lote dos 376 verbetes sem relação foi executado em três partes e consolidado; a extração em massa está concluída. As quatro leituras seguem em **41/16/34/10** relações documentadas (metas 70/35/70/50).
 
 - **Onda 0 / expansão**: linha de base medida e gold set gerado em `docs/research/EXPANSAO-BASELINE-2026-11.md` e `docs/research/gold-set-2026-11/`. O achado principal é que as 122/75/35/10 relações incluem links de navegação; documentadas são **33/11/34/10 (88)**. A captura foi recuperada do worktree do `.claude`: Social-democracia 68/68, Anarquismo 54/54 e `verbetes-citados` 908 artigos/907 rascunhos. Os 907 rascunhos de verbetes foram publicados no `atlas-drafts`; o estágio 5 fica aberto por 3/4 rascunhos enxutos e a reextração paga ainda não foi autorizada.
@@ -70,11 +70,11 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 4. **Aliases antigos** — se quiser que URLs antigas passem a 404, remover `/grafo`, `/rede`, `/comparar`, `/conhecimento` e os redirecionamentos top-level em uma segunda passada.
 5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
 6. **Onda 2** — o lote dos verbetes foi concluído (+99 documentadas no total). Faltam as quatro leituras: Marxismo 41/70, Liberalismo 16/35, Social-democracia 34/70, Anarquismo 10/50. O saldo restante do teto de US$ 6 é ~US$ 4,2; a próxima decisão é entre alvos editoriais das leituras e um novo lote de verbetes.
-7. **Publicação da expansão de relações** — o release local `c0be77b` tem +99 relações documentadas e +32 entidades; publicar exige aprovação humana.
+7. **Publicação da expansão** — o release `c0be77b` foi publicado e o ponteiro público já aponta para ele; o próximo deploy do Pages fixa o novo conteúdo no HTML prerenderizado.
 
 ## Próxima ação
 
-1. Aprovar (ou não) a publicação do release `156b98a`; o ponteiro público ainda aponta para `e841fac`.
+1. Rodar Lighthouse mobile na URL publicada e comparar com o relatório anterior; o d3-force já saiu do chunk do grafo.
 2. A Onda 1 está fechada por revisão de IA (96/100) e o modelo é Haiku medium + Sonnet low. O lote de verbetes da Onda 2 foi concluído; a próxima frente são as relações entre entidades das quatro leituras e os alvos que faltam.
 3. Decidir o próximo lote: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
 4. Rodar Lighthouse na URL publicada para comparar com o relatório local.
