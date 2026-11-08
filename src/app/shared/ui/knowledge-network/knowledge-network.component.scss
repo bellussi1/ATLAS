@@ -1201,8 +1201,7 @@ kbd {
   .floating {
     grid-template-columns: minmax(0, 1fr);
   }
-  .bar__title,
-  .bar__list {
+  .bar__title {
     display: none;
   }
   .bar__actions {

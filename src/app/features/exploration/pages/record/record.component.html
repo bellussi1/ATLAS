@@ -49,6 +49,9 @@
               >Abrir leitura contínua de {{ reading.title }}</a
             >
           }
+          <a class="graph-link" [routerLink]="['/grafos']" [queryParams]="{ no: entity.id }"
+            >Ver no grafo</a
+          >
           @if (amazon(); as buy) {
             <a
               class="purchase-link"

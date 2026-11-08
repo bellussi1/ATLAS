@@ -141,6 +141,18 @@ test('book records offer a direct Amazon link and other works do not', async ({ 
   await expect(page.getByRole('link', { name: 'Comprar na Amazon' })).toHaveCount(0);
 });
 
+test('a record opens the graph with its node selected and the URL restores it', async ({
+  page,
+}) => {
+  await page.goto('/verbete/karl-marx/');
+  await page.getByRole('link', { name: 'Ver no grafo' }).click();
+  await expect(page).toHaveURL(/\/grafos\?no=person-karl-marx/);
+  await expect(page.locator('.detail')).toContainText('Karl Marx');
+
+  await page.goto('/grafos?no=person-karl-marx');
+  await expect(page.locator('.detail')).toContainText('Karl Marx');
+});
+
 test('all search destinations have prerendered HTML with matching title, canonical and fragments', async ({
   request,
 }) => {

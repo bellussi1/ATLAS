@@ -13,7 +13,8 @@ import {
   untracked,
   viewChild,
 } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import {
@@ -55,6 +56,7 @@ import { ContentRepository } from '@core/content/repositories/content-repository
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
+import { map } from 'rxjs';
 
 import { batchEdgeSegments, type EdgeSegment } from './network-batching';
 import { shapePath } from './network-shapes';
@@ -101,6 +103,11 @@ const classificationLabels: Record<string, string> = {
 export class KnowledgeNetworkComponent {
   private readonly repository = inject(ContentRepository);
   private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly queryNode = toSignal(
+    this.route.queryParamMap.pipe(map((params) => params.get('no'))),
+    { initialValue: this.route.snapshot.queryParamMap.get('no') },
+  );
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
@@ -658,7 +665,7 @@ export class KnowledgeNetworkComponent {
     const { nodes, edges } = this.visible();
     const selected = this.selected();
     return (
-      `${nodes.length} de ${this.total} verbetes e ${edges.length} ligações no recorte.` +
+      `${nodes.length} de ${this.total} registros e ${edges.length} ligações no recorte.` +
       (selected ? ` Selecionado: ${selected.title}.` : '')
     );
   });
@@ -694,12 +701,27 @@ export class KnowledgeNetworkComponent {
         if (this.positions()) this.reveal(id);
       });
     });
+    // A shared ?no= link selects its node once the compiled positions are ready.
+    effect(() => {
+      const id = this.queryNode();
+      const positions = this.positions();
+      if (this.embedded()) return;
+      if (!id) {
+        if (untracked(() => this.selectedId())) untracked(() => this.clearSelection());
+        return;
+      }
+      if (!positions || !this.nodeIndex.has(id)) return;
+      if (untracked(() => this.selectedId()) === id) return;
+      untracked(() => this.select(id, true));
+    });
     // In a chapter the legend starts folded: the map should read as a map, not as a dashboard.
     effect(() => {
       if (this.embedded() && this.controlsOpen() === null) this.controlsOpen.set(false);
     });
     afterNextRender(() => {
       const element = this.stage()?.nativeElement;
+      if (!this.embedded() && window.matchMedia?.('(max-width: 40rem)').matches)
+        this.onlyConnected.set(true);
       const media = window.matchMedia?.('(prefers-reduced-motion: reduce)');
       this.reducedMotion.set(media?.matches ?? false);
       const onMedia = (event: MediaQueryListEvent) => this.reducedMotion.set(event.matches);
@@ -741,6 +763,9 @@ export class KnowledgeNetworkComponent {
         if (this.size().width && !fitted) {
           fitted = true;
           this.fit();
+          // On a phone the whole map is too small to read; start one step closer.
+          if (!this.embedded() && window.matchMedia?.('(max-width: 40rem)').matches)
+            this.zoomBy(1.45, { x: this.size().width / 2, y: this.size().height / 2 });
         }
       });
       this.destroyRef.onDestroy(() => {
@@ -865,6 +890,7 @@ export class KnowledgeNetworkComponent {
       }
     }
     this.picked.emit(id);
+    this.syncUrl(id);
   }
   /** Brings the record of the selected node into view under the map. */
   inspectSelected(): void {
@@ -880,6 +906,7 @@ export class KnowledgeNetworkComponent {
   clearSelection(): void {
     this.selectedId.set(null);
     this.picked.emit(null);
+    this.syncUrl(null);
   }
   isDimmed(id: string): boolean {
     const lit = this.litNodes();
@@ -1369,6 +1396,19 @@ export class KnowledgeNetworkComponent {
    * the icon the reader is pointing at, even when two nodes overlap in a dense map; the reach is
    * never under 16 px on screen, whatever the zoom, so a click just beside an icon still lands.
    */
+  /** Keeps the selected node in the address so a recorte can be shared or restored. */
+  private syncUrl(id: string | null): void {
+    if (this.embedded()) return;
+    const current = this.route.snapshot.queryParamMap.get('no');
+    if (current === id) return;
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { no: id },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
+  }
+
   private nodeAt(point: { x: number; y: number }): NetworkNode | null {
     const { k, x: vx, y: vy } = this.view();
     const scale = this.nodeScale();

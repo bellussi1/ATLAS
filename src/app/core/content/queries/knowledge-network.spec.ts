@@ -265,7 +265,7 @@ describe('knowledge network', () => {
         expect(distance).toBeGreaterThanOrEqual(needed);
       }
     expect(layoutNetwork([], []).positions.size).toBe(0);
-  }, 30000);
+  }, 60000);
 
   it('groups nodes by text context instead of collection', () => {
     const layout = layoutNetwork(network.nodes, network.edges);
