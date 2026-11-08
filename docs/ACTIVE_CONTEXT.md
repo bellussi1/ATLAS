@@ -419,7 +419,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - O CI ganhou o job `deploy-pages`, que baixa o artefato verificado e roda `wrangler pages deploy` apenas em push para a `master`. O `npm run build` deixou de gerar `dist/atlas/vercel.json`; `_headers`, `_redirects` e `404.html` são o contrato do Pages.
     - `scripts/seo.mjs` passou a gerar canonical e sitemap com a barra final do Pages (`/fontes/`), usando `ATLAS_SITE_URL=https://atlas-bellussi.pages.dev`. O sitemap tem **1.190 páginas** e o `robots.txt` aponta para ele.
     - Removidos `vercel.json`, `scripts/infra/vercel-config.mjs`, o teste correspondente e o MCP Vercel do `opencode.jsonc`. Documentação, README e SECURITY apontam para o Pages.
-    - Verificações: `npm test` **362/362**, `npm run test:content` **184/184**, `build` **1.189 rotas** com sitemap/canonical do Pages, `lint` e `typecheck` exit 0.
+    - Verificações: `npm test` **362/362**, `npm run test:content` **184/184**, `build` **1.189 rotas** com sitemap/canonical do Pages, `lint` e `typecheck` exit 0. O e2e de destinos de busca passou a esperar o canonical com barra final do Pages; o teste isolado passou **1/1**.
     - Pendente de pessoa: desconectar/excluir o projeto Vercel no painel. O `CLOUDFLARE_API_TOKEN` foi cadastrado em 08/11/2026 e a API do Pages respondeu `ok`; o `CLOUDFLARE_ACCOUNT_ID` já estava cadastrado. Nada foi publicado nesta rodada.
 
 56. **Planejamento de itinerários**

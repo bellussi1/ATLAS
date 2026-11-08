@@ -178,7 +178,9 @@ test('all search destinations have prerendered HTML with matching title, canonic
       title + ' — ATLAS',
     );
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
-    expect(canonical, target).toBe(site ? site + target : undefined);
+    // The Pages host serves directory routes with a trailing slash; the canonical follows it.
+    const canonicalTarget = target === '/' ? '/' : `${target.replace(/\/+$/, '')}/`;
+    expect(canonical, target).toBe(site ? site + canonicalTarget : undefined);
     if (entry.fragment && target !== '/fontes')
       expect(html).toContain('id="' + entry.fragment + '"');
     // Sources are paginated: page 1 carries the pager and its own anchors; later anchors are
