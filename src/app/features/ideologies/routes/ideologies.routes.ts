@@ -4,8 +4,8 @@ import { READING_ROOT } from '@core/routing/reading-routes';
 import { ideologyReadings } from '@ideologies/data/ideology-readings';
 
 /**
- * Each tradition is one continuous reading under `/leitura/:slug`. The old top-level address and
- * the `/:slug/mesa` desk address redirect to the canonical one.
+ * Each tradition is one continuous reading under `/leitura/:slug`. The old top-level address
+ * redirects to the canonical one; the obsolete `/:slug/mesa` desk alias was removed.
  */
 function ideologyRoutesFor(slug: string, label: string, metaDescription: string): Routes {
   return [
@@ -20,7 +20,6 @@ function ideologyRoutesFor(slug: string, label: string, metaDescription: string)
         ),
     },
     { path: slug, pathMatch: 'full', redirectTo: `/${READING_ROOT}/${slug}` },
-    { path: `${slug}/mesa`, pathMatch: 'full', redirectTo: `/${READING_ROOT}/${slug}` },
   ];
 }
 

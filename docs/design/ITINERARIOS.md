@@ -15,7 +15,7 @@ Ele existe para responder a uma pergunta que atravessa conteúdos já publicados
 - Não é uma leitura contínua nova. Não exige capítulos próprios, mas exige **contexto editorial publicado** em cada parada.
 - Não é um hub dominante. Aparece na home, nas leituras e nos verbetes como convite; o índice `/itinerarios` é um catálogo, não a nova página principal.
 - Não é um grafo livre. Os ramos são declarados e justificados; não há pan, zoom ou exploração arbitrária.
-- Não é uma trilha de exercícios. `features/study` é uma demo dormente e não será reutilizada.
+- Não é uma trilha de exercícios. Não há feature de estudo ativa; o itinerário não a reativa.
 - Não é um painel de progresso. Não há checkbox, percentual, sequência bloqueada ou dashboard na v1. Se houver uma marca no futuro, ela será local e opcional, depois de o percurso estar validado.
 
 ## 2. Tipos de itinerário
@@ -322,7 +322,7 @@ Ramos: trabalhismo, Golpe de 1964 e Ditadura militar, ou economia e industrializ
 | ---- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------- |
 | 0    | `docs/design/ITINERARIOS.md`, schema Zod, fixtures e testes de validação | Rejeita destino inexistente, rascunho em ramo público e `verified` sem revisor; aceita o fixture comparativo | Não criar rota, componente ou conteúdo final   |
 | 1    | Build gera índice e um artefato por itinerário; manifesto opcional; `ItineraryRepository` | Build antigo continua válido; release novo publica e o app lê; hash e 404 conferidos | Não publicar conteúdo; não criar segundo sistema de release |
-| 2    | `/itinerarios`, `/itinerario/:slug`, prerender dos verificados, 404 para desconhecido | Teclado, 320/390, reduced motion, SEO/canonical, sem overflow                   | Não criar hub dominante; não usar `features/study` |
+| 2    | `/itinerarios`, `/itinerario/:slug`, prerender dos verificados, 404 para desconhecido | Teclado, 320/390, reduced motion, SEO/canonical, sem overflow                   | Não criar hub dominante; não reativar a antiga demonstração de estudo |
 | 3    | Piloto comparativo, 6 paradas + 2 ramos                                  | Todas as paradas publicadas; razão/pergunta em cada; revisão humana registrada | Não começar Era Vargas; não inventar prosa histórica |
 | 4    | Piloto histórico Era Vargas, 7 paradas + 3 ramos                         | Só depois de Trabalhismo publicado e leitura Era Vargas criada; cobertura limpa | Não publicar com rascunho em ramo              |
 | 5    | `itinerary:check` no CI, mais 2–3 percursos, links na home/leituras/verbetes | Cobertura e links verificados automaticamente                                  | Não transformar o índice em dashboard          |
@@ -375,7 +375,7 @@ Aceite: `itinerary:check` no `verify` do CI; 2–3 percursos adicionais; links n
 - O primeiro piloto é o **comparativo**; Era Vargas fica para a fase 4.
 - O modelo de publicação é **índice + um artefato por itinerário no release**, não um JSON único.
 - O build público aceita apenas `verified` com revisão humana; `draft` fica em teste local.
-- `features/study` fica documentado como demo dormente, sem reutilização.
+- A antiga demonstração de estudo foi removida; o itinerário não a reativa.
 - Progresso fica fora da v1.
 
 ## 12. Decisão pendente
@@ -394,7 +394,7 @@ Se a decisão for permitir, o selo precisa ser visível na abertura e no índice
 - Grafo livre, pan/zoom, exploração arbitrária ou duplicação de `/grafos`.
 - Nova leitura contínua por itinerário.
 - Quatro componentes por `kind`.
-- Reutilização de `features/study`.
+- Reativação da antiga demonstração de estudo.
 - Publicação automática de conteúdo ou de itinerário.
 - Promessa de cobertura futura: o que não está publicado aparece como lacuna.
 

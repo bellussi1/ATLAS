@@ -1,11 +1,5 @@
 import { expect, type Page, test } from './content-fixture';
 
-test('the old desk address redirects to the single page', async ({ page }) => {
-  await page.goto('/marxismo/mesa/');
-  await expect(page).toHaveURL(/\/leitura\/marxismo\/?$/);
-  await expect(page.locator('#explorar')).toHaveCount(0);
-});
-
 test('relations open stacked sheets that Esc and the back button lift one at a time', async ({
   page,
 }) => {

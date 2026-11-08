@@ -53,7 +53,6 @@ Primitivas standalone em `src/app/shared/ui/ui-primitives.scss` (estilos compart
 | `app-menu` | Navegação nativa com nome obrigatório; orientação horizontal ou vertical; links projetados pela página |
 | `app-content-summary` | Sumário com heading e conteúdo projetado; usado nos resumos de categoria e artigo |
 | `app-disclosure` | `<details>/<summary>` nativo, operável por teclado sem JavaScript próprio |
-| `app-notice` | `info`, `success`, `warning`, `critical`; `accessibleRole="status"` (polido) ou `"alert"` (assertivo), em um único elemento |
 | `app-page-template` | Variantes `editorial`, `index`, `profile`; largura de leitura própria; `aria-labelledby` |
 
 Já em uso: menu global; templates e sumários de páginas editoriais e categorias; headings e links editoriais; buscas funcionais na home e em Conhecimento; avisos de busca vazia. O showroom exercita as demais variantes e estados sem enviar dados.
@@ -112,9 +111,6 @@ Catálogo de skills com prefixo `atlas-`. Frontend e interação orientaram a co
 ## Editorial geométrico: cores e termos navegáveis
 
 Mesa aprovada pelo usuário. Tokens adicionados: `color-teal-paper` (#85BDB5), `color-ochre-paper` (#EDC45B), `color-rose-paper` (#E9B4BF), `color-indigo` (#37395E); papel, tinta e vermelho continuam base. Texto principal nas três superfícies claras e branco sobre índigo com cobertura de contraste automatizada.
-
-- `AtlasEditorialMarkComponent`: motivos SVG originais para verbete, artigo e atlas. Miniaturas acompanham os controles de seleção; o motivo maior acompanha a ficha atual. Não são dados cartográficos nem fac-símiles. Rótulos textuais disponíveis; desenhos ocultos da árvore acessível.
-- `AtlasEditorialTextComponent`: preserva o texto e destaca termos de vocabulário editorial limitado. Contexto → artigo Conhecimento com contexto; fonte/evidência → seção de contexto e evidência da metodologia; metodologia → verbete estruturado; verbete → índice. Até dois destinos distintos por trecho. `currentPath` evita link para o próprio texto. Sublinhado complementa o vermelho; `inverse` mantém texto e foco claros em fundos fortes.
 
 Skill própria: `.agents/skills/atlas-editorial-geometrico/SKILL.md`, instalada em `~/.codex/skills/atlas-editorial-geometrico`. A cópia versionada é a fonte; ao alterá-la, atualizar a instalação local. `references/mesa-aprovada.png` preserva a composição aprovada antes da ampliação de cores. O validador estrutural passou; a validação concreta cobre esta aplicação, não a skill em geral.
 

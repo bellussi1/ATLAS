@@ -1,2 +1,0 @@
-<!-- prettier-ignore -->
-@for (part of parts(); track $index) {@if (part.path) {<a appEditorialLink [routerLink]="part.path" [fragment]="part.fragment" [class.inverse]="inverse()">{{ part.text }}</a>} @else {{{ part.text }}}}

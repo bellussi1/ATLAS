@@ -9,12 +9,12 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 - Deploy: a origem única é `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O job `deploy-pages` publica o artefato verificado em push para a `master`; `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados. O Vercel foi removido do repositório; falta desligar o projeto antigo no painel.
 - Dependências: #45 (d3-shape), #41 (actions/cache) e #39 (gitleaks-action) mesclados. Um 429 intermitente do R2 no build agora é repetido com backoff em `scripts/content/fetch-content.mjs` (5 tentativas, respeita `retry-after`), coberto por teste.
 - Conteúdo: 13 coleções; release local `06a3de…` (inclui o artefato `network`); o ponteiro público continua em `a54eee…` e nada foi publicado.
-- Build local: **1.189 rotas prerenderizadas**; sitemap e canonical gerados para `https://atlas-bellussi.pages.dev`.
+- Build local: **1.186 rotas prerenderizadas**; sitemap e canonical gerados para `https://atlas-bellussi.pages.dev`.
 - CI: a verificação abaixo é local; o deploy do Pages ainda não rodou.
 
 ## Verificações executadas
 
-- `npm test`: **363/363**.
+- `npm test`: **351/351**.
 - `npm run test:content`: **184/184** (dois testes do gerador Vercel removidos).
 - `npm run build`: passou, **1.189 rotas**; sitemap com **1.190 páginas**, canonical e robots apontando para `https://atlas-bellussi.pages.dev`; `dist/atlas/vercel.json` não é mais gerado.
 - `node node_modules/@playwright/test/cli.js test e2e/pages.spec.ts e2e/graph.spec.ts`: **56/56**, incluindo a falha de navegação, a ausência do minimapa, a roda no grafo embutido, o encerramento em cards e as auditorias Axe.
@@ -424,7 +424,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 
 56. **Planejamento de itinerários**
     - Criado `docs/design/ITINERARIOS.md` e indexado em `docs/README.md` e `docs/product/ESCOPO-ATUAL.md`. Nada foi implementado: não há rota, schema, fixture ou componente.
-    - Decisões registradas: percurso não linear com ramos explícitos; `kind` único para histórico, comparativo, conceitual e institucional; prévia contextual reutilizando `KnowledgeContextDirective`; aviso de cobertura editorial; piloto comparativo antes de Era Vargas; publicação em índice + um artefato por itinerário no release; gate público só `verified` com revisão humana; `features/study` dormente e fora do escopo; progresso fora da v1.
+    - Decisões registradas: percurso não linear com ramos explícitos; `kind` único para histórico, comparativo, conceitual e institucional; prévia contextual reutilizando `KnowledgeContextDirective`; aviso de cobertura editorial; piloto comparativo antes de Era Vargas; publicação em índice + um artefato por itinerário no release; gate público só `verified` com revisão humana; a antiga demonstração de estudo foi removida e não será reutilizada; progresso fora da v1.
     - Correções incorporadas: o itinerário não exige leitura própria, mas exige contexto publicado em cada parada; o gate é qualitativo (mínimo de 4 paradas, razão/pergunta, dois tipos de conteúdo, sem destino repetido sem justificativa) e o máximo é editorial, não schema; o minimapa de dependências é secundário e não duplica `/grafos`; a entrada é convite na home/leituras/verbetes, não um novo hub; o vínculo é com `reading-path` e com o grafo, por links.
     - Fases 0–5 registradas no documento, com portas de saída. O piloto histórico só começa depois de Trabalhismo publicado e da leitura Era Vargas criada; enquanto isso, o aviso de cobertura impede tratar Era Vargas como lista de verbetes.
     - Próxima ação: aprovar a fase 0 (schema, fixtures e testes de validação) e a política de revisão por IA. Nenhuma chamada paga e nenhuma publicação.
@@ -435,6 +435,12 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Conteúdo: novo artefato `network` com os campos que o grafo lê, **3,13 MB** contra **12,6 MB** das coleções completas (-75%). O manifesto o traz como campo opcional; `ContentRepository` lê `network` + `layouts` e mantém fallback para releases antigos. `build-content` e `publish-r2` já o incluem.
     - Verificações: `npm test` **363/363**, `npm run test:content` **184/184**, `build` **1.189 rotas**, `e2e/graph.spec.ts` + `e2e/pages.spec.ts` **56/56**, `lint` e `typecheck` exit 0.
     - O ganho de carregamento só chega ao site depois de `content:publish`, que continua sendo decisão humana; o ponteiro público ainda é `a54eee…`.
+
+58. **Limpeza de rotas e código sem uso**
+    - Removido o alias `/mesa` (rota Angular, quatro linhas de `_redirects` e o teste e2e correspondente). Os redirecionamentos das leituras top-level e de `/grafo`, `/rede`, `/comparar` e `/conhecimento` foram mantidos como compatibilidade deliberada, com testes próprios.
+    - Removidos módulos sem referência: `features/study` (trilha demonstrativa), `historical-visualizations`, `editorial-mark`, `editorial-text`, `notice` e `timeline-periods`. O alias `@study/*` e as referências em `AGENTS.md`, `ARCHITECTURE.md`, `SISTEMA-DE-DESIGN.md` e `ITINERARIOS.md` foram atualizados.
+    - O que ficou: `study-exercise` e `study-schema` continuam porque são usados pelo bloco de exercício de `value-debate`; `published-ideologies`, `visualization-geometry` e `ideology-draft-from-graph` continuam porque são usados por scripts de build/editoria.
+    - Verificações: `npm test` **351/351** (12 testes removidos junto com os módulos), `build` **1.186 páginas no sitemap**, `e2e/pages.spec.ts` + `e2e/ideology-sheets.spec.ts` + `e2e/public-routes.spec.ts` **80/80**, `lint` e `typecheck` exit 0.
 
 ## Pendências que bloqueiam
 

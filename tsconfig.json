@@ -19,7 +19,6 @@
       "@shared/*": ["./src/app/shared/*"],
       "@ideologies/*": ["./src/app/features/ideologies/*"],
       "@exploration/*": ["./src/app/features/exploration/*"],
-      "@study/*": ["./src/app/features/study/*"],
       "@layouts/*": ["./src/app/layouts/*"],
       "@pages/*": ["./src/app/pages/*"],
       "@app/*": ["./src/app/*"]

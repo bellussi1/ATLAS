@@ -28,11 +28,9 @@ src/app/
       data/                   registro publicado, vocabulário, composições editoriais
       utils/                  segmentação pura do hipertexto
       routes/                 rotas públicas com loadComponent
-    exploration/components/   rede de evidências e visualizações históricas
+    exploration/components/   rede de evidências e perfis de entidade
     exploration/pages/        catálogos, busca universal, registros permanentes
     exploration/routes/       composição lazy das rotas de descoberta
-    study/data/               trilha demonstrativa preservada
-    study/utils/              progresso e tentativas de estudo
   layouts/app-shell/          navegação, metadados, breadcrumbs, transição, rodapé
   pages/home/                 busca universal e mesa de pesquisa
 content/                      snapshots versionados, sem dependências Angular
@@ -49,7 +47,7 @@ Sem pastas vazias para pipes, acessibilidade ou features futuras: criar quando h
 
 Fluxo permitido: composição da aplicação → páginas e layouts → feature → shared → core. Features também acessam core diretamente. Core não importa apresentação; shared não importa features; features não acessam implementações internas umas das outras. Modelos e serviços de conteúdo não dependem de componentes Angular.
 
-- **Aliases:** `@core/*`, `@shared/*`, `@ideologies/*`, `@exploration/*`, `@study/*`, `@layouts/*`, `@pages/*`, `@app/*`.
+- **Aliases:** `@core/*`, `@shared/*`, `@ideologies/*`, `@exploration/*`, `@layouts/*`, `@pages/*`, `@app/*`.
 - A regra ESLint resolve aliases e caminhos relativos, incluindo imports dinâmicos e reexports, e verifica ciclos. Não usar barrels para contornar limites.
 - API que precise atravessar features: promover deliberadamente a core (dados e infraestrutura) ou shared (apresentação e comportamento), com responsabilidade documentada.
 - Regra local `architecture/boundaries`: roda no lint e no CI já existente. Seus testes cobrem imports relativos, aliases, lazy loading, composição central, isolamento de modelos e serviços, e um ciclo. Verifica dependências TypeScript; não substitui revisão de coesão, acessibilidade ou conteúdo.
