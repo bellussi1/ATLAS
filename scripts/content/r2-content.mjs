@@ -293,12 +293,22 @@ export function parsePointer(text) {
   return contentPointerSchema.parse(JSON.parse(text));
 }
 
-export function buildPointer({ baseUrl, release, manifest, artifacts, media }) {
+export function buildPointer({
+  baseUrl,
+  release,
+  manifest,
+  artifacts,
+  media,
+  bundle = null,
+  networkBundle = null,
+}) {
   return contentPointerSchema.parse({
     schemaVersion: 1,
     baseUrl,
     release,
     manifest,
+    bundle,
+    networkBundle,
     artifacts,
     media,
   });

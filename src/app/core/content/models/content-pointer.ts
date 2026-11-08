@@ -29,6 +29,12 @@ export const contentPointerSchema = z.object({
   baseUrl: z.url({ protocol: /^https$/ }),
   release: digest,
   manifest: artifact,
+  /**
+   * Direct references to the packaged artifacts, so a reading route needs only the pointer and the
+   * bundle. Older pointers omit them and the repository falls back to the manifest.
+   */
+  bundle: artifact.nullable().default(null),
+  networkBundle: artifact.nullable().default(null),
   artifacts: z
     .array(artifact.extend({ file: z.string().regex(/^[a-z0-9-]+\.[a-f0-9]{64}\.json$/) }))
     .min(1),

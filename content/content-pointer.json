@@ -1,10 +1,18 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://atlas-content-delivery.atlas-bellussi.workers.dev",
-  "release": "2f764971c654af7c1893aeee43245020f8af6263da63b5ebc7d228fb5fecd22e",
+  "release": "e841fac39ffbabb862c210443798b114dd2a080b809063a9c259797e92cf95d0",
   "manifest": {
-    "sha256": "ae7a2e89c34b2fa157dd847fc012bfaa0d7ea3b2519902d2385e913fb7c10a35",
-    "bytes": 5570
+    "sha256": "65b112043a04fbffa43280de079c50091f9120c68071c248a52b752ca9a4665d",
+    "bytes": 6014
+  },
+  "bundle": {
+    "sha256": "e7a0795621696d1687b2817087bf5dbd9a0b5b15157f8ac297bc4989428376eb",
+    "bytes": 24810028
+  },
+  "networkBundle": {
+    "sha256": "32cdf38c6cc5d60ff55527fb62b10f24aa6e4b31ef7fae4239fd8a952cd03c04",
+    "bytes": 4299980
   },
   "artifacts": [
     {
@@ -111,6 +119,16 @@
       "sha256": "5475f484abef275b31ab4bea40f274788a5d25f9a99f8c5ada422536f7dfc793",
       "bytes": 3214017,
       "file": "network.5475f484abef275b31ab4bea40f274788a5d25f9a99f8c5ada422536f7dfc793.json"
+    },
+    {
+      "sha256": "e7a0795621696d1687b2817087bf5dbd9a0b5b15157f8ac297bc4989428376eb",
+      "bytes": 24810028,
+      "file": "bundle.e7a0795621696d1687b2817087bf5dbd9a0b5b15157f8ac297bc4989428376eb.json"
+    },
+    {
+      "sha256": "32cdf38c6cc5d60ff55527fb62b10f24aa6e4b31ef7fae4239fd8a952cd03c04",
+      "bytes": 4299980,
+      "file": "network-bundle.32cdf38c6cc5d60ff55527fb62b10f24aa6e4b31ef7fae4239fd8a952cd03c04.json"
     }
   ],
   "media": [
