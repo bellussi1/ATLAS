@@ -129,6 +129,18 @@ test('contextual exploration opens the matching permanent entity page', async ({
   await expect(page).toHaveURL(/\/verbete\//);
 });
 
+test('book records offer a direct Amazon link and other works do not', async ({ page }) => {
+  await page.goto('/verbete/o-capital/');
+  const buy = page.getByRole('link', { name: 'Comprar na Amazon' });
+  await expect(buy).toHaveAttribute('href', /^https:\/\/www\.amazon\.com\.br\/s\?/);
+  await expect(buy).toHaveAttribute('href', /i=stripbooks/);
+  await expect(buy).toHaveAttribute('target', '_blank');
+  expect(await buy.getAttribute('rel')).toContain('noopener');
+
+  await page.goto('/verbete/futebol/');
+  await expect(page.getByRole('link', { name: 'Comprar na Amazon' })).toHaveCount(0);
+});
+
 test('all search destinations have prerendered HTML with matching title, canonical and fragments', async ({
   request,
 }) => {

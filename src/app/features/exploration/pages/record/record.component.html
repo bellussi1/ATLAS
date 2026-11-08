@@ -49,7 +49,25 @@
               >Abrir leitura contínua de {{ reading.title }}</a
             >
           }
+          @if (amazon(); as buy) {
+            <a
+              class="purchase-link"
+              [href]="buy.url"
+              target="_blank"
+              [attr.rel]="buy.affiliate ? 'sponsored noopener noreferrer' : 'noopener noreferrer'"
+              >Comprar na Amazon <span aria-hidden="true">↗</span></a
+            >
+          }
         </p>
+        @if (amazon(); as buy) {
+          @if (buy.affiliate) {
+            <p class="affiliate-note">
+              Participamos do Programa de Associados da Amazon. Compras qualificadas por este link
+              podem gerar comissão para o ATLAS, sem custo extra para você. A escolha das obras é
+              editorial e não depende de comissão.
+            </p>
+          }
+        }
       </div>
       @if (context()?.media; as media) {
         <div class="hero-media">

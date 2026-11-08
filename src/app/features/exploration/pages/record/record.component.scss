@@ -231,6 +231,25 @@ h1 {
   text-underline-offset: 0.2em;
   cursor: pointer;
 }
+.purchase-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--color-border-strong);
+  font: 600 var(--text-small) var(--font-sans);
+  text-decoration: none;
+}
+.purchase-link:hover {
+  border-color: var(--ink);
+  background: var(--color-surface-raised);
+}
+.affiliate-note {
+  max-width: 62ch;
+  margin: 0.4rem 0 0;
+  color: var(--ink-muted);
+  font: var(--text-caption)/1.5 var(--font-sans);
+}
 .copy-status {
   font: var(--text-small) var(--font-sans);
 }
