@@ -8,13 +8,13 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 - Gitflow: `develop` é a integração. O PR **#50** (`develop` → `master`) está aberto; `master` está em `69eaed4` e recebeu #41, #45 e #39. #38/#37 foram atualizados e aguardam checks; #44 está em conflito e #40 bloqueado.
 - Deploy: a origem única é `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O job `deploy-pages` publica o artefato verificado em push para a `master`; `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados. O Vercel foi removido do repositório; falta desligar o projeto antigo no painel.
 - Dependências: #45 (d3-shape), #41 (actions/cache) e #39 (gitleaks-action) mesclados. Um 429 intermitente do R2 no build agora é repetido com backoff em `scripts/content/fetch-content.mjs` (5 tentativas, respeita `retry-after`), coberto por teste.
-- Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
+- Conteúdo: 13 coleções; release local `06a3de…` (inclui o artefato `network`); o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**; sitemap e canonical gerados para `https://atlas-bellussi.pages.dev`.
 - CI: a verificação abaixo é local; o deploy do Pages ainda não rodou.
 
 ## Verificações executadas
 
-- `npm test`: **362/362**.
+- `npm test`: **363/363**.
 - `npm run test:content`: **184/184** (dois testes do gerador Vercel removidos).
 - `npm run build`: passou, **1.189 rotas**; sitemap com **1.190 páginas**, canonical e robots apontando para `https://atlas-bellussi.pages.dev`; `dist/atlas/vercel.json` não é mais gerado.
 - `node node_modules/@playwright/test/cli.js test e2e/pages.spec.ts e2e/graph.spec.ts`: **56/56**, incluindo a falha de navegação, a ausência do minimapa, a roda no grafo embutido, o encerramento em cards e as auditorias Axe.
@@ -429,6 +429,13 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - Fases 0–5 registradas no documento, com portas de saída. O piloto histórico só começa depois de Trabalhismo publicado e da leitura Era Vargas criada; enquanto isso, o aviso de cobertura impede tratar Era Vargas como lista de verbetes.
     - Próxima ação: aprovar a fase 0 (schema, fixtures e testes de validação) e a política de revisão por IA. Nenhuma chamada paga e nenhuma publicação.
 
+57. **Foco por seleção e artefato de rede**
+    - Com um nó selecionado, o grafo mantém o nó e seus vizinhos acesos, mostra os nomes dos vizinhos, rotula as relações e apaga o resto (opacidade **0,14**). Os vizinhos recebem `is-related`; as arestas do nó ativo são desenhadas acima da base apagada.
+    - Desempenho: o culling congela durante pan/zoom e só recalcula no repouso; os lotes de arestas não dependem mais da seleção; o hover espera 70 ms antes de recalcular rótulos; o glide tem fallback para abas ocultas. Medição local: primeiro nó **948 ms**, seleção por clique **108 ms**, pan p95 **33,3 ms**.
+    - Conteúdo: novo artefato `network` com os campos que o grafo lê, **3,13 MB** contra **12,6 MB** das coleções completas (-75%). O manifesto o traz como campo opcional; `ContentRepository` lê `network` + `layouts` e mantém fallback para releases antigos. `build-content` e `publish-r2` já o incluem.
+    - Verificações: `npm test` **363/363**, `npm run test:content` **184/184**, `build` **1.189 rotas**, `e2e/graph.spec.ts` + `e2e/pages.spec.ts` **56/56**, `lint` e `typecheck` exit 0.
+    - O ganho de carregamento só chega ao site depois de `content:publish`, que continua sendo decisão humana; o ponteiro público ainda é `a54eee…`.
+
 ## Pendências que bloqueiam
 
 1. **Nova rodada** — o PR **#50** leva `develop` para a `master` protegida; #45, #41 e #39 já foram mesclados. #38/#37 tiveram a branch atualizada e aguardam `verify`; #44 está `CONFLICTING` e #40 bloqueado. O Vercel será desligado no painel; os checks de preview deixam de existir.
@@ -444,6 +451,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
 5. **Release `0.1.0`** — `release/0.1.0` contém o fluxo; falta CI verde para ativar proteções e release. Decidir se `develop` segue para `master` nesta rodada.
 6. **Revisão humana** — as relações curadas e os 109 itens de `generated/eval/amostra-20v2/revisao.md` continuam pendentes.
 7. **Revisão por IA em itinerários** — o plano recomenda manter `verified` apenas com revisor humano na v1; `pending` com revisão de IA fica em preview e recebe selo explícito. Decidir depois do piloto comparativo se um estado público `reviewed-ai` será permitido.
+8. **Publicação do artefato `network`** — o release local `06a3de…` inclui o artefato enxuto para `/grafos`; o ponteiro público `a54eee…` ainda aponta para as coleções completas. Publicar é decisão humana e só então o ganho de carregamento chega ao site.
 
 ## Protocolo
 
