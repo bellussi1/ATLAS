@@ -10,7 +10,8 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
 - Gitflow: `develop` é a integração; o PR **#50** (`develop` → `master`) está aberto. `master` está em `69eaed4` e recebeu #41, #45 e #39. Último verify verde: **`0d0a8a9`**.
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
-- Conteúdo: 13 coleções. Release local **`2f7649…`**, com 12 registros de `verbetes-citados` atualizados (+126 afirmações, +13 relações); o ponteiro público continua em **`a54eee…`** e nada foi publicado.
+- Conteúdo: 13 coleções. Release **`2f7649…`** publicado em 08/11, com 12 registros de `verbetes-citados` atualizados, revisões de capítulo, figuras curadas e a projeção `network`; `content/content-pointer.json` foi atualizado. O site público passa a ler esse release.
+- **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O Pages estático continua; o `atlas-content-delivery` pode falhar até o reset ou o upgrade. A publicação do `network` reduz o grafo, mas cada página de conteúdo ainda faz ~17 chamadas.
 - Build local: **1.186 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
 - CI: o verify de `0d0a8a9` passou (lint, tipos, testes, conteúdo, ingestão, build, links e e2e). As mudanças de Lighthouse desta rodada têm verificações locais, mas ainda não têm CI próprio.
 
@@ -42,14 +43,17 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 ## Pendências que bloqueiam
 
 1. **PR #50** — aguardar o verify do commit final e fazer o merge; o `deploy-pages` roda na `master`.
-2. **Publicação do conteúdo** — o release `06a3de…` tem o artefato `network`; sem `content:publish` o site continua no release público `a54eee…` e baixa as coleções completas.
+2. **Limite do Worker** — a conta gratuita passou de 100 mil requisições/dia; até o reset (00:00 UTC) ou o upgrade, o conteúdo dinâmico pode falhar. Decidir entre Workers Paid (US$ 5/mês) e reduzir as ~17 chamadas por página.
 3. **Vercel** — desconectar a integração Git e excluir o projeto antigo no painel.
 4. **Token exposto** — o token Cloudflare foi colado no chat; após o primeiro deploy, rotacionar e atualizar o segredo.
 5. **Dependências** — #38/#37 aguardam checks; #44 está em conflito; #40 bloqueado. Não forçar.
+6. **Leituras** — faltam os quadros completos de debate, a cronologia estruturada e os cartões de vertentes em Social-democracia e Anarquismo; revisões com fonte parcial e trechos de voz ainda exigem verificação humana.
+7. **Carregamento da leitura** — a rota ainda baixa o grafo completo (~24 MB) antes de hidratar. Exige desenho próprio (coleção única ou grafo combinado).
+8. **Texto a 200%** — header e footer não estouram mais; a leitura ainda tem overflow residual (~111 px em 1280 e ~61 px em 390) na cronologia/revisão.
 
 ## Pendências que pedem decisão
 
-1. **Publicar o release de conteúdo** com o artefato `network` (decisão humana).
+1. **Limite do Worker** — decidir entre Workers Paid (US$ 5/mês) ou reduzir as chamadas por página antes que o conteúdo dinâmico falhe.
 2. **Revisão por IA em itinerários** — o plano recomenda manter `verified` apenas com revisor humano na v1; decidir depois do piloto comparativo.
 3. **Itinerários** — aprovar a fase 0 (schema, fixtures e testes) antes de implementar.
 4. **Aliases antigos** — se quiser que URLs antigas passem a 404, remover `/grafo`, `/rede`, `/comparar`, `/conhecimento` e os redirecionamentos top-level em uma segunda passada.
