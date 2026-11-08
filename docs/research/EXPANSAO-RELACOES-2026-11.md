@@ -4,19 +4,19 @@ Status: resultado
 # Expansão de relações — 08/11/2026
 
 Trabalho pago com a API do Claude para melhorar as relações dos verbetes e das quatro leituras.
-O release **`c0be77b`** foi publicado em 08/11; o ponteiro público aponta para ele. A revisão dos
+O release **`ff48809`** foi publicado em 08/11; o ponteiro público aponta para ele. A revisão dos
 lotes é **assistida por IA**, autorizada pelo responsável do projeto; não há alegação de revisão
 humana.
 
 ## Resultado no grafo
 
-| Métrica | `e841fac` (publicado) | `156b98a` | `c0be77b` (local) | Delta total |
-|---|---:|---:|---:|---:|
-| Entidades | 1.158 | 1.190 | 1.190 | **+32** |
-| Relações totais | 846 | 908 | 945 | **+99** |
-| Relações documentadas | 676 | 738 | 775 | **+99** |
+| Métrica | `e841fac` | `156b98a` | `c0be77b` | `ff48809` (publicado) | Delta total |
+|---|---:|---:|---:|---:|---:|
+| Entidades | 1.158 | 1.190 | 1.190 | 1.190 | **+32** |
+| Relações totais | 846 | 908 | 945 | 954 | **+108** |
+| Relações documentadas | 676 | 738 | 775 | 784 | **+108** |
 
-As 99 relações novas são todas documentadas (nenhuma é `encyclopedic-link`, `editorial-link` ou
+As 108 relações novas são todas documentadas (nenhuma é `encyclopedic-link`, `editorial-link` ou
 `related_to`).
 
 ### Primeiro lote (`156b98a`)
@@ -40,14 +40,24 @@ Os 376 verbetes restantes sem relação foram extraídos e consolidados em modo 
 - 276 restantes: o rendimento caiu porque são, em maioria, conceitos e organizações genéricas.
 - Custo do lote: **US$ 0,903**.
 
+### Terceiro lote (`ff48809`) — arestas curadas dos suplementos
+
+As arestas já curadas em `content/graph/<slug>.json` foram consolidadas como relações com
+evidência e fonte:
+
+- **Marxismo:** +1 (`Lenin → Kautsky`; as outras duas já existiam como `reacted_against`).
+- **Liberalismo:** +8 (Locke, Smith, Montesquieu, Mill, socialismo liberal, Hayek, neoliberalismo e
+  Marx).
+- Total: **+9 relações documentadas**, sem custo de API.
+
 ## Quatro leituras — régua documentada
 
 A métrica `relations.documentadas` agora aparece em `npm run tradicao:coverage`:
 
 | Leitura | Documentadas | Meta Onda 2 | Gap |
 |---|---:|---:|---:|
-| Marxismo | 41 | 70 | -29 |
-| Liberalismo | 16 | 35 | -19 |
+| Marxismo | 42 | 70 | -28 |
+| Liberalismo | 24 | 35 | -11 |
 | Social-democracia | 34 | 70 | -36 |
 | Anarquismo | 10 | 50 | -40 |
 
@@ -61,6 +71,8 @@ só extração de artigos externos.
   e verificação de relações com **Sonnet 5.5 low**.
 - Lote curado de **141 verbetes** e busca de **33 alvos ausentes** no Wikidata/Wikipedia.
 - Lote dos **376 verbetes restantes** em três execuções (100 + 138 + 138), com o mesmo ciclo.
+- Consolidação das **arestas curadas dos suplementos** de Marxismo e Liberalismo, com evidência e
+  fonte, sem custo de API.
 - Consolidação sempre em modo parcial: nenhuma coleção existente foi substituída nem perdeu
   registros.
 - O fixture de testes continua no caminho antigo (sem os pacotes), para não duplicar 24 MB em
@@ -89,8 +101,8 @@ O saldo restante do teto de US$ 6 é de aproximadamente **US$ 4,2**. A Onda 1 an
 
 ## Pendências
 
-- **Publicação:** o release `c0be77b` está publicado no R2 e o ponteiro público aponta para ele; o próximo deploy do Pages fixa o conteúdo no HTML prerenderizado.
-- **Quatro leituras:** faltam 29/19/36/40 relações documentadas para 70/35/70/50.
+- **Publicação:** o release `ff48809` está publicado no R2 e o ponteiro público aponta para ele; o próximo deploy do Pages fixa o conteúdo no HTML prerenderizado.
+- **Quatro leituras:** faltam 28/11/36/40 relações documentadas para 70/35/70/50.
 - **Relações ainda pendentes:** Marxismo 4, Liberalismo 20, Social-democracia 30 e Anarquismo 10.
 - **Editorial:** debates, cronologia e vertentes de Social-democracia e Anarquismo continuam
   dependendo de fonte e redação, não de extração automática.

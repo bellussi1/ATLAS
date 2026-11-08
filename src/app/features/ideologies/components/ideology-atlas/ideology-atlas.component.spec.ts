@@ -88,11 +88,17 @@ describe('Liberalism atlas snapshot', () => {
   it('marks encyclopedic discovery links as pending rather than validated historical relations', () => {
     expect(atlas).toBeDefined();
     expect(atlas?.relations.length).toBeGreaterThan(0);
-    expect(
-      atlas?.relations.every((relation) =>
-        Boolean(relation.editorialStatus === 'pending' && relation.provenance),
-      ),
-    ).toBe(true);
+    // Every relation waits for review; only discovery links also carry a provenance label.
+    expect(atlas?.relations.every((relation) => relation.editorialStatus === 'pending')).toBe(true);
+    const discovery = (atlas?.relations ?? []).filter((relation) =>
+      ['encyclopedic-link', 'editorial-link', 'related_to'].includes(relation.type),
+    );
+    expect(discovery.length).toBeGreaterThan(0);
+    expect(discovery.every((relation) => Boolean(relation.provenance))).toBe(true);
+    const historical = (atlas?.relations ?? []).filter(
+      (relation) => !['encyclopedic-link', 'editorial-link', 'related_to'].includes(relation.type),
+    );
+    expect(historical.every((relation) => relation.evidenceIds.length > 0)).toBe(true);
     expect(atlas?.relations.some((relation) => relation.type === 'encyclopedic-link')).toBe(true);
     expect(
       queryKnowledgeRelations(methodologyKnowledgeGraph, 'ideology-liberalism', {
