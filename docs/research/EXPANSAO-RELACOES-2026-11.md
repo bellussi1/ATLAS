@@ -3,20 +3,20 @@ Status: resultado
 
 # Expansão de relações — 08/11/2026
 
-Trabalho pago com a API do Claude para melhorar as relações dos verbetes e das quatro leituras.
-O release **`ff48809`** foi publicado em 08/11; o ponteiro público aponta para ele. A revisão dos
-lotes é **assistida por IA**, autorizada pelo responsável do projeto; não há alegação de revisão
-humana.
+Trabalho pago com a API do Claude para melhorar as relações dos verbetes e das quatro leituras,
+seguido de enriquecimento gratuito pelo Wikidata. O release **`8063357`** foi publicado em 08/11;
+o ponteiro público aponta para ele. A revisão dos lotes é **assistida por IA**, autorizada pelo
+responsável do projeto; não há alegação de revisão humana.
 
 ## Resultado no grafo
 
-| Métrica | `e841fac` | `156b98a` | `c0be77b` | `ff48809` (publicado) | Delta total |
-|---|---:|---:|---:|---:|---:|
-| Entidades | 1.158 | 1.190 | 1.190 | 1.190 | **+32** |
-| Relações totais | 846 | 908 | 945 | 954 | **+108** |
-| Relações documentadas | 676 | 738 | 775 | 784 | **+108** |
+| Métrica | `e841fac` | `156b98a` | `c0be77b` | `ff48809` | `8063357` (publicado) | Delta total |
+|---|---:|---:|---:|---:|---:|---:|
+| Entidades | 1.158 | 1.190 | 1.190 | 1.190 | 1.190 | **+32** |
+| Relações totais | 846 | 908 | 945 | 954 | 1.580 | **+734** |
+| Relações documentadas | 676 | 738 | 775 | 784 | 1.410 | **+734** |
 
-As 108 relações novas são todas documentadas (nenhuma é `encyclopedic-link`, `editorial-link` ou
+As 734 relações novas são todas documentadas (nenhuma é `encyclopedic-link`, `editorial-link` ou
 `related_to`).
 
 ### Primeiro lote (`156b98a`)
@@ -50,6 +50,24 @@ evidência e fonte:
   Marx).
 - Total: **+9 relações documentadas**, sem custo de API.
 
+### Quarto lote (`8063357`) — Wikidata
+
+`scripts/content/enrich-wikidata-verbetes.mjs` consultou as declarações dos 928 QIDs de
+`atlas-verbetes-citados` e converteu apenas alvos que já existem no grafo:
+
+- **+648 relações** na coleção (496 → 1.122), com fonte CC0, evidência e procedência.
+- Propriedades mantidas: P50/P800 (autoria), P102 (filiação), P112 (fundação), P1344/P607/P710
+  (participação), P276 (local/sede), P155/P156 (sucessão), P463 (membro), P135 (movimento),
+  P737 e P1142 (classificação de catálogo).
+- Descartados: P361 (parte/todo), P1142 em pessoa e P463 em país/local/conceito, que inflavam o
+  grafo com vínculos administrativos.
+- P737/P1142 entram como `associated_with` com aviso explícito de que não são influência
+  documentada.
+- A primeira passada de P276 rotulou 22 conceitos/obras e 5 instituições como “ocorreu em”; a
+  correção removeu os conceitos/obras e renomeou as instituições para “está sediado em”.
+- **4.036 alvos externos** não foram criados; exigiriam uma etapa de entidades.
+- Custo de API: **zero**.
+
 ## Quatro leituras — régua documentada
 
 A métrica `relations.documentadas` agora aparece em `npm run tradicao:coverage`:
@@ -73,6 +91,7 @@ só extração de artigos externos.
 - Lote dos **376 verbetes restantes** em três execuções (100 + 138 + 138), com o mesmo ciclo.
 - Consolidação das **arestas curadas dos suplementos** de Marxismo e Liberalismo, com evidência e
   fonte, sem custo de API.
+- Enriquecimento pelo **Wikidata** dos 928 verbetes citados, sem criar entidades e sem custo de API.
 - Consolidação sempre em modo parcial: nenhuma coleção existente foi substituída nem perdeu
   registros.
 - O fixture de testes continua no caminho antigo (sem os pacotes), para não duplicar 24 MB em
@@ -101,8 +120,10 @@ O saldo restante do teto de US$ 6 é de aproximadamente **US$ 4,2**. A Onda 1 an
 
 ## Pendências
 
-- **Publicação:** o release `ff48809` está publicado no R2 e o ponteiro público aponta para ele; o próximo deploy do Pages fixa o conteúdo no HTML prerenderizado.
+- **Publicação:** o release `8063357` está publicado no R2 e o ponteiro público aponta para ele; o próximo deploy do Pages fixa o conteúdo no HTML prerenderizado.
 - **Quatro leituras:** faltam 28/11/36/40 relações documentadas para 70/35/70/50.
 - **Relações ainda pendentes:** Marxismo 4, Liberalismo 20, Social-democracia 30 e Anarquismo 10.
+- **Wikidata:** 4.036 alvos das declarações ficaram fora do grafo; criar essas entidades é uma
+  etapa própria, com decisão editorial.
 - **Editorial:** debates, cronologia e vertentes de Social-democracia e Anarquismo continuam
   dependendo de fonte e redação, não de extração automática.
