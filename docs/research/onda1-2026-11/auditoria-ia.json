@@ -1,0 +1,902 @@
+[
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que o Brasil é membro fundador da ONU, o que sustenta que é membro dela.",
+    "entity": "Brasil",
+    "arm": "haiku-low",
+    "kind": "relation",
+    "statement": "Brasil membro-de Organização das Nações Unidas"
+  },
+  {
+    "index": 1,
+    "verdict": "nao_sustenta",
+    "reason": "O trecho cita a derrota dos Confederados na Guerra Civil Americana como contexto, mas não diz que a 'conduta' da guerra se vinculou a um longo processo de mobilização interna. Só a abolição no Brasil é ligada a esse processo.",
+    "entity": "Brasil",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "A conduta da Guerra Civil Americana e a abolição no Brasil foram vinculadas a um longo processo de mobilização interna."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O trecho informa que a Constituição Federal foi promulgada em 5 de outubro de 1988.",
+    "entity": "Brasil",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "1988-10-05: Promulgação da Constituição Federal."
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O trecho afirma literalmente que o mandato de 13 anos foi o mais longo de qualquer chanceler na Áustria republicana.",
+    "entity": "Bruno Kreisky",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Seu mandato de 13 anos foi o mais longo de qualquer chanceler na Áustria republicana."
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O trecho descreve o mandato de Kreisky como chanceler (1970-1983, 13 anos) como o mais longo da Áustria republicana.",
+    "entity": "Bruno Kreisky",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "O mandato de Kreisky como chanceler é descrito no artigo como o mais longo de qualquer chanceler na Áustria republicana."
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O trecho apresenta a discussão entre Estado e poder e diz que a primeira posição restringe e a segunda amplia o objeto de estudo.",
+    "entity": "Ciência política",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Há discussão sobre se o objeto de estudo da disciplina é o Estado ou o poder; a primeira posição restringe e a segunda amplia o campo."
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "O trecho confirma a discussão no interior da ciência política sobre o objeto ser o Estado ou o poder.",
+    "entity": "Ciência política",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Há discussão entre cientistas políticos sobre se o objeto de estudo é o Estado ou o poder."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que o Clarín foi fundado em 1945 por Roberto Noble.",
+    "entity": "Clarín",
+    "arm": "haiku-low",
+    "kind": "relation",
+    "statement": "Roberto Noble fundou Clarín"
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "O trecho afirma que nas eleições de 1946 o periódico apoiou Tamborini, candidato da UCR, contra Perón.",
+    "entity": "Clarín",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Nas eleições gerais de 1946, o periódico apoiou José Tamborini, candidato da UCR, contra Juan Domingo Perón."
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que nas eleições gerais de 1946 o periódico apoiou José Tamborini.",
+    "entity": "Clarín",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "1946: Apoio do jornal ao candidato José Tamborini nas eleições gerais."
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "O trecho afirma literalmente que o confronto é amplamente considerado o momento em que a Guerra Fria esteve mais próxima de uma guerra nuclear em grande escala.",
+    "entity": "Crise dos mísseis de Cuba",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "A crise é amplamente considerada o momento em que a Guerra Fria esteve mais próxima de se transformar em uma guerra nuclear em grande escala."
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que a necessidade de comunicação rápida entre as duas potências resultou na criação do telefone vermelho entre Moscou e Washington.",
+    "entity": "Crise dos mísseis de Cuba",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Segundo o artigo, a crise levou à criação do telefone vermelho entre Moscou e Washington."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que a postura de direita geralmente justifica a hierarquia com base no direito natural e na tradição.",
+    "entity": "Direita (política)",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "A direita geralmente justifica a hierarquia social com base no direito natural e na tradição."
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O parágrafo apresenta a divisão proposta por Jaime Nogueira Pinto entre direita conservadora e direita revolucionária.",
+    "entity": "Direita (política)",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Jaime Nogueira Pinto distingue a direita conservadora da direita revolucionária."
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que Lassalle fundou a Associação Geral dos Trabalhadores Alemães (ADAV).",
+    "entity": "Ferdinand Lassalle",
+    "arm": "haiku-low",
+    "kind": "relation",
+    "statement": "Ferdinand Lassalle fundou Associação Geral dos Trabalhadores Alemães"
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O parágrafo descreve a plataforma da ADAV nos mesmos termos da afirmação: socialismo por cooperativas de produtores apoiadas pelo Estado, via sufrágio universal.",
+    "entity": "Ferdinand Lassalle",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "A ADAV defendia a realização do socialismo por meio de cooperativas de produtores apoiadas pelo Estado, a ser conquistada pelo sufrágio universal."
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "O parágrafo informa que Lassalle nasceu em Breslávia (Breslau) em 11 de abril de 1825.",
+    "entity": "Ferdinand Lassalle",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "1825-04-11: Nascimento de Ferdinand Lassalle em Breslau."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Castro lutou com a polícia num protesto contra a proibição das associações estudantis pelo Ministério da Educação.",
+    "entity": "Fidel Castro",
+    "arm": "haiku-low",
+    "kind": "relation",
+    "statement": "Fidel Castro reagiu-contra Ministério da Educação"
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que Castro descreveu Marx e Martí como suas principais influências políticas.",
+    "entity": "Fidel Castro",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Castro descreveu Karl Marx e José Martí como suas principais influências políticas."
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que a Human Rights Watch acusa Castro de liderar um regime que cometeu múltiplas violações de direitos humanos.",
+    "entity": "Fidel Castro",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "A Human Rights Watch acusa o regime de Castro de violações de direitos humanos."
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "O parágrafo define o Estado como conjunto de órgãos formais com autoridade e funções específicas e o governo como autoridades transitórias que dirigem esse aparato, como afirma a declaração.",
+    "entity": "Governo",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "O Estado é um conjunto de órgãos formais que concentram autoridade e funções específicas, enquanto o governo são as autoridades transitórias que dirigem esse aparato."
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que em The Political System (1953) Easton descreve o processo de retroalimentação entre inputs da sociedade e outputs governamentais.",
+    "entity": "Governo",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "1953: David Easton descreve o processo de retroalimentação entre inputs e outputs governamentais em The Political System."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "A afirmação reproduz fielmente o trecho, que cita as duas guerras mundiais como algumas das maiores guerras da humanidade.",
+    "entity": "Guerra",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "A Primeira Guerra Mundial e a Segunda Guerra Mundial são citadas como algumas das maiores guerras travadas pela humanidade."
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O parágrafo contrapõe estudiosos que veem a guerra como aspecto universal da natureza humana a outros que a atribuem a circunstâncias socioculturais, econômicas ou ecológicas específicas.",
+    "entity": "Guerra",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Alguns estudiosos consideram a guerra um aspecto universal da natureza humana; outros a atribuem a circunstâncias socioculturais, econômicas ou ecológicas específicas."
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que Chávez fundou o Movimiento V República em 1997.",
+    "entity": "Hugo Chávez",
+    "arm": "haiku-low",
+    "kind": "relation",
+    "statement": "Hugo Chávez fundou Movimiento V República"
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Chávez seria o líder e iniciador da Onda Rosa, fenômeno de chegada de lideranças de esquerda ao poder na América Latina.",
+    "entity": "Hugo Chávez",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Chávez é apresentado como líder e iniciador da Onda Rosa, fenômeno de chegada de lideranças de esquerda ao poder na América Latina."
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que a oposição passou a acusar Chávez de monopolizar o poder e de nomear aliados para o Supremo Tribunal de Justiça.",
+    "entity": "Hugo Chávez",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "A oposição acusou Chávez de monopolizar o poder e de nomear aliados para o Supremo Tribunal de Justiça."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Israel afirma terem sido as próprias ideias a causar a mudança que levou às revoluções da segunda metade do século XVIII e início do XIX.",
+    "entity": "Iluminismo",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Jonathan Israel afirma que foram as próprias ideias que causaram as revoluções do fim do século XVIII e início do XIX."
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que os estudiosos nunca chegaram a acordo sobre a definição do termo nem sobre sua extensão cronológica ou geográfica.",
+    "entity": "Iluminismo",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Não há consenso sobre a definição, a extensão cronológica ou geográfica do movimento entre os estudiosos."
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que Bismarck foi o principal promotor e temia uma revolução socialista similar à Comuna de Paris.",
+    "entity": "Leis Antissocialistas",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Bismarck foi o principal promotor da medida, temendo uma revolução socialista semelhante à Comuna de Paris."
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "A citação é a referência bibliográfica que descreve a obra de Lidtke sobre a social-democracia alemã entre 1878 e 1890.",
+    "entity": "Leis Antissocialistas",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Obra de Vernon L. Lidtke sobre a social-democracia na Alemanha entre 1878 e 1890."
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que o Manifesto foi escrito por Marx e Engels, o que inclui Marx.",
+    "entity": "Manifesto Comunista",
+    "arm": "haiku-low",
+    "kind": "relation",
+    "statement": "Karl Marx escreveu Manifesto Comunista"
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O trecho atribui a autoria a Marx e Engels, o que inclui Engels.",
+    "entity": "Manifesto Comunista",
+    "arm": "haiku-low",
+    "kind": "relation",
+    "statement": "Friedrich Engels escreveu Manifesto Comunista"
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que a previsão de revolução mundial iminente é muito criticada e cita Doctorow dizendo que a queda iminente do capitalismo estava errada.",
+    "entity": "Manifesto Comunista",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Críticos apontam que a previsão de revolução mundial iminente, central no texto, não se confirmou."
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que Bernstein tratou o Manifesto como marxismo inicial 'imaturo' e o rejeitou por tendências blanquistas violentas.",
+    "entity": "Manifesto Comunista",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Bernstein rejeitou o Manifesto como marxismo imaturo, por causa de tendências blanquistas violentas."
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que o marxismo se originou nas obras dos filósofos alemães do século XIX Marx e Engels.",
+    "entity": "Marxismo",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "O marxismo tem origem nas obras de Karl Marx e Friedrich Engels, filósofos alemães do século XIX."
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "O trecho afirma que a inevitabilidade da revolução socialista é debate controverso entre escolas marxistas.",
+    "entity": "Marxismo",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Existe controvérsia sobre se a revolução socialista é inevitável entre as escolas marxistas."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que a Revolução Mexicana culminou na Constituição de 1917 e na emergência do atual sistema político do país.",
+    "entity": "México",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "A Constituição de 1917 estabeleceu o sistema político atual do país."
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "O trecho menciona o reconhecimento da independência da colônia em 1821.",
+    "entity": "México",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "1821: Reconhecimento da independência da colônia."
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O parágrafo informa que o PT foi fundado em 10 de fevereiro de 1980 no Colégio Sion, em São Paulo.",
+    "entity": "Partido dos Trabalhadores",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "1980-02-10: Fundação do Partido dos Trabalhadores no Colégio Sion, em São Paulo."
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "O trecho afirma literalmente que o PT defende a tese de que o crime foi de caixa dois e não de compra de deputados.",
+    "entity": "Partido dos Trabalhadores",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "O PT defende que o crime cometido no caso do mensalão foi o de caixa dois e não o da compra de deputados."
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que em 1890 o partido passou a ser o Partido Social Democrata da Alemanha (SPD).",
+    "entity": "Partido Social-Democrata da Alemanha",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "1890: O partido passou a se chamar Partido Social Democrata da Alemanha."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que o SPD é o segundo partido alemão mais antigo ainda em funcionamento.",
+    "entity": "Partido Social-Democrata da Alemanha",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "O SPD é o segundo partido alemão mais antigo ainda em funcionamento."
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "A afirmação reproduz o parágrafo: não há consenso sobre a extensão, em geral entre meados do século XIV e o final do XVI.",
+    "entity": "Renascimento",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Não há consenso sobre a extensão do período, que se considera em geral entre meados do século XIV e o final do século XVI."
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que se divide o Renascimento em três grandes fases correspondentes aos séculos XIV, XV e XVI.",
+    "entity": "Renascimento",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Costuma-se dividir o Renascimento em três fases, Trecento, Quattrocento e Cinquecento, correspondentes aos séculos XIV, XV e XVI."
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que o ritual comum tinha seu ponto alto num banquete e que o chefe da tribo se tornava o tribuno.",
+    "entity": "Tribo",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Na tribo, o ritual comum tinha seu ponto alto num banquete, e seu chefe se tornava o tribuno."
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que alguns autores que aboliram o termo o consideram uma 'ficção etnográfica e acadêmica'.",
+    "entity": "Tribo",
+    "arm": "haiku-low",
+    "kind": "text",
+    "statement": "Alguns autores que abandonaram o termo argumentam que se trata de ficção etnográfica e acadêmica."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O parágrafo descreve a Grande Seca de 1877–78 como a mais grave já registrada no país.",
+    "entity": "Brasil",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "A Grande Seca de 1877–78 foi a mais grave já registrada no país."
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que um governo civil eleito democraticamente assumiu o poder em 1985, com o fim da ditadura militar.",
+    "entity": "Brasil",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1985: Um governo civil e eleito democraticamente assumiu o poder, com o fim da ditadura militar."
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Kreisky foi chanceler de 1970 a 1983, logo o mandato começou em 1970.",
+    "entity": "Bruno Kreisky",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1970: Início do mandato como chanceler da Áustria."
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que Kreisky foi chanceler de 1970 a 1983, o que sustenta o fim do mandato em 1983.",
+    "entity": "Bruno Kreisky",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1983: Fim do mandato como chanceler da Áustria."
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "A citação consta literalmente no parágrafo e confirma a afirmação.",
+    "entity": "Ciência política",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "O estudo da política existe desde a Grécia antiga, mas a ciência política se constituiu tardiamente."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O parágrafo menciona o debate sobre o objeto de estudo: o Estado para alguns, o poder para outros.",
+    "entity": "Ciência política",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Há debate interno sobre o objeto da disciplina: para alguns é o Estado, para outros é o poder."
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que o Clarín foi fundado em 1945 por Roberto Noble.",
+    "entity": "Clarín",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Roberto Noble fundou Clarín"
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que o jornal se tornou o maior opositor do kirchnerismo, o que corresponde a reagir contra ele.",
+    "entity": "Clarín",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Clarín reagiu-contra kirchnerismo"
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O trecho afirma que em 1955 o jornal apoiou o golpe que depôs Perón.",
+    "entity": "Clarín",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1955: O periódico apoiou o golpe militar que resultou na deposição de Perón."
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "O trecho afirma que em 1946 o jornal apoiou Tamborini, da UCR, contra Perón.",
+    "entity": "Clarín",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1946: O periódico apoiou José Tamborini, candidato da UCR, nas eleições gerais contra Juan Domingo Perón."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que a crise durou de 16 a 28 de outubro de 1962.",
+    "entity": "Crise dos mísseis de Cuba",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1962-10-16: Início da crise, que durou até 28 de outubro de 1962."
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "A frase aparece literalmente no parágrafo e corresponde à afirmação.",
+    "entity": "Crise dos mísseis de Cuba",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "O confronto é amplamente considerado o momento em que a Guerra Fria esteve mais próxima de uma guerra nuclear em grande escala."
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que Lassalle fundou a Associação Geral dos Trabalhadores Alemães (ADAV).",
+    "entity": "Ferdinand Lassalle",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Ferdinand Lassalle fundou Associação Geral dos Trabalhadores Alemães"
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que as ideias de Lassalle exerceram influência duradoura na social-democracia alemã, o que corresponde à afirmação.",
+    "entity": "Ferdinand Lassalle",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Ferdinand Lassalle influenciou social-democracia alemã"
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que a fundação da ADAV levou a uma plataforma de socialismo por cooperativas de produtores apoiadas pelo Estado, a ser conquistado pelo sufrágio universal.",
+    "entity": "Ferdinand Lassalle",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "A plataforma da ADAV defendia o socialismo por meio de cooperativas de produtores apoiadas pelo Estado, a ser conquistado pelo sufrágio universal."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O parágrafo informa que Lassalle nasceu em Breslávia em 11 de abril de 1825.",
+    "entity": "Ferdinand Lassalle",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1825-04-11: Nascimento de Lassalle em Breslávia"
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que em 1947 Castro aderiu ao Partido do Povo Cubano, o que sustenta a afirmação de filiação.",
+    "entity": "Fidel Castro",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Fidel Castro membro-de Partido do Povo Cubano"
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Castro foi influenciado pelos escritos marxistas de Marx, Engels e Lenin.",
+    "entity": "Fidel Castro",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Karl Marx influenciou Fidel Castro"
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Castro descreveu Marx e José Martí como suas principais influências políticas.",
+    "entity": "Fidel Castro",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "José Martí influenciou Fidel Castro"
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que sob a administração de Castro Cuba tornou-se um Estado socialista unipartidário, com nacionalizações e reformas socialistas.",
+    "entity": "Fidel Castro",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Após a vitória revolucionária, Castro promoveu reformas e nacionalizações, e Cuba se tornou um Estado socialista unipartidário sob sua administração."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O parágrafo informa que Castro morreu em Havana em 25 de novembro de 2016.",
+    "entity": "Fidel Castro",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "2016-11-25: Morte de Fidel Castro em Havana."
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "A frase aparece literalmente no parágrafo e é seu tema, distinguindo Estado de governo.",
+    "entity": "Governo",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "A distinção entre Estado e governo é importante para a análise de ambos os fenômenos."
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O parágrafo atribui a Lasswell a proposta de que a política pública responda a quem ganha o quê, quando e como, e diz que isso sublinha a dimensão distributiva do governo.",
+    "entity": "Governo",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Harold Lasswell propôs que a política pública deveria responder a quem ganha o quê, quando e como, sublinhando a dimensão distributiva do governo."
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "A afirmação repete literalmente a frase presente no parágrafo.",
+    "entity": "Guerra",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Segundo a ciência econômica convencional, a guerra desgasta a economia."
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "O parágrafo define guerra total exatamente como uma guerra que não se restringe a alvos militares puramente legítimos.",
+    "entity": "Guerra",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Guerra total é uma guerra que não se restringe a alvos militares puramente legítimos."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Chávez fundou o Movimento Quinta República, da esquerda política.",
+    "entity": "Hugo Chávez",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Hugo Chávez fundou Movimento Quinta República"
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que Chávez protagonizou um golpe de Estado contra Carlos Andrés Pérez, o que corresponde a reagir contra ele.",
+    "entity": "Hugo Chávez",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Hugo Chávez reagiu-contra Carlos Andrés Pérez"
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O parágrafo data em 4 de fevereiro de 1992 o golpe de Estado de Chávez contra Pérez.",
+    "entity": "Hugo Chávez",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1992-02-04: Protagonizou golpe de Estado contra Carlos Andrés Pérez."
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O parágrafo informa que Chávez se elegeu nas eleições presidenciais de 6 de dezembro de 1998, com 56% dos votos.",
+    "entity": "Hugo Chávez",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1998-12-06: Foi eleito presidente da Venezuela."
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "Francis Bacon consta na lista de filósofos cujo trabalho influenciou o Iluminismo.",
+    "entity": "Iluminismo",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Francis Bacon influenciou Iluminismo"
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "René Descartes consta na lista de filósofos cujo trabalho influenciou o Iluminismo.",
+    "entity": "Iluminismo",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "René Descartes influenciou Iluminismo"
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que o Iluminismo foi um movimento que ocorreu na Europa nos séculos XVII e XVIII.",
+    "entity": "Iluminismo",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Iluminismo ocorreu-em Europa"
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que muitos historiadores datam o fim do Iluminismo no início do século XIX, sendo o último ano proposto 1804, com a morte de Kant.",
+    "entity": "Iluminismo",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1804: Morte de Immanuel Kant, proposta por alguns historiadores como último ano do Iluminismo"
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "A afirmação parafraseia fielmente o trecho, que diz que os estudiosos nunca chegaram a um acordo sobre a definição do termo nem sobre sua extensão cronológica ou geográfica.",
+    "entity": "Iluminismo",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Os estudiosos não chegaram a um acordo sobre a definição do termo nem sobre sua extensão cronológica ou geográfica."
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz expressamente que o principal promotor da medida foi o chanceler Otto von Bismarck.",
+    "entity": "Leis Antissocialistas",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "O principal promotor da medida foi o chanceler Otto von Bismarck."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O parágrafo informa que as leis foram aprovadas depois de duas tentativas de assassinar Wilhelm I, atribuídas a Max Hödel e Karl Nobiling.",
+    "entity": "Leis Antissocialistas",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "As leis surgiram após duas tentativas de assassinato do Kaiser Wilhelm I, atribuídas aos radicais Max Hödel e Karl Nobiling."
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que o Manifesto foi escrito por Karl Marx e Friedrich Engels, o que inclui Marx como autor.",
+    "entity": "Manifesto Comunista",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Karl Marx escreveu Manifesto Comunista"
+  },
+  {
+    "index": 4,
+    "verdict": "sustenta",
+    "reason": "O trecho diz que o Manifesto foi escrito por Marx e Engels, o que inclui Engels como autor.",
+    "entity": "Manifesto Comunista",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Friedrich Engels escreveu Manifesto Comunista"
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "A referência bibliográfica indica Draper, Hal (2020), The Adventures of the Communist Manifesto, publicado em Chicago por Haymarket Books.",
+    "entity": "Manifesto Comunista",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Hal Draper publicou The Adventures of the Communist Manifesto, em Chicago, em 2020."
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Bernstein distinguiu um marxismo inicial \"imaturo\" e rejeitou o Manifesto por suas tendências blanquistas violentas.",
+    "entity": "Manifesto Comunista",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Eduard Bernstein criticou o Manifesto por seu marxismo inicial considerado imaturo e por suas tendências blanquistas violentas."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que o marxismo se originou das obras de Karl Marx e Friedrich Engels, o que sustenta a ideia de que Marx desenvolveu o marxismo, apesar da formulação estranha.",
+    "entity": "Marxismo",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Karl Marx desenvolveu-se-em Marxismo"
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que o marxismo se originou das obras de Marx e Engels, o que sustenta a ideia de que Engels desenvolveu o marxismo, apesar da formulação estranha.",
+    "entity": "Marxismo",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Friedrich Engels desenvolveu-se-em Marxismo"
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que as reformas de Gorbachev e o nacionalismo levaram à dissolução da União Soviética no final de 1991.",
+    "entity": "Marxismo",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1991: Dissolução da União Soviética."
+  },
+  {
+    "index": 0,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que o marxismo é originário das obras dos filósofos alemães do século XIX Karl Marx e Friedrich Engels.",
+    "entity": "Marxismo",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "O marxismo tem origem nas obras dos filósofos alemães Karl Marx e Friedrich Engels, no século XIX."
+  },
+  {
+    "index": 1,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que a nacionalização do petróleo em 1938 provocou crise diplomática com os países cujos cidadãos perderam negócios.",
+    "entity": "México",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "A nacionalização do petróleo em 1938 provocou uma crise diplomática com países cujos cidadãos tinham perdido negócios."
+  },
+  {
+    "index": 2,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que a Revolução Mexicana de 1910 culminou na Constituição de 1917 e no atual sistema político.",
+    "entity": "México",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "A Revolução Mexicana, iniciada em 1910, levou à promulgação da Constituição de 1917 e à emergência do atual sistema político do país."
+  },
+  {
+    "index": 3,
+    "verdict": "sustenta",
+    "reason": "O parágrafo informa que o PT foi fundado em 10 de fevereiro de 1980, no Colégio Sion, em São Paulo.",
+    "entity": "Partido dos Trabalhadores",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "1980-02-10: Fundação do Partido dos Trabalhadores no Colégio Sion, em São Paulo."
+  },
+  {
+    "index": 4,
+    "verdict": "nao_sustenta",
+    "reason": "O parágrafo diz que o PT defende que o crime foi caixa dois e não compra de deputados, mas não menciona o mensalão. A identificação do caso é um acréscimo da afirmação.",
+    "entity": "Partido dos Trabalhadores",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "O PT defende a tese de que o crime do mensalão foi o de caixa dois e não o da compra de deputados."
+  },
+  {
+    "index": 5,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que Friedrich Ebert era militante do partido (SPD) e foi eleito primeiro presidente da República de Weimar.",
+    "entity": "Partido Social-Democrata da Alemanha",
+    "arm": "haiku-medium",
+    "kind": "relation",
+    "statement": "Friedrich Ebert membro-de Partido Social-Democrata da Alemanha"
+  },
+  {
+    "index": 6,
+    "verdict": "sustenta",
+    "reason": "A afirmação reproduz fielmente o parágrafo sobre a origem toscana do movimento e sua difusão.",
+    "entity": "Renascimento",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "O movimento manifestou-se primeiro na região da Toscana, sobretudo nas cidades de Florença e Siena, de onde se difundiu para o resto da península Itálica e, posteriormente, para a maioria dos países da Europa Ocidental."
+  },
+  {
+    "index": 7,
+    "verdict": "sustenta",
+    "reason": "O parágrafo afirma que se considera, em geral, o intervalo entre meados do século XIV e o final do século XVI.",
+    "entity": "Renascimento",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "O período é considerado, em geral, como o intervalo entre meados do século XIV e o final do século XVI."
+  },
+  {
+    "index": 8,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que os críticos alegam que esses conceitos trazem forte vício colonialista e neocolonialista.",
+    "entity": "Tribo",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Críticos afirmam que os conceitos de tribo, tribalismo, etnicidade, clã e linhagem trazem forte vício colonialista e neocolonialista."
+  },
+  {
+    "index": 9,
+    "verdict": "sustenta",
+    "reason": "O parágrafo diz que cada cúria tinha um chefe, o curião, cuja função principal era presidir aos rituais religiosos.",
+    "entity": "Tribo",
+    "arm": "haiku-medium",
+    "kind": "text",
+    "statement": "Cada cúria romana possuía um chefe chamado curião, cuja função principal era presidir aos rituais religiosos."
+  }
+]

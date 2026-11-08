@@ -16,7 +16,7 @@ describe('Marxism atlas content', () => {
     expect(records.some((entity) => entity.kind === 'institution')).toBe(true);
     expect(records.some((entity) => entity.kind === 'concept')).toBe(true);
     const imported = records.filter((entity) => Boolean(entity.externalIds?.wikidata));
-    expect(imported).toHaveLength(39);
+    expect(imported).toHaveLength(40);
     expect(imported.every((entity) => entity.editorialStatus === 'pending')).toBe(true);
     expect(imported.every((entity) => Boolean(entity.discoveryMetadata?.wikipediaUrl))).toBe(true);
     const reconciledQids = imported.map((entity) => entity.externalIds?.wikidata).filter(Boolean);

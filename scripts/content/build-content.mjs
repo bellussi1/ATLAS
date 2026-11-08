@@ -11,8 +11,9 @@ import { artifactKey, buildPointer } from './r2-content.mjs';
 
 const { buildDiscoveryIndex } =
   await import('../../src/app/core/content/queries/discovery-index.ts');
-const { buildKnowledgeNetwork, layoutNetwork, rankClaims } =
+const { buildKnowledgeNetwork, rankClaims } =
   await import('../../src/app/core/content/queries/knowledge-network.ts');
+const { layoutNetwork } = await import('../../src/app/core/content/queries/network-layout.ts');
 const { queryKnowledgeRelations } =
   await import('../../src/app/core/content/queries/knowledge-graph.ts');
 const { graphGeometry, temporalAxis } =

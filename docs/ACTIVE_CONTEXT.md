@@ -8,12 +8,12 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 ## Estado atual
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: PR **#50** (`develop` → `master`) foi mergeado em **`31b8d8b`**; o deploy do Pages rodou com sucesso. O `develop` segue para a próxima rodada.
+- Gitflow: PR **#50** (`develop` → `master`) foi mergeado em **`31b8d8b`** e o PR **#51** (pacotes de conteúdo) em **`21bba13`**; o deploy do Pages rodou com sucesso nas duas rodadas. O `develop` segue para a próxima rodada.
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
 - Conteúdo: 13 coleções. Release **`e841fac…`** publicado em 08/11 com o mesmo conteúdo do `2f7649…`, agora empacotado em `bundle` (23,7 MB) e `networkBundle` (4,1 MB); `content/content-pointer.json` aponta para os dois pacotes. O site antigo continua lendo as coleções; o novo build lê o pacote.
-- **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O release empacotado reduz a navegação de leitura/catálogo de ~17 para **2 requisições** (ponteiro + pacote) e `/grafos` para **2** (ponteiro + `networkBundle`); a visita direta a uma página prerenderizada continua sem baixar conteúdo. O consumo futuro cai, mas o limite do dia ainda depende do reset ou do upgrade.
+- **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O release empacotado reduz a navegação de leitura/catálogo de ~17 para **2 requisições** (ponteiro + pacote) e `/grafos` para **2** (ponteiro + `networkBundle`). Medição na URL publicada em 08/11: home **0**; leitura/verbete **2** na navegação SPA e **1** na carga direta; grafo **2** na SPA e **1** na carga direta. O ponteiro vem do prerender nas cargas diretas. O consumo futuro cai, mas o limite do dia ainda depende do reset ou do upgrade.
 - Build local: **1.186 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
-- CI: verify do merge **`31b8d8b`** verde (lint, tipos, testes, conteúdo, ingestão, build, links e e2e) e `deploy-pages` concluído. O run anterior falhava em `ingest:fetch-raw` por 13 capturas de 08/11 sem blobs publicados; as capturas foram removidas. Um segundo erro, no e2e, esperava coleções no `/grafos`; o teste passou a aceitar `network` + `layouts`.
+- CI: verify do PR **#51** e do merge **`21bba13`** verde (lint, tipos, 355 testes, conteúdo, ingestão, build, links e 155 e2e) e `deploy-pages` concluído. O `ingest:fetch-raw` segue estável após a remoção das 13 capturas sem blobs.
 
 ## Verificações recentes
 
@@ -32,27 +32,28 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Trabalho ativo
 
-- **PR #50**: leituras, shell, deploy no Pages, foco do grafo e limpeza de código. Aguarda o verify do commit final e o merge.
-- **Grafo**: foco por seleção implementado; o `/grafos` lê o `networkBundle` (4,1 MB contra 12,6 MB das coleções) em **uma** requisição de conteúdo. O release novo já está no ponteiro; o ganho chega ao público com o próximo deploy do Pages.
+- **PR #50 / #51**: #50 levou leituras, shell, deploy e foco do grafo; #51 levou os pacotes de conteúdo. Ambos mergeados e publicados.
+- **Grafo**: foco por seleção implementado; o `/grafos` lê o `networkBundle` (4,1 MB contra 12,6 MB das coleções) em **uma** requisição de conteúdo além do ponteiro. Medição na URL publicada: **2** requisições na navegação SPA e **1** na carga direta.
 - **Pacote de conteúdo**: `build-content` gera `bundle` (grafo + busca + adjacência + layouts + leituras) e `networkBundle` (projeção + layouts); o ponteiro referencia os dois e o `ContentRepository` os consome antes do manifesto. Releases antigos e o fixture continuam no caminho anterior.
 - **Limpeza**: `/mesa` removido; `features/study`, `historical-visualizations`, `editorial-mark`, `editorial-text`, `notice` e `timeline-periods` removidos. Redirecionamentos de compatibilidade (`/marxismo`, `/grafo`, `/rede`, `/comparar`, `/conhecimento`) foram mantidos.
 - **Documentação**: `ACTIVE_CONTEXT` compactado; histórico, auditorias, validações e planos antigos foram para `docs/archive/2026-11/`.
 - **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página, após o primeiro paint), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
 - **Higiene de console e CSS**: Zod roda sem JIT para não violar o CSP, o filtro de temas ganhou `id`, o logo do rodapé declara proporção e a paleta do `record-card` passou a usar tokens. A preview local agora comprime em brotli/gzip e aplica cache imutável a JS/CSS com hash, aproximando a medição do Pages.
 - **Links de compra**: registros de obra que são livros, com autor conhecido, ganham "Comprar na Amazon" direto para a busca de livros, com `rel="sponsored"` e divulgação quando houver tag. A lista curada fica em `core/content/queries/amazon-books.ts`; tópicos, periódicos e o filme do acervo não recebem link. Sem `AMAZON_ASSOCIATE_TAG`, o link existe mas não gera comissão.
-- **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. A coleção tem 896 entidades; o próximo passo é auditoria/consolidação, não recaptura.
+- **Expansão de relações (paga)**: reextração de Marxismo/Liberalismo, lote de 141 verbetes e 33 alvos ausentes geraram **+62 relações documentadas** e **+32 entidades** (release local **`156b98a`**, ainda não publicado). Custo de **~US$ 0,81** do teto de US$ 6. O `extract.mjs` passou a usar Sonnet **low** na segunda passada, como o `model-choice.json` já previa. CI do commit `da3d26b` verde (355 testes, 184 de conteúdo e 155 e2e). Detalhes em `docs/research/EXPANSAO-RELACOES-2026-11.md`.
+- **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. A coleção passou a **928 entidades e 459 relações** (447 antes da expansão). Restam 376 entidades sem relação; o lote completo foi estimado em US$ 4,91 e não foi executado.
 
 - **Onda 0 / expansão**: linha de base medida e gold set gerado em `docs/research/EXPANSAO-BASELINE-2026-11.md` e `docs/research/gold-set-2026-11/`. O achado principal é que as 122/75/35/10 relações incluem links de navegação; documentadas são **33/11/34/10 (88)**. A captura foi recuperada do worktree do `.claude`: Social-democracia 68/68, Anarquismo 54/54 e `verbetes-citados` 908 artigos/907 rascunhos. Os 907 rascunhos de verbetes foram publicados no `atlas-drafts`; o estágio 5 fica aberto por 3/4 rascunhos enxutos e a reextração paga ainda não foi autorizada.
 
 - **Limpeza de disco**: 15 worktrees mesclados e limpos removidos (incluindo `loving-khayyam`, `ATLAS-gitflow` e `pipeline-tradicao`), ~22,5 GB; `generated/raw-cache` (9,6 GB), blobs locais de `scripts/ingestion` (909 MB), `tmp` e `dist` removidos. `output/` foi movido para `C:\Users\Bellussi\Documents\ATLAS-output`. Restam apenas worktrees sujos ou não mesclados (`great-chatelet`, `mystifying-tharp`, `rede-ux`, `youthful-spence`, `zen-solomon`) e `ATLAS-release`.
 
-- **Grafo, estado atual**: o release público já tem `network`, então `/grafos` faz **2 requisições** ao Worker em vez de 11–17. Adicionei `?no=<id>` para link direto, "Ver no grafo" nos verbetes, filtro de conectados e zoom inicial de 145% no mobile (607 nós visíveis), além de "Ver como lista" no mobile. Lighthouse: desktop **88** (era 78–81), mobile **56** (TBT ~1,2 s), CLS 0/0,013. Ainda faltam separar o d3-force do chunk e melhorar o TBT mobile.
+- **Grafo, estado atual**: o release público já tem `network`, então `/grafos` faz **2 requisições** ao Worker em vez de 11–17. Adicionei `?no=<id>` para link direto, "Ver no grafo" nos verbetes, filtro de conectados e zoom inicial de 145% no mobile (607 nós visíveis), além de "Ver como lista" no mobile. Lighthouse: desktop **88** (era 78–81), mobile **56** (TBT ~1,2 s), CLS 0/0,013. O `layoutNetwork` (d3-force) saiu do chunk do grafo: virou um chunk lazy de **21,5 kB**, carregado só quando `layouts.network` falta. O próximo ganho de TBT mobile agora é a navegação P2 (vizinhança de 1–2 saltos, histórico, caminho entre dois nós e filtro por período).
 
-- **Onda 1 / calibração**: amostra de 20 artigos de Social-democracia e Anarquismo rodada por **US$ 0,0706** (teto US$ 0,30). Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. Ficaram **100 itens** para conferência humana em `docs/research/onda1-2026-11/`. O braço Sonnet low não foi medido; a decisão de modelo segue aberta. As metas da Onda 2 foram recalibradas para relações documentadas: **70/50/70/35**.
+- **Onda 1 / calibração**: amostra de 20 artigos de Social-democracia e Anarquismo rodada por **US$ 0,0706** (teto US$ 0,30). Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. Ficaram **100 itens** para conferência humana em `docs/research/onda1-2026-11/`. A auditoria Sonnet de 08/11 marcou **98 sustenta, 2 não sustenta** (Brasil e PT); os campos `ok` continuam nulos. O braço Sonnet low da avaliação ainda não foi medido; a decisão de modelo segue aberta. As metas da Onda 2 foram recalibradas para relações documentadas: **70/50/70/35**.
 
 ## Pendências que bloqueiam
 
-1. **Limite do Worker** — a conta gratuita passou de 100 mil requisições/dia; o release empacotado reduz o consumo por navegação, mas o limite do dia só volta com o reset (00:00 UTC) ou o upgrade. O deploy do Pages com o pacote ainda precisa acontecer.
+1. **Limite do Worker** — a conta gratuita passou de 100 mil requisições/dia; o release empacotado reduz o consumo por navegação (medido em 2 requisições na leitura e no grafo), mas o limite do dia só volta com o reset (00:00 UTC) ou o upgrade. O Pages já serve o pacote.
 2. **Vercel** — desconectar a integração Git e excluir o projeto antigo no painel.
 3. **Token exposto** — o token Cloudflare foi colado no chat; após o primeiro deploy, rotacionar e atualizar o segredo.
 4. **Dependências** — #38/#37 aguardam checks; #44 está em conflito; #40 bloqueado. Não forçar.
@@ -68,12 +69,13 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 4. **Aliases antigos** — se quiser que URLs antigas passem a 404, remover `/grafo`, `/rede`, `/comparar`, `/conhecimento` e os redirecionamentos top-level em uma segunda passada.
 5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
 6. **Onda 2** — os 907 rascunhos recuperados permitem auditar e consolidar sem recaptura; decidir o lote de consolidação e revisão. As metas documentadas são 70/50/70/35, não 160/120/100/80.
+7. **Publicação da expansão de relações** — o release local `156b98a` tem +62 relações documentadas e +32 entidades; publicar exige aprovação humana. O lote restante de 376 verbetes custaria ~US$ 4,91 e precisa de decisão de orçamento.
 
 ## Próxima ação
 
-1. Fazer o verify e o merge do pacote de conteúdo para a `master`; o `deploy-pages` leva o novo carregamento ao público. Medir as requisições por rota na URL publicada.
-2. Revisar os 100 itens da Onda 1 em `docs/research/onda1-2026-11/` e rodar `score`; sem precisão humana ≥ 95%, não escalar.
-3. Se a precisão fechar, medir o braço Sonnet low e iniciar a Onda 2 com as metas documentadas 70/50/70/35.
+1. Aprovar (ou não) a publicação do release `156b98a`; o ponteiro público ainda aponta para `e841fac`.
+2. Revisar os 100 itens da Onda 1 em `docs/research/onda1-2026-11/`, começando pelos 2 sinalizados pela auditoria Sonnet, e rodar `score`.
+3. Decidir o próximo lote de relações: 376 verbetes sem relação (~US$ 4,91) ou um recorte menor por tipo.
 4. Rodar Lighthouse na URL publicada para comparar com o relatório local.
 5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
 6. Só depois iniciar a fase 0 dos itinerários.
