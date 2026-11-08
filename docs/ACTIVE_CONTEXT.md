@@ -6,7 +6,7 @@ Atualizado em 07/11/2026. Este é o handoff entre sessões: leia no início, atu
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
 - Gitflow: `develop` é a integração. O PR **#50** (`develop` → `master`) está aberto; `master` está em `69eaed4` e recebeu #41, #45 e #39. #38/#37 foram atualizados e aguardam checks; #44 está em conflito e #40 bloqueado.
-- Deploy: a origem única é `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório; falta desligar o projeto antigo no painel e cadastrar os segredos `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID`.
+- Deploy: a origem única é `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O job `deploy-pages` publica o artefato verificado em push para a `master`; `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados. O Vercel foi removido do repositório; falta desligar o projeto antigo no painel.
 - Dependências: #45 (d3-shape), #41 (actions/cache) e #39 (gitleaks-action) mesclados. Um 429 intermitente do R2 no build agora é repetido com backoff em `scripts/content/fetch-content.mjs` (5 tentativas, respeita `retry-after`), coberto por teste.
 - Conteúdo: 13 coleções; release local `eae46644…`; o ponteiro público continua em `a54eee…` e nada foi publicado.
 - Build local: **1.189 rotas prerenderizadas**; sitemap e canonical gerados para `https://atlas-bellussi.pages.dev`.
@@ -420,7 +420,7 @@ Amostra de 20 artigos de `marxismo` e `liberalismo`, com os artigos já contendo
     - `scripts/seo.mjs` passou a gerar canonical e sitemap com a barra final do Pages (`/fontes/`), usando `ATLAS_SITE_URL=https://atlas-bellussi.pages.dev`. O sitemap tem **1.190 páginas** e o `robots.txt` aponta para ele.
     - Removidos `vercel.json`, `scripts/infra/vercel-config.mjs`, o teste correspondente e o MCP Vercel do `opencode.jsonc`. Documentação, README e SECURITY apontam para o Pages.
     - Verificações: `npm test` **362/362**, `npm run test:content` **184/184**, `build` **1.189 rotas** com sitemap/canonical do Pages, `lint` e `typecheck` exit 0.
-    - Pendente de pessoa: cadastrar `CLOUDFLARE_API_TOKEN` nos segredos do GitHub e desconectar/excluir o projeto Vercel no painel. O `CLOUDFLARE_ACCOUNT_ID` já foi cadastrado. Nada foi publicado nesta rodada.
+    - Pendente de pessoa: desconectar/excluir o projeto Vercel no painel. O `CLOUDFLARE_API_TOKEN` foi cadastrado em 08/11/2026 e a API do Pages respondeu `ok`; o `CLOUDFLARE_ACCOUNT_ID` já estava cadastrado. Nada foi publicado nesta rodada.
 
 56. **Planejamento de itinerários**
     - Criado `docs/design/ITINERARIOS.md` e indexado em `docs/README.md` e `docs/product/ESCOPO-ATUAL.md`. Nada foi implementado: não há rota, schema, fixture ou componente.
