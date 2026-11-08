@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Leitura e retenção nas páginas de ideologia
 
 Estudo curto que orienta como uma página de ideologia do ATLAS deve ensinar. Cada princípio vira componente ou regra de dados que funciona para qualquer tradição, sem texto escrito à mão por página além do que o contrato de 12 capítulos exige. Tamanhos de efeito não são citados aqui; consultar as fontes.

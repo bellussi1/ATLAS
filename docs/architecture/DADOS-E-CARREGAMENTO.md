@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Dados particionados e carregamento
 
 Fase 2 implementada em 01/11/2026. Angular 21 standalone, Router, TypeScript strict, Zod e static-first preservados. Rotas: `/`, `/marxismo` e `/liberalismo`; esta fase não publica catálogos nem verbetes.
@@ -70,6 +73,6 @@ A publicação prepara as novas mídias, grava os novos shards e troca o manifes
 - Artefatos com hash antigos podem permanecer em `generated` entre builds locais. Build em checkout limpo começa sem eles; o manifesto identifica os recursos da versão ativa.
 - **Rollback:** reverter o commit da fase restaura o modelo anterior. Para rollback de conteúdo após a migração, restaurar o manifesto canônico e os shards versionados correspondentes; não editar hashes nem apagar capturas brutas.
 
-Validação e medidas: [Dados e carregamento](../quality/DADOS-E-CARREGAMENTO.md).
+Validação e medidas: [Dados e carregamento(../archive/2026-11/quality/DADOS-E-CARREGAMENTO.md).
 
 Referências técnicas: [resolvers Angular](https://angular.dev/guide/routing/data-resolvers), [TransferState](https://angular.dev/api/core/TransferState) e [hooks de módulos Node](https://nodejs.org/api/module.html#moduleregisterhooksoptions). Implementação executada com Node 24.13 e Angular 21 do projeto.

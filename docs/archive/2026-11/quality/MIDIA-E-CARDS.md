@@ -4,7 +4,7 @@ Data: 02/11/2026. Revisão por agente, sem revisão humana.
 
 ## Auditoria (antes)
 
-OBSERVADO a 1280 px, todas as `<img>` da página (incluindo acervo e logos), conforme o [baseline](../research/ideologies-baseline.md):
+OBSERVADO a 1280 px, todas as `<img>` da página (incluindo acervo e logos), conforme o [baseline](../../../research/ideologies-baseline.md):
 
 | Rota | `<img>` | Arquivos únicos | Exemplo de repetição na narrativa |
 |---|---|---|---|

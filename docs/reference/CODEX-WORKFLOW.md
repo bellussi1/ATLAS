@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Fluxo de trabalho do Codex no ATLAS
 
 Configuração verificada neste repositório em 30/10/2026. `.codex/config.toml` só é carregado pelo Codex quando o projeto é confiável no cliente.

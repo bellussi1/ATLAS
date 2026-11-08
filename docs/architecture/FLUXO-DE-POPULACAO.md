@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Fluxo de população e extração
 
 Como uma tradição sai do Wikidata e chega ao grafo. Orquestrador: `npm run tradicao -- <slug> --status`. Portas em `scripts/tradicao/stages.mjs`; regras no skill `atlas-pipeline-tradicao`. Estágio é "grátis" salvo indicação; só 4 e 5 gastam API.

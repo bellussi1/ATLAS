@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Guia de voz
 
 Vale para todo texto que o leitor vê: interface, mensagens geradas por código, resumos, relações e estados vazios. A implementação de apoio está em `src/app/core/content/editorial/reader-voice.ts`.

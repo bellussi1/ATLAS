@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Hierarquia de rótulos do grafo
 
 Registro da decisão e das medições da camada de nomes de `/grafos`. O objetivo é reduzir a poluição sem esconder nós nem quebrar a exploração.

@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Revisão dos capítulos
 
 A revisão deixou de ser gerada a partir da primeira relação do grafo que une dois nomes do capítulo. Agora cada capítulo publica uma pergunta editorial, com resposta, critério e fontes; capítulos sem pergunta de qualidade não recebem revisão.

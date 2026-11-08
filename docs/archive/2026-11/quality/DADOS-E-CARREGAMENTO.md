@@ -85,4 +85,4 @@ Métricas completas em `output/content-loading-metrics.json`. A saída estática
 - Mobile emulado no Chromium; Axe e testes de teclado não equivalem a auditoria WCAG integral.
 - Capturas em `output/playwright` regeneradas pela suíte. Não incorporadas aos assets nem usadas como evidência histórica. Sem push, merge, deploy ou execução automática da fase de catálogos.
 
-Contrato e operação: [Dados particionados e carregamento](../architecture/DADOS-E-CARREGAMENTO.md).
+Contrato e operação: [Dados particionados e carregamento](../../../architecture/DADOS-E-CARREGAMENTO.md).

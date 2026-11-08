@@ -6,7 +6,7 @@ Preparação e revisão linguística: **Codex (IA)**. A revisão foi uma segunda
 
 ## Textos abrangidos
 
-Fonte de verdade: [`src/content/translations/catalogue.json`](../../src/content/translations/catalogue.json). Os quatro registros têm origem `pt-BR`, destino `en` e `sourceRevision: 1`. Cada um registra o SHA-256 dos campos de origem, data de preparação, método, responsável, data e referência de revisão. O build confere digest e revisão antes de publicar.
+Fonte de verdade: [`content/translations/catalogue.json`](../../../../content/translations/catalogue.json). Os quatro registros têm origem `pt-BR`, destino `en` e `sourceRevision: 1`. Cada um registra o SHA-256 dos campos de origem, data de preparação, método, responsável, data e referência de revisão. O build confere digest e revisão antes de publicar.
 
 | Entidade | Título em inglês | Conferência principal |
 |---|---|---|

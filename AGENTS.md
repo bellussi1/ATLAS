@@ -6,7 +6,7 @@ Construir uma plataforma educacional pública, gratuita, interativa e rigorosa s
 
 ## Contexto vivo e sistema de prompt
 
-- Leia `docs/ACTIVE_CONTEXT.md` no início de cada sessão e atualize-o no fim (ou use `/handoff`). Ele registra branch, verificações, pendências e próxima ação.
+- Leia `docs/ACTIVE_CONTEXT.md` no início de cada sessão e atualize-o no fim (ou use `/handoff`). Ele registra branch, verificações, pendências e próxima ação; o relato detalhado vai para `docs/archive/<ano-mês>/` e o mapa está em `docs/README.md`.
 - O mapa das camadas de instrução, skills, comandos e agentes está em `docs/agents/PROMPT-SYSTEM.md`.
 - Não duplique regras deste arquivo nos documentos de camada; referencie.
 

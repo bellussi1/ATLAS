@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Bibliotecas de interação e visualização
 
 Decisão aplicada em 01/11/2026, com base no resumo fornecido pelo usuário. O anexo original não estava disponível na sessão. As opções condicionais abaixo não equivalem a integrações implementadas.

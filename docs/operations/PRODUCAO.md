@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Produção: roteiro de infraestrutura
 
 Site: `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). O CI publica o build verificado na `master`; o R2 continua sendo a origem do conteúdo. O Vercel não é mais usado como origem.

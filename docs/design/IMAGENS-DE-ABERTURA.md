@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Imagens de abertura das leituras
 
 As imagens no topo de `/leitura/:slug` não são uma amostra automática do acervo. Cada página publicada declara, no próprio dossiê, quais registros abrem a leitura e por quê. O componente apenas resolve os IDs canônicos, verifica a licença e mantém o mesmo sistema de molduras.

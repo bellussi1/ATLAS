@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # ATLAS — Padrão de páginas de ideologia
 
 Revisão de 01/11/2026: enciclopédia visual, interativa e exploratória. Substitui a organização V4, que previa hub e rotas secundárias. Tradições publicadas: **`/leitura/marxismo` e `/leitura/liberalismo`**; as antigas rotas top-level redirecionam para `/leitura/:slug`. Catálogos, verbetes e exploração (ver `AGENTS.md`) também são públicos. Outras tradições podem vir depois, sem publicação antecipada.

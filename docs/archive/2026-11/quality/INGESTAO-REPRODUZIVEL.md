@@ -66,4 +66,4 @@ Testes novos falharam antes dos módulos existirem. Regressões de CRLF, atribui
 - Node emite o aviso informativo `MODULE_TYPELESS_PACKAGE_JSON` ao importar o contrato TS; não houve falha. O tipo global de módulo da aplicação não foi alterado.
 - Integração no YAML do CI implementada; comandos executados localmente. Sem workflow remoto, push, merge ou deploy.
 
-Procedimentos e contratos: [Ingestão reproduzível](../architecture/INGESTAO-REPRODUZIVEL.md).
+Procedimentos e contratos: [Ingestão reproduzível](../../../architecture/INGESTAO-REPRODUZIVEL.md).

@@ -4,8 +4,8 @@ Executada em 01/11/2026 no workspace Windows, Node `24.13.0`, npm `11.6.2`, Chro
 
 ## Entregáveis
 
-1. [Auditoria do 12axes](../research/12axes-audit.md): commit auditado, caminhos de código, funcionalidades, dados, build, teia, licenças e interação desktop e mobile com API bloqueada.
-2. [Diagnóstico e arquitetura-alvo](../architecture/EXPLORACAO-CONTEXTUAL.md): responsabilidades atuais, o que preservar, alterar ou adiar, contratos existentes, lacunas do modelo, opções, evolução do design system e matriz de migração e rollback.
+1. [Auditoria do 12axes](../../../research/12axes-audit.md): commit auditado, caminhos de código, funcionalidades, dados, build, teia, licenças e interação desktop e mobile com API bloqueada.
+2. [Diagnóstico e arquitetura-alvo](../../../architecture/EXPLORACAO-CONTEXTUAL.md): responsabilidades atuais, o que preservar, alterar ou adiar, contratos existentes, lacunas do modelo, opções, evolução do design system e matriz de migração e rollback.
 3. [Plano da fatia](../superpowers/plans/2026-11-01-exploracao-contextual.md): sequência executada e verificações.
 4. **Implementação** em `KnowledgeContext`, `entityContext` e `KnowledgeContextComponent`: cada relação preserva identidade, direção, rótulo, contexto, estado, incerteza, fontes, localizadores e procedência. O histórico restaura registro, detalhes abertos, foco e scroll.
 5. **Reuso do hipertexto** em `/liberalismo` (Locke e Smith) e no resumo do atlas. `/marxismo` usa o mesmo diálogo e contrato. Nenhuma rota nova.
@@ -50,7 +50,7 @@ Capturas em `output/playwright`, locais e fora dos assets publicados: `audit-<ho
 
 Inspeção visual das aberturas em desktop e 320 px das três páginas e das fichas em desktop e mobile: hierarquia, navegação entre as três rotas e termos legíveis; diálogos com margem e scroll interno. Não são screenshots de produção.
 
-Exemplos: [Ficha Marxismo 320 px](../../output/playwright/context-marxismo-320.png), [Ficha Liberalismo 390 px](../../output/playwright/context-liberalismo-390.png), [Home desktop](../../output/playwright/audit-opening-home-1440.png), [Liberalismo desktop](../../output/playwright/audit-opening-liberalismo-1440.png).
+Exemplos: [Ficha Marxismo 320 px](../../../../output/playwright/context-marxismo-320.png), [Ficha Liberalismo 390 px](../../../../output/playwright/context-liberalismo-390.png), [Home desktop](../../../../output/playwright/audit-opening-home-1440.png), [Liberalismo desktop](../../../../output/playwright/audit-opening-liberalismo-1440.png).
 
 Evidências não são garantia de persistência num checkout novo; a suíte as regenera. Capturas de referência do 12axes são temporárias, conforme o relatório específico.
 

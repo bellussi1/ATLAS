@@ -1,3 +1,6 @@
+Status: plano
+Última verificação: 08/11/2026
+
 # Plano de expansão com Haiku e Sonnet
 
 **Data:** 07/11/2026

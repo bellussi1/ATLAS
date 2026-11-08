@@ -1,3 +1,6 @@
+Status: plano
+Última verificação: 08/11/2026
+
 # Mapa de leituras contínuas
 
 Plano editorial, não conteúdo publicado. As leituras abaixo só entram no app depois de fontes verificadas, capítulos preenchidos e aprovação humana. O mapa serve para decidir **o que merece leitura**, **como os assuntos se conectam** e **qual fonte falta**.

@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Tipos de nó e de ligação no grafo
 
 Registro da revisão das famílias do grafo, das correções de classificação e da nova legenda.

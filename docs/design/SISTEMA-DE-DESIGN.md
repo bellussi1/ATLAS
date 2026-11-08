@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Sistema de design acessível
 
 Base comum da interface, a partir da direção editorial do ATLAS: tipografia suíça, leitura em papel, cartografia e acentos de arquivo. A direção A foi aprovada e é a base da interface principal. As alternativas B e C do Prompt 04 e as páginas de laboratório foram retiradas da documentação e da aplicação.

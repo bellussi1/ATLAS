@@ -1,3 +1,6 @@
+Status: atual
+Última verificação: 08/11/2026
+
 # Sistema de prompt do ATLAS
 
 Este documento é o mapa das instruções que orientam agentes no repositório. Ele não substitui `AGENTS.md`: diz **o que carregar, quando e em que ordem**.
@@ -14,6 +17,7 @@ Este documento é o mapa das instruções que orientam agentes no repositório. 
 | Voz | `docs/design/GUIA-DE-VOZ.md` | Todo texto ao leitor |
 | Operação | `docs/operations/PRODUCAO.md` | Deploy, R2, Pages e CI |
 | Fluxo de população | `docs/architecture/FLUXO-DE-POPULACAO.md` | Pipeline de tradição |
+| Histórico | `docs/archive/2026-11/README.md` | Só quando precisar de decisão ou evidência antiga |
 | Skills | `.claude/skills/`, `.agents/skills/` | Sob demanda, pelo `skill` |
 | Comandos | `.opencode/commands/` | Quando o usuário invoca `/...` |
 | Agentes | OpenCode embutidos + papéis do Codex | Conforme a tarefa |
@@ -21,7 +25,8 @@ Este documento é o mapa das instruções que orientam agentes no repositório. 
 ## Regras de carregamento
 
 - Não leia `ARCHITECTURE.md` nem `PAGE_STANDARD.md` inteiros por padrão; abra a seção relevante.
-- `ACTIVE_CONTEXT.md` é curto e obrigatório no início; se estiver defasado, corrija antes de confiar.
+- `ACTIVE_CONTEXT.md` é curto e obrigatório no início; se estiver defasado, corrija antes de confiar. O mapa completo está em `docs/README.md`.
+- O histórico detalhado fica em `docs/archive/<ano-mês>/`; não o leia por padrão.
 - Skills são carregadas por ID quando a tarefa casa com a descrição; não copie o corpo delas para o prompt.
 - Não crie uma skill por ideologia. O renderer é compartilhado; a tradição é dado.
 - Não duplique regras de `AGENTS.md` em comandos ou agentes.
@@ -56,7 +61,7 @@ Este documento é o mapa das instruções que orientam agentes no repositório. 
 ## Protocolo de handoff
 
 1. Ao começar: ler `ACTIVE_CONTEXT.md`, `git status`, `git log -5` e o último CI.
-2. Ao terminar: atualizar estado, verificações, pendências e próxima ação; usar `/handoff`.
+2. Ao terminar: atualizar estado, verificações, pendências e próxima ação no `ACTIVE_CONTEXT.md` (curto); o relato detalhado da sessão vai para `docs/archive/<ano-mês>/`.
 3. Não registrar transcrição, opinião ou suposição como fato verificado.
 4. Se uma decisão mudar o escopo, atualizar `AGENTS.md` ou o doc de produto correspondente.
 

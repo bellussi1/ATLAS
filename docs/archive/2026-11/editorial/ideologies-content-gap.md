@@ -1,6 +1,6 @@
 # Lacunas editoriais: Marxismo e Liberalismo (Prompt 02)
 
-Data: 02/11/2026. Base: contrato de 12 capítulos ([proposta](../research/ideologies-section-contract-proposal.md)) e conteúdo em `src/content/ideologies/*/page.json`. Revisão por agente de IA; **sem revisão humana**. Metadados importados de Wikidata e Commons (capítulo `conexoes`) não contam como narrativa avaliada.
+Data: 02/11/2026. Base: contrato de 12 capítulos ([proposta](../../../research/ideologies-section-contract-proposal.md)) e conteúdo em `src/content/ideologies/*/page.json`. Revisão por agente de IA; **sem revisão humana**. Metadados importados de Wikidata e Commons (capítulo `conexoes`) não contam como narrativa avaliada.
 
 ## Matriz seção × pergunta × lacuna
 
