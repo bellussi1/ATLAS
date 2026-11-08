@@ -8,12 +8,12 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 ## Estado atual
 
 - Repositório: `C:\Users\Bellussi\Documents\Workspace\ATLAS`.
-- Gitflow: PR **#50** (`develop` → `master`) foi mergeado em **`31b8d8b`**; o deploy do Pages rodou com sucesso. O `develop` segue para a próxima rodada.
+- Gitflow: PR **#50** (`develop` → `master`) foi mergeado em **`31b8d8b`** e o PR **#51** (pacotes de conteúdo) em **`21bba13`**; o deploy do Pages rodou com sucesso nas duas rodadas. O `develop` segue para a próxima rodada.
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
 - Conteúdo: 13 coleções. Release **`e841fac…`** publicado em 08/11 com o mesmo conteúdo do `2f7649…`, agora empacotado em `bundle` (23,7 MB) e `networkBundle` (4,1 MB); `content/content-pointer.json` aponta para os dois pacotes. O site antigo continua lendo as coleções; o novo build lê o pacote.
-- **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O release empacotado reduz a navegação de leitura/catálogo de ~17 para **2 requisições** (ponteiro + pacote) e `/grafos` para **2** (ponteiro + `networkBundle`); a visita direta a uma página prerenderizada continua sem baixar conteúdo. O consumo futuro cai, mas o limite do dia ainda depende do reset ou do upgrade.
+- **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O release empacotado reduz a navegação de leitura/catálogo de ~17 para **2 requisições** (ponteiro + pacote) e `/grafos` para **2** (ponteiro + `networkBundle`); a visita direta a uma página prerenderizada continua sem baixar conteúdo. Medição na URL publicada em 08/11: home **0**, leitura **2**, grafo **2**. O consumo futuro cai, mas o limite do dia ainda depende do reset ou do upgrade.
 - Build local: **1.186 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
-- CI: verify do merge **`31b8d8b`** verde (lint, tipos, testes, conteúdo, ingestão, build, links e e2e) e `deploy-pages` concluído. O run anterior falhava em `ingest:fetch-raw` por 13 capturas de 08/11 sem blobs publicados; as capturas foram removidas. Um segundo erro, no e2e, esperava coleções no `/grafos`; o teste passou a aceitar `network` + `layouts`.
+- CI: verify do PR **#51** e do merge **`21bba13`** verde (lint, tipos, 355 testes, conteúdo, ingestão, build, links e 155 e2e) e `deploy-pages` concluído. O `ingest:fetch-raw` segue estável após a remoção das 13 capturas sem blobs.
 
 ## Verificações recentes
 
@@ -32,8 +32,8 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Trabalho ativo
 
-- **PR #50**: leituras, shell, deploy no Pages, foco do grafo e limpeza de código. Aguarda o verify do commit final e o merge.
-- **Grafo**: foco por seleção implementado; o `/grafos` lê o `networkBundle` (4,1 MB contra 12,6 MB das coleções) em **uma** requisição de conteúdo. O release novo já está no ponteiro; o ganho chega ao público com o próximo deploy do Pages.
+- **PR #50 / #51**: #50 levou leituras, shell, deploy e foco do grafo; #51 levou os pacotes de conteúdo. Ambos mergeados e publicados.
+- **Grafo**: foco por seleção implementado; o `/grafos` lê o `networkBundle` (4,1 MB contra 12,6 MB das coleções) em **uma** requisição de conteúdo além do ponteiro. Medição na URL publicada: **2** requisições na navegação SPA e **1** na carga direta.
 - **Pacote de conteúdo**: `build-content` gera `bundle` (grafo + busca + adjacência + layouts + leituras) e `networkBundle` (projeção + layouts); o ponteiro referencia os dois e o `ContentRepository` os consome antes do manifesto. Releases antigos e o fixture continuam no caminho anterior.
 - **Limpeza**: `/mesa` removido; `features/study`, `historical-visualizations`, `editorial-mark`, `editorial-text`, `notice` e `timeline-periods` removidos. Redirecionamentos de compatibilidade (`/marxismo`, `/grafo`, `/rede`, `/comparar`, `/conhecimento`) foram mantidos.
 - **Documentação**: `ACTIVE_CONTEXT` compactado; histórico, auditorias, validações e planos antigos foram para `docs/archive/2026-11/`.
@@ -52,7 +52,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Pendências que bloqueiam
 
-1. **Limite do Worker** — a conta gratuita passou de 100 mil requisições/dia; o release empacotado reduz o consumo por navegação, mas o limite do dia só volta com o reset (00:00 UTC) ou o upgrade. O deploy do Pages com o pacote ainda precisa acontecer.
+1. **Limite do Worker** — a conta gratuita passou de 100 mil requisições/dia; o release empacotado reduz o consumo por navegação (medido em 2 requisições na leitura e no grafo), mas o limite do dia só volta com o reset (00:00 UTC) ou o upgrade. O Pages já serve o pacote.
 2. **Vercel** — desconectar a integração Git e excluir o projeto antigo no painel.
 3. **Token exposto** — o token Cloudflare foi colado no chat; após o primeiro deploy, rotacionar e atualizar o segredo.
 4. **Dependências** — #38/#37 aguardam checks; #44 está em conflito; #40 bloqueado. Não forçar.
@@ -71,7 +71,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Próxima ação
 
-1. Fazer o verify e o merge do pacote de conteúdo para a `master`; o `deploy-pages` leva o novo carregamento ao público. Medir as requisições por rota na URL publicada.
+1. Confirmar no painel Cloudflare o consumo do Worker após o release empacotado; se ainda passar do limite em picos, decidir o Workers Paid.
 2. Revisar os 100 itens da Onda 1 em `docs/research/onda1-2026-11/` e rodar `score`; sem precisão humana ≥ 95%, não escalar.
 3. Se a precisão fechar, medir o braço Sonnet low e iniciar a Onda 2 com as metas documentadas 70/50/70/35.
 4. Rodar Lighthouse na URL publicada para comparar com o relatório local.
