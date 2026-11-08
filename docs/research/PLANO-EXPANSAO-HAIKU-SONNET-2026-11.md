@@ -144,12 +144,17 @@ Total do grafo: **1.158 entidades, 833 relações, 1.261 fontes, 9.594 afirmaç�
 
 **Metas por leitura:**
 
-| Leitura           | Relações atuais |  Meta | Tipos que faltam                                                            |
+| Leitura | Documentadas atuais | Meta documentada | Tipos que faltam |
 | ----------------- | --------------: | ----: | --------------------------------------------------------------------------- |
-| Social-democracia |              35 | ≥ 100 | autoria, participação, fundação, filiação, crítica, cisão, governo, eleição |
-| Anarquismo        |              10 |  ≥ 80 | participação, autoria, fundação, crítica, ruptura, sindicato, experiência   |
-| Marxismo          |             122 | ≥ 160 | obra/conceito, evento/participante, tradução, recepção brasileira           |
-| Liberalismo       |              75 | ≥ 120 | obra/autor, evento/participante, constituição, crítica, continuidade        |
+| Social-democracia |              34 | ≥ 70 | autoria, participação, fundação, filiação, crítica, cisão, governo, eleição |
+| Anarquismo        |              10 | ≥ 50 | participação, autoria, fundação, crítica, ruptura, sindicato, experiência   |
+| Marxismo          |              33 | ≥ 70 | obra/conceito, evento/participante, tradução, recepção brasileira           |
+| Liberalismo       |              11 | ≥ 35 | obra/autor, evento/participante, constituição, crítica, continuidade        |
+
+As metas foram recalibradas em 08/11/2026 para contar **relações documentadas**, não
+`encyclopedic-link`, `editorial-link` ou `related_to`. A linha de base anterior (122/75/35/10)
+incluía links de navegação; a régua documentada é 33/11/34/10. Ver
+[`EXPANSAO-BASELINE-2026-11.md`](EXPANSAO-BASELINE-2026-11.md).
 
 1. Rodar extração rica para Social-democracia e Anarquismo:
    ```bash
@@ -185,7 +190,7 @@ Total do grafo: **1.158 entidades, 833 relações, 1.261 fontes, 9.594 afirmaç�
    node scripts/content/wiki-drafts-to-collections.mjs --partial --only <id> --dry-run
    ```
 
-**Porta de saída:** Social-democracia ≥ 100 e Anarquismo ≥ 80 relações com evidência; Marxismo ≥ 160 e Liberalismo ≥ 120; zero aresta sem QID; precisão ≥ 95% na amostra humana.
+**Porta de saída:** Social-democracia ≥ 70 e Anarquismo ≥ 50 relações documentadas; Marxismo ≥ 70 e Liberalismo ≥ 35; zero aresta sem QID; precisão ≥ 95% na amostra humana.
 
 ### Onda 3 — Entidades, fontes e caso brasileiro (paga, ~US$ 1 a 2)
 

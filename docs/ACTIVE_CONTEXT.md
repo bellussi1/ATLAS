@@ -38,13 +38,15 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página, após o primeiro paint), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
 - **Higiene de console e CSS**: Zod roda sem JIT para não violar o CSP, o filtro de temas ganhou `id`, o logo do rodapé declara proporção e a paleta do `record-card` passou a usar tokens. A preview local agora comprime em brotli/gzip e aplica cache imutável a JS/CSS com hash, aproximando a medição do Pages.
 - **Links de compra**: registros de obra que são livros, com autor conhecido, ganham "Comprar na Amazon" direto para a busca de livros, com `rel="sponsored"` e divulgação quando houver tag. A lista curada fica em `core/content/queries/amazon-books.ts`; tópicos, periódicos e o filme do acervo não recebem link. Sem `AMAZON_ASSOCIATE_TAG`, o link existe mas não gera comissão.
-- **Onda 2 / verbetes citados**: 12 artigos baixados e extraídos com **Haiku 5.5 medium** (relações conferidas por Sonnet 5.5 low), com **US$ 0,076** de gasto acumulado. Os 12 rascunhos foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. O lote completo de 414 exige várias horas de captura (a resolução de links de cada artigo é o gargalo), não uma sessão; o extrator em si custa cerca de US$ 0,005 por artigo.
+- **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. A coleção tem 896 entidades; o próximo passo é auditoria/consolidação, não recaptura.
 
 - **Onda 0 / expansão**: linha de base medida e gold set gerado em `docs/research/EXPANSAO-BASELINE-2026-11.md` e `docs/research/gold-set-2026-11/`. O achado principal é que as 122/75/35/10 relações incluem links de navegação; documentadas são **33/11/34/10 (88)**. A captura foi recuperada do worktree do `.claude`: Social-democracia 68/68, Anarquismo 54/54 e `verbetes-citados` 908 artigos/907 rascunhos. Os 907 rascunhos de verbetes foram publicados no `atlas-drafts`; o estágio 5 fica aberto por 3/4 rascunhos enxutos e a reextração paga ainda não foi autorizada.
 
 - **Limpeza de disco**: 15 worktrees mesclados e limpos removidos (incluindo `loving-khayyam`, `ATLAS-gitflow` e `pipeline-tradicao`), ~22,5 GB; `generated/raw-cache` (9,6 GB), blobs locais de `scripts/ingestion` (909 MB), `tmp` e `dist` removidos. `output/` foi movido para `C:\Users\Bellussi\Documents\ATLAS-output`. Restam apenas worktrees sujos ou não mesclados (`great-chatelet`, `mystifying-tharp`, `rede-ux`, `youthful-spence`, `zen-solomon`) e `ATLAS-release`.
 
 - **Grafo, estado atual**: o release público já tem `network`, então `/grafos` faz **2 requisições** ao Worker em vez de 11–17. Adicionei `?no=<id>` para link direto, "Ver no grafo" nos verbetes, filtro de conectados e zoom inicial de 145% no mobile (607 nós visíveis), além de "Ver como lista" no mobile. Lighthouse: desktop **88** (era 78–81), mobile **56** (TBT ~1,2 s), CLS 0/0,013. Ainda faltam separar o d3-force do chunk e melhorar o TBT mobile.
+
+- **Onda 1 / calibração**: amostra de 20 artigos de Social-democracia e Anarquismo rodada por **US$ 0,0706** (teto US$ 0,30). Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. Ficaram **100 itens** para conferência humana em `docs/research/onda1-2026-11/`. O braço Sonnet low não foi medido; a decisão de modelo segue aberta. As metas da Onda 2 foram recalibradas para relações documentadas: **70/50/70/35**.
 
 ## Pendências que bloqueiam
 
@@ -64,7 +66,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 3. **Itinerários** — aprovar a fase 0 (schema, fixtures e testes) antes de implementar.
 4. **Aliases antigos** — se quiser que URLs antigas passem a 404, remover `/grafo`, `/rede`, `/comparar`, `/conhecimento` e os redirecionamentos top-level em uma segunda passada.
 5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
-6. **Lote completo da Onda 2** — decidir entre refazer a captura dos 414 artigos em lotes de 40–60 (cerca de uma hora por lote, ~US$ 0,005 por artigo), restaurar os artefatos da máquina anterior ou parar no piloto de 12. A coleção já tem 896 registros; o lote completo é atualização e auditoria, não criação de 896 novos verbetes.
+6. **Onda 2** — os 907 rascunhos recuperados permitem auditar e consolidar sem recaptura; decidir o lote de consolidação e revisão. As metas documentadas são 70/50/70/35, não 160/120/100/80.
 
 ## Próxima ação
 

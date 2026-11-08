@@ -14,6 +14,8 @@ publicado.
 | Social-democracia | 54 | 35 | 34 | 30 | 70 | 16 | 4 | 560 |
 | Anarquismo | 46 | 10 | 10 | 37 | 56 | 10 | 4 | 433 |
 
+Metas da Onda 2 recalibradas em 08/11/2026: Social-democracia **70**, Anarquismo **50**, Marxismo **70**, Liberalismo **35** relações documentadas.
+
 ## O achado que muda a meta
 
 O número que o grafo mostra hoje inclui **links enciclopédicos de navegação**
