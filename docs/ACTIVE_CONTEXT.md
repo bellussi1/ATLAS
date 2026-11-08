@@ -54,14 +54,16 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 3. **Itinerários** — aprovar a fase 0 (schema, fixtures e testes) antes de implementar.
 4. **Aliases antigos** — se quiser que URLs antigas passem a 404, remover `/grafo`, `/rede`, `/comparar`, `/conhecimento` e os redirecionamentos top-level em uma segunda passada.
 5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
+6. **Lote completo da Onda 2** — decidir entre refazer a captura dos 414 artigos em lotes de 40–60 (cerca de uma hora por lote, ~US$ 0,005 por artigo), restaurar os artefatos da máquina anterior ou parar no piloto de 12. A coleção já tem 896 registros; o lote completo é atualização e auditoria, não criação de 896 novos verbetes.
 
 ## Próxima ação
 
 1. Fazer o verify final do PR #50; se verde, mergear e verificar o deploy do Pages — é o deploy que leva o canonical e o restante do Lighthouse à produção.
-2. Com autorização, executar `content:publish` e confirmar que `/grafos` passou a carregar `network` + `layouts`.
-3. Rodar Lighthouse na URL publicada (com compressão) para comparar com o relatório anterior.
-4. Rotacionar o token Cloudflare e desligar o Vercel no painel.
-5. Só depois iniciar a fase 0 dos itinerários.
+2. Revisar os 3 itens sinalizados pela auditoria (Rawls, Voltaire, Kant) e decidir o lote de 414 ou o piloto de 12.
+3. Com autorização, executar `content:publish` e confirmar que `/grafos` passou a carregar `network` + `layouts` e que os 12 verbetes atualizados chegam ao público.
+4. Rodar Lighthouse na URL publicada (com compressão) para comparar com o relatório anterior.
+5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
+6. Só depois iniciar a fase 0 dos itinerários.
 
 ## Mapa rápido
 
