@@ -1,9 +1,5 @@
-﻿import type {
-  Claim,
-  EntityKind,
-  KnowledgeGraph,
-  Relation,
-} from '@core/content/models/content-schema';
+﻿import type { NetworkClaim, NetworkGraph } from '@core/content/models/content-artifacts';
+import type { EntityKind, KnowledgeGraph, Relation } from '@core/content/models/content-schema';
 import {
   forceCollide,
   forceLink,
@@ -423,7 +419,7 @@ export interface NetworkNode {
   /** Years, when known, for the panel. */
   period: string | null;
   inReview: boolean;
-  claims: Claim[];
+  claims: NetworkClaim[];
   degree: number;
   /** Incident edges counted by relation nature, so navigation is not mistaken for evidence. */
   connections: Record<RelationNature, number>;
@@ -590,10 +586,10 @@ export function natureOf(relation: Relation): RelationNature {
 }
 
 /** Flattens the knowledge graph into one deduplicated network: entities once, relations by id. */
-export function buildKnowledgeNetwork(graph: KnowledgeGraph): KnowledgeNetwork {
+export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): KnowledgeNetwork {
   const atlases = graph.atlases.filter((atlas) => !hiddenCollections.has(atlas.id));
   const nodes = new Map<string, NetworkNode>();
-  const claimsByEntity = new Map<string, Claim[]>();
+  const claimsByEntity = new Map<string, NetworkClaim[]>();
   for (const atlas of atlases)
     for (const claim of atlas.claims)
       claimsByEntity.set(claim.entityId, [...(claimsByEntity.get(claim.entityId) ?? []), claim]);
@@ -792,10 +788,14 @@ export function linksOf(
 const positionPattern = /\b(esquerda|direita|centro|extrema|progressist|conservador)/i;
 
 /** Claims that place an ideology on the political spectrum come first; each stays attributed. */
-export function positionClaims(node: NetworkNode): Claim[] {
-  return [...node.claims].sort(
+export function rankClaims(claims: readonly NetworkClaim[]): NetworkClaim[] {
+  return [...claims].sort(
     (a, b) => Number(positionPattern.test(b.text)) - Number(positionPattern.test(a.text)),
   );
+}
+
+export function positionClaims(node: NetworkNode): NetworkClaim[] {
+  return rankClaims(node.claims);
 }
 
 export interface NetworkPoint {

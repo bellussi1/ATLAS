@@ -1,4 +1,6 @@
-﻿import type { Relation } from '@core/content/models/content-schema';
+﻿import type { NetworkGraph } from '@core/content/models/content-artifacts';
+import { networkGraphSchema } from '@core/content/models/content-artifacts';
+import type { Relation } from '@core/content/models/content-schema';
 import { methodologyKnowledgeGraph } from '@testing/content-fixture';
 
 import {
@@ -31,6 +33,44 @@ const all = {
 };
 
 describe('knowledge network', () => {
+  it('builds the same network from the slim projection used by /grafos', () => {
+    const slim: NetworkGraph = networkGraphSchema.parse({
+      id: methodologyKnowledgeGraph.id,
+      version: methodologyKnowledgeGraph.version,
+      updatedAt: methodologyKnowledgeGraph.updatedAt,
+      atlases: methodologyKnowledgeGraph.atlases.map((atlas) => ({
+        id: atlas.id,
+        title: atlas.title,
+        entities: atlas.entities.map((entity) => ({
+          id: entity.id,
+          slug: entity.slug,
+          title: entity.title,
+          kind: entity.kind,
+          placeType: entity.kind === 'place' ? entity.placeType : undefined,
+          summary: entity.summary,
+          temporalExtent: entity.temporalExtent,
+          editorialStatus: entity.editorialStatus,
+          discoveryMetadata: entity.discoveryMetadata
+            ? { description: entity.discoveryMetadata.description }
+            : undefined,
+        })),
+        claims: atlas.claims.slice(0, 3).map((claim) => ({
+          id: claim.id,
+          entityId: claim.entityId,
+          text: claim.text,
+          classification: claim.classification,
+          editorialStatus: claim.editorialStatus,
+        })),
+        assetLicenses: atlas.assetLicenses,
+        relations: atlas.relations,
+      })),
+    });
+    const projected = buildKnowledgeNetwork(slim);
+    expect(projected.nodes.map((node) => node.id)).toEqual(network.nodes.map((node) => node.id));
+    expect(projected.edges.map((edge) => edge.id)).toEqual(network.edges.map((edge) => edge.id));
+    expect(projected.nodes.every((node) => node.claims.length <= 3)).toBe(true);
+  });
+
   it('lists each entity once and keeps only edges between known nodes', () => {
     const ids = network.nodes.map((n) => n.id);
     expect(new Set(ids).size).toBe(ids.length);

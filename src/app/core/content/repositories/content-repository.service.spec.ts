@@ -57,17 +57,25 @@ describe('ContentRepository generated assets', () => {
     expect(repository.discoveryIndex.some((entry) => entry.id === 'person-karl-marx')).toBe(true);
   });
 
-  it('loads only graph collections and layouts for the full-screen network', async () => {
+  it('loads only the network projection and layouts for the full-screen network', async () => {
     const repository = TestBed.inject(ContentRepository);
     await firstValueFrom(repository.loadNetworkGraph());
     const searchPath = `c/${contentManifestFixture.search.sha256}.json`;
     const adjacencyPath = `c/${contentManifestFixture.adjacency.sha256}.json`;
     const layoutsPath = `c/${contentManifestFixture.layouts.sha256}.json`;
+    const networkPath = contentManifestFixture.network
+      ? `c/${contentManifestFixture.network.sha256}.json`
+      : null;
     expect(reads).toContain(layoutsPath);
+    if (networkPath) {
+      expect(reads).toContain(networkPath);
+      for (const collection of contentManifestFixture.collections)
+        expect(reads).not.toContain(`c/${collection.sha256}.json`);
+    }
     expect(reads).not.toContain(searchPath);
     expect(reads).not.toContain(adjacencyPath);
     expect(reads.filter((path) => path.startsWith('c/'))).toHaveLength(
-      contentManifestFixture.collections.length + 2,
+      networkPath ? 3 : contentManifestFixture.collections.length + 2,
     );
     // Navigating to a catalogue upgrades the same repository to the complete package.
     await firstValueFrom(repository.loadKnowledgeGraph());

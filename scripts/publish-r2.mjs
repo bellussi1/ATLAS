@@ -42,6 +42,7 @@ async function loadArtifacts() {
     manifest.search,
     manifest.adjacency,
     manifest.layouts,
+    ...(manifest.network ? [manifest.network] : []),
   ];
   const artifacts = [];
   for (const resource of resources) {
