@@ -151,7 +151,8 @@ kbd {
   img {
     display: block;
     block-size: 1.9rem;
-    inline-size: auto;
+    inline-size: calc(1.9rem * 3.5);
+    aspect-ratio: 280 / 80;
   }
 }
 .bar__title {
@@ -1232,6 +1233,7 @@ kbd {
   }
   .bar__home img {
     block-size: 1.6rem;
+    inline-size: calc(1.6rem * 3.5);
   }
   .search {
     flex-basis: 8rem;
@@ -1281,5 +1283,14 @@ kbd {
   .edges line,
   .spinner {
     animation: none !important;
+  }
+}
+
+// Keep the legend column on desktop even while the panel is closed. The stage is
+// absolute, so the map still uses the full window; the HUD no longer jumps left
+// when the panel appears after hydration.
+@media (min-width: 62rem) {
+  .floating {
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr) auto;
   }
 }

@@ -48,7 +48,9 @@ export class AppComponent {
   readonly previousTitle = signal<string | null>(null);
   readonly retrying = signal(false);
   /** Routes with `data.fullscreen` own the whole window: no header, breadcrumbs or footer. */
-  readonly fullscreen = signal(false);
+  readonly fullscreen = signal(
+    /^\/(grafos|grafo|rede)(?:\/|$)/.test(this.router.url.split(/[?#]/)[0]),
+  );
   readonly pageTitle = signal('ATLAS — compreender o mundo');
 
   constructor() {
