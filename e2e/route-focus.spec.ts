@@ -1,4 +1,4 @@
-import { expect, test, type Page } from './content-fixture';
+import { expect, type Page, test } from './content-fixture';
 
 /** The router owns history.state once its initial navigation has completed. */
 const routerReady = (page: Page) =>
