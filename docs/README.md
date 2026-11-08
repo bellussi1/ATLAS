@@ -45,6 +45,8 @@ Nada aqui é estado publicado. São hipóteses, cronogramas ou decisões que ain
 |---|---|---|
 | [Itinerários editoriais](design/ITINERARIOS.md) | Produto, contrato, pilotos e fases 0–5 | plano |
 | [Expansão com Haiku e Sonnet](research/PLANO-EXPANSAO-HAIKU-SONNET-2026-11.md) | Diagnóstico, ondas, custos e orçamento | plano |
+| [Linha de base da expansão](research/EXPANSAO-BASELINE-2026-11.md) | Inventário, órfãs e o peso dos links de navegação | atual |
+| [Gold set](research/gold-set-2026-11/README.md) | 87 relações documentadas, 40 afirmações e 20 pares para conferência humana | plano |
 | [Mapa de leituras](research/readings-map.md) | Próximas leituras: Trabalhismo, Vargas, 1964, ditadura | plano |
 | [Baseline das ideologias](research/ideologies-baseline.md) | Medição inicial de cobertura | histórico |
 | [Proposta de contrato das seções](research/ideologies-section-contract-proposal.md) | Desenho da página V4 | histórico |

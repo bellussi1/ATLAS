@@ -40,6 +40,8 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Links de compra**: registros de obra que são livros, com autor conhecido, ganham "Comprar na Amazon" direto para a busca de livros, com `rel="sponsored"` e divulgação quando houver tag. A lista curada fica em `core/content/queries/amazon-books.ts`; tópicos, periódicos e o filme do acervo não recebem link. Sem `AMAZON_ASSOCIATE_TAG`, o link existe mas não gera comissão.
 - **Onda 2 / verbetes citados**: 12 artigos baixados e extraídos com **Haiku 5.5 medium** (relações conferidas por Sonnet 5.5 low), com **US$ 0,076** de gasto acumulado. Os 12 rascunhos foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. O lote completo de 414 exige várias horas de captura (a resolução de links de cada artigo é o gargalo), não uma sessão; o extrator em si custa cerca de US$ 0,005 por artigo.
 
+- **Onda 0 / expansão**: linha de base medida e gold set gerado em `docs/research/EXPANSAO-BASELINE-2026-11.md` e `docs/research/gold-set-2026-11/`. O achado principal é que as 122/75/35/10 relações incluem links de navegação; documentadas são **33/11/34/10 (88)**. A captura dos 108 artigos de Social-democracia e Anarquismo está em andamento em background; 3 de 57 de Social-democracia baixados até o fim desta sessão.
+
 ## Pendências que bloqueiam
 
 1. **PR #50** — aguardar o verify do commit final e fazer o merge; o `deploy-pages` roda na `master`.
@@ -88,3 +90,4 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - Ao terminar: atualizar a seção **Estado atual**, **Trabalho ativo** e **Próxima ação**; o relato detalhado vai para o arquivo do mês, não para este handoff.
 - Não registrar transcrição, opinião ou suposição como fato verificado.
 - `AGENTS.md` continua sendo a fonte única das regras.
+
