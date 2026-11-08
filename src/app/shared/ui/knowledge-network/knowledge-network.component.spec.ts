@@ -229,7 +229,7 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.activeId()).toBeNull();
   });
 
-  it('keeps the whole map readable when a node is selected', async () => {
+  it('dims the rest of the map around a selected node', async () => {
     const fixture = await render();
     const component = fixture.componentInstance;
     component.size.set({ width: 1400, height: 900 });
@@ -240,8 +240,14 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.selectedId()).toBe(linked.node.id);
     expect(root(fixture).querySelector('.node__selection')).not.toBeNull();
     expect(root(fixture).querySelector('.label.is-selected')).not.toBeNull();
-    // A selection is a permanent mark; only hovering its surroundings dims the rest.
-    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBe(0);
+    // The selection keeps its neighbourhood lit; every other node fades into the map.
+    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);
+    expect(
+      root(fixture)
+        .querySelector(`[data-node="${linked.node.id}"]`)
+        ?.classList.contains('is-dimmed'),
+    ).toBe(false);
+    expect(root(fixture).querySelectorAll('.node.is-related').length).toBeGreaterThan(0);
     component.hoverNode(linked.node.id);
     fixture.detectChanges();
     expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);

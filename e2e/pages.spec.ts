@@ -435,8 +435,9 @@ test('the connections chapter draws the tradition as a graph scoped to its atlas
   await expect(network.locator('.node.is-selected')).toHaveCount(1);
   await expect(network.locator('.node__selection')).toHaveCount(1);
   await expect(network.locator('.label.is-selected')).toContainText('Friedrich Engels');
-  // A selection marks the node; it must not erase the rest of the map.
-  await expect(network.locator('.node.is-dimmed')).toHaveCount(0);
+  // The selection lights the node and its neighbours; the rest of the map fades.
+  await expect(network.locator('.node.is-dimmed')).not.toHaveCount(0);
+  await expect(network.locator('.node.is-related').first()).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).toHaveCount(0);
   const selection = network.locator('.selection-pill');

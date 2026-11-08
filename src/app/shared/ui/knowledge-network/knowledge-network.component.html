@@ -261,7 +261,7 @@
                 }
               }
             </g>
-            @for (item of edges.lit; track item.edge.id) {
+            @for (item of litEdges(); track item.edge.id) {
               <line
                 class="is-active"
                 [attr.x1]="item.x1"
@@ -331,6 +331,7 @@
                 fill-rule="evenodd"
                 [style.fill]="'var(' + item.kind.color + ')'"
                 [class.is-dimmed]="isDimmed(item.node.id)"
+                [class.is-related]="isRelated(item.node.id)"
                 [class.is-selected]="selectedId() === item.node.id"
                 [class.is-hovered]="hoveredId() === item.node.id"
                 (keydown)="nodeKey($event, item.node.id)"

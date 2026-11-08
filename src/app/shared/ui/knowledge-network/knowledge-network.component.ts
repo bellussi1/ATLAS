@@ -82,17 +82,6 @@ const classificationLabels: Record<string, string> = {
   unverified: 'Não verificado',
 };
 
-interface DrawnEdge {
-  edge: NetworkEdge;
-  family: ReturnType<typeof relationFamilyDefinition>;
-  delay: number;
-  fade: number;
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-}
-
 @Component({
   selector: 'app-knowledge-network',
   imports: [
@@ -245,10 +234,10 @@ export class KnowledgeNetworkComponent {
     return node ? positionClaims(node).slice(0, 3) : [];
   });
   /**
-   * The node whose surroundings are lit while the reader hovers it. A selection is a permanent
-   * mark, not a filter: dimming every other node would erase the map around the selected one.
+   * The node whose surroundings are lit. Hovering takes precedence; without a hover, the
+   * selection keeps its neighbourhood lit and dims the rest of the map.
    */
-  readonly activeId = computed(() => this.hoveredId());
+  readonly activeId = computed(() => this.hoveredId() ?? this.selectedId());
   readonly activeLinks = computed(() => {
     const id = this.activeId();
     return id ? linksOf(id, this.visible().edges, this.nodeIndex) : [];
@@ -279,6 +268,20 @@ export class KnowledgeNetworkComponent {
       width,
     };
   });
+  /**
+   * Culling only needs the stage edges, not the detail panel. Keeping the selected-dependent
+   * inset out of this calculation avoids rebuilding every node and edge when a record is picked.
+   */
+  private readonly contentInsets = computed(() => {
+    const rem = 16;
+    const wide = this.wide();
+    return {
+      left: wide && this.controlsShown() ? 19 * rem + 32 : 12,
+      right: 12,
+      top: wide ? 92 : 84,
+      bottom: 64,
+    };
+  });
   readonly counts = computed(() => {
     const kinds = new Map<NetworkKindId, number>();
     for (const node of this.network.nodes) kinds.set(node.kind, (kinds.get(node.kind) ?? 0) + 1);
@@ -293,11 +296,19 @@ export class KnowledgeNetworkComponent {
    * not rendered: at high zoom they are most of the map and repainting them is what made zoom slow.
    * Null before the stage is measured, when every record is drawn.
    */
+  private lastCullingView: View = { x: 0, y: 0, k: 1 };
+  /** While the map moves, CSS carries the world; culling waits for the view to settle. */
+  private readonly cullingView = computed(() => {
+    if (this.busy()) return this.lastCullingView;
+    const view = this.view();
+    this.lastCullingView = view;
+    return view;
+  });
   private readonly contentBounds = computed(() => {
-    const { x, y, k } = this.view();
+    const { x, y, k } = this.cullingView();
     const { width, height } = this.size();
     if (!width || !height) return null;
-    const inset = this.insets();
+    const inset = this.contentInsets();
     const margin = 96 / k;
     return {
       left: (inset.left - x) / k - margin,
@@ -310,9 +321,8 @@ export class KnowledgeNetworkComponent {
     const positions = this.positions();
     if (!positions) return [];
     const bounds = this.contentBounds();
-    const kept = new Set(
-      [this.selectedId(), this.hoveredId(), this.focusId()].filter((id): id is string => !!id),
-    );
+    // Keyboard focus may arrive during a glide, before the final culling bounds are known.
+    const kept = new Set([this.focusId()].filter((id): id is string => !!id));
     return this.visible().nodes.flatMap((node) => {
       const point = positions.get(node.id);
       if (!point) return [];
@@ -403,11 +413,13 @@ export class KnowledgeNetworkComponent {
       ];
     });
   });
-  /** Edges collapse into a few paths; only lit links stay individual so their animation survives. */
+  /**
+   * Base edges are batched once per zoom step. Selection and hover never rebuild these batches:
+   * their links are drawn as a small individual overlay above the dimmed base.
+   */
   readonly edgeBatches = computed(() => {
     const plain: EdgeSegment[] = [];
     const detailed = new Map<RelationFamilyId, EdgeSegment[]>();
-    const lit: DrawnEdge[] = [];
     for (const item of this.drawnEdges()) {
       const segment: EdgeSegment = {
         key: 'plain',
@@ -417,9 +429,7 @@ export class KnowledgeNetworkComponent {
         y2: item.y2,
         fade: item.fade,
       };
-      if (this.edgeLit(item.edge)) {
-        lit.push(item);
-      } else if (this.edgeDetailed(item.edge)) {
+      if (this.near()) {
         const list = detailed.get(item.family.id) ?? [];
         list.push({ ...segment, key: item.family.id });
         detailed.set(item.family.id, list);
@@ -435,8 +445,12 @@ export class KnowledgeNetworkComponent {
           family: this.familyById.get(familyId),
         })),
       ),
-      lit,
     };
+  });
+  /** Links of the active node stay individual so they animate above the dimmed base. */
+  readonly litEdges = computed(() => {
+    if (!this.activeId() && !this.selectedId() && !this.hoveredEdgeId()) return [];
+    return this.drawnEdges().filter((item) => this.edgeLit(item.edge));
   });
   readonly transform = computed(() => {
     const { x, y, k } = this.view();
@@ -559,15 +573,19 @@ export class KnowledgeNetworkComponent {
     this.lastLabels = { k: this.zoomK(), items: placed };
     return placed;
   });
-  /** Short phrases on the links of the lit node, placed at the middle of each link. */
+  /** Short phrases on the links of the active node, placed at the middle of each link. */
   readonly edgeLabels = computed(() => {
     if (this.busy()) return [];
-    const active = this.hoveredId() ?? this.selectedId();
+    const hovered = this.hoveredId();
+    const selected = this.selectedId();
+    const active = hovered ?? selected;
     const positions = this.positions();
     if (!active || !positions) return [];
-    // Zoomed out the lines speak for themselves; the wording appears when the reader comes close.
-    if (!this.near()) return [];
-    const links = this.hoveredId() ? this.activeLinks() : this.selectedLinks();
+    // Selection keeps a few relation labels visible even at the whole-map zoom; hover needs proximity.
+    const showFar = !hovered && !!selected;
+    if (!this.near() && !showFar) return [];
+    const links = hovered ? this.activeLinks() : this.selectedLinks();
+    const limit = this.near() ? 18 : 8;
     const k = this.zoomK();
     const { x: vx, y: vy } = this.view();
     const taken = this.labels().map((label) => {
@@ -579,7 +597,7 @@ export class KnowledgeNetworkComponent {
       return { left, right: left + width, top: y - LABEL_HEIGHT / 2, bottom: y + LABEL_HEIGHT / 2 };
     });
     const placed: { id: string; text: string; x: number; y: number; delay: number }[] = [];
-    for (const link of links.slice(0, 18)) {
+    for (const link of links.slice(0, limit)) {
       const from = positions.get(link.edge.source);
       const to = positions.get(link.edge.target);
       if (!from || !to) continue;
@@ -653,7 +671,11 @@ export class KnowledgeNetworkComponent {
   private autoFit = true;
   private pointerFrame = 0;
   private lastPointer: { x: number; y: number } | null = null;
+  /** Hover is settled before labels are recalculated; sweeping across nodes must not rebuild them. */
+  private hoverTimer: ReturnType<typeof setTimeout> | undefined;
+  private hoverTargetId: string | null = null;
   private tweenToken = 0;
+  private glideTimer: ReturnType<typeof setTimeout> | undefined;
   private allK = 0.1;
   private cycleOrigin: string | null = null;
   /** Last selection received from the chapter, so the graph does not echo it back. */
@@ -723,6 +745,8 @@ export class KnowledgeNetworkComponent {
       });
       this.destroyRef.onDestroy(() => {
         clearTimeout(timer);
+        clearTimeout(this.hoverTimer);
+        if (this.glideTimer) clearTimeout(this.glideTimer);
         clearTimeout(this.wheelTimer);
         if (this.wheelFrame) cancelAnimationFrame(this.wheelFrame);
         if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
@@ -862,6 +886,10 @@ export class KnowledgeNetworkComponent {
     if (lit) return !lit.has(id);
     return this.query().trim() !== '' && !this.matchIds().has(id);
   }
+  isRelated(id: string): boolean {
+    const active = this.activeId();
+    return !!active && id !== active && this.neighbours().has(id);
+  }
   edgeDimmed(edge: NetworkEdge): boolean {
     const active = this.activeId();
     return !!active && edge.source !== active && edge.target !== active;
@@ -961,6 +989,11 @@ export class KnowledgeNetworkComponent {
   // ---- relations: hover, path and neighbours ----
 
   hoverNode(id: string | null): void {
+    if (this.hoverTimer) {
+      clearTimeout(this.hoverTimer);
+      this.hoverTimer = undefined;
+    }
+    this.hoverTargetId = id;
     this.hoveredId.set(id);
     if (id) this.schedulePointer();
   }
@@ -974,7 +1007,7 @@ export class KnowledgeNetworkComponent {
     const at = { x: event.clientX - rect.left, y: event.clientY - rect.top };
     this.lastPointer = at;
     const node = this.nodeAt(at);
-    if (node?.id !== this.hoveredId()) this.hoverNode(node?.id ?? null);
+    if (node?.id !== this.hoverTargetId) this.scheduleHover(node?.id ?? null);
     // The card only exists over a node (or a lit link up close); elsewhere no signal is written.
     if (!node && !this.hoveredEdgeId() && !this.near()) return;
     this.schedulePointer();
@@ -982,6 +1015,9 @@ export class KnowledgeNetworkComponent {
   stageLeave(): void {
     if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
     this.pointerFrame = 0;
+    if (this.hoverTimer) clearTimeout(this.hoverTimer);
+    this.hoverTimer = undefined;
+    this.hoverTargetId = null;
     this.lastPointer = null;
     this.pointerAt.set(null);
     this.hoveredId.set(null);
@@ -1190,6 +1226,20 @@ export class KnowledgeNetworkComponent {
       source: edge.sourceName,
     };
   }
+  /** Pointer sweeps settle before labels are recalculated; crossing nodes must not rebuild them. */
+  private scheduleHover(id: string | null): void {
+    if (this.hoverTimer) clearTimeout(this.hoverTimer);
+    this.hoverTimer = undefined;
+    if (id === null) {
+      this.hoverNode(null);
+      return;
+    }
+    this.hoverTargetId = id;
+    this.hoverTimer = setTimeout(() => {
+      this.hoverTimer = undefined;
+      if (this.hoverTargetId === id) this.hoverNode(id);
+    }, 70);
+  }
   private schedulePointer(): void {
     if (this.pointerFrame || !this.lastPointer || typeof requestAnimationFrame !== 'function')
       return;
@@ -1266,6 +1316,8 @@ export class KnowledgeNetworkComponent {
   /** Moves the view; with animation it glides, unless the reader asked for reduced motion. */
   private glideTo(target: View, animate: boolean): void {
     const token = ++this.tweenToken;
+    if (this.glideTimer) clearTimeout(this.glideTimer);
+    this.glideTimer = undefined;
     if (!animate || this.reducedMotion() || typeof requestAnimationFrame === 'undefined') {
       this.animating.set(false);
       this.view.set(target);
@@ -1274,9 +1326,20 @@ export class KnowledgeNetworkComponent {
     const from = this.view();
     const start = performance.now();
     const duration = 520;
+    let done = false;
+    const finish = () => {
+      if (done || token !== this.tweenToken) return;
+      done = true;
+      if (this.glideTimer) clearTimeout(this.glideTimer);
+      this.glideTimer = undefined;
+      this.view.set(target);
+      this.animating.set(false);
+    };
+    // A hidden tab can pause requestAnimationFrame; finish anyway instead of keeping the map busy.
+    this.glideTimer = setTimeout(finish, duration + 140);
     this.animating.set(true);
     const step = () => {
-      if (token !== this.tweenToken) return;
+      if (done || token !== this.tweenToken) return;
       const t = Math.max(0, Math.min(1, (performance.now() - start) / duration));
       const e = easeInOut(t);
       this.view.set({
@@ -1285,15 +1348,14 @@ export class KnowledgeNetworkComponent {
         y: from.y + (target.y - from.y) * e,
       });
       if (t < 1) requestAnimationFrame(step);
-      else {
-        this.view.set(target);
-        this.animating.set(false);
-      }
+      else finish();
     };
     requestAnimationFrame(step);
   }
   private stopGlide(): void {
     this.tweenToken++;
+    if (this.glideTimer) clearTimeout(this.glideTimer);
+    this.glideTimer = undefined;
     this.animating.set(false);
   }
 

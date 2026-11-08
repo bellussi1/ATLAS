@@ -450,7 +450,7 @@ kbd {
   transition: opacity 180ms;
 }
 .edge-rest.is-dimmed {
-  opacity: 0.18;
+  opacity: 0.1;
 }
 .edges line {
   fill: none;
@@ -546,7 +546,11 @@ kbd {
   transform: translate(calc(var(--node-x) * 1px), calc(var(--node-y) * 1px))
     scale(var(--node-scale));
   &.is-dimmed {
-    opacity: 0.4;
+    opacity: 0.14;
+  }
+  &.is-related {
+    stroke: var(--color-ink);
+    stroke-width: 2.5;
   }
 }
 .node__pulse {
@@ -610,6 +614,10 @@ kbd {
 .label.is-selected {
   fill: var(--color-accent);
   font-weight: 800;
+}
+.label.is-neighbour {
+  fill: var(--color-ink);
+  font-weight: 700;
 }
 .stage--animated .label {
   animation: fade 220ms ease-out both;
