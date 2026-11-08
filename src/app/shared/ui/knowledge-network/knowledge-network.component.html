@@ -151,6 +151,37 @@
         </ul>
       </details>
 
+      <details class="panel" open>
+        <summary><h2>Vizinhança</h2></summary>
+        <p class="hint">A partir do verbete selecionado. O layout não muda; só o recorte.</p>
+        <ul class="legend">
+          @for (option of depthOptions; track option.value) {
+            <li>
+              <label class="check">
+                <input
+                  type="radio"
+                  name="graph-depth"
+                  [value]="option.value"
+                  [checked]="depth() === option.value"
+                  [disabled]="option.value > 0 && !selectedId()"
+                  (change)="setDepth(option.value)"
+                />
+                <span>{{ option.label }}</span>
+              </label>
+            </li>
+          }
+        </ul>
+        @if (selected(); as node) {
+          <p class="hint" id="graph-neighborhood-count">
+            {{ node.title }} · {{ visible().nodes.length }} verbetes no recorte
+          </p>
+        } @else {
+          <p class="hint" id="graph-neighborhood-count">
+            Selecione um verbete para isolar 1 ou 2 saltos.
+          </p>
+        }
+      </details>
+
       @if (!embedded()) {
         <details class="panel" open>
           <summary><h2>Coleções</h2></summary>

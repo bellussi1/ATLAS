@@ -108,6 +108,10 @@ export class KnowledgeNetworkComponent {
     this.route.queryParamMap.pipe(map((params) => params.get('no'))),
     { initialValue: this.route.snapshot.queryParamMap.get('no') },
   );
+  private readonly queryDepth = toSignal(
+    this.route.queryParamMap.pipe(map((params) => params.get('saltos'))),
+    { initialValue: this.route.snapshot.queryParamMap.get('saltos') },
+  );
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
@@ -152,6 +156,13 @@ export class KnowledgeNetworkComponent {
   /** The collections actually filter the map: the fixed scope wins over the legend checkboxes. */
   readonly activeCollections = computed(() => this.scopeIds() ?? this.collectionsOn());
   readonly onlyConnected = signal(false);
+  /** 0 shows the whole cut; 1/2 keep the selected node and its neighbours up to that distance. */
+  readonly depth = signal<0 | 1 | 2>(0);
+  readonly depthOptions = [
+    { value: 0 as const, label: 'Tudo' },
+    { value: 1 as const, label: '1 salto' },
+    { value: 2 as const, label: '2 saltos' },
+  ];
   readonly query = signal('');
   readonly selectedId = signal<string | null>(null);
   readonly hoveredId = signal<string | null>(null);
@@ -194,12 +205,19 @@ export class KnowledgeNetworkComponent {
 
   readonly total = this.network.nodes.length;
   readonly loading = computed(() => this.positions() === null && this.total > 0);
+  /** The selected node bounds the map when a 1/2-hop neighbourhood is active. */
+  readonly neighborhood = computed(() => {
+    const root = this.selectedId() ?? this.queryNode();
+    const depth = this.depth();
+    return root && (depth === 1 || depth === 2) ? { root, depth } : null;
+  });
   readonly visible = computed(() =>
     filterNetwork(this.network, {
       kinds: this.kindsOn(),
       families: this.familiesOn(),
       collections: this.activeCollections(),
       onlyConnected: this.onlyConnected(),
+      neighborhood: this.neighborhood(),
     }),
   );
   readonly visibleIds = computed(() => new Set(this.visible().nodes.map((node) => node.id)));
@@ -208,7 +226,8 @@ export class KnowledgeNetworkComponent {
       this.kindsOn().size < this.kinds.length ||
       this.familiesOn().size < this.families.length ||
       (!this.scopeIds() && this.collectionsOn().size < this.collections.length) ||
-      this.onlyConnected(),
+      this.onlyConnected() ||
+      this.depth() > 0,
   );
   readonly matches = computed(() => searchNodes(this.visible().nodes, this.query()));
   readonly matchIds = computed(() => new Set(this.matches().map((node) => node.id)));
@@ -714,6 +733,13 @@ export class KnowledgeNetworkComponent {
       if (untracked(() => this.selectedId()) === id) return;
       untracked(() => this.select(id, true));
     });
+    // A shared saltos=1|2 restores the neighbourhood together with the selected node.
+    effect(() => {
+      const raw = this.queryDepth();
+      const value = raw === '1' ? 1 : raw === '2' ? 2 : 0;
+      const next = this.queryNode() ? value : 0;
+      if (this.depth() !== next) untracked(() => this.depth.set(next));
+    });
     // In a chapter the legend starts folded: the map should read as a map, not as a dashboard.
     effect(() => {
       if (this.embedded() && this.controlsOpen() === null) this.controlsOpen.set(false);
@@ -811,7 +837,15 @@ export class KnowledgeNetworkComponent {
     this.familiesOn.set(new Set(relationFamilies.map((f) => f.id)));
     if (!this.scopeIds()) this.collectionsOn.set(new Set(this.collections.map((c) => c.id)));
     this.onlyConnected.set(false);
+    this.depth.set(0);
     this.query.set('');
+    this.syncUrl(this.selectedId());
+  }
+  /** 0 shows everything; 1/2 isolate the selected node's neighbourhood without moving the layout. */
+  setDepth(value: 0 | 1 | 2): void {
+    if (value > 0 && !this.selectedId()) return;
+    this.depth.set(value);
+    this.syncUrl(this.selectedId());
   }
   setQuery(value: string): void {
     this.query.set(value);
@@ -914,6 +948,7 @@ export class KnowledgeNetworkComponent {
   }
   clearSelection(): void {
     this.selectedId.set(null);
+    this.depth.set(0);
     this.picked.emit(null);
     this.syncUrl(null);
   }
@@ -1408,11 +1443,12 @@ export class KnowledgeNetworkComponent {
   /** Keeps the selected node in the address so a recorte can be shared or restored. */
   private syncUrl(id: string | null): void {
     if (this.embedded()) return;
-    const current = this.route.snapshot.queryParamMap.get('no');
-    if (current === id) return;
+    const params = this.route.snapshot.queryParamMap;
+    const saltos = this.depth() > 0 ? String(this.depth()) : null;
+    if (params.get('no') === id && params.get('saltos') === saltos) return;
     void this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { no: id },
+      queryParams: { no: id, saltos },
       queryParamsHandling: 'merge',
       replaceUrl: true,
     });
