@@ -446,12 +446,15 @@ test('a extração usa o que a avaliação fixou; flag na linha de comando vence
     model: 'claude-haiku-5-5',
     effort: 'medium',
     relationModel: 'claude-sonnet-5-5',
+    relationEffort: 'low',
   });
   assert.equal(chosenOptions(choice, { effort: 'low' }).effort, 'low');
+  assert.equal(chosenOptions(choice, { 'relation-effort': 'high' }).relationEffort, 'high');
   assert.deepEqual(chosenOptions(null), {
     model: 'claude-haiku-5-5',
     effort: 'low',
     relationModel: undefined,
+    relationEffort: 'low',
   });
 });
 

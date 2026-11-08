@@ -47,6 +47,7 @@ Nada aqui é estado publicado. São hipóteses, cronogramas ou decisões que ain
 | [Expansão com Haiku e Sonnet](research/PLANO-EXPANSAO-HAIKU-SONNET-2026-11.md) | Diagnóstico, ondas, custos e orçamento | plano |
 | [Linha de base da expansão](research/EXPANSAO-BASELINE-2026-11.md) | Inventário, órfãs e o peso dos links de navegação | atual |
 | [Onda 1 — calibração Haiku](research/ONDA1-CALIBRACAO-2026-11.md) | Amostra de 20 artigos, custo e fila humana de 100 itens | plano |
+| [Expansão de relações](research/EXPANSAO-RELACOES-2026-11.md) | +62 relações documentadas, 33 alvos e auditoria Sonnet | resultado |
 | [Gold set](research/gold-set-2026-11/README.md) | 87 relações documentadas, 40 afirmações e 20 pares para conferência humana | plano |
 | [Mapa de leituras](research/readings-map.md) | Próximas leituras: Trabalhismo, Vargas, 1964, ditadura | plano |
 | [Baseline das ideologias](research/ideologies-baseline.md) | Medição inicial de cobertura | histórico |

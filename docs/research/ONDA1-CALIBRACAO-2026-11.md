@@ -20,6 +20,27 @@ total da execução: **US$ 0,0706**, dentro do teto autorizado de US$ 0,30.
   com Sonnet passaria do teto restante; a comparação de desenhos da Onda 1 continua aberta.
 - **A precisão humana não foi medida:** os 100 itens de `revisao.json` estão com `ok: null`.
 
+## Auditoria Sonnet (08/11/2026)
+
+Os 100 itens foram auditados por **Sonnet 5.5** antes da revisão humana:
+
+- **98 sustenta**
+- **2 não sustenta** — Brasil (`haiku-low`, texto) e Partido dos Trabalhadores (`haiku-medium`,
+  texto)
+- 0 inverte, 0 fonte errada
+- ~US$ 0,16 em 38.726 tokens de entrada e 8.110 de saída
+
+O resultado está em `auditoria-ia.json`/`.md`. É uma pré-triagem: não substitui a marcação humana
+e não fecha a porta de precisão ≥ 95%.
+
+## Correção de custo
+
+O `extract.mjs` usava o mesmo `effort` da extração na segunda passada, o que colocava o Sonnet em
+`medium` e estimava ~US$ 13 para 895 verbetes. Agora ele lê `relacoes.effort` do
+`model-choice.json` (Sonnet `low`) e aceita `--relation-effort`. O Marxismo caiu de ~US$ 13 para
+**US$ 0,47** (estimado) e o Liberalismo para **US$ 0,20**.
+
+
 ## Fila humana
 
 `revisao.md` e `revisao.json` nesta pasta contêm 100 itens para conferência. A marcação é humana e

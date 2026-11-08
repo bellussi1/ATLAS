@@ -40,7 +40,8 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Lighthouse da home**: canonical absoluto gerado no build e mantido na navegação, scroll com offsets em cache, revelação em lote (um layout por página, após o primeiro paint), catálogos leves fora do índice de busca, rotas de ideologias/exploração lazy e preload do IBM Plex Mono. Os preconnects do Wikimedia foram removidos por não serem usados na home.
 - **Higiene de console e CSS**: Zod roda sem JIT para não violar o CSP, o filtro de temas ganhou `id`, o logo do rodapé declara proporção e a paleta do `record-card` passou a usar tokens. A preview local agora comprime em brotli/gzip e aplica cache imutável a JS/CSS com hash, aproximando a medição do Pages.
 - **Links de compra**: registros de obra que são livros, com autor conhecido, ganham "Comprar na Amazon" direto para a busca de livros, com `rel="sponsored"` e divulgação quando houver tag. A lista curada fica em `core/content/queries/amazon-books.ts`; tópicos, periódicos e o filme do acervo não recebem link. Sem `AMAZON_ASSOCIATE_TAG`, o link existe mas não gera comissão.
-- **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. A coleção tem 896 entidades; o próximo passo é auditoria/consolidação, não recaptura.
+- **Expansão de relações (paga)**: reextração de Marxismo/Liberalismo, lote de 141 verbetes e 33 alvos ausentes geraram **+62 relações documentadas** e **+32 entidades** (release local **`156b98a`**, ainda não publicado). Custo de **~US$ 0,81** do teto de US$ 6. O `extract.mjs` passou a usar Sonnet **low** na segunda passada, como o `model-choice.json` já previa. Detalhes em `docs/research/EXPANSAO-RELACOES-2026-11.md`.
+- **Onda 2 / verbetes citados**: 908 artigos e **907 rascunhos** recuperados do worktree do `.claude`; os 907 foram publicados em `atlas-drafts/wiki/verbetes-citados/` e o índice, antes 404, agora existe. A coleção passou a **928 entidades e 459 relações** (447 antes da expansão). Restam 376 entidades sem relação; o lote completo foi estimado em US$ 4,91 e não foi executado.
 
 - **Onda 0 / expansão**: linha de base medida e gold set gerado em `docs/research/EXPANSAO-BASELINE-2026-11.md` e `docs/research/gold-set-2026-11/`. O achado principal é que as 122/75/35/10 relações incluem links de navegação; documentadas são **33/11/34/10 (88)**. A captura foi recuperada do worktree do `.claude`: Social-democracia 68/68, Anarquismo 54/54 e `verbetes-citados` 908 artigos/907 rascunhos. Os 907 rascunhos de verbetes foram publicados no `atlas-drafts`; o estágio 5 fica aberto por 3/4 rascunhos enxutos e a reextração paga ainda não foi autorizada.
 
@@ -48,7 +49,7 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 - **Grafo, estado atual**: o release público já tem `network`, então `/grafos` faz **2 requisições** ao Worker em vez de 11–17. Adicionei `?no=<id>` para link direto, "Ver no grafo" nos verbetes, filtro de conectados e zoom inicial de 145% no mobile (607 nós visíveis), além de "Ver como lista" no mobile. Lighthouse: desktop **88** (era 78–81), mobile **56** (TBT ~1,2 s), CLS 0/0,013. Ainda faltam separar o d3-force do chunk e melhorar o TBT mobile.
 
-- **Onda 1 / calibração**: amostra de 20 artigos de Social-democracia e Anarquismo rodada por **US$ 0,0706** (teto US$ 0,30). Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. Ficaram **100 itens** para conferência humana em `docs/research/onda1-2026-11/`. O braço Sonnet low não foi medido; a decisão de modelo segue aberta. As metas da Onda 2 foram recalibradas para relações documentadas: **70/50/70/35**.
+- **Onda 1 / calibração**: amostra de 20 artigos de Social-democracia e Anarquismo rodada por **US$ 0,0706** (teto US$ 0,30). Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. Ficaram **100 itens** para conferência humana em `docs/research/onda1-2026-11/`. A auditoria Sonnet de 08/11 marcou **98 sustenta, 2 não sustenta** (Brasil e PT); os campos `ok` continuam nulos. O braço Sonnet low da avaliação ainda não foi medido; a decisão de modelo segue aberta. As metas da Onda 2 foram recalibradas para relações documentadas: **70/50/70/35**.
 
 ## Pendências que bloqueiam
 
@@ -68,12 +69,13 @@ Atualizado em 08/11/2026. Este é o handoff curto entre sessões. O histórico c
 4. **Aliases antigos** — se quiser que URLs antigas passem a 404, remover `/grafo`, `/rede`, `/comparar`, `/conhecimento` e os redirecionamentos top-level em uma segunda passada.
 5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
 6. **Onda 2** — os 907 rascunhos recuperados permitem auditar e consolidar sem recaptura; decidir o lote de consolidação e revisão. As metas documentadas são 70/50/70/35, não 160/120/100/80.
+7. **Publicação da expansão de relações** — o release local `156b98a` tem +62 relações documentadas e +32 entidades; publicar exige aprovação humana. O lote restante de 376 verbetes custaria ~US$ 4,91 e precisa de decisão de orçamento.
 
 ## Próxima ação
 
-1. Confirmar no painel Cloudflare o consumo do Worker após o release empacotado; se ainda passar do limite em picos, decidir o Workers Paid.
-2. Revisar os 100 itens da Onda 1 em `docs/research/onda1-2026-11/` e rodar `score`; sem precisão humana ≥ 95%, não escalar.
-3. Se a precisão fechar, medir o braço Sonnet low e iniciar a Onda 2 com as metas documentadas 70/50/70/35.
+1. Aprovar (ou não) a publicação do release `156b98a`; o ponteiro público ainda aponta para `e841fac`.
+2. Revisar os 100 itens da Onda 1 em `docs/research/onda1-2026-11/`, começando pelos 2 sinalizados pela auditoria Sonnet, e rodar `score`.
+3. Decidir o próximo lote de relações: 376 verbetes sem relação (~US$ 4,91) ou um recorte menor por tipo.
 4. Rodar Lighthouse na URL publicada para comparar com o relatório local.
 5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
 6. Só depois iniciar a fase 0 dos itinerários.

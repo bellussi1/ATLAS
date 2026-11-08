@@ -99,7 +99,15 @@ const isTextDone = (step, record) =>
   step.prompt === textPrompt;
 
 /** Everything one run needs to know, computed without sending anything. */
-export function planRun({ records, state, model, relationModel, effort, retryFailed }) {
+export function planRun({
+  records,
+  state,
+  model,
+  relationModel,
+  effort,
+  relationEffort = effort,
+  retryFailed,
+}) {
   const prepared = records.map((record) => ({
     ...record,
     source: richSourceText(record.article),
@@ -110,11 +118,11 @@ export function planRun({ records, state, model, relationModel, effort, retryFai
     if (isDone(step, record) || open.has(customIdFor('extract', record.id))) return false;
     return step?.status !== 'failed' || retryFailed;
   });
-  const costShape = (fixed, variable, phase) => ({
+  const costShape = (fixed, variable, phase, level = effort) => ({
     fixedChars: fixed,
     variableChars: variable,
     maxOutputTokens: maxOutputTokens[phase],
-    expectedOutputTokens: assumedOutputTokens[phase][effort] ?? assumedOutputTokens[phase].medium,
+    expectedOutputTokens: assumedOutputTokens[phase][level] ?? assumedOutputTokens[phase].medium,
   });
   const extract = estimateRun(
     toExtract.map((r) => costShape(richSystem.length, r.source.text.length + 300, 'extract')),
@@ -127,7 +135,7 @@ export function planRun({ records, state, model, relationModel, effort, retryFai
         const step = stepOf(state, record.id, 'verify');
         return !isDone(step, record) && !open.has(customIdFor('verify', record.id));
       })
-      .map(() => costShape(verifySystem.length, 12 * 1500, 'verify')),
+      .map(() => costShape(verifySystem.length, 12 * 1500, 'verify', relationEffort)),
     // The second-pass prompt is under the cacheable minimum (512 tokens): no cache mark, no discount.
     { model: relationModel ?? model, cached: false },
   );
@@ -147,12 +155,12 @@ export function planRun({ records, state, model, relationModel, effort, retryFai
   };
 }
 
-export function renderPlan(plan, { model, effort, relationModel }) {
+export function renderPlan(plan, { model, effort, relationModel, relationEffort = effort }) {
   const line = (name, e, used) =>
     `  ${name}: ${e.requests} pedidos em lote, ${e.inputTokens} tokens de entrada (estimados), ${e.expectedOutputTokens} de saída esperados, teto ${e.maxOutputTokens}; ${used}. Esperado ${formatUsd(e.expectedUsd)}, pior caso ${formatUsd(e.worstCaseUsd)}`;
   return [
     line('extração', plan.extract, `${model} ${effort}`),
-    line('segunda passada', plan.verify, `${relationModel ?? model} ${effort}`),
+    line('segunda passada', plan.verify, `${relationModel ?? model} ${relationEffort}`),
     line('conferência do texto', plan.verifytext, `${model} ${effort}`),
     `  total: esperado ${formatUsd(plan.extract.expectedUsd + plan.verify.expectedUsd + plan.verifytext.expectedUsd)}, pior caso ${formatUsd(plan.worstCaseUsd)}`,
   ].join('\n');
@@ -290,6 +298,7 @@ export async function runExtraction({
   model = defaultModel,
   relationModel,
   effort = 'low',
+  relationEffort = effort,
   maxUsd = 1,
   maxTotalUsd = 10,
   /** Spent anywhere in this checkout; the account has one balance. Default: this state only. */
@@ -301,7 +310,15 @@ export async function runExtraction({
   loadStateFile,
 }) {
   const state = await loadStateFile();
-  const plan = planRun({ records, state, model, relationModel, effort, retryFailed });
+  const plan = planRun({
+    records,
+    state,
+    model,
+    relationModel,
+    effort,
+    relationEffort,
+    retryFailed,
+  });
   const budget = createBudget({ maxUsd, maxTotalUsd, spentBefore: spentBefore ?? state.spend.usd });
   budget.reserve(plan.worstCaseUsd, 'execução');
   // A batch cannot stop midway, so its reservation stands; sync reserves again before each request.
@@ -461,7 +478,7 @@ export async function runExtraction({
         relations: drafts.get(record.id).relations.filter((relation) => !relation.verified),
         text: record.source.text,
         model: verifyModel,
-        effort,
+        effort: relationEffort,
       }),
     })),
     client,
@@ -684,6 +701,8 @@ export function chosenOptions(choice, flags = {}) {
     model: flags.model ?? choice?.chosen?.extracao?.model ?? defaultModel,
     effort: flags.effort ?? choice?.chosen?.extracao?.effort ?? 'low',
     relationModel: flags['relation-model'] ?? choice?.chosen?.relacoes?.model,
+    relationEffort:
+      flags['relation-effort'] ?? choice?.chosen?.relacoes?.effort ?? flags.effort ?? 'low',
   };
 }
 
@@ -700,6 +719,7 @@ export async function main(argv = process.argv.slice(2)) {
       effort: { type: 'string' },
       model: { type: 'string' },
       'relation-model': { type: 'string' },
+      'relation-effort': { type: 'string' },
       limit: { type: 'string' },
       only: { type: 'string' },
     },
