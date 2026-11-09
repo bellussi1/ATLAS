@@ -1,7 +1,7 @@
 import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { readingPath } from '@core/routing/reading-routes';
 import { filter, map } from 'rxjs';
 
@@ -71,6 +71,7 @@ export class SiteHeaderComponent {
     viewChild.required<ElementRef<HTMLButtonElement>>('readingsToggle');
   readonly readings = headerReadings;
   readonly catalogues = headerCatalogues;
+  readonly catalogueUrl = catalogueUrl;
   readonly menuOpen = signal(false);
   readonly readingsOpen = signal(false);
   readonly query = signal('');

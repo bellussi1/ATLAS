@@ -26,9 +26,13 @@
   }
 
   <div class="archive-layout">
-    <aside class="filters" [class.filters--open]="filtersOpen()" aria-label="Filtros do acervo">
+    <aside
+      class="filters"
+      [class.filters--open]="filtersOpen()"
+      aria-label="Navegação e filtros do acervo"
+    >
       <div class="filters__head">
-        <h2>Filtros</h2>
+        <h2>Navegar</h2>
         <button
           type="button"
           class="filters__close"
@@ -39,39 +43,68 @@
         </button>
       </div>
 
-      <div class="facet facet--catalogue">
-        <label for="catalogue-select">Catálogo no acervo</label>
-        <select id="catalogue-select" [value]="catalogue.path" (change)="selectCatalogue($event)">
-          @for (group of groups; track group.id) {
-            <optgroup [label]="group.title">
-              @for (item of group.catalogues; track item.path) {
-                <option [value]="item.path">{{ item.title }}</option>
-              }
-            </optgroup>
-          }
-        </select>
-      </div>
-
-      @if (showLayers) {
-        <nav class="facet" aria-labelledby="layers-title">
-          <h3 id="layers-title">Camadas</h3>
-          <ul class="facet-list">
-            @for (entry of layers(); track entry.id) {
-              <li>
-                <a
-                  [routerLink]="[]"
-                  [queryParams]="{ camada: entry.id || null, tipo: null, pagina: null }"
-                  queryParamsHandling="merge"
-                  [attr.aria-current]="layer() === entry.id ? 'true' : null"
-                >
-                  <span>{{ entry.title }}</span>
-                  <span class="facet-count">{{ entry.count }}</span>
-                </a>
-              </li>
+      <nav class="catalogue-nav" aria-label="Catálogos do acervo">
+        <ul class="catalogue-nav__list">
+          <li>
+            <a
+              [routerLink]="catalogueUrl('acervo')"
+              [queryParams]="navQuery()"
+              [attr.aria-current]="isUniversal() ? 'page' : null"
+              >Tudo</a
+            >
+          </li>
+          <li class="catalogue-nav__group">
+            <div class="catalogue-nav__row">
+              <a
+                [routerLink]="catalogueUrl('acervo')"
+                [queryParams]="navQuery({ camada: 'registros' })"
+                [attr.aria-current]="isRegistros() ? 'page' : null"
+                >Registros</a
+              >
+              <button
+                type="button"
+                class="catalogue-nav__toggle"
+                [attr.aria-expanded]="registrosOpen()"
+                aria-controls="registros-list"
+                [attr.aria-label]="registrosOpen() ? 'Recolher registros' : 'Expandir registros'"
+                (click)="registrosOpen.set(!registrosOpen())"
+              >
+                <span aria-hidden="true">{{ registrosOpen() ? '−' : '+' }}</span>
+              </button>
+            </div>
+            @if (registrosOpen()) {
+              <ul id="registros-list" class="catalogue-nav__list catalogue-nav__list--nested">
+                @for (item of recordCatalogues; track item.path) {
+                  <li>
+                    <a
+                      [routerLink]="catalogueUrl(item.path)"
+                      [queryParams]="navQuery()"
+                      [attr.aria-current]="catalogue.path === item.path ? 'page' : null"
+                      >{{ item.title }}</a
+                    >
+                  </li>
+                }
+              </ul>
             }
-          </ul>
-        </nav>
-      }
+          </li>
+          <li>
+            <a
+              [routerLink]="catalogueUrl('fontes')"
+              [queryParams]="navQuery()"
+              [attr.aria-current]="isFontes() ? 'page' : null"
+              >Fontes</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="catalogueUrl('acervo')"
+              [queryParams]="navQuery({ camada: 'editorial' })"
+              [attr.aria-current]="isLeituras() ? 'page' : null"
+              >Leituras</a
+            >
+          </li>
+        </ul>
+      </nav>
 
       @if (scopeFilterShown()) {
         <nav class="facet" aria-labelledby="scope-title">
@@ -105,40 +138,6 @@
         </nav>
       }
 
-      @if (
-        kindGroups().length &&
-        facets().kinds.length > 1 &&
-        !sourceList() &&
-        !editorialList() &&
-        (!showLayers || layer() === 'registros')
-      ) {
-        <nav class="facet facet--types" aria-labelledby="types-title">
-          <h3 id="types-title">Tipo</h3>
-          <div class="types">
-            @for (group of kindGroups(); track group.id) {
-              <div class="types__group">
-                <p>{{ group.title }}</p>
-                @for (facet of group.kinds; track facet.value) {
-                  <a
-                    [routerLink]="[]"
-                    [queryParams]="{
-                      camada: showLayers ? 'registros' : null,
-                      tipo: facet.value,
-                      pagina: null,
-                    }"
-                    queryParamsHandling="merge"
-                    [attr.aria-current]="params().get('tipo') === facet.value ? 'true' : null"
-                  >
-                    <span>{{ facet.label }}</span>
-                    <span class="facet-count">{{ facet.count }}</span>
-                  </a>
-                }
-              </div>
-            }
-          </div>
-        </nav>
-      }
-
       <nav class="facet" aria-labelledby="states-title">
         <h3 id="states-title">Estado</h3>
         <ul class="facet-list">
@@ -168,22 +167,10 @@
         </ul>
       </nav>
 
-      <a class="filters__clear" [routerLink]="'/' + catalogue.path">Limpar filtros</a>
+      <a class="filters__clear" [routerLink]="catalogueUrl(catalogue.path)">Limpar filtros</a>
     </aside>
 
     <div class="archive-main">
-      <div class="catalogue-quick">
-        <label for="catalogue-quick">Catálogo</label>
-        <select id="catalogue-quick" [value]="catalogue.path" (change)="selectCatalogue($event)">
-          @for (group of groups; track group.id) {
-            <optgroup [label]="group.title">
-              @for (item of group.catalogues; track item.path) {
-                <option [value]="item.path">{{ item.title }}</option>
-              }
-            </optgroup>
-          }
-        </select>
-      </div>
       <form
         class="search-band"
         role="search"
@@ -218,7 +205,9 @@
           Busque em registros, fontes e leituras. Um registro cadastrado não equivale a conteúdo
           verificado.
         </p>
-        <a class="search-clear-all" [routerLink]="'/' + catalogue.path">Limpar busca e filtros</a>
+        <a class="search-clear-all" [routerLink]="catalogueUrl(catalogue.path)"
+          >Limpar busca e filtros</a
+        >
       </form>
 
       @if (activeFilters().length) {
@@ -233,7 +222,7 @@
               >{{ filter.label }} <span aria-hidden="true">×</span></a
             >
           }
-          <a class="active-filter active-filter--clear" [routerLink]="'/' + catalogue.path"
+          <a class="active-filter active-filter--clear" [routerLink]="catalogueUrl(catalogue.path)"
             >Limpar tudo</a
           >
         </div>
@@ -425,11 +414,13 @@
               <p>Não há registros com os filtros atuais.</p>
             }
             <div class="empty__actions">
-              <a [routerLink]="'/' + catalogue.path">Limpar busca e filtros</a>
+              <a [routerLink]="catalogueUrl(catalogue.path)">Limpar busca e filtros</a>
               @if (showLayers) {
-                <a [routerLink]="[]" [queryParams]="{ camada: 'registros' }">Ver só registros</a>
+                <a [routerLink]="catalogueUrl('acervo')" [queryParams]="{ camada: 'registros' }"
+                  >Ver só registros</a
+                >
               }
-              <a routerLink="/fontes">Procurar nas fontes</a>
+              <a [routerLink]="catalogueUrl('fontes')">Procurar nas fontes</a>
             </div>
           </div>
         }

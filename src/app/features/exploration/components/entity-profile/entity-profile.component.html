@@ -30,7 +30,9 @@
     }
     @for (item of references(); track item.evidence.id) {
       <p>
-        <a routerLink="/fontes" [fragment]="'source-' + item.source.id">{{ item.source.title }}</a>
+        <a routerLink="/acervo/fontes" [fragment]="'source-' + item.source.id">{{
+          item.source.title
+        }}</a>
         · {{ item.evidence.locator }}.
       </p>
       @if (item.evidence.note) {

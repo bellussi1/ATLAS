@@ -1,6 +1,30 @@
 // Kept apart from the search functions so the home, header and footer can import the catalogue
 // metadata without pulling the discovery index and its full content schemas into the initial bundle.
 
+/** Canonical address of a catalogue: the archive is the only entry point. */
+export const catalogueUrl = (path: string) => (path === 'acervo' ? '/acervo' : `/acervo/${path}`);
+
+/**
+ * Reader-facing order inside the archive tree. It is intentionally independent from the table
+ * order above: the tree groups what is read together, then the context records, then places.
+ */
+export const explorerRecordCatalogueOrder = [
+  'entidades',
+  'pessoas',
+  'ideologias',
+  'obras',
+  'conceitos',
+  'paises',
+  'estados',
+  'cidades',
+  'locais',
+  'regimes',
+  'partidos',
+  'instituicoes',
+  'acontecimentos',
+  'lugares',
+] as const;
+
 export const explorerGroups = [
   { id: 'acervo', title: 'Acervo' },
   { id: 'ideias', title: 'Ideias e pessoas' },

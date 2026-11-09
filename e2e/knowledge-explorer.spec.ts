@@ -4,7 +4,7 @@ import { auditPage } from './accessibility';
 import { expect, test } from './content-fixture';
 
 test('a connection keeps the search origin so the results stay one step away', async ({ page }) => {
-  await page.goto('/verbete/karl-marx?origem=%2Fentidades%3Fq%3DMarx');
+  await page.goto('/verbete/karl-marx?origem=%2Facervo%2Fentidades%3Fq%3DMarx');
   await expect(page).toHaveURL(/origem=/);
   const group = page
     .locator('.connection-group')
@@ -17,7 +17,7 @@ test('a connection keeps the search origin so the results stay one step away', a
   await expect(page).toHaveURL(/origem=/);
   await expect(page.getByRole('link', { name: 'Voltar aos resultados' })).toHaveAttribute(
     'href',
-    /\/entidades\?q=Marx/,
+    /\/acervo\/entidades\?q=Marx/,
   );
 });
 
@@ -38,20 +38,14 @@ test('the universal archive separates records, sources and readings into layers'
   page,
 }) => {
   await page.goto('/acervo');
-  const layers = page.getByRole('navigation', { name: 'Camadas' });
-  await expect(layers.getByRole('link', { name: /^Tudo\b/ })).toHaveAttribute(
-    'aria-current',
-    'true',
-  );
-  await layers.getByRole('link', { name: /^Fontes\b/ }).click();
-  await expect(page).toHaveURL(/camada=fontes/);
+  const nav = page.getByRole('navigation', { name: 'Catálogos do acervo' });
+  await expect(nav.getByRole('link', { name: 'Tudo' })).toHaveAttribute('aria-current', 'page');
+  await nav.getByRole('link', { name: 'Fontes' }).click();
+  await expect(page).toHaveURL(/\/acervo\/fontes$/);
   await expect(page.locator('.source-row').first()).toBeVisible();
   await expect(page.locator('.results--cards')).toHaveCount(0);
-  await expect(layers.getByRole('link', { name: /^Fontes\b/ })).toHaveAttribute(
-    'aria-current',
-    'true',
-  );
-  await layers.getByRole('link', { name: /^Tudo\b/ }).click();
+  await expect(nav.getByRole('link', { name: 'Fontes' })).toHaveAttribute('aria-current', 'page');
+  await nav.getByRole('link', { name: 'Tudo' }).click();
   await expect(page).not.toHaveURL(/camada=/);
   await expect(page.locator('.record-row').first()).toBeVisible();
 });
@@ -59,9 +53,10 @@ test('the universal archive separates records, sources and readings into layers'
 test('the scope index separates core, context and out-of-scope records', async ({ page }) => {
   await page.goto('/acervo');
   await page
-    .getByRole('navigation', { name: 'Camadas' })
-    .getByRole('link', { name: /^Registros\b/ })
+    .getByRole('navigation', { name: 'Catálogos do acervo' })
+    .getByRole('link', { name: 'Registros' })
     .click();
+  await expect(page).toHaveURL(/camada=registros/);
   const scope = page.getByRole('navigation', { name: 'Escopo' });
   await expect(scope.getByRole('link', { name: /^Núcleo\b/ })).toBeVisible();
   await expect(scope.getByRole('link', { name: /^Contexto\b/ })).toBeVisible();
@@ -76,23 +71,24 @@ test('the scope index separates core, context and out-of-scope records', async (
   await expect(page.locator('.result-card')).toHaveCount(24);
 });
 
-test('a phone switches catalogues with a compact selector above the search', async ({ page }) => {
+test('a phone opens the catalogue tree from the filters panel', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/acervo');
-  const select = page.getByLabel('Catálogo', { exact: true });
-  await expect(select).toBeVisible();
-  await select.selectOption('pessoas');
-  await expect(page).toHaveURL(/\/pessoas$/);
+  await page.getByRole('button', { name: /Filtros/ }).click();
+  const nav = page.getByRole('navigation', { name: 'Catálogos do acervo' });
+  await expect(nav).toBeVisible();
+  await nav.getByRole('link', { name: 'Pessoas' }).click();
+  await expect(page).toHaveURL(/\/acervo\/pessoas$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pessoas');
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toBeVisible();
 });
 
 test('the place catalogues separate countries, states, cities and sites', async ({ page }) => {
   for (const [path, title, kind] of [
-    ['/paises', 'Países', 'País'],
-    ['/estados', 'Estados', 'Estado'],
-    ['/cidades', 'Cidades', 'Cidade'],
-    ['/locais', 'Locais', 'Local'],
+    ['/acervo/paises', 'Países', 'País'],
+    ['/acervo/estados', 'Estados', 'Estado'],
+    ['/acervo/cidades', 'Cidades', 'Cidade'],
+    ['/acervo/locais', 'Locais', 'Local'],
   ]) {
     await page.goto(path);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
@@ -105,28 +101,13 @@ test('the place catalogues separate countries, states, cities and sites', async 
   await expect(page.locator('.hero')).toHaveClass(/hero--flag/);
 });
 
-test('the type index groups record kinds and each active filter can be removed', async ({
-  page,
-}) => {
-  await page.goto('/acervo');
-  const layers = page.getByRole('navigation', { name: 'Camadas' });
-  await layers.getByRole('link', { name: /^Registros\b/ }).click();
-  await expect(page).toHaveURL(/camada=registros/);
-  const categories = page.getByRole('navigation', { name: 'Tipo' });
-  await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
-  await expect(page).toHaveURL(/tipo=pessoa/);
+test('a type filter in the URL stays removable without the old type index', async ({ page }) => {
+  await page.goto('/acervo?camada=registros&tipo=pessoa');
   const active = page.getByLabel('Filtros ativos');
   await expect(active).toContainText('Tipo: Pessoa');
   await active.getByRole('link', { name: 'Remover Tipo: Pessoa' }).click();
   await expect(page).not.toHaveURL(/tipo=/);
-  await expect(categories.getByRole('link', { name: /^Pessoa\b/ })).not.toHaveAttribute(
-    'aria-current',
-    'true',
-  );
-  await expect(layers.getByRole('link', { name: /^Registros\b/ })).toHaveAttribute(
-    'aria-current',
-    'true',
-  );
+  await expect(page.getByRole('navigation', { name: 'Catálogos do acervo' })).toBeVisible();
 });
 
 test('universal search starts at home, handles aliases and keeps filters through a permanent page', async ({
@@ -152,26 +133,19 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
     'guimaraes silveira',
   );
-  const layers = page.getByRole('navigation', { name: 'Camadas' });
-  await layers.getByRole('link', { name: /^Registros\b/ }).click();
-  const categories = page.getByRole('navigation', { name: 'Tipo' });
-  await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
-  await expect(page).toHaveURL(/tipo=pessoa/);
+  const nav = page.getByRole('navigation', { name: 'Catálogos do acervo' });
+  await nav.getByRole('link', { name: 'Pessoas' }).click();
+  await expect(page).toHaveURL(/\/acervo\/pessoas$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pessoas');
   await page.goBack();
-  await expect(layers.getByRole('link', { name: /^Registros\b/ })).toHaveAttribute(
-    'aria-current',
-    'true',
+  await expect(nav.getByRole('link', { name: 'Tudo' })).toHaveAttribute('aria-current', 'page');
+  await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
+    'guimaraes silveira',
   );
   await page.goForward();
-  await expect(categories.getByRole('link', { name: /^Pessoa\b/ })).toHaveAttribute(
-    'aria-current',
-    'true',
-  );
+  await expect(nav.getByRole('link', { name: 'Pessoas' })).toHaveAttribute('aria-current', 'page');
   await page.reload();
-  await expect(categories.getByRole('link', { name: /^Pessoa\b/ })).toHaveAttribute(
-    'aria-current',
-    'true',
-  );
+  await expect(nav.getByRole('link', { name: 'Pessoas' })).toHaveAttribute('aria-current', 'page');
   await page
     .getByLabel('Procurar no acervo', { exact: true })
     .fill('nenhum-registro-com-este-nome');
@@ -185,10 +159,10 @@ test('catalogues expose actual records and permanent pages update when following
   page,
 }) => {
   for (const [path, title] of [
-    ['/entidades', 'Entidades'],
-    ['/pessoas', 'Pessoas'],
-    ['/obras', 'Obras'],
-    ['/ideologias', 'Ideologias'],
+    ['/acervo/entidades', 'Entidades'],
+    ['/acervo/pessoas', 'Pessoas'],
+    ['/acervo/obras', 'Obras'],
+    ['/acervo/ideologias', 'Ideologias'],
   ]) {
     await page.goto(path);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
@@ -213,7 +187,7 @@ test('catalogues expose actual records and permanent pages update when following
     page.locator('.connection').getByRole('link', { name: 'Karl Marx', exact: true }),
   ).toBeVisible();
   await page.getByRole('link', { name: 'Abrir esta fonte no índice' }).first().click();
-  await expect(page).toHaveURL(/\/fontes(\?pagina=\d+)?#source-/);
+  await expect(page).toHaveURL(/\/acervo\/fontes(\?pagina=\d+)?#source-/);
   await expect(page.locator(new URL(page.url()).hash)).toBeVisible();
 });
 
@@ -284,6 +258,8 @@ test('all search destinations have prerendered HTML with matching title, canonic
     ['/liberalismo', '/leitura/liberalismo'],
     ['/social-democracia', '/leitura/social-democracia'],
     ['/anarquismo', '/leitura/anarquismo'],
+    // The published release still indexes sources at the old top-level address.
+    ['/fontes', '/acervo/fontes'],
   ]);
   for (const entry of index) {
     const target = legacyReadings.get(entry.path) ?? entry.path;
@@ -292,7 +268,7 @@ test('all search destinations have prerendered HTML with matching title, canonic
     const html = await response.text();
     const pageTitle = readingPaths.includes(target)
       ? `${entry.title}: ideias e divergências`
-      : target === '/fontes'
+      : target === '/acervo/fontes'
         ? 'Fontes'
         : entry.title;
     const title = pageTitle
@@ -307,25 +283,24 @@ test('all search destinations have prerendered HTML with matching title, canonic
     // The Pages host serves directory routes with a trailing slash; the canonical follows it.
     const canonicalTarget = target === '/' ? '/' : `${target.replace(/\/+$/, '')}/`;
     expect(canonical, target).toBe(site + canonicalTarget);
-    if (entry.fragment && target !== '/fontes')
+    if (entry.fragment && target !== '/acervo/fontes')
       expect(html).toContain('id="' + entry.fragment + '"');
     // Sources are paginated: page 1 carries the pager and its own anchors; later anchors are
-    // resolved in the browser by /fontes, as covered in pages.spec.ts.
-    if (target === '/fontes') expect(html).toContain('Carregar mais');
+    // resolved in the browser by /acervo/fontes, as covered in pages.spec.ts.
+    if (target === '/acervo/fontes') expect(html).toContain('Carregar mais');
   }
 });
 
 for (const path of [
   '/acervo?q=xyzzy',
-  '/acervo?camada=fontes',
-  '/paises',
-  '/cidades',
-  '/pessoas',
+  '/acervo/fontes',
+  '/acervo/paises',
+  '/acervo/cidades',
+  '/acervo/pessoas',
   '/verbete/karl-marx',
-  '/fontes',
 ]) {
   test(`${path} reflows at 320px and has no serious axe findings`, async ({ page }) => {
-    test.setTimeout(path === '/fontes' ? 90_000 : 30_000);
+    test.setTimeout(path === '/acervo/fontes' ? 90_000 : 30_000);
     await page.setViewportSize({ width: 320, height: 740 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(path);
@@ -349,7 +324,7 @@ test('the catalogue skip link focuses its content on a phone', async ({ page }) 
 test('missing and unavailable entries provide recovery without external return links', async ({
   page,
 }) => {
-  await page.goto('/pessoas?tipo=invalid');
+  await page.goto('/acervo/pessoas?tipo=invalid');
   await expect(page.getByRole('heading', { name: 'Nenhum registro encontrado' })).toBeVisible();
   await page.goto('/verbete/karl-marx?origem=https://evil.test');
   await expect(page.getByRole('link', { name: 'Voltar aos resultados' })).toHaveCount(0);

@@ -22,14 +22,17 @@ import {
 } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
 import type { DiscoveryIndexEntry } from '@core/content/queries/discovery-index';
-import { explorerCatalogues, explorerGroups } from '@core/content/queries/explorer-catalogues';
+import {
+  catalogueUrl,
+  explorerCatalogues,
+  explorerRecordCatalogueOrder,
+} from '@core/content/queries/explorer-catalogues';
 import {
   EXPLORER_PAGE_SIZE,
   explorerEntries,
   explorerFacets,
   explorerLayers,
   explorerMatchKind,
-  explorerRecordGroups,
   parseExplorerPage,
 } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
@@ -62,13 +65,14 @@ export class ExplorerComponent {
   private resolvedFragment: string | null = null;
   /** Keeps the previous page visible and marked busy while a query-string change settles. */
   readonly navigating = signal(false);
-  readonly groups = explorerGroups.map((group) => ({
-    ...group,
-    catalogues: explorerCatalogues.filter((c) => c.group === group.id),
-  }));
+  readonly catalogueUrl = catalogueUrl;
   readonly catalogue =
     explorerCatalogues.find((c) => c.path === this.route.snapshot.data['catalogue']) ??
     explorerCatalogues[0];
+  readonly recordCatalogues = explorerRecordCatalogueOrder.map((path) =>
+    explorerCatalogues.find((catalogue) => catalogue.path === path)!,
+  );
+  readonly registrosOpen = signal(true);
   readonly mosaicSeed = explorerCatalogues.indexOf(this.catalogue) + 3;
   readonly languages = contentLanguageLabels;
   readonly params = signal<ParamMap>(this.readInitialParams());
@@ -86,6 +90,18 @@ export class ExplorerComponent {
     const value = this.params().get('camada') ?? '';
     return explorerLayers.some((item) => item.id === value) ? value : '';
   });
+  readonly isUniversal = computed(() => this.catalogue.path === 'acervo' && !this.layer());
+  readonly isRegistros = computed(
+    () => this.catalogue.path === 'acervo' && this.layer() === 'registros',
+  );
+  readonly isFontes = computed(
+    () =>
+      this.catalogue.path === 'fontes' ||
+      (this.catalogue.path === 'acervo' && this.layer() === 'fontes'),
+  );
+  readonly isLeituras = computed(
+    () => this.catalogue.path === 'acervo' && this.layer() === 'editorial',
+  );
   /** Political relevance of the record: core, context or outside the archive's scope. */
   readonly scope = computed(() => {
     const value = this.params().get('escopo') ?? '';
@@ -141,18 +157,6 @@ export class ExplorerComponent {
       { value: 'fora', label: 'Fora', count: counts.get('fora') ?? 0 },
     ];
   });
-  readonly layers = computed(() => this.facets().layers);
-  /** Thematic groups of record kinds; sources and readings keep their own layer. */
-  readonly kindGroups = computed(() =>
-    explorerRecordGroups
-      .map((group) => ({
-        ...group,
-        kinds: this.facets().kinds.filter((kind) =>
-          (group.kinds as readonly string[]).includes(kind.value),
-        ),
-      }))
-      .filter((group) => group.kinds.length),
-  );
   readonly results = computed(() =>
     explorerEntries(this.repository.discoveryIndex, {
       catalogue: this.catalogue.path,
@@ -189,7 +193,7 @@ export class ExplorerComponent {
     const range = shown === total ? `${total}` : `1–${shown}`;
     return `${range} de ${total} ${total === 1 ? 'resultado' : 'resultados'}`;
   });
-  readonly origin = computed(() => '/' + this.catalogue.path + this.queryString());
+  readonly origin = computed(() => catalogueUrl(this.catalogue.path) + this.queryString());
   readonly unknownKind = computed(
     () =>
       !!this.params().get('tipo') &&
@@ -216,12 +220,7 @@ export class ExplorerComponent {
       ? 'Nenhum resultado encontrado'
       : 'Nenhum registro encontrado',
   );
-  readonly scopeFilterShown = computed(
-    () =>
-      !this.sourceList() &&
-      !this.editorialList() &&
-      (!this.showLayers || this.layer() === 'registros'),
-  );
+  readonly scopeFilterShown = computed(() => !this.sourceList() && !this.editorialList());
   readonly activeFilters = computed(() => {
     const params = this.params();
     const filters: { key: string; label: string; remove: Record<string, null> }[] = [];
@@ -257,7 +256,7 @@ export class ExplorerComponent {
     }
     return filters;
   });
-  readonly activeFilterCount = computed(() => this.activeFilters().length + (this.layer() ? 1 : 0));
+  readonly activeFilterCount = computed(() => this.activeFilters().length);
   constructor() {
     // Hydration can start the router without the initial query string; the real URL settles it.
     afterNextRender(() => {
@@ -334,6 +333,11 @@ export class ExplorerComponent {
       if (this.searchTimer) clearTimeout(this.searchTimer);
     });
   }
+  /** The tree keeps the reading language when the reader switches catalogues. */
+  navQuery(extra: Record<string, string> = {}): Record<string, string> {
+    const idioma = this.params().get('idioma');
+    return { ...extra, ...(idioma ? { idioma } : {}) };
+  }
   sourceUrl(id: string): string | null {
     return (
       this.repository.knowledgeGraph.atlases.flatMap((a) => a.sources).find((s) => s.id === id)
@@ -391,14 +395,6 @@ export class ExplorerComponent {
   }
   toggleFilters(): void {
     this.filtersOpen.update((open) => !open);
-  }
-  /** On phones the catalogue table becomes a compact selector; the route drives the change. */
-  selectCatalogue(event: Event): void {
-    const path = (event.target as HTMLSelectElement).value;
-    if (!path || path === this.catalogue.path) return;
-    void this.router.navigate(['/' + path], {
-      queryParams: { idioma: this.params().get('idioma') },
-    });
   }
   /** Title and summary in the requested language when an approved translation exists. */
   shown(entry: DiscoveryIndexEntry): { title: string; summary: string; locale: string } {

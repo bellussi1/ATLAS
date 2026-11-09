@@ -78,7 +78,9 @@ for (const [file, document] of documents) {
     if (destination) {
       const anchor = url.hash ? decodeURIComponent(url.hash.slice(1)) : '';
       const paginatedSource =
-        url.pathname === '/fontes' && url.hash && isReleasedSource(url.hash.slice(1));
+        (url.pathname === '/fontes' || url.pathname === '/acervo/fontes') &&
+        url.hash &&
+        isReleasedSource(url.hash.slice(1));
       if (anchor && !destination.ids.has(anchor) && !paginatedSource)
         errors.push(`${file}: âncora ${href}`);
       continue;

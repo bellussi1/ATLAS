@@ -184,7 +184,7 @@
     </li>
     @for (catalogue of catalogues; track catalogue.path; let index = $index) {
       <li class="door" data-stagger [style.--stagger]="index + 2">
-        <a [routerLink]="'/' + catalogue.path">
+        <a [routerLink]="catalogueUrl(catalogue.path)">
           <span class="door-glyph" aria-hidden="true"></span>
           <strong>{{ catalogue.title }}</strong>
           <span class="door-note">{{ catalogue.description }}</span>

@@ -1,5 +1,5 @@
 import { type DiscoveryIndexEntry, nameMatchScore } from './discovery-index';
-import { explorerCatalogues } from './explorer-catalogues';
+import { catalogueUrl, explorerCatalogues } from './explorer-catalogues';
 export { explorerCatalogues, explorerGroups } from './explorer-catalogues';
 
 // Fixed page: 6 columns × 4 rows of cards on desktop. The size is not a user choice.
@@ -284,7 +284,9 @@ export function safeExplorerReturn(value: string | null): string | null {
     if (
       url.origin !== 'https://atlas.invalid' ||
       url.hash ||
-      !explorerCatalogues.some((c) => '/' + c.path === url.pathname) ||
+      !explorerCatalogues.some(
+        (c) => '/' + c.path === url.pathname || catalogueUrl(c.path) === url.pathname,
+      ) ||
       [...url.searchParams.keys()].some(
         (k) =>
           ![

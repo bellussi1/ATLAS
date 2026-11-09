@@ -10,8 +10,8 @@ const routes = [
   '/leitura/marxismo',
   '/leitura/liberalismo',
   '/acervo',
-  '/pessoas',
-  '/fontes',
+  '/acervo/pessoas',
+  '/acervo/fontes',
   '/verbete/karl-marx',
   '/verbete/john-locke',
 ];

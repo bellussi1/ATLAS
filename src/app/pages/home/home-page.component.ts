@@ -10,7 +10,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { readingPath } from '@core/routing/reading-routes';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
@@ -88,6 +88,7 @@ export class HomePage {
     ),
   );
   readonly stats = compiledHome.counts;
+  readonly catalogueUrl = catalogueUrl;
   /** Published readings compiled into the home; a new release updates the cards without edits. */
   readonly readings = compiledHome.readings;
   readonly updatedLabel = (() => {

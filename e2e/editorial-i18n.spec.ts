@@ -6,25 +6,25 @@ test('expanded catalogues expose grounded country/regime profiles and the other 
   page,
 }) => {
   for (const [path, title] of [
-    ['/paises', 'Países'],
-    ['/regimes', 'Regimes'],
-    ['/partidos', 'Partidos'],
-    ['/instituicoes', 'Instituições'],
-    ['/acontecimentos', 'Acontecimentos'],
-    ['/conceitos', 'Conceitos'],
-    ['/lugares', 'Lugares'],
+    ['/acervo/paises', 'Países'],
+    ['/acervo/regimes', 'Regimes'],
+    ['/acervo/partidos', 'Partidos'],
+    ['/acervo/instituicoes', 'Instituições'],
+    ['/acervo/acontecimentos', 'Acontecimentos'],
+    ['/acervo/conceitos', 'Conceitos'],
+    ['/acervo/lugares', 'Lugares'],
   ]) {
     await page.goto(path);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
     expect(await page.locator('.results article').count()).toBeGreaterThan(0);
   }
-  await page.goto('/paises');
+  await page.goto('/acervo/paises');
   await expect(page.locator('.results a[href^="/verbete/brasil?"]')).toBeVisible();
-  await page.goto('/regimes');
+  await page.goto('/acervo/regimes');
   await expect(
     page.locator('.results a[href^="/verbete/brasil-recorte-constitucional-1988?"]'),
   ).toBeVisible();
-  await page.goto('/lugares');
+  await page.goto('/acervo/lugares');
   await expect(page.locator('.results a[href^="/verbete/brasil?"]')).toHaveCount(0);
   await page.goto('/verbete/brasil');
   await expect(page.getByRole('region', { name: 'Perfil específico do registro' })).toContainText(
@@ -41,11 +41,11 @@ test('expanded catalogues expose grounded country/regime profiles and the other 
 test('topic records are catalogued as concepts, while named happenings stay events', async ({
   page,
 }) => {
-  await page.goto('/conceitos?q=aborto');
+  await page.goto('/acervo/conceitos?q=aborto');
   await expect(page.locator('.results a[href^="/verbete/aborto?"]')).toHaveCount(1);
-  await page.goto('/acontecimentos?q=aborto');
+  await page.goto('/acervo/acontecimentos?q=aborto');
   await expect(page.locator('.results a[href^="/verbete/aborto?"]')).toHaveCount(0);
-  await page.goto('/acontecimentos?q=primeira%20guerra%20mundial');
+  await page.goto('/acervo/acontecimentos?q=primeira%20guerra%20mundial');
   await expect(page.locator('.results a[href^="/verbete/primeira-guerra-mundial?"]')).toHaveCount(
     1,
   );
@@ -83,7 +83,7 @@ test('reviewed English text preserves identity, original evidence, review method
 test('English search finds translated narrative and keeps locale when returning to results', async ({
   page,
 }) => {
-  await page.goto('/paises?idioma=en&q=Federative');
+  await page.goto('/acervo/paises?idioma=en&q=Federative');
   await expect(page.locator('.notice')).toContainText('Nenhum nome corresponde');
   const results = page.getByRole('region', { name: 'Resultados da busca' });
   await results.getByRole('link', { name: /^País Brazil/ }).click();
@@ -113,8 +113,8 @@ test('expanded catalogues and translated records stay accessible and usable at 3
   await page.setViewportSize({ width: 320, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
   for (const path of [
-    '/regimes?idioma=en',
-    '/partidos',
+    '/acervo/regimes?idioma=en',
+    '/acervo/partidos',
     '/verbete/brasil?idioma=en',
     '/verbete/portugal-recorte-constitucional-1976',
   ]) {
@@ -130,7 +130,7 @@ test('expanded catalogues and translated records stay accessible and usable at 3
   }
   await page.screenshot({ path: 'output/playwright/editorial-regime-mobile.png', fullPage: true });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto('/paises?idioma=en');
+  await page.goto('/acervo/paises?idioma=en');
   await page.screenshot({
     path: 'output/playwright/editorial-countries-en-desktop.png',
     fullPage: true,

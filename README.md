@@ -54,7 +54,7 @@ O ATLAS não organiza o conhecimento em artigos isolados. Cada grande tema é um
 | `/` | Página inicial: busca universal, entrada para as leituras e mesa de pesquisa |
 | `/leitura/:slug` | Leituras contínuas por tradição (`/marxismo`, `/liberalismo`, `/social-democracia` e `/anarquismo` redirecionam) |
 | `/acervo` | Busca no acervo, com filtros que ficam na URL |
-| `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/paises`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos`, `/lugares` | Catálogos por tipo |
+| `/acervo/<catálogo>` | Catálogos por tipo: entidades, ideologias, pessoas, obras, conceitos, países, estados, cidades, locais, regimes, partidos, instituições, acontecimentos, lugares e fontes. As antigas rotas de catálogo respondem 301 para cá |
 | `/grafos` | Mapa de ligações em tela cheia (`/grafo` e `/rede` redirecionam para cá) |
 | `/verbete/:slug` | Página permanente de uma entidade, com contexto, fontes e conexões |
 

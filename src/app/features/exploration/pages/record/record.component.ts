@@ -10,7 +10,7 @@ import {
 } from '@core/content/editorial/reader-voice';
 import { amazonBookLink } from '@core/content/queries/amazon-books';
 import { entityContext } from '@core/content/queries/entity-context';
-import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { catalogueForKind, safeExplorerReturn } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels, localizedEntity } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
@@ -184,7 +184,7 @@ export class RecordComponent {
     const catalogue = kind
       ? explorerCatalogues.find((item) => item.path === catalogueForKind(kind))
       : undefined;
-    return catalogue ? { title: catalogue.title, path: '/' + catalogue.path } : undefined;
+    return catalogue ? { title: catalogue.title, path: catalogueUrl(catalogue.path) } : undefined;
   });
   readonly facts = computed(() => {
     const entity = this.entity();
@@ -227,7 +227,9 @@ export class RecordComponent {
   });
   readonly consulted = readerDate;
   pathFor(id: string): string {
-    return this.repository.discoveryIndex.find((e) => e.id === id)?.path ?? '/entidades';
+    return (
+      this.repository.discoveryIndex.find((e) => e.id === id)?.path ?? catalogueUrl('entidades')
+    );
   }
   /** Copies the record's permanent address; the button replaces the link to the page itself. */
   async copyLink(): Promise<void> {

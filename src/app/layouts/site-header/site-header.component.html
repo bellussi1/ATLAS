@@ -60,7 +60,7 @@
                 <ul class="catalogue-links">
                   @for (catalogue of catalogues; track catalogue.path) {
                     <li>
-                      <a [routerLink]="'/' + catalogue.path" (click)="close()">{{
+                      <a [routerLink]="catalogueUrl(catalogue.path)" (click)="close()">{{
                         catalogue.title
                       }}</a>
                     </li>
