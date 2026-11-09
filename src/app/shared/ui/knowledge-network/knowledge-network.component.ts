@@ -31,6 +31,7 @@ import {
   type NetworkLayout,
   type NetworkNode,
   type NetworkPoint,
+  type NodeLink,
   nodeRadius,
   nodeScaleFor,
   positionClaims,
@@ -38,7 +39,9 @@ import {
   relationFamilyDefinition,
   type RelationFamilyId,
   relationNatureDefinition,
+  type RelationWeight,
   relationWeightDefinition,
+  relationWeights,
   searchNodes,
 } from '@core/content/queries/knowledge-network';
 import {
@@ -176,6 +179,8 @@ export class KnowledgeNetworkComponent {
   ];
   readonly query = signal('');
   readonly selectedId = signal<string | null>(null);
+  /** On a phone the detail sheet can step aside so the map keeps the screen. */
+  readonly detailsCollapsed = signal(false);
   readonly hoveredId = signal<string | null>(null);
   readonly focusId = signal<string | null>(null);
   /** Inclusive year interval; both fields empty means no period filter. */
@@ -312,6 +317,21 @@ export class KnowledgeNetworkComponent {
     const node = this.selected();
     return node ? linksOf(node.id, this.visible().edges, this.nodeIndex) : [];
   });
+  /** Links grouped by what they assert; the panel renders one group at a time. */
+  readonly linkGroups = computed(() => {
+    const groups = new Map<RelationWeight, NodeLink[]>();
+    for (const link of this.selectedLinks()) {
+      const bucket = groups.get(link.edge.weight);
+      if (bucket) bucket.push(link);
+      else groups.set(link.edge.weight, [link]);
+    }
+    return relationWeights.flatMap((weight) => {
+      const links = groups.get(weight.id);
+      return links?.length ? [{ ...weight, links }] : [];
+    });
+  });
+  readonly openGroups = signal<ReadonlySet<RelationWeight>>(new Set(['historical', 'action']));
+  readonly expandedGroups = signal<ReadonlySet<RelationWeight>>(new Set());
   readonly selectedClaims = computed(() => {
     const node = this.selected();
     return node ? positionClaims(node).slice(0, 3) : [];
@@ -726,15 +746,15 @@ export class KnowledgeNetworkComponent {
   readonly edgeLabels = computed(() => {
     if (this.busy()) return [];
     const hovered = this.hoveredId();
-    const selected = this.selectedId();
-    const active = hovered ?? selected;
-    const positions = this.positions();
-    if (!active || !positions) return [];
-    // Selection keeps a few relation labels visible even at the whole-map zoom; hover needs proximity.
-    const showFar = !hovered && !!selected;
-    if (!this.near() && !showFar) return [];
-    const links = hovered ? this.activeLinks() : this.selectedLinks();
-    const limit = this.near() ? 18 : 8;
+    const hoveredEdge = this.hoveredEdgeId();
+    if (!hovered && !hoveredEdge) return [];
+    if (!this.near() || !this.positions()) return [];
+    const positions = this.positions()!;
+    // Phrases appear on hover; a selected node keeps the map clean and the panel lists the links.
+    const links = hovered
+      ? this.activeLinks()
+      : this.selectedLinks().filter((link) => link.edge.id === hoveredEdge);
+    const limit = hovered ? 18 : 1;
     const k = this.zoomK();
     const { x: vx, y: vy } = this.view();
     const taken = this.labels().map((label) => {
@@ -1102,6 +1122,9 @@ export class KnowledgeNetworkComponent {
    */
   select(id: string | null, reveal = false): void {
     this.selectedId.set(id);
+    this.detailsCollapsed.set(false);
+    this.openGroups.set(new Set(['historical', 'action']));
+    this.expandedGroups.set(new Set());
     if (id) {
       this.focusId.set(id);
       if (reveal) {
@@ -1127,6 +1150,7 @@ export class KnowledgeNetworkComponent {
   }
   clearSelection(): void {
     this.selectedId.set(null);
+    this.detailsCollapsed.set(false);
     this.depth.set(0);
     this.picked.emit(null);
     this.syncUrl(null);
@@ -1181,6 +1205,26 @@ export class KnowledgeNetworkComponent {
   }
   weightOf(edge: NetworkEdge) {
     return relationWeightDefinition(edge.weight);
+  }
+  /** First six links of a group; the reader opens the rest on demand. */
+  groupLinks(group: { id: RelationWeight; links: NodeLink[] }): NodeLink[] {
+    return this.expandedGroups().has(group.id) ? group.links : group.links.slice(0, 6);
+  }
+  toggleGroup(id: RelationWeight): void {
+    this.openGroups.update((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+  toggleGroupLinks(id: RelationWeight): void {
+    this.expandedGroups.update((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
   }
   classificationLabel(value: string): string {
     return classificationLabels[value] ?? value;
