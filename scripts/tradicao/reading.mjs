@@ -355,7 +355,10 @@ export function buildReading({
   atlasId = atlas.id,
   palette = null,
   evidenceIndex = null,
+  pageSlug = null,
+  pageTitle = null,
 }) {
+  const slug = pageSlug ?? entity.slug;
   const claims = entityClaims(entity, atlas);
   const source =
     claims[0]?.sourceIds[0] ?? atlas.sources.find((s) => s.id === `src-${entity.id}`)?.id;
@@ -436,12 +439,12 @@ export function buildReading({
   });
   return {
     schemaVersion: 1,
-    id: `ideology-page-${entity.slug}`,
-    slug: entity.slug,
+    id: `ideology-page-${slug}`,
+    slug,
     kind: 'ideologia',
     classificationNote:
       'Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.',
-    title: entity.title,
+    title: pageTitle ?? entity.title,
     kicker: 'Ideologia política',
     summary: content.introducao.narrative?.[0] ?? `${entity.title}: leitura sem resumo verificado.`,
     published: false,
@@ -519,6 +522,8 @@ export async function generateReadings({
   rootQid = null,
   outputAtlasId = atlasId,
   palette = null,
+  pageSlug = null,
+  pageTitle = null,
   slugs = null,
   write = true,
   today = new Date().toISOString().slice(0, 10),
@@ -544,10 +549,11 @@ export async function generateReadings({
   const kept = [];
   const reports = [];
   for (const entity of ideologies.filter((e) => !slugs || slugs.includes(e.slug))) {
-    const path = join(root, 'content/ideologies', entity.slug, 'page.json');
+    const outputSlug = pageSlug ?? entity.slug;
+    const path = join(root, 'content/ideologies', outputSlug, 'page.json');
     const existing = await readJsonOr(path, null);
     if (existing && existing.identity?.signature !== generatedSignature) {
-      kept.push(entity.slug);
+      kept.push(outputSlug);
       continue;
     }
     const page = buildReading({
@@ -561,19 +567,21 @@ export async function generateReadings({
       atlasId: outputAtlasId,
       palette,
       evidenceIndex,
+      pageSlug: outputSlug,
+      pageTitle,
     });
     const { page: valid } = validateIdeologyDossier(page, supplement, graph);
     reports.push(readingReport(valid));
     if (write) {
       await mkdir(dirname(path), { recursive: true });
       await writeFile(path, await formatJson(valid));
-      const graphPath = join(root, 'content/graph', `${entity.slug}.json`);
+      const graphPath = join(root, 'content/graph', `${outputSlug}.json`);
       if ((await readJsonOr(graphPath, null)) === null) {
         await mkdir(dirname(graphPath), { recursive: true });
         await writeFile(graphPath, await formatJson({ sources: [], edges: [] }));
       }
     }
-    written.push(entity.slug);
+    written.push(outputSlug);
   }
   return { written, kept, reports, atlasId: outputAtlasId };
 }

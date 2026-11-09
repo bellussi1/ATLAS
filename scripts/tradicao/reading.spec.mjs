@@ -201,6 +201,16 @@ test('relação de outra coleção usa o índice global de evidências', () => {
   assert.equal(page.identity.palette, 'fascismo');
 });
 
+test('a leitura pode usar o slug e o título do registro quando a raiz tem outro título', () => {
+  const page = build([claim(1, 'Nasceu em 1900 com Fulano.')], {
+    pageSlug: 'trabalhismo',
+    pageTitle: 'Trabalhismo',
+  });
+  assert.equal(page.slug, 'trabalhismo');
+  assert.equal(page.id, 'ideology-page-trabalhismo');
+  assert.equal(page.title, 'Trabalhismo');
+});
+
 test('posição política da fonte entra na introdução como atribuída', () => {
   const claims = [claim(1, 'Nasceu em 1900 com Fulano.')];
   const withPosition = atlas([
