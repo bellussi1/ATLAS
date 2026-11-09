@@ -2,25 +2,22 @@
   "schemaVersion": 1,
   "id": "ideology-page-stalinismo",
   "slug": "stalinismo",
-  "kind": "corrente",
-  "classificationNote": "Corrente e período histórico do marxismo-leninismo soviético sob Stalin; não se confunde com o marxismo como tradição nem com a URSS como país.",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
   "title": "Stalinismo",
   "kicker": "Ideologia política",
   "summary": "Stalinismo é o nome dado à ideologia e às políticas implementadas por Josef Stalin na União Soviética entre 1927 e 1953 e em Estados satélites soviéticos entre 1944 e 1953. O termo abrange a industrialização acelerada, a coletivização forçada, o culto de personalidade, a repressão em massa e a subordinação dos partidos comunistas estrangeiros ao Partido Comunista da União Soviética. Após a morte de Stalin, a desestalinização iniciada por Khrushchov reduziu a influência dessa ideologia.",
   "published": false,
   "atlasId": "atlas-stalinismo",
-  "review": {
-    "status": "rascunho",
-    "reviewer": null,
-    "updatedAt": "2026-11-05"
-  },
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-09" },
   "identity": {
     "accent": "teal",
+    "palette": "marx",
     "signature": "Leitura montada do grafo",
-    "keyVisualization": "timeline",
-    "palette": "marx"
+    "keyVisualization": "timeline"
   },
   "portrait": null,
+  "poster": { "figures": [] },
   "chapters": [
     {
       "id": "introducao",
@@ -33,9 +30,8 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": [
-        "src-wiki-topic-stalinismo"
-      ],
+      "sourceIds": ["src-wiki-topic-stalinismo"],
+      "review": null,
       "gap": null,
       "coverage": "complete",
       "layout": "introduction",
@@ -47,12 +43,11 @@
       "title": "Origens e formação",
       "kicker": "Origens e formação",
       "minutes": 1,
-      "narrative": [
-        "Capítulo sem conteúdo verificado."
-      ],
+      "narrative": ["Capítulo sem conteúdo verificado."],
       "question": null,
       "bridge": null,
       "sourceIds": [],
+      "review": null,
       "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
       "coverage": "pending",
       "layout": "documents",
@@ -64,12 +59,11 @@
       "title": "Pilares e princípios",
       "kicker": "Pilares e princípios",
       "minutes": 1,
-      "narrative": [
-        "Capítulo sem conteúdo verificado."
-      ],
+      "narrative": ["Capítulo sem conteúdo verificado."],
       "question": null,
       "bridge": null,
       "sourceIds": [],
+      "review": null,
       "gap": "Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.",
       "coverage": "pending",
       "layout": "concepts",
@@ -81,27 +75,20 @@
       "title": "Conceitos e palavras-chave",
       "kicker": "Conceitos e palavras-chave",
       "minutes": 1,
-      "narrative": [
-        "Também chamada de Estalinismo, Stalinism."
-      ],
+      "narrative": ["Também chamada de Estalinismo, Stalinism."],
       "question": null,
       "bridge": null,
-      "sourceIds": [
-        "src-wiki-topic-stalinismo"
-      ],
+      "sourceIds": ["src-wiki-topic-stalinismo"],
+      "review": null,
       "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
       "coverage": "partial",
       "layout": "concepts",
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-topic-stalinismo"
-          ],
+          "entityIds": ["wiki-topic-stalinismo"],
           "mode": "concepts",
-          "notes": {
-            "wiki-topic-stalinismo": "Nomes alternativos: Estalinismo, Stalinism."
-          }
+          "notes": { "wiki-topic-stalinismo": "Nomes alternativos: Estalinismo, Stalinism." }
         }
       ]
     },
@@ -111,14 +98,11 @@
       "title": "História e épocas",
       "kicker": "História e épocas",
       "minutes": 1,
-      "narrative": [
-        "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
-      ],
+      "narrative": ["Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."],
       "question": null,
       "bridge": null,
-      "sourceIds": [
-        "src-wiki-topic-stalinismo"
-      ],
+      "sourceIds": ["src-wiki-topic-stalinismo"],
+      "review": null,
       "gap": null,
       "coverage": "complete",
       "layout": "timeline",
@@ -135,29 +119,18 @@
               "paragraphs": [
                 "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
               ],
-              "sourceIds": [
-                "src-wiki-topic-stalinismo"
-              ],
-              "entityIds": [
-                "wiki-topic-stalinismo"
-              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
               "classification": "alegação empírica"
             }
           ]
         },
         {
           "type": "chronology",
-          "epochs": [
-            {
-              "itemId": "marco-1",
-              "start": 1956,
-              "end": 1956
-            }
-          ],
-          "entityIds": [
-            "wiki-topic-stalinismo"
-          ],
-          "markerIds": []
+          "epochs": [{ "itemId": "marco-1", "start": 1956, "end": 1956 }],
+          "entityIds": ["wiki-topic-stalinismo"],
+          "markerIds": [],
+          "markerNotes": {}
         }
       ]
     },
@@ -167,12 +140,11 @@
       "title": "Pensadores e obras",
       "kicker": "Pensadores e obras",
       "minutes": 1,
-      "narrative": [
-        "Capítulo sem conteúdo verificado."
-      ],
+      "narrative": ["Capítulo sem conteúdo verificado."],
       "question": null,
       "bridge": null,
       "sourceIds": [],
+      "review": null,
       "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
       "coverage": "pending",
       "layout": "thinkers",
@@ -184,21 +156,18 @@
       "title": "Correntes e vertentes",
       "kicker": "Correntes e vertentes",
       "minutes": 1,
-      "narrative": [
-        "Correntes relacionadas: Trotskismo."
-      ],
+      "narrative": ["Correntes relacionadas: Trotskismo."],
       "question": null,
       "bridge": null,
-      "sourceIds": [],
+      "sourceIds": ["src-wiki-topic-trotskismo"],
+      "review": null,
       "gap": null,
       "coverage": "complete",
       "layout": "documents",
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "ideology-trotskyism"
-          ],
+          "entityIds": ["ideology-trotskyism"],
           "mode": "concepts",
           "notes": {
             "ideology-trotskyism": "Os trotskistas são críticos do stalinismo, por se oporem à teoria de Stalin do socialismo em um só país."
@@ -213,15 +182,27 @@
       "kicker": "Experiências históricas",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Registros ligados à ideologia: Partido Comunista da Alemanha, Partido Comunista da União Soviética, Partido Comunista Francês."
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
-      "coverage": "pending",
+      "sourceIds": ["src-wikidata-verbetes"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-partido-comunista-da-alemanha",
+            "wiki-topic-partido-comunista-da-uniao-sovietica",
+            "wiki-topic-partido-comunista-frances"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
     },
     {
       "id": "debates",
@@ -229,14 +210,11 @@
       "title": "Argumentos, críticas e respostas",
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
-      "narrative": [
-        "Historiadores divergem quanto ao papel do stalinismo."
-      ],
+      "narrative": ["Historiadores divergem quanto ao papel do stalinismo."],
       "question": null,
       "bridge": null,
-      "sourceIds": [
-        "src-wiki-topic-stalinismo"
-      ],
+      "sourceIds": ["src-wiki-topic-stalinismo"],
+      "review": null,
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
       "layout": "debate",
@@ -250,15 +228,9 @@
               "title": "Crítica ou controvérsia",
               "kicker": "Argumentos e críticas",
               "summary": "Historiadores divergem quanto ao papel do stalinismo.",
-              "paragraphs": [
-                "Historiadores divergem quanto ao papel do stalinismo."
-              ],
-              "sourceIds": [
-                "src-wiki-topic-stalinismo"
-              ],
-              "entityIds": [
-                "wiki-topic-stalinismo"
-              ],
+              "paragraphs": ["Historiadores divergem quanto ao papel do stalinismo."],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
               "classification": "alegação empírica"
             }
           ]
@@ -271,12 +243,11 @@
       "title": "Conexões com outras tradições",
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
-      "narrative": [
-        "Capítulo sem conteúdo verificado."
-      ],
+      "narrative": ["Capítulo sem conteúdo verificado."],
       "question": null,
       "bridge": null,
       "sourceIds": [],
+      "review": null,
       "gap": "Nenhuma ligação com outras tradições consta no grafo.",
       "coverage": "pending",
       "layout": "graph",
@@ -288,12 +259,11 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": [
-        "Capítulo sem conteúdo verificado."
-      ],
+      "narrative": ["Capítulo sem conteúdo verificado."],
       "question": null,
       "bridge": null,
       "sourceIds": [],
+      "review": null,
       "gap": "Nenhuma obra citada como leitura consta no grafo.",
       "coverage": "pending",
       "layout": "documents",
@@ -310,20 +280,12 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": [
-        "src-wiki-topic-stalinismo"
-      ],
+      "sourceIds": ["src-wiki-topic-stalinismo"],
+      "review": null,
       "gap": null,
       "coverage": "complete",
       "layout": "sources",
-      "blocks": [
-        {
-          "type": "sources",
-          "sourceIds": [
-            "src-wiki-topic-stalinismo"
-          ]
-        }
-      ]
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-stalinismo"] }]
     }
   ]
 }
