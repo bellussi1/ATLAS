@@ -397,8 +397,10 @@ export interface NetworkNode {
   definition: string;
   summary: string;
   collections: string[];
-  /** Years, when known, for the panel. */
+  /** Years, when known, for the panel and the period filter. */
   period: string | null;
+  /** Machine-readable years for the period filter; null when the record has no date. */
+  temporalExtent: { startYear: number | null; endYear: number | null } | null;
   inReview: boolean;
   claims: NetworkClaim[];
   degree: number;
@@ -596,6 +598,12 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
         summary: entity.summary,
         collections: [atlas.id],
         period: periodLabel(entity.temporalExtent),
+        temporalExtent: entity.temporalExtent
+          ? {
+              startYear: entity.temporalExtent.startYear,
+              endYear: entity.temporalExtent.endYear,
+            }
+          : null,
         inReview: entity.editorialStatus === 'pending' || entity.editorialStatus === 'draft',
         claims: claimsByEntity.get(entity.id) ?? [],
         degree: 0,
@@ -677,14 +685,74 @@ export interface NetworkFilter {
   onlyConnected: boolean;
   /** Keeps only the connected nodes within `depth` hops of `root`; null shows the whole cut. */
   neighborhood?: { root: string; depth: 1 | 2 } | null;
+  /** Inclusive year interval. Nodes without a known year leave the cut while it is active. */
+  period?: { from: number | null; to: number | null } | null;
+  /** Shortest undirected route between two nodes in the current cut. */
+  path?: { from: string; to: string } | null;
 }
 
 export interface VisibleNetwork {
   nodes: NetworkNode[];
   edges: NetworkEdge[];
+  /** Set only when the path filter is active; `found: false` means no route in this cut. */
+  path?: { nodes: string[]; edges: string[]; found: boolean };
 }
 
-/** Applies the type and collection filters. A hidden kind removes its edges too. */
+/** Whether a node's known interval crosses the inclusive filter. */
+function inPeriod(node: NetworkNode, period: { from: number | null; to: number | null }): boolean {
+  const extent = node.temporalExtent;
+  if (!extent) return false;
+  const start = extent.startYear ?? extent.endYear;
+  const end = extent.endYear ?? extent.startYear;
+  if (start === null || end === null) return false;
+  return (period.from === null || end >= period.from) && (period.to === null || start <= period.to);
+}
+
+/** Shortest undirected route in the filtered cut; empty when one endpoint is absent. */
+function shortestPath(
+  nodes: readonly NetworkNode[],
+  edges: readonly NetworkEdge[],
+  from: string,
+  to: string,
+): { nodes: string[]; edges: string[]; found: boolean } {
+  const ids = new Set(nodes.map((node) => node.id));
+  if (!ids.has(from) || !ids.has(to)) return { nodes: [], edges: [], found: false };
+  if (from === to) return { nodes: [from], edges: [], found: true };
+  const adjacency = new Map<string, { id: string; other: string }[]>();
+  const push = (source: string, target: string, id: string) => {
+    const list = adjacency.get(source) ?? [];
+    list.push({ id, other: target });
+    adjacency.set(source, list);
+  };
+  for (const edge of edges) {
+    push(edge.source, edge.target, edge.id);
+    push(edge.target, edge.source, edge.id);
+  }
+  const previous = new Map<string, { node: string; edge: string } | null>([[from, null]]);
+  const queue = [from];
+  for (const current of queue) {
+    if (current === to) break;
+    for (const link of adjacency.get(current) ?? []) {
+      if (previous.has(link.other)) continue;
+      previous.set(link.other, { node: current, edge: link.id });
+      queue.push(link.other);
+    }
+  }
+  if (!previous.has(to)) return { nodes: [], edges: [], found: false };
+  const pathNodes = [to];
+  const pathEdges: string[] = [];
+  let cursor = to;
+  while (cursor !== from) {
+    const step = previous.get(cursor);
+    if (!step) return { nodes: [], edges: [], found: false };
+    pathEdges.unshift(step.edge);
+    pathNodes.unshift(step.node);
+    cursor = step.node;
+  }
+  return { nodes: pathNodes, edges: pathEdges, found: true };
+}
+
+/** Applies the type, collection, period and connection filters. A hidden kind removes its edges too. */
 export function filterNetwork(network: KnowledgeNetwork, filter: NetworkFilter): VisibleNetwork {
   const byKind = network.nodes.filter(
     (node) =>
@@ -713,16 +781,31 @@ export function filterNetwork(network: KnowledgeNetwork, filter: NetworkFilter):
       // Keep the old cross-collection links between two visible records.
       (filter.collections.has(edge.collection) || (ids.has(edge.source) && ids.has(edge.target))),
   );
+  const period = filter.period;
+  const periodNodes = period ? nodes.filter((node) => inPeriod(node, period)) : nodes;
+  const periodIds = new Set(periodNodes.map((node) => node.id));
+  const periodEdges = period
+    ? edges.filter((edge) => periodIds.has(edge.source) && periodIds.has(edge.target))
+    : edges;
   const connected = filter.onlyConnected
-    ? new Set(edges.flatMap((edge) => [edge.source, edge.target]))
+    ? new Set(periodEdges.flatMap((edge) => [edge.source, edge.target]))
     : null;
-  const cutNodes = connected ? nodes.filter((node) => connected.has(node.id)) : nodes;
-  if (!filter.neighborhood) return { nodes: cutNodes, edges };
+  const cutNodes = connected ? periodNodes.filter((node) => connected.has(node.id)) : periodNodes;
+  const cutEdges = connected
+    ? periodEdges.filter((edge) => connected.has(edge.source) && connected.has(edge.target))
+    : periodEdges;
+  if (filter.path)
+    return {
+      nodes: cutNodes,
+      edges: cutEdges,
+      path: shortestPath(cutNodes, cutEdges, filter.path.from, filter.path.to),
+    };
+  if (!filter.neighborhood) return { nodes: cutNodes, edges: cutEdges };
   const { root, depth } = filter.neighborhood;
-  // A root hidden by the type or collection filters has no neighbourhood to show.
-  if (!nodes.some((node) => node.id === root)) return { nodes: [], edges: [] };
+  // A root hidden by the type, collection or period filters has no neighbourhood to show.
+  if (!cutNodes.some((node) => node.id === root)) return { nodes: [], edges: [] };
   const adjacency = new Map<string, Set<string>>();
-  for (const edge of edges) {
+  for (const edge of cutEdges) {
     let from = adjacency.get(edge.source);
     if (!from) {
       from = new Set();
@@ -749,8 +832,8 @@ export function filterNetwork(network: KnowledgeNetwork, filter: NetworkFilter):
     frontier = next;
   }
   return {
-    nodes: nodes.filter((node) => near.has(node.id)),
-    edges: edges.filter((edge) => near.has(edge.source) && near.has(edge.target)),
+    nodes: cutNodes.filter((node) => near.has(node.id)),
+    edges: cutEdges.filter((edge) => near.has(edge.source) && near.has(edge.target)),
   };
 }
 

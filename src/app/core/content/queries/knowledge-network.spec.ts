@@ -244,6 +244,90 @@ describe('knowledge network', () => {
     expect(cut.edges).toHaveLength(1);
   });
 
+  it('filters by period and leaves records without dates out of an active interval', () => {
+    const node = (id: string, startYear: number | null, endYear: number | null = null) =>
+      ({
+        id,
+        kind: 'person',
+        collections: ['atlas-a'],
+        temporalExtent: startYear === null ? null : { startYear, endYear },
+      }) as unknown as NetworkNode;
+    const edge = (id: string, source: string, target: string) =>
+      ({
+        id,
+        source,
+        target,
+        family: relationFamilies[0].id,
+        collection: 'atlas-a',
+      }) as unknown as NetworkEdge;
+    const network = {
+      nodes: [
+        node('inside', 1900, 1910),
+        node('crosses', 1850, 1905),
+        node('outside', 1960),
+        node('undated', null),
+      ],
+      edges: [
+        edge('inside-crosses', 'inside', 'crosses'),
+        edge('inside-outside', 'inside', 'outside'),
+      ],
+      collections: [],
+    };
+    const filter = { ...all, collections: new Set(['atlas-a']) };
+    const cut = filterNetwork(network, { ...filter, period: { from: 1900, to: 1950 } });
+    expect(cut.nodes.map((item) => item.id)).toEqual(['inside', 'crosses']);
+    expect(cut.edges.map((item) => item.id)).toEqual(['inside-crosses']);
+    expect(filterNetwork(network, filter).nodes).toHaveLength(4);
+  });
+
+  it('finds the shortest route between two nodes and respects the active cut', () => {
+    const node = (id: string, kind = 'person') =>
+      ({
+        id,
+        kind,
+        collections: ['atlas-a'],
+        temporalExtent: null,
+      }) as unknown as NetworkNode;
+    const edge = (id: string, source: string, target: string) =>
+      ({
+        id,
+        source,
+        target,
+        family: relationFamilies[0].id,
+        collection: 'atlas-a',
+      }) as unknown as NetworkEdge;
+    const network = {
+      nodes: [node('a'), node('b'), node('c'), node('d'), node('e')],
+      edges: [edge('ab', 'a', 'b'), edge('bc', 'b', 'c'), edge('cd', 'c', 'd')],
+      collections: [],
+    };
+    const filter = { ...all, collections: new Set(['atlas-a']) };
+    const found = filterNetwork(network, { ...filter, path: { from: 'a', to: 'd' } });
+    expect(found.path).toEqual({
+      nodes: ['a', 'b', 'c', 'd'],
+      edges: ['ab', 'bc', 'cd'],
+      found: true,
+    });
+    expect(found.nodes).toHaveLength(5);
+    expect(filterNetwork(network, { ...filter, path: { from: 'a', to: 'e' } }).path).toEqual({
+      nodes: [],
+      edges: [],
+      found: false,
+    });
+    const hidden = filterNetwork(
+      {
+        ...network,
+        nodes: network.nodes.map((item) => (item.id === 'b' ? node('b', 'concept') : item)),
+      },
+      {
+        ...filter,
+        kinds: new Set([...filter.kinds].filter((kind) => kind !== 'concept')),
+        path: { from: 'a', to: 'd' },
+      },
+    );
+    expect(hidden.path?.found).toBe(false);
+  });
+
   it('searches names ignoring case and accents', () => {
     const node = network.nodes[0];
     const hits = searchNodes(network.nodes, node.title.toUpperCase());

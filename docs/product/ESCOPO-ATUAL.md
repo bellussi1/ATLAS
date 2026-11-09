@@ -15,7 +15,7 @@ Pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos
 
 Verificações e limites: [Knowledge Explorer(../archive/2026-11/quality/KNOWLEDGE-EXPLORER.md).
 
-**Rede e comparadores:** geometria antecipada por coleção; filtros comuns (`colecao`, `tipo`, `relacao`, `de`, `ate`, `semData`); timeline reutilizada na rede e na comparação histórica. `/grafos` preserva a seleção em `no`. Fontes, direção, incerteza e lacunas seguem explícitas; a interface não calcula similaridade nem inventa causalidade. [Método e validação(../archive/2026-11/quality/REDE-E-COMPARADORES.md).
+**Rede:** geometria antecipada por coleção; filtros de tipo, família de relação, coleção e período (`anoDe`/`anoAte`); vizinhança de 1/2 saltos (`no`, `saltos`) com histórico do navegador; caminho mais curto entre dois verbetes (`de`/`para`). Fontes, direção, incerteza e lacunas seguem explícitas; a interface não calcula similaridade nem inventa causalidade. [Método e validação(../archive/2026-11/quality/REDE-E-COMPARADORES.md).
 
 **Ampliação editorial:** dois países, dois recortes de regime, um partido, uma instituição, um acontecimento e uma obra, com fontes institucionais. Tipos `country` e `regime` têm contratos próprios, sem reclassificar automaticamente lugares, governos ou formações políticas antigas. Quatro narrativas têm tradução para inglês revisada pelo assistente, identificada como IA e sem revisão humana; o estado historiográfico segue pendente. Seletor de idioma e fallback valem para catálogos e registros, não para a interface inteira nem para os dossiês. [Contratos e validação(../archive/2026-11/quality/AMPLIACAO-EDITORIAL-E-IDIOMAS.md).
 
