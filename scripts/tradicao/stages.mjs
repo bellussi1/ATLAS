@@ -721,8 +721,13 @@ export const stages = [
           glossary: draft.glossary ?? [],
         });
       }
+      const graph = await readSourceGraph(join(ctx.root, 'content/knowledge'));
+      const atlas = graph.atlases.find((a) => a.id === `atlas-${ctx.slug}`);
+      const atlasIds = new Set((atlas?.entities ?? []).map((entity) => entity.id));
+      const glossary = buildGlossary(entities);
+      glossary.links = glossary.links.filter((link) => atlasIds.has(link.entityId));
       await writeJsonAtomic(p.glossary, {
-        ...buildGlossary(entities),
+        ...glossary,
         hovers: Object.fromEntries(
           entities.map((e) => [e.id, { oneLine: e.oneLine, summary: e.summary }]),
         ),

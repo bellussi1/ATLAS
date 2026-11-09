@@ -208,7 +208,12 @@ export async function buildContent({
     const load = async (path) => JSON.parse(await readFile(join(projectRoot, path), 'utf8'));
     const page = await load(source.page);
     const supplement = await load(source.supplement);
-    const dossier = validateIdeologyDossier(page, supplement, graph);
+    let dossier;
+    try {
+      dossier = validateIdeologyDossier(page, supplement, graph);
+    } catch (error) {
+      throw new Error(`Leitura ${slug}: ${error.message}`);
+    }
     readings.push({ slug, page, supplement });
     const text = (value) =>
       typeof value === 'string'
