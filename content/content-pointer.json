@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://atlas-content-delivery.atlas-bellussi.workers.dev",
-  "release": "e5e69a451a04554343fc2e6e75a69a094084e0064be4e3412dd6ea99b89f2e55",
+  "release": "99db066b848a5adf117321fa2a8cab7bcfa8e0c1bc33e5eb09e04194860c4960",
   "manifest": {
-    "sha256": "bc257adabf8711542a89527bcacb650723f6fdcd0920d6bcd4cecbb3ee115f83",
+    "sha256": "944c2d3f6864c6683fa46f7393c1fbb65b894fca68c4507c4ba5e9522665cde5",
     "bytes": 6016
   },
   "bundle": {
-    "sha256": "63737f7e54578d4a59940e7a65b14ac9a6ce1bc0fbc90d4790ade0ae05a617aa",
-    "bytes": 28493109
+    "sha256": "d755b8bbb46de6d2fdfef7b119b0dd94bb07e9c1a995b990f23e31fde86a9c14",
+    "bytes": 28561515
   },
   "networkBundle": {
-    "sha256": "6e4131ee7bcd01b7e517db9d3458fbabfd3f27bfb6c21b433d717e83bbbb6057",
-    "bytes": 5352472
+    "sha256": "2e992c9d4904d30a7af298a2405fc2d072ce8e4d4b148a924678e5a06cd21200",
+    "bytes": 5420878
   },
   "artifacts": [
     {
@@ -76,9 +76,9 @@
       "file": "atlas-ideologias-principais.fa078a44a82413525f3026f2335db652ce84442ce85f1a1c7f4b4702f3c02e2a.json"
     },
     {
-      "sha256": "aee41fb0c2a24968d7407c2e8ef28d0ca530d2009a26f622f9b1744ecdf6857b",
-      "bytes": 11785138,
-      "file": "atlas-verbetes-citados.aee41fb0c2a24968d7407c2e8ef28d0ca530d2009a26f622f9b1744ecdf6857b.json"
+      "sha256": "96ad60a4a6e8b58feb4e77a6ebf26411a2c74672e3e624fa0cbb0e383325e09d",
+      "bytes": 11812693,
+      "file": "atlas-verbetes-citados.96ad60a4a6e8b58feb4e77a6ebf26411a2c74672e3e624fa0cbb0e383325e09d.json"
     },
     {
       "sha256": "f5c69873ba8650f1b986ff55c60288ff27d7e360ddf36cf728b8259b43b1b09c",
@@ -111,24 +111,24 @@
       "file": "adjacency.b7baef14056e77db89a2a37f847f6b3df5719ed9a2bff386408f47f37e19017f.json"
     },
     {
-      "sha256": "4a0dbd88f961281139b87bda157f9942056e48b8b071a551c010a1b0f2a540d4",
-      "bytes": 1619448,
-      "file": "layouts.4a0dbd88f961281139b87bda157f9942056e48b8b071a551c010a1b0f2a540d4.json"
+      "sha256": "93d2cbe8bbe9b424a8b5b5b7c1edba930e46b1246d753650b6b37e89641621fd",
+      "bytes": 1660299,
+      "file": "layouts.93d2cbe8bbe9b424a8b5b5b7c1edba930e46b1246d753650b6b37e89641621fd.json"
     },
     {
-      "sha256": "f8c11dac1fd4bb031465a671d9ed9580780e19ee04a5310a8f3bb6bcb12c57a4",
-      "bytes": 3733004,
-      "file": "network.f8c11dac1fd4bb031465a671d9ed9580780e19ee04a5310a8f3bb6bcb12c57a4.json"
+      "sha256": "562d6b919ebf27a494aa9410840daf3c3545fa7f750e371a8688a1e43f1f0552",
+      "bytes": 3760559,
+      "file": "network.562d6b919ebf27a494aa9410840daf3c3545fa7f750e371a8688a1e43f1f0552.json"
     },
     {
-      "sha256": "63737f7e54578d4a59940e7a65b14ac9a6ce1bc0fbc90d4790ade0ae05a617aa",
-      "bytes": 28493109,
-      "file": "bundle.63737f7e54578d4a59940e7a65b14ac9a6ce1bc0fbc90d4790ade0ae05a617aa.json"
+      "sha256": "d755b8bbb46de6d2fdfef7b119b0dd94bb07e9c1a995b990f23e31fde86a9c14",
+      "bytes": 28561515,
+      "file": "bundle.d755b8bbb46de6d2fdfef7b119b0dd94bb07e9c1a995b990f23e31fde86a9c14.json"
     },
     {
-      "sha256": "6e4131ee7bcd01b7e517db9d3458fbabfd3f27bfb6c21b433d717e83bbbb6057",
-      "bytes": 5352472,
-      "file": "network-bundle.6e4131ee7bcd01b7e517db9d3458fbabfd3f27bfb6c21b433d717e83bbbb6057.json"
+      "sha256": "2e992c9d4904d30a7af298a2405fc2d072ce8e4d4b148a924678e5a06cd21200",
+      "bytes": 5420878,
+      "file": "network-bundle.2e992c9d4904d30a7af298a2405fc2d072ce8e4d4b148a924678e5a06cd21200.json"
     }
   ],
   "media": [
