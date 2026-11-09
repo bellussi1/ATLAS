@@ -85,6 +85,16 @@
       width var(--motion-standard) var(--ease-out),
       height var(--motion-standard) var(--ease-out);
   }
+  .card-picture--flag {
+    width: 3.4rem;
+    height: 2.3rem;
+    object-fit: contain;
+    border: 1px solid var(--color-ink);
+    border-radius: 0;
+    background: var(--color-canvas);
+    filter: none;
+    box-shadow: 3px 3px 0 var(--color-border-strong);
+  }
   &::after {
     content: '';
     position: absolute;
@@ -107,6 +117,10 @@
       filter: none;
       width: 4.2rem;
       height: 4.2rem;
+    }
+    .card-picture--flag {
+      width: 3.8rem;
+      height: 2.55rem;
     }
     &::after {
       transform: scaleX(1);

@@ -263,6 +263,9 @@
                 "
                 [entityId]="entry.id"
                 [picture]="picture(entry.id)"
+                [pictureMode]="
+                  entry.kind === 'country' || entry.kind === 'state' ? 'flag' : 'photo'
+                "
                 [attr.lang]="shown(entry).locale"
               ></a>
             </article>

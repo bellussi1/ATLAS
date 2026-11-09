@@ -1,0 +1,21 @@
+titulo	kind	grau	motivo
+1871	event	0	ano, não um acontecimento histórico
+1945	event	0	ano, não um acontecimento histórico
+Advogado	work	0	profissão genérica, sem recorte político próprio
+Arte	work	1	conceito genérico de arte
+A Casa dos Espíritos (filme)	work	0	filme de ficção, sem relação política documentada
+Basebol	work	0	esporte
+Basquetebol	work	0	esporte
+Câncer	concept	0	doença, fora do recorte político/histórico/geográfico
+Compêndio	work	1	gênero editorial genérico
+Copa América	event	0	competição esportiva
+Copa do Mundo FIFA	event	0	competição esportiva
+Desporto	work	0	esporte
+Futebol	work	0	esporte
+God	concept	0	página de desambiguação
+Literatura	work	0	conceito genérico de literatura
+Música	concept	0	conceito genérico de música
+O Dono do Mar	work	1	filme de ficção
+Teatro	concept	0	conceito genérico de teatro
+Ténis	work	0	esporte
+Voleibol	work	0	esporte

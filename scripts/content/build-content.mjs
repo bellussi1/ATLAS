@@ -160,6 +160,7 @@ export async function buildContent({
         title: entity.title,
         kind: entity.kind,
         placeType: entity.placeType,
+        placeCategory: entity.placeCategory,
         summary: entity.summary,
         temporalExtent: entity.temporalExtent,
         editorialStatus: entity.editorialStatus,
@@ -242,11 +243,13 @@ export async function buildContent({
   }
   layoutsSchema.parse(layouts);
   // The home carries a compiled snapshot of the release: no content request on the first screen.
-  if (resolve(outputDirectory) === resolve(join(projectRoot, 'generated/content')))
+  if (resolve(outputDirectory) === resolve(join(projectRoot, 'generated/content'))) {
+    await mkdir(join(projectRoot, 'generated'), { recursive: true });
     await writeFile(
       homeStatsPath,
       `${JSON.stringify(homeStats(graph, network, readings), null, 2)}\n`,
     );
+  }
   const search = searchIndexSchema.parse(buildDiscoveryIndex(graph, readingTexts, translations));
   const assets = [];
   const asset = async (name, value) => {

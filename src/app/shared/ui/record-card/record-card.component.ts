@@ -84,6 +84,8 @@ export class RecordCardComponent {
   readonly period = input<string | null>(null);
   readonly note = input<string | null>(null);
   readonly picture = input<string | null>(null);
+  /** Flags must be shown whole, not cropped as a portrait; default keeps the portrait crop. */
+  readonly pictureMode = input<'photo' | 'flag'>('photo');
   /** Colour family; defaults to the family of the glyph. Graph kinds are accepted too. */
   readonly tone = input<string | null>(null);
 

@@ -64,6 +64,24 @@ test('a phone switches catalogues with a compact selector above the search', asy
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toBeVisible();
 });
 
+test('the place catalogues separate countries, states, cities and sites', async ({ page }) => {
+  for (const [path, title, kind] of [
+    ['/paises', 'Países', 'País'],
+    ['/estados', 'Estados', 'Estado'],
+    ['/cidades', 'Cidades', 'Cidade'],
+    ['/locais', 'Locais', 'Local'],
+  ]) {
+    await page.goto(path);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
+    expect(await page.locator('.result-card').count()).toBeGreaterThan(0);
+    await expect(page.locator('.result-card .card-kind').first()).toContainText(kind);
+  }
+  await page.goto('/verbete/alemanha/');
+  const flag = page.locator('.hero-media img');
+  await expect(flag).toHaveAttribute('src', /Flag_of_Germany/);
+  await expect(page.locator('.hero')).toHaveClass(/hero--flag/);
+});
+
 test('the type index groups record kinds and each active filter can be removed', async ({
   page,
 }) => {
@@ -268,6 +286,8 @@ test('all search destinations have prerendered HTML with matching title, canonic
 for (const path of [
   '/acervo?q=xyzzy',
   '/acervo?camada=fontes',
+  '/paises',
+  '/cidades',
   '/pessoas',
   '/verbete/karl-marx',
   '/fontes',

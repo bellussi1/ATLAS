@@ -74,6 +74,13 @@ header.hero {
   --asset-fit: cover;
   --asset-position: center 15%;
 }
+.hero--flag .hero-media app-licensed-asset {
+  --asset-height: clamp(8rem, 18vw, 12rem);
+  --asset-fit: contain;
+  --asset-position: center;
+  background: var(--color-canvas);
+  border: 2px solid var(--color-ink);
+}
 .facts {
   display: flex;
   flex-wrap: wrap;

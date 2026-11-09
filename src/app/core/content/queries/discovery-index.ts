@@ -63,6 +63,12 @@ const kindLabels: Record<string, string> = {
   article: 'Artigo',
   country: 'País',
   regime: 'Regime',
+  city: 'Cidade',
+  state: 'Estado',
+  region: 'Região',
+  continent: 'Continente',
+  site: 'Local',
+  other: 'Lugar',
 };
 
 const normalize = (value: string): string =>
@@ -72,6 +78,7 @@ const normalize = (value: string): string =>
     .toLocaleLowerCase('pt-BR');
 
 function kindFacet(entity: Entity): string {
+  if (entity.kind === 'place' && entity.placeCategory) return entity.placeCategory;
   if (entity.kind === 'place' && entity.placeType) return entity.placeType;
   return (
     ({ person: 'pessoa', event: 'evento', article: 'artigo' } as Record<string, string>)[

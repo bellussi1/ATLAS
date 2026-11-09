@@ -87,6 +87,17 @@ export const historicalPolitySchema = entityBaseSchema.extend({
 });
 export const placeTypeSchema = z.enum(['place', 'country', 'regime']);
 export type PlaceType = z.infer<typeof placeTypeSchema>;
+/** Geographic category used by the catalogues; independent from the country/regime dossier type. */
+export const placeCategorySchema = z.enum([
+  'country',
+  'state',
+  'city',
+  'region',
+  'continent',
+  'site',
+  'other',
+]);
+export type PlaceCategory = z.infer<typeof placeCategorySchema>;
 const countryProfileSchema = z.object({
   officialName: z.string().trim().min(1),
   territorialScope: z.string().trim().min(1),
@@ -112,6 +123,7 @@ export const placeSchema = entityBaseSchema
   .extend({
     kind: z.literal('place'),
     placeType: placeTypeSchema.optional(),
+    placeCategory: placeCategorySchema.optional(),
     countryProfile: countryProfileSchema.optional(),
     regimeProfile: regimeProfileSchema.optional(),
   })

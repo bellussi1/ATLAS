@@ -72,6 +72,14 @@ export class RecordComponent {
       : undefined;
   });
   readonly entity = computed(() => this.presentation()?.entity);
+  /** Country and state records use a flag, which must be shown whole rather than cropped. */
+  readonly isFlag = computed(() => {
+    const entity = this.entity();
+    return (
+      entity?.kind === 'place' &&
+      (entity.placeCategory === 'country' || entity.placeCategory === 'state')
+    );
+  });
   readonly languages = contentLanguageLabels;
   /** The hero repeats the context only when it is prose and no section already carries it. */
   readonly heroContext = computed(() => {

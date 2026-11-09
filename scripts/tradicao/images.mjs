@@ -30,6 +30,13 @@ const imageProperties = {
   acontecimento: ['P18'],
   lugar: ['P41', 'P94', 'P18'],
   conceito: ['P18'],
+  // Categorias geográficas: países e Estados usam bandeira; cidades e regiões usam imagem.
+  pais: ['P41', 'P94', 'P18'],
+  estado: ['P41', 'P94', 'P18'],
+  cidade: ['P18', 'P94'],
+  regiao: ['P18'],
+  continente: ['P18'],
+  local: ['P18'],
 };
 const iconByType = {
   pessoa: 'person',
@@ -41,6 +48,12 @@ const iconByType = {
   acontecimento: 'event',
   lugar: 'place',
   conceito: 'concept',
+  pais: 'place',
+  estado: 'place',
+  cidade: 'place',
+  regiao: 'place',
+  continente: 'place',
+  local: 'place',
   // Tipos dos rascunhos antigos, em inglês.
   person: 'person',
   party: 'party',
@@ -59,9 +72,11 @@ export const iconFor = (type) => {
 
 /** File names the item offers for this type, in order; deprecated statements do not count. */
 export function imageFiles(entity, type) {
+  const rankOrder = { preferred: 0, normal: 1 };
   return (imageProperties[type] ?? ['P18']).flatMap((property) =>
     (entity?.claims?.[property] ?? [])
       .filter((statement) => statement.rank !== 'deprecated')
+      .sort((a, b) => (rankOrder[a.rank] ?? 2) - (rankOrder[b.rank] ?? 2))
       .map((statement) => statement.mainsnak?.datavalue?.value)
       .filter((value) => typeof value === 'string'),
   );
@@ -142,6 +157,11 @@ export async function collectImages(entities, { http, retrievedAt, usedFiles = n
   for (let start = 0; start < qids.length; start += 50) {
     const data = await callApi(entitiesUrl(qids.slice(start, start + 50)), http.json);
     for (const [qid, entity] of Object.entries(data.entities ?? {})) items.set(qid, entity);
+  }
+  // Wikidata occasionally omits an item from a large batch; retry the missing ones alone.
+  for (const qid of qids.filter((qid) => !items.has(qid))) {
+    const data = await callApi(entitiesUrl([qid]), http.json);
+    for (const [key, entity] of Object.entries(data.entities ?? {})) items.set(key, entity);
   }
   const used = new Set(usedFiles);
   const result = {};
