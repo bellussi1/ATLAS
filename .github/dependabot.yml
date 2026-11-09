@@ -1,4 +1,8 @@
 version: 2
+# Minor and patch updates are grouped; majors stay out of the groups so a peer-dependency
+# mismatch in one package cannot block the whole batch. The ignored majors are the ones that
+# need a planned migration: Angular 22 + TypeScript 6, TypeScript 7, Tailwind 4, Vitest 5,
+# jsdom 30 and @types/node 26. Remove an ignore when its migration starts.
 updates:
   - package-ecosystem: npm
     directory: /
@@ -8,10 +12,33 @@ updates:
     groups:
       angular:
         patterns: ['@angular/*', '@angular-devkit/*', 'angular-eslint']
+        update-types: ['minor', 'patch']
       dev-tools:
         dependency-type: development
         exclude-patterns: ['@angular/*', '@angular-devkit/*', 'angular-eslint']
+        update-types: ['minor', 'patch']
+    ignore:
+      - dependency-name: '@angular/*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@angular-devkit/*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'angular-eslint'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'tailwindcss'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'vitest'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'jsdom'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    groups:
+      actions-minor-patch:
+        patterns: ['*']
+        update-types: ['minor', 'patch']
