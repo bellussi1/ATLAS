@@ -122,7 +122,15 @@ foram aplicadas, com `placeCategory` (`country`, `state`, `city`, `region`, `con
 instituição. O acervo ganhou os catálogos **Países**, **Estados**, **Cidades**, **Locais** e
 **Lugares**. As imagens foram renovadas pelo Wikidata, com P41 `preferred` para países e Estados;
 Alemanha, Reino Unido, Rússia e Estados Unidos deixaram de usar bandeiras históricas ou mapas.
-Restam os 69 candidatos de tipo e a revisão dos 20 itens fora de escopo.
+
+Em seguida, os **35 tipos restantes de alta confiança** foram corrigidos (os 18 de lugares já
+estavam feitos), o campo `scope` foi aplicado com **1.134 núcleo**, **36 contexto** e **20 fora**,
+e o peso das relações foi implementado com `historical`, `action`, `administrative` e `catalog`.
+A reauditoria de 09/11 está em
+[`auditoria-verbetes-2026-11/reauditoria-2026-11.md`](auditoria-verbetes-2026-11/reauditoria-2026-11.md):
+os 54 tipos estão resolvidos, os 20 fora e 36 contextos foram confirmados e a regra de peso
+reproduziu os 150/342/417/213 da medição anterior. Restam **28** itens da estimativa de ~64
+contextos e o tipo de **Empirismo**.
 
 ## Limites
 
