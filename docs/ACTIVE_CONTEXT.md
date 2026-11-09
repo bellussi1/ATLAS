@@ -64,6 +64,8 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 - **Navegação / grafo → acervo**: a entrada direta no grafo baixava o `networkBundle` (836 KB) e, ao sair para o acervo, baixava o bundle completo (3,9 MB) de novo. O `ContentRepository` agora aquece o bundle em `requestIdleCallback` depois do grafo, com gate para `saveData`, 2G/3G e `deviceMemory` < 8 GB; a transição caiu de **1.467 ms para 491–657 ms** e não faz requisição de conteúdo. O texto do bundle/network é liberado depois do parse. O custo restante é ~170–220 ms de `TextEncoder` + SHA-256 + `JSON.parse`. Medição e limites em `docs/quality/NAVEGACAO-2026-11.md`.
 
+- **Piloto das tradições**: nazismo, stalinismo e trabalhismo tiveram a extração rica paga concluída por **US$ 0,534** (tetos de 1,20/1,30/1,50; pior caso 3,81). Os 40/44/51 artigos fecharam o estágio 5. A consolidação criou `atlas-nazismo` (10), `atlas-stalinismo` (4) e `atlas-trabalhismo` (19), mas boa parte dos aceitos já existia por QID e foi mesclada em coleções compartilhadas. A cobertura ainda falha porque mede a tradição pela coleção nova, não pela lente de pertencimento; é a decisão pendente antes de gerar os 12 capítulos. Relatório em `docs/research/PILOTO-TRADICOES-2026-11.md`.
+
 - **Onda 1 / calibração + revisão de IA**: amostra de 20 artigos rodada por **US$ 0,0706**. Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. A revisão humana foi substituída por **revisão assistida por IA**, autorizada pelo responsável do projeto: Sonnet 5.5 marcou **96 sustenta e 4 não sustenta** nos 100 itens (2 textos e 2 tipos de relação). A re-verificação Sonnet low confirmou 22/24 relações do Haiku (low 7/7; medium 15/17) e rejeitou as duas arestas `desenvolveu-se-em` do Marxismo. Decisão: **Haiku 5.5 medium + Sonnet 5.5 low**; `model-choice.json` atualizado. Metas da Onda 2: **70/50/70/35**.
 
 ## Pendências que bloqueiam
@@ -85,11 +87,11 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
 6. **Onda 2** — o lote dos verbetes foi concluído (+99 documentadas no total). Faltam as quatro leituras: Marxismo 41/70, Liberalismo 16/35, Social-democracia 34/70, Anarquismo 10/50. O saldo restante do teto de US$ 6 é ~US$ 4,2; a próxima decisão é entre alvos editoriais das leituras e um novo lote de verbetes.
 7. **Publicação da expansão** — o release `c0be77b` foi publicado e o ponteiro público já aponta para ele; o próximo deploy do Pages fixa o novo conteúdo no HTML prerenderizado.
-8. **Piloto das tradições** — nazismo, stalinismo e trabalhismo têm registros, descoberta e captura gratuitas concluídas e candidatos curados (40/44/50 artigos). A extração paga estimada em **~US$ 2,00** (pior caso **US$ 3,81**) aguarda aprovação; nenhum gasto de API foi feito nesta rodada.
+8. **Piloto das tradições** — a extração paga foi concluída por **US$ 0,534** e os três estágios 5 fecharam. A consolidação criou as coleções novas, mas os aceitos que já existiam por QID foram mesclados em coleções compartilhadas; a cobertura ainda mede a coleção `atlas-<slug>` e falha. Decidir entre a **lente de pertencimento da tradição** (recomendado, coerente com “um grafo só”) ou mover/duplicar o nó raiz. Só depois gerar os 12 capítulos e fechar a cobertura.
 
 ## Próxima ação
 
-1. Retomar o piloto das três tradições (nazismo, stalinismo e trabalhismo) somente após aprovação do gasto de **~US$ 2,00** (pior caso **US$ 3,81**); a descoberta e a captura gratuitas já estão feitas.
+1. Decidir o modelo de pertencimento do piloto (lente da tradição por QID × mover/duplicar o nó raiz), depois gerar os 12 capítulos e fechar a cobertura. A extração paga já está concluída por **US$ 0,534**.
 2. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
 3. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
 4. Rotacionar o token Cloudflare e desligar o Vercel no painel.
