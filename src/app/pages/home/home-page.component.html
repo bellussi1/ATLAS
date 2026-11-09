@@ -47,8 +47,8 @@
     <p class="atlas-band-number" aria-hidden="true">A</p>
     <h2 id="readings-title">Leituras contínuas, <em>uma enciclopédia.</em></h2>
     <p>
-      Marxismo, Liberalismo, Social-democracia e Anarquismo, cada um no seu ritmo. Escolha uma
-      leitura para ver o resumo e o texto completo.
+      Quatro leituras, 12 capítulos cada: conceitos, pessoas, obras, cronologia, divergências e
+      fontes. Escolha uma para ver o resumo e o texto completo.
     </p>
   </header>
   <div appReveal class="reading-table" [attr.data-reading]="selected().slug">
@@ -95,12 +95,10 @@
         <h2 id="sheet-title">{{ selected().title }}</h2>
         <p class="sheet-summary">{{ selected().summary }}</p>
         <div class="excerpt">
-          <h3>{{ selected().sections[0].heading }}</h3>
-          <p>{{ selected().sections[0].paragraphs[0] }}</p>
+          <h3>{{ selected().excerpt.heading }}</h3>
+          <p>{{ selected().excerpt.paragraph }}</p>
         </div>
-        <a
-          class="sheet-action atlas-press"
-          [routerLink]="entryPath(selected().type, selected().slug)"
+        <a class="sheet-action atlas-press" [routerLink]="entryPath(selected().slug)"
           >Ler o texto completo
           <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
         >
@@ -110,11 +108,73 @@
   <p class="sr-only" role="status">Leitura selecionada: {{ selected().title }}.</p>
 </section>
 
+<section class="scale" id="acervo-hoje" aria-labelledby="scale-title" data-tone-section>
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
+    <p class="atlas-band-number" aria-hidden="true">B</p>
+    <h2 id="scale-title">O acervo <em>hoje.</em></h2>
+    <p>
+      Uma rede em crescimento, com a fonte ao lado de cada ligação. Os números acompanham a última
+      atualização publicada.
+    </p>
+  </header>
+  <dl class="scale-ledger" appReveal>
+    <div class="scale-item" data-stagger style="--stagger: 0">
+      <dt>Verbetes</dt>
+      <dd>
+        <span class="scale-value">{{ format(stats.verbetes) }}</span>
+        <span class="scale-note"
+          >Fichas de pessoas, obras, conceitos, lugares e acontecimentos, cada uma com endereço
+          próprio.</span
+        >
+      </dd>
+    </div>
+    <div class="scale-item" data-stagger style="--stagger: 1">
+      <dt>Relações com fonte</dt>
+      <dd>
+        <span class="scale-value">{{ format(stats.documentedRelations) }}</span>
+        <span class="scale-note"
+          >Ligações históricas e de catálogo registradas no grafo, com evidência identificada.</span
+        >
+      </dd>
+    </div>
+    <div class="scale-item" data-stagger style="--stagger: 2">
+      <dt>Registros datados</dt>
+      <dd>
+        <span class="scale-value">{{ format(stats.dated) }}</span>
+        <span class="scale-note"
+          >Nascimentos, fundações, início e fim de acontecimentos, prontos para a cronologia.</span
+        >
+      </dd>
+    </div>
+    <div class="scale-item" data-stagger style="--stagger: 3">
+      <dt>Leituras contínuas</dt>
+      <dd>
+        <span class="scale-value">{{ format(stats.readings) }}</span>
+        <span class="scale-note"
+          >{{ format(stats.chapters) }} capítulos com fontes, cronologia e conexões entre
+          tradições.</span
+        >
+      </dd>
+    </div>
+  </dl>
+  <p class="scale-foot" appReveal>
+    <span
+      >{{ format(stats.nodes) }} nós e {{ format(stats.links) }} ligações no grafo ·
+      {{ format(stats.sources) }} fontes catalogadas</span
+    >
+    <span>Atualizado em {{ updatedLabel }}</span>
+    <a routerLink="/acervo">Ver tudo <span aria-hidden="true">→</span></a>
+  </p>
+</section>
+
 <section class="catalogue-band" aria-labelledby="catalogues-title" data-tone-section>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
-    <p class="atlas-band-number atlas-band-number--square" aria-hidden="true">B</p>
+    <p class="atlas-band-number atlas-band-number--square" aria-hidden="true">C</p>
     <h2 id="catalogues-title">Explorar <em>por tipo.</em></h2>
-    <p>Pessoas, obras, países, acontecimentos: escolha um tipo de ficha e comece por ele.</p>
+    <p>
+      Pessoas, obras, países, acontecimentos, conceitos e fontes: escolha um tipo de ficha e comece
+      por ele.
+    </p>
   </header>
   <ul class="doors" appReveal>
     <li class="door door--wide door--search" data-stagger style="--stagger: 0">
@@ -148,7 +208,7 @@
 
 <section class="method" id="metodo" aria-labelledby="method-title" data-tone-section>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
-    <p class="atlas-band-number atlas-band-number--circle" aria-hidden="true">C</p>
+    <p class="atlas-band-number atlas-band-number--circle" aria-hidden="true">D</p>
     <h2 id="method-title">Como ler <em>o acervo.</em></h2>
     <p>Cada trecho carrega uma marca que diz que tipo de afirmação ele é.</p>
   </header>

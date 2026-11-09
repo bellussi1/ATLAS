@@ -15,9 +15,41 @@ import { readingPath } from '@core/routing/reading-routes';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
+import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
 
+import homeStats from '../../../../generated/home-stats.json';
 import { HomeHowtoComponent } from './howto/howto.component';
+
+interface HomeReading {
+  slug: string;
+  title: string;
+  tagline: string;
+  summary: string;
+  statusLabel: string;
+  palette: MosaicPalette;
+  seed: number;
+  excerpt: { heading: string; paragraph: string };
+}
+
+interface HomeData {
+  updatedAt: string;
+  counts: {
+    verbetes: number;
+    entities: number;
+    relations: number;
+    documentedRelations: number;
+    dated: number;
+    sources: number;
+    nodes: number;
+    links: number;
+    readings: number;
+    chapters: number;
+  };
+  readings: HomeReading[];
+}
+
+const compiledHome = homeStats as HomeData;
 
 @Component({
   selector: 'app-home-page',
@@ -55,82 +87,15 @@ export class HomePage {
       catalogue.path,
     ),
   );
-  readonly readings = [
-    {
-      slug: 'marxismo',
-      type: 'atlas' as const,
-      title: 'Marxismo',
-      tagline: 'Trabalho, valor e divergências',
-      palette: 'marx' as const,
-      seed: 11,
-      summary: 'Uma tradição, muitas leituras: conceitos, pensadores e divergências.',
-      statusLabel: 'Conteúdo com fontes · revisão pendente',
-      sections: [
-        {
-          heading: 'Uma tradição em disputa',
-          paragraphs: [
-            'Investigue as perguntas sobre trabalho, valor, história e transformação social em uma leitura contínua com fontes identificadas.',
-          ],
-        },
-      ],
-    },
-    {
-      slug: 'liberalismo',
-      type: 'atlas' as const,
-      title: 'Liberalismo',
-      tagline: 'Liberdade, propriedade e mercado',
-      palette: 'liberal' as const,
-      seed: 23,
-      summary: 'Explore pessoas, ideias, obras e acontecimentos na leitura do liberalismo.',
-      statusLabel: 'Acervo em revisão',
-      sections: [
-        {
-          heading: 'Uma ideia, muitas conexões',
-          paragraphs: [
-            'Selecione registros para consultar contexto e proveniência. Alterne entre rede, cronologia e imagens sem sair da página.',
-          ],
-        },
-      ],
-    },
-    {
-      slug: 'social-democracia',
-      type: 'atlas' as const,
-      title: 'Social-democracia',
-      tagline: 'Reforma, Estado e bem-estar',
-      palette: 'atlas' as const,
-      seed: 41,
-      summary:
-        'Do debate entre reforma e revolução às disputas sobre Estado, mercado e direitos sociais.',
-      statusLabel: 'Conteúdo em revisão',
-      sections: [
-        {
-          heading: 'Reforma ou ruptura',
-          paragraphs: [
-            'Siga pessoas, partidos e obras que defenderam transformar a sociedade por meios democráticos, e veja onde essa leitura se separa do marxismo e do liberalismo.',
-          ],
-        },
-      ],
-    },
-    {
-      slug: 'anarquismo',
-      type: 'atlas' as const,
-      title: 'Anarquismo',
-      tagline: 'Autoridade, autonomia e apoio mútuo',
-      palette: 'atlas' as const,
-      seed: 53,
-      summary: 'Uma tradição que questiona a autoridade e propõe formas de organização sem Estado.',
-      statusLabel: 'Conteúdo em revisão',
-      sections: [
-        {
-          heading: 'Contra a autoridade imposta',
-          paragraphs: [
-            'Conheça correntes, pensadores e acontecimentos do anarquismo, com as fontes e as divergências internas à vista.',
-          ],
-        },
-      ],
-    },
-  ];
-  readonly selected = signal(this.readings[0]);
+  readonly stats = compiledHome.counts;
+  /** Published readings compiled into the home; a new release updates the cards without edits. */
+  readonly readings = compiledHome.readings;
+  readonly updatedLabel = (() => {
+    const [year, month, day] = compiledHome.updatedAt.split('-');
+    return `${day}/${month}/${year}`;
+  })();
+  private readonly numberFormat = new Intl.NumberFormat('pt-BR');
+  readonly selected = signal<HomeReading>(this.readings[0]);
   readonly sheet = viewChild<ElementRef<HTMLElement>>('sheet');
   private selectionMotion?: Animation;
 
@@ -184,7 +149,11 @@ export class HomePage {
     });
   }
 
-  readonly entryPath = (_type: string, slug: string) => readingPath(slug);
+  readonly entryPath = (slug: string) => readingPath(slug);
+
+  format(value: number): string {
+    return this.numberFormat.format(value);
+  }
 
   selectSlug(slug: string): void {
     const entry = this.readings.find((item) => item.slug === slug);
@@ -193,7 +162,7 @@ export class HomePage {
       this.selected.set(entry);
     }
   }
-  select(entry: (typeof this.readings)[number], event: MouseEvent): void {
+  select(entry: HomeReading, event: MouseEvent): void {
     this.selectionMotion?.cancel();
     this.selected.set(entry);
     const element = this.sheet()?.nativeElement;

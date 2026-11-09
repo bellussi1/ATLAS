@@ -20,6 +20,9 @@ const { graphGeometry, temporalAxis } =
   await import('../../src/app/features/ideologies/utils/visualization-geometry.ts');
 const { publishedIdeologies } =
   await import('../../src/app/features/ideologies/data/published-ideologies.ts');
+const { ideologyReadings } =
+  await import('../../src/app/features/ideologies/data/ideology-readings.ts');
+const { publicReadings } = await import('../../src/app/core/content/editorial/public-readings.ts');
 const { validateIdeologyDossier } =
   await import('../../src/app/features/ideologies/models/ideology-page.schema.ts');
 const {
@@ -32,6 +35,84 @@ const {
   layoutsSchema,
 } = await import('../../src/app/core/content/models/content-artifacts.ts');
 const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
+const homeStatsPath = join(projectRoot, 'generated/home-stats.json');
+
+/** Short copy for the home reading selector; new readings fall back to the public summary. */
+const readingTaglines = {
+  marxismo: 'Trabalho, valor e divergências',
+  liberalismo: 'Liberdade, propriedade e mercado',
+  'social-democracia': 'Reforma, Estado e bem-estar',
+  anarquismo: 'Autoridade, autonomia e apoio mútuo',
+};
+const readingSeeds = { marxismo: 11, liberalismo: 23, 'social-democracia': 41, anarquismo: 53 };
+const readingStatusLabels = {
+  rascunho: 'Rascunho com fontes · revisão pendente',
+  'com-fontes': 'Com fontes · revisão pendente',
+  revisado: 'Revisão registrada',
+};
+
+/** A short passage already published in the reading, taken from its first content chapter. */
+function readingExcerpt(page) {
+  for (const chapter of page.chapters) {
+    if (['introducao', 'fontes', 'conexoes'].includes(chapter.id)) continue;
+    for (const block of chapter.blocks) {
+      if (block.type === 'explorations' && block.items?.length) {
+        const item = block.items[0];
+        if (item.summary) return { heading: chapter.title, paragraph: item.summary };
+      }
+      if (block.type === 'entities') {
+        const note = Object.values(block.notes ?? {})[0];
+        if (note) return { heading: chapter.title, paragraph: note };
+      }
+    }
+    const paragraph = (chapter.narrative ?? []).find(
+      (value) => typeof value === 'string' && value.length >= 40,
+    );
+    if (paragraph) return { heading: chapter.title, paragraph };
+  }
+  return { heading: page.chapters[0]?.title ?? 'Leitura', paragraph: page.summary };
+}
+
+/** Counts and reading cards compiled into the home page; no content request at runtime. */
+function homeStats(graph, network, readings) {
+  const entities = graph.atlases.flatMap((atlas) => atlas.entities);
+  const relations = graph.atlases.flatMap((atlas) => atlas.relations);
+  const discovery = new Set(['encyclopedic-link', 'editorial-link', 'related_to']);
+  const sources = new Set(graph.atlases.flatMap((atlas) => atlas.sources.map((s) => s.id)));
+  const cards = readings.map(({ slug, page }) => {
+    const registry = ideologyReadings.find((reading) => reading.slug === slug);
+    const publicEntry = publicReadings.find((reading) => reading.slug === slug);
+    const status = page.review?.status ?? 'rascunho';
+    return {
+      slug,
+      title: page.title,
+      tagline: readingTaglines[slug] ?? publicEntry?.summary ?? page.kicker,
+      summary: page.summary,
+      statusLabel: readingStatusLabels[status] ?? 'Revisão pendente',
+      palette: registry?.palette ?? 'atlas',
+      seed:
+        readingSeeds[slug] ?? [...slug].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 9973,
+      excerpt: readingExcerpt(page),
+    };
+  });
+  return {
+    updatedAt: graph.updatedAt,
+    counts: {
+      verbetes:
+        graph.atlases.find((atlas) => atlas.id === 'atlas-verbetes-citados')?.entities.length ?? 0,
+      entities: entities.length,
+      relations: relations.length,
+      documentedRelations: relations.filter((relation) => !discovery.has(relation.type)).length,
+      dated: entities.filter((entity) => entity.temporalExtent).length,
+      sources: sources.size,
+      nodes: network.nodes.length,
+      links: network.edges.length,
+      readings: readings.length,
+      chapters: readings.reduce((sum, { page }) => sum + page.chapters.length, 0),
+    },
+    readings: cards,
+  };
+}
 
 async function atomicFile(path, body) {
   const pending = `${path}.pending-${randomUUID()}`;
@@ -160,6 +241,12 @@ export async function buildContent({
     layouts.editorial[slug] = geometry;
   }
   layoutsSchema.parse(layouts);
+  // The home carries a compiled snapshot of the release: no content request on the first screen.
+  if (resolve(outputDirectory) === resolve(join(projectRoot, 'generated/content')))
+    await writeFile(
+      homeStatsPath,
+      `${JSON.stringify(homeStats(graph, network, readings), null, 2)}\n`,
+    );
   const search = searchIndexSchema.parse(buildDiscoveryIndex(graph, readingTexts, translations));
   const assets = [];
   const asset = async (name, value) => {
