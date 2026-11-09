@@ -106,3 +106,74 @@ test('só imagem conhecida, reproduzível e de entidade do escopo conta', () => 
   assert.equal(metrics.images.licenciadas, 1);
   assert.equal(metrics.images.entidadesComImagem, 1);
 });
+
+test('a lente mede as entidades onde elas estão e ignora o que ficou fora dela', () => {
+  const atlasA = {
+    id: 'atlas-a',
+    entities: [
+      { id: 'topic-root', kind: 'ideology', externalIds: { wikidata: 'Q1' } },
+      { id: 'person-a', kind: 'person', externalIds: { wikidata: 'Q2' } },
+      { id: 'person-extra', kind: 'person' },
+    ],
+    relations: [],
+    sources: [{ id: 'src-topic-root' }, { id: 'src-person-a' }, { id: 'src-person-extra' }],
+    claims: [],
+    citations: [],
+    evidences: [],
+    assetLicenses: [],
+  };
+  const atlasB = {
+    id: 'atlas-b',
+    entities: [{ id: 'event-b', kind: 'event', externalIds: { wikidata: 'Q3' } }],
+    relations: [
+      {
+        id: 'relation-1',
+        fromEntityId: 'person-a',
+        toEntityId: 'event-b',
+        type: 'participated_in',
+        evidenceIds: ['ev-1'],
+      },
+    ],
+    sources: [{ id: 'src-event-b' }],
+    claims: [],
+    citations: [],
+    evidences: [{ id: 'ev-1', sourceId: 'src-event-b' }],
+    assetLicenses: [
+      {
+        id: 'asset-1',
+        entityId: 'event-b',
+        status: 'known',
+        reproduction: 'allowed',
+      },
+    ],
+  };
+  const page = {
+    slug: 'x',
+    published: false,
+    review: { status: 'rascunho' },
+    atlasId: 'atlas-a',
+    portrait: null,
+    chapters: [],
+  };
+  const metrics = measure({
+    page,
+    supplement: {},
+    atlases: [atlasA, atlasB],
+    qids: ['Q1', 'Q2', 'Q3', 'Q404'],
+  });
+  assert.equal(metrics.entities.total, 3);
+  assert.equal(metrics.entities.pessoa, 1);
+  assert.equal(metrics.entities.evento, 1);
+  assert.equal(metrics.relations.grafo, 1);
+  assert.equal(metrics.relations.documentadas, 1);
+  assert.equal(metrics.sources.total, 3);
+  assert.equal(metrics.images.licenciadas, 1);
+  assert.deepEqual(
+    {
+      qids: metrics.lens.qids,
+      resolved: metrics.lens.resolved,
+      missing: metrics.lens.missingQids,
+    },
+    { qids: 4, resolved: 3, missing: ['Q404'] },
+  );
+});

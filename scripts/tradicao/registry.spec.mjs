@@ -97,6 +97,20 @@ test('rejeita registro sem recorte, com semente fora da Wikipedia ou sem semente
   );
 });
 
+test('a lente de pertencimento aceita QIDs e a ausência não inventa lista', () => {
+  const entry = traditionRegistrySchema.parse(valid());
+  assert.deepEqual(entry.belonging.qids, []);
+  const withLens = traditionRegistrySchema.parse({
+    ...valid(),
+    belonging: { qids: ['Q2', 'Q3'], note: 'Aceitos na descoberta.' },
+  });
+  assert.deepEqual(withLens.belonging.qids, ['Q2', 'Q3']);
+  assert.equal(
+    traditionRegistrySchema.safeParse({ ...valid(), belonging: { qids: ['Q-1'] } }).success,
+    false,
+  );
+});
+
 test('paletas e ícones do registro acompanham o schema da leitura e o componente de ícone', async () => {
   assert.deepEqual([...paletteNames].sort(), [...ideologyPaletteSchema.options].sort());
   const source = await readFile(

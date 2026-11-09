@@ -343,15 +343,30 @@ const sourcesOf = (content) =>
 
 /**
  * Leitura de uma ideologia. `entityIndex` resolve os registros ligados por relação em qualquer
- * coleção; `relations` traz as relações do grafo inteiro que tocam a ideologia.
+ * coleção; `relations` traz as relações do grafo inteiro que tocam a ideologia. `evidenceIndex`
+ * resolve a fonte de uma relação que vive em outra coleção; sem ele, usa a coleção da ideologia.
  */
-export function buildReading({ entity, atlas, entityIndex, relations, today }) {
+export function buildReading({
+  entity,
+  atlas,
+  entityIndex,
+  relations,
+  today,
+  atlasId = atlas.id,
+  palette = null,
+  evidenceIndex = null,
+}) {
   const claims = entityClaims(entity, atlas);
   const source =
     claims[0]?.sourceIds[0] ?? atlas.sources.find((s) => s.id === `src-${entity.id}`)?.id;
   if (!source) throw new Error(`Sem fonte citada para ${entity.id}.`);
+  const evidences =
+    evidenceIndex ?? new Map(atlas.evidences.map((evidence) => [evidence.id, evidence]));
   const evidenceOf = (relation) =>
-    atlas.evidences.filter((e) => relation.evidenceIds.includes(e.id)).map((e) => e.sourceId);
+    relation.evidenceIds.flatMap((id) => {
+      const evidence = evidences.get(id);
+      return evidence ? [evidence.sourceId] : [];
+    });
   const related = {};
   for (const relation of relations) {
     const otherId =
@@ -430,12 +445,13 @@ export function buildReading({ entity, atlas, entityIndex, relations, today }) {
     kicker: 'Ideologia política',
     summary: content.introducao.narrative?.[0] ?? `${entity.title}: leitura sem resumo verificado.`,
     published: false,
-    atlasId: atlas.id,
+    atlasId,
     review: { status: 'rascunho', reviewer: null, updatedAt: today },
     identity: {
       accent: 'teal',
       signature: generatedSignature,
       keyVisualization: 'timeline',
+      ...(palette ? { palette } : {}),
     },
     portrait: null,
     chapters,
@@ -480,23 +496,47 @@ const readJsonOr = (path, fallback) =>
     throw error;
   });
 
+/** Raiz ideológica da tradição, onde quer que o grafo a guarde. */
+export function readingRootIn(graph, rootQid) {
+  for (const atlas of graph.atlases) {
+    const entity = atlas.entities.find(
+      (candidate) => candidate.kind === 'ideology' && candidate.externalIds?.wikidata === rootQid,
+    );
+    if (entity) return { atlas, entity };
+  }
+  return null;
+}
+
 /**
  * Gera as leituras de uma coleção. `slugs` restringe a lista; `write: false` só valida e relata.
- * Páginas existentes que não levam a assinatura de geração são preservadas e listadas em `kept`.
+ * Com `rootQid`, a raiz é procurada no grafo inteiro (a lente da tradição) e as afirmações vêm da
+ * coleção que a contém; `outputAtlasId` é a coleção que a página aponta. Páginas existentes que
+ * não levam a assinatura de geração são preservadas e listadas em `kept`.
  */
 export async function generateReadings({
   root = projectRoot,
   atlasId = defaultAtlasId,
+  rootQid = null,
+  outputAtlasId = atlasId,
+  palette = null,
   slugs = null,
   write = true,
   today = new Date().toISOString().slice(0, 10),
 } = {}) {
   const graph = await readSourceGraph(join(root, 'content/knowledge'));
-  const atlas = graph.atlases.find((a) => a.id === atlasId);
+  if (!graph.atlases.some((a) => a.id === outputAtlasId))
+    throw new Error(`Coleção de saída inexistente: ${outputAtlasId}.`);
+  const rooted = rootQid ? readingRootIn(graph, rootQid) : null;
+  if (rootQid && !rooted)
+    return { written: [], kept: [], reports: [], atlasId: outputAtlasId, missingRoot: rootQid };
+  const atlas = rooted?.atlas ?? graph.atlases.find((a) => a.id === atlasId);
   if (!atlas) throw new Error(`Coleção inexistente: ${atlasId}.`);
   const entityIndex = new Map(graph.atlases.flatMap((a) => a.entities.map((e) => [e.id, e])));
   const allRelations = graph.atlases.flatMap((a) => a.relations);
-  const ideologies = atlas.entities.filter((e) => e.kind === 'ideology');
+  const evidenceIndex = new Map(
+    graph.atlases.flatMap((a) => a.evidences.map((evidence) => [evidence.id, evidence])),
+  );
+  const ideologies = rooted ? [rooted.entity] : atlas.entities.filter((e) => e.kind === 'ideology');
   const missing = (slugs ?? []).filter((s) => !ideologies.some((e) => e.slug === s));
   if (missing.length) throw new Error(`Sem ideologia em ${atlasId}: ${missing.join(', ')}.`);
   const supplement = { sources: [], edges: [], positions: [] };
@@ -518,6 +558,9 @@ export async function generateReadings({
         (r) => r.fromEntityId === entity.id || r.toEntityId === entity.id,
       ),
       today,
+      atlasId: outputAtlasId,
+      palette,
+      evidenceIndex,
     });
     const { page: valid } = validateIdeologyDossier(page, supplement, graph);
     reports.push(readingReport(valid));
@@ -532,7 +575,7 @@ export async function generateReadings({
     }
     written.push(entity.slug);
   }
-  return { written, kept, reports, atlasId };
+  return { written, kept, reports, atlasId: outputAtlasId };
 }
 
 async function main() {

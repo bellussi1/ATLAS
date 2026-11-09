@@ -12,6 +12,7 @@ import {
   generatedSignature,
   readerText,
   readingReport,
+  readingRootIn,
   reportMarkdown,
 } from './reading.mjs';
 
@@ -161,6 +162,43 @@ test('relações viram pensadores, vertentes e experiências pelo tipo do outro 
   assert.deepEqual(pensadores.blocks[0].entityIds, ['person-a']);
   assert.equal(pensadores.blocks[0].notes['person-a'], 'Inspirou, segundo o verbete.');
   assert.deepEqual(chapter(page, 'vertentes').blocks[0].entityIds, ['wiki-topic-b']);
+});
+
+test('a raiz da tradição é procurada no grafo inteiro, não só na coleção focal', () => {
+  const root = { ...ENTITY, externalIds: { wikidata: 'Q1' } };
+  const graph = {
+    atlases: [
+      { id: 'atlas-focal', entities: [] },
+      { id: 'atlas-raiz', entities: [root] },
+    ],
+  };
+  assert.equal(readingRootIn(graph, 'Q1').atlas.id, 'atlas-raiz');
+  assert.equal(readingRootIn(graph, 'Q404'), null);
+});
+
+test('relação de outra coleção usa o índice global de evidências', () => {
+  const person = { id: 'person-a', kind: 'person', title: 'A' };
+  const page = buildReading({
+    entity: ENTITY,
+    atlas: atlas([]),
+    entityIndex: new Map([[person.id, person]]),
+    relations: [
+      {
+        id: 'r1',
+        fromEntityId: 'person-a',
+        toEntityId: ENTITY.id,
+        context: 'Inspirou.',
+        evidenceIds: ['ev-other'],
+      },
+    ],
+    today: '2026-11-05',
+    evidenceIndex: new Map([['ev-other', { id: 'ev-other', sourceId: 'src-other' }]]),
+    atlasId: 'atlas-saida',
+    palette: 'fascismo',
+  });
+  assert.deepEqual(chapter(page, 'pensadores').sourceIds, ['src-other']);
+  assert.equal(page.atlasId, 'atlas-saida');
+  assert.equal(page.identity.palette, 'fascismo');
 });
 
 test('posição política da fonte entra na introdução como atribuída', () => {
