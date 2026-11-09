@@ -4,13 +4,13 @@ Status: resultado
 # Expansão de relações — 08/11/2026
 
 Trabalho pago com a API do Claude para melhorar as relações dos verbetes e das quatro leituras,
-seguido de enriquecimento gratuito pelo Wikidata. O release **`e5e69a4`** foi publicado em 08/11;
+seguido de enriquecimento gratuito pelo Wikidata. O release **`99db066`** foi publicado em 08/11;
 o ponteiro público aponta para ele. A revisão dos lotes é **assistida por IA**, autorizada pelo
 responsável do projeto; não há alegação de revisão humana.
 
 ## Resultado no grafo
 
-| Métrica | `e841fac` | `156b98a` | `c0be77b` | `ff48809` | `e5e69a4` (publicado) | Delta total |
+| Métrica | `e841fac` | `156b98a` | `c0be77b` | `ff48809` | `99db066` (publicado) | Delta total |
 |---|---:|---:|---:|---:|---:|---:|
 | Entidades | 1.158 | 1.190 | 1.190 | 1.190 | 1.190 | **+32** |
 | Relações totais | 846 | 908 | 945 | 954 | 1.580 | **+734** |
@@ -50,7 +50,7 @@ evidência e fonte:
   Marx).
 - Total: **+9 relações documentadas**, sem custo de API.
 
-### Quarto lote (`e5e69a4`) — Wikidata
+### Quarto lote (`99db066`) — Wikidata
 
 `scripts/content/enrich-wikidata-verbetes.mjs` consultou as declarações dos 928 QIDs de
 `atlas-verbetes-citados` e converteu apenas alvos que já existem no grafo:
@@ -68,6 +68,20 @@ evidência e fonte:
 - P800 (“obra notável”) estava invertido: a declaração fica no criador, então duas arestas foram
   reescritas na direção correta (`Assembleia Constituinte escreveu a Constituição de 1988` e
   `Walter Benjamin escreveu A obra de arte…`).
+
+### Quinto lote (`99db066`) — datas
+
+`scripts/content/enrich-wikidata-dates.mjs` preencheu `temporalExtent` em **448 dos 928 verbetes**,
+sem tocar no que já existia:
+
+- Pessoas: P569 (nascimento) e P570 (morte) — 194 registros.
+- Instituições, partidos e ideologias: P571 (fundação) e P576 (dissolução) — 167 registros.
+- Eventos e conceitos: P580/P582 (início/fim) e P585 (data pontual) — 54 registros.
+- Obras: P577 (publicação) e P571 — 33 registros.
+- Só entram datas com precisão de ano ou melhor; século e década ficam de fora.
+- 366 entidades têm declarações, mas nenhuma data utilizável; lugares ficaram fora por não terem
+  um marco temporal confiável.
+- Custo de API: **zero**.
 - **4.036 alvos externos** não foram criados; exigiriam uma etapa de entidades.
 - Custo de API: **zero**.
 
@@ -94,7 +108,8 @@ só extração de artigos externos.
 - Lote dos **376 verbetes restantes** em três execuções (100 + 138 + 138), com o mesmo ciclo.
 - Consolidação das **arestas curadas dos suplementos** de Marxismo e Liberalismo, com evidência e
   fonte, sem custo de API.
-- Enriquecimento pelo **Wikidata** dos 928 verbetes citados, sem criar entidades e sem custo de API.
+- Enriquecimento pelo **Wikidata** dos 928 verbetes citados, sem criar entidades e sem custo de API:
+  relações primeiro, depois datas de nascimento/morte, fundação, dissolução e início/fim.
 - Consolidação sempre em modo parcial: nenhuma coleção existente foi substituída nem perdeu
   registros.
 - O fixture de testes continua no caminho antigo (sem os pacotes), para não duplicar 24 MB em
@@ -123,7 +138,7 @@ O saldo restante do teto de US$ 6 é de aproximadamente **US$ 4,2**. A Onda 1 an
 
 ## Pendências
 
-- **Publicação:** o release `e5e69a4` está publicado no R2 e o ponteiro público aponta para ele; o próximo deploy do Pages fixa o conteúdo no HTML prerenderizado.
+- **Publicação:** o release `99db066` está publicado no R2 e o ponteiro público aponta para ele; o próximo deploy do Pages fixa o conteúdo no HTML prerenderizado.
 - **Quatro leituras:** faltam 28/11/36/40 relações documentadas para 70/35/70/50.
 - **Relações ainda pendentes:** Marxismo 4, Liberalismo 20, Social-democracia 30 e Anarquismo 10.
 - **Wikidata:** 4.036 alvos das declarações ficaram fora do grafo; criar essas entidades é uma
