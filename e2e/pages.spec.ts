@@ -1,6 +1,9 @@
 import AxeBuilder from '@axe-core/playwright';
 
-import { explorerCatalogues } from '../src/app/core/content/queries/knowledge-explorer';
+import {
+  catalogueUrl,
+  explorerCatalogues,
+} from '../src/app/core/content/queries/explorer-catalogues';
 import { expect, openReadingFixture, routeContentFixture, test } from './content-fixture';
 
 const declaredDestinations = [
@@ -10,7 +13,7 @@ const declaredDestinations = [
   '/leitura/social-democracia',
   '/leitura/anarquismo',
   '/grafos',
-  ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
+  ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
 ];
 
 test('unknown and unpublished institutional routes say so and keep the address', async ({
@@ -46,10 +49,11 @@ test('an unknown record keeps its URL and offers a way back', async ({ page }) =
 test('a search with no matches shows the empty state without leaving the catalogue', async ({
   page,
 }) => {
-  await page.goto('/pessoas?q=xyzzy');
+  await page.goto('/acervo/pessoas?q=xyzzy');
+  const results = page.getByRole('region', { name: 'Resultados da busca' });
   await expect(page.getByRole('heading', { name: 'Nenhum registro encontrado' })).toBeVisible();
   await expect(page.getByText('Nenhum resultado')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Ver o catálogo completo' })).toBeVisible();
+  await expect(results.getByRole('link', { name: 'Limpar busca e filtros' })).toBeVisible();
   await expect(page).toHaveURL(/\/pessoas\?q=xyzzy$/);
 });
 
@@ -748,24 +752,25 @@ test('retired /comparar redirects to the archive search and /grafo and /rede to 
   await expect(page).toHaveURL(/\/grafos$/);
 });
 
-test('/fontes paginates and a source anchor opens the page that holds it', async ({ page }) => {
-  await page.goto('/fontes');
+test('/acervo/fontes paginates and a source anchor opens the page that holds it', async ({
+  page,
+}) => {
+  await page.goto('/acervo/fontes');
   const rows = page.locator('.source-row');
   await expect(rows).toHaveCount(24);
-  const pager = page.getByRole('navigation', { name: 'Paginação do acervo' }).first();
-  await expect(pager).toBeVisible();
-  await pager.getByRole('link', { name: /Próxima/ }).click();
+  const more = page.getByRole('button', { name: 'Carregar mais' });
+  await expect(more).toBeVisible();
+  await more.click();
   await expect(page).toHaveURL(/pagina=2/);
-  const id = await rows.first().getAttribute('id');
+  await expect(rows).toHaveCount(48);
+  const id = await rows.nth(24).getAttribute('id');
   expect(id).toBeTruthy();
-  await page.goto(`/fontes#${id}`);
+  await page.goto(`/acervo/fontes#${id}`);
   await expect(page).toHaveURL(/pagina=2/);
   await expect(page.locator(`#${id}`)).toBeInViewport();
 });
 
-test('paging and switching the record type keep the place without flashing the top', async ({
-  page,
-}) => {
+test('paging and filtering keep the place without flashing the top', async ({ page }) => {
   await page.goto('/acervo?camada=registros');
   await expect(page.locator('.result-card')).toHaveCount(24);
   await page.evaluate(() => window.scrollTo(0, 700));
@@ -792,24 +797,16 @@ test('paging and switching the record type keep the place without flashing the t
   };
 
   const afterPage = await recordFrames(() =>
-    page.evaluate(() =>
-      (document.querySelector('.pager__link[rel="next"]') as HTMLAnchorElement).click(),
-    ),
+    page.evaluate(() => (document.querySelector('.load-more button') as HTMLButtonElement).click()),
   );
   await expect(page).toHaveURL(/pagina=2/);
   expect(afterPage).toBeGreaterThan(200);
 
-  const afterType = await recordFrames(() =>
-    page.evaluate(() =>
-      (
-        [...document.querySelectorAll('.type-index__item')].find((item) =>
-          item.textContent?.startsWith('Pessoa '),
-        ) as HTMLAnchorElement
-      ).click(),
-    ),
+  const afterFilter = await recordFrames(() =>
+    page.getByRole('navigation', { name: 'Estado' }).getByRole('link').nth(1).click(),
   );
-  await expect(page).toHaveURL(/tipo=pessoa/);
-  expect(afterType).toBeGreaterThan(200);
+  await expect(page).toHaveURL(/estado=/);
+  expect(afterFilter).toBeGreaterThan(200);
 });
 
 test('debates show estimated positions with their evidence, in words and not only colour', async ({

@@ -1,0 +1,73 @@
+{
+  "slug": "nazismo",
+  "kind": "ideologia",
+  "rootQid": "Q7310",
+  "titles": { "pt": "Nazismo", "en": "Nazism" },
+  "palette": "fascismo",
+  "icon": "ideology",
+  "scope": {
+    "classificationNote": "Ideologia e regime nacional-socialista alemão; não se confunde com todo o fascismo nem com a Alemanha como país.",
+    "period": "1919–1945, com foco no regime de 1933–1945",
+    "geography": "Alemanha e Europa ocupada",
+    "includes": [
+      "NSDAP, Estado nazista e políticas raciais",
+      "pessoas, obras e acontecimentos centrais do período",
+      "relações documentadas com outras correntes e regimes"
+    ],
+    "excludes": [
+      "neonazismo posterior a 1945, sem recorte próprio",
+      "fascismo italiano e outros regimes, tratados em suas próprias leituras",
+      "apresentar o nazismo como equivalente genérico de autoritarismo"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q8698",
+      "Q352",
+      "Q7318",
+      "Q7320",
+      "Q6235",
+      "Q361",
+      "Q41304",
+      "Q6206",
+      "Q7264",
+      "Q7272",
+      "Q483677",
+      "Q42884",
+      "Q204481",
+      "Q48244",
+      "Q7174",
+      "Q2763",
+      "Q362",
+      "Q8461",
+      "Q183",
+      "Q76074",
+      "Q52090",
+      "Q7081",
+      "Q6216",
+      "Q170480",
+      "Q2667",
+      "Q2677",
+      "Q43067",
+      "Q47906",
+      "Q1744607",
+      "Q41749",
+      "Q1726",
+      "Q1741",
+      "Q22649",
+      "Q6223",
+      "Q7169",
+      "Q6229",
+      "Q121254",
+      "Q12539",
+      "Q7269",
+      "Q317"
+    ],
+    "note": "QIDs aceitos na descoberta (estágio 2) e consolidados no grafo. A lente não cria coleção, não move entidade e não duplica nó; a raiz QID entra sempre na resolução."
+  },
+  "seeds": [{ "url": "https://pt.wikipedia.org/wiki/Nazismo" }],
+  "discovery": {
+    "founderQids": ["Q352"],
+    "commonsCategory": "Category:Nazism"
+  }
+}

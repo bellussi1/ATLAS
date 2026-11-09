@@ -11,6 +11,8 @@ import type {
 import type { ContentTranslation } from '@core/content/models/content-translation';
 import { readingPath } from '@core/routing/reading-routes';
 
+import { catalogueUrl } from './explorer-catalogues';
+
 export interface DiscoveryBacklink {
   id: string;
   path: string;
@@ -229,7 +231,7 @@ export function buildDiscoveryIndex(
       state: 'registered',
       stateLabel: statusLabels['registered'],
       scope: 'contexto',
-      path: '/fontes',
+      path: catalogueUrl('fontes'),
       fragment: `source-${source.id}`,
       context: source.edition,
       backlinks: [],
@@ -364,7 +366,7 @@ export function validateDiscoveryDestinations(
   const errors: string[] = [];
   const hasDestination = (path: string, fragment?: string): boolean => {
     if (path.startsWith('/verbete/')) return entityPaths.has(path) && !fragment;
-    if (path === '/fontes')
+    if (path === catalogueUrl('fontes'))
       return !fragment || (fragment.startsWith('source-') && sourceIds.has(fragment.slice(7)));
     return publicReadings.some((reading) => reading.path === path) && !fragment;
   };

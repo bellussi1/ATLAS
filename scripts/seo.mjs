@@ -35,9 +35,18 @@ const routeOf = (file) => {
 };
 
 const pages = [];
+// Redirect destinations are not content: keep them out of the sitemap. The same file is served by
+// Cloudflare Pages, so this list and the edge rules cannot drift.
+const redirects = new Set(
+  (await readFile(resolve('public/_redirects'), 'utf8'))
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('#'))
+    .map((line) => line.split(/\s+/)[0].replace(/\/$/, '')),
+);
 for (const file of await collect(root)) {
   const route = routeOf(file);
-  if (route === '/404') continue;
+  if (route === '/404' || redirects.has(route.replace(/\/$/, ''))) continue;
   let html = await readFile(file, 'utf8');
   html = html
     .replace(/<link\s+rel="canonical"[^>]*>\s*/gi, '')

@@ -34,3 +34,9 @@ export const CONTENT_INITIAL_PACKAGE = new InjectionToken<ContentPackage | null>
     factory: () => null,
   },
 );
+
+/** Whether the full-screen graph may warm the complete package in the background. */
+export const CONTENT_PREFETCH = new InjectionToken<boolean>('content prefetch', {
+  providedIn: 'root',
+  factory: () => true,
+});

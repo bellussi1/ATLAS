@@ -13,6 +13,9 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 
+import { hasLens, lensQids, resolveLens } from './belonging.mjs';
+import { exists, loadRegistry, registryPath } from './registry.mjs';
+
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 /** Tipos do grafo agrupados nos rótulos da régua. */
@@ -96,14 +99,42 @@ function referencedSourceIds(page, supplement) {
 }
 
 /**
- * Pure measurement over already-loaded data. `scope` = records of the page's own atlas plus every
- * record the page, its edges and its position claims reference.
+ * Fontes da lente: a fonte-verbete de cada registro em escopo mais toda fonte citada por uma
+ * afirmação dele. Assim uma entidade mesclada em outra coleção continua trazendo a sua fonte,
+ * sem contar as 944 fontes de uma coleção inteira.
  */
-export function measure({ page, supplement, atlases }) {
+function lensSources(atlases, scopeIds, supplement) {
+  const ids = new Set((supplement.sources ?? []).map((source) => source.id));
+  for (const atlas of atlases) {
+    for (const source of atlas.sources) {
+      const entityId = source.id.startsWith('src-') ? source.id.slice(4) : null;
+      if (entityId && scopeIds.has(entityId)) ids.add(source.id);
+    }
+    const evidence = new Map(atlas.evidences.map((item) => [item.id, item]));
+    const citation = new Map(atlas.citations.map((item) => [item.id, item]));
+    for (const claim of atlas.claims) {
+      if (!scopeIds.has(claim.entityId)) continue;
+      for (const citationId of claim.citationIds) {
+        const evidenceId = citation.get(citationId)?.evidenceId;
+        const item = evidenceId ? evidence.get(evidenceId) : null;
+        if (item) ids.add(item.sourceId);
+      }
+    }
+  }
+  return ids;
+}
+
+/**
+ * Pure measurement over already-loaded data. `scope` = records of the page's own atlas plus every
+ * record the page, its edges and its position claims reference. With `qids`, the base becomes the
+ * tradition lens: the records that carry those Wikidata items, wherever the graph keeps them.
+ */
+export function measure({ page, supplement, atlases, qids = [] }) {
   const own = atlases.find((atlas) => atlas.id === page.atlasId);
   if (!own) throw new Error(`Atlas "${page.atlasId}" ausente do grafo.`);
   const byId = new Map(atlases.flatMap((atlas) => atlas.entities.map((e) => [e.id, e])));
-  const scopeIds = new Set(own.entities.map((e) => e.id));
+  const lens = qids.length ? resolveLens(atlases, qids) : null;
+  const scopeIds = lens ? new Set(lens.ids) : new Set(own.entities.map((e) => e.id));
   for (const id of referencedEntityIds(page, supplement)) if (byId.has(id)) scopeIds.add(id);
 
   const entities = Object.fromEntries(entityBuckets.map((bucket) => [bucket, 0]));
@@ -127,10 +158,9 @@ export function measure({ page, supplement, atlases }) {
         if (!navigationTypes.has(relation.type)) documentedIds.add(relation.id);
       }
 
-  const sourceIds = new Set([
-    ...own.sources.map((s) => s.id),
-    ...(supplement.sources ?? []).map((s) => s.id),
-  ]);
+  const sourceIds = lens
+    ? lensSources(atlases, scopeIds, supplement)
+    : new Set([...own.sources.map((s) => s.id), ...(supplement.sources ?? []).map((s) => s.id)]);
   const cited = referencedSourceIds(page, supplement);
 
   const coverageOf = (chapter) => chapter.coverage ?? 'complete';
@@ -152,6 +182,16 @@ export function measure({ page, supplement, atlases }) {
     slug: page.slug,
     published: page.published,
     reviewStatus: page.review.status,
+    ...(lens
+      ? {
+          lens: {
+            qids: lens.qids.length,
+            resolved: lens.entities.length,
+            missing: lens.missing.length,
+            missingQids: lens.missing,
+          },
+        }
+      : {}),
     entities,
     relations: {
       grafo: relationIds.size,
@@ -187,7 +227,13 @@ export async function measureTradition(slug, root = projectRoot) {
     if (error.code === 'ENOENT') return { sources: [], edges: [], positions: [] };
     throw error;
   });
-  return measure({ page, supplement, atlases: await readAtlases(root) });
+  const registry = (await exists(registryPath(root, slug))) ? await loadRegistry(slug, root) : null;
+  return measure({
+    page,
+    supplement,
+    atlases: await readAtlases(root),
+    qids: registry && hasLens(registry) ? lensQids(registry) : [],
+  });
 }
 
 /** Flattens the numeric leaves of the metrics, e.g. `entities.pessoa`. `porTipo` is detail only. */
@@ -230,12 +276,20 @@ export function formatReport(metrics, gaps) {
       .filter((b) => e[b])
       .map((b) => `${b} ${e[b]}`)
       .join(', ')}`,
+  ];
+  if (metrics.lens)
+    lines.push(
+      `  lente: ${metrics.lens.resolved}/${metrics.lens.qids} QIDs no grafo${
+        metrics.lens.missingQids?.length ? `; ausentes: ${metrics.lens.missingQids.join(', ')}` : ''
+      }`,
+    );
+  lines.push(
     `  relações: ${metrics.relations.grafo} no grafo (${metrics.relations.documentadas} documentadas), ${metrics.relations.tese} no dossiê`,
     `  fontes: ${metrics.sources.total} (${metrics.sources.citadas} citadas)`,
     `  capítulos: ${metrics.chapters.comBlocos}/${metrics.chapters.total} com blocos, ${metrics.chapters.completos} completos, ${metrics.chapters.pendentes} pendentes`,
     `  blocos: ${metrics.blocks.total} em ${metrics.blocks.tipos} tipos`,
     `  imagens: ${metrics.images.licenciadas} licenciadas em ${metrics.images.entidadesComImagem} entidades${metrics.images.retrato ? ', com retrato' : ''}`,
-  ];
+  );
   if (gaps) {
     lines.push(
       gaps.length ? `  piso: ${gaps.length} lacunas` : '  piso: atingido',

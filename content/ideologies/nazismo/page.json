@@ -3,17 +3,22 @@
   "id": "ideology-page-nazismo",
   "slug": "nazismo",
   "kind": "ideologia",
-  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "classificationNote": "Ideologia e regime nacional-socialista alemão; não se confunde com todo o fascismo nem com a Alemanha como país.",
   "title": "Nazismo",
   "kicker": "Ideologia política",
   "summary": "O nazismo, oficialmente nacional-socialismo, é uma ideologia associada a Adolf Hitler e ao Partido Nazista (NSDAP), na Alemanha. O verbete a descreve como uma forma de fascismo que despreza a democracia liberal, incorpora racismo científico, antissemitismo, anticomunismo e eugenia. Seu partido foi fundado em 1919 e o programa de 25 pontos foi proclamado em 1920. O texto trata sua ascensão após a derrota alemã na Primeira Guerra Mundial, a perseguição aos judeus e o Holocausto, em que foram mortos entre 5 e 6 milhões de pessoas nos campos de concentração.",
   "published": false,
-  "atlasId": "atlas-ideologias-principais",
-  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "atlasId": "atlas-nazismo",
+  "review": {
+    "status": "rascunho",
+    "reviewer": null,
+    "updatedAt": "2026-11-05"
+  },
   "identity": {
     "accent": "teal",
     "signature": "Leitura montada do grafo",
-    "keyVisualization": "timeline"
+    "keyVisualization": "timeline",
+    "palette": "fascismo"
   },
   "portrait": null,
   "chapters": [
@@ -29,7 +34,9 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-nazismo"],
+      "sourceIds": [
+        "src-wiki-topic-nazismo"
+      ],
       "gap": null,
       "coverage": "complete",
       "layout": "introduction",
@@ -46,7 +53,9 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-nazismo"],
+      "sourceIds": [
+        "src-wiki-topic-nazismo"
+      ],
       "gap": null,
       "coverage": "complete",
       "layout": "documents",
@@ -63,8 +72,12 @@
               "paragraphs": [
                 "O nazismo é descrito como uma forma de fascismo que despreza a democracia liberal e o sistema parlamentar."
               ],
-              "sourceIds": ["src-wiki-topic-nazismo"],
-              "entityIds": ["wiki-topic-nazismo"],
+              "sourceIds": [
+                "src-wiki-topic-nazismo"
+              ],
+              "entityIds": [
+                "wiki-topic-nazismo"
+              ],
               "classification": "alegação empírica"
             }
           ]
@@ -83,7 +96,9 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-nazismo"],
+      "sourceIds": [
+        "src-wiki-topic-nazismo"
+      ],
       "gap": null,
       "coverage": "complete",
       "layout": "concepts",
@@ -100,8 +115,12 @@
               "paragraphs": [
                 "O nazismo incorpora racismo científico, antissemitismo, anticomunismo e uso de eugenia em seu credo."
               ],
-              "sourceIds": ["src-wiki-topic-nazismo"],
-              "entityIds": ["wiki-topic-nazismo"],
+              "sourceIds": [
+                "src-wiki-topic-nazismo"
+              ],
+              "entityIds": [
+                "wiki-topic-nazismo"
+              ],
               "classification": "tese atribuída"
             },
             {
@@ -112,8 +131,12 @@
               "paragraphs": [
                 "O nazismo defendia a Volksgemeinschaft, comunidade do povo que uniria os alemães e excluiria os considerados estrangeiros."
               ],
-              "sourceIds": ["src-wiki-topic-nazismo"],
-              "entityIds": ["wiki-topic-nazismo"],
+              "sourceIds": [
+                "src-wiki-topic-nazismo"
+              ],
+              "entityIds": [
+                "wiki-topic-nazismo"
+              ],
               "classification": "tese atribuída"
             }
           ]
@@ -131,14 +154,18 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-nazismo"],
+      "sourceIds": [
+        "src-wiki-topic-nazismo"
+      ],
       "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
       "coverage": "partial",
       "layout": "concepts",
       "blocks": [
         {
           "type": "entities",
-          "entityIds": ["wiki-topic-nazismo"],
+          "entityIds": [
+            "wiki-topic-nazismo"
+          ],
           "mode": "concepts",
           "notes": {
             "wiki-topic-nazismo": "Nomes alternativos: nacional-socialismo, Nazism, National Socialism, nazifascismo, NSDAP, Partido Nacional-Socialista dos Trabalhadores Alemães, National Socialist German Workers' Party, Partido Nazista, Adolf Hitler, hitlerismo."
@@ -152,10 +179,14 @@
       "title": "História e épocas",
       "kicker": "História e épocas",
       "minutes": 1,
-      "narrative": ["Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."],
+      "narrative": [
+        "Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."
+      ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-nazismo"],
+      "sourceIds": [
+        "src-wiki-topic-nazismo"
+      ],
       "gap": null,
       "coverage": "complete",
       "layout": "timeline",
@@ -172,16 +203,28 @@
               "paragraphs": [
                 "Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."
               ],
-              "sourceIds": ["src-wiki-topic-nazismo"],
-              "entityIds": ["wiki-topic-nazismo"],
+              "sourceIds": [
+                "src-wiki-topic-nazismo"
+              ],
+              "entityIds": [
+                "wiki-topic-nazismo"
+              ],
               "classification": "alegação empírica"
             }
           ]
         },
         {
           "type": "chronology",
-          "epochs": [{ "itemId": "marco-1", "start": 1935, "end": 1935 }],
-          "entityIds": ["wiki-topic-nazismo"],
+          "epochs": [
+            {
+              "itemId": "marco-1",
+              "start": 1935,
+              "end": 1935
+            }
+          ],
+          "entityIds": [
+            "wiki-topic-nazismo"
+          ],
           "markerIds": []
         }
       ]
@@ -192,7 +235,9 @@
       "title": "Pensadores e obras",
       "kicker": "Pensadores e obras",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -207,7 +252,9 @@
       "title": "Correntes e vertentes",
       "kicker": "Correntes e vertentes",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -222,7 +269,9 @@
       "title": "Experiências históricas",
       "kicker": "Experiências históricas",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -242,7 +291,9 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-nazismo"],
+      "sourceIds": [
+        "src-wiki-topic-nazismo"
+      ],
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
       "layout": "debate",
@@ -259,8 +310,12 @@
               "paragraphs": [
                 "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
               ],
-              "sourceIds": ["src-wiki-topic-nazismo"],
-              "entityIds": ["wiki-topic-nazismo"],
+              "sourceIds": [
+                "src-wiki-topic-nazismo"
+              ],
+              "entityIds": [
+                "wiki-topic-nazismo"
+              ],
               "classification": "alegação empírica"
             }
           ]
@@ -273,7 +328,9 @@
       "title": "Conexões com outras tradições",
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -288,7 +345,9 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -308,11 +367,20 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-nazismo"],
+      "sourceIds": [
+        "src-wiki-topic-nazismo"
+      ],
       "gap": null,
       "coverage": "complete",
       "layout": "sources",
-      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-nazismo"] }]
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "src-wiki-topic-nazismo"
+          ]
+        }
+      ]
     }
   ]
 }

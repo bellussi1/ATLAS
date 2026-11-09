@@ -34,7 +34,7 @@ import {
 } from '@core/content/queries/knowledge-graph';
 import { defer, from, type Observable } from 'rxjs';
 
-import { CONTENT_ASSET_READER, CONTENT_INITIAL_PACKAGE } from './content-assets';
+import { CONTENT_ASSET_READER, CONTENT_INITIAL_PACKAGE, CONTENT_PREFETCH } from './content-assets';
 
 /** Largest object, in characters, that the server hands to the browser through TransferState. */
 const TRANSFER_LIMIT_CHARS = 16_000;
@@ -57,6 +57,7 @@ export class ContentRepository {
   private readonly read = inject(CONTENT_ASSET_READER);
   private readonly transfer = inject(TransferState);
   private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly prefetchEnabled = inject(CONTENT_PREFETCH);
   private state = inject(CONTENT_INITIAL_PACKAGE);
   private readonly requests = new Map<string, Promise<string>>();
   private pointer?: Promise<ContentPointer>;
@@ -287,6 +288,7 @@ export class ContentRepository {
         ? await this.buildNetworkBundleState(pointer.networkBundle)
         : await this.buildNetworkState(await this.getManifest());
       this.networkOnly = true;
+      this.schedulePrefetch(pointer);
       return this.state.graph;
     })().catch((error: unknown) => {
       this.networkPending = undefined;
@@ -297,11 +299,37 @@ export class ContentRepository {
     });
     return this.networkPending;
   }
+  /**
+   * The graph is often the entry point. Warm the complete package while the reader explores it,
+   * so leaving for a catalogue does not download and verify the bundle again. Skipped on
+   * save-data, slow connections and low-memory devices.
+   */
+  private schedulePrefetch(pointer: ContentPointer): void {
+    if (!this.browser || !this.prefetchEnabled || !pointer.bundle) return;
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+    if (connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType ?? ''))
+      return;
+    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+    if (typeof memory === 'number' && memory < 8) return;
+    const key = artifactKey(pointer.bundle.sha256);
+    if (this.requests.has(key)) return;
+    const run = () => {
+      if (document.visibilityState === 'visible') void this.asset(key).catch(() => undefined);
+    };
+    if (typeof globalThis.requestIdleCallback === 'function')
+      globalThis.requestIdleCallback(run, { timeout: 3000 });
+    else setTimeout(run, 1500);
+  }
   private async buildBundleState(resource: {
     sha256: string;
     bytes: number;
   }): Promise<ContentPackage> {
     const value = await this.resource(resource, 'bundle.json');
+    this.requests.delete(artifactKey(resource.sha256));
     // `content:build` validates this shape before publishing and the digest pins the bytes. The
     // browser trusts both instead of validating the whole release a second time.
     const bundle = this.browser ? (value as ContentBundle) : contentBundleSchema.parse(value);
@@ -318,6 +346,7 @@ export class ContentRepository {
     bytes: number;
   }): Promise<ContentPackage> {
     const bundle = networkBundleSchema.parse(await this.resource(resource, 'network-bundle.json'));
+    this.requests.delete(artifactKey(resource.sha256));
     return {
       // The graph page only reads the projected fields; a later full load upgrades this state.
       graph: bundle.graph as unknown as KnowledgeGraph,

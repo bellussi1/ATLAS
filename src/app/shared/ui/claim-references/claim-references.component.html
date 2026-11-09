@@ -12,7 +12,7 @@
         <div class="claim-reference__source">
           <p>{{ relationLabel(citation) }}: {{ reference.title }}</p>
           <p class="claim-reference__index">
-            <a [routerLink]="'/fontes'" [fragment]="'source-' + reference.id"
+            <a [routerLink]="'/acervo/fontes'" [fragment]="'source-' + reference.id"
               >Abrir esta fonte no índice</a
             >
             @if (reference.url) {

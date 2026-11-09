@@ -22,7 +22,7 @@ O diagnóstico e as restrições abaixo documentam a base histórica da migraç�
 | Editorial | `ideology-page.schema.ts`, snapshots em `src/content/ideologies`, `published-ideologies.ts` | Preservar EditorialPage como IdeologyPage da feature; relacionar IDs do grafo explicitamente |
 | Consultas | `knowledge-graph.ts` filtra tipo, período e direção; `entity-context.ts` monta fichas | Melhorar a projeção contextual: não perder direção, relação ou fonte |
 | Descoberta | `discovery-index.ts` tem busca normalizada, aliases e backlinks; a Home pesquisa só duas leituras | Não confundir índice interno com catálogo público |
-| Destinos | Índice interno ainda produz `/verbete/*` e `/fontes`, removidos do Router | Não expor esses destinos; migrar por fases com teste contra o Router real |
+| Destinos | Índice interno produz `/verbete/*` e `/acervo/fontes`; as antigas rotas de catálogo redirecionam para `/acervo/<catálogo>` | Expor os destinos do Router real; manter os 301 das URLs antigas |
 | Hipertexto | `KnowledgeTextComponent`, vocabulário e segmentador puro na feature ideologies | Reutilizar no Liberalismo; termos apontam para registros existentes |
 | Contexto | Diretiva de abertura separada do CDK Dialog; `KnowledgeContextComponent` mantém histórico, scroll e foco | Preservar; identificar cada relação, inclusive duas para o mesmo destino |
 | Rede e tempo | `IdeologyAtlasComponent` reutilizado; posições determinísticas no cliente, SVG e alternativas textuais | Layout antecipado independente por coleção no futuro; não inferir genealogia |

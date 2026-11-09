@@ -1,5 +1,5 @@
 ﻿<div class="graph-page">
-  <div class="floating" [class.has-detail]="!!selected() && !embedded()">
+  <div class="floating" [class.has-detail]="!!selected() && !embedded() && !detailsCollapsed()">
     <header class="bar card">
       @if (!embedded()) {
         <a class="bar__home" routerLink="/" aria-label="ATLAS, voltar ao início">
@@ -640,12 +640,24 @@
       <div class="hud__row">
         @if (!embedded()) {
           <p id="graph-status" class="status card" role="status">{{ status() }}</p>
+          @if (selected() && detailsCollapsed()) {
+            <button type="button" class="chip chip--solid" (click)="detailsCollapsed.set(false)">
+              Ver detalhes
+            </button>
+          }
         } @else {
           <p id="graph-status" class="visually-hidden" role="status">{{ status() }}</p>
           @if (selectedVisible() && selected(); as node) {
             <div class="selection-pill card">
               <span class="selection-pill__label">Selecionado</span>
               <strong>{{ node.title }}</strong>
+              <button
+                type="button"
+                class="selection-pill__action"
+                (click)="detailsCollapsed.set(false)"
+              >
+                Detalhes
+              </button>
               <button type="button" class="selection-pill__action" (click)="inspectSelected()">
                 Ver ficha
               </button>
@@ -672,6 +684,7 @@
       <aside
         class="detail card"
         [class.detail--empty]="!selected()"
+        [class.detail--collapsed]="detailsCollapsed()"
         aria-label="Detalhes do verbete"
         aria-live="polite"
       >
@@ -685,6 +698,14 @@
                   <span class="detail__period">{{ node.period }}</span>
                 }
               </p>
+              <button
+                type="button"
+                class="detail__collapse"
+                (click)="detailsCollapsed.set(true)"
+                aria-label="Recolher detalhes"
+              >
+                −
+              </button>
               <button
                 type="button"
                 class="detail__close"
@@ -746,6 +767,98 @@
             @if (node.inReview) {
               <p class="detail__note">Texto ainda em revisão editorial.</p>
             }
+            <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
+              >Abrir o verbete <span aria-hidden="true">→</span></a
+            >
+            <section aria-labelledby="detail-links">
+              <h3 id="detail-links">
+                Conexões <span class="detail__count-inline">{{ selectedLinks().length }}</span>
+              </h3>
+              <p class="hint">Passe o mouse para destacar no mapa; clique para abrir o vizinho.</p>
+              @if (selectedLinks().length) {
+                <div class="link-summary" aria-label="Peso das ligações">
+                  @for (group of linkGroups(); track group.id) {
+                    <span class="weight weight--{{ group.id }}"
+                      >{{ group.label }} {{ group.links.length }}</span
+                    >
+                  }
+                </div>
+                @for (group of linkGroups(); track group.id) {
+                  <div class="link-group">
+                    <button
+                      type="button"
+                      class="link-group__toggle"
+                      [attr.aria-expanded]="openGroups().has(group.id)"
+                      (click)="toggleGroup(group.id)"
+                    >
+                      <span>{{ group.label }}</span>
+                      <span class="link-group__count">{{ group.links.length }}</span>
+                    </button>
+                    @if (openGroups().has(group.id)) {
+                      <ul class="links">
+                        @for (link of groupLinks(group); track link.edge.id) {
+                          <li
+                            (pointerenter)="hoverEdge(link.edge.id)"
+                            (pointerleave)="hoverEdge(null)"
+                            (focusin)="hoverEdge(link.edge.id)"
+                            (focusout)="hoverEdge(null)"
+                          >
+                            <button
+                              type="button"
+                              class="links__row"
+                              (click)="select(link.other.id, true)"
+                            >
+                              <span class="links__icon">
+                                <app-kind-icon [kind]="networkIcon(link.other)" />
+                              </span>
+                              <span class="links__body">
+                                <span class="links__verb">{{ linkVerb(link) }}</span>
+                                <span class="links__name">{{ link.other.title }}</span>
+                              </span>
+                              <span class="links__go" aria-hidden="true">→</span>
+                            </button>
+                            <p class="links__why">{{ reasonOf(link.edge) }}</p>
+                            <p class="links__meta">
+                              <span class="weight weight--{{ link.edge.weight }}">{{
+                                weightOf(link.edge).label
+                              }}</span>
+                              <span class="nature nature--{{ link.edge.nature }}">{{
+                                natureOf(link.edge).label
+                              }}</span>
+                              @if (link.edge.sourceUrl) {
+                                <a
+                                  [href]="link.edge.sourceUrl"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  >Fonte: {{ link.edge.sourceName }} ↗<span class="visually-hidden">
+                                    (abre em nova aba)</span
+                                  ></a
+                                >
+                              }
+                            </p>
+                          </li>
+                        }
+                      </ul>
+                      @if (group.links.length > 6) {
+                        <button
+                          type="button"
+                          class="link-group__more"
+                          (click)="toggleGroupLinks(group.id)"
+                        >
+                          {{
+                            expandedGroups().has(group.id)
+                              ? 'Mostrar menos'
+                              : 'Ver todas as ' + group.links.length
+                          }}
+                        </button>
+                      }
+                    }
+                  </div>
+                }
+              } @else {
+                <p class="hint">Nenhuma ligação visível com os filtros atuais.</p>
+              }
+            </section>
             @if (selectedClaims().length) {
               <section aria-labelledby="detail-claims">
                 <h3 id="detail-claims">Posição e teses atribuídas</h3>
@@ -759,60 +872,6 @@
                 </ul>
               </section>
             }
-            <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
-              >Abrir o verbete <span aria-hidden="true">→</span></a
-            >
-            <section aria-labelledby="detail-links">
-              <h3 id="detail-links">
-                Ligações <span class="detail__count-inline">{{ selectedLinks().length }}</span>
-              </h3>
-              <p class="hint">Selecione uma ligação para abrir o vizinho no mapa.</p>
-              @if (selectedLinks().length) {
-                <ul class="links">
-                  @for (link of selectedLinks(); track link.edge.id) {
-                    <li
-                      (pointerenter)="hoverEdge(link.edge.id)"
-                      (pointerleave)="hoverEdge(null)"
-                      (focusin)="hoverEdge(link.edge.id)"
-                      (focusout)="hoverEdge(null)"
-                    >
-                      <button
-                        type="button"
-                        class="links__row"
-                        (click)="select(link.other.id, true)"
-                      >
-                        <span class="links__icon">
-                          <app-kind-icon [kind]="networkIcon(link.other)" />
-                        </span>
-                        <span class="links__body">
-                          <span class="links__verb">{{ linkVerb(link) }}</span>
-                          <span class="links__name">{{ link.other.title }}</span>
-                        </span>
-                        <span class="links__go" aria-hidden="true">→</span>
-                      </button>
-                      <p class="links__why">{{ reasonOf(link.edge) }}</p>
-                      <p class="links__meta">
-                        <span class="weight weight--{{ link.edge.weight }}">{{
-                          weightOf(link.edge).label
-                        }}</span>
-                        <span class="nature nature--{{ link.edge.nature }}">{{
-                          natureOf(link.edge).label
-                        }}</span>
-                        @if (link.edge.sourceUrl) {
-                          <a [href]="link.edge.sourceUrl" target="_blank" rel="noopener noreferrer"
-                            >Fonte: {{ link.edge.sourceName }} ↗<span class="visually-hidden">
-                              (abre em nova aba)</span
-                            ></a
-                          >
-                        }
-                      </p>
-                    </li>
-                  }
-                </ul>
-              } @else {
-                <p class="hint">Nenhuma ligação visível com os filtros atuais.</p>
-              }
-            </section>
           }
         }
       </aside>

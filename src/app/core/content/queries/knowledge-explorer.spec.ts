@@ -131,6 +131,9 @@ describe('Knowledge Explorer', () => {
     expect(safeExplorerReturn('/pessoas?q=marx&estado=pending')).toBe(
       '/pessoas?q=marx&estado=pending',
     );
+    expect(safeExplorerReturn('/acervo/pessoas?q=marx&estado=pending')).toBe(
+      '/acervo/pessoas?q=marx&estado=pending',
+    );
     expect(safeExplorerReturn('/acervo?q=marx&pagina=2')).toBe('/acervo?q=marx&pagina=2');
     for (const value of [
       'https://evil.test/pessoas',

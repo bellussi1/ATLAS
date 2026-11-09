@@ -10,3 +10,20 @@
 /comparar /acervo 301
 /rede /grafos 301
 /grafo /grafos 301
+
+# Catalogues now live under the archive; old addresses keep permanent redirects.
+/entidades /acervo/entidades 301
+/ideologias /acervo/ideologias 301
+/pessoas /acervo/pessoas 301
+/obras /acervo/obras 301
+/fontes /acervo/fontes 301
+/paises /acervo/paises 301
+/estados /acervo/estados 301
+/cidades /acervo/cidades 301
+/locais /acervo/locais 301
+/regimes /acervo/regimes 301
+/partidos /acervo/partidos 301
+/instituicoes /acervo/instituicoes 301
+/acontecimentos /acervo/acontecimentos 301
+/conceitos /acervo/conceitos 301
+/lugares /acervo/lugares 301

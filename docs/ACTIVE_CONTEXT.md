@@ -12,18 +12,19 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 - Deploy: origem única `https://atlas-bellussi.pages.dev` (Cloudflare Pages, Direct Upload). `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID` estão cadastrados; o job `deploy-pages` publica o artefato verificado em push para a `master`. O Vercel foi removido do repositório, mas o projeto antigo ainda precisa ser desligado no painel.
 - Conteúdo: 13 coleções. Release **`7a4b972…`** publicado em 09/11: **1.190 entidades**, **1.580 relações** e **1.410 documentadas**; `bundle` de 28,56 MB e `networkBundle` de 5,42 MB. O release inclui os **35 tipos corrigidos**, o campo **`scope`** (1.134 núcleo, 36 contexto e 20 fora) e o peso das relações. O ponteiro público aponta para esse release.
 - **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O release empacotado reduz a navegação de leitura/catálogo de ~17 para **2 requisições** (ponteiro + pacote), `/acervo` para **2** e `/grafos` para **2** (ponteiro + `networkBundle`). Medição na URL publicada em 08/11: home **0**; acervo **2**; leitura/verbete **2** na navegação SPA e **1** na carga direta; grafo **2** na SPA e **1** na carga direta. Depois do `/acervo`, abrir um verbete na mesma sessão custa **0**. O ponteiro vem do prerender nas cargas diretas. O consumo futuro cai, mas o limite do dia ainda depende do reset ou do upgrade.
-- Build local: **1.221 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
-- CI: PR **#71** e merge **`5494439`** verdes, com **363 testes**, **188 de conteúdo**, build de 1.221 páginas, 1.222 links e **172 e2e** (um teste de diálogo flutuou por 24 px e passou no rerun); `deploy-pages` concluído. O `ingest:fetch-raw` segue estável e o probe agendado de `uptime` foi corrigido para as rotas canônicas.
+- Build local: **1.235 rotas prerenderizadas** e **1.213 páginas no sitemap**; os redirecionamentos ficam fora do sitemap. Canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
+- Últimas verificações locais (09/11, navegação lateral): **364** unitários, **197** de conteúdo, **171** e2e, **1.235** rotas prerenderizadas, **1.213** no sitemap, **1.237** páginas verificadas por `check:links`; `lint` e `typecheck` exit 0. O CI do merge ainda não rodou.
 - Publicado e verificado em 09/11: ponteiro `7a4b972`; `/acervo?camada=registros` mostra o filtro de escopo (**1.134 núcleo, 36 contexto, 20 fora**) e `/grafos` mostra o painel **Escopo** e o peso das relações no painel do verbete. O deployment `3adcc00f` e o alias `atlas-bellussi.pages.dev` servem o build novo depois da republicação. `/paises` mostra 82 países, `/estados` 19, `/cidades` 20, `/locais` 7 e `/lugares` 21; `/verbete/alemanha/` exibe `Flag_of_Germany.svg` no hero com `hero--flag`. Sitemap com **1.221 URLs**; `/grafos` baixa só o `networkBundle`, e verbete/acervo baixam só o `bundle` na carga direta. A vizinhança P2 isola 23/103/1.188 verbetes em 1 salto/2 saltos/tudo.
 
 ## Verificações recentes
 
-- `npm test`: **363/363**.
-- `npm run test:content`: **188/188**.
-- `npm run build`: passou, **1.221 páginas no sitemap**, canonical absoluto em todas as páginas.
-- `npx playwright test e2e/graph.spec.ts`: **23/23**, incluindo o filtro de escopo e o peso no painel.
-- `npx playwright test e2e/knowledge-explorer.spec.ts`: **21/21**, incluindo o filtro de escopo do acervo.
-- `npm run check:links`: **1.222 páginas** verificadas.
+- `npm test`: **364/364**.
+- `npm run test:content`: **197/197**.
+- `node --test scripts/tradicao/*.spec.mjs`: **129/129**.
+- Cobertura com a lente: nazismo **41 entidades, 16 relações, 42 fontes, 35 imagens**; stalinismo **46/68/49/53**; trabalhismo **50/16/52/44**, com **50/51 QIDs** (Q25447221 ausente). Estágios 6 e 7 passam nas três; estágio 8 passa em dry-run para nazismo e stalinismo e está bloqueado no trabalhismo.
+- `npm run build`: passou, **1.235 rotas prerenderizadas** e **1.213 páginas no sitemap**, canonical absoluto em todas as páginas; redirecionamentos fora do sitemap.
+- `npx playwright test`: **171/171**, incluindo a árvore lateral, os 301 dos catálogos antigos, axe/reflow a 320 px e o foco do skip link.
+- `npm run check:links`: **1.237 páginas** verificadas.
 - `npm run lint` e `npm run typecheck`: exit 0.
 - `content:build` local: release **`7a4b972`**, 13 coleções, **1.190 entidades**, **1.580 relações** e **1.410 documentadas**; o ponteiro público aponta para esse release.
 - Reauditoria dos verbetes: **0 de 54** tipos de alta confiança divergentes; **20 fora** e **36 contextos** confirmados; **150/342/417/213** relações por peso em `atlas-verbetes-citados`, reproduzindo a auditoria anterior. Relatório em `docs/research/auditoria-verbetes-2026-11/reauditoria-2026-11.md`.
@@ -36,6 +37,9 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Trabalho ativo
 
+- **Acervo / navegação lateral (09/11)**: a árvore substitui o seletor de catálogo e o índice de tipos. Tudo, Registros (expansível, com 14 catálogos), Fontes e Leituras ficam na lateral; Escopo e Estado são os filtros. Os catálogos agora vivem em `/acervo/<catálogo>`; as URLs antigas respondem 301 e ficam fora do sitemap. Busca, ordem, vista e filtros continuam na URL; Tudo abre em lista, Registros em grade no desktop e lista no mobile. O refactor anterior (faixa de busca, grade/lista, carregar mais) permanece. Commit local **`0260722`**; nada publicado.
+- **Grafo / painel de conexões (09/11)**: as conexões vêm antes das teses e são agrupadas por peso (histórico, ação, administrativo, catálogo), com 6 por grupo e “Ver todas”; a frase da aresta aparece só no hover, o detalhe é recolhível no mobile e o nó selecionado fica maior. Commit local **`82fda9e`**; nada publicado.
+- **Tradições / lente de pertencimento (09/11)**: `content/traditions/<slug>.json` guarda `belonging.qids` com os aceitos, e o `rootQid` entra sempre na resolução. A lente resolve os QIDs no grafo inteiro sem mover nem duplicar entidade; cobertura mede entidades, relações, fontes e imagens da lente; o glossário liga hovers ao id consolidado; o estágio 8 procura a raiz no grafo inteiro e usa evidência de outras coleções. Estágios 6 e 7 passam nas três tradições do piloto; o estágio 8 passa em dry-run para nazismo e stalinismo. Nada publicado; os registros e o conteúdo do piloto foram commitados em **`7a9e60e`**.
 - **PR #50 / #51**: #50 levou leituras, shell, deploy e foco do grafo; #51 levou os pacotes de conteúdo. Ambos mergeados e publicados.
 - **Grafo**: foco por seleção implementado; o `/grafos` lê o `networkBundle` (4,1 MB contra 12,6 MB das coleções) em **uma** requisição de conteúdo além do ponteiro. Medição na URL publicada: **2** requisições na navegação SPA e **1** na carga direta.
 - **Pacote de conteúdo**: `build-content` gera `bundle` (grafo + busca + adjacência + layouts + leituras) e `networkBundle` (projeção + layouts); o ponteiro referencia os dois e o `ContentRepository` os consome antes do manifesto. Releases antigos e o fixture continuam no caminho anterior.
@@ -62,6 +66,10 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Issues de qualidade (09/11)**: #47 separou minor/patch dos majors no Dependabot (Angular, TypeScript, Tailwind, Vitest, jsdom e `@types/node` ficam em PRs planejados); #35 adicionou e2e de falha de objeto do release, verbete inexistente e catálogo vazio; #36 criou a auditoria de selo de revisão no `content:build`, o relatório `docs/quality/SELO-REVISAO-IA.md` e textos neutros para revisão registrada; #31 adicionou 640 px (equivalente a 200% de zoom em 1280) ao teste de reflow e mediu o INP de laboratório em `docs/quality/INP-LEITURAS-2026-11.md`; #49 fez o grafo usar `placeCategory`, reclassificou Porto Alegre e Santos e removeu 20 overrides redundantes de países/cidades, mantendo a dívida de obras/conceitos para a captura. O release local `af9474f` inclui a reclassificação, mas ainda não foi publicado. Testes: 359, 188 de conteúdo, 52 e2e, build 1.221, 1.222 links.
 - **Auditoria dos verbetes**: os **35 tipos** de alta confiança ainda pendentes foram corrigidos; as 18 correções de lugares já estavam feitas, então **54 candidatos** ficaram resolvidos. O campo **`scope`** foi criado no contrato e aplicado: **1.134 núcleo**, **36 contexto** e **20 fora** no grafo; **872/36/20** nos 928 verbetes citados. O filtro de escopo está no acervo (`escopo=`) e no grafo, sem apagar registros. O **peso das relações** (`historical`, `action`, `administrative`, `catalog`) foi implementado no grafo; histórico e ação contam como relevância política, administrativo e catálogo ficam como contexto. No grafo completo: **267 históricas, 432 de ação, 455 administrativas e 426 de catálogo**; em `atlas-verbetes-citados`, **150/342/417/213**, os mesmos números da auditoria de 09/11. A revisão caso a caso confirmou os 20 fora e os 36 contextos, sem promover nem apagar nenhum; restam **28** itens da estimativa de ~64 contextos. O tipo **Empirismo** continua `institution` e fica para a próxima passada. Relatório em `docs/research/auditoria-verbetes-2026-11/reauditoria-2026-11.md`.
 
+- **Navegação / grafo → acervo**: a entrada direta no grafo baixava o `networkBundle` (836 KB) e, ao sair para o acervo, baixava o bundle completo (3,9 MB) de novo. O `ContentRepository` agora aquece o bundle em `requestIdleCallback` depois do grafo, com gate para `saveData`, 2G/3G e `deviceMemory` < 8 GB; a transição caiu de **1.467 ms para 491–657 ms** e não faz requisição de conteúdo. O texto do bundle/network é liberado depois do parse. O custo restante é ~170–220 ms de `TextEncoder` + SHA-256 + `JSON.parse`. Medição e limites em `docs/quality/NAVEGACAO-2026-11.md`.
+
+- **Piloto das tradições**: nazismo, stalinismo e trabalhismo tiveram a extração rica paga concluída por **US$ 0,534** (tetos de 1,20/1,30/1,50; pior caso 3,81). Os 40/44/51 artigos fecharam o estágio 5. A consolidação criou `atlas-nazismo` (10), `atlas-stalinismo` (4) e `atlas-trabalhismo` (19), mas boa parte dos aceitos já existia por QID e foi mesclada em coleções compartilhadas. A **lente de pertencimento** foi implementada em 09/11: `belonging.qids` no registro e resolução no grafo inteiro. Cobertura depois da lente: nazismo 41/16/42/35, stalinismo 46/68/49/53, trabalhismo 50/16/52/44 (50/51 QIDs; Q25447221 ausente). Restam lacunas de relações, fontes citadas e capítulos/blocos, além da raiz do trabalhismo. Relatório em `docs/research/PILOTO-TRADICOES-2026-11.md`.
+
 - **Onda 1 / calibração + revisão de IA**: amostra de 20 artigos rodada por **US$ 0,0706**. Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. A revisão humana foi substituída por **revisão assistida por IA**, autorizada pelo responsável do projeto: Sonnet 5.5 marcou **96 sustenta e 4 não sustenta** nos 100 itens (2 textos e 2 tipos de relação). A re-verificação Sonnet low confirmou 22/24 relações do Haiku (low 7/7; medium 15/17) e rejeitou as duas arestas `desenvolveu-se-em` do Marxismo. Decisão: **Haiku 5.5 medium + Sonnet 5.5 low**; `model-choice.json` atualizado. Metas da Onda 2: **70/50/70/35**.
 
 ## Pendências que bloqueiam
@@ -83,15 +91,17 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 5. **Programa de Associados da Amazon** — criar a conta, aprovar o site e definir a tag em `src/app/core/content/queries/amazon-books.ts`. Sem tag, os links não geram comissão; a divulgação só aparece quando ela existir.
 6. **Onda 2** — o lote dos verbetes foi concluído (+99 documentadas no total). Faltam as quatro leituras: Marxismo 41/70, Liberalismo 16/35, Social-democracia 34/70, Anarquismo 10/50. O saldo restante do teto de US$ 6 é ~US$ 4,2; a próxima decisão é entre alvos editoriais das leituras e um novo lote de verbetes.
 7. **Publicação da expansão** — o release `c0be77b` foi publicado e o ponteiro público já aponta para ele; o próximo deploy do Pages fixa o novo conteúdo no HTML prerenderizado.
-8. **Piloto das tradições** — nazismo, stalinismo e trabalhismo têm registros, descoberta e captura gratuitas concluídas e candidatos curados (40/44/50 artigos). A extração paga estimada em **~US$ 2,00** (pior caso **US$ 3,81**) aguarda aprovação; nenhum gasto de API foi feito nesta rodada.
+8. **Piloto das tradições** — a lente foi implementada e os estágios 6/7 passam. Decidir a captura + extração paga da raiz Q25447221 (trabalhismo) e a geração dos capítulos de nazismo/stalinismo; o piso de capítulos/blocos/fontes citadas ainda depende da edição.
 
 ## Próxima ação
 
-1. Retomar o piloto das três tradições (nazismo, stalinismo e trabalhismo) somente após aprovação do gasto de **~US$ 2,00** (pior caso **US$ 3,81**); a descoberta e a captura gratuitas já estão feitas.
-2. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
-3. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
-4. Rotacionar o token Cloudflare e desligar o Vercel no painel.
-5. Só depois iniciar a fase 0 dos itinerários.
+1. Decidir o envio dos commits locais do acervo (`fb022f4`), do orçamento (`4adc5aa`), do grafo (`82fda9e`), da lente (`7de53c8`), dos docs (`3a36564`), do piloto (`7a9e60e`) e da navegação lateral (`0260722`): push para a `develop` e PR só com autorização explícita; nada foi publicado.
+2. Gerar os capítulos de nazismo e stalinismo (grátis) com o estágio 8 e revisar; no trabalhismo, capturar e extrair a raiz Q25447221 (captura grátis, extração paga com estimativa e aprovação) antes de gerar. A extração do piloto já custou **US$ 0,534**.
+3. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
+4. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
+5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
+6. Só depois iniciar a fase 0 dos itinerários.
+7. Se a primeira carga continuar crítica, buscar o bundle como bytes (hash antes do decode) e dividir o pacote por rota; o prefetch já resolveu o grafo → acervo.
 
 ## Mapa rápido
 

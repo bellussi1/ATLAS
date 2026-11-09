@@ -28,7 +28,7 @@ describe('static discovery index', () => {
     ).toMatchObject({ kind: 'regime', kindLabel: 'Regime' });
     expect(index.find((item) => item.kind === 'place')?.kindLabel).toBe('Lugar');
     expect(index.find((item) => item.kind === 'fonte')).toMatchObject({
-      path: '/fontes',
+      path: '/acervo/fontes',
       fragment: expect.stringMatching(/^source-/),
     });
     expect(

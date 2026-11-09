@@ -71,9 +71,8 @@ const TRADITION_BY_KEY = new Map(
 );
 export const atlasIdFor = (key) => `atlas-${key}`;
 
-// Records added by this converter carry these id prefixes. They are stripped from existing
-// collections before the additions are derived again, so repeated runs give the same files.
-const ADDED_RECORD_ID = /^(src|ev|cit|claim|rev|rel|asset)-wiki-/;
+// Records added by this converter are appended by deterministic ID; `appendUnique` keeps repeated
+// runs from duplicating them without stripping records that were already in the collection.
 const RECORD_KEYS = [
   'sources',
   'evidences',
@@ -660,21 +659,6 @@ function entityFor(canonical, members, slug) {
   };
 }
 
-// Removes the records this converter added earlier, leaving the collection as it was before.
-function withoutAddedRecords(atlas) {
-  const keep = (record) => !ADDED_RECORD_ID.test(record.id);
-  return {
-    ...atlas,
-    sources: atlas.sources.filter(keep),
-    evidences: atlas.evidences.filter(keep),
-    citations: atlas.citations.filter(keep),
-    claims: atlas.claims.filter(keep),
-    reviews: atlas.reviews.filter(keep),
-    relations: atlas.relations.filter(keep),
-    assetLicenses: atlas.assetLicenses.filter(keep),
-  };
-}
-
 // Pure conversion: drafts in, collections out. Deterministic for the same input and existing atlases.
 export function convertDrafts(
   items,
@@ -866,17 +850,7 @@ export function convertDrafts(
     .map((atlas) => {
       const addition = additions.get(atlas.id);
       const updatedAt = [atlas.updatedAt, ...addition.retrievedAt.map(dateOf)].sort().at(-1);
-      return {
-        ...atlas,
-        updatedAt,
-        sources: [...atlas.sources, ...addition.sources],
-        evidences: [...atlas.evidences, ...addition.evidences],
-        citations: [...atlas.citations, ...addition.citations],
-        claims: [...atlas.claims, ...addition.claims],
-        reviews: [...atlas.reviews, ...addition.reviews],
-        relations: [...atlas.relations, ...addition.relations],
-        assetLicenses: [...atlas.assetLicenses, ...addition.assetLicenses],
-      };
+      return dedupeAtlas({ ...mergeAtlas(atlas, addition).atlas, updatedAt });
     });
 
   const atlases = [];
@@ -1103,7 +1077,7 @@ function mergeAtlas(base, addition) {
   const existingEntityIds = new Set(base.entities.map((entity) => entity.id));
   const entities = [...base.entities];
   let entitiesAdded = 0;
-  for (const entity of addition.entities) {
+  for (const entity of addition.entities ?? []) {
     if (existingEntityIds.has(entity.id)) continue;
     existingEntityIds.add(entity.id);
     entities.push(entity);
@@ -1156,8 +1130,13 @@ export async function convertDraftsToCollections({
   write = true,
   partial = false,
   only = [],
+  traditions = [],
 } = {}) {
-  const items = await readDrafts(root, only);
+  let items = await readDrafts(root, only);
+  if (traditions.length) {
+    const allowed = new Set(traditions);
+    items = items.filter((item) => allowed.has(item.tradition));
+  }
   if (only.length && items.length === 0)
     throw new Error(`Nenhum rascunho corresponde a --only ${only.join(', ')}.`);
   await readSourceGraph(directory); // validates the current graph before changing it
@@ -1269,7 +1248,7 @@ export async function convertDraftsToCollections({
   const baseAtlases = [];
   for (const entry of manifest.collections) {
     if (rebuilt.has(entry.id)) continue;
-    baseAtlases.push(withoutAddedRecords(await readVerifiedAtlas(directory, entry)));
+    baseAtlases.push(await readVerifiedAtlas(directory, entry));
   }
 
   const converted = convertDrafts(items, {
@@ -1387,7 +1366,20 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
           .map((value) => value.trim())
           .filter(Boolean)
       : [];
-  const report = await convertDraftsToCollections({ partial, only, write: !dryRun });
+  const traditionIndex = args.indexOf('--tradition');
+  const traditions =
+    traditionIndex >= 0
+      ? (args[traditionIndex + 1] ?? '')
+          .split(',')
+          .map((value) => value.trim())
+          .filter(Boolean)
+      : [];
+  const report = await convertDraftsToCollections({
+    partial,
+    only,
+    traditions,
+    write: !dryRun,
+  });
   console.log(formatReport(report));
   if (dryRun) console.log('Modo sem gravação: o manifesto e as coleções não foram alterados.');
 }

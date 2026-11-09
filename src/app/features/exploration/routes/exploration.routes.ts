@@ -33,7 +33,8 @@ export const explorationRoutes: Routes = [
       ),
   },
   ...explorerCatalogues.map((catalogue) => ({
-    path: catalogue.path,
+    path: catalogue.path === 'acervo' ? 'acervo' : `acervo/${catalogue.path}`,
+    pathMatch: 'full' as const,
     title: catalogue.title + ' — ATLAS',
     data: {
       catalogue: catalogue.path,
@@ -44,6 +45,15 @@ export const explorationRoutes: Routes = [
     loadComponent: () =>
       import('@exploration/pages/explorer/explorer.component').then((m) => m.ExplorerComponent),
   })),
+  // The archive is the only catalogue entry point. Old top-level URLs keep working for links
+  // already in the wild; Cloudflare also answers them with a 301 (public/_redirects).
+  ...explorerCatalogues
+    .filter((catalogue) => catalogue.path !== 'acervo')
+    .map((catalogue) => ({
+      path: catalogue.path,
+      redirectTo: `acervo/${catalogue.path}`,
+      pathMatch: 'full' as const,
+    })),
   {
     path: 'verbete/:slug',
     runGuardsAndResolvers: 'paramsOrQueryParamsChange',

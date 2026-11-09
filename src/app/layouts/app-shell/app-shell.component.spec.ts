@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import { routes } from '@app/app.routes';
-import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { provideContentFixture } from '@testing/content-fixture';
 
 import { AppComponent } from './app-shell.component';
@@ -32,12 +32,12 @@ describe('ATLAS navigation', () => {
       '/leitura/social-democracia',
       '/leitura/anarquismo',
       '/grafos',
-      ...explorerCatalogues.map((catalogue) => `/${catalogue.path}`),
+      ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
     ];
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))
       if (a.origin === location.origin) expect(destinations).toContain(a.pathname);
     expect(root.querySelector('header a[href="/acervo"]')).not.toBeNull();
-    expect(root.querySelector('footer a[href="/pessoas"]')).not.toBeNull();
+    expect(root.querySelector('footer a[href="/acervo/pessoas"]')).not.toBeNull();
   });
   it('keeps an unknown address and says it was not found', async () => {
     const h = await RouterTestingHarness.create('/sobre');

@@ -67,6 +67,17 @@ export const traditionRegistrySchema = z
     }),
     /** Dicas opcionais. A descoberta parte da raiz Wikidata; semente nunca é pré-requisito. */
     seeds: z.array(z.object({ url: wikipediaUrl, note: text.optional() })).default([]),
+    /**
+     * Lente de pertencimento: QIDs aceitos na descoberta e consolidados no grafo. A tradição não
+     * move nem duplica entidades; cobertura, leitura e glossário selecionam o que já existe. A
+     * raiz (`rootQid`) entra sempre na lente, mesmo que não esteja listada aqui.
+     */
+    belonging: z
+      .object({
+        qids: z.array(z.string().regex(/^Q\d+$/)).default([]),
+        note: text.optional(),
+      })
+      .default({ qids: [] }),
     discovery: z.object({
       founderQids: z.array(z.string().regex(/^Q\d+$/)).default([]),
       /** Categoria do Commons onde as imagens da tradição são procuradas (licença por arquivo). */

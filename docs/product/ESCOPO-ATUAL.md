@@ -5,7 +5,7 @@ Status: atual
 
 Pedido posterior de 01/11/2026 ampliou o escopo para busca universal, catálogos e páginas permanentes. As leituras `/marxismo` e `/liberalismo` e a mesa da Home seguem disponíveis.
 
-**Rotas:** `/acervo`, `/entidades`, `/ideologias`, `/pessoas`, `/obras`, `/fontes`, `/verbete/:slug`, `/paises`, `/estados`, `/cidades`, `/locais`, `/regimes`, `/partidos`, `/instituicoes`, `/acontecimentos`, `/conceitos` e `/lugares`. São 1.221 páginas no sitemap do build atual. `/fontes#source-<id>` mantém o destino das referências.
+**Rotas:** `/acervo`, `/acervo/entidades`, `/acervo/ideologias`, `/acervo/pessoas`, `/acervo/obras`, `/acervo/fontes`, `/acervo/paises`, `/acervo/estados`, `/acervo/cidades`, `/acervo/locais`, `/acervo/regimes`, `/acervo/partidos`, `/acervo/instituicoes`, `/acervo/acontecimentos`, `/acervo/conceitos`, `/acervo/lugares`, `/verbete/:slug` e `/grafos`. As antigas rotas de catálogo respondem 301 para `/acervo/<catálogo>`. São 1.213 páginas no sitemap do build atual; `/acervo/fontes#source-<id>` mantém o destino das referências.
 
 **Planejado, não implementado:** `/itinerarios` e `/itinerario/:slug` são o próximo produto editorial, ainda sem rota, schema ou conteúdo. O contrato, os pilotos comparativo e histórico e as fases estão em [Itinerários editoriais](../design/ITINERARIOS.md).
 

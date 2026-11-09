@@ -1,8 +1,11 @@
 <section class="explorer" aria-labelledby="explorer-title">
   <header class="explorer-heading">
-    <div>
+    <div class="explorer-heading__copy">
       <h1 id="explorer-title">{{ catalogue.title }}</h1>
       <p>{{ catalogue.description }}</p>
+      <a class="graph-entry" routerLink="/grafos">
+        Ver o acervo como rede, em tela cheia <span aria-hidden="true">→</span>
+      </a>
     </div>
     <app-geometric-mosaic
       class="explorer-heading__mosaic"
@@ -11,96 +14,202 @@
       [seed]="mosaicSeed"
     />
   </header>
-  <p class="graph-entry">
-    <a routerLink="/grafos"
-      >Ver o acervo como rede, em tela cheia <span aria-hidden="true">→</span></a
-    >
-  </p>
-  <div class="catalogue-select">
-    <label for="catalogue-select">Catálogo</label>
-    <select id="catalogue-select" [value]="catalogue.path" (change)="selectCatalogue($event)">
-      @for (group of groups; track group.id) {
-        <optgroup [label]="group.title">
-          @for (item of group.catalogues; track item.path) {
-            <option [value]="item.path">{{ item.title }}</option>
-          }
-        </optgroup>
-      }
-    </select>
-  </div>
+
   @if (catalogue.path === 'ideologias') {
     <aside class="readings" aria-label="Leituras de ideologias">
-      <span>Leituras contínuas</span><a [routerLink]="readingPath('marxismo')">Marxismo</a
-      ><a [routerLink]="readingPath('liberalismo')">Liberalismo</a
-      ><a [routerLink]="readingPath('social-democracia')">Social-democracia</a
-      ><a [routerLink]="readingPath('anarquismo')">Anarquismo</a>
+      <span>Leituras contínuas</span>
+      <a [routerLink]="readingPath('marxismo')">Marxismo</a>
+      <a [routerLink]="readingPath('liberalismo')">Liberalismo</a>
+      <a [routerLink]="readingPath('social-democracia')">Social-democracia</a>
+      <a [routerLink]="readingPath('anarquismo')">Anarquismo</a>
     </aside>
   }
-  <div class="archive">
-    <form
-      #filters
-      role="search"
-      aria-label="Busca no acervo"
-      (submit)="$event.preventDefault(); apply(filters)"
+
+  <div class="archive-layout">
+    <aside
+      class="filters"
+      [class.filters--open]="filtersOpen()"
+      aria-label="Navegação e filtros do acervo"
     >
-      <div class="toolbar">
-        <div class="field field--query">
-          <label for="explorer-query">Procurar no acervo</label>
+      <div class="filters__head">
+        <h2>Navegar</h2>
+        <button
+          type="button"
+          class="filters__close"
+          (click)="filtersOpen.set(false)"
+          aria-label="Fechar filtros"
+        >
+          ×
+        </button>
+      </div>
+
+      <nav class="catalogue-nav" aria-label="Catálogos do acervo">
+        <ul class="catalogue-nav__list">
+          <li>
+            <a
+              [routerLink]="catalogueUrl('acervo')"
+              [queryParams]="navQuery()"
+              [attr.aria-current]="isUniversal() ? 'page' : null"
+              >Tudo</a
+            >
+          </li>
+          <li class="catalogue-nav__group">
+            <div class="catalogue-nav__row">
+              <a
+                [routerLink]="catalogueUrl('acervo')"
+                [queryParams]="navQuery({ camada: 'registros' })"
+                [attr.aria-current]="isRegistros() ? 'page' : null"
+                >Registros</a
+              >
+              <button
+                type="button"
+                class="catalogue-nav__toggle"
+                [attr.aria-expanded]="registrosOpen()"
+                aria-controls="registros-list"
+                [attr.aria-label]="registrosOpen() ? 'Recolher registros' : 'Expandir registros'"
+                (click)="registrosOpen.set(!registrosOpen())"
+              >
+                <span aria-hidden="true">{{ registrosOpen() ? '−' : '+' }}</span>
+              </button>
+            </div>
+            @if (registrosOpen()) {
+              <ul id="registros-list" class="catalogue-nav__list catalogue-nav__list--nested">
+                @for (item of recordCatalogues; track item.path) {
+                  <li>
+                    <a
+                      [routerLink]="catalogueUrl(item.path)"
+                      [queryParams]="navQuery()"
+                      [attr.aria-current]="catalogue.path === item.path ? 'page' : null"
+                      >{{ item.title }}</a
+                    >
+                  </li>
+                }
+              </ul>
+            }
+          </li>
+          <li>
+            <a
+              [routerLink]="catalogueUrl('fontes')"
+              [queryParams]="navQuery()"
+              [attr.aria-current]="isFontes() ? 'page' : null"
+              >Fontes</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="catalogueUrl('acervo')"
+              [queryParams]="navQuery({ camada: 'editorial' })"
+              [attr.aria-current]="isLeituras() ? 'page' : null"
+              >Leituras</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      @if (scopeFilterShown()) {
+        <nav class="facet" aria-labelledby="scope-title">
+          <h3 id="scope-title">Escopo</h3>
+          <ul class="facet-list">
+            <li>
+              <a
+                [routerLink]="[]"
+                [queryParams]="{ escopo: null, pagina: null }"
+                queryParamsHandling="merge"
+                [attr.aria-current]="!scope() ? 'true' : null"
+              >
+                <span>Todos</span>
+                <span class="facet-count">{{ scopeTotal() }}</span>
+              </a>
+            </li>
+            @for (option of scopeOptions(); track option.value) {
+              <li>
+                <a
+                  [routerLink]="[]"
+                  [queryParams]="{ escopo: option.value, pagina: null }"
+                  queryParamsHandling="merge"
+                  [attr.aria-current]="scope() === option.value ? 'true' : null"
+                >
+                  <span>{{ option.label }}</span>
+                  <span class="facet-count">{{ option.count }}</span>
+                </a>
+              </li>
+            }
+          </ul>
+        </nav>
+      }
+
+      <nav class="facet" aria-labelledby="states-title">
+        <h3 id="states-title">Estado</h3>
+        <ul class="facet-list">
+          <li>
+            <a
+              [routerLink]="[]"
+              [queryParams]="{ estado: null, pagina: null }"
+              queryParamsHandling="merge"
+              [attr.aria-current]="!params().get('estado') ? 'true' : null"
+            >
+              <span>Todas as situações</span>
+            </a>
+          </li>
+          @for (state of facets().states; track state.value) {
+            <li>
+              <a
+                [routerLink]="[]"
+                [queryParams]="{ estado: state.value, pagina: null }"
+                queryParamsHandling="merge"
+                [attr.aria-current]="params().get('estado') === state.value ? 'true' : null"
+              >
+                <span>{{ state.label }}</span>
+                <span class="facet-count">{{ state.count }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <a class="filters__clear" [routerLink]="catalogueUrl(catalogue.path)">Limpar filtros</a>
+    </aside>
+
+    <div class="archive-main">
+      <form
+        class="search-band"
+        role="search"
+        aria-label="Busca no acervo"
+        (submit)="submitSearch($event)"
+      >
+        <label for="explorer-query">Procurar no acervo</label>
+        <div class="search-field">
+          <span class="search-field__icon" aria-hidden="true">⌕</span>
           <input
             id="explorer-query"
             type="search"
             name="q"
-            [value]="params().get('q') ?? ''"
-            placeholder="Nome, conceito ou expressão"
+            [value]="queryDraft()"
+            (input)="onQueryInput($event)"
+            placeholder="Nome ou conceito"
+            autocomplete="off"
           />
-        </div>
-        <button type="submit">Pesquisar</button>
-        <div class="field field--state">
-          <span class="field__label" id="explorer-state-label">Estado da revisão</span>
-          <app-select-menu
-            labelledBy="explorer-state-label"
-            [options]="stateOptions()"
-            [value]="params().get('estado') ?? ''"
-            (changed)="applyState($event)"
-          />
-        </div>
-        <a class="clear" [routerLink]="'/' + catalogue.path">Limpar busca e filtros</a>
-      </div>
-      <p class="archive-note">
-        Um registro cadastrado não equivale a conteúdo verificado. Confira as fontes e a situação
-        editorial.
-      </p>
-    </form>
-    <div class="archive-results">
-      @if (showLayers) {
-        <div class="layer-filter" role="group" aria-label="Camadas do acervo">
-          @for (entry of layers(); track entry.id) {
-            <a
-              class="layer-filter__item"
-              [routerLink]="[]"
-              [queryParams]="{ camada: entry.id || null, tipo: null, pagina: null }"
-              queryParamsHandling="merge"
-              [attr.aria-current]="layer() === entry.id ? 'true' : null"
-              >{{ entry.title }} <span class="layer-filter__count">{{ entry.count }}</span></a
+          @if (queryDraft()) {
+            <button
+              type="button"
+              class="search-field__clear"
+              (click)="clearQuery()"
+              aria-label="Limpar busca"
             >
+              ×
+            </button>
           }
+          <button type="submit" class="search-field__submit">Pesquisar</button>
         </div>
-      }
-      @if (scopeFilterShown()) {
-        <div class="scope-filter" role="group" aria-label="Escopo dos registros">
-          <span class="scope-filter__label">Escopo</span>
-          @for (option of scopeOptions(); track option.value) {
-            <a
-              class="scope-filter__item"
-              [routerLink]="[]"
-              [queryParams]="{ escopo: option.value, pagina: null }"
-              queryParamsHandling="merge"
-              [attr.aria-current]="scope() === option.value ? 'true' : null"
-              >{{ option.label }} <span class="scope-filter__count">{{ option.count }}</span></a
-            >
-          }
-        </div>
-      }
+        <p class="search-hint">
+          Busque em registros, fontes e leituras. Um registro cadastrado não equivale a conteúdo
+          verificado.
+        </p>
+        <a class="search-clear-all" [routerLink]="catalogueUrl(catalogue.path)"
+          >Limpar busca e filtros</a
+        >
+      </form>
+
       @if (activeFilters().length) {
         <div class="active-filters" aria-label="Filtros ativos">
           @for (filter of activeFilters(); track filter.key) {
@@ -113,38 +222,12 @@
               >{{ filter.label }} <span aria-hidden="true">×</span></a
             >
           }
-          <a class="active-filter active-filter--clear" [routerLink]="'/' + catalogue.path"
+          <a class="active-filter active-filter--clear" [routerLink]="catalogueUrl(catalogue.path)"
             >Limpar tudo</a
           >
         </div>
       }
-      @if (
-        kindGroups().length &&
-        facets().kinds.length > 1 &&
-        !sourceList() &&
-        !editorialList() &&
-        (!showLayers || layer() === 'registros')
-      ) {
-        <div class="type-index" role="group" aria-label="Categorias de registro">
-          @for (group of kindGroups(); track group.id) {
-            <span class="type-index__group">{{ group.title }}</span>
-            @for (facet of group.kinds; track facet.value) {
-              <a
-                class="type-index__item"
-                [routerLink]="[]"
-                [queryParams]="{
-                  camada: showLayers ? 'registros' : null,
-                  tipo: facet.value,
-                  pagina: null,
-                }"
-                queryParamsHandling="merge"
-                [attr.aria-current]="params().get('tipo') === facet.value ? 'true' : null"
-                >{{ facet.label }} <span class="type-index__count">{{ facet.count }}</span></a
-              >
-            }
-          }
-        </div>
-      }
+
       @if (unknownLayer()) {
         <p class="notice">
           Camada indisponível neste acervo. Escolha “Tudo”, “Registros”, “Fontes” ou “Leituras”.
@@ -156,45 +239,69 @@
           registros.
         </p>
       }
-      <div class="results-bar">
-        <p class="result-count" role="status" aria-live="polite">
-          @if (page().total) {
-            {{ page().start }}–{{ page().end }} de {{ page().total }}
-            {{ page().total === 1 ? 'resultado' : 'resultados' }}
-          } @else {
-            Nenhum resultado
+      @if (unknownState()) {
+        <p class="notice">Situação de revisão indisponível. Escolha outra situação.</p>
+      }
+
+      <div class="results-toolbar">
+        <p class="result-count" role="status" aria-live="polite">{{ countLabel() }}</p>
+        <div class="results-tools">
+          <label class="sort-field">
+            Ordenar
+            <select [value]="sort()" (change)="applySort($event)">
+              <option value="relevance">Relevância</option>
+              <option value="title">Título</option>
+            </select>
+          </label>
+          @if (viewToggleShown()) {
+            <div class="view-toggle" role="group" aria-label="Visualização dos resultados">
+              <button
+                type="button"
+                [attr.aria-pressed]="view() === 'grade'"
+                (click)="applyView('grade')"
+              >
+                Grade
+              </button>
+              <button
+                type="button"
+                [attr.aria-pressed]="view() === 'list'"
+                (click)="applyView('list')"
+              >
+                Lista
+              </button>
+            </div>
           }
-        </p>
-        @if (paginated && page().pageCount > 1) {
-          <ng-container *ngTemplateOutlet="pager" />
-        }
+          <button
+            type="button"
+            class="filters-toggle"
+            [attr.aria-expanded]="filtersOpen()"
+            (click)="toggleFilters()"
+          >
+            Filtros
+            @if (activeFilterCount()) {
+              <span class="filters-toggle__count">{{ activeFilterCount() }}</span>
+            }
+          </button>
+        </div>
       </div>
+
       @if (matchKind() === 'text') {
         <p class="notice">
           Nenhum nome corresponde a “{{ params().get('q') }}”. Os resultados abaixo apenas citam o
           termo no texto.
         </p>
       }
+
       <section
         aria-label="Resultados da busca"
         class="results"
-        [class.results--cards]="cardGrid()"
+        [class.results--cards]="recordGrid()"
         [class.is-busy]="navigating()"
         [attr.aria-busy]="navigating()"
+        [attr.data-query]="params().get('q') ?? ''"
       >
-        @for (entry of page().items; track entry.id) {
-          @if (editorialList()) {
-            <article [id]="entry.fragment ?? entry.id" class="result reading-row">
-              <p class="result-meta">
-                <span class="kind-tag" [attr.data-kind]="entry.kind">{{ entry.kindLabel }}</span>
-                · {{ entry.stateLabel }}
-              </p>
-              <h2>
-                <a [routerLink]="entry.path">{{ shown(entry).title }}</a>
-              </h2>
-              <p>{{ shown(entry).summary }}</p>
-            </article>
-          } @else if (sourceList()) {
+        @for (entry of visibleResults(); track entry.id) {
+          @if (entry.kind === 'fonte') {
             <article [id]="entry.fragment ?? entry.id" class="result source-row">
               <div class="source-row__head">
                 <div>
@@ -234,7 +341,18 @@
                 }
               </details>
             </article>
-          } @else {
+          } @else if (entry.kind === 'leitura') {
+            <article [id]="entry.fragment ?? entry.id" class="result reading-row">
+              <p class="result-meta">
+                <span class="kind-tag" [attr.data-kind]="entry.kind">{{ entry.kindLabel }}</span>
+                · {{ entry.stateLabel }}
+              </p>
+              <h2>
+                <a [routerLink]="entry.path">{{ shown(entry).title }}</a>
+              </h2>
+              <p>{{ shown(entry).summary }}</p>
+            </article>
+          } @else if (recordGrid()) {
             <article [id]="entry.fragment ?? entry.id" class="result-card">
               <a
                 appRecordCard
@@ -259,50 +377,63 @@
                 [attr.lang]="shown(entry).locale"
               ></a>
             </article>
+          } @else {
+            <article [id]="entry.fragment ?? entry.id" class="record-row">
+              <a
+                class="record-row__main"
+                [routerLink]="entry.path"
+                [fragment]="entry.fragment"
+                [queryParams]="{ origem: origin(), idioma: params().get('idioma') }"
+              >
+                <span class="record-row__icon">
+                  <app-kind-icon [kind]="icon(entry.kind)" />
+                </span>
+                <span class="record-row__body">
+                  <span class="record-meta">
+                    {{ entry.kindLabel }} · {{ entry.stateLabel }}
+                    @if (entry.backlinks.length) {
+                      · {{ entry.backlinks.length }}
+                      {{ entry.backlinks.length === 1 ? 'citação' : 'citações' }}
+                    }
+                  </span>
+                  <strong [attr.lang]="shown(entry).locale">{{ shown(entry).title }}</strong>
+                  <span class="record-row__summary" [attr.lang]="shown(entry).locale">
+                    {{ shown(entry).summary }}
+                  </span>
+                </span>
+                <span class="record-row__go" aria-hidden="true">→</span>
+              </a>
+            </article>
           }
         } @empty {
           <div class="empty">
-            <h2>Nenhum registro encontrado</h2>
-            <p>Tente outro nome, use menos palavras ou remova os filtros.</p>
-            <a [routerLink]="'/' + catalogue.path">Ver o catálogo completo</a>
+            <h2>{{ emptyTitle() }}</h2>
+            @if (queryDraft()) {
+              <p>Nada corresponde a “{{ queryDraft() }}” com os filtros atuais.</p>
+            } @else {
+              <p>Não há registros com os filtros atuais.</p>
+            }
+            <div class="empty__actions">
+              <a [routerLink]="catalogueUrl(catalogue.path)">Limpar busca e filtros</a>
+              @if (showLayers) {
+                <a [routerLink]="catalogueUrl('acervo')" [queryParams]="{ camada: 'registros' }"
+                  >Ver só registros</a
+                >
+              }
+              <a [routerLink]="catalogueUrl('fontes')">Procurar nas fontes</a>
+            </div>
           </div>
         }
       </section>
-      <div class="results-bar results-bar--foot">
-        @if (paginated && page().pageCount > 1) {
-          <ng-container *ngTemplateOutlet="pager" />
-        }
-      </div>
+
+      @if (hasMore()) {
+        <div class="load-more">
+          <p>{{ results().length - visibleResults().length }} resultados restantes</p>
+          <button type="button" (click)="loadMore()">Carregar mais</button>
+        </div>
+      } @else if (visibleResults().length) {
+        <p class="results-end">Fim dos resultados.</p>
+      }
     </div>
   </div>
 </section>
-
-<ng-template #pager>
-  <nav class="pager" aria-label="Paginação do acervo">
-    @if (page().page > 1) {
-      <a
-        class="pager__link"
-        rel="prev"
-        [routerLink]="[]"
-        [queryParams]="{ pagina: page().page - 1 === 1 ? null : page().page - 1 }"
-        queryParamsHandling="merge"
-        >← Anterior</a
-      >
-    } @else {
-      <span class="pager__link is-disabled" aria-disabled="true">← Anterior</span>
-    }
-    <p class="pager__status">Página {{ page().page }} de {{ page().pageCount }}</p>
-    @if (page().page < page().pageCount) {
-      <a
-        class="pager__link"
-        rel="next"
-        [routerLink]="[]"
-        [queryParams]="{ pagina: page().page + 1 }"
-        queryParamsHandling="merge"
-        >Próxima →</a
-      >
-    } @else {
-      <span class="pager__link is-disabled" aria-disabled="true">Próxima →</span>
-    }
-  </nav>
-</ng-template>

@@ -31,7 +31,7 @@
           <li><a routerLink="/acervo">Buscar no acervo</a></li>
           @for (catalogue of catalogues; track catalogue.path) {
             <li>
-              <a [routerLink]="'/' + catalogue.path">{{ catalogue.title }}</a>
+              <a [routerLink]="catalogueUrl(catalogue.path)">{{ catalogue.title }}</a>
             </li>
           }
         </ul>

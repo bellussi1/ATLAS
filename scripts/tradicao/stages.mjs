@@ -21,6 +21,7 @@ import {
 } from '../ingestion/wiki-extract/extraction.mjs';
 import { captureSchema } from '../ingestion/wiki-extract/raw.mjs';
 import { traditionFor } from '../ingestion/wikimedia/traditions.mjs';
+import { entitiesByQid, hasLens, lensQids, resolveLens } from './belonging.mjs';
 import { checkFloor, loadFloor, measureTradition, measure, flatten } from './coverage.mjs';
 import { chosenOptions, loadRecords, planRun } from './extract.mjs';
 import { richSourceText } from './prompts.mjs';
@@ -121,18 +122,33 @@ async function dossier(ctx) {
   );
 }
 
+/** Entidades da tradição: a lente declarada ou, sem lente, a coleção focal (legado). */
+function traditionEntityIds(graph, registry) {
+  if (hasLens(registry)) return resolveLens(graph.atlases, lensQids(registry)).ids;
+  const atlas = graph.atlases.find((candidate) => candidate.id === atlasIdOf(registry));
+  return new Set((atlas?.entities ?? []).map((entity) => entity.id));
+}
+
 /**
- * Ideologias que o estágio 8 monta: a raiz de uma família (pelo QID do registro) ou, num
- * programa, todas as da coleção. Leituras escritas à mão não são tocadas por `generateReadings`.
+ * Plano do estágio 8: um programa monta todas as ideologias da coleção; as demais tradições
+ * partem da raiz Wikidata, procurada no grafo inteiro (a lente), e escrevem na coleção focal.
  */
-async function readingSlugs(ctx, registry) {
-  if (registry.kind === 'programa') return null;
+async function readingPlan(ctx, registry) {
+  const atlasId = atlasIdOf(registry);
+  if (registry.kind === 'programa')
+    return { atlasId, outputAtlasId: atlasId, rootQid: null, slugs: null };
   const graph = await readSourceGraph(join(ctx.root, 'content/knowledge'));
-  const atlas = graph.atlases.find((a) => a.id === atlasIdOf(registry));
-  const root = atlas?.entities.find(
-    (e) => e.kind === 'ideology' && e.externalIds?.wikidata === registry.rootQid,
-  );
-  return root ? [root.slug] : [];
+  const root = graph.atlases
+    .flatMap((atlas) => atlas.entities)
+    .find(
+      (entity) => entity.kind === 'ideology' && entity.externalIds?.wikidata === registry.rootQid,
+    );
+  return {
+    atlasId,
+    outputAtlasId: atlasId,
+    rootQid: registry.rootQid,
+    slugs: root ? [root.slug] : [],
+  };
 }
 
 const command = (label, argv, extra = {}) => ({ label, argv, ...extra });
@@ -153,6 +169,7 @@ export const stages = [
       paths(c).page,
       paths(c).graph,
       paths(c).manifest,
+      paths(c).registry,
       join(c.root, 'scripts/tradicao/coverage-floor.json'),
     ],
     outputs: (c) => [paths(c).coverage],
@@ -658,6 +675,10 @@ export const stages = [
         ),
       );
       const accepted = (await acceptedCandidates(p)) ?? [];
+      const registry = await loadRegistry(ctx.slug, ctx.root);
+      const acceptedQids = accepted.map((c) => c.qid).filter(Boolean);
+      const lensMissing = acceptedQids.filter((qid) => !registry.belonging.qids.includes(qid));
+      const lensResolved = resolveLens(graph.atlases, acceptedQids);
       const missing = accepted.filter(
         (c) => !ids.has(`wiki-${candidateId(c)}`) && !(c.qid && qids.has(c.qid)),
       );
@@ -675,6 +696,18 @@ export const stages = [
             .map((c) => c.title)
             .slice(0, 4)
             .join(', '),
+        ),
+        check(
+          'lente lista todos os aceitos',
+          !hasLens(registry) || lensMissing.length === 0,
+          hasLens(registry)
+            ? lensMissing.slice(0, 4).join(', ')
+            : 'sem belonging.qids; a coleção focal continua a unidade',
+        ),
+        check(
+          'QIDs aceitos da lente resolvem no grafo',
+          lensResolved.missing.length === 0,
+          lensResolved.missing.join(', '),
         ),
         check(
           'nenhuma revisão humana inventada',
@@ -705,24 +738,33 @@ export const stages = [
       produces:
         'glossary.json: termos pt/en ligados a uma entidade, ambíguos separados, e linha e resumo por entidade para hover e folha',
     },
-    inputs: (c) => [paths(c).extracts, paths(c).manifest],
+    inputs: (c) => [paths(c).extracts, paths(c).manifest, paths(c).registry],
     outputs: (c) => [paths(c).glossary],
     commands: () => [],
     async run(ctx) {
       const p = paths(ctx);
+      const graph = await readSourceGraph(join(ctx.root, 'content/knowledge'));
+      const registry = await loadRegistry(ctx.slug, ctx.root);
+      const atlasIds = traditionEntityIds(graph, registry);
+      const byQid = entitiesByQid(graph.atlases);
       const entities = [];
       for (const id of await listJson(p.extracts)) {
         const draft = await readJson(join(p.extracts, `${id}.json`));
         if (!draft.oneLine) continue;
+        // A extração usa `wiki-topic-…`; a consolidação pode ter unido o QID a uma entidade de
+        // outra coleção (`person-…`). O hover precisa do id que existe no grafo, não do provisório.
+        const merged = draft.entity.qid ? byQid.get(draft.entity.qid) : null;
         entities.push({
-          id: `wiki-${draft.entity.id}`,
+          id: merged?.entity.id ?? `wiki-${draft.entity.id}`,
           oneLine: draft.oneLine,
           summary: draft.summary,
           glossary: draft.glossary ?? [],
         });
       }
+      const glossary = buildGlossary(entities);
+      glossary.links = glossary.links.filter((link) => atlasIds.has(link.entityId));
       await writeJsonAtomic(p.glossary, {
-        ...buildGlossary(entities),
+        ...glossary,
         hovers: Object.fromEntries(
           entities.map((e) => [e.id, { oneLine: e.oneLine, summary: e.summary }]),
         ),
@@ -740,8 +782,8 @@ export const stages = [
           ),
         ];
       const graph = await readSourceGraph(join(ctx.root, 'content/knowledge'));
-      const atlas = graph.atlases.find((a) => a.id === `atlas-${ctx.slug}`);
-      const ids = new Set((atlas?.entities ?? []).map((e) => e.id));
+      const registry = await loadRegistry(ctx.slug, ctx.root);
+      const ids = traditionEntityIds(graph, registry);
       const hovers = Object.entries(glossary.hovers);
       const covered = [...ids].filter((id) => glossary.hovers[id]).length;
       return [
@@ -787,18 +829,19 @@ export const stages = [
       const registry = await loadRegistry(ctx.slug, ctx.root);
       await generateReadings({
         root: ctx.root,
-        atlasId: atlasIdOf(registry),
-        slugs: await readingSlugs(ctx, registry),
+        ...(await readingPlan(ctx, registry)),
+        palette: registry.palette,
       });
     },
     async gate(ctx) {
       const registry = await loadRegistry(ctx.slug, ctx.root);
+      const plan = await readingPlan(ctx, registry);
       let result;
       try {
         result = await generateReadings({
           root: ctx.root,
-          atlasId: atlasIdOf(registry),
-          slugs: await readingSlugs(ctx, registry),
+          ...plan,
+          palette: registry.palette,
           write: false,
         });
       } catch (error) {
@@ -810,6 +853,14 @@ export const stages = [
           ),
         ];
       }
+      if (result.missingRoot)
+        return [
+          check(
+            'raiz da tradição no grafo',
+            false,
+            `QID ${result.missingRoot} ausente; capture e consolide a raiz antes de gerar a leitura`,
+          ),
+        ];
       return [
         check('leituras válidas (schema e referências)', true, `${result.written.length} leituras`),
         check(

@@ -1,8 +1,10 @@
-import { DOCUMENT, NgTemplateOutlet, ViewportScroller } from '@angular/common';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
 import {
+  afterNextRender,
   ChangeDetectionStrategy,
   Component,
   computed,
+  DestroyRef,
   effect,
   inject,
   signal,
@@ -10,45 +12,39 @@ import {
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import {
   ActivatedRoute,
+  convertToParamMap,
   NavigationEnd,
   NavigationStart,
+  type ParamMap,
   Router,
   RouterLink,
   Scroll,
 } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
 import type { DiscoveryIndexEntry } from '@core/content/queries/discovery-index';
-import { explorerCatalogues, explorerGroups } from '@core/content/queries/explorer-catalogues';
+import {
+  catalogueUrl,
+  explorerCatalogues,
+  explorerRecordCatalogueOrder,
+} from '@core/content/queries/explorer-catalogues';
 import {
   EXPLORER_PAGE_SIZE,
   explorerEntries,
   explorerFacets,
   explorerLayers,
   explorerMatchKind,
-  explorerPage,
-  explorerRecordGroups,
   parseExplorerPage,
 } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { readingPath } from '@core/routing/reading-routes';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
-import { iconKind } from '@shared/ui/kind-icon/kind-icon.component';
+import { AtlasKindIconComponent, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
-import {
-  SelectMenuComponent,
-  type SelectMenuOption,
-} from '@shared/ui/select-menu/select-menu.component';
 
 @Component({
   selector: 'app-explorer',
-  imports: [
-    NgTemplateOutlet,
-    RouterLink,
-    AtlasGeometricMosaicComponent,
-    RecordCardComponent,
-    SelectMenuComponent,
-  ],
+  imports: [RouterLink, AtlasGeometricMosaicComponent, AtlasKindIconComponent, RecordCardComponent],
   templateUrl: './explorer.component.html',
   styleUrl: './explorer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -60,6 +56,8 @@ export class ExplorerComponent {
   private readonly repository = inject(ContentRepository);
   private readonly viewport = inject(ViewportScroller);
   private readonly document = inject(DOCUMENT);
+  private readonly destroyRef = inject(DestroyRef);
+  private searchTimer?: ReturnType<typeof setTimeout>;
   // Pager links keep the reader's place: the router would otherwise scroll to the top of the page.
   private keptScrollY: number | null = null;
   // A #source-… link may point to another page; the scroll restoration must not undo it.
@@ -67,35 +65,89 @@ export class ExplorerComponent {
   private resolvedFragment: string | null = null;
   /** Keeps the previous page visible and marked busy while a query-string change settles. */
   readonly navigating = signal(false);
-  readonly groups = explorerGroups.map((group) => ({
-    ...group,
-    catalogues: explorerCatalogues.filter((c) => c.group === group.id),
-  }));
+  readonly catalogueUrl = catalogueUrl;
   readonly catalogue =
     explorerCatalogues.find((c) => c.path === this.route.snapshot.data['catalogue']) ??
     explorerCatalogues[0];
+  readonly recordCatalogues = explorerRecordCatalogueOrder.map((path) =>
+    explorerCatalogues.find((catalogue) => catalogue.path === path)!,
+  );
+  readonly registrosOpen = signal(true);
   readonly mosaicSeed = explorerCatalogues.indexOf(this.catalogue) + 3;
   readonly languages = contentLanguageLabels;
-  readonly params = toSignal(this.route.queryParamMap, {
-    initialValue: this.route.snapshot.queryParamMap,
-  });
+  readonly params = signal<ParamMap>(this.readInitialParams());
   /** `#source-…` links open the page that holds that source. */
   readonly fragment = toSignal(this.route.fragment, {
     initialValue: this.route.snapshot.fragment,
   });
+  /** The input keeps the reader's text while the debounced query settles in the URL. */
+  readonly queryDraft = signal(this.params().get('q') ?? '');
+  readonly filtersOpen = signal(false);
+  readonly phone = signal(false);
   /** Universal archive only: records, sources and readings are different layers. */
   readonly showLayers = this.catalogue.path === 'acervo';
   readonly layer = computed(() => {
     const value = this.params().get('camada') ?? '';
     return explorerLayers.some((item) => item.id === value) ? value : '';
   });
+  readonly isUniversal = computed(() => this.catalogue.path === 'acervo' && !this.layer());
+  readonly isRegistros = computed(
+    () => this.catalogue.path === 'acervo' && this.layer() === 'registros',
+  );
+  readonly isFontes = computed(
+    () =>
+      this.catalogue.path === 'fontes' ||
+      (this.catalogue.path === 'acervo' && this.layer() === 'fontes'),
+  );
+  readonly isLeituras = computed(
+    () => this.catalogue.path === 'acervo' && this.layer() === 'editorial',
+  );
   /** Political relevance of the record: core, context or outside the archive's scope. */
   readonly scope = computed(() => {
     const value = this.params().get('escopo') ?? '';
     return ['nucleo', 'contexto', 'fora'].includes(value) ? value : '';
   });
+  readonly sort = computed(() => (this.params().get('ordem') === 'titulo' ? 'title' : 'relevance'));
+  readonly view = computed<'grade' | 'list'>(() => {
+    const value = this.params().get('vista');
+    if (value === 'grade') return 'grade';
+    if (value === 'lista') return 'list';
+    return this.defaultView();
+  });
+  /** Tudo mixes records, sources and readings; a single grid would flatten their difference. */
+  private readonly defaultView = computed<'grade' | 'list'>(() => {
+    if (this.phone()) return 'list';
+    if (this.showLayers && !this.layer()) return 'list';
+    return this.sourceList() || this.editorialList() ? 'list' : 'grade';
+  });
+  readonly recordGrid = computed(
+    () =>
+      this.view() === 'grade' &&
+      !this.sourceList() &&
+      !this.editorialList() &&
+      (!this.showLayers || this.layer() === 'registros'),
+  );
+  readonly viewToggleShown = computed(
+    () =>
+      !this.sourceList() &&
+      !this.editorialList() &&
+      (!this.showLayers || this.layer() === 'registros'),
+  );
+  readonly scopeTotal = computed(() =>
+    this.facets().scopes.reduce((sum, item) => sum + item.count, 0),
+  );
   readonly facets = computed(() =>
-    explorerFacets(this.repository.discoveryIndex, this.catalogue.path, this.layer(), this.scope()),
+    explorerFacets(
+      this.repository.discoveryIndex,
+      this.catalogue.path,
+      this.layer(),
+      this.scope(),
+      {
+        query: this.params().get('q') ?? '',
+        kind: this.params().get('tipo') ?? '',
+        state: this.params().get('estado') ?? '',
+      },
+    ),
   );
   readonly scopeOptions = computed(() => {
     const counts = new Map(this.facets().scopes.map((item) => [item.value, item.count]));
@@ -105,18 +157,6 @@ export class ExplorerComponent {
       { value: 'fora', label: 'Fora', count: counts.get('fora') ?? 0 },
     ];
   });
-  readonly layers = computed(() => this.facets().layers);
-  /** Thematic groups of record kinds; sources and readings keep their own layer. */
-  readonly kindGroups = computed(() =>
-    explorerRecordGroups
-      .map((group) => ({
-        ...group,
-        kinds: this.facets().kinds.filter((kind) =>
-          (group.kinds as readonly string[]).includes(kind.value),
-        ),
-      }))
-      .filter((group) => group.kinds.length),
-  );
   readonly results = computed(() =>
     explorerEntries(this.repository.discoveryIndex, {
       catalogue: this.catalogue.path,
@@ -125,6 +165,7 @@ export class ExplorerComponent {
       state: this.params().get('estado') ?? '',
       layer: this.layer(),
       scope: this.scope(),
+      sort: this.sort(),
     }),
   );
   /** Tells the reader when no name matched and the list only cites the term in the text. */
@@ -140,15 +181,19 @@ export class ExplorerComponent {
   );
   // Sources keep one list: records link to their anchors (#source-…), which must stay on the page.
   readonly icon = iconKind;
-  readonly paginated = true;
-  readonly page = computed(() =>
-    explorerPage(
-      this.results(),
-      parseExplorerPage(this.params().get('pagina')),
-      EXPLORER_PAGE_SIZE,
-    ),
+  readonly page = computed(() => parseExplorerPage(this.params().get('pagina')));
+  readonly visibleResults = computed(() =>
+    this.results().slice(0, this.page() * EXPLORER_PAGE_SIZE),
   );
-  readonly origin = computed(() => '/' + this.catalogue.path + this.queryString());
+  readonly hasMore = computed(() => this.visibleResults().length < this.results().length);
+  readonly countLabel = computed(() => {
+    const total = this.results().length;
+    if (!total) return 'Nenhum resultado';
+    const shown = this.visibleResults().length;
+    const range = shown === total ? `${total}` : `1–${shown}`;
+    return `${range} de ${total} ${total === 1 ? 'resultado' : 'resultados'}`;
+  });
+  readonly origin = computed(() => catalogueUrl(this.catalogue.path) + this.queryString());
   readonly unknownKind = computed(
     () =>
       !!this.params().get('tipo') &&
@@ -169,13 +214,13 @@ export class ExplorerComponent {
     () => this.catalogue.path === 'fontes' || this.layer() === 'fontes',
   );
   readonly editorialList = computed(() => this.layer() === 'editorial');
-  readonly cardGrid = computed(() => !this.sourceList() && !this.editorialList());
-  readonly scopeFilterShown = computed(
-    () =>
-      !this.sourceList() &&
-      !this.editorialList() &&
-      (!this.showLayers || this.layer() === 'registros'),
+  /** Only a record catalogue promises records; the universal archive also holds sources and readings. */
+  readonly emptyTitle = computed(() =>
+    this.sourceList() || this.editorialList() || (this.showLayers && !this.layer())
+      ? 'Nenhum resultado encontrado'
+      : 'Nenhum registro encontrado',
   );
+  readonly scopeFilterShown = computed(() => !this.sourceList() && !this.editorialList());
   readonly activeFilters = computed(() => {
     const params = this.params();
     const filters: { key: string; label: string; remove: Record<string, null> }[] = [];
@@ -211,18 +256,23 @@ export class ExplorerComponent {
     }
     return filters;
   });
-  readonly stateOptions = computed<SelectMenuOption[]>(() => [
-    { value: '', label: 'Todas as situações' },
-    ...(this.unknownState()
-      ? [{ value: this.params().get('estado') ?? '', label: 'Situação indisponível' }]
-      : []),
-    ...this.facets().states.map((facet) => ({
-      value: facet.value,
-      label: facet.label,
-      count: facet.count,
-    })),
-  ]);
+  readonly activeFilterCount = computed(() => this.activeFilters().length);
   constructor() {
+    // Hydration can start the router without the initial query string; the real URL settles it.
+    afterNextRender(() => {
+      this.phone.set(
+        this.document.defaultView?.matchMedia('(max-width: 47.99rem)').matches ?? false,
+      );
+      this.syncFromLocation();
+      setTimeout(() => this.syncFromLocation(), 0);
+      setTimeout(() => this.syncFromLocation(), 120);
+    });
+    const view = this.document.defaultView;
+    if (view) {
+      const onPageShow = () => this.syncFromLocation();
+      view.addEventListener('pageshow', onPageShow);
+      this.destroyRef.onDestroy(() => view.removeEventListener('pageshow', onPageShow));
+    }
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
       // Filters, search and pager only change the query string: the reader stays where they are.
       if (event instanceof NavigationStart) {
@@ -237,6 +287,11 @@ export class ExplorerComponent {
       if (event instanceof NavigationEnd) {
         this.navigating.set(false);
         this.resolvingFragment = false;
+        const search = this.document.location?.search ?? '';
+        const fromLocation = Object.fromEntries(new URLSearchParams(search));
+        const fromRouter = this.router.parseUrl(event.urlAfterRedirects).queryParams;
+        this.params.set(convertToParamMap({ ...fromRouter, ...fromLocation }));
+        setTimeout(() => this.syncFromLocation(), 0);
       }
       if (event instanceof Scroll && this.keptScrollY !== null) {
         const y = this.keptScrollY;
@@ -254,7 +309,7 @@ export class ExplorerComponent {
       const index = entries.findIndex((entry) => (entry.fragment ?? entry.id) === fragment);
       if (index < 0) return;
       const target = Math.floor(index / EXPLORER_PAGE_SIZE) + 1;
-      if (target !== this.page().page) {
+      if (target !== this.page()) {
         this.resolvingFragment = true;
         void this.router.navigate([], {
           relativeTo: this.route,
@@ -269,6 +324,19 @@ export class ExplorerComponent {
       this.resolvedFragment = fragment;
       setTimeout(() => this.scrollToFragment(fragment), 0);
     });
+    // Back/forward and clear actions update the field; a pending debounce keeps the typed text.
+    effect(() => {
+      const query = this.params().get('q') ?? '';
+      if (!this.searchTimer && query !== this.queryDraft()) this.queryDraft.set(query);
+    });
+    this.destroyRef.onDestroy(() => {
+      if (this.searchTimer) clearTimeout(this.searchTimer);
+    });
+  }
+  /** The tree keeps the reading language when the reader switches catalogues. */
+  navQuery(extra: Record<string, string> = {}): Record<string, string> {
+    const idioma = this.params().get('idioma');
+    return { ...extra, ...(idioma ? { idioma } : {}) };
   }
   sourceUrl(id: string): string | null {
     return (
@@ -276,34 +344,57 @@ export class ExplorerComponent {
         ?.url ?? null
     );
   }
-  applyState(state: string): void {
+  onQueryInput(event: Event): void {
+    this.queryDraft.set((event.target as HTMLInputElement).value);
+    if (this.searchTimer) clearTimeout(this.searchTimer);
+    this.searchTimer = setTimeout(() => {
+      this.searchTimer = undefined;
+      this.applyQuery(this.queryDraft(), true);
+    }, 220);
+  }
+  submitSearch(event: Event): void {
+    event.preventDefault();
+    if (this.searchTimer) {
+      clearTimeout(this.searchTimer);
+      this.searchTimer = undefined;
+    }
+    this.applyQuery(this.queryDraft(), false);
+  }
+  clearQuery(): void {
+    if (this.searchTimer) {
+      clearTimeout(this.searchTimer);
+      this.searchTimer = undefined;
+    }
+    this.queryDraft.set('');
+    this.applyQuery('', true);
+    queueMicrotask(() => this.document.getElementById('explorer-query')?.focus());
+  }
+  applySort(event: Event): void {
+    const value = (event.target as HTMLSelectElement).value;
     void this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { estado: state || null, pagina: null },
+      queryParams: { ordem: value === 'titulo' ? 'titulo' : null, pagina: null },
       queryParamsHandling: 'merge',
     });
   }
-  // Category links live in the URL; the search and state filters keep it.
-  apply(form: HTMLFormElement): void {
-    const data = new FormData(form);
+  applyView(view: 'grade' | 'list'): void {
+    if (view === this.view()) return;
     void this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: {
-        q: String(data.get('q') ?? '').trim() || null,
-        tipo: this.params().get('tipo'),
-        estado: this.params().get('estado'),
-        camada: this.params().get('camada'),
-        idioma: this.params().get('idioma'),
-      },
+      queryParams: { vista: view === 'grade' ? 'grade' : 'lista', pagina: null },
+      queryParamsHandling: 'merge',
     });
   }
-  /** On phones the catalogue table becomes a compact selector; the route drives the change. */
-  selectCatalogue(event: Event): void {
-    const path = (event.target as HTMLSelectElement).value;
-    if (!path || path === this.catalogue.path) return;
-    void this.router.navigate(['/' + path], {
-      queryParams: { idioma: this.params().get('idioma') },
+  loadMore(): void {
+    if (!this.hasMore()) return;
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { pagina: this.page() + 1 },
+      queryParamsHandling: 'merge',
     });
+  }
+  toggleFilters(): void {
+    this.filtersOpen.update((open) => !open);
   }
   /** Title and summary in the requested language when an approved translation exists. */
   shown(entry: DiscoveryIndexEntry): { title: string; summary: string; locale: string } {
@@ -317,14 +408,48 @@ export class ExplorerComponent {
   picture(id: string): string | null {
     return entityMedia(this.repository.knowledgeGraph, { id })?.assetPath ?? null;
   }
+  private applyQuery(value: string, replace: boolean): void {
+    const query = value.trim();
+    if ((this.params().get('q') ?? '') === query) return;
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { q: query || null, pagina: null },
+      queryParamsHandling: 'merge',
+      replaceUrl: replace,
+    });
+  }
   private scrollToFragment(fragment: string): void {
     const element = this.document.getElementById(fragment);
     if (!element) return;
     element.scrollIntoView({ block: 'start' });
   }
+  private readInitialParams(): ParamMap {
+    const search = this.document.location?.search ?? '';
+    const fromLocation = Object.fromEntries(new URLSearchParams(search));
+    const fromRouter = this.router.parseUrl(this.router.url).queryParams;
+    const params = { ...fromLocation, ...fromRouter };
+    return Object.keys(params).length
+      ? convertToParamMap(params)
+      : this.route.snapshot.queryParamMap;
+  }
+  /** The browser URL is the source of truth after hydration and trailing-slash redirects. */
+  private syncFromLocation(): void {
+    const params = Object.fromEntries(new URLSearchParams(this.document.location.search));
+    this.params.set(convertToParamMap(params));
+  }
   private queryString(): string {
     const params = new URLSearchParams();
-    for (const key of ['q', 'tipo', 'estado', 'pagina', 'idioma', 'camada']) {
+    for (const key of [
+      'q',
+      'tipo',
+      'estado',
+      'escopo',
+      'pagina',
+      'idioma',
+      'camada',
+      'ordem',
+      'vista',
+    ]) {
       const value = this.params().get(key);
       if (value) params.set(key, value);
     }

@@ -8,18 +8,18 @@ const routes = [
   '/leitura/marxismo',
   '/leitura/liberalismo',
   '/acervo',
-  '/entidades',
-  '/ideologias',
-  '/pessoas',
-  '/obras',
-  '/fontes',
-  '/paises',
-  '/regimes',
-  '/partidos',
-  '/instituicoes',
-  '/acontecimentos',
-  '/conceitos',
-  '/lugares',
+  '/acervo/entidades',
+  '/acervo/ideologias',
+  '/acervo/pessoas',
+  '/acervo/obras',
+  '/acervo/fontes',
+  '/acervo/paises',
+  '/acervo/regimes',
+  '/acervo/partidos',
+  '/acervo/instituicoes',
+  '/acervo/acontecimentos',
+  '/acervo/conceitos',
+  '/acervo/lugares',
   '/verbete/brasil',
 ];
 
@@ -28,7 +28,7 @@ for (const width of [390, 1440])
     test(`${path} at ${width}px has one heading, no serious axe findings and no horizontal scroll`, async ({
       page,
     }) => {
-      test.setTimeout(path === '/fontes' ? 90_000 : 30_000);
+      test.setTimeout(path === '/acervo/fontes' ? 90_000 : 30_000);
       await page.setViewportSize({ width, height: 900 });
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.goto(path);

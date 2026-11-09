@@ -1,6 +1,6 @@
 import { inject, Injector } from '@angular/core';
 import { type ResolveFn } from '@angular/router';
-import { explorerCatalogues } from '@core/content/queries/explorer-catalogues';
+import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { catalogueForKind } from '@core/content/queries/knowledge-explorer';
 import { localizedEntity } from '@core/content/queries/localized-content';
 import { firstValueFrom } from 'rxjs';
@@ -51,5 +51,5 @@ export const knowledgeEntryCatalogueResolver: ResolveFn<
     : undefined;
   if (!kind) return undefined;
   const catalogue = explorerCatalogues.find((item) => item.path === catalogueForKind(kind));
-  return catalogue ? { label: catalogue.title, url: `/${catalogue.path}` } : undefined;
+  return catalogue ? { label: catalogue.title, url: catalogueUrl(catalogue.path) } : undefined;
 };

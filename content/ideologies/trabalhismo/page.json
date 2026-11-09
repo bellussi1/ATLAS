@@ -3,17 +3,22 @@
   "id": "ideology-page-trabalhismo",
   "slug": "trabalhismo",
   "kind": "ideologia",
-  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "classificationNote": "Tradição política brasileira organizada em torno do trabalho, do Estado social e do legado varguista; não se confunde com socialismo nem com a totalidade da esquerda.",
   "title": "Trabalhismo",
   "kicker": "Ideologia política",
   "summary": "Página de desambiguação que reúne sentidos do termo trabalhismo: movimento operário, Novo Trabalhismo, operaísmo, trabalhismo brasileiro, sindicalismo e workism (culto ao trabalho). O texto não desenvolve nenhum desses temas; apenas indica para onde o leitor pode seguir. Também traz três itens de busca e de listagem de títulos. Por isso não há datas, relações históricas nem afirmações sobre os verbetes indicados, que devem ser consultados em suas próprias páginas.",
   "published": false,
-  "atlasId": "atlas-ideologias-principais",
-  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-05" },
+  "atlasId": "atlas-trabalhismo",
+  "review": {
+    "status": "rascunho",
+    "reviewer": null,
+    "updatedAt": "2026-11-05"
+  },
   "identity": {
     "accent": "teal",
     "signature": "Leitura montada do grafo",
-    "keyVisualization": "timeline"
+    "keyVisualization": "timeline",
+    "palette": "social-democracia"
   },
   "portrait": null,
   "chapters": [
@@ -28,7 +33,9 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-trabalhismo"],
+      "sourceIds": [
+        "src-wiki-topic-trabalhismo"
+      ],
       "gap": null,
       "coverage": "complete",
       "layout": "introduction",
@@ -40,7 +47,9 @@
       "title": "Origens e formação",
       "kicker": "Origens e formação",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -55,7 +64,9 @@
       "title": "Pilares e princípios",
       "kicker": "Pilares e princípios",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -70,7 +81,9 @@
       "title": "Conceitos e palavras-chave",
       "kicker": "Conceitos e palavras-chave",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -85,7 +98,9 @@
       "title": "História e épocas",
       "kicker": "História e épocas",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -100,7 +115,9 @@
       "title": "Pensadores e obras",
       "kicker": "Pensadores e obras",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -115,7 +132,9 @@
       "title": "Correntes e vertentes",
       "kicker": "Correntes e vertentes",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -130,7 +149,9 @@
       "title": "Experiências históricas",
       "kicker": "Experiências históricas",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -145,7 +166,9 @@
       "title": "Argumentos, críticas e respostas",
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -160,7 +183,9 @@
       "title": "Conexões com outras tradições",
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -175,7 +200,9 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
+      "narrative": [
+        "Capítulo sem conteúdo verificado."
+      ],
       "question": null,
       "bridge": null,
       "sourceIds": [],
@@ -195,11 +222,20 @@
       ],
       "question": null,
       "bridge": null,
-      "sourceIds": ["src-wiki-topic-trabalhismo"],
+      "sourceIds": [
+        "src-wiki-topic-trabalhismo"
+      ],
       "gap": null,
       "coverage": "complete",
       "layout": "sources",
-      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-trabalhismo"] }]
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "src-wiki-topic-trabalhismo"
+          ]
+        }
+      ]
     }
   ]
 }

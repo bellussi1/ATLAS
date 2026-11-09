@@ -68,7 +68,7 @@ A publicação prepara as novas mídias, grava os novos shards e troca o manifes
 ## Limites e rollback
 
 - A arquitetura separa fontes de derivados e tira o grafo do JS, mas não promete redução de todo o tráfego inicial. Índices e TransferState também têm custo, registrado no relatório de qualidade.
-- O índice interno preserva destinos históricos despublicados (`/verbete/*`, `/fontes`). As três páginas não os expõem como links novos; a fase de catálogos e permalinks deve reconciliá-los com o Router real.
+- O índice interno preserva destinos de registro (`/verbete/*`) e de fontes (`/acervo/fontes`). As três páginas não expõem links novos fora do Router real; catálogos e permalinks reconciliam os destinos antigos com os redirecionamentos.
 - Layouts compilados cobrem as visualizações das páginas públicas atuais. Componentes antigos não publicados continuam no repositório; não se declara eliminação de todo cálculo visual.
 - O cache descrito é de sessão e TransferState. Cache HTTP, CDN e publicação são responsabilidade da hospedagem; não houve deploy.
 - Artefatos com hash antigos podem permanecer em `generated` entre builds locais. Build em checkout limpo começa sem eles; o manifesto identifica os recursos da versão ativa.
