@@ -14,6 +14,25 @@ export const explorerContentGroups = [
 export type ExplorerContentGroup = (typeof explorerContentGroups)[number]['id'];
 const editorialKinds: readonly string[] = ['leitura'];
 
+/** Top-level layers of the universal archive; a specific catalogue fixes its own layer. */
+export const explorerLayers = [
+  { id: '', title: 'Tudo' },
+  { id: 'registros', title: 'Registros' },
+  { id: 'fontes', title: 'Fontes' },
+  { id: 'editorial', title: 'Leituras' },
+] as const;
+
+/** Reader-facing groups of record kinds, used by the type index. */
+export const explorerRecordGroups = [
+  { id: 'pessoas-ideias', title: 'Pessoas e ideias', kinds: ['pessoa', 'ideology', 'concept'] },
+  { id: 'obras', title: 'Obras', kinds: ['work', 'artigo'] },
+  {
+    id: 'contexto',
+    title: 'Contexto',
+    kinds: ['evento', 'institution', 'party', 'place', 'country', 'regime'],
+  },
+] as const;
+
 export function explorerContentGroup(kind: string): ExplorerContentGroup {
   if (kind === 'fonte') return 'fontes';
   return editorialKinds.includes(kind) ? 'editorial' : 'registros';
@@ -42,9 +61,17 @@ export function catalogueForKind(kind: string): string {
   return Object.keys(catalogueKinds).find((path) => catalogueKinds[path] === kind) ?? 'entidades';
 }
 
+export interface ExplorerFilter {
+  catalogue?: string;
+  query?: string;
+  kind?: string;
+  state?: string;
+  layer?: string;
+}
+
 export function explorerEntries(
   index: readonly DiscoveryIndexEntry[],
-  filter: { catalogue?: string; query?: string; kind?: string; state?: string },
+  filter: ExplorerFilter,
 ): DiscoveryIndexEntry[] {
   const query = filter.query?.trim() ?? '';
   const terms = normalizeExplorerQuery(query).split(/\s+/).filter(Boolean);
@@ -72,7 +99,7 @@ export function explorerEntries(
 
 function explorerBase(
   index: readonly DiscoveryIndexEntry[],
-  filter: { catalogue?: string; query?: string; kind?: string; state?: string },
+  filter: ExplorerFilter,
 ): DiscoveryIndexEntry[] {
   const catalogue = filter.catalogue ?? 'acervo';
   const kind = catalogueKinds[catalogue];
@@ -81,14 +108,15 @@ function explorerBase(
       (catalogue === 'acervo' || catalogue === 'fontes' || entry.path.startsWith('/verbete/')) &&
       (!kind || entry.kind === kind) &&
       (!filter.kind || entry.kind === filter.kind) &&
-      (!filter.state || entry.state === filter.state),
+      (!filter.state || entry.state === filter.state) &&
+      (!filter.layer || explorerContentGroup(entry.kind) === filter.layer),
   );
 }
 
 /** Whether a query matched names (`name`), only passages (`text`) or nothing (`none`). */
 export function explorerMatchKind(
   index: readonly DiscoveryIndexEntry[],
-  filter: { catalogue?: string; query?: string; kind?: string; state?: string },
+  filter: ExplorerFilter,
 ): 'name' | 'text' | 'none' {
   const query = filter.query?.trim() ?? '';
   const terms = normalizeExplorerQuery(query).split(/\s+/).filter(Boolean);
@@ -100,8 +128,22 @@ export function explorerMatchKind(
     : 'none';
 }
 
-export function explorerFacets(index: readonly DiscoveryIndexEntry[], catalogue: string) {
+export function explorerLayerCounts(index: readonly DiscoveryIndexEntry[], catalogue: string) {
   const entries = explorerEntries(index, { catalogue });
+  return explorerLayers.map((layer) => ({
+    ...layer,
+    count: layer.id
+      ? entries.filter((entry) => explorerContentGroup(entry.kind) === layer.id).length
+      : entries.length,
+  }));
+}
+
+export function explorerFacets(
+  index: readonly DiscoveryIndexEntry[],
+  catalogue: string,
+  layer = '',
+) {
+  const entries = explorerEntries(index, { catalogue, layer });
   const facet = (field: 'kind' | 'state', label: 'kindLabel' | 'stateLabel') => {
     const counts = new Map<string, { value: string; label: string; count: number }>();
     for (const entry of entries) {
@@ -113,6 +155,7 @@ export function explorerFacets(index: readonly DiscoveryIndexEntry[], catalogue:
   };
   return {
     total: entries.length,
+    layers: explorerLayerCounts(index, catalogue),
     kinds: facet('kind', 'kindLabel').map((kind) => ({
       ...kind,
       group: explorerContentGroup(kind.value),
@@ -150,7 +193,7 @@ export function safeExplorerReturn(value: string | null): string | null {
       url.hash ||
       !explorerCatalogues.some((c) => '/' + c.path === url.pathname) ||
       [...url.searchParams.keys()].some(
-        (k) => !['q', 'tipo', 'estado', 'pagina', 'idioma'].includes(k),
+        (k) => !['q', 'tipo', 'estado', 'pagina', 'idioma', 'camada'].includes(k),
       )
     )
       return null;

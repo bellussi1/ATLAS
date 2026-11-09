@@ -33,6 +33,54 @@ test('search returns names instead of every passage that mentions them', async (
   await expect(page.locator('.notice')).toHaveCount(0);
 });
 
+test('the universal archive separates records, sources and readings into layers', async ({
+  page,
+}) => {
+  await page.goto('/acervo');
+  const layers = page.getByRole('group', { name: 'Camadas do acervo' });
+  await expect(layers.getByRole('link', { name: /^Tudo\b/ })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
+  await layers.getByRole('link', { name: /^Fontes\b/ }).click();
+  await expect(page).toHaveURL(/camada=fontes/);
+  await expect(page.locator('.source-row').first()).toBeVisible();
+  await expect(page.locator('.results--cards')).toHaveCount(0);
+  const active = page.getByLabel('Filtros ativos');
+  await expect(active).toContainText('Camada: Fontes');
+  await active.getByRole('link', { name: 'Remover Camada: Fontes' }).click();
+  await expect(page).not.toHaveURL(/camada=/);
+  await expect(page.locator('.results--cards')).toBeVisible();
+});
+
+test('a phone switches catalogues with a compact selector above the search', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/acervo');
+  await expect(page.locator('.catalogues')).toBeHidden();
+  const select = page.getByLabel('Catálogo', { exact: true });
+  await select.selectOption('pessoas');
+  await expect(page).toHaveURL(/\/pessoas$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pessoas');
+  await expect(page.getByLabel('Procurar no acervo', { exact: true })).toBeVisible();
+});
+
+test('the type index groups record kinds and each active filter can be removed', async ({
+  page,
+}) => {
+  await page.goto('/acervo');
+  const categories = page.getByRole('group', { name: 'Categorias de registro' });
+  await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
+  await expect(page).toHaveURL(/tipo=pessoa/);
+  const active = page.getByLabel('Filtros ativos');
+  await expect(active).toContainText('Tipo: Pessoa');
+  await active.getByRole('link', { name: 'Remover Tipo: Pessoa' }).click();
+  await expect(page).not.toHaveURL(/tipo=/);
+  await expect(categories.getByRole('link', { name: /^Todos\b/ })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
+});
+
 test('universal search starts at home, handles aliases and keeps filters through a permanent page', async ({
   page,
 }) => {
@@ -217,7 +265,13 @@ test('all search destinations have prerendered HTML with matching title, canonic
   }
 });
 
-for (const path of ['/acervo?q=xyzzy', '/pessoas', '/verbete/karl-marx', '/fontes']) {
+for (const path of [
+  '/acervo?q=xyzzy',
+  '/acervo?camada=fontes',
+  '/pessoas',
+  '/verbete/karl-marx',
+  '/fontes',
+]) {
   test(`${path} reflows at 320px and has no serious axe findings`, async ({ page }) => {
     test.setTimeout(path === '/fontes' ? 90_000 : 30_000);
     await page.setViewportSize({ width: 320, height: 740 });

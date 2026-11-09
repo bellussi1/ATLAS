@@ -6,6 +6,7 @@ import {
   explorerFacets,
   explorerMatchKind,
   explorerPage,
+  explorerRecordGroups,
   parseExplorerPage,
   safeExplorerReturn,
 } from './knowledge-explorer';
@@ -66,6 +67,34 @@ describe('Knowledge Explorer', () => {
     expect(explorerContentGroup('pessoa')).toBe('registros');
     expect(explorerContentGroup('fonte')).toBe('fontes');
     expect(explorerContentGroup('leitura')).toBe('editorial');
+  });
+  it('filters the universal archive by layer and keeps the layer counts', () => {
+    const records = explorerEntries(discoveryIndex, { catalogue: 'acervo', layer: 'registros' });
+    const sources = explorerEntries(discoveryIndex, { catalogue: 'acervo', layer: 'fontes' });
+    const readings = explorerEntries(discoveryIndex, { catalogue: 'acervo', layer: 'editorial' });
+    expect(records.length).toBeGreaterThan(0);
+    expect(records.every((entry) => entry.path.startsWith('/verbete/'))).toBe(true);
+    expect(sources.every((entry) => entry.kind === 'fonte')).toBe(true);
+    expect(readings.every((entry) => entry.kind === 'leitura')).toBe(true);
+    const facets = explorerFacets(discoveryIndex, 'acervo', 'registros');
+    expect(facets.total).toBe(records.length);
+    expect(facets.layers.map((layer) => layer.id)).toEqual([
+      '',
+      'registros',
+      'fontes',
+      'editorial',
+    ]);
+    const all = explorerEntries(discoveryIndex, { catalogue: 'acervo' }).length;
+    expect(facets.layers[0].count).toBe(all);
+    expect(
+      facets.layers.filter((layer) => layer.id).reduce((sum, layer) => sum + layer.count, 0),
+    ).toBe(all);
+    expect(facets.kinds.every((kind) => kind.group === 'registros')).toBe(true);
+  });
+  it('groups record kinds into reader-facing categories', () => {
+    const grouped = explorerRecordGroups.flatMap((group) => group.kinds);
+    for (const kind of ['pessoa', 'ideology', 'concept', 'work', 'evento', 'institution'])
+      expect(grouped).toContain(kind);
   });
   it('paginates results, clamps out-of-range pages and parses only positive integers', () => {
     const items = Array.from({ length: 45 }, (_, index) => index);

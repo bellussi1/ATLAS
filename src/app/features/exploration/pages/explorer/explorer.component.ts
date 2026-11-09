@@ -22,11 +22,12 @@ import type { DiscoveryIndexEntry } from '@core/content/queries/discovery-index'
 import { explorerCatalogues, explorerGroups } from '@core/content/queries/explorer-catalogues';
 import {
   EXPLORER_PAGE_SIZE,
-  explorerContentGroups,
   explorerEntries,
   explorerFacets,
+  explorerLayers,
   explorerMatchKind,
   explorerPage,
+  explorerRecordGroups,
   parseExplorerPage,
 } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
@@ -84,19 +85,42 @@ export class ExplorerComponent {
   readonly fragment = toSignal(this.route.fragment, {
     initialValue: this.route.snapshot.fragment,
   });
-  readonly facets = explorerFacets(this.repository.discoveryIndex, this.catalogue.path);
-  readonly kindGroups = explorerContentGroups
-    .map((group) => ({
-      ...group,
-      kinds: this.facets.kinds.filter((kind) => kind.group === group.id),
-    }))
-    .filter((group) => group.kinds.length);
+  /** Universal archive only: records, sources and readings are different layers. */
+  readonly showLayers = this.catalogue.path === 'acervo';
+  readonly layer = computed(() => {
+    const value = this.params().get('camada') ?? '';
+    return explorerLayers.some((item) => item.id === value) ? value : '';
+  });
+  readonly facets = computed(() =>
+    explorerFacets(this.repository.discoveryIndex, this.catalogue.path, this.layer()),
+  );
+  readonly layers = computed(() => this.facets().layers);
+  /** Thematic groups of record kinds; sources and readings keep their own layer. */
+  readonly kindGroups = computed(() =>
+    explorerRecordGroups
+      .map((group) => ({
+        ...group,
+        kinds: this.facets().kinds.filter((kind) =>
+          (group.kinds as readonly string[]).includes(kind.value),
+        ),
+      }))
+      .filter((group) => group.kinds.length),
+  );
+  /** "Todos" in the type index means every record, not sources or readings. */
+  readonly typeTotal = computed(() =>
+    this.layer()
+      ? this.facets().total
+      : this.facets()
+          .kinds.filter((kind) => kind.group === 'registros')
+          .reduce((sum, kind) => sum + kind.count, 0),
+  );
   readonly results = computed(() =>
     explorerEntries(this.repository.discoveryIndex, {
       catalogue: this.catalogue.path,
       query: this.params().get('q') ?? '',
       kind: this.params().get('tipo') ?? '',
       state: this.params().get('estado') ?? '',
+      layer: this.layer(),
     }),
   );
   /** Tells the reader when no name matched and the list only cites the term in the text. */
@@ -106,6 +130,7 @@ export class ExplorerComponent {
       query: this.params().get('q') ?? '',
       kind: this.params().get('tipo') ?? '',
       state: this.params().get('estado') ?? '',
+      layer: this.layer(),
     }),
   );
   // Sources keep one list: records link to their anchors (#source-…), which must stay on the page.
@@ -122,19 +147,65 @@ export class ExplorerComponent {
   readonly unknownKind = computed(
     () =>
       !!this.params().get('tipo') &&
-      !this.facets.kinds.some((f) => f.value === this.params().get('tipo')),
+      !this.facets().kinds.some((f) => f.value === this.params().get('tipo')),
+  );
+  readonly unknownLayer = computed(
+    () =>
+      !!this.params().get('camada') &&
+      !explorerLayers.some((layer) => layer.id === this.params().get('camada')),
   );
   readonly unknownState = computed(
     () =>
       !!this.params().get('estado') &&
-      !this.facets.states.some((f) => f.value === this.params().get('estado')),
+      !this.facets().states.some((f) => f.value === this.params().get('estado')),
   );
+  /** Sources keep the compact list layout, also when the universal archive is cut to that layer. */
+  readonly sourceList = computed(
+    () => this.catalogue.path === 'fontes' || this.layer() === 'fontes',
+  );
+  readonly editorialList = computed(() => this.layer() === 'editorial');
+  readonly cardGrid = computed(() => !this.sourceList() && !this.editorialList());
+  readonly activeFilters = computed(() => {
+    const params = this.params();
+    const filters: { key: string; label: string; remove: Record<string, null> }[] = [];
+    const query = params.get('q');
+    if (query)
+      filters.push({ key: 'q', label: `Busca: ${query}`, remove: { q: null, pagina: null } });
+    const layer = params.get('camada');
+    if (layer) {
+      const item = explorerLayers.find((entry) => entry.id === layer);
+      filters.push({
+        key: 'camada',
+        label: `Camada: ${item?.title ?? layer}`,
+        remove: { camada: null, tipo: null, pagina: null },
+      });
+    }
+    const kind = params.get('tipo');
+    if (kind) {
+      const item = this.facets().kinds.find((entry) => entry.value === kind);
+      filters.push({
+        key: 'tipo',
+        label: `Tipo: ${item?.label ?? kind}`,
+        remove: { tipo: null, pagina: null },
+      });
+    }
+    const state = params.get('estado');
+    if (state) {
+      const item = this.facets().states.find((entry) => entry.value === state);
+      filters.push({
+        key: 'estado',
+        label: `Estado: ${item?.label ?? state}`,
+        remove: { estado: null, pagina: null },
+      });
+    }
+    return filters;
+  });
   readonly stateOptions = computed<SelectMenuOption[]>(() => [
     { value: '', label: 'Todas as situações' },
     ...(this.unknownState()
       ? [{ value: this.params().get('estado') ?? '', label: 'Situação indisponível' }]
       : []),
-    ...this.facets.states.map((facet) => ({
+    ...this.facets().states.map((facet) => ({
       value: facet.value,
       label: facet.label,
       count: facet.count,
@@ -210,8 +281,17 @@ export class ExplorerComponent {
         q: String(data.get('q') ?? '').trim() || null,
         tipo: this.params().get('tipo'),
         estado: this.params().get('estado'),
+        camada: this.params().get('camada'),
         idioma: this.params().get('idioma'),
       },
+    });
+  }
+  /** On phones the catalogue table becomes a compact selector; the route drives the change. */
+  selectCatalogue(event: Event): void {
+    const path = (event.target as HTMLSelectElement).value;
+    if (!path || path === this.catalogue.path) return;
+    void this.router.navigate(['/' + path], {
+      queryParams: { idioma: this.params().get('idioma') },
     });
   }
   /** Title and summary in the requested language when an approved translation exists. */
@@ -233,7 +313,7 @@ export class ExplorerComponent {
   }
   private queryString(): string {
     const params = new URLSearchParams();
-    for (const key of ['q', 'tipo', 'estado', 'pagina', 'idioma']) {
+    for (const key of ['q', 'tipo', 'estado', 'pagina', 'idioma', 'camada']) {
       const value = this.params().get(key);
       if (value) params.set(key, value);
     }
