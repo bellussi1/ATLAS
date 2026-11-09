@@ -1,0 +1,77 @@
+{
+  "slug": "stalinismo",
+  "kind": "corrente",
+  "rootQid": "Q179121",
+  "titles": { "pt": "Stalinismo", "en": "Stalinism" },
+  "palette": "marx",
+  "icon": "ideology",
+  "scope": {
+    "classificationNote": "Corrente e período histórico do marxismo-leninismo soviético sob Stalin; não se confunde com o marxismo como tradição nem com a URSS como país.",
+    "period": "1924–1953, com atenção ao legado posterior",
+    "geography": "União Soviética e movimento comunista internacional",
+    "includes": [
+      "governo de Stalin, coletivização, industrialização e expurgos",
+      "Comintern e partidos comunistas alinhados",
+      "debates e críticas documentadas, inclusive trotskismo e outras correntes"
+    ],
+    "excludes": [
+      "marxismo em geral, já tratado na leitura flagship",
+      "stalinismo como sinônimo de socialismo ou de toda a esquerda",
+      "atribuir ao stalinismo ações sem fonte"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q33391",
+      "Q128135",
+      "Q15180",
+      "Q183318",
+      "Q855",
+      "Q79854",
+      "Q52090",
+      "Q161448",
+      "Q161078",
+      "Q165058",
+      "Q6186",
+      "Q155059",
+      "Q7264",
+      "Q7272",
+      "Q1394",
+      "Q42976",
+      "Q83372",
+      "Q34266",
+      "Q2184",
+      "Q6206",
+      "Q173424",
+      "Q187650",
+      "Q121254",
+      "Q202398",
+      "Q506079",
+      "Q9061",
+      "Q211930",
+      "Q30487",
+      "Q34787",
+      "Q8729",
+      "Q163931",
+      "Q10931",
+      "Q178790",
+      "Q179975",
+      "Q8740",
+      "Q40591",
+      "Q6216",
+      "Q352",
+      "Q6229",
+      "Q7174",
+      "Q164348",
+      "Q31113",
+      "Q8663",
+      "Q83003"
+    ],
+    "note": "QIDs aceitos na descoberta (estágio 2) e consolidados no grafo. A lente não cria coleção, não move entidade e não duplica nó; a raiz QID entra sempre na resolução."
+  },
+  "seeds": [{ "url": "https://pt.wikipedia.org/wiki/Stalinismo" }],
+  "discovery": {
+    "founderQids": ["Q855"],
+    "commonsCategory": "Category:Stalinism"
+  }
+}

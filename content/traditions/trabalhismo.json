@@ -1,0 +1,83 @@
+{
+  "slug": "trabalhismo",
+  "kind": "ideologia",
+  "rootQid": "Q25447221",
+  "titles": { "pt": "Trabalhismo", "en": "Labourism in Brazil" },
+  "palette": "social-democracia",
+  "icon": "ideology",
+  "scope": {
+    "classificationNote": "Tradição política brasileira organizada em torno do trabalho, do Estado social e do legado varguista; não se confunde com socialismo nem com a totalidade da esquerda.",
+    "period": "1930–1964, com desdobramentos posteriores",
+    "geography": "Brasil, com atenção ao Rio Grande do Sul e ao movimento sindical",
+    "includes": [
+      "getulismo, PTB e legislação trabalhista",
+      "sindicatos, trabalhadores e políticas sociais",
+      "relações documentadas com liberalismo, socialismo e outros campos"
+    ],
+    "excludes": [
+      "socialismo e comunismo como um todo",
+      "usar 'trabalhismo' para qualquer política de emprego sem fonte",
+      "biografias completas de Vargas fora do recorte"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q156844",
+      "Q155",
+      "Q7275",
+      "Q6235",
+      "Q131015",
+      "Q12718",
+      "Q191159",
+      "Q6186",
+      "Q7272",
+      "Q217230",
+      "Q34982",
+      "Q164597",
+      "Q76074",
+      "Q8683",
+      "Q121254",
+      "Q303132",
+      "Q188993",
+      "Q1395356",
+      "Q210047",
+      "Q310123",
+      "Q1420526",
+      "Q15980784",
+      "Q18482173",
+      "Q2634783",
+      "Q2292358",
+      "Q2414171",
+      "Q4532311",
+      "Q16334344",
+      "Q1797481",
+      "Q1143021",
+      "Q10313495",
+      "Q9594423",
+      "Q4571496",
+      "Q210542",
+      "Q1153878",
+      "Q3250652",
+      "Q10291547",
+      "Q32874",
+      "Q2483698",
+      "Q4353881",
+      "Q155824",
+      "Q37181",
+      "Q8698",
+      "Q362",
+      "Q6216",
+      "Q6229",
+      "Q9592",
+      "Q180490",
+      "Q9061",
+      "Q7174"
+    ],
+    "note": "QIDs aceitos na descoberta (estágio 2) e consolidados no grafo. A lente não cria coleção, não move entidade e não duplica nó; a raiz QID entra sempre na resolução."
+  },
+  "seeds": [{ "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro" }],
+  "discovery": {
+    "founderQids": ["Q156844"],
+    "commonsCategory": "Category:Getúlio Vargas"
+  }
+}

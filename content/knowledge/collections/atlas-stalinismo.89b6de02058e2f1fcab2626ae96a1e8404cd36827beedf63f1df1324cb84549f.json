@@ -1,0 +1,1080 @@
+{
+  "id": "atlas-stalinismo",
+  "slug": "stalinismo-wikipedia",
+  "title": "Stalinismo: registros em revisão",
+  "description": "Sínteses por IA de fontes enciclopédicas, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-09",
+  "entityIds": [
+    "wiki-topic-democracia",
+    "wiki-topic-grande-expurgo",
+    "wiki-topic-gulag",
+    "wiki-topic-holodomor"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-democracia",
+      "slug": "democracia",
+      "title": "Democracia",
+      "summary": "Democracia é um sistema de governo no qual o poder do Estado é investido no povo ou em sua população em geral. Em definições minimalistas, os governantes são eleitos por eleições justas e competitivas; definições mais abrangentes associam também garantias de liberdades civis e direitos humanos. C. nas cidades-estado gregas, notadamente em Atenas, com o sentido de governo do povo, em contraste com aristocracia. Hoje a forma dominante é a representativa.",
+      "aliases": ["democracy"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Democracia é um sistema de governo no qual o poder do Estado é investido no povo ou em sua população em geral. Em definições minimalistas, os governantes são eleitos por eleições justas e competitivas; definições mais abrangentes associam também garantias de liberdades civis e direitos humanos. C. nas cidades-estado gregas, notadamente em Atenas, com o sentido de governo do povo, em contraste com aristocracia. Hoje a forma dominante é a representativa."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O termo surgiu no século V a.C. nas cidades-estado gregas, notadamente na Atenas clássica, para significar governo do povo, em contraste com aristocracia."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Numa definição minimalista, os governantes são eleitos por eleições justas e competitivas; definições mais abrangentes associam também garantias de liberdades civis e direitos humanos."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "A democracia ateniense assumiu a forma de democracia direta, com seleção aleatória de cidadãos para cargos e uma assembleia legislativa composta por todos os cidadãos."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": ["Não existe consenso sobre a forma correta de definir a democracia."]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q7174", "wikipedia": "Democracia" },
+      "discoveryMetadata": {
+        "description": "Sistema de governo em que o poder do Estado é investido no povo ou em sua população em geral.",
+        "wikipediaTitle": "Democracia",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Democracia",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73273825, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-grande-expurgo",
+      "slug": "grande-expurgo",
+      "title": "Grande Expurgo",
+      "summary": "Campanha de repressão política conduzida por Stalin entre 1936 e 1938 na União Soviética, na Mongólia e em Xinjiang. Incluiu prisões, execuções e expurgos no Partido Comunista, no governo e no Exército Vermelho. Os historiadores estimam entre 680 000 e 1 200 000 mortes. Segundo o artigo, o assassinato de Serguei Kirov em 1934 serviu de pretexto para o início dos expurgos. Afetou também intelectuais, cientistas e estrangeiros.",
+      "aliases": [
+        "Grande Purga",
+        "Grande Terror",
+        "The Great Terror",
+        "ano de '37",
+        "Yezhovschina"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Campanha de repressão política conduzida por Stalin entre 1936 e 1938 na União Soviética, na Mongólia e em Xinjiang. Incluiu prisões, execuções e expurgos no Partido Comunista, no governo e no Exército Vermelho. Os historiadores estimam entre 680 000 e 1 200 000 mortes. Segundo o artigo, o assassinato de Serguei Kirov em 1934 serviu de pretexto para o início dos expurgos. Afetou também intelectuais, cientistas e estrangeiros."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O assassinato de Serguei Kirov em 1934 foi apontado no artigo como pretexto para o início dos expurgos."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "A Operação Kulak e o direcionamento de minorias nacionais foram os principais componentes da campanha, responsáveis por nove décimos das sentenças de morte.",
+            "Após a morte de Stalin, Khrushchev denunciou os expurgos como abuso de poder por Stalin, em discurso de 1956."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O artigo apresenta a faixa de 680 000 a 1 200 000 mortes como estimativa dos historiadores."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "A bibliografia do artigo inclui The Great Terror: A Reassessment, de Robert Conquest, edição de 2008."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q187650", "wikipedia": "Grande Expurgo" },
+      "discoveryMetadata": {
+        "description": "Campanha de repressão política stalinista na União Soviética, Mongólia e Xinjiang, entre 1936 e 1938.",
+        "wikipediaTitle": "Grande Expurgo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Grande_Expurgo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72277880, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    },
+    {
+      "id": "wiki-topic-gulag",
+      "slug": "gulag",
+      "title": "Gulag",
+      "summary": "O Gulag foi um sistema de campos de trabalho forçado da União Soviética. O nome originalmente designava o departamento da polícia secreta soviética que administrava esses campos, criado em 1930, e depois passou a designar o sistema como um todo. O órgão foi oficialmente estabelecido em 25 de abril de 1930 pela ordem 130/63 do OGPU, e o sistema foi oficialmente abolido em 25 de janeiro de 1960. Abrigava criminosos comuns e presos políticos, e sua população chegou a 1,5 milhão em 1941.",
+      "aliases": ["sistema de campos de trabalho"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "O Gulag foi um sistema de campos de trabalho forçado da União Soviética. O nome originalmente designava o departamento da polícia secreta soviética que administrava esses campos, criado em 1930, e depois passou a designar o sistema como um todo. O órgão foi oficialmente estabelecido em 25 de abril de 1930 pela ordem 130/63 do OGPU, e o sistema foi oficialmente abolido em 25 de janeiro de 1960. Abrigava criminosos comuns e presos políticos, e sua população chegou a 1,5 milhão em 1941."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O Gulag foi oficialmente estabelecido em 25 de abril de 1930 como GULAG, pela ordem 130/63 do OGPU."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q161448", "wikipedia": "Gulag" },
+      "discoveryMetadata": {
+        "description": "Sistema soviético de campos de trabalho forçado, com origem administrativa no órgão de mesmo nome criado em 1930.",
+        "wikipediaTitle": "Gulag",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Gulag",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72947887, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-holodomor",
+      "slug": "holodomor",
+      "title": "Holodomor",
+      "summary": "O Holodomor foi uma fome na Ucrânia Soviética entre 1932 e 1933, parte da fome soviética de 1932-33, que matou milhões de ucranianos. O artigo a situa no contexto da coletivização forçada e da deskulakização, e descreve medidas como requisições, bloqueios e listas negras. As estimativas de mortos variam muito. Desde 2006, a Ucrânia e outros 16 países o reconhecem como genocídio, tema que ainda é debatido na academia.",
+      "aliases": ["Fome-Terror"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "O Holodomor foi uma fome na Ucrânia Soviética entre 1932 e 1933, parte da fome soviética de 1932-33, que matou milhões de ucranianos. O artigo a situa no contexto da coletivização forçada e da deskulakização, e descreve medidas como requisições, bloqueios e listas negras. As estimativas de mortos variam muito. Desde 2006, a Ucrânia e outros 16 países o reconhecem como genocídio, tema que ainda é debatido na academia."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O nome também designa a fome como Fome-Terror, e por vezes como Grande Fome."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Alguns acadêmicos sustentam que a fome foi planejada por Stalin para eliminar um movimento de independência ucraniano."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "A fome foi parte da fome soviética de 1932-33, que afetou as principais áreas produtoras de cereais do país."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q165058", "wikipedia": "Holodomor" },
+      "discoveryMetadata": {
+        "description": "Fome na Ucrânia Soviética em 1932-1933 que causou milhões de mortes, reconhecida por vários países como genocídio.",
+        "wikipediaTitle": "Holodomor",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Holodomor",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73118185, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-democracia",
+      "title": "Democracia (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Democracia",
+      "edition": "revisão 73273825; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-grande-expurgo",
+      "title": "Grande Expurgo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Grande_Expurgo",
+      "edition": "revisão 72277880; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-gulag",
+      "title": "Gulag (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Gulag",
+      "edition": "revisão 72947887; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-holodomor",
+      "title": "Holodomor (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Holodomor",
+      "edition": "revisão 73118185; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-democracia-001",
+      "sourceId": "src-wiki-topic-democracia",
+      "locator": "O termo surgiu no século V a.C. nas cidades-estado gregas, notadamente na Atenas clássica",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-democracia-002",
+      "sourceId": "src-wiki-topic-democracia",
+      "locator": "Numa definição minimalista de democracia, os governantes são eleitos através de eleições justas e competitivas",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-democracia-003",
+      "sourceId": "src-wiki-topic-democracia",
+      "locator": "A democracia ateniense assumiu a forma de democracia direta",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-democracia-004",
+      "sourceId": "src-wiki-topic-democracia",
+      "locator": "Não existe consenso sobre a forma correta de definir a democracia",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-democracia-005",
+      "sourceId": "src-wiki-topic-democracia",
+      "locator": "Na época da primeira eleição presidencial em 1789, cerca de 6% da população estava apta a votar",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-democracia-006",
+      "sourceId": "src-wiki-topic-democracia",
+      "locator": "Não existe consenso sobre a forma correta de definir a democracia",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-001",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "O assassinato de seu rival político, e possível sucessor, Serguei Kirov, em 1 de dezembro de 1934, foi o pretexto usado por Stalin para iniciar os expurgos.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-002",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "Juntas, essas duas ações foram responsáveis por nove décimos das sentenças de morte e três quartos das sentenças em campos de prisioneiros Gulag.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-003",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "Os historiadores estimam o número total de mortes devido à repressão stalinista em 1937-1938 entre 680 000 e 1 200 000.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-004",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "Khrushchev se referiu aos expurgos como um \"abuso de poder\" por Stalin",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-005",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "Conquest, Robert (2008) [1990]. The Great Terror: A Reassessment.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-006",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "em 1 de dezembro de 1934, foi o pretexto usado por Stalin para iniciar os expurgos",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-007",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "Em seu discurso secreto no XX Congresso do Partido Comunista da União Soviética em fevereiro de 1956",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-008",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "Stalin liquidou cerca de dois terços dos quadros do Partido Comunista da URSS",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-009",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "Enquanto Norman Naimark considerou a política polonesa de Stalin de 1930 como \"genocida\", ele não considerou genocida a totalidade do Grande Expurgo",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-010",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "No mundo ocidental, o livro de Robert Conquest, de 1968, The Great Terror (O Grande Terror) popularizou essa frase.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-grande-expurgo-rel-001",
+      "sourceId": "src-wiki-topic-grande-expurgo",
+      "locator": "Grande Expurgo foi denunciado pelo líder soviético Nikita Khrushchev após a morte de Stalin.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gulag-001",
+      "sourceId": "src-wiki-topic-gulag",
+      "locator": "O Gulag foi oficialmente estabelecido em 25 de abril de 1930 como GULAG, pela ordem 130/63 do OGPU",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gulag-002",
+      "sourceId": "src-wiki-topic-gulag",
+      "locator": "O Gulag foi oficialmente estabelecido em 25 de abril de 1930 como GULAG, pela ordem 130/63 do OGPU",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gulag-003",
+      "sourceId": "src-wiki-topic-gulag",
+      "locator": "Seis anos depois, em 25 de janeiro de 1960, o sistema Gulag foi oficialmente abolido",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gulag-004",
+      "sourceId": "src-wiki-topic-gulag",
+      "locator": "O Estado continuou a manter o amplo sistema de campos por algum tempo depois da morte de Stalin, em março de 1953",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-holodomor-001",
+      "sourceId": "src-wiki-topic-holodomor",
+      "locator": "também conhecido como a Fome-Terror e por vezes referido como a Grande Fome",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-holodomor-002",
+      "sourceId": "src-wiki-topic-holodomor",
+      "locator": "Como parte da mais vasta fome soviética de 1932-33, que afetou as principais áreas produtoras de cereais do país",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-holodomor-003",
+      "sourceId": "src-wiki-topic-holodomor",
+      "locator": "Alguns académicos acreditam que a fome foi planeada por Joseph Stalin para eliminar um movimento de independência ucraniano",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-holodomor-004",
+      "sourceId": "src-wiki-topic-holodomor",
+      "locator": "Desde 2006, o Holodomor é reconhecido pela Ucrânia e outros 16 países como um genocídio",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-holodomor-005",
+      "sourceId": "src-wiki-topic-holodomor",
+      "locator": "foi um período de fome na Ucrânia Soviética entre 1932 e 1933",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-holodomor-006",
+      "sourceId": "src-wiki-topic-holodomor",
+      "locator": "Alguns académicos acreditam que a fome foi planeada por Joseph Stalin para eliminar um movimento de independência ucraniano",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-holodomor-007",
+      "sourceId": "src-wiki-topic-holodomor",
+      "locator": "Se o Holodomor foi genocídio é ainda objecto de debate académico",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-holodomor-008",
+      "sourceId": "src-wiki-topic-holodomor",
+      "locator": "Desde então, a investigação reduziu as estimativas para entre 3,3 e 7,5 milhões",
+      "accessedAt": "2026-11-09",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-democracia-001",
+      "evidenceId": "ev-wiki-topic-democracia-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-democracia-002",
+      "evidenceId": "ev-wiki-topic-democracia-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-democracia-003",
+      "evidenceId": "ev-wiki-topic-democracia-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-democracia-004",
+      "evidenceId": "ev-wiki-topic-democracia-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-democracia-005",
+      "evidenceId": "ev-wiki-topic-democracia-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-democracia-006",
+      "evidenceId": "ev-wiki-topic-democracia-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-001",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-002",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-003",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-004",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-005",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-006",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-007",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-008",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-009",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-grande-expurgo-010",
+      "evidenceId": "ev-wiki-topic-grande-expurgo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gulag-001",
+      "evidenceId": "ev-wiki-topic-gulag-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gulag-002",
+      "evidenceId": "ev-wiki-topic-gulag-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gulag-003",
+      "evidenceId": "ev-wiki-topic-gulag-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gulag-004",
+      "evidenceId": "ev-wiki-topic-gulag-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-holodomor-001",
+      "evidenceId": "ev-wiki-topic-holodomor-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-holodomor-002",
+      "evidenceId": "ev-wiki-topic-holodomor-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-holodomor-003",
+      "evidenceId": "ev-wiki-topic-holodomor-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-holodomor-004",
+      "evidenceId": "ev-wiki-topic-holodomor-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-holodomor-005",
+      "evidenceId": "ev-wiki-topic-holodomor-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-holodomor-006",
+      "evidenceId": "ev-wiki-topic-holodomor-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-holodomor-007",
+      "evidenceId": "ev-wiki-topic-holodomor-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-holodomor-008",
+      "evidenceId": "ev-wiki-topic-holodomor-008",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-democracia-001",
+      "entityId": "wiki-topic-democracia",
+      "text": "O termo surgiu no século V a.C. nas cidades-estado gregas, notadamente na Atenas clássica, para significar governo do povo, em contraste com aristocracia.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-democracia-001"]
+    },
+    {
+      "id": "claim-wiki-topic-democracia-002",
+      "entityId": "wiki-topic-democracia",
+      "text": "Numa definição minimalista, os governantes são eleitos por eleições justas e competitivas; definições mais abrangentes associam também garantias de liberdades civis e direitos humanos.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-democracia-002"]
+    },
+    {
+      "id": "claim-wiki-topic-democracia-003",
+      "entityId": "wiki-topic-democracia",
+      "text": "A democracia ateniense assumiu a forma de democracia direta, com seleção aleatória de cidadãos para cargos e uma assembleia legislativa composta por todos os cidadãos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-democracia-003"]
+    },
+    {
+      "id": "claim-wiki-topic-democracia-004",
+      "entityId": "wiki-topic-democracia",
+      "text": "Não existe consenso sobre a forma correta de definir a democracia.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-democracia-004"]
+    },
+    {
+      "id": "claim-wiki-topic-democracia-005",
+      "entityId": "wiki-topic-democracia",
+      "text": "Primeira eleição presidencial dos Estados Unidos, quando cerca de 6% da população estava apta a votar. (1789).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-democracia-005"]
+    },
+    {
+      "id": "claim-wiki-topic-democracia-006",
+      "entityId": "wiki-topic-democracia",
+      "text": "Não existe consenso sobre a forma correta de definir a democracia.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-democracia-006"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-001",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "O assassinato de Serguei Kirov em 1934 foi apontado no artigo como pretexto para o início dos expurgos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-002",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "A Operação Kulak e o direcionamento de minorias nacionais foram os principais componentes da campanha, responsáveis por nove décimos das sentenças de morte.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-003",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "O artigo apresenta a faixa de 680 000 a 1 200 000 mortes como estimativa dos historiadores.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-004",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "Após a morte de Stalin, Khrushchev denunciou os expurgos como abuso de poder por Stalin, em discurso de 1956.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-005",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "A bibliografia do artigo inclui The Great Terror: A Reassessment, de Robert Conquest, edição de 2008.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-006",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "Assassinato de Serguei Kirov, apontado como pretexto para o início dos expurgos. (1934-12-01).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-007",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "Khrushchev denuncia os expurgos em discurso secreto no XX Congresso do Partido Comunista. (1956-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-008",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "Stalin liquidou cerca de dois terços dos quadros do Partido Comunista da URSS.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-009",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "Norman Naimark considerou a política polonesa de Stalin de 1930 genocida, mas não a totalidade do Grande Expurgo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-grande-expurgo-010",
+      "entityId": "wiki-topic-grande-expurgo",
+      "text": "O livro de Robert Conquest, de 1968, popularizou a expressão The Great Terror no mundo ocidental.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-grande-expurgo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-gulag-001",
+      "entityId": "wiki-topic-gulag",
+      "text": "O Gulag foi oficialmente estabelecido em 25 de abril de 1930 como GULAG, pela ordem 130/63 do OGPU.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gulag-001"]
+    },
+    {
+      "id": "claim-wiki-topic-gulag-002",
+      "entityId": "wiki-topic-gulag",
+      "text": "O Gulag foi oficialmente estabelecido como GULAG pela ordem 130/63 do OGPU. (1930-04-25).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gulag-002"]
+    },
+    {
+      "id": "claim-wiki-topic-gulag-003",
+      "entityId": "wiki-topic-gulag",
+      "text": "O sistema Gulag foi oficialmente abolido. (1960-01-25).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gulag-003"]
+    },
+    {
+      "id": "claim-wiki-topic-gulag-004",
+      "entityId": "wiki-topic-gulag",
+      "text": "Morte de Stalin, após a qual o Estado manteve o amplo sistema de campos por algum tempo. (1953-03).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gulag-004"]
+    },
+    {
+      "id": "claim-wiki-topic-holodomor-001",
+      "entityId": "wiki-topic-holodomor",
+      "text": "O nome também designa a fome como Fome-Terror, e por vezes como Grande Fome.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-holodomor-001"]
+    },
+    {
+      "id": "claim-wiki-topic-holodomor-002",
+      "entityId": "wiki-topic-holodomor",
+      "text": "A fome foi parte da fome soviética de 1932-33, que afetou as principais áreas produtoras de cereais do país.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-holodomor-002"]
+    },
+    {
+      "id": "claim-wiki-topic-holodomor-003",
+      "entityId": "wiki-topic-holodomor",
+      "text": "Alguns acadêmicos sustentam que a fome foi planejada por Stalin para eliminar um movimento de independência ucraniano.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-holodomor-003"]
+    },
+    {
+      "id": "claim-wiki-topic-holodomor-004",
+      "entityId": "wiki-topic-holodomor",
+      "text": "A Ucrânia e outros 16 países passam a reconhecer o Holodomor como genocídio. (2006).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-holodomor-004"]
+    },
+    {
+      "id": "claim-wiki-topic-holodomor-005",
+      "entityId": "wiki-topic-holodomor",
+      "text": "A fome ocorreu na Ucrânia Soviética entre 1932 e 1933.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-holodomor-005"]
+    },
+    {
+      "id": "claim-wiki-topic-holodomor-006",
+      "entityId": "wiki-topic-holodomor",
+      "text": "Alguns acadêmicos acreditam que a fome foi planejada por Stalin para eliminar um movimento de independência ucraniano.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-holodomor-006"]
+    },
+    {
+      "id": "claim-wiki-topic-holodomor-007",
+      "entityId": "wiki-topic-holodomor",
+      "text": "Há debate acadêmico sobre se o Holodomor foi genocídio.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-holodomor-007"]
+    },
+    {
+      "id": "claim-wiki-topic-holodomor-008",
+      "entityId": "wiki-topic-holodomor",
+      "text": "Desde a investigação recente, as estimativas de mortos foram reduzidas para entre 3,3 e 7,5 milhões.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-holodomor-008"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-democracia-001",
+      "claimId": "claim-wiki-topic-democracia-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-democracia-002",
+      "claimId": "claim-wiki-topic-democracia-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-democracia-003",
+      "claimId": "claim-wiki-topic-democracia-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-democracia-004",
+      "claimId": "claim-wiki-topic-democracia-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-democracia-005",
+      "claimId": "claim-wiki-topic-democracia-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-democracia-006",
+      "claimId": "claim-wiki-topic-democracia-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-001",
+      "claimId": "claim-wiki-topic-grande-expurgo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-002",
+      "claimId": "claim-wiki-topic-grande-expurgo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-003",
+      "claimId": "claim-wiki-topic-grande-expurgo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-004",
+      "claimId": "claim-wiki-topic-grande-expurgo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-005",
+      "claimId": "claim-wiki-topic-grande-expurgo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-006",
+      "claimId": "claim-wiki-topic-grande-expurgo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-007",
+      "claimId": "claim-wiki-topic-grande-expurgo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-008",
+      "claimId": "claim-wiki-topic-grande-expurgo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-009",
+      "claimId": "claim-wiki-topic-grande-expurgo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-grande-expurgo-010",
+      "claimId": "claim-wiki-topic-grande-expurgo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gulag-001",
+      "claimId": "claim-wiki-topic-gulag-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gulag-002",
+      "claimId": "claim-wiki-topic-gulag-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gulag-003",
+      "claimId": "claim-wiki-topic-gulag-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gulag-004",
+      "claimId": "claim-wiki-topic-gulag-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-holodomor-001",
+      "claimId": "claim-wiki-topic-holodomor-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-holodomor-002",
+      "claimId": "claim-wiki-topic-holodomor-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-holodomor-003",
+      "claimId": "claim-wiki-topic-holodomor-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-holodomor-004",
+      "claimId": "claim-wiki-topic-holodomor-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-holodomor-005",
+      "claimId": "claim-wiki-topic-holodomor-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-holodomor-006",
+      "claimId": "claim-wiki-topic-holodomor-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-holodomor-007",
+      "claimId": "claim-wiki-topic-holodomor-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-holodomor-008",
+      "claimId": "claim-wiki-topic-holodomor-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [
+    {
+      "id": "rel-wiki-topic-grande-expurgo-001",
+      "fromEntityId": "wiki-topic-nikita-khrushchov",
+      "toEntityId": "wiki-topic-grande-expurgo",
+      "type": "reacted_against",
+      "label": "reagiu contra",
+      "reverseLabel": "recebeu reação de",
+      "context": "Khrushchev denunciou o Grande Expurgo após a morte de Stalin.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-grande-expurgo-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Grande_Expurgo",
+        "retrievedAt": "2026-11-09"
+      }
+    }
+  ],
+  "learningPaths": []
+}

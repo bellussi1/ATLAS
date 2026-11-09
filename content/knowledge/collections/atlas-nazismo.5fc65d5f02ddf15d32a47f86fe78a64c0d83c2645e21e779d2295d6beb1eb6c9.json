@@ -1,0 +1,3352 @@
+{
+  "id": "atlas-nazismo",
+  "slug": "nazismo-wikipedia",
+  "title": "Nazismo: registros em revisão",
+  "description": "Sínteses por IA de fontes enciclopédicas, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-09",
+  "entityIds": [
+    "wiki-topic-ditadura",
+    "wiki-topic-eugenia",
+    "wiki-topic-guilherme-ii-da-alemanha",
+    "wiki-topic-heinrich-himmler",
+    "wiki-topic-hermann-goring",
+    "wiki-topic-joseph-goebbels",
+    "wiki-topic-mein-kampf",
+    "wiki-topic-munique",
+    "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+    "wiki-topic-paul-von-hindenburg"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-ditadura",
+      "slug": "ditadura",
+      "title": "Ditadura",
+      "summary": "Ditadura é um regime não democrático em que o poder se concentra em uma pessoa ou entidade política, com participação popular inexistente ou muito restrita. O artigo descreve a origem romana do termo, análises de Aristóteles, Platão e Maquiavel sobre a tirania, o estabelecimento de ditaduras modernas por golpe de estado e exemplos do século XX em vários continentes. Importa por fornecer conceitos e casos para o estudo de regimes autoritários.",
+      "aliases": [],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Ditadura é um regime não democrático em que o poder se concentra em uma pessoa ou entidade política, com participação popular inexistente ou muito restrita. O artigo descreve a origem romana do termo, análises de Aristóteles, Platão e Maquiavel sobre a tirania, o estabelecimento de ditaduras modernas por golpe de estado e exemplos do século XX em vários continentes. Importa por fornecer conceitos e casos para o estudo de regimes autoritários."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Na ditadura o poder está concentrado em apenas uma instância, diferentemente da democracia, em que ele se distribui entre legislativo, executivo e judiciário."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q317", "wikipedia": "Ditadura" },
+      "discoveryMetadata": {
+        "description": "Regime não democrático em que o poder se concentra em uma pessoa ou entidade política, com participação popular nula ou muito restrita.",
+        "wikipediaTitle": "Ditadura",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Ditadura",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72444844, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-eugenia",
+      "slug": "eugenia",
+      "title": "Eugenia",
+      "summary": "Eugenia é um conjunto de ideias que almeja a melhoria genética dos seres humanos. O termo foi cunhado por Francis Galton em 1883, com o sentido de bem nascido, e o movimento obteve adeptos entre cientistas e público na sua época áurea, entre 1870 e 1933. O artigo associa a ideologia a práticas de esterilização compulsória, à eugenia nazista, a movimentos organizados nos Estados Unidos e no Brasil e a debates éticos atuais sobre técnicas reprodutivas e genéticas. Seu estudo abrange a história das políticas de reprodução humana e as discussões sobre os limites éticos do tema.",
+      "aliases": ["eugenismo", "Francis Galton", "Galton"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Eugenia é um conjunto de ideias que almeja a melhoria genética dos seres humanos. O termo foi cunhado por Francis Galton em 1883, com o sentido de bem nascido, e o movimento obteve adeptos entre cientistas e público na sua época áurea, entre 1870 e 1933. O artigo associa a ideologia a práticas de esterilização compulsória, à eugenia nazista, a movimentos organizados nos Estados Unidos e no Brasil e a debates éticos atuais sobre técnicas reprodutivas e genéticas. Seu estudo abrange a história das políticas de reprodução humana e as discussões sobre os limites éticos do tema."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "A eugenia positiva incentiva pessoas saudáveis a terem mais filhos, enquanto a eugenia negativa impede que pessoas com certas limitações se reproduzam."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Na Inglaterra da época, temia-se uma degeneração biológica, pois a população crescia nas classes pobres e diminuía nas classes mais ricas."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "Bulmer argumenta que Galton foi tendencioso na explicação da inteligência pela hereditariedade."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "Entre as obras listadas sobre o tema está um texto de Marcos Virgílio da Silva sobre eugenia e as cidades no Brasil."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q170480", "wikipedia": "Eugenia" },
+      "discoveryMetadata": {
+        "description": "Conjunto de ideias que almeja a melhoria genética dos seres humanos, cunhado por Francis Galton em 1883.",
+        "wikipediaTitle": "Eugenia",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Eugenia",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73033498, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-guilherme-ii-da-alemanha",
+      "slug": "guilherme-ii-da-alemanha",
+      "title": "Guilherme II da Alemanha",
+      "summary": "Guilherme II foi o último Imperador da Alemanha e Rei da Prússia entre 1888 e sua abdicação em 1918, com o fim do Império Alemão. Nasceu em Berlim em 1859 e morreu em Doorn, nos Países Baixos, em 1941. Seu reinado é tema de debate historiográfico sobre a demissão de Otto von Bismarck, a política naval, a diplomacia errática e a entrada da Alemanha na Primeira Guerra Mundial. O artigo o apresenta como figura central para entender a política externa e interna do Império Guilhermino.",
+      "aliases": ["Guilherme II", "Wilhelm II", "Kaiser Guilherme II"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Guilherme II foi o último Imperador da Alemanha e Rei da Prússia entre 1888 e sua abdicação em 1918, com o fim do Império Alemão. Nasceu em Berlim em 1859 e morreu em Doorn, nos Países Baixos, em 1941. Seu reinado é tema de debate historiográfico sobre a demissão de Otto von Bismarck, a política naval, a diplomacia errática e a entrada da Alemanha na Primeira Guerra Mundial. O artigo o apresenta como figura central para entender a política externa e interna do Império Guilhermino."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Seu projeto central foi a construção de uma marinha poderosa, para que a Alemanha se tornasse potência mundial."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "Historiadores debatem o grau em que Guilherme teve sucesso ao implementar o governo pessoal na sua era."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q2677", "wikipedia": "Guilherme II da Alemanha" },
+      "discoveryMetadata": {
+        "description": "Último imperador da Alemanha e rei da Prússia (1888–1918), cujo reinado terminou com a abdicação durante a Revolução Alemã.",
+        "wikipediaTitle": "Guilherme II da Alemanha",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Guilherme_II_da_Alemanha",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73361546, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-heinrich-himmler",
+      "slug": "heinrich-himmler",
+      "title": "Heinrich Himmler",
+      "summary": "Heinrich Himmler (1900–1945) foi Reichsführer da SS e um dos principais líderes do Partido Nazi na Alemanha. Chefiou a Polícia Alemã e supervisionou os campos de concentração e as forças de segurança. No artigo, aparece como figura central da estrutura repressiva do regime e das políticas de extermínio do Holocausto. Foi destituído por Hitler em abril de 1945, após tentar negociar a paz com os Aliados, e morreu sob custódia britânica em maio de 1945.",
+      "aliases": ["Heinrich Luitpold Himmler", "der treue Heinrich"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Heinrich Himmler (1900–1945) foi Reichsführer da SS e um dos principais líderes do Partido Nazi na Alemanha. Chefiou a Polícia Alemã e supervisionou os campos de concentração e as forças de segurança. No artigo, aparece como figura central da estrutura repressiva do regime e das políticas de extermínio do Holocausto. Foi destituído por Hitler em abril de 1945, após tentar negociar a paz com os Aliados, e morreu sob custódia britânica em maio de 1945."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Após abandonar o catolicismo, Himmler passou a ver a mitologia germânica, combinada com ideias ocultistas, como sua religião."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Segundo o artigo, Himmler se opunha frontalmente à moralidade sexual e à misericórdia cristãs, que via como obstáculos à sua luta contra os considerados sub-humanos."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "As estimativas do número de judeus mortos pelo regime nazi variam: o texto cita 5,5 milhões como mínimo e 6 milhões como estimativa de alguns autores."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q43067", "wikipedia": "Heinrich Himmler" },
+      "discoveryMetadata": {
+        "description": "Líder nazista que comandou as SS, a polícia alemã e os campos de concentração do Terceiro Reich.",
+        "wikipediaTitle": "Heinrich Himmler",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Heinrich_Himmler",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72689540, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-hermann-goring",
+      "slug": "hermann-goring",
+      "title": "Hermann Göring",
+      "summary": "Hermann Göring foi um militar e político alemão, ás da aviação na Primeira Guerra Mundial e figura central do NSDAP. Nasceu em Rosenheim, em 1893, e morreu em Nuremberga, em 1946. Foi comandante-chefe da Luftwaffe a partir de 1935, responsável pelo Plano Quadrienal e um dos principais dirigentes do regime nazi até 1945. Fundou a Gestapo em 1933. Foi condenado à morte nos Julgamentos de Nuremberga e suicidou-se na véspera da execução.",
+      "aliases": ["Hermann Wilhelm Göring", "Hermann Goering", "Goering"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Hermann Göring foi um militar e político alemão, ás da aviação na Primeira Guerra Mundial e figura central do NSDAP. Nasceu em Rosenheim, em 1893, e morreu em Nuremberga, em 1946. Foi comandante-chefe da Luftwaffe a partir de 1935, responsável pelo Plano Quadrienal e um dos principais dirigentes do regime nazi até 1945. Fundou a Gestapo em 1933. Foi condenado à morte nos Julgamentos de Nuremberga e suicidou-se na véspera da execução."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Göring era, segundo o artigo, adepto da chamada lenda da punhalada pelas costas, segundo a qual o exército alemão teria sido traído internamente."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q47906", "wikipedia": "Hermann Göring" },
+      "discoveryMetadata": {
+        "description": "Militar e político alemão, líder nazi, comandante da Luftwaffe e condenado em Nuremberga.",
+        "wikipediaTitle": "Hermann Göring",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Hermann_G%C3%B6ring",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71753276, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-joseph-goebbels",
+      "slug": "joseph-goebbels",
+      "title": "Joseph Goebbels",
+      "summary": "Joseph Goebbels (Rheydt, 1897 – Berlim, 1945) foi um político alemão, filólogo e Ministro da Propaganda da Alemanha Nazista entre 1933 e 1945. Aderiu ao Partido Nazista em 1924 e tornou-se Gauleiter de Berlim em 1926. Após a chegada de Hitler ao poder, dirigiu o controle da imprensa, das artes, do rádio e do cinema. Foi uma figura central da propaganda antissemita e apoiou o extermínio dos judeus. Em 1945, após a morte de Hitler, foi designado Chanceler do Reich, e suicidou-se em Berlim junto com a mulher, depois de matar os seis filhos.",
+      "aliases": ["Paul Joseph Goebbels", "Ministro da Propaganda"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Joseph Goebbels (Rheydt, 1897 – Berlim, 1945) foi um político alemão, filólogo e Ministro da Propaganda da Alemanha Nazista entre 1933 e 1945. Aderiu ao Partido Nazista em 1924 e tornou-se Gauleiter de Berlim em 1926. Após a chegada de Hitler ao poder, dirigiu o controle da imprensa, das artes, do rádio e do cinema. Foi uma figura central da propaganda antissemita e apoiou o extermínio dos judeus. Em 1945, após a morte de Hitler, foi designado Chanceler do Reich, e suicidou-se em Berlim junto com a mulher, depois de matar os seis filhos."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Os temas centrais da propaganda de Goebbels eram o antissemitismo, os ataques ao bolchevismo e, após o início da Segunda Guerra Mundial, a tentativa de moldar a moral."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "A bibliografia do artigo inclui a biografia de Peter Longerich sobre Goebbels, publicada em 2015."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q41749", "wikipedia": "Joseph Goebbels" },
+      "discoveryMetadata": {
+        "description": "Político nazista alemão, Ministro da Propaganda do Reich entre 1933 e 1945 e antissemita radical.",
+        "wikipediaTitle": "Joseph Goebbels",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Joseph_Goebbels",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72689546, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-mein-kampf",
+      "slug": "mein-kampf",
+      "title": "Mein Kampf",
+      "summary": "Mein Kampf (Minha Luta) é um livro de dois volumes de Adolf Hitler, publicado em 1925 e 1926, no qual ele expôs ideias antissemitas, anticomunistas e racialistas, então adotadas pelo Partido Nazista. O livro tornou-se um guia ideológico e de ação para os nazistas. Sua venda variou conforme o contexto político: cresceu após as vitórias eleitorais nazistas e chegou a um milhão de exemplares em 1933, quando Hitler se tornou chanceler. Os direitos caíram em domínio público em 2015, e a divulgação da obra segue como tema de debate público.",
+      "aliases": ["Minha Luta", "Mein Kampf - Minha Luta", "Bíblia Nazista"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Mein Kampf (Minha Luta) é um livro de dois volumes de Adolf Hitler, publicado em 1925 e 1926, no qual ele expôs ideias antissemitas, anticomunistas e racialistas, então adotadas pelo Partido Nazista. O livro tornou-se um guia ideológico e de ação para os nazistas. Sua venda variou conforme o contexto político: cresceu após as vitórias eleitorais nazistas e chegou a um milhão de exemplares em 1933, quando Hitler se tornou chanceler. Os direitos caíram em domínio público em 2015, e a divulgação da obra segue como tema de debate público."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O primeiro volume foi escrito na prisão e editado em 1925; o segundo foi escrito por Hitler fora da prisão e editado em 1926."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Segundo o artigo, as vendas do livro saltaram para um milhão de exemplares em 1933, quando Hitler se tornou chanceler."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q48244", "wikipedia": "Mein Kampf" },
+      "discoveryMetadata": {
+        "description": "Livro em dois volumes de Adolf Hitler que expôs a doutrina ideológica do nazismo.",
+        "wikipediaTitle": "Mein Kampf",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mein_Kampf",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73361391, CC BY-SA 4.0"
+      },
+      "kind": "work"
+    },
+    {
+      "id": "wiki-topic-munique",
+      "slug": "munique",
+      "title": "Munique",
+      "summary": "Munique é uma cidade do sudeste da Alemanha e capital do estado da Baviera, com cerca de 1,3 milhão de habitantes em 2012 e região metropolitana de mais de 2,6 milhões. Fundada em 1158, segundo a data de sua primeira menção em documento, tornou-se residência ducal da Alta Baviera em 1255. No século XX, foi centro de agitação política, sede do NSDAP e palco do Putsch da Cervejaria em 1923. Foi muito danificada na Segunda Guerra Mundial e reconstruída depois. Hoje é importante centro financeiro, político e industrial, sede de empresas como a BMW e a Siemens.",
+      "aliases": ["Munich", "München"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Munique é uma cidade do sudeste da Alemanha e capital do estado da Baviera, com cerca de 1,3 milhão de habitantes em 2012 e região metropolitana de mais de 2,6 milhões. Fundada em 1158, segundo a data de sua primeira menção em documento, tornou-se residência ducal da Alta Baviera em 1255. No século XX, foi centro de agitação política, sede do NSDAP e palco do Putsch da Cervejaria em 1923. Foi muito danificada na Segunda Guerra Mundial e reconstruída depois. Hoje é importante centro financeiro, político e industrial, sede de empresas como a BMW e a Siemens."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "A data de fundação é considerada o ano de 1158, quando a cidade foi mencionada pela primeira vez em um documento assinado em Augsburgo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1726", "wikipedia": "Munique" },
+      "discoveryMetadata": {
+        "description": "Capital do estado alemão da Baviera, no sudeste do país, com cerca de 1,3 milhão de habitantes.",
+        "wikipediaTitle": "Munique",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Munique",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71004085, CC BY-SA 4.0"
+      },
+      "kind": "place"
+    },
+    {
+      "id": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "slug": "partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "title": "Partido Nacional-Socialista dos Trabalhadores Alemães",
+      "summary": "O Partido Nacional-Socialista dos Trabalhadores Alemães, conhecido como Partido Nazista, foi um partido político de extrema-direita cuja ideologia, o nacional-socialismo, combinou antissemitismo, nacionalismo e rejeição à democracia e ao marxismo. Surgiu em Munique a partir de um pequeno grupo fundado por Anton Drexler, que em 1919 criou o Partido dos Trabalhadores Alemães, renomeado em 24 de fevereiro de 1920. Adolf Hitler liderou o partido de 1921 a 1945 e foi nomeado chanceler da Alemanha em 30 de janeiro de 1933, quando o partido passou a governar o país.",
+      "aliases": [
+        "Partido Nazista",
+        "Nazi Party",
+        "National Socialist German Workers' Party",
+        "NSDAP",
+        "Nazi"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "O Partido Nacional-Socialista dos Trabalhadores Alemães, conhecido como Partido Nazista, foi um partido político de extrema-direita cuja ideologia, o nacional-socialismo, combinou antissemitismo, nacionalismo e rejeição à democracia e ao marxismo. Surgiu em Munique a partir de um pequeno grupo fundado por Anton Drexler, que em 1919 criou o Partido dos Trabalhadores Alemães, renomeado em 24 de fevereiro de 1920. Adolf Hitler liderou o partido de 1921 a 1945 e foi nomeado chanceler da Alemanha em 30 de janeiro de 1933, quando o partido passou a governar o país."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O artigo registra que a maioria dos estudiosos identifica o nazismo na prática como uma forma de extrema-direita, enquanto Hitler afirmou que o nazismo não favorecia nem a esquerda nem a direita."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": ["A bibliografia do artigo inclui a obra de Ian Kershaw sobre Hitler."]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": {
+        "wikidata": "Q7320",
+        "wikipedia": "Partido Nacional-Socialista dos Trabalhadores Alemães"
+      },
+      "discoveryMetadata": {
+        "description": "Partido político de extrema-direita da Alemanha, com ideologia do nacional-socialismo, liderado por Adolf Hitler de 1921 a 1945.",
+        "wikipediaTitle": "Partido Nacional-Socialista dos Trabalhadores Alemães",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Partido_Nacional-Socialista_dos_Trabalhadores_Alem%C3%A3es",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72187367, CC BY-SA 4.0"
+      },
+      "kind": "party"
+    },
+    {
+      "id": "wiki-topic-paul-von-hindenburg",
+      "slug": "paul-von-hindenburg",
+      "title": "Paul von Hindenburg",
+      "summary": "Paul von Hindenburg foi marechal de campo e político alemão, presidente do Reich de 1925 até sua morte em 1934. Na Primeira Guerra Mundial, o Alto Comando do Exército por ele liderado exerceu de fato o poder governamental entre 1916 e 1918. Foi eleito em 1925 na República de Weimar, sucedendo Friedrich Ebert, e reeleito em 1932. Em 30 de janeiro de 1933 nomeou Adolf Hitler chanceler do Reich, decisão que o artigo associa ao estabelecimento da ditadura do NSDAP. Sua importância decorre do mito do Vencedor de Tannenberg e de seu papel na transição para o regime nazista.",
+      "aliases": [
+        "Paul Ludwig Hans Anton von Beneckendorff und von Hindenburg",
+        "Vencedor de Tannenberg",
+        "Velho da Montanha"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Paul von Hindenburg foi marechal de campo e político alemão, presidente do Reich de 1925 até sua morte em 1934. Na Primeira Guerra Mundial, o Alto Comando do Exército por ele liderado exerceu de fato o poder governamental entre 1916 e 1918. Foi eleito em 1925 na República de Weimar, sucedendo Friedrich Ebert, e reeleito em 1932. Em 30 de janeiro de 1933 nomeou Adolf Hitler chanceler do Reich, decisão que o artigo associa ao estabelecimento da ditadura do NSDAP. Sua importância decorre do mito do Vencedor de Tannenberg e de seu papel na transição para o regime nazista."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Segundo o artigo, o papel de Hindenburg na guerra baseou-se sobretudo no mito do Vencedor de Tannenberg, e menos em suas realizações militares reais."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Hindenburg foi eleito em 1925 na República de Weimar como sucessor do presidente do Reich Friedrich Ebert."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "Historiadores divergem sobre se o exercício do poder pelo Alto Comando do Exército pode ser qualificado como ditadura militar."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "Entre as obras sobre Hindenburg listadas no artigo está a biografia política de Werner Maser, publicada em 1989."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q2667", "wikipedia": "Paul von Hindenburg" },
+      "discoveryMetadata": {
+        "description": "Marechal de campo e presidente do Reich na República de Weimar, figura central na ascensão de Hitler ao poder.",
+        "wikipediaTitle": "Paul von Hindenburg",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Paul_von_Hindenburg",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-09",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72822286, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-ditadura",
+      "title": "Ditadura (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Ditadura",
+      "edition": "revisão 72444844; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-eugenia",
+      "title": "Eugenia (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Eugenia",
+      "edition": "revisão 73033498; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "title": "Guilherme II da Alemanha (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Guilherme_II_da_Alemanha",
+      "edition": "revisão 73361546; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-heinrich-himmler",
+      "title": "Heinrich Himmler (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Heinrich_Himmler",
+      "edition": "revisão 72689540; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-hermann-goring",
+      "title": "Hermann Göring (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Hermann_G%C3%B6ring",
+      "edition": "revisão 71753276; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-joseph-goebbels",
+      "title": "Joseph Goebbels (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Joseph_Goebbels",
+      "edition": "revisão 72689546; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-mein-kampf",
+      "title": "Mein Kampf (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Mein_Kampf",
+      "edition": "revisão 73361391; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-munique",
+      "title": "Munique (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Munique",
+      "edition": "revisão 71004085; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "title": "Partido Nacional-Socialista dos Trabalhadores Alemães (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Partido_Nacional-Socialista_dos_Trabalhadores_Alem%C3%A3es",
+      "edition": "revisão 72187367; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-paul-von-hindenburg",
+      "title": "Paul von Hindenburg (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Paul_von_Hindenburg",
+      "edition": "revisão 72822286; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-wd-q7320",
+      "title": "Q7320 (Wikidata)",
+      "url": "https://www.wikidata.org/wiki/Q7320",
+      "edition": "Wikidata; dados estruturados sob CC0; rótulo de contribuidores",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-ditadura-001",
+      "sourceId": "src-wiki-topic-ditadura",
+      "locator": "Na ditadura, o poder está em apenas uma instância",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-002",
+      "sourceId": "src-wiki-topic-ditadura",
+      "locator": "Este tipo de ditadura foi imposta durante o século XX em países como, Chile por Augusto Pinochet",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eugenia-001",
+      "sourceId": "src-wiki-topic-eugenia",
+      "locator": "A eugenia positiva incentiva pessoas saudáveis a terem mais filhos, enquanto que a eugenia negativa impede que pessoas com certas limitações se reproduzam",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eugenia-002",
+      "sourceId": "src-wiki-topic-eugenia",
+      "locator": "Na época, a população inglesa crescia nas classes pobres e diminuía nas classes mais ricas e cultas, e se temia uma",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eugenia-003",
+      "sourceId": "src-wiki-topic-eugenia",
+      "locator": "Bulmer argumenta que Galton estava tão tendencioso na explicação pela hereditariedade",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eugenia-004",
+      "sourceId": "src-wiki-topic-eugenia",
+      "locator": "Detritos da civilização: eugenia e as cidades no Brasil",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eugenia-005",
+      "sourceId": "src-wiki-topic-eugenia",
+      "locator": "O termo foi originalmente cunhado Francis Galton (1822-1911) em 1883",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eugenia-006",
+      "sourceId": "src-wiki-topic-eugenia",
+      "locator": "A Sociedade Eugênica de São Paulo foi criada em 1918",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eugenia-007",
+      "sourceId": "src-wiki-topic-eugenia",
+      "locator": "O termo foi originalmente cunhado Francis Galton (1822-1911) em 1883",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eugenia-008",
+      "sourceId": "src-wiki-topic-eugenia",
+      "locator": "Bulmer argumenta que Galton estava tão tendencioso na explicação pela hereditariedade",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-guilherme-ii-da-alemanha-001",
+      "sourceId": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "locator": "a criação de uma Marinha Alemã que rivalizasse com a Britânica e permitisse que a Alemanha se declarasse uma potência mundial.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-guilherme-ii-da-alemanha-002",
+      "sourceId": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "locator": "Há um debate entre historiadores quanto ao grau preciso em que Guilherme teve sucesso na implementação do \"governo pessoal\" nesta era",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-guilherme-ii-da-alemanha-003",
+      "sourceId": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "locator": "Berlim, 27 de janeiro de 1859 – Doorn, 4 de junho de 1941",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-guilherme-ii-da-alemanha-004",
+      "sourceId": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "locator": "Em março de 1890, o jovem Kaiser demitiu o antigo chanceler Otto von Bismarck",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-guilherme-ii-da-alemanha-005",
+      "sourceId": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "locator": "o chanceler príncipe Maximiliano de Baden anunciou a abdicação de ambos os títulos por Guilherme em 9 de novembro de 1918",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-guilherme-ii-da-alemanha-006",
+      "sourceId": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "locator": "antes de morrer lá em 1941.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-guilherme-ii-da-alemanha-007",
+      "sourceId": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "locator": "Em contraste, o historiador Modris Eksteins argumentou que a demissão de Bismarck já deveria ter ocorrido há muito tempo.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-guilherme-ii-da-alemanha-008",
+      "sourceId": "src-wiki-topic-guilherme-ii-da-alemanha",
+      "locator": "Na segunda década do século XX, a Alemanha só podia contar com nações significativamente mais fracas, como a Áustria-Hungria e o decadente Império Otomano, como aliados.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-001",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "A mitologia germânica, reforçada pelas ideias do oculto, tornaram-se na sua religião",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-002",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Himmler opunha-se frontalmente à moralidade sexual e ao princípio da misericórdia cristãs",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-003",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "No final da guerra, pelo menos 5,5 milhões de judeus tinham sido mortos pelo regime nazi; alguns estimam aquele valor em 6 milhões",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-004",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "nasceu em Munique no dia 7 de outubro de 1900",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-005",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Himmler entrou para o Partido Nazi (NSDAP) em agosto de 1923",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-006",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Depois da saída do comandante das SS, Erhard Heiden, em janeiro de 1929, Himmler assumiu a posição de Reichsführer-SS",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-007",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Em março de 1933, menos de três meses depois de os nazis chegarem ao poder, Himmler mandou construir o primeiro campo de concentração em Dachau",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-008",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "em 17 de junho de 1936, Hitler decretou a unificação de todas as forças policiais do Reich, nomeando Himmler Chefe da Polícia Alemã",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-009",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Enquanto se encontrava detido pelo britânicos, suicidou-se no dia 23 de maio de 1945",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-010",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Em 1929, foi nomeado Reichsführer-SS por Hitler",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-011",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Enquanto se encontrava detido pelo britânicos, suicidou-se no dia 23 de maio de 1945",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-012",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Himmler foi um dos principais arquitetos do Holocausto",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-013",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "Durante as negociações, Himmler justificou, falsamente, que o crematório tinha sido construído para cremar os mortos que tinham sido vítimas de uma epidemia de tifo",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-heinrich-himmler-014",
+      "sourceId": "src-wiki-topic-heinrich-himmler",
+      "locator": "No final da guerra, pelo menos 5,5 milhões de judeus tinham sido mortos pelo regime nazi; alguns estimam aquele valor em 6 milhões",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hermann-goring-001",
+      "sourceId": "src-wiki-topic-hermann-goring",
+      "locator": "Como muitos outros alemães, Göring era um proponente da \"lenda da punhalada pelas costas\"",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hermann-goring-002",
+      "sourceId": "src-wiki-topic-hermann-goring",
+      "locator": "Hermann Wilhelm Göring (ou Goering); (Rosenheim, 12 de janeiro de 1893",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hermann-goring-003",
+      "sourceId": "src-wiki-topic-hermann-goring",
+      "locator": "Em 1933, fundou a Gestapo.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hermann-goring-004",
+      "sourceId": "src-wiki-topic-hermann-goring",
+      "locator": "Göring foi nomeado para comandante-chefe da Luftwaffe, a força aérea alemã, em 1935",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hermann-goring-005",
+      "sourceId": "src-wiki-topic-hermann-goring",
+      "locator": "Göring foi considerado culpado nas quatro acusações, sendo condenado à morte por enforcamento.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hermann-goring-006",
+      "sourceId": "src-wiki-topic-hermann-goring",
+      "locator": "são da opinião de que a própria NSDAP teria sido responsável pelo incêndio.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-joseph-goebbels-001",
+      "sourceId": "src-wiki-topic-joseph-goebbels",
+      "locator": "Os temas centrais eram o antissemitismo, ataques ao bolchevismo e, após o início da Segunda Guerra Mundial, a tentativa de moldar a moral.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-joseph-goebbels-002",
+      "sourceId": "src-wiki-topic-joseph-goebbels",
+      "locator": "Longerich, Peter (2015). Goebbels: A Biography. New York: Random House. ISBN 978-1400067510",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-joseph-goebbels-003",
+      "sourceId": "src-wiki-topic-joseph-goebbels",
+      "locator": "Rheydt, 29 de outubro de 1897 – Berlim, 1 de maio de 1945",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-joseph-goebbels-004",
+      "sourceId": "src-wiki-topic-joseph-goebbels",
+      "locator": "obteve o grau de Doutor em Filologia pela Universidade de Heidelberg em 1922",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-joseph-goebbels-005",
+      "sourceId": "src-wiki-topic-joseph-goebbels",
+      "locator": "Em 1924, aderiu ao Partido Nazista, onde trabalhou com Gregor Strasser",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-joseph-goebbels-006",
+      "sourceId": "src-wiki-topic-joseph-goebbels",
+      "locator": "Em 1926, foi nomeado Gauleiter (líder distrital) por Berlim",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-joseph-goebbels-007",
+      "sourceId": "src-wiki-topic-joseph-goebbels",
+      "locator": "seu profundo e fanático antissemitismo, e, sua crença na conspiração internacional judaica que o levou a apoiar o extermínio dos judeus no Holocausto.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-joseph-goebbels-008",
+      "sourceId": "src-wiki-topic-joseph-goebbels",
+      "locator": "ficou conhecido pela sua capacidade de oratória em público",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-001",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "O primeiro volume foi escrito na prisão e editado em 1925, o segundo foi escrito por Hitler fora da prisão e editado em 1926",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-002",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "Em 1933 quando Hitler se tornou chanceler, as vendas saltaram para um milhão de exemplares",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-003",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "foi publicado em 18 de julho de 1925",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-004",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "foi publicado em 1926",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-005",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "Em 1933 quando Hitler se tornou chanceler, as vendas saltaram para um milhão de exemplares",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-006",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "Em 1940, seis milhões de exemplares do Mein Kampf foram vendidos",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-007",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "tais direitos caíram em domínio público no dia 31 de Dezembro de 2015",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-008",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "uma versão digital sendo retirada de lojas brasileiras em janeiro de 2016 após uma ação judicial",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-009",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "é o título do livro de dois volumes de autoria de Adolf Hitler",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-010",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "A grande maioria dos linguistas, entretanto, ainda julgam \"Minha Luta\" a tradução correta",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mein-kampf-rel-001",
+      "sourceId": "src-wiki-topic-mein-kampf",
+      "locator": "é o título do livro de dois volumes de autoria de Adolf Hitler",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-munique-001",
+      "sourceId": "src-wiki-topic-munique",
+      "locator": "A data da fundação é considerada o ano 1158, data em que a cidade foi mencionada pela primeira vez em um documento, assinado em Augsburgo",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-munique-002",
+      "sourceId": "src-wiki-topic-munique",
+      "locator": "Em 1923, Adolf Hitler e seus apoiantes, concentrados em Munique, organizaram o Putsch da Cervejaria",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-munique-003",
+      "sourceId": "src-wiki-topic-munique",
+      "locator": "A cidade foi muito danificada pelos bombardeios dos Aliados durante a Segunda Guerra Mundial",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-munique-004",
+      "sourceId": "src-wiki-topic-munique",
+      "locator": "A cidade tornou-se novamente uma fortaleza nazista quando o partido tomou o poder na Alemanha em 1933",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-001",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "a maioria dos estudiosos identificam o nazismo na prática como sendo uma forma de extrema-direita na política",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-002",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "Kershaw, Ian (2008). Hitler: A Biography.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-003",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "Em 5 de janeiro de 1919, Drexler criou um novo partido político",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-004",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "em 24 de fevereiro de 1920, no mesmo dia que o discurso em Hofbräuhaus de Hitler, o DAP mudou seu nome",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-005",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "Hitler foi formalmente eleito presidente do partido em 28 de julho de 1921",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-006",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "Adolf Hitler foi nomeado chanceler da Alemanha em 30 de janeiro de 1933.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-007",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "A SA e a SS (fundado em abril de 1925 como guarda pessoal de Hitler",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-008",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "o partido foi \"completamente e finalmente abolido e declarado ilegal\" pelas potências aliadas de ocupação.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-009",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "a maioria dos estudiosos identificam o nazismo na prática como sendo uma forma de extrema-direita na política",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-010",
+      "sourceId": "src-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "locator": "Partido Nacional-Socialista dos Trabalhadores Alemães (Alemão: Nationalsozialistische Deutsche Arbeiterparteiⓘ - abreviado NSDAP), mais conhecido como Partido Nazista (português brasileiro) ou Nazi (português europeu), foi um partido político de extrema-direita cujo programa e ideologia (Nacional So",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-001",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "O papel de Hindenburg na Primeira Guerra Mundial baseou-se principalmente no mito do",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-002",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Hindenburg foi eleito em 1925 na República de Weimar como sucessor do presidente do Reich Friedrich Ebert.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-003",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Outros historiadores, como Gregor Schöllgen e Hans-Ulrich Wehler, por outro lado, apontam que o exercício do poder pelo OHL não pode ser considerado estritamente como uma ditadura militar",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-004",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Werner Maser: Hindenburg. Eine politische Biographie. Moewig, Rastatt 1989",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-005",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "2 de outubro de 1847 em Posen",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-006",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Em 22 de agosto de 1914, Hindenburg foi nomeado comandante-em-chefe do 8.º Exército.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-007",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Em 25 de junho de 1919, renunciou ao cargo de chefe do Estado-Maior do Exército.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-008",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Em 26 de abril de 1925, Hindenburg, representante do",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-009",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Em 29 de março de 1930, ele nomeou Heinrich Brüning (Zentrum) chanceler",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-010",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Foi somente no segundo turno, em 10 de abril de 1932, que Hindenburg obteve a maioria necessária",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-011",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Hindenburg nomeou Hitler chanceler em 30 de janeiro de 1933",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-012",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "2 de agosto de 1934 em Gut Neudeck, Prússia Oriental",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-013",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Hindenburg divulgou em 18 de novembro de 1919 a lenda da punhalada pelas costas",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-014",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Historiadores suspeitam que esses envolvimentos possam ter influenciado a decisão de Hindenburg por Hitler.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-015",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Outros historiadores, como Gregor Schöllgen e Hans-Ulrich Wehler, por outro lado, apontam que o exercício do poder pelo OHL não pode ser considerado estritamente como uma ditadura militar",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-paul-von-hindenburg-rel-002",
+      "sourceId": "src-wiki-topic-paul-von-hindenburg",
+      "locator": "Hindenburg foi eleito em 1925 na República de Weimar como sucessor do presidente do Reich Friedrich Ebert.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-wd-q7320-p1142-q128135",
+      "sourceId": "src-wiki-wd-q7320",
+      "locator": "Q7320, P1142 = Q128135",
+      "accessedAt": "2026-11-09",
+      "note": "Rótulo do Wikidata; não documenta influência."
+    },
+    {
+      "id": "ev-wiki-wd-q7320-p1142-q1414298",
+      "sourceId": "src-wiki-wd-q7320",
+      "locator": "Q7320, P1142 = Q1414298",
+      "accessedAt": "2026-11-09",
+      "note": "Rótulo do Wikidata; não documenta influência."
+    },
+    {
+      "id": "ev-wiki-wd-q7320-p1142-q177266",
+      "sourceId": "src-wiki-wd-q7320",
+      "locator": "Q7320, P1142 = Q177266",
+      "accessedAt": "2026-11-09",
+      "note": "Rótulo do Wikidata; não documenta influência."
+    },
+    {
+      "id": "ev-wiki-wd-q7320-p1142-q182121",
+      "sourceId": "src-wiki-wd-q7320",
+      "locator": "Q7320, P1142 = Q182121",
+      "accessedAt": "2026-11-09",
+      "note": "Rótulo do Wikidata; não documenta influência."
+    },
+    {
+      "id": "ev-wiki-wd-q7320-p1142-q22649",
+      "sourceId": "src-wiki-wd-q7320",
+      "locator": "Q7320, P1142 = Q22649",
+      "accessedAt": "2026-11-09",
+      "note": "Rótulo do Wikidata; não documenta influência."
+    },
+    {
+      "id": "ev-wiki-wd-q7320-p1142-q7310",
+      "sourceId": "src-wiki-wd-q7320",
+      "locator": "Q7320, P1142 = Q7310",
+      "accessedAt": "2026-11-09",
+      "note": "Rótulo do Wikidata; não documenta influência."
+    },
+    {
+      "id": "ev-wiki-wd-q7320-p1142-q8461",
+      "sourceId": "src-wiki-wd-q7320",
+      "locator": "Q7320, P1142 = Q8461",
+      "accessedAt": "2026-11-09",
+      "note": "Rótulo do Wikidata; não documenta influência."
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-ditadura-001",
+      "evidenceId": "ev-wiki-topic-ditadura-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-002",
+      "evidenceId": "ev-wiki-topic-ditadura-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eugenia-001",
+      "evidenceId": "ev-wiki-topic-eugenia-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eugenia-002",
+      "evidenceId": "ev-wiki-topic-eugenia-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eugenia-003",
+      "evidenceId": "ev-wiki-topic-eugenia-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eugenia-004",
+      "evidenceId": "ev-wiki-topic-eugenia-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eugenia-005",
+      "evidenceId": "ev-wiki-topic-eugenia-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eugenia-006",
+      "evidenceId": "ev-wiki-topic-eugenia-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eugenia-007",
+      "evidenceId": "ev-wiki-topic-eugenia-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eugenia-008",
+      "evidenceId": "ev-wiki-topic-eugenia-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-guilherme-ii-da-alemanha-001",
+      "evidenceId": "ev-wiki-topic-guilherme-ii-da-alemanha-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-guilherme-ii-da-alemanha-002",
+      "evidenceId": "ev-wiki-topic-guilherme-ii-da-alemanha-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-guilherme-ii-da-alemanha-003",
+      "evidenceId": "ev-wiki-topic-guilherme-ii-da-alemanha-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-guilherme-ii-da-alemanha-004",
+      "evidenceId": "ev-wiki-topic-guilherme-ii-da-alemanha-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-guilherme-ii-da-alemanha-005",
+      "evidenceId": "ev-wiki-topic-guilherme-ii-da-alemanha-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-guilherme-ii-da-alemanha-006",
+      "evidenceId": "ev-wiki-topic-guilherme-ii-da-alemanha-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-guilherme-ii-da-alemanha-007",
+      "evidenceId": "ev-wiki-topic-guilherme-ii-da-alemanha-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-guilherme-ii-da-alemanha-008",
+      "evidenceId": "ev-wiki-topic-guilherme-ii-da-alemanha-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-001",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-002",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-003",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-004",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-005",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-006",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-007",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-008",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-009",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-010",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-011",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-012",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-013",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-heinrich-himmler-014",
+      "evidenceId": "ev-wiki-topic-heinrich-himmler-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hermann-goring-001",
+      "evidenceId": "ev-wiki-topic-hermann-goring-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hermann-goring-002",
+      "evidenceId": "ev-wiki-topic-hermann-goring-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hermann-goring-003",
+      "evidenceId": "ev-wiki-topic-hermann-goring-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hermann-goring-004",
+      "evidenceId": "ev-wiki-topic-hermann-goring-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hermann-goring-005",
+      "evidenceId": "ev-wiki-topic-hermann-goring-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hermann-goring-006",
+      "evidenceId": "ev-wiki-topic-hermann-goring-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-joseph-goebbels-001",
+      "evidenceId": "ev-wiki-topic-joseph-goebbels-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-joseph-goebbels-002",
+      "evidenceId": "ev-wiki-topic-joseph-goebbels-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-joseph-goebbels-003",
+      "evidenceId": "ev-wiki-topic-joseph-goebbels-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-joseph-goebbels-004",
+      "evidenceId": "ev-wiki-topic-joseph-goebbels-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-joseph-goebbels-005",
+      "evidenceId": "ev-wiki-topic-joseph-goebbels-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-joseph-goebbels-006",
+      "evidenceId": "ev-wiki-topic-joseph-goebbels-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-joseph-goebbels-007",
+      "evidenceId": "ev-wiki-topic-joseph-goebbels-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-joseph-goebbels-008",
+      "evidenceId": "ev-wiki-topic-joseph-goebbels-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-001",
+      "evidenceId": "ev-wiki-topic-mein-kampf-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-002",
+      "evidenceId": "ev-wiki-topic-mein-kampf-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-003",
+      "evidenceId": "ev-wiki-topic-mein-kampf-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-004",
+      "evidenceId": "ev-wiki-topic-mein-kampf-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-005",
+      "evidenceId": "ev-wiki-topic-mein-kampf-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-006",
+      "evidenceId": "ev-wiki-topic-mein-kampf-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-007",
+      "evidenceId": "ev-wiki-topic-mein-kampf-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-008",
+      "evidenceId": "ev-wiki-topic-mein-kampf-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-009",
+      "evidenceId": "ev-wiki-topic-mein-kampf-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mein-kampf-010",
+      "evidenceId": "ev-wiki-topic-mein-kampf-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-munique-001",
+      "evidenceId": "ev-wiki-topic-munique-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-munique-002",
+      "evidenceId": "ev-wiki-topic-munique-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-munique-003",
+      "evidenceId": "ev-wiki-topic-munique-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-munique-004",
+      "evidenceId": "ev-wiki-topic-munique-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-001",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-002",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-003",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-004",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-005",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-006",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-007",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-008",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-009",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-010",
+      "evidenceId": "ev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-001",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-002",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-003",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-004",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-005",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-006",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-007",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-008",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-009",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-010",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-011",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-012",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-013",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-014",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-paul-von-hindenburg-015",
+      "evidenceId": "ev-wiki-topic-paul-von-hindenburg-015",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-ditadura-001",
+      "entityId": "wiki-topic-ditadura",
+      "text": "Na ditadura o poder está concentrado em apenas uma instância, diferentemente da democracia, em que ele se distribui entre legislativo, executivo e judiciário.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-001"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-002",
+      "entityId": "wiki-topic-ditadura",
+      "text": "Ditaduras militares foram impostas no século XX em países como o Chile, sob a liderança de Augusto Pinochet.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-002"]
+    },
+    {
+      "id": "claim-wiki-topic-eugenia-001",
+      "entityId": "wiki-topic-eugenia",
+      "text": "A eugenia positiva incentiva pessoas saudáveis a terem mais filhos, enquanto a eugenia negativa impede que pessoas com certas limitações se reproduzam.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eugenia-001"]
+    },
+    {
+      "id": "claim-wiki-topic-eugenia-002",
+      "entityId": "wiki-topic-eugenia",
+      "text": "Na Inglaterra da época, temia-se uma degeneração biológica, pois a população crescia nas classes pobres e diminuía nas classes mais ricas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eugenia-002"]
+    },
+    {
+      "id": "claim-wiki-topic-eugenia-003",
+      "entityId": "wiki-topic-eugenia",
+      "text": "Bulmer argumenta que Galton foi tendencioso na explicação da inteligência pela hereditariedade.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eugenia-003"]
+    },
+    {
+      "id": "claim-wiki-topic-eugenia-004",
+      "entityId": "wiki-topic-eugenia",
+      "text": "Entre as obras listadas sobre o tema está um texto de Marcos Virgílio da Silva sobre eugenia e as cidades no Brasil.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eugenia-004"]
+    },
+    {
+      "id": "claim-wiki-topic-eugenia-005",
+      "entityId": "wiki-topic-eugenia",
+      "text": "Francis Galton cunha o termo eugenia. (1883).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eugenia-005"]
+    },
+    {
+      "id": "claim-wiki-topic-eugenia-006",
+      "entityId": "wiki-topic-eugenia",
+      "text": "É criada a Sociedade Eugênica de São Paulo. (1918).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eugenia-006"]
+    },
+    {
+      "id": "claim-wiki-topic-eugenia-007",
+      "entityId": "wiki-topic-eugenia",
+      "text": "O termo eugenia foi cunhado por Francis Galton em 1883.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eugenia-007"]
+    },
+    {
+      "id": "claim-wiki-topic-eugenia-008",
+      "entityId": "wiki-topic-eugenia",
+      "text": "Bulmer sustenta que Galton foi tendencioso na explicação da inteligência pela hereditariedade.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eugenia-008"]
+    },
+    {
+      "id": "claim-wiki-topic-guilherme-ii-da-alemanha-001",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "text": "Seu projeto central foi a construção de uma marinha poderosa, para que a Alemanha se tornasse potência mundial.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-guilherme-ii-da-alemanha-001"]
+    },
+    {
+      "id": "claim-wiki-topic-guilherme-ii-da-alemanha-002",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "text": "Historiadores debatem o grau em que Guilherme teve sucesso ao implementar o governo pessoal na sua era.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-guilherme-ii-da-alemanha-002"]
+    },
+    {
+      "id": "claim-wiki-topic-guilherme-ii-da-alemanha-003",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "text": "Nasce em Berlim. (1859-01-27).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-guilherme-ii-da-alemanha-003"]
+    },
+    {
+      "id": "claim-wiki-topic-guilherme-ii-da-alemanha-004",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "text": "Demite o chanceler Otto von Bismarck. (1890-03).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-guilherme-ii-da-alemanha-004"]
+    },
+    {
+      "id": "claim-wiki-topic-guilherme-ii-da-alemanha-005",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "text": "O chanceler Maximiliano de Baden anuncia a abdicação de Guilherme. (1918-11-09).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-guilherme-ii-da-alemanha-005"]
+    },
+    {
+      "id": "claim-wiki-topic-guilherme-ii-da-alemanha-006",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "text": "Morre em Doorn, nos Países Baixos. (1941).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-guilherme-ii-da-alemanha-006"]
+    },
+    {
+      "id": "claim-wiki-topic-guilherme-ii-da-alemanha-007",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "text": "A demissão de Bismarck é tema de interpretações divergentes entre historiadores.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-guilherme-ii-da-alemanha-007"]
+    },
+    {
+      "id": "claim-wiki-topic-guilherme-ii-da-alemanha-008",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "text": "A Alemanha só podia contar com nações mais fracas como aliados na segunda década do século XX.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-guilherme-ii-da-alemanha-008"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-001",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Após abandonar o catolicismo, Himmler passou a ver a mitologia germânica, combinada com ideias ocultistas, como sua religião.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-001"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-002",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Segundo o artigo, Himmler se opunha frontalmente à moralidade sexual e à misericórdia cristãs, que via como obstáculos à sua luta contra os considerados sub-humanos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-002"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-003",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "As estimativas do número de judeus mortos pelo regime nazi variam: o texto cita 5,5 milhões como mínimo e 6 milhões como estimativa de alguns autores.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-003"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-004",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Nascimento de Himmler em Munique. (1900-10-07).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-004"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-005",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Himmler entrou para o Partido Nazi (NSDAP). (1923-08).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-005"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-006",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Himmler assumiu a posição de Reichsführer-SS. (1929-01).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-006"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-007",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Himmler mandou construir o primeiro campo de concentração em Dachau. (1933-03).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-007"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-008",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Himmler foi nomeado Chefe da Polícia Alemã. (1936-06-17).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-008"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-009",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Himmler suicidou-se enquanto estava detido pelos britânicos. (1945-05-23).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-009"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-010",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Himmler foi nomeado Reichsführer-SS por Hitler em 1929.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-010"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-011",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Himmler suicidou-se enquanto estava detido pelos britânicos, em maio de 1945.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-011"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-012",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Himmler é descrito como um dos principais arquitetos do Holocausto.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-012"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-013",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "Durante as negociações de paz, Himmler justificou falsamente a construção do crematório como destinada a mortos de uma epidemia de tifo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-013"]
+    },
+    {
+      "id": "claim-wiki-topic-heinrich-himmler-014",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "text": "O número de judeus mortos pelo regime nazi é apresentado com estimativas diferentes.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-heinrich-himmler-014"]
+    },
+    {
+      "id": "claim-wiki-topic-hermann-goring-001",
+      "entityId": "wiki-topic-hermann-goring",
+      "text": "Göring era, segundo o artigo, adepto da chamada lenda da punhalada pelas costas, segundo a qual o exército alemão teria sido traído internamente.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hermann-goring-001"]
+    },
+    {
+      "id": "claim-wiki-topic-hermann-goring-002",
+      "entityId": "wiki-topic-hermann-goring",
+      "text": "Nascimento de Göring em Rosenheim. (1893-01-12).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hermann-goring-002"]
+    },
+    {
+      "id": "claim-wiki-topic-hermann-goring-003",
+      "entityId": "wiki-topic-hermann-goring",
+      "text": "Göring fundou a Gestapo. (1933).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hermann-goring-003"]
+    },
+    {
+      "id": "claim-wiki-topic-hermann-goring-004",
+      "entityId": "wiki-topic-hermann-goring",
+      "text": "Göring foi nomeado comandante-chefe da Luftwaffe. (1935).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hermann-goring-004"]
+    },
+    {
+      "id": "claim-wiki-topic-hermann-goring-005",
+      "entityId": "wiki-topic-hermann-goring",
+      "text": "Göring foi condenado à morte por enforcamento nos Julgamentos de Nuremberga.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hermann-goring-005"]
+    },
+    {
+      "id": "claim-wiki-topic-hermann-goring-006",
+      "entityId": "wiki-topic-hermann-goring",
+      "text": "Segundo o artigo, a própria NSDAP teria sido responsável pelo incêndio do Reichstag, opinião de alguns investigadores.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hermann-goring-006"]
+    },
+    {
+      "id": "claim-wiki-topic-joseph-goebbels-001",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "text": "Os temas centrais da propaganda de Goebbels eram o antissemitismo, os ataques ao bolchevismo e, após o início da Segunda Guerra Mundial, a tentativa de moldar a moral.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-joseph-goebbels-001"]
+    },
+    {
+      "id": "claim-wiki-topic-joseph-goebbels-002",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "text": "A bibliografia do artigo inclui a biografia de Peter Longerich sobre Goebbels, publicada em 2015.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-joseph-goebbels-002"]
+    },
+    {
+      "id": "claim-wiki-topic-joseph-goebbels-003",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "text": "Nascimento de Joseph Goebbels em Rheydt. (1897-10-29).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-joseph-goebbels-003"]
+    },
+    {
+      "id": "claim-wiki-topic-joseph-goebbels-004",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "text": "Obtenção do grau de Doutor em Filologia pela Universidade de Heidelberg. (1922).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-joseph-goebbels-004"]
+    },
+    {
+      "id": "claim-wiki-topic-joseph-goebbels-005",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "text": "Adesão ao Partido Nazista. (1924).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-joseph-goebbels-005"]
+    },
+    {
+      "id": "claim-wiki-topic-joseph-goebbels-006",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "text": "Nomeado Gauleiter de Berlim. (1926).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-joseph-goebbels-006"]
+    },
+    {
+      "id": "claim-wiki-topic-joseph-goebbels-007",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "text": "Goebbels tinha um antissemitismo profundo e fanático, e apoiou o extermínio dos judeus no Holocausto.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-joseph-goebbels-007"]
+    },
+    {
+      "id": "claim-wiki-topic-joseph-goebbels-008",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "text": "Goebbels era conhecido pela sua capacidade de oratória em público.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-joseph-goebbels-008"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-001",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "O primeiro volume foi escrito na prisão e editado em 1925; o segundo foi escrito por Hitler fora da prisão e editado em 1926.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-001"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-002",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "Segundo o artigo, as vendas do livro saltaram para um milhão de exemplares em 1933, quando Hitler se tornou chanceler.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-002"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-003",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "Publicação do primeiro volume, intitulado Eine Abrechnung. (1925-07-18).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-003"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-004",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "Publicação do segundo volume, Die Nationalsozialistische Bewegung. (1926).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-004"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-005",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "As vendas saltaram para um milhão de exemplares quando Hitler se tornou chanceler. (1933).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-005"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-006",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "Seis milhões de exemplares do livro foram vendidos. (1940).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-006"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-007",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "Os direitos do livro caíram em domínio público. (2015-12-31).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-007"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-008",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "Uma versão digital foi retirada de lojas brasileiras após uma ação judicial. (2016-01).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-008"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-009",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "O livro Mein Kampf tem dois volumes e foi escrito por Adolf Hitler.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-009"]
+    },
+    {
+      "id": "claim-wiki-topic-mein-kampf-010",
+      "entityId": "wiki-topic-mein-kampf",
+      "text": "A grande maioria dos linguistas considera Minha Luta a tradução correta do título.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mein-kampf-010"]
+    },
+    {
+      "id": "claim-wiki-topic-munique-001",
+      "entityId": "wiki-topic-munique",
+      "text": "A data de fundação é considerada o ano de 1158, quando a cidade foi mencionada pela primeira vez em um documento assinado em Augsburgo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-munique-001"]
+    },
+    {
+      "id": "claim-wiki-topic-munique-002",
+      "entityId": "wiki-topic-munique",
+      "text": "Adolf Hitler e seus apoiantes organizam o Putsch da Cervejaria em Munique. (1923).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-munique-002"]
+    },
+    {
+      "id": "claim-wiki-topic-munique-003",
+      "entityId": "wiki-topic-munique",
+      "text": "A cidade foi muito danificada pelos bombardeios dos Aliados durante a Segunda Guerra Mundial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-munique-003"]
+    },
+    {
+      "id": "claim-wiki-topic-munique-004",
+      "entityId": "wiki-topic-munique",
+      "text": "A cidade tornou-se uma fortaleza nazista quando o partido tomou o poder na Alemanha em 1933.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-munique-004"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-001",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "O artigo registra que a maioria dos estudiosos identifica o nazismo na prática como uma forma de extrema-direita, enquanto Hitler afirmou que o nazismo não favorecia nem a esquerda nem a direita.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-001"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-002",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "A bibliografia do artigo inclui a obra de Ian Kershaw sobre Hitler.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-002"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-003",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "Drexler criou o Partido dos Trabalhadores Alemães, antecessor do partido. (1919-01-05).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-003"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-004",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "O partido mudou seu nome para Nationalsozialistische Deutsche Arbeiterpartei. (1920-02-24).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-004"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-005",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "Hitler foi formalmente eleito presidente do partido. (1921-07-28).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-005"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-006",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "Hitler foi nomeado chanceler da Alemanha. (1933-01-30).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-006"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-007",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "Fundação da SS como guarda pessoal de Hitler. (1925-04).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-007"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-008",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "O partido foi declarado ilegal e dissolvido pelas potências aliadas de ocupação após a derrota do Terceiro Reich.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-008"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-009",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "O artigo classifica o nazismo na prática como forma de extrema-direita, segundo a maioria dos estudiosos.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-009"]
+    },
+    {
+      "id": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-010",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "text": "Posição política descrita na fonte: extrema direita.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-010"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-001",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Segundo o artigo, o papel de Hindenburg na guerra baseou-se sobretudo no mito do Vencedor de Tannenberg, e menos em suas realizações militares reais.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-001"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-002",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Hindenburg foi eleito em 1925 na República de Weimar como sucessor do presidente do Reich Friedrich Ebert.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-002"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-003",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Historiadores divergem sobre se o exercício do poder pelo Alto Comando do Exército pode ser qualificado como ditadura militar.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-003"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-004",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Entre as obras sobre Hindenburg listadas no artigo está a biografia política de Werner Maser, publicada em 1989.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-004"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-005",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Nascimento de Paul von Hindenburg em Posen. (1847-10-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-005"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-006",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Nomeado comandante-em-chefe do 8.º Exército. (1914-08-22).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-006"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-007",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Renunciou ao cargo de chefe do Estado-Maior do Exército. (1919-06-25).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-007"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-008",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Eleito presidente do Reich no segundo turno. (1925-04-26).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-008"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-009",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Nomeou Heinrich Brüning chanceler de um gabinete minoritário. (1930-03-29).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-009"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-010",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Obteve a maioria necessária no segundo turno e foi reeleito. (1932-04-10).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-010"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-011",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Nomeou Adolf Hitler chanceler do Reich. (1933-01-30).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-011"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-012",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Morreu em Gut Neudeck, na Prússia Oriental. (1934-08-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-012"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-013",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Hindenburg divulgou em 18 de novembro de 1919 a lenda da punhalada pelas costas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-013"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-014",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Historiadores suspeitam que os envolvimentos de Hindenburg com o escândalo possam ter influenciado sua decisão por Hitler.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-014"]
+    },
+    {
+      "id": "claim-wiki-topic-paul-von-hindenburg-015",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "text": "Historiadores divergem sobre se o exercício do poder pelo Alto Comando do Exército foi uma ditadura militar.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-paul-von-hindenburg-015"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-ditadura-001",
+      "claimId": "claim-wiki-topic-ditadura-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-002",
+      "claimId": "claim-wiki-topic-ditadura-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eugenia-001",
+      "claimId": "claim-wiki-topic-eugenia-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eugenia-002",
+      "claimId": "claim-wiki-topic-eugenia-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eugenia-003",
+      "claimId": "claim-wiki-topic-eugenia-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eugenia-004",
+      "claimId": "claim-wiki-topic-eugenia-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eugenia-005",
+      "claimId": "claim-wiki-topic-eugenia-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eugenia-006",
+      "claimId": "claim-wiki-topic-eugenia-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eugenia-007",
+      "claimId": "claim-wiki-topic-eugenia-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eugenia-008",
+      "claimId": "claim-wiki-topic-eugenia-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-guilherme-ii-da-alemanha-001",
+      "claimId": "claim-wiki-topic-guilherme-ii-da-alemanha-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-guilherme-ii-da-alemanha-002",
+      "claimId": "claim-wiki-topic-guilherme-ii-da-alemanha-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-guilherme-ii-da-alemanha-003",
+      "claimId": "claim-wiki-topic-guilherme-ii-da-alemanha-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-guilherme-ii-da-alemanha-004",
+      "claimId": "claim-wiki-topic-guilherme-ii-da-alemanha-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-guilherme-ii-da-alemanha-005",
+      "claimId": "claim-wiki-topic-guilherme-ii-da-alemanha-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-guilherme-ii-da-alemanha-006",
+      "claimId": "claim-wiki-topic-guilherme-ii-da-alemanha-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-guilherme-ii-da-alemanha-007",
+      "claimId": "claim-wiki-topic-guilherme-ii-da-alemanha-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-guilherme-ii-da-alemanha-008",
+      "claimId": "claim-wiki-topic-guilherme-ii-da-alemanha-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-001",
+      "claimId": "claim-wiki-topic-heinrich-himmler-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-002",
+      "claimId": "claim-wiki-topic-heinrich-himmler-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-003",
+      "claimId": "claim-wiki-topic-heinrich-himmler-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-004",
+      "claimId": "claim-wiki-topic-heinrich-himmler-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-005",
+      "claimId": "claim-wiki-topic-heinrich-himmler-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-006",
+      "claimId": "claim-wiki-topic-heinrich-himmler-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-007",
+      "claimId": "claim-wiki-topic-heinrich-himmler-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-008",
+      "claimId": "claim-wiki-topic-heinrich-himmler-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-009",
+      "claimId": "claim-wiki-topic-heinrich-himmler-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-010",
+      "claimId": "claim-wiki-topic-heinrich-himmler-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-011",
+      "claimId": "claim-wiki-topic-heinrich-himmler-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-012",
+      "claimId": "claim-wiki-topic-heinrich-himmler-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-013",
+      "claimId": "claim-wiki-topic-heinrich-himmler-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-heinrich-himmler-014",
+      "claimId": "claim-wiki-topic-heinrich-himmler-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hermann-goring-001",
+      "claimId": "claim-wiki-topic-hermann-goring-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hermann-goring-002",
+      "claimId": "claim-wiki-topic-hermann-goring-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hermann-goring-003",
+      "claimId": "claim-wiki-topic-hermann-goring-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hermann-goring-004",
+      "claimId": "claim-wiki-topic-hermann-goring-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hermann-goring-005",
+      "claimId": "claim-wiki-topic-hermann-goring-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hermann-goring-006",
+      "claimId": "claim-wiki-topic-hermann-goring-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-joseph-goebbels-001",
+      "claimId": "claim-wiki-topic-joseph-goebbels-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-joseph-goebbels-002",
+      "claimId": "claim-wiki-topic-joseph-goebbels-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-joseph-goebbels-003",
+      "claimId": "claim-wiki-topic-joseph-goebbels-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-joseph-goebbels-004",
+      "claimId": "claim-wiki-topic-joseph-goebbels-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-joseph-goebbels-005",
+      "claimId": "claim-wiki-topic-joseph-goebbels-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-joseph-goebbels-006",
+      "claimId": "claim-wiki-topic-joseph-goebbels-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-joseph-goebbels-007",
+      "claimId": "claim-wiki-topic-joseph-goebbels-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-joseph-goebbels-008",
+      "claimId": "claim-wiki-topic-joseph-goebbels-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-001",
+      "claimId": "claim-wiki-topic-mein-kampf-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-002",
+      "claimId": "claim-wiki-topic-mein-kampf-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-003",
+      "claimId": "claim-wiki-topic-mein-kampf-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-004",
+      "claimId": "claim-wiki-topic-mein-kampf-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-005",
+      "claimId": "claim-wiki-topic-mein-kampf-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-006",
+      "claimId": "claim-wiki-topic-mein-kampf-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-007",
+      "claimId": "claim-wiki-topic-mein-kampf-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-008",
+      "claimId": "claim-wiki-topic-mein-kampf-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-009",
+      "claimId": "claim-wiki-topic-mein-kampf-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mein-kampf-010",
+      "claimId": "claim-wiki-topic-mein-kampf-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-munique-001",
+      "claimId": "claim-wiki-topic-munique-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-munique-002",
+      "claimId": "claim-wiki-topic-munique-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-munique-003",
+      "claimId": "claim-wiki-topic-munique-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-munique-004",
+      "claimId": "claim-wiki-topic-munique-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-001",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-002",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-003",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-004",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-005",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-006",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-007",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-008",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-009",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-010",
+      "claimId": "claim-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-001",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-002",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-003",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-004",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-005",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-006",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-007",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-008",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-009",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-010",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-011",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-012",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-013",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-014",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-paul-von-hindenburg-015",
+      "claimId": "claim-wiki-topic-paul-von-hindenburg-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [
+    {
+      "id": "asset-wiki-topic-ditadura",
+      "entityId": "wiki-topic-ditadura",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Hitler_N%C3%BCrnberg_1935.jpg/960px-Hitler_N%C3%BCrnberg_1935.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Hitler_N%C3%BCrnberg_1935.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Unknown author Unknown author",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Hitler_N%C3%BCrnberg_1935.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Hitler Nürnberg 1935.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Hitler_N%C3%BCrnberg_1935.jpg",
+      "attribution": "Hitler Nürnberg 1935.jpg, Unknown author Unknown author, Public domain",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-eugenia",
+      "entityId": "wiki-topic-eugenia",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Csm_04_fidus-hygiene-kongress_01_ac668fa1b6.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Csm_04_fidus-hygiene-kongress_01_ac668fa1b6.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Fidus",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Csm_04_fidus-hygiene-kongress_01_ac668fa1b6.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Csm 04 fidus-hygiene-kongress 01 ac668fa1b6.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Csm_04_fidus-hygiene-kongress_01_ac668fa1b6.jpg",
+      "attribution": "Csm 04 fidus-hygiene-kongress 01 ac668fa1b6.jpg, Fidus, Public domain",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-guilherme-ii-da-alemanha",
+      "entityId": "wiki-topic-guilherme-ii-da-alemanha",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Kaiser_Wilhelm_II_of_Germany_-_1902.jpg/960px-Kaiser_Wilhelm_II_of_Germany_-_1902.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Kaiser_Wilhelm_II_of_Germany_-_1902.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Studio of Thomas Heinrich Voigt",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Kaiser_Wilhelm_II_of_Germany_-_1902.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Kaiser Wilhelm II of Germany - 1902.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Kaiser_Wilhelm_II_of_Germany_-_1902.jpg",
+      "attribution": "Kaiser Wilhelm II of Germany - 1902.jpg, Studio of Thomas Heinrich Voigt, Public domain",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-heinrich-himmler",
+      "entityId": "wiki-topic-heinrich-himmler",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/7/79/Bundesarchiv_Bild_183-S72707%2C_Heinrich_Himmler.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/79/Bundesarchiv_Bild_183-S72707%2C_Heinrich_Himmler.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Friedrich Franz Bauer",
+      "license": "CC BY-SA 3.0 de",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Bundesarchiv Bild 183-S72707, Heinrich Himmler.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-S72707%2C_Heinrich_Himmler.jpg",
+      "attribution": "Bundesarchiv, Bild 183-S72707 / CC-BY-SA 3.0",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-hermann-goring",
+      "entityId": "wiki-topic-hermann-goring",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Hermann_G%C3%B6ring_-_R%C3%B6hr.jpg/960px-Hermann_G%C3%B6ring_-_R%C3%B6hr.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/22/Hermann_G%C3%B6ring_-_R%C3%B6hr.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Robert Röhr",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Hermann_G%C3%B6ring_-_R%C3%B6hr.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Hermann Göring - Röhr.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Hermann_G%C3%B6ring_-_R%C3%B6hr.jpg",
+      "attribution": "Hermann Göring - Röhr.jpg, Robert Röhr, Public domain",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-joseph-goebbels",
+      "entityId": "wiki-topic-joseph-goebbels",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/3/35/Bundesarchiv_Bild_146-1968-101-20A%2C_Joseph_Goebbels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Bundesarchiv_Bild_146-1968-101-20A%2C_Joseph_Goebbels.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Heinrich Hoffmann",
+      "license": "CC BY-SA 3.0 de",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Bundesarchiv Bild 146-1968-101-20A, Joseph Goebbels.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1968-101-20A%2C_Joseph_Goebbels.jpg",
+      "attribution": "Bundesarchiv, Bild 146-1968-101-20A / Heinrich Hoffmann / CC-BY-SA 3.0",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-mein-kampf",
+      "entityId": "wiki-topic-mein-kampf",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/3/30/Mein_Kampf_dust_jacket.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Mein_Kampf_dust_jacket.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Unknown author of dust jacket; Adolf Hitler author of volume",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Mein_Kampf_dust_jacket.jpeg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Mein Kampf dust jacket.jpeg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Mein_Kampf_dust_jacket.jpeg",
+      "attribution": "Mein Kampf dust jacket.jpeg, Unknown author of dust jacket; Adolf Hitler author of volume, Public domain",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-munique",
+      "entityId": "wiki-topic-munique",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Flag_of_Munich_%28striped%29.svg/960px-Flag_of_Munich_%28striped%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Flag_of_Munich_%28striped%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Peeperman",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Munich_(striped).svg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Flag of Munich (striped).svg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Munich_(striped).svg",
+      "attribution": "Flag of Munich (striped).svg, Peeperman, Public domain",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "entityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/NSDAP-Logo.svg/960px-NSDAP-Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/NSDAP-Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Ratatosk",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:NSDAP-Logo.svg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "NSDAP-Logo.svg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:NSDAP-Logo.svg",
+      "attribution": "NSDAP-Logo.svg, Ratatosk, Public domain",
+      "retrievedAt": "2026-11-09"
+    },
+    {
+      "id": "asset-wiki-topic-paul-von-hindenburg",
+      "entityId": "wiki-topic-paul-von-hindenburg",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Paul_von_Hindenburg_in_1933.jpg/960px-Paul_von_Hindenburg_in_1933.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Paul_von_Hindenburg_in_1933.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Codexbox1",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Paul von Hindenburg in 1933.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Paul_von_Hindenburg_in_1933.jpg",
+      "attribution": "Paul von Hindenburg in 1933.jpg, Codexbox1, CC BY-SA 4.0",
+      "retrievedAt": "2026-11-09"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-wiki-topic-mein-kampf-001",
+      "fromEntityId": "wiki-topic-adolf-hitler",
+      "toEntityId": "wiki-topic-mein-kampf",
+      "type": "wrote",
+      "label": "escreveu",
+      "reverseLabel": "foi escrito por",
+      "context": "Adolf Hitler é o autor do livro de dois volumes Mein Kampf.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-mein-kampf-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Mein_Kampf",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-paul-von-hindenburg-002",
+      "fromEntityId": "wiki-topic-paul-von-hindenburg",
+      "toEntityId": "wiki-topic-friedrich-ebert",
+      "type": "documented-association",
+      "label": "sucedeu",
+      "reverseLabel": "foi sucedido por",
+      "context": "Hindenburg sucedeu Friedrich Ebert como presidente do Reich após a eleição de 1925.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-paul-von-hindenburg-rel-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Paul_von_Hindenburg",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-wiki-wd-q7320-p1142-q128135",
+      "fromEntityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "toEntityId": "wiki-topic-totalitarismo",
+      "type": "associated_with",
+      "label": "é classificado com a ideologia",
+      "reverseLabel": "é a ideologia atribuída a",
+      "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-wd-q7320-p1142-q128135"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q7320#P1142",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-wiki-wd-q7320-p1142-q1414298",
+      "fromEntityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "toEntityId": "wiki-topic-conservadorismo-social",
+      "type": "associated_with",
+      "label": "é classificado com a ideologia",
+      "reverseLabel": "é a ideologia atribuída a",
+      "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-wd-q7320-p1142-q1414298"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q7320#P1142",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-wiki-wd-q7320-p1142-q177266",
+      "fromEntityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "toEntityId": "wiki-topic-militarismo",
+      "type": "associated_with",
+      "label": "é classificado com a ideologia",
+      "reverseLabel": "é a ideologia atribuída a",
+      "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-wd-q7320-p1142-q177266"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q7320#P1142",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-wiki-wd-q7320-p1142-q182121",
+      "fromEntityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "toEntityId": "wiki-topic-anticomunismo",
+      "type": "associated_with",
+      "label": "é classificado com a ideologia",
+      "reverseLabel": "é a ideologia atribuída a",
+      "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-wd-q7320-p1142-q182121"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q7320#P1142",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-wiki-wd-q7320-p1142-q22649",
+      "fromEntityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "toEntityId": "wiki-topic-antissemitismo",
+      "type": "associated_with",
+      "label": "é classificado com a ideologia",
+      "reverseLabel": "é a ideologia atribuída a",
+      "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-wd-q7320-p1142-q22649"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q7320#P1142",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-wiki-wd-q7320-p1142-q7310",
+      "fromEntityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "toEntityId": "wiki-topic-nazismo",
+      "type": "associated_with",
+      "label": "é classificado com a ideologia",
+      "reverseLabel": "é a ideologia atribuída a",
+      "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-wd-q7320-p1142-q7310"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q7320#P1142",
+        "retrievedAt": "2026-11-09"
+      }
+    },
+    {
+      "id": "rel-wiki-wd-q7320-p1142-q8461",
+      "fromEntityId": "wiki-topic-partido-nacional-socialista-dos-trabalhadores-alemaes",
+      "toEntityId": "wiki-topic-racismo",
+      "type": "associated_with",
+      "label": "é classificado com a ideologia",
+      "reverseLabel": "é a ideologia atribuída a",
+      "context": "Classificação de catálogo colaborativo. Não é influência documentada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-wd-q7320-p1142-q8461"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikidata",
+        "url": "https://www.wikidata.org/wiki/Q7320#P1142",
+        "retrievedAt": "2026-11-09"
+      }
+    }
+  ],
+  "learningPaths": []
+}

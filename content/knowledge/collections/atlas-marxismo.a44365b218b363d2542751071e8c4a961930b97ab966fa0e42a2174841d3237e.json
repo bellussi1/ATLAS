@@ -1,0 +1,1983 @@
+{
+  "id": "atlas-marxismo",
+  "slug": "marxismo-wikipedia",
+  "title": "Marxismo (rascunhos da Wikipédia)",
+  "description": "Rascunhos assistidos por IA extraídos da Wikipédia, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-09",
+  "entityIds": [
+    "wiki-topic-burguesia",
+    "wiki-topic-capital-economia",
+    "wiki-topic-ditadura-do-proletariado",
+    "wiki-topic-economia-marxiana",
+    "wiki-topic-eurocomunismo",
+    "wiki-topic-filosofia-marxista",
+    "wiki-topic-internacionalismo-proletario",
+    "wiki-topic-livre-associacao-conceito",
+    "wiki-topic-luta-de-classes",
+    "wiki-topic-mais-valia",
+    "wiki-topic-maoismo",
+    "wiki-topic-marxismo-leninismo-maoismo",
+    "wiki-topic-meios-de-producao"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-burguesia",
+      "slug": "burguesia",
+      "title": "Burguesia",
+      "summary": "Burguesia designou, na origem, os habitantes dos burgos com direito de cidadania. Na Idade Média tornou-se uma classe urbana que tomou o poder nas cidades e formou um patriciado. Na teoria de Marx é a classe que detém os meios de produção; o termo é polimorfo e controverso.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73211929. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Burguesia designou, na origem, os habitantes dos burgos com direito de cidadania. Na Idade Média tornou-se uma classe urbana que tomou o poder nas cidades e formou um patriciado. Na teoria de Marx é a classe que detém os meios de produção; o termo é polimorfo e controverso."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q52090", "wikipedia": "Burguesia" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Burguesia",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Burguesia",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73211929, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-capital-economia",
+      "slug": "capital-economia",
+      "title": "Capital (economia)",
+      "summary": "Em economia, capital é qualquer bem usado na produção de outros bens ou serviços. Na economia clássica é um dos três fatores de produção; Marx distingue capital variável, investido na força de trabalho e fonte da mais-valia, de capital constante, investido em fatores não humanos.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 68490733. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Em economia, capital é qualquer bem usado na produção de outros bens ou serviços. Na economia clássica é um dos três fatores de produção; Marx distingue capital variável, investido na força de trabalho e fonte da mais-valia, de capital constante, investido em fatores não humanos."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q8137", "wikipedia": "Capital (economia)" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Capital (economia)",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Capital_(economia)",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 68490733, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-ditadura-do-proletariado",
+      "slug": "ditadura-do-proletariado",
+      "title": "Ditadura do proletariado",
+      "summary": "Na teoria marxista, a ditadura do proletariado é o Estado de transição entre o capitalismo e o comunismo, em que o proletariado controla o poder político. O termo foi criado por Weydemeyer e usado por Marx e Engels; Lênin o desenvolveu com a defesa da repressão violenta. Bakunin e Hayek criticaram a ideia.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69673016. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Na teoria marxista, a ditadura do proletariado é o Estado de transição entre o capitalismo e o comunismo, em que o proletariado controla o poder político. O termo foi criado por Weydemeyer e usado por Marx e Engels; Lênin o desenvolveu com a defesa da repressão violenta. Bakunin e Hayek criticaram a ideia."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q118365", "wikipedia": "Ditadura do proletariado" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Ditadura do proletariado",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Ditadura_do_proletariado",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69673016, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-economia-marxiana",
+      "slug": "economia-marxiana",
+      "title": "Economia marxiana",
+      "summary": "A economia marxista é uma escola heterodoxa de pensamento econômico fundada na crítica de Marx à economia política. Analisa crises, mais-valia, valor e luta de classes; reúne teorias diversas, distintas do marxismo como ideologia, e é contestada por economistas como Stigler e Solow.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72004688. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A economia marxista é uma escola heterodoxa de pensamento econômico fundada na crítica de Marx à economia política. Analisa crises, mais-valia, valor e luta de classes; reúne teorias diversas, distintas do marxismo como ideologia, e é contestada por economistas como Stigler e Solow."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q854537", "wikipedia": "Economia marxiana" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Economia marxiana",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Economia_marxiana",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72004688, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-eurocomunismo",
+      "slug": "eurocomunismo",
+      "title": "Eurocomunismo",
+      "summary": "Eurocomunismo foi uma vertente do comunismo surgida nos anos 1970 em partidos da Europa Ocidental, sobretudo Itália, França e Espanha. Apresentou-se como versão democrática do comunismo, defendendo o consenso parlamentar e a independência em relação a Moscou; nenhum partido eurocomunista chegou ao poder.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73128972. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Eurocomunismo foi uma vertente do comunismo surgida nos anos 1970 em partidos da Europa Ocidental, sobretudo Itália, França e Espanha. Apresentou-se como versão democrática do comunismo, defendendo o consenso parlamentar e a independência em relação a Moscou; nenhum partido eurocomunista chegou ao poder."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q206743", "wikipedia": "Eurocomunismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Eurocomunismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Eurocomunismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73128972, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-filosofia-marxista",
+      "slug": "filosofia-marxista",
+      "title": "Filosofia marxista",
+      "summary": "Filosofia marxista são as concepções filosóficas das obras de Marx e Engels e da produção de autores que se referem a eles. Sua existência é controversa; o pensamento marxista se desdobrou em leituras soviéticas, neomarxistas e pós-soviéticas, e recebeu forte influência da filosofia de Hegel.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69545272. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Filosofia marxista são as concepções filosóficas das obras de Marx e Engels e da produção de autores que se referem a eles. Sua existência é controversa; o pensamento marxista se desdobrou em leituras soviéticas, neomarxistas e pós-soviéticas, e recebeu forte influência da filosofia de Hegel."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1639471", "wikipedia": "Filosofia marxista" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Filosofia marxista",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Filosofia_marxista",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69545272, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-internacionalismo-proletario",
+      "slug": "internacionalismo-proletario",
+      "title": "Internacionalismo proletário",
+      "summary": "Internacionalismo proletário é a visão de que as revoluções comunistas fazem parte de uma única luta de classes global. O slogan 'Trabalhadores do mundo, uni-vos!' vem do Manifesto Comunista; a Primeira e a Segunda Internacional, a Revolução Russa e a União Soviética deram forma prática a essa ideia.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 68746592. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Internacionalismo proletário é a visão de que as revoluções comunistas fazem parte de uma única luta de classes global. O slogan 'Trabalhadores do mundo, uni-vos!' vem do Manifesto Comunista; a Primeira e a Segunda Internacional, a Revolução Russa e a União Soviética deram forma prática a essa ideia."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1337795", "wikipedia": "Internacionalismo proletário" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Internacionalismo proletário",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Internacionalismo_prolet%C3%A1rio",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 68746592, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-livre-associacao-conceito",
+      "slug": "livre-associacao-conceito",
+      "title": "Livre associação (conceito)",
+      "summary": "Livre associação, ou comunidade dos indivíduos livremente associados, é na tradição anarquista e comunista uma sociedade sem Estado, classes ou propriedade privada dos meios de produção. Anarquistas e marxistas divergem sobre a transição: reformas graduais, revolução política ou ação direta dos conselhos operários.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 71446946. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Livre associação, ou comunidade dos indivíduos livremente associados, é na tradição anarquista e comunista uma sociedade sem Estado, classes ou propriedade privada dos meios de produção. Anarquistas e marxistas divergem sobre a transição: reformas graduais, revolução política ou ação direta dos conselhos operários."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q5500187", "wikipedia": "Livre associação (conceito)" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Livre associação (conceito)",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Livre_associa%C3%A7%C3%A3o_(conceito)",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71446946, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-luta-de-classes",
+      "slug": "luta-de-classes",
+      "title": "Luta de classes",
+      "summary": "Luta de classes é o antagonismo entre grupos de classes sociais diferentes, que se expressa nos campos econômico, ideológico e político. Para Marx, é o motor das mudanças sociais e só acaba com o fim do capitalismo e das classes; o termo também é usado de forma pejorativa por críticos conservadores.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 68881078. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Luta de classes é o antagonismo entre grupos de classes sociais diferentes, que se expressa nos campos econômico, ideológico e político. Para Marx, é o motor das mudanças sociais e só acaba com o fim do capitalismo e das classes; o termo também é usado de forma pejorativa por críticos conservadores."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1744607", "wikipedia": "Luta de classes" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Luta de classes",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Luta_de_classes",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 68881078, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-mais-valia",
+      "slug": "mais-valia",
+      "title": "Mais-valia",
+      "summary": "Mais-valia é, em Marx, a diferença entre o valor final da mercadoria e a soma do valor dos meios de produção com o valor do trabalho; é a base do lucro no capitalismo. Marx distingue a mais-valia absoluta, obtida pelo prolongamento ou intensificação da jornada, da relativa, obtida pelo aumento da produtividade com a mecanização.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 69733437. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Mais-valia é, em Marx, a diferença entre o valor final da mercadoria e a soma do valor dos meios de produção com o valor do trabalho; é a base do lucro no capitalismo. Marx distingue a mais-valia absoluta, obtida pelo prolongamento ou intensificação da jornada, da relativa, obtida pelo aumento da produtividade com a mecanização."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q332425", "wikipedia": "Mais-valia" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Mais-valia",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mais-valia",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69733437, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    },
+    {
+      "id": "wiki-topic-maoismo",
+      "slug": "maoismo",
+      "title": "Maoismo",
+      "summary": "Maoismo, ou Pensamento de Mao Tsé-tung, é uma corrente socialista baseada em Mao. Distingue-se do leninismo pela guerra popular camponesa, pela linha de massas e pela continuidade da luta de classes após a revolução. É doutrina oficial do Partido Comunista da China, que se afastou dela após 1978.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 72278313. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Maoismo, ou Pensamento de Mao Tsé-tung, é uma corrente socialista baseada em Mao. Distingue-se do leninismo pela guerra popular camponesa, pela linha de massas e pela continuidade da luta de classes após a revolução. É doutrina oficial do Partido Comunista da China, que se afastou dela após 1978."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q167651", "wikipedia": "Maoismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Maoismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Maoismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72278313, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-marxismo-leninismo-maoismo",
+      "slug": "marxismo-leninismo-maoismo",
+      "title": "Marxismo-leninismo-maoismo",
+      "summary": "Marxismo-leninismo-maoismo (MLM) é uma corrente do marxismo-leninismo originada do maoismo após a ruptura sino-soviética. Defende a guerra popular e a guerrilha rural, considera a China e outros países capitalistas de Estado e não é uma doutrina única, pois há correntes divergentes.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 73023081. Leitura parcial do artigo; cobertura incompleta. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Marxismo-leninismo-maoismo (MLM) é uma corrente do marxismo-leninismo originada do maoismo após a ruptura sino-soviética. Defende a guerra popular e a guerrilha rural, considera a China e outros países capitalistas de Estado e não é uma doutrina única, pois há correntes divergentes."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q18127879", "wikipedia": "Marxismo-leninismo-maoismo" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Marxismo-leninismo-maoismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Marxismo-leninismo-maoismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73023081, CC BY-SA 4.0"
+      },
+      "kind": "ideology"
+    },
+    {
+      "id": "wiki-topic-meios-de-producao",
+      "slug": "meios-de-producao",
+      "title": "Meios de produção",
+      "summary": "Na teoria marxista, meios de produção são os meios de trabalho e os objetos de trabalho; com a força de trabalho formam as forças produtivas. O socialismo e o comunismo exigem a socialização desses meios, que não se confunde com estatização.",
+      "aliases": [],
+      "context": "Rascunho assistido por IA a partir da Wikipédia (pt), revisão 67015299. Revisão humana não registrada.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Na teoria marxista, meios de produção são os meios de trabalho e os objetos de trabalho; com a força de trabalho formam as forças produtivas. O socialismo e o comunismo exigem a socialização desses meios, que não se confunde com estatização."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "scope": "nucleo",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q260747", "wikipedia": "Meios de produção" },
+      "discoveryMetadata": {
+        "description": null,
+        "wikipediaTitle": "Meios de produção",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Meios_de_produ%C3%A7%C3%A3o",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-03",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 67015299, CC BY-SA 4.0"
+      },
+      "kind": "concept"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-eurocomunismo",
+      "title": "Eurocomunismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Eurocomunismo",
+      "edition": "revisão 73128972; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-maoismo",
+      "title": "Maoismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Maoismo",
+      "edition": "revisão 72278313; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-ditadura-do-proletariado",
+      "title": "Ditadura do proletariado (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Ditadura_do_proletariado",
+      "edition": "revisão 69673016; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-luta-de-classes",
+      "title": "Luta de classes (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Luta_de_classes",
+      "edition": "revisão 68881078; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-burguesia",
+      "title": "Burguesia (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Burguesia",
+      "edition": "revisão 73211929; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-eurocomunismo-001",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "surgida entre os partidos comunistas dos países da Europa Ocidental, na década de 1970",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-002",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "O socialismo só pode ser alcançado através do consenso da maioria da população, recorrendo às instituições parlamentares formais",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-003",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "De acordo com Perry Anderson, o principal fundamento teórico do eurocomunismo foi a escrita de Antonio Gramsci sobre a teoria marxista",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-004",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Criticado como revisionista do marxismo pelos comunistas ortodoxos ou saudado como alternativa ao stalinismo pelos admiradores",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-005",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Carrillo, Santiago. 1977. Eurocomunismo y Estado. Editorial Crìtica. Madrid.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-006",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "mera tática para ampliar a popularidade dos partidos comunistas junto dos trabalhadores da classe média",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-007",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Foi na Conferência de Berlim, em 1976, que reuniu todos os 29 partidos comunistas",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-008",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Em 1977, numa conferência de partidos comunistas de todo o mundo, realizada em Moscovo, na União Soviética, Berlinguer referiu-se à democracia política como \"valor universal\"",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-009",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "De acordo com Perry Anderson, o principal fundamento teórico do eurocomunismo foi a escrita de Antonio Gramsci sobre a teoria marxista",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-010",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "A origem do termo Eurocomunismo foi alvo de grande debate em meados da década de 1970, sendo atribuído a Zbigniew Brzezinski e Arrigo Levi, entre outros",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-011",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "nenhum partido ou movimento eurocomunista conseguiu estabelecer-se no poder e implantar seus projetos",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-012",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Entretanto, nenhum partido ou movimento eurocomunista conseguiu estabelecer-se no poder e implantar seus projetos: na Itália, onde o Partido Comunista Italiano (PCI) se destacou na elaboração de importantes pontos teóricos, a política de \"compromisso histórico\" com a Democracia Cristã teve vida rela",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-rel-001",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "As primeiras inspirações também podem ser encontradas no austromarxismo",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-001",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Mao defendeu a ideia de que o campesinato era uma força revolucionária que poderia ser mobilizada pelo Partido Comunista sob o seu liderado",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-002",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Há quem considere que as modificações levadas a cabo por Mao constituem apenas uma adaptação do preexistente às especificidades da Revolução Chinesa e quem, ao contrário, considere que Mao trouxe um desenvolvimento substancial do leninismo.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-003",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Batchelor, J. Maoism and Classical Marxism, Clio History Journal, 2009.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-004",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Desde 1962 a crítica à política soviética realizada por Mao provocou diversas divisões nos partidos comunistas",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-005",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "as reformas de Deng Xiaoping em 1978",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-006",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Em 24 de dezembro de 2004, quatro chineses foram condenados a prisão por distribuírem panfletos",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-007",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "adotou o maoismo como a sua orientação entre 1962 e 1976",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-008",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Há também quem considere que o maoismo, sendo substancial, se opunha à estratégia socialista na União Soviética",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-009",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "Há quem considere que as modificações levadas a cabo por Mao constituem apenas uma adaptação do preexistente às especificidades da Revolução Chinesa",
+      "accessedAt": "2026-11-05",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-001",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "O termo foi criado por Joseph Weydemeyer e adotado por diversos autores, incluindo os idealizadores do marxismo, Karl Marx e Friedrich Engels, no século XIX.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-002",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "A ditadura do proletariado é um estado democrático caracterizado pela existência de organismos de governo de classe, onde toda autoridade pública é eleita e revogada por sufrágio universal.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-003",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "Segundo Marx quanto Engels, a Comuna de Paris (que durou por cerca de dois meses, antes de ser drasticamente reprimida pela burguesia) teria sido um exemplo da ditadura do proletariado.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-004",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "O uso da violência, terror e o governo de um único partido, o comunista, foi criticado por Karl Kautsky, Rosa Luxemburgo e Mikhail Bakunin.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-005",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "Em 1º de janeiro de 1852, o jornalista comunista Joseph Weydemeyer publicou um artigo intitulado",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-006",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "O termo foi criado por Joseph Weydemeyer e adotado por diversos autores",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-007",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "De acordo com teoria marxista, a ditadura do proletariado é o que se coloca entre o capitalismo e o comunismo.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-008",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "O uso da violência, terror e o governo de um único partido, o comunista, foi criticado por Karl Kautsky, Rosa Luxemburgo e Mikhail Bakunin.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-ditadura-do-proletariado-rel-001",
+      "sourceId": "src-wiki-topic-ditadura-do-proletariado",
+      "locator": "O uso da violência, terror e o governo de um único partido, o comunista, foi criticado por Karl Kautsky, Rosa Luxemburgo e Mikhail Bakunin.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-rel-002",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Partidos proeminentes por ele influenciados fora da Europa foram o Partido Comunista da Austrália",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-001",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "a luta de classes seria a força motriz por trás das grandes revoluções na história",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-002",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "A luta de classes, segundo Karl Marx, só acabará com o fim do capitalismo e com o fim das classes sociais.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-003",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "No passado, o termo \"luta de classes\" era usado principalmente por socialistas",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-004",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "O conceito de luta de classes foi criticado por dividir artificialmente a sociedade em dois campos hostis",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-005",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "Alguns críticos questionaram, em particular, a homogeneidade de interesses e comportamentos existentes numa mesma classe social.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-006",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "A luta de classes: Uma história política e filosófica. Autor: Domenico Losurdo. Boitempo Editorial, 2015",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-007",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "Já em 1933, o representante Edward Hamilton da ALPA",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-008",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "Comuna de Paris (1871)",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-009",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "Revolução de Outubro (1917)",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-010",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "Este conflito de classe é visto principalmente entre a burguesia e o proletariado",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-011",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "Marx se referiu a isso como o progresso do proletariado de ser uma classe \"em si\", uma posição na estrutura social, ser um \"para si\", uma força ativa e consciente que poderia mudar o mundo.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-012",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "a cooperação entre as classes sociais, é um fenômeno ainda mais universal do que o antagonismo entre elas.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eurocomunismo-rel-003",
+      "sourceId": "src-wiki-topic-eurocomunismo",
+      "locator": "Partidos proeminentes por ele influenciados fora da Europa foram o Partido Comunista da Austrália, o Partido Comunista Japonês",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luta-de-classes-rel-001",
+      "sourceId": "src-wiki-topic-luta-de-classes",
+      "locator": "Opõe-se ao conceito de colaboração de classes.",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maoismo-rel-001",
+      "sourceId": "src-wiki-topic-maoismo",
+      "locator": "a principal oposição de Mao a medida que o maoísmo se desenvolvia, foi Wang Ming",
+      "accessedAt": "2026-11-06",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-burguesia-001",
+      "sourceId": "src-wiki-topic-burguesia",
+      "locator": "O termo burguês deriva do latim burgus através de adaptações germânicas burga, baúrgs ou bürg",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-burguesia-002",
+      "sourceId": "src-wiki-topic-burguesia",
+      "locator": "Na teoria social contemporânea o termo denomina a classe dominante das sociedades capitalistas.",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-burguesia-003",
+      "sourceId": "src-wiki-topic-burguesia",
+      "locator": "Alguns acentuam seu caráter progressista, liberal e revolucionário, outros apontam seus laços com tradições oligárquicas e elitistas",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-burguesia-004",
+      "sourceId": "src-wiki-topic-burguesia",
+      "locator": "Na Idade Média o conceito se limitou a uma específica classe social formada nos burgos",
+      "accessedAt": "2026-11-09",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-burguesia-005",
+      "sourceId": "src-wiki-topic-burguesia",
+      "locator": "a controvérsia acadêmica que a cerca atesta a dificuldade de defini-la com precisão",
+      "accessedAt": "2026-11-09",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-eurocomunismo-001",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-002",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-003",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-004",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-005",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-006",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-007",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-008",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-009",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-010",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-011",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eurocomunismo-012",
+      "evidenceId": "ev-wiki-topic-eurocomunismo-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-001",
+      "evidenceId": "ev-wiki-topic-maoismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-002",
+      "evidenceId": "ev-wiki-topic-maoismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-003",
+      "evidenceId": "ev-wiki-topic-maoismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-004",
+      "evidenceId": "ev-wiki-topic-maoismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-005",
+      "evidenceId": "ev-wiki-topic-maoismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-006",
+      "evidenceId": "ev-wiki-topic-maoismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-007",
+      "evidenceId": "ev-wiki-topic-maoismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-008",
+      "evidenceId": "ev-wiki-topic-maoismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maoismo-009",
+      "evidenceId": "ev-wiki-topic-maoismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-do-proletariado-001",
+      "evidenceId": "ev-wiki-topic-ditadura-do-proletariado-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-do-proletariado-002",
+      "evidenceId": "ev-wiki-topic-ditadura-do-proletariado-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-do-proletariado-003",
+      "evidenceId": "ev-wiki-topic-ditadura-do-proletariado-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-do-proletariado-004",
+      "evidenceId": "ev-wiki-topic-ditadura-do-proletariado-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-do-proletariado-005",
+      "evidenceId": "ev-wiki-topic-ditadura-do-proletariado-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-do-proletariado-006",
+      "evidenceId": "ev-wiki-topic-ditadura-do-proletariado-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-do-proletariado-007",
+      "evidenceId": "ev-wiki-topic-ditadura-do-proletariado-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-ditadura-do-proletariado-008",
+      "evidenceId": "ev-wiki-topic-ditadura-do-proletariado-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-001",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-002",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-003",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-004",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-005",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-006",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-007",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-008",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-009",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-010",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-011",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luta-de-classes-012",
+      "evidenceId": "ev-wiki-topic-luta-de-classes-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-burguesia-001",
+      "evidenceId": "ev-wiki-topic-burguesia-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-burguesia-002",
+      "evidenceId": "ev-wiki-topic-burguesia-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-burguesia-003",
+      "evidenceId": "ev-wiki-topic-burguesia-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-burguesia-004",
+      "evidenceId": "ev-wiki-topic-burguesia-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-burguesia-005",
+      "evidenceId": "ev-wiki-topic-burguesia-005",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-eurocomunismo-001",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Surgiu entre partidos comunistas da Europa Ocidental, na década de 1970, com destaque para Itália, França e Espanha.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-002",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Propõe o socialismo pelo consenso da maioria, por meio de instituições parlamentares e de governos de coligação.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-003",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Segundo Perry Anderson, o principal fundamento teórico foi a obra de Antonio Gramsci sobre a teoria marxista.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-004",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Foi criticado como revisionismo do marxismo pelos comunistas ortodoxos e saudado como alternativa ao stalinismo por admiradores.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-005",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Obra de Santiago Carrillo sobre o tema, listada na bibliografia do artigo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-006",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Para críticos, o eurocomunismo foi uma tática para ampliar a popularidade dos partidos comunistas.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-007",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Conferência de Berlim, em que as teses do eurocomunismo começaram a ser debatidas. (1976).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-008",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Em Moscou, Berlinguer referiu-se à democracia política como valor universal. (1977).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-009",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "O principal fundamento teórico do eurocomunismo, segundo Perry Anderson, foi a escrita de Antonio Gramsci sobre a teoria marxista.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-010",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "A origem do termo eurocomunismo foi alvo de grande debate, sendo atribuída a Zbigniew Brzezinski e Arrigo Levi, entre outros.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-011",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Nenhum partido ou movimento eurocomunista conseguiu estabelecer-se no poder e implantar seus projetos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-011"]
+    },
+    {
+      "id": "claim-wiki-topic-eurocomunismo-012",
+      "entityId": "wiki-topic-eurocomunismo",
+      "text": "Posição política descrita na fonte: esquerda.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eurocomunismo-012"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-001",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Mao defendia que o campesinato era uma força revolucionária que podia ser mobilizada pelo Partido Comunista sob sua liderança.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-002",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Há divergência sobre até que ponto Mao modificou o marxismo-leninismo: uns veem apenas adaptação às especificidades chinesas, outros um desenvolvimento substancial do leninismo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-003",
+      "entityId": "wiki-topic-maoismo",
+      "text": "O artigo lista, em sua bibliografia, um trabalho de J. Batchelor sobre maoismo e marxismo clássico.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-004",
+      "entityId": "wiki-topic-maoismo",
+      "text": "A crítica de Mao à política soviética provocou divisões nos partidos comunistas. (1962).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-005",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Reformas de Deng Xiaoping. (1978).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-006",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Quatro chineses foram condenados a prisão por distribuir panfletos de crítica à linha dos líderes do Partido. (2004-12-24).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-007",
+      "entityId": "wiki-topic-maoismo",
+      "text": "O Partido Comunista do Brasil adotou o maoismo como orientação entre 1962 e 1976.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-008",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Há quem considere que o maoismo se opunha à estratégia socialista na União Soviética.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-maoismo-009",
+      "entityId": "wiki-topic-maoismo",
+      "text": "Há quem considere que as modificações de Mao ao marxismo-leninismo são apenas uma adaptação do preexistente.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maoismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-do-proletariado-001",
+      "entityId": "wiki-topic-ditadura-do-proletariado",
+      "text": "O termo foi criado por Joseph Weydemeyer e adotado por diversos autores, entre eles Karl Marx e Friedrich Engels, no século XIX.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-do-proletariado-001"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-do-proletariado-002",
+      "entityId": "wiki-topic-ditadura-do-proletariado",
+      "text": "Segundo o texto, a ditadura do proletariado é um Estado democrático com órgãos de governo de classe, em que toda autoridade pública é eleita e revogada por sufrágio universal.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-do-proletariado-002"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-do-proletariado-003",
+      "entityId": "wiki-topic-ditadura-do-proletariado",
+      "text": "Marx e Engels teriam apontado a Comuna de Paris como exemplo da ditadura do proletariado.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-do-proletariado-003"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-do-proletariado-004",
+      "entityId": "wiki-topic-ditadura-do-proletariado",
+      "text": "O uso da violência, do terror e do governo de um único partido foi criticado por Karl Kautsky, entre outros autores citados no artigo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-do-proletariado-004"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-do-proletariado-005",
+      "entityId": "wiki-topic-ditadura-do-proletariado",
+      "text": "Joseph Weydemeyer publicou o artigo Ditadura do Proletariado no jornal Turn-Zeitung. (1852-01-01).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-do-proletariado-005"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-do-proletariado-006",
+      "entityId": "wiki-topic-ditadura-do-proletariado",
+      "text": "O termo ditadura do proletariado foi criado por Joseph Weydemeyer.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-do-proletariado-006"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-do-proletariado-007",
+      "entityId": "wiki-topic-ditadura-do-proletariado",
+      "text": "Na teoria marxista, a ditadura do proletariado situa-se entre o capitalismo e o comunismo.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-do-proletariado-007"]
+    },
+    {
+      "id": "claim-wiki-topic-ditadura-do-proletariado-008",
+      "entityId": "wiki-topic-ditadura-do-proletariado",
+      "text": "O uso da violência e do terror associado à ditadura do proletariado é objeto de crítica de outros autores socialistas.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-ditadura-do-proletariado-008"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-001",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Segundo o artigo, pensadores como David Ricardo, Pierre-Joseph Proudhon, Karl Marx e Mikhail Bakunin viam a luta de classes como força motriz das grandes revoluções na história.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-001"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-002",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Marx argumentava que a luta de classes só acabaria com o fim do capitalismo e das classes sociais.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-002"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-003",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Segundo o artigo, o termo era usado principalmente por socialistas e, em tempos mais contemporâneos, busca-se uma nova definição nas sociedades capitalistas dos Estados Unidos e de outros países ocidentalizados.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-003"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-004",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Autores liberais e conservadores criticam o conceito por dividir artificialmente a sociedade em dois campos hostis.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-004"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-005",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Críticos sociológicos questionam a homogeneidade de interesses dentro de uma mesma classe social.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-005"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-006",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "A obra de Domenico Losurdo sobre o tema é listada na bibliografia do artigo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-006"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-007",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "O representante Edward Hamilton, da ALPA, usou o termo 'guerra de classes' nas audiências do National Labor Board. (1933).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-007"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-008",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Comuna de Paris aparece na cronologia do artigo. (1871).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-008"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-009",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Revolução de Outubro aparece na cronologia do artigo. (1917).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-009"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-010",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Segundo o artigo, a luta de classes existe nas sociedades capitalistas entre a burguesia e o proletariado, em torno de salários, horas de trabalho e lucros.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-010"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-011",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Segundo Marx, o proletariado é uma classe 'em si' que pode tornar-se 'para si', uma força ativa e consciente.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-011"]
+    },
+    {
+      "id": "claim-wiki-topic-luta-de-classes-012",
+      "entityId": "wiki-topic-luta-de-classes",
+      "text": "Pitirim Sorokin afirma que a cooperação entre as classes sociais é um fenômeno mais universal do que o antagonismo entre elas.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luta-de-classes-012"]
+    },
+    {
+      "id": "claim-wiki-topic-burguesia-001",
+      "entityId": "wiki-topic-burguesia",
+      "text": "O termo burguês deriva do latim burgus, por meio de adaptações germânicas que designavam uma pequena fortificação ou vila murada.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-burguesia-001"]
+    },
+    {
+      "id": "claim-wiki-topic-burguesia-002",
+      "entityId": "wiki-topic-burguesia",
+      "text": "Na teoria social contemporânea, o termo designa a classe dominante das sociedades capitalistas.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-burguesia-002"]
+    },
+    {
+      "id": "claim-wiki-topic-burguesia-003",
+      "entityId": "wiki-topic-burguesia",
+      "text": "Autores divergem sobre o caráter da burguesia: alguns a veem como progressista, liberal e revolucionária, e outros como ligada a tradições oligárquicas e elitistas.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-burguesia-003"]
+    },
+    {
+      "id": "claim-wiki-topic-burguesia-004",
+      "entityId": "wiki-topic-burguesia",
+      "text": "Na Idade Média o conceito de burguesia se limitou a uma classe social formada nos burgos, com direito de cidadania.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-burguesia-004"]
+    },
+    {
+      "id": "claim-wiki-topic-burguesia-005",
+      "entityId": "wiki-topic-burguesia",
+      "text": "A controvérsia acadêmica sobre o conceito de burguesia indica dificuldade em defini-lo com precisão.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-burguesia-005"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-eurocomunismo-001",
+      "claimId": "claim-wiki-topic-eurocomunismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-002",
+      "claimId": "claim-wiki-topic-eurocomunismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-003",
+      "claimId": "claim-wiki-topic-eurocomunismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-004",
+      "claimId": "claim-wiki-topic-eurocomunismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-005",
+      "claimId": "claim-wiki-topic-eurocomunismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-006",
+      "claimId": "claim-wiki-topic-eurocomunismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-007",
+      "claimId": "claim-wiki-topic-eurocomunismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-008",
+      "claimId": "claim-wiki-topic-eurocomunismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-009",
+      "claimId": "claim-wiki-topic-eurocomunismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-010",
+      "claimId": "claim-wiki-topic-eurocomunismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-011",
+      "claimId": "claim-wiki-topic-eurocomunismo-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eurocomunismo-012",
+      "claimId": "claim-wiki-topic-eurocomunismo-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-001",
+      "claimId": "claim-wiki-topic-maoismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-002",
+      "claimId": "claim-wiki-topic-maoismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-003",
+      "claimId": "claim-wiki-topic-maoismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-004",
+      "claimId": "claim-wiki-topic-maoismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-005",
+      "claimId": "claim-wiki-topic-maoismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-006",
+      "claimId": "claim-wiki-topic-maoismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-007",
+      "claimId": "claim-wiki-topic-maoismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-008",
+      "claimId": "claim-wiki-topic-maoismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maoismo-009",
+      "claimId": "claim-wiki-topic-maoismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-do-proletariado-001",
+      "claimId": "claim-wiki-topic-ditadura-do-proletariado-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-do-proletariado-002",
+      "claimId": "claim-wiki-topic-ditadura-do-proletariado-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-do-proletariado-003",
+      "claimId": "claim-wiki-topic-ditadura-do-proletariado-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-do-proletariado-004",
+      "claimId": "claim-wiki-topic-ditadura-do-proletariado-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-do-proletariado-005",
+      "claimId": "claim-wiki-topic-ditadura-do-proletariado-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-do-proletariado-006",
+      "claimId": "claim-wiki-topic-ditadura-do-proletariado-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-do-proletariado-007",
+      "claimId": "claim-wiki-topic-ditadura-do-proletariado-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-ditadura-do-proletariado-008",
+      "claimId": "claim-wiki-topic-ditadura-do-proletariado-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-001",
+      "claimId": "claim-wiki-topic-luta-de-classes-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-002",
+      "claimId": "claim-wiki-topic-luta-de-classes-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-003",
+      "claimId": "claim-wiki-topic-luta-de-classes-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-004",
+      "claimId": "claim-wiki-topic-luta-de-classes-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-005",
+      "claimId": "claim-wiki-topic-luta-de-classes-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-006",
+      "claimId": "claim-wiki-topic-luta-de-classes-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-007",
+      "claimId": "claim-wiki-topic-luta-de-classes-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-008",
+      "claimId": "claim-wiki-topic-luta-de-classes-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-009",
+      "claimId": "claim-wiki-topic-luta-de-classes-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-010",
+      "claimId": "claim-wiki-topic-luta-de-classes-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-011",
+      "claimId": "claim-wiki-topic-luta-de-classes-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luta-de-classes-012",
+      "claimId": "claim-wiki-topic-luta-de-classes-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-burguesia-001",
+      "claimId": "claim-wiki-topic-burguesia-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-burguesia-002",
+      "claimId": "claim-wiki-topic-burguesia-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-burguesia-003",
+      "claimId": "claim-wiki-topic-burguesia-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-burguesia-004",
+      "claimId": "claim-wiki-topic-burguesia-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-burguesia-005",
+      "claimId": "claim-wiki-topic-burguesia-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [
+    {
+      "id": "asset-wiki-topic-maoismo",
+      "entityId": "wiki-topic-maoismo",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Maoflag1.PNG/960px-Maoflag1.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Maoflag1.PNG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "unidentified graphic designers, adapted by \"The Shining Path\"",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Maoflag1.PNG",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Maoflag1.PNG",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Maoflag1.PNG",
+      "attribution": "Maoflag1.PNG, unidentified graphic designers, adapted by \"The Shining Path\", Public domain",
+      "retrievedAt": "2026-11-05"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-wiki-topic-eurocomunismo-001",
+      "fromEntityId": "wiki-ideologia-austromarxismo",
+      "toEntityId": "wiki-topic-eurocomunismo",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "O austromarxismo influenciou o eurocomunismo ao oferecer uma busca por uma terceira via democrática para o socialismo.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-eurocomunismo-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Eurocomunismo",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-ditadura-do-proletariado-001",
+      "fromEntityId": "person-karl-kautsky",
+      "toEntityId": "wiki-topic-ditadura-do-proletariado",
+      "type": "reacted_against",
+      "label": "reagiu contra",
+      "reverseLabel": "recebeu reação de",
+      "context": "Karl Kautsky criticou o uso da violência, do terror e do governo de um único partido associados à ditadura do proletariado.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-ditadura-do-proletariado-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Ditadura_do_proletariado",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-eurocomunismo-002",
+      "fromEntityId": "wiki-topic-eurocomunismo",
+      "toEntityId": "ideology-communism",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "O eurocomunismo influenciou o Partido Comunista da Austrália.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-eurocomunismo-rel-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Eurocomunismo",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-eurocomunismo-003",
+      "fromEntityId": "wiki-topic-eurocomunismo",
+      "toEntityId": "wiki-partido-partido-comunista-japones",
+      "type": "influenced",
+      "label": "influenciou",
+      "reverseLabel": "foi influenciado por",
+      "context": "O eurocomunismo influenciou o Partido Comunista Japonês.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-eurocomunismo-rel-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Eurocomunismo",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-luta-de-classes-001",
+      "fromEntityId": "wiki-topic-luta-de-classes",
+      "toEntityId": "wiki-conceito-colaboracao-de-classes",
+      "type": "reacted_against",
+      "label": "reagiu contra",
+      "reverseLabel": "recebeu reação de",
+      "context": "A luta de classes opõe-se ao conceito de colaboração de classes.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-luta-de-classes-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Luta_de_classes",
+        "retrievedAt": "2026-11-06"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-maoismo-001",
+      "fromEntityId": "wiki-pessoa-wang-ming",
+      "toEntityId": "wiki-topic-maoismo",
+      "type": "reacted_against",
+      "label": "reagiu contra",
+      "reverseLabel": "recebeu reação de",
+      "context": "Wang Ming foi a principal oposição de Mao enquanto o maoísmo se desenvolvia.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-maoismo-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Maoismo",
+        "retrievedAt": "2026-11-06"
+      }
+    }
+  ],
+  "learningPaths": []
+}
