@@ -14,7 +14,7 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Worker de conteúdo**: a conta gratuita passou de **100 mil** requisições/dia (186.096 no alerta). O release empacotado reduz a navegação de leitura/catálogo de ~17 para **2 requisições** (ponteiro + pacote), `/acervo` para **2** e `/grafos` para **2** (ponteiro + `networkBundle`). Medição na URL publicada em 08/11: home **0**; acervo **2**; leitura/verbete **2** na navegação SPA e **1** na carga direta; grafo **2** na SPA e **1** na carga direta. Depois do `/acervo`, abrir um verbete na mesma sessão custa **0**. O ponteiro vem do prerender nas cargas diretas. O consumo futuro cai, mas o limite do dia ainda depende do reset ou do upgrade.
 - Build local: **1.221 páginas no sitemap**; canonical e robots usam `https://atlas-bellussi.pages.dev` como origem padrão, com `ATLAS_SITE_URL` apenas para domínio próprio.
 - CI: PR **#71** e merge **`5494439`** verdes, com **363 testes**, **188 de conteúdo**, build de 1.221 páginas, 1.222 links e **172 e2e** (um teste de diálogo flutuou por 24 px e passou no rerun); `deploy-pages` concluído. O `ingest:fetch-raw` segue estável e o probe agendado de `uptime` foi corrigido para as rotas canônicas.
-- Publicado e verificado em 09/11: ponteiro `c48b0b6`; `/paises` mostra 82 países, `/estados` 19, `/cidades` 20, `/locais` 7 e `/lugares` 21; `/verbete/alemanha/` exibe `Flag_of_Germany.svg` no hero com `hero--flag`. Sitemap com **1.221 URLs**; `/grafos` baixa só o `networkBundle`, e verbete/acervo baixam só o `bundle` na carga direta. A vizinhança P2 isola 23/103/1.188 verbetes em 1 salto/2 saltos/tudo.
+- Publicado e verificado em 09/11: ponteiro `7a4b972`; `/acervo?camada=registros` mostra o filtro de escopo (**1.134 núcleo, 36 contexto, 20 fora**) e `/grafos` mostra o painel **Escopo** e o peso das relações no painel do verbete. O deployment `3adcc00f` e o alias `atlas-bellussi.pages.dev` servem o build novo depois da republicação. `/paises` mostra 82 países, `/estados` 19, `/cidades` 20, `/locais` 7 e `/lugares` 21; `/verbete/alemanha/` exibe `Flag_of_Germany.svg` no hero com `hero--flag`. Sitemap com **1.221 URLs**; `/grafos` baixa só o `networkBundle`, e verbete/acervo baixam só o `bundle` na carga direta. A vizinhança P2 isola 23/103/1.188 verbetes em 1 salto/2 saltos/tudo.
 
 ## Verificações recentes
 
@@ -84,16 +84,14 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 6. **Onda 2** — o lote dos verbetes foi concluído (+99 documentadas no total). Faltam as quatro leituras: Marxismo 41/70, Liberalismo 16/35, Social-democracia 34/70, Anarquismo 10/50. O saldo restante do teto de US$ 6 é ~US$ 4,2; a próxima decisão é entre alvos editoriais das leituras e um novo lote de verbetes.
 7. **Publicação da expansão** — o release `c0be77b` foi publicado e o ponteiro público já aponta para ele; o próximo deploy do Pages fixa o novo conteúdo no HTML prerenderizado.
 8. **Piloto das tradições** — nazismo, stalinismo e trabalhismo têm registros, descoberta e captura gratuitas concluídas e candidatos curados (40/44/50 artigos). A extração paga estimada em **~US$ 2,00** (pior caso **US$ 3,81**) aguarda aprovação; nenhum gasto de API foi feito nesta rodada.
-9. **Alias do Pages** — o deployment `3adcc00f` responde com o peso das relações, mas `atlas-bellussi.pages.dev` ainda serve o deployment `d165eeb9`; republicar ou promover o deployment.
 
 ## Próxima ação
 
-1. Confirmar que o alias `atlas-bellussi.pages.dev` serve o deployment `3adcc00f` (peso das relações). O deployment imutável já responde com o painel novo; se o alias continuar no build anterior, republicar ou promover o deployment.
-2. Retomar o piloto das três tradições (nazismo, stalinismo e trabalhismo) somente após aprovação do gasto de **~US$ 2,00** (pior caso **US$ 3,81**); a descoberta e a captura gratuitas já estão feitas.
-3. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
-4. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
-5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
-6. Só depois iniciar a fase 0 dos itinerários.
+1. Retomar o piloto das três tradições (nazismo, stalinismo e trabalhismo) somente após aprovação do gasto de **~US$ 2,00** (pior caso **US$ 3,81**); a descoberta e a captura gratuitas já estão feitas.
+2. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
+3. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
+4. Rotacionar o token Cloudflare e desligar o Vercel no painel.
+5. Só depois iniciar a fase 0 dos itinerários.
 
 ## Mapa rápido
 

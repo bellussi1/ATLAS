@@ -25,7 +25,7 @@ Rodada de qualidade do acervo depois da simplificação do `/acervo` (PR #65).
 
 - Release **`7a4b972`** publicado no R2 com as coleções de tipos e escopo; ponteiro e manifesto atualizados.
 - PR **#70** (tipos e escopo) em **`378d93d`** e PR **#71** (peso das relações) em **`5494439`**, ambos com `deploy-pages` concluído.
-- O deployment **`3adcc00f`** responde com o peso das relações; o alias `atlas-bellussi.pages.dev` ficou temporariamente no deployment anterior (`d165eeb9`) e precisa ser confirmado depois da republicação.
+- O deployment **`3adcc00f`** e o alias `atlas-bellussi.pages.dev` servem o peso das relações depois da republicação do workflow.
 
 ## Verificações
 
