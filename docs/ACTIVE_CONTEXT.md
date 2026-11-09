@@ -22,7 +22,8 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 - `npm run test:content`: **188/188**.
 - `npm run build`: passou, **1.221 páginas no sitemap**, canonical absoluto em todas as páginas.
 - `npx playwright test e2e/graph.spec.ts`: **23/23**, incluindo o filtro de escopo e o peso no painel.
-- `npx playwright test e2e/knowledge-explorer.spec.ts`: **21/21**, incluindo o filtro de escopo do acervo.
+- `npx playwright test e2e/knowledge-explorer.spec.ts`: **22/22**, incluindo camadas, escopo, tipos, busca, seletor mobile e axe/reflow a 320 px.
+- `npx playwright test e2e/knowledge-explorer.spec.ts e2e/pages.spec.ts`: **62/62**, cobrindo o acervo refatorado, `/fontes` com “Carregar mais” e a âncora que abre a página da fonte.
 - `npm run check:links`: **1.222 páginas** verificadas.
 - `npm run lint` e `npm run typecheck`: exit 0.
 - `content:build` local: release **`7a4b972`**, 13 coleções, **1.190 entidades**, **1.580 relações** e **1.410 documentadas**; o ponteiro público aponta para esse release.
@@ -36,6 +37,8 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Trabalho ativo
 
+- **Acervo / refactor de UI (09/11)**: a página ganhou rail de facetas no desktop, painel de filtros no mobile, faixa de busca em tinta com debounce de 220 ms, contagens contextuais por camada/escopo/tipo/estado, ordenação Relevância/Título, alternância Grade/Lista e “Carregar mais” no lugar do pager numerado. Tudo abre em lista; Registros abre em grade no desktop e lista no mobile; Fontes e Leituras mantêm listas próprias. A URL segue como fonte de verdade (`q`, `camada`, `escopo`, `tipo`, `estado`, `ordem`, `vista`, `pagina`), e a hidratação sincroniza a query com a localização. O índice de tipos mantém todos os tipos da camada mesmo quando a busca reduz as contagens, para não esconder o caminho de volta. Commit local **`fb022f4`**; nada publicado.
+- **Grafo / painel de conexões (09/11)**: as conexões vêm antes das teses e são agrupadas por peso (histórico, ação, administrativo, catálogo), com 6 por grupo e “Ver todas”; a frase da aresta aparece só no hover, o detalhe é recolhível no mobile e o nó selecionado fica maior. Commit local **`82fda9e`**; nada publicado.
 - **PR #50 / #51**: #50 levou leituras, shell, deploy e foco do grafo; #51 levou os pacotes de conteúdo. Ambos mergeados e publicados.
 - **Grafo**: foco por seleção implementado; o `/grafos` lê o `networkBundle` (4,1 MB contra 12,6 MB das coleções) em **uma** requisição de conteúdo além do ponteiro. Medição na URL publicada: **2** requisições na navegação SPA e **1** na carga direta.
 - **Pacote de conteúdo**: `build-content` gera `bundle` (grafo + busca + adjacência + layouts + leituras) e `networkBundle` (projeção + layouts); o ponteiro referencia os dois e o `ContentRepository` os consome antes do manifesto. Releases antigos e o fixture continuam no caminho anterior.
@@ -91,12 +94,13 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Próxima ação
 
-1. Decidir o modelo de pertencimento do piloto (lente da tradição por QID × mover/duplicar o nó raiz), depois gerar os 12 capítulos e fechar a cobertura. A extração paga já está concluída por **US$ 0,534**.
-2. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
-3. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
-4. Rotacionar o token Cloudflare e desligar o Vercel no painel.
-5. Só depois iniciar a fase 0 dos itinerários.
-6. Se a primeira carga continuar crítica, buscar o bundle como bytes (hash antes do decode) e dividir o pacote por rota; o prefetch já resolveu o grafo → acervo.
+1. Decidir o envio dos commits locais **`fb022f4`** (acervo), **`4adc5aa`** (orçamento de estilo) e **`82fda9e`** (grafo): push para a `develop` e PR só com autorização explícita; nada foi publicado.
+2. Decidir o modelo de pertencimento do piloto (lente da tradição por QID × mover/duplicar o nó raiz), depois gerar os 12 capítulos e fechar a cobertura. A extração paga já está concluída por **US$ 0,534**.
+3. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
+4. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
+5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
+6. Só depois iniciar a fase 0 dos itinerários.
+7. Se a primeira carga continuar crítica, buscar o bundle como bytes (hash antes do decode) e dividir o pacote por rota; o prefetch já resolveu o grafo → acervo.
 
 ## Mapa rápido
 
