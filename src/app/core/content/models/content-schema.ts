@@ -250,7 +250,7 @@ export const reviewSchema = z
     ) {
       context.addIssue({
         code: 'custom',
-        message: 'Revisão concluída exige identificação humana e data.',
+        message: 'Revisão concluída exige identificação e data.',
         path: ['reviewer'],
       });
     }
