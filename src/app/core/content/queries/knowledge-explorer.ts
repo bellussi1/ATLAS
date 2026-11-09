@@ -29,7 +29,20 @@ export const explorerRecordGroups = [
   {
     id: 'contexto',
     title: 'Contexto',
-    kinds: ['evento', 'institution', 'party', 'place', 'country', 'regime'],
+    kinds: [
+      'evento',
+      'institution',
+      'party',
+      'place',
+      'country',
+      'regime',
+      'city',
+      'state',
+      'region',
+      'continent',
+      'site',
+      'other',
+    ],
   },
 ] as const;
 
@@ -41,8 +54,8 @@ export function explorerContentGroup(kind: string): ExplorerContentGroup {
 export const normalizeExplorerQuery = (value: string) =>
   value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLocaleLowerCase('pt-BR');
 
-/** Catalogue path to the record kind it lists. */
-const catalogueKinds: Record<string, string> = {
+/** Catalogue path to the record kind(s) it lists. */
+const catalogueKinds: Record<string, string | readonly string[]> = {
   pessoas: 'pessoa',
   obras: 'work',
   ideologias: 'ideology',
@@ -53,7 +66,10 @@ const catalogueKinds: Record<string, string> = {
   instituicoes: 'institution',
   acontecimentos: 'evento',
   conceitos: 'concept',
-  lugares: 'place',
+  cidades: 'city',
+  estados: 'state',
+  locais: 'site',
+  lugares: ['region', 'continent', 'other', 'place'],
 };
 
 /** The catalogue that lists a record of this kind; records without one stay in the general index. */
@@ -103,10 +119,12 @@ function explorerBase(
 ): DiscoveryIndexEntry[] {
   const catalogue = filter.catalogue ?? 'acervo';
   const kind = catalogueKinds[catalogue];
+  const kindMatches = (entryKind: string) =>
+    !kind || (Array.isArray(kind) ? kind.includes(entryKind) : entryKind === kind);
   return index.filter(
     (entry) =>
       (catalogue === 'acervo' || catalogue === 'fontes' || entry.path.startsWith('/verbete/')) &&
-      (!kind || entry.kind === kind) &&
+      kindMatches(entry.kind) &&
       (!filter.kind || entry.kind === filter.kind) &&
       (!filter.state || entry.state === filter.state) &&
       (!filter.layer || explorerContentGroup(entry.kind) === filter.layer),

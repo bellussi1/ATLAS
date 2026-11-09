@@ -1,5 +1,11 @@
 @if (shownPicture(); as src) {
-  <img class="card-picture" [src]="src | contentMedia" alt="" loading="lazy" />
+  <img
+    class="card-picture"
+    [class.card-picture--flag]="pictureMode() === 'flag'"
+    [src]="src | contentMedia"
+    alt=""
+    loading="lazy"
+  />
 } @else if (illustration(); as art) {
   <app-geometric-illustration
     class="card-picture card-illustration"

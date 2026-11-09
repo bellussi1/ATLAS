@@ -27,7 +27,11 @@
         </p>
       }
     }
-    <header class="hero" [class.hero--text]="!context()?.media && !illustration()">
+    <header
+      class="hero"
+      [class.hero--text]="!context()?.media && !illustration()"
+      [class.hero--flag]="isFlag()"
+    >
       <div class="hero-text">
         <p class="record-meta">{{ entry()?.kindLabel }} · {{ seal() }}</p>
         <h1 [attr.lang]="presentation()?.locale">{{ entity.title }}</h1>

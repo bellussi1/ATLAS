@@ -96,6 +96,22 @@ describe('Knowledge Explorer', () => {
     for (const kind of ['pessoa', 'ideology', 'concept', 'work', 'evento', 'institution'])
       expect(grouped).toContain(kind);
   });
+  it('routes each place category to its own catalogue', () => {
+    const countries = explorerEntries(discoveryIndex, { catalogue: 'paises' });
+    const cities = explorerEntries(discoveryIndex, { catalogue: 'cidades' });
+    const states = explorerEntries(discoveryIndex, { catalogue: 'estados' });
+    const sites = explorerEntries(discoveryIndex, { catalogue: 'locais' });
+    const regions = explorerEntries(discoveryIndex, { catalogue: 'lugares' });
+    expect(countries.length).toBeGreaterThan(10);
+    expect(countries.every((entry) => entry.kind === 'country')).toBe(true);
+    expect(cities.length).toBeGreaterThan(0);
+    expect(cities.every((entry) => entry.kind === 'city')).toBe(true);
+    expect(states.every((entry) => entry.kind === 'state')).toBe(true);
+    expect(sites.every((entry) => entry.kind === 'site')).toBe(true);
+    expect(
+      regions.every((entry) => ['region', 'continent', 'other', 'place'].includes(entry.kind)),
+    ).toBe(true);
+  });
   it('paginates results, clamps out-of-range pages and parses only positive integers', () => {
     const items = Array.from({ length: 45 }, (_, index) => index);
     expect(explorerPage(items, 1, 20)).toMatchObject({ page: 1, pageCount: 3, start: 1, end: 20 });

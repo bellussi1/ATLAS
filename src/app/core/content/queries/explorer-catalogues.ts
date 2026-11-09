@@ -49,7 +49,25 @@ export const explorerCatalogues = [
     group: 'contexto',
     path: 'paises',
     title: 'Países',
-    description: 'Identidades estatais e recortes territoriais com fontes e limites explícitos.',
+    description: 'Estados soberanos, atuais e históricos, com bandeira e recorte territorial.',
+  },
+  {
+    group: 'contexto',
+    path: 'estados',
+    title: 'Estados',
+    description: 'Estados, províncias, impérios e formações políticas históricas.',
+  },
+  {
+    group: 'contexto',
+    path: 'cidades',
+    title: 'Cidades',
+    description: 'Capitais e cidades com papel político, econômico ou cultural.',
+  },
+  {
+    group: 'contexto',
+    path: 'locais',
+    title: 'Locais',
+    description: 'Sítios, edifícios e marcos com significado histórico.',
   },
   {
     group: 'contexto',
@@ -85,6 +103,6 @@ export const explorerCatalogues = [
     group: 'contexto',
     path: 'lugares',
     title: 'Lugares',
-    description: 'Lugares e espaços documentados, distintos dos registros de países.',
+    description: 'Regiões, continentes e termos geográficos.',
   },
 ] as const;

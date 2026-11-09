@@ -114,6 +114,16 @@ Exemplos de relação que não cria importância política:
    entre remover do catálogo político, manter como contexto ou transformar em verbete.
 5. **Reexecutar esta auditoria** depois das correções e comparar os números.
 
+## Atualização de 09/11/2026
+
+Os lugares foram tratados primeiro, por serem o erro mais visível: **151 mudanças** de tipo/categoria
+foram aplicadas, com `placeCategory` (`country`, `state`, `city`, `region`, `continent`, `site`,
+`other`) e correção de 10 cidades cadastradas como conceito e 12 países cadastrados como
+instituição. O acervo ganhou os catálogos **Países**, **Estados**, **Cidades**, **Locais** e
+**Lugares**. As imagens foram renovadas pelo Wikidata, com P41 `preferred` para países e Estados;
+Alemanha, Reino Unido, Rússia e Estados Unidos deixaram de usar bandeiras históricas ou mapas.
+Restam os 69 candidatos de tipo e a revisão dos 20 itens fora de escopo.
+
 ## Limites
 
 - A descrição do Wikidata é curta e pode esconder o papel político de um item; por isso há

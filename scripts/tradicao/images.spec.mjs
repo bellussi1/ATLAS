@@ -1,7 +1,29 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { collectImages, pageImageFile, pageImageUrl } from './images.mjs';
+import { collectImages, imageFiles, pageImageFile, pageImageUrl } from './images.mjs';
+
+test('prefere a bandeira atual (rank preferred) às bandeiras históricas do Wikidata', () => {
+  const entity = {
+    claims: {
+      P41: [
+        {
+          rank: 'normal',
+          mainsnak: { datavalue: { value: 'Merchant flag of Germany (1946–1949).svg' } },
+        },
+        { rank: 'preferred', mainsnak: { datavalue: { value: 'Flag of Germany.svg' } } },
+        {
+          rank: 'deprecated',
+          mainsnak: { datavalue: { value: 'Flag of Germany (1867–1918).svg' } },
+        },
+      ],
+    },
+  };
+  assert.deepEqual(imageFiles(entity, 'pais'), [
+    'Flag of Germany.svg',
+    'Merchant flag of Germany (1946–1949).svg',
+  ]);
+});
 
 test('a imagem de abertura do artigo vira nome de arquivo do Commons', () => {
   assert.equal(
