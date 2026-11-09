@@ -161,6 +161,40 @@ label,
 .layer-filter__item[aria-current='true'] .layer-filter__count {
   color: var(--color-accent-hover);
 }
+.scope-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.9rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--color-border-strong);
+}
+.scope-filter__label {
+  color: var(--color-ink-muted);
+  font: var(--text-caption) / 1.3 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.scope-filter__item {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: baseline;
+  min-height: 2.25rem;
+  color: var(--color-ink);
+  font: 650 var(--text-small) / 1 var(--font-sans);
+  text-decoration: none;
+}
+.scope-filter__item[aria-current='true'] {
+  color: var(--color-accent-hover);
+  box-shadow: inset 0 -3px var(--color-accent);
+}
+.scope-filter__count {
+  color: var(--color-ink-muted);
+  font: var(--text-caption) / 1 var(--font-mono);
+}
+.scope-filter__item[aria-current='true'] .scope-filter__count {
+  color: var(--color-accent-hover);
+}
 .active-filters {
   display: flex;
   flex-wrap: wrap;

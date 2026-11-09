@@ -119,6 +119,25 @@
       </details>
 
       <details class="panel" open>
+        <summary><h2>Escopo</h2></summary>
+        <p class="hint">
+          Núcleo, contexto e fora do recorte político. O filtro só esconde o nó; não apaga o
+          registro.
+        </p>
+        @for (scope of graphScopeOptions; track scope.id) {
+          <label class="check">
+            <input
+              type="checkbox"
+              [checked]="scopesOn().has(scope.id)"
+              (change)="toggleScope(scope.id)"
+            />
+            <span>{{ scope.label }}</span>
+            <span class="legend__count">{{ counts().scopes.get(scope.id) ?? 0 }}</span>
+          </label>
+        }
+      </details>
+
+      <details class="panel" open>
         <summary><h2>Tipos de ligação</h2></summary>
         <p class="hint">A ponta da seta aponta para quem recebe a ação.</p>
         <ul class="legend">

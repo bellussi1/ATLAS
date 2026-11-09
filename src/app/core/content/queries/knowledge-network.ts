@@ -4,6 +4,7 @@ import type {
   KnowledgeGraph,
   PlaceCategory,
   Relation,
+  Scope,
 } from '@core/content/models/content-schema';
 /** Node families of the graph page. Each one has a colour, a shape and an icon family. */
 export type NetworkKindId =
@@ -393,6 +394,8 @@ export interface NetworkNode {
   slug: string;
   title: string;
   kind: NetworkKindId;
+  /** Editorial relevance inside the archive. */
+  scope: Scope;
   /** One short sentence taken from the summary. */
   definition: string;
   summary: string;
@@ -594,6 +597,7 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
           placeCategory: entity.kind === 'place' ? entity.placeCategory : undefined,
           description: entity.discoveryMetadata?.description ?? undefined,
         }),
+        scope: entity.scope ?? 'nucleo',
         definition: firstSentence(entity.summary),
         summary: entity.summary,
         collections: [atlas.id],
@@ -680,6 +684,7 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
 
 export interface NetworkFilter {
   kinds: ReadonlySet<NetworkKindId>;
+  scopes: ReadonlySet<Scope>;
   families: ReadonlySet<RelationFamilyId>;
   collections: ReadonlySet<string>;
   onlyConnected: boolean;
@@ -756,7 +761,9 @@ function shortestPath(
 export function filterNetwork(network: KnowledgeNetwork, filter: NetworkFilter): VisibleNetwork {
   const byKind = network.nodes.filter(
     (node) =>
-      filter.kinds.has(node.kind) && node.collections.some((id) => filter.collections.has(id)),
+      filter.scopes.has(node.scope ?? 'nucleo') &&
+      filter.kinds.has(node.kind) &&
+      node.collections.some((id) => filter.collections.has(id)),
   );
   const ids = new Set(byKind.map((node) => node.id));
   // A relation in this cut of the map brings its endpoints along, even when one of them was
@@ -770,7 +777,11 @@ export function filterNetwork(network: KnowledgeNetwork, filter: NetworkFilter):
   );
   const pulled = new Set(joining.flatMap((edge) => [edge.source, edge.target]));
   const nodes = network.nodes.filter(
-    (node) => ids.has(node.id) || (pulled.has(node.id) && filter.kinds.has(node.kind)),
+    (node) =>
+      ids.has(node.id) ||
+      (pulled.has(node.id) &&
+        filter.scopes.has(node.scope ?? 'nucleo') &&
+        filter.kinds.has(node.kind)),
   );
   const kept = new Set(nodes.map((node) => node.id));
   const edges = network.edges.filter(

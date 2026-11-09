@@ -12,6 +12,7 @@ import {
   placeCategorySchema,
   placeTypeSchema,
   relationSchema,
+  scopeSchema,
   temporalExtentSchema,
 } from './content-schema';
 import { contentTranslationSchema } from './content-translation';
@@ -57,6 +58,7 @@ export const networkEntitySchema = z.object({
   kind: networkKinds,
   placeType: placeTypeSchema.optional(),
   placeCategory: placeCategorySchema.optional(),
+  scope: scopeSchema.default('nucleo'),
   summary: z.string().trim().min(1),
   temporalExtent: temporalExtentSchema.nullable(),
   editorialStatus: editorialStatusSchema.optional(),
@@ -112,6 +114,7 @@ export const searchIndexSchema = z.array(
     kindLabel: z.string(),
     state: z.string(),
     stateLabel: z.string(),
+    scope: scopeSchema.default('nucleo'),
     path: z.string(),
     fragment: z.string().optional(),
     context: z.string(),

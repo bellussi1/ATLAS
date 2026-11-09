@@ -1,0 +1,115 @@
+{
+  "id": "atlas-direitos-constitucionais",
+  "slug": "direitos-constitucionais",
+  "title": "Constituição e direitos fundamentais",
+  "description": "Conceitos e fontes relacionados ao texto constitucional e às garantias nele enunciadas.",
+  "version": "1.0.0",
+  "updatedAt": "2026-10-31",
+  "entityIds": ["concept-igualdade-perante-lei"],
+  "entities": [
+    {
+      "id": "concept-igualdade-perante-lei",
+      "slug": "igualdade-perante-a-lei",
+      "title": "Igualdade perante a lei",
+      "summary": "Princípio enunciado no caput do artigo 5º da Constituição Federal.",
+      "aliases": ["Igualdade jurídica"],
+      "context": "A afirmação abaixo descreve o texto constitucional; não apresenta uma interpretação de seus efeitos jurídicos.",
+      "temporalExtent": {
+        "startYear": 1988,
+        "endYear": null,
+        "precision": "year",
+        "label": "Constituição promulgada em 1988"
+      },
+      "uncertainty": "low",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Texto constitucional",
+          "paragraphs": [
+            "O caput do artigo 5º declara que todas as pessoas são iguais perante a lei."
+          ]
+        }
+      ],
+      "scope": "nucleo",
+      "kind": "concept"
+    }
+  ],
+  "sources": [
+    {
+      "id": "source-rights-constitution",
+      "title": "Constituição Federal de 1988 — Portal da Câmara dos Deputados",
+      "url": "https://www2.camara.leg.br/legin/fed/consti/1988/constituicao-1988-5-outubro-1988-322142-normaatualizada-pl.html",
+      "edition": "Texto atualizado até a Emenda Constitucional nº 141, de 2026",
+      "publicationDate": "1988-10-05"
+    }
+  ],
+  "evidences": [
+    {
+      "id": "evidence-equality-art5",
+      "sourceId": "source-rights-constitution",
+      "locator": "Art. 5º, caput",
+      "accessedAt": "2026-10-31",
+      "note": "O caput enuncia igualdade de todas as pessoas perante a lei."
+    }
+  ],
+  "citations": [
+    {
+      "id": "citation-equality-art5",
+      "evidenceId": "evidence-equality-art5",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-equality-art5",
+      "entityId": "concept-igualdade-perante-lei",
+      "text": "O caput do artigo 5º da Constituição Federal declara igualdade de todas as pessoas perante a lei.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["citation-equality-art5"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review-equality-art5",
+      "claimId": "claim-equality-art5",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": null
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [
+    {
+      "id": "relation-constitution-enunciates-equality",
+      "fromEntityId": "work-constituicao-federal-1988",
+      "toEntityId": "concept-igualdade-perante-lei",
+      "type": "documented-association",
+      "label": "enuncia",
+      "reverseLabel": "é enunciada por",
+      "context": "A relação aponta para o princípio textual expresso no caput do artigo 5º.",
+      "temporalExtent": {
+        "startYear": 1988,
+        "endYear": null,
+        "precision": "year",
+        "label": "Constituição promulgada em 1988"
+      },
+      "uncertainty": "low",
+      "evidenceIds": ["evidence-equality-art5"]
+    },
+    {
+      "id": "relation-rights-to-example-article",
+      "fromEntityId": "concept-igualdade-perante-lei",
+      "toEntityId": "article-constituicao-1988",
+      "type": "editorial-link",
+      "label": "tem uma apresentação de exemplo em",
+      "reverseLabel": "exemplifica o tema",
+      "context": "Ligação editorial entre o conceito e a página demonstrativa de referência do projeto.",
+      "temporalExtent": null,
+      "uncertainty": "low",
+      "evidenceIds": []
+    }
+  ],
+  "learningPaths": []
+}

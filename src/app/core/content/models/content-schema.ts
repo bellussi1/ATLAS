@@ -16,6 +16,9 @@ export const editorialStatusSchema = z.enum([
   'contested',
   'needs-update',
 ]);
+/** Editorial weight of the record inside the political/historical archive. */
+export const scopeSchema = z.enum(['nucleo', 'contexto', 'fora']);
+export type Scope = z.infer<typeof scopeSchema>;
 
 export const temporalExtentSchema = z
   .object({
@@ -58,6 +61,8 @@ const entityBaseSchema = z.object({
   revision: z.number().int().positive(),
   sections: z.array(editorialSectionSchema).min(1),
   editorialStatus: editorialStatusSchema.optional(),
+  /** Records without an explicit scope are the political/historical core. */
+  scope: scopeSchema.optional(),
   textLocale: z.enum(['pt-BR', 'pt-PT', 'en', 'und', 'mul']).optional(),
   externalIds: z
     .object({ wikidata: z.string().regex(/^Q\d+$/), wikipedia: z.string().trim().min(1) })

@@ -83,6 +83,7 @@ export interface ExplorerFilter {
   kind?: string;
   state?: string;
   layer?: string;
+  scope?: string;
 }
 
 export function explorerEntries(
@@ -127,7 +128,8 @@ function explorerBase(
       kindMatches(entry.kind) &&
       (!filter.kind || entry.kind === filter.kind) &&
       (!filter.state || entry.state === filter.state) &&
-      (!filter.layer || explorerContentGroup(entry.kind) === filter.layer),
+      (!filter.layer || explorerContentGroup(entry.kind) === filter.layer) &&
+      (!filter.scope || !entry.path.startsWith('/verbete/') || entry.scope === filter.scope),
   );
 }
 
@@ -160,8 +162,27 @@ export function explorerFacets(
   index: readonly DiscoveryIndexEntry[],
   catalogue: string,
   layer = '',
+  scope = '',
 ) {
-  const entries = explorerEntries(index, { catalogue, layer });
+  const allEntries = explorerEntries(index, { catalogue, layer });
+  const entries = explorerEntries(index, { catalogue, layer, scope });
+  const scopes = new Map<string, { value: string; label: string; count: number }>();
+  const scopeLabels: Record<string, string> = {
+    nucleo: 'Núcleo',
+    contexto: 'Contexto',
+    fora: 'Fora',
+  };
+  for (const entry of allEntries) {
+    if (!entry.path.startsWith('/verbete/')) continue;
+    const current = scopes.get(entry.scope);
+    if (current) current.count += 1;
+    else
+      scopes.set(entry.scope, {
+        value: entry.scope,
+        label: scopeLabels[entry.scope] ?? entry.scope,
+        count: 1,
+      });
+  }
   const facet = (field: 'kind' | 'state', label: 'kindLabel' | 'stateLabel') => {
     const counts = new Map<string, { value: string; label: string; count: number }>();
     for (const entry of entries) {
@@ -179,6 +200,7 @@ export function explorerFacets(
       group: explorerContentGroup(kind.value),
     })),
     states: facet('state', 'stateLabel'),
+    scopes: [...scopes.values()],
   };
 }
 
@@ -211,7 +233,7 @@ export function safeExplorerReturn(value: string | null): string | null {
       url.hash ||
       !explorerCatalogues.some((c) => '/' + c.path === url.pathname) ||
       [...url.searchParams.keys()].some(
-        (k) => !['q', 'tipo', 'estado', 'pagina', 'idioma', 'camada'].includes(k),
+        (k) => !['q', 'tipo', 'estado', 'pagina', 'idioma', 'camada', 'escopo'].includes(k),
       )
     )
       return null;

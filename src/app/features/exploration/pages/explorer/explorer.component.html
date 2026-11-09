@@ -86,6 +86,21 @@
           }
         </div>
       }
+      @if (scopeFilterShown()) {
+        <div class="scope-filter" role="group" aria-label="Escopo dos registros">
+          <span class="scope-filter__label">Escopo</span>
+          @for (option of scopeOptions(); track option.value) {
+            <a
+              class="scope-filter__item"
+              [routerLink]="[]"
+              [queryParams]="{ escopo: option.value, pagina: null }"
+              queryParamsHandling="merge"
+              [attr.aria-current]="scope() === option.value ? 'true' : null"
+              >{{ option.label }} <span class="scope-filter__count">{{ option.count }}</span></a
+            >
+          }
+        </div>
+      }
       @if (activeFilters().length) {
         <div class="active-filters" aria-label="Filtros ativos">
           @for (filter of activeFilters(); track filter.key) {

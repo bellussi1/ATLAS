@@ -162,6 +162,7 @@ export async function buildContent({
         kind: entity.kind,
         placeType: entity.placeType,
         placeCategory: entity.placeCategory,
+        scope: entity.scope,
         summary: entity.summary,
         temporalExtent: entity.temporalExtent,
         editorialStatus: entity.editorialStatus,

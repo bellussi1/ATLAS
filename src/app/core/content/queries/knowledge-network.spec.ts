@@ -27,6 +27,7 @@ import { layoutNetwork } from './network-layout';
 const network = buildKnowledgeNetwork(methodologyKnowledgeGraph);
 const all = {
   kinds: new Set(networkKinds.map((k) => k.id)),
+  scopes: new Set(['nucleo', 'contexto', 'fora'] as const),
   families: new Set(relationFamilies.map((f) => f.id)),
   collections: new Set(network.collections.map((c) => c.id)),
   onlyConnected: false,
