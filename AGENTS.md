@@ -63,6 +63,7 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 
 - Cada prompt numerado exige alterações reais no código ou nos arquivos que ele especificar, além das verificações pertinentes; não pare em planejamento.
 - Ao concluir cada prompt numerado, revise requisitos e diff, corrija problemas encontrados e crie um único commit local, atômico e limitado ao escopo daquele prompt. Não misture prompts diferentes e não faça push sem pedido explícito.
+- Mensagens de commit seguem Conventional Commits: `tipo(escopo): resumo no imperativo, minúsculo e sem ponto final`. Exemplo: `feat(acervo): corrige tipos e classifica o escopo`. O hook `.husky/commit-msg` valida; merge, revert e fixup passam sem checagem.
 - Preserve prompts, imagens e alterações locais. Não execute o próximo prompt automaticamente.
 - Evite agentes concorrentes editando o mesmo arquivo. A configuração do repositório limita a um subagente simultâneo por padrão.
 - Ao terminar, informe objetivamente os arquivos alterados, comandos executados, resultados e limitações reais.

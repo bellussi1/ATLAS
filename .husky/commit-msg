@@ -1,0 +1,17 @@
+#!/bin/sh
+# Valida o padrão dos commits: tipo(escopo): resumo no imperativo, minúsculo e sem ponto final.
+# Merge, revert e fixup passam sem validação.
+message_file="$1"
+subject=$(head -n 1 "$message_file")
+
+case "$subject" in
+  "Merge "* | "Revert "* | "fixup! "* | "squash! "*) exit 0 ;;
+esac
+
+pattern='^(feat|fix|docs|test|chore|refactor|perf|build|ci|style|revert|merge)(\([a-z0-9-]+\))?!?: [a-z0-9][^.]*$'
+if ! printf '%s' "$subject" | grep -Eq "$pattern"; then
+  echo "Mensagem fora do padrão de commit." >&2
+  echo "Use: tipo(escopo): resumo no imperativo, minúsculo e sem ponto final." >&2
+  echo "Exemplo: feat(acervo): corrige tipos e classifica o escopo" >&2
+  exit 1
+fi
