@@ -18,7 +18,7 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
-- `npm test`: **363/363**.
+- `npm test`: **364/364**.
 - `npm run test:content`: **188/188**.
 - `npm run build`: passou, **1.221 páginas no sitemap**, canonical absoluto em todas as páginas.
 - `npx playwright test e2e/graph.spec.ts`: **23/23**, incluindo o filtro de escopo e o peso no painel.
@@ -62,6 +62,8 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 - **Issues de qualidade (09/11)**: #47 separou minor/patch dos majors no Dependabot (Angular, TypeScript, Tailwind, Vitest, jsdom e `@types/node` ficam em PRs planejados); #35 adicionou e2e de falha de objeto do release, verbete inexistente e catálogo vazio; #36 criou a auditoria de selo de revisão no `content:build`, o relatório `docs/quality/SELO-REVISAO-IA.md` e textos neutros para revisão registrada; #31 adicionou 640 px (equivalente a 200% de zoom em 1280) ao teste de reflow e mediu o INP de laboratório em `docs/quality/INP-LEITURAS-2026-11.md`; #49 fez o grafo usar `placeCategory`, reclassificou Porto Alegre e Santos e removeu 20 overrides redundantes de países/cidades, mantendo a dívida de obras/conceitos para a captura. O release local `af9474f` inclui a reclassificação, mas ainda não foi publicado. Testes: 359, 188 de conteúdo, 52 e2e, build 1.221, 1.222 links.
 - **Auditoria dos verbetes**: os **35 tipos** de alta confiança ainda pendentes foram corrigidos; as 18 correções de lugares já estavam feitas, então **54 candidatos** ficaram resolvidos. O campo **`scope`** foi criado no contrato e aplicado: **1.134 núcleo**, **36 contexto** e **20 fora** no grafo; **872/36/20** nos 928 verbetes citados. O filtro de escopo está no acervo (`escopo=`) e no grafo, sem apagar registros. O **peso das relações** (`historical`, `action`, `administrative`, `catalog`) foi implementado no grafo; histórico e ação contam como relevância política, administrativo e catálogo ficam como contexto. No grafo completo: **267 históricas, 432 de ação, 455 administrativas e 426 de catálogo**; em `atlas-verbetes-citados`, **150/342/417/213**, os mesmos números da auditoria de 09/11. A revisão caso a caso confirmou os 20 fora e os 36 contextos, sem promover nem apagar nenhum; restam **28** itens da estimativa de ~64 contextos. O tipo **Empirismo** continua `institution` e fica para a próxima passada. Relatório em `docs/research/auditoria-verbetes-2026-11/reauditoria-2026-11.md`.
 
+- **Navegação / grafo → acervo**: a entrada direta no grafo baixava o `networkBundle` (836 KB) e, ao sair para o acervo, baixava o bundle completo (3,9 MB) de novo. O `ContentRepository` agora aquece o bundle em `requestIdleCallback` depois do grafo, com gate para `saveData`, 2G/3G e `deviceMemory` < 8 GB; a transição caiu de **1.467 ms para 491–657 ms** e não faz requisição de conteúdo. O texto do bundle/network é liberado depois do parse. O custo restante é ~170–220 ms de `TextEncoder` + SHA-256 + `JSON.parse`. Medição e limites em `docs/quality/NAVEGACAO-2026-11.md`.
+
 - **Onda 1 / calibração + revisão de IA**: amostra de 20 artigos rodada por **US$ 0,0706**. Haiku medium aceitou **17 de 37** relações e rejeitou 0,8% das citações; Haiku low aceitou 7 de 27. A revisão humana foi substituída por **revisão assistida por IA**, autorizada pelo responsável do projeto: Sonnet 5.5 marcou **96 sustenta e 4 não sustenta** nos 100 itens (2 textos e 2 tipos de relação). A re-verificação Sonnet low confirmou 22/24 relações do Haiku (low 7/7; medium 15/17) e rejeitou as duas arestas `desenvolveu-se-em` do Marxismo. Decisão: **Haiku 5.5 medium + Sonnet 5.5 low**; `model-choice.json` atualizado. Metas da Onda 2: **70/50/70/35**.
 
 ## Pendências que bloqueiam
@@ -92,6 +94,7 @@ Atualizado em 09/11/2026. Este é o handoff curto entre sessões. O histórico c
 3. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
 4. Rotacionar o token Cloudflare e desligar o Vercel no painel.
 5. Só depois iniciar a fase 0 dos itinerários.
+6. Se a primeira carga continuar crítica, buscar o bundle como bytes (hash antes do decode) e dividir o pacote por rota; o prefetch já resolveu o grafo → acervo.
 
 ## Mapa rápido
 

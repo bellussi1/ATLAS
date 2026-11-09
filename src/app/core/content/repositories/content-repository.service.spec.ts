@@ -12,7 +12,7 @@ import {
 } from '@testing/content-fixture';
 import { firstValueFrom } from 'rxjs';
 
-import { CONTENT_ASSET_READER } from './content-assets';
+import { CONTENT_ASSET_READER, CONTENT_PREFETCH } from './content-assets';
 import { ContentRepository, isTransferable } from './content-repository.service';
 
 describe('ContentRepository generated assets', () => {
@@ -23,6 +23,7 @@ describe('ContentRepository generated assets', () => {
     TestBed.configureTestingModule({
       providers: [
         { provide: PLATFORM_ID, useValue: 'browser' },
+        { provide: CONTENT_PREFETCH, useValue: false },
         {
           provide: CONTENT_ASSET_READER,
           useValue: async (path: string) => {
@@ -83,6 +84,35 @@ describe('ContentRepository generated assets', () => {
     expect(reads).toContain(searchPath);
     expect(reads).toContain(adjacencyPath);
     expect(repository.discoveryIndex.some((entry) => entry.id === 'person-karl-marx')).toBe(true);
+  });
+
+  it('warms the complete package after the network projection', async () => {
+    const pointer = JSON.parse(contentAssetFixture['pointer.json']);
+    const bundleSha = 'a'.repeat(64);
+    const bundlePath = `c/${bundleSha}.json`;
+    pointer.bundle = { file: `bundle.${bundleSha}.json`, sha256: bundleSha, bytes: 2 };
+    pointer.networkBundle = null;
+    TestBed.overrideProvider(CONTENT_PREFETCH, { useValue: true });
+    TestBed.overrideProvider(CONTENT_ASSET_READER, {
+      useValue: async (path: string) => {
+        reads.push(path);
+        if (path === 'pointer.json') return JSON.stringify(pointer);
+        if (path === bundlePath) return '{}';
+        if (!Object.hasOwn(contentAssetFixture, path)) throw new Error(`Missing ${path}`);
+        return contentAssetFixture[path];
+      },
+    });
+    const idle: (() => void)[] = [];
+    vi.stubGlobal('requestIdleCallback', (callback: () => void) => {
+      idle.push(callback);
+      return idle.length;
+    });
+    const repository = TestBed.inject(ContentRepository);
+    await firstValueFrom(repository.loadNetworkGraph());
+    expect(reads).not.toContain(bundlePath);
+    expect(idle).toHaveLength(1);
+    idle[0]();
+    await vi.waitFor(() => expect(reads).toContain(bundlePath));
   });
 
   it('maps a pinned licensed path to its R2 key and returns null for an unpinned one', async () => {

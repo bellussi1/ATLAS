@@ -4,6 +4,7 @@ import { knowledgeGraphSchema } from '@core/content/models/content-schema';
 import {
   CONTENT_ASSET_READER,
   CONTENT_INITIAL_PACKAGE,
+  CONTENT_PREFETCH,
 } from '@core/content/repositories/content-assets';
 
 import data from '../../generated/testing/content-fixture.json';
@@ -19,6 +20,7 @@ export const contentManifestFixture = data.manifest;
 export function provideContentFixture(): Provider[] {
   return [
     { provide: CONTENT_INITIAL_PACKAGE, useValue: contentFixture },
+    { provide: CONTENT_PREFETCH, useValue: false },
     {
       provide: CONTENT_ASSET_READER,
       useValue: () => Promise.reject(new Error('Unexpected content request in seeded test')),
