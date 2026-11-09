@@ -46,9 +46,11 @@ test('the universal archive separates records, sources and readings into layers'
   await expect(page).toHaveURL(/camada=fontes/);
   await expect(page.locator('.source-row').first()).toBeVisible();
   await expect(page.locator('.results--cards')).toHaveCount(0);
-  const active = page.getByLabel('Filtros ativos');
-  await expect(active).toContainText('Camada: Fontes');
-  await active.getByRole('link', { name: 'Remover Camada: Fontes' }).click();
+  await expect(layers.getByRole('link', { name: /^Fontes\b/ })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
+  await layers.getByRole('link', { name: /^Tudo\b/ }).click();
   await expect(page).not.toHaveURL(/camada=/);
   await expect(page.locator('.results--cards')).toBeVisible();
 });
@@ -86,6 +88,9 @@ test('the type index groups record kinds and each active filter can be removed',
   page,
 }) => {
   await page.goto('/acervo');
+  const layers = page.getByRole('group', { name: 'Camadas do acervo' });
+  await layers.getByRole('link', { name: /^Registros\b/ }).click();
+  await expect(page).toHaveURL(/camada=registros/);
   const categories = page.getByRole('group', { name: 'Categorias de registro' });
   await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
   await expect(page).toHaveURL(/tipo=pessoa/);
@@ -93,7 +98,11 @@ test('the type index groups record kinds and each active filter can be removed',
   await expect(active).toContainText('Tipo: Pessoa');
   await active.getByRole('link', { name: 'Remover Tipo: Pessoa' }).click();
   await expect(page).not.toHaveURL(/tipo=/);
-  await expect(categories.getByRole('link', { name: /^Todos\b/ })).toHaveAttribute(
+  await expect(categories.getByRole('link', { name: /^Pessoa\b/ })).not.toHaveAttribute(
+    'aria-current',
+    'true',
+  );
+  await expect(layers.getByRole('link', { name: /^Registros\b/ })).toHaveAttribute(
     'aria-current',
     'true',
   );
@@ -122,11 +131,13 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
     'guimaraes silveira',
   );
+  const layers = page.getByRole('group', { name: 'Camadas do acervo' });
+  await layers.getByRole('link', { name: /^Registros\b/ }).click();
   const categories = page.getByRole('group', { name: 'Categorias de registro' });
   await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
   await expect(page).toHaveURL(/tipo=pessoa/);
   await page.goBack();
-  await expect(categories.getByRole('link', { name: /^Todos\b/ })).toHaveAttribute(
+  await expect(layers.getByRole('link', { name: /^Registros\b/ })).toHaveAttribute(
     'aria-current',
     'true',
   );

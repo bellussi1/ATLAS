@@ -766,7 +766,7 @@ test('/fontes paginates and a source anchor opens the page that holds it', async
 test('paging and switching the record type keep the place without flashing the top', async ({
   page,
 }) => {
-  await page.goto('/acervo');
+  await page.goto('/acervo?camada=registros');
   await expect(page.locator('.result-card')).toHaveCount(24);
   await page.evaluate(() => window.scrollTo(0, 700));
   expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(600);

@@ -103,20 +103,14 @@
           >
         </div>
       }
-      @if (kindGroups().length) {
+      @if (
+        kindGroups().length &&
+        facets().kinds.length > 1 &&
+        !sourceList() &&
+        !editorialList() &&
+        (!showLayers || layer() === 'registros')
+      ) {
         <div class="type-index" role="group" aria-label="Categorias de registro">
-          <a
-            class="type-index__item type-index__item--all"
-            [routerLink]="[]"
-            [queryParams]="{
-              camada: showLayers ? 'registros' : null,
-              tipo: null,
-              pagina: null,
-            }"
-            queryParamsHandling="merge"
-            [attr.aria-current]="params().get('tipo') ? null : 'true'"
-            >Todos <span class="type-index__count">{{ typeTotal() }}</span></a
-          >
           @for (group of kindGroups(); track group.id) {
             <span class="type-index__group">{{ group.title }}</span>
             @for (facet of group.kinds; track facet.value) {
@@ -143,7 +137,8 @@
       }
       @if (unknownKind()) {
         <p class="notice">
-          Categoria indisponível neste catálogo. Escolha outra categoria ou “Todos”.
+          Categoria indisponível neste catálogo. Escolha outra categoria ou volte a todos os
+          registros.
         </p>
       }
       <div class="results-bar">
