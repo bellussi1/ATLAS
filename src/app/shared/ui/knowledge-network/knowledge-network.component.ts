@@ -371,10 +371,36 @@ export class KnowledgeNetworkComponent {
           x: point.x,
           y: point.y,
           path: shapePath(kind.shape, r),
+          label: `${node.title}, ${kind.label.toLowerCase()}, ${node.degree} ${
+            node.degree === 1 ? 'ligação' : 'ligações'
+          }`,
         },
       ];
     });
   });
+  /**
+   * Copy of the highlighted records drawn above the dimmed base map: the lit neighbourhood, or
+   * the search matches. Redrawing a few dozen shapes is far cheaper than toggling a dim class on
+   * every one of the 1.100+ nodes at each hover or keystroke.
+   */
+  readonly highlightedNodes = computed(() => {
+    const active = this.activeId();
+    const keep = this.litNodes() ?? (this.query().trim() ? this.matchIds() : null);
+    if (!keep) return [];
+    return this.drawnNodes()
+      .filter((item) => keep.has(item.node.id))
+      .map((item) => ({
+        ...item,
+        hovered: item.node.id === this.hoveredId(),
+        related: !!active && item.node.id !== active,
+      }));
+  });
+  /** The base map dims whenever a neighbourhood or a search is in focus. */
+  readonly dimmed = computed(
+    () => !!this.activeId() || (this.query().trim() !== '' && this.matchIds().size > 0),
+  );
+  /** Single tab stop for the map: the focused node, or the first drawn one. */
+  readonly rovingId = computed(() => this.focusId() ?? this.drawnNodes()[0]?.node.id);
   readonly zoomK = computed(() => this.view().k);
   /** Close enough to read what each link says; farther away the lines alone are shown. */
   readonly near = computed(() => this.zoomK() / this.fitK() >= EDGE_LABEL_ZOOM);
@@ -480,10 +506,18 @@ export class KnowledgeNetworkComponent {
   });
   readonly transform = computed(() => {
     const { x, y, k } = this.view();
-    return `translate(${x} ${y}) scale(${k})`;
+    return `translate(${x}px, ${y}px) scale(${k})`;
   });
   /** Shapes keep a readable size on screen: larger when zoomed out, smaller when zoomed in. */
-  readonly nodeScale = computed(() => Math.round(nodeScaleFor(this.steppedK()) * 20) / 20);
+  private lastNodeScale = 1;
+  readonly nodeScale = computed(() => {
+    // Recomputing the scale for every wheel step invalidates the style of 1.100+ shapes mid-zoom.
+    // Keep the last value while the view moves and apply one step when it settles.
+    if (this.busy()) return this.lastNodeScale;
+    const value = Math.round(nodeScaleFor(this.steppedK()) * 20) / 20;
+    this.lastNodeScale = value;
+    return value;
+  });
   /**
    * Labels are placed in screen space so none covers another label or a node shape. Zoomed out
    * only the best connected nodes are named; each zoom step names more. While a node is lit,
@@ -530,11 +564,12 @@ export class KnowledgeNetworkComponent {
     // A name that was already on the map keeps a small edge, so thresholds do not make it blink.
     const previous = new Set(this.lastLabels.items.map((item) => item.id));
     const forcedItems = nodes.filter((item) => forced.has(item.node.id));
-    const pool = [...visible];
+    // Hovering or selecting narrows the map to one neighbourhood: score and place only that
+    // subset instead of sorting every visible record on each pointer settle.
+    const pool = visible.filter((item) => !lit || lit.has(item.node.id));
     const poolIds = new Set(pool.map((item) => item.node.id));
     for (const item of forcedItems) if (!poolIds.has(item.node.id)) pool.push(item);
     const scored = pool
-      .filter((item) => !lit || lit.has(item.node.id))
       .map((item) => ({
         item,
         score: labelRelevance(item.node) + (previous.has(item.node.id) ? 0.6 : 0),
@@ -952,15 +987,6 @@ export class KnowledgeNetworkComponent {
     this.picked.emit(null);
     this.syncUrl(null);
   }
-  isDimmed(id: string): boolean {
-    const lit = this.litNodes();
-    if (lit) return !lit.has(id);
-    return this.query().trim() !== '' && !this.matchIds().has(id);
-  }
-  isRelated(id: string): boolean {
-    const active = this.activeId();
-    return !!active && id !== active && this.neighbours().has(id);
-  }
   edgeDimmed(edge: NetworkEdge): boolean {
     const active = this.activeId();
     return !!active && edge.source !== active && edge.target !== active;
@@ -990,14 +1016,6 @@ export class KnowledgeNetworkComponent {
   /** Pulse starts just outside the shape, also measured on screen. */
   pulseRadius(radius: number): number {
     return radius * this.nodeScale() + 4 / this.steppedK();
-  }
-  tabIndexFor(id: string): number {
-    const roving = this.focusId() ?? this.drawnNodes()[0]?.node.id;
-    return id === roving ? 0 : -1;
-  }
-  nodeLabel(node: NetworkNode): string {
-    const kind = networkKindDefinition(node.kind).label;
-    return `${node.title}, ${kind.toLowerCase()}, ${node.degree} ${node.degree === 1 ? 'ligação' : 'ligações'}`;
   }
   networkIcon(node: NetworkNode) {
     return networkKindDefinition(node.kind).icon;

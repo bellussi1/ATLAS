@@ -219,11 +219,7 @@ describe('KnowledgeNetworkComponent', () => {
     fixture.detectChanges();
     expect(component.activeId()).toBe(linked.node.id);
     expect(root(fixture).querySelectorAll('.edges line.is-active').length).toBeGreaterThan(0);
-    expect(
-      root(fixture)
-        .querySelector(`[data-node="${linked.node.id}"]`)
-        ?.classList.contains('is-hovered'),
-    ).toBe(true);
+    expect(root(fixture).querySelector('.nodes--lit .node.is-hovered')).not.toBeNull();
     component.hoverNode(null);
     fixture.detectChanges();
     expect(component.activeId()).toBeNull();
@@ -241,16 +237,14 @@ describe('KnowledgeNetworkComponent', () => {
     expect(root(fixture).querySelector('.node__selection')).not.toBeNull();
     expect(root(fixture).querySelector('.label.is-selected')).not.toBeNull();
     // The selection keeps its neighbourhood lit; every other node fades into the map.
-    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);
-    expect(
-      root(fixture)
-        .querySelector(`[data-node="${linked.node.id}"]`)
-        ?.classList.contains('is-dimmed'),
-    ).toBe(false);
-    expect(root(fixture).querySelectorAll('.node.is-related').length).toBeGreaterThan(0);
+    expect(root(fixture).querySelector('.nodes')?.classList.contains('is-dimmed')).toBe(true);
+    expect(root(fixture).querySelectorAll('.nodes--lit .node').length).toBeGreaterThan(0);
+    expect(root(fixture).querySelectorAll('.nodes--lit .node.is-related').length).toBeGreaterThan(
+      0,
+    );
     component.hoverNode(linked.node.id);
     fixture.detectChanges();
-    expect(root(fixture).querySelectorAll('.node.is-dimmed').length).toBeGreaterThan(0);
+    expect(root(fixture).querySelector('.nodes')?.classList.contains('is-dimmed')).toBe(true);
   });
 
   it('shows the licensed image and an evident summary in the detail card', async () => {
@@ -311,7 +305,7 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.labels().length).toBeGreaterThan(0);
     for (const label of component.labels()) expect(lit.has(label.id)).toBe(true);
     expect(component.edgeLabels()).toEqual([]);
-    expect(root(fixture).querySelector('.node.is-dimmed')).not.toBeNull();
+    expect(root(fixture).querySelector('.nodes')?.classList.contains('is-dimmed')).toBe(true);
   });
 
   it('explains the relation of the selected node: reading, nature and reason', async () => {

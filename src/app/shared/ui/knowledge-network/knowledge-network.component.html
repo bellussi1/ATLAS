@@ -268,7 +268,7 @@
             }
           }
         </defs>
-        <g class="world" [attr.transform]="transform()">
+        <g class="world" [style.transform]="transform()">
           <g class="edges">
             @let edges = edgeBatches();
             <g class="edge-rest" [class.is-dimmed]="!!activeId()">
@@ -347,26 +347,38 @@
               />
             }
           </g>
-          <g class="nodes" [style.--node-scale]="nodeScale()">
+          <g class="nodes" [class.is-dimmed]="dimmed()" [style.--node-scale]="nodeScale()">
             @for (item of drawnNodes(); track item.node.id) {
               <path
                 class="node node__shape"
                 role="button"
                 [attr.data-node]="item.node.id"
-                [attr.tabindex]="tabIndexFor(item.node.id)"
-                [attr.aria-label]="nodeLabel(item.node)"
+                [attr.tabindex]="item.node.id === rovingId() ? 0 : -1"
+                [attr.aria-label]="item.label"
                 [attr.aria-pressed]="selectedId() === item.node.id"
                 [style.--node-x]="item.x"
                 [style.--node-y]="item.y"
                 [attr.d]="item.path"
                 fill-rule="evenodd"
                 [style.fill]="'var(' + item.kind.color + ')'"
-                [class.is-dimmed]="isDimmed(item.node.id)"
-                [class.is-related]="isRelated(item.node.id)"
                 [class.is-selected]="selectedId() === item.node.id"
-                [class.is-hovered]="hoveredId() === item.node.id"
                 (keydown)="nodeKey($event, item.node.id)"
                 (focus)="focusId.set(item.node.id)"
+              />
+            }
+          </g>
+          <g class="nodes nodes--lit" aria-hidden="true" [style.--node-scale]="nodeScale()">
+            @for (item of highlightedNodes(); track item.node.id) {
+              <path
+                class="node node__shape"
+                [class.is-hovered]="item.hovered"
+                [class.is-related]="item.related"
+                [class.is-focus]="selectedId() === item.node.id"
+                [style.--node-x]="item.x"
+                [style.--node-y]="item.y"
+                [attr.d]="item.path"
+                fill-rule="evenodd"
+                [style.fill]="'var(' + item.kind.color + ')'"
               />
             }
           </g>
