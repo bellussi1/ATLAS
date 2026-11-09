@@ -84,9 +84,8 @@ todos esses tipos sozinha. Isso é trabalho dos estágios 9 e 10, não da lente.
 - Código do pipeline corrigido em `cc1233d`: `--tradition`, `mergeAtlas` nas coleções ampliadas,
   remoção do filtro que apagava `src-wiki-*` nativos, glossário filtrado e erro de build com o
   slug da leitura.
-- Conteúdo do piloto (16 coleções, manifesto, três páginas e os três registros com a lente) está
-  no working tree, não commitado.
-- Nada foi publicado no R2; as três páginas seguem `published: false`.
+- Conteúdo do piloto (16 coleções, manifesto, três páginas e os três registros com a lente) foi
+  commitado em **`7a9e60e`**; nada foi publicado no R2 e as três páginas seguem `published: false`.
 
 ## Próxima decisão
 
