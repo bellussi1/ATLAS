@@ -38,38 +38,61 @@ Ajustes editoriais durante a extração:
   acontecimento e `Alemanha Nazista` a lugar (categoria país).
 - Glossário: 65/71/73 termos ligados; 0 termos sem entidade no atlas depois do filtro.
 
-## Bloqueio de modelo
+## Lente de pertencimento (09/11)
 
-A cobertura ainda falha porque o pipeline mede a tradição pela coleção `atlas-<slug>`, mas as
-entidades aceitas que já existiam foram mescladas em outras coleções. O resultado é
-**10/4/19 entidades** no atlas, contra **40/44/51 aceitos**; as lacunas de pessoas, relações,
-fontes e imagens decorrem disso, não da extração.
+Decisão: a tradição é uma lente, não uma coleção. `content/traditions/<slug>.json` guarda
+`belonging.qids` com os QIDs aceitos; `rootQid` entra sempre na resolução. As entidades continuam
+nas coleções onde a consolidação as deixou.
 
-O princípio do próprio pipeline diz que tradições são **lentes**, não coleções separadas. Falta
-uma lista de pertencimento da tradição (QIDs/entity IDs) usada por cobertura, página e grafo. Sem
-ela, mover o nó raiz para a coleção nova ou duplicar entidades violaria o grafo único.
+- `scripts/tradicao/belonging.mjs` resolve os QIDs no grafo inteiro e devolve ids, entidades e QIDs
+  ausentes, sem mover nem duplicar nó.
+- `coverage.mjs` mede entidades, relações, fontes e imagens da lente. A fonte-verbete de cada
+  entidade entra mesmo quando ela foi mesclada em outra coleção, sem contar a coleção inteira.
+- Estágio 6 verifica que a lente lista todos os aceitos e que os QIDs aceitos resolvem no grafo.
+- Estágio 7 liga glossário e hovers ao id real da entidade: o id provisório da extração pode ter
+  sido unido a `person-…` na consolidação.
+- Estágio 8 procura a raiz no grafo inteiro, usa o índice global de evidências para relações de
+  outras coleções e escreve a página na coleção focal (`atlas-<slug>`) com a paleta do registro.
 
-Consequências:
+Cobertura depois da lente (`npm run tradicao:coverage`):
 
-- `nazismo` e `trabalhismo` passam o piso de imagens (11 e 17); `stalinismo` fica em 6 de 10
-  porque as demais imagens estão em entidades mescladas.
-- As três páginas foram apontadas para `atlas-<slug>`, com paleta e classificação do registro, e
-  validam no `content:build`. Continuam rascunhos, com 12 capítulos, mas com poucos blocos e sem
-  perguntas/ponte.
-- O estágio 8 não gera leitura para rascunho não registrado, e o nó raiz (`Nazismo`,
-  `Stalinismo`, `Trabalhismo`) está em `atlas-ideologias-principais`, não na coleção nova.
+| Tradição | Entidades | Relações | Fontes | Imagens | QIDs |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Nazismo | 41 | 16 | 42 | 35 | 41/41 |
+| Stalinismo | 46 | 68 | 49 | 53 | 45/45 |
+| Trabalhismo | 50 | 16 | 52 | 44 | 50/51 |
+
+Estágios 6 e 7 passam nas três. O estágio 8 passa em dry-run para nazismo e stalinismo. O
+trabalhismo continua bloqueado: o `rootQid` Q25447221 (`trabalhismo no Brasil`) não está no grafo;
+o único "Trabalhismo" é a desambiguação Q125378958, sem afirmações. É preciso capturar e consolidar
+a raiz antes de gerar a leitura.
+
+Estimativa com a página gerada em memória, sem escrever:
+
+| Tradição | Entidades | Relações | Fontes citadas | Capítulos com blocos | Imagens |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Nazismo | 44 | 22 | 1 | 9/12 | 38 |
+| Stalinismo | 48 | 80 | 2 | 6/12 | 55 |
+
+A lente fecha entidades e imagens, mas não o piso inteiro: relações entre aceitos (nazismo), fontes
+citadas e capítulos/blocos ainda dependem da geração e da edição. O piso exige 10 capítulos com
+blocos, 6 completos, 7 tipos de bloco e 11 fontes citadas; a leitura montada do grafo não produz
+todos esses tipos sozinha. Isso é trabalho dos estágios 9 e 10, não da lente.
 
 ## Estado dos arquivos
 
 - Código do pipeline corrigido em `cc1233d`: `--tradition`, `mergeAtlas` nas coleções ampliadas,
   remoção do filtro que apagava `src-wiki-*` nativos, glossário filtrado e erro de build com o
   slug da leitura.
-- Conteúdo do piloto (16 coleções, manifesto, três páginas) está no working tree, não commitado.
+- Conteúdo do piloto (16 coleções, manifesto, três páginas e os três registros com a lente) está
+  no working tree, não commitado.
 - Nada foi publicado no R2; as três páginas seguem `published: false`.
 
 ## Próxima decisão
 
-1. Criar a lista de pertencimento da tradição e usá-la em cobertura, página e grafo; ou
-2. manter a coleção como unidade e decidir explicitamente mover/duplicar o nó raiz.
-
-Sem essa decisão, gerar os 12 capítulos e fechar a cobertura seria maquiar a contagem.
+1. Gerar os capítulos de nazismo e stalinismo (grátis) e revisar a leitura; o estágio 8 já passa
+   em dry-run para as duas.
+2. Tratar o trabalhismo: capturar a raiz Q25447221 (grátis) e extrair o verbete (pago, com
+   estimativa e aprovação) antes de gerar a leitura.
+3. Fechar as lacunas de piso que não são da lente (fontes citadas, capítulos/blocos e tipos de
+   bloco) na edição do estágio 9 e na montagem editorial, sem baixar o piso.

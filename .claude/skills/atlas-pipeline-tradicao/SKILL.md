@@ -16,7 +16,7 @@ O objetivo é **acertar de primeira**: o gargalo é a revisão humana, então ca
 
 ## Princípios do plano
 
-1. **Um grafo só.** Tradições são lentes (etiqueta e cor da paleta), não coleções separadas. Entidade reconciliada por QID; o mesmo QID em pt e en é uma entidade com duas fontes.
+1. **Um grafo só.** Tradições são lentes (etiqueta e cor da paleta), não coleções separadas. Entidade reconciliada por QID; o mesmo QID em pt e en é uma entidade com duas fontes. O registro guarda `belonging.qids` (aceitos) e `rootQid`; cobertura, glossário e leitura resolvem esses QIDs no grafo inteiro, sem mover nem duplicar entidade.
 2. **Sem sementes escolhidas por pessoa.** `tradicao:discover` parte da raiz Wikidata do registro e expande por anéis de 1 a 3 saltos, com teto por anel. Lugar e conceito entram, mas não abrem o anel seguinte.
 3. **Pontuação de importância** (`scoring.mjs`): global primeiro (idiomas, nós já aceitos que citam, posição do link); bônus regional por regra (Brasil, América Latina, Guerra Fria). Acima do limite alto aceita; faixa do meio vira lista curta (≤ 30) para a pessoa decidir; abaixo, descarta. Famoso sem sinal de relevância vai para a lista curta. Tipo fora do escopo (catálogos, registros de autoridade), listas, desambiguações e anos nunca entram.
 4. **Modelo barato com travas de código** (`guards.mjs`): citação literal ou o item some; relação com tipo de lista fechada, direção e alvo nomeado no próprio trecho; uma segunda passada confere cada relação contra o parágrafo.
