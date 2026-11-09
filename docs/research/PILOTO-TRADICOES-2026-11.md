@@ -86,6 +86,8 @@ todos esses tipos sozinha. Isso é trabalho dos estágios 9 e 10, não da lente.
   slug da leitura.
 - Conteúdo do piloto (16 coleções, manifesto, três páginas e os três registros com a lente) foi
   commitado em **`7a9e60e`**; nada foi publicado no R2 e as três páginas seguem `published: false`.
+- As capturas brutas do piloto (12 manifestos e blobs) ficam locais em `scripts/ingestion/wiki-extract/raw/`
+  e fora do git; o worker de raw não tem esses objetos. Publicar o raw é uma decisão separada.
 
 ## Próxima decisão
 

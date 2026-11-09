@@ -62,3 +62,9 @@ scripts/ingestion/wiki-extract/raw/**/blobs/
 *.pem
 *.key
 .vercel
+
+# Capturas brutas do piloto de tradições: ficam locais até a publicação no worker de raw.
+# Os manifestos referenciam blobs que o verify baixa; sem os blobs publicados, o CI falha.
+scripts/ingestion/wiki-extract/raw/nazismo/
+scripts/ingestion/wiki-extract/raw/stalinismo/
+scripts/ingestion/wiki-extract/raw/trabalhismo/
