@@ -112,6 +112,9 @@ export class KnowledgeNetworkComponent {
     this.route.queryParamMap.pipe(map((params) => params.get('saltos'))),
     { initialValue: this.route.snapshot.queryParamMap.get('saltos') },
   );
+  private readonly queryParams = toSignal(this.route.queryParamMap, {
+    initialValue: this.route.snapshot.queryParamMap,
+  });
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
@@ -167,6 +170,23 @@ export class KnowledgeNetworkComponent {
   readonly selectedId = signal<string | null>(null);
   readonly hoveredId = signal<string | null>(null);
   readonly focusId = signal<string | null>(null);
+  /** Inclusive year interval; both fields empty means no period filter. */
+  readonly periodFrom = signal<number | null>(null);
+  readonly periodTo = signal<number | null>(null);
+  readonly period = computed(() => {
+    const from = this.periodFrom();
+    const to = this.periodTo();
+    return from === null && to === null ? null : { from, to };
+  });
+  /** Path mode: the next two map clicks pick the endpoints. */
+  readonly pathMode = signal(false);
+  readonly pathFrom = signal<string | null>(null);
+  readonly pathTo = signal<string | null>(null);
+  readonly pathEndpoints = computed(() => {
+    const from = this.pathFrom();
+    const to = this.pathTo();
+    return from && to ? { from, to } : null;
+  });
   /** Explicit choice of the reader; until then the panel follows the screen size. */
   readonly controlsOpen = signal<boolean | null>(null);
   readonly wide = signal(false);
@@ -204,6 +224,29 @@ export class KnowledgeNetworkComponent {
   readonly pointerAt = signal<{ x: number; y: number } | null>(null);
 
   readonly total = this.network.nodes.length;
+  /** Records with at least one known year; the period filter can only see these. */
+  readonly datedTotal = computed(
+    () =>
+      this.network.nodes.filter(
+        (node) =>
+          node.temporalExtent !== null &&
+          (node.temporalExtent.startYear !== null || node.temporalExtent.endYear !== null),
+      ).length,
+  );
+  readonly periodBounds = computed<{ min: number | null; max: number | null }>(() => {
+    let min = Infinity;
+    let max = -Infinity;
+    for (const node of this.network.nodes) {
+      const extent = node.temporalExtent;
+      if (!extent) continue;
+      for (const year of [extent.startYear, extent.endYear]) {
+        if (year === null) continue;
+        if (year < min) min = year;
+        if (year > max) max = year;
+      }
+    }
+    return Number.isFinite(min) ? { min, max } : { min: null, max: null };
+  });
   readonly loading = computed(() => this.positions() === null && this.total > 0);
   /** The selected node bounds the map when a 1/2-hop neighbourhood is active. */
   readonly neighborhood = computed(() => {
@@ -218,6 +261,8 @@ export class KnowledgeNetworkComponent {
       collections: this.activeCollections(),
       onlyConnected: this.onlyConnected(),
       neighborhood: this.neighborhood(),
+      period: this.period(),
+      path: this.pathEndpoints(),
     }),
   );
   readonly visibleIds = computed(() => new Set(this.visible().nodes.map((node) => node.id)));
@@ -227,7 +272,9 @@ export class KnowledgeNetworkComponent {
       this.familiesOn().size < this.families.length ||
       (!this.scopeIds() && this.collectionsOn().size < this.collections.length) ||
       this.onlyConnected() ||
-      this.depth() > 0,
+      this.depth() > 0 ||
+      !!this.period() ||
+      !!this.pathEndpoints(),
   );
   readonly matches = computed(() => searchNodes(this.visible().nodes, this.query()));
   readonly matchIds = computed(() => new Set(this.matches().map((node) => node.id)));
@@ -259,6 +306,24 @@ export class KnowledgeNetworkComponent {
     const node = this.selected();
     return node ? positionClaims(node).slice(0, 3) : [];
   });
+  readonly pathFromTitle = computed(() => {
+    const id = this.pathFrom();
+    return id ? (this.nodeIndex.get(id)?.title ?? id) : null;
+  });
+  readonly pathToTitle = computed(() => {
+    const id = this.pathTo();
+    return id ? (this.nodeIndex.get(id)?.title ?? id) : null;
+  });
+  /** Human summary of the route: the ordered names and the number of steps. */
+  readonly pathSummary = computed(() => {
+    const path = this.visible().path;
+    if (!path) return '';
+    if (!path.found) return 'Sem caminho entre os dois verbetes no recorte atual.';
+    const titles = path.nodes.map((id) => this.nodeIndex.get(id)?.title ?? id);
+    return `${titles.join(' → ')} · ${path.edges.length} ${
+      path.edges.length === 1 ? 'passo' : 'passos'
+    }`;
+  });
   /**
    * The node whose surroundings are lit. Hovering takes precedence; without a hover, the
    * selection keeps its neighbourhood lit and dims the rest of the map.
@@ -269,8 +334,10 @@ export class KnowledgeNetworkComponent {
     return id ? linksOf(id, this.visible().edges, this.nodeIndex) : [];
   });
   readonly neighbours = computed(() => new Set(this.activeLinks().map((link) => link.other.id)));
-  /** Nodes that stay lit: the hovered node with its neighbours; null when all are. */
+  /** Nodes that stay lit: the path, the hovered node with its neighbours, or all. */
   private readonly litNodes = computed<ReadonlySet<string> | null>(() => {
+    const path = this.visible().path;
+    if (path?.found) return new Set(path.nodes);
     const active = this.activeId();
     if (!active) return null;
     return new Set([active, ...this.neighbours()]);
@@ -395,9 +462,12 @@ export class KnowledgeNetworkComponent {
         related: !!active && item.node.id !== active,
       }));
   });
-  /** The base map dims whenever a neighbourhood or a search is in focus. */
+  /** The base map dims whenever a path, a neighbourhood or a search is in focus. */
   readonly dimmed = computed(
-    () => !!this.activeId() || (this.query().trim() !== '' && this.matchIds().size > 0),
+    () =>
+      !!this.visible().path?.found ||
+      !!this.activeId() ||
+      (this.query().trim() !== '' && this.matchIds().size > 0),
   );
   /** Single tab stop for the map: the focused node, or the first drawn one. */
   readonly rovingId = computed(() => this.focusId() ?? this.drawnNodes()[0]?.node.id);
@@ -499,8 +569,13 @@ export class KnowledgeNetworkComponent {
       ),
     };
   });
-  /** Links of the active node stay individual so they animate above the dimmed base. */
+  /** Links of the path or the active node stay individual so they animate above the dimmed base. */
   readonly litEdges = computed(() => {
+    const path = this.visible().path;
+    if (path?.found) {
+      const ids = new Set(path.edges);
+      return this.drawnEdges().filter((item) => ids.has(item.edge.id));
+    }
     if (!this.activeId() && !this.selectedId() && !this.hoveredEdgeId()) return [];
     return this.drawnEdges().filter((item) => this.edgeLit(item.edge));
   });
@@ -775,6 +850,24 @@ export class KnowledgeNetworkComponent {
       const next = this.queryNode() ? value : 0;
       if (this.depth() !== next) untracked(() => this.depth.set(next));
     });
+    // A shared de/para/anoDe/anoAte restores the path endpoints and the period inputs.
+    effect(() => {
+      const params = this.queryParams();
+      const de = params.get('de');
+      const para = params.get('para');
+      const from = params.get('anoDe');
+      const to = params.get('anoAte');
+      untracked(() => {
+        const nextFrom = de && this.nodeIndex.has(de) ? de : null;
+        const nextTo = para && this.nodeIndex.has(para) ? para : null;
+        if (this.pathFrom() !== nextFrom) this.pathFrom.set(nextFrom);
+        if (this.pathTo() !== nextTo) this.pathTo.set(nextTo);
+        const nextPeriodFrom = from && /^-?\d+$/.test(from) ? Number(from) : null;
+        const nextPeriodTo = to && /^-?\d+$/.test(to) ? Number(to) : null;
+        if (this.periodFrom() !== nextPeriodFrom) this.periodFrom.set(nextPeriodFrom);
+        if (this.periodTo() !== nextPeriodTo) this.periodTo.set(nextPeriodTo);
+      });
+    });
     // In a chapter the legend starts folded: the map should read as a map, not as a dashboard.
     effect(() => {
       if (this.embedded() && this.controlsOpen() === null) this.controlsOpen.set(false);
@@ -873,13 +966,47 @@ export class KnowledgeNetworkComponent {
     if (!this.scopeIds()) this.collectionsOn.set(new Set(this.collections.map((c) => c.id)));
     this.onlyConnected.set(false);
     this.depth.set(0);
+    this.periodFrom.set(null);
+    this.periodTo.set(null);
+    this.pathMode.set(false);
+    this.pathFrom.set(null);
+    this.pathTo.set(null);
     this.query.set('');
-    this.syncUrl(this.selectedId());
+    this.syncUrl(this.selectedId(), true);
   }
   /** 0 shows everything; 1/2 isolate the selected node's neighbourhood without moving the layout. */
   setDepth(value: 0 | 1 | 2): void {
     if (value > 0 && !this.selectedId()) return;
     this.depth.set(value);
+    this.syncUrl(this.selectedId());
+  }
+  setPeriod(edge: 'from' | 'to', event: Event): void {
+    const raw = (event.target as HTMLInputElement).value.trim();
+    const value = raw === '' ? null : Number(raw);
+    if (value !== null && !Number.isInteger(value)) return;
+    if (edge === 'from') this.periodFrom.set(value);
+    else this.periodTo.set(value);
+    this.syncUrl(this.selectedId(), true);
+  }
+  clearPeriod(): void {
+    this.periodFrom.set(null);
+    this.periodTo.set(null);
+    this.syncUrl(this.selectedId(), true);
+  }
+  togglePathMode(): void {
+    if (this.pathMode()) {
+      this.pathMode.set(false);
+      return;
+    }
+    this.pathFrom.set(null);
+    this.pathTo.set(null);
+    this.pathMode.set(true);
+    this.syncUrl(this.selectedId(), true);
+  }
+  clearPath(): void {
+    this.pathMode.set(false);
+    this.pathFrom.set(null);
+    this.pathTo.set(null);
     this.syncUrl(this.selectedId());
   }
   setQuery(value: string): void {
@@ -1045,12 +1172,12 @@ export class KnowledgeNetworkComponent {
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (!rect) return;
     const node = this.nodeAt({ x: event.clientX - rect.left, y: event.clientY - rect.top });
-    if (node) this.select(node.id);
+    if (node) this.pickNode(node.id);
   }
   nodeKey(event: KeyboardEvent, id: string): void {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      this.select(id);
+      this.pickNode(id);
       return;
     }
     if (event.key === ']' || event.key === '[') {
@@ -1459,17 +1586,45 @@ export class KnowledgeNetworkComponent {
    * never under 16 px on screen, whatever the zoom, so a click just beside an icon still lands.
    */
   /** Keeps the selected node in the address so a recorte can be shared or restored. */
-  private syncUrl(id: string | null): void {
+  private syncUrl(id: string | null, replace = false): void {
     if (this.embedded()) return;
     const params = this.route.snapshot.queryParamMap;
     const saltos = this.depth() > 0 ? String(this.depth()) : null;
-    if (params.get('no') === id && params.get('saltos') === saltos) return;
+    const de = this.pathFrom();
+    const para = this.pathTo();
+    const anoDe = this.periodFrom() === null ? null : String(this.periodFrom());
+    const anoAte = this.periodTo() === null ? null : String(this.periodTo());
+    if (
+      params.get('no') === id &&
+      params.get('saltos') === saltos &&
+      params.get('de') === de &&
+      params.get('para') === para &&
+      params.get('anoDe') === anoDe &&
+      params.get('anoAte') === anoAte
+    )
+      return;
     void this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { no: id, saltos },
+      queryParams: { no: id, saltos, de, para, anoDe, anoAte },
       queryParamsHandling: 'merge',
-      replaceUrl: true,
+      replaceUrl: replace,
     });
+  }
+
+  /** In path mode the next two map clicks become the endpoints; otherwise a click selects. */
+  private pickNode(id: string): void {
+    if (!this.pathMode()) {
+      this.select(id);
+      return;
+    }
+    if (!this.pathFrom() || this.pathTo()) {
+      this.pathFrom.set(id);
+      this.pathTo.set(null);
+    } else if (id !== this.pathFrom()) {
+      this.pathTo.set(id);
+      this.pathMode.set(false);
+    }
+    this.select(id);
   }
 
   private nodeAt(point: { x: number; y: number }): NetworkNode | null {

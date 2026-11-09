@@ -415,3 +415,64 @@ test('a click just beside a node icon still selects it, and names are not clicka
   await page.mouse.click(spot!.x, spot!.y);
   await expect(page.getByRole('complementary', { name: 'Detalhes do verbete' })).toBeVisible();
 });
+
+test('node selection keeps browser history for back and forward', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/grafos');
+  await expect(page.locator('[data-node="person-karl-marx"]')).toBeVisible();
+  await page.locator('[data-node="person-karl-marx"]').focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/no=person-karl-marx/);
+  await page.locator('[data-node="person-friedrich-engels"]').focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/no=person-friedrich-engels/);
+  const detail = page.getByRole('complementary', { name: 'Detalhes do verbete' });
+  await page.goBack();
+  await expect(page).toHaveURL(/no=person-karl-marx/);
+  await expect(detail.getByRole('heading', { level: 2 })).toContainText('Karl Marx');
+  await page.goForward();
+  await expect(page).toHaveURL(/no=person-friedrich-engels/);
+  await expect(detail.getByRole('heading', { level: 2 })).toContainText('Friedrich Engels');
+});
+
+test('the period filter restores from the URL and narrows the map', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/grafos');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const before = await page.locator('[data-node]').count();
+  await page.goto('/grafos?anoDe=1900&anoAte=1950');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  await expect(page.getByLabel('De', { exact: true })).toHaveValue('1900');
+  await expect(page.getByLabel('Até', { exact: true })).toHaveValue('1950');
+  await expect(page.getByText(/\d+\s+de\s+\d+\s+verbetes têm data/)).toBeVisible();
+  const after = await page.locator('[data-node]').count();
+  expect(after).toBeGreaterThan(0);
+  expect(after).toBeLessThan(before);
+  await page.getByLabel('De', { exact: true }).fill('1800');
+  await expect(page).toHaveURL(/anoDe=1800/);
+  await expect(page).toHaveURL(/anoAte=1950/);
+});
+
+test('the path mode picks two nodes and clears the route', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/grafos');
+  const controls = page.getByRole('complementary', { name: 'Legenda e filtros' });
+  await controls.getByRole('button', { name: 'Traçar caminho' }).click();
+  await expect(controls.getByRole('button', { name: 'Cancelar caminho' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await page.locator('[data-node="person-karl-marx"]').focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/de=person-karl-marx/);
+  await page.locator('[data-node="person-friedrich-engels"]').focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/para=person-friedrich-engels/);
+  const summary = page.locator('#graph-path-summary');
+  await expect(summary).toContainText('Karl Marx');
+  await expect(summary).toContainText('Friedrich Engels');
+  await expect(summary).toContainText(/passo/);
+  await controls.getByRole('button', { name: 'Limpar caminho' }).click();
+  await expect(page).not.toHaveURL(/de=|para=/);
+  await expect(page.locator('#graph-path-summary')).toHaveCount(0);
+});

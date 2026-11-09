@@ -28,6 +28,31 @@ test('unknown and unpublished institutional routes say so and keep the address',
   }
 });
 
+test('an unknown record keeps its URL and offers a way back', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => {
+    history.pushState(null, '', '/verbete/nao-existe/');
+    dispatchEvent(new PopStateEvent('popstate'));
+  });
+  await expect(page.getByRole('heading', { name: 'Registro não encontrado' })).toBeVisible({
+    timeout: 15000,
+  });
+  await expect(page).toHaveURL(/\/verbete\/nao-existe\/?$/);
+  const notFound = page.locator('app-not-found-message');
+  await expect(notFound.getByRole('link', { name: /^Acervo/ })).toBeVisible();
+  await expect(notFound.getByRole('link', { name: /^Início/ })).toBeVisible();
+});
+
+test('a search with no matches shows the empty state without leaving the catalogue', async ({
+  page,
+}) => {
+  await page.goto('/pessoas?q=xyzzy');
+  await expect(page.getByRole('heading', { name: 'Nenhum registro encontrado' })).toBeVisible();
+  await expect(page.getByText('Nenhum resultado')).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Ver o catálogo completo' })).toBeVisible();
+  await expect(page).toHaveURL(/\/pessoas\?q=xyzzy$/);
+});
+
 test('old reading addresses redirect to the canonical /leitura path', async ({ page }) => {
   for (const slug of ['marxismo', 'liberalismo', 'social-democracia', 'anarquismo']) {
     await page.goto(`/${slug}`);
@@ -741,7 +766,7 @@ test('/fontes paginates and a source anchor opens the page that holds it', async
 test('paging and switching the record type keep the place without flashing the top', async ({
   page,
 }) => {
-  await page.goto('/acervo');
+  await page.goto('/acervo?camada=registros');
   await expect(page.locator('.result-card')).toHaveCount(24);
   await page.evaluate(() => window.scrollTo(0, 700));
   expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(600);

@@ -1,5 +1,5 @@
 Status: atual
-Última verificação: 08/11/2026
+Última verificação: 09/11/2026
 
 # Tipos de nó e de ligação no grafo
 
@@ -21,25 +21,25 @@ Agora são 10 famílias, agrupadas na legenda:
 | Obras e acontecimentos | Obra, Acontecimento |
 | Instituições e territórios | Organização, Partido, País, Formação política, Lugar |
 
-- `place` com `placeType: country` e descrições que começam por “País”/“Estado soberano” viram **País**.
-- `place` com `placeType: regime`, `historical-polity` e `government` viram **Formação política**.
-- Cidades e territórios sem soberania continuam em **Lugar**.
+- `place` com `placeCategory: country` vira **País**; com `placeCategory: state`, **Formação política**; as demais categorias (`city`, `region`, `continent`, `site`, `other`) ficam em **Lugar**.
+- Para registros legados sem `placeCategory`, valem `placeType: country` e descrições que começam por “País”/“Estado soberano”; `placeType: regime`, `historical-polity` e `government` viram **Formação política**.
 - As demais entidades seguem o `kind` do registro.
 
 ### Correções editoriais no grafo
 
-Como o grafo publicado ainda carrega a classificação antiga, `networkKindOverrides` corrige, só na visualização, os casos revisados:
+O lote de lugares de 09/11 reclassificou **151 registros** na origem (82 países, 19 estados, 20 cidades, 7 locais e 21 lugares) e deu a eles `placeCategory`. Com isso, os overrides de países e cidades que só repetiam a classificação nova foram removidos: Austrália, Grécia, Hungria, Lituânia, Polónia, Suécia, Turquia, Ucrânia, União Soviética, Barcelona, Berlim, Budapeste, Buenos Aires, Genebra, Havana, Londres, Nova Iorque, São Paulo, Porto Alegre e Santos.
 
-- países: Austrália, Grécia, Hungria, Lituânia, Polónia, Suécia, Turquia, Ucrânia, Canadá, Escócia, União Soviética;
-- formação política: Alemanha Nazista;
-- cidades: Porto Alegre, Santos, Barcelona, Berlim, Budapeste, Buenos Aires, Genebra, Havana, Londres, Nova Iorque, São Paulo;
+Ainda dependem de override, porque a captura os classifica como `institution` ou `concept`:
+
+- Canadá, Escócia e Porto Rico (territórios com `kind` de origem amplo);
+- Alemanha Nazista (formação política);
 - obras: Carta das Nações Unidas, Discurso sobre a Origem da Desigualdade, Paula, A Arte da Guerra, Constituição brasileira de 1988;
 - acontecimentos: Diretas Já, Conspiração dos Iguais;
 - organizações: Congresso dos Estados Unidos, Congresso Nacional do Brasil;
 - conceitos que chegaram como instituição: Cooperativismo, Iluminismo, Renascimento, Ateísmo, Autocracia, Vanguarda, Governo, Sindicato, Associação, Confederação, Empresa estatal, Capitalismo, Democracia liberal, Burocracia, Estado socialista, Bolsa-escola, Tribo, Britânicos, Despotismo, Ditadura militar, Evangelicalismo, Manufatura, Monarquia, Narodnik, Nova Direita, Nova Esquerda, Oligarquia, Presidencialismo, Realismo, Reformismo, Romantismo, Unipartidarismo;
 - partidos: Bolchevique, Menchevique.
 
-O override é uma dívida declarada: a classificação de origem deve ser corrigida numa onda de dados. Até lá, ele mantém o grafo coerente sem alterar o registro.
+O override restante é uma dívida declarada: a classificação de origem deve ser corrigida na captura (issue #49). Até lá, ele mantém o grafo coerente sem alterar o registro.
 
 ## Tipos de ligação
 

@@ -4,7 +4,7 @@ import { expect, test } from './content-fixture';
  * Responsive audit: every public route at phone, tablet and desktop widths must
  * fit the viewport without horizontal scrolling and keep controls reachable.
  */
-const widths = [320, 390, 768, 1024, 1440];
+const widths = [320, 390, 640, 768, 1024, 1440];
 const routes = [
   '/',
   '/leitura/marxismo',

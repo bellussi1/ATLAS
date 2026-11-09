@@ -14,7 +14,6 @@ import {
   NavigationStart,
   Router,
   RouterLink,
-  RouterLinkActive,
   Scroll,
 } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
@@ -46,7 +45,6 @@ import {
   imports: [
     NgTemplateOutlet,
     RouterLink,
-    RouterLinkActive,
     AtlasGeometricMosaicComponent,
     RecordCardComponent,
     SelectMenuComponent,
@@ -106,14 +104,6 @@ export class ExplorerComponent {
       }))
       .filter((group) => group.kinds.length),
   );
-  /** "Todos" in the type index means every record, not sources or readings. */
-  readonly typeTotal = computed(() =>
-    this.layer()
-      ? this.facets().total
-      : this.facets()
-          .kinds.filter((kind) => kind.group === 'registros')
-          .reduce((sum, kind) => sum + kind.count, 0),
-  );
   readonly results = computed(() =>
     explorerEntries(this.repository.discoveryIndex, {
       catalogue: this.catalogue.path,
@@ -171,15 +161,6 @@ export class ExplorerComponent {
     const query = params.get('q');
     if (query)
       filters.push({ key: 'q', label: `Busca: ${query}`, remove: { q: null, pagina: null } });
-    const layer = params.get('camada');
-    if (layer) {
-      const item = explorerLayers.find((entry) => entry.id === layer);
-      filters.push({
-        key: 'camada',
-        label: `Camada: ${item?.title ?? layer}`,
-        remove: { camada: null, tipo: null, pagina: null },
-      });
-    }
     const kind = params.get('tipo');
     if (kind) {
       const item = this.facets().kinds.find((entry) => entry.value === kind);

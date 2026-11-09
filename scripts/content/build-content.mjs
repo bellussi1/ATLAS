@@ -8,6 +8,7 @@ import { formatJson, readSourceGraph, sha256, validateSourceGraph } from './sour
 import { buildExplorationLayout } from './exploration-layout.mjs';
 import { compileTranslations } from './translations.mjs';
 import { artifactKey, buildPointer } from './r2-content.mjs';
+import { auditReviewSeals } from './review-seals.mjs';
 
 const { buildDiscoveryIndex } =
   await import('../../src/app/core/content/queries/discovery-index.ts');
@@ -242,6 +243,12 @@ export async function buildContent({
     layouts.editorial[slug] = geometry;
   }
   layoutsSchema.parse(layouts);
+  const sealIssues = auditReviewSeals({
+    graph,
+    translations,
+    readings: readings.map((reading) => reading.page),
+  });
+  if (sealIssues.length) throw new Error(`Selos de revisão: ${sealIssues.join('; ')}`);
   // The home carries a compiled snapshot of the release: no content request on the first screen.
   if (resolve(outputDirectory) === resolve(join(projectRoot, 'generated/content'))) {
     await mkdir(join(projectRoot, 'generated'), { recursive: true });

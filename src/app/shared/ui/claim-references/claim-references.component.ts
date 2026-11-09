@@ -42,7 +42,7 @@ export class AtlasClaimReferencesComponent {
         {
           draft: 'Versão preliminar',
           pending: 'Revisão editorial pendente',
-          verified: 'Verificada após revisão humana',
+          verified: 'Verificada após revisão registrada',
           contested: 'Contestada',
           'needs-update': 'Precisa de atualização',
         } as Record<string, string>

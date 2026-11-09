@@ -146,3 +146,25 @@ test('a failed content asset preserves the current page and offers a working ret
   await expect(page.getByRole('alert')).toHaveCount(0);
   await expect(page.locator('#conteudo')).toBeFocused();
 });
+
+test('a missing content object keeps the current page and retries after recovery', async ({
+  page,
+}) => {
+  const pointer = JSON.parse(await readFile('generated/content-cache/pointer.json', 'utf8'));
+  const bundle = `/c/${pointer.bundle.sha256}.json`;
+  await page.goto('/');
+  await page.route(`${base}${bundle}`, (route) =>
+    route.fulfill({ status: 404, contentType: 'text/plain', body: 'missing object' }),
+  );
+  await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
+  await page
+    .locator('.site-header')
+    .getByRole('link', { name: /Liberalismo/ })
+    .click();
+  await expect(page.getByRole('alert')).toContainText('A leitura não abriu');
+  await expect(page.getByRole('alert')).toContainText('Você continua em Início.');
+  await page.unroute(`${base}${bundle}`);
+  await page.getByRole('button', { name: 'Tentar novamente' }).click();
+  await expect(page.locator('h1')).toHaveText('Liberalismo', { timeout: 20000 });
+  await expect(page.getByRole('alert')).toHaveCount(0);
+});

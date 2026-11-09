@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { inject, Injectable, makeStateKey, PLATFORM_ID, TransferState } from '@angular/core';
 import {
   adjacencySchema,
+  type ContentBundle,
   contentBundleSchema,
   type ContentManifest,
   contentManifestSchema,
@@ -300,7 +301,10 @@ export class ContentRepository {
     sha256: string;
     bytes: number;
   }): Promise<ContentPackage> {
-    const bundle = contentBundleSchema.parse(await this.resource(resource, 'bundle.json'));
+    const value = await this.resource(resource, 'bundle.json');
+    // `content:build` validates this shape before publishing and the digest pins the bytes. The
+    // browser trusts both instead of validating the whole release a second time.
+    const bundle = this.browser ? (value as ContentBundle) : contentBundleSchema.parse(value);
     return {
       graph: bundle.graph,
       search: bundle.search,

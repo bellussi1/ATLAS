@@ -197,7 +197,7 @@ export const ideologyPageSchema = z
       })
       .refine(
         (review) => review.status !== 'revisado' || !!review.reviewer,
-        'Revisão exige pessoa identificada.',
+        'Revisão exige identificação.',
       ),
     identity: z.object({
       accent: z.enum(['indigo', 'teal', 'ochre']),

@@ -5,6 +5,12 @@ import { kindLabel } from '@ideologies/utils/desk-graph';
 /** Labels shorter than this are too ambiguous to link automatically. */
 const MIN_LABEL = 4;
 const MAX_DEFINITION = 170;
+const NO_MANUAL: readonly KnowledgeTerm[] = [];
+/** The graph is immutable per release; every paragraph on a page shares the same vocabulary. */
+const vocabularyCache = new WeakMap<
+  KnowledgeGraph,
+  Map<readonly KnowledgeTerm[], KnowledgeTerm[]>
+>();
 
 /** Cuts a summary at a word boundary so the hover explanation stays one short line. */
 export function shortDefinition(summary: string, max = MAX_DEFINITION): string {
@@ -21,8 +27,15 @@ export function shortDefinition(summary: string, max = MAX_DEFINITION): string {
  */
 export function graphVocabulary(
   graph: KnowledgeGraph,
-  manual: readonly KnowledgeTerm[] = [],
+  manual: readonly KnowledgeTerm[] = NO_MANUAL,
 ): KnowledgeTerm[] {
+  let perGraph = vocabularyCache.get(graph);
+  if (!perGraph) {
+    perGraph = new Map();
+    vocabularyCache.set(graph, perGraph);
+  }
+  const cached = perGraph.get(manual);
+  if (cached) return cached;
   const byId = new Map<string, KnowledgeTerm>();
   const result: KnowledgeTerm[] = [];
   const seen = new Set<string>();
@@ -46,5 +59,6 @@ export function graphVocabulary(
     const fromGraph = byId.get(term.entityId);
     add(fromGraph ? { ...fromGraph, label: term.label } : term);
   }
+  perGraph.set(manual, result);
   return result;
 }

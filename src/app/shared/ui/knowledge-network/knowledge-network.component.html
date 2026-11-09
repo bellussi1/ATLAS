@@ -163,7 +163,7 @@
                   name="graph-depth"
                   [value]="option.value"
                   [checked]="depth() === option.value"
-                  [disabled]="option.value > 0 && !selectedId()"
+                  [disabled]="option.value > 0 && (!selectedId() || !!pathEndpoints())"
                   (change)="setDepth(option.value)"
                 />
                 <span>{{ option.label }}</span>
@@ -179,6 +179,71 @@
           <p class="hint" id="graph-neighborhood-count">
             Selecione um verbete para isolar 1 ou 2 saltos.
           </p>
+        }
+      </details>
+
+      <details class="panel" open>
+        <summary><h2>Período</h2></summary>
+        <p class="hint">
+          Registros cujo período conhecido cruza o intervalo. {{ datedTotal() }} de {{ total }}
+          verbetes têm data.
+        </p>
+        <div class="period">
+          <label>
+            <span>De</span>
+            <input
+              type="number"
+              inputmode="numeric"
+              [value]="periodFrom() ?? ''"
+              [attr.min]="periodBounds().min"
+              [attr.max]="periodBounds().max"
+              [disabled]="datedTotal() === 0"
+              (input)="setPeriod('from', $event)"
+            />
+          </label>
+          <label>
+            <span>Até</span>
+            <input
+              type="number"
+              inputmode="numeric"
+              [value]="periodTo() ?? ''"
+              [attr.min]="periodBounds().min"
+              [attr.max]="periodBounds().max"
+              [disabled]="datedTotal() === 0"
+              (input)="setPeriod('to', $event)"
+            />
+          </label>
+        </div>
+        @if (period()) {
+          <button type="button" class="chip" (click)="clearPeriod()">Limpar período</button>
+        }
+      </details>
+
+      <details class="panel" open>
+        <summary><h2>Caminho</h2></summary>
+        <p class="hint">
+          A rota mais curta entre dois verbetes no recorte atual. O layout não muda.
+        </p>
+        @if (pathFrom() || pathTo()) {
+          <p class="hint">
+            Origem: {{ pathFromTitle() ?? '—' }} · Destino: {{ pathToTitle() ?? '—' }}
+          </p>
+        }
+        <button
+          type="button"
+          class="chip"
+          [class.chip--solid]="pathMode()"
+          [attr.aria-pressed]="pathMode()"
+          (click)="togglePathMode()"
+        >
+          {{ pathMode() ? 'Cancelar caminho' : 'Traçar caminho' }}
+        </button>
+        @if (pathMode()) {
+          <p class="hint" role="status">Clique no primeiro e no segundo verbete do mapa.</p>
+        }
+        @if (visible().path) {
+          <p class="hint" role="status" id="graph-path-summary">{{ pathSummary() }}</p>
+          <button type="button" class="chip" (click)="clearPath()">Limpar caminho</button>
         }
       </details>
 

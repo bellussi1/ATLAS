@@ -28,26 +28,6 @@
       }
     </select>
   </div>
-  <nav aria-label="Catálogos do acervo" class="catalogues">
-    @for (group of groups; track group.id) {
-      <section class="catalogue-group" [attr.data-group]="group.id">
-        <h2 class="catalogue-group__title">{{ group.title }}</h2>
-        <ul>
-          @for (item of group.catalogues; track item.path) {
-            <li>
-              <a
-                [routerLink]="'/' + item.path"
-                [queryParams]="{ idioma: params().get('idioma') }"
-                routerLinkActive="selected"
-                ariaCurrentWhenActive="page"
-                >{{ item.title }}</a
-              >
-            </li>
-          }
-        </ul>
-      </section>
-    }
-  </nav>
   @if (catalogue.path === 'ideologias') {
     <aside class="readings" aria-label="Leituras de ideologias">
       <span>Leituras contínuas</span><a [routerLink]="readingPath('marxismo')">Marxismo</a
@@ -123,20 +103,14 @@
           >
         </div>
       }
-      @if (kindGroups().length) {
+      @if (
+        kindGroups().length &&
+        facets().kinds.length > 1 &&
+        !sourceList() &&
+        !editorialList() &&
+        (!showLayers || layer() === 'registros')
+      ) {
         <div class="type-index" role="group" aria-label="Categorias de registro">
-          <a
-            class="type-index__item type-index__item--all"
-            [routerLink]="[]"
-            [queryParams]="{
-              camada: showLayers ? 'registros' : null,
-              tipo: null,
-              pagina: null,
-            }"
-            queryParamsHandling="merge"
-            [attr.aria-current]="params().get('tipo') ? null : 'true'"
-            >Todos <span class="type-index__count">{{ typeTotal() }}</span></a
-          >
           @for (group of kindGroups(); track group.id) {
             <span class="type-index__group">{{ group.title }}</span>
             @for (facet of group.kinds; track facet.value) {
@@ -163,7 +137,8 @@
       }
       @if (unknownKind()) {
         <p class="notice">
-          Categoria indisponível neste catálogo. Escolha outra categoria ou “Todos”.
+          Categoria indisponível neste catálogo. Escolha outra categoria ou volte a todos os
+          registros.
         </p>
       }
       <div class="results-bar">
