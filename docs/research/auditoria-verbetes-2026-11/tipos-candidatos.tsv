@@ -1,0 +1,70 @@
+kind_atual	kind_sugerido	confianca	titulo	descricao
+concept	event	media	Carta das Nações Unidas	Tratado constitutivo da Organização das Nações Unidas, discutido em São Francisco e em vigor desde outubro de 1945.
+concept	event	media	Guerra civil	Conflito armado de grande escala entre grupos organizados dentro de um Estado-nação ou república.
+concept	event	media	Revolução proletária	Revolução classista em que o proletariado busca tomar o governo e subordinar outras classes.
+concept	ideology	media	Cinismo	Corrente filosófica greco-romana que propunha a virtude e a autossuficiência como caminho para a felicidade, rejeitando convenções sociais.
+concept	ideology	alta	Escola Austríaca	Corrente do pensamento econômico que enfatiza a ordem espontânea do mercado e o individualismo metodológico, surgida em Viena.
+concept	ideology	alta	Escola historicista alemã de economia	Corrente do pensamento econômico alemão do século XIX que privilegiava a investigação histórica e institucional na análise econômica.
+concept	ideology	alta	Novo Trabalhismo	Doutrina ideológica do Partido Trabalhista Britânico que orientou o partido entre meados dos anos 1990 e 2010.
+concept	ideology	media	Racionalismo	Corrente filosófica que privilegia a razão e a intuição como vias de acesso ao conhecimento, em vez da experiência sensível.
+concept	institution	alta	Congresso Nacional do Brasil	Órgão legislativo federal do Brasil, bicameral, formado pelo Senado Federal e pela Câmara dos Deputados.
+concept	institution	alta	Mother Earth (revista)	Revista publicada nos Estados Unidos de 1906 a 1917, com textos de diversos colaboradores.
+concept	institution	media	Nação	Organização social em que uma identidade coletiva emerge de características compartilhadas por uma população.
+concept	institution	media	Serviço militar	Serviço prestado por um indivíduo em força armada, de forma voluntária ou por recrutamento involuntário.
+concept	institution	alta	The Guardian	Jornal diário britânico fundado em Manchester em 1821, hoje sediado em Londres e controlado pelo Scott Trust.
+concept	place	alta	Barcelona	Capital da Catalunha, na Espanha, e segundo município mais populoso do país, na costa do Mar Mediterrâneo.
+concept	place	alta	Berlim	Capital e estado da Alemanha, cidade-estado marcada pela divisão do século XX e pela reunificação de 1990.
+concept	place	alta	Budapeste	Capital e maior cidade da Hungria, formada em 1873 pela fusão de Buda, Ôbuda e Peste.
+concept	place	alta	Buenos Aires	Capital e maior cidade da Argentina, distrito autônomo situado no sudoeste do Rio da Prata.
+concept	place	alta	Escócia	País constituinte do Reino Unido que ocupa o terço norte da ilha da Grã-Bretanha, com fronteira terrestre apenas com a Inglaterra.
+concept	place	alta	Genebra	Cidade suíça à beira do Lago Lemano, capital do Cantão de Genebra e sede de organizações internacionais.
+concept	place	alta	Havana	Capital e maior cidade de Cuba, localizada na província de Cidade de Havana, com cerca de 2,4 milhões de habitantes.
+concept	place	alta	Londres	Capital da Inglaterra e do Reino Unido, cujo nome tem origem etimológica disputada entre explicações rivais.
+concept	place	alta	Nova Iorque	Cidade mais populosa dos Estados Unidos, no estado homônimo, e sede da ONU, com forte peso em finanças, mídia e cultura.
+concept	place	alta	São Paulo	Capital do estado de São Paulo, fundada em 1554 por jesuítas e referência econômica, cultural e política do Brasil.
+concept	work	alta	Discurso sobre a Origem e os Fundamentos da Desigualdade entre os Homens	Obra de 1755 que analisa a origem da desigualdade humana e o papel da propriedade privada.
+concept	work	alta	Paula (livro)	Obra autobiográfica de Isabel Allende, escrita em 1995 em homenagem à filha Paula.
+ideology	concept	media	Absolutismo	Termo para caracterizar as monarquias europeias do Antigo Regime e a concentração de poder dos monarcas na Época Moderna.
+ideology	concept	alta	Centro-esquerda	Termo político para indivíduos, partidos e organizações situados entre o centro e a esquerda no espectro ideológico.
+ideology	concept	alta	Imperialismo americano	Termo que designa a influência política, econômica, militar e cultural exercida pelos Estados Unidos no mundo.
+ideology	event	alta	Holocausto	Genocídio sistemático de judeus europeus pela Alemanha nazista durante a Segunda Guerra Mundial, também chamado de Shoá.
+institution	concept	alta	Nova Direita	Termo descritivo para diversas políticas e grupos associados à direita política, com usos variados em vários países.
+institution	event	alta	Acordo Geral de Tarifas e Comércio	Acordo internacional de 1947 para reduzir barreiras comerciais, sucedido pela Organização Mundial do Comércio em 1995.
+institution	event	media	Parlamento	Assembleia de membros eleitos que representa os cidadãos e exerce o poder legislativo em regimes constitucionais.
+institution	event	media	Reichstag	Assembleia dos estados do Sacro Império, depois parlamento alemão até 1945, com sede em Berlim.
+institution	event	alta	Tratado Norte-Americano de Livre-Comércio	Acordo de livre-comércio entre Canadá, México e Estados Unidos, em vigor de 1994 a 2020, substituído pelo USMCA.
+institution	ideology	alta	Free State Project	Movimento político que busca reunir libertários em New Hampshire para tornar o estado um reduto de ideias libertárias.
+institution	ideology	alta	Nova Esquerda	Movimento político de esquerda, surgido sobretudo nas décadas de 1960 e 1970, que priorizou causas sociais além do trabalhismo.
+institution	ideology	alta	Reformismo	Doutrina política que propõe transformar a sociedade por reformas graduais dentro das instituições existentes, sem mudanças bruscas.
+institution	party	alta	Menchevique	Partido político russo de orientação social-democrata, derivado do POSDR, surgido em 1903 no interior do movimento revolucionário russo.
+institution	place	alta	Austrália	País da Oceania, federação de seis estados e dois territórios, com capital em Camberra.
+institution	place	alta	Grécia	País do sul da Europa, com Atenas como capital, berço de raízes da civilização ocidental e membro da ONU e da OTAN.
+institution	place	alta	Hungria	País da Europa Central, com capital em Budapeste, membro da União Europeia e da OTAN.
+institution	place	alta	Lituânia	País báltico da Europa, membro da União Europeia, com capital em Vilnius.
+institution	place	alta	Polónia	País da Europa Central, Estado unitário dividido em 16 voivodias e membro da União Europeia desde 2004.
+institution	place	alta	Suécia	País nórdico do lado oriental da península Escandinava, com monarquia constitucional e sistema parlamentar de governo.
+institution	place	alta	Turquia	País transcontinental entre a Europa Oriental e a Ásia Ocidental, sucessor do Império Otomano desde 1923.
+institution	place	alta	Ucrânia	País do Leste Europeu, segundo maior da Europa em área, que recuperou a independência em 1991.
+party	ideology	media	Ação Integralista Brasileira	Movimento político fascista brasileiro fundado em 1932 por Plínio Salgado, com base no integralismo e na Doutrina Social da Igreja.
+party	institution	media	Liga Espartaquista	Organização socialista e antimilitarista alemã, atuante durante a Primeira Guerra Mundial e a Revolução Alemã de 1918.
+party	institution	media	Partido Revolucionário Cubano (1892)	Organização política cubana fundada em 1892 por José Martí para promover a independência de Cuba e Porto Rico.
+place	concept	alta	Médio Oriente	Termo geográfico que designa uma área em torno das partes leste e sul do mar Mediterrâneo, estendendo-se até o golfo Pérsico.
+place	concept	alta	Mundo islâmico	Conceito geopolítico e religioso que designa a comunidade muçulmana e os países de maioria islâmica.
+place	concept	alta	Mundo ocidental	Termo que designa nações diferentes conforme o contexto, ligadas por ascendência e influência europeias.
+place	concept	alta	País em desenvolvimento	Termo para países com padrão de vida entre baixo e médio, base industrial em crescimento e IDH entre médio e elevado.
+work	concept	alta	Advogado	Profissional liberal graduado em Direito, autorizado a representar pessoas físicas ou jurídicas em juízo ou fora dele.
+work	concept	alta	Arte	Atividade humana e seu produto que envolve talento criativo, organização deliberada de elementos e apelo aos sentidos e às emoções.
+work	concept	alta	Basebol	Desporto de taco e bola disputado por duas equipes de nove jogadores, com origem debatida e ligação ao rounders.
+work	concept	alta	Basquetebol	Esporte coletivo em que duas equipes disputam pontos ao passar a bola pelo aro, criado em 1891 nos Estados Unidos.
+work	concept	alta	Desporto	Atividade física ou jogo praticado de forma metódica, com objetivos competitivos, recreativos ou de melhoria da saúde.
+work	concept	alta	Futebol	Esporte coletivo entre duas equipes de 11 jogadores, em que se marca gol colocando a bola na baliza adversária.
+work	concept	alta	Ténis	Modalidade esportiva de raquete disputada por dois adversários ou duas duplas em uma quadra dividida por uma rede.
+work	concept	alta	Voleibol	Esporte coletivo jogado em quadra dividida por rede, com duas equipes de seis jogadores em cada lado.
+work	event	media	Economia política	Tratado de Antoine de Montchrestien (1615) que introduziu o termo para estudar produção, circulação e distribuição de riqueza.
+work	event	media	O Príncipe	Tratado político de Nicolau Maquiavel, escrito em 1513 e publicado postumamente em 1532.
+work	institution	alta	Die Neue Zeit	Revista teórica do SPD publicada em Estugarda entre 1883 e 1923, palco de debates sobre o marxismo.
+work	institution	alta	L'Année sociologique	Revista acadêmica semestral de sociologia, com revisão por pares, criada por Émile Durkheim em 1898.
+work	institution	alta	L'Humanité	Diário francês fundado em 1904 que se tornou órgão oficial do Partido Comunista Francês em 1920.
+work	institution	alta	The Economist	Semanário britânico de notícias e análise, publicado sem assinatura de autor e lançado em 1843 para defender o livre-comércio.
+work	institution	alta	The New York Times	Jornal diário de Manhattan, Nova Iorque, um dos jornais de referência dos Estados Unidos.
+work	institution	alta	Time (revista)	Revista semanal de notícias publicada nos Estados Unidos, conhecida pela escolha anual da Pessoa do Ano.
