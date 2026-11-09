@@ -777,7 +777,7 @@ test('paging and switching the record type keep the place without flashing the t
   const afterType = await recordFrames(() =>
     page.evaluate(() =>
       (
-        [...document.querySelectorAll('.kind-filter__item')].find((item) =>
+        [...document.querySelectorAll('.type-index__item')].find((item) =>
           item.textContent?.startsWith('Pessoa '),
         ) as HTMLAnchorElement
       ).click(),

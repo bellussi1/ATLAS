@@ -47,6 +47,7 @@ Execute as verificações relevantes ao escopo alterado e reporte o resultado ob
 ## Design e conteúdo
 
 - Ao trabalhar no design da plataforma, inspecione as três imagens em `referencias`: modernismo suíço, atlas histórico editorial e arquivo digital experimental. Use-as como inspiração, sem replicar um dashboard genérico, tema escuro uniforme ou sequência repetitiva de cards.
+- A direção artística aprovada em `atlas-editorial-geometrico`, com a mesa de pesquisa como referência, é **critério de aceite, não sugestão**: nenhuma tela, componente, página gerada ou conteúdo pode divergir dela. Antes de concluir uma mudança de UI, compare a composição com a referência aprovada; dashboards de números, cards iguais, símbolos genéricos e rótulos decorativos são rejeitados. Automação de dados herda o renderer e a composição aprovados; gerar mais páginas não autoriza um novo padrão visual.
 - Afirmações históricas devem ter fontes confiáveis e contexto suficiente para o leitor conferir a evidência. Diferencie fato documentado, interpretação, hipótese e alegação controversa; não invente fonte, data, citação ou validação humana.
 - Reproduza imagens, mapas e textos apenas quando os direitos permitirem o uso. Os arquivos em `referencias` são inspiração visual e não ativos autorizados para publicação.
 - Registre fontes e licenças perto do conteúdo ou no mecanismo editorial definido pelo projeto.

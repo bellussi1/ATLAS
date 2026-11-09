@@ -16,6 +16,18 @@
       >Ver o acervo como rede, em tela cheia <span aria-hidden="true">→</span></a
     >
   </p>
+  <div class="catalogue-select">
+    <label for="catalogue-select">Catálogo</label>
+    <select id="catalogue-select" [value]="catalogue.path" (change)="selectCatalogue($event)">
+      @for (group of groups; track group.id) {
+        <optgroup [label]="group.title">
+          @for (item of group.catalogues; track item.path) {
+            <option [value]="item.path">{{ item.title }}</option>
+          }
+        </optgroup>
+      }
+    </select>
+  </div>
   <nav aria-label="Catálogos do acervo" class="catalogues">
     @for (group of groups; track group.id) {
       <section class="catalogue-group" [attr.data-group]="group.id">
@@ -80,41 +92,74 @@
       </p>
     </form>
     <div class="archive-results">
-      @if (facets.kinds.length > 1) {
-        <div class="kind-filter" role="group" aria-label="Categorias de registro">
-          <div class="kind-filter__row">
+      @if (showLayers) {
+        <div class="layer-filter" role="group" aria-label="Camadas do acervo">
+          @for (entry of layers(); track entry.id) {
             <a
-              class="kind-filter__item"
+              class="layer-filter__item"
               [routerLink]="[]"
-              [queryParams]="{ tipo: null, pagina: null }"
+              [queryParams]="{ camada: entry.id || null, tipo: null, pagina: null }"
               queryParamsHandling="merge"
-              [attr.aria-current]="params().get('tipo') ? null : 'true'"
-              >Todos <span class="kind-filter__count">{{ facets.total }}</span></a
+              [attr.aria-current]="layer() === entry.id ? 'true' : null"
+              >{{ entry.title }} <span class="layer-filter__count">{{ entry.count }}</span></a
             >
-          </div>
-          @for (group of kindGroups; track group.id) {
-            <div class="kind-filter__row">
-              <span class="kind-filter__title" [id]="'kind-group-' + group.id">{{
-                group.title
-              }}</span>
-              <ul class="kind-filter__items" [attr.aria-labelledby]="'kind-group-' + group.id">
-                @for (facet of group.kinds; track facet.value) {
-                  <li>
-                    <a
-                      class="kind-filter__item"
-                      [routerLink]="[]"
-                      [queryParams]="{ tipo: facet.value, pagina: null }"
-                      queryParamsHandling="merge"
-                      [attr.aria-current]="params().get('tipo') === facet.value ? 'true' : null"
-                      >{{ facet.label }}
-                      <span class="kind-filter__count">{{ facet.count }}</span></a
-                    >
-                  </li>
-                }
-              </ul>
-            </div>
           }
         </div>
+      }
+      @if (activeFilters().length) {
+        <div class="active-filters" aria-label="Filtros ativos">
+          @for (filter of activeFilters(); track filter.key) {
+            <a
+              class="active-filter"
+              [routerLink]="[]"
+              [queryParams]="filter.remove"
+              queryParamsHandling="merge"
+              [attr.aria-label]="'Remover ' + filter.label"
+              >{{ filter.label }} <span aria-hidden="true">×</span></a
+            >
+          }
+          <a class="active-filter active-filter--clear" [routerLink]="'/' + catalogue.path"
+            >Limpar tudo</a
+          >
+        </div>
+      }
+      @if (kindGroups().length) {
+        <div class="type-index" role="group" aria-label="Categorias de registro">
+          <a
+            class="type-index__item type-index__item--all"
+            [routerLink]="[]"
+            [queryParams]="{
+              camada: showLayers ? 'registros' : null,
+              tipo: null,
+              pagina: null,
+            }"
+            queryParamsHandling="merge"
+            [attr.aria-current]="params().get('tipo') ? null : 'true'"
+            >Todos <span class="type-index__count">{{ typeTotal() }}</span></a
+          >
+          @for (group of kindGroups(); track group.id) {
+            <span class="type-index__group">{{ group.title }}</span>
+            @for (facet of group.kinds; track facet.value) {
+              <a
+                class="type-index__item"
+                [routerLink]="[]"
+                [queryParams]="{
+                  camada: showLayers ? 'registros' : null,
+                  tipo: facet.value,
+                  pagina: null,
+                }"
+                queryParamsHandling="merge"
+                [attr.aria-current]="params().get('tipo') === facet.value ? 'true' : null"
+                >{{ facet.label }} <span class="type-index__count">{{ facet.count }}</span></a
+              >
+            }
+          }
+        </div>
+      }
+      @if (unknownLayer()) {
+        <p class="notice">
+          Camada indisponível neste acervo. Escolha “Tudo”, “Registros”, “Fontes” ou “Leituras”.
+        </p>
       }
       @if (unknownKind()) {
         <p class="notice">
@@ -143,12 +188,23 @@
       <section
         aria-label="Resultados da busca"
         class="results"
-        [class.results--cards]="catalogue.path !== 'fontes'"
+        [class.results--cards]="cardGrid()"
         [class.is-busy]="navigating()"
         [attr.aria-busy]="navigating()"
       >
         @for (entry of page().items; track entry.id) {
-          @if (catalogue.path === 'fontes') {
+          @if (editorialList()) {
+            <article [id]="entry.fragment ?? entry.id" class="result reading-row">
+              <p class="result-meta">
+                <span class="kind-tag" [attr.data-kind]="entry.kind">{{ entry.kindLabel }}</span>
+                · {{ entry.stateLabel }}
+              </p>
+              <h2>
+                <a [routerLink]="entry.path">{{ shown(entry).title }}</a>
+              </h2>
+              <p>{{ shown(entry).summary }}</p>
+            </article>
+          } @else if (sourceList()) {
             <article [id]="entry.fragment ?? entry.id" class="result source-row">
               <div class="source-row__head">
                 <div>

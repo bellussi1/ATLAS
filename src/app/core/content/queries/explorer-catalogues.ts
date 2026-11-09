@@ -13,7 +13,7 @@ export const explorerCatalogues = [
     group: 'acervo',
     path: 'acervo',
     title: 'Acervo',
-    description: 'Busque em todo o acervo: registros, fontes e exemplos de metodologia.',
+    description: 'Busque em todo o acervo: registros, fontes e leituras contínuas.',
   },
   {
     group: 'ideias',
