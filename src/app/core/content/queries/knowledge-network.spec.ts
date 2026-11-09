@@ -20,6 +20,9 @@ import {
   nodeRadius,
   nodeScaleFor,
   relationFamilies,
+  relationWeightDefinition,
+  relationWeightOf,
+  relationWeights,
   searchNodes,
 } from './knowledge-network';
 import { layoutNetwork } from './network-layout';
@@ -94,6 +97,44 @@ describe('knowledge network', () => {
     expect(
       network.nodes.find((node) => node.id === stated.source)!.connections.stated,
     ).toBeGreaterThan(0);
+  });
+
+  it('weighs relations by what they assert, not by how they were imported', () => {
+    const weigh = (type: string, label: string) => relationWeightOf({ type, label } as Relation);
+    expect(weigh('influenced', 'influenciou')).toBe('historical');
+    expect(weigh('influenced_by', 'foi influenciado por')).toBe('historical');
+    expect(weigh('reacted_against', 'reagiu contra')).toBe('historical');
+    expect(weigh('developed_into', 'desenvolveu-se em')).toBe('historical');
+    expect(weigh('participated_in', 'participou de')).toBe('action');
+    expect(weigh('wrote', 'escreveu')).toBe('action');
+    expect(weigh('documented-association', 'fundou')).toBe('action');
+    expect(weigh('documented-association', 'governou')).toBe('action');
+    expect(weigh('documented-association', 'foi membro de')).toBe('administrative');
+    expect(weigh('documented-association', 'está sediado em')).toBe('administrative');
+    expect(weigh('associated_with', 'é classificado com a ideologia')).toBe('catalog');
+    expect(weigh('encyclopedic-link', 'link de descoberta na Wikipedia')).toBe('catalog');
+    expect(relationWeights.filter((weight) => weight.political).map((weight) => weight.id)).toEqual(
+      ['historical', 'action'],
+    );
+    expect(relationWeightDefinition('historical').rank).toBeLessThan(
+      relationWeightDefinition('catalog').rank,
+    );
+  });
+
+  it('counts only historical and action links as political relevance', () => {
+    for (const node of network.nodes) {
+      const total = Object.values(node.weightConnections).reduce((sum, value) => sum + value, 0);
+      expect(total).toBe(node.degree);
+      expect(node.politicalConnections).toBe(
+        node.weightConnections.historical + node.weightConnections.action,
+      );
+    }
+    const edgesByWeight = network.edges.reduce(
+      (sum, edge) => sum + (edge.weight === 'historical' || edge.weight === 'action' ? 1 : 0),
+      0,
+    );
+    const nodesByWeight = network.nodes.reduce((sum, node) => sum + node.politicalConnections, 0);
+    expect(nodesByWeight).toBe(edgesByWeight * 2);
   });
 
   it('ranks documented relations above catalogue and navigation links', () => {
