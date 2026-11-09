@@ -141,13 +141,15 @@ describe('knowledge network', () => {
     expect(
       networkKindOfEntity({ id: 'p3', kind: 'concept', description: 'Capital da França.' }),
     ).toBe('place');
-    expect(
-      networkKindOfEntity({ id: 'p4', kind: 'institution', description: 'País da Oceania.' }),
-    ).toBe('country');
-    expect(networkKindOfEntity({ id: 'wiki-topic-australia', kind: 'institution' })).toBe(
+    expect(networkKindOfEntity({ id: 'p4', kind: 'place', placeCategory: 'country' })).toBe(
       'country',
     );
-    expect(networkKindOfEntity({ id: 'wiki-topic-berlim', kind: 'concept' })).toBe('place');
+    expect(networkKindOfEntity({ id: 'p5', kind: 'place', placeCategory: 'state' })).toBe('polity');
+    expect(networkKindOfEntity({ id: 'p6', kind: 'place', placeCategory: 'city' })).toBe('place');
+    expect(networkKindOfEntity({ id: 'wiki-topic-canada', kind: 'institution' })).toBe('country');
+    expect(
+      networkKindOfEntity({ id: 'wiki-topic-berlim', kind: 'place', placeCategory: 'city' }),
+    ).toBe('place');
     expect(networkKindOfEntity({ id: 'wiki-topic-iluminismo', kind: 'institution' })).toBe(
       'concept',
     );

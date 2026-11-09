@@ -1,5 +1,10 @@
 ﻿import type { NetworkClaim, NetworkGraph } from '@core/content/models/content-artifacts';
-import type { EntityKind, KnowledgeGraph, Relation } from '@core/content/models/content-schema';
+import type {
+  EntityKind,
+  KnowledgeGraph,
+  PlaceCategory,
+  Relation,
+} from '@core/content/models/content-schema';
 /** Node families of the graph page. Each one has a colour, a shape and an icon family. */
 export type NetworkKindId =
   | 'ideology'
@@ -180,33 +185,12 @@ const kindByEntityKind: Partial<Record<EntityKind, NetworkKindId>> = {
  * reviewed ids correct the graph family without changing the record itself.
  */
 export const networkKindOverrides: Readonly<Record<string, NetworkKindId>> = {
-  // Countries and territories
-  'wiki-topic-australia': 'country',
-  'wiki-topic-grecia': 'country',
-  'wiki-topic-hungria': 'country',
-  'wiki-topic-lituania': 'country',
-  'wiki-topic-polonia': 'country',
-  'wiki-topic-suecia': 'country',
-  'wiki-topic-turquia': 'country',
-  'wiki-topic-ucrania': 'country',
+  // Territories whose source record is still an institution or a broader place.
   'wiki-topic-canada': 'country',
   'wiki-topic-escocia': 'country',
-  'wiki-topic-uniao-sovietica': 'country',
   'wiki-topic-porto-rico': 'place',
   // Historical polities
   'wiki-topic-alemanha-nazista': 'polity',
-  // Cities
-  'wiki-topic-porto-alegre': 'place',
-  'wiki-topic-santos': 'place',
-  'wiki-topic-barcelona': 'place',
-  'wiki-topic-berlim': 'place',
-  'wiki-topic-budapeste': 'place',
-  'wiki-topic-buenos-aires': 'place',
-  'wiki-topic-genebra': 'place',
-  'wiki-topic-havana': 'place',
-  'wiki-topic-londres': 'place',
-  'wiki-topic-nova-iorque': 'place',
-  'wiki-topic-sao-paulo': 'place',
   // Books and documents
   'wiki-topic-carta-das-nacoes-unidas': 'work',
   'wiki-topic-discurso-sobre-a-origem-e-os-fundamentos-da-desigualdade-entre-os-homens': 'work',
@@ -265,10 +249,17 @@ export function networkKindOfEntity(entity: {
   id: string;
   kind: EntityKind;
   placeType?: 'place' | 'country' | 'regime';
+  placeCategory?: PlaceCategory;
   description?: string;
 }): NetworkKindId {
   const override = networkKindOverrides[entity.id];
   if (override) return override;
+  // The catalogue categories are the source of truth once the record has been classified.
+  if (entity.kind === 'place') {
+    if (entity.placeCategory === 'country') return 'country';
+    if (entity.placeCategory === 'state') return 'polity';
+    if (entity.placeCategory) return 'place';
+  }
   const description = entity.description ?? '';
   // The source graph often omits `placeType`; the record description still names the country.
   if (/^(país|estado soberano)\b/i.test(description)) return 'country';
@@ -598,6 +589,7 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
           id: entity.id,
           kind: entity.kind,
           placeType: entity.kind === 'place' ? entity.placeType : undefined,
+          placeCategory: entity.kind === 'place' ? entity.placeCategory : undefined,
           description: entity.discoveryMetadata?.description ?? undefined,
         }),
         definition: firstSentence(entity.summary),
