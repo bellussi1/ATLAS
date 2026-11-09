@@ -409,6 +409,10 @@ export interface NetworkNode {
   degree: number;
   /** Incident edges counted by relation nature, so navigation is not mistaken for evidence. */
   connections: Record<RelationNature, number>;
+  /** Incident edges counted by what they assert, from history to catalogue. */
+  weightConnections: Record<RelationWeight, number>;
+  /** Historical and action links; administrative and catalogue links are context. */
+  politicalConnections: number;
   /** Distinct neighbours of any nature. */
   distinctNeighbours: number;
   /** Distinct neighbours reached through each relation nature. */
@@ -499,6 +503,85 @@ export function labelRelevance(node: NetworkNode): number {
   return Number(((documented + neighbours + crossCollection) * completeness).toFixed(3));
 }
 
+/**
+ * What a relation asserts, independently of how well it is sourced. Historical and action links
+ * count as political relevance; administrative and catalogue links remain visible as context.
+ */
+export type RelationWeight = 'historical' | 'action' | 'administrative' | 'catalog';
+
+export interface RelationWeightDefinition {
+  id: RelationWeight;
+  label: string;
+  /** One sentence for the reader about what this weight does and does not say. */
+  note: string;
+  /** Whether the relation counts as political relevance. */
+  political: boolean;
+  /** Lower comes first when links are listed. */
+  rank: number;
+}
+
+export const relationWeights: readonly RelationWeightDefinition[] = [
+  {
+    id: 'historical',
+    label: 'Histórico',
+    note: 'Afirma influência, reação ou desenvolvimento entre os registros.',
+    political: true,
+    rank: 0,
+  },
+  {
+    id: 'action',
+    label: 'Ação',
+    note: 'Registra o que a pessoa ou a organização fez: fundou, governou, escreveu, participou.',
+    political: true,
+    rank: 1,
+  },
+  {
+    id: 'administrative',
+    label: 'Administrativo',
+    note: 'Vínculo de pertencimento, filiação, sede ou sucessão. Não afirma influência.',
+    political: false,
+    rank: 2,
+  },
+  {
+    id: 'catalog',
+    label: 'Catálogo',
+    note: 'Classificação ou associação de catálogo. Não afirma relação histórica.',
+    political: false,
+    rank: 3,
+  },
+];
+
+export function relationWeightDefinition(id: RelationWeight): RelationWeightDefinition {
+  return relationWeights.find((weight) => weight.id === id) ?? relationWeights[3];
+}
+
+/** Labels that describe an action even when the relation type is the generic documented one. */
+const actionDocumentedLabel =
+  /^(fundou|governou|presidiu|promulgou|escreveu|lutou|assumiu|dirigiu|liderou|chefiou|comandou|organizou|criou|assinou|decretou|elegeu|derrubou|instaurou|proclamou|declarou|votou|aprovou)/i;
+
+export function relationWeightOf(relation: Pick<Relation, 'type' | 'label'>): RelationWeight {
+  if (
+    ['associated_with', 'related_to', 'editorial-link', 'encyclopedic-link'].includes(relation.type)
+  )
+    return 'catalog';
+  if (
+    [
+      'influence',
+      'influenced',
+      'influenced_by',
+      'reacted_against',
+      'developed_into',
+      'causal-claim',
+      'event_influenced_ideology',
+    ].includes(relation.type)
+  )
+    return 'historical';
+  if (['participated_in', 'wrote', 'authored'].includes(relation.type)) return 'action';
+  if (relation.type === 'documented-association' && actionDocumentedLabel.test(relation.label))
+    return 'action';
+  return 'administrative';
+}
+
 export interface NetworkEdge {
   id: string;
   source: string;
@@ -513,6 +596,8 @@ export interface NetworkEdge {
   /** Short sentence saying why the link exists. */
   context: string;
   nature: RelationNature;
+  /** What the relation asserts: history, action, administration or catalogue. */
+  weight: RelationWeight;
   /** Name of the source of the claim, when the relation records one. */
   sourceName: string | null;
   sourceUrl: string | null;
@@ -612,6 +697,8 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
         claims: claimsByEntity.get(entity.id) ?? [],
         degree: 0,
         connections: { stated: 0, editorial: 0, catalogue: 0, navigation: 0 },
+        weightConnections: { historical: 0, action: 0, administrative: 0, catalog: 0 },
+        politicalConnections: 0,
         distinctNeighbours: 0,
         natureNeighbours: { stated: 0, editorial: 0, catalogue: 0, navigation: 0 },
       });
@@ -635,6 +722,7 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
         phraseReverse: reverse ? relation.label : relation.reverseLabel,
         context: relation.context,
         nature: natureOf(relation),
+        weight: relationWeightOf(relation),
         sourceName: relation.provenance ? provenanceName(relation.provenance.source) : null,
         sourceUrl: relation.provenance?.url ?? null,
         uncertainty: relation.uncertainty,
@@ -659,6 +747,8 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
     target.degree++;
     source.connections[edge.nature]++;
     target.connections[edge.nature]++;
+    source.weightConnections[edge.weight]++;
+    target.weightConnections[edge.weight]++;
     neighbours.get(edge.source)!.add(edge.target);
     neighbours.get(edge.target)!.add(edge.source);
     natureNeighbours.get(edge.source)![edge.nature].add(edge.target);
@@ -666,6 +756,7 @@ export function buildKnowledgeNetwork(graph: KnowledgeGraph | NetworkGraph): Kno
   }
   for (const node of nodes.values()) {
     node.distinctNeighbours = neighbours.get(node.id)!.size;
+    node.politicalConnections = node.weightConnections.historical + node.weightConnections.action;
     const byNature = natureNeighbours.get(node.id)!;
     node.natureNeighbours = {
       stated: byNature.stated.size,
@@ -894,6 +985,7 @@ export function linksOf(
   }
   return links.sort(
     (a, b) =>
+      relationWeightDefinition(a.edge.weight).rank - relationWeightDefinition(b.edge.weight).rank ||
       relationNatureDefinition(a.edge.nature).rank - relationNatureDefinition(b.edge.nature).rank ||
       b.other.degree - a.other.degree,
   );

@@ -554,7 +554,7 @@
               <p class="tip__more">Sem ligações no recorte atual.</p>
             }
           } @else if (card.relation; as relation) {
-            <p class="tip__kind">{{ relation.nature.label }}</p>
+            <p class="tip__kind">{{ relation.weight.label }} · {{ relation.nature.label }}</p>
             <p class="tip__title">{{ relation.sentence }}</p>
             <p class="tip__reason">{{ relation.reason }}</p>
             @if (relation.source) {
@@ -729,6 +729,9 @@
             <h2 class="detail__title">{{ node.title }}</h2>
             <p class="detail__count">
               {{ node.degree }} {{ node.degree === 1 ? 'conexão' : 'conexões' }} no acervo
+              @if (node.politicalConnections) {
+                · {{ node.politicalConnections }} de peso histórico ou de ação
+              }
             </p>
             <p class="detail__definition">{{ node.definition }}</p>
             @if (node.summary !== node.definition) {
@@ -789,6 +792,9 @@
                       </button>
                       <p class="links__why">{{ reasonOf(link.edge) }}</p>
                       <p class="links__meta">
+                        <span class="weight weight--{{ link.edge.weight }}">{{
+                          weightOf(link.edge).label
+                        }}</span>
                         <span class="nature nature--{{ link.edge.nature }}">{{
                           natureOf(link.edge).label
                         }}</span>

@@ -38,6 +38,7 @@ import {
   relationFamilyDefinition,
   type RelationFamilyId,
   relationNatureDefinition,
+  relationWeightDefinition,
   searchNodes,
 } from '@core/content/queries/knowledge-network';
 import {
@@ -1178,6 +1179,9 @@ export class KnowledgeNetworkComponent {
     const nature = relationNatureDefinition(edge.nature);
     return edge.nature === 'stated' || edge.nature === 'editorial' ? edge.context : nature.note;
   }
+  weightOf(edge: NetworkEdge) {
+    return relationWeightDefinition(edge.weight);
+  }
   classificationLabel(value: string): string {
     return classificationLabels[value] ?? value;
   }
@@ -1459,6 +1463,7 @@ export class KnowledgeNetworkComponent {
     return {
       sentence: `${source.title} ${edge.phrase} ${target.title}`,
       nature: relationNatureDefinition(edge.nature),
+      weight: relationWeightDefinition(edge.weight),
       reason: this.reasonOf(edge),
       source: edge.sourceName,
     };
