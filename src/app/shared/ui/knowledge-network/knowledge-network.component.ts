@@ -17,6 +17,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
+import type { Scope } from '@core/content/models/content-schema';
 import {
   buildKnowledgeNetwork,
   filterNetwork,
@@ -147,6 +148,12 @@ export class KnowledgeNetworkComponent {
   private readonly fitK = signal(1);
 
   readonly kindsOn = signal<ReadonlySet<NetworkKindId>>(new Set(networkKinds.map((k) => k.id)));
+  readonly scopesOn = signal<ReadonlySet<Scope>>(new Set(['nucleo', 'contexto', 'fora']));
+  readonly graphScopeOptions = [
+    { id: 'nucleo' as const, label: 'Núcleo' },
+    { id: 'contexto' as const, label: 'Contexto' },
+    { id: 'fora' as const, label: 'Fora' },
+  ];
   readonly familiesOn = signal<ReadonlySet<RelationFamilyId>>(
     new Set(relationFamilies.map((f) => f.id)),
   );
@@ -257,6 +264,7 @@ export class KnowledgeNetworkComponent {
   readonly visible = computed(() =>
     filterNetwork(this.network, {
       kinds: this.kindsOn(),
+      scopes: this.scopesOn(),
       families: this.familiesOn(),
       collections: this.activeCollections(),
       onlyConnected: this.onlyConnected(),
@@ -269,6 +277,7 @@ export class KnowledgeNetworkComponent {
   readonly filtersActive = computed(
     () =>
       this.kindsOn().size < this.kinds.length ||
+      this.scopesOn().size < this.graphScopeOptions.length ||
       this.familiesOn().size < this.families.length ||
       (!this.scopeIds() && this.collectionsOn().size < this.collections.length) ||
       this.onlyConnected() ||
@@ -378,10 +387,13 @@ export class KnowledgeNetworkComponent {
   readonly counts = computed(() => {
     const kinds = new Map<NetworkKindId, number>();
     for (const node of this.network.nodes) kinds.set(node.kind, (kinds.get(node.kind) ?? 0) + 1);
+    const scopes = new Map<Scope, number>();
+    for (const node of this.network.nodes)
+      scopes.set(node.scope, (scopes.get(node.scope) ?? 0) + 1);
     const families = new Map<RelationFamilyId, number>();
     for (const edge of this.network.edges)
       families.set(edge.family, (families.get(edge.family) ?? 0) + 1);
-    return { kinds, families };
+    return { kinds, families, scopes };
   });
 
   /**
@@ -950,6 +962,9 @@ export class KnowledgeNetworkComponent {
   toggleKind(id: NetworkKindId): void {
     this.kindsOn.update((set) => toggled(set, id));
   }
+  toggleScope(id: Scope): void {
+    this.scopesOn.update((set) => toggled(set, id));
+  }
   toggleFamily(id: RelationFamilyId): void {
     this.familiesOn.update((set) => toggled(set, id));
   }
@@ -962,6 +977,7 @@ export class KnowledgeNetworkComponent {
   }
   resetFilters(): void {
     this.kindsOn.set(new Set(networkKinds.map((k) => k.id)));
+    this.scopesOn.set(new Set(['nucleo', 'contexto', 'fora']));
     this.familiesOn.set(new Set(relationFamilies.map((f) => f.id)));
     if (!this.scopeIds()) this.collectionsOn.set(new Set(this.collections.map((c) => c.id)));
     this.onlyConnected.set(false);

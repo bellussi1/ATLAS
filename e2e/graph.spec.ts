@@ -476,3 +476,20 @@ test('the path mode picks two nodes and clears the route', async ({ page }) => {
   await expect(page).not.toHaveURL(/de=|para=/);
   await expect(page.locator('#graph-path-summary')).toHaveCount(0);
 });
+
+test('the scope filter hides out-of-scope records without deleting them', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/grafos');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const status = page.locator('#graph-status');
+  const before = await status.textContent();
+  expect(before).toMatch(/de \d+ registros/);
+  const controls = page.getByRole('complementary', { name: 'Legenda e filtros' });
+  const fora = controls.getByRole('checkbox', { name: /^Fora/ });
+  await expect(fora).toBeChecked();
+  await fora.uncheck();
+  await expect(status).not.toHaveText(before!);
+  await expect(fora).not.toBeChecked();
+  await fora.check();
+  await expect(status).toHaveText(before!);
+});

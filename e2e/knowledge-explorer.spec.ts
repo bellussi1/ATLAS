@@ -55,6 +55,26 @@ test('the universal archive separates records, sources and readings into layers'
   await expect(page.locator('.results--cards')).toBeVisible();
 });
 
+test('the scope index separates core, context and out-of-scope records', async ({ page }) => {
+  await page.goto('/acervo');
+  await page
+    .getByRole('group', { name: 'Camadas do acervo' })
+    .getByRole('link', { name: /^Registros\b/ })
+    .click();
+  const scope = page.getByRole('group', { name: 'Escopo dos registros' });
+  await expect(scope.getByRole('link', { name: /^Núcleo\b/ })).toBeVisible();
+  await expect(scope.getByRole('link', { name: /^Contexto\b/ })).toBeVisible();
+  await expect(scope.getByRole('link', { name: /^Fora\b/ })).toBeVisible();
+  await scope.getByRole('link', { name: /^Fora\b/ }).click();
+  await expect(page).toHaveURL(/escopo=fora/);
+  const active = page.getByLabel('Filtros ativos');
+  await expect(active).toContainText('Escopo: Fora');
+  await expect(page.locator('.result-card')).toHaveCount(20);
+  await active.getByRole('link', { name: 'Remover Escopo: Fora' }).click();
+  await expect(page).not.toHaveURL(/escopo=/);
+  await expect(page.locator('.result-card')).toHaveCount(24);
+});
+
 test('a phone switches catalogues with a compact selector above the search', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/acervo');

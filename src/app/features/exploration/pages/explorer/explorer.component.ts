@@ -89,9 +89,22 @@ export class ExplorerComponent {
     const value = this.params().get('camada') ?? '';
     return explorerLayers.some((item) => item.id === value) ? value : '';
   });
+  /** Political relevance of the record: core, context or outside the archive's scope. */
+  readonly scope = computed(() => {
+    const value = this.params().get('escopo') ?? '';
+    return ['nucleo', 'contexto', 'fora'].includes(value) ? value : '';
+  });
   readonly facets = computed(() =>
-    explorerFacets(this.repository.discoveryIndex, this.catalogue.path, this.layer()),
+    explorerFacets(this.repository.discoveryIndex, this.catalogue.path, this.layer(), this.scope()),
   );
+  readonly scopeOptions = computed(() => {
+    const counts = new Map(this.facets().scopes.map((item) => [item.value, item.count]));
+    return [
+      { value: 'nucleo', label: 'Núcleo', count: counts.get('nucleo') ?? 0 },
+      { value: 'contexto', label: 'Contexto', count: counts.get('contexto') ?? 0 },
+      { value: 'fora', label: 'Fora', count: counts.get('fora') ?? 0 },
+    ];
+  });
   readonly layers = computed(() => this.facets().layers);
   /** Thematic groups of record kinds; sources and readings keep their own layer. */
   readonly kindGroups = computed(() =>
@@ -111,6 +124,7 @@ export class ExplorerComponent {
       kind: this.params().get('tipo') ?? '',
       state: this.params().get('estado') ?? '',
       layer: this.layer(),
+      scope: this.scope(),
     }),
   );
   /** Tells the reader when no name matched and the list only cites the term in the text. */
@@ -121,6 +135,7 @@ export class ExplorerComponent {
       kind: this.params().get('tipo') ?? '',
       state: this.params().get('estado') ?? '',
       layer: this.layer(),
+      scope: this.scope(),
     }),
   );
   // Sources keep one list: records link to their anchors (#source-…), which must stay on the page.
@@ -155,6 +170,12 @@ export class ExplorerComponent {
   );
   readonly editorialList = computed(() => this.layer() === 'editorial');
   readonly cardGrid = computed(() => !this.sourceList() && !this.editorialList());
+  readonly scopeFilterShown = computed(
+    () =>
+      !this.sourceList() &&
+      !this.editorialList() &&
+      (!this.showLayers || this.layer() === 'registros'),
+  );
   readonly activeFilters = computed(() => {
     const params = this.params();
     const filters: { key: string; label: string; remove: Record<string, null> }[] = [];
@@ -177,6 +198,15 @@ export class ExplorerComponent {
         key: 'estado',
         label: `Estado: ${item?.label ?? state}`,
         remove: { estado: null, pagina: null },
+      });
+    }
+    const scope = this.scope();
+    if (scope) {
+      const item = this.scopeOptions().find((entry) => entry.value === scope);
+      filters.push({
+        key: 'escopo',
+        label: `Escopo: ${item?.label ?? scope}`,
+        remove: { escopo: null, pagina: null },
       });
     }
     return filters;

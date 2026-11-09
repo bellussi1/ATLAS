@@ -5,6 +5,7 @@ import type {
   Claim,
   Entity,
   KnowledgeGraph,
+  Scope,
   Source,
 } from '@core/content/models/content-schema';
 import type { ContentTranslation } from '@core/content/models/content-translation';
@@ -30,6 +31,7 @@ export interface DiscoveryIndexEntry {
   kindLabel: string;
   state: string;
   stateLabel: string;
+  scope: Scope;
   path: string;
   fragment?: string;
   context: string;
@@ -189,6 +191,7 @@ export function buildDiscoveryIndex(
       kindLabel: kindLabels[kindFacet(entity)] ?? 'Registro',
       state,
       stateLabel: statusLabels[state],
+      scope: entity.scope ?? 'nucleo',
       path: `/verbete/${entity.slug}`,
       context: entity.context,
       backlinks: [],
@@ -225,6 +228,7 @@ export function buildDiscoveryIndex(
       kindLabel: 'Fonte',
       state: 'registered',
       stateLabel: statusLabels['registered'],
+      scope: 'contexto',
       path: '/fontes',
       fragment: `source-${source.id}`,
       context: source.edition,
@@ -281,6 +285,7 @@ export function buildDiscoveryIndex(
       kindLabel: 'Leitura contínua',
       state: 'pending',
       stateLabel: statusLabels['pending'],
+      scope: 'nucleo',
       path: reading.path,
       context: reading.summary,
       backlinks: [],
