@@ -443,6 +443,11 @@ kbd {
 .stage--dragging .canvas {
   cursor: grabbing;
 }
+.world {
+  // CSS instead of the SVG transform attribute: the view moves without reparsing the map.
+  transform-box: view-box;
+  transform-origin: 0 0;
+}
 
 .edge-batch {
   fill: none;
@@ -540,18 +545,35 @@ kbd {
     opacity: 0.25;
   }
 }
+.nodes {
+  transition: opacity 180ms;
+}
+.nodes.is-dimmed {
+  opacity: 0.14;
+}
+// Lit neighbourhood drawn above the dimmed base map; the shapes below keep the pointer.
+.nodes--lit {
+  pointer-events: none;
+  .node.is-focus {
+    stroke: var(--color-ink);
+    stroke-width: 4;
+  }
+}
 .stage--busy .nodes {
   pointer-events: none;
+}
+// While the view moves, node sizes step with the zoom; animating every shape would stutter it.
+.stage--busy .node {
+  transition: opacity 180ms;
 }
 .node {
   cursor: pointer;
   outline: none;
-  transition: opacity 180ms;
+  transition:
+    opacity 180ms,
+    transform 160ms var(--ease-out, ease-out);
   transform: translate(calc(var(--node-x) * 1px), calc(var(--node-y) * 1px))
-    scale(var(--node-scale));
-  &.is-dimmed {
-    opacity: 0.14;
-  }
+    scale(calc(var(--node-scale) * var(--node-hover-scale, 1)));
   &.is-related {
     stroke: var(--color-ink);
     stroke-width: 2.5;
@@ -580,13 +602,14 @@ kbd {
   vector-effect: non-scaling-stroke;
   transform-box: fill-box;
   transform-origin: center;
-  transition: scale 160ms var(--ease-out, ease-out);
   // The hit circle below owns the pointer. Scaling the shape can otherwise move the edge
   // under the cursor and make hover flicker between the shape and its hit area.
   pointer-events: none;
 }
+// The scale lives inside the same `transform` as the position: the individual `scale`
+// property ignores `transform-box` on SVG in Chromium and makes the shape drift away.
 .node__shape.is-hovered {
-  scale: 1.22;
+  --node-hover-scale: 1.22;
   stroke: var(--color-ink);
 }
 .node__halo {

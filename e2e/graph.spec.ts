@@ -218,8 +218,9 @@ test('hovering a node shows only its neighbours and explains what it relates to'
   });
   expect(spot).not.toBeNull();
   await page.mouse.move(spot!.x, spot!.y);
-  await expect(page.locator('.node.is-dimmed')).not.toHaveCount(0);
-  expect(await page.locator('.node.is-dimmed').count()).toBeLessThan(total);
+  await expect(page.locator('.nodes.is-dimmed')).toHaveCount(1);
+  expect(await page.locator('.nodes--lit .node').count()).toBeGreaterThan(0);
+  expect(await page.locator('.nodes--lit .node').count()).toBeLessThan(total);
 });
 
 test('a selected node lists each link with its reading, nature and reason', async ({ page }) => {
