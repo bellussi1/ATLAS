@@ -24,11 +24,12 @@ test('a connection keeps the search origin so the results stay one step away', a
 test('search returns names instead of every passage that mentions them', async ({ page }) => {
   await page.goto('/acervo?q=lula');
   const results = page.getByRole('region', { name: 'Resultados da busca' });
+  await expect(results).toHaveAttribute('data-query', 'lula');
   await expect(
     results.getByRole('link').filter({ hasText: 'Luiz Inácio Lula da Silva' }).first(),
   ).toBeVisible();
   await expect(
-    results.getByRole('link').filter({ hasText: 'Partido dos Trabalhadores' }),
+    results.locator('strong').filter({ hasText: 'Partido dos Trabalhadores' }),
   ).toHaveCount(0);
   await expect(page.locator('.notice')).toHaveCount(0);
 });
@@ -37,7 +38,7 @@ test('the universal archive separates records, sources and readings into layers'
   page,
 }) => {
   await page.goto('/acervo');
-  const layers = page.getByRole('group', { name: 'Camadas do acervo' });
+  const layers = page.getByRole('navigation', { name: 'Camadas' });
   await expect(layers.getByRole('link', { name: /^Tudo\b/ })).toHaveAttribute(
     'aria-current',
     'true',
@@ -52,16 +53,16 @@ test('the universal archive separates records, sources and readings into layers'
   );
   await layers.getByRole('link', { name: /^Tudo\b/ }).click();
   await expect(page).not.toHaveURL(/camada=/);
-  await expect(page.locator('.results--cards')).toBeVisible();
+  await expect(page.locator('.record-row').first()).toBeVisible();
 });
 
 test('the scope index separates core, context and out-of-scope records', async ({ page }) => {
   await page.goto('/acervo');
   await page
-    .getByRole('group', { name: 'Camadas do acervo' })
+    .getByRole('navigation', { name: 'Camadas' })
     .getByRole('link', { name: /^Registros\b/ })
     .click();
-  const scope = page.getByRole('group', { name: 'Escopo dos registros' });
+  const scope = page.getByRole('navigation', { name: 'Escopo' });
   await expect(scope.getByRole('link', { name: /^Núcleo\b/ })).toBeVisible();
   await expect(scope.getByRole('link', { name: /^Contexto\b/ })).toBeVisible();
   await expect(scope.getByRole('link', { name: /^Fora\b/ })).toBeVisible();
@@ -108,10 +109,10 @@ test('the type index groups record kinds and each active filter can be removed',
   page,
 }) => {
   await page.goto('/acervo');
-  const layers = page.getByRole('group', { name: 'Camadas do acervo' });
+  const layers = page.getByRole('navigation', { name: 'Camadas' });
   await layers.getByRole('link', { name: /^Registros\b/ }).click();
   await expect(page).toHaveURL(/camada=registros/);
-  const categories = page.getByRole('group', { name: 'Categorias de registro' });
+  const categories = page.getByRole('navigation', { name: 'Tipo' });
   await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
   await expect(page).toHaveURL(/tipo=pessoa/);
   const active = page.getByLabel('Filtros ativos');
@@ -151,9 +152,9 @@ test('universal search starts at home, handles aliases and keeps filters through
   await expect(page.getByLabel('Procurar no acervo', { exact: true })).toHaveValue(
     'guimaraes silveira',
   );
-  const layers = page.getByRole('group', { name: 'Camadas do acervo' });
+  const layers = page.getByRole('navigation', { name: 'Camadas' });
   await layers.getByRole('link', { name: /^Registros\b/ }).click();
-  const categories = page.getByRole('group', { name: 'Categorias de registro' });
+  const categories = page.getByRole('navigation', { name: 'Tipo' });
   await categories.getByRole('link', { name: /^Pessoa\b/ }).click();
   await expect(page).toHaveURL(/tipo=pessoa/);
   await page.goBack();
@@ -176,7 +177,7 @@ test('universal search starts at home, handles aliases and keeps filters through
     .fill('nenhum-registro-com-este-nome');
   await page.getByRole('button', { name: 'Pesquisar', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Nenhum registro encontrado' })).toBeVisible();
-  await page.getByRole('link', { name: 'Limpar busca e filtros' }).click();
+  await results.getByRole('link', { name: 'Limpar busca e filtros' }).click();
   await expect(results.getByRole('article').first()).toBeVisible();
 });
 
@@ -310,7 +311,7 @@ test('all search destinations have prerendered HTML with matching title, canonic
       expect(html).toContain('id="' + entry.fragment + '"');
     // Sources are paginated: page 1 carries the pager and its own anchors; later anchors are
     // resolved in the browser by /fontes, as covered in pages.spec.ts.
-    if (target === '/fontes') expect(html).toContain('Paginação do acervo');
+    if (target === '/fontes') expect(html).toContain('Carregar mais');
   }
 });
 

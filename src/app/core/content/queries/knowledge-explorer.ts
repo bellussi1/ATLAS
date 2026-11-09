@@ -84,6 +84,8 @@ export interface ExplorerFilter {
   state?: string;
   layer?: string;
   scope?: string;
+  /** `relevance` keeps names first on a query; `title` always reads alphabetically. */
+  sort?: 'relevance' | 'title';
 }
 
 export function explorerEntries(
@@ -101,11 +103,12 @@ export function explorerEntries(
   const named = base
     .map((entry) => ({ entry, score: nameMatchScore(entry, query) }))
     .filter((match): match is { entry: DiscoveryIndexEntry; score: number } => match.score !== null)
-    .sort(
-      (a, b) =>
-        a.score - b.score ||
-        a.entry.title.localeCompare(b.entry.title, 'pt-BR') ||
-        a.entry.id.localeCompare(b.entry.id),
+    .sort((a, b) =>
+      filter.sort === 'title'
+        ? alphabetical(a.entry, b.entry)
+        : a.score - b.score ||
+          a.entry.title.localeCompare(b.entry.title, 'pt-BR') ||
+          a.entry.id.localeCompare(b.entry.id),
     );
   if (named.length) return named.map((match) => match.entry);
   // A query that names no record still finds the passages that mention it, as a last resort.
@@ -148,8 +151,12 @@ export function explorerMatchKind(
     : 'none';
 }
 
-export function explorerLayerCounts(index: readonly DiscoveryIndexEntry[], catalogue: string) {
-  const entries = explorerEntries(index, { catalogue });
+export function explorerLayerCounts(
+  index: readonly DiscoveryIndexEntry[],
+  catalogue: string,
+  query = '',
+) {
+  const entries = explorerEntries(index, { catalogue, query });
   return explorerLayers.map((layer) => ({
     ...layer,
     count: layer.id
@@ -158,21 +165,59 @@ export function explorerLayerCounts(index: readonly DiscoveryIndexEntry[], catal
   }));
 }
 
+export interface ExplorerFacetOptions {
+  query?: string;
+  kind?: string;
+  state?: string;
+}
+
 export function explorerFacets(
   index: readonly DiscoveryIndexEntry[],
   catalogue: string,
   layer = '',
   scope = '',
+  options: ExplorerFacetOptions = {},
 ) {
-  const allEntries = explorerEntries(index, { catalogue, layer });
-  const entries = explorerEntries(index, { catalogue, layer, scope });
+  const query = options.query ?? '';
+  const entries = explorerEntries(index, {
+    catalogue,
+    layer,
+    scope,
+    query,
+    kind: options.kind,
+    state: options.state,
+  });
+  // The type index keeps every kind of the layer, even when the search narrows the counts to one
+  // of them: hiding the way back to the other kinds would trap the reader inside a query.
+  const kindEntries = explorerEntries(index, { catalogue, layer, scope });
+  const kindMatches = explorerEntries(index, {
+    catalogue,
+    layer,
+    scope,
+    query,
+    state: options.state,
+  });
+  const stateEntries = explorerEntries(index, {
+    catalogue,
+    layer,
+    scope,
+    query,
+    kind: options.kind,
+  });
+  const scopeEntries = explorerEntries(index, {
+    catalogue,
+    layer,
+    query,
+    kind: options.kind,
+    state: options.state,
+  });
   const scopes = new Map<string, { value: string; label: string; count: number }>();
   const scopeLabels: Record<string, string> = {
     nucleo: 'Núcleo',
     contexto: 'Contexto',
     fora: 'Fora',
   };
-  for (const entry of allEntries) {
+  for (const entry of scopeEntries) {
     if (!entry.path.startsWith('/verbete/')) continue;
     const current = scopes.get(entry.scope);
     if (current) current.count += 1;
@@ -183,23 +228,31 @@ export function explorerFacets(
         count: 1,
       });
   }
-  const facet = (field: 'kind' | 'state', label: 'kindLabel' | 'stateLabel') => {
+  const facet = (
+    list: readonly DiscoveryIndexEntry[],
+    field: 'kind' | 'state',
+    label: 'kindLabel' | 'stateLabel',
+  ) => {
     const counts = new Map<string, { value: string; label: string; count: number }>();
-    for (const entry of entries) {
+    for (const entry of list) {
       const current = counts.get(entry[field]);
       if (current) current.count += 1;
       else counts.set(entry[field], { value: entry[field], label: entry[label], count: 1 });
     }
     return [...counts.values()].sort((a, b) => a.label.localeCompare(b.label, 'pt-BR'));
   };
+  const kindCounts = new Map(
+    facet(kindMatches, 'kind', 'kindLabel').map((kind) => [kind.value, kind.count]),
+  );
   return {
     total: entries.length,
-    layers: explorerLayerCounts(index, catalogue),
-    kinds: facet('kind', 'kindLabel').map((kind) => ({
+    layers: explorerLayerCounts(index, catalogue, query),
+    kinds: facet(kindEntries, 'kind', 'kindLabel').map((kind) => ({
       ...kind,
+      count: kindCounts.get(kind.value) ?? 0,
       group: explorerContentGroup(kind.value),
     })),
-    states: facet('state', 'stateLabel'),
+    states: facet(stateEntries, 'state', 'stateLabel'),
     scopes: [...scopes.values()],
   };
 }
@@ -233,7 +286,18 @@ export function safeExplorerReturn(value: string | null): string | null {
       url.hash ||
       !explorerCatalogues.some((c) => '/' + c.path === url.pathname) ||
       [...url.searchParams.keys()].some(
-        (k) => !['q', 'tipo', 'estado', 'pagina', 'idioma', 'camada', 'escopo'].includes(k),
+        (k) =>
+          ![
+            'q',
+            'tipo',
+            'estado',
+            'pagina',
+            'idioma',
+            'camada',
+            'escopo',
+            'ordem',
+            'vista',
+          ].includes(k),
       )
     )
       return null;

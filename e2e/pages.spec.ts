@@ -47,9 +47,10 @@ test('a search with no matches shows the empty state without leaving the catalog
   page,
 }) => {
   await page.goto('/pessoas?q=xyzzy');
+  const results = page.getByRole('region', { name: 'Resultados da busca' });
   await expect(page.getByRole('heading', { name: 'Nenhum registro encontrado' })).toBeVisible();
   await expect(page.getByText('Nenhum resultado')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Ver o catálogo completo' })).toBeVisible();
+  await expect(results.getByRole('link', { name: 'Limpar busca e filtros' })).toBeVisible();
   await expect(page).toHaveURL(/\/pessoas\?q=xyzzy$/);
 });
 
@@ -752,11 +753,12 @@ test('/fontes paginates and a source anchor opens the page that holds it', async
   await page.goto('/fontes');
   const rows = page.locator('.source-row');
   await expect(rows).toHaveCount(24);
-  const pager = page.getByRole('navigation', { name: 'Paginação do acervo' }).first();
-  await expect(pager).toBeVisible();
-  await pager.getByRole('link', { name: /Próxima/ }).click();
+  const more = page.getByRole('button', { name: 'Carregar mais' });
+  await expect(more).toBeVisible();
+  await more.click();
   await expect(page).toHaveURL(/pagina=2/);
-  const id = await rows.first().getAttribute('id');
+  await expect(rows).toHaveCount(48);
+  const id = await rows.nth(24).getAttribute('id');
   expect(id).toBeTruthy();
   await page.goto(`/fontes#${id}`);
   await expect(page).toHaveURL(/pagina=2/);
@@ -792,9 +794,7 @@ test('paging and switching the record type keep the place without flashing the t
   };
 
   const afterPage = await recordFrames(() =>
-    page.evaluate(() =>
-      (document.querySelector('.pager__link[rel="next"]') as HTMLAnchorElement).click(),
-    ),
+    page.evaluate(() => (document.querySelector('.load-more button') as HTMLButtonElement).click()),
   );
   await expect(page).toHaveURL(/pagina=2/);
   expect(afterPage).toBeGreaterThan(200);
@@ -802,8 +802,8 @@ test('paging and switching the record type keep the place without flashing the t
   const afterType = await recordFrames(() =>
     page.evaluate(() =>
       (
-        [...document.querySelectorAll('.type-index__item')].find((item) =>
-          item.textContent?.startsWith('Pessoa '),
+        [...document.querySelectorAll('.types__group a')].find((item) =>
+          item.textContent?.startsWith('Pessoa'),
         ) as HTMLAnchorElement
       ).click(),
     ),
