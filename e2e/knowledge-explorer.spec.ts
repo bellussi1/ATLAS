@@ -56,8 +56,8 @@ test('the universal archive separates records, sources and readings into layers'
 test('a phone switches catalogues with a compact selector above the search', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/acervo');
-  await expect(page.locator('.catalogues')).toBeHidden();
   const select = page.getByLabel('Catálogo', { exact: true });
+  await expect(select).toBeVisible();
   await select.selectOption('pessoas');
   await expect(page).toHaveURL(/\/pessoas$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Pessoas');
@@ -323,9 +323,6 @@ test('missing and unavailable entries provide recovery without external return l
   await expect(page.getByRole('link', { name: 'Voltar aos resultados' })).toHaveCount(0);
   await page.goto('/acervo');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Acervo');
-  await page
-    .getByRole('main')
-    .getByRole('link', { name: /^Acervo/ })
-    .click();
+  await page.getByRole('main').getByRole('link', { name: 'Limpar busca e filtros' }).click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Acervo');
 });

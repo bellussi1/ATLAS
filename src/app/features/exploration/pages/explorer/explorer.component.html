@@ -28,26 +28,6 @@
       }
     </select>
   </div>
-  <nav aria-label="Catálogos do acervo" class="catalogues">
-    @for (group of groups; track group.id) {
-      <section class="catalogue-group" [attr.data-group]="group.id">
-        <h2 class="catalogue-group__title">{{ group.title }}</h2>
-        <ul>
-          @for (item of group.catalogues; track item.path) {
-            <li>
-              <a
-                [routerLink]="'/' + item.path"
-                [queryParams]="{ idioma: params().get('idioma') }"
-                routerLinkActive="selected"
-                ariaCurrentWhenActive="page"
-                >{{ item.title }}</a
-              >
-            </li>
-          }
-        </ul>
-      </section>
-    }
-  </nav>
   @if (catalogue.path === 'ideologias') {
     <aside class="readings" aria-label="Leituras de ideologias">
       <span>Leituras contínuas</span><a [routerLink]="readingPath('marxismo')">Marxismo</a

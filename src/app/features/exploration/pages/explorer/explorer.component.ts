@@ -14,7 +14,6 @@ import {
   NavigationStart,
   Router,
   RouterLink,
-  RouterLinkActive,
   Scroll,
 } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
@@ -46,7 +45,6 @@ import {
   imports: [
     NgTemplateOutlet,
     RouterLink,
-    RouterLinkActive,
     AtlasGeometricMosaicComponent,
     RecordCardComponent,
     SelectMenuComponent,

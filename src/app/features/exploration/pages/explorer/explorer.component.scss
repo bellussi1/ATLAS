@@ -31,76 +31,6 @@ h1 {
   aspect-ratio: 6 / 1;
   border: 2px solid var(--color-ink);
 }
-.catalogues {
-  display: grid;
-  border: 2px solid var(--color-ink);
-  background: var(--color-canvas);
-}
-.catalogue-group {
-  --group-tone: var(--color-canvas);
-  background: var(--group-tone);
-  color: var(--color-ink);
-}
-.catalogue-group[data-group='acervo'] {
-  --group-tone: var(--color-teal-paper);
-}
-.catalogue-group[data-group='ideias'] {
-  --group-tone: var(--color-rose-paper);
-}
-.catalogue-group[data-group='contexto'] {
-  --group-tone: var(--color-ochre-paper);
-}
-.catalogue-group[data-group='fontes'] {
-  --group-tone: var(--color-indigo);
-  color: var(--color-on-strong-surface);
-}
-.catalogue-group + .catalogue-group {
-  border-top: 2px solid var(--color-ink);
-}
-.catalogue-group__title {
-  margin: 0;
-  padding: 0.45rem 0.85rem;
-  border-bottom: 1px solid currentColor;
-  font: 650 var(--text-caption)/1.2 var(--font-mono);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.catalogue-group ul {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0.25rem;
-  list-style: none;
-}
-.catalogue-group li {
-  display: flex;
-}
-/* The whole chip is the link target. Hover only underlines: colour never changes, so contrast holds. */
-.catalogues a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.5rem;
-  padding: 0.4rem 0.75rem;
-  color: inherit;
-  font: 650 var(--text-small)/1.2 var(--font-sans);
-  text-decoration: none;
-}
-.catalogues .selected,
-.catalogues .selected:hover {
-  background: var(--color-ink);
-  color: var(--color-canvas);
-  box-shadow: inset 0 -3px var(--color-accent);
-  text-decoration: none;
-}
-@media (min-width: 60rem) {
-  .catalogues {
-    grid-template-columns: 1fr 1.4fr 1.6fr 0.6fr;
-  }
-  .catalogue-group + .catalogue-group {
-    border-top: 0;
-    border-left: 2px solid var(--color-ink);
-  }
-}
 .catalogue-select {
   display: none;
   gap: 0.3rem;
@@ -119,9 +49,6 @@ h1 {
   }
 }
 @media (max-width: 59.99rem) {
-  .catalogues {
-    display: none;
-  }
   .catalogue-select {
     display: grid;
   }
@@ -296,7 +223,6 @@ label,
   color: var(--color-accent-hover);
 }
 @media (hover: hover) and (pointer: fine) {
-  .catalogues a:hover,
   .layer-filter__item:hover,
   .type-index__item:hover,
   .active-filter:hover,
