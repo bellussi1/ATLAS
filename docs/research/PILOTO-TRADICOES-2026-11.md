@@ -83,6 +83,17 @@ com blocos, completos e pendentes; restam relações (19 < 37), fontes citadas (
 bloco (4 < 7). Nazismo e stalinismo também ficam abaixo em relações (nazismo), fontes citadas e
 tipos de bloco. Isso é trabalho dos estágios 9 e 10, não da lente nem de mais extração por si só.
 
+## Edição (estágio 9)
+
+As três leituras receberam pergunta e ponte em todos os capítulos preenchidos, e os gates do
+estágio 9 passaram. O estágio revisa tom, pergunta e ponte; ele **não** adiciona fontes, tipos de
+bloco nem preenche capítulos pendentes. A cobertura permaneceu a mesma: 45/51/53 fontes, 1/2/1
+citadas, 4 tipos de bloco e 2/5/1 capítulos pendentes (nazismo/stalinismo/trabalhismo).
+
+Para fechar fontes citadas e capítulos pendentes, o caminho é preencher os capítulos a partir da
+lente e anexar a fonte-verbete de cada entidade exibida; para os 7 tipos de bloco, é preciso um
+bloco editorial (roteiro de leitura, atlas ou debate), não geração automática.
+
 ## Estado dos arquivos
 
 - Código do pipeline corrigido em `cc1233d`: `--tradition`, `mergeAtlas` nas coleções ampliadas,
@@ -98,8 +109,9 @@ tipos de bloco. Isso é trabalho dos estágios 9 e 10, não da lente nem de mais
 
 ## Próxima decisão
 
-1. Revisar as três leituras geradas e rodar o estágio 9 (edição), com atenção às perguntas e pontes.
-2. Fechar as lacunas de piso que não são da lente: relações (nazismo/trabalhismo), fontes citadas e
-   tipos de bloco. O trabalhismo já cumpre capítulos com blocos, completos e pendentes.
+1. Revisar o tom das três leituras; o estágio 9 já adicionou pergunta e ponte.
+2. Fechar fontes citadas e capítulos pendentes preenchendo os capítulos a partir da lente e
+   anexando a fonte-verbete de cada entidade; fechar os 7 tipos de bloco com edição editorial
+   (roteiro de leitura, atlas ou debate).
 3. Decidir a publicação do conteúdo do piloto no R2; hoje a navegação foi publicada, mas o conteúdo
    do piloto não.
