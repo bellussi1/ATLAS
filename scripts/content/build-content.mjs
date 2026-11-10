@@ -80,7 +80,10 @@ function homeStats(graph, network, readings) {
   const relations = graph.atlases.flatMap((atlas) => atlas.relations);
   const discovery = new Set(['encyclopedic-link', 'editorial-link', 'related_to']);
   const sources = new Set(graph.atlases.flatMap((atlas) => atlas.sources.map((s) => s.id)));
-  const cards = readings.map(({ slug, page }) => {
+  // Unlisted readings are compiled and reachable by direct URL, but do not change the curated
+  // four-reading home, search index or counts.
+  const listed = readings.filter(({ slug }) => !publishedIdeologies[slug]?.unlisted);
+  const cards = listed.map(({ slug, page }) => {
     const registry = ideologyReadings.find((reading) => reading.slug === slug);
     const publicEntry = publicReadings.find((reading) => reading.slug === slug);
     const status = page.review?.status ?? 'rascunho';
@@ -108,8 +111,8 @@ function homeStats(graph, network, readings) {
       sources: sources.size,
       nodes: network.nodes.length,
       links: network.edges.length,
-      readings: readings.length,
-      chapters: readings.reduce((sum, { page }) => sum + page.chapters.length, 0),
+      readings: listed.length,
+      chapters: listed.reduce((sum, { page }) => sum + page.chapters.length, 0),
     },
     readings: cards,
   };
@@ -317,7 +320,14 @@ export async function buildContent({
     // The fixture keeps the pre-bundle path on purpose: it stays small for tests, while the
     // published release and the e2e cache exercise the packaged artifacts.
     const fixtureAssets = assets.filter(
-      ({ file }) => !file.startsWith('bundle.') && !file.startsWith('network-bundle.'),
+      ({ file }) =>
+        !file.startsWith('bundle.') &&
+        !file.startsWith('network-bundle.') &&
+        !new Set(
+          manifest.ideologies
+            .filter((item) => publishedIdeologies[item.id]?.unlisted)
+            .map((item) => item.file),
+        ).has(file),
     );
     const manifestBody = `${JSON.stringify(manifest)}\n`;
     const pointer = buildPointer({
