@@ -201,6 +201,41 @@ test('relação de outra coleção usa o índice global de evidências', () => {
   assert.equal(page.identity.palette, 'fascismo');
 });
 
+test('a leitura pode usar o slug e o título do registro quando a raiz tem outro título', () => {
+  const page = build([claim(1, 'Nasceu em 1900 com Fulano.')], {
+    pageSlug: 'trabalhismo',
+    pageTitle: 'Trabalhismo',
+  });
+  assert.equal(page.slug, 'trabalhismo');
+  assert.equal(page.id, 'ideology-page-trabalhismo');
+  assert.equal(page.title, 'Trabalhismo');
+});
+
+test('a lente preenche capítulos e leva a fonte-verbete de cada entidade', () => {
+  const person = { id: 'person-b', kind: 'person', title: 'B' };
+  const work = { id: 'work-a', kind: 'work', title: 'A' };
+  const concept = { id: 'concept-c', kind: 'concept', title: 'C' };
+  const page = build([claim(1, 'Nasceu em 1900 com Fulano.')], {
+    lens: [person, work, concept],
+    entitySources: new Map([
+      ['person-b', 'src-person-b'],
+      ['work-a', 'src-work-a'],
+      ['concept-c', 'src-concept-c'],
+    ]),
+  });
+  const pensadores = chapter(page, 'pensadores');
+  assert.equal(pensadores.coverage, 'complete');
+  assert.deepEqual(pensadores.blocks[0].entityIds, ['person-b']);
+  assert.deepEqual(pensadores.sourceIds, ['src-person-b']);
+  const leituras = chapter(page, 'leituras');
+  assert.equal(leituras.coverage, 'partial');
+  assert.deepEqual(leituras.blocks[0].entityIds, ['work-a']);
+  assert.deepEqual(leituras.sourceIds, ['src-work-a']);
+  const conceitos = chapter(page, 'conceitos');
+  assert.equal(conceitos.coverage, 'partial');
+  assert.deepEqual(conceitos.blocks.at(-1).entityIds, ['concept-c']);
+});
+
 test('posição política da fonte entra na introdução como atribuída', () => {
   const claims = [claim(1, 'Nasceu em 1900 com Fulano.')];
   const withPosition = atlas([

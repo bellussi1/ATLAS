@@ -17,6 +17,7 @@ import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 
 import { formatJson, readSourceGraph } from '../content/source-graph.mjs';
+import { resolveLens } from './belonging.mjs';
 import { projectRoot } from './registry.mjs';
 
 const { canonicalChapters } =
@@ -355,7 +356,12 @@ export function buildReading({
   atlasId = atlas.id,
   palette = null,
   evidenceIndex = null,
+  pageSlug = null,
+  pageTitle = null,
+  lens = [],
+  entitySources = null,
 }) {
+  const slug = pageSlug ?? entity.slug;
   const claims = entityClaims(entity, atlas);
   const source =
     claims[0]?.sourceIds[0] ?? atlas.sources.find((s) => s.id === `src-${entity.id}`)?.id;
@@ -384,10 +390,82 @@ export function buildReading({
       sourceIds: evidenceOf(relation),
     });
   }
+  // A lente acrescenta os registros aceitos que não têm aresta com a raiz. Cada um entra com a
+  // sua fonte-verbete; a página não inventa relação nem duplica o nó.
+  const lensEntities = lens.filter((candidate) => candidate.id !== entity.id);
+  const addLensChapter = (chapter, kinds) => {
+    for (const other of lensEntities) {
+      if (!kinds.includes(other.kind)) continue;
+      related[chapter] ??= [];
+      const bucket = related[chapter];
+      if (bucket.some((record) => record.entity.id === other.id)) continue;
+      const sourceId = entitySources?.get(other.id);
+      bucket.push({
+        entity: other,
+        kind: other.kind,
+        note: null,
+        sourceIds: sourceId ? [sourceId] : [],
+      });
+    }
+  };
+  addLensChapter('pensadores', ['person']);
+  addLensChapter('vertentes', ['ideology']);
+  addLensChapter('experiencias', [
+    'event',
+    'party',
+    'institution',
+    'government',
+    'historical-polity',
+  ]);
+  addLensChapter('conexoes', [
+    'place',
+    'country',
+    'regime',
+    'city',
+    'state',
+    'region',
+    'continent',
+    'site',
+    'other',
+  ]);
   const position = atlas.claims
     .filter((c) => c.entityId === entity.id && POSITION.test(c.text))
     .map((c) => c.text.replace(/^Posição política descrita na fonte:\s*/, '').replace(/\.$/, ''));
   const content = chapterContents(entity, claims, related, source);
+  const addLensEntities = (chapterContent, kind, mode, label, gap) => {
+    const records = lensEntities.filter((candidate) => candidate.kind === kind);
+    if (!records.length) return chapterContent;
+    const sourceIds = records.map((candidate) => entitySources?.get(candidate.id)).filter(Boolean);
+    const block = {
+      type: 'entities',
+      mode,
+      entityIds: records.map((candidate) => candidate.id),
+      notes: {},
+    };
+    const narrative = [`${label}: ${records.map((candidate) => candidate.title).join(', ')}.`];
+    if (chapterContent.pending)
+      return { claims: [], narrative, sourceIds, blocks: [block], partial: gap };
+    return {
+      ...chapterContent,
+      narrative: [...(chapterContent.narrative ?? []), ...narrative],
+      sourceIds: dedupe([...(chapterContent.sourceIds ?? []), ...sourceIds]),
+      blocks: [...(chapterContent.blocks ?? []), block],
+    };
+  };
+  content.conceitos = addLensEntities(
+    content.conceitos,
+    'concept',
+    'concepts',
+    'Conceitos ligados à tradição',
+    'Termos e conceitos ligados à tradição; discussão conceitual ainda pendente.',
+  );
+  content.leituras = addLensEntities(
+    content.leituras,
+    'work',
+    'documents',
+    'Obras ligadas à tradição',
+    'Obras ligadas à tradição; edição e nível de leitura ainda pendentes.',
+  );
   if (position.length && content.introducao.narrative)
     content.introducao.narrative.push(`Posição política descrita na fonte: ${position[0]}.`);
 
@@ -436,12 +514,12 @@ export function buildReading({
   });
   return {
     schemaVersion: 1,
-    id: `ideology-page-${entity.slug}`,
-    slug: entity.slug,
+    id: `ideology-page-${slug}`,
+    slug,
     kind: 'ideologia',
     classificationNote:
       'Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.',
-    title: entity.title,
+    title: pageTitle ?? entity.title,
     kicker: 'Ideologia política',
     summary: content.introducao.narrative?.[0] ?? `${entity.title}: leitura sem resumo verificado.`,
     published: false,
@@ -519,6 +597,9 @@ export async function generateReadings({
   rootQid = null,
   outputAtlasId = atlasId,
   palette = null,
+  pageSlug = null,
+  pageTitle = null,
+  lensQids = null,
   slugs = null,
   write = true,
   today = new Date().toISOString().slice(0, 10),
@@ -536,6 +617,15 @@ export async function generateReadings({
   const evidenceIndex = new Map(
     graph.atlases.flatMap((a) => a.evidences.map((evidence) => [evidence.id, evidence])),
   );
+  const lens = lensQids?.length ? resolveLens(graph.atlases, lensQids) : null;
+  const lensEntities = lens ? lens.entities.map(({ entity: member }) => member) : [];
+  const entitySources = new Map();
+  for (const atlas of graph.atlases)
+    for (const source of atlas.sources) {
+      if (!source.id.startsWith('src-')) continue;
+      const entityId = source.id.slice(4);
+      if (!entitySources.has(entityId)) entitySources.set(entityId, source.id);
+    }
   const ideologies = rooted ? [rooted.entity] : atlas.entities.filter((e) => e.kind === 'ideology');
   const missing = (slugs ?? []).filter((s) => !ideologies.some((e) => e.slug === s));
   if (missing.length) throw new Error(`Sem ideologia em ${atlasId}: ${missing.join(', ')}.`);
@@ -544,10 +634,11 @@ export async function generateReadings({
   const kept = [];
   const reports = [];
   for (const entity of ideologies.filter((e) => !slugs || slugs.includes(e.slug))) {
-    const path = join(root, 'content/ideologies', entity.slug, 'page.json');
+    const outputSlug = pageSlug ?? entity.slug;
+    const path = join(root, 'content/ideologies', outputSlug, 'page.json');
     const existing = await readJsonOr(path, null);
     if (existing && existing.identity?.signature !== generatedSignature) {
-      kept.push(entity.slug);
+      kept.push(outputSlug);
       continue;
     }
     const page = buildReading({
@@ -561,19 +652,23 @@ export async function generateReadings({
       atlasId: outputAtlasId,
       palette,
       evidenceIndex,
+      pageSlug: outputSlug,
+      pageTitle,
+      lens: lensEntities,
+      entitySources,
     });
     const { page: valid } = validateIdeologyDossier(page, supplement, graph);
     reports.push(readingReport(valid));
     if (write) {
       await mkdir(dirname(path), { recursive: true });
       await writeFile(path, await formatJson(valid));
-      const graphPath = join(root, 'content/graph', `${entity.slug}.json`);
+      const graphPath = join(root, 'content/graph', `${outputSlug}.json`);
       if ((await readJsonOr(graphPath, null)) === null) {
         await mkdir(dirname(graphPath), { recursive: true });
         await writeFile(graphPath, await formatJson({ sources: [], edges: [] }));
       }
     }
-    written.push(entity.slug);
+    written.push(outputSlug);
   }
   return { written, kept, reports, atlasId: outputAtlasId };
 }

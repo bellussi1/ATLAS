@@ -136,6 +136,12 @@ export class RecordComponent {
     'wiki-topic-anarquismo': { path: readingPath('anarquismo'), title: 'Anarquismo' },
     'person-mikhail-bakunin': { path: readingPath('anarquismo'), title: 'Anarquismo' },
     'person-piotr-kropotkin': { path: readingPath('anarquismo'), title: 'Anarquismo' },
+    'wiki-topic-nazismo': { path: readingPath('nazismo'), title: 'Nazismo' },
+    'wiki-topic-stalinismo': { path: readingPath('stalinismo'), title: 'Stalinismo' },
+    'wiki-ideologia-trabalhismo-brasileiro': {
+      path: readingPath('trabalhismo'),
+      title: 'Trabalhismo',
+    },
   };
   readonly dossier = computed(() => this.readingByEntity[this.entity()?.id ?? ''] ?? null);
   /** Purchase link only for records that are books with a known author. */

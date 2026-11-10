@@ -174,6 +174,90 @@ export const ideologyReadings: readonly IdeologyReading[] = [
       },
     ],
   },
+  {
+    slug: 'nazismo',
+    label: 'Nazismo',
+    metaDescription:
+      'Ideologia e regime nacional-socialista: origens, ideias, pessoas, experiências e críticas.',
+    palette: 'fascismo',
+    connections: [
+      {
+        slug: 'liberalismo',
+        relation: 'contraste',
+        lead: true,
+        question: 'O que o nazismo rejeita na democracia liberal e no pluralismo?',
+        reason: 'Confronta a recusa nazista da democracia liberal com a tradição liberal.',
+      },
+      {
+        slug: 'stalinismo',
+        relation: 'divergencia',
+        question: 'O que separa dois regimes autoritários do século XX?',
+        reason: 'Distingue projetos, bases sociais e inimigos dos dois regimes.',
+      },
+      {
+        slug: 'social-democracia',
+        relation: 'contraste',
+        question: 'Como a social-democracia resistiu ao avanço nazista?',
+        reason: 'Situa a resistência social-democrata diante da destruição do regime.',
+      },
+    ],
+  },
+  {
+    slug: 'stalinismo',
+    label: 'Stalinismo',
+    metaDescription:
+      'Ideologia e políticas de Stalin na URSS: industrialização, repressão, vertentes e legado.',
+    palette: 'marx',
+    connections: [
+      {
+        slug: 'marxismo',
+        relation: 'continuidade',
+        lead: true,
+        question: 'Como o stalinismo se apresenta como herdeiro do marxismo?',
+        reason: 'Segue a disputa sobre o que o marxismo deveria ser depois de Lenin.',
+      },
+      {
+        slug: 'nazismo',
+        relation: 'contraste',
+        question: 'O que aproxima e o que separa stalinismo e nazismo?',
+        reason: 'Compara dois regimes autoritários com projetos e inimigos distintos.',
+      },
+      {
+        slug: 'anarquismo',
+        relation: 'divergencia',
+        question: 'Por que a crítica anarquista ao Estado atinge o stalinismo?',
+        reason: 'Confronta a crítica libertária com a centralização stalinista.',
+      },
+    ],
+  },
+  {
+    slug: 'trabalhismo',
+    label: 'Trabalhismo',
+    metaDescription:
+      'Tradição política brasileira: Vargas, PTB, legislação trabalhista, sindicatos e legado.',
+    palette: 'social-democracia',
+    connections: [
+      {
+        slug: 'social-democracia',
+        relation: 'continuidade',
+        lead: true,
+        question: 'O que o trabalhismo compartilha com a social-democracia?',
+        reason: 'Aproxima a aposta no Estado social e nos direitos do trabalho.',
+      },
+      {
+        slug: 'marxismo',
+        relation: 'aprofundamento',
+        question: 'Por que o trabalhismo não se confunde com o socialismo?',
+        reason: 'Distingue a integração da classe trabalhadora ao Estado do projeto socialista.',
+      },
+      {
+        slug: 'liberalismo',
+        relation: 'contraste',
+        question: 'Como o trabalhismo disputa a agenda liberal no Brasil?',
+        reason: 'Contrasta a centralidade do Estado social com a agenda liberal.',
+      },
+    ],
+  },
 ];
 
 const readingBySlug = new Map(ideologyReadings.map((reading) => [reading.slug, reading]));

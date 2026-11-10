@@ -3,24 +3,27 @@
   "id": "ideology-page-trabalhismo",
   "slug": "trabalhismo",
   "kind": "ideologia",
-  "classificationNote": "Tradição política brasileira organizada em torno do trabalho, do Estado social e do legado varguista; não se confunde com socialismo nem com a totalidade da esquerda.",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
   "title": "Trabalhismo",
   "kicker": "Ideologia política",
-  "summary": "Página de desambiguação que reúne sentidos do termo trabalhismo: movimento operário, Novo Trabalhismo, operaísmo, trabalhismo brasileiro, sindicalismo e workism (culto ao trabalho). O texto não desenvolve nenhum desses temas; apenas indica para onde o leitor pode seguir. Também traz três itens de busca e de listagem de títulos. Por isso não há datas, relações históricas nem afirmações sobre os verbetes indicados, que devem ser consultados em suas próprias páginas.",
+  "summary": "O trabalhismo brasileiro é uma corrente política, ideologia e tradição política do Brasil que defende a integração da classe trabalhadora ao Estado nacional por meio da legislação social, do nacionalismo e do desenvolvimentismo. Suas origens remontam às primeiras décadas do século XX, e ele se consolidou durante a Era Vargas, com a fundação do Partido Trabalhista Brasileiro em 1945. Ao longo do século XX influenciou a política brasileira, sobretudo nos governos de Getúlio Vargas e João Goulart, e permanece objeto de múltiplas interpretações historiográficas sobre sua natureza ideológica.",
   "published": false,
   "atlasId": "atlas-trabalhismo",
   "review": {
     "status": "rascunho",
     "reviewer": null,
-    "updatedAt": "2026-11-05"
+    "updatedAt": "2026-11-10"
   },
   "identity": {
     "accent": "teal",
+    "palette": "social-democracia",
     "signature": "Leitura montada do grafo",
-    "keyVisualization": "timeline",
-    "palette": "social-democracia"
+    "keyVisualization": "timeline"
   },
   "portrait": null,
+  "poster": {
+    "figures": []
+  },
   "chapters": [
     {
       "id": "introducao",
@@ -29,13 +32,14 @@
       "kicker": "O que é?",
       "minutes": 1,
       "narrative": [
-        "Página de desambiguação que reúne sentidos do termo trabalhismo: movimento operário, Novo Trabalhismo, operaísmo, trabalhismo brasileiro, sindicalismo e workism (culto ao trabalho). O texto não desenvolve nenhum desses temas; apenas indica para onde o leitor pode seguir. Também traz três itens de busca e de listagem de títulos. Por isso não há datas, relações históricas nem afirmações sobre os verbetes indicados, que devem ser consultados em suas próprias páginas."
+        "O trabalhismo brasileiro é uma corrente política, ideologia e tradição política do Brasil que defende a integração da classe trabalhadora ao Estado nacional por meio da legislação social, do nacionalismo e do desenvolvimentismo. Suas origens remontam às primeiras décadas do século XX, e ele se consolidou durante a Era Vargas, com a fundação do Partido Trabalhista Brasileiro em 1945. Ao longo do século XX influenciou a política brasileira, sobretudo nos governos de Getúlio Vargas e João Goulart, e permanece objeto de múltiplas interpretações historiográficas sobre sua natureza ideológica."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "O que é o Trabalhismo e por que ele importa?",
+      "bridge": "As origens mostram de onde essas ideias vêm.",
       "sourceIds": [
-        "src-wiki-topic-trabalhismo"
+        "src-wiki-ideologia-trabalhismo-brasileiro"
       ],
+      "review": null,
       "gap": null,
       "coverage": "complete",
       "layout": "introduction",
@@ -48,15 +52,41 @@
       "kicker": "Origens e formação",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "As origens do trabalhismo são situadas pelo verbete nas transformações políticas e sociais das primeiras décadas do século XX, com influência do castilhismo, do positivismo, do tenentismo e do movimento operário."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
-      "coverage": "pending",
+      "question": "Como o Trabalhismo se formou?",
+      "bridge": "Com a formação situada, veja as ideias que a organizam.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "As origens do trabalhismo são situadas pelo verbete nas transformações políticas e sociais das primeiras décadas do século XX, com influência do castilhismo, do positivismo, do tenentismo e do movimento operário.",
+              "paragraphs": [
+                "As origens do trabalhismo são situadas pelo verbete nas transformações políticas e sociais das primeiras décadas do século XX, com influência do castilhismo, do positivismo, do tenentismo e do movimento operário."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "principios",
@@ -65,15 +95,41 @@
       "kicker": "Pilares e princípios",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "O trabalhismo é caracterizado pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.",
-      "coverage": "pending",
+      "question": "Quais ideias organizam o Trabalhismo?",
+      "bridge": "Os princípios ganham sentido nos conceitos e nos marcos históricos.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
       "layout": "concepts",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "O trabalhismo é caracterizado pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social.",
+              "paragraphs": [
+                "O trabalhismo é caracterizado pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "conceitos",
@@ -82,15 +138,55 @@
       "kicker": "Conceitos e palavras-chave",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Também chamada de trabalhismo, nacional-trabalhismo, Partido Trabalhista Brasileiro, PTB.",
+        "Conceitos ligados à tradição: Estado, Classe trabalhadora, Cultura política, Era Vargas, Doutrina Social da Igreja, Política do Brasil, Greve geral de 1917, Neomercantilismo, Populismo."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "O grafo não registra nomes alternativos nem termos-chave desta ideologia.",
-      "coverage": "pending",
+      "question": "Que termos ajudam a entender o Trabalhismo?",
+      "bridge": "Os conceitos se encarnam em momentos e em experiências.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-classe-trabalhadora",
+        "src-wiki-topic-cultura-politica",
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-doutrina-social-da-igreja",
+        "src-wiki-topic-politica-do-brasil",
+        "src-wiki-topic-greve-geral-de-1917",
+        "src-wiki-topic-neomercantilismo",
+        "src-wiki-topic-populismo"
+      ],
+      "review": null,
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
       "layout": "concepts",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-ideologia-trabalhismo-brasileiro"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-ideologia-trabalhismo-brasileiro": "Nomes alternativos: trabalhismo, nacional-trabalhismo, Partido Trabalhista Brasileiro, PTB."
+          }
+        },
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-estado",
+            "wiki-topic-classe-trabalhadora",
+            "wiki-topic-cultura-politica",
+            "wiki-topic-era-vargas",
+            "wiki-topic-doutrina-social-da-igreja",
+            "wiki-topic-politica-do-brasil",
+            "wiki-topic-greve-geral-de-1917",
+            "wiki-topic-neomercantilismo",
+            "wiki-topic-populismo"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
     },
     {
       "id": "epocas",
@@ -99,15 +195,161 @@
       "kicker": "História e épocas",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Criação do Ministério do Trabalho, Indústria e Comércio, medida da Era Vargas.",
+        "Promulgação da Consolidação das Leis do Trabalho (CLT).",
+        "Institucionalização do trabalhismo com a fundação do Partido Trabalhista Brasileiro (PTB).",
+        "Golpe de Estado que interrompeu o processo de reformas do governo João Goulart.",
+        "Fundação do Partido Democrático Trabalhista (PDT), que reivindicou a tradição trabalhista.",
+        "O trabalhismo consolidou-se durante a Era Vargas, período em que a legislação trabalhista passou a ocupar posição central nas relações entre Estado, capital e trabalho."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhuma passagem do grafo traz datas ou contexto histórico.",
-      "coverage": "pending",
+      "question": "Em que momentos o Trabalhismo se desenvolveu?",
+      "bridge": "Esses momentos foram vividos por pessoas e organizações.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
       "layout": "timeline",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1930",
+              "kicker": "Marco datado",
+              "summary": "Criação do Ministério do Trabalho, Indústria e Comércio, medida da Era Vargas.",
+              "paragraphs": [
+                "Criação do Ministério do Trabalho, Indústria e Comércio, medida da Era Vargas."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1943",
+              "kicker": "Marco datado",
+              "summary": "Promulgação da Consolidação das Leis do Trabalho (CLT).",
+              "paragraphs": [
+                "Promulgação da Consolidação das Leis do Trabalho (CLT)."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1945",
+              "kicker": "Marco datado",
+              "summary": "Institucionalização do trabalhismo com a fundação do Partido Trabalhista Brasileiro (PTB).",
+              "paragraphs": [
+                "Institucionalização do trabalhismo com a fundação do Partido Trabalhista Brasileiro (PTB)."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-4",
+              "title": "1964",
+              "kicker": "Marco datado",
+              "summary": "Golpe de Estado que interrompeu o processo de reformas do governo João Goulart.",
+              "paragraphs": [
+                "Golpe de Estado que interrompeu o processo de reformas do governo João Goulart."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-5",
+              "title": "1980",
+              "kicker": "Marco datado",
+              "summary": "Fundação do Partido Democrático Trabalhista (PDT), que reivindicou a tradição trabalhista.",
+              "paragraphs": [
+                "Fundação do Partido Democrático Trabalhista (PDT), que reivindicou a tradição trabalhista."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "O trabalhismo consolidou-se durante a Era Vargas, período em que a legislação trabalhista passou a ocupar posição central nas relações entre Estado, capital e trabalho.",
+              "paragraphs": [
+                "O trabalhismo consolidou-se durante a Era Vargas, período em que a legislação trabalhista passou a ocupar posição central nas relações entre Estado, capital e trabalho."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            {
+              "itemId": "marco-1",
+              "start": 1930,
+              "end": 1930
+            },
+            {
+              "itemId": "marco-2",
+              "start": 1943,
+              "end": 1943
+            },
+            {
+              "itemId": "marco-3",
+              "start": 1945,
+              "end": 1945
+            },
+            {
+              "itemId": "marco-4",
+              "start": 1964,
+              "end": 1964
+            },
+            {
+              "itemId": "marco-5",
+              "start": 1980,
+              "end": 1980
+            }
+          ],
+          "entityIds": [
+            "wiki-ideologia-trabalhismo-brasileiro"
+          ],
+          "markerIds": [],
+          "markerNotes": {}
+        }
+      ]
     },
     {
       "id": "pensadores",
@@ -116,15 +358,46 @@
       "kicker": "Pensadores e obras",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Registros ligados à ideologia: Getúlio Vargas, Auguste Comte, João Goulart, Leonel Brizola, Jânio Quadros, San Tiago Dantas, Júlio de Castilhos, Alberto Pasqualini, Juscelino Kubitschek, Luiz Inácio Lula da Silva, Karl Marx."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
-      "coverage": "pending",
+      "question": "Quem pensou e disputou o Trabalhismo?",
+      "bridge": "As pessoas e obras se distribuem em correntes.",
+      "sourceIds": [
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-auguste-comte",
+        "src-wiki-topic-joao-goulart",
+        "src-wiki-topic-leonel-brizola",
+        "src-wiki-topic-janio-quadros",
+        "src-wiki-topic-san-tiago-dantas",
+        "src-wiki-topic-julio-de-castilhos",
+        "src-wiki-topic-alberto-pasqualini",
+        "src-wiki-topic-juscelino-kubitschek",
+        "src-wiki-topic-luiz-inacio-lula-da-silva"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
       "layout": "thinkers",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-getulio-vargas",
+            "wiki-topic-auguste-comte",
+            "wiki-topic-joao-goulart",
+            "wiki-topic-leonel-brizola",
+            "wiki-topic-janio-quadros",
+            "wiki-topic-san-tiago-dantas",
+            "wiki-topic-julio-de-castilhos",
+            "wiki-topic-alberto-pasqualini",
+            "wiki-topic-juscelino-kubitschek",
+            "wiki-topic-luiz-inacio-lula-da-silva",
+            "person-karl-marx"
+          ],
+          "mode": "thinkers",
+          "notes": {}
+        }
+      ]
     },
     {
       "id": "vertentes",
@@ -133,15 +406,50 @@
       "kicker": "Correntes e vertentes",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Correntes relacionadas: Positivismo, Nacionalismo, Comunismo, Socialismo, Esquerda (política), Direita (política), Social-democracia, Anarcossindicalismo, Desenvolvimentismo, Solidarismo, Liberalismo, Autoritarismo, Democracia."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
-      "coverage": "pending",
+      "question": "Quais correntes convivem dentro do Trabalhismo?",
+      "bridge": "As correntes se encontram em experiências históricas.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-nacionalismo",
+        "src-wiki-topic-esquerda-politica",
+        "src-wiki-topic-direita-politica",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-anarcossindicalismo",
+        "src-wiki-topic-desenvolvimentismo",
+        "src-wiki-topic-solidarismo",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-democracia"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-positivismo",
+            "wiki-topic-nacionalismo",
+            "ideology-communism",
+            "ideology-socialism",
+            "wiki-topic-esquerda-politica",
+            "wiki-topic-direita-politica",
+            "wiki-topic-social-democracia",
+            "wiki-topic-anarcossindicalismo",
+            "wiki-topic-desenvolvimentismo",
+            "wiki-topic-solidarismo",
+            "ideology-liberalism",
+            "wiki-topic-autoritarismo",
+            "wiki-topic-democracia"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-positivismo": "O positivismo influenciou o trabalhismo brasileiro, segundo o verbete."
+          }
+        }
+      ]
     },
     {
       "id": "experiencias",
@@ -150,15 +458,53 @@
       "kicker": "Experiências históricas",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Registros ligados à ideologia: Castilhismo, Guerra Fria, Petrobras, Tenentismo, Partido Trabalhista Brasileiro (1945), Revolução de 1930, Exército Brasileiro, Golpe de Estado no Brasil em 1964, Justiça do Trabalho, Comissão Econômica para a América Latina e o Caribe, Grande Depressão, Segunda Guerra Mundial, Igreja Católica."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhum acontecimento, partido ou instituição ligado a esta ideologia consta no grafo.",
-      "coverage": "pending",
+      "question": "Onde o Trabalhismo foi vivido ou aplicado?",
+      "bridge": "As experiências também produziram críticas e divergências.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-guerra-fria",
+        "src-wiki-topic-petrobras",
+        "src-wiki-topic-tenentismo",
+        "src-wiki-topic-partido-trabalhista-brasileiro-1945",
+        "src-wiki-topic-revolucao-de-1930",
+        "src-wiki-topic-exercito-brasileiro",
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-justica-do-trabalho",
+        "src-wiki-topic-comissao-economica-para-a-america-latina-e-o-caribe",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-segunda-guerra-mundial",
+        "src-wiki-topic-igreja-catolica"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-castilhismo",
+            "wiki-topic-guerra-fria",
+            "wiki-topic-petrobras",
+            "wiki-topic-tenentismo",
+            "wiki-topic-partido-trabalhista-brasileiro-1945",
+            "wiki-topic-revolucao-de-1930",
+            "wiki-topic-exercito-brasileiro",
+            "wiki-topic-golpe-de-estado-no-brasil-em-1964",
+            "wiki-topic-justica-do-trabalho",
+            "wiki-topic-comissao-economica-para-a-america-latina-e-o-caribe",
+            "wiki-topic-grande-depressao",
+            "wiki-topic-segunda-guerra-mundial",
+            "wiki-topic-igreja-catolica"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-castilhismo": "O castilhismo influenciou o trabalhismo brasileiro, segundo o verbete."
+          }
+        }
+      ]
     },
     {
       "id": "debates",
@@ -167,15 +513,58 @@
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Angela de Castro Gomes observa que o trabalhismo não constituiu mera continuidade do castilhismo, pois incorporou outras matrizes políticas e intelectuais.",
+        "Parte dos autores enfatiza a contribuição do modelo trabalhista para a cidadania social, enquanto outros destacam seu caráter corporativo."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhuma controvérsia ou crítica consta no grafo para esta ideologia.",
-      "coverage": "pending",
+      "question": "Quais críticas o Trabalhismo recebe?",
+      "bridge": "As críticas ajudam a situar as conexões com outras tradições.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro"
+      ],
+      "review": null,
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
       "layout": "debate",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "Angela de Castro Gomes observa que o trabalhismo não constituiu mera continuidade do castilhismo, pois incorporou outras matrizes políticas e intelectuais.",
+              "paragraphs": [
+                "Angela de Castro Gomes observa que o trabalhismo não constituiu mera continuidade do castilhismo, pois incorporou outras matrizes políticas e intelectuais."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "Parte dos autores enfatiza a contribuição do modelo trabalhista para a cidadania social, enquanto outros destacam seu caráter corporativo.",
+              "paragraphs": [
+                "Parte dos autores enfatiza a contribuição do modelo trabalhista para a cidadania social, enquanto outros destacam seu caráter corporativo."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "conexoes",
@@ -184,15 +573,37 @@
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Registros ligados à ideologia: Doutrina Social da Igreja, Brasil, Império do Brasil, Primeira República Brasileira, Período Populista."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhuma ligação com outras tradições consta no grafo.",
-      "coverage": "pending",
+      "question": "Como o Trabalhismo se liga a outras tradições?",
+      "bridge": "As conexões indicam caminhos de leitura.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-brasil",
+        "src-wiki-topic-imperio-do-brasil",
+        "src-wiki-topic-primeira-republica-brasileira",
+        "src-wiki-topic-periodo-populista"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
       "layout": "graph",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-doutrina-social-da-igreja",
+            "wiki-topic-brasil",
+            "wiki-topic-imperio-do-brasil",
+            "wiki-topic-primeira-republica-brasileira",
+            "wiki-topic-periodo-populista"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-doutrina-social-da-igreja": "A Doutrina Social da Igreja influenciou o trabalhismo brasileiro, segundo o verbete."
+          }
+        }
+      ]
     },
     {
       "id": "leituras",
@@ -201,15 +612,41 @@
       "kicker": "Roteiro de leitura",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Angela de Castro Gomes publicou A invenção do trabalhismo, obra listada na bibliografia do verbete."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
-      "gap": "Nenhuma obra citada como leitura consta no grafo.",
-      "coverage": "pending",
+      "question": "O que ler para continuar?",
+      "bridge": "As fontes sustentam o que foi lido.",
+      "sourceIds": [
+        "src-wiki-ideologia-trabalhismo-brasileiro"
+      ],
+      "review": null,
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "Angela de Castro Gomes publicou A invenção do trabalhismo, obra listada na bibliografia do verbete.",
+              "paragraphs": [
+                "Angela de Castro Gomes publicou A invenção do trabalhismo, obra listada na bibliografia do verbete."
+              ],
+              "sourceIds": [
+                "src-wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "entityIds": [
+                "wiki-ideologia-trabalhismo-brasileiro"
+              ],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "fontes",
@@ -218,13 +655,14 @@
       "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
-        "Reúne 0 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+        "Reúne 13 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
       ],
-      "question": null,
+      "question": "De onde vêm as informações desta leitura?",
       "bridge": null,
       "sourceIds": [
-        "src-wiki-topic-trabalhismo"
+        "src-wiki-ideologia-trabalhismo-brasileiro"
       ],
+      "review": null,
       "gap": null,
       "coverage": "complete",
       "layout": "sources",
@@ -232,7 +670,7 @@
         {
           "type": "sources",
           "sourceIds": [
-            "src-wiki-topic-trabalhismo"
+            "src-wiki-ideologia-trabalhismo-brasileiro"
           ]
         }
       ]

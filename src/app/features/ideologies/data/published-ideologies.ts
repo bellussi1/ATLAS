@@ -5,6 +5,8 @@
 export interface PublishedIdeologySource {
   page: string;
   supplement: string;
+  /** Compiled and reachable by direct URL, but not listed on the home, search or curated paths. */
+  unlisted?: boolean;
 }
 
 export const publishedIdeologies: Readonly<Record<string, PublishedIdeologySource | undefined>> = {
@@ -23,5 +25,20 @@ export const publishedIdeologies: Readonly<Record<string, PublishedIdeologySourc
   anarquismo: {
     page: 'content/ideologies/anarquismo/page.json',
     supplement: 'content/graph/anarquismo.json',
+  },
+  nazismo: {
+    page: 'content/ideologies/nazismo/page.json',
+    supplement: 'content/graph/nazismo.json',
+    unlisted: true,
+  },
+  stalinismo: {
+    page: 'content/ideologies/stalinismo/page.json',
+    supplement: 'content/graph/stalinismo.json',
+    unlisted: true,
+  },
+  trabalhismo: {
+    page: 'content/ideologies/trabalhismo/page.json',
+    supplement: 'content/graph/trabalhismo.json',
+    unlisted: true,
   },
 };

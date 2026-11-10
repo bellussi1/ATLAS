@@ -44,9 +44,16 @@ const redirects = new Set(
     .filter((line) => line && !line.startsWith('#'))
     .map((line) => line.split(/\s+/)[0].replace(/\/$/, '')),
 );
+// Preview readings are reachable by direct URL but stay out of the sitemap until they are listed.
+const previews = new Set(['/leitura/nazismo', '/leitura/stalinismo', '/leitura/trabalhismo']);
 for (const file of await collect(root)) {
   const route = routeOf(file);
-  if (route === '/404' || redirects.has(route.replace(/\/$/, ''))) continue;
+  if (
+    route === '/404' ||
+    redirects.has(route.replace(/\/$/, '')) ||
+    previews.has(route.replace(/\/$/, ''))
+  )
+    continue;
   let html = await readFile(file, 'utf8');
   html = html
     .replace(/<link\s+rel="canonical"[^>]*>\s*/gi, '')

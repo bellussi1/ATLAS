@@ -13,10 +13,12 @@ de US$ 6,06 no razão do checkout.
 | Nazismo | 40 | US$ 0,595 | US$ 1,131 | **US$ 0,164** |
 | Stalinismo | 44 | US$ 0,652 | US$ 1,241 | **US$ 0,178** |
 | Trabalhismo | 51 | US$ 0,751 | US$ 1,434 | **US$ 0,192** |
-| **Total** | **135** | **US$ 1,998** | **US$ 3,806** | **US$ 0,534** |
+| Raiz do trabalhismo (Q25447221) | 1 | US$ 0,013 | US$ 0,028 | **US$ 0,0058** |
+| **Total** | **136** | **US$ 2,011** | **US$ 3,834** | **US$ 0,540** |
 
-Todos os estágios 5 fecharam: 40/40, 44/44 e 51/51 artigos com rascunho rico, contrato válido,
-citações literais reverificadas, revisão `assistant` e relações confirmadas na segunda passada.
+Todos os estágios 5 fecharam: 40/40, 44/44, 51/51 e a raiz do trabalhismo (1/1) com rascunho
+rico, contrato válido, citações literais reverificadas, revisão `assistant` e relações confirmadas
+na segunda passada.
 
 Ajustes editoriais durante a extração:
 
@@ -60,24 +62,41 @@ Cobertura depois da lente (`npm run tradicao:coverage`):
 | --- | ---: | ---: | ---: | ---: | --- |
 | Nazismo | 41 | 16 | 42 | 35 | 41/41 |
 | Stalinismo | 46 | 68 | 49 | 53 | 45/45 |
-| Trabalhismo | 50 | 16 | 52 | 44 | 50/51 |
+| Trabalhismo | 51 | 19 | 53 | 44 | 51/51 |
 
-Estágios 6 e 7 passam nas três. O estágio 8 passa em dry-run para nazismo e stalinismo. O
-trabalhismo continua bloqueado: o `rootQid` Q25447221 (`trabalhismo no Brasil`) não está no grafo;
-o único "Trabalhismo" é a desambiguação Q125378958, sem afirmações. É preciso capturar e consolidar
-a raiz antes de gerar a leitura.
+Estágios 6 e 7 passam nas três. O estágio 8 passou nas três. A raiz do trabalhismo foi capturada
+(QID Q25447221, artigo `Trabalhismo brasileiro`, revisão 73386437) e extraída por **US$ 0,0058**
+(teto de US$ 0,03): 3 relações confirmadas. A consolidação criou a entidade
+`wiki-ideologia-trabalhismo-brasileiro` em `atlas-trabalhismo`, e a leitura foi gerada em
+`content/ideologies/trabalhismo/page.json`, com título "Trabalhismo" e o slug do registro.
 
-Estimativa com a página gerada em memória, sem escrever:
+Cobertura com a página gerada e o preenchimento pela lente:
 
 | Tradição | Entidades | Relações | Fontes citadas | Capítulos com blocos | Imagens |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Nazismo | 44 | 22 | 1 | 9/12 | 38 |
-| Stalinismo | 48 | 80 | 2 | 6/12 | 55 |
+| Nazismo | 44 | 22 | 36 | 11/12 | 38 |
+| Stalinismo | 48 | 80 | 31 | 9/12 | 55 |
+| Trabalhismo | 51 | 19 | 45 | 11/12 | 44 |
 
-A lente fecha entidades e imagens, mas não o piso inteiro: relações entre aceitos (nazismo), fontes
-citadas e capítulos/blocos ainda dependem da geração e da edição. O piso exige 10 capítulos com
-blocos, 6 completos, 7 tipos de bloco e 11 fontes citadas; a leitura montada do grafo não produz
-todos esses tipos sozinha. Isso é trabalho dos estágios 9 e 10, não da lente.
+O preenchimento pela lente (commit **`10b668b`**, páginas em **`8ed3f9f`**) adicionou aos capítulos
+as entidades aceitas que não tinham aresta com a raiz — pensadores, vertentes, experiências,
+conexões, conceitos e obras — e anexou a fonte-verbete de cada uma. Fontes citadas passaram a
+**36/31/45** e capítulos pendentes a **0/2/0**.
+
+Restam três lacunas:
+- **Tipos de bloco (4/7 nas três)**: exige bloco editorial (roteiro de leitura, atlas ou debate).
+- **Relações (nazismo 22 e trabalhismo 19, contra 37)**: exige mais extração ou curadoria.
+- **Stalinismo (9/10 capítulos com blocos, 2 pendentes)**: `origens` e `principios` não têm seção
+  correspondente na raiz; o artigo da raiz precisa de nova extração ou de conteúdo editorial.
+
+## Edição (estágio 9)
+
+As três leituras receberam pergunta e ponte em todos os capítulos preenchidos, e os gates do
+estágio 9 passaram. O estágio revisa tom, pergunta e ponte; ele **não** adiciona fontes, tipos de
+bloco nem preenche capítulos pendentes. Isso foi feito depois pelo preenchimento pela lente.
+
+As perguntas e pontes são genéricas e ainda pedem revisão de tom. Para os 7 tipos de bloco, é
+preciso um bloco editorial; para o stalinismo, a raiz carece de seções de origem e princípios.
 
 ## Estado dos arquivos
 
@@ -86,14 +105,18 @@ todos esses tipos sozinha. Isso é trabalho dos estágios 9 e 10, não da lente.
   slug da leitura.
 - Conteúdo do piloto (16 coleções, manifesto, três páginas e os três registros com a lente) foi
   commitado em **`7a9e60e`**; nada foi publicado no R2 e as três páginas seguem `published: false`.
+- A raiz do trabalhismo foi capturada e extraída localmente; o artigo e a captura ficam em
+  `generated/` e `scripts/ingestion/wiki-extract/raw/` (fora do git). A coleção e a página foram
+  commitadas em **`bf8054a`**; os capítulos de nazismo e stalinismo, em **`11a13bc`**.
 - As capturas brutas do piloto (12 manifestos e blobs) ficam locais em `scripts/ingestion/wiki-extract/raw/`
   e fora do git; o worker de raw não tem esses objetos. Publicar o raw é uma decisão separada.
 
 ## Próxima decisão
 
-1. Gerar os capítulos de nazismo e stalinismo (grátis) e revisar a leitura; o estágio 8 já passa
-   em dry-run para as duas.
-2. Tratar o trabalhismo: capturar a raiz Q25447221 (grátis) e extrair o verbete (pago, com
-   estimativa e aprovação) antes de gerar a leitura.
-3. Fechar as lacunas de piso que não são da lente (fontes citadas, capítulos/blocos e tipos de
-   bloco) na edição do estágio 9 e na montagem editorial, sem baixar o piso.
+1. Revisar o tom das três leituras; o estágio 9 já adicionou pergunta e ponte, e o preenchimento
+   pela lente já anexou as fontes.
+2. Fechar os 7 tipos de bloco com edição editorial (roteiro de leitura, atlas ou debate); ampliar
+   relações de nazismo e trabalhismo; decidir se o stalinismo recebe nova extração da raiz para
+   `origens` e `principios`.
+3. Decidir a publicação do conteúdo do piloto no R2; hoje a navegação foi publicada, mas o conteúdo
+   do piloto não.
