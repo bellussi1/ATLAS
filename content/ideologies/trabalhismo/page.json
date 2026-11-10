@@ -138,12 +138,22 @@
       "kicker": "Conceitos e palavras-chave",
       "minutes": 1,
       "narrative": [
-        "Também chamada de trabalhismo, nacional-trabalhismo, Partido Trabalhista Brasileiro, PTB."
+        "Também chamada de trabalhismo, nacional-trabalhismo, Partido Trabalhista Brasileiro, PTB.",
+        "Conceitos ligados à tradição: Estado, Classe trabalhadora, Cultura política, Era Vargas, Doutrina Social da Igreja, Política do Brasil, Greve geral de 1917, Neomercantilismo, Populismo."
       ],
       "question": "Que termos ajudam a entender o Trabalhismo?",
       "bridge": "Os conceitos se encarnam em momentos e em experiências.",
       "sourceIds": [
-        "src-wiki-ideologia-trabalhismo-brasileiro"
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-classe-trabalhadora",
+        "src-wiki-topic-cultura-politica",
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-doutrina-social-da-igreja",
+        "src-wiki-topic-politica-do-brasil",
+        "src-wiki-topic-greve-geral-de-1917",
+        "src-wiki-topic-neomercantilismo",
+        "src-wiki-topic-populismo"
       ],
       "review": null,
       "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
@@ -159,6 +169,22 @@
           "notes": {
             "wiki-ideologia-trabalhismo-brasileiro": "Nomes alternativos: trabalhismo, nacional-trabalhismo, Partido Trabalhista Brasileiro, PTB."
           }
+        },
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-estado",
+            "wiki-topic-classe-trabalhadora",
+            "wiki-topic-cultura-politica",
+            "wiki-topic-era-vargas",
+            "wiki-topic-doutrina-social-da-igreja",
+            "wiki-topic-politica-do-brasil",
+            "wiki-topic-greve-geral-de-1917",
+            "wiki-topic-neomercantilismo",
+            "wiki-topic-populismo"
+          ],
+          "mode": "concepts",
+          "notes": {}
         }
       ]
     },
@@ -332,16 +358,46 @@
       "kicker": "Pensadores e obras",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Registros ligados à ideologia: Getúlio Vargas, Auguste Comte, João Goulart, Leonel Brizola, Jânio Quadros, San Tiago Dantas, Júlio de Castilhos, Alberto Pasqualini, Juscelino Kubitschek, Luiz Inácio Lula da Silva, Karl Marx."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
+      "question": "Quem pensou e disputou o Trabalhismo?",
+      "bridge": "As pessoas e obras se distribuem em correntes.",
+      "sourceIds": [
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-auguste-comte",
+        "src-wiki-topic-joao-goulart",
+        "src-wiki-topic-leonel-brizola",
+        "src-wiki-topic-janio-quadros",
+        "src-wiki-topic-san-tiago-dantas",
+        "src-wiki-topic-julio-de-castilhos",
+        "src-wiki-topic-alberto-pasqualini",
+        "src-wiki-topic-juscelino-kubitschek",
+        "src-wiki-topic-luiz-inacio-lula-da-silva"
+      ],
       "review": null,
-      "gap": "Nenhuma pessoa ou obra ligada a esta ideologia consta no grafo.",
-      "coverage": "pending",
+      "gap": null,
+      "coverage": "complete",
       "layout": "thinkers",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-getulio-vargas",
+            "wiki-topic-auguste-comte",
+            "wiki-topic-joao-goulart",
+            "wiki-topic-leonel-brizola",
+            "wiki-topic-janio-quadros",
+            "wiki-topic-san-tiago-dantas",
+            "wiki-topic-julio-de-castilhos",
+            "wiki-topic-alberto-pasqualini",
+            "wiki-topic-juscelino-kubitschek",
+            "wiki-topic-luiz-inacio-lula-da-silva",
+            "person-karl-marx"
+          ],
+          "mode": "thinkers",
+          "notes": {}
+        }
+      ]
     },
     {
       "id": "vertentes",
@@ -350,12 +406,21 @@
       "kicker": "Correntes e vertentes",
       "minutes": 1,
       "narrative": [
-        "Correntes relacionadas: Positivismo."
+        "Correntes relacionadas: Positivismo, Nacionalismo, Comunismo, Socialismo, Esquerda (política), Direita (política), Social-democracia, Anarcossindicalismo, Desenvolvimentismo, Solidarismo, Liberalismo, Autoritarismo, Democracia."
       ],
       "question": "Quais correntes convivem dentro do Trabalhismo?",
       "bridge": "As correntes se encontram em experiências históricas.",
       "sourceIds": [
-        "src-wiki-ideologia-trabalhismo-brasileiro"
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-nacionalismo",
+        "src-wiki-topic-esquerda-politica",
+        "src-wiki-topic-direita-politica",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-anarcossindicalismo",
+        "src-wiki-topic-desenvolvimentismo",
+        "src-wiki-topic-solidarismo",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-democracia"
       ],
       "review": null,
       "gap": null,
@@ -365,7 +430,19 @@
         {
           "type": "entities",
           "entityIds": [
-            "wiki-topic-positivismo"
+            "wiki-topic-positivismo",
+            "wiki-topic-nacionalismo",
+            "ideology-communism",
+            "ideology-socialism",
+            "wiki-topic-esquerda-politica",
+            "wiki-topic-direita-politica",
+            "wiki-topic-social-democracia",
+            "wiki-topic-anarcossindicalismo",
+            "wiki-topic-desenvolvimentismo",
+            "wiki-topic-solidarismo",
+            "ideology-liberalism",
+            "wiki-topic-autoritarismo",
+            "wiki-topic-democracia"
           ],
           "mode": "concepts",
           "notes": {
@@ -381,12 +458,24 @@
       "kicker": "Experiências históricas",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Castilhismo."
+        "Registros ligados à ideologia: Castilhismo, Guerra Fria, Petrobras, Tenentismo, Partido Trabalhista Brasileiro (1945), Revolução de 1930, Exército Brasileiro, Golpe de Estado no Brasil em 1964, Justiça do Trabalho, Comissão Econômica para a América Latina e o Caribe, Grande Depressão, Segunda Guerra Mundial, Igreja Católica."
       ],
       "question": "Onde o Trabalhismo foi vivido ou aplicado?",
       "bridge": "As experiências também produziram críticas e divergências.",
       "sourceIds": [
-        "src-wiki-ideologia-trabalhismo-brasileiro"
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-guerra-fria",
+        "src-wiki-topic-petrobras",
+        "src-wiki-topic-tenentismo",
+        "src-wiki-topic-partido-trabalhista-brasileiro-1945",
+        "src-wiki-topic-revolucao-de-1930",
+        "src-wiki-topic-exercito-brasileiro",
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-justica-do-trabalho",
+        "src-wiki-topic-comissao-economica-para-a-america-latina-e-o-caribe",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-segunda-guerra-mundial",
+        "src-wiki-topic-igreja-catolica"
       ],
       "review": null,
       "gap": null,
@@ -396,7 +485,19 @@
         {
           "type": "entities",
           "entityIds": [
-            "wiki-topic-castilhismo"
+            "wiki-topic-castilhismo",
+            "wiki-topic-guerra-fria",
+            "wiki-topic-petrobras",
+            "wiki-topic-tenentismo",
+            "wiki-topic-partido-trabalhista-brasileiro-1945",
+            "wiki-topic-revolucao-de-1930",
+            "wiki-topic-exercito-brasileiro",
+            "wiki-topic-golpe-de-estado-no-brasil-em-1964",
+            "wiki-topic-justica-do-trabalho",
+            "wiki-topic-comissao-economica-para-a-america-latina-e-o-caribe",
+            "wiki-topic-grande-depressao",
+            "wiki-topic-segunda-guerra-mundial",
+            "wiki-topic-igreja-catolica"
           ],
           "mode": "concepts",
           "notes": {
@@ -472,12 +573,16 @@
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Doutrina Social da Igreja."
+        "Registros ligados à ideologia: Doutrina Social da Igreja, Brasil, Império do Brasil, Primeira República Brasileira, Período Populista."
       ],
       "question": "Como o Trabalhismo se liga a outras tradições?",
       "bridge": "As conexões indicam caminhos de leitura.",
       "sourceIds": [
-        "src-wiki-ideologia-trabalhismo-brasileiro"
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-brasil",
+        "src-wiki-topic-imperio-do-brasil",
+        "src-wiki-topic-primeira-republica-brasileira",
+        "src-wiki-topic-periodo-populista"
       ],
       "review": null,
       "gap": null,
@@ -487,7 +592,11 @@
         {
           "type": "entities",
           "entityIds": [
-            "wiki-topic-doutrina-social-da-igreja"
+            "wiki-topic-doutrina-social-da-igreja",
+            "wiki-topic-brasil",
+            "wiki-topic-imperio-do-brasil",
+            "wiki-topic-primeira-republica-brasileira",
+            "wiki-topic-periodo-populista"
           ],
           "mode": "concepts",
           "notes": {
