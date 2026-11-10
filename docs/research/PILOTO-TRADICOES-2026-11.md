@@ -70,29 +70,33 @@ Estágios 6 e 7 passam nas três. O estágio 8 passou nas três. A raiz do traba
 `wiki-ideologia-trabalhismo-brasileiro` em `atlas-trabalhismo`, e a leitura foi gerada em
 `content/ideologies/trabalhismo/page.json`, com título "Trabalhismo" e o slug do registro.
 
-Cobertura com a página gerada:
+Cobertura com a página gerada e o preenchimento pela lente:
 
 | Tradição | Entidades | Relações | Fontes citadas | Capítulos com blocos | Imagens |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Nazismo | 44 | 22 | 1 | 9/12 | 38 |
-| Stalinismo | 48 | 80 | 2 | 6/12 | 55 |
-| Trabalhismo | 51 | 19 | 1 | 10/12 | 44 |
+| Nazismo | 44 | 22 | 36 | 11/12 | 38 |
+| Stalinismo | 48 | 80 | 31 | 9/12 | 55 |
+| Trabalhismo | 51 | 19 | 45 | 11/12 | 44 |
 
-A lente fecha entidades e imagens, mas não o piso inteiro. O trabalhismo agora cumpre capítulos
-com blocos, completos e pendentes; restam relações (19 < 37), fontes citadas (1 < 11) e tipos de
-bloco (4 < 7). Nazismo e stalinismo também ficam abaixo em relações (nazismo), fontes citadas e
-tipos de bloco. Isso é trabalho dos estágios 9 e 10, não da lente nem de mais extração por si só.
+O preenchimento pela lente (commit **`10b668b`**, páginas em **`8ed3f9f`**) adicionou aos capítulos
+as entidades aceitas que não tinham aresta com a raiz — pensadores, vertentes, experiências,
+conexões, conceitos e obras — e anexou a fonte-verbete de cada uma. Fontes citadas passaram a
+**36/31/45** e capítulos pendentes a **0/2/0**.
+
+Restam três lacunas:
+- **Tipos de bloco (4/7 nas três)**: exige bloco editorial (roteiro de leitura, atlas ou debate).
+- **Relações (nazismo 22 e trabalhismo 19, contra 37)**: exige mais extração ou curadoria.
+- **Stalinismo (9/10 capítulos com blocos, 2 pendentes)**: `origens` e `principios` não têm seção
+  correspondente na raiz; o artigo da raiz precisa de nova extração ou de conteúdo editorial.
 
 ## Edição (estágio 9)
 
 As três leituras receberam pergunta e ponte em todos os capítulos preenchidos, e os gates do
 estágio 9 passaram. O estágio revisa tom, pergunta e ponte; ele **não** adiciona fontes, tipos de
-bloco nem preenche capítulos pendentes. A cobertura permaneceu a mesma: 45/51/53 fontes, 1/2/1
-citadas, 4 tipos de bloco e 2/5/1 capítulos pendentes (nazismo/stalinismo/trabalhismo).
+bloco nem preenche capítulos pendentes. Isso foi feito depois pelo preenchimento pela lente.
 
-Para fechar fontes citadas e capítulos pendentes, o caminho é preencher os capítulos a partir da
-lente e anexar a fonte-verbete de cada entidade exibida; para os 7 tipos de bloco, é preciso um
-bloco editorial (roteiro de leitura, atlas ou debate), não geração automática.
+As perguntas e pontes são genéricas e ainda pedem revisão de tom. Para os 7 tipos de bloco, é
+preciso um bloco editorial; para o stalinismo, a raiz carece de seções de origem e princípios.
 
 ## Estado dos arquivos
 
@@ -109,9 +113,10 @@ bloco editorial (roteiro de leitura, atlas ou debate), não geração automátic
 
 ## Próxima decisão
 
-1. Revisar o tom das três leituras; o estágio 9 já adicionou pergunta e ponte.
-2. Fechar fontes citadas e capítulos pendentes preenchendo os capítulos a partir da lente e
-   anexando a fonte-verbete de cada entidade; fechar os 7 tipos de bloco com edição editorial
-   (roteiro de leitura, atlas ou debate).
+1. Revisar o tom das três leituras; o estágio 9 já adicionou pergunta e ponte, e o preenchimento
+   pela lente já anexou as fontes.
+2. Fechar os 7 tipos de bloco com edição editorial (roteiro de leitura, atlas ou debate); ampliar
+   relações de nazismo e trabalhismo; decidir se o stalinismo recebe nova extração da raiz para
+   `origens` e `principios`.
 3. Decidir a publicação do conteúdo do piloto no R2; hoje a navegação foi publicada, mas o conteúdo
    do piloto não.
