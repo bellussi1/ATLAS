@@ -17,6 +17,7 @@ import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 
 import { formatJson, readSourceGraph } from '../content/source-graph.mjs';
+import { resolveLens } from './belonging.mjs';
 import { projectRoot } from './registry.mjs';
 
 const { canonicalChapters } =
@@ -357,6 +358,8 @@ export function buildReading({
   evidenceIndex = null,
   pageSlug = null,
   pageTitle = null,
+  lens = [],
+  entitySources = null,
 }) {
   const slug = pageSlug ?? entity.slug;
   const claims = entityClaims(entity, atlas);
@@ -387,10 +390,82 @@ export function buildReading({
       sourceIds: evidenceOf(relation),
     });
   }
+  // A lente acrescenta os registros aceitos que não têm aresta com a raiz. Cada um entra com a
+  // sua fonte-verbete; a página não inventa relação nem duplica o nó.
+  const lensEntities = lens.filter((candidate) => candidate.id !== entity.id);
+  const addLensChapter = (chapter, kinds) => {
+    for (const other of lensEntities) {
+      if (!kinds.includes(other.kind)) continue;
+      related[chapter] ??= [];
+      const bucket = related[chapter];
+      if (bucket.some((record) => record.entity.id === other.id)) continue;
+      const sourceId = entitySources?.get(other.id);
+      bucket.push({
+        entity: other,
+        kind: other.kind,
+        note: null,
+        sourceIds: sourceId ? [sourceId] : [],
+      });
+    }
+  };
+  addLensChapter('pensadores', ['person']);
+  addLensChapter('vertentes', ['ideology']);
+  addLensChapter('experiencias', [
+    'event',
+    'party',
+    'institution',
+    'government',
+    'historical-polity',
+  ]);
+  addLensChapter('conexoes', [
+    'place',
+    'country',
+    'regime',
+    'city',
+    'state',
+    'region',
+    'continent',
+    'site',
+    'other',
+  ]);
   const position = atlas.claims
     .filter((c) => c.entityId === entity.id && POSITION.test(c.text))
     .map((c) => c.text.replace(/^Posição política descrita na fonte:\s*/, '').replace(/\.$/, ''));
   const content = chapterContents(entity, claims, related, source);
+  const addLensEntities = (chapterContent, kind, mode, label, gap) => {
+    const records = lensEntities.filter((candidate) => candidate.kind === kind);
+    if (!records.length) return chapterContent;
+    const sourceIds = records.map((candidate) => entitySources?.get(candidate.id)).filter(Boolean);
+    const block = {
+      type: 'entities',
+      mode,
+      entityIds: records.map((candidate) => candidate.id),
+      notes: {},
+    };
+    const narrative = [`${label}: ${records.map((candidate) => candidate.title).join(', ')}.`];
+    if (chapterContent.pending)
+      return { claims: [], narrative, sourceIds, blocks: [block], partial: gap };
+    return {
+      ...chapterContent,
+      narrative: [...(chapterContent.narrative ?? []), ...narrative],
+      sourceIds: dedupe([...(chapterContent.sourceIds ?? []), ...sourceIds]),
+      blocks: [...(chapterContent.blocks ?? []), block],
+    };
+  };
+  content.conceitos = addLensEntities(
+    content.conceitos,
+    'concept',
+    'concepts',
+    'Conceitos ligados à tradição',
+    'Termos e conceitos ligados à tradição; discussão conceitual ainda pendente.',
+  );
+  content.leituras = addLensEntities(
+    content.leituras,
+    'work',
+    'documents',
+    'Obras ligadas à tradição',
+    'Obras ligadas à tradição; edição e nível de leitura ainda pendentes.',
+  );
   if (position.length && content.introducao.narrative)
     content.introducao.narrative.push(`Posição política descrita na fonte: ${position[0]}.`);
 
@@ -524,6 +599,7 @@ export async function generateReadings({
   palette = null,
   pageSlug = null,
   pageTitle = null,
+  lensQids = null,
   slugs = null,
   write = true,
   today = new Date().toISOString().slice(0, 10),
@@ -541,6 +617,15 @@ export async function generateReadings({
   const evidenceIndex = new Map(
     graph.atlases.flatMap((a) => a.evidences.map((evidence) => [evidence.id, evidence])),
   );
+  const lens = lensQids?.length ? resolveLens(graph.atlases, lensQids) : null;
+  const lensEntities = lens ? lens.entities.map(({ entity: member }) => member) : [];
+  const entitySources = new Map();
+  for (const atlas of graph.atlases)
+    for (const source of atlas.sources) {
+      if (!source.id.startsWith('src-')) continue;
+      const entityId = source.id.slice(4);
+      if (!entitySources.has(entityId)) entitySources.set(entityId, source.id);
+    }
   const ideologies = rooted ? [rooted.entity] : atlas.entities.filter((e) => e.kind === 'ideology');
   const missing = (slugs ?? []).filter((s) => !ideologies.some((e) => e.slug === s));
   if (missing.length) throw new Error(`Sem ideologia em ${atlasId}: ${missing.join(', ')}.`);
@@ -569,6 +654,8 @@ export async function generateReadings({
       evidenceIndex,
       pageSlug: outputSlug,
       pageTitle,
+      lens: lensEntities,
+      entitySources,
     });
     const { page: valid } = validateIdeologyDossier(page, supplement, graph);
     reports.push(readingReport(valid));

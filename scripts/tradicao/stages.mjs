@@ -150,6 +150,7 @@ async function readingPlan(ctx, registry) {
     slugs: root ? [root.slug] : [],
     pageSlug: registry.slug,
     pageTitle: registry.titles.pt,
+    lensQids: lensQids(registry),
   };
 }
 
