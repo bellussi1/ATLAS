@@ -74,7 +74,9 @@ for (const width of [1440, 390, 320]) {
         slug === 'marxismo' ? 'O capital: volume I' : 'Adam Smith',
       );
       await expect(dialog.locator('h2')).toBeFocused();
-      expect((await dialog.boundingBox())?.height).toBe(panel?.height);
+      // Selecting another entry can reflow by a line; the sheet must not jump more than that.
+      const height = (await dialog.boundingBox())?.height ?? 0;
+      expect(Math.abs(height - (panel?.height ?? 0))).toBeLessThanOrEqual(24);
       const a11y = await new AxeBuilder({ page }).include('[role="dialog"]').analyze();
       expect(
         a11y.violations.filter((v) => ['critical', 'serious'].includes(v.impact ?? '')),

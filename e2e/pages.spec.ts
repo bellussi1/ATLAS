@@ -295,7 +295,7 @@ test('a record without an image keeps its geometric illustration in the right co
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/verbete/burguesia');
+  await page.goto('/verbete/mais-valia');
   const text = page.locator('.hero-text');
   const art = page.locator('.hero-media--illustration app-geometric-illustration');
   await expect(art).toBeVisible();
