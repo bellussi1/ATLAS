@@ -57,6 +57,46 @@ describe('KnowledgeNetworkComponent', () => {
     });
     const fixture = await render();
     expect(fixture.componentInstance.positions()).toEqual(new Map(Object.entries(positions)));
+    expect(fixture.componentInstance.loading()).toBe(false);
+  });
+
+  it('orders the filter panels cleanly, omits removed panels, and collapses collections by default', async () => {
+    const fixture = await render();
+    const panels = [
+      ...root(fixture).querySelectorAll<HTMLDetailsElement>('#graph-controls details.panel'),
+    ];
+    const titles = panels.map((panel) => panel.querySelector('summary h2')?.textContent?.trim());
+    expect(titles).toEqual(['Tipos de nó', 'Caminho', 'Tipos de ligação', 'Coleções']);
+    for (const removed of ['Escopo', 'Vizinhança', 'Período'])
+      expect(titles).not.toContain(removed);
+    expect(panels[0].open).toBe(true);
+    expect(panels[1].open).toBe(true);
+    expect(panels[2].open).toBe(true);
+    expect(panels[3].open).toBe(false);
+  });
+
+  it('sets, swaps and follows path endpoints via the path controls', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const edge = component.visible().edges.find((item) => item.source !== item.target)!;
+    expect(edge).toBeDefined();
+    component.setPathEndpoint('from', edge.source);
+    component.setPathEndpoint('to', edge.target);
+    fixture.detectChanges();
+    expect(root(fixture).querySelector('#graph-path-summary')?.textContent).toContain('1 passo');
+    const steps = root(fixture).querySelectorAll<HTMLButtonElement>('.path-steps .path-step');
+    expect(steps.length).toBe(2);
+    steps[1].click();
+    fixture.detectChanges();
+    expect(component.selectedId()).toBe(edge.target);
+    component.swapPath();
+    fixture.detectChanges();
+    expect(component.pathFrom()).toBe(edge.target);
+    expect(component.pathTo()).toBe(edge.source);
+    component.clearPath();
+    fixture.detectChanges();
+    expect(component.pathFrom()).toBeNull();
+    expect(component.pathTo()).toBeNull();
   });
 
   it('shows a loading state until the layout is ready, then draws nodes', async () => {

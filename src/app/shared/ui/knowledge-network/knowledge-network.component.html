@@ -82,10 +82,20 @@
       aria-label="Legenda e filtros"
     >
       <details class="panel" open>
-        <summary><h2>Tipos de nó</h2></summary>
-        <p class="hint">
-          Cada tipo tem cor, forma e índice próprios. Clique para mostrar ou ocultar.
-        </p>
+        <summary>
+          <h2>Tipos de nó</h2>
+          <span class="panel__badge" [class.panel__badge--accent]="kindsOn().size < kinds.length">
+            {{ kindsOn().size }}/{{ kinds.length }}
+          </span>
+        </summary>
+        <div class="panel__bar">
+          <p class="hint">Clique para mostrar ou ocultar; duplo clique isola um tipo.</p>
+          @if (kindsOn().size < kinds.length) {
+            <button type="button" class="panel__reset" (click)="showAllKinds()">
+              Mostrar todos
+            </button>
+          }
+        </div>
         @for (group of kindGroups; track group.id) {
           <section class="legend__group" [attr.aria-labelledby]="'legend-group-' + group.id">
             <h3 class="legend__group-title" [id]="'legend-group-' + group.id">
@@ -108,45 +118,172 @@
                       <span class="legend__code" aria-hidden="true">{{ kind.code }}</span>
                     </span>
                     <span class="legend__name">{{ kind.plural }}</span>
-                    <span class="legend__count">{{ counts().kinds.get(kind.id) ?? 0 }}</span>
+                    <span class="legend__count">{{ counts.kinds.get(kind.id) ?? 0 }}</span>
                   </button>
                 </li>
               }
             </ul>
           </section>
         }
-        <p class="hint">Duplo clique mostra só aquele tipo.</p>
       </details>
 
       <details class="panel" open>
-        <summary><h2>Escopo</h2></summary>
-        <p class="hint">
-          Núcleo, contexto e fora do recorte político. O filtro só esconde o nó; não apaga o
-          registro.
-        </p>
-        @for (scope of graphScopeOptions; track scope.id) {
-          <label class="check">
-            <input
-              type="checkbox"
-              [checked]="scopesOn().has(scope.id)"
-              (change)="toggleScope(scope.id)"
-            />
-            <span>{{ scope.label }}</span>
-            <span class="legend__count">{{ counts().scopes.get(scope.id) ?? 0 }}</span>
-          </label>
+        <summary>
+          <h2>Caminho</h2>
+          @if (pathMode()) {
+            <span class="panel__badge panel__badge--accent">Traçando</span>
+          } @else if (visible().path; as path) {
+            <span class="panel__badge" [class.panel__badge--accent]="path.found">
+              @if (path.found) {
+                {{ path.edges.length }} {{ path.edges.length === 1 ? 'passo' : 'passos' }}
+              } @else {
+                Sem rota
+              }
+            </span>
+          }
+        </summary>
+        <p class="hint">Trace o menor trajeto entre dois verbetes no recorte atual.</p>
+        <ol class="path-slots">
+          <li class="path-slot" [class.is-filled]="!!pathFrom()">
+            <div class="path-slot__head">
+              <span class="path-slot__label">1 · Origem</span>
+              @if (selected(); as picked) {
+                @if (picked.id !== pathFrom()) {
+                  <button
+                    type="button"
+                    class="path-slot__action"
+                    (click)="setPathEndpoint('from', picked.id)"
+                  >
+                    Usar selecionado
+                  </button>
+                }
+              }
+              @if (pathFrom()) {
+                <button
+                  type="button"
+                  class="path-slot__clear"
+                  aria-label="Limpar origem"
+                  (click)="setPathEndpoint('from', null)"
+                >
+                  ×
+                </button>
+              }
+            </div>
+            <p class="path-slot__value">
+              {{ pathFromTitle() ?? 'Selecione no mapa ou clique Traçar' }}
+            </p>
+          </li>
+          <li class="path-slot" [class.is-filled]="!!pathTo()">
+            <div class="path-slot__head">
+              <span class="path-slot__label">2 · Destino</span>
+              @if (selected(); as picked) {
+                @if (picked.id !== pathTo() && picked.id !== pathFrom()) {
+                  <button
+                    type="button"
+                    class="path-slot__action"
+                    (click)="setPathEndpoint('to', picked.id)"
+                  >
+                    Usar selecionado
+                  </button>
+                }
+              }
+              @if (pathTo()) {
+                <button
+                  type="button"
+                  class="path-slot__clear"
+                  aria-label="Limpar destino"
+                  (click)="setPathEndpoint('to', null)"
+                >
+                  ×
+                </button>
+              }
+            </div>
+            <p class="path-slot__value">
+              {{ pathToTitle() ?? 'Selecione no mapa ou clique Traçar' }}
+            </p>
+          </li>
+        </ol>
+        <div class="path-actions">
+          <button
+            type="button"
+            class="chip"
+            [class.chip--solid]="pathMode()"
+            [attr.aria-pressed]="pathMode()"
+            (click)="togglePathMode()"
+          >
+            {{ pathMode() ? 'Cancelar caminho' : 'Traçar caminho' }}
+          </button>
+          @if (pathFrom() || pathTo()) {
+            <button
+              type="button"
+              class="chip"
+              aria-label="Inverter origem e destino"
+              (click)="swapPath()"
+            >
+              Inverter
+            </button>
+            <button type="button" class="chip" (click)="clearPath()">Limpar caminho</button>
+          }
+        </div>
+        @if (pathMode()) {
+          <p class="hint" role="status">
+            @if (!pathFrom()) {
+              Passo 1 de 2: clique no verbete de origem no mapa.
+            } @else {
+              Passo 2 de 2: clique no verbete de destino no mapa.
+            }
+          </p>
+        }
+        @if (visible().path) {
+          <p class="hint" role="status" id="graph-path-summary">{{ pathSummary() }}</p>
+          @if (pathNodes().length > 0) {
+            <ol class="path-steps" aria-label="Verbetes no caminho">
+              @for (step of pathNodes(); track step.id; let last = $last) {
+                <li>
+                  <button
+                    type="button"
+                    class="path-step"
+                    [class.is-active]="step.id === selectedId()"
+                    (click)="select(step.id)"
+                  >
+                    {{ step.title }}
+                  </button>
+                  @if (!last) {
+                    <span class="path-step__sep" aria-hidden="true">→</span>
+                  }
+                </li>
+              }
+            </ol>
+          }
         }
       </details>
 
       <details class="panel" open>
-        <summary><h2>Tipos de ligação</h2></summary>
-        <p class="hint">A ponta da seta aponta para quem recebe a ação.</p>
+        <summary>
+          <h2>Tipos de ligação</h2>
+          <span
+            class="panel__badge"
+            [class.panel__badge--accent]="familiesOn().size < families.length"
+          >
+            {{ familiesOn().size }}/{{ families.length }}
+          </span>
+        </summary>
+        <div class="panel__bar">
+          <p class="hint">A seta aponta para quem recebe a ação.</p>
+          @if (familiesOn().size < families.length) {
+            <button type="button" class="panel__reset" (click)="showAllFamilies()">
+              Mostrar todas
+            </button>
+          }
+        </div>
         <ul class="legend">
           @for (family of families; track family.id) {
-            <li>
+            <li class="legend__row">
               <button
                 type="button"
                 class="legend__item"
                 [attr.aria-pressed]="familiesOn().has(family.id)"
+                [attr.aria-describedby]="'family-note-' + family.id"
                 (click)="toggleFamily(family.id)"
               >
                 <svg class="swatch swatch--line" viewBox="0 0 32 12" aria-hidden="true">
@@ -163,112 +300,43 @@
                   }
                 </svg>
                 <span class="legend__name">{{ family.label }}</span>
-                <span class="legend__count">{{ counts().families.get(family.id) ?? 0 }}</span>
+                <span class="legend__count">{{ counts.families.get(family.id) ?? 0 }}</span>
               </button>
+              <p class="legend__note" [id]="'family-note-' + family.id">{{ family.note }}</p>
             </li>
           }
         </ul>
-      </details>
-
-      <details class="panel" open>
-        <summary><h2>Vizinhança</h2></summary>
-        <p class="hint">A partir do verbete selecionado. O layout não muda; só o recorte.</p>
-        <ul class="legend">
-          @for (option of depthOptions; track option.value) {
-            <li>
-              <label class="check">
-                <input
-                  type="radio"
-                  name="graph-depth"
-                  [value]="option.value"
-                  [checked]="depth() === option.value"
-                  [disabled]="option.value > 0 && (!selectedId() || !!pathEndpoints())"
-                  (change)="setDepth(option.value)"
-                />
-                <span>{{ option.label }}</span>
-              </label>
-            </li>
-          }
-        </ul>
-        @if (selected(); as node) {
-          <p class="hint" id="graph-neighborhood-count">
-            {{ node.title }} · {{ visible().nodes.length }} verbetes no recorte
-          </p>
-        } @else {
-          <p class="hint" id="graph-neighborhood-count">
-            Selecione um verbete para isolar 1 ou 2 saltos.
-          </p>
-        }
-      </details>
-
-      <details class="panel" open>
-        <summary><h2>Período</h2></summary>
-        <p class="hint">
-          Registros cujo período conhecido cruza o intervalo. {{ datedTotal() }} de {{ total }}
-          verbetes têm data.
-        </p>
-        <div class="period">
-          <label>
-            <span>De</span>
-            <input
-              type="number"
-              inputmode="numeric"
-              [value]="periodFrom() ?? ''"
-              [attr.min]="periodBounds().min"
-              [attr.max]="periodBounds().max"
-              [disabled]="datedTotal() === 0"
-              (input)="setPeriod('from', $event)"
-            />
-          </label>
-          <label>
-            <span>Até</span>
-            <input
-              type="number"
-              inputmode="numeric"
-              [value]="periodTo() ?? ''"
-              [attr.min]="periodBounds().min"
-              [attr.max]="periodBounds().max"
-              [disabled]="datedTotal() === 0"
-              (input)="setPeriod('to', $event)"
-            />
-          </label>
-        </div>
-        @if (period()) {
-          <button type="button" class="chip" (click)="clearPeriod()">Limpar período</button>
-        }
-      </details>
-
-      <details class="panel" open>
-        <summary><h2>Caminho</h2></summary>
-        <p class="hint">
-          A rota mais curta entre dois verbetes no recorte atual. O layout não muda.
-        </p>
-        @if (pathFrom() || pathTo()) {
-          <p class="hint">
-            Origem: {{ pathFromTitle() ?? '—' }} · Destino: {{ pathToTitle() ?? '—' }}
-          </p>
-        }
-        <button
-          type="button"
-          class="chip"
-          [class.chip--solid]="pathMode()"
-          [attr.aria-pressed]="pathMode()"
-          (click)="togglePathMode()"
-        >
-          {{ pathMode() ? 'Cancelar caminho' : 'Traçar caminho' }}
-        </button>
-        @if (pathMode()) {
-          <p class="hint" role="status">Clique no primeiro e no segundo verbete do mapa.</p>
-        }
-        @if (visible().path) {
-          <p class="hint" role="status" id="graph-path-summary">{{ pathSummary() }}</p>
-          <button type="button" class="chip" (click)="clearPath()">Limpar caminho</button>
-        }
       </details>
 
       @if (!embedded()) {
-        <details class="panel" open>
-          <summary><h2>Coleções</h2></summary>
+        <details class="panel">
+          <summary>
+            <h2>Coleções</h2>
+            <span
+              class="panel__badge"
+              [class.panel__badge--accent]="
+                !scopeIds() && collectionsOn().size < collections.length
+              "
+            >
+              {{ activeCollections().size }}/{{ collections.length }}
+            </span>
+          </summary>
+          <div class="panel__bar">
+            <p class="hint">Filtre por conjunto temático.</p>
+            @if (!scopeIds() && collectionsOn().size < collections.length) {
+              <button type="button" class="panel__reset" (click)="showAllCollections()">
+                Mostrar todas
+              </button>
+            }
+          </div>
+          <label class="check check--solo">
+            <input
+              type="checkbox"
+              [checked]="onlyConnected()"
+              (change)="onlyConnected.set(!onlyConnected())"
+            />
+            <span>Ocultar verbetes sem ligação</span>
+          </label>
           <ul class="legend">
             @for (collection of collections; track collection.id) {
               <li>
@@ -284,14 +352,6 @@
               </li>
             }
           </ul>
-          <label class="check check--solo">
-            <input
-              type="checkbox"
-              [checked]="onlyConnected()"
-              (change)="onlyConnected.set(!onlyConnected())"
-            />
-            <span>Ocultar verbetes sem ligação</span>
-          </label>
         </details>
       }
 

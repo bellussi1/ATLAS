@@ -17,13 +17,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { entityMedia } from '@core/content/media/asset-license';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
-import type { Scope } from '@core/content/models/content-schema';
+import type { KnowledgeGraph, Scope } from '@core/content/models/content-schema';
 import {
   buildKnowledgeNetwork,
   filterNetwork,
+  type KnowledgeNetwork,
   labelRelevance,
-  linksOf,
   type NetworkEdge,
+  type NetworkKindDefinition,
   networkKindDefinition,
   networkKindGroups,
   type NetworkKindId,
@@ -36,7 +37,6 @@ import {
   nodeScaleFor,
   positionClaims,
   relationFamilies,
-  relationFamilyDefinition,
   type RelationFamilyId,
   relationNatureDefinition,
   type RelationWeight,
@@ -79,6 +79,79 @@ interface View {
   k: number;
 }
 
+interface PreparedNodeMeta {
+  kind: NetworkKindDefinition;
+  r: number;
+  path: string;
+  label: string;
+}
+
+interface CachedGraphRuntime {
+  network: KnowledgeNetwork;
+  nodeIndex: ReadonlyMap<string, NetworkNode>;
+  edgeIndex: ReadonlyMap<string, NetworkEdge>;
+  preparedNodes: ReadonlyMap<string, PreparedNodeMeta>;
+  incidentEdges: ReadonlyMap<string, readonly NetworkEdge[]>;
+  counts: {
+    kinds: ReadonlyMap<NetworkKindId, number>;
+    families: ReadonlyMap<RelationFamilyId, number>;
+  };
+}
+
+const ALL_SCOPES: ReadonlySet<Scope> = new Set(['nucleo', 'contexto', 'fora']);
+const graphRuntimeCache = new WeakMap<KnowledgeGraph, CachedGraphRuntime>();
+const layoutPositionsCache = new WeakMap<object, Map<string, NetworkPoint>>();
+
+function runtimeForGraph(graph: KnowledgeGraph): CachedGraphRuntime {
+  const existing = graphRuntimeCache.get(graph);
+  if (existing) return existing;
+  const network = buildKnowledgeNetwork(graph);
+  const nodeIndex = new Map<string, NetworkNode>();
+  const edgeIndex = new Map<string, NetworkEdge>();
+  const preparedNodes = new Map<string, PreparedNodeMeta>();
+  const incidentEdges = new Map<string, NetworkEdge[]>();
+  const kindCounts = new Map<NetworkKindId, number>();
+  const familyCounts = new Map<RelationFamilyId, number>();
+
+  for (const node of network.nodes) {
+    nodeIndex.set(node.id, node);
+    const kind = networkKindDefinition(node.kind);
+    const r = nodeRadius(node.degree);
+    preparedNodes.set(node.id, {
+      kind,
+      r,
+      path: shapePath(kind.shape, r),
+      label: `${node.title}, ${kind.label.toLowerCase()}, ${node.degree} ${
+        node.degree === 1 ? 'ligação' : 'ligações'
+      }`,
+    });
+    kindCounts.set(node.kind, (kindCounts.get(node.kind) ?? 0) + 1);
+  }
+  for (const edge of network.edges) {
+    edgeIndex.set(edge.id, edge);
+    familyCounts.set(edge.family, (familyCounts.get(edge.family) ?? 0) + 1);
+    const fromList = incidentEdges.get(edge.source);
+    if (fromList) fromList.push(edge);
+    else incidentEdges.set(edge.source, [edge]);
+    if (edge.target !== edge.source) {
+      const toList = incidentEdges.get(edge.target);
+      if (toList) toList.push(edge);
+      else incidentEdges.set(edge.target, [edge]);
+    }
+  }
+
+  const runtime: CachedGraphRuntime = {
+    network,
+    nodeIndex,
+    edgeIndex,
+    preparedNodes,
+    incidentEdges,
+    counts: { kinds: kindCounts, families: familyCounts },
+  };
+  graphRuntimeCache.set(graph, runtime);
+  return runtime;
+}
+
 const classificationLabels: Record<string, string> = {
   'documented-fact': 'Fato documentado',
   'attributed-thesis': 'Tese atribuída',
@@ -113,19 +186,19 @@ export class KnowledgeNetworkComponent {
     this.route.queryParamMap.pipe(map((params) => params.get('no'))),
     { initialValue: this.route.snapshot.queryParamMap.get('no') },
   );
-  private readonly queryDepth = toSignal(
-    this.route.queryParamMap.pipe(map((params) => params.get('saltos'))),
-    { initialValue: this.route.snapshot.queryParamMap.get('saltos') },
-  );
   private readonly queryParams = toSignal(this.route.queryParamMap, {
     initialValue: this.route.snapshot.queryParamMap,
   });
   private readonly destroyRef = inject(DestroyRef);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
-  private readonly network = buildKnowledgeNetwork(this.repository.knowledgeGraph);
-  private readonly nodeIndex = new Map(this.network.nodes.map((node) => [node.id, node]));
-  private readonly edgeIndex = new Map(this.network.edges.map((edge) => [edge.id, edge]));
+  private readonly runtime = runtimeForGraph(this.repository.knowledgeGraph);
+  private readonly network = this.runtime.network;
+  private readonly nodeIndex = this.runtime.nodeIndex;
+  private readonly edgeIndex = this.runtime.edgeIndex;
+  private readonly preparedNodes = this.runtime.preparedNodes;
+  private readonly incidentEdges = this.runtime.incidentEdges;
+  readonly counts = this.runtime.counts;
 
   /** In a chapter, the graph keeps its own toolbar but gives up the page chrome and detail panel. */
   readonly embedded = input(false);
@@ -152,12 +225,6 @@ export class KnowledgeNetworkComponent {
   private readonly fitK = signal(1);
 
   readonly kindsOn = signal<ReadonlySet<NetworkKindId>>(new Set(networkKinds.map((k) => k.id)));
-  readonly scopesOn = signal<ReadonlySet<Scope>>(new Set(['nucleo', 'contexto', 'fora']));
-  readonly graphScopeOptions = [
-    { id: 'nucleo' as const, label: 'Núcleo' },
-    { id: 'contexto' as const, label: 'Contexto' },
-    { id: 'fora' as const, label: 'Fora' },
-  ];
   readonly familiesOn = signal<ReadonlySet<RelationFamilyId>>(
     new Set(relationFamilies.map((f) => f.id)),
   );
@@ -170,27 +237,12 @@ export class KnowledgeNetworkComponent {
   /** The collections actually filter the map: the fixed scope wins over the legend checkboxes. */
   readonly activeCollections = computed(() => this.scopeIds() ?? this.collectionsOn());
   readonly onlyConnected = signal(false);
-  /** 0 shows the whole cut; 1/2 keep the selected node and its neighbours up to that distance. */
-  readonly depth = signal<0 | 1 | 2>(0);
-  readonly depthOptions = [
-    { value: 0 as const, label: 'Tudo' },
-    { value: 1 as const, label: '1 salto' },
-    { value: 2 as const, label: '2 saltos' },
-  ];
   readonly query = signal('');
   readonly selectedId = signal<string | null>(null);
   /** On a phone the detail sheet can step aside so the map keeps the screen. */
   readonly detailsCollapsed = signal(false);
   readonly hoveredId = signal<string | null>(null);
   readonly focusId = signal<string | null>(null);
-  /** Inclusive year interval; both fields empty means no period filter. */
-  readonly periodFrom = signal<number | null>(null);
-  readonly periodTo = signal<number | null>(null);
-  readonly period = computed(() => {
-    const from = this.periodFrom();
-    const to = this.periodTo();
-    return from === null && to === null ? null : { from, to };
-  });
   /** Path mode: the next two map clicks pick the endpoints. */
   readonly pathMode = signal(false);
   readonly pathFrom = signal<string | null>(null);
@@ -237,58 +289,29 @@ export class KnowledgeNetworkComponent {
   readonly pointerAt = signal<{ x: number; y: number } | null>(null);
 
   readonly total = this.network.nodes.length;
-  /** Records with at least one known year; the period filter can only see these. */
-  readonly datedTotal = computed(
-    () =>
-      this.network.nodes.filter(
-        (node) =>
-          node.temporalExtent !== null &&
-          (node.temporalExtent.startYear !== null || node.temporalExtent.endYear !== null),
-      ).length,
-  );
-  readonly periodBounds = computed<{ min: number | null; max: number | null }>(() => {
-    let min = Infinity;
-    let max = -Infinity;
-    for (const node of this.network.nodes) {
-      const extent = node.temporalExtent;
-      if (!extent) continue;
-      for (const year of [extent.startYear, extent.endYear]) {
-        if (year === null) continue;
-        if (year < min) min = year;
-        if (year > max) max = year;
-      }
-    }
-    return Number.isFinite(min) ? { min, max } : { min: null, max: null };
-  });
   readonly loading = computed(() => this.positions() === null && this.total > 0);
-  /** The selected node bounds the map when a 1/2-hop neighbourhood is active. */
-  readonly neighborhood = computed(() => {
-    const root = this.selectedId() ?? this.queryNode();
-    const depth = this.depth();
-    return root && (depth === 1 || depth === 2) ? { root, depth } : null;
-  });
   readonly visible = computed(() =>
     filterNetwork(this.network, {
       kinds: this.kindsOn(),
-      scopes: this.scopesOn(),
+      scopes: ALL_SCOPES,
       families: this.familiesOn(),
       collections: this.activeCollections(),
       onlyConnected: this.onlyConnected(),
-      neighborhood: this.neighborhood(),
-      period: this.period(),
+      neighborhood: null,
+      period: null,
       path: this.pathEndpoints(),
     }),
   );
   readonly visibleIds = computed(() => new Set(this.visible().nodes.map((node) => node.id)));
+  private readonly visibleEdgeIds = computed(
+    () => new Set(this.visible().edges.map((edge) => edge.id)),
+  );
   readonly filtersActive = computed(
     () =>
       this.kindsOn().size < this.kinds.length ||
-      this.scopesOn().size < this.graphScopeOptions.length ||
       this.familiesOn().size < this.families.length ||
       (!this.scopeIds() && this.collectionsOn().size < this.collections.length) ||
       this.onlyConnected() ||
-      this.depth() > 0 ||
-      !!this.period() ||
       !!this.pathEndpoints(),
   );
   readonly matches = computed(() => searchNodes(this.visible().nodes, this.query()));
@@ -315,7 +338,7 @@ export class KnowledgeNetworkComponent {
   });
   readonly selectedLinks = computed(() => {
     const node = this.selected();
-    return node ? linksOf(node.id, this.visible().edges, this.nodeIndex) : [];
+    return node ? this.fastLinksOf(node.id) : [];
   });
   /** Links grouped by what they assert; the panel renders one group at a time. */
   readonly linkGroups = computed(() => {
@@ -354,6 +377,14 @@ export class KnowledgeNetworkComponent {
       path.edges.length === 1 ? 'passo' : 'passos'
     }`;
   });
+  /** Clickable node trail for the active path, in traversal order. */
+  readonly pathNodes = computed(() => {
+    const path = this.visible().path;
+    if (!path?.found) return [];
+    return path.nodes
+      .map((id) => this.nodeIndex.get(id))
+      .filter((node): node is NetworkNode => !!node);
+  });
   /**
    * The node whose surroundings are lit. Hovering takes precedence; without a hover, the
    * selection keeps its neighbourhood lit and dims the rest of the map.
@@ -361,7 +392,7 @@ export class KnowledgeNetworkComponent {
   readonly activeId = computed(() => this.hoveredId() ?? this.selectedId());
   readonly activeLinks = computed(() => {
     const id = this.activeId();
-    return id ? linksOf(id, this.visible().edges, this.nodeIndex) : [];
+    return id ? this.fastLinksOf(id) : [];
   });
   readonly neighbours = computed(() => new Set(this.activeLinks().map((link) => link.other.id)));
   /** Nodes that stay lit: the path, the hovered node with its neighbours, or all. */
@@ -405,17 +436,6 @@ export class KnowledgeNetworkComponent {
       bottom: 64,
     };
   });
-  readonly counts = computed(() => {
-    const kinds = new Map<NetworkKindId, number>();
-    for (const node of this.network.nodes) kinds.set(node.kind, (kinds.get(node.kind) ?? 0) + 1);
-    const scopes = new Map<Scope, number>();
-    for (const node of this.network.nodes)
-      scopes.set(node.scope, (scopes.get(node.scope) ?? 0) + 1);
-    const families = new Map<RelationFamilyId, number>();
-    for (const edge of this.network.edges)
-      families.set(edge.family, (families.get(edge.family) ?? 0) + 1);
-    return { kinds, families, scopes };
-  });
 
   /**
    * Visible part of the world, in content coordinates, with a screen margin. Off-screen records are
@@ -451,7 +471,8 @@ export class KnowledgeNetworkComponent {
     const kept = new Set([this.focusId()].filter((id): id is string => !!id));
     return this.visible().nodes.flatMap((node) => {
       const point = positions.get(node.id);
-      if (!point) return [];
+      const meta = this.preparedNodes.get(node.id);
+      if (!point || !meta) return [];
       if (
         bounds &&
         !kept.has(node.id) &&
@@ -461,19 +482,15 @@ export class KnowledgeNetworkComponent {
           point.y > bounds.bottom)
       )
         return [];
-      const kind = networkKindDefinition(node.kind);
-      const r = nodeRadius(node.degree);
       return [
         {
           node,
-          kind,
-          r,
+          kind: meta.kind,
+          r: meta.r,
           x: point.x,
           y: point.y,
-          path: shapePath(kind.shape, r),
-          label: `${node.title}, ${kind.label.toLowerCase()}, ${node.degree} ${
-            node.degree === 1 ? 'ligação' : 'ligações'
-          }`,
+          path: meta.path,
+          label: meta.label,
         },
       ];
     });
@@ -537,8 +554,9 @@ export class KnowledgeNetworkComponent {
     return this.visible().edges.flatMap((edge: NetworkEdge) => {
       const from = positions.get(edge.source);
       const to = positions.get(edge.target);
-      const target = this.nodeIndex.get(edge.target);
-      if (!from || !to || !target) return [];
+      const targetMeta = this.preparedNodes.get(edge.target);
+      const family = this.familyById.get(edge.family);
+      if (!from || !to || !targetMeta || !family) return [];
       if (
         bounds &&
         (Math.max(from.x, to.x) < bounds.left ||
@@ -547,11 +565,10 @@ export class KnowledgeNetworkComponent {
           Math.min(from.y, to.y) > bounds.bottom)
       )
         return [];
-      const family = relationFamilyDefinition(edge.family);
       const dx = to.x - from.x;
       const dy = to.y - from.y;
       const length = Math.hypot(dx, dy) || 1;
-      const pad = nodeRadius(target.degree) * scale + 3 / this.steppedK();
+      const pad = targetMeta.r * scale + 3 / this.steppedK();
       // Long links between far regions fade, so the map reads as areas, not a tangle.
       const fade = Math.max(0.08, 1 - length / (4 * spacing));
       return [
@@ -851,6 +868,21 @@ export class KnowledgeNetworkComponent {
   private lastFocus: string | null = null;
 
   constructor() {
+    const compiled = this.repository.layouts?.network;
+    if (compiled) {
+      let positions = layoutPositionsCache.get(compiled);
+      if (!positions) {
+        positions = new Map(Object.entries(compiled.positions));
+        layoutPositionsCache.set(compiled, positions);
+      }
+      this.world.set({ width: compiled.width, height: compiled.height });
+      this.positions.set(positions);
+      const initialFocus = this.focus();
+      if (initialFocus) {
+        this.selectedId.set(initialFocus);
+        this.focusId.set(initialFocus);
+      }
+    }
     // The chapter owns the record panel; the map only mirrors the record it is showing.
     effect(() => {
       const id = this.focus();
@@ -876,29 +908,16 @@ export class KnowledgeNetworkComponent {
       if (untracked(() => this.selectedId()) === id) return;
       untracked(() => this.select(id, true));
     });
-    // A shared saltos=1|2 restores the neighbourhood together with the selected node.
-    effect(() => {
-      const raw = this.queryDepth();
-      const value = raw === '1' ? 1 : raw === '2' ? 2 : 0;
-      const next = this.queryNode() ? value : 0;
-      if (this.depth() !== next) untracked(() => this.depth.set(next));
-    });
-    // A shared de/para/anoDe/anoAte restores the path endpoints and the period inputs.
+    // A shared de/para restores the path endpoints.
     effect(() => {
       const params = this.queryParams();
       const de = params.get('de');
       const para = params.get('para');
-      const from = params.get('anoDe');
-      const to = params.get('anoAte');
       untracked(() => {
         const nextFrom = de && this.nodeIndex.has(de) ? de : null;
         const nextTo = para && this.nodeIndex.has(para) ? para : null;
         if (this.pathFrom() !== nextFrom) this.pathFrom.set(nextFrom);
         if (this.pathTo() !== nextTo) this.pathTo.set(nextTo);
-        const nextPeriodFrom = from && /^-?\d+$/.test(from) ? Number(from) : null;
-        const nextPeriodTo = to && /^-?\d+$/.test(to) ? Number(to) : null;
-        if (this.periodFrom() !== nextPeriodFrom) this.periodFrom.set(nextPeriodFrom);
-        if (this.periodTo() !== nextPeriodTo) this.periodTo.set(nextPeriodTo);
       });
     });
     // In a chapter the legend starts folded: the map should read as a map, not as a dashboard.
@@ -926,46 +945,62 @@ export class KnowledgeNetworkComponent {
         if (!element?.clientWidth || !element.clientHeight) return;
         this.size.set({ width: element.clientWidth, height: element.clientHeight });
         if (this.positions() && (!fitted || this.autoFit)) {
+          const initialFit = !fitted;
           fitted = true;
           this.fit();
+          if (initialFit && !this.embedded() && window.matchMedia?.('(max-width: 40rem)').matches)
+            this.zoomBy(1.45, { x: this.size().width / 2, y: this.size().height / 2 });
         }
       });
       if (element) {
         observer.observe(element);
         this.size.set({ width: element.clientWidth, height: element.clientHeight });
-      }
-      // The layout runs after the first paint so the loading state is visible meanwhile.
-      let cancelled = false;
-      const timer = setTimeout(async () => {
-        const compiled = this.repository.layouts.network;
-        let layout: NetworkLayout;
-        if (compiled) {
-          layout = { ...compiled, positions: new Map(Object.entries(compiled.positions)) };
-        } else {
-          // Only a release without the compiled layout pays for the simulation chunk.
-          const { layoutNetwork } = await import('@core/content/queries/network-layout');
-          if (cancelled) return;
-          layout = layoutNetwork(this.network.nodes, this.network.edges);
-        }
-        if (cancelled) return;
-        this.world.set({ width: layout.width, height: layout.height });
-        this.positions.set(layout.positions);
-        const selected = this.focus();
-        if (selected) {
-          this.selectedId.set(selected);
-          this.focusId.set(selected);
-        }
-        if (this.size().width && !fitted) {
+        if (this.positions() && this.size().width && !fitted) {
           fitted = true;
           this.fit();
-          // On a phone the whole map is too small to read; start one step closer.
           if (!this.embedded() && window.matchMedia?.('(max-width: 40rem)').matches)
             this.zoomBy(1.45, { x: this.size().width / 2, y: this.size().height / 2 });
         }
-      });
+      }
+      // Without a precompiled layout, run the simulation after first paint so the loading state shows.
+      let cancelled = false;
+      const timer = this.positions()
+        ? undefined
+        : setTimeout(async () => {
+            const compiled = this.repository.layouts.network;
+            let layout: NetworkLayout;
+            if (compiled) {
+              let positions = layoutPositionsCache.get(compiled);
+              if (!positions) {
+                positions = new Map(Object.entries(compiled.positions));
+                layoutPositionsCache.set(compiled, positions);
+              }
+              layout = { ...compiled, positions };
+            } else {
+              // Only a release without the compiled layout pays for the simulation chunk.
+              const { layoutNetwork } = await import('@core/content/queries/network-layout');
+              if (cancelled) return;
+              layout = layoutNetwork(this.network.nodes, this.network.edges);
+            }
+            if (cancelled) return;
+            this.world.set({ width: layout.width, height: layout.height });
+            this.positions.set(layout.positions);
+            const selected = this.focus();
+            if (selected) {
+              this.selectedId.set(selected);
+              this.focusId.set(selected);
+            }
+            if (this.size().width && !fitted) {
+              fitted = true;
+              this.fit();
+              // On a phone the whole map is too small to read; start one step closer.
+              if (!this.embedded() && window.matchMedia?.('(max-width: 40rem)').matches)
+                this.zoomBy(1.45, { x: this.size().width / 2, y: this.size().height / 2 });
+            }
+          });
       this.destroyRef.onDestroy(() => {
         cancelled = true;
-        clearTimeout(timer);
+        if (timer) clearTimeout(timer);
         clearTimeout(this.hoverTimer);
         if (this.glideTimer) clearTimeout(this.glideTimer);
         clearTimeout(this.wheelTimer);
@@ -983,51 +1018,55 @@ export class KnowledgeNetworkComponent {
   toggleKind(id: NetworkKindId): void {
     this.kindsOn.update((set) => toggled(set, id));
   }
-  toggleScope(id: Scope): void {
-    this.scopesOn.update((set) => toggled(set, id));
+  showAllKinds(): void {
+    this.kindsOn.set(new Set(networkKinds.map((k) => k.id)));
   }
   toggleFamily(id: RelationFamilyId): void {
     this.familiesOn.update((set) => toggled(set, id));
   }
+  showAllFamilies(): void {
+    this.familiesOn.set(new Set(relationFamilies.map((f) => f.id)));
+  }
   toggleCollection(id: string): void {
     if (this.scopeIds()) return;
     this.collectionsOn.update((set) => toggled(set, id));
+  }
+  showAllCollections(): void {
+    if (this.scopeIds()) return;
+    this.collectionsOn.set(new Set(this.collections.map((c) => c.id)));
   }
   soloKind(id: NetworkKindId): void {
     this.kindsOn.set(new Set([id]));
   }
   resetFilters(): void {
     this.kindsOn.set(new Set(networkKinds.map((k) => k.id)));
-    this.scopesOn.set(new Set(['nucleo', 'contexto', 'fora']));
     this.familiesOn.set(new Set(relationFamilies.map((f) => f.id)));
     if (!this.scopeIds()) this.collectionsOn.set(new Set(this.collections.map((c) => c.id)));
     this.onlyConnected.set(false);
-    this.depth.set(0);
-    this.periodFrom.set(null);
-    this.periodTo.set(null);
     this.pathMode.set(false);
     this.pathFrom.set(null);
     this.pathTo.set(null);
     this.query.set('');
     this.syncUrl(this.selectedId(), true);
   }
-  /** 0 shows everything; 1/2 isolate the selected node's neighbourhood without moving the layout. */
-  setDepth(value: 0 | 1 | 2): void {
-    if (value > 0 && !this.selectedId()) return;
-    this.depth.set(value);
-    this.syncUrl(this.selectedId());
-  }
-  setPeriod(edge: 'from' | 'to', event: Event): void {
-    const raw = (event.target as HTMLInputElement).value.trim();
-    const value = raw === '' ? null : Number(raw);
-    if (value !== null && !Number.isInteger(value)) return;
-    if (edge === 'from') this.periodFrom.set(value);
-    else this.periodTo.set(value);
+  setPathEndpoint(slot: 'from' | 'to', id: string | null): void {
+    const valid = id && this.nodeIndex.has(id) ? id : null;
+    if (slot === 'from') {
+      this.pathFrom.set(valid);
+      if (valid && this.pathTo() === valid) this.pathTo.set(null);
+    } else {
+      this.pathTo.set(valid);
+      if (valid && this.pathFrom() === valid) this.pathFrom.set(null);
+    }
+    if (this.pathFrom() && this.pathTo()) this.pathMode.set(false);
     this.syncUrl(this.selectedId(), true);
   }
-  clearPeriod(): void {
-    this.periodFrom.set(null);
-    this.periodTo.set(null);
+  swapPath(): void {
+    const from = this.pathFrom();
+    const to = this.pathTo();
+    if (!from && !to) return;
+    this.pathFrom.set(to);
+    this.pathTo.set(from);
     this.syncUrl(this.selectedId(), true);
   }
   togglePathMode(): void {
@@ -1151,7 +1190,6 @@ export class KnowledgeNetworkComponent {
   clearSelection(): void {
     this.selectedId.set(null);
     this.detailsCollapsed.set(false);
-    this.depth.set(0);
     this.picked.emit(null);
     this.syncUrl(null);
   }
@@ -1305,15 +1343,11 @@ export class KnowledgeNetworkComponent {
   }
   /** Moves selection or focus to the next (or previous) neighbour of a node. */
   cycleNeighbour(id: string, step: 1 | -1): void {
-    const edges = this.visible().edges;
     let origin = this.cycleOrigin;
-    if (
-      !origin ||
-      (id !== origin && !linksOf(origin, edges, this.nodeIndex).some((l) => l.other.id === id))
-    )
+    if (!origin || (id !== origin && !this.fastLinksOf(origin).some((l) => l.other.id === id)))
       origin = id;
     this.cycleOrigin = origin;
-    const links = linksOf(origin, edges, this.nodeIndex);
+    const links = this.fastLinksOf(origin);
     if (!links.length) return;
     const at = links.findIndex((link) => link.other.id === id);
     const index =
@@ -1654,23 +1688,12 @@ export class KnowledgeNetworkComponent {
   private syncUrl(id: string | null, replace = false): void {
     if (this.embedded()) return;
     const params = this.route.snapshot.queryParamMap;
-    const saltos = this.depth() > 0 ? String(this.depth()) : null;
     const de = this.pathFrom();
     const para = this.pathTo();
-    const anoDe = this.periodFrom() === null ? null : String(this.periodFrom());
-    const anoAte = this.periodTo() === null ? null : String(this.periodTo());
-    if (
-      params.get('no') === id &&
-      params.get('saltos') === saltos &&
-      params.get('de') === de &&
-      params.get('para') === para &&
-      params.get('anoDe') === anoDe &&
-      params.get('anoAte') === anoAte
-    )
-      return;
+    if (params.get('no') === id && params.get('de') === de && params.get('para') === para) return;
     void this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { no: id, saltos, de, para, anoDe, anoAte },
+      queryParams: { no: id, de, para },
       queryParamsHandling: 'merge',
       replaceUrl: replace,
     });
@@ -1692,15 +1715,40 @@ export class KnowledgeNetworkComponent {
     this.select(id);
   }
 
+  private fastLinksOf(id: string): NodeLink[] {
+    const incident = this.incidentEdges.get(id);
+    if (!incident?.length) return [];
+    const allowed = this.visibleEdgeIds();
+    const links: NodeLink[] = [];
+    for (const edge of incident) {
+      if (!allowed.has(edge.id)) continue;
+      const other = this.nodeIndex.get(edge.source === id ? edge.target : edge.source);
+      if (other) links.push({ edge, other, outgoing: edge.source === id });
+    }
+    return links.sort(
+      (a, b) =>
+        relationWeightDefinition(a.edge.weight).rank -
+          relationWeightDefinition(b.edge.weight).rank ||
+        relationNatureDefinition(a.edge.nature).rank -
+          relationNatureDefinition(b.edge.nature).rank ||
+        b.other.degree - a.other.degree,
+    );
+  }
+
   private nodeAt(point: { x: number; y: number }): NetworkNode | null {
     const { k, x: vx, y: vy } = this.view();
     const scale = this.nodeScale();
+    const maxReach = Math.max(13 * scale * k + 6, 16);
     let best: { node: NetworkNode; distance: number } | null = null;
     for (const item of this.drawnNodes()) {
       const x = item.x * k + vx;
+      const dx = point.x - x;
+      if (dx > maxReach || dx < -maxReach) continue;
       const y = item.y * k + vy;
+      const dy = point.y - y;
+      if (dy > maxReach || dy < -maxReach) continue;
       const reach = Math.max(item.r * scale * k + 6, 16);
-      const distance = Math.hypot(point.x - x, point.y - y);
+      const distance = Math.hypot(dx, dy);
       if (distance > reach) continue;
       if (!best || distance < best.distance) best = { node: item.node, distance };
     }
@@ -1735,7 +1783,7 @@ export class KnowledgeNetworkComponent {
     this.autoFit = false;
     // The node and its neighbours frame the view, within a readable range of zoom.
     const positions = this.positions();
-    const near = linksOf(id, this.visible().edges, this.nodeIndex)
+    const near = this.fastLinksOf(id)
       .map((link) => positions?.get(link.other.id))
       .filter((p): p is NetworkPoint => !!p);
     const xs = [point.x, ...near.map((p) => p.x)];

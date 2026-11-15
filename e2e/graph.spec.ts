@@ -287,23 +287,25 @@ test('zoomed out the links are plain lines; up close they carry their wording', 
   await expect(page.locator('.label--edge').first()).toBeVisible();
 });
 
-test('the neighbourhood keeps one or two hops and restores the whole cut', async ({ page }) => {
+test('orders filter panels around nodes, path, relations and collapsed collections', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/grafos?no=person-karl-marx&saltos=1');
-  await expect(page.locator('[data-node="person-karl-marx"]')).toBeVisible();
-  const neighborhood = page.locator('#graph-neighborhood-count');
-  const count = async () =>
-    Number((await neighborhood.textContent())?.match(/(\d+) verbetes/)?.[1] ?? 0);
-  await expect(page.getByRole('radio', { name: '1 salto' })).toBeChecked();
-  const one = await count();
-  expect(one).toBeGreaterThan(1);
-  await page.getByRole('radio', { name: '2 saltos' }).check();
-  await expect(page).toHaveURL(/saltos=2/);
-  await expect.poll(count).toBeGreaterThan(one);
-  const two = await count();
-  await page.getByRole('radio', { name: 'Tudo' }).check();
-  await expect(page).not.toHaveURL(/saltos=/);
-  await expect.poll(count).toBeGreaterThan(two);
+  await page.goto('/grafos');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const controls = page.getByRole('complementary', { name: 'Legenda e filtros' });
+  const titles = await controls.locator('details.panel summary h2').allTextContents();
+  expect(titles.map((title) => title.trim())).toEqual([
+    'Tipos de nó',
+    'Caminho',
+    'Tipos de ligação',
+    'Coleções',
+  ]);
+  await expect(controls.locator('details.panel').nth(1)).toHaveAttribute('open', '');
+  const collectionsPanel = controls.locator('details.panel').nth(3);
+  await expect(collectionsPanel).not.toHaveAttribute('open', '');
+  await collectionsPanel.locator('summary').click();
+  await expect(collectionsPanel).toHaveAttribute('open', '');
 });
 
 test('mouse: the wheel zooms, dragging pans and a double click on the background zooms in', async ({
@@ -435,22 +437,32 @@ test('node selection keeps browser history for back and forward', async ({ page 
   await expect(detail.getByRole('heading', { level: 2 })).toContainText('Friedrich Engels');
 });
 
-test('the period filter restores from the URL and narrows the map', async ({ page }) => {
+test('builds and reverses a path from selected entries and restores it from the URL', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/grafos');
-  await expect(page.locator('[data-node]').first()).toBeVisible();
-  const before = await page.locator('[data-node]').count();
-  await page.goto('/grafos?anoDe=1900&anoAte=1950');
-  await expect(page.locator('[data-node]').first()).toBeVisible();
-  await expect(page.getByLabel('De', { exact: true })).toHaveValue('1900');
-  await expect(page.getByLabel('Até', { exact: true })).toHaveValue('1950');
-  await expect(page.getByText(/\d+\s+de\s+\d+\s+verbetes têm data/)).toBeVisible();
-  const after = await page.locator('[data-node]').count();
-  expect(after).toBeGreaterThan(0);
-  expect(after).toBeLessThan(before);
-  await page.getByLabel('De', { exact: true }).fill('1800');
-  await expect(page).toHaveURL(/anoDe=1800/);
-  await expect(page).toHaveURL(/anoAte=1950/);
+  await page.goto('/grafos?no=person-karl-marx');
+  await expect(page.locator('[data-node="person-karl-marx"]')).toBeVisible();
+  const controls = page.getByRole('complementary', { name: 'Legenda e filtros' });
+  await controls
+    .locator('.path-slot')
+    .nth(0)
+    .getByRole('button', { name: 'Usar selecionado' })
+    .click();
+  await expect(page).toHaveURL(/de=person-karl-marx/);
+  await page.locator('[data-node="person-friedrich-engels"]').focus();
+  await page.keyboard.press('Enter');
+  await controls
+    .locator('.path-slot')
+    .nth(1)
+    .getByRole('button', { name: 'Usar selecionado' })
+    .click();
+  await expect(page).toHaveURL(/para=person-friedrich-engels/);
+  await expect(page.locator('#graph-path-summary')).toContainText(/passo/);
+  await expect(controls.locator('.path-steps .path-step').first()).toContainText('Karl Marx');
+  await controls.getByRole('button', { name: 'Inverter origem e destino' }).click();
+  await expect(page).toHaveURL(/de=person-friedrich-engels/);
+  await expect(page).toHaveURL(/para=person-karl-marx/);
 });
 
 test('the path mode picks two nodes and clears the route', async ({ page }) => {
@@ -477,19 +489,26 @@ test('the path mode picks two nodes and clears the route', async ({ page }) => {
   await expect(page.locator('#graph-path-summary')).toHaveCount(0);
 });
 
-test('the scope filter hides out-of-scope records without deleting them', async ({ page }) => {
+test('filters relation families with quick reset and toggles isolated entries inside collections', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/grafos');
   await expect(page.locator('[data-node]').first()).toBeVisible();
-  const status = page.locator('#graph-status');
-  const before = await status.textContent();
-  expect(before).toMatch(/de \d+ registros/);
   const controls = page.getByRole('complementary', { name: 'Legenda e filtros' });
-  const fora = controls.getByRole('checkbox', { name: /^Fora/ });
-  await expect(fora).toBeChecked();
-  await fora.uncheck();
-  await expect(status).not.toHaveText(before!);
-  await expect(fora).not.toBeChecked();
-  await fora.check();
-  await expect(status).toHaveText(before!);
+  const familyBtn = controls.getByRole('button', { name: /Influência/ });
+  await familyBtn.click();
+  await expect(familyBtn).toHaveAttribute('aria-pressed', 'false');
+  await controls.getByRole('button', { name: 'Mostrar todas' }).click();
+  await expect(familyBtn).toHaveAttribute('aria-pressed', 'true');
+  const collectionsPanel = controls.locator('details.panel').nth(3);
+  await collectionsPanel.locator('summary').click();
+  const connectedToggle = collectionsPanel.getByRole('checkbox', {
+    name: 'Ocultar verbetes sem ligação',
+  });
+  const before = await page.locator('[data-node]').count();
+  await connectedToggle.check();
+  expect(await page.locator('[data-node]').count()).toBeLessThanOrEqual(before);
+  await connectedToggle.uncheck();
+  await expect(page.locator('[data-node]')).toHaveCount(before);
 });

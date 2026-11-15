@@ -10,6 +10,7 @@ import {
   type IdeologyBundle,
   ideologyBundleSchema,
   layoutsSchema,
+  type NetworkBundle,
   networkBundleSchema,
   networkGraphSchema,
   searchIndexSchema,
@@ -345,8 +346,11 @@ export class ContentRepository {
     sha256: string;
     bytes: number;
   }): Promise<ContentPackage> {
-    const bundle = networkBundleSchema.parse(await this.resource(resource, 'network-bundle.json'));
+    const value = await this.resource(resource, 'network-bundle.json');
     this.requests.delete(artifactKey(resource.sha256));
+    // Same release/SHA-256 contract as `buildBundleState`: skip redundant Zod validation in the
+    // browser so `/grafos` mounts immediately after digest verification.
+    const bundle = this.browser ? (value as NetworkBundle) : networkBundleSchema.parse(value);
     return {
       // The graph page only reads the projected fields; a later full load upgrades this state.
       graph: bundle.graph as unknown as KnowledgeGraph,
