@@ -62,6 +62,7 @@ def run_phase3(
     models: tuple[str, ...] = (
         "extractive_cited",
         "ollama/qwen3:8b-q4_K_M",
+        "ollama/hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M",
     ),
     limit: int | None = None,
     root: Path | None = None,
@@ -185,9 +186,14 @@ def run_phase3(
             "projected_per_100_queries_usd": round(proj_tracker.projected_usd * scale_100, 4),
         }
 
-    # Calibração do juiz LLM local em 30 casos balanceados + descarga VRAM final
+    # Calibração de juízes LLM locais (qwen3:8b + gemma2:9b) em 30 casos balanceados com descarga VRAM entre trocas
     unload_ollama_gpu()
     judge_cal = calibrate_llm_judge(corpus.claims, judge_model="ollama/qwen3:8b-q4_K_M")
+    unload_ollama_gpu()
+    judge_cal_gemma2 = calibrate_llm_judge(
+        corpus.claims,
+        judge_model="ollama/gemma2:9b-instruct-q4_K_M",
+    )
     unload_ollama_gpu()
 
     report = {
@@ -198,6 +204,11 @@ def run_phase3(
         "models": results_by_model,
         "paid_api_dry_run_projections": dry_run_projections,
         "judge_calibration": judge_cal,
+        "judge_calibration_gemma2": judge_cal_gemma2,
+        "judge_calibration_comparison": {
+            "ollama/qwen3:8b-q4_K_M": judge_cal,
+            "ollama/gemma2:9b-instruct-q4_K_M": judge_cal_gemma2,
+        },
     }
 
     run_dir = eval_dir(base) / "runs" / "phase3_generation"

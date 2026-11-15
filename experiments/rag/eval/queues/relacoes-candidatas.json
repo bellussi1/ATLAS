@@ -25,12 +25,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.869,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.99, cos=0.65. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.99, cos=0.65. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.99, cos=0.65."
   },
   {
     "id": "cand-rel-077",
@@ -58,12 +60,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.9204,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.92): citacao literal valida + rerank=0.98, cos=0.76. Pre-triagem IA (alta_confianca, score=0.92): citacao literal valida + rerank=0.98, cos=0.76. Pre-triagem IA (alta_confianca, score=0.92): citacao literal valida + rerank=0.98, cos=0.76."
   },
   {
     "id": "cand-rel-092",
@@ -91,12 +95,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.8467,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.85): citacao presente; conferir direcao/escopo (rerank=0.98)."
   },
   {
     "id": "cand-rel-048",
@@ -124,12 +130,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.9751,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.98): citacao literal valida + rerank=0.98, cos=0.88. Pre-triagem IA (alta_confianca, score=0.98): citacao literal valida + rerank=0.98, cos=0.88. Pre-triagem IA (alta_confianca, score=0.98): citacao literal valida + rerank=0.98, cos=0.88."
   },
   {
     "id": "cand-rel-052",
@@ -157,12 +165,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.8159,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.82): citacao presente; conferir direcao/escopo (rerank=0.93)."
   },
   {
     "id": "cand-rel-043",
@@ -190,12 +200,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.7908,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.79): citacao presente; conferir direcao/escopo (rerank=0.92)."
   },
   {
     "id": "cand-rel-004",
@@ -223,12 +235,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8679,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.89, cos=0.75. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.89, cos=0.75. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.89, cos=0.75."
   },
   {
     "id": "cand-rel-094",
@@ -256,12 +270,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8243,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.87, cos=0.68. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.87, cos=0.68. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.87, cos=0.68."
   },
   {
     "id": "cand-rel-025",
@@ -289,12 +305,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.7956,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.80): citacao presente; conferir direcao/escopo (rerank=0.87)."
   },
   {
     "id": "cand-rel-026",
@@ -322,12 +340,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.876,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.88): citacao literal valida + rerank=0.86, cos=0.80. Pre-triagem IA (alta_confianca, score=0.88): citacao literal valida + rerank=0.86, cos=0.80. Pre-triagem IA (alta_confianca, score=0.88): citacao literal valida + rerank=0.86, cos=0.80."
   },
   {
     "id": "cand-rel-001",
@@ -355,12 +375,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8195,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.82, cos=0.71. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.82, cos=0.71. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.82, cos=0.71."
   },
   {
     "id": "cand-rel-107",
@@ -388,12 +410,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.7824,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.78): citacao presente; conferir direcao/escopo (rerank=0.82)."
   },
   {
     "id": "cand-rel-110",
@@ -421,12 +445,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.7636,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.76): citacao presente; conferir direcao/escopo (rerank=0.80)."
   },
   {
     "id": "cand-rel-117",
@@ -454,12 +480,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8227,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.79, cos=0.75. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.79, cos=0.75. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.79, cos=0.75."
   },
   {
     "id": "cand-rel-041",
@@ -487,12 +515,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.741,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.74): citacao presente; conferir direcao/escopo (rerank=0.79)."
   },
   {
     "id": "cand-rel-105",
@@ -520,12 +550,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.7466,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.75): citacao presente; conferir direcao/escopo (rerank=0.78)."
   },
   {
     "id": "cand-rel-049",
@@ -553,12 +585,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.7517,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.75): citacao presente; conferir direcao/escopo (rerank=0.77)."
   },
   {
     "id": "cand-rel-009",
@@ -586,12 +620,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8258,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.76, cos=0.79. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.76, cos=0.79. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.76, cos=0.79."
   },
   {
     "id": "cand-rel-098",
@@ -619,12 +655,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.7717,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.77): citacao literal valida + rerank=0.75, cos=0.69. Pre-triagem IA (alta_confianca, score=0.77): citacao literal valida + rerank=0.75, cos=0.69. Pre-triagem IA (alta_confianca, score=0.77): citacao literal valida + rerank=0.75, cos=0.69."
   },
   {
     "id": "cand-rel-086",
@@ -652,12 +690,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.834,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.75, cos=0.82. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.75, cos=0.82. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.75, cos=0.82."
   },
   {
     "id": "cand-rel-104",
@@ -685,12 +725,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.7588,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.76): citacao literal valida + rerank=0.72, cos=0.70. Pre-triagem IA (alta_confianca, score=0.76): citacao literal valida + rerank=0.72, cos=0.70. Pre-triagem IA (alta_confianca, score=0.76): citacao literal valida + rerank=0.72, cos=0.70."
   },
   {
     "id": "cand-rel-108",
@@ -718,12 +760,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.6974,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.70): citacao presente; conferir direcao/escopo (rerank=0.72)."
   },
   {
     "id": "cand-rel-091",
@@ -751,12 +795,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.7068,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.71): citacao presente; conferir direcao/escopo (rerank=0.69)."
   },
   {
     "id": "cand-rel-032",
@@ -784,12 +830,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.7258,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.66, cos=0.69. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.66, cos=0.69. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.66, cos=0.69."
   },
   {
     "id": "cand-rel-045",
@@ -817,12 +865,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.662,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.66): citacao presente; conferir direcao/escopo (rerank=0.64)."
   },
   {
     "id": "cand-rel-095",
@@ -850,12 +900,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.7311,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.63, cos=0.73. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.63, cos=0.73. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.63, cos=0.73."
   },
   {
     "id": "cand-rel-085",
@@ -883,12 +935,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.662,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.66): citacao presente; conferir direcao/escopo (rerank=0.63)."
   },
   {
     "id": "cand-rel-024",
@@ -916,12 +970,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.7006,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.70): citacao literal valida + rerank=0.61, cos=0.70. Pre-triagem IA (alta_confianca, score=0.70): citacao literal valida + rerank=0.61, cos=0.70. Pre-triagem IA (alta_confianca, score=0.70): citacao literal valida + rerank=0.61, cos=0.70."
   },
   {
     "id": "cand-rel-042",
@@ -949,12 +1005,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.6066,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.61): citacao presente; conferir direcao/escopo (rerank=0.54)."
   },
   {
     "id": "cand-rel-023",
@@ -982,12 +1040,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.6839,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.68): citacao literal valida + rerank=0.53, cos=0.74. Pre-triagem IA (alta_confianca, score=0.68): citacao literal valida + rerank=0.53, cos=0.74. Pre-triagem IA (alta_confianca, score=0.68): citacao literal valida + rerank=0.53, cos=0.74."
   },
   {
     "id": "cand-rel-061",
@@ -1015,12 +1075,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.6435,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.53, cos=0.66. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.53, cos=0.66. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.53, cos=0.66."
   },
   {
     "id": "cand-rel-010",
@@ -1048,12 +1110,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.6448,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.50, cos=0.69. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.50, cos=0.69. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.50, cos=0.69."
   },
   {
     "id": "cand-rel-063",
@@ -1081,12 +1145,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5689,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.57): citacao presente; conferir direcao/escopo (rerank=0.47)."
   },
   {
     "id": "cand-rel-076",
@@ -1114,12 +1180,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.6575,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.66): citacao literal valida + rerank=0.47, cos=0.74. Pre-triagem IA (alta_confianca, score=0.66): citacao literal valida + rerank=0.47, cos=0.74. Pre-triagem IA (alta_confianca, score=0.66): citacao literal valida + rerank=0.47, cos=0.74."
   },
   {
     "id": "cand-rel-033",
@@ -1147,12 +1215,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.6068,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.46, cos=0.65. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.46, cos=0.65. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.46, cos=0.65."
   },
   {
     "id": "cand-rel-114",
@@ -1180,12 +1250,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5852,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.59): citacao presente; conferir direcao/escopo (rerank=0.46)."
   },
   {
     "id": "cand-rel-113",
@@ -1213,12 +1285,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.6142,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.45, cos=0.67. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.45, cos=0.67. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.45, cos=0.67."
   },
   {
     "id": "cand-rel-021",
@@ -1246,12 +1320,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.6128,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.61): citacao presente; conferir direcao/escopo (rerank=0.44)."
   },
   {
     "id": "cand-rel-084",
@@ -1279,12 +1355,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5815,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.58): citacao presente; conferir direcao/escopo (rerank=0.43)."
   },
   {
     "id": "cand-rel-018",
@@ -1312,12 +1390,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5487,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.55): citacao presente; conferir direcao/escopo (rerank=0.39)."
   },
   {
     "id": "cand-rel-002",
@@ -1345,12 +1425,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.6005,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.60): citacao presente; conferir direcao/escopo (rerank=0.39)."
   },
   {
     "id": "cand-rel-031",
@@ -1378,12 +1460,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5657,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.57): citacao presente; conferir direcao/escopo (rerank=0.39)."
   },
   {
     "id": "cand-rel-119",
@@ -1411,12 +1495,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5873,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.59): citacao presente; conferir direcao/escopo (rerank=0.38)."
   },
   {
     "id": "cand-rel-062",
@@ -1444,12 +1530,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5317,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.53): citacao presente; conferir direcao/escopo (rerank=0.38)."
   },
   {
     "id": "cand-rel-103",
@@ -1477,12 +1565,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.569,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.57): citacao presente; conferir direcao/escopo (rerank=0.33)."
   },
   {
     "id": "cand-rel-035",
@@ -1510,12 +1600,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5365,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.54): citacao presente; conferir direcao/escopo (rerank=0.33)."
   },
   {
     "id": "cand-rel-040",
@@ -1543,12 +1635,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5524,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.55): citacao presente; conferir direcao/escopo (rerank=0.32)."
   },
   {
     "id": "cand-rel-078",
@@ -1576,12 +1670,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5535,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.55): citacao presente; conferir direcao/escopo (rerank=0.31)."
   },
   {
     "id": "cand-rel-060",
@@ -1609,12 +1705,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4907,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.29)."
   },
   {
     "id": "cand-rel-012",
@@ -1642,12 +1740,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5367,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.54): citacao presente; conferir direcao/escopo (rerank=0.23)."
   },
   {
     "id": "cand-rel-106",
@@ -1675,12 +1775,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4712,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.47): citacao presente; conferir direcao/escopo (rerank=0.21)."
   },
   {
     "id": "cand-rel-089",
@@ -1708,12 +1810,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4868,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.19)."
   },
   {
     "id": "cand-rel-059",
@@ -1741,12 +1845,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4582,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.46): citacao presente; conferir direcao/escopo (rerank=0.18)."
   },
   {
     "id": "cand-rel-079",
@@ -1774,12 +1880,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4803,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.18)."
   },
   {
     "id": "cand-rel-066",
@@ -1807,12 +1915,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5093,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.51): citacao presente; conferir direcao/escopo (rerank=0.18)."
   },
   {
     "id": "cand-rel-044",
@@ -1840,12 +1950,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4399,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.18)."
   },
   {
     "id": "cand-rel-055",
@@ -1873,12 +1985,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4092,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.41): citacao presente; conferir direcao/escopo (rerank=0.16)."
   },
   {
     "id": "cand-rel-056",
@@ -1906,12 +2020,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4502,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.45): citacao presente; conferir direcao/escopo (rerank=0.15)."
   },
   {
     "id": "cand-rel-013",
@@ -1939,12 +2055,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5453,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.55): citacao presente; conferir direcao/escopo (rerank=0.14)."
   },
   {
     "id": "cand-rel-074",
@@ -1972,12 +2090,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4844,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.14)."
   },
   {
     "id": "cand-rel-116",
@@ -2005,12 +2125,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4219,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.42): citacao presente; conferir direcao/escopo (rerank=0.14)."
   },
   {
     "id": "cand-rel-111",
@@ -2038,12 +2160,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.40): citacao presente; conferir direcao/escopo (rerank=0.14)."
   },
   {
     "id": "cand-rel-005",
@@ -2071,12 +2195,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4889,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.13)."
   },
   {
     "id": "cand-rel-050",
@@ -2104,12 +2230,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.3954,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.40): citacao presente; conferir direcao/escopo (rerank=0.13)."
   },
   {
     "id": "cand-rel-065",
@@ -2137,12 +2265,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.5022,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.50): citacao presente; conferir direcao/escopo (rerank=0.13)."
   },
   {
     "id": "cand-rel-022",
@@ -2170,12 +2300,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4861,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.11)."
   },
   {
     "id": "cand-rel-037",
@@ -2203,12 +2335,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4925,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.11)."
   },
   {
     "id": "cand-rel-068",
@@ -2236,12 +2370,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4414,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.10)."
   },
   {
     "id": "cand-rel-087",
@@ -2269,12 +2405,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4778,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.10)."
   },
   {
     "id": "cand-rel-014",
@@ -2302,12 +2440,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4889,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.10)."
   },
   {
     "id": "cand-rel-016",
@@ -2335,12 +2475,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.491,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.10)."
   },
   {
     "id": "cand-rel-120",
@@ -2368,12 +2510,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4362,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.09)."
   },
   {
     "id": "cand-rel-057",
@@ -2401,12 +2545,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4041,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.40): citacao presente; conferir direcao/escopo (rerank=0.09)."
   },
   {
     "id": "cand-rel-007",
@@ -2434,12 +2580,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4431,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.09)."
   },
   {
     "id": "cand-rel-036",
@@ -2467,12 +2615,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4787,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.07)."
   },
   {
     "id": "cand-rel-080",
@@ -2500,12 +2650,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4437,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.07)."
   },
   {
     "id": "cand-rel-069",
@@ -2533,12 +2685,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4223,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.42): citacao presente; conferir direcao/escopo (rerank=0.06)."
   },
   {
     "id": "cand-rel-006",
@@ -2566,12 +2720,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4388,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.06)."
   },
   {
     "id": "cand-rel-027",
@@ -2599,12 +2755,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.475,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.06)."
   },
   {
     "id": "cand-rel-019",
@@ -2632,11 +2790,13 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
-      "stage": "mining-relation",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.4713,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.47): citacao presente; conferir direcao/escopo (rerank=0.05)."
   }
 ]

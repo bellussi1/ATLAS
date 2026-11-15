@@ -33,7 +33,7 @@ test('classifyOllamaModels matches recommended roles and reports missing models'
     { name: 'hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M', size: '5.6 GB' },
   ]);
   assert.equal(classified.matchedRoles.length, 2);
-  assert.equal(classified.missingRecommended.length, 3);
+  assert.equal(classified.missingRecommended.length, 4);
 });
 
 test('checkCredentialStatus verifies keys without ever exposing secret values', async () => {

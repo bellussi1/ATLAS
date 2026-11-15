@@ -1,6 +1,6 @@
 # ADR-001: Estratégia de Busca Semântica e RAG no ATLAS
 
-- **Status:** proposta (aguardando validação humana pós-avaliação do `questions.jsonl`)
+- **Status:** aprovada pelo mantenedor (15/11/2026); evolução lexical zero-peso (Opção C, item 3) implementada em `src/app/core/content/queries/discovery-index.ts`
 - **Data:** 15/11/2026
 - **Contexto relacionado:** `docs/ACTIVE_CONTEXT.md`, `experiments/rag/`, `docs/research/RAG-FASE-2-RECUPERACAO-2026-11.md`, `docs/research/RAG-FASE-4-GRAFO-2026-11.md`
 
@@ -24,10 +24,12 @@ O ATLAS é uma aplicação **static-first** (Angular 21 com prerender estático 
 ## 2. Opções avaliadas (Fase 6)
 
 ### Opção A — Índice pré-computado no R2 (`c/<sha256>`) + embedding de consulta no navegador
+
 - **Prós:** preserva entrega estática no R2 sem novo servidor nem custo por consulta.
 - **Contras mensurados:** exigir que o navegador carregue um embedder multilíngue quantizado pequeno (ex.: `intfloat/multilingual-e5-small` via ONNX/Transformers.js) adiciona **`~118 MB` de pesos (`model_quantized.onnx` / `int8`) + `~22 MB` de tokenizers** (além da matriz de vetores em R2 — `~8,6 MB` em 384d FP16 ou `~21,8 MiB` em 1024d FP16). É incompatível com navegação mobile e com a meta de reduzir o peso de carga do `/acervo` e das leituras.
 
 ### Opção B — Cloudflare Worker + Workers AI / Vectorize (apenas busca de trechos citados)
+
 - **Prós:** zero download de modelo ONNX no cliente; latência baixa em edge; permite servir trechos citados sem geração de texto por LLM.
 - **Contras e limites verificados:**
   1. **Capacidade Vectorize Free Tier:** limita-se a `5M` dimensões armazenadas e `30M` consultadas/mês. Um índice de `11.145` afirmações em `1024` dimensões (`bge-m3`) soma **`11.412.480` dimensões** (acima do plano gratuito); apenas um modelo `384d` (`~4,28M` dimensões) caberia inicialmente no free tier, sem margem para crescimento do acervo.
@@ -35,10 +37,11 @@ O ATLAS é uma aplicação **static-first** (Angular 21 com prerender estático 
   3. **Pressão existente no Worker:** como o Worker atual já superou o limite gratuito diário (`186.096` requisições), qualquer endpoint adicional exigiria **Workers Paid (`US$ 5/mês` base)**, rate limit por IP e controle de abuso antes de ir ao ar.
 
 ### Opção C — Manter RAG/Semântico fora do site público (CLI e pesquisa) + melhoria lexical zero-peso no cliente (Recomendada agora)
+
 - **Decisão:**
   1. **NÃO integrar busca vetorial por ONNX em browser nem geração LLM ao vivo no site público.**
-  2. **NÃO gerar respostas sintetizadas por IA no site público:** preserva diretamente a regra editorial de *não apresentar opinião como fato* e evita risco de prompt injection, cota de API ou citação parcial em runtime aberto.
-  3. **Evolução estática recomendada para o App Angular (backlog futuro de produto, fora deste experimento):** substituir a exigência estrita de `AND` com palavras interrogativas na busca atual (`lexical_current_strict = 0,0000`) por pontuação lexical/BM25 sobre afirmações e entidades com remoção de *stop words* no próprio cliente. Pelos dados da Fase 2 (`bm25_claims`), essa mudança não requer novo servidor, não adiciona modelo ONNX ao navegador e eleva o `Recall@10` de `0,0000` para **`0,7442`**.
+  2. **NÃO gerar respostas sintetizadas por IA no site público:** preserva diretamente a regra editorial de _não apresentar opinião como fato_ e evita risco de prompt injection, cota de API ou citação parcial em runtime aberto.
+  3. **Evolução estática recomendada para o App Angular (backlog futuro de produto, fora deste experimento):** substituir a exigência estrita de `AND` com palavras interrogativas na busca atual (`lexical_current_strict = 0,0000`) por pontuação lexical/BM25 sobre afirmações e entidades com remoção de _stop words_ no próprio cliente. Pelos dados da Fase 2 (`bm25_claims`), essa mudança não requer novo servidor, não adiciona modelo ONNX ao navegador e eleva o `Recall@10` de `0,0000` para **`0,7442`**.
   4. **Manter `experiments/rag/` (`atlas-rag`) em modo local/pesquisa:**
      - Executa indexação `bge-m3`, reranking `bge-reranker-v2-m3`, expansão `editorial_only` e geração auditada com travas duras offline.
      - Alimenta **filas de revisão humana** para ampliar o acervo (`Seção 6`: relações candidatas, contradições, deduplicação e lacunas com `ok: null`).

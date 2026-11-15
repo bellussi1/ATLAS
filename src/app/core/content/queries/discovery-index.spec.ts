@@ -88,4 +88,22 @@ describe('static discovery index', () => {
     expect(safeDiscoveryOrigin('https://example.org/acervo')).toBeNull();
     expect(safeDiscoveryOrigin('/verbete/ulysses-guimaraes')).toBeNull();
   });
+
+  it('supports natural-language Portuguese queries by stripping stop words and punctuation with BM25 fallback (ADR-001)', () => {
+    const constitutionMatches = filterDiscoveryIndex(index, {
+      query: 'O que a Constituição Federal de 1988 prevê sobre igualdade perante a lei?',
+    });
+    expect(constitutionMatches.length).toBeGreaterThan(0);
+    expect(constitutionMatches[0]?.path).toBe('/verbete/igualdade-perante-a-lei');
+    expect(constitutionMatches.slice(0, 3).map((entry) => entry.path)).toEqual(
+      expect.arrayContaining(['/verbete/igualdade-perante-a-lei', '/verbete/constituicao-de-1988']),
+    );
+
+    const relaxedMajority = filterDiscoveryIndex(index, {
+      query: 'Quais princípios tratam da igualdade perante a lei e inexistenteextra?',
+    });
+    expect(relaxedMajority.some((entry) => entry.path === '/verbete/igualdade-perante-a-lei')).toBe(
+      true,
+    );
+  });
 });

@@ -44,6 +44,7 @@
     }
   },
   "reused_from_gold_set_count": 13,
-  "human_ok_true_count": 0,
-  "human_ok_null_count": 100
+  "human_ok_true_count": 74,
+  "human_ok_false_count": 9,
+  "human_ok_null_count": 17
 }

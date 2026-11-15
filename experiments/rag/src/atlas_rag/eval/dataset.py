@@ -1206,6 +1206,111 @@ def _entity_text_normalized_map(corpus: CorpusArtifacts) -> dict[str, str]:
     return {eid: normalize_text(" ".join(chunks)) for eid, chunks in by_ent.items()}
 
 
+# Revisao enviada explicitamente pelo mantenedor (15/11/2026): sugestao_ok -> human_ok + nota_revisao
+MAINTAINER_REVIEW_2026_11: dict[str, tuple[bool | None, str]] = {
+    'q-fac-001': (True, 'Kirkcaldy; batismo 16/06/1723 (5/06 no calendário juliano). Conferir qual data o claim usa.'),
+    'q-fac-002': (True, 'Londres, 5/08/1895.'),
+    'q-fac-003': (True, 'Trabalho comandado. attributed-thesis correto.'),
+    'q-fac-004': (True, 'Londres, 1848.'),
+    'q-fac-005': (None, 'Provável Marcel Wissenburg (Green Liberalism, 1998), mas depende do texto exato do claim.'),
+    'q-fac-006': (False, 'Resposta (Bismarck) ok, mas é fato documentado: expected_epistemic deveria ser documented-fact.'),
+    'q-fac-007': (None, 'Ambígua: há dois períodos de proscrição (1948–1958, Ley Maldita; 1973–1990). Confirmar se o claim cobre um só ou especificar na pergunta.'),
+    'q-fac-008': (True, 'Poder constituinte pertence à nação. attributed-thesis ok.'),
+    'q-fac-009': (None, "Formulação vai de 1904 a 1906 (Resultados e Perspectivas, 1906); 'em que ano' só funciona se o claim fixar um ano."),
+    'q-fac-010': (True, '10/02/1980, Colégio Sion, São Paulo.'),
+    'q-fac-011': (True, 'MP 434/1994 (URV); estabilização/combate à inflação.'),
+    'q-fac-012': (True, "Pergunta vaga ('identificado'), mas respondível: República Federativa / Estado Democrático de Direito."),
+    'q-fac-013': (None, 'Data contestável: Encontro/Carta de Lisboa (jun/1979) vs. fundação formal após perder a sigla PTB (1980). Conferir o claim.'),
+    'q-fac-014': (True, 'Mother Earth (era revista mensal, não jornal; detalhe menor).'),
+    'q-fac-015': (True, 'Bismarck, década de 1880.'),
+    'q-fac-016': (True, 'São Borja; 10/11/1937.'),
+    'q-fac-017': (True, 'Hegemonia cultural.'),
+    'q-fac-018': (True, 'Santiago do Chile, nov/1975.'),
+    'q-fac-019': (True, 'ADAV (lassalleanos) e SDAP (Eisenach), em Gotha.'),
+    'q-fac-020': (True, 'Hero Moeller; revista ORDO.'),
+    'q-fac-021': (None, "Não há atribuição consensual de 'primeiro uso'; depende inteiramente do claim."),
+    'q-fac-022': (True, 'O que é a propriedade? (1840).'),
+    'q-fac-023': (True, 'Demanda efetiva/agregada. attributed-thesis ok.'),
+    'q-fac-024': (True, '1/02/1987.'),
+    'q-mh-001': (True, 'A Riqueza das Nações.'),
+    'q-mh-002': (True, 'O Capital, Livro I.'),
+    'q-mh-003': (True, 'Bernstein. Conferir se o claim de socialismo liberal cita Bernstein explicitamente.'),
+    'q-mh-004': (True, 'Locke. Conferir se rousseau-001 sustenta a ligação (hop 2).'),
+    'q-mh-005': (True, 'O que é o Terceiro Estado? (redigido em 1788, publicado em jan/1789).'),
+    'q-mh-006': (False, 'Erro factual: a Romênia de Brătianu lutou na Guerra Russo-Turca de 1877–1878 (Independência), não na Guerra Sérvio-Otomana. Gold e pergunta inválidos.'),
+    'q-mh-007': (True, 'Revoluções de 1848 (Stein participou do movimento de Schleswig-Holstein e perdeu a cátedra em Kiel).'),
+    'q-mh-008': (True, 'Die Neue Zeit (1883).'),
+    'q-mh-009': (True, 'Quarta Internacional (Périgny, 1938).'),
+    'q-mh-010': (False, "Khrushchov ok, mas 'sucedeu Stalin' é impreciso (Malenkov chefiou o governo primeiro) e o epistemic deveria ser documented-fact."),
+    'q-mh-011': (True, 'ADAV (1863).'),
+    'q-mh-012': (True, "Partido Conservador (Manifesto de Tamworth). 'Inglês' → 'britânico'."),
+    'q-mh-013': (True, 'Anti-Dühring, em série no Vorwärts (1877–1878).'),
+    'q-mh-014': (True, "L'Humanité."),
+    'q-mh-015': (True, 'Partido Revolucionário Cubano (10/04/1892).'),
+    'q-mh-016': (True, 'Uma Teoria da Justiça.'),
+    'q-mh-017': (True, 'Mencheviques.'),
+    'q-mh-018': (False, 'Premissa duvidosa (Aristóteles como influência do ordoliberalismo, como fato documentado) e conflita com q-disc-009. Verificar ordoliberalismo-002; se o claim não disser isso, descartar.'),
+    'q-cmp-001': (True, 'Ok; reaproveita os claims de q-fac-003 e q-mh-001.'),
+    'q-cmp-002': (None, 'karl-kautsky-001 também é gold de q-mh-008 (fundação da Neue Zeit); confirmar se o claim trata do marxismo ortodoxo/determinismo.'),
+    'q-cmp-003': (True, 'Ok.'),
+    'q-cmp-004': (True, 'Comparação um tanto artificial (contextos diferentes), mas respondível.'),
+    'q-cmp-005': (True, 'Ok.'),
+    'q-cmp-006': (True, 'Ok.'),
+    'q-cmp-007': (True, "'Perfis estatutários' é vago; aceitável."),
+    'q-cmp-008': (True, 'Ok.'),
+    'q-cmp-009': (True, 'Ok.'),
+    'q-cmp-010': (False, "Premissa enviesada: o socialismo liberal não 'compatibiliza' monopólios; costuma defender a propriedade social deles. Reformular."),
+    'q-cmp-011': (True, 'Ok.'),
+    'q-cmp-012': (True, 'Ok.'),
+    'q-cmp-013': (True, 'Ok. Observe que contradiz o espírito de q-disc-013.'),
+    'q-cmp-014': (False, "Não é comparação substantiva: só justapõe duas datas, e a Revolução Francesa não é um 'regime'. Descartar."),
+    'q-cnt-001': (True, 'Ok.'),
+    'q-cnt-002': (True, 'Ok (debate otimistas × pessimistas).'),
+    'q-cnt-003': (True, 'Ok (Laslett: redigidos antes de 1688).'),
+    'q-cnt-004': (True, 'Ok.'),
+    'q-cnt-005': (True, 'Ok.'),
+    'q-cnt-006': (True, 'Ok.'),
+    'q-cnt-007': (True, 'Ok.'),
+    'q-cnt-008': (True, 'Ok.'),
+    'q-cnt-009': (True, 'Ok.'),
+    'q-cnt-010': (True, 'Ok.'),
+    'q-cnt-011': (True, "Ok; conferir se o claim fala mesmo de 'justificativa oficial da CIA'."),
+    'q-cnt-012': (True, 'Ok.'),
+    'q-cnt-013': (False, "Redação confusa ('ligados ao neoliberalismo ou ao texto do FMI'). Reformular, por exemplo: 'O artigo do FMI de 2016 sobre neoliberalismo e desigualdade é tratado como consenso?'"),
+    'q-cnt-014': (None, 'revolucao-russa-001 parece claim genérico de abertura; confirmar se registra divergência sobre Lenin/Trótski.'),
+    'q-cnt-015': (True, 'Ok.'),
+    'q-cnt-016': (True, 'Ok.'),
+    'q-disc-001': (None, 'Kant leu e citou Smith (Metafísica dos Costumes); a recusa só é correta se o acervo não registrar isso. Conferir.'),
+    'q-disc-002': (True, 'Recusa correta.'),
+    'q-disc-003': (True, 'Recusa correta (Berlin foi crítico, não filiado).'),
+    'q-disc-004': (True, 'Recusa correta.'),
+    'q-disc-005': (None, 'Gramsci polemizou com o marxismo da II Internacional; verificar se algum claim liga os dois.'),
+    'q-disc-006': (False, 'Relação histórica forte e central (Bernstein foi colaborador próximo e executor literário de Engels). Recusar aqui ensina o modelo a negar fato real; descartar ou trocar o par.'),
+    'q-disc-007': (True, 'Recusa correta.'),
+    'q-disc-008': (True, 'Recusa correta.'),
+    'q-disc-009': (True, 'Recusa aceitável; ver o conflito com q-mh-018.'),
+    'q-disc-010': (True, 'Recusa correta (Gramsci estava na Itália em 1917).'),
+    'q-disc-011': (True, 'Recusa correta.'),
+    'q-disc-012': (True, 'Recusa aceitável.'),
+    'q-disc-013': (False, "Influência real e documentada (Berlin, 'John Stuart Mill and the Ends of Life', 1959). Descartar ou trocar o par."),
+    'q-disc-014': (True, 'Recusa correta.'),
+    'q-oov-001': (True, 'Fora do acervo (provável).'),
+    'q-oov-002': (True, 'Fora do acervo.'),
+    'q-oov-003': (True, 'Fora do acervo.'),
+    'q-oov-004': (None, 'Risco alto: a página de neoliberalismo provavelmente cita o Consenso de Washington (cf. neoliberalismo-003). Buscar no acervo.'),
+    'q-oov-005': (None, 'Risco alto: a Era Vargas/CLT costuma citar a Carta del Lavoro. Buscar no acervo.'),
+    'q-oov-006': (None, 'Risco médio: o Zollverein pode aparecer em páginas sobre a Alemanha/liberalismo. Buscar.'),
+    'q-oov-007': (True, 'Fora do acervo (provável).'),
+    'q-oov-008': (None, "Risco médio: Smith discute o Tratado de Methuen n'A Riqueza das Nações. Buscar."),
+    'q-oov-009': (None, 'Risco médio: o liberalismo clássico costuma citar a Magna Carta. Buscar.'),
+    'q-oov-010': (True, 'Fora do acervo (provável).'),
+    'q-oov-011': (None, 'Risco médio: as páginas da Ditadura Militar podem citar o Estatuto da Terra. Buscar.'),
+    'q-oov-012': (None, 'Risco alto: a página do Plano Real costuma narrar os planos anteriores (Cruzado). Buscar.'),
+    'q-oov-013': (True, 'Fora do acervo (provável).'),
+    'q-oov-014': (None, 'Risco médio: anarcocapitalismo/Escola Austríaca às vezes citam Salamanca. Buscar.'),
+}
+
+
 def validate_specs(specs: list[QuestionSpec], corpus: CorpusArtifacts) -> dict[str, Any]:
     """Valida invariantes estritas de cada pergunta contra o bundle pinado."""
     if len(specs) != 100:
@@ -1302,13 +1407,18 @@ def validate_specs(specs: list[QuestionSpec], corpus: CorpusArtifacts) -> dict[s
         if got.get("dev") != exp_dev or got.get("test") != exp_test:
             raise ValueError(f"Contagem divergente para {qtype}: esperado ({exp_dev},{exp_test}), obtido {got}")
 
+    missing_review = [q.id for q in specs if q.id not in MAINTAINER_REVIEW_2026_11]
+    if missing_review:
+        raise ValueError(f"Perguntas sem registro em MAINTAINER_REVIEW_2026_11: {missing_review}")
+    review_values = [MAINTAINER_REVIEW_2026_11[q.id][0] for q in specs]
     return {
         "total": len(specs),
         "splits": split_counts,
         "by_type": counts_by_type,
         "reused_from_gold_set_count": reused_gold_set,
-        "human_ok_true_count": 0,
-        "human_ok_null_count": len(specs),
+        "human_ok_true_count": sum(1 for v in review_values if v is True),
+        "human_ok_false_count": sum(1 for v in review_values if v is False),
+        "human_ok_null_count": sum(1 for v in review_values if v is None),
     }
 
 
@@ -1351,15 +1461,20 @@ def build_and_write_dataset(root: Path | None = None) -> dict[str, Any]:
     md_lines: list[str] = [
         "# Fila de Revisão Humana — Conjunto de Avaliação ATLAS RAG (Fase 1)",
         "",
-        "> **Licença:** derivado do acervo ATLAS (CC BY-SA 4.0). **Aviso:** nenhum item abaixo foi validado por humano (`human_ok: null`).",
+        (
+            "> **Licença:** derivado do acervo ATLAS (CC BY-SA 4.0). "
+            f"**Revisão humana aplicada (mantenedor 2026-11):** `{stats['human_ok_true_count']} true`, "
+            f"`{stats['human_ok_false_count']} false`, `{stats['human_ok_null_count']} null`."
+        ),
         f"> **Bundle de origem:** release `{loaded.release}` (`{loaded.bundle_sha256[:12]}...`). Total: **{len(specs)} perguntas** (`{stats['splits']['dev']} dev`, `{stats['splits']['test']} test`).",
-        f"> **Referência gold-set-2026-11:** {af_count} afirmações, {pa_count} pares fonte-afirmação, {rel_count} relações (reaproveitados {stats['reused_from_gold_set_count']} itens em rascunho; todos seguem `human_ok: null`).",
+        f"> **Referência gold-set-2026-11:** {af_count} afirmações, {pa_count} pares fonte-afirmação, {rel_count} relações (reaproveitados {stats['reused_from_gold_set_count']} itens em rascunho).",
         "",
-        "| ID | Split | Tipo | Recusa? | Epistêmica esperada | Pergunta | Claims Gold (`id`) | human_ok |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| ID | Split | Tipo | Recusa? | Epistêmica esperada | Pergunta | Claims Gold (`id`) | human_ok | Nota de revisão |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
 
     for q in specs:
+        human_ok, nota_revisao = MAINTAINER_REVIEW_2026_11[q.id]
         row = {
             "id": q.id,
             "split": q.split,
@@ -1368,7 +1483,8 @@ def build_and_write_dataset(root: Path | None = None) -> dict[str, Any]:
             "gold_unit_ids": q.gold_unit_ids,
             "must_refuse": q.must_refuse,
             "expected_epistemic": q.expected_epistemic,
-            "human_ok": None,
+            "human_ok": human_ok,
+            "nota_revisao": nota_revisao,
             "origin": q.origin,
         }
         jsonl_lines.append(json.dumps(row, ensure_ascii=False))
@@ -1399,8 +1515,10 @@ def build_and_write_dataset(root: Path | None = None) -> dict[str, Any]:
         )
         cids_str = ", ".join(f"`{cid}`" for cid in q.gold_unit_ids) if q.gold_unit_ids else "`—`"
         ep = f"`{q.expected_epistemic}`" if q.expected_epistemic else "`—`"
+        human_label = "true" if human_ok is True else ("false" if human_ok is False else "null")
+        nota_clean = nota_revisao.replace("|", "/")
         md_lines.append(
-            f"| `{q.id}` | {q.split} | `{q.type}` | {'sim' if q.must_refuse else 'não'} | {ep} | {q.question} | {cids_str} | `null` |"
+            f"| `{q.id}` | {q.split} | `{q.type}` | {'sim' if q.must_refuse else 'não'} | {ep} | {q.question} | {cids_str} | `{human_label}` | {nota_clean} |"
         )
 
     q_path.write_text("\n".join(jsonl_lines) + "\n", encoding="utf-8")

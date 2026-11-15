@@ -15,7 +15,7 @@ from atlas_rag.eval.phase4_runner import run_phase4
 from atlas_rag.eval.regression import build_default_thresholds_from_runs, check_regression
 from atlas_rag.eval.security import run_security_suite
 from atlas_rag.ingest.public_sources import detect_installed_local_models, run_public_ingest
-from atlas_rag.mining.acervo_miner import run_archive_mining
+from atlas_rag.mining.acervo_miner import run_archive_mining, run_queue_ai_triage
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -36,6 +36,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     sub.add_parser("phase5-thresholds", help="Deriva limiares de regressão a partir dos baselines")
     sub.add_parser("ci-check", help="Verifica métricas versionadas contra baseline_thresholds.json")
     sub.add_parser("mine", help="Minera filas humanas de expansão do acervo (Seção 6)")
+    sub.add_parser(
+        "triage-queues",
+        help="Pré-triagem por IA em queues/*.json preservando ok=null até revisão humana",
+    )
     sub.add_parser("models", help="Lista modelos locais configurados (Ollama + GPU HuggingFace)")
 
     p_ingest = sub.add_parser(
@@ -82,6 +86,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 0 if res["passed"] else 1
     elif args.cmd == "mine":
         print(json.dumps(run_archive_mining(), indent=2, ensure_ascii=False))
+    elif args.cmd == "triage-queues":
+        print(json.dumps(run_queue_ai_triage(), indent=2, ensure_ascii=False))
     elif args.cmd == "models":
         print(json.dumps(detect_installed_local_models(), indent=2, ensure_ascii=False))
     elif args.cmd == "ingest-public":

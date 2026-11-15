@@ -150,7 +150,7 @@
       },
       "raw_guard_pass_rate": 1.0,
       "guard_override_count": 0,
-      "mean_latency_ms": 0.42,
+      "mean_latency_ms": 0.41,
       "total_input_tokens": 51098,
       "total_output_tokens": 11206,
       "measured_cost_usd": 0.0,
@@ -302,9 +302,161 @@
       },
       "raw_guard_pass_rate": 0.84,
       "guard_override_count": 16,
-      "mean_latency_ms": 7.04,
+      "mean_latency_ms": 7.47,
       "total_input_tokens": 96207,
       "total_output_tokens": 17597,
+      "measured_cost_usd": 0.0,
+      "cost_per_100_queries_usd": 0.0
+    },
+    "ollama/hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M": {
+      "summary": {
+        "n": 100,
+        "deterministic_faithfulness_rate": 0.69,
+        "citation_correctness_rate": 1.0,
+        "epistemic_accuracy_answerable": 0.5694,
+        "true_refusal_rate": 1.0,
+        "false_refusal_rate": 0.4167,
+        "contested_nuance_preserved_rate": 0.75,
+        "by_type": {
+          "comparativa": {
+            "n": 14,
+            "faithful_rate": 0.4286,
+            "refused_rate": 0.5714,
+            "citation_correct_rate": 1.0
+          },
+          "contestada": {
+            "n": 16,
+            "faithful_rate": 0.1875,
+            "refused_rate": 0.75,
+            "citation_correct_rate": 1.0
+          },
+          "factual": {
+            "n": 24,
+            "faithful_rate": 0.875,
+            "refused_rate": 0.125,
+            "citation_correct_rate": 1.0
+          },
+          "multi_hop": {
+            "n": 18,
+            "faithful_rate": 0.6111,
+            "refused_rate": 0.3889,
+            "citation_correct_rate": 1.0
+          },
+          "sem_resposta": {
+            "n": 14,
+            "faithful_rate": 1.0,
+            "refused_rate": 1.0,
+            "citation_correct_rate": 1.0
+          },
+          "so_link_de_descoberta": {
+            "n": 14,
+            "faithful_rate": 1.0,
+            "refused_rate": 1.0,
+            "citation_correct_rate": 1.0
+          }
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 70,
+          "deterministic_faithfulness_rate": 0.7143,
+          "citation_correctness_rate": 1.0,
+          "epistemic_accuracy_answerable": 0.6078,
+          "true_refusal_rate": 1.0,
+          "false_refusal_rate": 0.3725,
+          "contested_nuance_preserved_rate": 0.75,
+          "by_type": {
+            "comparativa": {
+              "n": 10,
+              "faithful_rate": 0.5,
+              "refused_rate": 0.5,
+              "citation_correct_rate": 1.0
+            },
+            "contestada": {
+              "n": 11,
+              "faithful_rate": 0.2727,
+              "refused_rate": 0.6364,
+              "citation_correct_rate": 1.0
+            },
+            "factual": {
+              "n": 17,
+              "faithful_rate": 0.9412,
+              "refused_rate": 0.0588,
+              "citation_correct_rate": 1.0
+            },
+            "multi_hop": {
+              "n": 13,
+              "faithful_rate": 0.5385,
+              "refused_rate": 0.4615,
+              "citation_correct_rate": 1.0
+            },
+            "sem_resposta": {
+              "n": 9,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "so_link_de_descoberta": {
+              "n": 10,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            }
+          }
+        },
+        "test": {
+          "n": 30,
+          "deterministic_faithfulness_rate": 0.6333,
+          "citation_correctness_rate": 1.0,
+          "epistemic_accuracy_answerable": 0.4762,
+          "true_refusal_rate": 1.0,
+          "false_refusal_rate": 0.5238,
+          "contested_nuance_preserved_rate": null,
+          "by_type": {
+            "comparativa": {
+              "n": 4,
+              "faithful_rate": 0.25,
+              "refused_rate": 0.75,
+              "citation_correct_rate": 1.0
+            },
+            "contestada": {
+              "n": 5,
+              "faithful_rate": 0.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "factual": {
+              "n": 7,
+              "faithful_rate": 0.7143,
+              "refused_rate": 0.2857,
+              "citation_correct_rate": 1.0
+            },
+            "multi_hop": {
+              "n": 5,
+              "faithful_rate": 0.8,
+              "refused_rate": 0.2,
+              "citation_correct_rate": 1.0
+            },
+            "sem_resposta": {
+              "n": 5,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "so_link_de_descoberta": {
+              "n": 4,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            }
+          }
+        }
+      },
+      "raw_guard_pass_rate": 0.88,
+      "guard_override_count": 12,
+      "mean_latency_ms": 2858.46,
+      "total_input_tokens": 105025,
+      "total_output_tokens": 12941,
       "measured_cost_usd": 0.0,
       "cost_per_100_queries_usd": 0.0
     }
@@ -363,5 +515,34 @@
     "agreement_count": 26,
     "agreement_rate": 0.8667,
     "cohens_kappa": 0.7333
+  },
+  "judge_calibration_gemma2": {
+    "judge_model": "ollama/gemma2:9b-instruct-q4_K_M",
+    "calibration_n": 30,
+    "human_calibrated": false,
+    "calibration_basis": "30_deterministic_synthetic_reference_labels_pending_human_calibration",
+    "agreement_count": 25,
+    "agreement_rate": 0.8333,
+    "cohens_kappa": 0.6667
+  },
+  "judge_calibration_comparison": {
+    "ollama/qwen3:8b-q4_K_M": {
+      "judge_model": "ollama/qwen3:8b-q4_K_M",
+      "calibration_n": 30,
+      "human_calibrated": false,
+      "calibration_basis": "30_deterministic_synthetic_reference_labels_pending_human_calibration",
+      "agreement_count": 26,
+      "agreement_rate": 0.8667,
+      "cohens_kappa": 0.7333
+    },
+    "ollama/gemma2:9b-instruct-q4_K_M": {
+      "judge_model": "ollama/gemma2:9b-instruct-q4_K_M",
+      "calibration_n": 30,
+      "human_calibrated": false,
+      "calibration_basis": "30_deterministic_synthetic_reference_labels_pending_human_calibration",
+      "agreement_count": 25,
+      "agreement_rate": 0.8333,
+      "cohens_kappa": 0.6667
+    }
   }
 }

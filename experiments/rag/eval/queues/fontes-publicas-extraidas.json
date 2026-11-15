@@ -23,12 +23,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -47,12 +49,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -71,12 +75,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -95,12 +101,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -119,12 +127,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -143,12 +153,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -167,12 +179,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -191,12 +205,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -215,12 +231,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -239,12 +257,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -263,12 +283,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -287,12 +309,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -311,12 +335,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -335,12 +361,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -359,12 +387,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -383,12 +413,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -407,12 +439,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -431,12 +465,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -455,12 +491,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -479,12 +517,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -503,12 +543,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -527,12 +569,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -551,12 +595,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -575,12 +621,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -599,12 +647,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -623,12 +673,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -647,12 +699,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -671,12 +725,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -695,12 +751,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -719,12 +777,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -743,12 +803,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -767,12 +829,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -791,12 +855,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -815,12 +881,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -839,12 +907,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -863,12 +933,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -887,12 +959,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -911,12 +985,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -935,12 +1011,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -959,12 +1037,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -983,12 +1063,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1007,12 +1089,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1031,12 +1115,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1055,12 +1141,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1079,12 +1167,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1103,12 +1193,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1127,12 +1219,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1151,12 +1245,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1175,12 +1271,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1199,12 +1297,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1223,12 +1323,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1247,12 +1349,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1271,12 +1375,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1295,12 +1401,14 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     },
     {
@@ -1319,13 +1427,17 @@
       },
       "review": {
         "by": "ai",
-        "model": "extractive_literal_v1",
-        "stage": "local-public-ingest",
-        "verdict": "sustenta",
-        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+        "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+        "stage": "queue-pre-triage",
+        "verdict": "pending-human",
+        "ai_triage_verdict": "alta_confianca",
+        "ai_triage_score": 0.9,
+        "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
       },
-      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada. Pre-triagem IA (alta_confianca, score=0.90): citacao literal exata no paragrafo e URL publica rastreada.",
       "ok": null
     }
-  ]
+  ],
+  "ai_pre_triage_at": "2026-11-15T21:43:01.518662+00:00",
+  "ai_pre_triage_model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics"
 }

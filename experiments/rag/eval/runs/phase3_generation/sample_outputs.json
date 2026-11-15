@@ -768,5 +768,379 @@
         "overlap_ratio": 1.0
       }
     }
+  ],
+  "ollama/hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M": [
+    {
+      "id": "q-fac-001",
+      "type": "factual",
+      "response": {
+        "answer": "Adam Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-adam-smith-001"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-adam-smith-001": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-001",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.9167
+      }
+    },
+    {
+      "id": "q-fac-002",
+      "type": "factual",
+      "response": {
+        "answer": "Londres",
+        "cited_claim_ids": [
+          "claim-wiki-topic-friedrich-engels-012"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-friedrich-engels-012": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-002",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-003",
+      "type": "factual",
+      "response": {
+        "answer": "O trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui",
+        "cited_claim_ids": [
+          "claim-work-wealth-of-nations"
+        ],
+        "epistemic_labels": {
+          "claim-work-wealth-of-nations": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-003",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-004",
+      "type": "factual",
+      "response": {
+        "answer": "Londres, 1848",
+        "cited_claim_ids": [
+          "claim-wiki-topic-manifesto-comunista-001",
+          "claim-wiki-topic-manifesto-comunista-006",
+          "claim-wiki-topic-esquerda-politica-006",
+          "claim-wiki-topic-friedrich-engels-008"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-manifesto-comunista-001": "documented-fact",
+          "claim-wiki-topic-manifesto-comunista-006": "documented-fact",
+          "claim-wiki-topic-esquerda-politica-006": "documented-fact",
+          "claim-wiki-topic-friedrich-engels-008": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-004",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-005",
+      "type": "factual",
+      "response": {
+        "answer": "Marcel Wissenburg",
+        "cited_claim_ids": [
+          "claim-wiki-ideology-green-liberalism-005",
+          "claim-wiki-ideology-green-liberalism-001",
+          "claim-wiki-ideology-green-liberalism-004"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-ideology-green-liberalism-005": "documented-fact",
+          "claim-wiki-ideology-green-liberalism-001": "documented-fact",
+          "claim-wiki-ideology-green-liberalism-004": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-005",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-006",
+      "type": "factual",
+      "response": {
+        "answer": "Otto von Bismarck",
+        "cited_claim_ids": [
+          "claim-wiki-topic-leis-antissocialistas-002"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-leis-antissocialistas-002": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-006",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-007",
+      "type": "factual",
+      "response": {
+        "answer": "Entre 1932 e 1957, o Partido Comunista do Chile esteve proibido de participar de eleições com seu próprio nome.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-partido-comunista-do-chile-004"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-partido-comunista-do-chile-004": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-007",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.7273
+      }
+    },
+    {
+      "id": "q-fac-008",
+      "type": "factual",
+      "response": {
+        "answer": "Sieyès sustentava a existência de um poder imanente à nação, superior aos poderes constituídos, que é o poder constituinte.",
+        "cited_claim_ids": [
+          "claim-wiki-person-emmanuel-joseph-sieyes-002"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-person-emmanuel-joseph-sieyes-002": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-008",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.9
+      }
+    },
+    {
+      "id": "q-fac-009",
+      "type": "factual",
+      "response": {
+        "answer": "1905",
+        "cited_claim_ids": [
+          "claim-wiki-topic-trotskismo-003",
+          "claim-wiki-topic-leon-trotski-001"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-trotskismo-003": "documented-fact",
+          "claim-wiki-topic-leon-trotski-001": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-009",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-010",
+      "type": "factual",
+      "response": {
+        "answer": "O Partido dos Trabalhadores (PT) foi fundado em 10 de fevereiro de 1980 no Colégio Sion, em São Paulo, por um grupo heterogêneo de militantes, sindicalistas, intelectuais, artistas e católicos.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-partido-dos-trabalhadores-001",
+          "claim-wiki-topic-partido-dos-trabalhadores-003"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-partido-dos-trabalhadores-001": "documented-fact",
+          "claim-wiki-topic-partido-dos-trabalhadores-003": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-010",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.8824
+      }
+    },
+    {
+      "id": "q-fac-011",
+      "type": "factual",
+      "response": {
+        "answer": "A medida provisória número 434, publicada em 27 de fevereiro de 1994, deu início ao Plano Real. Seu objetivo principal era o controle da hiperinflação que assolava o país.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-plano-real-001",
+          "claim-wiki-topic-plano-real-002"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-plano-real-001": "documented-fact",
+          "claim-wiki-topic-plano-real-002": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-011",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.7222
+      }
+    },
+    {
+      "id": "q-fac-012",
+      "type": "factual",
+      "response": {
+        "answer": "Falha ao obter resposta JSON válida do modelo local.",
+        "cited_claim_ids": [],
+        "epistemic_labels": {},
+        "refuse": true,
+        "refusal_reason": "parse_or_runtime_error:JSONDecodeError"
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-012",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": true,
+        "refusal_outcome": "false_refusal",
+        "citation_correct": true,
+        "epistemic_correct": false,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": false,
+        "overlap_ratio": 1.0
+      }
+    }
   ]
 }

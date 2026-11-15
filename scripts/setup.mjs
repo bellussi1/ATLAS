@@ -21,6 +21,11 @@ export const RECOMMENDED_LOCAL_MODELS = [
     aliases: ['qwen3:8b-q4_k_m', 'qwen3:8b'],
   },
   {
+    id: 'gemma2:9b-instruct-q4_K_M',
+    role: 'Extracao/verificacao cruzada em portugues, prosa historica e juiz independente (9B)',
+    aliases: ['gemma2:9b-instruct-q4_k_m', 'gemma2:9b'],
+  },
+  {
     id: 'hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M',
     role: 'Prosa historica, revisao editorial e sintese multilingue (PT/EN/ES/FR/DE)',
     aliases: ['eurollm-9b-instruct'],

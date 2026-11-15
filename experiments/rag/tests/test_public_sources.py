@@ -8,6 +8,7 @@ from atlas_rag.ingest.public_sources import (
     clean_public_source_text,
     detect_prompt_injection,
     embed_and_index_public_units,
+    extract_entities_gliner,
     extract_political_history_from_paragraphs,
     verify_literal_quote,
 )
@@ -159,3 +160,11 @@ def test_ollama_extractor_rejects_ungrounded_quotes_and_unloads_gpu(tmp_path: Pa
     assert result["rejected_invalid_label"] == 1
     assert result["items"][0]["review"]["model"] == "ollama/qwen3:8b-q4_K_M"
     assert "[conferência de IA]" in result["items"][0]["note"]
+
+
+def test_extract_entities_gliner_returns_structured_entities_with_offline_fallback() -> None:
+    ents = extract_entities_gliner(
+        "Getúlio Vargas liderou a Revolução de 1930 e criou o Partido Trabalhista Brasileiro."
+    )
+    assert len(ents) >= 1
+    assert all({"text", "label", "score", "backend"}.issubset(e.keys()) for e in ents)

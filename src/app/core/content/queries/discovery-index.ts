@@ -81,6 +81,141 @@ const normalize = (value: string): string =>
     .replace(/[\u0300-\u036f]/g, '')
     .toLocaleLowerCase('pt-BR');
 
+const PT_SEARCH_STOPWORDS: ReadonlySet<string> = new Set([
+  'a',
+  'aconteceu',
+  'ao',
+  'aos',
+  'as',
+  'com',
+  'como',
+  'consiste',
+  'da',
+  'das',
+  'de',
+  'defende',
+  'determinava',
+  'deve',
+  'devem',
+  'diz',
+  'do',
+  'dos',
+  'e',
+  'em',
+  'entre',
+  'era',
+  'eram',
+  'esta',
+  'estao',
+  'esteve',
+  'existe',
+  'existiu',
+  'fala',
+  'foi',
+  'foram',
+  'ha',
+  'havia',
+  'na',
+  'nas',
+  'no',
+  'nos',
+  'o',
+  'ocorreu',
+  'onde',
+  'os',
+  'ou',
+  'para',
+  'pela',
+  'pelas',
+  'pelo',
+  'pelos',
+  'pode',
+  'podem',
+  'por',
+  'preve',
+  'quais',
+  'qual',
+  'quando',
+  'que',
+  'quem',
+  'sao',
+  'se',
+  'segundo',
+  'sem',
+  'ser',
+  'seu',
+  'seus',
+  'significa',
+  'sobre',
+  'sua',
+  'suas',
+  'sustenta',
+  'teve',
+  'trata',
+  'tratam',
+  'um',
+  'uma',
+  'umas',
+  'uns',
+]);
+
+function tokenizeSearchQuery(query: string): string[] {
+  const rawTokens = normalize(query)
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+  if (!rawTokens.length) return [];
+  const informative = rawTokens.filter((token) => !PT_SEARCH_STOPWORDS.has(token));
+  const selected = informative.length ? informative : rawTokens;
+  const multiChar = selected.filter((token) => token.length > 1 || /\d/.test(token));
+  return Array.from(new Set(multiChar.length ? multiChar : selected));
+}
+
+function countTermOccurrences(haystack: string, term: string): number {
+  if (!haystack || !term) return 0;
+  const tokens = haystack.split(/[^a-z0-9]+/).filter(Boolean);
+  let count = 0;
+  for (const token of tokens) {
+    if (token === term || (term.length >= 5 && token.startsWith(term))) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+function scoreEntryLexicalFallback(
+  entry: DiscoveryIndexEntry,
+  terms: string[],
+  idfByTerm: Map<string, number>,
+  avgDocLen: number,
+): { matchedCount: number; score: number } {
+  const titleAliasesText = normalize([entry.title, ...entry.aliases].join(' '));
+  const backlinksText = entry.backlinks
+    .map((backlink) => `${backlink.title} ${backlink.label} ${backlink.context}`)
+    .join(' ');
+  const summaryContextText = normalize(`${entry.summary} ${entry.context} ${backlinksText}`);
+  const bodyText = entry.searchText;
+  const docLen = Math.max(bodyText.length, avgDocLen * 0.5);
+  const k1 = 1.2;
+  const b = 0.5;
+  const lengthNorm = 1 - b + b * (docLen / Math.max(avgDocLen, 1));
+
+  let matchedCount = 0;
+  let score = 0;
+  for (const term of terms) {
+    const titleHits = countTermOccurrences(titleAliasesText, term);
+    const summaryHits = countTermOccurrences(summaryContextText, term);
+    const bodyHits = countTermOccurrences(bodyText, term);
+    const weightedTf = titleHits * 6 + summaryHits * 2 + Math.min(bodyHits, 2);
+    if (weightedTf > 0) {
+      matchedCount += 1;
+      const idf = idfByTerm.get(term) ?? 0.5;
+      score += (idf * (weightedTf * (k1 + 1))) / (weightedTf + k1 * lengthNorm);
+    }
+  }
+  const kindWeight = entry.kind === 'fonte' ? 0.65 : 1.0;
+  return { matchedCount, score: score * kindWeight };
+}
+
 function kindFacet(entity: Entity): string {
   if (entity.kind === 'place' && entity.placeCategory) return entity.placeCategory;
   if (entity.kind === 'place' && entity.placeType) return entity.placeType;
@@ -345,12 +480,38 @@ export function filterDiscoveryIndex(
         a.entry.title.localeCompare(b.entry.title, 'pt-BR') ||
         a.entry.id.localeCompare(b.entry.id),
     );
-  // A query that names no record still finds the passages that mention it, as a last resort.
+  // A query that names no record still ranks passages by stop-word-free field-weighted BM25 (ADR-001).
   if (named.length) return named.map((match) => match.entry);
-  const terms = normalize(query).split(/\s+/).filter(Boolean);
+  const terms = tokenizeSearchQuery(query);
+  if (!terms.length || !base.length) return [];
+
+  const totalDocs = base.length;
+  const avgDocLen =
+    base.reduce((sum, entry) => sum + Math.max(entry.searchText.length, 1), 0) / totalDocs;
+  const idfByTerm = new Map<string, number>();
+  for (const term of terms) {
+    let df = 0;
+    for (const entry of base) {
+      if (countTermOccurrences(entry.searchText, term) > 0) df += 1;
+    }
+    idfByTerm.set(term, Math.log(1 + (totalDocs - df + 0.5) / (df + 0.5)));
+  }
+
+  const minMatch = terms.length <= 2 ? terms.length : Math.ceil(terms.length * 0.5);
   return base
-    .filter((entry) => terms.every((term) => entry.searchText.includes(term)))
-    .sort((a, b) => a.title.localeCompare(b.title, 'pt-BR') || a.id.localeCompare(b.id));
+    .map((entry) => ({
+      entry,
+      ...scoreEntryLexicalFallback(entry, terms, idfByTerm, avgDocLen),
+    }))
+    .filter((item) => item.matchedCount >= minMatch && item.score > 0)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        b.matchedCount - a.matchedCount ||
+        a.entry.title.localeCompare(b.entry.title, 'pt-BR') ||
+        a.entry.id.localeCompare(b.entry.id),
+    )
+    .map((item) => item.entry);
 }
 
 export function validateDiscoveryDestinations(

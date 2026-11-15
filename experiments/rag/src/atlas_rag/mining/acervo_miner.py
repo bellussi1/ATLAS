@@ -402,5 +402,135 @@ def run_archive_mining(
     return summary
 
 
+def _score_triage_candidate(queue_name: str, item: dict[str, Any]) -> tuple[str, float, str]:
+    """Classifica prioridade de triagem por IA sem jamais aprovar (ok permanece null)."""
+    if queue_name == "relacoes-candidatas.json":
+        rerank = float(item.get("rerank_score") or 0.0)
+        cos = float(item.get("bge_m3_cosine") or 0.0)
+        quote = str(item.get("literal_quote") or "")
+        orphan_bonus = 0.05 if item.get("from_is_orphan") else 0.0
+        score = min(1.0, max(0.0, 0.5 * cos + 0.5 * min(rerank, 1.0) + orphan_bonus))
+        valid_quote = len(quote) >= MIN_QUOTE_CHARS and len(quote.split()) >= MIN_QUOTE_WORDS
+        if valid_quote and rerank >= 0.45 and cos >= 0.65:
+            return "alta_confianca", score, f"citacao literal valida + rerank={rerank:.2f}, cos={cos:.2f}"
+        if valid_quote:
+            return "revisar_contexto", score, f"citacao presente; conferir direcao/escopo (rerank={rerank:.2f})"
+        return "baixa_prioridade", score, "citacao curta; exige leitura do trecho completo"
+
+    if queue_name == "debates-e-contradicoes.json":
+        cos = float(item.get("bge_m3_cosine") or 0.0)
+        ca = item.get("claim_a") or {}
+        cb = item.get("claim_b") or {}
+        contested = "contested-claim" in {ca.get("classification"), cb.get("classification")}
+        score = min(1.0, cos + (0.05 if contested else 0.0))
+        if contested and cos >= 0.78:
+            return "alta_confianca", score, f"tensao explicita com contested-claim (cos={cos:.2f})"
+        return "revisar_contexto", score, f"similaridade semantica={cos:.2f}; verificar se ha controversia real"
+
+    if queue_name == "deduplicacao-entidades.json":
+        cos = float(item.get("bge_m3_cosine") or 0.0)
+        ea = item.get("entity_a") or {}
+        eb = item.get("entity_b") or {}
+        same_kind = ea.get("kind") == eb.get("kind")
+        if same_kind and cos >= 0.85:
+            return "alta_confianca", cos, f"mesmo tipo ({ea.get('kind')}) e cos={cos:.2f}"
+        return "revisar_contexto", cos, f"cos={cos:.2f}; confirmar que nao sao entidades distintas"
+
+    # fontes-publicas-extraidas.json
+    quote = str(item.get("quote") or "")
+    text = str(item.get("text") or "")
+    src_url = str((item.get("source") or {}).get("url") or "")
+    grounded = bool(quote) and quote in text and bool(src_url)
+    score = 0.9 if grounded else 0.4
+    if grounded:
+        return "alta_confianca", score, "citacao literal exata no paragrafo e URL publica rastreada"
+    return "revisar_contexto", score, "conferir ancoragem literal e metadados da fonte"
+
+
+def run_queue_ai_triage(
+    root: Path | None = None,
+    *,
+    model_label: str = "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+) -> dict[str, Any]:
+    """Aplica pre-triagem automatizada nas filas preservando ok=null e review.verdict=pending-human."""
+    base = root or repo_root()
+    qdir = eval_dir(base) / "queues"
+    now_iso = datetime.now(timezone.utc).isoformat()
+    queue_files = (
+        "relacoes-candidatas.json",
+        "debates-e-contradicoes.json",
+        "deduplicacao-entidades.json",
+        "fontes-publicas-extraidas.json",
+    )
+
+    per_queue: dict[str, Any] = {}
+    total_items = 0
+    all_ok_null = True
+
+    for fname in queue_files:
+        fpath = qdir / fname
+        if not fpath.exists():
+            continue
+        raw = json.loads(fpath.read_text(encoding="utf-8"))
+        items = raw.get("items", []) if isinstance(raw, dict) else raw
+        triage_counts: dict[str, int] = defaultdict(int)
+
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            item["ok"] = None
+            if "human_ok" in item:
+                item["human_ok"] = None
+            rec, score, rationale = _score_triage_candidate(fname, item)
+            triage_counts[rec] += 1
+            prev_note = str(item.get("note") or "").strip()
+            if not prev_note.startswith("[conferência de IA]"):
+                prev_note = f"[conferência de IA] {prev_note}".strip()
+            triage_tag = f"Pre-triagem IA ({rec}, score={score:.2f}): {rationale}."
+            if "Pre-triagem IA (" in prev_note:
+                prev_note = re.sub(r"\s*Pre-triagem IA \(.*?\)\.\s*$", "", prev_note).strip()
+            item["note"] = f"{prev_note} {triage_tag}".strip()
+            item["review"] = {
+                "by": "ai",
+                "model": model_label,
+                "stage": "queue-pre-triage",
+                "verdict": "pending-human",
+                "ai_triage_verdict": rec,
+                "ai_triage_score": round(score, 4),
+                "reviewedAt": now_iso,
+            }
+            if item.get("ok") is not None:
+                all_ok_null = False
+
+        if isinstance(raw, dict):
+            raw["human_reviewed"] = False
+            raw["ai_pre_triage_at"] = now_iso
+            raw["ai_pre_triage_model"] = model_label
+            raw["items"] = items
+            fpath.write_text(json.dumps(raw, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        else:
+            fpath.write_text(json.dumps(items, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+        per_queue[fname] = {
+            "count": len(items),
+            "by_ai_triage_verdict": dict(triage_counts),
+            "all_ok_null": all(x.get("ok") is None for x in items if isinstance(x, dict)),
+        }
+        total_items += len(items)
+
+    report = {
+        "generated_at": now_iso,
+        "model": model_label,
+        "total_items_triaged": total_items,
+        "all_ok_null": all_ok_null,
+        "human_validated_count": 0,
+        "queues": per_queue,
+    }
+    rpath = eval_dir(base) / "runs" / "queue_ai_triage.json"
+    rpath.parent.mkdir(parents=True, exist_ok=True)
+    rpath.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return report
+
+
 if __name__ == "__main__":
     print(json.dumps(run_archive_mining(), indent=2, ensure_ascii=False))

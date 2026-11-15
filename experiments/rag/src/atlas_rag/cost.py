@@ -17,6 +17,7 @@ CHARS_PER_TOKEN = 2.7
 MODEL_PRICING_USD_PER_M: dict[str, dict[str, float]] = {
     "extractive_cited": {"input": 0.0, "output": 0.0},
     "ollama/qwen3:8b-q4_K_M": {"input": 0.0, "output": 0.0},
+    "ollama/gemma2:9b-instruct-q4_K_M": {"input": 0.0, "output": 0.0},
     "ollama/hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M": {"input": 0.0, "output": 0.0},
     "ollama/hf.co/BSC-LT/salamandraTA-7B-instruct-GGUF:Q4_K_M": {"input": 0.0, "output": 0.0},
     "claude-haiku-5-5": {"input": 1.00, "output": 5.00},

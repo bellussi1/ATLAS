@@ -17,12 +17,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3",
-      "stage": "mining-dedup",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.9106,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas."
   },
   {
     "id": "dedup-002",
@@ -42,12 +44,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3",
-      "stage": "mining-dedup",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8756,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88."
   },
   {
     "id": "dedup-003",
@@ -67,12 +71,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3",
-      "stage": "mining-dedup",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8623,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86."
   },
   {
     "id": "dedup-004",
@@ -92,12 +98,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3",
-      "stage": "mining-dedup",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8572,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86."
   },
   {
     "id": "dedup-005",
@@ -117,12 +125,14 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3",
-      "stage": "mining-dedup",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.8456,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas."
   },
   {
     "id": "dedup-006",
@@ -142,11 +152,13 @@
     "ok": null,
     "review": {
       "by": "ai",
-      "model": "BAAI/bge-m3",
-      "stage": "mining-dedup",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
       "verdict": "pending-human",
-      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.8401,
+      "reviewedAt": "2026-11-15T21:43:01.518662+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas."
   }
 ]

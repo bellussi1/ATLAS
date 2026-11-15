@@ -35,6 +35,18 @@ LOCAL_MODEL_ROLES: list[dict[str, str]] = [
         "purpose": "Prosa histórica em português/europeias e revisão historiográfica",
     },
     {
+        "role": "cross_verify_and_judge",
+        "model": "gemma2:9b-instruct-q4_K_M",
+        "backend": "ollama",
+        "purpose": "Extração e verificação cruzada em português e juiz independente (9B)",
+    },
+    {
+        "role": "ner_entities",
+        "model": "urchade/gliner_multi-v2.1",
+        "backend": "pytorch-gliner",
+        "purpose": "Detecção local de entidades políticas, históricas e institucionais (GLiNER)",
+    },
+    {
         "role": "translation_primary",
         "model": "hf.co/IndexTeam/Index-Translate-9B-GGUF:Q4_K_M",
         "backend": "ollama",
@@ -738,3 +750,72 @@ def run_public_ingest(
         output_dir=output_dir,
         queue_path=queue_path,
     )
+
+
+_GLINER_CACHE: dict[str, Any] = {}
+
+
+def extract_entities_gliner(
+    text: str,
+    labels: Sequence[str] = (
+        "pessoa",
+        "partido",
+        "instituicao",
+        "obra",
+        "acontecimento",
+        "lugar",
+        "ideologia",
+    ),
+    threshold: float = 0.45,
+    model_id: str = "urchade/gliner_multi-v2.1",
+) -> list[dict[str, Any]]:
+    """Extrai entidades politicas/historicas via GLiNER (local) com fallback deterministico offline."""
+    clean = (text or "").strip()
+    if not clean:
+        return []
+    try:
+        from gliner import GLiNER
+
+        model = _GLINER_CACHE.get(model_id)
+        if model is None:
+            model = GLiNER.from_pretrained(model_id, local_files_only=True)
+            _GLINER_CACHE[model_id] = model
+        preds = model.predict_entities(clean, list(labels), threshold=threshold)
+        seen: set[tuple[str, str]] = set()
+        results: list[dict[str, Any]] = []
+        for pred in preds:
+            span_text = str(pred.get("text") or "").strip()
+            label = str(pred.get("label") or "").strip()
+            if not span_text or (span_text.lower(), label) in seen:
+                continue
+            seen.add((span_text.lower(), label))
+            results.append(
+                {
+                    "text": span_text,
+                    "label": label,
+                    "score": round(float(pred.get("score") or 0.0), 4),
+                    "start": int(pred.get("start") or 0),
+                    "end": int(pred.get("end") or 0),
+                    "backend": "gliner",
+                }
+            )
+        return results
+    except Exception:
+        # Fallback deterministico quando pesos HF ainda nao estao em cache local
+        matches = re.findall(r"\b(?:[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç]+(?:\s+(?:de|da|do|dos|das|[A-ZÁÉÍÓÚÂÊÔÃÕÇ][a-záéíóúâêôãõç]+))*)\b", clean)
+        seen_fb: set[str] = set()
+        fallback_items: list[dict[str, Any]] = []
+        for candidate in matches:
+            norm = candidate.strip()
+            if len(norm) < 3 or norm.lower() in seen_fb:
+                continue
+            seen_fb.add(norm.lower())
+            fallback_items.append(
+                {
+                    "text": norm,
+                    "label": "entidade_politica",
+                    "score": 0.5,
+                    "backend": "regex_fallback",
+                }
+            )
+        return fallback_items[:25]

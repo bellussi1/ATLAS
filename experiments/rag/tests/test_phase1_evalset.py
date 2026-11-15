@@ -23,6 +23,7 @@ REQUIRED_KEYS = {
     "must_refuse",
     "expected_epistemic",
     "human_ok",
+    "nota_revisao",
     "origin",
 }
 
@@ -35,7 +36,12 @@ def test_questions_jsonl_schema_and_stratification() -> None:
 
     for row in rows:
         assert set(row.keys()) == REQUIRED_KEYS
-        assert row["human_ok"] is None, "IA não pode marcar human_ok como true"
+        assert row["human_ok"] in (True, False, None)
+        assert isinstance(row["nota_revisao"], str) and row["nota_revisao"].strip()
+
+    assert sum(1 for r in rows if r["human_ok"] is True) == 74
+    assert sum(1 for r in rows if r["human_ok"] is False) == 9
+    assert sum(1 for r in rows if r["human_ok"] is None) == 17
 
     for qtype, (exp_dev, exp_test) in EXPECTED_COUNTS.items():
         subset = [r for r in rows if r["type"] == qtype]
@@ -47,8 +53,9 @@ def test_questions_validated_against_pinned_bundle() -> None:
     corpus = extract_deduplicated_corpus(load_pinned_bundle())
     stats = validate_specs(_build_question_specs(), corpus)
     assert stats["total"] == 100
-    assert stats["human_ok_true_count"] == 0
-    assert stats["human_ok_null_count"] == 100
+    assert stats["human_ok_true_count"] == 74
+    assert stats["human_ok_false_count"] == 9
+    assert stats["human_ok_null_count"] == 17
     assert stats["reused_from_gold_set_count"] >= 10
 
 

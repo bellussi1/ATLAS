@@ -146,6 +146,7 @@ def test_phase3_metrics_artifact() -> None:
     assert data["questions_evaluated"] == 100
     assert "extractive_cited" in data["models"]
     assert "ollama/qwen3:8b-q4_K_M" in data["models"]
+    assert "ollama/hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M" in data["models"]
     ext = data["models"]["extractive_cited"]["summary"]
     assert ext["deterministic_faithfulness_rate"] == 1.0
     assert ext["citation_correctness_rate"] == 1.0
@@ -154,6 +155,10 @@ def test_phase3_metrics_artifact() -> None:
     qwen = data["models"]["ollama/qwen3:8b-q4_K_M"]
     assert qwen["measured_cost_usd"] == 0.0
     assert qwen["summary"]["citation_correctness_rate"] == 1.0
+
+    euro = data["models"]["ollama/hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M"]
+    assert euro["measured_cost_usd"] == 0.0
+    assert euro["summary"]["citation_correctness_rate"] == 1.0
 
     dry = data["paid_api_dry_run_projections"]
     for model_id in ("claude-haiku-5-5", "claude-sonnet-5-5", "deepseek-flash", "gemini-3.8-flash"):
@@ -166,3 +171,9 @@ def test_phase3_metrics_artifact() -> None:
     assert judge["calibration_n"] == 30
     assert judge["human_calibrated"] is False
     assert judge["cohens_kappa"] >= 0.5
+
+    assert "judge_calibration_gemma2" in data
+    assert "judge_calibration_comparison" in data
+    gemma_judge = data["judge_calibration_gemma2"]
+    assert gemma_judge["calibration_n"] == 30
+    assert gemma_judge["human_calibrated"] is False
