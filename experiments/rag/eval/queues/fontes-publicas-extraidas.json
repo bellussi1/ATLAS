@@ -1,0 +1,1331 @@
+{
+  "generated_at": "2026-11-15T20:08:46.539316+00:00",
+  "license": "CC BY-SA 4.0",
+  "human_reviewed": false,
+  "origin": "local-public-ingest",
+  "slug": "trabalhismo",
+  "model": "extractive_literal_v1",
+  "count": 55,
+  "items": [
+    {
+      "id": "pub-683d77f0afe6-0-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "O trabalhismo brasileiro, também denominado nacional-trabalhismo ou simplesmente trabalhismo, é uma corrente política, ideologia, tradição política e cultura política do Brasil, caracterizada pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social, da valorização do trabalho, do nacionalismo, do desenvolvimentismo e da atuação do Estado na promoção do desenvolvimento econômico e da justiça social.",
+      "quote": "O trabalhismo brasileiro, também denominado nacional-trabalhismo ou simplesmente trabalhismo, é uma corrente política, ideologia, tradição política e cultura política do Brasil, caracterizada pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social, da valorização do trabalho, do nacionalismo, do desenvolvimentismo e da atuação do Estado na promoção do desenvolvimento econômico e da justiça social.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Introdução",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-eed653ee7c1a-1-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Consolidou-se durante a Era Vargas, quando a legislação trabalhista passou a ocupar posição central na organização das relações entre Estado, capital e trabalho, sendo institucionalizado com a fundação do Partido Trabalhista Brasileiro (PTB), em 1945.",
+      "quote": "Consolidou-se durante a Era Vargas, quando a legislação trabalhista passou a ocupar posição central na organização das relações entre Estado, capital e trabalho, sendo institucionalizado com a fundação do Partido Trabalhista Brasileiro (PTB), em 1945.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Introdução",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-69e9d27b630c-1-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Suas origens remontam às transformações políticas e sociais das primeiras décadas do século XX, especialmente à influência do castilhismo, do positivismo, do tenentismo, do movimento operário e do pensamento nacionalista brasileiro.",
+      "quote": "Suas origens remontam às transformações políticas e sociais das primeiras décadas do século XX, especialmente à influência do castilhismo, do positivismo, do tenentismo, do movimento operário e do pensamento nacionalista brasileiro.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Introdução",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-8eb60dd1796d-2-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Ao longo do século XX, o trabalhismo exerceu influência significativa sobre a política brasileira, particularmente durante os governos de Getúlio Vargas e João Goulart, desenvolvendo diferentes correntes internas representadas por lideranças como Alberto Pasqualini, Santiago Dantas e Leonel Brizola.",
+      "quote": "Ao longo do século XX, o trabalhismo exerceu influência significativa sobre a política brasileira, particularmente durante os governos de Getúlio Vargas e João Goulart, desenvolvendo diferentes correntes internas representadas por lideranças como Alberto Pasqualini, Santiago Dantas e Leonel Brizola.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Introdução",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-33242e4ee4d3-2-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Sua formulação doutrinária e suas interpretações historiográficas incorporaram diferentes influências intelectuais e políticas, tornando-o objeto de múltiplas leituras quanto à sua natureza ideológica e à sua inserção na história política brasileira.",
+      "quote": "Sua formulação doutrinária e suas interpretações historiográficas incorporaram diferentes influências intelectuais e políticas, tornando-o objeto de múltiplas leituras quanto à sua natureza ideológica e à sua inserção na história política brasileira.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Introdução",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-c7d503e1e5a8-3-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Em vez de constituir uma doutrina formulada de maneira sistemática desde sua origem, o trabalhismo consolidou-se gradualmente por meio da incorporação de elementos provenientes do castilhismo, do positivismo, do nacionalismo brasileiro, do movimento operário, do tenentismo e da experiência administrativa do Estado brasileiro nas primeiras décadas do século XX.",
+      "quote": "Em vez de constituir uma doutrina formulada de maneira sistemática desde sua origem, o trabalhismo consolidou-se gradualmente por meio da incorporação de elementos provenientes do castilhismo, do positivismo, do nacionalismo brasileiro, do movimento operário, do tenentismo e da experiência administrativa do Estado brasileiro nas primeiras décadas do século XX.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Antecedentes",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-ca0c7d0aad8a-3-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "A formação do trabalhismo brasileiro é compreendida pela historiografia como resultado da convergência de diferentes tradições políticas, intelectuais e sociais que marcaram a transição do Império do Brasil para a Primeira República Brasileira e, posteriormente, para a Era Vargas.",
+      "quote": "A formação do trabalhismo brasileiro é compreendida pela historiografia como resultado da convergência de diferentes tradições políticas, intelectuais e sociais que marcaram a transição do Império do Brasil para a Primeira República Brasileira e, posteriormente, para a Era Vargas.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Antecedentes",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-479f0c1bd133-4-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Embora institucionalizado apenas em 1945 com a criação do Partido Trabalhista Brasileiro (PTB), suas bases políticas e ideológicas foram sendo construídas desde o final do século XIX.",
+      "quote": "Embora institucionalizado apenas em 1945 com a criação do Partido Trabalhista Brasileiro (PTB), suas bases políticas e ideológicas foram sendo construídas desde o final do século XIX.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Antecedentes",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-8c3b133da947-4-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "A consolidação do Estado republicano, a expansão da industrialização, a organização do movimento operário e o fortalecimento das propostas de modernização administrativa contribuíram para a formulação de um projeto que buscava conciliar desenvolvimento econômico, integração nacional e ampliação da proteção social sob a coordenação do Estado.",
+      "quote": "A consolidação do Estado republicano, a expansão da industrialização, a organização do movimento operário e o fortalecimento das propostas de modernização administrativa contribuíram para a formulação de um projeto que buscava conciliar desenvolvimento econômico, integração nacional e ampliação da proteção social sob a coordenação do Estado.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Antecedentes",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-7c6a389a399a-5-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Entre os antecedentes intelectuais do trabalhismo brasileiro, a historiografia destaca a influência do castilhismo, corrente política desenvolvida no Rio Grande do Sul a partir da atuação de Júlio de Castilhos e posteriormente consolidada por Borges de Medeiros.",
+      "quote": "Entre os antecedentes intelectuais do trabalhismo brasileiro, a historiografia destaca a influência do castilhismo, corrente política desenvolvida no Rio Grande do Sul a partir da atuação de Júlio de Castilhos e posteriormente consolidada por Borges de Medeiros.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Castilhismo e positivismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-1e0fa417b7c0-5-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Inspirado no positivismo de Auguste Comte, o castilhismo defendia um Estado forte, centralizado e orientado pela ação de um Poder Executivo capaz de promover a modernização política e econômica da sociedade.",
+      "quote": "Inspirado no positivismo de Auguste Comte, o castilhismo defendia um Estado forte, centralizado e orientado pela ação de um Poder Executivo capaz de promover a modernização política e econômica da sociedade.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Castilhismo e positivismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-dbe844141685-6-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Embora formulado no contexto da política rio-grandense, o castilhismo exerceu influência sobre parte da elite política que conduziu a Revolução de 1930.",
+      "quote": "Embora formulado no contexto da política rio-grandense, o castilhismo exerceu influência sobre parte da elite política que conduziu a Revolução de 1930.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Castilhismo e positivismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-09b37276a5f5-6-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Segundo a historiografia, Getúlio Vargas, filiado ao Partido Republicano Rio-Grandense (PRR), incorporou diversos elementos dessa tradição, especialmente a valorização do Estado como agente da integração nacional, da mediação dos conflitos sociais e da promoção do desenvolvimento econômico.",
+      "quote": "Segundo a historiografia, Getúlio Vargas, filiado ao Partido Republicano Rio-Grandense (PRR), incorporou diversos elementos dessa tradição, especialmente a valorização do Estado como agente da integração nacional, da mediação dos conflitos sociais e da promoção do desenvolvimento econômico.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Castilhismo e positivismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-865989e3048e-7-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "contested-claim",
+      "text": "Entretanto, autores como Angela de Castro Gomes observam que o trabalhismo não constituiu mera continuidade do castilhismo.",
+      "quote": "Entretanto, autores como Angela de Castro Gomes observam que o trabalhismo não constituiu mera continuidade do castilhismo.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Castilhismo e positivismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-268727d48742-7-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Sua formação resultou da incorporação de diferentes matrizes políticas e intelectuais, entre elas o nacionalismo, o movimento operário e a experiência administrativa da Era Vargas, que ampliaram significativamente o horizonte doutrinário originalmente formulado pelos republicanos rio-grandenses.",
+      "quote": "Sua formação resultou da incorporação de diferentes matrizes políticas e intelectuais, entre elas o nacionalismo, o movimento operário e a experiência administrativa da Era Vargas, que ampliaram significativamente o horizonte doutrinário originalmente formulado pelos republicanos rio-grandenses.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Castilhismo e positivismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-15837effde1d-8-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Entre as matrizes intelectuais do trabalhismo, a historiografia destaca a influência do pensamento nacionalista brasileiro desenvolvido nas primeiras décadas do século XX.",
+      "quote": "Entre as matrizes intelectuais do trabalhismo, a historiografia destaca a influência do pensamento nacionalista brasileiro desenvolvido nas primeiras décadas do século XX.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-1d9df9fae1d7-8-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Inseridos na tradição do pensamento político autoritário brasileiro, autores como Alberto Torres e Oliveira Vianna defenderam o fortalecimento do Estado nacional como instrumento de integração política, modernização administrativa e superação das estruturas oligárquicas características da Primeira República Brasileira.",
+      "quote": "Inseridos na tradição do pensamento político autoritário brasileiro, autores como Alberto Torres e Oliveira Vianna defenderam o fortalecimento do Estado nacional como instrumento de integração política, modernização administrativa e superação das estruturas oligárquicas características da Primeira República Brasileira.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-f04667c41e13-9-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Em obras como O idealismo da Constituição, Oliveira Vianna sustentava que a consolidação da nacionalidade brasileira dependia da formação de instituições políticas capazes de integrar o território, disciplinar as relações sociais e promover a modernização do país.",
+      "quote": "Em obras como O idealismo da Constituição, Oliveira Vianna sustentava que a consolidação da nacionalidade brasileira dependia da formação de instituições políticas capazes de integrar o território, disciplinar as relações sociais e promover a modernização do país.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-5060fd6ac8e9-9-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Suas reflexões sobre representação corporativa, organização sindical, legislação social e administração pública exerceram influência sobre parte da burocracia estatal e sobre a formulação das políticas trabalhistas durante a Era Vargas.",
+      "quote": "Suas reflexões sobre representação corporativa, organização sindical, legislação social e administração pública exerceram influência sobre parte da burocracia estatal e sobre a formulação das políticas trabalhistas durante a Era Vargas.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-b3f66ff8de0d-10-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Segundo Ricardo Vélez Rodríguez, a aproximação de Getúlio Vargas com as ideias de Oliveira Vianna contribuiu para ampliar o horizonte político originalmente associado ao castilhismo, deslocando sua atuação de uma tradição predominantemente regional para um projeto nacional de reorganização do Estado brasileiro.",
+      "quote": "Segundo Ricardo Vélez Rodríguez, a aproximação de Getúlio Vargas com as ideias de Oliveira Vianna contribuiu para ampliar o horizonte político originalmente associado ao castilhismo, deslocando sua atuação de uma tradição predominantemente regional para um projeto nacional de reorganização do Estado brasileiro.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-231e3e5c0a83-11-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Nesse contexto, suas formulações influenciaram diferentes projetos de organização estatal ao longo do século XX, não se restringindo ao trabalhismo nem se confundindo integralmente com ele.",
+      "quote": "Nesse contexto, suas formulações influenciaram diferentes projetos de organização estatal ao longo do século XX, não se restringindo ao trabalhismo nem se confundindo integralmente com ele.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-8e22cca5e408-11-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Autores como Bolívar Lamounier, Wanderley Guilherme dos Santos e Gildo Marçal Brandão observam, contudo, que o pensamento autoritário brasileiro constituiu uma tradição intelectual mais ampla, da qual Oliveira Vianna foi apenas um de seus principais representantes.",
+      "quote": "Autores como Bolívar Lamounier, Wanderley Guilherme dos Santos e Gildo Marçal Brandão observam, contudo, que o pensamento autoritário brasileiro constituiu uma tradição intelectual mais ampla, da qual Oliveira Vianna foi apenas um de seus principais representantes.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-bcec8662b79f-12-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Conforme observam Angela de Castro Gomes e Jorge Ferreira, sua formação resultou da convergência de diferentes tradições políticas, intelectuais e sociais, incorporando influências do castilhismo, do movimento operário, do tenentismo, da Doutrina Social da Igreja, do nacionalismo econômico e da experiência institucional desenvolvida durante a Era Vargas.",
+      "quote": "Conforme observam Angela de Castro Gomes e Jorge Ferreira, sua formação resultou da convergência de diferentes tradições políticas, intelectuais e sociais, incorporando influências do castilhismo, do movimento operário, do tenentismo, da Doutrina Social da Igreja, do nacionalismo econômico e da experiência institucional desenvolvida durante a Era Vargas.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-e50687d10832-12-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "contested-claim",
+      "text": "A historiografia contemporânea ressalta, entretanto, que o trabalhismo não constituiu mera expressão do pensamento de Oliveira Vianna ou do nacionalismo autoritário.",
+      "quote": "A historiografia contemporânea ressalta, entretanto, que o trabalhismo não constituiu mera expressão do pensamento de Oliveira Vianna ou do nacionalismo autoritário.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Nacionalismo e pensamento político brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-6aba998cbb47-13-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "A expansão da industrialização brasileira nas primeiras décadas do século XX foi acompanhada pelo crescimento do movimento operário e pela intensificação das reivindicações por melhores condições de trabalho, redução da jornada, regulamentação das relações trabalhistas e ampliação dos direitos sociais.",
+      "quote": "A expansão da industrialização brasileira nas primeiras décadas do século XX foi acompanhada pelo crescimento do movimento operário e pela intensificação das reivindicações por melhores condições de trabalho, redução da jornada, regulamentação das relações trabalhistas e ampliação dos direitos sociais.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Movimento operário",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-7b1122c5faad-13-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Inspirados por diferentes correntes, como o anarcossindicalismo, o socialismo e, posteriormente, o comunismo, os trabalhadores organizaram greves e associações que passaram a pressionar o Estado por mecanismos de proteção social.",
+      "quote": "Inspirados por diferentes correntes, como o anarcossindicalismo, o socialismo e, posteriormente, o comunismo, os trabalhadores organizaram greves e associações que passaram a pressionar o Estado por mecanismos de proteção social.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Movimento operário",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-4263266dcb9f-14-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "contested-claim",
+      "text": "As grandes greves ocorridas entre as décadas de 1910 e 1920, especialmente a Greve Geral de 1917, evidenciaram os limites do modelo liberal adotado durante a Primeira República Brasileira e contribuíram para ampliar o debate sobre o papel do Estado na mediação dos conflitos entre capital e trabalho.",
+      "quote": "As grandes greves ocorridas entre as décadas de 1910 e 1920, especialmente a Greve Geral de 1917, evidenciaram os limites do modelo liberal adotado durante a Primeira República Brasileira e contribuíram para ampliar o debate sobre o papel do Estado na mediação dos conflitos entre capital e trabalho.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Movimento operário",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-437f3ec57585-14-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "contested-claim",
+      "text": "Embora o trabalhismo posteriormente divergisse das propostas revolucionárias defendidas por parte do movimento operário, incorporou diversas de suas reivindicações ao transformá-las em políticas públicas durante a Era Vargas.",
+      "quote": "Embora o trabalhismo posteriormente divergisse das propostas revolucionárias defendidas por parte do movimento operário, incorporou diversas de suas reivindicações ao transformá-las em políticas públicas durante a Era Vargas.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Movimento operário",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-cc762b5e46aa-15-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Segundo Angela de Castro Gomes, a principal inovação do trabalhismo consistiu em deslocar a chamada \"questão social\" do campo da repressão policial para o da ação estatal, incorporando direitos trabalhistas à estrutura institucional brasileira e conferindo ao Estado o papel de mediador das relações entre capital e trabalho.",
+      "quote": "Segundo Angela de Castro Gomes, a principal inovação do trabalhismo consistiu em deslocar a chamada \"questão social\" do campo da repressão policial para o da ação estatal, incorporando direitos trabalhistas à estrutura institucional brasileira e conferindo ao Estado o papel de mediador das relações entre capital e trabalho.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Movimento operário",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-01ba3feabf9f-16-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Outra importante matriz do trabalhismo foi o tenentismo, movimento político-militar protagonizado por jovens oficiais do Exército Brasileiro durante a Primeira República Brasileira.",
+      "quote": "Outra importante matriz do trabalhismo foi o tenentismo, movimento político-militar protagonizado por jovens oficiais do Exército Brasileiro durante a Primeira República Brasileira.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Tenentismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-97332e535f70-16-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Insatisfeitos com o predomínio das oligarquias estaduais e com o funcionamento do sistema político republicano, os tenentistas defendiam a modernização administrativa do Estado, a centralização do poder político, o fortalecimento das instituições nacionais e a ampliação da participação política por meio de reformas eleitorais e educacionais.",
+      "quote": "Insatisfeitos com o predomínio das oligarquias estaduais e com o funcionamento do sistema político republicano, os tenentistas defendiam a modernização administrativa do Estado, a centralização do poder político, o fortalecimento das instituições nacionais e a ampliação da participação política por meio de reformas eleitorais e educacionais.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Tenentismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-190f2881c573-17-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Seus integrantes participaram ativamente da Revolução de 1930, que levou Getúlio Vargas ao poder e inaugurou um novo ciclo de reorganização institucional do Estado brasileiro.",
+      "quote": "Seus integrantes participaram ativamente da Revolução de 1930, que levou Getúlio Vargas ao poder e inaugurou um novo ciclo de reorganização institucional do Estado brasileiro.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Tenentismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-370456ba371e-17-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Embora não constituísse um movimento trabalhista nem apresentasse um programa voltado especificamente às relações entre capital e trabalho, o tenentismo compartilhava com outras correntes reformistas a defesa de um Estado capaz de promover a integração nacional e superar os impasses do federalismo oligárquico.",
+      "quote": "Embora não constituísse um movimento trabalhista nem apresentasse um programa voltado especificamente às relações entre capital e trabalho, o tenentismo compartilhava com outras correntes reformistas a defesa de um Estado capaz de promover a integração nacional e superar os impasses do federalismo oligárquico.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Tenentismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-f3be38ed11ce-18-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Essas transformações forneceram parte do ambiente institucional em que o trabalhismo seria posteriormente estruturado como prática de governo e corrente política.",
+      "quote": "Essas transformações forneceram parte do ambiente institucional em que o trabalhismo seria posteriormente estruturado como prática de governo e corrente política.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Tenentismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-b13d931b8579-18-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "A historiografia considera que a experiência tenentista exerceu influência sobre a organização do Estado durante a Era Vargas, especialmente no fortalecimento da administração pública, na centralização político-administrativa e na formulação de um projeto nacional de desenvolvimento.",
+      "quote": "A historiografia considera que a experiência tenentista exerceu influência sobre a organização do Estado durante a Era Vargas, especialmente no fortalecimento da administração pública, na centralização político-administrativa e na formulação de um projeto nacional de desenvolvimento.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Tenentismo",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-8737a8825e3b-19-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "A Revolução de 1930 inaugurou um processo de reorganização política e administrativa que transformou profundamente as relações entre Estado, capital e trabalho no Brasil.",
+      "quote": "A Revolução de 1930 inaugurou um processo de reorganização política e administrativa que transformou profundamente as relações entre Estado, capital e trabalho no Brasil.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-065b4d5e745c-19-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Sob a liderança de Getúlio Vargas, o governo federal promoveu a centralização administrativa, ampliou sua capacidade de intervenção econômica e passou a desenvolver uma legislação social voltada para a regulamentação das relações de trabalho e para a incorporação política da classe trabalhadora.",
+      "quote": "Sob a liderança de Getúlio Vargas, o governo federal promoveu a centralização administrativa, ampliou sua capacidade de intervenção econômica e passou a desenvolver uma legislação social voltada para a regulamentação das relações de trabalho e para a incorporação política da classe trabalhadora.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-8da136f4a10b-20-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "A ampliação dos direitos sociais, a criação de órgãos especializados na administração das relações trabalhistas e o reconhecimento institucional dos sindicatos constituíram mecanismos por meio dos quais o Estado buscou integrar os trabalhadores ao projeto nacional conduzido pelo governo Vargas.",
+      "quote": "A ampliação dos direitos sociais, a criação de órgãos especializados na administração das relações trabalhistas e o reconhecimento institucional dos sindicatos constituíram mecanismos por meio dos quais o Estado buscou integrar os trabalhadores ao projeto nacional conduzido pelo governo Vargas.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-9e544eaf8f72-20-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Segundo Angela de Castro Gomes, foi nesse contexto que se consolidou o trabalhismo como cultura política.",
+      "quote": "Segundo Angela de Castro Gomes, foi nesse contexto que se consolidou o trabalhismo como cultura política.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-4ffaaf4cfad8-21-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Entre as principais medidas adotadas destacaram-se a criação do Ministério do Trabalho, Indústria e Comércio, em 1930, a regulamentação da organização sindical, a instituição da Justiça do Trabalho e, posteriormente, a promulgação da Consolidação das Leis do Trabalho (CLT), em 1943.",
+      "quote": "Entre as principais medidas adotadas destacaram-se a criação do Ministério do Trabalho, Indústria e Comércio, em 1930, a regulamentação da organização sindical, a instituição da Justiça do Trabalho e, posteriormente, a promulgação da Consolidação das Leis do Trabalho (CLT), em 1943.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-3171faaab870-21-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Essas iniciativas ampliaram a proteção jurídica dos trabalhadores urbanos e estabeleceram um novo modelo de mediação estatal dos conflitos trabalhistas.",
+      "quote": "Essas iniciativas ampliaram a proteção jurídica dos trabalhadores urbanos e estabeleceram um novo modelo de mediação estatal dos conflitos trabalhistas.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-7c4200171d33-22-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "contested-claim",
+      "text": "Embora tais políticas tenham sido frequentemente associadas ao corporativismo característico de diversos Estados do período entre guerras, a historiografia ressalta que o trabalhismo brasileiro desenvolveu características próprias, resultantes da combinação entre nacionalismo, legislação social, desenvolvimento econômico e participação política dos trabalhadores por intermédio de instituições reconhecidas pelo Estado.",
+      "quote": "Embora tais políticas tenham sido frequentemente associadas ao corporativismo característico de diversos Estados do período entre guerras, a historiografia ressalta que o trabalhismo brasileiro desenvolveu características próprias, resultantes da combinação entre nacionalismo, legislação social, desenvolvimento econômico e participação política dos trabalhadores por intermédio de instituições reconhecidas pelo Estado.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-fb4e8962fabc-23-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "A institucionalização política do trabalhismo ocorreu em 1945, com a criação do Partido Trabalhista Brasileiro (PTB).",
+      "quote": "A institucionalização política do trabalhismo ocorreu em 1945, com a criação do Partido Trabalhista Brasileiro (PTB).",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-9bc773d23168-23-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Organizado a partir das bases sindicais constituídas durante a Era Vargas, o partido passou a representar eleitoralmente grande parte do legado político do getulismo, tornando-se uma das principais forças da República de 1946.",
+      "quote": "Organizado a partir das bases sindicais constituídas durante a Era Vargas, o partido passou a representar eleitoralmente grande parte do legado político do getulismo, tornando-se uma das principais forças da República de 1946.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "Consolidação durante a Era Vargas",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-d3251da0f281-24-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Com o fim do Estado Novo e a redemocratização de 1945, o trabalhismo passou a constituir também uma organização partidária.",
+      "quote": "Com o fim do Estado Novo e a redemocratização de 1945, o trabalhismo passou a constituir também uma organização partidária.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-5d76573ec555-24-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Em 15 de maio daquele ano foi fundado o Partido Trabalhista Brasileiro (PTB), criado com o objetivo de representar politicamente os trabalhadores urbanos e preservar o legado social e político da Era Vargas no novo regime democrático.",
+      "quote": "Em 15 de maio daquele ano foi fundado o Partido Trabalhista Brasileiro (PTB), criado com o objetivo de representar politicamente os trabalhadores urbanos e preservar o legado social e político da Era Vargas no novo regime democrático.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-b6d7da138dfe-25-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Embora mantivesse estreita identificação com Getúlio Vargas, o PTB reuniu diferentes correntes internas e lideranças regionais, tornando-se uma das principais forças políticas da República de 1946.",
+      "quote": "Embora mantivesse estreita identificação com Getúlio Vargas, o PTB reuniu diferentes correntes internas e lideranças regionais, tornando-se uma das principais forças políticas da República de 1946.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-e74f8daa9c03-25-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Ao lado do Partido Social Democrático (PSD), integrou a base política do getulismo, distinguindo-se por sua maior vinculação ao sindicalismo urbano, à ampliação dos direitos sociais e à organização política dos trabalhadores.",
+      "quote": "Ao lado do Partido Social Democrático (PSD), integrou a base política do getulismo, distinguindo-se por sua maior vinculação ao sindicalismo urbano, à ampliação dos direitos sociais e à organização política dos trabalhadores.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-dd690a5fbbb5-26-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "A partir da década de 1950, o partido ampliou sua atuação eleitoral e passou a incorporar diferentes interpretações do trabalhismo.",
+      "quote": "A partir da década de 1950, o partido ampliou sua atuação eleitoral e passou a incorporar diferentes interpretações do trabalhismo.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-1aa171ac5fed-26-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Entre seus principais formuladores destacaram-se Alberto Pasqualini, responsável por sistematizar parte de sua doutrina política, João Goulart, que fortaleceu sua inserção junto ao movimento sindical, e Leonel Brizola, cuja atuação contribuiu para ampliar a defesa das reformas estruturais e do nacionalismo econômico.",
+      "quote": "Entre seus principais formuladores destacaram-se Alberto Pasqualini, responsável por sistematizar parte de sua doutrina política, João Goulart, que fortaleceu sua inserção junto ao movimento sindical, e Leonel Brizola, cuja atuação contribuiu para ampliar a defesa das reformas estruturais e do nacionalismo econômico.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-e8fe72b3df93-27-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Durante as décadas de 1950 e 1960, o trabalhismo enveredou como a principal vertente da esquerda política moderada na política brasileira, atraindo setores e eleitores que não se identificavam nem com a direita nem com o comunismo.",
+      "quote": "Durante as décadas de 1950 e 1960, o trabalhismo enveredou como a principal vertente da esquerda política moderada na política brasileira, atraindo setores e eleitores que não se identificavam nem com a direita nem com o comunismo.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-2731582ecabf-27-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "documented-fact",
+      "text": "Nesse sentido, vale citar a definição de trabalhismo dada por Leonel Brizola, em um texto publicado durante a campanha para as eleições gerais no Brasil em 1958:",
+      "quote": "Nesse sentido, vale citar a definição de trabalhismo dada por Leonel Brizola, em um texto publicado durante a campanha para as eleições gerais no Brasil em 1958:",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-990040ff3648-28-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "Entre outras coisas cumpre dizer que o trabalhismo é nacionalista, o comunismo é internacional; o comunismo é materialista, o trabalhismo se inspira na doutrina social cristã; o comunismo é a abolição da propriedade, o trabalhismo defende a propriedade dentro de um fim social; o comunismo escraviza o homem ao Estado e prescreve o regime de garantia do trabalho, o trabalhismo é a dignificação do trabalho e não tolera a exploração do homem pelo Estado nem do homem pelo homem; o comunismo educa para formar uma sociedade de formigas, o trabalhismo educa para o progresso, para a liberdade, para a elevação da pessoa humana.",
+      "quote": "Entre outras coisas cumpre dizer que o trabalhismo é nacionalista, o comunismo é internacional; o comunismo é materialista, o trabalhismo se inspira na doutrina social cristã; o comunismo é a abolição da propriedade, o trabalhismo defende a propriedade dentro de um fim social; o comunismo escraviza o homem ao Estado e prescreve o regime de garantia do trabalho, o trabalhismo é a dignificação do trabalho e não tolera a exploração do homem pelo Estado nem do homem pelo homem; o comunismo educa para formar uma sociedade de formigas, o trabalhismo educa para o progresso, para a liberdade, para a elevação da pessoa humana.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-76e959e56bc2-28-1",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "interpretation",
+      "text": "O comunismo existe onde pontifica o capitalismo reacionário e explorador e desaparece nas comunidades e países bem organizados sob o ponto de vista social e humano.",
+      "quote": "O comunismo existe onde pontifica o capitalismo reacionário e explorador e desaparece nas comunidades e países bem organizados sob o ponto de vista social e humano.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    },
+    {
+      "id": "pub-cb7d3f9f94be-29-0",
+      "entity_id": "ideologia-trabalhismo-brasileiro",
+      "entity_title": "Trabalhismo brasileiro",
+      "classification": "attributed-thesis",
+      "text": "Segundo Jorge Ferreira, foi nesse período que o trabalhismo deixou de constituir apenas uma política estatal associada ao governo Vargas para consolidar-se como uma tradição política dotada de identidade programática, base eleitoral própria e crescente autonomia em relação ao getulismo original.",
+      "quote": "Segundo Jorge Ferreira, foi nesse período que o trabalhismo deixou de constituir apenas uma política estatal associada ao governo Vargas para consolidar-se como uma tradição política dotada de identidade programática, base eleitoral própria e crescente autonomia em relação ao getulismo original.",
+      "source": {
+        "title": "Wikipedia (pt): Trabalhismo brasileiro",
+        "url": "https://pt.wikipedia.org/wiki/Trabalhismo_brasileiro",
+        "section": "O Partido Trabalhista Brasileiro",
+        "revision": "73386437",
+        "license": "CC BY-SA 4.0"
+      },
+      "review": {
+        "by": "ai",
+        "model": "extractive_literal_v1",
+        "stage": "local-public-ingest",
+        "verdict": "sustenta",
+        "reviewedAt": "2026-11-15T20:08:35.940163+00:00"
+      },
+      "note": "[conferência de IA] Extraído localmente (extractive_literal_v1) com citação literal conferida; aguarda revisão humana.",
+      "ok": null
+    }
+  ]
+}

@@ -64,29 +64,39 @@ As rotas publicadas são prerenderizadas no build. Leituras e verbetes não publ
 
 ## Começar
 
-Requer **Node.js 24** e **npm 11**.
+Requer **Node.js 24** e **npm 11** (e opcionalmente `uv`, **Ollama** e GPU CUDA para o pipeline local de fontes públicas e RAG).
+
+**1 comando para preparar tudo (dependências, cache/build de conteúdo, ambiente Python/GPU e diagnóstico de modelos locais e credenciais):**
 
 ```bash
-npm install
+npm run setup
 npm start
 ```
 
-Abra `http://localhost:4200`.
+Abra `http://localhost:4200`. Para apenas inspecionar o ambiente sem alterar arquivos, use `npm run setup:check`.
 
 | Comando | Uso |
 | --- | --- |
-| `npm start` | Servidor de desenvolvimento (`ng serve`) |
+| `npm run setup` | Prepara o ambiente completo em 1 comando (`node_modules`, cache R2, `content:build`, `experiments/rag/.venv` e diagnóstico de modelos/credenciais) |
+| `npm run setup:check` | Diagnostica Node, conteúdo, GPU, modelos Ollama/HuggingFace e credenciais R2 sem alterar nada |
+| `npm start` (ou `npm run dev`) | Compila o conteúdo e sobe o servidor local (`ng serve`) |
 | `npm run build` | Build de produção, prerender e cabeçalhos de segurança |
 | `npm run preview` | Serve a saída estática em `127.0.0.1:4305` |
+| `npm run publish:check` | Compila e simula a publicação no R2 e no Cloudflare Pages (`--dry-run`, sem alterar produção) |
+| `npm run content:publish` | Compila e publica o conteúdo no Cloudflare R2 em 1 comando |
 | `npm test` | Testes unitários (Vitest) |
 | `npm run test:e2e` | Jornadas no navegador, acessibilidade (axe) e estabilidade de layout (Playwright) |
-| `npm run test:content` | Testes dos scripts de build de conteúdo |
+| `npm run test:content` | Testes dos scripts de conteúdo e setup |
 | `npm run test:ingestion` | Testes da ingestão Wikimedia |
 | `npm run lint` | ESLint, limites arquiteturais, Biome e Prettier |
 | `npm run typecheck` | TypeScript da aplicação e dos testes |
 | `npm run check:links` | Verifica links da saída estática |
 | `npm run verify` | Pipeline completo: auditoria, lint, testes, ingestão, build, links e E2E |
 | `npm run content:build` | Compila `content` nos artefatos que o app carrega |
+| `npm run rag:models` | Lista modelos locais configurados (Ollama + HuggingFace GPU) |
+| `npm run rag:ingest -- --topic trabalhismo` | Limpa, extrai afirmações com citação literal verificada e embebeda fontes públicas localmente |
+| `npm run rag:mine` | Minera filas humanas do acervo localmente (`bge-m3` + `bge-reranker-v2-m3`) |
+| `npm run rag:eval` | Verifica os gates de regressão da suíte experimental RAG |
 
 `start`, `build`, `test`, `lint` e `typecheck` executam `content:build` antes. Depois de editar `content` com o servidor aberto, reinicie `npm start`.
 
@@ -173,7 +183,8 @@ Novas tradições e verbetes entram por uma pipeline com portas de verificação
 | `npm run ideology:new` | Cria o esqueleto de uma leitura |
 | `npm run wiki:extract` | Extração de rascunhos a partir da Wikipedia (exige `ANTHROPIC_API_KEY`; os rascunhos ficam em um bucket privado) |
 | `npm run ingest:fetch-raw` e `npm run ingest:verify` | Baixam as respostas brutas do R2 e reproduzem as capturas Wikimedia offline |
-| `npm run content:publish` | Publica o conteúdo compilado no R2 (exige credenciais fora do repositório) |
+| `npm run publish:check` e `npm run content:publish` | Simula (`--dry-run`) ou compila e publica o conteúdo no R2 em 1 comando (exige credenciais em `~/.atlas/r2.env`) |
+| `npm run rag:ingest` e `npm run rag:mine` | Extração e mineração local de fontes públicas com modelos Ollama e `bge-m3` na GPU (sem gastar API paga; itens entram com revisão de IA e `ok: null`) |
 
 A pipeline não publica sozinha: publicar é decisão humana. Conteúdo extraído com IA é marcado como revisão de IA até que uma pessoa o revise. Os estágios estão em `.claude/skills/atlas-pipeline-tradicao/SKILL.md`.
 

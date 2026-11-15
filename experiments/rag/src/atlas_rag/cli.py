@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from pathlib import Path
 from typing import Sequence
 
 from atlas_rag.eval.dataset import build_and_write_dataset
@@ -13,6 +14,7 @@ from atlas_rag.eval.phase3_runner import run_phase3
 from atlas_rag.eval.phase4_runner import run_phase4
 from atlas_rag.eval.regression import build_default_thresholds_from_runs, check_regression
 from atlas_rag.eval.security import run_security_suite
+from atlas_rag.ingest.public_sources import detect_installed_local_models, run_public_ingest
 from atlas_rag.mining.acervo_miner import run_archive_mining
 
 
@@ -34,6 +36,29 @@ def main(argv: Sequence[str] | None = None) -> int:
     sub.add_parser("phase5-thresholds", help="Deriva limiares de regressão a partir dos baselines")
     sub.add_parser("ci-check", help="Verifica métricas versionadas contra baseline_thresholds.json")
     sub.add_parser("mine", help="Minera filas humanas de expansão do acervo (Seção 6)")
+    sub.add_parser("models", help="Lista modelos locais configurados (Ollama + GPU HuggingFace)")
+
+    p_ingest = sub.add_parser(
+        "ingest-public",
+        help="Limpa, extrai afirmações com citação literal e embebeda fontes públicas localmente",
+    )
+    p_ingest.add_argument("--topic", default=None, help="Tema capturado em generated/wiki-extract/<tema>")
+    p_ingest.add_argument("--wiki-title", default=None, help="Título de artigo da Wikipedia para captura local")
+    p_ingest.add_argument("--input", type=Path, default=None, help="Arquivo JSON ou TXT local de entrada")
+    p_ingest.add_argument("--lang", default="pt", help="Idioma da Wikipedia (padrão: pt)")
+    p_ingest.add_argument(
+        "--extractor",
+        choices=["extractive", "ollama"],
+        default="extractive",
+        help="Modo de extração local (padrão: extractive)",
+    )
+    p_ingest.add_argument("--model", default="qwen3:8b-q4_K_M", help="Modelo Ollama para extração estruturada")
+    p_ingest.add_argument("--limit", type=int, default=5, help="Máximo de artigos capturados do tema")
+    p_ingest.add_argument("--max-paragraphs", type=int, default=30, help="Máximo de parágrafos processados")
+    embed_group = p_ingest.add_mutually_exclusive_group()
+    embed_group.add_argument("--embed", dest="embed", action="store_true", help="Gera embeddings bge-m3 na GPU")
+    embed_group.add_argument("--no-embed", dest="embed", action="store_false", help="Pula etapa de embedding GPU")
+    p_ingest.set_defaults(embed=True)
 
     args = parser.parse_args(list(argv) if argv is not None else None)
 
@@ -57,6 +82,21 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 0 if res["passed"] else 1
     elif args.cmd == "mine":
         print(json.dumps(run_archive_mining(), indent=2, ensure_ascii=False))
+    elif args.cmd == "models":
+        print(json.dumps(detect_installed_local_models(), indent=2, ensure_ascii=False))
+    elif args.cmd == "ingest-public":
+        res = run_public_ingest(
+            topic=args.topic,
+            wiki_title=args.wiki_title,
+            input_path=args.input,
+            lang=args.lang,
+            extractor=args.extractor,
+            model=args.model,
+            embed=args.embed,
+            limit=args.limit,
+            max_paragraphs=args.max_paragraphs,
+        )
+        print(json.dumps(res, indent=2, ensure_ascii=False))
     return 0
 
 
