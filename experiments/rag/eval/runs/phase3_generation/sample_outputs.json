@@ -1,0 +1,772 @@
+{
+  "extractive_cited": [
+    {
+      "id": "q-fac-001",
+      "type": "factual",
+      "response": {
+        "answer": "Adam Smith: Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida. [claim-wiki-topic-adam-smith-001] Adam Smith: Batismo de Smith na Igreja da Escócia. (1723-06-05). [claim-wiki-topic-adam-smith-005]",
+        "cited_claim_ids": [
+          "claim-wiki-topic-adam-smith-001",
+          "claim-wiki-topic-adam-smith-005"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-adam-smith-001": "documented-fact",
+          "claim-wiki-topic-adam-smith-005": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-001",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.7273
+      }
+    },
+    {
+      "id": "q-fac-002",
+      "type": "factual",
+      "response": {
+        "answer": "Friedrich Engels: Morte de Friedrich Engels em Londres. (1895-08-05). [claim-wiki-topic-friedrich-engels-009] Friedrich Engels: Engels morreu de câncer na garganta em Londres, em 1895. [claim-wiki-topic-friedrich-engels-012]",
+        "cited_claim_ids": [
+          "claim-wiki-topic-friedrich-engels-009",
+          "claim-wiki-topic-friedrich-engels-012"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-friedrich-engels-009": "documented-fact",
+          "claim-wiki-topic-friedrich-engels-012": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-002",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6667
+      }
+    },
+    {
+      "id": "q-fac-003",
+      "type": "factual",
+      "response": {
+        "answer": "[Tese atribuída] A riqueza das nações: Smith propõe o trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui. [claim-work-wealth-of-nations] Livre-comércio: Adam Smith observou e documentou pela primeira vez o valor do livre comércio em A Riqueza das Nações. (1776). [claim-wiki-topic-livre-comercio-005]",
+        "cited_claim_ids": [
+          "claim-work-wealth-of-nations",
+          "claim-wiki-topic-livre-comercio-005"
+        ],
+        "epistemic_labels": {
+          "claim-work-wealth-of-nations": "attributed-thesis",
+          "claim-wiki-topic-livre-comercio-005": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-003",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6667
+      }
+    },
+    {
+      "id": "q-fac-004",
+      "type": "factual",
+      "response": {
+        "answer": "Manifesto Comunista: O Manifesto foi encomendado pela Liga dos Comunistas e publicado em Londres em 1848. [claim-wiki-topic-manifesto-comunista-001] Esquerda (política): Marx e Engels publicam o Manifesto Comunista. (1848). [claim-wiki-topic-esquerda-politica-006]",
+        "cited_claim_ids": [
+          "claim-wiki-topic-manifesto-comunista-001",
+          "claim-wiki-topic-esquerda-politica-006"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-manifesto-comunista-001": "documented-fact",
+          "claim-wiki-topic-esquerda-politica-006": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-004",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6111
+      }
+    },
+    {
+      "id": "q-fac-005",
+      "type": "factual",
+      "response": {
+        "answer": "Liberalismo verde: O termo liberalismo verde foi introduzido em estudos acadêmicos pelo filósofo político Marcel Wissenburg. [claim-wiki-ideology-green-liberalism-005] Liberalismo clássico: Alexander Rüstow cunha o termo neoliberalismo durante o Colóquio Walter Lippmann. (1938). [claim-wiki-topic-liberalismo-classico-010]",
+        "cited_claim_ids": [
+          "claim-wiki-ideology-green-liberalism-005",
+          "claim-wiki-topic-liberalismo-classico-010"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-ideology-green-liberalism-005": "documented-fact",
+          "claim-wiki-topic-liberalismo-classico-010": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-005",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6786
+      }
+    },
+    {
+      "id": "q-fac-006",
+      "type": "factual",
+      "response": {
+        "answer": "[Tese atribuída] Leis Antissocialistas: O principal promotor da medida foi o chanceler Otto von Bismarck. [claim-wiki-topic-leis-antissocialistas-002] Leis Antissocialistas: A obra The Outlawed Party: Social Democracy in Germany, 1878-1890, de Vernon L. Lidtke, trata do período. [claim-wiki-topic-leis-antissocialistas-006]",
+        "cited_claim_ids": [
+          "claim-wiki-topic-leis-antissocialistas-002",
+          "claim-wiki-topic-leis-antissocialistas-006"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-leis-antissocialistas-002": "attributed-thesis",
+          "claim-wiki-topic-leis-antissocialistas-006": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-006",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.7
+      }
+    },
+    {
+      "id": "q-fac-007",
+      "type": "factual",
+      "response": {
+        "answer": "Partido Comunista do Chile: Entre 1932 e 1957 o partido esteve proibido de participar das eleições com o seu nome. [claim-wiki-topic-partido-comunista-do-chile-004] Partido Comunista do Chile: O partido ganhou seis assentos na Câmara dos Deputados nas eleições parlamentares (2013). [claim-wiki-topic-partido-comunista-do-chile-006]",
+        "cited_claim_ids": [
+          "claim-wiki-topic-partido-comunista-do-chile-004",
+          "claim-wiki-topic-partido-comunista-do-chile-006"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-partido-comunista-do-chile-004": "documented-fact",
+          "claim-wiki-topic-partido-comunista-do-chile-006": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-007",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6818
+      }
+    },
+    {
+      "id": "q-fac-008",
+      "type": "factual",
+      "response": {
+        "answer": "[Tese atribuída] Emmanuel Joseph Sieyès: Sustentava a existência de um poder imanente à nação, superior aos poderes constituídos, que é o poder constituinte. [claim-wiki-person-emmanuel-joseph-sieyes-002] [Tese atribuída] O Que É o Terceiro Estado?: Sieyès distingue poder constituído e poder constituinte, o que o faz ser considerado fundador da ideia de poder constituinte na França. [claim-wiki-obra-o-que-e-o-terceiro-estado-003]",
+        "cited_claim_ids": [
+          "claim-wiki-person-emmanuel-joseph-sieyes-002",
+          "claim-wiki-obra-o-que-e-o-terceiro-estado-003"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-person-emmanuel-joseph-sieyes-002": "attributed-thesis",
+          "claim-wiki-obra-o-que-e-o-terceiro-estado-003": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-008",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.5862
+      }
+    },
+    {
+      "id": "q-fac-009",
+      "type": "factual",
+      "response": {
+        "answer": "Trotskismo: Trótski formulou a teoria da revolução permanente. (1905). [claim-wiki-topic-trotskismo-005] [Tese atribuída] Leon Trótski: Trótski formulou a Teoria da Revolução Permanente, segundo a qual a revolução numa Rússia atrasada avançaria para o socialismo sem parar na república democrática. [claim-wiki-topic-leon-trotski-001]",
+        "cited_claim_ids": [
+          "claim-wiki-topic-trotskismo-005",
+          "claim-wiki-topic-leon-trotski-001"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-trotskismo-005": "documented-fact",
+          "claim-wiki-topic-leon-trotski-001": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-009",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.625
+      }
+    },
+    {
+      "id": "q-fac-010",
+      "type": "factual",
+      "response": {
+        "answer": "Partido dos Trabalhadores: O partido foi fundado em 10 de fevereiro de 1980 no Colégio Sion, em São Paulo, por um grupo heterogêneo de militantes, sindicalistas, intelectuais, artistas e católicos. [claim-wiki-topic-partido-dos-trabalhadores-001] Partido Trabalhista Brasileiro (1945): O PTB foi fundado na cidade do Rio de Janeiro em 15 de maio de 1945, sob a inspiração e fundação de Getúlio Vargas. [claim-wiki-topic-partido-trabalhista-brasileiro-1945-001]",
+        "cited_claim_ids": [
+          "claim-wiki-topic-partido-dos-trabalhadores-001",
+          "claim-wiki-topic-partido-trabalhista-brasileiro-1945-001"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-partido-dos-trabalhadores-001": "documented-fact",
+          "claim-wiki-topic-partido-trabalhista-brasileiro-1945-001": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-010",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.7879
+      }
+    },
+    {
+      "id": "q-fac-011",
+      "type": "factual",
+      "response": {
+        "answer": "Plano Real: Publicação da medida provisória número 434, início do programa. (1994-02-27). [claim-wiki-topic-plano-real-003] Eleição presidencial no Brasil em 1994: O governo anunciou o Plano Real. (1994-02-28). [claim-wiki-topic-eleicao-presidencial-no-brasil-em-1994-003]",
+        "cited_claim_ids": [
+          "claim-wiki-topic-plano-real-003",
+          "claim-wiki-topic-eleicao-presidencial-no-brasil-em-1994-003"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-plano-real-003": "documented-fact",
+          "claim-wiki-topic-eleicao-presidencial-no-brasil-em-1994-003": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-011",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6818
+      }
+    },
+    {
+      "id": "q-fac-012",
+      "type": "factual",
+      "response": {
+        "answer": "Brasil: A Constituição de 1988 identifica o Estado brasileiro como República Federativa do Brasil. [claim-country-brazil] [Tese atribuída] Brasil: recorte constitucional de 1988: O artigo 1º da Constituição brasileira de 1988 adota a autodescrição Estado democrático de direito. [claim-regime-brazil-constitution-1988]",
+        "cited_claim_ids": [
+          "claim-country-brazil",
+          "claim-regime-brazil-constitution-1988"
+        ],
+        "epistemic_labels": {
+          "claim-country-brazil": "documented-fact",
+          "claim-regime-brazil-constitution-1988": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-012",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6087
+      }
+    }
+  ],
+  "ollama/qwen3:8b-q4_K_M": [
+    {
+      "id": "q-fac-001",
+      "type": "factual",
+      "response": {
+        "answer": "Adam Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-adam-smith-001",
+          "claim-wiki-topic-adam-smith-005"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-adam-smith-001": "documented-fact",
+          "claim-wiki-topic-adam-smith-005": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-001",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.875
+      }
+    },
+    {
+      "id": "q-fac-002",
+      "type": "factual",
+      "response": {
+        "answer": "Friedrich Engels morreu em Londres em 5 de agosto de 1895.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-friedrich-engels-009",
+          "claim-wiki-topic-friedrich-engels-012"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-friedrich-engels-009": "documented-fact",
+          "claim-wiki-topic-friedrich-engels-012": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-002",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.8333
+      }
+    },
+    {
+      "id": "q-fac-003",
+      "type": "factual",
+      "response": {
+        "answer": "Smith propõe o trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui.",
+        "cited_claim_ids": [
+          "claim-work-wealth-of-nations"
+        ],
+        "epistemic_labels": {
+          "claim-work-wealth-of-nations": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-003",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-004",
+      "type": "factual",
+      "response": {
+        "answer": "O Manifesto Comunista foi publicado originalmente em Londres em 1848.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-manifesto-comunista-001",
+          "claim-wiki-topic-manifesto-comunista-006"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-manifesto-comunista-001": "documented-fact",
+          "claim-wiki-topic-manifesto-comunista-006": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-004",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6667
+      }
+    },
+    {
+      "id": "q-fac-005",
+      "type": "factual",
+      "response": {
+        "answer": "O termo liberalismo verde foi introduzido em estudos acadêmicos pelo filósofo político Marcel Wissenburg.",
+        "cited_claim_ids": [
+          "claim-wiki-ideology-green-liberalism-005",
+          "claim-wiki-ideology-green-liberalism-001"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-ideology-green-liberalism-005": "documented-fact",
+          "claim-wiki-ideology-green-liberalism-001": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-005",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-006",
+      "type": "factual",
+      "response": {
+        "answer": "O principal promotor das Leis Antissocialistas na Alemanha foi o chanceler Otto von Bismarck.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-leis-antissocialistas-002"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-leis-antissocialistas-002": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-006",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.6667
+      }
+    },
+    {
+      "id": "q-fac-007",
+      "type": "factual",
+      "response": {
+        "answer": "Entre 1932 e 1957 o Partido Comunista do Chile esteve proibido de participar das eleições com o seu nome.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-partido-comunista-do-chile-004"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-partido-comunista-do-chile-004": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-007",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.8
+      }
+    },
+    {
+      "id": "q-fac-008",
+      "type": "factual",
+      "response": {
+        "answer": "Emmanuel Joseph Sieyès sustentava a existência de um poder imanente à nação, superior aos poderes constituídos, que é o poder constituinte.",
+        "cited_claim_ids": [
+          "claim-wiki-person-emmanuel-joseph-sieyes-002",
+          "claim-wiki-person-emmanuel-joseph-sieyes-014",
+          "claim-wiki-obra-o-que-e-o-terceiro-estado-003"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-person-emmanuel-joseph-sieyes-002": "attributed-thesis",
+          "claim-wiki-person-emmanuel-joseph-sieyes-014": "interpretation",
+          "claim-wiki-obra-o-que-e-o-terceiro-estado-003": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-008",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.8333
+      }
+    },
+    {
+      "id": "q-fac-009",
+      "type": "factual",
+      "response": {
+        "answer": "Trótski formulou a teoria da revolução permanente em 1905.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-trotskismo-005",
+          "claim-wiki-topic-trotskismo-003",
+          "claim-wiki-topic-leon-trotski-001"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-trotskismo-005": "documented-fact",
+          "claim-wiki-topic-trotskismo-003": "documented-fact",
+          "claim-wiki-topic-leon-trotski-001": "attributed-thesis"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-009",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    },
+    {
+      "id": "q-fac-010",
+      "type": "factual",
+      "response": {
+        "answer": "O Partido dos Trabalhadores (PT) foi fundado em 10 de fevereiro de 1980 no Colégio Sion, em São Paulo.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-partido-dos-trabalhadores-001",
+          "claim-wiki-topic-partido-dos-trabalhadores-003"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-partido-dos-trabalhadores-001": "documented-fact",
+          "claim-wiki-topic-partido-dos-trabalhadores-003": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-010",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.8
+      }
+    },
+    {
+      "id": "q-fac-011",
+      "type": "factual",
+      "response": {
+        "answer": "A medida provisória número 434, publicada em 27 de fevereiro de 1994, deu início ao Plano Real. Seu objetivo principal era o controle da hiperinflação que assolava o país.",
+        "cited_claim_ids": [
+          "claim-wiki-topic-plano-real-001",
+          "claim-wiki-topic-plano-real-003",
+          "claim-wiki-topic-plano-real-002"
+        ],
+        "epistemic_labels": {
+          "claim-wiki-topic-plano-real-001": "documented-fact",
+          "claim-wiki-topic-plano-real-003": "documented-fact",
+          "claim-wiki-topic-plano-real-002": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-011",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 0.7778
+      }
+    },
+    {
+      "id": "q-fac-012",
+      "type": "factual",
+      "response": {
+        "answer": "A Constituição de 1988 identifica o Estado brasileiro como República Federativa do Brasil.",
+        "cited_claim_ids": [
+          "claim-country-brazil"
+        ],
+        "epistemic_labels": {
+          "claim-country-brazil": "documented-fact"
+        },
+        "refuse": false,
+        "refusal_reason": null
+      },
+      "raw_guard_valid": true,
+      "raw_violations": [],
+      "guard_overridden": false,
+      "fidelity": {
+        "question_id": "q-fac-012",
+        "question_type": "factual",
+        "must_refuse": false,
+        "refused": false,
+        "refusal_outcome": "true_answer",
+        "citation_correct": true,
+        "epistemic_correct": true,
+        "contested_dissent_preserved": null,
+        "deterministic_faithful": true,
+        "overlap_ratio": 1.0
+      }
+    }
+  ]
+}

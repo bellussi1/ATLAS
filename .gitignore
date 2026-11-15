@@ -68,3 +68,11 @@ scripts/ingestion/wiki-extract/raw/**/blobs/
 scripts/ingestion/wiki-extract/raw/nazismo/
 scripts/ingestion/wiki-extract/raw/stalinismo/
 scripts/ingestion/wiki-extract/raw/trabalhismo/
+
+# Experimento RAG local (ambiente virtual, índices vetoriais e cache)
+experiments/rag/.venv/
+experiments/rag/data/
+experiments/rag/.pytest_cache/
+__pycache__/
+*.pyc
+*.egg-info/

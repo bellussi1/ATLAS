@@ -1,0 +1,2642 @@
+[
+  {
+    "id": "cand-rel-083",
+    "from": {
+      "id": "wiki-topic-antissemitismo",
+      "title": "Antissemitismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-racismo",
+      "title": "Racismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 2
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O antissemitismo é uma forma de racismo.",
+    "quote_origin": "claim-wiki-topic-antissemitismo-006",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6509,
+    "rerank_score": 0.9871,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-077",
+    "from": {
+      "id": "wiki-topic-antiautoritarismo",
+      "title": "Antiautoritarismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-autoritarismo",
+      "title": "Autoritarismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "suggested_type": "reacted_against",
+    "suggested_label": "criticou / reagiu contra",
+    "literal_quote": "O antiautoritarismo é a oposição ao autoritarismo.",
+    "quote_origin": "claim-wiki-topic-antiautoritarismo-005",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7568,
+    "rerank_score": 0.9841,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-092",
+    "from": {
+      "id": "wiki-topic-assassinio",
+      "title": "Assassínio",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-pena-de-morte",
+      "title": "Pena de morte",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Em alguns casos, a condenação por assassinato pode resultar em pena de morte.",
+    "quote_origin": "claim-wiki-topic-assassinio-008",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6138,
+    "rerank_score": 0.9796,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-048",
+    "from": {
+      "id": "article-constituicao-1988",
+      "title": "O caput do artigo 5º da Constituição de 1988",
+      "atlas": "atlas-methodology",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "concept-igualdade-perante-lei",
+      "title": "Igualdade perante a lei",
+      "atlas": "atlas-direitos-constitucionais",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O caput do artigo 5º da Constituição Federal de 1988 declara igualdade perante a lei e enumera direitos e garantias.",
+    "quote_origin": "claim-constitution-equality",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": true,
+    "bge_m3_cosine": 0.875,
+    "rerank_score": 0.9752,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-052",
+    "from": {
+      "id": "wiki-topic-1945",
+      "title": "1945",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-organizacao-das-nacoes-unidas",
+      "title": "Organização das Nações Unidas",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 35
+    },
+    "suggested_type": "participated_in",
+    "suggested_label": "participou / vinculou-se a",
+    "literal_quote": "A Organização das Nações Unidas foi fundada em 24 de outubro de 1945.",
+    "quote_origin": "claim-wiki-topic-1945-005",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6027,
+    "rerank_score": 0.9291,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-043",
+    "from": {
+      "id": "wiki-topic-terceira-via",
+      "title": "Terceira via",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-economia-mista",
+      "title": "Economia mista",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A Terceira Via defende a humanização do capitalismo, a economia mista, o pluralismo político e a democracia liberal.",
+    "quote_origin": "claim-wiki-topic-terceira-via-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.565,
+    "rerank_score": 0.9166,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-004",
+    "from": {
+      "id": "ideology-economic-liberalism",
+      "title": "Liberalismo económico",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-socialism",
+      "title": "Socialismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 0
+    },
+    "suggested_type": "reacted_against",
+    "suggested_label": "criticou / reagiu contra",
+    "literal_quote": "O liberalismo econômico é geralmente considerado contrário a ordens não-capitalistas, como o socialismo.",
+    "quote_origin": "claim-wiki-ideology-economic-liberalism-005",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7475,
+    "rerank_score": 0.8882,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-094",
+    "from": {
+      "id": "wiki-topic-assembleia-constituinte",
+      "title": "Assembleia constituinte",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-constituicao",
+      "title": "Constituição",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A assembleia constituinte é um órgão colegiado cuja função é redigir ou reformar a constituição, a ordem político-institucional de um Estado.",
+    "quote_origin": "claim-wiki-topic-assembleia-constituinte-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6803,
+    "rerank_score": 0.8683,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-025",
+    "from": {
+      "id": "wiki-topic-desemprego",
+      "title": "Desemprego",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-atividade-economica",
+      "title": "Atividade econômica",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O desemprego cíclico está associado às flutuações da atividade econômica, medidas pelo produto interno bruto.",
+    "quote_origin": "claim-wiki-topic-desemprego-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6236,
+    "rerank_score": 0.8676,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-026",
+    "from": {
+      "id": "wiki-topic-direita-politica",
+      "title": "Direita (política)",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-esquerda-politica",
+      "title": "Esquerda (política)",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "suggested_type": "reacted_against",
+    "suggested_label": "criticou / reagiu contra",
+    "literal_quote": "A redução da política a um eixo esquerda-direita recebeu críticas consideráveis.",
+    "quote_origin": "claim-wiki-topic-direita-politica-011",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7956,
+    "rerank_score": 0.8565,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-001",
+    "from": {
+      "id": "ideology-conservative-liberalism",
+      "title": "Liberalismo conservador",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-conservadorismo",
+      "title": "Conservadorismo",
+      "atlas": "atlas-outras-ideologias",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Há discordância sobre associar liberalismo com conservadorismo no Brasil.",
+    "quote_origin": "claim-wiki-ideology-conservative-liberalism-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7139,
+    "rerank_score": 0.825,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-107",
+    "from": {
+      "id": "wiki-topic-bonapartismo",
+      "title": "Bonapartismo",
+      "atlas": "atlas-ideologias-principais",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-napoleao-bonaparte",
+      "title": "Napoleão Bonaparte",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 3
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O bonapartismo teve papel essencial na eleição de Luís Napoleão Bonaparte como Presidente da Segunda República.",
+    "quote_origin": "claim-wiki-topic-bonapartismo-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6438,
+    "rerank_score": 0.821,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-110",
+    "from": {
+      "id": "wiki-topic-britanicos",
+      "title": "Britânicos",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-reino-unido",
+      "title": "Reino Unido",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 7
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Britânicos são definidos como os cidadãos do Reino Unido, das dependências da Coroa Britânica e dos territórios britânicos ultramarinos, além de seus descendentes.",
+    "quote_origin": "claim-wiki-topic-britanicos-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6292,
+    "rerank_score": 0.798,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-117",
+    "from": {
+      "id": "wiki-topic-capitalismo",
+      "title": "Capitalismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-sistema-economico",
+      "title": "Sistema económico",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O capitalismo é um sistema econômico baseado na propriedade privada dos meios de produção e na sua exploração com fins lucrativos.",
+    "quote_origin": "claim-wiki-topic-capitalismo-008",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7537,
+    "rerank_score": 0.7917,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-041",
+    "from": {
+      "id": "wiki-topic-terceira-via",
+      "title": "Terceira via",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-centro-politica",
+      "title": "Centro (política)",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Posição política descrita na fonte: centro.",
+    "quote_origin": "claim-wiki-topic-terceira-via-011",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5909,
+    "rerank_score": 0.7912,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-105",
+    "from": {
+      "id": "wiki-topic-autodeterminacao",
+      "title": "Autodeterminação",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-direito-internacional",
+      "title": "Direito internacional",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O texto indica que a Carta das Nações Unidas inseriu o direito de autodeterminação no âmbito do direito internacional.",
+    "quote_origin": "claim-wiki-topic-autodeterminacao-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.609,
+    "rerank_score": 0.7842,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-049",
+    "from": {
+      "id": "article-constituicao-1988",
+      "title": "O caput do artigo 5º da Constituição de 1988",
+      "atlas": "atlas-methodology",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-constituicao",
+      "title": "Constituição",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O caput do artigo 5º da Constituição Federal de 1988 declara igualdade perante a lei e enumera direitos e garantias.",
+    "quote_origin": "claim-constitution-equality",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6375,
+    "rerank_score": 0.7658,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-009",
+    "from": {
+      "id": "ideology-marxism-leninism",
+      "title": "Marxismo-leninismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-leninism",
+      "title": "Leninismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O termo marxismo-leninismo foi formulado após a morte de Lenin, na ascensão de Stálin ao poder.",
+    "quote_origin": "claim-wiki-topic-marxismo-leninismo-004",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": true,
+    "bge_m3_cosine": 0.7943,
+    "rerank_score": 0.7573,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-098",
+    "from": {
+      "id": "wiki-topic-atividade-economica",
+      "title": "Atividade econômica",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-riqueza",
+      "title": "Riqueza",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A atividade econômica gera riqueza mediante a extração, transformação e distribuição de recursos naturais, bens e serviços.",
+    "quote_origin": "claim-wiki-topic-atividade-economica-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6934,
+    "rerank_score": 0.75,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-086",
+    "from": {
+      "id": "wiki-topic-aristocracia",
+      "title": "Aristocracia",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-oligarquia",
+      "title": "Oligarquia",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Parte da tradição passou a confundir a aristocracia com a oligarquia, considerada sua forma corrupta.",
+    "quote_origin": "claim-wiki-topic-aristocracia-004",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.8202,
+    "rerank_score": 0.7478,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-104",
+    "from": {
+      "id": "wiki-topic-autocracia",
+      "title": "Autocracia",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-forma-de-governo",
+      "title": "Forma de governo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Autocracia é uma forma de governo em que há um único detentor do poder político-estatal.",
+    "quote_origin": "claim-wiki-topic-autocracia-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.701,
+    "rerank_score": 0.7166,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-108",
+    "from": {
+      "id": "wiki-topic-bonapartismo",
+      "title": "Bonapartismo",
+      "atlas": "atlas-ideologias-principais",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-despotismo",
+      "title": "Despotismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Originalmente, o bonapartismo combinava elementos do despotismo ilustrado e do pensamento de Rousseau.",
+    "quote_origin": "claim-wiki-topic-bonapartismo-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5782,
+    "rerank_score": 0.7166,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-091",
+    "from": {
+      "id": "wiki-topic-assassinio",
+      "title": "Assassínio",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-prisao",
+      "title": "Prisão",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Uma pessoa condenada por assassinato geralmente enfrenta prisão de longo prazo.",
+    "quote_origin": "claim-wiki-topic-assassinio-007",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6251,
+    "rerank_score": 0.6886,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-032",
+    "from": {
+      "id": "wiki-topic-imperialismo",
+      "title": "Imperialismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-capitalismo",
+      "title": "Capitalismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "wrote",
+    "suggested_label": "escreveu / publicou sobre",
+    "literal_quote": "Lenin publicou O imperialismo, fase superior do capitalismo. (1916).",
+    "quote_origin": "claim-wiki-topic-imperialismo-008",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.688,
+    "rerank_score": 0.6635,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-045",
+    "from": {
+      "id": "wiki-topic-valparaiso-chile",
+      "title": "Valparaíso (Chile)",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-chile",
+      "title": "Chile",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 4
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Valparaíso é a sede do poder legislativo da República do Chile.",
+    "quote_origin": "claim-wiki-topic-valparaiso-chile-010",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5879,
+    "rerank_score": 0.636,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-095",
+    "from": {
+      "id": "wiki-topic-associacao",
+      "title": "Associação",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-organizacao",
+      "title": "Organização",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A associação é definida como organização resultante da reunião legal de duas ou mais pessoas para um objetivo comum, que pode ou não envolver lucro.",
+    "quote_origin": "claim-wiki-topic-associacao-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7277,
+    "rerank_score": 0.6345,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-085",
+    "from": {
+      "id": "wiki-topic-antissemitismo",
+      "title": "Antissemitismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-judaismo",
+      "title": "Judaísmo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Para François de Fontette, o antissemitismo moderno se difere do antijudaísmo por seu caráter racista, pois o judaísmo passa a ser encarado como questão de raça e identidade étnica.",
+    "quote_origin": "claim-wiki-topic-antissemitismo-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5982,
+    "rerank_score": 0.6258,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-024",
+    "from": {
+      "id": "wiki-topic-democracia-representativa",
+      "title": "Democracia representativa",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-democracia-liberal",
+      "title": "Democracia liberal",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "participated_in",
+    "suggested_label": "participou / vinculou-se a",
+    "literal_quote": "A noção moderna de democracia liberal se desenvolveu no século XIX e se firmou no século XX, ligada ao ideal de participação popular da democracia direta, que remonta à Grécia Antiga.",
+    "quote_origin": "claim-wiki-topic-democracia-representativa-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6959,
+    "rerank_score": 0.6054,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-042",
+    "from": {
+      "id": "wiki-topic-terceira-via",
+      "title": "Terceira via",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-social-democracia",
+      "title": "Social-democracia",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 7
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Outros consideram que a Terceira Via é teoricamente adequada ao socialismo moderno, em posição distinta da social-democracia.",
+    "quote_origin": "claim-wiki-topic-terceira-via-006",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5712,
+    "rerank_score": 0.542,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-023",
+    "from": {
+      "id": "wiki-topic-democracia-representativa",
+      "title": "Democracia representativa",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-democracia-direta",
+      "title": "Democracia direta",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "participated_in",
+    "suggested_label": "participou / vinculou-se a",
+    "literal_quote": "A noção moderna de democracia liberal se desenvolveu no século XIX e se firmou no século XX, ligada ao ideal de participação popular da democracia direta, que remonta à Grécia Antiga.",
+    "quote_origin": "claim-wiki-topic-democracia-representativa-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7388,
+    "rerank_score": 0.529,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-061",
+    "from": {
+      "id": "wiki-topic-alianca-bolivariana-para-os-povos-da-nossa-america",
+      "title": "Aliança Bolivariana para os Povos da Nossa América",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-conceito-area-de-livre-comercio-das-americas",
+      "title": "Área de Livre-Comércio das Américas",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 3
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O texto contrapõe a ALBA a acordos de comércio livre, citando a Área de Livre Comércio das Américas (ALCA).",
+    "quote_origin": "claim-wiki-topic-alianca-bolivariana-para-os-povos-da-nossa-america-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6617,
+    "rerank_score": 0.5252,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-010",
+    "from": {
+      "id": "ideology-marxism-leninism",
+      "title": "Marxismo-leninismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-marxism",
+      "title": "Marxismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 2
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O termo marxismo-leninismo foi formulado após a morte de Lenin, na ascensão de Stálin ao poder.",
+    "quote_origin": "claim-wiki-topic-marxismo-leninismo-004",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": true,
+    "bge_m3_cosine": 0.6864,
+    "rerank_score": 0.5031,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-063",
+    "from": {
+      "id": "wiki-topic-alianca-bolivariana-para-os-povos-da-nossa-america",
+      "title": "Aliança Bolivariana para os Povos da Nossa América",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-bolivia",
+      "title": "Bolívia",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 2
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A Bolívia somou-se ao grupo. (2006-04-29).",
+    "quote_origin": "claim-wiki-topic-alianca-bolivariana-para-os-povos-da-nossa-america-005",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5655,
+    "rerank_score": 0.4722,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-076",
+    "from": {
+      "id": "wiki-topic-anti-imperialismo",
+      "title": "Anti-imperialismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-imperialismo",
+      "title": "Imperialismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "suggested_type": "reacted_against",
+    "suggested_label": "criticou / reagiu contra",
+    "literal_quote": "A oposição ao imperialismo é apresentada como consequência dos processos de descolonização, dos movimentos de libertação nacional e, em certa medida, do direito à autodeterminação dos povos.",
+    "quote_origin": "claim-wiki-topic-anti-imperialismo-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.744,
+    "rerank_score": 0.471,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-033",
+    "from": {
+      "id": "wiki-topic-individualismo",
+      "title": "Individualismo",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-liberdade",
+      "title": "Liberdade",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O individualismo exprime a afirmação e a liberdade do indivíduo diante de um grupo, da sociedade ou do Estado.",
+    "quote_origin": "claim-wiki-topic-individualismo-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6527,
+    "rerank_score": 0.4608,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-114",
+    "from": {
+      "id": "wiki-topic-burguesia",
+      "title": "Burguesia",
+      "atlas": "atlas-marxismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-cidadania",
+      "title": "Cidadania",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Na Idade Média o conceito de burguesia se limitou a uma classe social formada nos burgos, com direito de cidadania.",
+    "quote_origin": "claim-wiki-topic-burguesia-004",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6151,
+    "rerank_score": 0.4553,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-113",
+    "from": {
+      "id": "wiki-topic-burguesia",
+      "title": "Burguesia",
+      "atlas": "atlas-marxismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-classe-media",
+      "title": "Classe média",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Na Idade Média o conceito de burguesia se limitou a uma classe social formada nos burgos, com direito de cidadania.",
+    "quote_origin": "claim-wiki-topic-burguesia-004",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6734,
+    "rerank_score": 0.4549,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-021",
+    "from": {
+      "id": "wiki-topic-colonialismo",
+      "title": "Colonialismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-imperialismo",
+      "title": "Imperialismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Há debate sobre se colonialismo e imperialismo são intercambiáveis; Robert Young sugere que o imperialismo é o conceito e o colonialismo é a prática.",
+    "quote_origin": "claim-wiki-topic-colonialismo-007",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6828,
+    "rerank_score": 0.4428,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-084",
+    "from": {
+      "id": "wiki-topic-antissemitismo",
+      "title": "Antissemitismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-judeus",
+      "title": "Judeus",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "wrote",
+    "suggested_label": "escreveu / publicou sobre",
+    "literal_quote": "Martinho Lutero publicou o livro Sobre os Judeus e as suas Mentiras. (1543).",
+    "quote_origin": "claim-wiki-topic-antissemitismo-004",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6282,
+    "rerank_score": 0.4348,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-018",
+    "from": {
+      "id": "wiki-topic-ciencia-politica",
+      "title": "Ciência política",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-acontecimento-historia",
+      "title": "História",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O termo ciência política foi cunhado em 1880 por Herbert Baxter Adams, professor de História da Universidade Johns Hopkins.",
+    "quote_origin": "claim-wiki-topic-ciencia-politica-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6053,
+    "rerank_score": 0.3921,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-002",
+    "from": {
+      "id": "ideology-conservative-liberalism",
+      "title": "Liberalismo conservador",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-liberalism",
+      "title": "Liberalismo",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 5
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O liberalismo conservador teria surgido na França do final do século XVIII, quando a burguesia moderada apoiou a monarquia dentro do campo liberal.",
+    "quote_origin": "claim-wiki-ideology-conservative-liberalism-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": true,
+    "bge_m3_cosine": 0.7102,
+    "rerank_score": 0.3908,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-031",
+    "from": {
+      "id": "wiki-topic-grande-depressao",
+      "title": "Grande Depressão",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-new-deal",
+      "title": "New Deal",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 2
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Alguns estudiosos alegam que o New Deal ajudou a minimizar os efeitos da Depressão a partir de 1933, enquanto outros pesquisadores discordam dessa visão.",
+    "quote_origin": "claim-wiki-topic-grande-depressao-006",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6419,
+    "rerank_score": 0.3895,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-119",
+    "from": {
+      "id": "wiki-topic-capitalismo-de-estado",
+      "title": "Capitalismo de Estado",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-socialism",
+      "title": "Socialismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Para os anarquistas, o socialismo de Estado é equivalente ao Capitalismo de Estado, sendo igualmente opressivo e apenas uma mudança dos capitalistas privados para o Estado como único empregador e capitalista.",
+    "quote_origin": "claim-wiki-topic-capitalismo-de-estado-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6922,
+    "rerank_score": 0.3824,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-062",
+    "from": {
+      "id": "wiki-topic-alianca-bolivariana-para-os-povos-da-nossa-america",
+      "title": "Aliança Bolivariana para os Povos da Nossa América",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-venezuela",
+      "title": "Venezuela",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A organização foi constituída em Havana, em 14 de dezembro de 2004, como acordo entre Venezuela e Cuba.",
+    "quote_origin": "claim-wiki-topic-alianca-bolivariana-para-os-povos-da-nossa-america-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5813,
+    "rerank_score": 0.3821,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-103",
+    "from": {
+      "id": "wiki-topic-autocracia",
+      "title": "Autocracia",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-governo",
+      "title": "Governo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Autocracia é uma forma de governo em que há um único detentor do poder político-estatal.",
+    "quote_origin": "claim-wiki-topic-autocracia-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7041,
+    "rerank_score": 0.3339,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-035",
+    "from": {
+      "id": "wiki-topic-peru",
+      "title": "Peru",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-panama",
+      "title": "Panamá",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O artigo indica que a palavra Peru provavelmente deriva de Birú, nome de um governante local próximo à Baía de São Miguel, no Panamá.",
+    "quote_origin": "claim-wiki-topic-peru-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6446,
+    "rerank_score": 0.3285,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-040",
+    "from": {
+      "id": "wiki-topic-sindicato",
+      "title": "Sindicato",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-capitalismo",
+      "title": "Capitalismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O artigo relaciona a origem do sindicalismo ao contexto de industrialização e à consolidação do capitalismo na Europa.",
+    "quote_origin": "claim-wiki-topic-sindicato-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6875,
+    "rerank_score": 0.3173,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-078",
+    "from": {
+      "id": "wiki-topic-antiautoritarismo",
+      "title": "Antiautoritarismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-anarquismo",
+      "title": "Anarquismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Às vezes o termo é usado como intercambiável com o anarquismo.",
+    "quote_origin": "claim-wiki-topic-antiautoritarismo-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6929,
+    "rerank_score": 0.3142,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-060",
+    "from": {
+      "id": "wiki-topic-alemanha-oriental",
+      "title": "Alemanha Oriental",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-uniao-sovietica",
+      "title": "União Soviética",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 10
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A RDA foi proclamada em Berlim Oriental em 7 de outubro de 1949, sob um regime socialista amplamente controlado pela União Soviética.",
+    "quote_origin": "claim-wiki-topic-alemanha-oriental-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5922,
+    "rerank_score": 0.2892,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-012",
+    "from": {
+      "id": "ideology-national-liberalism",
+      "title": "Nacional-liberalismo",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-liberalism",
+      "title": "Liberalismo",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 5
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O liberalismo nacional emergiu da filosofia continental após a Revolução Francesa, combinando políticas liberais com elementos nacionalistas.",
+    "quote_origin": "claim-wiki-ideology-national-liberalism-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": true,
+    "bge_m3_cosine": 0.7433,
+    "rerank_score": 0.2301,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-106",
+    "from": {
+      "id": "wiki-topic-barcelona",
+      "title": "Barcelona",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-espanha",
+      "title": "Espanha",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 3
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Barcelona é a capital da comunidade autônoma da Catalunha, na Espanha.",
+    "quote_origin": "claim-wiki-topic-barcelona-004",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6289,
+    "rerank_score": 0.2134,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-089",
+    "from": {
+      "id": "wiki-topic-aristocracia",
+      "title": "Aristocracia",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-forma-de-governo",
+      "title": "Forma de governo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Platão, Sócrates, Aristóteles, Xenofonte e os espartanos consideravam a aristocracia a forma ideal de governo de poucos, melhor que a democracia.",
+    "quote_origin": "claim-wiki-topic-aristocracia-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6865,
+    "rerank_score": 0.1871,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-059",
+    "from": {
+      "id": "wiki-topic-alemanha-oriental",
+      "title": "Alemanha Oriental",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-berlim",
+      "title": "Berlim",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A RDA foi proclamada em Berlim Oriental em 7 de outubro de 1949, sob um regime socialista amplamente controlado pela União Soviética.",
+    "quote_origin": "claim-wiki-topic-alemanha-oriental-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6333,
+    "rerank_score": 0.183,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-079",
+    "from": {
+      "id": "wiki-topic-anticapitalismo",
+      "title": "Anticapitalismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-capitalismo",
+      "title": "Capitalismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Em sentido estrito, anticapitalistas são os que querem substituir totalmente o capitalismo por outro sistema econômico.",
+    "quote_origin": "claim-wiki-topic-anticapitalismo-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6777,
+    "rerank_score": 0.1829,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-066",
+    "from": {
+      "id": "wiki-topic-america",
+      "title": "América",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-america-do-sul",
+      "title": "América do Sul",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A América é geralmente dividida em América do Norte, América Central e América do Sul.",
+    "quote_origin": "claim-wiki-topic-america-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7389,
+    "rerank_score": 0.1797,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-044",
+    "from": {
+      "id": "wiki-topic-universidade-federal-de-minas-gerais",
+      "title": "Universidade Federal de Minas Gerais",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-belo-horizonte",
+      "title": "Belo Horizonte",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Sua criação resultou da união de quatro escolas superiores existentes em Belo Horizonte.",
+    "quote_origin": "claim-wiki-topic-universidade-federal-de-minas-gerais-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6027,
+    "rerank_score": 0.177,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-055",
+    "from": {
+      "id": "wiki-topic-advogado",
+      "title": "Advogado",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-constituicao",
+      "title": "Constituição",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A Constituição Federal dispôs que o advogado é indispensável à administração da justiça. (1988).",
+    "quote_origin": "claim-wiki-topic-advogado-005",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.56,
+    "rerank_score": 0.1584,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-056",
+    "from": {
+      "id": "wiki-topic-alemaes",
+      "title": "Alemães",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-alemanha",
+      "title": "Alemanha",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 4
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O termo alemão vem do baixo latim alamanus, tomado do germânico Alemannen, usado para referir-se a uma etnia que se constituiu no sudoeste do território da atual Alemanha.",
+    "quote_origin": "claim-wiki-topic-alemaes-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6526,
+    "rerank_score": 0.1478,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-013",
+    "from": {
+      "id": "ideology-socialism",
+      "title": "Socialismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-communism",
+      "title": "Comunismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 3
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Após a Revolução Russa, o termo socialismo passou a ser distinguido de comunismo, que o Partido Operário Social-Democrata Russo adotou ao se renomear em 1918.",
+    "quote_origin": "claim-wiki-topic-socialismo-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": true,
+    "bge_m3_cosine": 0.8477,
+    "rerank_score": 0.1428,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-074",
+    "from": {
+      "id": "wiki-topic-anarcossindicalismo",
+      "title": "Anarcossindicalismo",
+      "atlas": "atlas-ideologias-principais",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-sindicalismo-revolucionario",
+      "title": "Sindicalismo revolucionário",
+      "atlas": "atlas-ideologias-principais",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "No Brasil, a corrente não deve ser confundida com o sindicalismo revolucionário.",
+    "quote_origin": "claim-wiki-topic-anarcossindicalismo-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7281,
+    "rerank_score": 0.1408,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-116",
+    "from": {
+      "id": "wiki-topic-camara-dos-deputados-do-brasil",
+      "title": "Câmara dos Deputados do Brasil",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-brasilia",
+      "title": "Brasília",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 2
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A sede da Câmara passou a ser o Palácio do Congresso Nacional, em Brasília (1960).",
+    "quote_origin": "claim-wiki-topic-camara-dos-deputados-do-brasil-006",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6032,
+    "rerank_score": 0.1407,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-111",
+    "from": {
+      "id": "wiki-topic-budismo",
+      "title": "Budismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-religiao",
+      "title": "Religião",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O budismo é a quarta maior religião do mundo, com mais de 520 milhões de seguidores.",
+    "quote_origin": "claim-wiki-topic-budismo-007",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5617,
+    "rerank_score": 0.1383,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-005",
+    "from": {
+      "id": "ideology-economic-liberalism",
+      "title": "Liberalismo económico",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-liberalism",
+      "title": "Liberalismo",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 5
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O artigo situa as teses do liberalismo econômico no século XVI, com a intenção de combater o mercantilismo.",
+    "quote_origin": "claim-wiki-ideology-economic-liberalism-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": true,
+    "bge_m3_cosine": 0.7439,
+    "rerank_score": 0.1339,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-050",
+    "from": {
+      "id": "wiki-topic-1871",
+      "title": "1871",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-imperio-alemao",
+      "title": "Império Alemão",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 4
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A unificação alemã foi formalizada com a formação do Império Alemão, sob o rei prussiano Guilherme I, com o título de Kaiser.",
+    "quote_origin": "claim-wiki-topic-1871-004",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.5617,
+    "rerank_score": 0.1292,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-065",
+    "from": {
+      "id": "wiki-topic-america",
+      "title": "América",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-america-do-norte",
+      "title": "América do Norte",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 1
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A América é geralmente dividida em América do Norte, América Central e América do Sul.",
+    "quote_origin": "claim-wiki-topic-america-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7772,
+    "rerank_score": 0.1272,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-022",
+    "from": {
+      "id": "wiki-topic-democracia-representativa",
+      "title": "Democracia representativa",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-democracia",
+      "title": "Democracia",
+      "atlas": "atlas-stalinismo",
+      "editorial_degree": 0
+    },
+    "suggested_type": "participated_in",
+    "suggested_label": "participou / vinculou-se a",
+    "literal_quote": "A noção moderna de democracia liberal se desenvolveu no século XIX e se firmou no século XX, ligada ao ideal de participação popular da democracia direta, que remonta à Grécia Antiga.",
+    "quote_origin": "claim-wiki-topic-democracia-representativa-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7594,
+    "rerank_score": 0.1128,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-037",
+    "from": {
+      "id": "wiki-topic-revolucao-industrial",
+      "title": "Revolução Industrial",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-industria",
+      "title": "Indústria",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A indústria têxtil foi dominante na Revolução Industrial em geração de emprego, valor da produção e volume de capital.",
+    "quote_origin": "claim-wiki-topic-revolucao-industrial-006",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7771,
+    "rerank_score": 0.108,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-068",
+    "from": {
+      "id": "wiki-topic-america",
+      "title": "América",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-caribe",
+      "title": "Caribe",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A América fica entre os oceanos Pacífico e Atlântico e inclui o mar do Caribe e a Groenlândia, mas não a Islândia, por razões históricas e culturais.",
+    "quote_origin": "claim-wiki-topic-america-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6779,
+    "rerank_score": 0.105,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-087",
+    "from": {
+      "id": "wiki-topic-aristocracia",
+      "title": "Aristocracia",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-democracia",
+      "title": "Democracia",
+      "atlas": "atlas-stalinismo",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Platão, Sócrates, Aristóteles, Xenofonte e os espartanos consideravam a aristocracia a forma ideal de governo de poucos, melhor que a democracia.",
+    "quote_origin": "claim-wiki-topic-aristocracia-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7568,
+    "rerank_score": 0.0988,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-014",
+    "from": {
+      "id": "ideology-socialism",
+      "title": "Socialismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "institution-second-international",
+      "title": "Segunda Internacional",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 2
+    },
+    "suggested_type": "participated_in",
+    "suggested_label": "participou / vinculou-se a",
+    "literal_quote": "Foi fundada a Segunda Internacional. (1889).",
+    "quote_origin": "claim-wiki-topic-socialismo-006",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7802,
+    "rerank_score": 0.0976,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-016",
+    "from": {
+      "id": "wiki-topic-autoritarismo",
+      "title": "Autoritarismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-totalitarismo",
+      "title": "Totalitarismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "wrote",
+    "suggested_label": "escreveu / publicou sobre",
+    "literal_quote": "A distinção entre ditaduras autoritárias e totalitárias foi formulada por Hanna Arendt em As Origens do Totalitarismo.",
+    "quote_origin": "claim-wiki-topic-autoritarismo-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.787,
+    "rerank_score": 0.095,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-120",
+    "from": {
+      "id": "wiki-topic-capitalismo-de-estado",
+      "title": "Capitalismo de Estado",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-estado",
+      "title": "Estado",
+      "atlas": "atlas-trabalhismo",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Para os anarquistas, o socialismo de Estado é equivalente ao Capitalismo de Estado, sendo igualmente opressivo e apenas uma mudança dos capitalistas privados para o Estado como único empregador e capitalista.",
+    "quote_origin": "claim-wiki-topic-capitalismo-de-estado-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.682,
+    "rerank_score": 0.0904,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-057",
+    "from": {
+      "id": "wiki-topic-alemaes",
+      "title": "Alemães",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-imperio-alemao",
+      "title": "Império Alemão",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 4
+    },
+    "suggested_type": "participated_in",
+    "suggested_label": "participou / vinculou-se a",
+    "literal_quote": "Com a fundação, em 1871, do Império Alemão, que excluía a Áustria e a Suíça, o conceito passou a se restringir aos habitantes do território do novo país ou àqueles que lá têm origens.",
+    "quote_origin": "claim-wiki-topic-alemaes-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6209,
+    "rerank_score": 0.0873,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-007",
+    "from": {
+      "id": "ideology-green-liberalism",
+      "title": "Liberalismo verde",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-classical-liberalism",
+      "title": "Liberalismo clássico",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 4
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Seus defensores podem situar-se entre o liberalismo clássico e o liberalismo social, com menos intervenção estatal que o segundo e mais que o primeiro.",
+    "quote_origin": "claim-wiki-ideology-green-liberalism-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.701,
+    "rerank_score": 0.0853,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-036",
+    "from": {
+      "id": "wiki-topic-revolucao-industrial",
+      "title": "Revolução Industrial",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-industrializacao",
+      "title": "Industrialização",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "wrote",
+    "suggested_label": "escreveu / publicou sobre",
+    "literal_quote": "Historiadores econômicos e autores, como Mendels e Kenneth Pomeranz, argumentam que a proto-industrialização criou as condições que levaram à Revolução Industrial.",
+    "quote_origin": "claim-wiki-topic-revolucao-industrial-009",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7881,
+    "rerank_score": 0.0693,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-080",
+    "from": {
+      "id": "wiki-topic-anticomunismo",
+      "title": "Anticomunismo",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-communism",
+      "title": "Comunismo",
+      "atlas": "atlas-marx-valor",
+      "editorial_degree": 3
+    },
+    "suggested_type": "reacted_against",
+    "suggested_label": "criticou / reagiu contra",
+    "literal_quote": "A primeira organização especificamente dedicada à oposição ao comunismo foi o Movimento Branco russo, que lutou na Guerra Civil Russa.",
+    "quote_origin": "claim-wiki-topic-anticomunismo-002",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.719,
+    "rerank_score": 0.0685,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-069",
+    "from": {
+      "id": "wiki-topic-america-espanhola",
+      "title": "América espanhola",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-america",
+      "title": "América",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "A América espanhola tem dezenove países com população total de mais de 400 milhões de habitantes.",
+    "quote_origin": "claim-wiki-topic-america-espanhola-005",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.6824,
+    "rerank_score": 0.0622,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-006",
+    "from": {
+      "id": "ideology-green-liberalism",
+      "title": "Liberalismo verde",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "ideology-social-liberalism",
+      "title": "Liberalismo social",
+      "atlas": "atlas-liberalism",
+      "editorial_degree": 3
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Seus defensores podem situar-se entre o liberalismo clássico e o liberalismo social, com menos intervenção estatal que o segundo e mais que o primeiro.",
+    "quote_origin": "claim-wiki-ideology-green-liberalism-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7212,
+    "rerank_score": 0.0565,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-027",
+    "from": {
+      "id": "wiki-topic-direita-politica",
+      "title": "Direita (política)",
+      "atlas": "atlas-social-democracia",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-extrema-direita",
+      "title": "Extrema-direita",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "Eatwell e O'Sullivan dividem a direita em cinco tipos: reacionária, moderada, radical, extrema e nova.",
+    "quote_origin": "claim-wiki-topic-direita-politica-003",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.794,
+    "rerank_score": 0.056,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  },
+  {
+    "id": "cand-rel-019",
+    "from": {
+      "id": "wiki-topic-colonialismo",
+      "title": "Colonialismo",
+      "atlas": "atlas-anarquismo",
+      "editorial_degree": 0
+    },
+    "to": {
+      "id": "wiki-topic-colonia",
+      "title": "Colónia",
+      "atlas": "atlas-verbetes-citados",
+      "editorial_degree": 0
+    },
+    "suggested_type": "documented-association",
+    "suggested_label": "associação documentada com",
+    "literal_quote": "O termo colônia tem origem no latim e designava comunidades de romanos estabelecidas fora de Roma, geralmente para fins agrícolas.",
+    "quote_origin": "claim-wiki-topic-colonialismo-001",
+    "source_url": null,
+    "from_is_orphan": true,
+    "existing_discovery_link": false,
+    "bge_m3_cosine": 0.7939,
+    "rerank_score": 0.0487,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3+bge-reranker-v2-m3",
+      "stage": "mining-relation",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes."
+  }
+]

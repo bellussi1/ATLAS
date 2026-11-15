@@ -1,0 +1,49 @@
+{
+  "release": "5923d2eb4fda57c52c6e35224a1eac60e162748274b214e651ed14aab9bd0344",
+  "bundle_sha256": "0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5",
+  "gold_set_2026_11": {
+    "afirmacoes": 40,
+    "pares_fonte_afirmacao": 20,
+    "relacoes": 87
+  },
+  "total": 100,
+  "splits": {
+    "dev": 70,
+    "test": 30
+  },
+  "by_type": {
+    "factual": {
+      "dev": 17,
+      "test": 7,
+      "total": 24
+    },
+    "multi_hop": {
+      "dev": 13,
+      "test": 5,
+      "total": 18
+    },
+    "comparativa": {
+      "dev": 10,
+      "test": 4,
+      "total": 14
+    },
+    "contestada": {
+      "dev": 11,
+      "test": 5,
+      "total": 16
+    },
+    "so_link_de_descoberta": {
+      "dev": 10,
+      "test": 4,
+      "total": 14
+    },
+    "sem_resposta": {
+      "dev": 9,
+      "test": 5,
+      "total": 14
+    }
+  },
+  "reused_from_gold_set_count": 13,
+  "human_ok_true_count": 0,
+  "human_ok_null_count": 100
+}

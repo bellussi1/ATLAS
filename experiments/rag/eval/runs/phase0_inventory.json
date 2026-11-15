@@ -1,0 +1,234 @@
+{
+  "generated_at": "2026-11-15T19:08:49.922470+00:00",
+  "release": "5923d2eb4fda57c52c6e35224a1eac60e162748274b214e651ed14aab9bd0344",
+  "bundle": {
+    "sha256": "0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5",
+    "bytes": 29780495,
+    "source_path": "generated/content-cache/c/0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5.json",
+    "top_keys": [
+      "graph",
+      "search",
+      "adjacency",
+      "layouts",
+      "ideologies"
+    ],
+    "ideologies_compiled": [
+      "marxismo",
+      "liberalismo",
+      "social-democracia",
+      "anarquismo",
+      "nazismo",
+      "stalinismo",
+      "trabalhismo"
+    ],
+    "search_entries": 2604
+  },
+  "premises": {
+    "premise_1_collections_on_disk_vs_manifest": {
+      "manifest_collection_count": 16,
+      "disk_collection_file_count": 131,
+      "stale_or_older_files_count": 115,
+      "all_manifest_files_exist_on_disk": true,
+      "manifest_ids": [
+        "atlas-methodology",
+        "atlas-processo-constituinte",
+        "atlas-direitos-constitucionais",
+        "atlas-liberalism",
+        "atlas-marx-valor",
+        "atlas-constitutional-contexts",
+        "atlas-marxismo",
+        "atlas-liberalismo",
+        "atlas-outras-ideologias",
+        "atlas-social-democracia",
+        "atlas-anarquismo",
+        "atlas-ideologias-principais",
+        "atlas-verbetes-citados",
+        "atlas-nazismo",
+        "atlas-stalinismo",
+        "atlas-trabalhismo"
+      ],
+      "hash_difference_sample": {
+        "collection_id": "atlas-methodology",
+        "prettier_disk_sha256": "be6213fd3eb9243252ca483727ce735c9e9ec7b3229e31ae59b20773363f79d1",
+        "manifest_sha256": "be6213fd3eb9243252ca483727ce735c9e9ec7b3229e31ae59b20773363f79d1",
+        "minified_json_sha256": "728563aaa85139f07824a999314a946e89f12c51b29eab2da82c57a915407c52",
+        "pointer_artifact_sha256": "728563aaa85139f07824a999314a946e89f12c51b29eab2da82c57a915407c52"
+      }
+    },
+    "premise_2_pinned_bundle_verified": true,
+    "premise_3_current_search_is_boolean_lexical": {
+      "file": "src/app/core/content/queries/discovery-index.ts",
+      "mechanism": "two-stage: nameMatchScore short-circuit on title/aliases, then strict AND substring match over searchText sorted alphabetically",
+      "bm25_or_ranking": false
+    },
+    "premise_4_reviews_and_gold_set": {
+      "review_statuses": {
+        "pending": 11145
+      },
+      "all_claims_pending": true,
+      "gold_set_2026_11": {
+        "afirmacoes.json": {
+          "total": 40,
+          "human_marked_count": 0,
+          "pending_null_count": 40
+        },
+        "pares-fonte-afirmacao.json": {
+          "total": 20,
+          "human_marked_count": 0,
+          "pending_null_count": 20
+        },
+        "relacoes.json": {
+          "total": 87,
+          "human_marked_count": 0,
+          "pending_null_count": 87
+        }
+      }
+    },
+    "premise_5_discovery_vs_documented_relations": {
+      "by_type": {
+        "documented-association": 636,
+        "editorial-link": 2,
+        "encyclopedic-link": 141,
+        "influenced_by": 21,
+        "related_to": 27,
+        "participated_in": 188,
+        "influenced": 149,
+        "wrote": 70,
+        "developed_into": 9,
+        "reacted_against": 106,
+        "authored": 10,
+        "associated_with": 270
+      },
+      "by_weight": {
+        "action": 444,
+        "administrative": 460,
+        "catalog": 440,
+        "historical": 285
+      },
+      "by_nature": {
+        "editorial": 25,
+        "navigation": 141,
+        "catalogue": 738,
+        "stated": 725
+      },
+      "by_tier": {
+        "editorial": 1189,
+        "discovery": 170,
+        "catalog": 270
+      },
+      "note": "encyclopedic-link (141), related_to (27) and editorial-link (2) are pure navigation/editorial links; associated_with (270) are Wikidata catalog links; documented-association (636) includes sourced historical/administrative relations."
+    }
+  },
+  "dedup": {
+    "raw_entities": 1224,
+    "unique_entities": 1224,
+    "duplicate_entities_dropped": 0,
+    "raw_claims": 11145,
+    "unique_claims": 11145,
+    "duplicate_claims_dropped": 0,
+    "raw_relations": 1629,
+    "unique_relations": 1629,
+    "duplicate_relations_dropped": 0,
+    "unique_sources": 1376,
+    "unique_evidences": 12634,
+    "unique_citations": 11145,
+    "unique_reviews": 11145
+  },
+  "counts": {
+    "entities_by_kind": {
+      "concept": 247,
+      "article": 1,
+      "person": 276,
+      "institution": 198,
+      "event": 75,
+      "place": 154,
+      "work": 46,
+      "ideology": 168,
+      "party": 59
+    },
+    "entities_by_scope": {
+      "nucleo": 1168,
+      "fora": 20,
+      "contexto": 36
+    },
+    "entities_by_editorial_status": {
+      "unspecified": 10,
+      "pending": 1214
+    },
+    "claims_by_classification": {
+      "documented-fact": 7588,
+      "attributed-thesis": 1099,
+      "contested-claim": 1418,
+      "interpretation": 1040
+    },
+    "claims_by_editorial_status": {
+      "pending": 11145
+    },
+    "claims_with_full_source_chain": 11145,
+    "claims_with_locator": 11145,
+    "duplicate_normalized_claim_texts": 99,
+    "paragraph_units": 4621,
+    "entity_units": 1224
+  },
+  "tokenizer": {
+    "model": "BAAI/bge-m3",
+    "measurements": {
+      "claim_raw": {
+        "count": 11145,
+        "total_tokens": 271703,
+        "min": 8,
+        "p50": 23.0,
+        "p95": 38.0,
+        "p99": 46.0,
+        "max": 74,
+        "mean": 24.38,
+        "gt_256_tokens": 0,
+        "gt_512_tokens": 0,
+        "gt_1024_tokens": 0
+      },
+      "claim_enriched": {
+        "count": 11145,
+        "total_tokens": 1082517,
+        "min": 55,
+        "p50": 95.0,
+        "p95": 129.0,
+        "p99": 144.0,
+        "max": 168,
+        "mean": 97.13,
+        "gt_256_tokens": 0,
+        "gt_512_tokens": 0,
+        "gt_1024_tokens": 0
+      },
+      "paragraph_enriched": {
+        "count": 4621,
+        "total_tokens": 354210,
+        "min": 24,
+        "p50": 60.0,
+        "p95": 160.0,
+        "p99": 176.0,
+        "max": 205,
+        "mean": 76.65,
+        "gt_256_tokens": 0,
+        "gt_512_tokens": 0,
+        "gt_1024_tokens": 0
+      },
+      "entity_enriched": {
+        "count": 1224,
+        "total_tokens": 777749,
+        "min": 98,
+        "p50": 641.0,
+        "p95": 911.0,
+        "p99": 1060.54,
+        "max": 1200,
+        "mean": 635.42,
+        "gt_256_tokens": 1169,
+        "gt_512_tokens": 979,
+        "gt_1024_tokens": 19
+      }
+    }
+  },
+  "default_unit_decision": {
+    "unit": "claim_enriched",
+    "rationale": "Each claim has an atomic citation -> evidence -> source chain (11,145/11,145), explicit epistemic classification, and p99 token length well under 256 tokens when enriched with entity title, scope, classification, and evidence header."
+  }
+}

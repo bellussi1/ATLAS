@@ -1,0 +1,1001 @@
+[
+  {
+    "id": "debate-001",
+    "bge_m3_cosine": 0.9159,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1966-010",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1966",
+      "entity_title": "Movimento Democrático Brasileiro (1966)",
+      "classification": "contested-claim",
+      "text": "Há controvérsia sobre se o PMDB seria o MDB com outro nome ou um partido sucessor."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1980-003",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "entity_title": "Movimento Democrático Brasileiro (1980)",
+      "classification": "contested-claim",
+      "text": "Há divergência acadêmica sobre se o PMDB era o mesmo MDB com outro nome ou apenas um partido sucessor."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-002",
+    "bge_m3_cosine": 0.9121,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1966-010",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1966",
+      "entity_title": "Movimento Democrático Brasileiro (1966)",
+      "classification": "contested-claim",
+      "text": "Há controvérsia sobre se o PMDB seria o MDB com outro nome ou um partido sucessor."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1980-014",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "entity_title": "Movimento Democrático Brasileiro (1980)",
+      "classification": "contested-claim",
+      "text": "Há controvérsia acadêmica sobre a continuidade entre MDB e PMDB."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-003",
+    "bge_m3_cosine": 0.9042,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-luta-de-classes-012",
+      "entity_id": "wiki-topic-luta-de-classes",
+      "entity_title": "Luta de classes",
+      "classification": "contested-claim",
+      "text": "Pitirim Sorokin afirma que a cooperação entre as classes sociais é um fenômeno mais universal do que o antagonismo entre elas."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-classe-social-002",
+      "entity_id": "wiki-topic-classe-social",
+      "entity_title": "Classe social",
+      "classification": "contested-claim",
+      "text": "Sorokin contesta a centralidade do conflito: para ele, a cooperação entre classes é um fenômeno mais universal do que o antagonismo entre elas."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-004",
+    "bge_m3_cosine": 0.8992,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-libertarianismo-003",
+      "entity_id": "wiki-topic-libertarianismo",
+      "entity_title": "Libertarianismo",
+      "classification": "contested-claim",
+      "text": "Há divergência sobre se o anarcocapitalismo é uma forma de anarquismo: parte dos ativistas e estudiosos anarquistas nega essa classificação."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarchism-005",
+      "entity_id": "wiki-topic-anarquismo",
+      "entity_title": "Anarquismo",
+      "classification": "contested-claim",
+      "text": "Há divergência entre estudiosos sobre se o anarcocapitalismo pode ser considerado anarquista; muitos o rejeitam."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-005",
+    "bge_m3_cosine": 0.8905,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-anarchism-005",
+      "entity_id": "wiki-topic-anarquismo",
+      "entity_title": "Anarquismo",
+      "classification": "contested-claim",
+      "text": "Há divergência entre estudiosos sobre se o anarcocapitalismo pode ser considerado anarquista; muitos o rejeitam."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcocapitalismo-006",
+      "entity_id": "wiki-topic-anarcocapitalismo",
+      "entity_title": "Anarcocapitalismo",
+      "classification": "contested-claim",
+      "text": "A classificação do anarcocapitalismo é disputada."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-006",
+    "bge_m3_cosine": 0.8879,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-anarchism-005",
+      "entity_id": "wiki-topic-anarquismo",
+      "entity_title": "Anarquismo",
+      "classification": "contested-claim",
+      "text": "Há divergência entre estudiosos sobre se o anarcocapitalismo pode ser considerado anarquista; muitos o rejeitam."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcocapitalismo-003",
+      "entity_id": "wiki-topic-anarcocapitalismo",
+      "entity_title": "Anarcocapitalismo",
+      "classification": "contested-claim",
+      "text": "A classificação do anarcocapitalismo é disputada: grande parte da tradição anarquista não o reconhece como forma de anarquismo por causa da defesa da propriedade privada capitalista e das relações de mercado."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-007",
+    "bge_m3_cosine": 0.8823,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-sindicalismo-revolucionario-009",
+      "entity_id": "wiki-topic-sindicalismo-revolucionario",
+      "entity_title": "Sindicalismo revolucionário",
+      "classification": "contested-claim",
+      "text": "A diferenciação entre sindicalismo revolucionário e anarcossindicalismo é ambígua em alguns contextos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcossindicalismo-007",
+      "entity_id": "wiki-topic-anarcossindicalismo",
+      "entity_title": "Anarcossindicalismo",
+      "classification": "contested-claim",
+      "text": "Autores brasileiros dão definições diferentes, em alguns casos quase opostas, ao anarco-sindicalismo e ao Sindicalismo Revolucionário."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-008",
+    "bge_m3_cosine": 0.8817,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-sindicalismo-revolucionario-003",
+      "entity_id": "wiki-topic-sindicalismo-revolucionario",
+      "entity_title": "Sindicalismo revolucionário",
+      "classification": "contested-claim",
+      "text": "Há divergência sobre a diferenciação entre sindicalismo revolucionário e anarcossindicalismo, descrita pelo artigo como ambígua em alguns contextos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcossindicalismo-007",
+      "entity_id": "wiki-topic-anarcossindicalismo",
+      "entity_title": "Anarcossindicalismo",
+      "classification": "contested-claim",
+      "text": "Autores brasileiros dão definições diferentes, em alguns casos quase opostas, ao anarco-sindicalismo e ao Sindicalismo Revolucionário."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-009",
+    "bge_m3_cosine": 0.8732,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-nazismo-008",
+      "entity_id": "wiki-topic-nazismo",
+      "entity_title": "Nazismo",
+      "classification": "contested-claim",
+      "text": "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-holocausto-005",
+      "entity_id": "wiki-topic-holocausto",
+      "entity_title": "Holocausto",
+      "classification": "contested-claim",
+      "text": "A inclusão de vítimas não judias no termo Holocausto é contestada por muitas pessoas, segundo o artigo."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-010",
+    "bge_m3_cosine": 0.8684,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-libertarianismo-003",
+      "entity_id": "wiki-topic-libertarianismo",
+      "entity_title": "Libertarianismo",
+      "classification": "contested-claim",
+      "text": "Há divergência sobre se o anarcocapitalismo é uma forma de anarquismo: parte dos ativistas e estudiosos anarquistas nega essa classificação."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcocapitalismo-003",
+      "entity_id": "wiki-topic-anarcocapitalismo",
+      "entity_title": "Anarcocapitalismo",
+      "classification": "contested-claim",
+      "text": "A classificação do anarcocapitalismo é disputada: grande parte da tradição anarquista não o reconhece como forma de anarquismo por causa da defesa da propriedade privada capitalista e das relações de mercado."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-011",
+    "bge_m3_cosine": 0.8623,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-paleoconservadorismo-002",
+      "entity_id": "wiki-topic-paleoconservadorismo",
+      "entity_title": "Paleoconservadorismo",
+      "classification": "attributed-thesis",
+      "text": "Os paleoconservadores apoiam restrições à imigração, descentralização, tarifas comerciais e protecionismo, nacionalismo econômico e isolacionismo."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-conservadorismo-nos-estados-unidos-002",
+      "entity_id": "wiki-topic-conservadorismo-nos-estados-unidos",
+      "entity_title": "Conservadorismo nos Estados Unidos",
+      "classification": "attributed-thesis",
+      "text": "Os paleoconservadores defendem restrições à imigração, uma política externa não intervencionista e oposição ao multiculturalismo."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-012",
+    "bge_m3_cosine": 0.8583,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1966-003",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1966",
+      "entity_title": "Movimento Democrático Brasileiro (1966)",
+      "classification": "contested-claim",
+      "text": "Há divergência sobre se o PMDB seria o MDB com outro nome ou apenas um partido sucessor. Pela lei de 1979, MDB e ARENA foram formalmente extintos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1980-003",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "entity_title": "Movimento Democrático Brasileiro (1980)",
+      "classification": "contested-claim",
+      "text": "Há divergência acadêmica sobre se o PMDB era o mesmo MDB com outro nome ou apenas um partido sucessor."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-013",
+    "bge_m3_cosine": 0.853,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1966-003",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1966",
+      "entity_title": "Movimento Democrático Brasileiro (1966)",
+      "classification": "contested-claim",
+      "text": "Há divergência sobre se o PMDB seria o MDB com outro nome ou apenas um partido sucessor. Pela lei de 1979, MDB e ARENA foram formalmente extintos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1980-014",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "entity_title": "Movimento Democrático Brasileiro (1980)",
+      "classification": "contested-claim",
+      "text": "Há controvérsia acadêmica sobre a continuidade entre MDB e PMDB."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-014",
+    "bge_m3_cosine": 0.8491,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-libertarianismo-009",
+      "entity_id": "wiki-topic-libertarianismo",
+      "entity_title": "Libertarianismo",
+      "classification": "contested-claim",
+      "text": "Alguns autores consideram o anarcocapitalismo uma forma de anarquismo individualista, o que é criticado por outros."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarchism-005",
+      "entity_id": "wiki-topic-anarquismo",
+      "entity_title": "Anarquismo",
+      "classification": "contested-claim",
+      "text": "Há divergência entre estudiosos sobre se o anarcocapitalismo pode ser considerado anarquista; muitos o rejeitam."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-015",
+    "bge_m3_cosine": 0.8487,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-libertarianismo-009",
+      "entity_id": "wiki-topic-libertarianismo",
+      "entity_title": "Libertarianismo",
+      "classification": "contested-claim",
+      "text": "Alguns autores consideram o anarcocapitalismo uma forma de anarquismo individualista, o que é criticado por outros."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcocapitalismo-003",
+      "entity_id": "wiki-topic-anarcocapitalismo",
+      "entity_title": "Anarcocapitalismo",
+      "classification": "contested-claim",
+      "text": "A classificação do anarcocapitalismo é disputada: grande parte da tradição anarquista não o reconhece como forma de anarquismo por causa da defesa da propriedade privada capitalista e das relações de mercado."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-016",
+    "bge_m3_cosine": 0.8471,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-casamento-entre-pessoas-do-mesmo-sexo-014",
+      "entity_id": "wiki-topic-casamento-entre-pessoas-do-mesmo-sexo",
+      "entity_title": "Casamento entre pessoas do mesmo sexo",
+      "classification": "contested-claim",
+      "text": "A oposição ao casamento entre pessoas do mesmo sexo se baseia na alegação de que a homossexualidade é antinatural e anormal."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-casamento-004",
+      "entity_id": "wiki-topic-casamento",
+      "entity_title": "Casamento",
+      "classification": "contested-claim",
+      "text": "Entre os argumentos favoráveis ao casamento entre pessoas do mesmo sexo está a afirmação de que negar o acesso ao matrimônio representa discriminação por orientação sexual."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-017",
+    "bge_m3_cosine": 0.8446,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-checoslovaquia-004",
+      "entity_id": "wiki-topic-checoslovaquia",
+      "entity_title": "Checoslováquia",
+      "classification": "contested-claim",
+      "text": "A separação de 1993 é descrita como amigável e pacífica, e atribuída a susceptibilidades nacionais encorajadas por dirigentes populistas."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-chequia-005",
+      "entity_id": "wiki-topic-chequia",
+      "entity_title": "Chéquia",
+      "classification": "documented-fact",
+      "text": "Divisão pacífica da Checoslováquia nas independentes Chéquia e Eslováquia. (1993-01-01)."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-018",
+    "bge_m3_cosine": 0.8444,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-libertarianismo-003",
+      "entity_id": "wiki-topic-libertarianismo",
+      "entity_title": "Libertarianismo",
+      "classification": "contested-claim",
+      "text": "Há divergência sobre se o anarcocapitalismo é uma forma de anarquismo: parte dos ativistas e estudiosos anarquistas nega essa classificação."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcocapitalismo-006",
+      "entity_id": "wiki-topic-anarcocapitalismo",
+      "entity_title": "Anarcocapitalismo",
+      "classification": "contested-claim",
+      "text": "A classificação do anarcocapitalismo é disputada."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-019",
+    "bge_m3_cosine": 0.8442,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-ateismo-008",
+      "entity_id": "wiki-topic-ateismo",
+      "entity_title": "Ateísmo",
+      "classification": "documented-fact",
+      "text": "Um levantamento constatou que ateus e agnósticos estão, em média, mais bem informados sobre religião do que seguidores das religiões principais. (2010)."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-irreligiao-005",
+      "entity_id": "wiki-topic-irreligiao",
+      "entity_title": "Irreligião",
+      "classification": "contested-claim",
+      "text": "Os integrantes do segmento preferem termos diferentes: alguns se identificam como não religiosos e outros especificam se são ateus, agnósticos ou deístas."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-020",
+    "bge_m3_cosine": 0.8433,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1966-010",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1966",
+      "entity_title": "Movimento Democrático Brasileiro (1966)",
+      "classification": "contested-claim",
+      "text": "Há controvérsia sobre se o PMDB seria o MDB com outro nome ou um partido sucessor."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1980-009",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "entity_title": "Movimento Democrático Brasileiro (1980)",
+      "classification": "documented-fact",
+      "text": "Convenção nacional extraordinária aprovou a troca do nome de PMDB para MDB. (2017-12-19)."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-021",
+    "bge_m3_cosine": 0.8428,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-anarchism-007",
+      "entity_id": "wiki-topic-anarquismo",
+      "entity_title": "Anarquismo",
+      "classification": "contested-claim",
+      "text": "Há disputa entre estudiosos sobre a definição de anarquismo, pois as correntes o percebem de maneiras diferentes."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcocapitalismo-006",
+      "entity_id": "wiki-topic-anarcocapitalismo",
+      "entity_title": "Anarcocapitalismo",
+      "classification": "contested-claim",
+      "text": "A classificação do anarcocapitalismo é disputada."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-022",
+    "bge_m3_cosine": 0.8415,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-grande-depressao-010",
+      "entity_id": "wiki-topic-grande-depressao",
+      "entity_title": "Grande Depressão",
+      "classification": "contested-claim",
+      "text": "O economista Milton Friedman atribuiu a Grande Depressão à política monetária equivocada."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-milton-friedman-007",
+      "entity_id": "wiki-topic-milton-friedman",
+      "entity_title": "Milton Friedman",
+      "classification": "contested-claim",
+      "text": "A Monetary History of the United States foi criticada por atribuir ao Federal Reserve a culpa pela Grande Depressão."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-023",
+    "bge_m3_cosine": 0.8383,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-anarcocapitalismo-006",
+      "entity_id": "wiki-topic-anarcocapitalismo",
+      "entity_title": "Anarcocapitalismo",
+      "classification": "contested-claim",
+      "text": "A classificação do anarcocapitalismo é disputada."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anticapitalismo-006",
+      "entity_id": "wiki-topic-anticapitalismo",
+      "entity_title": "Anticapitalismo",
+      "classification": "contested-claim",
+      "text": "A utilização do termo anticapitalista nesse sentido era considerada polêmica."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-024",
+    "bge_m3_cosine": 0.8346,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-casamento-entre-pessoas-do-mesmo-sexo-012",
+      "entity_id": "wiki-topic-casamento-entre-pessoas-do-mesmo-sexo",
+      "entity_title": "Casamento entre pessoas do mesmo sexo",
+      "classification": "contested-claim",
+      "text": "Opositores alegam que o reconhecimento de uniões do mesmo sexo promoverá a homossexualidade na sociedade."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-casamento-004",
+      "entity_id": "wiki-topic-casamento",
+      "entity_title": "Casamento",
+      "classification": "contested-claim",
+      "text": "Entre os argumentos favoráveis ao casamento entre pessoas do mesmo sexo está a afirmação de que negar o acesso ao matrimônio representa discriminação por orientação sexual."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-025",
+    "bge_m3_cosine": 0.8316,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-guerra-civil-russa-002",
+      "entity_id": "wiki-topic-guerra-civil-russa",
+      "entity_title": "Guerra Civil Russa",
+      "classification": "contested-claim",
+      "text": "Historiadores divergem sobre a data de início: alguns a situam logo após a Revolução de Outubro e outros na primavera de 1918."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-guerra-fria-004",
+      "entity_id": "wiki-topic-guerra-fria",
+      "entity_title": "Guerra Fria",
+      "classification": "contested-claim",
+      "text": "Há divergência entre historiadores sobre o início do conflito: a maioria o situa após a Segunda Guerra Mundial, enquanto outros o datam da Revolução de Outubro de 1917."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-026",
+    "bge_m3_cosine": 0.8312,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-carta-das-nacoes-unidas-004",
+      "entity_id": "wiki-topic-carta-das-nacoes-unidas",
+      "entity_title": "Carta das Nações Unidas",
+      "classification": "contested-claim",
+      "text": "Segundo o artigo, cada um dos cinco membros permanentes do Conselho de Segurança pode vetar propostas de resolução sobre um conflito."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-conselho-de-seguranca-das-nacoes-unidas-004",
+      "entity_id": "wiki-topic-conselho-de-seguranca-das-nacoes-unidas",
+      "entity_title": "Conselho de Segurança das Nações Unidas",
+      "classification": "documented-fact",
+      "text": "Os membros permanentes podem bloquear decisões do Conselho pelo direito de veto, mesmo quando há nove votos favoráveis."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-027",
+    "bge_m3_cosine": 0.8306,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-desigualdade-economica-004",
+      "entity_id": "wiki-topic-desigualdade-economica",
+      "entity_title": "Desigualdade econômica",
+      "classification": "contested-claim",
+      "text": "A teoria do gotejamento, segundo a qual o enriquecimento do topo beneficia os mais pobres, foi questionada por estudos, entre eles um do FMI de 2015."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-distribuicao-de-renda-006",
+      "entity_id": "wiki-topic-distribuicao-de-renda",
+      "entity_title": "Distribuição de renda",
+      "classification": "contested-claim",
+      "text": "A teoria do gotejamento foi questionada por estudo do FMI publicado em 2015."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-028",
+    "bge_m3_cosine": 0.8294,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-anarchism-007",
+      "entity_id": "wiki-topic-anarquismo",
+      "entity_title": "Anarquismo",
+      "classification": "contested-claim",
+      "text": "Há disputa entre estudiosos sobre a definição de anarquismo, pois as correntes o percebem de maneiras diferentes."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-correntes-do-anarquismo-002",
+      "entity_id": "wiki-topic-correntes-do-anarquismo",
+      "entity_title": "Correntes do anarquismo",
+      "classification": "contested-claim",
+      "text": "Não há consenso sobre o critério para estabelecer as correntes anarquistas."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-029",
+    "bge_m3_cosine": 0.827,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-socialismo-democratico-009",
+      "entity_id": "wiki-topic-socialismo-democratico",
+      "entity_title": "Socialismo democrático",
+      "classification": "contested-claim",
+      "text": "Alguns argumentam que socialismo implica democracia e que socialismo democrático é um termo redundante, enquanto outros defendem o termo para distingui-lo da União Soviética."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-social-democracy-007",
+      "entity_id": "wiki-topic-social-democracia",
+      "entity_title": "Social-democracia",
+      "classification": "contested-claim",
+      "text": "Há divergência entre acadêmicos sobre se a social-democracia é distinta do socialismo ou se está dentro do movimento socialista."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-030",
+    "bge_m3_cosine": 0.827,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1966-003",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1966",
+      "entity_title": "Movimento Democrático Brasileiro (1966)",
+      "classification": "contested-claim",
+      "text": "Há divergência sobre se o PMDB seria o MDB com outro nome ou apenas um partido sucessor. Pela lei de 1979, MDB e ARENA foram formalmente extintos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-movimento-democratico-brasileiro-1980-009",
+      "entity_id": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "entity_title": "Movimento Democrático Brasileiro (1980)",
+      "classification": "documented-fact",
+      "text": "Convenção nacional extraordinária aprovou a troca do nome de PMDB para MDB. (2017-12-19)."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-031",
+    "bge_m3_cosine": 0.8266,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-nacionalismo-007",
+      "entity_id": "wiki-topic-nacionalismo",
+      "entity_title": "Nacionalismo",
+      "classification": "interpretation",
+      "text": "Segundo o artigo, o nacionalismo não tem orientação ideológica fixa e pode vir da esquerda ou da direita."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-internacionalismo-008",
+      "entity_id": "wiki-topic-internacionalismo",
+      "entity_title": "Internacionalismo",
+      "classification": "attributed-thesis",
+      "text": "Posição política descrita na fonte: esquerda."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-032",
+    "bge_m3_cosine": 0.8264,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-nazismo-008",
+      "entity_id": "wiki-topic-nazismo",
+      "entity_title": "Nazismo",
+      "classification": "contested-claim",
+      "text": "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-holocausto-015",
+      "entity_id": "wiki-topic-holocausto",
+      "entity_title": "Holocausto",
+      "classification": "contested-claim",
+      "text": "Os estudiosos estão divididos sobre o alcance do termo Holocausto."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-033",
+    "bge_m3_cosine": 0.8263,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-nazismo-008",
+      "entity_id": "wiki-topic-nazismo",
+      "entity_title": "Nazismo",
+      "classification": "contested-claim",
+      "text": "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-holocausto-006",
+      "entity_id": "wiki-topic-holocausto",
+      "entity_title": "Holocausto",
+      "classification": "contested-claim",
+      "text": "Os estudiosos estão divididos sobre aplicar o termo Holocausto a todas as vítimas do assassinato em massa nazista."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-034",
+    "bge_m3_cosine": 0.8238,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-libertarianismo-009",
+      "entity_id": "wiki-topic-libertarianismo",
+      "entity_title": "Libertarianismo",
+      "classification": "contested-claim",
+      "text": "Alguns autores consideram o anarcocapitalismo uma forma de anarquismo individualista, o que é criticado por outros."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcocapitalismo-006",
+      "entity_id": "wiki-topic-anarcocapitalismo",
+      "entity_title": "Anarcocapitalismo",
+      "classification": "contested-claim",
+      "text": "A classificação do anarcocapitalismo é disputada."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-035",
+    "bge_m3_cosine": 0.8199,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-nazismo-008",
+      "entity_id": "wiki-topic-nazismo",
+      "entity_title": "Nazismo",
+      "classification": "contested-claim",
+      "text": "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-holocausto-009",
+      "entity_id": "wiki-topic-holocausto",
+      "entity_title": "Holocausto",
+      "classification": "contested-claim",
+      "text": "Os estudiosos divergem sobre se o termo Holocausto deve abranger todas as vítimas do assassinato em massa nazista."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-036",
+    "bge_m3_cosine": 0.8197,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-anarchism-007",
+      "entity_id": "wiki-topic-anarquismo",
+      "entity_title": "Anarquismo",
+      "classification": "contested-claim",
+      "text": "Há disputa entre estudiosos sobre a definição de anarquismo, pois as correntes o percebem de maneiras diferentes."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcocomunismo-005",
+      "entity_id": "wiki-topic-anarcocomunismo",
+      "entity_title": "Anarcocomunismo",
+      "classification": "interpretation",
+      "text": "Anarquistas e marxistas compartilham o mesmo conceito de comunismo, apesar de discordarem sobre a transição."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  },
+  {
+    "id": "debate-037",
+    "bge_m3_cosine": 0.8197,
+    "claim_a": {
+      "claim_id": "claim-wiki-topic-anarchism-007",
+      "entity_id": "wiki-topic-anarquismo",
+      "entity_title": "Anarquismo",
+      "classification": "contested-claim",
+      "text": "Há disputa entre estudiosos sobre a definição de anarquismo, pois as correntes o percebem de maneiras diferentes."
+    },
+    "claim_b": {
+      "claim_id": "claim-wiki-topic-anarcossindicalismo-007",
+      "entity_id": "wiki-topic-anarcossindicalismo",
+      "entity_title": "Anarcossindicalismo",
+      "classification": "contested-claim",
+      "text": "Autores brasileiros dão definições diferentes, em alguns casos quase opostas, ao anarco-sindicalismo e ao Sindicalismo Revolucionário."
+    },
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "BAAI/bge-m3",
+      "stage": "mining-debate",
+      "verdict": "pending-human",
+      "reviewedAt": "2026-11-15T19:49:25.941116+00:00"
+    },
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial."
+  }
+]

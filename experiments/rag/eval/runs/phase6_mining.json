@@ -1,0 +1,40 @@
+{
+  "relacoes_candidatas": 80,
+  "orphan_targets_in_relacoes": 80,
+  "debates_e_contradicoes": 37,
+  "deduplicacao_entidades": 6,
+  "entities_without_editorial_edges": 488,
+  "entities_zero_total_degree": 418,
+  "entities_zero_claims": 43,
+  "all_ok_null": true,
+  "main_reading_traditions": {
+    "atlas-marx-valor": {
+      "tradition": "marxismo",
+      "observed_editorial_relations": 67,
+      "baseline_target_from_docs": 70,
+      "gap_to_target": 3,
+      "mined_candidates_in_queue": 7
+    },
+    "atlas-liberalism": {
+      "tradition": "liberalismo",
+      "observed_editorial_relations": 37,
+      "baseline_target_from_docs": 35,
+      "gap_to_target": 0,
+      "mined_candidates_in_queue": 7
+    },
+    "atlas-social-democracia": {
+      "tradition": "social-democracia",
+      "observed_editorial_relations": 51,
+      "baseline_target_from_docs": 70,
+      "gap_to_target": 19,
+      "mined_candidates_in_queue": 15
+    },
+    "atlas-anarquismo": {
+      "tradition": "anarquismo",
+      "observed_editorial_relations": 56,
+      "baseline_target_from_docs": 50,
+      "gap_to_target": 0,
+      "mined_candidates_in_queue": 17
+    }
+  }
+}

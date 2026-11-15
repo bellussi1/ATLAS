@@ -1,9 +1,9 @@
 Status: atual
-Última verificação: 10/11/2026
+Última verificação: 15/11/2026
 
 # Contexto vivo do ATLAS
 
-Atualizado em 10/11/2026. Este é o handoff curto entre sessões. O histórico completo, com as 58 entradas anteriores, está em [`archive/2026-11/active-context-history.md`](archive/2026-11/active-context-history.md). O mapa dos documentos está em [`README.md`](README.md).
+Atualizado em 15/11/2026. Este é o handoff curto entre sessões. O histórico completo, com as 58 entradas anteriores, está em [`archive/2026-11/active-context-history.md`](archive/2026-11/active-context-history.md). O mapa dos documentos está em [`README.md`](README.md).
 
 ## Estado atual
 
@@ -18,6 +18,7 @@ Atualizado em 10/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- `experiments/rag/.venv/Scripts/pytest.exe experiments/rag/tests` (15/11): **23/23** passando nas Fases 0–6 (ingestão, eval set, métricas/recuperação, geração/travas, expansão em grafo, segurança adversarial, regressão CI e mineração); `python -m atlas_rag.cli ci-check`: **10/10** checks verdes.
 - `npm test`: **364/364**.
 - `npm run test:content`: **199/199**.
 - `node --test scripts/tradicao/*.spec.mjs`: **131/131**.
@@ -37,6 +38,11 @@ Atualizado em 10/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Trabalho ativo
 
+- **Busca semântica, RAG, avaliação e mineração (15/11, experimento offline):** suíte Python implementada em [`experiments/rag/`](../experiments/rag/README.md) (fora do build Angular static-first; custo de API paga **US$ 0,00** com `--dry-run`, cache SHA-256 e GPU local RTX 4060 FP16) sobre o bundle pinado `5923d2e…` (`1.224` entidades, `11.145` afirmações, `1.629` relações). Fases 0–6 e mineração concluídas com métricas versionadas em `experiments/rag/eval/runs/` e relatórios em `docs/research/RAG-*.md`:
+  - **Recuperação (Fase 2, `n=86`):** busca lexical equivalente à atual (`lexical_current_strict`) = **0,0000**; `bm25_claims` = **0,7442** R@10; `dense_claim_enriched` (`bge-m3`) = **0,8140** R@10; `hybrid_rerank_top20_b16` (`bge-reranker-v2-m3`) = **0,8488** R@10 / **0,7693** MRR@10.
+  - **Grafo (Fase 4):** expansão `editorial_only` elevou `overall R@10` para **0,8663** e `multi_hop R@10` de **0,6667 → 0,8056**, mantendo `0,0000` exposição causal c/ guarda em `so_link_de_descoberta`.
+  - **Geração & Segurança (Fases 3 e 5):** `extractive_cited` atingiu **1,0000** em fidelidade/citação/recusa; `ollama/qwen3:8b-q4_K_M` teve **0,8400** de fidelidade com `16` overrides e `2/8` injeções brutas bloqueadas pelas travas duras (**8/8 = 100%** de defesa final); juiz local obteve kappa **0,7333** em 30 casos sintéticos (`human_calibrated: false`). Projeções `--dry-run`/100q: Gemini 3.8 Flash **US$ 0,0205**, DeepSeek Flash **US$ 0,0559**, Haiku 5.5 **US$ 0,2273**, Sonnet 5.5 **US$ 0,6820**.
+  - **Filas humanas (Fase 1 & Seção 6):** `100` perguntas em `experiments/rag/eval/questions.jsonl` (70 `dev`/30 `test`, **`human_ok: null`**) e 4 filas em `experiments/rag/eval/queues/` (`80` relações candidatas, `37` debates, `6` deduplicações e lacunas; **100% com `ok: null`**). Decisão em [`ADR-001-BUSCA-SEMANTICA-E-RAG.md`](architecture/ADR-001-BUSCA-SEMANTICA-E-RAG.md): manter RAG/LLM fora do site público (static-first) e priorizar BM25 client-side sem *stop words*.
 - **Acervo / navegação lateral (09/11)**: a árvore substitui o seletor de catálogo e o índice de tipos. Tudo, Registros (expansível, com 14 catálogos), Fontes e Leituras ficam na lateral; Escopo e Estado são os filtros. Os catálogos agora vivem em `/acervo/<catálogo>`; as URLs antigas respondem 301 e ficam fora do sitemap. Busca, ordem, vista e filtros continuam na URL; Tudo abre em lista, Registros em grade no desktop e lista no mobile. O refactor anterior (faixa de busca, grade/lista, carregar mais) permanece. Publicado no merge **#73** (`9ff8870`).
 - **Grafo / painel de conexões (09/11)**: as conexões vêm antes das teses e são agrupadas por peso (histórico, ação, administrativo, catálogo), com 6 por grupo e “Ver todas”; a frase da aresta aparece só no hover, o detalhe é recolhível no mobile e o nó selecionado fica maior. Commit **`82fda9e`**; publicado no merge **#73** (`9ff8870`).
 - **Tradições / lente de pertencimento (09/11)**: `content/traditions/<slug>.json` guarda `belonging.qids` com os aceitos, e o `rootQid` entra sempre na resolução. A lente resolve os QIDs no grafo inteiro sem mover nem duplicar entidade; cobertura mede entidades, relações, fontes e imagens da lente; o glossário liga hovers ao id consolidado; o estágio 8 procura a raiz no grafo inteiro e usa evidência de outras coleções. O estágio 8 passa nas três; a raiz do trabalhismo foi capturada e extraída, e a página foi gerada. O código da lente foi publicado no merge **#73**; o conteúdo do piloto foi publicado como prévia no R2 (`5923d2e`) e no Pages (`9501f7a`).
@@ -97,17 +103,20 @@ Atualizado em 10/11/2026. Este é o handoff curto entre sessões. O histórico c
 6. **Onda 2** — o lote dos verbetes foi concluído (+99 documentadas no total). Faltam as quatro leituras: Marxismo 41/70, Liberalismo 16/35, Social-democracia 34/70, Anarquismo 10/50. O saldo restante do teto de US$ 6 é ~US$ 4,2; a próxima decisão é entre alvos editoriais das leituras e um novo lote de verbetes.
 7. **Publicação da expansão** — o release `c0be77b` foi publicado e o ponteiro público já aponta para ele; o próximo deploy do Pages fixa o novo conteúdo no HTML prerenderizado.
 8. **Piloto das tradições** — as três prévias estão publicadas no R2 e no Pages. Decidir a promoção para leitura listada depois de fechar bibliografia, capítulos do stalinismo e piso de relações/tipos; revisar o tom e o selo de rascunho antes.
+9. **Busca semântica e RAG (15/11)** — validar [`ADR-001`](architecture/ADR-001-BUSCA-SEMANTICA-E-RAG.md) (melhoria BM25 estática no `discovery-index.ts` vs Worker/Vectorize só para trechos citados), marcar `human_ok` em `experiments/rag/eval/questions.jsonl` (`0/100` revisadas), calibrar juiz LLM com 30 rótulos humanos e revisar as 4 filas em `experiments/rag/eval/queues/` (`80` relações, `37` debates, `6` deduplicações; `100% ok: null`).
 
 ## Próxima ação
 
-1. As prévias estão em produção no merge **#74** (`9501f7a`) e no release **`5923d2e`**. Revisar visualmente as três URLs e decidir a promoção; antes, fechar #78, #79, #80 e #87.
-2. Revisar o tom das três leituras; o preenchimento pela lente já anexou as fontes. Fechar a bibliografia (#78), os capítulos do stalinismo (#79), os 7 tipos de bloco e as relações de nazismo/trabalhismo (#80) e a densidade (#87). A extração do piloto custou **US$ 0,540**.
-3. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
-4. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
-5. Rotacionar o token Cloudflare e desligar o Vercel no painel.
-6. Só depois iniciar a fase 0 dos itinerários.
-7. Se a primeira carga continuar crítica, buscar o bundle como bytes (hash antes do decode) e dividir o pacote por rota; o prefetch já resolveu o grafo → acervo.
-8. Corrigir os P1 da varredura: #75 (noindex), #76 (301 com barra), #77 (fixture), #78 (bibliografia), #79 (stalinismo) e #80 (piso).
+1. Revisar e marcar `human_ok` em `experiments/rag/eval/questions.jsonl` (com apoio de `experiments/rag/eval/labels/review-queue.md`), calibrar o juiz com 30 rótulos humanos e triar `experiments/rag/eval/queues/` (`relacoes-candidatas.json`, `deduplicacao-entidades.json`, `debates-e-contradicoes.json`).
+2. Se aprovar [`ADR-001`](architecture/ADR-001-BUSCA-SEMANTICA-E-RAG.md), implementar busca BM25 / OR ponderado sem *stop words* no `discovery-index.ts` para sair do `0,0000` atual em perguntas naturais sem adicionar modelo ONNX no cliente.
+3. As prévias estão em produção no merge **#74** (`9501f7a`) e no release **`5923d2e`**. Revisar visualmente as três URLs e decidir a promoção; antes, fechar #78, #79, #80 e #87.
+4. Revisar o tom das três leituras; o preenchimento pela lente já anexou as fontes. Fechar a bibliografia (#78), os capítulos do stalinismo (#79), os 7 tipos de bloco e as relações de nazismo/trabalhismo (#80) e a densidade (#87). A extração do piloto custou **US$ 0,540**.
+5. Revisar os **28** itens restantes da estimativa de ~64 contextos e corrigir o tipo de **Empirismo** (`institution` → `concept`) na próxima passada de tipos.
+6. Decidir o próximo lote de relações: alvos editoriais das quatro leituras ou um novo recorte de verbetes, com o saldo de ~US$ 4,2.
+7. Rotacionar o token Cloudflare e desligar o Vercel no painel.
+8. Só depois iniciar a fase 0 dos itinerários.
+9. Se a primeira carga continuar crítica, buscar o bundle como bytes (hash antes do decode) e dividir o pacote por rota; o prefetch já resolveu o grafo → acervo.
+10. Corrigir os P1 da varredura: #75 (noindex), #76 (301 com barra), #77 (fixture), #78 (bibliografia), #79 (stalinismo) e #80 (piso).
 
 ## Mapa rápido
 

@@ -1,0 +1,3133 @@
+{
+  "summary": {
+    "release": "5923d2eb4fda57c52c6e35224a1eac60e162748274b214e651ed14aab9bd0344",
+    "bundle_sha256": "0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5",
+    "gold_set_2026_11": {
+      "afirmacoes": 40,
+      "pares_fonte_afirmacao": 20,
+      "relacoes": 87
+    },
+    "total": 100,
+    "splits": {
+      "dev": 70,
+      "test": 30
+    },
+    "by_type": {
+      "factual": {
+        "dev": 17,
+        "test": 7,
+        "total": 24
+      },
+      "multi_hop": {
+        "dev": 13,
+        "test": 5,
+        "total": 18
+      },
+      "comparativa": {
+        "dev": 10,
+        "test": 4,
+        "total": 14
+      },
+      "contestada": {
+        "dev": 11,
+        "test": 5,
+        "total": 16
+      },
+      "so_link_de_descoberta": {
+        "dev": 10,
+        "test": 4,
+        "total": 14
+      },
+      "sem_resposta": {
+        "dev": 9,
+        "test": 5,
+        "total": 14
+      }
+    },
+    "reused_from_gold_set_count": 13,
+    "human_ok_true_count": 0,
+    "human_ok_null_count": 100
+  },
+  "items": [
+    {
+      "id": "q-fac-001",
+      "split": "dev",
+      "type": "factual",
+      "question": "Onde Adam Smith nasceu e em que data foi batizado segundo o acervo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-adam-smith-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-adam-smith-001",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-adam-smith-001",
+          "entity_id": "person-adam-smith",
+          "entity_title": "Adam Smith",
+          "classification": "documented-fact",
+          "text": "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-002",
+      "split": "dev",
+      "type": "factual",
+      "question": "Em que cidade e data ocorreu a morte de Friedrich Engels?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-friedrich-engels-009"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-friedrich-engels-009",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-friedrich-engels-009",
+          "entity_id": "person-friedrich-engels",
+          "entity_title": "Friedrich Engels",
+          "classification": "documented-fact",
+          "text": "Morte de Friedrich Engels em Londres. (1895-08-05)."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-003",
+      "split": "dev",
+      "type": "factual",
+      "question": "Qual é a medida de valor de troca proposta por Adam Smith na obra A Riqueza das Nações?",
+      "gold_unit_ids": [
+        "claim-work-wealth-of-nations"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-work-wealth-of-nations",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-work-wealth-of-nations",
+          "entity_id": "work-wealth-of-nations",
+          "entity_title": "A riqueza das nações",
+          "classification": "attributed-thesis",
+          "text": "Smith propõe o trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-004",
+      "split": "dev",
+      "type": "factual",
+      "question": "Em que cidade e ano foi publicado originalmente o Manifesto Comunista?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-manifesto-comunista-001",
+        "claim-wiki-topic-manifesto-comunista-006"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-manifesto-comunista-006",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-manifesto-comunista-001",
+          "entity_id": "work-communist-manifesto",
+          "entity_title": "Manifesto Comunista",
+          "classification": "documented-fact",
+          "text": "O Manifesto foi encomendado pela Liga dos Comunistas e publicado em Londres em 1848."
+        },
+        {
+          "claim_id": "claim-wiki-topic-manifesto-comunista-006",
+          "entity_id": "work-communist-manifesto",
+          "entity_title": "Manifesto Comunista",
+          "classification": "documented-fact",
+          "text": "Publicação do Manifesto em Londres. (1848)."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-005",
+      "split": "dev",
+      "type": "factual",
+      "question": "Quem introduziu o termo liberalismo verde em estudos acadêmicos segundo o acervo?",
+      "gold_unit_ids": [
+        "claim-wiki-ideology-green-liberalism-005"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-ideology-green-liberalism-005",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-ideology-green-liberalism-005",
+          "entity_id": "ideology-green-liberalism",
+          "entity_title": "Liberalismo verde",
+          "classification": "documented-fact",
+          "text": "O termo liberalismo verde foi introduzido em estudos acadêmicos pelo filósofo político Marcel Wissenburg."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-006",
+      "split": "dev",
+      "type": "factual",
+      "question": "Quem foi o principal promotor das Leis Antissocialistas na Alemanha?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-leis-antissocialistas-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-leis-antissocialistas-002",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-leis-antissocialistas-002",
+          "entity_id": "wiki-topic-leis-antissocialistas",
+          "entity_title": "Leis Antissocialistas",
+          "classification": "attributed-thesis",
+          "text": "O principal promotor da medida foi o chanceler Otto von Bismarck."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-007",
+      "split": "dev",
+      "type": "factual",
+      "question": "Em que período o Partido Comunista do Chile esteve proibido de participar de eleições com seu próprio nome?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-partido-comunista-do-chile-004"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-partido-comunista-do-chile-004",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-partido-comunista-do-chile-004",
+          "entity_id": "wiki-topic-partido-comunista-do-chile",
+          "entity_title": "Partido Comunista do Chile",
+          "classification": "documented-fact",
+          "text": "Entre 1932 e 1957 o partido esteve proibido de participar das eleições com o seu nome."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-008",
+      "split": "dev",
+      "type": "factual",
+      "question": "Que concepção sobre poder constituinte era sustentada por Emmanuel Joseph Sieyès?",
+      "gold_unit_ids": [
+        "claim-wiki-person-emmanuel-joseph-sieyes-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-person-emmanuel-joseph-sieyes-002",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-person-emmanuel-joseph-sieyes-002",
+          "entity_id": "person-emmanuel-joseph-sieyes",
+          "entity_title": "Emmanuel Joseph Sieyès",
+          "classification": "attributed-thesis",
+          "text": "Sustentava a existência de um poder imanente à nação, superior aos poderes constituídos, que é o poder constituinte."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-009",
+      "split": "dev",
+      "type": "factual",
+      "question": "Em que ano Trótski formulou a teoria da revolução permanente?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-trotskismo-005"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-trotskismo-005",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-trotskismo-005",
+          "entity_id": "ideology-trotskyism",
+          "entity_title": "Trotskismo",
+          "classification": "documented-fact",
+          "text": "Trótski formulou a teoria da revolução permanente. (1905)."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-010",
+      "split": "dev",
+      "type": "factual",
+      "question": "Quando e onde foi fundado o Partido dos Trabalhadores (PT) no Brasil?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-partido-dos-trabalhadores-001",
+        "claim-wiki-topic-partido-dos-trabalhadores-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-partido-dos-trabalhadores-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-partido-dos-trabalhadores-001",
+          "entity_id": "wiki-topic-partido-dos-trabalhadores",
+          "entity_title": "Partido dos Trabalhadores",
+          "classification": "documented-fact",
+          "text": "O partido foi fundado em 10 de fevereiro de 1980 no Colégio Sion, em São Paulo, por um grupo heterogêneo de militantes, sindicalistas, intelectuais, artistas e católicos."
+        },
+        {
+          "claim_id": "claim-wiki-topic-partido-dos-trabalhadores-003",
+          "entity_id": "wiki-topic-partido-dos-trabalhadores",
+          "entity_title": "Partido dos Trabalhadores",
+          "classification": "documented-fact",
+          "text": "Fundação do partido no Colégio Sion, em São Paulo. (1980-02-10)."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-011",
+      "split": "dev",
+      "type": "factual",
+      "question": "Qual medida provisória deu início ao Plano Real em fevereiro de 1994 e qual era seu objetivo principal?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-plano-real-001",
+        "claim-wiki-topic-plano-real-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-plano-real-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-plano-real-001",
+          "entity_id": "wiki-topic-plano-real",
+          "entity_title": "Plano Real",
+          "classification": "documented-fact",
+          "text": "O programa foi iniciado em 27 de fevereiro de 1994 com a publicação da medida provisória número 434, no governo Itamar Franco."
+        },
+        {
+          "claim_id": "claim-wiki-topic-plano-real-002",
+          "entity_id": "wiki-topic-plano-real",
+          "entity_title": "Plano Real",
+          "classification": "documented-fact",
+          "text": "O objetivo principal do programa era o controle da hiperinflação que assolava o país."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-012",
+      "split": "dev",
+      "type": "factual",
+      "question": "Como o Estado brasileiro é identificado pela Constituição de 1988?",
+      "gold_unit_ids": [
+        "claim-country-brazil"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-country-brazil",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-country-brazil",
+          "entity_id": "country-brazil",
+          "entity_title": "Brasil",
+          "classification": "documented-fact",
+          "text": "A Constituição de 1988 identifica o Estado brasileiro como República Federativa do Brasil."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-013",
+      "split": "dev",
+      "type": "factual",
+      "question": "Quando e onde foi fundado o Partido Democrático Trabalhista (PDT)?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-partido-democratico-trabalhista-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-partido-democratico-trabalhista-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-partido-democratico-trabalhista-003",
+          "entity_id": "wiki-topic-partido-democratico-trabalhista",
+          "entity_title": "Partido Democrático Trabalhista",
+          "classification": "documented-fact",
+          "text": "Fundação do PDT na sede da ABI, no Rio de Janeiro. (1980-05-26)."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-014",
+      "split": "dev",
+      "type": "factual",
+      "question": "Qual jornal anarquista foi fundado por Emma Goldman em 1906 nos Estados Unidos?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-emma-goldman-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-emma-goldman-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-emma-goldman-002",
+          "entity_id": "wiki-topic-emma-goldman",
+          "entity_title": "Emma Goldman",
+          "classification": "documented-fact",
+          "text": "Goldman fundou o jornal anarquista Mother Earth. (1906)."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-015",
+      "split": "dev",
+      "type": "factual",
+      "question": "A quem e a qual década é creditada a criação do Estado de bem-estar social moderno na Alemanha?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-estado-de-bem-estar-social-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-estado-de-bem-estar-social-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-estado-de-bem-estar-social-001",
+          "entity_id": "wiki-topic-estado-de-bem-estar-social",
+          "entity_title": "Estado de bem-estar social",
+          "classification": "documented-fact",
+          "text": "O Estado de bem-estar social moderno é creditado a Otto von Bismarck, na década de 1880, na Alemanha, com programas compulsórios de assistência social em escala nacional."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-016",
+      "split": "dev",
+      "type": "factual",
+      "question": "Em que cidade nasceu Getúlio Vargas e quando instaurou o Estado Novo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-getulio-vargas-001",
+        "claim-wiki-topic-getulio-vargas-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-getulio-vargas-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-getulio-vargas-001",
+          "entity_id": "wiki-topic-getulio-vargas",
+          "entity_title": "Getúlio Vargas",
+          "classification": "documented-fact",
+          "text": "Nasceu em São Borja, no Rio Grande do Sul, filho de Manuel do Nascimento Vargas e de Cândida Francisca Dornelles Vargas."
+        },
+        {
+          "claim_id": "claim-wiki-topic-getulio-vargas-002",
+          "entity_id": "wiki-topic-getulio-vargas",
+          "entity_title": "Getúlio Vargas",
+          "classification": "documented-fact",
+          "text": "Em 1937 instaurou o Estado Novo por meio de um autogolpe e presidiu o país como ditador até 1945."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-017",
+      "split": "dev",
+      "type": "factual",
+      "question": "Qual é a tese central de Antonio Gramsci pela qual ele é mais reconhecido segundo o acervo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-antonio-gramsci-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-antonio-gramsci-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-antonio-gramsci-002",
+          "entity_id": "person-antonio-gramsci",
+          "entity_title": "Antonio Gramsci",
+          "classification": "attributed-thesis",
+          "text": "Gramsci é reconhecido principalmente pela teoria da hegemonia cultural, que descreve como o Estado usa as instituições culturais para conservar o poder nas sociedades ocidentais."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-018",
+      "split": "test",
+      "type": "factual",
+      "question": "Em que país e data a Operação Condor foi formalmente estabelecida segundo os documentos do acervo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-operacao-condor-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-operacao-condor-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-operacao-condor-001",
+          "entity_id": "wiki-topic-operacao-condor",
+          "entity_title": "Operação Condor",
+          "classification": "documented-fact",
+          "text": "A operação foi formalmente estabelecida em 25 de novembro de 1975, em reunião em Santiago do Chile entre Manuel Contreras, chefe da DINA, e líderes de serviços de inteligência militar de vários países."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-019",
+      "split": "test",
+      "type": "factual",
+      "question": "Por quais dois partidos alemães foi fundado o SPD em 1875?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-partido-social-democrata-da-alemanha-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-partido-social-democrata-da-alemanha-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-partido-social-democrata-da-alemanha-001",
+          "entity_id": "wiki-topic-partido-social-democrata-da-alemanha",
+          "entity_title": "Partido Social-Democrata da Alemanha",
+          "classification": "documented-fact",
+          "text": "O partido foi fundado em 1875 pela fusão da ADAV, de 1863, e do SDAP, de 1869."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-020",
+      "split": "test",
+      "type": "factual",
+      "question": "Qual economista cunhou o termo ordoliberalismo em 1950 e a qual periódico o nome se refere?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-ordoliberalismo-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-ordoliberalismo-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-ordoliberalismo-001",
+          "entity_id": "ideology-ordoliberalism",
+          "entity_title": "Ordoliberalismo",
+          "classification": "documented-fact",
+          "text": "O termo ordoliberalismo foi cunhado em 1950 pelo economista Hero Moeller, e se refere ao periódico acadêmico ORDO."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-021",
+      "split": "test",
+      "type": "factual",
+      "question": "Quando o termo liberalismo social foi utilizado pela primeira vez e por quem?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-liberalismo-social-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-liberalismo-social-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-liberalismo-social-001",
+          "entity_id": "ideology-social-liberalism",
+          "entity_title": "Liberalismo social",
+          "classification": "documented-fact",
+          "text": "O termo liberalismo social foi usado pela primeira vez em 1891 pelo economista e jornalista austro-húngaro Theodor Hertzka."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-022",
+      "split": "test",
+      "type": "factual",
+      "question": "Em qual obra de 1840 Pierre-Joseph Proudhon se declara explicitamente anarquista?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-anarquismo-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-anarquismo-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-anarquismo-003",
+          "entity_id": "wiki-topic-anarquismo",
+          "entity_title": "Anarquismo",
+          "classification": "documented-fact",
+          "text": "Proudhon se declara anarquista na obra O Que É a Propriedade? (1840)."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-023",
+      "split": "test",
+      "type": "factual",
+      "question": "Do que depende o nível de atividade econômica e o emprego segundo a tese de John Maynard Keynes?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-john-maynard-keynes-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-john-maynard-keynes-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-john-maynard-keynes-001",
+          "entity_id": "wiki-topic-john-maynard-keynes",
+          "entity_title": "John Maynard Keynes",
+          "classification": "attributed-thesis",
+          "text": "Para Keynes, o nível de atividade econômica depende da demanda agregada, e sua insuficiência pode manter o desemprego elevado por muito tempo."
+        }
+      ]
+    },
+    {
+      "id": "q-fac-024",
+      "split": "test",
+      "type": "factual",
+      "question": "Em que data foi instalada a Assembleia Nacional Constituinte de 1987 no Congresso Nacional?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-constituicao-brasileira-de-1988-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-constituicao-brasileira-de-1988-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-constituicao-brasileira-de-1988-003",
+          "entity_id": "wiki-topic-constituicao-brasileira-de-1988",
+          "entity_title": "Constituição brasileira de 1988",
+          "classification": "documented-fact",
+          "text": "Instalação da Assembleia Nacional Constituinte de 1987 no Congresso Nacional, em Brasília. (1987-02-01)."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-001",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Qual obra escrita por Adam Smith é examinada criticamente por Karl Marx ao distinguir trabalho contido e trabalho comandado?",
+      "gold_unit_ids": [
+        "claim-person-adam-smith",
+        "claim-marx-critica-smith"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-marx-critica-smith",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [
+        "relation-smith-wealth",
+        "relation-marx-criticizes-smith"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-person-adam-smith",
+          "entity_id": "person-adam-smith",
+          "entity_title": "Adam Smith",
+          "classification": "documented-fact",
+          "text": "Filósofo escocês e autor de A riqueza das nações, publicada em 1776."
+        },
+        {
+          "claim_id": "claim-marx-critica-smith",
+          "entity_id": "work-wealth-of-nations",
+          "entity_title": "A riqueza das nações",
+          "classification": "attributed-thesis",
+          "text": "Em Teorias da mais-valia, Marx examina definições de valor atribuídas a Smith, distinguindo trabalho contido e trabalho comandado."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-002",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Que livro publicado por Marx em 1867 analisa a relação entre tempo de trabalho socialmente necessário e valor?",
+      "gold_unit_ids": [
+        "claim-person-karl-marx",
+        "claim-work-capital-volume-i"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-work-capital-volume-i",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [
+        "relation-marx-capital"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-person-karl-marx",
+          "entity_id": "person-karl-marx",
+          "entity_title": "Karl Marx",
+          "classification": "documented-fact",
+          "text": "Filósofo e crítico da economia política; publicou o primeiro volume de O capital em 1867."
+        },
+        {
+          "claim_id": "claim-work-capital-volume-i",
+          "entity_id": "work-capital-volume-i",
+          "entity_title": "O capital: volume I",
+          "classification": "documented-fact",
+          "text": "Obra de Marx publicada em 1867, dedicada à crítica da economia política."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-003",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Que teórico alemão do revisionismo inspirou a definição de socialismo usada no desenvolvimento do socialismo liberal?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-eduard-bernstein-001",
+        "claim-wiki-ideology-liberal-socialism-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-ideology-liberal-socialism-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-ideology-liberal-socialism-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-eduard-bernstein-001",
+          "entity_id": "person-eduard-bernstein",
+          "entity_title": "Eduard Bernstein",
+          "classification": "attributed-thesis",
+          "text": "Bernstein defendeu que o socialismo poderia ser alcançado por meios pacíficos, por meio de reforma legislativa em sociedades democráticas."
+        },
+        {
+          "claim_id": "claim-wiki-ideology-liberal-socialism-001",
+          "entity_id": "ideology-liberal-socialism",
+          "entity_title": "Socialismo liberal",
+          "classification": "attributed-thesis",
+          "text": "O socialismo liberal favorece uma economia de livre mercado, mas considera os monopólios legais e artificiais culpa do capitalismo e opõe-se ao laissez-faire do liberalismo econômico."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-004",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Qual filósofo inglês do empirismo influenciou os escritos de Thomas Jefferson e Jean-Jacques Rousseau sobre liberdade?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-john-locke-001",
+        "claim-wiki-topic-jean-jacques-rousseau-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-john-locke-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-john-locke-001",
+        "rel-wiki-topic-john-locke-003"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-john-locke-001",
+          "entity_id": "person-john-locke",
+          "entity_title": "John Locke",
+          "classification": "attributed-thesis",
+          "text": "Locke sustentou que a mente nasce sem ideias inatas e que o conhecimento provém da experiência sensorial, conceito conhecido como empirismo."
+        },
+        {
+          "claim_id": "claim-wiki-topic-jean-jacques-rousseau-001",
+          "entity_id": "wiki-topic-jean-jacques-rousseau",
+          "entity_title": "Jean-Jacques Rousseau",
+          "classification": "attributed-thesis",
+          "text": "Atribuiu a soberania ao povo e defendeu a participação direta dos cidadãos na legislação, embora preferisse um governo executivo exercido por uma aristocracia eleita."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-005",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Que panfleto foi escrito por Emmanuel Joseph Sieyès em 1788 em resposta ao convite de Jacques Necker sobre os Estados Gerais?",
+      "gold_unit_ids": [
+        "claim-wiki-person-emmanuel-joseph-sieyes-001",
+        "claim-wiki-obra-o-que-e-o-terceiro-estado-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-obra-o-que-e-o-terceiro-estado-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-person-emmanuel-joseph-sieyes-002"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-person-emmanuel-joseph-sieyes-001",
+          "entity_id": "person-emmanuel-joseph-sieyes",
+          "entity_title": "Emmanuel Joseph Sieyès",
+          "classification": "attributed-thesis",
+          "text": "Defendia que o Terceiro Estado não precisava dos outros dois estamentos, o clero e a nobreza."
+        },
+        {
+          "claim_id": "claim-wiki-obra-o-que-e-o-terceiro-estado-001",
+          "entity_id": "wiki-obra-o-que-e-o-terceiro-estado",
+          "entity_title": "O Que É o Terceiro Estado?",
+          "classification": "documented-fact",
+          "text": "O panfleto foi escrito como resposta de Sieyès ao convite de Jacques Necker aos escritores sobre a organização dos Estados Gerais."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-006",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Em qual conflito de 1876–1878 contra o Império Otomano participou Ion C. Brătianu liderando o lado romeno?",
+      "gold_unit_ids": [
+        "claim-wiki-person-ion-c-bratianu-001",
+        "claim-wiki-acontecimento-guerra-servio-otomana-1876-1878-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-acontecimento-guerra-servio-otomana-1876-1878-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-person-ion-c-bratianu-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-person-ion-c-bratianu-001",
+          "entity_id": "person-ion-c-bratianu",
+          "entity_title": "Ion C. Brătianu",
+          "classification": "attributed-thesis",
+          "text": "O artigo afirma que ele passou de uma posição republicana em 1848 para uma direção monárquica, acompanhando a maioria do movimento nacional."
+        },
+        {
+          "claim_id": "claim-wiki-acontecimento-guerra-servio-otomana-1876-1878-001",
+          "entity_id": "wiki-acontecimento-guerra-servio-otomana-1876-1878",
+          "entity_title": "Guerra Sérvio-Otomana (1876–1878)",
+          "classification": "documented-fact",
+          "text": "Em 30 de junho de 1876, a Sérvia, em conjunto com Montenegro, proclamou sua independência e declarou guerra ao Império Otomano."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-007",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Em qual evento revolucionário de 1848 participou Lorenz von Stein, defensor da combinação entre Estado liberal e bem-estar social?",
+      "gold_unit_ids": [
+        "claim-wiki-person-lorenz-von-stein-001",
+        "claim-wiki-acontecimento-revolucoes-de-1848-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-person-lorenz-von-stein-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-person-lorenz-von-stein-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-person-lorenz-von-stein-001",
+          "entity_id": "person-lorenz-von-stein",
+          "entity_title": "Lorenz von Stein",
+          "classification": "attributed-thesis",
+          "text": "Defendeu a combinação de Estado liberal constitucional com Estado de bem-estar social."
+        },
+        {
+          "claim_id": "claim-wiki-acontecimento-revolucoes-de-1848-001",
+          "entity_id": "wiki-acontecimento-revolucoes-de-1848",
+          "entity_title": "Revoluções de 1848",
+          "classification": "documented-fact",
+          "text": "Muitos governos reverteram parcialmente as reformas de 1848-1849 e aumentaram a repressão e a censura."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-008",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Que revista fundada por Karl Kautsky contou com textos fundamentais de Karl Marx e Friedrich Engels?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-karl-kautsky-001",
+        "claim-wiki-topic-die-neue-zeit-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-die-neue-zeit-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-karl-kautsky-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-karl-kautsky-001",
+          "entity_id": "person-karl-kautsky",
+          "entity_title": "Karl Kautsky",
+          "classification": "attributed-thesis",
+          "text": "Sua interpretação do marxismo enfatizava a evolução histórica e a inevitabilidade do socialismo, mas também a ação política consciente de uma classe trabalhadora organizada."
+        },
+        {
+          "claim_id": "claim-wiki-topic-die-neue-zeit-001",
+          "entity_id": "wiki-topic-die-neue-zeit",
+          "entity_title": "Die Neue Zeit",
+          "classification": "documented-fact",
+          "text": "A revista contou com textos fundamentais de Karl Marx e Friedrich Engels."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-009",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Em qual organização fundada em 1938 na França se desenvolveu posteriormente a Oposição de Esquerda associada a Trótski?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-oposicao-de-esquerda-001",
+        "claim-wiki-topic-quarta-internacional-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-quarta-internacional-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-leon-trotski-003",
+        "rel-wiki-topic-oposicao-de-esquerda-004"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-oposicao-de-esquerda-001",
+          "entity_id": "wiki-topic-oposicao-de-esquerda",
+          "entity_title": "Oposição de Esquerda",
+          "classification": "attributed-thesis",
+          "text": "Preobrajenski defendia o fim da NEP e a industrialização acelerada, com coletivização do campo e planejamento centralizado."
+        },
+        {
+          "claim_id": "claim-wiki-topic-quarta-internacional-001",
+          "entity_id": "wiki-topic-quarta-internacional",
+          "entity_title": "Quarta Internacional",
+          "classification": "documented-fact",
+          "text": "A Quarta Internacional foi fundada na França em 1938 por seguidores de Trotsky que consideravam a Comintern perdida para o stalinismo."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-010",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Qual dirigente soviético sucedeu Josef Stalin e denunciou seus expurgos no Discurso Secreto de 1956?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-nikita-khrushchov-001",
+        "claim-wiki-topic-josef-stalin-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-nikita-khrushchov-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-josef-stalin-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-nikita-khrushchov-001",
+          "entity_id": "wiki-topic-nikita-khrushchov",
+          "entity_title": "Nikita Khrushchov",
+          "classification": "attributed-thesis",
+          "text": "Em 1956, no XX Congresso do Partido, denunciou os expurgos de Stalin no chamado Discurso Secreto."
+        },
+        {
+          "claim_id": "claim-wiki-topic-josef-stalin-001",
+          "entity_id": "person-joseph-stalin",
+          "entity_title": "Josef Stalin",
+          "classification": "attributed-thesis",
+          "text": "Sua interpretação do leninismo foi formalizada como marxismo-leninismo, e suas políticas ficaram conhecidas como stalinismo."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-011",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Que organização fundada por Ferdinand Lassalle atuou na política eleitoral alemã antes da fusão que originou o SPD?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-associacao-geral-dos-trabalhadores-alemaes-001",
+        "claim-wiki-topic-partido-social-democrata-da-alemanha-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-associacao-geral-dos-trabalhadores-alemaes-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-ferdinand-lassalle-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-associacao-geral-dos-trabalhadores-alemaes-001",
+          "entity_id": "wiki-topic-associacao-geral-dos-trabalhadores-alemaes",
+          "entity_title": "Associação Geral dos Trabalhadores Alemães",
+          "classification": "attributed-thesis",
+          "text": "A organização procurou defender os interesses da classe trabalhadora e o estabelecimento do socialismo pela política eleitoral com sufrágio universal."
+        },
+        {
+          "claim_id": "claim-wiki-topic-partido-social-democrata-da-alemanha-001",
+          "entity_id": "wiki-topic-partido-social-democrata-da-alemanha",
+          "entity_title": "Partido Social-Democrata da Alemanha",
+          "classification": "documented-fact",
+          "text": "O partido foi fundado em 1875 pela fusão da ADAV, de 1863, e do SDAP, de 1869."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-012",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Qual partido inglês fundado em 1834 por Robert Peel teve origem no Partido Tory?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-tory-001",
+        "claim-wiki-topic-partido-conservador-reino-unido-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-partido-conservador-reino-unido-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-partido-conservador-reino-unido-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-tory-001",
+          "entity_id": "wiki-topic-tory",
+          "entity_title": "Tory",
+          "classification": "documented-fact",
+          "text": "Considera-se que o partido foi fundado por Thomas Osborne, Conde de Danby, e Lord Chanceler de Carlos II."
+        },
+        {
+          "claim_id": "claim-wiki-topic-partido-conservador-reino-unido-001",
+          "entity_id": "wiki-topic-partido-conservador-reino-unido",
+          "entity_title": "Partido Conservador (Reino Unido)",
+          "classification": "documented-fact",
+          "text": "Robert Peel é reconhecido como fundador do Partido Conservador, que ele criou com o anúncio do Manifesto de Tamworth."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-013",
+      "split": "dev",
+      "type": "multi_hop",
+      "question": "Que livro escrito por Friedrich Engels em 1878 saiu originalmente em série num jornal alemão?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-friedrich-engels-001",
+        "claim-wiki-work-anti-duhring-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-work-anti-duhring-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-work-anti-duhring-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-friedrich-engels-001",
+          "entity_id": "person-friedrich-engels",
+          "entity_title": "Friedrich Engels",
+          "classification": "attributed-thesis",
+          "text": "Engels desempenhou papel de destaque na elaboração da teoria comunista, a partir do materialismo histórico e dialético."
+        },
+        {
+          "claim_id": "claim-wiki-work-anti-duhring-001",
+          "entity_id": "work-anti-duhring",
+          "entity_title": "Anti-Dühring",
+          "classification": "documented-fact",
+          "text": "O livro foi publicado pela primeira vez em 1878, com a primeira edição saindo em série num jornal alemão."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-014",
+      "split": "test",
+      "type": "multi_hop",
+      "question": "Que jornal socialista francês foi fundado em 1904 por Jean Jaurès?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-jean-jaures-001",
+        "claim-wiki-topic-l-humanite-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-l-humanite-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-jean-jaures-002"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-jean-jaures-001",
+          "entity_id": "wiki-topic-jean-jaures",
+          "entity_title": "Jean Jaurès",
+          "classification": "documented-fact",
+          "text": "Jaurès nasceu no departamento do Tarn, filho de um negociante frustrado, e estudou no liceu Louis-le-Grand e na École Normale Supérieure, em Paris."
+        },
+        {
+          "claim_id": "claim-wiki-topic-l-humanite-001",
+          "entity_id": "wiki-topic-l-humanite",
+          "entity_title": "L'Humanité",
+          "classification": "documented-fact",
+          "text": "O jornal foi fundado em 1904 por Jean Jaurès, descrito no artigo como dirigente socialista."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-015",
+      "split": "test",
+      "type": "multi_hop",
+      "question": "Que organização política foi fundada por José Martí em abril de 1892 visando a independência de Cuba e Porto Rico?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-jose-marti-001",
+        "claim-wiki-topic-partido-revolucionario-cubano-1892-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-partido-revolucionario-cubano-1892-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-jose-marti-002"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-jose-marti-001",
+          "entity_id": "wiki-topic-jose-marti",
+          "entity_title": "José Martí",
+          "classification": "documented-fact",
+          "text": "Martí era filho de Mariano Martí, natural de Valência, e de Leonor Pérez Cabrera, natural de Tenerife, nas Ilhas Canárias."
+        },
+        {
+          "claim_id": "claim-wiki-topic-partido-revolucionario-cubano-1892-001",
+          "entity_id": "wiki-topic-partido-revolucionario-cubano-1892",
+          "entity_title": "Partido Revolucionário Cubano (1892)",
+          "classification": "documented-fact",
+          "text": "O partido foi criado por José Martí em 10 de abril de 1892, com o objetivo de organizar a independência de Cuba e, tanto quanto possível, de Porto Rico."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-016",
+      "split": "test",
+      "type": "multi_hop",
+      "question": "Qual obra de John Rawls publicada em 1971 aborda os princípios de justiça sob o véu da ignorância?",
+      "gold_unit_ids": [
+        "claim-wiki-person-john-rawls-002",
+        "claim-wiki-obra-a-theory-of-justice-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-obra-a-theory-of-justice-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-person-john-rawls-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-person-john-rawls-002",
+          "entity_id": "person-john-rawls",
+          "entity_title": "John Rawls",
+          "classification": "attributed-thesis",
+          "text": "Sob o véu da ignorância, os indivíduos não têm informação sobre sua riqueza."
+        },
+        {
+          "claim_id": "claim-wiki-obra-a-theory-of-justice-001",
+          "entity_id": "wiki-obra-a-theory-of-justice",
+          "entity_title": "A Theory of Justice",
+          "classification": "documented-fact",
+          "text": "A obra foi publicada originalmente em 1971 e revisada em 1975, para edições estrangeiras, e em 1999."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-017",
+      "split": "test",
+      "type": "multi_hop",
+      "question": "Qual corrente russa derivada do POSDR defendia que a sociedade chegaria ao socialismo por desenvolvimento natural?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-partido-operario-social-democrata-russo-001",
+        "claim-wiki-topic-menchevique-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-menchevique-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-menchevique-001"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-partido-operario-social-democrata-russo-001",
+          "entity_id": "wiki-topic-partido-operario-social-democrata-russo",
+          "entity_title": "Partido Operário Social-Democrata Russo",
+          "classification": "documented-fact",
+          "text": "O POSDR foi um partido socialista russo fundado em 1898 em Minsk para unir as organizações revolucionárias do país."
+        },
+        {
+          "claim_id": "claim-wiki-topic-menchevique-001",
+          "entity_id": "wiki-topic-menchevique",
+          "entity_title": "Menchevique",
+          "classification": "attributed-thesis",
+          "text": "Os mencheviques defendiam que a sociedade chegaria ao socialismo por meio de um desenvolvimento natural."
+        }
+      ]
+    },
+    {
+      "id": "q-mh-018",
+      "split": "test",
+      "type": "multi_hop",
+      "question": "Que filósofo da Antiguidade influenciou o ordoliberalismo e é creditado pelo primeiro estudo sistemático da lógica?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-aristoteles-001",
+        "claim-wiki-topic-ordoliberalismo-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-aristoteles-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [
+        "rel-wiki-topic-ordoliberalismo-002"
+      ],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-aristoteles-001",
+          "entity_id": "wiki-topic-aristoteles",
+          "entity_title": "Aristóteles",
+          "classification": "documented-fact",
+          "text": "Aristóteles é creditado com o primeiro estudo sistemático conhecido da lógica."
+        },
+        {
+          "claim_id": "claim-wiki-topic-ordoliberalismo-002",
+          "entity_id": "ideology-ordoliberalism",
+          "entity_title": "Ordoliberalismo",
+          "classification": "attributed-thesis",
+          "text": "A teoria sustenta que o Estado deve criar um ambiente jurídico adequado para a economia e manter um nível saudável de competição."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-001",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Qual é a diferença entre a definição de medida de valor de troca em Adam Smith e a distinção feita por Marx entre trabalho contido e trabalho comandado?",
+      "gold_unit_ids": [
+        "claim-work-wealth-of-nations",
+        "claim-marx-critica-smith"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-marx-critica-smith",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-work-wealth-of-nations",
+          "entity_id": "work-wealth-of-nations",
+          "entity_title": "A riqueza das nações",
+          "classification": "attributed-thesis",
+          "text": "Smith propõe o trabalho que uma mercadoria pode comandar como medida de seu valor de troca para quem a possui."
+        },
+        {
+          "claim_id": "claim-marx-critica-smith",
+          "entity_id": "work-wealth-of-nations",
+          "entity_title": "A riqueza das nações",
+          "classification": "attributed-thesis",
+          "text": "Em Teorias da mais-valia, Marx examina definições de valor atribuídas a Smith, distinguindo trabalho contido e trabalho comandado."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-002",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Como a social-democracia se distingue do marxismo ortodoxo quanto ao papel da ação política e do determinismo econômico?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-social-democracia-001",
+        "claim-wiki-topic-karl-kautsky-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-social-democracia-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-social-democracia-001",
+          "entity_id": "wiki-topic-social-democracia",
+          "entity_title": "Social-democracia",
+          "classification": "attributed-thesis",
+          "text": "A social-democracia se distingue do marxismo ortodoxo pela crença na supremacia da ação política sobre a ação econômica ou o determinismo econômico-socioindustrial."
+        },
+        {
+          "claim_id": "claim-wiki-topic-karl-kautsky-001",
+          "entity_id": "person-karl-kautsky",
+          "entity_title": "Karl Kautsky",
+          "classification": "attributed-thesis",
+          "text": "Sua interpretação do marxismo enfatizava a evolução histórica e a inevitabilidade do socialismo, mas também a ação política consciente de uma classe trabalhadora organizada."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-003",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Como o papel do Estado no liberalismo clássico difere da concepção regulatória defendida pelo ordoliberalismo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-liberalismo-classico-003",
+        "claim-wiki-topic-ordoliberalismo-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-ordoliberalismo-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-liberalismo-classico-003",
+          "entity_id": "ideology-classical-liberalism",
+          "entity_title": "Liberalismo clássico",
+          "classification": "attributed-thesis",
+          "text": "Adam Smith expôs a teoria de que o mercado se autorregula naturalmente pela agregação das decisões individuais, e que o governo deveria limitar-se à defesa, às obras públicas e à administração da justiça."
+        },
+        {
+          "claim_id": "claim-wiki-topic-ordoliberalismo-002",
+          "entity_id": "ideology-ordoliberalism",
+          "entity_title": "Ordoliberalismo",
+          "classification": "attributed-thesis",
+          "text": "A teoria sustenta que o Estado deve criar um ambiente jurídico adequado para a economia e manter um nível saudável de competição."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-004",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Em que o reformismo de Eduard Bernstein divergiu da estratégia revolucionária defendida pelo trotskismo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-eduard-bernstein-001",
+        "claim-wiki-topic-trotskismo-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-eduard-bernstein-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-eduard-bernstein-001",
+          "entity_id": "person-eduard-bernstein",
+          "entity_title": "Eduard Bernstein",
+          "classification": "attributed-thesis",
+          "text": "Bernstein defendeu que o socialismo poderia ser alcançado por meios pacíficos, por meio de reforma legislativa em sociedades democráticas."
+        },
+        {
+          "claim_id": "claim-wiki-topic-trotskismo-002",
+          "entity_id": "ideology-trotskyism",
+          "entity_title": "Trotskismo",
+          "classification": "attributed-thesis",
+          "text": "O trotskismo apoia a estratégia da revolução permanente, em oposição à teoria das duas etapas de seus adversários."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-005",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Como a posição de Bakunin sobre a ditadura do proletariado contrastava com a dos seguidores de Karl Marx?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-mikhail-bakunin-001",
+        "claim-wiki-topic-karl-marx-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-mikhail-bakunin-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-mikhail-bakunin-001",
+          "entity_id": "wiki-topic-mikhail-bakunin",
+          "entity_title": "Mikhail Bakunin",
+          "classification": "attributed-thesis",
+          "text": "Bakunin criticava a ideia de ditadura do proletariado defendida pelos seguidores de Marx."
+        },
+        {
+          "claim_id": "claim-wiki-topic-karl-marx-002",
+          "entity_id": "person-karl-marx",
+          "entity_title": "Karl Marx",
+          "classification": "attributed-thesis",
+          "text": "Segundo as teorias de Marx, as sociedades humanas se desenvolvem através da luta de classes, entre a burguesia, que controla os meios de produção, e o proletariado."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-006",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Qual a diferença entre a defesa do anarcocapitalismo por Rothbard quanto à propriedade privada e a visão de Proudhon sobre bens de capital?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-pierre-joseph-proudhon-001",
+        "claim-wiki-topic-anarcocapitalismo-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-pierre-joseph-proudhon-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-pierre-joseph-proudhon-001",
+          "entity_id": "wiki-topic-pierre-joseph-proudhon",
+          "entity_title": "Pierre-Joseph Proudhon",
+          "classification": "attributed-thesis",
+          "text": "Proudhon defendeu a propriedade dos trabalhadores em associações e se opôs à propriedade estatal dos bens de capital."
+        },
+        {
+          "claim_id": "claim-wiki-topic-anarcocapitalismo-002",
+          "entity_id": "wiki-topic-anarcocapitalismo",
+          "entity_title": "Anarcocapitalismo",
+          "classification": "attributed-thesis",
+          "text": "Seus defensores sustentam que funções tradicionalmente públicas, como tribunais, policiamento, defesa, emissão monetária e regulação de contratos, poderiam ser oferecidas por agentes privados em concorrência."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-007",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Em que diferem as datas de fundação e perfis estatutários iniciais do PT e do PDT no Brasil pós-1979?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-partido-dos-trabalhadores-001",
+        "claim-wiki-topic-partido-democratico-trabalhista-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-partido-democratico-trabalhista-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-partido-dos-trabalhadores-001",
+          "entity_id": "wiki-topic-partido-dos-trabalhadores",
+          "entity_title": "Partido dos Trabalhadores",
+          "classification": "documented-fact",
+          "text": "O partido foi fundado em 10 de fevereiro de 1980 no Colégio Sion, em São Paulo, por um grupo heterogêneo de militantes, sindicalistas, intelectuais, artistas e católicos."
+        },
+        {
+          "claim_id": "claim-wiki-topic-partido-democratico-trabalhista-001",
+          "entity_id": "wiki-topic-partido-democratico-trabalhista",
+          "entity_title": "Partido Democrático Trabalhista",
+          "classification": "attributed-thesis",
+          "text": "O partido declarou em seu estatuto a defesa de uma sociedade democrática e socialista, sob a inspiração do nacionalismo e do trabalhismo."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-008",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Como o acervo caracteriza o regime da Ditadura Militar instaurada em 1964 em contraste com o caráter dirigente da Constituição de 1988?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-ditadura-militar-brasileira-001",
+        "claim-wiki-topic-constituicao-brasileira-de-1988-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-ditadura-militar-brasileira-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-ditadura-militar-brasileira-001",
+          "entity_id": "wiki-topic-ditadura-militar-brasileira",
+          "entity_title": "Ditadura militar brasileira",
+          "classification": "documented-fact",
+          "text": "O regime foi instaurado pelo golpe de Estado de 1964, que depôs o governo João Goulart, eleito democraticamente."
+        },
+        {
+          "claim_id": "claim-wiki-topic-constituicao-brasileira-de-1988-001",
+          "entity_id": "wiki-topic-constituicao-brasileira-de-1988",
+          "entity_title": "Constituição brasileira de 1988",
+          "classification": "attributed-thesis",
+          "text": "Segundo o artigo, a Constituição de 1988 é um exemplo de Constituição dirigente, pois consagra inúmeras normas programáticas."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-009",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Em que divergem a concepção de soberania popular direta de Rousseau e o governo baseado no consentimento com direito de revolta de Locke?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-jean-jacques-rousseau-001",
+        "claim-wiki-topic-john-locke-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-john-locke-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-jean-jacques-rousseau-001",
+          "entity_id": "wiki-topic-jean-jacques-rousseau",
+          "entity_title": "Jean-Jacques Rousseau",
+          "classification": "attributed-thesis",
+          "text": "Atribuiu a soberania ao povo e defendeu a participação direta dos cidadãos na legislação, embora preferisse um governo executivo exercido por uma aristocracia eleita."
+        },
+        {
+          "claim_id": "claim-wiki-topic-john-locke-002",
+          "entity_id": "person-john-locke",
+          "entity_title": "John Locke",
+          "classification": "attributed-thesis",
+          "text": "Nos Dois Tratados sobre o Governo, Locke defendeu um governo baseado no consentimento dos governados e o direito de revolta contra um governo tirânico que perdeu o consentimento."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-010",
+      "split": "dev",
+      "type": "comparativa",
+      "question": "Como o socialismo liberal compatibiliza livre mercado e monopólios em comparação com o receituário de privatização e austeridade do neoliberalismo?",
+      "gold_unit_ids": [
+        "claim-wiki-ideology-liberal-socialism-001",
+        "claim-wiki-topic-neoliberalismo-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-neoliberalismo-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-ideology-liberal-socialism-001",
+          "entity_id": "ideology-liberal-socialism",
+          "entity_title": "Socialismo liberal",
+          "classification": "attributed-thesis",
+          "text": "O socialismo liberal favorece uma economia de livre mercado, mas considera os monopólios legais e artificiais culpa do capitalismo e opõe-se ao laissez-faire do liberalismo econômico."
+        },
+        {
+          "claim_id": "claim-wiki-topic-neoliberalismo-003",
+          "entity_id": "ideology-neoliberalism",
+          "entity_title": "Neoliberalismo",
+          "classification": "attributed-thesis",
+          "text": "Políticas defendidas por seus defensores incluem privatização, austeridade fiscal, desregulamentação, livre comércio e redução da despesa pública."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-011",
+      "split": "test",
+      "type": "comparativa",
+      "question": "Como o uso dos termos socialismo e comunismo passou a ser distinguido após a Revolução Russa em contraste com a definição do Manifesto de 1848?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-comunismo-001",
+        "claim-wiki-topic-socialismo-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-socialismo-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-comunismo-001",
+          "entity_id": "ideology-communism",
+          "entity_title": "Comunismo",
+          "classification": "documented-fact",
+          "text": "Em 1848, Marx e Engels ofereceram uma nova definição de comunismo e popularizaram o termo no Manifesto Comunista."
+        },
+        {
+          "claim_id": "claim-wiki-topic-socialismo-002",
+          "entity_id": "ideology-socialism",
+          "entity_title": "Socialismo",
+          "classification": "documented-fact",
+          "text": "Após a Revolução Russa, o termo socialismo passou a ser distinguido de comunismo, que o Partido Operário Social-Democrata Russo adotou ao se renomear em 1918."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-012",
+      "split": "test",
+      "type": "comparativa",
+      "question": "Como o leninismo é diferenciado pelo acervo da formalização posterior do marxismo-leninismo sob Stálin?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-leninismo-001",
+        "claim-wiki-topic-marxismo-leninismo-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-marxismo-leninismo-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-leninismo-001",
+          "entity_id": "ideology-leninism",
+          "entity_title": "Leninismo",
+          "classification": "documented-fact",
+          "text": "O leninismo é apresentado como uma síntese pragmática das interpretações de Lenin sobre o marxismo, aplicada às condições da sociedade agrária do Império Russo."
+        },
+        {
+          "claim_id": "claim-wiki-topic-marxismo-leninismo-001",
+          "entity_id": "ideology-marxism-leninism",
+          "entity_title": "Marxismo-leninismo",
+          "classification": "documented-fact",
+          "text": "O termo foi formulado apenas no período da ascensão de Stálin ao poder após a morte de Lenin, segundo o artigo."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-013",
+      "split": "test",
+      "type": "comparativa",
+      "question": "Em que diferem a visão utilitarista ligada a John Stuart Mill e o pluralismo de valores defendido por Isaiah Berlin?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-john-stuart-mill-001",
+        "claim-wiki-topic-isaiah-berlin-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "attributed-thesis",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-isaiah-berlin-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-john-stuart-mill-001",
+          "entity_id": "person-john-stuart-mill",
+          "entity_title": "John Stuart Mill",
+          "classification": "attributed-thesis",
+          "text": "Defendeu o utilitarismo, teoria ética proposta inicialmente por seu padrinho, Jeremy Bentham."
+        },
+        {
+          "claim_id": "claim-wiki-topic-isaiah-berlin-001",
+          "entity_id": "person-isaiah-berlin",
+          "entity_title": "Isaiah Berlin",
+          "classification": "attributed-thesis",
+          "text": "Segundo Berlin, os valores produzidos pelos homens não são conciliáveis numa única hierarquia, e a tentativa de estabelecer um absoluto implica conflitos e tiranias."
+        }
+      ]
+    },
+    {
+      "id": "q-cmp-014",
+      "split": "test",
+      "type": "comparativa",
+      "question": "Como os regimes do Estado Novo em 1937 sob Getúlio Vargas e a Revolução Francesa de 1789 são datados nos eventos centrais do acervo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-getulio-vargas-002",
+        "claim-wiki-topic-revolucao-francesa-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "documented-fact",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-getulio-vargas-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-getulio-vargas-002",
+          "entity_id": "wiki-topic-getulio-vargas",
+          "entity_title": "Getúlio Vargas",
+          "classification": "documented-fact",
+          "text": "Em 1937 instaurou o Estado Novo por meio de um autogolpe e presidiu o país como ditador até 1945."
+        },
+        {
+          "claim_id": "claim-wiki-topic-revolucao-francesa-001",
+          "entity_id": "event-french-revolution",
+          "entity_title": "Revolução Francesa",
+          "classification": "documented-fact",
+          "text": "Início da revolução com a convocação dos Estados Gerais em maio. (1789)."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-001",
+      "split": "dev",
+      "type": "contestada",
+      "question": "A influência imediata de A Riqueza das Nações nas decisões de governo é consenso historiográfico?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-adam-smith-011"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-adam-smith-011",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-adam-smith-011",
+          "entity_id": "person-adam-smith",
+          "entity_title": "Adam Smith",
+          "classification": "contested-claim",
+          "text": "A influência imediata de A Riqueza das Nações nas decisões de governo é debatida pelos historiadores."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-002",
+      "split": "dev",
+      "type": "contestada",
+      "question": "Existe consenso entre historiadores econômicos de que o padrão de vida da maioria cresceu durante a Revolução Industrial?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-revolucao-industrial-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-revolucao-industrial-002",
+      "reused_from_gold_set": true,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-revolucao-industrial-002",
+          "entity_id": "wiki-topic-revolucao-industrial",
+          "entity_title": "Revolução Industrial",
+          "classification": "contested-claim",
+          "text": "Há divergência sobre se os padrões de vida da maioria da população cresceram durante o período ou apenas no final do século XIX e XX."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-003",
+      "split": "dev",
+      "type": "contestada",
+      "question": "Há consenso historiográfico sobre se os Dois Tratados de John Locke foram escritos para defender a Revolução Gloriosa?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-john-locke-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-john-locke-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-john-locke-003",
+          "entity_id": "person-john-locke",
+          "entity_title": "John Locke",
+          "classification": "contested-claim",
+          "text": "Os historiadores discutem se os Dois Tratados foram escritos para defender a Revolução Gloriosa ou se a obra foi composta bem antes disso."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-004",
+      "split": "dev",
+      "type": "contestada",
+      "question": "O anarcocapitalismo é unanimemente reconhecido pela tradição anarquista como parte do anarquismo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-anarcocapitalismo-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-anarcocapitalismo-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-anarcocapitalismo-003",
+          "entity_id": "wiki-topic-anarcocapitalismo",
+          "entity_title": "Anarcocapitalismo",
+          "classification": "contested-claim",
+          "text": "A classificação do anarcocapitalismo é disputada: grande parte da tradição anarquista não o reconhece como forma de anarquismo por causa da defesa da propriedade privada capitalista e das relações de mercado."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-005",
+      "split": "dev",
+      "type": "contestada",
+      "question": "Como o acervo registra a controvérsia em torno da passagem do leninismo para o stalinismo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-leninismo-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-leninismo-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-leninismo-003",
+          "entity_id": "ideology-leninism",
+          "entity_title": "Leninismo",
+          "classification": "contested-claim",
+          "text": "Robert Service afirma que a passagem do leninismo para o stalinismo não foi inevitável."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-006",
+      "split": "dev",
+      "type": "contestada",
+      "question": "A fidelidade de partidos e revolucionários à obra de Karl Marx é consensual ou objeto de disputa?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-marxismo-004"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-marxismo-004",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-marxismo-004",
+          "entity_id": "ideology-marxism",
+          "entity_title": "Marxismo",
+          "classification": "contested-claim",
+          "text": "O artigo registra que a fidelidade de revolucionários e partidos à obra de Marx é altamente contestada."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-007",
+      "split": "dev",
+      "type": "contestada",
+      "question": "Qual controvérsia o acervo aponta sobre os efeitos da defesa da revolução violenta em Mikhail Bakunin?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-mikhail-bakunin-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-mikhail-bakunin-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-mikhail-bakunin-002",
+          "entity_id": "wiki-topic-mikhail-bakunin",
+          "entity_title": "Mikhail Bakunin",
+          "classification": "contested-claim",
+          "text": "Críticos atribuem à defesa da revolução violenta de Bakunin efeitos como o niilismo na Rússia, enquanto seus defensores contestam essa leitura."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-008",
+      "split": "dev",
+      "type": "contestada",
+      "question": "O termo 'populismo' aplicado a Getúlio Vargas na Era Vargas possui consenso entre os estudiosos?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-era-vargas-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-era-vargas-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-era-vargas-003",
+          "entity_id": "wiki-topic-era-vargas",
+          "entity_title": "Era Vargas",
+          "classification": "contested-claim",
+          "text": "O populismo atribuído a Vargas é descrito pelo artigo como tema de divergências entre estudiosos."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-009",
+      "split": "dev",
+      "type": "contestada",
+      "question": "Que críticas doutrinárias são registradas quanto à extensão e prolixidade da Constituição Brasileira de 1988?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-constituicao-brasileira-de-1988-002"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-constituicao-brasileira-de-1988-002",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-constituicao-brasileira-de-1988-002",
+          "entity_id": "wiki-topic-constituicao-brasileira-de-1988",
+          "entity_title": "Constituição brasileira de 1988",
+          "classification": "contested-claim",
+          "text": "A Constituição é criticada na doutrina por ser muito extensa, prolixa e analítica, o que obrigou a emendas frequentes."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-010",
+      "split": "dev",
+      "type": "contestada",
+      "question": "Qual tensão sobre o Estado de bem-estar social é formulada por Hayek e por críticos do modelo nórdico?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-estado-de-bem-estar-social-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-estado-de-bem-estar-social-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-estado-de-bem-estar-social-003",
+          "entity_id": "wiki-topic-estado-de-bem-estar-social",
+          "entity_title": "Estado de bem-estar social",
+          "classification": "contested-claim",
+          "text": "Hayek afirmava que o poder concentrado e coercitivo do Estado previdenciário assemelhava-se a uma economia planificada, ameaçando a liberdade individual."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-011",
+      "split": "dev",
+      "type": "contestada",
+      "question": "Como o texto contrapõe a justificativa oficial da CIA para a Operação Condor e os questionamentos registrados?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-operacao-condor-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-operacao-condor-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-operacao-condor-003",
+          "entity_id": "wiki-topic-operacao-condor",
+          "entity_title": "Operação Condor",
+          "classification": "contested-claim",
+          "text": "A CIA descreveu a operação como um esforço cooperativo de serviços de inteligência para combater o terrorismo e a subversão, enquanto o texto questiona essa justificativa ao afirmar que os guerrilheiros não eram substanciais o bastante para ameaçar a segurança nacional."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-012",
+      "split": "test",
+      "type": "contestada",
+      "question": "Há unanimidade sobre o significado e alcance cronológico da expressão 'liberalismo clássico'?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-liberalismo-classico-005"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-liberalismo-classico-005",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-liberalismo-classico-005",
+          "entity_id": "ideology-classical-liberalism",
+          "entity_title": "Liberalismo clássico",
+          "classification": "contested-claim",
+          "text": "Há divergência sobre o sentido da expressão: alguns a usam para todas as formas de liberalismo anteriores ao século XX, outros para a primazia da liberdade individual e o Estado mínimo."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-013",
+      "split": "test",
+      "type": "contestada",
+      "question": "A avaliação sobre os efeitos da desigualdade ligados ao neoliberalismo ou ao texto do FMI de 2016 aparece como tema consensual?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-neoliberalismo-005"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-neoliberalismo-005",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-neoliberalismo-005",
+          "entity_id": "ideology-neoliberalism",
+          "entity_title": "Neoliberalismo",
+          "classification": "contested-claim",
+          "text": "O artigo registra que o Fundo Monetário Internacional publicou, em 2016, um texto admitindo que algumas políticas neoliberais poderiam aumentar a desigualdade e prejudicar o crescimento sustentado."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-014",
+      "split": "test",
+      "type": "contestada",
+      "question": "Como historiadores e críticos divergem sobre o papel de Lenin e Trótski na execução da Revolução de Outubro?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-revolucao-russa-de-1917-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-revolucao-russa-de-1917-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-revolucao-russa-de-1917-001",
+          "entity_id": "event-russian-revolution",
+          "entity_title": "Revolução Russa de 1917",
+          "classification": "contested-claim",
+          "text": "Historiadores divergem sobre o papel de Lenin e de Trótski na execução da Revolução de Outubro; há quem atribua a direção da insurreição a Trótski."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-015",
+      "split": "test",
+      "type": "contestada",
+      "question": "Os socialistas concordam sobre se o governo existente é o veículo adequado para promover a transformação social?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-socialismo-001"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-socialismo-001",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-socialismo-001",
+          "entity_id": "ideology-socialism",
+          "entity_title": "Socialismo",
+          "classification": "contested-claim",
+          "text": "Os socialistas discordam sobre se o governo, particularmente o governo existente, é o veículo correto para a mudança."
+        }
+      ]
+    },
+    {
+      "id": "q-cnt-016",
+      "split": "test",
+      "type": "contestada",
+      "question": "O revisionismo de Eduard Bernstein recebe avaliação uniforme na história do pensamento socialista?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-eduard-bernstein-003"
+      ],
+      "must_refuse": false,
+      "expected_epistemic": "contested-claim",
+      "human_ok": null,
+      "origin": "gerada-de:claim-wiki-topic-eduard-bernstein-003",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-eduard-bernstein-003",
+          "entity_id": "person-eduard-bernstein",
+          "entity_title": "Eduard Bernstein",
+          "classification": "contested-claim",
+          "text": "A avaliação do revisionismo de Bernstein tem oscilado entre a aprovação entusiástica e a rejeição categórica."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-001",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "O acervo documenta alguma relação de influência direta entre Immanuel Kant e Adam Smith além de um link de navegação?",
+      "gold_unit_ids": [
+        "claim-wiki-person-immanuel-kant-001",
+        "claim-person-adam-smith"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:liberalism-discovery-person-immanuel-kant-person-adam-smith",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "liberalism-discovery-person-immanuel-kant-person-adam-smith",
+      "entity_ids": [
+        "person-immanuel-kant",
+        "person-adam-smith"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-person-immanuel-kant-001",
+          "entity_id": "person-immanuel-kant",
+          "entity_title": "Immanuel Kant",
+          "classification": "documented-fact",
+          "text": "Kant nasceu em 1724 em Königsberg, em uma família luterana de origem alemã, na Prússia Oriental."
+        },
+        {
+          "claim_id": "claim-person-adam-smith",
+          "entity_id": "person-adam-smith",
+          "entity_title": "Adam Smith",
+          "classification": "documented-fact",
+          "text": "Filósofo escocês e autor de A riqueza das nações, publicada em 1776."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-002",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "Há alguma relação historiográfica editorial documentando influência direta de John Rawls sobre a história constitucional do Brasil?",
+      "gold_unit_ids": [
+        "claim-wiki-person-john-rawls-001",
+        "claim-country-brazil"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:liberalism-discovery-person-john-rawls-country-brazil",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "liberalism-discovery-person-john-rawls-country-brazil",
+      "entity_ids": [
+        "person-john-rawls",
+        "country-brazil"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-person-john-rawls-001",
+          "entity_id": "person-john-rawls",
+          "entity_title": "John Rawls",
+          "classification": "documented-fact",
+          "text": "Foi professor de filosofia política na Universidade de Harvard."
+        },
+        {
+          "claim_id": "claim-country-brazil",
+          "entity_id": "country-brazil",
+          "entity_title": "Brasil",
+          "classification": "documented-fact",
+          "text": "A Constituição de 1988 identifica o Estado brasileiro como República Federativa do Brasil."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-003",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "O acervo registra uma relação editorial de filiação ou influência entre Isaiah Berlin e o Comunismo além da conexão de navegação?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-isaiah-berlin-001",
+        "claim-wiki-topic-comunismo-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:liberalism-discovery-person-isaiah-berlin-ideology-communism",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "liberalism-discovery-person-isaiah-berlin-ideology-communism",
+      "entity_ids": [
+        "person-isaiah-berlin",
+        "ideology-communism"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-isaiah-berlin-001",
+          "entity_id": "person-isaiah-berlin",
+          "entity_title": "Isaiah Berlin",
+          "classification": "attributed-thesis",
+          "text": "Segundo Berlin, os valores produzidos pelos homens não são conciliáveis numa única hierarquia, e a tentativa de estabelecer um absoluto implica conflitos e tiranias."
+        },
+        {
+          "claim_id": "claim-wiki-topic-comunismo-001",
+          "entity_id": "ideology-communism",
+          "entity_title": "Comunismo",
+          "classification": "documented-fact",
+          "text": "Em 1848, Marx e Engels ofereceram uma nova definição de comunismo e popularizaram o termo no Manifesto Comunista."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-004",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "Existe evidência textual no acervo de que Mao Tsé-Tung foi influenciado diretamente por Adam Smith?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-mao-tse-tung-001",
+        "claim-person-adam-smith"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:marxism-discovery-person-mao-zedong-person-adam-smith",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "marxism-discovery-person-mao-zedong-person-adam-smith",
+      "entity_ids": [
+        "person-mao-zedong",
+        "person-adam-smith"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-mao-tse-tung-001",
+          "entity_id": "person-mao-zedong",
+          "entity_title": "Mao Tsé-Tung",
+          "classification": "documented-fact",
+          "text": "O artigo indica que Mao nasceu em 1893 na aldeia de Shaoshan, na província de Hunan."
+        },
+        {
+          "claim_id": "claim-person-adam-smith",
+          "entity_id": "person-adam-smith",
+          "entity_title": "Adam Smith",
+          "classification": "documented-fact",
+          "text": "Filósofo escocês e autor de A riqueza das nações, publicada em 1776."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-005",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "Os documentos do acervo sustentam afirmação de influência direta entre Karl Kautsky e Antonio Gramsci?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-karl-kautsky-001",
+        "claim-wiki-topic-antonio-gramsci-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:marxism-discovery-person-karl-kautsky-person-antonio-gramsci",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "marxism-discovery-person-karl-kautsky-person-antonio-gramsci",
+      "entity_ids": [
+        "person-karl-kautsky",
+        "person-antonio-gramsci"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-karl-kautsky-001",
+          "entity_id": "person-karl-kautsky",
+          "entity_title": "Karl Kautsky",
+          "classification": "attributed-thesis",
+          "text": "Sua interpretação do marxismo enfatizava a evolução histórica e a inevitabilidade do socialismo, mas também a ação política consciente de uma classe trabalhadora organizada."
+        },
+        {
+          "claim_id": "claim-wiki-topic-antonio-gramsci-001",
+          "entity_id": "person-antonio-gramsci",
+          "entity_title": "Antonio Gramsci",
+          "classification": "documented-fact",
+          "text": "Gramsci nasceu na Sardenha e era descendente, por linha paterna, de calabreses da comunidade arbëreshë de Plataci."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-006",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "Há alguma relação editorial documentando influência direta ou debate entre Eduard Bernstein e Friedrich Engels no acervo?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-eduard-bernstein-001",
+        "claim-wiki-topic-friedrich-engels-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:marxism-discovery-person-eduard-bernstein-person-friedrich-engels",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "marxism-discovery-person-eduard-bernstein-person-friedrich-engels",
+      "entity_ids": [
+        "person-eduard-bernstein",
+        "person-friedrich-engels"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-eduard-bernstein-001",
+          "entity_id": "person-eduard-bernstein",
+          "entity_title": "Eduard Bernstein",
+          "classification": "attributed-thesis",
+          "text": "Bernstein defendeu que o socialismo poderia ser alcançado por meios pacíficos, por meio de reforma legislativa em sociedades democráticas."
+        },
+        {
+          "claim_id": "claim-wiki-topic-friedrich-engels-001",
+          "entity_id": "person-friedrich-engels",
+          "entity_title": "Friedrich Engels",
+          "classification": "attributed-thesis",
+          "text": "Engels desempenhou papel de destaque na elaboração da teoria comunista, a partir do materialismo histórico e dialético."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-007",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "O acervo documenta influência histórica direta de Montesquieu sobre a criação do Liberalismo verde?",
+      "gold_unit_ids": [
+        "claim-wiki-ideology-green-liberalism-005",
+        "claim-wiki-topic-montesquieu-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:liberalism-discovery-ideology-green-liberalism-person-montesquieu",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "liberalism-discovery-ideology-green-liberalism-person-montesquieu",
+      "entity_ids": [
+        "ideology-green-liberalism",
+        "person-montesquieu"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-ideology-green-liberalism-005",
+          "entity_id": "ideology-green-liberalism",
+          "entity_title": "Liberalismo verde",
+          "classification": "documented-fact",
+          "text": "O termo liberalismo verde foi introduzido em estudos acadêmicos pelo filósofo político Marcel Wissenburg."
+        },
+        {
+          "claim_id": "claim-wiki-topic-montesquieu-001",
+          "entity_id": "person-montesquieu",
+          "entity_title": "Montesquieu",
+          "classification": "attributed-thesis",
+          "text": "Para ele, o poder deve ser limitado pelo próprio poder, o que justifica a separação entre os poderes."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-008",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "Existe evidência documentada no acervo de relação causal ou colaboração entre Anton Pannekoek e Antonio Gramsci?",
+      "gold_unit_ids": [
+        "claim-wiki-person-anton-pannekoek-001",
+        "claim-wiki-topic-antonio-gramsci-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:marxism-discovery-person-anton-pannekoek-person-antonio-gramsci",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "marxism-discovery-person-anton-pannekoek-person-antonio-gramsci",
+      "entity_ids": [
+        "person-anton-pannekoek",
+        "person-antonio-gramsci"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-person-anton-pannekoek-001",
+          "entity_id": "person-anton-pannekoek",
+          "entity_title": "Anton Pannekoek",
+          "classification": "attributed-thesis",
+          "text": "Segundo o texto, os conselhos operários são os órgãos do processo revolucionário e da nova sociedade fundada na autogestão."
+        },
+        {
+          "claim_id": "claim-wiki-topic-antonio-gramsci-001",
+          "entity_id": "person-antonio-gramsci",
+          "entity_title": "Antonio Gramsci",
+          "classification": "documented-fact",
+          "text": "Gramsci nasceu na Sardenha e era descendente, por linha paterna, de calabreses da comunidade arbëreshë de Plataci."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-009",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "O acervo apresenta afirmações históricas relacionando diretamente o Ordoliberalismo à filosofia de Immanuel Kant?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-ordoliberalismo-001",
+        "claim-wiki-person-immanuel-kant-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:liberalism-discovery-ideology-ordoliberalism-person-immanuel-kant",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "liberalism-discovery-ideology-ordoliberalism-person-immanuel-kant",
+      "entity_ids": [
+        "ideology-ordoliberalism",
+        "person-immanuel-kant"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-ordoliberalismo-001",
+          "entity_id": "ideology-ordoliberalism",
+          "entity_title": "Ordoliberalismo",
+          "classification": "documented-fact",
+          "text": "O termo ordoliberalismo foi cunhado em 1950 pelo economista Hero Moeller, e se refere ao periódico acadêmico ORDO."
+        },
+        {
+          "claim_id": "claim-wiki-person-immanuel-kant-001",
+          "entity_id": "person-immanuel-kant",
+          "entity_title": "Immanuel Kant",
+          "classification": "documented-fact",
+          "text": "Kant nasceu em 1724 em Königsberg, em uma família luterana de origem alemã, na Prússia Oriental."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-010",
+      "split": "dev",
+      "type": "so_link_de_descoberta",
+      "question": "Há relação historiográfica documentada no acervo afirmando atuação direta de Antonio Gramsci na Revolução Russa de 1917?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-revolucao-russa-de-1917-001",
+        "claim-wiki-topic-antonio-gramsci-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:marxism-discovery-event-russian-revolution-person-antonio-gramsci",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "marxism-discovery-event-russian-revolution-person-antonio-gramsci",
+      "entity_ids": [
+        "event-russian-revolution",
+        "person-antonio-gramsci"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-revolucao-russa-de-1917-001",
+          "entity_id": "event-russian-revolution",
+          "entity_title": "Revolução Russa de 1917",
+          "classification": "contested-claim",
+          "text": "Historiadores divergem sobre o papel de Lenin e de Trótski na execução da Revolução de Outubro; há quem atribua a direção da insurreição a Trótski."
+        },
+        {
+          "claim_id": "claim-wiki-topic-antonio-gramsci-001",
+          "entity_id": "person-antonio-gramsci",
+          "entity_title": "Antonio Gramsci",
+          "classification": "documented-fact",
+          "text": "Gramsci nasceu na Sardenha e era descendente, por linha paterna, de calabreses da comunidade arbëreshë de Plataci."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-011",
+      "split": "test",
+      "type": "so_link_de_descoberta",
+      "question": "O acervo documenta alguma relação editorial de influência entre Josef Stalin e Antonio Gramsci além do link de descoberta?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-josef-stalin-001",
+        "claim-wiki-topic-antonio-gramsci-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:marxism-discovery-person-joseph-stalin-person-antonio-gramsci",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "marxism-discovery-person-joseph-stalin-person-antonio-gramsci",
+      "entity_ids": [
+        "person-joseph-stalin",
+        "person-antonio-gramsci"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-josef-stalin-001",
+          "entity_id": "person-joseph-stalin",
+          "entity_title": "Josef Stalin",
+          "classification": "attributed-thesis",
+          "text": "Sua interpretação do leninismo foi formalizada como marxismo-leninismo, e suas políticas ficaram conhecidas como stalinismo."
+        },
+        {
+          "claim_id": "claim-wiki-topic-antonio-gramsci-001",
+          "entity_id": "person-antonio-gramsci",
+          "entity_title": "Antonio Gramsci",
+          "classification": "documented-fact",
+          "text": "Gramsci nasceu na Sardenha e era descendente, por linha paterna, de calabreses da comunidade arbëreshë de Plataci."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-012",
+      "split": "test",
+      "type": "so_link_de_descoberta",
+      "question": "Há alguma relação historiográfica editorial no acervo ligando diretamente o Liberalismo conservador a Adam Smith?",
+      "gold_unit_ids": [
+        "claim-wiki-ideology-conservative-liberalism-001",
+        "claim-person-adam-smith"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:liberalism-discovery-ideology-conservative-liberalism-person-adam-smith",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "liberalism-discovery-ideology-conservative-liberalism-person-adam-smith",
+      "entity_ids": [
+        "ideology-conservative-liberalism",
+        "person-adam-smith"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-ideology-conservative-liberalism-001",
+          "entity_id": "ideology-conservative-liberalism",
+          "entity_title": "Liberalismo conservador",
+          "classification": "documented-fact",
+          "text": "O liberalismo conservador teria surgido na França do final do século XVIII, quando a burguesia moderada apoiou a monarquia dentro do campo liberal."
+        },
+        {
+          "claim_id": "claim-person-adam-smith",
+          "entity_id": "person-adam-smith",
+          "entity_title": "Adam Smith",
+          "classification": "documented-fact",
+          "text": "Filósofo escocês e autor de A riqueza das nações, publicada em 1776."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-013",
+      "split": "test",
+      "type": "so_link_de_descoberta",
+      "question": "O acervo registra influência editorial direta de John Stuart Mill nos escritos de Isaiah Berlin?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-isaiah-berlin-001",
+        "claim-wiki-topic-john-stuart-mill-001"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:liberalism-discovery-person-isaiah-berlin-person-john-stuart-mill",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "liberalism-discovery-person-isaiah-berlin-person-john-stuart-mill",
+      "entity_ids": [
+        "person-isaiah-berlin",
+        "person-john-stuart-mill"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-isaiah-berlin-001",
+          "entity_id": "person-isaiah-berlin",
+          "entity_title": "Isaiah Berlin",
+          "classification": "attributed-thesis",
+          "text": "Segundo Berlin, os valores produzidos pelos homens não são conciliáveis numa única hierarquia, e a tentativa de estabelecer um absoluto implica conflitos e tiranias."
+        },
+        {
+          "claim_id": "claim-wiki-topic-john-stuart-mill-001",
+          "entity_id": "person-john-stuart-mill",
+          "entity_title": "John Stuart Mill",
+          "classification": "attributed-thesis",
+          "text": "Defendeu o utilitarismo, teoria ética proposta inicialmente por seu padrinho, Jeremy Bentham."
+        }
+      ]
+    },
+    {
+      "id": "q-disc-014",
+      "split": "test",
+      "type": "so_link_de_descoberta",
+      "question": "Os documentos do acervo vinculam editorialmente o Liberalismo social diretamente às instituições do Brasil?",
+      "gold_unit_ids": [
+        "claim-wiki-topic-liberalismo-social-001",
+        "claim-country-brazil"
+      ],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "gerada-de:liberalism-discovery-ideology-social-liberalism-country-brazil",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": "liberalism-discovery-ideology-social-liberalism-country-brazil",
+      "entity_ids": [
+        "ideology-social-liberalism",
+        "country-brazil"
+      ],
+      "oov_keywords": [],
+      "gold_claims_preview": [
+        {
+          "claim_id": "claim-wiki-topic-liberalismo-social-001",
+          "entity_id": "ideology-social-liberalism",
+          "entity_title": "Liberalismo social",
+          "classification": "documented-fact",
+          "text": "O termo liberalismo social foi usado pela primeira vez em 1891 pelo economista e jornalista austro-húngaro Theodor Hertzka."
+        },
+        {
+          "claim_id": "claim-country-brazil",
+          "entity_id": "country-brazil",
+          "entity_title": "Brasil",
+          "classification": "documented-fact",
+          "text": "A Constituição de 1988 identifica o Estado brasileiro como República Federativa do Brasil."
+        }
+      ]
+    },
+    {
+      "id": "q-oov-001",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "Quais direitos sociais do artigo 123 foram inaugurados pela Constituição Mexicana de 1917 em Querétaro segundo o acervo?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "queretaro",
+        "constituicao mexicana"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-002",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "Como o acervo analisa o conceito de equilíbrio de Nash formulado por John Nash na teoria dos jogos?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "john nash",
+        "equilibrio de nash"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-003",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "O que propunha a Doutrina Drago formulada pelo chanceler Luis María Drago em 1902 sobre cobrança armada de dívidas?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "doutrina drago",
+        "luis maria drago"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-004",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "Quais dez recomendações econômicas compõem o Consenso de Washington proposto por John Williamson em 1989?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "consenso de washington",
+        "john williamson"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-005",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "Como a Carta del Lavoro italiana inspirou a estrutura sindical corporativista de outros países segundo o acervo?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "carta del lavoro"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-006",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "Como o Zollverein unificou tarifas aduaneiras entre Estados alemães no século XIX segundo o acervo?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "zollverein"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-007",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "Quais argumentos Stephanie Kelton apresenta na Teoria Monetária Moderna sobre déficits fiscais?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "teoria monetaria moderna",
+        "stephanie kelton"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-008",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "Por que o Tratado de Methuen de panos e vinhos de 1703 é citado na história econômica luso-britânica?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "methuen",
+        "panos e vinhos"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-009",
+      "split": "dev",
+      "type": "sem_resposta",
+      "question": "O que determinava a Magna Carta assinada por João Sem Terra na Inglaterra em 1215?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "magna carta",
+        "joao sem terra"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-010",
+      "split": "test",
+      "type": "sem_resposta",
+      "question": "Como surgiu a Lei das Doze Tábuas a partir dos conflitos entre patrícios e plebeus na Roma Antiga?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "lei das doze tabuas",
+        "doze tabuas"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-011",
+      "split": "test",
+      "type": "sem_resposta",
+      "question": "Quais critérios de produtividade fundiária definiu o Estatuto da Terra promulgado no Brasil em 1964?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "estatuto da terra"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-012",
+      "split": "test",
+      "type": "sem_resposta",
+      "question": "Por que o Plano Cruzado conduzido por Dilson Funaro em 1986 adotou o congelamento geral de preços?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "plano cruzado",
+        "dilson funaro"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-013",
+      "split": "test",
+      "type": "sem_resposta",
+      "question": "Como Arthur Pigou formulou a teoria do imposto pigouviano para internalizar externalidades econômicas?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "arthur pigou",
+        "imposto pigouviano"
+      ],
+      "gold_claims_preview": []
+    },
+    {
+      "id": "q-oov-014",
+      "split": "test",
+      "type": "sem_resposta",
+      "question": "Qual foi a contribuição monetária de Francisco de Vitoria e da Escola de Salamanca no século XVI?",
+      "gold_unit_ids": [],
+      "must_refuse": true,
+      "expected_epistemic": null,
+      "human_ok": null,
+      "origin": "manual",
+      "reused_from_gold_set": false,
+      "bridge_relation_ids": [],
+      "discovery_relation_id": null,
+      "entity_ids": [],
+      "oov_keywords": [
+        "escola de salamanca",
+        "francisco de vitoria"
+      ],
+      "gold_claims_preview": []
+    }
+  ]
+}

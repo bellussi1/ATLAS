@@ -1,0 +1,4601 @@
+{
+  "release": "5923d2eb4fda57c52c6e35224a1eac60e162748274b214e651ed14aab9bd0344",
+  "bundle_sha256": "0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5",
+  "dataset_questions": 100,
+  "answerable_questions": 86,
+  "default_retrieval_unit": "claim_enriched",
+  "index_telemetry": {
+    "claim_enriched": {
+      "model_name": "BAAI/bge-m3",
+      "device": "cuda",
+      "dtype": "float16",
+      "count": 11145,
+      "dim": 1024,
+      "elapsed_seconds": 36.611,
+      "items_per_second": 304.42,
+      "peak_vram_mb": 1345.21
+    },
+    "claim_raw": {
+      "model_name": "BAAI/bge-m3",
+      "device": "cuda",
+      "dtype": "float16",
+      "count": 11145,
+      "dim": 1024,
+      "elapsed_seconds": 10.6445,
+      "items_per_second": 1047.02,
+      "peak_vram_mb": 1193.31
+    },
+    "paragraph_enriched": {
+      "model_name": "BAAI/bge-m3",
+      "device": "cuda",
+      "dtype": "float16",
+      "count": 4621,
+      "dim": 1024,
+      "elapsed_seconds": 12.5848,
+      "items_per_second": 367.19,
+      "peak_vram_mb": 1377.95
+    },
+    "entity_enriched": {
+      "model_name": "BAAI/bge-m3",
+      "device": "cuda",
+      "dtype": "float16",
+      "count": 1224,
+      "dim": 1024,
+      "elapsed_seconds": 17.2369,
+      "items_per_second": 71.01,
+      "peak_vram_mb": 1287.44
+    },
+    "eval_queries": {
+      "model_name": "BAAI/bge-m3",
+      "device": "cuda",
+      "dtype": "float16",
+      "count": 100,
+      "dim": 1024,
+      "elapsed_seconds": 0.1164,
+      "items_per_second": 859.19,
+      "peak_vram_mb": 1116.48
+    },
+    "vram_allocated_after_embed_unload_mb": 1091.16
+  },
+  "rerank_telemetry": {
+    "hybrid_rerank_top20_b16": {
+      "model_name": "BAAI/bge-reranker-v2-m3",
+      "device": "cuda",
+      "dtype": "float16",
+      "batch_size": 16,
+      "max_length": 512,
+      "total_pairs": 2000,
+      "elapsed_seconds": 9.3739,
+      "pairs_per_second": 213.36,
+      "peak_vram_mb": 1159.87
+    },
+    "hybrid_rerank_top50_b16": {
+      "model_name": "BAAI/bge-reranker-v2-m3",
+      "device": "cuda",
+      "dtype": "float16",
+      "batch_size": 16,
+      "max_length": 512,
+      "total_pairs": 5000,
+      "elapsed_seconds": 21.3613,
+      "pairs_per_second": 234.07,
+      "peak_vram_mb": 1159.87
+    },
+    "hybrid_rerank_top50_b8": {
+      "model_name": "BAAI/bge-reranker-v2-m3",
+      "device": "cuda",
+      "dtype": "float16",
+      "batch_size": 8,
+      "max_length": 512,
+      "total_pairs": 5000,
+      "elapsed_seconds": 21.8578,
+      "pairs_per_second": 228.75,
+      "peak_vram_mb": 1125.51
+    },
+    "vram_allocated_after_rerank_unload_mb": 8.12
+  },
+  "systems": {
+    "lexical_current_strict": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.0,
+        "sem_resposta_mean_top1": 0.0
+      },
+      "mean_latency_ms_per_query": 12.871
+    },
+    "lexical_claims": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.6395,
+          "ci_low": 0.5581,
+          "ci_high": 0.7151,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.6744,
+          "ci_low": 0.593,
+          "ci_high": 0.7558,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.843,
+          "ci_low": 0.7791,
+          "ci_high": 0.907,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.6291,
+          "ci_low": 0.5498,
+          "ci_high": 0.7186,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.5807,
+          "ci_low": 0.5069,
+          "ci_high": 0.6567,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.8372,
+          "ci_low": 0.7674,
+          "ci_high": 0.9012,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.8488,
+          "ci_low": 0.7849,
+          "ci_high": 0.9128,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.6475,
+            "ci_low": 0.5574,
+            "ci_high": 0.7295,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.6803,
+            "ci_low": 0.5902,
+            "ci_high": 0.7705,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.8607,
+            "ci_low": 0.7867,
+            "ci_high": 0.9262,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.6216,
+            "ci_low": 0.5265,
+            "ci_high": 0.7241,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.5779,
+            "ci_low": 0.4902,
+            "ci_high": 0.6641,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.8607,
+            "ci_low": 0.7869,
+            "ci_high": 0.9262,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.8689,
+            "ci_low": 0.7951,
+            "ci_high": 0.9344,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.62,
+            "ci_low": 0.44,
+            "ci_high": 0.76,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.66,
+            "ci_low": 0.5,
+            "ci_high": 0.8,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.8,
+            "ci_low": 0.64,
+            "ci_high": 0.92,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.6473,
+            "ci_low": 0.4839,
+            "ci_high": 0.7941,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.5875,
+            "ci_low": 0.4358,
+            "ci_high": 0.7184,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.78,
+            "ci_low": 0.62,
+            "ci_high": 0.92,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.8,
+            "ci_low": 0.64,
+            "ci_high": 0.92,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.5714,
+            "ci_low": 0.3929,
+            "ci_high": 0.75,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.6429,
+            "ci_low": 0.4643,
+            "ci_high": 0.8214,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8571,
+            "ci_low": 0.6786,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.606,
+            "ci_low": 0.3952,
+            "ci_high": 0.8143,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.5194,
+            "ci_low": 0.366,
+            "ci_high": 0.6693,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8214,
+            "ci_low": 0.6429,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.8571,
+            "ci_low": 0.6786,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 0.75,
+            "ci_low": 0.5625,
+            "ci_high": 0.9375,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 0.75,
+            "ci_low": 0.5625,
+            "ci_high": 0.9375,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 0.875,
+            "ci_low": 0.6875,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.6719,
+            "ci_low": 0.4375,
+            "ci_high": 0.875,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.6914,
+            "ci_low": 0.4683,
+            "ci_high": 0.8914,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 0.875,
+            "ci_low": 0.6875,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 0.875,
+            "ci_low": 0.6875,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 0.8125,
+            "ci_low": 0.6667,
+            "ci_high": 0.9583,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 0.8125,
+            "ci_low": 0.6667,
+            "ci_high": 0.9583,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 0.9167,
+            "ci_low": 0.7917,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.7097,
+            "ci_low": 0.5514,
+            "ci_high": 0.8542,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.7287,
+            "ci_low": 0.574,
+            "ci_high": 0.8639,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 0.9167,
+            "ci_low": 0.7917,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 0.9167,
+            "ci_low": 0.7917,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.4167,
+            "ci_low": 0.3056,
+            "ci_high": 0.5278,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.4722,
+            "ci_low": 0.3611,
+            "ci_high": 0.5833,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.6944,
+            "ci_low": 0.5556,
+            "ci_high": 0.8333,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.4194,
+            "ci_low": 0.2722,
+            "ci_high": 0.5834,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.3491,
+            "ci_low": 0.2452,
+            "ci_high": 0.4579,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.6667,
+            "ci_low": 0.5,
+            "ci_high": 0.8056,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.6944,
+            "ci_low": 0.5556,
+            "ci_high": 0.8333,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.5714,
+            "ci_low": 0.5,
+            "ci_high": 0.6786,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.6429,
+            "ci_low": 0.5357,
+            "ci_high": 0.7857,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8571,
+            "ci_low": 0.75,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.7345,
+            "ci_low": 0.556,
+            "ci_high": 0.8929,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.5595,
+            "ci_low": 0.4676,
+            "ci_high": 0.6445,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 1.1952,
+        "sem_resposta_mean_top1": 0.6462
+      },
+      "mean_latency_ms_per_query": 7.087
+    },
+    "bm25_claims": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.6395,
+          "ci_low": 0.558,
+          "ci_high": 0.7209,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.7442,
+          "ci_low": 0.6743,
+          "ci_high": 0.814,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.8837,
+          "ci_low": 0.8314,
+          "ci_high": 0.9302,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.6836,
+          "ci_low": 0.5985,
+          "ci_high": 0.7647,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.646,
+          "ci_low": 0.5705,
+          "ci_high": 0.7186,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.9128,
+          "ci_low": 0.8663,
+          "ci_high": 0.9535,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.9302,
+          "ci_low": 0.8895,
+          "ci_high": 0.9651,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.6066,
+            "ci_low": 0.5082,
+            "ci_high": 0.7131,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.7295,
+            "ci_low": 0.6475,
+            "ci_high": 0.8115,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.8689,
+            "ci_low": 0.8033,
+            "ci_high": 0.9262,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.6537,
+            "ci_low": 0.5465,
+            "ci_high": 0.7538,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.6231,
+            "ci_low": 0.5346,
+            "ci_high": 0.7121,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.9016,
+            "ci_low": 0.8525,
+            "ci_high": 0.9508,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.9262,
+            "ci_low": 0.8852,
+            "ci_high": 0.9672,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.72,
+            "ci_low": 0.6,
+            "ci_high": 0.84,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.78,
+            "ci_low": 0.68,
+            "ci_high": 0.88,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.92,
+            "ci_low": 0.84,
+            "ci_high": 0.98,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.7567,
+            "ci_low": 0.6193,
+            "ci_high": 0.8853,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.7022,
+            "ci_low": 0.5769,
+            "ci_high": 0.8266,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.94,
+            "ci_low": 0.88,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.94,
+            "ci_low": 0.88,
+            "ci_high": 1.0,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.5714,
+            "ci_low": 0.3571,
+            "ci_high": 0.75,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.75,
+            "ci_low": 0.5357,
+            "ci_high": 0.9286,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8571,
+            "ci_low": 0.6786,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.6091,
+            "ci_low": 0.3948,
+            "ci_high": 0.8097,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.5942,
+            "ci_low": 0.4019,
+            "ci_high": 0.7707,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.9643,
+            "ci_low": 0.8929,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 0.9375,
+            "ci_low": 0.8125,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.9152,
+            "ci_low": 0.7768,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.9353,
+            "ci_low": 0.8289,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 0.9583,
+            "ci_low": 0.8958,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 0.9792,
+            "ci_low": 0.9375,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.8764,
+            "ci_low": 0.7611,
+            "ci_high": 0.9722,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.89,
+            "ci_low": 0.7957,
+            "ci_high": 0.9631,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.3611,
+            "ci_low": 0.25,
+            "ci_high": 0.4722,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.5,
+            "ci_low": 0.3889,
+            "ci_high": 0.6111,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.75,
+            "ci_low": 0.6389,
+            "ci_high": 0.8611,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.6674,
+            "ci_low": 0.4636,
+            "ci_high": 0.8704,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.4621,
+            "ci_low": 0.3383,
+            "ci_high": 0.5779,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.7778,
+            "ci_low": 0.6667,
+            "ci_high": 0.8889,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.8056,
+            "ci_low": 0.6944,
+            "ci_high": 0.9167,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.1786,
+            "ci_low": 0.0714,
+            "ci_high": 0.3214,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.3571,
+            "ci_low": 0.2143,
+            "ci_high": 0.4643,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.75,
+            "ci_low": 0.642,
+            "ci_high": 0.8929,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.1837,
+            "ci_low": 0.0841,
+            "ci_high": 0.3329,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.1857,
+            "ci_low": 0.1102,
+            "ci_high": 0.2793,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8571,
+            "ci_low": 0.75,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.8571,
+            "ci_low": 0.75,
+            "ci_high": 0.9643,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 37.4236,
+        "sem_resposta_mean_top1": 17.1154
+      },
+      "mean_latency_ms_per_query": 28.752
+    },
+    "dense_claim_enriched": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.7442,
+          "ci_low": 0.6744,
+          "ci_high": 0.8081,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.814,
+          "ci_low": 0.7616,
+          "ci_high": 0.8663,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.8721,
+          "ci_low": 0.8256,
+          "ci_high": 0.9186,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.7131,
+          "ci_low": 0.6421,
+          "ci_high": 0.7831,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.6941,
+          "ci_low": 0.6302,
+          "ci_high": 0.7549,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.9302,
+          "ci_low": 0.8895,
+          "ci_high": 0.9651,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.9535,
+          "ci_low": 0.9186,
+          "ci_high": 0.9826,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.7295,
+            "ci_low": 0.6475,
+            "ci_high": 0.8033,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.8115,
+            "ci_low": 0.7459,
+            "ci_high": 0.8773,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.8607,
+            "ci_low": 0.7951,
+            "ci_high": 0.918,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.7077,
+            "ci_low": 0.619,
+            "ci_high": 0.7973,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.6889,
+            "ci_low": 0.6055,
+            "ci_high": 0.7676,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.918,
+            "ci_low": 0.8607,
+            "ci_high": 0.9672,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.9426,
+            "ci_low": 0.8934,
+            "ci_high": 0.9754,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.78,
+            "ci_low": 0.64,
+            "ci_high": 0.9,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.82,
+            "ci_low": 0.72,
+            "ci_high": 0.9005,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.9,
+            "ci_low": 0.82,
+            "ci_high": 0.98,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.7262,
+            "ci_low": 0.5879,
+            "ci_high": 0.86,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.7067,
+            "ci_low": 0.5864,
+            "ci_high": 0.8271,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.96,
+            "ci_low": 0.9,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.98,
+            "ci_low": 0.94,
+            "ci_high": 1.0,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.7143,
+            "ci_low": 0.5357,
+            "ci_high": 0.8571,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.7857,
+            "ci_low": 0.6429,
+            "ci_high": 0.9286,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8571,
+            "ci_low": 0.7143,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.6869,
+            "ci_low": 0.4904,
+            "ci_high": 0.887,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.6366,
+            "ci_low": 0.5069,
+            "ci_high": 0.7587,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8214,
+            "ci_low": 0.7143,
+            "ci_high": 0.9286,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.8958,
+            "ci_low": 0.781,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.9226,
+            "ci_low": 0.8369,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 0.9792,
+            "ci_low": 0.9375,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.9514,
+            "ci_low": 0.875,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.9594,
+            "ci_low": 0.9049,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.5556,
+            "ci_low": 0.4444,
+            "ci_high": 0.6667,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.6389,
+            "ci_low": 0.5,
+            "ci_high": 0.7778,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.6944,
+            "ci_low": 0.5556,
+            "ci_high": 0.8333,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.5593,
+            "ci_low": 0.4036,
+            "ci_high": 0.7214,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.4817,
+            "ci_low": 0.3729,
+            "ci_high": 0.5846,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.9167,
+            "ci_low": 0.7778,
+            "ci_high": 1.0,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.9444,
+            "ci_low": 0.8611,
+            "ci_high": 1.0,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.3214,
+            "ci_low": 0.2143,
+            "ci_high": 0.4643,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.5357,
+            "ci_low": 0.5,
+            "ci_high": 0.6071,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.75,
+            "ci_low": 0.6071,
+            "ci_high": 0.8929,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.3195,
+            "ci_low": 0.2096,
+            "ci_high": 0.4434,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.3085,
+            "ci_low": 0.2403,
+            "ci_high": 0.396,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8571,
+            "ci_low": 0.75,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.8571,
+            "ci_low": 0.75,
+            "ci_high": 0.9643,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.6535,
+        "sem_resposta_mean_top1": 0.464
+      },
+      "mean_latency_ms_per_query": 1.282
+    },
+    "dense_claim_raw": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.5872,
+          "ci_low": 0.5,
+          "ci_high": 0.6744,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.657,
+          "ci_low": 0.5756,
+          "ci_high": 0.7384,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.6919,
+          "ci_low": 0.6105,
+          "ci_high": 0.7733,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.5845,
+          "ci_low": 0.499,
+          "ci_high": 0.6723,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.5557,
+          "ci_low": 0.4752,
+          "ci_high": 0.6365,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.8198,
+          "ci_low": 0.7616,
+          "ci_high": 0.8837,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.9186,
+          "ci_low": 0.8779,
+          "ci_high": 0.9535,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.5738,
+            "ci_low": 0.4672,
+            "ci_high": 0.6803,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.6311,
+            "ci_low": 0.5246,
+            "ci_high": 0.7297,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.6721,
+            "ci_low": 0.5736,
+            "ci_high": 0.7705,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.585,
+            "ci_low": 0.4769,
+            "ci_high": 0.6932,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.5454,
+            "ci_low": 0.4505,
+            "ci_high": 0.6394,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.7951,
+            "ci_low": 0.7131,
+            "ci_high": 0.8689,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.918,
+            "ci_low": 0.8689,
+            "ci_high": 0.959,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.62,
+            "ci_low": 0.4595,
+            "ci_high": 0.78,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.72,
+            "ci_low": 0.56,
+            "ci_high": 0.86,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.74,
+            "ci_low": 0.5995,
+            "ci_high": 0.88,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.5833,
+            "ci_low": 0.4232,
+            "ci_high": 0.7567,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.581,
+            "ci_low": 0.4367,
+            "ci_high": 0.7262,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.88,
+            "ci_low": 0.78,
+            "ci_high": 0.98,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.92,
+            "ci_low": 0.84,
+            "ci_high": 0.98,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.5357,
+            "ci_low": 0.3214,
+            "ci_high": 0.7143,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.6429,
+            "ci_low": 0.4286,
+            "ci_high": 0.8214,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.7143,
+            "ci_low": 0.5,
+            "ci_high": 0.8929,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.5679,
+            "ci_low": 0.3714,
+            "ci_high": 0.7668,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.5119,
+            "ci_low": 0.3499,
+            "ci_high": 0.6605,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.6786,
+            "ci_low": 0.5,
+            "ci_high": 0.8214,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.8214,
+            "ci_low": 0.6786,
+            "ci_high": 0.9286,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 0.9375,
+            "ci_low": 0.8125,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.7786,
+            "ci_low": 0.6302,
+            "ci_high": 0.9062,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.8337,
+            "ci_low": 0.7217,
+            "ci_high": 0.9308,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 0.8333,
+            "ci_low": 0.6875,
+            "ci_high": 0.9583,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 0.9167,
+            "ci_low": 0.8125,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 0.9375,
+            "ci_low": 0.8333,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.7306,
+            "ci_low": 0.5777,
+            "ci_high": 0.8584,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.7686,
+            "ci_low": 0.6354,
+            "ci_high": 0.875,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 0.9167,
+            "ci_low": 0.7917,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.4167,
+            "ci_low": 0.3056,
+            "ci_high": 0.5278,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.4722,
+            "ci_low": 0.3333,
+            "ci_high": 0.6111,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.5,
+            "ci_low": 0.3611,
+            "ci_high": 0.6111,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.6222,
+            "ci_low": 0.4276,
+            "ci_high": 0.8058,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.4462,
+            "ci_low": 0.3065,
+            "ci_high": 0.5725,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.8056,
+            "ci_low": 0.6944,
+            "ci_high": 0.9167,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.9167,
+            "ci_low": 0.8333,
+            "ci_high": 1.0,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.0357,
+            "ci_low": 0.0,
+            "ci_high": 0.1071,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.0714,
+            "ci_low": 0.0,
+            "ci_high": 0.1786,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.1429,
+            "ci_low": 0.0357,
+            "ci_high": 0.25,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.0804,
+            "ci_low": 0.0,
+            "ci_high": 0.2321,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.0576,
+            "ci_low": 0.0,
+            "ci_high": 0.159,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.6071,
+            "ci_low": 0.4286,
+            "ci_high": 0.7857,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.7857,
+            "ci_low": 0.6429,
+            "ci_high": 0.9286,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.6547,
+        "sem_resposta_mean_top1": 0.4784
+      },
+      "mean_latency_ms_per_query": 1.245
+    },
+    "dense_paragraph_enriched": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.4012,
+          "ci_low": 0.3198,
+          "ci_high": 0.4826,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.436,
+          "ci_low": 0.3488,
+          "ci_high": 0.5233,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.5756,
+          "ci_low": 0.4826,
+          "ci_high": 0.6686,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.4548,
+          "ci_low": 0.3554,
+          "ci_high": 0.5465,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.37,
+          "ci_low": 0.2978,
+          "ci_high": 0.4406,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.6395,
+          "ci_low": 0.5523,
+          "ci_high": 0.7267,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.6395,
+          "ci_low": 0.5523,
+          "ci_high": 0.7267,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.4426,
+            "ci_low": 0.3525,
+            "ci_high": 0.541,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.4672,
+            "ci_low": 0.3689,
+            "ci_high": 0.5656,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.5902,
+            "ci_low": 0.4836,
+            "ci_high": 0.6885,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.4724,
+            "ci_low": 0.365,
+            "ci_high": 0.5852,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.3861,
+            "ci_low": 0.3075,
+            "ci_high": 0.4639,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.6557,
+            "ci_low": 0.5492,
+            "ci_high": 0.7541,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.6557,
+            "ci_low": 0.5492,
+            "ci_high": 0.7541,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.3,
+            "ci_low": 0.16,
+            "ci_high": 0.44,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.36,
+            "ci_low": 0.2,
+            "ci_high": 0.52,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.54,
+            "ci_low": 0.36,
+            "ci_high": 0.7,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.412,
+            "ci_low": 0.22,
+            "ci_high": 0.5922,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.3307,
+            "ci_low": 0.1849,
+            "ci_high": 0.4821,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.6,
+            "ci_low": 0.42,
+            "ci_high": 0.76,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.6,
+            "ci_low": 0.42,
+            "ci_high": 0.76,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.25,
+            "ci_low": 0.142,
+            "ci_high": 0.3929,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.2857,
+            "ci_low": 0.1429,
+            "ci_high": 0.4286,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.4286,
+            "ci_low": 0.2143,
+            "ci_high": 0.6071,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.5071,
+            "ci_low": 0.2845,
+            "ci_high": 0.7857,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.3192,
+            "ci_low": 0.175,
+            "ci_high": 0.4818,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.4643,
+            "ci_low": 0.25,
+            "ci_high": 0.6786,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.4643,
+            "ci_low": 0.25,
+            "ci_high": 0.6786,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 0.5,
+            "ci_low": 0.25,
+            "ci_high": 0.75,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 0.5,
+            "ci_low": 0.25,
+            "ci_high": 0.75,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 0.5,
+            "ci_low": 0.25,
+            "ci_high": 0.75,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.1896,
+            "ci_low": 0.0938,
+            "ci_high": 0.2917,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.2675,
+            "ci_low": 0.1332,
+            "ci_high": 0.4007,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 0.5,
+            "ci_low": 0.25,
+            "ci_high": 0.75,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 0.5,
+            "ci_low": 0.25,
+            "ci_high": 0.75,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 0.5,
+            "ci_low": 0.3333,
+            "ci_high": 0.7083,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 0.5,
+            "ci_low": 0.3333,
+            "ci_high": 0.7083,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 0.6667,
+            "ci_low": 0.5,
+            "ci_high": 0.8333,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.3451,
+            "ci_low": 0.1979,
+            "ci_high": 0.5139,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.3838,
+            "ci_low": 0.2317,
+            "ci_high": 0.5497,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 0.75,
+            "ci_low": 0.5833,
+            "ci_high": 0.9167,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 0.75,
+            "ci_low": 0.5833,
+            "ci_high": 0.9167,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.3056,
+            "ci_low": 0.1944,
+            "ci_high": 0.4167,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.3611,
+            "ci_low": 0.2222,
+            "ci_high": 0.5278,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.5556,
+            "ci_low": 0.3889,
+            "ci_high": 0.6951,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.5833,
+            "ci_low": 0.3611,
+            "ci_high": 0.8056,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.385,
+            "ci_low": 0.2384,
+            "ci_high": 0.5316,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.6667,
+            "ci_low": 0.5278,
+            "ci_high": 0.8056,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.6667,
+            "ci_low": 0.5278,
+            "ci_high": 0.8056,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.3929,
+            "ci_low": 0.2857,
+            "ci_high": 0.5,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.5,
+            "ci_low": 0.3214,
+            "ci_high": 0.6786,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.6786,
+            "ci_low": 0.4643,
+            "ci_high": 0.8571,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.7286,
+            "ci_low": 0.5,
+            "ci_high": 0.9286,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.4951,
+            "ci_low": 0.3505,
+            "ci_high": 0.6265,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.75,
+            "ci_low": 0.5714,
+            "ci_high": 0.8929,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.75,
+            "ci_low": 0.5714,
+            "ci_high": 0.8929,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.5996,
+        "sem_resposta_mean_top1": 0.4569
+      },
+      "mean_latency_ms_per_query": 0.428
+    },
+    "dense_entity_enriched": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.5698,
+          "ci_low": 0.4942,
+          "ci_high": 0.6453,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.6744,
+          "ci_low": 0.5988,
+          "ci_high": 0.7442,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.8256,
+          "ci_low": 0.7558,
+          "ci_high": 0.8837,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.6432,
+          "ci_low": 0.5643,
+          "ci_high": 0.7264,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.541,
+          "ci_low": 0.4852,
+          "ci_high": 0.5963,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.9302,
+          "ci_low": 0.8779,
+          "ci_high": 0.9651,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.9302,
+          "ci_low": 0.8779,
+          "ci_high": 0.9651,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.6148,
+            "ci_low": 0.5246,
+            "ci_high": 0.6969,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.7131,
+            "ci_low": 0.623,
+            "ci_high": 0.7951,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.8607,
+            "ci_low": 0.7869,
+            "ci_high": 0.9262,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.6485,
+            "ci_low": 0.5514,
+            "ci_high": 0.7415,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.5537,
+            "ci_low": 0.4893,
+            "ci_high": 0.6141,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.9262,
+            "ci_low": 0.8689,
+            "ci_high": 0.9672,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.9262,
+            "ci_low": 0.8689,
+            "ci_high": 0.9672,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.46,
+            "ci_low": 0.32,
+            "ci_high": 0.6,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.58,
+            "ci_low": 0.42,
+            "ci_high": 0.72,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.74,
+            "ci_low": 0.58,
+            "ci_high": 0.88,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.6303,
+            "ci_low": 0.4466,
+            "ci_high": 0.8077,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.5102,
+            "ci_low": 0.3743,
+            "ci_high": 0.6442,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.94,
+            "ci_low": 0.84,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.94,
+            "ci_low": 0.84,
+            "ci_high": 1.0,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.4286,
+            "ci_low": 0.3214,
+            "ci_high": 0.5,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.5357,
+            "ci_low": 0.5,
+            "ci_high": 0.6071,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.7857,
+            "ci_low": 0.6777,
+            "ci_high": 0.8929,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.8365,
+            "ci_low": 0.6468,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.5508,
+            "ci_low": 0.4573,
+            "ci_high": 0.6293,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8571,
+            "ci_low": 0.7491,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.8571,
+            "ci_low": 0.7491,
+            "ci_high": 0.9643,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 0.6875,
+            "ci_low": 0.4984,
+            "ci_high": 0.875,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 0.6875,
+            "ci_low": 0.4984,
+            "ci_high": 0.875,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 0.75,
+            "ci_low": 0.5625,
+            "ci_high": 0.9375,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.2469,
+            "ci_low": 0.1562,
+            "ci_high": 0.3333,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.3569,
+            "ci_low": 0.237,
+            "ci_high": 0.4713,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 0.875,
+            "ci_low": 0.6875,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 0.875,
+            "ci_low": 0.6875,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 0.7708,
+            "ci_low": 0.6042,
+            "ci_high": 0.9167,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 0.875,
+            "ci_low": 0.749,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 0.9583,
+            "ci_low": 0.875,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.5716,
+            "ci_low": 0.4207,
+            "ci_high": 0.7274,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.6345,
+            "ci_low": 0.4973,
+            "ci_high": 0.7648,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.4167,
+            "ci_low": 0.3333,
+            "ci_high": 0.5,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.5556,
+            "ci_low": 0.4167,
+            "ci_high": 0.6944,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.7222,
+            "ci_low": 0.5833,
+            "ci_high": 0.8611,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.8117,
+            "ci_low": 0.6296,
+            "ci_high": 0.9512,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.5531,
+            "ci_low": 0.4302,
+            "ci_high": 0.6641,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.9444,
+            "ci_low": 0.8611,
+            "ci_high": 1.0,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.9444,
+            "ci_low": 0.8611,
+            "ci_high": 1.0,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.4286,
+            "ci_low": 0.3214,
+            "ci_high": 0.5,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.6071,
+            "ci_low": 0.4643,
+            "ci_high": 0.75,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8571,
+            "ci_low": 0.75,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.8089,
+            "ci_low": 0.5946,
+            "ci_high": 0.9429,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.5659,
+            "ci_low": 0.4387,
+            "ci_high": 0.6659,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.6207,
+        "sem_resposta_mean_top1": 0.4549
+      },
+      "mean_latency_ms_per_query": 0.214
+    },
+    "hybrid_rrf_claims": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.7035,
+          "ci_low": 0.6278,
+          "ci_high": 0.7849,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.8372,
+          "ci_low": 0.7791,
+          "ci_high": 0.8953,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.9302,
+          "ci_low": 0.8953,
+          "ci_high": 0.9651,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.7133,
+          "ci_low": 0.6348,
+          "ci_high": 0.7878,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.7043,
+          "ci_low": 0.6391,
+          "ci_high": 0.7685,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.9477,
+          "ci_low": 0.9186,
+          "ci_high": 0.9767,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.9709,
+          "ci_low": 0.9419,
+          "ci_high": 0.9942,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.6885,
+            "ci_low": 0.5902,
+            "ci_high": 0.7787,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.8361,
+            "ci_low": 0.7623,
+            "ci_high": 0.9098,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.918,
+            "ci_low": 0.8689,
+            "ci_high": 0.959,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.6894,
+            "ci_low": 0.5908,
+            "ci_high": 0.7849,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.6901,
+            "ci_low": 0.6112,
+            "ci_high": 0.7697,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.9426,
+            "ci_low": 0.9016,
+            "ci_high": 0.9836,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.9672,
+            "ci_low": 0.9344,
+            "ci_high": 0.9918,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.74,
+            "ci_low": 0.6,
+            "ci_high": 0.8605,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.84,
+            "ci_low": 0.72,
+            "ci_high": 0.94,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.96,
+            "ci_low": 0.9,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.7717,
+            "ci_low": 0.6383,
+            "ci_high": 0.8933,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.739,
+            "ci_low": 0.6229,
+            "ci_high": 0.8535,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.96,
+            "ci_low": 0.9,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.98,
+            "ci_low": 0.94,
+            "ci_high": 1.0,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.7143,
+            "ci_low": 0.5,
+            "ci_high": 0.8929,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.7857,
+            "ci_low": 0.6071,
+            "ci_high": 0.9286,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.6369,
+            "ci_low": 0.4345,
+            "ci_high": 0.8333,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.6311,
+            "ci_low": 0.4625,
+            "ci_high": 0.7776,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.9167,
+            "ci_low": 0.7917,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.9375,
+            "ci_low": 0.8438,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.9514,
+            "ci_low": 0.875,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.9595,
+            "ci_low": 0.9033,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.4444,
+            "ci_low": 0.3333,
+            "ci_high": 0.5556,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.7222,
+            "ci_low": 0.6111,
+            "ci_high": 0.8333,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.8333,
+            "ci_low": 0.7222,
+            "ci_high": 0.9444,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.6649,
+            "ci_low": 0.4773,
+            "ci_high": 0.8473,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.5454,
+            "ci_low": 0.4448,
+            "ci_high": 0.6451,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.8889,
+            "ci_low": 0.7778,
+            "ci_high": 0.9722,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.9444,
+            "ci_low": 0.8611,
+            "ci_high": 1.0,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.1786,
+            "ci_low": 0.0714,
+            "ci_high": 0.3214,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.5714,
+            "ci_low": 0.3929,
+            "ci_high": 0.7857,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8571,
+            "ci_low": 0.7491,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.2115,
+            "ci_low": 0.102,
+            "ci_high": 0.3643,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.2778,
+            "ci_low": 0.1818,
+            "ci_high": 0.3743,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.0325,
+        "sem_resposta_mean_top1": 0.0287
+      },
+      "mean_latency_ms_per_query": 31.621
+    },
+    "hybrid_rerank_top20_b16": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.7733,
+          "ci_low": 0.7035,
+          "ci_high": 0.843,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.8488,
+          "ci_low": 0.7907,
+          "ci_high": 0.9012,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.9302,
+          "ci_low": 0.8953,
+          "ci_high": 0.9651,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.7693,
+          "ci_low": 0.6934,
+          "ci_high": 0.8417,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.7457,
+          "ci_low": 0.6827,
+          "ci_high": 0.8089,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.9651,
+          "ci_low": 0.936,
+          "ci_high": 0.9884,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.9709,
+          "ci_low": 0.9419,
+          "ci_high": 0.9942,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.7705,
+            "ci_low": 0.6967,
+            "ci_high": 0.8443,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.8197,
+            "ci_low": 0.7459,
+            "ci_high": 0.8934,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.918,
+            "ci_low": 0.8689,
+            "ci_high": 0.959,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.7821,
+            "ci_low": 0.6979,
+            "ci_high": 0.8658,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.7411,
+            "ci_low": 0.6625,
+            "ci_high": 0.8182,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.959,
+            "ci_low": 0.9262,
+            "ci_high": 0.9918,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.9672,
+            "ci_low": 0.9344,
+            "ci_high": 0.9918,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.78,
+            "ci_low": 0.64,
+            "ci_high": 0.92,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.92,
+            "ci_low": 0.84,
+            "ci_high": 0.98,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.96,
+            "ci_low": 0.9,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.7381,
+            "ci_low": 0.6005,
+            "ci_high": 0.8757,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.7571,
+            "ci_low": 0.6513,
+            "ci_high": 0.8623,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.98,
+            "ci_low": 0.94,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.98,
+            "ci_low": 0.94,
+            "ci_high": 1.0,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.8214,
+            "ci_low": 0.6786,
+            "ci_high": 0.9286,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.7976,
+            "ci_low": 0.6369,
+            "ci_high": 0.9524,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.7625,
+            "ci_low": 0.6362,
+            "ci_high": 0.8763,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.9583,
+            "ci_low": 0.875,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.9688,
+            "ci_low": 0.9062,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.9722,
+            "ci_low": 0.9167,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.9725,
+            "ci_low": 0.9275,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.5556,
+            "ci_low": 0.4167,
+            "ci_high": 0.6944,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.7222,
+            "ci_low": 0.5826,
+            "ci_high": 0.8611,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.8333,
+            "ci_low": 0.7222,
+            "ci_high": 0.9444,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.6963,
+            "ci_low": 0.5222,
+            "ci_high": 0.8631,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.5791,
+            "ci_low": 0.4794,
+            "ci_high": 0.6748,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.9167,
+            "ci_low": 0.8333,
+            "ci_high": 1.0,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.9444,
+            "ci_low": 0.8611,
+            "ci_high": 1.0,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.3571,
+            "ci_low": 0.2143,
+            "ci_high": 0.5357,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.5357,
+            "ci_low": 0.3929,
+            "ci_high": 0.6786,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8571,
+            "ci_low": 0.7491,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.2712,
+            "ci_low": 0.1649,
+            "ci_high": 0.4218,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.2997,
+            "ci_low": 0.2108,
+            "ci_high": 0.4051,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.8087,
+        "sem_resposta_mean_top1": 0.0092
+      },
+      "mean_latency_ms_per_query": 125.36
+    },
+    "hybrid_rerank_top50_b16": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.7791,
+          "ci_low": 0.7093,
+          "ci_high": 0.8488,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.8372,
+          "ci_low": 0.7791,
+          "ci_high": 0.8895,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.9186,
+          "ci_low": 0.8779,
+          "ci_high": 0.9535,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.7686,
+          "ci_low": 0.6921,
+          "ci_high": 0.8407,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.7407,
+          "ci_low": 0.6746,
+          "ci_high": 0.8035,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.9767,
+          "ci_low": 0.9535,
+          "ci_high": 0.9942,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.9767,
+          "ci_low": 0.9535,
+          "ci_high": 0.9942,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.7787,
+            "ci_low": 0.7049,
+            "ci_high": 0.8525,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.8115,
+            "ci_low": 0.7377,
+            "ci_high": 0.877,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.9016,
+            "ci_low": 0.8525,
+            "ci_high": 0.9508,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.7813,
+            "ci_low": 0.6962,
+            "ci_high": 0.8648,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.7386,
+            "ci_low": 0.6622,
+            "ci_high": 0.8143,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.9754,
+            "ci_low": 0.9426,
+            "ci_high": 1.0,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.9754,
+            "ci_low": 0.9426,
+            "ci_high": 1.0,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.78,
+            "ci_low": 0.64,
+            "ci_high": 0.92,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.9,
+            "ci_low": 0.82,
+            "ci_high": 0.98,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.96,
+            "ci_low": 0.9,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.7374,
+            "ci_low": 0.6,
+            "ci_high": 0.8757,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.7458,
+            "ci_low": 0.638,
+            "ci_high": 0.853,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.98,
+            "ci_low": 0.94,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.98,
+            "ci_low": 0.94,
+            "ci_high": 1.0,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.8571,
+            "ci_low": 0.7143,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.7976,
+            "ci_low": 0.6369,
+            "ci_high": 0.9524,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.761,
+            "ci_low": 0.6334,
+            "ci_high": 0.8759,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.9643,
+            "ci_low": 0.8929,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.9643,
+            "ci_low": 0.8929,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.9583,
+            "ci_low": 0.875,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.9688,
+            "ci_low": 0.9062,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.9722,
+            "ci_low": 0.9167,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.9725,
+            "ci_low": 0.9275,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.5556,
+            "ci_low": 0.4167,
+            "ci_high": 0.6944,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.6667,
+            "ci_low": 0.5278,
+            "ci_high": 0.7785,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.8056,
+            "ci_low": 0.6944,
+            "ci_high": 0.9167,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.6963,
+            "ci_low": 0.5222,
+            "ci_high": 0.8631,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.5586,
+            "ci_low": 0.4566,
+            "ci_high": 0.6491,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.9722,
+            "ci_low": 0.9167,
+            "ci_high": 1.0,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.9722,
+            "ci_low": 0.9167,
+            "ci_high": 1.0,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.3571,
+            "ci_low": 0.2143,
+            "ci_high": 0.5357,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.5357,
+            "ci_low": 0.3929,
+            "ci_high": 0.6786,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8214,
+            "ci_low": 0.6786,
+            "ci_high": 0.9286,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.2664,
+            "ci_low": 0.16,
+            "ci_high": 0.4192,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.2964,
+            "ci_low": 0.2072,
+            "ci_high": 0.4023,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.8087,
+        "sem_resposta_mean_top1": 0.0093
+      },
+      "mean_latency_ms_per_query": 245.234
+    },
+    "hybrid_rerank_top50_b8": {
+      "overall": {
+        "n": 86,
+        "recall_5": {
+          "mean": 0.7791,
+          "ci_low": 0.7093,
+          "ci_high": 0.8488,
+          "n": 86
+        },
+        "recall_10": {
+          "mean": 0.8372,
+          "ci_low": 0.7791,
+          "ci_high": 0.8895,
+          "n": 86
+        },
+        "recall_20": {
+          "mean": 0.9186,
+          "ci_low": 0.8779,
+          "ci_high": 0.9535,
+          "n": 86
+        },
+        "mrr_10": {
+          "mean": 0.7686,
+          "ci_low": 0.6921,
+          "ci_high": 0.8407,
+          "n": 86
+        },
+        "ndcg_10": {
+          "mean": 0.7407,
+          "ci_low": 0.6746,
+          "ci_high": 0.8035,
+          "n": 86
+        },
+        "entity_recall_5": {
+          "mean": 0.9767,
+          "ci_low": 0.9535,
+          "ci_high": 0.9942,
+          "n": 86
+        },
+        "entity_recall_10": {
+          "mean": 0.9767,
+          "ci_low": 0.9535,
+          "ci_high": 0.9942,
+          "n": 86
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 61,
+          "recall_5": {
+            "mean": 0.7787,
+            "ci_low": 0.7049,
+            "ci_high": 0.8525,
+            "n": 61
+          },
+          "recall_10": {
+            "mean": 0.8115,
+            "ci_low": 0.7377,
+            "ci_high": 0.877,
+            "n": 61
+          },
+          "recall_20": {
+            "mean": 0.9016,
+            "ci_low": 0.8525,
+            "ci_high": 0.9508,
+            "n": 61
+          },
+          "mrr_10": {
+            "mean": 0.7813,
+            "ci_low": 0.6962,
+            "ci_high": 0.8648,
+            "n": 61
+          },
+          "ndcg_10": {
+            "mean": 0.7386,
+            "ci_low": 0.6622,
+            "ci_high": 0.8143,
+            "n": 61
+          },
+          "entity_recall_5": {
+            "mean": 0.9754,
+            "ci_low": 0.9426,
+            "ci_high": 1.0,
+            "n": 61
+          },
+          "entity_recall_10": {
+            "mean": 0.9754,
+            "ci_low": 0.9426,
+            "ci_high": 1.0,
+            "n": 61
+          }
+        },
+        "test": {
+          "n": 25,
+          "recall_5": {
+            "mean": 0.78,
+            "ci_low": 0.64,
+            "ci_high": 0.92,
+            "n": 25
+          },
+          "recall_10": {
+            "mean": 0.9,
+            "ci_low": 0.82,
+            "ci_high": 0.98,
+            "n": 25
+          },
+          "recall_20": {
+            "mean": 0.96,
+            "ci_low": 0.9,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "mrr_10": {
+            "mean": 0.7374,
+            "ci_low": 0.6,
+            "ci_high": 0.8757,
+            "n": 25
+          },
+          "ndcg_10": {
+            "mean": 0.7458,
+            "ci_low": 0.638,
+            "ci_high": 0.853,
+            "n": 25
+          },
+          "entity_recall_5": {
+            "mean": 0.98,
+            "ci_low": 0.94,
+            "ci_high": 1.0,
+            "n": 25
+          },
+          "entity_recall_10": {
+            "mean": 0.98,
+            "ci_low": 0.94,
+            "ci_high": 1.0,
+            "n": 25
+          }
+        }
+      },
+      "by_type": {
+        "comparativa": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.8571,
+            "ci_low": 0.7143,
+            "ci_high": 0.9643,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.8929,
+            "ci_low": 0.7857,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.7976,
+            "ci_low": 0.6369,
+            "ci_high": 0.9524,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.761,
+            "ci_low": 0.6334,
+            "ci_high": 0.8759,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.9643,
+            "ci_low": 0.8929,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.9643,
+            "ci_low": 0.8929,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        },
+        "contestada": {
+          "n": 16,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "mrr_10": {
+            "mean": 0.9583,
+            "ci_low": 0.875,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "ndcg_10": {
+            "mean": 0.9688,
+            "ci_low": 0.9062,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 16
+          }
+        },
+        "factual": {
+          "n": 24,
+          "recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "recall_20": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "mrr_10": {
+            "mean": 0.9722,
+            "ci_low": 0.9167,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "ndcg_10": {
+            "mean": 0.9725,
+            "ci_low": 0.9275,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_5": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          },
+          "entity_recall_10": {
+            "mean": 1.0,
+            "ci_low": 1.0,
+            "ci_high": 1.0,
+            "n": 24
+          }
+        },
+        "multi_hop": {
+          "n": 18,
+          "recall_5": {
+            "mean": 0.5556,
+            "ci_low": 0.4167,
+            "ci_high": 0.6944,
+            "n": 18
+          },
+          "recall_10": {
+            "mean": 0.6667,
+            "ci_low": 0.5278,
+            "ci_high": 0.7785,
+            "n": 18
+          },
+          "recall_20": {
+            "mean": 0.8056,
+            "ci_low": 0.6944,
+            "ci_high": 0.9167,
+            "n": 18
+          },
+          "mrr_10": {
+            "mean": 0.6963,
+            "ci_low": 0.5222,
+            "ci_high": 0.8631,
+            "n": 18
+          },
+          "ndcg_10": {
+            "mean": 0.5586,
+            "ci_low": 0.4566,
+            "ci_high": 0.6491,
+            "n": 18
+          },
+          "entity_recall_5": {
+            "mean": 0.9722,
+            "ci_low": 0.9167,
+            "ci_high": 1.0,
+            "n": 18
+          },
+          "entity_recall_10": {
+            "mean": 0.9722,
+            "ci_low": 0.9167,
+            "ci_high": 1.0,
+            "n": 18
+          }
+        },
+        "so_link_de_descoberta": {
+          "n": 14,
+          "recall_5": {
+            "mean": 0.3571,
+            "ci_low": 0.2143,
+            "ci_high": 0.5357,
+            "n": 14
+          },
+          "recall_10": {
+            "mean": 0.5357,
+            "ci_low": 0.3929,
+            "ci_high": 0.6786,
+            "n": 14
+          },
+          "recall_20": {
+            "mean": 0.8214,
+            "ci_low": 0.6786,
+            "ci_high": 0.9286,
+            "n": 14
+          },
+          "mrr_10": {
+            "mean": 0.2664,
+            "ci_low": 0.16,
+            "ci_high": 0.4192,
+            "n": 14
+          },
+          "ndcg_10": {
+            "mean": 0.2964,
+            "ci_low": 0.2072,
+            "ci_high": 0.4023,
+            "n": 14
+          },
+          "entity_recall_5": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          },
+          "entity_recall_10": {
+            "mean": 0.9286,
+            "ci_low": 0.8214,
+            "ci_high": 1.0,
+            "n": 14
+          }
+        }
+      },
+      "score_separation": {
+        "answerable_mean_top1": 0.8087,
+        "sem_resposta_mean_top1": 0.0093
+      },
+      "mean_latency_ms_per_query": 250.199
+    }
+  },
+  "error_analysis": {
+    "hybrid_rerank_top50_b16": {
+      "total_incomplete_recall10": 25,
+      "top3_categories": [
+        {
+          "category": "multi_hop_e_comparativa_incompleta",
+          "count": 13,
+          "examples": [
+            {
+              "id": "q-mh-004",
+              "type": "multi_hop",
+              "question": "Qual filósofo inglês do empirismo influenciou os escritos de Thomas Jefferson e Jean-Jacques Rousseau sobre liberdade?",
+              "recall_10": 0.5,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-wiki-topic-john-locke-001",
+                "claim-wiki-topic-jean-jacques-rousseau-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-topic-thomas-jefferson-002",
+                "claim-wiki-topic-john-locke-001",
+                "claim-wiki-topic-jean-jacques-rousseau-012",
+                "claim-wiki-topic-john-stuart-mill-010",
+                "claim-wiki-topic-francois-noel-babeuf-001"
+              ],
+              "gold_entity_titles": [
+                "person-john-locke",
+                "wiki-topic-jean-jacques-rousseau"
+              ]
+            },
+            {
+              "id": "q-mh-006",
+              "type": "multi_hop",
+              "question": "Em qual conflito de 1876–1878 contra o Império Otomano participou Ion C. Brătianu liderando o lado romeno?",
+              "recall_10": 0.5,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-wiki-person-ion-c-bratianu-001",
+                "claim-wiki-acontecimento-guerra-servio-otomana-1876-1878-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-person-ion-c-bratianu-007",
+                "claim-wiki-acontecimento-guerra-servio-otomana-1876-1878-001",
+                "claim-wiki-acontecimento-guerra-servio-otomana-1876-1878-006",
+                "claim-wiki-acontecimento-guerra-servio-otomana-1876-1878-010",
+                "claim-wiki-person-ion-c-bratianu-008"
+              ],
+              "gold_entity_titles": [
+                "person-ion-c-bratianu",
+                "wiki-acontecimento-guerra-servio-otomana-1876-1878"
+              ]
+            },
+            {
+              "id": "q-mh-007",
+              "type": "multi_hop",
+              "question": "Em qual evento revolucionário de 1848 participou Lorenz von Stein, defensor da combinação entre Estado liberal e bem-estar social?",
+              "recall_10": 0.5,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-wiki-person-lorenz-von-stein-001",
+                "claim-wiki-acontecimento-revolucoes-de-1848-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-person-lorenz-von-stein-001",
+                "claim-wiki-person-lorenz-von-stein-009",
+                "claim-wiki-person-lorenz-von-stein-017",
+                "claim-wiki-person-lorenz-von-stein-015",
+                "claim-wiki-person-lorenz-von-stein-011"
+              ],
+              "gold_entity_titles": [
+                "person-lorenz-von-stein",
+                "wiki-acontecimento-revolucoes-de-1848"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "desalinhamento_lexical_ou_granuralidade",
+          "count": 10,
+          "examples": [
+            {
+              "id": "q-mh-003",
+              "type": "multi_hop",
+              "question": "Que teórico alemão do revisionismo inspirou a definição de socialismo usada no desenvolvimento do socialismo liberal?",
+              "recall_10": 0.0,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-wiki-topic-eduard-bernstein-001",
+                "claim-wiki-ideology-liberal-socialism-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-ideology-liberal-socialism-006",
+                "claim-wiki-topic-revisionismo-marxismo-004",
+                "claim-wiki-ideology-liberal-socialism-003",
+                "claim-wiki-ideology-liberal-socialism-005",
+                "claim-wiki-topic-revisionismo-marxismo-002"
+              ],
+              "gold_entity_titles": [
+                "person-eduard-bernstein",
+                "ideology-liberal-socialism"
+              ]
+            },
+            {
+              "id": "q-disc-003",
+              "type": "so_link_de_descoberta",
+              "question": "O acervo registra uma relação editorial de filiação ou influência entre Isaiah Berlin e o Comunismo além da conexão de navegação?",
+              "recall_10": 0.5,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-wiki-topic-isaiah-berlin-001",
+                "claim-wiki-topic-comunismo-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-topic-isaiah-berlin-010",
+                "claim-wiki-topic-isaiah-berlin-002",
+                "claim-wiki-topic-isaiah-berlin-006",
+                "claim-wiki-topic-isaiah-berlin-001",
+                "claim-wiki-topic-isaiah-berlin-007"
+              ],
+              "gold_entity_titles": [
+                "person-isaiah-berlin",
+                "ideology-communism"
+              ]
+            },
+            {
+              "id": "q-disc-004",
+              "type": "so_link_de_descoberta",
+              "question": "Existe evidência textual no acervo de que Mao Tsé-Tung foi influenciado diretamente por Adam Smith?",
+              "recall_10": 0.5,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-wiki-topic-mao-tse-tung-001",
+                "claim-person-adam-smith"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-topic-adam-smith-006",
+                "claim-wiki-topic-mao-tse-tung-010",
+                "claim-wiki-topic-adam-smith-007",
+                "claim-wiki-topic-adam-smith-011",
+                "claim-person-adam-smith"
+              ],
+              "gold_entity_titles": [
+                "person-mao-zedong",
+                "person-adam-smith"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "descoberta_ou_ranking_contestada",
+          "count": 2,
+          "examples": [
+            {
+              "id": "q-disc-002",
+              "type": "so_link_de_descoberta",
+              "question": "Há alguma relação historiográfica editorial documentando influência direta de John Rawls sobre a história constitucional do Brasil?",
+              "recall_10": 0.5,
+              "entity_recall_10": 0.5,
+              "gold_claim_ids": [
+                "claim-wiki-person-john-rawls-001",
+                "claim-country-brazil"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-person-john-rawls-007",
+                "claim-wiki-person-john-rawls-006",
+                "claim-wiki-person-john-rawls-008",
+                "claim-wiki-topic-centro-politica-004",
+                "claim-wiki-person-john-rawls-001"
+              ],
+              "gold_entity_titles": [
+                "person-john-rawls",
+                "country-brazil"
+              ]
+            },
+            {
+              "id": "q-disc-014",
+              "type": "so_link_de_descoberta",
+              "question": "Os documentos do acervo vinculam editorialmente o Liberalismo social diretamente às instituições do Brasil?",
+              "recall_10": 0.5,
+              "entity_recall_10": 0.5,
+              "gold_claim_ids": [
+                "claim-wiki-topic-liberalismo-social-001",
+                "claim-country-brazil"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-topic-liberalismo-social-004",
+                "claim-wiki-topic-liberalismo-social-001",
+                "claim-wiki-ideology-green-liberalism-003",
+                "claim-wiki-topic-liberalismo-social-002",
+                "claim-wiki-topic-liberalismo-social-003"
+              ],
+              "gold_entity_titles": [
+                "ideology-social-liberalism",
+                "country-brazil"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bm25_claims": {
+      "total_incomplete_recall10": 36,
+      "top3_categories": [
+        {
+          "category": "multi_hop_e_comparativa_incompleta",
+          "count": 17,
+          "examples": [
+            {
+              "id": "q-mh-001",
+              "type": "multi_hop",
+              "question": "Qual obra escrita por Adam Smith é examinada criticamente por Karl Marx ao distinguir trabalho contido e trabalho comandado?",
+              "recall_10": 0.5,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-person-adam-smith",
+                "claim-marx-critica-smith"
+              ],
+              "retrieved_top5": [
+                "claim-marx-critica-smith",
+                "claim-wiki-topic-adam-smith-003",
+                "claim-wiki-topic-economia-politica-004",
+                "claim-wiki-topic-economia-politica-009",
+                "claim-wiki-topic-karl-marx-003"
+              ],
+              "gold_entity_titles": [
+                "person-adam-smith",
+                "work-wealth-of-nations"
+              ]
+            },
+            {
+              "id": "q-mh-003",
+              "type": "multi_hop",
+              "question": "Que teórico alemão do revisionismo inspirou a definição de socialismo usada no desenvolvimento do socialismo liberal?",
+              "recall_10": 0.5,
+              "entity_recall_10": 0.5,
+              "gold_claim_ids": [
+                "claim-wiki-topic-eduard-bernstein-001",
+                "claim-wiki-ideology-liberal-socialism-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-ideology-liberal-socialism-009",
+                "claim-wiki-ideology-liberal-socialism-006",
+                "claim-wiki-ideology-liberal-socialism-008",
+                "claim-wiki-ideology-liberal-socialism-005",
+                "claim-wiki-ideology-liberal-socialism-007"
+              ],
+              "gold_entity_titles": [
+                "person-eduard-bernstein",
+                "ideology-liberal-socialism"
+              ]
+            },
+            {
+              "id": "q-mh-005",
+              "type": "multi_hop",
+              "question": "Que panfleto foi escrito por Emmanuel Joseph Sieyès em 1788 em resposta ao convite de Jacques Necker sobre os Estados Gerais?",
+              "recall_10": 0.5,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-wiki-person-emmanuel-joseph-sieyes-001",
+                "claim-wiki-obra-o-que-e-o-terceiro-estado-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-obra-o-que-e-o-terceiro-estado-001",
+                "claim-wiki-person-emmanuel-joseph-sieyes-005",
+                "claim-wiki-person-emmanuel-joseph-sieyes-004",
+                "claim-wiki-person-emmanuel-joseph-sieyes-011",
+                "claim-wiki-person-emmanuel-joseph-sieyes-012"
+              ],
+              "gold_entity_titles": [
+                "person-emmanuel-joseph-sieyes",
+                "wiki-obra-o-que-e-o-terceiro-estado"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "desalinhamento_lexical_ou_granuralidade",
+          "count": 15,
+          "examples": [
+            {
+              "id": "q-fac-010",
+              "type": "factual",
+              "question": "Quando e onde foi fundado o Partido dos Trabalhadores (PT) no Brasil?",
+              "recall_10": 0.5,
+              "entity_recall_10": 1.0,
+              "gold_claim_ids": [
+                "claim-wiki-topic-partido-dos-trabalhadores-001",
+                "claim-wiki-topic-partido-dos-trabalhadores-003"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-topic-partido-comunista-do-brasil-010",
+                "claim-wiki-topic-partido-dos-trabalhadores-008",
+                "claim-wiki-topic-partido-dos-trabalhadores-001",
+                "claim-wiki-topic-partido-comunista-do-brasil-006",
+                "claim-wiki-topic-democratas-brasil-001"
+              ],
+              "gold_entity_titles": [
+                "wiki-topic-partido-dos-trabalhadores",
+                "wiki-topic-partido-dos-trabalhadores"
+              ]
+            },
+            {
+              "id": "q-mh-002",
+              "type": "multi_hop",
+              "question": "Que livro publicado por Marx em 1867 analisa a relação entre tempo de trabalho socialmente necessário e valor?",
+              "recall_10": 0.0,
+              "entity_recall_10": 0.5,
+              "gold_claim_ids": [
+                "claim-person-karl-marx",
+                "claim-work-capital-volume-i"
+              ],
+              "retrieved_top5": [
+                "claim-concept-trabalho-socialmente-necessario",
+                "claim-wiki-topic-o-capital-004",
+                "claim-wiki-topic-o-capital-007",
+                "claim-wiki-topic-o-capital-002",
+                "claim-marx-critica-smith"
+              ],
+              "gold_entity_titles": [
+                "person-karl-marx",
+                "work-capital-volume-i"
+              ]
+            },
+            {
+              "id": "q-mh-004",
+              "type": "multi_hop",
+              "question": "Qual filósofo inglês do empirismo influenciou os escritos de Thomas Jefferson e Jean-Jacques Rousseau sobre liberdade?",
+              "recall_10": 0.0,
+              "entity_recall_10": 0.5,
+              "gold_claim_ids": [
+                "claim-wiki-topic-john-locke-001",
+                "claim-wiki-topic-jean-jacques-rousseau-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-topic-discurso-sobre-a-origem-e-os-fundamentos-da-desigualdade-entre-os-homens-001",
+                "claim-wiki-topic-jean-jacques-rousseau-012",
+                "claim-wiki-topic-jean-jacques-rousseau-004",
+                "claim-wiki-topic-thomas-jefferson-002",
+                "claim-wiki-topic-jean-jacques-rousseau-009"
+              ],
+              "gold_entity_titles": [
+                "person-john-locke",
+                "wiki-topic-jean-jacques-rousseau"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "descoberta_ou_ranking_contestada",
+          "count": 4,
+          "examples": [
+            {
+              "id": "q-disc-002",
+              "type": "so_link_de_descoberta",
+              "question": "Há alguma relação historiográfica editorial documentando influência direta de John Rawls sobre a história constitucional do Brasil?",
+              "recall_10": 0.5,
+              "entity_recall_10": 0.5,
+              "gold_claim_ids": [
+                "claim-wiki-person-john-rawls-001",
+                "claim-country-brazil"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-person-john-rawls-002",
+                "claim-wiki-person-john-rawls-008",
+                "claim-wiki-person-john-rawls-012",
+                "claim-wiki-person-john-rawls-003",
+                "claim-wiki-person-john-rawls-010"
+              ],
+              "gold_entity_titles": [
+                "person-john-rawls",
+                "country-brazil"
+              ]
+            },
+            {
+              "id": "q-disc-003",
+              "type": "so_link_de_descoberta",
+              "question": "O acervo registra uma relação editorial de filiação ou influência entre Isaiah Berlin e o Comunismo além da conexão de navegação?",
+              "recall_10": 0.5,
+              "entity_recall_10": 0.5,
+              "gold_claim_ids": [
+                "claim-wiki-topic-isaiah-berlin-001",
+                "claim-wiki-topic-comunismo-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-topic-isaiah-berlin-010",
+                "claim-wiki-topic-isaiah-berlin-003",
+                "claim-wiki-topic-isaiah-berlin-008",
+                "claim-wiki-topic-isaiah-berlin-005",
+                "claim-wiki-topic-isaiah-berlin-007"
+              ],
+              "gold_entity_titles": [
+                "person-isaiah-berlin",
+                "ideology-communism"
+              ]
+            },
+            {
+              "id": "q-disc-009",
+              "type": "so_link_de_descoberta",
+              "question": "O acervo apresenta afirmações históricas relacionando diretamente o Ordoliberalismo à filosofia de Immanuel Kant?",
+              "recall_10": 0.5,
+              "entity_recall_10": 0.5,
+              "gold_claim_ids": [
+                "claim-wiki-topic-ordoliberalismo-001",
+                "claim-wiki-person-immanuel-kant-001"
+              ],
+              "retrieved_top5": [
+                "claim-wiki-person-immanuel-kant-005",
+                "claim-wiki-topic-arte-005",
+                "claim-wiki-person-immanuel-kant-008",
+                "claim-wiki-person-immanuel-kant-001",
+                "claim-wiki-person-immanuel-kant-004"
+              ],
+              "gold_entity_titles": [
+                "ideology-ordoliberalism",
+                "person-immanuel-kant"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
