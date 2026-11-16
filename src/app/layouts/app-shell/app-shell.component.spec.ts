@@ -28,6 +28,7 @@ describe('ATLAS navigation', () => {
     const destinations = [
       '/',
       '/leituras',
+      '/itinerarios',
       '/leitura/marxismo',
       '/leitura/liberalismo',
       '/leitura/social-democracia',

@@ -29,6 +29,7 @@ jobs:
       - run: npm test
       - run: npm run test:ingestion
       - run: npm run test:content
+      - run: npm run itinerary:check
       - name: Cache das capturas verificadas
         id: raw-cache
         uses: actions/cache/restore@v6

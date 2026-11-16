@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-trabalhismo-e-estado-social",
+  "slug": "trabalhismo-e-estado-social",
+  "kind": "historico",
+  "title": "Trabalhismo, Estado social e reformas no século XX",
+  "question": "Como projetos trabalhistas e social-democratas combinaram direitos do trabalho, industrialização e democracia representativa?",
+  "deck": "Um percurso histórico em seis paradas ligando o trabalhismo brasileiro, a Era Vargas e a social-democracia.",
+  "summary": "Acompanha a formação do trabalhismo no Brasil, suas lideranças centrais e os pontos de contato e diferença com a social-democracia europeia.",
+  "status": "pending",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Piloto histórico estruturado sobre entidades e leituras já compiladas; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "leitura-trabalhismo",
+      "title": "Trabalhismo: tradição, Estado e mundo do trabalho",
+      "reason": "Apresenta os conceitos, lideranças e controvérsias da tradição trabalhista.",
+      "question": "De que modo o trabalhismo articulou direitos sociais, sindicatos e projeto nacional?",
+      "destination": { "type": "leitura", "slug": "trabalhismo" }
+    },
+    {
+      "id": "marco-era-vargas",
+      "title": "Era Vargas: centralização estatal e legislação trabalhista",
+      "reason": "Situa o período histórico em que o Estado brasileiro institucionalizou o trabalho urbano e a indústria de base.",
+      "question": "Como a centralização política de 1930–1945 conviveu com a criação de direitos trabalhistas?",
+      "destination": { "type": "verbete", "slug": "era-vargas" },
+      "contextEntityId": "wiki-topic-era-vargas"
+    },
+    {
+      "id": "lideranca-vargas",
+      "title": "Getúlio Vargas: coalizão, tutela e conflito",
+      "reason": "Examina o papel de Vargas na construção do pacto trabalhista e suas crises até 1954.",
+      "question": "Por que a figura de Vargas concentra tanto apoio popular quanto resistência liberal e conservadora?",
+      "destination": { "type": "verbete", "slug": "getulio-vargas" },
+      "contextEntityId": "wiki-topic-getulio-vargas"
+    },
+    {
+      "id": "reformas-goulart",
+      "title": "João Goulart e as reformas de base",
+      "reason": "Mostra a radicalização democrática do trabalhismo nos anos 1960 antes da ruptura de 1964.",
+      "question": "Que propostas das reformas de base acirraram o conflito político no início da década de 1960?",
+      "destination": { "type": "verbete", "slug": "joao-goulart" },
+      "contextEntityId": "wiki-topic-joao-goulart"
+    },
+    {
+      "id": "contraste-social-democracia",
+      "title": "Social-democracia: bem-estar, regulação e parlamento",
+      "reason": "Compara a trajetória trabalhista brasileira com a construção do Estado de bem-estar europeu.",
+      "question": "O que aproxima e o que distingue o trabalhismo brasileiro da social-democracia europeia?",
+      "destination": { "type": "leitura", "slug": "social-democracia" }
+    },
+    {
+      "id": "rede-trabalhismo",
+      "title": "Ligações do trabalhismo no grafo",
+      "reason": "Permite inspecionar no mapa as relações entre lideranças, partidos, instituições e acontecimentos.",
+      "question": "Quais instituições e atores conectam o trabalhismo a outras tradições do acervo?",
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-getulio-vargas" }
+    }
+  ],
+  "branches": [
+    {
+      "id": "ramo-keynes",
+      "fromStop": "marco-era-vargas",
+      "title": "Fundamentos econômicos: John Maynard Keynes",
+      "reason": "Aproxima o papel anticíclico do Estado na economia do século XX.",
+      "question": "Como a macroeconomia keynesiana justificou o investimento público e a regulação?",
+      "destination": { "type": "verbete", "slug": "john-maynard-keynes" },
+      "convergesAt": "contraste-social-democracia"
+    },
+    {
+      "id": "ramo-brizola",
+      "fromStop": "reformas-goulart",
+      "title": "Leonel Brizola e a continuidade trabalhista",
+      "reason": "Permite seguir a atuação de Brizola no pré-1964 e na redemocratização.",
+      "question": "Como o trabalhismo se reorganizou após 1964 em torno da educação pública e da soberania?",
+      "destination": { "type": "verbete", "slug": "leonel-brizola" },
+      "exit": "Continua a leitura biográfica e histórica no verbete."
+    }
+  ],
+  "connections": [
+    {
+      "destination": { "type": "catalogo", "path": "acontecimentos" },
+      "reason": "Consultar os acontecimentos políticos ligados ao século XX no acervo."
+    }
+  ],
+  "sources": [],
+  "updatedAt": "2026-11-16",
+  "version": "1.0.0"
+}

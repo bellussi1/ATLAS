@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-criticas-aos-autoritarismos",
+  "slug": "criticas-aos-autoritarismos",
+  "kind": "conceitual",
+  "title": "Totalitarismo, partido único e crítica pluralista",
+  "question": "Como conceitos de totalitarismo, liberalismo e socialismo antiautoritário analisam regimes de partido único e mobilização de massa?",
+  "deck": "Um percurso conceitual em cinco paradas por leituras, verbetes e debates sobre regimes autoritários e totalitários.",
+  "summary": "Examina o conceito de totalitarismo, o caso do nazismo e as críticas liberais, anarquistas e antistalinistas ao monopólio do poder.",
+  "status": "pending",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Piloto conceitual estruturado sobre leituras e verbetes compilados; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "conceito-totalitarismo",
+      "title": "O conceito de totalitarismo e seus limites analíticos",
+      "reason": "Apresenta o conceito usado na ciência política e suas disputas historiográficas.",
+      "question": "Em que pontos a categoria totalitarismo esclarece ou simplifica regimes históricos distintos?",
+      "destination": { "type": "verbete", "slug": "totalitarismo" },
+      "contextEntityId": "wiki-topic-totalitarismo"
+    },
+    {
+      "id": "caso-nazismo",
+      "title": "Nazismo: racismo de Estado, violência e propaganda",
+      "reason": "Analisa a ideologia nacional-socialista e sua destruição das instituições democráticas.",
+      "question": "Como o nazismo combinou mobilização de massas, antisemitismo e terror estatal?",
+      "destination": { "type": "leitura", "slug": "nazismo" }
+    },
+    {
+      "id": "critica-anarquista-estado",
+      "title": "Anarquismo: a crítica radical à centralização do Estado",
+      "reason": "Mostra por que a tradição anarquista rejeita tanto a autocracia quanto a burocracia de partido único.",
+      "question": "Por que os anarquistas advertiram contra a concentração de poder mesmo em nome da revolução?",
+      "destination": { "type": "leitura", "slug": "anarquismo" }
+    },
+    {
+      "id": "critica-liberal-direitos",
+      "title": "Liberalismo: divisão de poderes e garantias individuais",
+      "reason": "Contrapõe ao poder ilimitado a exigência constitucional de freios, pluralismo e liberdades civis.",
+      "question": "Quais mecanismos institucionais o pensamento liberal propõe para conter o arbítrio estatal?",
+      "destination": { "type": "leitura", "slug": "liberalismo" }
+    },
+    {
+      "id": "rede-regimes",
+      "title": "Mapa de relações entre regimes, partidos e críticas",
+      "reason": "Abre o grafo para visualizar os vínculos documentados entre atores e tradições.",
+      "question": "Quais eventos e autores conectam as experiências autoritárias às suas críticas?",
+      "destination": { "type": "grafo" }
+    }
+  ],
+  "branches": [
+    {
+      "id": "ramo-esquerda-antistalinista",
+      "fromStop": "critica-anarquista-estado",
+      "title": "Esquerda antistalinista: divergências internas no campo socialista",
+      "reason": "Acompanha as correntes marxistas e socialistas que romperam com o modelo soviético sob Stalin.",
+      "question": "Como setores da própria esquerda contestaram o stalinismo a partir de reivindicações democráticas?",
+      "destination": { "type": "verbete", "slug": "esquerda-antistalinista" },
+      "convergesAt": "rede-regimes"
+    },
+    {
+      "id": "ramo-catalogo-regimes",
+      "fromStop": "caso-nazismo",
+      "title": "Consultar regimes políticos no acervo",
+      "reason": "Abre o catálogo tipado de regimes para comparação histórica.",
+      "question": "Quais regimes políticos estão documentados e classificados no acervo?",
+      "destination": { "type": "catalogo", "path": "regimes" },
+      "exit": "Saída direta para o catálogo de regimes."
+    }
+  ],
+  "connections": [
+    {
+      "destination": { "type": "catalogo", "path": "ideologias" },
+      "reason": "Explorar todas as tradições e correntes políticas registradas."
+    }
+  ],
+  "sources": [],
+  "updatedAt": "2026-11-16",
+  "version": "1.0.0"
+}
