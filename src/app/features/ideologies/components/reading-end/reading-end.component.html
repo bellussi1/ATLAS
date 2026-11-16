@@ -15,21 +15,12 @@
           <li [attr.data-lead]="card.lead ? 'true' : null" [attr.data-relation]="card.relation">
             <a class="end-card" [routerLink]="readingPath(card.slug)">
               <span class="end-card-media" aria-hidden="true">
-                @if (card.media; as media) {
-                  <img
-                    [src]="media.assetPath | contentMedia"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                  />
-                } @else {
-                  <app-geometric-mosaic
-                    [columns]="4"
-                    [rows]="3"
-                    [palette]="card.palette"
-                    [seed]="card.seed"
-                  />
-                }
+                <app-geometric-mosaic
+                  [columns]="4"
+                  [rows]="3"
+                  [palette]="card.palette"
+                  [seed]="card.seed"
+                />
               </span>
               <span class="end-card-copy">
                 <span class="end-card-relation">
@@ -49,28 +40,6 @@
     </nav>
   } @else {
     <p class="reading-empty">Não há outra leitura publicada neste recorte.</p>
-  }
-
-  @if (credits().length) {
-    <details class="end-credits">
-      <summary>Imagens e créditos</summary>
-      <ul>
-        @for (credit of credits(); track credit.label) {
-          <li>
-            <strong>{{ credit.label }}</strong>
-            <span>{{ credit.media.creator ?? credit.media.attribution }}</span>
-            @if (credit.media.licenseUrl; as licenseUrl) {
-              <a [href]="licenseUrl" target="_blank" rel="noopener noreferrer">{{
-                credit.media.license
-              }}</a>
-            }
-            @if (credit.media.filePageUrl; as filePageUrl) {
-              <a [href]="filePageUrl" target="_blank" rel="noopener noreferrer">Ver o arquivo</a>
-            }
-          </li>
-        }
-      </ul>
-    </details>
   }
 
   <p class="reading-end-home">

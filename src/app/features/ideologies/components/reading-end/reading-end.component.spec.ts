@@ -61,21 +61,13 @@ describe('Ideology reading end', () => {
     expect(root.querySelector('li[data-lead="true"] + li')?.textContent).toContain('Anarquismo');
   });
 
-  it('uses a geometric composition when a path has no licensed picture', () => {
-    const fixture = setup([connection()]);
-    const media = fixture.nativeElement.querySelector('.end-card-media') as HTMLElement;
-    expect(media.querySelector('img')).toBeNull();
-    expect(media.querySelector('app-geometric-mosaic')).not.toBeNull();
-  });
-
-  it('lists licensed images and credits outside the clickable cards', () => {
+  it('uses geometric compositions for every path card, even when an imageEntityId exists', () => {
     const fixture = setup([connection({ imageEntityId: 'ideology-liberalism' })]);
     const root = fixture.nativeElement as HTMLElement;
-    expect(root.querySelector('.end-card-media img')).not.toBeNull();
-    const credits = root.querySelector('.end-credits')!;
-    expect(credits.textContent).toContain('Liberalismo');
-    expect(credits.querySelectorAll('a')).toHaveLength(2);
-    expect(root.querySelector('.end-card .end-credits')).toBeNull();
+    const media = root.querySelector('.end-card-media') as HTMLElement;
+    expect(media.querySelector('img')).toBeNull();
+    expect(media.querySelector('app-geometric-mosaic')).not.toBeNull();
+    expect(root.querySelector('.end-credits')).toBeNull();
   });
 
   it('explains an empty ending without inventing a path', () => {
