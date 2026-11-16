@@ -233,9 +233,13 @@ a.atlas-link--feature {
 .atlas-band-heading em {
   color: var(--color-accent);
   font-family: var(--font-display-contrast);
+  font-size: 0.905em;
   font-style: normal;
   font-weight: 900;
-  font-stretch: 75%;
+  font-stretch: 92%;
+  font-variation-settings:
+    'wght' 900,
+    'wdth' 92;
   letter-spacing: -0.02em;
   word-spacing: 0.08em;
 }
