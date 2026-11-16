@@ -233,10 +233,10 @@ a.atlas-link--feature {
 .atlas-band-heading em {
   color: var(--color-accent);
   font-family: var(--font-display-contrast);
-  font-style: italic;
-  font-weight: 900;
+  font-style: normal;
+  font-weight: 800;
   font-stretch: 100%;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.03em;
 }
 @media (max-width: 60rem) {
   .atlas-band-heading {

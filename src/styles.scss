@@ -54,25 +54,17 @@
 }
 
 @font-face {
-  font-family: 'Bodoni Moda';
-  src: url('/fonts/BodoniModa-Bold.woff2') format('woff2');
+  font-family: 'Syne';
+  src: url('/fonts/Syne-ExtraBold.woff2') format('woff2');
   font-style: normal;
-  font-weight: 700 900;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Bodoni Moda';
-  src: url('/fonts/BodoniModa-BoldItalic.woff2') format('woff2');
-  font-style: italic;
-  font-weight: 700 900;
+  font-weight: 700 800;
   font-display: swap;
 }
 
 :root {
   color-scheme: light;
-  --font-primary: 'Archivo', 'Segoe UI', sans-serif;
-  --font-display-contrast: 'Bodoni Moda', Georgia, serif;
+  --font-primary: 'Zilla Slab', Georgia, serif;
+  --font-display-contrast: 'Syne', 'Segoe UI', sans-serif;
   font-family: var(--font-primary);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -119,10 +111,9 @@
   --color-desk-card: #efe8d6;
   --color-desk-line: #5f5e59;
   --font-sans: var(--font-primary);
-  /* Archivo width axis: condensed display, expanded labels. */
-  --stretch-display: 82%;
-  --stretch-label: 112%;
-  --tracking-display: -0.03em;
+  --stretch-display: 100%;
+  --stretch-label: 100%;
+  --tracking-display: -0.02em;
   --font-serif: var(--font-primary);
   --font-mono: var(--font-primary);
   --text-micro: 0.6875rem;
@@ -170,13 +161,6 @@
   --rule-strong: var(--color-border-strong);
   --signal: var(--color-accent);
   --serif: var(--font-primary);
-}
-
-html[data-font='zilla'] {
-  --font-primary: 'Zilla Slab', Georgia, serif;
-  --stretch-display: 100%;
-  --stretch-label: 100%;
-  --tracking-display: -0.02em;
 }
 
 *,

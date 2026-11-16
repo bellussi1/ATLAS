@@ -9,7 +9,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { readingPath } from '@core/routing/reading-routes';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
@@ -70,7 +70,6 @@ const compiledHome = homeStats as HomeData;
 })
 export class HomePage {
   private readonly router = inject(Router);
-  private readonly route = inject(ActivatedRoute);
   private readonly document = inject(DOCUMENT);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
@@ -82,9 +81,6 @@ export class HomePage {
   );
   readonly query = signal('');
   readonly seed = signal(7);
-  readonly fontVariant = signal<'archivo' | 'zilla'>(
-    this.route.snapshot.queryParamMap.get('fonte') === 'zilla' ? 'zilla' : 'archivo',
-  );
   /** Catalogues offered on the home page; the search page lists the rest. */
   readonly catalogues = explorerCatalogues.filter((catalogue) =>
     ['pessoas', 'obras', 'paises', 'acontecimentos', 'conceitos', 'fontes'].includes(
@@ -105,10 +101,6 @@ export class HomePage {
   private selectionMotion?: Animation;
 
   constructor() {
-    this.applyFontVariant(this.fontVariant());
-    this.destroyRef.onDestroy(() => {
-      this.document.documentElement.removeAttribute('data-font');
-    });
     afterNextRender(() => {
       const win = this.document.defaultView;
       if (!win || typeof win.requestAnimationFrame !== 'function') return;
@@ -191,25 +183,10 @@ export class HomePage {
   recompose(): void {
     this.seed.update((seed) => (seed * 31 + 17) % 9973);
   }
-  setFontVariant(variant: 'archivo' | 'zilla'): void {
-    this.fontVariant.set(variant);
-    this.applyFontVariant(variant);
-    void this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: { fonte: variant === 'zilla' ? 'zilla' : null },
-      queryParamsHandling: 'merge',
-      replaceUrl: true,
-    });
-  }
   search(event: Event): void {
     event.preventDefault();
     void this.router.navigate(['/acervo'], {
       queryParams: { q: this.query().trim() || null },
     });
-  }
-  private applyFontVariant(variant: 'archivo' | 'zilla'): void {
-    const root = this.document.documentElement;
-    if (variant === 'zilla') root.setAttribute('data-font', 'zilla');
-    else root.removeAttribute('data-font');
   }
 }

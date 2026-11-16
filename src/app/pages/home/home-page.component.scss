@@ -13,35 +13,6 @@
   align-items: stretch;
   padding: clamp(1.5rem, 4vw, 3.5rem) var(--home-inline) clamp(2rem, 4vw, 3rem);
 }
-.font-ab {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem 0.55rem;
-  margin-bottom: 0.9rem;
-  padding: 0.35rem 0.65rem;
-  border: 1.5px solid var(--color-ink);
-  background: var(--color-surface-raised);
-  width: fit-content;
-}
-.font-ab__label,
-.font-ab__contrast {
-  color: var(--color-ink-muted);
-  font: 600 var(--text-caption) / 1.2 var(--font-sans);
-}
-.font-ab__btn {
-  min-height: 2rem;
-  padding: 0.2rem 0.6rem;
-  border: 1.5px solid var(--color-ink);
-  background: var(--color-canvas);
-  color: var(--color-ink);
-  font: 650 var(--text-caption) / 1 var(--font-sans);
-  cursor: pointer;
-}
-.font-ab__btn[aria-pressed='true'] {
-  background: var(--color-ink);
-  color: var(--color-canvas);
-}
 h1 {
   margin: 0;
   font: 800 clamp(4.25rem, 15vw, 13.5rem) / 0.82 var(--font-sans);
@@ -51,10 +22,10 @@ h1 {
 h1 em {
   color: var(--color-accent);
   font-family: var(--font-display-contrast);
-  font-style: italic;
-  font-weight: 900;
+  font-style: normal;
+  font-weight: 800;
   font-stretch: 100%;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.03em;
 }
 h1 .line {
   display: block;
@@ -673,10 +644,10 @@ form {
   &:nth-child(3) strong,
   &:nth-child(8) strong {
     font-family: var(--font-display-contrast);
-    font-style: italic;
-    font-weight: 900;
-    font-size: clamp(1.55rem, 2.5vw, 2.15rem);
-    letter-spacing: -0.02em;
+    font-style: normal;
+    font-weight: 800;
+    font-size: clamp(1.45rem, 2.3vw, 1.95rem);
+    letter-spacing: -0.03em;
   }
   &:not(.door--wide) strong {
     text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
