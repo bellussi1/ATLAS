@@ -78,6 +78,7 @@
             <a
               class="nav__link"
               routerLink="/acervo"
+              [queryParams]="{ camada: 'registros' }"
               [class.is-active]="section() === 'acervo'"
               [attr.aria-current]="section() === 'acervo' ? 'page' : null"
               (pointerenter)="warmArchive()"

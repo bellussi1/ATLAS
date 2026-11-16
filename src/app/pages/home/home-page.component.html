@@ -32,7 +32,11 @@
       siga a próxima conexão — sempre com a fonte por perto.
     </p>
     <div class="poster-actions" aria-label="Acesso rápido">
-      <a class="poster-door poster-door--acervo atlas-press" routerLink="/acervo">
+      <a
+        class="poster-door poster-door--acervo atlas-press"
+        routerLink="/acervo"
+        [queryParams]="{ camada: 'registros' }"
+      >
         <span class="poster-door__glyph poster-door__glyph--square" aria-hidden="true"></span>
         <span>
           <strong>Explorar o acervo</strong>
@@ -216,7 +220,7 @@
   </header>
   <ul class="doors" appReveal>
     <li class="door door--wide door--search" data-stagger style="--stagger: 0">
-      <a routerLink="/acervo">
+      <a routerLink="/acervo" [queryParams]="{ camada: 'registros' }">
         <span class="door-glyph" aria-hidden="true"></span>
         <strong>Acervo completo</strong>
         <span class="door-note">Busque em todas as fichas de uma vez, com filtros por tipo.</span>

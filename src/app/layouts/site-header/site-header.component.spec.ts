@@ -31,7 +31,7 @@ describe('SiteHeaderComponent', () => {
     expect(root.querySelector('a.brand img')?.getAttribute('src')).toBe('/brand/atlas-logo.svg');
     expect(links(root)).toEqual(['Leituras', 'Acervo', 'Grafo', 'Como usar']);
     expect(root.querySelector('a[href="/grafos"]')).not.toBeNull();
-    expect(root.querySelector('a[href="/acervo"]')).not.toBeNull();
+    expect(root.querySelector('a[href="/acervo?camada=registros"]')).not.toBeNull();
   });
 
   it('opens the readings menu with the four continuous readings', () => {
@@ -67,7 +67,7 @@ describe('SiteHeaderComponent', () => {
     expect(root.querySelector('a[href="/grafos"]')?.getAttribute('aria-current')).toBe('page');
     await router.navigateByUrl('/acervo');
     fixture.detectChanges();
-    expect(root.querySelector('a[href="/acervo"].nav__link')?.getAttribute('aria-current')).toBe(
+    expect(root.querySelector('a[href^="/acervo"].nav__link')?.getAttribute('aria-current')).toBe(
       'page',
     );
   });

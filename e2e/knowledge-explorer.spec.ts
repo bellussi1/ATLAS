@@ -38,15 +38,19 @@ test('the universal archive separates records, sources and readings into layers'
   page,
 }) => {
   await page.goto('/acervo');
+  await expect(page).toHaveURL(/\/acervo\?camada=registros$/);
   const nav = page.getByRole('navigation', { name: 'Catálogos do acervo' });
-  await expect(nav.getByRole('link', { name: 'Tudo' })).toHaveAttribute('aria-current', 'page');
+  await expect(nav.getByRole('link', { name: 'Registros' })).toHaveAttribute(
+    'aria-current',
+    'page',
+  );
   await nav.getByRole('link', { name: 'Fontes' }).click();
   await expect(page).toHaveURL(/\/acervo\/fontes$/);
   await expect(page.locator('.source-row').first()).toBeVisible();
   await expect(page.locator('.results--cards')).toHaveCount(0);
   await expect(nav.getByRole('link', { name: 'Fontes' })).toHaveAttribute('aria-current', 'page');
   await nav.getByRole('link', { name: 'Tudo' }).click();
-  await expect(page).not.toHaveURL(/camada=/);
+  await expect(page).toHaveURL(/camada=tudo/);
   await expect(page.locator('.record-row').first()).toBeVisible();
 });
 

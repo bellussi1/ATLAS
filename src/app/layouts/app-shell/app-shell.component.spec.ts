@@ -36,7 +36,7 @@ describe('ATLAS navigation', () => {
     ];
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))
       if (a.origin === location.origin) expect(destinations).toContain(a.pathname);
-    expect(root.querySelector('header a[href="/acervo"]')).not.toBeNull();
+    expect(root.querySelector('header a[href="/acervo?camada=registros"]')).not.toBeNull();
     expect(root.querySelector('footer a[href="/acervo/pessoas"]')).not.toBeNull();
   });
   it('keeps an unknown address and says it was not found', async () => {

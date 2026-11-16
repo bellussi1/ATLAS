@@ -88,6 +88,10 @@ export class ExplorerComponent {
   readonly showLayers = this.catalogue.path === 'acervo';
   readonly layer = computed(() => {
     const value = this.params().get('camada') ?? '';
+    if (value === 'tudo') return '';
+    if (!value && this.catalogue.path === 'acervo' && !this.params().get('q')) {
+      return 'registros';
+    }
     return explorerLayers.some((item) => item.id === value) ? value : '';
   });
   readonly isUniversal = computed(() => this.catalogue.path === 'acervo' && !this.layer());
@@ -202,6 +206,7 @@ export class ExplorerComponent {
   readonly unknownLayer = computed(
     () =>
       !!this.params().get('camada') &&
+      this.params().get('camada') !== 'tudo' &&
       !explorerLayers.some((layer) => layer.id === this.params().get('camada')),
   );
   readonly unknownState = computed(
@@ -264,6 +269,7 @@ export class ExplorerComponent {
         this.document.defaultView?.matchMedia('(max-width: 47.99rem)').matches ?? false,
       );
       this.syncFromLocation();
+      this.ensureDefaultLayer();
       setTimeout(() => this.syncFromLocation(), 0);
       setTimeout(() => this.syncFromLocation(), 120);
     });
@@ -291,6 +297,7 @@ export class ExplorerComponent {
         const fromLocation = Object.fromEntries(new URLSearchParams(search));
         const fromRouter = this.router.parseUrl(event.urlAfterRedirects).queryParams;
         this.params.set(convertToParamMap({ ...fromRouter, ...fromLocation }));
+        this.ensureDefaultLayer();
         setTimeout(() => this.syncFromLocation(), 0);
       }
       if (event instanceof Scroll && this.keptScrollY !== null) {
@@ -436,6 +443,17 @@ export class ExplorerComponent {
   private syncFromLocation(): void {
     const params = Object.fromEntries(new URLSearchParams(this.document.location.search));
     this.params.set(convertToParamMap(params));
+  }
+  /** Opening /acervo without a layer lands on ?camada=registros unless a search query is active. */
+  private ensureDefaultLayer(): void {
+    if (this.catalogue.path !== 'acervo') return;
+    if (this.params().has('camada') || this.params().has('q')) return;
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { camada: 'registros' },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
   }
   private queryString(): string {
     const params = new URLSearchParams();
