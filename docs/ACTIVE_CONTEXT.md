@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Itinerários: mapa SVG interativo, cores editoriais, animações e mesa de estudo (16/11, `develop`):**
+  - Conteúdo dos três itinerários publicados (`trabalhismo-e-estado-social`, `comparativo-liberdade`, `criticas-aos-autoritarismos`) enriquecido com `justification` em paradas/ramos, `sourceIds` vinculados a `sources` reais e até 3 `connections` cada (`npm run itinerary:check`: 4 conferidos, 0 verificados, 3 por IA).
+  - `ItineraryPageComponent` ganhou diagrama SVG interativo com arcos de ramificação animados (`roadmap-diagram`), codificação cromática por tipo de parada (`leitura`, `verbete`, `grafo`, `catalogo`) e por tipo de itinerário, resumo vivo e contagem de ligações via `ContentRepository`, prévia de ficha (`ContextPanelService`) e mesa lateral fixa (`roadmap-desk`) com navegação `← Anterior` / `Próxima →`.
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm test` (**380/380**), `npm run build` (**1.280** rotas prerenderizadas) e `npx playwright test e2e/itineraries.spec.ts` (**5/5**) passando.
+
 - **Expansão do grafo com LLM local — foco 100% Brasil (16/11, `develop`):**
   - `scripts/content/expand-graph-llm.mjs` ampliado com `--focus brazil` (aceitando história, geografia, política, partidos, ideologias, eventos, eras e projetos brasileiros, incluindo lugares/estados/cidades do Brasil quando sustentados por passagem citada, e IDs com hash SHA-1 sem colisão).
   - Execução com `gemma2:9b-instruct-q4_K_M` (`--focus brazil --limit 400`): **2.194** pares candidatos identificados; **400** avaliados, **362** relações promovidas com marcador `[conferência de IA]` e **38** rejeitadas; auditoria salva em `experiments/rag/eval/runs/expand_graph_llm_brazil.json`.

@@ -26,10 +26,17 @@ test('trabalhismo roadmap renders connected stops, branches and overview without
       name: /Trabalhismo, Estado social e reformas no século XX/i,
     }),
   ).toBeVisible();
-  await expect(page.locator('.roadmap-overview')).toBeVisible();
+  await expect(page.locator('.roadmap-diagram')).toBeVisible();
+  await expect(page.locator('.roadmap-desk')).toBeVisible();
   await expect(page.locator('.roadmap-track .stop')).toHaveCount(6);
   await expect(page.locator('.roadmap-track .branch')).toHaveCount(2);
   await expect(page.locator('.roadmap-connector')).toHaveCount(5);
+
+  await page
+    .locator('.roadmap-desk')
+    .getByRole('button', { name: /Próxima/i })
+    .click();
+  await expect(page.locator('.roadmap-desk')).toContainText('Parada 2 / 6');
 
   await page.setViewportSize({ width: 320, height: 640 });
   const overflow = await page.evaluate(

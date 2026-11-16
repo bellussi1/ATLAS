@@ -5,56 +5,67 @@
   "kind": "comparativo",
   "title": "Liberalismo e socialismo: liberdade, propriedade e Estado",
   "question": "Como tradições políticas distintas respondem ao conflito entre liberdade individual, propriedade e ação estatal?",
-  "deck": "Um percurso comparativo em seis paradas pelas quatro leituras contínuas e pelo mapa de relações.",
-  "summary": "Compara as respostas do liberalismo, do marxismo, da social-democracia e do anarquismo sobre liberdade, trabalho, propriedade e papel do Estado.",
+  "deck": "Um percurso comparativo em seis paradas atravessando quatro leituras contínuas — liberalismo, marxismo, social-democracia e anarquismo — até a rede de autores e disputas no grafo.",
+  "summary": "Compara passo a passo como diferentes tradições políticas definem liberdade, legitimam ou criticam a propriedade privada e delimitam o papel do Estado na economia e na cidadania.",
   "status": "reviewed-ai",
   "coverage": "complete",
   "review": {
     "status": "assistant",
-    "notes": "[conferência de IA] Piloto comparativo da Fase 3 estruturado a partir da fixture validada; aguarda revisão humana para promoção a verified."
+    "notes": "[conferência de IA] Percurso comparativo estruturado e enriquecido sobre leituras e verbetes compilados; aguarda revisão humana para promoção a verified."
   },
   "stops": [
     {
       "id": "problema-liberdade",
       "title": "O problema: quem define liberdade, e para quem?",
-      "reason": "Fixa o conceito central antes de comparar como cada tradição o redefine.",
+      "reason": "Fixa o eixo conceitual antes da comparação: a diferença entre liberdade como não interferência jurídica e liberdade como capacidade efetiva condicionada por recursos materiais.",
       "question": "A liberdade exige apenas ausência de coerção estatal ou também condições materiais?",
+      "justification": "Estabelece o critério comum de comparação para evitar que cada tradição seja lida de forma isolada.",
       "destination": { "type": "verbete", "slug": "liberalism" },
-      "contextEntityId": "ideology-liberalism"
+      "contextEntityId": "ideology-liberalism",
+      "sourceIds": ["src-verbete-liberalism"]
     },
     {
       "id": "tradicao-liberal",
       "title": "Liberalismo: liberdade, propriedade e limites do Estado",
-      "reason": "Apresenta o argumento clássico que vincula direitos individuais, contrato e mercado.",
+      "reason": "Apresenta o argumento clássico que vincula direitos individuais, contrato voluntário, divisão de poderes e proteção da propriedade contra o arbítrio político.",
       "question": "Por que a proteção da propriedade aparece como garantia contra o arbítrio político?",
-      "destination": { "type": "leitura", "slug": "liberalismo" }
+      "justification": "Mostra a formulação original contra a qual as correntes socialistas e anarquistas reagiram no século XIX.",
+      "destination": { "type": "leitura", "slug": "liberalismo" },
+      "sourceIds": ["src-leitura-liberalismo"]
     },
     {
       "id": "critica-marxista",
       "title": "Marxismo: trabalho, valor e emancipação",
-      "reason": "Contrapõe a igualdade jurídica formal à dependência material na produção.",
+      "reason": "Contrapõe a igualdade jurídica do contrato à assimetria material da produção capitalista, investigando como exploração e alienação operam mesmo sem coação jurídica direta.",
       "question": "Em que sentido o contrato livre de trabalho pode coexistir com dominação econômica?",
-      "destination": { "type": "leitura", "slug": "marxismo" }
+      "justification": "Introduz a virada crítica da economia política e da luta de classes sobre o conceito liberal de liberdade.",
+      "destination": { "type": "leitura", "slug": "marxismo" },
+      "sourceIds": ["src-leitura-marxismo"]
     },
     {
       "id": "compromisso-social-democrata",
       "title": "Social-democracia: reforma, Estado e bem-estar",
-      "reason": "Mostra a via que mantém mercado e democracia representativa sob regulação social.",
+      "reason": "Examina a resposta reformista que preserva eleições multipartidárias e propriedade privada, mas submete o mercado a tributação progressiva, direitos trabalhistas e seguridade universal.",
       "question": "Como políticas redistributivas buscam conciliar propriedade privada e cidadania social?",
-      "destination": { "type": "leitura", "slug": "social-democracia" }
+      "justification": "Apresenta a tentativa histórica de mediação institucional entre a tradição liberal e a crítica socialista.",
+      "destination": { "type": "leitura", "slug": "social-democracia" },
+      "sourceIds": ["src-leitura-social-democracia"]
     },
     {
       "id": "recusa-anarquista",
       "title": "Anarquismo: o Estado como problema",
-      "reason": "Completa o arco comparativo ao recusar tanto o mercado capitalista quanto o Estado centralizado.",
+      "reason": "Completa o arco comparativo ao recusar tanto a propriedade capitalista quanto a centralização estatal, propondo federações autogestionárias e associação livre sem hierarquia coercitiva.",
       "question": "Que formas de coordenação substituem a autoridade estatal sem recorrer à propriedade privada?",
-      "destination": { "type": "leitura", "slug": "anarquismo" }
+      "justification": "Tensiona a própria premissa do Estado como árbitro neutro ou instrumento de emancipação.",
+      "destination": { "type": "leitura", "slug": "anarquismo" },
+      "sourceIds": ["src-leitura-anarquismo"]
     },
     {
       "id": "convergencia-rede",
       "title": "Convergência: autores, obras e disputas no grafo",
-      "reason": "Permite visualizar as ligações documentadas entre as tradições percorridas.",
+      "reason": "Reúne no mapa interativo as influências, rupturas e controvérsias documentadas entre pensadores, obras fundadoras e movimentos das quatro tradições.",
       "question": "Quais autores e acontecimentos conectam essas respostas em momentos de ruptura?",
+      "justification": "Permite verificar empiricamente no acervo onde as tradições se cruzaram ou entraram em conflito.",
       "destination": { "type": "grafo" }
     }
   ],
@@ -63,8 +74,9 @@
       "id": "ramo-smith-marx",
       "fromStop": "tradicao-liberal",
       "title": "O elo clássico do valor: Adam Smith e Karl Marx",
-      "reason": "Aprofunda a passagem da economia política clássica para a crítica do valor.",
+      "reason": "Aprofunda a passagem da economia política clássica de Adam Smith para a crítica do valor-trabalho e da acumulação em Karl Marx.",
       "question": "O que Marx herda e o que inverte na teoria do valor de Adam Smith?",
+      "justification": "Mostra a continuidade teórica interna entre o pensamento econômico liberal clássico e sua crítica marxista.",
       "destination": { "type": "verbete", "slug": "adam-smith" },
       "convergesAt": "critica-marxista"
     },
@@ -72,8 +84,9 @@
       "id": "ramo-fontes-comparativas",
       "fromStop": "compromisso-social-democrata",
       "title": "Consultar as fontes do acervo",
-      "reason": "Abre diretamente o catálogo de fontes para conferência documental.",
+      "reason": "Abre diretamente o catálogo de fontes para conferir obras, documentos históricos e referências bibliográficas que sustentam as quatro tradições.",
       "question": "Quais fontes primárias e secundárias sustentam as leituras comparadas?",
+      "justification": "Facilita a verificação documental autônoma pelo leitor.",
       "destination": { "type": "catalogo", "path": "fontes" },
       "exit": "Saída direta para consulta documental no catálogo de fontes."
     }
@@ -82,9 +95,38 @@
     {
       "destination": { "type": "catalogo", "path": "ideologias" },
       "reason": "Ver todas as tradições e registros de ideologias no acervo."
+    },
+    {
+      "destination": { "type": "catalogo", "path": "conceitos" },
+      "reason": "Investigar verbetes de conceitos políticos e econômicos relacionados."
+    },
+    {
+      "destination": { "type": "catalogo", "path": "obras" },
+      "reason": "Consultar obras clássicas citadas ao longo das quatro tradições."
     }
   ],
-  "sources": [],
+  "sources": [
+    {
+      "id": "src-verbete-liberalism",
+      "title": "ATLAS — Verbete Liberalism (conceito, registros e ligações)"
+    },
+    {
+      "id": "src-leitura-liberalismo",
+      "title": "ATLAS — Leitura contínua: Liberalismo"
+    },
+    {
+      "id": "src-leitura-marxismo",
+      "title": "ATLAS — Leitura contínua: Marxismo"
+    },
+    {
+      "id": "src-leitura-social-democracia",
+      "title": "ATLAS — Leitura contínua: Social-democracia"
+    },
+    {
+      "id": "src-leitura-anarquismo",
+      "title": "ATLAS — Leitura contínua: Anarquismo"
+    }
+  ],
   "updatedAt": "2026-11-16",
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
