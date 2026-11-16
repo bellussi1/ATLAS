@@ -32,6 +32,7 @@ import {
   guardExtraction,
   relationKey,
 } from './guards.mjs';
+import { createOllamaClient, DEFAULT_LOCAL_MODEL, isLocalModel } from './local-client.mjs';
 import {
   defaultModel,
   maxOutputTokens,
@@ -720,13 +721,17 @@ export async function main(argv = process.argv.slice(2)) {
       model: { type: 'string' },
       'relation-model': { type: 'string' },
       'relation-effort': { type: 'string' },
+      provider: { type: 'string', default: 'anthropic' },
+      'local-model': { type: 'string', default: DEFAULT_LOCAL_MODEL },
       limit: { type: 'string' },
       only: { type: 'string' },
     },
   });
   const [slug] = positionals;
   if (!/^[a-z][a-z0-9-]*$/.test(slug ?? ''))
-    throw new Error('Uso: tradicao:extract <slug> [--dry-run] [--max-usd N]');
+    throw new Error(
+      'Uso: tradicao:extract <slug> [--dry-run] [--provider local|anthropic] [--max-usd N]',
+    );
   const paths = workPaths(projectRoot, slug);
   const allRecords = await loadRecords(paths.articles);
   let records = allRecords;
@@ -735,10 +740,16 @@ export async function main(argv = process.argv.slice(2)) {
     records = records.filter((record) => only.has(record.id));
   }
   if (values.limit) records = records.slice(0, Number(values.limit));
-  const options = chosenOptions(
-    await readJson(join(projectRoot, 'scripts/tradicao/model-choice.json')).catch(() => null),
-    values,
-  );
+  const useLocal = values.provider === 'local';
+  const localTag = isLocalModel(values['local-model'])
+    ? values['local-model']
+    : `local:${values['local-model']}`;
+  const options = useLocal
+    ? { model: localTag, effort: 'low', relationModel: localTag, relationEffort: 'low' }
+    : chosenOptions(
+        await readJson(join(projectRoot, 'scripts/tradicao/model-choice.json')).catch(() => null),
+        values,
+      );
   const loadStateFile = () => loadState(projectRoot, slug);
   if (values['dry-run']) {
     const plan = planRun({
@@ -747,24 +758,34 @@ export async function main(argv = process.argv.slice(2)) {
       retryFailed: values['retry-failed'],
       ...options,
     });
-    console.log(`[dry-run] ${records.length} artigos locais de ${slug}. Nenhuma chamada à API.`);
+    console.log(
+      `[dry-run] ${records.length} artigos locais de ${slug} (${useLocal ? `provider local ${localTag}` : 'API Anthropic'}).`,
+    );
     console.log(renderPlan(plan, options));
     return 0;
   }
-  if (!process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN)
-    throw new Error('Defina ANTHROPIC_API_KEY no ambiente antes de extrair.');
-  const { default: Anthropic } = await import('@anthropic-ai/sdk');
+  let client;
+  if (useLocal) {
+    client = createOllamaClient();
+  } else {
+    if (!process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN)
+      throw new Error(
+        'Defina ANTHROPIC_API_KEY no ambiente antes de extrair (ou use --provider local).',
+      );
+    const { default: Anthropic } = await import('@anthropic-ai/sdk');
+    client = new Anthropic();
+  }
   const { state, spent } = await runExtraction({
     records,
     allRecords,
     stateFile: paths.state,
     outDirectory: paths.out,
     responsesDirectory: paths.responses,
-    client: new Anthropic(),
-    maxUsd: Number(values['max-usd']),
+    client,
+    maxUsd: useLocal ? 0 : Number(values['max-usd']),
     maxTotalUsd: Number(values['max-total-usd']),
     spentBefore: await totalSpent(projectRoot),
-    sync: values.sync,
+    sync: useLocal || values.sync,
     retryFailed: values['retry-failed'],
     loadStateFile,
     ...options,
