@@ -45,7 +45,7 @@ const redirects = new Set(
     .map((line) => line.split(/\s+/)[0].replace(/\/$/, '')),
 );
 // Preview readings are reachable by direct URL but stay out of the sitemap until they are listed.
-const previews = new Set(['/leitura/nazismo', '/leitura/stalinismo', '/leitura/trabalhismo']);
+const previews = new Set(['/leitura/stalinismo']);
 for (const file of await collect(root)) {
   const route = routeOf(file);
   if (

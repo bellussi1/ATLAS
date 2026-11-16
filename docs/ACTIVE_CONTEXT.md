@@ -20,7 +20,7 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 - **Triagem de IA + pendências P1/E2E (16/11, `develop`):**
   - `npm run rag:triage`: **569** itens triados por IA (`relacoes-candidatas.json`: 80; `debates-e-contradicoes.json`: 37; `deduplicacao-entidades.json`: 6; `fontes-publicas-extraidas.json`: 446), preservando `ok: null` e `human_ok: null` (gate humano exclusivo).
-  - **#75 (`noindex` em prévias `unlisted`):** `scripts/seo.mjs` injeta `<meta name="robots" content="noindex">` nos HTMLs de `/leitura/nazismo`, `/leitura/stalinismo` e `/leitura/trabalhismo`; `IdeologyPageComponent` atualiza/remove a meta tag no cliente.
+  - **#75 (`noindex` em prévias `unlisted`):** `scripts/seo.mjs` injeta `<meta name="robots" content="noindex">` no HTML da prévia restante (`/leitura/stalinismo`); `IdeologyPageComponent` atualiza/remove a meta tag no cliente. `nazismo` e `trabalhismo` foram promovidas de `unlisted` (0 capítulos pendentes; selo honesto de rascunho/IA preservado), enquanto `stalinismo` permanece `unlisted: true` pelos 2 capítulos pendentes (`origens` e `principios`).
   - **#76 (`public/_redirects`):** adicionadas regras `301` com barra final (`/slug/ ... 301`) para paridade no Cloudflare Pages.
   - **#78 (bibliografia das prévias):** `scripts/tradicao/reading.mjs` agrega todas as fontes dos capítulos na seção `fontes` (`nazismo`: 38, `stalinismo`: 32, `trabalhismo`: 46 fontes após estágio 8 `--force`).
   - **Itinerário comparativo (Fase 3):** `content/itineraries/comparativo-liberdade.json` criado com `status: "pending"` e `review.status: "assistant"` (`[conferência de IA]`); `npm run itinerary:check` (**2** arquivos, **0** verificados).

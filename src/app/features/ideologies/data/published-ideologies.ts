@@ -29,7 +29,6 @@ export const publishedIdeologies: Readonly<Record<string, PublishedIdeologySourc
   nazismo: {
     page: 'content/ideologies/nazismo/page.json',
     supplement: 'content/graph/nazismo.json',
-    unlisted: true,
   },
   stalinismo: {
     page: 'content/ideologies/stalinismo/page.json',
@@ -39,6 +38,5 @@ export const publishedIdeologies: Readonly<Record<string, PublishedIdeologySourc
   trabalhismo: {
     page: 'content/ideologies/trabalhismo/page.json',
     supplement: 'content/graph/trabalhismo.json',
-    unlisted: true,
   },
 };
