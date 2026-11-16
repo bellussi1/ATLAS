@@ -163,6 +163,7 @@ function chapterContents(entity, claims, related, source) {
 
   const origem = by('Origem');
   const contextoFallback = by('Contexto');
+  const factFallback = claims.filter((c) => c.classification === 'documented-fact');
   make.origens = origem.length
     ? section(origem, 'origem', 'Origem', 'Origens e formação')
     : contextoFallback.length
@@ -171,7 +172,13 @@ function chapterContents(entity, claims, related, source) {
           partial:
             'Usa passagens de contexto histórico porque a fonte principal não separa uma seção de origens.',
         }
-      : pending('Nenhuma passagem do grafo trata da origem desta ideologia.');
+      : factFallback.length
+        ? {
+            ...section(factFallback.slice(0, 3), 'origem', 'Marco histórico', 'Origens e formação'),
+            partial:
+              'Usa fatos documentados da fonte principal porque não há seção separada de origens no grafo.',
+          }
+        : pending('Nenhuma passagem do grafo trata da origem desta ideologia.');
 
   const ideias = by('Ideias centrais');
   const conceitualFallback = claims.filter((c) => !c.heading && c.text && c.text.length > 40);

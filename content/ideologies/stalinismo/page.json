@@ -43,15 +43,62 @@
       "title": "Origens e formação",
       "kicker": "Origens e formação",
       "minutes": 1,
-      "narrative": ["Capítulo sem conteúdo verificado."],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
+      "narrative": [
+        "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03).",
+        "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05).",
+        "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
+      ],
+      "question": "Como e em que contexto Stalinismo surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os princípios e traços centrais.",
+      "sourceIds": ["src-wiki-topic-stalinismo"],
       "review": null,
-      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
-      "coverage": "pending",
+      "gap": "Usa fatos documentados da fonte principal porque não há seção separada de origens no grafo.",
+      "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Marco histórico 1",
+              "kicker": "Origens e formação",
+              "summary": "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03).",
+              "paragraphs": [
+                "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03)."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-2",
+              "title": "Marco histórico 2",
+              "kicker": "Origens e formação",
+              "summary": "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05).",
+              "paragraphs": [
+                "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05)."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-3",
+              "title": "Marco histórico 3",
+              "kicker": "Origens e formação",
+              "summary": "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto.",
+              "paragraphs": [
+                "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "principios",
