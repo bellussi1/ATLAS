@@ -4,6 +4,7 @@
  * que mencionam literalmente outra entidade do grafo sem aresta existente.
  * Cada par candidato passa por verificação profunda com LLM local (Ollama) antes da promoção.
  */
+import { createHash } from 'node:crypto';
 import { writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 
@@ -36,6 +37,19 @@ function parseLimit() {
     if (Number.isFinite(n) && n > 0) return Math.floor(n);
   }
   return 200;
+}
+
+function parseFocus() {
+  const idx = process.argv.indexOf('--focus');
+  return idx >= 0 && process.argv[idx + 1] ? process.argv[idx + 1].toLowerCase() : null;
+}
+
+const BRAZIL_RE =
+  /\b(brasil|brasileir[ao]s?|vargas|getúlio|goulart|jango|brizola|juscelino|kubitschek|lula|bolsonaro|fhc|fernando henrique|tancredo|sarney|itamar|dilma|temer|collor|dutra|janio|jânio|quadros|costa e silva|médici|geisel|figueiredo|castelo branco|pedro i|dom pedro|tiradentes|prestes|marighella|darcy ribeiro|celso furtado|raymundo faoro|caio prado|sérgio buarque|gilberto freyre|florestan|ptb|pdt|mdb|pmdb|psdb|pcb|pcdob|udn|psd|arena|pl|psol|integralism[oa]|tenentism[oa]|coronelism[oa]|trabalhism[oa]|estado novo|república velha|nova república|ditadura militar|golpe de 1964|diretas já|plano real|constituição de 1988|constituição de 1934|constituição de 1946|clt|petrobras|bndes|eletrobras|brasília|rio de janeiro|são paulo|minas gerais|bahia|pernambuco|rio grande do sul|paraná|ceará|amazônia|nordeste|sudeste|inconfidência|abolição|escravidão no brasil|proclamação da república|independência do brasil|revolução de 1930|revolução de 1932|guerra do paraguai|canudos|contestado|impeachment|lava jato|mensalão|reformas de base)\b/i;
+
+function isBrazilEntity(entity) {
+  const hay = `${entity.id} ${entity.title} ${entity.summary ?? ''} ${entity.countryId ?? ''}`;
+  return BRAZIL_RE.test(hay);
 }
 
 const escapeRegex = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -80,6 +94,8 @@ async function verifyWithOllama(pair) {
 async function main() {
   const dryRun = process.argv.includes('--dry-run');
   const limit = parseLimit();
+  const focus = parseFocus();
+  const brazilOnly = focus === 'brazil' || focus === 'brasil';
   const graph = await readSourceGraph(resolve('content/knowledge'));
 
   const entityById = new Map();
@@ -102,7 +118,7 @@ async function main() {
   }
 
   const targets = [...entityById.values()]
-    .filter((e) => e.title.length >= 6 && e.kind !== 'place')
+    .filter((e) => e.title.length >= (brazilOnly ? 4 : 6) && (brazilOnly || e.kind !== 'place'))
     .map((e) => ({
       entity: e,
       regex: new RegExp(`(?<![\\p{L}\\p{N}])${escapeRegex(e.title)}(?![\\p{L}\\p{N}])`, 'iu'),
@@ -135,6 +151,17 @@ async function main() {
 
       for (const { entity: to, regex } of targets) {
         if (to.id === from.id) continue;
+        if (
+          brazilOnly &&
+          !(
+            atlas.id === 'atlas-trabalhismo' ||
+            isBrazilEntity(from) ||
+            isBrazilEntity(to) ||
+            BRAZIL_RE.test(claim.text)
+          )
+        ) {
+          continue;
+        }
         const key = from.id < to.id ? `${from.id}|${to.id}` : `${to.id}|${from.id}`;
         if (existingPairs.has(`${from.id}|${to.id}`) || seenPair.has(key)) continue;
         if (!regex.test(claim.text)) continue;
@@ -179,7 +206,8 @@ async function main() {
     const fromId = verdict.reverse_direction ? pair.to.id : pair.from.id;
     const toId = verdict.reverse_direction ? pair.from.id : pair.to.id;
     const [label, reverseLabel] = RELATION_LABELS[verdict.type];
-    const relId = `rel-ai-exp-${pair.from.id.slice(0, 24)}-${pair.to.id.slice(0, 24)}-${i}`
+    const pairHash = createHash('sha1').update(`${fromId}|${toId}`).digest('hex').slice(0, 6);
+    const relId = `rel-ai-exp-${pair.from.id.slice(0, 20)}-${pair.to.id.slice(0, 20)}-${pairHash}`
       .toLowerCase()
       .replace(/[^a-z0-9-]/g, '');
 
@@ -216,8 +244,9 @@ async function main() {
     await writeSourceGraph(graph, resolve('content/knowledge'));
   }
 
+  const outName = brazilOnly ? 'expand_graph_llm_brazil.json' : 'expand_graph_llm.json';
   await writeFile(
-    join(resolve('experiments/rag/eval/runs'), 'expand_graph_llm.json'),
+    join(resolve('experiments/rag/eval/runs'), outName),
     `${JSON.stringify(
       {
         generated_at: new Date().toISOString(),

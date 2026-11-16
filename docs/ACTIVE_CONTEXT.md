@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Expansão do grafo com LLM local — foco 100% Brasil (16/11, `develop`):**
+  - `scripts/content/expand-graph-llm.mjs` ampliado com `--focus brazil` (aceitando história, geografia, política, partidos, ideologias, eventos, eras e projetos brasileiros, incluindo lugares/estados/cidades do Brasil quando sustentados por passagem citada, e IDs com hash SHA-1 sem colisão).
+  - Execução com `gemma2:9b-instruct-q4_K_M` (`--focus brazil --limit 400`): **2.194** pares candidatos identificados; **400** avaliados, **362** relações promovidas com marcador `[conferência de IA]` e **38** rejeitadas; auditoria salva em `experiments/rag/eval/runs/expand_graph_llm_brazil.json`.
+  - Verificações: `npm run content:build` (release `0958ca0c2365…`), `npm run test:content` (**210/210**), `npm run lint` e `npm run typecheck` passando.
+
 - **Grafo (`/grafos`) — desempenho no zoom e legibilidade visual (16/11, `develop`):**
   - `KnowledgeNetworkComponent`: rótulos passam a usar coordenadas de mundo (`worldX`/`worldY`), acompanhando os nós a 60 fps durante zoom/pan sem piscar; `.world` promovido com `translate3d`; `.stage--busy` oculta halos e usa `shape-rendering: optimizeSpeed` para reduzir rasterização por quadro; `wheel()` normaliza `deltaMode` (linhas/páginas/pixels) e `contentBounds` amplia a margem para `200 / k`.
   - Visualização: espessura das arestas diferenciada entre visão geral (`1.15px`) e aproximação (`.edges.is-near`, `1.75px`), melhor contraste dos rótulos de relação (`.label--edge`) e indicador de nível semântico (`.zoom__tier`: *Visão geral* / *Regiões* / *Detalhe*) na barra de zoom.
