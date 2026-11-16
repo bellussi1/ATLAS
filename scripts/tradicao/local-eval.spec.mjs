@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 import test from 'node:test';
 
 import {
@@ -54,12 +56,18 @@ const sampleArticle = {
   references: { bibliography: [] },
 };
 
-test('loadSampleRecords20 locates all 20 benchmark articles from model-choice.json', async () => {
-  const { ids, records } = await loadSampleRecords20();
-  assert.equal(ids.length, 20);
-  assert.equal(records.length, 20);
-  assert.ok(records.every((record) => record.article && record.entity?.id));
-});
+const samplePath = resolve('generated/eval/onda1-2026-11/amostra.json');
+
+test(
+  'loadSampleRecords20 locates all 20 benchmark articles from model-choice.json',
+  { skip: !existsSync(samplePath) && 'amostra local gerada ausente no ambiente CI' },
+  async () => {
+    const { ids, records } = await loadSampleRecords20();
+    assert.equal(ids.length, 20);
+    assert.equal(records.length, 20);
+    assert.ok(records.every((record) => record.article && record.entity?.id));
+  },
+);
 
 test('evaluateLocalDraft enforces guards.mjs literal quotes, relation verification, and QID resolution', () => {
   const { text } = richSourceText(sampleArticle);

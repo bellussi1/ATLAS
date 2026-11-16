@@ -42,7 +42,8 @@ jobs:
         run: |
           uv venv experiments/rag/.venv --python 3.12
           uv pip install --python experiments/rag/.venv numpy scipy rank-bm25 httpx pydantic pytest
-          uv pip install --python experiments/rag/.venv torch transformers sentence-transformers accelerate --index-url https://download.pytorch.org/whl/cpu
+          uv pip install --python experiments/rag/.venv torch --index-url https://download.pytorch.org/whl/cpu
+          uv pip install --python experiments/rag/.venv transformers sentence-transformers accelerate
           uv pip install --python experiments/rag/.venv -e experiments/rag --no-deps
       - name: Rodar suíte pytest do experimento RAG
         run: experiments/rag/.venv/bin/pytest experiments/rag/tests
