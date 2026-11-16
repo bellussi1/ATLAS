@@ -1,5 +1,25 @@
 <section class="poster" aria-labelledby="home-title" data-tone-section>
   <div class="poster-copy">
+    <div class="font-ab" role="group" aria-label="Teste A/B de tipografia">
+      <span class="font-ab__label">Teste A/B · Fonte base:</span>
+      <button
+        type="button"
+        class="font-ab__btn"
+        [attr.aria-pressed]="fontVariant() === 'archivo'"
+        (click)="setFontVariant('archivo')"
+      >
+        A · Archivo
+      </button>
+      <button
+        type="button"
+        class="font-ab__btn"
+        [attr.aria-pressed]="fontVariant() === 'zilla'"
+        (click)="setFontVariant('zilla')"
+      >
+        B · Zilla Slab
+      </button>
+      <span class="font-ab__contrast">+ contraste Bodoni Moda</span>
+    </div>
     <p class="poster-kicker atlas-label">
       Enciclopédia visual · história, política, economia e sociedade
     </p>
@@ -11,6 +31,36 @@
       Ideias, pessoas, obras e acontecimentos formam uma rede. Escolha um ponto, abra o contexto e
       siga a próxima conexão — sempre com a fonte por perto.
     </p>
+    <div class="poster-actions" aria-label="Acesso rápido">
+      <a class="poster-door poster-door--acervo atlas-press" routerLink="/acervo">
+        <span class="poster-door__glyph poster-door__glyph--square" aria-hidden="true"></span>
+        <span>
+          <strong>Explorar o acervo</strong>
+          <small>{{ format(stats.verbetes) }} fichas e {{ format(stats.sources) }} fontes</small>
+        </span>
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+      </a>
+      <a class="poster-door poster-door--grafo atlas-press" routerLink="/grafos">
+        <span class="poster-door__glyph poster-door__glyph--circle" aria-hidden="true"></span>
+        <span>
+          <strong>Abrir o grafo</strong>
+          <small>{{ format(stats.links) }} ligações em rede</small>
+        </span>
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <nav class="poster-readings" aria-label="Leituras contínuas">
+      <span class="poster-readings__label">Leituras (1 clique)</span>
+      @for (entry of readings; track entry.slug) {
+        <a
+          class="poster-reading atlas-press"
+          [routerLink]="entryPath(entry.slug)"
+          [attr.data-reading]="entry.slug"
+        >
+          {{ entry.title }}
+        </a>
+      }
+    </nav>
   </div>
   <div class="poster-art">
     <app-geometric-mosaic
@@ -39,7 +89,6 @@
     <button class="search-button atlas-press" type="submit">Pesquisar</button>
   </form>
 </section>
-
 <app-home-howto />
 
 <section class="readings" id="leituras" aria-labelledby="readings-title" data-tone-section>
