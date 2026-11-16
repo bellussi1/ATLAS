@@ -520,7 +520,6 @@ form {
   --door: var(--color-surface-raised);
   --door-ink: var(--color-ink);
   --door-shadow: var(--color-ink);
-  --door-tilt: 0deg;
   --door-offset: 0rem;
   --door-radius: var(--radius-tight);
   margin-block-start: var(--door-offset);
@@ -531,7 +530,6 @@ form {
     --door: var(--color-ink);
     --door-ink: var(--color-canvas);
     --door-shadow: var(--color-accent);
-    --door-tilt: -0.4deg;
   }
   &:nth-child(2) {
     grid-column: span 6;
@@ -539,7 +537,6 @@ form {
     --door-ink: var(--color-accent-contrast);
     --door-shadow: var(--color-ink);
     --door-offset: 0.45rem;
-    --door-tilt: 0.55deg;
     --door-radius: var(--radius-tight) 1.75rem var(--radius-tight) var(--radius-tight);
   }
   &:nth-child(3) {
@@ -547,14 +544,12 @@ form {
     --door: var(--color-desk-card);
     --door-ink: var(--color-ink);
     --door-shadow: var(--color-cartographic);
-    --door-tilt: -0.7deg;
   }
   &:nth-child(4) {
     grid-column: span 5;
     --door: var(--color-ochre-paper);
     --door-ink: var(--color-ink);
     --door-offset: -0.45rem;
-    --door-tilt: 0.4deg;
     --door-radius: 1.75rem var(--radius-tight) var(--radius-tight) var(--radius-tight);
   }
   &:nth-child(5) {
@@ -563,14 +558,12 @@ form {
     --door-ink: var(--color-ink);
     --door-shadow: var(--color-indigo);
     --door-offset: 0.65rem;
-    --door-tilt: 0.85deg;
   }
   &:nth-child(6) {
     grid-column: span 3;
     --door: var(--color-teal-paper);
     --door-ink: var(--color-ink);
     --door-offset: 0.55rem;
-    --door-tilt: -0.65deg;
     --door-radius: var(--radius-tight) var(--radius-tight) 1.5rem var(--radius-tight);
   }
   &:nth-child(7) {
@@ -578,7 +571,6 @@ form {
     --door: var(--color-rose-paper);
     --door-ink: var(--color-ink);
     --door-offset: -0.35rem;
-    --door-tilt: 0.35deg;
   }
   &:nth-child(8) {
     grid-column: span 4;
@@ -586,7 +578,6 @@ form {
     --door-ink: var(--color-canvas);
     --door-shadow: var(--color-ochre-paper);
     --door-offset: 0.45rem;
-    --door-tilt: -0.5deg;
     --door-radius: var(--radius-tight) var(--radius-tight) var(--radius-tight) 1.75rem;
   }
 
@@ -609,11 +600,9 @@ form {
     background: var(--door);
     color: var(--door-ink);
     box-shadow: 5px 5px 0 var(--door-shadow);
-    rotate: var(--door-tilt);
     text-decoration: none;
     transition:
       transform var(--motion-standard) var(--ease-out),
-      rotate var(--motion-standard) var(--ease-out),
       box-shadow var(--motion-standard) var(--ease-out);
   }
   /* Archival slip inner dashed frame on canvas/paper cards */
@@ -822,7 +811,6 @@ form {
   }
   .door a:hover {
     transform: translate(-3px, -4px);
-    rotate: 0deg;
     box-shadow: 8px 8px 0 var(--door-shadow);
   }
   .door a:hover .door-go {
@@ -904,7 +892,6 @@ form {
   .door:nth-child(n) {
     grid-column: 1 / -1;
     --door-offset: 0rem;
-    --door-tilt: 0deg;
   }
   .door a,
   .door:nth-child(1) a,
@@ -985,8 +972,5 @@ form {
   .recompose-dot,
   .console ::ng-deep .atlas-field input {
     transition: none;
-  }
-  .door a {
-    rotate: 0deg;
   }
 }
