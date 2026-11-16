@@ -22,9 +22,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.9106,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas."
   },
   {
     "id": "dedup-002",
@@ -49,9 +49,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8756,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88."
   },
   {
     "id": "dedup-003",
@@ -76,9 +76,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8623,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86."
   },
   {
     "id": "dedup-004",
@@ -103,9 +103,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8572,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86."
   },
   {
     "id": "dedup-005",
@@ -130,9 +130,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.8456,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas."
   },
   {
     "id": "dedup-006",
@@ -157,8 +157,8 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.8401,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas."
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas."
   }
 ]

@@ -30,9 +30,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.869,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.99, cos=0.65. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.99, cos=0.65. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.99, cos=0.65."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.99, cos=0.65. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.99, cos=0.65."
   },
   {
     "id": "cand-rel-077",
@@ -65,9 +65,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9204,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.92): citacao literal valida + rerank=0.98, cos=0.76. Pre-triagem IA (alta_confianca, score=0.92): citacao literal valida + rerank=0.98, cos=0.76. Pre-triagem IA (alta_confianca, score=0.92): citacao literal valida + rerank=0.98, cos=0.76."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.92): citacao literal valida + rerank=0.98, cos=0.76. Pre-triagem IA (alta_confianca, score=0.92): citacao literal valida + rerank=0.98, cos=0.76."
   },
   {
     "id": "cand-rel-092",
@@ -100,7 +100,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.8467,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.85): citacao presente; conferir direcao/escopo (rerank=0.98)."
   },
@@ -135,9 +135,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9751,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.98): citacao literal valida + rerank=0.98, cos=0.88. Pre-triagem IA (alta_confianca, score=0.98): citacao literal valida + rerank=0.98, cos=0.88. Pre-triagem IA (alta_confianca, score=0.98): citacao literal valida + rerank=0.98, cos=0.88."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.98): citacao literal valida + rerank=0.98, cos=0.88. Pre-triagem IA (alta_confianca, score=0.98): citacao literal valida + rerank=0.98, cos=0.88."
   },
   {
     "id": "cand-rel-052",
@@ -170,7 +170,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.8159,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.82): citacao presente; conferir direcao/escopo (rerank=0.93)."
   },
@@ -205,7 +205,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.7908,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.79): citacao presente; conferir direcao/escopo (rerank=0.92)."
   },
@@ -240,9 +240,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8679,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.89, cos=0.75. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.89, cos=0.75. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.89, cos=0.75."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.89, cos=0.75. Pre-triagem IA (alta_confianca, score=0.87): citacao literal valida + rerank=0.89, cos=0.75."
   },
   {
     "id": "cand-rel-094",
@@ -275,9 +275,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8243,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.87, cos=0.68. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.87, cos=0.68. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.87, cos=0.68."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.87, cos=0.68. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.87, cos=0.68."
   },
   {
     "id": "cand-rel-025",
@@ -310,7 +310,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.7956,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.80): citacao presente; conferir direcao/escopo (rerank=0.87)."
   },
@@ -345,9 +345,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.876,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.88): citacao literal valida + rerank=0.86, cos=0.80. Pre-triagem IA (alta_confianca, score=0.88): citacao literal valida + rerank=0.86, cos=0.80. Pre-triagem IA (alta_confianca, score=0.88): citacao literal valida + rerank=0.86, cos=0.80."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.88): citacao literal valida + rerank=0.86, cos=0.80. Pre-triagem IA (alta_confianca, score=0.88): citacao literal valida + rerank=0.86, cos=0.80."
   },
   {
     "id": "cand-rel-001",
@@ -380,9 +380,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8195,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.82, cos=0.71. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.82, cos=0.71. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.82, cos=0.71."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.82, cos=0.71. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.82, cos=0.71."
   },
   {
     "id": "cand-rel-107",
@@ -415,7 +415,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.7824,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.78): citacao presente; conferir direcao/escopo (rerank=0.82)."
   },
@@ -450,7 +450,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.7636,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.76): citacao presente; conferir direcao/escopo (rerank=0.80)."
   },
@@ -485,9 +485,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8227,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.79, cos=0.75. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.79, cos=0.75. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.79, cos=0.75."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.79, cos=0.75. Pre-triagem IA (alta_confianca, score=0.82): citacao literal valida + rerank=0.79, cos=0.75."
   },
   {
     "id": "cand-rel-041",
@@ -520,7 +520,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.741,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.74): citacao presente; conferir direcao/escopo (rerank=0.79)."
   },
@@ -555,7 +555,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.7466,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.75): citacao presente; conferir direcao/escopo (rerank=0.78)."
   },
@@ -590,7 +590,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.7517,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.75): citacao presente; conferir direcao/escopo (rerank=0.77)."
   },
@@ -625,9 +625,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8258,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.76, cos=0.79. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.76, cos=0.79. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.76, cos=0.79."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.76, cos=0.79. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.76, cos=0.79."
   },
   {
     "id": "cand-rel-098",
@@ -660,9 +660,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.7717,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.77): citacao literal valida + rerank=0.75, cos=0.69. Pre-triagem IA (alta_confianca, score=0.77): citacao literal valida + rerank=0.75, cos=0.69. Pre-triagem IA (alta_confianca, score=0.77): citacao literal valida + rerank=0.75, cos=0.69."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.77): citacao literal valida + rerank=0.75, cos=0.69. Pre-triagem IA (alta_confianca, score=0.77): citacao literal valida + rerank=0.75, cos=0.69."
   },
   {
     "id": "cand-rel-086",
@@ -695,9 +695,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.834,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.75, cos=0.82. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.75, cos=0.82. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.75, cos=0.82."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.75, cos=0.82. Pre-triagem IA (alta_confianca, score=0.83): citacao literal valida + rerank=0.75, cos=0.82."
   },
   {
     "id": "cand-rel-104",
@@ -730,9 +730,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.7588,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.76): citacao literal valida + rerank=0.72, cos=0.70. Pre-triagem IA (alta_confianca, score=0.76): citacao literal valida + rerank=0.72, cos=0.70. Pre-triagem IA (alta_confianca, score=0.76): citacao literal valida + rerank=0.72, cos=0.70."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.76): citacao literal valida + rerank=0.72, cos=0.70. Pre-triagem IA (alta_confianca, score=0.76): citacao literal valida + rerank=0.72, cos=0.70."
   },
   {
     "id": "cand-rel-108",
@@ -765,7 +765,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.6974,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.70): citacao presente; conferir direcao/escopo (rerank=0.72)."
   },
@@ -800,7 +800,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.7068,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.71): citacao presente; conferir direcao/escopo (rerank=0.69)."
   },
@@ -835,9 +835,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.7258,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.66, cos=0.69. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.66, cos=0.69. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.66, cos=0.69."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.66, cos=0.69. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.66, cos=0.69."
   },
   {
     "id": "cand-rel-045",
@@ -870,7 +870,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.662,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.66): citacao presente; conferir direcao/escopo (rerank=0.64)."
   },
@@ -905,9 +905,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.7311,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.63, cos=0.73. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.63, cos=0.73. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.63, cos=0.73."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.63, cos=0.73. Pre-triagem IA (alta_confianca, score=0.73): citacao literal valida + rerank=0.63, cos=0.73."
   },
   {
     "id": "cand-rel-085",
@@ -940,7 +940,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.662,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.66): citacao presente; conferir direcao/escopo (rerank=0.63)."
   },
@@ -975,9 +975,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.7006,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.70): citacao literal valida + rerank=0.61, cos=0.70. Pre-triagem IA (alta_confianca, score=0.70): citacao literal valida + rerank=0.61, cos=0.70. Pre-triagem IA (alta_confianca, score=0.70): citacao literal valida + rerank=0.61, cos=0.70."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.70): citacao literal valida + rerank=0.61, cos=0.70. Pre-triagem IA (alta_confianca, score=0.70): citacao literal valida + rerank=0.61, cos=0.70."
   },
   {
     "id": "cand-rel-042",
@@ -1010,7 +1010,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.6066,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.61): citacao presente; conferir direcao/escopo (rerank=0.54)."
   },
@@ -1045,9 +1045,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.6839,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.68): citacao literal valida + rerank=0.53, cos=0.74. Pre-triagem IA (alta_confianca, score=0.68): citacao literal valida + rerank=0.53, cos=0.74. Pre-triagem IA (alta_confianca, score=0.68): citacao literal valida + rerank=0.53, cos=0.74."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.68): citacao literal valida + rerank=0.53, cos=0.74. Pre-triagem IA (alta_confianca, score=0.68): citacao literal valida + rerank=0.53, cos=0.74."
   },
   {
     "id": "cand-rel-061",
@@ -1080,9 +1080,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.6435,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.53, cos=0.66. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.53, cos=0.66. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.53, cos=0.66."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.53, cos=0.66. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.53, cos=0.66."
   },
   {
     "id": "cand-rel-010",
@@ -1115,9 +1115,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.6448,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.50, cos=0.69. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.50, cos=0.69. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.50, cos=0.69."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.50, cos=0.69. Pre-triagem IA (alta_confianca, score=0.64): citacao literal valida + rerank=0.50, cos=0.69."
   },
   {
     "id": "cand-rel-063",
@@ -1150,7 +1150,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5689,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.57): citacao presente; conferir direcao/escopo (rerank=0.47)."
   },
@@ -1185,9 +1185,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.6575,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.66): citacao literal valida + rerank=0.47, cos=0.74. Pre-triagem IA (alta_confianca, score=0.66): citacao literal valida + rerank=0.47, cos=0.74. Pre-triagem IA (alta_confianca, score=0.66): citacao literal valida + rerank=0.47, cos=0.74."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.66): citacao literal valida + rerank=0.47, cos=0.74. Pre-triagem IA (alta_confianca, score=0.66): citacao literal valida + rerank=0.47, cos=0.74."
   },
   {
     "id": "cand-rel-033",
@@ -1220,9 +1220,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.6068,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.46, cos=0.65. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.46, cos=0.65. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.46, cos=0.65."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.46, cos=0.65. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.46, cos=0.65."
   },
   {
     "id": "cand-rel-114",
@@ -1255,7 +1255,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5852,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.59): citacao presente; conferir direcao/escopo (rerank=0.46)."
   },
@@ -1290,9 +1290,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.6142,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
-    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.45, cos=0.67. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.45, cos=0.67. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.45, cos=0.67."
+    "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.45, cos=0.67. Pre-triagem IA (alta_confianca, score=0.61): citacao literal valida + rerank=0.45, cos=0.67."
   },
   {
     "id": "cand-rel-021",
@@ -1325,7 +1325,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.6128,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.61): citacao presente; conferir direcao/escopo (rerank=0.44)."
   },
@@ -1360,7 +1360,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5815,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.58): citacao presente; conferir direcao/escopo (rerank=0.43)."
   },
@@ -1395,7 +1395,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5487,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.55): citacao presente; conferir direcao/escopo (rerank=0.39)."
   },
@@ -1430,7 +1430,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.6005,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.60): citacao presente; conferir direcao/escopo (rerank=0.39)."
   },
@@ -1465,7 +1465,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5657,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.57): citacao presente; conferir direcao/escopo (rerank=0.39)."
   },
@@ -1500,7 +1500,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5873,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.59): citacao presente; conferir direcao/escopo (rerank=0.38)."
   },
@@ -1535,7 +1535,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5317,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.53): citacao presente; conferir direcao/escopo (rerank=0.38)."
   },
@@ -1570,7 +1570,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.569,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.57): citacao presente; conferir direcao/escopo (rerank=0.33)."
   },
@@ -1605,7 +1605,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5365,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.54): citacao presente; conferir direcao/escopo (rerank=0.33)."
   },
@@ -1640,7 +1640,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5524,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.55): citacao presente; conferir direcao/escopo (rerank=0.32)."
   },
@@ -1675,7 +1675,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5535,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.55): citacao presente; conferir direcao/escopo (rerank=0.31)."
   },
@@ -1710,7 +1710,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4907,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.29)."
   },
@@ -1745,7 +1745,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5367,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.54): citacao presente; conferir direcao/escopo (rerank=0.23)."
   },
@@ -1780,7 +1780,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4712,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.47): citacao presente; conferir direcao/escopo (rerank=0.21)."
   },
@@ -1815,7 +1815,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4868,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.19)."
   },
@@ -1850,7 +1850,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4582,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.46): citacao presente; conferir direcao/escopo (rerank=0.18)."
   },
@@ -1885,7 +1885,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4803,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.18)."
   },
@@ -1920,7 +1920,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5093,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.51): citacao presente; conferir direcao/escopo (rerank=0.18)."
   },
@@ -1955,7 +1955,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4399,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.18)."
   },
@@ -1990,7 +1990,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4092,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.41): citacao presente; conferir direcao/escopo (rerank=0.16)."
   },
@@ -2025,7 +2025,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4502,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.45): citacao presente; conferir direcao/escopo (rerank=0.15)."
   },
@@ -2060,7 +2060,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5453,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.55): citacao presente; conferir direcao/escopo (rerank=0.14)."
   },
@@ -2095,7 +2095,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4844,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.14)."
   },
@@ -2130,7 +2130,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4219,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.42): citacao presente; conferir direcao/escopo (rerank=0.14)."
   },
@@ -2165,7 +2165,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.40): citacao presente; conferir direcao/escopo (rerank=0.14)."
   },
@@ -2200,7 +2200,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4889,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.13)."
   },
@@ -2235,7 +2235,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.3954,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.40): citacao presente; conferir direcao/escopo (rerank=0.13)."
   },
@@ -2270,7 +2270,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.5022,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.50): citacao presente; conferir direcao/escopo (rerank=0.13)."
   },
@@ -2305,7 +2305,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4861,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.11)."
   },
@@ -2340,7 +2340,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4925,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.11)."
   },
@@ -2375,7 +2375,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4414,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.10)."
   },
@@ -2410,7 +2410,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4778,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.10)."
   },
@@ -2445,7 +2445,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4889,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.10)."
   },
@@ -2480,7 +2480,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.491,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.49): citacao presente; conferir direcao/escopo (rerank=0.10)."
   },
@@ -2515,7 +2515,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4362,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.09)."
   },
@@ -2550,7 +2550,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4041,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.40): citacao presente; conferir direcao/escopo (rerank=0.09)."
   },
@@ -2585,7 +2585,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4431,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.09)."
   },
@@ -2620,7 +2620,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4787,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.07)."
   },
@@ -2655,7 +2655,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4437,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.07)."
   },
@@ -2690,7 +2690,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4223,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.42): citacao presente; conferir direcao/escopo (rerank=0.06)."
   },
@@ -2725,7 +2725,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4388,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.44): citacao presente; conferir direcao/escopo (rerank=0.06)."
   },
@@ -2760,7 +2760,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.475,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.48): citacao presente; conferir direcao/escopo (rerank=0.06)."
   },
@@ -2795,7 +2795,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.4713,
-      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
     },
     "note": "[conferência de IA] Candidata extraída de citação literal do próprio verbete; validar vínculo editorial e fontes. Pre-triagem IA (revisar_contexto, score=0.47): citacao presente; conferir direcao/escopo (rerank=0.05)."
   }
