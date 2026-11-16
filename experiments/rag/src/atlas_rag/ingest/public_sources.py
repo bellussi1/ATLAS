@@ -260,24 +260,35 @@ def _call_ollama_extractor(
     cache_key = hash_prompt_key(f"ollama/{model}", system_prompt, user_prompt, extra="public-ingest-v1")
     cached = tracker.get_cached(cache_key)
     if cached is None:
-        resp = httpx.post(
-            f"{ollama_url.rstrip('/')}/api/chat",
-            json={
-                "model": model,
-                "stream": False,
-                "format": "json",
-                "options": {"temperature": 0.0},
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-            },
-            timeout=90.0,
-        )
-        resp.raise_for_status()
-        content = resp.json().get("message", {}).get("content", "{}")
+        content = None
+        for attempt in range(2):
+            try:
+                resp = httpx.post(
+                    f"{ollama_url.rstrip('/')}/api/chat",
+                    json={
+                        "model": model,
+                        "stream": False,
+                        "format": "json",
+                        "keep_alive": "45s",
+                        "options": {"temperature": 0.0, "num_ctx": 4096},
+                        "messages": [
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": user_prompt},
+                        ],
+                    },
+                    timeout=300.0,
+                )
+                resp.raise_for_status()
+                content = resp.json().get("message", {}).get("content", "{}")
+                break
+            except (httpx.HTTPStatusError, httpx.TimeoutException):
+                if attempt == 0:
+                    import time
+                    time.sleep(2.0)
+                    continue
+                return _extract_extractive_claims(paragraph_item)
         # Remove eventuais blocos <think>...</think> de qwen3
-        content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL).strip()
+        content = re.sub(r"<think>.*?</think>", "", content or "{}", flags=re.DOTALL).strip()
         try:
             parsed = json.loads(content)
         except json.JSONDecodeError:
@@ -669,6 +680,38 @@ def embed_and_index_public_units(
 
     q_path = queue_path or (eval_dir() / "queues" / "fontes-publicas-extraidas.json")
     q_path.parent.mkdir(parents=True, exist_ok=True)
+    new_queue_items = [
+        {
+            "id": it["unit_id"],
+            "slug": safe_slug,
+            "entity_id": it["entity_id"],
+            "entity_title": it["entity_title"],
+            "classification": it["classification"],
+            "text": it["text"],
+            "quote": it["quote"],
+            "source": it["source"],
+            "review": it["review"],
+            "note": it["note"],
+            "ok": None,
+        }
+        for it in items
+    ]
+    preserved_items: list[dict[str, Any]] = []
+    if queue_path is None and q_path.exists():
+        try:
+            prev = json.loads(q_path.read_text(encoding="utf-8"))
+            if isinstance(prev, dict) and isinstance(prev.get("items"), list):
+                new_ids = {item["id"] for item in new_queue_items}
+                preserved_items = [
+                    item
+                    for item in prev["items"]
+                    if isinstance(item, dict)
+                    and item.get("slug") != safe_slug
+                    and item.get("id") not in new_ids
+                ]
+        except Exception:
+            preserved_items = []
+    merged_items = preserved_items + new_queue_items
     queue_payload = {
         "generated_at": package_payload["generated_at"],
         "license": "CC BY-SA 4.0",
@@ -676,22 +719,8 @@ def embed_and_index_public_units(
         "origin": "local-public-ingest",
         "slug": safe_slug,
         "model": extraction_result.get("model"),
-        "count": len(items),
-        "items": [
-            {
-                "id": it["unit_id"],
-                "entity_id": it["entity_id"],
-                "entity_title": it["entity_title"],
-                "classification": it["classification"],
-                "text": it["text"],
-                "quote": it["quote"],
-                "source": it["source"],
-                "review": it["review"],
-                "note": it["note"],
-                "ok": None,
-            }
-            for it in items
-        ],
+        "count": len(merged_items),
+        "items": merged_items,
     }
     q_path.write_text(json.dumps(queue_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
@@ -712,6 +741,7 @@ def run_public_ingest(
     lang: str = "pt",
     extractor: str = "extractive",
     model: str = "qwen3:8b-q4_K_M",
+    ollama_url: str = "http://localhost:11434",
     embed: bool = True,
     limit: int = 5,
     max_paragraphs: int = 30,
@@ -742,7 +772,18 @@ def run_public_ingest(
         paragraphs,
         extractor=extractor,
         model=model,
+        ollama_url=ollama_url,
     )
+    if extractor == "ollama" and embed:
+        # Libera VRAM do modelo Ollama antes de carregar o BAAI/bge-m3 em GPU de 8 GB.
+        try:
+            httpx.post(
+                f"{ollama_url.rstrip('/')}/api/generate",
+                json={"model": model, "keep_alive": 0},
+                timeout=10.0,
+            )
+        except Exception:
+            pass
     return embed_and_index_public_units(
         extraction,
         slug=slug,

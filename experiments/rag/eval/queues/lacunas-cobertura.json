@@ -1,7 +1,7 @@
 {
   "release": "5923d2eb4fda57c52c6e35224a1eac60e162748274b214e651ed14aab9bd0344",
   "bundle_sha256": "0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5",
-  "generated_at": "2026-11-15T19:49:25.941116+00:00",
+  "generated_at": "2026-11-16T03:23:20.430309+00:00",
   "total_entities": 1224,
   "entities_without_editorial_edges": 488,
   "entities_zero_total_degree": 418,
