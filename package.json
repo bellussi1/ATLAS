@@ -8,6 +8,7 @@
     "setup:check": "node scripts/setup.mjs --check",
     "dev": "npm start",
     "content:build": "node scripts/content/build-content.mjs",
+    "itinerary:check": "node scripts/content/check-itineraries.mjs",
     "content:fetch": "node scripts/content/fetch-content.mjs",
     "content:publish": "npm run content:build && node scripts/publish-r2.mjs",
     "publish:content": "npm run content:publish",

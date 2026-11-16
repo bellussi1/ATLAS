@@ -1,6 +1,6 @@
 import './register-source-modules.mjs';
 import { randomUUID } from 'node:crypto';
-import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -26,6 +26,8 @@ const { ideologyReadings } =
 const { publicReadings } = await import('../../src/app/core/content/editorial/public-readings.ts');
 const { validateIdeologyDossier } =
   await import('../../src/app/features/ideologies/models/ideology-page.schema.ts');
+const { validateItinerary } =
+  await import('../../src/app/features/itineraries/models/itinerary.schema.ts');
 const {
   contentBundleSchema,
   contentManifestSchema,
@@ -285,6 +287,34 @@ export async function buildContent({
   const ideologies = [];
   for (const { slug, page, supplement } of readings)
     ideologies.push({ id: slug, ...(await asset(`ideology-${slug}`, { page, supplement })) });
+
+  const itineraryFiles = (await readdir(join(projectRoot, 'content/itineraries')).catch(() => []))
+    .filter((name) => name.endsWith('.json'))
+    .sort();
+  const readingStatusMap = new Map(
+    Object.entries(publishedIdeologies).map(([slug, entry]) => [
+      slug,
+      { listed: !entry?.unlisted },
+    ]),
+  );
+  const verifiedItineraries = [];
+  for (const file of itineraryFiles) {
+    const raw = JSON.parse(await readFile(join(projectRoot, 'content/itineraries', file), 'utf8'));
+    const checked = validateItinerary(raw, { graph, readings: readingStatusMap });
+    if (!checked.ok) {
+      throw new Error(`Itinerário inválido (${file}): ${checked.errors.join('; ')}`);
+    }
+    if (checked.value.status === 'verified') verifiedItineraries.push(checked.value);
+  }
+  const itineraryResources = [];
+  for (const itinerary of verifiedItineraries) {
+    itineraryResources.push({
+      id: itinerary.id,
+      slug: itinerary.slug,
+      ...(await asset(`itinerary-${itinerary.slug}`, itinerary)),
+    });
+  }
+
   const graphDocument = { id: graph.id, version: graph.version, updatedAt: graph.updatedAt };
   const bundle = contentBundleSchema.parse({
     graph: { ...graphDocument, atlases: graph.atlases },
@@ -294,6 +324,13 @@ export async function buildContent({
     ideologies: Object.fromEntries(
       readings.map(({ slug, page, supplement }) => [slug, { page, supplement }]),
     ),
+    ...(verifiedItineraries.length
+      ? {
+          itineraries: Object.fromEntries(
+            verifiedItineraries.map((itinerary) => [itinerary.slug, itinerary]),
+          ),
+        }
+      : {}),
   });
   const networkBundle = networkBundleSchema.parse({ graph: networkGraph, layouts });
   const resources = {
@@ -301,6 +338,7 @@ export async function buildContent({
     graph: graphDocument,
     collections,
     ideologies,
+    ...(itineraryResources.length ? { itineraries: itineraryResources } : {}),
     network: await asset('network', networkGraph),
     networkBundle: await asset('network-bundle', networkBundle),
     bundle: await asset('bundle', bundle),

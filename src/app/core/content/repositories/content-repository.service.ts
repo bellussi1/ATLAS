@@ -83,6 +83,15 @@ export class ContentRepository {
   get layouts() {
     return this.requireState().layouts;
   }
+  get bundledItineraries(): Readonly<Record<string, unknown>> | undefined {
+    return this.state?.itineraries;
+  }
+  manifestSnapshot(): Promise<ContentManifest> {
+    return this.getManifest();
+  }
+  verifiedResource(resource: { sha256: string; bytes: number }, label: string): Promise<unknown> {
+    return this.resource(resource, label);
+  }
 
   async loadCollection(id: string): Promise<Atlas | undefined> {
     const manifest = await this.getManifest();
@@ -374,6 +383,7 @@ export class ContentRepository {
       adjacency: bundle.adjacency,
       layouts: bundle.layouts,
       ideologies: bundle.ideologies,
+      itineraries: bundle.itineraries,
     };
   }
   private async buildNetworkBundleState(resource: {

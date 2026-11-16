@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-comparativo-liberdade",
+  "slug": "comparativo-liberdade",
+  "kind": "comparativo",
+  "title": "Liberalismo e socialismo: liberdade, propriedade e Estado",
+  "question": "Como tradições políticas distintas respondem ao conflito entre liberdade individual, propriedade e ação estatal?",
+  "deck": "Um percurso comparativo em seis paradas pelas quatro leituras contínuas e pelo mapa de relações.",
+  "summary": "Compara as respostas do liberalismo, do marxismo, da social-democracia e do anarquismo sobre liberdade, trabalho, propriedade e papel do Estado.",
+  "status": "draft",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Fixture comparativa da Fase 0 para validação de contrato; não publicada."
+  },
+  "stops": [
+    {
+      "id": "problema-liberdade",
+      "title": "O problema: quem define liberdade, e para quem?",
+      "reason": "Fixa o conceito central antes de comparar como cada tradição o redefine.",
+      "question": "A liberdade exige apenas ausência de coerção estatal ou também condições materiais?",
+      "destination": { "type": "verbete", "slug": "liberalism" },
+      "contextEntityId": "ideology-liberalism"
+    },
+    {
+      "id": "tradicao-liberal",
+      "title": "Liberalismo: liberdade, propriedade e limites do Estado",
+      "reason": "Apresenta o argumento clássico que vincula direitos individuais, contrato e mercado.",
+      "question": "Por que a proteção da propriedade aparece como garantia contra o arbítrio político?",
+      "destination": { "type": "leitura", "slug": "liberalismo" }
+    },
+    {
+      "id": "critica-marxista",
+      "title": "Marxismo: trabalho, valor e emancipação",
+      "reason": "Contrapõe a igualdade jurídica formal à dependência material na produção.",
+      "question": "Em que sentido o contrato livre de trabalho pode coexistir com dominação econômica?",
+      "destination": { "type": "leitura", "slug": "marxismo" }
+    },
+    {
+      "id": "compromisso-social-democrata",
+      "title": "Social-democracia: reforma, Estado e bem-estar",
+      "reason": "Mostra a via que mantém mercado e democracia representativa sob regulação social.",
+      "question": "Como políticas redistributivas buscam conciliar propriedade privada e cidadania social?",
+      "destination": { "type": "leitura", "slug": "social-democracia" }
+    },
+    {
+      "id": "recusa-anarquista",
+      "title": "Anarquismo: o Estado como problema",
+      "reason": "Completa o arco comparativo ao recusar tanto o mercado capitalista quanto o Estado centralizado.",
+      "question": "Que formas de coordenação substituem a autoridade estatal sem recorrer à propriedade privada?",
+      "destination": { "type": "leitura", "slug": "anarquismo" }
+    },
+    {
+      "id": "convergencia-rede",
+      "title": "Convergência: autores, obras e disputas no grafo",
+      "reason": "Permite visualizar as ligações documentadas entre as tradições percorridas.",
+      "question": "Quais autores e acontecimentos conectam essas respostas em momentos de ruptura?",
+      "destination": { "type": "grafo" }
+    }
+  ],
+  "branches": [
+    {
+      "id": "ramo-smith-marx",
+      "fromStop": "tradicao-liberal",
+      "title": "O elo clássico do valor: Adam Smith e Karl Marx",
+      "reason": "Aprofunda a passagem da economia política clássica para a crítica do valor.",
+      "question": "O que Marx herda e o que inverte na teoria do valor de Adam Smith?",
+      "destination": { "type": "verbete", "slug": "adam-smith" },
+      "convergesAt": "critica-marxista"
+    },
+    {
+      "id": "ramo-fontes-comparativas",
+      "fromStop": "compromisso-social-democrata",
+      "title": "Consultar as fontes do acervo",
+      "reason": "Abre diretamente o catálogo de fontes para conferência documental.",
+      "question": "Quais fontes primárias e secundárias sustentam as leituras comparadas?",
+      "destination": { "type": "catalogo", "path": "fontes" },
+      "exit": "Saída direta para consulta documental no catálogo de fontes."
+    }
+  ],
+  "connections": [
+    {
+      "destination": { "type": "catalogo", "path": "ideologias" },
+      "reason": "Ver todas as tradições e registros de ideologias no acervo."
+    }
+  ],
+  "sources": [],
+  "updatedAt": "2026-11-15",
+  "version": "1.0.0"
+}
