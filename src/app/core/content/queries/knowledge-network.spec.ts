@@ -349,6 +349,8 @@ describe('knowledge network', () => {
       nodes: ['a', 'b', 'c', 'd'],
       edges: ['ab', 'bc', 'cd'],
       found: true,
+      variant: 0,
+      totalVariants: 1,
     });
     expect(found.nodes).toHaveLength(5);
     expect(filterNetwork(network, { ...filter, path: { from: 'a', to: 'e' } }).path).toEqual({
@@ -368,6 +370,73 @@ describe('knowledge network', () => {
       },
     );
     expect(hidden.path?.found).toBe(false);
+  });
+
+  it('prefers person and historical links over ideology hubs and cycles alternative paths', () => {
+    const node = (id: string, kind: NetworkNode['kind']) =>
+      ({
+        id,
+        slug: id,
+        title: id,
+        kind,
+        kindLabel: kind,
+        summary: '',
+        path: `/verbete/${id}`,
+        degree: 2,
+        collections: ['atlas-a'],
+        scope: 'nucleo',
+      }) as unknown as NetworkNode;
+    const edge = (
+      id: string,
+      source: string,
+      target: string,
+      weight: NetworkEdge['weight'],
+      nature: NetworkEdge['nature'],
+    ) =>
+      ({
+        id,
+        source,
+        target,
+        type: 'influenced',
+        label: id,
+        family: relationFamilies[0].id,
+        nature,
+        weight,
+        collection: 'atlas-a',
+      }) as unknown as NetworkEdge;
+    const customNetwork = {
+      nodes: [node('a', 'person'), node('p', 'person'), node('i', 'ideology'), node('b', 'work')],
+      edges: [
+        edge('ai', 'a', 'i', 'catalog', 'catalogue'),
+        edge('ib', 'i', 'b', 'catalog', 'catalogue'),
+        edge('ap', 'a', 'p', 'historical', 'stated'),
+        edge('pb', 'p', 'b', 'action', 'stated'),
+      ],
+      collections: [],
+    };
+    const filter = { ...all, collections: new Set(['atlas-a']) };
+    const primary = filterNetwork(customNetwork, {
+      ...filter,
+      path: { from: 'a', to: 'b', variant: 0 },
+    });
+    expect(primary.path).toEqual({
+      nodes: ['a', 'p', 'b'],
+      edges: ['ap', 'pb'],
+      found: true,
+      variant: 0,
+      totalVariants: 2,
+    });
+    const alternative = filterNetwork(customNetwork, {
+      ...filter,
+      path: { from: 'a', to: 'b', variant: 1 },
+    });
+    expect(alternative.path).toEqual({
+      nodes: ['a', 'i', 'b'],
+      edges: ['ai', 'ib'],
+      found: true,
+      variant: 1,
+      totalVariants: 2,
+    });
   });
 
   it('searches names ignoring case and accents', () => {

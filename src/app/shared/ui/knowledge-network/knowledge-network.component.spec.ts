@@ -89,10 +89,9 @@ describe('KnowledgeNetworkComponent', () => {
     steps[1].click();
     fixture.detectChanges();
     expect(component.selectedId()).toBe(edge.target);
-    component.swapPath();
+    expect(root(fixture).querySelector('button')?.textContent).toBeDefined();
+    component.nextPathVariant();
     fixture.detectChanges();
-    expect(component.pathFrom()).toBe(edge.target);
-    expect(component.pathTo()).toBe(edge.source);
     component.clearPath();
     fixture.detectChanges();
     expect(component.pathFrom()).toBeNull();

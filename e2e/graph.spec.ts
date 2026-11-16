@@ -460,9 +460,8 @@ test('builds and reverses a path from selected entries and restores it from the 
   await expect(page).toHaveURL(/para=person-friedrich-engels/);
   await expect(page.locator('#graph-path-summary')).toContainText(/passo/);
   await expect(controls.locator('.path-steps .path-step').first()).toContainText('Karl Marx');
-  await controls.getByRole('button', { name: 'Inverter origem e destino' }).click();
-  await expect(page).toHaveURL(/de=person-friedrich-engels/);
-  await expect(page).toHaveURL(/para=person-karl-marx/);
+  await expect(controls.getByRole('button', { name: 'Limpar caminho' })).toBeVisible();
+  await expect(controls.getByRole('button', { name: 'Traçar caminho' })).toHaveCount(0);
 });
 
 test('the path mode picks two nodes and clears the route', async ({ page }) => {

@@ -247,10 +247,11 @@ export class KnowledgeNetworkComponent {
   readonly pathMode = signal(false);
   readonly pathFrom = signal<string | null>(null);
   readonly pathTo = signal<string | null>(null);
+  readonly pathVariant = signal(0);
   readonly pathEndpoints = computed(() => {
     const from = this.pathFrom();
     const to = this.pathTo();
-    return from && to ? { from, to } : null;
+    return from && to ? { from, to, variant: this.pathVariant() } : null;
   });
   /** Explicit choice of the reader; until then the panel follows the screen size. */
   readonly controlsOpen = signal<boolean | null>(null);
@@ -1046,6 +1047,7 @@ export class KnowledgeNetworkComponent {
     this.pathMode.set(false);
     this.pathFrom.set(null);
     this.pathTo.set(null);
+    this.pathVariant.set(0);
     this.query.set('');
     this.syncUrl(this.selectedId(), true);
   }
@@ -1058,16 +1060,14 @@ export class KnowledgeNetworkComponent {
       this.pathTo.set(valid);
       if (valid && this.pathFrom() === valid) this.pathFrom.set(null);
     }
+    this.pathVariant.set(0);
     if (this.pathFrom() && this.pathTo()) this.pathMode.set(false);
     this.syncUrl(this.selectedId(), true);
   }
-  swapPath(): void {
-    const from = this.pathFrom();
-    const to = this.pathTo();
-    if (!from && !to) return;
-    this.pathFrom.set(to);
-    this.pathTo.set(from);
-    this.syncUrl(this.selectedId(), true);
+  nextPathVariant(): void {
+    const total = this.visible().path?.totalVariants ?? 1;
+    if (total <= 1) return;
+    this.pathVariant.update((v) => (v + 1) % total);
   }
   togglePathMode(): void {
     if (this.pathMode()) {
@@ -1076,6 +1076,7 @@ export class KnowledgeNetworkComponent {
     }
     this.pathFrom.set(null);
     this.pathTo.set(null);
+    this.pathVariant.set(0);
     this.pathMode.set(true);
     this.syncUrl(this.selectedId(), true);
   }
@@ -1083,6 +1084,7 @@ export class KnowledgeNetworkComponent {
     this.pathMode.set(false);
     this.pathFrom.set(null);
     this.pathTo.set(null);
+    this.pathVariant.set(0);
     this.syncUrl(this.selectedId());
   }
   setQuery(value: string): void {
@@ -1699,17 +1701,22 @@ export class KnowledgeNetworkComponent {
     });
   }
 
-  /** In path mode the next two map clicks become the endpoints; otherwise a click selects. */
+  /** In path mode the next two map clicks become the endpoints; otherwise clicking another node clears any active path and selects it. */
   private pickNode(id: string): void {
     if (!this.pathMode()) {
+      if ((this.pathFrom() || this.pathTo()) && id !== this.selectedId()) {
+        this.clearPath();
+      }
       this.select(id);
       return;
     }
     if (!this.pathFrom() || this.pathTo()) {
       this.pathFrom.set(id);
       this.pathTo.set(null);
+      this.pathVariant.set(0);
     } else if (id !== this.pathFrom()) {
       this.pathTo.set(id);
+      this.pathVariant.set(0);
       this.pathMode.set(false);
     }
     this.select(id);

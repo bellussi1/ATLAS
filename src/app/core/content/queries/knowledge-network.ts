@@ -784,14 +784,20 @@ export interface NetworkFilter {
   /** Inclusive year interval. Nodes without a known year leave the cut while it is active. */
   period?: { from: number | null; to: number | null } | null;
   /** Shortest undirected route between two nodes in the current cut. */
-  path?: { from: string; to: string } | null;
+  path?: { from: string; to: string; variant?: number } | null;
 }
 
 export interface VisibleNetwork {
   nodes: NetworkNode[];
   edges: NetworkEdge[];
   /** Set only when the path filter is active; `found: false` means no route in this cut. */
-  path?: { nodes: string[]; edges: string[]; found: boolean };
+  path?: {
+    nodes: string[];
+    edges: string[];
+    found: boolean;
+    variant?: number;
+    totalVariants?: number;
+  };
 }
 
 /** Whether a node's known interval crosses the inclusive filter. */
@@ -804,48 +810,144 @@ function inPeriod(node: NetworkNode, period: { from: number | null; to: number |
   return (period.from === null || end >= period.from) && (period.to === null || start <= period.to);
 }
 
-/** Shortest undirected route in the filtered cut; empty when one endpoint is absent. */
-function shortestPath(
-  nodes: readonly NetworkNode[],
-  edges: readonly NetworkEdge[],
+const pathKindFactor: Readonly<Record<string, number>> = {
+  person: 0.65,
+  work: 0.75,
+  event: 0.85,
+  party: 0.9,
+  institution: 0.95,
+  regime: 0.95,
+  concept: 1.15,
+  ideology: 1.45,
+  place: 1.55,
+};
+
+const pathWeightFactor: Readonly<Record<RelationWeight, number>> = {
+  historical: 0.75,
+  action: 0.85,
+  administrative: 1.2,
+  catalog: 1.55,
+};
+
+const pathNatureFactor: Readonly<Record<RelationNature, number>> = {
+  stated: 0.85,
+  editorial: 1.0,
+  catalogue: 1.35,
+  navigation: 1.35,
+};
+
+function weightedDijkstra(
+  nodeMap: ReadonlyMap<string, NetworkNode>,
+  adjacency: ReadonlyMap<string, { edge: NetworkEdge; other: string }[]>,
   from: string,
   to: string,
-): { nodes: string[]; edges: string[]; found: boolean } {
-  const ids = new Set(nodes.map((node) => node.id));
-  if (!ids.has(from) || !ids.has(to)) return { nodes: [], edges: [], found: false };
-  if (from === to) return { nodes: [from], edges: [], found: true };
-  const adjacency = new Map<string, { id: string; other: string }[]>();
-  const push = (source: string, target: string, id: string) => {
-    const list = adjacency.get(source) ?? [];
-    list.push({ id, other: target });
-    adjacency.set(source, list);
-  };
-  for (const edge of edges) {
-    push(edge.source, edge.target, edge.id);
-    push(edge.target, edge.source, edge.id);
-  }
-  const previous = new Map<string, { node: string; edge: string } | null>([[from, null]]);
-  const queue = [from];
-  for (const current of queue) {
-    if (current === to) break;
-    for (const link of adjacency.get(current) ?? []) {
-      if (previous.has(link.other)) continue;
-      previous.set(link.other, { node: current, edge: link.id });
-      queue.push(link.other);
+  edgePenalties: ReadonlyMap<string, number>,
+  nodePenalties: ReadonlyMap<string, number>,
+): { nodes: string[]; edges: string[] } | null {
+  const dist = new Map<string, number>([[from, 0]]);
+  const previous = new Map<string, { node: string; edge: string }>();
+  const visited = new Set<string>();
+  const queue: { id: string; cost: number }[] = [{ id: from, cost: 0 }];
+
+  while (queue.length > 0) {
+    let bestIdx = 0;
+    for (let i = 1; i < queue.length; i++) {
+      if (queue[i].cost < queue[bestIdx].cost) bestIdx = i;
+    }
+    const current = queue.splice(bestIdx, 1)[0];
+    if (visited.has(current.id)) continue;
+    visited.add(current.id);
+    if (current.id === to) break;
+
+    for (const link of adjacency.get(current.id) ?? []) {
+      if (visited.has(link.other)) continue;
+      const otherNode = nodeMap.get(link.other);
+      if (!otherNode) continue;
+      const isDest = link.other === to;
+      const weight = pathWeightFactor[link.edge.weight] ?? 1.2;
+      const nature = pathNatureFactor[link.edge.nature] ?? 1.0;
+      const kind = isDest ? 1.0 : (pathKindFactor[otherNode.kind] ?? 1.0);
+      const penalty =
+        (edgePenalties.get(link.edge.id) ?? 0) +
+        (isDest ? 0 : (nodePenalties.get(link.other) ?? 0));
+      const nextCost = current.cost + 1 + weight * nature * kind * 0.25 + penalty;
+      if (nextCost < (dist.get(link.other) ?? Infinity)) {
+        dist.set(link.other, nextCost);
+        previous.set(link.other, { node: current.id, edge: link.edge.id });
+        queue.push({ id: link.other, cost: nextCost });
+      }
     }
   }
-  if (!previous.has(to)) return { nodes: [], edges: [], found: false };
+
+  if (!previous.has(to)) return null;
   const pathNodes = [to];
   const pathEdges: string[] = [];
   let cursor = to;
   while (cursor !== from) {
     const step = previous.get(cursor);
-    if (!step) return { nodes: [], edges: [], found: false };
+    if (!step) return null;
     pathEdges.unshift(step.edge);
     pathNodes.unshift(step.node);
     cursor = step.node;
   }
-  return { nodes: pathNodes, edges: pathEdges, found: true };
+  return { nodes: pathNodes, edges: pathEdges };
+}
+
+/** Weighted shortest undirected routes in the filtered cut, favouring people, works and documented historical/action links. */
+function shortestPath(
+  nodes: readonly NetworkNode[],
+  edges: readonly NetworkEdge[],
+  from: string,
+  to: string,
+  variant = 0,
+): NonNullable<VisibleNetwork['path']> {
+  const nodeMap = new Map(nodes.map((node) => [node.id, node]));
+  if (!nodeMap.has(from) || !nodeMap.has(to)) return { nodes: [], edges: [], found: false };
+  if (from === to) return { nodes: [from], edges: [], found: true, variant: 0, totalVariants: 1 };
+
+  const adjacency = new Map<string, { edge: NetworkEdge; other: string }[]>();
+  const push = (source: string, target: string, edge: NetworkEdge) => {
+    const list = adjacency.get(source) ?? [];
+    list.push({ edge, other: target });
+    adjacency.set(source, list);
+  };
+  for (const edge of edges) {
+    push(edge.source, edge.target, edge);
+    push(edge.target, edge.source, edge);
+  }
+
+  const maxVariants = 5;
+  const variants: { nodes: string[]; edges: string[] }[] = [];
+  const seenSignatures = new Set<string>();
+  const edgePenalties = new Map<string, number>();
+  const nodePenalties = new Map<string, number>();
+
+  for (let attempt = 0; attempt < maxVariants + 2 && variants.length < maxVariants; attempt++) {
+    const candidate = weightedDijkstra(nodeMap, adjacency, from, to, edgePenalties, nodePenalties);
+    if (!candidate) break;
+    const signature = candidate.edges.join('|');
+    if (!seenSignatures.has(signature)) {
+      seenSignatures.add(signature);
+      variants.push(candidate);
+    }
+    for (const edgeId of candidate.edges) {
+      edgePenalties.set(edgeId, (edgePenalties.get(edgeId) ?? 0) + 4);
+    }
+    for (let i = 1; i < candidate.nodes.length - 1; i++) {
+      const nodeId = candidate.nodes[i];
+      nodePenalties.set(nodeId, (nodePenalties.get(nodeId) ?? 0) + 2.5);
+    }
+  }
+
+  if (variants.length === 0) return { nodes: [], edges: [], found: false };
+  const index = ((variant % variants.length) + variants.length) % variants.length;
+  return {
+    nodes: variants[index].nodes,
+    edges: variants[index].edges,
+    found: true,
+    variant: index,
+    totalVariants: variants.length,
+  };
 }
 
 /** Applies the type, collection, period and connection filters. A hidden kind removes its edges too. */
@@ -900,7 +1002,7 @@ export function filterNetwork(network: KnowledgeNetwork, filter: NetworkFilter):
     return {
       nodes: cutNodes,
       edges: cutEdges,
-      path: shortestPath(cutNodes, cutEdges, filter.path.from, filter.path.to),
+      path: shortestPath(cutNodes, cutEdges, filter.path.from, filter.path.to, filter.path.variant),
     };
   if (!filter.neighborhood) return { nodes: cutNodes, edges: cutEdges };
   const { root, depth } = filter.neighborhood;

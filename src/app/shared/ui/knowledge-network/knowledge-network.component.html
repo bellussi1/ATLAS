@@ -204,25 +204,30 @@
           </li>
         </ol>
         <div class="path-actions">
-          <button
-            type="button"
-            class="chip"
-            [class.chip--solid]="pathMode()"
-            [attr.aria-pressed]="pathMode()"
-            (click)="togglePathMode()"
-          >
-            {{ pathMode() ? 'Cancelar caminho' : 'Traçar caminho' }}
-          </button>
-          @if (pathFrom() || pathTo()) {
+          @if (!pathMode() && (pathFrom() || pathTo())) {
+            <button type="button" class="chip" (click)="clearPath()">Limpar caminho</button>
+          } @else {
             <button
               type="button"
               class="chip"
-              aria-label="Inverter origem e destino"
-              (click)="swapPath()"
+              [class.chip--solid]="pathMode()"
+              [attr.aria-pressed]="pathMode()"
+              (click)="togglePathMode()"
             >
-              Inverter
+              {{ pathMode() ? 'Cancelar caminho' : 'Traçar caminho' }}
             </button>
-            <button type="button" class="chip" (click)="clearPath()">Limpar caminho</button>
+          }
+          @if ((visible().path?.totalVariants ?? 0) > 1) {
+            <button
+              type="button"
+              class="chip"
+              aria-label="Ver outros caminhos entre origem e destino"
+              (click)="nextPathVariant()"
+            >
+              Outros caminhos ({{ (visible().path?.variant ?? 0) + 1 }}/{{
+                visible().path?.totalVariants
+              }})
+            </button>
           }
         </div>
         @if (pathMode()) {
