@@ -83,6 +83,16 @@
           <li>
             <a
               class="nav__link"
+              routerLink="/itinerarios"
+              [class.is-active]="section() === 'itinerarios'"
+              [attr.aria-current]="section() === 'itinerarios' ? 'page' : null"
+              (click)="close()"
+              ><span class="nav__glyph nav__glyph--half" aria-hidden="true"></span>Itinerários</a
+            >
+          </li>
+          <li>
+            <a
+              class="nav__link"
               routerLink="/acervo"
               [queryParams]="{ camada: 'registros' }"
               [class.is-active]="section() === 'acervo'"

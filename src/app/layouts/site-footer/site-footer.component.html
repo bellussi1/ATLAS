@@ -31,6 +31,15 @@
         <h2>Explorar</h2>
         <ul class="footer-links" appReveal>
           <li>
+            <a routerLink="/leituras">Todas as leituras</a>
+          </li>
+          <li>
+            <a routerLink="/itinerarios">Itinerários temáticos</a>
+          </li>
+          <li>
+            <a routerLink="/grafos">Grafo do acervo</a>
+          </li>
+          <li>
             <a routerLink="/acervo" [queryParams]="{ camada: 'registros' }">Buscar no acervo</a>
           </li>
           @for (catalogue of catalogues; track catalogue.path) {

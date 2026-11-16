@@ -14,7 +14,7 @@ import { readingPath } from '@core/routing/reading-routes';
 import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { filter, map } from 'rxjs';
 
-type Section = 'leituras' | 'acervo' | 'grafos' | null;
+type Section = 'leituras' | 'itinerarios' | 'acervo' | 'grafos' | null;
 
 export const headerReadings = [
   {
@@ -57,6 +57,7 @@ const sectionOf = (url: string): Section => {
   const path = url.split(/[?#]/)[0];
   if (path === '/') return null;
   if (path.startsWith('/grafos')) return 'grafos';
+  if (path.startsWith('/itinerario')) return 'itinerarios';
   if (path === '/leituras' || path.startsWith('/leitura/')) return 'leituras';
   return 'acervo';
 };
