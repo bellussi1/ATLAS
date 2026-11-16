@@ -4,6 +4,8 @@
 }
 .era-chart {
   margin: 0;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
   border: 3px solid var(--color-ink);
   background: var(--color-surface-raised);
 }
@@ -14,6 +16,11 @@
   align-items: baseline;
   padding: 1rem 1.25rem;
   border-bottom: 3px solid var(--color-ink);
+}
+@media (max-width: 40rem) {
+  .era-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .era-header h3 {
   margin: 0;

@@ -1,6 +1,8 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, relative, resolve, sep } from 'node:path';
 
+import { publishedIdeologies } from '../src/app/features/ideologies/data/published-ideologies.ts';
+
 // Pós-build: canonical absoluto por página, sitemap.xml, linha Sitemap no robots.txt e links
 // absolutos no llms.txt. O endereço público é o mesmo de `src/app/core/routing/site-url.ts`;
 // ATLAS_SITE_URL só é necessária para publicar em outro domínio.
@@ -45,11 +47,17 @@ const redirects = new Set(
     .map((line) => line.split(/\s+/)[0].replace(/\/$/, '')),
 );
 // Preview readings are reachable by direct URL but stay out of the sitemap until they are listed.
-const previews = new Set(['/leitura/stalinismo']);
+const previews = new Set(
+  Object.entries(publishedIdeologies)
+    .filter(([, entry]) => entry?.unlisted)
+    .map(([slug]) => `/leitura/${slug}`),
+);
 for (const file of await collect(root)) {
   const route = routeOf(file);
   if (
     route === '/404' ||
+    route === '/index.csr' ||
+    route.endsWith('/index.csr') ||
     redirects.has(route.replace(/\/$/, '')) ||
     previews.has(route.replace(/\/$/, ''))
   ) {
