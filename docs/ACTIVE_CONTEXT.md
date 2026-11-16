@@ -1,9 +1,9 @@
 Status: atual
-Última verificação: 15/11/2026
+Última verificação: 16/11/2026
 
 # Contexto vivo do ATLAS
 
-Atualizado em 15/11/2026. Este é o handoff curto entre sessões. O histórico completo, com as 58 entradas anteriores, está em [`archive/2026-11/active-context-history.md`](archive/2026-11/active-context-history.md). O mapa dos documentos está em [`README.md`](README.md).
+Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico completo, com as 58 entradas anteriores, está em [`archive/2026-11/active-context-history.md`](archive/2026-11/active-context-history.md). O mapa dos documentos está em [`README.md`](README.md).
 
 ## Estado atual
 
@@ -17,6 +17,14 @@ Atualizado em 15/11/2026. Este é o handoff curto entre sessões. O histórico c
 - Publicado e verificado em 10/11: app no merge **`9501f7a`**; as três prévias respondem 200 em `/leitura/nazismo/`, `/leitura/stalinismo/` e `/leitura/trabalhismo/`, com selo de rascunho e fora da home. As quatro leituras curadas continuam sendo a navegação pública. Sitemap com **1.250 URLs**, só canônicas para as leituras; o ponteiro de conteúdo aponta para **`5923d2e`** (16 coleções, 7 leituras). `/grafos` baixa só o `networkBundle`, e verbete/acervo baixam só o `bundle` na carga direta.
 
 ## Verificações recentes
+
+- **Triagem de IA + pendências P1/E2E (16/11, `develop`):**
+  - `npm run rag:triage`: **569** itens triados por IA (`relacoes-candidatas.json`: 80; `debates-e-contradicoes.json`: 37; `deduplicacao-entidades.json`: 6; `fontes-publicas-extraidas.json`: 446), preservando `ok: null` e `human_ok: null` (gate humano exclusivo).
+  - **#75 (`noindex` em prévias `unlisted`):** `scripts/seo.mjs` injeta `<meta name="robots" content="noindex">` nos HTMLs de `/leitura/nazismo`, `/leitura/stalinismo` e `/leitura/trabalhismo`; `IdeologyPageComponent` atualiza/remove a meta tag no cliente.
+  - **#76 (`public/_redirects`):** adicionadas regras `301` com barra final (`/slug/ ... 301`) para paridade no Cloudflare Pages.
+  - **#78 (bibliografia das prévias):** `scripts/tradicao/reading.mjs` agrega todas as fontes dos capítulos na seção `fontes` (`nazismo`: 38, `stalinismo`: 32, `trabalhismo`: 46 fontes após estágio 8 `--force`).
+  - **Itinerário comparativo (Fase 3):** `content/itineraries/comparativo-liberdade.json` criado com `status: "pending"` e `review.status: "assistant"` (`[conferência de IA]`); `npm run itinerary:check` (**2** arquivos, **0** verificados).
+  - **Grafo (`/grafos`):** corrigida a preservação de caminho parcial em `KnowledgeNetworkComponent` ao selecionar o segundo nó ou usar o modo caminho; `npx playwright test e2e/graph.spec.ts` **23/23** passando, `npm run test:content` **210/210**, `npm run build` (**1.276** rotas prerenderizadas, **1.251** no sitemap), `npm run typecheck` e `npm run lint` exit 0.
 
 - `npm run setup` e `npm run publish:check` (15/11): setup unificado em 1 comando validado (`content:fetch` 0 baixados de 30, `content:build`, `.venv` + RTX 4060 8 GB, 6 modelos Ollama + HuggingFace `bge-m3`/`bge-reranker-v2-m3`, `~/.atlas/r2.env`); simulação `--dry-run` no R2 (30 objetos/3 mídias) e Cloudflare Pages (`1.341` arquivos, `128,3` MB).
 - `npm run rag:ingest` (16/11, `gemma2:9b-instruct-q4_K_M` + `BAAI/bge-m3` em GPU FP16): **8** tópicos processados (`trabalhismo` 62, `marxismo` 63, `liberalismo` 50, `anarquismo` 88, `nazismo` 104, `stalinismo` 104, `social-democracia` 31 e `verbetes-citados` 48) com vetores `1024`-dim em `experiments/rag/data/public_ingest/*.embeddings.npy` e **446** itens acumulados em `experiments/rag/eval/queues/fontes-publicas-extraidas.json` (`ok: null`). `experiments/rag/.venv/Scripts/pytest.exe experiments/rag/tests`: **29/29** passando; `npm run rag:eval`: **10/10** checks verdes.

@@ -1165,7 +1165,7 @@ export class KnowledgeNetworkComponent {
    */
   select(id: string | null, reveal = false, preservePath = false): void {
     const switchingNode = id !== this.selectedId();
-    if (!preservePath && !this.pathMode() && (this.pathFrom() || this.pathTo()) && switchingNode) {
+    if (!preservePath && !this.pathMode() && this.pathFrom() && this.pathTo() && switchingNode) {
       this.pathFrom.set(null);
       this.pathTo.set(null);
       this.pathVariant.set(0);
@@ -1712,7 +1712,7 @@ export class KnowledgeNetworkComponent {
   /** In path mode the next two map clicks become the endpoints; otherwise clicking another node clears any active path and selects it. */
   private pickNode(id: string): void {
     if (!this.pathMode()) {
-      this.select(id);
+      this.select(id, false, true);
       return;
     }
     if (!this.pathFrom() || this.pathTo()) {
@@ -1724,7 +1724,7 @@ export class KnowledgeNetworkComponent {
       this.pathVariant.set(0);
       this.pathMode.set(false);
     }
-    this.select(id);
+    this.select(id, false, true);
   }
 
   private fastLinksOf(id: string): NodeLink[] {

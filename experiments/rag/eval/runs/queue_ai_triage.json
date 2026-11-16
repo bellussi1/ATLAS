@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-15T21:43:01.518662+00:00",
+  "generated_at": "2026-11-16T12:25:51.258564+00:00",
   "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
-  "total_items_triaged": 178,
+  "total_items_triaged": 569,
   "all_ok_null": true,
   "human_validated_count": 0,
   "queues": {
@@ -30,9 +30,10 @@
       "all_ok_null": true
     },
     "fontes-publicas-extraidas.json": {
-      "count": 55,
+      "count": 446,
       "by_ai_triage_verdict": {
-        "alta_confianca": 55
+        "alta_confianca": 431,
+        "revisar_contexto": 15
       },
       "all_ok_null": true
     }

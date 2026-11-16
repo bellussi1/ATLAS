@@ -52,8 +52,16 @@ for (const file of await collect(root)) {
     route === '/404' ||
     redirects.has(route.replace(/\/$/, '')) ||
     previews.has(route.replace(/\/$/, ''))
-  )
+  ) {
+    if (previews.has(route.replace(/\/$/, ''))) {
+      let html = await readFile(file, 'utf8');
+      html = html
+        .replace(/<meta\s+name="robots"[^>]*>\s*/gi, '')
+        .replace('</head>', '<meta name="robots" content="noindex"></head>');
+      await writeFile(file, html);
+    }
     continue;
+  }
   let html = await readFile(file, 'utf8');
   html = html
     .replace(/<link\s+rel="canonical"[^>]*>\s*/gi, '')

@@ -479,6 +479,21 @@ export function buildReading({
   if (position.length && content.introducao.narrative)
     content.introducao.narrative.push(`Posição política descrita na fonte: ${position[0]}.`);
 
+  const allChapterSources = dedupe([
+    source,
+    ...Object.entries(content)
+      .filter(([id, c]) => id !== 'fontes' && !c.pending)
+      .flatMap(([, c]) => sourcesOf(c)),
+  ]);
+  content.fontes = {
+    ...content.fontes,
+    sourceIds: allChapterSources,
+    narrative: [
+      `Reúne ${claims.length} ${claims.length === 1 ? 'afirmação' : 'afirmações'} da fonte principal e ${allChapterSources.length} ${allChapterSources.length === 1 ? 'referência bibliográfica' : 'referências bibliográficas'} ligadas à leitura. Inclui síntese por IA · revisão humana não registrada.`,
+    ],
+    blocks: [{ type: 'sources', sourceIds: allChapterSources }],
+  };
+
   const chapters = canonicalChapters.map((chapter) => {
     const c = content[chapter.id];
     const base = {

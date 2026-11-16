@@ -24,7 +24,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9659,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.97): tensao explicita com contested-claim (cos=0.92)."
   },
@@ -53,7 +53,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9621,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.96): tensao explicita com contested-claim (cos=0.91)."
   },
@@ -82,7 +82,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9542,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.95): tensao explicita com contested-claim (cos=0.90)."
   },
@@ -111,7 +111,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9492,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.95): tensao explicita com contested-claim (cos=0.90)."
   },
@@ -140,7 +140,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9405,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.94): tensao explicita com contested-claim (cos=0.89)."
   },
@@ -169,7 +169,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9379,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.94): tensao explicita com contested-claim (cos=0.89)."
   },
@@ -198,7 +198,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9323,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.93): tensao explicita com contested-claim (cos=0.88)."
   },
@@ -227,7 +227,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9317,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.93): tensao explicita com contested-claim (cos=0.88)."
   },
@@ -256,7 +256,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9232,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.92): tensao explicita com contested-claim (cos=0.87)."
   },
@@ -285,7 +285,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9184,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.92): tensao explicita com contested-claim (cos=0.87)."
   },
@@ -314,9 +314,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.8623,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
-    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (revisar_contexto, score=0.86): similaridade semantica=0.86; verificar se ha controversia real. Pre-triagem IA (revisar_contexto, score=0.86): similaridade semantica=0.86; verificar se ha controversia real."
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (revisar_contexto, score=0.86): similaridade semantica=0.86; verificar se ha controversia real. Pre-triagem IA (revisar_contexto, score=0.86): similaridade semantica=0.86; verificar se ha controversia real. Pre-triagem IA (revisar_contexto, score=0.86): similaridade semantica=0.86; verificar se ha controversia real."
   },
   {
     "id": "debate-012",
@@ -343,7 +343,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.9083,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.91): tensao explicita com contested-claim (cos=0.86)."
   },
@@ -372,7 +372,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.903,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.90): tensao explicita com contested-claim (cos=0.85)."
   },
@@ -401,7 +401,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8991,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.90): tensao explicita com contested-claim (cos=0.85)."
   },
@@ -430,7 +430,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8987,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.90): tensao explicita com contested-claim (cos=0.85)."
   },
@@ -459,7 +459,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8971,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.90): tensao explicita com contested-claim (cos=0.85)."
   },
@@ -488,7 +488,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8946,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.89): tensao explicita com contested-claim (cos=0.84)."
   },
@@ -517,7 +517,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8944,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.89): tensao explicita com contested-claim (cos=0.84)."
   },
@@ -546,7 +546,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8942,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.89): tensao explicita com contested-claim (cos=0.84)."
   },
@@ -575,7 +575,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8933,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.89): tensao explicita com contested-claim (cos=0.84)."
   },
@@ -604,7 +604,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8928,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.89): tensao explicita com contested-claim (cos=0.84)."
   },
@@ -633,7 +633,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8915,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.89): tensao explicita com contested-claim (cos=0.84)."
   },
@@ -662,7 +662,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8883,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.89): tensao explicita com contested-claim (cos=0.84)."
   },
@@ -691,7 +691,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8846,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -720,7 +720,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8816,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -749,7 +749,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8812,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -778,7 +778,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8806,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -807,7 +807,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8794,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -836,7 +836,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.877,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -865,7 +865,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.877,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -894,9 +894,9 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "revisar_contexto",
       "ai_triage_score": 0.8266,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
-    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (revisar_contexto, score=0.83): similaridade semantica=0.83; verificar se ha controversia real. Pre-triagem IA (revisar_contexto, score=0.83): similaridade semantica=0.83; verificar se ha controversia real."
+    "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (revisar_contexto, score=0.83): similaridade semantica=0.83; verificar se ha controversia real. Pre-triagem IA (revisar_contexto, score=0.83): similaridade semantica=0.83; verificar se ha controversia real. Pre-triagem IA (revisar_contexto, score=0.83): similaridade semantica=0.83; verificar se ha controversia real."
   },
   {
     "id": "debate-032",
@@ -923,7 +923,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8764,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -952,7 +952,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8763,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.88): tensao explicita com contested-claim (cos=0.83)."
   },
@@ -981,7 +981,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8738,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.87): tensao explicita com contested-claim (cos=0.82)."
   },
@@ -1010,7 +1010,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8699,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.87): tensao explicita com contested-claim (cos=0.82)."
   },
@@ -1039,7 +1039,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8697,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.87): tensao explicita com contested-claim (cos=0.82)."
   },
@@ -1068,7 +1068,7 @@
       "verdict": "pending-human",
       "ai_triage_verdict": "alta_confianca",
       "ai_triage_score": 0.8697,
-      "reviewedAt": "2026-11-16T04:52:40.433918+00:00"
+      "reviewedAt": "2026-11-16T12:25:51.258564+00:00"
     },
     "note": "[conferência de IA] Par de afirmações com alta proximidade semântica e contraste epistêmico; revisar se configura debate editorial. Pre-triagem IA (alta_confianca, score=0.87): tensao explicita com contested-claim (cos=0.82)."
   }
