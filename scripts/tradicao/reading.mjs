@@ -373,13 +373,23 @@ export function buildReading({
       const evidence = evidences.get(id);
       return evidence ? [evidence.sourceId] : [];
     });
+  const nonCurrentIdeologyLinks = new Set([
+    'criticized',
+    'opposed',
+    'diverged_from',
+    'encyclopedic-link',
+    'related_to',
+  ]);
   const related = {};
   for (const relation of relations) {
     const otherId =
       relation.fromEntityId === entity.id ? relation.toEntityId : relation.fromEntityId;
     const other = entityIndex.get(otherId);
     if (!other || other.id === entity.id) continue;
-    const chapter = REF_KINDS[other.kind] ?? 'conexoes';
+    const chapter =
+      other.kind === 'ideology' && nonCurrentIdeologyLinks.has(relation.type)
+        ? 'conexoes'
+        : (REF_KINDS[other.kind] ?? 'conexoes');
     related[chapter] ??= [];
     const bucket = related[chapter];
     if (bucket.some((r) => r.entity.id === other.id)) continue;
@@ -409,7 +419,6 @@ export function buildReading({
     }
   };
   addLensChapter('pensadores', ['person']);
-  addLensChapter('vertentes', ['ideology']);
   addLensChapter('experiencias', [
     'event',
     'party',
@@ -418,6 +427,7 @@ export function buildReading({
     'historical-polity',
   ]);
   addLensChapter('conexoes', [
+    'ideology',
     'place',
     'country',
     'regime',

@@ -9,11 +9,7 @@
   "summary": "O nazismo, oficialmente nacional-socialismo, é uma ideologia associada a Adolf Hitler e ao Partido Nazista (NSDAP), na Alemanha. O verbete a descreve como uma forma de fascismo que despreza a democracia liberal, incorpora racismo científico, antissemitismo, anticomunismo e eugenia. Seu partido foi fundado em 1919 e o programa de 25 pontos foi proclamado em 1920. O texto trata sua ascensão após a derrota alemã na Primeira Guerra Mundial, a perseguição aos judeus e o Holocausto, em que foram mortos entre 5 e 6 milhões de pessoas nos campos de concentração.",
   "published": false,
   "atlasId": "atlas-nazismo",
-  "review": {
-    "status": "rascunho",
-    "reviewer": null,
-    "updatedAt": "2026-11-10"
-  },
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-16" },
   "identity": {
     "accent": "teal",
     "palette": "fascismo",
@@ -21,9 +17,7 @@
     "keyVisualization": "timeline"
   },
   "portrait": null,
-  "poster": {
-    "figures": []
-  },
+  "poster": { "figures": [] },
   "chapters": [
     {
       "id": "introducao",
@@ -35,11 +29,9 @@
         "O nazismo, oficialmente nacional-socialismo, é uma ideologia associada a Adolf Hitler e ao Partido Nazista (NSDAP), na Alemanha. O verbete a descreve como uma forma de fascismo que despreza a democracia liberal, incorpora racismo científico, antissemitismo, anticomunismo e eugenia. Seu partido foi fundado em 1919 e o programa de 25 pontos foi proclamado em 1920. O texto trata sua ascensão após a derrota alemã na Primeira Guerra Mundial, a perseguição aos judeus e o Holocausto, em que foram mortos entre 5 e 6 milhões de pessoas nos campos de concentração.",
         "Posição política descrita na fonte: extrema direita."
       ],
-      "question": "O que é o Nazismo e por que ele importa?",
-      "bridge": "As origens mostram de onde essas ideias vêm.",
-      "sourceIds": [
-        "src-wiki-topic-nazismo"
-      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -55,11 +47,9 @@
       "narrative": [
         "O nazismo é descrito como uma forma de fascismo que despreza a democracia liberal e o sistema parlamentar."
       ],
-      "question": "Como o Nazismo se formou?",
-      "bridge": "Com a formação situada, veja as ideias que a organizam.",
-      "sourceIds": [
-        "src-wiki-topic-nazismo"
-      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -77,12 +67,8 @@
               "paragraphs": [
                 "O nazismo é descrito como uma forma de fascismo que despreza a democracia liberal e o sistema parlamentar."
               ],
-              "sourceIds": [
-                "src-wiki-topic-nazismo"
-              ],
-              "entityIds": [
-                "wiki-topic-nazismo"
-              ],
+              "sourceIds": ["src-wiki-topic-nazismo"],
+              "entityIds": ["wiki-topic-nazismo"],
               "classification": "alegação empírica"
             }
           ]
@@ -99,11 +85,9 @@
         "O nazismo incorpora racismo científico, antissemitismo, anticomunismo e uso de eugenia em seu credo.",
         "O nazismo defendia a Volksgemeinschaft, comunidade do povo que uniria os alemães e excluiria os considerados estrangeiros."
       ],
-      "question": "Quais ideias organizam o Nazismo?",
-      "bridge": "Os princípios ganham sentido nos conceitos e nos marcos históricos.",
-      "sourceIds": [
-        "src-wiki-topic-nazismo"
-      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -121,12 +105,8 @@
               "paragraphs": [
                 "O nazismo incorpora racismo científico, antissemitismo, anticomunismo e uso de eugenia em seu credo."
               ],
-              "sourceIds": [
-                "src-wiki-topic-nazismo"
-              ],
-              "entityIds": [
-                "wiki-topic-nazismo"
-              ],
+              "sourceIds": ["src-wiki-topic-nazismo"],
+              "entityIds": ["wiki-topic-nazismo"],
               "classification": "tese atribuída"
             },
             {
@@ -137,12 +117,8 @@
               "paragraphs": [
                 "O nazismo defendia a Volksgemeinschaft, comunidade do povo que uniria os alemães e excluiria os considerados estrangeiros."
               ],
-              "sourceIds": [
-                "src-wiki-topic-nazismo"
-              ],
-              "entityIds": [
-                "wiki-topic-nazismo"
-              ],
+              "sourceIds": ["src-wiki-topic-nazismo"],
+              "entityIds": ["wiki-topic-nazismo"],
               "classification": "tese atribuída"
             }
           ]
@@ -159,8 +135,8 @@
         "Também chamada de nacional-socialismo, Nazism, National Socialism, nazifascismo, NSDAP, Partido Nacional-Socialista dos Trabalhadores Alemães, National Socialist German Workers' Party, Partido Nazista, Adolf Hitler, hitlerismo.",
         "Conceitos ligados à tradição: Alemães, Burguesia, Materialismo, Luta de classes, Conservadorismo."
       ],
-      "question": "Que termos ajudam a entender o Nazismo?",
-      "bridge": "Os conceitos se encarnam em momentos e em experiências.",
+      "question": null,
+      "bridge": null,
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-topic-alemaes",
@@ -176,9 +152,7 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-topic-nazismo"
-          ],
+          "entityIds": ["wiki-topic-nazismo"],
           "mode": "concepts",
           "notes": {
             "wiki-topic-nazismo": "Nomes alternativos: nacional-socialismo, Nazism, National Socialism, nazifascismo, NSDAP, Partido Nacional-Socialista dos Trabalhadores Alemães, National Socialist German Workers' Party, Partido Nazista, Adolf Hitler, hitlerismo."
@@ -204,14 +178,10 @@
       "title": "História e épocas",
       "kicker": "História e épocas",
       "minutes": 1,
-      "narrative": [
-        "Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."
-      ],
-      "question": "Em que momentos o Nazismo se desenvolveu?",
-      "bridge": "Esses momentos foram vividos por pessoas e organizações.",
-      "sourceIds": [
-        "src-wiki-topic-nazismo"
-      ],
+      "narrative": ["Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -229,28 +199,16 @@
               "paragraphs": [
                 "Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."
               ],
-              "sourceIds": [
-                "src-wiki-topic-nazismo"
-              ],
-              "entityIds": [
-                "wiki-topic-nazismo"
-              ],
+              "sourceIds": ["src-wiki-topic-nazismo"],
+              "entityIds": ["wiki-topic-nazismo"],
               "classification": "alegação empírica"
             }
           ]
         },
         {
           "type": "chronology",
-          "epochs": [
-            {
-              "itemId": "marco-1",
-              "start": 1935,
-              "end": 1935
-            }
-          ],
-          "entityIds": [
-            "wiki-topic-nazismo"
-          ],
+          "epochs": [{ "itemId": "marco-1", "start": 1935, "end": 1935 }],
+          "entityIds": ["wiki-topic-nazismo"],
           "markerIds": [],
           "markerNotes": {}
         }
@@ -265,8 +223,8 @@
       "narrative": [
         "Registros ligados à ideologia: Johann Gottlieb Fichte, Georg Ritter von Schönerer, Adolf Hitler, Paul von Hindenburg, Guilherme II da Alemanha, Heinrich Himmler, Hermann Göring, Joseph Goebbels."
       ],
-      "question": "Quem pensou e disputou o Nazismo?",
-      "bridge": "As pessoas e obras se distribuem em correntes.",
+      "question": null,
+      "bridge": null,
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-topic-adolf-hitler",
@@ -307,51 +265,15 @@
       "title": "Correntes e vertentes",
       "kicker": "Correntes e vertentes",
       "minutes": 1,
-      "narrative": [
-        "Correntes relacionadas: Nacionalismo, Marxismo, Socialismo, Pseudociência, Extrema-direita, Democracia, Racismo, Direita (política), Liberalismo, Eugenia, Antissemitismo, Fascismo, Autoritarismo, Social-democracia."
-      ],
-      "question": "Quais correntes convivem dentro do Nazismo?",
-      "bridge": "As correntes se encontram em experiências históricas.",
-      "sourceIds": [
-        "src-wiki-topic-nacionalismo",
-        "src-wiki-topic-pseudociencia",
-        "src-wiki-topic-extrema-direita",
-        "src-wiki-topic-democracia",
-        "src-wiki-topic-racismo",
-        "src-wiki-topic-direita-politica",
-        "src-wiki-topic-eugenia",
-        "src-wiki-topic-antissemitismo",
-        "src-wiki-topic-fascismo",
-        "src-wiki-topic-autoritarismo",
-        "src-wiki-topic-social-democracia"
-      ],
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
       "review": null,
-      "gap": null,
-      "coverage": "complete",
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
       "layout": "documents",
-      "blocks": [
-        {
-          "type": "entities",
-          "entityIds": [
-            "wiki-topic-nacionalismo",
-            "ideology-marxism",
-            "ideology-socialism",
-            "wiki-topic-pseudociencia",
-            "wiki-topic-extrema-direita",
-            "wiki-topic-democracia",
-            "wiki-topic-racismo",
-            "wiki-topic-direita-politica",
-            "ideology-liberalism",
-            "wiki-topic-eugenia",
-            "wiki-topic-antissemitismo",
-            "wiki-topic-fascismo",
-            "wiki-topic-autoritarismo",
-            "wiki-topic-social-democracia"
-          ],
-          "mode": "concepts",
-          "notes": {}
-        }
-      ]
+      "blocks": []
     },
     {
       "id": "experiencias",
@@ -362,8 +284,8 @@
       "narrative": [
         "Registros ligados à ideologia: Freikorps, Partido Nacional-Socialista dos Trabalhadores Alemães, Grande Depressão, Primeira Guerra Mundial, Capitalismo, Holocausto, Segunda Guerra Mundial, Iluminismo, Monarquia, Ditadura."
       ],
-      "question": "Onde o Nazismo foi vivido ou aplicado?",
-      "bridge": "As experiências também produziram críticas e divergências.",
+      "question": null,
+      "bridge": null,
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-wd-q7320",
@@ -412,11 +334,9 @@
       "narrative": [
         "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
       ],
-      "question": "Quais críticas o Nazismo recebe?",
-      "bridge": "As críticas ajudam a situar as conexões com outras tradições.",
-      "sourceIds": [
-        "src-wiki-topic-nazismo"
-      ],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
@@ -434,12 +354,8 @@
               "paragraphs": [
                 "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
               ],
-              "sourceIds": [
-                "src-wiki-topic-nazismo"
-              ],
-              "entityIds": [
-                "wiki-topic-nazismo"
-              ],
+              "sourceIds": ["src-wiki-topic-nazismo"],
+              "entityIds": ["wiki-topic-nazismo"],
               "classification": "alegação empírica"
             }
           ]
@@ -453,16 +369,27 @@
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Alemanha Nazista, República de Weimar, Alemanha, Munique, Viena."
+        "Registros ligados à ideologia: Alemanha Nazista, Nacionalismo, República de Weimar, Marxismo, Socialismo, Pseudociência, Extrema-direita, Democracia, Racismo, Alemanha, Direita (política), Liberalismo, Eugenia, Munique, Viena, Antissemitismo, Fascismo, Autoritarismo, Social-democracia."
       ],
-      "question": "Como o Nazismo se liga a outras tradições?",
-      "bridge": "As conexões indicam caminhos de leitura.",
+      "question": null,
+      "bridge": null,
       "sourceIds": [
         "src-wikidata-verbetes",
+        "src-wiki-topic-nacionalismo",
         "src-wiki-topic-republica-de-weimar",
+        "src-wiki-topic-pseudociencia",
+        "src-wiki-topic-extrema-direita",
+        "src-wiki-topic-democracia",
+        "src-wiki-topic-racismo",
         "src-wiki-topic-alemanha",
+        "src-wiki-topic-direita-politica",
+        "src-wiki-topic-eugenia",
         "src-wiki-topic-munique",
-        "src-wiki-topic-viena"
+        "src-wiki-topic-viena",
+        "src-wiki-topic-antissemitismo",
+        "src-wiki-topic-fascismo",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-social-democracia"
       ],
       "review": null,
       "gap": null,
@@ -473,10 +400,24 @@
           "type": "entities",
           "entityIds": [
             "wiki-topic-alemanha-nazista",
+            "wiki-topic-nacionalismo",
             "wiki-topic-republica-de-weimar",
+            "ideology-marxism",
+            "ideology-socialism",
+            "wiki-topic-pseudociencia",
+            "wiki-topic-extrema-direita",
+            "wiki-topic-democracia",
+            "wiki-topic-racismo",
             "wiki-topic-alemanha",
+            "wiki-topic-direita-politica",
+            "ideology-liberalism",
+            "wiki-topic-eugenia",
             "wiki-topic-munique",
-            "wiki-topic-viena"
+            "wiki-topic-viena",
+            "wiki-topic-antissemitismo",
+            "wiki-topic-fascismo",
+            "wiki-topic-autoritarismo",
+            "wiki-topic-social-democracia"
           ],
           "mode": "concepts",
           "notes": {}
@@ -489,14 +430,10 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": [
-        "Obras ligadas à tradição: Mein Kampf."
-      ],
-      "question": "O que ler para continuar?",
-      "bridge": "As fontes sustentam o que foi lido.",
-      "sourceIds": [
-        "src-wiki-topic-mein-kampf"
-      ],
+      "narrative": ["Obras ligadas à tradição: Mein Kampf."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": ["src-wiki-topic-mein-kampf"],
       "review": null,
       "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
       "coverage": "partial",
@@ -504,9 +441,7 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-topic-mein-kampf"
-          ],
+          "entityIds": ["wiki-topic-mein-kampf"],
           "mode": "documents",
           "notes": {}
         }
@@ -521,23 +456,14 @@
       "narrative": [
         "Reúne 9 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
       ],
-      "question": "De onde vêm as informações desta leitura?",
+      "question": null,
       "bridge": null,
-      "sourceIds": [
-        "src-wiki-topic-nazismo"
-      ],
+      "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
       "coverage": "complete",
       "layout": "sources",
-      "blocks": [
-        {
-          "type": "sources",
-          "sourceIds": [
-            "src-wiki-topic-nazismo"
-          ]
-        }
-      ]
+      "blocks": [{ "type": "sources", "sourceIds": ["src-wiki-topic-nazismo"] }]
     }
   ]
 }
