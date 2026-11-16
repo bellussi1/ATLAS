@@ -1,55 +1,112 @@
 <section class="itineraries" aria-labelledby="itineraries-title">
   <header class="itineraries__head">
-    <div>
-      <p class="itineraries__kicker">Percursos editoriais</p>
+    <div class="itineraries__intro">
+      <p class="itineraries__kicker">Percursos guiados por perguntas</p>
       <h1 id="itineraries-title">Itinerários</h1>
-      <p class="itineraries__deck">
-        Sequências de paradas ligadas por uma pergunta que atravessam leituras contínuas, verbetes e
-        relações já documentadas no acervo.
+      <p class="itineraries__lead">
+        Caminhos de estudo estruturados em paradas sequenciais: cada etapa liga uma leitura
+        contínua, um verbete do acervo ou um nó do grafo, com desvios opcionais que retornam ao eixo
+        principal.
       </p>
+      <ol class="itineraries__how" aria-label="Como funciona um itinerário">
+        <li>
+          <span class="how-num" aria-hidden="true">01</span>
+          <span><strong>Pergunta central</strong> orienta o percurso.</span>
+        </li>
+        <li>
+          <span class="how-num" aria-hidden="true">02</span>
+          <span><strong>Paradas em cadeia</strong> ligam leitura, verbete e grafo.</span>
+        </li>
+        <li>
+          <span class="how-num" aria-hidden="true">03</span>
+          <span><strong>Ramos</strong> abrem desvios e convergem adiante.</span>
+        </li>
+      </ol>
     </div>
-    <app-geometric-mosaic class="itineraries__mosaic" [columns]="6" [rows]="1" [seed]="11" />
+    <app-geometric-mosaic
+      class="itineraries__mosaic"
+      [columns]="4"
+      [rows]="2"
+      palette="atlas"
+      [seed]="29"
+    />
   </header>
 
   @if (loading()) {
     <p class="itineraries__status" role="status" aria-live="polite">Carregando itinerários…</p>
-  } @else if (items().length) {
-    <ol class="itineraries__list">
+  } @else if (items().length > 0) {
+    <ul class="itineraries__grid">
       @for (item of items(); track item.id) {
-        <li class="itinerary-card">
-          <p class="itinerary-card__meta">
-            <span>{{ kindLabels[item.kind] }}</span>
-            <span>{{ item.stops.length }} paradas</span>
-            @if (item.branches.length) {
-              <span>{{ item.branches.length }} ramos</span>
+        <li class="itinerary-card" [attr.data-kind]="item.kind">
+          <div class="itinerary-card__rail">
+            <app-geometric-mosaic
+              class="itinerary-card__mosaic"
+              [columns]="3"
+              [rows]="2"
+              [palette]="paletteFor(item.kind)"
+              [seed]="seedFor(item.slug)"
+            />
+            <span class="itinerary-card__seal" [class.is-verified]="item.status === 'verified'">
+              {{ statusLabel(item.status) }}
+            </span>
+          </div>
+
+          <div class="itinerary-card__body">
+            <p class="itinerary-card__meta">
+              <span class="itinerary-card__kind">{{ kindLabels[item.kind] }}</span>
+              <span>{{ item.stops.length }} paradas</span>
+              @if (item.branches.length > 0) {
+                <span>{{ item.branches.length }} ramos</span>
+              }
+            </p>
+            <h2>
+              <a [routerLink]="['/itinerario', item.slug]">{{ item.title }}</a>
+            </h2>
+            <p class="itinerary-card__question">{{ item.question }}</p>
+            <p class="itinerary-card__summary">{{ item.summary }}</p>
+
+            <ol class="itinerary-card__trail" aria-label="Prévia do percurso">
+              @for (stop of item.stops; track stop.id; let i = $index) {
+                <li class="trail-step">
+                  <span
+                    class="trail-step__node"
+                    [attr.data-type]="stop.destination.type"
+                    aria-hidden="true"
+                    >{{ i + 1 }}</span
+                  >
+                  <span class="trail-step__text">
+                    <span class="trail-step__kind">{{ destinationLabel(stop.destination) }}</span>
+                    <strong>{{ stop.title }}</strong>
+                  </span>
+                </li>
+              }
+            </ol>
+
+            @if (item.coverage !== 'complete' && item.coverageNote) {
+              <p class="itinerary-card__coverage">{{ item.coverageNote }}</p>
             }
-            @if (item.status === 'reviewed-ai') {
-              <span>Conferido por IA</span>
-            }
-          </p>
-          <h2>
-            <a [routerLink]="['/itinerario', item.slug]">{{ item.title }}</a>
-          </h2>
-          <p class="itinerary-card__question">{{ item.question }}</p>
-          <p class="itinerary-card__summary">{{ item.summary }}</p>
-          @if (item.coverage !== 'complete' && item.coverageNote) {
-            <p class="itinerary-card__coverage">{{ item.coverageNote }}</p>
-          }
+
+            <p class="itinerary-card__cta-row">
+              <a class="itinerary-card__cta" [routerLink]="['/itinerario', item.slug]">
+                Abrir mapa do percurso <span aria-hidden="true">→</span>
+              </a>
+            </p>
+          </div>
         </li>
       }
-    </ol>
+    </ul>
   } @else {
-    <section class="itineraries__empty" aria-label="Nenhum itinerário publicado">
+    <div class="itineraries__empty" role="status">
       <h2>Nenhum itinerário verificado foi publicado ainda</h2>
       <p>
-        Os percursos só entram no catálogo público depois de cumprirem o gate de cobertura e revisão
-        humana. Enquanto isso, explore as leituras contínuas, o acervo ou o grafo.
+        Os itinerários publicados ligam leituras, verbetes e o grafo sem substituir a consulta
+        livre. Enquanto os percursos editoriais são verificados, explore o acervo diretamente:
       </p>
       <div class="itineraries__links">
-        <a routerLink="/leitura/marxismo">Ler Marxismo</a>
-        <a routerLink="/acervo">Explorar o acervo</a>
-        <a routerLink="/grafos">Abrir o grafo</a>
+        <a routerLink="/leituras">Todas as leituras</a>
+        <a routerLink="/grafos">Grafo do acervo</a>
+        <a routerLink="/acervo" [queryParams]="{ camada: 'registros' }">Explorar o acervo</a>
       </div>
-    </section>
+    </div>
   }
 </section>

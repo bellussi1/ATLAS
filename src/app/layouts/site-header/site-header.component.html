@@ -59,9 +59,10 @@
                 <a class="mega__help" routerLink="/leituras" (click)="close()"
                   >Ver todas as leituras <app-chevron
                 /></a>
-                <a class="mega__help" routerLink="/itinerarios" (click)="close()"
-                  >Itinerários temáticos <app-chevron
-                /></a>
+                <a class="mega__itinerary" routerLink="/itinerarios" (click)="close()">
+                  <strong>Itinerários temáticos <app-chevron /></strong>
+                  <span>Percursos passo a passo ligando leituras, verbetes e o grafo.</span>
+                </a>
               </div>
               <div class="mega__aside">
                 <p class="mega__label">Consultar · por tipo</p>
@@ -84,6 +85,7 @@
             <a
               class="nav__link"
               routerLink="/itinerarios"
+              title="Percursos guiados por perguntas"
               [class.is-active]="section() === 'itinerarios'"
               [attr.aria-current]="section() === 'itinerarios' ? 'page' : null"
               (click)="close()"

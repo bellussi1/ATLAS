@@ -50,6 +50,49 @@ interface HomeData {
   readings: HomeReading[];
 }
 
+interface HomeItinerary {
+  slug: string;
+  kindLabel: string;
+  title: string;
+  question: string;
+  stopsLabel: string;
+  palette: MosaicPalette;
+  seed: number;
+}
+
+const FEATURED_ITINERARIES: readonly HomeItinerary[] = [
+  {
+    slug: 'trabalhismo-e-estado-social',
+    kindLabel: 'Histórico',
+    title: 'Trabalhismo, Estado social e reformas no século XX',
+    question:
+      'Como projetos trabalhistas e social-democratas combinaram direitos do trabalho, industrialização e democracia?',
+    stopsLabel: '6 paradas · 2 ramos',
+    palette: 'tissi',
+    seed: 17,
+  },
+  {
+    slug: 'comparativo-liberdade',
+    kindLabel: 'Comparativo',
+    title: 'Liberalismo e socialismo: liberdade, propriedade e Estado',
+    question:
+      'Como tradições políticas distintas respondem ao conflito entre liberdade individual, propriedade e ação estatal?',
+    stopsLabel: '6 paradas · 2 ramos',
+    palette: 'atlas',
+    seed: 23,
+  },
+  {
+    slug: 'criticas-aos-autoritarismos',
+    kindLabel: 'Conceitual',
+    title: 'Totalitarismo, partido único e crítica pluralista',
+    question:
+      'Como conceitos de totalitarismo, liberalismo e socialismo antiautoritário analisam regimes de partido único?',
+    stopsLabel: '5 paradas · 2 ramos',
+    palette: 'liberal',
+    seed: 31,
+  },
+];
+
 const compiledHome = homeStats as HomeData;
 
 @Component({
@@ -93,6 +136,7 @@ export class HomePage {
   readonly catalogueUrl = catalogueUrl;
   /** Published readings compiled into the home; capped to keep the landing page compact. */
   readonly readings = compiledHome.readings.slice(0, 4);
+  readonly featuredItineraries = FEATURED_ITINERARIES;
   readonly updatedLabel = (() => {
     const [year, month, day] = compiledHome.updatedAt.split('-');
     return `${day}/${month}/${year}`;

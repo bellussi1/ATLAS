@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Itinerários em estilo roadmap, `/itinerarios` geométrico e exposição na Home/Header/Footer (16/11, `develop`):**
+  - `/itinerarios` (`ItinerariesIndexComponent`) e `/itinerario/:slug` (`ItineraryPageComponent`) redesenhados no padrão `atlas-editorial-geometrico`: cards com mosaico geométrico por tipo, prévia da trilha de paradas, trilha visual conectada em roadmap (`roadmap-overview`, `roadmap-track`, conectores direcionais entre paradas, ramos em garfo com indicação de convergência/saída e prévia de ficha via `ContextPanelService`), sem barras de progresso ou checkboxes.
+  - Home (`HomePage` com faixa `.itineraries-band` + glifo na porta do pôster), Header (`SiteHeaderComponent` com destaque explicativo no mega menu) e Footer (`SiteFooterComponent` com porta `.footer-itinerary-door`) atualizados para explicar e ligar diretamente aos itinerários publicados.
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm test` (**380/380** em 60 arquivos), `npm run build` (**1.280** rotas prerenderizadas, **1.256** URLs no sitemap) e `npx playwright test e2e/itineraries.spec.ts` (**5/5**) passando.
+
 - **Itinerários (Fases 4–5) e backlog técnico (`#81`, `#85`, `#86`, reflow, Empirismo) (16/11, `develop`):**
   - `npm run itinerary:check` integrado ao CI (`ci.yml`), links para `/itinerarios` no `SiteHeader` e em `/leituras`, 2 novos pilotos validados (`trabalhismo-e-estado-social.json` e `criticas-aos-autoritarismos.json`; 4 arquivos conferidos, 0 verificados) e `e2e/itineraries.spec.ts` (**3/3**).
   - `scripts/seo.mjs` agora deriva `previews` de `publishedIdeologies` (`#81`) e exclui `/index.csr` do sitemap (`#86`, 1.253 URLs no sitemap); `src/index.html` inclui `og:image` e `twitter:card` (`#85`); `era-chart` e `chapter-review` reforçados contra overflow em 200% zoom; `wiki-topic-empirismo` corrigido de `institution` para `concept` em `content/knowledge/`.

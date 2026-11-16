@@ -36,7 +36,7 @@
         <span class="poster-door__glyph poster-door__glyph--half" aria-hidden="true"></span>
         <span>
           <strong>Seguir itinerários</strong>
-          <small>Percursos guiados por perguntas</small>
+          <small>Roteiros passo a passo por perguntas</small>
         </span>
         <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
@@ -151,6 +151,53 @@
     </article>
   </div>
   <p class="sr-only" role="status">Leitura selecionada: {{ selected().title }}.</p>
+</section>
+
+<section
+  class="itineraries-band"
+  id="itinerarios"
+  aria-labelledby="home-itineraries-title"
+  data-tone-section
+>
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
+    <p class="atlas-band-number atlas-band-number--half" aria-hidden="true">→</p>
+    <h2 id="home-itineraries-title">Seguir <em>um itinerário.</em></h2>
+    <p>
+      Não sabe por onde começar? Cada itinerário organiza leituras, verbetes e o grafo em paradas
+      conectadas ao redor de uma pergunta.
+    </p>
+  </header>
+  <ul class="itineraries-band__grid" appReveal>
+    @for (item of featuredItineraries; track item.slug; let i = $index) {
+      <li class="itineraries-band__card" data-stagger [style.--stagger]="i">
+        <a class="atlas-press" [routerLink]="['/itinerario', item.slug]">
+          <app-geometric-mosaic
+            class="itineraries-band__art"
+            [columns]="4"
+            [rows]="1"
+            [palette]="item.palette"
+            [seed]="item.seed"
+          />
+          <span class="itineraries-band__meta">
+            <span class="itineraries-band__kind">{{ item.kindLabel }}</span>
+            <span>{{ item.stopsLabel }}</span>
+          </span>
+          <strong>{{ item.title }}</strong>
+          <span class="itineraries-band__question">{{ item.question }}</span>
+          <span class="itineraries-band__go">
+            Abrir mapa do percurso
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </span>
+        </a>
+      </li>
+    }
+  </ul>
+  <p class="itineraries-band__all">
+    <a class="itineraries-band__cta atlas-press" routerLink="/itinerarios">
+      Explorar todos os itinerários
+      <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+    </a>
+  </p>
 </section>
 
 <section class="balance" id="acervo-hoje" aria-labelledby="scale-title" data-tone-section>
