@@ -64,6 +64,7 @@
 :root {
   color-scheme: light;
   --font-primary: 'Zilla Slab', Georgia, serif;
+  --font-numeric: 'Archivo', 'Segoe UI', sans-serif;
   --font-display-contrast: 'Syne', 'Segoe UI', sans-serif;
   font-family: var(--font-primary);
   font-synthesis: none;
@@ -403,6 +404,12 @@ html.atlas-reveal .atlas-reveal-item:focus-within > [data-stagger] {
   opacity: 1;
   transform: none;
   clip-path: none;
+}
+
+/* Numeric counters, dates and tabular metrics keep Archivo for crisp alignment. */
+.atlas-num {
+  font-family: var(--font-numeric);
+  font-variant-numeric: tabular-nums;
 }
 
 /* Page change: the header stays put and the page body fades between routes, with no sliding curtain. */
