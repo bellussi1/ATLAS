@@ -30,6 +30,8 @@
               aria-controls="menu-leituras"
               [attr.aria-expanded]="readingsOpen()"
               [class.is-active]="section() === 'leituras'"
+              (pointerenter)="warmArchive()"
+              (focus)="warmArchive()"
               (click)="toggleReadings()"
             >
               <span class="nav__glyph nav__glyph--quarter" aria-hidden="true"></span>Leituras
@@ -78,6 +80,8 @@
               routerLink="/acervo"
               [class.is-active]="section() === 'acervo'"
               [attr.aria-current]="section() === 'acervo' ? 'page' : null"
+              (pointerenter)="warmArchive()"
+              (focus)="warmArchive()"
               (click)="close()"
               ><span class="nav__glyph nav__glyph--square" aria-hidden="true"></span>Acervo</a
             >
@@ -88,6 +92,8 @@
               routerLink="/grafos"
               [class.is-active]="section() === 'grafos'"
               [attr.aria-current]="section() === 'grafos' ? 'page' : null"
+              (pointerenter)="warmGraph()"
+              (focus)="warmGraph()"
               (click)="close()"
               ><span class="nav__glyph nav__glyph--circle" aria-hidden="true"></span>Grafo</a
             >

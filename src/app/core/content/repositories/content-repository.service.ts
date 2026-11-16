@@ -149,6 +149,34 @@ export class ContentRepository {
   queryRelations(id: string, query: KnowledgeRelationQuery = {}) {
     return filterKnowledgeRelations(this.requireState().adjacency[id] ?? [], query);
   }
+  /**
+   * Starts fetching the full bundle into the in-flight request cache before the user navigates.
+   * Safe to call repeatedly; skipped on SSR, save-data or slow connections when `idle` is true.
+   */
+  warmBundle(idle = false): void {
+    if (!this.browser || !this.prefetchEnabled || (this.state && !this.networkOnly) || this.pending)
+      return;
+    if (idle && !this.canAutoPrefetch()) return;
+    void this.getPointer()
+      .then((pointer) => {
+        if (!pointer.bundle) return;
+        const key = artifactKey(pointer.bundle.sha256);
+        if (!this.requests.has(key)) void this.asset(key).catch(() => undefined);
+      })
+      .catch(() => undefined);
+  }
+  /** Starts fetching the network bundle into the in-flight request cache before opening `/grafos`. */
+  warmNetwork(): void {
+    if (!this.browser || !this.prefetchEnabled || this.state || this.networkPending || this.pending)
+      return;
+    void this.getPointer()
+      .then((pointer) => {
+        if (!pointer.networkBundle) return;
+        const key = artifactKey(pointer.networkBundle.sha256);
+        if (!this.requests.has(key)) void this.asset(key).catch(() => undefined);
+      })
+      .catch(() => undefined);
+  }
   private requireState(): ContentPackage {
     if (!this.state) throw new Error('Índices de conteúdo indisponíveis.');
     return this.state;
@@ -300,6 +328,18 @@ export class ContentRepository {
     });
     return this.networkPending;
   }
+  private canAutoPrefetch(): boolean {
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+    if (connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType ?? ''))
+      return false;
+    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+    return typeof memory !== 'number' || memory >= 4;
+  }
+
   /**
    * The graph is often the entry point. Warm the complete package while the reader explores it,
    * so leaving for a catalogue does not download and verify the bundle again. Skipped on
@@ -307,13 +347,7 @@ export class ContentRepository {
    */
   private schedulePrefetch(pointer: ContentPointer): void {
     if (!this.browser || !this.prefetchEnabled || !pointer.bundle) return;
-    const connection = (
-      navigator as Navigator & {
-        connection?: { saveData?: boolean; effectiveType?: string };
-      }
-    ).connection;
-    if (connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType ?? ''))
-      return;
+    if (!this.canAutoPrefetch()) return;
     const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
     if (typeof memory === 'number' && memory < 8) return;
     const key = artifactKey(pointer.bundle.sha256);

@@ -1,4 +1,12 @@
-import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  Injector,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
@@ -66,6 +74,9 @@ const sectionOf = (url: string): Section => {
 export class SiteHeaderComponent {
   private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly router = inject(Router);
+  private readonly injector = inject(Injector);
+  private readonly destroyRef = inject(DestroyRef);
+  private destroyed = false;
   private readonly menuToggle = viewChild.required<ElementRef<HTMLButtonElement>>('menuToggle');
   private readonly readingsToggle =
     viewChild.required<ElementRef<HTMLButtonElement>>('readingsToggle');
@@ -84,6 +95,9 @@ export class SiteHeaderComponent {
   );
 
   constructor() {
+    this.destroyRef.onDestroy(() => {
+      this.destroyed = true;
+    });
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -100,7 +114,22 @@ export class SiteHeaderComponent {
   }
 
   toggleReadings(): void {
+    this.warmArchive();
     this.readingsOpen.update((open) => !open);
+  }
+  warmArchive(): void {
+    void import('@core/content/repositories/content-repository.service').then(
+      ({ ContentRepository }) => {
+        if (!this.destroyed) this.injector.get(ContentRepository).warmBundle();
+      },
+    );
+  }
+  warmGraph(): void {
+    void import('@core/content/repositories/content-repository.service').then(
+      ({ ContentRepository }) => {
+        if (!this.destroyed) this.injector.get(ContentRepository).warmNetwork();
+      },
+    );
   }
 
   search(event: Event): void {

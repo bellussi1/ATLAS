@@ -8,6 +8,10 @@
   Pular para o conteúdo
 </a>
 
+@if (navigating()) {
+  <div class="nav-progress" aria-hidden="true"></div>
+}
+
 @if (!fullscreen()) {
   <app-site-header />
 
@@ -18,7 +22,19 @@
   id="conteudo"
   tabindex="-1"
   [attr.aria-label]="failedNavigation() ? 'Falha de navegação' : pageTitle()"
+  [attr.aria-busy]="navigating()"
 >
+  @if (showLoadingScreen()) {
+    <div class="nav-loading" role="status" aria-live="polite">
+      <div class="nav-loading__card">
+        <span class="nav-loading__mark" aria-hidden="true"></span>
+        <div>
+          <strong>{{ loadingLabel() }}</strong>
+          <p>Na primeira visita, o acervo é baixado uma única vez para navegação rápida depois.</p>
+        </div>
+      </div>
+    </div>
+  }
   @if (failedNavigation(); as failure) {
     <app-navigation-failure
       [path]="failure"
