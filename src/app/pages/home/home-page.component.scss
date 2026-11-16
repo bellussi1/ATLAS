@@ -526,42 +526,94 @@ form {
 }
 .doors {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  align-items: start;
+  gap: clamp(1rem, 2.2vw, 1.65rem) clamp(1rem, 2vw, 1.5rem);
   margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
   padding: 0;
   list-style: none;
 }
 .door {
-  grid-column: span 2;
+  grid-column: span 4;
   min-inline-size: 0;
-  --door: var(--color-teal-paper);
+  --door: var(--color-surface-raised);
   --door-ink: var(--color-ink);
-  &:nth-child(4n + 3) {
-    --door: var(--color-ochre-paper);
-  }
-  &:nth-child(4n + 4) {
-    --door: var(--color-rose-paper);
-  }
-  &:nth-child(4n + 5) {
-    --door: var(--color-teal-paper);
-  }
-  &:nth-child(4n + 6) {
-    --door: var(--color-ochre-paper);
-  }
-  &--wide {
-    grid-column: span 3;
+  --door-shadow: var(--color-ink);
+  --door-tilt: 0deg;
+  --door-offset: 0rem;
+  --door-radius: var(--radius-tight);
+  margin-block-start: var(--door-offset);
+
+  /* Organic, asymmetric editorial rhythm: each entry feels like a distinct slip on the research table */
+  &:nth-child(1) {
+    grid-column: span 7;
     --door: var(--color-ink);
     --door-ink: var(--color-canvas);
+    --door-shadow: var(--color-accent);
+    --door-tilt: -0.45deg;
   }
-  &--net {
+  &:nth-child(2) {
+    grid-column: span 5;
     --door: var(--color-accent);
     --door-ink: var(--color-accent-contrast);
+    --door-shadow: var(--color-ink);
+    --door-offset: 1.15rem;
+    --door-tilt: 0.75deg;
+    --door-radius: var(--radius-tight) 1.75rem var(--radius-tight) var(--radius-tight);
   }
+  &:nth-child(3) {
+    grid-column: span 4;
+    --door: var(--color-desk-card);
+    --door-ink: var(--color-ink);
+    --door-shadow: var(--color-cartographic);
+    --door-tilt: -0.7deg;
+  }
+  &:nth-child(4) {
+    grid-column: span 5;
+    --door: var(--color-ochre-paper);
+    --door-ink: var(--color-ink);
+    --door-offset: -0.45rem;
+    --door-tilt: 0.4deg;
+    --door-radius: 1.75rem var(--radius-tight) var(--radius-tight) var(--radius-tight);
+  }
+  &:nth-child(5) {
+    grid-column: span 3;
+    --door: var(--color-canvas);
+    --door-ink: var(--color-ink);
+    --door-shadow: var(--color-indigo);
+    --door-offset: 0.65rem;
+    --door-tilt: 0.85deg;
+  }
+  &:nth-child(6) {
+    grid-column: span 3;
+    --door: var(--color-teal-paper);
+    --door-ink: var(--color-ink);
+    --door-offset: 0.55rem;
+    --door-tilt: -0.65deg;
+    --door-radius: var(--radius-tight) var(--radius-tight) 1.5rem var(--radius-tight);
+  }
+  &:nth-child(7) {
+    grid-column: span 5;
+    --door: var(--color-rose-paper);
+    --door-ink: var(--color-ink);
+    --door-offset: -0.35rem;
+    --door-tilt: 0.35deg;
+  }
+  &:nth-child(8) {
+    grid-column: span 4;
+    --door: var(--color-indigo);
+    --door-ink: var(--color-canvas);
+    --door-shadow: var(--color-ochre-paper);
+    --door-offset: 0.45rem;
+    --door-tilt: -0.5deg;
+    --door-radius: var(--radius-tight) var(--radius-tight) var(--radius-tight) 1.75rem;
+  }
+
   a {
     position: relative;
     display: grid;
-    grid-template-columns: 3.5rem minmax(0, 1fr);
+    grid-template-columns: 3.25rem minmax(0, 1fr);
     grid-template-areas:
       'glyph go'
       'title title'
@@ -570,27 +622,61 @@ form {
     align-items: start;
     align-content: start;
     block-size: 100%;
-    padding: 1.1rem 1.25rem 1.4rem;
+    padding: 1.15rem 1.25rem 1.35rem;
     overflow: hidden;
     border: 3px solid var(--color-ink);
-    border-radius: var(--radius-tight);
+    border-radius: var(--door-radius);
     background: var(--door);
     color: var(--door-ink);
-    box-shadow: 5px 5px 0 var(--color-ink);
+    box-shadow: 5px 5px 0 var(--door-shadow);
+    rotate: var(--door-tilt);
     text-decoration: none;
     transition:
       transform var(--motion-standard) var(--ease-out),
+      rotate var(--motion-standard) var(--ease-out),
       box-shadow var(--motion-standard) var(--ease-out);
+  }
+  /* Archival slip inner dashed frame on canvas/paper cards */
+  &:nth-child(5) a {
+    border-width: 2px;
+    outline: 1.5px dashed color-mix(in srgb, var(--color-indigo) 45%, transparent);
+    outline-offset: -8px;
+  }
+  &:nth-child(3) a {
+    border-inline-start-width: 8px;
+    border-inline-start-color: var(--color-cartographic);
+  }
+  /* Wide featured cards adopt a horizontal editorial layout */
+  &:nth-child(1) a,
+  &:nth-child(7) a {
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+    grid-template-areas:
+      'glyph title go'
+      'glyph note go';
+    align-items: center;
+    padding-block: 1.35rem;
+  }
+  &:nth-child(1) strong,
+  &:nth-child(7) strong {
+    margin-block-start: 0;
   }
   strong {
     grid-area: title;
-    margin-block-start: 1.25rem;
-    font: 800 clamp(1.5rem, 2.4vw, 2rem) / 1 var(--font-sans);
+    margin-block-start: 1.05rem;
+    font: 800 clamp(1.35rem, 2.2vw, 1.85rem) / 1.04 var(--font-sans);
     letter-spacing: var(--tracking-display);
     font-stretch: var(--stretch-display);
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 0.18em;
+  }
+  &:nth-child(3) strong,
+  &:nth-child(8) strong {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+    letter-spacing: -0.02em;
   }
   &:not(.door--wide) strong {
     text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);
@@ -744,8 +830,9 @@ form {
     translate: 6px 0;
   }
   .door a:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0 var(--color-ink);
+    transform: translate(-3px, -4px);
+    rotate: 0deg;
+    box-shadow: 8px 8px 0 var(--door-shadow);
   }
   .door a:hover .door-go {
     background: var(--door-ink);
@@ -792,9 +879,19 @@ form {
     grid-template-columns: 1fr;
   }
   .door {
-    grid-column: span 3;
-    &--wide {
-      grid-column: 1 / -1;
+    grid-column: span 6;
+    --door-offset: 0rem;
+    &:nth-child(1),
+    &:nth-child(2) {
+      grid-column: span 12;
+    }
+    &:nth-child(4),
+    &:nth-child(7) {
+      grid-column: span 7;
+    }
+    &:nth-child(5),
+    &:nth-child(6) {
+      grid-column: span 5;
     }
   }
 }
@@ -813,10 +910,14 @@ form {
     grid-template-columns: minmax(0, 1fr);
   }
   .door,
-  .door--wide {
+  .door:nth-child(n) {
     grid-column: 1 / -1;
+    --door-offset: 0rem;
+    --door-tilt: 0deg;
   }
-  .door a {
+  .door a,
+  .door:nth-child(1) a,
+  .door:nth-child(7) a {
     grid-template-columns: 3rem minmax(0, 1fr) auto;
     grid-template-areas:
       'glyph title go'
@@ -892,5 +993,8 @@ form {
   .recompose-dot,
   .console ::ng-deep .atlas-field input {
     transition: none;
+  }
+  .door a {
+    rotate: 0deg;
   }
 }
