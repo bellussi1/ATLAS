@@ -15,7 +15,7 @@
 }
 h1 {
   margin: 0;
-  font: 800 clamp(4.25rem, 15vw, 13.5rem) / 0.82 var(--font-sans);
+  font: 700 clamp(3.75rem, 12.5vw, 11.25rem) / 0.86 var(--font-sans);
   letter-spacing: var(--tracking-display);
   font-stretch: var(--stretch-display);
 }
@@ -23,9 +23,9 @@ h1 em {
   color: var(--color-accent);
   font-family: var(--font-display-contrast);
   font-style: normal;
-  font-weight: 800;
-  font-stretch: 100%;
-  letter-spacing: -0.03em;
+  font-weight: 900;
+  font-stretch: 75%;
+  letter-spacing: -0.02em;
 }
 h1 .line {
   display: block;
@@ -650,9 +650,10 @@ form {
   &:nth-child(8) strong {
     font-family: var(--font-display-contrast);
     font-style: normal;
-    font-weight: 800;
-    font-size: clamp(1.45rem, 2.3vw, 1.95rem);
-    letter-spacing: -0.03em;
+    font-weight: 900;
+    font-stretch: 78%;
+    font-size: clamp(1.5rem, 2.4vw, 2.05rem);
+    letter-spacing: -0.02em;
   }
   &:not(.door--wide) strong {
     text-decoration-color: color-mix(in srgb, currentcolor 40%, transparent);

@@ -53,19 +53,11 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Syne';
-  src: url('/fonts/Syne-ExtraBold.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 700 800;
-  font-display: swap;
-}
-
 :root {
   color-scheme: light;
   --font-primary: 'Zilla Slab', Georgia, serif;
   --font-numeric: 'Archivo', 'Segoe UI', sans-serif;
-  --font-display-contrast: 'Syne', 'Segoe UI', sans-serif;
+  --font-display-contrast: 'Archivo', 'Segoe UI', sans-serif;
   font-family: var(--font-primary);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
