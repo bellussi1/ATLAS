@@ -1,10 +1,13 @@
 <section class="explorer" aria-labelledby="explorer-title">
   <header class="explorer-heading">
     <div class="explorer-heading__copy">
+      <p class="explorer-kicker atlas-label">Catálogo · busca e filtros</p>
       <h1 id="explorer-title">{{ catalogue.title }}</h1>
       <p>{{ catalogue.description }}</p>
-      <a class="graph-entry" routerLink="/grafos">
-        Ver o acervo como rede, em tela cheia <span aria-hidden="true">→</span>
+      <a class="graph-entry atlas-press" routerLink="/grafos">
+        <span class="graph-entry__glyph" aria-hidden="true"></span>
+        Ver o acervo como rede, em tela cheia
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
       </a>
     </div>
     <app-geometric-mosaic
