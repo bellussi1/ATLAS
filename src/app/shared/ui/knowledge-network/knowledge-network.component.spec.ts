@@ -349,8 +349,8 @@ describe('KnowledgeNetworkComponent', () => {
     const view = component.view();
     const inset = component.insets();
     for (const label of component.labels()) {
-      const x = view.x + label.wx + label.dx;
-      const y = view.y + label.wy + label.dy;
+      const x = view.x + label.worldX * view.k + label.dx;
+      const y = view.y + label.worldY * view.k + label.dy;
       expect(y).toBeGreaterThanOrEqual(inset.top - 1);
       expect(y).toBeLessThanOrEqual(700 - inset.bottom + 1);
       expect(x).toBeGreaterThanOrEqual(inset.left - 1);
@@ -414,8 +414,8 @@ describe('KnowledgeNetworkComponent', () => {
     const fitSize = component.size();
     const fitCells = new Set(
       component.labels().map((label) => {
-        const x = fitView.x + label.wx + label.dx;
-        const y = fitView.y + label.wy + label.dy;
+        const x = fitView.x + label.worldX * fitView.k + label.dx;
+        const y = fitView.y + label.worldY * fitView.k + label.dy;
         return `${Math.min(3, Math.max(0, Math.floor((x / fitSize.width) * 4)))}:${Math.min(
           2,
           Math.max(0, Math.floor((y / fitSize.height) * 3)),

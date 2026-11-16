@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Grafo (`/grafos`) — desempenho no zoom e legibilidade visual (16/11, `develop`):**
+  - `KnowledgeNetworkComponent`: rótulos passam a usar coordenadas de mundo (`worldX`/`worldY`), acompanhando os nós a 60 fps durante zoom/pan sem piscar; `.world` promovido com `translate3d`; `.stage--busy` oculta halos e usa `shape-rendering: optimizeSpeed` para reduzir rasterização por quadro; `wheel()` normaliza `deltaMode` (linhas/páginas/pixels) e `contentBounds` amplia a margem para `200 / k`.
+  - Visualização: espessura das arestas diferenciada entre visão geral (`1.15px`) e aproximação (`.edges.is-near`, `1.75px`), melhor contraste dos rótulos de relação (`.label--edge`) e indicador de nível semântico (`.zoom__tier`: *Visão geral* / *Regiões* / *Detalhe*) na barra de zoom.
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm test` (**380/380**), `npm run build` (**1.280** rotas prerenderizadas) e `npx playwright test e2e/graph.spec.ts` (**23/23**) passando.
+
 - **Itinerários em estilo roadmap, `/itinerarios` geométrico e exposição na Home/Header/Footer (16/11, `develop`):**
   - `/itinerarios` (`ItinerariesIndexComponent`) e `/itinerario/:slug` (`ItineraryPageComponent`) redesenhados no padrão `atlas-editorial-geometrico`: cards com mosaico geométrico por tipo, prévia da trilha de paradas, trilha visual conectada em roadmap (`roadmap-overview`, `roadmap-track`, conectores direcionais entre paradas, ramos em garfo com indicação de convergência/saída e prévia de ficha via `ContextPanelService`), sem barras de progresso ou checkboxes.
   - Home (`HomePage` com faixa `.itineraries-band` + glifo na porta do pôster), Header (`SiteHeaderComponent` com destaque explicativo no mega menu) e Footer (`SiteFooterComponent` com porta `.footer-itinerary-door`) atualizados para explicar e ligar diretamente aos itinerários publicados.

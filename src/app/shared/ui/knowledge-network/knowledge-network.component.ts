@@ -68,8 +68,8 @@ import { batchEdgeSegments, type EdgeSegment } from './network-batching';
 import { shapePath } from './network-shapes';
 
 interface LabelView extends PlacedLabel {
-  wx: number;
-  wy: number;
+  worldX: number;
+  worldY: number;
   neighbour: boolean;
   delay: number;
 }
@@ -279,10 +279,18 @@ export class KnowledgeNetworkComponent {
   };
   /** Semantic zoom level kept between frames so thresholds do not flicker. */
   private lastTier: LabelTier | null = null;
-  /** Names to draw: those placed for this zoom, never stretched across another one. */
-  readonly shownLabels = computed(() => {
-    const items = this.labels();
-    return this.busy() && this.lastLabels.k !== this.zoomK() ? [] : items;
+  /** Names to draw: keep last placed labels tracking nodes smoothly while moving, then recompute on settle. */
+  readonly shownLabels = computed(() => this.labels());
+  readonly zoomTierLabel = computed(() => {
+    const tier = stableLabelTier(this.zoomK() / this.fitK(), this.lastTier);
+    switch (tier) {
+      case 'global':
+        return 'Visão geral';
+      case 'middle':
+        return 'Regiões';
+      case 'local':
+        return 'Detalhe';
+    }
   });
   /** True while the view glides to a new place; labels wait until it settles. */
   readonly animating = signal(false);
@@ -458,7 +466,7 @@ export class KnowledgeNetworkComponent {
     const { width, height } = this.size();
     if (!width || !height) return null;
     const inset = this.contentInsets();
-    const margin = 96 / k;
+    const margin = 200 / k;
     return {
       left: (inset.left - x) / k - margin,
       top: (inset.top - y) / k - margin,
@@ -634,7 +642,7 @@ export class KnowledgeNetworkComponent {
   });
   readonly transform = computed(() => {
     const { x, y, k } = this.view();
-    return `translate(${x}px, ${y}px) scale(${k})`;
+    return `translate3d(${x}px, ${y}px, 0) scale(${k})`;
   });
   /** Shapes keep a readable size on screen: larger when zoomed out, smaller when zoomed in. */
   private lastNodeScale = 1;
@@ -750,8 +758,8 @@ export class KnowledgeNetworkComponent {
           ? [
               {
                 ...label,
-                wx: item.x * k,
-                wy: item.y * k,
+                worldX: item.x,
+                worldY: item.y,
                 neighbour: neighbours.has(label.id),
                 delay: Math.min(order, 14) * 24,
               },
@@ -779,8 +787,8 @@ export class KnowledgeNetworkComponent {
     const { x: vx, y: vy } = this.view();
     const taken = this.labels().map((label) => {
       const width = labelWidth(label.text);
-      const x = vx + label.wx + label.dx;
-      const y = vy + label.wy + label.dy;
+      const x = vx + label.worldX * k + label.dx;
+      const y = vy + label.worldY * k + label.dy;
       const left =
         label.anchor === 'start' ? x : label.anchor === 'end' ? x - width : x - width / 2;
       return { left, right: left + width, top: y - LABEL_HEIGHT / 2, bottom: y + LABEL_HEIGHT / 2 };
@@ -1415,8 +1423,15 @@ export class KnowledgeNetworkComponent {
     if (!rect) return;
     this.wheeling.set(true);
     clearTimeout(this.wheelTimer);
-    this.wheelTimer = setTimeout(() => this.wheeling.set(false), 160);
-    this.wheelFactor *= Math.exp(-event.deltaY * 0.0015);
+    this.wheelTimer = setTimeout(() => this.wheeling.set(false), 120);
+    const rawDelta =
+      event.deltaMode === 1
+        ? event.deltaY * 16
+        : event.deltaMode === 2
+          ? event.deltaY * 240
+          : event.deltaY;
+    const clampedDelta = Math.max(-600, Math.min(600, rawDelta));
+    this.wheelFactor *= Math.exp(-clampedDelta * 0.0015);
     this.wheelAround = { x: event.clientX - rect.left, y: event.clientY - rect.top };
     if (this.wheelFrame) return;
     this.wheelFrame = requestAnimationFrame(() => {
