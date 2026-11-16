@@ -527,19 +527,19 @@ form {
 
   /* Organic, asymmetric editorial rhythm: each entry feels like a distinct slip on the research table */
   &:nth-child(1) {
-    grid-column: span 7;
+    grid-column: span 6;
     --door: var(--color-ink);
     --door-ink: var(--color-canvas);
     --door-shadow: var(--color-accent);
-    --door-tilt: -0.45deg;
+    --door-tilt: -0.4deg;
   }
   &:nth-child(2) {
-    grid-column: span 5;
+    grid-column: span 6;
     --door: var(--color-accent);
     --door-ink: var(--color-accent-contrast);
     --door-shadow: var(--color-ink);
-    --door-offset: 1.15rem;
-    --door-tilt: 0.75deg;
+    --door-offset: 0.45rem;
+    --door-tilt: 0.55deg;
     --door-radius: var(--radius-tight) 1.75rem var(--radius-tight) var(--radius-tight);
   }
   &:nth-child(3) {
@@ -628,6 +628,7 @@ form {
   }
   /* Wide featured cards adopt a horizontal editorial layout */
   &:nth-child(1) a,
+  &:nth-child(2) a,
   &:nth-child(7) a {
     grid-template-columns: 3.5rem minmax(0, 1fr) auto;
     grid-template-areas:
@@ -637,8 +638,14 @@ form {
     padding-block: 1.35rem;
   }
   &:nth-child(1) strong,
+  &:nth-child(2) strong,
   &:nth-child(7) strong {
     margin-block-start: 0;
+  }
+  &:nth-child(1) .door-note,
+  &:nth-child(2) .door-note,
+  &:nth-child(7) .door-note {
+    max-inline-size: none;
   }
   strong {
     grid-area: title;
@@ -901,6 +908,7 @@ form {
   }
   .door a,
   .door:nth-child(1) a,
+  .door:nth-child(2) a,
   .door:nth-child(7) a {
     grid-template-columns: 3rem minmax(0, 1fr) auto;
     grid-template-areas:
