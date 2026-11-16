@@ -14,6 +14,11 @@
       <h1 id="itinerary-title">{{ item.title }}</h1>
       <p class="itinerary__question">{{ item.question }}</p>
       <p class="itinerary__deck">{{ item.deck }}</p>
+      @if (item.status === 'reviewed-ai') {
+        <p class="itinerary__coverage" role="note">
+          Conferência assistida por IA (sem revisão humana).
+        </p>
+      }
       @if (item.coverage !== 'complete' && item.coverageNote) {
         <p class="itinerary__coverage" role="note">{{ item.coverageNote }}</p>
       }

@@ -15,7 +15,7 @@ export const itineraryKindLabels: Record<ItineraryKind, string> = {
   institucional: 'Itinerário institucional',
 };
 
-export const itineraryStatusSchema = z.enum(['draft', 'pending', 'verified']);
+export const itineraryStatusSchema = z.enum(['draft', 'pending', 'reviewed-ai', 'verified']);
 export const itineraryCoverageSchema = z.enum(['complete', 'partial', 'pending']);
 
 const slug = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
@@ -199,6 +199,18 @@ export const itinerarySchema = z
         message: 'Estado `verified` exige revisão humana com revisor e data.',
       });
     }
+    if (
+      itinerary.status === 'reviewed-ai' &&
+      (itinerary.review.status !== 'assistant' ||
+        !itinerary.review.notes?.includes('[conferência de IA]'))
+    ) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['review'],
+        message:
+          'Estado `reviewed-ai` exige `review.status: "assistant"` e marcador `[conferência de IA]`.',
+      });
+    }
   });
 
 export type Itinerary = z.infer<typeof itinerarySchema>;
@@ -249,7 +261,7 @@ export function validateItinerary(
   const bySlug = new Map(entities.map((entity) => [entity.slug, entity]));
   const byId = new Map(entities.map((entity) => [entity.id, entity]));
   const catalogues = context.cataloguePaths ?? defaultCatalogues;
-  const isPublic = itinerary.status === 'verified';
+  const isPublic = itinerary.status === 'verified' || itinerary.status === 'reviewed-ai';
 
   const checkDest = (dest: ItineraryDestination, label: string) => {
     if (dest.type === 'leitura' || dest.type === 'roteiro') {

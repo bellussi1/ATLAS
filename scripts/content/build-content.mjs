@@ -310,7 +310,8 @@ export async function buildContent({
     if (!checked.ok) {
       throw new Error(`Itinerário inválido (${file}): ${checked.errors.join('; ')}`);
     }
-    if (checked.value.status === 'verified') verifiedItineraries.push(checked.value);
+    if (checked.value.status === 'verified' || checked.value.status === 'reviewed-ai')
+      verifiedItineraries.push(checked.value);
   }
   const itineraryResources = [];
   for (const itinerary of verifiedItineraries) {

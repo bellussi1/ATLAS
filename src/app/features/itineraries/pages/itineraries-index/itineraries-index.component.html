@@ -23,6 +23,9 @@
             @if (item.branches.length) {
               <span>{{ item.branches.length }} ramos</span>
             }
+            @if (item.status === 'reviewed-ai') {
+              <span>Conferido por IA</span>
+            }
           </p>
           <h2>
             <a [routerLink]="['/itinerario', item.slug]">{{ item.title }}</a>
