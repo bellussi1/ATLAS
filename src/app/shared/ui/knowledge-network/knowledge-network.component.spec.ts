@@ -98,6 +98,31 @@ describe('KnowledgeNetworkComponent', () => {
     expect(component.pathTo()).toBeNull();
   });
 
+  it('clears an active path when selecting another node, but keeps it when inspecting a path step', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const { nodes, edges } = component.visible();
+    const edge = edges[0];
+    const other = nodes.find((n) => n.id !== edge.source && n.id !== edge.target)!;
+    component.setPathEndpoint('from', edge.source);
+    component.setPathEndpoint('to', edge.target);
+    component.select(edge.target, false, true);
+    fixture.detectChanges();
+    expect(component.pathFrom()).toBe(edge.source);
+    expect(component.pathTo()).toBe(edge.target);
+
+    component.select(edge.source, false, true);
+    fixture.detectChanges();
+    expect(component.pathFrom()).toBe(edge.source);
+    expect(component.pathTo()).toBe(edge.target);
+
+    component.select(other.id);
+    fixture.detectChanges();
+    expect(component.selectedId()).toBe(other.id);
+    expect(component.pathFrom()).toBeNull();
+    expect(component.pathTo()).toBeNull();
+  });
+
   it('shows a loading state until the layout is ready, then draws nodes', async () => {
     const fixture = TestBed.createComponent(KnowledgeNetworkComponent);
     fixture.detectChanges();

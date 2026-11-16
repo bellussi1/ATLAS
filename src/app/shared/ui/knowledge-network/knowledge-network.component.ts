@@ -1161,7 +1161,13 @@ export class KnowledgeNetworkComponent {
    * Marks a node as selected. Clicking a node that is already on screen keeps the view still; only
    * a deliberate reveal, such as a search result, moves the map to the node.
    */
-  select(id: string | null, reveal = false): void {
+  select(id: string | null, reveal = false, preservePath = false): void {
+    const switchingNode = id !== this.selectedId();
+    if (!preservePath && !this.pathMode() && (this.pathFrom() || this.pathTo()) && switchingNode) {
+      this.pathFrom.set(null);
+      this.pathTo.set(null);
+      this.pathVariant.set(0);
+    }
     this.selectedId.set(id);
     this.detailsCollapsed.set(false);
     this.openGroups.set(new Set(['historical', 'action']));
@@ -1704,9 +1710,6 @@ export class KnowledgeNetworkComponent {
   /** In path mode the next two map clicks become the endpoints; otherwise clicking another node clears any active path and selects it. */
   private pickNode(id: string): void {
     if (!this.pathMode()) {
-      if ((this.pathFrom() || this.pathTo()) && id !== this.selectedId()) {
-        this.clearPath();
-      }
       this.select(id);
       return;
     }

@@ -115,6 +115,7 @@ h1 {
 .filters {
   position: sticky;
   top: 1.5rem;
+  z-index: 1;
   display: grid;
   gap: 1.1rem;
   max-block-size: calc(100vh - 3rem);

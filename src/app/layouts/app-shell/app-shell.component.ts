@@ -104,7 +104,10 @@ export class AppComponent {
         const warm = () => {
           void import('@core/content/repositories/content-repository.service').then(
             ({ ContentRepository }) => {
-              if (!this.destroyed) this.injector.get(ContentRepository).warmBundle(true);
+              if (this.destroyed) return;
+              const repo = this.injector.get(ContentRepository);
+              repo.warmNetwork();
+              repo.warmBundle(true);
             },
           );
         };

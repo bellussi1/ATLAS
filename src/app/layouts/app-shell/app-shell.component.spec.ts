@@ -77,4 +77,20 @@ describe('ATLAS navigation', () => {
     fixture.detectChanges();
     expect(root.querySelector('app-navigation-failure')).toBeNull();
   });
+
+  it('shows the loading feedback panel without hiding the header before the route settles', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const component = fixture.componentInstance;
+    component.navigating.set(true);
+    component.showLoadingScreen.set(true);
+    component.loadingLabel.set('Preparando a rede de ligações…');
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelector('app-site-header')).not.toBeNull();
+    expect(root.querySelector('.nav-progress')).not.toBeNull();
+    expect(root.querySelector('.nav-loading')?.textContent).toContain(
+      'Preparando a rede de ligações…',
+    );
+  });
 });

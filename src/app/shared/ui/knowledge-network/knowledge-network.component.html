@@ -249,7 +249,7 @@
                     type="button"
                     class="path-step"
                     [class.is-active]="step.id === selectedId()"
-                    (click)="select(step.id)"
+                    (click)="select(step.id, false, true)"
                   >
                     {{ step.title }}
                   </button>
