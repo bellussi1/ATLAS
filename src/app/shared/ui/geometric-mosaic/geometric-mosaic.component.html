@@ -5,7 +5,15 @@
   preserveAspectRatio="xMidYMid slice"
 >
   @for (tile of tiles(); track $index) {
-    <g class="tile" [attr.transform]="'translate(' + tile.x * 100 + ' ' + tile.y * 100 + ')'">
+    <svg
+      class="tile"
+      [attr.x]="tile.x * 100"
+      [attr.y]="tile.y * 100"
+      width="100"
+      height="100"
+      viewBox="0 0 100 100"
+      overflow="hidden"
+    >
       <rect width="100" height="100" [attr.fill]="tile.ground" />
       <g class="figure" [style.--turn]="tile.rotation + 'deg'">
         @switch (tile.motif) {
@@ -73,6 +81,6 @@
           }
         }
       </g>
-    </g>
+    </svg>
   }
 </svg>
