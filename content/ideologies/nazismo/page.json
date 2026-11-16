@@ -29,8 +29,8 @@
         "O nazismo, oficialmente nacional-socialismo, é uma ideologia associada a Adolf Hitler e ao Partido Nazista (NSDAP), na Alemanha. O verbete a descreve como uma forma de fascismo que despreza a democracia liberal, incorpora racismo científico, antissemitismo, anticomunismo e eugenia. Seu partido foi fundado em 1919 e o programa de 25 pontos foi proclamado em 1920. O texto trata sua ascensão após a derrota alemã na Primeira Guerra Mundial, a perseguição aos judeus e o Holocausto, em que foram mortos entre 5 e 6 milhões de pessoas nos campos de concentração.",
         "Posição política descrita na fonte: extrema direita."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "O que define Nazismo?",
+      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
       "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
@@ -47,8 +47,8 @@
       "narrative": [
         "O nazismo é descrito como uma forma de fascismo que despreza a democracia liberal e o sistema parlamentar."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Como e em que contexto Nazismo surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os princípios e traços centrais.",
       "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
@@ -85,8 +85,8 @@
         "O nazismo incorpora racismo científico, antissemitismo, anticomunismo e uso de eugenia em seu credo.",
         "O nazismo defendia a Volksgemeinschaft, comunidade do povo que uniria os alemães e excluiria os considerados estrangeiros."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Quais ideias e práticas estruturam Nazismo?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
       "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
@@ -135,8 +135,8 @@
         "Também chamada de nacional-socialismo, Nazism, National Socialism, nazifascismo, NSDAP, Partido Nacional-Socialista dos Trabalhadores Alemães, National Socialist German Workers' Party, Partido Nazista, Adolf Hitler, hitlerismo.",
         "Conceitos ligados à tradição: Alemães, Burguesia, Materialismo, Luta de classes, Conservadorismo."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Que termos e conceitos ajudam a compreender Nazismo?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-topic-alemaes",
@@ -179,8 +179,8 @@
       "kicker": "História e épocas",
       "minutes": 1,
       "narrative": ["Foram criadas as Leis de Nuremberg, que excluíam judeus da sociedade alemã."],
-      "question": null,
-      "bridge": null,
+      "question": "Em que períodos históricos Nazismo se formou e mudou?",
+      "bridge": "Da cronologia, passamos às pessoas e obras ligadas à tradição.",
       "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": null,
@@ -223,8 +223,8 @@
       "narrative": [
         "Registros ligados à ideologia: Johann Gottlieb Fichte, Georg Ritter von Schönerer, Adolf Hitler, Paul von Hindenburg, Guilherme II da Alemanha, Heinrich Himmler, Hermann Göring, Joseph Goebbels."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Quem formulou, liderou ou registrou Nazismo?",
+      "bridge": "Dos autores, seguimos para as correntes e desdobramentos relacionados.",
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-topic-adolf-hitler",
@@ -284,8 +284,8 @@
       "narrative": [
         "Registros ligados à ideologia: Freikorps, Partido Nacional-Socialista dos Trabalhadores Alemães, Grande Depressão, Primeira Guerra Mundial, Capitalismo, Holocausto, Segunda Guerra Mundial, Iluminismo, Monarquia, Ditadura."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Em quais acontecimentos, partidos e instituições Nazismo se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
       "sourceIds": [
         "src-wiki-topic-nazismo",
         "src-wiki-wd-q7320",
@@ -334,8 +334,8 @@
       "narrative": [
         "O uso do termo Holocausto para vítimas não judias é contestado por muitos estudiosos."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Quais críticas e controvérsias cercam Nazismo?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
       "sourceIds": ["src-wiki-topic-nazismo"],
       "review": null,
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
@@ -371,8 +371,8 @@
       "narrative": [
         "Registros ligados à ideologia: Alemanha Nazista, Nacionalismo, República de Weimar, Marxismo, Socialismo, Pseudociência, Extrema-direita, Democracia, Racismo, Alemanha, Direita (política), Liberalismo, Eugenia, Munique, Viena, Antissemitismo, Fascismo, Autoritarismo, Social-democracia."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Como Nazismo se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
       "sourceIds": [
         "src-wikidata-verbetes",
         "src-wiki-topic-nacionalismo",
@@ -431,8 +431,8 @@
       "kicker": "Roteiro de leitura",
       "minutes": 1,
       "narrative": ["Obras ligadas à tradição: Mein Kampf."],
-      "question": null,
-      "bridge": null,
+      "question": "Que obras e documentos aprofundam o estudo de Nazismo?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
       "sourceIds": ["src-wiki-topic-mein-kampf"],
       "review": null,
       "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
@@ -456,7 +456,7 @@
       "narrative": [
         "Reúne 9 afirmações da fonte principal e 38 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
       ],
-      "question": null,
+      "question": "Quais fontes sustentam a leitura sobre Nazismo?",
       "bridge": null,
       "sourceIds": [
         "src-wiki-topic-nazismo",

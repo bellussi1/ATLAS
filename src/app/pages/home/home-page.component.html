@@ -44,6 +44,9 @@
           {{ entry.title }}
         </a>
       }
+      <a class="poster-reading atlas-press" routerLink="/leituras">
+        Todas ({{ stats.readings }})
+      </a>
     </nav>
   </div>
   <div class="poster-art">
@@ -80,8 +83,9 @@
     <p class="atlas-band-number" aria-hidden="true">A</p>
     <h2 id="readings-title">Leituras contínuas, <em>uma enciclopédia.</em></h2>
     <p>
-      Quatro leituras, 12 capítulos cada: conceitos, pessoas, obras, cronologia, divergências e
-      fontes. Escolha uma para ver o resumo e o texto completo.
+      {{ stats.readings }} leituras contínuas, 12 capítulos cada: conceitos, pessoas, obras,
+      cronologia, divergências e fontes. Veja os destaques abaixo ou
+      <a routerLink="/leituras">explore todas as leituras</a>.
     </p>
   </header>
   <div appReveal class="reading-table" [attr.data-reading]="selected().slug">

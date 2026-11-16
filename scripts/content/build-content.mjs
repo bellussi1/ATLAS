@@ -89,12 +89,18 @@ function homeStats(graph, network, readings) {
     const registry = ideologyReadings.find((reading) => reading.slug === slug);
     const publicEntry = publicReadings.find((reading) => reading.slug === slug);
     const status = page.review?.status ?? 'rascunho';
+    const minutes = page.chapters.reduce((sum, ch) => sum + (ch.minutes ?? 0), 0);
+    const completeChapters = page.chapters.filter((ch) => ch.coverage === 'complete').length;
     return {
       slug,
       title: page.title,
+      kind: page.kicker ?? 'Ideologia política',
       tagline: readingTaglines[slug] ?? publicEntry?.summary ?? page.kicker,
       summary: page.summary,
       statusLabel: readingStatusLabels[status] ?? 'Revisão pendente',
+      minutes,
+      chapters: page.chapters.length,
+      completeChapters,
       palette: registry?.palette ?? 'atlas',
       seed:
         readingSeeds[slug] ?? [...slug].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 9973,

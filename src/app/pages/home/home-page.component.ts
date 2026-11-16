@@ -91,8 +91,8 @@ export class HomePage {
   );
   readonly stats = compiledHome.counts;
   readonly catalogueUrl = catalogueUrl;
-  /** Published readings compiled into the home; a new release updates the cards without edits. */
-  readonly readings = compiledHome.readings;
+  /** Published readings compiled into the home; capped to keep the landing page compact. */
+  readonly readings = compiledHome.readings.slice(0, 4);
   readonly updatedLabel = (() => {
     const [year, month, day] = compiledHome.updatedAt.split('-');
     return `${day}/${month}/${year}`;

@@ -162,14 +162,33 @@ function chapterContents(entity, claims, related, source) {
     : pending('O grafo não traz resumo desta ideologia.');
 
   const origem = by('Origem');
+  const contextoFallback = by('Contexto');
   make.origens = origem.length
     ? section(origem, 'origem', 'Origem', 'Origens e formação')
-    : pending('Nenhuma passagem do grafo trata da origem desta ideologia.');
+    : contextoFallback.length
+      ? {
+          ...section(contextoFallback, 'origem', 'Contexto histórico', 'Origens e formação'),
+          partial:
+            'Usa passagens de contexto histórico porque a fonte principal não separa uma seção de origens.',
+        }
+      : pending('Nenhuma passagem do grafo trata da origem desta ideologia.');
 
   const ideias = by('Ideias centrais');
+  const conceitualFallback = claims.filter((c) => !c.heading && c.text && c.text.length > 40);
   make.principios = ideias.length
     ? section(ideias, 'ideia', 'Ideia central', 'Pilares e princípios')
-    : pending('Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.');
+    : conceitualFallback.length
+      ? {
+          ...section(
+            conceitualFallback.slice(0, 4),
+            'ideia',
+            'Formulação registrada',
+            'Pilares e princípios',
+          ),
+          partial:
+            'Reúne passagens descritivas registradas na fonte principal; síntese doutrinária estruturada ainda pendente.',
+        }
+      : pending('Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.');
 
   const aliases = (entity.aliases ?? []).filter(Boolean);
   make.conceitos = aliases.length
@@ -494,6 +513,38 @@ export function buildReading({
     blocks: [{ type: 'sources', sourceIds: allChapterSources }],
   };
 
+  const subject = pageTitle ?? entity.title;
+  const chapterQuestions = {
+    introducao: `O que define ${subject}?`,
+    origens: `Como e em que contexto ${subject} surgiu?`,
+    principios: `Quais ideias e práticas estruturam ${subject}?`,
+    conceitos: `Que termos e conceitos ajudam a compreender ${subject}?`,
+    epocas: `Em que períodos históricos ${subject} se formou e mudou?`,
+    pensadores: `Quem formulou, liderou ou registrou ${subject}?`,
+    vertentes: `Que correntes dialogam ou disputam espaço com ${subject}?`,
+    experiencias: `Em quais acontecimentos, partidos e instituições ${subject} se materializou?`,
+    debates: `Quais críticas e controvérsias cercam ${subject}?`,
+    conexoes: `Como ${subject} se liga ao restante do grafo?`,
+    leituras: `Que obras e documentos aprofundam o estudo de ${subject}?`,
+    fontes: `Quais fontes sustentam a leitura sobre ${subject}?`,
+  };
+  const chapterBridges = {
+    introducao: 'Situado o tema, o capítulo seguinte acompanha suas origens históricas.',
+    origens: 'Visto o contexto de formação, seguem os princípios e traços centrais.',
+    principios:
+      'Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.',
+    conceitos: 'Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.',
+    epocas: 'Da cronologia, passamos às pessoas e obras ligadas à tradição.',
+    pensadores: 'Dos autores, seguimos para as correntes e desdobramentos relacionados.',
+    vertentes:
+      'Vistas as correntes, o capítulo seguinte examina experiências, partidos e instituições.',
+    experiencias: 'Das experiências históricas, a leitura passa às controvérsias e debates.',
+    debates: 'Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.',
+    conexoes: 'Para aprofundar além do mapa, seguem as referências de leitura.',
+    leituras: 'Por fim, o inventário completo das fontes citadas nesta leitura.',
+    fontes: null,
+  };
+
   const chapters = canonicalChapters.map((chapter) => {
     const c = content[chapter.id];
     const base = {
@@ -501,8 +552,8 @@ export function buildReading({
       anchor: chapter.id,
       title: chapter.label,
       kicker: chapter.label,
-      question: null,
-      bridge: null,
+      question: c.pending ? null : (chapterQuestions[chapter.id] ?? null),
+      bridge: c.pending ? null : (chapterBridges[chapter.id] ?? null),
       layout:
         chapter.id === 'introducao'
           ? 'introduction'

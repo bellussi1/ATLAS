@@ -30,6 +30,7 @@ describe('Public pages', () => {
     }
     expect(loaded.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
       '',
+      'leituras',
       'leitura/marxismo',
       'leitura/liberalismo',
       'leitura/social-democracia',

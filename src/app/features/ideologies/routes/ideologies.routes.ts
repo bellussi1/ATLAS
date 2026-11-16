@@ -23,6 +23,17 @@ function ideologyRoutesFor(slug: string, label: string, metaDescription: string)
   ];
 }
 
-export const ideologyRoutes: Routes = ideologyReadings.flatMap((reading) =>
-  ideologyRoutesFor(reading.slug, reading.label, reading.metaDescription),
-);
+export const ideologyRoutes: Routes = [
+  {
+    path: 'leituras',
+    title: 'Leituras contínuas — ATLAS',
+    data: { breadcrumb: 'Leituras' },
+    loadComponent: () =>
+      import('@ideologies/pages/readings-index/readings-index.component').then(
+        (m) => m.ReadingsIndexComponent,
+      ),
+  },
+  ...ideologyReadings.flatMap((reading) =>
+    ideologyRoutesFor(reading.slug, reading.label, reading.metaDescription),
+  ),
+];

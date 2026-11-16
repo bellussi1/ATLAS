@@ -57,7 +57,7 @@ const sectionOf = (url: string): Section => {
   const path = url.split(/[?#]/)[0];
   if (path === '/') return null;
   if (path.startsWith('/grafos')) return 'grafos';
-  if (headerReadings.some((reading) => path.startsWith(reading.path))) return 'leituras';
+  if (path === '/leituras' || path.startsWith('/leitura/')) return 'leituras';
   return 'acervo';
 };
 

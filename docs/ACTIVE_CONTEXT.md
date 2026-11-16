@@ -18,6 +18,10 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Catálogo `/leituras`, Home enxuta e enriquecimento de leituras (16/11, `develop`):**
+  - Criada a rota prerenderizada `/leituras` (`ReadingsIndexComponent`, filtro por texto e estado editorial) com link no menu `Leituras` (`SiteHeaderComponent`) e na Home (`HomePage` limitada a 4 destaques + atalho para `/leituras`).
+  - `scripts/tradicao/reading.mjs` passou a gerar perguntas do iniciante (`question`), pontes entre capítulos (`bridge`) e fallbacks de `origens`/`principios`; `stalinismo` caiu de 3 para 1 lacuna (`chapters.comBlocos` 10/12 e `pendentes` 1/12). `npm test` **380/380** (60 arquivos), `npm run test:content` **210/210**, `npm run typecheck` e `npm run lint` exit **0**.
+
 - **Triagem de IA + pendências P1/E2E (16/11, `develop`):**
   - `npm run rag:triage`: **569** itens triados por IA (`relacoes-candidatas.json`: 80; `debates-e-contradicoes.json`: 37; `deduplicacao-entidades.json`: 6; `fontes-publicas-extraidas.json`: 446), preservando `ok: null` e `human_ok: null` (gate humano exclusivo).
   - **#75 (`noindex` em prévias `unlisted`):** `scripts/seo.mjs` injeta `<meta name="robots" content="noindex">` no HTML da prévia restante (`/leitura/stalinismo`); `IdeologyPageComponent` atualiza/remove a meta tag no cliente. `nazismo` e `trabalhismo` foram promovidas de `unlisted` (0 capítulos pendentes; selo honesto de rascunho/IA preservado), enquanto `stalinismo` permanece `unlisted: true` pelos 2 capítulos pendentes (`origens` e `principios`).

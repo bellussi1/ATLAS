@@ -28,8 +28,8 @@
       "narrative": [
         "O trabalhismo brasileiro é uma corrente política, ideologia e tradição política do Brasil que defende a integração da classe trabalhadora ao Estado nacional por meio da legislação social, do nacionalismo e do desenvolvimentismo. Suas origens remontam às primeiras décadas do século XX, e ele se consolidou durante a Era Vargas, com a fundação do Partido Trabalhista Brasileiro em 1945. Ao longo do século XX influenciou a política brasileira, sobretudo nos governos de Getúlio Vargas e João Goulart, e permanece objeto de múltiplas interpretações historiográficas sobre sua natureza ideológica."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "O que define Trabalhismo?",
+      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
       "review": null,
       "gap": null,
@@ -46,8 +46,8 @@
       "narrative": [
         "As origens do trabalhismo são situadas pelo verbete nas transformações políticas e sociais das primeiras décadas do século XX, com influência do castilhismo, do positivismo, do tenentismo e do movimento operário."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Como e em que contexto Trabalhismo surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os princípios e traços centrais.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
       "review": null,
       "gap": null,
@@ -83,8 +83,8 @@
       "narrative": [
         "O trabalhismo é caracterizado pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Quais ideias e práticas estruturam Trabalhismo?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
       "review": null,
       "gap": null,
@@ -121,8 +121,8 @@
         "Também chamada de trabalhismo, nacional-trabalhismo, Partido Trabalhista Brasileiro, PTB.",
         "Conceitos ligados à tradição: Estado, Classe trabalhadora, Cultura política, Era Vargas, Doutrina Social da Igreja, Política do Brasil, Greve geral de 1917, Neomercantilismo, Populismo."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Que termos e conceitos ajudam a compreender Trabalhismo?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
       "sourceIds": [
         "src-wiki-ideologia-trabalhismo-brasileiro",
         "src-wiki-topic-estado",
@@ -180,8 +180,8 @@
         "Fundação do Partido Democrático Trabalhista (PDT), que reivindicou a tradição trabalhista.",
         "O trabalhismo consolidou-se durante a Era Vargas, período em que a legislação trabalhista passou a ocupar posição central nas relações entre Estado, capital e trabalho."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Em que períodos históricos Trabalhismo se formou e mudou?",
+      "bridge": "Da cronologia, passamos às pessoas e obras ligadas à tradição.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
       "review": null,
       "gap": null,
@@ -288,8 +288,8 @@
       "narrative": [
         "Registros ligados à ideologia: Getúlio Vargas, Auguste Comte, João Goulart, Leonel Brizola, Jânio Quadros, San Tiago Dantas, Júlio de Castilhos, Alberto Pasqualini, Juscelino Kubitschek, Luiz Inácio Lula da Silva, Karl Marx."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Quem formulou, liderou ou registrou Trabalhismo?",
+      "bridge": "Dos autores, seguimos para as correntes e desdobramentos relacionados.",
       "sourceIds": [
         "src-wiki-topic-getulio-vargas",
         "src-wiki-topic-auguste-comte",
@@ -334,8 +334,8 @@
       "kicker": "Correntes e vertentes",
       "minutes": 1,
       "narrative": ["Correntes relacionadas: Positivismo."],
-      "question": null,
-      "bridge": null,
+      "question": "Que correntes dialogam ou disputam espaço com Trabalhismo?",
+      "bridge": "Vistas as correntes, o capítulo seguinte examina experiências, partidos e instituições.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
       "review": null,
       "gap": null,
@@ -361,8 +361,8 @@
       "narrative": [
         "Registros ligados à ideologia: Castilhismo, Guerra Fria, Petrobras, Tenentismo, Partido Trabalhista Brasileiro (1945), Revolução de 1930, Exército Brasileiro, Golpe de Estado no Brasil em 1964, Justiça do Trabalho, Comissão Econômica para a América Latina e o Caribe, Grande Depressão, Segunda Guerra Mundial, Igreja Católica."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Em quais acontecimentos, partidos e instituições Trabalhismo se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
       "sourceIds": [
         "src-wiki-ideologia-trabalhismo-brasileiro",
         "src-wiki-topic-guerra-fria",
@@ -417,8 +417,8 @@
         "Angela de Castro Gomes observa que o trabalhismo não constituiu mera continuidade do castilhismo, pois incorporou outras matrizes políticas e intelectuais.",
         "Parte dos autores enfatiza a contribuição do modelo trabalhista para a cidadania social, enquanto outros destacam seu caráter corporativo."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Quais críticas e controvérsias cercam Trabalhismo?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
       "review": null,
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
@@ -466,8 +466,8 @@
       "narrative": [
         "Registros ligados à ideologia: Doutrina Social da Igreja, Brasil, Nacionalismo, Positivismo, Comunismo, Socialismo, Império do Brasil, Esquerda (política), Direita (política), Social-democracia, Anarcossindicalismo, Primeira República Brasileira, Desenvolvimentismo, Período Populista, Solidarismo, Liberalismo, Autoritarismo, Democracia."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Como Trabalhismo se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
       "sourceIds": [
         "src-wiki-ideologia-trabalhismo-brasileiro",
         "src-wiki-topic-brasil",
@@ -528,8 +528,8 @@
       "narrative": [
         "Angela de Castro Gomes publicou A invenção do trabalhismo, obra listada na bibliografia do verbete."
       ],
-      "question": null,
-      "bridge": null,
+      "question": "Que obras e documentos aprofundam o estudo de Trabalhismo?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
       "sourceIds": ["src-wiki-ideologia-trabalhismo-brasileiro"],
       "review": null,
       "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
@@ -565,7 +565,7 @@
       "narrative": [
         "Reúne 13 afirmações da fonte principal e 46 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
       ],
-      "question": null,
+      "question": "Quais fontes sustentam a leitura sobre Trabalhismo?",
       "bridge": null,
       "sourceIds": [
         "src-wiki-ideologia-trabalhismo-brasileiro",

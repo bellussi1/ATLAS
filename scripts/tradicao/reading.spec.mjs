@@ -84,7 +84,16 @@ test('capítulos são os 12 canônicos, não publicados e sem revisão humana', 
   assert.equal(page.review.status, 'rascunho');
   assert.equal(page.review.reviewer, null);
   assert.equal(page.identity.signature, generatedSignature);
-  assert.ok(page.chapters.every((c) => c.question === null && c.bridge === null));
+  assert.ok(
+    page.chapters
+      .filter((c) => c.coverage === 'pending')
+      .every((c) => c.question === null && c.bridge === null),
+  );
+  assert.ok(
+    page.chapters
+      .filter((c) => c.coverage !== 'pending')
+      .every((c) => typeof c.question === 'string' && c.question.length > 0),
+  );
 });
 
 test('capítulo sem conteúdo fica pending, com motivo e sem blocos nem fontes', () => {

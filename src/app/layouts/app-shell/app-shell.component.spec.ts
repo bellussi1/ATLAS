@@ -27,6 +27,7 @@ describe('ATLAS navigation', () => {
     const root = fixture.nativeElement as HTMLElement;
     const destinations = [
       '/',
+      '/leituras',
       '/leitura/marxismo',
       '/leitura/liberalismo',
       '/leitura/social-democracia',
