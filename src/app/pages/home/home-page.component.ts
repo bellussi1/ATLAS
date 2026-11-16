@@ -14,6 +14,7 @@ import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer
 import { readingPath } from '@core/routing/reading-routes';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
@@ -56,6 +57,7 @@ const compiledHome = homeStats as HomeData;
   imports: [
     AtlasHeadingDirective,
     AtlasTextFieldComponent,
+    AtlasChevronComponent,
     AtlasGeometricMosaicComponent,
     AtlasRevealDirective,
     HomeHowtoComponent,

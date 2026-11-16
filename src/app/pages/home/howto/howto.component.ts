@@ -1,11 +1,12 @@
 import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 
 /** "Quatro gestos, uma descoberta": the four-step guide on the home page. */
 @Component({
   selector: 'app-home-howto',
-  imports: [AtlasRevealDirective, RouterLink],
+  imports: [AtlasChevronComponent, AtlasRevealDirective, RouterLink],
   templateUrl: './howto.component.html',
   styleUrl: './howto.component.scss',
 })

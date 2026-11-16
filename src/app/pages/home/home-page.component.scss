@@ -797,8 +797,8 @@ form {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .cover-choice:hover {
-    padding-inline-start: 1rem;
+  .cover-choice:hover::before {
+    transform: scaleX(0.03);
   }
   .cover-choice[aria-pressed='false']:hover strong {
     color: var(--reading-color);

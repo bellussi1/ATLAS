@@ -22,6 +22,7 @@ import {
 import { type ContextTerm, contextVocabulary } from '@core/content/queries/context-vocabulary';
 import { contextFor, entityContext } from '@core/content/queries/entity-context';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import {
   atlasOf,
@@ -68,6 +69,7 @@ function toneOf(kind: string): string {
   selector: 'app-knowledge-context',
   imports: [
     RouterLink,
+    AtlasChevronComponent,
     RelationEntryComponent,
     ContentMediaPipe,
     AtlasGeometricIllustrationComponent,

@@ -833,8 +833,8 @@
               <p class="detail__note">Texto ainda em revisão editorial.</p>
             }
             <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
-              >Abrir o verbete <span aria-hidden="true">→</span></a
-            >
+              >Abrir o verbete <app-chevron
+            /></a>
             <section aria-labelledby="detail-links">
               <h3 id="detail-links">
                 Conexões <span class="detail__count-inline">{{ selectedLinks().length }}</span>
@@ -880,7 +880,7 @@
                                 <span class="links__verb">{{ linkVerb(link) }}</span>
                                 <span class="links__name">{{ link.other.title }}</span>
                               </span>
-                              <span class="links__go" aria-hidden="true">→</span>
+                              <span class="links__go" aria-hidden="true"><app-chevron /></span>
                             </button>
                             <p class="links__why">{{ reasonOf(link.edge) }}</p>
                             <p class="links__meta">

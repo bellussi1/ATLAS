@@ -38,13 +38,20 @@ import {
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { readingPath } from '@core/routing/reading-routes';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasKindIconComponent, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 @Component({
   selector: 'app-explorer',
-  imports: [RouterLink, AtlasGeometricMosaicComponent, AtlasKindIconComponent, RecordCardComponent],
+  imports: [
+    RouterLink,
+    AtlasChevronComponent,
+    AtlasGeometricMosaicComponent,
+    AtlasKindIconComponent,
+    RecordCardComponent,
+  ],
   templateUrl: './explorer.component.html',
   styleUrl: './explorer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

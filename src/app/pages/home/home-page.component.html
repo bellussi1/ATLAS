@@ -22,7 +22,7 @@
           <strong>Explorar o acervo</strong>
           <small>{{ format(stats.verbetes) }} fichas e {{ format(stats.sources) }} fontes</small>
         </span>
-        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
       <a class="poster-door poster-door--grafo atlas-press" routerLink="/grafos">
         <span class="poster-door__glyph poster-door__glyph--circle" aria-hidden="true"></span>
@@ -30,7 +30,7 @@
           <strong>Abrir o grafo</strong>
           <small>{{ format(stats.links) }} ligações em rede</small>
         </span>
-        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
     </div>
     <nav class="poster-readings" aria-label="Leituras contínuas">
@@ -133,8 +133,8 @@
         </div>
         <a class="sheet-action atlas-press" [routerLink]="entryPath(selected().slug)"
           >Ler o texto completo
-          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
-        >
+          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span
+        ></a>
       </div>
     </article>
   </div>
@@ -183,7 +183,7 @@
         {{ format(stats.nodes) }} registros<br />
         {{ format(stats.links) }} ligações
       </p>
-      <a routerLink="/grafos">Abrir o grafo <span aria-hidden="true">→</span></a>
+      <a routerLink="/grafos">Abrir o grafo <app-chevron /></a>
       <p class="balance-date">Atualizado em {{ updatedLabel }}</p>
     </aside>
   </div>
@@ -204,7 +204,9 @@
         <span class="door-glyph" aria-hidden="true"></span>
         <strong>Acervo completo</strong>
         <span class="door-note">Busque em todas as fichas de uma vez, com filtros por tipo.</span>
-        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+          ><app-chevron
+        /></span>
       </a>
     </li>
     <li class="door door--wide door--net" data-stagger style="--stagger: 1">
@@ -212,7 +214,9 @@
         <span class="door-glyph" aria-hidden="true"></span>
         <strong>Rede de ligações</strong>
         <span class="door-note">O acervo como mapa: siga quem se liga a quem.</span>
-        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+          ><app-chevron
+        /></span>
       </a>
     </li>
     @for (catalogue of catalogues; track catalogue.path; let index = $index) {
@@ -221,7 +225,9 @@
           <span class="door-glyph" aria-hidden="true"></span>
           <strong>{{ catalogue.title }}</strong>
           <span class="door-note">{{ catalogue.description }}</span>
-          <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+          <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+            ><app-chevron
+          /></span>
         </a>
       </li>
     }

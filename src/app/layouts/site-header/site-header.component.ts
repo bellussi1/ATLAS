@@ -11,6 +11,7 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { readingPath } from '@core/routing/reading-routes';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { filter, map } from 'rxjs';
 
 type Section = 'leituras' | 'acervo' | 'grafos' | null;
@@ -62,7 +63,7 @@ const sectionOf = (url: string): Section => {
 
 @Component({
   selector: 'app-site-header',
-  imports: [RouterLink],
+  imports: [RouterLink, AtlasChevronComponent],
   templateUrl: './site-header.component.html',
   styleUrl: './site-header.component.scss',
   host: {

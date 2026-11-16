@@ -58,6 +58,7 @@ import {
   stableLabelTier,
 } from '@core/content/queries/network-labels';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
 import { illustrationPalette } from '@shared/ui/geometric-illustration/illustration';
 import { AtlasKindIconComponent } from '@shared/ui/kind-icon/kind-icon.component';
@@ -166,6 +167,7 @@ const classificationLabels: Record<string, string> = {
   selector: 'app-knowledge-network',
   imports: [
     RouterLink,
+    AtlasChevronComponent,
     AtlasKindIconComponent,
     AtlasGeometricIllustrationComponent,
     ContentMediaPipe,
