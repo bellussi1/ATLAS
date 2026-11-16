@@ -1,0 +1,1185 @@
+{
+  "generated_at": "2026-11-16T22:08:36.462Z",
+  "model": "gemma2:9b-instruct-q4_K_M",
+  "dry_run": false,
+  "total_undated_with_year_claims": 556,
+  "evaluated": 100,
+  "updated": 87,
+  "skipped": 13,
+  "results": [
+    {
+      "id": "ideology-liberalism",
+      "title": "Liberalismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1815,
+        "endYear": null,
+        "precision": "year",
+        "label": "1815–"
+      },
+      "reason": "O primeiro uso da palavra 'liberalismo' em inglês ocorreu em 1815."
+    },
+    {
+      "id": "ideology-classical-liberalism",
+      "title": "Liberalismo clássico",
+      "status": "updated",
+      "extent": {
+        "startYear": 1689,
+        "endYear": null,
+        "precision": "year",
+        "label": "1689–"
+      },
+      "reason": "Locke publica Da tolerância em 1689."
+    },
+    {
+      "id": "ideology-social-liberalism",
+      "title": "Liberalismo social",
+      "status": "updated",
+      "extent": {
+        "startYear": 1891,
+        "endYear": null,
+        "precision": "year",
+        "label": "1891–"
+      },
+      "reason": "First use of the term 'liberalismo social' in 1891."
+    },
+    {
+      "id": "ideology-neoliberalism",
+      "title": "Neoliberalismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1938,
+        "endYear": null,
+        "precision": "year",
+        "label": "1938–"
+      },
+      "reason": "Passagem 1 sugere 1938 como possível ano de origem, e não há fim definido."
+    },
+    {
+      "id": "ideology-economic-liberalism",
+      "title": "Liberalismo económico",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "Não há menção ao período de início ou fim do liberalismo econômico nas passagens."
+    },
+    {
+      "id": "ideology-green-liberalism",
+      "title": "Liberalismo verde",
+      "status": "updated",
+      "extent": {
+        "startYear": 1998,
+        "endYear": null,
+        "precision": "year",
+        "label": "1998"
+      },
+      "reason": "Ano de introdução do termo em estudos acadêmicos."
+    },
+    {
+      "id": "ideology-liberal-socialism",
+      "title": "Socialismo liberal",
+      "status": "updated",
+      "extent": {
+        "startYear": 1919,
+        "endYear": null,
+        "precision": "year",
+        "label": "1919–"
+      },
+      "reason": "O primeiro apoio ao socialismo liberal foi declarado em 1919."
+    },
+    {
+      "id": "ideology-ordoliberalism",
+      "title": "Ordoliberalismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1950,
+        "endYear": null,
+        "precision": "year",
+        "label": "1950–"
+      },
+      "reason": "O ordoliberalismo foi cunhado em 1950."
+    },
+    {
+      "id": "ideology-marxism",
+      "title": "Marxismo",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "As passagens fornecem datas para eventos históricos, mas não para o surgimento do Marxismo."
+    },
+    {
+      "id": "ideology-communism",
+      "title": "Comunismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1848,
+        "endYear": 1991,
+        "precision": "year",
+        "label": "1848–1991"
+      },
+      "reason": "Baseado na popularização do termo em 1848 e na dissolução da União Soviética em 1991."
+    },
+    {
+      "id": "ideology-socialism",
+      "title": "Socialismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1832,
+        "endYear": null,
+        "precision": "year",
+        "label": "1832–"
+      },
+      "reason": "Pierre Leroux alegou ter usado o termo socialismo pela primeira vez em 1832."
+    },
+    {
+      "id": "ideology-marxism-leninism",
+      "title": "Marxismo-leninismo",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "A passagem menciona um evento relacionado ao trotskismo em 1938, mas não fornece informações sobre o Marxismo-leninismo."
+    },
+    {
+      "id": "ideology-revisionism",
+      "title": "Revisionismo (marxismo)",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "A passagem menciona o uso do termo 'revisionismo' em 1960, mas não a data de início da ideologia."
+    },
+    {
+      "id": "ideology-trotskyism",
+      "title": "Trotskismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1905,
+        "endYear": null,
+        "precision": "year",
+        "label": "1905–"
+      },
+      "reason": "A teoria central do trotskismo foi formulada em 1905."
+    },
+    {
+      "id": "country-brazil",
+      "title": "Brasil",
+      "status": "skipped",
+      "has_date": true,
+      "start": null,
+      "end": null,
+      "label": "1988",
+      "reason": "Menciona a Constituição de 1988"
+    },
+    {
+      "id": "wiki-topic-ditadura-do-proletariado",
+      "title": "Ditadura do proletariado",
+      "status": "updated",
+      "extent": {
+        "startYear": 1852,
+        "endYear": null,
+        "precision": "year",
+        "label": "1852"
+      },
+      "reason": "Ano de publicação do artigo 'Ditadura do Proletariado'."
+    },
+    {
+      "id": "wiki-topic-eurocomunismo",
+      "title": "Eurocomunismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1970,
+        "endYear": null,
+        "precision": "year",
+        "label": "1970s"
+      },
+      "reason": "Surgiu na década de 1970."
+    },
+    {
+      "id": "wiki-topic-luta-de-classes",
+      "title": "Luta de classes",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "As passagens mencionam eventos históricos relacionados à luta de classes, mas não especificam um período de início ou fim para o conceito em si."
+    },
+    {
+      "id": "wiki-topic-maoismo",
+      "title": "Maoismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1962,
+        "endYear": 1976,
+        "precision": "year",
+        "label": "1962–1976"
+      },
+      "reason": "O Partido Comunista do Brasil adotou o maoismo como orientação entre 1962 e 1976."
+    },
+    {
+      "id": "wiki-topic-adam-ferguson",
+      "title": "Adam Ferguson",
+      "status": "updated",
+      "extent": {
+        "startYear": 1723,
+        "endYear": null,
+        "precision": "year",
+        "label": "1723–"
+      },
+      "reason": "Nascimento de Adam Ferguson em 1723."
+    },
+    {
+      "id": "wiki-topic-david-hume",
+      "title": "David Hume",
+      "status": "updated",
+      "extent": {
+        "startYear": 1711,
+        "endYear": null,
+        "precision": "year",
+        "label": "1711–"
+      },
+      "reason": "Nascimento de David Hume em 1711"
+    },
+    {
+      "id": "wiki-topic-frederic-bastiat",
+      "title": "Frédéric Bastiat",
+      "status": "updated",
+      "extent": {
+        "startYear": 1801,
+        "endYear": 1850,
+        "precision": "year",
+        "label": "1801–1850"
+      },
+      "reason": "Passagens fornecem data de nascimento e morte."
+    },
+    {
+      "id": "wiki-topic-jeremy-bentham",
+      "title": "Jeremy Bentham",
+      "status": "updated",
+      "extent": {
+        "startYear": 1780,
+        "endYear": 1832,
+        "precision": "year",
+        "label": "1780–1832"
+      },
+      "reason": "Mentioned birth/death years."
+    },
+    {
+      "id": "wiki-topic-jose-ortega-y-gasset",
+      "title": "José Ortega y Gasset",
+      "status": "updated",
+      "extent": {
+        "startYear": 1883,
+        "endYear": null,
+        "precision": "year",
+        "label": "1883–"
+      },
+      "reason": "Nascimento de José Ortega y Gasset em 1883."
+    },
+    {
+      "id": "wiki-topic-libertarianismo",
+      "title": "Libertarianismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1789,
+        "endYear": null,
+        "precision": "year",
+        "label": "1789–"
+      },
+      "reason": "Primeiro uso registrado do termo libertário em 1789."
+    },
+    {
+      "id": "wiki-topic-robert-nozick",
+      "title": "Robert Nozick",
+      "status": "updated",
+      "extent": {
+        "startYear": 1938,
+        "endYear": 2002,
+        "precision": "year",
+        "label": "1938–2002"
+      },
+      "reason": "Robert Nozick nasceu em 1938 e morreu em 2002."
+    },
+    {
+      "id": "wiki-topic-conservadorismo",
+      "title": "Conservadorismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1818,
+        "endYear": null,
+        "precision": "year",
+        "label": "1818–"
+      },
+      "reason": "Primeiro uso político estabelecido em 1818."
+    },
+    {
+      "id": "wiki-topic-fascismo",
+      "title": "Fascismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1915,
+        "endYear": null,
+        "precision": "year",
+        "label": "1915–"
+      },
+      "reason": "O termo fascismo foi usado pela primeira vez em 1915."
+    },
+    {
+      "id": "wiki-topic-nacionalismo",
+      "title": "Nacionalismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1882,
+        "endYear": null,
+        "precision": "year",
+        "label": "1882–"
+      },
+      "reason": "Ernest Renan define a nação em 1882."
+    },
+    {
+      "id": "wiki-topic-populismo",
+      "title": "Populismo",
+      "status": "skipped",
+      "has_date": true,
+      "start": null,
+      "end": null,
+      "label": "1950",
+      "reason": "Mencionado em relação a um evento político em 1950."
+    },
+    {
+      "id": "wiki-topic-alfredo-palacio",
+      "title": "Alfredo Palacio",
+      "status": "updated",
+      "extent": {
+        "startYear": 1939,
+        "endYear": 2025,
+        "precision": "year",
+        "label": "1939–2025"
+      },
+      "reason": "Nascimento e morte explicitamente mencionados."
+    },
+    {
+      "id": "wiki-topic-august-bebel",
+      "title": "August Bebel",
+      "status": "updated",
+      "extent": {
+        "startYear": 1840,
+        "endYear": null,
+        "precision": "year",
+        "label": "1840–"
+      },
+      "reason": "Nascimento em 1840 mencionado."
+    },
+    {
+      "id": "wiki-topic-augusto-pinochet",
+      "title": "Augusto Pinochet",
+      "status": "updated",
+      "extent": {
+        "startYear": 1915,
+        "endYear": 1988,
+        "precision": "year",
+        "label": "1915–1988"
+      },
+      "reason": "Passagens fornecem data de nascimento e ano do fim do mandato."
+    },
+    {
+      "id": "wiki-topic-bernardo-arevalo",
+      "title": "Bernardo Arévalo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1958,
+        "endYear": null,
+        "precision": "year",
+        "label": "1958–"
+      },
+      "reason": "Nascimento de Bernardo Arévalo em 1958"
+    },
+    {
+      "id": "wiki-topic-bolsa-familia",
+      "title": "Bolsa Família",
+      "status": "updated",
+      "extent": {
+        "startYear": 2003,
+        "endYear": null,
+        "precision": "year",
+        "label": "2003–"
+      },
+      "reason": "A Medida Provisória que instituiu o programa foi publicada em 2003."
+    },
+    {
+      "id": "wiki-topic-brasil",
+      "title": "Brasil",
+      "status": "updated",
+      "extent": {
+        "startYear": 1500,
+        "endYear": null,
+        "precision": "year",
+        "label": "1500–"
+      },
+      "reason": "Descoberta oficial do território em 1500."
+    },
+    {
+      "id": "wiki-topic-bruno-kreisky",
+      "title": "Bruno Kreisky",
+      "status": "updated",
+      "extent": {
+        "startYear": 1911,
+        "endYear": 1990,
+        "precision": "year",
+        "label": "1911–1990"
+      },
+      "reason": "Nasceu em 1911 e morreu em 1990."
+    },
+    {
+      "id": "wiki-topic-clarin",
+      "title": "Clarín",
+      "status": "updated",
+      "extent": {
+        "startYear": 1945,
+        "endYear": null,
+        "precision": "year",
+        "label": "1945–"
+      },
+      "reason": "O jornal foi criado em 28 de agosto de 1945."
+    },
+    {
+      "id": "wiki-topic-congresso-nacional-africano",
+      "title": "Congresso Nacional Africano",
+      "status": "updated",
+      "extent": {
+        "startYear": 1912,
+        "endYear": null,
+        "precision": "year",
+        "label": "1912–"
+      },
+      "reason": "Fundado em 1912."
+    },
+    {
+      "id": "wiki-topic-cooperativismo",
+      "title": "Cooperativismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1844,
+        "endYear": null,
+        "precision": "year",
+        "label": "1844–"
+      },
+      "reason": "Passagens referem-se à fundação e início do movimento cooperativista em 1844."
+    },
+    {
+      "id": "wiki-topic-crise-de-suez",
+      "title": "Crise de Suez",
+      "status": "updated",
+      "extent": {
+        "startYear": 1956,
+        "endYear": null,
+        "precision": "year",
+        "label": "1956"
+      },
+      "reason": "O conflito começou em 29 de outubro de 1956."
+    },
+    {
+      "id": "wiki-topic-crise-dos-misseis-de-cuba",
+      "title": "Crise dos mísseis de Cuba",
+      "status": "updated",
+      "extent": {
+        "startYear": 1962,
+        "endYear": null,
+        "precision": "year",
+        "label": "1962"
+      },
+      "reason": "O evento começou em julho de 1962."
+    },
+    {
+      "id": "wiki-topic-democracia-representativa",
+      "title": "Democracia representativa",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "Não há menção à data de início ou fim da democracia representativa."
+    },
+    {
+      "id": "wiki-topic-desemprego",
+      "title": "Desemprego",
+      "status": "updated",
+      "extent": {
+        "startYear": 2007,
+        "endYear": null,
+        "precision": "year",
+        "label": "2007"
+      },
+      "reason": "Menciona o ano de 2007 em relação à taxa de desemprego."
+    },
+    {
+      "id": "wiki-topic-dilma-rousseff",
+      "title": "Dilma Rousseff",
+      "status": "updated",
+      "extent": {
+        "startYear": 1947,
+        "endYear": null,
+        "precision": "year",
+        "label": "1947–"
+      },
+      "reason": "Nascimento de Dilma Rousseff em 1947"
+    },
+    {
+      "id": "wiki-topic-direita-politica",
+      "title": "Direita (política)",
+      "status": "updated",
+      "extent": {
+        "startYear": 1789,
+        "endYear": null,
+        "precision": "year",
+        "label": "1789–"
+      },
+      "reason": "Surgimento dos termos esquerda e direita durante a Revolução Francesa."
+    },
+    {
+      "id": "wiki-topic-esquerda-politica",
+      "title": "Esquerda (política)",
+      "status": "updated",
+      "extent": {
+        "startYear": 1815,
+        "endYear": null,
+        "precision": "year",
+        "label": "1815–"
+      },
+      "reason": "A passagem 3 menciona o uso do termo 'esquerda' se tornando mais proeminente após 1815."
+    },
+    {
+      "id": "wiki-topic-ferdinand-lassalle",
+      "title": "Ferdinand Lassalle",
+      "status": "updated",
+      "extent": {
+        "startYear": 1825,
+        "endYear": null,
+        "precision": "year",
+        "label": "1825–"
+      },
+      "reason": "Nascimento de Ferdinand Lassalle em 1825"
+    },
+    {
+      "id": "wiki-topic-fidel-castro",
+      "title": "Fidel Castro",
+      "status": "updated",
+      "extent": {
+        "startYear": 1926,
+        "endYear": null,
+        "precision": "year",
+        "label": "1926–"
+      },
+      "reason": "Nascimento de Fidel Castro em 1926"
+    },
+    {
+      "id": "wiki-topic-grande-depressao",
+      "title": "Grande Depressão",
+      "status": "updated",
+      "extent": {
+        "startYear": 1929,
+        "endYear": 1933,
+        "precision": "year",
+        "label": "1929–1933"
+      },
+      "reason": "Passagens 1, 2 e 3 indicam o período da Grande Depressão."
+    },
+    {
+      "id": "wiki-topic-huber-matos",
+      "title": "Huber Matos",
+      "status": "updated",
+      "extent": {
+        "startYear": 1918,
+        "endYear": null,
+        "precision": "year",
+        "label": "1918–"
+      },
+      "reason": "Nascimento de Huber Matos em 1918"
+    },
+    {
+      "id": "wiki-topic-internacional-socialista",
+      "title": "Internacional Socialista",
+      "status": "updated",
+      "extent": {
+        "startYear": 1951,
+        "endYear": null,
+        "precision": "year",
+        "label": "1951–"
+      },
+      "reason": "Fundada em 1951."
+    },
+    {
+      "id": "wiki-topic-isabel-allende",
+      "title": "Isabel Allende",
+      "status": "updated",
+      "extent": {
+        "startYear": 1942,
+        "endYear": null,
+        "precision": "year",
+        "label": "1942–"
+      },
+      "reason": "Nascida em 1942."
+    },
+    {
+      "id": "wiki-topic-jean-jaures",
+      "title": "Jean Jaurès",
+      "status": "updated",
+      "extent": {
+        "startYear": 1859,
+        "endYear": null,
+        "precision": "year",
+        "label": "1859–"
+      },
+      "reason": "Nascimento de Jean Jaurès em 1859"
+    },
+    {
+      "id": "wiki-topic-jose-marti",
+      "title": "José Martí",
+      "status": "updated",
+      "extent": {
+        "startYear": 1853,
+        "endYear": 1895,
+        "precision": "year",
+        "label": "1853–1895"
+      },
+      "reason": "Nascimento em 1853 e morte em 1895"
+    },
+    {
+      "id": "wiki-topic-leis-antissocialistas",
+      "title": "Leis Antissocialistas",
+      "status": "updated",
+      "extent": {
+        "startYear": 1878,
+        "endYear": 1890,
+        "precision": "year",
+        "label": "1878–1890"
+      },
+      "reason": "As leis foram aprovadas em 1878 e perderam a eficácia em 1890."
+    },
+    {
+      "id": "wiki-topic-luiz-inacio-lula-da-silva",
+      "title": "Luiz Inácio Lula da Silva",
+      "status": "updated",
+      "extent": {
+        "startYear": 1945,
+        "endYear": null,
+        "precision": "year",
+        "label": "1945–"
+      },
+      "reason": "Nascimento de Lula em 1945"
+    },
+    {
+      "id": "wiki-topic-movimento-regeneracao-nacional",
+      "title": "Movimento Regeneração Nacional",
+      "status": "updated",
+      "extent": {
+        "startYear": 2011,
+        "endYear": null,
+        "precision": "year",
+        "label": "2011–"
+      },
+      "reason": "Fundação em 2011 explicitamente mencionada."
+    },
+    {
+      "id": "wiki-topic-olof-palme",
+      "title": "Olof Palme",
+      "status": "updated",
+      "extent": {
+        "startYear": 1927,
+        "endYear": null,
+        "precision": "year",
+        "label": "1927–"
+      },
+      "reason": "Nascimento de Olof Palme em 1927"
+    },
+    {
+      "id": "wiki-topic-otto-von-bismarck",
+      "title": "Otto von Bismarck",
+      "status": "updated",
+      "extent": {
+        "startYear": 1815,
+        "endYear": null,
+        "precision": "year",
+        "label": "1815–"
+      },
+      "reason": "Nascimento de Bismarck em 1815"
+    },
+    {
+      "id": "wiki-topic-partido-comunista-do-chile",
+      "title": "Partido Comunista do Chile",
+      "status": "updated",
+      "extent": {
+        "startYear": 1912,
+        "endYear": null,
+        "precision": "year",
+        "label": "1912–"
+      },
+      "reason": "Fundado em 1912."
+    },
+    {
+      "id": "wiki-topic-partido-da-revolucao-democratica",
+      "title": "Partido da Revolução Democrática",
+      "status": "updated",
+      "extent": {
+        "startYear": 1989,
+        "endYear": null,
+        "precision": "year",
+        "label": "1989–"
+      },
+      "reason": "Fundado em 1989."
+    },
+    {
+      "id": "wiki-topic-partido-democratico-trabalhista",
+      "title": "Partido Democrático Trabalhista",
+      "status": "updated",
+      "extent": {
+        "startYear": 1980,
+        "endYear": null,
+        "precision": "year",
+        "label": "1980–"
+      },
+      "reason": "Fundação do partido em 1980"
+    },
+    {
+      "id": "wiki-topic-partido-dos-trabalhadores",
+      "title": "Partido dos Trabalhadores",
+      "status": "updated",
+      "extent": {
+        "startYear": 1980,
+        "endYear": null,
+        "precision": "year",
+        "label": "1980–"
+      },
+      "reason": "Fundado em 1980."
+    },
+    {
+      "id": "wiki-topic-partido-revolucionario-institucional",
+      "title": "Partido Revolucionário Institucional",
+      "status": "updated",
+      "extent": {
+        "startYear": 1929,
+        "endYear": 2000,
+        "precision": "year",
+        "label": "1929–2000"
+      },
+      "reason": "O partido teve poder hegemônico entre 1929 e 2000."
+    },
+    {
+      "id": "wiki-topic-partido-social-democrata-da-alemanha",
+      "title": "Partido Social-Democrata da Alemanha",
+      "status": "updated",
+      "extent": {
+        "startYear": 1875,
+        "endYear": null,
+        "precision": "year",
+        "label": "1875–"
+      },
+      "reason": "Fundado em 1875."
+    },
+    {
+      "id": "wiki-topic-partido-trabalhista-reino-unido",
+      "title": "Partido Trabalhista (Reino Unido)",
+      "status": "updated",
+      "extent": {
+        "startYear": 1906,
+        "endYear": null,
+        "precision": "year",
+        "label": "1906–"
+      },
+      "reason": "A passagem 3 menciona a adoção oficial do nome em 1906."
+    },
+    {
+      "id": "wiki-topic-raul-castro",
+      "title": "Raúl Castro",
+      "status": "updated",
+      "extent": {
+        "startYear": 1956,
+        "endYear": null,
+        "precision": "year",
+        "label": "1956–"
+      },
+      "reason": "Passagem 1 menciona o desembarque em Cuba em 1956."
+    },
+    {
+      "id": "wiki-topic-revolucao-industrial",
+      "title": "Revolução Industrial",
+      "status": "updated",
+      "extent": {
+        "startYear": 1780,
+        "endYear": null,
+        "precision": "year",
+        "label": "1780–1824"
+      },
+      "reason": "Passagens referem-se a eventos entre 1780 e 1824."
+    },
+    {
+      "id": "wiki-topic-socialismo-democratico",
+      "title": "Socialismo democrático",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "A passagem menciona um evento histórico (golpe de estado) mas não a data de início ou fim do socialismo democrático."
+    },
+    {
+      "id": "wiki-topic-terceira-via",
+      "title": "Terceira via",
+      "status": "updated",
+      "extent": {
+        "startYear": 1980,
+        "endYear": 2000,
+        "precision": "year",
+        "label": "1980s–2000s"
+      },
+      "reason": "Origem no fim dos anos 1980 e perda de fôlego na década de 2000."
+    },
+    {
+      "id": "wiki-topic-uniao-civica-radical",
+      "title": "União Cívica Radical",
+      "status": "updated",
+      "extent": {
+        "startYear": 1891,
+        "endYear": null,
+        "precision": "year",
+        "label": "1891–"
+      },
+      "reason": "Fundado em 1891."
+    },
+    {
+      "id": "wiki-topic-universidade-federal-de-minas-gerais",
+      "title": "Universidade Federal de Minas Gerais",
+      "status": "updated",
+      "extent": {
+        "startYear": 1927,
+        "endYear": null,
+        "precision": "year",
+        "label": "1927–"
+      },
+      "reason": "Criação em 1927 e federalização em 1949."
+    },
+    {
+      "id": "wiki-topic-valparaiso-chile",
+      "title": "Valparaíso (Chile)",
+      "status": "updated",
+      "extent": {
+        "startYear": 1536,
+        "endYear": null,
+        "precision": "year",
+        "label": "1536–"
+      },
+      "reason": "Fundada em 1536."
+    },
+    {
+      "id": "wiki-topic-vanguarda",
+      "title": "Vanguarda",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "As passagens referem-se a livros sobre vanguardismo, mas não especificam o período da própria Vanguarda."
+    },
+    {
+      "id": "wiki-topic-wilhelm-liebknecht",
+      "title": "Wilhelm Liebknecht",
+      "status": "updated",
+      "extent": {
+        "startYear": 1826,
+        "endYear": 1900,
+        "precision": "year",
+        "label": "1826–1900"
+      },
+      "reason": "Nasceu em 1826 e morreu em 1900."
+    },
+    {
+      "id": "wiki-topic-willy-brandt",
+      "title": "Willy Brandt",
+      "status": "updated",
+      "extent": {
+        "startYear": 1913,
+        "endYear": 1992,
+        "precision": "year",
+        "label": "1913–1992"
+      },
+      "reason": "Passagens fornecem data de nascimento e morte."
+    },
+    {
+      "id": "wiki-topic-america-do-sul",
+      "title": "América do Sul",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "As passagens referem-se a eventos na América do Sul, mas não especificam um período de início ou fim para o continente."
+    },
+    {
+      "id": "wiki-topic-anarquismo",
+      "title": "Anarquismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1860,
+        "endYear": null,
+        "precision": "year",
+        "label": "1860–"
+      },
+      "reason": "Surge no final da década de 1860."
+    },
+    {
+      "id": "wiki-topic-argentina",
+      "title": "Argentina",
+      "status": "updated",
+      "extent": {
+        "startYear": 1810,
+        "endYear": null,
+        "precision": "year",
+        "label": "1810–"
+      },
+      "reason": "A Revolução de Maio de 1810 marcou o início da independência da Argentina."
+    },
+    {
+      "id": "wiki-topic-autoritarismo",
+      "title": "Autoritarismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1870,
+        "endYear": null,
+        "precision": "year",
+        "label": "1870s"
+      },
+      "reason": "Mentioned as emerging after the fall of the Second French Empire in the 1870s."
+    },
+    {
+      "id": "wiki-topic-chile",
+      "title": "Chile",
+      "status": "updated",
+      "extent": {
+        "startYear": 1817,
+        "endYear": null,
+        "precision": "year",
+        "label": "1817–"
+      },
+      "reason": "A declaração de independência do Chile em 1817 é mencionada."
+    },
+    {
+      "id": "wiki-topic-ciencia-politica",
+      "title": "Ciência política",
+      "status": "updated",
+      "extent": {
+        "startYear": 1880,
+        "endYear": null,
+        "precision": "year",
+        "label": "1880"
+      },
+      "reason": "O termo foi cunhado em 1880."
+    },
+    {
+      "id": "wiki-topic-colonialismo",
+      "title": "Colonialismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1529,
+        "endYear": null,
+        "precision": "year",
+        "label": "1529–"
+      },
+      "reason": "O Tratado de Saragoça (1529) marca o início do colonialismo."
+    },
+    {
+      "id": "wiki-topic-cuba",
+      "title": "Cuba",
+      "status": "updated",
+      "extent": {
+        "startYear": 1902,
+        "endYear": null,
+        "precision": "year",
+        "label": "1902–"
+      },
+      "reason": "A independência de Cuba foi conquistada em 1902."
+    },
+    {
+      "id": "wiki-topic-daniel-ortega",
+      "title": "Daniel Ortega",
+      "status": "updated",
+      "extent": {
+        "startYear": 1945,
+        "endYear": null,
+        "precision": "year",
+        "label": "1945–"
+      },
+      "reason": "Nascimento de Daniel Ortega em 1945"
+    },
+    {
+      "id": "wiki-topic-emma-goldman",
+      "title": "Emma Goldman",
+      "status": "updated",
+      "extent": {
+        "startYear": 1885,
+        "endYear": 1940,
+        "precision": "year",
+        "label": "1885–1940"
+      },
+      "reason": "Passagens fornecem o ano de emigração e de morte."
+    },
+    {
+      "id": "wiki-topic-errico-malatesta",
+      "title": "Errico Malatesta",
+      "status": "updated",
+      "extent": {
+        "startYear": 1853,
+        "endYear": null,
+        "precision": "year",
+        "label": "1853–"
+      },
+      "reason": "Nascimento de Errico Malatesta em 1853"
+    },
+    {
+      "id": "wiki-topic-evo-morales",
+      "title": "Evo Morales",
+      "status": "updated",
+      "extent": {
+        "startYear": 1959,
+        "endYear": null,
+        "precision": "year",
+        "label": "1959–"
+      },
+      "reason": "Nascimento de Evo Morales em 1959"
+    },
+    {
+      "id": "wiki-topic-fernando-henrique-cardoso",
+      "title": "Fernando Henrique Cardoso",
+      "status": "updated",
+      "extent": {
+        "startYear": 1931,
+        "endYear": null,
+        "precision": "year",
+        "label": "1931–"
+      },
+      "reason": "Nascimento em 1931 explicitamente mencionado."
+    },
+    {
+      "id": "wiki-topic-francois-rabelais",
+      "title": "François Rabelais",
+      "status": "updated",
+      "extent": {
+        "startYear": 1483,
+        "endYear": null,
+        "precision": "year",
+        "label": "1483–"
+      },
+      "reason": "Passagem 3 menciona a data de nascimento provável."
+    },
+    {
+      "id": "wiki-topic-getulio-vargas",
+      "title": "Getúlio Vargas",
+      "status": "updated",
+      "extent": {
+        "startYear": 1882,
+        "endYear": 1954,
+        "precision": "year",
+        "label": "1882–1954"
+      },
+      "reason": "Nascimento em 1882 e morte em 1954"
+    },
+    {
+      "id": "wiki-topic-guerra-da-coreia",
+      "title": "Guerra da Coreia",
+      "status": "updated",
+      "extent": {
+        "startYear": 1950,
+        "endYear": 1953,
+        "precision": "year",
+        "label": "1950–1953"
+      },
+      "reason": "As passagens referem-se ao início da guerra em 1950 e ao armistício em 1953."
+    },
+    {
+      "id": "wiki-topic-guerra-do-vietna",
+      "title": "Guerra do Vietnã",
+      "status": "updated",
+      "extent": {
+        "startYear": 1955,
+        "endYear": 1973,
+        "precision": "year",
+        "label": "1955–1973"
+      },
+      "reason": "Passagens 2 e 3 fornecem os anos de início e fim do conflito."
+    },
+    {
+      "id": "wiki-topic-hugo-chavez",
+      "title": "Hugo Chávez",
+      "status": "updated",
+      "extent": {
+        "startYear": 1954,
+        "endYear": null,
+        "precision": "year",
+        "label": "1954–"
+      },
+      "reason": "Nascimento de Hugo Chávez em 1954"
+    },
+    {
+      "id": "wiki-topic-iluminismo",
+      "title": "Iluminismo",
+      "status": "updated",
+      "extent": {
+        "startYear": 1637,
+        "endYear": 1789,
+        "precision": "year",
+        "label": "1637–1789"
+      },
+      "reason": "Passagens citam datas para início e fim do Iluminismo."
+    },
+    {
+      "id": "wiki-topic-imperialismo",
+      "title": "Imperialismo",
+      "status": "skipped",
+      "has_date": false,
+      "start": null,
+      "end": null,
+      "label": null,
+      "reason": "As passagens referem-se a obras sobre imperialismo, mas não definem um período específico para o próprio conceito."
+    },
+    {
+      "id": "wiki-topic-maximilien-de-robespierre",
+      "title": "Maximilien de Robespierre",
+      "status": "updated",
+      "extent": {
+        "startYear": 1758,
+        "endYear": 1794,
+        "precision": "year",
+        "label": "1758–1794"
+      },
+      "reason": "Passagem 2 menciona o ano de nascimento (1758) e passagem 1 menciona sua morte em 1794."
+    },
+    {
+      "id": "wiki-topic-mexico",
+      "title": "México",
+      "status": "skipped",
+      "has_date": true,
+      "start": null,
+      "end": null,
+      "label": "1917–2010",
+      "reason": "Menciona eventos em 1917 e 2010"
+    },
+    {
+      "id": "wiki-topic-mikhail-bakunin",
+      "title": "Mikhail Bakunin",
+      "status": "updated",
+      "extent": {
+        "startYear": 1814,
+        "endYear": 1876,
+        "precision": "year",
+        "label": "1814–1876"
+      },
+      "reason": "Nascimento e morte explicitamente mencionados."
+    }
+  ]
+}

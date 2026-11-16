@@ -359,7 +359,7 @@
       "kicker": "Experiências históricas",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Castilhismo, Guerra Fria, Petrobras, Tenentismo, Partido Trabalhista Brasileiro (1945), Revolução de 1930, Exército Brasileiro, Golpe de Estado no Brasil em 1964, Justiça do Trabalho, Comissão Econômica para a América Latina e o Caribe, Grande Depressão, Segunda Guerra Mundial, Igreja Católica."
+        "Registros ligados à ideologia: Castilhismo, Tenentismo, Golpe de Estado, Cidadania, Guerra Fria, Petrobras, Partido Trabalhista Brasileiro (1945), Revolução de 1930, Exército Brasileiro, Golpe de Estado no Brasil em 1964, Justiça do Trabalho, Comissão Econômica para a América Latina e o Caribe, Grande Depressão, Segunda Guerra Mundial, Igreja Católica."
       ],
       "question": "Em quais acontecimentos, partidos e instituições Trabalhismo se materializou?",
       "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
@@ -367,7 +367,6 @@
         "src-wiki-ideologia-trabalhismo-brasileiro",
         "src-wiki-topic-guerra-fria",
         "src-wiki-topic-petrobras",
-        "src-wiki-topic-tenentismo",
         "src-wiki-topic-partido-trabalhista-brasileiro-1945",
         "src-wiki-topic-revolucao-de-1930",
         "src-wiki-topic-exercito-brasileiro",
@@ -387,9 +386,11 @@
           "type": "entities",
           "entityIds": [
             "wiki-topic-castilhismo",
+            "wiki-topic-tenentismo",
+            "wiki-topic-golpe-de-estado",
+            "wiki-topic-cidadania",
             "wiki-topic-guerra-fria",
             "wiki-topic-petrobras",
-            "wiki-topic-tenentismo",
             "wiki-topic-partido-trabalhista-brasileiro-1945",
             "wiki-topic-revolucao-de-1930",
             "wiki-topic-exercito-brasileiro",
@@ -402,7 +403,10 @@
           ],
           "mode": "concepts",
           "notes": {
-            "wiki-topic-castilhismo": "O castilhismo influenciou o trabalhismo brasileiro, segundo o verbete."
+            "wiki-topic-castilhismo": "O castilhismo influenciou o trabalhismo brasileiro, segundo o verbete.",
+            "wiki-topic-tenentismo": "[conferência de IA] As origens do trabalhismo são situadas pelo verbete nas transformações políticas e sociais das primeiras décadas do século XX, com influência do castilhismo, do positivismo, do tenentismo e do movimento operário.",
+            "wiki-topic-golpe-de-estado": "[conferência de IA] Golpe de Estado que interrompeu o processo de reformas do governo João Goulart. (1964).",
+            "wiki-topic-cidadania": "[conferência de IA] Parte dos autores enfatiza a contribuição do modelo trabalhista para a cidadania social, enquanto outros destacam seu caráter corporativo."
           }
         }
       ]
@@ -464,7 +468,7 @@
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: Doutrina Social da Igreja, Brasil, Nacionalismo, Positivismo, Comunismo, Socialismo, Império do Brasil, Esquerda (política), Direita (política), Social-democracia, Anarcossindicalismo, Primeira República Brasileira, Desenvolvimentismo, Período Populista, Solidarismo, Liberalismo, Autoritarismo, Democracia."
+        "Registros ligados à ideologia: Doutrina Social da Igreja, Classe trabalhadora, Estado, Era Vargas, Comércio, Indústria, Brasil, Nacionalismo, Positivismo, Comunismo, Socialismo, Império do Brasil, Esquerda (política), Direita (política), Social-democracia, Anarcossindicalismo, Primeira República Brasileira, Desenvolvimentismo, Período Populista, Solidarismo, Liberalismo, Autoritarismo, Democracia."
       ],
       "question": "Como Trabalhismo se liga ao restante do grafo?",
       "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
@@ -494,6 +498,11 @@
           "type": "entities",
           "entityIds": [
             "wiki-topic-doutrina-social-da-igreja",
+            "wiki-topic-classe-trabalhadora",
+            "wiki-topic-estado",
+            "wiki-topic-era-vargas",
+            "wiki-topic-comercio",
+            "wiki-topic-industria",
             "wiki-topic-brasil",
             "wiki-topic-nacionalismo",
             "wiki-topic-positivismo",
@@ -514,7 +523,12 @@
           ],
           "mode": "concepts",
           "notes": {
-            "wiki-topic-doutrina-social-da-igreja": "A Doutrina Social da Igreja influenciou o trabalhismo brasileiro, segundo o verbete."
+            "wiki-topic-doutrina-social-da-igreja": "A Doutrina Social da Igreja influenciou o trabalhismo brasileiro, segundo o verbete.",
+            "wiki-topic-classe-trabalhadora": "[conferência de IA] O trabalhismo é caracterizado pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social.",
+            "wiki-topic-estado": "[conferência de IA] O trabalhismo é caracterizado pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social.",
+            "wiki-topic-era-vargas": "[conferência de IA] O trabalhismo consolidou-se durante a Era Vargas, período em que a legislação trabalhista passou a ocupar posição central nas relações entre Estado, capital e trabalho.",
+            "wiki-topic-comercio": "[conferência de IA] Criação do Ministério do Trabalho, Indústria e Comércio, medida da Era Vargas. (1930).",
+            "wiki-topic-industria": "[conferência de IA] Criação do Ministério do Trabalho, Indústria e Comércio, medida da Era Vargas. (1930)."
           }
         }
       ]
@@ -563,7 +577,7 @@
       "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
-        "Reúne 13 afirmações da fonte principal e 46 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+        "Reúne 13 afirmações da fonte principal e 45 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
       ],
       "question": "Quais fontes sustentam a leitura sobre Trabalhismo?",
       "bridge": null,
@@ -590,7 +604,6 @@
         "src-wiki-topic-luiz-inacio-lula-da-silva",
         "src-wiki-topic-guerra-fria",
         "src-wiki-topic-petrobras",
-        "src-wiki-topic-tenentismo",
         "src-wiki-topic-partido-trabalhista-brasileiro-1945",
         "src-wiki-topic-revolucao-de-1930",
         "src-wiki-topic-exercito-brasileiro",
@@ -645,7 +658,6 @@
             "src-wiki-topic-luiz-inacio-lula-da-silva",
             "src-wiki-topic-guerra-fria",
             "src-wiki-topic-petrobras",
-            "src-wiki-topic-tenentismo",
             "src-wiki-topic-partido-trabalhista-brasileiro-1945",
             "src-wiki-topic-revolucao-de-1930",
             "src-wiki-topic-exercito-brasileiro",

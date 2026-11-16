@@ -21,13 +21,13 @@
     },
     {
       "id": "atlas-liberalism",
-      "file": "collections/atlas-liberalism.5029fe5f78f1d723e7b76226eb4b45173568fd51f8602f5d04e480f353f307c7.json",
-      "sha256": "5029fe5f78f1d723e7b76226eb4b45173568fd51f8602f5d04e480f353f307c7"
+      "file": "collections/atlas-liberalism.dc9af6328bd41e86599d4248201c1743db80100015f827c8562cacd4121b5cce.json",
+      "sha256": "dc9af6328bd41e86599d4248201c1743db80100015f827c8562cacd4121b5cce"
     },
     {
       "id": "atlas-marx-valor",
-      "file": "collections/atlas-marx-valor.b9e29e6c9c37f29f0026a3f0293101808785dd20a4b7fef42324f5291d28c564.json",
-      "sha256": "b9e29e6c9c37f29f0026a3f0293101808785dd20a4b7fef42324f5291d28c564"
+      "file": "collections/atlas-marx-valor.592606f98ecf31bb96b2ca63fb28ad80a00c4072ed04f41ea579d9dbf4dfbb40.json",
+      "sha256": "592606f98ecf31bb96b2ca63fb28ad80a00c4072ed04f41ea579d9dbf4dfbb40"
     },
     {
       "id": "atlas-constitutional-contexts",
@@ -36,28 +36,28 @@
     },
     {
       "id": "atlas-marxismo",
-      "file": "collections/atlas-marxismo.159eaa0233aa82b81bb4e364bd00d6ef3ca6441109ffd31b16463930b0030ded.json",
-      "sha256": "159eaa0233aa82b81bb4e364bd00d6ef3ca6441109ffd31b16463930b0030ded"
+      "file": "collections/atlas-marxismo.03cbd6162681ea46273d5ee36f55524b83eb6a0a66b29251a01ecf14ddd22a58.json",
+      "sha256": "03cbd6162681ea46273d5ee36f55524b83eb6a0a66b29251a01ecf14ddd22a58"
     },
     {
       "id": "atlas-liberalismo",
-      "file": "collections/atlas-liberalismo.a6c973e88d7e388e3ef8c8cde2738b6a7b3e95efeff4a69cf3d688a1b69d4449.json",
-      "sha256": "a6c973e88d7e388e3ef8c8cde2738b6a7b3e95efeff4a69cf3d688a1b69d4449"
+      "file": "collections/atlas-liberalismo.0e376b6efe185ec859ea772456273c3c3c5d9d12b503a2c9a0ca9b30822d331c.json",
+      "sha256": "0e376b6efe185ec859ea772456273c3c3c5d9d12b503a2c9a0ca9b30822d331c"
     },
     {
       "id": "atlas-outras-ideologias",
-      "file": "collections/atlas-outras-ideologias.08a080606489f4f3788fe79f19908bbd0d76ef7f9cdfe6633517d6ac50035d73.json",
-      "sha256": "08a080606489f4f3788fe79f19908bbd0d76ef7f9cdfe6633517d6ac50035d73"
+      "file": "collections/atlas-outras-ideologias.061a475a17d356cac1979f891e54f60692f28b2608a62dcf53f29820bc6db225.json",
+      "sha256": "061a475a17d356cac1979f891e54f60692f28b2608a62dcf53f29820bc6db225"
     },
     {
       "id": "atlas-social-democracia",
-      "file": "collections/atlas-social-democracia.00f2ec35ebee257b8445e5242c9e1ad7cf1fbc14004e4dcd318c8bd3867ef258.json",
-      "sha256": "00f2ec35ebee257b8445e5242c9e1ad7cf1fbc14004e4dcd318c8bd3867ef258"
+      "file": "collections/atlas-social-democracia.2c28b9b08c1b125b3628e23060b69f97c4a2dc90ac85acb260a2477f0173d1cc.json",
+      "sha256": "2c28b9b08c1b125b3628e23060b69f97c4a2dc90ac85acb260a2477f0173d1cc"
     },
     {
       "id": "atlas-anarquismo",
-      "file": "collections/atlas-anarquismo.25ce36efdfce6baf500286a073e3e90e36c7099443759484ed5a0e19eeec79b5.json",
-      "sha256": "25ce36efdfce6baf500286a073e3e90e36c7099443759484ed5a0e19eeec79b5"
+      "file": "collections/atlas-anarquismo.6be6fd7a88519f3bf90631b71fbacf72fe87f694e161b4f5f3728980deb4352f.json",
+      "sha256": "6be6fd7a88519f3bf90631b71fbacf72fe87f694e161b4f5f3728980deb4352f"
     },
     {
       "id": "atlas-ideologias-principais",
@@ -71,18 +71,18 @@
     },
     {
       "id": "atlas-nazismo",
-      "file": "collections/atlas-nazismo.5fc65d5f02ddf15d32a47f86fe78a64c0d83c2645e21e779d2295d6beb1eb6c9.json",
-      "sha256": "5fc65d5f02ddf15d32a47f86fe78a64c0d83c2645e21e779d2295d6beb1eb6c9"
+      "file": "collections/atlas-nazismo.0c197d4d03fef7c50d9f54db641c036904cb69f6fc337f57a3b0c9a4a4c9f0a3.json",
+      "sha256": "0c197d4d03fef7c50d9f54db641c036904cb69f6fc337f57a3b0c9a4a4c9f0a3"
     },
     {
       "id": "atlas-stalinismo",
-      "file": "collections/atlas-stalinismo.b43643a70fa7bffb6e50e6e5303df552dc57213cdd20c9027791ff3c48f60845.json",
-      "sha256": "b43643a70fa7bffb6e50e6e5303df552dc57213cdd20c9027791ff3c48f60845"
+      "file": "collections/atlas-stalinismo.211fde2e6347be37a49f5a92a5c70bfab469fd1627edf441bed77f42486aa1d9.json",
+      "sha256": "211fde2e6347be37a49f5a92a5c70bfab469fd1627edf441bed77f42486aa1d9"
     },
     {
       "id": "atlas-trabalhismo",
-      "file": "collections/atlas-trabalhismo.1cc7deb8c91026b344967d08ee6d594b24c9d856862ff805374c84b33dc7cebc.json",
-      "sha256": "1cc7deb8c91026b344967d08ee6d594b24c9d856862ff805374c84b33dc7cebc"
+      "file": "collections/atlas-trabalhismo.0c22c60b1610d6c5ad8efb5cc216e80371836fbabecbfc37e7777d433cc0b618.json",
+      "sha256": "0c22c60b1610d6c5ad8efb5cc216e80371836fbabecbfc37e7777d433cc0b618"
     }
   ]
 }
