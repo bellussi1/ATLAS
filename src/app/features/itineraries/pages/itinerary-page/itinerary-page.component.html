@@ -1,0 +1,124 @@
+@if (loading()) {
+  <section class="itinerary-loading" role="status" aria-live="polite">
+    <p>Carregando itinerário…</p>
+  </section>
+} @else if (itinerary(); as item) {
+  <article class="itinerary" aria-labelledby="itinerary-title">
+    <header class="itinerary__head">
+      <p class="itinerary__kicker">
+        {{ kindLabels[item.kind] }} · {{ item.stops.length }} paradas
+        @if (item.branches.length) {
+          · {{ item.branches.length }} ramos
+        }
+      </p>
+      <h1 id="itinerary-title">{{ item.title }}</h1>
+      <p class="itinerary__question">{{ item.question }}</p>
+      <p class="itinerary__deck">{{ item.deck }}</p>
+      @if (item.coverage !== 'complete' && item.coverageNote) {
+        <p class="itinerary__coverage" role="note">{{ item.coverageNote }}</p>
+      }
+    </header>
+
+    <ol class="stops" aria-label="Paradas do itinerário">
+      @for (stop of item.stops; track stop.id; let i = $index) {
+        <li [id]="'parada-' + stop.id" class="stop">
+          <div class="stop__index" aria-hidden="true">{{ i + 1 }}</div>
+          <div class="stop__body">
+            <h2>{{ stop.title }}</h2>
+            <p class="stop__reason">{{ stop.reason }}</p>
+            <p class="stop__question"><strong>Pergunta da parada:</strong> {{ stop.question }}</p>
+            @if (destinationOf(stop.destination); as dest) {
+              <p class="stop__action">
+                <a
+                  class="stop__link"
+                  [routerLink]="dest.commands"
+                  [queryParams]="dest.queryParams"
+                  [fragment]="dest.fragment"
+                >
+                  Abrir {{ dest.kindLabel }} <span aria-hidden="true">→</span>
+                </a>
+              </p>
+            }
+            @if (branchesByStop().get(stop.id); as branches) {
+              <aside class="branches" aria-label="Ramos a partir desta parada">
+                @for (branch of branches; track branch.id) {
+                  <div class="branch">
+                    <p class="branch__kicker">Ramo alternativo</p>
+                    <h3>{{ branch.title }}</h3>
+                    <p>{{ branch.reason }}</p>
+                    <p class="branch__question"><strong>Pergunta:</strong> {{ branch.question }}</p>
+                    @if (destinationOf(branch.destination); as bDest) {
+                      <a
+                        class="branch__link"
+                        [routerLink]="bDest.commands"
+                        [queryParams]="bDest.queryParams"
+                        [fragment]="bDest.fragment"
+                      >
+                        Abrir {{ bDest.kindLabel }} <span aria-hidden="true">→</span>
+                      </a>
+                    }
+                    @if (branch.convergesAt) {
+                      <p class="branch__target">
+                        Converge em:
+                        <a [href]="'#parada-' + branch.convergesAt">
+                          {{ stopTitles().get(branch.convergesAt) ?? branch.convergesAt }}
+                        </a>
+                      </p>
+                    } @else if (branch.exit) {
+                      <p class="branch__target">{{ branch.exit }}</p>
+                    }
+                  </div>
+                }
+              </aside>
+            }
+          </div>
+        </li>
+      }
+    </ol>
+
+    @if (item.connections.length) {
+      <section class="itinerary__section" aria-labelledby="connections-title">
+        <h2 id="connections-title">Para continuar</h2>
+        <ul class="connections">
+          @for (conn of item.connections; track $index) {
+            @if (destinationOf(conn.destination); as cDest) {
+              <li>
+                <a
+                  [routerLink]="cDest.commands"
+                  [queryParams]="cDest.queryParams"
+                  [fragment]="cDest.fragment"
+                >
+                  {{ cDest.kindLabel }}
+                </a>
+                — {{ conn.reason }}
+              </li>
+            }
+          }
+        </ul>
+      </section>
+    }
+
+    @if (item.sources.length) {
+      <section class="itinerary__section" aria-labelledby="sources-title">
+        <h2 id="sources-title">Fontes do percurso</h2>
+        <ul class="sources">
+          @for (source of item.sources; track source.id) {
+            <li>
+              @if (source.url) {
+                <a [href]="source.url">{{ source.title }}</a>
+              } @else {
+                <span>{{ source.title }}</span>
+              }
+            </li>
+          }
+        </ul>
+      </section>
+    }
+
+    <footer class="itinerary__foot">
+      <a routerLink="/itinerarios">← Voltar aos itinerários</a>
+    </footer>
+  </article>
+} @else {
+  <app-not-found-message />
+}
