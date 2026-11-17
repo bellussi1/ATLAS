@@ -826,7 +826,7 @@ export class KnowledgeNetworkComponent {
   /** Card that follows the pointer: the node, or the link, under it. */
   readonly hoverCard = computed(() => {
     const at = this.pointerAt();
-    if (!at || this.dragging()) return null;
+    if (!at || this.busy()) return null;
     const { width, height } = this.size();
     const left = at.x > width - 340 ? at.x - 320 : at.x + 16;
     const top = Math.max(8, Math.min(at.y + 16, height - 200));
@@ -1334,6 +1334,7 @@ export class KnowledgeNetworkComponent {
   // ---- relations: hover, path and neighbours ----
 
   hoverNode(id: string | null): void {
+    if (id && this.busy()) return;
     if (this.hoverTimer) {
       clearTimeout(this.hoverTimer);
       this.hoverTimer = undefined;
@@ -1343,10 +1344,11 @@ export class KnowledgeNetworkComponent {
     if (id) this.schedulePointer();
   }
   hoverEdge(id: string | null): void {
+    if (id && this.busy()) return;
     this.hoveredEdgeId.set(id);
   }
   stagePointer(event: PointerEvent): void {
-    if (event.pointerType === 'touch' || this.dragging()) return;
+    if (event.pointerType === 'touch' || this.busy()) return;
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (!rect) return;
     const at = { x: event.clientX - rect.left, y: event.clientY - rect.top };
@@ -1387,6 +1389,7 @@ export class KnowledgeNetworkComponent {
   // ---- view: zoom and pan ----
 
   fit(animate = false): void {
+    this.clearHover();
     const { width, height } = this.size();
     if (!width || !height) return;
     this.autoFit = true;
@@ -1397,6 +1400,7 @@ export class KnowledgeNetworkComponent {
     this.fitWhole(animate);
   }
   zoomStep(factor: number): void {
+    this.clearHover();
     const { width, height } = this.size();
     const { x, y, k } = this.view();
     const next = Math.min(this.fitK() * 12, Math.max(this.minK(), k * factor));
@@ -1409,6 +1413,7 @@ export class KnowledgeNetworkComponent {
     );
   }
   zoomToPercent(percent: number): void {
+    this.clearHover();
     this.stopGlide();
     this.autoFit = false;
     const { width, height } = this.size();
@@ -1423,6 +1428,7 @@ export class KnowledgeNetworkComponent {
   }
   /** Slider input can arrive faster than a frame: one update per frame, same fast path as the wheel. */
   slideZoom(percent: number): void {
+    this.clearHover();
     this.sliding.set(true);
     clearTimeout(this.slideTimer);
     this.slideTimer = setTimeout(() => this.sliding.set(false), 240);
@@ -1452,6 +1458,7 @@ export class KnowledgeNetworkComponent {
     this.slideTimer = setTimeout(() => this.sliding.set(false), 160);
   }
   cycleZoomTier(): void {
+    this.clearHover();
     const ratio = this.zoomK() / this.fitK();
     const targetPercent = ratio < 1.75 ? 260 : ratio < 3.5 ? 600 : 100;
     const { width, height } = this.size();
@@ -1473,6 +1480,7 @@ export class KnowledgeNetworkComponent {
     );
   }
   zoomBy(factor: number, around?: { x: number; y: number }): void {
+    this.clearHover();
     this.stopGlide();
     this.autoFit = false;
     const { width, height } = this.size();
@@ -1493,6 +1501,7 @@ export class KnowledgeNetworkComponent {
     // In a chapter the page keeps the wheel; Ctrl/Meta or the zoom buttons operate the graph.
     if (this.embedded() && !event.ctrlKey && !event.metaKey) return;
     event.preventDefault();
+    this.clearHover();
     const rect = this.stage()?.nativeElement.getBoundingClientRect();
     if (!rect) return;
     this.wheeling.set(true);
@@ -1519,6 +1528,7 @@ export class KnowledgeNetworkComponent {
   }
   pointerDown(event: PointerEvent): void {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
+    this.clearHover();
     this.suppressClick = false;
     this.stopGlide();
     this.touches.set(event.pointerId, { x: event.clientX, y: event.clientY });
@@ -1645,8 +1655,19 @@ export class KnowledgeNetworkComponent {
       source: edge.sourceName,
     };
   }
+  /** Hover waits while the map is moving; the card must not follow a zoom or a drag. */
+  private clearHover(): void {
+    if (this.hoverTimer) clearTimeout(this.hoverTimer);
+    this.hoverTimer = undefined;
+    this.hoverTargetId = null;
+    this.lastPointer = null;
+    this.pointerAt.set(null);
+    this.hoveredId.set(null);
+    this.hoveredEdgeId.set(null);
+  }
   /** Pointer sweeps settle before labels are recalculated; crossing nodes must not rebuild them. */
   private scheduleHover(id: string | null): void {
+    if (id && this.busy()) return;
     if (this.hoverTimer) clearTimeout(this.hoverTimer);
     this.hoverTimer = undefined;
     if (id === null) {
@@ -1656,15 +1677,20 @@ export class KnowledgeNetworkComponent {
     this.hoverTargetId = id;
     this.hoverTimer = setTimeout(() => {
       this.hoverTimer = undefined;
-      if (this.hoverTargetId === id) this.hoverNode(id);
+      if (this.hoverTargetId === id && !this.busy()) this.hoverNode(id);
     }, 70);
   }
   private schedulePointer(): void {
-    if (this.pointerFrame || !this.lastPointer || typeof requestAnimationFrame !== 'function')
+    if (
+      this.busy() ||
+      this.pointerFrame ||
+      !this.lastPointer ||
+      typeof requestAnimationFrame !== 'function'
+    )
       return;
     this.pointerFrame = requestAnimationFrame(() => {
       this.pointerFrame = 0;
-      if (this.lastPointer && !this.dragging()) this.pointerAt.set(this.lastPointer);
+      if (this.lastPointer && !this.busy()) this.pointerAt.set(this.lastPointer);
     });
   }
   /** The whole map is the 100% mark of the page view. */

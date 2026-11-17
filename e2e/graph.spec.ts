@@ -223,6 +223,28 @@ test('hovering a node shows only its neighbours and explains what it relates to'
   expect(await page.locator('.nodes--lit .node').count()).toBeLessThan(total);
 });
 
+test('the wheel suppresses node hover while the map moves', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/grafos');
+  await expect(page.locator(linkedNode).first()).toBeVisible();
+  const spot = await page.locator(linkedNode).evaluateAll((nodes) => {
+    for (const el of nodes) {
+      const rect = el.getBoundingClientRect();
+      const x = rect.x + rect.width / 2;
+      const y = rect.y + rect.height / 2;
+      if (x > 400 && x < 850 && y > 250 && y < 580) return { x, y };
+    }
+    return null;
+  });
+  expect(spot).not.toBeNull();
+  await page.mouse.move(spot!.x, spot!.y);
+  await expect(page.locator('.tip')).toBeVisible();
+  await page.mouse.wheel(0, -400);
+  await expect(page.locator('.stage')).toHaveClass(/stage--busy/);
+  await expect(page.locator('.tip')).toHaveCount(0);
+  await expect(page.locator('.nodes--lit .node.is-hovered')).toHaveCount(0);
+});
+
 test('a selected node lists each link with its reading, nature and reason', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/grafos');
@@ -284,6 +306,19 @@ test('zoomed out the links are plain lines; up close they carry their wording', 
   await page.mouse.move(spot!.x, spot!.y);
   await page.mouse.wheel(0, -500);
   await expect(page.locator('.zoom__level')).not.toHaveText('100%');
+  await expect(page.locator('.stage')).not.toHaveClass(/stage--busy/, { timeout: 3000 });
+  // Hover is suppressed while the wheel moves; it returns on the next pointer move.
+  const after = await page.locator(linkedNode).evaluateAll((nodes) => {
+    for (const el of nodes) {
+      const rect = el.getBoundingClientRect();
+      const x = rect.x + rect.width / 2;
+      const y = rect.y + rect.height / 2;
+      if (x > 400 && x < 850 && y > 250 && y < 580) return { x, y };
+    }
+    return null;
+  });
+  expect(after).not.toBeNull();
+  await page.mouse.move(after!.x, after!.y);
   await expect(page.locator('.label--edge').first()).toBeVisible();
 });
 

@@ -564,6 +564,8 @@ describe('KnowledgeNetworkComponent', () => {
     fixture.detectChanges();
     expect(root(fixture).querySelector('.edge-hits')).toBeNull();
     component.zoomBy(3, { x: 700, y: 450 });
+    component.pointerAt.set({ x: 400, y: 300 });
+    component.hoverNode(linked.node.id);
     fixture.detectChanges();
     expect(component.near()).toBe(true);
     expect(component.hoverCard()?.node?.top.length).toBeGreaterThan(0);
