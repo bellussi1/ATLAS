@@ -48,10 +48,31 @@ const wikipediaUrl = z
   });
 const text = z.string().trim().min(1);
 
+export const subjectTypes = [
+  'ideologia',
+  'pessoa',
+  'acontecimento',
+  'instituicao',
+  'periodo',
+  'conceito',
+];
+
 export const traditionRegistrySchema = z
   .object({
     slug,
-    kind: z.enum(['ideologia', 'corrente', 'tradicao', 'movimento', 'programa']),
+    subjectType: z.enum(subjectTypes).default('ideologia'),
+    kind: z.enum([
+      'ideologia',
+      'corrente',
+      'tradicao',
+      'movimento',
+      'programa',
+      'pessoa',
+      'acontecimento',
+      'instituicao',
+      'periodo',
+      'conceito',
+    ]),
     /** Item do Wikidata da tradição; identifica o artigo e ancora a descoberta. */
     rootQid: z.string().regex(/^Q\d+$/),
     titles: z.object({ pt: text, en: text }),

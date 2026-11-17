@@ -18,6 +18,12 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Pipeline `/leituras` multi-tema (`subjectType`) (16/11, `develop`):**
+  - `scripts/tradicao/registry.mjs`: adicionado `subjectType` (`ideologia | pessoa | acontecimento | instituicao | periodo | conceito`, padrão `ideologia`) e ampliado `kind` no `traditionRegistrySchema`.
+  - `src/app/features/ideologies/models/ideology-chapters.ts`: adicionado `chapterLabelFor(id, subjectType)` preservando os 12 IDs canônicos com títulos adaptados por tipo.
+  - `scripts/tradicao/prompts.mjs` e `scripts/tradicao/reading.mjs`: prompts de extração, busca de raiz (`readingRootIn` com fallback para entidades não-`ideologia`), perguntas, pontes e títulos de capítulo parametrizados por `subjectType`.
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm run test:content` e `npm test` (**380/380** em 60 arquivos) passando.
+
 - **Home: sequência geométrica `? · A · B · C · D · E`, cores nas palavras-chave e animação por rolagem (16/11, `develop`):**
   - Removida a setinha `→` da seção *Seguir um itinerário*; as faixas da Home agora seguem a ordem `? · A · B · C · D · E` com formas e cores distintas da paleta ATLAS (`--band-bg`, `--band-fg`, `--band-em`), inclusive nas palavras-chave `<em>` (*uma descoberta*, *uma enciclopédia*, *um itinerário*, *hoje*, *por tipo*, *o acervo*).
   - Adicionada animação geométrica por tipo de forma controlada pelo `appReveal` ao entrar na viewport (respeitando `prefers-reduced-motion: reduce`).

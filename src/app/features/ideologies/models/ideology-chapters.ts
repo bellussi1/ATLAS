@@ -3,6 +3,16 @@
  * labels and index groups. Blocks inside each chapter stay free.
  * See docs/research/ideologies-section-contract-proposal.md.
  */
+export const subjectTypes = [
+  'ideologia',
+  'pessoa',
+  'acontecimento',
+  'instituicao',
+  'periodo',
+  'conceito',
+] as const;
+export type SubjectType = (typeof subjectTypes)[number];
+
 export const chapterGroups = ['Entender', 'Situar', 'Avaliar e continuar'] as const;
 export type ChapterGroup = (typeof chapterGroups)[number];
 
@@ -31,6 +41,51 @@ export const legacyChapterAnchors: Readonly<Record<string, CanonicalChapterId>> 
   criticas: 'debates',
   acervo: 'conexoes',
 };
+
+const SUBJECT_CHAPTER_LABELS: Partial<
+  Record<SubjectType, Partial<Record<CanonicalChapterId, string>>>
+> = {
+  pessoa: {
+    principios: 'Ideias e posições',
+    pensadores: 'Trajetória e obras',
+    vertentes: 'Relações e alianças',
+    experiencias: 'Atuação pública e legados',
+  },
+  acontecimento: {
+    principios: 'Causas e rupturas',
+    epocas: 'Cronologia do acontecimento',
+    pensadores: 'Protagonistas e relatos',
+    vertentes: 'Desdobramentos e correntes',
+  },
+  instituicao: {
+    principios: 'Regras, órgãos e funcionamento',
+    pensadores: 'Dirigentes e documentos',
+    vertentes: 'Transformações institucionais',
+    experiencias: 'Atuação e impacto histórico',
+  },
+  periodo: {
+    principios: 'Estrutura política e social',
+    epocas: 'Periodização e marcos',
+    pensadores: 'Intérpretes e obras',
+    vertentes: 'Forças políticas no período',
+  },
+  conceito: {
+    principios: 'Definições e critérios',
+    pensadores: 'Formuladores e usos',
+    vertentes: 'Usos disputados e historicidade',
+  },
+};
+
+export function chapterLabelFor(
+  id: CanonicalChapterId,
+  subjectType: SubjectType = 'ideologia',
+): string {
+  return (
+    SUBJECT_CHAPTER_LABELS[subjectType]?.[id] ??
+    canonicalChapters.find((chapter) => chapter.id === id)?.label ??
+    id
+  );
+}
 
 export function chapterGroup(id: string): ChapterGroup | undefined {
   return canonicalChapters.find((chapter) => chapter.id === id)?.group;
