@@ -266,13 +266,20 @@ export class KnowledgeNetworkComponent {
   readonly reducedMotion = signal(false);
   readonly dragging = signal(false);
   private readonly wheeling = signal(false);
+  private readonly sliding = signal(false);
   private wheelTimer: ReturnType<typeof setTimeout> | undefined;
   /** Wheel events are coalesced into one view update per frame; trackpads emit dozens per frame. */
   private wheelFrame = 0;
   private wheelFactor = 1;
   private wheelAround: { x: number; y: number } | null = null;
-  /** The view is moving (drag, pinch, wheel or glide): heavy parts of the drawing wait. */
-  readonly busy = computed(() => this.dragging() || this.animating() || this.wheeling());
+  /** Slider drags use the same fast path as the wheel, one update per frame. */
+  private slideTimer: ReturnType<typeof setTimeout> | undefined;
+  private slideFrame = 0;
+  private slidePercent: number | null = null;
+  /** The view is moving (drag, pinch, wheel, slider or glide): heavy parts of the drawing wait. */
+  readonly busy = computed(
+    () => this.dragging() || this.animating() || this.wheeling() || this.sliding(),
+  );
   private lastLabels: { k: number; items: readonly LabelView[] } = {
     k: 0,
     items: [],
@@ -1016,6 +1023,8 @@ export class KnowledgeNetworkComponent {
         if (this.glideTimer) clearTimeout(this.glideTimer);
         clearTimeout(this.wheelTimer);
         if (this.wheelFrame) cancelAnimationFrame(this.wheelFrame);
+        clearTimeout(this.slideTimer);
+        if (this.slideFrame) cancelAnimationFrame(this.slideFrame);
         if (this.pointerFrame) cancelAnimationFrame(this.pointerFrame);
         observer.disconnect();
         media?.removeEventListener('change', onMedia);
@@ -1411,6 +1420,36 @@ export class KnowledgeNetworkComponent {
       x: width / 2 - (width / 2 - x) * ratio,
       y: height / 2 - (height / 2 - y) * ratio,
     });
+  }
+  /** Slider input can arrive faster than a frame: one update per frame, same fast path as the wheel. */
+  slideZoom(percent: number): void {
+    this.sliding.set(true);
+    clearTimeout(this.slideTimer);
+    this.slideTimer = setTimeout(() => this.sliding.set(false), 240);
+    this.slidePercent = percent;
+    if (this.slideFrame) return;
+    const apply = () => {
+      const pending = this.slidePercent;
+      this.slidePercent = null;
+      if (pending !== null) this.zoomToPercent(pending);
+    };
+    if (typeof requestAnimationFrame === 'undefined') {
+      apply();
+      return;
+    }
+    this.slideFrame = requestAnimationFrame(() => {
+      this.slideFrame = 0;
+      apply();
+    });
+  }
+  /** Releasing the slider applies the exact value, then lets the map settle once. */
+  settleZoom(percent: number): void {
+    if (this.slideFrame) cancelAnimationFrame(this.slideFrame);
+    this.slideFrame = 0;
+    this.slidePercent = null;
+    this.zoomToPercent(percent);
+    clearTimeout(this.slideTimer);
+    this.slideTimer = setTimeout(() => this.sliding.set(false), 160);
   }
   cycleZoomTier(): void {
     const ratio = this.zoomK() / this.fitK();

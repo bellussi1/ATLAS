@@ -753,7 +753,8 @@
               step="10"
               aria-label="Controle de zoom"
               [value]="zoomPercent()"
-              (input)="zoomToPercent(+$any($event.target).value)"
+              (input)="slideZoom(+$any($event.target).value)"
+              (change)="settleZoom(+$any($event.target).value)"
             />
             <span class="zoom__level" aria-hidden="true">{{ zoomPercent() }}%</span>
             <button

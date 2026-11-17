@@ -340,6 +340,27 @@ test('mouse: the wheel zooms, dragging pans and a double click on the background
   await expect(zoom).not.toHaveText(level ?? '');
 });
 
+test('the zoom slider batches the drag and settles when released', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/grafos');
+  await expect(page.locator('[data-node]').first()).toBeVisible();
+  const stage = page.locator('.stage');
+  const slider = page.locator('.zoom__slider');
+  await expect(stage).not.toHaveClass(/stage--busy/);
+  await slider.evaluate((element) => {
+    const input = element as HTMLInputElement;
+    input.value = '300';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await expect(stage).toHaveClass(/stage--busy/);
+  await slider.evaluate((element) => {
+    const input = element as HTMLInputElement;
+    input.value = '300';
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  await expect(stage).not.toHaveClass(/stage--busy/);
+});
+
 test('keyboard: search results walk with the arrows and Home reframes the map', async ({
   page,
 }) => {

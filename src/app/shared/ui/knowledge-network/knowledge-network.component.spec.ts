@@ -574,4 +574,18 @@ describe('KnowledgeNetworkComponent', () => {
     const fixture = await render();
     expect(root(fixture).querySelector('[class*="drift"]')).toBeNull();
   });
+
+  it('treats slider input as a busy zoom and settles on release', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.slideZoom(200);
+    fixture.detectChanges();
+    expect(component.busy()).toBe(true);
+    expect(root(fixture).querySelector('.stage')?.classList.contains('stage--busy')).toBe(true);
+    component.settleZoom(200);
+    fixture.detectChanges();
+    await vi.waitFor(() => expect(component.busy()).toBe(false));
+    fixture.detectChanges();
+    expect(root(fixture).querySelector('.stage')?.classList.contains('stage--busy')).toBe(false);
+  });
 });
