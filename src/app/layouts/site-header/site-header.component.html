@@ -22,64 +22,18 @@
     <div id="navegacao-principal" class="panel" [class.is-open]="menuOpen()">
       <nav class="nav" aria-label="Navegação principal">
         <ul>
-          <li class="nav__readings">
-            <button
-              #readingsToggle
-              type="button"
-              class="nav__link nav__link--button"
-              aria-controls="menu-leituras"
-              [attr.aria-expanded]="readingsOpen()"
+          <li>
+            <a
+              class="nav__link"
+              routerLink="/leituras"
+              title="Leituras contínuas por tema"
               [class.is-active]="section() === 'leituras'"
+              [attr.aria-current]="section() === 'leituras' ? 'page' : null"
               (pointerenter)="warmArchive()"
               (focus)="warmArchive()"
-              (click)="toggleReadings()"
+              (click)="close()"
+              ><span class="nav__glyph nav__glyph--quarter" aria-hidden="true"></span>Leituras</a
             >
-              <span class="nav__glyph nav__glyph--quarter" aria-hidden="true"></span>Leituras
-              <span class="nav__caret" aria-hidden="true"></span>
-            </button>
-            <div id="menu-leituras" class="mega" [class.is-open]="readingsOpen()">
-              <div class="mega__readings">
-                <p class="mega__label">Ler · textos contínuos</p>
-                <ul class="readings-menu">
-                  @for (reading of readings; track reading.path) {
-                    <li>
-                      <a
-                        [routerLink]="reading.path"
-                        [attr.data-shape]="reading.shape"
-                        [style.--swatch]="reading.color"
-                        (click)="close()"
-                      >
-                        <span class="shape" aria-hidden="true"></span>
-                        <strong>{{ reading.title }}</strong>
-                        <span class="note">{{ reading.note }}</span>
-                      </a>
-                    </li>
-                  }
-                </ul>
-                <a class="mega__help" routerLink="/leituras" (click)="close()"
-                  >Ver todas as leituras <app-chevron
-                /></a>
-                <a class="mega__itinerary" routerLink="/itinerarios" (click)="close()">
-                  <strong>Itinerários temáticos <app-chevron /></strong>
-                  <span>Percursos passo a passo ligando leituras, verbetes e o grafo.</span>
-                </a>
-              </div>
-              <div class="mega__aside">
-                <p class="mega__label">Consultar · por tipo</p>
-                <ul class="catalogue-links">
-                  @for (catalogue of catalogues; track catalogue.path) {
-                    <li>
-                      <a [routerLink]="catalogueUrl(catalogue.path)" (click)="close()">{{
-                        catalogue.title
-                      }}</a>
-                    </li>
-                  }
-                </ul>
-                <a class="mega__help" routerLink="/" fragment="como-usar" (click)="close()"
-                  >Primeira vez? Veja como usar <app-chevron
-                /></a>
-              </div>
-            </div>
           </li>
           <li>
             <a

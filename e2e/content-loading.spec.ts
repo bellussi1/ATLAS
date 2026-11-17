@@ -24,10 +24,11 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   await page.goto('/');
   await expect(page.locator('h1')).toBeVisible();
   expect(resources).toEqual([]);
-  await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
+  await page.locator('.site-header').getByRole('link', { name: 'Leituras', exact: true }).click();
+  await expect(page.locator('h1')).toHaveText('Leituras contínuas');
   await page
-    .locator('.site-header')
-    .getByRole('link', { name: /Marxismo/ })
+    .locator('.readings-index')
+    .getByRole('link', { name: 'Marxismo', exact: true })
     .click();
   await expect(page.locator('h1')).toHaveText('Marxismo', { timeout: 20000 });
   const compiled = resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path));
@@ -36,10 +37,11 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
     // The reading route downloads the packaged graph, indexes and layouts in one object.
     expect(compiled).toEqual([`/c/${manifest.bundle.sha256}.json`]);
     expect(resources.filter((path) => path === '/pointer.json')).toHaveLength(1);
-    await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
+    await page.locator('.site-header').getByRole('link', { name: 'Leituras', exact: true }).click();
+    await expect(page.locator('h1')).toHaveText('Leituras contínuas');
     await page
-      .locator('.site-header')
-      .getByRole('link', { name: /Liberalismo/ })
+      .locator('.readings-index')
+      .getByRole('link', { name: 'Liberalismo', exact: true })
       .click();
     await expect(page.locator('h1')).toHaveText('Liberalismo', { timeout: 20000 });
     expect(resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path))).toEqual(compiled);
@@ -48,10 +50,11 @@ test('home loads no graph; SPA navigation uses hashed assets once across both re
   expect(compiled).toHaveLength(manifest.collections.length + manifest.ideologies.length + 4);
   expect(new Set(compiled).size).toBe(compiled.length);
   expect(compiled).toContain(`/c/${manifest.adjacency.sha256}.json`);
-  await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
+  await page.locator('.site-header').getByRole('link', { name: 'Leituras', exact: true }).click();
+  await expect(page.locator('h1')).toHaveText('Leituras contínuas');
   await page
-    .locator('.site-header')
-    .getByRole('link', { name: /Liberalismo/ })
+    .locator('.readings-index')
+    .getByRole('link', { name: 'Liberalismo', exact: true })
     .click();
   await expect(page.locator('h1')).toHaveText('Liberalismo', { timeout: 20000 });
   expect(resources.filter((path) => /^\/c\/[a-f0-9]{64}\.json$/.test(path))).toEqual(compiled);
@@ -124,16 +127,15 @@ test('SSR hydrates through the pinned release without duplicate HTTP', async ({ 
 test('a failed content asset preserves the current page and offers a working retry', async ({
   page,
 }) => {
-  await page.goto('/');
+  await page.goto('/leituras');
   await page.route(`${base}/pointer.json`, (route) => route.abort());
-  await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
   await page
-    .locator('.site-header')
-    .getByRole('link', { name: /Liberalismo/ })
+    .locator('.readings-index')
+    .getByRole('link', { name: 'Liberalismo', exact: true })
     .click();
   await expect(page.getByRole('alert')).toContainText('A leitura não abriu');
-  await expect(page.getByRole('alert')).toContainText('Você continua em Início.');
-  await expect(page.locator('h1')).toContainText('Tudo');
+  await expect(page.getByRole('alert')).toContainText('Você continua em Leituras contínuas.');
+  await expect(page.locator('h1')).toContainText('Leituras contínuas');
   const audit = await new AxeBuilder({ page }).include('.navigation-failure').analyze();
   expect(
     audit.violations.filter((violation) =>
@@ -152,17 +154,16 @@ test('a missing content object keeps the current page and retries after recovery
 }) => {
   const pointer = JSON.parse(await readFile('generated/content-cache/pointer.json', 'utf8'));
   const bundle = `/c/${pointer.bundle.sha256}.json`;
-  await page.goto('/');
+  await page.goto('/leituras');
   await page.route(`${base}${bundle}`, (route) =>
     route.fulfill({ status: 404, contentType: 'text/plain', body: 'missing object' }),
   );
-  await page.locator('.site-header').getByRole('button', { name: 'Leituras' }).click();
   await page
-    .locator('.site-header')
-    .getByRole('link', { name: /Liberalismo/ })
+    .locator('.readings-index')
+    .getByRole('link', { name: 'Liberalismo', exact: true })
     .click();
   await expect(page.getByRole('alert')).toContainText('A leitura não abriu');
-  await expect(page.getByRole('alert')).toContainText('Você continua em Início.');
+  await expect(page.getByRole('alert')).toContainText('Você continua em Leituras contínuas.');
   await page.unroute(`${base}${bundle}`);
   await page.getByRole('button', { name: 'Tentar novamente' }).click();
   await expect(page.locator('h1')).toHaveText('Liberalismo', { timeout: 20000 });
