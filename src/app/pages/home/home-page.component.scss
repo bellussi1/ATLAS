@@ -412,8 +412,34 @@ form {
 .atlas-band-number--square {
   border-radius: 0;
 }
+.atlas-band-number--half {
+  border-radius: 3rem 3rem 0 0;
+  border: 2px solid var(--color-ink);
+}
 .atlas-band-number--circle {
   border-radius: 50%;
+  border: 2px solid var(--color-ink);
+}
+.atlas-band-number--quarter {
+  border-radius: 0 100% 0 0;
+  border: 2px solid var(--color-ink);
+}
+.atlas-band-number--leaf {
+  border-radius: 0 50% 0 50%;
+}
+:global(.atlas-reveal) .atlas-band-heading.is-pending {
+  .atlas-band-number--half {
+    transform: translateY(14px) scale(0.8);
+  }
+  .atlas-band-number--circle {
+    transform: scale(0.65);
+  }
+  .atlas-band-number--quarter {
+    transform: scale(0.75) rotate(18deg);
+  }
+  .atlas-band-number--leaf {
+    transform: scale(0.75) rotate(-24deg);
+  }
 }
 
 /* Explorar por tipo: doors with a geometric glyph, a note and an arrow. */

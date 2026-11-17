@@ -62,6 +62,12 @@ a.atlas-link--feature {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
+@media (prefers-reduced-motion: reduce) {
+  .atlas-band-number {
+    transition: none;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .atlas-button:hover:not(:disabled) {
     background: var(--color-accent-hover);
@@ -183,9 +189,17 @@ a.atlas-link--feature {
   width: clamp(3rem, 6vw, 4.5rem);
   aspect-ratio: 1;
   border-radius: 50% 50% 0 50%;
-  background: var(--color-accent);
-  color: var(--color-on-strong-surface);
+  background: var(--band-bg, var(--color-accent));
+  color: var(--band-fg, var(--color-on-strong-surface));
   font: 700 clamp(1.5rem, 3vw, 2.25rem) / 1 var(--font-sans);
+  transition:
+    transform 460ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1)),
+    opacity 340ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+:global(.atlas-reveal) .atlas-band-heading.is-pending .atlas-band-number {
+  opacity: 0;
+  transform: scale(0.72) rotate(-16deg);
 }
 
 .atlas-band-heading h2 {
@@ -204,6 +218,12 @@ a.atlas-link--feature {
   transition:
     transform var(--motion-fast),
     box-shadow var(--motion-fast);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-band-number {
+    transition: none;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -231,7 +251,7 @@ a.atlas-link--feature {
 }
 
 .atlas-band-heading em {
-  color: var(--color-accent);
+  color: var(--band-em, var(--color-accent));
   font-family: var(--font-display-contrast);
   font-size: 0.905em;
   font-style: normal;
@@ -293,6 +313,12 @@ a.atlas-link--feature {
   text-decoration-thickness: 2px;
   text-underline-offset: 0.2em;
   cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-band-number {
+    transition: none;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

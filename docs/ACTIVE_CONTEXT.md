@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Home: sequência geométrica `? · A · B · C · D · E`, cores nas palavras-chave e animação por rolagem (16/11, `develop`):**
+  - Removida a setinha `→` da seção *Seguir um itinerário*; as faixas da Home agora seguem a ordem `? · A · B · C · D · E` com formas e cores distintas da paleta ATLAS (`--band-bg`, `--band-fg`, `--band-em`), inclusive nas palavras-chave `<em>` (*uma descoberta*, *uma enciclopédia*, *um itinerário*, *hoje*, *por tipo*, *o acervo*).
+  - Adicionada animação geométrica por tipo de forma controlada pelo `appReveal` ao entrar na viewport (respeitando `prefers-reduced-motion: reduce`).
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm test` (**380/380**), `npm run build` (**1.280** rotas prerenderizadas) e `npx playwright test e2e/itineraries.spec.ts` (**6/6**) passando.
+
 - **Itinerários: correção de links `#parada-...` (convergência) e fluxo mobile (16/11, `develop`):**
   - Corrigido o bug em `ItineraryPageComponent` em que `[href]="'#parada-' + targetId"` resolvia para `/#parada-...` por causa do `<base href="/">`: substituído por `[routerLink]="[]"` + `[fragment]="'parada-' + targetId"` + `selectStop(targetId, true)`, além de leitura de `route.snapshot?.fragment` ao abrir a página com âncora.
   - Fluxo mobile (`< 64rem` / `320px`): `.roadmap-desk` deixou de duplicar o card da parada 1 acima da lista e virou barra fixa compacta de navegação (`← Anterior` / `Próxima →`), com alvos de toque de `44px`.
