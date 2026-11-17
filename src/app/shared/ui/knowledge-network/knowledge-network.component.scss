@@ -833,6 +833,7 @@ kbd {
 }
 .hud > .hud__row {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
   gap: 0.75rem;
@@ -843,8 +844,10 @@ kbd {
 }
 .hud__side {
   display: grid;
+  flex: 0 0 auto;
   justify-items: end;
   gap: 0.5rem;
+  margin-inline-start: auto;
 }
 .status {
   margin: 0;
@@ -854,9 +857,11 @@ kbd {
 }
 .selection-pill {
   display: flex;
+  flex: 0 1 auto;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem 0.6rem;
+  min-inline-size: 0;
   max-inline-size: min(100%, 36rem);
   padding: 0.35rem 0.45rem 0.35rem 0.7rem;
   border-inline-start: 4px solid var(--color-accent);
