@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Gerador automático de itinerários em fila (`generate-itinerary-llm.mjs`) — 9 percursos publicados (17/11, `develop`):**
+  - Criado `scripts/content/generate-itinerary-llm.mjs` usando `gemma2:9b-instruct-q4_K_M` + `source-graph.mjs` + `validateItinerary` (aterrado em entidades reais, leituras listadas e catálogos válidos, com normalização determinística de `convergesAt`, `leitura` vs `verbete` e `sourceIds`).
+  - Fila `scripts/content/itineraries-queue.json` executada e validada para 4 novos percursos `reviewed-ai`: `ditadura-militar-e-redemocratizacao`, `guerra-fria-e-ordem-internacional`, `estado-democracia-e-representacao` e `socialismo-reforma-e-revolucao`.
+  - Verificações: `npm run itinerary:check` (**10** arquivos: **9** por IA, **0** verificados), `npm run lint`, `npm run typecheck`, `npm run test:content` (**210/210**), `npm run build` (**1.280** rotas prerenderizadas) e `npx playwright test e2e/itineraries.spec.ts` (**6/6**) passando.
+
 - **Pipeline `/leituras` multi-tema (`subjectType`) (16/11, `develop`):**
   - `scripts/tradicao/registry.mjs`: adicionado `subjectType` (`ideologia | pessoa | acontecimento | instituicao | periodo | conceito`, padrão `ideologia`) e ampliado `kind` no `traditionRegistrySchema`.
   - `src/app/features/ideologies/models/ideology-chapters.ts`: adicionado `chapterLabelFor(id, subjectType)` preservando os 12 IDs canônicos com títulos adaptados por tipo.
