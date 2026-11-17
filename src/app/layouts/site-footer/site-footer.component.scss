@@ -243,6 +243,16 @@
   }
 }
 
+.footer-version {
+  margin: 0.5rem 0 0;
+  text-align: end;
+  small {
+    color: color-mix(in srgb, var(--color-on-strong-surface) 72%, transparent);
+    font: 500 0.625rem/1.2 var(--font-mono);
+    letter-spacing: 0.06em;
+  }
+}
+
 @media (max-width: 52rem) {
   .footer-directory {
     grid-template-columns: repeat(2, minmax(0, 1fr));
