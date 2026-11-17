@@ -242,6 +242,24 @@
                         {{ ctx.relationCount === 1 ? 'ligação' : 'ligações' }} em rede
                       </p>
                       <p class="stop__context-summary">{{ ctx.summary }}</p>
+                      @if (ctx.claims.length) {
+                        <ul class="stop__claims" aria-label="Registros documentados da ficha">
+                          @for (claim of ctx.claims; track $index) {
+                            <li>{{ claim }}</li>
+                          }
+                        </ul>
+                      }
+                      @if (ctx.neighbors.length) {
+                        <div class="stop__neighbors">
+                          <span class="stop__neighbors-label">Conexões no grafo:</span>
+                          @for (neighbor of ctx.neighbors; track neighbor.slug) {
+                            <a class="neighbor-chip" [routerLink]="['/verbete', neighbor.slug]">
+                              <small>{{ neighbor.label }}</small>
+                              <span>{{ neighbor.title }}</span>
+                            </a>
+                          }
+                        </div>
+                      }
                     </div>
                   }
 
@@ -383,6 +401,17 @@
               <div class="roadmap-desk__entity">
                 <strong>No acervo ({{ activeCtx.relationCount }} ligações)</strong>
                 <p>{{ activeCtx.summary }}</p>
+                @if (activeCtx.neighbors.length) {
+                  <ul class="desk-neighbors" aria-label="Conexões relacionadas">
+                    @for (neighbor of activeCtx.neighbors; track neighbor.slug) {
+                      <li>
+                        <a [routerLink]="['/verbete', neighbor.slug]">
+                          <span>{{ neighbor.label }}:</span> {{ neighbor.title }} →
+                        </a>
+                      </li>
+                    }
+                  </ul>
+                }
               </div>
             }
 

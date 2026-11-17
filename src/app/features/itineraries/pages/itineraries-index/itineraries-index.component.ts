@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   type Itinerary,
   type ItineraryDestination,
   type ItineraryKind,
   itineraryKindLabels,
+  itineraryKinds,
 } from '@itineraries/models/itinerary.schema';
 import { ItineraryRepository } from '@itineraries/services/itinerary-repository.service';
 import { resolveItineraryDestination } from '@itineraries/utils/itinerary-destination';
@@ -28,14 +29,25 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
 export class ItinerariesIndexComponent {
   private readonly repository = inject(ItineraryRepository);
   readonly kindLabels = itineraryKindLabels;
+  readonly kinds = itineraryKinds;
   readonly loading = signal(true);
   readonly items = signal<readonly Itinerary[]>([]);
+  readonly selectedKind = signal<ItineraryKind | 'all'>('all');
+  readonly filteredItems = computed(() => {
+    const kind = this.selectedKind();
+    const all = this.items();
+    return kind === 'all' ? all : all.filter((item) => item.kind === kind);
+  });
 
   constructor() {
     void this.repository
       .list()
       .then((items) => this.items.set(items))
       .finally(() => this.loading.set(false));
+  }
+
+  countForKind(kind: ItineraryKind): number {
+    return this.items().filter((item) => item.kind === kind).length;
   }
 
   paletteFor(kind: ItineraryKind): MosaicPalette {

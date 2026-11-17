@@ -35,8 +35,32 @@
   @if (loading()) {
     <p class="itineraries__status" role="status" aria-live="polite">Carregando itinerários…</p>
   } @else if (items().length > 0) {
+    <div class="itineraries__filters" role="group" aria-label="Filtrar itinerários por tipo">
+      <button
+        type="button"
+        class="filter-chip"
+        [attr.aria-pressed]="selectedKind() === 'all'"
+        (click)="selectedKind.set('all')"
+      >
+        Todos ({{ items().length }})
+      </button>
+      @for (kind of kinds; track kind) {
+        @if (countForKind(kind) > 0) {
+          <button
+            type="button"
+            class="filter-chip"
+            [attr.data-kind]="kind"
+            [attr.aria-pressed]="selectedKind() === kind"
+            (click)="selectedKind.set(kind)"
+          >
+            {{ kindLabels[kind] }} ({{ countForKind(kind) }})
+          </button>
+        }
+      }
+    </div>
+
     <ul class="itineraries__grid">
-      @for (item of items(); track item.id) {
+      @for (item of filteredItems(); track item.id) {
         <li class="itinerary-card" [attr.data-kind]="item.kind">
           <div class="itinerary-card__rail">
             <app-geometric-mosaic

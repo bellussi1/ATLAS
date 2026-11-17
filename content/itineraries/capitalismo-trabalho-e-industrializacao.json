@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-capitalismo-trabalho-e-industrializacao",
+  "slug": "capitalismo-trabalho-e-industrializacao",
+  "kind": "historico",
+  "title": "Capitalismo, industrialização e movimento operário",
+  "question": "Como a transição para a economia industrial transformou o trabalho, gerou conflitos de classe e moldou organizações operárias?",
+  "deck": "Um percurso histórico em cinco paradas que liga a formação do capitalismo industrial, sua crítica teórica e as greves operárias do início do século XX no Brasil.",
+  "summary": "Relaciona transformações econômicas da industrialização, interpretações clássicas do capitalismo moderno e a emergência do movimento sindical e grevista no mundo e no Brasil.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Percurso histórico sobre capitalismo, industrialização e movimento operário validado contra entidades compiladas; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "sistema-capitalista",
+      "title": "O que define o capitalismo como sistema econômico e social?",
+      "reason": "Apresenta os traços estruturais da economia capitalista: propriedade privada dos meios de produção, trabalho assalariado, mercados competitivos e acumulação de capital.",
+      "question": "Que instituições diferenciam o capitalismo moderno de economias agrárias ou mercantis anteriores?",
+      "justification": "Estabelece o conceito-base antes de observar seus efeitos concretos na fábrica e na cidade.",
+      "destination": { "type": "verbete", "slug": "capitalismo" },
+      "sourceIds": ["src-capitalismo"]
+    },
+    {
+      "id": "processo-industrializacao",
+      "title": "Industrialização, urbanização e trabalho assalariado",
+      "reason": "Examina a mecanização fabril, a concentração urbana, a divisão do trabalho e a formação de uma classe trabalhadora submetida à disciplina do tempo industrial.",
+      "question": "Como a industrialização reorganizou o cotidiano urbano e as relações de trabalho?",
+      "justification": "Liga a categoria abstrata do capitalismo às condições materiais de fábrica e cidade.",
+      "destination": { "type": "verbete", "slug": "industrializacao" },
+      "sourceIds": ["src-industrializacao"]
+    },
+    {
+      "id": "leitura-marxismo-trabalho",
+      "title": "Marxismo: crítica do valor, exploração e luta de classes",
+      "reason": "Acompanha como Karl Marx e a tradição marxista analisaram a produção de mercadorias, a mais-valia e a organização política da classe trabalhadora.",
+      "question": "Por que a tradição marxista vê o conflito entre capital e trabalho como motor histórico?",
+      "justification": "Introduz a principal formulação teórica nascida em diálogo direto com a Revolução Industrial.",
+      "destination": { "type": "leitura", "slug": "marxismo" },
+      "sourceIds": ["src-leitura-marxismo"]
+    },
+    {
+      "id": "greve-geral-1917-br",
+      "title": "Greve Geral de 1917: o movimento operário entra em cena no Brasil",
+      "reason": "Estuda a paralisação iniciada em São Paulo por operárias e operários têxteis contra carestia, jornadas exaustivas e trabalho infantil, sob forte influência anarquista e socialista.",
+      "question": "Como as primeiras grandes greves industriais desafiaram a Primeira República brasileira?",
+      "justification": "Traz a dinâmica global do conflito industrial para o caso concreto da história brasileira.",
+      "destination": { "type": "verbete", "slug": "greve-geral-de-1917" },
+      "sourceIds": ["src-greve-1917"]
+    },
+    {
+      "id": "rede-trabalho-capital",
+      "title": "Autores, conceitos econômicos e conflitos do trabalho no grafo",
+      "reason": "Permite explorar no grafo as conexões entre economistas clássicos, críticos do capitalismo, sindicatos e marcos históricos da legislação trabalhista.",
+      "question": "Quais pensadores e eventos conectam a crítica econômica europeia ao sindicalismo brasileiro?",
+      "justification": "Abre o estudo para novas comparações entre tradições econômicas e movimentos sociais.",
+      "destination": { "type": "grafo" }
+    }
+  ],
+  "branches": [
+    {
+      "id": "ramo-max-weber",
+      "fromStop": "sistema-capitalista",
+      "title": "Max Weber e a racionalidade burocrática do capitalismo",
+      "reason": "Contrasta a explicação marxista com a sociologia weberiana sobre ética econômica, cálculo racional e burocratização estatal.",
+      "question": "Qual o papel da racionalidade jurídica e cultural na formação do capitalismo segundo Weber?",
+      "justification": "Apresenta uma leitura sociológica alternativa dentro do mesmo debate histórico.",
+      "destination": { "type": "verbete", "slug": "max-weber" },
+      "convergesAt": "leitura-marxismo-trabalho"
+    },
+    {
+      "id": "ramo-anarquismo-sindical",
+      "fromStop": "greve-geral-1917-br",
+      "title": "Anarquismo e sindicalismo revolucionário nas primeiras greves",
+      "reason": "Explora o papel central das correntes anarcossindicalistas na organização das greves e jornais operários do Brasil no início do século XX.",
+      "question": "Por que o anarcossindicalismo teve protagonismo no movimento operário brasileiro até a década de 1920?",
+      "justification": "Aprofunda a corrente política protagonista da Greve Geral de 1917.",
+      "destination": { "type": "leitura", "slug": "anarquismo" },
+      "exit": "Continua na leitura contínua sobre a tradição anarquista."
+    }
+  ],
+  "connections": [
+    {
+      "destination": { "type": "catalogo", "path": "acontecimentos" },
+      "reason": "Explorar greves, revoluções e crises econômicas no catálogo de acontecimentos."
+    },
+    {
+      "destination": { "type": "catalogo", "path": "conceitos" },
+      "reason": "Consultar conceitos econômicos e políticos relacionados ao mundo do trabalho."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-capitalismo",
+      "title": "Verbete Capitalismo — definições históricas e econômicas no acervo"
+    },
+    {
+      "id": "src-industrializacao",
+      "title": "Verbete Industrialização — transformações produtivas e sociais"
+    },
+    {
+      "id": "src-leitura-marxismo",
+      "title": "ATLAS — Leitura contínua: Marxismo"
+    },
+    {
+      "id": "src-greve-1917",
+      "title": "Verbete Greve Geral de 1917 — registros e fontes históricas"
+    }
+  ],
+  "updatedAt": "2026-11-16",
+  "version": "1.0.0"
+}

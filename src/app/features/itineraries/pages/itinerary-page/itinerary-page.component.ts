@@ -30,10 +30,18 @@ const KIND_PALETTES: Record<ItineraryKind, MosaicPalette> = {
   institucional: 'social-democracia',
 };
 
+interface StopNeighbor {
+  slug: string;
+  title: string;
+  label: string;
+}
+
 interface StopEntityContext {
   entityId: string;
   summary: string;
   relationCount: number;
+  claims: readonly string[];
+  neighbors: readonly StopNeighbor[];
 }
 
 interface DiagramStopNode {
@@ -113,6 +121,7 @@ export class ItineraryPageComponent {
     if (!current || !graph) return result;
     const entities = graph.atlases.flatMap((atlas) => atlas.entities);
     const relations = graph.atlases.flatMap((atlas) => atlas.relations);
+    const claims = graph.atlases.flatMap((atlas) => atlas.claims);
     const byId = new Map(entities.map((e) => [e.id, e]));
     const bySlug = new Map(entities.map((e) => [e.slug, e]));
     for (const stop of current.stops) {
@@ -122,13 +131,35 @@ export class ItineraryPageComponent {
           ? bySlug.get(stop.destination.slug)
           : undefined;
       if (!entity) continue;
-      const relationCount = relations.filter(
+      const entityRelations = relations.filter(
         (r) => r.fromEntityId === entity.id || r.toEntityId === entity.id,
-      ).length;
+      );
+      const seenNeighbors = new Set<string>();
+      const neighbors: StopNeighbor[] = [];
+      for (const rel of entityRelations) {
+        const isOutgoing = rel.fromEntityId === entity.id;
+        const otherId = isOutgoing ? rel.toEntityId : rel.fromEntityId;
+        if (seenNeighbors.has(otherId)) continue;
+        const other = byId.get(otherId);
+        if (!other) continue;
+        seenNeighbors.add(otherId);
+        neighbors.push({
+          slug: other.slug,
+          title: other.title,
+          label: isOutgoing ? rel.label : rel.reverseLabel,
+        });
+        if (neighbors.length >= 4) break;
+      }
+      const entityClaims = claims
+        .filter((c) => c.entityId === entity.id && c.text.trim().length > 0)
+        .slice(0, 2)
+        .map((c) => c.text);
       result.set(stop.id, {
         entityId: entity.id,
         summary: entity.summary,
-        relationCount,
+        relationCount: entityRelations.length,
+        claims: entityClaims,
+        neighbors,
       });
     }
     return result;

@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Itinerários: 5 percursos completos, filtro por tipo e conexões vivas do grafo por parada (16/11, `develop`):**
+  - Publicados dois novos itinerários `reviewed-ai`: `constituicoes-e-republica-no-brasil` (`institucional`, 6 paradas + 2 ramos) e `capitalismo-trabalho-e-industrializacao` (`historico`, 5 paradas + 2 ramos), cobrindo todos os 4 tipos (`historico`, `comparativo`, `conceitual`, `institucional`) com `npm run itinerary:check` (**6** arquivos, **5** por IA, **0** verificados).
+  - `/itinerarios` (`ItinerariesIndexComponent`) ganhou barra de filtros por tipo (`.itineraries__filters`); `/itinerario/:slug` (`ItineraryPageComponent`) passou a extrair até 2 afirmações documentadas e até 4 vizinhos conectados do `KnowledgeGraph` em cada parada e na mesa lateral (`.stop__claims`, `.neighbor-chip`, `.desk-neighbors`).
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm test` (**380/380**), `npm run build` (**1.280** rotas prerenderizadas) e `npx playwright test e2e/itineraries.spec.ts` (**5/5**) passando.
+
 - **Grafo (`/grafos`) — aproximação de nós relacionados e redesign das setas (16/11, `develop`):**
   - `network-layout.ts`: aumentada a atração de ligações no mesmo grupo (`strength` `0.35 → 0.55`, `distance` `46 → 38`) e entre grupos distintos (`strength` `0.01 → 0.12`, `distance` `150 → 95`), com hubs mais coesos e `forceX`/`forceY` suavizados (`0.08 → 0.055`), mantendo a passagem final de colisão.
   - `KnowledgeNetworkComponent`: marcadores `<marker>` redesenhados como chevrons farpados com contorno em `--color-canvas` (`viewBox="0 0 12 10"`) e `pad` ajustado em `drawnEdges()`.

@@ -76,6 +76,44 @@
   font: var(--text-body) / 1.5 var(--font-sans);
 }
 
+.itineraries__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.75rem 0 0;
+}
+
+.filter-chip {
+  min-block-size: 2.5rem;
+  padding: 0.35rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
+  font: 650 var(--text-small) / 1.1 var(--font-sans);
+  cursor: pointer;
+  &[aria-pressed='true'] {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+  }
+  &[data-kind='historico'][aria-pressed='true'] {
+    background: var(--color-accent);
+    border-color: var(--color-ink);
+    color: var(--color-on-strong-surface);
+  }
+  &[data-kind='comparativo'][aria-pressed='true'] {
+    background: var(--color-indigo);
+    color: var(--color-on-strong-surface);
+  }
+  &[data-kind='conceitual'][aria-pressed='true'] {
+    background: var(--color-cartographic);
+    color: var(--color-on-strong-surface);
+  }
+  &[data-kind='institucional'][aria-pressed='true'] {
+    background: var(--color-archive);
+    color: var(--color-on-strong-surface);
+  }
+}
+
 .itineraries__grid {
   display: grid;
   gap: 2rem;
@@ -103,6 +141,9 @@
   }
   &[data-kind='conceitual'] {
     border-top-color: var(--color-cartographic);
+  }
+  &[data-kind='institucional'] {
+    border-top-color: var(--color-archive);
   }
   &:hover {
     transform: translate(-2px, -2px);
@@ -162,6 +203,9 @@
 }
 .itinerary-card[data-kind='conceitual'] .itinerary-card__kind {
   background: var(--color-cartographic);
+}
+.itinerary-card[data-kind='institucional'] .itinerary-card__kind {
+  background: var(--color-archive);
 }
 
 .itinerary-card h2 {

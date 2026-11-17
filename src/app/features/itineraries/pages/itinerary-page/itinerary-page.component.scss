@@ -40,6 +40,10 @@
   background: var(--tint-2);
 }
 
+.itinerary[data-kind='institucional'] .itinerary__head {
+  background: color-mix(in srgb, var(--color-archive) 11%, var(--color-canvas));
+}
+
 .itinerary__kicker {
   display: flex;
   flex-wrap: wrap;
@@ -64,6 +68,10 @@
 
 .itinerary[data-kind='conceitual'] .itinerary__kind-pill {
   background: var(--color-cartographic);
+}
+
+.itinerary[data-kind='institucional'] .itinerary__kind-pill {
+  background: var(--color-archive);
 }
 
 .itinerary__count-pill {
@@ -524,6 +532,55 @@
   font: var(--text-small) / 1.45 var(--font-serif);
 }
 
+.stop__claims {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0.6rem 0 0;
+  padding-inline-start: 1.1rem;
+  color: var(--color-ink-muted);
+  font: var(--text-small) / 1.4 var(--font-serif);
+}
+
+.stop__neighbors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-block-start: 0.65rem;
+  padding-block-start: 0.6rem;
+  border-top: 1px dashed var(--color-border-strong);
+}
+
+.stop__neighbors-label {
+  color: var(--color-ink-muted);
+  font: 700 var(--text-micro) / 1.2 var(--font-mono);
+  text-transform: uppercase;
+}
+
+.neighbor-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+  padding: 0.2rem 0.5rem;
+  border: 1.5px solid var(--color-ink);
+  background: var(--color-surface-raised);
+  color: var(--color-ink);
+  font: 600 var(--text-caption) / 1.2 var(--font-sans);
+  text-decoration: none;
+  small {
+    color: var(--color-ink-muted);
+    font: 500 0.7rem / 1 var(--font-mono);
+  }
+  &:hover,
+  &:focus-visible {
+    background: var(--color-ink);
+    color: var(--color-canvas);
+    small {
+      color: var(--color-ochre-paper);
+    }
+  }
+}
+
 .stop__sources {
   display: flex;
   flex-wrap: wrap;
@@ -786,6 +843,25 @@
   p {
     margin: 0;
     font: var(--text-small) / 1.45 var(--font-serif);
+  }
+}
+
+.desk-neighbors {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0.55rem 0 0;
+  padding: 0.5rem 0 0;
+  border-top: 1px dashed var(--color-border-strong);
+  list-style: none;
+  a {
+    color: var(--color-accent-hover);
+    font: 600 var(--text-caption) / 1.3 var(--font-sans);
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+    span {
+      color: var(--color-ink-muted);
+      font-weight: 500;
+    }
   }
 }
 
