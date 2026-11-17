@@ -326,7 +326,6 @@ export class ContentRepository {
         ? await this.buildNetworkBundleState(pointer.networkBundle)
         : await this.buildNetworkState(await this.getManifest());
       this.networkOnly = true;
-      this.schedulePrefetch(pointer);
       return this.state.graph;
     })().catch((error: unknown) => {
       this.networkPending = undefined;
@@ -349,25 +348,6 @@ export class ContentRepository {
     return typeof memory !== 'number' || memory >= 4;
   }
 
-  /**
-   * The graph is often the entry point. Warm the complete package while the reader explores it,
-   * so leaving for a catalogue does not download and verify the bundle again. Skipped on
-   * save-data, slow connections and low-memory devices.
-   */
-  private schedulePrefetch(pointer: ContentPointer): void {
-    if (!this.browser || !this.prefetchEnabled || !pointer.bundle) return;
-    if (!this.canAutoPrefetch()) return;
-    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
-    if (typeof memory === 'number' && memory < 8) return;
-    const key = artifactKey(pointer.bundle.sha256);
-    if (this.requests.has(key)) return;
-    const run = () => {
-      if (document.visibilityState === 'visible') void this.asset(key).catch(() => undefined);
-    };
-    if (typeof globalThis.requestIdleCallback === 'function')
-      globalThis.requestIdleCallback(run, { timeout: 3000 });
-    else setTimeout(run, 1500);
-  }
   private async buildBundleState(resource: {
     sha256: string;
     bytes: number;

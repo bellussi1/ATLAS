@@ -1,4 +1,4 @@
-import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser, ViewportScroller } from '@angular/common';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -7,6 +7,7 @@ import {
   DestroyRef,
   effect,
   inject,
+  PLATFORM_ID,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
@@ -63,6 +64,7 @@ export class ExplorerComponent {
   private readonly repository = inject(ContentRepository);
   private readonly viewport = inject(ViewportScroller);
   private readonly document = inject(DOCUMENT);
+  private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly destroyRef = inject(DestroyRef);
   private searchTimer?: ReturnType<typeof setTimeout>;
   // Pager links keep the reader's place: the router would otherwise scroll to the top of the page.
@@ -304,8 +306,10 @@ export class ExplorerComponent {
         const fromLocation = Object.fromEntries(new URLSearchParams(search));
         const fromRouter = this.router.parseUrl(event.urlAfterRedirects).queryParams;
         this.params.set(convertToParamMap({ ...fromRouter, ...fromLocation }));
-        this.ensureDefaultLayer();
-        setTimeout(() => this.syncFromLocation(), 0);
+        if (this.browser) {
+          this.ensureDefaultLayer();
+          setTimeout(() => this.syncFromLocation(), 0);
+        }
       }
       if (event instanceof Scroll && this.keptScrollY !== null) {
         const y = this.keptScrollY;

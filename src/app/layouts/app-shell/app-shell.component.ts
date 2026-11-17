@@ -1,5 +1,5 @@
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Component, DestroyRef, inject, Injector, PLATFORM_ID, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta, Title } from '@angular/platform-browser';
 import {
@@ -43,12 +43,9 @@ export class AppComponent {
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);
   private readonly router = inject(Router);
-  private readonly injector = inject(Injector);
-  private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly destroyRef = inject(DestroyRef);
   private currentPath: string | null = null;
   private loadingTimer: ReturnType<typeof setTimeout> | undefined;
-  private destroyed = false;
   readonly failedNavigation = signal<string | null>(null);
   readonly failureKind = signal<NavigationFailureKind>('route');
   readonly previousTitle = signal<string | null>(null);
@@ -64,7 +61,6 @@ export class AppComponent {
 
   constructor() {
     this.destroyRef.onDestroy(() => {
-      this.destroyed = true;
       this.clearLoading();
     });
     this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
@@ -100,21 +96,6 @@ export class AppComponent {
       if (this.currentPath !== null && path !== this.currentPath) this.focusMainContent();
       this.currentPath = path;
       this.updatePageMetadata();
-      if (this.browser && path === '/') {
-        const warm = () => {
-          void import('@core/content/repositories/content-repository.service').then(
-            ({ ContentRepository }) => {
-              if (this.destroyed) return;
-              const repo = this.injector.get(ContentRepository);
-              repo.warmNetwork();
-              repo.warmBundle(true);
-            },
-          );
-        };
-        if (typeof globalThis.requestIdleCallback === 'function')
-          globalThis.requestIdleCallback(warm, { timeout: 2500 });
-        else setTimeout(warm, 800);
-      }
     });
   }
 
