@@ -1396,6 +1396,41 @@ export class KnowledgeNetworkComponent {
     this.glideTo(
       { k: next, x: width / 2 - (width / 2 - x) * ratio, y: height / 2 - (height / 2 - y) * ratio },
       true,
+      200,
+    );
+  }
+  zoomToPercent(percent: number): void {
+    this.stopGlide();
+    this.autoFit = false;
+    const { width, height } = this.size();
+    const { x, y, k } = this.view();
+    const next = Math.min(this.fitK() * 12, Math.max(this.minK(), (percent / 100) * this.fitK()));
+    const ratio = next / k;
+    this.view.set({
+      k: next,
+      x: width / 2 - (width / 2 - x) * ratio,
+      y: height / 2 - (height / 2 - y) * ratio,
+    });
+  }
+  cycleZoomTier(): void {
+    const ratio = this.zoomK() / this.fitK();
+    const targetPercent = ratio < 1.75 ? 260 : ratio < 3.5 ? 600 : 100;
+    const { width, height } = this.size();
+    const { x, y, k } = this.view();
+    const next = Math.min(
+      this.fitK() * 12,
+      Math.max(this.minK(), (targetPercent / 100) * this.fitK()),
+    );
+    const scaleRatio = next / k;
+    this.autoFit = targetPercent === 100;
+    this.glideTo(
+      {
+        k: next,
+        x: width / 2 - (width / 2 - x) * scaleRatio,
+        y: height / 2 - (height / 2 - y) * scaleRatio,
+      },
+      true,
+      260,
     );
   }
   zoomBy(factor: number, around?: { x: number; y: number }): void {
@@ -1423,7 +1458,7 @@ export class KnowledgeNetworkComponent {
     if (!rect) return;
     this.wheeling.set(true);
     clearTimeout(this.wheelTimer);
-    this.wheelTimer = setTimeout(() => this.wheeling.set(false), 120);
+    this.wheelTimer = setTimeout(() => this.wheeling.set(false), 240);
     const rawDelta =
       event.deltaMode === 1
         ? event.deltaY * 16
@@ -1659,7 +1694,7 @@ export class KnowledgeNetworkComponent {
     return Math.min(this.allK * 0.9, this.fitK() * 0.5);
   }
   /** Moves the view; with animation it glides, unless the reader asked for reduced motion. */
-  private glideTo(target: View, animate: boolean): void {
+  private glideTo(target: View, animate: boolean, duration = 520): void {
     const token = ++this.tweenToken;
     if (this.glideTimer) clearTimeout(this.glideTimer);
     this.glideTimer = undefined;
@@ -1670,7 +1705,6 @@ export class KnowledgeNetworkComponent {
     }
     const from = this.view();
     const start = performance.now();
-    const duration = 520;
     let done = false;
     const finish = () => {
       if (done || token !== this.tweenToken) return;

@@ -739,8 +739,25 @@
             <button type="button" (click)="fit(true)" aria-label="Reenquadrar o grafo inteiro">
               ⤢
             </button>
+            <input
+              type="range"
+              class="zoom__slider"
+              min="50"
+              max="1200"
+              step="10"
+              aria-label="Controle de zoom"
+              [value]="zoomPercent()"
+              (input)="zoomToPercent(+$any($event.target).value)"
+            />
             <span class="zoom__level" aria-hidden="true">{{ zoomPercent() }}%</span>
-            <span class="zoom__tier" aria-hidden="true">{{ zoomTierLabel() }}</span>
+            <button
+              type="button"
+              class="zoom__tier"
+              title="Alternar nível de detalhe do zoom"
+              (click)="cycleZoomTier()"
+            >
+              {{ zoomTierLabel() }}
+            </button>
           </div>
         </div>
       </div>

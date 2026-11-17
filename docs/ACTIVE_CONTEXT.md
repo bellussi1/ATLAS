@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Grafo (`/grafos`) — investigação de lentidão até 1200% e UX de zoom (16/11, `develop`):**
+  - Causa raiz: `vector-effect: non-scaling-stroke` e `stroke` em 1.222 `<path>` e 2.478 segmentos forçavam retesselação na CPU a cada frame de `scale(k)` durante zoom/pan, além de `wheelTimer` curto (`120 ms`) disparar `culling` e `placeLabels` no meio da rolagem.
+  - Correção: em `.stage--busy`, desabilitado `vector-effect: none` em `.edge-batch`/`.node__shape`, removido `stroke` temporariamente nos nós e atenuado `.edge-rest` para o Skia/GPU escalar `.world` sem retesselar; `wheelTimer` ampliado para `240 ms`; `zoomStep` reduzido para `200 ms`; adicionados slider `50%–1200%` (`.zoom__slider`) e botão cíclico de nível (`cycleZoomTier()` em `.zoom__tier`).
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm test` (**380/380**), `npm run build` (**1.280** rotas prerenderizadas) e `npx playwright test e2e/graph.spec.ts` (**23/23**) passando.
+
 - **Itinerários: mapa SVG interativo, cores editoriais, animações e mesa de estudo (16/11, `develop`):**
   - Conteúdo dos três itinerários publicados (`trabalhismo-e-estado-social`, `comparativo-liberdade`, `criticas-aos-autoritarismos`) enriquecido com `justification` em paradas/ramos, `sourceIds` vinculados a `sources` reais e até 3 `connections` cada (`npm run itinerary:check`: 4 conferidos, 0 verificados, 3 por IA).
   - `ItineraryPageComponent` ganhou diagrama SVG interativo com arcos de ramificação animados (`roadmap-diagram`), codificação cromática por tipo de parada (`leitura`, `verbete`, `grafo`, `catalogo`) e por tipo de itinerário, resumo vivo e contagem de ligações via `ContentRepository`, prévia de ficha (`ContextPanelService`) e mesa lateral fixa (`roadmap-desk`) com navegação `← Anterior` / `Próxima →`.
