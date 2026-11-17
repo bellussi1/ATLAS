@@ -332,10 +332,10 @@ export function layoutNetwork(
         .distance(
           (link) =>
             ((link.source as unknown as Hub).radius + (link.target as unknown as Hub).radius) *
-              1.05 +
-            30,
+              0.92 +
+            22,
         )
-        .strength((link) => Math.min(0.5, 0.03 + link.weight * 0.02)),
+        .strength((link) => Math.min(0.65, 0.06 + link.weight * 0.035)),
     )
     .force('center', forceX<Hub>(0).strength(0.04))
     .force('centerY', forceY<Hub>(0).strength(0.05))
@@ -403,19 +403,19 @@ export function layoutNetwork(
       forceLink<SimNode, LayoutLink>(links)
         .id((node) => node.id)
         .distance((link) =>
-          link.kind === 'context' ? (link.same ? 56 : 118) : link.same ? 46 : 150,
+          link.kind === 'context' ? (link.same ? 50 : 102) : link.same ? 38 : 95,
         )
         .strength((link) =>
           link.kind === 'context'
-            ? (link.same ? 0.05 : 0.012) + link.weight * 0.08
+            ? (link.same ? 0.05 : 0.015) + link.weight * 0.08
             : link.same
-              ? 0.35
-              : 0.01,
+              ? 0.55
+              : 0.12,
         ),
     )
-    .force('charge', forceManyBody<SimNode>().strength(-38).distanceMax(150))
-    .force('x', forceX<SimNode>((node) => node.tx).strength(0.08))
-    .force('y', forceY<SimNode>((node) => node.ty).strength(0.08))
+    .force('charge', forceManyBody<SimNode>().strength(-34).distanceMax(140))
+    .force('x', forceX<SimNode>((node) => node.tx).strength(0.055))
+    .force('y', forceY<SimNode>((node) => node.ty).strength(0.055))
     .force('collide', forceCollide<SimNode>((node) => node.clearance + 6).iterations(3));
   const ticks = options.ticks ?? 260;
   for (let i = 0; i < ticks; i++) simulation.tick();

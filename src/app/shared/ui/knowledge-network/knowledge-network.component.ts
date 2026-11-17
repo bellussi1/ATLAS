@@ -579,7 +579,7 @@ export class KnowledgeNetworkComponent {
       const dx = to.x - from.x;
       const dy = to.y - from.y;
       const length = Math.hypot(dx, dy) || 1;
-      const pad = targetMeta.r * scale + 3 / this.steppedK();
+      const pad = targetMeta.r * scale + 4 / this.steppedK();
       // Long links between far regions fade, so the map reads as areas, not a tangle.
       const fade = Math.max(0.08, 1 - length / (4 * spacing));
       return [

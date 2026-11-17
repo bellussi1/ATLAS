@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Grafo (`/grafos`) — aproximação de nós relacionados e redesign das setas (16/11, `develop`):**
+  - `network-layout.ts`: aumentada a atração de ligações no mesmo grupo (`strength` `0.35 → 0.55`, `distance` `46 → 38`) e entre grupos distintos (`strength` `0.01 → 0.12`, `distance` `150 → 95`), com hubs mais coesos e `forceX`/`forceY` suavizados (`0.08 → 0.055`), mantendo a passagem final de colisão.
+  - `KnowledgeNetworkComponent`: marcadores `<marker>` redesenhados como chevrons farpados com contorno em `--color-canvas` (`viewBox="0 0 12 10"`) e `pad` ajustado em `drawnEdges()`.
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm test` (**380/380**), `npm run build` (**1.280** rotas prerenderizadas) e `npx playwright test e2e/graph.spec.ts` (**23/23**) passando.
+
 - **Grafo (`/grafos`) — investigação de lentidão até 1200% e UX de zoom (16/11, `develop`):**
   - Causa raiz: `vector-effect: non-scaling-stroke` e `stroke` em 1.222 `<path>` e 2.478 segmentos forçavam retesselação na CPU a cada frame de `scale(k)` durante zoom/pan, além de `wheelTimer` curto (`120 ms`) disparar `culling` e `placeLabels` no meio da rolagem.
   - Correção: em `.stage--busy`, desabilitado `vector-effect: none` em `.edge-batch`/`.node__shape`, removido `stroke` temporariamente nos nós e atenuado `.edge-rest` para o Skia/GPU escalar `.world` sem retesselar; `wheelTimer` ampliado para `240 ms`; `zoomStep` reduzido para `200 ms`; adicionados slider `50%–1200%` (`.zoom__slider`) e botão cíclico de nível (`cycleZoomTier()` em `.zoom__tier`).

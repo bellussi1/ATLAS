@@ -405,14 +405,20 @@
             @if (family.directed) {
               <marker
                 [attr.id]="'arrow-' + family.id"
-                viewBox="0 0 8 8"
-                refX="7"
-                refY="4"
-                markerWidth="6"
-                markerHeight="6"
+                viewBox="0 0 12 10"
+                refX="10"
+                refY="5"
+                markerWidth="7"
+                markerHeight="7"
                 orient="auto"
               >
-                <path d="M0 0L8 4L0 8z" [style.fill]="'var(' + family.color + ')'" />
+                <path
+                  d="M1 1.5L10.5 5L1 8.5L3.6 5Z"
+                  [style.fill]="'var(' + family.color + ')'"
+                  stroke="var(--color-canvas)"
+                  stroke-width="0.9"
+                  paint-order="stroke"
+                />
               </marker>
             }
           }
