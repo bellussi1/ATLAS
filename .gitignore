@@ -47,6 +47,9 @@ testem.log
 /typings
 __screenshots__/
 
+# Conteúdo de trabalho social (posts, imagens e pauta): fica local, fora do repositório público
+docs/social/
+
 # System files
 .DS_Store
 Thumbs.db
