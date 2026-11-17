@@ -338,8 +338,9 @@
                               Converge na parada
                               {{ stopNumberById().get(targetId) ?? '' }}:
                               <a
-                                [href]="'#parada-' + targetId"
-                                (click)="selectStop(targetId, false)"
+                                [routerLink]="[]"
+                                [fragment]="'parada-' + targetId"
+                                (click)="$event.preventDefault(); selectStop(targetId, true)"
                               >
                                 {{ stopTitles().get(targetId) ?? targetId }}
                               </a>

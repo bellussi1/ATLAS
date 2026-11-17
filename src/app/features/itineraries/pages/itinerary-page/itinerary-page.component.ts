@@ -282,7 +282,12 @@ export class ItineraryPageComponent {
       )
       .subscribe((item) => {
         this.itinerary.set(item);
-        this.activeStopId.set(item?.stops[0]?.id ?? null);
+        const hashStop = this.route.snapshot?.fragment?.replace(/^parada-/, '');
+        const initialStop =
+          hashStop && item?.stops.some((s) => s.id === hashStop)
+            ? hashStop
+            : (item?.stops[0]?.id ?? null);
+        this.activeStopId.set(initialStop);
         this.loading.set(false);
         this.title.setTitle(item ? `${item.title} — ATLAS` : 'Itinerário não encontrado — ATLAS');
       });

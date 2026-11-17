@@ -991,9 +991,41 @@
     display: none;
   }
 
+  /* On mobile/tablet, avoid duplicating the full active stop card above Stop 1;
+     keep a compact sticky bottom navigator bar instead. */
   .roadmap-desk {
-    position: static;
-    order: -1;
+    position: sticky;
+    inset-block-end: 0.75rem;
+    z-index: 15;
+    box-shadow: 0 6px 0 var(--color-ink);
+  }
+
+  .roadmap-desk__head {
+    padding: 0.65rem 0.9rem;
+    h2 {
+      font-size: 1rem;
+    }
+    .roadmap-desk__type {
+      display: none;
+    }
+  }
+
+  .roadmap-desk__body {
+    padding: 0.65rem 0.9rem;
+    gap: 0.6rem;
+  }
+
+  .roadmap-desk__question,
+  .roadmap-desk__reason,
+  .roadmap-desk__note,
+  .roadmap-desk__entity,
+  .roadmap-desk__actions {
+    display: none;
+  }
+
+  .roadmap-desk__nav {
+    padding-block-start: 0;
+    border-top: 0;
   }
 }
 
@@ -1009,28 +1041,34 @@
   }
 
   .roadmap-item {
-    grid-template-columns: 2.45rem minmax(0, 1fr);
-    gap: 0 0.75rem;
+    grid-template-columns: 2.1rem minmax(0, 1fr);
+    gap: 0 0.6rem;
   }
 
   .roadmap-node {
-    inline-size: 2.45rem;
-    block-size: 2.45rem;
-    font-size: 0.9rem;
+    inline-size: 2.1rem;
+    block-size: 2.1rem;
+    font-size: 0.85rem;
   }
 
   .stop {
-    padding: 1rem;
+    padding: 0.95rem;
     box-shadow: 4px 4px 0 var(--color-ink);
   }
 
+  .stop__focus-btn,
+  .branch__link,
+  .desk-step {
+    min-block-size: 2.75rem;
+  }
+
   .branches {
-    padding-inline-start: 0.9rem;
+    padding-inline-start: 0.8rem;
   }
 
   .branch::before {
-    inset-inline-start: -1rem;
-    inline-size: 0.85rem;
+    inset-inline-start: -0.95rem;
+    inline-size: 0.75rem;
   }
 }
 

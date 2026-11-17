@@ -18,6 +18,11 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
 
 ## Verificações recentes
 
+- **Itinerários: correção de links `#parada-...` (convergência) e fluxo mobile (16/11, `develop`):**
+  - Corrigido o bug em `ItineraryPageComponent` em que `[href]="'#parada-' + targetId"` resolvia para `/#parada-...` por causa do `<base href="/">`: substituído por `[routerLink]="[]"` + `[fragment]="'parada-' + targetId"` + `selectStop(targetId, true)`, além de leitura de `route.snapshot?.fragment` ao abrir a página com âncora.
+  - Fluxo mobile (`< 64rem` / `320px`): `.roadmap-desk` deixou de duplicar o card da parada 1 acima da lista e virou barra fixa compacta de navegação (`← Anterior` / `Próxima →`), com alvos de toque de `44px`.
+  - Verificações: `npm run lint`, `npm run typecheck`, `npm test` (**380/380** em 60 arquivos), `npm run build` (**1.280** rotas prerenderizadas) e `npx playwright test e2e/itineraries.spec.ts` (**6/6**, validando clique em convergência de `comparativo-liberdade` e viewport `320px`).
+
 - **Itinerários: 5 percursos completos, filtro por tipo e conexões vivas do grafo por parada (16/11, `develop`):**
   - Publicados dois novos itinerários `reviewed-ai`: `constituicoes-e-republica-no-brasil` (`institucional`, 6 paradas + 2 ramos) e `capitalismo-trabalho-e-industrializacao` (`historico`, 5 paradas + 2 ramos), cobrindo todos os 4 tipos (`historico`, `comparativo`, `conceitual`, `institucional`) com `npm run itinerary:check` (**6** arquivos, **5** por IA, **0** verificados).
   - `/itinerarios` (`ItinerariesIndexComponent`) ganhou barra de filtros por tipo (`.itineraries__filters`); `/itinerario/:slug` (`ItineraryPageComponent`) passou a extrair até 2 afirmações documentadas e até 4 vizinhos conectados do `KnowledgeGraph` em cada parada e na mesa lateral (`.stop__claims`, `.neighbor-chip`, `.desk-neighbors`).

@@ -45,6 +45,21 @@ test('trabalhismo roadmap renders connected stops, branches and overview without
   expect(overflow).toBe(false);
 });
 
+test('branch convergence link stays on itinerary page and focuses target stop', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto('/itinerario/comparativo-liberdade');
+  await expect(page.locator('.roadmap-track .stop')).toHaveCount(6);
+  const convergeLink = page
+    .locator('.branch__target a', { hasText: /Marxismo: trabalho, valor e emancipação/i })
+    .first();
+  await convergeLink.click();
+  await expect(page).toHaveURL(/\/itinerario\/comparativo-liberdade/);
+  await expect(page.locator('#parada-critica-marxista')).toHaveClass(/is-active/);
+  await expect(page.locator('.roadmap-desk')).toContainText('Parada 3 / 6');
+});
+
 test('home exposes itinerarios band and footer/header links', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto('/');
