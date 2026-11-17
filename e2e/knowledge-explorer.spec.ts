@@ -148,7 +148,7 @@ test('universal search starts at home, handles aliases and keeps filters through
   );
   await page.goForward();
   await expect(nav.getByRole('link', { name: 'Pessoas' })).toHaveAttribute('aria-current', 'page');
-  await page.reload();
+  await page.reload({ waitUntil: 'networkidle' });
   await expect(nav.getByRole('link', { name: 'Pessoas' })).toHaveAttribute('aria-current', 'page');
   await page
     .getByLabel('Procurar no acervo', { exact: true })
