@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
   "baseUrl": "https://atlas-content-delivery.atlas-bellussi.workers.dev",
-  "release": "5b3de25abdf050e80a37ad6319eb2ec88a18d7d4bb7289fd62c0c910aab63ac5",
+  "release": "27056609c8423375f8cb552cb739bfe278026ab0b75250ddba8c0db776e6cd41",
   "manifest": {
-    "sha256": "cdeff4d2d3ee9dd6bd0739cc13191bbbfa7bbec44501b460c2b622504143082e",
-    "bytes": 14869
+    "sha256": "2faf244b30d15710c053b910aad426ec5012151847968bd9a53f6a8c1740aab8",
+    "bytes": 12809
   },
   "bundle": {
-    "sha256": "c33d3e8655eba064ac639d9f5e4b14d58a641a0c8d25f95a0693111de0619919",
-    "bytes": 35304846
+    "sha256": "997be2faf159fc98262731dc27aa0bb452563decabd6ec325bdda0652a974be2",
+    "bytes": 35106853
   },
   "networkBundle": {
-    "sha256": "aac8c2ce427e5b781f91ba7fe9592465dd0920854d7c5eeec32ed77079897408",
-    "bytes": 7156112
+    "sha256": "a87466b678e36646e7ee7310b9ae9db07f622ccec5ce94b873d1e84a726cb443",
+    "bytes": 7155750
   },
   "artifacts": [
     {
@@ -171,46 +171,6 @@
       "file": "ideology-trabalhismo.536359fce12f26ab922974a56aff68adec169e444d7740c29a7b826966356f72.json"
     },
     {
-      "sha256": "8cccc1fc1cef5b6d9ba2fe470d7bfe8a5f16c98372435701eb8c7f343ee534de",
-      "bytes": 20544,
-      "file": "ideology-era-vargas.8cccc1fc1cef5b6d9ba2fe470d7bfe8a5f16c98372435701eb8c7f343ee534de.json"
-    },
-    {
-      "sha256": "0e96a4fca459dd56c64a6d97d7f0b75c9064274eb1c650510dcda3ee7d54d551",
-      "bytes": 20753,
-      "file": "ideology-golpe-de-1964.0e96a4fca459dd56c64a6d97d7f0b75c9064274eb1c650510dcda3ee7d54d551.json"
-    },
-    {
-      "sha256": "d2a1b9a7b7a37c0e02ecd2e063c1821f51e308c5e845ef43202d7ee4338cea25",
-      "bytes": 22779,
-      "file": "ideology-ditadura-militar-brasileira.d2a1b9a7b7a37c0e02ecd2e063c1821f51e308c5e845ef43202d7ee4338cea25.json"
-    },
-    {
-      "sha256": "2b23b576249843c24c1d115aa0cf7da5b0c58297186cc8906354b6fc952fd3b2",
-      "bytes": 22220,
-      "file": "ideology-segunda-guerra-mundial.2b23b576249843c24c1d115aa0cf7da5b0c58297186cc8906354b6fc952fd3b2.json"
-    },
-    {
-      "sha256": "57df6d1ad031802c85b66daf372e67e83afa7ca0697e717f68fce8e5ff1dd086",
-      "bytes": 33730,
-      "file": "ideology-revolucao.57df6d1ad031802c85b66daf372e67e83afa7ca0697e717f68fce8e5ff1dd086.json"
-    },
-    {
-      "sha256": "8f34bc7f92f1742ef38423ce5d7b7cdd6cf6ee482894d1aa2b39b5fd8e74a688",
-      "bytes": 31982,
-      "file": "ideology-estado.8f34bc7f92f1742ef38423ce5d7b7cdd6cf6ee482894d1aa2b39b5fd8e74a688.json"
-    },
-    {
-      "sha256": "ea318460dbd436aa06fe786a74d09881145f893989435b0dc2095609ec06c43c",
-      "bytes": 24703,
-      "file": "ideology-karl-marx.ea318460dbd436aa06fe786a74d09881145f893989435b0dc2095609ec06c43c.json"
-    },
-    {
-      "sha256": "92ba78732b43f949db609b4f4b7f4c8575456ed835db0ad3f3c2cecd6ee44cfc",
-      "bytes": 20790,
-      "file": "ideology-adam-smith.92ba78732b43f949db609b4f4b7f4c8575456ed835db0ad3f3c2cecd6ee44cfc.json"
-    },
-    {
       "sha256": "09632427a8c774900bc69bf8cd479e9ac4f323531868af2d89e77c36c706d47e",
       "bytes": 12559077,
       "file": "search.09632427a8c774900bc69bf8cd479e9ac4f323531868af2d89e77c36c706d47e.json"
@@ -221,9 +181,9 @@
       "file": "adjacency.20b7245872affb65a9bde79b4e768b28875fe9d47ea3baf26eca429ba53e6fab.json"
     },
     {
-      "sha256": "a7283be0a7a5344b5cdebb67ad12f710b2b64dd9d8ca7358455c3f4fe0f4539f",
-      "bytes": 2287513,
-      "file": "layouts.a7283be0a7a5344b5cdebb67ad12f710b2b64dd9d8ca7358455c3f4fe0f4539f.json"
+      "sha256": "ea976ce443523a9b192576a7656306710e1843be6c09586f243e0a69b48b7495",
+      "bytes": 2287151,
+      "file": "layouts.ea976ce443523a9b192576a7656306710e1843be6c09586f243e0a69b48b7495.json"
     },
     {
       "sha256": "d9be078a023b0b2c31d0929dcbcbdbf91025ebdd92734f2f6e017da821f1f394",
@@ -231,14 +191,14 @@
       "file": "network.d9be078a023b0b2c31d0929dcbcbdbf91025ebdd92734f2f6e017da821f1f394.json"
     },
     {
-      "sha256": "c33d3e8655eba064ac639d9f5e4b14d58a641a0c8d25f95a0693111de0619919",
-      "bytes": 35304846,
-      "file": "bundle.c33d3e8655eba064ac639d9f5e4b14d58a641a0c8d25f95a0693111de0619919.json"
+      "sha256": "997be2faf159fc98262731dc27aa0bb452563decabd6ec325bdda0652a974be2",
+      "bytes": 35106853,
+      "file": "bundle.997be2faf159fc98262731dc27aa0bb452563decabd6ec325bdda0652a974be2.json"
     },
     {
-      "sha256": "aac8c2ce427e5b781f91ba7fe9592465dd0920854d7c5eeec32ed77079897408",
-      "bytes": 7156112,
-      "file": "network-bundle.aac8c2ce427e5b781f91ba7fe9592465dd0920854d7c5eeec32ed77079897408.json"
+      "sha256": "a87466b678e36646e7ee7310b9ae9db07f622ccec5ce94b873d1e84a726cb443",
+      "bytes": 7155750,
+      "file": "network-bundle.a87466b678e36646e7ee7310b9ae9db07f622ccec5ce94b873d1e84a726cb443.json"
     }
   ],
   "media": [
