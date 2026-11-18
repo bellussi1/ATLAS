@@ -553,6 +553,7 @@ kbd {
   }
   .edge-batch {
     vector-effect: none;
+    stroke-dasharray: none !important;
     shape-rendering: optimizeSpeed;
   }
   .node__shape {

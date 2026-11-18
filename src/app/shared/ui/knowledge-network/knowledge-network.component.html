@@ -439,10 +439,16 @@
                   <path
                     class="edge-batch"
                     [attr.d]="batch.d"
-                    [attr.stroke-dasharray]="family.dash || null"
+                    [attr.stroke-dasharray]="family.directed ? family.dash || null : null"
                     [attr.marker-end]="family.directed ? 'url(#arrow-' + family.id + ')' : null"
                     [style.stroke]="'var(' + family.color + ')'"
-                    [style.stroke-opacity]="batch.opacity"
+                    [style.stroke-opacity]="
+                      family.id === 'connection'
+                        ? batch.opacity * 0.55
+                        : family.id === 'documented'
+                          ? batch.opacity * 0.78
+                          : batch.opacity
+                    "
                   />
                 }
               }

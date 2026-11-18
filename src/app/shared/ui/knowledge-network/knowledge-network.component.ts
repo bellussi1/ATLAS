@@ -562,12 +562,11 @@ export class KnowledgeNetworkComponent {
     const id = this.selectedId();
     return !!id && this.visible().nodes.some((node) => node.id === id);
   });
-  readonly drawnEdges = computed(() => {
+  /** Precomputed geometry and fade per visible edge; independent of pan and zoom. */
+  private readonly baseEdges = computed(() => {
     const positions = this.positions();
     if (!positions) return [];
-    const scale = this.nodeScale();
     const { width, height } = this.world();
-    const bounds = this.contentBounds();
     const spacing = Math.sqrt((width * height) / Math.max(1, this.total));
     return this.visible().edges.flatMap((edge: NetworkEdge) => {
       const from = positions.get(edge.source);
@@ -575,18 +574,9 @@ export class KnowledgeNetworkComponent {
       const targetMeta = this.preparedNodes.get(edge.target);
       const family = this.familyById.get(edge.family);
       if (!from || !to || !targetMeta || !family) return [];
-      if (
-        bounds &&
-        (Math.max(from.x, to.x) < bounds.left ||
-          Math.min(from.x, to.x) > bounds.right ||
-          Math.max(from.y, to.y) < bounds.top ||
-          Math.min(from.y, to.y) > bounds.bottom)
-      )
-        return [];
       const dx = to.x - from.x;
       const dy = to.y - from.y;
       const length = Math.hypot(dx, dy) || 1;
-      const pad = targetMeta.r * scale + 4 / this.steppedK();
       // Long links between far regions fade, so the map reads as areas, not a tangle.
       const fade = Math.max(0.08, 1 - length / (4 * spacing));
       return [
@@ -597,11 +587,61 @@ export class KnowledgeNetworkComponent {
           fade,
           x1: from.x,
           y1: from.y,
-          x2: to.x - (dx / length) * pad,
-          y2: to.y - (dy / length) * pad,
+          toX: to.x,
+          toY: to.y,
+          ux: dx / length,
+          uy: dy / length,
+          targetR: targetMeta.r,
+          minX: Math.min(from.x, to.x),
+          maxX: Math.max(from.x, to.x),
+          minY: Math.min(from.y, to.y),
+          maxY: Math.max(from.y, to.y),
         },
       ];
     });
+  });
+  readonly drawnEdges = computed(() => {
+    const base = this.baseEdges();
+    if (!base.length) return [];
+    const scale = this.nodeScale();
+    const invK = 4 / this.steppedK();
+    const bounds = this.contentBounds();
+    const out = [];
+    for (const item of base) {
+      if (
+        bounds &&
+        (item.maxX < bounds.left ||
+          item.minX > bounds.right ||
+          item.maxY < bounds.top ||
+          item.minY > bounds.bottom)
+      )
+        continue;
+      if (item.family.directed) {
+        const pad = item.targetR * scale + invK;
+        out.push({
+          edge: item.edge,
+          family: item.family,
+          delay: item.delay,
+          fade: item.fade,
+          x1: item.x1,
+          y1: item.y1,
+          x2: item.toX - item.ux * pad,
+          y2: item.toY - item.uy * pad,
+        });
+      } else {
+        out.push({
+          edge: item.edge,
+          family: item.family,
+          delay: item.delay,
+          fade: item.fade,
+          x1: item.x1,
+          y1: item.y1,
+          x2: item.toX,
+          y2: item.toY,
+        });
+      }
+    }
+    return out;
   });
   /**
    * Base edges are batched once per zoom step. Selection and hover never rebuild these batches:
