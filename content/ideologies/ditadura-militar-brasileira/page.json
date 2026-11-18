@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-ditadura-militar-brasileira",
+  "slug": "ditadura-militar-brasileira",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Ditadura militar brasileira",
+  "kicker": "Ideologia política",
+  "summary": "Ditadura militar brasileira foi o regime autoritário instaurado em 1 de abril de 1964, após o golpe que depôs o presidente João Goulart, e que se estendeu até 1985, sob sucessivos governos militares. O regime se apoiou em Atos Institucionais, sendo o AI-5, de 1968, o mais severo. O verbete descreve a repressão política, o período do milagre econômico, a distensão de Geisel e a transição a partir do governo Figueiredo, com a Constituição de 1988 ao final. A entidade é central para a história política e institucional do Brasil no século XX.",
+  "published": false,
+  "atlasId": "atlas-ditadura-militar-brasileira",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-17" },
+  "identity": {
+    "accent": "teal",
+    "palette": "conservadorismo",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "poster": { "figures": [] },
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Ditadura militar brasileira foi o regime autoritário instaurado em 1 de abril de 1964, após o golpe que depôs o presidente João Goulart, e que se estendeu até 1985, sob sucessivos governos militares. O regime se apoiou em Atos Institucionais, sendo o AI-5, de 1968, o mais severo. O verbete descreve a repressão política, o período do milagre econômico, a distensão de Geisel e a transição a partir do governo Figueiredo, com a Constituição de 1988 ao final. A entidade é central para a história política e institucional do Brasil no século XX."
+      ],
+      "question": "O que define Ditadura militar brasileira?",
+      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O regime foi instaurado pelo golpe de Estado de 1964, que depôs o governo João Goulart, eleito democraticamente.",
+        "Instauração do regime com o golpe de Estado que depôs João Goulart. (1964-04-01).",
+        "Costa e Silva decretou o Ato Institucional Número 5. (1968-12-13)."
+      ],
+      "question": "Como e em que contexto Ditadura militar brasileira surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
+      "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+      "review": null,
+      "gap": "Usa fatos documentados da fonte principal porque não há seção separada de origens no grafo.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Marco histórico 1",
+              "kicker": "Origens e formação",
+              "summary": "O regime foi instaurado pelo golpe de Estado de 1964, que depôs o governo João Goulart, eleito democraticamente.",
+              "paragraphs": [
+                "O regime foi instaurado pelo golpe de Estado de 1964, que depôs o governo João Goulart, eleito democraticamente."
+              ],
+              "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+              "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-2",
+              "title": "Marco histórico 2",
+              "kicker": "Origens e formação",
+              "summary": "Instauração do regime com o golpe de Estado que depôs João Goulart. (1964-04-01).",
+              "paragraphs": [
+                "Instauração do regime com o golpe de Estado que depôs João Goulart. (1964-04-01)."
+              ],
+              "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+              "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-3",
+              "title": "Marco histórico 3",
+              "kicker": "Origens e formação",
+              "summary": "Costa e Silva decretou o Ato Institucional Número 5. (1968-12-13).",
+              "paragraphs": ["Costa e Silva decretou o Ato Institucional Número 5. (1968-12-13)."],
+              "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+              "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Estrutura política e social",
+      "kicker": "Estrutura política e social",
+      "minutes": 1,
+      "narrative": [
+        "O regime foi instaurado pelo golpe de Estado de 1964, que depôs o governo João Goulart, eleito democraticamente.",
+        "O regime adotou uma diretriz nacionalista, desenvolvimentista e anticomunista.",
+        "Instauração do regime com o golpe de Estado que depôs João Goulart. (1964-04-01).",
+        "Costa e Silva decretou o Ato Institucional Número 5. (1968-12-13)."
+      ],
+      "question": "Quais ideias e práticas estruturam Ditadura militar brasileira?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+      "review": null,
+      "gap": "Reúne passagens descritivas registradas na fonte principal; síntese doutrinária estruturada ainda pendente.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Formulação registrada 1",
+              "kicker": "Pilares e princípios",
+              "summary": "O regime foi instaurado pelo golpe de Estado de 1964, que depôs o governo João Goulart, eleito democraticamente.",
+              "paragraphs": [
+                "O regime foi instaurado pelo golpe de Estado de 1964, que depôs o governo João Goulart, eleito democraticamente."
+              ],
+              "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+              "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Formulação registrada 2",
+              "kicker": "Pilares e princípios",
+              "summary": "O regime adotou uma diretriz nacionalista, desenvolvimentista e anticomunista.",
+              "paragraphs": [
+                "O regime adotou uma diretriz nacionalista, desenvolvimentista e anticomunista."
+              ],
+              "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+              "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "ideia-3",
+              "title": "Formulação registrada 3",
+              "kicker": "Pilares e princípios",
+              "summary": "Instauração do regime com o golpe de Estado que depôs João Goulart. (1964-04-01).",
+              "paragraphs": [
+                "Instauração do regime com o golpe de Estado que depôs João Goulart. (1964-04-01)."
+              ],
+              "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+              "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-4",
+              "title": "Formulação registrada 4",
+              "kicker": "Pilares e princípios",
+              "summary": "Costa e Silva decretou o Ato Institucional Número 5. (1968-12-13).",
+              "paragraphs": ["Costa e Silva decretou o Ato Institucional Número 5. (1968-12-13)."],
+              "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+              "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de ditadura militar, regime militar, Brazilian military dictatorship.",
+        "Conceitos ligados à tradição: Estado, Conservadorismo, Populismo, Arte."
+      ],
+      "question": "Que termos e conceitos ajudam a compreender Ditadura militar brasileira?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "sourceIds": [
+        "src-wiki-topic-ditadura-militar-brasileira",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-conservadorismo",
+        "src-wiki-topic-populismo",
+        "src-wiki-topic-arte"
+      ],
+      "review": null,
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-ditadura-militar-brasileira": "Nomes alternativos: ditadura militar, regime militar, Brazilian military dictatorship."
+          }
+        },
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-estado",
+            "wiki-topic-conservadorismo",
+            "wiki-topic-populismo",
+            "wiki-topic-arte"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "Periodização e marcos",
+      "kicker": "Periodização e marcos",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "review": null,
+      "gap": "Nenhuma passagem do grafo traz datas ou contexto histórico.",
+      "coverage": "pending",
+      "layout": "timeline",
+      "blocks": []
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Intérpretes e obras",
+      "kicker": "Intérpretes e obras",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Ernesto Geisel, Luiz Inácio Lula da Silva, Che Guevara, Juscelino Kubitschek, Getúlio Vargas, João Goulart, Humberto Castelo Branco, Fidel Castro, Fulgencio Batista, Raúl Castro, José Martí, Juan Domingo Perón, Pablo Neruda, Gabriela Mistral, Eva Perón, Gabriel García Márquez, María Estela Martínez de Perón, Pedro II do Brasil."
+      ],
+      "question": "Quem formulou, liderou ou registrou Ditadura militar brasileira?",
+      "bridge": "Dos atores e obras, seguimos para as correntes e desdobramentos relacionados.",
+      "sourceIds": [
+        "src-wikidata-verbetes",
+        "src-wiki-topic-luiz-inacio-lula-da-silva",
+        "src-wiki-topic-che-guevara",
+        "src-wiki-topic-juscelino-kubitschek",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-joao-goulart",
+        "src-wiki-topic-humberto-castelo-branco",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-topic-fulgencio-batista",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-juan-domingo-peron",
+        "src-wiki-topic-pablo-neruda",
+        "src-wiki-topic-gabriela-mistral",
+        "src-wiki-topic-eva-peron",
+        "src-wiki-topic-gabriel-garcia-marquez",
+        "src-wiki-topic-maria-estela-martinez-de-peron",
+        "src-wiki-topic-pedro-ii-do-brasil"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-ernesto-geisel",
+            "wiki-topic-luiz-inacio-lula-da-silva",
+            "wiki-topic-che-guevara",
+            "wiki-topic-juscelino-kubitschek",
+            "wiki-topic-getulio-vargas",
+            "wiki-topic-joao-goulart",
+            "wiki-topic-humberto-castelo-branco",
+            "wiki-topic-fidel-castro",
+            "wiki-topic-fulgencio-batista",
+            "wiki-topic-raul-castro",
+            "wiki-topic-jose-marti",
+            "wiki-topic-juan-domingo-peron",
+            "wiki-topic-pablo-neruda",
+            "wiki-topic-gabriela-mistral",
+            "wiki-topic-eva-peron",
+            "wiki-topic-gabriel-garcia-marquez",
+            "wiki-topic-maria-estela-martinez-de-peron",
+            "wiki-topic-pedro-ii-do-brasil"
+          ],
+          "mode": "thinkers",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Forças políticas no período",
+      "kicker": "Forças políticas no período",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "review": null,
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Operação Condor, Golpe de Estado no Brasil em 1964, Guerra Fria, Sindicato, Ditadura, Ditadura militar, Revolução Cubana, Presidencialismo, Igreja Católica, Forças armadas, Bloco de Leste, Segunda Guerra Mundial, Capitalismo, Crise dos mísseis de Cuba, Fortaleza, Revolução Francesa, Guerra do Vietnã, História, Iluminismo, Monarquia, Guerra da Coreia, Revolução Industrial, Agência Central de Inteligência, Grande Depressão, Mercado Comum do Sul, Segunda Guerra Sino-Japonesa, História da humanidade, Monarquia constitucional, Valparaíso (Chile), Mendoza, Crise de Suez, Primeira Guerra da Indochina, Salvador, Bloqueio de Berlim, Universidade de Havana, Presidente da Argentina."
+      ],
+      "question": "Em quais acontecimentos, partidos e instituições Ditadura militar brasileira se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "sourceIds": [
+        "src-wikidata-verbetes",
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-guerra-fria",
+        "src-wiki-topic-sindicato",
+        "src-wiki-topic-ditadura",
+        "src-wiki-topic-ditadura-militar",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-presidencialismo",
+        "src-wiki-topic-igreja-catolica",
+        "src-wiki-topic-forcas-armadas",
+        "src-wiki-topic-bloco-de-leste",
+        "src-wiki-topic-segunda-guerra-mundial",
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-acontecimento-historia",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-monarquia",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-revolucao-industrial",
+        "src-wiki-topic-agencia-central-de-inteligencia",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-mercado-comum-do-sul",
+        "src-wiki-topic-segunda-guerra-sino-japonesa",
+        "src-wiki-topic-historia-da-humanidade",
+        "src-wiki-topic-monarquia-constitucional",
+        "src-wiki-topic-valparaiso-chile",
+        "src-wiki-topic-mendoza",
+        "src-wiki-topic-crise-de-suez",
+        "src-wiki-topic-primeira-guerra-da-indochina",
+        "src-wiki-topic-salvador",
+        "src-wiki-topic-bloqueio-de-berlim",
+        "src-wiki-topic-universidade-de-havana",
+        "src-wiki-topic-presidente-da-argentina"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-operacao-condor",
+            "wiki-topic-golpe-de-estado-no-brasil-em-1964",
+            "wiki-topic-guerra-fria",
+            "wiki-topic-sindicato",
+            "wiki-topic-ditadura",
+            "wiki-topic-ditadura-militar",
+            "wiki-topic-revolucao-cubana",
+            "wiki-topic-presidencialismo",
+            "wiki-topic-igreja-catolica",
+            "wiki-topic-forcas-armadas",
+            "wiki-topic-bloco-de-leste",
+            "wiki-topic-segunda-guerra-mundial",
+            "wiki-topic-capitalismo",
+            "wiki-topic-crise-dos-misseis-de-cuba",
+            "wiki-topic-fortaleza",
+            "event-french-revolution",
+            "wiki-topic-guerra-do-vietna",
+            "wiki-acontecimento-historia",
+            "wiki-topic-iluminismo",
+            "wiki-topic-monarquia",
+            "wiki-topic-guerra-da-coreia",
+            "wiki-topic-revolucao-industrial",
+            "wiki-topic-agencia-central-de-inteligencia",
+            "wiki-topic-grande-depressao",
+            "wiki-topic-mercado-comum-do-sul",
+            "wiki-topic-segunda-guerra-sino-japonesa",
+            "wiki-topic-historia-da-humanidade",
+            "wiki-topic-monarquia-constitucional",
+            "wiki-topic-valparaiso-chile",
+            "wiki-topic-mendoza",
+            "wiki-topic-crise-de-suez",
+            "wiki-topic-primeira-guerra-da-indochina",
+            "wiki-topic-salvador",
+            "wiki-topic-bloqueio-de-berlim",
+            "wiki-topic-universidade-de-havana",
+            "wiki-topic-presidente-da-argentina"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "O golpe de 1964 é contestado pela historiografia marxista quando apoiadores o chamam de contrarrevolução."
+      ],
+      "question": "Quais críticas e controvérsias cercam Ditadura militar brasileira?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+      "review": null,
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "O golpe de 1964 é contestado pela historiografia marxista quando apoiadores o chamam de contrarrevolução.",
+              "paragraphs": [
+                "O golpe de 1964 é contestado pela historiografia marxista quando apoiadores o chamam de contrarrevolução."
+              ],
+              "sourceIds": ["src-wiki-topic-ditadura-militar-brasileira"],
+              "entityIds": ["wiki-topic-ditadura-militar-brasileira"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Democracia, Autoritarismo, Nacionalismo, Brasil, Direita (política), Comunismo, Esquerda (política), Anticomunismo, Fascismo, Imperialismo, Marxismo, Liberalismo, Totalitarismo, Nazismo, Marxismo-leninismo, Monarquia absoluta."
+      ],
+      "question": "Como Ditadura militar brasileira se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "sourceIds": [
+        "src-wiki-topic-democracia",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-nacionalismo",
+        "src-wiki-topic-brasil",
+        "src-wiki-topic-direita-politica",
+        "src-wiki-topic-esquerda-politica",
+        "src-wiki-topic-anticomunismo",
+        "src-wiki-topic-fascismo",
+        "src-wiki-topic-imperialismo",
+        "src-wiki-topic-totalitarismo",
+        "src-wiki-topic-nazismo",
+        "src-wiki-topic-monarquia-absoluta"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-democracia",
+            "wiki-topic-autoritarismo",
+            "wiki-topic-nacionalismo",
+            "wiki-topic-brasil",
+            "wiki-topic-direita-politica",
+            "ideology-communism",
+            "wiki-topic-esquerda-politica",
+            "wiki-topic-anticomunismo",
+            "wiki-topic-fascismo",
+            "wiki-topic-imperialismo",
+            "ideology-marxism",
+            "ideology-liberalism",
+            "wiki-topic-totalitarismo",
+            "wiki-topic-nazismo",
+            "ideology-marxism-leninism",
+            "wiki-topic-monarquia-absoluta"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "review": null,
+      "gap": "Nenhuma obra citada como leitura consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 8 afirmações da fonte principal e 69 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": "Quais fontes sustentam a leitura sobre Ditadura militar brasileira?",
+      "bridge": null,
+      "sourceIds": [
+        "src-wiki-topic-ditadura-militar-brasileira",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-conservadorismo",
+        "src-wiki-topic-populismo",
+        "src-wiki-topic-arte",
+        "src-wikidata-verbetes",
+        "src-wiki-topic-luiz-inacio-lula-da-silva",
+        "src-wiki-topic-che-guevara",
+        "src-wiki-topic-juscelino-kubitschek",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-joao-goulart",
+        "src-wiki-topic-humberto-castelo-branco",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-topic-fulgencio-batista",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-juan-domingo-peron",
+        "src-wiki-topic-pablo-neruda",
+        "src-wiki-topic-gabriela-mistral",
+        "src-wiki-topic-eva-peron",
+        "src-wiki-topic-gabriel-garcia-marquez",
+        "src-wiki-topic-maria-estela-martinez-de-peron",
+        "src-wiki-topic-pedro-ii-do-brasil",
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-guerra-fria",
+        "src-wiki-topic-sindicato",
+        "src-wiki-topic-ditadura",
+        "src-wiki-topic-ditadura-militar",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-presidencialismo",
+        "src-wiki-topic-igreja-catolica",
+        "src-wiki-topic-forcas-armadas",
+        "src-wiki-topic-bloco-de-leste",
+        "src-wiki-topic-segunda-guerra-mundial",
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-acontecimento-historia",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-monarquia",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-revolucao-industrial",
+        "src-wiki-topic-agencia-central-de-inteligencia",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-mercado-comum-do-sul",
+        "src-wiki-topic-segunda-guerra-sino-japonesa",
+        "src-wiki-topic-historia-da-humanidade",
+        "src-wiki-topic-monarquia-constitucional",
+        "src-wiki-topic-valparaiso-chile",
+        "src-wiki-topic-mendoza",
+        "src-wiki-topic-crise-de-suez",
+        "src-wiki-topic-primeira-guerra-da-indochina",
+        "src-wiki-topic-salvador",
+        "src-wiki-topic-bloqueio-de-berlim",
+        "src-wiki-topic-universidade-de-havana",
+        "src-wiki-topic-presidente-da-argentina",
+        "src-wiki-topic-democracia",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-nacionalismo",
+        "src-wiki-topic-brasil",
+        "src-wiki-topic-direita-politica",
+        "src-wiki-topic-esquerda-politica",
+        "src-wiki-topic-anticomunismo",
+        "src-wiki-topic-fascismo",
+        "src-wiki-topic-imperialismo",
+        "src-wiki-topic-totalitarismo",
+        "src-wiki-topic-nazismo",
+        "src-wiki-topic-monarquia-absoluta"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "src-wiki-topic-ditadura-militar-brasileira",
+            "src-wiki-topic-estado",
+            "src-wiki-topic-conservadorismo",
+            "src-wiki-topic-populismo",
+            "src-wiki-topic-arte",
+            "src-wikidata-verbetes",
+            "src-wiki-topic-luiz-inacio-lula-da-silva",
+            "src-wiki-topic-che-guevara",
+            "src-wiki-topic-juscelino-kubitschek",
+            "src-wiki-topic-getulio-vargas",
+            "src-wiki-topic-joao-goulart",
+            "src-wiki-topic-humberto-castelo-branco",
+            "src-wiki-topic-fidel-castro",
+            "src-wiki-topic-fulgencio-batista",
+            "src-wiki-topic-raul-castro",
+            "src-wiki-topic-jose-marti",
+            "src-wiki-topic-juan-domingo-peron",
+            "src-wiki-topic-pablo-neruda",
+            "src-wiki-topic-gabriela-mistral",
+            "src-wiki-topic-eva-peron",
+            "src-wiki-topic-gabriel-garcia-marquez",
+            "src-wiki-topic-maria-estela-martinez-de-peron",
+            "src-wiki-topic-pedro-ii-do-brasil",
+            "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+            "src-wiki-topic-guerra-fria",
+            "src-wiki-topic-sindicato",
+            "src-wiki-topic-ditadura",
+            "src-wiki-topic-ditadura-militar",
+            "src-wiki-topic-revolucao-cubana",
+            "src-wiki-topic-presidencialismo",
+            "src-wiki-topic-igreja-catolica",
+            "src-wiki-topic-forcas-armadas",
+            "src-wiki-topic-bloco-de-leste",
+            "src-wiki-topic-segunda-guerra-mundial",
+            "src-wiki-topic-capitalismo",
+            "src-wiki-topic-crise-dos-misseis-de-cuba",
+            "src-wiki-topic-fortaleza",
+            "src-wiki-topic-guerra-do-vietna",
+            "src-wiki-acontecimento-historia",
+            "src-wiki-topic-iluminismo",
+            "src-wiki-topic-monarquia",
+            "src-wiki-topic-guerra-da-coreia",
+            "src-wiki-topic-revolucao-industrial",
+            "src-wiki-topic-agencia-central-de-inteligencia",
+            "src-wiki-topic-grande-depressao",
+            "src-wiki-topic-mercado-comum-do-sul",
+            "src-wiki-topic-segunda-guerra-sino-japonesa",
+            "src-wiki-topic-historia-da-humanidade",
+            "src-wiki-topic-monarquia-constitucional",
+            "src-wiki-topic-valparaiso-chile",
+            "src-wiki-topic-mendoza",
+            "src-wiki-topic-crise-de-suez",
+            "src-wiki-topic-primeira-guerra-da-indochina",
+            "src-wiki-topic-salvador",
+            "src-wiki-topic-bloqueio-de-berlim",
+            "src-wiki-topic-universidade-de-havana",
+            "src-wiki-topic-presidente-da-argentina",
+            "src-wiki-topic-democracia",
+            "src-wiki-topic-autoritarismo",
+            "src-wiki-topic-nacionalismo",
+            "src-wiki-topic-brasil",
+            "src-wiki-topic-direita-politica",
+            "src-wiki-topic-esquerda-politica",
+            "src-wiki-topic-anticomunismo",
+            "src-wiki-topic-fascismo",
+            "src-wiki-topic-imperialismo",
+            "src-wiki-topic-totalitarismo",
+            "src-wiki-topic-nazismo",
+            "src-wiki-topic-monarquia-absoluta"
+          ]
+        }
+      ]
+    }
+  ]
+}

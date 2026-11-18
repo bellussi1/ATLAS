@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-revolucao",
+  "slug": "revolucao",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Revolução",
+  "kicker": "Ideologia política",
+  "summary": "Conceito da ciência política que designa mudança abrupta e duradoura no poder político ou na organização estrutural de uma sociedade, distinta da reforma gradual. O termo tinha sentido astronômico até o século XVI, quando Nicolau Copérnico o empregou em De revolutionibus orbium coelestium (1543). Após a Revolução Francesa passou às ciências humanas. O verbete discute definições, tipologias e gerações de estudos acadêmicos, e registra disputas sobre quais casos devem ser chamados de revolução.",
+  "published": false,
+  "atlasId": "atlas-revolucao",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-17" },
+  "identity": {
+    "accent": "teal",
+    "palette": "marx",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "poster": { "figures": [] },
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Conceito da ciência política que designa mudança abrupta e duradoura no poder político ou na organização estrutural de uma sociedade, distinta da reforma gradual. O termo tinha sentido astronômico até o século XVI, quando Nicolau Copérnico o empregou em De revolutionibus orbium coelestium (1543). Após a Revolução Francesa passou às ciências humanas. O verbete discute definições, tipologias e gerações de estudos acadêmicos, e registra disputas sobre quais casos devem ser chamados de revolução."
+      ],
+      "question": "O que define Revolução?",
+      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "sourceIds": ["src-wiki-conceito-revolucao"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "O uso político do termo foi estabelecido em 1688 para designar a substituição do Rei Jaime II por Guilherme III, evento chamado de Revolução Gloriosa."
+      ],
+      "question": "Como e em que contexto Revolução surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
+      "sourceIds": ["src-wiki-conceito-revolucao"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "O uso político do termo foi estabelecido em 1688 para designar a substituição do Rei Jaime II por Guilherme III, evento chamado de Revolução Gloriosa.",
+              "paragraphs": [
+                "O uso político do termo foi estabelecido em 1688 para designar a substituição do Rei Jaime II por Guilherme III, evento chamado de Revolução Gloriosa."
+              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Definições e critérios",
+      "kicker": "Definições e critérios",
+      "minutes": 1,
+      "narrative": [
+        "Na perspectiva jurídica, revolução é a derrubada por meios ilegais da ordem jurídica vigente, seguida da instauração de uma nova ordem."
+      ],
+      "question": "Quais ideias e práticas estruturam Revolução?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "sourceIds": ["src-wiki-conceito-revolucao"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Na perspectiva jurídica, revolução é a derrubada por meios ilegais da ordem jurídica vigente, seguida da instauração de uma nova ordem.",
+              "paragraphs": [
+                "Na perspectiva jurídica, revolução é a derrubada por meios ilegais da ordem jurídica vigente, seguida da instauração de uma nova ordem."
+              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Também chamada de revolution."],
+      "question": "Que termos e conceitos ajudam a compreender Revolução?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "sourceIds": ["src-wiki-conceito-revolucao"],
+      "review": null,
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-conceito-revolucao"],
+          "mode": "concepts",
+          "notes": { "wiki-conceito-revolucao": "Nomes alternativos: revolution." }
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Nicolau Copérnico emprega o termo revolução, com sentido astronômico, em De revolutionibus orbium coelestium.",
+        "Estabelece-se o uso político do termo para designar a substituição do Rei Jaime II por Guilherme III, chamada Revolução Gloriosa.",
+        "Estabelecimento do uso político do termo para designar a substituição do Rei Jaime II por Guilherme III, chamada Revolução Gloriosa.",
+        "Ocorrência da Revolução Russa, citada entre as revoluções recentes do século XX.",
+        "A Revolução Iraniana derrubou o Estado Imperial do Irã e instaurou uma república islâmica."
+      ],
+      "question": "Em que períodos históricos Revolução se formou e mudou?",
+      "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
+      "sourceIds": ["src-wiki-conceito-revolucao", "src-wiki-topic-revolucao"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1543",
+              "kicker": "Marco datado",
+              "summary": "Nicolau Copérnico emprega o termo revolução, com sentido astronômico, em De revolutionibus orbium coelestium.",
+              "paragraphs": [
+                "Nicolau Copérnico emprega o termo revolução, com sentido astronômico, em De revolutionibus orbium coelestium."
+              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1688",
+              "kicker": "Marco datado",
+              "summary": "Estabelece-se o uso político do termo para designar a substituição do Rei Jaime II por Guilherme III, chamada Revolução Gloriosa.",
+              "paragraphs": [
+                "Estabelece-se o uso político do termo para designar a substituição do Rei Jaime II por Guilherme III, chamada Revolução Gloriosa."
+              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1688",
+              "kicker": "Marco datado",
+              "summary": "Estabelecimento do uso político do termo para designar a substituição do Rei Jaime II por Guilherme III, chamada Revolução Gloriosa.",
+              "paragraphs": [
+                "Estabelecimento do uso político do termo para designar a substituição do Rei Jaime II por Guilherme III, chamada Revolução Gloriosa."
+              ],
+              "sourceIds": ["src-wiki-topic-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-4",
+              "title": "1917",
+              "kicker": "Marco datado",
+              "summary": "Ocorrência da Revolução Russa, citada entre as revoluções recentes do século XX.",
+              "paragraphs": [
+                "Ocorrência da Revolução Russa, citada entre as revoluções recentes do século XX."
+              ],
+              "sourceIds": ["src-wiki-topic-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-5",
+              "title": "1979",
+              "kicker": "Marco datado",
+              "summary": "A Revolução Iraniana derrubou o Estado Imperial do Irã e instaurou uma república islâmica.",
+              "paragraphs": [
+                "A Revolução Iraniana derrubou o Estado Imperial do Irã e instaurou uma república islâmica."
+              ],
+              "sourceIds": ["src-wiki-topic-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1543, "end": 1543 },
+            { "itemId": "marco-2", "start": 1688, "end": 1688 },
+            { "itemId": "marco-3", "start": 1688, "end": 1688 },
+            { "itemId": "marco-4", "start": 1917, "end": 1917 },
+            { "itemId": "marco-5", "start": 1979, "end": 1979 }
+          ],
+          "entityIds": ["wiki-conceito-revolucao"],
+          "markerIds": [],
+          "markerNotes": {}
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Formuladores e usos",
+      "kicker": "Formuladores e usos",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Emmanuel Joseph Sieyès, Immanuel Kant, Lorenz von Stein, John Locke, Mao Tsé-Tung, Huber Matos, Jean Jaurès, José Martí, Olof Palme, Wilhelm Liebknecht, Daniel Ortega, Maximilien de Robespierre, Mikhail Bakunin, Pierre-Joseph Proudhon, Rafael Correa, Nicolau Copérnico, Jaime II de Inglaterra, Guilherme III de Inglaterra, Jean-Jacques Rousseau, Aristóteles, Samuel P. Huntington, Dalmo Dallari, Plinio Corrêa de Oliveira, Martín Tovar y Tovar, Fulgencio Batista, Fidel Castro, Che Guevara, Getúlio Vargas, José de San Martín, Raúl Castro, Simón Bolívar, Gabriela Mistral, Pablo Neruda, Miguel Ángel Asturias, Papa Francisco."
+      ],
+      "question": "Quem formulou, liderou ou registrou Revolução?",
+      "bridge": "Dos atores e obras, seguimos para as correntes e desdobramentos relacionados.",
+      "sourceIds": [
+        "src-wiki-person-emmanuel-joseph-sieyes",
+        "src-wiki-person-immanuel-kant",
+        "src-wiki-person-lorenz-von-stein",
+        "src-wiki-topic-john-locke",
+        "src-wiki-topic-mao-tse-tung",
+        "src-wiki-topic-huber-matos",
+        "src-wiki-topic-jean-jaures",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-olof-palme",
+        "src-wiki-topic-wilhelm-liebknecht",
+        "src-wiki-topic-daniel-ortega",
+        "src-wiki-topic-maximilien-de-robespierre",
+        "src-wiki-topic-mikhail-bakunin",
+        "src-wiki-topic-pierre-joseph-proudhon",
+        "src-wiki-topic-rafael-correa",
+        "src-wiki-topic-nicolau-copernico",
+        "src-wiki-topic-jaime-ii-de-inglaterra",
+        "src-wiki-topic-guilherme-iii-de-inglaterra",
+        "src-wiki-topic-jean-jacques-rousseau",
+        "src-wiki-topic-aristoteles",
+        "src-wiki-topic-samuel-p-huntington",
+        "src-wiki-topic-dalmo-dallari",
+        "src-wiki-topic-plinio-correa-de-oliveira",
+        "src-wiki-topic-martin-tovar-y-tovar",
+        "src-wiki-topic-fulgencio-batista",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-topic-che-guevara",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-jose-de-san-martin",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-simon-bolivar",
+        "src-wiki-topic-gabriela-mistral",
+        "src-wiki-topic-pablo-neruda",
+        "src-wiki-topic-miguel-angel-asturias",
+        "src-wiki-topic-papa-francisco"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "person-emmanuel-joseph-sieyes",
+            "person-immanuel-kant",
+            "person-lorenz-von-stein",
+            "person-john-locke",
+            "person-mao-zedong",
+            "wiki-topic-huber-matos",
+            "wiki-topic-jean-jaures",
+            "wiki-topic-jose-marti",
+            "wiki-topic-olof-palme",
+            "wiki-topic-wilhelm-liebknecht",
+            "wiki-topic-daniel-ortega",
+            "wiki-topic-maximilien-de-robespierre",
+            "wiki-topic-mikhail-bakunin",
+            "wiki-topic-pierre-joseph-proudhon",
+            "wiki-topic-rafael-correa",
+            "wiki-topic-nicolau-copernico",
+            "wiki-topic-jaime-ii-de-inglaterra",
+            "wiki-topic-guilherme-iii-de-inglaterra",
+            "wiki-topic-jean-jacques-rousseau",
+            "wiki-topic-aristoteles",
+            "wiki-topic-samuel-p-huntington",
+            "wiki-topic-dalmo-dallari",
+            "wiki-topic-plinio-correa-de-oliveira",
+            "wiki-topic-martin-tovar-y-tovar",
+            "wiki-topic-fulgencio-batista",
+            "wiki-topic-fidel-castro",
+            "wiki-topic-che-guevara",
+            "wiki-topic-getulio-vargas",
+            "wiki-topic-jose-de-san-martin",
+            "wiki-topic-raul-castro",
+            "wiki-topic-simon-bolivar",
+            "wiki-topic-gabriela-mistral",
+            "wiki-topic-pablo-neruda",
+            "wiki-topic-miguel-angel-asturias",
+            "wiki-topic-papa-francisco"
+          ],
+          "mode": "thinkers",
+          "notes": {
+            "person-emmanuel-joseph-sieyes": "[conferência de IA] O verbete afirma que Sieyès sobreviveu aos piores momentos da Revolução Francesa, o que o distinguiria dos demais grandes nomes do período.",
+            "person-immanuel-kant": "[conferência de IA] Kant comparou sua proposta filosófica à revolução copernicana.",
+            "person-lorenz-von-stein": "[conferência de IA] Compartilhava o temor de revolução violenta comum entre liberais de classe média e defendia soluções reformistas.",
+            "person-john-locke": "[conferência de IA] Os historiadores discutem se os Dois Tratados foram escritos para defender a Revolução Gloriosa ou se a obra foi composta bem antes disso.",
+            "person-mao-zedong": "Mao escreveu o texto Filosofia da Revolução a partir de Yan'an.",
+            "wiki-topic-huber-matos": "[conferência de IA] Após a Revolução foi acusado de sedição pelo regime de Fidel Castro e condenado a vinte anos de prisão.",
+            "wiki-topic-jean-jaures": "[conferência de IA] Jaurès reconhecia a luta de classes, mas propunha uma revolução social democrática e não violenta.",
+            "wiki-topic-jose-marti": "[conferência de IA] Publicou o panfleto A República Espanhola e a Revolução Cubana. (1873-02-11).",
+            "wiki-topic-olof-palme": "[conferência de IA] Palme foi o primeiro chefe de governo da Europa Ocidental a realizar uma visita oficial a Cuba após a Revolução Cubana.",
+            "wiki-topic-wilhelm-liebknecht": "[conferência de IA] Participou da Revolução Alemã de 1848 e, após a derrota, viveu no exílio.",
+            "wiki-topic-daniel-ortega": "[conferência de IA] Triunfo da Revolução Sandinista contra Anastasio Somoza Debayle. (1979-07-17).",
+            "wiki-topic-maximilien-de-robespierre": "[conferência de IA] Sustentou que o governo revolucionário, em tempos de revolução, deve combinar virtude e terror.",
+            "wiki-topic-mikhail-bakunin": "[conferência de IA] Críticos atribuem à defesa da revolução violenta de Bakunin efeitos como o niilismo na Rússia, enquanto seus defensores contestam essa leitura.",
+            "wiki-topic-pierre-joseph-proudhon": "[conferência de IA] Após a Revolução de 1848, Proudhon passou a se denominar federalista.",
+            "wiki-topic-rafael-correa": "[conferência de IA] Correa tomou posse em 15 de janeiro de 2007 e seu governo se autodenominou Revolução Cidadã."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Usos disputados e historicidade",
+      "kicker": "Usos disputados e historicidade",
+      "minutes": 1,
+      "narrative": [
+        "Correntes relacionadas: Liberalismo clássico, Nacional-liberalismo, Liberalismo, Direita (política), Esquerda (política), Social-democracia, Ecossocialismo."
+      ],
+      "question": "Que correntes dialogam ou disputam espaço com Revolução?",
+      "bridge": "Vistos os desdobramentos, o capítulo seguinte examina experiências, partidos e instituições.",
+      "sourceIds": [
+        "src-wiki-topic-liberalismo-classico",
+        "src-wiki-ideology-national-liberalism",
+        "src-wiki-topic-liberalismo",
+        "src-wiki-topic-direita-politica",
+        "src-wiki-topic-esquerda-politica",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-ecossocialismo"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "ideology-classical-liberalism",
+            "ideology-national-liberalism",
+            "ideology-liberalism",
+            "wiki-topic-direita-politica",
+            "wiki-topic-esquerda-politica",
+            "wiki-topic-social-democracia",
+            "wiki-topic-ecossocialismo"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "ideology-classical-liberalism": "[conferência de IA] O texto situa o surgimento do liberalismo clássico como filosofia no século XIX, na Europa e nos Estados Unidos, no contexto da Revolução Industrial e do incremento da urbanização.",
+            "ideology-national-liberalism": "[conferência de IA] O liberalismo nacional emergiu da filosofia continental após a Revolução Francesa, combinando políticas liberais com elementos nacionalistas.",
+            "ideology-liberalism": "[conferência de IA] A Revolução Gloriosa consagrou a soberania parlamentar e o direito de revolução na Grã-Bretanha. (1688).",
+            "wiki-topic-direita-politica": "[conferência de IA] Os termos de direita e esquerda foram cunhados durante a Revolução Francesa, referindo-se à posição dos políticos no parlamento francês; os que estavam à direita do presidente eram amplamente favoráveis ao Antigo Regime.",
+            "wiki-topic-esquerda-politica": "[conferência de IA] O termo 'esquerda' deriva da Revolução Francesa, quando deputados que se opunham à proposta de veto do rei sentaram-se à esquerda do assento do presidente da Assembleia Nacional Constituinte.",
+            "wiki-topic-social-democracia": "[conferência de IA] Após a Primeira Guerra Mundial e a Revolução Russa, os socialistas reformistas mantiveram o nome de social-democratas, enquanto os revolucionários passaram a se chamar comunistas.",
+            "wiki-topic-ecossocialismo": "[conferência de IA] Os ecossocialistas se opõem ao capitalismo e defendem uma revolução socialista."
+          }
+        }
+      ]
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Revolução Francesa, Partido Revolucionário Institucional, Revolução Industrial, União Cívica Radical, Iluminismo, Revolução Húngara de 1956, Golpe de Estado, Tenentismo, Revolução de Outubro, Revolução Cubana, Revolução Comunista Chinesa, Revolução de 1930, Academia, República islâmica, Guerra de Independência Argelina, Revolução Sandinista, Guerras Civis Afegãs, Batalha de Ayacucho, Golpe de Estado no Brasil em 1964, Guerra Fria, Igreja Católica, Ateísmo, Crise dos mísseis de Cuba, Renascimento, Judeus, Fortaleza, Crise de Suez, Guerra da Coreia, Mercado Comum do Sul, Grande Depressão, Maçonaria, Bloqueio de Berlim, Amish."
+      ],
+      "question": "Em quais acontecimentos, partidos e instituições Revolução se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "sourceIds": [
+        "src-wiki-topic-revolucao-francesa",
+        "src-wiki-topic-partido-revolucionario-institucional",
+        "src-wiki-topic-revolucao-industrial",
+        "src-wiki-topic-uniao-civica-radical",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-revolucao-hungara-de-1956",
+        "src-wiki-topic-golpe-de-estado",
+        "src-wiki-topic-tenentismo",
+        "src-wiki-topic-revolucao-de-outubro",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-revolucao-comunista-chinesa",
+        "src-wiki-topic-revolucao-de-1930",
+        "src-wiki-topic-academia",
+        "src-wiki-topic-republica-islamica",
+        "src-wiki-topic-guerra-de-independencia-argelina",
+        "src-wiki-topic-revolucao-sandinista",
+        "src-wiki-topic-guerras-civis-afegas",
+        "src-wiki-topic-batalha-de-ayacucho",
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-guerra-fria",
+        "src-wiki-topic-igreja-catolica",
+        "src-wiki-topic-ateismo",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-renascimento",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-crise-de-suez",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-mercado-comum-do-sul",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-maconaria",
+        "src-wiki-topic-bloqueio-de-berlim",
+        "src-wiki-topic-amish"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "event-french-revolution",
+            "wiki-topic-partido-revolucionario-institucional",
+            "wiki-topic-revolucao-industrial",
+            "wiki-topic-uniao-civica-radical",
+            "wiki-topic-iluminismo",
+            "wiki-topic-revolucao-hungara-de-1956",
+            "wiki-topic-golpe-de-estado",
+            "wiki-topic-tenentismo",
+            "wiki-topic-revolucao-de-outubro",
+            "wiki-topic-revolucao-cubana",
+            "wiki-topic-revolucao-comunista-chinesa",
+            "wiki-topic-revolucao-de-1930",
+            "wiki-topic-academia",
+            "wiki-topic-republica-islamica",
+            "wiki-topic-guerra-de-independencia-argelina",
+            "wiki-topic-revolucao-sandinista",
+            "wiki-topic-guerras-civis-afegas",
+            "wiki-topic-batalha-de-ayacucho",
+            "wiki-topic-golpe-de-estado-no-brasil-em-1964",
+            "wiki-topic-guerra-fria",
+            "wiki-topic-igreja-catolica",
+            "wiki-topic-ateismo",
+            "wiki-topic-crise-dos-misseis-de-cuba",
+            "wiki-topic-renascimento",
+            "wiki-topic-judeus",
+            "wiki-topic-fortaleza",
+            "wiki-topic-crise-de-suez",
+            "wiki-topic-guerra-da-coreia",
+            "wiki-topic-mercado-comum-do-sul",
+            "wiki-topic-grande-depressao",
+            "wiki-topic-maconaria",
+            "wiki-topic-bloqueio-de-berlim",
+            "wiki-topic-amish"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "event-french-revolution": "[conferência de IA] Início da revolução com a convocação dos Estados Gerais em maio. (1789).",
+            "wiki-topic-partido-revolucionario-institucional": "[conferência de IA] Nome alterado para Partido da Revolução Mexicana (PRM). (1938).",
+            "wiki-topic-revolucao-industrial": "[conferência de IA] A indústria têxtil foi dominante na Revolução Industrial em geração de emprego, valor da produção e volume de capital.",
+            "wiki-topic-uniao-civica-radical": "[conferência de IA] Revolução liderada pela UCR na província de San Luis. (1893-06-29).",
+            "wiki-topic-iluminismo": "[conferência de IA] Eclosão da Revolução Francesa, tradicionalmente apontada como fim do Iluminismo. (1789).",
+            "wiki-topic-revolucao-hungara-de-1956": "[conferência de IA] O verbete registra que o evento é também chamado de Contra-Revolução, designação que confronta a caracterização como revolta popular.",
+            "wiki-topic-golpe-de-estado": "[conferência de IA] Golpe de Estado se distingue de revolução porque esta é popular e emprega transformação social profunda.",
+            "wiki-topic-tenentismo": "[conferência de IA] Após a vitória da Revolução de 1930, quase todos os governos estaduais foram entregues aos tenentes. (1930)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "As teorias da segunda geração receberam críticas quanto à extensão geográfica limitada e à dificuldade de verificação empírica.",
+        "Uma corrente minoritária de historiadores marxistas usa os termos Revolução Inglesa e Revolução Gloriosa para designar períodos distintos da mesma revolução."
+      ],
+      "question": "Quais críticas e controvérsias cercam Revolução?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "sourceIds": ["src-wiki-conceito-revolucao", "src-wiki-topic-revolucao"],
+      "review": null,
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "As teorias da segunda geração receberam críticas quanto à extensão geográfica limitada e à dificuldade de verificação empírica.",
+              "paragraphs": [
+                "As teorias da segunda geração receberam críticas quanto à extensão geográfica limitada e à dificuldade de verificação empírica."
+              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "Uma corrente minoritária de historiadores marxistas usa os termos Revolução Inglesa e Revolução Gloriosa para designar períodos distintos da mesma revolução.",
+              "paragraphs": [
+                "Uma corrente minoritária de historiadores marxistas usa os termos Revolução Inglesa e Revolução Gloriosa para designar períodos distintos da mesma revolução."
+              ],
+              "sourceIds": ["src-wiki-topic-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Luta de classes, Leis Antissocialistas, Argentina, Porto Alegre, Venezuela, Era Vargas, Primeira República Brasileira, Marxismo, Liberalismo, Anarquismo, Comunismo, Socialismo, Protestantismo, Social-democracia, Secularismo."
+      ],
+      "question": "Como Revolução se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "sourceIds": [
+        "src-wiki-topic-luta-de-classes",
+        "src-wiki-topic-leis-antissocialistas",
+        "src-wiki-topic-argentina",
+        "src-wiki-topic-porto-alegre",
+        "src-wiki-topic-venezuela",
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-primeira-republica-brasileira",
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-protestantismo",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-secularismo"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-luta-de-classes",
+            "wiki-topic-leis-antissocialistas",
+            "wiki-topic-argentina",
+            "wiki-topic-porto-alegre",
+            "wiki-topic-venezuela",
+            "wiki-topic-era-vargas",
+            "wiki-topic-primeira-republica-brasileira",
+            "ideology-marxism",
+            "ideology-liberalism",
+            "wiki-topic-anarquismo",
+            "ideology-communism",
+            "ideology-socialism",
+            "wiki-topic-protestantismo",
+            "wiki-topic-social-democracia",
+            "wiki-topic-secularismo"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-luta-de-classes": "[conferência de IA] Revolução de Outubro aparece na cronologia do verbete. (1917).",
+            "wiki-topic-leis-antissocialistas": "[conferência de IA] Bismarck temia uma revolução socialista semelhante à que ocorrera na Comuna de Paris em 1871.",
+            "wiki-topic-argentina": "[conferência de IA] Revolução de Maio substituiu o vice-rei pela Primeira Junta em Buenos Aires. (1810).",
+            "wiki-topic-porto-alegre": "[conferência de IA] Eclodiu em Porto Alegre a Revolução Farroupilha. (1835).",
+            "wiki-topic-venezuela": "[conferência de IA] Início da Revolução Bolivariana com a Assembleia Constituinte. (1999).",
+            "wiki-topic-era-vargas": "[conferência de IA] A Revolução de 1930 foi um movimento armado que depôs o presidente Washington Luís e impediu a posse de Júlio Prestes, marcando o fim da República Velha.",
+            "wiki-topic-primeira-republica-brasileira": "[conferência de IA] O período começou com a Proclamação da República, em 15 de novembro de 1889, e terminou com a Revolução de 1930."
+          }
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "A bibliografia do verbete lista Hannah Arendt, com a obra On Revolution, publicada em 1963.",
+        "Obras ligadas à tradição: Ciência política, Jurista, Bíblia."
+      ],
+      "question": "Que obras e documentos aprofundam o estudo de Revolução?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "sourceIds": [
+        "src-wiki-topic-ciencia-politica",
+        "src-wiki-topic-jurista",
+        "src-wiki-topic-biblia"
+      ],
+      "review": null,
+      "gap": "A bibliografia citada não traz edição nem nível de leitura; o roteiro estruturado fica pendente.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "leitura-1",
+              "title": "Leitura citada",
+              "kicker": "Roteiro de leitura",
+              "summary": "A bibliografia do verbete lista Hannah Arendt, com a obra On Revolution, publicada em 1963.",
+              "paragraphs": [
+                "A bibliografia do verbete lista Hannah Arendt, com a obra On Revolution, publicada em 1963."
+              ],
+              "sourceIds": ["src-wiki-conceito-revolucao"],
+              "entityIds": ["wiki-conceito-revolucao"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-ciencia-politica", "wiki-topic-jurista", "wiki-topic-biblia"],
+          "mode": "documents",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 19 afirmações da fonte principal e 90 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": "Quais fontes sustentam a leitura sobre Revolução?",
+      "bridge": null,
+      "sourceIds": [
+        "src-wiki-conceito-revolucao",
+        "src-wiki-topic-revolucao",
+        "src-wiki-person-emmanuel-joseph-sieyes",
+        "src-wiki-person-immanuel-kant",
+        "src-wiki-person-lorenz-von-stein",
+        "src-wiki-topic-john-locke",
+        "src-wiki-topic-mao-tse-tung",
+        "src-wiki-topic-huber-matos",
+        "src-wiki-topic-jean-jaures",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-olof-palme",
+        "src-wiki-topic-wilhelm-liebknecht",
+        "src-wiki-topic-daniel-ortega",
+        "src-wiki-topic-maximilien-de-robespierre",
+        "src-wiki-topic-mikhail-bakunin",
+        "src-wiki-topic-pierre-joseph-proudhon",
+        "src-wiki-topic-rafael-correa",
+        "src-wiki-topic-nicolau-copernico",
+        "src-wiki-topic-jaime-ii-de-inglaterra",
+        "src-wiki-topic-guilherme-iii-de-inglaterra",
+        "src-wiki-topic-jean-jacques-rousseau",
+        "src-wiki-topic-aristoteles",
+        "src-wiki-topic-samuel-p-huntington",
+        "src-wiki-topic-dalmo-dallari",
+        "src-wiki-topic-plinio-correa-de-oliveira",
+        "src-wiki-topic-martin-tovar-y-tovar",
+        "src-wiki-topic-fulgencio-batista",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-topic-che-guevara",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-jose-de-san-martin",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-simon-bolivar",
+        "src-wiki-topic-gabriela-mistral",
+        "src-wiki-topic-pablo-neruda",
+        "src-wiki-topic-miguel-angel-asturias",
+        "src-wiki-topic-papa-francisco",
+        "src-wiki-topic-liberalismo-classico",
+        "src-wiki-ideology-national-liberalism",
+        "src-wiki-topic-liberalismo",
+        "src-wiki-topic-direita-politica",
+        "src-wiki-topic-esquerda-politica",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-ecossocialismo",
+        "src-wiki-topic-revolucao-francesa",
+        "src-wiki-topic-partido-revolucionario-institucional",
+        "src-wiki-topic-revolucao-industrial",
+        "src-wiki-topic-uniao-civica-radical",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-revolucao-hungara-de-1956",
+        "src-wiki-topic-golpe-de-estado",
+        "src-wiki-topic-tenentismo",
+        "src-wiki-topic-revolucao-de-outubro",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-revolucao-comunista-chinesa",
+        "src-wiki-topic-revolucao-de-1930",
+        "src-wiki-topic-academia",
+        "src-wiki-topic-republica-islamica",
+        "src-wiki-topic-guerra-de-independencia-argelina",
+        "src-wiki-topic-revolucao-sandinista",
+        "src-wiki-topic-guerras-civis-afegas",
+        "src-wiki-topic-batalha-de-ayacucho",
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-guerra-fria",
+        "src-wiki-topic-igreja-catolica",
+        "src-wiki-topic-ateismo",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-renascimento",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-crise-de-suez",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-mercado-comum-do-sul",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-maconaria",
+        "src-wiki-topic-bloqueio-de-berlim",
+        "src-wiki-topic-amish",
+        "src-wiki-topic-luta-de-classes",
+        "src-wiki-topic-leis-antissocialistas",
+        "src-wiki-topic-argentina",
+        "src-wiki-topic-porto-alegre",
+        "src-wiki-topic-venezuela",
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-primeira-republica-brasileira",
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-protestantismo",
+        "src-wiki-topic-secularismo",
+        "src-wiki-topic-ciencia-politica",
+        "src-wiki-topic-jurista",
+        "src-wiki-topic-biblia"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "src-wiki-conceito-revolucao",
+            "src-wiki-topic-revolucao",
+            "src-wiki-person-emmanuel-joseph-sieyes",
+            "src-wiki-person-immanuel-kant",
+            "src-wiki-person-lorenz-von-stein",
+            "src-wiki-topic-john-locke",
+            "src-wiki-topic-mao-tse-tung",
+            "src-wiki-topic-huber-matos",
+            "src-wiki-topic-jean-jaures",
+            "src-wiki-topic-jose-marti",
+            "src-wiki-topic-olof-palme",
+            "src-wiki-topic-wilhelm-liebknecht",
+            "src-wiki-topic-daniel-ortega",
+            "src-wiki-topic-maximilien-de-robespierre",
+            "src-wiki-topic-mikhail-bakunin",
+            "src-wiki-topic-pierre-joseph-proudhon",
+            "src-wiki-topic-rafael-correa",
+            "src-wiki-topic-nicolau-copernico",
+            "src-wiki-topic-jaime-ii-de-inglaterra",
+            "src-wiki-topic-guilherme-iii-de-inglaterra",
+            "src-wiki-topic-jean-jacques-rousseau",
+            "src-wiki-topic-aristoteles",
+            "src-wiki-topic-samuel-p-huntington",
+            "src-wiki-topic-dalmo-dallari",
+            "src-wiki-topic-plinio-correa-de-oliveira",
+            "src-wiki-topic-martin-tovar-y-tovar",
+            "src-wiki-topic-fulgencio-batista",
+            "src-wiki-topic-fidel-castro",
+            "src-wiki-topic-che-guevara",
+            "src-wiki-topic-getulio-vargas",
+            "src-wiki-topic-jose-de-san-martin",
+            "src-wiki-topic-raul-castro",
+            "src-wiki-topic-simon-bolivar",
+            "src-wiki-topic-gabriela-mistral",
+            "src-wiki-topic-pablo-neruda",
+            "src-wiki-topic-miguel-angel-asturias",
+            "src-wiki-topic-papa-francisco",
+            "src-wiki-topic-liberalismo-classico",
+            "src-wiki-ideology-national-liberalism",
+            "src-wiki-topic-liberalismo",
+            "src-wiki-topic-direita-politica",
+            "src-wiki-topic-esquerda-politica",
+            "src-wiki-topic-social-democracia",
+            "src-wiki-topic-ecossocialismo",
+            "src-wiki-topic-revolucao-francesa",
+            "src-wiki-topic-partido-revolucionario-institucional",
+            "src-wiki-topic-revolucao-industrial",
+            "src-wiki-topic-uniao-civica-radical",
+            "src-wiki-topic-iluminismo",
+            "src-wiki-topic-revolucao-hungara-de-1956",
+            "src-wiki-topic-golpe-de-estado",
+            "src-wiki-topic-tenentismo",
+            "src-wiki-topic-revolucao-de-outubro",
+            "src-wiki-topic-revolucao-cubana",
+            "src-wiki-topic-revolucao-comunista-chinesa",
+            "src-wiki-topic-revolucao-de-1930",
+            "src-wiki-topic-academia",
+            "src-wiki-topic-republica-islamica",
+            "src-wiki-topic-guerra-de-independencia-argelina",
+            "src-wiki-topic-revolucao-sandinista",
+            "src-wiki-topic-guerras-civis-afegas",
+            "src-wiki-topic-batalha-de-ayacucho",
+            "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+            "src-wiki-topic-guerra-fria",
+            "src-wiki-topic-igreja-catolica",
+            "src-wiki-topic-ateismo",
+            "src-wiki-topic-crise-dos-misseis-de-cuba",
+            "src-wiki-topic-renascimento",
+            "src-wiki-topic-judeus",
+            "src-wiki-topic-fortaleza",
+            "src-wiki-topic-crise-de-suez",
+            "src-wiki-topic-guerra-da-coreia",
+            "src-wiki-topic-mercado-comum-do-sul",
+            "src-wiki-topic-grande-depressao",
+            "src-wiki-topic-maconaria",
+            "src-wiki-topic-bloqueio-de-berlim",
+            "src-wiki-topic-amish",
+            "src-wiki-topic-luta-de-classes",
+            "src-wiki-topic-leis-antissocialistas",
+            "src-wiki-topic-argentina",
+            "src-wiki-topic-porto-alegre",
+            "src-wiki-topic-venezuela",
+            "src-wiki-topic-era-vargas",
+            "src-wiki-topic-primeira-republica-brasileira",
+            "src-wiki-topic-anarquismo",
+            "src-wiki-topic-protestantismo",
+            "src-wiki-topic-secularismo",
+            "src-wiki-topic-ciencia-politica",
+            "src-wiki-topic-jurista",
+            "src-wiki-topic-biblia"
+          ]
+        }
+      ]
+    }
+  ]
+}

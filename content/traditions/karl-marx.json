@@ -1,0 +1,107 @@
+{
+  "slug": "karl-marx",
+  "subjectType": "pessoa",
+  "kind": "pessoa",
+  "rootQid": "Q9061",
+  "titles": {
+    "pt": "Karl Marx",
+    "en": "Karl Marx"
+  },
+  "palette": "marx",
+  "icon": "person",
+  "scope": {
+    "classificationNote": "Filósofo, economista, historiador e militante político alemão (1818–1883), autor de O Capital e coautor do Manifesto Comunista com Friedrich Engels, cuja obra fundou o materialismo histórico e a crítica da economia política.",
+    "period": "1818–1883 (formação na Alemanha, exílio em Paris, Bruxelas e Londres)",
+    "geography": "Alemanha, França, Bélgica e Reino Unido, com recepção global e no Brasil",
+    "includes": [
+      "trajetória intelectual e militante, parceria com Friedrich Engels e Primeira Internacional",
+      "obras centrais: Manuscritos de 1844, Manifesto Comunista, O 18 de Brumário, O Capital",
+      "debates sobre mais-valia, alienação, luta de classes e Estado"
+    ],
+    "excludes": [
+      "história completa dos regimes comunistas do século XX fora da relação direta com a obra de Marx",
+      "anedotas biográficas sem relevância intelectual ou política"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q9061",
+      "Q34787",
+      "Q7264",
+      "Q6186",
+      "Q7272",
+      "Q131015",
+      "Q7275",
+      "Q10931",
+      "Q9381",
+      "Q178790",
+      "Q7325",
+      "Q9235",
+      "Q40348",
+      "Q36442",
+      "Q152087",
+      "Q76422",
+      "Q40591",
+      "Q6373",
+      "Q58784",
+      "Q9268",
+      "Q5043",
+      "Q75809",
+      "Q11256",
+      "Q440",
+      "Q10316782",
+      "Q9592",
+      "Q23540",
+      "Q33986",
+      "Q11264",
+      "Q12539",
+      "Q5809",
+      "Q12554",
+      "Q19786",
+      "Q11270",
+      "Q368",
+      "Q46809",
+      "Q128160",
+      "Q83367",
+      "Q7066",
+      "Q1845",
+      "Q121254",
+      "Q93330",
+      "Q103285",
+      "Q104444",
+      "Q371402",
+      "Q8740",
+      "Q191721",
+      "Q232141",
+      "Q218452",
+      "Q40933",
+      "Q43297",
+      "Q80871",
+      "Q41679",
+      "Q482",
+      "Q11211",
+      "Q34189",
+      "Q8663",
+      "Q75603",
+      "Q1183",
+      "Q748780",
+      "Q506079",
+      "Q191014",
+      "Q173767",
+      "Q49101",
+      "Q156844"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação da leitura biográfico-intelectual de Karl Marx."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Karl_Marx"
+    }
+  ],
+  "discovery": {
+    "founderQids": [
+      "Q9061"
+    ],
+    "commonsCategory": "Category:Karl Marx"
+  }
+}

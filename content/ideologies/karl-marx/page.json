@@ -1,0 +1,758 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-karl-marx",
+  "slug": "karl-marx",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Karl Marx",
+  "kicker": "Ideologia política",
+  "summary": "Karl Marx: leitura sem resumo verificado.",
+  "published": false,
+  "atlasId": "atlas-karl-marx",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-17" },
+  "identity": {
+    "accent": "teal",
+    "palette": "marx",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "poster": { "figures": [] },
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "review": null,
+      "gap": "O grafo não traz resumo desta ideologia.",
+      "coverage": "pending",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Filósofo e crítico da economia política; publicou o primeiro volume de O capital em 1867."
+      ],
+      "question": "Como e em que contexto Karl Marx surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
+      "sourceIds": ["source-marx-marx-bio"],
+      "review": null,
+      "gap": "Usa passagens de contexto histórico porque a fonte principal não separa uma seção de origens.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Contexto histórico",
+              "kicker": "Origens e formação",
+              "summary": "Filósofo e crítico da economia política; publicou o primeiro volume de O capital em 1867.",
+              "paragraphs": [
+                "Filósofo e crítico da economia política; publicou o primeiro volume de O capital em 1867."
+              ],
+              "sourceIds": ["source-marx-marx-bio"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Ideias e posições",
+      "kicker": "Ideias e posições",
+      "minutes": 1,
+      "narrative": [
+        "Marx nasceu em Tréveris, na Prússia, e estudou direito e filosofia nas universidades de Bona e Berlim, aproximando-se depois dos hegelianos de esquerda.",
+        "Segundo as teorias de Marx, as sociedades humanas se desenvolvem através da luta de classes, entre a burguesia, que controla os meios de produção, e o proletariado.",
+        "A obra de Marx teve grande influência sobre intelectuais, sindicatos e partidos políticos em todo o mundo, e muitos a modificaram ou adaptaram.",
+        "Uma das obras listadas na bibliografia do verbete é Classical Sociological Theory, de Craig J. Calhoun, publicada em 2002."
+      ],
+      "question": "Quais ideias, escolhas e posições políticas marcaram Karl Marx?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "sourceIds": ["src-wiki-topic-karl-marx"],
+      "review": null,
+      "gap": "Reúne passagens descritivas registradas na fonte principal; síntese doutrinária estruturada ainda pendente.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Formulação registrada 1",
+              "kicker": "Pilares e princípios",
+              "summary": "Marx nasceu em Tréveris, na Prússia, e estudou direito e filosofia nas universidades de Bona e Berlim, aproximando-se depois dos hegelianos de esquerda.",
+              "paragraphs": [
+                "Marx nasceu em Tréveris, na Prússia, e estudou direito e filosofia nas universidades de Bona e Berlim, aproximando-se depois dos hegelianos de esquerda."
+              ],
+              "sourceIds": ["src-wiki-topic-karl-marx"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Formulação registrada 2",
+              "kicker": "Pilares e princípios",
+              "summary": "Segundo as teorias de Marx, as sociedades humanas se desenvolvem através da luta de classes, entre a burguesia, que controla os meios de produção, e o proletariado.",
+              "paragraphs": [
+                "Segundo as teorias de Marx, as sociedades humanas se desenvolvem através da luta de classes, entre a burguesia, que controla os meios de produção, e o proletariado."
+              ],
+              "sourceIds": ["src-wiki-topic-karl-marx"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "ideia-3",
+              "title": "Formulação registrada 3",
+              "kicker": "Pilares e princípios",
+              "summary": "A obra de Marx teve grande influência sobre intelectuais, sindicatos e partidos políticos em todo o mundo, e muitos a modificaram ou adaptaram.",
+              "paragraphs": [
+                "A obra de Marx teve grande influência sobre intelectuais, sindicatos e partidos políticos em todo o mundo, e muitos a modificaram ou adaptaram."
+              ],
+              "sourceIds": ["src-wiki-topic-karl-marx"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-4",
+              "title": "Formulação registrada 4",
+              "kicker": "Pilares e princípios",
+              "summary": "Uma das obras listadas na bibliografia do verbete é Classical Sociological Theory, de Craig J. Calhoun, publicada em 2002.",
+              "paragraphs": [
+                "Uma das obras listadas na bibliografia do verbete é Classical Sociological Theory, de Craig J. Calhoun, publicada em 2002."
+              ],
+              "sourceIds": ["src-wiki-topic-karl-marx"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Conceitos ligados à tradição: Estado, Revolução, Advogado."],
+      "question": "Que termos e conceitos ajudam a compreender Karl Marx?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "sourceIds": [
+        "src-wiki-topic-estado",
+        "src-wiki-conceito-revolucao",
+        "src-wiki-topic-advogado"
+      ],
+      "review": null,
+      "gap": "Termos e conceitos ligados à tradição; discussão conceitual ainda pendente.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-estado", "wiki-conceito-revolucao", "wiki-topic-advogado"],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Publicação da primeira tradução do Tomo I de O Capital, na Rússia.",
+        "Filósofo e crítico da economia política; publicou o primeiro volume de O capital em 1867."
+      ],
+      "question": "Em que períodos históricos Karl Marx se formou e mudou?",
+      "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
+      "sourceIds": ["src-wiki-topic-karl-marx", "source-marx-marx-bio"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1872",
+              "kicker": "Marco datado",
+              "summary": "Publicação da primeira tradução do Tomo I de O Capital, na Rússia.",
+              "paragraphs": ["Publicação da primeira tradução do Tomo I de O Capital, na Rússia."],
+              "sourceIds": ["src-wiki-topic-karl-marx"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "Filósofo e crítico da economia política; publicou o primeiro volume de O capital em 1867.",
+              "paragraphs": [
+                "Filósofo e crítico da economia política; publicou o primeiro volume de O capital em 1867."
+              ],
+              "sourceIds": ["source-marx-marx-bio"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [{ "itemId": "marco-1", "start": 1872, "end": 1872 }],
+          "entityIds": ["person-karl-marx"],
+          "markerIds": [],
+          "markerNotes": {}
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Trajetória e obras",
+      "kicker": "Trajetória e obras",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Lorenz von Stein, O capital: volume I, Adam Smith, Antonio Gramsci, Friedrich Engels, Lenin, Josef Stalin, Manifesto Comunista, Anti-Dühring, Imperialismo: Fase Superior do Capitalismo, Anton Pannekoek, Crítica ao Programa de Gotha, Pierre-Joseph Proudhon, Georg Wilhelm Friedrich Hegel, Leon Trótski, O Capital, Fidel Castro, Ferdinand Lassalle, Economia política, Carlo Cafiero, Che Guevara, Walter Benjamin, Ludwig Feuerbach, Salvador Allende, Leandro Konder, Fulgencio Batista, Augusto Pinochet, Raúl Castro, Juan Domingo Perón, José Martí, Eva Perón, Gabriela Mistral, Pablo Neruda, Miguel Ángel Asturias, María Estela Martínez de Perón, Rubén Darío, Getúlio Vargas."
+      ],
+      "question": "Quem formulou, liderou ou registrou Karl Marx?",
+      "bridge": "Dos atores e obras, seguimos para as correntes e desdobramentos relacionados.",
+      "sourceIds": [
+        "source-marx-marx-bio",
+        "source-marx-critique",
+        "marxism-source-wikidata-person-friedrich-engels",
+        "marxism-source-wikidata-person-vladimir-lenin",
+        "marxism-source-wikidata-person-joseph-stalin",
+        "marxism-source-wikidata-work-communist-manifesto",
+        "marxism-source-wikidata-person-anton-pannekoek",
+        "marxism-source-wikidata-work-critique-of-the-gotha-program",
+        "src-wiki-topic-karl-marx",
+        "src-wiki-wd-q9061",
+        "marxism-source-wikipedia-person-leon-trotsky",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-wd-q75784",
+        "src-wiki-topic-economia-politica",
+        "src-wikidata-verbetes",
+        "src-wiki-topic-ludwig-feuerbach",
+        "src-wiki-topic-salvador-allende",
+        "src-wiki-topic-leandro-konder",
+        "src-wiki-topic-fulgencio-batista",
+        "src-wiki-topic-augusto-pinochet",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-juan-domingo-peron",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-eva-peron",
+        "src-wiki-topic-gabriela-mistral",
+        "src-wiki-topic-pablo-neruda",
+        "src-wiki-topic-miguel-angel-asturias",
+        "src-wiki-topic-maria-estela-martinez-de-peron",
+        "src-wiki-topic-ruben-dario",
+        "src-wiki-topic-getulio-vargas"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "person-lorenz-von-stein",
+            "person-adam-smith",
+            "person-antonio-gramsci",
+            "person-friedrich-engels",
+            "person-vladimir-lenin",
+            "person-joseph-stalin",
+            "person-anton-pannekoek",
+            "wiki-topic-pierre-joseph-proudhon",
+            "wiki-topic-georg-wilhelm-friedrich-hegel",
+            "person-leon-trotsky",
+            "wiki-topic-fidel-castro",
+            "wiki-topic-ferdinand-lassalle",
+            "wiki-topic-carlo-cafiero",
+            "wiki-topic-che-guevara",
+            "wiki-topic-walter-benjamin",
+            "wiki-topic-ludwig-feuerbach",
+            "wiki-topic-salvador-allende",
+            "wiki-topic-leandro-konder",
+            "wiki-topic-fulgencio-batista",
+            "wiki-topic-augusto-pinochet",
+            "wiki-topic-raul-castro",
+            "wiki-topic-juan-domingo-peron",
+            "wiki-topic-jose-marti",
+            "wiki-topic-eva-peron",
+            "wiki-topic-gabriela-mistral",
+            "wiki-topic-pablo-neruda",
+            "wiki-topic-miguel-angel-asturias",
+            "wiki-topic-maria-estela-martinez-de-peron",
+            "wiki-topic-ruben-dario",
+            "wiki-topic-getulio-vargas"
+          ],
+          "mode": "thinkers",
+          "notes": {
+            "person-adam-smith": "Em Teorias da mais-valia, Marx examina definições de valor atribuídas a Smith.",
+            "wiki-topic-pierre-joseph-proudhon": "Marx criticou o pensamento do anarquista Proudhon na obra Miséria da Filosofia.",
+            "wiki-topic-georg-wilhelm-friedrich-hegel": "Não é influência documentada.",
+            "person-leon-trotsky": "Trótski foi um intelectual marxista e revolucionário bolchevique.",
+            "wiki-topic-fidel-castro": "Karl Marx influenciou Fidel Castro, segundo o verbete, com seus escritos marxistas.",
+            "wiki-topic-ferdinand-lassalle": "Não é influência documentada.",
+            "wiki-topic-ludwig-feuerbach": "O pensamento de Feuerbach foi uma grande influência sobre Marx, que adotou sua inversão materialista de Hegel."
+          }
+        },
+        {
+          "type": "entities",
+          "entityIds": [
+            "work-capital-volume-i",
+            "work-communist-manifesto",
+            "work-anti-duhring",
+            "work-imperialism-the-highest-stage-of-capitalism",
+            "work-critique-of-the-gotha-program",
+            "wiki-topic-o-capital",
+            "wiki-topic-economia-politica"
+          ],
+          "mode": "documents",
+          "notes": {
+            "work-capital-volume-i": "O primeiro volume foi publicado durante a vida de Marx.",
+            "wiki-topic-o-capital": "Marx escreveu O Capital, sua grande obra sobre a sociedade capitalista.",
+            "wiki-topic-economia-politica": "Karl Marx criticou a economia política em Introdução à Contribuição para a Crítica da Economia Política e nos Grundrisse."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Relações e alianças",
+      "kicker": "Relações e alianças",
+      "minutes": 1,
+      "narrative": ["Correntes relacionadas: Liberalismo, Social-democracia, Luxemburguismo."],
+      "question": "Que correntes dialogam ou disputam espaço com Karl Marx?",
+      "bridge": "Vistos os desdobramentos, o capítulo seguinte examina experiências, partidos e instituições.",
+      "sourceIds": [
+        "source-marx-jewish-question",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-luxemburguismo"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "ideology-liberalism",
+            "wiki-topic-social-democracia",
+            "wiki-topic-luxemburguismo"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "ideology-liberalism": "Em Sobre a questão judaica, Marx distingue emancipação política e emancipação humana e critica os direitos liberais como direitos do indivíduo separado da comunidade. Tema: Direitos do homem como direitos do burguês.",
+            "wiki-topic-social-democracia": "A social-democracia foi influenciada pelo socialismo revolucionário internacionalista de Karl Marx.",
+            "wiki-topic-luxemburguismo": "O luxemburguismo se inspira nas teorias de Karl Marx."
+          }
+        }
+      ]
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Atuação pública e legados",
+      "kicker": "Atuação pública e legados",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Burocracia, Sindicato, Judeus, Universidade Humboldt de Berlim, Museu Britânico, Luteranismo, Igreja Católica, Valparaíso (Chile), Revolução Cubana, Iluminismo, Idade Média, Crise dos mísseis de Cuba, Ateísmo, Amish, Partido Comunista de Cuba, Guerra do Vietnã, Invasão da Baía dos Porcos, Universidade do Chile, Movimento 26 de Julho, Time (revista), Escolástica, Forças Armadas dos Estados Unidos, Guerra da Coreia, Porto Rico, Primeira Guerra da Indochina, Ruptura sino-soviética, Crise de Suez."
+      ],
+      "question": "Em quais acontecimentos, partidos e instituições Karl Marx se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "sourceIds": [
+        "src-wiki-topic-burocracia",
+        "src-wiki-topic-sindicato",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-universidade-humboldt-de-berlim",
+        "src-wiki-topic-museu-britanico",
+        "src-wiki-topic-luteranismo",
+        "src-wiki-topic-igreja-catolica",
+        "src-wiki-topic-valparaiso-chile",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-idade-media",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-ateismo",
+        "src-wiki-topic-amish",
+        "src-wiki-topic-partido-comunista-de-cuba",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-topic-invasao-da-baia-dos-porcos",
+        "src-wiki-topic-universidade-do-chile",
+        "src-wiki-topic-movimento-26-de-julho",
+        "src-wiki-topic-time-revista",
+        "src-wiki-topic-escolastica",
+        "src-wiki-topic-forcas-armadas-dos-estados-unidos",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-porto-rico",
+        "src-wiki-topic-primeira-guerra-da-indochina",
+        "src-wiki-topic-ruptura-sino-sovietica",
+        "src-wiki-topic-crise-de-suez"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-burocracia",
+            "wiki-topic-sindicato",
+            "wiki-topic-judeus",
+            "wiki-topic-universidade-humboldt-de-berlim",
+            "wiki-topic-museu-britanico",
+            "wiki-topic-luteranismo",
+            "wiki-topic-igreja-catolica",
+            "wiki-topic-valparaiso-chile",
+            "wiki-topic-revolucao-cubana",
+            "wiki-topic-iluminismo",
+            "wiki-topic-idade-media",
+            "wiki-topic-crise-dos-misseis-de-cuba",
+            "wiki-topic-ateismo",
+            "wiki-topic-amish",
+            "wiki-topic-partido-comunista-de-cuba",
+            "wiki-topic-guerra-do-vietna",
+            "wiki-topic-invasao-da-baia-dos-porcos",
+            "wiki-topic-universidade-do-chile",
+            "wiki-topic-movimento-26-de-julho",
+            "wiki-topic-time-revista",
+            "wiki-topic-escolastica",
+            "wiki-topic-forcas-armadas-dos-estados-unidos",
+            "wiki-topic-guerra-da-coreia",
+            "wiki-topic-porto-rico",
+            "wiki-topic-primeira-guerra-da-indochina",
+            "wiki-topic-ruptura-sino-sovietica",
+            "wiki-topic-crise-de-suez"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-burocracia": "Karl Marx se opunha à burocracia, que via como sintoma do Estado burguês."
+          }
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Opositores culpam Marx por milhões de mortes ligadas a regimes marxistas, o que é contestado por muitos marxistas."
+      ],
+      "question": "Quais críticas e controvérsias cercam Karl Marx?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "sourceIds": ["src-wiki-topic-karl-marx"],
+      "review": null,
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia",
+              "kicker": "Argumentos e críticas",
+              "summary": "Opositores culpam Marx por milhões de mortes ligadas a regimes marxistas, o que é contestado por muitos marxistas.",
+              "paragraphs": [
+                "Opositores culpam Marx por milhões de mortes ligadas a regimes marxistas, o que é contestado por muitos marxistas."
+              ],
+              "sourceIds": ["src-wiki-topic-karl-marx"],
+              "entityIds": ["person-karl-marx"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Ateísmo marxista-leninista, Casamento, Marxismo, Comunismo, Socialismo, Positivismo, Judaísmo, Cristianismo, Protestantismo, Social-democracia."
+      ],
+      "question": "Como Karl Marx se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "sourceIds": [
+        "src-wiki-topic-karl-marx",
+        "src-wiki-topic-positivismo",
+        "src-wiki-topic-judaismo",
+        "src-wiki-topic-cristianismo",
+        "src-wiki-topic-protestantismo",
+        "src-wiki-topic-social-democracia"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "ideology-marxist-leninist-atheism",
+            "wiki-topic-casamento",
+            "ideology-marxism",
+            "ideology-communism",
+            "ideology-socialism",
+            "wiki-topic-positivismo",
+            "wiki-topic-judaismo",
+            "wiki-topic-cristianismo",
+            "wiki-topic-protestantismo",
+            "wiki-topic-social-democracia"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-casamento": "[conferência de IA] Casamento de Marx com Jenny von Westphalen. (1843-06-19)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": [
+        "Obras ligadas à tradição: Ciência política, Manifesto Comunista, O Capital, Antigo Testamento, Tanakh, Bíblia, Poesia."
+      ],
+      "question": "Que obras e documentos aprofundam o estudo de Karl Marx?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "sourceIds": [
+        "src-wiki-topic-ciencia-politica",
+        "src-wiki-topic-o-capital",
+        "src-wiki-topic-antigo-testamento",
+        "src-wiki-topic-tanakh",
+        "src-wiki-topic-biblia",
+        "src-wiki-topic-poesia"
+      ],
+      "review": null,
+      "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-ciencia-politica",
+            "work-communist-manifesto",
+            "wiki-topic-o-capital",
+            "wiki-topic-antigo-testamento",
+            "wiki-topic-tanakh",
+            "wiki-topic-biblia",
+            "wiki-topic-poesia"
+          ],
+          "mode": "documents",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 14 afirmações da fonte principal e 73 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": "Quais fontes sustentam a leitura sobre Karl Marx?",
+      "bridge": null,
+      "sourceIds": [
+        "source-marx-marx-bio",
+        "src-wiki-topic-karl-marx",
+        "src-wiki-topic-estado",
+        "src-wiki-conceito-revolucao",
+        "src-wiki-topic-advogado",
+        "source-marx-critique",
+        "marxism-source-wikidata-person-friedrich-engels",
+        "marxism-source-wikidata-person-vladimir-lenin",
+        "marxism-source-wikidata-person-joseph-stalin",
+        "marxism-source-wikidata-work-communist-manifesto",
+        "marxism-source-wikidata-person-anton-pannekoek",
+        "marxism-source-wikidata-work-critique-of-the-gotha-program",
+        "src-wiki-wd-q9061",
+        "marxism-source-wikipedia-person-leon-trotsky",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-wd-q75784",
+        "src-wiki-topic-economia-politica",
+        "src-wikidata-verbetes",
+        "src-wiki-topic-ludwig-feuerbach",
+        "src-wiki-topic-salvador-allende",
+        "src-wiki-topic-leandro-konder",
+        "src-wiki-topic-fulgencio-batista",
+        "src-wiki-topic-augusto-pinochet",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-juan-domingo-peron",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-eva-peron",
+        "src-wiki-topic-gabriela-mistral",
+        "src-wiki-topic-pablo-neruda",
+        "src-wiki-topic-miguel-angel-asturias",
+        "src-wiki-topic-maria-estela-martinez-de-peron",
+        "src-wiki-topic-ruben-dario",
+        "src-wiki-topic-getulio-vargas",
+        "source-marx-jewish-question",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-luxemburguismo",
+        "src-wiki-topic-burocracia",
+        "src-wiki-topic-sindicato",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-universidade-humboldt-de-berlim",
+        "src-wiki-topic-museu-britanico",
+        "src-wiki-topic-luteranismo",
+        "src-wiki-topic-igreja-catolica",
+        "src-wiki-topic-valparaiso-chile",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-idade-media",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-ateismo",
+        "src-wiki-topic-amish",
+        "src-wiki-topic-partido-comunista-de-cuba",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-topic-invasao-da-baia-dos-porcos",
+        "src-wiki-topic-universidade-do-chile",
+        "src-wiki-topic-movimento-26-de-julho",
+        "src-wiki-topic-time-revista",
+        "src-wiki-topic-escolastica",
+        "src-wiki-topic-forcas-armadas-dos-estados-unidos",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-porto-rico",
+        "src-wiki-topic-primeira-guerra-da-indochina",
+        "src-wiki-topic-ruptura-sino-sovietica",
+        "src-wiki-topic-crise-de-suez",
+        "src-wiki-topic-positivismo",
+        "src-wiki-topic-judaismo",
+        "src-wiki-topic-cristianismo",
+        "src-wiki-topic-protestantismo",
+        "src-wiki-topic-ciencia-politica",
+        "src-wiki-topic-o-capital",
+        "src-wiki-topic-antigo-testamento",
+        "src-wiki-topic-tanakh",
+        "src-wiki-topic-biblia",
+        "src-wiki-topic-poesia"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "source-marx-marx-bio",
+            "src-wiki-topic-karl-marx",
+            "src-wiki-topic-estado",
+            "src-wiki-conceito-revolucao",
+            "src-wiki-topic-advogado",
+            "source-marx-critique",
+            "marxism-source-wikidata-person-friedrich-engels",
+            "marxism-source-wikidata-person-vladimir-lenin",
+            "marxism-source-wikidata-person-joseph-stalin",
+            "marxism-source-wikidata-work-communist-manifesto",
+            "marxism-source-wikidata-person-anton-pannekoek",
+            "marxism-source-wikidata-work-critique-of-the-gotha-program",
+            "src-wiki-wd-q9061",
+            "marxism-source-wikipedia-person-leon-trotsky",
+            "src-wiki-topic-fidel-castro",
+            "src-wiki-wd-q75784",
+            "src-wiki-topic-economia-politica",
+            "src-wikidata-verbetes",
+            "src-wiki-topic-ludwig-feuerbach",
+            "src-wiki-topic-salvador-allende",
+            "src-wiki-topic-leandro-konder",
+            "src-wiki-topic-fulgencio-batista",
+            "src-wiki-topic-augusto-pinochet",
+            "src-wiki-topic-raul-castro",
+            "src-wiki-topic-juan-domingo-peron",
+            "src-wiki-topic-jose-marti",
+            "src-wiki-topic-eva-peron",
+            "src-wiki-topic-gabriela-mistral",
+            "src-wiki-topic-pablo-neruda",
+            "src-wiki-topic-miguel-angel-asturias",
+            "src-wiki-topic-maria-estela-martinez-de-peron",
+            "src-wiki-topic-ruben-dario",
+            "src-wiki-topic-getulio-vargas",
+            "source-marx-jewish-question",
+            "src-wiki-topic-social-democracia",
+            "src-wiki-topic-luxemburguismo",
+            "src-wiki-topic-burocracia",
+            "src-wiki-topic-sindicato",
+            "src-wiki-topic-judeus",
+            "src-wiki-topic-universidade-humboldt-de-berlim",
+            "src-wiki-topic-museu-britanico",
+            "src-wiki-topic-luteranismo",
+            "src-wiki-topic-igreja-catolica",
+            "src-wiki-topic-valparaiso-chile",
+            "src-wiki-topic-revolucao-cubana",
+            "src-wiki-topic-iluminismo",
+            "src-wiki-topic-idade-media",
+            "src-wiki-topic-crise-dos-misseis-de-cuba",
+            "src-wiki-topic-ateismo",
+            "src-wiki-topic-amish",
+            "src-wiki-topic-partido-comunista-de-cuba",
+            "src-wiki-topic-guerra-do-vietna",
+            "src-wiki-topic-invasao-da-baia-dos-porcos",
+            "src-wiki-topic-universidade-do-chile",
+            "src-wiki-topic-movimento-26-de-julho",
+            "src-wiki-topic-time-revista",
+            "src-wiki-topic-escolastica",
+            "src-wiki-topic-forcas-armadas-dos-estados-unidos",
+            "src-wiki-topic-guerra-da-coreia",
+            "src-wiki-topic-porto-rico",
+            "src-wiki-topic-primeira-guerra-da-indochina",
+            "src-wiki-topic-ruptura-sino-sovietica",
+            "src-wiki-topic-crise-de-suez",
+            "src-wiki-topic-positivismo",
+            "src-wiki-topic-judaismo",
+            "src-wiki-topic-cristianismo",
+            "src-wiki-topic-protestantismo",
+            "src-wiki-topic-ciencia-politica",
+            "src-wiki-topic-o-capital",
+            "src-wiki-topic-antigo-testamento",
+            "src-wiki-topic-tanakh",
+            "src-wiki-topic-biblia",
+            "src-wiki-topic-poesia"
+          ]
+        }
+      ]
+    }
+  ]
+}

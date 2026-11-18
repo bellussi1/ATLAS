@@ -1,0 +1,804 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-estado",
+  "slug": "estado",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Estado",
+  "kicker": "Ideologia política",
+  "summary": "Estado é uma entidade política que regula a sociedade e a população dentro de um território definido, tendo o governo como aparelho fundamental. O verbete descreve sua origem, há cerca de 5,5 mil anos, em contextos de estratificação e competição territorial, e mostra que não há consenso acadêmico sobre sua definição. A definição mais usada é a de Max Weber, que o caracteriza pelo monopólio do uso legítimo da violência. Também trata de sua distinção em relação à nação, ao governo e à sociedade civil, e das disputas teóricas entre liberais, marxistas, anarquistas e pluralistas sobre sua função.",
+  "published": false,
+  "atlasId": "atlas-estado",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-17" },
+  "identity": {
+    "accent": "teal",
+    "palette": "atlas",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "poster": { "figures": [] },
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Estado é uma entidade política que regula a sociedade e a população dentro de um território definido, tendo o governo como aparelho fundamental. O verbete descreve sua origem, há cerca de 5,5 mil anos, em contextos de estratificação e competição territorial, e mostra que não há consenso acadêmico sobre sua definição. A definição mais usada é a de Max Weber, que o caracteriza pelo monopólio do uso legítimo da violência. Também trata de sua distinção em relação à nação, ao governo e à sociedade civil, e das disputas teóricas entre liberais, marxistas, anarquistas e pluralistas sobre sua função."
+      ],
+      "question": "O que define Estado?",
+      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "sourceIds": ["src-wiki-topic-estado"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Segundo a Convenção de Montevidéu de 1933, o Estado como pessoa de direito internacional deve ter população permanente, território definido, governo e capacidade de relações com outros Estados."
+      ],
+      "question": "Como e em que contexto Estado surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
+      "sourceIds": ["src-wiki-topic-estado"],
+      "review": null,
+      "gap": "Usa passagens de contexto histórico porque a fonte principal não separa uma seção de origens.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Contexto histórico",
+              "kicker": "Origens e formação",
+              "summary": "Segundo a Convenção de Montevidéu de 1933, o Estado como pessoa de direito internacional deve ter população permanente, território definido, governo e capacidade de relações com outros Estados.",
+              "paragraphs": [
+                "Segundo a Convenção de Montevidéu de 1933, o Estado como pessoa de direito internacional deve ter população permanente, território definido, governo e capacidade de relações com outros Estados."
+              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Definições e critérios",
+      "kicker": "Definições e critérios",
+      "minutes": 1,
+      "narrative": [
+        "Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns."
+      ],
+      "question": "Quais ideias e práticas estruturam Estado?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "sourceIds": ["src-wiki-topic-estado"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns.",
+              "paragraphs": [
+                "Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns."
+              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de State.",
+        "Conceitos ligados à tradição: Estado-nação, Empirismo, Revolução."
+      ],
+      "question": "Que termos e conceitos ajudam a compreender Estado?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "sourceIds": [
+        "src-wiki-topic-estado",
+        "src-wiki-topic-estado-nacao",
+        "src-wiki-topic-empirismo",
+        "src-wiki-conceito-revolucao"
+      ],
+      "review": null,
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-estado"],
+          "mode": "concepts",
+          "notes": { "wiki-topic-estado": "Nomes alternativos: State." }
+        },
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-estado-nacao",
+            "wiki-topic-empirismo",
+            "wiki-conceito-revolucao"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Convenção de Montevidéu sobre os Direitos e Deveres dos Estados, que estabelece qualificações do Estado como pessoa de direito internacional.",
+        "Declaração sobre a Concessão da Independência aos Países e Povos Coloniais, que instituiu o contexto jurídico para a soberania popular segundo Adom Getachew."
+      ],
+      "question": "Em que períodos históricos Estado se formou e mudou?",
+      "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
+      "sourceIds": ["src-wiki-topic-estado"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1933",
+              "kicker": "Marco datado",
+              "summary": "Convenção de Montevidéu sobre os Direitos e Deveres dos Estados, que estabelece qualificações do Estado como pessoa de direito internacional.",
+              "paragraphs": [
+                "Convenção de Montevidéu sobre os Direitos e Deveres dos Estados, que estabelece qualificações do Estado como pessoa de direito internacional."
+              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1960",
+              "kicker": "Marco datado",
+              "summary": "Declaração sobre a Concessão da Independência aos Países e Povos Coloniais, que instituiu o contexto jurídico para a soberania popular segundo Adom Getachew.",
+              "paragraphs": [
+                "Declaração sobre a Concessão da Independência aos Países e Povos Coloniais, que instituiu o contexto jurídico para a soberania popular segundo Adom Getachew."
+              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1933, "end": 1933 },
+            { "itemId": "marco-2", "start": 1960, "end": 1960 }
+          ],
+          "entityIds": ["wiki-topic-estado"],
+          "markerIds": [],
+          "markerNotes": {}
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Formuladores e usos",
+      "kicker": "Formuladores e usos",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Emmanuel Joseph Sieyès, Ion C. Brătianu, Lorenz von Stein, Ferdinand Lassalle, Olof Palme, Otto von Bismarck, Raúl Castro, Ciência política, Evo Morales, Getúlio Vargas, Hugo Chávez, Rafael Correa, Paul von Hindenburg, Alberto Pasqualini, Júlio de Castilhos, Max Weber, Karl Marx, Nicolau Maquiavel, Cícero, Luís XIV de França, John Locke, Adam Smith, Hernán Cortés, Alejandro Jodorowsky, Dalmo Dallari, Sérgio Buarque de Holanda, Jessé Souza, Michel Temer."
+      ],
+      "question": "Quem formulou, liderou ou registrou Estado?",
+      "bridge": "Dos atores e obras, seguimos para as correntes e desdobramentos relacionados.",
+      "sourceIds": [
+        "src-wiki-person-emmanuel-joseph-sieyes",
+        "src-wiki-person-ion-c-bratianu",
+        "src-wiki-person-lorenz-von-stein",
+        "src-wiki-topic-ferdinand-lassalle",
+        "src-wiki-topic-olof-palme",
+        "src-wiki-topic-otto-von-bismarck",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-ciencia-politica",
+        "src-wiki-topic-evo-morales",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-hugo-chavez",
+        "src-wiki-topic-rafael-correa",
+        "src-wiki-topic-paul-von-hindenburg",
+        "src-wiki-topic-alberto-pasqualini",
+        "src-wiki-topic-julio-de-castilhos",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-nicolau-maquiavel",
+        "src-wiki-topic-cicero",
+        "src-wiki-topic-luis-xiv-de-franca",
+        "src-wiki-topic-hernan-cortes",
+        "src-wiki-topic-alejandro-jodorowsky",
+        "src-wiki-topic-dalmo-dallari",
+        "src-wiki-topic-sergio-buarque-de-holanda",
+        "src-wiki-topic-jesse-souza",
+        "src-wiki-topic-michel-temer"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "person-emmanuel-joseph-sieyes",
+            "person-ion-c-bratianu",
+            "person-lorenz-von-stein",
+            "wiki-topic-ferdinand-lassalle",
+            "wiki-topic-olof-palme",
+            "wiki-topic-otto-von-bismarck",
+            "wiki-topic-raul-castro",
+            "wiki-topic-evo-morales",
+            "wiki-topic-getulio-vargas",
+            "wiki-topic-hugo-chavez",
+            "wiki-topic-rafael-correa",
+            "wiki-topic-paul-von-hindenburg",
+            "wiki-topic-alberto-pasqualini",
+            "wiki-topic-julio-de-castilhos",
+            "wiki-topic-max-weber",
+            "person-karl-marx",
+            "wiki-topic-nicolau-maquiavel",
+            "wiki-topic-cicero",
+            "wiki-topic-luis-xiv-de-franca",
+            "person-john-locke",
+            "person-adam-smith",
+            "wiki-topic-hernan-cortes",
+            "wiki-topic-alejandro-jodorowsky",
+            "wiki-topic-dalmo-dallari",
+            "wiki-topic-sergio-buarque-de-holanda",
+            "wiki-topic-jesse-souza",
+            "wiki-topic-michel-temer"
+          ],
+          "mode": "thinkers",
+          "notes": {
+            "person-emmanuel-joseph-sieyes": "[conferência de IA] Defendia que o Terceiro Estado não precisava dos outros dois estamentos, o clero e a nobreza.",
+            "person-ion-c-bratianu": "[conferência de IA] Segundo o verbete, o Tratado de Paris encerrou a Guerra da Criméia e reduziu amplamente a influência russa na Romênia, abrindo espaço para a formação de um Estado-nação.",
+            "person-lorenz-von-stein": "[conferência de IA] Defendeu a combinação de Estado liberal constitucional com Estado de bem-estar social.",
+            "wiki-topic-ferdinand-lassalle": "[conferência de IA] Defendia a realização do socialismo por meio de cooperativas de produtores apoiadas pelo Estado, a ser conquistada pelo sufrágio universal.",
+            "wiki-topic-olof-palme": "[conferência de IA] Palme é descrito como um dos maiores exemplos da Social-Democracia Escandinava, por ter buscado conciliar economia de mercado com estado social.",
+            "wiki-topic-otto-von-bismarck": "[conferência de IA] Bismarck criou o primeiro estado de bem-estar social moderno para minar os oponentes socialistas.",
+            "wiki-topic-raul-castro": "[conferência de IA] Assumiu temporariamente a presidência do Conselho de Estado (2006-07-31).",
+            "wiki-topic-evo-morales": "[conferência de IA] O governo e parte da comunidade internacional classificaram a renúncia de Morales como golpe de Estado.",
+            "wiki-topic-getulio-vargas": "[conferência de IA] Em 1937 instaurou o Estado Novo por meio de um autogolpe e presidiu o país como ditador até 1945.",
+            "wiki-topic-hugo-chavez": "[conferência de IA] Chávez comandou um golpe de Estado contra o presidente Carlos Andrés Pérez. (1992-02-04).",
+            "wiki-topic-rafael-correa": "[conferência de IA] Correa propôs uma postura nacionalista, contrária aos organismos multilaterais como o Banco Mundial e o FMI, e favorável à maior participação do Estado na exploração do petróleo.",
+            "wiki-topic-paul-von-hindenburg": "[conferência de IA] Renunciou ao cargo de chefe do Estado-Maior do Exército. (1919-06-25).",
+            "wiki-topic-alberto-pasqualini": "[conferência de IA] Seu mandato de vereador foi interrompido com a instauração do Estado Novo. (1937).",
+            "wiki-topic-julio-de-castilhos": "[conferência de IA] Eleito presidente do estado do Rio Grande do Sul. (1891-07-15).",
+            "wiki-topic-max-weber": "[conferência de IA] Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns."
+          }
+        },
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-ciencia-politica"],
+          "mode": "documents",
+          "notes": {
+            "wiki-topic-ciencia-politica": "[conferência de IA] Há debate interno sobre o objeto de estudo: para alguns, o Estado; para outros, o poder."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Usos disputados e historicidade",
+      "kicker": "Usos disputados e historicidade",
+      "minutes": 1,
+      "narrative": [
+        "Correntes relacionadas: Neoliberalismo, Liberalismo clássico, Ordoliberalismo, Liberalismo, Individualismo, Tecnocracia, Capitalismo de Estado, Democracia, Trabalhismo brasileiro."
+      ],
+      "question": "Que correntes dialogam ou disputam espaço com Estado?",
+      "bridge": "Vistos os desdobramentos, o capítulo seguinte examina experiências, partidos e instituições.",
+      "sourceIds": [
+        "src-wiki-topic-neoliberalismo",
+        "src-wiki-topic-liberalismo-classico",
+        "src-wiki-topic-ordoliberalismo",
+        "src-wiki-topic-liberalismo",
+        "src-wiki-topic-individualismo",
+        "src-wiki-topic-tecnocracia",
+        "src-wiki-topic-capitalismo-de-estado",
+        "src-wiki-topic-democracia",
+        "src-wiki-ideologia-trabalhismo-brasileiro"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "ideology-neoliberalism",
+            "ideology-classical-liberalism",
+            "ideology-ordoliberalism",
+            "ideology-liberalism",
+            "wiki-topic-individualismo",
+            "wiki-topic-tecnocracia",
+            "wiki-topic-capitalismo-de-estado",
+            "wiki-topic-democracia",
+            "wiki-ideologia-trabalhismo-brasileiro"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "ideology-neoliberalism": "[conferência de IA] Em 1947, o encontro de Mont Pèlerin, na Suíça, reuniu liberais e conservadores e resultou na fundação de uma sociedade de ativistas contrária ao estado de bem-estar social.",
+            "ideology-classical-liberalism": "[conferência de IA] Há divergência sobre o sentido da expressão: alguns a usam para todas as formas de liberalismo anteriores ao século XX, outros para a primazia da liberdade individual e o Estado mínimo.",
+            "ideology-ordoliberalism": "[conferência de IA] A teoria sustenta que o Estado deve criar um ambiente jurídico adequado para a economia e manter um nível saudável de competição.",
+            "ideology-liberalism": "[conferência de IA] Os liberais se opuseram ao conservadorismo tradicional e procuraram substituir o absolutismo pela democracia representativa e pelo Estado de direito.",
+            "wiki-topic-individualismo": "[conferência de IA] O individualismo exprime a afirmação e a liberdade do indivíduo diante de um grupo, da sociedade ou do Estado.",
+            "wiki-topic-tecnocracia": "[conferência de IA] A tecnocracia no Brasil teria sido interrompida por uma plutocracia marcada por intervenções negativas do Estado na política econômica.",
+            "wiki-topic-capitalismo-de-estado": "[conferência de IA] Para os anarquistas, o socialismo de Estado é equivalente ao Capitalismo de Estado, sendo igualmente opressivo e apenas uma mudança dos capitalistas privados para o Estado como único empregador e capitalista.",
+            "wiki-topic-democracia": "[conferência de IA] O termo surgiu no século V a.C. nas cidades-estado gregas, notadamente na Atenas clássica, para significar governo do povo, em contraste com aristocracia.",
+            "wiki-ideologia-trabalhismo-brasileiro": "[conferência de IA] O trabalhismo é caracterizado pela defesa da integração da classe trabalhadora ao Estado nacional por meio da ampliação da legislação social."
+          }
+        }
+      ]
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Universidade Federal de Minas Gerais, Governo, Guerra, Congresso Nacional do Brasil, Gulag, Castilhismo, Golpe de Estado, Forma de governo, Ditadura, Estado unitário, Federação, Tribo, Cidade-estado, Teocracia, Instituição, Iluminismo, Poder judiciário, Idade Antiga, Revolução Americana, Poder executivo, Revolução Francesa, Huguenotes, República Romana, Pandemia de COVID-19, Tenochtitlán, Salvador, Judeus, Universidade Federal da Bahia, Grande Depressão, Organização das Nações Unidas para a Educação, a Ciência e a Cultura, Governador, Muçulmano, Fortaleza."
+      ],
+      "question": "Em quais acontecimentos, partidos e instituições Estado se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "sourceIds": [
+        "src-wiki-topic-universidade-federal-de-minas-gerais",
+        "src-wiki-topic-governo",
+        "src-wiki-topic-guerra",
+        "src-wiki-topic-congresso-nacional-do-brasil",
+        "src-wiki-topic-gulag",
+        "src-wiki-topic-castilhismo",
+        "src-wiki-topic-golpe-de-estado",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-ditadura",
+        "src-wiki-topic-estado-unitario",
+        "src-wiki-topic-federacao",
+        "src-wiki-topic-tribo",
+        "src-wiki-topic-cidade-estado",
+        "src-wiki-topic-teocracia",
+        "src-wiki-topic-instituicao",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-poder-judiciario",
+        "src-wiki-topic-idade-antiga",
+        "src-wiki-topic-poder-executivo",
+        "src-wiki-topic-huguenotes",
+        "src-wiki-topic-republica-romana",
+        "src-wiki-topic-pandemia-de-covid-19",
+        "src-wiki-topic-tenochtitlan",
+        "src-wiki-topic-salvador",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-universidade-federal-da-bahia",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-organizacao-das-nacoes-unidas-para-a-educacao-a-ciencia-e-a-cultura",
+        "src-wiki-topic-governador",
+        "src-wiki-topic-muculmano",
+        "src-wiki-topic-fortaleza"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-universidade-federal-de-minas-gerais",
+            "wiki-topic-governo",
+            "wiki-topic-guerra",
+            "wiki-topic-congresso-nacional-do-brasil",
+            "wiki-topic-gulag",
+            "wiki-topic-castilhismo",
+            "wiki-topic-golpe-de-estado",
+            "wiki-topic-forma-de-governo",
+            "wiki-topic-ditadura",
+            "wiki-topic-estado-unitario",
+            "wiki-topic-federacao",
+            "wiki-topic-tribo",
+            "wiki-topic-cidade-estado",
+            "wiki-topic-teocracia",
+            "wiki-topic-instituicao",
+            "wiki-topic-iluminismo",
+            "wiki-topic-poder-judiciario",
+            "wiki-topic-idade-antiga",
+            "event-american-revolution",
+            "wiki-topic-poder-executivo",
+            "event-french-revolution",
+            "wiki-topic-huguenotes",
+            "wiki-topic-republica-romana",
+            "wiki-topic-pandemia-de-covid-19",
+            "wiki-topic-tenochtitlan",
+            "wiki-topic-salvador",
+            "wiki-topic-judeus",
+            "wiki-topic-universidade-federal-da-bahia",
+            "wiki-topic-grande-depressao",
+            "wiki-topic-organizacao-das-nacoes-unidas-para-a-educacao-a-ciencia-e-a-cultura",
+            "wiki-topic-governador",
+            "wiki-topic-muculmano",
+            "wiki-topic-fortaleza"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-universidade-federal-de-minas-gerais": "[conferência de IA] Foi criada em 1927 como Universidade de Minas Gerais, instituição privada subsidiada pelo Estado.",
+            "wiki-topic-governo": "[conferência de IA] O governo, na distinção entre Estado e governo, refere-se às autoridades transitórias que dirigem o aparato estatal e tomam decisões políticas em um dado período.",
+            "wiki-topic-guerra": "[conferência de IA] Desde a ascensão do Estado, cerca de 5 000 anos atrás, a atividade militar ocorreu em grande parte do globo.",
+            "wiki-topic-congresso-nacional-do-brasil": "[conferência de IA] Segundo o verbete, D. Pedro I criou um Conselho de Estado para redigir a Constituição, que ele outorgou em 1824.",
+            "wiki-topic-gulag": "[conferência de IA] Morte de Stalin, após a qual o Estado manteve o amplo sistema de campos por algum tempo. (1953-03).",
+            "wiki-topic-castilhismo": "[conferência de IA] O Estado Novo foi, segundo o verbete, o transplante para nível nacional do castilhismo.",
+            "wiki-topic-golpe-de-estado": "[conferência de IA] Golpe de Estado é o derrube ilegal de um governo constitucionalmente legítimo por uma facção política, militares ou um ditador.",
+            "wiki-topic-forma-de-governo": "[conferência de IA] Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns."
+          }
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "A visão predatória, defendida por Charles Tilly, compara o Estado a uma forma de crime organizado.",
+        "A frase 'L'État, c'est moi' é atribuída a Luís XIV, mas provavelmente é apócrifa."
+      ],
+      "question": "Quais críticas e controvérsias cercam Estado?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "sourceIds": ["src-wiki-topic-estado"],
+      "review": null,
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "A visão predatória, defendida por Charles Tilly, compara o Estado a uma forma de crime organizado.",
+              "paragraphs": [
+                "A visão predatória, defendida por Charles Tilly, compara o Estado a uma forma de crime organizado."
+              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "A frase 'L'État, c'est moi' é atribuída a Luís XIV, mas provavelmente é apócrifa.",
+              "paragraphs": [
+                "A frase 'L'État, c'est moi' é atribuída a Luís XIV, mas provavelmente é apócrifa."
+              ],
+              "sourceIds": ["src-wiki-topic-estado"],
+              "entityIds": ["wiki-topic-estado"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Ditadura do proletariado, Paraguai, Santos, Cultura política, Era Vargas, Monopólio, Violência, Direito internacional, Direito, Greve geral de 1917, Soberania, Democracia, Socialismo, Liberalismo, Marxismo, Anarquismo, Social-democracia, Federalismo, Religião, Judaísmo."
+      ],
+      "question": "Como Estado se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "sourceIds": [
+        "src-wiki-topic-ditadura-do-proletariado",
+        "src-wiki-topic-paraguai",
+        "src-wiki-topic-santos",
+        "src-wiki-topic-cultura-politica",
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-greve-geral-de-1917",
+        "src-wiki-topic-democracia",
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-federalismo",
+        "src-wiki-topic-religiao",
+        "src-wiki-topic-judaismo"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-ditadura-do-proletariado",
+            "wiki-topic-paraguai",
+            "wiki-topic-santos",
+            "wiki-topic-cultura-politica",
+            "wiki-topic-era-vargas",
+            "wiki-topic-monopolio",
+            "wiki-topic-violencia",
+            "wiki-topic-direito-internacional",
+            "wiki-topic-direito",
+            "wiki-topic-greve-geral-de-1917",
+            "wiki-topic-soberania",
+            "wiki-topic-democracia",
+            "ideology-socialism",
+            "ideology-liberalism",
+            "ideology-marxism",
+            "wiki-topic-anarquismo",
+            "wiki-topic-social-democracia",
+            "wiki-topic-federalismo",
+            "wiki-topic-religiao",
+            "wiki-topic-judaismo"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-ditadura-do-proletariado": "[conferência de IA] Segundo o texto, a ditadura do proletariado é um Estado democrático com órgãos de governo de classe, em que toda autoridade pública é eleita e revogada por sufrágio universal.",
+            "wiki-topic-paraguai": "[conferência de IA] Golpe de Estado liderado por Alfredo Stroessner. (1954).",
+            "wiki-topic-santos": "[conferência de IA] Santos é um município brasileiro no litoral do estado de São Paulo, na Região Sudeste.",
+            "wiki-topic-cultura-politica": "[conferência de IA] A confiança é considerada um fator importante na cultura política, pois seu nível determina a capacidade de funcionamento do Estado.",
+            "wiki-topic-era-vargas": "[conferência de IA] Vargas instituiu o Estado Novo por meio de um golpe de Estado. (1937-11-10).",
+            "wiki-topic-monopolio": "[conferência de IA] Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns.",
+            "wiki-topic-violencia": "[conferência de IA] Segundo Max Weber, Estado é uma forma de governo que mantém o monopólio do uso legítimo da violência, embora outras definições sejam comuns.",
+            "wiki-topic-direito-internacional": "[conferência de IA] Segundo a Convenção de Montevidéu de 1933, o Estado como pessoa de direito internacional deve ter população permanente, território definido, governo e capacidade de relações com outros Estados.",
+            "wiki-topic-direito": "[conferência de IA] Segundo a Convenção de Montevidéu de 1933, o Estado como pessoa de direito internacional deve ter população permanente, território definido, governo e capacidade de relações com outros Estados.",
+            "wiki-topic-greve-geral-de-1917": "[conferência de IA] O presidente do Estado de São Paulo, Altino Arantes, atribuiu a greve a uma infiltração de anarquistas e comunistas.",
+            "wiki-topic-soberania": "[conferência de IA] Declaração sobre a Concessão da Independência aos Países e Povos Coloniais, que instituiu o contexto jurídico para a soberania popular segundo Adom Getachew. (1960)."
+          }
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Obras ligadas à tradição: O Príncipe, Bíblia."],
+      "question": "Que obras e documentos aprofundam o estudo de Estado?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "sourceIds": ["src-wiki-topic-o-principe", "src-wiki-topic-biblia"],
+      "review": null,
+      "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-o-principe", "wiki-topic-biblia"],
+          "mode": "documents",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 7 afirmações da fonte principal e 80 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": "Quais fontes sustentam a leitura sobre Estado?",
+      "bridge": null,
+      "sourceIds": [
+        "src-wiki-topic-estado",
+        "src-wiki-topic-estado-nacao",
+        "src-wiki-topic-empirismo",
+        "src-wiki-conceito-revolucao",
+        "src-wiki-person-emmanuel-joseph-sieyes",
+        "src-wiki-person-ion-c-bratianu",
+        "src-wiki-person-lorenz-von-stein",
+        "src-wiki-topic-ferdinand-lassalle",
+        "src-wiki-topic-olof-palme",
+        "src-wiki-topic-otto-von-bismarck",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-ciencia-politica",
+        "src-wiki-topic-evo-morales",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-hugo-chavez",
+        "src-wiki-topic-rafael-correa",
+        "src-wiki-topic-paul-von-hindenburg",
+        "src-wiki-topic-alberto-pasqualini",
+        "src-wiki-topic-julio-de-castilhos",
+        "src-wiki-topic-nicolau-maquiavel",
+        "src-wiki-topic-cicero",
+        "src-wiki-topic-luis-xiv-de-franca",
+        "src-wiki-topic-hernan-cortes",
+        "src-wiki-topic-alejandro-jodorowsky",
+        "src-wiki-topic-dalmo-dallari",
+        "src-wiki-topic-sergio-buarque-de-holanda",
+        "src-wiki-topic-jesse-souza",
+        "src-wiki-topic-michel-temer",
+        "src-wiki-topic-neoliberalismo",
+        "src-wiki-topic-liberalismo-classico",
+        "src-wiki-topic-ordoliberalismo",
+        "src-wiki-topic-liberalismo",
+        "src-wiki-topic-individualismo",
+        "src-wiki-topic-tecnocracia",
+        "src-wiki-topic-capitalismo-de-estado",
+        "src-wiki-topic-democracia",
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-universidade-federal-de-minas-gerais",
+        "src-wiki-topic-governo",
+        "src-wiki-topic-guerra",
+        "src-wiki-topic-congresso-nacional-do-brasil",
+        "src-wiki-topic-gulag",
+        "src-wiki-topic-castilhismo",
+        "src-wiki-topic-golpe-de-estado",
+        "src-wiki-topic-ditadura",
+        "src-wiki-topic-estado-unitario",
+        "src-wiki-topic-federacao",
+        "src-wiki-topic-tribo",
+        "src-wiki-topic-cidade-estado",
+        "src-wiki-topic-teocracia",
+        "src-wiki-topic-instituicao",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-poder-judiciario",
+        "src-wiki-topic-idade-antiga",
+        "src-wiki-topic-poder-executivo",
+        "src-wiki-topic-huguenotes",
+        "src-wiki-topic-republica-romana",
+        "src-wiki-topic-pandemia-de-covid-19",
+        "src-wiki-topic-tenochtitlan",
+        "src-wiki-topic-salvador",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-universidade-federal-da-bahia",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-organizacao-das-nacoes-unidas-para-a-educacao-a-ciencia-e-a-cultura",
+        "src-wiki-topic-governador",
+        "src-wiki-topic-muculmano",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-ditadura-do-proletariado",
+        "src-wiki-topic-paraguai",
+        "src-wiki-topic-santos",
+        "src-wiki-topic-cultura-politica",
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-greve-geral-de-1917",
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-federalismo",
+        "src-wiki-topic-religiao",
+        "src-wiki-topic-judaismo",
+        "src-wiki-topic-o-principe",
+        "src-wiki-topic-biblia"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "src-wiki-topic-estado",
+            "src-wiki-topic-estado-nacao",
+            "src-wiki-topic-empirismo",
+            "src-wiki-conceito-revolucao",
+            "src-wiki-person-emmanuel-joseph-sieyes",
+            "src-wiki-person-ion-c-bratianu",
+            "src-wiki-person-lorenz-von-stein",
+            "src-wiki-topic-ferdinand-lassalle",
+            "src-wiki-topic-olof-palme",
+            "src-wiki-topic-otto-von-bismarck",
+            "src-wiki-topic-raul-castro",
+            "src-wiki-topic-ciencia-politica",
+            "src-wiki-topic-evo-morales",
+            "src-wiki-topic-getulio-vargas",
+            "src-wiki-topic-hugo-chavez",
+            "src-wiki-topic-rafael-correa",
+            "src-wiki-topic-paul-von-hindenburg",
+            "src-wiki-topic-alberto-pasqualini",
+            "src-wiki-topic-julio-de-castilhos",
+            "src-wiki-topic-nicolau-maquiavel",
+            "src-wiki-topic-cicero",
+            "src-wiki-topic-luis-xiv-de-franca",
+            "src-wiki-topic-hernan-cortes",
+            "src-wiki-topic-alejandro-jodorowsky",
+            "src-wiki-topic-dalmo-dallari",
+            "src-wiki-topic-sergio-buarque-de-holanda",
+            "src-wiki-topic-jesse-souza",
+            "src-wiki-topic-michel-temer",
+            "src-wiki-topic-neoliberalismo",
+            "src-wiki-topic-liberalismo-classico",
+            "src-wiki-topic-ordoliberalismo",
+            "src-wiki-topic-liberalismo",
+            "src-wiki-topic-individualismo",
+            "src-wiki-topic-tecnocracia",
+            "src-wiki-topic-capitalismo-de-estado",
+            "src-wiki-topic-democracia",
+            "src-wiki-ideologia-trabalhismo-brasileiro",
+            "src-wiki-topic-universidade-federal-de-minas-gerais",
+            "src-wiki-topic-governo",
+            "src-wiki-topic-guerra",
+            "src-wiki-topic-congresso-nacional-do-brasil",
+            "src-wiki-topic-gulag",
+            "src-wiki-topic-castilhismo",
+            "src-wiki-topic-golpe-de-estado",
+            "src-wiki-topic-ditadura",
+            "src-wiki-topic-estado-unitario",
+            "src-wiki-topic-federacao",
+            "src-wiki-topic-tribo",
+            "src-wiki-topic-cidade-estado",
+            "src-wiki-topic-teocracia",
+            "src-wiki-topic-instituicao",
+            "src-wiki-topic-iluminismo",
+            "src-wiki-topic-poder-judiciario",
+            "src-wiki-topic-idade-antiga",
+            "src-wiki-topic-poder-executivo",
+            "src-wiki-topic-huguenotes",
+            "src-wiki-topic-republica-romana",
+            "src-wiki-topic-pandemia-de-covid-19",
+            "src-wiki-topic-tenochtitlan",
+            "src-wiki-topic-salvador",
+            "src-wiki-topic-judeus",
+            "src-wiki-topic-universidade-federal-da-bahia",
+            "src-wiki-topic-grande-depressao",
+            "src-wiki-topic-organizacao-das-nacoes-unidas-para-a-educacao-a-ciencia-e-a-cultura",
+            "src-wiki-topic-governador",
+            "src-wiki-topic-muculmano",
+            "src-wiki-topic-fortaleza",
+            "src-wiki-topic-ditadura-do-proletariado",
+            "src-wiki-topic-paraguai",
+            "src-wiki-topic-santos",
+            "src-wiki-topic-cultura-politica",
+            "src-wiki-topic-era-vargas",
+            "src-wiki-topic-greve-geral-de-1917",
+            "src-wiki-topic-anarquismo",
+            "src-wiki-topic-social-democracia",
+            "src-wiki-topic-federalismo",
+            "src-wiki-topic-religiao",
+            "src-wiki-topic-judaismo",
+            "src-wiki-topic-o-principe",
+            "src-wiki-topic-biblia"
+          ]
+        }
+      ]
+    }
+  ]
+}

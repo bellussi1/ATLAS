@@ -1,0 +1,111 @@
+{
+  "slug": "golpe-de-1964",
+  "subjectType": "acontecimento",
+  "kind": "acontecimento",
+  "rootQid": "Q4571496",
+  "titles": {
+    "pt": "Golpe de 1964",
+    "en": "1964 Brazilian coup d'état"
+  },
+  "palette": "conservadorismo",
+  "icon": "event",
+  "scope": {
+    "classificationNote": "Ruptura institucional de 31 de março–1º de abril de 1964 no Brasil que depôs o presidente João Goulart e instaurou o regime militar, envolvendo forças armadas, setores civis e contexto da Guerra Fria.",
+    "period": "1961–1964 (da crise da renúncia de Jânio Quadros ao AI-1)",
+    "geography": "Brasil, com articulações em Minas Gerais, Rio de Janeiro, São Paulo, Brasília e relações com os Estados Unidos",
+    "includes": [
+      "crise política do governo João Goulart, Reformas de Base e polarização de 1963–1964",
+      "movimentação militar de 31 de março e apoio civil/empresarial e diplomático",
+      "Ato Institucional nº 1 e instalação do governo Castelo Branco"
+    ],
+    "excludes": [
+      "história completa de todo o regime militar de 1964–1985 como tema único",
+      "biografias completas dos presidentes fora da crise de 1964"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q4571496",
+      "Q1370527",
+      "Q8683",
+      "Q25447221",
+      "Q4532311",
+      "Q7275",
+      "Q7174",
+      "Q178790",
+      "Q156844",
+      "Q11264",
+      "Q128160",
+      "Q11256",
+      "Q6229",
+      "Q6235",
+      "Q93330",
+      "Q155824",
+      "Q37230",
+      "Q34982",
+      "Q294430",
+      "Q170541",
+      "Q506079",
+      "Q188515",
+      "Q11270",
+      "Q362",
+      "Q5809",
+      "Q8740",
+      "Q43463",
+      "Q46809",
+      "Q6186",
+      "Q6206",
+      "Q103285",
+      "Q132140",
+      "Q8663",
+      "Q164597",
+      "Q211930",
+      "Q40933",
+      "Q1065",
+      "Q83201",
+      "Q132781",
+      "Q8458",
+      "Q191721",
+      "Q7272",
+      "Q164348",
+      "Q134165",
+      "Q12539",
+      "Q329888",
+      "Q33391",
+      "Q6199",
+      "Q4264",
+      "Q2269",
+      "Q83372",
+      "Q40591",
+      "Q43056",
+      "Q80871",
+      "Q38130",
+      "Q121254",
+      "Q7325",
+      "Q34189",
+      "Q748780",
+      "Q75603",
+      "Q368",
+      "Q36947",
+      "Q43777",
+      "Q173767",
+      "Q156774",
+      "Q19581",
+      "Q58132"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação do recorte histórico do Golpe de 1964."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Golpe_de_Estado_no_Brasil_em_1964"
+    }
+  ],
+  "discovery": {
+    "commonsCategory": "Category:1964 Brazilian coup d'état",
+    "ringCaps": {
+      "1": 50,
+      "2": 30,
+      "3": 30
+    }
+  }
+}

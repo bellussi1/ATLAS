@@ -1,0 +1,102 @@
+{
+  "slug": "revolucao",
+  "subjectType": "conceito",
+  "kind": "conceito",
+  "rootQid": "Q10931",
+  "titles": {
+    "pt": "Revolução",
+    "en": "Revolution"
+  },
+  "palette": "marx",
+  "icon": "concept",
+  "scope": {
+    "classificationNote": "Conceito político e histórico de ruptura rápida e estrutural da ordem política, jurídica ou social, interpretado de formas distintas pelo liberalismo, pelo marxismo, pelo anarquismo e pelo conservadorismo.",
+    "period": "Século XVII ao século XXI (da Revolução Gloriosa e Francesa às revoluções do século XX)",
+    "geography": "Europa, Américas e mundo contemporâneo, incluindo o debate sobre 1930 no Brasil",
+    "includes": [
+      "uso conceitual em teoria política (revolução política vs. revolução social)",
+      "grandes rupturas históricas: Revolução Gloriosa, Americana, Francesa, Russa, Chinesa e Cubana",
+      "contrastes entre reforma, revolução e golpe de Estado"
+    ],
+    "excludes": [
+      "sentido puramente astronômico ou metafórico fora da política e da história",
+      "narrativa enciclopédica exaustiva de cada revolução isolada"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q10931",
+      "Q6534",
+      "Q42976",
+      "Q11264",
+      "Q32993",
+      "Q2634783",
+      "Q7264",
+      "Q6216",
+      "Q6199",
+      "Q45382",
+      "Q36442",
+      "Q619",
+      "Q6186",
+      "Q7272",
+      "Q126188",
+      "Q129987",
+      "Q162633",
+      "Q9353",
+      "Q6527",
+      "Q868",
+      "Q672729",
+      "Q185351",
+      "Q19074",
+      "Q200790",
+      "Q1463516",
+      "Q10263787",
+      "Q1519107",
+      "Q934157",
+      "Q1237740",
+      "Q4571496",
+      "Q2750960",
+      "Q8683",
+      "Q9592",
+      "Q11270",
+      "Q11256",
+      "Q12539",
+      "Q57402",
+      "Q5809",
+      "Q23540",
+      "Q7066",
+      "Q121254",
+      "Q128160",
+      "Q4692",
+      "Q103285",
+      "Q156844",
+      "Q7325",
+      "Q134160",
+      "Q46809",
+      "Q8605",
+      "Q43463",
+      "Q49101",
+      "Q8663",
+      "Q1845",
+      "Q216920",
+      "Q4264",
+      "Q8698",
+      "Q80871",
+      "Q41726",
+      "Q34189",
+      "Q75603",
+      "Q151349",
+      "Q104444",
+      "Q450675"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação do conceito de Revolução."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Revolu%C3%A7%C3%A3o"
+    }
+  ],
+  "discovery": {
+    "commonsCategory": "Category:Revolutions"
+  }
+}

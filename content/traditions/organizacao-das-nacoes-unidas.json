@@ -1,0 +1,48 @@
+{
+  "slug": "organizacao-das-nacoes-unidas",
+  "subjectType": "instituicao",
+  "kind": "instituicao",
+  "rootQid": "Q1065",
+  "titles": {
+    "pt": "Organização das Nações Unidas",
+    "en": "United Nations"
+  },
+  "palette": "liberal",
+  "icon": "institution",
+  "scope": {
+    "classificationNote": "Organização intergovernamental fundada em 1945 para cooperação internacional, segurança coletiva, direitos humanos e direito internacional, com atuação marcada pelo Conselho de Segurança, Assembleia Geral e agências especializadas.",
+    "period": "1945 ao presente (com antecedentes na Liga das Nações)",
+    "geography": "Sistema multilateral global, com participação histórica do Brasil desde a fundação",
+    "includes": [
+      "Carta da ONU (1945), Assembleia Geral, Conselho de Segurança e poder de veto",
+      "Declaração Universal dos Direitos Humanos (1948) e agências (UNESCO, OIT, PNUD)",
+      "atuação na Guerra Fria, descolonização e debates de reforma do Conselho"
+    ],
+    "excludes": [
+      "história completa de cada conflito regional sem atuação direta da ONU",
+      "descrição exaustiva de programas técnicos sem relevância política ou histórica"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q1065",
+      "Q362",
+      "Q8683",
+      "Q7809",
+      "Q161718",
+      "Q123759",
+      "Q7275",
+      "Q7174"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação da Organização das Nações Unidas."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Organiza%C3%A7%C3%A3o_das_Na%C3%A7%C3%B5es_Unidas"
+    }
+  ],
+  "discovery": {
+    "commonsCategory": "Category:United Nations",
+    "ringCaps": { "1": 60, "2": 30, "3": 30 }
+  }
+}

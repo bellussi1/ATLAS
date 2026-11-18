@@ -1,0 +1,105 @@
+{
+  "slug": "luiz-inacio-lula-da-silva",
+  "subjectType": "pessoa",
+  "kind": "pessoa",
+  "rootQid": "Q37181",
+  "titles": {
+    "pt": "Luiz Inácio Lula da Silva",
+    "en": "Luiz Inácio Lula da Silva"
+  },
+  "palette": "social-democracia",
+  "icon": "politician",
+  "scope": {
+    "classificationNote": "Líder sindical, cofundador do Partido dos Trabalhadores e presidente do Brasil (2003–2010; 2023–), cuja trajetória conecta o novo sindicalismo do ABC, a redemocratização, o lulismo, programas sociais e disputas judiciais e políticas recentes.",
+    "period": "1975 ao presente (das greves do ABC à presidência e ao terceiro mandato)",
+    "geography": "Brasil (Pernambuco, São Paulo/ABC, Brasília) e inserção internacional na América Latina e Sul Global",
+    "includes": [
+      "novo sindicalismo no ABC paulista, greves de 1978–1980 e fundação do PT e da CUT",
+      "campanhas presidenciais desde 1989, governos 2003–2010 e políticas de transferência de renda",
+      "crise política pós-2013, processos da Lava Jato, prisão e anulação pelo STF, retorno em 2023"
+    ],
+    "excludes": [
+      "juízos partidários ou eleitorais sem respaldo em fontes verificáveis",
+      "história completa de todos os ministérios fora dos eixos principais"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q37181",
+      "Q1370527",
+      "Q178790",
+      "Q25447221",
+      "Q121254",
+      "Q51882536",
+      "Q7275",
+      "Q7174",
+      "Q40722",
+      "Q10304982",
+      "Q4264",
+      "Q6186",
+      "Q11256",
+      "Q1065",
+      "Q3587",
+      "Q243630",
+      "Q156844",
+      "Q230578",
+      "Q189280",
+      "Q236503",
+      "Q444",
+      "Q9684",
+      "Q821102",
+      "Q43777",
+      "Q657089",
+      "Q7272",
+      "Q164597",
+      "Q7264",
+      "Q362",
+      "Q8683",
+      "Q6206",
+      "Q9592",
+      "Q8458",
+      "Q155824",
+      "Q8663",
+      "Q11270",
+      "Q11264",
+      "Q46809",
+      "Q5809",
+      "Q128160",
+      "Q463533",
+      "Q83459",
+      "Q168888",
+      "Q58733",
+      "Q179975",
+      "Q10859",
+      "Q5043",
+      "Q41644",
+      "Q79800",
+      "Q134916",
+      "Q8434",
+      "Q170314",
+      "Q128135",
+      "Q133442",
+      "Q41493",
+      "Q31113",
+      "Q164089",
+      "Q23540",
+      "Q7325",
+      "Q34189",
+      "Q506079",
+      "Q80871",
+      "Q134165"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação da leitura biográfico-política de Luiz Inácio Lula da Silva."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva"
+    }
+  ],
+  "discovery": {
+    "founderQids": [
+      "Q37181"
+    ],
+    "commonsCategory": "Category:Luiz Inácio Lula da Silva"
+  }
+}

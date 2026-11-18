@@ -1,0 +1,4025 @@
+{
+  "id": "atlas-ditadura-militar-brasileira",
+  "slug": "ditadura-militar-brasileira-wikipedia",
+  "title": "Ditadura militar brasileira: registros em revisão",
+  "description": "Sínteses por IA de fontes enciclopédicas, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-17",
+  "entityIds": [
+    "wiki-topic-bloqueio-de-berlim",
+    "wiki-topic-eva-peron",
+    "wiki-topic-fortaleza",
+    "wiki-topic-gabriel-garcia-marquez",
+    "wiki-topic-historia-da-humanidade",
+    "wiki-topic-maria-estela-martinez-de-peron",
+    "wiki-topic-mendoza",
+    "wiki-topic-presidente-da-argentina",
+    "wiki-topic-primeira-guerra-da-indochina",
+    "wiki-topic-salvador",
+    "wiki-topic-segunda-guerra-sino-japonesa",
+    "wiki-topic-universidade-de-havana"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-bloqueio-de-berlim",
+      "slug": "bloqueio-de-berlim",
+      "title": "Bloqueio de Berlim",
+      "summary": "Crise da Guerra Fria iniciada em 24 de junho de 1948, quando a União Soviética interrompeu o acesso ferroviário, rodoviário e hidroviário a Berlim Ocidental, com o objetivo de forçar as potências ocidentais a deixar a cidade. As potências ocidentais responderam com a ponte aérea de Berlim para abastecer a população. A União Soviética encerrou o bloqueio em 12 de maio de 1949. O artigo aponta o bloqueio como foco das tensões que levaram à dissolução da aliança entre a URSS e as potências ocidentais.",
+      "aliases": [],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Crise da Guerra Fria iniciada em 24 de junho de 1948, quando a União Soviética interrompeu o acesso ferroviário, rodoviário e hidroviário a Berlim Ocidental, com o objetivo de forçar as potências ocidentais a deixar a cidade. As potências ocidentais responderam com a ponte aérea de Berlim para abastecer a população. A União Soviética encerrou o bloqueio em 12 de maio de 1949. O artigo aponta o bloqueio como foco das tensões que levaram à dissolução da aliança entre a URSS e as potências ocidentais."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O bloqueio foi desencadeado quando a União Soviética interrompeu o acesso ferroviário, rodoviário e hidroviário à cidade de Berlim Ocidental."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O objetivo do bloqueio, segundo o artigo, era forçar as potências ocidentais a sair de Berlim, dando aos soviéticos o controle sobre toda a cidade."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Berlim ficava no centro da zona de ocupação soviética, e as zonas americana, britânica e francesa da cidade estavam cercadas por território ocupado pelo Exército Vermelho."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "Os soviéticos rejeitaram os argumentos ocidentais de que os direitos de ocupação davam às potências ocidentais o direito legal de uso das rotas de acesso a Berlim."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "O artigo cita a obra de Henry Ashby Turner sobre as duas Alemanhas desde 1945."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q151349", "wikipedia": "Bloqueio de Berlim" },
+      "discoveryMetadata": {
+        "description": "Crise da Guerra Fria em que a União Soviética bloqueou o acesso terrestre a Berlim Ocidental, entre 1948 e 1949.",
+        "wikipediaTitle": "Bloqueio de Berlim",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Bloqueio_de_Berlim",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72224323, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    },
+    {
+      "id": "wiki-topic-eva-peron",
+      "slug": "eva-peron",
+      "title": "Eva Perón",
+      "summary": "Maria Eva Duarte de Perón, conhecida como Eva Perón ou Evita, foi política, atriz e filantropa argentina nascida em Los Toldos em 1919 e morta em Buenos Aires em 1952. Foi primeira-dama de junho de 1946 até sua morte, como esposa do presidente Juan Domingo Perón. Iniciou a carreira artística em Buenos Aires, onde conheceu Perón em 1944. Seu nome é central para o peronismo e para o imaginário político argentino, e o artigo registra também as disputas sobre sua imagem e seu mito.",
+      "aliases": ["Maria Eva Duarte de Perón", "Evita"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Maria Eva Duarte de Perón, conhecida como Eva Perón ou Evita, foi política, atriz e filantropa argentina nascida em Los Toldos em 1919 e morta em Buenos Aires em 1952. Foi primeira-dama de junho de 1946 até sua morte, como esposa do presidente Juan Domingo Perón. Iniciou a carreira artística em Buenos Aires, onde conheceu Perón em 1944. Seu nome é central para o peronismo e para o imaginário político argentino, e o artigo registra também as disputas sobre sua imagem e seu mito."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Em 1935, aos quinze anos, partiu para Buenos Aires para seguir carreira artística."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Eva era vista como defensora dos pobres, mas rejeitava o rótulo de militante de esquerda."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "O artigo cita a obra de Tomás Eloy Martínez sobre Evita, publicada em 1995."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q40933", "wikipedia": "Eva Perón" },
+      "discoveryMetadata": {
+        "description": "Primeira-dama argentina (1946-1952), atriz e figura central do peronismo, conhecida como Evita.",
+        "wikipediaTitle": "Eva Perón",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Eva_Per%C3%B3n",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71989931, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-fortaleza",
+      "slug": "fortaleza",
+      "title": "Fortaleza",
+      "summary": "Capital do estado do Ceará, no litoral Atlântico do Nordeste brasileiro, a cidade se desenvolveu às margens do riacho Pajeú a partir do Forte Schoonenborch, construído pelos holandeses entre 1649 e 1654. Foi elevada à condição de vila em 1726 e escolhida capital da capitania em 1799; em 1823 recebeu a categoria de cidade. O artigo destaca sua relevância como a maior população entre as capitais do Norte e Nordeste, centro econômico e destino turístico, além de sua história de ocupação, urbanização e formação administrativa.",
+      "aliases": ["Loira Desposada do Sol", "Fortaleza de Nova Bragança"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Capital do estado do Ceará, no litoral Atlântico do Nordeste brasileiro, a cidade se desenvolveu às margens do riacho Pajeú a partir do Forte Schoonenborch, construído pelos holandeses entre 1649 e 1654. Foi elevada à condição de vila em 1726 e escolhida capital da capitania em 1799; em 1823 recebeu a categoria de cidade. O artigo destaca sua relevância como a maior população entre as capitais do Norte e Nordeste, centro econômico e destino turístico, além de sua história de ocupação, urbanização e formação administrativa."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O nome Fortaleza alude ao Forte Schoonenborch, construído pelos holandeses durante sua segunda permanência no local, entre 1649 e 1654, que deu origem ao município."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Em 1799, a Capitania do Ceará foi desmembrada da Capitania de Pernambuco e Fortaleza passou a ser sua capital."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q43463", "wikipedia": "Fortaleza" },
+      "discoveryMetadata": {
+        "description": "Capital do estado brasileiro do Ceará, situada no litoral Atlântico da Região Nordeste do país.",
+        "wikipediaTitle": "Fortaleza",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Fortaleza",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73264114, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-gabriel-garcia-marquez",
+      "slug": "gabriel-garcia-marquez",
+      "title": "Gabriel García Márquez",
+      "summary": "Escritor, jornalista e político colombiano, nascido em Aracataca em 1927 e morto na Cidade do México em 2014. Autor de Cem Anos de Solidão (1967), considerado um marco da literatura latino-americana, recebeu o Nobel de Literatura de 1982. Seus livros trataram dos rumos políticos e sociais da América Latina e da condição humana, sobretudo da solidão. O verbete reúne sua trajetória e explica sua importância para a literatura latino-americana do século XX.",
+      "aliases": ["Gabriel José García Márquez", "Gabo"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Escritor, jornalista e político colombiano, nascido em Aracataca em 1927 e morto na Cidade do México em 2014. Autor de Cem Anos de Solidão (1967), considerado um marco da literatura latino-americana, recebeu o Nobel de Literatura de 1982. Seus livros trataram dos rumos políticos e sociais da América Latina e da condição humana, sobretudo da solidão. O verbete reúne sua trajetória e explica sua importância para a literatura latino-americana do século XX."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Nasceu em Aracataca, na Colômbia, em 1927, e morreu na Cidade do México em 2014. Foi escritor, jornalista, editor, ativista e político colombiano."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "É apontado como o principal representante do realismo mágico na literatura latino-americana."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Seus livros tratavam dos rumos políticos e sociais da América Latina e, de forma mais ampla, da condição humana, sobretudo da solidão."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q5878", "wikipedia": "Gabriel García Márquez" },
+      "discoveryMetadata": {
+        "description": "Escritor, jornalista e político colombiano, Nobel de Literatura de 1982 e autor de Cem Anos de Solidão.",
+        "wikipediaTitle": "Gabriel García Márquez",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73413433, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-historia-da-humanidade",
+      "slug": "historia-da-humanidade",
+      "title": "História da humanidade",
+      "summary": "História da humanidade é o registro da trajetória dos seres humanos desde a pré-história até o presente. O artigo descreve as origens dos hominínios na África, a Revolução Neolítica na Ásia Ocidental, o surgimento das primeiras civilizações perto de rios, a Era Axial, a formação e a queda de impérios regionais, o período pós-clássico, a Idade Moderna e o período contemporâneo a partir de cerca de 1800. Os pesquisadores dividem essa história em períodos por meio de diferentes critérios, e o estudo reúne disciplinas como história, arqueologia, antropologia, linguística e genética.",
+      "aliases": ["history of humanity"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "História da humanidade é o registro da trajetória dos seres humanos desde a pré-história até o presente. O artigo descreve as origens dos hominínios na África, a Revolução Neolítica na Ásia Ocidental, o surgimento das primeiras civilizações perto de rios, a Era Axial, a formação e a queda de impérios regionais, o período pós-clássico, a Idade Moderna e o período contemporâneo a partir de cerca de 1800. Os pesquisadores dividem essa história em períodos por meio de diferentes critérios, e o estudo reúne disciplinas como história, arqueologia, antropologia, linguística e genética."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O artigo situa o surgimento dos humanos modernos na África, há cerca de 300.000 anos."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "A Revolução Neolítica, na Ásia Ocidental, trouxe o primeiro cultivo sistemático de plantas e a criação de animais.",
+            "A Revolução Industrial surgiu no século XVIII, quando o acúmulo de conhecimentos e técnicas alcançou uma massa crítica."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Na Idade Moderna, aproximadamente entre 1500 e 1800, as potências europeias exploraram e colonizaram regiões por todo o mundo."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "As causas da ascensão europeia, chamada Grande Divergência, ainda são discutidas pelos historiadores."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q200325", "wikipedia": "História da humanidade" },
+      "discoveryMetadata": {
+        "description": "Registro da trajetória dos seres humanos desde a pré-história até o presente.",
+        "wikipediaTitle": "História da humanidade",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Hist%C3%B3ria_da_humanidade",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73236472, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    },
+    {
+      "id": "wiki-topic-maria-estela-martinez-de-peron",
+      "slug": "maria-estela-martinez-de-peron",
+      "title": "María Estela Martínez de Perón",
+      "summary": "María Estela Martínez de Perón, conhecida como Isabel Perón ou Isabelita, nasceu em La Rioja em 4 de fevereiro de 1931. Foi terceira esposa de Juan Domingo Perón e, após a morte dele em 1º de julho de 1974, tornou-se a 38.ª presidente da Argentina, a primeira mulher a chefiar Estado e governo no país. Foi deposta por golpe militar em 24 de março de 1976, ficou em prisão domiciliar até 1981 e depois viveu na Espanha. Seu caso é relevante por marcar a primeira presidência feminina argentina e por ocorrer em período de instabilidade e violência política.",
+      "aliases": ["Isabel Perón", "Isabelita"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "María Estela Martínez de Perón, conhecida como Isabel Perón ou Isabelita, nasceu em La Rioja em 4 de fevereiro de 1931. Foi terceira esposa de Juan Domingo Perón e, após a morte dele em 1º de julho de 1974, tornou-se a 38.ª presidente da Argentina, a primeira mulher a chefiar Estado e governo no país. Foi deposta por golpe militar em 24 de março de 1976, ficou em prisão domiciliar até 1981 e depois viveu na Espanha. Seu caso é relevante por marcar a primeira presidência feminina argentina e por ocorrer em período de instabilidade e violência política."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Assumiu a presidência após a morte de Perón e tornou-se a primeira mulher a exercer a chefia de Estado e de governo na Argentina."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Foi eleita primeira-dama e vice-presidente na chapa de seu marido nas eleições de 1973.",
+            "Seu governo foi marcado por instabilidade política e econômica e pelo aumento da violência política."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q191014", "wikipedia": "María Estela Martínez de Perón" },
+      "discoveryMetadata": {
+        "description": "Política argentina, presidente da Argentina de 1974 a 1976, deposta pelo golpe militar de 1976.",
+        "wikipediaTitle": "María Estela Martínez de Perón",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mar%C3%ADa_Estela_Mart%C3%ADnez_de_Per%C3%B3n",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73370919, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-mendoza",
+      "slug": "mendoza",
+      "title": "Mendoza",
+      "summary": "Mendoza é a capital da província homônima, na Argentina, situada a leste dos Andes. Segundo o artigo, o primeiro assentamento espanhol na região foi estabelecido em 2 de março de 1561 por Pedro de Castillo, comissionado por García Hurtado de Mendoza. Em 1562 a cidade foi transferida, operação a cargo de Juan Jufré. Ela é descrita como parada frequente de montanhistas rumo ao Aconcágua e como base para o enoturismo na região vinícola, o que explica sua importância no artigo.",
+      "aliases": ["cidade de Mendoza"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Mendoza é a capital da província homônima, na Argentina, situada a leste dos Andes. Segundo o artigo, o primeiro assentamento espanhol na região foi estabelecido em 2 de março de 1561 por Pedro de Castillo, comissionado por García Hurtado de Mendoza. Em 1562 a cidade foi transferida, operação a cargo de Juan Jufré. Ela é descrita como parada frequente de montanhistas rumo ao Aconcágua e como base para o enoturismo na região vinícola, o que explica sua importância no artigo."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": ["A cidade serve de parada para escaladores que se dirigem ao Aconcágua."]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Grande parte da edificação colonial foi destruída em 20 de março de 1861 por um intenso terremoto."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q44237", "wikipedia": "Mendoza" },
+      "discoveryMetadata": {
+        "description": "Capital da província argentina de Mendoza, situada no lado leste dos Andes.",
+        "wikipediaTitle": "Mendoza",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mendoza",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71066526, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-presidente-da-argentina",
+      "slug": "presidente-da-argentina",
+      "title": "Presidente da Argentina",
+      "summary": "O Presidente da Nação Argentina é o chefe de Estado, chefe de governo e titular do Poder Executivo Nacional, além de comandante em chefe das Forças Armadas. Suas origens estão ligadas à nomeação de Bernardino Rivadavia como presidente das Províncias Unidas do Rio da Prata em 1826. Em 1853 uma nova Constituição estabeleceu eleições presidenciais indiretas, e o título formal de Presidente da Nação Argentina foi assumido em 1860 por Santiago Derqui. Desde 1994 o presidente é eleito pelo voto direto para mandatos de quatro anos, com uma reeleição consecutiva.",
+      "aliases": ["Presidente da Nação Argentina"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "O Presidente da Nação Argentina é o chefe de Estado, chefe de governo e titular do Poder Executivo Nacional, além de comandante em chefe das Forças Armadas. Suas origens estão ligadas à nomeação de Bernardino Rivadavia como presidente das Províncias Unidas do Rio da Prata em 1826. Em 1853 uma nova Constituição estabeleceu eleições presidenciais indiretas, e o título formal de Presidente da Nação Argentina foi assumido em 1860 por Santiago Derqui. Desde 1994 o presidente é eleito pelo voto direto para mandatos de quatro anos, com uma reeleição consecutiva."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "As origens do cargo presidencial argentino estão ligadas à nomeação de Bernardino Rivadavia como presidente das Províncias Unidas do Rio da Prata, em 8 de fevereiro de 1826."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O presidente é descrito como chefe de Estado, chefe de governo e titular do Poder Executivo Nacional."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Desde 1994 o presidente e o vice-presidente são eleitos pelo sistema direto, com mandato de quatro anos e possibilidade de uma reeleição seguinte."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q12969145", "wikipedia": "Presidente da Argentina" },
+      "discoveryMetadata": {
+        "description": "Cargo de chefe de Estado e de governo da República Argentina, titular do Poder Executivo Nacional e comandante em chefe das Forças Armadas.",
+        "wikipediaTitle": "Presidente da Argentina",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Presidente_da_Argentina",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73328995, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-primeira-guerra-da-indochina",
+      "slug": "primeira-guerra-da-indochina",
+      "title": "Primeira Guerra da Indochina",
+      "summary": "A Primeira Guerra da Indochina foi um conflito iniciado em 19 de dezembro de 1946 na Indochina Francesa e encerrado em 1.º de agosto de 1954. Opôs o Corpo Expedicionário Francês no Extremo Oriente, com apoio dos Estados Unidos, ao Viet Minh, apoiado pela China e pela União Soviética. O artigo relata que o conflito terminou com os acordos de Genebra, que levaram à partição do Vietnã em dois estados rivais, e que foi seguido pela Guerra do Vietnã.",
+      "aliases": ["Guerra da Indochina", "Guerra de Resistência Antifrancesa"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A Primeira Guerra da Indochina foi um conflito iniciado em 19 de dezembro de 1946 na Indochina Francesa e encerrado em 1.º de agosto de 1954. Opôs o Corpo Expedicionário Francês no Extremo Oriente, com apoio dos Estados Unidos, ao Viet Minh, apoiado pela China e pela União Soviética. O artigo relata que o conflito terminou com os acordos de Genebra, que levaram à partição do Vietnã em dois estados rivais, e que foi seguido pela Guerra do Vietnã."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Os combates entre as forças francesas e o Viet Minh no Sul são datados pelo artigo a partir de setembro de 1945."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O conflito teve início na Indochina Francesa em 19 de dezembro de 1946 e prolongou-se até 1.º de agosto de 1954."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Após a chegada de tropas chinesas à fronteira norte em 1949, o conflito passou a ser de guerra convencional, segundo o artigo."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O artigo registra que esquerdistas franceses chamavam o conflito de guerra suja, expressão que aparece como designação de um grupo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q748780", "wikipedia": "Primeira Guerra da Indochina" },
+      "discoveryMetadata": {
+        "description": "Conflito armado entre a França e o movimento Viet Minh na Indochina, entre 1946 e 1954.",
+        "wikipediaTitle": "Primeira Guerra da Indochina",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Primeira_Guerra_da_Indochina",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72128882, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    },
+    {
+      "id": "wiki-topic-salvador",
+      "slug": "salvador",
+      "title": "Salvador",
+      "summary": "Salvador é o município capital do estado da Bahia. Foi fundada em 29 de março de 1549 por Tomé de Sousa, com a implantação do Governo-Geral do Brasil, e foi a primeira capital do Brasil Colonial, até 1763. O artigo a descreve como cidade planejada e como centro da cultura afro-brasileira, com destaque para o Centro Histórico, declarado Patrimônio Mundial pela Unesco em 1985. Tem importância econômica, portuária e turística no Nordeste.",
+      "aliases": [
+        "São Salvador da Bahia de Todos os Santos",
+        "Salvador da Bahia",
+        "São Salvador",
+        "SSA"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Salvador é o município capital do estado da Bahia. Foi fundada em 29 de março de 1549 por Tomé de Sousa, com a implantação do Governo-Geral do Brasil, e foi a primeira capital do Brasil Colonial, até 1763. O artigo a descreve como cidade planejada e como centro da cultura afro-brasileira, com destaque para o Centro Histórico, declarado Patrimônio Mundial pela Unesco em 1985. Tem importância econômica, portuária e turística no Nordeste."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "A cidade foi estruturada em dois níveis, Cidade Alta, sede do poder civil e religioso, e Cidade Baixa, de atividades marítimas e comerciais."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "A cidade foi capital e sede da administração colonial do Brasil até 1763, quando foi substituída pelo Rio de Janeiro."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q36947", "wikipedia": "Salvador" },
+      "discoveryMetadata": {
+        "description": "Município brasileiro, capital do estado da Bahia, fundado em 1549 como primeira capital do Brasil Colonial.",
+        "wikipediaTitle": "Salvador",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Salvador",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73264955, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-segunda-guerra-sino-japonesa",
+      "slug": "segunda-guerra-sino-japonesa",
+      "title": "Segunda Guerra Sino-Japonesa",
+      "summary": "A Segunda Guerra Sino-Japonesa foi um conflito militar travado principalmente entre a República da China e o Império do Japão entre 7 de julho de 1937 e 2 de setembro de 1945. O início é normalmente situado no Incidente da Ponte Marco Polo, em 1937, mas algumas fontes datam o início na Invasão japonesa da Manchúria, em 1931. O artigo a descreve como a maior guerra asiática do século XX e a associa a uma política imperialista japonesa de expansão. Ela se fundiu com a Segunda Guerra Mundial após os ataques japoneses à Malaia e a Pearl Harbor, em 1941.",
+      "aliases": [
+        "Guerra Sino-Japonesa",
+        "Second Sino-Japanese War",
+        "Guerra de Resistência contra a Agressão Japonesa"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A Segunda Guerra Sino-Japonesa foi um conflito militar travado principalmente entre a República da China e o Império do Japão entre 7 de julho de 1937 e 2 de setembro de 1945. O início é normalmente situado no Incidente da Ponte Marco Polo, em 1937, mas algumas fontes datam o início na Invasão japonesa da Manchúria, em 1931. O artigo a descreve como a maior guerra asiática do século XX e a associa a uma política imperialista japonesa de expansão. Ela se fundiu com a Segunda Guerra Mundial após os ataques japoneses à Malaia e a Pearl Harbor, em 1941."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O artigo situa a origem do conflito na política imperialista japonesa de décadas, que buscava expandir sua influência para garantir matérias-primas, alimentos e trabalho."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O artigo registra estimativas divergentes para o Massacre de Nanquim, com o historiador David Askew argumentando número menor que o de outras estimativas."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "A bibliografia do artigo inclui o estudo plurianual Joint Study of the Sino-Japanese War, da Universidade Harvard."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q170314", "wikipedia": "Segunda Guerra Sino-Japonesa" },
+      "discoveryMetadata": {
+        "description": "Conflito militar entre a República da China e o Império do Japão, de 1937 a 1945, parte da Segunda Guerra Mundial na Ásia.",
+        "wikipediaTitle": "Segunda Guerra Sino-Japonesa",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Segunda_Guerra_Sino-Japonesa",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73280383, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    },
+    {
+      "id": "wiki-topic-universidade-de-havana",
+      "slug": "universidade-de-havana",
+      "title": "Universidade de Havana",
+      "summary": "Universidade localizada no distrito de El Vedado, em Havana, Cuba. Fundada em 1728, é a mais antiga do país e uma das primeiras fundadas na América. Originalmente instituição religiosa criada pela ordem dos dominicanos, passou a ser secular em 1842 e teve nomes sucessivos. Durante o governo de Fulgencio Batista, a partir de 1952, tornou-se centro de atividade oposicionista; foi fechada em 1956 e reaberta em 1959, após a revolução liderada por Fidel Castro e Che Guevara. Hoje conta com 16 faculdades e 14 centros de pesquisa.",
+      "aliases": [
+        "Universidade da Havana",
+        "UH",
+        "Universidad de La Habana",
+        "Real y Pontificia Universidad de San Gerónimo de la Habana"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Universidade localizada no distrito de El Vedado, em Havana, Cuba. Fundada em 1728, é a mais antiga do país e uma das primeiras fundadas na América. Originalmente instituição religiosa criada pela ordem dos dominicanos, passou a ser secular em 1842 e teve nomes sucessivos. Durante o governo de Fulgencio Batista, a partir de 1952, tornou-se centro de atividade oposicionista; foi fechada em 1956 e reaberta em 1959, após a revolução liderada por Fidel Castro e Che Guevara. Hoje conta com 16 faculdades e 14 centros de pesquisa."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Sob o governo de Fulgencio Batista, a partir de 1952, a universidade tornou-se um dos principais centros de atividade oposicionista.",
+            "Batista fechou a universidade em 1956, que foi reaberta em 1959 com o triunfo da revolução liderada por Fidel Castro e Che Guevara."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "O bloco de bibliografia do artigo lista o site da universidade, em castelhano."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q837320", "wikipedia": "Universidade de Havana" },
+      "discoveryMetadata": {
+        "description": "Universidade pública de ensino superior em Havana, Cuba, a mais antiga do país, com origem religiosa dominicana.",
+        "wikipediaTitle": "Universidade de Havana",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Universidade_de_Havana",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73327024, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-bloqueio-de-berlim",
+      "title": "Bloqueio de Berlim (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Bloqueio_de_Berlim",
+      "edition": "revisão 72224323; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-eva-peron",
+      "title": "Eva Perón (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Eva_Per%C3%B3n",
+      "edition": "revisão 71989931; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-fortaleza",
+      "title": "Fortaleza (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Fortaleza",
+      "edition": "revisão 73264114; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-gabriel-garcia-marquez",
+      "title": "Gabriel García Márquez (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez",
+      "edition": "revisão 73413433; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-historia-da-humanidade",
+      "title": "História da humanidade (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Hist%C3%B3ria_da_humanidade",
+      "edition": "revisão 73236472; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "title": "María Estela Martínez de Perón (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Mar%C3%ADa_Estela_Mart%C3%ADnez_de_Per%C3%B3n",
+      "edition": "revisão 73370919; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-mendoza",
+      "title": "Mendoza (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Mendoza",
+      "edition": "revisão 71066526; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-presidente-da-argentina",
+      "title": "Presidente da Argentina (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Presidente_da_Argentina",
+      "edition": "revisão 73328995; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-primeira-guerra-da-indochina",
+      "title": "Primeira Guerra da Indochina (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Primeira_Guerra_da_Indochina",
+      "edition": "revisão 72128882; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-salvador",
+      "title": "Salvador (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Salvador",
+      "edition": "revisão 73264955; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "title": "Segunda Guerra Sino-Japonesa (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Segunda_Guerra_Sino-Japonesa",
+      "edition": "revisão 73280383; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-universidade-de-havana",
+      "title": "Universidade de Havana (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Universidade_de_Havana",
+      "edition": "revisão 73327024; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-001",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "desencadeada quando a União Soviética interrompeu o acesso ferroviário, rodoviário e hidroviário à cidade de Berlim Ocidental",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-002",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "Seu objetivo era forçar as potências ocidentais a sair, dando assim o controle soviético sobre toda a cidade.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-003",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "Como Berlim havia ficado bem no centro da zona de ocupação soviética da Alemanha",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-004",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "Os soviéticos rejeitaram os argumentos de que os direitos de ocupação nos setores não soviéticos de Berlim",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-005",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "Turner, Henry Ashby (1987), The Two Germanies Since 1945: East and West, ISBN 0-300-03865-8, Yale University Press",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-006",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "O Bloqueio de Berlim (24 de junho de 1948 – 12 de maio de 1949)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-007",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "A URSS encerrou o bloqueio à 00h01 de 12 de maio de 1949.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-008",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "A Força Aérea dos Estados Unidos e os britânicos da Força Aérea Real fizeram mais de 200 000 voos em um ano",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-009",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "O bloqueio viria a ser o foco das tensões que levariam à dissolução da aliança entre a URSS e as potências ocidentais formada na Segunda Guerra.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bloqueio-de-berlim-010",
+      "sourceId": "src-wiki-topic-bloqueio-de-berlim",
+      "locator": "O sucesso da ponte aérea de Berlim parece ter surpreendido os soviéticos.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eva-peron-001",
+      "sourceId": "src-wiki-topic-eva-peron",
+      "locator": "Aos 15 anos, em um dia 2 de janeiro de 1935, ela partiu para a capital, Buenos Aires.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eva-peron-002",
+      "sourceId": "src-wiki-topic-eva-peron",
+      "locator": "Ela rejeitava ferrenhamente este rótulo, tendo inclusive muitas vezes se indisposto com os comunistas ortodoxos da Argentina",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eva-peron-003",
+      "sourceId": "src-wiki-topic-eva-peron",
+      "locator": "O escritor argentino Tomás Eloy Martínez, autor de Santa Evita (1995)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eva-peron-004",
+      "sourceId": "src-wiki-topic-eva-peron",
+      "locator": "Aos 15 anos, em um dia 2 de janeiro de 1935, ela partiu para a capital, Buenos Aires.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eva-peron-005",
+      "sourceId": "src-wiki-topic-eva-peron",
+      "locator": "Buenos Aires, 26 de julho de 1952",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eva-peron-006",
+      "sourceId": "src-wiki-topic-eva-peron",
+      "locator": "foi uma política, atriz e filantropa argentina que foi primeira-dama da Argentina de junho de 1946 até sua morte em julho de 1952",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-eva-peron-007",
+      "sourceId": "src-wiki-topic-eva-peron",
+      "locator": "Sebreli afirma que, ao contrário da lenda, Evita nunca esteve na mobilização de trabalhadores",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-001",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "toponímia é uma alusão ao Forte Schoonenborch, construído pelos holandeses durante sua segunda permanência no local, entre 1649 e 1654, e que deu origem ao município",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-002",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Em 1799, a Capitania do Ceará foi desmembrada da Capitania de Pernambuco e Fortaleza foi escolhida capital",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-003",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Em 1649, deu-se o segundo período de domínio holandês do Siará",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-004",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Fortaleza enquanto município surgiu a partir da Resolução Régia de 9 de março de 1725",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-005",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Em 13 de abril de 1726, o povoado do forte foi elevado à condição de vila",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-006",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Em 1799, a Capitania do Ceará foi desmembrada da Capitania de Pernambuco e Fortaleza foi escolhida capital",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-007",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Fortaleza é a capital do estado brasileiro do Ceará, na Região Nordeste do país",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-008",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "considerado o marco inicial do desenvolvimento de Fortaleza e da sua história",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-009",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Existem teorias que defendem que antes das explorações do Império Português, houve duas passagens de espanhóis pelo litoral da atual Fortaleza",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-001",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "Gabriel José García Márquez (Aracataca, 6 de março de 1927 — Cidade do México, 17 de abril de 2014) foi um escritor, jornalista, editor, ativista e político colombiano.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-002",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "Foi o maior representante do que ficou conhecido como realismo mágico na literatura latino-americana.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-003",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "Seus livros refletiam sobre os rumos políticos e sociais da América Latina",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-004",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "Gabriel José García Márquez (Aracataca, 6 de março de 1927",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-005",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "Somente em 1967, quando publica Cem Anos de Solidão",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-006",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "Foi laureado com o Prémio Internacional Neustadt de Literatura em 1972",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-007",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "o Nobel de Literatura de 1982 pelo conjunto de sua obra",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-008",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "García Márquez morreu em 17 de abril de 2014 na Cidade do México",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-009",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "Considerado um dos autores mais importantes do século XX",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-010",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "aderindo a crenças socialistas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-gabriel-garcia-marquez-011",
+      "sourceId": "src-wiki-topic-gabriel-garcia-marquez",
+      "locator": "o Nobel de Literatura de 1982 pelo conjunto de sua obra",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-historia-da-humanidade-001",
+      "sourceId": "src-wiki-topic-historia-da-humanidade",
+      "locator": "Os humanos modernos surgiram na África há cerca de 300.000 anos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-historia-da-humanidade-002",
+      "sourceId": "src-wiki-topic-historia-da-humanidade",
+      "locator": "a Revolução Neolítica, na Ásia Ocidental, trouxe o primeiro cultivo sistemático de plantas e criação de animais",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-historia-da-humanidade-003",
+      "sourceId": "src-wiki-topic-historia-da-humanidade",
+      "locator": "Na Idade Moderna, aproximadamente entre 1500 e 1800, as potências europeias exploraram e colonizaram regiões por todo o mundo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-historia-da-humanidade-004",
+      "sourceId": "src-wiki-topic-historia-da-humanidade",
+      "locator": "No século XVIII, o acúmulo de conhecimentos e técnicas alcançou uma massa crítica que deu origem à Revolução Industrial",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-historia-da-humanidade-005",
+      "sourceId": "src-wiki-topic-historia-da-humanidade",
+      "locator": "As causas da ascensão europeia, chamada Grande Divergência, ainda são discutidas pelos historiadores.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-historia-da-humanidade-006",
+      "sourceId": "src-wiki-topic-historia-da-humanidade",
+      "locator": "As causas da ascensão europeia, chamada Grande Divergência, ainda são discutidas pelos historiadores.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-historia-da-humanidade-007",
+      "sourceId": "src-wiki-topic-historia-da-humanidade",
+      "locator": "os pesquisadores dividem a história da humanidade em períodos, por meio de diferentes critérios",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-001",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "foi eleita primeira-dama e vice-presidente na chapa presidencial de seu marido nas eleições de 1973",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-002",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "tornando-se a primeira mulher a exercer a chefia de Estado e de governo na Argentina",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-003",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "Seu governo foi marcado por instabilidade política e econômica e pelo aumento da violência política",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-004",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "La Rioja, 4 de fevereiro de 1931",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-005",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "Com a morte de Perón, em 1.º de julho de 1974, assumiu a presidência",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-006",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "Em 24 de março de 1976, foi deposta por um golpe de Estado que instaurou uma ditadura militar",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-007",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "Uma vez libertada pela ditadura, em julho de 1981, radicou-se em Puerta de Hierro, Madrid",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-008",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "tornando-se a primeira mulher a exercer a chefia de Estado e de governo na Argentina",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-009",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "Seu governo foi marcado por instabilidade política e econômica e pelo aumento da violência política",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mendoza-001",
+      "sourceId": "src-wiki-topic-mendoza",
+      "locator": "Grande parte da edificação colonial foi destruída em 20 de março de 1861 após um intenso terremoto",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mendoza-002",
+      "sourceId": "src-wiki-topic-mendoza",
+      "locator": "A cidade é uma parada frequente para os escaladores a caminho do Aconcágua",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mendoza-003",
+      "sourceId": "src-wiki-topic-mendoza",
+      "locator": "O primeiro assentamento espanhol na região foi estabelecido em 2 de março de 1561",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mendoza-004",
+      "sourceId": "src-wiki-topic-mendoza",
+      "locator": "Grande parte da edificação colonial foi destruída em 20 de março de 1861 após um intenso terremoto",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mendoza-005",
+      "sourceId": "src-wiki-topic-mendoza",
+      "locator": "Mendoza é a capital da província de Mendoza na Argentina",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-001",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "As origens do cargo presidencial argentino estão vinculadas à nomeação de Bernardino Rivadavia como presidente das Províncias Unidas do Rio da Prata em 8 de fevereiro de 1826",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-002",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "é o chefe de Estado, chefe de Governo e titular do Poder Executivo Nacional",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-003",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "Desde 1994, o Presidente e seu vice-presidente são eleitos pelo sistema direto e exercem um mandato de quatro anos com a possibilidade de uma reeleição seguinte",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-004",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "nomeação de Bernardino Rivadavia como presidente das Províncias Unidas do Rio da Prata em 8 de fevereiro de 1826",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-005",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "Em 1827, no entanto, após a renúncia de Rivadavia, o país passou a ser liderado pelos Governadores da Província de Buenos Aires",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-006",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "A situação modificou-se em 1853, quando uma nova Constituição estabeleceu eleições presidenciais indiretas a cada seis anos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-007",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "seria assumido somente em 1860 por Santiago Derqui, após as reformas constitucionais",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-008",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "Em 1966, o mandato presidencial foi declarado definitivamente de quatro anos de duração",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-009",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "O atual presidente é o Economista e Político, Javier Milei que sucedeu Alberto Fernández, em 2023",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-010",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "Desde 1994, o Presidente e seu vice-presidente são eleitos pelo sistema direto",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-presidente-da-argentina-011",
+      "sourceId": "src-wiki-topic-presidente-da-argentina",
+      "locator": "Em 1966, o mandato presidencial foi declarado definitivamente de quatro anos de duração",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-001",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "Os combates entre as forças francesas e os seus oponentes Viet Minh no Sul datam de setembro de 1945",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-002",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "teve início na Indochina Francesa (ou Federação Indochinesa, que incluía também os atuais Laos e Camboja), a 19 de dezembro de 1946, prolongando-se até 1.º de agosto de 1954",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-003",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "o conflito mudou de natureza passando a ser de guerra convencional entre dois exércitos equipados com armamento moderno",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-004",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "Os esquerdistas em França chamavam o conflito de \"guerra suja\" (la sale guerre)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-005",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "Os combates entre as forças francesas e os seus oponentes Viet Minh no Sul datam de setembro de 1945",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-006",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "a 19 de dezembro de 1946, prolongando-se até 1.º de agosto de 1954",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-007",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "após os chineses comunistas terem chegado à fronteira norte com o Vietname em 1949",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-008",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "A guerra da Indochina resultou em mais de 500 000 vítimas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-009",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "o conflito levou ao fim da Federação Indochinesa e à partição do território do Vietnã em dois estados rivais",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-010",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "Os esquerdistas em França chamavam o conflito de \"guerra suja\" (la sale guerre)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-salvador-001",
+      "sourceId": "src-wiki-topic-salvador",
+      "locator": "a organização da cidade se dá em dois níveis — Cidade Alta, sede do poder civil e religioso, e Cidade Baixa, onde se desenvolviam as atividades marítimas e comerciais",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-salvador-002",
+      "sourceId": "src-wiki-topic-salvador",
+      "locator": "A Cidade do São Salvador da Baía de Todos os Santos foi a capital e sede da administração colonial do Brasil até 1763",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-salvador-003",
+      "sourceId": "src-wiki-topic-salvador",
+      "locator": "Fundada em 29 de março de 1549 por Tomé de Sousa",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-salvador-004",
+      "sourceId": "src-wiki-topic-salvador",
+      "locator": "A Cidade do São Salvador da Baía de Todos os Santos foi a capital e sede da administração colonial do Brasil até 1763",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-salvador-005",
+      "sourceId": "src-wiki-topic-salvador",
+      "locator": "tendo sido declarado como Patrimônio Mundial pela Organização das Nações Unidas para a Educação, a Ciência e a Cultura (Unesco) em 1985",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-salvador-006",
+      "sourceId": "src-wiki-topic-salvador",
+      "locator": "foi a primeira capital do Brasil Colonial",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-salvador-007",
+      "sourceId": "src-wiki-topic-salvador",
+      "locator": "sendo estabelecida como uma cidade planejada, a primeira do tipo no país",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-001",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "A guerra foi o resultado de uma política imperialista japonesa de décadas para expandir sua influência política e militarmente",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-002",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "o historiador David Askew, da Universidade Ritsumeikan do Japão, argumentou que menos de 32 mil civis e soldados morreram",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-003",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "«Joint Study of the Sino-Japanese War, Harvard University»",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-004",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "de 7 de julho de 1937 a 2 de setembro de 1945",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-005",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "O Japão se rendeu formalmente em 2 de setembro de 1945.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-006",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "O Japão invadiu a Manchúria imediatamente após o Incidente de Mukden em setembro de 1931.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-007",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "conquistou a capital do Kuomintang, Nanquim (dezembro de 1937)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-008",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "A Segunda Guerra Sino-Japonesa foi a maior guerra asiática do século XX.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-segunda-guerra-sino-japonesa-009",
+      "sourceId": "src-wiki-topic-segunda-guerra-sino-japonesa",
+      "locator": "A guerra foi o resultado de uma política imperialista japonesa de décadas para expandir sua influência política e militarmente",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-001",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "Durante o governo do ditador Fulgencio Batista a partir de 1952, a Universidade se tornou um dos principais centros de atividade oposicionista.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-002",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "Batista fechou a universidade em 1956, sendo a mesma reaberta em 1959 com o triunfo da revolução liderada por Fidel Castro e Che Guevara.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-003",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "University of Habana Website (em castelhano)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-004",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "Fundada no ano de 1728, a Universidade da Havana é a mais antiga do país",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-005",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "Batista fechou a universidade em 1956",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-006",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "sendo a mesma reaberta em 1959 com o triunfo da revolução",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-007",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "Seu edifício foi declarado Monumento Nacional em 1978.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-008",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "Fundada no ano de 1728, a Universidade da Havana é a mais antiga do país",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-009",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "atualmente conta com 16 faculdades em seu campus central e nos demais polos de educação espalhados por Cuba",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-universidade-de-havana-rel-002",
+      "sourceId": "src-wiki-topic-universidade-de-havana",
+      "locator": "Durante o governo do ditador Fulgencio Batista a partir de 1952, a Universidade se tornou um dos principais centros de atividade oposicionista.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-primeira-guerra-da-indochina-011",
+      "sourceId": "src-wiki-topic-primeira-guerra-da-indochina",
+      "locator": "Os esquerdistas em França chamavam o conflito de \"guerra suja\" (la sale guerre)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-010",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "sua toponímia é uma alusão ao Forte Schoonenborch",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-011",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "considerado o marco inicial do desenvolvimento de Fortaleza e da sua história",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-012",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Existem teorias que defendem que antes das explorações do Império Português, houve duas passagens de espanhóis pelo litoral da atual Fortaleza.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-013",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Fortaleza é a capital do estado brasileiro do Ceará, na Região Nordeste do país.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-014",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "cujo responsável foi o comandante holandês Matias Beck",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-015",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "considerado o marco inicial do desenvolvimento de Fortaleza e da sua história",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-fortaleza-016",
+      "sourceId": "src-wiki-topic-fortaleza",
+      "locator": "Tais descobertas de território não poderiam ser oficializadas em decorrência do Tratado de Tordesilhas, de 1494.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-salvador-008",
+      "sourceId": "src-wiki-topic-salvador",
+      "locator": "foi a primeira capital do Brasil Colonial",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-010",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "tornando-se a primeira mulher a exercer a chefia de Estado e de governo na Argentina",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-011",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "A Corte Nacional Espanhola rejeitou o pedido, considerando que os delitos atribuídos a Martínez de Perón estavam prescritos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-maria-estela-martinez-de-peron-rel-001",
+      "sourceId": "src-wiki-topic-maria-estela-martinez-de-peron",
+      "locator": "serviu como a 38.ª presidente da Argentina de 1974 a 1976",
+      "accessedAt": "2026-11-17",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-001",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-002",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-003",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-004",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-005",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-006",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-007",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-008",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-009",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bloqueio-de-berlim-010",
+      "evidenceId": "ev-wiki-topic-bloqueio-de-berlim-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eva-peron-001",
+      "evidenceId": "ev-wiki-topic-eva-peron-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eva-peron-002",
+      "evidenceId": "ev-wiki-topic-eva-peron-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eva-peron-003",
+      "evidenceId": "ev-wiki-topic-eva-peron-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eva-peron-004",
+      "evidenceId": "ev-wiki-topic-eva-peron-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eva-peron-005",
+      "evidenceId": "ev-wiki-topic-eva-peron-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eva-peron-006",
+      "evidenceId": "ev-wiki-topic-eva-peron-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-eva-peron-007",
+      "evidenceId": "ev-wiki-topic-eva-peron-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-001",
+      "evidenceId": "ev-wiki-topic-fortaleza-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-002",
+      "evidenceId": "ev-wiki-topic-fortaleza-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-003",
+      "evidenceId": "ev-wiki-topic-fortaleza-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-004",
+      "evidenceId": "ev-wiki-topic-fortaleza-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-005",
+      "evidenceId": "ev-wiki-topic-fortaleza-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-006",
+      "evidenceId": "ev-wiki-topic-fortaleza-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-007",
+      "evidenceId": "ev-wiki-topic-fortaleza-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-008",
+      "evidenceId": "ev-wiki-topic-fortaleza-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-009",
+      "evidenceId": "ev-wiki-topic-fortaleza-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-001",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-002",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-003",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-004",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-005",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-006",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-007",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-008",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-009",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-010",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-gabriel-garcia-marquez-011",
+      "evidenceId": "ev-wiki-topic-gabriel-garcia-marquez-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-historia-da-humanidade-001",
+      "evidenceId": "ev-wiki-topic-historia-da-humanidade-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-historia-da-humanidade-002",
+      "evidenceId": "ev-wiki-topic-historia-da-humanidade-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-historia-da-humanidade-003",
+      "evidenceId": "ev-wiki-topic-historia-da-humanidade-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-historia-da-humanidade-004",
+      "evidenceId": "ev-wiki-topic-historia-da-humanidade-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-historia-da-humanidade-005",
+      "evidenceId": "ev-wiki-topic-historia-da-humanidade-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-historia-da-humanidade-006",
+      "evidenceId": "ev-wiki-topic-historia-da-humanidade-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-historia-da-humanidade-007",
+      "evidenceId": "ev-wiki-topic-historia-da-humanidade-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-001",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-002",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-003",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-004",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-005",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-006",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-007",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-008",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-009",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mendoza-001",
+      "evidenceId": "ev-wiki-topic-mendoza-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mendoza-002",
+      "evidenceId": "ev-wiki-topic-mendoza-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mendoza-003",
+      "evidenceId": "ev-wiki-topic-mendoza-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mendoza-004",
+      "evidenceId": "ev-wiki-topic-mendoza-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mendoza-005",
+      "evidenceId": "ev-wiki-topic-mendoza-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-001",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-002",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-003",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-004",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-005",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-006",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-007",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-008",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-009",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-010",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-presidente-da-argentina-011",
+      "evidenceId": "ev-wiki-topic-presidente-da-argentina-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-001",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-002",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-003",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-004",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-005",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-006",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-007",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-008",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-009",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-010",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-salvador-001",
+      "evidenceId": "ev-wiki-topic-salvador-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-salvador-002",
+      "evidenceId": "ev-wiki-topic-salvador-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-salvador-003",
+      "evidenceId": "ev-wiki-topic-salvador-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-salvador-004",
+      "evidenceId": "ev-wiki-topic-salvador-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-salvador-005",
+      "evidenceId": "ev-wiki-topic-salvador-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-salvador-006",
+      "evidenceId": "ev-wiki-topic-salvador-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-salvador-007",
+      "evidenceId": "ev-wiki-topic-salvador-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-001",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-002",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-003",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-004",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-005",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-006",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-007",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-008",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-segunda-guerra-sino-japonesa-009",
+      "evidenceId": "ev-wiki-topic-segunda-guerra-sino-japonesa-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-001",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-002",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-003",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-004",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-005",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-006",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-007",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-008",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-universidade-de-havana-009",
+      "evidenceId": "ev-wiki-topic-universidade-de-havana-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-primeira-guerra-da-indochina-011",
+      "evidenceId": "ev-wiki-topic-primeira-guerra-da-indochina-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-010",
+      "evidenceId": "ev-wiki-topic-fortaleza-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-011",
+      "evidenceId": "ev-wiki-topic-fortaleza-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-012",
+      "evidenceId": "ev-wiki-topic-fortaleza-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-013",
+      "evidenceId": "ev-wiki-topic-fortaleza-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-014",
+      "evidenceId": "ev-wiki-topic-fortaleza-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-015",
+      "evidenceId": "ev-wiki-topic-fortaleza-015",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-fortaleza-016",
+      "evidenceId": "ev-wiki-topic-fortaleza-016",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-salvador-008",
+      "evidenceId": "ev-wiki-topic-salvador-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-010",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-maria-estela-martinez-de-peron-011",
+      "evidenceId": "ev-wiki-topic-maria-estela-martinez-de-peron-011",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-001",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "O bloqueio foi desencadeado quando a União Soviética interrompeu o acesso ferroviário, rodoviário e hidroviário à cidade de Berlim Ocidental.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-001"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-002",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "O objetivo do bloqueio, segundo o artigo, era forçar as potências ocidentais a sair de Berlim, dando aos soviéticos o controle sobre toda a cidade.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-002"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-003",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "Berlim ficava no centro da zona de ocupação soviética, e as zonas americana, britânica e francesa da cidade estavam cercadas por território ocupado pelo Exército Vermelho.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-003"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-004",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "Os soviéticos rejeitaram os argumentos ocidentais de que os direitos de ocupação davam às potências ocidentais o direito legal de uso das rotas de acesso a Berlim.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-004"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-005",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "O artigo cita a obra de Henry Ashby Turner sobre as duas Alemanhas desde 1945.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-005"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-006",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "A União Soviética interrompeu o acesso ferroviário, rodoviário e hidroviário a Berlim Ocidental, dando início ao bloqueio. (1948-06-24).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-006"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-007",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "A União Soviética encerrou o bloqueio. (1949-05-12).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-007"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-008",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "A Força Aérea dos Estados Unidos e a Força Aérea Real britânica fizeram mais de 200 000 voos em um ano durante a ponte aérea.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-008"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-009",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "O bloqueio foi o foco das tensões que levaram à dissolução da aliança entre a URSS e as potências ocidentais.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-009"]
+    },
+    {
+      "id": "claim-wiki-topic-bloqueio-de-berlim-010",
+      "entityId": "wiki-topic-bloqueio-de-berlim",
+      "text": "O sucesso da ponte aérea de Berlim pode ter surpreendido os soviéticos.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bloqueio-de-berlim-010"]
+    },
+    {
+      "id": "claim-wiki-topic-eva-peron-001",
+      "entityId": "wiki-topic-eva-peron",
+      "text": "Em 1935, aos quinze anos, partiu para Buenos Aires para seguir carreira artística.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eva-peron-001"]
+    },
+    {
+      "id": "claim-wiki-topic-eva-peron-002",
+      "entityId": "wiki-topic-eva-peron",
+      "text": "Eva era vista como defensora dos pobres, mas rejeitava o rótulo de militante de esquerda.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eva-peron-002"]
+    },
+    {
+      "id": "claim-wiki-topic-eva-peron-003",
+      "entityId": "wiki-topic-eva-peron",
+      "text": "O artigo cita a obra de Tomás Eloy Martínez sobre Evita, publicada em 1995.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eva-peron-003"]
+    },
+    {
+      "id": "claim-wiki-topic-eva-peron-004",
+      "entityId": "wiki-topic-eva-peron",
+      "text": "Partiu para Buenos Aires para tentar carreira artística. (1935-01-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eva-peron-004"]
+    },
+    {
+      "id": "claim-wiki-topic-eva-peron-005",
+      "entityId": "wiki-topic-eva-peron",
+      "text": "Morte de Eva Perón em Buenos Aires. (1952-07-26).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eva-peron-005"]
+    },
+    {
+      "id": "claim-wiki-topic-eva-peron-006",
+      "entityId": "wiki-topic-eva-peron",
+      "text": "Eva Perón foi primeira-dama da Argentina de junho de 1946 até sua morte.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eva-peron-006"]
+    },
+    {
+      "id": "claim-wiki-topic-eva-peron-007",
+      "entityId": "wiki-topic-eva-peron",
+      "text": "Sebreli afirma que Evita não liderou a mobilização de 17 de outubro de 1945.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-eva-peron-007"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-001",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "O nome Fortaleza alude ao Forte Schoonenborch, construído pelos holandeses durante sua segunda permanência no local, entre 1649 e 1654, que deu origem ao município.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-001"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-002",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Em 1799, a Capitania do Ceará foi desmembrada da Capitania de Pernambuco e Fortaleza passou a ser sua capital.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-002"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-003",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Segundo período de domínio holandês do Siará, no qual o Forte Schoonenborch foi construído (1649).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-003"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-004",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Fortaleza surgiu como município a partir da Resolução Régia, como sede no núcleo do mesmo nome, elevado à categoria de vila (1725-03-09).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-004"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-005",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "O povoado do forte foi elevado à condição de vila (1726-04-13).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-005"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-006",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Fortaleza foi escolhida capital da Capitania do Ceará, desmembrada da Capitania de Pernambuco (1799).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-006"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-007",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Fortaleza é a capital do estado do Ceará, na Região Nordeste do Brasil.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-007"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-008",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "O Forte Schoonenborch é considerado o marco inicial do desenvolvimento de Fortaleza.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-008"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-009",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Existem teorias que defendem duas passagens de espanhóis pelo litoral da atual Fortaleza antes das explorações portuguesas.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-009"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-001",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Nasceu em Aracataca, na Colômbia, em 1927, e morreu na Cidade do México em 2014. Foi escritor, jornalista, editor, ativista e político colombiano.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-001"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-002",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "É apontado como o principal representante do realismo mágico na literatura latino-americana.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-002"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-003",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Seus livros tratavam dos rumos políticos e sociais da América Latina e, de forma mais ampla, da condição humana, sobretudo da solidão.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-003"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-004",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Nascimento em Aracataca, Colômbia. (1927-03-06).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-004"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-005",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Publicação de Cem Anos de Solidão. (1967).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-005"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-006",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Laureado com o Prêmio Internacional Neustadt de Literatura. (1972).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-006"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-007",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Recebeu o Nobel de Literatura. (1982).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-007"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-008",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Morte na Cidade do México. (2014-04-17).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-008"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-009",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Foi considerado um dos autores mais importantes do século XX.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-009"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-010",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Aderiu a crenças socialistas ao longo de sua vida.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-010"]
+    },
+    {
+      "id": "claim-wiki-topic-gabriel-garcia-marquez-011",
+      "entityId": "wiki-topic-gabriel-garcia-marquez",
+      "text": "Recebeu o Nobel de Literatura de 1982 pelo conjunto de sua obra.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-gabriel-garcia-marquez-011"]
+    },
+    {
+      "id": "claim-wiki-topic-historia-da-humanidade-001",
+      "entityId": "wiki-topic-historia-da-humanidade",
+      "text": "O artigo situa o surgimento dos humanos modernos na África, há cerca de 300.000 anos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-historia-da-humanidade-001"]
+    },
+    {
+      "id": "claim-wiki-topic-historia-da-humanidade-002",
+      "entityId": "wiki-topic-historia-da-humanidade",
+      "text": "A Revolução Neolítica, na Ásia Ocidental, trouxe o primeiro cultivo sistemático de plantas e a criação de animais.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-historia-da-humanidade-002"]
+    },
+    {
+      "id": "claim-wiki-topic-historia-da-humanidade-003",
+      "entityId": "wiki-topic-historia-da-humanidade",
+      "text": "Na Idade Moderna, aproximadamente entre 1500 e 1800, as potências europeias exploraram e colonizaram regiões por todo o mundo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-historia-da-humanidade-003"]
+    },
+    {
+      "id": "claim-wiki-topic-historia-da-humanidade-004",
+      "entityId": "wiki-topic-historia-da-humanidade",
+      "text": "A Revolução Industrial surgiu no século XVIII, quando o acúmulo de conhecimentos e técnicas alcançou uma massa crítica.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-historia-da-humanidade-004"]
+    },
+    {
+      "id": "claim-wiki-topic-historia-da-humanidade-005",
+      "entityId": "wiki-topic-historia-da-humanidade",
+      "text": "As causas da ascensão europeia, chamada Grande Divergência, ainda são discutidas pelos historiadores.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-historia-da-humanidade-005"]
+    },
+    {
+      "id": "claim-wiki-topic-historia-da-humanidade-006",
+      "entityId": "wiki-topic-historia-da-humanidade",
+      "text": "As causas da ascensão europeia, chamada Grande Divergência, ainda são discutidas pelos historiadores.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-historia-da-humanidade-006"]
+    },
+    {
+      "id": "claim-wiki-topic-historia-da-humanidade-007",
+      "entityId": "wiki-topic-historia-da-humanidade",
+      "text": "Os pesquisadores dividem a história da humanidade em períodos por meio de diferentes critérios.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-historia-da-humanidade-007"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-001",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Foi eleita primeira-dama e vice-presidente na chapa de seu marido nas eleições de 1973.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-001"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-002",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Assumiu a presidência após a morte de Perón e tornou-se a primeira mulher a exercer a chefia de Estado e de governo na Argentina.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-002"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-003",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Seu governo foi marcado por instabilidade política e econômica e pelo aumento da violência política.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-003"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-004",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Nascimento em La Rioja. (1931-02-04).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-004"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-005",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Assumiu a presidência após a morte de Perón. (1974-07-01).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-005"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-006",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Foi deposta por golpe de Estado que instaurou ditadura militar. (1976-03-24).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-006"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-007",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Foi libertada pela ditadura e radicou-se na Espanha. (1981-07).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-007"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-008",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Foi a primeira mulher a exercer a chefia de Estado e de governo na Argentina.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-008"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-009",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Seu governo foi marcado por instabilidade política e econômica e aumento da violência política.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-009"]
+    },
+    {
+      "id": "claim-wiki-topic-mendoza-001",
+      "entityId": "wiki-topic-mendoza",
+      "text": "Grande parte da edificação colonial foi destruída em 20 de março de 1861 por um intenso terremoto.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mendoza-001"]
+    },
+    {
+      "id": "claim-wiki-topic-mendoza-002",
+      "entityId": "wiki-topic-mendoza",
+      "text": "A cidade serve de parada para escaladores que se dirigem ao Aconcágua.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mendoza-002"]
+    },
+    {
+      "id": "claim-wiki-topic-mendoza-003",
+      "entityId": "wiki-topic-mendoza",
+      "text": "Estabelecimento do primeiro assentamento espanhol na região, com a fundação da cidade por Pedro de Castillo. (1561-03-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mendoza-003"]
+    },
+    {
+      "id": "claim-wiki-topic-mendoza-004",
+      "entityId": "wiki-topic-mendoza",
+      "text": "Grande parte da edificação colonial foi destruída por um intenso terremoto. (1861-03-20).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mendoza-004"]
+    },
+    {
+      "id": "claim-wiki-topic-mendoza-005",
+      "entityId": "wiki-topic-mendoza",
+      "text": "Mendoza é a capital da província de Mendoza, na Argentina.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mendoza-005"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-001",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "As origens do cargo presidencial argentino estão ligadas à nomeação de Bernardino Rivadavia como presidente das Províncias Unidas do Rio da Prata, em 8 de fevereiro de 1826.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-001"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-002",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "O presidente é descrito como chefe de Estado, chefe de governo e titular do Poder Executivo Nacional.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-002"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-003",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "Desde 1994 o presidente e o vice-presidente são eleitos pelo sistema direto, com mandato de quatro anos e possibilidade de uma reeleição seguinte.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-003"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-004",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "Bernardino Rivadavia é nomeado presidente das Províncias Unidas do Rio da Prata. (1826-02-08).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-004"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-005",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "Após a renúncia de Rivadavia, o país passa a ser liderado pelos governadores da Província de Buenos Aires. (1827).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-005"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-006",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "Uma nova Constituição estabelece eleições presidenciais indiretas a cada seis anos. (1853).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-006"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-007",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "Santiago Derqui assume o título formal de Presidente da Nação Argentina. (1860).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-007"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-008",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "O mandato presidencial é declarado definitivamente de quatro anos. (1966).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-008"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-009",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "Javier Milei sucede Alberto Fernández na Presidência. (2023).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-009"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-010",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "O presidente e o vice-presidente são eleitos pelo sistema direto desde 1994.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-010"]
+    },
+    {
+      "id": "claim-wiki-topic-presidente-da-argentina-011",
+      "entityId": "wiki-topic-presidente-da-argentina",
+      "text": "Em 1966 o mandato presidencial foi declarado definitivamente de quatro anos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-presidente-da-argentina-011"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-001",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "Os combates entre as forças francesas e o Viet Minh no Sul são datados pelo artigo a partir de setembro de 1945.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-001"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-002",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "O conflito teve início na Indochina Francesa em 19 de dezembro de 1946 e prolongou-se até 1.º de agosto de 1954.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-002"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-003",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "Após a chegada de tropas chinesas à fronteira norte em 1949, o conflito passou a ser de guerra convencional, segundo o artigo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-003"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-004",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "O artigo registra que esquerdistas franceses chamavam o conflito de guerra suja, expressão que aparece como designação de um grupo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-004"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-005",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "Início dos combates entre forças francesas e o Viet Minh no Sul (1945-09).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-005"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-006",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "Início da Primeira Guerra da Indochina na Indochina Francesa (1946-12-19).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-006"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-007",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "Chegada de chineses comunistas à fronteira norte com o Vietnã (1949).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-007"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-008",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "A guerra resultou em mais de 500 000 vítimas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-008"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-009",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "O conflito levou ao fim da Federação Indochinesa e à partição do Vietnã em dois estados rivais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-009"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-010",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "Esquerdistas franceses chamavam o conflito de guerra suja.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-010"]
+    },
+    {
+      "id": "claim-wiki-topic-salvador-001",
+      "entityId": "wiki-topic-salvador",
+      "text": "A cidade foi estruturada em dois níveis, Cidade Alta, sede do poder civil e religioso, e Cidade Baixa, de atividades marítimas e comerciais.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-salvador-001"]
+    },
+    {
+      "id": "claim-wiki-topic-salvador-002",
+      "entityId": "wiki-topic-salvador",
+      "text": "A cidade foi capital e sede da administração colonial do Brasil até 1763, quando foi substituída pelo Rio de Janeiro.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-salvador-002"]
+    },
+    {
+      "id": "claim-wiki-topic-salvador-003",
+      "entityId": "wiki-topic-salvador",
+      "text": "Fundação da cidade por Tomé de Sousa. (1549-03-29).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-salvador-003"]
+    },
+    {
+      "id": "claim-wiki-topic-salvador-004",
+      "entityId": "wiki-topic-salvador",
+      "text": "Salvador deixa de ser capital e sede da administração colonial do Brasil. (1763).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-salvador-004"]
+    },
+    {
+      "id": "claim-wiki-topic-salvador-005",
+      "entityId": "wiki-topic-salvador",
+      "text": "Centro Histórico declarado Patrimônio Mundial pela Unesco. (1985).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-salvador-005"]
+    },
+    {
+      "id": "claim-wiki-topic-salvador-006",
+      "entityId": "wiki-topic-salvador",
+      "text": "Salvador foi a primeira capital do Brasil Colonial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-salvador-006"]
+    },
+    {
+      "id": "claim-wiki-topic-salvador-007",
+      "entityId": "wiki-topic-salvador",
+      "text": "A cidade foi estabelecida como uma cidade planejada, a primeira do tipo no país.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-salvador-007"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-001",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "O artigo situa a origem do conflito na política imperialista japonesa de décadas, que buscava expandir sua influência para garantir matérias-primas, alimentos e trabalho.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-001"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-002",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "O artigo registra estimativas divergentes para o Massacre de Nanquim, com o historiador David Askew argumentando número menor que o de outras estimativas.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-002"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-003",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "A bibliografia do artigo inclui o estudo plurianual Joint Study of the Sino-Japanese War, da Universidade Harvard.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-003"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-004",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "Início da guerra, segundo o período de 7 de julho de 1937 a 2 de setembro de 1945. (1937-07-07).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-004"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-005",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "O Japão se rendeu formalmente, encerrando a guerra. (1945-09-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-005"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-006",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "O Japão invadiu a Manchúria após o Incidente de Mukden. (1931-09).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-006"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-007",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "O Exército Imperial Japonês conquistou Nanquim. (1937-12).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-007"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-008",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "A guerra é considerada a maior guerra asiática do século XX.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-008"]
+    },
+    {
+      "id": "claim-wiki-topic-segunda-guerra-sino-japonesa-009",
+      "entityId": "wiki-topic-segunda-guerra-sino-japonesa",
+      "text": "A guerra foi o resultado de uma política imperialista japonesa de décadas.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-segunda-guerra-sino-japonesa-009"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-001",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "Sob o governo de Fulgencio Batista, a partir de 1952, a universidade tornou-se um dos principais centros de atividade oposicionista.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-001"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-002",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "Batista fechou a universidade em 1956, que foi reaberta em 1959 com o triunfo da revolução liderada por Fidel Castro e Che Guevara.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-002"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-003",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "O bloco de bibliografia do artigo lista o site da universidade, em castelhano.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-003"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-004",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "Fundação da universidade. (1728).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-004"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-005",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "Batista fecha a universidade. (1956).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-005"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-006",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "Universidade reaberta após o triunfo da revolução. (1959).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-006"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-007",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "O edifício da universidade foi declarado Monumento Nacional. (1978).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-007"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-008",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "A Universidade de Havana é a universidade mais antiga do país.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-008"]
+    },
+    {
+      "id": "claim-wiki-topic-universidade-de-havana-009",
+      "entityId": "wiki-topic-universidade-de-havana",
+      "text": "A universidade possui 16 faculdades em seu campus central e nos demais polos de educação em Cuba.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-universidade-de-havana-009"]
+    },
+    {
+      "id": "claim-wiki-topic-primeira-guerra-da-indochina-011",
+      "entityId": "wiki-topic-primeira-guerra-da-indochina",
+      "text": "Esquerdistas franceses chamavam o conflito de guerra suja.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-primeira-guerra-da-indochina-011"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-010",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "O nome de Fortaleza é uma alusão ao Forte Schoonenborch.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-010"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-011",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "O Forte Schoonenborch é considerado o marco inicial do desenvolvimento de Fortaleza.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-011"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-012",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Há teorias de passagens de espanhóis pelo litoral da atual Fortaleza antes de 1500.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-012"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-013",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Fortaleza é a capital do estado do Ceará.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-013"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-014",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "O comandante holandês Matias Beck foi o responsável pela construção do Forte Schoonenborch.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-014"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-015",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "O Forte Schoonenborch é considerado o marco inicial do desenvolvimento de Fortaleza.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-015"]
+    },
+    {
+      "id": "claim-wiki-topic-fortaleza-016",
+      "entityId": "wiki-topic-fortaleza",
+      "text": "Há teorias sobre passagens de espanhóis pelo litoral de Fortaleza antes da colonização portuguesa, e essas descobertas não puderam ser oficializadas por causa do Tratado de Tordesilhas.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-fortaleza-016"]
+    },
+    {
+      "id": "claim-wiki-topic-salvador-008",
+      "entityId": "wiki-topic-salvador",
+      "text": "Salvador foi a primeira capital do Brasil Colonial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-salvador-008"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-010",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "Foi a primeira mulher a exercer a chefia de Estado e de governo na Argentina.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-010"]
+    },
+    {
+      "id": "claim-wiki-topic-maria-estela-martinez-de-peron-011",
+      "entityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "text": "A Corte Nacional Espanhola rejeitou o pedido de extradição argentino, por considerar os delitos prescritos.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-maria-estela-martinez-de-peron-011"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-001",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-002",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-003",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-004",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-005",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-006",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-007",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-008",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-009",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bloqueio-de-berlim-010",
+      "claimId": "claim-wiki-topic-bloqueio-de-berlim-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eva-peron-001",
+      "claimId": "claim-wiki-topic-eva-peron-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eva-peron-002",
+      "claimId": "claim-wiki-topic-eva-peron-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eva-peron-003",
+      "claimId": "claim-wiki-topic-eva-peron-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eva-peron-004",
+      "claimId": "claim-wiki-topic-eva-peron-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eva-peron-005",
+      "claimId": "claim-wiki-topic-eva-peron-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eva-peron-006",
+      "claimId": "claim-wiki-topic-eva-peron-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-eva-peron-007",
+      "claimId": "claim-wiki-topic-eva-peron-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-001",
+      "claimId": "claim-wiki-topic-fortaleza-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-002",
+      "claimId": "claim-wiki-topic-fortaleza-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-003",
+      "claimId": "claim-wiki-topic-fortaleza-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-004",
+      "claimId": "claim-wiki-topic-fortaleza-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-005",
+      "claimId": "claim-wiki-topic-fortaleza-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-006",
+      "claimId": "claim-wiki-topic-fortaleza-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-007",
+      "claimId": "claim-wiki-topic-fortaleza-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-008",
+      "claimId": "claim-wiki-topic-fortaleza-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-009",
+      "claimId": "claim-wiki-topic-fortaleza-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-001",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-002",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-003",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-004",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-005",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-006",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-007",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-008",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-009",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-010",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-gabriel-garcia-marquez-011",
+      "claimId": "claim-wiki-topic-gabriel-garcia-marquez-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-historia-da-humanidade-001",
+      "claimId": "claim-wiki-topic-historia-da-humanidade-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-historia-da-humanidade-002",
+      "claimId": "claim-wiki-topic-historia-da-humanidade-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-historia-da-humanidade-003",
+      "claimId": "claim-wiki-topic-historia-da-humanidade-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-historia-da-humanidade-004",
+      "claimId": "claim-wiki-topic-historia-da-humanidade-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-historia-da-humanidade-005",
+      "claimId": "claim-wiki-topic-historia-da-humanidade-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-historia-da-humanidade-006",
+      "claimId": "claim-wiki-topic-historia-da-humanidade-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-historia-da-humanidade-007",
+      "claimId": "claim-wiki-topic-historia-da-humanidade-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-001",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-002",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-003",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-004",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-005",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-006",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-007",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-008",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-009",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mendoza-001",
+      "claimId": "claim-wiki-topic-mendoza-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mendoza-002",
+      "claimId": "claim-wiki-topic-mendoza-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mendoza-003",
+      "claimId": "claim-wiki-topic-mendoza-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mendoza-004",
+      "claimId": "claim-wiki-topic-mendoza-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mendoza-005",
+      "claimId": "claim-wiki-topic-mendoza-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-001",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-002",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-003",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-004",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-005",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-006",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-007",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-008",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-009",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-010",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-presidente-da-argentina-011",
+      "claimId": "claim-wiki-topic-presidente-da-argentina-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-001",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-002",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-003",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-004",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-005",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-006",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-007",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-008",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-009",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-010",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-salvador-001",
+      "claimId": "claim-wiki-topic-salvador-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-salvador-002",
+      "claimId": "claim-wiki-topic-salvador-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-salvador-003",
+      "claimId": "claim-wiki-topic-salvador-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-salvador-004",
+      "claimId": "claim-wiki-topic-salvador-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-salvador-005",
+      "claimId": "claim-wiki-topic-salvador-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-salvador-006",
+      "claimId": "claim-wiki-topic-salvador-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-salvador-007",
+      "claimId": "claim-wiki-topic-salvador-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-001",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-002",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-003",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-004",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-005",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-006",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-007",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-008",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-segunda-guerra-sino-japonesa-009",
+      "claimId": "claim-wiki-topic-segunda-guerra-sino-japonesa-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-001",
+      "claimId": "claim-wiki-topic-universidade-de-havana-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-002",
+      "claimId": "claim-wiki-topic-universidade-de-havana-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-003",
+      "claimId": "claim-wiki-topic-universidade-de-havana-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-004",
+      "claimId": "claim-wiki-topic-universidade-de-havana-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-005",
+      "claimId": "claim-wiki-topic-universidade-de-havana-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-006",
+      "claimId": "claim-wiki-topic-universidade-de-havana-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-007",
+      "claimId": "claim-wiki-topic-universidade-de-havana-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-008",
+      "claimId": "claim-wiki-topic-universidade-de-havana-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-universidade-de-havana-009",
+      "claimId": "claim-wiki-topic-universidade-de-havana-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-primeira-guerra-da-indochina-011",
+      "claimId": "claim-wiki-topic-primeira-guerra-da-indochina-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-010",
+      "claimId": "claim-wiki-topic-fortaleza-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-011",
+      "claimId": "claim-wiki-topic-fortaleza-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-012",
+      "claimId": "claim-wiki-topic-fortaleza-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-013",
+      "claimId": "claim-wiki-topic-fortaleza-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-014",
+      "claimId": "claim-wiki-topic-fortaleza-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-015",
+      "claimId": "claim-wiki-topic-fortaleza-015",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-fortaleza-016",
+      "claimId": "claim-wiki-topic-fortaleza-016",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-salvador-008",
+      "claimId": "claim-wiki-topic-salvador-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-010",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-maria-estela-martinez-de-peron-011",
+      "claimId": "claim-wiki-topic-maria-estela-martinez-de-peron-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [
+    {
+      "id": "rel-wiki-topic-universidade-de-havana-002",
+      "fromEntityId": "wiki-topic-universidade-de-havana",
+      "toEntityId": "wiki-topic-fulgencio-batista",
+      "type": "reacted_against",
+      "label": "reagiu contra",
+      "reverseLabel": "recebeu reação de",
+      "context": "A Universidade de Havana tornou-se centro de atividade oposicionista durante o governo de Fulgencio Batista.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-universidade-de-havana-rel-002"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Universidade_de_Havana",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-maria-estela-martinez-de-peron-001",
+      "fromEntityId": "wiki-topic-maria-estela-martinez-de-peron",
+      "toEntityId": "wiki-topic-argentina",
+      "type": "documented-association",
+      "label": "governou",
+      "reverseLabel": "foi governado por",
+      "context": "Serviu como presidente da Argentina de 1974 a 1976.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-maria-estela-martinez-de-peron-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Mar%C3%ADa_Estela_Mart%C3%ADnez_de_Per%C3%B3n",
+        "retrievedAt": "2026-11-17"
+      }
+    }
+  ],
+  "learningPaths": []
+}

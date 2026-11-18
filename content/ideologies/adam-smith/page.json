@@ -1,0 +1,654 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-adam-smith",
+  "slug": "adam-smith",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Adam Smith",
+  "kicker": "Ideologia política",
+  "summary": "Adam Smith: leitura sem resumo verificado.",
+  "published": false,
+  "atlasId": "atlas-adam-smith",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-17" },
+  "identity": {
+    "accent": "teal",
+    "palette": "liberal",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "poster": { "figures": [] },
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "review": null,
+      "gap": "O grafo não traz resumo desta ideologia.",
+      "coverage": "pending",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "Filósofo escocês e autor de A riqueza das nações, publicada em 1776.",
+        "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida.",
+        "Batismo de Smith na Igreja da Escócia. (1723-06-05)."
+      ],
+      "question": "Como e em que contexto Adam Smith surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
+      "sourceIds": ["source-marx-smith-bio", "src-wiki-topic-adam-smith"],
+      "review": null,
+      "gap": "Usa fatos documentados da fonte principal porque não há seção separada de origens no grafo.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Marco histórico 1",
+              "kicker": "Origens e formação",
+              "summary": "Filósofo escocês e autor de A riqueza das nações, publicada em 1776.",
+              "paragraphs": [
+                "Filósofo escocês e autor de A riqueza das nações, publicada em 1776."
+              ],
+              "sourceIds": ["source-marx-smith-bio"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-2",
+              "title": "Marco histórico 2",
+              "kicker": "Origens e formação",
+              "summary": "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida.",
+              "paragraphs": [
+                "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida."
+              ],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-3",
+              "title": "Marco histórico 3",
+              "kicker": "Origens e formação",
+              "summary": "Batismo de Smith na Igreja da Escócia. (1723-06-05).",
+              "paragraphs": ["Batismo de Smith na Igreja da Escócia. (1723-06-05)."],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Ideias e posições",
+      "kicker": "Ideias e posições",
+      "minutes": 1,
+      "narrative": [
+        "Filósofo escocês e autor de A riqueza das nações, publicada em 1776.",
+        "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida.",
+        "Na Teoria dos Sentimentos Morais, Smith tratou da simpatia como base dos sentimentos morais.",
+        "Smith sustentou que o trabalho, e não a quantidade de ouro e prata, era a origem do aumento da riqueza, em desacordo com o mercantilismo."
+      ],
+      "question": "Quais ideias, escolhas e posições políticas marcaram Adam Smith?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "sourceIds": ["source-marx-smith-bio", "src-wiki-topic-adam-smith"],
+      "review": null,
+      "gap": "Reúne passagens descritivas registradas na fonte principal; síntese doutrinária estruturada ainda pendente.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Formulação registrada 1",
+              "kicker": "Pilares e princípios",
+              "summary": "Filósofo escocês e autor de A riqueza das nações, publicada em 1776.",
+              "paragraphs": [
+                "Filósofo escocês e autor de A riqueza das nações, publicada em 1776."
+              ],
+              "sourceIds": ["source-marx-smith-bio"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Formulação registrada 2",
+              "kicker": "Pilares e princípios",
+              "summary": "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida.",
+              "paragraphs": [
+                "Smith nasceu em Kirkcaldy, em Fife, e foi batizado em 5 de junho de 1723; a data exata do nascimento não é conhecida."
+              ],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-3",
+              "title": "Formulação registrada 3",
+              "kicker": "Pilares e princípios",
+              "summary": "Na Teoria dos Sentimentos Morais, Smith tratou da simpatia como base dos sentimentos morais.",
+              "paragraphs": [
+                "Na Teoria dos Sentimentos Morais, Smith tratou da simpatia como base dos sentimentos morais."
+              ],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "tese atribuída"
+            },
+            {
+              "id": "ideia-4",
+              "title": "Formulação registrada 4",
+              "kicker": "Pilares e princípios",
+              "summary": "Smith sustentou que o trabalho, e não a quantidade de ouro e prata, era a origem do aumento da riqueza, em desacordo com o mercantilismo.",
+              "paragraphs": [
+                "Smith sustentou que o trabalho, e não a quantidade de ouro e prata, era a origem do aumento da riqueza, em desacordo com o mercantilismo."
+              ],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": ["Conceitos ligados à tradição: Estado."],
+      "question": "Que termos e conceitos ajudam a compreender Adam Smith?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "sourceIds": ["src-wiki-topic-estado"],
+      "review": null,
+      "gap": "Termos e conceitos ligados à tradição; discussão conceitual ainda pendente.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        { "type": "entities", "entityIds": ["wiki-topic-estado"], "mode": "concepts", "notes": {} }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "História e épocas",
+      "kicker": "História e épocas",
+      "minutes": 1,
+      "narrative": [
+        "Assumiu a cadeira de filosofia moral em Glasgow.",
+        "Publicação da Teoria dos Sentimentos Morais.",
+        "Publicação de A Riqueza das Nações."
+      ],
+      "question": "Em que períodos históricos Adam Smith se formou e mudou?",
+      "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
+      "sourceIds": ["src-wiki-topic-adam-smith"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "marco-1",
+              "title": "1752",
+              "kicker": "Marco datado",
+              "summary": "Assumiu a cadeira de filosofia moral em Glasgow.",
+              "paragraphs": ["Assumiu a cadeira de filosofia moral em Glasgow."],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-2",
+              "title": "1759",
+              "kicker": "Marco datado",
+              "summary": "Publicação da Teoria dos Sentimentos Morais.",
+              "paragraphs": ["Publicação da Teoria dos Sentimentos Morais."],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "marco-3",
+              "title": "1776",
+              "kicker": "Marco datado",
+              "summary": "Publicação de A Riqueza das Nações.",
+              "paragraphs": ["Publicação de A Riqueza das Nações."],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            }
+          ]
+        },
+        {
+          "type": "chronology",
+          "epochs": [
+            { "itemId": "marco-1", "start": 1752, "end": 1752 },
+            { "itemId": "marco-2", "start": 1759, "end": 1759 },
+            { "itemId": "marco-3", "start": 1776, "end": 1776 }
+          ],
+          "entityIds": ["person-adam-smith"],
+          "markerIds": [],
+          "markerNotes": {}
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Trajetória e obras",
+      "kicker": "Trajetória e obras",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: John Locke, John Stuart Mill, Alexis de Tocqueville, A riqueza das nações, Immanuel Kant, Voltaire, Karl Marx, Mao Tsé-Tung, Friedrich Engels, Teoria dos Sentimentos Morais, François Quesnay, Henri de Saint-Simon, David Hume, Pedro II do Brasil, Getúlio Vargas."
+      ],
+      "question": "Quem formulou, liderou ou registrou Adam Smith?",
+      "bridge": "Dos atores e obras, seguimos para as correntes e desdobramentos relacionados.",
+      "sourceIds": [
+        "source-marx-critique",
+        "marxism-source-wikidata-person-friedrich-engels",
+        "src-wiki-topic-adam-smith",
+        "src-wiki-wd-q9381",
+        "src-wiki-topic-henri-de-saint-simon",
+        "src-wiki-topic-david-hume",
+        "src-wiki-topic-pedro-ii-do-brasil",
+        "src-wiki-topic-getulio-vargas"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "person-john-locke",
+            "person-john-stuart-mill",
+            "person-alexis-de-tocqueville",
+            "person-immanuel-kant",
+            "person-voltaire",
+            "person-karl-marx",
+            "person-mao-zedong",
+            "person-friedrich-engels",
+            "wiki-topic-francois-quesnay",
+            "wiki-topic-henri-de-saint-simon",
+            "wiki-topic-david-hume",
+            "wiki-topic-pedro-ii-do-brasil",
+            "wiki-topic-getulio-vargas"
+          ],
+          "mode": "thinkers",
+          "notes": {
+            "person-karl-marx": "Em Teorias da mais-valia, Marx examina definições de valor atribuídas a Smith.",
+            "wiki-topic-francois-quesnay": "Não é influência documentada.",
+            "wiki-topic-henri-de-saint-simon": "As visões econômicas de Saint-Simon foram bastante influenciadas pelas visões de Adam Smith."
+          }
+        },
+        {
+          "type": "entities",
+          "entityIds": ["work-wealth-of-nations", "wiki-obra-teoria-dos-sentimentos-morais"],
+          "mode": "documents",
+          "notes": {
+            "wiki-obra-teoria-dos-sentimentos-morais": "Smith escreveu a Teoria dos Sentimentos Morais, publicada em 1759."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Relações e alianças",
+      "kicker": "Relações e alianças",
+      "minutes": 1,
+      "narrative": ["Correntes relacionadas: Liberalismo clássico, Georgismo."],
+      "question": "Que correntes dialogam ou disputam espaço com Adam Smith?",
+      "bridge": "Vistos os desdobramentos, o capítulo seguinte examina experiências, partidos e instituições.",
+      "sourceIds": ["source-sep-smith", "src-wiki-topic-georgismo"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["ideology-classical-liberalism", "wiki-topic-georgismo"],
+          "mode": "concepts",
+          "notes": {
+            "ideology-classical-liberalism": "A riqueza das nações tornou-se referência para a defesa liberal do comércio livre, embora Smith admitisse funções importantes ao Estado. Tema: Mercado e divisão do trabalho.",
+            "wiki-topic-georgismo": "[conferência de IA] Um imposto sobre o valor da terra não causa ineficiência econômica, ao contrário de outros impostos, segundo economistas desde Adam Smith e David Ricardo."
+          }
+        }
+      ]
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Atuação pública e legados",
+      "kicker": "Atuação pública e legados",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Revolução Americana, Capitalismo, Revolução Industrial, Iluminismo, Universidade de Edimburgo, Universidade de Oxford, Universidade de Glasgow, Universidade de Cambridge, Igreja da Inglaterra, Cambridge, Igreja Católica, Oxford, Reforma Protestante, Salvador, Nova Lima, Mariana, Transferência da corte portuguesa para o Brasil, Idade Média, Universidade Federal da Bahia, Guerras Napoleônicas, Revolução Francesa, Contrarreforma, Santa Sé, Papa, Fortaleza, Ouro Preto, Pandemia de COVID-19, Valparaíso (Chile)."
+      ],
+      "question": "Em quais acontecimentos, partidos e instituições Adam Smith se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "sourceIds": [
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-revolucao-industrial",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-universidade-de-edimburgo",
+        "src-wiki-topic-universidade-de-oxford",
+        "src-wiki-topic-universidade-de-glasgow",
+        "src-wiki-topic-universidade-de-cambridge",
+        "src-wiki-topic-igreja-da-inglaterra",
+        "src-wiki-topic-cambridge",
+        "src-wiki-topic-igreja-catolica",
+        "src-wiki-topic-oxford",
+        "src-wiki-topic-reforma-protestante",
+        "src-wiki-topic-salvador",
+        "src-wiki-topic-nova-lima",
+        "src-wiki-topic-mariana",
+        "src-wiki-topic-transferencia-da-corte-portuguesa-para-o-brasil",
+        "src-wiki-topic-idade-media",
+        "src-wiki-topic-universidade-federal-da-bahia",
+        "src-wiki-topic-guerras-napoleonicas",
+        "src-wiki-topic-contrarreforma",
+        "src-wiki-topic-santa-se",
+        "src-wiki-topic-papa",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-ouro-preto",
+        "src-wiki-topic-pandemia-de-covid-19",
+        "src-wiki-topic-valparaiso-chile"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "event-american-revolution",
+            "wiki-topic-capitalismo",
+            "wiki-topic-revolucao-industrial",
+            "wiki-topic-iluminismo",
+            "wiki-topic-universidade-de-edimburgo",
+            "wiki-topic-universidade-de-oxford",
+            "wiki-topic-universidade-de-glasgow",
+            "wiki-topic-universidade-de-cambridge",
+            "wiki-topic-igreja-da-inglaterra",
+            "wiki-topic-cambridge",
+            "wiki-topic-igreja-catolica",
+            "wiki-topic-oxford",
+            "wiki-topic-reforma-protestante",
+            "wiki-topic-salvador",
+            "wiki-topic-nova-lima",
+            "wiki-topic-mariana",
+            "wiki-topic-transferencia-da-corte-portuguesa-para-o-brasil",
+            "wiki-topic-idade-media",
+            "wiki-topic-universidade-federal-da-bahia",
+            "wiki-topic-guerras-napoleonicas",
+            "event-french-revolution",
+            "wiki-topic-contrarreforma",
+            "wiki-topic-santa-se",
+            "wiki-topic-papa",
+            "wiki-topic-fortaleza",
+            "wiki-topic-ouro-preto",
+            "wiki-topic-pandemia-de-covid-19",
+            "wiki-topic-valparaiso-chile"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "A relação de Smith com o deísmo é debatida: Ronald Coase questionou essa interpretação.",
+        "A interpretação de que a análise de Smith sobre comércio internacional era baseada na vantagem absoluta é debatida pelos historiadores da economia.",
+        "A influência imediata de A Riqueza das Nações nas decisões de governo é debatida pelos historiadores."
+      ],
+      "question": "Quais críticas e controvérsias cercam Adam Smith?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "sourceIds": ["src-wiki-topic-adam-smith"],
+      "review": null,
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "A relação de Smith com o deísmo é debatida: Ronald Coase questionou essa interpretação.",
+              "paragraphs": [
+                "A relação de Smith com o deísmo é debatida: Ronald Coase questionou essa interpretação."
+              ],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "A interpretação de que a análise de Smith sobre comércio internacional era baseada na vantagem absoluta é debatida pelos historiadores da economia.",
+              "paragraphs": [
+                "A interpretação de que a análise de Smith sobre comércio internacional era baseada na vantagem absoluta é debatida pelos historiadores da economia."
+              ],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-3",
+              "title": "Crítica ou controvérsia 3",
+              "kicker": "Argumentos e críticas",
+              "summary": "A influência imediata de A Riqueza das Nações nas decisões de governo é debatida pelos historiadores.",
+              "paragraphs": [
+                "A influência imediata de A Riqueza das Nações nas decisões de governo é debatida pelos historiadores."
+              ],
+              "sourceIds": ["src-wiki-topic-adam-smith"],
+              "entityIds": ["person-adam-smith"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Liberalismo, Liberalismo clássico, Liberalismo social, Neoliberalismo, Liberalismo conservador, Liberalismo económico, Liberalismo verde, Socialismo liberal, Nacional-liberalismo, Ordoliberalismo."
+      ],
+      "question": "Como Adam Smith se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "sourceIds": [],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "ideology-liberalism",
+            "ideology-classical-liberalism",
+            "ideology-social-liberalism",
+            "ideology-neoliberalism",
+            "ideology-conservative-liberalism",
+            "ideology-economic-liberalism",
+            "ideology-green-liberalism",
+            "ideology-liberal-socialism",
+            "ideology-national-liberalism",
+            "ideology-ordoliberalism"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Obras ligadas à tradição: Economia política, A riqueza das nações."],
+      "question": "Que obras e documentos aprofundam o estudo de Adam Smith?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "sourceIds": ["src-wiki-topic-economia-politica"],
+      "review": null,
+      "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-economia-politica", "work-wealth-of-nations"],
+          "mode": "documents",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 13 afirmações da fonte principal e 39 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": "Quais fontes sustentam a leitura sobre Adam Smith?",
+      "bridge": null,
+      "sourceIds": [
+        "source-marx-smith-bio",
+        "src-wiki-topic-adam-smith",
+        "src-wiki-topic-estado",
+        "source-marx-critique",
+        "marxism-source-wikidata-person-friedrich-engels",
+        "src-wiki-wd-q9381",
+        "src-wiki-topic-henri-de-saint-simon",
+        "src-wiki-topic-david-hume",
+        "src-wiki-topic-pedro-ii-do-brasil",
+        "src-wiki-topic-getulio-vargas",
+        "source-sep-smith",
+        "src-wiki-topic-georgismo",
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-revolucao-industrial",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-universidade-de-edimburgo",
+        "src-wiki-topic-universidade-de-oxford",
+        "src-wiki-topic-universidade-de-glasgow",
+        "src-wiki-topic-universidade-de-cambridge",
+        "src-wiki-topic-igreja-da-inglaterra",
+        "src-wiki-topic-cambridge",
+        "src-wiki-topic-igreja-catolica",
+        "src-wiki-topic-oxford",
+        "src-wiki-topic-reforma-protestante",
+        "src-wiki-topic-salvador",
+        "src-wiki-topic-nova-lima",
+        "src-wiki-topic-mariana",
+        "src-wiki-topic-transferencia-da-corte-portuguesa-para-o-brasil",
+        "src-wiki-topic-idade-media",
+        "src-wiki-topic-universidade-federal-da-bahia",
+        "src-wiki-topic-guerras-napoleonicas",
+        "src-wiki-topic-contrarreforma",
+        "src-wiki-topic-santa-se",
+        "src-wiki-topic-papa",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-ouro-preto",
+        "src-wiki-topic-pandemia-de-covid-19",
+        "src-wiki-topic-valparaiso-chile",
+        "src-wiki-topic-economia-politica"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "source-marx-smith-bio",
+            "src-wiki-topic-adam-smith",
+            "src-wiki-topic-estado",
+            "source-marx-critique",
+            "marxism-source-wikidata-person-friedrich-engels",
+            "src-wiki-wd-q9381",
+            "src-wiki-topic-henri-de-saint-simon",
+            "src-wiki-topic-david-hume",
+            "src-wiki-topic-pedro-ii-do-brasil",
+            "src-wiki-topic-getulio-vargas",
+            "source-sep-smith",
+            "src-wiki-topic-georgismo",
+            "src-wiki-topic-capitalismo",
+            "src-wiki-topic-revolucao-industrial",
+            "src-wiki-topic-iluminismo",
+            "src-wiki-topic-universidade-de-edimburgo",
+            "src-wiki-topic-universidade-de-oxford",
+            "src-wiki-topic-universidade-de-glasgow",
+            "src-wiki-topic-universidade-de-cambridge",
+            "src-wiki-topic-igreja-da-inglaterra",
+            "src-wiki-topic-cambridge",
+            "src-wiki-topic-igreja-catolica",
+            "src-wiki-topic-oxford",
+            "src-wiki-topic-reforma-protestante",
+            "src-wiki-topic-salvador",
+            "src-wiki-topic-nova-lima",
+            "src-wiki-topic-mariana",
+            "src-wiki-topic-transferencia-da-corte-portuguesa-para-o-brasil",
+            "src-wiki-topic-idade-media",
+            "src-wiki-topic-universidade-federal-da-bahia",
+            "src-wiki-topic-guerras-napoleonicas",
+            "src-wiki-topic-contrarreforma",
+            "src-wiki-topic-santa-se",
+            "src-wiki-topic-papa",
+            "src-wiki-topic-fortaleza",
+            "src-wiki-topic-ouro-preto",
+            "src-wiki-topic-pandemia-de-covid-19",
+            "src-wiki-topic-valparaiso-chile",
+            "src-wiki-topic-economia-politica"
+          ]
+        }
+      ]
+    }
+  ]
+}

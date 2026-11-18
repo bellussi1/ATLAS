@@ -1,0 +1,628 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-golpe-de-1964",
+  "slug": "golpe-de-1964",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Golpe de 1964",
+  "kicker": "Ideologia política",
+  "summary": "Entre 31 de março e 1.º de abril de 1964, uma rebelião militar depôs o presidente João Goulart, que se exilou no Uruguai em 4 de abril. O Congresso declarou vaga a Presidência e Ranieri Mazzilli assumiu provisoriamente, até a eleição de Castelo Branco pelo Congresso. O evento encerrou a Quarta República e iniciou a ditadura militar (1964–1985). Historiadores divergem sobre sua natureza, inclusive sobre se foi golpe ou revolução, e sobre o peso de militares, civis e do governo dos Estados Unidos.",
+  "published": false,
+  "atlasId": "atlas-golpe-de-1964",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-18" },
+  "identity": {
+    "accent": "teal",
+    "palette": "conservadorismo",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "poster": { "figures": [] },
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "Entre 31 de março e 1.º de abril de 1964, uma rebelião militar depôs o presidente João Goulart, que se exilou no Uruguai em 4 de abril. O Congresso declarou vaga a Presidência e Ranieri Mazzilli assumiu provisoriamente, até a eleição de Castelo Branco pelo Congresso. O evento encerrou a Quarta República e iniciou a ditadura militar (1964–1985). Historiadores divergem sobre sua natureza, inclusive sobre se foi golpe ou revolução, e sobre o peso de militares, civis e do governo dos Estados Unidos."
+      ],
+      "question": "O que define Golpe de 1964?",
+      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "A deposição começou como rebelião militar e foi seguida pela declaração de vacância da Presidência pelo Congresso Nacional."
+      ],
+      "question": "Como e em que contexto Golpe de 1964 surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
+      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "A deposição começou como rebelião militar e foi seguida pela declaração de vacância da Presidência pelo Congresso Nacional.",
+              "paragraphs": [
+                "A deposição começou como rebelião militar e foi seguida pela declaração de vacância da Presidência pelo Congresso Nacional."
+              ],
+              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Causas e rupturas",
+      "kicker": "Causas e rupturas",
+      "minutes": 1,
+      "narrative": [
+        "Há diversas interpretações acadêmicas: o evento foi tanto a implantação da ditadura quanto a última de várias crises da República Populista."
+      ],
+      "question": "Quais causas imediatas e rupturas estruturais desencadearam Golpe de 1964?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "Há diversas interpretações acadêmicas: o evento foi tanto a implantação da ditadura quanto a última de várias crises da República Populista.",
+              "paragraphs": [
+                "Há diversas interpretações acadêmicas: o evento foi tanto a implantação da ditadura quanto a última de várias crises da República Populista."
+              ],
+              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de golpe de 1964.",
+        "Conceitos ligados à tradição: Era Vargas, Estado, Tortura."
+      ],
+      "question": "Que termos e conceitos ajudam a compreender Golpe de 1964?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-tortura"
+      ],
+      "review": null,
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-golpe-de-estado-no-brasil-em-1964": "Nomes alternativos: golpe de 1964."
+          }
+        },
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-era-vargas", "wiki-topic-estado", "wiki-topic-tortura"],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "Cronologia do acontecimento",
+      "kicker": "Cronologia do acontecimento",
+      "minutes": 1,
+      "narrative": [
+        "No contexto da Guerra Fria, o evento ocorreu no mesmo período de outros golpes militares na região."
+      ],
+      "question": "Em que períodos históricos Golpe de 1964 se formou e mudou?",
+      "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
+      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "review": null,
+      "gap": "Há contexto histórico, mas nenhuma data verificada para montar a cronologia.",
+      "coverage": "partial",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "No contexto da Guerra Fria, o evento ocorreu no mesmo período de outros golpes militares na região.",
+              "paragraphs": [
+                "No contexto da Guerra Fria, o evento ocorreu no mesmo período de outros golpes militares na região."
+              ],
+              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Protagonistas e relatos",
+      "kicker": "Protagonistas e relatos",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Humberto Castelo Branco, Getúlio Vargas, Fidel Castro, Juan Domingo Perón, Juscelino Kubitschek, João Goulart, Fulgencio Batista, Che Guevara, Raúl Castro, José Martí, Eva Perón, Oscar Niemeyer, Leon Trótski, Gabriela Mistral, Pablo Neruda, Miguel Ángel Asturias, Augusto Pinochet, Rubén Darío, Pedro II do Brasil, Rafael Correa, Nicolás Maduro."
+      ],
+      "question": "Quem foram os protagonistas e quais relatos registram Golpe de 1964?",
+      "bridge": "Dos atores e obras, seguimos para as correntes e desdobramentos relacionados.",
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-topic-juan-domingo-peron",
+        "src-wiki-topic-juscelino-kubitschek",
+        "src-wiki-topic-joao-goulart",
+        "src-wiki-topic-fulgencio-batista",
+        "src-wiki-topic-che-guevara",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-eva-peron",
+        "src-wiki-topic-oscar-niemeyer",
+        "src-wiki-topic-gabriela-mistral",
+        "src-wiki-topic-pablo-neruda",
+        "src-wiki-topic-miguel-angel-asturias",
+        "src-wiki-topic-augusto-pinochet",
+        "src-wiki-topic-ruben-dario",
+        "src-wiki-topic-pedro-ii-do-brasil",
+        "src-wiki-topic-rafael-correa",
+        "src-wiki-topic-nicolas-maduro"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-humberto-castelo-branco",
+            "wiki-topic-getulio-vargas",
+            "wiki-topic-fidel-castro",
+            "wiki-topic-juan-domingo-peron",
+            "wiki-topic-juscelino-kubitschek",
+            "wiki-topic-joao-goulart",
+            "wiki-topic-fulgencio-batista",
+            "wiki-topic-che-guevara",
+            "wiki-topic-raul-castro",
+            "wiki-topic-jose-marti",
+            "wiki-topic-eva-peron",
+            "wiki-topic-oscar-niemeyer",
+            "person-leon-trotsky",
+            "wiki-topic-gabriela-mistral",
+            "wiki-topic-pablo-neruda",
+            "wiki-topic-miguel-angel-asturias",
+            "wiki-topic-augusto-pinochet",
+            "wiki-topic-ruben-dario",
+            "wiki-topic-pedro-ii-do-brasil",
+            "wiki-topic-rafael-correa",
+            "wiki-topic-nicolas-maduro"
+          ],
+          "mode": "thinkers",
+          "notes": {
+            "wiki-topic-humberto-castelo-branco": "O general Humberto de Alencar Castelo Branco foi um dos principais líderes do golpe."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Desdobramentos e correntes",
+      "kicker": "Desdobramentos e correntes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "review": null,
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Ditadura militar brasileira, Guerra Fria, Sindicato, Revolução Cubana, Crise dos mísseis de Cuba, Agência Central de Inteligência, Bloco de Leste, Ruptura sino-soviética, Segunda Guerra Mundial, Guerra do Vietnã, Fortaleza, Capitalismo, Universidade Federal de Minas Gerais, Guerra da Coreia, Organização das Nações Unidas, Movimento dos Países Não Alinhados, Direitos humanos, Invasão da Baía dos Porcos, Revolução Húngara de 1956, Iluminismo, Aliados da Segunda Guerra Mundial, Mercado Comum do Sul, Revolução Industrial, Bolchevique, Potências do Eixo, Sociedade das Nações, Judeus, Primeira Guerra da Indochina, Salvador, Sismo do Haiti de 2010."
+      ],
+      "question": "Em quais acontecimentos, partidos e instituições Golpe de 1964 se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "sourceIds": [
+        "src-wiki-topic-ditadura-militar-brasileira",
+        "src-wiki-topic-guerra-fria",
+        "src-wiki-topic-sindicato",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-agencia-central-de-inteligencia",
+        "src-wiki-topic-bloco-de-leste",
+        "src-wiki-topic-ruptura-sino-sovietica",
+        "src-wiki-topic-segunda-guerra-mundial",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-universidade-federal-de-minas-gerais",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-organizacao-das-nacoes-unidas",
+        "src-wiki-topic-movimento-dos-paises-nao-alinhados",
+        "src-wiki-topic-direitos-humanos",
+        "src-wiki-topic-invasao-da-baia-dos-porcos",
+        "src-wiki-topic-revolucao-hungara-de-1956",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-aliados-da-segunda-guerra-mundial",
+        "src-wiki-topic-mercado-comum-do-sul",
+        "src-wiki-topic-revolucao-industrial",
+        "src-wiki-topic-bolchevique",
+        "src-wiki-topic-potencias-do-eixo",
+        "src-wiki-topic-sociedade-das-nacoes",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-primeira-guerra-da-indochina",
+        "src-wiki-topic-salvador",
+        "src-wiki-topic-sismo-do-haiti-de-2010"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-ditadura-militar-brasileira",
+            "wiki-topic-guerra-fria",
+            "wiki-topic-sindicato",
+            "wiki-topic-revolucao-cubana",
+            "wiki-topic-crise-dos-misseis-de-cuba",
+            "wiki-topic-agencia-central-de-inteligencia",
+            "wiki-topic-bloco-de-leste",
+            "wiki-topic-ruptura-sino-sovietica",
+            "wiki-topic-segunda-guerra-mundial",
+            "wiki-topic-guerra-do-vietna",
+            "wiki-topic-fortaleza",
+            "wiki-topic-capitalismo",
+            "wiki-topic-universidade-federal-de-minas-gerais",
+            "wiki-topic-guerra-da-coreia",
+            "wiki-topic-organizacao-das-nacoes-unidas",
+            "wiki-topic-movimento-dos-paises-nao-alinhados",
+            "wiki-topic-direitos-humanos",
+            "wiki-topic-invasao-da-baia-dos-porcos",
+            "wiki-topic-revolucao-hungara-de-1956",
+            "wiki-topic-iluminismo",
+            "wiki-topic-aliados-da-segunda-guerra-mundial",
+            "wiki-topic-mercado-comum-do-sul",
+            "wiki-topic-revolucao-industrial",
+            "wiki-topic-bolchevique",
+            "wiki-topic-potencias-do-eixo",
+            "wiki-topic-sociedade-das-nacoes",
+            "wiki-topic-judeus",
+            "wiki-topic-primeira-guerra-da-indochina",
+            "wiki-topic-salvador",
+            "wiki-topic-sismo-do-haiti-de-2010"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "A natureza do evento, se golpe ou revolução, é disputada.",
+        "A historiografia atual usa o termo golpe para esse processo."
+      ],
+      "question": "Quais críticas e controvérsias cercam Golpe de 1964?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+      "review": null,
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "A natureza do evento, se golpe ou revolução, é disputada.",
+              "paragraphs": ["A natureza do evento, se golpe ou revolução, é disputada."],
+              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "A historiografia atual usa o termo golpe para esse processo.",
+              "paragraphs": ["A historiografia atual usa o termo golpe para esse processo."],
+              "sourceIds": ["src-wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "entityIds": ["wiki-topic-golpe-de-estado-no-brasil-em-1964"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Brasil, Trabalhismo brasileiro, Democracia, Autoritarismo, Nacionalismo, Comunismo, Esquerda (política), Marxismo-leninismo, Socialismo, Anarquismo, Social-democracia."
+      ],
+      "question": "Como Golpe de 1964 se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "sourceIds": [
+        "src-wikidata-verbetes",
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-democracia",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-nacionalismo",
+        "src-wiki-topic-esquerda-politica",
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-social-democracia"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-brasil",
+            "wiki-ideologia-trabalhismo-brasileiro",
+            "wiki-topic-democracia",
+            "wiki-topic-autoritarismo",
+            "wiki-topic-nacionalismo",
+            "ideology-communism",
+            "wiki-topic-esquerda-politica",
+            "ideology-marxism-leninism",
+            "ideology-socialism",
+            "wiki-topic-anarquismo",
+            "wiki-topic-social-democracia"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Obras ligadas à tradição: Los Angeles Times, Manifesto Comunista."],
+      "question": "Que obras e documentos aprofundam o estudo de Golpe de 1964?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "sourceIds": ["src-wiki-topic-los-angeles-times"],
+      "review": null,
+      "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-los-angeles-times", "work-communist-manifesto"],
+          "mode": "documents",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 10 afirmações da fonte principal e 62 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": "Quais fontes sustentam a leitura sobre Golpe de 1964?",
+      "bridge": null,
+      "sourceIds": [
+        "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+        "src-wiki-topic-era-vargas",
+        "src-wiki-topic-estado",
+        "src-wiki-topic-tortura",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-topic-juan-domingo-peron",
+        "src-wiki-topic-juscelino-kubitschek",
+        "src-wiki-topic-joao-goulart",
+        "src-wiki-topic-fulgencio-batista",
+        "src-wiki-topic-che-guevara",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-eva-peron",
+        "src-wiki-topic-oscar-niemeyer",
+        "src-wiki-topic-gabriela-mistral",
+        "src-wiki-topic-pablo-neruda",
+        "src-wiki-topic-miguel-angel-asturias",
+        "src-wiki-topic-augusto-pinochet",
+        "src-wiki-topic-ruben-dario",
+        "src-wiki-topic-pedro-ii-do-brasil",
+        "src-wiki-topic-rafael-correa",
+        "src-wiki-topic-nicolas-maduro",
+        "src-wiki-topic-ditadura-militar-brasileira",
+        "src-wiki-topic-guerra-fria",
+        "src-wiki-topic-sindicato",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-agencia-central-de-inteligencia",
+        "src-wiki-topic-bloco-de-leste",
+        "src-wiki-topic-ruptura-sino-sovietica",
+        "src-wiki-topic-segunda-guerra-mundial",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-topic-fortaleza",
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-universidade-federal-de-minas-gerais",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-organizacao-das-nacoes-unidas",
+        "src-wiki-topic-movimento-dos-paises-nao-alinhados",
+        "src-wiki-topic-direitos-humanos",
+        "src-wiki-topic-invasao-da-baia-dos-porcos",
+        "src-wiki-topic-revolucao-hungara-de-1956",
+        "src-wiki-topic-iluminismo",
+        "src-wiki-topic-aliados-da-segunda-guerra-mundial",
+        "src-wiki-topic-mercado-comum-do-sul",
+        "src-wiki-topic-revolucao-industrial",
+        "src-wiki-topic-bolchevique",
+        "src-wiki-topic-potencias-do-eixo",
+        "src-wiki-topic-sociedade-das-nacoes",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-primeira-guerra-da-indochina",
+        "src-wiki-topic-salvador",
+        "src-wiki-topic-sismo-do-haiti-de-2010",
+        "src-wikidata-verbetes",
+        "src-wiki-ideologia-trabalhismo-brasileiro",
+        "src-wiki-topic-democracia",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-nacionalismo",
+        "src-wiki-topic-esquerda-politica",
+        "src-wiki-topic-anarquismo",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-los-angeles-times"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "src-wiki-topic-golpe-de-estado-no-brasil-em-1964",
+            "src-wiki-topic-era-vargas",
+            "src-wiki-topic-estado",
+            "src-wiki-topic-tortura",
+            "src-wiki-topic-getulio-vargas",
+            "src-wiki-topic-fidel-castro",
+            "src-wiki-topic-juan-domingo-peron",
+            "src-wiki-topic-juscelino-kubitschek",
+            "src-wiki-topic-joao-goulart",
+            "src-wiki-topic-fulgencio-batista",
+            "src-wiki-topic-che-guevara",
+            "src-wiki-topic-raul-castro",
+            "src-wiki-topic-jose-marti",
+            "src-wiki-topic-eva-peron",
+            "src-wiki-topic-oscar-niemeyer",
+            "src-wiki-topic-gabriela-mistral",
+            "src-wiki-topic-pablo-neruda",
+            "src-wiki-topic-miguel-angel-asturias",
+            "src-wiki-topic-augusto-pinochet",
+            "src-wiki-topic-ruben-dario",
+            "src-wiki-topic-pedro-ii-do-brasil",
+            "src-wiki-topic-rafael-correa",
+            "src-wiki-topic-nicolas-maduro",
+            "src-wiki-topic-ditadura-militar-brasileira",
+            "src-wiki-topic-guerra-fria",
+            "src-wiki-topic-sindicato",
+            "src-wiki-topic-revolucao-cubana",
+            "src-wiki-topic-crise-dos-misseis-de-cuba",
+            "src-wiki-topic-agencia-central-de-inteligencia",
+            "src-wiki-topic-bloco-de-leste",
+            "src-wiki-topic-ruptura-sino-sovietica",
+            "src-wiki-topic-segunda-guerra-mundial",
+            "src-wiki-topic-guerra-do-vietna",
+            "src-wiki-topic-fortaleza",
+            "src-wiki-topic-capitalismo",
+            "src-wiki-topic-universidade-federal-de-minas-gerais",
+            "src-wiki-topic-guerra-da-coreia",
+            "src-wiki-topic-organizacao-das-nacoes-unidas",
+            "src-wiki-topic-movimento-dos-paises-nao-alinhados",
+            "src-wiki-topic-direitos-humanos",
+            "src-wiki-topic-invasao-da-baia-dos-porcos",
+            "src-wiki-topic-revolucao-hungara-de-1956",
+            "src-wiki-topic-iluminismo",
+            "src-wiki-topic-aliados-da-segunda-guerra-mundial",
+            "src-wiki-topic-mercado-comum-do-sul",
+            "src-wiki-topic-revolucao-industrial",
+            "src-wiki-topic-bolchevique",
+            "src-wiki-topic-potencias-do-eixo",
+            "src-wiki-topic-sociedade-das-nacoes",
+            "src-wiki-topic-judeus",
+            "src-wiki-topic-primeira-guerra-da-indochina",
+            "src-wiki-topic-salvador",
+            "src-wiki-topic-sismo-do-haiti-de-2010",
+            "src-wikidata-verbetes",
+            "src-wiki-ideologia-trabalhismo-brasileiro",
+            "src-wiki-topic-democracia",
+            "src-wiki-topic-autoritarismo",
+            "src-wiki-topic-nacionalismo",
+            "src-wiki-topic-esquerda-politica",
+            "src-wiki-topic-anarquismo",
+            "src-wiki-topic-social-democracia",
+            "src-wiki-topic-los-angeles-times"
+          ]
+        }
+      ]
+    }
+  ]
+}

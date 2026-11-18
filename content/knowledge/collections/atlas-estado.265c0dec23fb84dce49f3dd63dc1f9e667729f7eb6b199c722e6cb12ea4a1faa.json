@@ -1,0 +1,4051 @@
+{
+  "id": "atlas-estado",
+  "slug": "estado-wikipedia",
+  "title": "Estado: registros em revisão",
+  "description": "Sínteses por IA de fontes enciclopédicas, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-17",
+  "entityIds": [
+    "wiki-topic-alejandro-jodorowsky",
+    "wiki-topic-cicero",
+    "wiki-topic-cidade-estado",
+    "wiki-topic-estado-unitario",
+    "wiki-topic-governador",
+    "wiki-topic-hernan-cortes",
+    "wiki-topic-huguenotes",
+    "wiki-topic-idade-antiga",
+    "wiki-topic-jesse-souza",
+    "wiki-topic-luis-xiv-de-franca",
+    "wiki-topic-muculmano",
+    "wiki-topic-poder-executivo",
+    "wiki-topic-poder-judiciario",
+    "wiki-topic-republica-romana",
+    "wiki-topic-sergio-buarque-de-holanda",
+    "wiki-topic-tenochtitlan",
+    "wiki-topic-teocracia"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-alejandro-jodorowsky",
+      "slug": "alejandro-jodorowsky",
+      "title": "Alejandro Jodorowsky",
+      "summary": "Cineasta, poeta, escritor e autodenominado psicomago, nasceu em Tocopilla, no Chile, em 1929, e é descrito como chileno-francês. O artigo relata sua formação em Paris, a criação do Moviment Panique com Roland Topor e Fernando Arrabal em 1962, e filmes como El Topo e The Holy Mountain. Também trata de quadrinhos como L'Incal, feitos com Moebius, e de seus estudos sobre o Tarot de Marseille. Importa para o artigo por reunir sua trajetória artística e seus trabalhos sobre tarô.",
+      "aliases": ["Alejandro Jodorowsky Prullansky", "psicomago"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Cineasta, poeta, escritor e autodenominado psicomago, nasceu em Tocopilla, no Chile, em 1929, e é descrito como chileno-francês. O artigo relata sua formação em Paris, a criação do Moviment Panique com Roland Topor e Fernando Arrabal em 1962, e filmes como El Topo e The Holy Mountain. Também trata de quadrinhos como L'Incal, feitos com Moebius, e de seus estudos sobre o Tarot de Marseille. Importa para o artigo por reunir sua trajetória artística e seus trabalhos sobre tarô."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": ["Em 1953 mudou-se para Paris, onde estudou mímica com Marcel Marceau."]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q263730", "wikipedia": "Alejandro Jodorowsky" },
+      "discoveryMetadata": {
+        "description": "Diretor, ator, poeta, escritor e psicólogo chileno-francês, autor de filmes, quadrinhos e obras sobre tarô.",
+        "wikipediaTitle": "Alejandro Jodorowsky",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Alejandro_Jodorowsky",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72603176, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-cicero",
+      "slug": "cicero",
+      "title": "Cícero",
+      "summary": "Marco Túlio Cícero foi advogado, político, escritor, orador e filósofo da República Romana, eleito cônsul em 63 a.C. Nasceu em 106 a.C. em Arpino, em família equestre. Destacou-se pela oratória, pela tradução e criação de vocabulário filosófico em latim e pelas Catilinárias contra a conspiração de Catilina. Opôs-se a Marco Antônio nas Filípicas e foi executado em 43 a.C. sob o Segundo Triunvirato. Sua obra teve forte influência na prosa europeia, no Renascimento, no Iluminismo e no pensamento político moderno, e é fonte central sobre o fim da República.",
+      "aliases": ["Marco Túlio Cícero", "Marcus Tullius Cicero"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Marco Túlio Cícero foi advogado, político, escritor, orador e filósofo da República Romana, eleito cônsul em 63 a.C. Nasceu em 106 a.C. em Arpino, em família equestre. Destacou-se pela oratória, pela tradução e criação de vocabulário filosófico em latim e pelas Catilinárias contra a conspiração de Catilina. Opôs-se a Marco Antônio nas Filípicas e foi executado em 43 a.C. sob o Segundo Triunvirato. Sua obra teve forte influência na prosa europeia, no Renascimento, no Iluminismo e no pensamento político moderno, e é fonte central sobre o fim da República."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Cícero introduziu os romanos às principais escolas da filosofia grega e criou um vocabulário filosófico latino, com neologismos como evidentia e humanitas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1541", "wikipedia": "Cícero" },
+      "discoveryMetadata": {
+        "description": "Advogado, orador, político e filósofo da República Romana, cônsul em 63 a.C. e autor de vasta obra em prosa latina.",
+        "wikipediaTitle": "Cícero",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/C%C3%ADcero",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73087904, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-cidade-estado",
+      "slug": "cidade-estado",
+      "title": "Cidade-estado",
+      "summary": "Cidade-estado é uma cidade independente, com governo próprio e autônomo. O termo é comum para a Antiguidade, sobretudo na Grécia Antiga, com exemplos como Tebas, Atenas e Esparta. Entre os séculos XI e XIII, repúblicas italianas como Veneza, Gênova, Pisa e Florença tiveram papel importante, assim como a Liga Hanseática na Alemanha. O artigo também trata de casos modernos e de cidades-estado da América Central e do Sul. Importa por mostrar diferentes formas de autonomia urbana ao longo da história.",
+      "aliases": ["cidades-estado", "city-state", "pólis"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Cidade-estado é uma cidade independente, com governo próprio e autônomo. O termo é comum para a Antiguidade, sobretudo na Grécia Antiga, com exemplos como Tebas, Atenas e Esparta. Entre os séculos XI e XIII, repúblicas italianas como Veneza, Gênova, Pisa e Florença tiveram papel importante, assim como a Liga Hanseática na Alemanha. O artigo também trata de casos modernos e de cidades-estado da América Central e do Sul. Importa por mostrar diferentes formas de autonomia urbana ao longo da história."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Segundo uma das teorias, a emergência das cidades-estado gregas tornou-se possível durante o declínio do sistema tribal entre 1000 e 800 a.C."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Na Alemanha, a Liga Hanseática reuniu muitas cidades livres medievais.",
+            "Em 1136 foi estabelecida a República de Novgorod, culminando o processo de independência da cidade."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q133442", "wikipedia": "Cidade-estado" },
+      "discoveryMetadata": {
+        "description": "Forma de organização política em que uma cidade é independente, com governo próprio e autônomo.",
+        "wikipediaTitle": "Cidade-estado",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Cidade-estado",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72993885, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-estado-unitario",
+      "slug": "estado-unitario",
+      "title": "Estado unitário",
+      "summary": "Forma de Estado soberano em que o governo central é a autoridade suprema e pode criar ou abolir divisões administrativas, que exercem somente os poderes delegados. Opõe-se, segundo o artigo, ao sistema federativo, cujos estados têm existência constitucional. O texto afirma que a maioria dos países do mundo é formada por Estados unitários e cita casos como Reino Unido e China.",
+      "aliases": [],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Forma de Estado soberano em que o governo central é a autoridade suprema e pode criar ou abolir divisões administrativas, que exercem somente os poderes delegados. Opõe-se, segundo o artigo, ao sistema federativo, cujos estados têm existência constitucional. O texto afirma que a maioria dos países do mundo é formada por Estados unitários e cita casos como Reino Unido e China."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O Estado unitário é um Estado soberano governado como entidade única, no qual o governo central é a autoridade suprema do país."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O status de Hong Kong é tratado como aberto ao debate, pois depende da interpretação dada à Lei Fundamental: como lei doméstica ou como fonte de relação federativo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q179164", "wikipedia": "Estado unitário" },
+      "discoveryMetadata": {
+        "description": "Forma de Estado soberano em que o governo central é a autoridade suprema e pode criar ou abolir divisões administrativas.",
+        "wikipediaTitle": "Estado unitário",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Estado_unit%C3%A1rio",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71967565, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-governador",
+      "slug": "governador",
+      "title": "Governador",
+      "summary": "Cargo de líder administrativo, geralmente eleito, que detém a autoridade máxima do poder executivo em uma província, distrito ou estado de uma federação. No Brasil, o artigo descreve eleição por voto popular a cada quatro anos, com possibilidade de reeleição, e mudanças de denominação desde a colonização portuguesa até o termo governador de estado, estabelecido em 1947. Importa por mostrar a continuidade da função com nomes distintos e pelo caso português do governador civil, nomeado pelo Conselho de Ministros.",
+      "aliases": ["governador de estado"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Cargo de líder administrativo, geralmente eleito, que detém a autoridade máxima do poder executivo em uma província, distrito ou estado de uma federação. No Brasil, o artigo descreve eleição por voto popular a cada quatro anos, com possibilidade de reeleição, e mudanças de denominação desde a colonização portuguesa até o termo governador de estado, estabelecido em 1947. Importa por mostrar a continuidade da função com nomes distintos e pelo caso português do governador civil, nomeado pelo Conselho de Ministros."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O governador é o cargo político que representa o poder da administração estadual e o Estado em suas relações jurídicas, políticas e administrativas."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Em Portugal, o governador civil representa o Governo da República Portuguesa em cada distrito."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "O artigo indica, entre suas referências, a obra História dos governantes de São Paulo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q132050", "wikipedia": "Governador" },
+      "discoveryMetadata": {
+        "description": "Líder administrativo, geralmente eleito, com autoridade máxima do poder executivo em província, distrito ou estado de uma federação.",
+        "wikipediaTitle": "Governador",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Governador",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72486888, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-hernan-cortes",
+      "slug": "hernan-cortes",
+      "title": "Hernán Cortés",
+      "summary": "Hernán Cortés (Medellín, 1485 – Castilleja de la Cuesta, 1547) foi um militar, conquistador, explorador e escritor espanhol. Comandou a expedição que derrubou a Tríplice Aliança Asteca e tomou Tenochtitlán, abrindo caminho para a formação do Vice-Reino da Nova Espanha. Atuou em Hispaniola e Cuba antes de partir para o continente em 1519. Depois da conquista foi governador da Nova Espanha, recebeu o título de marquês do Vale de Oaxaca e organizou expedições ao Pacífico e à Califórnia. Sua figura é central para a história da conquista e para as disputas historiográficas sobre ela.",
+      "aliases": ["Hernando Cortés", "Hernando Cortes", "Hernando", "Fernando"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Hernán Cortés (Medellín, 1485 – Castilleja de la Cuesta, 1547) foi um militar, conquistador, explorador e escritor espanhol. Comandou a expedição que derrubou a Tríplice Aliança Asteca e tomou Tenochtitlán, abrindo caminho para a formação do Vice-Reino da Nova Espanha. Atuou em Hispaniola e Cuba antes de partir para o continente em 1519. Depois da conquista foi governador da Nova Espanha, recebeu o título de marquês do Vale de Oaxaca e organizou expedições ao Pacífico e à Califórnia. Sua figura é central para a história da conquista e para as disputas historiográficas sobre ela."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Em 1529 recebeu o título de marquês do Vale de Oaxaca, com concessão senhorial sobre certos povoados, que não transformava toda a Nova Espanha em propriedade sua."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q7326", "wikipedia": "Hernán Cortés" },
+      "discoveryMetadata": {
+        "description": "Militar espanhol que comandou a conquista do México-Tenochtitlán entre 1519 e 1521.",
+        "wikipediaTitle": "Hernán Cortés",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Hern%C3%A1n_Cort%C3%A9s",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73188131, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-huguenotes",
+      "slug": "huguenotes",
+      "title": "Huguenotes",
+      "summary": "Os huguenotes eram protestantes franceses de tradição reformada (calvinista). O termo era de uso comum em meados do século 16 e sua origem é controversa. O grupo cresceu no século XVI, sofreu perseguição a partir de Francisco I e foi alvo das Guerras Religiosas Francesas, encerradas com o Édito de Nantes em 1598. Com o Édito de Fontainebleau de 1685, de Luís XIV, o protestantismo perdeu reconhecimento legal e muitos fugiram para outros países, o que o artigo associa a efeitos econômicos e culturais em regiões de refúgio.",
+      "aliases": ["Huguenots"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Os huguenotes eram protestantes franceses de tradição reformada (calvinista). O termo era de uso comum em meados do século 16 e sua origem é controversa. O grupo cresceu no século XVI, sofreu perseguição a partir de Francisco I e foi alvo das Guerras Religiosas Francesas, encerradas com o Édito de Nantes em 1598. Com o Édito de Fontainebleau de 1685, de Luís XIV, o protestantismo perdeu reconhecimento legal e muitos fugiram para outros países, o que o artigo associa a efeitos econômicos e culturais em regiões de refúgio."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Os huguenotes mantinham a tradição reformada (calvinista) do protestantismo, em contraste com as populações protestantes do leste da França, que eram principalmente luteranas."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "As Guerras Religiosas Francesas ocorreram intermitentemente de 1562 a 1598 e terminaram com o Édito de Nantes, que concedeu aos huguenotes ampla autonomia religiosa, política e militar.",
+            "O Édito de Fontainebleau de 1685 acabou com o reconhecimento legal do protestantismo na França, e os huguenotes foram forçados a se converter ou fugir."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "As estimativas do número de mortos no massacre de São Bartolomeu variam, e autores discordam sobre a magnitude de cada cifra."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q101935", "wikipedia": "Huguenotes" },
+      "discoveryMetadata": {
+        "description": "Religiosos protestantes franceses de tradição reformada (calvinista) entre os séculos XVI e XVIII.",
+        "wikipediaTitle": "Huguenotes",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Huguenotes",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 69055734, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-idade-antiga",
+      "slug": "idade-antiga",
+      "title": "Idade Antiga",
+      "summary": "A Idade Antiga, também chamada Antiguidade ou Mundo Antigo, é um período da periodização das épocas históricas da humanidade. C. O texto registra que o critério da escrita é o mais comum, mas que estudiosos da cultura material têm procurado repensá-lo, e que não há consenso sobre o fim exato do Império Romano. A periodização está ligada à história da Europa e do Oriente Próximo, e se consolidou com a historiografia positivista do século XIX. O artigo descreve civilizações como Egito, Mesopotâmia, hebreus, fenícios, persas, chineses e hindus.",
+      "aliases": ["Antiguidade", "Mundo Antigo", "Antiquity"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A Idade Antiga, também chamada Antiguidade ou Mundo Antigo, é um período da periodização das épocas históricas da humanidade. C. O texto registra que o critério da escrita é o mais comum, mas que estudiosos da cultura material têm procurado repensá-lo, e que não há consenso sobre o fim exato do Império Romano. A periodização está ligada à história da Europa e do Oriente Próximo, e se consolidou com a historiografia positivista do século XIX. O artigo descreve civilizações como Egito, Mesopotâmia, hebreus, fenícios, persas, chineses e hindus."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O artigo define o período como o intervalo entre a invenção da escrita e a queda do Império Romano do Ocidente."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "A periodização se consolidou com a historiografia positivista que surgiu no século XIX."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "Não há entre os historiadores consenso sobre quando se deu o verdadeiro fim do Império Romano e início da Idade Média."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q41493", "wikipedia": "Idade Antiga" },
+      "discoveryMetadata": {
+        "description": "Período da história entre a invenção da escrita e a queda do Império Romano do Ocidente, na periodização tradicional.",
+        "wikipediaTitle": "Idade Antiga",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Idade_Antiga",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73144837, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    },
+    {
+      "id": "wiki-topic-jesse-souza",
+      "slug": "jesse-souza",
+      "title": "Jessé Souza",
+      "summary": "Sociólogo, advogado e professor universitário brasileiro, nascido em Natal em 1960, atua em Teoria Social e no estudo da desigualdade e das classes sociais no Brasil. Presidiu o Instituto de Pesquisa Econômica Aplicada (Ipea) a partir de abril de 2015 e pediu demissão em maio de 2016. Entre suas obras estão A Ralé Brasileira, A Radiografia do Golpe, A Elite do Atraso e A Classe Média no Espelho. Seu trabalho dialoga com Max Weber e Pierre Bourdieu e critica o uso do patrimonialismo para explicar o Brasil.",
+      "aliases": ["Jessé José Freire de Souza", "Jessé de Souza"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Sociólogo, advogado e professor universitário brasileiro, nascido em Natal em 1960, atua em Teoria Social e no estudo da desigualdade e das classes sociais no Brasil. Presidiu o Instituto de Pesquisa Econômica Aplicada (Ipea) a partir de abril de 2015 e pediu demissão em maio de 2016. Entre suas obras estão A Ralé Brasileira, A Radiografia do Golpe, A Elite do Atraso e A Classe Média no Espelho. Seu trabalho dialoga com Max Weber e Pierre Bourdieu e critica o uso do patrimonialismo para explicar o Brasil."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Jessé de Souza é apresentado como sociólogo, advogado, professor universitário, escritor e pesquisador brasileiro, com atuação em Teoria Social e em estudos sobre desigualdade e classes sociais."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q926855", "wikipedia": "Jessé Souza" },
+      "discoveryMetadata": {
+        "description": "Sociólogo, advogado e professor brasileiro, pesquisador da desigualdade social e das classes sociais no Brasil contemporâneo.",
+        "wikipediaTitle": "Jessé Souza",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Jess%C3%A9_Souza",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 71851129, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-luis-xiv-de-franca",
+      "slug": "luis-xiv-de-franca",
+      "title": "Luís XIV de França",
+      "summary": "Luís XIV (1638–1715) foi rei da França e Navarra de 1643 até sua morte, o mais longo reinado europeu e da história, com cerca de 72 anos. Filho de Luís XIII e Ana da Áustria, governou inicialmente sob regência, e seu reinado pessoal começou em 1661, após a morte de Mazarin. Consolidou a monarquia absoluta, centralizou o poder em Paris e em Versalhes, e conduziu guerras como a Guerra Franco-Holandesa e a Guerra da Sucessão Espanhola. O artigo mostra seu papel central na concentração de poder e na política europeia do século XVII.",
+      "aliases": [
+        "Luís XIV",
+        "Luís, o Grande",
+        "Rei-Sol",
+        "Louis XIV",
+        "Louis le Grand",
+        "Sun King"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Luís XIV (1638–1715) foi rei da França e Navarra de 1643 até sua morte, o mais longo reinado europeu e da história, com cerca de 72 anos. Filho de Luís XIII e Ana da Áustria, governou inicialmente sob regência, e seu reinado pessoal começou em 1661, após a morte de Mazarin. Consolidou a monarquia absoluta, centralizou o poder em Paris e em Versalhes, e conduziu guerras como a Guerra Franco-Holandesa e a Guerra da Sucessão Espanhola. O artigo mostra seu papel central na concentração de poder e na política europeia do século XVII."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Apoiava o conceito do direito divino dos reis e a criação de um governo centralizado a partir da capital."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "O artigo afirma que Luís XIV foi um dos líderes da crescente concentração de poder na era do absolutismo na Europa."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q7742", "wikipedia": "Luís XIV de França" },
+      "discoveryMetadata": {
+        "description": "Rei da França e Navarra de 1643 até sua morte em 1715, símbolo do absolutismo francês.",
+        "wikipediaTitle": "Luís XIV de França",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Lu%C3%ADs_XIV_de_Fran%C3%A7a",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72898980, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-muculmano",
+      "slug": "muculmano",
+      "title": "Muçulmano",
+      "summary": "Muçulmano é o termo para quem pratica o islã, religião monoteísta articulada pelo Alcorão e pelos ensinamentos de Maomé, considerado pelos fiéis o último profeta de Deus. O artigo descreve práticas como a oração, o jejum no Ramadã, a peregrinação a Meca e o estudo do Alcorão. Também trata da distribuição geográfica dos muçulmanos, estimados entre 1,41 e 1,57 bilhão, e da reserva com que esses números devem ser lidos. O verbete não traz fundação, fundadores nem membros notáveis de uma organização.",
+      "aliases": ["muçulmanos"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Muçulmano é o termo para quem pratica o islã, religião monoteísta articulada pelo Alcorão e pelos ensinamentos de Maomé, considerado pelos fiéis o último profeta de Deus. O artigo descreve práticas como a oração, o jejum no Ramadã, a peregrinação a Meca e o estudo do Alcorão. Também trata da distribuição geográfica dos muçulmanos, estimados entre 1,41 e 1,57 bilhão, e da reserva com que esses números devem ser lidos. O verbete não traz fundação, fundadores nem membros notáveis de uma organização."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Os muçulmanos consideram Maomé o último profeta de Deus, segundo o texto."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Os muçulmanos afirmam que Deus é único e que o propósito da existência é adorá-Lo."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O texto ressalva que não há estatísticas confiáveis sobre o número de muçulmanos que abandonam a religião, o que torna os dados de número de fiéis sujeitos a reserva."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q47740", "wikipedia": "Muçulmano" },
+      "discoveryMetadata": {
+        "description": "Pessoa que pratica o islã, religião monoteísta centrada nos ensinamentos do profeta Maomé.",
+        "wikipediaTitle": "Muçulmano",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mu%C3%A7ulmano",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73236175, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-poder-executivo",
+      "slug": "poder-executivo",
+      "title": "Poder executivo",
+      "summary": "Poder executivo é o ramo do Estado que, segundo a constituição de cada país, governa o povo e administra os interesses públicos conforme as leis. O artigo descreve sua organização no presidencialismo, no parlamentarismo e no semipresidencialismo, distinguindo os papéis de chefe de Estado e de chefe de governo. Também traz um breve histórico da separação de poderes, a partir de Aristóteles, e exemplos do Brasil e de Portugal.",
+      "aliases": ["executivo"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Poder executivo é o ramo do Estado que, segundo a constituição de cada país, governa o povo e administra os interesses públicos conforme as leis. O artigo descreve sua organização no presidencialismo, no parlamentarismo e no semipresidencialismo, distinguindo os papéis de chefe de Estado e de chefe de governo. Também traz um breve histórico da separação de poderes, a partir de Aristóteles, e exemplos do Brasil e de Portugal."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O poder executivo é o poder do Estado que, conforme a constituição de cada país, governa o povo e administra os interesses públicos, seguindo as normas legais."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q35798", "wikipedia": "Poder executivo" },
+      "discoveryMetadata": {
+        "description": "Poder do Estado que governa o povo e administra os interesses públicos conforme as leis e a constituição.",
+        "wikipediaTitle": "Poder executivo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Poder_executivo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72460325, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-poder-judiciario",
+      "slug": "poder-judiciario",
+      "title": "Poder judiciário",
+      "summary": "Sistema de tribunais que julga disputas legais e interpreta, defende e aplica a lei em nome do Estado. Sob a separação dos poderes, em geral não cria leis estatutárias nem executa as leis, mas aplica a lei aos fatos de cada caso. Em muitas jurisdições pode anular normas incompatíveis com normas superiores, por meio do controle judicial. O artigo descreve sua evolução desde o direito romano arcaico até os sistemas de common law e as funções em países como Estados Unidos, França, China, Brasil e Argentina.",
+      "aliases": ["sistema judiciário", "judicatura", "ramo judiciário", "sistema de tribunais"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Sistema de tribunais que julga disputas legais e interpreta, defende e aplica a lei em nome do Estado. Sob a separação dos poderes, em geral não cria leis estatutárias nem executa as leis, mas aplica a lei aos fatos de cada caso. Em muitas jurisdições pode anular normas incompatíveis com normas superiores, por meio do controle judicial. O artigo descreve sua evolução desde o direito romano arcaico até os sistemas de common law e as funções em países como Estados Unidos, França, China, Brasil e Argentina."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Na República Romana, a substituição do sacerdote pelo pretor como chefe do sistema judiciário foi a mudança mais importante do período pré-clássico."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Tribunais com poder de controle judicial podem anular leis e regras do Estado quando as consideram incompatíveis com uma norma superior."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q105985", "wikipedia": "Poder judiciário" },
+      "discoveryMetadata": {
+        "description": "Sistema de tribunais que julga disputas legais e interpreta e aplica a lei em casos jurídicos.",
+        "wikipediaTitle": "Poder judiciário",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Poder_judici%C3%A1rio",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72015089, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-republica-romana",
+      "slug": "republica-romana",
+      "title": "República Romana",
+      "summary": "A República Romana foi o período da antiga civilização romana em que o governo operou como uma república. , e foi marcada por cônsules eleitos anualmente e pelo senado. Ao longo de séculos, a república expandiu seu domínio pela Itália, pelo Mediterrâneo e pela Gália, em meio a conflitos entre patrícios e plebeus e a guerras civis. Terminou de forma debatida, com a reforma de Otaviano, depois Augusto, como principado. O artigo é relevante por descrever a constituição, as disputas políticas e a transição para o Império.",
+      "aliases": ["Res Publica Romana", "Roman Republic"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A República Romana foi o período da antiga civilização romana em que o governo operou como uma república. , e foi marcada por cônsules eleitos anualmente e pelo senado. Ao longo de séculos, a república expandiu seu domínio pela Itália, pelo Mediterrâneo e pela Gália, em meio a conflitos entre patrícios e plebeus e a guerras civis. Terminou de forma debatida, com a reforma de Otaviano, depois Augusto, como principado. O artigo é relevante por descrever a constituição, as disputas políticas e a transição para o Império."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q17167", "wikipedia": "República Romana" },
+      "discoveryMetadata": {
+        "description": "Período da antiga Roma em que o governo funcionou como república, entre a queda da monarquia e o principado de Augusto.",
+        "wikipediaTitle": "República Romana",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Rep%C3%BAblica_Romana",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73170621, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-sergio-buarque-de-holanda",
+      "slug": "sergio-buarque-de-holanda",
+      "title": "Sérgio Buarque de Holanda",
+      "summary": "Historiador, sociólogo, escritor e político brasileiro (São Paulo, 1902 – São Paulo, 1982). Autor de Raízes do Brasil (1936), obra em que apresentou a teoria do homem cordial, dirigiu o Museu Paulista de 1946 a 1956 e participou da fundação do Partido dos Trabalhadores em 1980. O verbete o apresenta como um dos principais pensadores sociais do Brasil, com influência na sociologia e na antropologia brasileiras.",
+      "aliases": ["Sérgio Buarque de Hollanda", "Sergio Buarque de Hollanda"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Historiador, sociólogo, escritor e político brasileiro (São Paulo, 1902 – São Paulo, 1982). Autor de Raízes do Brasil (1936), obra em que apresentou a teoria do homem cordial, dirigiu o Museu Paulista de 1946 a 1956 e participou da fundação do Partido dos Trabalhadores em 1980. O verbete o apresenta como um dos principais pensadores sociais do Brasil, com influência na sociologia e na antropologia brasileiras."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1688305", "wikipedia": "Sérgio Buarque de Holanda" },
+      "discoveryMetadata": {
+        "description": "Historiador, sociólogo e crítico brasileiro, autor de Raízes do Brasil (1936) e participante da fundação do PT.",
+        "wikipediaTitle": "Sérgio Buarque de Holanda",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/S%C3%A9rgio_Buarque_de_Holanda",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73220788, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-tenochtitlan",
+      "slug": "tenochtitlan",
+      "title": "Tenochtitlán",
+      "summary": "Tenochtitlán foi uma grande cidade-estado (āltepētl) mexica, situada no centro histórico da atual Cidade do México, construída em uma ilha no Lago de Texcoco, no Vale do México. A data exata de sua fundação não é clara; o artigo menciona 13 de março de 1325 como data escolhida em 1925 para celebrar o 600º aniversário da Cidade do México. Foi capital do Império Asteca no século XV até ser conquistada pelos tlaxcaltecas e pelos espanhóis em 1521. Em seu auge, foi a maior cidade das Américas pré-colombianas e, depois da conquista, tornou-se sede administrativa do Vice-Reino da Nova Espanha.",
+      "aliases": ["Tenochtitlan", "āltepētl mexica"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Tenochtitlán foi uma grande cidade-estado (āltepētl) mexica, situada no centro histórico da atual Cidade do México, construída em uma ilha no Lago de Texcoco, no Vale do México. A data exata de sua fundação não é clara; o artigo menciona 13 de março de 1325 como data escolhida em 1925 para celebrar o 600º aniversário da Cidade do México. Foi capital do Império Asteca no século XV até ser conquistada pelos tlaxcaltecas e pelos espanhóis em 1521. Em seu auge, foi a maior cidade das Américas pré-colombianas e, depois da conquista, tornou-se sede administrativa do Vice-Reino da Nova Espanha."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Os mexicas usaram o sistema de chinampa para agricultura e para drenar e expandir a ilha."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "As estimativas populacionais variam; algumas fontes populares indicam até 350 mil habitantes, enquanto as estimativas mais comuns são de mais de 200 mil."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q13695", "wikipedia": "Tenochtitlán" },
+      "discoveryMetadata": {
+        "description": "Cidade-estado mexica fundada em ilha do Lago de Texcoco, capital do Império Asteca até 1521.",
+        "wikipediaTitle": "Tenochtitlán",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Tenochtitl%C3%A1n",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73464966, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-teocracia",
+      "slug": "teocracia",
+      "title": "Teocracia",
+      "summary": "Sistema de governo em que ações políticas, jurídicas e sociais são submetidas às normas de uma religião, exercido direta ou indiretamente por clérigos. O artigo cita exemplos atuais, como o Vaticano, Estado teocrático católico desde 1929, e o Irã, controlado pelos aiatolás desde a Revolução Iraniana, em 1979. Distingue-se da monarquia absolutista, em que Estado e Igreja eram esferas separadas, e importa por mostrar a fusão entre poder político e religioso.",
+      "aliases": [],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Sistema de governo em que ações políticas, jurídicas e sociais são submetidas às normas de uma religião, exercido direta ou indiretamente por clérigos. O artigo cita exemplos atuais, como o Vaticano, Estado teocrático católico desde 1929, e o Irã, controlado pelos aiatolás desde a Revolução Iraniana, em 1979. Distingue-se da monarquia absolutista, em que Estado e Igreja eram esferas separadas, e importa por mostrar a fusão entre poder político e religioso."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O termo deriva do grego, combinando 'Teo', que significa Deus, e 'cracia', que significa poder."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Teocracia é o sistema de governo em que as ações políticas, jurídicas e sociais são submetidas às normas de uma religião."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q44405", "wikipedia": "Teocracia" },
+      "discoveryMetadata": {
+        "description": "Sistema de governo em que as ações políticas, jurídicas e sociais seguem as normas de uma religião.",
+        "wikipediaTitle": "Teocracia",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Teocracia",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73228593, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-alejandro-jodorowsky",
+      "title": "Alejandro Jodorowsky (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Alejandro_Jodorowsky",
+      "edition": "revisão 72603176; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-cicero",
+      "title": "Cícero (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/C%C3%ADcero",
+      "edition": "revisão 73087904; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-cidade-estado",
+      "title": "Cidade-estado (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Cidade-estado",
+      "edition": "revisão 72993885; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-estado-unitario",
+      "title": "Estado unitário (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Estado_unit%C3%A1rio",
+      "edition": "revisão 71967565; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-governador",
+      "title": "Governador (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Governador",
+      "edition": "revisão 72486888; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-hernan-cortes",
+      "title": "Hernán Cortés (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Hern%C3%A1n_Cort%C3%A9s",
+      "edition": "revisão 73188131; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-huguenotes",
+      "title": "Huguenotes (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Huguenotes",
+      "edition": "revisão 69055734; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-idade-antiga",
+      "title": "Idade Antiga (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Idade_Antiga",
+      "edition": "revisão 73144837; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-jesse-souza",
+      "title": "Jessé Souza (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Jess%C3%A9_Souza",
+      "edition": "revisão 71851129; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-luis-xiv-de-franca",
+      "title": "Luís XIV de França (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Lu%C3%ADs_XIV_de_Fran%C3%A7a",
+      "edition": "revisão 72898980; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-muculmano",
+      "title": "Muçulmano (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Mu%C3%A7ulmano",
+      "edition": "revisão 73236175; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-poder-executivo",
+      "title": "Poder executivo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Poder_executivo",
+      "edition": "revisão 72460325; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-poder-judiciario",
+      "title": "Poder judiciário (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Poder_judici%C3%A1rio",
+      "edition": "revisão 72015089; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-republica-romana",
+      "title": "República Romana (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Rep%C3%BAblica_Romana",
+      "edition": "revisão 73170621; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-sergio-buarque-de-holanda",
+      "title": "Sérgio Buarque de Holanda (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/S%C3%A9rgio_Buarque_de_Holanda",
+      "edition": "revisão 73220788; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-tenochtitlan",
+      "title": "Tenochtitlán (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Tenochtitl%C3%A1n",
+      "edition": "revisão 73464966; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-teocracia",
+      "title": "Teocracia (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Teocracia",
+      "edition": "revisão 73228593; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-001",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Em 1953 mudou-se para Paris onde estudou mímica com Marcel Marceau",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-002",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Tocopilla, 17 de fevereiro de 1929",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-003",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Em 1947 sua família mudou-se para Santiago",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-004",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Em 1953 mudou-se para Paris",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-005",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "e juntos criaram o Moviment Panique em 1962",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-006",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Fando y Lis, em 1967",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-007",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Em 1970, Jodorowsky lançou",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-008",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Em 1975, retorna à França",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-009",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "O filme seguinte de Jodorowsky foi Tusk, de 1978",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-010",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "história em quadrinhos L'Incal (O Incal, no Brasil) em 1983",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-011",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Em 1989 volta ao cinema",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-012",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Em 2019 ele lança os quadrinhos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-013",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Furioso, ele a agrediu e estuprou, engravidando-a, o que levou ao nascimento de Alejandro",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-alejandro-jodorowsky-014",
+      "sourceId": "src-wiki-topic-alejandro-jodorowsky",
+      "locator": "Sua contribuição para o estudo da iconografia original das cartas é reconhecida no campo da história do tarô",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cicero-001",
+      "sourceId": "src-wiki-topic-cicero",
+      "locator": "Cícero introduziu os romanos às principais escolas da filosofia grega e criou um vocabulário filosófico latino",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cicero-002",
+      "sourceId": "src-wiki-topic-cicero",
+      "locator": "a influência de Cícero sobre a história da literatura e das ideias europeias em muito excede a de qualquer outro escritor em prosa de qualquer língua",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cicero-003",
+      "sourceId": "src-wiki-topic-cicero",
+      "locator": "o Renascimento era, acima de tudo, um reavivamento de Cícero",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cicero-004",
+      "sourceId": "src-wiki-topic-cicero",
+      "locator": "Friedrich Engels referia-se a ele como o \"canalha mais desprezível da história\"",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cidade-estado-001",
+      "sourceId": "src-wiki-topic-cidade-estado",
+      "locator": "a emergência das cidades-Estado gregas tornou-se possível durante o declínio do sistema tribal entre 1000 e 800 a.C.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cidade-estado-002",
+      "sourceId": "src-wiki-topic-cidade-estado",
+      "locator": "Muitas destas cidades integravam a Liga Hanseática.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cidade-estado-003",
+      "sourceId": "src-wiki-topic-cidade-estado",
+      "locator": "O culminar deste processo foi o estabelecimento, em 1136, da República de Novgorod.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cidade-estado-004",
+      "sourceId": "src-wiki-topic-cidade-estado",
+      "locator": "o estabelecimento, em 1136, da República de Novgorod",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cidade-estado-005",
+      "sourceId": "src-wiki-topic-cidade-estado",
+      "locator": "A Convenção de 1923 transformou o status de Tânger",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-cidade-estado-006",
+      "sourceId": "src-wiki-topic-cidade-estado",
+      "locator": "As cidades-Estado gregas distinguiam-se por uma grande diversidade de formas de organização social",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-estado-unitario-001",
+      "sourceId": "src-wiki-topic-estado-unitario",
+      "locator": "um estado soberano governado como uma entidade única na qual o governo central é a autoridade suprema de um país",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-estado-unitario-002",
+      "sourceId": "src-wiki-topic-estado-unitario",
+      "locator": "a situação de Hong Kong Região Administrativa Especial (RAE) está aberta ao debate, dependendo da interpretação dada à Lei Fundamental de Hong Kong",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-estado-unitario-003",
+      "sourceId": "src-wiki-topic-estado-unitario",
+      "locator": "O governo central pode criar (ou abolir) divisões administrativas (unidades subnacionais)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-estado-unitario-004",
+      "sourceId": "src-wiki-topic-estado-unitario",
+      "locator": "A maioria dos países do mundo é formada por Estados unitários",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-estado-unitario-005",
+      "sourceId": "src-wiki-topic-estado-unitario",
+      "locator": "a situação de Hong Kong Região Administrativa Especial (RAE) está aberta ao debate, dependendo da interpretação dada à Lei Fundamental de Hong Kong",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-001",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "Governador é o cargo político que representa o poder da administração estadual",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-002",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "um governador civil é quem representa o Governo da República Portuguesa em cada distrito",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-003",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "História dos governantes de São Paulo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-004",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "Período imperial, de 1824 a 1889: presidente de província.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-005",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "Era Vargas, de 1930 a 1947: interventor federal.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-006",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "Desde a República Nova, de 1947 até a atualidade: governador de estado.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-007",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "a posse dos Governadores e de seus vices a partir de 2027 será no dia 06 de janeiro",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-008",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "o governador é eleito através do voto popular a cada quatro anos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-governador-009",
+      "sourceId": "src-wiki-topic-governador",
+      "locator": "eram nomeados diretamente pelo Imperador do Brasil",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hernan-cortes-001",
+      "sourceId": "src-wiki-topic-hernan-cortes",
+      "locator": "A concessão senhorial dava renda e autoridade sobre certos lugares, mas não transformava toda a Nova Espanha em propriedade pessoal de Cortés.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hernan-cortes-002",
+      "sourceId": "src-wiki-topic-hernan-cortes",
+      "locator": "Hernán Cortés de Monroy y Pizarro Altamirano (Medellín, 1485",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hernan-cortes-003",
+      "sourceId": "src-wiki-topic-hernan-cortes",
+      "locator": "Castilleja de la Cuesta, 2 de dezembro de 1547",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hernan-cortes-004",
+      "sourceId": "src-wiki-topic-hernan-cortes",
+      "locator": "Após 75 dias de cerco, os defensores se renderam em 13 de agosto de 1521.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hernan-cortes-005",
+      "sourceId": "src-wiki-topic-hernan-cortes",
+      "locator": "Em julho de 1529, recebeu o título de marquês do Vale de Oaxaca",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hernan-cortes-006",
+      "sourceId": "src-wiki-topic-hernan-cortes",
+      "locator": "a queda de Tenochtitlán não significou a submissão imediata de todo o território.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-hernan-cortes-007",
+      "sourceId": "src-wiki-topic-hernan-cortes",
+      "locator": "não há prova contemporânea sólida de que os mexicas tenham tomado Cortés por Quetzalcóatl",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-001",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "Em contraste, as populações protestantes do leste da França, na Alsácia, Mosela e Montbéliard, eram principalmente luteranas.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-002",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "As guerras terminaram com o Édito de Nantes de 1598, que concedeu aos huguenotes substancial autonomia religiosa, política e militar.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-003",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "Isso acabou com o reconhecimento legal do protestantismo na França e os huguenotes foram forçados a se converter ao catolicismo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-004",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "havendo estimativas mais exageradas como a de 70 mil mortos concedida pelo sobrevivente Maximilien de Béthune",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-005",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "travadas intermitentemente de 1562 a 1598",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-006",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "As guerras terminaram com o Édito de Nantes de 1598",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-007",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "Em 1572, milhares de huguenotes foram mortos no massacre da noite de São Bartolomeu",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-008",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "A origem do termo é controversa.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-009",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "a comunidade huguenote representava até 10% da população francesa",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-huguenotes-010",
+      "sourceId": "src-wiki-topic-huguenotes",
+      "locator": "Ele exagerou o declínio, mas as dragonnades foram devastadoras",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-idade-antiga-001",
+      "sourceId": "src-wiki-topic-idade-antiga",
+      "locator": "é o período que se estende desde a invenção da escrita (de 4 000 a 3 500 a.C.) até à queda do Império Romano do Ocidente (476 d.C.)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-idade-antiga-002",
+      "sourceId": "src-wiki-topic-idade-antiga",
+      "locator": "Também não há entre os historiadores um verdadeiro consenso sobre quando se deu o verdadeiro fim do Império Romano e início da Idade Média",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-idade-antiga-003",
+      "sourceId": "src-wiki-topic-idade-antiga",
+      "locator": "Essa visão se consolidou com a historiografia positivista que surgiu no século XIX",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-idade-antiga-004",
+      "sourceId": "src-wiki-topic-idade-antiga",
+      "locator": "Embora o critério da invenção da escrita como balizador entre o fim da Pré-história e o começo da História propriamente dita seja o mais comum, estudiosos que dão mais ênfase à importância da cultura material das sociedades têm procurado repensar essa divisão mais recentemente",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-idade-antiga-005",
+      "sourceId": "src-wiki-topic-idade-antiga",
+      "locator": "essa periodização está relacionada à História da Europa e também do Oriente Próximo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-001",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "Jessé José Freire de Souza (Natal, 29 de março de 1960) é um sociólogo, advogado, professor universitário, escritor e pesquisador brasileiro",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-002",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "Jessé José Freire de Souza (Natal, 29 de março de 1960)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-003",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "na Universidade de Brasília (UNB) concluída no ano de 1981",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-004",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "Concluiu seu Mestrado na área de Sociologia na mesma instituição no ano de 1986.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-005",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "Em 1991, doutorou-se em sociologia pela Universidade de Heidelberg",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-006",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "Em 2 de abril de 2015 foi nomeado pela Presidência da República ao cargo de presidente do Instituto de Pesquisa Econômica Aplicada (Ipea).",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-007",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "Pediu demissão do cargo em maio de 2016",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-008",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "onde se aposentou em maio de 2025",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-009",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "Em fevereiro de 2026, Jessé Souza publicou nas suas redes sociais um vídeo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-010",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "tem a ver com a quebra dos BRICS, que seriam uma ameaça à hegemonia estadunidense",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-011",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "critica Souza por fazer generalizações indevidas e por apresentar seus argumentos de forma agressiva e deselegante",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-jesse-souza-rel-001",
+      "sourceId": "src-wiki-topic-jesse-souza",
+      "locator": "Jessé é um crítico da Operação Lava Jato",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-001",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Luís apoiava o conceito do direito divino dos reis, continuando a política de seus predecessores de criar um governo centralizado a partir da capital",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-002",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Ele foi um dos líderes da crescente concentração de poder na era do absolutismo na Europa",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-003",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Nascido em 5 de setembro de 1638 no Castelo de Saint-Germain-en-Laye",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-004",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Quando Luís XIII morreu em 13 de maio de 1643, aos quarenta e um anos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-005",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Após a morte de Mazarin em março de 1661",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-006",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Durante esta construção, em 6 de maio de 1682, Luís XIV transferiu oficialmente a Corte real para Versalhes",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-007",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Em 1685, Luís XIV revogou o Édito de Nantes",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-008",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Em 1 de setembro de 1715, poucos dias antes de seu décimo sétimo aniversário, Luís XIV morreu",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-009",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "estudos modernos sugerem que se trata de uma declaração fictícia e não de uma citação real do rei",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-luis-xiv-de-franca-010",
+      "sourceId": "src-wiki-topic-luis-xiv-de-franca",
+      "locator": "Historiadores afirmam que a perseguição aos protestantes se deveu à influência da Marquesa de Maintenon",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-muculmano-001",
+      "sourceId": "src-wiki-topic-muculmano",
+      "locator": "Maomé, considerado pelos fiéis como o último profeta de Deus",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-muculmano-002",
+      "sourceId": "src-wiki-topic-muculmano",
+      "locator": "Os muçulmanos acreditam que Deus é único e incomparável e o propósito da existência é adorá-Lo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-muculmano-003",
+      "sourceId": "src-wiki-topic-muculmano",
+      "locator": "não existem estatísticas fiáveis sobre o número de muçulmanos que abandonam a religião",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-muculmano-004",
+      "sourceId": "src-wiki-topic-muculmano",
+      "locator": "com 80% a 90% sendo sunitas e 10% a 20% sendo xiitas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-muculmano-005",
+      "sourceId": "src-wiki-topic-muculmano",
+      "locator": "Cerca de 13% de muçulmanos vivem na Indonésia, o maior país muçulmano do mundo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-muculmano-006",
+      "sourceId": "src-wiki-topic-muculmano",
+      "locator": "Contudo, estes dados devem ser aceitos com alguma reserva",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-executivo-001",
+      "sourceId": "src-wiki-topic-poder-executivo",
+      "locator": "Poder executivo é o poder do estado que, nos moldes da constituição de um país, possui a atribuição de governar o povo e administrar os interesses públicos, cumprindo fielmente as ordenações legais.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-executivo-002",
+      "sourceId": "src-wiki-topic-poder-executivo",
+      "locator": "No presidencialismo, o líder do poder executivo, denominado presidente, é escolhido pelo povo, para mandatos regulares, acumulando a função de chefe de estado, chefe de governo e chefe da administração pública.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-executivo-003",
+      "sourceId": "src-wiki-topic-poder-executivo",
+      "locator": "Segundo o advogado Vitor Viviani, no Brasil \"as funções de chefe de Estado e chefe de governo são exercidas por uma só pessoa.\"",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-judiciario-001",
+      "sourceId": "src-wiki-topic-poder-judiciario",
+      "locator": "A mudança mais importante nesse período foi a substituição do sacerdote pelo pretor como chefe do sistema judiciário.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-judiciario-002",
+      "sourceId": "src-wiki-topic-poder-judiciario",
+      "locator": "Tribunais com poder de controle judicial podem anular leis e regras do Estado quando as consideram incompatíveis com uma norma superior",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-judiciario-003",
+      "sourceId": "src-wiki-topic-poder-judiciario",
+      "locator": "No ranking mundial de eficiência da justiça de 2022, o Brasil ficou na 81ª posição",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-judiciario-004",
+      "sourceId": "src-wiki-topic-poder-judiciario",
+      "locator": "a Suprema Corte é a autoridade final na interpretação da Constituição federal",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-judiciario-005",
+      "sourceId": "src-wiki-topic-poder-judiciario",
+      "locator": "Tribunais com poder de controle judicial podem anular leis e regras do Estado quando as consideram incompatíveis com uma norma superior",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-judiciario-006",
+      "sourceId": "src-wiki-topic-poder-judiciario",
+      "locator": "Os juízes constituem uma força fundamental para a interpretação e implementação da constituição",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-judiciario-007",
+      "sourceId": "src-wiki-topic-poder-judiciario",
+      "locator": "As decisões em common law estabelecem precedentes a serem seguidos por todos os tribunais",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-judiciario-008",
+      "sourceId": "src-wiki-topic-poder-judiciario",
+      "locator": "Os tribunais estaduais, que julgam 98% dos litígios",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-republica-romana-001",
+      "sourceId": "src-wiki-topic-republica-romana",
+      "locator": "a data exata da transição para o Império Romano é um assunto de interpretação",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-republica-romana-002",
+      "sourceId": "src-wiki-topic-republica-romana",
+      "locator": "A República Romana nunca foi restaurada, mas também nunca foi formalmente abolida",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sergio-buarque-de-holanda-rel-001",
+      "sourceId": "src-wiki-topic-sergio-buarque-de-holanda",
+      "locator": "participou da fundação do Partido dos Trabalhadores",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-tenochtitlan-001",
+      "sourceId": "src-wiki-topic-tenochtitlan",
+      "locator": "utilizando o sistema de chinampa",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-tenochtitlan-002",
+      "sourceId": "src-wiki-topic-tenochtitlan",
+      "locator": "as estimativas mais comuns da população são de mais de 200 mil pessoas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-tenochtitlan-003",
+      "sourceId": "src-wiki-topic-tenochtitlan",
+      "locator": "Hernán Cortés chegou a Tenochtitlán em 8 de novembro de 1519",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-tenochtitlan-004",
+      "sourceId": "src-wiki-topic-tenochtitlan",
+      "locator": "Em seu auge, foi a maior cidade das Américas pré-colombianas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-tenochtitlan-005",
+      "sourceId": "src-wiki-topic-tenochtitlan",
+      "locator": "tornou-se a sede administrativa do Vice-Reino da Nova Espanha",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-teocracia-001",
+      "sourceId": "src-wiki-topic-teocracia",
+      "locator": "Teocracia (do grego Teo: Deus + cracia: poder)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-teocracia-002",
+      "sourceId": "src-wiki-topic-teocracia",
+      "locator": "é o sistema de governo em que as ações políticas, jurídicas e sociais são submetidas às normas de uma religião",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-teocracia-003",
+      "sourceId": "src-wiki-topic-teocracia",
+      "locator": "sendo desde 1929 um Estado teocrático católico",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-teocracia-004",
+      "sourceId": "src-wiki-topic-teocracia",
+      "locator": "controlado pelos aiatolás, líderes religiosos islâmicos, desde a Revolução Iraniana, em 1979",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-teocracia-005",
+      "sourceId": "src-wiki-topic-teocracia",
+      "locator": "Os poderes político e religioso andam lado a lado.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-001",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-002",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-003",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-004",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-005",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-006",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-007",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-008",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-009",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-010",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-011",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-012",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-013",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-alejandro-jodorowsky-014",
+      "evidenceId": "ev-wiki-topic-alejandro-jodorowsky-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cicero-001",
+      "evidenceId": "ev-wiki-topic-cicero-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cicero-002",
+      "evidenceId": "ev-wiki-topic-cicero-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cicero-003",
+      "evidenceId": "ev-wiki-topic-cicero-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cicero-004",
+      "evidenceId": "ev-wiki-topic-cicero-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cidade-estado-001",
+      "evidenceId": "ev-wiki-topic-cidade-estado-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cidade-estado-002",
+      "evidenceId": "ev-wiki-topic-cidade-estado-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cidade-estado-003",
+      "evidenceId": "ev-wiki-topic-cidade-estado-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cidade-estado-004",
+      "evidenceId": "ev-wiki-topic-cidade-estado-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cidade-estado-005",
+      "evidenceId": "ev-wiki-topic-cidade-estado-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-cidade-estado-006",
+      "evidenceId": "ev-wiki-topic-cidade-estado-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-estado-unitario-001",
+      "evidenceId": "ev-wiki-topic-estado-unitario-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-estado-unitario-002",
+      "evidenceId": "ev-wiki-topic-estado-unitario-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-estado-unitario-003",
+      "evidenceId": "ev-wiki-topic-estado-unitario-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-estado-unitario-004",
+      "evidenceId": "ev-wiki-topic-estado-unitario-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-estado-unitario-005",
+      "evidenceId": "ev-wiki-topic-estado-unitario-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-001",
+      "evidenceId": "ev-wiki-topic-governador-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-002",
+      "evidenceId": "ev-wiki-topic-governador-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-003",
+      "evidenceId": "ev-wiki-topic-governador-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-004",
+      "evidenceId": "ev-wiki-topic-governador-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-005",
+      "evidenceId": "ev-wiki-topic-governador-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-006",
+      "evidenceId": "ev-wiki-topic-governador-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-007",
+      "evidenceId": "ev-wiki-topic-governador-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-008",
+      "evidenceId": "ev-wiki-topic-governador-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-governador-009",
+      "evidenceId": "ev-wiki-topic-governador-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hernan-cortes-001",
+      "evidenceId": "ev-wiki-topic-hernan-cortes-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hernan-cortes-002",
+      "evidenceId": "ev-wiki-topic-hernan-cortes-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hernan-cortes-003",
+      "evidenceId": "ev-wiki-topic-hernan-cortes-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hernan-cortes-004",
+      "evidenceId": "ev-wiki-topic-hernan-cortes-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hernan-cortes-005",
+      "evidenceId": "ev-wiki-topic-hernan-cortes-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hernan-cortes-006",
+      "evidenceId": "ev-wiki-topic-hernan-cortes-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-hernan-cortes-007",
+      "evidenceId": "ev-wiki-topic-hernan-cortes-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-001",
+      "evidenceId": "ev-wiki-topic-huguenotes-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-002",
+      "evidenceId": "ev-wiki-topic-huguenotes-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-003",
+      "evidenceId": "ev-wiki-topic-huguenotes-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-004",
+      "evidenceId": "ev-wiki-topic-huguenotes-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-005",
+      "evidenceId": "ev-wiki-topic-huguenotes-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-006",
+      "evidenceId": "ev-wiki-topic-huguenotes-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-007",
+      "evidenceId": "ev-wiki-topic-huguenotes-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-008",
+      "evidenceId": "ev-wiki-topic-huguenotes-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-009",
+      "evidenceId": "ev-wiki-topic-huguenotes-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-huguenotes-010",
+      "evidenceId": "ev-wiki-topic-huguenotes-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-idade-antiga-001",
+      "evidenceId": "ev-wiki-topic-idade-antiga-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-idade-antiga-002",
+      "evidenceId": "ev-wiki-topic-idade-antiga-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-idade-antiga-003",
+      "evidenceId": "ev-wiki-topic-idade-antiga-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-idade-antiga-004",
+      "evidenceId": "ev-wiki-topic-idade-antiga-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-idade-antiga-005",
+      "evidenceId": "ev-wiki-topic-idade-antiga-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-001",
+      "evidenceId": "ev-wiki-topic-jesse-souza-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-002",
+      "evidenceId": "ev-wiki-topic-jesse-souza-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-003",
+      "evidenceId": "ev-wiki-topic-jesse-souza-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-004",
+      "evidenceId": "ev-wiki-topic-jesse-souza-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-005",
+      "evidenceId": "ev-wiki-topic-jesse-souza-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-006",
+      "evidenceId": "ev-wiki-topic-jesse-souza-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-007",
+      "evidenceId": "ev-wiki-topic-jesse-souza-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-008",
+      "evidenceId": "ev-wiki-topic-jesse-souza-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-009",
+      "evidenceId": "ev-wiki-topic-jesse-souza-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-010",
+      "evidenceId": "ev-wiki-topic-jesse-souza-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-jesse-souza-011",
+      "evidenceId": "ev-wiki-topic-jesse-souza-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-001",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-002",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-003",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-004",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-005",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-006",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-007",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-008",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-009",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-luis-xiv-de-franca-010",
+      "evidenceId": "ev-wiki-topic-luis-xiv-de-franca-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-muculmano-001",
+      "evidenceId": "ev-wiki-topic-muculmano-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-muculmano-002",
+      "evidenceId": "ev-wiki-topic-muculmano-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-muculmano-003",
+      "evidenceId": "ev-wiki-topic-muculmano-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-muculmano-004",
+      "evidenceId": "ev-wiki-topic-muculmano-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-muculmano-005",
+      "evidenceId": "ev-wiki-topic-muculmano-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-muculmano-006",
+      "evidenceId": "ev-wiki-topic-muculmano-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-executivo-001",
+      "evidenceId": "ev-wiki-topic-poder-executivo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-executivo-002",
+      "evidenceId": "ev-wiki-topic-poder-executivo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-executivo-003",
+      "evidenceId": "ev-wiki-topic-poder-executivo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-judiciario-001",
+      "evidenceId": "ev-wiki-topic-poder-judiciario-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-judiciario-002",
+      "evidenceId": "ev-wiki-topic-poder-judiciario-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-judiciario-003",
+      "evidenceId": "ev-wiki-topic-poder-judiciario-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-judiciario-004",
+      "evidenceId": "ev-wiki-topic-poder-judiciario-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-judiciario-005",
+      "evidenceId": "ev-wiki-topic-poder-judiciario-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-judiciario-006",
+      "evidenceId": "ev-wiki-topic-poder-judiciario-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-judiciario-007",
+      "evidenceId": "ev-wiki-topic-poder-judiciario-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-judiciario-008",
+      "evidenceId": "ev-wiki-topic-poder-judiciario-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-republica-romana-001",
+      "evidenceId": "ev-wiki-topic-republica-romana-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-republica-romana-002",
+      "evidenceId": "ev-wiki-topic-republica-romana-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-tenochtitlan-001",
+      "evidenceId": "ev-wiki-topic-tenochtitlan-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-tenochtitlan-002",
+      "evidenceId": "ev-wiki-topic-tenochtitlan-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-tenochtitlan-003",
+      "evidenceId": "ev-wiki-topic-tenochtitlan-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-tenochtitlan-004",
+      "evidenceId": "ev-wiki-topic-tenochtitlan-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-tenochtitlan-005",
+      "evidenceId": "ev-wiki-topic-tenochtitlan-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-teocracia-001",
+      "evidenceId": "ev-wiki-topic-teocracia-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-teocracia-002",
+      "evidenceId": "ev-wiki-topic-teocracia-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-teocracia-003",
+      "evidenceId": "ev-wiki-topic-teocracia-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-teocracia-004",
+      "evidenceId": "ev-wiki-topic-teocracia-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-teocracia-005",
+      "evidenceId": "ev-wiki-topic-teocracia-005",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-001",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Em 1953 mudou-se para Paris, onde estudou mímica com Marcel Marceau.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-001"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-002",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Nasceu em Tocopilla, Chile. (1929-02-17).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-002"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-003",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Sua família mudou-se para Santiago. (1947).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-003"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-004",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Mudou-se para Paris. (1953).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-004"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-005",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Criação do Moviment Panique com Roland Topor e Fernando Arrabal. (1962).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-005"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-006",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Fez o filme Fando y Lis, baseado em peça de Arrabal. (1967).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-006"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-007",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Lançou o filme El Topo. (1970).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-007"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-008",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Retornou à França. (1975).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-008"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-009",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Filme seguinte, Tusk, foi lançado. (1978).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-009"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-010",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Série L'Incal em história em quadrinhos foi criada com Moebius. (1983).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-010"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-011",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Voltou ao cinema com Santa Sangre. (1989).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-011"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-012",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Lançou os quadrinhos The Sons of El Topo. (2019).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-012"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-013",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "O artigo afirma que o pai de Jodorowsky agrediu e estuprou a mãe, o que levou ao nascimento dele.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-013"]
+    },
+    {
+      "id": "claim-wiki-topic-alejandro-jodorowsky-014",
+      "entityId": "wiki-topic-alejandro-jodorowsky",
+      "text": "Segundo o artigo, a contribuição de Jodorowsky ao estudo da iconografia do tarô é reconhecida na história do tarô.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-alejandro-jodorowsky-014"]
+    },
+    {
+      "id": "claim-wiki-topic-cicero-001",
+      "entityId": "wiki-topic-cicero",
+      "text": "Cícero introduziu os romanos às principais escolas da filosofia grega e criou um vocabulário filosófico latino, com neologismos como evidentia e humanitas.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cicero-001"]
+    },
+    {
+      "id": "claim-wiki-topic-cicero-002",
+      "entityId": "wiki-topic-cicero",
+      "text": "A influência de Cícero na história da literatura e das ideias europeias excede a de qualquer outro escritor em prosa, segundo Michael Grant.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cicero-002"]
+    },
+    {
+      "id": "claim-wiki-topic-cicero-003",
+      "entityId": "wiki-topic-cicero",
+      "text": "Cícero foi considerado por Tadeusz Zieliński como fundamental para o Renascimento.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cicero-003"]
+    },
+    {
+      "id": "claim-wiki-topic-cicero-004",
+      "entityId": "wiki-topic-cicero",
+      "text": "Friedrich Engels chamou Cícero de canalha mais desprezível da história.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cicero-004"]
+    },
+    {
+      "id": "claim-wiki-topic-cidade-estado-001",
+      "entityId": "wiki-topic-cidade-estado",
+      "text": "Segundo uma das teorias, a emergência das cidades-estado gregas tornou-se possível durante o declínio do sistema tribal entre 1000 e 800 a.C.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cidade-estado-001"]
+    },
+    {
+      "id": "claim-wiki-topic-cidade-estado-002",
+      "entityId": "wiki-topic-cidade-estado",
+      "text": "Na Alemanha, a Liga Hanseática reuniu muitas cidades livres medievais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cidade-estado-002"]
+    },
+    {
+      "id": "claim-wiki-topic-cidade-estado-003",
+      "entityId": "wiki-topic-cidade-estado",
+      "text": "Em 1136 foi estabelecida a República de Novgorod, culminando o processo de independência da cidade.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cidade-estado-003"]
+    },
+    {
+      "id": "claim-wiki-topic-cidade-estado-004",
+      "entityId": "wiki-topic-cidade-estado",
+      "text": "Estabelecimento da República de Novgorod (1136).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cidade-estado-004"]
+    },
+    {
+      "id": "claim-wiki-topic-cidade-estado-005",
+      "entityId": "wiki-topic-cidade-estado",
+      "text": "Convenção transformou o status de Tânger em uma cidade internacional (1923).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cidade-estado-005"]
+    },
+    {
+      "id": "claim-wiki-topic-cidade-estado-006",
+      "entityId": "wiki-topic-cidade-estado",
+      "text": "Cidades-estado gregas tinham grande diversidade de formas de organização social.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-cidade-estado-006"]
+    },
+    {
+      "id": "claim-wiki-topic-estado-unitario-001",
+      "entityId": "wiki-topic-estado-unitario",
+      "text": "O Estado unitário é um Estado soberano governado como entidade única, no qual o governo central é a autoridade suprema do país.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-estado-unitario-001"]
+    },
+    {
+      "id": "claim-wiki-topic-estado-unitario-002",
+      "entityId": "wiki-topic-estado-unitario",
+      "text": "O status de Hong Kong é tratado como aberto ao debate, pois depende da interpretação dada à Lei Fundamental: como lei doméstica ou como fonte de relação federativo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-estado-unitario-002"]
+    },
+    {
+      "id": "claim-wiki-topic-estado-unitario-003",
+      "entityId": "wiki-topic-estado-unitario",
+      "text": "O governo central pode criar ou abolir divisões administrativas em um Estado unitário.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-estado-unitario-003"]
+    },
+    {
+      "id": "claim-wiki-topic-estado-unitario-004",
+      "entityId": "wiki-topic-estado-unitario",
+      "text": "A maioria dos países do mundo é formada por Estados unitários.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-estado-unitario-004"]
+    },
+    {
+      "id": "claim-wiki-topic-estado-unitario-005",
+      "entityId": "wiki-topic-estado-unitario",
+      "text": "A situação de Hong Kong como região em um Estado unitário está aberta ao debate.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-estado-unitario-005"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-001",
+      "entityId": "wiki-topic-governador",
+      "text": "O governador é o cargo político que representa o poder da administração estadual e o Estado em suas relações jurídicas, políticas e administrativas.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-001"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-002",
+      "entityId": "wiki-topic-governador",
+      "text": "Em Portugal, o governador civil representa o Governo da República Portuguesa em cada distrito.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-002"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-003",
+      "entityId": "wiki-topic-governador",
+      "text": "O artigo indica, entre suas referências, a obra História dos governantes de São Paulo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-003"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-004",
+      "entityId": "wiki-topic-governador",
+      "text": "Período imperial passa a usar a denominação presidente de província. (1824).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-004"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-005",
+      "entityId": "wiki-topic-governador",
+      "text": "Era Vargas passa a usar a denominação interventor federal. (1930).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-005"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-006",
+      "entityId": "wiki-topic-governador",
+      "text": "Passa a vigorar a denominação governador de estado. (1947).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-006"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-007",
+      "entityId": "wiki-topic-governador",
+      "text": "A posse dos governadores e vices passará a ocorrer no dia 6 de janeiro do ano seguinte à eleição. (2027-01-06).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-007"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-008",
+      "entityId": "wiki-topic-governador",
+      "text": "No Brasil, o governador é eleito por voto popular a cada quatro anos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-008"]
+    },
+    {
+      "id": "claim-wiki-topic-governador-009",
+      "entityId": "wiki-topic-governador",
+      "text": "Os presidentes de província do período imperial eram nomeados diretamente pelo Imperador.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-governador-009"]
+    },
+    {
+      "id": "claim-wiki-topic-hernan-cortes-001",
+      "entityId": "wiki-topic-hernan-cortes",
+      "text": "Em 1529 recebeu o título de marquês do Vale de Oaxaca, com concessão senhorial sobre certos povoados, que não transformava toda a Nova Espanha em propriedade sua.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hernan-cortes-001"]
+    },
+    {
+      "id": "claim-wiki-topic-hernan-cortes-002",
+      "entityId": "wiki-topic-hernan-cortes",
+      "text": "Nascimento de Hernán Cortés em Medellín. (1485).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hernan-cortes-002"]
+    },
+    {
+      "id": "claim-wiki-topic-hernan-cortes-003",
+      "entityId": "wiki-topic-hernan-cortes",
+      "text": "Morte de Hernán Cortés em Castilleja de la Cuesta. (1547).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hernan-cortes-003"]
+    },
+    {
+      "id": "claim-wiki-topic-hernan-cortes-004",
+      "entityId": "wiki-topic-hernan-cortes",
+      "text": "Os defensores de Tenochtitlán se renderam após 75 dias de cerco. (1521-08-13).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hernan-cortes-004"]
+    },
+    {
+      "id": "claim-wiki-topic-hernan-cortes-005",
+      "entityId": "wiki-topic-hernan-cortes",
+      "text": "Cortés recebeu o título de marquês do Vale de Oaxaca. (1529-07).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hernan-cortes-005"]
+    },
+    {
+      "id": "claim-wiki-topic-hernan-cortes-006",
+      "entityId": "wiki-topic-hernan-cortes",
+      "text": "A queda de Tenochtitlão não significou a submissão imediata de todo o território.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hernan-cortes-006"]
+    },
+    {
+      "id": "claim-wiki-topic-hernan-cortes-007",
+      "entityId": "wiki-topic-hernan-cortes",
+      "text": "A historiografia recente contesta que os mexicas tenham tomado Cortés por Quetzalcóatl.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-hernan-cortes-007"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-001",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "Os huguenotes mantinham a tradição reformada (calvinista) do protestantismo, em contraste com as populações protestantes do leste da França, que eram principalmente luteranas.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-001"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-002",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "As Guerras Religiosas Francesas ocorreram intermitentemente de 1562 a 1598 e terminaram com o Édito de Nantes, que concedeu aos huguenotes ampla autonomia religiosa, política e militar.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-002"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-003",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "O Édito de Fontainebleau de 1685 acabou com o reconhecimento legal do protestantismo na França, e os huguenotes foram forçados a se converter ou fugir.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-003"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-004",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "As estimativas do número de mortos no massacre de São Bartolomeu variam, e autores discordam sobre a magnitude de cada cifra.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-004"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-005",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "Início das Guerras Religiosas Francesas, travadas intermitentemente até 1598. (1562).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-005"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-006",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "Édito de Nantes concede aos huguenotes substancial autonomia religiosa, política e militar. (1598).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-006"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-007",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "Massacre da noite de São Bartolomeu, com milhares de huguenotes mortos. (1572).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-007"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-008",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "A origem do termo huguenote é controversa, com hipóteses concorrentes.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-008"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-009",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "A comunidade huguenote chegou a representar até 10% da população francesa na véspera do massacre de São Bartolomeu, segundo Hans Hillerbrand.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-009"]
+    },
+    {
+      "id": "claim-wiki-topic-huguenotes-010",
+      "entityId": "wiki-topic-huguenotes",
+      "text": "Luís XIV afirmou que a população huguenote foi reduzida a apenas 1 000 ou 1 500 adeptos, mas o artigo diz que ele exagerou o declínio.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-huguenotes-010"]
+    },
+    {
+      "id": "claim-wiki-topic-idade-antiga-001",
+      "entityId": "wiki-topic-idade-antiga",
+      "text": "O artigo define o período como o intervalo entre a invenção da escrita e a queda do Império Romano do Ocidente.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-idade-antiga-001"]
+    },
+    {
+      "id": "claim-wiki-topic-idade-antiga-002",
+      "entityId": "wiki-topic-idade-antiga",
+      "text": "Não há entre os historiadores consenso sobre quando se deu o verdadeiro fim do Império Romano e início da Idade Média.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-idade-antiga-002"]
+    },
+    {
+      "id": "claim-wiki-topic-idade-antiga-003",
+      "entityId": "wiki-topic-idade-antiga",
+      "text": "A periodização se consolidou com a historiografia positivista que surgiu no século XIX.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-idade-antiga-003"]
+    },
+    {
+      "id": "claim-wiki-topic-idade-antiga-004",
+      "entityId": "wiki-topic-idade-antiga",
+      "text": "O critério da invenção da escrita é o mais comum para balizar o início da História, mas estudiosos da cultura material têm procurado repensar essa divisão.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-idade-antiga-004"]
+    },
+    {
+      "id": "claim-wiki-topic-idade-antiga-005",
+      "entityId": "wiki-topic-idade-antiga",
+      "text": "A periodização está relacionada à História da Europa e do Oriente Próximo.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-idade-antiga-005"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-001",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Jessé de Souza é apresentado como sociólogo, advogado, professor universitário, escritor e pesquisador brasileiro, com atuação em Teoria Social e em estudos sobre desigualdade e classes sociais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-001"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-002",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Nascimento de Jessé Souza em Natal. (1960-03-29).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-002"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-003",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Conclusão da graduação em Direito na Universidade de Brasília. (1981).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-003"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-004",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Conclusão do mestrado em Sociologia na Universidade de Brasília. (1986).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-004"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-005",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Doutorado em sociologia pela Universidade de Heidelberg. (1991).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-005"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-006",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Nomeação para a presidência do Ipea. (2015-04-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-006"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-007",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Pedido de demissão do cargo no Ipea. (2016-05).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-007"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-008",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Aposentadoria como professor titular da UFABC. (2025-05).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-008"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-009",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Publicação de vídeo sobre o caso Epstein que gerou críticas. (2026-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-009"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-010",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Souza afirma que a Operação Lava Jato tem relação com a quebra dos BRICS, vista por ele como ameaça à hegemonia estadunidense.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-010"]
+    },
+    {
+      "id": "claim-wiki-topic-jesse-souza-011",
+      "entityId": "wiki-topic-jesse-souza",
+      "text": "Rubens Goyatá Campante, da UFMG, critica Souza por fazer generalizações indevidas e apresentar seus argumentos de forma agressiva.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-jesse-souza-011"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-001",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Apoiava o conceito do direito divino dos reis e a criação de um governo centralizado a partir da capital.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-001"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-002",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "O artigo afirma que Luís XIV foi um dos líderes da crescente concentração de poder na era do absolutismo na Europa.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-002"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-003",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Nascimento de Luís XIV no Castelo de Saint-Germain-en-Laye. (1638-09-05).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-003"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-004",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Morte de Luís XIII e ascensão de Luís XIV ao trono. (1643-05-13).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-004"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-005",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Morte de Mazarin e início do governo pessoal de Luís XIV. (1661-03).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-005"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-006",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Transferência oficial da Corte real para Versalhes. (1682-05-06).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-006"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-007",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Revogação do Édito de Nantes por Luís XIV. (1685).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-007"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-008",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Morte de Luís XIV em Versalhes. (1715-09-01).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-008"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-009",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Estudos modernos sugerem que a frase 'O Estado sou eu' é fictícia e não uma citação real do rei.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-009"]
+    },
+    {
+      "id": "claim-wiki-topic-luis-xiv-de-franca-010",
+      "entityId": "wiki-topic-luis-xiv-de-franca",
+      "text": "Historiadores afirmam que a perseguição aos protestantes se deveu à influência da Marquesa de Maintenon.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-luis-xiv-de-franca-010"]
+    },
+    {
+      "id": "claim-wiki-topic-muculmano-001",
+      "entityId": "wiki-topic-muculmano",
+      "text": "Os muçulmanos consideram Maomé o último profeta de Deus, segundo o texto.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-muculmano-001"]
+    },
+    {
+      "id": "claim-wiki-topic-muculmano-002",
+      "entityId": "wiki-topic-muculmano",
+      "text": "Os muçulmanos afirmam que Deus é único e que o propósito da existência é adorá-Lo.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-muculmano-002"]
+    },
+    {
+      "id": "claim-wiki-topic-muculmano-003",
+      "entityId": "wiki-topic-muculmano",
+      "text": "O texto ressalva que não há estatísticas confiáveis sobre o número de muçulmanos que abandonam a religião, o que torna os dados de número de fiéis sujeitos a reserva.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-muculmano-003"]
+    },
+    {
+      "id": "claim-wiki-topic-muculmano-004",
+      "entityId": "wiki-topic-muculmano",
+      "text": "A maioria dos muçulmanos pertence a uma das duas principais denominações, com 80% a 90% sunitas e 10% a 20% xiitas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-muculmano-004"]
+    },
+    {
+      "id": "claim-wiki-topic-muculmano-005",
+      "entityId": "wiki-topic-muculmano",
+      "text": "Cerca de 13% dos muçulmanos vivem na Indonésia, o maior país muçulmano do mundo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-muculmano-005"]
+    },
+    {
+      "id": "claim-wiki-topic-muculmano-006",
+      "entityId": "wiki-topic-muculmano",
+      "text": "Os dados sobre o número de muçulmanos devem ser aceitos com alguma reserva.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-muculmano-006"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-executivo-001",
+      "entityId": "wiki-topic-poder-executivo",
+      "text": "O poder executivo é o poder do Estado que, conforme a constituição de cada país, governa o povo e administra os interesses públicos, seguindo as normas legais.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-executivo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-executivo-002",
+      "entityId": "wiki-topic-poder-executivo",
+      "text": "No presidencialismo, o presidente acumula as funções de chefe de Estado, chefe de governo e chefe da administração pública.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-executivo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-executivo-003",
+      "entityId": "wiki-topic-poder-executivo",
+      "text": "Segundo Vitor Viviani, no Brasil as funções de chefe de Estado e de chefe de governo são exercidas por uma só pessoa.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-executivo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-judiciario-001",
+      "entityId": "wiki-topic-poder-judiciario",
+      "text": "Na República Romana, a substituição do sacerdote pelo pretor como chefe do sistema judiciário foi a mudança mais importante do período pré-clássico.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-judiciario-001"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-judiciario-002",
+      "entityId": "wiki-topic-poder-judiciario",
+      "text": "Tribunais com poder de controle judicial podem anular leis e regras do Estado quando as consideram incompatíveis com uma norma superior.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-judiciario-002"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-judiciario-003",
+      "entityId": "wiki-topic-poder-judiciario",
+      "text": "O Brasil ficou na 81ª posição no ranking mundial de eficiência da justiça, entre 140 países avaliados. (2022).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-judiciario-003"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-judiciario-004",
+      "entityId": "wiki-topic-poder-judiciario",
+      "text": "Nos Estados Unidos, a Suprema Corte é a autoridade final na interpretação da Constituição federal.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-judiciario-004"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-judiciario-005",
+      "entityId": "wiki-topic-poder-judiciario",
+      "text": "Tribunais com controle judicial podem anular leis e regras do Estado incompatíveis com uma norma superior.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-judiciario-005"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-judiciario-006",
+      "entityId": "wiki-topic-poder-judiciario",
+      "text": "Os juízes constituem uma força fundamental para a interpretação e implementação da constituição.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-judiciario-006"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-judiciario-007",
+      "entityId": "wiki-topic-poder-judiciario",
+      "text": "As decisões em common law estabelecem precedentes a serem seguidos por todos os tribunais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-judiciario-007"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-judiciario-008",
+      "entityId": "wiki-topic-poder-judiciario",
+      "text": "Os tribunais estaduais dos Estados Unidos julgam 98% dos litígios.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-judiciario-008"]
+    },
+    {
+      "id": "claim-wiki-topic-republica-romana-001",
+      "entityId": "wiki-topic-republica-romana",
+      "text": "A data exata da transição da república para o império é um assunto de interpretação entre historiadores.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-republica-romana-001"]
+    },
+    {
+      "id": "claim-wiki-topic-republica-romana-002",
+      "entityId": "wiki-topic-republica-romana",
+      "text": "A república nunca foi restaurada nem formalmente abolida.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-republica-romana-002"]
+    },
+    {
+      "id": "claim-wiki-topic-tenochtitlan-001",
+      "entityId": "wiki-topic-tenochtitlan",
+      "text": "Os mexicas usaram o sistema de chinampa para agricultura e para drenar e expandir a ilha.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-tenochtitlan-001"]
+    },
+    {
+      "id": "claim-wiki-topic-tenochtitlan-002",
+      "entityId": "wiki-topic-tenochtitlan",
+      "text": "As estimativas populacionais variam; algumas fontes populares indicam até 350 mil habitantes, enquanto as estimativas mais comuns são de mais de 200 mil.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-tenochtitlan-002"]
+    },
+    {
+      "id": "claim-wiki-topic-tenochtitlan-003",
+      "entityId": "wiki-topic-tenochtitlan",
+      "text": "Hernán Cortés chegou a Tenochtitlán. (1519-11-08).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-tenochtitlan-003"]
+    },
+    {
+      "id": "claim-wiki-topic-tenochtitlan-004",
+      "entityId": "wiki-topic-tenochtitlan",
+      "text": "Tenochtitlán foi a maior cidade das Américas pré-colombianas em seu auge.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-tenochtitlan-004"]
+    },
+    {
+      "id": "claim-wiki-topic-tenochtitlan-005",
+      "entityId": "wiki-topic-tenochtitlan",
+      "text": "Após a conquista, Tenochtitlán tornou-se a sede administrativa do Vice-Reino da Nova Espanha.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-tenochtitlan-005"]
+    },
+    {
+      "id": "claim-wiki-topic-teocracia-001",
+      "entityId": "wiki-topic-teocracia",
+      "text": "O termo deriva do grego, combinando 'Teo', que significa Deus, e 'cracia', que significa poder.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-teocracia-001"]
+    },
+    {
+      "id": "claim-wiki-topic-teocracia-002",
+      "entityId": "wiki-topic-teocracia",
+      "text": "Teocracia é o sistema de governo em que as ações políticas, jurídicas e sociais são submetidas às normas de uma religião.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-teocracia-002"]
+    },
+    {
+      "id": "claim-wiki-topic-teocracia-003",
+      "entityId": "wiki-topic-teocracia",
+      "text": "O Vaticano passou a ser um Estado teocrático católico. (1929).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-teocracia-003"]
+    },
+    {
+      "id": "claim-wiki-topic-teocracia-004",
+      "entityId": "wiki-topic-teocracia",
+      "text": "O Irã passou a ser controlado pelos aiatolás desde a Revolução Iraniana. (1979).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-teocracia-004"]
+    },
+    {
+      "id": "claim-wiki-topic-teocracia-005",
+      "entityId": "wiki-topic-teocracia",
+      "text": "Nas teocracias, os poderes político e religioso andam lado a lado.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-teocracia-005"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-001",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-002",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-003",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-004",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-005",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-006",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-007",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-008",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-009",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-010",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-011",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-012",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-013",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-alejandro-jodorowsky-014",
+      "claimId": "claim-wiki-topic-alejandro-jodorowsky-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cicero-001",
+      "claimId": "claim-wiki-topic-cicero-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cicero-002",
+      "claimId": "claim-wiki-topic-cicero-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cicero-003",
+      "claimId": "claim-wiki-topic-cicero-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cicero-004",
+      "claimId": "claim-wiki-topic-cicero-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cidade-estado-001",
+      "claimId": "claim-wiki-topic-cidade-estado-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cidade-estado-002",
+      "claimId": "claim-wiki-topic-cidade-estado-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cidade-estado-003",
+      "claimId": "claim-wiki-topic-cidade-estado-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cidade-estado-004",
+      "claimId": "claim-wiki-topic-cidade-estado-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cidade-estado-005",
+      "claimId": "claim-wiki-topic-cidade-estado-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-cidade-estado-006",
+      "claimId": "claim-wiki-topic-cidade-estado-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-estado-unitario-001",
+      "claimId": "claim-wiki-topic-estado-unitario-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-estado-unitario-002",
+      "claimId": "claim-wiki-topic-estado-unitario-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-estado-unitario-003",
+      "claimId": "claim-wiki-topic-estado-unitario-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-estado-unitario-004",
+      "claimId": "claim-wiki-topic-estado-unitario-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-estado-unitario-005",
+      "claimId": "claim-wiki-topic-estado-unitario-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-001",
+      "claimId": "claim-wiki-topic-governador-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-002",
+      "claimId": "claim-wiki-topic-governador-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-003",
+      "claimId": "claim-wiki-topic-governador-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-004",
+      "claimId": "claim-wiki-topic-governador-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-005",
+      "claimId": "claim-wiki-topic-governador-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-006",
+      "claimId": "claim-wiki-topic-governador-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-007",
+      "claimId": "claim-wiki-topic-governador-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-008",
+      "claimId": "claim-wiki-topic-governador-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-governador-009",
+      "claimId": "claim-wiki-topic-governador-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hernan-cortes-001",
+      "claimId": "claim-wiki-topic-hernan-cortes-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hernan-cortes-002",
+      "claimId": "claim-wiki-topic-hernan-cortes-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hernan-cortes-003",
+      "claimId": "claim-wiki-topic-hernan-cortes-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hernan-cortes-004",
+      "claimId": "claim-wiki-topic-hernan-cortes-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hernan-cortes-005",
+      "claimId": "claim-wiki-topic-hernan-cortes-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hernan-cortes-006",
+      "claimId": "claim-wiki-topic-hernan-cortes-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-hernan-cortes-007",
+      "claimId": "claim-wiki-topic-hernan-cortes-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-001",
+      "claimId": "claim-wiki-topic-huguenotes-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-002",
+      "claimId": "claim-wiki-topic-huguenotes-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-003",
+      "claimId": "claim-wiki-topic-huguenotes-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-004",
+      "claimId": "claim-wiki-topic-huguenotes-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-005",
+      "claimId": "claim-wiki-topic-huguenotes-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-006",
+      "claimId": "claim-wiki-topic-huguenotes-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-007",
+      "claimId": "claim-wiki-topic-huguenotes-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-008",
+      "claimId": "claim-wiki-topic-huguenotes-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-009",
+      "claimId": "claim-wiki-topic-huguenotes-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-huguenotes-010",
+      "claimId": "claim-wiki-topic-huguenotes-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-idade-antiga-001",
+      "claimId": "claim-wiki-topic-idade-antiga-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-idade-antiga-002",
+      "claimId": "claim-wiki-topic-idade-antiga-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-idade-antiga-003",
+      "claimId": "claim-wiki-topic-idade-antiga-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-idade-antiga-004",
+      "claimId": "claim-wiki-topic-idade-antiga-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-idade-antiga-005",
+      "claimId": "claim-wiki-topic-idade-antiga-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-001",
+      "claimId": "claim-wiki-topic-jesse-souza-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-002",
+      "claimId": "claim-wiki-topic-jesse-souza-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-003",
+      "claimId": "claim-wiki-topic-jesse-souza-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-004",
+      "claimId": "claim-wiki-topic-jesse-souza-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-005",
+      "claimId": "claim-wiki-topic-jesse-souza-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-006",
+      "claimId": "claim-wiki-topic-jesse-souza-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-007",
+      "claimId": "claim-wiki-topic-jesse-souza-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-008",
+      "claimId": "claim-wiki-topic-jesse-souza-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-009",
+      "claimId": "claim-wiki-topic-jesse-souza-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-010",
+      "claimId": "claim-wiki-topic-jesse-souza-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-jesse-souza-011",
+      "claimId": "claim-wiki-topic-jesse-souza-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-001",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-002",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-003",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-004",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-005",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-006",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-007",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-008",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-009",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-luis-xiv-de-franca-010",
+      "claimId": "claim-wiki-topic-luis-xiv-de-franca-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-muculmano-001",
+      "claimId": "claim-wiki-topic-muculmano-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-muculmano-002",
+      "claimId": "claim-wiki-topic-muculmano-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-muculmano-003",
+      "claimId": "claim-wiki-topic-muculmano-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-muculmano-004",
+      "claimId": "claim-wiki-topic-muculmano-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-muculmano-005",
+      "claimId": "claim-wiki-topic-muculmano-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-muculmano-006",
+      "claimId": "claim-wiki-topic-muculmano-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-executivo-001",
+      "claimId": "claim-wiki-topic-poder-executivo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-executivo-002",
+      "claimId": "claim-wiki-topic-poder-executivo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-executivo-003",
+      "claimId": "claim-wiki-topic-poder-executivo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-judiciario-001",
+      "claimId": "claim-wiki-topic-poder-judiciario-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-judiciario-002",
+      "claimId": "claim-wiki-topic-poder-judiciario-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-judiciario-003",
+      "claimId": "claim-wiki-topic-poder-judiciario-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-judiciario-004",
+      "claimId": "claim-wiki-topic-poder-judiciario-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-judiciario-005",
+      "claimId": "claim-wiki-topic-poder-judiciario-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-judiciario-006",
+      "claimId": "claim-wiki-topic-poder-judiciario-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-judiciario-007",
+      "claimId": "claim-wiki-topic-poder-judiciario-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-judiciario-008",
+      "claimId": "claim-wiki-topic-poder-judiciario-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-republica-romana-001",
+      "claimId": "claim-wiki-topic-republica-romana-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-republica-romana-002",
+      "claimId": "claim-wiki-topic-republica-romana-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-tenochtitlan-001",
+      "claimId": "claim-wiki-topic-tenochtitlan-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-tenochtitlan-002",
+      "claimId": "claim-wiki-topic-tenochtitlan-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-tenochtitlan-003",
+      "claimId": "claim-wiki-topic-tenochtitlan-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-tenochtitlan-004",
+      "claimId": "claim-wiki-topic-tenochtitlan-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-tenochtitlan-005",
+      "claimId": "claim-wiki-topic-tenochtitlan-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-teocracia-001",
+      "claimId": "claim-wiki-topic-teocracia-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-teocracia-002",
+      "claimId": "claim-wiki-topic-teocracia-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-teocracia-003",
+      "claimId": "claim-wiki-topic-teocracia-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-teocracia-004",
+      "claimId": "claim-wiki-topic-teocracia-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-teocracia-005",
+      "claimId": "claim-wiki-topic-teocracia-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [
+    {
+      "id": "rel-wiki-topic-jesse-souza-001",
+      "fromEntityId": "wiki-topic-jesse-souza",
+      "toEntityId": "wiki-topic-operacao-lava-jato",
+      "type": "reacted_against",
+      "label": "reagiu contra",
+      "reverseLabel": "recebeu reação de",
+      "context": "Jessé Souza é crítico da Operação Lava Jato.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-jesse-souza-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Jess%C3%A9_Souza",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-sergio-buarque-de-holanda-001",
+      "fromEntityId": "wiki-topic-sergio-buarque-de-holanda",
+      "toEntityId": "wiki-topic-partido-dos-trabalhadores",
+      "type": "participated_in",
+      "label": "participou de",
+      "reverseLabel": "teve a participação de",
+      "context": "Sérgio Buarque participou da fundação do Partido dos Trabalhadores em 1980.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-sergio-buarque-de-holanda-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/S%C3%A9rgio_Buarque_de_Holanda",
+        "retrievedAt": "2026-11-17"
+      }
+    }
+  ],
+  "learningPaths": []
+}
