@@ -1,0 +1,51 @@
+name: ATLAS RAG Eval
+on:
+  push:
+    paths:
+      - 'experiments/rag/**'
+      - 'content/content-pointer.json'
+      - '.github/workflows/rag-eval.yml'
+  pull_request:
+    paths:
+      - 'experiments/rag/**'
+      - 'content/content-pointer.json'
+      - '.github/workflows/rag-eval.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rag-eval-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  rag-tests-and-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Cache do conteúdo publicado (R2)
+        uses: actions/cache@v6
+        with:
+          path: generated/content-cache
+          key: content-cache-${{ hashFiles('content/content-pointer.json') }}
+      - run: npm ci --ignore-scripts
+      - run: npm run content:fetch
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar dependências Python (CPU CI)
+        run: |
+          uv venv experiments/rag/.venv --python 3.12
+          uv pip install --python experiments/rag/.venv numpy scipy rank-bm25 httpx pydantic pytest
+          uv pip install --python experiments/rag/.venv torch --index-url https://download.pytorch.org/whl/cpu
+          uv pip install --python experiments/rag/.venv transformers sentence-transformers accelerate
+          uv pip install --python experiments/rag/.venv -e experiments/rag --no-deps
+      - name: Rodar suíte pytest do experimento RAG
+        run: experiments/rag/.venv/bin/pytest experiments/rag/tests
+      - name: Checar regressão contra baseline_thresholds.json
+        run: experiments/rag/.venv/bin/python -m atlas_rag.cli ci-check

@@ -1,6 +1,6 @@
 import { Component, computed, inject, Injector, signal } from '@angular/core';
 import { pendingUntilEvent, takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import type { Source } from '@core/content/models/content-schema';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
@@ -13,6 +13,7 @@ import { IdeologyReadingComponent } from '@ideologies/components/ideology-readin
 import { KnowledgeTextComponent } from '@ideologies/components/knowledge-text/knowledge-text.component';
 import { IdeologyReadingEndComponent } from '@ideologies/components/reading-end/reading-end.component';
 import { companionOf, connectionsOf, paletteOf } from '@ideologies/data/ideology-readings';
+import { publishedIdeologies } from '@ideologies/data/published-ideologies';
 import { chapterGroup } from '@ideologies/models/ideology-chapters';
 import type { IdeologyDossier } from '@ideologies/models/ideology-page.schema';
 import { IdeologyRepository } from '@ideologies/services/ideology-repository.service';
@@ -46,6 +47,7 @@ export class IdeologyPageComponent {
   private readonly repository = inject(ContentRepository);
   private readonly ideologies = inject(IdeologyRepository);
   private readonly title = inject(Title);
+  private readonly meta = inject(Meta);
   private readonly retry = new BehaviorSubject(0);
   private readonly injector = inject(Injector);
   readonly state = signal<PageState>({ status: 'loading', dossier: null });
@@ -151,6 +153,11 @@ export class IdeologyPageComponent {
               ? 'Página não encontrada — ATLAS'
               : 'Leitura de ideologia — ATLAS',
         );
+        if (state.dossier && publishedIdeologies[state.dossier.page.slug]?.unlisted) {
+          this.meta.updateTag({ name: 'robots', content: 'noindex' });
+        } else {
+          this.meta.removeTag("name='robots'");
+        }
       });
   }
   reload(): void {

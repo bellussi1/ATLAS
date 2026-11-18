@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-constituicoes-e-republica-no-brasil",
+  "slug": "constituicoes-e-republica-no-brasil",
+  "kind": "institucional",
+  "title": "República, rupturas e Constituição de 1988 no Brasil",
+  "question": "Como as instituições republicanas brasileiras alternaram pactos constitucionais, centralização autoritária e ampliação da cidadania?",
+  "deck": "Um percurso institucional em seis paradas atravessando a Primeira República, a criação da Justiça do Trabalho, a experiência democrática de 1946, o golpe de 1964, a Constituição de 1988 e o grafo do acervo.",
+  "summary": "Examina os ciclos constitucionais e institucionais do Brasil republicano, observando como eleições, partidos, Forças Armadas, direitos sociais e federalismo foram redefinidos em cada ruptura ou pacto político.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Percurso institucional brasileiro estruturado sobre verbetes e relações compiladas; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "primeira-republica",
+      "title": "Primeira República: federalismo oligárquico e cidadania restrita",
+      "reason": "Apresenta o pacto da Constituição de 1891: república federativa presidencialista, voto aberto não universal e predomínio das oligarquias estaduais até 1930.",
+      "question": "Por que a descentralização republicana de 1891 fortaleceu o poder local e o coronelismo?",
+      "justification": "Define o ponto de partida institucional contra o qual se formaram as reformas centralizadoras e trabalhistas de 1930.",
+      "destination": { "type": "verbete", "slug": "primeira-republica-brasileira" },
+      "sourceIds": ["src-primeira-republica"]
+    },
+    {
+      "id": "justica-trabalho-estado",
+      "title": "Anos 1930–1945: Estado centralizado e Justiça do Trabalho",
+      "reason": "Mostra a construção de um aparato federal de regulação do trabalho e previdência, combinando proteção jurídica aos trabalhadores urbanos com tutela sindical e autoritarismo no Estado Novo.",
+      "question": "Como novas instituições sociais foram erguidas sob um regime de centralização executiva?",
+      "justification": "Evidencia a formação da burocracia estatal e trabalhista que sobreviveu à queda de Vargas em 1945.",
+      "destination": { "type": "verbete", "slug": "justica-do-trabalho" },
+      "sourceIds": ["src-justica-trabalho"]
+    },
+    {
+      "id": "republica-1946",
+      "title": "República de 1946: democracia de massas, partidos e polarização",
+      "reason": "Examina o primeiro ciclo de eleições competitivas nacionais (1945–1964), o sistema partidário (PSD, UDN, PTB) e os impasses entre Executivo reformista e Congresso conservador.",
+      "question": "Quais tensões institucionais marcaram a convivência entre voto popular ampliado e crise política?",
+      "justification": "Conecta o pós-1945 às pressões por reformas estruturais que antecederam o golpe de 1964.",
+      "destination": { "type": "verbete", "slug": "periodo-populista" },
+      "sourceIds": ["src-periodo-populista"]
+    },
+    {
+      "id": "golpe-ditadura-1964",
+      "title": "1964 e a ditadura militar: ruptura constitucional e autoritarismo",
+      "reason": "Analisa a deposição de João Goulart, a edição dos Atos Institucionais, a cassação de mandatos, a censura e a reorganização forçada do sistema partidário em bipartidarismo.",
+      "question": "Por meio de quais instrumentos jurídicos e coercitivos o regime militar substituiu a ordem de 1946?",
+      "justification": "Mostra o desmonte das garantias constitucionais cuja superação pautou a Constituinte de 1987–1988.",
+      "destination": { "type": "verbete", "slug": "golpe-de-estado-no-brasil-em-1964" },
+      "sourceIds": ["src-golpe-1964"]
+    },
+    {
+      "id": "constituicao-1988",
+      "title": "Constituição de 1988: redemocratização e direitos sociais",
+      "reason": "Estuda a chamada Constituição Cidadã, que restabeleceu eleições diretas, garantias fundamentais, SUS, autonomia sindical, papel do Ministério Público e proteção constitucional ampliada.",
+      "question": "Como o texto de 1988 buscou blindar direitos civis e sociais após vinte e um anos de regime militar?",
+      "justification": "Sintetiza o arranjo institucional contemporâneo do Brasil democrático.",
+      "destination": { "type": "verbete", "slug": "constituicao-brasileira-de-1988" },
+      "sourceIds": ["src-constituicao-1988"]
+    },
+    {
+      "id": "rede-institucional-br",
+      "title": "Rede institucional brasileira no mapa de relações",
+      "reason": "Abre o grafo para explorar as conexões entre presidentes, partidos, constituições, movimentos sociais e acontecimentos do Brasil republicano.",
+      "question": "Quais atores e eventos ligam os diferentes regimes republicanos brasileiros no acervo?",
+      "justification": "Permite navegar pelas ligações cruzadas entre história política e instituições brasileiras.",
+      "destination": { "type": "grafo", "nodeId": "wiki-topic-constituicao-brasileira-de-1988" }
+    }
+  ],
+  "branches": [
+    {
+      "id": "ramo-tenentismo",
+      "fromStop": "primeira-republica",
+      "title": "Tenentismo e a contestação armada nos anos 1920",
+      "reason": "Acompanha as revoltas de jovens oficiais do Exército contra as oligarquias estaduais, pelo voto secreto e pela moralização republicana.",
+      "question": "De que maneira o movimento tenentista abriu caminho para a Revolução de 1930?",
+      "justification": "Explica a fissura militar e política que antecedeu a queda da Primeira República.",
+      "destination": { "type": "verbete", "slug": "tenentismo" },
+      "convergesAt": "justica-trabalho-estado"
+    },
+    {
+      "id": "ramo-constituinte-1987",
+      "fromStop": "golpe-ditadura-1964",
+      "title": "Assembleia Nacional Constituinte de 1987–1988",
+      "reason": "Mostra a transição negociada, as emendas populares e o embate entre blocos parlamentares que redigiram a nova Carta.",
+      "question": "Como a participação social e as coalizões parlamentares moldaram a Constituinte de 1987?",
+      "justification": "Detalha o processo político concreto entre o fim da ditadura e a promulgação da Constituição.",
+      "destination": { "type": "verbete", "slug": "assembleia-nacional-constituinte-de-1987" },
+      "convergesAt": "constituicao-1988"
+    }
+  ],
+  "connections": [
+    {
+      "destination": { "type": "leitura", "slug": "trabalhismo" },
+      "reason": "Aprofundar a leitura contínua sobre o trabalhismo na política brasileira."
+    },
+    {
+      "destination": { "type": "catalogo", "path": "partidos" },
+      "reason": "Consultar partidos políticos brasileiros e internacionais no catálogo."
+    },
+    {
+      "destination": { "type": "catalogo", "path": "regimes" },
+      "reason": "Comparar regimes políticos e classificações históricas no acervo."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-primeira-republica",
+      "title": "Verbete Primeira República Brasileira — registros históricos e dados no acervo"
+    },
+    {
+      "id": "src-justica-trabalho",
+      "title": "Verbete Justiça do Trabalho — institucionalização trabalhista no Brasil"
+    },
+    {
+      "id": "src-periodo-populista",
+      "title": "Verbete Período Populista — República de 1946, partidos e crises"
+    },
+    {
+      "id": "src-golpe-1964",
+      "title": "Verbete Golpe de Estado no Brasil em 1964 — cronologia e referências"
+    },
+    {
+      "id": "src-constituicao-1988",
+      "title": "Verbete Constituição brasileira de 1988 — pacto constituinte e direitos"
+    }
+  ],
+  "updatedAt": "2026-11-16",
+  "version": "1.0.0"
+}

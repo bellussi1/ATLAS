@@ -1,0 +1,43 @@
+[
+  {
+    "slug": "ditadura-militar-e-redemocratizacao",
+    "kind": "historico",
+    "topic": "Ditadura militar no Brasil (1964-1985), atos institucionais e redemocratização",
+    "keywords": [
+      "ditadura",
+      "golpe",
+      "1964",
+      "constituinte",
+      "1988",
+      "brizola",
+      "goulart",
+      "brasil"
+    ]
+  },
+  {
+    "slug": "guerra-fria-e-ordem-internacional",
+    "kind": "historico",
+    "topic": "Guerra Fria, ONU, OTAN e disputas geopolíticas do século XX",
+    "keywords": ["guerra fria", "nacoes unidas", "onu", "otan", "uniao sovietica", "segunda guerra"]
+  },
+  {
+    "slug": "estado-democracia-e-representacao",
+    "kind": "conceitual",
+    "topic": "Estado moderno, soberania, democracia representativa e republicanismo",
+    "keywords": ["estado", "democracia", "republicanismo", "constituicao", "locke", "weber"]
+  },
+  {
+    "slug": "socialismo-reforma-e-revolucao",
+    "kind": "comparativo",
+    "topic": "Socialismo revolucionário, reformismo social-democrata e autogestão anarquista",
+    "keywords": [
+      "marx",
+      "lenin",
+      "social-democracia",
+      "anarquismo",
+      "bernstein",
+      "conselhos",
+      "reformismo"
+    ]
+  }
+]

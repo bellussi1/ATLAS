@@ -19,7 +19,12 @@
 
 .explorer-heading__copy {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.55rem;
+}
+
+.explorer-kicker {
+  margin: 0;
+  color: var(--color-ink-muted);
 }
 
 h1 {
@@ -40,7 +45,8 @@ h1 {
 .explorer-heading__mosaic {
   display: block;
   aspect-ratio: 6 / 1;
-  border: 2px solid var(--color-ink);
+  border: 3px solid var(--color-ink);
+  box-shadow: 6px 6px 0 var(--color-ink);
 }
 
 .graph-entry {
@@ -48,11 +54,33 @@ h1 {
   min-block-size: 2.75rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  color: var(--color-accent-hover);
+  gap: 0.5rem;
+  margin-block-start: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-canvas);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  color: var(--color-ink);
   font: 650 var(--text-small) / 1.3 var(--font-sans);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  text-decoration: none;
+}
+
+.graph-entry:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-strong-surface);
+}
+
+.graph-entry__glyph {
+  flex: none;
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.graph-entry:hover .graph-entry__glyph {
+  background: currentcolor;
 }
 
 .readings {
@@ -87,12 +115,15 @@ h1 {
 .filters {
   position: sticky;
   top: 1.5rem;
+  z-index: 1;
   display: grid;
   gap: 1.1rem;
   max-block-size: calc(100vh - 3rem);
   overflow-y: auto;
-  padding: 0 0.25rem 1rem 0;
-  border-top: 3px solid var(--color-ink);
+  padding: 0 0.9rem 1rem;
+  border: 2px solid var(--color-ink);
+  border-top-width: 4px;
+  background: var(--color-surface-raised);
 }
 
 .filters__head {
@@ -176,7 +207,8 @@ h1 {
 .facet-count {
   flex: none;
   color: var(--color-ink-muted);
-  font: var(--text-caption) / 1 var(--font-mono);
+  font: 600 var(--text-caption) / 1 var(--font-numeric);
+  font-variant-numeric: tabular-nums;
 }
 
 .facet-list a[aria-current='true'] .facet-count {
@@ -269,7 +301,9 @@ h1 {
 .search-band {
   display: grid;
   gap: 0.45rem;
-  padding: 0.85rem 1rem 0.75rem;
+  padding: 0.9rem 1.05rem 0.85rem;
+  border: 2px solid var(--color-ink);
+  box-shadow: 6px 6px 0 var(--color-ochre-paper);
   background: var(--color-ink);
   color: var(--color-canvas);
 }

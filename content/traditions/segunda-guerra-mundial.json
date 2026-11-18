@@ -1,0 +1,99 @@
+{
+  "slug": "segunda-guerra-mundial",
+  "subjectType": "acontecimento",
+  "kind": "acontecimento",
+  "rootQid": "Q362",
+  "titles": {
+    "pt": "Segunda Guerra Mundial",
+    "en": "World War II"
+  },
+  "palette": "fascismo",
+  "icon": "event",
+  "scope": {
+    "classificationNote": "Conflito global (1939–1945) entre Aliados e Potências do Eixo, com impactos políticos, econômicos, humanitários e geopolíticos decisivos sobre o século XX, incluindo o Holocausto e a criação da ONU.",
+    "period": "1939–1945 (com antecedentes no entreguerras e desdobramentos na Guerra Fria)",
+    "geography": "Europa, Ásia-Pacífico, Norte da África, Atlântico e participação brasileira na FEB",
+    "includes": [
+      "origens no expansionismo do Eixo, frentes europeia e do Pacífico",
+      "economia de guerra, aliança antifascista, Holocausto e uso de armas nucleares",
+      "participação do Brasil e reordenamento do pós-guerra (ONU, Bretton Woods, Guerra Fria)"
+    ],
+    "excludes": [
+      "história detalhada de cada batalha tática sem relevância política ou estrutural",
+      "guerras posteriores da Guerra Fria fora dos desdobramentos imediatos de 1945"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q362",
+      "Q7310",
+      "Q179171",
+      "Q1065",
+      "Q8683",
+      "Q156844",
+      "Q15180",
+      "Q8698",
+      "Q2763",
+      "Q329888",
+      "Q43056",
+      "Q7318",
+      "Q7785",
+      "Q30",
+      "Q145",
+      "Q152283",
+      "Q58848",
+      "Q6235",
+      "Q76074",
+      "Q8663",
+      "Q7325",
+      "Q6206",
+      "Q37470",
+      "Q458",
+      "Q7169",
+      "Q198",
+      "Q48244",
+      "Q484652",
+      "Q49101",
+      "Q8740",
+      "Q164348",
+      "Q368",
+      "Q1183",
+      "Q8605",
+      "Q134160",
+      "Q103285",
+      "Q43777",
+      "Q539",
+      "Q11256",
+      "Q11264",
+      "Q11270",
+      "Q5809",
+      "Q46809",
+      "Q128160",
+      "Q33986",
+      "Q12583",
+      "Q440",
+      "Q4264",
+      "Q10931",
+      "Q1764511",
+      "Q7944",
+      "Q123759",
+      "Q35749",
+      "Q51122",
+      "Q81068910",
+      "Q93330",
+      "Q371402",
+      "Q748780",
+      "Q83566",
+      "Q191721"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação da Segunda Guerra Mundial."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Segunda_Guerra_Mundial"
+    }
+  ],
+  "discovery": {
+    "commonsCategory": "Category:World War II"
+  }
+}

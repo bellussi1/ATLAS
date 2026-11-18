@@ -1,5 +1,5 @@
 Status: resultado
-Última verificação: 09/11/2026
+Última verificação: 10/11/2026
 
 # Piloto das três tradições — 09/11/2026
 
@@ -83,11 +83,13 @@ as entidades aceitas que não tinham aresta com a raiz — pensadores, vertentes
 conexões, conceitos e obras — e anexou a fonte-verbete de cada uma. Fontes citadas passaram a
 **36/31/45** e capítulos pendentes a **0/2/0**.
 
-Restam três lacunas:
+Restam quatro lacunas:
 - **Tipos de bloco (4/7 nas três)**: exige bloco editorial (roteiro de leitura, atlas ou debate).
 - **Relações (nazismo 22 e trabalhismo 19, contra 37)**: exige mais extração ou curadoria.
-- **Stalinismo (9/10 capítulos com blocos, 2 pendentes)**: `origens` e `principios` não têm seção
+- **Stalinismo (9/12 capítulos com blocos, 2 pendentes)**: `origens` e `principios` não têm seção
   correspondente na raiz; o artigo da raiz precisa de nova extração ou de conteúdo editorial.
+- **Bibliografia (1 fonte no bloco contra 38/32/45 citadas)**: o bloco `fontes` não lista as
+  fontes citadas nos capítulos; issue #78.
 
 ## Edição (estágio 9)
 
@@ -98,18 +100,35 @@ bloco nem preenche capítulos pendentes. Isso foi feito depois pelo preenchiment
 As perguntas e pontes são genéricas e ainda pedem revisão de tom. Para os 7 tipos de bloco, é
 preciso um bloco editorial; para o stalinismo, a raiz carece de seções de origem e princípios.
 
+## Publicação (10/11)
+
+As três leituras foram publicadas como prévias em 10/11:
+
+- Release **`5923d2e`** no R2, com 16 coleções e 7 leituras compiladas.
+- Merge **`9501f7a`** (PR **#74**) e deploy do Pages.
+- URLs: `/leitura/nazismo/`, `/leitura/stalinismo/` e `/leitura/trabalhismo/`, com selo de rascunho.
+- `published: false` e `unlisted: true`; fora da home, da busca e do sitemap canônico. As quatro
+  leituras curadas continuam sendo a navegação pública.
+- Verificação local: 364 unitários, 199 de conteúdo, 181 e2e no CI, 1.275 rotas prerenderizadas,
+  1.250 URLs no sitemap e 1.277 páginas no `check:links`.
+
+A publicação como prévia não é revisão humana. O conteúdo segue como rascunho e a promoção para
+leitura listada depende dos gates abaixo.
+
 ## Estado dos arquivos
 
 - Código do pipeline corrigido em `cc1233d`: `--tradition`, `mergeAtlas` nas coleções ampliadas,
   remoção do filtro que apagava `src-wiki-*` nativos, glossário filtrado e erro de build com o
   slug da leitura.
 - Conteúdo do piloto (16 coleções, manifesto, três páginas e os três registros com a lente) foi
-  commitado em **`7a9e60e`**; nada foi publicado no R2 e as três páginas seguem `published: false`.
+  commitado em **`7a9e60e`**; o release atual é **`5923d2e`**, publicado no R2 em 10/11. As três
+  páginas seguem `published: false` e `unlisted: true`.
 - A raiz do trabalhismo foi capturada e extraída localmente; o artigo e a captura ficam em
   `generated/` e `scripts/ingestion/wiki-extract/raw/` (fora do git). A coleção e a página foram
   commitadas em **`bf8054a`**; os capítulos de nazismo e stalinismo, em **`11a13bc`**.
 - As capturas brutas do piloto (12 manifestos e blobs) ficam locais em `scripts/ingestion/wiki-extract/raw/`
-  e fora do git; o worker de raw não tem esses objetos. Publicar o raw é uma decisão separada.
+  e fora do git; o worker de raw não tem esses objetos. Publicar o raw é uma decisão separada
+  (issue #83).
 
 ## Próxima decisão
 
@@ -118,5 +137,6 @@ preciso um bloco editorial; para o stalinismo, a raiz carece de seções de orig
 2. Fechar os 7 tipos de bloco com edição editorial (roteiro de leitura, atlas ou debate); ampliar
    relações de nazismo e trabalhismo; decidir se o stalinismo recebe nova extração da raiz para
    `origens` e `principios`.
-3. Decidir a publicação do conteúdo do piloto no R2; hoje a navegação foi publicada, mas o conteúdo
-   do piloto não.
+3. Promover as prévias para leitura listada depois de fechar a bibliografia (#78), os capítulos do
+   stalinismo (#79) e o piso de relações/tipos (#80). Antes, corrigir #75 (noindex), #76 (301 com
+   barra final), #77 (fixture) e #82 (rotas públicas).

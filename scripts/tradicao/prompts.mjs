@@ -128,6 +128,15 @@ const typeHints = {
   conceito: 'Priorize quem formulou, em que obra e como foi disputado.',
 };
 
+const subjectTypeHints = {
+  ideologia: 'Foco do dossiê: princípios, correntes, obras fundadoras e debates.',
+  pessoa: 'Foco do dossiê: trajetória, decisões, obras, alianças e legado histórico.',
+  acontecimento: 'Foco do dossiê: cronologia, causas, protagonistas, rupturas e consequências.',
+  instituicao: 'Foco do dossiê: regras, órgãos, dirigentes, documentos e transformações.',
+  periodo: 'Foco do dossiê: periodização, estrutura social/política, forças e rupturas.',
+  conceito: 'Foco do dossiê: definições, formuladores, usos históricos e disputas.',
+};
+
 /** Cache de 1 hora: lotes podem levar mais de 5 minutos; com menos de 3 pedidos não compensa. */
 export function cacheControl(requestCount) {
   return requestCount >= 3 ? { type: 'ephemeral', ttl: '1h' } : null;
@@ -152,8 +161,11 @@ export function richSourceText(article, maxChars = maxArticleChars) {
   };
 }
 
-export function richParams({ entity, text, model, effort, requestCount }) {
+export function richParams({ entity, text, model, effort, requestCount, subjectType }) {
   const hint = typeHints[entity.type];
+  const subjectHint =
+    subjectType && subjectType !== 'ideologia' ? subjectTypeHints[subjectType] : '';
+  const extraHint = [hint, subjectHint].filter(Boolean).join(' ');
   return {
     model,
     max_tokens: maxOutputTokens.extract,
@@ -162,7 +174,7 @@ export function richParams({ entity, text, model, effort, requestCount }) {
     messages: [
       {
         role: 'user',
-        content: `Entidade: ${entity.label} (${entity.type}, Wikidata ${entity.qid ?? 'sem item'}).${hint ? ` ${hint}` : ''}\n\n<artigo>\n${text}\n</artigo>`,
+        content: `Entidade: ${entity.label} (${entity.type}, Wikidata ${entity.qid ?? 'sem item'}).${extraHint ? ` ${extraHint}` : ''}\n\n<artigo>\n${text}\n</artigo>`,
       },
     ],
   };

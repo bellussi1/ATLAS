@@ -1,6 +1,7 @@
 import { contentFixture } from '@testing/content-fixture';
 
 import {
+  explorerCatalogues,
   explorerContentGroup,
   explorerEntries,
   explorerFacets,
@@ -33,6 +34,11 @@ describe('Knowledge Explorer', () => {
     expect(explorerMatchKind(discoveryIndex, { query: 'federative' })).toBe('text');
     expect(explorerEntries(discoveryIndex, { query: 'federative' }).map((e) => e.title)).toContain(
       'Brasil',
+    );
+    const naturalQuery = 'O que a Constituição Federal de 1988 prevê sobre igualdade';
+    expect(explorerMatchKind(discoveryIndex, { query: naturalQuery })).toBe('text');
+    expect(explorerEntries(discoveryIndex, { query: naturalQuery }).map((e) => e.path)).toContain(
+      '/verbete/igualdade-perante-a-lei',
     );
   });
   it('keeps catalogues limited to graph records rather than methodological examples', () => {
@@ -68,23 +74,24 @@ describe('Knowledge Explorer', () => {
     expect(explorerContentGroup('fonte')).toBe('fontes');
     expect(explorerContentGroup('leitura')).toBe('editorial');
   });
-  it('filters the universal archive by layer and keeps the layer counts', () => {
+  it('filters the universal archive by layer and keeps sources isolated in their own catalogue', () => {
     const records = explorerEntries(discoveryIndex, { catalogue: 'acervo', layer: 'registros' });
-    const sources = explorerEntries(discoveryIndex, { catalogue: 'acervo', layer: 'fontes' });
     const readings = explorerEntries(discoveryIndex, { catalogue: 'acervo', layer: 'editorial' });
+    const universal = explorerEntries(discoveryIndex, { catalogue: 'acervo' });
+    const universalSearch = explorerEntries(discoveryIndex, { catalogue: 'acervo', query: 'Marx' });
+    const sources = explorerEntries(discoveryIndex, { catalogue: 'fontes' });
     expect(records.length).toBeGreaterThan(0);
     expect(records.every((entry) => entry.path.startsWith('/verbete/'))).toBe(true);
-    expect(sources.every((entry) => entry.kind === 'fonte')).toBe(true);
     expect(readings.every((entry) => entry.kind === 'leitura')).toBe(true);
+    expect(universal.some((entry) => entry.kind === 'fonte')).toBe(false);
+    expect(universalSearch.some((entry) => entry.kind === 'fonte')).toBe(false);
+    expect(sources.length).toBeGreaterThan(0);
+    expect(sources.every((entry) => entry.kind === 'fonte')).toBe(true);
+    expect(explorerCatalogues.at(-1)?.path).toBe('fontes');
     const facets = explorerFacets(discoveryIndex, 'acervo', 'registros');
     expect(facets.total).toBe(records.length);
-    expect(facets.layers.map((layer) => layer.id)).toEqual([
-      '',
-      'registros',
-      'fontes',
-      'editorial',
-    ]);
-    const all = explorerEntries(discoveryIndex, { catalogue: 'acervo' }).length;
+    expect(facets.layers.map((layer) => layer.id)).toEqual(['', 'registros', 'editorial']);
+    const all = universal.length;
     expect(facets.layers[0].count).toBe(all);
     expect(
       facets.layers.filter((layer) => layer.id).reduce((sum, layer) => sum + layer.count, 0),

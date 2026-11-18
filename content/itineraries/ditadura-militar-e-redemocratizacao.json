@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-ditadura-militar-e-redemocratizacao",
+  "slug": "ditadura-militar-e-redemocratizacao",
+  "kind": "historico",
+  "title": "Ditadura Militar no Brasil (1964-1985): Da Repressão à Redemocratização",
+  "question": "Como o regime militar brasileiro se estabeleceu, se sustentou e, finalmente, deu lugar à democracia?",
+  "deck": "Este itinerário explora a trajetória da ditadura militar no Brasil, desde o golpe de 1964 até a redemocratização em 1985, analisando seus pilares, impactos e o processo de retorno à democracia.",
+  "summary": "Este percurso analisa a ascensão, o funcionamento e a queda da ditadura militar no Brasil, culminando na redemocratização do país.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "wiki-topic-golpe-de-estado-no-brasil-em-1964",
+      "title": "O Golpe de 1964",
+      "reason": "O golpe militar de 1964 marcou o início da ditadura no Brasil, depondo o presidente João Goulart e instaurando um regime autoritário. Este ponto inicial define o contexto histórico.",
+      "question": "Quais foram as causas e as consequências imediatas do golpe de 1964?",
+      "destination": {
+        "type": "verbete",
+        "slug": "golpe-de-estado-no-brasil-em-1964"
+      },
+      "justification": "Esta parada estabelece o ponto de partida da análise, contextualizando o início da ditadura.",
+      "contextEntityId": "wiki-topic-golpe-de-estado-no-brasil-em-1964",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-ditadura-militar-brasileira",
+      "title": "A Ditadura Militar Brasileira",
+      "reason": "Esta parada explora as características principais da ditadura militar, como a repressão política, a censura e a intervenção estatal na economia.",
+      "question": "Quais foram as principais características e mecanismos de poder da ditadura militar no Brasil?",
+      "destination": {
+        "type": "verbete",
+        "slug": "ditadura-militar-brasileira"
+      },
+      "justification": "Após contextualizar o golpe, esta parada aprofunda a compreensão do regime ditatorial.",
+      "contextEntityId": "wiki-topic-ditadura-militar-brasileira",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-humberto-castelo-branco",
+      "title": "Humberto Castelo Branco e a Consolidação da Ditadura",
+      "reason": "A presidência de Castelo Branco (1964-1967) foi crucial para a consolidação da ditadura, com a implementação de medidas repressivas e a criação de uma estrutura autoritária.",
+      "question": "Como a presidência de Castelo Branco contribuiu para a consolidação da ditadura militar?",
+      "destination": {
+        "type": "verbete",
+        "slug": "humberto-castelo-branco"
+      },
+      "justification": "Esta parada destaca a importância de um líder específico na consolidação do regime.",
+      "contextEntityId": "wiki-topic-humberto-castelo-branco",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-assembleia-nacional-constituinte-de-1987",
+      "title": "A Constituição de 1988 e a Redemocratização",
+      "reason": "A Constituição de 1988, elaborada pela Assembleia Nacional Constituinte, consolidou a redemocratização do Brasil, restaurando direitos e liberdades civis.",
+      "question": "Como a Constituição de 1988 contribuiu para a consolidação da democracia no Brasil?",
+      "destination": {
+        "type": "grafo",
+        "nodeId": "wiki-topic-assembleia-nacional-constituinte-de-1987"
+      },
+      "justification": "Esta parada marca o ponto de virada para a redemocratização.",
+      "contextEntityId": "wiki-topic-assembleia-nacional-constituinte-de-1987",
+      "sourceIds": ["src-1"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "ramo-repressao-e-censura",
+      "fromStop": "wiki-topic-ditadura-militar-brasileira",
+      "title": "Repressão e Censura",
+      "reason": "Explorar as medidas de repressão e censura implementadas durante a ditadura militar.",
+      "question": "Quais foram as principais formas de repressão e censura utilizadas durante a ditadura?",
+      "destination": {
+        "type": "verbete",
+        "slug": "dissidencia"
+      },
+      "justification": "Esta ramificação aprofunda a compreensão da repressão política durante a ditadura.",
+      "convergesAt": "wiki-topic-humberto-castelo-branco"
+    },
+    {
+      "id": "ramo-movimentos-de-oposicao",
+      "fromStop": "wiki-topic-ditadura-militar-brasileira",
+      "title": "Movimentos de Oposição",
+      "reason": "Analisar os movimentos de oposição à ditadura militar, desde grupos clandestinos até a luta armada.",
+      "question": "Quais foram os principais movimentos de oposição à ditadura militar no Brasil?",
+      "destination": {
+        "type": "verbete",
+        "slug": "comando-de-libertacao-nacional"
+      },
+      "justification": "Esta ramificação explora as forças que lutaram contra a ditadura.",
+      "exit": "Saída paralela para consulta ao verbete sobre os movimentos de oposição ao regime."
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Para aprofundar o estudo dos eventos históricos relacionados à ditadura militar."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-1",
+      "title": "Enciclopédia Brasileira de História"
+    }
+  ],
+  "updatedAt": "2026-11-17",
+  "version": "1.0.0"
+}

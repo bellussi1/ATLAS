@@ -1,11 +1,18 @@
-import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  inject,
+  Injector,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { readingPath } from '@core/routing/reading-routes';
 import { filter, map } from 'rxjs';
 
-type Section = 'leituras' | 'acervo' | 'grafos' | null;
+type Section = 'leituras' | 'itinerarios' | 'acervo' | 'grafos' | null;
 
 export const headerReadings = [
   {
@@ -38,17 +45,13 @@ export const headerReadings = [
   },
 ] as const;
 
-/** Catalogues shown beside the readings so the menu also answers "what else is here?". */
-const headerCatalogues = explorerCatalogues.filter((catalogue) =>
-  ['pessoas', 'obras', 'paises', 'acontecimentos', 'conceitos', 'fontes'].includes(catalogue.path),
-);
-
 // Every page outside the readings and the network belongs to the archive (catalogues, records, search).
 const sectionOf = (url: string): Section => {
   const path = url.split(/[?#]/)[0];
   if (path === '/') return null;
   if (path.startsWith('/grafos')) return 'grafos';
-  if (headerReadings.some((reading) => path.startsWith(reading.path))) return 'leituras';
+  if (path.startsWith('/itinerario')) return 'itinerarios';
+  if (path === '/leituras' || path.startsWith('/leitura/')) return 'leituras';
   return 'acervo';
 };
 
@@ -66,14 +69,11 @@ const sectionOf = (url: string): Section => {
 export class SiteHeaderComponent {
   private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly router = inject(Router);
+  private readonly injector = inject(Injector);
+  private readonly destroyRef = inject(DestroyRef);
+  private destroyed = false;
   private readonly menuToggle = viewChild.required<ElementRef<HTMLButtonElement>>('menuToggle');
-  private readonly readingsToggle =
-    viewChild.required<ElementRef<HTMLButtonElement>>('readingsToggle');
-  readonly readings = headerReadings;
-  readonly catalogues = headerCatalogues;
-  readonly catalogueUrl = catalogueUrl;
   readonly menuOpen = signal(false);
-  readonly readingsOpen = signal(false);
   readonly query = signal('');
   readonly section = toSignal(
     this.router.events.pipe(
@@ -84,6 +84,9 @@ export class SiteHeaderComponent {
   );
 
   constructor() {
+    this.destroyRef.onDestroy(() => {
+      this.destroyed = true;
+    });
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -91,7 +94,6 @@ export class SiteHeaderComponent {
       )
       .subscribe(() => {
         this.menuOpen.set(false);
-        this.readingsOpen.set(false);
       });
   }
 
@@ -99,8 +101,19 @@ export class SiteHeaderComponent {
     this.menuOpen.update((open) => !open);
   }
 
-  toggleReadings(): void {
-    this.readingsOpen.update((open) => !open);
+  warmArchive(): void {
+    void import('@core/content/repositories/content-repository.service').then(
+      ({ ContentRepository }) => {
+        if (!this.destroyed) this.injector.get(ContentRepository).warmBundle();
+      },
+    );
+  }
+  warmGraph(): void {
+    void import('@core/content/repositories/content-repository.service').then(
+      ({ ContentRepository }) => {
+        if (!this.destroyed) this.injector.get(ContentRepository).warmNetwork();
+      },
+    );
   }
 
   search(event: Event): void {
@@ -111,14 +124,9 @@ export class SiteHeaderComponent {
   }
 
   close(returnFocus = false): void {
-    if (!this.menuOpen() && !this.readingsOpen()) return;
-    const smallScreen = this.menuToggle().nativeElement.offsetParent !== null;
+    if (!this.menuOpen()) return;
     this.menuOpen.set(false);
-    this.readingsOpen.set(false);
-    if (returnFocus) {
-      // On a small screen the menu button owns focus; on a wide one, the submenu button does.
-      (smallScreen ? this.menuToggle() : this.readingsToggle()).nativeElement.focus();
-    }
+    if (returnFocus) this.menuToggle().nativeElement.focus();
   }
 
   closeOnOutsidePointer(event: PointerEvent): void {
@@ -128,7 +136,7 @@ export class SiteHeaderComponent {
   // Tabbing out of an open panel closes it, so focus never moves behind a hidden menu.
   closeWhenFocusLeaves(event: FocusEvent): void {
     const next = event.relatedTarget as Node | null;
-    if (!next || (!this.menuOpen() && !this.readingsOpen())) return;
+    if (!next || !this.menuOpen()) return;
     if (!this.element.nativeElement.contains(next)) this.close();
   }
 }

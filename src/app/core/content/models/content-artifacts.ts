@@ -98,6 +98,8 @@ export const contentManifestSchema = z.object({
   bundle: resourceSchema.nullable().default(null),
   /** The projection plus compiled layouts for `/grafos`, in one request. */
   networkBundle: resourceSchema.nullable().default(null),
+  /** Optional so releases published before itineraries keep working. */
+  itineraries: z.array(resourceSchema.extend({ id: z.string(), slug: networkSlug })).optional(),
 });
 /** A published reading: its page and the sourced relations it cites, released as one object. */
 export const ideologyBundleSchema = z.object({ page: z.unknown(), supplement: z.unknown() });
@@ -199,6 +201,8 @@ export const contentBundleSchema = z.object({
   layouts: layoutsSchema,
   /** Readings travel with the bundle so opening one does not cost another request. */
   ideologies: z.record(z.string(), ideologyBundleSchema).default({}),
+  /** Verified itineraries travel with the bundle when present. */
+  itineraries: z.record(z.string(), z.unknown()).optional(),
 });
 export const networkBundleSchema = z.object({
   graph: networkGraphSchema,
@@ -216,4 +220,6 @@ export interface ContentPackage {
   layouts: ContentLayouts;
   /** Present when the route read the single bundle; absent on the fallback path. */
   ideologies?: Readonly<Record<string, IdeologyBundle>>;
+  /** Present when the release carries verified itineraries. */
+  itineraries?: Readonly<Record<string, unknown>>;
 }

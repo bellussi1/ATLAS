@@ -1,0 +1,646 @@
+{
+  "schemaVersion": 1,
+  "id": "ideology-page-segunda-guerra-mundial",
+  "slug": "segunda-guerra-mundial",
+  "kind": "ideologia",
+  "classificationNote": "Recorte e classificação seguem o texto da fonte citada, sem revisão editorial. A posição política, quando aparece, é a descrita pela fonte.",
+  "title": "Segunda Guerra Mundial",
+  "kicker": "Ideologia política",
+  "summary": "A Segunda Guerra Mundial foi um conflito militar global que durou de 1939 a 1945, envolvendo a maioria das nações do mundo organizadas em duas alianças opostas: os Aliados e o Eixo. Considera-se que começou com a invasão alemã da Polônia em 1 de setembro de 1939 e terminou com a vitória dos Aliados em 1945. O verbete registra mais de 100 milhões de militares mobilizados, ataques contra civis, o Holocausto, o uso de armas nucleares em combate e entre 50 e 70 milhões de mortes.",
+  "published": false,
+  "atlasId": "atlas-segunda-guerra-mundial",
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-17" },
+  "identity": {
+    "accent": "teal",
+    "palette": "fascismo",
+    "signature": "Leitura montada do grafo",
+    "keyVisualization": "timeline"
+  },
+  "portrait": null,
+  "poster": { "figures": [] },
+  "chapters": [
+    {
+      "id": "introducao",
+      "anchor": "introducao",
+      "title": "O que é?",
+      "kicker": "O que é?",
+      "minutes": 1,
+      "narrative": [
+        "A Segunda Guerra Mundial foi um conflito militar global que durou de 1939 a 1945, envolvendo a maioria das nações do mundo organizadas em duas alianças opostas: os Aliados e o Eixo. Considera-se que começou com a invasão alemã da Polônia em 1 de setembro de 1939 e terminou com a vitória dos Aliados em 1945. O verbete registra mais de 100 milhões de militares mobilizados, ataques contra civis, o Holocausto, o uso de armas nucleares em combate e entre 50 e 70 milhões de mortes."
+      ],
+      "question": "O que define Segunda Guerra Mundial?",
+      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "introduction",
+      "blocks": []
+    },
+    {
+      "id": "origens",
+      "anchor": "origens",
+      "title": "Origens e formação",
+      "kicker": "Origens e formação",
+      "minutes": 1,
+      "narrative": [
+        "A guerra é geralmente considerada iniciada com a invasão alemã da Polônia em 1 de setembro de 1939, seguida de declarações de guerra contra a Alemanha pela França e pela maioria dos países do Império Britânico e da Commonwealth."
+      ],
+      "question": "Como e em que contexto Segunda Guerra Mundial surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os eixos e processos centrais.",
+      "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Origem",
+              "kicker": "Origens e formação",
+              "summary": "A guerra é geralmente considerada iniciada com a invasão alemã da Polônia em 1 de setembro de 1939, seguida de declarações de guerra contra a Alemanha pela França e pela maioria dos países do Império Britânico e da Commonwealth.",
+              "paragraphs": [
+                "A guerra é geralmente considerada iniciada com a invasão alemã da Polônia em 1 de setembro de 1939, seguida de declarações de guerra contra a Alemanha pela França e pela maioria dos países do Império Britânico e da Commonwealth."
+              ],
+              "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+              "entityIds": ["wiki-topic-segunda-guerra-mundial"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "principios",
+      "anchor": "principios",
+      "title": "Causas e rupturas",
+      "kicker": "Causas e rupturas",
+      "minutes": 1,
+      "narrative": [
+        "O verbete afirma que a guerra se caracterizou por uma 'guerra total', em que os principais envolvidos dedicaram toda sua capacidade econômica, industrial e científica ao esforço de guerra."
+      ],
+      "question": "Quais causas imediatas e rupturas estruturais desencadearam Segunda Guerra Mundial?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Ideia central",
+              "kicker": "Pilares e princípios",
+              "summary": "O verbete afirma que a guerra se caracterizou por uma 'guerra total', em que os principais envolvidos dedicaram toda sua capacidade econômica, industrial e científica ao esforço de guerra.",
+              "paragraphs": [
+                "O verbete afirma que a guerra se caracterizou por uma 'guerra total', em que os principais envolvidos dedicaram toda sua capacidade econômica, industrial e científica ao esforço de guerra."
+              ],
+              "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+              "entityIds": ["wiki-topic-segunda-guerra-mundial"],
+              "classification": "tese atribuída"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conceitos",
+      "anchor": "conceitos",
+      "title": "Conceitos e palavras-chave",
+      "kicker": "Conceitos e palavras-chave",
+      "minutes": 1,
+      "narrative": [
+        "Também chamada de World War II, Guerra Mundial.",
+        "Conceitos ligados à tradição: Conservadorismo, Revolução."
+      ],
+      "question": "Que termos e conceitos ajudam a compreender Segunda Guerra Mundial?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
+      "sourceIds": [
+        "src-wiki-topic-segunda-guerra-mundial",
+        "src-wiki-topic-conservadorismo",
+        "src-wiki-conceito-revolucao"
+      ],
+      "review": null,
+      "gap": "Só há nomes alternativos; termos do glossário ainda sem passagem verificada.",
+      "coverage": "partial",
+      "layout": "concepts",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-segunda-guerra-mundial"],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-segunda-guerra-mundial": "Nomes alternativos: World War II, Guerra Mundial."
+          }
+        },
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-conservadorismo", "wiki-conceito-revolucao"],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "epocas",
+      "anchor": "epocas",
+      "title": "Cronologia do acontecimento",
+      "kicker": "Cronologia do acontecimento",
+      "minutes": 1,
+      "narrative": [
+        "O verbete associa a guerra às consequências da Primeira Guerra Mundial e ao Tratado de Versalhes, que impôs perdas territoriais e coloniais à Alemanha."
+      ],
+      "question": "Em que períodos históricos Segunda Guerra Mundial se formou e mudou?",
+      "bridge": "Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.",
+      "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+      "review": null,
+      "gap": "Há contexto histórico, mas nenhuma data verificada para montar a cronologia.",
+      "coverage": "partial",
+      "layout": "timeline",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "contexto-1",
+              "title": "Contexto",
+              "kicker": "Situação histórica",
+              "summary": "O verbete associa a guerra às consequências da Primeira Guerra Mundial e ao Tratado de Versalhes, que impôs perdas territoriais e coloniais à Alemanha.",
+              "paragraphs": [
+                "O verbete associa a guerra às consequências da Primeira Guerra Mundial e ao Tratado de Versalhes, que impôs perdas territoriais e coloniais à Alemanha."
+              ],
+              "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+              "entityIds": ["wiki-topic-segunda-guerra-mundial"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pensadores",
+      "anchor": "pensadores",
+      "title": "Protagonistas e relatos",
+      "kicker": "Protagonistas e relatos",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Bruno Kreisky, Adolf Hitler, Arthur Seldon, Benito Mussolini, Charles de Gaulle, Costa e Silva, Dwight D. Eisenhower, Eric Hobsbawm, Eurico Gaspar Dutra, François Mitterrand, Franklin D. Roosevelt, Fulgencio Batista, George Orwell, Helmut Schmidt, Humberto Castelo Branco, John F. Kennedy, Josip Broz Tito, Lyndon B. Johnson, Nikita Khrushchov, Richard Nixon, Ronald Reagan, Winston Churchill, Joseph Goebbels, Getúlio Vargas, Augusto Pinochet, Simón Bolívar, José de San Martín, José Martí, Giuseppe Garibaldi, Fidel Castro, Che Guevara, Raúl Castro, Salvador Allende, Juan Domingo Perón, Isabel Allende."
+      ],
+      "question": "Quem foram os protagonistas e quais relatos registram Segunda Guerra Mundial?",
+      "bridge": "Dos atores e obras, seguimos para as correntes e desdobramentos relacionados.",
+      "sourceIds": [
+        "src-wiki-topic-bruno-kreisky",
+        "src-wikidata-verbetes",
+        "src-wiki-topic-joseph-goebbels",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-augusto-pinochet",
+        "src-wiki-topic-simon-bolivar",
+        "src-wiki-topic-jose-de-san-martin",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-giuseppe-garibaldi",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-topic-che-guevara",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-salvador-allende",
+        "src-wiki-topic-juan-domingo-peron",
+        "src-wiki-topic-isabel-allende"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "thinkers",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-bruno-kreisky",
+            "wiki-topic-adolf-hitler",
+            "wiki-topic-arthur-seldon",
+            "wiki-topic-benito-mussolini",
+            "wiki-topic-charles-de-gaulle",
+            "wiki-topic-costa-e-silva",
+            "wiki-topic-dwight-d-eisenhower",
+            "wiki-topic-eric-hobsbawm",
+            "wiki-topic-eurico-gaspar-dutra",
+            "wiki-topic-francois-mitterrand",
+            "wiki-topic-franklin-d-roosevelt",
+            "wiki-topic-fulgencio-batista",
+            "wiki-topic-george-orwell",
+            "wiki-topic-helmut-schmidt",
+            "wiki-topic-humberto-castelo-branco",
+            "wiki-topic-john-f-kennedy",
+            "wiki-topic-josip-broz-tito",
+            "wiki-topic-lyndon-b-johnson",
+            "wiki-topic-nikita-khrushchov",
+            "wiki-topic-richard-nixon",
+            "wiki-topic-ronald-reagan",
+            "wiki-topic-winston-churchill",
+            "wiki-topic-joseph-goebbels",
+            "wiki-topic-getulio-vargas",
+            "wiki-topic-augusto-pinochet",
+            "wiki-topic-simon-bolivar",
+            "wiki-topic-jose-de-san-martin",
+            "wiki-topic-jose-marti",
+            "wiki-topic-giuseppe-garibaldi",
+            "wiki-topic-fidel-castro",
+            "wiki-topic-che-guevara",
+            "wiki-topic-raul-castro",
+            "wiki-topic-salvador-allende",
+            "wiki-topic-juan-domingo-peron",
+            "wiki-topic-isabel-allende"
+          ],
+          "mode": "thinkers",
+          "notes": {
+            "wiki-topic-bruno-kreisky": "[conferência de IA] Ao deixar a chancelaria, aos 72 anos, foi o chanceler mais velho após a Segunda Guerra Mundial.",
+            "wiki-topic-joseph-goebbels": "[conferência de IA] Os temas centrais da propaganda de Goebbels eram o antissemitismo, os ataques ao bolchevismo e, após o início da Segunda Guerra Mundial, a tentativa de moldar a moral."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vertentes",
+      "anchor": "vertentes",
+      "title": "Desdobramentos e correntes",
+      "kicker": "Desdobramentos e correntes",
+      "minutes": 1,
+      "narrative": ["Capítulo sem conteúdo verificado."],
+      "question": null,
+      "bridge": null,
+      "sourceIds": [],
+      "review": null,
+      "gap": "Nenhuma corrente ou vertente ligada a esta ideologia consta no grafo.",
+      "coverage": "pending",
+      "layout": "documents",
+      "blocks": []
+    },
+    {
+      "id": "experiencias",
+      "anchor": "experiencias",
+      "title": "Experiências históricas",
+      "kicker": "Experiências históricas",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Aliados da Segunda Guerra Mundial, Guerra Fria, Potências do Eixo, Primeira Guerra Mundial, Organização das Nações Unidas, Grande Depressão, Holocausto, Commonwealth, Potências Centrais, Guerra da Coreia, Judeus, Capitalismo, Conselho de Segurança das Nações Unidas, União Europeia, Guerra, Organização internacional, Crise de Suez, Guerra do Vietnã, Revolução Húngara de 1956, Porto Rico, Sismo do Haiti de 2010, Revolução Cubana, Crise dos mísseis de Cuba, Valparaíso (Chile), Guerra Hispano-Americana, Mercado Comum do Sul, G7, Sismo, Organização dos Estados Americanos, Parlamento, Risorgimento, Pandemia de COVID-19, Partido Comunista de Cuba, Primeira Guerra da Indochina, Invasão da Baía dos Porcos."
+      ],
+      "question": "Em quais acontecimentos, partidos e instituições Segunda Guerra Mundial se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
+      "sourceIds": [
+        "src-wikidata-verbetes",
+        "src-wiki-topic-organizacao-das-nacoes-unidas",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-holocausto",
+        "src-wiki-topic-commonwealth",
+        "src-wiki-topic-potencias-centrais",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-conselho-de-seguranca-das-nacoes-unidas",
+        "src-wiki-topic-uniao-europeia",
+        "src-wiki-topic-guerra",
+        "src-wiki-topic-organizacao-internacional",
+        "src-wiki-topic-crise-de-suez",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-topic-revolucao-hungara-de-1956",
+        "src-wiki-topic-porto-rico",
+        "src-wiki-topic-sismo-do-haiti-de-2010",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-valparaiso-chile",
+        "src-wiki-topic-guerra-hispano-americana",
+        "src-wiki-topic-mercado-comum-do-sul",
+        "src-wiki-topic-g7",
+        "src-wiki-topic-sismo",
+        "src-wiki-topic-organizacao-dos-estados-americanos",
+        "src-wiki-topic-parlamento",
+        "src-wiki-topic-risorgimento",
+        "src-wiki-topic-pandemia-de-covid-19",
+        "src-wiki-topic-partido-comunista-de-cuba",
+        "src-wiki-topic-primeira-guerra-da-indochina",
+        "src-wiki-topic-invasao-da-baia-dos-porcos"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-aliados-da-segunda-guerra-mundial",
+            "wiki-topic-guerra-fria",
+            "wiki-topic-potencias-do-eixo",
+            "wiki-topic-primeira-guerra-mundial",
+            "wiki-topic-organizacao-das-nacoes-unidas",
+            "wiki-topic-grande-depressao",
+            "wiki-topic-holocausto",
+            "wiki-topic-commonwealth",
+            "wiki-topic-potencias-centrais",
+            "wiki-topic-guerra-da-coreia",
+            "wiki-topic-judeus",
+            "wiki-topic-capitalismo",
+            "wiki-topic-conselho-de-seguranca-das-nacoes-unidas",
+            "wiki-topic-uniao-europeia",
+            "wiki-topic-guerra",
+            "wiki-topic-organizacao-internacional",
+            "wiki-topic-crise-de-suez",
+            "wiki-topic-guerra-do-vietna",
+            "wiki-topic-revolucao-hungara-de-1956",
+            "wiki-topic-porto-rico",
+            "wiki-topic-sismo-do-haiti-de-2010",
+            "wiki-topic-revolucao-cubana",
+            "wiki-topic-crise-dos-misseis-de-cuba",
+            "wiki-topic-valparaiso-chile",
+            "wiki-topic-guerra-hispano-americana",
+            "wiki-topic-mercado-comum-do-sul",
+            "wiki-topic-g7",
+            "wiki-topic-sismo",
+            "wiki-topic-organizacao-dos-estados-americanos",
+            "wiki-topic-parlamento",
+            "wiki-topic-risorgimento",
+            "wiki-topic-pandemia-de-covid-19",
+            "wiki-topic-partido-comunista-de-cuba",
+            "wiki-topic-primeira-guerra-da-indochina",
+            "wiki-topic-invasao-da-baia-dos-porcos"
+          ],
+          "mode": "concepts",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "debates",
+      "anchor": "debates",
+      "title": "Argumentos, críticas e respostas",
+      "kicker": "Argumentos, críticas e respostas",
+      "minutes": 1,
+      "narrative": [
+        "Não há consenso sobre a data do fim da guerra, havendo propostas que citam o armistício de 14 de agosto de 1945 e o dia 8 de maio de 1945.",
+        "A guerra não teve consenso quanto à data exata do seu fim."
+      ],
+      "question": "Quais críticas e controvérsias cercam Segunda Guerra Mundial?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+      "review": null,
+      "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
+      "coverage": "partial",
+      "layout": "debate",
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "critica-1",
+              "title": "Crítica ou controvérsia 1",
+              "kicker": "Argumentos e críticas",
+              "summary": "Não há consenso sobre a data do fim da guerra, havendo propostas que citam o armistício de 14 de agosto de 1945 e o dia 8 de maio de 1945.",
+              "paragraphs": [
+                "Não há consenso sobre a data do fim da guerra, havendo propostas que citam o armistício de 14 de agosto de 1945 e o dia 8 de maio de 1945."
+              ],
+              "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+              "entityIds": ["wiki-topic-segunda-guerra-mundial"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "critica-2",
+              "title": "Crítica ou controvérsia 2",
+              "kicker": "Argumentos e críticas",
+              "summary": "A guerra não teve consenso quanto à data exata do seu fim.",
+              "paragraphs": ["A guerra não teve consenso quanto à data exata do seu fim."],
+              "sourceIds": ["src-wiki-topic-segunda-guerra-mundial"],
+              "entityIds": ["wiki-topic-segunda-guerra-mundial"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conexoes",
+      "anchor": "conexoes",
+      "title": "Conexões com outras tradições",
+      "kicker": "Conexões com outras tradições",
+      "minutes": 1,
+      "narrative": [
+        "Registros ligados à ideologia: Austrália, Alemanha Nazista, Reino Unido, Taiwan, Egito, México, Estados Unidos, Rússia, Europa, África, Ásia, Médio Oriente, Escandinávia, Japão, América do Norte, América do Sul, Munique, Nazismo, União Soviética, Pacifismo, Nacionalismo, Direita (política)."
+      ],
+      "question": "Como Segunda Guerra Mundial se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
+      "sourceIds": [
+        "src-wikidata-verbetes",
+        "src-wiki-topic-munique",
+        "src-wiki-topic-nazismo",
+        "src-wiki-topic-uniao-sovietica",
+        "src-wiki-topic-pacifismo",
+        "src-wiki-topic-nacionalismo",
+        "src-wiki-topic-direita-politica"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "graph",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": [
+            "wiki-topic-australia",
+            "wiki-topic-alemanha-nazista",
+            "wiki-topic-reino-unido",
+            "wiki-topic-taiwan",
+            "wiki-topic-egito",
+            "wiki-topic-mexico",
+            "wiki-topic-estados-unidos",
+            "wiki-topic-russia",
+            "wiki-topic-europa",
+            "wiki-topic-africa",
+            "wiki-topic-asia",
+            "wiki-topic-medio-oriente",
+            "wiki-topic-escandinavia",
+            "wiki-topic-japao",
+            "wiki-topic-america-do-norte",
+            "wiki-topic-america-do-sul",
+            "wiki-topic-munique",
+            "wiki-topic-nazismo",
+            "wiki-topic-uniao-sovietica",
+            "wiki-topic-pacifismo",
+            "wiki-topic-nacionalismo",
+            "wiki-topic-direita-politica"
+          ],
+          "mode": "concepts",
+          "notes": {
+            "wiki-topic-munique": "[conferência de IA] A cidade foi muito danificada pelos bombardeios dos Aliados durante a Segunda Guerra Mundial."
+          }
+        }
+      ]
+    },
+    {
+      "id": "leituras",
+      "anchor": "leituras",
+      "title": "Roteiro de leitura",
+      "kicker": "Roteiro de leitura",
+      "minutes": 1,
+      "narrative": ["Obras ligadas à tradição: Mein Kampf."],
+      "question": "Que obras e documentos aprofundam o estudo de Segunda Guerra Mundial?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
+      "sourceIds": ["src-wiki-topic-mein-kampf"],
+      "review": null,
+      "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
+      "coverage": "partial",
+      "layout": "documents",
+      "blocks": [
+        {
+          "type": "entities",
+          "entityIds": ["wiki-topic-mein-kampf"],
+          "mode": "documents",
+          "notes": {}
+        }
+      ]
+    },
+    {
+      "id": "fontes",
+      "anchor": "fontes",
+      "title": "Fontes e metodologia",
+      "kicker": "Fontes e metodologia",
+      "minutes": 1,
+      "narrative": [
+        "Reúne 13 afirmações da fonte principal e 56 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
+      ],
+      "question": "Quais fontes sustentam a leitura sobre Segunda Guerra Mundial?",
+      "bridge": null,
+      "sourceIds": [
+        "src-wiki-topic-segunda-guerra-mundial",
+        "src-wiki-topic-conservadorismo",
+        "src-wiki-conceito-revolucao",
+        "src-wiki-topic-bruno-kreisky",
+        "src-wikidata-verbetes",
+        "src-wiki-topic-joseph-goebbels",
+        "src-wiki-topic-getulio-vargas",
+        "src-wiki-topic-augusto-pinochet",
+        "src-wiki-topic-simon-bolivar",
+        "src-wiki-topic-jose-de-san-martin",
+        "src-wiki-topic-jose-marti",
+        "src-wiki-topic-giuseppe-garibaldi",
+        "src-wiki-topic-fidel-castro",
+        "src-wiki-topic-che-guevara",
+        "src-wiki-topic-raul-castro",
+        "src-wiki-topic-salvador-allende",
+        "src-wiki-topic-juan-domingo-peron",
+        "src-wiki-topic-isabel-allende",
+        "src-wiki-topic-organizacao-das-nacoes-unidas",
+        "src-wiki-topic-grande-depressao",
+        "src-wiki-topic-holocausto",
+        "src-wiki-topic-commonwealth",
+        "src-wiki-topic-potencias-centrais",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-judeus",
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-conselho-de-seguranca-das-nacoes-unidas",
+        "src-wiki-topic-uniao-europeia",
+        "src-wiki-topic-guerra",
+        "src-wiki-topic-organizacao-internacional",
+        "src-wiki-topic-crise-de-suez",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-topic-revolucao-hungara-de-1956",
+        "src-wiki-topic-porto-rico",
+        "src-wiki-topic-sismo-do-haiti-de-2010",
+        "src-wiki-topic-revolucao-cubana",
+        "src-wiki-topic-crise-dos-misseis-de-cuba",
+        "src-wiki-topic-valparaiso-chile",
+        "src-wiki-topic-guerra-hispano-americana",
+        "src-wiki-topic-mercado-comum-do-sul",
+        "src-wiki-topic-g7",
+        "src-wiki-topic-sismo",
+        "src-wiki-topic-organizacao-dos-estados-americanos",
+        "src-wiki-topic-parlamento",
+        "src-wiki-topic-risorgimento",
+        "src-wiki-topic-pandemia-de-covid-19",
+        "src-wiki-topic-partido-comunista-de-cuba",
+        "src-wiki-topic-primeira-guerra-da-indochina",
+        "src-wiki-topic-invasao-da-baia-dos-porcos",
+        "src-wiki-topic-munique",
+        "src-wiki-topic-nazismo",
+        "src-wiki-topic-uniao-sovietica",
+        "src-wiki-topic-pacifismo",
+        "src-wiki-topic-nacionalismo",
+        "src-wiki-topic-direita-politica",
+        "src-wiki-topic-mein-kampf"
+      ],
+      "review": null,
+      "gap": null,
+      "coverage": "complete",
+      "layout": "sources",
+      "blocks": [
+        {
+          "type": "sources",
+          "sourceIds": [
+            "src-wiki-topic-segunda-guerra-mundial",
+            "src-wiki-topic-conservadorismo",
+            "src-wiki-conceito-revolucao",
+            "src-wiki-topic-bruno-kreisky",
+            "src-wikidata-verbetes",
+            "src-wiki-topic-joseph-goebbels",
+            "src-wiki-topic-getulio-vargas",
+            "src-wiki-topic-augusto-pinochet",
+            "src-wiki-topic-simon-bolivar",
+            "src-wiki-topic-jose-de-san-martin",
+            "src-wiki-topic-jose-marti",
+            "src-wiki-topic-giuseppe-garibaldi",
+            "src-wiki-topic-fidel-castro",
+            "src-wiki-topic-che-guevara",
+            "src-wiki-topic-raul-castro",
+            "src-wiki-topic-salvador-allende",
+            "src-wiki-topic-juan-domingo-peron",
+            "src-wiki-topic-isabel-allende",
+            "src-wiki-topic-organizacao-das-nacoes-unidas",
+            "src-wiki-topic-grande-depressao",
+            "src-wiki-topic-holocausto",
+            "src-wiki-topic-commonwealth",
+            "src-wiki-topic-potencias-centrais",
+            "src-wiki-topic-guerra-da-coreia",
+            "src-wiki-topic-judeus",
+            "src-wiki-topic-capitalismo",
+            "src-wiki-topic-conselho-de-seguranca-das-nacoes-unidas",
+            "src-wiki-topic-uniao-europeia",
+            "src-wiki-topic-guerra",
+            "src-wiki-topic-organizacao-internacional",
+            "src-wiki-topic-crise-de-suez",
+            "src-wiki-topic-guerra-do-vietna",
+            "src-wiki-topic-revolucao-hungara-de-1956",
+            "src-wiki-topic-porto-rico",
+            "src-wiki-topic-sismo-do-haiti-de-2010",
+            "src-wiki-topic-revolucao-cubana",
+            "src-wiki-topic-crise-dos-misseis-de-cuba",
+            "src-wiki-topic-valparaiso-chile",
+            "src-wiki-topic-guerra-hispano-americana",
+            "src-wiki-topic-mercado-comum-do-sul",
+            "src-wiki-topic-g7",
+            "src-wiki-topic-sismo",
+            "src-wiki-topic-organizacao-dos-estados-americanos",
+            "src-wiki-topic-parlamento",
+            "src-wiki-topic-risorgimento",
+            "src-wiki-topic-pandemia-de-covid-19",
+            "src-wiki-topic-partido-comunista-de-cuba",
+            "src-wiki-topic-primeira-guerra-da-indochina",
+            "src-wiki-topic-invasao-da-baia-dos-porcos",
+            "src-wiki-topic-munique",
+            "src-wiki-topic-nazismo",
+            "src-wiki-topic-uniao-sovietica",
+            "src-wiki-topic-pacifismo",
+            "src-wiki-topic-nacionalismo",
+            "src-wiki-topic-direita-politica",
+            "src-wiki-topic-mein-kampf"
+          ]
+        }
+      ]
+    }
+  ]
+}

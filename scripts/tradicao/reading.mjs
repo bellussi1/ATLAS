@@ -18,9 +18,9 @@ import { parseArgs } from 'node:util';
 
 import { formatJson, readSourceGraph } from '../content/source-graph.mjs';
 import { resolveLens } from './belonging.mjs';
-import { projectRoot } from './registry.mjs';
+import { exists, loadRegistry, projectRoot, registryPath } from './registry.mjs';
 
-const { canonicalChapters } =
+const { canonicalChapters, chapterLabelFor } =
   await import('../../src/app/features/ideologies/models/ideology-chapters.ts');
 const { readerProse } = await import('../../src/app/core/content/editorial/reader-voice.ts');
 const { validateIdeologyDossier } =
@@ -162,14 +162,40 @@ function chapterContents(entity, claims, related, source) {
     : pending('O grafo não traz resumo desta ideologia.');
 
   const origem = by('Origem');
+  const contextoFallback = by('Contexto');
+  const factFallback = claims.filter((c) => c.classification === 'documented-fact');
   make.origens = origem.length
     ? section(origem, 'origem', 'Origem', 'Origens e formação')
-    : pending('Nenhuma passagem do grafo trata da origem desta ideologia.');
+    : contextoFallback.length
+      ? {
+          ...section(contextoFallback, 'origem', 'Contexto histórico', 'Origens e formação'),
+          partial:
+            'Usa passagens de contexto histórico porque a fonte principal não separa uma seção de origens.',
+        }
+      : factFallback.length
+        ? {
+            ...section(factFallback.slice(0, 3), 'origem', 'Marco histórico', 'Origens e formação'),
+            partial:
+              'Usa fatos documentados da fonte principal porque não há seção separada de origens no grafo.',
+          }
+        : pending('Nenhuma passagem do grafo trata da origem desta ideologia.');
 
   const ideias = by('Ideias centrais');
+  const conceitualFallback = claims.filter((c) => !c.heading && c.text && c.text.length > 40);
   make.principios = ideias.length
     ? section(ideias, 'ideia', 'Ideia central', 'Pilares e princípios')
-    : pending('Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.');
+    : conceitualFallback.length
+      ? {
+          ...section(
+            conceitualFallback.slice(0, 4),
+            'ideia',
+            'Formulação registrada',
+            'Pilares e princípios',
+          ),
+          partial:
+            'Reúne passagens descritivas registradas na fonte principal; síntese doutrinária estruturada ainda pendente.',
+        }
+      : pending('Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.');
 
   const aliases = (entity.aliases ?? []).filter(Boolean);
   make.conceitos = aliases.length
@@ -360,6 +386,7 @@ export function buildReading({
   pageTitle = null,
   lens = [],
   entitySources = null,
+  subjectType = 'ideologia',
 }) {
   const slug = pageSlug ?? entity.slug;
   const claims = entityClaims(entity, atlas);
@@ -373,13 +400,23 @@ export function buildReading({
       const evidence = evidences.get(id);
       return evidence ? [evidence.sourceId] : [];
     });
+  const nonCurrentIdeologyLinks = new Set([
+    'criticized',
+    'opposed',
+    'diverged_from',
+    'encyclopedic-link',
+    'related_to',
+  ]);
   const related = {};
   for (const relation of relations) {
     const otherId =
       relation.fromEntityId === entity.id ? relation.toEntityId : relation.fromEntityId;
     const other = entityIndex.get(otherId);
     if (!other || other.id === entity.id) continue;
-    const chapter = REF_KINDS[other.kind] ?? 'conexoes';
+    const chapter =
+      other.kind === 'ideology' && nonCurrentIdeologyLinks.has(relation.type)
+        ? 'conexoes'
+        : (REF_KINDS[other.kind] ?? 'conexoes');
     related[chapter] ??= [];
     const bucket = related[chapter];
     if (bucket.some((r) => r.entity.id === other.id)) continue;
@@ -409,7 +446,6 @@ export function buildReading({
     }
   };
   addLensChapter('pensadores', ['person']);
-  addLensChapter('vertentes', ['ideology']);
   addLensChapter('experiencias', [
     'event',
     'party',
@@ -418,6 +454,7 @@ export function buildReading({
     'historical-polity',
   ]);
   addLensChapter('conexoes', [
+    'ideology',
     'place',
     'country',
     'regime',
@@ -469,15 +506,75 @@ export function buildReading({
   if (position.length && content.introducao.narrative)
     content.introducao.narrative.push(`Posição política descrita na fonte: ${position[0]}.`);
 
+  const allChapterSources = dedupe([
+    source,
+    ...Object.entries(content)
+      .filter(([id, c]) => id !== 'fontes' && !c.pending)
+      .flatMap(([, c]) => sourcesOf(c)),
+  ]);
+  content.fontes = {
+    ...content.fontes,
+    sourceIds: allChapterSources,
+    narrative: [
+      `Reúne ${claims.length} ${claims.length === 1 ? 'afirmação' : 'afirmações'} da fonte principal e ${allChapterSources.length} ${allChapterSources.length === 1 ? 'referência bibliográfica' : 'referências bibliográficas'} ligadas à leitura. Inclui síntese por IA · revisão humana não registrada.`,
+    ],
+    blocks: [{ type: 'sources', sourceIds: allChapterSources }],
+  };
+
+  const subject = pageTitle ?? entity.title;
+  const chapterQuestions = {
+    introducao: `O que define ${subject}?`,
+    origens: `Como e em que contexto ${subject} surgiu?`,
+    principios:
+      subjectType === 'acontecimento'
+        ? `Quais causas imediatas e rupturas estruturais desencadearam ${subject}?`
+        : subjectType === 'instituicao'
+          ? `Quais regras, órgãos e mecanismos definiram o funcionamento de ${subject}?`
+          : subjectType === 'pessoa'
+            ? `Quais ideias, escolhas e posições políticas marcaram ${subject}?`
+            : `Quais ideias e práticas estruturam ${subject}?`,
+    conceitos: `Que termos e conceitos ajudam a compreender ${subject}?`,
+    epocas: `Em que períodos históricos ${subject} se formou e mudou?`,
+    pensadores:
+      subjectType === 'acontecimento'
+        ? `Quem foram os protagonistas e quais relatos registram ${subject}?`
+        : subjectType === 'instituicao'
+          ? `Que dirigentes, quadros e documentos estruturaram ${subject}?`
+          : `Quem formulou, liderou ou registrou ${subject}?`,
+    vertentes: `Que correntes dialogam ou disputam espaço com ${subject}?`,
+    experiencias: `Em quais acontecimentos, partidos e instituições ${subject} se materializou?`,
+    debates: `Quais críticas e controvérsias cercam ${subject}?`,
+    conexoes: `Como ${subject} se liga ao restante do grafo?`,
+    leituras: `Que obras e documentos aprofundam o estudo de ${subject}?`,
+    fontes: `Quais fontes sustentam a leitura sobre ${subject}?`,
+  };
+  const chapterBridges = {
+    introducao: 'Situado o tema, o capítulo seguinte acompanha suas origens históricas.',
+    origens: 'Visto o contexto de formação, seguem os eixos e processos centrais.',
+    principios:
+      'Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.',
+    conceitos: 'Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.',
+    epocas: 'Da cronologia, passamos aos atores, protagonistas e obras ligadas ao recorte.',
+    pensadores: 'Dos atores e obras, seguimos para as correntes e desdobramentos relacionados.',
+    vertentes:
+      'Vistos os desdobramentos, o capítulo seguinte examina experiências, partidos e instituições.',
+    experiencias: 'Das experiências históricas, a leitura passa às controvérsias e debates.',
+    debates: 'Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.',
+    conexoes: 'Para aprofundar além do mapa, seguem as referências de leitura.',
+    leituras: 'Por fim, o inventário completo das fontes citadas nesta leitura.',
+    fontes: null,
+  };
+
   const chapters = canonicalChapters.map((chapter) => {
     const c = content[chapter.id];
+    const chapterTitle = chapterLabelFor(chapter.id, subjectType);
     const base = {
       id: chapter.id,
       anchor: chapter.id,
-      title: chapter.label,
-      kicker: chapter.label,
-      question: null,
-      bridge: null,
+      title: chapterTitle,
+      kicker: chapterTitle,
+      question: c.pending ? null : (chapterQuestions[chapter.id] ?? null),
+      bridge: c.pending ? null : (chapterBridges[chapter.id] ?? null),
       layout:
         chapter.id === 'introducao'
           ? 'introduction'
@@ -574,12 +671,16 @@ const readJsonOr = (path, fallback) =>
     throw error;
   });
 
-/** Raiz ideológica da tradição, onde quer que o grafo a guarde. */
+/** Raiz da leitura, onde quer que o grafo a guarde (prioriza `kind === 'ideology'`, aceita qualquer tipo quando multi-tema). */
 export function readingRootIn(graph, rootQid) {
   for (const atlas of graph.atlases) {
     const entity = atlas.entities.find(
       (candidate) => candidate.kind === 'ideology' && candidate.externalIds?.wikidata === rootQid,
     );
+    if (entity) return { atlas, entity };
+  }
+  for (const atlas of graph.atlases) {
+    const entity = atlas.entities.find((candidate) => candidate.externalIds?.wikidata === rootQid);
     if (entity) return { atlas, entity };
   }
   return null;
@@ -601,6 +702,7 @@ export async function generateReadings({
   pageTitle = null,
   lensQids = null,
   slugs = null,
+  subjectType = null,
   write = true,
   today = new Date().toISOString().slice(0, 10),
 } = {}) {
@@ -637,10 +739,19 @@ export async function generateReadings({
     const outputSlug = pageSlug ?? entity.slug;
     const path = join(root, 'content/ideologies', outputSlug, 'page.json');
     const existing = await readJsonOr(path, null);
-    if (existing && existing.identity?.signature !== generatedSignature) {
+    if (
+      existing &&
+      existing.identity?.signature !== generatedSignature &&
+      existing.identity?.signature !== 'Estrutura preliminar'
+    ) {
       kept.push(outputSlug);
       continue;
     }
+    const resolvedSubjectType =
+      subjectType ??
+      ((await exists(registryPath(root, outputSlug)))
+        ? (await loadRegistry(outputSlug, root)).subjectType
+        : 'ideologia');
     const page = buildReading({
       entity,
       atlas,
@@ -656,6 +767,7 @@ export async function generateReadings({
       pageTitle,
       lens: lensEntities,
       entitySources,
+      subjectType: resolvedSubjectType,
     });
     const { page: valid } = validateIdeologyDossier(page, supplement, graph);
     reports.push(readingReport(valid));

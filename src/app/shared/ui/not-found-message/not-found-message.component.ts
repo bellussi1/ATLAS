@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { readingPath } from '@core/routing/reading-routes';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 
 /** Shared "not found" content for unknown routes and for records that do not exist. */
 @Component({
   selector: 'app-not-found-message',
-  imports: [RouterLink, AtlasGeometricMosaicComponent],
+  imports: [RouterLink, AtlasChevronComponent, AtlasGeometricMosaicComponent],
   templateUrl: './not-found-message.component.html',
   styleUrl: './not-found-message.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

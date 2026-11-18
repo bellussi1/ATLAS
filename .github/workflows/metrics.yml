@@ -1,0 +1,71 @@
+name: Métricas
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+    - cron: '0 6 * * 0,2-6'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Coletar GoatCounter e Cloudflare
+        env:
+          GOATCOUNTER_SITE: ${{ vars.GOATCOUNTER_SITE }}
+          GOATCOUNTER_API_KEY: ${{ secrets.GOATCOUNTER_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_ANALYTICS_API_TOKEN || secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID || secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          has_goat=0
+          has_cf=0
+          [ -n "$GOATCOUNTER_SITE" ] && [ -n "$GOATCOUNTER_API_KEY" ] && has_goat=1
+          [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ] && has_cf=1
+          if [ "$has_goat" -eq 0 ] && [ "$has_cf" -eq 0 ]; then
+            echo "Métricas sem credenciais; nada a fazer."
+            exit 0
+          fi
+          node scripts/metrics/sync.mjs
+
+      - name: Guardar o snapshot diário
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: metrics-${{ github.run_id }}
+          path: |
+            metrics/popularity.json
+            metrics/history/
+          retention-days: 30
+
+      - name: Abrir PR semanal
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 6 * * 1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- metrics; then
+            echo "Sem mudanças de métricas."
+            exit 0
+          fi
+          git config user.name "atlas-metrics"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -B metrics/popularity
+          git add metrics
+          git commit -m "chore(metricas): atualiza popularidade"
+          git push --force origin metrics/popularity
+          gh pr create \
+            --base develop \
+            --head metrics/popularity \
+            --title "chore(metricas): atualiza popularidade" \
+            --body "Snapshot automático de 30 dias do GoatCounter e Cloudflare. Revise a ordem e o histórico antes de mergear." \
+            || echo "PR já existe; o push atualizou a branch."

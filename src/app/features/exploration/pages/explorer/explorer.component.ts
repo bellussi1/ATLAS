@@ -1,4 +1,4 @@
-import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser, ViewportScroller } from '@angular/common';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -7,6 +7,7 @@ import {
   DestroyRef,
   effect,
   inject,
+  PLATFORM_ID,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
@@ -38,13 +39,20 @@ import {
 import { contentLanguageLabels } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
 import { readingPath } from '@core/routing/reading-routes';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import { AtlasKindIconComponent, iconKind } from '@shared/ui/kind-icon/kind-icon.component';
 import { RecordCardComponent } from '@shared/ui/record-card/record-card.component';
 
 @Component({
   selector: 'app-explorer',
-  imports: [RouterLink, AtlasGeometricMosaicComponent, AtlasKindIconComponent, RecordCardComponent],
+  imports: [
+    RouterLink,
+    AtlasChevronComponent,
+    AtlasGeometricMosaicComponent,
+    AtlasKindIconComponent,
+    RecordCardComponent,
+  ],
   templateUrl: './explorer.component.html',
   styleUrl: './explorer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -56,6 +64,7 @@ export class ExplorerComponent {
   private readonly repository = inject(ContentRepository);
   private readonly viewport = inject(ViewportScroller);
   private readonly document = inject(DOCUMENT);
+  private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly destroyRef = inject(DestroyRef);
   private searchTimer?: ReturnType<typeof setTimeout>;
   // Pager links keep the reader's place: the router would otherwise scroll to the top of the page.
@@ -88,17 +97,17 @@ export class ExplorerComponent {
   readonly showLayers = this.catalogue.path === 'acervo';
   readonly layer = computed(() => {
     const value = this.params().get('camada') ?? '';
+    if (value === 'tudo') return '';
+    if (!value && this.catalogue.path === 'acervo' && !this.params().get('q')) {
+      return 'registros';
+    }
     return explorerLayers.some((item) => item.id === value) ? value : '';
   });
   readonly isUniversal = computed(() => this.catalogue.path === 'acervo' && !this.layer());
   readonly isRegistros = computed(
     () => this.catalogue.path === 'acervo' && this.layer() === 'registros',
   );
-  readonly isFontes = computed(
-    () =>
-      this.catalogue.path === 'fontes' ||
-      (this.catalogue.path === 'acervo' && this.layer() === 'fontes'),
-  );
+  readonly isFontes = computed(() => this.catalogue.path === 'fontes');
   readonly isLeituras = computed(
     () => this.catalogue.path === 'acervo' && this.layer() === 'editorial',
   );
@@ -202,6 +211,7 @@ export class ExplorerComponent {
   readonly unknownLayer = computed(
     () =>
       !!this.params().get('camada') &&
+      this.params().get('camada') !== 'tudo' &&
       !explorerLayers.some((layer) => layer.id === this.params().get('camada')),
   );
   readonly unknownState = computed(
@@ -209,10 +219,8 @@ export class ExplorerComponent {
       !!this.params().get('estado') &&
       !this.facets().states.some((f) => f.value === this.params().get('estado')),
   );
-  /** Sources keep the compact list layout, also when the universal archive is cut to that layer. */
-  readonly sourceList = computed(
-    () => this.catalogue.path === 'fontes' || this.layer() === 'fontes',
-  );
+  /** Sources keep the compact list layout inside their dedicated catalogue. */
+  readonly sourceList = computed(() => this.catalogue.path === 'fontes');
   readonly editorialList = computed(() => this.layer() === 'editorial');
   /** Only a record catalogue promises records; the universal archive also holds sources and readings. */
   readonly emptyTitle = computed(() =>
@@ -264,6 +272,7 @@ export class ExplorerComponent {
         this.document.defaultView?.matchMedia('(max-width: 47.99rem)').matches ?? false,
       );
       this.syncFromLocation();
+      this.ensureDefaultLayer();
       setTimeout(() => this.syncFromLocation(), 0);
       setTimeout(() => this.syncFromLocation(), 120);
     });
@@ -291,7 +300,10 @@ export class ExplorerComponent {
         const fromLocation = Object.fromEntries(new URLSearchParams(search));
         const fromRouter = this.router.parseUrl(event.urlAfterRedirects).queryParams;
         this.params.set(convertToParamMap({ ...fromRouter, ...fromLocation }));
-        setTimeout(() => this.syncFromLocation(), 0);
+        if (this.browser) {
+          this.ensureDefaultLayer();
+          setTimeout(() => this.syncFromLocation(), 0);
+        }
       }
       if (event instanceof Scroll && this.keptScrollY !== null) {
         const y = this.keptScrollY;
@@ -436,6 +448,17 @@ export class ExplorerComponent {
   private syncFromLocation(): void {
     const params = Object.fromEntries(new URLSearchParams(this.document.location.search));
     this.params.set(convertToParamMap(params));
+  }
+  /** Opening /acervo without a layer lands on ?camada=registros unless a search query is active. */
+  private ensureDefaultLayer(): void {
+    if (this.catalogue.path !== 'acervo') return;
+    if (this.params().has('camada') || this.params().has('q')) return;
+    void this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { camada: 'registros' },
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
   }
   private queryString(): string {
     const params = new URLSearchParams();

@@ -84,7 +84,16 @@ test('capítulos são os 12 canônicos, não publicados e sem revisão humana', 
   assert.equal(page.review.status, 'rascunho');
   assert.equal(page.review.reviewer, null);
   assert.equal(page.identity.signature, generatedSignature);
-  assert.ok(page.chapters.every((c) => c.question === null && c.bridge === null));
+  assert.ok(
+    page.chapters
+      .filter((c) => c.coverage === 'pending')
+      .every((c) => c.question === null && c.bridge === null),
+  );
+  assert.ok(
+    page.chapters
+      .filter((c) => c.coverage !== 'pending')
+      .every((c) => typeof c.question === 'string' && c.question.length > 0),
+  );
 });
 
 test('capítulo sem conteúdo fica pending, com motivo e sem blocos nem fontes', () => {
@@ -162,6 +171,38 @@ test('relações viram pensadores, vertentes e experiências pelo tipo do outro 
   assert.deepEqual(pensadores.blocks[0].entityIds, ['person-a']);
   assert.equal(pensadores.blocks[0].notes['person-a'], 'Inspirou, segundo o verbete.');
   assert.deepEqual(chapter(page, 'vertentes').blocks[0].entityIds, ['wiki-topic-b']);
+});
+
+test('relações adversárias ou links de descoberta com outras ideologias não entram em vertentes', () => {
+  const marxism = { id: 'ideology-marxism', kind: 'ideology', title: 'Marxismo' };
+  const socialism = { id: 'ideology-socialism', kind: 'ideology', title: 'Socialismo' };
+  const nationalism = { id: 'ideology-nationalism', kind: 'ideology', title: 'Nacionalismo' };
+  const page = build([claim(1, 'Nasceu em 1900 com Fulano.')], {
+    entityIndex: new Map([marxism, socialism, nationalism].map((e) => [e.id, e])),
+    relations: [
+      {
+        id: 'r-opp',
+        type: 'opposed',
+        fromEntityId: ENTITY.id,
+        toEntityId: marxism.id,
+        context: 'Combateu o marxismo.',
+        evidenceIds: ['ev-1'],
+      },
+      {
+        id: 'r-part',
+        type: 'part_of',
+        fromEntityId: nationalism.id,
+        toEntityId: ENTITY.id,
+        context: 'Elemento interno.',
+        evidenceIds: ['ev-1'],
+      },
+    ],
+    lens: [socialism],
+  });
+  assert.deepEqual(chapter(page, 'vertentes').blocks[0].entityIds, ['ideology-nationalism']);
+  const conexoesIds = chapter(page, 'conexoes').blocks[0].entityIds;
+  assert.ok(conexoesIds.includes('ideology-marxism'));
+  assert.ok(conexoesIds.includes('ideology-socialism'));
 });
 
 test('a raiz da tradição é procurada no grafo inteiro, não só na coleção focal', () => {

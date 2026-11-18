@@ -10,6 +10,7 @@ describe('SiteHeaderComponent', () => {
       providers: [
         provideRouter([
           { path: '', children: [] },
+          { path: 'leituras', children: [] },
           { path: 'leitura/marxismo', children: [] },
           { path: 'acervo', children: [] },
           { path: 'grafos', children: [] },
@@ -29,30 +30,19 @@ describe('SiteHeaderComponent', () => {
     const root = fixture.nativeElement as HTMLElement;
     expect(root.querySelector('a.brand')?.getAttribute('href')).toBe('/');
     expect(root.querySelector('a.brand img')?.getAttribute('src')).toBe('/brand/atlas-logo.svg');
-    expect(links(root)).toEqual(['Leituras', 'Acervo', 'Grafo', 'Como usar']);
+    expect(links(root)).toEqual(['Leituras', 'Itinerários', 'Acervo', 'Grafo', 'Como usar']);
     expect(root.querySelector('a[href="/grafos"]')).not.toBeNull();
-    expect(root.querySelector('a[href="/acervo"]')).not.toBeNull();
+    expect(root.querySelector('a[href="/acervo?camada=registros"]')).not.toBeNull();
   });
 
-  it('opens the readings menu with the four continuous readings', () => {
+  it('links the readings entry straight to the continuous readings index', () => {
     const fixture = TestBed.createComponent(SiteHeaderComponent);
     fixture.detectChanges();
     const root = fixture.nativeElement as HTMLElement;
-    const button = root.querySelector<HTMLButtonElement>('.nav__link--button')!;
-    expect(button.getAttribute('aria-expanded')).toBe('false');
-    button.click();
-    fixture.detectChanges();
-    expect(button.getAttribute('aria-expanded')).toBe('true');
-    expect(
-      [...root.querySelectorAll<HTMLAnchorElement>('.readings-menu a')].map((a) =>
-        a.getAttribute('href'),
-      ),
-    ).toEqual([
-      '/leitura/marxismo',
-      '/leitura/liberalismo',
-      '/leitura/social-democracia',
-      '/leitura/anarquismo',
-    ]);
+    const link = root.querySelector<HTMLAnchorElement>('a.nav__link[href="/leituras"]');
+    expect(link?.textContent).toContain('Leituras');
+    expect(root.querySelector('.nav__link--button')).toBeNull();
+    expect(root.querySelector('#menu-leituras')).toBeNull();
   });
 
   it('marks the current section: a reading, the archive or the network', async () => {
@@ -61,13 +51,14 @@ describe('SiteHeaderComponent', () => {
     const root = fixture.nativeElement as HTMLElement;
     await router.navigateByUrl('/leitura/marxismo');
     fixture.detectChanges();
-    expect(root.querySelector('.nav__link--button')?.classList.contains('is-active')).toBe(true);
+    expect(root.querySelector('a[href="/leituras"]')?.classList.contains('is-active')).toBe(true);
+    expect(root.querySelector('a[href="/leituras"]')?.getAttribute('aria-current')).toBe('page');
     await router.navigateByUrl('/grafos');
     fixture.detectChanges();
     expect(root.querySelector('a[href="/grafos"]')?.getAttribute('aria-current')).toBe('page');
     await router.navigateByUrl('/acervo');
     fixture.detectChanges();
-    expect(root.querySelector('a[href="/acervo"].nav__link')?.getAttribute('aria-current')).toBe(
+    expect(root.querySelector('a[href^="/acervo"].nav__link')?.getAttribute('aria-current')).toBe(
       'page',
     );
   });

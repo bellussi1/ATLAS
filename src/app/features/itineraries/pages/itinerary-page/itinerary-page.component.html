@@ -1,0 +1,520 @@
+@if (loading()) {
+  <section class="itinerary-loading" role="status" aria-live="polite">
+    <p>Carregando itinerário…</p>
+  </section>
+} @else if (itinerary(); as item) {
+  <article class="itinerary" [attr.data-kind]="item.kind" aria-labelledby="itinerary-title">
+    <nav class="itinerary__crumb" aria-label="Caminho">
+      <a routerLink="/itinerarios">← Todos os itinerários</a>
+    </nav>
+
+    <header class="itinerary__head">
+      <div class="itinerary__head-copy">
+        <p class="itinerary__kicker">
+          <span class="itinerary__kind-pill">{{ kindLabels[item.kind] }}</span>
+          <span class="itinerary__count-pill">{{ item.stops.length }} paradas</span>
+          @if (item.branches.length) {
+            <span class="itinerary__count-pill">{{ item.branches.length }} ramos</span>
+          }
+          <span class="itinerary__seal-pill" [class.is-verified]="item.status === 'verified'">
+            {{ item.status === 'verified' ? 'Verificado' : 'Conferido por IA' }}
+          </span>
+        </p>
+        <h1 id="itinerary-title">{{ item.title }}</h1>
+        <p class="itinerary__question">{{ item.question }}</p>
+        <p class="itinerary__deck">{{ item.deck }}</p>
+        @if (item.status === 'reviewed-ai') {
+          <p class="itinerary__coverage" role="note">
+            Conferência assistida por IA (sem revisão humana).
+          </p>
+        }
+        @if (item.coverage !== 'complete' && item.coverageNote) {
+          <p class="itinerary__coverage" role="note">{{ item.coverageNote }}</p>
+        }
+      </div>
+      <app-geometric-mosaic
+        class="itinerary__mosaic"
+        [columns]="4"
+        [rows]="3"
+        [palette]="paletteFor(item.kind)"
+        [seed]="seedFor(item.slug)"
+      />
+    </header>
+
+    @if (diagram(); as map) {
+      <section class="roadmap-diagram" aria-label="Mapa visual interativo do itinerário">
+        <div class="roadmap-diagram__bar">
+          <div>
+            <p class="roadmap-diagram__kicker">
+              Mapa do percurso · clique numa parada para inspecionar
+            </p>
+          </div>
+          <ul class="roadmap-legend" aria-label="Legenda dos tipos de parada">
+            <li><span class="legend-dot" data-type="leitura" aria-hidden="true"></span>Leitura</li>
+            <li><span class="legend-dot" data-type="verbete" aria-hidden="true"></span>Verbete</li>
+            <li><span class="legend-dot" data-type="grafo" aria-hidden="true"></span>Grafo</li>
+            <li>
+              <span class="legend-dot" data-type="catalogo" aria-hidden="true"></span>Catálogo
+            </li>
+            <li><span class="legend-dot legend-dot--branch" aria-hidden="true"></span>Ramo</li>
+          </ul>
+        </div>
+
+        <div class="roadmap-diagram__scroll">
+          <svg
+            class="roadmap-svg"
+            [attr.viewBox]="'0 0 ' + map.width + ' ' + map.height"
+            role="img"
+            aria-label="Diagrama de paradas e desvios do itinerário"
+          >
+            @if (map.mainPath) {
+              <path class="diagram-track-bg" [attr.d]="map.mainPath" />
+              <path class="diagram-track-flow" [attr.d]="map.mainPath" />
+            }
+
+            @for (branch of map.branches; track branch.id) {
+              <g
+                class="diagram-branch"
+                role="button"
+                tabindex="0"
+                [attr.aria-label]="'Ir para parada de origem: ' + branch.title"
+                (click)="selectStop(branch.fromStop, true)"
+                (keydown.enter)="selectStop(branch.fromStop, true)"
+                (keydown.space)="$event.preventDefault(); selectStop(branch.fromStop, true)"
+              >
+                <path class="diagram-branch__arc" [attr.d]="branch.pathD" />
+                <circle
+                  class="diagram-branch__dot"
+                  [attr.cx]="branch.x"
+                  [attr.cy]="branch.y"
+                  r="7"
+                />
+                <text
+                  class="diagram-branch__label"
+                  [attr.x]="branch.x"
+                  [attr.y]="branch.y + 20"
+                  text-anchor="middle"
+                >
+                  {{ branch.title.length > 26 ? branch.title.slice(0, 25) + '…' : branch.title }}
+                </text>
+              </g>
+            }
+
+            @for (node of map.nodes; track node.id) {
+              <g
+                class="diagram-node"
+                [attr.data-type]="node.type"
+                [class.is-active]="activeStop()?.id === node.id"
+                role="button"
+                tabindex="0"
+                [attr.aria-label]="'Parada ' + node.index + ': ' + node.title"
+                [attr.aria-pressed]="activeStop()?.id === node.id"
+                (click)="selectStop(node.id, true)"
+                (keydown.enter)="selectStop(node.id, true)"
+                (keydown.space)="$event.preventDefault(); selectStop(node.id, true)"
+              >
+                <circle class="diagram-node__halo" [attr.cx]="node.x" [attr.cy]="node.y" r="24" />
+                @switch (node.type) {
+                  @case ('grafo') {
+                    <circle
+                      class="diagram-node__shape"
+                      [attr.cx]="node.x"
+                      [attr.cy]="node.y"
+                      r="17"
+                    />
+                  }
+                  @case ('verbete') {
+                    <path
+                      class="diagram-node__shape"
+                      [attr.d]="
+                        'M ' +
+                        (node.x - 17) +
+                        ' ' +
+                        (node.y + 10) +
+                        ' A 17 17 0 0 1 ' +
+                        (node.x + 17) +
+                        ' ' +
+                        (node.y + 10) +
+                        ' Z'
+                      "
+                    />
+                  }
+                  @default {
+                    <rect
+                      class="diagram-node__shape"
+                      [attr.x]="node.x - 16"
+                      [attr.y]="node.y - 16"
+                      width="32"
+                      height="32"
+                    />
+                  }
+                }
+                <text
+                  class="diagram-node__num"
+                  [attr.x]="node.x"
+                  [attr.y]="node.type === 'verbete' ? node.y + 1 : node.y + 1"
+                  text-anchor="middle"
+                  dominant-baseline="central"
+                >
+                  {{ node.index }}
+                </text>
+                <text
+                  class="diagram-node__title"
+                  [attr.x]="node.x"
+                  [attr.y]="node.y - 26"
+                  text-anchor="middle"
+                >
+                  {{ node.shortTitle }}
+                </text>
+              </g>
+            }
+          </svg>
+        </div>
+      </section>
+    }
+
+    <div class="roadmap-workspace">
+      <section class="roadmap-section" aria-label="Paradas do itinerário">
+        <ol class="roadmap-track">
+          @for (stop of item.stops; track stop.id; let i = $index; let last = $last) {
+            @let dest = destinationOf(stop.destination);
+            @let ctx = stopContexts().get(stop.id);
+            @let entityId = stop.contextEntityId ?? ctx?.entityId;
+            <li
+              [id]="'parada-' + stop.id"
+              class="roadmap-item"
+              [attr.data-type]="stop.destination.type"
+              [class.is-active]="activeStop()?.id === stop.id"
+              [style.--stagger]="i"
+            >
+              <div class="roadmap-rail" aria-hidden="true">
+                <button
+                  type="button"
+                  class="roadmap-node"
+                  [attr.data-shape]="nodeShape(stop.destination.type)"
+                  [attr.data-type]="stop.destination.type"
+                  [class.is-active]="activeStop()?.id === stop.id"
+                  tabindex="-1"
+                  (click)="selectStop(stop.id, false)"
+                >
+                  {{ i + 1 }}
+                </button>
+                @if (!last) {
+                  <span class="roadmap-line"></span>
+                }
+              </div>
+
+              <div class="roadmap-content">
+                <div
+                  class="stop"
+                  [attr.data-type]="stop.destination.type"
+                  [class.is-active]="activeStop()?.id === stop.id"
+                >
+                  <div class="stop__top">
+                    <p class="stop__kicker">
+                      <span class="stop__badge" [attr.data-type]="stop.destination.type">
+                        <span
+                          class="stop__shape"
+                          [attr.data-shape]="nodeShape(stop.destination.type)"
+                          aria-hidden="true"
+                        ></span>
+                        {{ dest.kindLabel }}
+                      </span>
+                      <span>Parada {{ i + 1 }} de {{ item.stops.length }}</span>
+                    </p>
+                    <button
+                      type="button"
+                      class="stop__focus-btn"
+                      [attr.aria-pressed]="activeStop()?.id === stop.id"
+                      (click)="selectStop(stop.id, false)"
+                    >
+                      {{ activeStop()?.id === stop.id ? 'Em foco na mesa' : 'Focar na mesa' }}
+                    </button>
+                  </div>
+
+                  <h2>{{ stop.title }}</h2>
+                  <p class="stop__reason">{{ stop.reason }}</p>
+
+                  @if (stop.justification) {
+                    <p class="stop__justification">
+                      <strong>Por que vem aqui:</strong> {{ stop.justification }}
+                    </p>
+                  }
+
+                  <p class="stop__question"><strong>Pergunta-guia:</strong> {{ stop.question }}</p>
+
+                  @if (ctx) {
+                    <div class="stop__context-box">
+                      <p class="stop__context-meta">
+                        Ficha no acervo · {{ ctx.relationCount }}
+                        {{ ctx.relationCount === 1 ? 'ligação' : 'ligações' }} em rede
+                      </p>
+                      <p class="stop__context-summary">{{ ctx.summary }}</p>
+                      @if (ctx.claims.length) {
+                        <ul class="stop__claims" aria-label="Registros documentados da ficha">
+                          @for (claim of ctx.claims; track $index) {
+                            <li>{{ claim }}</li>
+                          }
+                        </ul>
+                      }
+                      @if (ctx.neighbors.length) {
+                        <div class="stop__neighbors">
+                          <span class="stop__neighbors-label">Conexões no grafo:</span>
+                          @for (neighbor of ctx.neighbors; track neighbor.slug) {
+                            <a class="neighbor-chip" [routerLink]="['/verbete', neighbor.slug]">
+                              <small>{{ neighbor.label }}</small>
+                              <span>{{ neighbor.title }}</span>
+                            </a>
+                          }
+                        </div>
+                      }
+                    </div>
+                  }
+
+                  @if (stop.sourceIds?.length) {
+                    <ul class="stop__sources" aria-label="Fontes desta parada">
+                      @for (sid of stop.sourceIds; track sid) {
+                        @if (sourceById().get(sid); as src) {
+                          <li>{{ src.title }}</li>
+                        }
+                      }
+                    </ul>
+                  }
+
+                  <div class="stop__actions">
+                    <a
+                      class="stop__link atlas-press"
+                      [routerLink]="dest.commands"
+                      [queryParams]="dest.queryParams"
+                      [fragment]="dest.fragment"
+                    >
+                      Abrir {{ dest.kindLabel }} <span aria-hidden="true">→</span>
+                    </a>
+                    @if (entityId) {
+                      <button
+                        type="button"
+                        class="stop__preview atlas-press"
+                        (click)="openContext(entityId, $event)"
+                      >
+                        Prévia da ficha
+                      </button>
+                    }
+                  </div>
+
+                  @if (stop.coverage && stop.coverage !== 'complete' && stop.gap) {
+                    <p class="stop__gap" role="note">
+                      <strong>Lacuna registrada:</strong> {{ stop.gap }}
+                    </p>
+                  }
+                </div>
+
+                @if (branchesByStop().get(stop.id); as branches) {
+                  <aside
+                    class="branches"
+                    [attr.aria-label]="'Desvios a partir da parada ' + (i + 1)"
+                  >
+                    @for (branch of branches; track branch.id) {
+                      <div class="branch">
+                        <p class="branch__kicker">
+                          <span aria-hidden="true">↳</span> Ramo opcional · sai da parada
+                          {{ i + 1 }}
+                        </p>
+                        <h3>{{ branch.title }}</h3>
+                        <p>{{ branch.reason }}</p>
+                        @if (branch.justification) {
+                          <p class="branch__justification">
+                            <strong>Sentido do desvio:</strong> {{ branch.justification }}
+                          </p>
+                        }
+                        <p class="branch__question">
+                          <strong>Pergunta do desvio:</strong> {{ branch.question }}
+                        </p>
+                        <div class="branch__footer">
+                          @if (destinationOf(branch.destination); as bDest) {
+                            <a
+                              class="branch__link atlas-press"
+                              [routerLink]="bDest.commands"
+                              [queryParams]="bDest.queryParams"
+                              [fragment]="bDest.fragment"
+                            >
+                              Abrir {{ bDest.kindLabel }} <span aria-hidden="true">→</span>
+                            </a>
+                          }
+                          @if (branch.convergesAt; as targetId) {
+                            <p class="branch__target">
+                              <span aria-hidden="true">↺</span>
+                              Converge na parada
+                              {{ stopNumberById().get(targetId) ?? '' }}:
+                              <a
+                                [routerLink]="[]"
+                                [fragment]="'parada-' + targetId"
+                                (click)="$event.preventDefault(); selectStop(targetId, true)"
+                              >
+                                {{ stopTitles().get(targetId) ?? targetId }}
+                              </a>
+                            </p>
+                          } @else if (branch.exit) {
+                            <p class="branch__target">
+                              <span aria-hidden="true">↗</span> Saída paralela: {{ branch.exit }}
+                            </p>
+                          }
+                        </div>
+                      </div>
+                    }
+                  </aside>
+                }
+
+                @if (!last && item.stops[i + 1]; as nextStop) {
+                  <button
+                    type="button"
+                    class="roadmap-connector atlas-press"
+                    (click)="selectStop(nextStop.id, true)"
+                  >
+                    <span class="roadmap-connector__arrow" aria-hidden="true">↓</span>
+                    <span>
+                      Segue para parada {{ i + 2 }}: <strong>{{ nextStop.title }}</strong>
+                    </span>
+                  </button>
+                }
+              </div>
+            </li>
+          }
+        </ol>
+      </section>
+
+      @if (activeStop(); as currentStop) {
+        @let activeDest = destinationOf(currentStop.destination);
+        @let activeCtx = stopContexts().get(currentStop.id);
+        @let activeEntityId = currentStop.contextEntityId ?? activeCtx?.entityId;
+        <aside class="roadmap-desk" aria-label="Mesa de estudo da parada selecionada">
+          <div class="roadmap-desk__head" [attr.data-type]="currentStop.destination.type">
+            <p class="roadmap-desk__kicker">
+              Mesa do percurso · Parada {{ activeStopIndex() + 1 }} / {{ item.stops.length }}
+            </p>
+            <h2>{{ currentStop.title }}</h2>
+            <p class="roadmap-desk__type">{{ activeDest.kindLabel }}</p>
+          </div>
+
+          <div class="roadmap-desk__body">
+            <p class="roadmap-desk__question">{{ currentStop.question }}</p>
+            <p class="roadmap-desk__reason">{{ currentStop.reason }}</p>
+
+            @if (currentStop.justification) {
+              <div class="roadmap-desk__note">
+                <strong>Conexão no percurso</strong>
+                <p>{{ currentStop.justification }}</p>
+              </div>
+            }
+
+            @if (activeCtx) {
+              <div class="roadmap-desk__entity">
+                <strong>No acervo ({{ activeCtx.relationCount }} ligações)</strong>
+                <p>{{ activeCtx.summary }}</p>
+                @if (activeCtx.neighbors.length) {
+                  <ul class="desk-neighbors" aria-label="Conexões relacionadas">
+                    @for (neighbor of activeCtx.neighbors; track neighbor.slug) {
+                      <li>
+                        <a [routerLink]="['/verbete', neighbor.slug]">
+                          <span>{{ neighbor.label }}:</span> {{ neighbor.title }} →
+                        </a>
+                      </li>
+                    }
+                  </ul>
+                }
+              </div>
+            }
+
+            <div class="roadmap-desk__actions">
+              <a
+                class="stop__link atlas-press"
+                [routerLink]="activeDest.commands"
+                [queryParams]="activeDest.queryParams"
+                [fragment]="activeDest.fragment"
+              >
+                Abrir {{ activeDest.kindLabel }} <span aria-hidden="true">→</span>
+              </a>
+              @if (activeEntityId) {
+                <button
+                  type="button"
+                  class="stop__preview atlas-press"
+                  (click)="openContext(activeEntityId, $event)"
+                >
+                  Prévia da ficha
+                </button>
+              }
+            </div>
+
+            <div class="roadmap-desk__nav">
+              <button
+                type="button"
+                class="desk-step atlas-press"
+                [disabled]="activeStopIndex() === 0"
+                (click)="stepBy(-1)"
+              >
+                ← Anterior
+              </button>
+              <button
+                type="button"
+                class="desk-step atlas-press"
+                [disabled]="activeStopIndex() >= item.stops.length - 1"
+                (click)="stepBy(1)"
+              >
+                Próxima →
+              </button>
+            </div>
+          </div>
+        </aside>
+      }
+    </div>
+
+    @if (item.connections.length) {
+      <section class="itinerary__section" aria-labelledby="connections-title">
+        <h2 id="connections-title">Para continuar depois deste percurso</h2>
+        <ul class="connections">
+          @for (conn of item.connections; track $index) {
+            @if (destinationOf(conn.destination); as cDest) {
+              <li>
+                <a
+                  [routerLink]="cDest.commands"
+                  [queryParams]="cDest.queryParams"
+                  [fragment]="cDest.fragment"
+                >
+                  {{ cDest.kindLabel }} <span aria-hidden="true">→</span>
+                </a>
+                <span>{{ conn.reason }}</span>
+              </li>
+            }
+          }
+        </ul>
+      </section>
+    }
+
+    @if (item.sources.length) {
+      <section class="itinerary__section" aria-labelledby="sources-title">
+        <h2 id="sources-title">Fontes do percurso</h2>
+        <ul class="sources">
+          @for (source of item.sources; track source.id) {
+            <li>
+              @if (source.url) {
+                <a [href]="source.url">{{ source.title }}</a>
+              } @else {
+                <span>{{ source.title }}</span>
+              }
+            </li>
+          }
+        </ul>
+      </section>
+    }
+
+    <footer class="itinerary__foot">
+      <a routerLink="/itinerarios">← Voltar aos itinerários</a>
+    </footer>
+  </article>
+} @else {
+  <app-not-found-message
+    title="Itinerário não encontrado"
+    message="Este percurso ainda não foi publicado ou o endereço não corresponde a um itinerário ativo."
+    backLink="/itinerarios"
+    backLabel="Ver itinerários"
+  />
+}

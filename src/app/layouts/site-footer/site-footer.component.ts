@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
 
+import { version as appVersion } from '../../../../package.json';
 import { headerReadings } from '../site-header/site-header.component';
 
 @Component({
@@ -12,6 +13,7 @@ import { headerReadings } from '../site-header/site-header.component';
   styleUrl: './site-footer.component.scss',
 })
 export class SiteFooterComponent {
+  readonly version = appVersion;
   readonly readings = headerReadings;
   // The search entry is listed on its own; the rest are the catalogues behind it.
   readonly catalogues = explorerCatalogues.filter((catalogue) => catalogue.path !== 'acervo');

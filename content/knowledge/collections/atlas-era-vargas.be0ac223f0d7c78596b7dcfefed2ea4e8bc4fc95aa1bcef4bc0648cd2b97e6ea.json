@@ -1,0 +1,4580 @@
+{
+  "id": "atlas-era-vargas",
+  "slug": "era-vargas-wikipedia",
+  "title": "Era Vargas: registros em revisão",
+  "description": "Sínteses por IA de fontes enciclopédicas, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-17",
+  "entityIds": [
+    "wiki-topic-bolsa-de-valores-de-nova-iorque",
+    "wiki-topic-bolsa-de-valores",
+    "wiki-topic-deodoro-da-fonseca",
+    "wiki-topic-julio-prestes",
+    "wiki-topic-mauricio-macri",
+    "wiki-topic-michel-temer",
+    "wiki-topic-obelisco",
+    "wiki-topic-pedro-ii-do-brasil",
+    "wiki-topic-poder-legislativo",
+    "wiki-topic-santos-dumont",
+    "wiki-topic-selecao-brasileira-de-futebol",
+    "wiki-topic-sociedade-esportiva-palmeiras",
+    "wiki-topic-washington-luis"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "slug": "bolsa-de-valores-de-nova-iorque",
+      "title": "Bolsa de Valores de Nova Iorque",
+      "summary": "A Bolsa de Valores de Nova Iorque (NYSE) é uma bolsa de valores americana sediada no Distrito Financeiro de Lower Manhattan, em Nova Iorque. O artigo a descreve como a maior bolsa do mundo por capitalização de mercado. Sua origem remonta ao Acordo de Buttonwood, assinado em 17 de maio de 1792 por vinte e quatro corretores. Ao longo dos séculos XIX e XX, a organização se reorganizou, fundiu-se com concorrentes, passou por crises como a Quinta-Feira Negra de 1929 e a Segunda-Feira Negra de 1987, e se tornou empresa com fins lucrativos em 2006.",
+      "aliases": ["New York Stock Exchange", "NYSE", "Big Board"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A Bolsa de Valores de Nova Iorque (NYSE) é uma bolsa de valores americana sediada no Distrito Financeiro de Lower Manhattan, em Nova Iorque. O artigo a descreve como a maior bolsa do mundo por capitalização de mercado. Sua origem remonta ao Acordo de Buttonwood, assinado em 17 de maio de 1792 por vinte e quatro corretores. Ao longo dos séculos XIX e XX, a organização se reorganizou, fundiu-se com concorrentes, passou por crises como a Quinta-Feira Negra de 1929 e a Segunda-Feira Negra de 1987, e se tornou empresa com fins lucrativos em 2006."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "A organização de negociação de valores mobiliários entre corretores de Nova Iorque remonta ao Acordo de Buttonwood, assinado por vinte e quatro corretores em 17 de maio de 1792."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O Acordo de Buttonwood estabelecia uma taxa mínima de comissão cobrada dos clientes e obrigava os signatários a dar preferência uns aos outros na venda de valores mobiliários."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "Os reguladores das autoridades americanas publicaram um relatório sobre a queda de 2010 sem chegar a conclusão sobre sua causa."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q13677", "wikipedia": "Bolsa de Valores de Nova Iorque" },
+      "discoveryMetadata": {
+        "description": "Maior bolsa de valores do mundo por capitalização de mercado, sediada em Nova Iorque, com origem no Acordo de Buttonwood de 1792.",
+        "wikipediaTitle": "Bolsa de Valores de Nova Iorque",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Bolsa_de_Valores_de_Nova_Iorque",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72897788, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-bolsa-de-valores",
+      "slug": "bolsa-de-valores",
+      "title": "Bolsa de valores",
+      "summary": "Bolsa de valores é o mercado organizado onde se negociam ações de sociedades de capital aberto e outros valores mobiliários, como as opções. Pode ser organizada como sociedade civil sem fins lucrativos ou, o mais usual hoje, como sociedade anônima voltada ao lucro. O artigo descreve sua origem nas bolsas dos séculos XV e XVI, como a de Bruges em 1487, a criação da Bolsa de Nova York em 1792 pelo Buttonwood Agreement e a substituição do pregão viva-voz pelo pregão eletrônico, além da expansão do trading algorítmico.",
+      "aliases": ["mercado organizado"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Bolsa de valores é o mercado organizado onde se negociam ações de sociedades de capital aberto e outros valores mobiliários, como as opções. Pode ser organizada como sociedade civil sem fins lucrativos ou, o mais usual hoje, como sociedade anônima voltada ao lucro. O artigo descreve sua origem nas bolsas dos séculos XV e XVI, como a de Bruges em 1487, a criação da Bolsa de Nova York em 1792 pelo Buttonwood Agreement e a substituição do pregão viva-voz pelo pregão eletrônico, além da expansão do trading algorítmico."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "As primeiras bolsas com características modernas surgiram em meados do século XV, no contexto da expansão comercial."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q11691", "wikipedia": "Bolsa de valores" },
+      "discoveryMetadata": {
+        "description": "Mercado organizado onde se negociam ações de sociedades de capital aberto e outros valores mobiliários, como as opções.",
+        "wikipediaTitle": "Bolsa de valores",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Bolsa_de_valores",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72087681, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-deodoro-da-fonseca",
+      "slug": "deodoro-da-fonseca",
+      "title": "Deodoro da Fonseca",
+      "summary": "Militar e político brasileiro, liderou o movimento que proclamou a República em 15 de novembro de 1889 e chefiou o Governo Provisório. Foi eleito pelo Congresso como primeiro presidente constitucional e renunciou em 23 de novembro de 1891, sob a ameaça da Primeira Revolta da Armada. Sua atuação é central, no artigo, para a passagem do Império à República e para os primeiros atos do novo regime.",
+      "aliases": ["Manuel Deodoro da Fonseca", "Deodoro"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Militar e político brasileiro, liderou o movimento que proclamou a República em 15 de novembro de 1889 e chefiou o Governo Provisório. Foi eleito pelo Congresso como primeiro presidente constitucional e renunciou em 23 de novembro de 1891, sob a ameaça da Primeira Revolta da Armada. Sua atuação é central, no artigo, para a passagem do Império à República e para os primeiros atos do novo regime."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": ["Deodoro vinha de uma família de tradição militar."]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Seu governo constitucional foi marcado pela tensão entre tendências centralizadoras e inclinações federalistas."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O artigo registra que estudos indicam participação popular limitada na mudança de regime, conduzida por elites militares e civis."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "O artigo lista, entre suas fontes, a obra de Celso Castro sobre os militares e a República."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q200812", "wikipedia": "Deodoro da Fonseca" },
+      "discoveryMetadata": {
+        "description": "Militar e político brasileiro, primeiro presidente do Brasil após a Proclamação da República em 1889.",
+        "wikipediaTitle": "Deodoro da Fonseca",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Deodoro_da_Fonseca",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73224638, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-julio-prestes",
+      "slug": "julio-prestes",
+      "title": "Júlio Prestes",
+      "summary": "Júlio Prestes de Albuquerque (1882–1946) foi advogado, fazendeiro, poeta e político brasileiro. Presidente do estado de São Paulo entre 1927 e 1930, foi eleito presidente da República em 1930, mas foi impedido de tomar posse pela Revolução de 1930. Seu governo paulista incluiu obras ferroviárias, rodoviárias e de saúde pública, como o Ramal de Mairinque. O artigo o associa à eleição de 1930 e ao fim da República Velha.",
+      "aliases": ["Júlio Prestes de Albuquerque"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Júlio Prestes de Albuquerque (1882–1946) foi advogado, fazendeiro, poeta e político brasileiro. Presidente do estado de São Paulo entre 1927 e 1930, foi eleito presidente da República em 1930, mas foi impedido de tomar posse pela Revolução de 1930. Seu governo paulista incluiu obras ferroviárias, rodoviárias e de saúde pública, como o Ramal de Mairinque. O artigo o associa à eleição de 1930 e ao fim da República Velha."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Nasceu em Itapetininga em 1882 e morreu em São Paulo em 1946. Era advogado, fazendeiro, poeta e político."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Foi o último presidente do Brasil eleito na República Velha, mas a Revolução de 1930 impediu sua posse."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O resultado oficial da eleição de 1930 foi recebido com descrédito pelos candidatos derrotados e por parte da opinião pública."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "Consta na bibliografia do artigo uma obra de autoria do próprio Júlio Prestes, de 1932."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q373560", "wikipedia": "Júlio Prestes" },
+      "discoveryMetadata": {
+        "description": "Advogado, fazendeiro, poeta e político brasileiro, eleito presidente da República em 1930 mas impedido de tomar posse.",
+        "wikipediaTitle": "Júlio Prestes",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/J%C3%BAlio_Prestes",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73466037, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-mauricio-macri",
+      "slug": "mauricio-macri",
+      "title": "Mauricio Macri",
+      "summary": "Empresário e político argentino filiado ao Proposta Republicana, nascido em Tandil em 1959. Presidiu o Boca Juniors entre 1995 e 2007, foi eleito deputado federal em 2005 e prefeito de Buenos Aires em 2007 e 2011. Governou a Argentina de 2015 a 2019, período marcado por recessão, inflação alta e um pedido de empréstimo ao FMI. Perdeu a reeleição em 2019 para Alberto Fernández. O artigo destaca que foi o primeiro presidente argentino a perder uma reeleição e o primeiro não peronista em mais de 70 anos a concluir um mandato.",
+      "aliases": [],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Empresário e político argentino filiado ao Proposta Republicana, nascido em Tandil em 1959. Presidiu o Boca Juniors entre 1995 e 2007, foi eleito deputado federal em 2005 e prefeito de Buenos Aires em 2007 e 2011. Governou a Argentina de 2015 a 2019, período marcado por recessão, inflação alta e um pedido de empréstimo ao FMI. Perdeu a reeleição em 2019 para Alberto Fernández. O artigo destaca que foi o primeiro presidente argentino a perder uma reeleição e o primeiro não peronista em mais de 70 anos a concluir um mandato."
+          ]
+        },
+        { "heading": "Origem", "paragraphs": ["Nasceu em Tandil, em 8 de fevereiro de 1959."] },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Ao assumir a presidência, encontrou economia estagnada, contas do governo no vermelho e crise de desconfiança de público e investidores."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O pedido de empréstimo ao FMI, de maio de 2019, foi visto como admissão de fracasso econômico, segundo o artigo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q561837", "wikipedia": "Mauricio Macri" },
+      "discoveryMetadata": {
+        "description": "Político e empresário argentino, presidente da Argentina entre 2015 e 2019, filiado ao Proposta Republicana.",
+        "wikipediaTitle": "Mauricio Macri",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Mauricio_Macri",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72462581, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-michel-temer",
+      "slug": "michel-temer",
+      "title": "Michel Temer",
+      "summary": "Advogado, professor e político filiado ao MDB, nascido em Tietê (SP) em 1940. Foi vice-presidente do Brasil de 2011 a 2016 e assumiu a presidência em 31 de agosto de 2016, após o impeachment de Dilma Rousseff, governando até 1.º de janeiro de 2019. Presidiu a Câmara dos Deputados em mais de uma ocasião, atuou como articulador político e é autor de obras de direito constitucional. Sua trajetória é relevante no artigo por ligar a carreira jurídica, a política paulista e a ascensão à presidência da República.",
+      "aliases": ["Michel Miguel Elias Temer Lulia"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Advogado, professor e político filiado ao MDB, nascido em Tietê (SP) em 1940. Foi vice-presidente do Brasil de 2011 a 2016 e assumiu a presidência em 31 de agosto de 2016, após o impeachment de Dilma Rousseff, governando até 1.º de janeiro de 2019. Presidiu a Câmara dos Deputados em mais de uma ocasião, atuou como articulador político e é autor de obras de direito constitucional. Sua trajetória é relevante no artigo por ligar a carreira jurídica, a política paulista e a ascensão à presidência da República."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Temer é descendente de imigrantes libaneses que chegaram ao Brasil na década de 1920 e cresceu no interior paulista."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Em suas obras, Temer se mostrou simpatizante do parlamentarismo, defensor da Constituição e favorável ao recall."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q463533", "wikipedia": "Michel Temer" },
+      "discoveryMetadata": {
+        "description": "Advogado, professor e político brasileiro, 37.º presidente do Brasil entre 2016 e 2019 e vice-presidente de 2011 a 2016.",
+        "wikipediaTitle": "Michel Temer",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Michel_Temer",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73383142, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-obelisco",
+      "slug": "obelisco",
+      "title": "Obelisco",
+      "summary": "Monumento comemorativo de pilar quadrangular alongado que se afunila até uma ponta piramidal, muitas vezes decorado com inscrições. Surgiu no Antigo Egito, onde tinha significado religioso relacionado ao deus sol. Nos séculos XIX e XX houve uma profusão de obeliscos, inclusive no Brasil, e estudos citados no artigo os tomam como símbolos de memória e identidade coletiva.",
+      "aliases": ["tekhenu"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Monumento comemorativo de pilar quadrangular alongado que se afunila até uma ponta piramidal, muitas vezes decorado com inscrições. Surgiu no Antigo Egito, onde tinha significado religioso relacionado ao deus sol. Nos séculos XIX e XX houve uma profusão de obeliscos, inclusive no Brasil, e estudos citados no artigo os tomam como símbolos de memória e identidade coletiva."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O obelisco é descrito como um monumento comemorativo surgido no Antigo Egito."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Um obelisco é geralmente decorado com inscrições gravadas em algumas ou todas as suas faces.",
+            "Segundo estudos citados no artigo, na era contemporânea os obeliscos atuam como símbolos de representação da memória e identidade coletiva, diferentemente do antigo Egito."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Nos séculos XIX e XX houve uma profusão de obeliscos, inclusive no Brasil."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "O artigo lista a obra Historia dos Obeliscos Egípcios, disponível em inglês e espanhol."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q170980", "wikipedia": "Obelisco" },
+      "discoveryMetadata": {
+        "description": "Monumento comemorativo em forma de pilar quadrangular que se afunila e termina em ponta piramidal, geralmente com inscrições.",
+        "wikipediaTitle": "Obelisco",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Obelisco",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 70215736, CC BY-SA 4.0"
+      },
+      "kind": "work"
+    },
+    {
+      "id": "wiki-topic-pedro-ii-do-brasil",
+      "slug": "pedro-ii-do-brasil",
+      "title": "Pedro II do Brasil",
+      "summary": "Pedro II foi o segundo e último monarca do Império do Brasil, filho de Pedro I e de Maria Leopoldina, nascido no Rio de Janeiro em 1825. Tornou-se imperador criança, em 1831, e foi declarado maior em 1840. Seu reinado de 58 anos foi marcado por conflitos como a Guerra do Paraguai, pela questão abolicionista e pelo patrocínio às artes e às ciências. Deposto em 1889, morreu em Paris em 1891. Importa no artigo por concentrar a trajetória da monarquia brasileira e sua relação com a política, a cultura e a memória republicana.",
+      "aliases": ["Pedro II", "Dom Pedro II", "Pedro de Alcântara", "Pedro II of Brazil"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Pedro II foi o segundo e último monarca do Império do Brasil, filho de Pedro I e de Maria Leopoldina, nascido no Rio de Janeiro em 1825. Tornou-se imperador criança, em 1831, e foi declarado maior em 1840. Seu reinado de 58 anos foi marcado por conflitos como a Guerra do Paraguai, pela questão abolicionista e pelo patrocínio às artes e às ciências. Deposto em 1889, morreu em Paris em 1891. Importa no artigo por concentrar a trajetória da monarquia brasileira e sua relação com a política, a cultura e a memória republicana."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O texto descreve Pedro II como erudito e incentivador das artes, da cultura e das ciências, com ampla rede de contatos intelectuais."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Durante o reinado, o Brasil consolidou um regime de monarquia constitucional com práticas parlamentaristas."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q156774", "wikipedia": "Pedro II do Brasil" },
+      "discoveryMetadata": {
+        "description": "Segundo e último imperador do Brasil, reinou de 1831 a 1889 e foi deposto pela Proclamação da República.",
+        "wikipediaTitle": "Pedro II do Brasil",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Pedro_II_do_Brasil",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73346357, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-poder-legislativo",
+      "slug": "poder-legislativo",
+      "title": "Poder legislativo",
+      "summary": "Órgão deliberativo com autoridade para elaborar leis e exercer fiscalização política em entidades como Estados, nações e cidades. Pode existir nos níveis nacional, subnacional, local ou supranacional e costuma ser contraposto ao executivo e ao judiciário. Conforme o desenho constitucional, é classificado em parlamentos, congressos ou órgãos supremos do poder estatal. O artigo descreve suas funções de representação, deliberação, legislação, autorização de despesas e fiscalização, além de sua organização interna e da variação de tamanho entre os legislativos.",
+      "aliases": ["poderes legislativos"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Órgão deliberativo com autoridade para elaborar leis e exercer fiscalização política em entidades como Estados, nações e cidades. Pode existir nos níveis nacional, subnacional, local ou supranacional e costuma ser contraposto ao executivo e ao judiciário. Conforme o desenho constitucional, é classificado em parlamentos, congressos ou órgãos supremos do poder estatal. O artigo descreve suas funções de representação, deliberação, legislação, autorização de despesas e fiscalização, além de sua organização interna e da variação de tamanho entre os legislativos."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "Entre os primeiros poderes legislativos formais reconhecidos estava a Eclésia ateniense."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O poder legislativo é a assembleia deliberativa que detém a autoridade jurídica para elaborar leis e exercer fiscalização política."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Os poderes legislativos variam amplamente quanto ao poder político que exercem em comparação com outros atores políticos."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q11204", "wikipedia": "Poder legislativo" },
+      "discoveryMetadata": {
+        "description": "Assembleia deliberativa que elabora leis e exerce fiscalização política em Estados, nações e cidades.",
+        "wikipediaTitle": "Poder legislativo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Poder_legislativo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72993872, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-santos-dumont",
+      "slug": "santos-dumont",
+      "title": "Santos Dumont",
+      "summary": "Alberto Santos Dumont (1873–1932) foi um aeronauta, esportista, autodidata e inventor brasileiro, nascido em Palmira e falecido no Guarujá. Projetou e voou dirigíveis com motor a gasolina, conquistando o Prêmio Deutsch em 1901 ao contornar a Torre Eiffel. Em 1906, realizou voos de avião em Bagatelle, na França, que foram homologados pelo Aeroclube da França. O artigo discute a disputa sobre a primazia do primeiro voo de avião, em que a FAI atribui o feito aos irmãos Wright. Também trata de sua atuação pelo uso não bélico da aviação.",
+      "aliases": ["Alberto Santos Dumont", "Pai da aviação"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Alberto Santos Dumont (1873–1932) foi um aeronauta, esportista, autodidata e inventor brasileiro, nascido em Palmira e falecido no Guarujá. Projetou e voou dirigíveis com motor a gasolina, conquistando o Prêmio Deutsch em 1901 ao contornar a Torre Eiffel. Em 1906, realizou voos de avião em Bagatelle, na França, que foram homologados pelo Aeroclube da França. O artigo discute a disputa sobre a primazia do primeiro voo de avião, em que a FAI atribui o feito aos irmãos Wright. Também trata de sua atuação pelo uso não bélico da aviação."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Escolheu o motor à combustão para os dirigíveis, por considerar os motores elétricos pesados demais."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Na França, atribui-se a Clément Ader o primeiro voo de equipamento mais pesado que o ar, alegação que foi refutada pelo Ministério da Guerra francês."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "A primazia do primeiro voo de avião é disputada; a FAI considera que os irmãos Wright foram os primeiros a realizar um voo controlado e motorizado."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q313211", "wikipedia": "Santos Dumont" },
+      "discoveryMetadata": {
+        "description": "Aeronauta e inventor brasileiro, pioneiro da aviação e dos dirigíveis com motor a gasolina.",
+        "wikipediaTitle": "Santos Dumont",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Santos_Dumont",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73281576, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-selecao-brasileira-de-futebol",
+      "slug": "selecao-brasileira-de-futebol",
+      "title": "Seleção Brasileira de Futebol",
+      "summary": "A Seleção Brasileira de Futebol representa o Brasil no futebol internacional masculino e é administrada pela Confederação Brasileira de Futebol. Foi formada pela primeira vez em 1914 e disputa competições como a Copa do Mundo da FIFA, na qual o artigo registra cinco títulos. Sua história inclui conquistas, eliminações polêmicas, rivalidades com outras seleções e frequentes trocas de comando técnico, tratadas no artigo em ordem cronológica.",
+      "aliases": ["Seleção Brasileira", "Seleção Canarinho"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A Seleção Brasileira de Futebol representa o Brasil no futebol internacional masculino e é administrada pela Confederação Brasileira de Futebol. Foi formada pela primeira vez em 1914 e disputa competições como a Copa do Mundo da FIFA, na qual o artigo registra cinco títulos. Sua história inclui conquistas, eliminações polêmicas, rivalidades com outras seleções e frequentes trocas de comando técnico, tratadas no artigo em ordem cronológica."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "A seleção representa o Brasil no futebol masculino internacional e é administrada pela Confederação Brasileira de Futebol, descrita como a entidade máxima do futebol no país."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Muitos comentaristas, especialistas e ex-jogadores consideram a seleção de 1970 a maior de todos os tempos, segundo o artigo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q83459", "wikipedia": "Seleção Brasileira de Futebol" },
+      "discoveryMetadata": {
+        "description": "Seleção de futebol masculino que representa o Brasil em competições internacionais e é administrada pela CBF.",
+        "wikipediaTitle": "Seleção Brasileira de Futebol",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Sele%C3%A7%C3%A3o_Brasileira_de_Futebol",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73349032, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-sociedade-esportiva-palmeiras",
+      "slug": "sociedade-esportiva-palmeiras",
+      "title": "Sociedade Esportiva Palmeiras",
+      "summary": "Clube poliesportivo da cidade de São Paulo, fundado em 26 de agosto de 1914 por imigrantes italianos com o nome de Palestra Italia e renomeado Sociedade Esportiva Palmeiras em 1942, durante a Segunda Guerra Mundial. Tem o futebol como modalidade principal e figura entre os clubes mais vencedores do continente, com títulos como as Copas Libertadores de 1999, 2020 e 2021. Sua história, suas cores e sua torcida o tornam um dos principais clubes do futebol brasileiro, e o artigo registra também debates sobre o status de títulos internacionais como a Copa Rio de 1951.",
+      "aliases": ["Palmeiras", "Palestra Italia", "alviverde", "Verdão"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Clube poliesportivo da cidade de São Paulo, fundado em 26 de agosto de 1914 por imigrantes italianos com o nome de Palestra Italia e renomeado Sociedade Esportiva Palmeiras em 1942, durante a Segunda Guerra Mundial. Tem o futebol como modalidade principal e figura entre os clubes mais vencedores do continente, com títulos como as Copas Libertadores de 1999, 2020 e 2021. Sua história, suas cores e sua torcida o tornam um dos principais clubes do futebol brasileiro, e o artigo registra também debates sobre o status de títulos internacionais como a Copa Rio de 1951."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "Entre seus títulos mais importantes no futebol estão as Copas Libertadores da América de 1999, 2020 e 2021."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Em 1942, durante a Segunda Guerra Mundial, o clube passou a se chamar Sociedade Esportiva Palmeiras, em meio à pressão do governo de Getúlio Vargas."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O clube não reconhece a Copa Rio de 1951 como torneio da FIFA, embora a FIFA a tenha reconhecido como mundial."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "Uma obra listada no artigo sobre a história do clube é de Mauro Beting, Palmeiras - 100 Anos de Academia, publicada em 2014."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q80964", "wikipedia": "Sociedade Esportiva Palmeiras" },
+      "discoveryMetadata": {
+        "description": "Clube poliesportivo paulistano, com destaque para o futebol, fundado em 1914 como Palestra Italia.",
+        "wikipediaTitle": "Sociedade Esportiva Palmeiras",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Sociedade_Esportiva_Palmeiras",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73195652, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-washington-luis",
+      "slug": "washington-luis",
+      "title": "Washington Luís",
+      "summary": "Washington Luís Pereira de Sousa (1869–1957) foi advogado, historiador e político brasileiro. Governou o estado de São Paulo (1920–1924) e foi prefeito da capital paulista (1914–1919), tendo sido o 13.º presidente do Brasil (1926–1930). Foi deposto em 24 de outubro de 1930 por militares, o que marcou o fim da República Velha. O artigo destaca sua política de priorização de estradas, o lema \"Governar é abrir estradas\" e a discussão sobre a política econômica de seu governo.",
+      "aliases": [
+        "Washington Luís Pereira de Sousa",
+        "Paulista de Macaé",
+        "Estradeiro",
+        "Doutor Barbado"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Washington Luís Pereira de Sousa (1869–1957) foi advogado, historiador e político brasileiro. Governou o estado de São Paulo (1920–1924) e foi prefeito da capital paulista (1914–1919), tendo sido o 13.º presidente do Brasil (1926–1930). Foi deposto em 24 de outubro de 1930 por militares, o que marcou o fim da República Velha. O artigo destaca sua política de priorização de estradas, o lema \"Governar é abrir estradas\" e a discussão sobre a política econômica de seu governo."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "Célio Debes escreveu a obra Washington Luis, publicada em dois volumes em 1993."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q311225", "wikipedia": "Washington Luís" },
+      "discoveryMetadata": {
+        "description": "Advogado, historiador e político brasileiro, 13.º presidente do Brasil e último da República Velha.",
+        "wikipediaTitle": "Washington Luís",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Washington_Lu%C3%ADs",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73394898, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "title": "Bolsa de Valores de Nova Iorque (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Bolsa_de_Valores_de_Nova_Iorque",
+      "edition": "revisão 72897788; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-bolsa-de-valores",
+      "title": "Bolsa de valores (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Bolsa_de_valores",
+      "edition": "revisão 72087681; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-deodoro-da-fonseca",
+      "title": "Deodoro da Fonseca (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Deodoro_da_Fonseca",
+      "edition": "revisão 73224638; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-julio-prestes",
+      "title": "Júlio Prestes (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/J%C3%BAlio_Prestes",
+      "edition": "revisão 73466037; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-mauricio-macri",
+      "title": "Mauricio Macri (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Mauricio_Macri",
+      "edition": "revisão 72462581; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-michel-temer",
+      "title": "Michel Temer (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Michel_Temer",
+      "edition": "revisão 73383142; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-obelisco",
+      "title": "Obelisco (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Obelisco",
+      "edition": "revisão 70215736; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-pedro-ii-do-brasil",
+      "title": "Pedro II do Brasil (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Pedro_II_do_Brasil",
+      "edition": "revisão 73346357; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-poder-legislativo",
+      "title": "Poder legislativo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Poder_legislativo",
+      "edition": "revisão 72993872; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-santos-dumont",
+      "title": "Santos Dumont (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Santos_Dumont",
+      "edition": "revisão 73281576; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "title": "Seleção Brasileira de Futebol (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Sele%C3%A7%C3%A3o_Brasileira_de_Futebol",
+      "edition": "revisão 73349032; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "title": "Sociedade Esportiva Palmeiras (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Sociedade_Esportiva_Palmeiras",
+      "edition": "revisão 73195652; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-washington-luis",
+      "title": "Washington Luís (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Washington_Lu%C3%ADs",
+      "edition": "revisão 73394898; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-001",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "Em 17 de maio de 1792, vinte e quatro corretores assinaram o Acordo de Buttonwood",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-002",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "que estabelecia uma taxa mínima de comissão cobrada dos clientes e obrigava os signatários a dar preferência uns aos outros",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-003",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "A SEC e a CFTC publicaram um relatório sobre o evento, mas não chegaram a uma conclusão sobre sua causa.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-004",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "Em 17 de maio de 1792, vinte e quatro corretores assinaram o Acordo de Buttonwood",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-005",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "O Open Board of Stock Brokers fundiu-se com a NYSE em 1869.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-006",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "Em 1903, a NYSE se transfere para sua nova sede no número 18 da Broad Street.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-007",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "Começou a ser negociada sob o nome NYSE Group em 8 de março de 2006.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-008",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "Em 4 de abril de 2007, o NYSE Group concluiu sua fusão com a Euronext",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-009",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "Em 1.º de outubro de 1934, a bolsa foi registrada como bolsa nacional de valores mobiliários",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-010",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "Em 1971, a NYSE é incorporada e reconhecida como organização sem fins lucrativos.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-011",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "É a maior bolsa de valores do mundo por capitalização de mercado",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-012",
+      "sourceId": "src-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "locator": "a fusão ajudou a NYSE a manter sua reputação de oferecer liquidez superior.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-001",
+      "sourceId": "src-wiki-topic-bolsa-de-valores",
+      "locator": "As primeiras bolsas com características modernas surgiram em meados do século XV, na esteira da expansão comercial",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-002",
+      "sourceId": "src-wiki-topic-bolsa-de-valores",
+      "locator": "Em Bruges, na Bélgica, no ano de 1487, a palavra 'bolsa' ganhou seu sentido comercial e financeiro",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-003",
+      "sourceId": "src-wiki-topic-bolsa-de-valores",
+      "locator": "A Bolsa de Nova York surgiu em 17 de maio de 1792",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-004",
+      "sourceId": "src-wiki-topic-bolsa-de-valores",
+      "locator": "Em 1817, os 24 corretores abriram a New York Stock Exchange",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-005",
+      "sourceId": "src-wiki-topic-bolsa-de-valores",
+      "locator": "Em 2009, 25% de todo o volume de capitais dos EUA já era negociado por algoritmos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-006",
+      "sourceId": "src-wiki-topic-bolsa-de-valores",
+      "locator": "visa dividir grandes negociações em várias negociações menores",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-bolsa-de-valores-007",
+      "sourceId": "src-wiki-topic-bolsa-de-valores",
+      "locator": "A Bolsa de Nova York surgiu em 17 de maio de 1792",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-001",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Vinha de uma família essencialmente militar.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-002",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "entre suas tendências centralizadoras e as inclinações federalistas da sociedade civil e de parte dos militares",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-003",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "No entanto, estudos indicam que a participação popular foi limitada",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-004",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Castro, Celso (1995). Os Militares e a República.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-005",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Alagoas da Lagoa do Sul, 5 de agosto de 1827",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-006",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "no dia 16 de abril de 1860, com Mariana Cecília de Sousa Meireles",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-007",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Proclamação da República em 15 de novembro de 1889",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-008",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Em 15 de janeiro de 1890, Deodoro foi aclamado, pelas tropas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-009",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Apurada a votação, em 25 de fevereiro de 1891, foi obtido o seguinte resultado na eleição para presidente",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-010",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "em 3 de novembro de 1891, decretou a dissolução do Congresso",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-011",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Sob a ameaça da Primeira Revolta da Armada, Deodoro renunciou à presidência em 23 de novembro de 1891.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-012",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Rio de Janeiro, 23 de agosto de 1892",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-013",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "eleito pelo Congresso Constituinte como o primeiro presidente constitucional da República",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-014",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "Historiadores afirmam que o Governo Provisório republicano foi a primeira ditadura militar do Brasil.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-deodoro-da-fonseca-rel-003",
+      "sourceId": "src-wiki-topic-deodoro-da-fonseca",
+      "locator": "participou de algumas campanhas militares durante o Império, dentre as quais se destacam a Revolução Praieira, a Guerra do Uruguai e a Guerra do Paraguai",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-001",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Júlio Prestes de Albuquerque (Itapetininga, 15 de março de 1882 – São Paulo, 9 de fevereiro de 1946) foi um advogado, fazendeiro, poeta e político brasileiro.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-002",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Foi o último presidente do Brasil eleito durante o período conhecido como República Velha, mas, impedido pela Revolução de 1930, não assumiu o cargo.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-003",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "o resultado oficial foi recebido com descrédito pelos candidatos derrotados e por boa parte da opinião pública",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-004",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "ALBUQUERQUE, Júlio Prestes de, 1932 - Uma tentativa, Edições Arquivo do Estado, São Paulo, 1982.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-005",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Júlio Prestes de Albuquerque (Itapetininga, 15 de março de 1882",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-006",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Graduado em direito pela Faculdade de Direito de São Paulo em 1906.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-007",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Iniciou sua carreira política em 1909, elegendo-se deputado estadual em São Paulo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-008",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Júlio Prestes assumiu o governo do estado de São Paulo em 14 de julho de 1927.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-009",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "em 1 de março de 1930, realizaram-se as eleições",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-010",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Viveu no exílio até 1934, quando retornou ao Brasil",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-011",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "São Paulo, 9 de fevereiro de 1946",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-012",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Júlio Prestes foi o único político eleito presidente da República do Brasil pelo voto popular a ser impedido de tomar posse.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-013",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "o resultado oficial foi recebido com descrédito pelos candidatos derrotados e por boa parte da opinião pública",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-julio-prestes-rel-003",
+      "sourceId": "src-wiki-topic-julio-prestes",
+      "locator": "Criticou a Revolução de 1930, quando, em 1931, estava em Portugal dizendo:",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-001",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Mauricio Macri nasceu em Tandil no dia 8 de fevereiro de 1959.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-002",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "A economia estava estagnada, as contas do governo no vermelho e havia uma crise de desconfiança do público e dos investidores.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-003",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "O pedido foi altamente controverso, visto como uma admissão de fracasso econômico por parte do governo.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-004",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Mauricio Macri nasceu em Tandil no dia 8 de fevereiro de 1959.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-005",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Em 2003, criou o partido político Compromisso pela Mudança",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-006",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Em 2007, conseguiu vencer a disputa para prefeito de Buenos Aires",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-007",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Ele assumiu o cargo em 10 de dezembro de 2015.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-008",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Anunciou sua candidatura a uma reeleição nas eleições presidenciais de 2019",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-009",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "até 10 de dezembro de 2019",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-010",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Macri foi o primeiro presidente argentino a perder uma reeleição",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-011",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "O pedido foi altamente controverso",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-012",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Segundo analistas, Macri foi quase que na contra-mão dos Kirchners, no que tange política externa.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-mauricio-macri-rel-003",
+      "sourceId": "src-wiki-topic-mauricio-macri",
+      "locator": "Foi o 50.º presidente da República Argentina de 10 de dezembro de 2015 até 10 de dezembro de 2019.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-001",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Filho de imigrantes libaneses que chegaram ao Brasil na década de 1920, Temer nasceu e foi criado no interior paulista.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-002",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Em suas obras, mostrou-se simpatizante do parlamentarismo, defensor da Constituição, favorável ao recall",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-003",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Michel Temer nasceu em 23 de setembro de 1940 em Tietê",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-004",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Em 1963, graduou-se em Direito pela Universidade de São Paulo (USP)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-005",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Em 1974, concluiu doutorado em direito público na Pontifícia Universidade Católica de São Paulo (PUC-SP).",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-006",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Em 1981, filiou-se ao recém-fundado Partido do Movimento Democrático Brasileiro (PMDB).",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-007",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "A mais famosa delas, Elementos de Direito Constitucional, foi publicado em 1982 e vendeu mais de 240 mil cópias.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-008",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Temer foi também o primeiro presidente brasileiro descendente de árabes.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-009",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Temer foi considerado pelo próprio partido uma peça decorativa ao longo do primeiro mandato.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-michel-temer-rel-001",
+      "sourceId": "src-wiki-topic-michel-temer",
+      "locator": "Em 1981, filiou-se ao recém-fundado Partido do Movimento Democrático Brasileiro (PMDB).",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-obelisco-001",
+      "sourceId": "src-wiki-topic-obelisco",
+      "locator": "é um monumento comemorativo surgido no Antigo Egito",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-obelisco-002",
+      "sourceId": "src-wiki-topic-obelisco",
+      "locator": "Um obelisco é geralmente decorado com inscrições gravadas em algumas ou todas as suas faces",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-obelisco-003",
+      "sourceId": "src-wiki-topic-obelisco",
+      "locator": "Estudos sobre este tipo de monumentos indicam que, diferentemente do antigo Egito, estes atuam como símbolos de representação da memória e identidade coletiva",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-obelisco-004",
+      "sourceId": "src-wiki-topic-obelisco",
+      "locator": "Nos séculos XIX e XX, houve uma profusão de obeliscos, inclusive no Brasil",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-obelisco-005",
+      "sourceId": "src-wiki-topic-obelisco",
+      "locator": "«Historia dos Obeliscos Egípcios» (em inglês e espanhol)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-obelisco-006",
+      "sourceId": "src-wiki-topic-obelisco",
+      "locator": "Os mais antigos obeliscos eram feitos a partir de apenas uma peça de pedra",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-obelisco-007",
+      "sourceId": "src-wiki-topic-obelisco",
+      "locator": "Estas peças tinham significado religioso para esta sociedade",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-obelisco-008",
+      "sourceId": "src-wiki-topic-obelisco",
+      "locator": "Indícios apontam que os primeiros governantes a utilizar obeliscos em fachadas de templos foram os reis da Quinta Dinastia",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-pedro-ii-do-brasil-001",
+      "sourceId": "src-wiki-topic-pedro-ii-do-brasil",
+      "locator": "Reconhecido como erudito e incentivador das artes, da cultura e das ciências",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-pedro-ii-do-brasil-002",
+      "sourceId": "src-wiki-topic-pedro-ii-do-brasil",
+      "locator": "o Brasil consolidou um regime de monarquia constitucional com práticas parlamentaristas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-pedro-ii-do-brasil-003",
+      "sourceId": "src-wiki-topic-pedro-ii-do-brasil",
+      "locator": "No dia seguinte, em 23 de julho de 1840, a Assembleia Geral",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-pedro-ii-do-brasil-004",
+      "sourceId": "src-wiki-topic-pedro-ii-do-brasil",
+      "locator": "Foi aclamado, coroado e consagrado em 18 de julho de 1841",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-pedro-ii-do-brasil-005",
+      "sourceId": "src-wiki-topic-pedro-ii-do-brasil",
+      "locator": "Por fim, foi decretada a lei \"Lei do Ventre Livre\" em 28 de setembro de 1871",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-pedro-ii-do-brasil-006",
+      "sourceId": "src-wiki-topic-pedro-ii-do-brasil",
+      "locator": "recusou-se a apoiar medidas de força para reverter sua remoção",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-pedro-ii-do-brasil-007",
+      "sourceId": "src-wiki-topic-pedro-ii-do-brasil",
+      "locator": "O ministério chefiado pelo Visconde do Rio Branco tentou em duas ocasiões distintas convencer os bispos a revogar suas ordens",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-legislativo-001",
+      "sourceId": "src-wiki-topic-poder-legislativo",
+      "locator": "Entre os primeiros poderes legislativos formais reconhecidos estava a Eclésia ateniense",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-legislativo-002",
+      "sourceId": "src-wiki-topic-poder-legislativo",
+      "locator": "Poder legislativo é a assembleia deliberativa que detém a autoridade jurídica para elaborar leis e exercer fiscalização política",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-legislativo-003",
+      "sourceId": "src-wiki-topic-poder-legislativo",
+      "locator": "Os poderes legislativos variam amplamente quanto ao poder político que exercem em comparação com outros atores políticos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-legislativo-004",
+      "sourceId": "src-wiki-topic-poder-legislativo",
+      "locator": "Os poderes legislativos variam amplamente em tamanho",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-poder-legislativo-005",
+      "sourceId": "src-wiki-topic-poder-legislativo",
+      "locator": "Segundo a acadêmica Amie Kreppel, a característica distintiva mais importante entre os tipos de poder legislativo é a relação entre o legislativo e o executivo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-santos-dumont-001",
+      "sourceId": "src-wiki-topic-santos-dumont",
+      "locator": "Devido ao peso dos motores elétricos, Dumont escolheu o motor à combustão.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-santos-dumont-002",
+      "sourceId": "src-wiki-topic-santos-dumont",
+      "locator": "A Federação Aeronáutica Internacional (FAI), no entanto, considera que foram os irmãos Wright os primeiros a realizar um voo controlado",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-santos-dumont-003",
+      "sourceId": "src-wiki-topic-santos-dumont",
+      "locator": "mas teve suas alegações refutadas pelo Ministério da Guerra do Exército Francês",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-santos-dumont-004",
+      "sourceId": "src-wiki-topic-santos-dumont",
+      "locator": "Alberto Santos Dumont (Palmira, 20 de julho de 1873",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-santos-dumont-005",
+      "sourceId": "src-wiki-topic-santos-dumont",
+      "locator": "No dia 19 de outubro de 1901, com o balão N-6",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-santos-dumont-006",
+      "sourceId": "src-wiki-topic-santos-dumont",
+      "locator": "Guarujá, 23 de julho de 1932",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-santos-dumont-007",
+      "sourceId": "src-wiki-topic-santos-dumont",
+      "locator": "A Federação Aeronáutica Internacional (FAI), no entanto, considera que foram os irmãos Wright",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-santos-dumont-rel-001",
+      "sourceId": "src-wiki-topic-santos-dumont",
+      "locator": "Em 4 de junho de 1931 foi eleito membro da Academia Brasileira de Letras",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-001",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "representa o Brasil no futebol internacional masculino e é administrada pela Confederação Brasileira de Futebol",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-002",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "Muitos comentaristas, especialistas e ex-jogadores consideram a seleção brasileira de 1970 a maior seleção de todos os tempos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-003",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "A Seleção Brasileira foi formada pela primeira vez em 21 de julho de 1914.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-004",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "O primeiro título relevante conquistado pela Seleção Brasileira foi o Campeonato Sul-Americano de 1919",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-005",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "É membro da FIFA desde 1923",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-006",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "a data fatídica de 16 de julho de 1950, quando perdeu para o Uruguai",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-007",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "tricampeão em 1970, tetracampeão em 1994 e pentacampeão em 2002",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-008",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "a equipe evoluiu na Copa das Confederações de 2013, conquistando o título",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-009",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "Mesmo sem Neymar, o Brasil fez valer o fator casa e conquistou a Copa América de 2019.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-010",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "Na noite de 25 de março de 2025, em duelo contra a Argentina no Monumental de Nuñez, a seleção sofreu a pior derrota",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-011",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "O Brasil é a seleção mais vitoriosa da Copa do Mundo da FIFA, sendo coroada vencedora cinco vezes",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-selecao-brasileira-de-futebol-012",
+      "sourceId": "src-wiki-topic-selecao-brasileira-de-futebol",
+      "locator": "Muitos comentaristas, especialistas e ex-jogadores consideram a seleção brasileira de 1970 a maior seleção de todos os tempos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-001",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "Seus títulos mais importantes conquistados no futebol são as Copas Libertadores da América de 1999, 2020 e de 2021",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-002",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "o clube foi obrigado a mudar seu nome para Sociedade Esportiva Palmeiras em 1942, por ocasião da Segunda Guerra Mundial",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-003",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "A entidade, no entanto, não reconhece a competição como um torneio FIFA",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-004",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "BETING, Mauro - Palmeiras - 100 Anos de Academia",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-005",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "Foi fundado em 26 de agosto de 1914",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-006",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "na final da Copa Rio de 1951",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-007",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "a Copa Libertadores da América de 1999",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-008",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "foi inaugurada em novembro de 2014",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-009",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "Ainda em novembro de 2021, com o retorno do atacante Dudu",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-010",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "quando o clube foi fundado por imigrantes italianos na cidade de São Paulo com o nome de Palestra Italia",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-011",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "A entidade, no entanto, não reconhece a competição como um torneio FIFA",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sociedade-esportiva-palmeiras-012",
+      "sourceId": "src-wiki-topic-sociedade-esportiva-palmeiras",
+      "locator": "Ademir é considerado o maior jogador da história do alviverde",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-washington-luis-001",
+      "sourceId": "src-wiki-topic-washington-luis",
+      "locator": "DEBES, Célio, Washington Luis, São Paulo, Imprensa Oficial do Estado de São Paulo, 1993, 2 volumes.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-washington-luis-002",
+      "sourceId": "src-wiki-topic-washington-luis",
+      "locator": "Graduou-se em Direito em 1891 pela Faculdade de Direito de São Paulo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-washington-luis-003",
+      "sourceId": "src-wiki-topic-washington-luis",
+      "locator": "Assumiu a presidência da República em 15 de novembro de 1926.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-washington-luis-004",
+      "sourceId": "src-wiki-topic-washington-luis",
+      "locator": "Em 4 de agosto de 1957, faleceu em São Paulo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-washington-luis-005",
+      "sourceId": "src-wiki-topic-washington-luis",
+      "locator": "o último da chamada República Velha",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-washington-luis-006",
+      "sourceId": "src-wiki-topic-washington-luis",
+      "locator": "Diante disso, este artigo defende a tese de que a política econômica de Washington Luís representou um insucesso estrutural",
+      "accessedAt": "2026-11-17",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-001",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-002",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-003",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-004",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-005",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-006",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-007",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-008",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-009",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-010",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-011",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-de-nova-iorque-012",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-de-nova-iorque-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-001",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-002",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-003",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-004",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-005",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-006",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-bolsa-de-valores-007",
+      "evidenceId": "ev-wiki-topic-bolsa-de-valores-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-001",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-002",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-003",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-004",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-005",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-006",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-007",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-008",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-009",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-010",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-011",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-012",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-013",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-deodoro-da-fonseca-014",
+      "evidenceId": "ev-wiki-topic-deodoro-da-fonseca-014",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-001",
+      "evidenceId": "ev-wiki-topic-julio-prestes-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-002",
+      "evidenceId": "ev-wiki-topic-julio-prestes-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-003",
+      "evidenceId": "ev-wiki-topic-julio-prestes-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-004",
+      "evidenceId": "ev-wiki-topic-julio-prestes-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-005",
+      "evidenceId": "ev-wiki-topic-julio-prestes-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-006",
+      "evidenceId": "ev-wiki-topic-julio-prestes-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-007",
+      "evidenceId": "ev-wiki-topic-julio-prestes-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-008",
+      "evidenceId": "ev-wiki-topic-julio-prestes-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-009",
+      "evidenceId": "ev-wiki-topic-julio-prestes-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-010",
+      "evidenceId": "ev-wiki-topic-julio-prestes-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-011",
+      "evidenceId": "ev-wiki-topic-julio-prestes-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-012",
+      "evidenceId": "ev-wiki-topic-julio-prestes-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-julio-prestes-013",
+      "evidenceId": "ev-wiki-topic-julio-prestes-013",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-001",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-002",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-003",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-004",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-005",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-006",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-007",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-008",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-009",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-010",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-011",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-mauricio-macri-012",
+      "evidenceId": "ev-wiki-topic-mauricio-macri-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-001",
+      "evidenceId": "ev-wiki-topic-michel-temer-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-002",
+      "evidenceId": "ev-wiki-topic-michel-temer-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-003",
+      "evidenceId": "ev-wiki-topic-michel-temer-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-004",
+      "evidenceId": "ev-wiki-topic-michel-temer-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-005",
+      "evidenceId": "ev-wiki-topic-michel-temer-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-006",
+      "evidenceId": "ev-wiki-topic-michel-temer-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-007",
+      "evidenceId": "ev-wiki-topic-michel-temer-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-008",
+      "evidenceId": "ev-wiki-topic-michel-temer-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-michel-temer-009",
+      "evidenceId": "ev-wiki-topic-michel-temer-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-obelisco-001",
+      "evidenceId": "ev-wiki-topic-obelisco-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-obelisco-002",
+      "evidenceId": "ev-wiki-topic-obelisco-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-obelisco-003",
+      "evidenceId": "ev-wiki-topic-obelisco-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-obelisco-004",
+      "evidenceId": "ev-wiki-topic-obelisco-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-obelisco-005",
+      "evidenceId": "ev-wiki-topic-obelisco-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-obelisco-006",
+      "evidenceId": "ev-wiki-topic-obelisco-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-obelisco-007",
+      "evidenceId": "ev-wiki-topic-obelisco-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-obelisco-008",
+      "evidenceId": "ev-wiki-topic-obelisco-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-pedro-ii-do-brasil-001",
+      "evidenceId": "ev-wiki-topic-pedro-ii-do-brasil-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-pedro-ii-do-brasil-002",
+      "evidenceId": "ev-wiki-topic-pedro-ii-do-brasil-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-pedro-ii-do-brasil-003",
+      "evidenceId": "ev-wiki-topic-pedro-ii-do-brasil-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-pedro-ii-do-brasil-004",
+      "evidenceId": "ev-wiki-topic-pedro-ii-do-brasil-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-pedro-ii-do-brasil-005",
+      "evidenceId": "ev-wiki-topic-pedro-ii-do-brasil-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-pedro-ii-do-brasil-006",
+      "evidenceId": "ev-wiki-topic-pedro-ii-do-brasil-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-pedro-ii-do-brasil-007",
+      "evidenceId": "ev-wiki-topic-pedro-ii-do-brasil-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-legislativo-001",
+      "evidenceId": "ev-wiki-topic-poder-legislativo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-legislativo-002",
+      "evidenceId": "ev-wiki-topic-poder-legislativo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-legislativo-003",
+      "evidenceId": "ev-wiki-topic-poder-legislativo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-legislativo-004",
+      "evidenceId": "ev-wiki-topic-poder-legislativo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-poder-legislativo-005",
+      "evidenceId": "ev-wiki-topic-poder-legislativo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-santos-dumont-001",
+      "evidenceId": "ev-wiki-topic-santos-dumont-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-santos-dumont-002",
+      "evidenceId": "ev-wiki-topic-santos-dumont-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-santos-dumont-003",
+      "evidenceId": "ev-wiki-topic-santos-dumont-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-santos-dumont-004",
+      "evidenceId": "ev-wiki-topic-santos-dumont-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-santos-dumont-005",
+      "evidenceId": "ev-wiki-topic-santos-dumont-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-santos-dumont-006",
+      "evidenceId": "ev-wiki-topic-santos-dumont-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-santos-dumont-007",
+      "evidenceId": "ev-wiki-topic-santos-dumont-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-001",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-002",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-003",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-004",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-005",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-006",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-007",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-008",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-009",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-010",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-011",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-selecao-brasileira-de-futebol-012",
+      "evidenceId": "ev-wiki-topic-selecao-brasileira-de-futebol-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-001",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-002",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-003",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-004",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-005",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-006",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-007",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-008",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-009",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-010",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-011",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sociedade-esportiva-palmeiras-012",
+      "evidenceId": "ev-wiki-topic-sociedade-esportiva-palmeiras-012",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-washington-luis-001",
+      "evidenceId": "ev-wiki-topic-washington-luis-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-washington-luis-002",
+      "evidenceId": "ev-wiki-topic-washington-luis-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-washington-luis-003",
+      "evidenceId": "ev-wiki-topic-washington-luis-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-washington-luis-004",
+      "evidenceId": "ev-wiki-topic-washington-luis-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-washington-luis-005",
+      "evidenceId": "ev-wiki-topic-washington-luis-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-washington-luis-006",
+      "evidenceId": "ev-wiki-topic-washington-luis-006",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-001",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "A organização de negociação de valores mobiliários entre corretores de Nova Iorque remonta ao Acordo de Buttonwood, assinado por vinte e quatro corretores em 17 de maio de 1792.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-001"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-002",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "O Acordo de Buttonwood estabelecia uma taxa mínima de comissão cobrada dos clientes e obrigava os signatários a dar preferência uns aos outros na venda de valores mobiliários.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-002"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-003",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "Os reguladores das autoridades americanas publicaram um relatório sobre a queda de 2010 sem chegar a conclusão sobre sua causa.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-003"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-004",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "Vinte e quatro corretores assinam o Acordo de Buttonwood. (1792-05-17).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-004"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-005",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "O Open Board of Stock Brokers se funde com a NYSE. (1869).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-005"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-006",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "A NYSE se transfere para sua nova sede no número 18 da Broad Street. (1903).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-006"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-007",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "A bolsa começa a ser negociada sob o nome NYSE Group. (2006-03-08).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-007"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-008",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "O NYSE Group conclui sua fusão com a Euronext. (2007-04-04).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-008"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-009",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "A bolsa é registrada como bolsa nacional de valores mobiliários junto à SEC. (1934-10-01).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-009"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-010",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "A NYSE é incorporada e reconhecida como organização sem fins lucrativos. (1971).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-010"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-011",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "A NYSE é a maior bolsa de valores do mundo por capitalização de mercado.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-011"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-012",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "text": "A fusão com o Open Board of Stock Brokers ajudou a NYSE a manter sua reputação de oferecer liquidez superior, segundo Robert Wright.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-de-nova-iorque-012"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-001",
+      "entityId": "wiki-topic-bolsa-de-valores",
+      "text": "As primeiras bolsas com características modernas surgiram em meados do século XV, no contexto da expansão comercial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-001"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-002",
+      "entityId": "wiki-topic-bolsa-de-valores",
+      "text": "A palavra 'bolsa' ganhou sentido comercial e financeiro em Bruges, na Bélgica. (1487).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-002"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-003",
+      "entityId": "wiki-topic-bolsa-de-valores",
+      "text": "Surgimento da Bolsa de Nova York. (1792-05-17).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-003"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-004",
+      "entityId": "wiki-topic-bolsa-de-valores",
+      "text": "Os 24 corretores abriram a New York Stock Exchange. (1817).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-004"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-005",
+      "entityId": "wiki-topic-bolsa-de-valores",
+      "text": "Cerca de 25% do volume de capitais negociado nos EUA já era feito por algoritmos. (2009).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-005"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-006",
+      "entityId": "wiki-topic-bolsa-de-valores",
+      "text": "O trading algorítmico visa dividir grandes negociações em várias negociações menores, para reduzir impacto sobre o mercado e risco.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-006"]
+    },
+    {
+      "id": "claim-wiki-topic-bolsa-de-valores-007",
+      "entityId": "wiki-topic-bolsa-de-valores",
+      "text": "A Bolsa de Nova York surgiu em 17 de maio de 1792.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-bolsa-de-valores-007"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-001",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Deodoro vinha de uma família de tradição militar.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-001"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-002",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Seu governo constitucional foi marcado pela tensão entre tendências centralizadoras e inclinações federalistas.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-002"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-003",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "O artigo registra que estudos indicam participação popular limitada na mudança de regime, conduzida por elites militares e civis.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-003"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-004",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "O artigo lista, entre suas fontes, a obra de Celso Castro sobre os militares e a República.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-004"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-005",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Nascimento de Deodoro da Fonseca em Alagoas da Lagoa do Sul. (1827-08-05).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-005"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-006",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Casamento com Mariana Cecília de Sousa Meireles. (1860-04-16).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-006"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-007",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Proclamação da República, liderada por Deodoro. (1889-11-15).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-007"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-008",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Deodoro foi aclamado Generalíssimo pelas tropas. (1890-01-15).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-008"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-009",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Foi eleito presidente pelo Congresso Constituinte. (1891-02-25).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-009"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-010",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Decretou a dissolução do Congresso Nacional. (1891-11-03).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-010"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-011",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Renunciou à presidência sob a ameaça da Primeira Revolta da Armada. (1891-11-23).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-011"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-012",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Morte de Deodoro da Fonseca no Rio de Janeiro. (1892-08-23).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-012"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-013",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Deodoro foi eleito pelo Congresso Constituinte como o primeiro presidente constitucional da República.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-013"]
+    },
+    {
+      "id": "claim-wiki-topic-deodoro-da-fonseca-014",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "text": "Historiadores afirmam que o Governo Provisório republicano foi a primeira ditadura militar do Brasil.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-deodoro-da-fonseca-014"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-001",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Nasceu em Itapetininga em 1882 e morreu em São Paulo em 1946. Era advogado, fazendeiro, poeta e político.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-001"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-002",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Foi o último presidente do Brasil eleito na República Velha, mas a Revolução de 1930 impediu sua posse.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-002"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-003",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "O resultado oficial da eleição de 1930 foi recebido com descrédito pelos candidatos derrotados e por parte da opinião pública.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-003"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-004",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Consta na bibliografia do artigo uma obra de autoria do próprio Júlio Prestes, de 1932.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-004"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-005",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Nascimento em Itapetininga. (1882-03-15).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-005"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-006",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Graduou-se em direito pela Faculdade de Direito de São Paulo. (1906).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-006"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-007",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Iniciou a carreira política como deputado estadual em São Paulo. (1909).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-007"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-008",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Assumiu o governo do estado de São Paulo. (1927-07-14).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-008"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-009",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Realizaram-se as eleições presidenciais em que foi candidato. (1930-03-01).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-009"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-010",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Retornou ao Brasil após o exílio. (1934).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-010"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-011",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Morreu em São Paulo. (1946-02-09).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-011"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-012",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "Foi o único político eleito presidente da República pelo voto popular a ser impedido de tomar posse.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-012"]
+    },
+    {
+      "id": "claim-wiki-topic-julio-prestes-013",
+      "entityId": "wiki-topic-julio-prestes",
+      "text": "O resultado oficial da eleição de 1930 foi recebido com descrédito por parte da opinião pública.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-julio-prestes-013"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-001",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Nasceu em Tandil, em 8 de fevereiro de 1959.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-001"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-002",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Ao assumir a presidência, encontrou economia estagnada, contas do governo no vermelho e crise de desconfiança de público e investidores.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-002"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-003",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "O pedido de empréstimo ao FMI, de maio de 2019, foi visto como admissão de fracasso econômico, segundo o artigo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-003"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-004",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Nascimento em Tandil. (1959-02-08).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-004"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-005",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Criou o partido Compromisso pela Mudança. (2003).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-005"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-006",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Conseguiu vencer a disputa para prefeito de Buenos Aires. (2007).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-006"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-007",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Assumiu a presidência da Argentina. (2015-12-10).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-007"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-008",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Anunciou sua candidatura a uma reeleição. (2019).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-008"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-009",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Fim do mandato presidencial. (2019-12-10).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-009"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-010",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Macri foi o primeiro presidente argentino a perder uma reeleição.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-010"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-011",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "O pedido de empréstimo ao FMI foi considerado altamente controverso.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-011"]
+    },
+    {
+      "id": "claim-wiki-topic-mauricio-macri-012",
+      "entityId": "wiki-topic-mauricio-macri",
+      "text": "Segundo analistas, Macri atuou quase em sentido contrário aos Kirchners na política externa.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-mauricio-macri-012"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-001",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Temer é descendente de imigrantes libaneses que chegaram ao Brasil na década de 1920 e cresceu no interior paulista.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-001"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-002",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Em suas obras, Temer se mostrou simpatizante do parlamentarismo, defensor da Constituição e favorável ao recall.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-002"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-003",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Nascimento em Tietê, interior de São Paulo. (1940-09-23).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-003"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-004",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Graduou-se em Direito pela Universidade de São Paulo (USP). (1963).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-004"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-005",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Concluiu doutorado em direito público na PUC-SP. (1974).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-005"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-006",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Filiou-se ao PMDB. (1981).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-006"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-007",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Publicação de Elementos de Direito Constitucional. (1982).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-007"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-008",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Temer foi o primeiro presidente brasileiro descendente de árabes.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-008"]
+    },
+    {
+      "id": "claim-wiki-topic-michel-temer-009",
+      "entityId": "wiki-topic-michel-temer",
+      "text": "Temer foi considerado pelo próprio partido uma peça decorativa ao longo do primeiro mandato como vice.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-michel-temer-009"]
+    },
+    {
+      "id": "claim-wiki-topic-obelisco-001",
+      "entityId": "wiki-topic-obelisco",
+      "text": "O obelisco é descrito como um monumento comemorativo surgido no Antigo Egito.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-obelisco-001"]
+    },
+    {
+      "id": "claim-wiki-topic-obelisco-002",
+      "entityId": "wiki-topic-obelisco",
+      "text": "Um obelisco é geralmente decorado com inscrições gravadas em algumas ou todas as suas faces.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-obelisco-002"]
+    },
+    {
+      "id": "claim-wiki-topic-obelisco-003",
+      "entityId": "wiki-topic-obelisco",
+      "text": "Segundo estudos citados no artigo, na era contemporânea os obeliscos atuam como símbolos de representação da memória e identidade coletiva, diferentemente do antigo Egito.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-obelisco-003"]
+    },
+    {
+      "id": "claim-wiki-topic-obelisco-004",
+      "entityId": "wiki-topic-obelisco",
+      "text": "Nos séculos XIX e XX houve uma profusão de obeliscos, inclusive no Brasil.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-obelisco-004"]
+    },
+    {
+      "id": "claim-wiki-topic-obelisco-005",
+      "entityId": "wiki-topic-obelisco",
+      "text": "O artigo lista a obra Historia dos Obeliscos Egípcios, disponível em inglês e espanhol.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-obelisco-005"]
+    },
+    {
+      "id": "claim-wiki-topic-obelisco-006",
+      "entityId": "wiki-topic-obelisco",
+      "text": "Os mais antigos obeliscos eram feitos a partir de uma única peça de pedra, sendo monólitos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-obelisco-006"]
+    },
+    {
+      "id": "claim-wiki-topic-obelisco-007",
+      "entityId": "wiki-topic-obelisco",
+      "text": "Os obeliscos egípcios tinham significado religioso para a sociedade egípcia.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-obelisco-007"]
+    },
+    {
+      "id": "claim-wiki-topic-obelisco-008",
+      "entityId": "wiki-topic-obelisco",
+      "text": "Indícios apontam que os reis da Quinta Dinastia foram os primeiros a usar obeliscos em fachadas de templos.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-obelisco-008"]
+    },
+    {
+      "id": "claim-wiki-topic-pedro-ii-do-brasil-001",
+      "entityId": "wiki-topic-pedro-ii-do-brasil",
+      "text": "O texto descreve Pedro II como erudito e incentivador das artes, da cultura e das ciências, com ampla rede de contatos intelectuais.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-pedro-ii-do-brasil-001"]
+    },
+    {
+      "id": "claim-wiki-topic-pedro-ii-do-brasil-002",
+      "entityId": "wiki-topic-pedro-ii-do-brasil",
+      "text": "Durante o reinado, o Brasil consolidou um regime de monarquia constitucional com práticas parlamentaristas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-pedro-ii-do-brasil-002"]
+    },
+    {
+      "id": "claim-wiki-topic-pedro-ii-do-brasil-003",
+      "entityId": "wiki-topic-pedro-ii-do-brasil",
+      "text": "A Assembleia Geral declarou Pedro II maior de idade. (1840-07-23).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-pedro-ii-do-brasil-003"]
+    },
+    {
+      "id": "claim-wiki-topic-pedro-ii-do-brasil-004",
+      "entityId": "wiki-topic-pedro-ii-do-brasil",
+      "text": "Pedro II foi aclamado, coroado e consagrado. (1841-07-18).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-pedro-ii-do-brasil-004"]
+    },
+    {
+      "id": "claim-wiki-topic-pedro-ii-do-brasil-005",
+      "entityId": "wiki-topic-pedro-ii-do-brasil",
+      "text": "Foi decretada a Lei do Ventre Livre. (1871-09-28).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-pedro-ii-do-brasil-005"]
+    },
+    {
+      "id": "claim-wiki-topic-pedro-ii-do-brasil-006",
+      "entityId": "wiki-topic-pedro-ii-do-brasil",
+      "text": "Pedro II recusou-se a apoiar medidas de força para reverter sua remoção do poder.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-pedro-ii-do-brasil-006"]
+    },
+    {
+      "id": "claim-wiki-topic-pedro-ii-do-brasil-007",
+      "entityId": "wiki-topic-pedro-ii-do-brasil",
+      "text": "O governo chefiado por Visconde do Rio Branco tentou convencer bispos a revogar suas ordens.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-pedro-ii-do-brasil-007"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-legislativo-001",
+      "entityId": "wiki-topic-poder-legislativo",
+      "text": "Entre os primeiros poderes legislativos formais reconhecidos estava a Eclésia ateniense.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-legislativo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-legislativo-002",
+      "entityId": "wiki-topic-poder-legislativo",
+      "text": "O poder legislativo é a assembleia deliberativa que detém a autoridade jurídica para elaborar leis e exercer fiscalização política.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-legislativo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-legislativo-003",
+      "entityId": "wiki-topic-poder-legislativo",
+      "text": "Os poderes legislativos variam amplamente quanto ao poder político que exercem em comparação com outros atores políticos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-legislativo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-legislativo-004",
+      "entityId": "wiki-topic-poder-legislativo",
+      "text": "Os poderes legislativos variam amplamente em tamanho.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-legislativo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-poder-legislativo-005",
+      "entityId": "wiki-topic-poder-legislativo",
+      "text": "Segundo Amie Kreppel, a característica distintiva mais importante entre os tipos de poder legislativo é a relação entre o legislativo e o executivo.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-poder-legislativo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-santos-dumont-001",
+      "entityId": "wiki-topic-santos-dumont",
+      "text": "Escolheu o motor à combustão para os dirigíveis, por considerar os motores elétricos pesados demais.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-santos-dumont-001"]
+    },
+    {
+      "id": "claim-wiki-topic-santos-dumont-002",
+      "entityId": "wiki-topic-santos-dumont",
+      "text": "A primazia do primeiro voo de avião é disputada; a FAI considera que os irmãos Wright foram os primeiros a realizar um voo controlado e motorizado.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-santos-dumont-002"]
+    },
+    {
+      "id": "claim-wiki-topic-santos-dumont-003",
+      "entityId": "wiki-topic-santos-dumont",
+      "text": "Na França, atribui-se a Clément Ader o primeiro voo de equipamento mais pesado que o ar, alegação que foi refutada pelo Ministério da Guerra francês.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-santos-dumont-003"]
+    },
+    {
+      "id": "claim-wiki-topic-santos-dumont-004",
+      "entityId": "wiki-topic-santos-dumont",
+      "text": "Nascimento em Palmira. (1873-07-20).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-santos-dumont-004"]
+    },
+    {
+      "id": "claim-wiki-topic-santos-dumont-005",
+      "entityId": "wiki-topic-santos-dumont",
+      "text": "Execução da prova do Prêmio Deutsch com o balão N-6. (1901-10-19).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-santos-dumont-005"]
+    },
+    {
+      "id": "claim-wiki-topic-santos-dumont-006",
+      "entityId": "wiki-topic-santos-dumont",
+      "text": "Morte no Guarujá. (1932-07-23).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-santos-dumont-006"]
+    },
+    {
+      "id": "claim-wiki-topic-santos-dumont-007",
+      "entityId": "wiki-topic-santos-dumont",
+      "text": "A FAI considera que os irmãos Wright foram os primeiros a realizar um voo controlado e motorizado num aparelho mais pesado que o ar.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-santos-dumont-007"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-001",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "A seleção representa o Brasil no futebol masculino internacional e é administrada pela Confederação Brasileira de Futebol, descrita como a entidade máxima do futebol no país.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-001"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-002",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Muitos comentaristas, especialistas e ex-jogadores consideram a seleção de 1970 a maior de todos os tempos, segundo o artigo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-002"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-003",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Seleção Brasileira foi formada pela primeira vez (1914-07-21).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-003"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-004",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Conquista do Campeonato Sul-Americano, primeiro título relevante (1919).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-004"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-005",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Seleção passou a ser membro da FIFA (1923).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-005"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-006",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Derrota para o Uruguai na final da Copa do Mundo de 1950 (1950-07-16).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-006"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-007",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Conquista do quinto título da Copa do Mundo (2002).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-007"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-008",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Conquista da Copa das Confederações (2013).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-008"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-009",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Conquista da Copa América realizada no Brasil (2019).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-009"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-010",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Pior derrota da seleção nas Eliminatórias, por 4 a 1 para a Argentina (2025-03-25).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-010"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-011",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "O Brasil é a seleção mais vitoriosa da Copa do Mundo da FIFA, com cinco títulos.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-011"]
+    },
+    {
+      "id": "claim-wiki-topic-selecao-brasileira-de-futebol-012",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "text": "Muitos comentaristas consideram a seleção de 1970 a maior de todos os tempos.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-selecao-brasileira-de-futebol-012"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-001",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Entre seus títulos mais importantes no futebol estão as Copas Libertadores da América de 1999, 2020 e 2021.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-001"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-002",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Em 1942, durante a Segunda Guerra Mundial, o clube passou a se chamar Sociedade Esportiva Palmeiras, em meio à pressão do governo de Getúlio Vargas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-002"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-003",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "O clube não reconhece a Copa Rio de 1951 como torneio da FIFA, embora a FIFA a tenha reconhecido como mundial.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-003"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-004",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Uma obra listada no artigo sobre a história do clube é de Mauro Beting, Palmeiras - 100 Anos de Academia, publicada em 2014.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-004"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-005",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Fundação do clube como Palestra Italia, em São Paulo. (1914-08-26).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-005"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-006",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Conquista da Copa Rio, tratada na época como campeonato mundial de clubes. (1951).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-006"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-007",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Conquista da primeira Copa Libertadores da América do clube. (1999).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-007"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-008",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Inauguração da nova arena do clube, em São Paulo. (2014-11).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-008"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-009",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Conquista da Copa Libertadores da América de 2021. (2021-11).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-009"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-010",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "O clube foi fundado por imigrantes italianos em São Paulo com o nome de Palestra Italia.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-010"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-011",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "O clube não reconhece a Copa Rio de 1951 como torneio da FIFA.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-011"]
+    },
+    {
+      "id": "claim-wiki-topic-sociedade-esportiva-palmeiras-012",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "text": "Ademir da Guia é considerado o maior jogador da história do clube.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sociedade-esportiva-palmeiras-012"]
+    },
+    {
+      "id": "claim-wiki-topic-washington-luis-001",
+      "entityId": "wiki-topic-washington-luis",
+      "text": "Célio Debes escreveu a obra Washington Luis, publicada em dois volumes em 1993.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-washington-luis-001"]
+    },
+    {
+      "id": "claim-wiki-topic-washington-luis-002",
+      "entityId": "wiki-topic-washington-luis",
+      "text": "Graduou-se em Direito pela Faculdade de Direito de São Paulo. (1891).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-washington-luis-002"]
+    },
+    {
+      "id": "claim-wiki-topic-washington-luis-003",
+      "entityId": "wiki-topic-washington-luis",
+      "text": "Assumiu a presidência da República. (1926-11-15).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-washington-luis-003"]
+    },
+    {
+      "id": "claim-wiki-topic-washington-luis-004",
+      "entityId": "wiki-topic-washington-luis",
+      "text": "Faleceu em São Paulo. (1957-08-04).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-washington-luis-004"]
+    },
+    {
+      "id": "claim-wiki-topic-washington-luis-005",
+      "entityId": "wiki-topic-washington-luis",
+      "text": "Washington Luís foi o último presidente da República Velha.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-washington-luis-005"]
+    },
+    {
+      "id": "claim-wiki-topic-washington-luis-006",
+      "entityId": "wiki-topic-washington-luis",
+      "text": "A política econômica de Washington Luís é avaliada por autores como um insucesso estrutural.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-washington-luis-006"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-001",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-002",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-003",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-004",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-005",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-006",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-007",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-008",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-009",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-010",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-011",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-de-nova-iorque-012",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-de-nova-iorque-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-001",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-002",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-003",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-004",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-005",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-006",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-bolsa-de-valores-007",
+      "claimId": "claim-wiki-topic-bolsa-de-valores-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-001",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-002",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-003",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-004",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-005",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-006",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-007",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-008",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-009",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-010",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-011",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-012",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-013",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-deodoro-da-fonseca-014",
+      "claimId": "claim-wiki-topic-deodoro-da-fonseca-014",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-001",
+      "claimId": "claim-wiki-topic-julio-prestes-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-002",
+      "claimId": "claim-wiki-topic-julio-prestes-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-003",
+      "claimId": "claim-wiki-topic-julio-prestes-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-004",
+      "claimId": "claim-wiki-topic-julio-prestes-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-005",
+      "claimId": "claim-wiki-topic-julio-prestes-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-006",
+      "claimId": "claim-wiki-topic-julio-prestes-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-007",
+      "claimId": "claim-wiki-topic-julio-prestes-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-008",
+      "claimId": "claim-wiki-topic-julio-prestes-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-009",
+      "claimId": "claim-wiki-topic-julio-prestes-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-010",
+      "claimId": "claim-wiki-topic-julio-prestes-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-011",
+      "claimId": "claim-wiki-topic-julio-prestes-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-012",
+      "claimId": "claim-wiki-topic-julio-prestes-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-julio-prestes-013",
+      "claimId": "claim-wiki-topic-julio-prestes-013",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-001",
+      "claimId": "claim-wiki-topic-mauricio-macri-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-002",
+      "claimId": "claim-wiki-topic-mauricio-macri-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-003",
+      "claimId": "claim-wiki-topic-mauricio-macri-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-004",
+      "claimId": "claim-wiki-topic-mauricio-macri-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-005",
+      "claimId": "claim-wiki-topic-mauricio-macri-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-006",
+      "claimId": "claim-wiki-topic-mauricio-macri-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-007",
+      "claimId": "claim-wiki-topic-mauricio-macri-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-008",
+      "claimId": "claim-wiki-topic-mauricio-macri-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-009",
+      "claimId": "claim-wiki-topic-mauricio-macri-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-010",
+      "claimId": "claim-wiki-topic-mauricio-macri-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-011",
+      "claimId": "claim-wiki-topic-mauricio-macri-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-mauricio-macri-012",
+      "claimId": "claim-wiki-topic-mauricio-macri-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-001",
+      "claimId": "claim-wiki-topic-michel-temer-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-002",
+      "claimId": "claim-wiki-topic-michel-temer-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-003",
+      "claimId": "claim-wiki-topic-michel-temer-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-004",
+      "claimId": "claim-wiki-topic-michel-temer-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-005",
+      "claimId": "claim-wiki-topic-michel-temer-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-006",
+      "claimId": "claim-wiki-topic-michel-temer-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-007",
+      "claimId": "claim-wiki-topic-michel-temer-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-008",
+      "claimId": "claim-wiki-topic-michel-temer-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-michel-temer-009",
+      "claimId": "claim-wiki-topic-michel-temer-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-obelisco-001",
+      "claimId": "claim-wiki-topic-obelisco-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-obelisco-002",
+      "claimId": "claim-wiki-topic-obelisco-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-obelisco-003",
+      "claimId": "claim-wiki-topic-obelisco-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-obelisco-004",
+      "claimId": "claim-wiki-topic-obelisco-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-obelisco-005",
+      "claimId": "claim-wiki-topic-obelisco-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-obelisco-006",
+      "claimId": "claim-wiki-topic-obelisco-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-obelisco-007",
+      "claimId": "claim-wiki-topic-obelisco-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-obelisco-008",
+      "claimId": "claim-wiki-topic-obelisco-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-pedro-ii-do-brasil-001",
+      "claimId": "claim-wiki-topic-pedro-ii-do-brasil-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-pedro-ii-do-brasil-002",
+      "claimId": "claim-wiki-topic-pedro-ii-do-brasil-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-pedro-ii-do-brasil-003",
+      "claimId": "claim-wiki-topic-pedro-ii-do-brasil-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-pedro-ii-do-brasil-004",
+      "claimId": "claim-wiki-topic-pedro-ii-do-brasil-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-pedro-ii-do-brasil-005",
+      "claimId": "claim-wiki-topic-pedro-ii-do-brasil-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-pedro-ii-do-brasil-006",
+      "claimId": "claim-wiki-topic-pedro-ii-do-brasil-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-pedro-ii-do-brasil-007",
+      "claimId": "claim-wiki-topic-pedro-ii-do-brasil-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-legislativo-001",
+      "claimId": "claim-wiki-topic-poder-legislativo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-legislativo-002",
+      "claimId": "claim-wiki-topic-poder-legislativo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-legislativo-003",
+      "claimId": "claim-wiki-topic-poder-legislativo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-legislativo-004",
+      "claimId": "claim-wiki-topic-poder-legislativo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-poder-legislativo-005",
+      "claimId": "claim-wiki-topic-poder-legislativo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-santos-dumont-001",
+      "claimId": "claim-wiki-topic-santos-dumont-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-santos-dumont-002",
+      "claimId": "claim-wiki-topic-santos-dumont-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-santos-dumont-003",
+      "claimId": "claim-wiki-topic-santos-dumont-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-santos-dumont-004",
+      "claimId": "claim-wiki-topic-santos-dumont-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-santos-dumont-005",
+      "claimId": "claim-wiki-topic-santos-dumont-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-santos-dumont-006",
+      "claimId": "claim-wiki-topic-santos-dumont-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-santos-dumont-007",
+      "claimId": "claim-wiki-topic-santos-dumont-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-001",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-002",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-003",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-004",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-005",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-006",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-007",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-008",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-009",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-010",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-011",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-selecao-brasileira-de-futebol-012",
+      "claimId": "claim-wiki-topic-selecao-brasileira-de-futebol-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-001",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-002",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-003",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-004",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-005",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-006",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-007",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-008",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-009",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-010",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-011",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sociedade-esportiva-palmeiras-012",
+      "claimId": "claim-wiki-topic-sociedade-esportiva-palmeiras-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-washington-luis-001",
+      "claimId": "claim-wiki-topic-washington-luis-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-washington-luis-002",
+      "claimId": "claim-wiki-topic-washington-luis-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-washington-luis-003",
+      "claimId": "claim-wiki-topic-washington-luis-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-washington-luis-004",
+      "claimId": "claim-wiki-topic-washington-luis-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-washington-luis-005",
+      "claimId": "claim-wiki-topic-washington-luis-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-washington-luis-006",
+      "claimId": "claim-wiki-topic-washington-luis-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [
+    {
+      "id": "asset-wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "entityId": "wiki-topic-bolsa-de-valores-de-nova-iorque",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/NYSE_Logo_2022.svg/960px-NYSE_Logo_2022.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/NYSE_Logo_2022.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "New York Stock Exchange (NYSE)",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:NYSE_Logo_2022.svg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "NYSE Logo 2022.svg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:NYSE_Logo_2022.svg",
+      "attribution": "NYSE Logo 2022.svg, New York Stock Exchange (NYSE), Public domain",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-bolsa-de-valores",
+      "entityId": "wiki-topic-bolsa-de-valores",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/NY_stock_exchange_traders_floor_LC-U9-10548-6.jpg/960px-NY_stock_exchange_traders_floor_LC-U9-10548-6.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ea/NY_stock_exchange_traders_floor_LC-U9-10548-6.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Thomas J. O'Halloran",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:NY_stock_exchange_traders_floor_LC-U9-10548-6.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "NY stock exchange traders floor LC-U9-10548-6.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:NY_stock_exchange_traders_floor_LC-U9-10548-6.jpg",
+      "attribution": "NY stock exchange traders floor LC-U9-10548-6.jpg, Thomas J. O'Halloran, Public domain",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-deodoro-da-fonseca",
+      "entityId": "wiki-topic-deodoro-da-fonseca",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Deodoro_da_Fonseca_sak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Deodoro_da_Fonseca_sak.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Bror Kronstrand",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Deodoro_da_Fonseca_sak.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Deodoro da Fonseca sak.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Deodoro_da_Fonseca_sak.jpg",
+      "attribution": "Deodoro da Fonseca sak.jpg, Bror Kronstrand, Public domain",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-julio-prestes",
+      "entityId": "wiki-topic-julio-prestes",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Retrato_J%C3%BAlio_Prestes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Retrato_J%C3%BAlio_Prestes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Agência Estado",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Retrato_J%C3%BAlio_Prestes.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Retrato Júlio Prestes.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Retrato_J%C3%BAlio_Prestes.jpg",
+      "attribution": "Retrato Júlio Prestes.jpg, Agência Estado, Public domain",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-mauricio-macri",
+      "entityId": "wiki-topic-mauricio-macri",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Mauricio_Macri_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Mauricio_Macri_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Casa Rosada (Argentina Presidency of the Nation)",
+      "license": "CC BY 2.5 ar",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.5/ar/deed.en",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Mauricio Macri 2016.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Mauricio_Macri_2016.jpg",
+      "attribution": "Casa Rosada ( Argentina Presidency of the Nation )",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-michel-temer",
+      "entityId": "wiki-topic-michel-temer",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Presidente_Michel_Temer_%28foto_oficial%29_-_cortada.jpg/960px-Presidente_Michel_Temer_%28foto_oficial%29_-_cortada.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Presidente_Michel_Temer_%28foto_oficial%29_-_cortada.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Beto Barata/PR",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Presidente Michel Temer (foto oficial) - cortada.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Presidente_Michel_Temer_(foto_oficial)_-_cortada.jpg",
+      "attribution": "Presidente Michel Temer (foto oficial) - cortada.jpg, Beto Barata/PR, CC BY 2.0",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-obelisco",
+      "entityId": "wiki-topic-obelisco",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/2/28/Louxor_obelisk_Paris_dsc00780.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/28/Louxor_obelisk_Paris_dsc00780.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "David Monniaux",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Louxor obelisk Paris dsc00780.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Louxor_obelisk_Paris_dsc00780.jpg",
+      "attribution": "Louxor obelisk Paris dsc00780.jpg, David Monniaux, CC BY-SA 3.0",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-pedro-ii-do-brasil",
+      "entityId": "wiki-topic-pedro-ii-do-brasil",
+      "assetPath": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Pedro_II_circa_1887b_transparent.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Pedro_II_circa_1887b_transparent.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Alphonse Liébert",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Pedro_II_circa_1887b_transparent.png",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Pedro II circa 1887b transparent.png",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Pedro_II_circa_1887b_transparent.png",
+      "attribution": "Pedro II circa 1887b transparent.png, Alphonse Liébert, Public domain",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-poder-legislativo",
+      "entityId": "wiki-topic-poder-legislativo",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Palace_of_Westminster%2C_London_-_Feb_2007.jpg/960px-Palace_of_Westminster%2C_London_-_Feb_2007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Palace_of_Westminster%2C_London_-_Feb_2007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Diliff",
+      "license": "CC BY-SA 2.5",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Palace of Westminster, London - Feb 2007.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Palace_of_Westminster%2C_London_-_Feb_2007.jpg",
+      "attribution": "Palace of Westminster, London - Feb 2007.jpg, Diliff, CC BY-SA 2.5",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-santos-dumont",
+      "entityId": "wiki-topic-santos-dumont",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Alberto_Santos_Dumont_-_1-13675-0000-0000%2C_Acervo_do_Museu_Paulista_da_USP.jpg/960px-Alberto_Santos_Dumont_-_1-13675-0000-0000%2C_Acervo_do_Museu_Paulista_da_USP.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Alberto_Santos_Dumont_-_1-13675-0000-0000%2C_Acervo_do_Museu_Paulista_da_USP.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "José Rosael/Hélio Nobre/Museu Paulista da USP",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Alberto_Santos_Dumont_-_1-13675-0000-0000%2C_Acervo_do_Museu_Paulista_da_USP.jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Alberto Santos Dumont - 1-13675-0000-0000, Acervo do Museu Paulista da USP.jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Alberto_Santos_Dumont_-_1-13675-0000-0000%2C_Acervo_do_Museu_Paulista_da_USP.jpg",
+      "attribution": "Alberto Santos Dumont - 1-13675-0000-0000, Acervo do Museu Paulista da USP.jpg, José Rosael/Hélio Nobre/Museu Paulista da USP, Public domain",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-selecao-brasileira-de-futebol",
+      "entityId": "wiki-topic-selecao-brasileira-de-futebol",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Brazilian_Football_Confederation_logo.svg/960px-Brazilian_Football_Confederation_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/Brazilian_Football_Confederation_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Confederação Brasileira de Futebol",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Brazilian_Football_Confederation_logo.svg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Brazilian Football Confederation logo.svg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Brazilian_Football_Confederation_logo.svg",
+      "attribution": "Brazilian Football Confederation logo.svg, Confederação Brasileira de Futebol, Public domain",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-sociedade-esportiva-palmeiras",
+      "entityId": "wiki-topic-sociedade-esportiva-palmeiras",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/960px-Palmeiras_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Sociedade Esportiva Palmeiras",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Palmeiras_logo.svg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Palmeiras logo.svg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Palmeiras_logo.svg",
+      "attribution": "Palmeiras logo.svg, Sociedade Esportiva Palmeiras, Public domain",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "asset-wiki-topic-washington-luis",
+      "entityId": "wiki-topic-washington-luis",
+      "assetPath": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Washington_Lu%C3%ADs_%28foto%29.jpg/960px-Washington_Lu%C3%ADs_%28foto%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Washington_Lu%C3%ADs_%28foto%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "creator": "Governo do Brasil",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Washington_Lu%C3%ADs_(foto).jpg",
+      "status": "known",
+      "reproduction": "allowed",
+      "fileTitle": "Washington Luís (foto).jpg",
+      "filePageUrl": "https://commons.wikimedia.org/wiki/File:Washington_Lu%C3%ADs_(foto).jpg",
+      "attribution": "Washington Luís (foto).jpg, Governo do Brasil, Public domain",
+      "retrievedAt": "2026-11-17"
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-wiki-topic-deodoro-da-fonseca-003",
+      "fromEntityId": "wiki-topic-deodoro-da-fonseca",
+      "toEntityId": "wiki-topic-guerra-do-paraguai",
+      "type": "participated_in",
+      "label": "participou de",
+      "reverseLabel": "teve a participação de",
+      "context": "Deodoro participou da Guerra do Paraguai como militar.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-deodoro-da-fonseca-rel-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Deodoro_da_Fonseca",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-julio-prestes-003",
+      "fromEntityId": "wiki-topic-julio-prestes",
+      "toEntityId": "wiki-topic-revolucao-de-1930",
+      "type": "reacted_against",
+      "label": "reagiu contra",
+      "reverseLabel": "recebeu reação de",
+      "context": "Criticou a Revolução de 1930 em 1931, quando estava em Portugal.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-julio-prestes-rel-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/J%C3%BAlio_Prestes",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-mauricio-macri-003",
+      "fromEntityId": "wiki-topic-mauricio-macri",
+      "toEntityId": "wiki-topic-presidente-da-argentina",
+      "type": "documented-association",
+      "label": "governou",
+      "reverseLabel": "foi governado por",
+      "context": "Macri foi presidente da República Argentina entre 2015 e 2019.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-mauricio-macri-rel-003"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Mauricio_Macri",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-michel-temer-001",
+      "fromEntityId": "wiki-topic-michel-temer",
+      "toEntityId": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "type": "documented-association",
+      "label": "foi membro de",
+      "reverseLabel": "teve como membro",
+      "context": "Temer se filiou ao Partido do Movimento Democrático Brasileiro (PMDB) em 1981.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-michel-temer-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Michel_Temer",
+        "retrievedAt": "2026-11-17"
+      }
+    },
+    {
+      "id": "rel-wiki-topic-santos-dumont-001",
+      "fromEntityId": "wiki-topic-santos-dumont",
+      "toEntityId": "wiki-topic-academia-brasileira-de-letras",
+      "type": "documented-association",
+      "label": "foi membro de",
+      "reverseLabel": "teve como membro",
+      "context": "Santos Dumont foi eleito membro da Academia Brasileira de Letras em 4 de junho de 1931.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "evidenceIds": ["ev-wiki-topic-santos-dumont-rel-001"],
+      "editorialStatus": "pending",
+      "provenance": {
+        "source": "wikipedia",
+        "url": "https://pt.wikipedia.org/wiki/Santos_Dumont",
+        "retrievedAt": "2026-11-17"
+      }
+    }
+  ],
+  "learningPaths": []
+}

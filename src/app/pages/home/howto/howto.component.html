@@ -1,4 +1,14 @@
-<section class="howto" id="como-usar" aria-labelledby="howto-title" data-tone-section>
+<section
+  class="howto"
+  id="como-usar"
+  aria-labelledby="howto-title"
+  data-tone-section
+  style="
+    --band-bg: var(--color-indigo);
+    --band-fg: var(--color-on-strong-surface);
+    --band-em: var(--color-indigo);
+  "
+>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
     <p class="atlas-band-number" aria-hidden="true">?</p>
     <h2 id="howto-title">Quatro gestos, <em>uma descoberta.</em></h2>
@@ -8,7 +18,7 @@
     <fieldset class="howto-steps">
       <legend class="sr-only">Escolha um gesto</legend>
       <p class="howto-hint" aria-hidden="true">
-        Toque em um gesto, ou siga em frente <span>→</span>
+        Toque em um gesto, ou siga em frente <app-chevron />
       </p>
       @for (item of howTo; track item.id; let index = $index) {
         <button
@@ -50,7 +60,9 @@
           </span>
           <strong>{{ item.verb }}<span aria-hidden="true">.</span></strong>
           <span class="howto-short">{{ item.short }}</span>
-          <span class="howto-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+          <span class="howto-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+            ><app-chevron
+          /></span>
         </button>
       }
     </fieldset>
@@ -121,11 +133,14 @@
                 [routerLink]="item.path"
                 [fragment]="item.fragment"
                 >{{ item.action }}
-                <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
-              >
+                <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"
+                  ><app-chevron /></span
+              ></a>
               <button class="howto-next atlas-press" type="button" (click)="nextStep()">
                 {{ item.id === howTo[howTo.length - 1].id ? 'Recomeçar' : 'Próximo gesto' }}
-                <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+                <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"
+                  ><app-chevron
+                /></span>
               </button>
             </div>
           </div>
@@ -135,7 +150,7 @@
   </div>
   <p class="sr-only" role="status">Gesto selecionado: {{ step().verb }}.</p>
 
-  <ul class="guide-doors" id="como-navegar" appReveal>
+  <!-- <ul class="guide-doors" id="como-navegar" appReveal>
     <li data-stagger style="--stagger: 0">
       <a routerLink="/" fragment="leituras">
         <span class="guide-verb">Ler</span>
@@ -165,5 +180,5 @@
         >
       </a>
     </li>
-  </ul>
+  </ul> -->
 </section>

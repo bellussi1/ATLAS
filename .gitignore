@@ -47,6 +47,9 @@ testem.log
 /typings
 __screenshots__/
 
+# Conteúdo de trabalho social (posts, imagens e pauta): fica local, fora do repositório público
+docs/social/
+
 # System files
 .DS_Store
 Thumbs.db
@@ -68,3 +71,11 @@ scripts/ingestion/wiki-extract/raw/**/blobs/
 scripts/ingestion/wiki-extract/raw/nazismo/
 scripts/ingestion/wiki-extract/raw/stalinismo/
 scripts/ingestion/wiki-extract/raw/trabalhismo/
+
+# Experimento RAG local (ambiente virtual, índices vetoriais e cache)
+experiments/rag/.venv/
+experiments/rag/data/
+experiments/rag/.pytest_cache/
+__pycache__/
+*.pyc
+*.egg-info/

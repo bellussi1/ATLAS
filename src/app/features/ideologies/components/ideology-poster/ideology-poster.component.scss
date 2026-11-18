@@ -26,7 +26,8 @@ h1 {
   animation: poster-rise var(--motion-slow) var(--ease-out) both;
 }
 .poster-summary {
-  max-width: 36ch;
+  width: 100%;
+  max-width: none;
   font: 1.125rem/1.5 var(--font-serif);
   margin: var(--space-6) 0 var(--space-8);
   padding-top: var(--space-6);

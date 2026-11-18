@@ -4,6 +4,8 @@
 .chapter-review {
   display: grid;
   gap: 1rem 2rem;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
   margin-block: var(--space-6);
   padding: 1rem 1.25rem;
   border: 2px solid var(--color-ink);

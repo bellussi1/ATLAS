@@ -10,10 +10,13 @@ import {
   viewChild,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { featureWithEditorialSlot, rankByPopularity } from '@core/analytics/popularity';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { readingPath } from '@core/routing/reading-routes';
+import popularity from '@metrics/popularity.json';
 import { AtlasHeadingDirective } from '@shared/directives/heading/heading.directive';
 import { AtlasRevealDirective } from '@shared/directives/reveal/reveal.directive';
+import { AtlasChevronComponent } from '@shared/ui/chevron/chevron.component';
 import { AtlasGeometricMosaicComponent } from '@shared/ui/geometric-mosaic/geometric-mosaic.component';
 import type { MosaicPalette } from '@shared/ui/geometric-mosaic/mosaic-tiles';
 import { AtlasTextFieldComponent } from '@shared/ui/text-field/text-field.component';
@@ -49,6 +52,49 @@ interface HomeData {
   readings: HomeReading[];
 }
 
+interface HomeItinerary {
+  slug: string;
+  kindLabel: string;
+  title: string;
+  question: string;
+  stopsLabel: string;
+  palette: MosaicPalette;
+  seed: number;
+}
+
+const FEATURED_ITINERARIES: readonly HomeItinerary[] = [
+  {
+    slug: 'trabalhismo-e-estado-social',
+    kindLabel: 'Histórico',
+    title: 'Trabalhismo, Estado social e reformas no século XX',
+    question:
+      'Como projetos trabalhistas e social-democratas combinaram direitos do trabalho, industrialização e democracia?',
+    stopsLabel: '6 paradas · 2 ramos',
+    palette: 'tissi',
+    seed: 17,
+  },
+  {
+    slug: 'comparativo-liberdade',
+    kindLabel: 'Comparativo',
+    title: 'Liberalismo e socialismo: liberdade, propriedade e Estado',
+    question:
+      'Como tradições políticas distintas respondem ao conflito entre liberdade individual, propriedade e ação estatal?',
+    stopsLabel: '6 paradas · 2 ramos',
+    palette: 'atlas',
+    seed: 23,
+  },
+  {
+    slug: 'criticas-aos-autoritarismos',
+    kindLabel: 'Conceitual',
+    title: 'Totalitarismo, partido único e crítica pluralista',
+    question:
+      'Como conceitos de totalitarismo, liberalismo e socialismo antiautoritário analisam regimes de partido único?',
+    stopsLabel: '5 paradas · 2 ramos',
+    palette: 'liberal',
+    seed: 31,
+  },
+];
+
 const compiledHome = homeStats as HomeData;
 
 @Component({
@@ -56,6 +102,7 @@ const compiledHome = homeStats as HomeData;
   imports: [
     AtlasHeadingDirective,
     AtlasTextFieldComponent,
+    AtlasChevronComponent,
     AtlasGeometricMosaicComponent,
     AtlasRevealDirective,
     HomeHowtoComponent,
@@ -89,8 +136,19 @@ export class HomePage {
   );
   readonly stats = compiledHome.counts;
   readonly catalogueUrl = catalogueUrl;
-  /** Published readings compiled into the home; a new release updates the cards without edits. */
-  readonly readings = compiledHome.readings;
+  /** Published readings compiled into the home, ranked by 30-day audiences with one editorial slot. */
+  readonly readings = featureWithEditorialSlot(
+    compiledHome.readings,
+    (item) => `/leitura/${item.slug}`,
+    popularity,
+    4,
+    { eligible: (item) => !item.statusLabel.toLowerCase().includes('rascunho') },
+  );
+  readonly featuredItineraries = rankByPopularity(
+    FEATURED_ITINERARIES,
+    (item) => `/itinerario/${item.slug}`,
+    popularity,
+  );
   readonly updatedLabel = (() => {
     const [year, month, day] = compiledHome.updatedAt.split('-');
     return `${day}/${month}/${year}`;

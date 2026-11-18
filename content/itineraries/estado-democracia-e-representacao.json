@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-estado-democracia-e-representacao",
+  "slug": "estado-democracia-e-representacao",
+  "kind": "conceitual",
+  "title": "Estado Moderno: Soberania, Democracia e Republicanismo",
+  "question": "Como a evolução histórica moldou os conceitos de estado moderno, soberania, democracia representativa e republicanismo?",
+  "deck": "Este itinerário explora a trajetória histórica dos conceitos de estado moderno, soberania, democracia representativa e republicanismo, desde suas origens até os desafios contemporâneos.",
+  "summary": "O percurso analisa a formação do estado moderno, a evolução da soberania, o desenvolvimento da democracia representativa e o papel do republicanismo, contextualizando-os em diferentes momentos históricos e regiões geográficas.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "wiki-topic-estado",
+      "title": "O Surgimento do Estado Moderno",
+      "reason": "Este ponto de partida define o conceito de estado moderno, sua estrutura e evolução histórica. Ele serve como base para as discussões sobre soberania e democracia.",
+      "question": "Quais foram as principais características que definiram o surgimento do estado moderno?",
+      "destination": {
+        "type": "verbete",
+        "slug": "estado"
+      },
+      "justification": "Introdução ao tema central do itinerário.",
+      "contextEntityId": "wiki-topic-estado",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-soberania",
+      "title": "A Noção de Soberania",
+      "reason": "Explora o conceito de soberania como um elemento central do estado moderno, analisando sua evolução e diferentes interpretações.",
+      "question": "Como a ideia de soberania se desenvolveu ao longo da história e quais são suas implicações para o funcionamento do estado?",
+      "destination": {
+        "type": "verbete",
+        "slug": "soberania"
+      },
+      "justification": "Desenvolvimento do conceito de estado moderno.",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-democracia-representativa",
+      "title": "Democracia Representativa: A Voz do Povo",
+      "reason": "Aborda a democracia representativa como um sistema político que busca dar voz ao povo através de representantes eleitos.",
+      "question": "Quais são os princípios e mecanismos que sustentam a democracia representativa?",
+      "destination": {
+        "type": "verbete",
+        "slug": "democracia-representativa"
+      },
+      "justification": "Introdução à democracia como forma de governo.",
+      "contextEntityId": "wiki-topic-democracia-representativa",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-republicanismo",
+      "title": "Republicanismo: O Poder do Povo",
+      "reason": "Examina o republicanismo como um sistema político baseado na soberania popular e na representação política.",
+      "question": "Como o republicanismo se diferencia de outras formas de governo e quais são suas características principais?",
+      "destination": {
+        "type": "verbete",
+        "slug": "republicanismo"
+      },
+      "justification": "Complementa a discussão sobre democracia representativa.",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-separacao-de-poderes",
+      "title": "Separação de Poderes: Equilíbrio e Controle",
+      "reason": "Analisa a importância da separação de poderes como um mecanismo para garantir o equilíbrio e o controle no exercício do poder estatal.",
+      "question": "Como a separação de poderes contribui para a estabilidade e a justiça no sistema político?",
+      "destination": {
+        "type": "grafo",
+        "nodeId": "wiki-topic-separacao-de-poderes"
+      },
+      "justification": "Aborda um elemento fundamental para a organização do estado moderno.",
+      "contextEntityId": "wiki-topic-separacao-de-poderes",
+      "sourceIds": ["src-1"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "branch-federalismo",
+      "fromStop": "wiki-topic-estado",
+      "title": "Federalismo: Distribuição de Poder",
+      "reason": "Explora o federalismo como uma forma de organização política que distribui o poder entre diferentes níveis de governo.",
+      "question": "Como o federalismo influencia a relação entre o poder central e os poderes regionais?",
+      "destination": {
+        "type": "verbete",
+        "slug": "federalismo"
+      },
+      "justification": "Aborda uma forma específica de organização do estado moderno.",
+      "convergesAt": "wiki-topic-soberania"
+    },
+    {
+      "id": "branch-democracias-no-mundo",
+      "fromStop": "wiki-topic-democracia-representativa",
+      "title": "Democracias no Mundo: Diversidade e Desafios",
+      "reason": "Examina diferentes modelos de democracia representativa em países ao redor do mundo, destacando suas características e desafios.",
+      "question": "Quais são as diferentes formas de democracia representativa e quais são os desafios que elas enfrentam?",
+      "destination": {
+        "type": "catalogo",
+        "path": "paises"
+      },
+      "justification": "Amplia a discussão sobre a democracia representativa para um contexto global.",
+      "exit": "Saída paralela para aprofundar o conceito antes de retomar o percurso."
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Para aprofundar a compreensão histórica dos conceitos abordados, é importante analisar eventos chave que moldaram o desenvolvimento do estado moderno, da soberania, da democracia e do republicanismo."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-1",
+      "title": "Dicionário de Política"
+    }
+  ],
+  "updatedAt": "2026-11-17",
+  "version": "1.0.0"
+}

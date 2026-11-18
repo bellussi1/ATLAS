@@ -1,0 +1,2154 @@
+{
+  "id": "atlas-segunda-guerra-mundial",
+  "slug": "segunda-guerra-mundial-wikipedia",
+  "title": "Segunda Guerra Mundial: registros em revisão",
+  "description": "Sínteses por IA de fontes enciclopédicas, CC BY-SA 4.0. Afirmações e resumos com revisão pendente; nenhuma revisão humana registrada.",
+  "version": "1.0.0",
+  "updatedAt": "2026-11-17",
+  "entityIds": [
+    "wiki-topic-commonwealth",
+    "wiki-topic-g7",
+    "wiki-topic-giuseppe-garibaldi",
+    "wiki-topic-potencias-centrais",
+    "wiki-topic-risorgimento",
+    "wiki-topic-sismo-do-haiti-de-2010",
+    "wiki-topic-sismo"
+  ],
+  "entities": [
+    {
+      "id": "wiki-topic-commonwealth",
+      "slug": "commonwealth",
+      "title": "Commonwealth",
+      "summary": "A Commonwealth, também chamada Comunidade das Nações ou Comunidade Britânica, é uma associação internacional de 56 Estados-membros, em sua maioria antigos territórios do Império Britânico. Suas instituições principais são o Secretariado da Commonwealth, voltado às relações intergovernamentais, e a Fundação Commonwealth, voltada às relações não governamentais. O nome surgiu na Declaração Balfour de 1926 e a associação foi formalizada pelo Estatuto de Westminster em 1931.",
+      "aliases": [
+        "Comunidade das Nações",
+        "Comunidade Britânica",
+        "Commonwealth of Nations",
+        "British Commonwealth of Nations",
+        "a Commonwealth",
+        "Fundação Commonwealth",
+        "Commonwealth Foundation",
+        "Secretariado da Commonwealth",
+        "Commonwealth Secretariat"
+      ],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente. Cobertura parcial da fonte.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "A Commonwealth, também chamada Comunidade das Nações ou Comunidade Britânica, é uma associação internacional de 56 Estados-membros, em sua maioria antigos territórios do Império Britânico. Suas instituições principais são o Secretariado da Commonwealth, voltado às relações intergovernamentais, e a Fundação Commonwealth, voltada às relações não governamentais. O nome surgiu na Declaração Balfour de 1926 e a associação foi formalizada pelo Estatuto de Westminster em 1931."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "A Commonwealth foi criada como Comunidade Britânica de Nações pela Declaração Balfour, na Conferência Imperial de 1926, e formalizada pelo Estatuto de Westminster em 1931.",
+            "A Fundação Commonwealth foi criada em 1965 pelos chefes de governo."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "A Carta da Commonwealth define valores compartilhados de democracia, direitos humanos e Estado de direito."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "O Secretariado da Commonwealth foi criado em 1965 e é o principal órgão intergovernamental da associação.",
+            "O primeiro secretário-geral foi Arnold Smith, do Canadá, no período de 1965 a 1975.",
+            "Em 1949, a Declaração de Londres permitiu que a Índia permanecesse na associação como uma república."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q7785", "wikipedia": "Commonwealth" },
+      "discoveryMetadata": {
+        "description": "Associação internacional de 56 Estados, em sua maioria antigos territórios do Império Britânico, unidos pela língua inglesa e por...",
+        "wikipediaTitle": "Commonwealth",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Commonwealth",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73111205, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-g7",
+      "slug": "g7",
+      "title": "G7",
+      "summary": "O G7 é um fórum político e econômico intergovernamental formado por Canadá, França, Alemanha, Itália, Japão, Reino Unido e Estados Unidos, com a União Europeia como membro não enumerado. Originou-se de uma reunião de ministros das Finanças em 1973 e se consolidou como foro para coordenar respostas a problemas globais, como comércio, segurança, economia e mudanças climáticas. Não se baseia em tratado e não tem secretariado permanente; a presidência rotativa define prioridades e sedia a cúpula anual.",
+      "aliases": ["Grupo dos Sete", "Group of Seven"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "O G7 é um fórum político e econômico intergovernamental formado por Canadá, França, Alemanha, Itália, Japão, Reino Unido e Estados Unidos, com a União Europeia como membro não enumerado. Originou-se de uma reunião de ministros das Finanças em 1973 e se consolidou como foro para coordenar respostas a problemas globais, como comércio, segurança, economia e mudanças climáticas. Não se baseia em tratado e não tem secretariado permanente; a presidência rotativa define prioridades e sedia a cúpula anual."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O G7 teve origem em uma reunião ad hoc de ministros das Finanças realizada em 1973."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "O grupo se organiza em torno dos valores compartilhados do pluralismo, da democracia liberal e do governo representativo."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "Observadores criticam o grupo por sua composição considerada ultrapassada e limitada, por sua representação global estreita e por sua ineficácia."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q1764511", "wikipedia": "G7" },
+      "discoveryMetadata": {
+        "description": "Fórum intergovernamental de sete grandes economias avançadas, sem tratado nem secretariado fixo.",
+        "wikipediaTitle": "G7",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/G7",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72821957, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-giuseppe-garibaldi",
+      "slug": "giuseppe-garibaldi",
+      "title": "Giuseppe Garibaldi",
+      "summary": "Giuseppe Garibaldi (1807-1882) foi um general, guerrilheiro e revolucionário italiano, nascido em Nice. Participou da Revolução Farroupilha no Brasil, de conflitos no Uruguai e das guerras de independência italianas, incluindo a Expedição dos Mil na conquista do sul da Itália. Esteve ligado à Jovem Itália de Giuseppe Mazzini, à República Romana de 1849 e à Guerra Franco-Prussiana. Por sua atuação, é tratado no artigo como uma das figuras mais notáveis da unificação italiana.",
+      "aliases": ["herói de dois mundos"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Giuseppe Garibaldi (1807-1882) foi um general, guerrilheiro e revolucionário italiano, nascido em Nice. Participou da Revolução Farroupilha no Brasil, de conflitos no Uruguai e das guerras de independência italianas, incluindo a Expedição dos Mil na conquista do sul da Itália. Esteve ligado à Jovem Itália de Giuseppe Mazzini, à República Romana de 1849 e à Guerra Franco-Prussiana. Por sua atuação, é tratado no artigo como uma das figuras mais notáveis da unificação italiana."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Mazzini era republicano e defensor da unidade italiana, que pretendia alcançar por meio de um levantamento popular."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q539", "wikipedia": "Giuseppe Garibaldi" },
+      "discoveryMetadata": {
+        "description": "General e revolucionário italiano, figura central da unificação da Itália no século XIX.",
+        "wikipediaTitle": "Giuseppe Garibaldi",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Giuseppe_Garibaldi",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73180571, CC BY-SA 4.0"
+      },
+      "kind": "person"
+    },
+    {
+      "id": "wiki-topic-potencias-centrais",
+      "slug": "potencias-centrais",
+      "title": "Potências Centrais",
+      "summary": "As Potências Centrais foram uma das duas principais coligações da Primeira Guerra Mundial (1914–1918), formada pelo Império Alemão, Áustria-Hungria, Império Otomano e Reino da Bulgária, também conhecida como Quádrupla Aliança. Sua origem é atribuída à aliança entre a Alemanha e a Áustria-Hungria em 1879. Os membros entraram na guerra em momentos diferentes, e o Otomano e a Bulgária só se uniram após o início do conflito.",
+      "aliases": ["Impérios Centrais", "Central Powers", "Quádrupla Aliança"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "As Potências Centrais foram uma das duas principais coligações da Primeira Guerra Mundial (1914–1918), formada pelo Império Alemão, Áustria-Hungria, Império Otomano e Reino da Bulgária, também conhecida como Quádrupla Aliança. Sua origem é atribuída à aliança entre a Alemanha e a Áustria-Hungria em 1879. Os membros entraram na guerra em momentos diferentes, e o Otomano e a Bulgária só se uniram após o início do conflito."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "A origem da coligação é atribuída à aliança entre a Alemanha e a Áustria-Hungria em 1879."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "O Império Otomano e a Bulgária só se uniram às Potências Centrais depois do início da Primeira Guerra Mundial."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q152283", "wikipedia": "Potências Centrais" },
+      "discoveryMetadata": {
+        "description": "Coligação militar de quatro impérios e reinos que lutou contra as Potências Aliadas na Primeira Guerra Mundial.",
+        "wikipediaTitle": "Potências Centrais",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Pot%C3%AAncias_Centrais",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73064776, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-risorgimento",
+      "slug": "risorgimento",
+      "title": "Risorgimento",
+      "summary": "O Risorgimento foi o movimento da história italiana que buscou unificar o país entre 1815 e 1870, período em que a península era uma coleção de pequenos Estados submetidos a potências estrangeiras. Sua origem está na reorganização da península após o Congresso de Viena, com o absolutismo restaurado e a Áustria dominando o norte. Reuniu correntes monárquicas liderada pelo Reino da Sardenha, sob Vítor Emanuel II e o Conde de Cavour, e correntes democráticas e republicanas ligadas a Giuseppe Mazzini e Giuseppe Garibaldi.",
+      "aliases": ["Ressurgimento"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "O Risorgimento foi o movimento da história italiana que buscou unificar o país entre 1815 e 1870, período em que a península era uma coleção de pequenos Estados submetidos a potências estrangeiras. Sua origem está na reorganização da península após o Congresso de Viena, com o absolutismo restaurado e a Áustria dominando o norte. Reuniu correntes monárquicas liderada pelo Reino da Sardenha, sob Vítor Emanuel II e o Conde de Cavour, e correntes democráticas e republicanas ligadas a Giuseppe Mazzini e Giuseppe Garibaldi."
+          ]
+        },
+        {
+          "heading": "Ideias centrais",
+          "paragraphs": [
+            "A unificação foi buscada pela monarquia constitucional sob a Casa de Saboia e também por correntes democráticas e republicanas, que tiveram papéis distintos no processo."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "Autores revisionistas sustentam que a crise financeira do Reino de Sardenha influenciou sua participação na conquista dos Estados pré-unitários, em contraste com a explicação centrada no idealismo."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q51122", "wikipedia": "Risorgimento" },
+      "discoveryMetadata": {
+        "description": "Movimento que buscou unificar a Itália, fragmentada em pequenos Estados sob domínio estrangeiro, entre 1815 e 1870.",
+        "wikipediaTitle": "Risorgimento",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Risorgimento",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73103707, CC BY-SA 4.0"
+      },
+      "kind": "institution"
+    },
+    {
+      "id": "wiki-topic-sismo-do-haiti-de-2010",
+      "slug": "sismo-do-haiti-de-2010",
+      "title": "Sismo do Haiti de 2010",
+      "summary": "Terremoto de magnitude 7,0 Mw ocorrido em 12 de janeiro de 2010, com epicentro na parte oriental da península de Tiburon, a cerca de 25 km de Porto Príncipe. O artigo descreve danos a edifícios e à sede da MINUSTAH, mortes estimadas, a resposta humanitária internacional e uma controvérsia sobre declarações do pastor Pat Robertson. Importa por reunir dados sobre a sismicidade da região, a causa sugerida pela ruptura da Falha de Enriquillo-Plantain Garden e as consequências afirmadas para o país.",
+      "aliases": [],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Terremoto de magnitude 7,0 Mw ocorrido em 12 de janeiro de 2010, com epicentro na parte oriental da península de Tiburon, a cerca de 25 km de Porto Príncipe. O artigo descreve danos a edifícios e à sede da MINUSTAH, mortes estimadas, a resposta humanitária internacional e uma controvérsia sobre declarações do pastor Pat Robertson. Importa por reunir dados sobre a sismicidade da região, a causa sugerida pela ruptura da Falha de Enriquillo-Plantain Garden e as consequências afirmadas para o país."
+          ]
+        },
+        {
+          "heading": "Contexto",
+          "paragraphs": [
+            "Milhares de edifícios e elementos do patrimônio da capital, como o Palácio Presidencial, foram destruídos ou gravemente danificados."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "O pastor Pat Robertson declarou no programa 700 Club que o terremoto seria uma maldição ligada a um pacto com o diabo."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "O artigo lista como referência o vídeo Haiti Earthquake, the Day After, de Mark Leon Goldberg."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q43777", "wikipedia": "Sismo do Haiti de 2010" },
+      "discoveryMetadata": {
+        "description": "Terremoto de magnitude 7,0 Mw que atingiu o Haiti em 12 de janeiro de 2010, com epicentro perto de Porto Príncipe.",
+        "wikipediaTitle": "Sismo do Haiti de 2010",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Sismo_do_Haiti_de_2010",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 73189366, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    },
+    {
+      "id": "wiki-topic-sismo",
+      "slug": "sismo",
+      "title": "Sismo",
+      "summary": "Sismo é um tremor da superfície da Terra causado pela liberação súbita de energia em seu interior, que gera ondas sísmicas. O artigo descreve a origem dos sismos em falhas geológicas, os tipos de movimento de falha, as escalas de magnitude e de intensidade, e efeitos como liquefação do solo, tsunâmis e deslizamentos de terra. Também registra casos históricos, como o sismo de Tangshan de 1976 e o de Valdivia de 1960, além da predição, da engenharia sísmica e da sismicidade induzida por atividades humanas.",
+      "aliases": ["terremoto", "terramoto", "abalo sísmico", "tremor de terra"],
+      "context": "Síntese de fonte enciclopédica com revisão editorial pendente.",
+      "temporalExtent": null,
+      "uncertainty": "unknown",
+      "revision": 1,
+      "sections": [
+        {
+          "heading": "Resumo",
+          "paragraphs": [
+            "Sismo é um tremor da superfície da Terra causado pela liberação súbita de energia em seu interior, que gera ondas sísmicas. O artigo descreve a origem dos sismos em falhas geológicas, os tipos de movimento de falha, as escalas de magnitude e de intensidade, e efeitos como liquefação do solo, tsunâmis e deslizamentos de terra. Também registra casos históricos, como o sismo de Tangshan de 1976 e o de Valdivia de 1960, além da predição, da engenharia sísmica e da sismicidade induzida por atividades humanas."
+          ]
+        },
+        {
+          "heading": "Origem",
+          "paragraphs": [
+            "O artigo define sismo como um tremor da superfície da Terra causado pela liberação súbita de energia no interior do planeta, que gera ondas sísmicas."
+          ]
+        },
+        {
+          "heading": "Controvérsias",
+          "paragraphs": [
+            "A participação do reservatório da Barragem de Zipingpu no desencadeamento do sismo de Sujuão de 2008 foi objeto de debate, sem conclusão estabelecida."
+          ]
+        },
+        {
+          "heading": "Bibliografia",
+          "paragraphs": [
+            "Entre as obras listadas, consta um estudo de Deborah R. Coen sobre a ciência dos desastres sísmicos, de Lisboa a Richter."
+          ]
+        }
+      ],
+      "editorialStatus": "pending",
+      "textLocale": "pt-BR",
+      "externalIds": { "wikidata": "Q7944", "wikipedia": "Sismo" },
+      "discoveryMetadata": {
+        "description": "Tremor da superfície da Terra causado pela liberação súbita de energia em seu interior, que gera ondas sísmicas.",
+        "wikipediaTitle": "Sismo",
+        "wikipediaUrl": "https://pt.wikipedia.org/wiki/Sismo",
+        "wikipediaLanguage": "pt",
+        "categories": [],
+        "fetchedAt": "2026-11-17",
+        "contentLicense": "CC BY-SA 4.0",
+        "contentLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Texto da Wikipédia (pt), revisão 72983555, CC BY-SA 4.0"
+      },
+      "kind": "event"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-wiki-topic-commonwealth",
+      "title": "Commonwealth (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Commonwealth",
+      "edition": "revisão 73111205; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-g7",
+      "title": "G7 (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/G7",
+      "edition": "revisão 72821957; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-giuseppe-garibaldi",
+      "title": "Giuseppe Garibaldi (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Giuseppe_Garibaldi",
+      "edition": "revisão 73180571; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-potencias-centrais",
+      "title": "Potências Centrais (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Pot%C3%AAncias_Centrais",
+      "edition": "revisão 73064776; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-risorgimento",
+      "title": "Risorgimento (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Risorgimento",
+      "edition": "revisão 73103707; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "title": "Sismo do Haiti de 2010 (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Sismo_do_Haiti_de_2010",
+      "edition": "revisão 73189366; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    },
+    {
+      "id": "src-wiki-topic-sismo",
+      "title": "Sismo (Wikipédia pt)",
+      "url": "https://pt.wikipedia.org/wiki/Sismo",
+      "edition": "revisão 72983555; licença CC BY-SA 4.0; extração assistida por IA (claude-haiku-5-5)",
+      "publicationDate": null
+    }
+  ],
+  "evidences": [
+    {
+      "id": "ev-wiki-topic-commonwealth-001",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "foi criada como Comunidade Britânica de Nações pela Declaração Balfour, na Conferência Imperial de 1926, e formalizada pelo Reino Unido por meio do Estatuto de Westminster em 1931",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-002",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "A Fundação foi criada em 1965 pelos chefes de governo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-003",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "A Carta da Commonwealth define seus valores compartilhados de democracia, direitos humanos e Estado de direito",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-004",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "O Secretariado da Commonwealth, criado em 1965, é o principal órgão intergovernamental da Commonwealth",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-005",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "O primeiro secretário-geral foi Arnold Smith, do Canadá (1965–1975)",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-006",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "Em 1949, a Declaração de Londres permitiu que a Índia permanecesse na associação como uma república",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-007",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "Foi criada como Comunidade Britânica de Nações pela Declaração Balfour, na Conferência Imperial de 1926",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-008",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "formalizada pelo Reino Unido por meio do Estatuto de Westminster em 1931",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-009",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "O Secretariado da Commonwealth, criado em 1965",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-010",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "A Fundação foi criada em 1965 pelos chefes de governo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-commonwealth-011",
+      "sourceId": "src-wiki-topic-commonwealth",
+      "locator": "A Declaração de Londres é frequentemente considerada o marco inicial da Commonwealth moderna",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-001",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "Originado de uma reunião ad hoc de ministros das Finanças em 1973",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-002",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "O grupo se organiza em torno dos valores compartilhados do pluralismo, da democracia liberal e do governo representativo.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-003",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "O grupo é criticado por observadores por sua composição alegadamente ultrapassada e limitada, sua representação global estreita e sua ineficácia.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-004",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "Em 25 de março de 1973, o secretário do Tesouro dos Estados Unidos, George Shultz, convocou uma reunião informal",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-005",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "a França sediou uma cúpula de três dias em novembro de 1975",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-006",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "Na cúpula de 1999, o grupo ajudou a lançar o G20",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-007",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "Em 2 de março de 2014, o G7 condenou a Federação Russa",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-008",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "a França exerce a presidência em 2026",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-009",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "O G7 não se baseia em um tratado e não possui secretariado ou escritório permanente.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-010",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "considera-se amplamente que o G7 exerce influência internacional significativa",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-g7-011",
+      "sourceId": "src-wiki-topic-g7",
+      "locator": "O grupo é criticado por observadores por sua composição alegadamente ultrapassada e limitada",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-giuseppe-garibaldi-001",
+      "sourceId": "src-wiki-topic-giuseppe-garibaldi",
+      "locator": "Mazzini era republicano e ardoroso defensor da unidade italiana, que esperava alcançar por meio de um levantamento popular",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-giuseppe-garibaldi-002",
+      "sourceId": "src-wiki-topic-giuseppe-garibaldi",
+      "locator": "Nice, 11 de julho de 1807",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-giuseppe-garibaldi-003",
+      "sourceId": "src-wiki-topic-giuseppe-garibaldi",
+      "locator": "Em 2 de junho de 1882, aos 74 anos",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-giuseppe-garibaldi-004",
+      "sourceId": "src-wiki-topic-giuseppe-garibaldi",
+      "locator": "foi um general, guerrilheiro, patriota e revolucionário italiano",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-potencias-centrais-001",
+      "sourceId": "src-wiki-topic-potencias-centrais",
+      "locator": "A origem das Potências Centrais foi a aliança entre a Alemanha e a Áustria-Hungria em 1879",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-potencias-centrais-002",
+      "sourceId": "src-wiki-topic-potencias-centrais",
+      "locator": "O Império Otomano e a Bulgária só se uniram depois do início da Primeira Guerra Mundial",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-potencias-centrais-003",
+      "sourceId": "src-wiki-topic-potencias-centrais",
+      "locator": "A origem das Potências Centrais foi a aliança entre a Alemanha e a Áustria-Hungria em 1879",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-potencias-centrais-004",
+      "sourceId": "src-wiki-topic-potencias-centrais",
+      "locator": "O Império Otomano juntou-se mais tarde em 1914",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-potencias-centrais-005",
+      "sourceId": "src-wiki-topic-potencias-centrais",
+      "locator": "seguido pelo Reino da Bulgária em 1915",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-potencias-centrais-006",
+      "sourceId": "src-wiki-topic-potencias-centrais",
+      "locator": "o Reino da Itália não participou da Primeira Guerra Mundial ao lado das Potências Centrais",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-potencias-centrais-007",
+      "sourceId": "src-wiki-topic-potencias-centrais",
+      "locator": "As Potências Centrais enfrentaram e foram derrotadas pelas Potências Aliadas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-001",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "a monarquia constitucional, encabeçada na pessoa do rei Vítor Emanuel II do Reino da Sardenha",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-002",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "os autores revisionistas sustentam que uma das razões que empurrou o Reino de Sardenha a se envolver na conquista dos estados pré-unitários esteve menos ligada ao idealismo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-003",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "Vítor Emanuel foi proclamado, em 17 de março de 1861, rei da Itália",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-004",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "Em 10 de novembro de 1859, foi firmado o Tratado de Zurique que confirmava o controle da Áustria sobre o Vêneto",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-005",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "é o movimento na história italiana que buscou unificar o país entre 1815 e 1870",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-006",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "A desejada unificação da Itália se deu assim sob a Casa de Saboia",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-007",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "mas concluiu-se sem modificação do status quo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-008",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "os autores revisionistas sustentam que uma das razões que empurrou o Reino de Sardenha a se envolver na conquista dos estados pré-unitários esteve menos ligada ao idealismo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-risorgimento-009",
+      "sourceId": "src-wiki-topic-risorgimento",
+      "locator": "Na luta sobre a futura estrutura da Itália, a monarquia constitucional, encabeçada na pessoa do rei Vítor Emanuel II do Reino da Sardenha, apoiado pelos conservadores liberais, teve sucesso quando em 1859–1861 se formou a Estado-nação, sobrepondo-se aos partidários da extrema-esquerda, maçons carbon",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-001",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "Milhares de edifícios, incluindo os elementos mais significativos do patrimônio da capital, como o Palácio Presidencial",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-002",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "o terremoto é uma maldição devido a um",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-003",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "Vídeo: Haiti Earthquake, the Day After, por Mark Leon Goldberg",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-004",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "na terça-feira, 12 de janeiro de 2010",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-005",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "O abalo alcançou a magnitude 7,0 Mw e ocorreu a uma profundidade de 10 km",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-006",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "O Serviço Geológico dos Estados Unidos registrou uma série de pelo menos 33 réplicas sismológicas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-007",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "a sede da Missão das Nações Unidas para a estabilização no Haiti (MINUSTAH), localizada na capital, desabou",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-008",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "antecipou em 15 de janeiro que o desastre teria tido como consequência a morte de 100 000 a 200 000 pessoas",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-do-haiti-de-2010-009",
+      "sourceId": "src-wiki-topic-sismo-do-haiti-de-2010",
+      "locator": "o terremoto é uma maldição devido a um",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-001",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "Sismo é um tremor da superfície da Terra causado pela liberação súbita de energia em seu interior, que gera ondas sísmicas.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-002",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "A possível participação do reservatório da Barragem de Zipingpu no desencadeamento do sismo de Sujuão de 2008 foi objeto de debate.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-003",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "Coen, Deborah R. The Earthquake Observers: Disaster Science From Lisbon to Richter.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-004",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "o terramoto de Lisboa de 1755, acompanhado por tsunâmi e incêndios",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-005",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "No sismo de São Francisco de 1906, os incêndios causaram mais danos que o próprio tremor.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-006",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "O sismo de Valdivia de 1960, ocorrido no Chile em 22 de maio de 1960, atingiu magnitude de momento 9,5.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-007",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "O sismo do Alasca de 1964, ocorrido em 27 de março de 1964 no horário local",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-008",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "Em 28 de fevereiro de 1969, outro grande sismo ocorreu a sudoeste do Cabo de São Vicente.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-009",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "O sismo de Oklahoma de 2011, de magnitude 5,7, foi associado ao descarte de águas residuais da produção de petróleo",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-010",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "A magnitude, por si só, não determina o número de mortes.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-011",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "Não há um método cientificamente validado que permita prever de maneira confiável a data, o local e a magnitude de um grande sismo individual.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    },
+    {
+      "id": "ev-wiki-topic-sismo-012",
+      "sourceId": "src-wiki-topic-sismo",
+      "locator": "mas essa relação não foi estabelecida de forma conclusiva.",
+      "accessedAt": "2026-11-17",
+      "note": null
+    }
+  ],
+  "citations": [
+    {
+      "id": "cit-wiki-topic-commonwealth-001",
+      "evidenceId": "ev-wiki-topic-commonwealth-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-002",
+      "evidenceId": "ev-wiki-topic-commonwealth-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-003",
+      "evidenceId": "ev-wiki-topic-commonwealth-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-004",
+      "evidenceId": "ev-wiki-topic-commonwealth-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-005",
+      "evidenceId": "ev-wiki-topic-commonwealth-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-006",
+      "evidenceId": "ev-wiki-topic-commonwealth-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-007",
+      "evidenceId": "ev-wiki-topic-commonwealth-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-008",
+      "evidenceId": "ev-wiki-topic-commonwealth-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-009",
+      "evidenceId": "ev-wiki-topic-commonwealth-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-010",
+      "evidenceId": "ev-wiki-topic-commonwealth-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-commonwealth-011",
+      "evidenceId": "ev-wiki-topic-commonwealth-011",
+      "relation": "supports"
+    },
+    { "id": "cit-wiki-topic-g7-001", "evidenceId": "ev-wiki-topic-g7-001", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-002", "evidenceId": "ev-wiki-topic-g7-002", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-003", "evidenceId": "ev-wiki-topic-g7-003", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-004", "evidenceId": "ev-wiki-topic-g7-004", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-005", "evidenceId": "ev-wiki-topic-g7-005", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-006", "evidenceId": "ev-wiki-topic-g7-006", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-007", "evidenceId": "ev-wiki-topic-g7-007", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-008", "evidenceId": "ev-wiki-topic-g7-008", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-009", "evidenceId": "ev-wiki-topic-g7-009", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-010", "evidenceId": "ev-wiki-topic-g7-010", "relation": "supports" },
+    { "id": "cit-wiki-topic-g7-011", "evidenceId": "ev-wiki-topic-g7-011", "relation": "supports" },
+    {
+      "id": "cit-wiki-topic-giuseppe-garibaldi-001",
+      "evidenceId": "ev-wiki-topic-giuseppe-garibaldi-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-giuseppe-garibaldi-002",
+      "evidenceId": "ev-wiki-topic-giuseppe-garibaldi-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-giuseppe-garibaldi-003",
+      "evidenceId": "ev-wiki-topic-giuseppe-garibaldi-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-giuseppe-garibaldi-004",
+      "evidenceId": "ev-wiki-topic-giuseppe-garibaldi-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-potencias-centrais-001",
+      "evidenceId": "ev-wiki-topic-potencias-centrais-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-potencias-centrais-002",
+      "evidenceId": "ev-wiki-topic-potencias-centrais-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-potencias-centrais-003",
+      "evidenceId": "ev-wiki-topic-potencias-centrais-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-potencias-centrais-004",
+      "evidenceId": "ev-wiki-topic-potencias-centrais-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-potencias-centrais-005",
+      "evidenceId": "ev-wiki-topic-potencias-centrais-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-potencias-centrais-006",
+      "evidenceId": "ev-wiki-topic-potencias-centrais-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-potencias-centrais-007",
+      "evidenceId": "ev-wiki-topic-potencias-centrais-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-001",
+      "evidenceId": "ev-wiki-topic-risorgimento-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-002",
+      "evidenceId": "ev-wiki-topic-risorgimento-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-003",
+      "evidenceId": "ev-wiki-topic-risorgimento-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-004",
+      "evidenceId": "ev-wiki-topic-risorgimento-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-005",
+      "evidenceId": "ev-wiki-topic-risorgimento-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-006",
+      "evidenceId": "ev-wiki-topic-risorgimento-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-007",
+      "evidenceId": "ev-wiki-topic-risorgimento-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-008",
+      "evidenceId": "ev-wiki-topic-risorgimento-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-risorgimento-009",
+      "evidenceId": "ev-wiki-topic-risorgimento-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-001",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-002",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-003",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-004",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-005",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-006",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-007",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-008",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-do-haiti-de-2010-009",
+      "evidenceId": "ev-wiki-topic-sismo-do-haiti-de-2010-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-001",
+      "evidenceId": "ev-wiki-topic-sismo-001",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-002",
+      "evidenceId": "ev-wiki-topic-sismo-002",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-003",
+      "evidenceId": "ev-wiki-topic-sismo-003",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-004",
+      "evidenceId": "ev-wiki-topic-sismo-004",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-005",
+      "evidenceId": "ev-wiki-topic-sismo-005",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-006",
+      "evidenceId": "ev-wiki-topic-sismo-006",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-007",
+      "evidenceId": "ev-wiki-topic-sismo-007",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-008",
+      "evidenceId": "ev-wiki-topic-sismo-008",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-009",
+      "evidenceId": "ev-wiki-topic-sismo-009",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-010",
+      "evidenceId": "ev-wiki-topic-sismo-010",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-011",
+      "evidenceId": "ev-wiki-topic-sismo-011",
+      "relation": "supports"
+    },
+    {
+      "id": "cit-wiki-topic-sismo-012",
+      "evidenceId": "ev-wiki-topic-sismo-012",
+      "relation": "supports"
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-wiki-topic-commonwealth-001",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "A Commonwealth foi criada como Comunidade Britânica de Nações pela Declaração Balfour, na Conferência Imperial de 1926, e formalizada pelo Estatuto de Westminster em 1931.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-001"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-002",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "A Fundação Commonwealth foi criada em 1965 pelos chefes de governo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-002"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-003",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "A Carta da Commonwealth define valores compartilhados de democracia, direitos humanos e Estado de direito.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-003"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-004",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "O Secretariado da Commonwealth foi criado em 1965 e é o principal órgão intergovernamental da associação.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-004"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-005",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "O primeiro secretário-geral foi Arnold Smith, do Canadá, no período de 1965 a 1975.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-005"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-006",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "Em 1949, a Declaração de Londres permitiu que a Índia permanecesse na associação como uma república.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-006"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-007",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "A Commonwealth foi criada como Comunidade Britânica de Nações pela Declaração Balfour, na Conferência Imperial. (1926).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-007"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-008",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "A Commonwealth foi formalizada pelo Estatuto de Westminster. (1931).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-008"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-009",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "Criação do Secretariado da Commonwealth. (1965).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-009"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-010",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "A Fundação Commonwealth foi criada pelos chefes de governo. (1965).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-010"]
+    },
+    {
+      "id": "claim-wiki-topic-commonwealth-011",
+      "entityId": "wiki-topic-commonwealth",
+      "text": "A Declaração de Londres de 1949 é frequentemente considerada o marco inicial da Commonwealth moderna.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-commonwealth-011"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-001",
+      "entityId": "wiki-topic-g7",
+      "text": "O G7 teve origem em uma reunião ad hoc de ministros das Finanças realizada em 1973.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-001"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-002",
+      "entityId": "wiki-topic-g7",
+      "text": "O grupo se organiza em torno dos valores compartilhados do pluralismo, da democracia liberal e do governo representativo.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-002"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-003",
+      "entityId": "wiki-topic-g7",
+      "text": "Observadores criticam o grupo por sua composição considerada ultrapassada e limitada, por sua representação global estreita e por sua ineficácia.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-003"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-004",
+      "entityId": "wiki-topic-g7",
+      "text": "George Shultz convocou uma reunião informal de ministros das Finanças, antecedente do grupo. (1973-03-25).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-004"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-005",
+      "entityId": "wiki-topic-g7",
+      "text": "A França sediou a primeira cúpula de três dias, no Castelo de Rambouillet. (1975-11).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-005"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-006",
+      "entityId": "wiki-topic-g7",
+      "text": "Na cúpula de 1999, o grupo ajudou a lançar o G20. (1999).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-006"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-007",
+      "entityId": "wiki-topic-g7",
+      "text": "O G7 condenou a Federação Russa pela violação da soberania da Ucrânia. (2014-03-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-007"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-008",
+      "entityId": "wiki-topic-g7",
+      "text": "A França exerce a presidência do G7. (2026).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-008"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-009",
+      "entityId": "wiki-topic-g7",
+      "text": "O G7 não se baseia em um tratado e não possui secretariado ou escritório permanente.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-009"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-010",
+      "entityId": "wiki-topic-g7",
+      "text": "Considera-se amplamente que o G7 exerce influência internacional significativa.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-010"]
+    },
+    {
+      "id": "claim-wiki-topic-g7-011",
+      "entityId": "wiki-topic-g7",
+      "text": "Observadores criticam o grupo por composição ultrapassada, representação estreita e ineficácia.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-g7-011"]
+    },
+    {
+      "id": "claim-wiki-topic-giuseppe-garibaldi-001",
+      "entityId": "wiki-topic-giuseppe-garibaldi",
+      "text": "Mazzini era republicano e defensor da unidade italiana, que pretendia alcançar por meio de um levantamento popular.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-giuseppe-garibaldi-001"]
+    },
+    {
+      "id": "claim-wiki-topic-giuseppe-garibaldi-002",
+      "entityId": "wiki-topic-giuseppe-garibaldi",
+      "text": "Nascimento de Garibaldi em Nice. (1807-07-11).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-giuseppe-garibaldi-002"]
+    },
+    {
+      "id": "claim-wiki-topic-giuseppe-garibaldi-003",
+      "entityId": "wiki-topic-giuseppe-garibaldi",
+      "text": "Morte de Garibaldi em Caprera. (1882-06-02).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-giuseppe-garibaldi-003"]
+    },
+    {
+      "id": "claim-wiki-topic-giuseppe-garibaldi-004",
+      "entityId": "wiki-topic-giuseppe-garibaldi",
+      "text": "Garibaldi é descrito como general, guerrilheiro, patriota e revolucionário italiano.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-giuseppe-garibaldi-004"]
+    },
+    {
+      "id": "claim-wiki-topic-potencias-centrais-001",
+      "entityId": "wiki-topic-potencias-centrais",
+      "text": "A origem da coligação é atribuída à aliança entre a Alemanha e a Áustria-Hungria em 1879.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-potencias-centrais-001"]
+    },
+    {
+      "id": "claim-wiki-topic-potencias-centrais-002",
+      "entityId": "wiki-topic-potencias-centrais",
+      "text": "O Império Otomano e a Bulgária só se uniram às Potências Centrais depois do início da Primeira Guerra Mundial.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-potencias-centrais-002"]
+    },
+    {
+      "id": "claim-wiki-topic-potencias-centrais-003",
+      "entityId": "wiki-topic-potencias-centrais",
+      "text": "Aliança entre a Alemanha e a Áustria-Hungria, origem das Potências Centrais. (1879).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-potencias-centrais-003"]
+    },
+    {
+      "id": "claim-wiki-topic-potencias-centrais-004",
+      "entityId": "wiki-topic-potencias-centrais",
+      "text": "O Império Otomano juntou-se às Potências Centrais. (1914).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-potencias-centrais-004"]
+    },
+    {
+      "id": "claim-wiki-topic-potencias-centrais-005",
+      "entityId": "wiki-topic-potencias-centrais",
+      "text": "O Reino da Bulgária juntou-se às Potências Centrais. (1915).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-potencias-centrais-005"]
+    },
+    {
+      "id": "claim-wiki-topic-potencias-centrais-006",
+      "entityId": "wiki-topic-potencias-centrais",
+      "text": "A Itália, apesar de ter aderido nominalmente à Tríplice Aliança, não participou da guerra ao lado das Potências Centrais.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-potencias-centrais-006"]
+    },
+    {
+      "id": "claim-wiki-topic-potencias-centrais-007",
+      "entityId": "wiki-topic-potencias-centrais",
+      "text": "As Potências Centrais foram derrotadas pelas Potências Aliadas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-potencias-centrais-007"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-001",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "A unificação foi buscada pela monarquia constitucional sob a Casa de Saboia e também por correntes democráticas e republicanas, que tiveram papéis distintos no processo.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-001"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-002",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "Autores revisionistas sustentam que a crise financeira do Reino de Sardenha influenciou sua participação na conquista dos Estados pré-unitários, em contraste com a explicação centrada no idealismo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-002"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-003",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "Vítor Emanuel foi proclamado rei da Itália. (1861-03-17).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-003"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-004",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "Foi firmado o Tratado de Zurique, que confirmou o controle austríaco sobre o Vêneto. (1859-11-10).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-004"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-005",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "O Risorgimento buscou unificar a Itália, que era uma coleção de pequenos Estados submetidos a potências estrangeiras.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-005"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-006",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "A unificação foi conduzida sob a Casa de Saboia, com anexação de diversos Estados ao Reino da Sardenha.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-006"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-007",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "A primeira fase do movimento (1848–1849) concluiu-se sem modificação do status quo.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-007"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-008",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "Os autores revisionistas atribuem parte da motivação do Reino de Sardenha à crise financeira, e não ao idealismo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-008"]
+    },
+    {
+      "id": "claim-wiki-topic-risorgimento-009",
+      "entityId": "wiki-topic-risorgimento",
+      "text": "Posição política descrita na fonte: extrema esquerda.",
+      "classification": "attributed-thesis",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-risorgimento-009"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-001",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "Milhares de edifícios e elementos do patrimônio da capital, como o Palácio Presidencial, foram destruídos ou gravemente danificados.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-001"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-002",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "O pastor Pat Robertson declarou no programa 700 Club que o terremoto seria uma maldição ligada a um pacto com o diabo.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-002"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-003",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "O artigo lista como referência o vídeo Haiti Earthquake, the Day After, de Mark Leon Goldberg.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-003"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-004",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "Ocorrência do terremoto, registrado às 16h53m10s do horário local. (2010-01-12).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-004"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-005",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "O terremoto alcançou magnitude 7,0 Mw e profundidade de 10 km.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-005"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-006",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "O Serviço Geológico dos Estados Unidos registrou pelo menos 33 réplicas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-006"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-007",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "Segundo a ONU, a sede da MINUSTAH em Porto Príncipe desabou.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-007"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-008",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "O ministro do Interior do Haiti antecipou que o desastre teria causado de 100 000 a 200 000 mortes.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-008"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-do-haiti-de-2010-009",
+      "entityId": "wiki-topic-sismo-do-haiti-de-2010",
+      "text": "Pat Robertson associou o terremoto a uma maldição, em declaração que gerou controvérsia.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-do-haiti-de-2010-009"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-001",
+      "entityId": "wiki-topic-sismo",
+      "text": "O artigo define sismo como um tremor da superfície da Terra causado pela liberação súbita de energia no interior do planeta, que gera ondas sísmicas.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-001"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-002",
+      "entityId": "wiki-topic-sismo",
+      "text": "A participação do reservatório da Barragem de Zipingpu no desencadeamento do sismo de Sujuão de 2008 foi objeto de debate, sem conclusão estabelecida.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-002"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-003",
+      "entityId": "wiki-topic-sismo",
+      "text": "Entre as obras listadas, consta um estudo de Deborah R. Coen sobre a ciência dos desastres sísmicos, de Lisboa a Richter.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-003"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-004",
+      "entityId": "wiki-topic-sismo",
+      "text": "Terramoto de Lisboa, acompanhado por tsunâmi e incêndios. (1755).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-004"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-005",
+      "entityId": "wiki-topic-sismo",
+      "text": "Sismo de São Francisco, em que os incêndios causaram mais danos que o próprio tremor. (1906).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-005"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-006",
+      "entityId": "wiki-topic-sismo",
+      "text": "Sismo de Valdivia, no Chile, com magnitude de momento 9,5. (1960-05-22).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-006"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-007",
+      "entityId": "wiki-topic-sismo",
+      "text": "Sismo do Alasca, na Enseada do Príncipe Guilherme, com magnitude 9,2. (1964-03-27).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-007"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-008",
+      "entityId": "wiki-topic-sismo",
+      "text": "Grande sismo a sudoeste do Cabo de São Vicente, com magnitude de momento 8,0 segundo reavaliação. (1969-02-28).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-008"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-009",
+      "entityId": "wiki-topic-sismo",
+      "text": "Sismo de Oklahoma, de magnitude 5,7, associado ao descarte de águas residuais da produção de petróleo. (2011).",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-009"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-010",
+      "entityId": "wiki-topic-sismo",
+      "text": "A magnitude de um sismo, por si só, não determina o número de mortes.",
+      "classification": "interpretation",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-010"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-011",
+      "entityId": "wiki-topic-sismo",
+      "text": "Não existe método cientificamente validado que permita prever com confiança a data, o local e a magnitude de um grande sismo individual.",
+      "classification": "documented-fact",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-011"]
+    },
+    {
+      "id": "claim-wiki-topic-sismo-012",
+      "entityId": "wiki-topic-sismo",
+      "text": "A relação entre a barragem de Zipingpu e o sismo de Sujuão de 2008 não foi estabelecida de forma conclusiva.",
+      "classification": "contested-claim",
+      "editorialStatus": "pending",
+      "citationIds": ["cit-wiki-topic-sismo-012"]
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-wiki-topic-commonwealth-001",
+      "claimId": "claim-wiki-topic-commonwealth-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-002",
+      "claimId": "claim-wiki-topic-commonwealth-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-003",
+      "claimId": "claim-wiki-topic-commonwealth-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-004",
+      "claimId": "claim-wiki-topic-commonwealth-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-005",
+      "claimId": "claim-wiki-topic-commonwealth-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-006",
+      "claimId": "claim-wiki-topic-commonwealth-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-007",
+      "claimId": "claim-wiki-topic-commonwealth-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-008",
+      "claimId": "claim-wiki-topic-commonwealth-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-009",
+      "claimId": "claim-wiki-topic-commonwealth-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-010",
+      "claimId": "claim-wiki-topic-commonwealth-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-commonwealth-011",
+      "claimId": "claim-wiki-topic-commonwealth-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-001",
+      "claimId": "claim-wiki-topic-g7-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-002",
+      "claimId": "claim-wiki-topic-g7-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-003",
+      "claimId": "claim-wiki-topic-g7-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-004",
+      "claimId": "claim-wiki-topic-g7-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-005",
+      "claimId": "claim-wiki-topic-g7-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-006",
+      "claimId": "claim-wiki-topic-g7-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-007",
+      "claimId": "claim-wiki-topic-g7-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-008",
+      "claimId": "claim-wiki-topic-g7-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-009",
+      "claimId": "claim-wiki-topic-g7-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-010",
+      "claimId": "claim-wiki-topic-g7-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-g7-011",
+      "claimId": "claim-wiki-topic-g7-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-giuseppe-garibaldi-001",
+      "claimId": "claim-wiki-topic-giuseppe-garibaldi-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-giuseppe-garibaldi-002",
+      "claimId": "claim-wiki-topic-giuseppe-garibaldi-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-giuseppe-garibaldi-003",
+      "claimId": "claim-wiki-topic-giuseppe-garibaldi-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-giuseppe-garibaldi-004",
+      "claimId": "claim-wiki-topic-giuseppe-garibaldi-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-potencias-centrais-001",
+      "claimId": "claim-wiki-topic-potencias-centrais-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-potencias-centrais-002",
+      "claimId": "claim-wiki-topic-potencias-centrais-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-potencias-centrais-003",
+      "claimId": "claim-wiki-topic-potencias-centrais-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-potencias-centrais-004",
+      "claimId": "claim-wiki-topic-potencias-centrais-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-potencias-centrais-005",
+      "claimId": "claim-wiki-topic-potencias-centrais-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-potencias-centrais-006",
+      "claimId": "claim-wiki-topic-potencias-centrais-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-potencias-centrais-007",
+      "claimId": "claim-wiki-topic-potencias-centrais-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-001",
+      "claimId": "claim-wiki-topic-risorgimento-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-002",
+      "claimId": "claim-wiki-topic-risorgimento-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-003",
+      "claimId": "claim-wiki-topic-risorgimento-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-004",
+      "claimId": "claim-wiki-topic-risorgimento-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-005",
+      "claimId": "claim-wiki-topic-risorgimento-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-006",
+      "claimId": "claim-wiki-topic-risorgimento-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-007",
+      "claimId": "claim-wiki-topic-risorgimento-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-008",
+      "claimId": "claim-wiki-topic-risorgimento-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-risorgimento-009",
+      "claimId": "claim-wiki-topic-risorgimento-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-001",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-002",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-003",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-004",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-005",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-006",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-007",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-008",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-do-haiti-de-2010-009",
+      "claimId": "claim-wiki-topic-sismo-do-haiti-de-2010-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-001",
+      "claimId": "claim-wiki-topic-sismo-001",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-002",
+      "claimId": "claim-wiki-topic-sismo-002",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-003",
+      "claimId": "claim-wiki-topic-sismo-003",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-004",
+      "claimId": "claim-wiki-topic-sismo-004",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-005",
+      "claimId": "claim-wiki-topic-sismo-005",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-006",
+      "claimId": "claim-wiki-topic-sismo-006",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-007",
+      "claimId": "claim-wiki-topic-sismo-007",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-008",
+      "claimId": "claim-wiki-topic-sismo-008",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-009",
+      "claimId": "claim-wiki-topic-sismo-009",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-010",
+      "claimId": "claim-wiki-topic-sismo-010",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-011",
+      "claimId": "claim-wiki-topic-sismo-011",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    },
+    {
+      "id": "rev-wiki-topic-sismo-012",
+      "claimId": "claim-wiki-topic-sismo-012",
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "note": "Revisão humana não registrada"
+    }
+  ],
+  "assetLicenses": [],
+  "relations": [],
+  "learningPaths": []
+}

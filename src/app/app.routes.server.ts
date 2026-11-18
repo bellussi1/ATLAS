@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
 import { PrerenderFallback, RenderMode, type ServerRoute } from '@angular/ssr';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { ItineraryRepository } from '@itineraries/services/itinerary-repository.service';
 import { firstValueFrom } from 'rxjs';
 
 export const serverRoutes: ServerRoute[] = [
@@ -12,6 +13,16 @@ export const serverRoutes: ServerRoute[] = [
       const repository = inject(ContentRepository);
       const graph = await firstValueFrom(repository.loadKnowledgeGraph());
       return graph.atlases.flatMap((a) => a.entities.map((e) => ({ slug: e.slug })));
+    },
+  },
+  {
+    path: 'itinerario/:slug',
+    renderMode: RenderMode.Prerender,
+    fallback: PrerenderFallback.None,
+    async getPrerenderParams() {
+      const repository = inject(ItineraryRepository);
+      const items = await repository.list();
+      return items.map((item) => ({ slug: item.slug }));
     },
   },
   { path: '**', renderMode: RenderMode.Prerender },

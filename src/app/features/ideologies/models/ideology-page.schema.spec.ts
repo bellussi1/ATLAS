@@ -30,6 +30,7 @@ describe('Public pages', () => {
     }
     expect(loaded.filter((r) => r.loadComponent && r.path !== '**').map((r) => r.path)).toEqual([
       '',
+      'leituras',
       'leitura/marxismo',
       'leitura/liberalismo',
       'leitura/social-democracia',
@@ -43,7 +44,6 @@ describe('Public pages', () => {
       'acervo/ideologias',
       'acervo/pessoas',
       'acervo/obras',
-      'acervo/fontes',
       'acervo/paises',
       'acervo/estados',
       'acervo/cidades',
@@ -54,7 +54,11 @@ describe('Public pages', () => {
       'acervo/acontecimentos',
       'acervo/conceitos',
       'acervo/lugares',
+      'acervo/fontes',
       'verbete/:slug',
+      'itinerarios',
+      'itinerario/:slug',
+      'privacidade',
     ]);
     expect(routes.find((r) => r.path === '**')?.title).toBe('Página não encontrada — ATLAS');
   });

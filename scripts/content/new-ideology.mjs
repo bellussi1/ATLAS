@@ -26,11 +26,24 @@ const exists = (path) =>
     () => false,
   );
 
-async function loadAtlas(root, atlasId) {
+async function loadAtlas(root, atlasId, allowEmptyAtlas = false) {
   const directory = join(root, 'content/knowledge');
   const manifest = JSON.parse(await readFile(join(directory, 'manifest.json'), 'utf8'));
   const entry = manifest.collections.find((item) => item.id === atlasId);
   if (!entry) {
+    if (allowEmptyAtlas) {
+      return {
+        id: atlasId,
+        title: atlasId,
+        description: '',
+        scope: 'core',
+        entities: [],
+        relations: [],
+        sources: [],
+        claims: [],
+        assetLicenses: [],
+      };
+    }
     const known = manifest.collections.map((item) => item.id).join(', ');
     throw new Error(`Atlas "${atlasId}" não está no manifesto. Disponíveis: ${known}.`);
   }
@@ -38,8 +51,12 @@ async function loadAtlas(root, atlasId) {
 }
 
 /** Writes the two draft files and returns their paths. Never overwrites an existing reading. */
-export async function createIdeologyDraft(input, root = projectRoot) {
-  const atlas = await loadAtlas(root, input.atlasId);
+export async function createIdeologyDraft(
+  input,
+  root = projectRoot,
+  { allowEmptyAtlas = false } = {},
+) {
+  const atlas = await loadAtlas(root, input.atlasId, allowEmptyAtlas);
   const page = ideologyPageSchema.parse(ideologyDraftFromGraph(input, atlas));
   const supplement = ideologyGraphSchema.parse({ sources: [], edges: [] });
   const files = [

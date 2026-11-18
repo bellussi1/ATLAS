@@ -8,11 +8,14 @@ import { expect, openReadingFixture, routeContentFixture, test } from './content
 
 const declaredDestinations = [
   '/',
+  '/leituras',
   '/leitura/marxismo',
   '/leitura/liberalismo',
   '/leitura/social-democracia',
   '/leitura/anarquismo',
+  '/itinerarios',
   '/grafos',
+  '/privacidade',
   ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
 ];
 
@@ -95,7 +98,12 @@ test('reading navigation includes the knowledge explorer', async ({ page }) => {
         .map((u) => u.pathname.replace(/\/$/, '') || '/'),
     );
     expect(
-      hrefs.filter((p) => !declaredDestinations.includes(p) && !p.startsWith('/verbete/')),
+      hrefs.filter(
+        (p) =>
+          !declaredDestinations.includes(p) &&
+          !p.startsWith('/verbete/') &&
+          !p.startsWith('/itinerario/'),
+      ),
     ).toEqual([]);
   }
 });

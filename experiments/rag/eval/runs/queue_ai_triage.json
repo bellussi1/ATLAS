@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-11-16T16:08:58.772785+00:00",
+  "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+  "total_items_triaged": 785,
+  "all_ok_null": true,
+  "human_validated_count": 0,
+  "queues": {
+    "relacoes-candidatas.json": {
+      "count": 80,
+      "by_ai_triage_verdict": {
+        "alta_confianca": 21,
+        "revisar_contexto": 59
+      },
+      "all_ok_null": true
+    },
+    "debates-e-contradicoes.json": {
+      "count": 37,
+      "by_ai_triage_verdict": {
+        "alta_confianca": 35,
+        "revisar_contexto": 2
+      },
+      "all_ok_null": true
+    },
+    "deduplicacao-entidades.json": {
+      "count": 6,
+      "by_ai_triage_verdict": {
+        "revisar_contexto": 3,
+        "alta_confianca": 3
+      },
+      "all_ok_null": true
+    },
+    "fontes-publicas-extraidas.json": {
+      "count": 662,
+      "by_ai_triage_verdict": {
+        "alta_confianca": 627,
+        "revisar_contexto": 35
+      },
+      "all_ok_null": true
+    }
+  }
+}

@@ -4,7 +4,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://upload.wikimedia.org https://thumb.wikimedia.org https://atlas-content-delivery.atlas-bellussi.workers.dev; font-src 'self'; connect-src 'self' https://atlas-content-delivery.atlas-bellussi.workers.dev; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://gc.zgo.at https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://upload.wikimedia.org https://thumb.wikimedia.org https://atlas-content-delivery.atlas-bellussi.workers.dev https://*.goatcounter.com; font-src 'self'; connect-src 'self' https://atlas-content-delivery.atlas-bellussi.workers.dev https://*.goatcounter.com https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
 
 # The build names scripts and styles by content hash, so they never change in place.
 /*.js
@@ -16,3 +16,7 @@
   Cache-Control: public, max-age=2592000
 /brand/*
   Cache-Control: public, max-age=604800
+/analytics-config.js
+  Cache-Control: no-cache
+/health.json
+  Cache-Control: no-store

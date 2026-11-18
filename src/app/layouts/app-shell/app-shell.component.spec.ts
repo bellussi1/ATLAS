@@ -27,16 +27,19 @@ describe('ATLAS navigation', () => {
     const root = fixture.nativeElement as HTMLElement;
     const destinations = [
       '/',
+      '/leituras',
+      '/itinerarios',
       '/leitura/marxismo',
       '/leitura/liberalismo',
       '/leitura/social-democracia',
       '/leitura/anarquismo',
       '/grafos',
+      '/privacidade',
       ...explorerCatalogues.map((catalogue) => catalogueUrl(catalogue.path)),
     ];
     for (const a of root.querySelectorAll<HTMLAnchorElement>('a[href]'))
       if (a.origin === location.origin) expect(destinations).toContain(a.pathname);
-    expect(root.querySelector('header a[href="/acervo"]')).not.toBeNull();
+    expect(root.querySelector('header a[href="/acervo?camada=registros"]')).not.toBeNull();
     expect(root.querySelector('footer a[href="/acervo/pessoas"]')).not.toBeNull();
   });
   it('keeps an unknown address and says it was not found', async () => {
@@ -76,5 +79,21 @@ describe('ATLAS navigation', () => {
     component.dismissFailure();
     fixture.detectChanges();
     expect(root.querySelector('app-navigation-failure')).toBeNull();
+  });
+
+  it('shows the loading feedback panel without hiding the header before the route settles', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const component = fixture.componentInstance;
+    component.navigating.set(true);
+    component.showLoadingScreen.set(true);
+    component.loadingLabel.set('Preparando a rede de ligações…');
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    expect(root.querySelector('app-site-header')).not.toBeNull();
+    expect(root.querySelector('.nav-progress')).not.toBeNull();
+    expect(root.querySelector('.nav-loading')?.textContent).toContain(
+      'Preparando a rede de ligações…',
+    );
   });
 });

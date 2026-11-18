@@ -1,0 +1,79 @@
+{
+  "slug": "adam-smith",
+  "subjectType": "pessoa",
+  "kind": "pessoa",
+  "rootQid": "Q9381",
+  "titles": {
+    "pt": "Adam Smith",
+    "en": "Adam Smith"
+  },
+  "palette": "liberal",
+  "icon": "person",
+  "scope": {
+    "classificationNote": "Filósofo moral e economista escocês (1723–1790), figura central do Iluminismo escocês e autor de Teoria dos Sentimentos Morais e A Riqueza das Nações, marco da economia política clássica e do pensamento liberal.",
+    "period": "1723–1790 (Iluminismo escocês e Revolução Industrial nascente)",
+    "geography": "Escócia, Grã-Bretanha e França, com impacto duradouro no pensamento econômico global",
+    "includes": [
+      "formação em Glasgow e Oxford, Iluminismo escocês e interlocução com David Hume",
+      "Teoria dos Sentimentos Morais (simpatia) e A Riqueza das Nações (divisão do trabalho, valor, mercado)",
+      "crítica ao mercantilismo, papel do Estado e recepção por liberais, marxistas e neoliberais"
+    ],
+    "excludes": [
+      "anacronismos que atribuem a Smith o neoliberalismo contemporâneo sem mediação textual",
+      "detalhes da economia matemática posterior sem vínculo com sua obra"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q9381",
+      "Q6216",
+      "Q7275",
+      "Q9061",
+      "Q6206",
+      "Q2269",
+      "Q12539",
+      "Q160302",
+      "Q34433",
+      "Q37160",
+      "Q47555",
+      "Q192775",
+      "Q35794",
+      "Q82708",
+      "Q233562",
+      "Q13575",
+      "Q350",
+      "Q9592",
+      "Q34217",
+      "Q12562",
+      "Q36947",
+      "Q1642662",
+      "Q984567",
+      "Q2670007",
+      "Q12554",
+      "Q159102",
+      "Q78994",
+      "Q6534",
+      "Q128168",
+      "Q159583",
+      "Q19546",
+      "Q156774",
+      "Q156844",
+      "Q43463",
+      "Q188905",
+      "Q81068910",
+      "Q33986"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação da leitura biográfico-intelectual de Adam Smith."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Adam_Smith"
+    }
+  ],
+  "discovery": {
+    "founderQids": [
+      "Q9381"
+    ],
+    "commonsCategory": "Category:Adam Smith"
+  }
+}

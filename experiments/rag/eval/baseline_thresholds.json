@@ -1,0 +1,24 @@
+{
+  "derived_from_release": "5923d2eb4fda57c52c6e35224a1eac60e162748274b214e651ed14aab9bd0344",
+  "derived_from_bundle_sha256": "0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5",
+  "phase2_retrieval": {
+    "system": "hybrid_rerank_top20_b16",
+    "recall_5_min": 0.7233,
+    "recall_10_min": 0.7988,
+    "mrr_10_min": 0.7193,
+    "ndcg_10_min": 0.6957
+  },
+  "phase3_generation": {
+    "extractive_faithfulness_min": 0.97,
+    "extractive_citation_ok_min": 0.99,
+    "extractive_true_refusal_min": 0.95,
+    "local_llm_citation_ok_min": 0.97
+  },
+  "phase4_graph": {
+    "multi_hop_recall_10_min": 0.7556,
+    "guarded_false_influence_max": 0.0
+  },
+  "phase5_security": {
+    "defense_rate_min": 1.0
+  }
+}

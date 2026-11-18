@@ -1,0 +1,813 @@
+{
+  "release": "5923d2eb4fda57c52c6e35224a1eac60e162748274b214e651ed14aab9bd0344",
+  "bundle_sha256": "0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5",
+  "generated_at": "2026-11-16T16:08:04.430414+00:00",
+  "total_entities": 1224,
+  "entities_without_editorial_edges": 488,
+  "entities_zero_total_degree": 418,
+  "entities_zero_claims": 43,
+  "main_reading_traditions": {
+    "atlas-marx-valor": {
+      "tradition": "marxismo",
+      "observed_editorial_relations": 67,
+      "baseline_target_from_docs": 70,
+      "gap_to_target": 3,
+      "mined_candidates_in_queue": 7
+    },
+    "atlas-liberalism": {
+      "tradition": "liberalismo",
+      "observed_editorial_relations": 37,
+      "baseline_target_from_docs": 35,
+      "gap_to_target": 0,
+      "mined_candidates_in_queue": 7
+    },
+    "atlas-social-democracia": {
+      "tradition": "social-democracia",
+      "observed_editorial_relations": 51,
+      "baseline_target_from_docs": 70,
+      "gap_to_target": 19,
+      "mined_candidates_in_queue": 15
+    },
+    "atlas-anarquismo": {
+      "tradition": "anarquismo",
+      "observed_editorial_relations": 56,
+      "baseline_target_from_docs": 50,
+      "gap_to_target": 0,
+      "mined_candidates_in_queue": 17
+    }
+  },
+  "orphan_sample": [
+    {
+      "id": "article-constituicao-1988",
+      "title": "O caput do artigo 5º da Constituição de 1988",
+      "atlas": "atlas-methodology",
+      "kind": "article",
+      "claims_count": 1
+    },
+    {
+      "id": "concept-historical-materialism",
+      "title": "Materialismo histórico",
+      "atlas": "atlas-marx-valor",
+      "kind": "concept",
+      "claims_count": 0
+    },
+    {
+      "id": "concept-methodology",
+      "title": "Metodologia do ATLAS",
+      "atlas": "atlas-methodology",
+      "kind": "concept",
+      "claims_count": 1
+    },
+    {
+      "id": "concept-scientific-socialism",
+      "title": "Socialismo científico",
+      "atlas": "atlas-marx-valor",
+      "kind": "concept",
+      "claims_count": 0
+    },
+    {
+      "id": "event-american-revolution",
+      "title": "Revolução Americana",
+      "atlas": "atlas-liberalism",
+      "kind": "event",
+      "claims_count": 0
+    },
+    {
+      "id": "event-glorious-revolution",
+      "title": "Revolução Gloriosa",
+      "atlas": "atlas-liberalism",
+      "kind": "event",
+      "claims_count": 0
+    },
+    {
+      "id": "ideology-analytical-marxism",
+      "title": "Marxismo analítico",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "claims_count": 0
+    },
+    {
+      "id": "ideology-conservative-liberalism",
+      "title": "Liberalismo conservador",
+      "atlas": "atlas-liberalism",
+      "kind": "ideology",
+      "claims_count": 3
+    },
+    {
+      "id": "ideology-cultural-liberalism",
+      "title": "Liberalismo cultural",
+      "atlas": "atlas-liberalism",
+      "kind": "ideology",
+      "claims_count": 5
+    },
+    {
+      "id": "ideology-economic-liberalism",
+      "title": "Liberalismo económico",
+      "atlas": "atlas-liberalism",
+      "kind": "ideology",
+      "claims_count": 5
+    },
+    {
+      "id": "ideology-green-liberalism",
+      "title": "Liberalismo verde",
+      "atlas": "atlas-liberalism",
+      "kind": "ideology",
+      "claims_count": 7
+    },
+    {
+      "id": "ideology-marxism-leninism",
+      "title": "Marxismo-leninismo",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "claims_count": 5
+    },
+    {
+      "id": "ideology-marxist-leninist-atheism",
+      "title": "Ateísmo marxista-leninista",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "claims_count": 0
+    },
+    {
+      "id": "ideology-national-liberalism",
+      "title": "Nacional-liberalismo",
+      "atlas": "atlas-liberalism",
+      "kind": "ideology",
+      "claims_count": 3
+    },
+    {
+      "id": "ideology-neo-marxism",
+      "title": "Neomarxismo",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "claims_count": 0
+    },
+    {
+      "id": "ideology-post-marxism",
+      "title": "Pós-marxismo",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "claims_count": 0
+    },
+    {
+      "id": "ideology-socialism",
+      "title": "Socialismo",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "claims_count": 10
+    },
+    {
+      "id": "ideology-western-marxism",
+      "title": "Marxismo ocidental",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "claims_count": 0
+    },
+    {
+      "id": "person-caio-prado-junior",
+      "title": "Caio Prado Júnior",
+      "atlas": "atlas-marx-valor",
+      "kind": "person",
+      "claims_count": 0
+    },
+    {
+      "id": "person-ion-i-c-bratianu",
+      "title": "Ion I. C. Brătianu",
+      "atlas": "atlas-liberalism",
+      "kind": "person",
+      "claims_count": 6
+    },
+    {
+      "id": "person-jose-carlos-mariategui",
+      "title": "José Carlos Mariátegui",
+      "atlas": "atlas-marx-valor",
+      "kind": "person",
+      "claims_count": 0
+    },
+    {
+      "id": "person-luiz-carlos-prestes",
+      "title": "Luís Carlos Prestes",
+      "atlas": "atlas-marx-valor",
+      "kind": "person",
+      "claims_count": 0
+    },
+    {
+      "id": "wiki-topic-1871",
+      "title": "1871",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "event",
+      "claims_count": 8
+    },
+    {
+      "id": "wiki-topic-1945",
+      "title": "1945",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "event",
+      "claims_count": 5
+    },
+    {
+      "id": "wiki-topic-aborto",
+      "title": "Aborto",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 9
+    },
+    {
+      "id": "wiki-topic-aceleracionismo",
+      "title": "Aceleracionismo",
+      "atlas": "atlas-ideologias-principais",
+      "kind": "ideology",
+      "claims_count": 9
+    },
+    {
+      "id": "wiki-topic-adamantios-korais",
+      "title": "Adamántios Koraís",
+      "atlas": "atlas-liberalismo",
+      "kind": "person",
+      "claims_count": 0
+    },
+    {
+      "id": "wiki-topic-advogado",
+      "title": "Advogado",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 8
+    },
+    {
+      "id": "wiki-topic-afeganistao",
+      "title": "Afeganistão",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "place",
+      "claims_count": 12
+    },
+    {
+      "id": "wiki-topic-agnosticismo",
+      "title": "Agnosticismo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 8
+    },
+    {
+      "id": "wiki-topic-agricultura",
+      "title": "Agricultura",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 12
+    },
+    {
+      "id": "wiki-topic-alemaes",
+      "title": "Alemães",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 8
+    },
+    {
+      "id": "wiki-topic-alemanha-oriental",
+      "title": "Alemanha Oriental",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "place",
+      "claims_count": 6
+    },
+    {
+      "id": "wiki-topic-alfabetizacao",
+      "title": "Alfabetização",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 6
+    },
+    {
+      "id": "wiki-topic-ali-latifiyan",
+      "title": "Ali Latifiyan",
+      "atlas": "atlas-liberalismo",
+      "kind": "person",
+      "claims_count": 0
+    },
+    {
+      "id": "wiki-topic-alianca-bolivariana-para-os-povos-da-nossa-america",
+      "title": "Aliança Bolivariana para os Povos da Nossa América",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "institution",
+      "claims_count": 10
+    },
+    {
+      "id": "wiki-topic-alienacao",
+      "title": "Alienação",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 7
+    },
+    {
+      "id": "wiki-topic-ambientalismo",
+      "title": "Ambientalismo",
+      "atlas": "atlas-ideologias-principais",
+      "kind": "ideology",
+      "claims_count": 7
+    },
+    {
+      "id": "wiki-topic-america",
+      "title": "América",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "place",
+      "claims_count": 15
+    },
+    {
+      "id": "wiki-topic-america-espanhola",
+      "title": "América espanhola",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "place",
+      "claims_count": 5
+    },
+    {
+      "id": "wiki-topic-anarcocomunismo",
+      "title": "Anarcocomunismo",
+      "atlas": "atlas-ideologias-principais",
+      "kind": "ideology",
+      "claims_count": 6
+    },
+    {
+      "id": "wiki-topic-anarcossindicalismo",
+      "title": "Anarcossindicalismo",
+      "atlas": "atlas-ideologias-principais",
+      "kind": "ideology",
+      "claims_count": 7
+    },
+    {
+      "id": "wiki-topic-angola",
+      "title": "Angola",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "place",
+      "claims_count": 8
+    },
+    {
+      "id": "wiki-topic-anti-imperialismo",
+      "title": "Anti-imperialismo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "ideology",
+      "claims_count": 13
+    },
+    {
+      "id": "wiki-topic-antiautoritarismo",
+      "title": "Antiautoritarismo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "ideology",
+      "claims_count": 6
+    },
+    {
+      "id": "wiki-topic-anticapitalismo",
+      "title": "Anticapitalismo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "ideology",
+      "claims_count": 7
+    },
+    {
+      "id": "wiki-topic-anticomunismo",
+      "title": "Anticomunismo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "ideology",
+      "claims_count": 14
+    },
+    {
+      "id": "wiki-topic-antissemitismo",
+      "title": "Antissemitismo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "ideology",
+      "claims_count": 15
+    },
+    {
+      "id": "wiki-topic-aquecimento-global",
+      "title": "Aquecimento global",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 17
+    },
+    {
+      "id": "wiki-topic-arabia-saudita",
+      "title": "Arábia Saudita",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "place",
+      "claims_count": 9
+    },
+    {
+      "id": "wiki-topic-aristocracia",
+      "title": "Aristocracia",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 8
+    },
+    {
+      "id": "wiki-topic-assassinio",
+      "title": "Assassínio",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 10
+    },
+    {
+      "id": "wiki-topic-assembleia-constituinte",
+      "title": "Assembleia constituinte",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "institution",
+      "claims_count": 3
+    },
+    {
+      "id": "wiki-topic-associacao",
+      "title": "Associação",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "institution",
+      "claims_count": 5
+    },
+    {
+      "id": "wiki-topic-ataques-de-11-de-setembro-de-2001",
+      "title": "Ataques de 11 de setembro de 2001",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "event",
+      "claims_count": 6
+    },
+    {
+      "id": "wiki-topic-ateismo",
+      "title": "Ateísmo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "institution",
+      "claims_count": 11
+    },
+    {
+      "id": "wiki-topic-atividade-economica",
+      "title": "Atividade econômica",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 7
+    },
+    {
+      "id": "wiki-topic-ativismo",
+      "title": "Ativismo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 6
+    },
+    {
+      "id": "wiki-topic-austria-hungria",
+      "title": "Áustria-Hungria",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "place",
+      "claims_count": 8
+    },
+    {
+      "id": "wiki-topic-austrofascismo",
+      "title": "Austrofascismo",
+      "atlas": "atlas-ideologias-principais",
+      "kind": "ideology",
+      "claims_count": 6
+    },
+    {
+      "id": "wiki-topic-autocracia",
+      "title": "Autocracia",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "institution",
+      "claims_count": 6
+    },
+    {
+      "id": "wiki-topic-autodeterminacao",
+      "title": "Autodeterminação",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 11
+    },
+    {
+      "id": "wiki-topic-autoritarismo",
+      "title": "Autoritarismo",
+      "atlas": "atlas-anarquismo",
+      "kind": "ideology",
+      "claims_count": 12
+    },
+    {
+      "id": "wiki-topic-barcelona",
+      "title": "Barcelona",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "place",
+      "claims_count": 9
+    },
+    {
+      "id": "wiki-topic-basebol",
+      "title": "Basebol",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 16
+    },
+    {
+      "id": "wiki-topic-basquetebol",
+      "title": "Basquetebol",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 7
+    },
+    {
+      "id": "wiki-topic-belo-horizonte",
+      "title": "Belo Horizonte",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "claims_count": 14
+    }
+  ],
+  "zero_claim_sample": [
+    {
+      "id": "concept-historical-materialism",
+      "title": "Materialismo histórico",
+      "atlas": "atlas-marx-valor",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "concept-scientific-socialism",
+      "title": "Socialismo científico",
+      "atlas": "atlas-marx-valor",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "event-american-revolution",
+      "title": "Revolução Americana",
+      "atlas": "atlas-liberalism",
+      "kind": "event",
+      "editorial_degree": 0
+    },
+    {
+      "id": "event-glorious-revolution",
+      "title": "Revolução Gloriosa",
+      "atlas": "atlas-liberalism",
+      "kind": "event",
+      "editorial_degree": 0
+    },
+    {
+      "id": "event-paris-commune",
+      "title": "Comuna de Paris",
+      "atlas": "atlas-marx-valor",
+      "kind": "event",
+      "editorial_degree": 4
+    },
+    {
+      "id": "event-promulgacao-constituicao-1988",
+      "title": "Promulgação da Constituição Federal de 1988",
+      "atlas": "atlas-processo-constituinte",
+      "kind": "event",
+      "editorial_degree": 2
+    },
+    {
+      "id": "ideology-analytical-marxism",
+      "title": "Marxismo analítico",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "editorial_degree": 0
+    },
+    {
+      "id": "ideology-marxist-leninist-atheism",
+      "title": "Ateísmo marxista-leninista",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "editorial_degree": 0
+    },
+    {
+      "id": "ideology-neo-marxism",
+      "title": "Neomarxismo",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "editorial_degree": 0
+    },
+    {
+      "id": "ideology-post-marxism",
+      "title": "Pós-marxismo",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "editorial_degree": 0
+    },
+    {
+      "id": "ideology-western-marxism",
+      "title": "Marxismo ocidental",
+      "atlas": "atlas-marx-valor",
+      "kind": "ideology",
+      "editorial_degree": 0
+    },
+    {
+      "id": "institution-constituinte-1987",
+      "title": "Assembleia Nacional Constituinte de 1987–1988",
+      "atlas": "atlas-processo-constituinte",
+      "kind": "institution",
+      "editorial_degree": 1
+    },
+    {
+      "id": "institution-second-international",
+      "title": "Segunda Internacional",
+      "atlas": "atlas-marx-valor",
+      "kind": "institution",
+      "editorial_degree": 2
+    },
+    {
+      "id": "person-alexis-de-tocqueville",
+      "title": "Alexis de Tocqueville",
+      "atlas": "atlas-liberalism",
+      "kind": "person",
+      "editorial_degree": 1
+    },
+    {
+      "id": "person-caio-prado-junior",
+      "title": "Caio Prado Júnior",
+      "atlas": "atlas-marx-valor",
+      "kind": "person",
+      "editorial_degree": 0
+    },
+    {
+      "id": "person-florestan-fernandes",
+      "title": "Florestan Fernandes",
+      "atlas": "atlas-marx-valor",
+      "kind": "person",
+      "editorial_degree": 1
+    },
+    {
+      "id": "person-friedrich-hayek",
+      "title": "Friedrich Hayek",
+      "atlas": "atlas-liberalism",
+      "kind": "person",
+      "editorial_degree": 3
+    },
+    {
+      "id": "person-jose-carlos-mariategui",
+      "title": "José Carlos Mariátegui",
+      "atlas": "atlas-marx-valor",
+      "kind": "person",
+      "editorial_degree": 0
+    },
+    {
+      "id": "person-luiz-carlos-prestes",
+      "title": "Luís Carlos Prestes",
+      "atlas": "atlas-marx-valor",
+      "kind": "person",
+      "editorial_degree": 0
+    },
+    {
+      "id": "person-rosa-luxemburg",
+      "title": "Rosa Luxemburgo",
+      "atlas": "atlas-marx-valor",
+      "kind": "person",
+      "editorial_degree": 7
+    },
+    {
+      "id": "person-ulysses-guimaraes",
+      "title": "Ulysses Guimarães",
+      "atlas": "atlas-processo-constituinte",
+      "kind": "person",
+      "editorial_degree": 1
+    },
+    {
+      "id": "place-plenario-camara",
+      "title": "Plenário da Câmara dos Deputados",
+      "atlas": "atlas-processo-constituinte",
+      "kind": "place",
+      "editorial_degree": 1
+    },
+    {
+      "id": "wiki-topic-adamantios-korais",
+      "title": "Adamántios Koraís",
+      "atlas": "atlas-liberalismo",
+      "kind": "person",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-ali-latifiyan",
+      "title": "Ali Latifiyan",
+      "atlas": "atlas-liberalismo",
+      "kind": "person",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-capital-economia",
+      "title": "Capital (economia)",
+      "atlas": "atlas-marxismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-deng-xiaoping",
+      "title": "Deng Xiaoping",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "person",
+      "editorial_degree": 5
+    },
+    {
+      "id": "wiki-topic-ecologismo",
+      "title": "Ecologismo",
+      "atlas": "atlas-outras-ideologias",
+      "kind": "ideology",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-economia-marxiana",
+      "title": "Economia marxiana",
+      "atlas": "atlas-marxismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-filosofia-marxista",
+      "title": "Filosofia marxista",
+      "atlas": "atlas-marxismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-genocidio",
+      "title": "Genocídio",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "concept",
+      "editorial_degree": 1
+    },
+    {
+      "id": "wiki-topic-igualitarismo",
+      "title": "Igualitarismo",
+      "atlas": "atlas-liberalismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-imprensa",
+      "title": "Imprensa",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "work",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-internacionalismo-proletario",
+      "title": "Internacionalismo proletário",
+      "atlas": "atlas-marxismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-livre-associacao-conceito",
+      "title": "Livre associação (conceito)",
+      "atlas": "atlas-marxismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-mais-valia",
+      "title": "Mais-valia",
+      "atlas": "atlas-marxismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-marxismo-leninismo-maoismo",
+      "title": "Marxismo-leninismo-maoismo",
+      "atlas": "atlas-marxismo",
+      "kind": "ideology",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-mary-wollstonecraft",
+      "title": "Mary Wollstonecraft",
+      "atlas": "atlas-liberalismo",
+      "kind": "person",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-meios-de-producao",
+      "title": "Meios de produção",
+      "atlas": "atlas-marxismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-mercado-livre",
+      "title": "Mercado livre",
+      "atlas": "atlas-liberalismo",
+      "kind": "concept",
+      "editorial_degree": 0
+    },
+    {
+      "id": "wiki-topic-trabalhismo",
+      "title": "Trabalhismo",
+      "atlas": "atlas-ideologias-principais",
+      "kind": "ideology",
+      "editorial_degree": 1
+    },
+    {
+      "id": "work-constituicao-federal-1988",
+      "title": "Constituição da República Federativa do Brasil de 1988",
+      "atlas": "atlas-processo-constituinte",
+      "kind": "work",
+      "editorial_degree": 2
+    },
+    {
+      "id": "work-materialism-and-empirio-criticism",
+      "title": "Materialismo e Empiriocriticismo",
+      "atlas": "atlas-marx-valor",
+      "kind": "work",
+      "editorial_degree": 2
+    },
+    {
+      "id": "work-the-work-of-art-in-the-age-of-mechanical-reproduction",
+      "title": "A Obra de Arte na Era de Sua Reprodutibilidade Técnica",
+      "atlas": "atlas-marx-valor",
+      "kind": "work",
+      "editorial_degree": 1
+    }
+  ]
+}

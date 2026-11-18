@@ -9,12 +9,12 @@ import {
   relationGroups,
 } from '@core/content/editorial/reader-voice';
 import { amazonBookLink } from '@core/content/queries/amazon-books';
+import { itinerariesForEntity, readingsForEntity } from '@core/content/queries/cross-links';
 import { entityContext } from '@core/content/queries/entity-context';
 import { catalogueUrl, explorerCatalogues } from '@core/content/queries/explorer-catalogues';
 import { catalogueForKind, safeExplorerReturn } from '@core/content/queries/knowledge-explorer';
 import { contentLanguageLabels, localizedEntity } from '@core/content/queries/localized-content';
 import { ContentRepository } from '@core/content/repositories/content-repository.service';
-import { readingPath } from '@core/routing/reading-routes';
 import { EntityProfileComponent } from '@exploration/components/entity-profile/entity-profile.component';
 import { AtlasClaimReferencesComponent } from '@shared/ui/claim-references/claim-references.component';
 import { AtlasGeometricIllustrationComponent } from '@shared/ui/geometric-illustration/geometric-illustration.component';
@@ -120,30 +120,18 @@ export class RecordComponent {
   readonly entry = computed(() =>
     this.repository.discoveryIndex.find((e) => e.id === this.entity()?.id),
   );
-  /** Continuous readings that use this record as an entry point. */
-  private readonly readingByEntity: Readonly<Record<string, { path: string; title: string }>> = {
-    'ideology-marxism': { path: readingPath('marxismo'), title: 'Marxismo' },
-    'person-karl-marx': { path: readingPath('marxismo'), title: 'Marxismo' },
-    'person-friedrich-engels': { path: readingPath('marxismo'), title: 'Marxismo' },
-    'ideology-liberalism': { path: readingPath('liberalismo'), title: 'Liberalismo' },
-    'person-john-locke': { path: readingPath('liberalismo'), title: 'Liberalismo' },
-    'person-adam-smith': { path: readingPath('liberalismo'), title: 'Liberalismo' },
-    'person-john-stuart-mill': { path: readingPath('liberalismo'), title: 'Liberalismo' },
-    'wiki-topic-social-democracia': {
-      path: readingPath('social-democracia'),
-      title: 'Social-democracia',
-    },
-    'wiki-topic-anarquismo': { path: readingPath('anarquismo'), title: 'Anarquismo' },
-    'person-mikhail-bakunin': { path: readingPath('anarquismo'), title: 'Anarquismo' },
-    'person-piotr-kropotkin': { path: readingPath('anarquismo'), title: 'Anarquismo' },
-    'wiki-topic-nazismo': { path: readingPath('nazismo'), title: 'Nazismo' },
-    'wiki-topic-stalinismo': { path: readingPath('stalinismo'), title: 'Stalinismo' },
-    'wiki-ideologia-trabalhismo-brasileiro': {
-      path: readingPath('trabalhismo'),
-      title: 'Trabalhismo',
-    },
-  };
-  readonly dossier = computed(() => this.readingByEntity[this.entity()?.id ?? ''] ?? null);
+  /** Continuous reading that frames this record or its collection. */
+  readonly dossier = computed(() => {
+    const entity = this.entity();
+    return entity ? (readingsForEntity(entity.id, entity.slug, this.atlas()?.id)[0] ?? null) : null;
+  });
+  /** Published itineraries that visit this record. */
+  readonly itineraries = computed(() => {
+    const entity = this.entity();
+    return entity
+      ? itinerariesForEntity(entity.id, entity.slug, this.repository.bundledItineraries)
+      : [];
+  });
   /** Purchase link only for records that are books with a known author. */
   readonly amazon = computed(() => {
     const entity = this.entity();
@@ -174,16 +162,29 @@ export class RecordComponent {
     const context = this.context();
     return context ? editorialSeal(context) : '';
   });
-  /** Other records of the same kind, as a way to keep reading. */
+  /** Direct graph neighbours first, completed with records of the same kind. */
   readonly related = computed(() => {
     const current = this.entry();
     if (!current) return [];
-    return this.repository.discoveryIndex
-      .filter(
-        (item) =>
-          item.kind === current.kind && item.id !== current.id && item.path.startsWith('/verbete/'),
-      )
-      .slice(0, 6);
+    const byId = new Map(this.repository.discoveryIndex.map((item) => [item.id, item]));
+    const picked = new Set<string>([current.id]);
+    const list: (typeof this.repository.discoveryIndex)[number][] = [];
+    for (const conn of this.context()?.connections ?? []) {
+      const target = byId.get(conn.entityId);
+      if (target && !picked.has(target.id) && target.path.startsWith('/verbete/')) {
+        picked.add(target.id);
+        list.push(target);
+        if (list.length >= 6) return list;
+      }
+    }
+    for (const item of this.repository.discoveryIndex) {
+      if (item.kind === current.kind && !picked.has(item.id) && item.path.startsWith('/verbete/')) {
+        picked.add(item.id);
+        list.push(item);
+        if (list.length >= 6) break;
+      }
+    }
+    return list;
   });
   readonly catalogue = computed(() => {
     const kind = this.entry()?.kind;

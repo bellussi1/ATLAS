@@ -9,6 +9,7 @@ const aliases = {
   '@shared/': 'shared/',
   '@ideologies/': 'features/ideologies/',
   '@exploration/': 'features/exploration/',
+  '@itineraries/': 'features/itineraries/',
   '@study/': 'features/study/',
   '@layouts/': 'layouts/',
   '@pages/': 'pages/',

@@ -57,6 +57,70 @@ describe('KnowledgeNetworkComponent', () => {
     });
     const fixture = await render();
     expect(fixture.componentInstance.positions()).toEqual(new Map(Object.entries(positions)));
+    expect(fixture.componentInstance.loading()).toBe(false);
+  });
+
+  it('orders the filter panels cleanly, omits removed panels, and collapses collections by default', async () => {
+    const fixture = await render();
+    const panels = [
+      ...root(fixture).querySelectorAll<HTMLDetailsElement>('#graph-controls details.panel'),
+    ];
+    const titles = panels.map((panel) => panel.querySelector('summary h2')?.textContent?.trim());
+    expect(titles).toEqual(['Tipos de nó', 'Caminho', 'Tipos de ligação', 'Coleções']);
+    for (const removed of ['Escopo', 'Vizinhança', 'Período'])
+      expect(titles).not.toContain(removed);
+    expect(panels[0].open).toBe(true);
+    expect(panels[1].open).toBe(true);
+    expect(panels[2].open).toBe(true);
+    expect(panels[3].open).toBe(false);
+  });
+
+  it('sets, swaps and follows path endpoints via the path controls', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const edge = component.visible().edges.find((item) => item.source !== item.target)!;
+    expect(edge).toBeDefined();
+    component.setPathEndpoint('from', edge.source);
+    component.setPathEndpoint('to', edge.target);
+    fixture.detectChanges();
+    expect(root(fixture).querySelector('#graph-path-summary')?.textContent).toContain('1 passo');
+    const steps = root(fixture).querySelectorAll<HTMLButtonElement>('.path-steps .path-step');
+    expect(steps.length).toBe(2);
+    steps[1].click();
+    fixture.detectChanges();
+    expect(component.selectedId()).toBe(edge.target);
+    expect(root(fixture).querySelector('button')?.textContent).toBeDefined();
+    component.nextPathVariant();
+    fixture.detectChanges();
+    component.clearPath();
+    fixture.detectChanges();
+    expect(component.pathFrom()).toBeNull();
+    expect(component.pathTo()).toBeNull();
+  });
+
+  it('clears an active path when selecting another node, but keeps it when inspecting a path step', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    const { nodes, edges } = component.visible();
+    const edge = edges[0];
+    const other = nodes.find((n) => n.id !== edge.source && n.id !== edge.target)!;
+    component.setPathEndpoint('from', edge.source);
+    component.setPathEndpoint('to', edge.target);
+    component.select(edge.target, false, true);
+    fixture.detectChanges();
+    expect(component.pathFrom()).toBe(edge.source);
+    expect(component.pathTo()).toBe(edge.target);
+
+    component.select(edge.source, false, true);
+    fixture.detectChanges();
+    expect(component.pathFrom()).toBe(edge.source);
+    expect(component.pathTo()).toBe(edge.target);
+
+    component.select(other.id);
+    fixture.detectChanges();
+    expect(component.selectedId()).toBe(other.id);
+    expect(component.pathFrom()).toBeNull();
+    expect(component.pathTo()).toBeNull();
   });
 
   it('shows a loading state until the layout is ready, then draws nodes', async () => {
@@ -137,6 +201,9 @@ describe('KnowledgeNetworkComponent', () => {
     expect(detail.querySelector('h2')?.textContent).toContain(first.title);
     expect(detail.querySelector('a[href^="/verbete/"]')?.getAttribute('href')).toBe(
       `/verbete/${first.slug}`,
+    );
+    expect(detail.querySelector('.detail__paths a[href^="/leitura/"]')?.getAttribute('href')).toBe(
+      '/leitura/liberalismo',
     );
   });
 
@@ -285,8 +352,8 @@ describe('KnowledgeNetworkComponent', () => {
     const view = component.view();
     const inset = component.insets();
     for (const label of component.labels()) {
-      const x = view.x + label.wx + label.dx;
-      const y = view.y + label.wy + label.dy;
+      const x = view.x + label.worldX * view.k + label.dx;
+      const y = view.y + label.worldY * view.k + label.dy;
       expect(y).toBeGreaterThanOrEqual(inset.top - 1);
       expect(y).toBeLessThanOrEqual(700 - inset.bottom + 1);
       expect(x).toBeGreaterThanOrEqual(inset.left - 1);
@@ -350,8 +417,8 @@ describe('KnowledgeNetworkComponent', () => {
     const fitSize = component.size();
     const fitCells = new Set(
       component.labels().map((label) => {
-        const x = fitView.x + label.wx + label.dx;
-        const y = fitView.y + label.wy + label.dy;
+        const x = fitView.x + label.worldX * fitView.k + label.dx;
+        const y = fitView.y + label.worldY * fitView.k + label.dy;
         return `${Math.min(3, Math.max(0, Math.floor((x / fitSize.width) * 4)))}:${Math.min(
           2,
           Math.max(0, Math.floor((y / fitSize.height) * 3)),
@@ -500,6 +567,8 @@ describe('KnowledgeNetworkComponent', () => {
     fixture.detectChanges();
     expect(root(fixture).querySelector('.edge-hits')).toBeNull();
     component.zoomBy(3, { x: 700, y: 450 });
+    component.pointerAt.set({ x: 400, y: 300 });
+    component.hoverNode(linked.node.id);
     fixture.detectChanges();
     expect(component.near()).toBe(true);
     expect(component.hoverCard()?.node?.top.length).toBeGreaterThan(0);
@@ -509,5 +578,19 @@ describe('KnowledgeNetworkComponent', () => {
   it('keeps the nodes still: nothing in the map floats or sways', async () => {
     const fixture = await render();
     expect(root(fixture).querySelector('[class*="drift"]')).toBeNull();
+  });
+
+  it('treats slider input as a busy zoom and settles on release', async () => {
+    const fixture = await render();
+    const component = fixture.componentInstance;
+    component.slideZoom(200);
+    fixture.detectChanges();
+    expect(component.busy()).toBe(true);
+    expect(root(fixture).querySelector('.stage')?.classList.contains('stage--busy')).toBe(true);
+    component.settleZoom(200);
+    fixture.detectChanges();
+    await vi.waitFor(() => expect(component.busy()).toBe(false));
+    fixture.detectChanges();
+    expect(root(fixture).querySelector('.stage')?.classList.contains('stage--busy')).toBe(false);
   });
 });

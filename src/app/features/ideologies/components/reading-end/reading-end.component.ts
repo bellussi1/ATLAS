@@ -1,9 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { entityMedia } from '@core/content/media/asset-license';
-import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
-import type { AssetLicense } from '@core/content/models/content-schema';
-import { ContentRepository } from '@core/content/repositories/content-repository.service';
+import { itinerariesForReading, readingRootNodeId } from '@core/content/queries/cross-links';
 import { readingPath } from '@core/routing/reading-routes';
 import {
   readingPalette,
@@ -19,13 +16,6 @@ interface EndCard extends ResolvedReadingConnection {
   relationLabel: string;
   palette: MosaicPalette;
   seed: number;
-  /** Licensed picture of the target, never a repeated portrait inside the same ending. */
-  media: AssetLicense | null;
-}
-
-interface EndCredit {
-  label: string;
-  media: AssetLicense;
 }
 
 /**
@@ -34,20 +24,20 @@ interface EndCredit {
  */
 @Component({
   selector: 'app-ideology-reading-end',
-  imports: [RouterLink, ContentMediaPipe, AtlasGeometricMosaicComponent],
+  imports: [RouterLink, AtlasGeometricMosaicComponent],
   templateUrl: './reading-end.component.html',
   styleUrl: './reading-end.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IdeologyReadingEndComponent {
-  private readonly repository = inject(ContentRepository);
-
   readonly connections = input.required<readonly ResolvedReadingConnection[]>();
   readonly lead = input<ResolvedReadingConnection | null>(null);
+  readonly readingSlug = input<string>('');
   readonly readingPath = readingPath;
+  readonly itineraries = computed(() => itinerariesForReading(this.readingSlug()));
+  readonly graphNodeId = computed(() => readingRootNodeId(this.readingSlug()));
 
   readonly cards = computed<EndCard[]>(() => {
-    const graph = this.repository.knowledgeGraph;
     const lead = this.lead();
     return this.connections().map((connection, index) => ({
       ...connection,
@@ -55,13 +45,6 @@ export class IdeologyReadingEndComponent {
       relationLabel: readingRelationLabels[connection.relation],
       palette: readingPalette(connection.slug),
       seed: index * 11 + 3,
-      media: connection.imageEntityId
-        ? (entityMedia(graph, { id: connection.imageEntityId }) ?? null)
-        : null,
     }));
   });
-
-  readonly credits = computed<EndCredit[]>(() =>
-    this.cards().flatMap((card) => (card.media ? [{ label: card.label, media: card.media }] : [])),
-  );
 }

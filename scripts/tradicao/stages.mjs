@@ -138,11 +138,11 @@ async function readingPlan(ctx, registry) {
   if (registry.kind === 'programa')
     return { atlasId, outputAtlasId: atlasId, rootQid: null, slugs: null };
   const graph = await readSourceGraph(join(ctx.root, 'content/knowledge'));
-  const root = graph.atlases
-    .flatMap((atlas) => atlas.entities)
-    .find(
+  const allEntities = graph.atlases.flatMap((atlas) => atlas.entities);
+  const root =
+    allEntities.find(
       (entity) => entity.kind === 'ideology' && entity.externalIds?.wikidata === registry.rootQid,
-    );
+    ) ?? allEntities.find((entity) => entity.externalIds?.wikidata === registry.rootQid);
   return {
     atlasId,
     outputAtlasId: atlasId,
@@ -225,7 +225,9 @@ export const stages = [
       const p = paths(ctx);
       await writeFormattedJson(p.seeds, seedsFile(entry));
       if (!(await exists(p.page)))
-        return void (await createIdeologyDraft(draftInput(entry), ctx.root));
+        return void (await createIdeologyDraft(draftInput(entry), ctx.root, {
+          allowEmptyAtlas: true,
+        }));
       // A reading released before `identity.palette` existed keeps its content; only the palette it
       // already resolves to (see `paletteOf`) is written down, so the registry and the page agree.
       const raw = await readFile(p.page, 'utf8');
@@ -654,8 +656,13 @@ export const stages = [
     },
     inputs: (c) => [paths(c).extracts],
     outputs: (c) => [paths(c).manifest],
-    commands: () => [
-      command('converter rascunhos', ['node', 'scripts/content/wiki-drafts-to-collections.mjs']),
+    commands: (c) => [
+      command('converter rascunhos', [
+        'node',
+        'scripts/content/wiki-drafts-to-collections.mjs',
+        '--tradition',
+        c.slug,
+      ]),
     ],
     async gate(ctx) {
       const p = paths(ctx);
@@ -766,11 +773,20 @@ export const stages = [
       }
       const glossary = buildGlossary(entities);
       glossary.links = glossary.links.filter((link) => atlasIds.has(link.entityId));
+      const hovers = Object.fromEntries(
+        entities.map((e) => [e.id, { oneLine: e.oneLine, summary: e.summary }]),
+      );
+      for (const atlas of graph.atlases) {
+        for (const entity of atlas.entities) {
+          if (!atlasIds.has(entity.id) || hovers[entity.id]) continue;
+          const summary = (entity.summary || entity.shortDefinition || entity.title).slice(0, 600);
+          const oneLine = (entity.shortDefinition || entity.summary || entity.title).slice(0, 140);
+          hovers[entity.id] = { oneLine, summary };
+        }
+      }
       await writeJsonAtomic(p.glossary, {
         ...glossary,
-        hovers: Object.fromEntries(
-          entities.map((e) => [e.id, { oneLine: e.oneLine, summary: e.summary }]),
-        ),
+        hovers,
       });
     },
     async gate(ctx) {
@@ -1015,7 +1031,12 @@ export const stages = [
       command('conferir licença por arquivo', ['node', 'scripts/tradicao/images.mjs', c.slug], {
         network: true,
       }),
-      command('gravar ativos no grafo', ['node', 'scripts/content/wiki-drafts-to-collections.mjs']),
+      command('gravar ativos no grafo', [
+        'node',
+        'scripts/content/wiki-drafts-to-collections.mjs',
+        '--tradition',
+        c.slug,
+      ]),
     ],
     async gate(ctx) {
       const page = await readJsonOr(paths(ctx).page, null);

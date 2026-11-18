@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-socialismo-reforma-e-revolucao",
+  "slug": "socialismo-reforma-e-revolucao",
+  "kind": "comparativo",
+  "title": "Socialismo Revolucionário, Reformismo Social-Democrata e Autogestão Anarquista",
+  "question": "Como as diferentes visões sobre a transformação social se manifestaram no século XX?",
+  "deck": "Este itinerário explora as divergências e convergências entre o socialismo revolucionário, o reformismo social-democrata e a autogestão anarquista, analisando suas raízes, principais teóricos e impactos históricos.",
+  "summary": "Explore as diferentes abordagens para a construção de uma sociedade mais justa, desde a revolução até a reforma gradual, e a busca por uma sociedade sem Estado.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "wiki-topic-socialismo-revolucionario",
+      "title": "Socialismo Revolucionário",
+      "reason": "Introdução ao conceito de socialismo revolucionário, suas características e principais teóricos. Aborda a crença na necessidade de uma revolução para derrubar o capitalismo e estabelecer uma sociedade socialista.",
+      "question": "Quais as principais características do socialismo revolucionário?",
+      "destination": {
+        "type": "verbete",
+        "slug": "socialismo-revolucionario"
+      },
+      "justification": "Ponto de partida para entender as diferentes visões sobre a transformação social.",
+      "contextEntityId": "wiki-topic-socialismo-revolucionario",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-reformismo-marxismo",
+      "title": "Reformismo Marxista",
+      "reason": "Exploração do reformismo marxista como uma alternativa ao socialismo revolucionário. Aborda a crença na possibilidade de alcançar o socialismo através de reformas graduais dentro do sistema capitalista.",
+      "question": "Como o reformismo marxista se diferencia do socialismo revolucionário?",
+      "destination": {
+        "type": "verbete",
+        "slug": "reformismo-marxismo"
+      },
+      "justification": "Apresenta uma visão alternativa à revolução, abrindo espaço para a discussão sobre as diferentes estratégias para a transformação social.",
+      "contextEntityId": "wiki-topic-reformismo-marxismo",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-anarcossindicalismo",
+      "title": "Anarcossindicalismo",
+      "reason": "Introdução ao anarcossindicalismo como uma corrente anarquista que busca a autogestão e a abolição do Estado através da organização sindical.",
+      "question": "Como o anarcossindicalismo propõe a construção de uma sociedade sem Estado?",
+      "destination": {
+        "type": "verbete",
+        "slug": "anarcossindicalismo"
+      },
+      "justification": "Apresenta uma perspectiva anarquista sobre a organização social e econômica, complementando as visões anteriores.",
+      "contextEntityId": "wiki-topic-anarcossindicalismo",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-socialismo-libertario",
+      "title": "Socialismo Libertário",
+      "reason": "Exploração do socialismo libertário como uma corrente que busca a liberdade individual e a autogestão dentro de uma sociedade socialista.",
+      "question": "Quais os elementos que unem o socialismo libertário ao anarcossindicalismo?",
+      "destination": {
+        "type": "verbete",
+        "slug": "socialismo-libertario"
+      },
+      "justification": "Destaca a conexão entre diferentes correntes que buscam a liberdade individual e a autogestão.",
+      "contextEntityId": "wiki-topic-socialismo-libertario",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-comunismo-de-conselhos",
+      "title": "Comunismo de Conselhos",
+      "reason": "Análise do comunismo de conselhos como uma corrente que busca a autogestão através de conselhos de trabalhadores e a abolição do Estado.",
+      "question": "Como o comunismo de conselhos se diferencia do socialismo libertário?",
+      "destination": {
+        "type": "grafo",
+        "nodeId": "wiki-topic-comunismo-de-conselhos"
+      },
+      "justification": "Apresenta uma corrente específica dentro do comunismo que busca a autogestão através de conselhos, aprofundando a discussão sobre diferentes modelos de organização social.",
+      "contextEntityId": "wiki-topic-comunismo-de-conselhos",
+      "sourceIds": ["src-1"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "branch-reformismo-social-democracia",
+      "fromStop": "wiki-topic-reformismo-marxismo",
+      "title": "Reformismo Social-Democrata",
+      "reason": "Explorar a evolução do reformismo marxista para o socialismo democrático, analisando suas características e principais partidos.",
+      "question": "Como o reformismo marxista se traduziu em partidos social-democratas?",
+      "destination": {
+        "type": "verbete",
+        "slug": "socialismo-democratico"
+      },
+      "justification": "Explica a trajetória histórica do reformismo marxista e sua influência na formação de partidos social-democratas.",
+      "convergesAt": "wiki-topic-anarcossindicalismo"
+    },
+    {
+      "id": "branch-socialismo-revolucionario-exemplos",
+      "fromStop": "wiki-topic-socialismo-revolucionario",
+      "title": "Exemplos de Socialismo Revolucionário",
+      "reason": "Analisar exemplos históricos de movimentos e regimes inspirados no socialismo revolucionário, como a Revolução Russa e a China Maoista.",
+      "question": "Quais foram os principais movimentos e regimes inspirados no socialismo revolucionário?",
+      "destination": {
+        "type": "grafo",
+        "nodeId": "wiki-topic-socialismo-revolucionario"
+      },
+      "justification": "Apresenta exemplos concretos da aplicação do socialismo revolucionário na história, mostrando seus impactos e desafios.",
+      "exit": "Saída paralela para aprofundamento no verbete."
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "reason": "Conectar o estudo com eventos históricos relacionados aos movimentos e ideias explorados."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-1",
+      "title": "Enciclopédia Britannica"
+    }
+  ],
+  "updatedAt": "2026-11-17",
+  "version": "1.0.0"
+}

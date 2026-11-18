@@ -1,0 +1,27 @@
+{
+  "data": {
+    "viewer": {
+      "accounts": [
+        {
+          "rumPageloadEventsAdaptiveGroups": [
+            {
+              "count": 240,
+              "sum": { "visits": 150 },
+              "dimensions": { "requestPath": "/leitura/marxismo/" }
+            },
+            {
+              "count": 70,
+              "sum": { "visits": 55 },
+              "dimensions": { "requestPath": "/itinerario/trabalhismo-e-estado-social" }
+            },
+            {
+              "count": 30,
+              "sum": { "visits": 20 },
+              "dimensions": { "requestPath": "/verbete/brasil" }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

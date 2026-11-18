@@ -29,6 +29,8 @@ export const assumedOutputTokens = {
 };
 
 function rates(model, promptTokens) {
+  if (typeof model === 'string' && (model.startsWith('local:') || model.startsWith('ollama/')))
+    return { input: 0, output: 0 };
   const price = prices[model];
   if (!price) throw new Error(`Modelo sem preço na tabela: ${model}`);
   const long = price.longPrompt;

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "id": "itinerary-guerra-fria-e-ordem-internacional",
+  "slug": "guerra-fria-e-ordem-internacional",
+  "kind": "historico",
+  "title": "A Guerra Fria e o Mundo em Transformação",
+  "question": "Como a Guerra Fria moldou a geopolítica global e as instituições internacionais?",
+  "deck": "Este itinerário explora as raízes da Guerra Fria, o papel da ONU e da OTAN, e os principais conflitos e tensões geopolíticas do século XX.",
+  "summary": "Este percurso analisa a Guerra Fria como um conflito ideológico e geopolítico, destacando seus impactos nas relações internacionais e nas instituições globais.",
+  "status": "reviewed-ai",
+  "coverage": "complete",
+  "review": {
+    "status": "assistant",
+    "notes": "[conferência de IA] Gerado automaticamente com aterramento no grafo canônico; aguarda revisão humana para promoção a verified."
+  },
+  "stops": [
+    {
+      "id": "wiki-topic-guerra-fria",
+      "title": "Origens da Guerra Fria",
+      "reason": "Esta parada introduz o contexto histórico da Guerra Fria, suas raízes ideológicas e o início da rivalidade entre EUA e URSS.",
+      "question": "Quais foram os principais fatores que contribuíram para o surgimento da Guerra Fria?",
+      "destination": {
+        "type": "verbete",
+        "slug": "guerra-fria"
+      },
+      "justification": "Começamos pelo conceito central do itinerário.",
+      "contextEntityId": "wiki-topic-guerra-fria",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-organizacao-das-nacoes-unidas",
+      "title": "A ONU e a Busca pela Paz",
+      "reason": "Esta parada explora o papel da ONU como um mecanismo de cooperação internacional e sua tentativa de manter a paz durante a Guerra Fria.",
+      "question": "Como a ONU tentou lidar com as tensões da Guerra Fria e promover a cooperação internacional?",
+      "destination": {
+        "type": "verbete",
+        "slug": "organizacao-das-nacoes-unidas"
+      },
+      "justification": "A ONU é uma instituição crucial para entender a geopolítica da época.",
+      "contextEntityId": "wiki-topic-organizacao-das-nacoes-unidas",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-aliados-da-segunda-guerra-mundial",
+      "title": "A OTAN e a Aliança Ocidental",
+      "reason": "Esta parada analisa a formação da OTAN como uma resposta à expansão soviética e seu papel na contenção do comunismo.",
+      "question": "Qual foi o papel da OTAN na Guerra Fria e como ela moldou a segurança europeia?",
+      "destination": {
+        "type": "verbete",
+        "slug": "aliados-da-segunda-guerra-mundial"
+      },
+      "justification": "A OTAN é um elemento fundamental para entender a bipolaridade da Guerra Fria.",
+      "contextEntityId": "wiki-topic-aliados-da-segunda-guerra-mundial",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-ruptura-sino-sovietica",
+      "title": "A Divisão do Bloco Soviético",
+      "reason": "Esta parada explora a ruptura entre a China e a URSS, mostrando a complexidade e as fragilidades do bloco comunista.",
+      "question": "Como a ruptura sino-soviética impactou a Guerra Fria e a geopolítica global?",
+      "destination": {
+        "type": "verbete",
+        "slug": "ruptura-sino-sovietica"
+      },
+      "justification": "A ruptura demonstra a diversidade dentro do bloco comunista.",
+      "contextEntityId": "wiki-topic-ruptura-sino-sovietica",
+      "sourceIds": ["src-1"]
+    },
+    {
+      "id": "wiki-topic-crise-de-suez",
+      "title": "A Crise de Suez e a Ascensão do Nacionalismo",
+      "reason": "Esta parada analisa a crise de Suez como um exemplo de como a Guerra Fria se manifestou em conflitos regionais e a ascensão do nacionalismo.",
+      "question": "Como a Crise de Suez demonstrou a influência da Guerra Fria em conflitos regionais?",
+      "destination": {
+        "type": "verbete",
+        "slug": "crise-de-suez"
+      },
+      "justification": "A crise de Suez é um exemplo concreto da Guerra Fria em ação.",
+      "contextEntityId": "wiki-topic-crise-de-suez",
+      "sourceIds": ["src-1"]
+    }
+  ],
+  "branches": [
+    {
+      "id": "branch-guerra-da-coreia",
+      "fromStop": "wiki-topic-guerra-fria",
+      "title": "A Guerra da Coreia: Um Conflito Frio",
+      "reason": "A Guerra da Coreia foi um dos primeiros grandes conflitos da Guerra Fria, mostrando a escalada de tensões entre EUA e URSS.",
+      "question": "Como a Guerra da Coreia exemplifica a natureza da Guerra Fria?",
+      "destination": {
+        "type": "verbete",
+        "slug": "guerra-da-coreia"
+      },
+      "justification": "A Guerra da Coreia é um ponto crucial para entender a Guerra Fria.",
+      "convergesAt": "wiki-topic-organizacao-das-nacoes-unidas"
+    },
+    {
+      "id": "branch-impacto-global",
+      "fromStop": "wiki-topic-organizacao-das-nacoes-unidas",
+      "title": "O Impacto da Guerra Fria no Mundo",
+      "reason": "Esta ramificação explora os impactos da Guerra Fria em diferentes regiões do mundo, como a África, a Ásia e a América Latina.",
+      "question": "Como a Guerra Fria moldou a geopolítica e as relações internacionais em diferentes regiões do mundo?",
+      "destination": {
+        "type": "catalogo",
+        "path": "acontecimentos"
+      },
+      "justification": "A Guerra Fria teve impactos globais que vão além da bipolaridade.",
+      "exit": "Saída paralela para consulta contextual antes de retomar o eixo principal."
+    }
+  ],
+  "connections": [
+    {
+      "destination": {
+        "type": "catalogo",
+        "path": "ideologias"
+      },
+      "reason": "Para aprofundar a compreensão das ideologias que marcaram a Guerra Fria"
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-1",
+      "title": "História da Guerra Fria - Editora X"
+    }
+  ],
+  "updatedAt": "2026-11-17",
+  "version": "1.0.0"
+}

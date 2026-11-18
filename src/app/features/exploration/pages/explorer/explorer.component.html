@@ -1,10 +1,13 @@
 <section class="explorer" aria-labelledby="explorer-title">
   <header class="explorer-heading">
     <div class="explorer-heading__copy">
+      <p class="explorer-kicker atlas-label">Catálogo · busca e filtros</p>
       <h1 id="explorer-title">{{ catalogue.title }}</h1>
       <p>{{ catalogue.description }}</p>
-      <a class="graph-entry" routerLink="/grafos">
-        Ver o acervo como rede, em tela cheia <span aria-hidden="true">→</span>
+      <a class="graph-entry atlas-press" routerLink="/grafos">
+        <span class="graph-entry__glyph" aria-hidden="true"></span>
+        Ver o acervo como rede, em tela cheia
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
       </a>
     </div>
     <app-geometric-mosaic
@@ -48,7 +51,7 @@
           <li>
             <a
               [routerLink]="catalogueUrl('acervo')"
-              [queryParams]="navQuery()"
+              [queryParams]="navQuery({ camada: 'tudo' })"
               [attr.aria-current]="isUniversal() ? 'page' : null"
               >Tudo</a
             >
@@ -89,18 +92,18 @@
           </li>
           <li>
             <a
-              [routerLink]="catalogueUrl('fontes')"
-              [queryParams]="navQuery()"
-              [attr.aria-current]="isFontes() ? 'page' : null"
-              >Fontes</a
-            >
-          </li>
-          <li>
-            <a
               [routerLink]="catalogueUrl('acervo')"
               [queryParams]="navQuery({ camada: 'editorial' })"
               [attr.aria-current]="isLeituras() ? 'page' : null"
               >Leituras</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="catalogueUrl('fontes')"
+              [queryParams]="navQuery()"
+              [attr.aria-current]="isFontes() ? 'page' : null"
+              >Fontes</a
             >
           </li>
         </ul>
@@ -202,8 +205,12 @@
           <button type="submit" class="search-field__submit">Pesquisar</button>
         </div>
         <p class="search-hint">
-          Busque em registros, fontes e leituras. Um registro cadastrado não equivale a conteúdo
-          verificado.
+          @if (isFontes()) {
+            Busque nas fontes e referências catalogadas no acervo.
+          } @else {
+            Busque em registros e leituras. Um registro cadastrado não equivale a conteúdo
+            verificado.
+          }
         </p>
         <a class="search-clear-all" [routerLink]="catalogueUrl(catalogue.path)"
           >Limpar busca e filtros</a
@@ -230,7 +237,7 @@
 
       @if (unknownLayer()) {
         <p class="notice">
-          Camada indisponível neste acervo. Escolha “Tudo”, “Registros”, “Fontes” ou “Leituras”.
+          Camada indisponível neste acervo. Escolha “Tudo”, “Registros” ou “Leituras”.
         </p>
       }
       @if (unknownKind()) {
@@ -401,7 +408,7 @@
                     {{ shown(entry).summary }}
                   </span>
                 </span>
-                <span class="record-row__go" aria-hidden="true">→</span>
+                <span class="record-row__go" aria-hidden="true"><app-chevron /></span>
               </a>
             </article>
           }

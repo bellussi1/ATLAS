@@ -1,0 +1,49 @@
+{
+  "slug": "sindicato",
+  "subjectType": "instituicao",
+  "kind": "instituicao",
+  "rootQid": "Q178790",
+  "titles": {
+    "pt": "Sindicato",
+    "en": "Trade union"
+  },
+  "palette": "social-democracia",
+  "icon": "institution",
+  "scope": {
+    "classificationNote": "Associação coletiva de trabalhadores voltada à negociação de salários, condições de trabalho e representação política e jurídica, com papel decisivo na história do movimento operário, da social-democracia, do anarcossindicalismo e do trabalhismo brasileiro.",
+    "period": "Revolução Industrial (século XIX) ao século XXI",
+    "geography": "Europa, Américas e trajetória específica do sindicalismo no Brasil (do anarcossindicalismo à CLT e ao novo sindicalismo)",
+    "includes": [
+      "origem nas associações operárias e legalização sindical na Europa e nos EUA",
+      "correntes sindicais: anarcossindicalismo, sindicalismo reformista/social-democrata, sindicalismo revolucionário",
+      "caso brasileiro: greves de 1917, estrutura corporativista da CLT (1943), novo sindicalismo e CUT"
+    ],
+    "excludes": [
+      "direito sindical processual detalhado sem relevância histórica ou política",
+      "história isolada de cada categoria profissional fora dos marcos gerais"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q178790",
+      "Q25447221",
+      "Q4532311",
+      "Q156844",
+      "Q37181",
+      "Q121254",
+      "Q6199",
+      "Q7264",
+      "Q2269"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação da instituição Sindicato."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Sindicato"
+    }
+  ],
+  "discovery": {
+    "commonsCategory": "Category:Trade unions",
+    "ringCaps": { "1": 40, "2": 30, "3": 30 }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "slug": "era-vargas",
+  "subjectType": "periodo",
+  "kind": "periodo",
+  "rootQid": "Q4532311",
+  "titles": {
+    "pt": "Era Vargas",
+    "en": "Vargas Era"
+  },
+  "palette": "nacionalismo",
+  "icon": "event",
+  "scope": {
+    "classificationNote": "Período histórico brasileiro (1930–1945) marcado pela Revolução de 1930, pelo Governo Provisório, pela Constituição de 1934, pelo Estado Novo e pela consolidação da legislação trabalhista.",
+    "period": "1930–1945 (com antecedentes na crise da Primeira República e retorno em 1951–1954 como referência)",
+    "geography": "Brasil, com foco no eixo Rio de Janeiro–São Paulo–Rio Grande do Sul e nas relações internacionais da Segunda Guerra Mundial",
+    "includes": [
+      "Revolução de 1930, Governo Provisório e Constituição de 1934",
+      "Estado Novo (1937–1945), centralização estatal, CLT e sindicalismo oficial",
+      "relações com trabalhismo, nacionalismo, integralismo e comunismo no Brasil"
+    ],
+    "excludes": [
+      "biografia completa de Getúlio Vargas fora da atuação política do período",
+      "narrativa detalhada do segundo governo Vargas (1951–1954) como centro do recorte",
+      "história geral da Primeira República sem ligação direta com 1930"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q4532311",
+      "Q156844",
+      "Q2634783",
+      "Q7275",
+      "Q25447221",
+      "Q178790",
+      "Q362",
+      "Q6229",
+      "Q7174",
+      "Q210542",
+      "Q1153878",
+      "Q18482173",
+      "Q16334344",
+      "Q1797481",
+      "Q10313495",
+      "Q155",
+      "Q8698",
+      "Q79751",
+      "Q11204",
+      "Q9592",
+      "Q170980",
+      "Q200812",
+      "Q311225",
+      "Q313211",
+      "Q37181",
+      "Q373560",
+      "Q6186",
+      "Q40348",
+      "Q40722",
+      "Q10304982",
+      "Q4264",
+      "Q36442",
+      "Q41171",
+      "Q11691",
+      "Q13677",
+      "Q317",
+      "Q7188",
+      "Q11256",
+      "Q3587",
+      "Q156774",
+      "Q11270",
+      "Q7272",
+      "Q11264",
+      "Q46809",
+      "Q5809",
+      "Q128160",
+      "Q463533",
+      "Q83459",
+      "Q7264",
+      "Q41550",
+      "Q484652",
+      "Q76074",
+      "Q2269",
+      "Q8683",
+      "Q80964",
+      "Q132140",
+      "Q93330",
+      "Q103285",
+      "Q561837"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação do recorte histórico da Era Vargas."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Era_Vargas"
+    },
+    {
+      "url": "https://pt.wikipedia.org/wiki/Estado_Novo_(Brasil)"
+    }
+  ],
+  "discovery": {
+    "founderQids": [
+      "Q156844"
+    ],
+    "commonsCategory": "Category:Vargas Era"
+  }
+}

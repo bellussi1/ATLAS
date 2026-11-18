@@ -10,6 +10,7 @@ import {
   type IdeologyBundle,
   ideologyBundleSchema,
   layoutsSchema,
+  type NetworkBundle,
   networkBundleSchema,
   networkGraphSchema,
   searchIndexSchema,
@@ -82,6 +83,21 @@ export class ContentRepository {
   get layouts() {
     return this.requireState().layouts;
   }
+  get bundledItineraries(): Readonly<Record<string, unknown>> | undefined {
+    return this.state?.itineraries;
+  }
+  manifestSnapshot(): Promise<ContentManifest> {
+    return this.getManifest();
+  }
+  async hasPublishedArtifacts(resources: readonly { sha256: string }[]): Promise<boolean> {
+    if (!resources.length) return false;
+    const pointer = await this.getPointer();
+    const available = new Set(pointer.artifacts.map((item) => item.sha256));
+    return resources.every((resource) => available.has(resource.sha256));
+  }
+  verifiedResource(resource: { sha256: string; bytes: number }, label: string): Promise<unknown> {
+    return this.resource(resource, label);
+  }
 
   async loadCollection(id: string): Promise<Atlas | undefined> {
     const manifest = await this.getManifest();
@@ -147,6 +163,34 @@ export class ContentRepository {
   }
   queryRelations(id: string, query: KnowledgeRelationQuery = {}) {
     return filterKnowledgeRelations(this.requireState().adjacency[id] ?? [], query);
+  }
+  /**
+   * Starts fetching the full bundle into the in-flight request cache before the user navigates.
+   * Safe to call repeatedly; skipped on SSR, save-data or slow connections when `idle` is true.
+   */
+  warmBundle(idle = false): void {
+    if (!this.browser || !this.prefetchEnabled || (this.state && !this.networkOnly) || this.pending)
+      return;
+    if (idle && !this.canAutoPrefetch()) return;
+    void this.getPointer()
+      .then((pointer) => {
+        if (!pointer.bundle) return;
+        const key = artifactKey(pointer.bundle.sha256);
+        if (!this.requests.has(key)) void this.asset(key).catch(() => undefined);
+      })
+      .catch(() => undefined);
+  }
+  /** Starts fetching the network bundle into the in-flight request cache before opening `/grafos`. */
+  warmNetwork(): void {
+    if (!this.browser || !this.prefetchEnabled || this.state || this.networkPending || this.pending)
+      return;
+    void this.getPointer()
+      .then((pointer) => {
+        if (!pointer.networkBundle) return;
+        const key = artifactKey(pointer.networkBundle.sha256);
+        if (!this.requests.has(key)) void this.asset(key).catch(() => undefined);
+      })
+      .catch(() => undefined);
   }
   private requireState(): ContentPackage {
     if (!this.state) throw new Error('Índices de conteúdo indisponíveis.');
@@ -288,7 +332,6 @@ export class ContentRepository {
         ? await this.buildNetworkBundleState(pointer.networkBundle)
         : await this.buildNetworkState(await this.getManifest());
       this.networkOnly = true;
-      this.schedulePrefetch(pointer);
       return this.state.graph;
     })().catch((error: unknown) => {
       this.networkPending = undefined;
@@ -299,31 +342,18 @@ export class ContentRepository {
     });
     return this.networkPending;
   }
-  /**
-   * The graph is often the entry point. Warm the complete package while the reader explores it,
-   * so leaving for a catalogue does not download and verify the bundle again. Skipped on
-   * save-data, slow connections and low-memory devices.
-   */
-  private schedulePrefetch(pointer: ContentPointer): void {
-    if (!this.browser || !this.prefetchEnabled || !pointer.bundle) return;
+  private canAutoPrefetch(): boolean {
     const connection = (
       navigator as Navigator & {
         connection?: { saveData?: boolean; effectiveType?: string };
       }
     ).connection;
     if (connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType ?? ''))
-      return;
+      return false;
     const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
-    if (typeof memory === 'number' && memory < 8) return;
-    const key = artifactKey(pointer.bundle.sha256);
-    if (this.requests.has(key)) return;
-    const run = () => {
-      if (document.visibilityState === 'visible') void this.asset(key).catch(() => undefined);
-    };
-    if (typeof globalThis.requestIdleCallback === 'function')
-      globalThis.requestIdleCallback(run, { timeout: 3000 });
-    else setTimeout(run, 1500);
+    return typeof memory !== 'number' || memory >= 4;
   }
+
   private async buildBundleState(resource: {
     sha256: string;
     bytes: number;
@@ -339,14 +369,18 @@ export class ContentRepository {
       adjacency: bundle.adjacency,
       layouts: bundle.layouts,
       ideologies: bundle.ideologies,
+      itineraries: bundle.itineraries,
     };
   }
   private async buildNetworkBundleState(resource: {
     sha256: string;
     bytes: number;
   }): Promise<ContentPackage> {
-    const bundle = networkBundleSchema.parse(await this.resource(resource, 'network-bundle.json'));
+    const value = await this.resource(resource, 'network-bundle.json');
     this.requests.delete(artifactKey(resource.sha256));
+    // Same release/SHA-256 contract as `buildBundleState`: skip redundant Zod validation in the
+    // browser so `/grafos` mounts immediately after digest verification.
+    const bundle = this.browser ? (value as NetworkBundle) : networkBundleSchema.parse(value);
     return {
       // The graph page only reads the projected fields; a later full load upgrades this state.
       graph: bundle.graph as unknown as KnowledgeGraph,

@@ -9,11 +9,7 @@
   "summary": "Stalinismo é o nome dado à ideologia e às políticas implementadas por Josef Stalin na União Soviética entre 1927 e 1953 e em Estados satélites soviéticos entre 1944 e 1953. O termo abrange a industrialização acelerada, a coletivização forçada, o culto de personalidade, a repressão em massa e a subordinação dos partidos comunistas estrangeiros ao Partido Comunista da União Soviética. Após a morte de Stalin, a desestalinização iniciada por Khrushchov reduziu a influência dessa ideologia.",
   "published": false,
   "atlasId": "atlas-stalinismo",
-  "review": {
-    "status": "rascunho",
-    "reviewer": null,
-    "updatedAt": "2026-11-10"
-  },
+  "review": { "status": "rascunho", "reviewer": null, "updatedAt": "2026-11-16" },
   "identity": {
     "accent": "teal",
     "palette": "marx",
@@ -21,9 +17,7 @@
     "keyVisualization": "timeline"
   },
   "portrait": null,
-  "poster": {
-    "figures": []
-  },
+  "poster": { "figures": [] },
   "chapters": [
     {
       "id": "introducao",
@@ -34,11 +28,9 @@
       "narrative": [
         "Stalinismo é o nome dado à ideologia e às políticas implementadas por Josef Stalin na União Soviética entre 1927 e 1953 e em Estados satélites soviéticos entre 1944 e 1953. O termo abrange a industrialização acelerada, a coletivização forçada, o culto de personalidade, a repressão em massa e a subordinação dos partidos comunistas estrangeiros ao Partido Comunista da União Soviética. Após a morte de Stalin, a desestalinização iniciada por Khrushchov reduziu a influência dessa ideologia."
       ],
-      "question": "O que é o Stalinismo e por que ele importa?",
-      "bridge": "As origens mostram de onde essas ideias vêm.",
-      "sourceIds": [
-        "src-wiki-topic-stalinismo"
-      ],
+      "question": "O que define Stalinismo?",
+      "bridge": "Situado o tema, o capítulo seguinte acompanha suas origens históricas.",
+      "sourceIds": ["src-wiki-topic-stalinismo"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -52,16 +44,61 @@
       "kicker": "Origens e formação",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03).",
+        "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05).",
+        "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
+      "question": "Como e em que contexto Stalinismo surgiu?",
+      "bridge": "Visto o contexto de formação, seguem os princípios e traços centrais.",
+      "sourceIds": ["src-wiki-topic-stalinismo"],
       "review": null,
-      "gap": "Nenhuma passagem do grafo trata da origem desta ideologia.",
-      "coverage": "pending",
+      "gap": "Usa fatos documentados da fonte principal porque não há seção separada de origens no grafo.",
+      "coverage": "partial",
       "layout": "documents",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "origem-1",
+              "title": "Marco histórico 1",
+              "kicker": "Origens e formação",
+              "summary": "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03).",
+              "paragraphs": [
+                "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03)."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-2",
+              "title": "Marco histórico 2",
+              "kicker": "Origens e formação",
+              "summary": "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05).",
+              "paragraphs": [
+                "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05)."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "origem-3",
+              "title": "Marco histórico 3",
+              "kicker": "Origens e formação",
+              "summary": "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto.",
+              "paragraphs": [
+                "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "principios",
@@ -70,16 +107,72 @@
       "kicker": "Pilares e princípios",
       "minutes": 1,
       "narrative": [
-        "Capítulo sem conteúdo verificado."
+        "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03).",
+        "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05).",
+        "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto.",
+        "Historiadores divergem quanto ao papel do stalinismo."
       ],
-      "question": null,
-      "bridge": null,
-      "sourceIds": [],
+      "question": "Quais ideias e práticas estruturam Stalinismo?",
+      "bridge": "Com os eixos principais definidos, o próximo capítulo organiza os conceitos-chave.",
+      "sourceIds": ["src-wiki-topic-stalinismo"],
       "review": null,
-      "gap": "Nenhuma passagem do grafo descreve as ideias centrais desta ideologia.",
-      "coverage": "pending",
+      "gap": "Reúne passagens descritivas registradas na fonte principal; síntese doutrinária estruturada ainda pendente.",
+      "coverage": "partial",
       "layout": "concepts",
-      "blocks": []
+      "blocks": [
+        {
+          "type": "explorations",
+          "mode": "principles",
+          "items": [
+            {
+              "id": "ideia-1",
+              "title": "Formulação registrada 1",
+              "kicker": "Pilares e princípios",
+              "summary": "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03).",
+              "paragraphs": [
+                "Stalin passou a ocupar o cargo de secretário-geral do Comitê Central do Partido Comunista da União Soviética. (1922-04-03)."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-2",
+              "title": "Formulação registrada 2",
+              "kicker": "Pilares e princípios",
+              "summary": "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05).",
+              "paragraphs": [
+                "Morte de Stalin, que encerrou o período de sua liderança. (1953-03-05)."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-3",
+              "title": "Formulação registrada 3",
+              "kicker": "Pilares e princípios",
+              "summary": "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto.",
+              "paragraphs": [
+                "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
+              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            },
+            {
+              "id": "ideia-4",
+              "title": "Formulação registrada 4",
+              "kicker": "Pilares e princípios",
+              "summary": "Historiadores divergem quanto ao papel do stalinismo.",
+              "paragraphs": ["Historiadores divergem quanto ao papel do stalinismo."],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
+              "classification": "alegação empírica"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "conceitos",
@@ -91,8 +184,8 @@
         "Também chamada de Estalinismo, Stalinism.",
         "Conceitos ligados à tradição: Ditador, Burguesia, Urbanização, Industrialização, Revolução."
       ],
-      "question": "Que termos ajudam a entender o Stalinismo?",
-      "bridge": "Os conceitos se encarnam em momentos e em experiências.",
+      "question": "Que termos e conceitos ajudam a compreender Stalinismo?",
+      "bridge": "Com o vocabulário em mãos, a leitura situa os marcos e épocas históricas.",
       "sourceIds": [
         "src-wiki-topic-stalinismo",
         "src-wiki-topic-ditador",
@@ -108,13 +201,9 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "wiki-topic-stalinismo"
-          ],
+          "entityIds": ["wiki-topic-stalinismo"],
           "mode": "concepts",
-          "notes": {
-            "wiki-topic-stalinismo": "Nomes alternativos: Estalinismo, Stalinism."
-          }
+          "notes": { "wiki-topic-stalinismo": "Nomes alternativos: Estalinismo, Stalinism." }
         },
         {
           "type": "entities",
@@ -136,14 +225,10 @@
       "title": "História e épocas",
       "kicker": "História e épocas",
       "minutes": 1,
-      "narrative": [
-        "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
-      ],
-      "question": "Em que momentos o Stalinismo se desenvolveu?",
-      "bridge": "Esses momentos foram vividos por pessoas e organizações.",
-      "sourceIds": [
-        "src-wiki-topic-stalinismo"
-      ],
+      "narrative": ["Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."],
+      "question": "Em que períodos históricos Stalinismo se formou e mudou?",
+      "bridge": "Da cronologia, passamos às pessoas e obras ligadas à tradição.",
+      "sourceIds": ["src-wiki-topic-stalinismo"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -161,28 +246,16 @@
               "paragraphs": [
                 "Khrushchov condenou o culto de personalidade de Stalin no Discurso Secreto."
               ],
-              "sourceIds": [
-                "src-wiki-topic-stalinismo"
-              ],
-              "entityIds": [
-                "wiki-topic-stalinismo"
-              ],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
               "classification": "alegação empírica"
             }
           ]
         },
         {
           "type": "chronology",
-          "epochs": [
-            {
-              "itemId": "marco-1",
-              "start": 1956,
-              "end": 1956
-            }
-          ],
-          "entityIds": [
-            "wiki-topic-stalinismo"
-          ],
+          "epochs": [{ "itemId": "marco-1", "start": 1956, "end": 1956 }],
+          "entityIds": ["wiki-topic-stalinismo"],
           "markerIds": [],
           "markerNotes": {}
         }
@@ -197,12 +270,9 @@
       "narrative": [
         "Registros ligados à ideologia: Leon Trótski, Josef Stalin, Lenin, Karl Marx, Mikhail Gorbatchov, Friedrich Engels, Adolf Hitler, Antonio Gramsci."
       ],
-      "question": "Quem pensou e disputou o Stalinismo?",
-      "bridge": "As pessoas e obras se distribuem em correntes.",
-      "sourceIds": [
-        "src-wiki-topic-mikhail-gorbatchov",
-        "src-wiki-topic-adolf-hitler"
-      ],
+      "question": "Quem formulou, liderou ou registrou Stalinismo?",
+      "bridge": "Dos autores, seguimos para as correntes e desdobramentos relacionados.",
+      "sourceIds": ["src-wiki-topic-mikhail-gorbatchov", "src-wiki-topic-adolf-hitler"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -231,18 +301,10 @@
       "title": "Correntes e vertentes",
       "kicker": "Correntes e vertentes",
       "minutes": 1,
-      "narrative": [
-        "Correntes relacionadas: Trotskismo, Totalitarismo, Comunismo, Leninismo, Marxismo, Socialismo, Social-democracia, Marxismo-leninismo, Liberalismo, Autoritarismo, Democracia."
-      ],
-      "question": "Quais correntes convivem dentro do Stalinismo?",
-      "bridge": "As correntes se encontram em experiências históricas.",
-      "sourceIds": [
-        "src-wiki-topic-trotskismo",
-        "src-wiki-topic-totalitarismo",
-        "src-wiki-topic-social-democracia",
-        "src-wiki-topic-autoritarismo",
-        "src-wiki-topic-democracia"
-      ],
+      "narrative": ["Correntes relacionadas: Trotskismo."],
+      "question": "Que correntes dialogam ou disputam espaço com Stalinismo?",
+      "bridge": "Vistas as correntes, o capítulo seguinte examina experiências, partidos e instituições.",
+      "sourceIds": ["src-wiki-topic-trotskismo"],
       "review": null,
       "gap": null,
       "coverage": "complete",
@@ -250,19 +312,7 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "ideology-trotskyism",
-            "wiki-topic-totalitarismo",
-            "ideology-communism",
-            "ideology-leninism",
-            "ideology-marxism",
-            "ideology-socialism",
-            "wiki-topic-social-democracia",
-            "ideology-marxism-leninism",
-            "ideology-liberalism",
-            "wiki-topic-autoritarismo",
-            "wiki-topic-democracia"
-          ],
+          "entityIds": ["ideology-trotskyism"],
           "mode": "concepts",
           "notes": {
             "ideology-trotskyism": "Os trotskistas são críticos do stalinismo, por se oporem à teoria de Stalin do socialismo em um só país."
@@ -279,8 +329,8 @@
       "narrative": [
         "Registros ligados à ideologia: Partido Comunista da Alemanha, Partido Comunista da União Soviética, Partido Comunista Francês, Gulag, Holodomor, Revolução de Outubro, Bolchevique, Capitalismo, Autocracia, Grande Expurgo, Ruptura sino-soviética, Revolução Russa de 1917, Internacional Comunista, Sindicato, Guerra Civil Chinesa, Guerra do Vietnã, Revolução Húngara de 1956, Kuomintang, Guerra da Coreia."
       ],
-      "question": "Onde o Stalinismo foi vivido ou aplicado?",
-      "bridge": "As experiências também produziram críticas e divergências.",
+      "question": "Em quais acontecimentos, partidos e instituições Stalinismo se materializou?",
+      "bridge": "Das experiências históricas, a leitura passa às controvérsias e debates.",
       "sourceIds": [
         "src-wikidata-verbetes",
         "src-wiki-topic-gulag",
@@ -338,14 +388,10 @@
       "title": "Argumentos, críticas e respostas",
       "kicker": "Argumentos, críticas e respostas",
       "minutes": 1,
-      "narrative": [
-        "Historiadores divergem quanto ao papel do stalinismo."
-      ],
-      "question": "Quais críticas o Stalinismo recebe?",
-      "bridge": "As críticas ajudam a situar as conexões com outras tradições.",
-      "sourceIds": [
-        "src-wiki-topic-stalinismo"
-      ],
+      "narrative": ["Historiadores divergem quanto ao papel do stalinismo."],
+      "question": "Quais críticas e controvérsias cercam Stalinismo?",
+      "bridge": "Mapeadas as disputas, o próximo capítulo abre as conexões no grafo.",
+      "sourceIds": ["src-wiki-topic-stalinismo"],
       "review": null,
       "gap": "Só há críticas e alegações contestadas; defesa e resposta ainda não têm passagem no grafo.",
       "coverage": "partial",
@@ -360,15 +406,9 @@
               "title": "Crítica ou controvérsia",
               "kicker": "Argumentos e críticas",
               "summary": "Historiadores divergem quanto ao papel do stalinismo.",
-              "paragraphs": [
-                "Historiadores divergem quanto ao papel do stalinismo."
-              ],
-              "sourceIds": [
-                "src-wiki-topic-stalinismo"
-              ],
-              "entityIds": [
-                "wiki-topic-stalinismo"
-              ],
+              "paragraphs": ["Historiadores divergem quanto ao papel do stalinismo."],
+              "sourceIds": ["src-wiki-topic-stalinismo"],
+              "entityIds": ["wiki-topic-stalinismo"],
               "classification": "alegação empírica"
             }
           ]
@@ -382,14 +422,18 @@
       "kicker": "Conexões com outras tradições",
       "minutes": 1,
       "narrative": [
-        "Registros ligados à ideologia: União Soviética, Império Russo, República Socialista Federativa Soviética da Rússia."
+        "Registros ligados à ideologia: Totalitarismo, União Soviética, Comunismo, Leninismo, Marxismo, Socialismo, Império Russo, República Socialista Federativa Soviética da Rússia, Social-democracia, Marxismo-leninismo, Liberalismo, Autoritarismo, Democracia."
       ],
-      "question": "Como o Stalinismo se liga a outras tradições?",
-      "bridge": "As conexões indicam caminhos de leitura.",
+      "question": "Como Stalinismo se liga ao restante do grafo?",
+      "bridge": "Para aprofundar além do mapa, seguem as referências de leitura.",
       "sourceIds": [
+        "src-wiki-topic-totalitarismo",
         "src-wiki-topic-uniao-sovietica",
         "src-wiki-topic-imperio-russo",
-        "src-wiki-topic-republica-socialista-federativa-sovietica-da-russia"
+        "src-wiki-topic-republica-socialista-federativa-sovietica-da-russia",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-democracia"
       ],
       "review": null,
       "gap": null,
@@ -399,9 +443,19 @@
         {
           "type": "entities",
           "entityIds": [
+            "wiki-topic-totalitarismo",
             "wiki-topic-uniao-sovietica",
+            "ideology-communism",
+            "ideology-leninism",
+            "ideology-marxism",
+            "ideology-socialism",
             "wiki-topic-imperio-russo",
-            "wiki-topic-republica-socialista-federativa-sovietica-da-russia"
+            "wiki-topic-republica-socialista-federativa-sovietica-da-russia",
+            "wiki-topic-social-democracia",
+            "ideology-marxism-leninism",
+            "ideology-liberalism",
+            "wiki-topic-autoritarismo",
+            "wiki-topic-democracia"
           ],
           "mode": "concepts",
           "notes": {}
@@ -414,11 +468,9 @@
       "title": "Roteiro de leitura",
       "kicker": "Roteiro de leitura",
       "minutes": 1,
-      "narrative": [
-        "Obras ligadas à tradição: Manifesto Comunista."
-      ],
-      "question": "O que ler para continuar?",
-      "bridge": "As fontes sustentam o que foi lido.",
+      "narrative": ["Obras ligadas à tradição: Manifesto Comunista."],
+      "question": "Que obras e documentos aprofundam o estudo de Stalinismo?",
+      "bridge": "Por fim, o inventário completo das fontes citadas nesta leitura.",
       "sourceIds": [],
       "review": null,
       "gap": "Obras ligadas à tradição; edição e nível de leitura ainda pendentes.",
@@ -427,9 +479,7 @@
       "blocks": [
         {
           "type": "entities",
-          "entityIds": [
-            "work-communist-manifesto"
-          ],
+          "entityIds": ["work-communist-manifesto"],
           "mode": "documents",
           "notes": {}
         }
@@ -442,12 +492,43 @@
       "kicker": "Fontes e metodologia",
       "minutes": 1,
       "narrative": [
-        "Reúne 4 afirmações de uma fonte enciclopédica, cada uma ligada à passagem original. Inclui síntese por IA · revisão humana não registrada."
+        "Reúne 4 afirmações da fonte principal e 32 referências bibliográficas ligadas à leitura. Inclui síntese por IA · revisão humana não registrada."
       ],
-      "question": "De onde vêm as informações desta leitura?",
+      "question": "Quais fontes sustentam a leitura sobre Stalinismo?",
       "bridge": null,
       "sourceIds": [
-        "src-wiki-topic-stalinismo"
+        "src-wiki-topic-stalinismo",
+        "src-wiki-topic-ditador",
+        "src-wiki-topic-burguesia",
+        "src-wiki-topic-urbanizacao",
+        "src-wiki-topic-industrializacao",
+        "src-wiki-conceito-revolucao",
+        "src-wiki-topic-mikhail-gorbatchov",
+        "src-wiki-topic-adolf-hitler",
+        "src-wiki-topic-trotskismo",
+        "src-wikidata-verbetes",
+        "src-wiki-topic-gulag",
+        "src-wiki-topic-holodomor",
+        "src-wiki-topic-revolucao-de-outubro",
+        "src-wiki-topic-bolchevique",
+        "src-wiki-topic-capitalismo",
+        "src-wiki-topic-autocracia",
+        "src-wiki-topic-grande-expurgo",
+        "src-wiki-topic-ruptura-sino-sovietica",
+        "src-wiki-topic-internacional-comunista",
+        "src-wiki-topic-sindicato",
+        "src-wiki-topic-guerra-civil-chinesa",
+        "src-wiki-topic-guerra-do-vietna",
+        "src-wiki-topic-revolucao-hungara-de-1956",
+        "src-wiki-topic-kuomintang",
+        "src-wiki-topic-guerra-da-coreia",
+        "src-wiki-topic-totalitarismo",
+        "src-wiki-topic-uniao-sovietica",
+        "src-wiki-topic-imperio-russo",
+        "src-wiki-topic-republica-socialista-federativa-sovietica-da-russia",
+        "src-wiki-topic-social-democracia",
+        "src-wiki-topic-autoritarismo",
+        "src-wiki-topic-democracia"
       ],
       "review": null,
       "gap": null,
@@ -457,7 +538,38 @@
         {
           "type": "sources",
           "sourceIds": [
-            "src-wiki-topic-stalinismo"
+            "src-wiki-topic-stalinismo",
+            "src-wiki-topic-ditador",
+            "src-wiki-topic-burguesia",
+            "src-wiki-topic-urbanizacao",
+            "src-wiki-topic-industrializacao",
+            "src-wiki-conceito-revolucao",
+            "src-wiki-topic-mikhail-gorbatchov",
+            "src-wiki-topic-adolf-hitler",
+            "src-wiki-topic-trotskismo",
+            "src-wikidata-verbetes",
+            "src-wiki-topic-gulag",
+            "src-wiki-topic-holodomor",
+            "src-wiki-topic-revolucao-de-outubro",
+            "src-wiki-topic-bolchevique",
+            "src-wiki-topic-capitalismo",
+            "src-wiki-topic-autocracia",
+            "src-wiki-topic-grande-expurgo",
+            "src-wiki-topic-ruptura-sino-sovietica",
+            "src-wiki-topic-internacional-comunista",
+            "src-wiki-topic-sindicato",
+            "src-wiki-topic-guerra-civil-chinesa",
+            "src-wiki-topic-guerra-do-vietna",
+            "src-wiki-topic-revolucao-hungara-de-1956",
+            "src-wiki-topic-kuomintang",
+            "src-wiki-topic-guerra-da-coreia",
+            "src-wiki-topic-totalitarismo",
+            "src-wiki-topic-uniao-sovietica",
+            "src-wiki-topic-imperio-russo",
+            "src-wiki-topic-republica-socialista-federativa-sovietica-da-russia",
+            "src-wiki-topic-social-democracia",
+            "src-wiki-topic-autoritarismo",
+            "src-wiki-topic-democracia"
           ]
         }
       ]

@@ -299,6 +299,19 @@ h1 {
 .continuous-reading a {
   font: 700 var(--text-compact)/1.4 var(--font-sans);
 }
+.record-itinerary-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  span {
+    margin-inline-start: 0.5rem;
+    color: var(--ink-muted);
+    font: 600 var(--text-caption)/1.2 var(--font-mono);
+    text-transform: uppercase;
+  }
+}
 .reading-top {
   margin: 2.5rem 0 0;
   padding-block-start: 0.75rem;

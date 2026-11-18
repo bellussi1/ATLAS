@@ -1,4 +1,8 @@
-import { type DiscoveryIndexEntry, nameMatchScore } from './discovery-index';
+import {
+  type DiscoveryIndexEntry,
+  lexicalFallbackMatches,
+  nameMatchScore,
+} from './discovery-index';
 import { catalogueUrl, explorerCatalogues } from './explorer-catalogues';
 export { explorerCatalogues, explorerGroups } from './explorer-catalogues';
 
@@ -18,7 +22,6 @@ const editorialKinds: readonly string[] = ['leitura'];
 export const explorerLayers = [
   { id: '', title: 'Tudo' },
   { id: 'registros', title: 'Registros' },
-  { id: 'fontes', title: 'Fontes' },
   { id: 'editorial', title: 'Leituras' },
 ] as const;
 
@@ -111,7 +114,9 @@ export function explorerEntries(
           a.entry.id.localeCompare(b.entry.id),
     );
   if (named.length) return named.map((match) => match.entry);
-  // A query that names no record still finds the passages that mention it, as a last resort.
+  // A query that names no record still finds relevant passages via stop-word-free BM25 or exact terms.
+  const fallback = lexicalFallbackMatches(base, query);
+  if (fallback.length) return filter.sort === 'title' ? fallback.sort(alphabetical) : fallback;
   return base
     .filter((entry) => terms.every((term) => entry.searchText.includes(term)))
     .sort(alphabetical);
@@ -127,7 +132,9 @@ function explorerBase(
     !kind || (Array.isArray(kind) ? kind.includes(entryKind) : entryKind === kind);
   return index.filter(
     (entry) =>
-      (catalogue === 'acervo' || catalogue === 'fontes' || entry.path.startsWith('/verbete/')) &&
+      (entry.kind === 'fonte'
+        ? catalogue === 'fontes'
+        : catalogue === 'acervo' || entry.path.startsWith('/verbete/')) &&
       kindMatches(entry.kind) &&
       (!filter.kind || entry.kind === filter.kind) &&
       (!filter.state || entry.state === filter.state) &&
@@ -146,6 +153,7 @@ export function explorerMatchKind(
   if (!terms.length) return 'name';
   const base = explorerBase(index, filter);
   if (base.some((entry) => nameMatchScore(entry, query) !== null)) return 'name';
+  if (lexicalFallbackMatches(base, query).length > 0) return 'text';
   return base.some((entry) => terms.every((term) => entry.searchText.includes(term)))
     ? 'text'
     : 'none';

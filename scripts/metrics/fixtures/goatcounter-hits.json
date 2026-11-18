@@ -1,0 +1,12 @@
+{
+  "hits": [
+    { "path": "/leitura/marxismo/", "count": 120 },
+    { "path": "/leitura/liberalismo/", "count": 40 },
+    { "path": "/itinerario/trabalhismo-e-estado-social", "count": 35 },
+    { "path": "/verbete/brasil", "count": 12 },
+    { "path": "/", "count": 900 },
+    { "path": "/acervo", "count": 300 },
+    { "path": "click:/leitura/marxismo/", "count": 26 },
+    { "path": "click:github.com", "count": 4 }
+  ]
+}

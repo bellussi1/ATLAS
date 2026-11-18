@@ -1,0 +1,93 @@
+{
+  "slug": "estado",
+  "subjectType": "conceito",
+  "kind": "conceito",
+  "rootQid": "Q7275",
+  "titles": {
+    "pt": "Estado",
+    "en": "State (polity)"
+  },
+  "palette": "atlas",
+  "icon": "institution",
+  "scope": {
+    "classificationNote": "Organização política dotada de soberania, território, monopólio legítimo da coerção e instituições administrativas, objeto central de disputa entre contratualismo, liberalismo, marxismo, anarquismo e social-democracia.",
+    "period": "Formação do Estado moderno (século XVI) ao Estado contemporâneo",
+    "geography": "Formação europeia, expansão global e construção do Estado nacional brasileiro",
+    "includes": [
+      "conceito de soberania, monopólio da força (Weber) e separação de poderes",
+      "interpretações teóricas: Hobbes, Locke, Marx, Engels, Bakunin e Keynes",
+      "formas históricas: Estado absolutista, liberal, de bem-estar social e autoritário"
+    ],
+    "excludes": [
+      "uso do termo para unidades federativas subnacionais (estados-membros)",
+      "direito administrativo detalhado sem relação com teoria política e história"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q7275",
+      "Q7174",
+      "Q7272",
+      "Q6216",
+      "Q7264",
+      "Q6199",
+      "Q121254",
+      "Q317",
+      "Q9061",
+      "Q179164",
+      "Q204886",
+      "Q43702",
+      "Q7188",
+      "Q9387",
+      "Q131719",
+      "Q1399",
+      "Q1541",
+      "Q7742",
+      "Q179671",
+      "Q133311",
+      "Q133442",
+      "Q44405",
+      "Q9353",
+      "Q178706",
+      "Q9381",
+      "Q12539",
+      "Q105985",
+      "Q41493",
+      "Q9174",
+      "Q192769",
+      "Q35798",
+      "Q6534",
+      "Q83368",
+      "Q101935",
+      "Q17167",
+      "Q81068910",
+      "Q13695",
+      "Q36947",
+      "Q7326",
+      "Q263730",
+      "Q10263787",
+      "Q1688305",
+      "Q926855",
+      "Q7325",
+      "Q159102",
+      "Q8698",
+      "Q7809",
+      "Q1845",
+      "Q9268",
+      "Q132050",
+      "Q47740",
+      "Q10931",
+      "Q463533",
+      "Q43463"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação do conceito de Estado."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Estado"
+    }
+  ],
+  "discovery": {
+    "commonsCategory": "Category:States"
+  }
+}

@@ -1,0 +1,164 @@
+[
+  {
+    "id": "dedup-001",
+    "entity_a": {
+      "id": "event-portugal-constitution-approval-1976",
+      "title": "Aprovação da Constituição portuguesa de 1976",
+      "atlas": "atlas-constitutional-contexts",
+      "kind": "event"
+    },
+    "entity_b": {
+      "id": "work-constitution-portugal-1976",
+      "title": "Constituição da República Portuguesa de 1976",
+      "atlas": "atlas-constitutional-contexts",
+      "kind": "work"
+    },
+    "bge_m3_cosine": 0.9106,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
+      "verdict": "pending-human",
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.9106,
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
+    },
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.91): cos=0.91; confirmar que nao sao entidades distintas."
+  },
+  {
+    "id": "dedup-002",
+    "entity_a": {
+      "id": "wiki-topic-partido-trabalhista-brasileiro-1979",
+      "title": "Partido Trabalhista Brasileiro (1979)",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "party"
+    },
+    "entity_b": {
+      "id": "wiki-topic-partido-trabalhista-brasileiro-1945",
+      "title": "Partido Trabalhista Brasileiro (1945)",
+      "atlas": "atlas-trabalhismo",
+      "kind": "party"
+    },
+    "bge_m3_cosine": 0.8756,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
+      "verdict": "pending-human",
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8756,
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
+    },
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88. Pre-triagem IA (alta_confianca, score=0.88): mesmo tipo (party) e cos=0.88."
+  },
+  {
+    "id": "dedup-003",
+    "entity_a": {
+      "id": "work-capital-volume-i",
+      "title": "O capital: volume I",
+      "atlas": "atlas-marx-valor",
+      "kind": "work"
+    },
+    "entity_b": {
+      "id": "wiki-topic-o-capital",
+      "title": "O Capital",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "work"
+    },
+    "bge_m3_cosine": 0.8623,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
+      "verdict": "pending-human",
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8623,
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
+    },
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (work) e cos=0.86."
+  },
+  {
+    "id": "dedup-004",
+    "entity_a": {
+      "id": "wiki-topic-movimento-democratico-brasileiro-1966",
+      "title": "Movimento Democrático Brasileiro (1966)",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "party"
+    },
+    "entity_b": {
+      "id": "wiki-topic-movimento-democratico-brasileiro-1980",
+      "title": "Movimento Democrático Brasileiro (1980)",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "party"
+    },
+    "bge_m3_cosine": 0.8572,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
+      "verdict": "pending-human",
+      "ai_triage_verdict": "alta_confianca",
+      "ai_triage_score": 0.8572,
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
+    },
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86. Pre-triagem IA (alta_confianca, score=0.86): mesmo tipo (party) e cos=0.86."
+  },
+  {
+    "id": "dedup-005",
+    "entity_a": {
+      "id": "person-ion-c-bratianu",
+      "title": "Ion C. Brătianu",
+      "atlas": "atlas-liberalism",
+      "kind": "person"
+    },
+    "entity_b": {
+      "id": "person-ion-i-c-bratianu",
+      "title": "Ion I. C. Brătianu",
+      "atlas": "atlas-liberalism",
+      "kind": "person"
+    },
+    "bge_m3_cosine": 0.8456,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
+      "verdict": "pending-human",
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.8456,
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
+    },
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.85): cos=0.85; confirmar que nao sao entidades distintas."
+  },
+  {
+    "id": "dedup-006",
+    "entity_a": {
+      "id": "wiki-topic-reformismo-marxismo",
+      "title": "Reformismo (marxismo)",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "ideology"
+    },
+    "entity_b": {
+      "id": "wiki-topic-reformismo",
+      "title": "Reformismo",
+      "atlas": "atlas-verbetes-citados",
+      "kind": "ideology"
+    },
+    "bge_m3_cosine": 0.8401,
+    "ok": null,
+    "review": {
+      "by": "ai",
+      "model": "gemma2:9b-instruct-q4_K_M+bge-m3-heuristics",
+      "stage": "queue-pre-triage",
+      "verdict": "pending-human",
+      "ai_triage_verdict": "revisar_contexto",
+      "ai_triage_score": 0.8401,
+      "reviewedAt": "2026-11-16T16:08:58.772785+00:00"
+    },
+    "note": "[conferência de IA] Par com alta similaridade semântica e sobreposição nominal; conferir possível duplicação/alias. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas. Pre-triagem IA (revisar_contexto, score=0.84): cos=0.84; confirmar que nao sao entidades distintas."
+  }
+]

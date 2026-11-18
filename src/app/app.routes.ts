@@ -18,6 +18,17 @@ export const routes: Routes = [
       import('./features/exploration/routes/exploration.routes').then((m) => m.explorationRoutes),
   },
   {
+    path: '',
+    loadChildren: () =>
+      import('./features/itineraries/routes/itineraries.routes').then((m) => m.itineraryRoutes),
+  },
+  {
+    path: 'privacidade',
+    loadComponent: () =>
+      import('./pages/privacy/privacy-page.component').then((m) => m.PrivacyPageComponent),
+    title: 'Privacidade — ATLAS',
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('@shared/ui/not-found-message/not-found-message.component').then(

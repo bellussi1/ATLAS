@@ -39,6 +39,7 @@ async function loadArtifacts() {
   const resources = [
     ...manifest.collections,
     ...manifest.ideologies,
+    ...(manifest.itineraries ?? []),
     manifest.search,
     manifest.adjacency,
     manifest.layouts,

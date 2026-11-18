@@ -72,12 +72,18 @@ export async function planStage(stage, ctx, state) {
 function runCommands(commands, ctx) {
   const results = [];
   for (const command of commands) {
-    if (command.api && !process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN) {
+    if (
+      command.api &&
+      !ctx.local &&
+      !process.env.ANTHROPIC_API_KEY &&
+      !process.env.ANTHROPIC_AUTH_TOKEN
+    ) {
       results.push({ label: command.label, exitCode: null, skipped: 'ANTHROPIC_API_KEY ausente' });
       break;
     }
     const started = Date.now();
-    const [bin, ...args] = command.argv;
+    const [bin, ...rawArgs] = command.argv;
+    const args = command.api && ctx.local ? [...rawArgs, '--provider', 'local'] : rawArgs;
     // `node` runs through the current executable; only `npm` needs a shell (a .cmd on Windows).
     // Arguments are fixed strings built from a validated slug, never user free text.
     const done =
@@ -239,6 +245,7 @@ export async function main(argv = process.argv.slice(2)) {
       'dry-run': { type: 'boolean', default: false },
       force: { type: 'boolean', default: false },
       full: { type: 'boolean', default: false },
+      local: { type: 'boolean', default: false },
       status: { type: 'boolean', default: false },
       json: { type: 'boolean', default: false },
     },
@@ -246,9 +253,14 @@ export async function main(argv = process.argv.slice(2)) {
   const [slug] = positionals;
   if (!/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(slug ?? ''))
     throw new Error(
-      'Uso: npm run tradicao -- <slug> (--stage N | --all [--from N] [--to M] | --status) [--dry-run] [--force] [--full]',
+      'Uso: npm run tradicao -- <slug> (--stage N | --all [--from N] [--to M] | --status) [--dry-run] [--force] [--full] [--local]',
     );
-  const ctx = { slug, root: projectRoot, full: values.full };
+  const ctx = {
+    slug,
+    root: projectRoot,
+    full: values.full,
+    local: values.local || process.env.ATLAS_TRADICAO_PROVIDER === 'local',
+  };
   const state = await loadState(ctx.root, slug);
 
   let selected;

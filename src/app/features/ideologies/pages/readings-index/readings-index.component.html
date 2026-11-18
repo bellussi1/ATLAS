@@ -1,0 +1,102 @@
+<section class="readings-index" aria-labelledby="readings-index-title">
+  <header class="readings-index__head">
+    <div>
+      <p class="readings-index__kicker">Enciclopédia contínua</p>
+      <h1 appHeading="page" id="readings-index-title">Leituras contínuas</h1>
+      <p class="readings-index__deck">
+        Cada leitura organiza um tema em 12 capítulos — conceitos, pessoas, obras, cronologia,
+        divergências e fontes — com conexões diretas para o acervo e o grafo.
+        <a routerLink="/itinerarios">Explorar itinerários temáticos</a>.
+      </p>
+    </div>
+    <app-geometric-mosaic class="readings-index__mosaic" [columns]="6" [rows]="2" [seed]="42" />
+  </header>
+
+  <div class="readings-index__controls" role="region" aria-label="Filtrar leituras">
+    <app-text-field
+      controlId="readings-filter"
+      label="Filtrar leituras"
+      type="search"
+      placeholder="Buscar por tema, conceito ou resumo…"
+      [value]="query()"
+      (valueChange)="query.set($event)"
+    />
+    <div class="readings-index__chips" role="group" aria-label="Estado editorial">
+      <button
+        type="button"
+        class="filter-chip"
+        [class.is-active]="statusFilter() === 'all'"
+        [attr.aria-pressed]="statusFilter() === 'all'"
+        (click)="setFilter('all')"
+      >
+        Todas ({{ readings.length }})
+      </button>
+      <button
+        type="button"
+        class="filter-chip"
+        [class.is-active]="statusFilter() === 'reviewed'"
+        [attr.aria-pressed]="statusFilter() === 'reviewed'"
+        (click)="setFilter('reviewed')"
+      >
+        Com fontes ({{ reviewedCount() }})
+      </button>
+      <button
+        type="button"
+        class="filter-chip"
+        [class.is-active]="statusFilter() === 'draft'"
+        [attr.aria-pressed]="statusFilter() === 'draft'"
+        (click)="setFilter('draft')"
+      >
+        Em rascunho ({{ draftCount() }})
+      </button>
+    </div>
+  </div>
+
+  <p class="readings-index__count" role="status" aria-live="polite">
+    {{ filtered().length }}
+    {{ filtered().length === 1 ? 'leitura encontrada' : 'leituras encontradas' }}.
+  </p>
+
+  @if (filtered().length) {
+    <ol class="readings-index__grid">
+      @for (item of filtered(); track item.slug) {
+        <li class="reading-card" [attr.data-palette]="item.palette">
+          <div class="reading-card__stripe" aria-hidden="true">
+            <app-geometric-mosaic
+              [columns]="5"
+              [rows]="1"
+              [palette]="item.palette"
+              [seed]="item.seed"
+            />
+          </div>
+          <div class="reading-card__body">
+            <p class="reading-card__meta">
+              <span class="reading-card__status">{{ item.statusLabel }}</span>
+              @if (item.minutes) {
+                <span>{{ item.minutes }} min</span>
+              }
+              @if (item.chapters) {
+                <span>{{ item.completeChapters ?? item.chapters }}/{{ item.chapters }} cap.</span>
+              }
+            </p>
+            <h2 class="reading-card__title">
+              <a [routerLink]="entryPath(item.slug)">{{ item.title }}</a>
+            </h2>
+            <p class="reading-card__tagline">{{ item.tagline }}</p>
+            <p class="reading-card__summary">{{ item.summary }}</p>
+            <a class="reading-card__cta atlas-press" [routerLink]="entryPath(item.slug)">
+              Abrir leitura <span aria-hidden="true"><app-chevron /></span>
+            </a>
+          </div>
+        </li>
+      }
+    </ol>
+  } @else {
+    <div class="readings-index__empty" role="status">
+      <p>Nenhuma leitura corresponde aos filtros aplicados.</p>
+      <button type="button" class="filter-chip is-active" (click)="clearFilters()">
+        Limpar filtros
+      </button>
+    </div>
+  }
+</section>

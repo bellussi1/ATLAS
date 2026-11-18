@@ -11,6 +11,51 @@
       Ideias, pessoas, obras e acontecimentos formam uma rede. Escolha um ponto, abra o contexto e
       siga a próxima conexão — sempre com a fonte por perto.
     </p>
+    <div class="poster-actions" aria-label="Acesso rápido">
+      <a
+        class="poster-door poster-door--acervo atlas-press"
+        routerLink="/acervo"
+        [queryParams]="{ camada: 'registros' }"
+      >
+        <span class="poster-door__glyph poster-door__glyph--square" aria-hidden="true"></span>
+        <span>
+          <strong>Explorar o acervo</strong>
+          <small>{{ format(stats.verbetes) }} fichas e {{ format(stats.sources) }} fontes</small>
+        </span>
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+      </a>
+      <a class="poster-door poster-door--grafo atlas-press" routerLink="/grafos">
+        <span class="poster-door__glyph poster-door__glyph--circle" aria-hidden="true"></span>
+        <span>
+          <strong>Abrir o grafo</strong>
+          <small>{{ format(stats.links) }} ligações em rede</small>
+        </span>
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+      </a>
+      <a class="poster-door atlas-press" routerLink="/itinerarios">
+        <span class="poster-door__glyph poster-door__glyph--half" aria-hidden="true"></span>
+        <span>
+          <strong>Seguir itinerários</strong>
+          <small>Roteiros passo a passo por perguntas</small>
+        </span>
+        <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+      </a>
+    </div>
+    <nav class="poster-readings" aria-label="Leituras contínuas">
+      <span class="poster-readings__label">Leituras (1 clique)</span>
+      @for (entry of readings; track entry.slug) {
+        <a
+          class="poster-reading atlas-press"
+          [routerLink]="entryPath(entry.slug)"
+          [attr.data-reading]="entry.slug"
+        >
+          {{ entry.title }}
+        </a>
+      }
+      <a class="poster-reading atlas-press" routerLink="/leituras">
+        Todas ({{ stats.readings }})
+      </a>
+    </nav>
   </div>
   <div class="poster-art">
     <app-geometric-mosaic
@@ -39,16 +84,26 @@
     <button class="search-button atlas-press" type="submit">Pesquisar</button>
   </form>
 </section>
-
 <app-home-howto />
 
-<section class="readings" id="leituras" aria-labelledby="readings-title" data-tone-section>
+<section
+  class="readings"
+  id="leituras"
+  aria-labelledby="readings-title"
+  data-tone-section
+  style="
+    --band-bg: var(--color-accent);
+    --band-fg: var(--color-on-strong-surface);
+    --band-em: var(--color-accent);
+  "
+>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
-    <p class="atlas-band-number" aria-hidden="true">A</p>
+    <p class="atlas-band-number atlas-band-number--square" aria-hidden="true">A</p>
     <h2 id="readings-title">Leituras contínuas, <em>uma enciclopédia.</em></h2>
     <p>
-      Quatro leituras, 12 capítulos cada: conceitos, pessoas, obras, cronologia, divergências e
-      fontes. Escolha uma para ver o resumo e o texto completo.
+      {{ stats.readings }} leituras contínuas, 12 capítulos cada: conceitos, pessoas, obras,
+      cronologia, divergências e fontes. Veja os destaques abaixo ou
+      <a routerLink="/leituras">explore todas as leituras</a>.
     </p>
   </header>
   <div appReveal class="reading-table" [attr.data-reading]="selected().slug">
@@ -100,17 +155,79 @@
         </div>
         <a class="sheet-action atlas-press" [routerLink]="entryPath(selected().slug)"
           >Ler o texto completo
-          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true">→</span></a
-        >
+          <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span
+        ></a>
       </div>
     </article>
   </div>
   <p class="sr-only" role="status">Leitura selecionada: {{ selected().title }}.</p>
 </section>
 
-<section class="balance" id="acervo-hoje" aria-labelledby="scale-title" data-tone-section>
+<section
+  class="itineraries-band"
+  id="itinerarios"
+  aria-labelledby="home-itineraries-title"
+  data-tone-section
+  style="
+    --band-bg: var(--color-ochre-paper);
+    --band-fg: var(--color-ink);
+    --band-em: var(--color-orange-strong);
+  "
+>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
-    <p class="atlas-band-number" aria-hidden="true">B</p>
+    <p class="atlas-band-number atlas-band-number--half" aria-hidden="true">B</p>
+    <h2 id="home-itineraries-title">Seguir <em>um itinerário.</em></h2>
+    <p>
+      Não sabe por onde começar? Cada itinerário organiza leituras, verbetes e o grafo em paradas
+      conectadas ao redor de uma pergunta.
+    </p>
+  </header>
+  <ul class="itineraries-band__grid" appReveal>
+    @for (item of featuredItineraries; track item.slug; let i = $index) {
+      <li class="itineraries-band__card" data-stagger [style.--stagger]="i">
+        <a class="atlas-press" [routerLink]="['/itinerario', item.slug]">
+          <app-geometric-mosaic
+            class="itineraries-band__art"
+            [columns]="4"
+            [rows]="1"
+            [palette]="item.palette"
+            [seed]="item.seed"
+          />
+          <span class="itineraries-band__meta">
+            <span class="itineraries-band__kind">{{ item.kindLabel }}</span>
+            <span>{{ item.stopsLabel }}</span>
+          </span>
+          <strong>{{ item.title }}</strong>
+          <span class="itineraries-band__question">{{ item.question }}</span>
+          <span class="itineraries-band__go">
+            Abrir mapa do percurso
+            <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+          </span>
+        </a>
+      </li>
+    }
+  </ul>
+  <p class="itineraries-band__all">
+    <a class="itineraries-band__cta atlas-press" routerLink="/itinerarios">
+      Explorar todos os itinerários
+      <span class="atlas-arrow atlas-arrow--right" aria-hidden="true"><app-chevron /></span>
+    </a>
+  </p>
+</section>
+
+<section
+  class="balance"
+  id="acervo-hoje"
+  aria-labelledby="scale-title"
+  data-tone-section
+  style="
+    --band-bg: var(--color-teal-paper);
+    --band-fg: var(--color-ink);
+    --band-em: var(--color-cartographic);
+  "
+>
+  <header class="atlas-band-heading" appReveal data-reveal="wipe">
+    <p class="atlas-band-number atlas-band-number--circle" aria-hidden="true">C</p>
     <h2 id="scale-title">O acervo <em>hoje.</em></h2>
     <p>Uma rede em crescimento. Cada ligação tem uma fonte; cada leitura, um caminho.</p>
   </header>
@@ -150,15 +267,24 @@
         {{ format(stats.nodes) }} registros<br />
         {{ format(stats.links) }} ligações
       </p>
-      <a routerLink="/grafos">Abrir o grafo <span aria-hidden="true">→</span></a>
+      <a routerLink="/grafos">Abrir o grafo <app-chevron /></a>
       <p class="balance-date">Atualizado em {{ updatedLabel }}</p>
     </aside>
   </div>
 </section>
 
-<section class="catalogue-band" aria-labelledby="catalogues-title" data-tone-section>
+<section
+  class="catalogue-band"
+  aria-labelledby="catalogues-title"
+  data-tone-section
+  style="
+    --band-bg: var(--color-rose-paper);
+    --band-fg: var(--color-ink);
+    --band-em: var(--color-violet);
+  "
+>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
-    <p class="atlas-band-number atlas-band-number--square" aria-hidden="true">C</p>
+    <p class="atlas-band-number atlas-band-number--quarter" aria-hidden="true">D</p>
     <h2 id="catalogues-title">Explorar <em>por tipo.</em></h2>
     <p>
       Pessoas, obras, países, acontecimentos, conceitos e fontes: escolha um tipo de ficha e comece
@@ -167,11 +293,13 @@
   </header>
   <ul class="doors" appReveal>
     <li class="door door--wide door--search" data-stagger style="--stagger: 0">
-      <a routerLink="/acervo">
+      <a routerLink="/acervo" [queryParams]="{ camada: 'registros' }">
         <span class="door-glyph" aria-hidden="true"></span>
         <strong>Acervo completo</strong>
         <span class="door-note">Busque em todas as fichas de uma vez, com filtros por tipo.</span>
-        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+          ><app-chevron
+        /></span>
       </a>
     </li>
     <li class="door door--wide door--net" data-stagger style="--stagger: 1">
@@ -179,7 +307,9 @@
         <span class="door-glyph" aria-hidden="true"></span>
         <strong>Rede de ligações</strong>
         <span class="door-note">O acervo como mapa: siga quem se liga a quem.</span>
-        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+        <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+          ><app-chevron
+        /></span>
       </a>
     </li>
     @for (catalogue of catalogues; track catalogue.path; let index = $index) {
@@ -188,16 +318,28 @@
           <span class="door-glyph" aria-hidden="true"></span>
           <strong>{{ catalogue.title }}</strong>
           <span class="door-note">{{ catalogue.description }}</span>
-          <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true">→</span>
+          <span class="door-go atlas-arrow atlas-arrow--right" aria-hidden="true"
+            ><app-chevron
+          /></span>
         </a>
       </li>
     }
   </ul>
 </section>
 
-<section class="method" id="metodo" aria-labelledby="method-title" data-tone-section>
+<section
+  class="method"
+  id="metodo"
+  aria-labelledby="method-title"
+  data-tone-section
+  style="
+    --band-bg: var(--color-ink);
+    --band-fg: var(--color-ochre-paper);
+    --band-em: var(--color-archive);
+  "
+>
   <header class="atlas-band-heading" appReveal data-reveal="wipe">
-    <p class="atlas-band-number atlas-band-number--circle" aria-hidden="true">D</p>
+    <p class="atlas-band-number atlas-band-number--leaf" aria-hidden="true">E</p>
     <h2 id="method-title">Como ler <em>o acervo.</em></h2>
     <p>Cada trecho carrega uma marca que diz que tipo de afirmação ele é.</p>
   </header>

@@ -1,0 +1,112 @@
+{
+  "slug": "ditadura-militar-brasileira",
+  "subjectType": "periodo",
+  "kind": "periodo",
+  "rootQid": "Q1370527",
+  "titles": {
+    "pt": "Ditadura militar brasileira",
+    "en": "Military dictatorship in Brazil"
+  },
+  "palette": "conservadorismo",
+  "icon": "institution",
+  "scope": {
+    "classificationNote": "Regime autoritário instaurado no Brasil entre 1964 e 1985, estruturado por atos institucionais, bipartidarismo, censura, repressão política, política econômica desenvolvimentista e transição pactuada até a redemocratização.",
+    "period": "1964–1985 (do Golpe de 1964 à eleição indireta de Tancredo Neves e posse de José Sarney)",
+    "geography": "Brasil, inserido na Guerra Fria e nos regimes militares do Cone Sul",
+    "includes": [
+      "Atos Institucionais (AI-1, AI-2, AI-5), ARENA, MDB e Constituição de 1967",
+      "repressão política, censura, luta armada e violações documentadas pela CNV",
+      "milagre econômico, crise dos anos 1970, abertura lenta e Diretas Já"
+    ],
+    "excludes": [
+      "história da Nova República pós-1988 como centro do recorte",
+      "regimes militares de outros países fora das comparações documentadas"
+    ]
+  },
+  "belonging": {
+    "qids": [
+      "Q1370527",
+      "Q4571496",
+      "Q8683",
+      "Q37181",
+      "Q178790",
+      "Q7174",
+      "Q317",
+      "Q49896",
+      "Q7275",
+      "Q11264",
+      "Q5809",
+      "Q6229",
+      "Q6235",
+      "Q155",
+      "Q76074",
+      "Q49892",
+      "Q6186",
+      "Q155824",
+      "Q7169",
+      "Q9592",
+      "Q164597",
+      "Q180490",
+      "Q772547",
+      "Q170541",
+      "Q182121",
+      "Q156844",
+      "Q34982",
+      "Q294430",
+      "Q11256",
+      "Q362",
+      "Q6206",
+      "Q11270",
+      "Q6223",
+      "Q128160",
+      "Q43463",
+      "Q6534",
+      "Q7260",
+      "Q7264",
+      "Q6216",
+      "Q128135",
+      "Q46809",
+      "Q8740",
+      "Q309",
+      "Q103285",
+      "Q12539",
+      "Q7269",
+      "Q7310",
+      "Q211930",
+      "Q8663",
+      "Q2269",
+      "Q37230",
+      "Q93330",
+      "Q8698",
+      "Q34189",
+      "Q80871",
+      "Q184558",
+      "Q4264",
+      "Q40933",
+      "Q170314",
+      "Q200325",
+      "Q41614",
+      "Q735",
+      "Q33986",
+      "Q44237",
+      "Q49101",
+      "Q748780",
+      "Q5878",
+      "Q191014",
+      "Q36947",
+      "Q156774",
+      "Q151349",
+      "Q837320",
+      "Q12969145"
+    ],
+    "note": "QIDs iniciais para descoberta e consolidação do recorte da Ditadura militar brasileira."
+  },
+  "seeds": [
+    {
+      "url": "https://pt.wikipedia.org/wiki/Ditadura_militar_brasileira"
+    }
+  ],
+  "discovery": {
+    "commonsCategory": "Category:Military dictatorship in Brazil"
+  }
+}

@@ -16,8 +16,75 @@
   transform: translateY(0);
 }
 main {
+  position: relative;
   min-height: 50vh;
 }
 main:focus {
   outline: none;
+}
+.nav-progress {
+  position: fixed;
+  z-index: 60;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 3px;
+  background: var(--color-accent);
+  transform-origin: left center;
+  animation: atlas-nav-progress 1.4s var(--ease-out) infinite;
+}
+.nav-loading {
+  position: fixed;
+  z-index: 50;
+  inset-block-end: 1.5rem;
+  inset-inline-end: 1.5rem;
+  max-inline-size: min(24rem, calc(100vw - 2rem));
+  pointer-events: none;
+}
+.nav-loading__card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-surface-raised);
+  box-shadow: 5px 5px 0 var(--color-ink);
+  strong {
+    display: block;
+    font: 700 var(--text-small) / 1.3 var(--font-sans);
+  }
+  p {
+    margin: 0.2rem 0 0;
+    color: var(--color-ink-muted);
+    font: 400 var(--text-caption) / 1.35 var(--font-sans);
+  }
+}
+.nav-loading__mark {
+  flex: none;
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  border: 2px solid var(--color-ink);
+  background: var(--color-accent);
+  animation: atlas-nav-spin 900ms var(--ease-out) infinite;
+}
+@keyframes atlas-nav-progress {
+  0% {
+    transform: scaleX(0.08);
+  }
+  60% {
+    transform: scaleX(0.75);
+  }
+  100% {
+    transform: scaleX(0.95);
+  }
+}
+@keyframes atlas-nav-spin {
+  to {
+    transform: rotate(90deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-progress,
+  .nav-loading__mark {
+    animation: none;
+  }
 }

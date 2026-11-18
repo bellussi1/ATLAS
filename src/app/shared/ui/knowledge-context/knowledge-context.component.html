@@ -89,7 +89,9 @@
         }
         @if (permanentPath(); as path) {
           <p class="context-permanent">
-            <a [routerLink]="path" (click)="leave()">Abrir o verbete de {{ record().title }} →</a>
+            <a [routerLink]="path" (click)="leave()"
+              >Abrir o verbete de {{ record().title }} <app-chevron
+            /></a>
           </p>
         }
         <nav class="context-jump" aria-label="Nesta ficha">

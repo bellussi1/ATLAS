@@ -1,0 +1,548 @@
+{
+  "release": "5923d2eb4fda57c52c6e35224a1eac60e162748274b214e651ed14aab9bd0344",
+  "bundle_sha256": "0076d24e013b644a755aee66e0246757a640772299f750a0398a5a11e8ccb5e5",
+  "questions_evaluated": 100,
+  "calibrated_min_rerank_score_dev": 0.05,
+  "models": {
+    "extractive_cited": {
+      "summary": {
+        "n": 100,
+        "deterministic_faithfulness_rate": 1.0,
+        "citation_correctness_rate": 1.0,
+        "epistemic_accuracy_answerable": 1.0,
+        "true_refusal_rate": 1.0,
+        "false_refusal_rate": 0.0,
+        "contested_nuance_preserved_rate": 1.0,
+        "by_type": {
+          "comparativa": {
+            "n": 14,
+            "faithful_rate": 1.0,
+            "refused_rate": 0.0,
+            "citation_correct_rate": 1.0
+          },
+          "contestada": {
+            "n": 16,
+            "faithful_rate": 1.0,
+            "refused_rate": 0.0,
+            "citation_correct_rate": 1.0
+          },
+          "factual": {
+            "n": 24,
+            "faithful_rate": 1.0,
+            "refused_rate": 0.0,
+            "citation_correct_rate": 1.0
+          },
+          "multi_hop": {
+            "n": 18,
+            "faithful_rate": 1.0,
+            "refused_rate": 0.0,
+            "citation_correct_rate": 1.0
+          },
+          "sem_resposta": {
+            "n": 14,
+            "faithful_rate": 1.0,
+            "refused_rate": 1.0,
+            "citation_correct_rate": 1.0
+          },
+          "so_link_de_descoberta": {
+            "n": 14,
+            "faithful_rate": 1.0,
+            "refused_rate": 1.0,
+            "citation_correct_rate": 1.0
+          }
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 70,
+          "deterministic_faithfulness_rate": 1.0,
+          "citation_correctness_rate": 1.0,
+          "epistemic_accuracy_answerable": 1.0,
+          "true_refusal_rate": 1.0,
+          "false_refusal_rate": 0.0,
+          "contested_nuance_preserved_rate": 1.0,
+          "by_type": {
+            "comparativa": {
+              "n": 10,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "contestada": {
+              "n": 11,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "factual": {
+              "n": 17,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "multi_hop": {
+              "n": 13,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "sem_resposta": {
+              "n": 9,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "so_link_de_descoberta": {
+              "n": 10,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            }
+          }
+        },
+        "test": {
+          "n": 30,
+          "deterministic_faithfulness_rate": 1.0,
+          "citation_correctness_rate": 1.0,
+          "epistemic_accuracy_answerable": 1.0,
+          "true_refusal_rate": 1.0,
+          "false_refusal_rate": 0.0,
+          "contested_nuance_preserved_rate": 1.0,
+          "by_type": {
+            "comparativa": {
+              "n": 4,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "contestada": {
+              "n": 5,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "factual": {
+              "n": 7,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "multi_hop": {
+              "n": 5,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "sem_resposta": {
+              "n": 5,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "so_link_de_descoberta": {
+              "n": 4,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            }
+          }
+        }
+      },
+      "raw_guard_pass_rate": 1.0,
+      "guard_override_count": 0,
+      "mean_latency_ms": 0.41,
+      "total_input_tokens": 51098,
+      "total_output_tokens": 11206,
+      "measured_cost_usd": 0.0,
+      "cost_per_100_queries_usd": 0.0
+    },
+    "ollama/qwen3:8b-q4_K_M": {
+      "summary": {
+        "n": 100,
+        "deterministic_faithfulness_rate": 0.84,
+        "citation_correctness_rate": 1.0,
+        "epistemic_accuracy_answerable": 0.7917,
+        "true_refusal_rate": 0.9643,
+        "false_refusal_rate": 0.1806,
+        "contested_nuance_preserved_rate": 0.8182,
+        "by_type": {
+          "comparativa": {
+            "n": 14,
+            "faithful_rate": 0.7857,
+            "refused_rate": 0.2143,
+            "citation_correct_rate": 1.0
+          },
+          "contestada": {
+            "n": 16,
+            "faithful_rate": 0.5625,
+            "refused_rate": 0.3125,
+            "citation_correct_rate": 1.0
+          },
+          "factual": {
+            "n": 24,
+            "faithful_rate": 0.9583,
+            "refused_rate": 0.0417,
+            "citation_correct_rate": 1.0
+          },
+          "multi_hop": {
+            "n": 18,
+            "faithful_rate": 0.7778,
+            "refused_rate": 0.2222,
+            "citation_correct_rate": 1.0
+          },
+          "sem_resposta": {
+            "n": 14,
+            "faithful_rate": 1.0,
+            "refused_rate": 1.0,
+            "citation_correct_rate": 1.0
+          },
+          "so_link_de_descoberta": {
+            "n": 14,
+            "faithful_rate": 0.9286,
+            "refused_rate": 0.9286,
+            "citation_correct_rate": 1.0
+          }
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 70,
+          "deterministic_faithfulness_rate": 0.8429,
+          "citation_correctness_rate": 1.0,
+          "epistemic_accuracy_answerable": 0.8039,
+          "true_refusal_rate": 0.9474,
+          "false_refusal_rate": 0.1569,
+          "contested_nuance_preserved_rate": 0.7778,
+          "by_type": {
+            "comparativa": {
+              "n": 10,
+              "faithful_rate": 0.8,
+              "refused_rate": 0.2,
+              "citation_correct_rate": 1.0
+            },
+            "contestada": {
+              "n": 11,
+              "faithful_rate": 0.6364,
+              "refused_rate": 0.1818,
+              "citation_correct_rate": 1.0
+            },
+            "factual": {
+              "n": 17,
+              "faithful_rate": 0.9412,
+              "refused_rate": 0.0588,
+              "citation_correct_rate": 1.0
+            },
+            "multi_hop": {
+              "n": 13,
+              "faithful_rate": 0.7692,
+              "refused_rate": 0.2308,
+              "citation_correct_rate": 1.0
+            },
+            "sem_resposta": {
+              "n": 9,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "so_link_de_descoberta": {
+              "n": 10,
+              "faithful_rate": 0.9,
+              "refused_rate": 0.9,
+              "citation_correct_rate": 1.0
+            }
+          }
+        },
+        "test": {
+          "n": 30,
+          "deterministic_faithfulness_rate": 0.8333,
+          "citation_correctness_rate": 1.0,
+          "epistemic_accuracy_answerable": 0.7619,
+          "true_refusal_rate": 1.0,
+          "false_refusal_rate": 0.2381,
+          "contested_nuance_preserved_rate": 1.0,
+          "by_type": {
+            "comparativa": {
+              "n": 4,
+              "faithful_rate": 0.75,
+              "refused_rate": 0.25,
+              "citation_correct_rate": 1.0
+            },
+            "contestada": {
+              "n": 5,
+              "faithful_rate": 0.4,
+              "refused_rate": 0.6,
+              "citation_correct_rate": 1.0
+            },
+            "factual": {
+              "n": 7,
+              "faithful_rate": 1.0,
+              "refused_rate": 0.0,
+              "citation_correct_rate": 1.0
+            },
+            "multi_hop": {
+              "n": 5,
+              "faithful_rate": 0.8,
+              "refused_rate": 0.2,
+              "citation_correct_rate": 1.0
+            },
+            "sem_resposta": {
+              "n": 5,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "so_link_de_descoberta": {
+              "n": 4,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            }
+          }
+        }
+      },
+      "raw_guard_pass_rate": 0.84,
+      "guard_override_count": 16,
+      "mean_latency_ms": 7.47,
+      "total_input_tokens": 96207,
+      "total_output_tokens": 17597,
+      "measured_cost_usd": 0.0,
+      "cost_per_100_queries_usd": 0.0
+    },
+    "ollama/hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M": {
+      "summary": {
+        "n": 100,
+        "deterministic_faithfulness_rate": 0.69,
+        "citation_correctness_rate": 1.0,
+        "epistemic_accuracy_answerable": 0.5694,
+        "true_refusal_rate": 1.0,
+        "false_refusal_rate": 0.4167,
+        "contested_nuance_preserved_rate": 0.75,
+        "by_type": {
+          "comparativa": {
+            "n": 14,
+            "faithful_rate": 0.4286,
+            "refused_rate": 0.5714,
+            "citation_correct_rate": 1.0
+          },
+          "contestada": {
+            "n": 16,
+            "faithful_rate": 0.1875,
+            "refused_rate": 0.75,
+            "citation_correct_rate": 1.0
+          },
+          "factual": {
+            "n": 24,
+            "faithful_rate": 0.875,
+            "refused_rate": 0.125,
+            "citation_correct_rate": 1.0
+          },
+          "multi_hop": {
+            "n": 18,
+            "faithful_rate": 0.6111,
+            "refused_rate": 0.3889,
+            "citation_correct_rate": 1.0
+          },
+          "sem_resposta": {
+            "n": 14,
+            "faithful_rate": 1.0,
+            "refused_rate": 1.0,
+            "citation_correct_rate": 1.0
+          },
+          "so_link_de_descoberta": {
+            "n": 14,
+            "faithful_rate": 1.0,
+            "refused_rate": 1.0,
+            "citation_correct_rate": 1.0
+          }
+        }
+      },
+      "by_split": {
+        "dev": {
+          "n": 70,
+          "deterministic_faithfulness_rate": 0.7143,
+          "citation_correctness_rate": 1.0,
+          "epistemic_accuracy_answerable": 0.6078,
+          "true_refusal_rate": 1.0,
+          "false_refusal_rate": 0.3725,
+          "contested_nuance_preserved_rate": 0.75,
+          "by_type": {
+            "comparativa": {
+              "n": 10,
+              "faithful_rate": 0.5,
+              "refused_rate": 0.5,
+              "citation_correct_rate": 1.0
+            },
+            "contestada": {
+              "n": 11,
+              "faithful_rate": 0.2727,
+              "refused_rate": 0.6364,
+              "citation_correct_rate": 1.0
+            },
+            "factual": {
+              "n": 17,
+              "faithful_rate": 0.9412,
+              "refused_rate": 0.0588,
+              "citation_correct_rate": 1.0
+            },
+            "multi_hop": {
+              "n": 13,
+              "faithful_rate": 0.5385,
+              "refused_rate": 0.4615,
+              "citation_correct_rate": 1.0
+            },
+            "sem_resposta": {
+              "n": 9,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "so_link_de_descoberta": {
+              "n": 10,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            }
+          }
+        },
+        "test": {
+          "n": 30,
+          "deterministic_faithfulness_rate": 0.6333,
+          "citation_correctness_rate": 1.0,
+          "epistemic_accuracy_answerable": 0.4762,
+          "true_refusal_rate": 1.0,
+          "false_refusal_rate": 0.5238,
+          "contested_nuance_preserved_rate": null,
+          "by_type": {
+            "comparativa": {
+              "n": 4,
+              "faithful_rate": 0.25,
+              "refused_rate": 0.75,
+              "citation_correct_rate": 1.0
+            },
+            "contestada": {
+              "n": 5,
+              "faithful_rate": 0.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "factual": {
+              "n": 7,
+              "faithful_rate": 0.7143,
+              "refused_rate": 0.2857,
+              "citation_correct_rate": 1.0
+            },
+            "multi_hop": {
+              "n": 5,
+              "faithful_rate": 0.8,
+              "refused_rate": 0.2,
+              "citation_correct_rate": 1.0
+            },
+            "sem_resposta": {
+              "n": 5,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            },
+            "so_link_de_descoberta": {
+              "n": 4,
+              "faithful_rate": 1.0,
+              "refused_rate": 1.0,
+              "citation_correct_rate": 1.0
+            }
+          }
+        }
+      },
+      "raw_guard_pass_rate": 0.88,
+      "guard_override_count": 12,
+      "mean_latency_ms": 2858.46,
+      "total_input_tokens": 105025,
+      "total_output_tokens": 12941,
+      "measured_cost_usd": 0.0,
+      "cost_per_100_queries_usd": 0.0
+    }
+  },
+  "paid_api_dry_run_projections": {
+    "claude-haiku-5-5": {
+      "dry_run": true,
+      "max_usd": 1.5,
+      "spent_usd": 0.0,
+      "projected_usd": 0.227349,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_hits": 0,
+      "calls": 100,
+      "projected_per_100_queries_usd": 0.2273
+    },
+    "claude-sonnet-5-5": {
+      "dry_run": true,
+      "max_usd": 1.5,
+      "spent_usd": 0.0,
+      "projected_usd": 0.682047,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_hits": 0,
+      "calls": 100,
+      "projected_per_100_queries_usd": 0.682
+    },
+    "deepseek-flash": {
+      "dry_run": true,
+      "max_usd": 1.5,
+      "spent_usd": 0.0,
+      "projected_usd": 0.055884,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_hits": 0,
+      "calls": 100,
+      "projected_per_100_queries_usd": 0.0559
+    },
+    "gemini-3.8-flash": {
+      "dry_run": true,
+      "max_usd": 1.5,
+      "spent_usd": 0.0,
+      "projected_usd": 0.020535,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_hits": 0,
+      "calls": 100,
+      "projected_per_100_queries_usd": 0.0205
+    }
+  },
+  "judge_calibration": {
+    "judge_model": "ollama/qwen3:8b-q4_K_M",
+    "calibration_n": 30,
+    "human_calibrated": false,
+    "calibration_basis": "30_deterministic_synthetic_reference_labels_pending_human_calibration",
+    "agreement_count": 26,
+    "agreement_rate": 0.8667,
+    "cohens_kappa": 0.7333
+  },
+  "judge_calibration_gemma2": {
+    "judge_model": "ollama/gemma2:9b-instruct-q4_K_M",
+    "calibration_n": 30,
+    "human_calibrated": false,
+    "calibration_basis": "30_deterministic_synthetic_reference_labels_pending_human_calibration",
+    "agreement_count": 25,
+    "agreement_rate": 0.8333,
+    "cohens_kappa": 0.6667
+  },
+  "judge_calibration_comparison": {
+    "ollama/qwen3:8b-q4_K_M": {
+      "judge_model": "ollama/qwen3:8b-q4_K_M",
+      "calibration_n": 30,
+      "human_calibrated": false,
+      "calibration_basis": "30_deterministic_synthetic_reference_labels_pending_human_calibration",
+      "agreement_count": 26,
+      "agreement_rate": 0.8667,
+      "cohens_kappa": 0.7333
+    },
+    "ollama/gemma2:9b-instruct-q4_K_M": {
+      "judge_model": "ollama/gemma2:9b-instruct-q4_K_M",
+      "calibration_n": 30,
+      "human_calibrated": false,
+      "calibration_basis": "30_deterministic_synthetic_reference_labels_pending_human_calibration",
+      "agreement_count": 25,
+      "agreement_rate": 0.8333,
+      "cohens_kappa": 0.6667
+    }
+  }
+}
