@@ -16,16 +16,17 @@ O site mede audiência sem backend e sem cookies. A ordem de leituras e itinerá
 
 ## Configuração manual
 
-1. Crie a conta e o site no GoatCounter.
-2. Gere uma API key em `Usuário → API`.
-3. Ative o Cloudflare Web Analytics para o site.
-4. Crie um token Cloudflare com `Account Analytics Read`.
-5. Cadastre no GitHub:
-   - variável `GOATCOUNTER_SITE` (ex.: `atlas`);
+Site criado em `https://bellussi.goatcounter.com` (código `bellussi`). O restante continua manual:
+
+1. Gere uma API key em `Usuário → API`.
+2. Ative o Cloudflare Web Analytics para o site.
+3. Crie um token Cloudflare com `Account Analytics Read`.
+4. Cadastre no GitHub:
+   - variável `GOATCOUNTER_SITE` = `bellussi` (já cadastrada);
    - segredo `GOATCOUNTER_API_KEY`;
    - segredo `CLOUDFLARE_API_TOKEN`;
    - variável `CLOUDFLARE_ACCOUNT_ID`.
-6. No deploy dos Pages, defina `GOATCOUNTER_SITE` e `CLOUDFLARE_ANALYTICS_TOKEN` para o build injetar o beacon. Sem eles, nada é carregado.
+5. No deploy dos Pages, a variável `GOATCOUNTER_SITE` já entra pelo workflow; `CLOUDFLARE_ANALYTICS_TOKEN` é opcional. Sem elas, nada é carregado.
 
 ## Como funciona
 

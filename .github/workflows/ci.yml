@@ -11,6 +11,8 @@ jobs:
     env:
       ATLAS_SITE_URL: ${{ vars.ATLAS_SITE_URL }}
       ATLAS_RAW_BASE_URL: ${{ vars.ATLAS_RAW_BASE_URL }}
+      GOATCOUNTER_SITE: ${{ vars.GOATCOUNTER_SITE }}
+      CLOUDFLARE_ANALYTICS_TOKEN: ${{ vars.CLOUDFLARE_ANALYTICS_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

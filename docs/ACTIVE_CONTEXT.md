@@ -25,7 +25,7 @@ Atualizado em 16/11/2026. Este é o handoff curto entre sessões. O histórico c
   - `scripts/metrics/sync.mjs` (GoatCounter + Cloudflare, `--dry-run`, fixtures e testes) grava `metrics/popularity.json` e histórico mensal; `.github/workflows/metrics.yml` roda diário e abre PR semanal.
   - `rankByPopularity` e `featureWithEditorialSlot` ordenam `/leituras`, `/itinerarios` e a home com janela de 30 dias, mínimo de 20 visitantes e fallback editorial.
   - Verificações: `npm test` (**386/386**), `npm run typecheck`, `npm run lint`, `npm run build` (**1.287** rotas, **1.263** no sitemap) e `npx playwright test e2e/public-routes.spec.ts` (**47/47**). `test:content` teve **1 falha alheia** (`golpe-de-1964` sem atlas no WIP local).
-  - Pendente manual: criar conta/site no GoatCounter, ativar Cloudflare Web Analytics e cadastrar `GOATCOUNTER_SITE`, `GOATCOUNTER_API_KEY`, `CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`.
+  - Pendente manual: site GoatCounter **`bellussi`** criado e `GOATCOUNTER_SITE` cadastrado; faltam a API key, o token Cloudflare com `Account Analytics Read` e o `CLOUDFLARE_ANALYTICS_TOKEN` opcional.
 
 - **Gerador automático de itinerários em fila (`generate-itinerary-llm.mjs`) — 9 percursos publicados (17/11, `develop`):**
   - Criado `scripts/content/generate-itinerary-llm.mjs` usando `gemma2:9b-instruct-q4_K_M` + `source-graph.mjs` + `validateItinerary` (aterrado em entidades reais, leituras listadas e catálogos válidos, com normalização determinística de `convergesAt`, `leitura` vs `verbete` e `sourceIds`).
