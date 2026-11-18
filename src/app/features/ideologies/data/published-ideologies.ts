@@ -39,4 +39,44 @@ export const publishedIdeologies: Readonly<Record<string, PublishedIdeologySourc
     page: 'content/ideologies/trabalhismo/page.json',
     supplement: 'content/graph/trabalhismo.json',
   },
+  'era-vargas': {
+    page: 'content/ideologies/era-vargas/page.json',
+    supplement: 'content/graph/era-vargas.json',
+    unlisted: true,
+  },
+  'golpe-de-1964': {
+    page: 'content/ideologies/golpe-de-1964/page.json',
+    supplement: 'content/graph/golpe-de-1964.json',
+    unlisted: true,
+  },
+  'ditadura-militar-brasileira': {
+    page: 'content/ideologies/ditadura-militar-brasileira/page.json',
+    supplement: 'content/graph/ditadura-militar-brasileira.json',
+    unlisted: true,
+  },
+  'segunda-guerra-mundial': {
+    page: 'content/ideologies/segunda-guerra-mundial/page.json',
+    supplement: 'content/graph/segunda-guerra-mundial.json',
+    unlisted: true,
+  },
+  revolucao: {
+    page: 'content/ideologies/revolucao/page.json',
+    supplement: 'content/graph/revolucao.json',
+    unlisted: true,
+  },
+  estado: {
+    page: 'content/ideologies/estado/page.json',
+    supplement: 'content/graph/estado.json',
+    unlisted: true,
+  },
+  'karl-marx': {
+    page: 'content/ideologies/karl-marx/page.json',
+    supplement: 'content/graph/karl-marx.json',
+    unlisted: true,
+  },
+  'adam-smith': {
+    page: 'content/ideologies/adam-smith/page.json',
+    supplement: 'content/graph/adam-smith.json',
+    unlisted: true,
+  },
 };
