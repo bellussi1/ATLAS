@@ -1,4 +1,8 @@
-import { type DiscoveryIndexEntry, nameMatchScore } from './discovery-index';
+import {
+  type DiscoveryIndexEntry,
+  lexicalFallbackMatches,
+  nameMatchScore,
+} from './discovery-index';
 import { catalogueUrl, explorerCatalogues } from './explorer-catalogues';
 export { explorerCatalogues, explorerGroups } from './explorer-catalogues';
 
@@ -110,7 +114,9 @@ export function explorerEntries(
           a.entry.id.localeCompare(b.entry.id),
     );
   if (named.length) return named.map((match) => match.entry);
-  // A query that names no record still finds the passages that mention it, as a last resort.
+  // A query that names no record still finds relevant passages via stop-word-free BM25 or exact terms.
+  const fallback = lexicalFallbackMatches(base, query);
+  if (fallback.length) return filter.sort === 'title' ? fallback.sort(alphabetical) : fallback;
   return base
     .filter((entry) => terms.every((term) => entry.searchText.includes(term)))
     .sort(alphabetical);
@@ -147,6 +153,7 @@ export function explorerMatchKind(
   if (!terms.length) return 'name';
   const base = explorerBase(index, filter);
   if (base.some((entry) => nameMatchScore(entry, query) !== null)) return 'name';
+  if (lexicalFallbackMatches(base, query).length > 0) return 'text';
   return base.some((entry) => terms.every((term) => entry.searchText.includes(term)))
     ? 'text'
     : 'none';

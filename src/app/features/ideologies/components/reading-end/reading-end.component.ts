@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { itinerariesForReading, readingRootNodeId } from '@core/content/queries/cross-links';
 import { readingPath } from '@core/routing/reading-routes';
 import {
   readingPalette,
@@ -31,7 +32,10 @@ interface EndCard extends ResolvedReadingConnection {
 export class IdeologyReadingEndComponent {
   readonly connections = input.required<readonly ResolvedReadingConnection[]>();
   readonly lead = input<ResolvedReadingConnection | null>(null);
+  readonly readingSlug = input<string>('');
   readonly readingPath = readingPath;
+  readonly itineraries = computed(() => itinerariesForReading(this.readingSlug()));
+  readonly graphNodeId = computed(() => readingRootNodeId(this.readingSlug()));
 
   readonly cards = computed<EndCard[]>(() => {
     const lead = this.lead();

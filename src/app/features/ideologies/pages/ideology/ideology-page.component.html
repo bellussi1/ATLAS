@@ -127,7 +127,11 @@
           }
         </section>
       }
-      <app-ideology-reading-end [connections]="connections()" [lead]="companion()" />
+      <app-ideology-reading-end
+        [connections]="connections()"
+        [lead]="companion()"
+        [readingSlug]="page.slug"
+      />
     </app-ideology-reading>
   </article>
 } @else {

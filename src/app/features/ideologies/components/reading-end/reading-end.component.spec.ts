@@ -78,4 +78,21 @@ describe('Ideology reading end', () => {
     );
     expect(root.querySelector('.end-card')).toBeNull();
   });
+
+  it('links related itineraries and a focused graph view when readingSlug is provided', () => {
+    TestBed.configureTestingModule({
+      imports: [IdeologyReadingEndComponent],
+      providers: [provideRouter([]), provideHttpClient(), ...provideContentFixture()],
+    });
+    const fixture = TestBed.createComponent(IdeologyReadingEndComponent);
+    fixture.componentRef.setInput('connections', [connection()]);
+    fixture.componentRef.setInput('readingSlug', 'marxismo');
+    fixture.detectChanges();
+    const root = fixture.nativeElement as HTMLElement;
+    const links = [...root.querySelectorAll<HTMLAnchorElement>('.reading-end-trail')].map((a) =>
+      a.getAttribute('href'),
+    );
+    expect(links).toContain('/itinerario/comparativo-liberdade');
+    expect(links).toContain('/grafos?no=ideology-marxism');
+  });
 });

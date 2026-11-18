@@ -1176,6 +1176,31 @@ kbd {
 .detail__open {
   justify-self: start;
 }
+.detail__paths {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-subtle);
+}
+.detail__paths-label {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font: 700 var(--text-micro)/1.2 var(--font-mono);
+  text-transform: uppercase;
+}
+.detail__path-list {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  a {
+    color: var(--color-accent-hover);
+    font: 600 var(--text-small)/1.3 var(--font-sans);
+    text-underline-offset: 2px;
+  }
+}
 .link-summary {
   display: flex;
   flex-wrap: wrap;

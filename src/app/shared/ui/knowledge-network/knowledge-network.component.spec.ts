@@ -202,6 +202,9 @@ describe('KnowledgeNetworkComponent', () => {
     expect(detail.querySelector('a[href^="/verbete/"]')?.getAttribute('href')).toBe(
       `/verbete/${first.slug}`,
     );
+    expect(detail.querySelector('.detail__paths a[href^="/leitura/"]')?.getAttribute('href')).toBe(
+      '/leitura/liberalismo',
+    );
   });
 
   it('exposes nodes with accessible names and opens the focused one with Enter', async () => {

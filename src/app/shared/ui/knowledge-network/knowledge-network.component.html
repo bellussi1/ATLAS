@@ -870,6 +870,30 @@
             <a class="chip chip--solid detail__open" [routerLink]="['/verbete', node.slug]"
               >Abrir o verbete <app-chevron
             /></a>
+            @if (selectedReadings().length || selectedItineraries().length) {
+              <section class="detail__paths" aria-label="Leituras e itinerários relacionados">
+                @if (selectedReadings().length) {
+                  <p class="detail__paths-label">Leituras contínuas</p>
+                  <ul class="detail__path-list">
+                    @for (reading of selectedReadings(); track reading.slug) {
+                      <li>
+                        <a [routerLink]="reading.path">Dossiê: {{ reading.title }} →</a>
+                      </li>
+                    }
+                  </ul>
+                }
+                @if (selectedItineraries().length) {
+                  <p class="detail__paths-label">Itinerários temáticos</p>
+                  <ul class="detail__path-list">
+                    @for (it of selectedItineraries(); track it.slug) {
+                      <li>
+                        <a [routerLink]="it.path">{{ it.title }} →</a>
+                      </li>
+                    }
+                  </ul>
+                }
+              </section>
+            }
             <section aria-labelledby="detail-links">
               <h3 id="detail-links">
                 Conexões <span class="detail__count-inline">{{ selectedLinks().length }}</span>

@@ -462,6 +462,57 @@ function addSourceBacklinks(
   }
 }
 
+function rankByLexicalBM25(
+  entries: readonly DiscoveryIndexEntry[],
+  terms: string[],
+  minMatch: number,
+): DiscoveryIndexEntry[] {
+  if (!terms.length || !entries.length) return [];
+  const totalDocs = entries.length;
+  const avgDocLen =
+    entries.reduce((sum, entry) => sum + Math.max(entry.searchText.length, 1), 0) / totalDocs;
+  const idfByTerm = new Map<string, number>();
+  for (const term of terms) {
+    let df = 0;
+    for (const entry of entries) {
+      if (countTermOccurrences(entry.searchText, term) > 0) df += 1;
+    }
+    idfByTerm.set(term, Math.log(1 + (totalDocs - df + 0.5) / (df + 0.5)));
+  }
+
+  return entries
+    .map((entry) => ({
+      entry,
+      ...scoreEntryLexicalFallback(entry, terms, idfByTerm, avgDocLen),
+    }))
+    .filter((item) => item.matchedCount >= minMatch && item.score > 0)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        b.matchedCount - a.matchedCount ||
+        a.entry.title.localeCompare(b.entry.title, 'pt-BR') ||
+        a.entry.id.localeCompare(b.entry.id),
+    )
+    .map((item) => item.entry);
+}
+
+/** Natural-language BM25 fallback when a multi-term query has prepositions or 3+ words. */
+export function lexicalFallbackMatches(
+  entries: readonly DiscoveryIndexEntry[],
+  query: string,
+): DiscoveryIndexEntry[] {
+  const rawTokens = normalize(query)
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
+  if (!rawTokens.length || !entries.length) return [];
+  const hasStopWord = rawTokens.some((token) => PT_SEARCH_STOPWORDS.has(token));
+  if (rawTokens.length < 3 && !hasStopWord) return [];
+  const terms = tokenizeSearchQuery(query);
+  if (terms.length < 2) return [];
+  const minMatch = Math.max(2, Math.ceil(terms.length * 0.6));
+  return rankByLexicalBM25(entries, terms, minMatch);
+}
+
 export function filterDiscoveryIndex(
   index: DiscoveryIndexEntry[],
   filter: DiscoveryIndexFilter,
@@ -483,35 +534,8 @@ export function filterDiscoveryIndex(
   // A query that names no record still ranks passages by stop-word-free field-weighted BM25 (ADR-001).
   if (named.length) return named.map((match) => match.entry);
   const terms = tokenizeSearchQuery(query);
-  if (!terms.length || !base.length) return [];
-
-  const totalDocs = base.length;
-  const avgDocLen =
-    base.reduce((sum, entry) => sum + Math.max(entry.searchText.length, 1), 0) / totalDocs;
-  const idfByTerm = new Map<string, number>();
-  for (const term of terms) {
-    let df = 0;
-    for (const entry of base) {
-      if (countTermOccurrences(entry.searchText, term) > 0) df += 1;
-    }
-    idfByTerm.set(term, Math.log(1 + (totalDocs - df + 0.5) / (df + 0.5)));
-  }
-
   const minMatch = terms.length <= 2 ? terms.length : Math.ceil(terms.length * 0.5);
-  return base
-    .map((entry) => ({
-      entry,
-      ...scoreEntryLexicalFallback(entry, terms, idfByTerm, avgDocLen),
-    }))
-    .filter((item) => item.matchedCount >= minMatch && item.score > 0)
-    .sort(
-      (a, b) =>
-        b.score - a.score ||
-        b.matchedCount - a.matchedCount ||
-        a.entry.title.localeCompare(b.entry.title, 'pt-BR') ||
-        a.entry.id.localeCompare(b.entry.id),
-    )
-    .map((item) => item.entry);
+  return rankByLexicalBM25(base, terms, minMatch);
 }
 
 export function validateDiscoveryDestinations(

@@ -141,6 +141,20 @@
             <a [routerLink]="reading.path">Continuar em {{ reading.title }}</a>
           </aside>
         }
+        @if (itineraries().length) {
+          <aside class="continuous-reading" aria-labelledby="record-itineraries-title">
+            <p class="continuous-reading__kicker">Itinerários temáticos</p>
+            <h2 id="record-itineraries-title">Este verbete integra um percurso</h2>
+            <ul class="record-itinerary-list">
+              @for (it of itineraries(); track it.slug) {
+                <li>
+                  <a [routerLink]="it.path">{{ it.title }}</a>
+                  <span>{{ it.kindLabel }}</span>
+                </li>
+              }
+            </ul>
+          </aside>
+        }
         @if (entity.kind === 'place') {
           @if (entity.countryProfile || entity.regimeProfile) {
             <app-entity-profile [entity]="originalEntity()!" [graph]="repository.knowledgeGraph" />

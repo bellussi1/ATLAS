@@ -35,6 +35,11 @@ describe('Knowledge Explorer', () => {
     expect(explorerEntries(discoveryIndex, { query: 'federative' }).map((e) => e.title)).toContain(
       'Brasil',
     );
+    const naturalQuery = 'O que a Constituição Federal de 1988 prevê sobre igualdade';
+    expect(explorerMatchKind(discoveryIndex, { query: naturalQuery })).toBe('text');
+    expect(explorerEntries(discoveryIndex, { query: naturalQuery }).map((e) => e.path)).toContain(
+      '/verbete/igualdade-perante-a-lei',
+    );
   });
   it('keeps catalogues limited to graph records rather than methodological examples', () => {
     const people = explorerEntries(discoveryIndex, { catalogue: 'pessoas' });

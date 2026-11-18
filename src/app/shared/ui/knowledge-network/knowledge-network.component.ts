@@ -19,6 +19,7 @@ import { readerProse } from '@core/content/editorial/reader-voice';
 import { entityMedia } from '@core/content/media/asset-license';
 import { ContentMediaPipe } from '@core/content/media/content-media.pipe';
 import type { KnowledgeGraph, Scope } from '@core/content/models/content-schema';
+import { itinerariesForEntity, readingsForEntity } from '@core/content/queries/cross-links';
 import {
   buildKnowledgeNetwork,
   filterNetwork,
@@ -380,6 +381,14 @@ export class KnowledgeNetworkComponent {
     return positionClaims(node)
       .slice(0, 3)
       .map((claim) => ({ ...claim, text: readerProse(claim.text) ?? claim.text }));
+  });
+  readonly selectedReadings = computed(() => {
+    const node = this.selected();
+    return node ? readingsForEntity(node.id, node.slug, node.collections) : [];
+  });
+  readonly selectedItineraries = computed(() => {
+    const node = this.selected();
+    return node ? itinerariesForEntity(node.id, node.slug, this.repository.bundledItineraries) : [];
   });
   readonly pathFromTitle = computed(() => {
     const id = this.pathFrom();

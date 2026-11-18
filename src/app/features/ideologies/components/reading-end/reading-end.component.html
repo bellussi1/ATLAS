@@ -42,6 +42,37 @@
     <p class="reading-empty">Não há outra leitura publicada neste recorte.</p>
   }
 
+  @if (itineraries().length || graphNodeId()) {
+    <nav class="reading-end-explore" aria-label="Continuar em itinerários ou no grafo">
+      @if (itineraries().length) {
+        <div class="reading-end-group">
+          <p class="reading-end-label">Percursos que passam por aqui</p>
+          <ul class="reading-end-links">
+            @for (it of itineraries(); track it.slug) {
+              <li>
+                <a class="reading-end-trail" [routerLink]="it.path">
+                  <span class="trail-kind">{{ it.kindLabel }}</span>
+                  <strong>{{ it.title }} <span aria-hidden="true">&#8594;</span></strong>
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+      <div class="reading-end-group">
+        <p class="reading-end-label">Explorar conexões no acervo</p>
+        <a
+          class="reading-end-trail"
+          routerLink="/grafos"
+          [queryParams]="graphNodeId() ? { no: graphNodeId() } : null"
+        >
+          <span class="trail-kind">Mapa de relações</span>
+          <strong>Abrir no grafo <span aria-hidden="true">&#8594;</span></strong>
+        </a>
+      </div>
+    </nav>
+  }
+
   <p class="reading-end-home">
     <a routerLink="/"><span aria-hidden="true">&#8592;</span> Voltar à página inicial</a>
   </p>
