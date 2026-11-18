@@ -1122,7 +1122,7 @@ def _build_question_specs() -> list[QuestionSpec]:
             must_refuse=True,
             expected_epistemic=None,
             origin="manual",
-            oov_keywords=["magna carta", "joao sem terra"],
+            oov_keywords=["joao sem terra"],
         ),
         # sem_resposta - test (5)
         QuestionSpec(

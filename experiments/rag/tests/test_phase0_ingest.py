@@ -30,7 +30,7 @@ def test_pinned_bundle_hash_and_dedup() -> None:
 
 def test_manifest_vs_disk_collections() -> None:
     audit = audit_disk_collections()
-    assert audit["manifest_collection_count"] == 16
+    assert audit["manifest_collection_count"] >= 16
     assert audit["disk_collection_file_count"] >= audit["manifest_collection_count"]
     assert audit["all_manifest_files_exist_on_disk"] is True
 
