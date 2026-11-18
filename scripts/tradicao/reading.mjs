@@ -739,7 +739,11 @@ export async function generateReadings({
     const outputSlug = pageSlug ?? entity.slug;
     const path = join(root, 'content/ideologies', outputSlug, 'page.json');
     const existing = await readJsonOr(path, null);
-    if (existing && existing.identity?.signature !== generatedSignature) {
+    if (
+      existing &&
+      existing.identity?.signature !== generatedSignature &&
+      existing.identity?.signature !== 'Estrutura preliminar'
+    ) {
       kept.push(outputSlug);
       continue;
     }

@@ -68,7 +68,7 @@ const { positionals, values } = parseArgs({
 });
 const [command, tradition] = positionals;
 const commandNames = ['discover', 'fetch', 'text', 'store', 'extract', 'run', 'publish-drafts'];
-if (!commandNames.includes(command) || !/^[a-z-]+$/.test(tradition ?? ''))
+if (!commandNames.includes(command) || !/^[a-z0-9-]+$/.test(tradition ?? ''))
   throw new Error(`Uso: wiki-extract.mjs <${commandNames.join('|')}> <tradição>`);
 const limit = values.limit ? Number(values.limit) : Number.POSITIVE_INFINITY;
 const minShared = values['min-shared'] ? Number(values['min-shared']) : 2;

@@ -16,7 +16,7 @@ const hash = z.string().regex(/^[a-f0-9]{64}$/);
 export const captureSchema = z.object({
   schemaVersion: z.literal(1),
   kind: z.literal('wikipedia-capture'),
-  tradition: z.string().regex(/^[a-z][a-z-]*$/),
+  tradition: z.string().regex(/^[a-z][a-z0-9-]*$/),
   capturedAt: z.iso.datetime(),
   requests: z.array(
     z.object({

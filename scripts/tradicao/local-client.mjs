@@ -1,9 +1,48 @@
+import http from 'node:http';
+import https from 'node:https';
+
 /**
  * Adaptador Ollama com interface compatível com `client.messages.create` do extrator rico.
  * Permite rodar os estágios de extração e conferência de texto/relações a custo US$ 0,00
  * na GPU local, mantendo integralmente as travas de `guards.mjs`.
  */
-export const DEFAULT_LOCAL_MODEL = 'qwen3:8b-q4_K_M';
+export const DEFAULT_LOCAL_MODEL = 'gemma2:9b-instruct-q4_K_M';
+
+function postJsonNoTimeout(urlString, body) {
+  return new Promise((resolve, reject) => {
+    const url = new URL(urlString);
+    const transport = url.protocol === 'https:' ? https : http;
+    const data = JSON.stringify(body);
+    const req = transport.request(
+      url,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(data),
+        },
+        timeout: 0,
+      },
+      (res) => {
+        const chunks = [];
+        res.on('data', (chunk) => chunks.push(chunk));
+        res.on('end', () => {
+          const text = Buffer.concat(chunks).toString('utf8');
+          resolve({
+            ok: (res.statusCode ?? 0) >= 200 && (res.statusCode ?? 0) < 300,
+            status: res.statusCode ?? 0,
+            text: async () => text,
+            json: async () => JSON.parse(text),
+          });
+        });
+      },
+    );
+    req.setTimeout(0);
+    req.on('error', reject);
+    req.write(data);
+    req.end();
+  });
+}
 
 export const isLocalModel = (model) =>
   typeof model === 'string' && (model.startsWith('local:') || model.startsWith('ollama/'));
@@ -18,11 +57,18 @@ function flattenContent(content) {
 
 export function createOllamaClient({
   baseUrl = process.env.ATLAS_OLLAMA_URL || 'http://localhost:11434',
-  fetchImpl = globalThis.fetch,
+  fetchImpl,
 } = {}) {
-  if (typeof fetchImpl !== 'function')
-    throw new Error('fetch indisponível para o cliente Ollama local.');
   const endpoint = `${baseUrl.replace(/\/+$/, '')}/api/chat`;
+  const send =
+    typeof fetchImpl === 'function'
+      ? (body) =>
+          fetchImpl(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+          })
+      : (body) => postJsonNoTimeout(endpoint, body);
   return {
     messages: {
       async create(params) {
@@ -34,16 +80,12 @@ export function createOllamaClient({
           messages.push({ role: msg.role ?? 'user', content: flattenContent(msg.content) });
         }
         const format = params.output_config?.format?.schema ?? 'json';
-        const response = await fetchImpl(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model,
-            stream: false,
-            format,
-            options: { temperature: 0, num_ctx: 16384 },
-            messages,
-          }),
+        const response = await send({
+          model,
+          stream: false,
+          format,
+          options: { temperature: 0, num_ctx: 12288, num_predict: 8192 },
+          messages,
         });
         if (!response.ok) {
           const detail = await response.text().catch(() => '');
@@ -56,6 +98,7 @@ export function createOllamaClient({
         return {
           id: `local-${Date.now()}`,
           model: params.model,
+          stop_reason: payload?.done_reason === 'length' ? 'max_tokens' : 'end_turn',
           content: [{ type: 'text', text }],
           usage: {
             input_tokens: payload?.prompt_eval_count ?? 0,
